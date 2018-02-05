@@ -1,5 +1,5 @@
+const createRequest = require('dina-collections-ui/src/utilities/apiClient/createRequest')
 const createLog = require('../../../../utilities/log')
-const createRequest = require('../../../../../utilities/apiClient/createRequest')
 
 const log = createLog('createRequestMiddleware')
 

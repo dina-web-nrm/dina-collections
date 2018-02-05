@@ -1,4 +1,4 @@
-const methodConfigSchema = {
+module.exports = {
   additionalProperties: false,
   properties: {
     mapHeaders: {
@@ -18,5 +18,3 @@ const methodConfigSchema = {
   },
   required: ['method', 'requestContentType', 'responseContentType'],
 }
-
-export default methodConfigSchema

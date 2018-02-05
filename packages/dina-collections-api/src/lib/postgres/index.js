@@ -1,4 +1,4 @@
-const chainPromises = require('../../../utilities/chainPromises')
+const chainPromises = require('dina-collections-ui/src/utilities/chainPromises')
 const createModels = require('./models')
 const createControllers = require('./controllers')
 const createDb = require('./db')

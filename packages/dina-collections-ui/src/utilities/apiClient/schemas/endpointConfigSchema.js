@@ -1,4 +1,4 @@
-const endpointConfigSchema = {
+module.exports = {
   additionalProperties: false,
   properties: {
     baseUrl: {
@@ -46,5 +46,3 @@ const endpointConfigSchema = {
   },
   required: [],
 }
-
-export default endpointConfigSchema
