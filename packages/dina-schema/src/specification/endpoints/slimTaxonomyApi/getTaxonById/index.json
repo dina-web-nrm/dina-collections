@@ -1,0 +1,15 @@
+{
+  "summary": "Fetches taxon by id",
+  "path": "/taxon/{id}",
+  "method": "get",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "string"
+      },
+      "description": "Taxon id",
+      "required": true,
+      "example": "14200208"
+    }
+  }
+}

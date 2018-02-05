@@ -41,7 +41,7 @@
     "classnames": "^2.2.5",
     "debug": "^3.1.0",
     "deep-diff": "^0.3.8",
-    "dina-schema": "https://github.com/DINA-Web/dina-schema.git#next",
+    "dina-schema": "file:../dina-schema",
     "dns": "file:./src/mock/dns",
     "dotenv": "^4.0.0",
     "enzyme": "^3.3.0",

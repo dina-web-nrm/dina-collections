@@ -1,0 +1,15 @@
+{
+  "summary": "Update an curatedLocality id",
+  "path": "/collections/api/v01/curatedLocality/{id}",
+  "method": "put",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "integer"
+      },
+      "description": "curatedLocality id",
+      "required": true,
+      "example": 1
+    }
+  }
+}

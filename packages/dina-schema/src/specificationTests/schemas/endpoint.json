@@ -1,0 +1,21 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "description": { "type": "string" },
+    "errors": { "type": "object" },
+    "headers": { "type": "object" },
+    "method": { "type": "string" },
+    "operationId": { "type": "string" },
+    "path": { "type": "string" },
+    "pathParams": { "type": "object" },
+    "queryParams": { "type": "object" },
+    "request": { "type": "object" },
+    "response": { "type": "object" },
+    "responses": { "type": "object" },
+    "servers": { "type": "object" },
+    "summary": { "type": "string" },
+    "tags": { "type": "array" }
+  },
+  "type": "object",
+  "required": ["operationId", "path", "response", "summary", "tags", "method"]
+}

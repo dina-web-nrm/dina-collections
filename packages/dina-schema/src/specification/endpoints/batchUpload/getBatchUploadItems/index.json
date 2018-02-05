@@ -1,0 +1,15 @@
+{
+  "summary": "Get batchUpload items",
+  "path": "/api/v01/batchUploads/{id}/items",
+  "method": "get",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "string"
+      },
+      "description": "Batch upload id",
+      "required": true,
+      "example": 1
+    }
+  }
+}

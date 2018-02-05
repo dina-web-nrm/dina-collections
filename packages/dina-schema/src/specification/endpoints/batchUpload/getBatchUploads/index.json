@@ -1,0 +1,5 @@
+{
+  "summary": "Get batchUploads",
+  "path": "/api/v01/batchUploads",
+  "method": "get"
+}

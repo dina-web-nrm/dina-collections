@@ -1,0 +1,56 @@
+{
+  "extends": [
+    "eslint-config-airbnb",
+    "prettier",
+  ],
+  "env": {
+    "jest/globals": true
+  },
+  "globals": {
+    "document": true,
+    "it": true,
+    "window": true,
+    "fetch": true
+  },
+  "parser": "babel-eslint",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "./src"
+        ]
+      }
+    }
+  },
+  "plugins": [
+    "jest",
+    "json",
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "semi": [
+      2,
+      "never"
+    ],
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": false,
+        "natural": true
+      }
+    ],
+    "arrow-parens": 0,
+    "arrow-body-style": 0,
+    "no-console": 0,
+    "import/prefer-default-export": 0,
+    "import/no-named-as-default": 0,
+    "import/no-dynamic-require" : 0,
+    "indent": 0,
+    "prefer-destructuring": 0,
+    "global-require": 0,
+    "no-param-reassign": 0
+  }
+}

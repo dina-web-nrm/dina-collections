@@ -1,0 +1,23 @@
+{
+  "summary": "Get a batch update item by itemId",
+  "path": "/api/v01/batchUploads/{id}/items/{itemId}",
+  "method": "get",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "string"
+      },
+      "description": "Batch upload id",
+      "required": true,
+      "example": "1"
+    },
+    "itemId": {
+      "schema": {
+        "type": "string"
+      },
+      "description": "Batch upload item id",
+      "required": true,
+      "example": "1"
+    }
+  }
+}
