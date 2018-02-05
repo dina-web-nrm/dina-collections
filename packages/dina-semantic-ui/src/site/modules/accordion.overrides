@@ -1,0 +1,21 @@
+/*******************************
+        User Overrides
+*******************************/
+
+
+/* Content */
+.ui.styled.accordion .content,
+.ui.styled.accordion .accordion .content {
+  background: @styledContentBackground;
+}
+
+/* Title */
+.ui.styled.accordion .title {
+  background: @styledInactiveTitleBackground;
+}
+
+/* Active */
+.ui.styled.accordion .active.title {
+  border-top: @coloredBorderSize solid @green !important;
+  background: @styledContentBackground;
+}

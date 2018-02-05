@@ -1,0 +1,10 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+@background: fade(#F8F8F9, 95%);
+@positiveBackgroundColor: fade(#FCFFF5, 95%);
+@negativeBackgroundColor: fade(#FFF6F6, 95%);
+@infoBackgroundColor: fade(#F8FFFF, 95%);
+@warningBackgroundColor: fade(#FFFAF3, 95%);
+@errorBackgroundColor: fade(@negativeBackgroundColor, 95%);
+@successBackgroundColor: fade(@positiveBackgroundColor, 95%);

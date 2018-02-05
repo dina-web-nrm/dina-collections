@@ -1,0 +1,25 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+.message.flash {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 999999;
+  border-radius: 0px;
+}
+
+@media only screen and (min-width: @tabletBreakpoint) {
+  .message.flash {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
+@media only screen and (min-width: @computerBreakpoint) {
+  .message.flash {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+}
