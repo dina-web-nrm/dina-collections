@@ -1,0 +1,7 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.dina.background {
+  background-color: @pageBackground
+}

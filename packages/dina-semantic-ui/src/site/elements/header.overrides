@@ -1,0 +1,8 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+h1.ui.header a.side-link {
+  cursor: pointer;
+  font-size: @h1 * 0.6;
+}

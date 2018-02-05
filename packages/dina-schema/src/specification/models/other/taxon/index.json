@@ -1,0 +1,118 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "parent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Parent taxon identifier"
+        },
+        "scientific_name": {
+          "type": "string",
+          "description": "Parent taxon scientific name"
+        },
+        "rank": {
+          "type": "string",
+          "description": "Parent taxon rank"
+        }
+      },
+      "required": [
+        "id",
+        "scientific_name",
+        "rank"
+      ]
+    },
+    "rubin_number": {
+      "type": "string",
+      "description": "Rubin storage number for the taxon"
+    },
+    "higherTaxa": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "string",
+          "description": "Parent order"
+        },
+        "suborder": {
+          "type": "string",
+          "description": "Parent suborder"
+        },
+        "infraorder": {
+          "type": "string",
+          "description": "Parent infraorder"
+        },
+        "superfamily": {
+          "type": "string",
+          "description": "Parent superfamily"
+        },
+        "family": {
+          "type": "string",
+          "description": "Parent family"
+        },
+        "subfamily": {
+          "type": "string",
+          "description": "Parent subfamily"
+        },
+        "tribe": {
+          "type": "string",
+          "description": "Parent tribe"
+        },
+        "genus": {
+          "type": "string",
+          "description": "Parent genus"
+        },
+        "subgenus": {
+          "type": "string",
+          "description": "Parent subgenus"
+        }
+      }
+    },
+    "rank": {
+      "type": "string",
+      "description": "Taxon rank"
+    },
+    "scientific_name": {
+      "type": "string",
+      "description": "Taxon scientific name, binomial if species"
+    },
+    "author": {
+      "type": "string",
+      "description": "Taxon author without the year"
+    },
+    "author_date": {
+      "type": "string",
+      "description": "Taxon author year"
+    },
+    "valid_name": {
+      "type": "boolean",
+      "description": "Is the name taxonomically valid",
+      "default": false
+    },
+    "vernacular_names": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Vernacular (common) English names for the taxon"
+          }
+        }
+      }
+    },
+    "synonyms": {
+      "type": "string",
+      "description": "List of synonyms as free-form text"
+    },
+    "sort_order": {
+      "type": "string",
+      "description": "Taxonomical sort order code from Mammal Species of the World list"
+    }
+  },
+  "required": [
+    "rank",
+    "scientific_name",
+    "valid_name"
+  ]
+}

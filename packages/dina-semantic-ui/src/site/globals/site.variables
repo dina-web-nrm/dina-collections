@@ -1,0 +1,24 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+/*-------------------
+      Base Sizes
+--------------------*/
+/* This is the single variable that controls them all */
+@emSize: 12px;
+
+/* The size of page text  */
+@fontSize: 14px;
+
+
+/*-------------------
+        Colors
+--------------------*/
+@pageBackground: white;
+@segmentBackground: #f5f5f4;
+@disabledInputBackgroundColor: grey;
+
+@green: #1e8c45;
+@black: #2e2e2e;
+@blue: #1d78b2;

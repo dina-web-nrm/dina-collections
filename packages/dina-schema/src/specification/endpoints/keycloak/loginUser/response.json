@@ -1,0 +1,17 @@
+{
+  "description": "this is a desc",
+  "content": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "access_token": { "type": "string", "example": "xxxx" },
+      "expires_in": { "type": "integer", "example": 300 },
+      "not-before-policy": { "type": "integer", "example": 0 },
+      "refresh_expires_in": { "type": "integer", "example": 1800 },
+      "refresh_token": { "type": "string", "example": "xxxx" },
+      "session_state": { "type": "string", "example": "bearer" },
+      "token_type": { "type": "string", "example": "xxxx" }
+    },
+    "required": ["access_token"]
+  }
+}

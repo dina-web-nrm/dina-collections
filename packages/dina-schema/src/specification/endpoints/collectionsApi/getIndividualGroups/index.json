@@ -1,0 +1,31 @@
+{
+  "summary": "Finds individualGroups",
+  "path": "/collections/api/v01/individualGroups",
+  "method": "get",
+  "queryParams": {
+    "filter[catalogNumber]": {
+      "description": "catalog number used to filter individualGroups",
+      "required": false,
+      "schema": {
+        "type": "string"
+      },
+      "example": "123456"
+    },
+    "filter[identifiedTaxonNameStandardized]": {
+      "description": "Standardized taxon name used to filter individualGroups",
+      "required": false,
+      "schema": {
+        "type": "string"
+      },
+      "example": "Chironectes minimus"
+    },
+    "include": {
+      "description": "sub models to include in a comma separated list",
+      "required": false,
+      "schema": {
+        "type": "string"
+      },
+      "example": "physicalUnits.catalogedUnit,identifications"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "curatedLocalities": {
+      "description": "An array with curated localities",
+      "type": "array",
+      "items": { "$ref": "__ROOT__curatedLocality" }
+    },
+    "position": {
+      "description": "A specific position",
+      "type": "object",
+      "$ref": "__ROOT__position"
+    },
+    "polygon": {
+      "description": "A specific position",
+      "type": "object",
+      "$ref": "__ROOT__polygon"
+    },
+    "verticalPosition": {
+      "description": "A vertical position",
+      "type": "object",
+      "$ref": "__ROOT__verticalPosition"
+    },
+    "coordinatesVerbatim": {
+      "type": "string",
+      "description":
+        "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
+    },
+    "georeferenceSourcesText": {
+      "type": "string",
+      "description":
+        "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
+    },
+    "localityText": {
+      "type": "string",
+      "description": "TBA"
+    },
+    "localityRemarks": {
+      "type": "string",
+      "description": "Notes on the locality"
+    },
+    "localityVerbatim": {
+      "type": "string",
+      "description":
+        "Verbatim locality names and description, as in the original source, typos and all."
+    }
+  }
+}

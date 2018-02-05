@@ -1,0 +1,71 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the locality"
+    },
+    "versionId": {
+      "type": "string",
+      "description": "Id of the specific version"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "Timestamp corresponding to when created"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Some kind of reference to the individual that created the locality"
+    },
+    "updatedBy": {
+      "type": "string",
+      "description": "Some kind of reference to the individual that updated/created the specific version"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier that is consistent over time"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the locality"
+    },
+    "relations": {
+      "type": "array",
+      "description": "A relation to other curatedLocalities",
+      "items": { "$ref": "__ROOT__curatedLocalityRelation" }
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of locality",
+      "enum": [
+        "continent",
+        "country",
+        "district",
+        "geodeticDatum",
+        "locality",
+        "province",
+        "rubin"
+      ]
+    },
+    "centralPosition": {
+      "type": "object",
+      "description": "A position describing the center",
+      "$ref": "__ROOT__position"
+    },
+    "polygon": {
+      "type": "object",
+      "description": "A polygon describing the edges",
+      "$ref": "__ROOT__polygon"
+    },
+    "verticalPosition": {
+      "description": "A vertical position",
+      "type": "object",
+      "$ref": "__ROOT__verticalPosition"
+    }
+  },
+  "x-required": ["name", "id", "description", "type"]
+}

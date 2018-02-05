@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__batchItem" }
+    },
+    "uploadStarted": {
+      "type": "boolean"
+    },
+    "uploadCompleted": {
+      "type": "boolean"
+    },
+    "userId": {
+      "type": "boolean"
+    },
+    "nUploadedItems": {
+      "type": "integer"
+    },
+    "nValidItems": {
+      "type": "integer"
+    },
+    "nItems": {
+      "type": "integer"
+    }
+  }
+}

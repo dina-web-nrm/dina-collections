@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "type": "taxon",
+      "id": "13001562",
+      "attributes": {
+        "parent": {
+          "id": "13001537",
+          "scientific_name": "Mus",
+          "rank": "genus"
+        },
+        "rubin_number": "9472966",
+        "higherTaxa": {
+          "order": "Rodentia",
+          "suborder": "Myomorpha",
+          "infraorder": "",
+          "superfamily": "Muroidea",
+          "family": "Muridae",
+          "subfamily": "Murinae",
+          "tribe": "",
+          "genus": "Mus",
+          "subgenus": "Mus"
+        },
+        "rank": "species",
+        "scientific_name": "Mus musculus",
+        "author": "Linnaeus",
+        "author_date": "1758",
+        "valid_name": true,
+        "vernacular_names": {
+          "en": [
+            "House Mouse"
+          ]
+        },
+        "synonyms": "<i>albicans</i>  Billberg, 1827; <i>amurensis</i> Argyropulo, 1933;<i> arenarius </i>Migulin, 1938;<i> bicolor</i> Tichomirow and Kortchagin, 1889; <i>borealis</i> Ognev, 1924;<i> decolor</i> Argyropulo, 1932;<i> funereus</i> Ognev, 1924; <i>gansuensis</i> Satunin, 1902;<i> germanicus</i> Noack, 1918; <i>gilvus</i> Petényi, 1882; <i>hanuma</i><b> </b>Ognev, 1948; <i>hapsaliensis</i> Reinwaldt, 1927;<i> helvolus</i> Fitzinger, 1867 [<i>nomen nudum</i>];<i> heroldii</i> Krausse, 1922; <i>hortulanu",
+        "sort_order": "30-01562"
+      }
+    }
+  ],
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "meta": {
+    "source": "Mammal Species of the World",
+    "number_of_records_returned": 1
+  }
+}

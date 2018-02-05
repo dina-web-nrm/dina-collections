@@ -1,0 +1,6 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+@coloredBorderSize: 1px;
+@styledContentBackground: @segmentBackground;
+@styledInactiveTitleBackground: @pageBackground;

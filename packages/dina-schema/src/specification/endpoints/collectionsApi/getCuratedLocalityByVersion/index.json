@@ -1,0 +1,23 @@
+{
+  "summary": "Find latest version of a curatedLocality",
+  "path": "/collections/api/v01/curatedLocality/{id}/versions/${versionId}",
+  "method": "get",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "integer"
+      },
+      "description": "Curated locality id",
+      "required": true,
+      "example": 1
+    },
+    "versionId": {
+      "schema": {
+        "type": "integer"
+      },
+      "description": "Curated locality versionId",
+      "required": true,
+      "example": 1
+    }
+  }
+}
