@@ -1,0 +1,24 @@
+{
+  "ShortcutsDisplay": {
+    "header": {
+      "en": "Active keyboard shortcuts",
+      "sv": "Aktiva shortcuts"
+    },
+    "table": {
+      "header": {
+        "code": {
+          "en": "Command",
+          "sv": "Kommando"
+        },
+        "description": {
+          "en": "Description",
+          "sv": "Beskrivning"
+        },
+        "module": {
+          "en": "Module",
+          "sv": "Modul"
+        }
+      }
+    }
+  }
+}

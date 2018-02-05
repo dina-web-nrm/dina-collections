@@ -1,0 +1,18 @@
+{
+  "catalogNumber": {
+    "addCatalogNumberModal": {
+      "en": "<p>Enter a catalog number here only if the specimen already has one.</p>\n<p>If the record does not have a previous number, leave the catalog number empty and a number will automatically be added when you are saving the whole record.</p>\n",
+      "sv": "<p>Lägg till ett katalognummer här endast om exemplaret redan har ett.</p>\n<p>Om exemplaret inte har ett tidigare nummer, lämna katalognumret tomt så kommer ett nummer att läggas till automatiskt när du sparar formuläret.</p>\n"
+    }
+  },
+  "occurrences": {
+    "localityInformation": {
+      "helpTexts": {
+        "localityVerbatim": {
+          "en": "<p>Verbatim locality names and description, as in the original source, typos and all.</p>\n",
+          "sv": "<p>Verbatim namn och beskrivning av lokalitet, så som i originalkällan, med stavfel och allt.</p>\n"
+        }
+      }
+    }
+  }
+}

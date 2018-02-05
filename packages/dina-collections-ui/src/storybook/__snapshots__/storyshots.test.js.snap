@@ -1,0 +1,1599 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots coreModules/bootstrap/DefaultLoader Loading 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div>
+        <div
+          className="ui segment"
+        >
+          Some not loaded content 
+        </div>
+        <div
+          className="dina background"
+          style={
+            Object {
+              "height": "100%",
+              "left": 0,
+              "opacity": 0.7,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "transition": "opacity 0.5s",
+              "width": "100%",
+              "zIndex": 1000,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/bootstrap/DefaultLoader Not loading 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div>
+        <div
+          className="ui segment"
+        >
+          Some loaded content 
+        </div>
+        <div
+          className="dina background"
+          style={
+            Object {
+              "height": "100%",
+              "left": 0,
+              "opacity": 0,
+              "pointerEvents": "none",
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "transition": "opacity 0.5s",
+              "width": "100%",
+              "zIndex": 1000,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/bootstrap/DefaultWrapper Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "minHeight": "100vh",
+            }
+          }
+        >
+          <div
+            className="ui segment"
+          >
+            Wrapped content (DefaultWrapper ensure full height )
+          </div>
+        </div>
+        <p>
+          After DefaultWrapper
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/commonUi/Footer Default 1`] = `
+<div>
+  <div
+    className="ui inverted vertical segment"
+    id="footer"
+    style={
+      Object {
+        "padding": "5em 0em",
+      }
+    }
+  >
+    <div
+      className="ui container"
+    >
+      <div
+        className="ui inverted stackable divided grid"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="three wide column"
+          >
+            <h4
+              className="ui inverted header"
+            >
+              Site
+            </h4>
+            <div
+              className="ui large inverted link list"
+              role="list"
+            >
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="home icon"
+                  />
+                  <a
+                    aria-current="true"
+                    className="active"
+                    href="/"
+                    onClick={[Function]}
+                    style={Object {}}
+                  >
+                    Start
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="user icon"
+                  />
+                  <a
+                    aria-current={false}
+                    className={undefined}
+                    href="/login"
+                    onClick={[Function]}
+                    style={undefined}
+                  >
+                    Login
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="database icon"
+                  />
+                  <a
+                    aria-current={false}
+                    className={undefined}
+                    href="/docs"
+                    onClick={[Function]}
+                    style={undefined}
+                  >
+                    Data model
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="three wide column"
+          >
+            <h4
+              className="ui inverted header"
+            >
+              Documentation
+            </h4>
+            <div
+              className="ui large inverted link list"
+              role="list"
+            >
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="wikipedia icon"
+                  />
+                  <a
+                    href="https://www.dina-project.net/wiki/Welcome_to_the_DINA_project!"
+                  >
+                    DINA wiki
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="database icon"
+                  />
+                  <a
+                    aria-current={false}
+                    className={undefined}
+                    href="/docs"
+                    onClick={[Function]}
+                    style={undefined}
+                  >
+                    Data model
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="three wide column"
+          >
+            <h4
+              className="ui inverted header"
+            >
+              Developer
+            </h4>
+            <div
+              className="ui large inverted link list"
+              role="list"
+            >
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="github icon"
+                  />
+                  <a
+                    href="https://github.com/DINA-Web"
+                  >
+                    DINA-Web Github
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <a
+                    href="https://github.com/DINA-Web/dina-collections-ui"
+                  >
+                    <i
+                      aria-hidden="true"
+                      className="github icon"
+                    />
+                    Collections ui Github
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external icon"
+                  />
+                  <a
+                    href="https://alpha-style.dina-web.net/"
+                  >
+                    Style guide
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external icon"
+                  />
+                  <a
+                    href="https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/openApi.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0"
+                  >
+                    Api documentation
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external icon"
+                  />
+                  <a
+                    href="/storybook/index.html"
+                  >
+                    Component documentation
+                  </a>
+                </div>
+              </div>
+              <div
+                className="item"
+                data-value={undefined}
+                onClick={[Function]}
+                role="listitem"
+              >
+                <div
+                  className="content"
+                >
+                  <i
+                    aria-hidden="true"
+                    className="external icon"
+                  />
+                  <a
+                    href="/coverage/index.html"
+                  >
+                    Test coverage
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/commonUi/NavigationSidebar Default 1`] = `
+<div>
+  <div
+    className="ui inverted vertical labeled icon ui overlay left visible sidebar flex menu"
+    style={
+      Object {
+        "overflow": "hidden",
+        "width": 100,
+      }
+    }
+  >
+    <a
+      aria-current={false}
+      className="item"
+      href="/app"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <i
+        aria-hidden="true"
+        className="home large icon"
+      />
+      <span>
+        Start
+      </span>
+    </a>
+    <a
+      aria-current={false}
+      className="item"
+      href="/app/mammals/register"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <i
+        aria-hidden="true"
+        className="plus large icon"
+      />
+      <span>
+        Register mammal
+      </span>
+    </a>
+    <a
+      aria-current={false}
+      className="item"
+      href="/app/mammals/lookup"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <i
+        aria-hidden="true"
+        className="search large icon"
+      />
+      <span>
+        Lookup mammals
+      </span>
+    </a>
+    <a
+      aria-current={false}
+      className="item push bottom"
+      href="/app/settings"
+      onClick={[Function]}
+      style={undefined}
+    >
+      <i
+        aria-hidden="true"
+        className="setting large icon"
+      />
+      <span>
+        Settings
+      </span>
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="sign out icon"
+      />
+      <span>
+        Logout
+      </span>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui container"
+        style={
+          Object {
+            "minHeight": "100vh",
+            "paddingBottom": 30,
+            "paddingTop": 61.5,
+          }
+        }
+      >
+        <div>
+          Page content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/commonUi/PageTemplate No fixed menu 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui container"
+        style={
+          Object {
+            "minHeight": "100vh",
+            "paddingBottom": 30,
+            "paddingTop": 30,
+          }
+        }
+      >
+        <div>
+          Page content
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/commonUi/TranslatedLabel Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui green label"
+        onClick={[Function]}
+      >
+        <span>
+          key-without-translations
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/commonUi/ViewWrap Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        style={
+          Object {
+            "bottom": "100%",
+            "left": 0,
+            "minHeight": "100%",
+            "minWidth": "100%",
+            "paddingLeft": 0,
+            "position": "relative",
+            "top": 0,
+            "transition": "transform 0.2s",
+            "zIndex": 1,
+          }
+        }
+      >
+        <div
+          className="dimmable"
+        >
+          <div
+            className="ui dimmer"
+            onClick={[Function]}
+          />
+          <div
+            className="ui fluid dina background"
+            style={
+              Object {
+                "overflow": "hidden",
+              }
+            }
+          >
+            <div>
+              View wrap content
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/error/FormFieldError Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        style={
+          Object {
+            "backgroundColor": "#e5e2e2",
+            "minHeight": 50,
+          }
+        }
+      >
+        <span
+          className="ui red tiny label"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "textAlign": "left",
+              "transform": "translateY(100%)",
+              "width": "100%",
+              "zIndex": 20,
+            }
+          }
+        >
+          <span>
+            Modules.error.some-scope.SAMPLE_ERROR_CODE, modules.error.SAMPLE_ERROR_CODE
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/error/FormSchemaError Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui negative message"
+      >
+        <div
+          className="ui red tiny labels"
+        >
+          <div
+            className="ui label"
+            onClick={[Function]}
+          >
+            <span>
+              Modules.error.some-scope.SAMPLE_ERROR_CODE, modules.error.SAMPLE_ERROR_CODE
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/form/Checkbox Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <div
+          className="ui fitted checkbox"
+          onChange={[Function]}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          scope="some-scope"
+        >
+          <input
+            checked={false}
+            className="hidden"
+            id={undefined}
+            name={undefined}
+            onClick={[Function]}
+            readOnly={true}
+            tabIndex={0}
+            type="checkbox"
+            value={undefined}
+          />
+          <label
+            htmlFor={undefined}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/form/Input Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <label
+          htmlFor="inputName"
+        >
+          This is a label
+        </label>
+        <div
+          className="ui input"
+          scope="some-scope"
+        >
+          <input
+            autoComplete={undefined}
+            disabled={undefined}
+            name="inputName"
+            onChange={[Function]}
+            placeholder={undefined}
+            tabIndex={undefined}
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/I18nProvider Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div>
+        <div>
+          Child node
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        aria-busy={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-multiselectable={undefined}
+        className="ui button floating labeled dropdown icon"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        role="listbox"
+        tabIndex={0}
+      >
+        <div
+          aria-live="polite"
+          className="text"
+          role="alert"
+        >
+          en
+        </div>
+        <i
+          aria-hidden="true"
+          className="world icon"
+          onClick={[Function]}
+        />
+        <div
+          className="menu transition"
+        >
+          <div
+            aria-checked={true}
+            aria-disabled={undefined}
+            aria-selected={true}
+            className="active selected item"
+            onClick={[Function]}
+            role="option"
+            style={
+              Object {
+                "pointerEvents": "all",
+              }
+            }
+          >
+            <span
+              className="text"
+            >
+              en
+            </span>
+          </div>
+          <div
+            aria-checked={false}
+            aria-disabled={undefined}
+            aria-selected={false}
+            className="item"
+            onClick={[Function]}
+            role="option"
+            style={
+              Object {
+                "pointerEvents": "all",
+              }
+            }
+          >
+            <span
+              className="text"
+            >
+              sv
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/LanguageSelect Green color 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        aria-busy={undefined}
+        aria-disabled={undefined}
+        aria-expanded={false}
+        aria-multiselectable={undefined}
+        className="ui button floating labeled dropdown icon green"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        role="listbox"
+        tabIndex={0}
+      >
+        <div
+          aria-live="polite"
+          className="text"
+          role="alert"
+        >
+          en
+        </div>
+        <i
+          aria-hidden="true"
+          className="world icon"
+          onClick={[Function]}
+        />
+        <div
+          className="menu transition"
+        >
+          <div
+            aria-checked={true}
+            aria-disabled={undefined}
+            aria-selected={true}
+            className="active selected item"
+            onClick={[Function]}
+            role="option"
+            style={
+              Object {
+                "pointerEvents": "all",
+              }
+            }
+          >
+            <span
+              className="text"
+            >
+              en
+            </span>
+          </div>
+          <div
+            aria-checked={false}
+            aria-disabled={undefined}
+            aria-selected={false}
+            className="item"
+            onClick={[Function]}
+            role="option"
+            style={
+              Object {
+                "pointerEvents": "all",
+              }
+            }
+          >
+            <span
+              className="text"
+            >
+              sv
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Markdown Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>Detta är kompilerad markdown</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Markdown Fallback language 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<p>This is compiled markdown in fallback language en</p>",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/MarkdownToHtmlAsync Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/ModuleTranslate Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        förnamn
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/ModuleTranslate Multiple modules 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        förnamn
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/ModuleTranslate Not existing 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        modules.notExisting.firstName
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Translate Capitalize 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        Efternamn
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Translate Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        förnamn
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Translate Fallback 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        This is fallback
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Translate Interpolation 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        Hej Anton
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Translate Multiple keys 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        Efternamn
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/Translate No translation available 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        non-existing
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/createModuleTranslate Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        förnamn
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/i18n/createModuleTranslate Not existing 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <span>
+        modules.notExisting.firstName
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/Flash Default 1`] = `
+<div>
+  <div
+    className="ui info message flash"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        headerKey
+      </div>
+      <p>
+        descriptionKey
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/Flash Error 1`] = `
+<div>
+  <div
+    className="ui error message flash"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        headerKey
+      </div>
+      <p>
+        descriptionKey
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/Flash Info 1`] = `
+<div>
+  <div
+    className="ui info message flash"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        headerKey
+      </div>
+      <p>
+        descriptionKey
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/Flash Success 1`] = `
+<div>
+  <div
+    className="ui success message flash"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        headerKey
+      </div>
+      <p>
+        descriptionKey
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/Flash Warning 1`] = `
+<div>
+  <div
+    className="ui warning message flash"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="close icon"
+      onClick={[Function]}
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="header"
+      >
+        headerKey
+      </div>
+      <p>
+        descriptionKey
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/FormFieldHelpIcon Default 1`] = `
+<div>
+  <i
+    aria-hidden="true"
+    className="blue help circle outline link icon"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`Storyshots coreModules/notifications/NotificationDisplay Default 1`] = `<div />`;
+
+exports[`Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
+
+exports[`Storyshots coreModules/user/LoginForm Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form
+        action={undefined}
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="ui large stacked segment"
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "position": "relative",
+              }
+            }
+          >
+            <div
+              className="ui left icon input"
+              scope={undefined}
+            >
+              <input
+                autoComplete="off"
+                disabled={undefined}
+                name="username"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="Username"
+                tabIndex={undefined}
+                type="text"
+                value=""
+              />
+              <i
+                aria-hidden="true"
+                className="user icon"
+              />
+            </div>
+          </div>
+          <div
+            className="field"
+            style={
+              Object {
+                "position": "relative",
+              }
+            }
+          >
+            <div
+              className="ui left icon input"
+              scope={undefined}
+            >
+              <input
+                autoComplete="off"
+                disabled={undefined}
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onDragStart={[Function]}
+                onDrop={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                tabIndex={undefined}
+                type="password"
+                value=""
+              />
+              <i
+                aria-hidden="true"
+                className="lock icon"
+              />
+            </div>
+          </div>
+          <button
+            className="ui green large fluid disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+            type="submit"
+          >
+            <span>
+              Log in
+            </span>
+          </button>
+          
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
