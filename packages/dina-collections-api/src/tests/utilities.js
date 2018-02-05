@@ -3,12 +3,14 @@ const path = require('path')
 const dotenv = require('dotenv')
 require('isomorphic-fetch')
 
-const jsonApiSchema = require('../../utilities/apiClient/schemas/jsonApi')
-const { createSystemModelSchemaValidator } = require('../../utilities/error')
-const createEndpoint = require('../../utilities/endpointFactory/server')
-const createApiClient = require('../../utilities/apiClient')
+const jsonApiSchema = require('dina-collections-ui/src/utilities/apiClient/schemas/jsonApi')
+const {
+  createSystemModelSchemaValidator,
+} = require('dina-collections-ui/src/utilities/error')
+const createEndpoint = require('dina-collections-ui/src/utilities/endpointFactory/server')
+const createApiClient = require('dina-collections-ui/src/utilities/apiClient')
 
-const dotEnvPath = path.join(__dirname, '../../../.env.test.local')
+const dotEnvPath = path.join(__dirname, '../../.env.test.local')
 
 const {
   REACT_APP_TEST_API_URL: apiUrl,

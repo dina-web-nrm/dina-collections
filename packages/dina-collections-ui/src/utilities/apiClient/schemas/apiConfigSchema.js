@@ -1,4 +1,4 @@
-const apiConfigSchema = {
+module.exports = {
   additionalProperties: false,
   properties: {
     baseUrl: {
@@ -48,5 +48,3 @@ const apiConfigSchema = {
   },
   required: ['validateInput', 'validateOutput'],
 }
-
-export default apiConfigSchema
