@@ -3,7 +3,15 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "yarn build:dina-collections-ui",
+    "build:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn build && yarn build:storybook",
+    "build:dina-collections-ui:mock": "cd ./packages/dina-collections-ui && yarn build:mock && yarn build:storybook",
+    "install": "yarn install:dina-collections-ui",
+    "install:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn install",
+    "test": "yarn test:dina-collections-ui",
+    "test:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn test:coverage"
+  },
   "contributors": [
     "Anton Öberg <oberg.anton@gmail.com>",
     "Fredrik Olovsson <fogithub@gmail.com>"
