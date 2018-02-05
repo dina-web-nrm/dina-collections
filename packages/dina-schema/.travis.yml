@@ -1,0 +1,26 @@
+language: node_js
+
+services:
+  - docker
+
+before_install:
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
+- export PATH="$HOME/.yarn/bin:$PATH"
+- mkdir ./docs
+
+cache: yarn
+
+script:
+  - yarn build
+  - yarn test
+
+after_success:
+  - export PUSH_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo ""; fi)
+  - echo "after_success"
+  - if [ "$PUSH_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker build -t dina-schema .;
+    docker tag dina-schema dina/dina-schema;
+    docker push dina/dina-schema;
+    fi
+

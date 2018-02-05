@@ -1,0 +1,13 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "target": {
+      "type": "object",
+      "$ref": "__ROOT__curatedLocality"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["inside", "overlap", "border"]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "description": "this is a desc for request",
+  "body": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "type": {
+            "type": "string",
+            "example": "individualGroup",
+            "default": "individualGroup"
+          },
+          "attributes": {
+            "$ref": "__ROOT__individualGroup"
+          }
+        }
+      }
+    }
+  }
+}

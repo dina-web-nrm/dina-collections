@@ -1,0 +1,24 @@
+{
+  "summary": "Fetches taxa by name",
+  "path": "/taxon",
+  "method": "get",
+  "queryParams": {
+    "filter[name]": {
+      "description": "Taxon name - accepted scientific, synonym or vernacular name",
+      "required": true,
+      "schema": {
+        "type": "string"
+      },
+      "example": "Alces alces"
+    },
+    "search_type": {
+      "description": "Search type - exact (default) or partial",
+      "required": false,
+      "schema": {
+        "type": "string",
+        "enum": ["exact", "partial"]
+      },
+      "example": "exact"
+    }
+  }
+}

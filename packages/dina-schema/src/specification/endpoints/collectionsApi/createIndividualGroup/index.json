@@ -1,0 +1,5 @@
+{
+  "summary": "Create an individual group and a catalogUnit if not existing",
+  "path": "/collections/api/v01/individualGroups",
+  "method": "post"
+}

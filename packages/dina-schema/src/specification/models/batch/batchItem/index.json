@@ -1,0 +1,22 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "data": {
+      "type": "object",
+      "description": "Should have a one of condition"
+    },
+    "model": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "type": "string"
+    },
+    "uploaded": {
+      "type": "boolean"
+    },
+    "isValid": {
+      "type": "boolean"
+    }
+  }
+}

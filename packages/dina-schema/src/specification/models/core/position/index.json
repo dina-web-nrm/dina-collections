@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "description": "A position represent a specific position",
+  "properties": {
+    "latitude": {
+      "type": "string",
+      "description":
+        "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere."
+    },
+    "longitude": {
+      "type": "string",
+      "description":
+        "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere."
+    },
+    "geodeticDatum": {
+      "type": "string",
+      "description": "Geodetic datum wip"
+    },
+    "uncertaintyInMeters": {
+      "type": "integer",
+      "description": "Coordinate uncertainty in meters"
+    }
+  },
+  "x-required": ["name", "id", "description", "type"]
+}
+
+
+

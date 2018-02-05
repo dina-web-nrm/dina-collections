@@ -1,0 +1,15 @@
+{
+  "summary": "Update an individual group by id",
+  "path": "/collections/api/v01/individualGroups/{id}",
+  "method": "patch",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "integer"
+      },
+      "description": "Individual group id",
+      "required": true,
+      "example": 1
+    }
+  }
+}

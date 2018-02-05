@@ -1,0 +1,17 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "alternateIdentifiersText": {
+      "type": "string",
+      "example": "Skin complete, prepared"
+    },
+    "catalogedUnit": { "$ref": "__ROOT__catalogedUnit" },
+    "id": { "type": "string" },
+    "individualGroup": { "$ref": "__ROOT__individualGroup" },
+    "normalStorageLocationText": { "type": "string" },
+    "physicalUnitText": {
+      "type": "string",
+      "example": "Skin complete, prepared"
+    }
+  }
+}

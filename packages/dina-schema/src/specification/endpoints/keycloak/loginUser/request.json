@@ -1,0 +1,14 @@
+{
+  "description": "this is a desc for request",
+  "body": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "client_id": { "type": "string", "example": "dina-reset" },
+      "grant_type": { "type": "string", "example": "password" },
+      "password": { "type": "string", "example": "xxxxx" },
+      "username": { "type": "string", "example": "john doe" }
+    },
+    "required": ["client_id", "grant_type", "password", "username"]
+  }
+}
