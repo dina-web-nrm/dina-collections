@@ -60,7 +60,7 @@
     "object-path": "^0.11.4",
     "object-path-immutable": "^0.5.2",
     "pg": "^7.4.1",
-    "prettier": "^1.7.2",
+    "prettier": "1.8.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-addons-css-transition-group": "^15.6.2",
