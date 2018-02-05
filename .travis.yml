@@ -35,7 +35,7 @@ after_success:
   - if [ "$PUSH_BRANCH" == "next" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
     echo "Start dina-collections-ui mock build";
-    docker build -t dina-collections-ui-mock .;
+    docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui-mock ./packages/dina-collections-ui;
     docker tag dina-collections-ui-mock dina/dina-collections-ui-mock;
     docker push dina/dina-collections-ui-mock;
     fi
@@ -43,7 +43,7 @@ after_success:
   - if [ "$PUSH_BRANCH" == "master" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
     echo "Start dina-collections-ui build";
-    docker build -t dina-collections-ui .;
+    docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui ./packages/dina-collections-ui;
     docker tag dina-collections-ui dina/dina-collections-ui;
     docker push dina/dina-collections-ui;
     fi
