@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all -p build:dina-collections-ui build:dina-schema",
+    "build": "npm-run-all -p build:dina-collections-ui build:dina-schema dina-semantic-ui",
     "build:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn build && yarn build:storybook",
     "build:dina-collections-ui:mock": "cd ./packages/dina-collections-ui && yarn build:mock && yarn build:storybook",
     "build:dina-schema": "cd ./packages/dina-schema && yarn build",
-    "install": "yarn install:dina-collections-ui && yarn install:dina-schema",
+    "build:dina-semantic-ui": "cd ./packages/dina-semantic-ui && yarn build",
+    "install": "yarn install:dina-schema && yarn install:dina-semantic-ui && yarn install:dina-collections-ui",
     "install:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn install",
     "install:dina-schema":  "cd ./packages/dina-schema && yarn install",
+    "install:dina-semantic-ui":  "cd ./packages/dina-semantic-ui && yarn install",
     "test": "yarn test:dina-collections-ui",
     "test:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn test:coverage",
     "test:dina-schema": "cd ./packages/dina-schema && yarn test"
