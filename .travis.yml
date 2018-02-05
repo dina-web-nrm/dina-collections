@@ -20,14 +20,14 @@ before_script:
 script:
   # will run tests in all repos
   - yarn test
-  - yarn build:dina-schema
-  - yarn build:dina-semantic-ui
   # when merging to the next branch only build dina-collections-ui:mock
   - if [ "$PUSH_BRANCH" == "next" ]; then
     yarn build:dina-collections-ui:mock;
     fi
   # when merging to the master branch build all apps
   - if [ "$PUSH_BRANCH" == "master" ]; then
+    yarn build:dina-schema;
+    yarn build:dina-semantic-ui;
     yarn build:dina-collections-ui;
     fi
 
