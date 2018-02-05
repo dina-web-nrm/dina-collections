@@ -1,0 +1,14 @@
+{
+  "body": {
+    "en": "Welcome, welcome here, whoever you are",
+    "sv": "Välkommen, välkommen hit, vem du än är"
+  },
+  "markdownTranslation": {
+    "en": "Markdown translation",
+    "sv": "Markdown-översättning"
+  },
+  "regularTranslation": {
+    "en": "Regular translation",
+    "sv": "Vanlig översättning"
+  }
+}

@@ -1,0 +1,1 @@
+Verbatim locality names and description, as in the original source, typos and all.

@@ -1,0 +1,50 @@
+{
+  "Navbar": {
+    "logout": {
+      "en": "logout",
+      "sv": "logga ut"
+    }
+  },
+  "routes": {
+    "home": {
+      "en": "start",
+      "sv": "start"
+    },
+    "about": {
+      "en": "about",
+      "sv": "om"
+    },
+    "editMammal": {
+      "en": "Edit mammal",
+      "sv": "Redigera däggdjur"
+    },
+    "lookupMammals": {
+      "en": "Lookup mammals",
+      "sv": "Sök däggdjur"
+    },
+    "registerMammal": {
+      "en": "Register mammal",
+      "sv": "Registrera däggdjur"
+    },
+    "settings": {
+      "en": "settings",
+      "sv": "inställningar"
+    },
+    "dynamic": {
+      "en": "dynamic",
+      "sv": "dynamisk"
+    },
+    "overview": {
+      "en": "overview",
+      "sv": "översikt"
+    },
+    "versions": {
+      "en": "versions",
+      "sv": "versioner"
+    },
+    "models": {
+      "en": "models",
+      "sv": "modeller"
+    }
+  }
+}

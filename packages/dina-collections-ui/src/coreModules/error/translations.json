@@ -1,0 +1,28 @@
+{
+  "schemaErrors": {
+    "ADDITIONAL_PROPERTIES": {
+      "en": "Form contains unknown properties: {{fullPath}}: {{additionalProperty}}",
+      "sv": "Formuläret innehåller okända fält: {{fullPath}}: {{additionalProperty}}"
+    },
+    "REQUIRED": {
+      "en": "Required: {{fullPath}}",
+      "sv": "Obligatorisk: {{fullPath}}"
+    }
+  },
+  "pattern": {
+    "en": "Does not match required pattern",
+    "sv": "Matchar inte det begärda mönstret"
+  },
+  "MIN_LENGTH": {
+    "en": "Must be at least {{limit}} characters",
+    "sv": "Måste vara minst {{limit}} tecken"
+  },
+  "MAX_LENGTH": {
+    "en": "May be at most {{limit}} characters",
+    "sv": "Får max vara {{limit}} tecken"
+  },
+  "REQUIRED": {
+    "en": "Required",
+    "sv": "Obligatorisk"
+  }
+}

@@ -1,0 +1,8 @@
+export const COLLISION_REPLACE = 'replace'
+export const COLLISION_STACK = 'stack'
+export const FIXED = 'fixed'
+export const MODULE_NAME = 'notifications'
+export const NOTIFICATIONS = 'notifications'
+export const NOTIFICATION_SPECIFICATIONS = 'specifications'
+export const INLINE = 'inline'
+export const STATIC = 'static'

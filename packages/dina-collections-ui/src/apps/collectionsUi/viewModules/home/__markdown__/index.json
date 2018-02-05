@@ -1,0 +1,14 @@
+{
+  "footer": {
+    "links": {
+      "en": "<p><a href=\"http://www.google.com\">google</a></p>\n",
+      "sv": "<p><a href=\"www.google.se\">google</a></p>\n"
+    }
+  },
+  "introduction": {
+    "hero": {
+      "en": "<h3>Using markdown</h3>\n<ul>\n<li>much cool</li>\n<li>such wow</li>\n</ul>\n",
+      "sv": "<h3>Använder markdown</h3>\n<ul>\n<li>mycket cool</li>\n<li>så wow</li>\n</ul>\n"
+    }
+  }
+}
