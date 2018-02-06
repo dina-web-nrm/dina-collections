@@ -58,4 +58,9 @@ after_success:
     docker build -f ./packages/dina-semantic-ui/Dockerfile -t dina-semantic-ui-docs ./packages/dina-semantic-ui;
     docker tag dina-semantic-ui-docs dina/dina-semantic-ui-docs;
     docker push dina/dina-semantic-ui-docs;
+
+    echo "Start dina-collections-api build";
+    docker build -f ./packages/dina-collections-api/Dockerfile -t dina-collections-api ./packages;
+    docker tag dina-collections-api dina/dina-collections-api;
+    docker push dina/dina-collections-api;
     fi
