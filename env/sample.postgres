@@ -1,0 +1,4 @@
+DB_NAME=some-postgres
+DB_PASS=mysecretpassword
+POSTGRES_PASSWORD=mysecretpassword
+POSTGRES_DB=postgres

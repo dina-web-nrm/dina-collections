@@ -1,0 +1,75 @@
+version: '3.4'
+services:
+  dockerhub-hook:
+    image: maccyber/micro-dockerhub-hook
+    ports:
+      - "8004:3000"
+    env_file:
+      - ./env/.docker-hook
+    volumes:
+      - ./docker-hooks:/src/scripts
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/var/dina-collections-docker
+  ui:
+    image: dina/dina-collections-ui
+    container_name: dina-collections-ui
+    expose:
+    - "80"
+    env_file:
+      - ./env/.ui
+    command: /bin/bash -c "envsubst '$$NGINX_TAXONOMY_API_BASE_URL $$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  ui-mock:
+    image: dina/dina-collections-ui-mock
+    container_name: dina-collections-ui-mock
+    expose:
+    - "80"
+    env_file:
+      - ./env/.ui-mock
+    command: /bin/bash -c "envsubst '$$NGINX_TAXONOMY_API_BASE_URL $$NGINX_API_BASE_URL $$NGINX_HOST $$NGINX_PORT $$NGINX_AUTH_BASE_URL' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  style:
+    image: dina/dina-semantic-ui-docs
+    container_name: dina-semantic-ui-docs
+    expose:
+    - "80"
+    env_file:
+      - ./env/.style
+    command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+  dina-schema:
+    image: dina/dina-schema
+    container_name: dina-schema
+    expose:
+    - "80"
+    env_file:
+      - ./env/.schema
+    command: /bin/bash /usr/share/nginx/docker-run.sh
+
+  api:
+    image: dina-collections-api
+    container_name: dina-api
+    expose:
+    - "80"
+    env_file:
+      - ./env/.api
+    command: pm2-runtime start /etc/dina-collections-api/src/server/index.js
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    env_file:
+      - ./env/.postgres
+    restart: always
+    container_name: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  default:
+    external:
+      name: dwproxy_default
+
+volumes:
+  postgres_data:
+    name: collections-postgres-data
+
+

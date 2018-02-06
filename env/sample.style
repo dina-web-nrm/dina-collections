@@ -1,0 +1,3 @@
+VIRTUAL_HOST=local-style.dina-web.net
+NGINX_HOST=local-style.dina-web.net
+NGINX_PORT=80
