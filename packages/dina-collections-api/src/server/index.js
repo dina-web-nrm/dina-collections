@@ -2,14 +2,11 @@ const openApiSpec = require('dina-schema/build/openApi.json')
 const createLog = require('./../utilities/log')
 const createApi = require('./../lib/api')
 const createApp = require('./../lib/app')
-const createConfig = require('./config')
+const config = require('../../config')
 const bootstrapPostgres = require('./../lib/postgres')
 const createKeycloak = require('./../lib/auth/keycloak')
 
-const config = createConfig()
-
 const log = createLog('server')
-
 const modules = require('./modules')
 
 bootstrapPostgres({
