@@ -5,9 +5,7 @@ RUN apk update && apk add bash
 # Bundle APP files
 # Note that context need to be packages
 COPY dina-collections-api /etc/dina-collections-api/
-COPY dina-schema /etc/dina-schema/
-COPY dina-collections-ui /etc/dina-collections-ui/
-COPY dina-semantic-ui /etc/dina-semantic-ui/
+COPY dina-shared /etc/dina-shared/
 
 # Install app dependencies
 ENV NPM_CONFIG_LOGLEVEL warn

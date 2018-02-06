@@ -1,4 +1,4 @@
-const createResponse = require('dina-collections-ui/src/utilities/apiClient/createResponse')
+const createResponse = require('dina-shared/src/utilities/apiClient/createResponse')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('operationMiddleware')

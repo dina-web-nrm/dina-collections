@@ -1,11 +1,13 @@
 /* eslint-disable no-console, class-methods-use-this */
+import config from 'config'
+
 export const PRIVATE_NAMESPACE = '_dependor'
 
 const getKey = key => {
   return `${PRIVATE_NAMESPACE}-${key}`
 }
 
-const testing = process.env.NODE_ENV === 'test'
+const testing = config.isTest
 
 const Dependor = class Dependor {
   constructor(dependencies = {}) {

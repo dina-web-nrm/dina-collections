@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Model from './Model'
 import Property from './Property'
 
-const specifications = require('dina-schema/build/versions')
+const specifications = require('dina-shared/dist/versions')
 
 const propTypes = {
   match: PropTypes.shape({

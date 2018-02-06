@@ -5,7 +5,7 @@ const onlyCatalogedUnit = {
     additionalData: [
       {
         attributes: {
-          catalogNumber: 'abc123',
+          catalogNumber: '444123',
         },
         type: 'catalogedUnit',
       },
@@ -19,7 +19,7 @@ const allAttributesAsEmptyArrays = {
   data: {
     additionalData: [
       {
-        attributes: { catalogNumber: 'fefefe' },
+        attributes: { catalogNumber: '222123' },
         type: 'catalogedUnit',
       },
     ],
@@ -85,7 +85,9 @@ const badRequestMissingCatalogNumber = {
   data: {
     additionalData: [
       {
-        attributes: {},
+        attributes: {
+          catalogNumber: '1234',
+        },
         type: 'catalogedUnit',
       },
     ],

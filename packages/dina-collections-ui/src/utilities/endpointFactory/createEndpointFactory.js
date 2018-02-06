@@ -1,4 +1,4 @@
-const openApiSpec = require('dina-schema/build/openApi.json')
+const openApiSpec = require('dina-shared/dist/openApi.json')
 const { createSystemModelSchemaValidator } = require('../error')
 const createMockGenerator = require('../jsonSchema/createMockGenerator')
 

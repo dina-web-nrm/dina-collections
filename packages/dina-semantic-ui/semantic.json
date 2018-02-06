@@ -8,10 +8,10 @@
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "dist/",
-      "uncompressed": "dist/components/",
-      "compressed": "dist/components/",
-      "themes": "dist/themes/"
+      "packaged": "../dina-shared/dist/",
+      "uncompressed": "../dina-shared/dist/components/",
+      "compressed": "../dina-shared/dist/components/",
+      "themes": "../dina-shared/dist/themes/"
     },
     "clean": "dist/"
   },

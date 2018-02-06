@@ -31,6 +31,8 @@ script:
     yarn build:dina-collections-ui;
     fi
 
+  - yarn uninstall
+
 # split this into before deploy and deploy later
 after_success:
   # when next create docker image for dina-collections-ui-mock

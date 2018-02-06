@@ -1,3 +1,7 @@
+const dotenv = require('dotenv')
+
+dotenv.config()
+
 const api = {
   mock: {
     active: true,
@@ -8,10 +12,10 @@ const api = {
 }
 
 const db = {
-  url: process.env.DB_URL || '127.0.0.1:5432',
   database: process.env.DB_DATABASE || 'postgres',
   flushOnRestart: false,
   password: process.env.DB_PASSWORD || 'mysecretpassword',
+  url: process.env.DB_URL || '127.0.0.1:5432',
   username: process.env.DB_USERNAME || 'postgres',
 }
 
@@ -32,9 +36,17 @@ const log = {
   outgoingResponse: true,
 }
 
+const test = {
+  testApiUrl: process.env.TEST_API_URL || 'http://localhost:4444',
+  testAuthUrl: process.env.TEST_AUTH_URL || 'https://alpha-cm.dina-web.net',
+  testPassword: process.env.TEST_PASSWORD || 'xxxx',
+  testUsername: process.env.TEST_USERNAME || 'xxxx',
+}
+
 module.exports = {
   api,
   auth,
   db,
   log,
+  test,
 }

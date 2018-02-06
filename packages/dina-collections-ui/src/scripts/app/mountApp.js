@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import config from 'config'
+
 const fs = require('fs')
 const path = require('path')
 
@@ -9,7 +11,7 @@ const availableApps = fs.readdirSync(appsFolder).filter(name => {
   return name[0] !== '.'
 })
 
-const mountApp = process.env.MOUNT_APP
+const { mountApp } = config
 
 if (availableApps.indexOf(mountApp) === -1) {
   throw new Error(`Cant mount app: ${mountApp}. App does not exist`)

@@ -57,7 +57,7 @@ const ensureDirectoryExistence = dirPath => {
 }
 
 module.exports = function build({ version = '', setCurrent } = {}) {
-  const buildDirectory = path.join(__dirname, '../../build')
+  const buildDirectory = path.join(__dirname, '../../../dina-shared/dist')
   const versionsBaseDirectory = path.join(buildDirectory, 'versions')
   const baseDirectory = version
     ? path.join(versionsBaseDirectory, version)

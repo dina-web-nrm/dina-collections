@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
-import specification from 'dina-schema/build/openApi.json'
+import specification from 'dina-shared/dist/openApi.json'
 import { NavigationSidebar } from 'coreModules/commonUi/components'
 
 import createModelLink from '../utilities/createModelLink'
