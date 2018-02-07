@@ -21,7 +21,7 @@
       "xfwd": true
     },
     "/collections": {
-      "target": "https://alpha-api.dina-web.net/",
+      "target": "http://127.0.0.1:4444",
       "xfwd": true,
       "changeOrigin": true
     }
