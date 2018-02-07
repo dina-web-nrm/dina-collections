@@ -45,7 +45,7 @@
     "stop:watch": "pm2 stop postgres-server",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
     "test:unit": "jest --env=node",
-    "test:api": "API_TESTS=true jest --env=node ./src/__tests__/index.js",
+    "test:api": "API_TESTS=true jest --env=node",
     "test:depcheck": "depcheck . --ignores=pg"
   },
   "engines": {

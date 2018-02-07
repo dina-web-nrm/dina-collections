@@ -1,4 +1,5 @@
-const { makeTestCall } = require('../utilities')
+const apiDescribe = require('../../../utilities/test/apiDescribe')
+const { makeTestCall } = require('../../../utilities/test/testApiClient')
 
 const simpleCuratedLocality = {
   data: {
@@ -21,7 +22,7 @@ const simpleCuratedLocalityUpdate = {
 
 // const UNEXPECTED_SUCCESS = 'Call successfull but should have failed'
 
-describe('curatedLocality', () => {
+apiDescribe('curatedLocality', () => {
   let authToken
   beforeEach(() => {
     authToken = 1234

@@ -1,4 +1,5 @@
-const { makeTestCall } = require('../utilities')
+const apiDescribe = require('../../../utilities/test/apiDescribe')
+const { makeTestCall } = require('../../../utilities/test/testApiClient')
 
 const onlyCatalogedUnit = {
   data: {
@@ -245,7 +246,7 @@ const fullFormExample = {
 
 const UNEXPECTED_SUCCESS = 'Call successfull but should have failed'
 
-describe('individualGroup', () => {
+apiDescribe('individualGroup', () => {
   let authToken
   beforeEach(() => {
     authToken = 1234
