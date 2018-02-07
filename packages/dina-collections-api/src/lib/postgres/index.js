@@ -14,15 +14,15 @@ const syncModels = ({ config, models }) => {
   )
 }
 
-module.exports = function bootstrapDatalayer({ config, modules }) {
+module.exports = function bootstrapDatalayer({ apis, config }) {
   return Promise.resolve().then(() => {
     return createDb({ config }).then(sequelize => {
-      return createModels({ config, modules, sequelize }).then(models => {
+      return createModels({ apis, config, sequelize }).then(models => {
         return syncModels({ config, models }).then(() => {
           return createControllers({
+            apis,
             config,
             models,
-            modules,
             sequelize,
           }).then(controllers => {
             return {
