@@ -17,7 +17,7 @@
     "install:dina-semantic-ui": "cd ./packages/dina-semantic-ui && yarn install",
     "install:shared": "cd ./packages/dina-shared && yarn install",
 
-    "setup": "yarn setup:env yarn install && yarn setup:links && yarn test",
+    "setup": "yarn setup:env && yarn install && yarn setup:links && yarn test",
     "setup:env": "./scripts/create-env.sh",
     "setup:links": "yarn setup:links:dina-shared && yarn setup:links:dina-collections-api && yarn setup:links:dina-collections-ui",
     "setup:links:dina-shared": "cd ./packages/dina-shared && yarn link",
