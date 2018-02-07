@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.3'
 services:
   dockerhub-hook:
     image: maccyber/micro-dockerhub-hook
@@ -39,7 +39,7 @@ services:
     command: /bin/bash -c "envsubst '$$NGINX_HOST $$NGINX_PORT' < /etc/nginx/conf.d/default.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
 
   api:
-    image: dina-collections-api
+    image: dina/dina-collections-api
     container_name: dina-api
     expose:
     - "80"
@@ -70,4 +70,3 @@ services:
 
 volumes:
   postgres_data:
-    name: collections-postgres-data
