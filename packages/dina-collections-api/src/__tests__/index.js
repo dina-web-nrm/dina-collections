@@ -1,4 +1,4 @@
-require('../../config')
+require('../config')
 
 /* eslint-disable global-require */
 
