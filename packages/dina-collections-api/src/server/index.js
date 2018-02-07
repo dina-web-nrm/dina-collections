@@ -5,9 +5,9 @@ const createApp = require('./../lib/app')
 const config = require('../../config')
 const bootstrapPostgres = require('./../lib/postgres')
 const createKeycloak = require('./../lib/auth/keycloak')
+const modules = require('./modules')
 
 const log = createLog('server')
-const modules = require('./modules')
 
 bootstrapPostgres({
   config,
@@ -28,7 +28,9 @@ bootstrapPostgres({
       api,
       config,
       keycloak,
+      openApiSpec,
     })
+
     return app.listen(config.api.port, () => {
       log.info(`Api listening to port ${config.api.port}`)
     })

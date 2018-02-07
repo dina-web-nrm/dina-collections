@@ -26,7 +26,6 @@ script:
     fi
   # when merging to the master branch build all apps
   - if [ "$PUSH_BRANCH" == "master" ]; then
-    yarn build:dina-schema;
     yarn build:dina-semantic-ui;
     yarn build:dina-collections-ui;
     fi
@@ -50,11 +49,6 @@ after_success:
     docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui ./packages/dina-collections-ui;
     docker tag dina-collections-ui dina/dina-collections-ui;
     docker push dina/dina-collections-ui;
-
-    echo "Start dina-schema build";
-    docker build -f ./packages/dina-schema/Dockerfile -t dina-schema ./packages/dina-schema;
-    docker tag dina-schema dina/dina-schema;
-    docker push dina/dina-schema;
 
     echo "Start dina-semantic-ui build";
     docker build -f ./packages/dina-semantic-ui/Dockerfile -t dina-semantic-ui-docs ./packages/dina-semantic-ui;
