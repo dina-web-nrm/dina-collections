@@ -9,7 +9,7 @@ services:
     volumes:
       - ./docker-hooks:/src/scripts
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/var/dina-collections-docker
+      - ./:/var/dina-collections
 
   ui:
     image: dina/dina-collections-ui

@@ -19,9 +19,12 @@ const db = {
   username: process.env.DB_USERNAME || 'postgres',
 }
 
+const disableAuth = process.env.DISABLE_AUTH === 'true'
+
 const auth = {
-  active: false,
-  'auth-server-url': 'https://alpha-keycloak.dina-web.net/auth',
+  active: !disableAuth,
+  'auth-server-url':
+    process.env.AUTH_BASE_URL || 'https://alpha-keycloak.dina-web.net/auth',
   'bearer-only': true,
   realm: 'dina',
   resource: 'collections',
