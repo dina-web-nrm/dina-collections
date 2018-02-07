@@ -1,4 +1,4 @@
-const { login, makeTestCall } = require('../utilities')
+const { makeTestCall } = require('../utilities')
 
 const onlyCatalogedUnit = {
   data: {
@@ -248,9 +248,7 @@ const UNEXPECTED_SUCCESS = 'Call successfull but should have failed'
 describe('individualGroup', () => {
   let authToken
   beforeEach(() => {
-    return login().then(loginToken => {
-      authToken = loginToken
-    })
+    authToken = 1234
   })
 
   it('Runs individualGroup tests', () => {

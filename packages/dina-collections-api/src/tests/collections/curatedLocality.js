@@ -1,4 +1,4 @@
-const { login, makeTestCall } = require('../utilities')
+const { makeTestCall } = require('../utilities')
 
 const simpleCuratedLocality = {
   data: {
@@ -24,9 +24,7 @@ const simpleCuratedLocalityUpdate = {
 describe('curatedLocality', () => {
   let authToken
   beforeEach(() => {
-    return login().then(loginToken => {
-      authToken = loginToken
-    })
+    authToken = 1234
   })
 
   it('Runs curatedLocality tests', () => {

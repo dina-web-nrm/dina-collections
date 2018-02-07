@@ -43,7 +43,8 @@
     "start": "DEBUG='DINA*' node src/server/index.js",
     "start:watch": "DEBUG='DINA*' pm2 start src/server/index.js --watch --name postgres-server && pm2 logs",
     "stop:watch": "pm2 stop postgres-server",
-    "test": "yarn lint:js && yarn test:depcheck",
+    "test": "test:unit && yarn lint:js && yarn test:depcheck",
+    "test:unit": "jest --env=node",
     "test:api": "API_TESTS=true jest --env=node ./src/__tests__/index.js",
     "test:depcheck": "depcheck . --ignores=pg"
   },
