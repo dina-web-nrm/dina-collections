@@ -1,14 +1,15 @@
+import rootConfig from 'config'
+
 import createHistory from 'history/createBrowserHistory'
 
 const history = createHistory()
 
 const config = {
   api: {
-    enableEndpointMocks: process.env.REACT_APP_ENABLE_ENDPOINT_MOCKS === 'true',
+    enableEndpointMocks: rootConfig.mock,
   },
   devToolsExtension:
-    process.env.NODE_ENV === 'development' &&
-    typeof devToolsExtension === 'function',
+    rootConfig.isDevelopment && typeof devToolsExtension === 'function',
   i18n: {
     availableLanguages: ['en', 'sv'],
     defaultLanguage: 'en',

@@ -3,7 +3,7 @@ const { diff } = require('deep-diff')
 
 const {
   createSystemModelSchemaValidator,
-} = require('dina-collections-ui/src/utilities/error')
+} = require('dina-shared/src/utilities/error')
 
 // make model-factory more advanced
 // * add where search to get single revision

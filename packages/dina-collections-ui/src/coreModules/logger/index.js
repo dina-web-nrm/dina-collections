@@ -1,7 +1,8 @@
+import config from 'config'
 import { createLogger } from 'redux-logger'
 
 const getLoggerMiddleware = () => {
-  if (process.env.NODE_ENV === 'development') {
+  if (config.isDevelopment) {
     return createLogger
   }
   return null

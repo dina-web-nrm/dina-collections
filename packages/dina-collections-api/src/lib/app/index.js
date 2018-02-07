@@ -3,9 +3,11 @@ const bodyParser = require('body-parser')
 const responseTime = require('response-time')
 const createErrorHandler = require('./errorHandler')
 const logIncomingRequest = require('./logIncomingRequest')
+const createDocs = require('../docs')
 
-module.exports = function createApp({ api, keycloak }) {
+module.exports = function createApp({ api, keycloak, openApiSpec }) {
   const app = express()
+  app.use('/docs', createDocs({ openApiSpec }))
   app.use(responseTime())
   app.use(logIncomingRequest)
   app.use(

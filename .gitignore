@@ -7,3 +7,11 @@ yarn-error.log*
 
 # Editor settings
 .vscode/
+
+env/.*
+
+
+.DS_Store
+
+
+certs

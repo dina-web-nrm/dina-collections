@@ -1,4 +1,4 @@
-const models = require('dina-schema/build/models.json')
+const models = require('dina-shared/dist/models.json')
 const createMockDataFromSchema = require('./createMockDataFromSchema')
 
 module.exports = function createMockGenerator({

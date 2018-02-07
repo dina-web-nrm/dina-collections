@@ -1,16 +1,13 @@
-const openApiSpec = require('dina-schema/build/openApi.json')
+const openApiSpec = require('dina-shared/dist/openApi.json')
 const createLog = require('./../utilities/log')
 const createApi = require('./../lib/api')
 const createApp = require('./../lib/app')
-const createConfig = require('./config')
+const config = require('../../config')
 const bootstrapPostgres = require('./../lib/postgres')
 const createKeycloak = require('./../lib/auth/keycloak')
-
-const config = createConfig()
+const modules = require('./modules')
 
 const log = createLog('server')
-
-const modules = require('./modules')
 
 bootstrapPostgres({
   config,
@@ -31,7 +28,9 @@ bootstrapPostgres({
       api,
       config,
       keycloak,
+      openApiSpec,
     })
+
     return app.listen(config.api.port, () => {
       log.info(`Api listening to port ${config.api.port}`)
     })

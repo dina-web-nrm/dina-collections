@@ -1,0 +1,2064 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Dina api",
+    "contact": {
+      "email": "oberg.anton@gmail.com"
+    },
+    "license": {
+      "name": "GNU Affero General Public License",
+      "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
+    },
+    "version": "0.1.0",
+    "description": "This is a first draft of dina api documentation. It can either be viewed as an\n[Open api spec](https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/openApi.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0)\nor as a\n[Swagger spec](https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/swagger.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0)\n\nDescriptions like below can be written in markdown:\n\n* [Dina web](https://alpha-cm.dina-web.net/login)\n* [Dina web with mocks](https://alpha-cm-mock.dina-web.net/login)\n* [Dina style guilde](https://alpha-style.dina-web.net)\n",
+    "x-versionInfo": "# This is some version specific information\n"
+  },
+  "servers": [
+    {
+      "description": "Description of collections api\n",
+      "url": "https://alpha-api.dina-web.net"
+    },
+    {
+      "description": "Description of keycloak\n",
+      "url": "https://alpha-keycloak.dina-web.net"
+    },
+    {
+      "description": "Description of slim taxonomy\n",
+      "url": "https://alpha-slimtaxonomy.dina-web.net"
+    }
+  ],
+  "security": [],
+  "tags": [
+    {
+      "description": "Description of collections api\n",
+      "name": "collectionsApi"
+    },
+    {
+      "description": "Description of keycloak\n",
+      "name": "keycloak"
+    },
+    {
+      "description": "Description of slim taxonomy\n",
+      "name": "slimTaxonomyApi"
+    }
+  ],
+  "paths": {
+    "/api/v01/batchUploads": {
+      "post": {
+        "operationId": "createBatchUpload",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createBatchUploadRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createBatchUploadResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Create a batch upload",
+        "tags": [
+          "batchUpload"
+        ]
+      },
+      "get": {
+        "operationId": "getBatchUploads",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getBatchUploadsResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Get batchUploads",
+        "tags": [
+          "batchUpload"
+        ]
+      }
+    },
+    "/api/v01/batchUploads/{id}/items/{itemId}": {
+      "delete": {
+        "operationId": "deleteBatchUploadItem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload id",
+            "required": true,
+            "example": 1
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload item id",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/deleteBatchUploadItemResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Delete a batch upload item",
+        "tags": [
+          "batchUpload"
+        ]
+      },
+      "get": {
+        "operationId": "getBatchUploadItem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload id",
+            "required": true,
+            "example": "1"
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload item id",
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getBatchUploadItemResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Get a batch update item by itemId",
+        "tags": [
+          "batchUpload"
+        ]
+      },
+      "put": {
+        "operationId": "updateBatchUploadItem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload id",
+            "required": true,
+            "example": "1"
+          },
+          {
+            "in": "path",
+            "name": "itemId",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload item id",
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateBatchUploadItemRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateBatchUploadItemResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Get a batch update by id",
+        "tags": [
+          "batchUpload"
+        ]
+      }
+    },
+    "/api/v01/batchUploads/{id}": {
+      "get": {
+        "operationId": "getBatchUpload",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload id",
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getBatchUploadResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Get a batch update by id",
+        "tags": [
+          "batchUpload"
+        ]
+      }
+    },
+    "/api/v01/batchUploads/{id}/items": {
+      "get": {
+        "operationId": "getBatchUploadItems",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Batch upload id",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getBatchUploadItemsResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Get batchUpload items",
+        "tags": [
+          "batchUpload"
+        ]
+      }
+    },
+    "/api/v01/batchUploads/actions/save": {
+      "post": {
+        "operationId": "saveBatchUpload",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/saveBatchUploadResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Save a batch upload",
+        "tags": [
+          "batchUpload"
+        ]
+      }
+    },
+    "/collections/api/v01/curatedLocality": {
+      "post": {
+        "description": "Create a curatedLocality\n",
+        "operationId": "createCuratedLocality",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createCuratedLocalityRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createCuratedLocalityResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Create a curatedLocality",
+        "tags": [
+          "collectionsApi"
+        ]
+      }
+    },
+    "/collections/api/v01/individualGroups": {
+      "post": {
+        "description": "This endpoint is for the moment used to register mammals in the mammal\nregistration form\n",
+        "operationId": "createIndividualGroup",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createIndividualGroupRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createIndividualGroupResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Create an individual group and a catalogUnit if not existing",
+        "tags": [
+          "collectionsApi"
+        ]
+      },
+      "get": {
+        "description": "Makes it possible to fetch an individualGroup based on\ncatalogedUnit.catalogNumber OR identification.identifiedTaxonNameStandardized\n\nMore information to come\n",
+        "operationId": "getIndividualGroups",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[catalogNumber]",
+            "description": "catalog number used to filter individualGroups",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "123456"
+          },
+          {
+            "in": "query",
+            "name": "filter[identifiedTaxonNameStandardized]",
+            "description": "Standardized taxon name used to filter individualGroups",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Chironectes minimus"
+          },
+          {
+            "in": "query",
+            "name": "include",
+            "description": "sub models to include in a comma separated list",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "physicalUnits.catalogedUnit,identifications"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getIndividualGroupsResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Finds individualGroups",
+        "tags": [
+          "collectionsApi"
+        ]
+      }
+    },
+    "/collections/api/v01/curatedLocality/{id}": {
+      "get": {
+        "operationId": "getCuratedLocality",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Curated locality id",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocalityResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Find latest version of a curatedLocality",
+        "tags": [
+          "collectionsApi"
+        ]
+      },
+      "put": {
+        "operationId": "updateCuratedLocality",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "curatedLocality id",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateCuratedLocalityRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocalityResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Update an curatedLocality id",
+        "tags": [
+          "collectionsApi"
+        ]
+      }
+    },
+    "/collections/api/v01/curatedLocality/{id}/versions/${versionId}": {
+      "get": {
+        "operationId": "getCuratedLocalityByVersion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Curated locality id",
+            "required": true,
+            "example": 1
+          },
+          {
+            "in": "path",
+            "name": "versionId",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Curated locality versionId",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocalityByVersionResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Find latest version of a curatedLocality",
+        "tags": [
+          "collectionsApi"
+        ]
+      }
+    },
+    "/collections/api/v01/individualGroups/{id}": {
+      "patch": {
+        "description": "This endpoint is for the moment used to edit mammals in the mammal specimen form\n",
+        "operationId": "updateIndividualGroup",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Individual group id",
+            "required": true,
+            "example": 1
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateIndividualGroupRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateIndividualGroupResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Update an individual group by id",
+        "tags": [
+          "collectionsApi"
+        ]
+      }
+    },
+    "/auth/realms/dina/protocol/openid-connect/userInfo": {
+      "get": {
+        "operationId": "getUser",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getUserResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Gets user object",
+        "tags": [
+          "keycloak"
+        ]
+      }
+    },
+    "/auth/realms/dina/protocol/openid-connect/token": {
+      "post": {
+        "operationId": "loginUser",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loginUserRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loginUserResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Gets user token",
+        "tags": [
+          "keycloak"
+        ]
+      }
+    },
+    "/taxon": {
+      "get": {
+        "description": "Fetches a taxon or several taxa.\n",
+        "operationId": "getTaxaByName",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[name]",
+            "description": "Taxon name - accepted scientific, synonym or vernacular name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Alces alces"
+          },
+          {
+            "in": "query",
+            "name": "search_type",
+            "description": "Search type - exact (default) or partial",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "exact",
+                "partial"
+              ]
+            },
+            "example": "exact"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxaByNameResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Fetches taxa by name",
+        "tags": [
+          "slimTaxonomyApi"
+        ]
+      }
+    },
+    "/taxon/{id}": {
+      "get": {
+        "description": "Fetches a taxon by id.\n",
+        "operationId": "getTaxonById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Taxon id",
+            "required": true,
+            "example": "14200208"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxonByIdResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Fetches taxon by id",
+        "tags": [
+          "slimTaxonomyApi"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "batchItem": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "description": "Should have a one of condition"
+          },
+          "model": {
+            "type": "string"
+          },
+          "schemaVersion": {
+            "type": "string"
+          },
+          "uploaded": {
+            "type": "boolean"
+          },
+          "isValid": {
+            "type": "boolean"
+          }
+        },
+        "x-category": "batch",
+        "x-modelType": "model"
+      },
+      "batchUpload": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/batchItem"
+            }
+          },
+          "uploadStarted": {
+            "type": "boolean"
+          },
+          "uploadCompleted": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "boolean"
+          },
+          "nUploadedItems": {
+            "type": "integer"
+          },
+          "nValidItems": {
+            "type": "integer"
+          },
+          "nItems": {
+            "type": "integer"
+          }
+        },
+        "x-category": "batch",
+        "x-modelType": "model"
+      },
+      "catalogedUnit": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "physicalUnits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/physicalUnit"
+            }
+          },
+          "publishRecord": {
+            "type": "boolean"
+          },
+          "remarks": {
+            "type": "string",
+            "example": "Some remarks"
+          },
+          "storedUnderTaxonName": {
+            "type": "string",
+            "example": "Sorex minutus"
+          },
+          "catalogNumber": {
+            "type": "string",
+            "example": "584028",
+            "pattern": "^$|^[0-9]{6}$|^[0-9]{8}$",
+            "description": "Catalog number is a string of 6 or 8 digits\n"
+          }
+        },
+        "example": {
+          "id": 1234,
+          "storedUnderTaxonName": "mjau"
+        },
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "featureObservation": {
+        "additionalProperties": false,
+        "properties": {
+          "featureObservationAgent": {
+            "type": "string",
+            "example": "Doe, J."
+          },
+          "featureObservationDate": {
+            "type": "string",
+            "example": "2017-12-12"
+          },
+          "featureObservationText": {
+            "type": "string",
+            "example": "10 years"
+          },
+          "featureObservationType": {
+            "$ref": "#/components/schemas/featureObservationType"
+          },
+          "id": {
+            "type": "string"
+          },
+          "methodText": {
+            "type": "string",
+            "example": "Known age"
+          }
+        },
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "featureObservationType": {
+        "additionalProperties": false,
+        "properties": {
+          "featureObservationTypeName": {
+            "type": "string",
+            "enum": [
+              "sex",
+              "length",
+              "age",
+              "weight",
+              "conditionAtCollecting",
+              "ageStage"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "enum": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ]
+          }
+        },
+        "required": [
+          "featureObservationTypeName"
+        ],
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "identification": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "identificationRemarks": {
+            "type": "string",
+            "example": "Some remarks"
+          },
+          "identificationText": {
+            "type": "string",
+            "example": "Sorex minutus, by Doe, J. on 1982-01-01"
+          },
+          "identifiedAsVerbatim": {
+            "type": "string",
+            "description": "In exactly the same words as were used originally"
+          },
+          "identifiedByAgentText": {
+            "type": "string",
+            "example": "Doe, J."
+          },
+          "identifiedDateText": {
+            "type": "string",
+            "example": "Before 1800"
+          },
+          "identifiedDay": {
+            "type": "integer",
+            "example": 25
+          },
+          "identifiedMonth": {
+            "type": "integer",
+            "example": 12
+          },
+          "identifiedTaxonNameStandardized": {
+            "type": "string",
+            "example": "Chironectes minimus"
+          },
+          "identifiedYear": {
+            "type": "integer",
+            "example": 1981
+          },
+          "individualGroup": {
+            "$ref": "#/components/schemas/individualGroup"
+          },
+          "isCurrentIdentification": {
+            "type": "boolean",
+            "example": true
+          },
+          "version": {
+            "type": "integer"
+          }
+        },
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "individualGroup": {
+        "additionalProperties": false,
+        "description": "# This is a description in a markdown file\n",
+        "properties": {
+          "causeOfDeathStandardized": {
+            "type": "string"
+          },
+          "causeOfDeathText": {
+            "type": "string"
+          },
+          "featureObservations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/featureObservation"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "identifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/identification"
+            }
+          },
+          "occurrences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/occurrence"
+            }
+          },
+          "originStandardized": {
+            "type": "string"
+          },
+          "physicalUnits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/physicalUnit"
+            }
+          },
+          "version": {
+            "type": "integer"
+          }
+        },
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "localityInformation": {
+        "additionalProperties": false,
+        "properties": {
+          "curatedLocalities": {
+            "description": "An array with curated localities",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/curatedLocality"
+            }
+          },
+          "position": {
+            "description": "A specific position",
+            "type": "object",
+            "$ref": "#/components/schemas/position"
+          },
+          "polygon": {
+            "description": "A specific position",
+            "type": "object",
+            "$ref": "#/components/schemas/polygon"
+          },
+          "verticalPosition": {
+            "description": "A vertical position",
+            "type": "object",
+            "$ref": "#/components/schemas/verticalPosition"
+          },
+          "coordinatesVerbatim": {
+            "type": "string",
+            "description": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
+          },
+          "georeferenceSourcesText": {
+            "type": "string",
+            "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
+          },
+          "localityText": {
+            "type": "string",
+            "description": "TBA"
+          },
+          "localityRemarks": {
+            "type": "string",
+            "description": "Notes on the locality"
+          },
+          "localityVerbatim": {
+            "type": "string",
+            "description": "Verbatim locality names and description, as in the original source, typos and all."
+          }
+        },
+        "description": "# localityInformation\n\nContains information related to where an occurrence happened. \n",
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "occurrence": {
+        "additionalProperties": false,
+        "properties": {
+          "collectorsText": {
+            "type": "string",
+            "example": "Bergström, U",
+            "description": "Name of the collector"
+          },
+          "dayEnd": {
+            "type": "integer",
+            "example": 2
+          },
+          "dayStart": {
+            "type": "integer",
+            "example": 30
+          },
+          "establishmentMeansStandardized": {
+            "type": "string"
+          },
+          "expeditionText": {
+            "type": "string",
+            "example": "Vega Expedition"
+          },
+          "id": {
+            "type": "string"
+          },
+          "individualGroup": {
+            "$ref": "#/components/schemas/individualGroup"
+          },
+          "isDeathEvent": {
+            "type": "boolean"
+          },
+          "localityInformation": {
+            "$ref": "#/components/schemas/localityInformation"
+          },
+          "monthEnd": {
+            "type": "integer",
+            "example": 3
+          },
+          "monthStart": {
+            "type": "integer",
+            "example": 2
+          },
+          "occurrenceDateText": {
+            "type": "string",
+            "example": "Before 1800"
+          },
+          "yearEnd": {
+            "type": "integer",
+            "example": 1991
+          },
+          "yearStart": {
+            "type": "integer",
+            "example": 1990
+          }
+        },
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "physicalUnit": {
+        "additionalProperties": false,
+        "properties": {
+          "alternateIdentifiersText": {
+            "type": "string",
+            "example": "Skin complete, prepared"
+          },
+          "catalogedUnit": {
+            "$ref": "#/components/schemas/catalogedUnit"
+          },
+          "id": {
+            "type": "string"
+          },
+          "individualGroup": {
+            "$ref": "#/components/schemas/individualGroup"
+          },
+          "normalStorageLocationText": {
+            "type": "string"
+          },
+          "physicalUnitText": {
+            "type": "string",
+            "example": "Skin complete, prepared"
+          }
+        },
+        "x-category": "collection",
+        "x-modelType": "model"
+      },
+      "polygon": {
+        "additionalProperties": false,
+        "description": "A polygon with longitude, latitude vertices",
+        "properties": {
+          "vertices": {
+            "type": "array",
+            "description": "Corners of the polygon in sane format"
+          }
+        },
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "position": {
+        "additionalProperties": false,
+        "description": "A position represent a specific position",
+        "properties": {
+          "latitude": {
+            "type": "string",
+            "description": "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere."
+          },
+          "longitude": {
+            "type": "string",
+            "description": "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere."
+          },
+          "geodeticDatum": {
+            "type": "string",
+            "description": "Geodetic datum wip"
+          },
+          "uncertaintyInMeters": {
+            "type": "integer",
+            "description": "Coordinate uncertainty in meters"
+          }
+        },
+        "x-required": [
+          "name",
+          "id",
+          "description",
+          "type"
+        ],
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "verticalPosition": {
+        "additionalProperties": false,
+        "description": "A description of vertical position",
+        "properties": {
+          "maximumDepthInMeters": {
+            "type": "integer",
+            "description": "Max depth (m)"
+          },
+          "maximumElevationInMeters": {
+            "type": "integer",
+            "description": "Max elevation (m)"
+          },
+          "minimumDepthInMeters": {
+            "type": "integer",
+            "description": "Min depth (m)"
+          },
+          "minimumElevationInMeters": {
+            "type": "integer",
+            "description": "Min elevation (m)"
+          }
+        },
+        "x-required": [
+          "name",
+          "id",
+          "description",
+          "type"
+        ],
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "curatedLocality": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the locality"
+          },
+          "versionId": {
+            "type": "string",
+            "description": "Id of the specific version"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Timestamp corresponding to when created"
+          },
+          "createdBy": {
+            "type": "string",
+            "description": "Some kind of reference to the individual that created the locality"
+          },
+          "updatedBy": {
+            "type": "string",
+            "description": "Some kind of reference to the individual that updated/created the specific version"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier that is consistent over time"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the locality"
+          },
+          "relations": {
+            "type": "array",
+            "description": "A relation to other curatedLocalities",
+            "items": {
+              "$ref": "#/components/schemas/curatedLocalityRelation"
+            }
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of locality",
+            "enum": [
+              "continent",
+              "country",
+              "district",
+              "geodeticDatum",
+              "locality",
+              "province",
+              "rubin"
+            ]
+          },
+          "centralPosition": {
+            "type": "object",
+            "description": "A position describing the center",
+            "$ref": "#/components/schemas/position"
+          },
+          "polygon": {
+            "type": "object",
+            "description": "A polygon describing the edges",
+            "$ref": "#/components/schemas/polygon"
+          },
+          "verticalPosition": {
+            "description": "A vertical position",
+            "type": "object",
+            "$ref": "#/components/schemas/verticalPosition"
+          }
+        },
+        "x-required": [
+          "name",
+          "id",
+          "description",
+          "type"
+        ],
+        "description": "A curated locality is a ...\n",
+        "x-category": "curatedLocality",
+        "x-modelType": "model"
+      },
+      "curatedLocalityRelation": {
+        "additionalProperties": false,
+        "properties": {
+          "target": {
+            "type": "object",
+            "$ref": "#/components/schemas/curatedLocality"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "inside",
+              "overlap",
+              "border"
+            ]
+          }
+        },
+        "x-category": "curatedLocality",
+        "x-modelType": "model"
+      },
+      "taxon": {
+        "additionalProperties": false,
+        "properties": {
+          "parent": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Parent taxon identifier"
+              },
+              "scientific_name": {
+                "type": "string",
+                "description": "Parent taxon scientific name"
+              },
+              "rank": {
+                "type": "string",
+                "description": "Parent taxon rank"
+              }
+            },
+            "required": [
+              "id",
+              "scientific_name",
+              "rank"
+            ]
+          },
+          "rubin_number": {
+            "type": "string",
+            "description": "Rubin storage number for the taxon"
+          },
+          "higherTaxa": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "string",
+                "description": "Parent order"
+              },
+              "suborder": {
+                "type": "string",
+                "description": "Parent suborder"
+              },
+              "infraorder": {
+                "type": "string",
+                "description": "Parent infraorder"
+              },
+              "superfamily": {
+                "type": "string",
+                "description": "Parent superfamily"
+              },
+              "family": {
+                "type": "string",
+                "description": "Parent family"
+              },
+              "subfamily": {
+                "type": "string",
+                "description": "Parent subfamily"
+              },
+              "tribe": {
+                "type": "string",
+                "description": "Parent tribe"
+              },
+              "genus": {
+                "type": "string",
+                "description": "Parent genus"
+              },
+              "subgenus": {
+                "type": "string",
+                "description": "Parent subgenus"
+              }
+            }
+          },
+          "rank": {
+            "type": "string",
+            "description": "Taxon rank"
+          },
+          "scientific_name": {
+            "type": "string",
+            "description": "Taxon scientific name, binomial if species"
+          },
+          "author": {
+            "type": "string",
+            "description": "Taxon author without the year"
+          },
+          "author_date": {
+            "type": "string",
+            "description": "Taxon author year"
+          },
+          "valid_name": {
+            "type": "boolean",
+            "description": "Is the name taxonomically valid",
+            "default": false
+          },
+          "vernacular_names": {
+            "type": "object",
+            "properties": {
+              "en": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "Vernacular (common) English names for the taxon"
+                }
+              }
+            }
+          },
+          "synonyms": {
+            "type": "string",
+            "description": "List of synonyms as free-form text"
+          },
+          "sort_order": {
+            "type": "string",
+            "description": "Taxonomical sort order code from Mammal Species of the World list"
+          }
+        },
+        "required": [
+          "rank",
+          "scientific_name",
+          "valid_name"
+        ],
+        "x-category": "other",
+        "x-modelType": "model"
+      },
+      "createBatchUploadRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchUpload"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchUpload"
+              }
+            }
+          }
+        }
+      },
+      "updateBatchUploadItemRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchItem"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchItem"
+              }
+            }
+          }
+        }
+      },
+      "createCuratedLocalityRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "curatedLocality",
+                "default": "curatedLocality"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              }
+            }
+          }
+        }
+      },
+      "createIndividualGroupRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "individualGroup",
+                "default": "individualGroup"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/individualGroup"
+              },
+              "additionalData": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "default": "catalogedUnit",
+                      "example": "catalogedUnit"
+                    },
+                    "id": {
+                      "type": "string",
+                      "example": "1234"
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "catalogNumber": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "updateCuratedLocalityRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "curatedLocality",
+                "default": "curatedLocality"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              }
+            }
+          }
+        }
+      },
+      "updateIndividualGroupRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string",
+                "example": "individualGroup",
+                "default": "individualGroup"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/individualGroup"
+              }
+            }
+          }
+        }
+      },
+      "loginUserRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "example": "dina-reset"
+          },
+          "grant_type": {
+            "type": "string",
+            "example": "password"
+          },
+          "password": {
+            "type": "string",
+            "example": "xxxxx"
+          },
+          "username": {
+            "type": "string",
+            "example": "john doe"
+          }
+        },
+        "required": [
+          "client_id",
+          "grant_type",
+          "password",
+          "username"
+        ]
+      },
+      "createBatchUploadResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchUpload"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchUpload"
+              }
+            }
+          }
+        }
+      },
+      "deleteBatchUploadItemResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchItem"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchItem"
+              }
+            }
+          }
+        }
+      },
+      "getBatchUploadResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchUpload"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchUpload"
+              }
+            }
+          }
+        }
+      },
+      "getBatchUploadItemResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchItem"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchItem"
+              }
+            }
+          }
+        }
+      },
+      "getBatchUploadItemsResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "batchItem"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "attributes": {
+                  "$ref": "#/components/schemas/batchItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "getBatchUploadsResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "batchUpload"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "attributes": {
+                  "$ref": "#/components/schemas/batchUpload"
+                }
+              }
+            }
+          }
+        }
+      },
+      "saveBatchUploadResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchUpload"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchUpload"
+              }
+            }
+          }
+        }
+      },
+      "updateBatchUploadItemResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "type": "string",
+                "default": "batchItem"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/batchItem"
+              }
+            }
+          }
+        }
+      },
+      "createCuratedLocalityResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "versionId": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "default": "curatedLocality"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              }
+            }
+          }
+        }
+      },
+      "createIndividualGroupResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "default": "individualGroup"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/individualGroup"
+              }
+            }
+          }
+        }
+      },
+      "getCuratedLocalityResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "versionId": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "default": "curatedLocality"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              }
+            }
+          }
+        }
+      },
+      "getCuratedLocalityByVersionResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "versionId": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "default": "curatedLocality"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              }
+            }
+          }
+        }
+      },
+      "getIndividualGroupsResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "individualGroup"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "attributes": {
+                  "$ref": "#/components/schemas/individualGroup"
+                }
+              }
+            }
+          }
+        }
+      },
+      "updateCuratedLocalityResponse": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "versionId": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "default": "curatedLocality"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              }
+            }
+          }
+        }
+      },
+      "updateIndividualGroupResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "example": "individualGroup"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/individualGroup"
+              }
+            }
+          }
+        }
+      },
+      "getUserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com"
+          },
+          "family_name": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "given_name": {
+            "type": "string",
+            "example": "John"
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "preferred_username": {
+            "type": "string",
+            "example": "john doe"
+          },
+          "sub": {
+            "type": "string",
+            "example": "xxxx"
+          }
+        },
+        "required": [
+          "email",
+          "preferred_username"
+        ]
+      },
+      "loginUserResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "example": "xxxx"
+          },
+          "expires_in": {
+            "type": "integer",
+            "example": 300
+          },
+          "not-before-policy": {
+            "type": "integer",
+            "example": 0
+          },
+          "refresh_expires_in": {
+            "type": "integer",
+            "example": 1800
+          },
+          "refresh_token": {
+            "type": "string",
+            "example": "xxxx"
+          },
+          "session_state": {
+            "type": "string",
+            "example": "bearer"
+          },
+          "token_type": {
+            "type": "string",
+            "example": "xxxx"
+          }
+        },
+        "required": [
+          "access_token"
+        ]
+      },
+      "getTaxaByNameResponse": {
+        "additionalProperties": true,
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "taxon",
+                  "example": "taxon"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "attributes": {
+                  "$ref": "#/components/schemas/taxon"
+                }
+              }
+            }
+          }
+        }
+      },
+      "getTaxonByIdResponse": {
+        "additionalProperties": true,
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "type": "string",
+                "default": "taxon"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/taxon"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

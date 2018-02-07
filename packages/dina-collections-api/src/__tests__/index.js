@@ -1,3 +1,5 @@
+require('../../config')
+
 /* eslint-disable global-require */
 
 if (!process.env.API_TESTS) {

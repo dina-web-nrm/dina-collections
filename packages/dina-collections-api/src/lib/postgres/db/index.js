@@ -4,8 +4,11 @@ const Sequelize = require('sequelize')
 const log = createLog('logic/db')
 
 module.exports = function createDb({ config }) {
-  const { database, password, username } = config.db
-  const sequelize = new Sequelize(database, username, password, {
+  const { database, password, url, username } = config.db
+  const connectionString = `postgres://${username}:${password}@${url}/${
+    database
+  }`
+  const sequelize = new Sequelize(connectionString, {
     dialect: 'postgres',
     logging: config.log.db && log.debug,
     operatorsAliases: false,

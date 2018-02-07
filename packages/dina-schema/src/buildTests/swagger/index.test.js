@@ -1,6 +1,6 @@
 const Ajv = require('ajv')
 const swaggerSchema = require('../schemas/swagger.json')
-const swagger = require('../../../build/swagger')
+const swagger = require('dina-shared/dist/swagger.json')
 
 describe('buildTests/swagger', () => {
   let ajv

@@ -1,3 +1,4 @@
+import config from 'config'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
@@ -38,7 +39,7 @@ const propTypes = {
 const defaultProps = {
   activeIndex: undefined,
   expandAll: false,
-  requireRemoveDeterminationConfirmation: process.env.NODE_ENV !== 'test',
+  requireRemoveDeterminationConfirmation: !config.isTest,
 }
 
 class AccordionWrapper extends Component {

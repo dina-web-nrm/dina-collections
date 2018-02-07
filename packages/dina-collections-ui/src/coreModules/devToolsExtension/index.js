@@ -1,5 +1,7 @@
+import config from 'config'
+
 const getDevToolsExtensionEnhancer = () => {
-  if (process.env.NODE_ENV === 'development') {
+  if (config.isDevelopment) {
     const { devToolsExtension } = window
 
     if (typeof devToolsExtension === 'function') {

@@ -1,5 +1,5 @@
 const Ajv = require('ajv')
-const models = require('../../../build/models.json')
+const models = require('dina-shared/dist/models.json')
 
 describe('buildTests/models', () => {
   let ajv

@@ -1,4 +1,5 @@
-import 'semantic-ui/dist/semantic.css' // eslint-disable-line
+import rootConfig from 'config'
+import 'dina-shared/dist/semantic.css' // eslint-disable-line
 import 'whatwg-fetch'
 import createStore from 'store/index'
 import { I18nProvider } from 'coreModules/i18n/components'
@@ -38,6 +39,6 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-if (process.env.REACT_APP_ENABLE_SERVICE_WORKER === 'true') {
+if (rootConfig.enableServiceWorker) {
   registerServiceWorker()
 }

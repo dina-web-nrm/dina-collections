@@ -1,6 +1,6 @@
-const createEndpointConfigObject = require('dina-collections-ui/src/utilities/apiClient/factories/createEndpointConfig')
-const createBodyValidator = require('dina-collections-ui/src/utilities/endpointFactory/createBodyValidator')
-const createSystemModelSchemaValidator = require('../../../utilities/createSystemModelSchemaValidator')
+const createEndpointConfigObject = require('dina-shared/src/utilities/apiClient/factories/createEndpointConfig')
+const createBodyValidator = require('dina-shared/src/utilities/endpointFactory/createBodyValidator')
+const createSystemModelSchemaValidator = require('dina-shared/src/utilities/jsonSchema/createSystemModelSchemaValidator')
 
 module.exports = function createEndpointConfig({
   methodSpecification,

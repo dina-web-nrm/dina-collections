@@ -1,34 +1,24 @@
-const fs = require('fs')
-const path = require('path')
-const dotenv = require('dotenv')
 require('isomorphic-fetch')
 
-const jsonApiSchema = require('dina-collections-ui/src/utilities/apiClient/schemas/jsonApi')
+const jsonApiSchema = require('dina-shared/src/utilities/apiClient/schemas/jsonApi')
 const {
   createSystemModelSchemaValidator,
-} = require('dina-collections-ui/src/utilities/error')
-const createEndpoint = require('dina-collections-ui/src/utilities/endpointFactory/server')
-const createApiClient = require('dina-collections-ui/src/utilities/apiClient')
+} = require('dina-shared/src/utilities/error')
+const createEndpoint = require('dina-shared/src/utilities/endpointFactory/server')
+const createApiClient = require('dina-shared/src/utilities/apiClient')
 
-const dotEnvPath = path.join(__dirname, '../../.env.test.local')
+const config = require('../../config')
 
-const {
-  REACT_APP_TEST_API_URL: apiUrl,
-  REACT_APP_TEST_AUTH_URL: authUrl,
-  REACT_APP_TEST_PASSWORD: defaultPassword,
-  REACT_APP_TEST_USERNAME: defaultUsername,
-} = dotenv.parse(fs.readFileSync(dotEnvPath))
+const { testApiUrl, testAuthUrl, testUsername, testPassword } = config.test
 
-const createAuthClient = ({ baseUrl = authUrl } = {}) => {
+const createAuthClient = ({ baseUrl = testAuthUrl } = {}) => {
   return createApiClient({
     baseUrl,
     mapResponse: ({ json }) => json,
   })
 }
 
-export const login = (
-  { password = defaultPassword, username = defaultUsername } = {}
-) => {
+exports.login = ({ password = testPassword, username = testUsername } = {}) => {
   const authClient = createAuthClient()
   return authClient
     .formPost(
@@ -59,13 +49,13 @@ const jsonApiValidator = createSystemModelSchemaValidator({
   throwOnError: true,
 })
 
-export const createTestClient = ({
+const createTestClient = ({
   authToken,
   validateInput = false,
   validateOutput = true,
 }) => {
   return createApiClient({
-    baseUrl: apiUrl,
+    baseUrl: testApiUrl,
     mapHeaders: headers => {
       return {
         ...headers,
@@ -84,7 +74,7 @@ export const createTestClient = ({
   })
 }
 
-export const makeTestCall = ({
+exports.makeTestCall = ({
   authToken,
   body,
   operationId,
