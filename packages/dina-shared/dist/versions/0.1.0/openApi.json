@@ -10,7 +10,7 @@
       "url": "https://www.gnu.org/licenses/agpl-3.0.en.html"
     },
     "version": "0.1.0",
-    "description": "This is a first draft of dina api documentation. It can either be viewed as an\n[Open api spec](https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/openApi.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0)\nor as a\n[Swagger spec](https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/swagger.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0)\n\nDescriptions like below can be written in markdown:\n\n* [Dina web](https://alpha-cm.dina-web.net/login)\n* [Dina web with mocks](https://alpha-cm-mock.dina-web.net/login)\n* [Dina style guilde](https://alpha-style.dina-web.net)\n",
+    "description": "This is a first draft of dina api documentation.\nDescriptions like below can be written in markdown:\n\n* [Dina web](https://alpha-cm.dina-web.net/login)\n* [Dina web with mocks](https://alpha-cm-mock.dina-web.net/login)\n* [Dina style guilde](https://alpha-style.dina-web.net)\n",
     "x-versionInfo": "# This is some version specific information\n"
   },
   "servers": [

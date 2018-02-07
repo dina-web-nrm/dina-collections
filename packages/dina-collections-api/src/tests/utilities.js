@@ -7,7 +7,7 @@ const {
 const createEndpoint = require('dina-shared/src/utilities/endpointFactory/server')
 const createApiClient = require('dina-shared/src/utilities/apiClient')
 
-const config = require('../../config')
+const config = require('../config')
 
 const { testApiUrl, testAuthUrl, testUsername, testPassword } = config.test
 

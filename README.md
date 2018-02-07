@@ -76,21 +76,10 @@ This guide assumes you have `git` installed
   cd dina-collections
   ```
 
-7. Install dependencies
+7. Install dependencies, links and env and run tests
   ```
-  yarn install
+  yarn setup
   ```
-
-8. Link packages
-
-  ```
-  yarn setup:links
-  ```
-
-9. Run tests
-```
-yarn test
-```
 
 ### Run frontend mock
 
