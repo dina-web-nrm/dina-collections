@@ -1,0 +1,23 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "collectorsText": {
+      "type": "string",
+      "example": "Bergström, U",
+      "description": "Name of the collector"
+    },
+    "dayEnd": { "type": "integer", "example": 2 },
+    "dayStart": { "type": "integer", "example": 30 },
+    "establishmentMeansStandardized": { "type": "string" },
+    "expeditionText": { "type": "string", "example": "Vega Expedition" },
+    "id": { "type": "string" },
+    "individualGroup": { "$ref": "__ROOT__individualGroup" },
+    "isDeathEvent": { "type": "boolean" },
+    "localityInformation": { "$ref": "__ROOT__localityInformation" },
+    "monthEnd": { "type": "integer", "example": 3 },
+    "monthStart": { "type": "integer", "example": 2 },
+    "occurrenceDateText": { "type": "string", "example": "Before 1800" },
+    "yearEnd": { "type": "integer", "example": 1991 },
+    "yearStart": { "type": "integer", "example": 1990 }
+  }
+}

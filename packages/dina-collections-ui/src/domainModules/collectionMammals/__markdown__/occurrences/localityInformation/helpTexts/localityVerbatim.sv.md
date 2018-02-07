@@ -1,0 +1,1 @@
+Verbatim namn och beskrivning av lokalitet, så som i originalkällan, med stavfel och allt.

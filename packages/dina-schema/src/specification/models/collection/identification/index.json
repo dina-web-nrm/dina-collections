@@ -1,0 +1,48 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "identificationRemarks": {
+      "type": "string",
+      "example": "Some remarks"
+    },
+    "identificationText": {
+      "type": "string",
+      "example": "Sorex minutus, by Doe, J. on 1982-01-01"
+    },
+    "identifiedAsVerbatim": {
+      "type": "string",
+      "description": "In exactly the same words as were used originally"
+    },
+    "identifiedByAgentText": {
+      "type": "string",
+      "example": "Doe, J."
+    },
+    "identifiedDateText": {
+      "type": "string",
+      "example": "Before 1800"
+    },
+    "identifiedDay": {
+      "type": "integer",
+      "example": 25
+    },
+    "identifiedMonth": {
+      "type": "integer",
+      "example": 12
+    },
+    "identifiedTaxonNameStandardized": {
+      "type": "string",
+      "example": "Chironectes minimus"
+    },
+    "identifiedYear": {
+      "type": "integer",
+      "example": 1981
+    },
+    "individualGroup": { "$ref": "__ROOT__individualGroup" },
+    "isCurrentIdentification": {
+      "type": "boolean",
+      "example": true
+    },
+    "version": { "type": "integer" }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "summary": "Gets user token",
+  "path": "/auth/realms/dina/protocol/openid-connect/token",
+  "method": "post"
+}
+

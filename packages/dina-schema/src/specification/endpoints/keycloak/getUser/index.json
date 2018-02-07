@@ -1,0 +1,5 @@
+{
+  "summary": "Gets user object",
+  "path": "/auth/realms/dina/protocol/openid-connect/userInfo",
+  "method": "get"
+}

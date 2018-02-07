@@ -1,0 +1,23 @@
+{
+  "summary": "Delete a batch upload item",
+  "path": "/api/v01/batchUploads/{id}/items/{itemId}",
+  "method": "delete",
+  "pathParams": {
+    "id": {
+      "schema": {
+        "type": "string"
+      },
+      "description": "Batch upload id",
+      "required": true,
+      "example": 1
+    },
+    "itemId": {
+      "schema": {
+        "type": "string"
+      },
+      "description": "Batch upload item id",
+      "required": true,
+      "example": 1
+    }
+  }
+}

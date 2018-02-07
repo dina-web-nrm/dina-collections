@@ -1,0 +1,24 @@
+{
+  "header": {
+    "en": "settings",
+    "sv": "inställningar"
+  },
+  "table": {
+    "parameter": {
+      "en": "parameter",
+      "sv": "parameter"
+    },
+    "value": {
+      "en": "value",
+      "sv": "värde"
+    },
+    "language": {
+      "en": "language",
+      "sv": "språk"
+    },
+    "shortcutsActive": {
+      "en": "Shortcuts active",
+      "sv": "Kortkommandon aktiva"
+    }
+  }
+}

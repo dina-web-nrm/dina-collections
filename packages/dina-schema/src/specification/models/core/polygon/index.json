@@ -1,0 +1,10 @@
+{
+  "additionalProperties": false,
+  "description": "A polygon with longitude, latitude vertices",
+  "properties": {
+    "vertices": {
+      "type": "array",
+      "description": "Corners of the polygon in sane format"
+    }
+  }
+}

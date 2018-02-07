@@ -1,0 +1,62 @@
+language: node_js
+
+services:
+  - docker
+
+before_install:
+  # install yarn
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
+- export PATH="$HOME/.yarn/bin:$PATH"
+
+cache:
+  # install dependencies in mono repo and all other repos
+  - yarn install
+
+before_script:
+  # set the PUSH_BRANCH to be able to do do different deploys depending on if merging to next or master
+  - export PUSH_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo ""; fi)
+  - echo "PUSH_BRANCH=$PUSH_BRANCH, TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST, TRAVIS_BRANCH=$TRAVIS_BRANCH"
+
+script:
+  # will run tests in all repos
+  - yarn test
+  # when merging to the next branch only build dina-collections-ui:mock
+  - if [ "$PUSH_BRANCH" == "next" ]; then
+    yarn build:dina-collections-ui:mock;
+    fi
+  # when merging to the master branch build all apps
+  - if [ "$PUSH_BRANCH" == "master" ]; then
+    yarn build:dina-semantic-ui;
+    yarn build:dina-collections-ui;
+    fi
+
+  - yarn uninstall
+
+# split this into before deploy and deploy later
+after_success:
+  # when next create docker image for dina-collections-ui-mock
+  - if [ "$PUSH_BRANCH" == "next" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    echo "Start dina-collections-ui mock build";
+    docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui-mock ./packages/dina-collections-ui;
+    docker tag dina-collections-ui-mock dina/dina-collections-ui-mock;
+    docker push dina/dina-collections-ui-mock;
+    fi
+  # when master create docker images for all apps
+  - if [ "$PUSH_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    echo "Start dina-collections-ui build";
+    docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui ./packages/dina-collections-ui;
+    docker tag dina-collections-ui dina/dina-collections-ui;
+    docker push dina/dina-collections-ui;
+
+    echo "Start dina-semantic-ui build";
+    docker build -f ./packages/dina-semantic-ui/Dockerfile -t dina-semantic-ui-docs ./packages/dina-semantic-ui;
+    docker tag dina-semantic-ui-docs dina/dina-semantic-ui-docs;
+    docker push dina/dina-semantic-ui-docs;
+
+    echo "Start dina-collections-api build";
+    docker build -f ./packages/dina-collections-api/Dockerfile -t dina-collections-api ./packages;
+    docker tag dina-collections-api dina/dina-collections-api;
+    docker push dina/dina-collections-api;
+    fi

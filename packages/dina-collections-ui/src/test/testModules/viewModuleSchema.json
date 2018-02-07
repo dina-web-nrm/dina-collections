@@ -1,0 +1,37 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "Async": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "Component": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "constants": {
+      "type": "object"
+    },
+    "markdown": {
+      "type": "object"
+    },
+    "middleware": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "shortcuts": {
+      "type": "object"
+    },
+    "name": {
+      "type": "string"
+    },
+    "translations": {
+      "type": "object"
+    }
+  },
+  "required": ["name", "Component"],
+  "type": "object"
+}

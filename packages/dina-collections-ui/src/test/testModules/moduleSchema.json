@@ -1,0 +1,74 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "actionCreators": {
+      "type": "object"
+    },
+    "actionTypes": {
+      "type": "object"
+    },
+    "components": {
+      "type": "object"
+    },
+    "constants": {
+      "type": "object"
+    },
+    "endpoints": {
+      "type": "object"
+    },
+    "enhancer": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "globalSelectors": {
+      "type": "object"
+    },
+    "higherOrderComponents": {
+      "type": "object"
+    },
+    "listener": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "markdown": {
+      "type": "object"
+    },
+    "middleware": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "name": {
+      "type": "string"
+    },
+    "notifications": {
+      "type": "object"
+    },
+    "reducer": {
+      "not": {
+        "type": "string"
+      }
+    },
+    "schemas": {
+      "type": "object"
+    },
+    "selectors": {
+      "type": "object"
+    },
+    "shortcuts": {
+      "type": "object"
+    },
+
+    "translations": {
+      "type": "object"
+    },
+
+    "utilities": {
+      "type": "object"
+    }
+  },
+  "required": ["name"],
+  "type": "object"
+}

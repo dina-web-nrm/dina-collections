@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "description": "This is a description",
+  "properties": {
+    "causeOfDeathStandardized": { "type": "string" },
+    "causeOfDeathText": { "type": "string" },
+    "featureObservations": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__featureObservation" }
+    },
+    "id": { "type": "string" },
+    "identifications": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__identification" }
+    },
+    "occurrences": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__occurrence" }
+    },
+    "originStandardized": { "type": "string" },
+    "physicalUnits": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__physicalUnit" }
+    },
+    "version": { "type": "integer" }
+  }
+}

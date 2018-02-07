@@ -3,7 +3,54 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {},
-  "author": "",
-  "license": "AGPL V3"
+  "scripts": {
+    "build": "npm-run-all -p build:dina-collections-ui build:dina-schema build:dina-semantic-ui",
+    "build:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn build && yarn build:storybook",
+    "build:dina-collections-ui:mock": "cd ./packages/dina-collections-ui && yarn build:mock && yarn build:storybook",
+    "build:dina-schema": "cd ./packages/dina-schema && yarn build",
+    "build:dina-semantic-ui": "cd ./packages/dina-semantic-ui && yarn build:docs",
+
+    "install": "yarn install:dina-schema && yarn install:dina-semantic-ui && yarn install:dina-collections-ui && yarn install:dina-collections-api && yarn install:shared",
+    "install:dina-collections-api": "cd ./packages/dina-collections-api && yarn install",
+    "install:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn install",
+    "install:dina-schema": "cd ./packages/dina-schema && yarn install",
+    "install:dina-semantic-ui": "cd ./packages/dina-semantic-ui && yarn install",
+    "install:shared": "cd ./packages/dina-shared && yarn install",
+
+    "setup": "yarn setup:env yarn install && yarn setup:links && yarn test",
+    "setup:env": "./scripts/create-env.sh",
+    "setup:links": "yarn setup:links:dina-shared && yarn setup:links:dina-collections-api && yarn setup:links:dina-collections-ui",
+    "setup:links:dina-shared": "cd ./packages/dina-shared && yarn link",
+    "setup:links:dina-collections-api": "cd ./packages/dina-collections-api && yarn link dina-shared",
+    "setup:links:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn link dina-shared",
+
+    "start:dina-collections-api": "cd ./packages/dina-collections-api && yarn start",
+    "start:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn start",
+    "start:dina-collections-ui:mock": "cd ./packages/dina-collections-ui && yarn start",
+
+    "test": "yarn test:dina-schema && yarn test:dina-collections-api && yarn test:dina-collections-ui && yarn test:dina-shared",
+    "test:dina-collections-api": "cd ./packages/dina-collections-api && yarn test",
+    "test:dina-collections-ui": "cd ./packages/dina-collections-ui && yarn test:coverage",
+    "test:dina-schema": "cd ./packages/dina-schema && yarn test",
+    "test:dina-shared": "cd ./packages/dina-shared && yarn test",
+
+    "uninstall": "yarn uninstall:dina-collections-api && yarn uninstall:dina-collections-ui && yarn uninstall:dina-schema && yarn uninstall:dina-semantic-ui && yarn uninstall:dina-shared",
+    "uninstall:dina-collections-api": "rm -rf ./packages/dina-collections-api/node_modules",
+    "uninstall:dina-collections-ui": "rm -rf ./packages/dina-collections-ui/node_modules",
+    "uninstall:dina-schema": "rm -rf ./packages/dina-schema/node_modules",
+    "uninstall:dina-semantic-ui": "rm -rf ./packages/dina-semantic-ui/node_modules",
+    "uninstall:dina-shared": "rm -rf ./packages/dina-shared/node_modules"
+  },
+  "contributors": [
+    "Anton Öberg <oberg.anton@gmail.com>",
+    "Fredrik Olovsson <fogithub@gmail.com>"
+  ],
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "npm-run-all": "^4.1.2"
+  },
+  "engines": {
+    "node": "8.9.1",
+    "yarn": "^1.3.2"
+  }
 }
