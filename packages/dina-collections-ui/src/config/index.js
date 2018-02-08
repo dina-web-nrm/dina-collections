@@ -5,7 +5,9 @@ const config = {
   isProduction: process.env.NODE_ENV === 'production',
   isTest: process.env.NODE_ENV === 'test',
   mock:
-    (process.env.ENABLE_MOCK && process.env.ENABLE_MOCK === 'true') || false,
+    (process.env.REACT_APP_ENABLE_MOCK &&
+      process.env.REACT_APP_ENABLE_MOCK === 'true') ||
+    false,
   mountApp: process.env.MOUNT_APP,
   publicUrl: process.env.PUBLIC_URL,
 }
