@@ -4,9 +4,9 @@ const createRoutes = require('./routeFactory')
 
 const log = createLog('api')
 
-const extractRouteHandlersFromModules = modules => {
-  return Object.keys(modules).reduce((routeHandlers, moduleName) => {
-    const { endpoints } = modules[moduleName]
+const extractRouteHandlersFromApis = apis => {
+  return Object.keys(apis).reduce((routeHandlers, apiName) => {
+    const { endpoints } = apis[apiName]
 
     if (!endpoints) {
       return routeHandlers
@@ -28,10 +28,10 @@ module.exports = function createApi({
   config,
   controllers,
   keycloak,
-  modules,
+  apis,
   openApiSpec,
 }) {
-  const routeHandlers = extractRouteHandlersFromModules(modules)
+  const routeHandlers = extractRouteHandlersFromApis(apis)
   const routeMocks = {}
   const apiConfig = { controllers, ...config.api, log: config.log }
 

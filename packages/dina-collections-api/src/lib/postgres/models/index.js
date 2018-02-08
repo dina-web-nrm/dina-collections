@@ -1,8 +1,8 @@
-const extractModelsFromModules = modules => {
-  return Object.keys(modules)
-    .reduce((modelFactories, moduleName) => {
-      const module = modules[moduleName]
-      const { models } = module
+const extractModelsFromApis = apis => {
+  return Object.keys(apis)
+    .reduce((modelFactories, apiName) => {
+      const api = apis[apiName]
+      const { models } = api
       if (!models) {
         return modelFactories
       }
@@ -21,8 +21,8 @@ const extractModelsFromModules = modules => {
     .filter(({ modelFactory }) => !!modelFactory)
 }
 
-module.exports = function createModels({ config, modules, sequelize }) {
-  const rawModels = extractModelsFromModules(modules)
+module.exports = function createModels({ apis, config, sequelize }) {
+  const rawModels = extractModelsFromApis(apis)
   return Promise.all(
     rawModels.map(({ name, modelFactory }) => {
       const model = modelFactory({

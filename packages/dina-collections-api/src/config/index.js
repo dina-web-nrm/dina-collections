@@ -13,7 +13,7 @@ const api = {
 
 const db = {
   database: process.env.DB_DATABASE || 'postgres',
-  flushOnRestart: false,
+  flushOnRestart: process.env.FLUSH_ON_RESATART === 'true' || false,
   password: process.env.DB_PASSWORD || 'mysecretpassword',
   url: process.env.DB_URL || '127.0.0.1:5432',
   username: process.env.DB_USERNAME || 'postgres',
@@ -24,7 +24,7 @@ const disableAuth = process.env.DISABLE_AUTH === 'true'
 const auth = {
   active: !disableAuth,
   'auth-server-url':
-    process.env.AUTH_BASE_URL || 'https://alpha-keycloak.dina-web.net/auth',
+    process.env.AUTH_BASE_URL || 'https://alpha-cm.dina-web.net/auth',
   'bearer-only': true,
   realm: 'dina',
   resource: 'collections',
@@ -40,16 +40,24 @@ const log = {
 }
 
 const test = {
+  runApiTests: process.env.API_TESTS === 'true',
   testApiUrl: process.env.TEST_API_URL || 'http://localhost:4444',
   testAuthUrl: process.env.TEST_AUTH_URL || 'https://alpha-cm.dina-web.net',
   testPassword: process.env.TEST_PASSWORD || 'xxxx',
   testUsername: process.env.TEST_USERNAME || 'xxxx',
 }
 
+const env = {
+  isDevelopment: process.env.NODE_ENV === 'development',
+  isProduction: process.env.NODE_ENV === 'production',
+  isTest: process.env.NODE_ENV === 'test',
+}
+
 module.exports = {
   api,
   auth,
   db,
+  env,
   log,
   test,
 }

@@ -1,23 +1,23 @@
-const extractControllersFromModules = modules => {
-  return Object.keys(modules).reduce((controllers, moduleName) => {
-    const controller = modules[moduleName].controller
+const extractControllersFromApis = apis => {
+  return Object.keys(apis).reduce((controllers, apiName) => {
+    const { controller } = apis[apiName]
     if (!controller) {
       return controllers
     }
     return {
       ...controllers,
-      [moduleName]: controller,
+      [apiName]: controller,
     }
   }, {})
 }
 
 module.exports = function createControllers({
+  apis,
   config,
   models,
-  modules,
   sequelize,
 }) {
-  const controllers = extractControllersFromModules(modules)
+  const controllers = extractControllersFromApis(apis)
   return Promise.resolve(
     Object.keys(controllers).reduce((obj, key) => {
       return {

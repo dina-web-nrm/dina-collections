@@ -5,27 +5,27 @@ const createApp = require('./../lib/app')
 const config = require('../config')
 const bootstrapPostgres = require('./../lib/postgres')
 const createKeycloak = require('./../lib/auth/keycloak')
-const modules = require('./modules')
+const apis = require('./apis')
 
 const log = createLog('server')
 
 bootstrapPostgres({
+  apis,
   config,
-  modules,
 })
   .then(({ controllers }) => {
     const keycloak = createKeycloak({ config })
 
-    const api = createApi({
+    const baseApi = createApi({
+      apis,
       config,
       controllers,
       keycloak,
-      modules,
       openApiSpec,
     })
 
     const app = createApp({
-      api,
+      api: baseApi,
       config,
       keycloak,
       openApiSpec,

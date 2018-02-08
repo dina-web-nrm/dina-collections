@@ -21,7 +21,7 @@
       "xfwd": true
     },
     "/collections": {
-      "target": "https://alpha-api.dina-web.net/",
+      "target": "http://127.0.0.1:4444",
       "xfwd": true,
       "changeOrigin": true
     }
@@ -60,10 +60,10 @@
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
-    "build": "yarn build-css && yarn markdown:build && ENABLE_MOCK=false react-scripts build",
+    "build": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=false react-scripts build",
     "build-css": "node-less-chokidar src/ -o src/",
     "build-snippets": "node ./src/scripts/snippets/index.js",
-    "build:mock": "yarn build-css && yarn markdown:build && ENABLE_MOCK=true react-scripts build",
+    "build:mock": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=true react-scripts build",
     "build:storybook": "yarn update-storybook-imports && build-storybook -c .storybook -o build-storybook",
     "eject": "react-scripts eject",
     "ensure-no-diff": "git diff --exit-code",
