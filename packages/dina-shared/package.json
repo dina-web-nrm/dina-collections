@@ -10,11 +10,10 @@
     "lint:js": "eslint 'src/**/*.js'",
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
-    "start": "DEBUG='DINA*' node src/server/index.js",
-    "start:watch": "DEBUG='DINA*' pm2 start src/server/index.js --watch --name postgres-server && pm2 logs",
-    "stop:watch": "pm2 stop postgres-server",
-    "test": "npm run lint:js",
-    "test:api": "API_TESTS=true jest --env=node ./src/__tests__/index.js"
+    "test": "yarn test:lint && yarn test:unit",
+    "test:lint": "yarn lint:js",
+    "test:unit": "jest --env=node",
+    "build:schema": "node ./src/utilities/schemaBuilder/index.js"
   },
   "dependencies": {
     "ajv": "^5.2.3",
@@ -33,6 +32,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
+    "jest": "^22.1.4",
     "prettier": "1.8.2"
   },
   "engines": {

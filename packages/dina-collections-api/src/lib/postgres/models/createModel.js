@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize')
-const { diff } = require('deep-diff')
+const createFactory = require('./modelMethods/createFactory')
+const getByIdFactory = require('./modelMethods/getByIdFactory')
+const getOneWhereFactory = require('./modelMethods/getOneWhereFactory')
+const updateFactory = require('./modelMethods/updateFactory')
 
 const {
   createSystemModelSchemaValidator,
@@ -7,17 +10,25 @@ const {
 
 // make model-factory more advanced
 // * add where search to get single revision
+
 module.exports = function createModel({
   name,
   sequelize,
   schemaModelName,
   schemaVersion,
+  customMethodFactories,
 }) {
-  const validate = createSystemModelSchemaValidator({
-    dataPath: 'json',
-    model: schemaModelName,
-    throwOnError: false,
-  })
+  let validate = () => {
+    return null
+  }
+  // TODO - test schema-validations
+  // inject schema
+  if (schemaModelName) {
+    validate = createSystemModelSchemaValidator({
+      model: schemaModelName,
+      throwOnError: false,
+    })
+  }
 
   const Model = sequelize.define(name, {
     diff: {
@@ -43,69 +54,50 @@ module.exports = function createModel({
     },
   })
 
-  const getById = ({ id, versionId }) => {
-    if (versionId) {
-      return Model.findOne({
-        where: {
-          id,
-          versionId,
-        },
-      })
-    }
+  const getById = getByIdFactory({
+    Model,
+  })
 
-    return Model.findOne({
-      order: [['versionId', 'DESC']],
-      where: {
-        id,
-      },
-    })
-  }
+  const getOneWhere = getOneWhereFactory({ Model })
 
-  const getOneWhere = ({ where }) => {
-    return Model.findOne({
-      order: [['versionId', 'DESC']],
-      where,
-    })
-  }
+  const create = createFactory({
+    Model,
+    schemaVersion,
+    validate,
+  })
 
-  const create = doc => {
-    const data = {
-      document: doc,
-      schemaCompliant: !validate(doc),
-      schemaVersion,
-    }
+  const update = updateFactory({
+    getById,
+    Model,
+    schemaVersion,
+    validate,
+  })
 
-    return Model.create(data).then(newModel => {
-      newModel.set('id', newModel.get('versionId'))
-      return newModel.save()
-    })
-  }
-
-  const update = ({ id, doc }) => {
-    return getById({ id }).then(existingModel => {
-      if (!existingModel) {
-        const error = new Error(`Not found for id ${id}`)
-        error.status = 404
-        throw error
-      }
-      const storedData = existingModel.get()
-      const newModel = {
-        ...storedData,
-        diff: diff(storedData.document, doc),
-        document: doc,
-        schemaCompliant: !validate(doc),
-        schemaVersion,
-      }
-      delete newModel.versionId
-      return Model.create(newModel)
-    })
-  }
-
-  return {
+  const coreMethods = {
     create,
     getById,
     getOneWhere,
     Model,
     update,
+  }
+
+  const customMethods = !customMethodFactories
+    ? {}
+    : Object.keys(customMethodFactories).reduce((methods, key) => {
+        return {
+          ...methods,
+          [key]: customMethodFactories[key]({
+            coreMethods,
+            Model,
+            schemaVersion,
+            sequelize,
+            validate,
+          }),
+        }
+      }, {})
+
+  return {
+    ...coreMethods,
+    ...customMethods,
   }
 }

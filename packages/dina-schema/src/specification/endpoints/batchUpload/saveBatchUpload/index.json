@@ -1,5 +1,0 @@
-{
-  "summary": "Save a batch upload",
-  "path": "/api/v01/batchUploads/actions/save",
-  "method": "post"
-}

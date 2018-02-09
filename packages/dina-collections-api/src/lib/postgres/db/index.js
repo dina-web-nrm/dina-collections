@@ -10,7 +10,11 @@ module.exports = function createDb({ config }) {
   }`
   const sequelize = new Sequelize(connectionString, {
     dialect: 'postgres',
-    logging: config.log.db && log.debug,
+    logging:
+      config.log.db &&
+      (entry => {
+        log.debug(entry)
+      }),
     operatorsAliases: false,
   })
 

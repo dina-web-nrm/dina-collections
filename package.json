@@ -7,7 +7,7 @@
     "build": "npm-run-all -p build:ui build:schema build:semantic-ui",
     "build:ui": "cd ./packages/dina-collections-ui && yarn build && yarn build:storybook",
     "build:ui:mock": "cd ./packages/dina-collections-ui && yarn build:mock && yarn build:storybook",
-    "build:schema": "cd ./packages/dina-schema && yarn build",
+    "build:schema": "cd ./packages/dina-shared && yarn build",
     "build:semantic-ui": "cd ./packages/dina-semantic-ui && yarn build:docs",
     "install": "yarn install:schema && yarn install:semantic-ui && yarn install:ui && yarn install:api && yarn install:shared",
     "install:api": "cd ./packages/dina-collections-api && yarn install",

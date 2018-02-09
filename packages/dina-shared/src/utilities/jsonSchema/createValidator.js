@@ -47,7 +47,6 @@ module.exports = function createModelSchemaValidator({
   return obj => {
     const objToTest = dataPath && obj ? objectPath.get(obj, dataPath) : obj
     const validate = ajv.compile(schema)
-
     const valid = validate(objToTest)
     if (valid) {
       return null

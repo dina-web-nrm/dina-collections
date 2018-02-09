@@ -17,7 +17,7 @@ const extractRouteHandlersFromApis = apis => {
       ...Object.keys(endpoints).reduce((obj, endpointName) => {
         return {
           ...obj,
-          [endpointName]: endpoints[endpointName],
+          [endpointName]: endpoints[endpointName].routeHandler,
         }
       }, {}),
     }

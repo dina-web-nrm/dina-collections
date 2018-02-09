@@ -714,284 +714,90 @@
     "description": "",
     "id": "taxon"
   },
-  "createBatchUploadResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchUpload"
-          },
-          "attributes": {
-            "$ref": "batchUpload"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "deleteBatchUploadItemResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchItem"
-          },
-          "attributes": {
-            "$ref": "batchItem"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "getBatchUploadResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchUpload"
-          },
-          "attributes": {
-            "$ref": "batchUpload"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "getBatchUploadItemResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchItem"
-          },
-          "attributes": {
-            "$ref": "batchItem"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "getBatchUploadItemsResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "array",
-        "additionalProperties": false,
-        "items": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchItem"
-            },
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
-            "attributes": {
-              "$ref": "batchItem"
-            }
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "getBatchUploadsResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "array",
-        "additionalProperties": false,
-        "items": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchUpload"
-            },
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
-            "attributes": {
-              "$ref": "batchUpload"
-            }
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "saveBatchUploadResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchUpload"
-          },
-          "attributes": {
-            "$ref": "batchUpload"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "updateBatchUploadItemResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchItem"
-          },
-          "attributes": {
-            "$ref": "batchItem"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "createCuratedLocalityResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "versionId": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
   "createIndividualGroupResponse": {
     "additionalProperties": false,
     "type": "object",
     "properties": {
       "data": {
-        "additionalProperties": false,
         "type": "object",
+        "additionalProperties": false,
         "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
           "type": {
             "type": "string",
             "default": "individualGroup"
           },
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
           "attributes": {
             "$ref": "individualGroup"
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {}
           }
         }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://domain/collections/api/v01/individualGroups"
+          }
+        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
   },
-  "getCuratedLocalityResponse": {
+  "updateIndividualGroupResponse": {
     "additionalProperties": false,
     "type": "object",
     "properties": {
       "data": {
-        "additionalProperties": false,
         "type": "object",
+        "additionalProperties": false,
         "properties": {
+          "type": {
+            "type": "string",
+            "default": "individualGroup"
+          },
           "id": {
             "type": "string",
             "example": "1234"
           },
-          "versionId": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
           "attributes": {
-            "$ref": "curatedLocality"
+            "$ref": "individualGroup"
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {}
           }
         }
-      }
-    },
-    "description": ""
-  },
-  "getCuratedLocalityByVersionResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "additionalProperties": false,
+      },
+      "links": {
         "type": "object",
         "properties": {
-          "id": {
+          "self": {
             "type": "string",
-            "example": "1234"
-          },
-          "versionId": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
+            "format": "uri",
+            "example": "https://domain/collections/api/v01/individualGroups/{id}"
           }
         }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
@@ -1005,6 +811,7 @@
         "additionalProperties": false,
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "type": {
               "type": "string",
@@ -1016,61 +823,29 @@
             },
             "attributes": {
               "$ref": "individualGroup"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
             }
           }
         }
-      }
-    },
-    "description": ""
-  },
-  "updateCuratedLocalityResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "additionalProperties": false,
+      },
+      "links": {
         "type": "object",
         "properties": {
-          "id": {
+          "self": {
             "type": "string",
-            "example": "1234"
-          },
-          "versionId": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
+            "format": "uri",
+            "example": "https://domain/collections/api/v01/individualGroups"
           }
         }
-      }
-    },
-    "description": ""
-  },
-  "updateIndividualGroupResponse": {
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "type": "string",
-            "example": "individualGroup"
-          },
-          "attributes": {
-            "$ref": "individualGroup"
-          }
-        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
@@ -1148,19 +923,196 @@
     ],
     "description": ""
   },
+  "createCuratedLocalityResponse": {
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "curatedLocality"
+          },
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://domain/localities/api/v01/curatedLocality"
+          }
+        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "description": ""
+  },
+  "getCuratedLocalityResponse": {
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "curatedLocality"
+          },
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://domain/localities/api/v01/curatedLocality/{id}"
+          }
+        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "description": ""
+  },
+  "getCuratedLocalityByVersionResponse": {
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "curatedLocality"
+          },
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://domain/localities/api/v01/curatedLocality/{id}/versions/{versionId}"
+          }
+        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "description": ""
+  },
+  "updateCuratedLocalityResponse": {
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "curatedLocality"
+          },
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "relationships": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://domain/localities/api/v01/curatedLocality/{id}"
+          }
+        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "description": ""
+  },
   "getTaxaByNameResponse": {
-    "additionalProperties": true,
+    "additionalProperties": false,
     "type": "object",
     "properties": {
       "data": {
         "type": "array",
+        "additionalProperties": false,
         "items": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "type": {
               "type": "string",
-              "default": "taxon",
-              "example": "taxon"
+              "default": "taxon"
             },
             "id": {
               "type": "string",
@@ -1168,91 +1120,73 @@
             },
             "attributes": {
               "$ref": "taxon"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
             }
           }
         }
+      },
+      "links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://domain/taxon"
+          }
+        }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
   },
   "getTaxonByIdResponse": {
-    "additionalProperties": true,
+    "additionalProperties": false,
+    "type": "object",
     "properties": {
       "data": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
           "type": {
             "type": "string",
             "default": "taxon"
           },
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
           "attributes": {
             "$ref": "taxon"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "createBatchUploadRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchUpload"
           },
-          "attributes": {
-            "$ref": "batchUpload"
+          "relationships": {
+            "type": "object",
+            "properties": {}
           }
         }
-      }
-    },
-    "description": ""
-  },
-  "updateBatchUploadItemRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "batchItem"
-          },
-          "attributes": {
-            "$ref": "batchItem"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "createCuratedLocalityRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
+      },
+      "links": {
         "type": "object",
         "properties": {
-          "type": {
+          "self": {
             "type": "string",
-            "example": "curatedLocality",
-            "default": "curatedLocality"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
+            "format": "uri",
+            "example": "https://domain/taxon/{id}"
           }
         }
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
@@ -1260,62 +1194,24 @@
   "createIndividualGroupRequest": {
     "additionalProperties": false,
     "type": "object",
+    "required": [
+      "data"
+    ],
     "properties": {
       "data": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
           "type": {
             "type": "string",
-            "example": "individualGroup",
             "default": "individualGroup"
           },
           "attributes": {
             "$ref": "individualGroup"
-          },
-          "additionalData": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "default": "catalogedUnit",
-                  "example": "catalogedUnit"
-                },
-                "id": {
-                  "type": "string",
-                  "example": "1234"
-                },
-                "attributes": {
-                  "type": "object",
-                  "properties": {
-                    "catalogNumber": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "updateCuratedLocalityRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "example": "curatedLocality",
-            "default": "curatedLocality"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
           }
         }
       }
@@ -1323,18 +1219,22 @@
     "description": ""
   },
   "updateIndividualGroupRequest": {
-    "type": "object",
     "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
     "properties": {
       "data": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string",
+            "example": "1234"
           },
           "type": {
             "type": "string",
-            "example": "individualGroup",
             "default": "individualGroup"
           },
           "attributes": {
@@ -1372,6 +1272,60 @@
       "password",
       "username"
     ],
+    "description": ""
+  },
+  "createCuratedLocalityRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "curatedLocality"
+          },
+          "attributes": {
+            "$ref": "curatedLocality"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateCuratedLocalityRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "curatedLocality"
+          },
+          "attributes": {
+            "$ref": "curatedLocality"
+          }
+        }
+      }
+    },
     "description": ""
   }
 }

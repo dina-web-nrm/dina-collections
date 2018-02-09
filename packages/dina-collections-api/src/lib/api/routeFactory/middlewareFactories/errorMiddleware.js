@@ -20,6 +20,16 @@ module.exports = function createErrorMiddleware({ apiConfig }) {
         originalKey: err.name,
       })
     }
+
+    if (err.status === 404) {
+      res.status(404)
+      return res.send({
+        errors: err.errors,
+        message: err.message || err.stack,
+        originalKey: err.name,
+      })
+    }
+
     res.status(500)
     return res.send({
       errors: err.errors,

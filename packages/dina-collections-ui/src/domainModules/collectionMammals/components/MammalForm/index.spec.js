@@ -547,7 +547,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
             featureObservationText: 'A condition at collecting',
             featureObservationType: {
               featureObservationTypeName: 'conditionAtCollecting',
-              id: 5,
+              id: '5',
             },
           },
           {
@@ -556,7 +556,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
             featureObservationText: 'male',
             featureObservationType: {
               featureObservationTypeName: 'age',
-              id: 3,
+              id: '3',
             },
             methodText: 'method text',
           },
