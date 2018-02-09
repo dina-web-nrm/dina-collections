@@ -7,10 +7,7 @@ const read = require('./read')
 const build = require('./build')
 
 const { apis, endpoints, errors, info, models, parameters, security } = read({
-  apiBasePath: path.join(
-    __dirname,
-    '../../../../dina-collections-api/src/server'
-  ),
+  apiBasePath: path.join(__dirname, '../../../../api/src/server'),
   modelBasePath: path.join(
     __dirname,
     '../../../../dina-schema/src/specification/models'
