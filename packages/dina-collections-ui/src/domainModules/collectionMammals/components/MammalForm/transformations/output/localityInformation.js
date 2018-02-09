@@ -14,6 +14,7 @@ export default function transformLocalityInformation(localityInformation) {
   const curatedLocalities = curatedLocalitiesTypes
     .map((type, index) => {
       const id =
+        localityInformation.curatedLocalities &&
         localityInformation.curatedLocalities[index] &&
         localityInformation.curatedLocalities[index].id
       if (id !== undefined) {

@@ -24,8 +24,11 @@
       "name": "collectionsApi"
     },
     {
-      "description": "Description of keycloak\n",
-      "name": "keycloak"
+      "description": "Description of auth api\n",
+      "name": "authApi"
+    },
+    {
+      "name": "localityApi"
     },
     {
       "description": "Description of slim taxonomy\n",
@@ -722,139 +725,49 @@
       "x-category": "other",
       "x-modelType": "model"
     },
-    "createBatchUploadRequest": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchUpload"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchUpload"
-            }
-          }
-        }
-      }
-    },
-    "updateBatchUploadItemRequest": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchItem"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchItem"
-            }
-          }
-        }
-      }
-    },
-    "createCuratedLocalityRequest": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "example": "curatedLocality",
-              "default": "curatedLocality"
-            },
-            "attributes": {
-              "$ref": "#/definitions/curatedLocality"
-            }
-          }
-        }
-      }
-    },
     "createIndividualGroupRequest": {
       "additionalProperties": false,
       "type": "object",
+      "required": [
+        "data"
+      ],
       "properties": {
         "data": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
             "type": {
               "type": "string",
-              "example": "individualGroup",
               "default": "individualGroup"
             },
             "attributes": {
               "$ref": "#/definitions/individualGroup"
-            },
-            "additionalData": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "default": "catalogedUnit",
-                    "example": "catalogedUnit"
-                  },
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "attributes": {
-                    "type": "object",
-                    "properties": {
-                      "catalogNumber": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "updateCuratedLocalityRequest": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "example": "curatedLocality",
-              "default": "curatedLocality"
-            },
-            "attributes": {
-              "$ref": "#/definitions/curatedLocality"
             }
           }
         }
       }
     },
     "updateIndividualGroupRequest": {
-      "type": "object",
       "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "data"
+      ],
       "properties": {
         "data": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
             "id": {
-              "type": "integer"
+              "type": "string",
+              "example": "1234"
             },
             "type": {
               "type": "string",
-              "example": "individualGroup",
               "default": "individualGroup"
             },
             "attributes": {
@@ -892,185 +805,44 @@
         "username"
       ]
     },
-    "createBatchUploadResponse": {
+    "createCuratedLocalityRequest": {
       "additionalProperties": false,
       "type": "object",
+      "required": [
+        "data"
+      ],
       "properties": {
         "data": {
           "type": "object",
           "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchUpload"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchUpload"
-            }
-          }
-        }
-      }
-    },
-    "deleteBatchUploadItemResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchItem"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchItem"
-            }
-          }
-        }
-      }
-    },
-    "getBatchUploadResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchUpload"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchUpload"
-            }
-          }
-        }
-      }
-    },
-    "getBatchUploadItemResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchItem"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchItem"
-            }
-          }
-        }
-      }
-    },
-    "getBatchUploadItemsResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "additionalProperties": false,
-          "items": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "default": "batchItem"
-              },
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "attributes": {
-                "$ref": "#/definitions/batchItem"
-              }
-            }
-          }
-        }
-      }
-    },
-    "getBatchUploadsResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "additionalProperties": false,
-          "items": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "default": "batchUpload"
-              },
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "attributes": {
-                "$ref": "#/definitions/batchUpload"
-              }
-            }
-          }
-        }
-      }
-    },
-    "saveBatchUploadResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchUpload"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchUpload"
-            }
-          }
-        }
-      }
-    },
-    "updateBatchUploadItemResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "batchItem"
-            },
-            "attributes": {
-              "$ref": "#/definitions/batchItem"
-            }
-          }
-        }
-      }
-    },
-    "createCuratedLocalityResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "additionalProperties": false,
-          "type": "object",
           "properties": {
             "id": {
               "type": "string",
               "example": "1234"
             },
-            "versionId": {
+            "type": {
+              "type": "string",
+              "default": "curatedLocality"
+            },
+            "attributes": {
+              "$ref": "#/definitions/curatedLocality"
+            }
+          }
+        }
+      }
+    },
+    "updateCuratedLocalityRequest": {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "data"
+      ],
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
               "type": "string",
               "example": "1234"
             },
@@ -1090,75 +862,84 @@
       "type": "object",
       "properties": {
         "data": {
-          "additionalProperties": false,
           "type": "object",
+          "additionalProperties": false,
           "properties": {
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
             "type": {
               "type": "string",
               "default": "individualGroup"
             },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
             "attributes": {
               "$ref": "#/definitions/individualGroup"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
             }
           }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/collections/api/v01/individualGroups"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
         }
       }
     },
-    "getCuratedLocalityResponse": {
+    "updateIndividualGroupResponse": {
       "additionalProperties": false,
       "type": "object",
       "properties": {
         "data": {
-          "additionalProperties": false,
           "type": "object",
+          "additionalProperties": false,
           "properties": {
+            "type": {
+              "type": "string",
+              "default": "individualGroup"
+            },
             "id": {
               "type": "string",
               "example": "1234"
             },
-            "versionId": {
-              "type": "string",
-              "example": "1234"
-            },
-            "type": {
-              "type": "string",
-              "default": "curatedLocality"
-            },
             "attributes": {
-              "$ref": "#/definitions/curatedLocality"
+              "$ref": "#/definitions/individualGroup"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
             }
           }
-        }
-      }
-    },
-    "getCuratedLocalityByVersionResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "additionalProperties": false,
+        },
+        "links": {
           "type": "object",
           "properties": {
-            "id": {
+            "self": {
               "type": "string",
-              "example": "1234"
-            },
-            "versionId": {
-              "type": "string",
-              "example": "1234"
-            },
-            "type": {
-              "type": "string",
-              "default": "curatedLocality"
-            },
-            "attributes": {
-              "$ref": "#/definitions/curatedLocality"
+              "format": "uri",
+              "example": "https://domain/collections/api/v01/individualGroups/{id}"
             }
           }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
         }
       }
     },
@@ -1171,6 +952,7 @@
           "additionalProperties": false,
           "items": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
               "type": {
                 "type": "string",
@@ -1182,59 +964,29 @@
               },
               "attributes": {
                 "$ref": "#/definitions/individualGroup"
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {}
               }
             }
           }
-        }
-      }
-    },
-    "updateCuratedLocalityResponse": {
-      "additionalProperties": false,
-      "type": "object",
-      "properties": {
-        "data": {
-          "additionalProperties": false,
+        },
+        "links": {
           "type": "object",
           "properties": {
-            "id": {
+            "self": {
               "type": "string",
-              "example": "1234"
-            },
-            "versionId": {
-              "type": "string",
-              "example": "1234"
-            },
-            "type": {
-              "type": "string",
-              "default": "curatedLocality"
-            },
-            "attributes": {
-              "$ref": "#/definitions/curatedLocality"
+              "format": "uri",
+              "example": "https://domain/collections/api/v01/individualGroups"
             }
           }
-        }
-      }
-    },
-    "updateIndividualGroupResponse": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "data": {
-          "additionalProperties": false,
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
-            "type": {
-              "type": "string",
-              "example": "individualGroup"
-            },
-            "attributes": {
-              "$ref": "#/definitions/individualGroup"
-            }
-          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
         }
       }
     },
@@ -1309,19 +1061,192 @@
         "access_token"
       ]
     },
+    "createCuratedLocalityResponse": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "curatedLocality"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "#/definitions/curatedLocality"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/localities/api/v01/curatedLocality"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
+        }
+      }
+    },
+    "getCuratedLocalityResponse": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "curatedLocality"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "#/definitions/curatedLocality"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/localities/api/v01/curatedLocality/{id}"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
+        }
+      }
+    },
+    "getCuratedLocalityByVersionResponse": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "curatedLocality"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "#/definitions/curatedLocality"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/localities/api/v01/curatedLocality/{id}/versions/{versionId}"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
+        }
+      }
+    },
+    "updateCuratedLocalityResponse": {
+      "additionalProperties": false,
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "curatedLocality"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "#/definitions/curatedLocality"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/localities/api/v01/curatedLocality/{id}"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
+        }
+      }
+    },
     "getTaxaByNameResponse": {
-      "additionalProperties": true,
+      "additionalProperties": false,
       "type": "object",
       "properties": {
         "data": {
           "type": "array",
+          "additionalProperties": false,
           "items": {
             "type": "object",
+            "additionalProperties": false,
             "properties": {
               "type": {
                 "type": "string",
-                "default": "taxon",
-                "example": "taxon"
+                "default": "taxon"
               },
               "id": {
                 "type": "string",
@@ -1329,282 +1254,79 @@
               },
               "attributes": {
                 "$ref": "#/definitions/taxon"
+              },
+              "relationships": {
+                "type": "object",
+                "properties": {}
               }
             }
           }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/taxon"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
         }
       }
     },
     "getTaxonByIdResponse": {
-      "additionalProperties": true,
+      "additionalProperties": false,
+      "type": "object",
       "properties": {
         "data": {
           "type": "object",
+          "additionalProperties": false,
           "properties": {
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
             "type": {
               "type": "string",
               "default": "taxon"
             },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
             "attributes": {
               "$ref": "#/definitions/taxon"
+            },
+            "relationships": {
+              "type": "object",
+              "properties": {}
             }
           }
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "self": {
+              "type": "string",
+              "format": "uri",
+              "example": "https://domain/taxon/{id}"
+            }
+          }
+        },
+        "jsonapi": {
+          "type": "object"
+        },
+        "meta": {
+          "type": "object"
         }
       }
     }
   },
   "paths": {
-    "/api/v01/batchUploads": {
-      "post": {
-        "operationId": "createBatchUpload",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "createBatchUploadRequest",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/createBatchUploadRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/createBatchUploadResponse"
-            }
-          }
-        },
-        "summary": "Create a batch upload",
-        "tags": [
-          "batchUpload"
-        ]
-      },
-      "get": {
-        "operationId": "getBatchUploads",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/getBatchUploadsResponse"
-            }
-          }
-        },
-        "summary": "Get batchUploads",
-        "tags": [
-          "batchUpload"
-        ]
-      }
-    },
-    "/api/v01/batchUploads/{id}/items/{itemId}": {
-      "delete": {
-        "operationId": "deleteBatchUploadItem",
-        "parameters": [
-          {
-            "description": "Batch upload id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Batch upload item id",
-            "in": "path",
-            "name": "itemId",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/deleteBatchUploadItemResponse"
-            }
-          }
-        },
-        "summary": "Delete a batch upload item",
-        "tags": [
-          "batchUpload"
-        ]
-      },
-      "get": {
-        "operationId": "getBatchUploadItem",
-        "parameters": [
-          {
-            "description": "Batch upload id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Batch upload item id",
-            "in": "path",
-            "name": "itemId",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/getBatchUploadItemResponse"
-            }
-          }
-        },
-        "summary": "Get a batch update item by itemId",
-        "tags": [
-          "batchUpload"
-        ]
-      },
-      "put": {
-        "operationId": "updateBatchUploadItem",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "updateBatchUploadItemRequest",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/updateBatchUploadItemRequest"
-            }
-          },
-          {
-            "description": "Batch upload id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Batch upload item id",
-            "in": "path",
-            "name": "itemId",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/updateBatchUploadItemResponse"
-            }
-          }
-        },
-        "summary": "Get a batch update by id",
-        "tags": [
-          "batchUpload"
-        ]
-      }
-    },
-    "/api/v01/batchUploads/{id}": {
-      "get": {
-        "operationId": "getBatchUpload",
-        "parameters": [
-          {
-            "description": "Batch upload id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/getBatchUploadResponse"
-            }
-          }
-        },
-        "summary": "Get a batch update by id",
-        "tags": [
-          "batchUpload"
-        ]
-      }
-    },
-    "/api/v01/batchUploads/{id}/items": {
-      "get": {
-        "operationId": "getBatchUploadItems",
-        "parameters": [
-          {
-            "description": "Batch upload id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/getBatchUploadItemsResponse"
-            }
-          }
-        },
-        "summary": "Get batchUpload items",
-        "tags": [
-          "batchUpload"
-        ]
-      }
-    },
-    "/api/v01/batchUploads/actions/save": {
-      "post": {
-        "operationId": "saveBatchUpload",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/saveBatchUploadResponse"
-            }
-          }
-        },
-        "summary": "Save a batch upload",
-        "tags": [
-          "batchUpload"
-        ]
-      }
-    },
-    "/collections/api/v01/curatedLocality": {
-      "post": {
-        "description": "Create a curatedLocality\n",
-        "operationId": "createCuratedLocality",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "createCuratedLocalityRequest",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/createCuratedLocalityRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/createCuratedLocalityResponse"
-            }
-          }
-        },
-        "summary": "Create a curatedLocality",
-        "tags": [
-          "collectionsApi"
-        ]
-      }
-    },
     "/collections/api/v01/individualGroups": {
       "post": {
-        "description": "This endpoint is for the moment used to register mammals in the mammal\nregistration form\n",
         "operationId": "createIndividualGroup",
         "parameters": [
           {
@@ -1630,31 +1352,8 @@
         ]
       },
       "get": {
-        "description": "Makes it possible to fetch an individualGroup based on\ncatalogedUnit.catalogNumber OR identification.identifiedTaxonNameStandardized\n\nMore information to come\n",
         "operationId": "getIndividualGroups",
-        "parameters": [
-          {
-            "description": "catalog number used to filter individualGroups",
-            "in": "query",
-            "name": "filter[catalogNumber]",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "description": "Standardized taxon name used to filter individualGroups",
-            "in": "query",
-            "name": "filter[identifiedTaxonNameStandardized]",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "description": "sub models to include in a comma separated list",
-            "in": "query",
-            "name": "include",
-            "required": false,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1669,100 +1368,8 @@
         ]
       }
     },
-    "/collections/api/v01/curatedLocality/{id}": {
-      "get": {
-        "operationId": "getCuratedLocality",
-        "parameters": [
-          {
-            "description": "Curated locality id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/getCuratedLocalityResponse"
-            }
-          }
-        },
-        "summary": "Find latest version of a curatedLocality",
-        "tags": [
-          "collectionsApi"
-        ]
-      },
-      "put": {
-        "operationId": "updateCuratedLocality",
-        "parameters": [
-          {
-            "in": "body",
-            "name": "updateCuratedLocalityRequest",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/updateCuratedLocalityRequest"
-            }
-          },
-          {
-            "description": "curatedLocality id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/updateCuratedLocalityResponse"
-            }
-          }
-        },
-        "summary": "Update an curatedLocality id",
-        "tags": [
-          "collectionsApi"
-        ]
-      }
-    },
-    "/collections/api/v01/curatedLocality/{id}/versions/${versionId}": {
-      "get": {
-        "operationId": "getCuratedLocalityByVersion",
-        "parameters": [
-          {
-            "description": "Curated locality id",
-            "in": "path",
-            "name": "id",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "description": "Curated locality versionId",
-            "in": "path",
-            "name": "versionId",
-            "required": true,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-            "schema": {
-              "$ref": "#/definitions/getCuratedLocalityByVersionResponse"
-            }
-          }
-        },
-        "summary": "Find latest version of a curatedLocality",
-        "tags": [
-          "collectionsApi"
-        ]
-      }
-    },
     "/collections/api/v01/individualGroups/{id}": {
-      "patch": {
-        "description": "This endpoint is for the moment used to edit mammals in the mammal specimen form\n",
+      "put": {
         "operationId": "updateIndividualGroup",
         "parameters": [
           {
@@ -1774,11 +1381,11 @@
             }
           },
           {
-            "description": "Individual group id",
+            "description": "individualGroup id",
             "in": "path",
             "name": "id",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
@@ -1809,7 +1416,7 @@
         },
         "summary": "Gets user object",
         "tags": [
-          "keycloak"
+          "authApi"
         ]
       }
     },
@@ -1836,30 +1443,132 @@
         },
         "summary": "Gets user token",
         "tags": [
-          "keycloak"
+          "authApi"
+        ]
+      }
+    },
+    "/localities/api/v01/curatedLocality": {
+      "post": {
+        "operationId": "createCuratedLocality",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createCuratedLocalityRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createCuratedLocalityRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/createCuratedLocalityResponse"
+            }
+          }
+        },
+        "summary": "Create a curatedLocality",
+        "tags": [
+          "localityApi"
+        ]
+      }
+    },
+    "/localities/api/v01/curatedLocality/{id}": {
+      "get": {
+        "operationId": "getCuratedLocality",
+        "parameters": [
+          {
+            "description": "curatedLocality id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/getCuratedLocalityResponse"
+            }
+          }
+        },
+        "summary": "Find latest version of a curatedLocality",
+        "tags": [
+          "localityApi"
+        ]
+      },
+      "put": {
+        "operationId": "updateCuratedLocality",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "updateCuratedLocalityRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateCuratedLocalityRequest"
+            }
+          },
+          {
+            "description": "curatedLocality id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/updateCuratedLocalityResponse"
+            }
+          }
+        },
+        "summary": "Update an curatedLocality id",
+        "tags": [
+          "localityApi"
+        ]
+      }
+    },
+    "/localities/api/v01/curatedLocality/{id}/versions/{versionId}": {
+      "get": {
+        "operationId": "getCuratedLocalityByVersion",
+        "parameters": [
+          {
+            "description": "curatedLocality id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "curatedLocality versionId",
+            "in": "path",
+            "name": "versionId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/getCuratedLocalityByVersionResponse"
+            }
+          }
+        },
+        "summary": "Find a curatedLocality by version",
+        "tags": [
+          "localityApi"
         ]
       }
     },
     "/taxon": {
       "get": {
-        "description": "Fetches a taxon or several taxa.\n",
         "operationId": "getTaxaByName",
-        "parameters": [
-          {
-            "description": "Taxon name - accepted scientific, synonym or vernacular name",
-            "in": "query",
-            "name": "filter[name]",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Search type - exact (default) or partial",
-            "in": "query",
-            "name": "search_type",
-            "required": false,
-            "type": "string"
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1876,11 +1585,10 @@
     },
     "/taxon/{id}": {
       "get": {
-        "description": "Fetches a taxon by id.\n",
         "operationId": "getTaxonById",
         "parameters": [
           {
-            "description": "Taxon id",
+            "description": "taxon id",
             "in": "path",
             "name": "id",
             "required": true,
