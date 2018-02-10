@@ -23,13 +23,13 @@ after_success:
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
     yarn build:ui;
     echo "Start dina-collections-ui build";
-    docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui ./packages/dina-collections-ui;
+    docker build -f ./packages/ui/Dockerfile -t dina-collections-ui ./packages/ui;
     docker tag dina-collections-ui dina/dina-collections-ui;
     docker push dina/dina-collections-ui;
 
     echo "Start dina-collections-ui mock build";
     yarn build:ui:mock;
-    docker build -f ./packages/dina-collections-ui/Dockerfile -t dina-collections-ui-mock ./packages/dina-collections-ui;
+    docker build -f ./packages/ui/Dockerfile -t dina-collections-ui-mock ./packages/ui;
     docker tag dina-collections-ui-mock dina/dina-collections-ui-mock;
     docker push dina/dina-collections-ui-mock;
 
@@ -41,7 +41,7 @@ after_success:
 
     yarn uninstall;
     echo "Start dina-collections-api build";
-    docker build -f ./packages/dina-collections-api/Dockerfile -t dina-collections-api ./packages;
+    docker build -f ./packages/api/Dockerfile -t api ./packages;
     docker tag dina-collections-api dina/dina-collections-api;
     docker push dina/dina-collections-api;
     fi

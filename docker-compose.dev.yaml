@@ -48,7 +48,7 @@ services:
     env_file:
       - ./env/.api
 
-    command: pm2-runtime start /etc/dina-collections-api/src/server/index.js
+    command: pm2-runtime start /etc/api/src/server/index.js
     depends_on:
       - postgres
 
