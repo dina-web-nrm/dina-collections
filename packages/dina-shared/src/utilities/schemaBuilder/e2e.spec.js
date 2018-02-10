@@ -10,7 +10,7 @@ const { apis, endpoints, errors, info, models, parameters, security } = read({
   apiBasePath: path.join(__dirname, '../../../../api/src/server'),
   modelBasePath: path.join(
     __dirname,
-    '../../../../dina-schema/src/specification/models'
+    '../../../../models/src/specification/models'
   ),
 })
 const { openApi, swagger } = build({

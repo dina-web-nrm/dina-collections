@@ -80,7 +80,7 @@
     "test": "yarn update-storybook-imports && yarn lint:js && react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
     "test:unit:watch": "react-scripts test --env=jsdom --watch",
-    "update-git-dependencies": "yarn upgrade dina-schema && yarn upgrade semantic-ui",
+    "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "update-storybook-imports": "node ./src/scripts/storybook/createStorybookImports",
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"
   },

@@ -35,8 +35,5 @@ function main({ modelBasePath, apiBasePath }) {
 
 main({
   apiBasePath: path.join(__dirname, '../../../../api/src/server'),
-  modelBasePath: path.join(
-    __dirname,
-    '../../../../dina-schema/src/specification/models'
-  ),
+  modelBasePath: path.join(__dirname, '../../../../models/src'),
 })

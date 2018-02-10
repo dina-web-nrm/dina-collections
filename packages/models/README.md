@@ -28,13 +28,13 @@ nvm alias default v8.9.1
 5. Clone the repository
 
 ```
-git clone https://github.com/DINA-Web/dina-schema.git
+git clone https://github.com/DINA-Web/models.git
 ```
 
 6. Move into directory
 
 ```
-cd dina-schema
+cd models
 ```
 
 7. Install dependencies
