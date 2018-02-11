@@ -16,7 +16,7 @@ The [DINA Collections UI](https://github.com/DINA-Web/ui) and future application
 {
   dependencies: {
   ...
-  "semantic-ui": "https://github.com/DINA-Web/dina-semantic-ui.git",
+  "semantic-ui": "https://github.com/DINA-Web/dina-style.git",
   ...
   }
 }
@@ -36,7 +36,7 @@ import 'semantic-ui/dist/semantic.css'
 3. Clone repository
 
 ```
-git clone https://github.com/DINA-Web/dina-semantic-ui.git
+git clone https://github.com/DINA-Web/dina-style.git
 ```
 
 4. Install `gulp` globally

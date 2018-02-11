@@ -1,11 +1,11 @@
 require('isomorphic-fetch')
 
-const jsonApiSchema = require('dina-shared/src/utilities/apiClient/schemas/jsonApi')
+const jsonApiSchema = require('common/src/utilities/apiClient/schemas/jsonApi')
 const {
   createSystemModelSchemaValidator,
-} = require('dina-shared/src/utilities/error')
-const createEndpoint = require('dina-shared/src/utilities/endpointFactory/server')
-const createApiClient = require('dina-shared/src/utilities/apiClient')
+} = require('common/src/utilities/error')
+const createEndpoint = require('common/src/utilities/endpointFactory/server')
+const createApiClient = require('common/src/utilities/apiClient')
 
 const config = require('../../config')
 

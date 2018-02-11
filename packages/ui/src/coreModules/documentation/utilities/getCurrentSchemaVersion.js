@@ -1,4 +1,4 @@
-const versionInfo = require('dina-shared/dist/versions/info.json')
+const versionInfo = require('common/dist/versions/info.json')
 
 export default function getCurrentSchemaVersion() {
   return versionInfo.current

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import MarkdownToHtmlAsync from 'coreModules/i18n/components/MarkdownToHtmlAsync'
 import { Segment } from 'semantic-ui-react'
 
-const specifications = require('dina-shared/dist/versions')
+const specifications = require('common/dist/versions')
 
 const propTypes = {
   match: PropTypes.shape({

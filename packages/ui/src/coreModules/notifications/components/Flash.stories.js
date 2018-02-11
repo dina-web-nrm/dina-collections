@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies, react/style-prop-object */
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import 'dina-shared/dist/semantic.css' // eslint-disable-line
+import 'common/dist/semantic.css' // eslint-disable-line
 import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import { action } from '@storybook/addon-actions'
 import withInfo from 'utilities/test/customStorybookWithInfo'

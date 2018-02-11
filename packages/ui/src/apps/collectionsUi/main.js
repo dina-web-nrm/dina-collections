@@ -1,5 +1,5 @@
 import rootConfig from 'config'
-import 'dina-shared/dist/semantic.css' // eslint-disable-line
+import 'common/dist/semantic.css' // eslint-disable-line
 import 'whatwg-fetch'
 import createStore from 'store/index'
 import { I18nProvider } from 'coreModules/i18n/components'

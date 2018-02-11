@@ -1,4 +1,4 @@
-const openApiSpec = require('dina-shared/dist/openApi.json')
+const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('./../utilities/log')
 const createApi = require('./../lib/api')
 const createApp = require('./../lib/app')

@@ -11,7 +11,7 @@
     "debug": "^3.1.0",
     "deep-diff": "^0.3.8",
     "depcheck": "^0.6.8",
-    "dina-shared": "file:../dina-shared",
+    "common": "file:../common",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",

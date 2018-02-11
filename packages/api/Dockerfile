@@ -5,7 +5,7 @@ RUN apk update && apk add bash
 # Bundle APP files
 # Note that context need to be packages
 COPY api /etc/api/
-COPY dina-shared /etc/dina-shared/
+COPY common /etc/common/
 
 # Install app dependencies
 ENV NPM_CONFIG_LOGLEVEL warn

@@ -15,7 +15,7 @@
     "Anton Öberg <oberg.anton@gmail.com>"
   ],
   "dependencies": {
-    "dina-shared": "file:../dina-shared"
+    "common": "file:../common"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",

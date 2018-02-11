@@ -35,7 +35,7 @@ after_success:
 
     echo "Start dina-semantic-ui build";
     yarn build:semantic-ui;
-    docker build -f ./packages/dina-semantic-ui/Dockerfile -t dina-semantic-ui-docs ./packages/dina-semantic-ui;
+    docker build -f ./packages/dina-style/Dockerfile -t dina-semantic-ui-docs ./packages/dina-style;
     docker tag dina-semantic-ui-docs dina/dina-semantic-ui-docs;
     docker push dina/dina-semantic-ui-docs;
 

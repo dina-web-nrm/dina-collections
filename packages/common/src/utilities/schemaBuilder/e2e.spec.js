@@ -8,10 +8,7 @@ const build = require('./build')
 
 const { apis, endpoints, errors, info, models, parameters, security } = read({
   apiBasePath: path.join(__dirname, '../../../../api/src/server'),
-  modelBasePath: path.join(
-    __dirname,
-    '../../../../models/src/specification/models'
-  ),
+  modelBasePath: path.join(__dirname, '../../../../models/src'),
 })
 const { openApi, swagger } = build({
   apis,

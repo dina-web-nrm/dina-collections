@@ -2,7 +2,7 @@
 import config from 'config'
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import 'dina-shared/dist/semantic.css' // eslint-disable-line
+import 'common/dist/semantic.css' // eslint-disable-line
 import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import withInfo from 'utilities/test/customStorybookWithInfo'
 import ShortcutsDisplay from './ShortcutsDisplay'

@@ -6,7 +6,7 @@ const updateFactory = require('./modelMethods/updateFactory')
 
 const {
   createSystemModelSchemaValidator,
-} = require('dina-shared/src/utilities/error')
+} = require('common/src/utilities/error')
 
 // make model-factory more advanced
 // * add where search to get single revision
