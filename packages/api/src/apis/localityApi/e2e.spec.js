@@ -1,5 +1,5 @@
-const apiDescribe = require('../../../utilities/test/apiDescribe')
-const { makeTestCall } = require('../../../utilities/test/testApiClient')
+const apiDescribe = require('../../utilities/test/apiDescribe')
+const { makeTestCall } = require('../../utilities/test/testApiClient')
 
 const simpleCuratedLocality = {
   data: {

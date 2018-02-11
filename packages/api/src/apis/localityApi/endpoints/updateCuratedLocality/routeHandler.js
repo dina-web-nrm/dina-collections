@@ -1,4 +1,4 @@
-const createObjectResponse = require('../../../../../lib/api/utilities/createObjectResponse')
+const createObjectResponse = require('../../../../lib/api/utilities/createObjectResponse')
 
 module.exports = function updateCuratedLocality({ controllers, request }) {
   return controllers.localityApi

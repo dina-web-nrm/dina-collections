@@ -34,6 +34,6 @@ function main({ modelBasePath, apiBasePath }) {
 }
 
 main({
-  apiBasePath: path.join(__dirname, '../../../../api/src/server'),
+  apiBasePath: path.join(__dirname, '../../../../api/src'),
   modelBasePath: path.join(__dirname, '../../../../models/src'),
 })

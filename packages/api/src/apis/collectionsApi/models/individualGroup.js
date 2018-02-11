@@ -1,4 +1,4 @@
-const createModel = require('../../../../lib/postgres/models/createModel')
+const createModel = require('../../../lib/postgres/models/createModel')
 const getAllByTaxonNameFactory = require('./modelMethods/getAllByTaxonNameFactory')
 
 module.exports = function createIndividualGroup({ sequelize }) {
