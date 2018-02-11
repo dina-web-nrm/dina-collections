@@ -16,8 +16,8 @@ const {
   security,
   servers,
 } = read({
-  apiBasePath: path.join(__dirname, '../../../../api/src'),
-  modelBasePath: path.join(__dirname, '../../../../models/src'),
+  apiBasePath: path.join(__dirname, '../../../api/src'),
+  modelBasePath: path.join(__dirname, '../../../models/src'),
 })
 const { openApi, swagger } = build({
   apis,

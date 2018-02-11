@@ -1,4 +1,4 @@
-const openApiSpec = require('../../../dist/openApi.json')
+const openApiSpec = require('../../dist/openApi.json')
 const { createSystemModelSchemaValidator } = require('../error')
 const createMockGenerator = require('../jsonSchema/createMockGenerator')
 

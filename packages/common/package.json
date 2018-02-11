@@ -13,7 +13,7 @@
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "yarn lint:js",
     "test:unit": "jest --env=node",
-    "build:schema": "node ./src/utilities/schemaBuilder/index.js"
+    "build:schema": "node ./src/schemaBuilder/index.js"
   },
   "dependencies": {
     "ajv": "^5.2.3",

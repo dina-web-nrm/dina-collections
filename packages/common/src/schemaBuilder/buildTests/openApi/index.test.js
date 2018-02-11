@@ -1,6 +1,6 @@
 const Ajv = require('ajv')
 const openApiSchema = require('../schemas/openApi.json')
-const openApi = require('../../../../../dist/openApi.json')
+const openApi = require('../../../../dist/openApi.json')
 
 describe('buildTests/openApi', () => {
   let ajv

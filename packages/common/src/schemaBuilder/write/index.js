@@ -59,7 +59,7 @@ const ensureDirectoryExistence = dirPath => {
 module.exports = function write(
   { models, openApi, setCurrent, swagger, version = '' } = {}
 ) {
-  const buildDirectory = path.join(__dirname, '../../../../../common/dist')
+  const buildDirectory = path.join(__dirname, '../../../common/dist')
   const versionsBaseDirectory = path.join(buildDirectory, 'versions')
   const baseDirectory = version
     ? path.join(versionsBaseDirectory, version)

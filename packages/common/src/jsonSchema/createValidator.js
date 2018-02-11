@@ -1,6 +1,6 @@
 const objectPath = require('object-path')
 const Ajv = require('ajv')
-const models = require('../../../dist/models.json')
+const models = require('../../dist/models.json')
 
 const defaultOptions = {
   allErrors: true,
