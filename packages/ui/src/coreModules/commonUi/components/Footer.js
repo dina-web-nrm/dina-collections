@@ -62,9 +62,9 @@ export default () => {
                 </List.Item>
                 <List.Item>
                   <List.Content>
-                    <a href="https://github.com/DINA-Web/dina-collections-ui">
+                    <a href="https://github.com/DINA-Web/dina-collections">
                       <Icon name="github" />
-                      Collections ui Github
+                      Collections on Github
                     </a>
                   </List.Content>
                 </List.Item>
@@ -77,7 +77,7 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
-                    <a href="https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/openApi.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0">
+                    <a href="https://alpha-api.dina-web.net/docs">
                       Api documentation
                     </a>
                   </List.Content>
