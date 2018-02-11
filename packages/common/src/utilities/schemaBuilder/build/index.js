@@ -10,6 +10,7 @@ module.exports = function build({
   models,
   parameters,
   security,
+  servers,
 }) {
   const openApi = createOpenApi({
     apis,
@@ -19,6 +20,7 @@ module.exports = function build({
     models,
     parameters,
     security,
+    servers,
   })
 
   const swagger = createSwagger({
@@ -29,6 +31,7 @@ module.exports = function build({
     models,
     parameters,
     security,
+    servers,
   })
 
   const cleanModels = createModels({

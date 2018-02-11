@@ -4,7 +4,16 @@ const write = require('./write')
 const build = require('./build')
 
 function main({ modelBasePath, apiBasePath }) {
-  const { apis, endpoints, errors, info, models, parameters, security } = read({
+  const {
+    apis,
+    endpoints,
+    errors,
+    info,
+    models,
+    parameters,
+    security,
+    servers,
+  } = read({
     apiBasePath,
     modelBasePath,
   })
@@ -16,6 +25,7 @@ function main({ modelBasePath, apiBasePath }) {
     models,
     parameters,
     security,
+    servers,
   })
 
   write({

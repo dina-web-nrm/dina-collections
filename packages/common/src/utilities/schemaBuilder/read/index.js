@@ -2,6 +2,7 @@ const path = require('path')
 const readEndpoints = require('./readEndpoints')
 const readErrors = require('./readErrors')
 const readInfo = require('./readInfo')
+const readServers = require('./readServers')
 const readModels = require('./readModels')
 // const readParameters = require('./readParameters')
 const readApis = require('./readApis')
@@ -15,6 +16,7 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
   const info = readInfo(infoPath)
   const models = readModels(modelBasePath)
   const apis = readApis(path.join(apiBasePath, 'apis'))
+  const servers = readServers(path.join(apiBasePath, 'info', 'servers'))
   const parameters = {}
   const security = readSecurity()
   return {
@@ -25,5 +27,6 @@ module.exports = function read({ modelBasePath, apiBasePath }) {
     models,
     parameters,
     security,
+    servers,
   }
 }
