@@ -326,13 +326,13 @@ exports[`Storyshots coreModules/commonUi/Footer Default 1`] = `
                   className="content"
                 >
                   <a
-                    href="https://github.com/DINA-Web/dina-collections-ui"
+                    href="https://github.com/DINA-Web/dina-collections"
                   >
                     <i
                       aria-hidden="true"
                       className="github icon"
                     />
-                    Collections ui Github
+                    Collections on Github
                   </a>
                 </div>
               </div>
@@ -370,7 +370,7 @@ exports[`Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="external icon"
                   />
                   <a
-                    href="https://alpha-api-docs.dina-web.net/?url=https://alpha-api-docs.dina-web.net/openApi.json&docExpansion=false&defaultModelRendering=model&defaultModelExpandDepth=0"
+                    href="https://alpha-api.dina-web.net/docs"
                   >
                     Api documentation
                   </a>
