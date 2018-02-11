@@ -1353,7 +1353,29 @@
       },
       "get": {
         "operationId": "getIndividualGroups",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "catalog number used to filter individualGroups",
+            "in": "query",
+            "name": "filter[catalogNumber]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "Standardized taxon name used to filter individualGroups",
+            "in": "query",
+            "name": "filter[identifiedTaxonNameStandardized]",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "sub models to include in a comma separated list",
+            "in": "query",
+            "name": "include",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1568,7 +1590,22 @@
     "/taxon": {
       "get": {
         "operationId": "getTaxaByName",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "Taxon name - accepted scientific, synonym or vernacular name",
+            "in": "query",
+            "name": "filter[name]",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Search type - exact (default) or partial",
+            "in": "query",
+            "name": "search_type",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "successful operation",
