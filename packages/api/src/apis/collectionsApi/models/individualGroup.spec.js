@@ -1,9 +1,9 @@
-const createDb = require('../../../../lib/postgres/db')
-const syncModels = require('../../../../lib/postgres/models/syncModels')
-const config = require('../../../../config')
+const createDb = require('../../../lib/postgres/db')
+const syncModels = require('../../../lib/postgres/models/syncModels')
+const config = require('../../../config')
 const createIndividualGroup = require('./individualGroup')
 
-const dbDescribe = require('../../../../utilities/test/dbDescribe')
+const dbDescribe = require('../../../utilities/test/dbDescribe')
 
 const setup = () => {
   return createDb({ config }).then(sequelize => {

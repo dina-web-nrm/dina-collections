@@ -15,18 +15,19 @@
   },
   "servers": [
     {
-      "description": "Description of collections api\n",
+      "description": "Alpha api server",
       "url": "https://alpha-api.dina-web.net"
     },
     {
-      "description": "Description of auth api\n",
+      "description": "Auth server",
       "url": "https://alpha-keycloak.dina-web.net"
     },
     {
+      "description": "Local api server",
       "url": "http://127.0.0.1:4444"
     },
     {
-      "description": "Description of slim taxonomy\n",
+      "description": "Slim taxonomy",
       "url": "https://alpha-slimtaxonomy.dina-web.net"
     }
   ],

@@ -1,4 +1,4 @@
-const createArrayResponse = require('../../../../../lib/api/utilities/createArrayResponse')
+const createArrayResponse = require('../../../../lib/api/utilities/createArrayResponse')
 
 module.exports = function getIndividualGroups({ controllers, request }) {
   return controllers.collectionsApi

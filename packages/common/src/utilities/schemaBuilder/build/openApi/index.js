@@ -7,18 +7,19 @@ const createOpenApiPaths = require('./createOpenApiPaths')
 const createOpenApiComponents = require('./createOpenApiComponents')
 
 module.exports = function createOpenApi({
+  apis,
   endpoints,
   errors,
   info,
   models,
   parameters,
-  apis,
   security,
+  servers,
 }) {
   return {
     openapi: '3.0.0',
     info: createOpenApiInfo(info),
-    servers: createOpenApiServers(apis),
+    servers: createOpenApiServers(servers),
     security: createOpenApiSecurity(security),
     tags: createOpenApiTags({ apis }),
     paths: createOpenApiPaths(endpoints),
