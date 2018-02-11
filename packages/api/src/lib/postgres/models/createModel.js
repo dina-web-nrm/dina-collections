@@ -4,9 +4,7 @@ const getByIdFactory = require('./modelMethods/getByIdFactory')
 const getOneWhereFactory = require('./modelMethods/getOneWhereFactory')
 const updateFactory = require('./modelMethods/updateFactory')
 
-const {
-  createSystemModelSchemaValidator,
-} = require('common/src/utilities/error')
+const { createSystemModelSchemaValidator } = require('common/src/error')
 
 // make model-factory more advanced
 // * add where search to get single revision

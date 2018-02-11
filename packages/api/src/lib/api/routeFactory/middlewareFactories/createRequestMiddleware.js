@@ -1,4 +1,4 @@
-const createRequest = require('common/src/utilities/apiClient/createRequest')
+const createRequest = require('common/src/apiClient/createRequest')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('createRequestMiddleware')
