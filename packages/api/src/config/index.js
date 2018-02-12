@@ -41,6 +41,7 @@ const log = {
 
 const test = {
   runApiTests: process.env.API_TESTS === 'true',
+  runBatchTests: process.env.BATCH_TESTS === 'true',
   runDbTests: process.env.DB_TESTS === 'true',
   testApiUrl: process.env.TEST_API_URL || 'http://localhost:4444',
   testAuthUrl: process.env.TEST_AUTH_URL || 'https://alpha-cm.dina-web.net',

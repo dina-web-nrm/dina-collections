@@ -43,11 +43,12 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
     "start": "DEBUG='DINA*' nodemon src/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
-    "test:unit": "jest --env=node",
-    "test:db": "DB_TESTS=true jest --env=node --watch",
-    "test:slow": "DB_TESTS=true jest --env=node && API_TESTS=true jest --env=node",
     "test:api": "API_TESTS=true jest --env=node --watch",
-    "test:depcheck": "depcheck . --ignores=pg"
+    "test:batch": "BATCH_TESTS=true jest --env=node --watch",
+    "test:db": "DB_TESTS=true jest --env=node --watch",
+    "test:depcheck": "depcheck . --ignores=pg",
+    "test:slow": "DB_TESTS=true jest --env=node && API_TESTS=true jest --env=node",
+    "test:unit": "jest --env=node"
   },
   "engines": {
     "node": "8.9.1",
