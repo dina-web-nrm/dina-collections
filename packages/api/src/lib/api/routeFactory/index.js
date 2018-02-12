@@ -38,11 +38,6 @@ module.exports = function createRoutes({
     .map(({ method, methodSpecification, operationId, pathname }) => {
       const routeHandler = routeHandlers[operationId]
       const routeMock = routeMocks[operationId]
-      if (!(routeHandler || routeMock)) {
-        log.debug(`Skip route: ${method.toUpperCase()} - ${pathname}`)
-        return null
-      }
-
       const endpointConfig = createEndpointConfig({
         apiConfig,
         apiSpecification,
@@ -54,11 +49,20 @@ module.exports = function createRoutes({
         verbName: method,
       })
 
-      return createRoute({
+      if (!endpointConfig.handler) {
+        log.debug(`Skip route: ${method.toUpperCase()} - ${pathname}`)
+        return null
+      }
+      const route = createRoute({
         apiConfig,
         controllers,
         endpointConfig,
       })
+
+      return {
+        ...route,
+        usingMock: endpointConfig.usingMock,
+      }
     })
     .filter(route => !!route)
 }

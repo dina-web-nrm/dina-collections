@@ -49,9 +49,13 @@ module.exports = function createApi({
   if (config.auth.active) {
     api.use(keycloak.protect())
   }
+  routes.forEach(({ middlewares, pathname, verbName, usingMock }) => {
+    if (usingMock) {
+      log.info(`Register mock: ${verbName.toUpperCase()} - ${pathname}`)
+    } else {
+      log.info(`Register route: ${verbName.toUpperCase()} - ${pathname}`)
+    }
 
-  routes.forEach(({ middlewares, pathname, verbName }) => {
-    log.info(`Register route: ${verbName.toUpperCase()} - ${pathname}`)
     api[verbName](pathname, middlewares)
   })
 

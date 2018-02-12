@@ -8,14 +8,8 @@ module.exports = function createOperationMiddleware({
   controllers,
   endpointConfig,
 }) {
-  const { mock, handler } = endpointConfig
-
-  const useMock =
-    apiConfig.mock.active && (!handler || apiConfig.mock.preferred)
-
-  const routeFn = useMock ? mock : handler
-
-  if (!routeFn) {
+  const { handler } = endpointConfig
+  if (!handler) {
     return (req, res, next) => {
       log.info(`${res.locals.id}: No routehandler or mock. skipping request`)
       return next()
@@ -26,7 +20,7 @@ module.exports = function createOperationMiddleware({
     const { locals: { request, user } } = res
     log.info(`${res.locals.id}: Call route function`)
 
-    Promise.resolve(routeFn({ controllers, request, user }))
+    Promise.resolve(handler({ controllers, request, user }))
       .then(({ data: operationData, headers: operationHeaders }) => {
         return createResponse({
           apiConfig: {},
