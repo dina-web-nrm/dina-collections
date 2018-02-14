@@ -21,7 +21,7 @@ const propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   scope: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
 }
 const defaultProps = {
   autoComplete: undefined,
@@ -34,6 +34,7 @@ const defaultProps = {
   placeholder: undefined,
   required: false,
   scope: undefined,
+  type: 'text',
 }
 
 const InputField = ({
