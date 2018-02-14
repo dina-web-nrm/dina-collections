@@ -98,7 +98,7 @@ yarn start:ui:mock
 1. Start postgres db
 
 ```
-docker-compose up -d postgres
+docker-compose -f docker-compose.dev.yaml up -d postgres
 ```
 
 2. Start api
