@@ -17,7 +17,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
   it('renders without crashing', () => {
     setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
-      mount: true,
     })
   })
 
@@ -25,7 +24,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     expect(store.getState().form.mammalForm).toBeTruthy()
@@ -35,7 +33,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     expect(store.getState().form.mammalForm.values.identifications).toBeTruthy()
@@ -48,7 +45,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store, rootComponent } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     expect(store.getState().form.mammalForm.values.identifications.length).toBe(
@@ -88,7 +84,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store, rootComponent } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     expect(store.getState().form.mammalForm.values.identifications.length).toBe(
@@ -114,7 +109,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store, rootComponent } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     expect(store.getState().form.mammalForm.values.identifications.length).toBe(
@@ -196,7 +190,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
       const { store, rootComponent } = setupTestComponent({
         component: <MammalForm handleFormSubmit={handleFormSubmit} />,
         fullExport: true,
-        mount: true,
       })
 
       expect(
@@ -241,7 +234,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store, rootComponent: mountedComponent } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     const form = mountedComponent.find('form')
@@ -253,7 +245,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store, rootComponent: mountedComponent } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     const form = mountedComponent.find('form')
@@ -647,7 +638,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     const { store, rootComponent: mountedComponent } = setupTestComponent({
       component: <MammalForm handleFormSubmit={handleFormSubmit} />,
       fullExport: true,
-      mount: true,
     })
 
     const form = mountedComponent.find('form')
@@ -719,7 +709,6 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
         />
       ),
       fullExport: true,
-      mount: true,
     })
 
     const form = mountedComponent.find('form')
