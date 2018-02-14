@@ -17,17 +17,11 @@ module.exports = function parseResponse(response) {
       }
 
       if (status >= 200 && status < 300) {
-        return {
-          json,
-          status,
-        }
+        return json
       }
 
       const error = {
-        json: {
-          ...json,
-          status,
-        },
+        ...json,
         status,
       }
 
