@@ -11,15 +11,16 @@ const createErrorMessageFromError = error => {
   return ''
 }
 
-module.exports = function createError({ context, error }) {
+module.exports = function createError({ meta, error }) {
   const {
+    context,
     errorCode,
     origin,
-    statusCode,
+    status,
     type,
     userInteraction = false,
     verbose = false,
-  } = context
+  } = meta
 
   const errorMessage = createErrorMessageFromError(error)
 
@@ -29,11 +30,12 @@ module.exports = function createError({ context, error }) {
 
   return {
     _known: true,
+    context,
     error,
     errorCode: errorCode || ERROR_CODES.UNKNOWN,
     message,
     origin,
-    statusCode,
+    status,
     type,
     userInteraction,
   }
