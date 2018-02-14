@@ -29,7 +29,6 @@ module.exports = function createRoutes({
   apiSpecification,
   controllers,
   routeHandlers,
-  routeMocks,
 }) {
   const { paths } = apiSpecification
 
@@ -37,15 +36,11 @@ module.exports = function createRoutes({
   return array
     .map(({ method, methodSpecification, operationId, pathname }) => {
       const routeHandler = routeHandlers[operationId]
-      const routeMock = routeMocks[operationId]
       const endpointConfig = createEndpointConfig({
         apiConfig,
-        apiSpecification,
         methodSpecification,
         operationId,
-        pathname,
         routeHandler,
-        routeMock,
         verbName: method,
       })
 
@@ -57,6 +52,8 @@ module.exports = function createRoutes({
         apiConfig,
         controllers,
         endpointConfig,
+        method,
+        pathname,
       })
 
       return {
