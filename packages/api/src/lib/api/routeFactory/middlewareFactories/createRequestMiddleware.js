@@ -1,16 +1,12 @@
-const createRequest = require('common/src/apiClient/createRequest')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('createRequestMiddleware')
 
-module.exports = function createRequestMiddleware({
-  apiConfig,
-  endpointConfig,
-}) {
+module.exports = function createRequestMiddleware({ apiConfig }) {
   return (req, res, next) => {
     const { body, headers, params: pathParams, query: queryParams } = req
 
-    const input = {
+    const userInput = {
       body,
       headers,
       pathParams,
@@ -26,21 +22,7 @@ module.exports = function createRequestMiddleware({
         })}`
       )
     }
-
-    Promise.resolve(
-      createRequest({
-        apiConfig,
-        endpointConfig,
-        methodConfig: {},
-        userInput: input,
-      })
-    )
-      .then(request => {
-        res.locals.request = request
-        next()
-      })
-      .catch(err => {
-        next(err)
-      })
+    res.locals.userInput = userInput
+    next()
   }
 }
