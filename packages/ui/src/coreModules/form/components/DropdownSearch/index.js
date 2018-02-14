@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown, Form } from 'semantic-ui-react'
 
-import { FormFieldError } from '../../error/components'
-import FieldLabel from './FieldLabel'
+import { FormFieldError } from '../../../error/components'
+import FieldLabel from '../FieldLabel'
 
 const propTypes = {
   autoComplete: PropTypes.string,
