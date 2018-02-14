@@ -14,18 +14,8 @@ module.exports = function createMockFunction({ methodSpecification }) {
     return null
   }
   const model = getModelNameFromParameter(response)
-  console.log('model', model)
   return createMockGenerator({
     importFaker,
     model,
   })
-
-  // return () => {
-  //   return {
-  //     data: {
-  //       a: 444,
-  //       modelName,
-  //     },
-  //   }
-  // }
 }
