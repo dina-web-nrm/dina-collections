@@ -146,7 +146,6 @@ module.exports = function buildResponse({
             type: 'object',
           },
         },
-        required: ['data'],
       },
     },
   }
