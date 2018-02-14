@@ -1,5 +1,6 @@
 const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
+const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 
 const validCatalogNumber = '123456'
 const validTaxonName = 'Chironectes minimus'
@@ -155,8 +156,10 @@ const UNEXPECTED_SUCCESS = 'Call successfull but should have failed'
 
 apiDescribe('individualGroup', () => {
   let authToken
-  beforeEach(() => {
-    authToken = 1234
+  beforeAll(() => {
+    return waitForApiRestart().then(() => {
+      authToken = 1234
+    })
   })
 
   it('Runs individualGroup tests', () => {

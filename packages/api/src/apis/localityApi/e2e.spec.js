@@ -1,5 +1,6 @@
 const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
+const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 
 const simpleCuratedLocality = {
   data: {
@@ -26,8 +27,10 @@ it('Runs curatedLocality tests', () => {
 
 apiDescribe('curatedLocality', () => {
   let authToken
-  beforeEach(() => {
-    authToken = 1234
+  beforeAll(() => {
+    return waitForApiRestart().then(() => {
+      authToken = 1234
+    })
   })
 
   it('Runs curatedLocality tests', () => {
