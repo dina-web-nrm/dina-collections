@@ -1,4 +1,3 @@
-const validateEndpointConfig = require('common/src/apiClient/factories/validateEndpointConfig')
 const createMockFunction = require('common/src/endpointFactory/createMockFunction')
 const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
 
@@ -24,7 +23,6 @@ module.exports = function createEndpointConfig({
     operationId,
   })
 
-  validateEndpointConfig(endpointConfig, apiConfig)
   return {
     ...endpointConfig,
     usingMock,

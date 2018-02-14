@@ -2,8 +2,8 @@ const intercept = require('./intercept')
 const wrappedFetch = require('./fetch')
 const handleError = require('./error')
 
-const validateEndpointConfig = require('./factories/validateEndpointConfig')
-const validateMethodConfig = require('./factories/validateMethodConfig')
+const validateEndpointConfig = require('./validation/validateEndpointConfig')
+const validateMethodConfig = require('./validation/validateMethodConfig')
 const createResponse = require('./createResponse')
 const createRequest = require('./createRequest')
 

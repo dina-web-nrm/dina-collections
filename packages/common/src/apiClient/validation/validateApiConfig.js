@@ -1,6 +1,6 @@
 const apiConfigSchema = require('../schemas/apiConfigSchema')
 
-module.exports = function createApiConfig(apiConfigInput = {}) {
+module.exports = function validateApiConfig(apiConfigInput = {}) {
   const apiConfig = {
     validateInput: true,
     validateOutput: true,
@@ -13,5 +13,4 @@ module.exports = function createApiConfig(apiConfigInput = {}) {
   if (error) {
     throw error
   }
-  return apiConfig
 }

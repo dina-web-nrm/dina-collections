@@ -10,5 +10,4 @@ module.exports = function validateEndpointConfig(
   if (error) {
     throw error
   }
-  return endpointConfigInput
 }

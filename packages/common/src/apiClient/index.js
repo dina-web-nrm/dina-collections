@@ -1,4 +1,4 @@
-const validateApiConfig = require('./factories/validateApiConfig')
+const validateApiConfig = require('./validation/validateApiConfig')
 const createApiMethod = require('./createApiMethod')
 
 module.exports = function createApiClient(apiConfigInput) {

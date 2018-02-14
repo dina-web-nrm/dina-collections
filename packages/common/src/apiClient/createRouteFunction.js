@@ -1,7 +1,7 @@
 const intercept = require('./intercept')
 const handleError = require('./error')
 
-const validateMethodConfig = require('./factories/validateMethodConfig')
+const validateMethodConfig = require('./validation/validateMethodConfig')
 const createResponse = require('./createResponse')
 const createRequest = require('./createRequest')
 

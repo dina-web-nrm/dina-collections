@@ -11,5 +11,4 @@ module.exports = function validateMethodConfig(
   if (error) {
     throw error
   }
-  return methodConfigInput
 }
