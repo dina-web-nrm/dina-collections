@@ -5,20 +5,8 @@ module.exports = function intercept({
   request,
 }) {
   return Promise.resolve().then(() => {
-    const { mock: apiMock, cache, enableEndpointMocks } = apiConfig
+    const { cache, enableEndpointMocks } = apiConfig
     const { mock: endpointMock } = endpointConfig
-
-    if (apiMock) {
-      const mockResult = apiMock({
-        apiConfig,
-        endpointConfig,
-        methodConfig,
-        request,
-      })
-      if (mockResult) {
-        return { json: mockResult }
-      }
-    }
 
     if (enableEndpointMocks && endpointMock) {
       return Promise.resolve(
@@ -29,7 +17,7 @@ module.exports = function intercept({
           request,
         })
       ).then(mockResult => {
-        return { json: mockResult }
+        return mockResult
       })
     }
 

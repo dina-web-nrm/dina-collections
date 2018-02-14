@@ -9,11 +9,13 @@ const api = {
     preferred: false,
   },
   port: process.env.API_PORT || 4444,
+  validateInput: true,
+  validateOutput: true,
 }
 
 const db = {
   database: process.env.DB_DATABASE || 'postgres',
-  flushOnRestart: process.env.FLUSH_ON_RESATART === 'true' || false,
+  flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
   password: process.env.DB_PASSWORD || 'mysecretpassword',
   url: process.env.DB_URL || '127.0.0.1:5432',
   username: process.env.DB_USERNAME || 'postgres',
@@ -41,6 +43,7 @@ const log = {
 
 const test = {
   runApiTests: process.env.API_TESTS === 'true',
+  runBatchTests: process.env.BATCH_TESTS === 'true',
   runDbTests: process.env.DB_TESTS === 'true',
   testApiUrl: process.env.TEST_API_URL || 'http://localhost:4444',
   testAuthUrl: process.env.TEST_AUTH_URL || 'https://alpha-cm.dina-web.net',

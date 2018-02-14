@@ -1,4 +1,5 @@
 exports.collectionsApi = require('./collectionsApi')
+exports.statusApi = require('./statusApi')
 exports.authApi = require('./authApi')
 exports.localityApi = require('./localityApi')
 exports.slimTaxonomyApi = require('./slimTaxonomyApi')

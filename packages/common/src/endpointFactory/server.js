@@ -1,6 +1,4 @@
 const createEndpointFactory = require('./createEndpointFactory')
-const faker = require('json-schema-faker')
+const importFaker = require('../jsonSchema/importJsonFakerSync')
 
-const importFaker = () => Promise.resolve(faker)
-
-module.exports = createEndpointFactory({ importFaker })
+module.exports = createEndpointFactory({ importFaker, origin: 'server' })

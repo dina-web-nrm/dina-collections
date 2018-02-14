@@ -1,74 +1,12 @@
 const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
-
-const onlyCatalogedUnit = {
-  data: {
-    attributes: {
-      physicalUnits: [
-        {
-          catalogedUnit: {
-            catalogNumber: '444123',
-          },
-        },
-      ],
-    },
-    type: 'individualGroup',
-  },
-}
+const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 
 const validCatalogNumber = '123456'
 const validTaxonName = 'Chironectes minimus'
 
-const withIndividualGroup = {
-  data: {
-    attributes: {
-      causeOfDeathStandardized: 'causeOfDeathStandardized',
-      causeOfDeathText: 'causeOfDeathText',
-      featureObservations: [
-        {
-          featureObservationText: '21',
-          featureObservationType: {
-            featureObservationTypeName: 'age',
-            id: '1',
-          },
-        },
-      ],
-      identifications: [
-        {
-          identifiedTaxonNameStandardized: validTaxonName,
-        },
-      ],
-      occurrences: [
-        {
-          collectorsText: 'Ida Li',
-          occurrenceDateText: '2017-10-12',
-        },
-      ],
-      originStandardized: 'originStandardized',
-      physicalUnits: [
-        {
-          catalogedUnit: {
-            catalogNumber: validCatalogNumber,
-          },
-          normalStorageLocationText: 'Stockholm',
-          physicalUnitText: 'This is a test',
-        },
-      ],
-    },
-    type: 'individualGroup',
-  },
-}
-
 const badRequestMissingCatalogNumber = {
   data: {
-    additionalData: [
-      {
-        attributes: {
-          catalogNumber: '1234',
-        },
-        type: 'catalogedUnit',
-      },
-    ],
     attributes: {
       featureObservations: [],
       identifications: [],
@@ -125,14 +63,6 @@ const updateValidIndividualGroup = {
 
 const fullFormExample = {
   data: {
-    additionalData: [
-      {
-        attributes: {
-          catalogNumber: '584028',
-        },
-        type: 'catalogedUnit',
-      },
-    ],
     attributes: {
       causeOfDeathStandardized: 'Standardized death cause',
       causeOfDeathText: 'Cause of death ',
@@ -161,6 +91,7 @@ const fullFormExample = {
           identifiedAsVerbatim: 'Sorex minutus',
           identifiedByAgentText: 'Doe, J.',
           identifiedDateText: 'Date text',
+          identifiedTaxonNameStandardized: validTaxonName,
           isCurrentIdentification: true,
         },
       ],
@@ -225,8 +156,10 @@ const UNEXPECTED_SUCCESS = 'Call successfull but should have failed'
 
 apiDescribe('individualGroup', () => {
   let authToken
-  beforeEach(() => {
-    authToken = 1234
+  beforeAll(() => {
+    return waitForApiRestart().then(() => {
+      authToken = 1234
+    })
   })
 
   it('Runs individualGroup tests', () => {
@@ -235,26 +168,6 @@ apiDescribe('individualGroup', () => {
   })
 
   describe('createIndividualGroup', () => {
-    it('Succeed with onlyCatalogedUnit', () => {
-      return makeTestCall({
-        authToken,
-        body: onlyCatalogedUnit,
-        operationId: 'createIndividualGroup',
-      }).then(res => {
-        expect(res).toBeTruthy()
-      })
-    })
-
-    it('Succeed with individual group', () => {
-      return makeTestCall({
-        authToken,
-        body: withIndividualGroup,
-        operationId: 'createIndividualGroup',
-      }).then(res => {
-        expect(res).toBeTruthy()
-      })
-    })
-
     it('Succeed with full form example', () => {
       return makeTestCall({
         authToken,
@@ -291,7 +204,7 @@ apiDescribe('individualGroup', () => {
     beforeEach(() => {
       return makeTestCall({
         authToken,
-        body: onlyCatalogedUnit,
+        body: fullFormExample,
         operationId: 'createIndividualGroup',
       }).then(res => {
         existingId = res.data.id

@@ -38,6 +38,9 @@
       "name": "collectionsApi"
     },
     {
+      "name": "statusApi"
+    },
+    {
       "description": "Description of auth api\n",
       "name": "authApi"
     },
@@ -173,6 +176,28 @@
         "summary": "Update an individual group by id",
         "tags": [
           "collectionsApi"
+        ]
+      }
+    },
+    "/collections/api/v01/status": {
+      "get": {
+        "operationId": "getStatus",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStatusResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "summary": "Gets a status object",
+        "tags": [
+          "statusApi"
         ]
       }
     },
@@ -1413,6 +1438,20 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "getStatusResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "up": {
+                "type": "boolean"
+              }
+            }
           }
         }
       },

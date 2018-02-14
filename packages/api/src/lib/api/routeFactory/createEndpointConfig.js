@@ -1,27 +1,31 @@
-const createEndpointConfigObject = require('common/src/apiClient/factories/createEndpointConfig')
-const createBodyValidator = require('common/src/endpointFactory/createBodyValidator')
-const createSystemModelSchemaValidator = require('common/src/jsonSchema/createSystemModelSchemaValidator')
+const createMockFunction = require('common/src/endpointFactory/createMockFunction')
+const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
 
 module.exports = function createEndpointConfig({
+  apiConfig,
   methodSpecification,
   operationId,
-  pathname,
   routeHandler,
-  routeMock,
   verbName,
 }) {
-  return createEndpointConfigObject(
-    {
-      handler: routeHandler,
-      mock: routeMock,
-      operationId,
-      pathname,
-      validateBody: createBodyValidator({
-        createSystemModelSchemaValidator,
+  let handler = routeHandler
+  let usingMock = false
+  if (apiConfig.mock.active) {
+    if (apiConfig.mock.preferred || !handler) {
+      handler = createMockFunction({
         methodSpecification,
-      }),
-      verbName,
-    },
-    {}
-  )
+      })
+      usingMock = true
+    }
+  }
+  const endpointConfig = commonCreateEndpointConfig({
+    handler,
+    operationId,
+  })
+
+  return {
+    ...endpointConfig,
+    usingMock,
+    verbName,
+  }
 }

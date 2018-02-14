@@ -97,5 +97,6 @@ module.exports = function createModel({
   return {
     ...coreMethods,
     ...customMethods,
+    Model,
   }
 }

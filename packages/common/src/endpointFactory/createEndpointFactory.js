@@ -54,13 +54,15 @@ const getSchemaFromResponse = response => {
   )
 }
 
-const getBodyValidator = ({ methodSpecification }) => {
+const getBodyValidator = ({ methodSpecification, origin }) => {
   const schema = getSchemaFromRequestBody(methodSpecification.requestBody)
 
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
     return createSystemModelSchemaValidator({
+      context: 'inputBodyValidation',
       model: modelName,
+      origin,
       throwOnError: true,
     })
   }
@@ -68,19 +70,20 @@ const getBodyValidator = ({ methodSpecification }) => {
   return null
 }
 
-const getResponseValidator = ({ methodSpecification }) => {
+const getResponseValidator = ({ methodSpecification, origin }) => {
   const schema = getSchemaFromResponse(methodSpecification.responses[200])
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
     if (modelName) {
       return createSystemModelSchemaValidator({
-        dataPath: 'json',
+        context: 'responseValidation',
         model: modelName,
+        origin,
         throwOnError: true,
       })
     }
     return createSystemModelSchemaValidator({
-      dataPath: 'json',
+      origin,
       schema,
       throwOnError: true,
     })
@@ -108,7 +111,10 @@ const createMockData = ({ importFaker, methodSpecification }) => {
   return null
 }
 
-module.exports = function createEndpointFactory({ importFaker }) {
+module.exports = function createEndpointFactory({
+  origin = 'client',
+  importFaker,
+}) {
   return function createEndpoint({ operationId, ...rest }) {
     if (!map[operationId]) {
       console.warn(`Operation id: ${operationId} unknown`) // eslint-disable-line no-console
@@ -125,9 +131,11 @@ module.exports = function createEndpointFactory({ importFaker }) {
       pathname,
       validateBody: getBodyValidator({
         methodSpecification,
+        origin,
       }),
       validateResponse: getResponseValidator({
         methodSpecification,
+        origin,
       }),
       ...rest,
     }
