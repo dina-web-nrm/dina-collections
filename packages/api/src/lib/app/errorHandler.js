@@ -10,10 +10,14 @@ function errorMiddleware(err, req, res, next) {
 }
 
 const notFoundMiddleware = (req, res) => {
+  const message = `Fallthrough - no matching route for: ${req.method} - ${
+    req.url
+  }`
+  log.info(message)
   res.status(404)
   res.send({
     ERROR_CODE: 'NOT_FOUND',
-    message: `Fallthrough - no matching route for ${req.url}`,
+    message,
   })
 }
 

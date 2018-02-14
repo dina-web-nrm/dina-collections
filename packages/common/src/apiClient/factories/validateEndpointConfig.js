@@ -1,6 +1,6 @@
 const endpointConfigSchema = require('../schemas/endpointConfigSchema')
 
-module.exports = function createEndpointConfig(
+module.exports = function validateEndpointConfig(
   endpointConfigInput,
   apiConfigInput
 ) {

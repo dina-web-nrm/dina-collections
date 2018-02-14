@@ -52,7 +52,7 @@ module.exports = function createFormError(error) {
   const context = {
     errorCode: ERROR_CODES.FORM_VALIDATION_ERROR,
     origin: ORIGINS.CLIENT,
-    statusCode: null,
+    status: null,
     type: TYPES.FORM,
   }
   const formError = createError({

@@ -29,7 +29,6 @@ module.exports = function createRoutes({
   apiSpecification,
   controllers,
   routeHandlers,
-  routeMocks,
 }) {
   const { paths } = apiSpecification
 
@@ -37,28 +36,30 @@ module.exports = function createRoutes({
   return array
     .map(({ method, methodSpecification, operationId, pathname }) => {
       const routeHandler = routeHandlers[operationId]
-      const routeMock = routeMocks[operationId]
-      if (!(routeHandler || routeMock)) {
-        log.debug(`Skip route: ${method.toUpperCase()} - ${pathname}`)
-        return null
-      }
-
       const endpointConfig = createEndpointConfig({
         apiConfig,
-        apiSpecification,
         methodSpecification,
         operationId,
-        pathname,
         routeHandler,
-        routeMock,
         verbName: method,
       })
 
-      return createRoute({
+      if (!endpointConfig.handler) {
+        log.debug(`Skip route: ${method.toUpperCase()} - ${pathname}`)
+        return null
+      }
+      const route = createRoute({
         apiConfig,
         controllers,
         endpointConfig,
+        method,
+        pathname,
       })
+
+      return {
+        ...route,
+        usingMock: endpointConfig.usingMock,
+      }
     })
     .filter(route => !!route)
 }

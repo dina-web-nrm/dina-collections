@@ -1,4 +1,4 @@
-const createResponse = require('common/src/apiClient/createResponse')
+const createRouteFunction = require('common/src/apiClient/createRouteFunction')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('operationMiddleware')
@@ -7,44 +7,44 @@ module.exports = function createOperationMiddleware({
   apiConfig,
   controllers,
   endpointConfig,
+  method,
 }) {
-  const { mock, handler } = endpointConfig
-
-  const useMock =
-    apiConfig.mock.active && (!handler || apiConfig.mock.preferred)
-
-  const routeFn = useMock ? mock : handler
-
-  if (!routeFn) {
+  const { handler } = endpointConfig
+  if (!handler) {
     return (req, res, next) => {
       log.info(`${res.locals.id}: No routehandler or mock. skipping request`)
       return next()
     }
   }
 
+  const routeFunction = createRouteFunction({
+    apiConfig,
+    endpointConfig,
+    handler,
+    methodConfigInput: {
+      method,
+    },
+  })
+
   return (req, res, next) => {
-    const { locals: { request, user } } = res
+    const { locals: { userInput, user } } = res
     log.info(`${res.locals.id}: Call route function`)
 
-    Promise.resolve(routeFn({ controllers, request, user }))
-      .then(({ data: operationData, headers: operationHeaders }) => {
-        return createResponse({
-          apiConfig: {},
-          endpointConfig,
-          methodConfig: {},
-          responseData: operationData,
-          responseHeaders: operationHeaders,
-        }).then(data => {
-          log.info(`${res.locals.id}: Sending route function result`)
+    return routeFunction({
+      controllers,
+      user,
+      userInput,
+    })
+      .then(data => {
+        log.info(`${res.locals.id}: Sending route function result`)
 
-          if (apiConfig.log.outgoingResponse) {
-            log.debug(
-              `${res.locals.id}: Sending response ${JSON.stringify(data)}`
-            )
-          }
+        if (apiConfig.log.outgoingResponse) {
+          log.debug(
+            `${res.locals.id}: Sending response ${JSON.stringify(data)}`
+          )
+        }
 
-          res.send(data)
-        })
+        res.send(data)
       })
       .catch(err => {
         next(err)

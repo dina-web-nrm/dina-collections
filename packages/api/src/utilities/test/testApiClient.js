@@ -12,7 +12,6 @@ const { testApiUrl, testAuthUrl, testUsername, testPassword } = config.test
 const createAuthClient = ({ baseUrl = testAuthUrl } = {}) => {
   return createApiClient({
     baseUrl,
-    mapResponse: ({ json }) => json,
   })
 }
 
@@ -60,14 +59,11 @@ const createTestClient = ({
         Authorization: `bearer ${authToken}`,
       }
     },
-    mapResponse: ({ json }) => {
-      return json
-    },
     validateInput,
     validateOutput,
-    validateResponse: ({ json }) => {
+    validateResponse: json => {
       jsonApiValidator(json)
-      return { json }
+      return json
     },
   })
 }

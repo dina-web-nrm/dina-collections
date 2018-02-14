@@ -1,22 +1,25 @@
 const intercept = require('./intercept')
-const wrappedFetch = require('./fetch')
 const handleError = require('./error')
 
-const validateEndpointConfig = require('./factories/validateEndpointConfig')
 const validateMethodConfig = require('./factories/validateMethodConfig')
 const createResponse = require('./createResponse')
 const createRequest = require('./createRequest')
 
-module.exports = function createApiMethod(apiConfig, methodConfigInput) {
+module.exports = function createRouteFunction({
+  apiConfig,
+  endpointConfig,
+  handler,
+  methodConfigInput,
+}) {
   const methodConfig = {
     requestContentType: 'json',
     responseContentType: 'json',
     ...methodConfigInput,
   }
+
   validateMethodConfig(methodConfigInput, apiConfig)
 
-  return function apiMethod(endpointConfig, userInput = {}) {
-    validateEndpointConfig(endpointConfig, apiConfig)
+  return function routeFunction({ controllers, userInput, user }) {
     return createRequest({
       apiConfig,
       endpointConfig,
@@ -34,11 +37,10 @@ module.exports = function createApiMethod(apiConfig, methodConfigInput) {
             if (interceptResult) {
               return interceptResult
             }
-            return wrappedFetch({
-              apiConfig,
-              endpointConfig,
-              methodConfig,
+            return handler({
+              controllers,
               request,
+              user,
             })
           })
           .then(responseData => {

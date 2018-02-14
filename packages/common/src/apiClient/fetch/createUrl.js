@@ -9,9 +9,10 @@ module.exports = function createUrl({ apiConfig, endpointConfig, request }) {
   const { queryParams, pathParams } = request
 
   const pathname = interpolateUrl(endpointConfig.pathname, pathParams)
-  const url = queryParams
-    ? `${pathname}?${createQueryString(queryParams)}`
-    : pathname
+  const url =
+    queryParams && Object.keys(queryParams).length
+      ? `${pathname}?${createQueryString(queryParams)}`
+      : pathname
 
   return baseUrl ? `${baseUrl}${url}` : url
 }
