@@ -54,7 +54,7 @@ const getSchemaFromResponse = response => {
   )
 }
 
-const getBodyValidator = ({ origin, methodSpecification }) => {
+const getBodyValidator = ({ methodSpecification, origin }) => {
   const schema = getSchemaFromRequestBody(methodSpecification.requestBody)
 
   if (schema) {
@@ -70,7 +70,7 @@ const getBodyValidator = ({ origin, methodSpecification }) => {
   return null
 }
 
-const getResponseValidator = ({ origin, methodSpecification }) => {
+const getResponseValidator = ({ methodSpecification, origin }) => {
   const schema = getSchemaFromResponse(methodSpecification.responses[200])
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
