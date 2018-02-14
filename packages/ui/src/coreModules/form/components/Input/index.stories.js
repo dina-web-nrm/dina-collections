@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import 'common/dist/semantic.css' // eslint-disable-line
 import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import withInfo from 'utilities/test/customStorybookWithInfo'
-import Input from './Input'
+import Input from './index'
 
 storiesOf('coreModules/form/Input', module)
   .addDecorator(createStoryDecorator())
