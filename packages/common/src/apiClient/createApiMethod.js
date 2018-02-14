@@ -2,17 +2,21 @@ const intercept = require('./intercept')
 const wrappedFetch = require('./fetch')
 const handleError = require('./error')
 
-const createEndpointConfig = require('./factories/createEndpointConfig')
-const createMethodConfig = require('./factories/createMethodConfig')
+const validateEndpointConfig = require('./factories/validateEndpointConfig')
+const validateMethodConfig = require('./factories/validateMethodConfig')
 const createResponse = require('./createResponse')
 const createRequest = require('./createRequest')
 
 module.exports = function createApiMethod(apiConfig, methodConfigInput) {
-  const methodConfig = createMethodConfig(methodConfigInput, apiConfig)
+  const methodConfig = {
+    requestContentType: 'json',
+    responseContentType: 'json',
+    ...methodConfigInput,
+  }
+  validateMethodConfig(methodConfigInput, apiConfig)
 
-  return function apiMethod(endpointConfigInput, userInput = {}) {
-    const endpointConfig = createEndpointConfig(endpointConfigInput, apiConfig)
-
+  return function apiMethod(endpointConfig, userInput = {}) {
+    validateEndpointConfig(endpointConfig, apiConfig)
     return createRequest({
       apiConfig,
       endpointConfig,

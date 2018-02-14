@@ -1,8 +1,14 @@
-const createApiConfig = require('./factories/createApiConfig')
+const validateApiConfig = require('./factories/validateApiConfig')
 const createApiMethod = require('./createApiMethod')
 
-module.exports = function createApiClient(options) {
-  const apiConfig = createApiConfig(options)
+module.exports = function createApiClient(apiConfigInput) {
+  const apiConfig = {
+    validateInput: true,
+    validateOutput: true,
+    ...apiConfigInput,
+  }
+
+  validateApiConfig(apiConfig)
 
   const formPost = createApiMethod(apiConfig, {
     mapHeaders: userInputHeaders => {
