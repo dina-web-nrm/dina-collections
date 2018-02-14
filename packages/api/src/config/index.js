@@ -9,6 +9,8 @@ const api = {
     preferred: false,
   },
   port: process.env.API_PORT || 4444,
+  validateInput: true,
+  validateOutput: true,
 }
 
 const db = {
