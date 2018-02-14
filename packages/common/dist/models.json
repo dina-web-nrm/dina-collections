@@ -850,6 +850,21 @@
     },
     "description": ""
   },
+  "getStatusResponse": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "up": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
   "getUserResponse": {
     "type": "object",
     "additionalProperties": false,
