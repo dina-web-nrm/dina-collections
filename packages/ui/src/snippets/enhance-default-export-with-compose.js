@@ -1,1 +1,3 @@
-export default compose(,  $1, )($2)
+export default compose(
+  $1
+)($2)
