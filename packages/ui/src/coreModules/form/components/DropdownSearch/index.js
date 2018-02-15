@@ -1,57 +1,67 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Form, Input } from 'semantic-ui-react'
-import { FormFieldError } from '../../error/components'
-import FieldLabel from './FieldLabel'
+import { Dropdown, Form } from 'semantic-ui-react'
+
+import { FormFieldError } from '../../../error/components'
+import FieldLabel from '../FieldLabel'
 
 const propTypes = {
   autoComplete: PropTypes.string,
   errorScope: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  icon: PropTypes.string,
-  iconPosition: PropTypes.string,
-  input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  initialText: PropTypes.string,
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string,
+  }).isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   meta: PropTypes.shape({
     error: PropTypes.object,
     touched: PropTypes.bool.isRequired,
   }).isRequired,
-  module: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
+  module: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onSearchChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+    }).isRequired
+  ).isRequired,
   required: PropTypes.bool,
-  scope: PropTypes.string,
-  type: PropTypes.string.isRequired,
+  selectOnBlur: PropTypes.bool,
 }
 const defaultProps = {
   autoComplete: undefined,
   errorScope: undefined,
   helpNotificationProps: undefined,
   helpText: undefined,
-  icon: undefined,
-  iconPosition: 'left',
+  initialText: undefined,
   label: undefined,
-  placeholder: undefined,
+  module: undefined,
   required: false,
-  scope: undefined,
+  selectOnBlur: undefined,
 }
 
-const InputField = ({
+function DropdownSearch({
   autoComplete,
   errorScope,
-  label,
-  icon,
-  iconPosition,
-  input,
-  meta: { touched, error },
-  module,
-  placeholder,
-  required,
-  helpText,
   helpNotificationProps,
-  scope,
-  type,
-}) => {
+  helpText,
+  initialText,
+  input,
+  label,
+  meta: { error, touched },
+  module,
+  onChange,
+  onSearchChange,
+  options,
+  required,
+  selectOnBlur,
+}) {
   const displayError = touched && !!error
 
   return (
@@ -68,13 +78,17 @@ const InputField = ({
           label={label}
         />
       )}
-      <Input
+      {helpText && <p>{helpText}</p>}
+      <Dropdown
         autoComplete={autoComplete}
-        icon={icon}
-        iconPosition={icon && iconPosition}
-        placeholder={placeholder}
-        scope={scope}
-        type={type}
+        onChange={onChange}
+        onSearchChange={onSearchChange}
+        options={options}
+        search
+        selection
+        selectOnBlur={selectOnBlur}
+        selectOnNavigation={false}
+        text={input.value || initialText}
         {...input}
       />
       {displayError && (
@@ -88,7 +102,7 @@ const InputField = ({
   )
 }
 
-InputField.propTypes = propTypes
-InputField.defaultProps = defaultProps
+DropdownSearch.propTypes = propTypes
+DropdownSearch.defaultProps = defaultProps
 
-export default InputField
+export default DropdownSearch
