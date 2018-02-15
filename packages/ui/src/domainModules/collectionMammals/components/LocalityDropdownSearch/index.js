@@ -157,7 +157,6 @@ class LocalityDropdownSearch extends Component {
         onChange={this.handleSelect}
         onSearchChange={this.handleSearchChange}
         required={required}
-        searchQuery={searchQuery}
         selectOnBlur={false}
         {...rest}
         options={
