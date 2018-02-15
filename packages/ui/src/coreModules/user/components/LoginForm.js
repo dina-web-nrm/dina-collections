@@ -71,6 +71,7 @@ export class RawLoginForm extends Component {
             color="green"
             disabled={pristine || submitting}
             fluid
+            name="btn-login" // used for trying cucumber test script
             size="large"
             type="submit"
           >
