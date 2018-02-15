@@ -76,6 +76,7 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",
+    "start:mock": "NODE_PATH=./src/ REACT_APP_ENABLE_MOCK=true  npm-run-all -p watch-css markdown:watch start-js",
     "storybook": "yarn update-storybook-imports && start-storybook -p 9009 -s public",
     "test": "yarn update-storybook-imports && yarn lint:js && react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
