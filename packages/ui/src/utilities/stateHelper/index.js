@@ -67,3 +67,10 @@ export const createDeleter = segments => {
     return res
   }
 }
+
+export const immutableReplace = (obj, { newPath, oldPath }) => {
+  return immutable.del(
+    immutable.set(obj, newPath, objectPath.get(obj, oldPath)),
+    oldPath
+  )
+}
