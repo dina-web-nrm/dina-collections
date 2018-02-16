@@ -1,7 +1,7 @@
 import createEndpoint from 'utilities/endpointFactory/client'
 import { createLookupMammalsResponse, getIndividualGroup } from './mockData'
 
-const extractData = result => result.data
+const extractData = result => result.json.data
 const flattenDataAttributes = data => {
   if (!data) {
     return data

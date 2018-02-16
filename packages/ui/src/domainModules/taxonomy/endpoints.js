@@ -1,30 +1,28 @@
-import createEndpoint from 'utilities/endpointFactory/client'
-import { createDeleter, createSetter } from 'utilities/stateHelper'
-import { taxonomyResponse } from './mockData'
+import immutable from 'object-path-immutable'
 
-const setScientificName = createSetter(['attributes', 'scientificName'])
-const deleteScientificUnderscoreName = createDeleter([
-  'attributes',
-  'scientific_name',
-])
+import createEndpoint from 'utilities/endpointFactory/client'
+import { immutableReplace } from 'utilities/stateHelper'
+import { taxonomyResponse } from './mockData'
 
 const baseUrl = '/taxonomy'
 
 export const TAXONOMY_SEARCH = createEndpoint({
   baseUrl,
-  mapResponse: json => {
-    const parsedResult = {
-      ...json,
-      data:
-        json.data &&
-        json.data.map(item => {
-          return deleteScientificUnderscoreName(
-            setScientificName(item, item.attributes.scientific_name)
-          )
-        }),
+  mapResponse: res => {
+    if (!res.json.data) {
+      return res
     }
 
-    return parsedResult
+    return immutable.set(
+      res,
+      'json.data',
+      res.json.data.map(item => {
+        return immutableReplace(item, {
+          newPath: 'attributes.scientificName',
+          oldPath: 'attributes.scientific_name',
+        })
+      })
+    )
   },
   mock: () => {
     return taxonomyResponse
