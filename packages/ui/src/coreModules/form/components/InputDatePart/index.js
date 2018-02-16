@@ -2,24 +2,28 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import SearchInputWithResults from 'coreModules/form/components/SearchInputWithResults'
-import TranslateSearchResult from '../TranslateSearchResult'
+import DisplaySearchResult from '../DisplaySearchResult'
 import { days, months, years } from './dateOptions'
 import { DAY, MONTH, YEAR } from '../../constants'
 
-const createStringMatch = controlledValue => ({ value }) => {
+const createStringMatch = controlledValue => value => {
   return String(value).indexOf(String(controlledValue)) === 0
 }
+const mapToSemanticUiFormat = value => ({ key: value, title: value })
 
 const getDateSuggestions = (datePart, controlledValue) => {
   const beginsWithSameDigits = createStringMatch(controlledValue)
 
   switch (datePart) {
     case DAY:
-      return days.filter(beginsWithSameDigits)
+      return days.filter(beginsWithSameDigits).map(mapToSemanticUiFormat)
     case MONTH:
-      return months.filter(beginsWithSameDigits)
+      return months.filter(beginsWithSameDigits).map(mapToSemanticUiFormat)
     case YEAR:
-      return years.filter(beginsWithSameDigits).slice(0, 10)
+      return years
+        .filter(beginsWithSameDigits)
+        .slice(0, 10)
+        .map(mapToSemanticUiFormat)
     default:
       return []
   }
@@ -59,14 +63,16 @@ class InputDatePart extends Component {
 
   handleResultSelect(event, { result }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    if (result && result.content && result.content.value) {
-      this.props.input.onBlur(result.content.value)
+    // cast id to number since Semantic requires string id and does not allow
+    // custom props name ("value" would have been better name than "id")
+    if (result && result.title) {
+      this.props.input.onBlur(Number(result.title))
     }
   }
 
   handleSearchChange(event, { value }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    this.props.input.onChange(value)
+    this.props.input.onChange(Number(value))
   }
 
   render() {
@@ -96,7 +102,7 @@ class InputDatePart extends Component {
         label={label}
         meta={meta}
         required={required}
-        resultRenderer={TranslateSearchResult}
+        resultRenderer={DisplaySearchResult}
         results={getDateSuggestions(datePart, value)}
       />
     )

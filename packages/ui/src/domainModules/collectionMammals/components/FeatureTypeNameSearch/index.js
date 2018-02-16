@@ -12,8 +12,7 @@ import { FEATURE_OBSERVATION_TYPE_NAMES } from '../../constants'
 const AVAILABLE_TYPE_NAMES = FEATURE_OBSERVATION_TYPE_NAMES.map(typeName => {
   return {
     key: typeName,
-    textKey: typeName,
-    value: typeName,
+    title: typeName, // has to be called title to work with Semantic-UI Search result
   }
 })
 
@@ -68,8 +67,8 @@ class FeatureTypeNameSearch extends Component {
 
   handleResultSelect(event, { result }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    if (result && result.content && result.content.value) {
-      this.props.input.onBlur(result.content.value)
+    if (result && result.title) {
+      this.props.input.onBlur(result.title)
     }
   }
 

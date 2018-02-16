@@ -51,14 +51,6 @@ function SearchInputWithResults({
   resultRenderer,
   results,
 }) {
-  // map results to fit Semantic Search propTypes
-  const mappedResults = results.map(result => {
-    return {
-      content: result,
-      title: result.title || result.key,
-    }
-  })
-
   const displayError = touched && !!error
   return (
     <Form.Field
@@ -80,7 +72,7 @@ function SearchInputWithResults({
         onResultSelect={handleResultSelect}
         onSearchChange={handleSearchChange}
         resultRenderer={resultRenderer}
-        results={mappedResults}
+        results={results}
         {...input}
       />
       {displayError && (

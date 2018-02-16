@@ -1581,6 +1581,7 @@ exports[`Storyshots coreModules/user/LoginForm Default 1`] = `
           <button
             className="ui green large fluid disabled button"
             disabled={true}
+            name="btn-login"
             onClick={[Function]}
             role="button"
             tabIndex={-1}

@@ -1,5 +1,6 @@
 import ButtonCopyPasteField from './ButtonCopyPasteField'
 import Checkbox from './Checkbox'
+import DisplaySearchResult from './DisplaySearchResult'
 import DropdownSearch from './DropdownSearch'
 import Field from './Field'
 import FieldLabel from './FieldLabel'
@@ -13,6 +14,7 @@ import TranslateSearchResult from './TranslateSearchResult'
 export {
   ButtonCopyPasteField,
   Checkbox,
+  DisplaySearchResult,
   DropdownSearch,
   Field,
   FieldLabel,

@@ -27,7 +27,6 @@ const isComponentFile = filename => {
 export const createApiMockClient = () => {
   return createApiClient({
     enableEndpointMocks: true,
-    mapResponse: ({ json }) => json,
     validateInput: false,
     validateOutput: true,
   })

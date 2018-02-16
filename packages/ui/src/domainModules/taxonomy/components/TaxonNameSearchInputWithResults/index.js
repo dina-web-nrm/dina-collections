@@ -78,13 +78,8 @@ class TaxonNameSearchInputWithResults extends Component {
 
   handleResultSelect(event, { result }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    if (
-      result &&
-      result.content &&
-      result.content.attributes &&
-      result.content.attributes.scientificName
-    ) {
-      const value = result.content.attributes.scientificName
+    if (result && result.title) {
+      const value = result.title
 
       this.props.input.onBlur(value)
       this.props.updateTaxonSearchFilterName(null)
@@ -122,8 +117,8 @@ class TaxonNameSearchInputWithResults extends Component {
     // patch each result with a key as required by SearchInputWithResults
     const results = taxonSearchResults.map(result => {
       return {
-        ...result,
         key: result.id,
+        title: result.attributes.scientificName,
       }
     })
 

@@ -23,7 +23,7 @@
     "setup:links:ui": "cd ./packages/ui && yarn link common",
     "start:api": "cd ./packages/api && yarn start",
     "start:ui": "cd ./packages/ui && yarn start",
-    "start:ui:mock": "cd ./packages/ui && yarn start",
+    "start:ui:mock": "cd ./packages/ui && yarn start:mock",
     "test": "yarn test:schema && yarn test:api && yarn test:ui && yarn test:shared",
     "test:api": "cd ./packages/api && yarn test",
     "test:ui": "cd ./packages/ui && yarn test:coverage",

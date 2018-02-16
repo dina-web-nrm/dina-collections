@@ -43,7 +43,7 @@ export default function reducer(state = initialState, action) {
 
     case TAXONOMY_FETCH_SEARCH_RESULTS_SUCCESS: {
       const emptyErrorState = setLookupError(setLookupLoading(state, false), [])
-      return setLookupResult(emptyErrorState, action.payload.data || [])
+      return setLookupResult(emptyErrorState, action.payload.json.data || [])
     }
 
     case TAXONOMY_UPDATE_SEARCH_FILTER_NAME: {

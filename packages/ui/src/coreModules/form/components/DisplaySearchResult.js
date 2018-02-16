@@ -5,10 +5,10 @@ const propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-function TaxonomyAutocompleteResult({ title }) {
+function DisplaySearchResult({ title }) {
   return <div>{title}</div>
 }
 
-TaxonomyAutocompleteResult.propTypes = propTypes
+DisplaySearchResult.propTypes = propTypes
 
-export default TaxonomyAutocompleteResult
+export default DisplaySearchResult
