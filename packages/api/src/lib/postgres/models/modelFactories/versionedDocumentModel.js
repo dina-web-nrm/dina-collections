@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize')
-const createFactory = require('./modelMethods/createFactory')
-const getByIdFactory = require('./modelMethods/getByIdFactory')
-const getOneWhereFactory = require('./modelMethods/getOneWhereFactory')
-const updateFactory = require('./modelMethods/updateFactory')
+const createFactory = require('../modelMethods/createFactory')
+const getByIdFactory = require('../modelMethods/getByIdFactory')
+const getOneWhereFactory = require('../modelMethods/getOneWhereFactory')
+const updateFactory = require('../modelMethods/updateFactory')
 
 const { createSystemModelSchemaValidator } = require('common/src/error')
 
@@ -37,6 +37,9 @@ module.exports = function createModel({
     },
     id: {
       type: Sequelize.INTEGER,
+    },
+    isCurrentVersion: {
+      type: Sequelize.BOOLEAN,
     },
     schemaCompliant: {
       type: Sequelize.BOOLEAN,

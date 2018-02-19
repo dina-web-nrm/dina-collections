@@ -10,6 +10,7 @@ module.exports = function createRoute({
   controllers,
   endpointConfig,
   method,
+  models,
   pathname,
 }) {
   const middlewares = [
@@ -26,6 +27,7 @@ module.exports = function createRoute({
       controllers,
       endpointConfig,
       method,
+      models,
     }),
     errorMiddleware({
       apiConfig,

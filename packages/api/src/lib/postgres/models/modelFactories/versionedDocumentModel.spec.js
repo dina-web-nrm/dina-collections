@@ -1,9 +1,9 @@
-const createDb = require('../db')
-const createModel = require('./createModel')
-const syncModels = require('./syncModels')
-const config = require('../../../config')
+const createDb = require('../../db')
+const createModel = require('./versionedDocumentModel')
+const syncModels = require('../syncModels')
+const config = require('../../../../config')
 
-const dbDescribe = require('../../../utilities/test/dbDescribe')
+const dbDescribe = require('../../../../utilities/test/dbDescribe')
 
 const setup = () => {
   return createDb({ config }).then(sequelize => {
@@ -15,9 +15,12 @@ const setup = () => {
     })
     return syncModels({
       config,
-      models: {
-        test: model,
-      },
+      modelArray: [
+        {
+          model,
+          name: 'test',
+        },
+      ],
     }).then(() => {
       return model
     })
