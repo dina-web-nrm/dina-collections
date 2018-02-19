@@ -1,1 +1,0 @@
-exports.individualGroup = require('./individualGroup')

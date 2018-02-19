@@ -1,0 +1,6 @@
+exports.createSpecimen = require('./createSpecimen')
+exports.getSpecimen = require('./getSpecimen')
+exports.getSpecimens = require('./getSpecimens')
+exports.getSpecimenVersion = require('./getSpecimenVersion')
+exports.getSpecimenVersions = require('./getSpecimenVersions')
+exports.updateSpecimen = require('./updateSpecimen')
