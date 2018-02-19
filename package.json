@@ -7,7 +7,7 @@
     "build": "npm-run-all -p build:ui build:schema build:semantic-ui",
     "build:ui": "cd ./packages/ui && yarn build && yarn build:storybook",
     "build:ui:mock": "cd ./packages/ui && yarn build:mock && yarn build:storybook",
-    "build:schema": "cd ./packages/common && yarn build",
+    "build:schema": "cd ./packages/common && yarn build:schema",
     "build:semantic-ui": "cd ./packages/dina-style && yarn build:docs",
     "install": "yarn install:schema && yarn install:semantic-ui && yarn install:ui && yarn install:api && yarn install:shared",
     "install:api": "cd ./packages/api && yarn install",
