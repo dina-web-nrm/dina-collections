@@ -1,3 +1,9 @@
 module.exports = function readSecurity() {
-  return {}
+  return {
+    bearerAuth: {
+      bearerFormat: 'JWT',
+      scheme: 'bearer',
+      type: 'http',
+    },
+  }
 }

@@ -9,7 +9,6 @@ const createIndexFile = ({ available, versionIndexFilePath }) => {
         return `exports['${availableVersion}'] = {
   models: require('./${availableVersion}/models.json'),
   openApi: require('./${availableVersion}/openApi.json'),
-  swagger: require('./${availableVersion}/swagger.json'),
 }`
       })
       .join('\n') + '\n'
@@ -57,7 +56,7 @@ const ensureDirectoryExistence = dirPath => {
 }
 
 module.exports = function write(
-  { models, openApi, setCurrent, swagger, version = '' } = {}
+  { models, openApi, setCurrent, version = '' } = {}
 ) {
   const buildDirectory = path.join(__dirname, '../../../../common/dist')
   const versionsBaseDirectory = path.join(buildDirectory, 'versions')
@@ -79,10 +78,6 @@ module.exports = function write(
     JSON.stringify(models, null, 2)
   )
 
-  fs.writeFileSync(
-    path.join(baseDirectory, 'swagger.json'),
-    JSON.stringify(swagger, null, 2)
-  )
   if (version) {
     updateVersionsIndex({
       setCurrent,

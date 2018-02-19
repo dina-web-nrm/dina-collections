@@ -1,6 +1,5 @@
 const Ajv = require('ajv')
 const openApiSchema = require('./schemas/openApi.json')
-const swaggerSchema = require('./schemas/swagger.json')
 
 const path = require('path')
 const read = require('./read')
@@ -19,7 +18,7 @@ const {
   apiBasePath: path.join(__dirname, '../../../api/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
 })
-const { openApi, swagger } = build({
+const { openApi } = build({
   apis,
   endpoints,
   errors,
@@ -44,25 +43,6 @@ describe('factories/index', () => {
 
     it('passes schema', () => {
       const valid = validate(openApi)
-      expect(validate.errors).toBe(null)
-      expect(valid).toBeTruthy()
-    })
-  })
-
-  describe('swagger', () => {
-    let ajv
-    let validate
-    beforeEach(() => {
-      ajv = Ajv({
-        // errorDataPath: 'property',
-        missingRefs: 'ignore',
-        verbose: false, // to have information about the error.parentSchema
-      })
-      validate = ajv.compile(swaggerSchema)
-    })
-
-    it('passes schema', () => {
-      const valid = validate(swagger)
       expect(validate.errors).toBe(null)
       expect(valid).toBeTruthy()
     })

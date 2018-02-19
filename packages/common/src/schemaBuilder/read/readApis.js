@@ -1,14 +1,29 @@
 /* eslint-disable import/no-dynamic-require, global-require */
+const fs = require('fs')
+const path = require('path')
 
 module.exports = function readApis(apisBasePath) {
-  const apis = require(apisBasePath)
-  return Object.keys(apis).reduce((obj, key) => {
-    const info = apis[key].info || {}
+  const apisInfo = fs
+    .readdirSync(apisBasePath)
+    .filter(apiName => {
+      const apiPath = path.join(apisBasePath, apiName)
+      return fs.statSync(apiPath).isDirectory()
+    })
+    .reduce((obj, apiName) => {
+      const infoPath = path.join(apisBasePath, apiName, 'info')
+      return {
+        ...obj,
+        [apiName]: require(infoPath),
+      }
+    }, {})
+
+  return Object.keys(apisInfo).reduce((obj, key) => {
+    const { description } = apisInfo[key]
 
     return {
       ...obj,
       [key]: {
-        ...info,
+        description,
         name: key,
       },
     }
