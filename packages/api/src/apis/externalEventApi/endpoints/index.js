@@ -1,0 +1,1 @@
+exports.getLoan = require('./getLoan')

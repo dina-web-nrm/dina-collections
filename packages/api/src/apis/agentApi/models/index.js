@@ -1,9 +1,9 @@
 const createModel = require('../../../lib/postgres/models/modelFactories/versionedDocumentModel')
 
-exports.curatedLocality = function curatedLocality({ sequelize }) {
+exports.agent = function agent({ sequelize }) {
   return createModel({
-    name: 'CuratedLocality',
-    schemaModelName: 'curatedLocality',
+    name: 'Agent',
+    schemaModelName: 'agent',
     schemaVersion: '1.0.1',
     sequelize,
   })

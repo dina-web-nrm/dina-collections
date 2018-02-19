@@ -1,1 +1,1 @@
-Description of auth api
+Auth api

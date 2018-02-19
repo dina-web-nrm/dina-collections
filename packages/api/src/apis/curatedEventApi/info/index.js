@@ -8,5 +8,6 @@ const description = fs.readFileSync(
 
 module.exports = {
   description,
-  name: 'Local collections api',
+  name: 'Api server',
+  url: 'https://alpha-api.dina-web.net',
 }
