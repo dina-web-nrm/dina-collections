@@ -1,4 +1,4 @@
-import validateAgainstSchema from 'common/src/jsonSchema/validateAgainstSchema'
+import validateAgainstSchema from 'common/es5/jsonSchema/validateAgainstSchema'
 
 import { notification } from '../schemas'
 
