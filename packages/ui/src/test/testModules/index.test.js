@@ -1,7 +1,7 @@
 /* eslint-disable global-require, import/no-dynamic-require */
 import path from 'path'
 import fs from 'fs'
-import validateAgainstSchema from 'utilities/jsonSchema/validateAgainstSchema'
+import validateAgainstSchema from 'common/src/jsonSchema/validateAgainstSchema'
 import isKnownError from 'utilities/error/isKnownError'
 import createApiClient from 'utilities/apiClient'
 import { testNotificationSpecification } from 'coreModules/notifications/utilities'
