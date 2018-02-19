@@ -1,4 +1,4 @@
-const createEndpointFactory = require('./createEndpointFactory')
+const createEndpointFactory = require('common/src/endpointFactory/createEndpointFactory')
 
 const importFaker = () => import('json-schema-faker')
 
