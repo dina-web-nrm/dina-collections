@@ -1,6 +1,6 @@
 /* eslint-disable no-console, prefer-destructuring */
 import React from 'react'
-import times from 'lodash.times'
+import { times } from 'lodash'
 
 import setupTestComponent from 'utilities/test/setupTestComponent'
 import DropdownSearch from './index'
