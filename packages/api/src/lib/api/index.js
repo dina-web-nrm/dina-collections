@@ -25,10 +25,11 @@ const extractRouteHandlersFromApis = apis => {
 }
 
 module.exports = function createApi({
+  apis,
   config,
   controllers,
   keycloak,
-  apis,
+  models,
   openApiSpec,
 }) {
   const routeHandlers = extractRouteHandlersFromApis(apis)
@@ -40,6 +41,7 @@ module.exports = function createApi({
     apiSpecification: openApiSpec,
     config,
     controllers,
+    models,
     routeHandlers,
     routeMocks,
   })

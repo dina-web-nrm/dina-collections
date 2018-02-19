@@ -6,6 +6,7 @@ module.exports = function createFactory({ Model, validate, schemaVersion }) {
 
     const data = {
       document: doc,
+      isCurrentVersion: true,
       schemaCompliant: !validate(doc),
       schemaVersion,
     }

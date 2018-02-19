@@ -8,6 +8,7 @@ module.exports = function createOperationMiddleware({
   controllers,
   endpointConfig,
   method,
+  models,
 }) {
   const { handler } = endpointConfig
   if (!handler) {
@@ -28,10 +29,13 @@ module.exports = function createOperationMiddleware({
 
   return (req, res, next) => {
     const { locals: { userInput, user } } = res
-    log.info(`${res.locals.id}: Call route function`)
+    log.info(
+      `${res.locals.id}: Call route function for ${endpointConfig.operationId}`
+    )
 
     return routeFunction({
       controllers,
+      models,
       user,
       userInput,
     })

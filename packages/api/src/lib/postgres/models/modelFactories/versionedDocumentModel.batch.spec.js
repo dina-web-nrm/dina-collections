@@ -1,10 +1,10 @@
-const createDb = require('../db')
-const createModel = require('./createModel')
-const syncModels = require('./syncModels')
-const config = require('../../../config')
+const createDb = require('../../db')
+const createModel = require('./versionedDocumentModel')
+const syncModels = require('../syncModels')
+const config = require('../../../../config')
 
-const batchDescribe = require('../../../utilities/test/batchDescribe')
-const batchExecute = require('../../../utilities/test/batchExecute')
+const batchDescribe = require('../../../../utilities/test/batchDescribe')
+const batchExecute = require('../../../../utilities/test/batchExecute')
 
 const createData = catalogNumber => {
   return {
@@ -116,9 +116,12 @@ const setup = () => {
     })
     return syncModels({
       config,
-      models: {
-        test: model,
-      },
+      modelArray: [
+        {
+          model,
+          name: 'test',
+        },
+      ],
     }).then(() => {
       return model
     })

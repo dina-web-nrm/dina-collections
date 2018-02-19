@@ -26,12 +26,16 @@ module.exports = function updateFactory({
         ...storedData,
         diff: diff(storedData.document, doc),
         document: doc,
+        isCurrentVersion: true,
         schemaCompliant: !validate(doc),
         schemaVersion,
       }
       delete newModel.versionId
-      return Model.create(newModel).then(savedModel => {
-        return savedModel.dataValues
+      existingModel.set({ isCurrentVersion: false })
+      return existingModel.save().then(() => {
+        return Model.create(newModel).then(savedModel => {
+          return savedModel.dataValues
+        })
       })
     })
   }

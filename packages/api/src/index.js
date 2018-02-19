@@ -13,7 +13,7 @@ bootstrapPostgres({
   apis,
   config,
 })
-  .then(({ controllers }) => {
+  .then(({ controllers, models }) => {
     const keycloak = createKeycloak({ config })
 
     const baseApi = createApi({
@@ -21,6 +21,7 @@ bootstrapPostgres({
       config,
       controllers,
       keycloak,
+      models,
       openApiSpec,
     })
 

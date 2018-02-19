@@ -1,9 +1,8 @@
 const chainPromises = require('common/src/chainPromises')
 
-module.exports = function syncModels({ config, models }) {
+module.exports = function syncModels({ config, modelArray }) {
   return chainPromises(
-    Object.keys(models).map(modelName => {
-      const model = models[modelName]
+    modelArray.map(({ model }) => {
       return () => {
         return model.Model.sync({ force: config.db.flushOnRestart })
       }

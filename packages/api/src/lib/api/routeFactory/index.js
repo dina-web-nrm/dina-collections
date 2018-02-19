@@ -28,6 +28,7 @@ module.exports = function createRoutes({
   apiConfig,
   apiSpecification,
   controllers,
+  models,
   routeHandlers,
 }) {
   const { paths } = apiSpecification
@@ -53,6 +54,7 @@ module.exports = function createRoutes({
         controllers,
         endpointConfig,
         method,
+        models,
         pathname,
       })
 
