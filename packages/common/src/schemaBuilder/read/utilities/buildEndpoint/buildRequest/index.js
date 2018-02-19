@@ -1,15 +1,26 @@
+const buildRaw = require('./buildRaw')
 /* eslint-disable sort-keys */
 
 module.exports = function createRequest({
   description,
+  examples,
   format,
   operationId,
+  raw,
   resource,
 }) {
   const name = `${operationId}Request`
+  if (raw) {
+    return buildRaw({
+      name,
+      raw,
+    })
+  }
+
   if (format === 'array') {
     return {
       name,
+      examples,
       schema: {
         description: description || 'this is a desc',
         body: {
@@ -45,6 +56,7 @@ module.exports = function createRequest({
 
   return {
     name,
+    examples,
     schema: {
       description: description || 'this is a desc for request',
       body: {
