@@ -37,7 +37,7 @@ const SidebarNavItemGroup = ({ navGroupItem }) => {
         activeClassName="active"
         className={push ? 'item push bottom' : 'item'}
         exact={exact}
-        key={path}
+        key={path || name}
         to={path}
       >
         {icon && <Icon name={icon} size="large" />}
@@ -69,7 +69,7 @@ const SidebarNavItemGroup = ({ navGroupItem }) => {
       )}
       <Menu.Menu>
         {items.map(navItem => {
-          return <SidebarNavItem navItem={navItem} />
+          return <SidebarNavItem key={navItem.name} navItem={navItem} />
         })}
       </Menu.Menu>
     </Menu.Item>

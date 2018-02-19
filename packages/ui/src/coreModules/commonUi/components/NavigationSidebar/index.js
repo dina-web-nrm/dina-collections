@@ -22,10 +22,10 @@ const propTypes = {
   logout: PropTypes.func.isRequired,
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
-      exact: PropTypes.bool.isRequired,
+      exact: PropTypes.bool,
       icon: PropTypes.string,
       name: PropTypes.string.isRequired,
-      path: PropTypes.string.isRequired,
+      path: PropTypes.string,
       push: PropTypes.bool,
     })
   ),
