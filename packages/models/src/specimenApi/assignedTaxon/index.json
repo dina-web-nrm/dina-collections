@@ -1,0 +1,12 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "curatorialName": {
+      "type": "string"
+    },
+    "determinations": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__determination" }
+    }
+  }
+}

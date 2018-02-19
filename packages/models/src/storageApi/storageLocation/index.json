@@ -1,0 +1,7 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "locationText": { "type": "string" }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "additionalProperties": false,
+  "description": "This is a description",
+  "properties": {
+    "assignedTaxon": {
+      "type": "object",
+      "$ref": "__ROOT__assignedTaxon"
+    },
+    "individualCircumstances": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__individualCircumstance" }
+    },
+    "featureObservations": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__featureObservation" }
+    },
+    "id": { "type": "string" },
+    "identifiers": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__identifier" }
+    },
+    "identifiableUnits": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__identifiableUnit" }
+    },
+    "version": { "type": "integer" }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "identifiableUnits": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__identifiableUnit" }
+    },
+    "normalStorageLocationText": {
+      "description": "Will be moved to storageLocation",
+      "type": "string"
+    },
+    "storedUnderTaxonName": {
+      "description": "Will be moved to storageLocation",
+      "type": "string",
+      "example": "Sorex minutus"
+    },
+    "storageLocation": { "$ref": "__ROOT__storageLocation" }
+  }
+}

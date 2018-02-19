@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "collectorsText": {
+      "type": "string",
+      "example": "Bergström, U",
+      "description": "Name of the collector"
+    },
+    "event": {
+      "$ref": "__ROOT__event"
+    },
+    "specificCircumstance": {
+      "anyOf": [
+        {
+          "$ref": "__ROOT__originCircumstance"
+        },
+        {
+          "$ref": "__ROOT__observationCircumstance"
+        },
+        {
+          "$ref": "__ROOT__deathCircumstance"
+        }
+      ]
+    }
+  }
+}
+

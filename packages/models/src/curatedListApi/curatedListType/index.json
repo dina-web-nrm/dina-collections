@@ -1,0 +1,15 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "item": {
+      "anyOf": [
+        {
+          "$ref": "__ROOT__featureObservationType"
+        },
+        {
+          "$ref": "__ROOT__identifiableUnitObservationType"
+        }
+      ]
+    }
+  }
+}

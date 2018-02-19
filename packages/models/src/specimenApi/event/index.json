@@ -1,0 +1,13 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "startDate": {
+      "$ref": "__ROOT__date"
+    },
+    "endDate": {
+      "$ref": "__ROOT__date"
+    },
+    "expeditionText": { "type": "string", "example": "Vega Expedition" },
+    "localityInformation": { "$ref": "__ROOT__localityInformation" }
+  }
+}
