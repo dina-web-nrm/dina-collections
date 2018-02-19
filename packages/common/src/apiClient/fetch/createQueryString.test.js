@@ -1,6 +1,6 @@
 const createQueryString = require('./createQueryString')
 
-describe('utilities/apiClient/preProcess/createQueryString', () => {
+describe('apiClient/preProcess/createQueryString', () => {
   it('returns query string', () => {
     const queryParameters = {
       email: 'test@email.co',
