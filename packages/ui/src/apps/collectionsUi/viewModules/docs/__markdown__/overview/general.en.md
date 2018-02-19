@@ -1,4 +1,4 @@
-# THIS IS AN OVERVIEW IN MARKDOWN
+## Data model documentation
 
-## This is a sub header
-
+Docs contains documentation of our current datamodel. Brows the navigation to
+the left to explore our current models. More information tba

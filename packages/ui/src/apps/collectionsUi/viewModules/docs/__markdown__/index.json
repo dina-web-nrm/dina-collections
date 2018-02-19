@@ -1,7 +1,7 @@
 {
   "overview": {
     "general": {
-      "en": "<h1>THIS IS AN OVERVIEW IN MARKDOWN</h1>\n<h2>This is a sub header</h2>\n"
+      "en": "<h2>Data model documentation</h2>\n<p>Docs contains documentation of our current datamodel. Brows the navigation to<br>\nthe left to explore our current models. More information tba</p>\n"
     }
   }
 }

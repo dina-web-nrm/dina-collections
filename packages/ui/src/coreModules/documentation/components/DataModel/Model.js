@@ -18,7 +18,7 @@ const Model = ({ model, version }) => {
   })
   return (
     <Segment basic id={model.key}>
-      <h2>{model.key}</h2>
+      <h1>{model.key}</h1>
 
       {model.description ? (
         <MarkdownToHtmlAsync markdown={model.description} />

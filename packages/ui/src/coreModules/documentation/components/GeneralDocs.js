@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Segment } from 'semantic-ui-react'
 import { Markdown } from 'coreModules/i18n/components'
 
 const propTypes = {
@@ -17,12 +16,10 @@ const GeneralDocs = ({ match }) => {
   return (
     <div>
       <h2>{docName}</h2>
-      <Segment>
-        <Markdown
-          fallbackLanguage="en"
-          textKey={`modules.docs.overview.${docName}`}
-        />
-      </Segment>
+      <Markdown
+        fallbackLanguage="en"
+        textKey={`modules.docs.overview.${docName}`}
+      />
     </div>
   )
 }
