@@ -40,21 +40,6 @@ apiDescribe('individualGroup', () => {
           expect(res.data.length > 0).toBe(true)
         })
       })
-      it('Succeed with valid catalogNumber and includes', () => {
-        return makeTestCall({
-          authToken,
-          operationId: 'getIndividualGroups',
-          queryParams: {
-            'filter[catalogNumber]': validCatalogNumber,
-            include: 'identifications,physicalUnits.catalogedUnit',
-          },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length > 0).toBe(true)
-        })
-      })
     })
     describe('by identifiedTaxonNameStandardized', () => {
       it('Succeed with valid identifiedTaxonNameStandardized', () => {
@@ -63,21 +48,6 @@ apiDescribe('individualGroup', () => {
           operationId: 'getIndividualGroups',
           queryParams: {
             'filter[identifiedTaxonNameStandardized]': validTaxonName,
-          },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length > 0).toBe(true)
-        })
-      })
-      it('Succeed with valid identifiedTaxonNameStandardized and includes', () => {
-        return makeTestCall({
-          authToken,
-          operationId: 'getIndividualGroups',
-          queryParams: {
-            'filter[identifiedTaxonNameStandardized]': validTaxonName,
-            include: 'identifications,physicalUnits.catalogedUnit',
           },
         }).then(res => {
           expect(res).toBeTruthy()
