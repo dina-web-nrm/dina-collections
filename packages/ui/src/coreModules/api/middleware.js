@@ -12,7 +12,10 @@ export const buildAuthHeaders = state => {
 
 export default function createApiMiddleware(apiClientOptions) {
   const systemValidate = (input, schema) => {
-    const validator = createSystemSchemaValidator(schema)
+    const validator = createSystemSchemaValidator({
+      context: 'apiClient',
+      schema,
+    })
     return validator(input)
   }
   return ({ dispatch, getState }) => {

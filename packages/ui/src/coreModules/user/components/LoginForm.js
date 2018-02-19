@@ -89,7 +89,7 @@ RawLoginForm.defaultProps = defaultProps
 
 export const LoginForm = reduxForm({
   form: 'simple',
-  validate: createFormSchemaValidator(loginRequestSchema),
+  validate: createFormSchemaValidator({ schema: loginRequestSchema }),
 })(RawLoginForm)
 
 export default compose(connect(null, mapDispatchToProps))(LoginForm)

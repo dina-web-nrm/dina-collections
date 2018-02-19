@@ -13,8 +13,8 @@ module.exports = function createApiMethod(apiConfig, methodConfigInput) {
     responseContentType: 'json',
     ...methodConfigInput,
   }
-  validateMethodConfig(methodConfigInput, apiConfig)
 
+  validateMethodConfig(methodConfig, apiConfig)
   return function apiMethod(endpointConfig, userInput = {}) {
     validateEndpointConfig(endpointConfig, apiConfig)
     return createRequest({
