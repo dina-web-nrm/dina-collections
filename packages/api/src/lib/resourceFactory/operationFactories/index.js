@@ -1,0 +1,6 @@
+exports.create = require('./create')
+exports.getMany = require('./getMany')
+exports.getOne = require('./getOne')
+exports.getRelation = require('./getRelation')
+exports.update = require('./update')
+exports.updateRelation = require('./updateRelation')
