@@ -669,7 +669,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
             featureObservationText: 'female',
             featureObservationType: {
               featureObservationTypeName: 'sex',
-              id: 1,
+              id: '1',
             },
           },
         ],
@@ -682,7 +682,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
         ],
         occurrences: [
           {
-            id: 1,
+            id: '1',
           },
         ],
         physicalUnits: [
@@ -693,7 +693,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
           },
         ],
       },
-      id: 2,
+      id: '2',
       type: 'individualGroup',
     }
 
