@@ -1,4 +1,4 @@
-import { createSystemSchemaValidator } from 'utilities/error'
+import { createSystemSchemaValidator } from 'common/src/error'
 
 export const addModuleToValidations = (validations, module) => {
   const moduleSchemas = module.schemas

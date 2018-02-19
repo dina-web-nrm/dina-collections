@@ -1,5 +1,5 @@
 import globalUserSelectors from 'coreModules/user/globalSelectors'
-import { createSystemSchemaValidator } from 'utilities/error'
+import { createSystemSchemaValidator } from 'common/src/error'
 import createApiClient from 'utilities/apiClient'
 
 export const buildAuthHeaders = state => {

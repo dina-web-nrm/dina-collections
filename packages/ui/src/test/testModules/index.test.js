@@ -2,7 +2,7 @@
 import path from 'path'
 import fs from 'fs'
 import validateAgainstSchema from 'common/src/jsonSchema/validateAgainstSchema'
-import isKnownError from 'utilities/error/isKnownError'
+import isKnownError from 'common/src/error/isKnownError'
 import createApiClient from 'utilities/apiClient'
 import { testNotificationSpecification } from 'coreModules/notifications/utilities'
 
