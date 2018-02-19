@@ -1,0 +1,25 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "isoDate": {
+      "type": "string",
+      "description": "A date in standard format. TBA"
+    },
+    "dateText": {
+      "type": "string",
+      "example": "Before 1800"
+    },
+    "day": {
+      "type": "integer",
+      "example": 25
+    },
+    "month": {
+      "type": "integer",
+      "example": 12
+    },
+    "year": {
+      "type": "integer",
+      "example": 1981
+    }
+  }
+}

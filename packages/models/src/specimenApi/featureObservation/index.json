@@ -1,0 +1,12 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "featureObservationAgent": { "type": "string", "example": "Doe, J." },
+    "date": {
+      "$ref": "__ROOT__date"
+    },
+    "featureObservationText": { "type": "string", "example": "10 years" },
+    "featureObservationType": { "$ref": "__ROOT__featureObservationType" },
+    "methodText": { "type": "string", "example": "Known age" }
+  }
+}

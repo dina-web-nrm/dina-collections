@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "identifierType": {
+      "type": "string",
+      "pattern": "catalogNumber"
+    },
+    "nameSpace": {
+      "type": "string",
+      "example": "mammal"
+    }
+  }
+}

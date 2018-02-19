@@ -1,0 +1,16 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "collectorsText": {
+      "type": "string",
+      "example": "Bergström, U",
+      "description": "Name of the collector"
+    },
+    "event": {
+      "$ref": "__ROOT__event"
+    }
+  }
+}

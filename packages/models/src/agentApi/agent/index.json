@@ -1,0 +1,9 @@
+{
+  "additionalProperties": false,
+  "description": "WIP",
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

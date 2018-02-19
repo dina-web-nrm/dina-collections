@@ -1,0 +1,34 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "remarks": {
+      "type": "string",
+      "example": "Some remarks"
+    },
+    "determinationText": {
+      "type": "string",
+      "example": "Sorex minutus, by Doe, J. on 1982-01-01"
+    },
+    "determintionVerbatim": {
+      "type": "string",
+      "description": "In exactly the same words as were used originally"
+    },
+    "determinedByAgentText": {
+      "type": "string",
+      "example": "Doe, J."
+    },
+    "date": {
+      "$ref": "__ROOT__date"
+    },
+    "taxonNameStandardized": {
+      "type": "string",
+      "description": "Should be a taxon reference",
+      "example": "Chironectes minimus"
+    },
+    "taxon": {"$ref": "__ROOT__individualGroup"},
+    "isCurrentDetermination": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}
