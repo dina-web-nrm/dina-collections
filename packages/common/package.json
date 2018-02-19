@@ -14,7 +14,7 @@
     "test:lint": "yarn lint:js",
     "test:unit": "jest --env=node",
     "test:unit:watch": "jest --env=node --watch",
-    "build:schema": "node ./src/schemaBuilder/index.js"
+    "build:schema": "node ./src/schemaBuilder/index.js && yarn test:unit"
   },
   "dependencies": {
     "ajv": "^5.2.3",
