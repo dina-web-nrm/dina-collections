@@ -3,9 +3,8 @@ const createSchemaValidator = require('../../jsonSchema/createValidator')
 const systemErrorFactory = require('../errorFactories/system')
 const ajvErrorMapper = require('../errorMappers/ajv')
 
-const errorHandler = compose(systemErrorFactory, ajvErrorMapper)
-
-module.exports = function createSystemSchemaValidator(schema) {
+module.exports = function createSystemSchemaValidator({ context, schema }) {
+  const errorHandler = compose(systemErrorFactory({ context }), ajvErrorMapper)
   return createSchemaValidator({
     errorHandler,
     schema,

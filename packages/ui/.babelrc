@@ -9,7 +9,7 @@
     "stage-2",
     "react"
   ],
-  "plugins": ["transform-runtime"],
+  "plugins": ["syntax-dynamic-import", "transform-runtime"],
   "comments": false,
   "env": {
     "test": {

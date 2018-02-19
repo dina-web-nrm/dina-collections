@@ -1,4 +1,4 @@
-import { createSystemSchemaValidator } from 'utilities/error'
+import { createSystemSchemaValidator } from 'common/src/error'
 
 export const addModuleToValidations = (validations, module) => {
   const moduleSchemas = module.schemas
@@ -35,7 +35,7 @@ export const validateConfigWithSchema = (config, configSchemas = {}) => {
   Object.keys(configSchemas).forEach(moduleName => {
     const moduleSchema = configSchemas[moduleName]
     const moduleConfig = config[moduleName]
-    const validate = createSystemSchemaValidator(moduleSchema)
+    const validate = createSystemSchemaValidator({ schema: moduleSchema })
     const errors = validate(moduleConfig)
     if (errors) {
       const errorMessage = `Validating config for module: ${

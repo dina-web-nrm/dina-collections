@@ -9,14 +9,14 @@ const baseUrl = '/taxonomy'
 export const TAXONOMY_SEARCH = createEndpoint({
   baseUrl,
   mapResponse: res => {
-    if (!res.json.data) {
+    if (!res.data) {
       return res
     }
 
     return immutable.set(
       res,
-      'json.data',
-      res.json.data.map(item => {
+      'data',
+      res.data.map(item => {
         return immutableReplace(item, {
           newPath: 'attributes.scientificName',
           oldPath: 'attributes.scientific_name',
