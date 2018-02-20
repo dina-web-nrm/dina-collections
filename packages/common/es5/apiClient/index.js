@@ -6,18 +6,26 @@ var _extends3 = _interopRequireDefault(_extends2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var validateApiConfig = require('./validation/validateApiConfig');
-var createApiMethod = require('./createApiMethod');
+var _require = require('../Dependor'),
+    Dependor = _require.Dependor;
 
-module.exports = function createApiClient(apiConfigInput) {
+var createApiMethod = require('./createApiMethod');
+var validateApiConfig = require('./validation/validateApiConfig');
+
+var dep = new Dependor({
+  createApiMethod: createApiMethod,
+  validateApiConfig: validateApiConfig
+}, 'apiClient:index');
+
+function createApiClient(apiConfigInput) {
   var apiConfig = (0, _extends3.default)({
     validateInput: true,
     validateOutput: true
   }, apiConfigInput);
 
-  validateApiConfig(apiConfig);
+  dep.validateApiConfig(apiConfig);
 
-  var formPost = createApiMethod(apiConfig, {
+  var formPost = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -26,15 +34,15 @@ module.exports = function createApiClient(apiConfigInput) {
     method: 'POST'
   });
 
-  var httpDelete = createApiMethod(apiConfig, {
+  var httpDelete = dep.createApiMethod(apiConfig, {
     method: 'delete'
   });
 
-  var httpGet = createApiMethod(apiConfig, {
+  var httpGet = dep.createApiMethod(apiConfig, {
     method: 'GET'
   });
 
-  var httpPatch = createApiMethod(apiConfig, {
+  var httpPatch = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
         'Content-Type': 'application/json'
@@ -43,7 +51,7 @@ module.exports = function createApiClient(apiConfigInput) {
     method: 'PATCH'
   });
 
-  var httpPost = createApiMethod(apiConfig, {
+  var httpPost = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
         'Content-Type': 'application/json'
@@ -52,7 +60,7 @@ module.exports = function createApiClient(apiConfigInput) {
     method: 'POST'
   });
 
-  var httpPut = createApiMethod(apiConfig, {
+  var httpPut = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
         'Content-Type': 'application/json'
@@ -104,11 +112,16 @@ module.exports = function createApiClient(apiConfigInput) {
         }
       default:
         {
-          throw new Error(methodName + ' is not supperted in call');
+          throw new Error(methodName + ' is not supported in call');
         }
     }
   };
   return (0, _extends3.default)({}, methods, {
     call: call
   });
+}
+
+module.exports = {
+  createApiClient: createApiClient,
+  dep: dep
 };
