@@ -28,23 +28,23 @@ export const GET_INDIVIDUAL_GROUP_BY_CATALOG_NUMBER = createEndpoint({
   mock: ({ request: { queryParams } }) => {
     return { data: [getIndividualGroup(queryParams)] }
   },
-  operationId: 'getIndividualGroups',
+  operationId: 'getSpecimens',
 })
 
 export const LOOKUP_MAMMALS = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: createLookupMammalsResponse,
-  operationId: 'getIndividualGroups',
+  operationId: 'getSpecimens',
 })
 
 export const REGISTER_MAMMAL = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: () => ({ data: getIndividualGroup() }),
-  operationId: 'createIndividualGroup',
+  operationId: 'createSpecimen',
 })
 
 export const UPDATE_INDIVIDUAL_GROUP = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: () => ({ data: getIndividualGroup() }),
-  operationId: 'updateIndividualGroup',
+  operationId: 'updateSpecimen',
 })
