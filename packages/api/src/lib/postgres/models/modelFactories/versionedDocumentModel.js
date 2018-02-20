@@ -3,8 +3,8 @@ const createFactory = require('../modelMethods/createFactory')
 const getByIdFactory = require('../modelMethods/getByIdFactory')
 const getOneWhereFactory = require('../modelMethods/getOneWhereFactory')
 const updateFactory = require('../modelMethods/updateFactory')
-
-const { createSystemModelSchemaValidator } = require('common/es5/error')
+const getWhereFactory = require('../modelMethods/getWhereFactory')
+const { createSystemModelSchemaValidator } = require('common/src/error')
 
 // make model-factory more advanced
 // * add where search to get single revision
@@ -60,7 +60,7 @@ module.exports = function createModel({
   })
 
   const getOneWhere = getOneWhereFactory({ Model })
-
+  const getWhere = getWhereFactory({ Model })
   const create = createFactory({
     Model,
     schemaVersion,
@@ -78,6 +78,7 @@ module.exports = function createModel({
     create,
     getById,
     getOneWhere,
+    getWhere,
     Model,
     update,
   }
