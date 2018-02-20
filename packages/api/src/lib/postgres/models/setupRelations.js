@@ -1,3 +1,7 @@
+const createLog = require('../../../utilities/log')
+
+const log = createLog('lib/postgres/models/setupRelations')
+
 const extractSetupRelationsFromApis = apis => {
   return Object.keys(apis)
     .reduce((modelFactories, apiName) => {
@@ -10,21 +14,23 @@ const extractSetupRelationsFromApis = apis => {
 
       if (Array.isArray(models)) {
         endpointSetupRelations = models.map(model => {
-          const { modelName, factory } = model
-          if (modelName !== 'setupRelations') {
+          const { name, factory } = model
+          if (name !== 'setupRelations') {
             return null
           }
           return {
+            apiName,
             setupRelations: factory,
           }
         })
       } else {
-        endpointSetupRelations = Object.keys(models).map(modelName => {
-          if (modelName !== 'setupRelations') {
+        endpointSetupRelations = Object.keys(models).map(name => {
+          if (name !== 'setupRelations') {
             return null
           }
-          const setupRelations = models[modelName].factory
+          const setupRelations = models[name].factory
           return {
+            apiName,
             setupRelations,
           }
         })
@@ -36,14 +42,18 @@ const extractSetupRelationsFromApis = apis => {
 }
 
 module.exports = function setupModelRelations({ apis, models }) {
+  log.info('Setup relations started')
   const setupRelationFunctions = extractSetupRelationsFromApis(apis)
   return Promise.all(
-    setupRelationFunctions.map(({ setupRelations }) => {
+    setupRelationFunctions.map(({ apiName, setupRelations }) => {
+      log.info(`Setting up relations for ${apiName}`)
       return Promise.resolve(
         setupRelations({
           models,
         })
       )
     })
-  )
+  ).then(() => {
+    log.info('Setup relations done')
+  })
 }
