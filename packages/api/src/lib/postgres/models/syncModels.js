@@ -1,4 +1,4 @@
-const chainPromises = require('common/src/chainPromises')
+const chainPromises = require('common/es5/chainPromises')
 
 module.exports = function syncModels({ config, modelArray }) {
   return chainPromises(
