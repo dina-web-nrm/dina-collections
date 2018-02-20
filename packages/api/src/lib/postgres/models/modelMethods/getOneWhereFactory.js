@@ -5,9 +5,11 @@ module.exports = function getOneWhereFactory({ Model }) {
     }
 
     return Model.findOne({
-      order: [['versionId', 'DESC']],
       raw: true,
-      where,
+      where: {
+        ...where,
+        isCurrentVersion: true,
+      },
     })
   }
 }
