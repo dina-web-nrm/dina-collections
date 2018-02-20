@@ -1,45 +1,40 @@
-const operationFactories = require('./operationFactories')
+const createLog = require('../../utilities/log')
+
+const log = createLog('lib/resourceFactory')
 
 module.exports = function createResource({
   basePath,
   modelName: modelNameInput,
-  operations: operationsInput = [],
+  endpoints,
   relations,
   resource,
   resourcePlural: resourcePluralInput,
 }) {
+  log.debug(`Create resource: ${resource}`)
   const resourcePlural = resourcePluralInput || `${resource}s`
   const modelName = modelNameInput || resource
 
-  if (operationsInput.length === 0) {
-    throw new Error(`Have to provide operations. Missing for: ${resource}`)
+  if (endpoints.length === 0) {
+    throw new Error(`Have to provide endpoints. Missing for: ${resource}`)
   }
 
-  return operationsInput.reduce((operations, operation) => {
-    const { operationType } = operation
-    if (!operationFactories[operationType]) {
-      throw new Error(`Unknown operationType: ${operationType}`)
+  return endpoints.reduce((operations, endpoint) => {
+    const { operation } = endpoint
+    if (!operation) {
+      throw new Error('operation not provided')
     }
-
-    const { operationId, ...rest } = operationFactories[operationType]({
+    const { operationId, ...rest } = operation({
       basePath,
       modelName,
       relations,
       resource,
       resourcePlural,
-      ...operation,
+      ...endpoint,
     })
+    log.debug(`Create operation: ${resource} -> ${operationId}`)
     return {
       ...operations,
       [operationId]: rest, // eslint-disable-line
     }
   }, {})
 }
-// exports.createResource = ({
-//   operations: ['create', 'getOne', 'getMany','update', 'delete'],
-//   resource: 'physicalUnit',
-//   resourcePlural: 'physicalUnits',
-//   belongsTo: 'inventoryUnit',
-// }) => {
-
-// }

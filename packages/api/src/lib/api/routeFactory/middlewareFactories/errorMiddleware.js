@@ -9,7 +9,7 @@ module.exports = function createErrorMiddleware({ apiConfig }) {
     // ensure know error or pass on other error
 
     if (apiConfig.log.error) {
-      log.err(`Got api error: ${err.stack}`)
+      log.err(`Got api error: ${err.stack} \n ${JSON.stringify(err, null, 2)}`)
     }
 
     if (err.status === 400) {

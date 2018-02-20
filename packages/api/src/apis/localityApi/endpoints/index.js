@@ -1,43 +1,51 @@
 const createResource = require('../../../lib/resourceFactory')
+const {
+  create,
+  getMany,
+  getOne,
+  getRelation,
+  update,
+  updateRelation,
+} = require('../../../operations')
 
 module.exports = createResource({
   basePath: '/localityApi/v01',
-  operations: [
+  endpoints: [
     {
       connect: true,
-      operationType: 'create',
+      operation: create,
     },
     {
       connect: true,
-      operationType: 'update',
+      operation: update,
     },
     {
       connect: true,
-      operationType: 'updateRelation',
+      operation: updateRelation,
       relationKey: 'belongsTo',
     },
     {
       connect: true,
-      operationType: 'getRelation',
+      operation: getRelation,
       relationKey: 'belongsTo',
     },
     {
       connect: true,
-      operationType: 'updateRelation',
+      operation: updateRelation,
       relationKey: 'contains',
     },
     {
       connect: true,
-      operationType: 'getRelation',
+      operation: getRelation,
       relationKey: 'contains',
     },
     {
       connect: true,
-      operationType: 'getOne',
+      operation: getOne,
     },
     {
       connect: true,
-      operationType: 'getMany',
+      operation: getMany,
     },
   ],
   relations: {

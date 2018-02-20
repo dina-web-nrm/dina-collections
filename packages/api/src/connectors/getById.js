@@ -1,4 +1,4 @@
-const createObjectResponse = require('../api/utilities/createObjectResponse')
+const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
 module.exports = function getById({ modelName, resource: resourceInput }) {

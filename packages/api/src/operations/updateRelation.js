@@ -1,29 +1,37 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
-module.exports = function getRelation({
+module.exports = function updateRelation({
   basePath,
+  connect,
+  connector,
+  modelName,
   relationKey,
   relations,
   resource,
   resourcePlural,
 }) {
   const relation = relations[relationKey]
-
   const { format, resource: relationResource } = relation
 
-  const operationId = `get${capitalizeFirstLetter(
+  const operationId = `update${capitalizeFirstLetter(
     resource
   )}${capitalizeFirstLetter(relationKey)}`
 
   return {
-    method: 'get',
+    method: 'patch',
     operationId,
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
+    request: {
+      format,
+      resource: 'modelReference',
+    },
     resource: relationResource,
     response: {
       format,
     },
-    summary: `Find ${resource} -> ${relationKey}`,
+    routeHandler:
+      connect && connector ? connector({ modelName, relations }) : undefined,
+    summary: `Update ${resource} -> ${relationKey}`,
   }
 }

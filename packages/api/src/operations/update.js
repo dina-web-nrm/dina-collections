@@ -1,12 +1,13 @@
-const updateConnector = require('../../connectors/update')
+const updateConnector = require('../connectors/update')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
-module.exports = function updateOperation({
+module.exports = function update({
   basePath,
-  resourcePlural,
-  resource,
-  modelName,
   connect,
+  connector = updateConnector,
+  modelName,
+  resource,
+  resourcePlural,
 }) {
   const operationId = `update${capitalizeFirstLetter(resource)}`
 
@@ -22,7 +23,7 @@ module.exports = function updateOperation({
     response: {
       format: 'object',
     },
-    routeHandler: connect ? updateConnector({ modelName }) : undefined,
+    routeHandler: connect ? connector({ modelName }) : undefined,
     summary: `Updates ${resource}`,
   }
 }

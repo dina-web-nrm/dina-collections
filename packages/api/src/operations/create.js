@@ -1,16 +1,16 @@
-const createConnector = require('../../connectors/create')
+const createConnector = require('../connectors/create')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
-module.exports = function createOperation({
+module.exports = function create({
   basePath,
   connect,
+  connector = createConnector,
   exampleResponses = [],
   modelName,
   resource,
   resourcePlural,
 }) {
   const operationId = `create${capitalizeFirstLetter(resource)}`
-
   return {
     method: 'post',
     operationId,
@@ -23,7 +23,7 @@ module.exports = function createOperation({
       examples: exampleResponses,
       format: 'object',
     },
-    routeHandler: connect ? createConnector({ modelName }) : undefined,
+    routeHandler: connect ? connector({ modelName }) : undefined,
     summary: `Create an ${resource}`,
   }
 }

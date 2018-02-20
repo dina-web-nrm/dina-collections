@@ -5,7 +5,6 @@ const log = createLog('operationMiddleware')
 
 module.exports = function createOperationMiddleware({
   apiConfig,
-  controllers,
   endpointConfig,
   method,
   models,
@@ -34,7 +33,6 @@ module.exports = function createOperationMiddleware({
     )
 
     return routeFunction({
-      controllers,
       models,
       user,
       userInput,
@@ -44,8 +42,10 @@ module.exports = function createOperationMiddleware({
 
         if (apiConfig.log.outgoingResponse) {
           log.debug(
-            `${res.locals.id}: Sending response ${JSON.stringify(data)}`
+            `${res.locals.id}: Sending response 200 ${JSON.stringify(data)}`
           )
+        } else {
+          log.debug(`${res.locals.id}: Sending response 200`)
         }
 
         res.send(data)

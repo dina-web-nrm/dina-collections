@@ -1,5 +1,5 @@
 module.exports = function getWhereFactory({ Model }) {
-  return function getWhere({ where } = {}) {
+  return function getWhere({ where, forceCurrentVersion = true } = {}) {
     if (!where) {
       return Promise.reject(new Error('where not provided'))
     }
@@ -7,7 +7,7 @@ module.exports = function getWhereFactory({ Model }) {
       raw: true,
       where: {
         ...where,
-        isCurrentVersion: true,
+        isCurrentVersion: forceCurrentVersion ? true : undefined,
       },
     })
   }

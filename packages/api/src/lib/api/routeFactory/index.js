@@ -27,7 +27,6 @@ const flattenPaths = paths => {
 module.exports = function createRoutes({
   apiConfig,
   apiSpecification,
-  controllers,
   models,
   routeHandlers,
 }) {
@@ -51,7 +50,6 @@ module.exports = function createRoutes({
       }
       const route = createRoute({
         apiConfig,
-        controllers,
         endpointConfig,
         method,
         models,

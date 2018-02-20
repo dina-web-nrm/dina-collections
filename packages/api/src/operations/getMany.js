@@ -1,21 +1,23 @@
-const getManyConnector = require('../../connectors/getMany')
+const getManyConnector = require('../connectors/getMany')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 const buildRelations = require('./utilities/buildRelations')
 
-module.exports = function createOperation({
+module.exports = function getMany({
   basePath,
-  resourcePlural,
-  resource,
-  relations,
-  modelName,
   connect,
+  connector = getManyConnector,
+  modelName,
+  queryParams,
+  relations,
+  resource,
+  resourcePlural,
 }) {
   const operationId = `get${capitalizeFirstLetter(resourcePlural)}`
-
   return {
     method: 'get',
     operationId,
     path: `${basePath}/${resourcePlural}`,
+    queryParams,
     resource,
     response: {
       format: 'array',
@@ -25,7 +27,7 @@ module.exports = function createOperation({
         resourcePlural,
       }),
     },
-    routeHandler: connect ? getManyConnector({ modelName }) : undefined,
+    routeHandler: connect ? connector({ modelName }) : undefined,
     summary: `Find ${resourcePlural}`,
   }
 }

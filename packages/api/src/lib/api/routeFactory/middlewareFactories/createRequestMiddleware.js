@@ -21,7 +21,10 @@ module.exports = function createRequestMiddleware({ apiConfig }) {
           queryParams,
         })}`
       )
+    } else {
+      log.debug(`${res.locals.id}: Building request `)
     }
+
     res.locals.userInput = userInput
     next()
   }

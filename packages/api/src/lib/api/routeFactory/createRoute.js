@@ -7,7 +7,6 @@ const {
 
 module.exports = function createRoute({
   apiConfig,
-  controllers,
   endpointConfig,
   method,
   models,
@@ -24,7 +23,6 @@ module.exports = function createRoute({
     }),
     operationMiddleware({
       apiConfig,
-      controllers,
       endpointConfig,
       method,
       models,
@@ -37,6 +35,7 @@ module.exports = function createRoute({
 
   return {
     middlewares,
+    operationId: endpointConfig.operationId,
     pathname,
     verbName: endpointConfig.verbName,
   }

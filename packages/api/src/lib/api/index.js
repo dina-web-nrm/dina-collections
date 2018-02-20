@@ -27,20 +27,18 @@ const extractRouteHandlersFromApis = apis => {
 module.exports = function createApi({
   apis,
   config,
-  controllers,
   keycloak,
   models,
   openApiSpec,
 }) {
   const routeHandlers = extractRouteHandlersFromApis(apis)
   const routeMocks = {}
-  const apiConfig = { controllers, ...config.api, log: config.log }
+  const apiConfig = { ...config.api, log: config.log }
 
   const routes = createRoutes({
     apiConfig,
     apiSpecification: openApiSpec,
     config,
-    controllers,
     models,
     routeHandlers,
     routeMocks,
@@ -51,15 +49,25 @@ module.exports = function createApi({
   if (config.auth.active) {
     api.use(keycloak.protect())
   }
-  routes.forEach(({ middlewares, pathname, verbName, usingMock }) => {
-    if (usingMock) {
-      log.info(`Register mock: ${verbName.toUpperCase()} - ${pathname}`)
-    } else {
-      log.info(`Register route: ${verbName.toUpperCase()} - ${pathname}`)
-    }
+  routes.forEach(
+    ({ middlewares, operationId, pathname, verbName, usingMock }) => {
+      if (usingMock) {
+        log.info(
+          `Register mock: ${verbName.toUpperCase()} - ${pathname} as ${
+            operationId
+          }`
+        )
+      } else {
+        log.info(
+          `Register route: ${verbName.toUpperCase()} - ${pathname} as ${
+            operationId
+          }`
+        )
+      }
 
-    api[verbName](pathname, middlewares)
-  })
+      api[verbName](pathname, middlewares)
+    }
+  )
 
   return api
 }

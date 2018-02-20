@@ -42,11 +42,11 @@ const extractSetupRelationsFromApis = apis => {
 }
 
 module.exports = function setupModelRelations({ apis, models }) {
-  log.info('Setup relations started')
+  log.debug('Setup relations started')
   const setupRelationFunctions = extractSetupRelationsFromApis(apis)
   return Promise.all(
     setupRelationFunctions.map(({ apiName, setupRelations }) => {
-      log.info(`Setting up relations for ${apiName}`)
+      log.debug(`Setting up relations for ${apiName}`)
       return Promise.resolve(
         setupRelations({
           models,
@@ -54,6 +54,6 @@ module.exports = function setupModelRelations({ apis, models }) {
       )
     })
   ).then(() => {
-    log.info('Setup relations done')
+    log.debug('Setup relations done')
   })
 }
