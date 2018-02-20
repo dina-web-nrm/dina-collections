@@ -13,7 +13,6 @@ module.exports = function buildResponse({
   include = null,
   operationId,
   raw,
-  relationBase,
   relations,
   resource,
   selfLink,
@@ -28,10 +27,7 @@ module.exports = function buildResponse({
   }
 
   const relationships = buildRelationships({
-    format,
-    relationBase,
     relations,
-    selfLink,
     versionsLink,
   })
   const links = buildLinks({ selfLink })
