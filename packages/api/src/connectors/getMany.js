@@ -1,8 +1,7 @@
 const createArrayResponse = require('../lib/api/utilities/createArrayResponse')
 const transformOutput = require('./transformations/outputArray')
 
-module.exports = function getMany({ modelName, resource: resourceInput }) {
-  const resource = resourceInput || modelName
+module.exports = function getMany({ modelName, resource }) {
   return ({ models }) => {
     const model = models[modelName]
     return model

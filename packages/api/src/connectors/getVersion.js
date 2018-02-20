@@ -1,8 +1,7 @@
 const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getVersion({ modelName, resource: resourceInput }) {
-  const resource = resourceInput || modelName
+module.exports = function getVersion({ modelName, resource }) {
   return ({ models, request }) => {
     const { pathParams: { id, versionId } } = request
 
