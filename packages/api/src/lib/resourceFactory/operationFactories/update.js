@@ -1,7 +1,7 @@
-const createConnector = require('../../connectors/create')
+const updateConnector = require('../../connectors/update')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
-module.exports = function createOperation({
+module.exports = function updateOperation({
   basePath,
   resourcePlural,
   resource,
@@ -22,7 +22,7 @@ module.exports = function createOperation({
     response: {
       format: 'object',
     },
-    routeHandler: connect ? createConnector({ modelName }) : undefined,
+    routeHandler: connect ? updateConnector({ modelName }) : undefined,
     summary: `Updates ${resource}`,
   }
 }
