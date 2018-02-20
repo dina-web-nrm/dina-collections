@@ -2625,7 +2625,7 @@
             "type": "string",
             "example": "Sorex minutus, by Doe, J. on 1982-01-01"
           },
-          "determintionVerbatim": {
+          "determinationVerbatim": {
             "type": "string",
             "description": "In exactly the same words as were used originally"
           },
