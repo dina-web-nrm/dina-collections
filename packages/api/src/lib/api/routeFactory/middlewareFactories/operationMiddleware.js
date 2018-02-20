@@ -1,4 +1,4 @@
-const createRouteFunction = require('common/es5/apiClient/createRouteFunction')
+const createRouteFunction = require('common/src/apiClient/createRouteFunction')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('operationMiddleware')

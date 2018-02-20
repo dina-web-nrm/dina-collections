@@ -34,7 +34,7 @@ describe('apiClient', () => {
   expectedCallMethods.forEach(methodName => {
     it(`returns function when using call with methodName ${methodName}`, () => {
       const apiClient = createApiClient({})
-      expect(apiClient.call({ methodName }).catch(err => {})).toBeInstanceOf(
+      expect(apiClient.call({ methodName }).catch(() => {})).toBeInstanceOf(
         Promise
       )
     })
