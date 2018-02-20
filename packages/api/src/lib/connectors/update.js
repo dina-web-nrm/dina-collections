@@ -1,21 +1,18 @@
 const createObjectResponse = require('../api/utilities/createObjectResponse')
+const transformInput = require('./transformations/inputObject')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getById({ modelName, resource: resourceInput }) {
+module.exports = function create({ modelName, resource: resourceInput }) {
   const resource = resourceInput || modelName
   return ({ models, request }) => {
+    const { body: { data: input } } = request
     const { pathParams: { id } } = request
 
     const model = models[modelName]
     return model
-      .getById({ id })
-      .then(res => {
-        if (!res) {
-          const error = new Error(`${modelName} with id: ${id} not found`)
-          error.status = 404
-          throw error
-        }
-        return res
+      .update({
+        doc: transformInput(input),
+        id,
       })
       .then(transformOutput)
       .then(output => {
