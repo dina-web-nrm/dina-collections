@@ -1,23 +1,24 @@
 const createResource = require('../../../lib/resourceFactory')
+const { create, getOne, update, getMany } = require('../../../operations')
 
 const featureObservationType = createResource({
   basePath: '/curatedListApi/v01',
-  operations: [
+  endpoints: [
     {
       connect: true,
-      operationType: 'create',
+      operation: create,
     },
     {
       connect: true,
-      operationType: 'update',
+      operation: update,
     },
     {
       connect: true,
-      operationType: 'getOne',
+      operation: getOne,
     },
     {
       connect: true,
-      operationType: 'getMany',
+      operation: getMany,
     },
   ],
   resource: 'featureObservationType',
@@ -25,22 +26,22 @@ const featureObservationType = createResource({
 
 const identifiableUnitObservationType = createResource({
   basePath: '/curatedListApi/v01',
-  operations: [
+  endpoints: [
     {
       connect: true,
-      operationType: 'create',
+      operation: create,
     },
     {
       connect: true,
-      operationType: 'update',
+      operation: update,
     },
     {
       connect: true,
-      operationType: 'getOne',
+      operation: getOne,
     },
     {
       connect: true,
-      operationType: 'getMany',
+      operation: getMany,
     },
   ],
 

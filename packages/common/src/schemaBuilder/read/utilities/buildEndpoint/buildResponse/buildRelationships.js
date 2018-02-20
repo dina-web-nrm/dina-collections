@@ -1,8 +1,4 @@
-module.exports = function buildRelationships(
-  { format, relationBase, relations, selfLink, versionsLink } = {}
-) {
-  const relationSelfLink = format === 'array' ? `${selfLink}/{id}` : selfLink
-
+module.exports = function buildRelationships({ relations, versionsLink } = {}) {
   const versionRelationship = versionsLink && {
     properties: {
       data: {
@@ -49,17 +45,18 @@ module.exports = function buildRelationships(
         type: 'object',
       }
 
-      const links = {
-        properties: {
-          self: {
-            example: `https://domain${link ||
-              `${relationBase || relationSelfLink}/${key}`}`,
-            format: 'uri',
-            type: 'string',
-          },
-        },
-        type: 'object',
-      }
+      const links = !link
+        ? undefined
+        : {
+            properties: {
+              self: {
+                example: `https://domain${link}`,
+                format: 'uri',
+                type: 'string',
+              },
+            },
+            type: 'object',
+          }
 
       if (relationFormat === 'object') {
         return {

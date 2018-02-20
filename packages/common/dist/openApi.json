@@ -1222,7 +1222,7 @@
         ]
       }
     },
-    "/specimensApi/v01/specimens": {
+    "/storageApi/v01/specimens": {
       "post": {
         "operationId": "createSpecimen",
         "parameters": [],
@@ -1253,7 +1253,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an individual group and a catalogUnit if not existing",
+        "summary": "Create an specimen",
         "tags": [
           "specimenApi"
         ]
@@ -1265,31 +1265,21 @@
             "in": "query",
             "name": "filter[catalogNumber]",
             "description": "catalog number used to filter specimens",
+            "example": "123456",
             "required": false,
             "schema": {
               "type": "string"
-            },
-            "example": "123456"
+            }
           },
           {
             "in": "query",
             "name": "filter[identifiedTaxonNameStandardized]",
             "description": "Standardized taxon name used to filter specimens",
+            "example": "Chironectes minimus",
             "required": false,
             "schema": {
               "type": "string"
-            },
-            "example": "Chironectes minimus"
-          },
-          {
-            "in": "query",
-            "name": "include",
-            "description": "sub models to include in a comma separated string",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "example": "identifiableUnits.physicalUnits.storageLoaction,curratedLocalities"
+            }
           }
         ],
         "responses": {
@@ -1309,59 +1299,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Finds specimens",
+        "summary": "Find specimens",
         "tags": [
           "specimenApi"
         ]
       }
     },
-    "/specimensApi/v01/specimens/{id}": {
-      "get": {
-        "operationId": "getSpecimen",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "specimen id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "include",
-            "description": "sub models to include in a comma separated string",
-            "example": "identifiableUnits.physicalUnits.storageLoaction,curratedLocalities",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getSpecimenResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find specimen by id",
-        "tags": [
-          "specimenApi"
-        ]
-      },
+    "/storageApi/v01/specimens/{id}": {
       "patch": {
         "operationId": "updateSpecimen",
         "parameters": [
@@ -1403,13 +1347,133 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update an individual group by id",
+        "summary": "Updates specimen",
+        "tags": [
+          "specimenApi"
+        ]
+      },
+      "get": {
+        "operationId": "getSpecimen",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find specimen by id",
         "tags": [
           "specimenApi"
         ]
       }
     },
-    "/specimensApi/v01/specimens/{id}/versions": {
+    "/storageApi/v01/specimens/{id}/relationships/physicalUnits": {
+      "patch": {
+        "operationId": "updateSpecimenPhysicalUnits",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "physicalUnit id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update specimen -> physicalUnits",
+        "tags": [
+          "specimenApi"
+        ]
+      },
+      "get": {
+        "operationId": "getSpecimenPhysicalUnits",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "physicalUnit id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenPhysicalUnitsResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find specimen -> physicalUnits",
+        "tags": [
+          "specimenApi"
+        ]
+      }
+    },
+    "/storageApi/v01/specimens/{id}/versions/{versionId}": {
       "get": {
         "operationId": "getSpecimenVersion",
         "parameters": [
@@ -1424,11 +1488,11 @@
             }
           },
           {
-            "in": "query",
-            "name": "include",
-            "description": "sub models to include in a comma separated string",
-            "example": "identifiableUnits.physicalUnits.storageLoaction,curratedLocalities",
-            "required": false,
+            "in": "path",
+            "name": "versionId",
+            "description": "specimen versionId",
+            "example": "1",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -1451,13 +1515,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find specimen versions by id",
+        "summary": "Find specimen version by id and versionId",
         "tags": [
           "specimenApi"
         ]
       }
     },
-    "/specimensApi/v01/specimens/{id}/versions/{versionId}": {
+    "/storageApi/v01/specimens/{id}/versions": {
       "get": {
         "operationId": "getSpecimenVersions",
         "parameters": [
@@ -1467,26 +1531,6 @@
             "description": "specimen id",
             "example": "1",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "versionId",
-            "description": "specimen versionId",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "include",
-            "description": "sub models to include in a comma separated string",
-            "example": "identifiableUnits.physicalUnits.storageLoaction,curratedLocalities",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -1509,7 +1553,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find an specimen version by id and versionId",
+        "summary": "Find specimens versions",
         "tags": [
           "specimenApi"
         ]
@@ -2386,10 +2430,6 @@
           }
         },
         "description": "### Definition\n\nTba\n",
-        "example": {
-          "id": 1234,
-          "storedUnderTaxonName": "mjau"
-        },
         "x-category": "identifierApi",
         "x-modelType": "model"
       },
@@ -3537,6 +3577,35 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/specimen"
+              }
+            }
+          }
+        }
+      },
+      "updateSpecimenPhysicalUnitsRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "default": "modelReference"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                },
+                "attributes": {
+                  "$ref": "#/components/schemas/modelReference"
+                }
               }
             }
           }
@@ -5230,191 +5299,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/specimensApi/v01/specimens",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
-      "getSpecimenResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/specimen"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "specimen",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/specimensApi/v01/specimens/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
-      "getSpecimensResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/specimen"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "specimen",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/specimensApi/v01/specimens",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
-      "getSpecimenVersionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/specimen"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "specimen",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/specimensApi/v01/specimens/{id}/versions",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
-      "getSpecimenVersionsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/specimen"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "specimen",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/specimensApi/v01/specimens/{id}/versions/{versionId}",
+                "example": "https://domain/storageApi/v01/specimens",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -5458,7 +5343,415 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/specimensApi/v01/specimens/{id}",
+                "example": "https://domain/storageApi/v01/specimens/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "updateSpecimenPhysicalUnitsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/physicalUnit"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "relationships": {
+                  "properties": {},
+                  "type": "object"
+                },
+                "type": {
+                  "default": "physicalUnit",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "getSpecimenPhysicalUnitsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/physicalUnit"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "relationships": {
+                  "properties": {},
+                  "type": "object"
+                },
+                "type": {
+                  "default": "physicalUnit",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "getSpecimenResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/specimen"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "physicalUnits": {
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                            "format": "uri",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": {
+                "default": "specimen",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/storageApi/v01/specimens/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "getSpecimensResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/specimen"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "relationships": {
+                  "properties": {
+                    "physicalUnits": {
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "example": "physicalUnit",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                              "format": "uri",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "default": "specimen",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/storageApi/v01/specimens",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "getSpecimenVersionResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/specimen"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "physicalUnits": {
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                            "format": "uri",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": {
+                "default": "specimen",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/storageApi/v01/specimens/{id}/versions/{versionId}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "getSpecimenVersionsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/specimen"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "relationships": {
+                  "properties": {
+                    "physicalUnits": {
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "example": "physicalUnit",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                              "format": "uri",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "default": "specimen",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/storageApi/v01/specimens/{id}/versions",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

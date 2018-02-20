@@ -1,4 +1,4 @@
-const createModel = require('../../../lib/postgres/models/modelFactories/versionedDocumentModel')
+const createModel = require('../../../modelFactories/versionedDocumentModel')
 
 exports.agent = function agent({ sequelize }) {
   return createModel({

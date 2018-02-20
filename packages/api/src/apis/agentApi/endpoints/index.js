@@ -1,23 +1,24 @@
 const createResource = require('../../../lib/resourceFactory')
+const { create, getOne, update, getMany } = require('../../../operations')
 
 module.exports = createResource({
   basePath: '/agentApi/v01',
-  operations: [
+  endpoints: [
     {
       connect: true,
-      operationType: 'create',
+      operation: create,
     },
     {
       connect: true,
-      operationType: 'getOne',
+      operation: getOne,
     },
     {
       connect: true,
-      operationType: 'update',
+      operation: update,
     },
     {
       connect: true,
-      operationType: 'getMany',
+      operation: getMany,
     },
   ],
   resource: 'agent',
