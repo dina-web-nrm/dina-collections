@@ -1,9 +1,9 @@
 require('isomorphic-fetch')
 
-const jsonApiSchema = require('common/src/apiClient/schemas/jsonApi')
-const { createSystemModelSchemaValidator } = require('common/src/error')
-const createEndpoint = require('common/src/endpointFactory/server')
-const createApiClient = require('common/src/apiClient')
+const jsonApiSchema = require('common/es5/apiClient/schemas/jsonApi')
+const { createSystemModelSchemaValidator } = require('common/es5/error')
+const createEndpoint = require('common/es5/endpointFactory/server')
+const createApiClient = require('common/es5/apiClient')
 
 const config = require('../../config')
 

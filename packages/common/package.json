@@ -12,8 +12,8 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "yarn lint:js",
-    "test:unit": "jest --env=node",
-    "test:unit:watch": "jest --env=node --watch",
+    "test:unit": "NODE_ENV=test jest --env=node",
+    "test:unit:watch": "NODE_ENV=test jest --env=node --watch",
     "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/index.js && yarn test:unit",
     "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",
     "build:schema": "node ./src/schemaBuilder/index.js && yarn test:unit"

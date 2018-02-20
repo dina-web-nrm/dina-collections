@@ -1,5 +1,5 @@
-const createMockFunction = require('common/src/endpointFactory/createMockFunction')
-const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
+const createMockFunction = require('common/es5/endpointFactory/createMockFunction')
+const commonCreateEndpointConfig = require('common/es5/endpointFactory/server')
 
 module.exports = function createEndpointConfig({
   apiConfig,
