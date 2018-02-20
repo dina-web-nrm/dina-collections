@@ -43,6 +43,13 @@ module.exports = {
   resource: 'specimen',
   response: {
     format: 'array',
+    relations: [
+      {
+        format: 'array',
+        key: 'physicalUnits',
+        resource: 'physicalUnit',
+      },
+    ],
   },
   summary: 'Finds specimens',
   routeHandler,

@@ -26,6 +26,13 @@ module.exports = {
   resource: 'specimen',
   response: {
     format: 'object',
+    relations: [
+      {
+        format: 'array',
+        key: 'physicalUnits',
+        resource: 'physicalUnit',
+      },
+    ],
   },
   summary: 'Find specimen by id',
 }
