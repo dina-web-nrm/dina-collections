@@ -1,4 +1,4 @@
-const createModel = require('../../../lib/postgres/models/modelFactories/versionedDocumentModel')
+const createModel = require('../../../modelFactories/versionedDocumentModel')
 
 const physicalUnitModelFactory = function physicalUnit({ sequelize }) {
   return createModel({

@@ -1,9 +1,9 @@
 const createModel = require('../../../modelFactories/versionedDocumentModel')
 
-exports.agent = function agent({ sequelize }) {
+exports.expedition = function expedition({ sequelize }) {
   return createModel({
-    name: 'Agent',
-    schemaModelName: 'agent',
+    name: 'Expedition',
+    schemaModelName: 'expedition',
     schemaVersion: '1.0.1',
     sequelize,
   })

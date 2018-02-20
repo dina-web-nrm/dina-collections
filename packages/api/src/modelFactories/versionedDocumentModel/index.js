@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize')
-const createFactory = require('../modelMethods/createFactory')
-const getByIdFactory = require('../modelMethods/getByIdFactory')
-const getOneWhereFactory = require('../modelMethods/getOneWhereFactory')
-const updateFactory = require('../modelMethods/updateFactory')
-const getWhereFactory = require('../modelMethods/getWhereFactory')
+const createFactory = require('./methods/createFactory')
+const getByIdFactory = require('./methods/getByIdFactory')
+const getOneWhereFactory = require('./methods/getOneWhereFactory')
+const updateFactory = require('./methods/updateFactory')
+const getWhereFactory = require('./methods/getWhereFactory')
 const { createSystemModelSchemaValidator } = require('common/src/error')
 
 // make model-factory more advanced

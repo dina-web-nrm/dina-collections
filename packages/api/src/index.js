@@ -15,7 +15,7 @@ bootstrapPostgres({
 })
   .then(({ models }) => {
     const keycloak = createKeycloak({ config })
-
+    console.log('apis', apis.specimenApi.endpoints)
     const baseApi = createApi({
       apis,
       config,

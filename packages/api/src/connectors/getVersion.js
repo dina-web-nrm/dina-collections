@@ -9,8 +9,8 @@ module.exports = function getVersion({ modelName, resource: resourceInput }) {
     const model = models[modelName]
     return model
       .getById({
-        id,
         forceCurrentVersion: false,
+        id,
         versionId,
       })
       .then(res => {
