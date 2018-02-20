@@ -1,3 +1,4 @@
+const getManyConnector = require('../../connectors/getMany')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 const buildRelations = require('./utilities/buildRelations')
 
@@ -6,8 +7,8 @@ module.exports = function createOperation({
   resourcePlural,
   resource,
   relations,
-  // modelName,
-  // connect,
+  modelName,
+  connect,
 }) {
   const operationId = `get${capitalizeFirstLetter(resourcePlural)}`
 
@@ -24,6 +25,7 @@ module.exports = function createOperation({
         resourcePlural,
       }),
     },
+    routeHandler: connect ? getManyConnector({ modelName }) : undefined,
     summary: `Find ${resourcePlural}`,
   }
 }
