@@ -157,12 +157,12 @@ dbDescribe('lib/postgres/models', () => {
       }
       const secondData = {
         a: 2,
-        nested: {
-          inside: 'value',
-        },
       }
       const thirdData = {
         a: 3,
+        nested: {
+          inside: 'value',
+        },
       }
       let firstId
       let secondId
@@ -209,9 +209,13 @@ dbDescribe('lib/postgres/models', () => {
       })
       it('Returns record when matching by object property', () => {
         return model
-          .getOneWhere({ where: { 'document.nested.inside': 'value' } })
+          .getOneWhere({
+            where: {
+              'document.nested.inside': 'value',
+            },
+          })
           .then(res => {
-            expect(res.document).toEqual(secondData)
+            expect(res.document).toEqual(thirdData)
           })
       })
       it('Returns null when matching by object property fail', () => {
