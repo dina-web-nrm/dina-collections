@@ -1,35 +1,14 @@
 const createObjectResponse = require('../api/utilities/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getById({
-  modelName,
-  resource: resourceInput,
-  includes,
-}) {
+module.exports = function getById({ modelName, resource: resourceInput }) {
   const resource = resourceInput || modelName
   return ({ models, request }) => {
     const { pathParams: { id } } = request
-    const { queryParams: { include: includesInput = '' } } = request
-
-    const include = includesInput
-      .split(',')
-      .map(includeString => {
-        if (!includes[includeString]) {
-          return null
-        }
-        const { model: includeModelName, as } = includes[includeString]
-        return {
-          as,
-          model: models[includeModelName].Model,
-        }
-      })
-      .filter(includeSpecification => {
-        return !!includeSpecification
-      })
 
     const model = models[modelName]
     return model
-      .getById({ id, include })
+      .getById({ id })
       .then(res => {
         if (!res) {
           const error = new Error(`${modelName} with id: ${id} not found`)
