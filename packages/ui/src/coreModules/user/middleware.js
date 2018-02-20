@@ -24,7 +24,7 @@ export default function userMiddleware() {
     const result = next(action)
     switch (action.type) {
       case USER_LOG_IN_SUCCESS: {
-        dispatch(localStorageAC.setItem(AUTH_TOKEN_KEY, action.payload.json))
+        dispatch(localStorageAC.setItem(AUTH_TOKEN_KEY, action.payload))
         dispatch(getUser())
         break
       }
