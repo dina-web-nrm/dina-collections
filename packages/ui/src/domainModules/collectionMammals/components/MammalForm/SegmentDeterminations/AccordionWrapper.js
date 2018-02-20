@@ -22,13 +22,17 @@ const mapStateToProps = state => {
 const propTypes = {
   activeIndex: PropTypes.number,
   changeFieldValue: PropTypes.func.isRequired,
-  expandAll: PropTypes.bool,
-  formValueSelector: PropTypes.func.isRequired,
-  identifications: PropTypes.arrayOf(
+  determinations: PropTypes.arrayOf(
     PropTypes.shape({
-      identifiedTaxonNameStandardized: PropTypes.string,
+      date: PropTypes.string,
+      determinedByAgentText: PropTypes.string,
+      isCurrentDetermination: PropTypes.bool,
+      remarks: PropTypes.string,
+      taxonNameStandardized: PropTypes.string,
     })
   ).isRequired,
+  expandAll: PropTypes.bool,
+  formValueSelector: PropTypes.func.isRequired,
   isSmallScreen: PropTypes.bool.isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -59,7 +63,7 @@ class AccordionWrapper extends Component {
       changeFieldValue,
       expandAll,
       formValueSelector,
-      identifications,
+      determinations,
       isSmallScreen,
       removeArrayFieldByIndex,
       requireRemoveDeterminationConfirmation,
@@ -68,8 +72,8 @@ class AccordionWrapper extends Component {
 
     return (
       <Accordion fluid styled>
-        {identifications &&
-          identifications.map((identification, index) => {
+        {determinations &&
+          determinations.map((determination, index) => {
             return (
               <AccordionItem
                 active={
@@ -79,8 +83,8 @@ class AccordionWrapper extends Component {
                     : index === activeIndex)
                 }
                 changeFieldValue={changeFieldValue}
+                determination={determination}
                 formValueSelector={formValueSelector}
-                identification={identification}
                 index={index}
                 isSmallScreen={isSmallScreen}
                 key={index} // eslint-disable-line react/no-array-index-key
