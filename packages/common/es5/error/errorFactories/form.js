@@ -60,15 +60,16 @@ var transformToReduxFormError = function transformToReduxFormError(transformedAj
 };
 
 module.exports = function createFormError(error) {
-  var context = {
+  var meta = {
+    context: 'form',
     errorCode: ERROR_CODES.FORM_VALIDATION_ERROR,
     origin: ORIGINS.CLIENT,
     status: null,
     type: TYPES.FORM
   };
   var formError = createError({
-    context: context,
-    error: error
+    error: error,
+    meta: meta
   });
   return transformToReduxFormError(formError.error);
 };

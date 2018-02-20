@@ -49,15 +49,16 @@ const transformToReduxFormError = transformedAjvErrors => {
 }
 
 module.exports = function createFormError(error) {
-  const context = {
+  const meta = {
+    context: 'form',
     errorCode: ERROR_CODES.FORM_VALIDATION_ERROR,
     origin: ORIGINS.CLIENT,
     status: null,
     type: TYPES.FORM,
   }
   const formError = createError({
-    context,
     error,
+    meta,
   })
   return transformToReduxFormError(formError.error)
 }
