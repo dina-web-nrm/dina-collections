@@ -23,6 +23,7 @@ module.exports = function getRelation({
     method: 'get',
     modelName,
     operationId,
+    operationType: 'getRelation',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     resource: relationResource,

@@ -5,6 +5,7 @@ module.exports = function create({
   basePath,
   connect,
   connector = createConnector,
+  exampleRequests = [],
   exampleResponses = [],
   modelName,
   resource,
@@ -16,8 +17,10 @@ module.exports = function create({
     method: 'post',
     modelName,
     operationId,
+    operationType: 'create',
     path: `${basePath}/${resourcePlural}`,
     request: {
+      examples: exampleRequests,
       format: 'object',
     },
     resource,

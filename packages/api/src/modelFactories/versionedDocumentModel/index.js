@@ -23,6 +23,7 @@ module.exports = function createModel({
   // inject schema
   if (schemaModelName) {
     validate = createSystemModelSchemaValidator({
+      context: 'modelValidation',
       model: schemaModelName,
       throwOnError: false,
     })

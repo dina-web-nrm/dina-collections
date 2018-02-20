@@ -1,4 +1,4 @@
-const { makeTestCall } = require('../../utilities/test/testApiClient')
+const { makeTestCall } = require('./testApiClient')
 
 module.exports = function waitForApiRestart(
   { operationId = 'getStatus', maxTime = 5000 } = {}
@@ -13,6 +13,8 @@ module.exports = function waitForApiRestart(
     const poll = () => {
       makeTestCall({
         operationId,
+        validateInput: false,
+        validateOutput: false,
       })
         .then(() => {
           resolve()

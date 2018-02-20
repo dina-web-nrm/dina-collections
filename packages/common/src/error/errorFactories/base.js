@@ -25,8 +25,10 @@ module.exports = function createError({ meta, error }) {
   const errorMessage = createErrorMessageFromError(error)
 
   const message = verbose
-    ? `ERROR - ${errorCode}, ${origin}, ${type}, \n\n ${JSON.stringify(error)}`
-    : `ERROR - ${errorCode}, ${origin}, ${type}, ${errorMessage}`
+    ? `ERROR - ${errorCode}, ${origin}, ${type}, ${
+        context
+      }, \n\n ${JSON.stringify(error)}`
+    : `ERROR - ${errorCode}, ${origin}, ${type}, ${context}, ${errorMessage}`
 
   return {
     _known: true,

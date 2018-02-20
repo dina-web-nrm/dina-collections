@@ -8,11 +8,14 @@ const {
   updateRelation,
 } = require('../../../operations')
 
+const createRequestSuccess = require('./curatedLocality/examples/requestSuccess.json')
+
 module.exports = createResource({
   basePath: '/localityApi/v01',
   endpoints: [
     {
       connect: true,
+      exampleRequests: [createRequestSuccess],
       operation: create,
     },
     {
