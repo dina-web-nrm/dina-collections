@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('lib/postgres/models/bootstrapModels')
+const log = createLog('lib/postgres/models/createModels')
 
 const extractModelsFromApis = apis => {
   return Object.keys(apis)
@@ -41,12 +41,12 @@ const extractModelsFromApis = apis => {
     .filter(({ modelFactory }) => !!modelFactory)
 }
 
-module.exports = function bootstrapModels({ apis, config, sequelize }) {
-  log.debug('Bootstrap models started')
+module.exports = function createModels({ apis, config, sequelize }) {
+  log.debug('Create models started')
   const rawModels = extractModelsFromApis(apis)
   return Promise.all(
     rawModels.map(({ name, modelFactory }) => {
-      log.debug(`Bootstrap model: ${name}`)
+      log.debug(`Create model: ${name}`)
       const model = modelFactory({
         config,
         sequelize,
@@ -63,7 +63,7 @@ module.exports = function bootstrapModels({ apis, config, sequelize }) {
         [name]: model,
       }
     }, {})
-    log.debug('Bootstrap models done')
+    log.debug('Create models done')
     return {
       modelArray: models,
       modelObject,
