@@ -19,7 +19,9 @@ module.exports = function getVersion({
   })
 
   return {
+    connector: connect ? connector : undefined,
     method: 'get',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}/{id}/versions/{versionId}`,
     pathParams: ['id', 'versionId'],
@@ -28,7 +30,6 @@ module.exports = function getVersion({
       format: 'object',
       relations,
     },
-    routeHandler: connect ? connector({ modelName, relations }) : undefined,
     summary: `Find ${resource} version by id and versionId`,
   }
 }

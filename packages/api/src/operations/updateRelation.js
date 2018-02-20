@@ -18,7 +18,9 @@ module.exports = function updateRelation({
   )}${capitalizeFirstLetter(relationKey)}`
 
   return {
+    connector: connect ? connector : undefined,
     method: 'patch',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
@@ -30,8 +32,6 @@ module.exports = function updateRelation({
     response: {
       format,
     },
-    routeHandler:
-      connect && connector ? connector({ modelName, relations }) : undefined,
     summary: `Update ${resource} -> ${relationKey}`,
   }
 }

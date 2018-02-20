@@ -12,7 +12,9 @@ module.exports = function create({
 }) {
   const operationId = `create${capitalizeFirstLetter(resource)}`
   return {
+    connector: connect ? connector : undefined,
     method: 'post',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}`,
     request: {
@@ -23,7 +25,6 @@ module.exports = function create({
       examples: exampleResponses,
       format: 'object',
     },
-    routeHandler: connect ? connector({ modelName }) : undefined,
     summary: `Create an ${resource}`,
   }
 }

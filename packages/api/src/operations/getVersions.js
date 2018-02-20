@@ -14,7 +14,9 @@ module.exports = function getVersions({
 }) {
   const operationId = `get${capitalizeFirstLetter(resource)}Versions`
   return {
+    connector: connect ? connector : undefined,
     method: 'get',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}/{id}/versions`,
     pathParams: ['id'],
@@ -28,7 +30,6 @@ module.exports = function getVersions({
         resourcePlural,
       }),
     },
-    routeHandler: connect ? connector({ modelName }) : undefined,
     summary: `Find ${resourcePlural} versions`,
   }
 }

@@ -12,7 +12,9 @@ module.exports = function update({
   const operationId = `update${capitalizeFirstLetter(resource)}`
 
   return {
+    connector: connect ? connector : undefined,
     method: 'patch',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}/{id}`,
     pathParams: ['id'],
@@ -23,7 +25,6 @@ module.exports = function update({
     response: {
       format: 'object',
     },
-    routeHandler: connect ? connector({ modelName }) : undefined,
     summary: `Updates ${resource}`,
   }
 }

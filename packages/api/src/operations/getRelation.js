@@ -19,7 +19,9 @@ module.exports = function getRelation({
   )}${capitalizeFirstLetter(relationKey)}`
 
   return {
+    connector: connect ? connector : undefined,
     method: 'get',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
@@ -27,8 +29,6 @@ module.exports = function getRelation({
     response: {
       format,
     },
-    routeHandler:
-      connect && connector ? connector({ modelName, relations }) : undefined,
     summary: `Find ${resource} -> ${relationKey}`,
   }
 }

@@ -1,28 +1,9 @@
 const express = require('express')
 const createLog = require('../../utilities/log')
 const createRoutes = require('./routeFactory')
+const createRouteHandlers = require('./createRouteHandlers')
 
-const log = createLog('api')
-
-const extractRouteHandlersFromApis = apis => {
-  return Object.keys(apis).reduce((routeHandlers, apiName) => {
-    const { endpoints } = apis[apiName]
-
-    if (!endpoints) {
-      return routeHandlers
-    }
-
-    return {
-      ...routeHandlers,
-      ...Object.keys(endpoints).reduce((obj, endpointName) => {
-        return {
-          ...obj,
-          [endpointName]: endpoints[endpointName].routeHandler,
-        }
-      }, {}),
-    }
-  }, {})
-}
+const log = createLog('lib/api')
 
 module.exports = function createApi({
   apis,
@@ -31,7 +12,10 @@ module.exports = function createApi({
   models,
   openApiSpec,
 }) {
-  const routeHandlers = extractRouteHandlersFromApis(apis)
+  const routeHandlers = createRouteHandlers({
+    apis,
+    models,
+  })
   const routeMocks = {}
   const apiConfig = { ...config.api, log: config.log }
 

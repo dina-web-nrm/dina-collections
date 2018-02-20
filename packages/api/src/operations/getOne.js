@@ -19,7 +19,9 @@ module.exports = function getOne({
   })
 
   return {
+    connector: connect ? connector : undefined,
     method: 'get',
+    modelName,
     operationId,
     path: `${basePath}/${resourcePlural}/{id}`,
     pathParams: ['id'],
@@ -28,7 +30,6 @@ module.exports = function getOne({
       format: 'object',
       relations,
     },
-    routeHandler: connect ? connector({ modelName, relations }) : undefined,
     summary: `Find ${resource} by id`,
   }
 }
