@@ -2,24 +2,25 @@ const apiDescribe = require('../../../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../utilities/test/waitForApiRestart')
 
-const {
-  fullFormExample,
-  UNEXPECTED_SUCCESS,
-} = require('../../testData/individualGroup')
+const { UNEXPECTED_SUCCESS } = require('../../testData/individualGroup')
+
+const fullFormExample = require('./examples/fullFormExample')
 
 const badRequestMissingCatalogNumber = {
   data: {
     attributes: {
-      featureObservations: [],
-      identifications: [],
-      occurrences: [],
-      physicalUnits: [],
+      individualGroup: {
+        assignedTaxon: {},
+        featureObservations: [],
+        identifiableUnits: [],
+        identifiers: [],
+      },
     },
-    type: 'individualGroup',
+    type: 'specimen',
   },
 }
 
-apiDescribe('individualGroup', () => {
+apiDescribe('specimen', () => {
   let authToken
   beforeAll(() => {
     return waitForApiRestart().then(() => {
@@ -27,7 +28,7 @@ apiDescribe('individualGroup', () => {
     })
   })
 
-  it('Runs individualGroup tests', () => {
+  it('Runs specimen tests', () => {
     expect(!!authToken).toBeTruthy()
     expect(1).toBe(1)
   })
@@ -37,23 +38,19 @@ apiDescribe('individualGroup', () => {
       return makeTestCall({
         authToken,
         body: fullFormExample,
-        operationId: 'createIndividualGroup',
+        operationId: 'createSpecimen',
       }).then(res => {
         expect(res).toBeTruthy()
         expect(res.data).toBeTruthy()
-        expect(res.data.type).toBe('individualGroup')
+        expect(res.data.type).toBe('specimen')
         expect(res.data.attributes).toBeTruthy()
-        expect(res.data.attributes.physicalUnits).toBeTruthy()
-        expect(res.data.attributes.featureObservations).toBeTruthy()
-        expect(res.data.attributes.identifications).toBeTruthy()
-        expect(res.data.attributes.occurrences).toBeTruthy()
       })
     })
     it('Fails create with missing catalog number', () => {
       return makeTestCall({
         authToken,
         body: badRequestMissingCatalogNumber,
-        operationId: 'createIndividualGroup',
+        operationId: 'createSpecimen',
       })
         .then(() => {
           throw new Error(UNEXPECTED_SUCCESS)

@@ -1,13 +1,13 @@
 const apiDescribe = require('../../../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../utilities/test/waitForApiRestart')
-const {
-  fullFormExample,
-  updateFullFormExample,
-  UNEXPECTED_SUCCESS,
-} = require('../../testData/individualGroup')
 
-apiDescribe('individualGroup', () => {
+const fullFormExample = require('../createSpecimen/examples/fullFormExample.json')
+const updateFullFormExample = require('./examples/requestSuccess.json')
+
+const { UNEXPECTED_SUCCESS } = require('../../testData/individualGroup')
+
+apiDescribe('specimen', () => {
   let authToken
   beforeAll(() => {
     return waitForApiRestart().then(() => {
@@ -15,18 +15,18 @@ apiDescribe('individualGroup', () => {
     })
   })
 
-  it('Runs individualGroup tests', () => {
+  it('Runs specimen tests', () => {
     expect(!!authToken).toBeTruthy()
     expect(1).toBe(1)
   })
 
-  describe('updateIndividualGroup', () => {
+  describe('updateSpecimen', () => {
     let existingId
     beforeEach(() => {
       return makeTestCall({
         authToken,
         body: fullFormExample,
-        operationId: 'createIndividualGroup',
+        operationId: 'createSpecimen',
       }).then(res => {
         existingId = res.data.id
       })
@@ -35,7 +35,7 @@ apiDescribe('individualGroup', () => {
       return makeTestCall({
         authToken,
         body: updateFullFormExample,
-        operationId: 'updateIndividualGroup',
+        operationId: 'updateSpecimen',
         pathParams: { id: existingId },
       }).then(res => {
         expect(res).toBeTruthy()
@@ -44,7 +44,7 @@ apiDescribe('individualGroup', () => {
     it('Fails with missing body', () => {
       return makeTestCall({
         authToken,
-        operationId: 'updateIndividualGroup',
+        operationId: 'updateSpecimen',
         pathParams: { id: existingId },
       })
         .then(() => {
@@ -60,7 +60,7 @@ apiDescribe('individualGroup', () => {
       return makeTestCall({
         authToken,
         body: updateFullFormExample,
-        operationId: 'updateIndividualGroup',
+        operationId: 'updateSpecimen',
         pathParams: { id: '-1' },
       })
         .then(() => {

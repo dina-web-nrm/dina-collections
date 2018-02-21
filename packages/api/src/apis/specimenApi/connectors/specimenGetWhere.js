@@ -8,16 +8,17 @@ module.exports = function specimenGetWhere({
   const resource = resourceInput || modelName
   return ({ models, request }) => {
     const {
-      queryParams: { catalogNumber, identifiedTaxonNameStandardized } = {},
+      queryParams: {
+        filter: { catalogNumber, identifiedTaxonNameStandardized } = {},
+      },
     } = request
-
     const model = models[modelName]
 
     if (catalogNumber) {
       return model
         .getOneWhere({
           where: {
-            'document.physicalUnits.0.catalogedUnit.catalogNumber': catalogNumber,
+            'document.individualGroup.identifiers.0.identifier.value': catalogNumber,
           },
         })
         .then(item => {
@@ -31,11 +32,21 @@ module.exports = function specimenGetWhere({
           })
         })
     }
-
+    if (identifiedTaxonNameStandardized) {
+      return model
+        .getAllByTaxonName({
+          taxonName: identifiedTaxonNameStandardized,
+        })
+        .then(transformOutput)
+        .then(items => {
+          return createArrayResponse({
+            items,
+            type: resource,
+          })
+        })
+    }
     return model
-      .getAllByTaxonName({
-        taxonName: identifiedTaxonNameStandardized,
-      })
+      .getWhere({ where: {} })
       .then(transformOutput)
       .then(items => {
         return createArrayResponse({

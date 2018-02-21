@@ -16,6 +16,7 @@
     "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
     "keycloak-connect": "^3.4.3",
+    "object-path": "^0.11.4",
     "pg": "^7.4.1",
     "response-time": "^2.3.2",
     "sequelize": "^4.31.2",
