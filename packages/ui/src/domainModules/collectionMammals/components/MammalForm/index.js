@@ -18,12 +18,13 @@ import { FormSchemaError } from 'coreModules/error/components'
 import { clearTaxonSearch } from 'domainModules/taxonomy/actionCreators'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import { getCatalogNumberFromIdentifiers } from '../../utilities'
 import { MAMMAL_FORM_NAME } from '../../constants'
-import SegmentCatalogedUnit from './SegmentCatalogedUnit'
+import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
 import SegmentDeterminations from './SegmentDeterminations'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
-import SegmentCollectingInformation from './SegmentCollectingInformation/index'
-import SegmentPhysicalUnits from './SegmentPhysicalUnits'
+import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
+import SegmentIdentifiableUnits from './SegmentIdentifiableUnits'
 import SegmentOther from './SegmentOther'
 import transformInput from './transformations/input'
 import transformOutput from './transformations/output'
@@ -61,21 +62,6 @@ const propTypes = {
   individualGroup: PropTypes.shape({
     id: PropTypes.string.isRequired,
     // TODO: define and possibly centralize propTypes for individualGroup
-    identifications: PropTypes.arrayOf(
-      PropTypes.shape({
-        identifiedDay: PropTypes.number,
-        identifiedMonth: PropTypes.number,
-        identifiedTaxonNameStandardized: PropTypes.string,
-        identifiedYear: PropTypes.number,
-      })
-    ).isRequired,
-    physicalUnits: PropTypes.arrayOf(
-      PropTypes.shape({
-        catalogedUnit: PropTypes.shape({
-          catalogNumber: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired
-    ).isRequired,
   }),
   initialize: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
@@ -140,8 +126,9 @@ class RawMammalForm extends Component {
 
     return handleFormSubmit(output)
       .then(() => {
-        const catalogNumber =
-          output.catalogedUnit && output.catalogedUnit.catalogNumber
+        const catalogNumber = getCatalogNumberFromIdentifiers(
+          output.identifiers
+        )
 
         if (
           catalogNumber &&
@@ -192,7 +179,7 @@ class RawMammalForm extends Component {
       >
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Column>
-            <SegmentCatalogedUnit
+            <SegmentCatalogNumberIdentifier
               editMode={mode === 'edit'}
               formValueSelector={formValueSelector}
             />
@@ -202,11 +189,11 @@ class RawMammalForm extends Component {
               mode={mode}
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             />
-            <SegmentCollectingInformation
+            <SegmentIndividualCircumstances
               formValueSelector={formValueSelector}
             />
             <SegmentFeatureObservations formValueSelector={formValueSelector} />
-            <SegmentPhysicalUnits />
+            <SegmentIdentifiableUnits />
             <SegmentOther />
 
             <Segment>

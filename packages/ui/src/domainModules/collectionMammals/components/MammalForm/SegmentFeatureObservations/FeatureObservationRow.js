@@ -21,7 +21,7 @@ function FeatureObservationRow({ index, getPath }) {
           className="transparent"
           component={FeatureTypeNameDropdown}
           module="collectionMammals"
-          name={getPath('featureObservationType.featureObservationTypeName')}
+          name={getPath('featureObservationType.typeName')}
           type="text"
         />
       </Table.Cell>
@@ -61,7 +61,7 @@ function FeatureObservationRow({ index, getPath }) {
           className="transparent"
           component={Input}
           module="collectionMammals"
-          name={getPath('featureObservationDate')}
+          name={getPath('date')}
           type="text"
         />
       </Table.Cell>

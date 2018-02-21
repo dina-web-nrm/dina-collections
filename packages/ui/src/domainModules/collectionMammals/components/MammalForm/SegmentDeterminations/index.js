@@ -13,7 +13,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    identifications: formValueSelector(state, 'identifications'),
+    assignedTaxon: formValueSelector(state, 'assignedTaxon'),
     isSmallScreen: sizeSelectors.getIsSmall(state),
   }
 }
@@ -22,28 +22,40 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  assignedTaxon: PropTypes.shape({
+    curatorialName: PropTypes.string,
+    determinations: PropTypes.arrayOf(
+      PropTypes.shape({
+        date: PropTypes.string,
+        determinedByAgentText: PropTypes.string,
+        isCurrentDetermination: PropTypes.bool,
+        remarks: PropTypes.string,
+        taxonNameStandardized: PropTypes.string,
+      })
+    ).isRequired,
+  }),
   changeFieldValue: PropTypes.func.isRequired,
   formValueSelector: PropTypes.func.isRequired,
-  identifications: PropTypes.arrayOf(
-    PropTypes.shape({
-      identifiedTaxonNameStandardized: PropTypes.string,
-    })
-  ).isRequired,
   isSmallScreen: PropTypes.bool.isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   setAccordionActiveIndex: PropTypes.func.isRequired,
 }
+const defaultProps = {
+  assignedTaxon: { determinations: [] },
+}
 
 const SegmentDeterminations = ({
+  assignedTaxon,
   changeFieldValue,
   formValueSelector,
-  identifications,
   isSmallScreen,
   mode,
   removeArrayFieldByIndex,
   setAccordionActiveIndex,
 }) => {
+  const { determinations } = assignedTaxon
+
   return (
     <Segment color="green">
       <Header size="medium">
@@ -53,8 +65,8 @@ const SegmentDeterminations = ({
         <Grid.Column mobile={16}>
           <AccordionWrapper
             changeFieldValue={changeFieldValue}
+            determinations={determinations}
             formValueSelector={formValueSelector}
-            identifications={identifications}
             isSmallScreen={isSmallScreen}
             mode={mode}
             removeArrayFieldByIndex={removeArrayFieldByIndex}
@@ -65,10 +77,13 @@ const SegmentDeterminations = ({
           <Button
             onClick={event => {
               event.preventDefault()
-              changeFieldValue(`identifications.${identifications.length}`, {})
+              changeFieldValue(
+                `assignedTaxon.determinations.${determinations.length}`,
+                {}
+              )
               setAccordionActiveIndex({
                 accordion: 'determinations',
-                activeIndex: identifications.length,
+                activeIndex: determinations.length,
               })
             }}
           >
@@ -81,6 +96,7 @@ const SegmentDeterminations = ({
 }
 
 SegmentDeterminations.propTypes = propTypes
+SegmentDeterminations.defaultProps = defaultProps
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(
   SegmentDeterminations

@@ -1,5 +1,5 @@
-export const getFeatureObservationTypeId = ({ featureObservationTypeName }) => {
-  switch (featureObservationTypeName) {
+export const getFeatureObservationTypeId = ({ typeName }) => {
+  switch (typeName) {
     case 'sex': {
       return '1'
     }
@@ -19,9 +19,7 @@ export const getFeatureObservationTypeId = ({ featureObservationTypeName }) => {
       return '6'
     }
     default: {
-      throw new Error(
-        `Unknown featureObservationTypeName: ${featureObservationTypeName}`
-      )
+      throw new Error(`Unknown typeName: ${typeName}`)
     }
   }
 }

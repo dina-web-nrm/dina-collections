@@ -4,8 +4,8 @@ import { immutableReplace } from 'utilities/stateHelper'
 export const LOG_IN = createEndpoint({
   mapResponse: res => {
     return immutableReplace(res, {
-      newPath: 'json.accessToken',
-      oldPath: 'json.access_token',
+      newPath: 'accessToken',
+      oldPath: 'access_token',
     })
   },
   methodName: 'formPost',
@@ -15,8 +15,8 @@ export const LOG_IN = createEndpoint({
 export const GET_USER = createEndpoint({
   mapResponse: res => {
     return immutableReplace(res, {
-      newPath: 'json.username',
-      oldPath: 'json.preferred_username',
+      newPath: 'username',
+      oldPath: 'preferred_username',
     })
   },
   operationId: 'getUser',

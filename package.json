@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm-run-all -p build:ui build:schema build:semantic-ui",
+    "build:common": "cd ./packages/common && yarn build",
     "build:ui": "cd ./packages/ui && yarn build && yarn build:storybook",
     "build:ui:mock": "cd ./packages/ui && yarn build:mock && yarn build:storybook",
     "build:schema": "cd ./packages/common && yarn build:schema",

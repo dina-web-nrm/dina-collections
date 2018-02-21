@@ -1,7 +1,9 @@
 import createEndpoint from 'utilities/endpointFactory/client'
-import { createLookupMammalsResponse, getIndividualGroup } from './mockData'
+import { createLookupMammalsResponse, getSpecimen } from './mockData'
 
-const extractData = result => result.data
+const extractData = result => {
+  return result.data
+}
 const flattenDataAttributes = data => {
   if (!data) {
     return data
@@ -22,29 +24,30 @@ const flattenDataAttributes = data => {
 
 export const GET_INDIVIDUAL_GROUP_BY_CATALOG_NUMBER = createEndpoint({
   mapResponse: result => {
-    const firstDataItem = extractData(result)[0] // should only be one result, which holds for mammals
+    const data = extractData(result)
+    const firstDataItem = data && data[0] // should only be one result, which holds for mammals
     return flattenDataAttributes(firstDataItem)
   },
   mock: ({ request: { queryParams } }) => {
-    return { data: [getIndividualGroup(queryParams)] }
+    return { data: [getSpecimen(queryParams)] }
   },
-  operationId: 'getIndividualGroups',
+  operationId: 'getSpecimens',
 })
 
 export const LOOKUP_MAMMALS = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: createLookupMammalsResponse,
-  operationId: 'getIndividualGroups',
+  operationId: 'getSpecimens',
 })
 
 export const REGISTER_MAMMAL = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
-  mock: () => ({ data: getIndividualGroup() }),
-  operationId: 'createIndividualGroup',
+  mock: () => ({ data: getSpecimen() }),
+  operationId: 'createSpecimen',
 })
 
 export const UPDATE_INDIVIDUAL_GROUP = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
-  mock: () => ({ data: getIndividualGroup() }),
-  operationId: 'updateIndividualGroup',
+  mock: () => ({ data: getSpecimen() }),
+  operationId: 'updateSpecimen',
 })

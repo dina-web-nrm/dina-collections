@@ -20,7 +20,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const ID = 'id'
 const CATALOG_NUMBER = 'catalogNumber'
-const TAXON_NAME = 'identifiedTaxonNameStandardized'
+const TAXON_NAME = 'taxonNameStandardized'
 
 const TABLE_COLUMNS = [ID, CATALOG_NUMBER, TAXON_NAME]
 const SEARCH_PARAMETERS = [CATALOG_NUMBER, TAXON_NAME]

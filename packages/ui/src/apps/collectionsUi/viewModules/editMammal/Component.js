@@ -27,20 +27,6 @@ const propTypes = {
   getIndividualGroupByCatalogNumber: PropTypes.func.isRequired,
   individualGroup: PropTypes.shape({
     // TODO: define and possibly centralize propTypes for individualGroup
-    attributes: PropTypes.shape({
-      identifications: PropTypes.arrayOf(
-        PropTypes.shape({
-          identifiedTaxonNameStandardized: PropTypes.string,
-        })
-      ).isRequired,
-      physicalUnits: PropTypes.arrayOf(
-        PropTypes.shape({
-          catalogedUnit: PropTypes.shape({
-            catalogNumber: PropTypes.string.isRequired,
-          }).isRequired,
-        }).isRequired
-      ).isRequired,
-    }),
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -56,15 +42,7 @@ const defaultProps = {
 class EditMammal extends Component {
   componentWillMount() {
     this.props.getIndividualGroupByCatalogNumber(
-      this.props.match.params.catalogNumber,
-      {
-        include: [
-          'identifications',
-          'featureObservations.featureObservationType',
-          'occurrences.localityInformation',
-          'physicalUnits.catalogedUnit',
-        ].join(),
-      }
+      this.props.match.params.catalogNumber
     )
   }
 

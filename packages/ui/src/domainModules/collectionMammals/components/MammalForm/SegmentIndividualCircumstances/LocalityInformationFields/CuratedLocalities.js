@@ -144,7 +144,7 @@ export default compose(
   connect(undefined, mapDispatchToProps),
   withI18n({
     module: 'collectionMammals',
-    scope: 'occurrences.localityInformation.curatedLocalities',
+    scope: 'individualCircumstances.localityInformation.curatedLocalities',
   }),
   pathBuilder({ name: 'curatedLocalities' })
 )(LocalityInformationFields)

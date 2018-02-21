@@ -47,7 +47,6 @@ class SegmentFeatureObservations extends Component {
         <FormTable
           columnHeaderTextKeys={columnHeaderTextKeys}
           footer={<Footer />}
-          numberOfItemsToSkip={1}
           numberOfRows={
             (featureObservations && featureObservations.length) || 0
           }

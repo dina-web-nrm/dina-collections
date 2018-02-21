@@ -1,8 +1,8 @@
-import transformCatalogedUnit from './catalogedUnit'
-import transformFeatureObservations from './featureObservations'
-import transformIdentifications from './identifications'
-import transformOccurrences from './occurrences'
-import transformPhysicalUnits from './physicalUnits'
+import transformAssignedTaxon from './transformAssignedTaxon'
+import transformFeatureObservations from './transformFeatureObservations'
+import transformIdentifiableUnits from './transformIdentifiableUnits'
+import transformIdentifiers from './transformIdentifiers'
+import transformIndividualCircumstances from './transformIndividualCircumstances'
 
 export default function transformOutput(formData) {
   // TODO: set in backend instead
@@ -11,30 +11,31 @@ export default function transformOutput(formData) {
     Math.floor(Math.random() * (999999 - 100001) + 100000)
   )
 
-  const catalogedUnit = transformCatalogedUnit(
-    formData.physicalUnits[0].catalogedUnit,
+  const assignedTaxon = transformAssignedTaxon(formData.assignedTaxon)
+  const identifiers = transformIdentifiers(
+    formData.identifiers,
     newCatalogNumber
   )
-  const occurrences = transformOccurrences(formData.occurrences)
   const featureObservations = transformFeatureObservations(
     formData.featureObservations
   )
-  const identifications = transformIdentifications(formData.identifications)
-  const physicalUnits = transformPhysicalUnits(
-    formData.physicalUnits,
-    newCatalogNumber
+  const identifiableUnits = transformIdentifiableUnits(
+    formData.identifiableUnits
+  )
+  const individualCircumstances = transformIndividualCircumstances(
+    formData.individualCircumstances
   )
 
   const individualGroup = {
     ...formData,
+    assignedTaxon,
     featureObservations,
-    identifications,
-    occurrences,
-    physicalUnits,
+    identifiableUnits,
+    identifiers,
+    individualCircumstances,
   }
 
   return {
-    catalogedUnit,
     individualGroup,
   }
 }

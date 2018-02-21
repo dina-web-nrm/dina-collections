@@ -16,18 +16,18 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 const propTypes = {
   active: PropTypes.bool.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
+  determination: PropTypes.shape({
+    date: PropTypes.string,
+    determinedByAgentText: PropTypes.string,
+    isCurrentDetermination: PropTypes.bool,
+    remarks: PropTypes.string,
+    taxonNameStandardized: PropTypes.string,
+  }),
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
-  identification: PropTypes.shape({
-    identificationRemarks: PropTypes.string,
-    identifiedByAgentText: PropTypes.string,
-    identifiedDateText: PropTypes.string,
-    identifiedTaxonNameStandardized: PropTypes.string,
-    isCurrentIdentification: PropTypes.bool,
-  }),
   index: PropTypes.number.isRequired,
   isSmallScreen: PropTypes.bool.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -35,7 +35,7 @@ const propTypes = {
   setAccordionActiveIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  identification: {},
+  determination: {},
 }
 
 class AccordionItem extends Component {
@@ -56,10 +56,10 @@ class AccordionItem extends Component {
     const {
       active,
       changeFieldValue,
+      determination,
       formValueSelector,
       getPath,
       i18n: { moduleTranslate },
-      identification,
       index,
       isSmallScreen,
       removeArrayFieldByIndex,
@@ -68,26 +68,26 @@ class AccordionItem extends Component {
     } = this.props
 
     const {
-      identificationRemarks,
-      identifiedByAgentText,
-      identifiedDateText,
-      identifiedTaxonNameStandardized,
-      isCurrentIdentification,
+      date,
+      determinedByAgentText,
+      isCurrentDetermination,
+      remarks,
+      taxonNameStandardized,
     } =
-      identification || {}
+      determination || {}
 
     const headline = [
-      identifiedTaxonNameStandardized,
-      identifiedByAgentText,
-      identifiedDateText,
-      identificationRemarks,
-      isCurrentIdentification &&
+      taxonNameStandardized,
+      determinedByAgentText,
+      date,
+      remarks,
+      isCurrentDetermination &&
         moduleTranslate({ textKey: 'isCurrent' }).toLowerCase(),
     ]
       .filter(str => !!str)
       .join(', ')
 
-    const taxonNameFieldKey = getPath('identifiedTaxonNameStandardized')
+    const taxonNameFieldKey = getPath('taxonNameStandardized')
 
     return [
       <Accordion.Title
@@ -114,7 +114,7 @@ class AccordionItem extends Component {
                 component={Checkbox}
                 label={moduleTranslate({ textKey: 'isCurrent' })}
                 module="collectionMammals"
-                name={getPath('isCurrentIdentification')}
+                name={getPath('isCurrentDetermination')}
                 type="checkbox"
               />
             </Grid.Column>
@@ -138,7 +138,7 @@ class AccordionItem extends Component {
                 fluid={!isSmallScreen}
                 formValueSelector={formValueSelector}
                 label={moduleTranslate({ textKey: 'copyToVerbatim' })}
-                pasteField={getPath('identifiedAsVerbatim')}
+                pasteField={getPath('determinationVerbatim')}
               />
             </Grid.Column>
             <Grid.Column computer={8} mobile={16} tablet={8}>
@@ -147,7 +147,7 @@ class AccordionItem extends Component {
                 component={Input}
                 label={moduleTranslate({ textKey: 'verbatimTaxonName' })}
                 module="collectionMammals"
-                name={getPath('identifiedAsVerbatim')}
+                name={getPath('determinationVerbatim')}
                 type="text"
               />
             </Grid.Column>
@@ -158,7 +158,7 @@ class AccordionItem extends Component {
               component={Input}
               label={moduleTranslate({ textKey: 'determinedBy' })}
               module="collectionMammals"
-              name={getPath('identifiedByAgentText')}
+              name={getPath('determinedByAgentText')}
               type="text"
             />
           </Grid.Column>
@@ -168,7 +168,7 @@ class AccordionItem extends Component {
               component={Input}
               label={moduleTranslate({ textKey: 'date' })}
               module="collectionMammals"
-              name={getPath('identifiedDateText')}
+              name={getPath('date')}
               type="text"
             />
           </Grid.Column>
@@ -178,7 +178,7 @@ class AccordionItem extends Component {
               component={Input}
               label={moduleTranslate({ textKey: 'remarks' })}
               module="collectionMammals"
-              name={getPath('identificationRemarks')}
+              name={getPath('remarks')}
               type="text"
             />
           </Grid.Column>
@@ -208,7 +208,10 @@ class AccordionItem extends Component {
                     onClick={event => {
                       event.preventDefault()
                       this.handleCloseRemovePopup()
-                      removeArrayFieldByIndex('identifications', index)
+                      removeArrayFieldByIndex(
+                        'assignedTaxon.determinations',
+                        index
+                      )
                     }}
                   >
                     {moduleTranslate({ textKey: 'remove' })}
@@ -228,7 +231,7 @@ class AccordionItem extends Component {
               <Button
                 onClick={event => {
                   event.preventDefault()
-                  removeArrayFieldByIndex('identifications', index)
+                  removeArrayFieldByIndex('assignedTaxon.determinations', index)
                 }}
               >
                 {moduleTranslate({ textKey: 'remove' })}
@@ -250,6 +253,6 @@ export default compose(
     scope: 'determination',
   }),
   pathBuilder({
-    name: 'identifications',
+    name: 'assignedTaxon.determinations',
   })
 )(AccordionItem)
