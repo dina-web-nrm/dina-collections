@@ -2,6 +2,8 @@ const testOperationTypesMap = {
   create: true,
   getMany: true,
   getOne: true,
+  getVersion: true,
+  getVersions: true,
   update: true,
 }
 

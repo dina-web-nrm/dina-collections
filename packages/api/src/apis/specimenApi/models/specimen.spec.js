@@ -53,36 +53,52 @@ dbDescribe('server/apis/specimensApi/models', () => {
     describe('getAllByTaxonName', () => {
       const firstUniqueData = {
         a: 1,
-        identifications: [
-          {
-            identifiedTaxonNameStandardized: 'first-taxon',
+        individualGroup: {
+          assignedTaxon: {
+            determinations: [
+              {
+                taxonNameStandardized: 'first-taxon',
+              },
+            ],
           },
-        ],
+        },
       }
       const secondData = {
         a: 2,
-        identifications: [
-          {
-            identifiedTaxonNameStandardized: 'second-taxon',
+        individualGroup: {
+          assignedTaxon: {
+            determinations: [
+              {
+                taxonNameStandardized: 'second-taxon',
+              },
+            ],
           },
-        ],
+        },
       }
       const updateSecondData = {
         a: 3,
-        identifications: [
-          {
-            identifiedTaxonNameStandardized: 'second-taxon',
+        individualGroup: {
+          assignedTaxon: {
+            determinations: [
+              {
+                taxonNameStandardized: 'second-taxon',
+              },
+            ],
           },
-        ],
+        },
       }
 
       const forthData = {
         a: 1,
-        identifications: [
-          {
-            identifiedTaxonNameStandardized: 'first-taxon',
+        individualGroup: {
+          assignedTaxon: {
+            determinations: [
+              {
+                taxonNameStandardized: 'first-taxon',
+              },
+            ],
           },
-        ],
+        },
       }
 
       let firstId
