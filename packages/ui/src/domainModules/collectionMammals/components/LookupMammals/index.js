@@ -146,10 +146,11 @@ class LookupMammals extends Component {
               {result.map(({ id, individualGroup }) => {
                 const { assignedTaxon, identifiers } = individualGroup
 
-                const { value: catalogNumber } = identifiers.find(
-                  ({ identifier }) =>
-                    identifier.identifierType === 'catalogNumber'
-                )
+                const catalogNumberIdentifier =
+                  identifiers.find(
+                    ({ identifier }) =>
+                      identifier.identifierType === 'catalogNumber'
+                  ) || null
 
                 const { taxonNameStandardized } =
                   assignedTaxon &&
@@ -161,7 +162,9 @@ class LookupMammals extends Component {
                     assignedTaxon.determinations[0])
 
                 const tableValues = {
-                  catalogNumber,
+                  catalogNumber:
+                    catalogNumberIdentifier &&
+                    catalogNumberIdentifier.identifier.value,
                   id,
                   taxonNameStandardized,
                 }

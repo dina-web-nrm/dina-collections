@@ -54,7 +54,7 @@ export const REGISTER_MAMMAL = createEndpoint({
   operationId: 'createSpecimen',
 })
 
-export const UPDATE_INDIVIDUAL_GROUP = createEndpoint({
+export const UPDATE_SPECIMEN = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: () => ({ data: getSpecimen() }),
   operationId: 'updateSpecimen',

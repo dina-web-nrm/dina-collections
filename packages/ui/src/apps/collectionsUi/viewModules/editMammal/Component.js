@@ -19,7 +19,7 @@ const mapStateToProps = (state, { match }) => {
 }
 const mapDispatchToProps = {
   getSpecimenById: mammalActionCreators.getSpecimenById,
-  updateIndividualGroup: mammalActionCreators.updateIndividualGroup,
+  updateSpecimen: mammalActionCreators.updateSpecimen,
 }
 
 const propTypes = {
@@ -32,7 +32,7 @@ const propTypes = {
       specimenId: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  updateIndividualGroup: PropTypes.func.isRequired,
+  updateSpecimen: PropTypes.func.isRequired,
 }
 const defaultProps = {
   individualGroup: undefined,
@@ -44,12 +44,12 @@ class EditMammal extends Component {
   }
 
   render() {
-    const { individualGroup, updateIndividualGroup } = this.props
+    const { individualGroup, updateSpecimen } = this.props
 
     return (
       <PageTemplate>
         <MammalForm
-          handleFormSubmit={updateIndividualGroup}
+          handleFormSubmit={updateSpecimen}
           individualGroup={individualGroup}
           mode="edit"
         />
