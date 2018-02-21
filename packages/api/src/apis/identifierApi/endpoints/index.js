@@ -8,7 +8,7 @@ const catalogNumber = createResource({
   endpoints: [
     {
       connect: true,
-      exampleRequests: [createRequestSuccess],
+      exampleRequests: { primary: createRequestSuccess },
       operation: create,
     },
     {

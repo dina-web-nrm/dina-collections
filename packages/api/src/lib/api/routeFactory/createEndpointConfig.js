@@ -18,6 +18,7 @@ module.exports = function createEndpointConfig({
       usingMock = true
     }
   }
+
   const endpointConfig = commonCreateEndpointConfig({
     handler,
     operationId,

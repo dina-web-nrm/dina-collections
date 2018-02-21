@@ -22,9 +22,10 @@ const testCrudFlow = ({
 
   describe(`Crud flow with ${testing}`, () => {
     const { examples } = endpoints[createOperationId].request
-    if (examples && examples.length) {
-      examples.forEach((example, exampleIndex) => {
-        it(`Works with createRequest example index ${exampleIndex}`, () => {
+    if (examples) {
+      Object.keys(examples).forEach(exampleKey => {
+        const example = examples[exampleKey]
+        it(`Works with createRequest example: ${exampleKey}`, () => {
           return makeTestCall({
             body: example,
             operationId: createOperationId,
@@ -84,17 +85,55 @@ const testCrudFlow = ({
   })
 }
 
+const testMockGetMany = operationId => {
+  describe(`Mock - ${operationId}`, () => {
+    it('Works with mock data', () => {
+      return makeTestCall({
+        operationId,
+        queryParams: {
+          mock: true,
+        },
+        validateOutput: true,
+      }).then(createdResource => {
+        expect(createdResource).toBeTruthy()
+        expect(createdResource.data).toBeTruthy()
+      })
+    })
+  })
+}
+
+const testMockGetOne = operationId => {
+  describe(`Mock - ${operationId}`, () => {
+    it('Works with mock data', () => {
+      return makeTestCall({
+        operationId,
+        pathParams: {
+          id: 1,
+        },
+        queryParams: {
+          mock: true,
+        },
+        validateOutput: true,
+      }).then(createdResource => {
+        expect(createdResource).toBeTruthy()
+        expect(createdResource.data).toBeTruthy()
+      })
+    })
+  })
+}
+
 const testCreate = ({ createOperationId, endpoints }) => {
   describe(`Create - ${createOperationId}`, () => {
     const { examples } = endpoints[createOperationId].request
 
     it('Has examples', () => {
       expect(examples).toBeTruthy()
-      expect(examples.length).toBeTruthy()
+      expect(Object.keys(examples).length).toBeTruthy()
     })
 
-    examples.forEach((example, exampleIndex) => {
-      it(`Works with example index ${exampleIndex} testing`, () => {
+    Object.keys(examples).forEach(exampleKey => {
+      const example = examples[exampleKey]
+      it(`Works with example: ${exampleKey}`, () => {
         return makeTestCall({
           body: example,
           operationId: createOperationId,
@@ -126,6 +165,14 @@ const testApiResource = ({
         createOperationId,
         endpoints,
       })
+    }
+
+    if (getManyOperationId) {
+      testMockGetMany(getManyOperationId)
+    }
+
+    if (getOneOperationId) {
+      testMockGetOne(getOneOperationId)
     }
 
     if (

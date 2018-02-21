@@ -16,7 +16,7 @@ const physicalUnit = createResource({
   endpoints: [
     {
       connect: true,
-      exampleRequests: [createPhysicalUnitRequestSuccess],
+      exampleRequests: { primary: createPhysicalUnitRequestSuccess },
       operation: create,
     },
     {
@@ -56,7 +56,7 @@ const storageLocation = createResource({
   endpoints: [
     {
       connect: true,
-      exampleRequests: [createStorageLocationRequestSuccess],
+      exampleRequests: { primary: createStorageLocationRequestSuccess },
       operation: create,
     },
     {

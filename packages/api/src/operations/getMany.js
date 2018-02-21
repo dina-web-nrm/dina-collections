@@ -6,6 +6,7 @@ module.exports = function getMany({
   basePath,
   connect,
   connector = getManyConnector,
+  exampleResponses = {},
   modelName,
   queryParams,
   relations,
@@ -23,6 +24,7 @@ module.exports = function getMany({
     queryParams,
     resource,
     response: {
+      examples: exampleResponses,
       format: 'array',
       relations: buildRelations({
         basePath,

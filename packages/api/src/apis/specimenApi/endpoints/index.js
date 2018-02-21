@@ -19,7 +19,7 @@ const specimen = createResource({
   endpoints: [
     {
       connect: true,
-      exampleRequests: [createRequestSuccess],
+      exampleRequests: { primary: createRequestSuccess },
       operation: create,
     },
     {
