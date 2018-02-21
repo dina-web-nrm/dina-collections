@@ -5,7 +5,7 @@ const createFeatureObservationTypeRequestSuccess = require('./featureObservation
 const createIdentifiableUnitObservationTypeRequestSuccess = require('./identifiableUnitObservationType/examples/requestSuccess.json')
 
 const featureObservationType = createResource({
-  basePath: '/curatedListApi/v01',
+  basePath: '/api/curatedList/v01',
   endpoints: [
     {
       connect: true,

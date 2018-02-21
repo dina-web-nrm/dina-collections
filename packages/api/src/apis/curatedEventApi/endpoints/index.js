@@ -4,7 +4,7 @@ const { create, getOne, update, getMany } = require('../../../operations')
 const createRequestSuccess = require('./createExpedition/examples/requestSuccess.json')
 
 module.exports = createResource({
-  basePath: '/curatedEventApi/v01',
+  basePath: '/api/curatedEvent/v01',
   endpoints: [
     {
       connect: true,

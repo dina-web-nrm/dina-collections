@@ -11,7 +11,7 @@ const {
 const createRequestSuccess = require('./curatedLocality/examples/requestSuccess.json')
 
 module.exports = createResource({
-  basePath: '/localityApi/v01',
+  basePath: '/api/locality/v01',
   endpoints: [
     {
       connect: true,

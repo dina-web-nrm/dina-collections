@@ -13,13 +13,14 @@ const {
 const { specimenGetWhere } = require('../connectors/specimenGetWhere')
 
 const createRequestSuccess = require('./createSpecimen/examples/requestSuccess.json')
+const fullFormExample = require('./createSpecimen/examples/fullFormExample.json')
 
 const specimen = createResource({
-  basePath: '/specimenApi/v01',
+  basePath: '/api/specimen/v01',
   endpoints: [
     {
       connect: true,
-      exampleRequests: { primary: createRequestSuccess },
+      exampleRequests: { fullFormExample, primary: createRequestSuccess },
       operation: create,
     },
     {

@@ -3,7 +3,7 @@ const routeHandler = require('./routeHandler')
 
 module.exports = {
   method: 'get',
-  path: '/collections/api/v01/status',
+  path: '/api/status/v01/status',
   resource: 'status',
   response: {
     raw: {

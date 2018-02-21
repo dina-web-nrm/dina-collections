@@ -12,7 +12,7 @@ const createPhysicalUnitRequestSuccess = require('./physicalUnit/examples/reques
 const createStorageLocationRequestSuccess = require('./storageLocation/examples/requestSuccess.json')
 
 const physicalUnit = createResource({
-  basePath: '/storageApi/v01',
+  basePath: '/api/storage/v01',
   endpoints: [
     {
       connect: true,
@@ -52,7 +52,7 @@ const physicalUnit = createResource({
 })
 
 const storageLocation = createResource({
-  basePath: '/storageApi/v01',
+  basePath: '/api/storage/v01',
   endpoints: [
     {
       connect: true,
