@@ -3,14 +3,15 @@ import { createGetter, createSetter } from 'utilities/stateHelper'
 import {
   COLLECTION_MAMMALS_CLEAR_SEARCH_PARAMETERS,
   COLLECTION_MAMMALS_GET_BY_CATALOG_NUMBER_SUCCESS,
+  COLLECTION_MAMMALS_GET_SPECIMEN_BY_ID_SUCCESS,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_FAIL,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_SUCCESS,
   COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
   COLLECTION_MAMMALS_SET_ACCORDION_ACTIVE_INDEX,
   COLLECTION_MAMMALS_UPDATE_FEATURE_TYPE_NAME_SEARCH_QUERY,
-  COLLECTION_MAMMALS_UPDATE_INDIVIDUAL_GROUP_SUCCESS,
   COLLECTION_MAMMALS_UPDATE_LOCALITY_INFORMATION_SEARCH_QUERY,
   COLLECTION_MAMMALS_UPDATE_SEARCH_PARAMETER,
+  COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS,
 } from './actionTypes'
 
 const setLookupError = createSetter(['lookup', 'error'])
@@ -36,14 +37,24 @@ export default function reducer(state = initialState, action) {
       return setLookupSearch(state, {})
     }
 
-    case COLLECTION_MAMMALS_GET_BY_CATALOG_NUMBER_SUCCESS:
-    case COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS:
-    case COLLECTION_MAMMALS_UPDATE_INDIVIDUAL_GROUP_SUCCESS: {
+    case COLLECTION_MAMMALS_GET_BY_CATALOG_NUMBER_SUCCESS: {
       return {
         ...state,
         individualGroups: {
           ...state.individualGroups,
-          [action.meta.catalogNumber]: action.payload,
+          [action.meta.catalogNumber]: action.payload.individualGroup,
+        },
+      }
+    }
+
+    case COLLECTION_MAMMALS_GET_SPECIMEN_BY_ID_SUCCESS:
+    case COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS:
+    case COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS: {
+      return {
+        ...state,
+        individualGroups: {
+          ...state.individualGroups,
+          [action.meta.id]: action.payload.individualGroup,
         },
       }
     }

@@ -1,0 +1,18 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["featureObservationType", "identifiableUnitObservationType"]
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__curatedListType"
+      }
+    }
+  }
+}

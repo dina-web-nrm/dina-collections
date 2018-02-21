@@ -11,6 +11,7 @@ module.exports = function buildPath(endpoint) {
     queryParams,
     request,
     response,
+    security,
     summary,
     tags,
   } = endpoint
@@ -21,13 +22,13 @@ module.exports = function buildPath(endpoint) {
     pathParams,
     queryParams,
   })
-
   return {
     description,
     operationId,
     parameters,
     requestBody,
     responses,
+    security,
     summary,
     tags,
   }

@@ -20,7 +20,7 @@
       "target": "https://alpha-slimtaxonomy.dina-web.net",
       "xfwd": true
     },
-    "/collections": {
+    "/api": {
       "target": "http://127.0.0.1:4444",
       "xfwd": true,
       "changeOrigin": true
@@ -76,7 +76,7 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",
-    "start:mock": "NODE_PATH=./src/ REACT_APP_ENABLE_MOCK=true  npm-run-all -p watch-css markdown:watch start-js",
+    "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
     "storybook": "yarn update-storybook-imports && start-storybook -p 9009 -s public",
     "test": "yarn update-storybook-imports && yarn lint:js && react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
@@ -106,7 +106,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
     "jest-localstorage-mock": "^2.0.1",
-    "lodash.times": "^4.3.2",
+    "lodash": "^4.3.2",
     "node-less-chokidar": "^0.1.2",
     "npm-run-all": "^4.1.1",
     "raw-loader": "^0.5.1",

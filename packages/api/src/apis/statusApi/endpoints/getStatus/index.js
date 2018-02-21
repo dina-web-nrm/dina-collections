@@ -3,20 +3,21 @@ const routeHandler = require('./routeHandler')
 
 module.exports = {
   method: 'get',
-  path: '/collections/api/v01/status',
+  path: '/api/status/v01/status',
   resource: 'status',
   response: {
-    raw: true,
-    schema: {
-      description: 'this is a desc',
-      content: {
-        type: 'object',
-        additionalProperties: false,
-        properties: {
-          data: {
-            type: 'object',
-            properties: {
-              up: { type: 'boolean' },
+    raw: {
+      schema: {
+        description: 'this is a desc',
+        content: {
+          type: 'object',
+          additionalProperties: false,
+          properties: {
+            data: {
+              type: 'object',
+              properties: {
+                up: { type: 'boolean' },
+              },
             },
           },
         },

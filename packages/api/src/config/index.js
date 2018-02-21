@@ -38,7 +38,7 @@ const log = {
   db: false,
   error: true,
   incomingRequest: false,
-  outgoingResponse: true,
+  outgoingResponse: false,
 }
 
 const test = {

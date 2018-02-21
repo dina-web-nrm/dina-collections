@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import createModelLink from '../../utilities/createModelLink'
 import getPropertyIsArray from '../../utilities/getPropertyIsArray'
 import getPropertyIsModel from '../../utilities/getPropertyIsModel'
+import getPropertyIsAnyOf from '../../utilities/getPropertyIsAnyOf'
+import getAnyOfLinksFromProperty from '../../utilities/getAnyOfLinksFromProperty'
 import getArrayLinkFromProperty from '../../utilities/getArrayLinkFromProperty'
 import getModelLinkFromProperty from '../../utilities/getModelLinkFromProperty'
 
@@ -13,6 +15,14 @@ const propTypes = {
 }
 
 const Type = ({ property, version }) => {
+  if (getPropertyIsAnyOf(property)) {
+    return getAnyOfLinksFromProperty({
+      property,
+      Type,
+      version,
+    })
+  }
+
   if (getPropertyIsArray(property)) {
     const to = createModelLink({
       modelName: getArrayLinkFromProperty(property),

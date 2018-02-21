@@ -17,7 +17,7 @@ function main({ modelBasePath, apiBasePath }) {
     apiBasePath,
     modelBasePath,
   })
-  const { cleanModels, openApi, swagger } = build({
+  const { cleanModels, openApi } = build({
     apis,
     endpoints,
     errors,
@@ -32,14 +32,12 @@ function main({ modelBasePath, apiBasePath }) {
     models: cleanModels,
     openApi,
     setCurrent: true,
-    swagger,
     version: '0.1.0',
   })
 
   write({
     models: cleanModels,
     openApi,
-    swagger,
   })
 }
 

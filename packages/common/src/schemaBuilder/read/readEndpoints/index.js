@@ -1,14 +1,27 @@
 /* eslint-disable import/no-dynamic-require, global-require */
+const fs = require('fs')
+const path = require('path')
+
 const buildEndpoint = require('../utilities/buildEndpoint')
 
-module.exports = function readEndpoints(endpointsBasePath) {
-  const apis = require(endpointsBasePath)
-  return Object.keys(apis).reduce((endpoints, key) => {
-    const api = apis[key]
-
-    const localEndpoints = Object.keys(api.endpoints).reduce(
+module.exports = function readEndpoints(apisBasePath) {
+  const apiEndpoints = fs
+    .readdirSync(apisBasePath)
+    .filter(apiName => {
+      const apiPath = path.join(apisBasePath, apiName)
+      return fs.statSync(apiPath).isDirectory()
+    })
+    .reduce((obj, apiName) => {
+      const endpointPath = path.join(apisBasePath, apiName, 'endpoints')
+      return {
+        ...obj,
+        [apiName]: require(endpointPath),
+      }
+    }, {})
+  return Object.keys(apiEndpoints).reduce((endpoints, key) => {
+    const localEndpoints = Object.keys(apiEndpoints[key]).reduce(
       (obj, operationId) => {
-        const rawEndpoint = api.endpoints[operationId]
+        const rawEndpoint = apiEndpoints[key][operationId]
         const endpoint = buildEndpoint({
           operationId,
           ...rawEndpoint,

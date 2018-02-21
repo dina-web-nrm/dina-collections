@@ -1,16 +1,25 @@
-const validateApiConfig = require('./validation/validateApiConfig')
+const { Dependor } = require('../Dependor')
 const createApiMethod = require('./createApiMethod')
+const validateApiConfig = require('./validation/validateApiConfig')
 
-module.exports = function createApiClient(apiConfigInput) {
+const dep = new Dependor(
+  {
+    createApiMethod,
+    validateApiConfig,
+  },
+  'apiClient:index'
+)
+
+function createApiClient(apiConfigInput) {
   const apiConfig = {
     validateInput: true,
     validateOutput: true,
     ...apiConfigInput,
   }
 
-  validateApiConfig(apiConfig)
+  dep.validateApiConfig(apiConfig)
 
-  const formPost = createApiMethod(apiConfig, {
+  const formPost = dep.createApiMethod(apiConfig, {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
@@ -20,15 +29,15 @@ module.exports = function createApiClient(apiConfigInput) {
     method: 'POST',
   })
 
-  const httpDelete = createApiMethod(apiConfig, {
+  const httpDelete = dep.createApiMethod(apiConfig, {
     method: 'delete',
   })
 
-  const httpGet = createApiMethod(apiConfig, {
+  const httpGet = dep.createApiMethod(apiConfig, {
     method: 'GET',
   })
 
-  const httpPatch = createApiMethod(apiConfig, {
+  const httpPatch = dep.createApiMethod(apiConfig, {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
@@ -38,7 +47,7 @@ module.exports = function createApiClient(apiConfigInput) {
     method: 'PATCH',
   })
 
-  const httpPost = createApiMethod(apiConfig, {
+  const httpPost = dep.createApiMethod(apiConfig, {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
@@ -48,7 +57,7 @@ module.exports = function createApiClient(apiConfigInput) {
     method: 'POST',
   })
 
-  const httpPut = createApiMethod(apiConfig, {
+  const httpPut = dep.createApiMethod(apiConfig, {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
@@ -92,7 +101,7 @@ module.exports = function createApiClient(apiConfigInput) {
         return httpPut(endpointConfigInput, userInput)
       }
       default: {
-        throw new Error(`${methodName} is not supperted in call`)
+        throw new Error(`${methodName} is not supported in call`)
       }
     }
   }
@@ -100,4 +109,9 @@ module.exports = function createApiClient(apiConfigInput) {
     ...methods,
     call,
   }
+}
+
+module.exports = {
+  createApiClient,
+  dep,
 }

@@ -19,7 +19,7 @@ module.exports = function createRouteFunction({
 
   validateMethodConfig(methodConfigInput, apiConfig)
 
-  return function routeFunction({ controllers, userInput, user }) {
+  return function routeFunction({ controllers, models, user, userInput }) {
     return createRequest({
       apiConfig,
       endpointConfig,
@@ -39,6 +39,7 @@ module.exports = function createRouteFunction({
             }
             return handler({
               controllers,
+              models,
               request,
               user,
             })

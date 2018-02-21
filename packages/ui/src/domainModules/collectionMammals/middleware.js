@@ -23,26 +23,26 @@ export default function createMammalMiddleware() {
         if (
           action.meta.form === MAMMAL_FORM_NAME &&
           action.meta.field &&
-          action.meta.field.includes('isCurrentIdentification') &&
+          action.meta.field.includes('isCurrentDetermination') &&
           action.payload === true
         ) {
-          // slice identificationIndex from field
-          const beginIndex = 'identifications.'.length
-          const endIndex = action.meta.field.indexOf('.isCurrentIdentification')
-          const isCurrentIdentificationIndex = Number(
+          // slice determinationIndex from field
+          const beginIndex = 'assignedTaxon.determinations.'.length
+          const endIndex = action.meta.field.indexOf('.isCurrentDetermination')
+          const isCurrentDeterminationIndex = Number(
             action.meta.field.slice(beginIndex, endIndex)
           )
 
-          const identifications = mammalFormSelector(
+          const determinations = mammalFormSelector(
             getState(),
-            'identifications'
+            'assignedTaxon.determinations'
           )
 
-          identifications.forEach((identification, index) => {
-            // set all other identifications as not current
-            if (index !== isCurrentIdentificationIndex) {
-              if (identification.isCurrentIdentification) {
-                // notify user that other identification was previously set as current
+          determinations.forEach((determination, index) => {
+            // set all other determinations as not current
+            if (index !== isCurrentDeterminationIndex) {
+              if (determination.isCurrentDetermination) {
+                // notify user that other determination was previously set as current
                 dispatch(
                   dep.createNotification({
                     componentProps: {
@@ -51,8 +51,7 @@ export default function createMammalMiddleware() {
                       headerKey:
                         'modules.collectionMammals.determination.warningChangedDetermination',
                       headerParams: {
-                        taxonName:
-                          identification.identifiedTaxonNameStandardized || '',
+                        taxonName: determination.taxonNameStandardized || '',
                       },
                     },
                     type: 'FIELD_CHANGE_WARNING',
@@ -63,7 +62,9 @@ export default function createMammalMiddleware() {
               dispatch(
                 change(
                   MAMMAL_FORM_NAME,
-                  `identifications[${index}].isCurrentIdentification`,
+                  `assignedTaxon.determinations[${
+                    index
+                  }].isCurrentDetermination`,
                   false
                 )
               )

@@ -1,0 +1,30 @@
+{
+  "additionalProperties": false,
+  "description": "This is a description",
+  "properties": {
+    "individualGroup": {
+      "$ref": "__ROOT__individualGroup"
+    },
+    "physicalUnits": {
+      "$ref": "__ROOT__physicalUnit"
+    },
+    "identifiableUnits": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__identifiableUnit" }
+    },
+    "id": { "type": "string" },
+    "individualCircumstances": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__individualCircumstance" }
+    },
+    "collectingCircumstances": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__collectingCircumstance" }
+    },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__event" }
+    },
+    "version": { "type": "integer" }
+  }
+}

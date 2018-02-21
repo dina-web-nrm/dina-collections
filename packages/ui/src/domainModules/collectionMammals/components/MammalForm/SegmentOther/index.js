@@ -1,31 +1,28 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Grid, Segment } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Field, Input } from 'coreModules/form/components'
-import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'catalogedUnit',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
-const propTypes = {
-  getPath: PropTypes.func.isRequired,
-}
-
-const SegmentOther = ({ getPath }) => {
+const SegmentOther = () => {
   return (
     <Segment color="green">
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Column width={16}>
+        <Grid.Column computer={6} mobile={16}>
           <Field
             autoComplete="off"
             component={Input}
             disabled
-            label={<ModuleTranslate textKey="remarks" />}
+            label={
+              <ModuleTranslate
+                scope="identifiableUnits"
+                textKey="storedUnderTaxonName"
+              />
+            }
             module="collectionMammals"
-            name={getPath('remarks')}
+            name="identifiableUnits.0.physicalUnit.storedUnderTaxonName"
             type="text"
           />
         </Grid.Column>
@@ -34,8 +31,4 @@ const SegmentOther = ({ getPath }) => {
   )
 }
 
-SegmentOther.propTypes = propTypes
-
-export default pathBuilder({ name: 'physicalUnits.0.catalogedUnit' })(
-  SegmentOther
-)
+export default SegmentOther

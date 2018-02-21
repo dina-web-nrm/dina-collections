@@ -12,9 +12,11 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "yarn lint:js",
-    "test:unit": "jest --env=node",
-    "test:unit:watch": "jest --env=node --watch",
-    "build:schema": "node ./src/schemaBuilder/index.js"
+    "test:unit": "NODE_ENV=test jest --env=node",
+    "test:unit:watch": "NODE_ENV=test jest --env=node --watch",
+    "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/index.js && yarn test:unit",
+    "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",
+    "build:schema": "node ./src/schemaBuilder/index.js && yarn test:unit"
   },
   "dependencies": {
     "ajv": "^5.2.3",
@@ -23,7 +25,14 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^8.0.1",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "^2.6.0",

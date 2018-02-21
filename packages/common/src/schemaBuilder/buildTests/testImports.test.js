@@ -8,8 +8,4 @@ describe('buildTests/testImports', () => {
   it('openApi.json imported without error', () => {
     return expect(require('../../../dist/openApi.json')).toBeTruthy()
   })
-
-  it('swagger.json imported without error', () => {
-    return expect(require('../../../dist/swagger.json')).toBeTruthy()
-  })
 })

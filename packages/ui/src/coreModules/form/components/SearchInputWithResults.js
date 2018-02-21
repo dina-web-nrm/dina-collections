@@ -52,6 +52,7 @@ function SearchInputWithResults({
   results,
 }) {
   const displayError = touched && !!error
+  const hiddenInputName = `${input.name}.hidden`
   return (
     <Form.Field
       error={displayError}
@@ -74,6 +75,15 @@ function SearchInputWithResults({
         resultRenderer={resultRenderer}
         results={results}
         {...input}
+      />
+      <input
+        hidden
+        {...input}
+        name={hiddenInputName}
+        onChange={event => {
+          const { value } = event.target
+          handleResultSelect(event, { result: { title: value } })
+        }}
       />
       {displayError && (
         <FormFieldError

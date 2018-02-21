@@ -1,0 +1,1 @@
+exports.specimen = require('./specimen')

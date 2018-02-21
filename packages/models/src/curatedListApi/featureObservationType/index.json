@@ -1,0 +1,10 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "typeName": {
+      "type": "string"
+    },
+    "id": { "type": "string"}
+  },
+  "required":["typeName"]
+}

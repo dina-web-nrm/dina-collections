@@ -4,13 +4,11 @@ import {
   COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
 } from '../actionTypes'
 import { REGISTER_MAMMAL } from '../endpoints'
+import { getCatalogNumberFromIdentifiers } from '../utilities'
 
-export default function registerMammal(
-  { individualGroup, catalogedUnit },
-  throwError = true
-) {
+export default function registerMammal({ individualGroup }, throwError = true) {
   const meta = {
-    catalogNumber: catalogedUnit.catalogNumber,
+    catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
     individualGroup,
   }
 
@@ -23,7 +21,7 @@ export default function registerMammal(
     const body = {
       data: {
         attributes: {
-          ...individualGroup,
+          individualGroup,
         },
       },
     }

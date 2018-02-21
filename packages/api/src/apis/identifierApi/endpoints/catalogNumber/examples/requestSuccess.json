@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id": "1234",
+    "type": "catalogNumber",
+    "attributes": {
+      "identifierType": "catalogNumber",
+      "nameSpace": "mammal",
+      "value": "58412812"
+    }
+  }
+}

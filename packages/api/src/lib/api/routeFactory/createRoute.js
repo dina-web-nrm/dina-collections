@@ -7,9 +7,9 @@ const {
 
 module.exports = function createRoute({
   apiConfig,
-  controllers,
   endpointConfig,
   method,
+  models,
   pathname,
 }) {
   const middlewares = [
@@ -23,9 +23,9 @@ module.exports = function createRoute({
     }),
     operationMiddleware({
       apiConfig,
-      controllers,
       endpointConfig,
       method,
+      models,
     }),
     errorMiddleware({
       apiConfig,
@@ -35,6 +35,7 @@ module.exports = function createRoute({
 
   return {
     middlewares,
+    operationId: endpointConfig.operationId,
     pathname,
     verbName: endpointConfig.verbName,
   }

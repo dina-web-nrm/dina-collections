@@ -1,4 +1,4 @@
-module.exports = function createArraytResponse({ items, type }) {
+module.exports = function createArrayResponse({ items, type }) {
   if (!items || items.length === 0) {
     return {
       data: [],

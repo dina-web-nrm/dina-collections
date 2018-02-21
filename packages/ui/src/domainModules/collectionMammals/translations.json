@@ -39,14 +39,10 @@
       "sv": "6 eller 8 siffror"
     }
   },
-  "catalogedUnit": {
+  "identifiers": {
     "remarks": {
       "en": "Specimen remarks",
       "sv": "Exemplarsnoteringar"
-    },
-    "storedUnderTaxonName": {
-      "en": "Stored under name",
-      "sv": "Förvaras under namn"
     },
     "isPublic": {
       "en": "Public",
@@ -125,7 +121,7 @@
       "sv": ""
     }
   },
-  "occurrences": {
+  "individualCircumstances": {
     "collectingInformation": {
       "en": "Collecting information",
       "sv": "Insamlingsinformation"
@@ -324,8 +320,12 @@
       "en": "Day",
       "sv": ""
     },
-    "occurrenceDateText": {
-      "en": "Date free text",
+    "startDate": {
+      "en": "Start date (free text)",
+      "sv": ""
+    },
+    "endDate": {
+      "en": "End date (free text)",
       "sv": ""
     },
     "collectorsText": {
@@ -383,7 +383,7 @@
       "sv": ""
     }
   },
-  "physicalUnits": {
+  "identifiableUnits": {
     "alternateIdentifiersText": {
       "en": "Alternate identifier(s)",
       "sv": "Alternativa identifierare"
@@ -395,6 +395,10 @@
     "physicalUnitText": {
       "en": "Description",
       "sv": "Beskrivning"
+    },
+    "storedUnderTaxonName": {
+      "en": "Stored under name",
+      "sv": "Förvaras under namn"
     }
   },
   "cancel": {
@@ -436,10 +440,6 @@
   "id": {
     "en": "Id",
     "sv": "Id"
-  },
-  "identifiedTaxonNameStandardized": {
-    "en": "Taxon name",
-    "sv": "Taxonnamn"
   },
   "locality": {
     "en": "Locality",
@@ -490,6 +490,10 @@
     "sv": "Kunde inte spara"
   },
   "taxonName": {
+    "en": "Taxon name",
+    "sv": "Taxonnamn"
+  },
+  "taxonNameStandardized": {
     "en": "Taxon name",
     "sv": "Taxonnamn"
   },

@@ -5,9 +5,9 @@ const log = createLog('operationMiddleware')
 
 module.exports = function createOperationMiddleware({
   apiConfig,
-  controllers,
   endpointConfig,
   method,
+  models,
 }) {
   const { handler } = endpointConfig
   if (!handler) {
@@ -28,10 +28,12 @@ module.exports = function createOperationMiddleware({
 
   return (req, res, next) => {
     const { locals: { userInput, user } } = res
-    log.info(`${res.locals.id}: Call route function`)
+    log.info(
+      `${res.locals.id}: Call route function for ${endpointConfig.operationId}`
+    )
 
     return routeFunction({
-      controllers,
+      models,
       user,
       userInput,
     })
@@ -40,8 +42,10 @@ module.exports = function createOperationMiddleware({
 
         if (apiConfig.log.outgoingResponse) {
           log.debug(
-            `${res.locals.id}: Sending response ${JSON.stringify(data)}`
+            `${res.locals.id}: Sending response 200 ${JSON.stringify(data)}`
           )
+        } else {
+          log.debug(`${res.locals.id}: Sending response 200`)
         }
 
         res.send(data)

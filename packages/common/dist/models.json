@@ -1,422 +1,78 @@
 {
-  "batchItem": {
+  "agent": {
     "additionalProperties": false,
+    "description": "WIP",
     "properties": {
-      "id": {
+      "name": {
         "type": "string"
-      },
-      "data": {
-        "type": "object",
-        "description": "Should have a one of condition"
-      },
-      "model": {
-        "type": "string"
-      },
-      "schemaVersion": {
-        "type": "string"
-      },
-      "uploaded": {
-        "type": "boolean"
-      },
-      "isValid": {
-        "type": "boolean"
       }
     },
-    "x-category": "batch",
+    "x-category": "agentApi",
     "x-modelType": "model",
-    "description": "",
-    "id": "batchItem"
+    "id": "agent"
   },
-  "batchUpload": {
+  "date": {
     "additionalProperties": false,
     "properties": {
-      "id": {
-        "type": "string"
-      },
-      "items": {
-        "type": "array",
-        "items": {
-          "$ref": "batchItem"
-        }
-      },
-      "uploadStarted": {
-        "type": "boolean"
-      },
-      "uploadCompleted": {
-        "type": "boolean"
-      },
-      "userId": {
-        "type": "boolean"
-      },
-      "nUploadedItems": {
-        "type": "integer"
-      },
-      "nValidItems": {
-        "type": "integer"
-      },
-      "nItems": {
-        "type": "integer"
-      }
-    },
-    "x-category": "batch",
-    "x-modelType": "model",
-    "description": "",
-    "id": "batchUpload"
-  },
-  "catalogedUnit": {
-    "additionalProperties": false,
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "physicalUnits": {
-        "type": "array",
-        "items": {
-          "$ref": "physicalUnit"
-        }
-      },
-      "publishRecord": {
-        "type": "boolean"
-      },
-      "remarks": {
+      "isoDate": {
         "type": "string",
-        "example": "Some remarks"
+        "description": "A date in standard format. TBA"
       },
-      "storedUnderTaxonName": {
-        "type": "string",
-        "example": "Sorex minutus"
-      },
-      "catalogNumber": {
-        "type": "string",
-        "example": "584028",
-        "pattern": "^$|^[0-9]{6}$|^[0-9]{8}$",
-        "description": "Catalog number is a string of 6 or 8 digits\n"
-      }
-    },
-    "example": {
-      "id": 1234,
-      "storedUnderTaxonName": "mjau"
-    },
-    "x-category": "collection",
-    "x-modelType": "model",
-    "description": "",
-    "id": "catalogedUnit"
-  },
-  "featureObservation": {
-    "additionalProperties": false,
-    "properties": {
-      "featureObservationAgent": {
-        "type": "string",
-        "example": "Doe, J."
-      },
-      "featureObservationDate": {
-        "type": "string",
-        "example": "2017-12-12"
-      },
-      "featureObservationText": {
-        "type": "string",
-        "example": "10 years"
-      },
-      "featureObservationType": {
-        "$ref": "featureObservationType"
-      },
-      "id": {
-        "type": "string"
-      },
-      "methodText": {
-        "type": "string",
-        "example": "Known age"
-      }
-    },
-    "x-category": "collection",
-    "x-modelType": "model",
-    "description": "",
-    "id": "featureObservation"
-  },
-  "featureObservationType": {
-    "additionalProperties": false,
-    "properties": {
-      "featureObservationTypeName": {
-        "type": "string",
-        "enum": [
-          "sex",
-          "length",
-          "age",
-          "weight",
-          "conditionAtCollecting",
-          "ageStage"
-        ]
-      },
-      "id": {
-        "type": "string",
-        "enum": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6"
-        ]
-      }
-    },
-    "required": [
-      "featureObservationTypeName"
-    ],
-    "x-category": "collection",
-    "x-modelType": "model",
-    "description": "",
-    "id": "featureObservationType"
-  },
-  "identification": {
-    "additionalProperties": false,
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "identificationRemarks": {
-        "type": "string",
-        "example": "Some remarks"
-      },
-      "identificationText": {
-        "type": "string",
-        "example": "Sorex minutus, by Doe, J. on 1982-01-01"
-      },
-      "identifiedAsVerbatim": {
-        "type": "string",
-        "description": "In exactly the same words as were used originally"
-      },
-      "identifiedByAgentText": {
-        "type": "string",
-        "example": "Doe, J."
-      },
-      "identifiedDateText": {
+      "dateText": {
         "type": "string",
         "example": "Before 1800"
       },
-      "identifiedDay": {
+      "day": {
         "type": "integer",
         "example": 25
       },
-      "identifiedMonth": {
+      "month": {
         "type": "integer",
         "example": 12
       },
-      "identifiedTaxonNameStandardized": {
-        "type": "string",
-        "example": "Chironectes minimus"
-      },
-      "identifiedYear": {
+      "year": {
         "type": "integer",
         "example": 1981
-      },
-      "individualGroup": {
-        "$ref": "individualGroup"
-      },
-      "isCurrentIdentification": {
-        "type": "boolean",
-        "example": true
-      },
-      "version": {
-        "type": "integer"
       }
     },
-    "x-category": "collection",
+    "description": "### Definition\n\nInformation pertaining to a specific date or a date range.\n\n### Note(s)\n\nIncludes for example verbatim information about when something happened.\n",
+    "x-category": "core",
     "x-modelType": "model",
-    "description": "",
-    "id": "identification"
+    "id": "date"
   },
-  "individualGroup": {
+  "modelReference": {
     "additionalProperties": false,
-    "description": "# This is a description in a markdown file\n",
+    "description": "A reference to a model",
     "properties": {
-      "causeOfDeathStandardized": {
-        "type": "string"
-      },
-      "causeOfDeathText": {
-        "type": "string"
-      },
-      "featureObservations": {
-        "type": "array",
-        "items": {
-          "$ref": "featureObservation"
-        }
-      },
       "id": {
         "type": "string"
       },
-      "identifications": {
-        "type": "array",
-        "items": {
-          "$ref": "identification"
-        }
-      },
-      "occurrences": {
-        "type": "array",
-        "items": {
-          "$ref": "occurrence"
-        }
-      },
-      "originStandardized": {
+      "type": {
         "type": "string"
       },
-      "physicalUnits": {
-        "type": "array",
-        "items": {
-          "$ref": "physicalUnit"
-        }
-      },
-      "version": {
-        "type": "integer"
+      "variationId": {
+        "type": "string"
       }
     },
-    "x-category": "collection",
+    "required": [
+      "id",
+      "type"
+    ],
+    "x-category": "core",
     "x-modelType": "model",
-    "id": "individualGroup"
+    "id": "modelReference"
   },
-  "localityInformation": {
-    "additionalProperties": false,
-    "properties": {
-      "curatedLocalities": {
-        "description": "An array with curated localities",
-        "type": "array",
-        "items": {
-          "$ref": "curatedLocality"
-        }
-      },
-      "position": {
-        "description": "A specific position",
-        "type": "object",
-        "$ref": "position"
-      },
-      "polygon": {
-        "description": "A specific position",
-        "type": "object",
-        "$ref": "polygon"
-      },
-      "verticalPosition": {
-        "description": "A vertical position",
-        "type": "object",
-        "$ref": "verticalPosition"
-      },
-      "coordinatesVerbatim": {
-        "type": "string",
-        "description": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
-      },
-      "georeferenceSourcesText": {
-        "type": "string",
-        "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
-      },
-      "localityText": {
-        "type": "string",
-        "description": "TBA"
-      },
-      "localityRemarks": {
-        "type": "string",
-        "description": "Notes on the locality"
-      },
-      "localityVerbatim": {
-        "type": "string",
-        "description": "Verbatim locality names and description, as in the original source, typos and all."
-      }
-    },
-    "description": "# localityInformation\n\nContains information related to where an occurrence happened. \n",
-    "x-category": "collection",
+  "notDefinedModel": {
+    "additionalProperties": true,
+    "description": "A model to be used until proper concept is defined",
+    "properties": {},
+    "x-category": "core",
     "x-modelType": "model",
-    "id": "localityInformation"
-  },
-  "occurrence": {
-    "additionalProperties": false,
-    "properties": {
-      "collectorsText": {
-        "type": "string",
-        "example": "Bergström, U",
-        "description": "Name of the collector"
-      },
-      "dayEnd": {
-        "type": "integer",
-        "example": 2
-      },
-      "dayStart": {
-        "type": "integer",
-        "example": 30
-      },
-      "establishmentMeansStandardized": {
-        "type": "string"
-      },
-      "expeditionText": {
-        "type": "string",
-        "example": "Vega Expedition"
-      },
-      "id": {
-        "type": "string"
-      },
-      "individualGroup": {
-        "$ref": "individualGroup"
-      },
-      "isDeathEvent": {
-        "type": "boolean"
-      },
-      "localityInformation": {
-        "$ref": "localityInformation"
-      },
-      "monthEnd": {
-        "type": "integer",
-        "example": 3
-      },
-      "monthStart": {
-        "type": "integer",
-        "example": 2
-      },
-      "occurrenceDateText": {
-        "type": "string",
-        "example": "Before 1800"
-      },
-      "yearEnd": {
-        "type": "integer",
-        "example": 1991
-      },
-      "yearStart": {
-        "type": "integer",
-        "example": 1990
-      }
-    },
-    "x-category": "collection",
-    "x-modelType": "model",
-    "description": "",
-    "id": "occurrence"
-  },
-  "physicalUnit": {
-    "additionalProperties": false,
-    "properties": {
-      "alternateIdentifiersText": {
-        "type": "string",
-        "example": "Skin complete, prepared"
-      },
-      "catalogedUnit": {
-        "$ref": "catalogedUnit"
-      },
-      "id": {
-        "type": "string"
-      },
-      "individualGroup": {
-        "$ref": "individualGroup"
-      },
-      "normalStorageLocationText": {
-        "type": "string"
-      },
-      "physicalUnitText": {
-        "type": "string",
-        "example": "Skin complete, prepared"
-      }
-    },
-    "x-category": "collection",
-    "x-modelType": "model",
-    "description": "",
-    "id": "physicalUnit"
+    "id": "notDefinedModel"
   },
   "polygon": {
     "additionalProperties": false,
-    "description": "A polygon with longitude, latitude vertices",
+    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
     "properties": {
       "vertices": {
         "type": "array",
@@ -429,7 +85,7 @@
   },
   "position": {
     "additionalProperties": false,
-    "description": "A position represent a specific position",
+    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
     "properties": {
       "latitude": {
         "type": "string",
@@ -460,7 +116,7 @@
   },
   "verticalPosition": {
     "additionalProperties": false,
-    "description": "A description of vertical position",
+    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
     "properties": {
       "maximumDepthInMeters": {
         "type": "integer",
@@ -488,6 +144,172 @@
     "x-category": "core",
     "x-modelType": "model",
     "id": "verticalPosition"
+  },
+  "curatedEvent": {
+    "additionalProperties": false,
+    "description": "### Definition\n\nA defined event with known extension in time and space.\n\n\n\n",
+    "properties": {
+      "id": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedEventApi",
+    "x-modelType": "model",
+    "id": "curatedEvent"
+  },
+  "expedition": {
+    "additionalProperties": false,
+    "description": "tba",
+    "properties": {
+      "id": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedEventApi",
+    "x-modelType": "model",
+    "id": "expedition"
+  },
+  "curatedList": {
+    "additionalProperties": false,
+    "properties": {
+      "description": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "featureObservationType",
+          "identifiableUnitObservationType"
+        ]
+      },
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "curatedListType"
+        }
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "curatedList"
+  },
+  "curatedListType": {
+    "additionalProperties": false,
+    "properties": {
+      "item": {
+        "anyOf": [
+          {
+            "$ref": "featureObservationType"
+          },
+          {
+            "$ref": "identifiableUnitObservationType"
+          }
+        ]
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "curatedListType"
+  },
+  "featureObservationType": {
+    "additionalProperties": false,
+    "properties": {
+      "typeName": {
+        "type": "string"
+      },
+      "id": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "typeName"
+    ],
+    "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "id": "featureObservationType"
+  },
+  "identifiableUnitObservationType": {
+    "additionalProperties": false,
+    "properties": {
+      "typeName": {
+        "type": "string",
+        "enum": [
+          "sex",
+          "length",
+          "age",
+          "weight",
+          "conditionAtCollecting",
+          "ageStage"
+        ]
+      },
+      "id": {
+        "type": "string",
+        "enum": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ]
+      }
+    },
+    "required": [
+      "typeName"
+    ],
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "identifiableUnitObservationType"
+  },
+  "catalogNumber": {
+    "type": "object",
+    "properties": {
+      "identifierType": {
+        "type": "string",
+        "pattern": "catalogNumber"
+      },
+      "nameSpace": {
+        "type": "string",
+        "example": "mammal"
+      },
+      "value": {
+        "type": "string",
+        "description": "Catalog number is a string of 6 or 8 digits",
+        "pattern": "^$|^[0-9]{6}$|^[0-9]{8}$",
+        "example": "584028"
+      }
+    },
+    "description": "### Definition\n\nA unique identifier for a unit within a catalog.\n",
+    "x-category": "identifierApi",
+    "x-modelType": "model",
+    "id": "catalogNumber"
+  },
+  "identifier": {
+    "additionalProperties": false,
+    "properties": {
+      "publishRecord": {
+        "type": "boolean"
+      },
+      "remarks": {
+        "type": "string",
+        "example": "Some remarks"
+      },
+      "identifier": {
+        "anyOf": [
+          {
+            "$ref": "catalogNumber"
+          }
+        ]
+      }
+    },
+    "description": "### Definition\n\nTba\n",
+    "x-category": "identifierApi",
+    "x-modelType": "model",
+    "id": "identifier"
   },
   "curatedLocality": {
     "additionalProperties": false,
@@ -566,31 +388,533 @@
       "description",
       "type"
     ],
-    "description": "A curated locality is a ...\n",
-    "x-category": "curatedLocality",
+    "description": "### Definition\n\nA defined location with known extension in space.\n",
+    "x-category": "localityApi",
     "x-modelType": "model",
     "id": "curatedLocality"
   },
   "curatedLocalityRelation": {
     "additionalProperties": false,
     "properties": {
-      "target": {
-        "type": "object",
+      "id": {
+        "type": "string"
+      },
+      "to": {
+        "$ref": "curatedLocality"
+      },
+      "from": {
         "$ref": "curatedLocality"
       },
       "type": {
+        "type": "string"
+      }
+    },
+    "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
+    "x-category": "localityApi",
+    "x-modelType": "model",
+    "id": "curatedLocalityRelation"
+  },
+  "assignedTaxon": {
+    "additionalProperties": false,
+    "properties": {
+      "curatorialName": {
+        "type": "string"
+      },
+      "determinations": {
+        "type": "array",
+        "items": {
+          "$ref": "determination"
+        }
+      }
+    },
+    "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "assignedTaxon"
+  },
+  "collectingCircumstance": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
         "type": "string",
-        "enum": [
-          "inside",
-          "overlap",
-          "border"
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      },
+      "event": {
+        "$ref": "event"
+      }
+    },
+    "description": "### Definition\n\nThe context under which some specific material was collected.\n\n### Note(s)\n\nThis includes collecting information of various kinds, for example collector(s) and collecting method.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "collectingCircumstance"
+  },
+  "collectingEvent": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
+        "type": "string",
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      },
+      "startDate": {
+        "$ref": "date"
+      },
+      "endDate": {
+        "$ref": "date"
+      },
+      "expeditionText": {
+        "type": "string",
+        "example": "Vega Expedition"
+      },
+      "localityInformation": {
+        "$ref": "localityInformation"
+      }
+    },
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "collectingEvent"
+  },
+  "deathCircumstance": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
+        "type": "string",
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      }
+    },
+    "description": "### Definition\n\nInformation about the death of an individual or group of individuals.\n\n### Note(s)\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "deathCircumstance"
+  },
+  "determination": {
+    "additionalProperties": false,
+    "properties": {
+      "remarks": {
+        "type": "string",
+        "example": "Some remarks"
+      },
+      "determinationText": {
+        "type": "string",
+        "example": "Sorex minutus, by Doe, J. on 1982-01-01"
+      },
+      "determinationVerbatim": {
+        "type": "string",
+        "description": "In exactly the same words as were used originally"
+      },
+      "determinedByAgentText": {
+        "type": "string",
+        "example": "Doe, J."
+      },
+      "date": {
+        "$ref": "date"
+      },
+      "taxonNameStandardized": {
+        "type": "string",
+        "description": "Should be a taxon reference",
+        "example": "Chironectes minimus"
+      },
+      "taxon": {
+        "$ref": "individualGroup"
+      },
+      "isCurrentDetermination": {
+        "type": "boolean",
+        "example": true
+      }
+    },
+    "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "determination"
+  },
+  "event": {
+    "additionalProperties": false,
+    "properties": {
+      "startDate": {
+        "$ref": "date"
+      },
+      "endDate": {
+        "$ref": "date"
+      },
+      "expeditionText": {
+        "type": "string",
+        "example": "Vega Expedition"
+      },
+      "localityInformation": {
+        "$ref": "localityInformation"
+      }
+    },
+    "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "event"
+  },
+  "featureObservation": {
+    "additionalProperties": false,
+    "properties": {
+      "featureObservationAgent": {
+        "type": "string",
+        "example": "Doe, J."
+      },
+      "date": {
+        "$ref": "date"
+      },
+      "featureObservationText": {
+        "type": "string",
+        "example": "10 years"
+      },
+      "featureObservationType": {
+        "$ref": "featureObservationType"
+      },
+      "methodText": {
+        "type": "string",
+        "example": "Known age"
+      }
+    },
+    "description": "### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine) during a single event.\n\n### Example(s)\n\nWhen a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n\n### Note(s)\n\nThe kinds of data for the observation is determined by its FeatureObservationType.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "featureObservation"
+  },
+  "identifiableUnit": {
+    "additionalProperties": false,
+    "properties": {
+      "alternateIdentifiersText": {
+        "type": "string",
+        "example": "Skin complete, prepared"
+      },
+      "identifiers": {
+        "type": "array",
+        "items": {
+          "$ref": "identifier"
+        }
+      },
+      "collectingCircumstance": {
+        "$ref": "collectingCircumstance"
+      },
+      "id": {
+        "type": "string"
+      },
+      "physicalUnitText": {
+        "type": "string",
+        "example": "Skin complete, prepared"
+      },
+      "physicalUnit": {
+        "$ref": "physicalUnit"
+      }
+    },
+    "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "identifiableUnit"
+  },
+  "identifiableUnitObservations": {
+    "additionalProperties": false,
+    "properties": {
+      "agent": {
+        "type": "string",
+        "example": "Doe, J."
+      },
+      "date": {
+        "$ref": "date"
+      },
+      "observationText": {
+        "type": "string",
+        "example": "10 years"
+      },
+      "observationType": {
+        "$ref": "identifiableUnitObservationType"
+      },
+      "methodText": {
+        "type": "string",
+        "example": "Known age"
+      }
+    },
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "identifiableUnitObservations"
+  },
+  "individualCircumstance": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
+        "type": "string",
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      },
+      "event": {
+        "$ref": "event"
+      },
+      "specificCircumstance": {
+        "anyOf": [
+          {
+            "$ref": "originCircumstance"
+          },
+          {
+            "$ref": "observationCircumstance"
+          },
+          {
+            "$ref": "deathCircumstance"
+          }
         ]
       }
     },
-    "x-category": "curatedLocality",
+    "description": "### Definition\n\nThe context for the participation of an individual in a particular event.\n\n### Note(s)\n\nThis is a container for information about e.g. death, origin and observations of the individual (or group of individuals). Circumstances for the collecting event are handled separately (see collectingCircumstance).\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "individualCircumstance"
+  },
+  "individualGroup": {
+    "additionalProperties": false,
+    "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
+    "properties": {
+      "assignedTaxon": {
+        "type": "object",
+        "$ref": "assignedTaxon"
+      },
+      "individualCircumstances": {
+        "type": "array",
+        "items": {
+          "$ref": "individualCircumstance"
+        }
+      },
+      "featureObservations": {
+        "type": "array",
+        "items": {
+          "$ref": "featureObservation"
+        }
+      },
+      "id": {
+        "type": "string"
+      },
+      "identifiers": {
+        "type": "array",
+        "items": {
+          "$ref": "identifier"
+        }
+      },
+      "identifiableUnits": {
+        "type": "array",
+        "items": {
+          "$ref": "identifiableUnit"
+        }
+      },
+      "version": {
+        "type": "integer"
+      }
+    },
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "individualGroup"
+  },
+  "localityInformation": {
+    "additionalProperties": false,
+    "properties": {
+      "curatedLocalities": {
+        "description": "An array with curated localities",
+        "type": "array",
+        "items": {
+          "$ref": "curatedLocality"
+        }
+      },
+      "position": {
+        "type": "object",
+        "$ref": "position"
+      },
+      "polygon": {
+        "type": "object",
+        "$ref": "polygon"
+      },
+      "verticalPosition": {
+        "type": "object",
+        "$ref": "verticalPosition"
+      },
+      "coordinatesVerbatim": {
+        "type": "string",
+        "description": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
+      },
+      "georeferenceSourcesText": {
+        "type": "string",
+        "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
+      },
+      "localityText": {
+        "type": "string",
+        "description": "TBA"
+      },
+      "remarks": {
+        "type": "string",
+        "description": "Notes on the locality"
+      },
+      "localityVerbatim": {
+        "type": "string",
+        "description": "Verbatim locality names and description, as in the original source, typos and all."
+      }
+    },
+    "description": "### Definition\n\nInformation pertaining to a specific location.\n\n### Note(s)\n\nIncludes for example verbatim information about a location.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "localityInformation"
+  },
+  "observationCircumstance": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
+        "type": "string",
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      }
+    },
+    "description": "### Definition\n\nInformation about an observation of an individual or group of individuals.\n\n### Note(s)\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "observationCircumstance"
+  },
+  "originCircumstance": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
+        "type": "string",
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      }
+    },
+    "description": "### Definition\n\nInformation about the origin of an individual or group of individuals.\n\n### Note(s)\n\nThis can for example involve the genetic origin or a specific event when an individual moved from an place to another.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "originCircumstance"
+  },
+  "specimen": {
+    "additionalProperties": false,
+    "description": "This is a description",
+    "properties": {
+      "individualGroup": {
+        "$ref": "individualGroup"
+      },
+      "physicalUnits": {
+        "$ref": "physicalUnit"
+      },
+      "identifiableUnits": {
+        "type": "array",
+        "items": {
+          "$ref": "identifiableUnit"
+        }
+      },
+      "id": {
+        "type": "string"
+      },
+      "individualCircumstances": {
+        "type": "array",
+        "items": {
+          "$ref": "individualCircumstance"
+        }
+      },
+      "collectingCircumstances": {
+        "type": "array",
+        "items": {
+          "$ref": "collectingCircumstance"
+        }
+      },
+      "events": {
+        "type": "array",
+        "items": {
+          "$ref": "event"
+        }
+      },
+      "version": {
+        "type": "integer"
+      }
+    },
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "specimen"
+  },
+  "physicalUnit": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "identifiableUnits": {
+        "type": "array",
+        "items": {
+          "$ref": "identifiableUnit"
+        }
+      },
+      "normalStorageLocationText": {
+        "description": "Will be moved to storageLocation",
+        "type": "string"
+      },
+      "storedUnderTaxonName": {
+        "description": "Will be moved to storageLocation",
+        "type": "string",
+        "example": "Sorex minutus"
+      },
+      "storageLocation": {
+        "$ref": "storageLocation"
+      }
+    },
+    "description": "### Definition\n\nThe smallest recognized physical “thing” in the collection. A set of identifiable units. One or more.\n\n### Example(s)\n\nEx.1. A herbarium sheet with multiple leafs (many identifiable units)\nEx.2. A device where a skin is mounted at (one identifiable unit)\nEx.3. A device where a stone with a moss is mounted (two identifiable unit)\n",
+    "x-category": "storageApi",
+    "x-modelType": "model",
+    "id": "physicalUnit"
+  },
+  "storageLocation": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "locationText": {
+        "type": "string"
+      }
+    },
+    "description": "### Definition\n\nA delimited space in the collection where one ore more physical units can be placed.\n",
+    "x-category": "storageApi",
+    "x-modelType": "model",
+    "id": "storageLocation"
+  },
+  "storageLocationRelation": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "to": {
+        "$ref": "storageLocation"
+      },
+      "from": {
+        "$ref": "storageLocation"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "x-category": "storageApi",
     "x-modelType": "model",
     "description": "",
-    "id": "curatedLocalityRelation"
+    "id": "storageLocationRelation"
   },
   "taxon": {
     "additionalProperties": false,
@@ -709,160 +1033,214 @@
       "scientific_name",
       "valid_name"
     ],
-    "x-category": "other",
+    "x-category": "taxonomyApi",
     "x-modelType": "model",
     "description": "",
     "id": "taxon"
   },
-  "createIndividualGroupResponse": {
+  "createAgentResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": {
-            "type": "string",
-            "default": "individualGroup"
+          "attributes": {
+            "$ref": "agent"
           },
           "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "attributes": {
-            "$ref": "individualGroup"
+            "example": "1234",
+            "type": "string"
           },
           "relationships": {
-            "type": "object",
-            "properties": {}
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
           }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/collections/api/v01/individualGroups"
-          }
-        }
+        },
+        "type": "object"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent//v01/agents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
+    "type": "object",
+    "x-examples": {},
     "description": ""
   },
-  "updateIndividualGroupResponse": {
+  "getAgentResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": {
-            "type": "string",
-            "default": "individualGroup"
+          "attributes": {
+            "$ref": "agent"
           },
           "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "attributes": {
-            "$ref": "individualGroup"
+            "example": "1234",
+            "type": "string"
           },
           "relationships": {
-            "type": "object",
-            "properties": {}
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
           }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/collections/api/v01/individualGroups/{id}"
-          }
-        }
+        },
+        "type": "object"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent//v01/agents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
+    "type": "object",
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "agent",
+          "attributes": {
+            "name": "Ingimar"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "agent",
+        "attributes": {
+          "name": "Ingimar"
+        }
+      }
+    },
     "description": ""
   },
-  "getIndividualGroupsResponse": {
+  "updateAgentResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "array",
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "agent"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent//v01/agents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getAgentsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
         "additionalProperties": false,
         "items": {
-          "type": "object",
           "additionalProperties": false,
           "properties": {
-            "type": {
-              "type": "string",
-              "default": "individualGroup"
+            "attributes": {
+              "$ref": "agent"
             },
             "id": {
-              "type": "string",
-              "example": "1234"
-            },
-            "attributes": {
-              "$ref": "individualGroup"
+              "example": "1234",
+              "type": "string"
             },
             "relationships": {
-              "type": "object",
-              "properties": {}
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "agent",
+              "type": "string"
             }
-          }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/collections/api/v01/individualGroups"
-          }
-        }
+          },
+          "type": "object"
+        },
+        "type": "array"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent//v01/agents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
-    "description": ""
-  },
-  "getStatusResponse": {
     "type": "object",
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "type": "object",
-        "properties": {
-          "up": {
-            "type": "boolean"
-          }
-        }
-      }
-    },
+    "x-examples": {},
     "description": ""
   },
   "getUserResponse": {
@@ -938,275 +1316,2615 @@
     ],
     "description": ""
   },
+  "createExpeditionResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "expedition"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "expedition",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedEvent/v01/expeditions",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getExpeditionResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "expedition"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "expedition",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateExpeditionResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "expedition"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "expedition",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getExpeditionsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "expedition"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "expedition",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedEvent/v01/expeditions",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "createFeatureObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "featureObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "featureObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateFeatureObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "featureObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "featureObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getFeatureObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "featureObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "featureObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getFeatureObservationTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "featureObservationType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "featureObservationType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "createIdentifiableUnitObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "identifiableUnitObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "identifiableUnitObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateIdentifiableUnitObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "identifiableUnitObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "identifiableUnitObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getIdentifiableUnitObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "identifiableUnitObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "identifiableUnitObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getIdentifiableUnitObservationTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "identifiableUnitObservationType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "identifiableUnitObservationType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getLoanResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "notDefinedModel"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "notDefinedModel",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/externalEvent/v01/loans/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "description": ""
+  },
+  "createCatalogNumberResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "catalogNumber"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "catalogNumber",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/identifier/v01/catalogNumbers",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateCatalogNumberResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "catalogNumber"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "catalogNumber",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getCatalogNumberResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "catalogNumber"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "catalogNumber",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getCatalogNumbersResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "catalogNumber"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "catalogNumber",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/identifier/v01/catalogNumbers",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
   "createCuratedLocalityResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
           "attributes": {
             "$ref": "curatedLocality"
           },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
           "relationships": {
-            "type": "object",
-            "properties": {}
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "curatedLocality",
+            "type": "string"
           }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/localities/api/v01/curatedLocality"
-          }
-        }
+        },
+        "type": "object"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
-    "description": ""
-  },
-  "getCuratedLocalityResponse": {
-    "additionalProperties": false,
     "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
-          },
-          "relationships": {
-            "type": "object",
-            "properties": {}
-          }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/localities/api/v01/curatedLocality/{id}"
-          }
-        }
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "description": ""
-  },
-  "getCuratedLocalityByVersionResponse": {
-    "additionalProperties": false,
-    "type": "object",
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "attributes": {
-            "$ref": "curatedLocality"
-          },
-          "relationships": {
-            "type": "object",
-            "properties": {}
-          }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/localities/api/v01/curatedLocality/{id}/versions/{versionId}"
-          }
-        }
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
+    "x-examples": {},
     "description": ""
   },
   "updateCuratedLocalityResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": {
-            "type": "string",
-            "default": "curatedLocality"
-          },
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
           "attributes": {
             "$ref": "curatedLocality"
           },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
           "relationships": {
-            "type": "object",
-            "properties": {}
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "curatedLocality",
+            "type": "string"
           }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/localities/api/v01/curatedLocality/{id}"
-          }
-        }
+        },
+        "type": "object"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateCuratedLocalityBelongsToResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "curatedLocality",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getCuratedLocalityBelongsToResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "curatedLocality",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateCuratedLocalityContainsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "curatedLocality"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "curatedLocality",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getCuratedLocalityContainsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "curatedLocality"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "curatedLocality",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getCuratedLocalityResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "curatedLocality"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "belongsTo": {
+                "properties": {
+                  "data": {
+                    "properties": {
+                      "id": {
+                        "example": "1234",
+                        "type": "string"
+                      },
+                      "type": {
+                        "example": "curatedLocality",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "contains": {
+                "properties": {
+                  "data": {
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "curatedLocality",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getCuratedLocalitiesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "curatedLocality"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "belongsTo": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "contains": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "curatedLocality",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/curatedLocalities",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "createSpecimenResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "specimen"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "specimen",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateSpecimenResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "specimen"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "specimen",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateSpecimenPhysicalUnitsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "physicalUnit"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "physicalUnit",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getSpecimenPhysicalUnitsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "physicalUnit"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "physicalUnit",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getSpecimenResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "specimen"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "physicalUnits": {
+                "properties": {
+                  "data": {
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "physicalUnit",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "specimen",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getSpecimensResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "specimen"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "physicalUnits": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "physicalUnit",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "specimen",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getSpecimenVersionResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "specimen"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "physicalUnits": {
+                "properties": {
+                  "data": {
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "physicalUnit",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "specimen",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/versions/{versionId}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getSpecimenVersionsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "specimen"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "physicalUnits": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "physicalUnit",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "specimen",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/versions",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getStatusResponse": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "up": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createPhysicalUnitResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "physicalUnit"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "physicalUnit",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updatePhysicalUnitResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "physicalUnit"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "physicalUnit",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updatePhysicalUnitStorageLocationResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "storageLocation"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "storageLocation",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getPhysicalUnitStorageLocationResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "storageLocation"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "storageLocation",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getPhysicalUnitResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "physicalUnit"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "storageLocation": {
+                "properties": {
+                  "data": {
+                    "properties": {
+                      "id": {
+                        "example": "1234",
+                        "type": "string"
+                      },
+                      "type": {
+                        "example": "storageLocation",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "physicalUnit",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getPhysicalUnitsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "physicalUnit"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "storageLocation": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "storageLocation",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "physicalUnit",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "createStorageLocationResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "storageLocation"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "storageLocation",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateStorageLocationResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "storageLocation"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "storageLocation",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateStorageLocationPhysicalUnitsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "physicalUnit"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "physicalUnit",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getStorageLocationPhysicalUnitsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "physicalUnit"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "physicalUnit",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getStorageLocationResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "storageLocation"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "physicalUnits": {
+                "properties": {
+                  "data": {
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "physicalUnit",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "storageLocation",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getStorageLocationsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "storageLocation"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "physicalUnits": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "physicalUnit",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "storageLocation",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getTaxaByNameResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "array",
         "additionalProperties": false,
         "items": {
-          "type": "object",
           "additionalProperties": false,
           "properties": {
-            "type": {
-              "type": "string",
-              "default": "taxon"
-            },
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
             "attributes": {
               "$ref": "taxon"
             },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
             "relationships": {
-              "type": "object",
-              "properties": {}
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "taxon",
+              "type": "string"
             }
-          }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/taxon"
-          }
-        }
+          },
+          "type": "object"
+        },
+        "type": "array"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/taxon",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
+    "type": "object",
     "description": ""
   },
   "getTaxonByIdResponse": {
     "additionalProperties": false,
-    "type": "object",
     "properties": {
       "data": {
-        "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": {
-            "type": "string",
-            "default": "taxon"
-          },
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
           "attributes": {
             "$ref": "taxon"
           },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
           "relationships": {
-            "type": "object",
-            "properties": {}
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "taxon",
+            "type": "string"
           }
-        }
-      },
-      "links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "string",
-            "format": "uri",
-            "example": "https://domain/taxon/{id}"
-          }
-        }
+        },
+        "type": "object"
       },
       "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/taxon/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
         "type": "object"
       },
       "meta": {
         "type": "object"
       }
     },
+    "type": "object",
     "description": ""
   },
-  "createIndividualGroupRequest": {
+  "createAgentRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -1223,17 +3941,35 @@
           },
           "type": {
             "type": "string",
-            "default": "individualGroup"
+            "default": "agent"
           },
           "attributes": {
-            "$ref": "individualGroup"
+            "$ref": "agent"
           }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "agent",
+          "attributes": {
+            "name": "orvar"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "agent",
+        "attributes": {
+          "name": "orvar"
         }
       }
     },
     "description": ""
   },
-  "updateIndividualGroupRequest": {
+  "updateAgentRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -1250,10 +3986,10 @@
           },
           "type": {
             "type": "string",
-            "default": "individualGroup"
+            "default": "agent"
           },
           "attributes": {
-            "$ref": "individualGroup"
+            "$ref": "agent"
           }
         }
       }
@@ -1289,6 +4025,298 @@
     ],
     "description": ""
   },
+  "createExpeditionRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "expedition"
+          },
+          "attributes": {
+            "$ref": "expedition"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "expedition",
+          "attributes": {}
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "expedition",
+        "attributes": {}
+      }
+    },
+    "description": ""
+  },
+  "updateExpeditionRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "expedition"
+          },
+          "attributes": {
+            "$ref": "expedition"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createFeatureObservationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "featureObservationType"
+          },
+          "attributes": {
+            "$ref": "featureObservationType"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "featureObservationType",
+          "attributes": {
+            "typeName": "string"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "featureObservationType",
+        "attributes": {
+          "typeName": "string"
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateFeatureObservationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "featureObservationType"
+          },
+          "attributes": {
+            "$ref": "featureObservationType"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createIdentifiableUnitObservationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "identifiableUnitObservationType"
+          },
+          "attributes": {
+            "$ref": "identifiableUnitObservationType"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "identifiableUnitObservationType",
+          "attributes": {
+            "typeName": "sex"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "identifiableUnitObservationType",
+        "attributes": {
+          "typeName": "sex"
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateIdentifiableUnitObservationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "identifiableUnitObservationType"
+          },
+          "attributes": {
+            "$ref": "identifiableUnitObservationType"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createCatalogNumberRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "catalogNumber"
+          },
+          "attributes": {
+            "$ref": "catalogNumber"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "catalogNumber",
+          "attributes": {
+            "identifierType": "catalogNumber",
+            "nameSpace": "mammal",
+            "value": "58412812"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "catalogNumber",
+        "attributes": {
+          "identifierType": "catalogNumber",
+          "nameSpace": "mammal",
+          "value": "58412812"
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateCatalogNumberRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "catalogNumber"
+          },
+          "attributes": {
+            "$ref": "catalogNumber"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
   "createCuratedLocalityRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -1310,6 +4338,70 @@
           },
           "attributes": {
             "$ref": "curatedLocality"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "curatedLocality",
+          "attributes": {
+            "name": "string",
+            "versionId": "string",
+            "createdAt": "string",
+            "createdBy": "string",
+            "updatedBy": "string",
+            "updatedAt": "string",
+            "description": "string",
+            "centralPosition": {
+              "latitude": "string",
+              "longitude": "string",
+              "geodeticDatum": "string",
+              "uncertaintyInMeters": 0
+            },
+            "polygon": {
+              "vertices": [
+                null
+              ]
+            },
+            "verticalPosition": {
+              "maximumDepthInMeters": 0,
+              "maximumElevationInMeters": 0,
+              "minimumDepthInMeters": 0,
+              "minimumElevationInMeters": 0
+            }
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "curatedLocality",
+        "attributes": {
+          "name": "string",
+          "versionId": "string",
+          "createdAt": "string",
+          "createdBy": "string",
+          "updatedBy": "string",
+          "updatedAt": "string",
+          "description": "string",
+          "centralPosition": {
+            "latitude": "string",
+            "longitude": "string",
+            "geodeticDatum": "string",
+            "uncertaintyInMeters": 0
+          },
+          "polygon": {
+            "vertices": [
+              null
+            ]
+          },
+          "verticalPosition": {
+            "maximumDepthInMeters": 0,
+            "maximumElevationInMeters": 0,
+            "minimumDepthInMeters": 0,
+            "minimumElevationInMeters": 0
           }
         }
       }
@@ -1337,6 +4429,848 @@
           },
           "attributes": {
             "$ref": "curatedLocality"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateCuratedLocalityBelongsToRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "modelReference"
+          },
+          "attributes": {
+            "$ref": "modelReference"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateCuratedLocalityContainsRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "array",
+        "additionalProperties": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "modelReference"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "modelReference"
+            }
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createSpecimenRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "specimen"
+          },
+          "attributes": {
+            "$ref": "specimen"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "fullFormExample": {
+        "data": {
+          "type": "specimen",
+          "attributes": {
+            "individualGroup": {
+              "assignedTaxon": {
+                "determinations": [
+                  {
+                    "date": "date",
+                    "determinationVerbatim": "determinationVerbatim",
+                    "determinedByAgentText": "determinedByAgentText",
+                    "isCurrentDetermination": true,
+                    "remarks": "remarks",
+                    "taxonNameStandardized": "Sorex minutus"
+                  }
+                ]
+              },
+              "featureObservations": [
+                {
+                  "date": "date",
+                  "featureObservationAgent": "featureObservationAgent",
+                  "featureObservationText": "21",
+                  "featureObservationType": {
+                    "id": "3",
+                    "typeName": "age"
+                  },
+                  "methodText": "methodText"
+                }
+              ],
+              "identifiableUnits": [
+                {
+                  "alternateIdentifiersText": "alternateIdentifiersText",
+                  "physicalUnit": {
+                    "normalStorageLocationText": "normalStorageLocationText",
+                    "storedUnderTaxonName": "Sorex minutus"
+                  },
+                  "physicalUnitText": "physicalUnitText"
+                }
+              ],
+              "identifiers": [
+                {
+                  "identifier": {
+                    "identifierType": "catalogNumber",
+                    "nameSpace": "",
+                    "value": "123456"
+                  },
+                  "publishRecord": true,
+                  "remarks": ""
+                }
+              ],
+              "individualCircumstances": [
+                {
+                  "collectorsText": "collectorsText",
+                  "event": {
+                    "endDate": "endDate",
+                    "expeditionText": "expeditionText",
+                    "localityInformation": {
+                      "coordinatesVerbatim": "coordinatesVerbatim",
+                      "curatedLocalities": [
+                        {
+                          "id": "Africa",
+                          "type": "continent"
+                        },
+                        {
+                          "id": "Algeria",
+                          "type": "country"
+                        },
+                        {
+                          "id": "Balearic Islands",
+                          "type": "province"
+                        },
+                        {
+                          "id": "GaspÃ© Peninsula",
+                          "type": "district"
+                        },
+                        {
+                          "id": "Skansen",
+                          "type": "locality"
+                        }
+                      ],
+                      "georeferenceSourcesText": "georeferenceSourcesText",
+                      "localityVerbatim": "localityVerbatim",
+                      "position": {
+                        "geodeticDatum": "geodeticDatum text",
+                        "latitude": "latitude-string",
+                        "longitude": "longitude-string",
+                        "uncertaintyInMeters": 10
+                      },
+                      "remarks": "remarks",
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 100,
+                        "maximumElevationInMeters": 100,
+                        "minimumDepthInMeters": 20,
+                        "minimumElevationInMeters": 20
+                      }
+                    },
+                    "startDate": "startDate"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "primary": {
+        "data": {
+          "type": "specimen",
+          "attributes": {
+            "individualGroup": {
+              "assignedTaxon": {},
+              "individualCircumstances": [
+                {
+                  "id": "string",
+                  "collectorsText": "Bergström, U",
+                  "event": {
+                    "startDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "endDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "expeditionText": "Vega Expedition",
+                    "localityInformation": {
+                      "curatedLocalities": [
+                        {
+                          "name": "string",
+                          "versionId": "string",
+                          "createdAt": "string",
+                          "createdBy": "string",
+                          "updatedBy": "string",
+                          "updatedAt": "string",
+                          "id": "string",
+                          "description": "string",
+                          "relations": [
+                            {
+                              "id": "string",
+                              "type": "string"
+                            }
+                          ],
+                          "type": "continent",
+                          "centralPosition": {
+                            "latitude": "string",
+                            "longitude": "string",
+                            "geodeticDatum": "string",
+                            "uncertaintyInMeters": 0
+                          },
+                          "polygon": {
+                            "vertices": [
+                              null
+                            ]
+                          },
+                          "verticalPosition": {
+                            "maximumDepthInMeters": 0,
+                            "maximumElevationInMeters": 0,
+                            "minimumDepthInMeters": 0,
+                            "minimumElevationInMeters": 0
+                          }
+                        }
+                      ],
+                      "position": {
+                        "latitude": "string",
+                        "longitude": "string",
+                        "geodeticDatum": "string",
+                        "uncertaintyInMeters": 0
+                      },
+                      "polygon": {
+                        "vertices": [
+                          null
+                        ]
+                      },
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 0,
+                        "maximumElevationInMeters": 0,
+                        "minimumDepthInMeters": 0,
+                        "minimumElevationInMeters": 0
+                      },
+                      "coordinatesVerbatim": "string",
+                      "georeferenceSourcesText": "string",
+                      "localityText": "string",
+                      "remarks": "string",
+                      "localityVerbatim": "string"
+                    }
+                  }
+                }
+              ],
+              "featureObservations": [
+                {
+                  "featureObservationAgent": "Doe, J.",
+                  "date": {
+                    "isoDate": "string",
+                    "dateText": "Before 1800",
+                    "day": 25,
+                    "month": 12,
+                    "year": 1981
+                  },
+                  "featureObservationText": "10 years",
+                  "featureObservationType": {
+                    "typeName": "string",
+                    "id": "string"
+                  },
+                  "methodText": "Known age"
+                }
+              ],
+              "id": "string",
+              "identifiers": [
+                {
+                  "identifier": {
+                    "identifierType": "catalogNumber",
+                    "nameSpace": "",
+                    "value": "123456"
+                  },
+                  "publishRecord": true,
+                  "remarks": "Some remarks"
+                }
+              ],
+              "identifiableUnits": [
+                {
+                  "alternateIdentifiersText": "Skin complete, prepared",
+                  "identifiers": [
+                    {
+                      "publishRecord": true,
+                      "remarks": "Some remarks"
+                    }
+                  ],
+                  "collectingCircumstance": {
+                    "id": "string",
+                    "collectorsText": "Bergström, U",
+                    "event": {
+                      "startDate": {
+                        "isoDate": "string",
+                        "dateText": "Before 1800",
+                        "day": 25,
+                        "month": 12,
+                        "year": 1981
+                      },
+                      "endDate": {
+                        "isoDate": "string",
+                        "dateText": "Before 1800",
+                        "day": 25,
+                        "month": 12,
+                        "year": 1981
+                      },
+                      "expeditionText": "Vega Expedition",
+                      "localityInformation": {
+                        "position": {
+                          "latitude": "string",
+                          "longitude": "string",
+                          "geodeticDatum": "string",
+                          "uncertaintyInMeters": 0
+                        },
+                        "polygon": {
+                          "vertices": [
+                            null
+                          ]
+                        },
+                        "verticalPosition": {
+                          "maximumDepthInMeters": 0,
+                          "maximumElevationInMeters": 0,
+                          "minimumDepthInMeters": 0,
+                          "minimumElevationInMeters": 0
+                        },
+                        "coordinatesVerbatim": "string",
+                        "georeferenceSourcesText": "string",
+                        "localityText": "string",
+                        "remarks": "string",
+                        "localityVerbatim": "string"
+                      }
+                    }
+                  },
+                  "id": "string",
+                  "physicalUnitText": "Skin complete, prepared",
+                  "physicalUnit": {
+                    "id": "string",
+                    "identifiableUnits": [
+                      null
+                    ],
+                    "normalStorageLocationText": "string",
+                    "storedUnderTaxonName": "Sorex minutus",
+                    "storageLocation": {
+                      "id": "string",
+                      "locationText": "string"
+                    }
+                  }
+                }
+              ],
+              "version": 0
+            },
+            "version": 0
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "specimen",
+        "attributes": {
+          "individualGroup": {
+            "assignedTaxon": {},
+            "individualCircumstances": [
+              {
+                "id": "string",
+                "collectorsText": "Bergström, U",
+                "event": {
+                  "startDate": {
+                    "isoDate": "string",
+                    "dateText": "Before 1800",
+                    "day": 25,
+                    "month": 12,
+                    "year": 1981
+                  },
+                  "endDate": {
+                    "isoDate": "string",
+                    "dateText": "Before 1800",
+                    "day": 25,
+                    "month": 12,
+                    "year": 1981
+                  },
+                  "expeditionText": "Vega Expedition",
+                  "localityInformation": {
+                    "curatedLocalities": [
+                      {
+                        "name": "string",
+                        "versionId": "string",
+                        "createdAt": "string",
+                        "createdBy": "string",
+                        "updatedBy": "string",
+                        "updatedAt": "string",
+                        "id": "string",
+                        "description": "string",
+                        "relations": [
+                          {
+                            "id": "string",
+                            "type": "string"
+                          }
+                        ],
+                        "type": "continent",
+                        "centralPosition": {
+                          "latitude": "string",
+                          "longitude": "string",
+                          "geodeticDatum": "string",
+                          "uncertaintyInMeters": 0
+                        },
+                        "polygon": {
+                          "vertices": [
+                            null
+                          ]
+                        },
+                        "verticalPosition": {
+                          "maximumDepthInMeters": 0,
+                          "maximumElevationInMeters": 0,
+                          "minimumDepthInMeters": 0,
+                          "minimumElevationInMeters": 0
+                        }
+                      }
+                    ],
+                    "position": {
+                      "latitude": "string",
+                      "longitude": "string",
+                      "geodeticDatum": "string",
+                      "uncertaintyInMeters": 0
+                    },
+                    "polygon": {
+                      "vertices": [
+                        null
+                      ]
+                    },
+                    "verticalPosition": {
+                      "maximumDepthInMeters": 0,
+                      "maximumElevationInMeters": 0,
+                      "minimumDepthInMeters": 0,
+                      "minimumElevationInMeters": 0
+                    },
+                    "coordinatesVerbatim": "string",
+                    "georeferenceSourcesText": "string",
+                    "localityText": "string",
+                    "remarks": "string",
+                    "localityVerbatim": "string"
+                  }
+                }
+              }
+            ],
+            "featureObservations": [
+              {
+                "featureObservationAgent": "Doe, J.",
+                "date": {
+                  "isoDate": "string",
+                  "dateText": "Before 1800",
+                  "day": 25,
+                  "month": 12,
+                  "year": 1981
+                },
+                "featureObservationText": "10 years",
+                "featureObservationType": {
+                  "typeName": "string",
+                  "id": "string"
+                },
+                "methodText": "Known age"
+              }
+            ],
+            "id": "string",
+            "identifiers": [
+              {
+                "identifier": {
+                  "identifierType": "catalogNumber",
+                  "nameSpace": "",
+                  "value": "123456"
+                },
+                "publishRecord": true,
+                "remarks": "Some remarks"
+              }
+            ],
+            "identifiableUnits": [
+              {
+                "alternateIdentifiersText": "Skin complete, prepared",
+                "identifiers": [
+                  {
+                    "publishRecord": true,
+                    "remarks": "Some remarks"
+                  }
+                ],
+                "collectingCircumstance": {
+                  "id": "string",
+                  "collectorsText": "Bergström, U",
+                  "event": {
+                    "startDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "endDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "expeditionText": "Vega Expedition",
+                    "localityInformation": {
+                      "position": {
+                        "latitude": "string",
+                        "longitude": "string",
+                        "geodeticDatum": "string",
+                        "uncertaintyInMeters": 0
+                      },
+                      "polygon": {
+                        "vertices": [
+                          null
+                        ]
+                      },
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 0,
+                        "maximumElevationInMeters": 0,
+                        "minimumDepthInMeters": 0,
+                        "minimumElevationInMeters": 0
+                      },
+                      "coordinatesVerbatim": "string",
+                      "georeferenceSourcesText": "string",
+                      "localityText": "string",
+                      "remarks": "string",
+                      "localityVerbatim": "string"
+                    }
+                  }
+                },
+                "id": "string",
+                "physicalUnitText": "Skin complete, prepared",
+                "physicalUnit": {
+                  "id": "string",
+                  "identifiableUnits": [
+                    null
+                  ],
+                  "normalStorageLocationText": "string",
+                  "storedUnderTaxonName": "Sorex minutus",
+                  "storageLocation": {
+                    "id": "string",
+                    "locationText": "string"
+                  }
+                }
+              }
+            ],
+            "version": 0
+          },
+          "version": 0
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateSpecimenRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "specimen"
+          },
+          "attributes": {
+            "$ref": "specimen"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateSpecimenPhysicalUnitsRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "array",
+        "additionalProperties": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "modelReference"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "modelReference"
+            }
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createPhysicalUnitRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "physicalUnit"
+          },
+          "attributes": {
+            "$ref": "physicalUnit"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "physicalUnit",
+          "attributes": {
+            "normalStorageLocationText": "string",
+            "storedUnderTaxonName": "Sorex minutus"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "physicalUnit",
+        "attributes": {
+          "normalStorageLocationText": "string",
+          "storedUnderTaxonName": "Sorex minutus"
+        }
+      }
+    },
+    "description": ""
+  },
+  "updatePhysicalUnitRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "physicalUnit"
+          },
+          "attributes": {
+            "$ref": "physicalUnit"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updatePhysicalUnitStorageLocationRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "modelReference"
+          },
+          "attributes": {
+            "$ref": "modelReference"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createStorageLocationRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "storageLocation"
+          },
+          "attributes": {
+            "$ref": "storageLocation"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "storageLocation",
+          "attributes": {
+            "locationText": "string"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "storageLocation",
+        "attributes": {
+          "locationText": "string"
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateStorageLocationRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "type": "string",
+            "default": "storageLocation"
+          },
+          "attributes": {
+            "$ref": "storageLocation"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateStorageLocationPhysicalUnitsRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "array",
+        "additionalProperties": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": "modelReference"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            },
+            "attributes": {
+              "$ref": "modelReference"
+            }
           }
         }
       }

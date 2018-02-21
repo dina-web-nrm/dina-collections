@@ -1,6 +1,5 @@
 const createOpenApi = require('./openApi')
 const createModels = require('./models')
-const createSwagger = require('./swagger')
 
 module.exports = function build({
   apis,
@@ -13,17 +12,6 @@ module.exports = function build({
   servers,
 }) {
   const openApi = createOpenApi({
-    apis,
-    endpoints,
-    errors,
-    info,
-    models,
-    parameters,
-    security,
-    servers,
-  })
-
-  const swagger = createSwagger({
     apis,
     endpoints,
     errors,
@@ -47,6 +35,5 @@ module.exports = function build({
   return {
     cleanModels,
     openApi,
-    swagger,
   }
 }

@@ -6,15 +6,12 @@ import {
 import { LOOKUP_MAMMALS } from '../endpoints'
 
 export default function lookupMammals(filterParams = {}) {
-  const queryParams = Object.keys(filterParams).reduce(
-    (query, filterName) => {
-      return {
-        ...query,
-        [`filter[${filterName}]`]: filterParams[filterName],
-      }
-    },
-    { include: 'identifications,physicalUnits.catalogedUnit' } // TODO: centralize include strings
-  )
+  const queryParams = Object.keys(filterParams).reduce((query, filterName) => {
+    return {
+      ...query,
+      [`filter[${filterName}]`]: filterParams[filterName],
+    }
+  })
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({

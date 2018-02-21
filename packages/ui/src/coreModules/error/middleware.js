@@ -1,5 +1,5 @@
 import config from 'config'
-import { isKnownError } from 'common/src/error'
+import { isKnownError } from 'common/es5/error'
 import logout from 'coreModules/user/actionCreators/logout'
 
 export default function errorMiddleware({ debug = true } = {}) {

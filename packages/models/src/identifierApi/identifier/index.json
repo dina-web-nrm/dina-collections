@@ -1,0 +1,14 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "publishRecord": { "type": "boolean" },
+    "remarks": { "type": "string", "example": "Some remarks" },
+    "identifier": {
+      "anyOf": [
+        {
+          "$ref": "__ROOT__catalogNumber"
+        }
+      ]
+    }
+  }
+}

@@ -13,17 +13,17 @@ import {
   reduxForm,
   SubmissionError,
 } from 'redux-form'
-import { createFormModelSchemaValidator } from 'common/src/error'
+import { createFormModelSchemaValidator } from 'common/es5/error'
 import { FormSchemaError } from 'coreModules/error/components'
 import { clearTaxonSearch } from 'domainModules/taxonomy/actionCreators'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { MAMMAL_FORM_NAME } from '../../constants'
-import SegmentCatalogedUnit from './SegmentCatalogedUnit'
+import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
 import SegmentDeterminations from './SegmentDeterminations'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
-import SegmentCollectingInformation from './SegmentCollectingInformation/index'
-import SegmentPhysicalUnits from './SegmentPhysicalUnits'
+import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
+import SegmentIdentifiableUnits from './SegmentIdentifiableUnits'
 import SegmentOther from './SegmentOther'
 import transformInput from './transformations/input'
 import transformOutput from './transformations/output'
@@ -59,29 +59,13 @@ const propTypes = {
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   individualGroup: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     // TODO: define and possibly centralize propTypes for individualGroup
-    identifications: PropTypes.arrayOf(
-      PropTypes.shape({
-        identifiedDay: PropTypes.number,
-        identifiedMonth: PropTypes.number,
-        identifiedTaxonNameStandardized: PropTypes.string,
-        identifiedYear: PropTypes.number,
-      })
-    ).isRequired,
-    physicalUnits: PropTypes.arrayOf(
-      PropTypes.shape({
-        catalogedUnit: PropTypes.shape({
-          catalogNumber: PropTypes.string.isRequired,
-        }).isRequired,
-      }).isRequired
-    ).isRequired,
   }),
   initialize: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      catalogNumber: PropTypes.string,
+      specimenId: PropTypes.string,
     }).isRequired,
   }).isRequired,
   mode: PropTypes.oneOf(['edit', 'register']),
@@ -123,31 +107,23 @@ class RawMammalForm extends Component {
     this.props.clearTaxonSearch()
   }
 
-  handleFormSubmit(data) {
+  handleFormSubmit(formData) {
     const {
       handleFormSubmit,
-      individualGroup,
       match,
       push: pushRoute,
       redirectOnSuccess,
     } = this.props
-    const patchedData = {
-      id: individualGroup && individualGroup.id,
-      ...data,
+
+    const patchedOutput = {
+      id: match && match.params && match.params.specimenId,
+      ...transformOutput(formData),
     }
 
-    const output = transformOutput(patchedData)
-
-    return handleFormSubmit(output)
-      .then(() => {
-        const catalogNumber =
-          output.catalogedUnit && output.catalogedUnit.catalogNumber
-
-        if (
-          catalogNumber &&
-          (redirectOnSuccess || catalogNumber !== match.params.catalogNumber)
-        ) {
-          pushRoute(`/app/mammals/${catalogNumber}/edit`)
+    return handleFormSubmit(patchedOutput)
+      .then(({ id: specimenId }) => {
+        if (!match.params.specimenId && specimenId && redirectOnSuccess) {
+          pushRoute(`/app/mammals/${specimenId}/edit`)
         }
       })
       .catch(error => {
@@ -192,7 +168,7 @@ class RawMammalForm extends Component {
       >
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Column>
-            <SegmentCatalogedUnit
+            <SegmentCatalogNumberIdentifier
               editMode={mode === 'edit'}
               formValueSelector={formValueSelector}
             />
@@ -202,11 +178,11 @@ class RawMammalForm extends Component {
               mode={mode}
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             />
-            <SegmentCollectingInformation
+            <SegmentIndividualCircumstances
               formValueSelector={formValueSelector}
             />
             <SegmentFeatureObservations formValueSelector={formValueSelector} />
-            <SegmentPhysicalUnits />
+            <SegmentIdentifiableUnits />
             <SegmentOther />
 
             <Segment>
