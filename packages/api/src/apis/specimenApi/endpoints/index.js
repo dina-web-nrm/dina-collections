@@ -10,16 +10,19 @@ const {
   updateRelation,
 } = require('../../../operations')
 
-const { specimenGetWhere } = require('../connectors/specimenGetWhere')
+const specimenGetWhere = require('../connectors/specimenGetWhere')
 
 const createRequestSuccess = require('./createSpecimen/examples/requestSuccess.json')
 const fullFormExample = require('./createSpecimen/examples/fullFormExample.json')
+const validateBody = require('./createSpecimen/validators/validateBody')
+const updateRequestSuccess = require('./updateSpecimen/examples/requestSuccess.json')
 
 const specimen = createResource({
   basePath: '/api/specimen/v01',
   endpoints: [
     {
       connect: true,
+      connectorOptions: { validateBody },
       exampleRequests: { fullFormExample, primary: createRequestSuccess },
       operation: create,
     },
@@ -29,6 +32,7 @@ const specimen = createResource({
     },
     {
       connect: true,
+      exampleRequests: { primary: updateRequestSuccess },
       operation: updateRelation,
       relationKey: 'physicalUnits',
     },

@@ -148,7 +148,7 @@ module.exports = function createEndpointFactory({
 }) {
   return function createEndpoint({ operationId, ...rest }) {
     if (!map[operationId]) {
-      console.warn(`Operation id: ${operationId} unknown`) // eslint-disable-line no-console
+      throw new Error(`Operation id: ${operationId} unknown`) // eslint-disable-line no-console
     }
 
     const { methodName, methodSpecification, pathname } = map[operationId] || {}

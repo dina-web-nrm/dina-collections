@@ -6,7 +6,7 @@ module.exports = function getAllByTaxonNameFactory({ coreMethods }) {
 
     return coreMethods.getWhere({
       where: {
-        'document.identifications.0.identifiedTaxonNameStandardized': taxonName,
+        'document.individualGroup.assignedTaxon.determinations.0.taxonNameStandardized': taxonName,
       },
     })
   }
