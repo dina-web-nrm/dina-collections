@@ -26,12 +26,12 @@ const setupRelations = function setupRelations({ models }) {
 
 module.exports = [
   {
-    factory: physicalUnitModelFactory,
-    name: 'physicalUnit',
-  },
-  {
     factory: storageLocationModelFactory,
     name: 'storageLocation',
+  },
+  {
+    factory: physicalUnitModelFactory,
+    name: 'physicalUnit',
   },
   {
     factory: setupRelations,
