@@ -3884,6 +3884,14 @@
         }
       }
     },
+    "example": {
+      "data": {
+        "type": "agent",
+        "attributes": {
+          "name": "orvar"
+        }
+      }
+    },
     "description": ""
   },
   "updateAgentRequest": {
@@ -3967,6 +3975,12 @@
         }
       }
     },
+    "example": {
+      "data": {
+        "type": "expedition",
+        "attributes": {}
+      }
+    },
     "description": ""
   },
   "updateExpeditionRequest": {
@@ -4018,6 +4032,15 @@
           "attributes": {
             "$ref": "featureObservationType"
           }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "featureObservationType",
+        "attributes": {
+          "typeName": "string"
         }
       }
     },
@@ -4075,6 +4098,14 @@
         }
       }
     },
+    "example": {
+      "data": {
+        "type": "identifiableUnitObservationType",
+        "attributes": {
+          "typeName": "sex"
+        }
+      }
+    },
     "description": ""
   },
   "updateIdentifiableUnitObservationTypeRequest": {
@@ -4129,6 +4160,17 @@
         }
       }
     },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "catalogNumber",
+        "attributes": {
+          "identifierType": "catalogNumber",
+          "nameSpace": "mammal",
+          "value": "58412812"
+        }
+      }
+    },
     "description": ""
   },
   "updateCatalogNumberRequest": {
@@ -4179,6 +4221,37 @@
           },
           "attributes": {
             "$ref": "curatedLocality"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "curatedLocality",
+        "attributes": {
+          "name": "string",
+          "versionId": "string",
+          "createdAt": "string",
+          "createdBy": "string",
+          "updatedBy": "string",
+          "updatedAt": "string",
+          "description": "string",
+          "centralPosition": {
+            "latitude": "string",
+            "longitude": "string",
+            "geodeticDatum": "string",
+            "uncertaintyInMeters": 0
+          },
+          "polygon": {
+            "vertices": [
+              null
+            ]
+          },
+          "verticalPosition": {
+            "maximumDepthInMeters": 0,
+            "maximumElevationInMeters": 0,
+            "minimumDepthInMeters": 0,
+            "minimumElevationInMeters": 0
           }
         }
       }
@@ -4568,6 +4641,16 @@
         }
       }
     },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "physicalUnit",
+        "attributes": {
+          "normalStorageLocationText": "string",
+          "storedUnderTaxonName": "Sorex minutus"
+        }
+      }
+    },
     "description": ""
   },
   "updatePhysicalUnitRequest": {
@@ -4646,6 +4729,14 @@
           "attributes": {
             "$ref": "storageLocation"
           }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "storageLocation",
+        "attributes": {
+          "locationText": "string"
         }
       }
     },
