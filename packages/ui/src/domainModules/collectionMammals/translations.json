@@ -441,10 +441,6 @@
     "en": "Id",
     "sv": "Id"
   },
-  "identifiedTaxonNameStandardized": {
-    "en": "Taxon name",
-    "sv": "Taxonnamn"
-  },
   "locality": {
     "en": "Locality",
     "sv": "Lokalitet"
@@ -494,6 +490,10 @@
     "sv": "Kunde inte spara"
   },
   "taxonName": {
+    "en": "Taxon name",
+    "sv": "Taxonnamn"
+  },
+  "taxonNameStandardized": {
     "en": "Taxon name",
     "sv": "Taxonnamn"
   },

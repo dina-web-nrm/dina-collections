@@ -44,13 +44,21 @@ const propTypes = {
   push: PropTypes.func.isRequired,
   result: PropTypes.arrayOf(
     PropTypes.shape({
-      physicalUnits: PropTypes.arrayOf(
+      assignedTaxon: PropTypes.shape({
+        determinations: PropTypes.arrayOf(
+          PropTypes.shape({
+            isCurrentDetermination: PropTypes.bool.isRequired,
+          }).isRequired
+        ).isRequired,
+      }),
+      identifiers: PropTypes.arrayOf(
         PropTypes.shape({
-          catalogedUnit: PropTypes.shape({
-            catalogNumber: PropTypes.string.isRequired,
+          identifier: PropTypes.shape({
+            identifierType: PropTypes.string.isRequired,
+            value: PropTypes.string.isRequired,
           }).isRequired,
         }).isRequired
-      ).isRequired,
+      ),
     })
   ).isRequired,
   searchParameters: PropTypes.shape({
@@ -77,8 +85,8 @@ class LookupMammals extends Component {
     this.props.lookupMammals(this.props.searchParameters)
   }
 
-  handleRowClick(catalogNumber) {
-    this.props.push(`/app/mammals/${catalogNumber}/edit`)
+  handleRowClick(specimenId) {
+    this.props.push(`/app/mammals/${specimenId}/edit`)
   }
 
   handleSearchUpdate(key, event) {
@@ -87,6 +95,7 @@ class LookupMammals extends Component {
 
   render() {
     const { result, searchParameters } = this.props
+
     log.render()
     return (
       <div>
@@ -134,24 +143,31 @@ class LookupMammals extends Component {
           </Table.Header>
           {result.length ? (
             <Table.Body>
-              {result.map(({ id, identifications, physicalUnits }) => {
-                const { catalogNumber } = physicalUnits[0].catalogedUnit
-                const { identifiedTaxonNameStandardized } =
-                  identifications &&
-                  identifications.length &&
-                  identifications[0]
+              {result.map(({ id, individualGroup }) => {
+                const { assignedTaxon, identifiers } = individualGroup
+
+                const { value: catalogNumber } = identifiers.find(
+                  ({ identifier }) =>
+                    identifier.identifierType === 'catalogNumber'
+                )
+
+                const { taxonNameStandardized } =
+                  assignedTaxon &&
+                  assignedTaxon.determinations &&
+                  assignedTaxon.determinations.length &&
+                  (assignedTaxon.determinations.find(
+                    ({ isCurrentDetermination }) => isCurrentDetermination
+                  ) ||
+                    assignedTaxon.determinations[0])
 
                 const tableValues = {
                   catalogNumber,
                   id,
-                  identifiedTaxonNameStandardized,
+                  taxonNameStandardized,
                 }
 
                 return (
-                  <Table.Row
-                    key={id}
-                    onClick={() => this.handleRowClick(catalogNumber)}
-                  >
+                  <Table.Row key={id} onClick={() => this.handleRowClick(id)}>
                     {TABLE_COLUMNS.map(columnName => (
                       <Table.Cell key={columnName}>
                         {tableValues[columnName]}
