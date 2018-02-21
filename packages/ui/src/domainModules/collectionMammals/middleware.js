@@ -51,8 +51,7 @@ export default function createMammalMiddleware() {
                       headerKey:
                         'modules.collectionMammals.determination.warningChangedDetermination',
                       headerParams: {
-                        taxonName:
-                          determination.identifiedTaxonNameStandardized || '',
+                        taxonName: determination.taxonNameStandardized || '',
                       },
                     },
                     type: 'FIELD_CHANGE_WARNING',
