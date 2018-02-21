@@ -11,26 +11,25 @@ import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const mapStateToProps = (state, { match }) => {
   return {
-    individualGroup: mammalSelectors.getIndividualGroupByCatalogNumber(
+    individualGroup: mammalSelectors.getIndividualGroupBySpecimenId(
       state,
-      match.params.catalogNumber
+      match.params.specimenId
     ),
   }
 }
 const mapDispatchToProps = {
-  getIndividualGroupByCatalogNumber:
-    mammalActionCreators.getIndividualGroupByCatalogNumber,
+  getSpecimenById: mammalActionCreators.getSpecimenById,
   updateIndividualGroup: mammalActionCreators.updateIndividualGroup,
 }
 
 const propTypes = {
-  getIndividualGroupByCatalogNumber: PropTypes.func.isRequired,
+  getSpecimenById: PropTypes.func.isRequired,
   individualGroup: PropTypes.shape({
     // TODO: define and possibly centralize propTypes for individualGroup
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({
-      catalogNumber: PropTypes.string.isRequired,
+      specimenId: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
   updateIndividualGroup: PropTypes.func.isRequired,
@@ -41,9 +40,7 @@ const defaultProps = {
 
 class EditMammal extends Component {
   componentWillMount() {
-    this.props.getIndividualGroupByCatalogNumber(
-      this.props.match.params.catalogNumber
-    )
+    this.props.getSpecimenById(this.props.match.params.specimenId)
   }
 
   render() {
