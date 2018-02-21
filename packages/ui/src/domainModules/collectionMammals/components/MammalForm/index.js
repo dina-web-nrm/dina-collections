@@ -60,14 +60,13 @@ const propTypes = {
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   individualGroup: PropTypes.shape({
-    id: PropTypes.string.isRequired,
     // TODO: define and possibly centralize propTypes for individualGroup
   }),
   initialize: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      catalogNumber: PropTypes.string,
+      specimenId: PropTypes.string,
     }).isRequired,
   }).isRequired,
   mode: PropTypes.oneOf(['edit', 'register']),
@@ -109,32 +108,25 @@ class RawMammalForm extends Component {
     this.props.clearTaxonSearch()
   }
 
-  handleFormSubmit(data) {
+  handleFormSubmit(formData) {
     const {
       handleFormSubmit,
-      individualGroup,
       match,
       push: pushRoute,
       redirectOnSuccess,
     } = this.props
-    const patchedData = {
-      id: individualGroup && individualGroup.id,
-      ...data,
+
+    const patchedformData = {
+      id: match && match.params && match.params.id,
+      ...formData,
     }
 
-    const output = transformOutput(patchedData)
+    const output = transformOutput(patchedformData)
 
     return handleFormSubmit(output)
-      .then(() => {
-        const catalogNumber = getCatalogNumberFromIdentifiers(
-          output.identifiers
-        )
-
-        if (
-          catalogNumber &&
-          (redirectOnSuccess || catalogNumber !== match.params.catalogNumber)
-        ) {
-          pushRoute(`/app/mammals/${catalogNumber}/edit`)
+      .then(({ id: specimenId }) => {
+        if (!match.params.id && specimenId && redirectOnSuccess) {
+          pushRoute(`/app/mammals/${specimenId}/edit`)
         }
       })
       .catch(error => {
