@@ -2,6 +2,7 @@ const createResource = require('../../../lib/resourceFactory')
 const { create, getOne, update, getMany } = require('../../../operations')
 
 const createRequestSuccess = require('./createAgent/examples/requestSuccess.json')
+const getResponseSuccess = require('./getAgent/examples/responseSuccess.json')
 
 module.exports = createResource({
   basePath: '/agentApi/v01',
@@ -13,6 +14,7 @@ module.exports = createResource({
     },
     {
       connect: true,
+      exampleResponses: { primary: getResponseSuccess },
       operation: getOne,
     },
     {

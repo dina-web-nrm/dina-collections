@@ -1081,6 +1081,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getAgentResponse": {
@@ -1126,6 +1127,24 @@
       }
     },
     "type": "object",
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "agent",
+          "attributes": {
+            "name": "Ingimar"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "agent",
+        "attributes": {
+          "name": "Ingimar"
+        }
+      }
+    },
     "description": ""
   },
   "updateAgentResponse": {
@@ -1171,6 +1190,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getAgentsResponse": {
@@ -1220,6 +1240,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getUserResponse": {
@@ -1338,6 +1359,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getExpeditionResponse": {
@@ -1383,6 +1405,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateExpeditionResponse": {
@@ -1428,6 +1451,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getExpeditionsResponse": {
@@ -1477,6 +1501,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "createFeatureObservationTypeResponse": {
@@ -1522,6 +1547,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateFeatureObservationTypeResponse": {
@@ -1567,6 +1593,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getFeatureObservationTypeResponse": {
@@ -1612,6 +1639,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getFeatureObservationTypesResponse": {
@@ -1661,6 +1689,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "createIdentifiableUnitObservationTypeResponse": {
@@ -1706,6 +1735,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateIdentifiableUnitObservationTypeResponse": {
@@ -1751,6 +1781,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getIdentifiableUnitObservationTypeResponse": {
@@ -1796,6 +1827,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getIdentifiableUnitObservationTypesResponse": {
@@ -1845,6 +1877,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getLoanResponse": {
@@ -1935,6 +1968,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateCatalogNumberResponse": {
@@ -1980,6 +2014,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getCatalogNumberResponse": {
@@ -2025,6 +2060,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getCatalogNumbersResponse": {
@@ -2074,6 +2110,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "createCuratedLocalityResponse": {
@@ -2119,6 +2156,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateCuratedLocalityResponse": {
@@ -2164,6 +2202,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateCuratedLocalityBelongsToResponse": {
@@ -2209,6 +2248,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getCuratedLocalityBelongsToResponse": {
@@ -2254,6 +2294,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateCuratedLocalityContainsResponse": {
@@ -2303,6 +2344,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getCuratedLocalityContainsResponse": {
@@ -2352,6 +2394,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getCuratedLocalityResponse": {
@@ -2388,8 +2431,8 @@
                     "properties": {
                       "self": {
                         "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/belongsTo",
-                        "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "x-faker": "internet.url"
                       }
                     },
                     "type": "object"
@@ -2419,8 +2462,8 @@
                     "properties": {
                       "self": {
                         "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/contains",
-                        "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "x-faker": "internet.url"
                       }
                     },
                     "type": "object"
@@ -2457,6 +2500,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getCuratedLocalitiesResponse": {
@@ -2495,8 +2539,8 @@
                       "properties": {
                         "self": {
                           "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/belongsTo",
-                          "format": "uri",
-                          "type": "string"
+                          "type": "string",
+                          "x-faker": "internet.url"
                         }
                       },
                       "type": "object"
@@ -2526,8 +2570,8 @@
                       "properties": {
                         "self": {
                           "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/contains",
-                          "format": "uri",
-                          "type": "string"
+                          "type": "string",
+                          "x-faker": "internet.url"
                         }
                       },
                       "type": "object"
@@ -2566,6 +2610,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "createSpecimenResponse": {
@@ -2611,6 +2656,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateSpecimenResponse": {
@@ -2656,6 +2702,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateSpecimenPhysicalUnitsResponse": {
@@ -2705,6 +2752,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getSpecimenPhysicalUnitsResponse": {
@@ -2754,6 +2802,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getSpecimenResponse": {
@@ -2793,8 +2842,8 @@
                     "properties": {
                       "self": {
                         "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
-                        "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "x-faker": "internet.url"
                       }
                     },
                     "type": "object"
@@ -2831,6 +2880,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getSpecimensResponse": {
@@ -2872,8 +2922,8 @@
                       "properties": {
                         "self": {
                           "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
-                          "format": "uri",
-                          "type": "string"
+                          "type": "string",
+                          "x-faker": "internet.url"
                         }
                       },
                       "type": "object"
@@ -2912,6 +2962,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getSpecimenVersionResponse": {
@@ -2951,8 +3002,8 @@
                     "properties": {
                       "self": {
                         "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
-                        "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "x-faker": "internet.url"
                       }
                     },
                     "type": "object"
@@ -2989,6 +3040,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getSpecimenVersionsResponse": {
@@ -3030,8 +3082,8 @@
                       "properties": {
                         "self": {
                           "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
-                          "format": "uri",
-                          "type": "string"
+                          "type": "string",
+                          "x-faker": "internet.url"
                         }
                       },
                       "type": "object"
@@ -3070,6 +3122,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getStatusResponse": {
@@ -3130,6 +3183,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updatePhysicalUnitResponse": {
@@ -3175,6 +3229,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updatePhysicalUnitStorageLocationResponse": {
@@ -3220,6 +3275,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getPhysicalUnitStorageLocationResponse": {
@@ -3265,6 +3321,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getPhysicalUnitResponse": {
@@ -3301,8 +3358,8 @@
                     "properties": {
                       "self": {
                         "example": "https://domain/storageApi/v01/physicalUnits/{id}/relationships/storageLocation",
-                        "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "x-faker": "internet.url"
                       }
                     },
                     "type": "object"
@@ -3339,6 +3396,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getPhysicalUnitsResponse": {
@@ -3377,8 +3435,8 @@
                       "properties": {
                         "self": {
                           "example": "https://domain/storageApi/v01/physicalUnits/{id}/relationships/storageLocation",
-                          "format": "uri",
-                          "type": "string"
+                          "type": "string",
+                          "x-faker": "internet.url"
                         }
                       },
                       "type": "object"
@@ -3417,6 +3475,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "createStorageLocationResponse": {
@@ -3462,6 +3521,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateStorageLocationResponse": {
@@ -3507,6 +3567,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "updateStorageLocationPhysicalUnitsResponse": {
@@ -3556,6 +3617,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getStorageLocationPhysicalUnitsResponse": {
@@ -3605,6 +3667,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getStorageLocationResponse": {
@@ -3644,8 +3707,8 @@
                     "properties": {
                       "self": {
                         "example": "https://domain/storageApi/v01/storageLocations/{id}/relationships/physicalUnits",
-                        "format": "uri",
-                        "type": "string"
+                        "type": "string",
+                        "x-faker": "internet.url"
                       }
                     },
                     "type": "object"
@@ -3682,6 +3745,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getStorageLocationsResponse": {
@@ -3723,8 +3787,8 @@
                       "properties": {
                         "self": {
                           "example": "https://domain/storageApi/v01/storageLocations/{id}/relationships/physicalUnits",
-                          "format": "uri",
-                          "type": "string"
+                          "type": "string",
+                          "x-faker": "internet.url"
                         }
                       },
                       "type": "object"
@@ -3763,6 +3827,7 @@
       }
     },
     "type": "object",
+    "x-examples": {},
     "description": ""
   },
   "getTaxaByNameResponse": {
@@ -3884,6 +3949,16 @@
         }
       }
     },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "agent",
+          "attributes": {
+            "name": "orvar"
+          }
+        }
+      }
+    },
     "example": {
       "data": {
         "type": "agent",
@@ -3975,6 +4050,14 @@
         }
       }
     },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "expedition",
+          "attributes": {}
+        }
+      }
+    },
     "example": {
       "data": {
         "type": "expedition",
@@ -4031,6 +4114,17 @@
           },
           "attributes": {
             "$ref": "featureObservationType"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "featureObservationType",
+          "attributes": {
+            "typeName": "string"
           }
         }
       }
@@ -4098,6 +4192,16 @@
         }
       }
     },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "identifiableUnitObservationType",
+          "attributes": {
+            "typeName": "sex"
+          }
+        }
+      }
+    },
     "example": {
       "data": {
         "type": "identifiableUnitObservationType",
@@ -4156,6 +4260,19 @@
           },
           "attributes": {
             "$ref": "catalogNumber"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "catalogNumber",
+          "attributes": {
+            "identifierType": "catalogNumber",
+            "nameSpace": "mammal",
+            "value": "58412812"
           }
         }
       }
@@ -4221,6 +4338,39 @@
           },
           "attributes": {
             "$ref": "curatedLocality"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "curatedLocality",
+          "attributes": {
+            "name": "string",
+            "versionId": "string",
+            "createdAt": "string",
+            "createdBy": "string",
+            "updatedBy": "string",
+            "updatedAt": "string",
+            "description": "string",
+            "centralPosition": {
+              "latitude": "string",
+              "longitude": "string",
+              "geodeticDatum": "string",
+              "uncertaintyInMeters": 0
+            },
+            "polygon": {
+              "vertices": [
+                null
+              ]
+            },
+            "verticalPosition": {
+              "maximumDepthInMeters": 0,
+              "maximumElevationInMeters": 0,
+              "minimumDepthInMeters": 0,
+              "minimumElevationInMeters": 0
+            }
           }
         }
       }
@@ -4363,6 +4513,198 @@
           },
           "attributes": {
             "$ref": "specimen"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "specimen",
+          "attributes": {
+            "individualGroup": {
+              "assignedTaxon": {},
+              "individualCircumstances": [
+                {
+                  "id": "string",
+                  "collectorsText": "Bergström, U",
+                  "event": {
+                    "startDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "endDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "expeditionText": "Vega Expedition",
+                    "localityInformation": {
+                      "curatedLocalities": [
+                        {
+                          "name": "string",
+                          "versionId": "string",
+                          "createdAt": "string",
+                          "createdBy": "string",
+                          "updatedBy": "string",
+                          "updatedAt": "string",
+                          "id": "string",
+                          "description": "string",
+                          "relations": [
+                            {
+                              "id": "string",
+                              "type": "string"
+                            }
+                          ],
+                          "type": "continent",
+                          "centralPosition": {
+                            "latitude": "string",
+                            "longitude": "string",
+                            "geodeticDatum": "string",
+                            "uncertaintyInMeters": 0
+                          },
+                          "polygon": {
+                            "vertices": [
+                              null
+                            ]
+                          },
+                          "verticalPosition": {
+                            "maximumDepthInMeters": 0,
+                            "maximumElevationInMeters": 0,
+                            "minimumDepthInMeters": 0,
+                            "minimumElevationInMeters": 0
+                          }
+                        }
+                      ],
+                      "position": {
+                        "latitude": "string",
+                        "longitude": "string",
+                        "geodeticDatum": "string",
+                        "uncertaintyInMeters": 0
+                      },
+                      "polygon": {
+                        "vertices": [
+                          null
+                        ]
+                      },
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 0,
+                        "maximumElevationInMeters": 0,
+                        "minimumDepthInMeters": 0,
+                        "minimumElevationInMeters": 0
+                      },
+                      "coordinatesVerbatim": "string",
+                      "georeferenceSourcesText": "string",
+                      "localityText": "string",
+                      "remarks": "string",
+                      "localityVerbatim": "string"
+                    }
+                  }
+                }
+              ],
+              "featureObservations": [
+                {
+                  "featureObservationAgent": "Doe, J.",
+                  "date": {
+                    "isoDate": "string",
+                    "dateText": "Before 1800",
+                    "day": 25,
+                    "month": 12,
+                    "year": 1981
+                  },
+                  "featureObservationText": "10 years",
+                  "featureObservationType": {
+                    "typeName": "string",
+                    "id": "string"
+                  },
+                  "methodText": "Known age"
+                }
+              ],
+              "id": "string",
+              "identifiers": [
+                {
+                  "publishRecord": true,
+                  "remarks": "Some remarks"
+                }
+              ],
+              "identifiableUnits": [
+                {
+                  "alternateIdentifiersText": "Skin complete, prepared",
+                  "identifiers": [
+                    {
+                      "publishRecord": true,
+                      "remarks": "Some remarks"
+                    }
+                  ],
+                  "collectingCircumstance": {
+                    "id": "string",
+                    "collectorsText": "Bergström, U",
+                    "event": {
+                      "startDate": {
+                        "isoDate": "string",
+                        "dateText": "Before 1800",
+                        "day": 25,
+                        "month": 12,
+                        "year": 1981
+                      },
+                      "endDate": {
+                        "isoDate": "string",
+                        "dateText": "Before 1800",
+                        "day": 25,
+                        "month": 12,
+                        "year": 1981
+                      },
+                      "expeditionText": "Vega Expedition",
+                      "localityInformation": {
+                        "position": {
+                          "latitude": "string",
+                          "longitude": "string",
+                          "geodeticDatum": "string",
+                          "uncertaintyInMeters": 0
+                        },
+                        "polygon": {
+                          "vertices": [
+                            null
+                          ]
+                        },
+                        "verticalPosition": {
+                          "maximumDepthInMeters": 0,
+                          "maximumElevationInMeters": 0,
+                          "minimumDepthInMeters": 0,
+                          "minimumElevationInMeters": 0
+                        },
+                        "coordinatesVerbatim": "string",
+                        "georeferenceSourcesText": "string",
+                        "localityText": "string",
+                        "remarks": "string",
+                        "localityVerbatim": "string"
+                      }
+                    }
+                  },
+                  "id": "string",
+                  "physicalUnitText": "Skin complete, prepared",
+                  "physicalUnit": {
+                    "id": "string",
+                    "identifiableUnits": [
+                      null
+                    ],
+                    "normalStorageLocationText": "string",
+                    "storedUnderTaxonName": "Sorex minutus",
+                    "storageLocation": {
+                      "id": "string",
+                      "locationText": "string"
+                    }
+                  }
+                }
+              ],
+              "version": 0
+            },
+            "version": 0
           }
         }
       }
@@ -4641,6 +4983,18 @@
         }
       }
     },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "physicalUnit",
+          "attributes": {
+            "normalStorageLocationText": "string",
+            "storedUnderTaxonName": "Sorex minutus"
+          }
+        }
+      }
+    },
     "example": {
       "data": {
         "id": "1234",
@@ -4728,6 +5082,16 @@
           },
           "attributes": {
             "$ref": "storageLocation"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "storageLocation",
+          "attributes": {
+            "locationText": "string"
           }
         }
       }

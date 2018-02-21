@@ -6,6 +6,7 @@ module.exports = function getVersions({
   basePath,
   connect,
   connector = getVersionsConnector,
+  exampleResponses = {},
   modelName,
   queryParams,
   relations,
@@ -24,6 +25,7 @@ module.exports = function getVersions({
     queryParams,
     resource,
     response: {
+      examples: exampleResponses,
       format: 'array',
       relations: buildRelations({
         basePath,

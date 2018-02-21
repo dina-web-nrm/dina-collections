@@ -92,6 +92,26 @@ const getResponseValidator = ({ methodSpecification, origin }) => {
   return null
 }
 
+const getExamplesFromMethodSpecifiction = methodSpecification => {
+  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  if (!schema) {
+    return null
+  }
+
+  const modelName = getModelNameFromSchema(schema)
+  if (!modelName) {
+    return null
+  }
+
+  return (
+    openApiSpec &&
+    openApiSpec.components &&
+    openApiSpec.components.schemas &&
+    openApiSpec.components.schemas[modelName] &&
+    openApiSpec.components.schemas[modelName]['x-examples']
+  )
+}
+
 const createMockData = ({ importFaker, methodSpecification }) => {
   const schema = getSchemaFromResponse(methodSpecification.responses[200])
   if (schema) {
@@ -111,6 +131,17 @@ const createMockData = ({ importFaker, methodSpecification }) => {
   return null
 }
 
+const createGetExample = ({ methodSpecification }) => {
+  const examples = getExamplesFromMethodSpecifiction(methodSpecification)
+  return exampleId => {
+    if (!examples) {
+      return Promise.resolve(null)
+    }
+
+    return Promise.resolve(examples[exampleId])
+  }
+}
+
 module.exports = function createEndpointFactory({
   origin = 'client',
   importFaker,
@@ -122,11 +153,15 @@ module.exports = function createEndpointFactory({
 
     const { methodName, methodSpecification, pathname } = map[operationId] || {}
     return {
+      getExample: createGetExample({
+        methodSpecification,
+      }),
       methodName,
       mock: createMockData({
         importFaker,
         methodSpecification,
       }),
+
       operationId,
       pathname,
       validateBody: getBodyValidator({

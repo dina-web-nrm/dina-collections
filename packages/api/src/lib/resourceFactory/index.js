@@ -19,10 +19,32 @@ module.exports = function createResource({
   }
 
   return endpoints.reduce((operations, endpoint) => {
-    const { operation } = endpoint
+    const { operation, queryParams: queryParamsInput = {} } = endpoint
     if (!operation) {
       throw new Error('operation not provided')
     }
+
+    const queryParams = {
+      ...queryParamsInput,
+      exampleId: {
+        description:
+          'Will a specific example or 404 i example dont exist. Only active when combined with mock parameter',
+        example: 'primary',
+        schema: {
+          default: 'primary',
+          type: 'string',
+        },
+      },
+      mock: {
+        description: 'Will return mock data',
+        example: 'false',
+        schema: {
+          default: 'false',
+          type: 'string',
+        },
+      },
+    }
+
     const { operationId, ...rest } = operation({
       basePath,
       modelName,
@@ -30,6 +52,7 @@ module.exports = function createResource({
       resource,
       resourcePlural,
       ...endpoint,
+      queryParams, // eslint-disable-line
     })
     log.debug(`Create operation: ${resource} -> ${operationId}`)
     return {

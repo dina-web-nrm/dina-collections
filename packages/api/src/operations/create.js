@@ -5,9 +5,10 @@ module.exports = function create({
   basePath,
   connect,
   connector = createConnector,
-  exampleRequests = [],
-  exampleResponses = [],
+  exampleRequests = {},
+  exampleResponses = {},
   modelName,
+  queryParams,
   resource,
   resourcePlural,
 }) {
@@ -19,6 +20,7 @@ module.exports = function create({
     operationId,
     operationType: 'create',
     path: `${basePath}/${resourcePlural}`,
+    queryParams,
     request: {
       examples: exampleRequests,
       format: 'object',

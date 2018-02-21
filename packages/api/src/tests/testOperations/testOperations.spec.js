@@ -85,6 +85,43 @@ const testCrudFlow = ({
   })
 }
 
+const testMockGetMany = operationId => {
+  describe(`Mock - ${operationId}`, () => {
+    it('Works with mock data', () => {
+      return makeTestCall({
+        operationId,
+        queryParams: {
+          mock: true,
+        },
+        validateOutput: true,
+      }).then(createdResource => {
+        expect(createdResource).toBeTruthy()
+        expect(createdResource.data).toBeTruthy()
+      })
+    })
+  })
+}
+
+const testMockGetOne = operationId => {
+  describe(`Mock - ${operationId}`, () => {
+    it('Works with mock data', () => {
+      return makeTestCall({
+        operationId,
+        pathParams: {
+          id: 1,
+        },
+        queryParams: {
+          mock: true,
+        },
+        validateOutput: true,
+      }).then(createdResource => {
+        expect(createdResource).toBeTruthy()
+        expect(createdResource.data).toBeTruthy()
+      })
+    })
+  })
+}
+
 const testCreate = ({ createOperationId, endpoints }) => {
   describe(`Create - ${createOperationId}`, () => {
     const { examples } = endpoints[createOperationId].request
@@ -128,6 +165,14 @@ const testApiResource = ({
         createOperationId,
         endpoints,
       })
+    }
+
+    if (getManyOperationId) {
+      testMockGetMany(getManyOperationId)
+    }
+
+    if (getOneOperationId) {
+      testMockGetOne(getOneOperationId)
     }
 
     if (

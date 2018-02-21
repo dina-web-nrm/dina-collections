@@ -15,8 +15,8 @@ module.exports = function buildRelationships({ relations, versionsLink } = {}) {
         properties: {
           self: {
             example: `https://domain${versionsLink}`,
-            format: 'uri',
             type: 'string',
+            'x-faker': 'internet.url',
           },
         },
         type: 'object',
@@ -51,8 +51,8 @@ module.exports = function buildRelationships({ relations, versionsLink } = {}) {
             properties: {
               self: {
                 example: `https://domain${link}`,
-                format: 'uri',
                 type: 'string',
+                'x-faker': 'internet.url',
               },
             },
             type: 'object',
