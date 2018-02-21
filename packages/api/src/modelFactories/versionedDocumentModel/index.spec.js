@@ -277,5 +277,87 @@ dbDescribe('lib/postgres/models', () => {
         })
       })
     })
+    describe('getWhere', () => {
+      const firstData = {
+        a: 1,
+      }
+      const secondData = {
+        a: 2,
+      }
+      const thirdData = {
+        a: 3,
+        nested: {
+          inside: 'value',
+        },
+      }
+      let firstId
+      let secondId
+
+      beforeAll(() => {
+        return model
+          .create(firstData)
+          .then(res => {
+            firstId = res.id
+          })
+          .then(() => {
+            return model.create(secondData)
+          })
+          .then(res => {
+            secondId = res.id
+          })
+          .then(() => {
+            return model.update({ doc: thirdData, id: secondId })
+          })
+      })
+
+      it('Throw error when where not provided', () => {
+        expect(model.getWhere()).rejects.toThrow()
+      })
+      it('Throw error when column does not exist', () => {
+        expect(model.getWhere({ where: { nonExisting: 3 } })).rejects.toThrow()
+      })
+      it('Returns empty array when where not matching', () => {
+        return model.getWhere({ where: { id: 1111 } }).then(res => {
+          expect(res).toEqual([])
+        })
+      })
+      it('Returns record when matching by id', () => {
+        return model.getWhere({ where: { id: firstId } }).then(res => {
+          expect(res[0].document).toEqual(firstData)
+        })
+      })
+      it('Returns latest record when matching by id and multiple versions exist', () => {
+        return model.getWhere({ where: { id: secondId } }).then(res => {
+          expect(res[0].document).toEqual(thirdData)
+        })
+      })
+      it('Returns record when matching by object property', () => {
+        return model
+          .getWhere({
+            where: {
+              'document.nested.inside': 'value',
+            },
+          })
+          .then(res => {
+            expect(res[0].document).toEqual(thirdData)
+          })
+      })
+      it('Returns empty array when matching by object property fail', () => {
+        return model
+          .getWhere({
+            where: { 'document.nested.inside': 'non-existing-value' },
+          })
+          .then(res => {
+            expect(res.length).toEqual(0)
+          })
+      })
+      it('Returns all versions when forceCurrentVersion false', () => {
+        return model
+          .getWhere({ forceCurrentVersion: false, where: { id: secondId } })
+          .then(res => {
+            expect(res.length).toEqual(2)
+          })
+      })
+    })
   })
 })

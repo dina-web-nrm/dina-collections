@@ -4732,6 +4732,11 @@
               "id": "string",
               "identifiers": [
                 {
+                  "identifier": {
+                    "identifierType": "catalogNumber",
+                    "nameSpace": "",
+                    "value": "123456"
+                  },
                   "publishRecord": true,
                   "remarks": "Some remarks"
                 }
@@ -4923,6 +4928,11 @@
             "id": "string",
             "identifiers": [
               {
+                "identifier": {
+                  "identifierType": "catalogNumber",
+                  "nameSpace": "",
+                  "value": "123456"
+                },
                 "publishRecord": true,
                 "remarks": "Some remarks"
               }
