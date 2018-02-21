@@ -6,8 +6,8 @@ const createModel = (model, examples) => {
     cleanedModel['x-modelType'] = model.modelType
     delete cleanedModel.modelType
   }
-  if (examples && examples.length) {
-    cleanedModel.example = examples[0]
+  if (examples && examples.primary) {
+    cleanedModel.example = examples.primary
   }
 
   return interpolate(cleanedModel, '__ROOT__', '#/components/schemas/')

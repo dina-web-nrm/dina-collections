@@ -22,9 +22,10 @@ const testCrudFlow = ({
 
   describe(`Crud flow with ${testing}`, () => {
     const { examples } = endpoints[createOperationId].request
-    if (examples && examples.length) {
-      examples.forEach((example, exampleIndex) => {
-        it(`Works with createRequest example index ${exampleIndex}`, () => {
+    if (examples) {
+      Object.keys(examples).forEach(exampleKey => {
+        const example = examples[exampleKey]
+        it(`Works with createRequest example: ${exampleKey}`, () => {
           return makeTestCall({
             body: example,
             operationId: createOperationId,
@@ -90,11 +91,12 @@ const testCreate = ({ createOperationId, endpoints }) => {
 
     it('Has examples', () => {
       expect(examples).toBeTruthy()
-      expect(examples.length).toBeTruthy()
+      expect(Object.keys(examples).length).toBeTruthy()
     })
 
-    examples.forEach((example, exampleIndex) => {
-      it(`Works with example index ${exampleIndex} testing`, () => {
+    Object.keys(examples).forEach(exampleKey => {
+      const example = examples[exampleKey]
+      it(`Works with example: ${exampleKey}`, () => {
         return makeTestCall({
           body: example,
           operationId: createOperationId,

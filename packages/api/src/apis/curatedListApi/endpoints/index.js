@@ -9,7 +9,7 @@ const featureObservationType = createResource({
   endpoints: [
     {
       connect: true,
-      exampleRequests: [createFeatureObservationTypeRequestSuccess],
+      exampleRequests: { primary: createFeatureObservationTypeRequestSuccess },
       operation: create,
     },
     {
@@ -33,7 +33,9 @@ const identifiableUnitObservationType = createResource({
   endpoints: [
     {
       connect: true,
-      exampleRequests: [createIdentifiableUnitObservationTypeRequestSuccess],
+      exampleRequests: {
+        primary: createIdentifiableUnitObservationTypeRequestSuccess,
+      },
       operation: create,
     },
     {
