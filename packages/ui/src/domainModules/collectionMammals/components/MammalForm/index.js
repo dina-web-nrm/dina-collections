@@ -115,16 +115,14 @@ class RawMammalForm extends Component {
       redirectOnSuccess,
     } = this.props
 
-    const patchedformData = {
-      id: match && match.params && match.params.id,
-      ...formData,
+    const patchedOutput = {
+      id: match && match.params && match.params.specimenId,
+      ...transformOutput(formData),
     }
 
-    const output = transformOutput(patchedformData)
-
-    return handleFormSubmit(output)
+    return handleFormSubmit(patchedOutput)
       .then(({ id: specimenId }) => {
-        if (!match.params.id && specimenId && redirectOnSuccess) {
+        if (!match.params.specimenId && specimenId && redirectOnSuccess) {
           pushRoute(`/app/mammals/${specimenId}/edit`)
         }
       })
