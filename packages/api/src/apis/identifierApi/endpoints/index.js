@@ -4,7 +4,7 @@ const { create, getOne, update, getMany } = require('../../../operations')
 const createRequestSuccess = require('./catalogNumber/examples/requestSuccess.json')
 
 const catalogNumber = createResource({
-  basePath: '/identifierApi/v01',
+  basePath: '/api/identifier/v01',
   endpoints: [
     {
       connect: true,

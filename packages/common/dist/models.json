@@ -1068,7 +1068,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/agentApi/v01/agents",
+            "example": "https://domain/api/agent//v01/agents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1114,7 +1114,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/agentApi/v01/agents/{id}",
+            "example": "https://domain/api/agent//v01/agents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1177,7 +1177,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/agentApi/v01/agents/{id}",
+            "example": "https://domain/api/agent//v01/agents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1227,7 +1227,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/agentApi/v01/agents",
+            "example": "https://domain/api/agent//v01/agents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1346,7 +1346,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedEventApi/v01/expeditions",
+            "example": "https://domain/api/curatedEvent/v01/expeditions",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1392,7 +1392,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedEventApi/v01/expeditions/{id}",
+            "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1438,7 +1438,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedEventApi/v01/expeditions/{id}",
+            "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1488,7 +1488,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedEventApi/v01/expeditions",
+            "example": "https://domain/api/curatedEvent/v01/expeditions",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1534,7 +1534,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/featureObservationTypes",
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1580,7 +1580,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/featureObservationTypes/{id}",
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1626,7 +1626,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/featureObservationTypes/{id}",
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1676,7 +1676,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/featureObservationTypes",
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1910,7 +1910,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/externalEventApi/v01/loans/{id}",
+            "example": "https://domain/api/externalEvent/v01/loans/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1955,7 +1955,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/identifierApi/v01/catalogNumbers",
+            "example": "https://domain/api/identifier/v01/catalogNumbers",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2001,7 +2001,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/identifierApi/v01/catalogNumbers/{id}",
+            "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2047,7 +2047,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/identifierApi/v01/catalogNumbers/{id}",
+            "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2097,7 +2097,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/identifierApi/v01/catalogNumbers",
+            "example": "https://domain/api/identifier/v01/catalogNumbers",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2143,7 +2143,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities",
+            "example": "https://domain/api/locality/v01/curatedLocalities",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2189,7 +2189,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities/{id}",
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2235,7 +2235,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/belongsTo",
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2281,7 +2281,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/belongsTo",
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2331,7 +2331,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/contains",
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2381,7 +2381,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/contains",
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2430,7 +2430,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/belongsTo",
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
                         "type": "string",
                         "x-faker": "internet.url"
                       }
@@ -2461,7 +2461,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/contains",
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
                         "type": "string",
                         "x-faker": "internet.url"
                       }
@@ -2487,7 +2487,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities/{id}",
+            "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2538,7 +2538,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/belongsTo",
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
                           "type": "string",
                           "x-faker": "internet.url"
                         }
@@ -2569,7 +2569,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/localityApi/v01/curatedLocalities/{id}/relationships/contains",
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
                           "type": "string",
                           "x-faker": "internet.url"
                         }
@@ -2597,7 +2597,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/localityApi/v01/curatedLocalities",
+            "example": "https://domain/api/locality/v01/curatedLocalities",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2643,7 +2643,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens",
+            "example": "https://domain/api/specimen/v01/specimens",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2689,7 +2689,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens/{id}",
+            "example": "https://domain/api/specimen/v01/specimens/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2739,7 +2739,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2789,7 +2789,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2841,7 +2841,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
+                        "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
                         "type": "string",
                         "x-faker": "internet.url"
                       }
@@ -2867,7 +2867,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens/{id}",
+            "example": "https://domain/api/specimen/v01/specimens/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2921,7 +2921,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
+                          "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
                           "type": "string",
                           "x-faker": "internet.url"
                         }
@@ -2949,7 +2949,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens",
+            "example": "https://domain/api/specimen/v01/specimens",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3001,7 +3001,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
+                        "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
                         "type": "string",
                         "x-faker": "internet.url"
                       }
@@ -3027,7 +3027,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens/{id}/versions/{versionId}",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/versions/{versionId}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3081,7 +3081,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
+                          "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
                           "type": "string",
                           "x-faker": "internet.url"
                         }
@@ -3109,7 +3109,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/specimenApi/v01/specimens/{id}/versions",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/versions",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3170,7 +3170,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/physicalUnits",
+            "example": "https://domain/api/storage/v01/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3216,7 +3216,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/physicalUnits/{id}",
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3262,7 +3262,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/physicalUnits/{id}/relationships/storageLocation",
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3308,7 +3308,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/physicalUnits/{id}/relationships/storageLocation",
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3357,7 +3357,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/storageApi/v01/physicalUnits/{id}/relationships/storageLocation",
+                        "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
                         "type": "string",
                         "x-faker": "internet.url"
                       }
@@ -3383,7 +3383,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/physicalUnits/{id}",
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3434,7 +3434,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/storageApi/v01/physicalUnits/{id}/relationships/storageLocation",
+                          "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
                           "type": "string",
                           "x-faker": "internet.url"
                         }
@@ -3462,7 +3462,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/physicalUnits",
+            "example": "https://domain/api/storage/v01/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3508,7 +3508,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/storageLocations",
+            "example": "https://domain/api/storage/v01/storageLocations",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3554,7 +3554,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/storageLocations/{id}",
+            "example": "https://domain/api/storage/v01/storageLocations/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3604,7 +3604,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/storageLocations/{id}/relationships/physicalUnits",
+            "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3654,7 +3654,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/storageLocations/{id}/relationships/physicalUnits",
+            "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3706,7 +3706,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/storageApi/v01/storageLocations/{id}/relationships/physicalUnits",
+                        "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
                         "type": "string",
                         "x-faker": "internet.url"
                       }
@@ -3732,7 +3732,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/storageLocations/{id}",
+            "example": "https://domain/api/storage/v01/storageLocations/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3786,7 +3786,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/storageApi/v01/storageLocations/{id}/relationships/physicalUnits",
+                          "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
                           "type": "string",
                           "x-faker": "internet.url"
                         }
@@ -3814,7 +3814,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/storageLocations",
+            "example": "https://domain/api/storage/v01/storageLocations",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -4518,6 +4518,110 @@
       }
     },
     "x-examples": {
+      "fullFormExample": {
+        "data": {
+          "type": "specimen",
+          "attributes": {
+            "individualGroup": {
+              "assignedTaxon": {
+                "determinations": [
+                  {
+                    "date": "date",
+                    "determinationVerbatim": "determinationVerbatim",
+                    "determinedByAgentText": "determinedByAgentText",
+                    "isCurrentDetermination": true,
+                    "remarks": "remarks",
+                    "taxonNameStandardized": "Sorex minutus"
+                  }
+                ]
+              },
+              "featureObservations": [
+                {
+                  "date": "date",
+                  "featureObservationAgent": "featureObservationAgent",
+                  "featureObservationText": "21",
+                  "featureObservationType": {
+                    "id": "3",
+                    "typeName": "age"
+                  },
+                  "methodText": "methodText"
+                }
+              ],
+              "identifiableUnits": [
+                {
+                  "alternateIdentifiersText": "alternateIdentifiersText",
+                  "physicalUnit": {
+                    "normalStorageLocationText": "normalStorageLocationText",
+                    "storedUnderTaxonName": "Sorex minutus"
+                  },
+                  "physicalUnitText": "physicalUnitText"
+                }
+              ],
+              "identifiers": [
+                {
+                  "identifier": {
+                    "identifierType": "catalogNumber",
+                    "nameSpace": "",
+                    "value": "123456"
+                  },
+                  "publishRecord": true,
+                  "remarks": ""
+                }
+              ],
+              "individualCircumstances": [
+                {
+                  "collectorsText": "collectorsText",
+                  "event": {
+                    "endDate": "endDate",
+                    "expeditionText": "expeditionText",
+                    "localityInformation": {
+                      "coordinatesVerbatim": "coordinatesVerbatim",
+                      "curatedLocalities": [
+                        {
+                          "id": "Africa",
+                          "type": "continent"
+                        },
+                        {
+                          "id": "Algeria",
+                          "type": "country"
+                        },
+                        {
+                          "id": "Balearic Islands",
+                          "type": "province"
+                        },
+                        {
+                          "id": "GaspÃ© Peninsula",
+                          "type": "district"
+                        },
+                        {
+                          "id": "Skansen",
+                          "type": "locality"
+                        }
+                      ],
+                      "georeferenceSourcesText": "georeferenceSourcesText",
+                      "localityVerbatim": "localityVerbatim",
+                      "position": {
+                        "geodeticDatum": "geodeticDatum text",
+                        "latitude": "latitude-string",
+                        "longitude": "longitude-string",
+                        "uncertaintyInMeters": 10
+                      },
+                      "remarks": "remarks",
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 100,
+                        "maximumElevationInMeters": 100,
+                        "minimumDepthInMeters": 20,
+                        "minimumElevationInMeters": 20
+                      }
+                    },
+                    "startDate": "startDate"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
       "primary": {
         "data": {
           "type": "specimen",

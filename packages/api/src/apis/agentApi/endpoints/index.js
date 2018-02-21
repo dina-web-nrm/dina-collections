@@ -5,7 +5,7 @@ const createRequestSuccess = require('./createAgent/examples/requestSuccess.json
 const getResponseSuccess = require('./getAgent/examples/responseSuccess.json')
 
 module.exports = createResource({
-  basePath: '/agentApi/v01',
+  basePath: '/api/agent//v01',
   endpoints: [
     {
       connect: true,

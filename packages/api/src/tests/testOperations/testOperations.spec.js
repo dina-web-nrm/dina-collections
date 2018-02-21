@@ -93,7 +93,7 @@ const testMockGetMany = operationId => {
         queryParams: {
           mock: true,
         },
-        validateOutput: true,
+        validateOutput: false,
       }).then(createdResource => {
         expect(createdResource).toBeTruthy()
         expect(createdResource.data).toBeTruthy()
@@ -113,7 +113,7 @@ const testMockGetOne = operationId => {
         queryParams: {
           mock: true,
         },
-        validateOutput: true,
+        validateOutput: false,
       }).then(createdResource => {
         expect(createdResource).toBeTruthy()
         expect(createdResource.data).toBeTruthy()
