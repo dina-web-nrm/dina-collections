@@ -1,78 +1,68 @@
+import models from 'common/dist/models.json'
+import immutable from 'object-path-immutable'
+
+const { fullFormExample } = models.createSpecimenRequest['x-examples']
+
 let mockId = 0
 
-export const getSpecimen = (queryParams = {}) => {
+export const getSpecimen = ({ pathParams = {}, queryParams = {} } = {}) => {
   mockId += 1
-  return {
-    attributes: {
-      individualGroup: {
-        assignedTaxon: {
-          determinations: [
-            {
-              taxonNameStandardized: 'Chironectes minimus',
-            },
-          ],
-        },
-        featureObservations: [
-          {
-            featureObservationText: 'female',
-            featureObservationType: {
-              id: '1',
-              typeName: 'sex',
-            },
-          },
-        ],
-        identifiableUnits: [
-          {
-            physicalUnit: {
-              storedUnderTaxonName: 'Chironectes minimus',
-            },
-          },
-        ],
-        identifiers: [
-          {
-            identifier: {
-              identifierType: 'catalogNumber',
-              value:
-                queryParams['filter[catalogNumber]'] ||
-                String(Math.round(100000 + Math.random() * 99999)),
-            },
-          },
-        ],
-      },
-    },
-    id: `${mockId}`,
-    type: 'specimen',
-  }
+
+  const withId = immutable.set(
+    fullFormExample.data,
+    'id',
+    pathParams.id || `${mockId}`
+  )
+
+  return immutable.set(
+    withId,
+    'attributes.individualGroup.identifiers.0.identifier.value',
+    queryParams['filter[catalogNumber]'] ||
+      String(Math.round(100000 + Math.random() * 99999))
+  )
 }
 
 export const createLookupMammalsResponse = ({
-  request: { queryParams = {} },
+  request: { pathParams = {}, queryParams = {} },
 }) => {
   if (
     (queryParams && queryParams['filter[catalogNumber]']) ||
     queryParams['filter[taxonNameStandardized]']
   ) {
     return {
-      data: [getSpecimen(queryParams)],
+      data: [getSpecimen({ pathParams, queryParams })],
     }
   }
+
   return {
     data: [
       getSpecimen({
-        catalogNumber: '201705001',
-        taxonName: 'Lorem ipsum',
+        pathParams,
+        queryParams: {
+          catalogNumber: '201705001',
+          taxonName: 'Lorem ipsum',
+        },
       }),
       getSpecimen({
-        catalogNumber: '201705002',
-        taxonName: 'Dolor Sit Amet',
+        pathParams,
+        queryParams: {
+          catalogNumber: '201705002',
+          taxonName: 'Dolor Sit Amet',
+        },
       }),
       getSpecimen({
-        catalogNumber: '201705003',
-        taxonName: 'Consectetur',
+        pathParams,
+        queryParams: {
+          catalogNumber: '201705003',
+          taxonName: 'Consectetur',
+        },
       }),
       getSpecimen({
-        catalogNumber: '201705004',
-        taxonName: 'Adipiscing',
+        pathParams,
+        queryParams: {
+          catalogNumber: '201705004',
+          taxonName: 'Adipiscing',
+        },
       }),
     ],
   }
