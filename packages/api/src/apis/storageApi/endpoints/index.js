@@ -8,11 +8,15 @@ const {
   updateRelation,
 } = require('../../../operations')
 
+const createPhysicalUnitRequestSuccess = require('./physicalUnit/examples/requestSuccess.json')
+const createStorageLocationRequestSuccess = require('./storageLocation/examples/requestSuccess.json')
+
 const physicalUnit = createResource({
   basePath: '/storageApi/v01',
   endpoints: [
     {
       connect: true,
+      exampleRequests: [createPhysicalUnitRequestSuccess],
       operation: create,
     },
     {
@@ -52,6 +56,7 @@ const storageLocation = createResource({
   endpoints: [
     {
       connect: true,
+      exampleRequests: [createStorageLocationRequestSuccess],
       operation: create,
     },
     {

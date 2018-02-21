@@ -1,14 +1,13 @@
 const createArrayResponse = require('../lib/api/utilities/createArrayResponse')
 const transformOutput = require('./transformations/outputArray')
 
-module.exports = function getVersionsById({
-  modelName,
-  resource: resourceInput,
-}) {
-  const resource = resourceInput || modelName
-  return ({ models, request }) => {
+module.exports = function getVersionsById({ modelName, resource, models }) {
+  const model = models[modelName]
+  if (!model) {
+    throw new Error(`Model not provided for ${resource}`)
+  }
+  return ({ request }) => {
     const { pathParams: { id } } = request
-    const model = models[modelName]
     return model
       .getWhere({ forceCurrentVersion: false, where: { id } })
       .then(transformOutput)

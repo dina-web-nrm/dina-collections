@@ -2598,7 +2598,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens",
+            "example": "https://domain/specimenApi/v01/specimens",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2643,7 +2643,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens/{id}",
+            "example": "https://domain/specimenApi/v01/specimens/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2692,7 +2692,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+            "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2741,7 +2741,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+            "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2792,7 +2792,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                        "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
                         "format": "uri",
                         "type": "string"
                       }
@@ -2818,7 +2818,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens/{id}",
+            "example": "https://domain/specimenApi/v01/specimens/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2871,7 +2871,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                          "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
                           "format": "uri",
                           "type": "string"
                         }
@@ -2899,7 +2899,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens",
+            "example": "https://domain/specimenApi/v01/specimens",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2950,7 +2950,7 @@
                   "links": {
                     "properties": {
                       "self": {
-                        "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                        "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
                         "format": "uri",
                         "type": "string"
                       }
@@ -2976,7 +2976,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens/{id}/versions/{versionId}",
+            "example": "https://domain/specimenApi/v01/specimens/{id}/versions/{versionId}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3029,7 +3029,7 @@
                     "links": {
                       "properties": {
                         "self": {
-                          "example": "https://domain/storageApi/v01/specimens/{id}/relationships/physicalUnits",
+                          "example": "https://domain/specimenApi/v01/specimens/{id}/relationships/physicalUnits",
                           "format": "uri",
                           "type": "string"
                         }
@@ -3057,7 +3057,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/storageApi/v01/specimens/{id}/versions",
+            "example": "https://domain/specimenApi/v01/specimens/{id}/versions",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -4291,6 +4291,196 @@
           "attributes": {
             "$ref": "specimen"
           }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "specimen",
+        "attributes": {
+          "individualGroup": {
+            "assignedTaxon": {},
+            "individualCircumstances": [
+              {
+                "id": "string",
+                "collectorsText": "Bergström, U",
+                "event": {
+                  "startDate": {
+                    "isoDate": "string",
+                    "dateText": "Before 1800",
+                    "day": 25,
+                    "month": 12,
+                    "year": 1981
+                  },
+                  "endDate": {
+                    "isoDate": "string",
+                    "dateText": "Before 1800",
+                    "day": 25,
+                    "month": 12,
+                    "year": 1981
+                  },
+                  "expeditionText": "Vega Expedition",
+                  "localityInformation": {
+                    "curatedLocalities": [
+                      {
+                        "name": "string",
+                        "versionId": "string",
+                        "createdAt": "string",
+                        "createdBy": "string",
+                        "updatedBy": "string",
+                        "updatedAt": "string",
+                        "id": "string",
+                        "description": "string",
+                        "relations": [
+                          {
+                            "id": "string",
+                            "type": "string"
+                          }
+                        ],
+                        "type": "continent",
+                        "centralPosition": {
+                          "latitude": "string",
+                          "longitude": "string",
+                          "geodeticDatum": "string",
+                          "uncertaintyInMeters": 0
+                        },
+                        "polygon": {
+                          "vertices": [
+                            null
+                          ]
+                        },
+                        "verticalPosition": {
+                          "maximumDepthInMeters": 0,
+                          "maximumElevationInMeters": 0,
+                          "minimumDepthInMeters": 0,
+                          "minimumElevationInMeters": 0
+                        }
+                      }
+                    ],
+                    "position": {
+                      "latitude": "string",
+                      "longitude": "string",
+                      "geodeticDatum": "string",
+                      "uncertaintyInMeters": 0
+                    },
+                    "polygon": {
+                      "vertices": [
+                        null
+                      ]
+                    },
+                    "verticalPosition": {
+                      "maximumDepthInMeters": 0,
+                      "maximumElevationInMeters": 0,
+                      "minimumDepthInMeters": 0,
+                      "minimumElevationInMeters": 0
+                    },
+                    "coordinatesVerbatim": "string",
+                    "georeferenceSourcesText": "string",
+                    "localityText": "string",
+                    "remarks": "string",
+                    "localityVerbatim": "string"
+                  }
+                }
+              }
+            ],
+            "featureObservations": [
+              {
+                "featureObservationAgent": "Doe, J.",
+                "date": {
+                  "isoDate": "string",
+                  "dateText": "Before 1800",
+                  "day": 25,
+                  "month": 12,
+                  "year": 1981
+                },
+                "featureObservationText": "10 years",
+                "featureObservationType": {
+                  "typeName": "string",
+                  "id": "string"
+                },
+                "methodText": "Known age"
+              }
+            ],
+            "id": "string",
+            "identifiers": [
+              {
+                "publishRecord": true,
+                "remarks": "Some remarks"
+              }
+            ],
+            "identifiableUnits": [
+              {
+                "alternateIdentifiersText": "Skin complete, prepared",
+                "identifiers": [
+                  {
+                    "publishRecord": true,
+                    "remarks": "Some remarks"
+                  }
+                ],
+                "collectingCircumstance": {
+                  "id": "string",
+                  "collectorsText": "Bergström, U",
+                  "event": {
+                    "startDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "endDate": {
+                      "isoDate": "string",
+                      "dateText": "Before 1800",
+                      "day": 25,
+                      "month": 12,
+                      "year": 1981
+                    },
+                    "expeditionText": "Vega Expedition",
+                    "localityInformation": {
+                      "position": {
+                        "latitude": "string",
+                        "longitude": "string",
+                        "geodeticDatum": "string",
+                        "uncertaintyInMeters": 0
+                      },
+                      "polygon": {
+                        "vertices": [
+                          null
+                        ]
+                      },
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 0,
+                        "maximumElevationInMeters": 0,
+                        "minimumDepthInMeters": 0,
+                        "minimumElevationInMeters": 0
+                      },
+                      "coordinatesVerbatim": "string",
+                      "georeferenceSourcesText": "string",
+                      "localityText": "string",
+                      "remarks": "string",
+                      "localityVerbatim": "string"
+                    }
+                  }
+                },
+                "id": "string",
+                "physicalUnitText": "Skin complete, prepared",
+                "physicalUnit": {
+                  "id": "string",
+                  "identifiableUnits": [
+                    null
+                  ],
+                  "normalStorageLocationText": "string",
+                  "storedUnderTaxonName": "Sorex minutus",
+                  "storageLocation": {
+                    "id": "string",
+                    "locationText": "string"
+                  }
+                }
+              }
+            ],
+            "version": 0
+          },
+          "version": 0
         }
       }
     },

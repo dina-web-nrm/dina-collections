@@ -22,6 +22,7 @@ module.exports = function updateRelation({
     method: 'patch',
     modelName,
     operationId,
+    operationType: 'updateRelation',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     request: {

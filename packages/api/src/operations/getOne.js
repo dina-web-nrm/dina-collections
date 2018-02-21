@@ -23,6 +23,7 @@ module.exports = function getOne({
     method: 'get',
     modelName,
     operationId,
+    operationType: 'getOne',
     path: `${basePath}/${resourcePlural}/{id}`,
     pathParams: ['id'],
     resource,

@@ -23,6 +23,7 @@ module.exports = function getVersion({
     method: 'get',
     modelName,
     operationId,
+    operationType: 'getVersion',
     path: `${basePath}/${resourcePlural}/{id}/versions/{versionId}`,
     pathParams: ['id', 'versionId'],
     resource,

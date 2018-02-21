@@ -1,0 +1,9 @@
+{
+  "data": {
+    "id": "1234",
+    "type": "featureObservationType",
+    "attributes": {
+      "typeName": "string"
+    }
+  }
+}

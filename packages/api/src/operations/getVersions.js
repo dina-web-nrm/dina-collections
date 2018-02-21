@@ -18,6 +18,7 @@ module.exports = function getVersions({
     method: 'get',
     modelName,
     operationId,
+    operationType: 'getVersions',
     path: `${basePath}/${resourcePlural}/{id}/versions`,
     pathParams: ['id'],
     queryParams,

@@ -16,6 +16,7 @@ module.exports = function update({
     method: 'patch',
     modelName,
     operationId,
+    operationType: 'update',
     path: `${basePath}/${resourcePlural}/{id}`,
     pathParams: ['id'],
     request: {

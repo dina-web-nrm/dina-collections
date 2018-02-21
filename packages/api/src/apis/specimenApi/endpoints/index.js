@@ -12,11 +12,14 @@ const {
 
 const { specimenGetWhere } = require('../connectors/specimenGetWhere')
 
+const createRequestSuccess = require('./createSpecimen/examples/requestSuccess.json')
+
 const specimen = createResource({
   basePath: '/specimenApi/v01',
   endpoints: [
     {
       connect: true,
+      exampleRequests: [createRequestSuccess],
       operation: create,
     },
     {
@@ -80,10 +83,4 @@ const specimen = createResource({
 
 module.exports = {
   ...specimen,
-  // createSpecimen,
-  // getSpecimen,
-  // getSpecimens,
-  // getSpecimenVersion,
-  // getSpecimenVersions,
-  // updateSpecimen,
 }

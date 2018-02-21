@@ -18,6 +18,7 @@ module.exports = function getMany({
     method: 'get',
     modelName,
     operationId,
+    operationType: 'getMany',
     path: `${basePath}/${resourcePlural}`,
     queryParams,
     resource,

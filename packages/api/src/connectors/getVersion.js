@@ -1,12 +1,14 @@
 const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getVersion({ modelName, resource: resourceInput }) {
-  const resource = resourceInput || modelName
-  return ({ models, request }) => {
+module.exports = function getVersion({ modelName, resource, models }) {
+  const model = models[modelName]
+  if (!model) {
+    throw new Error(`Model not provided for ${resource}`)
+  }
+  return ({ request }) => {
     const { pathParams: { id, versionId } } = request
 
-    const model = models[modelName]
     return model
       .getById({
         forceCurrentVersion: false,
