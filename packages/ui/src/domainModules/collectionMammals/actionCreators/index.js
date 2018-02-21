@@ -5,9 +5,9 @@ import lookupMammals from './lookupMammals'
 import registerMammal from './registerMammal'
 import setAccordionActiveIndex from './setAccordionActiveIndex'
 import updateFeatureTypeNameSearchQuery from './updateFeatureTypeNameSearchQuery'
-import updateIndividualGroup from './updateIndividualGroup'
 import updateLocalityInformationSearchQuery from './updateLocalityInformationSearchQuery'
 import updateSearchParameter from './updateSearchParameter'
+import updateSpecimen from './updateSpecimen'
 
 export {
   clearSearchParameters,
@@ -17,7 +17,7 @@ export {
   registerMammal,
   setAccordionActiveIndex,
   updateFeatureTypeNameSearchQuery,
-  updateIndividualGroup,
   updateLocalityInformationSearchQuery,
   updateSearchParameter,
+  updateSpecimen,
 }
