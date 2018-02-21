@@ -17,12 +17,14 @@ export default function transformLocalityInformation(localityInformation) {
         localityInformation.curatedLocalities &&
         localityInformation.curatedLocalities[index] &&
         localityInformation.curatedLocalities[index].id
+
       if (id !== undefined) {
         return {
           id,
           type,
         }
       }
+
       return null
     })
     .filter(element => !!element)

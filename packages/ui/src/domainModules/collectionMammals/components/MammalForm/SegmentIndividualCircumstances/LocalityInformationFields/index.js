@@ -81,7 +81,7 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
           }}
           label={moduleTranslate({ textKey: 'localityRemarks' })}
           module="collectionMammals"
-          name={getPath('localityRemarks')}
+          name={getPath('remarks')}
           type="text"
         />
       </Grid.Column>
@@ -94,7 +94,7 @@ LocalityInformationFields.propTypes = propTypes
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'occurrences.localityInformation',
+    scope: 'individualCircumstances.localityInformation',
   }),
-  pathBuilder({ name: 'localityInformation' })
+  pathBuilder({ name: 'event.localityInformation' })
 )(LocalityInformationFields)

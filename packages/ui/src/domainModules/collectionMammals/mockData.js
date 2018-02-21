@@ -1,48 +1,47 @@
 let mockId = 0
 
-export const getIndividualGroup = (queryParams = {}) => {
+export const getSpecimen = (queryParams = {}) => {
   mockId += 1
   return {
     attributes: {
-      featureObservations: [
-        {
-          featureObservationText: 'female',
-          featureObservationType: {
-            featureObservationTypeName: 'sex',
-            id: '1',
+      individualGroup: {
+        assignedTaxon: {
+          determinations: [
+            {
+              taxonNameStandardized: 'Chironectes minimus',
+            },
+          ],
+        },
+        featureObservations: [
+          {
+            featureObservationText: 'female',
+            featureObservationType: {
+              id: '1',
+              typeName: 'sex',
+            },
           },
-        },
-      ],
-      identifications: [
-        {
-          identificationText: 'Water opossum',
-          identifiedByAgentText: 'Doe, J.',
-          identifiedTaxonNameStandardized:
-            queryParams['filter[identifiedTaxonNameStandardized]'] ||
-            'Chironectes minimus',
-        },
-      ],
-      occurrences: [
-        {
-          id: '1',
-          localityInformation: {
-            curatedLocalities: [],
-            localityVerbatim: 'Hemsö',
+        ],
+        identifiableUnits: [
+          {
+            physicalUnit: {
+              storedUnderTaxonName: 'Chironectes minimus',
+            },
           },
-        },
-      ],
-      physicalUnits: [
-        {
-          catalogedUnit: {
-            catalogNumber:
-              queryParams['filter[catalogNumber]'] ||
-              String(Math.round(100000 + Math.random() * 99999)),
+        ],
+        identifiers: [
+          {
+            identifier: {
+              identifierType: 'catalogNumber',
+              value:
+                queryParams['filter[catalogNumber]'] ||
+                String(Math.round(100000 + Math.random() * 99999)),
+            },
           },
-        },
-      ],
+        ],
+      },
     },
     id: `${mockId}`,
-    type: 'individualGroup',
+    type: 'specimen',
   }
 }
 
@@ -51,27 +50,27 @@ export const createLookupMammalsResponse = ({
 }) => {
   if (
     (queryParams && queryParams['filter[catalogNumber]']) ||
-    queryParams['filter[identifiedTaxonNameStandardized]']
+    queryParams['filter[taxonNameStandardized]']
   ) {
     return {
-      data: [getIndividualGroup(queryParams)],
+      data: [getSpecimen(queryParams)],
     }
   }
   return {
     data: [
-      getIndividualGroup({
+      getSpecimen({
         catalogNumber: '201705001',
         taxonName: 'Lorem ipsum',
       }),
-      getIndividualGroup({
+      getSpecimen({
         catalogNumber: '201705002',
         taxonName: 'Dolor Sit Amet',
       }),
-      getIndividualGroup({
+      getSpecimen({
         catalogNumber: '201705003',
         taxonName: 'Consectetur',
       }),
-      getIndividualGroup({
+      getSpecimen({
         catalogNumber: '201705004',
         taxonName: 'Adipiscing',
       }),

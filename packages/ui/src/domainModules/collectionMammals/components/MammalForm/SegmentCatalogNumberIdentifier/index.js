@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { Grid, Segment } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { Checkbox, Field, Input } from 'coreModules/form/components'
+import { Checkbox, Field } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import CatalogNumberInput from '../CatalogNumberInput'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'catalogedUnit',
+  scope: 'identifiers',
 })
 
 const propTypes = {
@@ -17,7 +17,11 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
 }
 
-const SegmentCatalogedUnit = ({ editMode, formValueSelector, getPath }) => {
+const SegmentCatalogNumberIdentifier = ({
+  editMode,
+  formValueSelector,
+  getPath,
+}) => {
   return (
     <Segment color="green">
       <Grid textAlign="left" verticalAlign="top">
@@ -30,21 +34,11 @@ const SegmentCatalogedUnit = ({ editMode, formValueSelector, getPath }) => {
             helpText={<ModuleTranslate textKey="sixOrEightDigits" />}
             label={<ModuleTranslate textKey="catalogNumber" />}
             module="collectionMammals"
-            name={getPath('catalogNumber')}
+            name={getPath('identifier.value')}
             type="text"
           />
         </Grid.Column>
-        <Grid.Column computer={6} mobile={16}>
-          <Field
-            autoComplete="off"
-            component={Input}
-            disabled
-            label={<ModuleTranslate textKey="storedUnderTaxonName" />}
-            module="collectionMammals"
-            name={getPath('storedUnderTaxonName')}
-            type="text"
-          />
-        </Grid.Column>
+
         <Grid.Column computer={3} mobile={16}>
           <Field
             autoComplete="off"
@@ -60,8 +54,8 @@ const SegmentCatalogedUnit = ({ editMode, formValueSelector, getPath }) => {
   )
 }
 
-SegmentCatalogedUnit.propTypes = propTypes
+SegmentCatalogNumberIdentifier.propTypes = propTypes
 
-export default pathBuilder({ name: 'physicalUnits.0.catalogedUnit' })(
-  SegmentCatalogedUnit
+export default pathBuilder({ name: 'identifiers.0' })(
+  SegmentCatalogNumberIdentifier
 )

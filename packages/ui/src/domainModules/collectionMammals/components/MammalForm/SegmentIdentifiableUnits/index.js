@@ -15,7 +15,7 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
 }
 
-const SegmentPhysicalUnits = ({ getPath }) => {
+const SegmentIdentifiableUnits = ({ getPath }) => {
   return (
     <Segment color="green">
       <Header size="medium">
@@ -28,7 +28,7 @@ const SegmentPhysicalUnits = ({ getPath }) => {
             component={Input}
             label={
               <ModuleTranslate
-                scope="physicalUnits"
+                scope="identifiableUnits"
                 textKey="physicalUnitText"
               />
             }
@@ -43,12 +43,12 @@ const SegmentPhysicalUnits = ({ getPath }) => {
             component={Input}
             label={
               <ModuleTranslate
-                scope="physicalUnits"
+                scope="identifiableUnits"
                 textKey="normalStorageLocationText"
               />
             }
             module="collectionMammals"
-            name={getPath('normalStorageLocationText')}
+            name={getPath('physicalUnit.normalStorageLocationText')}
             type="text"
           />
         </Grid.Column>
@@ -58,7 +58,7 @@ const SegmentPhysicalUnits = ({ getPath }) => {
             component={Input}
             label={
               <ModuleTranslate
-                scope="physicalUnits"
+                scope="identifiableUnits"
                 textKey="alternateIdentifiersText"
               />
             }
@@ -72,8 +72,8 @@ const SegmentPhysicalUnits = ({ getPath }) => {
   )
 }
 
-SegmentPhysicalUnits.propTypes = propTypes
+SegmentIdentifiableUnits.propTypes = propTypes
 
 export default pathBuilder({
-  name: 'physicalUnits.0',
-})(SegmentPhysicalUnits)
+  name: 'identifiableUnits.0',
+})(SegmentIdentifiableUnits)

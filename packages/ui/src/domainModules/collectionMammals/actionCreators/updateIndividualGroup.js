@@ -4,17 +4,17 @@ import {
   COLLECTION_MAMMALS_UPDATE_INDIVIDUAL_GROUP_SUCCESS,
 } from '../actionTypes'
 import { UPDATE_INDIVIDUAL_GROUP } from '../endpoints'
+import { getCatalogNumberFromIdentifiers } from '../utilities'
+
 import getIndividualGroupByCatalogNumber from './getIndividualGroupByCatalogNumber'
 
 export default function updateIndividualGroup(
-  { catalogedUnit, individualGroup },
+  { individualGroup },
   throwError = true
 ) {
   const meta = {
-    catalogNumber: catalogedUnit.catalogNumber,
-    individualGroup: {
-      ...individualGroup,
-    },
+    catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
+    individualGroup,
   }
 
   return (dispatch, getState, { apiClient }) => {
@@ -25,7 +25,7 @@ export default function updateIndividualGroup(
     const body = {
       data: {
         attributes: {
-          ...individualGroup,
+          individualGroup,
         },
       },
     }
@@ -44,16 +44,7 @@ export default function updateIndividualGroup(
             payload: response,
             type: COLLECTION_MAMMALS_UPDATE_INDIVIDUAL_GROUP_SUCCESS,
           })
-          dispatch(
-            getIndividualGroupByCatalogNumber(meta.catalogNumber, {
-              include: [
-                'identifications',
-                'featureObservations.featureObservationType',
-                'occurrences.localityInformation',
-                'physicalUnits.catalogedUnit',
-              ].join(),
-            })
-          )
+          dispatch(getIndividualGroupByCatalogNumber(meta.catalogNumber))
           return response
         },
         error => {

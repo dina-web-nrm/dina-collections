@@ -208,7 +208,10 @@ class AccordionItem extends Component {
                     onClick={event => {
                       event.preventDefault()
                       this.handleCloseRemovePopup()
-                      removeArrayFieldByIndex('determinations', index)
+                      removeArrayFieldByIndex(
+                        'assignedTaxon.determinations',
+                        index
+                      )
                     }}
                   >
                     {moduleTranslate({ textKey: 'remove' })}
@@ -228,7 +231,7 @@ class AccordionItem extends Component {
               <Button
                 onClick={event => {
                   event.preventDefault()
-                  removeArrayFieldByIndex('determinations', index)
+                  removeArrayFieldByIndex('assignedTaxon.determinations', index)
                 }}
               >
                 {moduleTranslate({ textKey: 'remove' })}

@@ -87,7 +87,7 @@ Position.propTypes = propTypes
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'occurrences.localityInformation.position',
+    scope: 'individualCircumstances.localityInformation.position',
   }),
   pathBuilder({ name: 'position' })
 )(Position)
