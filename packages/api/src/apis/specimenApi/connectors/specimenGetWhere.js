@@ -8,9 +8,7 @@ module.exports = function specimenGetWhere({
   const resource = resourceInput || modelName
   return ({ models, request }) => {
     const {
-      queryParams: {
-        filter: { catalogNumber, identifiedTaxonNameStandardized } = {},
-      },
+      queryParams: { filter: { catalogNumber, taxonNameStandardized } = {} },
     } = request
     const model = models[modelName]
 
@@ -32,10 +30,10 @@ module.exports = function specimenGetWhere({
           })
         })
     }
-    if (identifiedTaxonNameStandardized) {
+    if (taxonNameStandardized) {
       return model
         .getAllByTaxonName({
-          taxonName: identifiedTaxonNameStandardized,
+          taxonName: taxonNameStandardized,
         })
         .then(transformOutput)
         .then(items => {
