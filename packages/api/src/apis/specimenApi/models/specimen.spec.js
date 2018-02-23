@@ -40,6 +40,10 @@ dbDescribe('server/apis/specimensApi/models', () => {
     })
 
     describe('create', () => {
+      afterAll(() => {
+        return setup(true)
+      })
+
       it('Creates and returns a simple record not passing validation', () => {
         const data = {
           a: 2,
