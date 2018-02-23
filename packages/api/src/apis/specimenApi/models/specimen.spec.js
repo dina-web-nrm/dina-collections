@@ -1,11 +1,17 @@
+const objectPath = require('object-path')
 const createDb = require('../../../lib/postgres/db')
 const syncModels = require('../../../lib/postgres/models/syncModels')
-const config = require('../../../config')
+const defaultConfig = require('../../../config')
 const createSpecimen = require('./specimen')
 
 const dbDescribe = require('../../../utilities/test/dbDescribe')
 
-const setup = () => {
+const setup = (flushOnRestart = false) => {
+  const config = { ...defaultConfig }
+  if (flushOnRestart) {
+    objectPath.set(config, 'db.flushOnRestart', true)
+  }
+
   return createDb({ config }).then(sequelize => {
     const specimen = createSpecimen({
       sequelize,

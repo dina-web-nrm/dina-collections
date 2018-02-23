@@ -1,11 +1,17 @@
+const objectPath = require('object-path')
 const createDb = require('../../../lib/sequelize/db')
 const syncModels = require('../../../lib/sequelize/models/syncModels')
-const config = require('../../../apps/core/config')
+const defaultConfig = require('../../../apps/core/config')
 const createSpecimen = require('./specimen')
 
 const dbDescribe = require('../../../utilities/test/dbDescribe')
 
-const setup = () => {
+const setup = (flushOnRestart = false) => {
+  const config = { ...defaultConfig }
+  if (flushOnRestart) {
+    objectPath.set(config, 'db.flushOnRestart', true)
+  }
+
   return createDb({ config }).then(sequelize => {
     const specimen = createSpecimen({
       sequelize,
@@ -34,6 +40,10 @@ dbDescribe('server/apis/specimensApi/models', () => {
     })
 
     describe('create', () => {
+      afterAll(() => {
+        return setup(true)
+      })
+
       it('Creates and returns a simple record not passing validation', () => {
         const data = {
           a: 2,
@@ -107,7 +117,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
 
       let thirdUpdatedVersionId
 
-      let forthId
+      let fourthId
 
       beforeAll(() => {
         return setup().then(createdModel => {
@@ -136,7 +146,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
               return specimen.create(forthData)
             })
             .then(res => {
-              forthId = res.id
+              fourthId = res.id
             })
         })
       })
@@ -150,7 +160,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
           .getAllByTaxonName({ taxonName: 'first-taxon' })
           .then(res => {
             expect(res.length).toEqual(2)
-            expect(res[0].id).toEqual(forthId)
+            expect(res[0].id).toEqual(fourthId)
             expect(res[1].id).toEqual(firstId)
           })
       })
