@@ -13,6 +13,9 @@ module.exports = function getVersion({
   resource,
   resourcePlural,
 }) {
+  const connectorOptions = {
+    resource,
+  }
   const operationId = `get${capitalizeFirstLetter(resource)}Version`
   const relations = buildRelations({
     basePath,
@@ -22,6 +25,7 @@ module.exports = function getVersion({
 
   return {
     connector: connect ? connector : undefined,
+    connectorOptions,
     method: 'get',
     modelName,
     operationId,

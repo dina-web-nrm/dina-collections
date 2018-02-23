@@ -35,10 +35,12 @@ const physicalUnit = createResource({
     },
     {
       connect: true,
+      includeRelations: true,
       operation: getOne,
     },
     {
       connect: true,
+      includeRelations: true,
       operation: getMany,
     },
   ],
@@ -46,6 +48,7 @@ const physicalUnit = createResource({
     storageLocation: {
       format: 'object',
       resource: 'storageLocation',
+      type: 'hasOne',
     },
   },
   resource: 'physicalUnit',
@@ -75,10 +78,12 @@ const storageLocation = createResource({
     },
     {
       connect: true,
+      includeRelations: true,
       operation: getOne,
     },
     {
       connect: true,
+      includeRelations: true,
       operation: getMany,
     },
   ],

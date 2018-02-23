@@ -1,9 +1,11 @@
+const updateRelationHasOneConnector = require('../connectors/updateRelationHasOne')
+const updateRelationHasManyConnector = require('../connectors/updateRelationHasMany')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
 module.exports = function updateRelation({
   basePath,
   connect,
-  connector,
+  connector: customConnector,
   exampleRequests = {},
   exampleResponses = {},
   modelName,
@@ -14,7 +16,16 @@ module.exports = function updateRelation({
   resourcePlural,
 }) {
   const relation = relations[relationKey]
-  const { format, resource: relationResource } = relation
+  const {
+    format: relationFormat,
+    resource: relationResource,
+    type: relationType,
+  } = relation
+
+  const connector =
+    customConnector || relationType === 'hasOne'
+      ? updateRelationHasOneConnector
+      : updateRelationHasManyConnector
 
   const operationId = `update${capitalizeFirstLetter(
     resource
@@ -22,8 +33,15 @@ module.exports = function updateRelation({
 
   return {
     connector: connect ? connector : undefined,
+    connectorOptions: {
+      modelName,
+      relation: {
+        ...relation,
+        key: relationKey,
+      },
+      resource,
+    },
     method: 'patch',
-    modelName,
     operationId,
     operationType: 'updateRelation',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
@@ -31,13 +49,15 @@ module.exports = function updateRelation({
     queryParams,
     request: {
       exampleRequests,
-      format,
-      resource: 'modelReference',
+      format: relationFormat,
+      modelReference: true,
+      resource: relationResource,
     },
-    resource: relationResource,
+    resource,
     response: {
       examples: exampleResponses,
-      format,
+      format: relationFormat,
+      resource,
     },
     summary: `Update ${resource} -> ${relationKey}`,
   }

@@ -28,7 +28,7 @@ module.exports = function createResource({
       ...queryParamsInput,
       exampleId: {
         description:
-          'Will a specific example or 404 i example dont exist. Only active when combined with mock parameter',
+          'Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter',
         example: 'primary',
         schema: {
           default: 'primary',

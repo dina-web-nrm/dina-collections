@@ -43,21 +43,7 @@
   "modelReference": {
     "additionalProperties": false,
     "description": "A reference to a model",
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "type": {
-        "type": "string"
-      },
-      "variationId": {
-        "type": "string"
-      }
-    },
-    "required": [
-      "id",
-      "type"
-    ],
+    "properties": {},
     "x-category": "core",
     "x-modelType": "model",
     "id": "modelReference"
@@ -2205,198 +2191,6 @@
     "x-examples": {},
     "description": ""
   },
-  "updateCuratedLocalityBelongsToResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "curatedLocality"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": {
-            "default": "curatedLocality",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "getCuratedLocalityBelongsToResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "curatedLocality"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": {
-            "default": "curatedLocality",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "updateCuratedLocalityContainsResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "curatedLocality"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "relationships": {
-              "properties": {},
-              "type": "object"
-            },
-            "type": {
-              "default": "curatedLocality",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "getCuratedLocalityContainsResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "curatedLocality"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "relationships": {
-              "properties": {},
-              "type": "object"
-            },
-            "type": {
-              "default": "curatedLocality",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
   "getCuratedLocalityResponse": {
     "additionalProperties": false,
     "properties": {
@@ -2411,67 +2205,7 @@
             "type": "string"
           },
           "relationships": {
-            "properties": {
-              "belongsTo": {
-                "properties": {
-                  "data": {
-                    "properties": {
-                      "id": {
-                        "example": "1234",
-                        "type": "string"
-                      },
-                      "type": {
-                        "example": "curatedLocality",
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "links": {
-                    "properties": {
-                      "self": {
-                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-                        "type": "string",
-                        "x-faker": "internet.url"
-                      }
-                    },
-                    "type": "object"
-                  }
-                },
-                "type": "object"
-              },
-              "contains": {
-                "properties": {
-                  "data": {
-                    "items": {
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "example": "curatedLocality",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  },
-                  "links": {
-                    "properties": {
-                      "self": {
-                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-                        "type": "string",
-                        "x-faker": "internet.url"
-                      }
-                    },
-                    "type": "object"
-                  }
-                },
-                "type": "object"
-              }
-            },
+            "properties": {},
             "type": "object"
           },
           "type": {
@@ -2519,67 +2253,7 @@
               "type": "string"
             },
             "relationships": {
-              "properties": {
-                "belongsTo": {
-                  "properties": {
-                    "data": {
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "example": "curatedLocality",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "links": {
-                      "properties": {
-                        "self": {
-                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-                          "type": "string",
-                          "x-faker": "internet.url"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                },
-                "contains": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "example": "curatedLocality",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    },
-                    "links": {
-                      "properties": {
-                        "self": {
-                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-                          "type": "string",
-                          "x-faker": "internet.url"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              },
+              "properties": {},
               "type": "object"
             },
             "type": {
@@ -2714,7 +2388,7 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "physicalUnit"
+              "$ref": "specimen"
             },
             "id": {
               "example": "1234",
@@ -2725,7 +2399,7 @@
               "type": "object"
             },
             "type": {
-              "default": "physicalUnit",
+              "default": "specimen",
               "type": "string"
             }
           },
@@ -3239,7 +2913,7 @@
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "storageLocation"
+            "$ref": "physicalUnit"
           },
           "id": {
             "example": "1234",
@@ -3250,7 +2924,7 @@
             "type": "object"
           },
           "type": {
-            "default": "storageLocation",
+            "default": "physicalUnit",
             "type": "string"
           }
         },
@@ -3579,7 +3253,7 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "physicalUnit"
+              "$ref": "storageLocation"
             },
             "id": {
               "example": "1234",
@@ -3590,7 +3264,7 @@
               "type": "object"
             },
             "type": {
-              "default": "physicalUnit",
+              "default": "storageLocation",
               "type": "string"
             }
           },
@@ -3940,8 +3614,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "agent"
+            "default": "agent",
+            "enum": [
+              "agent"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "agent"
@@ -3985,8 +3662,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "agent"
+            "default": "agent",
+            "enum": [
+              "agent"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "agent"
@@ -4041,8 +3721,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "expedition"
+            "default": "expedition",
+            "enum": [
+              "expedition"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "expedition"
@@ -4082,8 +3765,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "expedition"
+            "default": "expedition",
+            "enum": [
+              "expedition"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "expedition"
@@ -4109,8 +3795,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "featureObservationType"
+            "default": "featureObservationType",
+            "enum": [
+              "featureObservationType"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "featureObservationType"
@@ -4156,8 +3845,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "featureObservationType"
+            "default": "featureObservationType",
+            "enum": [
+              "featureObservationType"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "featureObservationType"
@@ -4183,8 +3875,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "identifiableUnitObservationType"
+            "default": "identifiableUnitObservationType",
+            "enum": [
+              "identifiableUnitObservationType"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "identifiableUnitObservationType"
@@ -4228,8 +3923,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "identifiableUnitObservationType"
+            "default": "identifiableUnitObservationType",
+            "enum": [
+              "identifiableUnitObservationType"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "identifiableUnitObservationType"
@@ -4255,8 +3953,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "catalogNumber"
+            "default": "catalogNumber",
+            "enum": [
+              "catalogNumber"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "catalogNumber"
@@ -4306,8 +4007,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "catalogNumber"
+            "default": "catalogNumber",
+            "enum": [
+              "catalogNumber"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "catalogNumber"
@@ -4333,8 +4037,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "curatedLocality"
+            "default": "curatedLocality",
+            "enum": [
+              "curatedLocality"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "curatedLocality"
@@ -4424,68 +4131,14 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "curatedLocality"
+            "default": "curatedLocality",
+            "enum": [
+              "curatedLocality"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "curatedLocality"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "updateCuratedLocalityBelongsToRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "type": "string",
-            "default": "modelReference"
-          },
-          "attributes": {
-            "$ref": "modelReference"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "updateCuratedLocalityContainsRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "array",
-        "additionalProperties": false,
-        "items": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "default": "modelReference"
-            },
-            "id": {
-              "type": "string",
-              "example": "1234"
-            },
-            "attributes": {
-              "$ref": "modelReference"
-            }
           }
         }
       }
@@ -4508,8 +4161,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "specimen"
+            "default": "specimen",
+            "enum": [
+              "specimen"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "specimen"
@@ -5031,8 +4687,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "specimen"
+            "default": "specimen",
+            "enum": [
+              "specimen"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "specimen"
@@ -5056,15 +4715,15 @@
           "type": "object",
           "properties": {
             "type": {
-              "type": "string",
-              "default": "modelReference"
+              "default": "physicalUnit",
+              "enum": [
+                "physicalUnit"
+              ],
+              "type": "string"
             },
             "id": {
               "type": "string",
               "example": "1234"
-            },
-            "attributes": {
-              "$ref": "modelReference"
             }
           }
         }
@@ -5088,8 +4747,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "physicalUnit"
+            "default": "physicalUnit",
+            "enum": [
+              "physicalUnit"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "physicalUnit"
@@ -5100,7 +4762,6 @@
     "x-examples": {
       "primary": {
         "data": {
-          "id": "1234",
           "type": "physicalUnit",
           "attributes": {
             "normalStorageLocationText": "string",
@@ -5111,7 +4772,6 @@
     },
     "example": {
       "data": {
-        "id": "1234",
         "type": "physicalUnit",
         "attributes": {
           "normalStorageLocationText": "string",
@@ -5137,8 +4797,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "physicalUnit"
+            "default": "physicalUnit",
+            "enum": [
+              "physicalUnit"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "physicalUnit"
@@ -5164,11 +4827,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "modelReference"
-          },
-          "attributes": {
-            "$ref": "modelReference"
+            "default": "storageLocation",
+            "enum": [
+              "storageLocation"
+            ],
+            "type": "string"
           }
         }
       }
@@ -5191,8 +4854,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "storageLocation"
+            "default": "storageLocation",
+            "enum": [
+              "storageLocation"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "storageLocation"
@@ -5236,8 +4902,11 @@
             "example": "1234"
           },
           "type": {
-            "type": "string",
-            "default": "storageLocation"
+            "default": "storageLocation",
+            "enum": [
+              "storageLocation"
+            ],
+            "type": "string"
           },
           "attributes": {
             "$ref": "storageLocation"
@@ -5261,15 +4930,15 @@
           "type": "object",
           "properties": {
             "type": {
-              "type": "string",
-              "default": "modelReference"
+              "default": "physicalUnit",
+              "enum": [
+                "physicalUnit"
+              ],
+              "type": "string"
             },
             "id": {
               "type": "string",
               "example": "1234"
-            },
-            "attributes": {
-              "$ref": "modelReference"
             }
           }
         }

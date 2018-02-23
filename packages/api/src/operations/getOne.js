@@ -7,21 +7,22 @@ module.exports = function getOne({
   connect,
   connector = getByIdConnector,
   exampleResponses = {},
+  includeRelations,
   modelName,
   queryParams,
-  relations: relationsInput,
+  relations,
   resource,
   resourcePlural,
 }) {
   const operationId = `get${capitalizeFirstLetter(resource)}`
-  const relations = buildRelations({
-    basePath,
-    relations: relationsInput,
-    resourcePlural,
-  })
-
   return {
     connector: connect ? connector : undefined,
+    connectorOptions: {
+      includeRelations,
+      modelName,
+      relations,
+      resource,
+    },
     method: 'get',
     modelName,
     operationId,
@@ -29,11 +30,16 @@ module.exports = function getOne({
     path: `${basePath}/${resourcePlural}/{id}`,
     pathParams: ['id'],
     queryParams,
+    relations,
     resource,
     response: {
       examples: exampleResponses,
       format: 'object',
-      relations,
+      relations: buildRelations({
+        basePath,
+        relations,
+        resourcePlural,
+      }),
     },
     summary: `Find ${resource} by id`,
   }

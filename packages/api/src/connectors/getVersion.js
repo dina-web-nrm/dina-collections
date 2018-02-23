@@ -1,8 +1,9 @@
 const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getVersion({ modelName, resource, models }) {
-  const model = models[modelName]
+module.exports = function getVersion({ connectorOptions, models }) {
+  const { resource } = connectorOptions
+  const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
@@ -18,7 +19,7 @@ module.exports = function getVersion({ modelName, resource, models }) {
       .then(res => {
         if (!res) {
           const error = new Error(
-            `${modelName} with id: ${id} and versionId ${versionId} not found`
+            `${resource} with id: ${id} and versionId ${versionId} not found`
           )
           error.status = 404
           throw error

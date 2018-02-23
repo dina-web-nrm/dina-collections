@@ -5,7 +5,7 @@ module.exports = function create({
   basePath,
   connect,
   connector = createConnector,
-  connectorOptions,
+  connectorOptions: connectorOptionsInput,
   exampleRequests = {},
   exampleResponses = {},
   modelName,
@@ -14,6 +14,11 @@ module.exports = function create({
   resourcePlural,
 }) {
   const operationId = `create${capitalizeFirstLetter(resource)}`
+  const connectorOptions = {
+    modelName,
+    resource,
+    ...connectorOptionsInput,
+  }
   return {
     connector: connect ? connector : undefined,
     connectorOptions,

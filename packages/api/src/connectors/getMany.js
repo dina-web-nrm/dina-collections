@@ -1,20 +1,36 @@
 const createArrayResponse = require('../lib/api/utilities/createArrayResponse')
-const transformOutput = require('./transformations/outputArray')
+const transformOutput = require('./transformations/outputObject')
+const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
+const extractRelationships = require('./relationshipsUtilities/extractRelationships')
 
-module.exports = function getMany({ modelName, resource, models }) {
+module.exports = function getMany({ connectorOptions, models }) {
+  const { includeRelations, modelName, relations, resource } = connectorOptions
   const model = models[modelName]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
   return () => {
-    return model
-      .getWhere({ where: {} })
-      .then(transformOutput)
-      .then(items => {
-        return createArrayResponse({
-          items,
-          type: resource,
-        })
+    let include
+    if (relations && includeRelations) {
+      include = buildIncludeArray({ models, relations })
+    }
+    return model.getWhere({ include, raw: false, where: {} }).then(items => {
+      return createArrayResponse({
+        items: items.map(item => {
+          const transformedItem = transformOutput(item)
+          return {
+            ...transformedItem,
+            relationships:
+              relations &&
+              includeRelations &&
+              extractRelationships({
+                fetchedResource: item,
+                relations,
+              }),
+          }
+        }),
+        type: resource,
       })
+    })
   }
 }

@@ -1,4 +1,4 @@
-module.exports = function createObjectResponse({ data, type }) {
+module.exports = function createObjectResponse({ data, type, relationships }) {
   const { id, ...rest } = data
   return {
     data: {
@@ -6,6 +6,7 @@ module.exports = function createObjectResponse({ data, type }) {
         ...rest,
       },
       id: `${id}`,
+      relationships,
       type,
     },
   }

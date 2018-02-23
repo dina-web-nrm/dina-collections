@@ -1,9 +1,11 @@
+const getRelationHasOneConnector = require('../connectors/getRelationHasOne')
+const getRelationHasManyConnector = require('../connectors/getRelationHasMany')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
 module.exports = function getRelation({
   basePath,
   connect,
-  connector,
+  connector: customConnector,
   exampleResponses = {},
   modelName,
   queryParams,
@@ -13,8 +15,16 @@ module.exports = function getRelation({
   resourcePlural,
 }) {
   const relation = relations[relationKey]
+  const {
+    format: relationFormat,
+    resource: relationResource,
+    type: relationType,
+  } = relation
 
-  const { format, resource: relationResource } = relation
+  const connector =
+    customConnector || relationType === 'hasOne'
+      ? getRelationHasOneConnector
+      : getRelationHasManyConnector
 
   const operationId = `get${capitalizeFirstLetter(
     resource
@@ -22,18 +32,29 @@ module.exports = function getRelation({
 
   return {
     connector: connect ? connector : undefined,
+    connectorOptions: {
+      modelName,
+      relation: {
+        ...relation,
+        key: relationKey,
+      },
+      resource,
+    },
     method: 'get',
-    modelName,
     operationId,
     operationType: 'getRelation',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
-    resource: relationResource,
+    relationKey,
+    resource,
     response: {
       examples: exampleResponses,
-      format,
+      format: relationFormat,
+      resource: relationResource,
     },
+    rootModelName: modelName,
+    rootResource: resource,
     summary: `Find ${resource} -> ${relationKey}`,
   }
 }

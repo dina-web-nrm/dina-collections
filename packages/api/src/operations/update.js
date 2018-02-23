@@ -13,9 +13,13 @@ module.exports = function update({
   resourcePlural,
 }) {
   const operationId = `update${capitalizeFirstLetter(resource)}`
+  const connectorOptions = {
+    resource,
+  }
 
   return {
     connector: connect ? connector : undefined,
+    connectorOptions,
     method: 'patch',
     modelName,
     operationId,

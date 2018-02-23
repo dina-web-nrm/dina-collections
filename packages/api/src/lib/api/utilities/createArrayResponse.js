@@ -7,12 +7,13 @@ module.exports = function createArrayResponse({ items, type }) {
 
   return {
     data: items.map(item => {
-      const { id, ...rest } = item
+      const { id, relationships, ...rest } = item
       return {
         attributes: {
           ...rest,
         },
         id: `${id}`,
+        relationships,
         type,
       }
     }),

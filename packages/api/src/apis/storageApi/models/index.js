@@ -20,8 +20,15 @@ const storageLocationModelFactory = function storageLocation({ sequelize }) {
 
 const setupRelations = function setupRelations({ models }) {
   const { physicalUnit, storageLocation } = models
-
-  physicalUnit.Model.belongsTo(storageLocation.Model, { as: 'storageLocation' })
+  storageLocation.Model.hasMany(physicalUnit.Model, {
+    as: 'physicalUnits',
+    foreignKey: 'storageLocationVersionId',
+  })
+  physicalUnit.Model.belongsTo(storageLocation.Model, {
+    as: 'storageLocation',
+    foreignKey: 'storageLocationVersionId',
+    targetKey: 'versionId',
+  })
 }
 
 module.exports = [

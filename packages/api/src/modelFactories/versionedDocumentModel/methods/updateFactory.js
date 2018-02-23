@@ -6,13 +6,9 @@ module.exports = function updateFactory({
   schemaVersion,
   validate,
 }) {
-  return function update({ doc, id } = {}) {
+  return function update({ doc, id, foreignKeyName, foreignKeyValue } = {}) {
     if (id === undefined) {
       return Promise.reject(new Error('id not provided'))
-    }
-
-    if (!doc) {
-      return Promise.reject(new Error('doc not provided'))
     }
 
     return getById({ id, raw: false }).then(existingModel => {
@@ -22,15 +18,30 @@ module.exports = function updateFactory({
         return Promise.reject(error)
       }
       const storedData = existingModel.get()
-      const newModel = {
+
+      let newModel = {
         ...storedData,
-        diff: diff(storedData.document, doc),
-        document: doc,
+        diff: null,
         isCurrentVersion: true,
-        schemaCompliant: !validate(doc),
-        schemaVersion,
+      }
+      if (doc !== undefined) {
+        newModel = {
+          ...newModel,
+          diff: diff(storedData.document, doc),
+          document: doc,
+          schemaCompliant: !validate(doc),
+          schemaVersion,
+        }
+      }
+
+      if (foreignKeyName) {
+        newModel = {
+          ...newModel,
+          [foreignKeyName]: foreignKeyValue,
+        }
       }
       delete newModel.versionId
+
       existingModel.set({ isCurrentVersion: false })
       return existingModel.save().then(() => {
         return Model.create(newModel).then(savedModel => {
