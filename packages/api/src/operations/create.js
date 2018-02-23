@@ -32,6 +32,6 @@ module.exports = function create({
       examples: exampleResponses,
       format: 'object',
     },
-    summary: `Create an ${resource}`,
+    summary: `Create ${resource}`,
   }
 }

@@ -64,13 +64,13 @@ apiDescribe('specimen', () => {
         })
       })
     })
-    describe('by identifiedTaxonNameStandardized', () => {
-      it('Succeed with valid identifiedTaxonNameStandardized', () => {
+    describe('by taxonNameStandardized', () => {
+      it('Succeed with valid taxonNameStandardized', () => {
         return makeTestCall({
           authToken,
           operationId: 'getSpecimens',
           queryParams: {
-            'filter[identifiedTaxonNameStandardized]': validTaxonName,
+            'filter[taxonNameStandardized]': validTaxonName,
           },
         }).then(res => {
           expect(res).toBeTruthy()
@@ -79,12 +79,12 @@ apiDescribe('specimen', () => {
           expect(res.data.length > 0).toBe(true)
         })
       })
-      it('Succeed with valid identifiedTaxonNameStandardized', () => {
+      it('Succeed with valid taxonNameStandardized', () => {
         return makeTestCall({
           authToken,
           operationId: 'getSpecimens',
           queryParams: {
-            'filter[identifiedTaxonNameStandardized]': validTaxonName,
+            'filter[taxonNameStandardized]': validTaxonName,
           },
         }).then(res => {
           expect(res).toBeTruthy()
@@ -98,7 +98,7 @@ apiDescribe('specimen', () => {
           authToken,
           operationId: 'getSpecimens',
           queryParams: {
-            'filter[identifiedTaxonNameStandardized]': 'not-existing',
+            'filter[taxonNameStandardized]': 'not-existing',
           },
         }).then(res => {
           expect(res).toBeTruthy()

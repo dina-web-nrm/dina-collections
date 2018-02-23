@@ -97,6 +97,7 @@ const testMockGetMany = operationId => {
       }).then(createdResource => {
         expect(createdResource).toBeTruthy()
         expect(createdResource.data).toBeTruthy()
+        expect(createdResource.data.length).toBeTruthy()
       })
     })
   })
