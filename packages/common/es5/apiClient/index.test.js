@@ -43,7 +43,7 @@ describe('apiClient', function () {
   expectedCallMethods.forEach(function (methodName) {
     it('returns function when using call with methodName ' + methodName, function () {
       var apiClient = createApiClient({});
-      expect(apiClient.call({ methodName: methodName }).catch(function (err) {})).toBeInstanceOf(_promise2.default);
+      expect(apiClient.call({ methodName: methodName }).catch(function () {})).toBeInstanceOf(_promise2.default);
     });
   });
 

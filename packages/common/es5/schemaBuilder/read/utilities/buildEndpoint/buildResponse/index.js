@@ -14,9 +14,9 @@ module.exports = function buildResponse(_ref) {
       format = _ref.format,
       _ref$include = _ref.include,
       include = _ref$include === undefined ? null : _ref$include,
+      modelReference = _ref.modelReference,
       operationId = _ref.operationId,
       raw = _ref.raw,
-      relationBase = _ref.relationBase,
       relations = _ref.relations,
       resource = _ref.resource,
       selfLink = _ref.selfLink,
@@ -31,16 +31,17 @@ module.exports = function buildResponse(_ref) {
   }
 
   var relationships = buildRelationships({
-    format: format,
-    relationBase: relationBase,
     relations: relations,
-    selfLink: selfLink,
     versionsLink: versionsLink
   });
   var links = buildLinks({ selfLink: selfLink });
   var included = buildIncluded(include);
 
-  var item = buildItem({ resource: resource, relationships: relationships });
+  var item = buildItem({
+    modelReference: modelReference,
+    relationships: relationships,
+    resource: resource
+  });
 
   var base = buildBase({
     description: description,

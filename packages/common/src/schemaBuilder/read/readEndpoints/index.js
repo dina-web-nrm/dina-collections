@@ -1,47 +1,34 @@
-/* eslint-disable import/no-dynamic-require, global-require */
-const fs = require('fs')
-const path = require('path')
-
 const buildEndpoint = require('../utilities/buildEndpoint')
 
-module.exports = function readEndpoints(apisBasePath) {
-  const apiEndpoints = fs
-    .readdirSync(apisBasePath)
-    .filter(apiName => {
-      const apiPath = path.join(apisBasePath, apiName)
-      return fs.statSync(apiPath).isDirectory()
-    })
-    .reduce((obj, apiName) => {
-      const endpointPath = path.join(apisBasePath, apiName, 'endpoints')
-      return {
-        ...obj,
-        [apiName]: require(endpointPath),
-      }
-    }, {})
-  return Object.keys(apiEndpoints).reduce((endpoints, key) => {
-    const localEndpoints = Object.keys(apiEndpoints[key]).reduce(
-      (obj, operationId) => {
-        const rawEndpoint = apiEndpoints[key][operationId]
+module.exports = function readEndpoints(services) {
+  const endpoints = {}
+  Object.keys(services).forEach(serviceName => {
+    const service = services[serviceName]
+    const resources = service.resources || {}
+    // console.log('resources', resources)
+
+    Object.keys(resources).forEach(resourceName => {
+      const resource = resources[resourceName]
+      const operations = resource.operations || {}
+      Object.keys(operations).forEach(operationId => {
+        const operation = operations[operationId]
+
         const endpoint = buildEndpoint({
           operationId,
-          ...rawEndpoint,
+          ...operation,
         })
-        const tags = endpoint.tags ? [...endpoint.tags, key] : [key]
 
-        return {
-          ...obj,
-          [operationId]: {
-            ...endpoint,
-            tags,
-          },
+        const tags = endpoint.tags
+          ? [...endpoint.tags, serviceName]
+          : [serviceName]
+
+        endpoints[operationId] = {
+          ...endpoint,
+          tags,
         }
-      },
-      {}
-    )
+      })
+    })
+  })
 
-    return {
-      ...endpoints,
-      ...localEndpoints,
-    }
-  }, {})
+  return endpoints
 }

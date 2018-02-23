@@ -1,16 +1,4 @@
 {
   "additionalProperties": false,
-  "description": "A reference to a model",
-  "properties": {
-    "id": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string"
-    },
-    "variationId": {
-      "type": "string"
-    }
-  },
-  "required": ["id", "type"]
+  "description": "A reference to a model"
 }

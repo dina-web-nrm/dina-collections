@@ -1,6 +1,6 @@
-import transformAssignedTaxon from './transformAssignedTaxon'
+import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
-import transformIdentifiableUnits from './transformIdentifiableUnits'
+import transformDistinguishedUnits from './transformDistinguishedUnits'
 import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
@@ -11,7 +11,7 @@ export default function transformOutput(formData) {
     Math.floor(Math.random() * (999999 - 100001) + 100000)
   )
 
-  const assignedTaxon = transformAssignedTaxon(formData.assignedTaxon)
+  const taxonInformation = transformTaxonInformation(formData.taxonInformation)
   const identifiers = transformIdentifiers(
     formData.identifiers,
     newCatalogNumber
@@ -19,8 +19,8 @@ export default function transformOutput(formData) {
   const featureObservations = transformFeatureObservations(
     formData.featureObservations
   )
-  const identifiableUnits = transformIdentifiableUnits(
-    formData.identifiableUnits
+  const distinguishedUnits = transformDistinguishedUnits(
+    formData.distinguishedUnits
   )
   const individualCircumstances = transformIndividualCircumstances(
     formData.individualCircumstances
@@ -28,11 +28,11 @@ export default function transformOutput(formData) {
 
   const individualGroup = {
     ...formData,
-    assignedTaxon,
+    distinguishedUnits,
     featureObservations,
-    identifiableUnits,
     identifiers,
     individualCircumstances,
+    taxonInformation,
   }
 
   return {

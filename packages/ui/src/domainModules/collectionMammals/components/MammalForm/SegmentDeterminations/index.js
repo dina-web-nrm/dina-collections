@@ -13,8 +13,8 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    assignedTaxon: formValueSelector(state, 'assignedTaxon'),
     isSmallScreen: sizeSelectors.getIsSmall(state),
+    taxonInformation: formValueSelector(state, 'taxonInformation'),
   }
 }
 const mapDispatchToProps = {
@@ -22,7 +22,13 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  assignedTaxon: PropTypes.shape({
+  changeFieldValue: PropTypes.func.isRequired,
+  formValueSelector: PropTypes.func.isRequired,
+  isSmallScreen: PropTypes.bool.isRequired,
+  mode: PropTypes.oneOf(['edit', 'register']).isRequired,
+  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  setAccordionActiveIndex: PropTypes.func.isRequired,
+  taxonInformation: PropTypes.shape({
     curatorialName: PropTypes.string,
     determinations: PropTypes.arrayOf(
       PropTypes.shape({
@@ -34,19 +40,13 @@ const propTypes = {
       })
     ).isRequired,
   }),
-  changeFieldValue: PropTypes.func.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
-  isSmallScreen: PropTypes.bool.isRequired,
-  mode: PropTypes.oneOf(['edit', 'register']).isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
-  setAccordionActiveIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  assignedTaxon: { determinations: [] },
+  taxonInformation: { determinations: [] },
 }
 
 const SegmentDeterminations = ({
-  assignedTaxon,
+  taxonInformation,
   changeFieldValue,
   formValueSelector,
   isSmallScreen,
@@ -54,7 +54,7 @@ const SegmentDeterminations = ({
   removeArrayFieldByIndex,
   setAccordionActiveIndex,
 }) => {
-  const { determinations } = assignedTaxon
+  const { determinations } = taxonInformation
 
   return (
     <Segment color="green">
@@ -78,7 +78,7 @@ const SegmentDeterminations = ({
             onClick={event => {
               event.preventDefault()
               changeFieldValue(
-                `assignedTaxon.determinations.${determinations.length}`,
+                `taxonInformation.determinations.${determinations.length}`,
                 {}
               )
               setAccordionActiveIndex({

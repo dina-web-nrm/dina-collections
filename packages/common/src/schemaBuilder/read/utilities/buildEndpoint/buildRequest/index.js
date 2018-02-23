@@ -5,6 +5,7 @@ module.exports = function createRequest({
   description,
   examples,
   format,
+  modelReference,
   operationId,
   raw,
   resource,
@@ -35,16 +36,19 @@ module.exports = function createRequest({
                 type: 'object',
                 properties: {
                   type: {
-                    type: 'string',
                     default: resource,
+                    enum: [resource],
+                    type: 'string',
                   },
                   id: {
                     type: 'string',
                     example: '1234',
                   },
-                  attributes: {
-                    $ref: `__ROOT__${resource}`,
-                  },
+                  attributes: modelReference
+                    ? undefined
+                    : {
+                        $ref: `__ROOT__${resource}`,
+                      },
                 },
               },
             },
@@ -73,12 +77,15 @@ module.exports = function createRequest({
                 example: '1234',
               },
               type: {
-                type: 'string',
                 default: resource,
+                enum: [resource],
+                type: 'string',
               },
-              attributes: {
-                $ref: `__ROOT__${resource}`,
-              },
+              attributes: modelReference
+                ? undefined
+                : {
+                    $ref: `__ROOT__${resource}`,
+                  },
             },
           },
         },

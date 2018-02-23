@@ -14,13 +14,14 @@ var buildResponse = require('./buildResponse');
 var buildRequest = require('./buildRequest');
 
 module.exports = function buildEndpoint(_ref) {
-  var method = _ref.method,
+  var _ref$auth = _ref.auth,
+      auth = _ref$auth === undefined ? true : _ref$auth,
+      description = _ref.description,
+      method = _ref.method,
       operationId = _ref.operationId,
       path = _ref.path,
       _ref$pathParams = _ref.pathParams,
       rawPathParams = _ref$pathParams === undefined ? [] : _ref$pathParams,
-      _ref$auth = _ref.auth,
-      auth = _ref$auth === undefined ? true : _ref$auth,
       queryParams = _ref.queryParams,
       relationBase = _ref.relationBase,
       requestInput = _ref.request,
@@ -56,6 +57,7 @@ module.exports = function buildEndpoint(_ref) {
     operationId: operationId })) : undefined;
 
   return {
+    description: description,
     method: method,
     operationId: operationId,
     path: path,

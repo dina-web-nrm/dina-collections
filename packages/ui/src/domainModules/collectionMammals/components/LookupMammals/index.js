@@ -44,13 +44,6 @@ const propTypes = {
   push: PropTypes.func.isRequired,
   result: PropTypes.arrayOf(
     PropTypes.shape({
-      assignedTaxon: PropTypes.shape({
-        determinations: PropTypes.arrayOf(
-          PropTypes.shape({
-            isCurrentDetermination: PropTypes.bool.isRequired,
-          }).isRequired
-        ).isRequired,
-      }),
       identifiers: PropTypes.arrayOf(
         PropTypes.shape({
           identifier: PropTypes.shape({
@@ -59,6 +52,13 @@ const propTypes = {
           }).isRequired,
         }).isRequired
       ),
+      taxonInformation: PropTypes.shape({
+        determinations: PropTypes.arrayOf(
+          PropTypes.shape({
+            isCurrentDetermination: PropTypes.bool.isRequired,
+          }).isRequired
+        ).isRequired,
+      }),
     })
   ).isRequired,
   searchParameters: PropTypes.shape({
@@ -144,7 +144,7 @@ class LookupMammals extends Component {
           {result.length ? (
             <Table.Body>
               {result.map(({ id, individualGroup }) => {
-                const { assignedTaxon, identifiers } = individualGroup
+                const { taxonInformation, identifiers } = individualGroup
 
                 const catalogNumberIdentifier =
                   identifiers.find(
@@ -153,13 +153,13 @@ class LookupMammals extends Component {
                   ) || null
 
                 const { taxonNameStandardized } =
-                  assignedTaxon &&
-                  assignedTaxon.determinations &&
-                  assignedTaxon.determinations.length &&
-                  (assignedTaxon.determinations.find(
+                  taxonInformation &&
+                  taxonInformation.determinations &&
+                  taxonInformation.determinations.length &&
+                  (taxonInformation.determinations.find(
                     ({ isCurrentDetermination }) => isCurrentDetermination
                   ) ||
-                    assignedTaxon.determinations[0])
+                    taxonInformation.determinations[0])
 
                 const tableValues = {
                   catalogNumber:

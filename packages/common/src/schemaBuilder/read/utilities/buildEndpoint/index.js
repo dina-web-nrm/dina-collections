@@ -2,11 +2,12 @@ const buildResponse = require('./buildResponse')
 const buildRequest = require('./buildRequest')
 
 module.exports = function buildEndpoint({
+  auth = true,
+  description,
   method,
   operationId,
   path,
   pathParams: rawPathParams = [],
-  auth = true,
   queryParams,
   relationBase,
   request: requestInput,
@@ -47,6 +48,7 @@ module.exports = function buildEndpoint({
     : undefined
 
   return {
+    description,
     method,
     operationId,
     path,

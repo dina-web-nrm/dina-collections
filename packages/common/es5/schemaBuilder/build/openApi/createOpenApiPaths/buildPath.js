@@ -23,7 +23,6 @@ module.exports = function buildPath(endpoint) {
     pathParams: pathParams,
     queryParams: queryParams
   });
-
   return {
     description: description,
     operationId: operationId,

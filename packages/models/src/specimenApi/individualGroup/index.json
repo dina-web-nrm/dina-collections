@@ -2,9 +2,9 @@
   "additionalProperties": false,
   "description": "This is a description",
   "properties": {
-    "assignedTaxon": {
+    "taxonInformation": {
       "type": "object",
-      "$ref": "__ROOT__assignedTaxon"
+      "$ref": "__ROOT__taxonInformation"
     },
     "individualCircumstances": {
       "type": "array",
@@ -19,9 +19,9 @@
       "type": "array",
       "items": { "$ref": "__ROOT__identifier" }
     },
-    "identifiableUnits": {
+    "distinguishedUnits": {
       "type": "array",
-      "items": { "$ref": "__ROOT__identifiableUnit" }
+      "items": { "$ref": "__ROOT__distinguishedUnit" }
     },
     "version": { "type": "integer" }
   }

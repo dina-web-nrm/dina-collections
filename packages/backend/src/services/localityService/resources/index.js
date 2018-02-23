@@ -1,0 +1,1 @@
+exports.curatedLocality = require('./curatedLocality')

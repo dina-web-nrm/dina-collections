@@ -22,8 +22,12 @@ var createModel = function createModel(model, examples) {
     cleanedModel['x-modelType'] = model.modelType;
     delete cleanedModel.modelType;
   }
-  if (examples && examples.length) {
-    cleanedModel.example = examples[0];
+  if (examples) {
+    cleanedModel['x-examples'] = examples;
+
+    if (examples.primary) {
+      cleanedModel.example = examples.primary;
+    }
   }
 
   return interpolate(cleanedModel, '__ROOT__', '#/components/schemas/');
