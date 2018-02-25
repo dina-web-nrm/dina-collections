@@ -209,7 +209,7 @@ class AccordionItem extends Component {
                       event.preventDefault()
                       this.handleCloseRemovePopup()
                       removeArrayFieldByIndex(
-                        'assignedTaxon.determinations',
+                        'taxonInformation.determinations',
                         index
                       )
                     }}
@@ -231,7 +231,10 @@ class AccordionItem extends Component {
               <Button
                 onClick={event => {
                   event.preventDefault()
-                  removeArrayFieldByIndex('assignedTaxon.determinations', index)
+                  removeArrayFieldByIndex(
+                    'taxonInformation.determinations',
+                    index
+                  )
                 }}
               >
                 {moduleTranslate({ textKey: 'remove' })}
@@ -253,6 +256,6 @@ export default compose(
     scope: 'determination',
   }),
   pathBuilder({
-    name: 'assignedTaxon.determinations',
+    name: 'taxonInformation.determinations',
   })
 )(AccordionItem)

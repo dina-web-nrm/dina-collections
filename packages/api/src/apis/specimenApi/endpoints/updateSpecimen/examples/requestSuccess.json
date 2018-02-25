@@ -3,7 +3,7 @@
     "type": "specimen",
     "attributes": {
       "individualGroup": {
-        "assignedTaxon": {
+        "taxonInformation": {
           "determinations": [
             {
               "date": "date",
@@ -27,7 +27,7 @@
             "methodText": "methodText"
           }
         ],
-        "identifiableUnits": [
+        "distinguishedUnits": [
           {
             "alternateIdentifiersText": "alternateIdentifiersText",
             "physicalUnit": {

@@ -1,6 +1,6 @@
 {
   "data": {
-    "type": "identifiableUnitObservationType",
+    "type": "distinguishedUnitObservationType",
     "attributes": {
       "typeName": "sex"
     }

@@ -1,6 +1,6 @@
-import transformAssignedTaxon from './transformAssignedTaxon'
+import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
-import transformIdentifiableUnits from './transformIdentifiableUnits'
+import transformDistinguishedUnits from './transformDistinguishedUnits'
 import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
@@ -8,12 +8,14 @@ export default function transformInput(individualGroup = {}) {
   const { id, type, ...rest } = individualGroup
   const attributes = { ...rest }
 
-  const assignedTaxon = transformAssignedTaxon(attributes.assignedTaxon)
+  const taxonInformation = transformTaxonInformation(
+    attributes.taxonInformation
+  )
   const featureObservations = transformFeatureObservations(
     attributes.featureObservations
   )
-  const identifiableUnits = transformIdentifiableUnits(
-    attributes.identifiableUnits
+  const distinguishedUnits = transformDistinguishedUnits(
+    attributes.distinguishedUnits
   )
   const identifiers = transformIdentifiers(attributes.identifiers)
   const individualCircumstances = transformIndividualCircumstances(
@@ -22,10 +24,10 @@ export default function transformInput(individualGroup = {}) {
 
   return {
     ...attributes,
-    assignedTaxon,
+    distinguishedUnits,
     featureObservations,
-    identifiableUnits,
     identifiers,
     individualCircumstances,
+    taxonInformation,
   }
 }

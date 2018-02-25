@@ -2,7 +2,7 @@ const createResource = require('../../../lib/resourceFactory')
 const { create, getOne, update, getMany } = require('../../../operations')
 
 const createFeatureObservationTypeRequestSuccess = require('./featureObservationType/examples/requestSuccess.json')
-const createIdentifiableUnitObservationTypeRequestSuccess = require('./identifiableUnitObservationType/examples/requestSuccess.json')
+const createDistinguishedUnitObservationTypeRequestSuccess = require('./distinguishedUnitObservationType/examples/requestSuccess.json')
 
 const featureObservationType = createResource({
   basePath: '/api/curatedList/v01',
@@ -28,13 +28,13 @@ const featureObservationType = createResource({
   resource: 'featureObservationType',
 })
 
-const identifiableUnitObservationType = createResource({
+const distinguishedUnitObservationType = createResource({
   basePath: '/curatedListApi/v01',
   endpoints: [
     {
       connect: true,
       exampleRequests: {
-        primary: createIdentifiableUnitObservationTypeRequestSuccess,
+        primary: createDistinguishedUnitObservationTypeRequestSuccess,
       },
       operation: create,
     },
@@ -52,10 +52,10 @@ const identifiableUnitObservationType = createResource({
     },
   ],
 
-  resource: 'identifiableUnitObservationType',
+  resource: 'distinguishedUnitObservationType',
 })
 
 module.exports = {
   ...featureObservationType,
-  ...identifiableUnitObservationType,
+  ...distinguishedUnitObservationType,
 }

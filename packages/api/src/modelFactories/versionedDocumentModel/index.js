@@ -1,34 +1,13 @@
+const attachMethods = require('./attachMethods')
 const Sequelize = require('sequelize')
-const createFactory = require('./methods/createFactory')
-const getByIdFactory = require('./methods/getByIdFactory')
-const getOneWhereFactory = require('./methods/getOneWhereFactory')
-const updateFactory = require('./methods/updateFactory')
-const getWhereFactory = require('./methods/getWhereFactory')
-const { createSystemModelSchemaValidator } = require('common/src/error')
-
-// make model-factory more advanced
-// * add where search to get single revision
 
 module.exports = function createModel({
+  customMethodFactories,
   name,
-  sequelize,
   schemaModelName,
   schemaVersion,
-  customMethodFactories,
+  sequelize,
 }) {
-  let validate = () => {
-    return null
-  }
-  // TODO - test schema-validations
-  // inject schema
-  if (schemaModelName) {
-    validate = createSystemModelSchemaValidator({
-      context: 'modelValidation',
-      model: schemaModelName,
-      throwOnError: false,
-    })
-  }
-
   const Model = sequelize.define(name, {
     diff: {
       type: Sequelize.JSONB,
@@ -56,52 +35,11 @@ module.exports = function createModel({
     },
   })
 
-  const getById = getByIdFactory({
+  return attachMethods({
+    customMethodFactories,
     Model,
-  })
-
-  const getOneWhere = getOneWhereFactory({ Model })
-  const getWhere = getWhereFactory({ Model })
-  const create = createFactory({
-    Model,
+    schemaModelName,
     schemaVersion,
-    validate,
+    sequelize,
   })
-
-  const update = updateFactory({
-    getById,
-    Model,
-    schemaVersion,
-    validate,
-  })
-
-  const coreMethods = {
-    create,
-    getById,
-    getOneWhere,
-    getWhere,
-    Model,
-    update,
-  }
-
-  const customMethods = !customMethodFactories
-    ? {}
-    : Object.keys(customMethodFactories).reduce((methods, key) => {
-        return {
-          ...methods,
-          [key]: customMethodFactories[key]({
-            coreMethods,
-            Model,
-            schemaVersion,
-            sequelize,
-            validate,
-          }),
-        }
-      }, {})
-
-  return {
-    ...coreMethods,
-    ...customMethods,
-    Model,
-  }
 }

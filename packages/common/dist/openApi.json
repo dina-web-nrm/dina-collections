@@ -88,7 +88,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -133,7 +133,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an agent",
+        "summary": "Create agent",
         "tags": [
           "agentApi"
         ]
@@ -144,7 +144,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -202,7 +202,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -258,7 +258,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -375,7 +375,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -420,7 +420,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an expedition",
+        "summary": "Create expedition",
         "tags": [
           "curatedEventApi"
         ]
@@ -431,7 +431,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -489,7 +489,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -545,7 +545,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -603,7 +603,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -648,7 +648,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an featureObservationType",
+        "summary": "Create featureObservationType",
         "tags": [
           "curatedListApi"
         ]
@@ -659,7 +659,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -717,7 +717,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -783,7 +783,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -824,14 +824,14 @@
         ]
       }
     },
-    "/curatedListApi/v01/identifiableUnitObservationTypes": {
+    "/curatedListApi/v01/distinguishedUnitObservationTypes": {
       "post": {
-        "operationId": "createIdentifiableUnitObservationType",
+        "operationId": "createDistinguishedUnitObservationType",
         "parameters": [
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -853,7 +853,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/createIdentifiableUnitObservationTypeRequest"
+                "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeRequest"
               }
             }
           },
@@ -864,7 +864,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createIdentifiableUnitObservationTypeResponse"
+                  "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeResponse"
                 }
               }
             },
@@ -876,18 +876,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an identifiableUnitObservationType",
+        "summary": "Create distinguishedUnitObservationType",
         "tags": [
           "curatedListApi"
         ]
       },
       "get": {
-        "operationId": "getIdentifiableUnitObservationTypes",
+        "operationId": "getDistinguishedUnitObservationTypes",
         "parameters": [
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -910,7 +910,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getIdentifiableUnitObservationTypesResponse"
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypesResponse"
                 }
               }
             },
@@ -922,20 +922,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find identifiableUnitObservationTypes",
+        "summary": "Find distinguishedUnitObservationTypes",
         "tags": [
           "curatedListApi"
         ]
       }
     },
-    "/curatedListApi/v01/identifiableUnitObservationTypes/{id}": {
+    "/curatedListApi/v01/distinguishedUnitObservationTypes/{id}": {
       "patch": {
-        "operationId": "updateIdentifiableUnitObservationType",
+        "operationId": "updateDistinguishedUnitObservationType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "identifiableUnitObservationType id",
+            "description": "distinguishedUnitObservationType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -945,7 +945,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -967,7 +967,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/updateIdentifiableUnitObservationTypeRequest"
+                "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeRequest"
               }
             }
           },
@@ -978,7 +978,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateIdentifiableUnitObservationTypeResponse"
+                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeResponse"
                 }
               }
             },
@@ -990,18 +990,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates identifiableUnitObservationType",
+        "summary": "Updates distinguishedUnitObservationType",
         "tags": [
           "curatedListApi"
         ]
       },
       "get": {
-        "operationId": "getIdentifiableUnitObservationType",
+        "operationId": "getDistinguishedUnitObservationType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "identifiableUnitObservationType id",
+            "description": "distinguishedUnitObservationType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1011,7 +1011,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1034,7 +1034,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getIdentifiableUnitObservationTypeResponse"
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypeResponse"
                 }
               }
             },
@@ -1046,7 +1046,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find identifiableUnitObservationType by id",
+        "summary": "Find distinguishedUnitObservationType by id",
         "tags": [
           "curatedListApi"
         ]
@@ -1097,7 +1097,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1142,7 +1142,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an catalogNumber",
+        "summary": "Create catalogNumber",
         "tags": [
           "identifierApi"
         ]
@@ -1153,7 +1153,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1211,7 +1211,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1277,7 +1277,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1325,7 +1325,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1370,7 +1370,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an curatedLocality",
+        "summary": "Create curatedLocality",
         "tags": [
           "localityApi"
         ]
@@ -1381,7 +1381,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1439,7 +1439,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1505,7 +1505,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1546,254 +1546,6 @@
         ]
       }
     },
-    "/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo": {
-      "patch": {
-        "operationId": "updateCuratedLocalityBelongsTo",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "curatedLocality id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateCuratedLocalityBelongsToRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityBelongsToResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Update curatedLocality -> belongsTo",
-        "tags": [
-          "localityApi"
-        ]
-      },
-      "get": {
-        "operationId": "getCuratedLocalityBelongsTo",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "curatedLocality id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocalityBelongsToResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find curatedLocality -> belongsTo",
-        "tags": [
-          "localityApi"
-        ]
-      }
-    },
-    "/api/locality/v01/curatedLocalities/{id}/relationships/contains": {
-      "patch": {
-        "operationId": "updateCuratedLocalityContains",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "curatedLocality id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateCuratedLocalityContainsRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityContainsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Update curatedLocality -> contains",
-        "tags": [
-          "localityApi"
-        ]
-      },
-      "get": {
-        "operationId": "getCuratedLocalityContains",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "curatedLocality id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocalityContainsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find curatedLocality -> contains",
-        "tags": [
-          "localityApi"
-        ]
-      }
-    },
     "/api/specimen/v01/specimens": {
       "post": {
         "operationId": "createSpecimen",
@@ -1801,7 +1553,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1846,7 +1598,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an specimen",
+        "summary": "Create specimen",
         "tags": [
           "specimenApi"
         ]
@@ -1877,7 +1629,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -1935,7 +1687,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2001,7 +1753,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2049,7 +1801,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "specimen id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2059,7 +1811,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2115,7 +1867,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "specimen id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2125,7 +1877,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2168,6 +1920,7 @@
     },
     "/api/specimen/v01/specimens/{id}/versions/{versionId}": {
       "get": {
+        "description": "The id of the returned resource is the versionId and not the ordinary id",
         "operationId": "getSpecimenVersion",
         "parameters": [
           {
@@ -2193,7 +1946,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2251,7 +2004,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2326,7 +2079,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2371,7 +2124,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an physicalUnit",
+        "summary": "Create physicalUnit",
         "tags": [
           "storageApi"
         ]
@@ -2382,7 +2135,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2440,7 +2193,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2506,7 +2259,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2554,7 +2307,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "storageLocation id",
+            "description": "physicalUnit id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2564,7 +2317,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2620,7 +2373,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "storageLocation id",
+            "description": "physicalUnit id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2630,7 +2383,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2678,7 +2431,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2723,7 +2476,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create an storageLocation",
+        "summary": "Create storageLocation",
         "tags": [
           "storageApi"
         ]
@@ -2734,7 +2487,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2792,7 +2545,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2858,7 +2611,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2906,7 +2659,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "storageLocation id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2916,7 +2669,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -2972,7 +2725,7 @@
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "storageLocation id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2982,7 +2735,7 @@
           {
             "in": "query",
             "name": "exampleId",
-            "description": "Will a specific example or 404 i example dont exist. Only active when combined with mock parameter",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
             "schema": {
               "default": "primary",
@@ -3025,6 +2778,7 @@
     },
     "/taxon": {
       "get": {
+        "description": "Fetches a taxon or several taxa.\n",
         "operationId": "getTaxaByName",
         "parameters": [
           {
@@ -3158,21 +2912,7 @@
       "modelReference": {
         "additionalProperties": false,
         "description": "A reference to a model",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "variationId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "type"
-        ],
+        "properties": {},
         "x-category": "core",
         "x-modelType": "model"
       },
@@ -3287,7 +3027,7 @@
             "type": "string",
             "enum": [
               "featureObservationType",
-              "identifiableUnitObservationType"
+              "distinguishedUnitObservationType"
             ]
           },
           "items": {
@@ -3309,7 +3049,7 @@
                 "$ref": "#/components/schemas/featureObservationType"
               },
               {
-                "$ref": "#/components/schemas/identifiableUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               }
             ]
           }
@@ -3317,24 +3057,7 @@
         "x-category": "curatedListApi",
         "x-modelType": "model"
       },
-      "featureObservationType": {
-        "additionalProperties": false,
-        "properties": {
-          "typeName": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "typeName"
-        ],
-        "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
-        "x-category": "curatedListApi",
-        "x-modelType": "model"
-      },
-      "identifiableUnitObservationType": {
+      "distinguishedUnitObservationType": {
         "additionalProperties": false,
         "properties": {
           "typeName": {
@@ -3363,6 +3086,23 @@
         "required": [
           "typeName"
         ],
+        "x-category": "curatedListApi",
+        "x-modelType": "model"
+      },
+      "featureObservationType": {
+        "additionalProperties": false,
+        "properties": {
+          "typeName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "typeName"
+        ],
+        "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
         "x-category": "curatedListApi",
         "x-modelType": "model"
       },
@@ -3511,23 +3251,6 @@
         "x-category": "localityApi",
         "x-modelType": "model"
       },
-      "assignedTaxon": {
-        "additionalProperties": false,
-        "properties": {
-          "curatorialName": {
-            "type": "string"
-          },
-          "determinations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/determination"
-            }
-          }
-        },
-        "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
       "collectingCircumstance": {
         "additionalProperties": false,
         "properties": {
@@ -3630,6 +3353,62 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
+      "distinguishedUnit": {
+        "additionalProperties": false,
+        "properties": {
+          "alternateIdentifiersText": {
+            "type": "string",
+            "example": "Skin complete, prepared"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/identifier"
+            }
+          },
+          "collectingCircumstance": {
+            "$ref": "#/components/schemas/collectingCircumstance"
+          },
+          "id": {
+            "type": "string"
+          },
+          "physicalUnitText": {
+            "type": "string",
+            "example": "Skin complete, prepared"
+          },
+          "physicalUnit": {
+            "$ref": "#/components/schemas/physicalUnit"
+          }
+        },
+        "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
+      "distinguishedUnitObservations": {
+        "additionalProperties": false,
+        "properties": {
+          "agent": {
+            "type": "string",
+            "example": "Doe, J."
+          },
+          "date": {
+            "$ref": "#/components/schemas/date"
+          },
+          "observationText": {
+            "type": "string",
+            "example": "10 years"
+          },
+          "observationType": {
+            "$ref": "#/components/schemas/distinguishedUnitObservationType"
+          },
+          "methodText": {
+            "type": "string",
+            "example": "Known age"
+          }
+        },
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
       "event": {
         "additionalProperties": false,
         "properties": {
@@ -3677,62 +3456,6 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "identifiableUnit": {
-        "additionalProperties": false,
-        "properties": {
-          "alternateIdentifiersText": {
-            "type": "string",
-            "example": "Skin complete, prepared"
-          },
-          "identifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/identifier"
-            }
-          },
-          "collectingCircumstance": {
-            "$ref": "#/components/schemas/collectingCircumstance"
-          },
-          "id": {
-            "type": "string"
-          },
-          "physicalUnitText": {
-            "type": "string",
-            "example": "Skin complete, prepared"
-          },
-          "physicalUnit": {
-            "$ref": "#/components/schemas/physicalUnit"
-          }
-        },
-        "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
-      "identifiableUnitObservations": {
-        "additionalProperties": false,
-        "properties": {
-          "agent": {
-            "type": "string",
-            "example": "Doe, J."
-          },
-          "date": {
-            "$ref": "#/components/schemas/date"
-          },
-          "observationText": {
-            "type": "string",
-            "example": "10 years"
-          },
-          "observationType": {
-            "$ref": "#/components/schemas/identifiableUnitObservationType"
-          },
-          "methodText": {
-            "type": "string",
-            "example": "Known age"
-          }
-        },
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
       "individualCircumstance": {
         "additionalProperties": false,
         "properties": {
@@ -3769,9 +3492,9 @@
         "additionalProperties": false,
         "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
         "properties": {
-          "assignedTaxon": {
+          "taxonInformation": {
             "type": "object",
-            "$ref": "#/components/schemas/assignedTaxon"
+            "$ref": "#/components/schemas/taxonInformation"
           },
           "individualCircumstances": {
             "type": "array",
@@ -3794,10 +3517,10 @@
               "$ref": "#/components/schemas/identifier"
             }
           },
-          "identifiableUnits": {
+          "distinguishedUnits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/identifiableUnit"
+              "$ref": "#/components/schemas/distinguishedUnit"
             }
           },
           "version": {
@@ -3896,10 +3619,10 @@
           "physicalUnits": {
             "$ref": "#/components/schemas/physicalUnit"
           },
-          "identifiableUnits": {
+          "distinguishedUnits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/identifiableUnit"
+              "$ref": "#/components/schemas/distinguishedUnit"
             }
           },
           "id": {
@@ -3930,16 +3653,33 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
+      "taxonInformation": {
+        "additionalProperties": false,
+        "properties": {
+          "curatorialName": {
+            "type": "string"
+          },
+          "determinations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/determination"
+            }
+          }
+        },
+        "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
       "physicalUnit": {
         "additionalProperties": false,
         "properties": {
           "id": {
             "type": "string"
           },
-          "identifiableUnits": {
+          "distinguishedUnits": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/identifiableUnit"
+              "$ref": "#/components/schemas/distinguishedUnit"
             }
           },
           "normalStorageLocationText": {
@@ -4128,8 +3868,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "agent"
+                "default": "agent",
+                "enum": [
+                  "agent"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/agent"
@@ -4172,8 +3915,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "agent"
+                "default": "agent",
+                "enum": [
+                  "agent"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/agent"
@@ -4226,8 +3972,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "expedition"
+                "default": "expedition",
+                "enum": [
+                  "expedition"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/expedition"
@@ -4266,8 +4015,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "expedition"
+                "default": "expedition",
+                "enum": [
+                  "expedition"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/expedition"
@@ -4292,8 +4044,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "featureObservationType"
+                "default": "featureObservationType",
+                "enum": [
+                  "featureObservationType"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/featureObservationType"
@@ -4338,8 +4093,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "featureObservationType"
+                "default": "featureObservationType",
+                "enum": [
+                  "featureObservationType"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/featureObservationType"
@@ -4348,7 +4106,7 @@
           }
         }
       },
-      "createIdentifiableUnitObservationTypeRequest": {
+      "createDistinguishedUnitObservationTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -4364,11 +4122,14 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "identifiableUnitObservationType"
+                "default": "distinguishedUnitObservationType",
+                "enum": [
+                  "distinguishedUnitObservationType"
+                ],
+                "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/identifiableUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               }
             }
           }
@@ -4376,7 +4137,7 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "identifiableUnitObservationType",
+              "type": "distinguishedUnitObservationType",
               "attributes": {
                 "typeName": "sex"
               }
@@ -4385,14 +4146,14 @@
         },
         "example": {
           "data": {
-            "type": "identifiableUnitObservationType",
+            "type": "distinguishedUnitObservationType",
             "attributes": {
               "typeName": "sex"
             }
           }
         }
       },
-      "updateIdentifiableUnitObservationTypeRequest": {
+      "updateDistinguishedUnitObservationTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -4408,11 +4169,14 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "identifiableUnitObservationType"
+                "default": "distinguishedUnitObservationType",
+                "enum": [
+                  "distinguishedUnitObservationType"
+                ],
+                "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/identifiableUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               }
             }
           }
@@ -4434,8 +4198,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "catalogNumber"
+                "default": "catalogNumber",
+                "enum": [
+                  "catalogNumber"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/catalogNumber"
@@ -4484,8 +4251,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "catalogNumber"
+                "default": "catalogNumber",
+                "enum": [
+                  "catalogNumber"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/catalogNumber"
@@ -4510,8 +4280,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "curatedLocality"
+                "default": "curatedLocality",
+                "enum": [
+                  "curatedLocality"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/curatedLocality"
@@ -4600,66 +4373,14 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "curatedLocality"
+                "default": "curatedLocality",
+                "enum": [
+                  "curatedLocality"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/curatedLocality"
-              }
-            }
-          }
-        }
-      },
-      "updateCuratedLocalityBelongsToRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "type": "string",
-                "default": "modelReference"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/modelReference"
-              }
-            }
-          }
-        }
-      },
-      "updateCuratedLocalityContainsRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "array",
-            "additionalProperties": false,
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "default": "modelReference"
-                },
-                "id": {
-                  "type": "string",
-                  "example": "1234"
-                },
-                "attributes": {
-                  "$ref": "#/components/schemas/modelReference"
-                }
               }
             }
           }
@@ -4681,8 +4402,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "specimen"
+                "default": "specimen",
+                "enum": [
+                  "specimen"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/specimen"
@@ -4696,7 +4420,7 @@
               "type": "specimen",
               "attributes": {
                 "individualGroup": {
-                  "assignedTaxon": {
+                  "taxonInformation": {
                     "determinations": [
                       {
                         "date": "date",
@@ -4720,7 +4444,7 @@
                       "methodText": "methodText"
                     }
                   ],
-                  "identifiableUnits": [
+                  "distinguishedUnits": [
                     {
                       "alternateIdentifiersText": "alternateIdentifiersText",
                       "physicalUnit": {
@@ -4800,7 +4524,7 @@
               "type": "specimen",
               "attributes": {
                 "individualGroup": {
-                  "assignedTaxon": {},
+                  "taxonInformation": {},
                   "individualCircumstances": [
                     {
                       "id": "string",
@@ -4914,7 +4638,7 @@
                       "remarks": "Some remarks"
                     }
                   ],
-                  "identifiableUnits": [
+                  "distinguishedUnits": [
                     {
                       "alternateIdentifiersText": "Skin complete, prepared",
                       "identifiers": [
@@ -4972,7 +4696,7 @@
                       "physicalUnitText": "Skin complete, prepared",
                       "physicalUnit": {
                         "id": "string",
-                        "identifiableUnits": [
+                        "distinguishedUnits": [
                           null
                         ],
                         "normalStorageLocationText": "string",
@@ -4996,7 +4720,7 @@
             "type": "specimen",
             "attributes": {
               "individualGroup": {
-                "assignedTaxon": {},
+                "taxonInformation": {},
                 "individualCircumstances": [
                   {
                     "id": "string",
@@ -5110,7 +4834,7 @@
                     "remarks": "Some remarks"
                   }
                 ],
-                "identifiableUnits": [
+                "distinguishedUnits": [
                   {
                     "alternateIdentifiersText": "Skin complete, prepared",
                     "identifiers": [
@@ -5168,7 +4892,7 @@
                     "physicalUnitText": "Skin complete, prepared",
                     "physicalUnit": {
                       "id": "string",
-                      "identifiableUnits": [
+                      "distinguishedUnits": [
                         null
                       ],
                       "normalStorageLocationText": "string",
@@ -5203,8 +4927,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "specimen"
+                "default": "specimen",
+                "enum": [
+                  "specimen"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/specimen"
@@ -5227,15 +4954,15 @@
               "type": "object",
               "properties": {
                 "type": {
-                  "type": "string",
-                  "default": "modelReference"
+                  "default": "physicalUnit",
+                  "enum": [
+                    "physicalUnit"
+                  ],
+                  "type": "string"
                 },
                 "id": {
                   "type": "string",
                   "example": "1234"
-                },
-                "attributes": {
-                  "$ref": "#/components/schemas/modelReference"
                 }
               }
             }
@@ -5258,8 +4985,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "physicalUnit"
+                "default": "physicalUnit",
+                "enum": [
+                  "physicalUnit"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/physicalUnit"
@@ -5270,7 +5000,6 @@
         "x-examples": {
           "primary": {
             "data": {
-              "id": "1234",
               "type": "physicalUnit",
               "attributes": {
                 "normalStorageLocationText": "string",
@@ -5281,7 +5010,6 @@
         },
         "example": {
           "data": {
-            "id": "1234",
             "type": "physicalUnit",
             "attributes": {
               "normalStorageLocationText": "string",
@@ -5306,8 +5034,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "physicalUnit"
+                "default": "physicalUnit",
+                "enum": [
+                  "physicalUnit"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/physicalUnit"
@@ -5332,11 +5063,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "modelReference"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/modelReference"
+                "default": "storageLocation",
+                "enum": [
+                  "storageLocation"
+                ],
+                "type": "string"
               }
             }
           }
@@ -5358,8 +5089,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "storageLocation"
+                "default": "storageLocation",
+                "enum": [
+                  "storageLocation"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/storageLocation"
@@ -5402,8 +5136,11 @@
                 "example": "1234"
               },
               "type": {
-                "type": "string",
-                "default": "storageLocation"
+                "default": "storageLocation",
+                "enum": [
+                  "storageLocation"
+                ],
+                "type": "string"
               },
               "attributes": {
                 "$ref": "#/components/schemas/storageLocation"
@@ -5426,15 +5163,15 @@
               "type": "object",
               "properties": {
                 "type": {
-                  "type": "string",
-                  "default": "modelReference"
+                  "default": "physicalUnit",
+                  "enum": [
+                    "physicalUnit"
+                  ],
+                  "type": "string"
                 },
                 "id": {
                   "type": "string",
                   "example": "1234"
-                },
-                "attributes": {
-                  "$ref": "#/components/schemas/modelReference"
                 }
               }
             }
@@ -6081,14 +5818,14 @@
         "type": "object",
         "x-examples": {}
       },
-      "createIdentifiableUnitObservationTypeResponse": {
+      "createDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/identifiableUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               },
               "id": {
                 "example": "1234",
@@ -6099,7 +5836,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "identifiableUnitObservationType",
+                "default": "distinguishedUnitObservationType",
                 "type": "string"
               }
             },
@@ -6111,7 +5848,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes",
+                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6126,14 +5863,14 @@
         "type": "object",
         "x-examples": {}
       },
-      "updateIdentifiableUnitObservationTypeResponse": {
+      "updateDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/identifiableUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               },
               "id": {
                 "example": "1234",
@@ -6144,7 +5881,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "identifiableUnitObservationType",
+                "default": "distinguishedUnitObservationType",
                 "type": "string"
               }
             },
@@ -6156,7 +5893,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes/{id}",
+                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6171,14 +5908,14 @@
         "type": "object",
         "x-examples": {}
       },
-      "getIdentifiableUnitObservationTypeResponse": {
+      "getDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/identifiableUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               },
               "id": {
                 "example": "1234",
@@ -6189,7 +5926,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "identifiableUnitObservationType",
+                "default": "distinguishedUnitObservationType",
                 "type": "string"
               }
             },
@@ -6201,7 +5938,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes/{id}",
+                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6216,7 +5953,7 @@
         "type": "object",
         "x-examples": {}
       },
-      "getIdentifiableUnitObservationTypesResponse": {
+      "getDistinguishedUnitObservationTypesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -6225,7 +5962,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/identifiableUnitObservationType"
+                  "$ref": "#/components/schemas/distinguishedUnitObservationType"
                 },
                 "id": {
                   "example": "1234",
@@ -6236,7 +5973,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "identifiableUnitObservationType",
+                  "default": "distinguishedUnitObservationType",
                   "type": "string"
                 }
               },
@@ -6250,7 +5987,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes",
+                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6583,194 +6320,6 @@
         "type": "object",
         "x-examples": {}
       },
-      "updateCuratedLocalityBelongsToResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "curatedLocality",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getCuratedLocalityBelongsToResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "curatedLocality",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "updateCuratedLocalityContainsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/curatedLocality"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "curatedLocality",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getCuratedLocalityContainsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/curatedLocality"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "curatedLocality",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
       "getCuratedLocalityResponse": {
         "additionalProperties": false,
         "properties": {
@@ -6785,67 +6334,7 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {
-                  "belongsTo": {
-                    "properties": {
-                      "data": {
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "example": "curatedLocality",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "contains": {
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  }
-                },
+                "properties": {},
                 "type": "object"
               },
               "type": {
@@ -6892,67 +6381,7 @@
                   "type": "string"
                 },
                 "relationships": {
-                  "properties": {
-                    "belongsTo": {
-                      "properties": {
-                        "data": {
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/belongsTo",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "contains": {
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "example": "curatedLocality",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/contains",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  },
+                  "properties": {},
                   "type": "object"
                 },
                 "type": {
@@ -7084,7 +6513,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
+                  "$ref": "#/components/schemas/specimen"
                 },
                 "id": {
                   "example": "1234",
@@ -7095,7 +6524,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "specimen",
                   "type": "string"
                 }
               },
@@ -7600,7 +7029,7 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/storageLocation"
+                "$ref": "#/components/schemas/physicalUnit"
               },
               "id": {
                 "example": "1234",
@@ -7611,7 +7040,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "storageLocation",
+                "default": "physicalUnit",
                 "type": "string"
               }
             },
@@ -7934,7 +7363,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
+                  "$ref": "#/components/schemas/storageLocation"
                 },
                 "id": {
                   "example": "1234",
@@ -7945,7 +7374,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "storageLocation",
                   "type": "string"
                 }
               },

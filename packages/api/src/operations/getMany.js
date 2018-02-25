@@ -7,6 +7,7 @@ module.exports = function getMany({
   connect,
   connector = getManyConnector,
   exampleResponses = {},
+  includeRelations,
   modelName,
   queryParams,
   relations,
@@ -16,6 +17,12 @@ module.exports = function getMany({
   const operationId = `get${capitalizeFirstLetter(resourcePlural)}`
   return {
     connector: connect ? connector : undefined,
+    connectorOptions: {
+      includeRelations,
+      modelName,
+      relations,
+      resource,
+    },
     method: 'get',
     modelName,
     operationId,

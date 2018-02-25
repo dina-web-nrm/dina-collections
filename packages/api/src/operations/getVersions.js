@@ -13,9 +13,13 @@ module.exports = function getVersions({
   resource,
   resourcePlural,
 }) {
+  const connectorOptions = {
+    resource,
+  }
   const operationId = `get${capitalizeFirstLetter(resource)}Versions`
   return {
     connector: connect ? connector : undefined,
+    connectorOptions,
     method: 'get',
     modelName,
     operationId,

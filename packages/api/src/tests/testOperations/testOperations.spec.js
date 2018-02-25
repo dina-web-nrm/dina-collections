@@ -9,12 +9,16 @@ const testCrudFlow = ({
   endpoints,
   getManyOperationId,
   getOneOperationId,
+  getVersionOperationId,
+  getVersionsOperationId,
   updateOperationId,
 }) => {
   const testing = [
     createOperationId,
-    getOneOperationId,
     getManyOperationId,
+    getOneOperationId,
+    getVersionOperationId,
+    getVersionsOperationId,
     updateOperationId,
   ]
     .filter(operationId => !!operationId)
@@ -74,6 +78,38 @@ const testCrudFlow = ({
                     expect(fetchedResources).toBeTruthy()
                     expect(fetchedResources.data).toBeTruthy()
                     expect(fetchedResources.data.length > 1).toBeTruthy()
+                    if (!getVersionsOperationId) {
+                      return null
+                    }
+
+                    return makeTestCall({
+                      operationId: getVersionsOperationId,
+                      pathParams: {
+                        id: updatedCreatedResource.data.id,
+                      },
+                      validateOutput: true,
+                    }).then(fetchedVersions => {
+                      expect(fetchedVersions).toBeTruthy()
+                      expect(fetchedVersions.data).toBeTruthy()
+                      expect(fetchedVersions.data.length === 2).toBeTruthy()
+                      const firstVersionId = fetchedVersions.data[0].id
+                      if (!getVersionOperationId) {
+                        return null
+                      }
+
+                      return makeTestCall({
+                        operationId: getVersionOperationId,
+                        pathParams: {
+                          id: updatedCreatedResource.data.id,
+                          versionId: firstVersionId,
+                        },
+                        validateOutput: true,
+                      }).then(fetchedVersion => {
+                        expect(fetchedVersion).toBeTruthy()
+                        expect(fetchedVersion.data).toBeTruthy()
+                        expect(fetchedVersion.data.id).toBe(firstVersionId)
+                      })
+                    })
                   })
                 })
               })
@@ -158,6 +194,8 @@ const testApiResource = ({
       create: createOperationId,
       getMany: getManyOperationId,
       getOne: getOneOperationId,
+      getVersion: getVersionOperationId,
+      getVersions: getVersionsOperationId,
       update: updateOperationId,
     } = operationTypeOperationIdMap[resource]
 
@@ -187,6 +225,8 @@ const testApiResource = ({
         endpoints,
         getManyOperationId,
         getOneOperationId,
+        getVersionOperationId,
+        getVersionsOperationId,
         updateOperationId,
       })
     }

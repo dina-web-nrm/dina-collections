@@ -17,12 +17,12 @@ const SegmentOther = () => {
             disabled
             label={
               <ModuleTranslate
-                scope="identifiableUnits"
+                scope="distinguishedUnits"
                 textKey="storedUnderTaxonName"
               />
             }
             module="collectionMammals"
-            name="identifiableUnits.0.physicalUnit.storedUnderTaxonName"
+            name="distinguishedUnits.0.physicalUnit.storedUnderTaxonName"
             type="text"
           />
         </Grid.Column>

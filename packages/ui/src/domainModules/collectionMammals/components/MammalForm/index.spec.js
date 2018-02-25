@@ -8,14 +8,15 @@ import { dep } from '../../middleware'
 
 const hasOneEmptyDetermination = store => {
   expect(
-    store.getState().form.mammalForm.values.assignedTaxon.determinations
+    store.getState().form.mammalForm.values.taxonInformation.determinations
   ).toBeTruthy()
   expect(
-    store.getState().form.mammalForm.values.assignedTaxon.determinations.length
+    store.getState().form.mammalForm.values.taxonInformation.determinations
+      .length
   ).toBe(1)
   expect(
     Object.keys(
-      store.getState().form.mammalForm.values.assignedTaxon.determinations[0]
+      store.getState().form.mammalForm.values.taxonInformation.determinations[0]
     ).length
   ).toBe(0)
 }
@@ -68,7 +69,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
 
     // all determinations removed
     expect(
-      store.getState().form.mammalForm.values.assignedTaxon.determinations
+      store.getState().form.mammalForm.values.taxonInformation.determinations
         .length
     ).toBe(0)
 
@@ -83,9 +84,12 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     expect(syncErrors).toBe(undefined)
     const output = transformOutput(values)
     // should now have empty identification
-    expect(output.individualGroup.assignedTaxon.determinations.length).toBe(1)
+    expect(output.individualGroup.taxonInformation.determinations.length).toBe(
+      1
+    )
     expect(
-      Object.keys(output.individualGroup.assignedTaxon.determinations[0]).length
+      Object.keys(output.individualGroup.taxonInformation.determinations[0])
+        .length
     ).toBe(0)
     expect(submitFailed).toBe(undefined)
   })
@@ -97,7 +101,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     })
 
     expect(
-      store.getState().form.mammalForm.values.assignedTaxon.determinations
+      store.getState().form.mammalForm.values.taxonInformation.determinations
         .length
     ).toBe(1)
 
@@ -112,7 +116,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     addDeterminationButton.simulate('click')
 
     expect(
-      store.getState().form.mammalForm.values.assignedTaxon.determinations
+      store.getState().form.mammalForm.values.taxonInformation.determinations
         .length
     ).toBe(4)
   })
@@ -124,7 +128,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     })
 
     expect(
-      store.getState().form.mammalForm.values.assignedTaxon.determinations
+      store.getState().form.mammalForm.values.taxonInformation.determinations
         .length
     ).toBe(1)
     const addDeterminationButton = rootComponent
@@ -137,37 +141,37 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
     addDeterminationButton.simulate('click')
 
     expect(
-      store.getState().form.mammalForm.values.assignedTaxon.determinations
+      store.getState().form.mammalForm.values.taxonInformation.determinations
         .length
     ).toBe(3)
 
     let {
       determinations,
-    } = store.getState().form.mammalForm.values.assignedTaxon
+    } = store.getState().form.mammalForm.values.taxonInformation
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBeFalsy()
 
     const checkbox1 = rootComponent
-      .find('[name="assignedTaxon.determinations.0.isCurrentDetermination"]')
+      .find('[name="taxonInformation.determinations.0.isCurrentDetermination"]')
       .find('Checkbox')
     const checkbox2 = rootComponent
-      .find('[name="assignedTaxon.determinations.1.isCurrentDetermination"]')
+      .find('[name="taxonInformation.determinations.1.isCurrentDetermination"]')
       .find('Checkbox')
     const checkbox3 = rootComponent
-      .find('[name="assignedTaxon.determinations.2.isCurrentDetermination"]')
+      .find('[name="taxonInformation.determinations.2.isCurrentDetermination"]')
       .find('Checkbox')
 
     // check first box
     checkbox1.simulate('click')
-    determinations = store.getState().form.mammalForm.values.assignedTaxon
+    determinations = store.getState().form.mammalForm.values.taxonInformation
       .determinations
     expect(determinations[0].isCurrentDetermination).toBe(true)
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBeFalsy()
     // check second box, first should be unchecked
     checkbox2.simulate('click')
-    determinations = store.getState().form.mammalForm.values.assignedTaxon
+    determinations = store.getState().form.mammalForm.values.taxonInformation
       .determinations
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBe(true)
@@ -175,14 +179,14 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
 
     // check third box, second should be unchecked
     checkbox3.simulate('click')
-    determinations = store.getState().form.mammalForm.values.assignedTaxon
+    determinations = store.getState().form.mammalForm.values.taxonInformation
       .determinations
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBe(true)
     // uncheck third box
     checkbox3.simulate('click')
-    determinations = store.getState().form.mammalForm.values.assignedTaxon
+    determinations = store.getState().form.mammalForm.values.taxonInformation
       .determinations
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
@@ -213,7 +217,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
       })
 
       expect(
-        store.getState().form.mammalForm.values.assignedTaxon.determinations
+        store.getState().form.mammalForm.values.taxonInformation.determinations
           .length
       ).toBe(1)
 
@@ -227,27 +231,31 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
 
       let {
         determinations,
-      } = store.getState().form.mammalForm.values.assignedTaxon
+      } = store.getState().form.mammalForm.values.taxonInformation
       expect(determinations[0].isCurrentDetermination).toBeFalsy()
       expect(determinations[1].isCurrentDetermination).toBeFalsy()
 
       const checkbox1 = rootComponent
-        .find('[name="assignedTaxon.determinations.0.isCurrentDetermination"]')
+        .find(
+          '[name="taxonInformation.determinations.0.isCurrentDetermination"]'
+        )
         .find('Checkbox')
       const checkbox2 = rootComponent
-        .find('[name="assignedTaxon.determinations.1.isCurrentDetermination"]')
+        .find(
+          '[name="taxonInformation.determinations.1.isCurrentDetermination"]'
+        )
         .find('Checkbox')
 
       // check first box
       checkbox1.simulate('click')
-      determinations = store.getState().form.mammalForm.values.assignedTaxon
+      determinations = store.getState().form.mammalForm.values.taxonInformation
         .determinations
       expect(determinations[0].isCurrentDetermination).toBe(true)
       expect(determinations[1].isCurrentDetermination).toBeFalsy()
 
       // check second box, first should be unchecked and createNotification dispatched
       checkbox2.simulate('click')
-      determinations = store.getState().form.mammalForm.values.assignedTaxon
+      determinations = store.getState().form.mammalForm.values.taxonInformation
         .determinations
       expect(determinations[0].isCurrentDetermination).toBeFalsy()
       expect(determinations[1].isCurrentDetermination).toBe(true)
@@ -285,28 +293,28 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('Submit success when all fields set', () => {
     const mutations = [
-      { name: 'assignedTaxon.determinations.0.date', value: 'date' },
+      { name: 'taxonInformation.determinations.0.date', value: 'date' },
       {
-        name: 'assignedTaxon.determinations.0.determinationVerbatim',
+        name: 'taxonInformation.determinations.0.determinationVerbatim',
         value: 'determinationVerbatim',
       },
       {
-        name: 'assignedTaxon.determinations.0.determinedByAgentText',
+        name: 'taxonInformation.determinations.0.determinedByAgentText',
         value: 'determinedByAgentText',
       },
       {
-        name: 'assignedTaxon.determinations.0.isCurrentDetermination',
+        name: 'taxonInformation.determinations.0.isCurrentDetermination',
         value: true,
       },
-      { name: 'assignedTaxon.determinations.0.remarks', value: 'remarks' },
+      { name: 'taxonInformation.determinations.0.remarks', value: 'remarks' },
       {
         ignore: false,
-        name: 'assignedTaxon.determinations.0.taxonNameStandardized',
+        name: 'taxonInformation.determinations.0.taxonNameStandardized',
         value: 'Sorex minutus',
       },
       {
         ignore: true,
-        name: 'assignedTaxon.determinations.0.taxonNameStandardized.hidden',
+        name: 'taxonInformation.determinations.0.taxonNameStandardized.hidden',
         value: 'Sorex minutus',
       },
       {
@@ -342,19 +350,19 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
         value: 'methodText',
       },
       {
-        name: 'identifiableUnits.0.alternateIdentifiersText',
+        name: 'distinguishedUnits.0.alternateIdentifiersText',
         value: 'alternateIdentifiersText',
       },
       {
-        name: 'identifiableUnits.0.physicalUnit.normalStorageLocationText',
+        name: 'distinguishedUnits.0.physicalUnit.normalStorageLocationText',
         value: 'normalStorageLocationText',
       },
       {
-        name: 'identifiableUnits.0.physicalUnit.storedUnderTaxonName',
+        name: 'distinguishedUnits.0.physicalUnit.storedUnderTaxonName',
         value: 'Sorex minutus',
       },
       {
-        name: 'identifiableUnits.0.physicalUnitText',
+        name: 'distinguishedUnits.0.physicalUnitText',
         value: 'physicalUnitText',
       },
       {
@@ -497,18 +505,16 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
 
     const expectedOutput = {
       individualGroup: {
-        assignedTaxon: {
-          determinations: [
-            {
-              date: 'date',
-              determinationVerbatim: 'determinationVerbatim',
-              determinedByAgentText: 'determinedByAgentText',
-              isCurrentDetermination: true,
-              remarks: 'remarks',
-              taxonNameStandardized: 'Sorex minutus',
+        distinguishedUnits: [
+          {
+            alternateIdentifiersText: 'alternateIdentifiersText',
+            physicalUnit: {
+              normalStorageLocationText: 'normalStorageLocationText',
+              storedUnderTaxonName: 'Sorex minutus',
             },
-          ],
-        },
+            physicalUnitText: 'physicalUnitText',
+          },
+        ],
         featureObservations: [
           {
             date: 'date',
@@ -521,16 +527,7 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
             methodText: 'methodText',
           },
         ],
-        identifiableUnits: [
-          {
-            alternateIdentifiersText: 'alternateIdentifiersText',
-            physicalUnit: {
-              normalStorageLocationText: 'normalStorageLocationText',
-              storedUnderTaxonName: 'Sorex minutus',
-            },
-            physicalUnitText: 'physicalUnitText',
-          },
-        ],
+
         identifiers: [
           {
             identifier: {
@@ -577,6 +574,18 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
             },
           },
         ],
+        taxonInformation: {
+          determinations: [
+            {
+              date: 'date',
+              determinationVerbatim: 'determinationVerbatim',
+              determinedByAgentText: 'determinedByAgentText',
+              isCurrentDetermination: true,
+              remarks: 'remarks',
+              taxonNameStandardized: 'Sorex minutus',
+            },
+          ],
+        },
       },
     }
 
@@ -611,26 +620,19 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
   it('Submit success when loaded with existing individual group', () => {
     const individualGroup = {
       attributes: {
-        assignedTaxon: {
-          determinations: [
-            {
-              taxonNameStandardized: 'Chironectes minimus',
+        distinguishedUnits: [
+          {
+            physicalUnit: {
+              storedUnderTaxonName: 'Chironectes minimus',
             },
-          ],
-        },
+          },
+        ],
         featureObservations: [
           {
             featureObservationText: 'female',
             featureObservationType: {
               id: '1',
               typeName: 'sex',
-            },
-          },
-        ],
-        identifiableUnits: [
-          {
-            physicalUnit: {
-              storedUnderTaxonName: 'Chironectes minimus',
             },
           },
         ],
@@ -642,6 +644,13 @@ describe('domainModules/collectionMammals/components/MammalForm', () => {
             },
           },
         ],
+        taxonInformation: {
+          determinations: [
+            {
+              taxonNameStandardized: 'Chironectes minimus',
+            },
+          ],
+        },
       },
       id: '2',
       type: 'individualGroup',

@@ -2,17 +2,13 @@ const createObjectResponse = require('../lib/api/utilities/createObjectResponse'
 const transformInput = require('./transformations/inputObject')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function create({
-  connectorOptions = {},
-  modelName,
-  resource,
-  models,
-}) {
-  const model = models[modelName]
+module.exports = function create({ connectorOptions = {}, models }) {
+  const { resource, validateBody } = connectorOptions
+
+  const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
-  const { validateBody } = connectorOptions
   return ({ request }) => {
     const { body } = request
     const { data: input } = body

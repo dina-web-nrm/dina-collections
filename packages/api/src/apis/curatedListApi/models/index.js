@@ -11,12 +11,12 @@ exports.featureObservationType = function featureObservationType({
   })
 }
 
-exports.identifiableUnitObservationType = function identifiableUnitObservationType({
+exports.distinguishedUnitObservationType = function distinguishedUnitObservationType({
   sequelize,
 }) {
   return createModel({
-    name: 'IdentifiableUnitObservationType',
-    schemaModelName: 'identifiableUnitObservationType',
+    name: 'DistinguishedUnitObservationType',
+    schemaModelName: 'distinguishedUnitObservationType',
     schemaVersion: '1.0.1',
     sequelize,
   })

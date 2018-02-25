@@ -54,7 +54,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
       const firstUniqueData = {
         a: 1,
         individualGroup: {
-          assignedTaxon: {
+          taxonInformation: {
             determinations: [
               {
                 taxonNameStandardized: 'first-taxon',
@@ -66,7 +66,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
       const secondData = {
         a: 2,
         individualGroup: {
-          assignedTaxon: {
+          taxonInformation: {
             determinations: [
               {
                 taxonNameStandardized: 'second-taxon',
@@ -78,7 +78,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
       const updateSecondData = {
         a: 3,
         individualGroup: {
-          assignedTaxon: {
+          taxonInformation: {
             determinations: [
               {
                 taxonNameStandardized: 'second-taxon',
@@ -91,7 +91,7 @@ dbDescribe('server/apis/specimensApi/models', () => {
       const forthData = {
         a: 1,
         individualGroup: {
-          assignedTaxon: {
+          taxonInformation: {
             determinations: [
               {
                 taxonNameStandardized: 'first-taxon',

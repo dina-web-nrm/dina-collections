@@ -1,6 +1,11 @@
 module.exports = function getWhereFactory({ Model }) {
   return function getWhere(
-    { where: whereInput, forceCurrentVersion = true } = {}
+    {
+      forceCurrentVersion = true,
+      include = [],
+      raw = true,
+      where: whereInput,
+    } = {}
   ) {
     if (!whereInput) {
       return Promise.reject(new Error('where not provided'))
@@ -14,7 +19,9 @@ module.exports = function getWhereFactory({ Model }) {
       : whereInput
 
     return Model.findAll({
-      raw: true,
+      include,
+      order: [['id', 'DESC'], ['versionId', 'DESC']],
+      raw,
       where,
     })
   }
