@@ -27,7 +27,7 @@ export default function createMammalMiddleware() {
           action.payload === true
         ) {
           // slice determinationIndex from field
-          const beginIndex = 'assignedTaxon.determinations.'.length
+          const beginIndex = 'taxonInformation.determinations.'.length
           const endIndex = action.meta.field.indexOf('.isCurrentDetermination')
           const isCurrentDeterminationIndex = Number(
             action.meta.field.slice(beginIndex, endIndex)
@@ -35,7 +35,7 @@ export default function createMammalMiddleware() {
 
           const determinations = mammalFormSelector(
             getState(),
-            'assignedTaxon.determinations'
+            'taxonInformation.determinations'
           )
 
           determinations.forEach((determination, index) => {
@@ -62,7 +62,7 @@ export default function createMammalMiddleware() {
               dispatch(
                 change(
                   MAMMAL_FORM_NAME,
-                  `assignedTaxon.determinations[${
+                  `taxonInformation.determinations[${
                     index
                   }].isCurrentDetermination`,
                   false

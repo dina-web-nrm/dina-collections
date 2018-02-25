@@ -15,7 +15,7 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
 }
 
-const SegmentIdentifiableUnits = ({ getPath }) => {
+const SegmentDistinguishedUnits = ({ getPath }) => {
   return (
     <Segment color="green">
       <Header size="medium">
@@ -28,7 +28,7 @@ const SegmentIdentifiableUnits = ({ getPath }) => {
             component={Input}
             label={
               <ModuleTranslate
-                scope="identifiableUnits"
+                scope="distinguishedUnits"
                 textKey="physicalUnitText"
               />
             }
@@ -43,7 +43,7 @@ const SegmentIdentifiableUnits = ({ getPath }) => {
             component={Input}
             label={
               <ModuleTranslate
-                scope="identifiableUnits"
+                scope="distinguishedUnits"
                 textKey="normalStorageLocationText"
               />
             }
@@ -58,7 +58,7 @@ const SegmentIdentifiableUnits = ({ getPath }) => {
             component={Input}
             label={
               <ModuleTranslate
-                scope="identifiableUnits"
+                scope="distinguishedUnits"
                 textKey="alternateIdentifiersText"
               />
             }
@@ -72,8 +72,8 @@ const SegmentIdentifiableUnits = ({ getPath }) => {
   )
 }
 
-SegmentIdentifiableUnits.propTypes = propTypes
+SegmentDistinguishedUnits.propTypes = propTypes
 
 export default pathBuilder({
-  name: 'identifiableUnits.0',
-})(SegmentIdentifiableUnits)
+  name: 'distinguishedUnits.0',
+})(SegmentDistinguishedUnits)

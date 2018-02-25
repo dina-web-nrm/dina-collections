@@ -165,7 +165,7 @@
         "type": "string",
         "enum": [
           "featureObservationType",
-          "identifiableUnitObservationType"
+          "distinguishedUnitObservationType"
         ]
       },
       "items": {
@@ -189,7 +189,7 @@
             "$ref": "featureObservationType"
           },
           {
-            "$ref": "identifiableUnitObservationType"
+            "$ref": "distinguishedUnitObservationType"
           }
         ]
       }
@@ -217,7 +217,7 @@
     "x-modelType": "model",
     "id": "featureObservationType"
   },
-  "identifiableUnitObservationType": {
+  "distinguishedUnitObservationType": {
     "additionalProperties": false,
     "properties": {
       "typeName": {
@@ -249,7 +249,7 @@
     "x-category": "curatedListApi",
     "x-modelType": "model",
     "description": "",
-    "id": "identifiableUnitObservationType"
+    "id": "distinguishedUnitObservationType"
   },
   "catalogNumber": {
     "type": "object",
@@ -400,7 +400,7 @@
     "x-modelType": "model",
     "id": "curatedLocalityRelation"
   },
-  "assignedTaxon": {
+  "taxonInformation": {
     "additionalProperties": false,
     "properties": {
       "curatorialName": {
@@ -416,7 +416,7 @@
     "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "assignedTaxon"
+    "id": "taxonInformation"
   },
   "collectingCircumstance": {
     "additionalProperties": false,
@@ -574,7 +574,7 @@
     "x-modelType": "model",
     "id": "featureObservation"
   },
-  "identifiableUnit": {
+  "distinguishedUnit": {
     "additionalProperties": false,
     "properties": {
       "alternateIdentifiersText": {
@@ -604,9 +604,9 @@
     "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "identifiableUnit"
+    "id": "distinguishedUnit"
   },
-  "identifiableUnitObservations": {
+  "distinguishedUnitObservations": {
     "additionalProperties": false,
     "properties": {
       "agent": {
@@ -621,7 +621,7 @@
         "example": "10 years"
       },
       "observationType": {
-        "$ref": "identifiableUnitObservationType"
+        "$ref": "distinguishedUnitObservationType"
       },
       "methodText": {
         "type": "string",
@@ -631,7 +631,7 @@
     "x-category": "specimenApi",
     "x-modelType": "model",
     "description": "",
-    "id": "identifiableUnitObservations"
+    "id": "distinguishedUnitObservations"
   },
   "individualCircumstance": {
     "additionalProperties": false,
@@ -670,9 +670,9 @@
     "additionalProperties": false,
     "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
     "properties": {
-      "assignedTaxon": {
+      "taxonInformation": {
         "type": "object",
-        "$ref": "assignedTaxon"
+        "$ref": "taxonInformation"
       },
       "individualCircumstances": {
         "type": "array",
@@ -695,10 +695,10 @@
           "$ref": "identifier"
         }
       },
-      "identifiableUnits": {
+      "distinguishedUnits": {
         "type": "array",
         "items": {
-          "$ref": "identifiableUnit"
+          "$ref": "distinguishedUnit"
         }
       },
       "version": {
@@ -801,10 +801,10 @@
       "physicalUnits": {
         "$ref": "physicalUnit"
       },
-      "identifiableUnits": {
+      "distinguishedUnits": {
         "type": "array",
         "items": {
-          "$ref": "identifiableUnit"
+          "$ref": "distinguishedUnit"
         }
       },
       "id": {
@@ -842,10 +842,10 @@
       "id": {
         "type": "string"
       },
-      "identifiableUnits": {
+      "distinguishedUnits": {
         "type": "array",
         "items": {
-          "$ref": "identifiableUnit"
+          "$ref": "distinguishedUnit"
         }
       },
       "normalStorageLocationText": {
@@ -1678,14 +1678,14 @@
     "x-examples": {},
     "description": ""
   },
-  "createIdentifiableUnitObservationTypeResponse": {
+  "createDistinguishedUnitObservationTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "identifiableUnitObservationType"
+            "$ref": "distinguishedUnitObservationType"
           },
           "id": {
             "example": "1234",
@@ -1696,7 +1696,7 @@
             "type": "object"
           },
           "type": {
-            "default": "identifiableUnitObservationType",
+            "default": "distinguishedUnitObservationType",
             "type": "string"
           }
         },
@@ -1708,7 +1708,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1724,14 +1724,14 @@
     "x-examples": {},
     "description": ""
   },
-  "updateIdentifiableUnitObservationTypeResponse": {
+  "updateDistinguishedUnitObservationTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "identifiableUnitObservationType"
+            "$ref": "distinguishedUnitObservationType"
           },
           "id": {
             "example": "1234",
@@ -1742,7 +1742,7 @@
             "type": "object"
           },
           "type": {
-            "default": "identifiableUnitObservationType",
+            "default": "distinguishedUnitObservationType",
             "type": "string"
           }
         },
@@ -1754,7 +1754,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes/{id}",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1770,14 +1770,14 @@
     "x-examples": {},
     "description": ""
   },
-  "getIdentifiableUnitObservationTypeResponse": {
+  "getDistinguishedUnitObservationTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "identifiableUnitObservationType"
+            "$ref": "distinguishedUnitObservationType"
           },
           "id": {
             "example": "1234",
@@ -1788,7 +1788,7 @@
             "type": "object"
           },
           "type": {
-            "default": "identifiableUnitObservationType",
+            "default": "distinguishedUnitObservationType",
             "type": "string"
           }
         },
@@ -1800,7 +1800,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes/{id}",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1816,7 +1816,7 @@
     "x-examples": {},
     "description": ""
   },
-  "getIdentifiableUnitObservationTypesResponse": {
+  "getDistinguishedUnitObservationTypesResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -1825,7 +1825,7 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "identifiableUnitObservationType"
+              "$ref": "distinguishedUnitObservationType"
             },
             "id": {
               "example": "1234",
@@ -1836,7 +1836,7 @@
               "type": "object"
             },
             "type": {
-              "default": "identifiableUnitObservationType",
+              "default": "distinguishedUnitObservationType",
               "type": "string"
             }
           },
@@ -1850,7 +1850,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/identifiableUnitObservationTypes",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3859,7 +3859,7 @@
     },
     "description": ""
   },
-  "createIdentifiableUnitObservationTypeRequest": {
+  "createDistinguishedUnitObservationTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -3875,14 +3875,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "identifiableUnitObservationType",
+            "default": "distinguishedUnitObservationType",
             "enum": [
-              "identifiableUnitObservationType"
+              "distinguishedUnitObservationType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "identifiableUnitObservationType"
+            "$ref": "distinguishedUnitObservationType"
           }
         }
       }
@@ -3890,7 +3890,7 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "identifiableUnitObservationType",
+          "type": "distinguishedUnitObservationType",
           "attributes": {
             "typeName": "sex"
           }
@@ -3899,7 +3899,7 @@
     },
     "example": {
       "data": {
-        "type": "identifiableUnitObservationType",
+        "type": "distinguishedUnitObservationType",
         "attributes": {
           "typeName": "sex"
         }
@@ -3907,7 +3907,7 @@
     },
     "description": ""
   },
-  "updateIdentifiableUnitObservationTypeRequest": {
+  "updateDistinguishedUnitObservationTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -3923,14 +3923,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "identifiableUnitObservationType",
+            "default": "distinguishedUnitObservationType",
             "enum": [
-              "identifiableUnitObservationType"
+              "distinguishedUnitObservationType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "identifiableUnitObservationType"
+            "$ref": "distinguishedUnitObservationType"
           }
         }
       }
@@ -4179,7 +4179,7 @@
           "type": "specimen",
           "attributes": {
             "individualGroup": {
-              "assignedTaxon": {
+              "taxonInformation": {
                 "determinations": [
                   {
                     "date": "date",
@@ -4203,7 +4203,7 @@
                   "methodText": "methodText"
                 }
               ],
-              "identifiableUnits": [
+              "distinguishedUnits": [
                 {
                   "alternateIdentifiersText": "alternateIdentifiersText",
                   "physicalUnit": {
@@ -4283,7 +4283,7 @@
           "type": "specimen",
           "attributes": {
             "individualGroup": {
-              "assignedTaxon": {},
+              "taxonInformation": {},
               "individualCircumstances": [
                 {
                   "id": "string",
@@ -4397,7 +4397,7 @@
                   "remarks": "Some remarks"
                 }
               ],
-              "identifiableUnits": [
+              "distinguishedUnits": [
                 {
                   "alternateIdentifiersText": "Skin complete, prepared",
                   "identifiers": [
@@ -4455,7 +4455,7 @@
                   "physicalUnitText": "Skin complete, prepared",
                   "physicalUnit": {
                     "id": "string",
-                    "identifiableUnits": [
+                    "distinguishedUnits": [
                       null
                     ],
                     "normalStorageLocationText": "string",
@@ -4479,7 +4479,7 @@
         "type": "specimen",
         "attributes": {
           "individualGroup": {
-            "assignedTaxon": {},
+            "taxonInformation": {},
             "individualCircumstances": [
               {
                 "id": "string",
@@ -4593,7 +4593,7 @@
                 "remarks": "Some remarks"
               }
             ],
-            "identifiableUnits": [
+            "distinguishedUnits": [
               {
                 "alternateIdentifiersText": "Skin complete, prepared",
                 "identifiers": [
@@ -4651,7 +4651,7 @@
                 "physicalUnitText": "Skin complete, prepared",
                 "physicalUnit": {
                   "id": "string",
-                  "identifiableUnits": [
+                  "distinguishedUnits": [
                     null
                   ],
                   "normalStorageLocationText": "string",

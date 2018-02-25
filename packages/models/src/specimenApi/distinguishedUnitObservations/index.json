@@ -6,7 +6,7 @@
       "$ref": "__ROOT__date"
     },
     "observationText": { "type": "string", "example": "10 years" },
-    "observationType": { "$ref": "__ROOT__identifiableUnitObservationType" },
+    "observationType": { "$ref": "__ROOT__distinguishedUnitObservationType" },
     "methodText": { "type": "string", "example": "Known age" }
   }
 }

@@ -10,10 +10,10 @@ const badRequestMissingCatalogNumber = {
   data: {
     attributes: {
       individualGroup: {
-        assignedTaxon: {},
+        distinguishedUnits: [],
         featureObservations: [],
-        identifiableUnits: [],
         identifiers: [],
+        taxonInformation: {},
       },
     },
     type: 'specimen',

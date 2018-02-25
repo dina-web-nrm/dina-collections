@@ -23,7 +23,7 @@ import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
 import SegmentDeterminations from './SegmentDeterminations'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
 import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
-import SegmentIdentifiableUnits from './SegmentIdentifiableUnits'
+import SegmentDistinguishedUnits from './SegmentDistinguishedUnits'
 import SegmentOther from './SegmentOther'
 import transformInput from './transformations/input'
 import transformOutput from './transformations/output'
@@ -182,7 +182,7 @@ class RawMammalForm extends Component {
               formValueSelector={formValueSelector}
             />
             <SegmentFeatureObservations formValueSelector={formValueSelector} />
-            <SegmentIdentifiableUnits />
+            <SegmentDistinguishedUnits />
             <SegmentOther />
 
             <Segment>

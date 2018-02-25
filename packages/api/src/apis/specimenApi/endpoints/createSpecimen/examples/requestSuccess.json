@@ -3,7 +3,7 @@
     "type": "specimen",
     "attributes": {
       "individualGroup": {
-        "assignedTaxon": {},
+        "taxonInformation": {},
         "individualCircumstances": [
           {
             "id": "string",
@@ -117,7 +117,7 @@
             "remarks": "Some remarks"
           }
         ],
-        "identifiableUnits": [
+        "distinguishedUnits": [
           {
             "alternateIdentifiersText": "Skin complete, prepared",
             "identifiers": [
@@ -175,7 +175,7 @@
             "physicalUnitText": "Skin complete, prepared",
             "physicalUnit": {
               "id": "string",
-              "identifiableUnits": [
+              "distinguishedUnits": [
                 null
               ],
               "normalStorageLocationText": "string",
