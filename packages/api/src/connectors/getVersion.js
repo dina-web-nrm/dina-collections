@@ -26,7 +26,7 @@ module.exports = function getVersion({ connectorOptions, models }) {
         }
         return res
       })
-      .then(transformOutput)
+      .then(res => transformOutput(res, true))
       .then(output => {
         return createObjectResponse({
           data: output,

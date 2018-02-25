@@ -1920,6 +1920,7 @@
     },
     "/api/specimen/v01/specimens/{id}/versions/{versionId}": {
       "get": {
+        "description": "The id of the returned resource is the versionId and not the ordinary id",
         "operationId": "getSpecimenVersion",
         "parameters": [
           {
@@ -2777,6 +2778,7 @@
     },
     "/taxon": {
       "get": {
+        "description": "Fetches a taxon or several taxa.\n",
         "operationId": "getTaxaByName",
         "parameters": [
           {
@@ -3055,23 +3057,6 @@
         "x-category": "curatedListApi",
         "x-modelType": "model"
       },
-      "featureObservationType": {
-        "additionalProperties": false,
-        "properties": {
-          "typeName": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "typeName"
-        ],
-        "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
-        "x-category": "curatedListApi",
-        "x-modelType": "model"
-      },
       "distinguishedUnitObservationType": {
         "additionalProperties": false,
         "properties": {
@@ -3101,6 +3086,23 @@
         "required": [
           "typeName"
         ],
+        "x-category": "curatedListApi",
+        "x-modelType": "model"
+      },
+      "featureObservationType": {
+        "additionalProperties": false,
+        "properties": {
+          "typeName": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "typeName"
+        ],
+        "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
         "x-category": "curatedListApi",
         "x-modelType": "model"
       },
@@ -3249,23 +3251,6 @@
         "x-category": "localityApi",
         "x-modelType": "model"
       },
-      "taxonInformation": {
-        "additionalProperties": false,
-        "properties": {
-          "curatorialName": {
-            "type": "string"
-          },
-          "determinations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/determination"
-            }
-          }
-        },
-        "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
       "collectingCircumstance": {
         "additionalProperties": false,
         "properties": {
@@ -3368,53 +3353,6 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "event": {
-        "additionalProperties": false,
-        "properties": {
-          "startDate": {
-            "$ref": "#/components/schemas/date"
-          },
-          "endDate": {
-            "$ref": "#/components/schemas/date"
-          },
-          "expeditionText": {
-            "type": "string",
-            "example": "Vega Expedition"
-          },
-          "localityInformation": {
-            "$ref": "#/components/schemas/localityInformation"
-          }
-        },
-        "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
-      "featureObservation": {
-        "additionalProperties": false,
-        "properties": {
-          "featureObservationAgent": {
-            "type": "string",
-            "example": "Doe, J."
-          },
-          "date": {
-            "$ref": "#/components/schemas/date"
-          },
-          "featureObservationText": {
-            "type": "string",
-            "example": "10 years"
-          },
-          "featureObservationType": {
-            "$ref": "#/components/schemas/featureObservationType"
-          },
-          "methodText": {
-            "type": "string",
-            "example": "Known age"
-          }
-        },
-        "description": "### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine) during a single event.\n\n### Example(s)\n\nWhen a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n\n### Note(s)\n\nThe kinds of data for the observation is determined by its FeatureObservationType.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
       "distinguishedUnit": {
         "additionalProperties": false,
         "properties": {
@@ -3468,6 +3406,53 @@
             "example": "Known age"
           }
         },
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
+      "event": {
+        "additionalProperties": false,
+        "properties": {
+          "startDate": {
+            "$ref": "#/components/schemas/date"
+          },
+          "endDate": {
+            "$ref": "#/components/schemas/date"
+          },
+          "expeditionText": {
+            "type": "string",
+            "example": "Vega Expedition"
+          },
+          "localityInformation": {
+            "$ref": "#/components/schemas/localityInformation"
+          }
+        },
+        "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
+      "featureObservation": {
+        "additionalProperties": false,
+        "properties": {
+          "featureObservationAgent": {
+            "type": "string",
+            "example": "Doe, J."
+          },
+          "date": {
+            "$ref": "#/components/schemas/date"
+          },
+          "featureObservationText": {
+            "type": "string",
+            "example": "10 years"
+          },
+          "featureObservationType": {
+            "$ref": "#/components/schemas/featureObservationType"
+          },
+          "methodText": {
+            "type": "string",
+            "example": "Known age"
+          }
+        },
+        "description": "### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine) during a single event.\n\n### Example(s)\n\nWhen a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n\n### Note(s)\n\nThe kinds of data for the observation is determined by its FeatureObservationType.\n",
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
@@ -3665,6 +3650,23 @@
             "type": "integer"
           }
         },
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
+      "taxonInformation": {
+        "additionalProperties": false,
+        "properties": {
+          "curatorialName": {
+            "type": "string"
+          },
+          "determinations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/determination"
+            }
+          }
+        },
+        "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
         "x-category": "specimenApi",
         "x-modelType": "model"
       },

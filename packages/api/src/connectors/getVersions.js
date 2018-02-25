@@ -11,7 +11,7 @@ module.exports = function getVersionsById({ connectorOptions, models }) {
     const { pathParams: { id } } = request
     return model
       .getWhere({ forceCurrentVersion: false, where: { id } })
-      .then(transformOutput)
+      .then(res => transformOutput(res, true))
       .then(items => {
         return createArrayResponse({
           items,

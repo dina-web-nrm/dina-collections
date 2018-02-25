@@ -11,7 +11,9 @@ module.exports = function flattenPaths(paths) {
           methodSpecification,
           operationId: methodSpecification.operationId,
           // TODO fix this hack
-          pathname: pathname.replace('{id}', ':id'),
+          pathname: pathname
+            .replace('{id}', ':id')
+            .replace('{versionId}', ':versionId'),
         }
       }),
     ]

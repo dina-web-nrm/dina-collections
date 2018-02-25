@@ -26,6 +26,8 @@ module.exports = function getVersion({
   return {
     connector: connect ? connector : undefined,
     connectorOptions,
+    description:
+      'The id of the returned resource is the versionId and not the ordinary id',
     method: 'get',
     modelName,
     operationId,
