@@ -36,7 +36,8 @@
     "eslint-plugin-react": "^7.4.0",
     "jest": "^22.1.4",
     "nodemon": "^1.14.12",
-    "prettier": "1.8.2"
+    "prettier": "1.8.2",
+    "sequelize-mock": "^0.10.2"
   },
   "scripts": {
     "lint:js": "eslint 'src/**/*.js'",
@@ -49,7 +50,8 @@
     "test:db": "DB_TESTS=true jest --env=node --watch",
     "test:depcheck": "depcheck . --ignores=pg",
     "test:slow": "DB_TESTS=true jest --env=node && API_TESTS=true jest --env=node",
-    "test:unit": "jest --env=node"
+    "test:unit": "jest --env=node",
+    "test:unit:watch": "jest --env=node --watch"
   },
   "engines": {
     "node": "8.9.1",

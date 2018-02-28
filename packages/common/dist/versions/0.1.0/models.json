@@ -3152,6 +3152,160 @@
     "x-examples": {},
     "description": ""
   },
+  "getPhysicalUnitVersionResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "physicalUnit"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "storageLocation": {
+                "properties": {
+                  "data": {
+                    "properties": {
+                      "id": {
+                        "example": "1234",
+                        "type": "string"
+                      },
+                      "type": {
+                        "example": "storageLocation",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "physicalUnit",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}/versions/{versionId}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getPhysicalUnitVersionsResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "physicalUnit"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "storageLocation": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "storageLocation",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "physicalUnit",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/physicalUnits/{id}/versions",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
   "createStorageLocationResponse": {
     "additionalProperties": false,
     "properties": {

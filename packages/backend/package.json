@@ -1,0 +1,60 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "license": "AGPL-3.0",
+  "contributors": [
+    "Anton Öberg <oberg.anton@gmail.com>",
+    "Fredrik Olovsson <fogithub@gmail.com>"
+  ],
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "common": "file:../common",
+    "debug": "^3.1.0",
+    "deep-diff": "^0.3.8",
+    "depcheck": "^0.6.8",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "isomorphic-fetch": "^2.2.1",
+    "keycloak-connect": "^3.4.3",
+    "object-path": "^0.11.4",
+    "pg": "^7.4.1",
+    "response-time": "^2.3.2",
+    "sequelize": "^4.31.2",
+    "swagger-ui-dist": "^3.9.3",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "jest": "^22.1.4",
+    "nodemon": "^1.14.12",
+    "prettier": "1.8.2",
+    "sequelize-mock": "^0.10.2"
+  },
+  "scripts": {
+    "lint:js": "eslint 'src/**/*.js'",
+    "lint:js:fix": "eslint 'src/**/*.js' --fix",
+    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
+    "start": "DEBUG='DINA*' nodemon src/apis/core/index.js",
+    "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
+    "test:api": "API_TESTS=true jest --env=node --watch",
+    "test:batch": "BATCH_TESTS=true jest --env=node --watch",
+    "test:db": "DB_TESTS=true jest --env=node --watch",
+    "test:depcheck": "depcheck . --ignores=pg",
+    "test:slow": "DB_TESTS=true jest --env=node && API_TESTS=true jest --env=node",
+    "test:unit": "jest --env=node",
+    "test:unit:watch": "jest --env=node --watch"
+  },
+  "engines": {
+    "node": "8.9.1",
+    "yarn": "^1.3.2"
+  }
+}
