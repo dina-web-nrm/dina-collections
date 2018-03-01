@@ -4,7 +4,6 @@ const buildRelations = require('./utilities/buildRelations')
 module.exports = function getMany({
   basePath,
   exampleResponses = {},
-  modelName,
   queryParams,
   relations,
   resource,
@@ -13,7 +12,6 @@ module.exports = function getMany({
   const operationId = `get${capitalizeFirstLetter(resourcePlural)}`
   return {
     method: 'get',
-    modelName,
     operationId,
     operationType: 'getMany',
     path: `${basePath}/${resourcePlural}`,

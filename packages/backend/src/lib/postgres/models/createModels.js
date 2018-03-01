@@ -2,11 +2,11 @@ const createLog = require('../../../utilities/log')
 
 const log = createLog('lib/postgres/models/createModels')
 
-const extractModelsFromApis = apis => {
-  return Object.keys(apis)
-    .reduce((modelFactories, apiName) => {
-      const api = apis[apiName]
-      const { models } = api
+const extractModelsFromApis = services => {
+  return Object.keys(services)
+    .reduce((modelFactories, serviceName) => {
+      const service = services[serviceName]
+      const { models } = service
       if (!models) {
         return modelFactories
       }
@@ -41,9 +41,9 @@ const extractModelsFromApis = apis => {
     .filter(({ modelFactory }) => !!modelFactory)
 }
 
-module.exports = function createModels({ apis, config, sequelize }) {
+module.exports = function createModels({ services, config, sequelize }) {
   log.debug('Create models started')
-  const rawModels = extractModelsFromApis(apis)
+  const rawModels = extractModelsFromApis(services)
   return Promise.all(
     rawModels.map(({ name, modelFactory }) => {
       log.debug(`Create model: ${name}`)

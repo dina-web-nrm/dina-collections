@@ -1,4 +1,4 @@
-const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
+const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
 module.exports = function getVersion({ connectorOptions, models }) {

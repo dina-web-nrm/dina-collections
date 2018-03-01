@@ -1,11 +1,11 @@
-const createArrayResponse = require('../lib/api/utilities/createArrayResponse')
+const createArrayResponse = require('./transformations/createArrayResponse')
 const transformOutput = require('./transformations/outputObject')
 const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
 const extractRelationships = require('./relationshipsUtilities/extractRelationships')
 
 module.exports = function getMany({ connectorOptions, models }) {
-  const { includeRelations, modelName, relations, resource } = connectorOptions
-  const model = models[modelName]
+  const { includeRelations, relations, resource } = connectorOptions
+  const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }

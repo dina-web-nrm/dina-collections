@@ -1,8 +1,7 @@
 const express = require('express')
 
-const pingRouter = express.Router()
-
 module.exports = () => {
+  const pingRouter = express.Router()
   pingRouter.get('/ping', (req, res) => {
     return res.send('pong')
   })

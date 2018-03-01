@@ -4,7 +4,6 @@ module.exports = function update({
   basePath,
   exampleRequests = {},
   exampleResponses = {},
-  modelName,
   queryParams,
   resource,
   resourcePlural,
@@ -12,7 +11,6 @@ module.exports = function update({
   const operationId = `update${capitalizeFirstLetter(resource)}`
   return {
     method: 'patch',
-    modelName,
     operationId,
     operationType: 'update',
     path: `${basePath}/${resourcePlural}/{id}`,

@@ -1,4 +1,4 @@
-const createArrayResponse = require('../lib/api/utilities/createArrayResponse')
+const createArrayResponse = require('./transformations/createArrayResponse')
 const transformOutput = require('./transformations/outputArray')
 
 module.exports = function getRelationsHasMany({ connectorOptions, models }) {

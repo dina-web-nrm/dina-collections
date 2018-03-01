@@ -3,7 +3,6 @@ const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 module.exports = function getRelation({
   basePath,
   exampleResponses = {},
-  modelName,
   queryParams,
   relationKey,
   relations,
@@ -19,7 +18,6 @@ module.exports = function getRelation({
 
   return {
     connectorOptions: {
-      modelName,
       relation: {
         ...relation,
         key: relationKey,
@@ -39,7 +37,6 @@ module.exports = function getRelation({
       format: relationFormat,
       resource: relationResource,
     },
-    rootModelName: modelName,
     rootResource: resource,
     summary: `Find ${resource} -> ${relationKey}`,
   }

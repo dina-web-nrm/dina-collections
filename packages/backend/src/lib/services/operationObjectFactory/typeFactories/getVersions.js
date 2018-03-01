@@ -4,7 +4,6 @@ const buildRelations = require('./utilities/buildRelations')
 module.exports = function getVersions({
   basePath,
   exampleResponses = {},
-  modelName,
   queryParams,
   relations,
   resource,
@@ -13,7 +12,6 @@ module.exports = function getVersions({
   const operationId = `get${capitalizeFirstLetter(resource)}Versions`
   return {
     method: 'get',
-    modelName,
     operationId,
     operationType: 'getVersions',
     path: `${basePath}/${resourcePlural}/{id}/versions`,

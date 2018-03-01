@@ -7,9 +7,7 @@ const createDocsMiddleware = require('./middlewares/docs')
 const createPingRouteMiddleware = require('./middlewares/pingRoute')
 const createKeycloakMiddleware = require('./middlewares/keycloak')
 
-module.exports = function createApp(
-  { config, openApiSpec, servicesRouter } = {}
-) {
+module.exports = function createApp({ config, openApiSpec, routers } = {}) {
   const app = express()
 
   const docsMiddleware = createDocsMiddleware({ openApiSpec })
@@ -31,8 +29,8 @@ module.exports = function createApp(
 
   app.use(pingRouteMiddleware)
 
-  if (servicesRouter) {
-    app.use(servicesRouter)
+  if (routers) {
+    app.use(routers)
   }
   app.use(errorHandlerMiddleware)
 

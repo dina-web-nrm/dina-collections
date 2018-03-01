@@ -4,7 +4,6 @@ module.exports = function create({
   basePath,
   exampleRequests = {},
   exampleResponses = {},
-  modelName,
   queryParams,
   resource,
   resourcePlural,
@@ -12,7 +11,6 @@ module.exports = function create({
   const operationId = `create${capitalizeFirstLetter(resource)}`
   return {
     method: 'post',
-    modelName,
     operationId,
     operationType: 'create',
     path: `${basePath}/${resourcePlural}`,

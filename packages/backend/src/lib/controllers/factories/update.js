@@ -1,4 +1,4 @@
-const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
+const createObjectResponse = require('./transformations/createObjectResponse')
 const transformInput = require('./transformations/inputObject')
 const transformOutput = require('./transformations/outputObject')
 

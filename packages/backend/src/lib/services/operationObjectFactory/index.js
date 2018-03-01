@@ -10,9 +10,9 @@ module.exports = function createOperationObject({
     resourceSpecification,
   })
 
-  const { type } = operationSpecification
+  const { type, factory } = operationSpecification
 
-  const typeFactory = typeFactories[type]
+  const typeFactory = factory || typeFactories[type]
 
   if (!typeFactory) {
     throw new Error(`Type: ${type} unknown for...`)

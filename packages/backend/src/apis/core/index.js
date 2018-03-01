@@ -1,24 +1,40 @@
 const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('../../utilities/log')
-// const createApi = require('../../lib/api')
+const serviceRouterFactory = require('../../lib/api/serviceRouterFactory')
 const createApp = require('../../lib/api/appFactory')
 const bootstrapPostgres = require('../../lib/postgres')
+const setupModels = require('../../lib/postgres/models/setupModels')
 const createConnectors = require('../../lib/connectors')
 const config = require('./config')
+const serviceDefinitions = require('../../services')
 
-const services = require('../../services')
-console.log('services', services)
 const log = createLog('server')
+
+const services = serviceDefinitions
 
 bootstrapPostgres({
   config,
 })
   .then(({ sequelize }) => {
-    return createConnectors({ sequelize, services })
+    return setupModels({
+      config,
+      sequelize,
+      services,
+    })
+  })
+  .then(({ models }) => {
+    return createConnectors({ config, models, services })
   })
   .then(({ connectors }) => {
-    console.log('connectors', connectors)
-    const app = createApp({ config, openApiSpec })
+    const serviceRouter = serviceRouterFactory({
+      config,
+      connectors,
+    })
+    const app = createApp({
+      config,
+      openApiSpec,
+      routers: [serviceRouter],
+    })
     return app.listen(config.api.port, () => {
       log.info(`Api listening to port ${config.api.port}`)
     })
@@ -26,36 +42,6 @@ bootstrapPostgres({
   .catch(err => {
     throw err
   })
-
-// bootstrapPostgres({
-//   apis,
-//   config,
-// })
-//   .then(({ models }) => {
-//     const keycloak = createKeycloak({ config })
-
-//     const baseApi = createApi({
-//       apis,
-//       config,
-//       keycloak,
-//       models,
-//       openApiSpec,
-//     })
-
-//     const app = createApp({
-//       api: baseApi,
-//       config,
-//       keycloak,
-//       openApiSpec,
-//     })
-
-//     return app.listen(config.api.port, () => {
-//       log.info(`Api listening to port ${config.api.port}`)
-//     })
-//   })
-//   .catch(err => {
-//     throw err
-//   })
 
 process.on('uncaughtException', err => {
   log.crit('uncaughtException process exiting in 5000 ms')

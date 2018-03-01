@@ -1,14 +1,10 @@
-const createObjectResponse = require('../lib/api/utilities/createObjectResponse')
+const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
 module.exports = function updateRelationHasOne({ connectorOptions, models }) {
-  const {
-    modelName,
-    relation: { key: relationKey },
-    resource,
-  } = connectorOptions
+  const { relation: { key: relationKey }, resource } = connectorOptions
 
-  const model = models[modelName]
+  const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }

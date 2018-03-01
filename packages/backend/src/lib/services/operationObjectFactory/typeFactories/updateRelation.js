@@ -4,7 +4,6 @@ module.exports = function updateRelation({
   basePath,
   exampleRequests = {},
   exampleResponses = {},
-  modelName,
   queryParams,
   relationKey,
   relations,
@@ -20,7 +19,6 @@ module.exports = function updateRelation({
 
   return {
     connectorOptions: {
-      modelName,
       relation: {
         ...relation,
         key: relationKey,

@@ -2,6 +2,11 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
+const services = {
+  agentService: true,
+  curatedEventService: true,
+}
+
 const api = {
   mock: {
     active: true,
@@ -37,7 +42,7 @@ const auth = {
 const log = {
   db: false,
   error: true,
-  incomingRequest: false,
+  incomingRequest: true,
   outgoingResponse: false,
 }
 
@@ -63,5 +68,6 @@ module.exports = {
   db,
   env,
   log,
+  services,
   test,
 }
