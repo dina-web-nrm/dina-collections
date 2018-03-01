@@ -1,5 +1,5 @@
-const createArrayResponse = require('../../../lib/controllers/factories/transformations/createArrayResponse')
-const transformOutput = require('../../../lib/controllers/factories/transformations/outputArray')
+const createArrayResponse = require('../../../lib/controllers/transformations/createArrayResponse')
+const transformOutput = require('../../../lib/controllers/transformations/outputArray')
 
 module.exports = function specimenGetWhere({ connectorOptions, models }) {
   const { resource } = connectorOptions

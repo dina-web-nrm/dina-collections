@@ -1,9 +1,8 @@
-const createRouteFunction = require('common/src/apiClient/createRouteFunction')
-const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
-const controllerFactories = require('../controllers/factories')
 const extractResourcesFromServices = require('./extractResourcesFromServices')
 const extractOperationsFromResources = require('./extractOperationsFromResources')
 const extractCustomControllersFromServices = require('./extractCustomControllersFromServices')
+
+const createConnector = require('./createConnector')
 
 const createLog = require('../../utilities/log')
 
@@ -18,59 +17,19 @@ module.exports = function createConnectors({ config, models, services }) {
   const customControllerFactories = extractCustomControllersFromServices(
     services
   )
-  const scopedLog = log.scope()
+
   const connectors = Object.keys(operations).reduce((obj, operationId) => {
-    scopedLog.info(`${operationId}`)
     const operation = operations[operationId]
-    const {
-      connect,
-      controller: customControllerKey,
-      method,
-      path,
-      operationType,
-    } = operation
-
-    const controllerFactory =
-      (connect || customControllerKey) &&
-      (customControllerFactories[customControllerKey] ||
-        controllerFactories[operationType])
-
-    if (!controllerFactory) {
-      scopedLog
-        .scope()
-        .info(
-          `no controller for ${operationId}. operationType: ${
-            operationType
-          }, connect: ${connect}, customControllerKey: ${customControllerKey}`
-        )
-    }
-
-    const controller =
-      controllerFactory &&
-      controllerFactory({
-        connectorOptions: operation,
-        models,
-      })
-    const endpointConfig = commonCreateEndpointConfig({
-      operationId,
-    })
-
-    // TODO rename function
-    const requestHandler = createRouteFunction({
+    const connector = createConnector({
       apiConfig,
-      endpointConfig,
-      handler: controller,
-      methodConfigInput: {
-        method,
-      },
+      customControllerFactories,
+      models,
+      operation,
+      operationId,
     })
     return {
       ...obj,
-      [operationId]: {
-        method,
-        path,
-        requestHandler,
-      },
+      [operationId]: connector,
     }
   }, {})
 
