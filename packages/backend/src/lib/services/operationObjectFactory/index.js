@@ -2,15 +2,21 @@ const createOperationObjectSpecification = require('./createOperationObjectSpeci
 const typeFactories = require('./typeFactories')
 
 module.exports = function createOperationObject({
+  log,
   operationSpecification: operationSpecificationInput,
   resourceSpecification,
 }) {
+  if (operationSpecificationInput.raw) {
+    return operationSpecificationInput
+  }
   const operationSpecification = createOperationObjectSpecification({
     operationSpecificationInput,
     resourceSpecification,
   })
 
   const { type, factory } = operationSpecification
+
+  log.info(`${type}`)
 
   const typeFactory = factory || typeFactories[type]
 

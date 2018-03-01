@@ -1,4 +1,4 @@
 exports.info = require('./info')
-exports.endpoints = require('./endpoints')
+exports.resources = require('./resources')
 
-exports.name = 'slimTaxonomyService'
+exports.name = 'taxonService'

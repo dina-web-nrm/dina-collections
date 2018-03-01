@@ -19,7 +19,7 @@ module.exports = function createRouteFunction({
 
   validateMethodConfig(methodConfigInput, apiConfig)
 
-  return function routeFunction({ controllers, models, user, userInput }) {
+  return function routeFunction({ user, userInput }) {
     return createRequest({
       apiConfig,
       endpointConfig,
@@ -37,9 +37,10 @@ module.exports = function createRouteFunction({
             if (interceptResult) {
               return interceptResult
             }
+            if (!handler) {
+              throw new Error('Not implemented')
+            }
             return handler({
-              controllers,
-              models,
               request,
               user,
             })

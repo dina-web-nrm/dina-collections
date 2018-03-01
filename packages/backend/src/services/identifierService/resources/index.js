@@ -1,8 +1,6 @@
-const createResource = require('../../../lib/services/resourceFactory')
-
 const createRequestSuccess = require('./catalogNumber/examples/requestSuccess.json')
 
-exports.catalogNumber = createResource({
+exports.catalogNumber = {
   basePath: '/api/identifier/v01',
   operations: [
     {
@@ -20,4 +18,4 @@ exports.catalogNumber = createResource({
     },
   ],
   resource: 'catalogNumber',
-})
+}

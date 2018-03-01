@@ -1,10 +1,10 @@
-const createDb = require('../../lib/postgres/db')
+const createDb = require('../../../db')
 const createModel = require('./index')
-const syncModels = require('../../lib/postgres/models/syncModels')
-const config = require('../../config')
+const syncModels = require('../../syncModels')
+const config = require('../../../../../apis/core/config')
 
-const batchDescribe = require('../../utilities/test/batchDescribe')
-const batchExecute = require('../../utilities/test/batchExecute')
+const batchDescribe = require('../../../../../utilities/test/batchDescribe')
+const batchExecute = require('../../../../../utilities/test/batchExecute')
 
 const createData = catalogNumber => {
   return {

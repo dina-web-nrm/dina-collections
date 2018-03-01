@@ -1,6 +1,6 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
-module.exports = function getRelation({
+module.exports = function getRelationHasMany({
   basePath,
   exampleResponses = {},
   queryParams,
@@ -8,6 +8,7 @@ module.exports = function getRelation({
   relations,
   resource,
   resourcePlural,
+  ...rest
 }) {
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
@@ -17,19 +18,17 @@ module.exports = function getRelation({
   )}${capitalizeFirstLetter(relationKey)}`
 
   return {
-    connectorOptions: {
-      relation: {
-        ...relation,
-        key: relationKey,
-      },
-      resource,
-    },
+    ...rest,
     method: 'get',
     operationId,
-    operationType: 'getRelation',
+    operationType: 'getRelationHasMany',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
+    relation: {
+      ...relation,
+      key: relationKey,
+    },
     relationKey,
     resource,
     response: {

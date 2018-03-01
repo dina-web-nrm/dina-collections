@@ -1,7 +1,8 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
-module.exports = function getRelationHasOne({
+module.exports = function updateRelation({
   basePath,
+  exampleRequests = {},
   exampleResponses = {},
   queryParams,
   relationKey,
@@ -13,15 +14,15 @@ module.exports = function getRelationHasOne({
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
 
-  const operationId = `get${capitalizeFirstLetter(
+  const operationId = `update${capitalizeFirstLetter(
     resource
   )}${capitalizeFirstLetter(relationKey)}`
 
   return {
     ...rest,
-    method: 'get',
+    method: 'patch',
     operationId,
-    operationType: 'getRelationHasOne',
+    operationType: 'updateRelationHasOne',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
@@ -29,14 +30,18 @@ module.exports = function getRelationHasOne({
       ...relation,
       key: relationKey,
     },
-    relationKey,
+    request: {
+      exampleRequests,
+      format: relationFormat,
+      modelReference: true,
+      resource: relationResource,
+    },
     resource,
     response: {
       examples: exampleResponses,
       format: relationFormat,
-      resource: relationResource,
+      resource,
     },
-    rootResource: resource,
-    summary: `Find ${resource} -> ${relationKey}`,
+    summary: `Update ${resource} -> ${relationKey}`,
   }
 }

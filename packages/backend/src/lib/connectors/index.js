@@ -1,47 +1,56 @@
 const createRouteFunction = require('common/src/apiClient/createRouteFunction')
 const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
 const controllerFactories = require('../controllers/factories')
-const exportResourcesFromServices = require('./exportResourcesFromServices')
-const exportOperationsFromResources = require('./exportOperationsFromResources')
+const extractResourcesFromServices = require('./extractResourcesFromServices')
+const extractOperationsFromResources = require('./extractOperationsFromResources')
+const extractCustomControllersFromServices = require('./extractCustomControllersFromServices')
 
 const createLog = require('../../utilities/log')
 
-const log = createLog('lib/connectors/serviceRouterFactory')
+const log = createLog('lib/connectors')
 
 module.exports = function createConnectors({ config, models, services }) {
-  log.info('Start create connectors')
+  log.info('Create connectors')
 
   const apiConfig = { ...config.api, log: config.log }
-  const resources = exportResourcesFromServices(services)
-  const operations = exportOperationsFromResources(resources)
-
+  const resources = extractResourcesFromServices(services)
+  const operations = extractOperationsFromResources(resources)
+  const customControllerFactories = extractCustomControllersFromServices(
+    services
+  )
+  const scopedLog = log.scope()
   const connectors = Object.keys(operations).reduce((obj, operationId) => {
-    log.info(`Creating connector for ${operationId}`)
+    scopedLog.info(`${operationId}`)
     const operation = operations[operationId]
     const {
-      controllers: customControllerFactories = {},
+      connect,
+      controller: customControllerKey,
       method,
       path,
       operationType,
     } = operation
-    // TODO make this in one step
-    console.log('customControllerFactories', customControllerFactories)
+
     const controllerFactory =
-      customControllerFactories[operationType] ||
-      controllerFactories[operationType]
+      (connect || customControllerKey) &&
+      (customControllerFactories[customControllerKey] ||
+        controllerFactories[operationType])
+
     if (!controllerFactory) {
-      /* eslint-disable no-console */
-      console.warn(
-        `controllerFactory not found for ${operationId} -> ${operationType}`
-      )
-      /* eslint-enable no-console */
-      return obj
+      scopedLog
+        .scope()
+        .info(
+          `no controller for ${operationId}. operationType: ${
+            operationType
+          }, connect: ${connect}, customControllerKey: ${customControllerKey}`
+        )
     }
 
-    const controller = controllerFactory({
-      connectorOptions: operation,
-      models,
-    })
+    const controller =
+      controllerFactory &&
+      controllerFactory({
+        connectorOptions: operation,
+        models,
+      })
     const endpointConfig = commonCreateEndpointConfig({
       operationId,
     })

@@ -7,9 +7,11 @@ module.exports = function update({
   queryParams,
   resource,
   resourcePlural,
+  ...rest
 }) {
   const operationId = `update${capitalizeFirstLetter(resource)}`
   return {
+    ...rest,
     method: 'patch',
     operationId,
     operationType: 'update',

@@ -1,10 +1,9 @@
-const createResource = require('../../../lib/services/resourceFactory')
 const createRequestSuccess = require('./createSpecimen/examples/requestSuccess.json')
 const fullFormExample = require('./createSpecimen/examples/fullFormExample.json')
 const validateBody = require('./createSpecimen/validators/validateBody')
 const updateRequestSuccess = require('./updateSpecimen/examples/requestSuccess.json')
 
-exports.specimen = createResource({
+exports.specimen = {
   basePath: '/api/specimen/v01',
   operations: [
     {
@@ -13,17 +12,18 @@ exports.specimen = createResource({
       type: 'create',
     },
     {
+      exampleRequests: { primary: updateRequestSuccess },
       type: 'update',
     },
-    {
-      exampleRequests: { primary: updateRequestSuccess },
-      relationKey: 'physicalUnits',
-      type: 'updateRelation',
-    },
-    {
-      relationKey: 'physicalUnits',
-      type: 'getRelation',
-    },
+    // {
+    //   exampleRequests: { primary: updateRequestSuccess },
+    //   relationKey: 'physicalUnits',
+    //   type: 'updateRelation',
+    // },
+    // {
+    //   relationKey: 'physicalUnits',
+    //   type: 'getRelationHasMany',
+    // },
     {
       type: 'getOne',
     },
@@ -63,4 +63,4 @@ exports.specimen = createResource({
     },
   },
   resource: 'specimen',
-})
+}

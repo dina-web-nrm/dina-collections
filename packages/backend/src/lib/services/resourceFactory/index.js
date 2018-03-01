@@ -2,11 +2,8 @@ const createResourceSpecification = require('./createResourceSpecification')
 const createOperationObject = require('../operationObjectFactory')
 const createOperationMap = require('./createOperationMap')
 
-module.exports = function createResource(resourceSpecificationInput) {
-  const resourceSpecification = createResourceSpecification(
-    resourceSpecificationInput
-  )
-
+module.exports = function createResource({ log, resourceInput }) {
+  const resourceSpecification = createResourceSpecification(resourceInput)
   const {
     basePath,
     controllers,
@@ -15,8 +12,10 @@ module.exports = function createResource(resourceSpecificationInput) {
     resource,
   } = resourceSpecification
 
+  log.info(`Create operations:`)
   const operations = operationSpecifications.map(operationSpecification => {
     return createOperationObject({
+      log: log.scope(),
       operationSpecification,
       resourceSpecification,
     })

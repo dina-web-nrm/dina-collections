@@ -8,9 +8,11 @@ module.exports = function getVersions({
   relations,
   resource,
   resourcePlural,
+  ...rest
 }) {
   const operationId = `get${capitalizeFirstLetter(resource)}Versions`
   return {
+    ...rest,
     method: 'get',
     operationId,
     operationType: 'getVersions',

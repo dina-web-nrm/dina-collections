@@ -9,6 +9,7 @@ module.exports = function updateRelation({
   relations,
   resource,
   resourcePlural,
+  ...rest
 }) {
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
@@ -18,19 +19,17 @@ module.exports = function updateRelation({
   )}${capitalizeFirstLetter(relationKey)}`
 
   return {
-    connectorOptions: {
-      relation: {
-        ...relation,
-        key: relationKey,
-      },
-      resource,
-    },
+    ...rest,
     method: 'patch',
     operationId,
-    operationType: 'updateRelation',
+    operationType: 'updateRelationHasMany',
     path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
+    relation: {
+      ...relation,
+      key: relationKey,
+    },
     request: {
       exampleRequests,
       format: relationFormat,

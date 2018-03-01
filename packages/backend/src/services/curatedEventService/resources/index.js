@@ -1,7 +1,6 @@
-const createResource = require('../../../lib/services/resourceFactory')
 const createRequestSuccess = require('./createExpedition/examples/requestSuccess.json')
 
-exports.expedition = createResource({
+exports.expedition = {
   basePath: '/api/curatedEvent/v01',
   operations: [
     {
@@ -19,4 +18,4 @@ exports.expedition = createResource({
     },
   ],
   resource: 'expedition',
-})
+}

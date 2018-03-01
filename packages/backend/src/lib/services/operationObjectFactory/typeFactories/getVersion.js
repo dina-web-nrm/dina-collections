@@ -8,6 +8,7 @@ module.exports = function getVersion({
   relations: relationsInput,
   resource,
   resourcePlural,
+  ...rest
 }) {
   const operationId = `get${capitalizeFirstLetter(resource)}Version`
   const relations = buildRelations({
@@ -17,6 +18,7 @@ module.exports = function getVersion({
   })
 
   return {
+    ...rest,
     description:
       'The id of the returned resource is the versionId and not the ordinary id',
     method: 'get',

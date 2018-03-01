@@ -1,7 +1,7 @@
 const createLog = require('../../../utilities/log')
 const Sequelize = require('sequelize')
 
-const log = createLog('lib/postgres/db')
+const log = createLog('lib/postgres')
 
 module.exports = function createDb({ config }) {
   const { database, password, url, username } = config.db

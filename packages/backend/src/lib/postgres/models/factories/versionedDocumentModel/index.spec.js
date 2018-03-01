@@ -1,9 +1,9 @@
-const createDb = require('../../../../db')
+const createDb = require('../../../db')
 const createModel = require('./index')
-const syncModels = require('../../lib/postgres/models/syncModels')
-const config = require('../../config')
+const syncModels = require('../../syncModels')
+const config = require('../../../../../apis/core/config')
 
-const dbDescribe = require('../../utilities/test/dbDescribe')
+const dbDescribe = require('../../../../../utilities/test/dbDescribe')
 
 const setup = () => {
   return createDb({ config }).then(sequelize => {

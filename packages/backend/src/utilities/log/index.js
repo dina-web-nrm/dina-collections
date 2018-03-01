@@ -15,7 +15,20 @@ const priorityMap = {
   warning: { output: 'error', priority: 'LOG_WARNING' },
 }
 
-const createLevelLogFunction = ({ context, output, priority }) => {
+const scopeMessage = (message, scopeLevel) => {
+  if (!scopeLevel) {
+    return message
+  }
+
+  let scopeString = ''
+  for (let i = 1; i < scopeLevel; i += 1) {
+    scopeString = `${scopeString} |`
+  }
+
+  return `${scopeString} └── ${message}`
+}
+
+const createLevelLogFunction = ({ context, output, priority, scopeLevel }) => {
   const log = debug(`${APP_PREFIX}:${priority}:${context}`)
   if (output === 'log') {
     log.log = console.log.bind(console)
@@ -23,17 +36,32 @@ const createLevelLogFunction = ({ context, output, priority }) => {
   if (output === 'error') {
     log.log = console.error.bind(console)
   }
+  const logFunction = (message, ...rest) => {
+    log(scopeMessage(message, scopeLevel), ...rest)
+  }
 
-  return log
+  return logFunction
 }
 
-module.exports = function createLog(context) {
-  return Object.keys(priorityMap).reduce((log, level) => {
-    const { priority, output } = priorityMap[level]
+module.exports = function createLog(context, scopeLevel = 0) {
+  const createScopedLog = () => {
+    return createLog(context, scopeLevel + 1)
+  }
 
-    return {
-      ...log,
-      [level]: createLevelLogFunction({ context, output, priority }),
-    }
-  }, {})
+  return Object.keys(priorityMap).reduce(
+    (log, level) => {
+      const { priority, output } = priorityMap[level]
+
+      return {
+        ...log,
+        [level]: createLevelLogFunction({
+          context,
+          output,
+          priority,
+          scopeLevel,
+        }),
+      }
+    },
+    { scope: createScopedLog }
+  )
 }

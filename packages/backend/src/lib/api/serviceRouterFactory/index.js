@@ -5,7 +5,7 @@ const decorateLocalsUserInputMiddlewareFactory = require('./middlewares/decorate
 const requestHandlerMiddlewareFactory = require('./middlewares/requestHandler')
 const expressifyPath = require('./utilities/expressifyPath')
 
-const log = createLog('lib/api/serviceRouterFactory')
+const log = createLog('lib/api/serviceRouter')
 
 module.exports = function serviceRouterFactory({ config, connectors }) {
   const serviceRouter = express.Router({ mergeParams: true })
@@ -14,7 +14,8 @@ module.exports = function serviceRouterFactory({ config, connectors }) {
     config,
   })
 
-  log.info('Mounting service routes')
+  log.info('Registering service routes')
+  const scopedLog = log.scope()
   Object.keys(connectors).forEach(operationId => {
     const { method, path, requestHandler } = connectors[operationId]
     const requestHandlerMiddleware = requestHandlerMiddlewareFactory({
@@ -25,10 +26,8 @@ module.exports = function serviceRouterFactory({ config, connectors }) {
 
     const expressifiedPath = expressifyPath(path)
 
-    log.info(
-      `Register route: ${method.toUpperCase()} - ${expressifiedPath} as ${
-        operationId
-      }`
+    scopedLog.info(
+      `${method.toUpperCase()} - ${expressifiedPath} as ${operationId}`
     )
     serviceRouter.use(expressifiedPath, decorateLocalsUserInput)
     serviceRouter[method](expressifiedPath, requestHandlerMiddleware)

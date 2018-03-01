@@ -1,8 +1,7 @@
-const createResource = require('../../../lib/services/resourceFactory')
 const createPhysicalUnitRequestSuccess = require('./physicalUnit/examples/requestSuccess.json')
 const createStorageLocationRequestSuccess = require('./storageLocation/examples/requestSuccess.json')
 
-exports.physicalUnit = createResource({
+exports.physicalUnit = {
   basePath: '/api/storage/v01',
   operations: [
     {
@@ -14,11 +13,11 @@ exports.physicalUnit = createResource({
     },
     {
       relationKey: 'storageLocation',
-      type: 'updateRelation',
+      type: 'updateRelationHasOne',
     },
     {
       relationKey: 'storageLocation',
-      type: 'getRelation',
+      type: 'getRelationHasOne',
     },
     {
       includeRelations: true,
@@ -43,9 +42,9 @@ exports.physicalUnit = createResource({
     },
   },
   resource: 'physicalUnit',
-})
+}
 
-exports.storageLocation = createResource({
+exports.storageLocation = {
   basePath: '/api/storage/v01',
   operations: [
     {
@@ -57,11 +56,11 @@ exports.storageLocation = createResource({
     },
     {
       relationKey: 'physicalUnits',
-      type: 'updateRelation',
+      type: 'updateRelationHasMany',
     },
     {
       relationKey: 'physicalUnits',
-      type: 'getRelation',
+      type: 'getRelationHasMany',
     },
     {
       includeRelations: true,
@@ -79,4 +78,4 @@ exports.storageLocation = createResource({
     },
   },
   resource: 'storageLocation',
-})
+}

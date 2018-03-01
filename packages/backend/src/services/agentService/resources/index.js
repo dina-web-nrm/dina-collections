@@ -1,8 +1,7 @@
-const createResource = require('../../../lib/services/resourceFactory')
 const createRequestSuccess = require('./createAgent/examples/requestSuccess.json')
 const getResponseSuccess = require('./getAgent/examples/responseSuccess.json')
 
-exports.agent = createResource({
+exports.agent = {
   basePath: '/api/agent//v01',
   operations: [
     {
@@ -21,4 +20,4 @@ exports.agent = createResource({
     },
   ],
   resource: 'agent',
-})
+}

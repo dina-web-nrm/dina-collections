@@ -1,7 +1,3 @@
-const createLog = require('../../../utilities/log')
-
-const log = createLog('lib/postgres/models/setupRelations')
-
 const extractSetupRelationsFromApis = services => {
   return Object.keys(services)
     .reduce((modelFactories, serviceName) => {
@@ -41,12 +37,12 @@ const extractSetupRelationsFromApis = services => {
     .filter(setupRelations => !!setupRelations)
 }
 
-module.exports = function createRelations({ services, models }) {
-  log.debug('Create relations started')
+module.exports = function createRelations({ log, services, models }) {
+  log.debug('Create relations:')
   const setupRelationFunctions = extractSetupRelationsFromApis(services)
   return Promise.all(
     setupRelationFunctions.map(({ serviceName, setupRelations }) => {
-      log.debug(`Create relations for ${serviceName}`)
+      log.debug(`${serviceName}`)
       return Promise.resolve(
         setupRelations({
           models,

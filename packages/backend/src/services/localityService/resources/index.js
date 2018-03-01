@@ -1,7 +1,6 @@
-const createResource = require('../../../lib/services/resourceFactory')
 const createRequestSuccess = require('./curatedLocality/examples/requestSuccess.json')
 
-exports.curatedLocalities = createResource({
+exports.curatedLocalities = {
   basePath: '/api/locality/v01',
   operations: [
     {
@@ -20,4 +19,4 @@ exports.curatedLocalities = createResource({
   ],
   resource: 'curatedLocality',
   resourcePlural: 'curatedLocalities',
-})
+}

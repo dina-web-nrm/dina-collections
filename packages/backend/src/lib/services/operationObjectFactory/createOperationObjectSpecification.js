@@ -2,7 +2,10 @@ module.exports = function createOperationObjectSpecification({
   operationSpecificationInput,
   resourceSpecification,
 }) {
-  const { queryParams: queryParamsInput } = operationSpecificationInput
+  const {
+    connect = true,
+    queryParams: queryParamsInput,
+  } = operationSpecificationInput
 
   const queryParams = {
     ...queryParamsInput,
@@ -30,5 +33,6 @@ module.exports = function createOperationObjectSpecification({
     ...operationSpecificationInput,
     ...resourceSpecification,
     queryParams,
+    connect,
   }
 }

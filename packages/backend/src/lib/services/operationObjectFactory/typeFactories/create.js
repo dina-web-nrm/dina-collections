@@ -4,14 +4,16 @@ module.exports = function create({
   basePath,
   exampleRequests = {},
   exampleResponses = {},
+  operationId,
   queryParams,
   resource,
   resourcePlural,
+  ...rest
 }) {
-  const operationId = `create${capitalizeFirstLetter(resource)}`
   return {
+    ...rest,
     method: 'post',
-    operationId,
+    operationId: operationId || `create${capitalizeFirstLetter(resource)}`,
     operationType: 'create',
     path: `${basePath}/${resourcePlural}`,
     queryParams,

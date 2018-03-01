@@ -2,17 +2,19 @@ const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('../../utilities/log')
 const serviceRouterFactory = require('../../lib/api/serviceRouterFactory')
 const createApp = require('../../lib/api/appFactory')
-const bootstrapPostgres = require('../../lib/postgres')
+const setupPostgres = require('../../lib/postgres')
 const setupModels = require('../../lib/postgres/models/setupModels')
 const createConnectors = require('../../lib/connectors')
-const config = require('./config')
 const serviceDefinitions = require('../../services')
+const createServices = require('../../lib/services')
+
+const config = require('./config')
 
 const log = createLog('server')
 
-const services = serviceDefinitions
+const services = createServices({ config, serviceDefinitions })
 
-bootstrapPostgres({
+setupPostgres({
   config,
 })
   .then(({ sequelize }) => {

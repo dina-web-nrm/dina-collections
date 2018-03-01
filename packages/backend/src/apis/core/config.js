@@ -4,7 +4,17 @@ dotenv.config()
 
 const services = {
   agentService: true,
-  curatedEventService: true,
+  authService: true,
+  // curatedEventService: true,
+  // curatedListService: true,
+  // externalEventService: true,
+  // identifierService: true,
+  // localityService: true,
+  // organizationService: true,
+  // specimenService: true,
+  statusService: true,
+  // storageService: true,
+  taxonService: true,
 }
 
 const api = {
