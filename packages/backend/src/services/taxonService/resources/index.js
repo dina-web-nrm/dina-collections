@@ -1,5 +1,5 @@
 exports.taxon = {
-  basePath: '/taxon',
+  basePath: '',
   operations: [
     {
       connect: false,

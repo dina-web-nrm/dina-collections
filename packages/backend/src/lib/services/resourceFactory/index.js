@@ -1,8 +1,11 @@
+const createLog = require('../../../utilities/log')
 const createResourceSpecification = require('./createResourceSpecification')
 const createOperationObject = require('../operationObjectFactory')
 const createOperationMap = require('./createOperationMap')
 
-module.exports = function createResource({ log, resourceInput }) {
+const log = createLog('lib/services', 2)
+
+module.exports = function createResource({ resourceInput }) {
   const resourceSpecification = createResourceSpecification(resourceInput)
   const {
     basePath,
@@ -15,7 +18,6 @@ module.exports = function createResource({ log, resourceInput }) {
   log.info(`Create operations:`)
   const operations = operationSpecifications.map(operationSpecification => {
     return createOperationObject({
-      log: log.scope(),
       operationSpecification,
       resourceSpecification,
     })

@@ -1,6 +1,6 @@
 const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('../../utilities/log')
-const serviceRouterFactory = require('../../lib/api/serviceRouterFactory')
+const createServiceRouter = require('../../lib/api/serviceRouterFactory')
 const createApp = require('../../lib/api/appFactory')
 const setupPostgres = require('../../lib/postgres')
 const setupModels = require('../../lib/postgres/models/setupModels')
@@ -28,7 +28,7 @@ setupPostgres({
     return createConnectors({ config, models, services })
   })
   .then(({ connectors }) => {
-    const serviceRouter = serviceRouterFactory({
+    const serviceRouter = createServiceRouter({
       config,
       connectors,
     })

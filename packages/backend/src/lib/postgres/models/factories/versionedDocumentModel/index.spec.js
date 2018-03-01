@@ -261,10 +261,7 @@ dbDescribe('lib/postgres/models', () => {
           })
       })
       it('Throw error when id not provided', () => {
-        expect(model.update({})).rejects.toThrow()
-      })
-      it('Throw error when doc not provided', () => {
-        expect(model.update({ id: firstId })).rejects.toThrow()
+        return expect(model.update({})).rejects.toThrow()
       })
       it('Increments created new version id when updating', () => {
         model.update({ doc: { b: 4 }, id: firstId }).then(res => {

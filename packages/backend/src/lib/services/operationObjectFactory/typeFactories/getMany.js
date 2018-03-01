@@ -18,6 +18,7 @@ module.exports = function getMany({
     operationType: 'getMany',
     path: `${basePath}/${resourcePlural}`,
     queryParams,
+    relations,
     resource,
     response: {
       examples: exampleResponses,

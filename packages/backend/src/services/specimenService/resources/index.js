@@ -7,9 +7,9 @@ exports.specimen = {
   basePath: '/api/specimen/v01',
   operations: [
     {
-      connectorOptions: { validateBody },
       exampleRequests: { fullFormExample, primary: createRequestSuccess },
       type: 'create',
+      validateBody,
     },
     {
       exampleRequests: { primary: updateRequestSuccess },

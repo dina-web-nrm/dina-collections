@@ -1,8 +1,10 @@
+const createLog = require('../../../utilities/log')
 const createResource = require('../resourceFactory')
 const createServiceSpecification = require('./createServiceSpecification')
 
+const log = createLog('lib/services', 1)
+
 module.exports = function createService({
-  log,
   serviceDefinition: serviceSpecificationInput,
 }) {
   log.info(`Create service ${serviceSpecificationInput.name}`)
@@ -17,7 +19,6 @@ module.exports = function createService({
     return {
       ...obj,
       [resourceName]: createResource({
-        log: log.scope(),
         resourceInput,
         resourceName,
       }),

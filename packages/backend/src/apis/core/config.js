@@ -5,15 +5,15 @@ dotenv.config()
 const services = {
   agentService: true,
   authService: true,
-  // curatedEventService: true,
-  // curatedListService: true,
-  // externalEventService: true,
-  // identifierService: true,
-  // localityService: true,
+  curatedEventService: true,
+  curatedListService: true,
+  externalEventService: true,
+  identifierService: true,
+  localityService: true,
   // organizationService: true,
-  // specimenService: true,
+  specimenService: true,
   statusService: true,
-  // storageService: true,
+  storageService: true,
   taxonService: true,
 }
 

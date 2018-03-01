@@ -1,12 +1,15 @@
 const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
-const services = require('../../services')
-const createOperationTypeResourceOperationIdMap = require('./createOperationTypeResourceOperationIdMap')
+const serviceDefinitions = require('../../services')
+const createServices = require('../../lib/services')
+// const createOperationTypeResourceOperationIdMap = require('./createOperationTypeResourceOperationIdMap')
+
+const services = createServices({ serviceDefinitions })
 
 const testCrudFlow = ({
   createOperationId,
-  endpoints,
+  operations,
   getManyOperationId,
   getOneOperationId,
   getVersionOperationId,
@@ -25,7 +28,7 @@ const testCrudFlow = ({
     .join(', ')
 
   describe(`Crud flow with ${testing}`, () => {
-    const { examples } = endpoints[createOperationId].request
+    const { examples } = operations[createOperationId].request
     if (examples) {
       Object.keys(examples).forEach(exampleKey => {
         const example = examples[exampleKey]
@@ -159,9 +162,9 @@ const testMockGetOne = operationId => {
   })
 }
 
-const testCreate = ({ createOperationId, endpoints }) => {
+const testCreate = ({ createOperationId, operations }) => {
   describe(`Create - ${createOperationId}`, () => {
-    const { examples } = endpoints[createOperationId].request
+    const { examples } = operations[createOperationId].request
 
     it('Has examples', () => {
       expect(examples).toBeTruthy()
@@ -184,12 +187,20 @@ const testCreate = ({ createOperationId, endpoints }) => {
   })
 }
 
-const testApiResource = ({
-  endpoints,
-  operationTypeOperationIdMap,
-  resource,
-}) => {
-  describe(`Resource - ${resource}`, () => {
+const getOperationTypeIdMap = (operations = {}) => {
+  return Object.keys(operations).reduce((map, operationId) => {
+    const { type } = operations[operationId]
+    return {
+      ...map,
+      [type]: operationId,
+    }
+  }, {})
+}
+
+const testApiResource = ({ resource, resourceName }) => {
+  describe(`Resource - ${resourceName}`, () => {
+    const { operations } = resource
+    const operationTypeOperationIdMap = getOperationTypeIdMap(operations)
     const {
       create: createOperationId,
       getMany: getManyOperationId,
@@ -197,12 +208,12 @@ const testApiResource = ({
       getVersion: getVersionOperationId,
       getVersions: getVersionsOperationId,
       update: updateOperationId,
-    } = operationTypeOperationIdMap[resource]
+    } = operationTypeOperationIdMap
 
     if (createOperationId) {
       testCreate({
         createOperationId,
-        endpoints,
+        operations,
       })
     }
 
@@ -222,11 +233,11 @@ const testApiResource = ({
     ) {
       testCrudFlow({
         createOperationId,
-        endpoints,
         getManyOperationId,
         getOneOperationId,
         getVersionOperationId,
         getVersionsOperationId,
+        operations,
         updateOperationId,
       })
     }
@@ -238,15 +249,16 @@ const testApi = ({ service, serviceName }) => {
     it('Run tests', () => {
       expect(1).toBe(1)
     })
-    const operationTypeOperationIdMap = createOperationTypeResourceOperationIdMap(
-      service
-    )
-    const { endpoints } = service
-    Object.keys(operationTypeOperationIdMap).forEach(resource => {
+
+    // const operationTypeOperationIdMap = createOperationTypeResourceOperationIdMap(
+    //   service
+    // )
+    const { resources } = service
+    Object.keys(resources).forEach(resourceName => {
+      const resource = resources[resourceName]
       testApiResource({
-        endpoints,
-        operationTypeOperationIdMap,
         resource,
+        resourceName,
       })
     })
   })

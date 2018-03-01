@@ -150,8 +150,8 @@ dbDescribe('server/apis/specimensApi/models', () => {
           .getAllByTaxonName({ taxonName: 'first-taxon' })
           .then(res => {
             expect(res.length).toEqual(2)
-            expect(res[0].id).toEqual(firstId)
-            expect(res[1].id).toEqual(forthId)
+            expect(res[0].id).toEqual(forthId)
+            expect(res[1].id).toEqual(firstId)
           })
       })
       it('Returns all matching records when versions exists and dont return duplicates', () => {

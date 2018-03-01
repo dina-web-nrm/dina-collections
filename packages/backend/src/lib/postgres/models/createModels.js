@@ -1,3 +1,7 @@
+const createLog = require('../../../utilities/log')
+
+const log = createLog('lib/postgres', 1)
+
 const extractModelsFromApis = services => {
   return Object.keys(services)
     .reduce((modelFactories, serviceName) => {
@@ -37,7 +41,7 @@ const extractModelsFromApis = services => {
     .filter(({ modelFactory }) => !!modelFactory)
 }
 
-module.exports = function createModels({ log, services, config, sequelize }) {
+module.exports = function createModels({ services, config, sequelize }) {
   const rawModels = extractModelsFromApis(services)
   return Promise.all(
     rawModels.map(({ name, modelFactory }) => {

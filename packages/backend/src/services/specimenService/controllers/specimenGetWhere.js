@@ -1,16 +1,13 @@
 const createArrayResponse = require('../../../lib/controllers/factories/transformations/createArrayResponse')
 const transformOutput = require('../../../lib/controllers/factories/transformations/outputArray')
 
-module.exports = function specimenGetWhere({
-  modelName,
-  resource: resourceInput,
-}) {
-  const resource = resourceInput || modelName
-  return ({ models, request }) => {
+module.exports = function specimenGetWhere({ connectorOptions, models }) {
+  const { resource } = connectorOptions
+  return ({ request }) => {
     const {
       queryParams: { filter: { catalogNumber, taxonNameStandardized } = {} },
     } = request
-    const model = models[modelName]
+    const model = models[resource]
 
     if (catalogNumber) {
       return model
