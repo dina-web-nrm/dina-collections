@@ -32,7 +32,7 @@ module.exports = function createOperationObjectSpecification({
   return {
     ...operationSpecificationInput,
     ...resourceSpecification,
-    queryParams,
     connect,
+    queryParams,
   }
 }
