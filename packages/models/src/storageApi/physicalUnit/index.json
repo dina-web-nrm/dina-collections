@@ -2,9 +2,9 @@
   "additionalProperties": false,
   "properties": {
     "id": { "type": "string" },
-    "identifiableUnits": {
+    "distinguishedUnits": {
       "type": "array",
-      "items": { "$ref": "__ROOT__identifiableUnit" }
+      "items": { "$ref": "__ROOT__distinguishedUnit" }
     },
     "normalStorageLocationText": {
       "description": "Will be moved to storageLocation",

@@ -33,7 +33,7 @@ module.exports = function createError(_ref) {
 
   var errorMessage = createErrorMessageFromError(error);
 
-  var message = verbose ? 'ERROR - ' + errorCode + ', ' + origin + ', ' + type + ', \n\n ' + (0, _stringify2.default)(error) : 'ERROR - ' + errorCode + ', ' + origin + ', ' + type + ', ' + errorMessage;
+  var message = verbose ? 'ERROR - ' + errorCode + ', ' + origin + ', ' + type + ', ' + context + ', \n\n ' + (0, _stringify2.default)(error) : 'ERROR - ' + errorCode + ', ' + origin + ', ' + type + ', ' + context + ', ' + errorMessage;
 
   return {
     _known: true,

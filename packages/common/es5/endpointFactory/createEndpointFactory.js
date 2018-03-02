@@ -8,6 +8,10 @@ var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProp
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
@@ -106,6 +110,20 @@ var getResponseValidator = function getResponseValidator(_ref2) {
   return null;
 };
 
+var getExamplesFromMethodSpecifiction = function getExamplesFromMethodSpecifiction(methodSpecification) {
+  var schema = getSchemaFromResponse(methodSpecification.responses[200]);
+  if (!schema) {
+    return null;
+  }
+
+  var modelName = getModelNameFromSchema(schema);
+  if (!modelName) {
+    return null;
+  }
+
+  return openApiSpec && openApiSpec.components && openApiSpec.components.schemas && openApiSpec.components.schemas[modelName] && openApiSpec.components.schemas[modelName]['x-examples'];
+};
+
 var createMockData = function createMockData(_ref3) {
   var importFaker = _ref3.importFaker,
       methodSpecification = _ref3.methodSpecification;
@@ -128,30 +146,47 @@ var createMockData = function createMockData(_ref3) {
   return null;
 };
 
-module.exports = function createEndpointFactory(_ref4) {
-  var _ref4$origin = _ref4.origin,
-      origin = _ref4$origin === undefined ? 'client' : _ref4$origin,
-      importFaker = _ref4.importFaker;
+var createGetExample = function createGetExample(_ref4) {
+  var methodSpecification = _ref4.methodSpecification;
 
-  return function createEndpoint(_ref5) {
-    var operationId = _ref5.operationId,
-        rest = (0, _objectWithoutProperties3.default)(_ref5, ['operationId']);
-
-    if (!map[operationId]) {
-      console.warn('Operation id: ' + operationId + ' unknown');
+  var examples = getExamplesFromMethodSpecifiction(methodSpecification);
+  return function (exampleId) {
+    if (!examples) {
+      return _promise2.default.resolve(null);
     }
 
-    var _ref6 = map[operationId] || {},
-        methodName = _ref6.methodName,
-        methodSpecification = _ref6.methodSpecification,
-        pathname = _ref6.pathname;
+    return _promise2.default.resolve(examples[exampleId]);
+  };
+};
+
+module.exports = function createEndpointFactory(_ref5) {
+  var _ref5$origin = _ref5.origin,
+      origin = _ref5$origin === undefined ? 'client' : _ref5$origin,
+      importFaker = _ref5.importFaker;
+
+  return function createEndpoint(_ref6) {
+    var operationId = _ref6.operationId,
+        rest = (0, _objectWithoutProperties3.default)(_ref6, ['operationId']);
+
+    if (!map[operationId]) {
+      throw new Error('Operation id: ' + operationId + ' unknown');
+    }
+
+    var _ref7 = map[operationId] || {},
+        methodName = _ref7.methodName,
+        methodSpecification = _ref7.methodSpecification,
+        pathname = _ref7.pathname;
 
     return (0, _extends3.default)({
+      getExample: createGetExample({
+        methodSpecification: methodSpecification
+      }),
       methodName: methodName,
       mock: createMockData({
         importFaker: importFaker,
         methodSpecification: methodSpecification
       }),
+
       operationId: operationId,
       pathname: pathname,
       validateBody: getBodyValidator({

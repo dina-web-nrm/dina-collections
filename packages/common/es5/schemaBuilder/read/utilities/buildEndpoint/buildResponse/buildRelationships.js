@@ -12,13 +12,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 module.exports = function buildRelationships() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      format = _ref.format,
-      relationBase = _ref.relationBase,
       relations = _ref.relations,
-      selfLink = _ref.selfLink,
       versionsLink = _ref.versionsLink;
-
-  var relationSelfLink = format === 'array' ? selfLink + '/{id}' : selfLink;
 
   var versionRelationship = versionsLink && {
     properties: {
@@ -36,8 +31,8 @@ module.exports = function buildRelationships() {
         properties: {
           self: {
             example: 'https://domain' + versionsLink,
-            format: 'uri',
-            type: 'string'
+            type: 'string',
+            'x-faker': 'internet.url'
           }
         },
         type: 'object'
@@ -68,12 +63,12 @@ module.exports = function buildRelationships() {
       type: 'object'
     };
 
-    var links = {
+    var links = !link ? undefined : {
       properties: {
         self: {
-          example: 'https://domain' + (link || (relationBase || relationSelfLink) + '/' + key),
-          format: 'uri',
-          type: 'string'
+          example: 'https://domain' + link,
+          type: 'string',
+          'x-faker': 'internet.url'
         }
       },
       type: 'object'

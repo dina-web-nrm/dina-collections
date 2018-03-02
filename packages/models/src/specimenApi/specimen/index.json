@@ -8,9 +8,9 @@
     "physicalUnits": {
       "$ref": "__ROOT__physicalUnit"
     },
-    "identifiableUnits": {
+    "distinguishedUnits": {
       "type": "array",
-      "items": { "$ref": "__ROOT__identifiableUnit" }
+      "items": { "$ref": "__ROOT__distinguishedUnit" }
     },
     "id": { "type": "string" },
     "individualCircumstances": {

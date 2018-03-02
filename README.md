@@ -93,7 +93,7 @@ yarn setup
 yarn start:ui:mock
 ```
 
-### Run frontend with api
+### Run frontend with backend
 
 1. Start postgres db
 
@@ -101,10 +101,10 @@ yarn start:ui:mock
 docker-compose -f docker-compose.dev.yaml up -d postgres
 ```
 
-2. Start api
+2. Start backend
 
 ```
-yarn start:api
+yarn start:backend
 ```
 
 3. Start frontend server

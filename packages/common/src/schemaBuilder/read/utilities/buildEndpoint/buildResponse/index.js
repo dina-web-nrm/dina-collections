@@ -11,6 +11,7 @@ module.exports = function buildResponse({
   examples,
   format,
   include = null,
+  modelReference,
   operationId,
   raw,
   relations,
@@ -33,7 +34,11 @@ module.exports = function buildResponse({
   const links = buildLinks({ selfLink })
   const included = buildIncluded(include)
 
-  const item = buildItem({ resource, relationships })
+  const item = buildItem({
+    modelReference,
+    relationships,
+    resource,
+  })
 
   const base = buildBase({
     description,

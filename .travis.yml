@@ -41,7 +41,7 @@ after_success:
 
     yarn uninstall;
     echo "Start dina-collections-api build";
-    docker build -f ./packages/api/Dockerfile -t dina-collections-api ./packages;
+    docker build -f ./packages/backend/Dockerfile -t dina-collections-api ./packages;
     docker tag dina-collections-api dina/dina-collections-api;
     docker push dina/dina-collections-api;
     fi

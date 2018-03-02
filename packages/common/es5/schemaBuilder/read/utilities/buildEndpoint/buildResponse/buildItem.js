@@ -1,13 +1,14 @@
 'use strict';
 
 module.exports = function buildItem(_ref) {
-  var resource = _ref.resource,
-      relationships = _ref.relationships;
+  var modelReferens = _ref.modelReferens,
+      relationships = _ref.relationships,
+      resource = _ref.resource;
 
   return {
     additionalProperties: false,
     properties: {
-      attributes: {
+      attributes: modelReferens ? undefined : {
         $ref: '__ROOT__' + resource
       },
       id: {
