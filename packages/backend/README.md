@@ -5,9 +5,9 @@ read repository [README.md](../../../README.md)
 
 ## Terminology (wip)
 
-* [BackendConcepts](dockuemntation/terminology/backendConcepts.md)
-* [Rest](dockuemntation/terminology/rest.md)
-* [Urls](dockuemntation/terminology/urls.md)
+* [BackendConcepts](documentation/terminology/backendConcepts.md)
+* [Rest](documentation/terminology/rest.md)
+* [Urls](documentation/terminology/urls.md)
 
 ## File structure overview
 
