@@ -34,50 +34,45 @@
   "tags": [
     {
       "description": "## Api managing agents.\n",
-      "name": "agentApi"
+      "name": "agentService"
     },
     {
       "description": "Auth api\n",
-      "name": "authApi"
+      "name": "authService"
     },
     {
       "description": "CuratedEventApi - ex expeditions\n\n",
-      "name": "curatedEventApi"
+      "name": "curatedEventService"
     },
     {
-      "description": "Api managing curated lists.\n",
-      "name": "curatedListApi"
+      "name": "curatedListService"
     },
     {
       "description": "Api managing externalEvents like loan and acquisitions.\n",
-      "name": "externalEventApi"
+      "name": "externalEventService"
     },
     {
       "description": "Api managing identifiers like catalogNumber.\n",
-      "name": "identifierApi"
+      "name": "identifierService"
     },
     {
-      "description": "Locality Api\n",
-      "name": "localityApi"
-    },
-    {
-      "description": "Api managing organizations.\n",
-      "name": "organizationApi"
+      "description": "Locality Service\n",
+      "name": "localityService"
     },
     {
       "description": "Specimens api\n",
-      "name": "specimenApi"
+      "name": "specimenService"
     },
     {
-      "name": "statusApi"
+      "name": "statusService"
     },
     {
-      "description": "Api managing storage\n",
-      "name": "storageApi"
+      "description": "Service managing storage\n",
+      "name": "storageService"
     },
     {
       "description": "Mock taxon api\n",
-      "name": "taxonApi"
+      "name": "taxonService"
     }
   ],
   "paths": {
@@ -135,7 +130,7 @@
         ],
         "summary": "Create agent",
         "tags": [
-          "agentApi"
+          "agentService"
         ]
       },
       "get": {
@@ -181,7 +176,7 @@
         ],
         "summary": "Find agents",
         "tags": [
-          "agentApi"
+          "agentService"
         ]
       }
     },
@@ -239,7 +234,7 @@
         ],
         "summary": "Find agent by id",
         "tags": [
-          "agentApi"
+          "agentService"
         ]
       },
       "patch": {
@@ -305,7 +300,7 @@
         ],
         "summary": "Updates agent",
         "tags": [
-          "agentApi"
+          "agentService"
         ]
       }
     },
@@ -332,7 +327,7 @@
         ],
         "summary": "Gets user object",
         "tags": [
-          "authApi"
+          "authService"
         ]
       }
     },
@@ -364,7 +359,7 @@
         },
         "summary": "Gets user token",
         "tags": [
-          "authApi"
+          "authService"
         ]
       }
     },
@@ -422,7 +417,7 @@
         ],
         "summary": "Create expedition",
         "tags": [
-          "curatedEventApi"
+          "curatedEventService"
         ]
       },
       "get": {
@@ -468,7 +463,7 @@
         ],
         "summary": "Find expeditions",
         "tags": [
-          "curatedEventApi"
+          "curatedEventService"
         ]
       }
     },
@@ -526,7 +521,7 @@
         ],
         "summary": "Find expedition by id",
         "tags": [
-          "curatedEventApi"
+          "curatedEventService"
         ]
       },
       "patch": {
@@ -592,7 +587,7 @@
         ],
         "summary": "Updates expedition",
         "tags": [
-          "curatedEventApi"
+          "curatedEventService"
         ]
       }
     },
@@ -650,7 +645,7 @@
         ],
         "summary": "Create featureObservationType",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       },
       "get": {
@@ -696,7 +691,7 @@
         ],
         "summary": "Find featureObservationTypes",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       }
     },
@@ -764,7 +759,7 @@
         ],
         "summary": "Updates featureObservationType",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       },
       "get": {
@@ -820,7 +815,7 @@
         ],
         "summary": "Find featureObservationType by id",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       }
     },
@@ -878,7 +873,7 @@
         ],
         "summary": "Create distinguishedUnitObservationType",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       },
       "get": {
@@ -924,7 +919,7 @@
         ],
         "summary": "Find distinguishedUnitObservationTypes",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       }
     },
@@ -992,7 +987,7 @@
         ],
         "summary": "Updates distinguishedUnitObservationType",
         "tags": [
-          "curatedListApi"
+          "curatedListService"
         ]
       },
       "get": {
@@ -1048,45 +1043,7 @@
         ],
         "summary": "Find distinguishedUnitObservationType by id",
         "tags": [
-          "curatedListApi"
-        ]
-      }
-    },
-    "/api/externalEvent/v01/loans/{id}": {
-      "get": {
-        "operationId": "getLoan",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "notDefinedModel id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getLoanResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find loan by id",
-        "tags": [
-          "externalEventApi"
+          "curatedListService"
         ]
       }
     },
@@ -1144,7 +1101,7 @@
         ],
         "summary": "Create catalogNumber",
         "tags": [
-          "identifierApi"
+          "identifierService"
         ]
       },
       "get": {
@@ -1190,7 +1147,7 @@
         ],
         "summary": "Find catalogNumbers",
         "tags": [
-          "identifierApi"
+          "identifierService"
         ]
       }
     },
@@ -1258,7 +1215,7 @@
         ],
         "summary": "Updates catalogNumber",
         "tags": [
-          "identifierApi"
+          "identifierService"
         ]
       },
       "get": {
@@ -1314,7 +1271,7 @@
         ],
         "summary": "Find catalogNumber by id",
         "tags": [
-          "identifierApi"
+          "identifierService"
         ]
       }
     },
@@ -1372,7 +1329,7 @@
         ],
         "summary": "Create curatedLocality",
         "tags": [
-          "localityApi"
+          "localityService"
         ]
       },
       "get": {
@@ -1418,7 +1375,7 @@
         ],
         "summary": "Find curatedLocalities",
         "tags": [
-          "localityApi"
+          "localityService"
         ]
       }
     },
@@ -1486,7 +1443,7 @@
         ],
         "summary": "Updates curatedLocality",
         "tags": [
-          "localityApi"
+          "localityService"
         ]
       },
       "get": {
@@ -1542,7 +1499,7 @@
         ],
         "summary": "Find curatedLocality by id",
         "tags": [
-          "localityApi"
+          "localityService"
         ]
       }
     },
@@ -1600,7 +1557,7 @@
         ],
         "summary": "Create specimen",
         "tags": [
-          "specimenApi"
+          "specimenService"
         ]
       },
       "get": {
@@ -1666,7 +1623,7 @@
         ],
         "summary": "Find specimens",
         "tags": [
-          "specimenApi"
+          "specimenService"
         ]
       }
     },
@@ -1734,7 +1691,7 @@
         ],
         "summary": "Updates specimen",
         "tags": [
-          "specimenApi"
+          "specimenService"
         ]
       },
       "get": {
@@ -1790,131 +1747,7 @@
         ],
         "summary": "Find specimen by id",
         "tags": [
-          "specimenApi"
-        ]
-      }
-    },
-    "/api/specimen/v01/specimens/{id}/relationships/physicalUnits": {
-      "patch": {
-        "operationId": "updateSpecimenPhysicalUnits",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "specimen id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Update specimen -> physicalUnits",
-        "tags": [
-          "specimenApi"
-        ]
-      },
-      "get": {
-        "operationId": "getSpecimenPhysicalUnits",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "specimen id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getSpecimenPhysicalUnitsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find specimen -> physicalUnits",
-        "tags": [
-          "specimenApi"
+          "specimenService"
         ]
       }
     },
@@ -1983,7 +1816,7 @@
         ],
         "summary": "Find specimen version by id and versionId",
         "tags": [
-          "specimenApi"
+          "specimenService"
         ]
       }
     },
@@ -2041,7 +1874,7 @@
         ],
         "summary": "Find specimens versions",
         "tags": [
-          "specimenApi"
+          "specimenService"
         ]
       }
     },
@@ -2066,9 +1899,8 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Gets a status object",
         "tags": [
-          "statusApi"
+          "statusService"
         ]
       }
     },
@@ -2126,7 +1958,7 @@
         ],
         "summary": "Create physicalUnit",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       },
       "get": {
@@ -2172,7 +2004,7 @@
         ],
         "summary": "Find physicalUnits",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2240,7 +2072,7 @@
         ],
         "summary": "Updates physicalUnit",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       },
       "get": {
@@ -2296,7 +2128,7 @@
         ],
         "summary": "Find physicalUnit by id",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2364,7 +2196,7 @@
         ],
         "summary": "Update physicalUnit -> storageLocation",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       },
       "get": {
@@ -2420,7 +2252,7 @@
         ],
         "summary": "Find physicalUnit -> storageLocation",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2489,7 +2321,7 @@
         ],
         "summary": "Find physicalUnit version by id and versionId",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2547,7 +2379,7 @@
         ],
         "summary": "Find physicalUnits versions",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2605,7 +2437,7 @@
         ],
         "summary": "Create storageLocation",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       },
       "get": {
@@ -2651,7 +2483,7 @@
         ],
         "summary": "Find storageLocations",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2719,7 +2551,7 @@
         ],
         "summary": "Updates storageLocation",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       },
       "get": {
@@ -2775,7 +2607,7 @@
         ],
         "summary": "Find storageLocation by id",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       }
     },
@@ -2843,7 +2675,7 @@
         ],
         "summary": "Update storageLocation -> physicalUnits",
         "tags": [
-          "storageApi"
+          "storageService"
         ]
       },
       "get": {
@@ -2899,60 +2731,7 @@
         ],
         "summary": "Find storageLocation -> physicalUnits",
         "tags": [
-          "storageApi"
-        ]
-      }
-    },
-    "/taxon": {
-      "get": {
-        "description": "Fetches a taxon or several taxa.\n",
-        "operationId": "getTaxaByName",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "filter[name]",
-            "description": "Taxon name - accepted scientific, synonym or vernacular name",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "example": "Alces alces"
-          },
-          {
-            "in": "query",
-            "name": "search_type",
-            "description": "Search type - exact (default) or partial",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "enum": [
-                "exact",
-                "partial"
-              ]
-            },
-            "example": "exact"
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getTaxaByNameResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Fetches taxa by name",
-        "tags": [
-          "taxonApi"
+          "storageService"
         ]
       }
     },
@@ -2967,6 +2746,50 @@
             "example": "1",
             "required": true,
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[name]",
+            "description": "Taxon name - accepted scientific, synonym or vernacular name",
+            "example": "Alces alces",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "search_type",
+            "description": "Search type - exact (default) or partial",
+            "example": "exact",
+            "required": false,
+            "schema": {
+              "enum": [
+                "exact",
+                "partial"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
               "type": "string"
             }
           }
@@ -2988,9 +2811,57 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Fetches taxon by id",
+        "summary": "Find taxon by id",
         "tags": [
-          "taxonApi"
+          "taxonService"
+        ]
+      }
+    },
+    "/taxon": {
+      "get": {
+        "operationId": "getTaxaByName",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxaByNameResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find taxon",
+        "tags": [
+          "taxonService"
         ]
       }
     }
@@ -5067,35 +4938,6 @@
           }
         }
       },
-      "updateSpecimenPhysicalUnitsRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "array",
-            "additionalProperties": false,
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "default": "physicalUnit",
-                  "enum": [
-                    "physicalUnit"
-                  ],
-                  "type": "string"
-                },
-                "id": {
-                  "type": "string",
-                  "example": "1234"
-                }
-              }
-            }
-          }
-        }
-      },
       "createPhysicalUnitRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -6129,50 +5971,6 @@
         "type": "object",
         "x-examples": {}
       },
-      "getLoanResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/notDefinedModel"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "notDefinedModel",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/externalEvent/v01/loans/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object"
-      },
       "createCatalogNumberResponse": {
         "additionalProperties": false,
         "properties": {
@@ -6617,104 +6415,6 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/specimen/v01/specimens/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "updateSpecimenPhysicalUnitsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/specimen"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "specimen",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getSpecimenPhysicalUnitsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "physicalUnit",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -7889,6 +7589,51 @@
         "type": "object",
         "x-examples": {}
       },
+      "getTaxonByIdResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/taxon"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "taxon",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/taxon/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
       "getTaxaByNameResponse": {
         "additionalProperties": false,
         "properties": {
@@ -7935,51 +7680,8 @@
             "type": "object"
           }
         },
-        "type": "object"
-      },
-      "getTaxonByIdResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/taxon"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "taxon",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/taxon/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object"
+        "type": "object",
+        "x-examples": {}
       }
     },
     "securitySchemes": {
