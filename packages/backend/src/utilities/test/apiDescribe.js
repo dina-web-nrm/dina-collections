@@ -1,4 +1,4 @@
-const config = require('../../apis/core/config')
+const config = require('../../apps/core/config')
 
 module.exports = function apiDescribe(testName, ...rest) {
   if (config.test.runApiTests) {

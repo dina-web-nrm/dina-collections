@@ -1,8 +1,8 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('createRequestMiddleware')
+const log = createLog('decorateLocalsUserInputMiddleware')
 
-module.exports = function createRequestMiddleware({ config }) {
+module.exports = function createDecorateLocalsUserInputMiddleware({ config }) {
   return (req, res, next) => {
     const { body, headers, params: pathParams, query: queryParams } = req
     const userInput = {

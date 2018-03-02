@@ -1,5 +1,5 @@
 const createLog = require('../../../utilities/log')
-const createOperationObjectSpecification = require('./createOperationObjectSpecification')
+const createOperationSpecification = require('./createOperationSpecification')
 const typeFactories = require('./typeFactories')
 
 const log = createLog('lib/services', 3)
@@ -11,7 +11,7 @@ module.exports = function createOperationObject({
   if (operationSpecificationInput.raw) {
     return operationSpecificationInput
   }
-  const operationSpecification = createOperationObjectSpecification({
+  const operationSpecification = createOperationSpecification({
     operationSpecificationInput,
     resourceSpecification,
   })

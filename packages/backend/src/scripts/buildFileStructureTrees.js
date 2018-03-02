@@ -31,7 +31,7 @@ const trees = [
   },
   {
     levels: 3,
-    relativePath: '../apis',
+    relativePath: '../apps',
   },
   {
     levels: 4,

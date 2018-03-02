@@ -5,14 +5,16 @@ const decorateLocalsUserInputMiddlewareFactory = require('./middlewares/decorate
 const requestHandlerMiddlewareFactory = require('./middlewares/requestHandler')
 const expressifyPath = require('./utilities/expressifyPath')
 
-const log = createLog('lib/api/serviceRouter')
+const log = createLog('lib/serviceRouter')
 
 module.exports = function serviceRouterFactory({ config, connectors }) {
   const serviceRouter = express.Router({ mergeParams: true })
   const errorMiddleware = errorMiddlewareFactory({ config })
-  const decorateLocalsUserInput = decorateLocalsUserInputMiddlewareFactory({
-    config,
-  })
+  const decorateLocalsUserInputMiddleware = decorateLocalsUserInputMiddlewareFactory(
+    {
+      config,
+    }
+  )
 
   log.info('Registering service routes')
   const scopedLog = log.scope()
@@ -29,7 +31,7 @@ module.exports = function serviceRouterFactory({ config, connectors }) {
     scopedLog.info(
       `${method.toUpperCase()} - ${expressifiedPath} as ${operationId}`
     )
-    serviceRouter.use(expressifiedPath, decorateLocalsUserInput)
+    serviceRouter.use(expressifiedPath, decorateLocalsUserInputMiddleware)
     serviceRouter[method](expressifiedPath, requestHandlerMiddleware)
   })
   log.info('Mounting service done')

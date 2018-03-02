@@ -1,6 +1,6 @@
 const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('../../utilities/log')
-const createServiceRouter = require('../../lib/api')
+const createServiceRouter = require('../../lib/serviceRouter')
 const createApp = require('../../lib/app')
 const setupPostgres = require('../../lib/postgres')
 const createModels = require('../../lib/postgres/models/setupModels')

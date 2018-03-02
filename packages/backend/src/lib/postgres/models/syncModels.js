@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('lib/postgres', 1)
+const log = createLog('lib/postgres', 0)
 
 const chainPromises = require('common/src/chainPromises')
 
@@ -9,7 +9,7 @@ module.exports = function syncModels({ config, modelArray }) {
   return chainPromises(
     modelArray.map(({ model, name }) => {
       return () => {
-        log.debug(`${name}`)
+        log.scope().debug(`${name}`)
         return model.Model.sync({ force: config.db.flushOnRestart })
       }
     })

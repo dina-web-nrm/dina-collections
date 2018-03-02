@@ -1,7 +1,7 @@
 const createDb = require('../../../db')
 const createModel = require('./index')
 const syncModels = require('../../syncModels')
-const config = require('../../../../../apis/core/config')
+const config = require('../../../../../apps/core/config')
 
 const batchDescribe = require('../../../../../utilities/test/batchDescribe')
 const batchExecute = require('../../../../../utilities/test/batchExecute')

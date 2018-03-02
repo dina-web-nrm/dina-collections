@@ -1,4 +1,4 @@
-const config = require('../../apis/core/config')
+const config = require('../../apps/core/config')
 
 module.exports = function dbDescribe(testName, ...rest) {
   if (config.test.runDbTests) {

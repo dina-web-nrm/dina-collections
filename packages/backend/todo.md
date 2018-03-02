@@ -1,3 +1,39 @@
+* rescope operatons and models to resources
+* setupPostgres -> initializeSequelize
+* connectorOptions -> operation
+* scope models in controllers to service level
+* merge transformOutput and createObjectResponse
+* scope connectors on service level
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * Change name for hasOne to belongToOne
 * Make sure latest version is fetched and not connected version
 * Change name of operations to endpointFactories

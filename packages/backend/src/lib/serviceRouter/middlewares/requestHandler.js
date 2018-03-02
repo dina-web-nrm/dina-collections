@@ -1,8 +1,8 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('operationMiddleware')
+const log = createLog('requestHandlerMiddleware')
 
-module.exports = function createOperationMiddleware({
+module.exports = function createRequestHandlerMiddleware({
   config,
   operationId,
   requestHandler,

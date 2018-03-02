@@ -5,7 +5,7 @@ const { createSystemModelSchemaValidator } = require('common/src/error')
 const createEndpoint = require('common/src/endpointFactory/server')
 const { createApiClient } = require('common/src/apiClient')
 
-const config = require('../../apis/core/config')
+const config = require('../../apps/core/config')
 
 const { testApiUrl, testAuthUrl, testUsername, testPassword } = config.test
 

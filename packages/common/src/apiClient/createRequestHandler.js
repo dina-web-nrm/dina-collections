@@ -5,7 +5,7 @@ const validateMethodConfig = require('./validation/validateMethodConfig')
 const createResponse = require('./createResponse')
 const createRequest = require('./createRequest')
 
-module.exports = function createRouteFunction({
+module.exports = function createRequestHandler({
   apiConfig,
   endpointConfig,
   handler,

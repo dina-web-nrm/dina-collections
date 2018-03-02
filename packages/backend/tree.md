@@ -1,26 +1,38 @@
 ```bash
 ../../
-├── Dockerfile
-├── LICENCE
+├── LICENSE
+├── Makefile
 ├── README.md
-├── documentation
-│   ├── fileStructure.md
-│   └── terminology.md
-├── index.js
+├── certs
+│   ├── dina-web.net.crt
+│   └── dina-web.net.key
+├── docker-compose.dev.yaml
+├── docker-compose.yaml
+├── docker-hooks
+│   ├── deploy-dina-collections-api.sh
+│   ├── deploy-dina-collections-ui-mock.sh
+│   ├── deploy-dina-collections-ui.sh
+│   ├── deploy-dina-semantic-ui-docs.sh
+│   └── index.js
+├── env
+│   ├── sample.api
+│   ├── sample.docker-hook
+│   ├── sample.postgres
+│   ├── sample.style
+│   ├── sample.ui
+│   └── sample.ui-mock
 ├── package.json
-├── sample.env
-├── src
-│   ├── apis
-│   ├── lib
-│   ├── scripts
-│   ├── services
-│   ├── tests
-│   ├── tree.md
-│   └── utilities
-├── todo.md
-├── tree.md
+├── packages
+│   ├── api
+│   ├── backend
+│   ├── common
+│   ├── dina-style
+│   ├── models
+│   └── ui
+├── scripts
+│   └── create-env.sh
 └── yarn.lock
 
-8 directories, 12 files
+11 directories, 21 files
 
 ```

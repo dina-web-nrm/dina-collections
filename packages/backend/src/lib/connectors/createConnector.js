@@ -1,4 +1,4 @@
-const createRouteFunction = require('common/src/apiClient/createRouteFunction')
+const createRequestHandler = require('common/src/apiClient/createRequestHandler')
 const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
 const controllerFactories = require('../controllers')
 const createLog = require('../../utilities/log')
@@ -12,7 +12,7 @@ module.exports = function createConnector({
   operation,
   operationId,
 }) {
-  log.info('Create connector')
+  log.info(operationId)
   const {
     connect,
     controller: customControllerKey,
@@ -47,7 +47,7 @@ module.exports = function createConnector({
   })
 
   // TODO rename function
-  const requestHandler = createRouteFunction({
+  const requestHandler = createRequestHandler({
     apiConfig,
     endpointConfig,
     handler: controller,

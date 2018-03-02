@@ -1,6 +1,6 @@
 const createDb = require('../../../lib/postgres/db')
 const syncModels = require('../../../lib/postgres/models/syncModels')
-const config = require('../../../apis/core/config')
+const config = require('../../../apps/core/config')
 const createSpecimen = require('./specimen')
 
 const dbDescribe = require('../../../utilities/test/dbDescribe')
