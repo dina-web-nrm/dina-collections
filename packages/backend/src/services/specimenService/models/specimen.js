@@ -1,4 +1,4 @@
-const createModel = require('../../../lib/postgres/models/factories/versionedDocumentModel')
+const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 const getAllByTaxonNameFactory = require('./modelMethods/getAllByTaxonNameFactory')
 
 module.exports = function createSpecimen({ sequelize }) {

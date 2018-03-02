@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('lib/postgres', 1)
+const log = createLog('lib/sequelize', 1)
 
 const extractModelsFromApis = services => {
   return Object.keys(services)

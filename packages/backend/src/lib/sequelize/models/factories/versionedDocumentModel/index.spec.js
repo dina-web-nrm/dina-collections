@@ -27,7 +27,7 @@ const setup = () => {
   })
 }
 
-dbDescribe('lib/postgres/models', () => {
+dbDescribe('lib/sequelize/models', () => {
   let model
   describe('createModel', () => {
     beforeAll(() => {

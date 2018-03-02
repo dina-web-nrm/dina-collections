@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('lib/postgres', 0)
+const log = createLog('lib/sequelize', 0)
 
 const chainPromises = require('common/src/chainPromises')
 

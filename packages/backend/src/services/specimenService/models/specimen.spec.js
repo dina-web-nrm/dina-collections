@@ -1,5 +1,5 @@
-const createDb = require('../../../lib/postgres/db')
-const syncModels = require('../../../lib/postgres/models/syncModels')
+const createDb = require('../../../lib/sequelize/db')
+const syncModels = require('../../../lib/sequelize/models/syncModels')
 const config = require('../../../apps/core/config')
 const createSpecimen = require('./specimen')
 

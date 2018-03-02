@@ -130,7 +130,7 @@ const setup = () => {
 
 const maxAllowedTime = 100000
 
-batchDescribe('lib/postgres/models', () => {
+batchDescribe('lib/sequelize/models', () => {
   let model
   describe('createModel batch', () => {
     beforeAll(() => {
@@ -181,7 +181,7 @@ batchDescribe('lib/postgres/models', () => {
 //   99000.batch.execute: 970.829ms
 // console.log console.js:171
 //   batch: 32011.944ms
-// console.log src/lib/postgres/models/createModel.batch.spec.js:165
+// console.log src/lib/sequelize/models/createModel.batch.spec.js:165
 //   test:batch
 
 // 300k
@@ -190,7 +190,7 @@ batchDescribe('lib/postgres/models', () => {
 //   290000.batch.execute: 3241.546ms
 // console.log console.js:171
 //   batch: 85810.160ms
-// console.log src/lib/postgres/models/createModel.batch.spec.js:165
+// console.log src/lib/sequelize/models/createModel.batch.spec.js:165
 //   test:batch
 
 // 100k

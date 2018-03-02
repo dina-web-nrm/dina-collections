@@ -1,4 +1,4 @@
-const createModel = require('../../../lib/postgres/models/factories/versionedDocumentModel')
+const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
 exports.curatedLocality = function curatedLocality({ sequelize }) {
   return createModel({
