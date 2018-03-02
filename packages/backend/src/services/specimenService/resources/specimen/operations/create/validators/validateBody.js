@@ -2,7 +2,6 @@ const objectPath = require('object-path')
 
 module.exports = function validateBody(body) {
   // todo solve with x-server-required keyword for schema
-  console.log('bodybodybodybodybodybodybodybodybodybody', body)
   if (
     !objectPath.get(
       body,

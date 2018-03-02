@@ -38,78 +38,78 @@ apiDescribe('specimen', () => {
           expect(res.data.length > 0).toBe(true)
         })
       })
-      //   it('Succeed with valid catalogNumber and includes', () => {
-      //     return makeTestCall({
-      //       authToken,
-      //       operationId: 'getSpecimens',
-      //       queryParams: {
-      //         'filter[catalogNumber]': validCatalogNumber,
-      //       },
-      //     }).then(res => {
-      //       expect(res).toBeTruthy()
-      //       expect(res.data).toBeTruthy()
-      //       expect(Array.isArray(res.data)).toBe(true)
-      //       expect(res.data.length > 0).toBe(true)
-      //     })
-      //   })
-      //   it('Return empty array when non existing catalogNumber', () => {
-      //     return makeTestCall({
-      //       authToken,
-      //       operationId: 'getSpecimens',
-      //       queryParams: {
-      //         'filter[catalogNumber]': 'xxx111',
-      //       },
-      //     }).then(res => {
-      //       expect(res).toBeTruthy()
-      //       expect(res.data).toBeTruthy()
-      //       expect(Array.isArray(res.data)).toBe(true)
-      //       expect(res.data.length === 0).toBe(true)
-      //     })
-      //   })
-      // })
-      // describe('by taxonNameStandardized', () => {
-      //   it('Succeed with valid taxonNameStandardized', () => {
-      //     return makeTestCall({
-      //       authToken,
-      //       operationId: 'getSpecimens',
-      //       queryParams: {
-      //         'filter[taxonNameStandardized]': validTaxonName,
-      //       },
-      //     }).then(res => {
-      //       expect(res).toBeTruthy()
-      //       expect(res.data).toBeTruthy()
-      //       expect(Array.isArray(res.data)).toBe(true)
-      //       expect(res.data.length > 0).toBe(true)
-      //     })
-      //   })
-      //   it('Succeed with valid taxonNameStandardized', () => {
-      //     return makeTestCall({
-      //       authToken,
-      //       operationId: 'getSpecimens',
-      //       queryParams: {
-      //         'filter[taxonNameStandardized]': validTaxonName,
-      //       },
-      //     }).then(res => {
-      //       expect(res).toBeTruthy()
-      //       expect(res.data).toBeTruthy()
-      //       expect(Array.isArray(res.data)).toBe(true)
-      //       expect(res.data.length > 0).toBe(true)
-      //     })
-      //   })
-      //   it('Return empty array when taxon name dont exist', () => {
-      //     return makeTestCall({
-      //       authToken,
-      //       operationId: 'getSpecimens',
-      //       queryParams: {
-      //         'filter[taxonNameStandardized]': 'not-existing',
-      //       },
-      //     }).then(res => {
-      //       expect(res).toBeTruthy()
-      //       expect(res.data).toBeTruthy()
-      //       expect(Array.isArray(res.data)).toBe(true)
-      //       expect(res.data.length === 0).toBe(true)
-      //     })
-      //   })
+      it('Succeed with valid catalogNumber and includes', () => {
+        return makeTestCall({
+          authToken,
+          operationId: 'getSpecimens',
+          queryParams: {
+            'filter[catalogNumber]': validCatalogNumber,
+          },
+        }).then(res => {
+          expect(res).toBeTruthy()
+          expect(res.data).toBeTruthy()
+          expect(Array.isArray(res.data)).toBe(true)
+          expect(res.data.length > 0).toBe(true)
+        })
+      })
+      it('Return empty array when non existing catalogNumber', () => {
+        return makeTestCall({
+          authToken,
+          operationId: 'getSpecimens',
+          queryParams: {
+            'filter[catalogNumber]': 'xxx111',
+          },
+        }).then(res => {
+          expect(res).toBeTruthy()
+          expect(res.data).toBeTruthy()
+          expect(Array.isArray(res.data)).toBe(true)
+          expect(res.data.length === 0).toBe(true)
+        })
+      })
+    })
+    describe('by taxonNameStandardized', () => {
+      it('Succeed with valid taxonNameStandardized', () => {
+        return makeTestCall({
+          authToken,
+          operationId: 'getSpecimens',
+          queryParams: {
+            'filter[taxonNameStandardized]': validTaxonName,
+          },
+        }).then(res => {
+          expect(res).toBeTruthy()
+          expect(res.data).toBeTruthy()
+          expect(Array.isArray(res.data)).toBe(true)
+          expect(res.data.length > 0).toBe(true)
+        })
+      })
+      it('Succeed with valid taxonNameStandardized', () => {
+        return makeTestCall({
+          authToken,
+          operationId: 'getSpecimens',
+          queryParams: {
+            'filter[taxonNameStandardized]': validTaxonName,
+          },
+        }).then(res => {
+          expect(res).toBeTruthy()
+          expect(res.data).toBeTruthy()
+          expect(Array.isArray(res.data)).toBe(true)
+          expect(res.data.length > 0).toBe(true)
+        })
+      })
+      it('Return empty array when taxon name dont exist', () => {
+        return makeTestCall({
+          authToken,
+          operationId: 'getSpecimens',
+          queryParams: {
+            'filter[taxonNameStandardized]': 'not-existing',
+          },
+        }).then(res => {
+          expect(res).toBeTruthy()
+          expect(res.data).toBeTruthy()
+          expect(Array.isArray(res.data)).toBe(true)
+          expect(res.data.length === 0).toBe(true)
+        })
+      })
     })
   })
 })
