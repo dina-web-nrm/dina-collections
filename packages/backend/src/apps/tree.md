@@ -1,14 +1,4 @@
 # Tree for apps
-## Links
-[root](../../tree.md)
-
-[src](../tree.md)
-
-[services](../services/tree.md)
-
-[lib](../lib/tree.md)
-
-
 ## Tree
 ```bash
 ├── core
@@ -17,3 +7,9 @@
 └── tree.md
 
 ```
+
+## Links
+[root](../../tree.md)
+[src](../tree.md)
+[lib](../lib/tree.md)
+[services](../services/tree.md)

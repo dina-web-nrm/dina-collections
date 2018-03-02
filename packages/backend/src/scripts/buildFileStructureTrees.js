@@ -11,7 +11,7 @@ const buildLinkContentArray = ({ name, rootRelativePath, trees }) => {
     })
     .map(tree => {
       const relative = path.relative(rootRelativePath, tree.rootRelativePath)
-      return `[${tree.name}](${relative}/tree.md)\n`
+      return `[${tree.name}](${relative}/tree.md)`
     })
 }
 
@@ -46,11 +46,11 @@ const buildTreeDocumentation = ({ levels, name, rootRelativePath, trees }) => {
 
     const fileContent = [
       `# Tree for ${name}`,
-      '## Links',
-      ...treeLinks,
-      '',
       '## Tree',
       ...treeContentArray,
+      '',
+      '## Links',
+      ...treeLinks,
     ].join('\n')
 
     const filePath = path.join(relativePath, 'tree.md')
@@ -70,6 +70,11 @@ const trees = [
     rootRelativePath: './src',
   },
   {
+    levels: 4,
+    name: 'lib',
+    rootRelativePath: './src/lib',
+  },
+  {
     levels: 3,
     name: 'apps',
     rootRelativePath: './src/apps',
@@ -78,11 +83,6 @@ const trees = [
     levels: 4,
     name: 'services',
     rootRelativePath: './src/services',
-  },
-  {
-    levels: 4,
-    name: 'lib',
-    rootRelativePath: './src/lib',
   },
 ]
 
