@@ -37,7 +37,7 @@ const buildTreeContentArray = ({ levels, relativePath }) => {
 }
 
 const buildTreeDocumentation = ({ levels, name, rootRelativePath, trees }) => {
-  const relativePath = path.join(pathToRoot, rootRelativePath)
+  const relativePath = path.join(__dirname, pathToRoot, rootRelativePath)
   return buildTreeContentArray({
     levels,
     relativePath,
@@ -53,7 +53,7 @@ const buildTreeDocumentation = ({ levels, name, rootRelativePath, trees }) => {
       ...treeContentArray,
     ].join('\n')
 
-    const filePath = path.join(__dirname, relativePath, 'tree.md')
+    const filePath = path.join(relativePath, 'tree.md')
     fs.writeFileSync(filePath, fileContent, 'utf8')
   })
 }
