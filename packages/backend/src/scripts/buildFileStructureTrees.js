@@ -4,7 +4,7 @@ const fs = require('fs')
 const { exec } = require('child_process')
 
 const buildTree = (relativePath, levels) => {
-  const cmd = `tree ${relativePath} -L ${levels}`
+  const cmd = `tree ${relativePath} -L ${levels} -I node_modules`
   exec(cmd, (err, tree) => {
     const fileContent = ['```bash', tree, '```']
 
@@ -26,7 +26,7 @@ const trees = [
     relativePath: '../',
   },
   {
-    levels: 3,
+    levels: 4,
     relativePath: '../lib',
   },
   {
@@ -34,7 +34,7 @@ const trees = [
     relativePath: '../apis',
   },
   {
-    levels: 3,
+    levels: 4,
     relativePath: '../services',
   },
 ]
