@@ -1,8 +1,8 @@
 const createArrayResponse = require('../../../lib/controllers/transformations/createArrayResponse')
 const transformOutput = require('../../../lib/controllers/transformations/outputArray')
 
-module.exports = function specimenGetWhere({ connectorOptions, models }) {
-  const { resource } = connectorOptions
+module.exports = function specimenGetWhere({ operation, models }) {
+  const { resource } = operation
   return ({ request }) => {
     const {
       queryParams: { filter: { catalogNumber, taxonNameStandardized } = {} },

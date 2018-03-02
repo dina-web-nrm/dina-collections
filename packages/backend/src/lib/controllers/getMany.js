@@ -3,8 +3,8 @@ const transformOutput = require('./transformations/outputObject')
 const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
 const extractRelationships = require('./relationshipsUtilities/extractRelationships')
 
-module.exports = function getMany({ connectorOptions, models }) {
-  const { includeRelations, relations, resource } = connectorOptions
+module.exports = function getMany({ operation, models }) {
+  const { includeRelations, relations, resource } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)

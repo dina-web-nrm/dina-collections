@@ -1,8 +1,8 @@
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getVersion({ connectorOptions, models }) {
-  const { resource } = connectorOptions
+module.exports = function getVersion({ operation, models }) {
+  const { resource } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)

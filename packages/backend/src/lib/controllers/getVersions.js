@@ -1,8 +1,8 @@
 const createArrayResponse = require('./transformations/createArrayResponse')
 const transformOutput = require('./transformations/outputArray')
 
-module.exports = function getVersionsById({ connectorOptions, models }) {
-  const { resource } = connectorOptions
+module.exports = function getVersionsById({ operation, models }) {
+  const { resource } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)

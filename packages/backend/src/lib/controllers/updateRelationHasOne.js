@@ -1,8 +1,8 @@
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function updateRelationHasOne({ connectorOptions, models }) {
-  const { relation: { key: relationKey }, resource } = connectorOptions
+module.exports = function updateRelationHasOne({ operation, models }) {
+  const { relation: { key: relationKey }, resource } = operation
 
   const model = models[resource]
   if (!model) {

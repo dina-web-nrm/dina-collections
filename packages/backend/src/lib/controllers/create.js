@@ -2,8 +2,8 @@ const createObjectResponse = require('./transformations/createObjectResponse')
 const transformInput = require('./transformations/inputObject')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function create({ connectorOptions = {}, models }) {
-  const { resource, validateBody } = connectorOptions
+module.exports = function create({ operation = {}, models }) {
+  const { resource, validateBody } = operation
 
   const model = models[resource]
   if (!model) {

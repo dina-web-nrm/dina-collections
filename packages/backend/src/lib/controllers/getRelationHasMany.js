@@ -1,11 +1,11 @@
 const createArrayResponse = require('./transformations/createArrayResponse')
 const transformOutput = require('./transformations/outputArray')
 
-module.exports = function getRelationsHasMany({ connectorOptions, models }) {
+module.exports = function getRelationsHasMany({ operation, models }) {
   const {
     resource,
     relation: { key: relationKey, resource: relationResource },
-  } = connectorOptions
+  } = operation
 
   const model = models[resource]
   const relationModel = models[relationResource]

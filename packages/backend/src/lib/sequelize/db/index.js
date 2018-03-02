@@ -3,7 +3,7 @@ const Sequelize = require('sequelize')
 
 const log = createLog('lib/sequelize')
 
-module.exports = function createDb({ config }) {
+module.exports = function connectDb({ config }) {
   const { database, password, url, username } = config.db
   const connectionString = `postgres://${username}:${password}@${url}/${database}`
   const sequelize = new Sequelize(connectionString, {

@@ -30,16 +30,14 @@ module.exports = function createConnector({
     log
       .scope()
       .info(
-        `no controller for ${operationId}. operationType: ${
-          operationType
-        }, connect: ${connect}, customControllerKey: ${customControllerKey}`
+        `no controller for ${operationId}. operationType: ${operationType}, connect: ${connect}, customControllerKey: ${customControllerKey}`
       )
   }
 
   const controller =
     controllerFactory &&
     controllerFactory({
-      connectorOptions: operation,
+      operation,
       models,
     })
   const endpointConfig = commonCreateEndpointConfig({

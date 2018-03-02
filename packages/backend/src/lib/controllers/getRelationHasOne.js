@@ -1,11 +1,11 @@
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getRelationsHasOne({ connectorOptions, models }) {
+module.exports = function getRelationsHasOne({ operation, models }) {
   const {
     resource,
     relation: { key: relationKey, resource: relationResource },
-  } = connectorOptions
+  } = operation
 
   const model = models[resource]
   const relationModel = models[relationResource]
