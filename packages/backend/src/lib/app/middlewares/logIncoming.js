@@ -13,6 +13,6 @@ const logIncomingMiddleware = (req, res, next) => {
   next()
 }
 
-module.exports = function createLogIncomming() {
+module.exports = function createLogIncoming() {
   return logIncomingMiddleware
 }
