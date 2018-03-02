@@ -3,7 +3,7 @@ const syncModels = require('./syncModels')
 const createModels = require('./createModels')
 const createRelations = require('./createRelations')
 
-const log = createLog('lib/postgres')
+const log = createLog('lib/sequelize')
 
 module.exports = function setupModels({ config, sequelize, services }) {
   log.info('Setup models:')

@@ -1,13 +1,11 @@
 const createLog = require('../../../utilities/log')
 const Sequelize = require('sequelize')
 
-const log = createLog('lib/postgres')
+const log = createLog('lib/sequelize')
 
 module.exports = function createDb({ config }) {
   const { database, password, url, username } = config.db
-  const connectionString = `postgres://${username}:${password}@${url}/${
-    database
-  }`
+  const connectionString = `postgres://${username}:${password}@${url}/${database}`
   const sequelize = new Sequelize(connectionString, {
     dialect: 'postgres',
     logging:

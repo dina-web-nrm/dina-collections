@@ -2,8 +2,8 @@ const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('../../utilities/log')
 const createServiceRouter = require('../../lib/serviceRouter')
 const createApp = require('../../lib/app')
-const setupPostgres = require('../../lib/postgres')
-const createModels = require('../../lib/postgres/models/setupModels')
+const initializeSequelize = require('../../lib/sequelize')
+const createModels = require('../../lib/sequelize/models/setupModels')
 const createConnectors = require('../../lib/connectors')
 const serviceDefinitions = require('../../services')
 const createServices = require('../../lib/services')
@@ -14,7 +14,7 @@ const log = createLog('server')
 
 const services = createServices({ config, serviceDefinitions })
 
-setupPostgres({
+initializeSequelize({
   config,
 })
   .then(({ sequelize }) => {

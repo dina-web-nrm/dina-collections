@@ -4,7 +4,7 @@ const createModels = require('./models/createModels')
 const createRelations = require('./models/createRelations')
 const createDb = require('./db')
 
-const log = createLog('lib/postgres')
+const log = createLog('lib/sequelize')
 
 module.exports = function bootstrapDatalayer({ apis, config }) {
   log.info('Bootstrap postgres started')
