@@ -4,6 +4,11 @@ module.exports = {
     baseUrl: {
       type: 'string',
     },
+    getExample: {
+      not: {
+        type: 'string',
+      },
+    },
     mapBody: {
       not: {
         type: 'string',
