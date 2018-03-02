@@ -1,4 +1,4 @@
-const createRouteFunction = require('common/src/apiClient/createRouteFunction')
+const createRequestHandler = require('common/src/apiClient/createRequestHandler')
 const createLog = require('../../../../utilities/log')
 
 const log = createLog('operationMiddleware')
@@ -17,7 +17,7 @@ module.exports = function createOperationMiddleware({
     }
   }
 
-  const routeFunction = createRouteFunction({
+  const requestHandler = createRequestHandler({
     apiConfig,
     endpointConfig,
     handler,
@@ -32,7 +32,7 @@ module.exports = function createOperationMiddleware({
       `${res.locals.id}: Call route function for ${endpointConfig.operationId}`
     )
 
-    return routeFunction({
+    return requestHandler({
       models,
       user,
       userInput,
