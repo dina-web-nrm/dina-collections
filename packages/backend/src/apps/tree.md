@@ -1,6 +1,15 @@
-```bash
-../apps [error opening dir]
+# Tree for apps
+## Links
+[root](../../tree.md)
+[src](../tree.md)
+[lib](../lib/tree.md)
+[services](../services/tree.md)
 
-0 directories, 0 files
+## Tree
+```bash
+├── core
+│   ├── config.js
+│   └── index.js
+└── tree.md
 
 ```
