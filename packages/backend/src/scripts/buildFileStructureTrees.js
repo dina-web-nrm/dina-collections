@@ -11,7 +11,7 @@ const buildLinkContentArray = ({ name, rootRelativePath, trees }) => {
     })
     .map(tree => {
       const relative = path.relative(rootRelativePath, tree.rootRelativePath)
-      return `[${tree.name}](${relative}/tree.md)`
+      return `[${tree.name}](${relative}/tree.md)\n`
     })
 }
 
