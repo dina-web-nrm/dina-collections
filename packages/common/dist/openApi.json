@@ -103,7 +103,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createAgentRequest"
               }
@@ -114,7 +114,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createAgentResponse"
                 }
@@ -160,7 +160,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getAgentsResponse"
                 }
@@ -218,7 +218,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getAgentResponse"
                 }
@@ -273,7 +273,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateAgentRequest"
               }
@@ -284,7 +284,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateAgentResponse"
                 }
@@ -311,7 +311,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getUserResponse"
                 }
@@ -337,7 +337,7 @@
         "parameters": [],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/loginUserRequest"
               }
@@ -348,7 +348,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/loginUserResponse"
                 }
@@ -390,7 +390,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createExpeditionRequest"
               }
@@ -401,7 +401,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createExpeditionResponse"
                 }
@@ -447,7 +447,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getExpeditionsResponse"
                 }
@@ -505,7 +505,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getExpeditionResponse"
                 }
@@ -560,7 +560,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateExpeditionRequest"
               }
@@ -571,7 +571,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateExpeditionResponse"
                 }
@@ -618,7 +618,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeRequest"
               }
@@ -629,7 +629,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeResponse"
                 }
@@ -675,7 +675,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getDistinguishedUnitObservationTypesResponse"
                 }
@@ -732,7 +732,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeRequest"
               }
@@ -743,7 +743,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeResponse"
                 }
@@ -799,7 +799,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getDistinguishedUnitObservationTypeResponse"
                 }
@@ -846,7 +846,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createFeatureObservationTypeRequest"
               }
@@ -857,7 +857,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createFeatureObservationTypeResponse"
                 }
@@ -903,7 +903,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getFeatureObservationTypesResponse"
                 }
@@ -960,7 +960,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateFeatureObservationTypeRequest"
               }
@@ -971,7 +971,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateFeatureObservationTypeResponse"
                 }
@@ -1027,7 +1027,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getFeatureObservationTypeResponse"
                 }
@@ -1074,7 +1074,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createCatalogNumberRequest"
               }
@@ -1085,7 +1085,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createCatalogNumberResponse"
                 }
@@ -1131,7 +1131,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCatalogNumbersResponse"
                 }
@@ -1188,7 +1188,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateCatalogNumberRequest"
               }
@@ -1199,7 +1199,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateCatalogNumberResponse"
                 }
@@ -1255,7 +1255,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCatalogNumberResponse"
                 }
@@ -1302,7 +1302,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createCuratedLocalityRequest"
               }
@@ -1313,7 +1313,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createCuratedLocalityResponse"
                 }
@@ -1359,7 +1359,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCuratedLocalitiesResponse"
                 }
@@ -1416,7 +1416,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateCuratedLocalityRequest"
               }
@@ -1427,7 +1427,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateCuratedLocalityResponse"
                 }
@@ -1539,7 +1539,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCuratedLocalityResponse"
                 }
@@ -1586,7 +1586,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createSpecimenRequest"
               }
@@ -1597,7 +1597,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createSpecimenResponse"
                 }
@@ -1663,7 +1663,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimensResponse"
                 }
@@ -1720,7 +1720,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateSpecimenRequest"
               }
@@ -1731,7 +1731,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateSpecimenResponse"
                 }
@@ -1787,7 +1787,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimenResponse"
                 }
@@ -1856,7 +1856,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimenVersionResponse"
                 }
@@ -1914,7 +1914,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimenVersionsResponse"
                 }
@@ -1941,7 +1941,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStatusResponse"
                 }
@@ -1987,7 +1987,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createPhysicalUnitRequest"
               }
@@ -1998,7 +1998,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createPhysicalUnitResponse"
                 }
@@ -2044,7 +2044,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitsResponse"
                 }
@@ -2101,7 +2101,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updatePhysicalUnitRequest"
               }
@@ -2112,7 +2112,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updatePhysicalUnitResponse"
                 }
@@ -2168,7 +2168,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitResponse"
                 }
@@ -2225,7 +2225,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updatePhysicalUnitStorageLocationRequest"
               }
@@ -2236,7 +2236,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updatePhysicalUnitStorageLocationResponse"
                 }
@@ -2292,7 +2292,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitStorageLocationResponse"
                 }
@@ -2361,7 +2361,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitVersionResponse"
                 }
@@ -2419,7 +2419,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitVersionsResponse"
                 }
@@ -2466,7 +2466,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createStorageLocationRequest"
               }
@@ -2477,7 +2477,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createStorageLocationResponse"
                 }
@@ -2523,7 +2523,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStorageLocationsResponse"
                 }
@@ -2580,7 +2580,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateStorageLocationRequest"
               }
@@ -2591,7 +2591,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateStorageLocationResponse"
                 }
@@ -2647,7 +2647,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStorageLocationResponse"
                 }
@@ -2704,7 +2704,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateStorageLocationPhysicalUnitsRequest"
               }
@@ -2715,7 +2715,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateStorageLocationPhysicalUnitsResponse"
                 }
@@ -2771,7 +2771,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStorageLocationPhysicalUnitsResponse"
                 }
@@ -2853,7 +2853,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getTaxonByIdResponse"
                 }
@@ -2901,7 +2901,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getTaxaByNameResponse"
                 }
@@ -4362,11 +4362,6 @@
                   "geodeticDatum": "string",
                   "uncertaintyInMeters": 0
                 },
-                "polygon": {
-                  "vertices": [
-                    null
-                  ]
-                },
                 "verticalPosition": {
                   "maximumDepthInMeters": 0,
                   "maximumElevationInMeters": 0,
@@ -4393,11 +4388,6 @@
                 "longitude": "string",
                 "geodeticDatum": "string",
                 "uncertaintyInMeters": 0
-              },
-              "polygon": {
-                "vertices": [
-                  null
-                ]
               },
               "verticalPosition": {
                 "maximumDepthInMeters": 0,
@@ -4608,12 +4598,6 @@
                               "updatedAt": "string",
                               "id": "string",
                               "description": "string",
-                              "relations": [
-                                {
-                                  "id": "string",
-                                  "type": "string"
-                                }
-                              ],
                               "type": "continent",
                               "centralPosition": {
                                 "latitude": "string",
@@ -4804,12 +4788,6 @@
                             "updatedAt": "string",
                             "id": "string",
                             "description": "string",
-                            "relations": [
-                              {
-                                "id": "string",
-                                "type": "string"
-                              }
-                            ],
                             "type": "continent",
                             "centralPosition": {
                               "latitude": "string",

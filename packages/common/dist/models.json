@@ -4258,11 +4258,6 @@
               "geodeticDatum": "string",
               "uncertaintyInMeters": 0
             },
-            "polygon": {
-              "vertices": [
-                null
-              ]
-            },
             "verticalPosition": {
               "maximumDepthInMeters": 0,
               "maximumElevationInMeters": 0,
@@ -4289,11 +4284,6 @@
             "longitude": "string",
             "geodeticDatum": "string",
             "uncertaintyInMeters": 0
-          },
-          "polygon": {
-            "vertices": [
-              null
-            ]
           },
           "verticalPosition": {
             "maximumDepthInMeters": 0,
@@ -4506,12 +4496,6 @@
                           "updatedAt": "string",
                           "id": "string",
                           "description": "string",
-                          "relations": [
-                            {
-                              "id": "string",
-                              "type": "string"
-                            }
-                          ],
                           "type": "continent",
                           "centralPosition": {
                             "latitude": "string",
@@ -4702,12 +4686,6 @@
                         "updatedAt": "string",
                         "id": "string",
                         "description": "string",
-                        "relations": [
-                          {
-                            "id": "string",
-                            "type": "string"
-                          }
-                        ],
                         "type": "continent",
                         "centralPosition": {
                           "latitude": "string",

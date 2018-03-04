@@ -30,10 +30,22 @@ function createApiClient(apiConfigInput) {
   })
 
   const httpDelete = dep.createApiMethod(apiConfig, {
+    mapHeaders: userInputHeaders => {
+      return {
+        ...userInputHeaders,
+        Accept: 'application/vnd.api+json',
+      }
+    },
     method: 'delete',
   })
 
   const httpGet = dep.createApiMethod(apiConfig, {
+    mapHeaders: userInputHeaders => {
+      return {
+        ...userInputHeaders,
+        Accept: 'application/vnd.api+json',
+      }
+    },
     method: 'GET',
   })
 
@@ -41,7 +53,8 @@ function createApiClient(apiConfigInput) {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
-        'Content-Type': 'application/json',
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
       }
     },
     method: 'PATCH',
@@ -51,7 +64,8 @@ function createApiClient(apiConfigInput) {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
-        'Content-Type': 'application/json',
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
       }
     },
     method: 'POST',
@@ -61,7 +75,8 @@ function createApiClient(apiConfigInput) {
     mapHeaders: userInputHeaders => {
       return {
         ...userInputHeaders,
-        'Content-Type': 'application/json',
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
       }
     },
     method: 'PUT',

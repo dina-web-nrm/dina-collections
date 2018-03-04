@@ -31,7 +31,7 @@ module.exports = function createRequestHandlerMiddleware({
         } else {
           log.debug(`${res.locals.id}: Sending response 200`)
         }
-
+        res.set('Content-Type', 'application/vnd.api+json')
         res.send(data)
       })
       .catch(err => {

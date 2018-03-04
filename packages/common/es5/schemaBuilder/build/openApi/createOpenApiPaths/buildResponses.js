@@ -15,7 +15,7 @@ module.exports = function buildResponses(_ref) {
   var responses = {
     200: {
       content: {
-        'application/json': {
+        'application/vnd.api+json': {
           schema: {
             $ref: '__ROOT__' + name
           }

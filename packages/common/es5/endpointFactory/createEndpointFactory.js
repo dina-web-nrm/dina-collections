@@ -59,11 +59,11 @@ var getModelNameFromSchema = function getModelNameFromSchema(schema) {
 };
 
 var getSchemaFromRequestBody = function getSchemaFromRequestBody(requestBody) {
-  return requestBody && requestBody.content && requestBody.content['application/json'] && requestBody.content['application/json'].schema;
+  return requestBody && requestBody.content && requestBody.content['application/vnd.api+json'] && requestBody.content['application/vnd.api+json'].schema;
 };
 
 var getSchemaFromResponse = function getSchemaFromResponse(response) {
-  return response && response.content && response.content['application/json'] && response.content['application/json'].schema;
+  return response && response.content && response.content['application/vnd.api+json'] && response.content['application/vnd.api+json'].schema;
 };
 
 var getBodyValidator = function getBodyValidator(_ref) {

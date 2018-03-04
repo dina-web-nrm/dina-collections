@@ -11,7 +11,7 @@ module.exports = function createErrorMiddleware({ config }) {
     if (config.log.error) {
       log.err(`Got api error: ${err.stack} \n ${JSON.stringify(err, null, 2)}`)
     }
-
+    res.setHeader('Content-Type', 'application/vnd.api+json')
     if (err.status === 400) {
       res.status(400)
       return res.send({

@@ -8,7 +8,7 @@ module.exports = function buildResponses({ operationId, response }) {
   const responses = {
     200: {
       content: {
-        'application/json': {
+        'application/vnd.api+json': {
           schema: {
             $ref: `__ROOT__${name}`,
           },

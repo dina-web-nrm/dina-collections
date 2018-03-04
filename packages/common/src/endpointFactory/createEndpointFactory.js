@@ -40,8 +40,8 @@ const getSchemaFromRequestBody = requestBody => {
   return (
     requestBody &&
     requestBody.content &&
-    requestBody.content['application/json'] &&
-    requestBody.content['application/json'].schema
+    requestBody.content['application/vnd.api+json'] &&
+    requestBody.content['application/vnd.api+json'].schema
   )
 }
 
@@ -49,8 +49,8 @@ const getSchemaFromResponse = response => {
   return (
     response &&
     response.content &&
-    response.content['application/json'] &&
-    response.content['application/json'].schema
+    response.content['application/vnd.api+json'] &&
+    response.content['application/vnd.api+json'].schema
   )
 }
 
