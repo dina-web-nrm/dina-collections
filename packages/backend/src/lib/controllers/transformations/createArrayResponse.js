@@ -13,7 +13,7 @@ module.exports = function createArrayResponse({ items, type }) {
           ...rest,
         },
         id: `${id}`,
-        relationships,
+        relationships: relationships || undefined,
         type,
       }
     }),

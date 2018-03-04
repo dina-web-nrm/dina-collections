@@ -6,7 +6,7 @@ module.exports = function createObjectResponse({ data, type, relationships }) {
         ...rest,
       },
       id: `${id}`,
-      relationships,
+      relationships: relationships || undefined,
       type,
     },
   }
