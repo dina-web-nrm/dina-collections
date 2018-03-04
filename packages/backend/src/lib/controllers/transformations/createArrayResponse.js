@@ -1,4 +1,4 @@
-module.exports = function createArrayResponse({ items, type }) {
+module.exports = function createArrayResponse({ items, status = 200, type }) {
   if (!items || items.length === 0) {
     return {
       data: [],
@@ -17,5 +17,10 @@ module.exports = function createArrayResponse({ items, type }) {
         type,
       }
     }),
+    meta: {
+      internals: {
+        status,
+      },
+    },
   }
 }

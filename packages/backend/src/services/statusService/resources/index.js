@@ -22,6 +22,9 @@ exports.status = {
                     up: { type: 'boolean' },
                   },
                 },
+                meta: {
+                  type: 'object',
+                },
               },
             },
           },

@@ -7,7 +7,8 @@ module.exports = function buildBase(_ref) {
       included = _ref.included,
       item = _ref.item,
       links = _ref.links,
-      name = _ref.name;
+      name = _ref.name,
+      status = _ref.status;
 
   var base = {
     description: description || 'this is a desc',
@@ -29,7 +30,8 @@ module.exports = function buildBase(_ref) {
         },
         type: 'object'
       }
-    }
+    },
+    status: status
   };
   if (format === 'array') {
     base.schema.content.properties.data = {

@@ -181,6 +181,7 @@ const testCreate = ({ createOperationId, operations }) => {
         }).then(createdResource => {
           expect(createdResource).toBeTruthy()
           expect(createdResource.data).toBeTruthy()
+          expect(createdResource.meta.internals.status).toBe(201)
         })
       })
     })

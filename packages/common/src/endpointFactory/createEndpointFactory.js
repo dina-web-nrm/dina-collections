@@ -71,7 +71,9 @@ const getBodyValidator = ({ methodSpecification, origin }) => {
 }
 
 const getResponseValidator = ({ methodSpecification, origin }) => {
-  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  const schema = getSchemaFromResponse(
+    methodSpecification.responses[200] || methodSpecification.responses[201]
+  )
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
     if (modelName) {
@@ -93,7 +95,9 @@ const getResponseValidator = ({ methodSpecification, origin }) => {
 }
 
 const getExamplesFromMethodSpecifiction = methodSpecification => {
-  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  const schema = getSchemaFromResponse(
+    methodSpecification.responses[200] || methodSpecification.responses[201]
+  )
   if (!schema) {
     return null
   }
@@ -113,7 +117,9 @@ const getExamplesFromMethodSpecifiction = methodSpecification => {
 }
 
 const createMockData = ({ importFaker, methodSpecification }) => {
-  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  const schema = getSchemaFromResponse(
+    methodSpecification.responses[200] || methodSpecification.responses[201]
+  )
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
     if (modelName) {

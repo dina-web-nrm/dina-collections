@@ -89,7 +89,7 @@ var getResponseValidator = function getResponseValidator(_ref2) {
   var methodSpecification = _ref2.methodSpecification,
       origin = _ref2.origin;
 
-  var schema = getSchemaFromResponse(methodSpecification.responses[200]);
+  var schema = getSchemaFromResponse(methodSpecification.responses[200] || methodSpecification.responses[201]);
   if (schema) {
     var modelName = getModelNameFromSchema(schema);
     if (modelName) {
@@ -111,7 +111,7 @@ var getResponseValidator = function getResponseValidator(_ref2) {
 };
 
 var getExamplesFromMethodSpecifiction = function getExamplesFromMethodSpecifiction(methodSpecification) {
-  var schema = getSchemaFromResponse(methodSpecification.responses[200]);
+  var schema = getSchemaFromResponse(methodSpecification.responses[200] || methodSpecification.responses[201]);
   if (!schema) {
     return null;
   }
@@ -128,7 +128,7 @@ var createMockData = function createMockData(_ref3) {
   var importFaker = _ref3.importFaker,
       methodSpecification = _ref3.methodSpecification;
 
-  var schema = getSchemaFromResponse(methodSpecification.responses[200]);
+  var schema = getSchemaFromResponse(methodSpecification.responses[200] || methodSpecification.responses[201]);
   if (schema) {
     var modelName = getModelNameFromSchema(schema);
     if (modelName) {

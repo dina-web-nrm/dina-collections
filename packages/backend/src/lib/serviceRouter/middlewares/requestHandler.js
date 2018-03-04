@@ -21,18 +21,27 @@ module.exports = function createRequestHandlerMiddleware({
       user,
       userInput,
     })
-      .then(data => {
+      .then(result => {
         log.info(`${res.locals.id}: Sending route function result`)
 
         if (config.log.outgoingResponse) {
           log.debug(
-            `${res.locals.id}: Sending response 200 ${JSON.stringify(data)}`
+            `${res.locals.id}: Sending response 200 ${JSON.stringify(result)}`
           )
         } else {
           log.debug(`${res.locals.id}: Sending response 200`)
         }
+        if (
+          result &&
+          result.meta &&
+          result.meta.internals &&
+          result.meta.internals.status
+        ) {
+          res.status(result.meta.internals.status)
+        }
+
         res.set('Content-Type', 'application/vnd.api+json')
-        res.send(data)
+        res.send(result)
       })
       .catch(err => {
         next(err)

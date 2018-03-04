@@ -6,6 +6,7 @@ module.exports = function buildBase({
   item,
   links,
   name,
+  status,
 }) {
   const base = {
     description: description || 'this is a desc',
@@ -28,6 +29,7 @@ module.exports = function buildBase({
         type: 'object',
       },
     },
+    status,
   }
   if (format === 'array') {
     base.schema.content.properties.data = {

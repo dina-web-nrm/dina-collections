@@ -2845,6 +2845,9 @@
             "type": "boolean"
           }
         }
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
