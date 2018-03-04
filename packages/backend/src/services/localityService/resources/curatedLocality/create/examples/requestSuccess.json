@@ -15,11 +15,6 @@
         "geodeticDatum": "string",
         "uncertaintyInMeters": 0
       },
-      "polygon": {
-        "vertices": [
-          null
-        ]
-      },
       "verticalPosition": {
         "maximumDepthInMeters": 0,
         "maximumElevationInMeters": 0,

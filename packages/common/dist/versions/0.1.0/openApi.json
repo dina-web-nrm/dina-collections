@@ -591,234 +591,6 @@
         ]
       }
     },
-    "/api/curatedList/v01/featureObservationTypes": {
-      "post": {
-        "operationId": "createFeatureObservationType",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/createFeatureObservationTypeRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createFeatureObservationTypeResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create featureObservationType",
-        "tags": [
-          "curatedListService"
-        ]
-      },
-      "get": {
-        "operationId": "getFeatureObservationTypes",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getFeatureObservationTypesResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find featureObservationTypes",
-        "tags": [
-          "curatedListService"
-        ]
-      }
-    },
-    "/api/curatedList/v01/featureObservationTypes/{id}": {
-      "patch": {
-        "operationId": "updateFeatureObservationType",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "featureObservationType id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateFeatureObservationTypeRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateFeatureObservationTypeResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates featureObservationType",
-        "tags": [
-          "curatedListService"
-        ]
-      },
-      "get": {
-        "operationId": "getFeatureObservationType",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "featureObservationType id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getFeatureObservationTypeResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find featureObservationType by id",
-        "tags": [
-          "curatedListService"
-        ]
-      }
-    },
     "/curatedListApi/v01/distinguishedUnitObservationTypes": {
       "post": {
         "operationId": "createDistinguishedUnitObservationType",
@@ -1042,6 +814,234 @@
           }
         ],
         "summary": "Find distinguishedUnitObservationType by id",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/featureObservationTypes": {
+      "post": {
+        "operationId": "createFeatureObservationType",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createFeatureObservationTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createFeatureObservationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create featureObservationType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getFeatureObservationTypes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationTypesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find featureObservationTypes",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/featureObservationTypes/{id}": {
+      "patch": {
+        "operationId": "updateFeatureObservationType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "featureObservationType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateFeatureObservationTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateFeatureObservationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates featureObservationType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getFeatureObservationType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "featureObservationType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find featureObservationType by id",
         "tags": [
           "curatedListService"
         ]
@@ -1457,6 +1457,62 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[descendantLevels]",
+            "description": "Levels of descendants to include. Only relevant if relationships descendants provided",
+            "example": [
+              "country",
+              "city"
+            ],
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includes",
+            "description": "Add includes",
+            "example": [
+              "descendants",
+              "children"
+            ],
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "descendants",
+                  "children"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Add relationships",
+            "example": [
+              "descendants",
+              "children"
+            ],
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "descendants",
+                  "children"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -3183,13 +3239,6 @@
             "type": "string",
             "description": "Description of the locality"
           },
-          "relations": {
-            "type": "array",
-            "description": "A relation to other curatedLocalities",
-            "items": {
-              "$ref": "#/components/schemas/curatedLocalityRelation"
-            }
-          },
           "type": {
             "type": "string",
             "description": "Type of locality",
@@ -3207,6 +3256,11 @@
             "type": "object",
             "description": "A position describing the center",
             "$ref": "#/components/schemas/position"
+          },
+          "parent": {
+            "type": "object",
+            "description": "A polygon describing the edges",
+            "$ref": "#/components/schemas/curatedLocality"
           },
           "polygon": {
             "type": "object",
@@ -4026,6 +4080,82 @@
           }
         }
       },
+      "createDistinguishedUnitObservationTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "distinguishedUnitObservationType",
+                "enum": [
+                  "distinguishedUnitObservationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+              }
+            }
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "type": "distinguishedUnitObservationType",
+              "attributes": {
+                "typeName": "sex"
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "type": "distinguishedUnitObservationType",
+            "attributes": {
+              "typeName": "sex"
+            }
+          }
+        }
+      },
+      "updateDistinguishedUnitObservationTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "distinguishedUnitObservationType",
+                "enum": [
+                  "distinguishedUnitObservationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+              }
+            }
+          }
+        }
+      },
       "createFeatureObservationTypeRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -4099,82 +4229,6 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/featureObservationType"
-              }
-            }
-          }
-        }
-      },
-      "createDistinguishedUnitObservationTypeRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "distinguishedUnitObservationType",
-                "enum": [
-                  "distinguishedUnitObservationType"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "distinguishedUnitObservationType",
-              "attributes": {
-                "typeName": "sex"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "distinguishedUnitObservationType",
-            "attributes": {
-              "typeName": "sex"
-            }
-          }
-        }
-      },
-      "updateDistinguishedUnitObservationTypeRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "distinguishedUnitObservationType",
-                "enum": [
-                  "distinguishedUnitObservationType"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               }
             }
           }
@@ -5603,190 +5657,6 @@
         "type": "object",
         "x-examples": {}
       },
-      "createFeatureObservationTypeResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/featureObservationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "featureObservationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "updateFeatureObservationTypeResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/featureObservationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "featureObservationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getFeatureObservationTypeResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/featureObservationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "featureObservationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getFeatureObservationTypesResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/featureObservationType"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "featureObservationType",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
       "createDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
         "properties": {
@@ -5957,6 +5827,190 @@
             "properties": {
               "self": {
                 "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "createFeatureObservationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/featureObservationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "featureObservationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "updateFeatureObservationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/featureObservationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "featureObservationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "getFeatureObservationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/featureObservationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "featureObservationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "getFeatureObservationTypesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/featureObservationType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "relationships": {
+                  "properties": {},
+                  "type": "object"
+                },
+                "type": {
+                  "default": "featureObservationType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6259,7 +6313,98 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
+                "properties": {
+                  "children": {
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
+                            "type": "string",
+                            "x-faker": "internet.url"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "descendants": {
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
+                            "type": "string",
+                            "x-faker": "internet.url"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parent": {
+                    "properties": {
+                      "data": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                            "type": "string",
+                            "x-faker": "internet.url"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
                 "type": "object"
               },
               "type": {
@@ -6306,7 +6451,98 @@
                   "type": "string"
                 },
                 "relationships": {
-                  "properties": {},
+                  "properties": {
+                    "children": {
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
+                              "type": "string",
+                              "x-faker": "internet.url"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "descendants": {
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
+                              "type": "string",
+                              "x-faker": "internet.url"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "parent": {
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                              "type": "string",
+                              "x-faker": "internet.url"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
                   "type": "object"
                 },
                 "type": {
