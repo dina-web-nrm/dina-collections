@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { MammalForm } from 'domainModules/collectionMammals/components'
+import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import {
   actionCreators as mammalActionCreators,
   globalSelectors as mammalSelectors,
@@ -45,14 +46,16 @@ class EditMammal extends Component {
 
   render() {
     const { individualGroup, updateSpecimen } = this.props
-
+    const initialData = transformInput(individualGroup)
     return (
       <PageTemplate>
-        <MammalForm
-          handleFormSubmit={updateSpecimen}
-          individualGroup={individualGroup}
-          mode="edit"
-        />
+        {individualGroup && (
+          <MammalForm
+            handleFormSubmit={updateSpecimen}
+            initialData={initialData}
+            mode="edit"
+          />
+        )}
       </PageTemplate>
     )
   }

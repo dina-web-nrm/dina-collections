@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { actionCreators as mammalActionCreators } from 'domainModules/collectionMammals'
 import { MammalForm } from 'domainModules/collectionMammals/components'
+import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
+// import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const mapDispatchToProps = {
@@ -14,15 +16,19 @@ const propTypes = {
   registerMammal: PropTypes.func.isRequired,
 }
 
-const RegisterMammal = ({ registerMammal }) => (
-  <PageTemplate>
-    <MammalForm
-      handleFormSubmit={registerMammal}
-      mode="register"
-      redirectOnSuccess
-    />
-  </PageTemplate>
-)
+const RegisterMammal = ({ registerMammal }) => {
+  const initialData = transformInput({})
+  return (
+    <PageTemplate>
+      <MammalForm
+        handleFormSubmit={registerMammal}
+        initialData={initialData}
+        mode="register"
+        redirectOnSuccess
+      />
+    </PageTemplate>
+  )
+}
 
 RegisterMammal.propTypes = propTypes
 
