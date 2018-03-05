@@ -25,7 +25,6 @@ import SegmentFeatureObservations from './SegmentFeatureObservations/index'
 import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
 import SegmentDistinguishedUnits from './SegmentDistinguishedUnits'
 import SegmentOther from './SegmentOther'
-import transformOutput from './transformations/output'
 
 const log = createLog('modules:collectionMammals:MammalForm')
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -110,7 +109,7 @@ class RawMammalForm extends Component {
 
     const patchedOutput = {
       id: match && match.params && match.params.specimenId,
-      ...transformOutput(formData),
+      ...formData,
     }
 
     return handleFormSubmit(patchedOutput)

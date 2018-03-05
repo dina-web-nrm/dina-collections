@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
+import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
+
 import {
   actionCreators as mammalActionCreators,
   globalSelectors as mammalSelectors,
@@ -51,7 +53,9 @@ class EditMammal extends Component {
       <PageTemplate>
         {individualGroup && (
           <MammalForm
-            handleFormSubmit={updateSpecimen}
+            handleFormSubmit={formOutput => {
+              return updateSpecimen(transformOutput(formOutput))
+            }}
             initialData={initialData}
             mode="edit"
           />

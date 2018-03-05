@@ -4,6 +4,7 @@ import uiDescribe from 'utilities/test/uiDescribe'
 import setupTestComponent from 'utilities/test/setupTestComponent'
 import simulateFormFieldChanges from 'utilities/test/simulateFormFieldChanges'
 import MammalForm from 'domainModules/collectionMammals/components/MammalForm'
+import transformInput from './transformations/input'
 import transformOutput from './transformations/output'
 import { dep } from '../../middleware'
 
@@ -26,19 +27,29 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
   let handleFormSubmit
   beforeEach(() => {
     handleFormSubmit = data => {
-      return Promise.resolve(data)
+      return Promise.resolve(transformOutput(data))
     }
   })
 
   it('renders without crashing', () => {
     setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
     })
   })
 
   it('Is initialized in form state', () => {
     const { store } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -47,7 +58,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('Is initialized with empty determination', () => {
     const { store } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -56,7 +72,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('adds empty determination in transformOutput, if all determinations have been removed', () => {
     const { store, rootComponent } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -97,7 +118,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('adds empty determination when clicking "Add determination"', () => {
     const { store, rootComponent } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -124,7 +150,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('sets other determinations as not current when setting one as current', () => {
     const { store, rootComponent } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -213,7 +244,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
     it('creates notification when setting current determination if other was previously set as current', () => {
       const { store, rootComponent } = setupTestComponent({
-        component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+        component: (
+          <MammalForm
+            handleFormSubmit={handleFormSubmit}
+            initialData={transformInput({})}
+          />
+        ),
         fullExport: true,
       })
 
@@ -266,7 +302,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('Submit success when no catalog number provided', () => {
     const { store, rootComponent: mountedComponent } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -277,7 +318,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
   it('Submit success when catalog number provided', () => {
     const { store, rootComponent: mountedComponent } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -591,7 +637,12 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     }
 
     const { store, rootComponent: mountedComponent } = setupTestComponent({
-      component: <MammalForm handleFormSubmit={handleFormSubmit} />,
+      component: (
+        <MammalForm
+          handleFormSubmit={handleFormSubmit}
+          initialData={transformInput({})}
+        />
+      ),
       fullExport: true,
     })
 
@@ -661,10 +712,10 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          individualGroup={{
+          initialData={transformInput({
             ...individualGroup.attributes,
             id: individualGroup.id,
-          }}
+          })}
           transformOutputForUpdate
         />
       ),
