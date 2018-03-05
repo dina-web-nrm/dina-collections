@@ -1,5 +1,6 @@
 /* eslint-disable no-console, prefer-destructuring */
 import React from 'react'
+import uiDescribe from 'utilities/test/uiDescribe'
 import setupTestComponent from 'utilities/test/setupTestComponent'
 import simulateFormFieldChanges from 'utilities/test/simulateFormFieldChanges'
 import MammalForm from 'domainModules/collectionMammals/components/MammalForm'
@@ -21,7 +22,7 @@ const hasOneEmptyDetermination = store => {
   ).toBe(0)
 }
 
-describe('domainModules/collectionMammals/components/MammalForm', () => {
+uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
   let handleFormSubmit
   beforeEach(() => {
     handleFormSubmit = data => {

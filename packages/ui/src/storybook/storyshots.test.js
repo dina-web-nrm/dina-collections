@@ -1,3 +1,6 @@
+import uiDescribe from 'utilities/test/uiDescribe'
 import initStoryshots from '@storybook/addon-storyshots'
 
-initStoryshots({})
+uiDescribe('storyshoots', () => {
+  initStoryshots({})
+})

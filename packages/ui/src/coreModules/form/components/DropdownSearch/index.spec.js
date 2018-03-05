@@ -2,6 +2,7 @@
 import React from 'react'
 import { times } from 'lodash'
 
+import uiDescribe from 'utilities/test/uiDescribe'
 import setupTestComponent from 'utilities/test/setupTestComponent'
 import DropdownSearch from './index'
 
@@ -14,7 +15,7 @@ const getOptions = (count = 5) =>
     return { key, text, value }
   })
 
-describe('coreModules/form/components/DropdownSearch', () => {
+uiDescribe('coreModules/form/components/DropdownSearch', () => {
   let baseInput
   let baseMeta
   let onChange
