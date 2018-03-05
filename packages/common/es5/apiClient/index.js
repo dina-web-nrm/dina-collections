@@ -35,17 +35,28 @@ function createApiClient(apiConfigInput) {
   });
 
   var httpDelete = dep.createApiMethod(apiConfig, {
+    mapHeaders: function mapHeaders(userInputHeaders) {
+      return (0, _extends3.default)({}, userInputHeaders, {
+        Accept: 'application/vnd.api+json'
+      });
+    },
     method: 'delete'
   });
 
   var httpGet = dep.createApiMethod(apiConfig, {
+    mapHeaders: function mapHeaders(userInputHeaders) {
+      return (0, _extends3.default)({}, userInputHeaders, {
+        Accept: 'application/vnd.api+json'
+      });
+    },
     method: 'GET'
   });
 
   var httpPatch = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
-        'Content-Type': 'application/json'
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
       });
     },
     method: 'PATCH'
@@ -54,7 +65,8 @@ function createApiClient(apiConfigInput) {
   var httpPost = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
-        'Content-Type': 'application/json'
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
       });
     },
     method: 'POST'
@@ -63,7 +75,8 @@ function createApiClient(apiConfigInput) {
   var httpPut = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
       return (0, _extends3.default)({}, userInputHeaders, {
-        'Content-Type': 'application/json'
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
       });
     },
     method: 'PUT'

@@ -51,6 +51,7 @@ module.exports = function createModelSchemaValidator({
     if (valid) {
       return null
     }
+
     const error = errorHandler ? errorHandler(validate.errors) : validate.errors
     if (throwOnError) {
       throw error

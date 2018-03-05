@@ -10,7 +10,7 @@ module.exports = function buildRequest(_ref) {
   }
   var requestBody = {
     content: {
-      'application/json': {
+      'application/vnd.api+json': {
         schema: {
           $ref: '__ROOT__' + request.name
         }

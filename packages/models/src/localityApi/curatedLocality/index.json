@@ -15,15 +15,18 @@
     },
     "createdBy": {
       "type": "string",
-      "description": "Some kind of reference to the individual that created the locality"
+      "description":
+        "Some kind of reference to the individual that created the locality"
     },
     "updatedBy": {
       "type": "string",
-      "description": "Some kind of reference to the individual that updated/created the specific version"
+      "description":
+        "Some kind of reference to the individual that updated/created the specific version"
     },
     "updatedAt": {
       "type": "string",
-      "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
+      "description":
+        "Timestamp corresponding to when updated. Could be called versionCreatedAt"
     },
     "id": {
       "type": "string",
@@ -32,11 +35,6 @@
     "description": {
       "type": "string",
       "description": "Description of the locality"
-    },
-    "relations": {
-      "type": "array",
-      "description": "A relation to other curatedLocalities",
-      "items": { "$ref": "__ROOT__curatedLocalityRelation" }
     },
     "type": {
       "type": "string",
@@ -55,6 +53,11 @@
       "type": "object",
       "description": "A position describing the center",
       "$ref": "__ROOT__position"
+    },
+    "parent": {
+      "type": "object",
+      "description": "A polygon describing the edges",
+      "$ref": "__ROOT__curatedLocality"
     },
     "polygon": {
       "type": "object",

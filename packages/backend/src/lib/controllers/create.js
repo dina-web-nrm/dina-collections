@@ -23,6 +23,7 @@ module.exports = function create({ operation = {}, models }) {
         return createObjectResponse({
           data: output,
           id: output.id,
+          status: 201,
           type: resource,
         })
       })

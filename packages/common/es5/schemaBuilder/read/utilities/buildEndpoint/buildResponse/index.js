@@ -20,6 +20,7 @@ module.exports = function buildResponse(_ref) {
       relations = _ref.relations,
       resource = _ref.resource,
       selfLink = _ref.selfLink,
+      status = _ref.status,
       versionsLink = _ref.versionsLink;
 
   var name = operationId + 'Response';
@@ -50,7 +51,8 @@ module.exports = function buildResponse(_ref) {
     included: included,
     item: item,
     links: links,
-    name: name
+    name: name,
+    status: status
   });
   return base;
 };

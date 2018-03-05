@@ -103,7 +103,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createAgentRequest"
               }
@@ -112,9 +112,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createAgentResponse"
                 }
@@ -160,7 +160,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getAgentsResponse"
                 }
@@ -218,7 +218,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getAgentResponse"
                 }
@@ -273,7 +273,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateAgentRequest"
               }
@@ -284,7 +284,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateAgentResponse"
                 }
@@ -311,7 +311,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getUserResponse"
                 }
@@ -337,7 +337,7 @@
         "parameters": [],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/loginUserRequest"
               }
@@ -348,7 +348,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/loginUserResponse"
                 }
@@ -390,7 +390,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createExpeditionRequest"
               }
@@ -399,9 +399,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createExpeditionResponse"
                 }
@@ -447,7 +447,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getExpeditionsResponse"
                 }
@@ -505,7 +505,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getExpeditionResponse"
                 }
@@ -560,7 +560,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateExpeditionRequest"
               }
@@ -571,7 +571,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateExpeditionResponse"
                 }
@@ -588,234 +588,6 @@
         "summary": "Updates expedition",
         "tags": [
           "curatedEventService"
-        ]
-      }
-    },
-    "/api/curatedList/v01/featureObservationTypes": {
-      "post": {
-        "operationId": "createFeatureObservationType",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/createFeatureObservationTypeRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createFeatureObservationTypeResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create featureObservationType",
-        "tags": [
-          "curatedListService"
-        ]
-      },
-      "get": {
-        "operationId": "getFeatureObservationTypes",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getFeatureObservationTypesResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find featureObservationTypes",
-        "tags": [
-          "curatedListService"
-        ]
-      }
-    },
-    "/api/curatedList/v01/featureObservationTypes/{id}": {
-      "patch": {
-        "operationId": "updateFeatureObservationType",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "featureObservationType id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateFeatureObservationTypeRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateFeatureObservationTypeResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates featureObservationType",
-        "tags": [
-          "curatedListService"
-        ]
-      },
-      "get": {
-        "operationId": "getFeatureObservationType",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "featureObservationType id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getFeatureObservationTypeResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find featureObservationType by id",
-        "tags": [
-          "curatedListService"
         ]
       }
     },
@@ -846,7 +618,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeRequest"
               }
@@ -855,9 +627,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeResponse"
                 }
@@ -903,7 +675,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getDistinguishedUnitObservationTypesResponse"
                 }
@@ -960,7 +732,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeRequest"
               }
@@ -971,7 +743,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeResponse"
                 }
@@ -1027,7 +799,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getDistinguishedUnitObservationTypeResponse"
                 }
@@ -1042,6 +814,234 @@
           }
         ],
         "summary": "Find distinguishedUnitObservationType by id",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/featureObservationTypes": {
+      "post": {
+        "operationId": "createFeatureObservationType",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/createFeatureObservationTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createFeatureObservationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create featureObservationType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getFeatureObservationTypes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationTypesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find featureObservationTypes",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/featureObservationTypes/{id}": {
+      "patch": {
+        "operationId": "updateFeatureObservationType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "featureObservationType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateFeatureObservationTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateFeatureObservationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates featureObservationType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getFeatureObservationType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "featureObservationType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "example": "primary",
+            "schema": {
+              "default": "primary",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find featureObservationType by id",
         "tags": [
           "curatedListService"
         ]
@@ -1074,7 +1074,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createCatalogNumberRequest"
               }
@@ -1083,9 +1083,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createCatalogNumberResponse"
                 }
@@ -1131,7 +1131,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCatalogNumbersResponse"
                 }
@@ -1188,7 +1188,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateCatalogNumberRequest"
               }
@@ -1199,7 +1199,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateCatalogNumberResponse"
                 }
@@ -1255,7 +1255,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCatalogNumberResponse"
                 }
@@ -1302,7 +1302,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createCuratedLocalityRequest"
               }
@@ -1311,9 +1311,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createCuratedLocalityResponse"
                 }
@@ -1359,7 +1359,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCuratedLocalitiesResponse"
                 }
@@ -1416,7 +1416,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateCuratedLocalityRequest"
               }
@@ -1427,7 +1427,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateCuratedLocalityResponse"
                 }
@@ -1461,6 +1461,62 @@
           },
           {
             "in": "query",
+            "name": "filter[descendantLevels]",
+            "description": "Levels of descendants to include. Only relevant if relationships descendants provided",
+            "example": [
+              "country",
+              "city"
+            ],
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includes",
+            "description": "Add includes",
+            "example": [
+              "descendants",
+              "children"
+            ],
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "descendants",
+                  "children"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Add relationships",
+            "example": [
+              "descendants",
+              "children"
+            ],
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "descendants",
+                  "children"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "example": "primary",
@@ -1483,7 +1539,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getCuratedLocalityResponse"
                 }
@@ -1530,7 +1586,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createSpecimenRequest"
               }
@@ -1539,9 +1595,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createSpecimenResponse"
                 }
@@ -1607,7 +1663,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimensResponse"
                 }
@@ -1664,7 +1720,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateSpecimenRequest"
               }
@@ -1675,7 +1731,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateSpecimenResponse"
                 }
@@ -1731,7 +1787,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimenResponse"
                 }
@@ -1800,7 +1856,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimenVersionResponse"
                 }
@@ -1858,7 +1914,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getSpecimenVersionsResponse"
                 }
@@ -1885,7 +1941,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStatusResponse"
                 }
@@ -1931,7 +1987,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createPhysicalUnitRequest"
               }
@@ -1940,9 +1996,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createPhysicalUnitResponse"
                 }
@@ -1988,7 +2044,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitsResponse"
                 }
@@ -2045,7 +2101,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updatePhysicalUnitRequest"
               }
@@ -2056,7 +2112,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updatePhysicalUnitResponse"
                 }
@@ -2112,7 +2168,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitResponse"
                 }
@@ -2169,7 +2225,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updatePhysicalUnitStorageLocationRequest"
               }
@@ -2180,7 +2236,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updatePhysicalUnitStorageLocationResponse"
                 }
@@ -2236,7 +2292,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitStorageLocationResponse"
                 }
@@ -2305,7 +2361,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitVersionResponse"
                 }
@@ -2363,7 +2419,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getPhysicalUnitVersionsResponse"
                 }
@@ -2410,7 +2466,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/createStorageLocationRequest"
               }
@@ -2419,9 +2475,9 @@
           "description": "successful operation"
         },
         "responses": {
-          "200": {
+          "201": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/createStorageLocationResponse"
                 }
@@ -2467,7 +2523,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStorageLocationsResponse"
                 }
@@ -2524,7 +2580,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateStorageLocationRequest"
               }
@@ -2535,7 +2591,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateStorageLocationResponse"
                 }
@@ -2591,7 +2647,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStorageLocationResponse"
                 }
@@ -2648,7 +2704,7 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/vnd.api+json": {
               "schema": {
                 "$ref": "#/components/schemas/updateStorageLocationPhysicalUnitsRequest"
               }
@@ -2659,7 +2715,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/updateStorageLocationPhysicalUnitsResponse"
                 }
@@ -2715,7 +2771,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getStorageLocationPhysicalUnitsResponse"
                 }
@@ -2797,7 +2853,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getTaxonByIdResponse"
                 }
@@ -2845,7 +2901,7 @@
         "responses": {
           "200": {
             "content": {
-              "application/json": {
+              "application/vnd.api+json": {
                 "schema": {
                   "$ref": "#/components/schemas/getTaxaByNameResponse"
                 }
@@ -3183,13 +3239,6 @@
             "type": "string",
             "description": "Description of the locality"
           },
-          "relations": {
-            "type": "array",
-            "description": "A relation to other curatedLocalities",
-            "items": {
-              "$ref": "#/components/schemas/curatedLocalityRelation"
-            }
-          },
           "type": {
             "type": "string",
             "description": "Type of locality",
@@ -3207,6 +3256,11 @@
             "type": "object",
             "description": "A position describing the center",
             "$ref": "#/components/schemas/position"
+          },
+          "parent": {
+            "type": "object",
+            "description": "A polygon describing the edges",
+            "$ref": "#/components/schemas/curatedLocality"
           },
           "polygon": {
             "type": "object",
@@ -4026,6 +4080,82 @@
           }
         }
       },
+      "createDistinguishedUnitObservationTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "distinguishedUnitObservationType",
+                "enum": [
+                  "distinguishedUnitObservationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+              }
+            }
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "type": "distinguishedUnitObservationType",
+              "attributes": {
+                "typeName": "sex"
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "type": "distinguishedUnitObservationType",
+            "attributes": {
+              "typeName": "sex"
+            }
+          }
+        }
+      },
+      "updateDistinguishedUnitObservationTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "distinguishedUnitObservationType",
+                "enum": [
+                  "distinguishedUnitObservationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+              }
+            }
+          }
+        }
+      },
       "createFeatureObservationTypeRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -4099,82 +4229,6 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/featureObservationType"
-              }
-            }
-          }
-        }
-      },
-      "createDistinguishedUnitObservationTypeRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "distinguishedUnitObservationType",
-                "enum": [
-                  "distinguishedUnitObservationType"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "distinguishedUnitObservationType",
-              "attributes": {
-                "typeName": "sex"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "distinguishedUnitObservationType",
-            "attributes": {
-              "typeName": "sex"
-            }
-          }
-        }
-      },
-      "updateDistinguishedUnitObservationTypeRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "distinguishedUnitObservationType",
-                "enum": [
-                  "distinguishedUnitObservationType"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
               }
             }
           }
@@ -4308,11 +4362,6 @@
                   "geodeticDatum": "string",
                   "uncertaintyInMeters": 0
                 },
-                "polygon": {
-                  "vertices": [
-                    null
-                  ]
-                },
                 "verticalPosition": {
                   "maximumDepthInMeters": 0,
                   "maximumElevationInMeters": 0,
@@ -4339,11 +4388,6 @@
                 "longitude": "string",
                 "geodeticDatum": "string",
                 "uncertaintyInMeters": 0
-              },
-              "polygon": {
-                "vertices": [
-                  null
-                ]
               },
               "verticalPosition": {
                 "maximumDepthInMeters": 0,
@@ -4554,12 +4598,6 @@
                               "updatedAt": "string",
                               "id": "string",
                               "description": "string",
-                              "relations": [
-                                {
-                                  "id": "string",
-                                  "type": "string"
-                                }
-                              ],
                               "type": "continent",
                               "centralPosition": {
                                 "latitude": "string",
@@ -4750,12 +4788,6 @@
                             "updatedAt": "string",
                             "id": "string",
                             "description": "string",
-                            "relations": [
-                              {
-                                "id": "string",
-                                "type": "string"
-                              }
-                            ],
                             "type": "continent",
                             "centralPosition": {
                               "latitude": "string",
@@ -5603,190 +5635,6 @@
         "type": "object",
         "x-examples": {}
       },
-      "createFeatureObservationTypeResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/featureObservationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "featureObservationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "updateFeatureObservationTypeResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/featureObservationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "featureObservationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getFeatureObservationTypeResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/featureObservationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "featureObservationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getFeatureObservationTypesResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/featureObservationType"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "featureObservationType",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
       "createDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
         "properties": {
@@ -5957,6 +5805,190 @@
             "properties": {
               "self": {
                 "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "createFeatureObservationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/featureObservationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "featureObservationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "updateFeatureObservationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/featureObservationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "featureObservationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "getFeatureObservationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/featureObservationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {},
+                "type": "object"
+              },
+              "type": {
+                "default": "featureObservationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {}
+      },
+      "getFeatureObservationTypesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/featureObservationType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "relationships": {
+                  "properties": {},
+                  "type": "object"
+                },
+                "type": {
+                  "default": "featureObservationType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/featureObservationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6259,7 +6291,98 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
+                "properties": {
+                  "children": {
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
+                            "type": "string",
+                            "x-faker": "internet.url"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "descendants": {
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
+                            "type": "string",
+                            "x-faker": "internet.url"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parent": {
+                    "properties": {
+                      "data": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "links": {
+                        "properties": {
+                          "self": {
+                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                            "type": "string",
+                            "x-faker": "internet.url"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
                 "type": "object"
               },
               "type": {
@@ -6306,7 +6429,98 @@
                   "type": "string"
                 },
                 "relationships": {
-                  "properties": {},
+                  "properties": {
+                    "children": {
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
+                              "type": "string",
+                              "x-faker": "internet.url"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "descendants": {
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
+                              "type": "string",
+                              "x-faker": "internet.url"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "parent": {
+                      "properties": {
+                        "data": {
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "links": {
+                          "properties": {
+                            "self": {
+                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                              "type": "string",
+                              "x-faker": "internet.url"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
                   "type": "object"
                 },
                 "type": {
@@ -6756,6 +6970,9 @@
                 "type": "boolean"
               }
             }
+          },
+          "meta": {
+            "type": "object"
           }
         }
       },

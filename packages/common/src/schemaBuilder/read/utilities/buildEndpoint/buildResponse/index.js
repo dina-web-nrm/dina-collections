@@ -17,6 +17,7 @@ module.exports = function buildResponse({
   relations,
   resource,
   selfLink,
+  status,
   versionsLink,
 }) {
   const name = `${operationId}Response`
@@ -48,6 +49,7 @@ module.exports = function buildResponse({
     item,
     links,
     name,
+    status,
   })
   return base
 }

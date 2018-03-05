@@ -1,4 +1,9 @@
-module.exports = function createObjectResponse({ data, type, relationships }) {
+module.exports = function createObjectResponse({
+  data,
+  type,
+  relationships,
+  status = 200,
+}) {
   const { id, ...rest } = data
   return {
     data: {
@@ -6,8 +11,13 @@ module.exports = function createObjectResponse({ data, type, relationships }) {
         ...rest,
       },
       id: `${id}`,
-      relationships,
+      relationships: relationships || undefined,
       type,
+    },
+    meta: {
+      internals: {
+        status,
+      },
     },
   }
 }

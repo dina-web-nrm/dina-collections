@@ -4,11 +4,11 @@ module.exports = function buildResponses({ operationId, response }) {
   if (!response) {
     throw new Error(`Provide response for ${operationId}`)
   }
-  const { description, name } = response
+  const { description, name, status = 200 } = response
   const responses = {
-    200: {
+    [status]: {
       content: {
-        'application/json': {
+        'application/vnd.api+json': {
           schema: {
             $ref: `__ROOT__${name}`,
           },

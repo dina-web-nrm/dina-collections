@@ -24,7 +24,11 @@ module.exports = function createApp({ config, openApiSpec, routers } = {}) {
       extended: true,
     })
   )
-  app.use(bodyParser.json())
+  app.use(
+    bodyParser.json({
+      type: ['application/vnd.api+json', 'application/json'],
+    })
+  )
   app.use(keycloakMiddleware)
 
   app.use(pingRouteMiddleware)

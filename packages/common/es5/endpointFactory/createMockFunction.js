@@ -7,7 +7,7 @@ var importFaker = require('../jsonSchema/importJsonFakerSync');
 module.exports = function createMockFunction(_ref) {
   var methodSpecification = _ref.methodSpecification;
 
-  var response = methodSpecification && methodSpecification.responses && methodSpecification.responses['200'] && methodSpecification.responses['200'].content && methodSpecification.responses['200'].content['application/json'];
+  var response = methodSpecification && methodSpecification.responses && methodSpecification.responses['200'] && methodSpecification.responses['200'].content && methodSpecification.responses['200'].content['application/vnd.api+json'];
 
   if (!response) {
     return null;

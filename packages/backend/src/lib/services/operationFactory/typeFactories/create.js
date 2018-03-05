@@ -25,6 +25,7 @@ module.exports = function create({
     response: {
       examples: exampleResponses,
       format: 'object',
+      status: 201,
     },
     summary: `Create ${resource}`,
   }

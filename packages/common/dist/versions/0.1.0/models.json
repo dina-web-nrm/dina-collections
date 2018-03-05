@@ -332,13 +332,6 @@
         "type": "string",
         "description": "Description of the locality"
       },
-      "relations": {
-        "type": "array",
-        "description": "A relation to other curatedLocalities",
-        "items": {
-          "$ref": "curatedLocalityRelation"
-        }
-      },
       "type": {
         "type": "string",
         "description": "Type of locality",
@@ -356,6 +349,11 @@
         "type": "object",
         "description": "A position describing the center",
         "$ref": "position"
+      },
+      "parent": {
+        "type": "object",
+        "description": "A polygon describing the edges",
+        "$ref": "curatedLocality"
       },
       "polygon": {
         "type": "object",
@@ -1490,194 +1488,6 @@
     "x-examples": {},
     "description": ""
   },
-  "createFeatureObservationTypeResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "featureObservationType"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": {
-            "default": "featureObservationType",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "updateFeatureObservationTypeResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "featureObservationType"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": {
-            "default": "featureObservationType",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "getFeatureObservationTypeResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "featureObservationType"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {},
-            "type": "object"
-          },
-          "type": {
-            "default": "featureObservationType",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "getFeatureObservationTypesResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "featureObservationType"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "relationships": {
-              "properties": {},
-              "type": "object"
-            },
-            "type": {
-              "default": "featureObservationType",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
   "createDistinguishedUnitObservationTypeResponse": {
     "additionalProperties": false,
     "properties": {
@@ -1851,6 +1661,194 @@
         "properties": {
           "self": {
             "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "createFeatureObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "featureObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "featureObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateFeatureObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "featureObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "featureObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getFeatureObservationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "featureObservationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {},
+            "type": "object"
+          },
+          "type": {
+            "default": "featureObservationType",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getFeatureObservationTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "featureObservationType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {},
+              "type": "object"
+            },
+            "type": {
+              "default": "featureObservationType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureObservationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2160,7 +2158,98 @@
             "type": "string"
           },
           "relationships": {
-            "properties": {},
+            "properties": {
+              "children": {
+                "properties": {
+                  "data": {
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "descendants": {
+                "properties": {
+                  "data": {
+                    "items": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "parent": {
+                "properties": {
+                  "data": {
+                    "properties": {
+                      "id": {
+                        "example": "1234",
+                        "type": "string"
+                      },
+                      "type": {
+                        "example": "curatedLocality",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "links": {
+                    "properties": {
+                      "self": {
+                        "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                        "type": "string",
+                        "x-faker": "internet.url"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            },
             "type": "object"
           },
           "type": {
@@ -2208,7 +2297,98 @@
               "type": "string"
             },
             "relationships": {
-              "properties": {},
+              "properties": {
+                "children": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "descendants": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
+                "parent": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "links": {
+                      "properties": {
+                        "self": {
+                          "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                          "type": "string",
+                          "x-faker": "internet.url"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
               "type": "object"
             },
             "type": {
@@ -2665,6 +2845,9 @@
             "type": "boolean"
           }
         }
+      },
+      "meta": {
+        "type": "object"
       }
     },
     "description": ""
@@ -3790,6 +3973,84 @@
     },
     "description": ""
   },
+  "createDistinguishedUnitObservationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "distinguishedUnitObservationType",
+            "enum": [
+              "distinguishedUnitObservationType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "distinguishedUnitObservationType"
+          }
+        }
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "distinguishedUnitObservationType",
+          "attributes": {
+            "typeName": "sex"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "distinguishedUnitObservationType",
+        "attributes": {
+          "typeName": "sex"
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateDistinguishedUnitObservationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "distinguishedUnitObservationType",
+            "enum": [
+              "distinguishedUnitObservationType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "distinguishedUnitObservationType"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
   "createFeatureObservationTypeRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -3864,84 +4125,6 @@
           },
           "attributes": {
             "$ref": "featureObservationType"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
-  "createDistinguishedUnitObservationTypeRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "default": "distinguishedUnitObservationType",
-            "enum": [
-              "distinguishedUnitObservationType"
-            ],
-            "type": "string"
-          },
-          "attributes": {
-            "$ref": "distinguishedUnitObservationType"
-          }
-        }
-      }
-    },
-    "x-examples": {
-      "primary": {
-        "data": {
-          "type": "distinguishedUnitObservationType",
-          "attributes": {
-            "typeName": "sex"
-          }
-        }
-      }
-    },
-    "example": {
-      "data": {
-        "type": "distinguishedUnitObservationType",
-        "attributes": {
-          "typeName": "sex"
-        }
-      }
-    },
-    "description": ""
-  },
-  "updateDistinguishedUnitObservationTypeRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "default": "distinguishedUnitObservationType",
-            "enum": [
-              "distinguishedUnitObservationType"
-            ],
-            "type": "string"
-          },
-          "attributes": {
-            "$ref": "distinguishedUnitObservationType"
           }
         }
       }
@@ -4078,11 +4261,6 @@
               "geodeticDatum": "string",
               "uncertaintyInMeters": 0
             },
-            "polygon": {
-              "vertices": [
-                null
-              ]
-            },
             "verticalPosition": {
               "maximumDepthInMeters": 0,
               "maximumElevationInMeters": 0,
@@ -4109,11 +4287,6 @@
             "longitude": "string",
             "geodeticDatum": "string",
             "uncertaintyInMeters": 0
-          },
-          "polygon": {
-            "vertices": [
-              null
-            ]
           },
           "verticalPosition": {
             "maximumDepthInMeters": 0,
@@ -4326,12 +4499,6 @@
                           "updatedAt": "string",
                           "id": "string",
                           "description": "string",
-                          "relations": [
-                            {
-                              "id": "string",
-                              "type": "string"
-                            }
-                          ],
                           "type": "continent",
                           "centralPosition": {
                             "latitude": "string",
@@ -4522,12 +4689,6 @@
                         "updatedAt": "string",
                         "id": "string",
                         "description": "string",
-                        "relations": [
-                          {
-                            "id": "string",
-                            "type": "string"
-                          }
-                        ],
                         "type": "continent",
                         "centralPosition": {
                           "latitude": "string",

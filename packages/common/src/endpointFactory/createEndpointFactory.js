@@ -40,8 +40,8 @@ const getSchemaFromRequestBody = requestBody => {
   return (
     requestBody &&
     requestBody.content &&
-    requestBody.content['application/json'] &&
-    requestBody.content['application/json'].schema
+    requestBody.content['application/vnd.api+json'] &&
+    requestBody.content['application/vnd.api+json'].schema
   )
 }
 
@@ -49,8 +49,8 @@ const getSchemaFromResponse = response => {
   return (
     response &&
     response.content &&
-    response.content['application/json'] &&
-    response.content['application/json'].schema
+    response.content['application/vnd.api+json'] &&
+    response.content['application/vnd.api+json'].schema
   )
 }
 
@@ -71,7 +71,9 @@ const getBodyValidator = ({ methodSpecification, origin }) => {
 }
 
 const getResponseValidator = ({ methodSpecification, origin }) => {
-  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  const schema = getSchemaFromResponse(
+    methodSpecification.responses[200] || methodSpecification.responses[201]
+  )
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
     if (modelName) {
@@ -93,7 +95,9 @@ const getResponseValidator = ({ methodSpecification, origin }) => {
 }
 
 const getExamplesFromMethodSpecifiction = methodSpecification => {
-  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  const schema = getSchemaFromResponse(
+    methodSpecification.responses[200] || methodSpecification.responses[201]
+  )
   if (!schema) {
     return null
   }
@@ -113,7 +117,9 @@ const getExamplesFromMethodSpecifiction = methodSpecification => {
 }
 
 const createMockData = ({ importFaker, methodSpecification }) => {
-  const schema = getSchemaFromResponse(methodSpecification.responses[200])
+  const schema = getSchemaFromResponse(
+    methodSpecification.responses[200] || methodSpecification.responses[201]
+  )
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
     if (modelName) {

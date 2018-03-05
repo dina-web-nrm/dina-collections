@@ -35,12 +35,6 @@
                     "updatedAt": "string",
                     "id": "string",
                     "description": "string",
-                    "relations": [
-                      {
-                        "id": "string",
-                        "type": "string"
-                      }
-                    ],
                     "type": "continent",
                     "centralPosition": {
                       "latitude": "string",

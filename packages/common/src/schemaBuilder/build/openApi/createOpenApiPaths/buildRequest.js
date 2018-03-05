@@ -6,7 +6,7 @@ module.exports = function buildRequest({ request }) {
   }
   const requestBody = {
     content: {
-      'application/json': {
+      'application/vnd.api+json': {
         schema: {
           $ref: `__ROOT__${request.name}`,
         },

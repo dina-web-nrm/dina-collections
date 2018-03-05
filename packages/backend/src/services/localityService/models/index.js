@@ -1,6 +1,6 @@
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
-exports.curatedLocality = function curatedLocality({ sequelize }) {
+const curatedLocalityFactory = function curatedLocality({ sequelize }) {
   return createModel({
     name: 'CuratedLocality',
     schemaModelName: 'curatedLocality',
@@ -8,3 +8,27 @@ exports.curatedLocality = function curatedLocality({ sequelize }) {
     sequelize,
   })
 }
+
+const setupRelations = function setupRelations({ models }) {
+  const { curatedLocality } = models
+  curatedLocality.Model.hasMany(curatedLocality.Model, {
+    as: 'children',
+    foreignKey: 'parentVersionId',
+  })
+  curatedLocality.Model.belongsTo(curatedLocality.Model, {
+    as: 'parent',
+    foreignKey: 'parentVersionId',
+    targetKey: 'versionId',
+  })
+}
+
+module.exports = [
+  {
+    factory: curatedLocalityFactory,
+    name: 'curatedLocality',
+  },
+  {
+    factory: setupRelations,
+    name: 'setupRelations',
+  },
+]

@@ -8,7 +8,7 @@ module.exports = function createMockFunction({ methodSpecification }) {
     methodSpecification.responses &&
     methodSpecification.responses['200'] &&
     methodSpecification.responses['200'].content &&
-    methodSpecification.responses['200'].content['application/json']
+    methodSpecification.responses['200'].content['application/vnd.api+json']
 
   if (!response) {
     return null
