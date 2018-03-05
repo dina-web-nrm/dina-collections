@@ -10,6 +10,7 @@ const config = {
     false,
   mountApp: process.env.MOUNT_APP,
   publicUrl: process.env.PUBLIC_URL,
+  testUi: process.env.REACT_APP_TEST_UI !== 'false',
 }
 
 export default config

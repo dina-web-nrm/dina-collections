@@ -1,10 +1,11 @@
 /* eslint-disable no-console, prefer-destructuring */
 import React from 'react'
 import setupTestComponent from 'utilities/test/setupTestComponent'
+import uiDescribe from 'utilities/test/uiDescribe'
 
 import Input from './index'
 
-describe('coreModules/form/components/Input', () => {
+uiDescribe('coreModules/form/components/Input', () => {
   let wrapper
   let emptyObj
   let baseMeta

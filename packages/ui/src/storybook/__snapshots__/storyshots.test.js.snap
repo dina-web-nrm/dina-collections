@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots coreModules/bootstrap/DefaultLoader Loading 1`] = `
+exports[`storyshoots Storyshots coreModules/bootstrap/DefaultLoader Loading 1`] = `
 <div>
   <div
     className="ui container"
@@ -42,7 +42,7 @@ exports[`Storyshots coreModules/bootstrap/DefaultLoader Loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/bootstrap/DefaultLoader Not loading 1`] = `
+exports[`storyshoots Storyshots coreModules/bootstrap/DefaultLoader Not loading 1`] = `
 <div>
   <div
     className="ui container"
@@ -84,7 +84,7 @@ exports[`Storyshots coreModules/bootstrap/DefaultLoader Not loading 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/bootstrap/DefaultWrapper Default 1`] = `
+exports[`storyshoots Storyshots coreModules/bootstrap/DefaultWrapper Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -120,7 +120,7 @@ exports[`Storyshots coreModules/bootstrap/DefaultWrapper Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/commonUi/Footer Default 1`] = `
+exports[`storyshoots Storyshots coreModules/commonUi/Footer Default 1`] = `
 <div>
   <div
     className="ui inverted vertical segment"
@@ -425,7 +425,7 @@ exports[`Storyshots coreModules/commonUi/Footer Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/commonUi/NavigationSidebar Default 1`] = `
+exports[`storyshoots Storyshots coreModules/commonUi/NavigationSidebar Default 1`] = `
 <div>
   <div
     className="ui inverted vertical labeled icon ui overlay left visible sidebar flex menu"
@@ -512,7 +512,7 @@ exports[`Storyshots coreModules/commonUi/NavigationSidebar Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] = `
+exports[`storyshoots Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] = `
 <div>
   <div
     className="ui container"
@@ -544,7 +544,7 @@ exports[`Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/commonUi/PageTemplate No fixed menu 1`] = `
+exports[`storyshoots Storyshots coreModules/commonUi/PageTemplate No fixed menu 1`] = `
 <div>
   <div
     className="ui container"
@@ -576,7 +576,7 @@ exports[`Storyshots coreModules/commonUi/PageTemplate No fixed menu 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/commonUi/TranslatedLabel Default 1`] = `
+exports[`storyshoots Storyshots coreModules/commonUi/TranslatedLabel Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -602,7 +602,7 @@ exports[`Storyshots coreModules/commonUi/TranslatedLabel Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/commonUi/ViewWrap Default 1`] = `
+exports[`storyshoots Storyshots coreModules/commonUi/ViewWrap Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -656,7 +656,7 @@ exports[`Storyshots coreModules/commonUi/ViewWrap Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/error/FormFieldError Default 1`] = `
+exports[`storyshoots Storyshots coreModules/error/FormFieldError Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -701,7 +701,7 @@ exports[`Storyshots coreModules/error/FormFieldError Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/error/FormSchemaError Default 1`] = `
+exports[`storyshoots Storyshots coreModules/error/FormSchemaError Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -735,7 +735,7 @@ exports[`Storyshots coreModules/error/FormSchemaError Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/form/Checkbox Default 1`] = `
+exports[`storyshoots Storyshots coreModules/form/Checkbox Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -784,7 +784,7 @@ exports[`Storyshots coreModules/form/Checkbox Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/form/Input Default 1`] = `
+exports[`storyshoots Storyshots coreModules/form/Input Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -830,7 +830,7 @@ exports[`Storyshots coreModules/form/Input Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/I18nProvider Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/I18nProvider Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -853,7 +853,7 @@ exports[`Storyshots coreModules/i18n/I18nProvider Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -940,7 +940,7 @@ exports[`Storyshots coreModules/i18n/LanguageSelect Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/LanguageSelect Green color 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/LanguageSelect Green color 1`] = `
 <div>
   <div
     className="ui container"
@@ -1027,7 +1027,7 @@ exports[`Storyshots coreModules/i18n/LanguageSelect Green color 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Markdown Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Markdown Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -1052,7 +1052,7 @@ exports[`Storyshots coreModules/i18n/Markdown Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Markdown Fallback language 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Markdown Fallback language 1`] = `
 <div>
   <div
     className="ui container"
@@ -1077,7 +1077,7 @@ exports[`Storyshots coreModules/i18n/Markdown Fallback language 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/MarkdownToHtmlAsync Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/MarkdownToHtmlAsync Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -1096,7 +1096,7 @@ exports[`Storyshots coreModules/i18n/MarkdownToHtmlAsync Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/ModuleTranslate Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/ModuleTranslate Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -1117,7 +1117,7 @@ exports[`Storyshots coreModules/i18n/ModuleTranslate Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/ModuleTranslate Multiple modules 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/ModuleTranslate Multiple modules 1`] = `
 <div>
   <div
     className="ui container"
@@ -1138,7 +1138,7 @@ exports[`Storyshots coreModules/i18n/ModuleTranslate Multiple modules 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/ModuleTranslate Not existing 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/ModuleTranslate Not existing 1`] = `
 <div>
   <div
     className="ui container"
@@ -1159,7 +1159,7 @@ exports[`Storyshots coreModules/i18n/ModuleTranslate Not existing 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Translate Capitalize 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Translate Capitalize 1`] = `
 <div>
   <div
     className="ui container"
@@ -1180,7 +1180,7 @@ exports[`Storyshots coreModules/i18n/Translate Capitalize 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Translate Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Translate Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -1201,7 +1201,7 @@ exports[`Storyshots coreModules/i18n/Translate Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Translate Fallback 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Translate Fallback 1`] = `
 <div>
   <div
     className="ui container"
@@ -1222,7 +1222,7 @@ exports[`Storyshots coreModules/i18n/Translate Fallback 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Translate Interpolation 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Translate Interpolation 1`] = `
 <div>
   <div
     className="ui container"
@@ -1243,7 +1243,7 @@ exports[`Storyshots coreModules/i18n/Translate Interpolation 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Translate Multiple keys 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Translate Multiple keys 1`] = `
 <div>
   <div
     className="ui container"
@@ -1264,7 +1264,7 @@ exports[`Storyshots coreModules/i18n/Translate Multiple keys 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/Translate No translation available 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/Translate No translation available 1`] = `
 <div>
   <div
     className="ui container"
@@ -1285,7 +1285,7 @@ exports[`Storyshots coreModules/i18n/Translate No translation available 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/createModuleTranslate Default 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/createModuleTranslate Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -1306,7 +1306,7 @@ exports[`Storyshots coreModules/i18n/createModuleTranslate Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/i18n/createModuleTranslate Not existing 1`] = `
+exports[`storyshoots Storyshots coreModules/i18n/createModuleTranslate Not existing 1`] = `
 <div>
   <div
     className="ui container"
@@ -1327,7 +1327,7 @@ exports[`Storyshots coreModules/i18n/createModuleTranslate Not existing 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay Default 1`] = `
+exports[`storyshoots Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -1344,7 +1344,7 @@ exports[`Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay Default 1`] =
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/Flash Default 1`] = `
+exports[`storyshoots Storyshots coreModules/notifications/Flash Default 1`] = `
 <div>
   <div
     className="ui info message flash"
@@ -1371,7 +1371,7 @@ exports[`Storyshots coreModules/notifications/Flash Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/Flash Error 1`] = `
+exports[`storyshoots Storyshots coreModules/notifications/Flash Error 1`] = `
 <div>
   <div
     className="ui error message flash"
@@ -1398,7 +1398,7 @@ exports[`Storyshots coreModules/notifications/Flash Error 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/Flash Info 1`] = `
+exports[`storyshoots Storyshots coreModules/notifications/Flash Info 1`] = `
 <div>
   <div
     className="ui info message flash"
@@ -1425,7 +1425,7 @@ exports[`Storyshots coreModules/notifications/Flash Info 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/Flash Success 1`] = `
+exports[`storyshoots Storyshots coreModules/notifications/Flash Success 1`] = `
 <div>
   <div
     className="ui success message flash"
@@ -1452,7 +1452,7 @@ exports[`Storyshots coreModules/notifications/Flash Success 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/Flash Warning 1`] = `
+exports[`storyshoots Storyshots coreModules/notifications/Flash Warning 1`] = `
 <div>
   <div
     className="ui warning message flash"
@@ -1479,7 +1479,7 @@ exports[`Storyshots coreModules/notifications/Flash Warning 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/FormFieldHelpIcon Default 1`] = `
+exports[`storyshoots Storyshots coreModules/notifications/FormFieldHelpIcon Default 1`] = `
 <div>
   <i
     aria-hidden="true"
@@ -1489,11 +1489,11 @@ exports[`Storyshots coreModules/notifications/FormFieldHelpIcon Default 1`] = `
 </div>
 `;
 
-exports[`Storyshots coreModules/notifications/NotificationDisplay Default 1`] = `<div />`;
+exports[`storyshoots Storyshots coreModules/notifications/NotificationDisplay Default 1`] = `<div />`;
 
-exports[`Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
+exports[`storyshoots Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
 
-exports[`Storyshots coreModules/user/LoginForm Default 1`] = `
+exports[`storyshoots Storyshots coreModules/user/LoginForm Default 1`] = `
 <div>
   <div
     className="ui container"
