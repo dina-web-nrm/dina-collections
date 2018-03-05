@@ -354,13 +354,8 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
         value: true,
       },
       { name: 'taxonInformation.determinations.0.remarks', value: 'remarks' },
+
       {
-        ignore: false,
-        name: 'taxonInformation.determinations.0.taxonNameStandardized',
-        value: 'Sorex minutus',
-      },
-      {
-        ignore: true,
         name: 'taxonInformation.determinations.0.taxonNameStandardized.hidden',
         value: 'Sorex minutus',
       },
@@ -370,16 +365,10 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
         interaction: 'click',
       },
       {
-        interaction: 'click',
-        name: 'featureObservations.0.featureObservationType.typeName',
-        selector: ({ form, name }) => {
-          return form
-            .find({ name })
-            .find('.item')
-            .at(0)
-            .hostNodes()
-        },
+        name: 'featureObservations.0.featureObservationType.typeName.hidden',
+        value: 'age',
       },
+
       {
         name: 'featureObservations.0.date',
         value: 'date',
@@ -438,58 +427,35 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
         value: 'coordinatesVerbatim',
       },
       {
-        interaction: 'click',
         name:
-          'individualCircumstances.0.event.localityInformation.curatedLocalities.0.id',
-        selector: ({ form, name }) => {
-          return form
-            .find({ name })
-            .find('.item')
-            .at(0)
-            .hostNodes()
-        },
+          'individualCircumstances.0.event.localityInformation.curatedLocalities.0.id.hidden',
+        value: 'Africa',
       },
+
       {
-        interaction: 'click',
         name:
-          'individualCircumstances.0.event.localityInformation.curatedLocalities.1.id',
-        selector: ({ form, name }) => {
-          return form
-            .find({ name })
-            .find('.item')
-            .at(0)
-            .hostNodes()
-        },
+          'individualCircumstances.0.event.localityInformation.curatedLocalities.1.id.hidden',
+        value: 'Algeria',
       },
+
       {
-        interaction: 'click',
         name:
-          'individualCircumstances.0.event.localityInformation.curatedLocalities.2.id',
-        selector: ({ form, name }) => {
-          return form
-            .find({ name })
-            .find('.item')
-            .at(0)
-            .hostNodes()
-        },
+          'individualCircumstances.0.event.localityInformation.curatedLocalities.2.id.hidden',
+        value: 'Balearic Islands',
       },
+
       {
-        interaction: 'click',
         name:
-          'individualCircumstances.0.event.localityInformation.curatedLocalities.3.id',
-        selector: ({ form, name }) => {
-          return form
-            .find({ name })
-            .find('.item')
-            .at(0)
-            .hostNodes()
-        },
+          'individualCircumstances.0.event.localityInformation.curatedLocalities.3.id.hidden',
+        value: 'GaspÃ© Peninsula',
       },
+
       {
         name:
           'individualCircumstances.0.event.localityInformation.curatedLocalities.4.id',
         value: 'Skansen',
       },
+
       {
         name:
           'individualCircumstances.0.event.localityInformation.georeferenceSourcesText',
@@ -661,7 +627,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     expect(
       mutations
         .filter(({ ignore }) => !ignore)
-        .map(mutation => mutation.name)
+        .map(mutation => (mutation.name || '').replace('.hidden', ''))
         .sort()
     ).toMatchObject(Object.keys(registeredFields).sort())
     expect(transformOutput(values)).toEqual(expectedOutput)
