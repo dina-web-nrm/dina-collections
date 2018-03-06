@@ -1,5 +1,5 @@
 # Tree for domainModules
-Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
+Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── allModules.js
@@ -86,3 +86,4 @@ Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
 [src](../tree.md)
 [apps](../apps/tree.md)
 [coreModules](../coreModules/tree.md)
+[collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

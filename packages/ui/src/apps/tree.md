@@ -1,5 +1,5 @@
 # Tree for apps
-Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
+Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── collectionsUi
@@ -87,3 +87,4 @@ Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
 [src](../tree.md)
 [coreModules](../coreModules/tree.md)
 [domainModules](../domainModules/tree.md)
+[collectionsUi viewModules](collectionsUi/viewModules/tree.md)
