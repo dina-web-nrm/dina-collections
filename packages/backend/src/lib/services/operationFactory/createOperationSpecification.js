@@ -4,17 +4,18 @@ module.exports = function createOperationObjectSpecification({
 }) {
   const {
     connect = true,
+    exampleResponses,
     queryParams: queryParamsInput,
   } = operationSpecificationInput
 
+  const availableExamples = Object.keys(exampleResponses || {})
   const queryParams = {
     ...queryParamsInput,
     exampleId: {
       description:
         'Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter',
-      example: 'primary',
       schema: {
-        default: 'primary',
+        enum: availableExamples.length ? availableExamples : undefined,
         type: 'string',
       },
     },

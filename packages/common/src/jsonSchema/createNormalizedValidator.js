@@ -1,4 +1,4 @@
-const models = require('../../dist/models.json')
+const models = require('../../dist/normalizedModels.json')
 const createValidatorFactory = require('./createValidatorFactory')
 
 module.exports = createValidatorFactory(models)
