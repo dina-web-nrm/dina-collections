@@ -94,12 +94,12 @@ function DropdownSearch({
 
       <input
         {...input}
-        type="hidden"
         name={hiddenInputName}
         onChange={event => {
           const { value } = event.target
           onChange(event, { value })
         }}
+        type="hidden"
       />
       {displayError && (
         <FormFieldError
