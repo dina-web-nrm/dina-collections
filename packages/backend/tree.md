@@ -1,24 +1,24 @@
 # Tree for root
+Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
 ## Tree
 ```bash
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
 ├── documentation
-│   ├── fileStructure.md
-│   └── terminology.md
+│   └── terminology
 ├── index.js
 ├── package.json
 ├── sample.env
 ├── src
 │   ├── apps
+│   ├── info
 │   ├── lib
 │   ├── scripts
 │   ├── services
 │   ├── tests
 │   ├── tree.md
 │   └── utilities
-├── todo.md
 ├── tree.md
 └── yarn.lock
 

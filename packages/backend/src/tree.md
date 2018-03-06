@@ -1,15 +1,21 @@
 # Tree for src
+Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
 ## Tree
 ```bash
 ├── apps
 │   ├── core
 │   └── tree.md
+├── info
+│   ├── description.md
+│   ├── index.json
+│   ├── servers
+│   └── versionInfo.md
 ├── lib
 │   ├── app
 │   ├── connectors
 │   ├── controllers
 │   ├── overview.md
-│   ├── postgres
+│   ├── sequelize
 │   ├── serviceRouter
 │   ├── services
 │   └── tree.md

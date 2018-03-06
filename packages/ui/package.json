@@ -65,6 +65,7 @@
     "build-snippets": "node ./src/scripts/snippets/index.js",
     "build:mock": "yarn build-css && yarn markdown:build && REACT_APP_ENABLE_MOCK=true react-scripts build",
     "build:storybook": "yarn update-storybook-imports && build-storybook -c .storybook -o build-storybook",
+    "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
     "eject": "react-scripts eject",
     "ensure-no-diff": "git diff --exit-code",
     "lint:js": "eslint 'src/**/*.js'",
@@ -80,8 +81,8 @@
     "storybook": "yarn update-storybook-imports && start-storybook -p 9009 -s public",
     "test": "yarn update-storybook-imports && yarn lint:js && react-scripts test --env=jsdom",
     "test:coverage": "npm test -- --coverage",
-    "test:unit:watch": "react-scripts test --env=jsdom --watch",
     "test:unit:fast": "REACT_APP_TEST_UI=false react-scripts test --env=jsdom --watch",
+    "test:unit:watch": "react-scripts test --env=jsdom --watch",
     "update-git-dependencies": "yarn upgrade models && yarn upgrade semantic-ui",
     "update-storybook-imports": "node ./src/scripts/storybook/createStorybookImports",
     "watch-css": "yarn build-css && node-less-chokidar src/ -o src/ --watch --recursive"

@@ -229,7 +229,7 @@ const testModuleFolder = folderName => {
       const files = fs
         .readdirSync(moduleFolderBasePath)
         .filter(filename => filename[0] !== '.')
-      expect(indexFile.moduleOrder.length + 2).toBe(files.length)
+      expect(indexFile.moduleOrder.length + 3).toBe(files.length)
     })
     it(`import allModules ok`, () => {
       const allModulesFile = require(allModulesFilePath)

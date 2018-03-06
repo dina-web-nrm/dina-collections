@@ -1,4 +1,5 @@
 # Tree for services
+Generated at commit: d581a4efc37f21fddd6ad6cb04e5cb9d360877c2
 ## Tree
 ```bash
 ├── agentService
@@ -9,10 +10,9 @@
 │   ├── models
 │   │   └── index.js
 │   └── resources
-│       ├── createAgent
-│       │   └── examples
-│       ├── getAgent
-│       │   └── examples
+│       ├── agent
+│       │   ├── index.js
+│       │   └── operations
 │       └── index.js
 ├── authService
 │   ├── index.js
@@ -20,7 +20,11 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   └── resources
-│       └── index.js
+│       ├── accessToken
+│       │   └── index.js
+│       ├── index.js
+│       └── user
+│           └── index.js
 ├── curatedEventService
 │   ├── index.js
 │   ├── info
@@ -29,8 +33,9 @@
 │   ├── models
 │   │   └── index.js
 │   └── resources
-│       ├── createExpedition
-│       │   └── examples
+│       ├── expedition
+│       │   ├── index.js
+│       │   └── operations
 │       └── index.js
 ├── curatedListService
 │   ├── index.js
@@ -41,18 +46,16 @@
 │   │   └── index.js
 │   └── resources
 │       ├── distinguishedUnitObservationType
-│       │   └── examples
+│       │   ├── index.js
+│       │   └── operations
 │       ├── featureObservationType
-│       │   └── examples
+│       │   ├── index.js
+│       │   └── operations
 │       └── index.js
 ├── externalEventService
 │   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   └── resources
-│       ├── getLoan
-│       │   └── index.js
+│   └── info
+│       ├── description.md
 │       └── index.js
 ├── identifierService
 │   ├── index.js
@@ -63,7 +66,8 @@
 │   │   └── index.js
 │   └── resources
 │       ├── catalogNumber
-│       │   └── examples
+│       │   ├── index.js
+│       │   └── operations
 │       └── index.js
 ├── index.js
 ├── localityService
@@ -74,10 +78,12 @@
 │   │   └── index.js
 │   ├── models
 │   │   └── index.js
-│   └── resources
-│       ├── curatedLocality
-│       │   └── examples
-│       └── index.js
+│   ├── resources
+│   │   ├── curatedLocality
+│   │   │   ├── create
+│   │   │   └── index.js
+│   │   └── index.js
+│   └── todo.md
 ├── organizationService
 │   ├── index.js
 │   ├── info
@@ -100,16 +106,10 @@
 │   │   ├── specimen.js
 │   │   └── specimen.spec.js
 │   ├── resources
-│   │   ├── createSpecimen
-│   │   │   ├── e2e.spec.js
-│   │   │   ├── examples
-│   │   │   └── validators
-│   │   ├── getSpecimens
-│   │   │   └── e2e.spec.js
 │   │   ├── index.js
-│   │   └── updateSpecimen
-│   │       ├── e2e.spec.js
-│   │       └── examples
+│   │   └── specimen
+│   │       ├── index.js
+│   │       └── operations
 │   └── testData
 │       └── individualGroup.js
 ├── statusService
@@ -132,27 +132,21 @@
 │   └── resources
 │       ├── index.js
 │       ├── physicalUnit
-│       │   └── examples
+│       │   ├── index.js
+│       │   └── operations
 │       └── storageLocation
-│           └── examples
+│           ├── index.js
+│           └── operations
 ├── taxonService
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
 │   └── resources
-│       ├── getTaxaByName
-│       │   ├── description.md
-│       │   ├── example.json
-│       │   ├── index-old.json
-│       │   ├── index.js
-│       │   └── response.json
-│       ├── getTaxonById
-│       │   ├── description.md
-│       │   ├── example.json
-│       │   ├── index.js
-│       │   └── response.json
-│       └── index.js
+│       ├── index.js
+│       └── taxon
+│           ├── index.js
+│           └── operations
 └── tree.md
 
 ```
