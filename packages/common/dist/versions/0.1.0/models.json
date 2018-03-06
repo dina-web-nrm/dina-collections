@@ -40,6 +40,44 @@
     "x-modelType": "model",
     "id": "date"
   },
+  "externalModelReference": {
+    "additionalProperties": false,
+    "description": "A reference to a model owned by another service",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "type"
+    ],
+    "x-category": "core",
+    "x-modelType": "model",
+    "id": "externalModelReference"
+  },
+  "internalModelReference": {
+    "additionalProperties": false,
+    "description": "A reference to a model owned by the same service but stored in normalized form",
+    "properties": {
+      "uuid": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "uuid",
+      "type"
+    ],
+    "x-category": "core",
+    "x-modelType": "model",
+    "id": "internalModelReference"
+  },
   "modelReference": {
     "additionalProperties": false,
     "description": "A reference to a model",

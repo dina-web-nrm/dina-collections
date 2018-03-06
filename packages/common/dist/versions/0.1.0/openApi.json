@@ -84,9 +84,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -140,9 +138,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -198,9 +194,10 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
+              "enum": [
+                "primary"
+              ],
               "type": "string"
             }
           },
@@ -254,9 +251,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -371,9 +366,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -427,9 +420,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -485,9 +476,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -541,9 +530,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -599,9 +586,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -655,9 +640,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -713,9 +696,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -779,9 +760,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -827,9 +806,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -883,9 +860,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -941,9 +916,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1007,9 +980,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1055,9 +1026,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1111,9 +1080,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1169,9 +1136,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1235,9 +1200,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1283,9 +1246,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1339,9 +1300,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1397,9 +1356,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1519,9 +1476,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1567,9 +1522,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1643,9 +1596,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1701,9 +1652,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1767,9 +1716,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1836,9 +1783,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1894,9 +1839,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1968,9 +1911,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2024,9 +1965,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2082,9 +2021,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2148,9 +2085,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2206,9 +2141,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2272,9 +2205,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2341,9 +2272,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2399,9 +2328,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2447,9 +2374,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2503,9 +2428,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2561,9 +2484,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2627,9 +2548,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2685,9 +2604,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2751,9 +2668,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2833,9 +2748,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2881,9 +2794,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2960,6 +2871,42 @@
           }
         },
         "description": "### Definition\n\nInformation pertaining to a specific date or a date range.\n\n### Note(s)\n\nIncludes for example verbatim information about when something happened.\n",
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "externalModelReference": {
+        "additionalProperties": false,
+        "description": "A reference to a model owned by another service",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type"
+        ],
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "internalModelReference": {
+        "additionalProperties": false,
+        "description": "A reference to a model owned by the same service but stored in normalized form",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "uuid",
+          "type"
+        ],
         "x-category": "core",
         "x-modelType": "model"
       },
@@ -3092,7 +3039,8 @@
           }
         },
         "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "curatedListType": {
         "additionalProperties": false,
@@ -3109,7 +3057,8 @@
           }
         },
         "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "distinguishedUnitObservationType": {
         "additionalProperties": false,
@@ -3141,7 +3090,8 @@
           "typeName"
         ],
         "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "featureObservationType": {
         "additionalProperties": false,
@@ -3348,7 +3298,8 @@
           }
         },
         "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "deathCircumstance": {
         "additionalProperties": false,
@@ -3459,7 +3410,8 @@
           }
         },
         "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "event": {
         "additionalProperties": false,
@@ -3782,7 +3734,8 @@
           }
         },
         "x-category": "storageApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "taxon": {
         "additionalProperties": false,
@@ -3902,7 +3855,8 @@
           "valid_name"
         ],
         "x-category": "taxonomyApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "createAgentRequest": {
         "additionalProperties": false,
@@ -3949,7 +3903,8 @@
               "name": "orvar"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateAgentRequest": {
         "additionalProperties": false,
@@ -3978,7 +3933,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "loginUserRequest": {
         "type": "object",
@@ -4006,7 +3962,8 @@
           "grant_type",
           "password",
           "username"
-        ]
+        ],
+        "description": ""
       },
       "createExpeditionRequest": {
         "additionalProperties": false,
@@ -4049,7 +4006,8 @@
             "type": "expedition",
             "attributes": {}
           }
-        }
+        },
+        "description": ""
       },
       "updateExpeditionRequest": {
         "additionalProperties": false,
@@ -4078,7 +4036,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createDistinguishedUnitObservationTypeRequest": {
         "additionalProperties": false,
@@ -4125,7 +4084,8 @@
               "typeName": "sex"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateDistinguishedUnitObservationTypeRequest": {
         "additionalProperties": false,
@@ -4154,7 +4114,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createFeatureObservationTypeRequest": {
         "additionalProperties": false,
@@ -4203,7 +4164,8 @@
               "typeName": "string"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateFeatureObservationTypeRequest": {
         "additionalProperties": false,
@@ -4232,7 +4194,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createCatalogNumberRequest": {
         "additionalProperties": false,
@@ -4285,7 +4248,8 @@
               "value": "58412812"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateCatalogNumberRequest": {
         "additionalProperties": false,
@@ -4314,7 +4278,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createCuratedLocalityRequest": {
         "additionalProperties": false,
@@ -4397,7 +4362,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateCuratedLocalityRequest": {
         "additionalProperties": false,
@@ -4426,7 +4392,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createSpecimenRequest": {
         "additionalProperties": false,
@@ -4939,7 +4906,8 @@
               "version": 0
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateSpecimenRequest": {
         "additionalProperties": false,
@@ -4968,7 +4936,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createPhysicalUnitRequest": {
         "additionalProperties": false,
@@ -5017,7 +4986,8 @@
               "storedUnderTaxonName": "Sorex minutus"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updatePhysicalUnitRequest": {
         "additionalProperties": false,
@@ -5046,7 +5016,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "updatePhysicalUnitStorageLocationRequest": {
         "additionalProperties": false,
@@ -5072,7 +5043,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createStorageLocationRequest": {
         "additionalProperties": false,
@@ -5119,7 +5091,8 @@
               "locationText": "string"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateStorageLocationRequest": {
         "additionalProperties": false,
@@ -5148,7 +5121,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateStorageLocationPhysicalUnitsRequest": {
         "additionalProperties": false,
@@ -5177,7 +5151,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createAgentResponse": {
         "additionalProperties": false,
@@ -5222,7 +5197,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getAgentResponse": {
         "additionalProperties": false,
@@ -5284,7 +5260,8 @@
               "name": "Ingimar"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateAgentResponse": {
         "additionalProperties": false,
@@ -5329,7 +5306,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getAgentsResponse": {
         "additionalProperties": false,
@@ -5378,7 +5356,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getUserResponse": {
         "type": "object",
@@ -5412,7 +5391,8 @@
         "required": [
           "email",
           "preferred_username"
-        ]
+        ],
+        "description": ""
       },
       "loginUserResponse": {
         "type": "object",
@@ -5449,7 +5429,8 @@
         },
         "required": [
           "access_token"
-        ]
+        ],
+        "description": ""
       },
       "createExpeditionResponse": {
         "additionalProperties": false,
@@ -5494,7 +5475,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getExpeditionResponse": {
         "additionalProperties": false,
@@ -5539,7 +5521,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateExpeditionResponse": {
         "additionalProperties": false,
@@ -5584,7 +5567,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getExpeditionsResponse": {
         "additionalProperties": false,
@@ -5633,7 +5617,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
@@ -5678,7 +5663,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
@@ -5723,7 +5709,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
@@ -5768,7 +5755,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getDistinguishedUnitObservationTypesResponse": {
         "additionalProperties": false,
@@ -5817,7 +5805,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createFeatureObservationTypeResponse": {
         "additionalProperties": false,
@@ -5862,7 +5851,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateFeatureObservationTypeResponse": {
         "additionalProperties": false,
@@ -5907,7 +5897,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getFeatureObservationTypeResponse": {
         "additionalProperties": false,
@@ -5952,7 +5943,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getFeatureObservationTypesResponse": {
         "additionalProperties": false,
@@ -6001,7 +5993,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createCatalogNumberResponse": {
         "additionalProperties": false,
@@ -6046,7 +6039,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateCatalogNumberResponse": {
         "additionalProperties": false,
@@ -6091,7 +6085,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getCatalogNumberResponse": {
         "additionalProperties": false,
@@ -6136,7 +6131,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getCatalogNumbersResponse": {
         "additionalProperties": false,
@@ -6185,7 +6181,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createCuratedLocalityResponse": {
         "additionalProperties": false,
@@ -6230,7 +6227,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateCuratedLocalityResponse": {
         "additionalProperties": false,
@@ -6275,7 +6273,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getCuratedLocalityResponse": {
         "additionalProperties": false,
@@ -6411,7 +6410,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getCuratedLocalitiesResponse": {
         "additionalProperties": false,
@@ -6551,7 +6551,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createSpecimenResponse": {
         "additionalProperties": false,
@@ -6596,7 +6597,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateSpecimenResponse": {
         "additionalProperties": false,
@@ -6641,7 +6643,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimenResponse": {
         "additionalProperties": false,
@@ -6718,7 +6721,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimensResponse": {
         "additionalProperties": false,
@@ -6799,7 +6803,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimenVersionResponse": {
         "additionalProperties": false,
@@ -6876,7 +6881,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimenVersionsResponse": {
         "additionalProperties": false,
@@ -6957,7 +6963,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getStatusResponse": {
         "type": "object",
@@ -6974,7 +6981,8 @@
           "meta": {
             "type": "object"
           }
-        }
+        },
+        "description": ""
       },
       "createPhysicalUnitResponse": {
         "additionalProperties": false,
@@ -7019,7 +7027,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updatePhysicalUnitResponse": {
         "additionalProperties": false,
@@ -7064,7 +7073,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updatePhysicalUnitStorageLocationResponse": {
         "additionalProperties": false,
@@ -7109,7 +7119,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitStorageLocationResponse": {
         "additionalProperties": false,
@@ -7154,7 +7165,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitResponse": {
         "additionalProperties": false,
@@ -7228,7 +7240,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitsResponse": {
         "additionalProperties": false,
@@ -7306,7 +7319,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitVersionResponse": {
         "additionalProperties": false,
@@ -7380,7 +7394,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitVersionsResponse": {
         "additionalProperties": false,
@@ -7458,7 +7473,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createStorageLocationResponse": {
         "additionalProperties": false,
@@ -7503,7 +7519,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateStorageLocationResponse": {
         "additionalProperties": false,
@@ -7548,7 +7565,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateStorageLocationPhysicalUnitsResponse": {
         "additionalProperties": false,
@@ -7597,7 +7615,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getStorageLocationPhysicalUnitsResponse": {
         "additionalProperties": false,
@@ -7646,7 +7665,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getStorageLocationResponse": {
         "additionalProperties": false,
@@ -7723,7 +7743,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getStorageLocationsResponse": {
         "additionalProperties": false,
@@ -7804,7 +7825,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getTaxonByIdResponse": {
         "additionalProperties": false,
@@ -7849,7 +7871,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getTaxaByNameResponse": {
         "additionalProperties": false,
@@ -7898,7 +7921,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       }
     },
     "securitySchemes": {
