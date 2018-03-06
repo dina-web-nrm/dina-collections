@@ -63,7 +63,7 @@ function DropdownSearch({
   selectOnBlur,
 }) {
   const displayError = touched && !!error
-
+  const hiddenInputName = `${input.name}.hidden`
   return (
     <Form.Field
       error={displayError}
@@ -90,6 +90,16 @@ function DropdownSearch({
         selectOnNavigation={false}
         text={input.value || initialText}
         {...input}
+      />
+
+      <input
+        {...input}
+        name={hiddenInputName}
+        onChange={event => {
+          const { value } = event.target
+          onChange(event, { value })
+        }}
+        type="hidden"
       />
       {displayError && (
         <FormFieldError

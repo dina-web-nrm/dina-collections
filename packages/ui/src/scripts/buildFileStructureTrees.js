@@ -1,5 +1,4 @@
 const path = require('path')
-
 const buildFileTrees = require('common/src/buildFileTrees')
 
 const trees = [
@@ -15,18 +14,23 @@ const trees = [
   },
   {
     levels: 4,
-    name: 'lib',
-    rootRelativePath: './src/lib',
-  },
-  {
-    levels: 3,
     name: 'apps',
     rootRelativePath: './src/apps',
   },
   {
     levels: 4,
-    name: 'services',
-    rootRelativePath: './src/services',
+    name: 'coreModules',
+    rootRelativePath: './src/coreModules',
+  },
+  {
+    levels: 4,
+    name: 'domainModules',
+    rootRelativePath: './src/domainModules',
+  },
+  {
+    levels: 4,
+    name: 'collectionsUi viewModules',
+    rootRelativePath: './src/apps/collectionsUi/viewModules',
   },
 ]
 

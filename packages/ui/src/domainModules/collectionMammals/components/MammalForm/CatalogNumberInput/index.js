@@ -56,8 +56,7 @@ class CatalogNumberInput extends Component {
     this.handleOpen = this.handleOpen.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
-      // set catalogNumber from route params to avoid flickering header
-      catalogNumber: props.match.params.catalogNumber,
+      catalogNumber: props.input.value,
       open: false,
     }
   }

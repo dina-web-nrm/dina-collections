@@ -3,6 +3,12 @@
 This is the collections platform of DINA Natural History Collections for the Web.
 Its a monorepo containing both frontend, api and related resources. Subrepos can be found under ./packages.
 
+[Backend](packages/backend)
+[Frontend](packages/ui)
+[Common](packages/common)
+[Models](packages/models)
+[Style](packages/dina-style)
+
 ## Get started
 
 ### Run with docker locally

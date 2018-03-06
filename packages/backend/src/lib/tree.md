@@ -1,4 +1,5 @@
 # Tree for lib
+Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── app
@@ -40,7 +41,7 @@
 │   ├── updateRelationHasMany.js
 │   └── updateRelationHasOne.js
 ├── overview.md
-├── postgres
+├── sequelize
 │   ├── db
 │   │   └── index.js
 │   ├── index.js
@@ -49,13 +50,19 @@
 │       ├── createRelations.js
 │       ├── factories
 │       │   └── versionedDocumentModel
-│       ├── setupModels.js
+│       ├── index.js
 │       └── syncModels.js
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
 │   │   ├── authenticate.js
 │   │   ├── decorateLocalsUserInput.js
+│   │   ├── ensureMediaType
+│   │   │   ├── index.js
+│   │   │   ├── validateAccept.js
+│   │   │   ├── validateAccept.spec.js
+│   │   │   ├── validateContentType.js
+│   │   │   └── validateContentType.spec.js
 │   │   ├── error.js
 │   │   └── requestHandler.js
 │   └── utilities

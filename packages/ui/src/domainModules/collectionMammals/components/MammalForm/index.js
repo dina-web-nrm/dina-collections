@@ -25,8 +25,6 @@ import SegmentFeatureObservations from './SegmentFeatureObservations/index'
 import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
 import SegmentDistinguishedUnits from './SegmentDistinguishedUnits'
 import SegmentOther from './SegmentOther'
-import transformInput from './transformations/input'
-import transformOutput from './transformations/output'
 
 const log = createLog('modules:collectionMammals:MammalForm')
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -58,7 +56,7 @@ const propTypes = {
   error: PropTypes.string,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  individualGroup: PropTypes.shape({
+  initialData: PropTypes.shape({
     // TODO: define and possibly centralize propTypes for individualGroup
   }),
   initialize: PropTypes.func.isRequired,
@@ -84,7 +82,7 @@ const propTypes = {
 
 const defaultProps = {
   error: '',
-  individualGroup: undefined,
+  initialData: {},
   mode: 'register',
   redirectOnSuccess: false,
   schemaErrors: [],
@@ -94,13 +92,7 @@ class RawMammalForm extends Component {
   constructor(props) {
     super(props)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    props.initialize(transformInput(props.individualGroup))
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.individualGroup !== nextProps.individualGroup) {
-      this.props.initialize(transformInput(nextProps.individualGroup))
-    }
+    props.initialize(props.initialData)
   }
 
   componentWillUnmount() {
@@ -117,7 +109,7 @@ class RawMammalForm extends Component {
 
     const patchedOutput = {
       id: match && match.params && match.params.specimenId,
-      ...transformOutput(formData),
+      ...formData,
     }
 
     return handleFormSubmit(patchedOutput)
