@@ -1,5 +1,35 @@
 const { diff } = require('deep-diff')
 
+const mergeRelationships = (oldDoc, newDoc) => {
+  if (!oldDoc.relationships) {
+    return newDoc
+  }
+  if (!newDoc.relationships) {
+    return {
+      ...newDoc,
+      relationships: oldDoc.relationships,
+    }
+  }
+  const mergedRelationships = Object.keys(newDoc.relationships).reduce(
+    (relationships, relationshipKey) => {
+      const newDocRelationship = newDoc.relationships[relationshipKey]
+      if (newDocRelationship.data) {
+        return {
+          ...relationships,
+          [relationshipKey]: newDocRelationship,
+        }
+      }
+      return relationships
+    },
+    oldDoc.relationships
+  )
+
+  return {
+    ...newDoc,
+    relationships: mergedRelationships,
+  }
+}
+
 module.exports = function updateFactory({
   getById,
   Model,
@@ -25,11 +55,12 @@ module.exports = function updateFactory({
         isCurrentVersion: true,
       }
       if (doc !== undefined) {
+        const newDoc = mergeRelationships(storedData.document, doc)
         newModel = {
           ...newModel,
-          diff: diff(storedData.document, doc),
-          document: doc,
-          schemaCompliant: !validate(doc),
+          diff: diff(storedData.document, newDoc),
+          document: newDoc,
+          schemaCompliant: !validate(newDoc),
           schemaVersion,
         }
       }

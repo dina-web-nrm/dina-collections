@@ -23,7 +23,6 @@ module.exports = function buildEndpoint(_ref) {
       _ref$pathParams = _ref.pathParams,
       rawPathParams = _ref$pathParams === undefined ? [] : _ref$pathParams,
       queryParams = _ref.queryParams,
-      relationBase = _ref.relationBase,
       requestInput = _ref.request,
       resource = _ref.resource,
       _ref$response = _ref.response,
@@ -47,7 +46,6 @@ module.exports = function buildEndpoint(_ref) {
     resource: resource
   }, responseInput, {
     operationId: operationId,
-    relationBase: relationBase,
     selfLink: selfLink
   }));
 

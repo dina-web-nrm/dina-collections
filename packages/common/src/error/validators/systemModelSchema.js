@@ -1,5 +1,5 @@
 const { compose } = require('redux')
-const createSchemaValidator = require('../../jsonSchema/createValidator')
+const createSchemaValidator = require('../../jsonSchema/createNormalizedValidator')
 const systemErrorFactory = require('../errorFactories/system')
 const serverErrorFactory = require('../errorFactories/server')
 const ajvErrorMapper = require('../errorMappers/ajv')

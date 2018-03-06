@@ -1,5 +1,5 @@
 # Tree for apps
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
+Generated at commit: 0cdba0c5f4ea06a7ced2ac77a0218afed1b8acb9
 ## Tree
 ```bash
 ├── collectionsUi
@@ -70,14 +70,15 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
-│       └── start
-│           ├── Async.js
-│           ├── Component.js
-│           ├── __markdown__
-│           ├── constants.js
-│           ├── index.js
-│           ├── logo.png
-│           └── translations.json
+│       ├── start
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── __markdown__
+│       │   ├── constants.js
+│       │   ├── index.js
+│       │   ├── logo.png
+│       │   └── translations.json
+│       └── tree.md
 └── tree.md
 
 ```

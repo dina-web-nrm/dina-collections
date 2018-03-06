@@ -5,8 +5,6 @@ module.exports = function readEndpoints(services) {
   Object.keys(services).forEach(serviceName => {
     const service = services[serviceName]
     const resources = service.resources || {}
-    // console.log('resources', resources)
-
     Object.keys(resources).forEach(resourceName => {
       const resource = resources[resourceName]
       const operations = resource.operations || {}

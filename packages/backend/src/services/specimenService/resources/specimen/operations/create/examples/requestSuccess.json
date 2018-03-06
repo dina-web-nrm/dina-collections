@@ -1,6 +1,24 @@
 {
   "data": {
     "type": "specimen",
+    "relationships": {
+      "physicalUnits": {
+        "data": [
+          {
+            "id": "2234",
+            "type": "physicalUnit"
+          }
+        ]
+      },
+     "featureObservationTypes": {
+        "data": [
+          {
+            "id": "2",
+            "type": "featureObservationType"
+          }
+        ]
+      }
+    },
     "attributes": {
       "individualGroup": {
         "taxonInformation": {},
@@ -43,9 +61,7 @@
                       "uncertaintyInMeters": 0
                     },
                     "polygon": {
-                      "vertices": [
-                        null
-                      ]
+                      "vertices": [null]
                     },
                     "verticalPosition": {
                       "maximumDepthInMeters": 0,
@@ -62,9 +78,7 @@
                   "uncertaintyInMeters": 0
                 },
                 "polygon": {
-                  "vertices": [
-                    null
-                  ]
+                  "vertices": [null]
                 },
                 "verticalPosition": {
                   "maximumDepthInMeters": 0,
@@ -93,8 +107,8 @@
             },
             "featureObservationText": "10 years",
             "featureObservationType": {
-              "typeName": "string",
-              "id": "string"
+              "id": "2",
+              "type": "featureObservationType"
             },
             "methodText": "Known age"
           }
@@ -147,9 +161,7 @@
                     "uncertaintyInMeters": 0
                   },
                   "polygon": {
-                    "vertices": [
-                      null
-                    ]
+                    "vertices": [null]
                   },
                   "verticalPosition": {
                     "maximumDepthInMeters": 0,
@@ -168,16 +180,8 @@
             "id": "string",
             "physicalUnitText": "Skin complete, prepared",
             "physicalUnit": {
-              "id": "string",
-              "distinguishedUnits": [
-                null
-              ],
-              "normalStorageLocationText": "string",
-              "storedUnderTaxonName": "Sorex minutus",
-              "storageLocation": {
-                "id": "string",
-                "locationText": "string"
-              }
+              "id": "2234",
+              "type": "physicalUnit"
             }
           }
         ],

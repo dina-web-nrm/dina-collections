@@ -1,21 +1,15 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
-const buildRelations = require('./utilities/buildRelations')
 
 module.exports = function getVersion({
   basePath,
   exampleResponses = {},
   queryParams,
-  relations: relationsInput,
+  relations,
   resource,
   resourcePlural,
   ...rest
 }) {
   const operationId = `get${capitalizeFirstLetter(resource)}Version`
-  const relations = buildRelations({
-    basePath,
-    relations: relationsInput,
-    resourcePlural,
-  })
 
   return {
     ...rest,

@@ -7,6 +7,7 @@ module.exports = function build({
   errors,
   info,
   models,
+  normalize,
   parameters,
   security,
   servers,
@@ -17,6 +18,7 @@ module.exports = function build({
     errors,
     info,
     models,
+    normalize,
     parameters,
     security,
     servers,
@@ -28,6 +30,7 @@ module.exports = function build({
     errors,
     info,
     models,
+    normalize,
     parameters,
     security,
   })

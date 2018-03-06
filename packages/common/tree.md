@@ -1,11 +1,13 @@
 # Tree for root
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
+Generated at commit: 0cdba0c5f4ea06a7ced2ac77a0218afed1b8acb9
 ## Tree
 ```bash
 ├── README.md
 ├── dist
 │   ├── components
 │   ├── models.json
+│   ├── normalizedModels.json
+│   ├── normalizedOpenApi.json
 │   ├── openApi.json
 │   ├── semantic.css
 │   ├── semantic.js
@@ -16,11 +18,14 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ├── es5
 │   ├── Dependor
 │   ├── apiClient
+│   ├── buildFileTrees
 │   ├── chainPromises
 │   ├── endpointFactory
 │   ├── error
 │   ├── jsonSchema
-│   └── schemaBuilder
+│   ├── schemaBuilder
+│   ├── scripts
+│   └── tree.md
 ├── package.json
 ├── src
 │   ├── Dependor

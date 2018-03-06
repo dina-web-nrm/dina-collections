@@ -6,7 +6,10 @@
       "$ref": "__ROOT__date"
     },
     "featureObservationText": { "type": "string", "example": "10 years" },
-    "featureObservationType": { "$ref": "__ROOT__featureObservationType" },
+    "featureObservationType": { "$ref": "__ROOT__featureObservationType", "x-reference-type": "external" },
     "methodText": { "type": "string", "example": "Known age" }
   }
 }
+
+
+

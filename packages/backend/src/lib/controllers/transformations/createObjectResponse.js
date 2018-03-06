@@ -4,14 +4,19 @@ module.exports = function createObjectResponse({
   relationships,
   status = 200,
 }) {
-  const { id, ...rest } = data
-  return {
+  const modifiedData = {
+    ...data,
+  }
+  delete modifiedData.relationships
+
+  const { id, ...rest } = modifiedData
+
+  const response = {
     data: {
       attributes: {
         ...rest,
       },
       id: `${id}`,
-      relationships: relationships || undefined,
       type,
     },
     meta: {
@@ -20,4 +25,12 @@ module.exports = function createObjectResponse({
       },
     },
   }
+
+  // const relationshipsResponse = relationships || storedRelationships
+
+  if (relationships) {
+    response.data.relationships = relationships
+  }
+
+  return response
 }

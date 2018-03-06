@@ -15,16 +15,24 @@ module.exports = {
       exampleRequests: { primary: updateRequestSuccess },
       type: 'update',
     },
-    // {
-    //   exampleRequests: { primary: updateRequestSuccess },
-    //   relationKey: 'physicalUnits',
-    //   type: 'updateRelation',
-    // },
-    // {
-    //   relationKey: 'physicalUnits',
-    //   type: 'getRelationHasMany',
-    // },
     {
+      relationKey: 'physicalUnits',
+      type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'physicalUnits',
+      type: 'getRelationHasMany',
+    },
+    {
+      relationKey: 'featureObservationTypes',
+      type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'featureObservationTypes',
+      type: 'getRelationHasMany',
+    },
+    {
+      includeRelations: true,
       type: 'getOne',
     },
     {
@@ -57,9 +65,15 @@ module.exports = {
     },
   ],
   relations: {
+    featureObservationTypes: {
+      format: 'array',
+      resource: 'featureObservationType',
+      storeInDocument: true,
+    },
     physicalUnits: {
       format: 'array',
       resource: 'physicalUnit',
+      storeInDocument: true,
     },
   },
   resource: 'specimen',

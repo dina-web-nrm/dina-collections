@@ -3,24 +3,22 @@ const {
   makeTestCall,
 } = require('../../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../../utilities/test/waitForApiRestart')
+const expectMultipleResourcesResponse = require('../../../../../../utilities/test/expectMultipleResourcesResponse')
 
 const fullFormExample = require('../create/examples/fullFormExample.json')
+const { getTestData } = require('../../testData')
 
 const validCatalogNumber = '123456'
 const validTaxonName = 'Sorex minutus'
 
 apiDescribe('specimen', () => {
-  let authToken
   beforeAll(() => {
-    return waitForApiRestart().then(() => {
-      authToken = 1234
-    })
+    return waitForApiRestart()
   })
 
-  describe('getSpecimens', () => {
+  describe('get', () => {
     beforeEach(() => {
       return makeTestCall({
-        authToken,
         body: fullFormExample,
         operationId: 'createSpecimen',
       })
@@ -28,86 +26,123 @@ apiDescribe('specimen', () => {
     describe('by catalogNumber', () => {
       it('Succeed with valid catalogNumber', () => {
         return makeTestCall({
-          authToken,
           operationId: 'getSpecimens',
           queryParams: { 'filter[catalogNumber]': validCatalogNumber },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length > 0).toBe(true)
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedType: 'specimen',
+            expectLength: true,
+            response,
+          })
         })
       })
-      it('Succeed with valid catalogNumber and includes', () => {
+      it('Succeed with valid catalogNumber', () => {
         return makeTestCall({
-          authToken,
           operationId: 'getSpecimens',
           queryParams: {
             'filter[catalogNumber]': validCatalogNumber,
           },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length > 0).toBe(true)
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedType: 'specimen',
+            expectLength: true,
+            response,
+          })
         })
       })
       it('Return empty array when non existing catalogNumber', () => {
         return makeTestCall({
-          authToken,
           operationId: 'getSpecimens',
           queryParams: {
             'filter[catalogNumber]': 'xxx111',
           },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length === 0).toBe(true)
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedLength: 0,
+            expectedType: 'specimen',
+            response,
+          })
         })
       })
     })
     describe('by taxonNameStandardized', () => {
       it('Succeed with valid taxonNameStandardized', () => {
         return makeTestCall({
-          authToken,
           operationId: 'getSpecimens',
           queryParams: {
             'filter[taxonNameStandardized]': validTaxonName,
           },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length > 0).toBe(true)
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedType: 'specimen',
+            expectLength: true,
+            response,
+          })
         })
       })
       it('Succeed with valid taxonNameStandardized', () => {
         return makeTestCall({
-          authToken,
           operationId: 'getSpecimens',
           queryParams: {
             'filter[taxonNameStandardized]': validTaxonName,
           },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length > 0).toBe(true)
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedType: 'specimen',
+            expectLength: true,
+            response,
+          })
         })
       })
       it('Return empty array when taxon name dont exist', () => {
         return makeTestCall({
-          authToken,
           operationId: 'getSpecimens',
           queryParams: {
             'filter[taxonNameStandardized]': 'not-existing',
           },
-        }).then(res => {
-          expect(res).toBeTruthy()
-          expect(res.data).toBeTruthy()
-          expect(Array.isArray(res.data)).toBe(true)
-          expect(res.data.length === 0).toBe(true)
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedLength: 0,
+            expectedType: 'specimen',
+            response,
+          })
+        })
+      })
+    })
+    describe('relation cases', () => {
+      beforeAll(() => {
+        const modifiedSimpleDataRelations = getTestData(
+          'simpleDataPhysicalUnitRelations'
+        )
+        modifiedSimpleDataRelations.data.attributes.individualGroup.identifiers[0].identifier.value =
+          '555111'
+
+        return makeTestCall({
+          body: modifiedSimpleDataRelations,
+          operationId: 'createSpecimen',
+        })
+      })
+      it('Succeed with simpleDataPhysicalUnitRelations', () => {
+        const simpleDataPhysicalUnitRelations = getTestData(
+          'simpleDataPhysicalUnitRelations'
+        )
+        return makeTestCall({
+          operationId: 'getSpecimens',
+          queryParams: {
+            'filter[catalogNumber]': '555111',
+          },
+        }).then(response => {
+          expectMultipleResourcesResponse({
+            expectedLength: 1,
+            expectedType: 'specimen',
+            response,
+          })
+          expect(response.data[0].type).toBe('specimen')
+          expect(response.data[0].attributes).toBeTruthy()
+          expect(response.data[0].relationships).toBeTruthy()
+          expect(response.data[0].relationships).toEqual(
+            simpleDataPhysicalUnitRelations.data.relationships
+          )
         })
       })
     })

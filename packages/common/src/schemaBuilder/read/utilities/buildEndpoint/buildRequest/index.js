@@ -1,3 +1,4 @@
+const buildRelationships = require('../buildResponse/buildRelationships')
 const buildRaw = require('./buildRaw')
 /* eslint-disable sort-keys */
 
@@ -8,8 +9,13 @@ module.exports = function createRequest({
   modelReference,
   operationId,
   raw,
+  relations,
   resource,
 }) {
+  const relationships = buildRelationships({
+    relations,
+  })
+
   const name = `${operationId}Request`
   if (raw) {
     return buildRaw({
@@ -49,6 +55,7 @@ module.exports = function createRequest({
                     : {
                         $ref: `__ROOT__${resource}`,
                       },
+                  relationships,
                 },
               },
             },
@@ -86,6 +93,7 @@ module.exports = function createRequest({
                 : {
                     $ref: `__ROOT__${resource}`,
                   },
+              relationships,
             },
           },
         },

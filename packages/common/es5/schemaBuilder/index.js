@@ -7,7 +7,8 @@ var build = require('./build');
 
 function main(_ref) {
   var modelBasePath = _ref.modelBasePath,
-      apiBasePath = _ref.apiBasePath;
+      apiBasePath = _ref.apiBasePath,
+      normalize = _ref.normalize;
 
   var _read = read({
     apiBasePath: apiBasePath,
@@ -28,6 +29,7 @@ function main(_ref) {
     errors: errors,
     info: info,
     models: models,
+    normalize: normalize,
     parameters: parameters,
     security: security,
     servers: servers
@@ -37,6 +39,7 @@ function main(_ref) {
 
   write({
     models: cleanModels,
+    normalize: normalize,
     openApi: openApi,
     setCurrent: true,
     version: '0.1.0'
@@ -44,11 +47,19 @@ function main(_ref) {
 
   write({
     models: cleanModels,
+    normalize: normalize,
     openApi: openApi
   });
 }
 
 main({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
-  modelBasePath: path.join(__dirname, '../../../models/src')
+  modelBasePath: path.join(__dirname, '../../../models/src'),
+  normalize: false
+});
+
+main({
+  apiBasePath: path.join(__dirname, '../../../backend/src'),
+  modelBasePath: path.join(__dirname, '../../../models/src'),
+  normalize: true
 });

@@ -9,7 +9,6 @@ module.exports = function buildEndpoint({
   path,
   pathParams: rawPathParams = [],
   queryParams,
-  relationBase,
   request: requestInput,
   resource,
   response: responseInput = {},
@@ -35,7 +34,6 @@ module.exports = function buildEndpoint({
     resource,
     ...responseInput,
     operationId, // eslint-disable-line
-    relationBase,
     selfLink,
   })
 

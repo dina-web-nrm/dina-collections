@@ -21,8 +21,6 @@ module.exports = function readEndpoints(services) {
   (0, _keys2.default)(services).forEach(function (serviceName) {
     var service = services[serviceName];
     var resources = service.resources || {};
-
-
     (0, _keys2.default)(resources).forEach(function (resourceName) {
       var resource = resources[resourceName];
       var operations = resource.operations || {};

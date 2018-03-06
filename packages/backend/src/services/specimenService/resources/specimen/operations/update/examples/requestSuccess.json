@@ -1,6 +1,24 @@
 {
   "data": {
     "type": "specimen",
+    "relationships": {
+      "physicalUnits": {
+        "data": [
+          {
+            "id": "4234",
+            "type": "physicalUnit"
+          }
+        ]
+      },
+     "featureObservationTypes": {
+        "data": [
+          {
+            "id": "2",
+            "type": "featureObservationType"
+          }
+        ]
+      }
+    },
     "attributes": {
       "individualGroup": {
         "taxonInformation": {
@@ -21,8 +39,8 @@
             "featureObservationAgent": "featureObservationAgent",
             "featureObservationText": "21",
             "featureObservationType": {
-              "id": "3",
-              "typeName": "age"
+              "id": "2",
+              "type": "featureObservationType"
             },
             "methodText": "methodText"
           }
@@ -31,8 +49,8 @@
           {
             "alternateIdentifiersText": "alternateIdentifiersText",
             "physicalUnit": {
-              "normalStorageLocationText": "normalStorageLocationText",
-              "storedUnderTaxonName": "Sorex minutus updated"
+              "id": "4234",
+              "type": "physicalUnit"
             },
             "physicalUnitText": "physicalUnitText"
           }

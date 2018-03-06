@@ -1,53 +1,55 @@
 const createArrayResponse = require('./transformations/createArrayResponse')
-const transformOutput = require('./transformations/outputArray')
+const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
+const extractRelationships = require('./relationshipsUtilities/extractRelationships')
 
 module.exports = function getRelationsHasMany({ operation, models }) {
   const {
     resource,
-    relation: { key: relationKey, resource: relationResource },
+    relation, // : { key: relationKey, resource: relationResource },
   } = operation
 
+  const { key: relationKey, resource: relationResource } = relation
+
   const model = models[resource]
-  const relationModel = models[relationResource]
   if (!model) {
     throw new Error(`Root not provided for ${resource}`)
   }
 
-  if (!relationModel) {
-    throw new Error(`Root not provided for ${relationModel}`)
-  }
-
   return ({ request }) => {
     const { pathParams: { id } } = request
+
+    const relations = relation && {
+      [relationKey]: relation,
+    }
+
+    let include
+    if (relations) {
+      include = buildIncludeArray({ models, relations })
+    }
     return model
       .getOneWhere({
-        include: [
-          {
-            as: relationKey,
-            model: relationModel.Model,
-          },
-        ],
+        include,
         raw: false,
         where: { id },
       })
       .then(result => {
-        if (!(result && result[relationKey])) {
+        if (!result) {
           const error = new Error(
-            `Cant find relation ${relationKey} for ${resource} id ${id} `
+            `Cant find resource: ${resource}, with id: ${id} `
           )
           error.status = 404
           throw error
         }
-
-        return result[relationKey].map(physicalUnit => {
-          return physicalUnit.dataValues
+        const relationships = extractRelationships({
+          fetchedResource: result,
+          relations,
         })
+        return relationships[relationKey].data || []
       })
-      .then(transformOutput)
       .then(items => {
         return createArrayResponse({
           items,
-          type: resource,
+          type: relationResource,
         })
       })
   }

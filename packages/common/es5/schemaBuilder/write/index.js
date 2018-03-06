@@ -14,7 +14,7 @@ var createIndexFile = function createIndexFile(_ref) {
       versionIndexFilePath = _ref.versionIndexFilePath;
 
   var indexFile = available.map(function (availableVersion) {
-    return 'exports[\'' + availableVersion + '\'] = {\n  models: require(\'./' + availableVersion + '/models.json\'),\n  openApi: require(\'./' + availableVersion + '/openApi.json\'),\n}';
+    return 'exports[\'' + availableVersion + '\'] = {\n  models: require(\'./' + availableVersion + '/models.json\'),\n  normalizedModels: require(\'./' + availableVersion + '/normalizedModels.json\'),\n  openApi: require(\'./' + availableVersion + '/openApi.json\'),\n  normalizedOpenApi: require(\'./' + availableVersion + '/normalizedOpenApi.json\'),\n}';
   }).join('\n') + '\n';
 
   fs.writeFileSync(versionIndexFilePath, indexFile);
@@ -59,9 +59,18 @@ var ensureDirectoryExistence = function ensureDirectoryExistence(dirPath) {
   return true;
 };
 
+var getOpenApiFileName = function getOpenApiFileName(normalize) {
+  return normalize ? 'normalizedOpenApi.json' : 'openApi.json';
+};
+
+var getModelsFileName = function getModelsFileName(normalize) {
+  return normalize ? 'normalizedModels.json' : 'models.json';
+};
+
 module.exports = function write() {
   var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
       models = _ref3.models,
+      normalize = _ref3.normalize,
       openApi = _ref3.openApi,
       setCurrent = _ref3.setCurrent,
       _ref3$version = _ref3.version,
@@ -75,9 +84,9 @@ module.exports = function write() {
   ensureDirectoryExistence(versionsBaseDirectory);
   ensureDirectoryExistence(baseDirectory);
 
-  fs.writeFileSync(path.join(baseDirectory, 'openApi.json'), (0, _stringify2.default)(openApi, null, 2));
+  fs.writeFileSync(path.join(baseDirectory, getOpenApiFileName(normalize)), (0, _stringify2.default)(openApi, null, 2));
 
-  fs.writeFileSync(path.join(baseDirectory, 'models.json'), (0, _stringify2.default)(models, null, 2));
+  fs.writeFileSync(path.join(baseDirectory, getModelsFileName(normalize)), (0, _stringify2.default)(models, null, 2));
 
   if (version) {
     updateVersionsIndex({

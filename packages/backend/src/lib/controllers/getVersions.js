@@ -11,6 +11,14 @@ module.exports = function getVersionsById({ operation, models }) {
     const { pathParams: { id } } = request
     return model
       .getWhere({ forceCurrentVersion: false, where: { id } })
+      .then(res => {
+        if (!(res && res.length)) {
+          const error = new Error(`${resource} with id: ${id} not found`)
+          error.status = 404
+          throw error
+        }
+        return res
+      })
       .then(res => transformOutput(res, true))
       .then(items => {
         return createArrayResponse({

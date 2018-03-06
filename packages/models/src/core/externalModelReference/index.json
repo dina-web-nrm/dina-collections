@@ -1,0 +1,9 @@
+{
+  "additionalProperties": false,
+  "description": "A reference to a model owned by another service",
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "type": "string" }
+  },
+  "required": ["id", "type"]
+}

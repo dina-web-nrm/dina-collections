@@ -1,41 +1,23 @@
 /* eslint-disable sort-keys */
-const interpolate = require('../utilities/interpolate')
+const createModel = require('../utilities/createModel')
 
-const createModel = ({ model, modelKey }) => {
-  return interpolate(
-    {
-      ...model,
-      description: model.description || '',
-      id: modelKey,
-    },
-    '__ROOT__',
-    ''
-  )
-}
+const referencePath = ''
 
-const createResponseModel = ({ schema, name }) => {
-  return createModel({
-    model: schema.content,
-    name,
-  })
-}
-
-const createRequestModel = ({ schema, name }) => {
-  return createModel({
-    model: schema.body,
-    name,
-  })
-}
-
-const extractResponseModelsFromEndpoints = endpoints => {
+const extractResponseModelsFromEndpoints = (endpoints, normalize) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { response } = endpoints[endpointName]
     if (response) {
-      const { name, schema } = response
+      const { examples, name, schema } = response
       if (name && schema) {
         return {
           ...responses,
-          [name]: createResponseModel({ schema, name }),
+          [name]: createModel({
+            examples,
+            model: schema.content,
+            name,
+            normalize,
+            referencePath,
+          }),
         }
       }
     }
@@ -44,15 +26,21 @@ const extractResponseModelsFromEndpoints = endpoints => {
   }, {})
 }
 
-const extractRequestModelsFromEndpoints = endpoints => {
+const extractRequestModelsFromEndpoints = (endpoints, normalize) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { request } = endpoints[endpointName]
     if (request) {
-      const { name, schema } = request
+      const { examples, name, schema } = request
       if (name && schema) {
         return {
           ...responses,
-          [name]: createRequestModel({ schema, name }),
+          [name]: createModel({
+            examples,
+            model: schema.body,
+            name,
+            normalize,
+            referencePath,
+          }),
         }
       }
     }
@@ -61,20 +49,23 @@ const extractRequestModelsFromEndpoints = endpoints => {
   }, {})
 }
 
-const extractModelsFromModels = models => {
+const extractModelsFromModels = (models, normalize) => {
   return Object.keys(models).reduce((extractedModels, modelKey) => {
     const model = models[modelKey]
     return {
       ...extractedModels,
-      [modelKey]: createModel({ model, modelKey }),
+      [modelKey]: createModel({ model, modelKey, normalize, referencePath }),
     }
   }, {})
 }
 
-module.exports = function createModels({ endpoints, models }) {
-  const requestModels = extractRequestModelsFromEndpoints(endpoints)
-  const responseModels = extractResponseModelsFromEndpoints(endpoints)
-  const extractedModels = extractModelsFromModels(models)
+module.exports = function createModels({ endpoints, models, normalize }) {
+  const requestModels = extractRequestModelsFromEndpoints(endpoints, normalize)
+  const responseModels = extractResponseModelsFromEndpoints(
+    endpoints,
+    normalize
+  )
+  const extractedModels = extractModelsFromModels(models, normalize)
 
   return {
     ...extractedModels,

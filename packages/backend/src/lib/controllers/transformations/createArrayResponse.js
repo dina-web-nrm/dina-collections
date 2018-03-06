@@ -7,15 +7,20 @@ module.exports = function createArrayResponse({ items, status = 200, type }) {
 
   return {
     data: items.map(item => {
-      const { id, relationships, ...rest } = item
-      return {
+      const { id, relationships, type: itemType, ...rest } = item
+      const itemResponse = {
         attributes: {
           ...rest,
         },
         id: `${id}`,
-        relationships: relationships || undefined,
-        type,
+        type: type || itemType,
       }
+
+      if (relationships) {
+        itemResponse.relationships = relationships
+      }
+
+      return itemResponse
     }),
     meta: {
       internals: {

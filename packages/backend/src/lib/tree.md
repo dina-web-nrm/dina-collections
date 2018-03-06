@@ -1,5 +1,5 @@
 # Tree for lib
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
+Generated at commit: 0cdba0c5f4ea06a7ced2ac77a0218afed1b8acb9
 ## Tree
 ```bash
 ├── app
@@ -40,7 +40,6 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   ├── update.js
 │   ├── updateRelationHasMany.js
 │   └── updateRelationHasOne.js
-├── overview.md
 ├── sequelize
 │   ├── db
 │   │   └── index.js

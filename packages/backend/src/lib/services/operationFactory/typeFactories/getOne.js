@@ -1,5 +1,4 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
-const buildRelations = require('./utilities/buildRelations')
 
 module.exports = function getOne({
   basePath,
@@ -24,11 +23,7 @@ module.exports = function getOne({
     response: {
       examples: exampleResponses,
       format: 'object',
-      relations: buildRelations({
-        basePath,
-        relations,
-        resourcePlural,
-      }),
+      relations,
     },
     summary: `Find ${resource} by id`,
   }
