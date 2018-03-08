@@ -21,3 +21,7 @@ exports.distinguishedUnitObservationType = function distinguishedUnitObservation
     sequelize,
   })
 }
+
+exports.loadInitialData = () => {
+  return true
+}
