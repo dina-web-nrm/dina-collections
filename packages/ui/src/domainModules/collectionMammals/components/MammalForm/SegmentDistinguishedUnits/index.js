@@ -8,7 +8,7 @@ import { Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'physicalUnit',
+  scope: 'distinguishedUnits',
 })
 
 const propTypes = {
@@ -26,12 +26,7 @@ const SegmentDistinguishedUnits = ({ getPath }) => {
           <Field
             autoComplete="off"
             component={Input}
-            label={
-              <ModuleTranslate
-                scope="distinguishedUnits"
-                textKey="physicalUnitText"
-              />
-            }
+            label={<ModuleTranslate textKey="physicalUnitText" />}
             module="collectionMammals"
             name={getPath('physicalUnitText')}
             type="text"
@@ -41,12 +36,7 @@ const SegmentDistinguishedUnits = ({ getPath }) => {
           <Field
             autoComplete="off"
             component={Input}
-            label={
-              <ModuleTranslate
-                scope="distinguishedUnits"
-                textKey="normalStorageLocationText"
-              />
-            }
+            label={<ModuleTranslate textKey="normalStorageLocationText" />}
             module="collectionMammals"
             name={getPath('physicalUnit.normalStorageLocationText')}
             type="text"
@@ -56,12 +46,7 @@ const SegmentDistinguishedUnits = ({ getPath }) => {
           <Field
             autoComplete="off"
             component={Input}
-            label={
-              <ModuleTranslate
-                scope="distinguishedUnits"
-                textKey="alternateIdentifiersText"
-              />
-            }
+            label={<ModuleTranslate textKey="alternateIdentifiersText" />}
             module="collectionMammals"
             name={getPath('alternateIdentifiersText')}
             type="text"
