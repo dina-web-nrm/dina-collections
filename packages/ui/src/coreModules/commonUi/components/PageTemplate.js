@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { Container } from 'semantic-ui-react'
 
 const propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   hasFixedMenu: PropTypes.bool,
 }
 const defaultProps = {
+  children: null,
   hasFixedMenu: false,
 }
 
