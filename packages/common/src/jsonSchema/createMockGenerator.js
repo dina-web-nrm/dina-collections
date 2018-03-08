@@ -1,4 +1,4 @@
-const models = require('../../dist/models.json')
+const models = require('../../dist/normalizedModels.json')
 const createMockDataFromSchema = require('./createMockDataFromSchema')
 
 module.exports = function createMockGenerator({

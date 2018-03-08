@@ -3,7 +3,7 @@
 var _require = require('redux'),
     compose = _require.compose;
 
-var createSchemaValidator = require('../../jsonSchema/createValidator');
+var createSchemaValidator = require('../../jsonSchema/createNormalizedValidator');
 var systemErrorFactory = require('../errorFactories/system');
 var serverErrorFactory = require('../errorFactories/server');
 var ajvErrorMapper = require('../errorMappers/ajv');

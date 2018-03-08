@@ -1,5 +1,4 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
-const buildRelations = require('./utilities/buildRelations')
 
 module.exports = function getMany({
   basePath,
@@ -23,11 +22,7 @@ module.exports = function getMany({
     response: {
       examples: exampleResponses,
       format: 'array',
-      relations: buildRelations({
-        basePath,
-        relations,
-        resourcePlural,
-      }),
+      relations,
     },
     summary: `Find ${resourcePlural}`,
   }

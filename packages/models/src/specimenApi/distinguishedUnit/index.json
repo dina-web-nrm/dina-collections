@@ -19,6 +19,6 @@
       "type": "string",
       "example": "Skin complete, prepared"
     },
-    "physicalUnit": { "$ref": "__ROOT__physicalUnit" }
+    "physicalUnit": { "$ref": "__ROOT__physicalUnit", "x-reference-type": "external" }
   }
 }

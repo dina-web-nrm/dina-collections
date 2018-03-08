@@ -1,6 +1,7 @@
 const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
+const expectSingleResourceResponse = require('../../utilities/test/expectSingleResourceResponse')
 
 const physicalUnitExample = {
   data: {
@@ -41,11 +42,11 @@ apiDescribe('storage', () => {
         body: physicalUnitExample,
         operationId: 'createPhysicalUnit',
         validateOutput: true,
-      }).then(res => {
-        expect(res).toBeTruthy()
-        expect(res.data).toBeTruthy()
-        expect(res.data.type).toBe('physicalUnit')
-        expect(res.data.attributes).toBeTruthy()
+      }).then(response => {
+        expectSingleResourceResponse({
+          expectedType: 'physicalUnit',
+          response,
+        })
       })
     })
   })

@@ -10,10 +10,10 @@ module.exports = {
     {
       type: 'update',
     },
-    {
-      relationKey: 'physicalUnits',
-      type: 'updateRelationHasMany',
-    },
+    // {
+    //   relationKey: 'physicalUnits',
+    //   type: 'updateRelationHasMany',
+    // },
     {
       relationKey: 'physicalUnits',
       type: 'getRelationHasMany',

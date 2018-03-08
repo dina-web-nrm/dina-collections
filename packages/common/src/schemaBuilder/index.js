@@ -3,7 +3,7 @@ const read = require('./read')
 const write = require('./write')
 const build = require('./build')
 
-function main({ modelBasePath, apiBasePath }) {
+function main({ modelBasePath, apiBasePath, normalize }) {
   const {
     apis,
     endpoints,
@@ -23,6 +23,7 @@ function main({ modelBasePath, apiBasePath }) {
     errors,
     info,
     models,
+    normalize,
     parameters,
     security,
     servers,
@@ -30,6 +31,7 @@ function main({ modelBasePath, apiBasePath }) {
 
   write({
     models: cleanModels,
+    normalize,
     openApi,
     setCurrent: true,
     version: '0.1.0',
@@ -37,6 +39,7 @@ function main({ modelBasePath, apiBasePath }) {
 
   write({
     models: cleanModels,
+    normalize,
     openApi,
   })
 }
@@ -44,4 +47,11 @@ function main({ modelBasePath, apiBasePath }) {
 main({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
+  normalize: false,
+})
+
+main({
+  apiBasePath: path.join(__dirname, '../../../backend/src'),
+  modelBasePath: path.join(__dirname, '../../../models/src'),
+  normalize: true,
 })

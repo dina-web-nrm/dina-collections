@@ -1,31 +1,8 @@
-const interpolate = require('../../utilities/interpolate')
+const createModel = require('../../utilities/createModel')
 
-const createModel = (model, examples) => {
-  const cleanedModel = model
-  if (model.modelType) {
-    cleanedModel['x-modelType'] = model.modelType
-    delete cleanedModel.modelType
-  }
-  if (examples) {
-    cleanedModel['x-examples'] = examples
+const referencePath = '#/components/schemas/'
 
-    if (examples.primary) {
-      cleanedModel.example = examples.primary
-    }
-  }
-
-  return interpolate(cleanedModel, '__ROOT__', '#/components/schemas/')
-}
-
-const createResponseObject = (schema, examples) => {
-  return createModel(schema.content, examples)
-}
-
-const createRequestObject = (schema, examples) => {
-  return createModel(schema.body, examples)
-}
-
-const extractResponsesFromEndpoints = endpoints => {
+const extractResponsesFromEndpoints = ({ endpoints, normalize }) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { response } = endpoints[endpointName]
     if (response) {
@@ -33,7 +10,12 @@ const extractResponsesFromEndpoints = endpoints => {
       if (name && schema) {
         return {
           ...responses,
-          [name]: createResponseObject(schema, examples),
+          [name]: createModel({
+            examples,
+            model: schema.content,
+            normalize,
+            referencePath,
+          }),
         }
       }
     }
@@ -42,7 +24,7 @@ const extractResponsesFromEndpoints = endpoints => {
   }, {})
 }
 
-const extractRequestsFromEndpoints = endpoints => {
+const extractRequestsFromEndpoints = ({ endpoints, normalize }) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { request } = endpoints[endpointName]
     if (request) {
@@ -50,7 +32,12 @@ const extractRequestsFromEndpoints = endpoints => {
       if (name && schema) {
         return {
           ...responses,
-          [name]: createRequestObject(schema, examples),
+          [name]: createModel({
+            examples,
+            model: schema.body,
+            normalize,
+            referencePath,
+          }),
         }
       }
     }
@@ -59,10 +46,15 @@ const extractRequestsFromEndpoints = endpoints => {
   }, {})
 }
 
-const extractModelsFromModels = models => {
+const extractModelsFromModels = ({ models, normalize }) => {
   return Object.keys(models).reduce((extractedModels, modelKey) => {
     const model = models[modelKey]
-    const createdModel = createModel(model)
+    const createdModel = createModel({
+      model,
+      normalize,
+      referencePath,
+      removeRelationships: true,
+    })
     return {
       ...extractedModels,
       [modelKey]: createdModel,
@@ -73,11 +65,12 @@ const extractModelsFromModels = models => {
 module.exports = function createOpenApiComponents({
   endpoints,
   models,
+  normalize,
   security,
 }) {
-  const requests = extractRequestsFromEndpoints(endpoints)
-  const responses = extractResponsesFromEndpoints(endpoints)
-  const extractedModels = extractModelsFromModels(models)
+  const requests = extractRequestsFromEndpoints({ endpoints, normalize })
+  const responses = extractResponsesFromEndpoints({ endpoints, normalize })
+  const extractedModels = extractModelsFromModels({ models, normalize })
 
   return {
     schemas: {

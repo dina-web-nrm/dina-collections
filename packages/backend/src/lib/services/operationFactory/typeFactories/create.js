@@ -7,6 +7,7 @@ module.exports = function create({
   operationId,
   queryParams,
   resource,
+  relations,
   resourcePlural,
   ...rest
 }) {
@@ -17,14 +18,17 @@ module.exports = function create({
     operationType: 'create',
     path: `${basePath}/${resourcePlural}`,
     queryParams,
+    relations,
     request: {
       examples: exampleRequests,
       format: 'object',
+      relations,
     },
     resource,
     response: {
       examples: exampleResponses,
       format: 'object',
+      relations,
       status: 201,
     },
     summary: `Create ${resource}`,

@@ -1,5 +1,4 @@
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
-const buildRelations = require('./utilities/buildRelations')
 
 module.exports = function getVersions({
   basePath,
@@ -23,11 +22,7 @@ module.exports = function getVersions({
     response: {
       examples: exampleResponses,
       format: 'array',
-      relations: buildRelations({
-        basePath,
-        relations,
-        resourcePlural,
-      }),
+      relations,
     },
     summary: `Find ${resourcePlural} versions`,
   }

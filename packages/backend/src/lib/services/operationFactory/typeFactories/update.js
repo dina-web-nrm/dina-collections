@@ -6,6 +6,7 @@ module.exports = function update({
   exampleResponses = {},
   queryParams,
   resource,
+  relations,
   resourcePlural,
   ...rest
 }) {
@@ -18,14 +19,17 @@ module.exports = function update({
     path: `${basePath}/${resourcePlural}/{id}`,
     pathParams: ['id'],
     queryParams,
+    relations,
     request: {
       exampleRequests,
       format: 'object',
+      relations,
     },
     resource,
     response: {
       examples: exampleResponses,
       format: 'object',
+      relations,
     },
     summary: `Updates ${resource}`,
   }

@@ -14,34 +14,14 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var interpolate = require('../../utilities/interpolate');
+var createModel = require('../../utilities/createModel');
 
-var createModel = function createModel(model, examples) {
-  var cleanedModel = model;
-  if (model.modelType) {
-    cleanedModel['x-modelType'] = model.modelType;
-    delete cleanedModel.modelType;
-  }
-  if (examples) {
-    cleanedModel['x-examples'] = examples;
+var referencePath = '#/components/schemas/';
 
-    if (examples.primary) {
-      cleanedModel.example = examples.primary;
-    }
-  }
+var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(_ref) {
+  var endpoints = _ref.endpoints,
+      normalize = _ref.normalize;
 
-  return interpolate(cleanedModel, '__ROOT__', '#/components/schemas/');
-};
-
-var createResponseObject = function createResponseObject(schema, examples) {
-  return createModel(schema.content, examples);
-};
-
-var createRequestObject = function createRequestObject(schema, examples) {
-  return createModel(schema.body, examples);
-};
-
-var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(endpoints) {
   return (0, _keys2.default)(endpoints).reduce(function (responses, endpointName) {
     var response = endpoints[endpointName].response;
 
@@ -51,7 +31,12 @@ var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(endpo
           examples = response.examples;
 
       if (name && schema) {
-        return (0, _extends6.default)({}, responses, (0, _defineProperty3.default)({}, name, createResponseObject(schema, examples)));
+        return (0, _extends6.default)({}, responses, (0, _defineProperty3.default)({}, name, createModel({
+          examples: examples,
+          model: schema.content,
+          normalize: normalize,
+          referencePath: referencePath
+        })));
       }
     }
 
@@ -59,7 +44,10 @@ var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(endpo
   }, {});
 };
 
-var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(endpoints) {
+var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(_ref2) {
+  var endpoints = _ref2.endpoints,
+      normalize = _ref2.normalize;
+
   return (0, _keys2.default)(endpoints).reduce(function (responses, endpointName) {
     var request = endpoints[endpointName].request;
 
@@ -69,7 +57,12 @@ var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(endpoin
           examples = request.examples;
 
       if (name && schema) {
-        return (0, _extends6.default)({}, responses, (0, _defineProperty3.default)({}, name, createRequestObject(schema, examples)));
+        return (0, _extends6.default)({}, responses, (0, _defineProperty3.default)({}, name, createModel({
+          examples: examples,
+          model: schema.body,
+          normalize: normalize,
+          referencePath: referencePath
+        })));
       }
     }
 
@@ -77,22 +70,31 @@ var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(endpoin
   }, {});
 };
 
-var extractModelsFromModels = function extractModelsFromModels(models) {
+var extractModelsFromModels = function extractModelsFromModels(_ref3) {
+  var models = _ref3.models,
+      normalize = _ref3.normalize;
+
   return (0, _keys2.default)(models).reduce(function (extractedModels, modelKey) {
     var model = models[modelKey];
-    var createdModel = createModel(model);
+    var createdModel = createModel({
+      model: model,
+      normalize: normalize,
+      referencePath: referencePath,
+      removeRelationships: true
+    });
     return (0, _extends6.default)({}, extractedModels, (0, _defineProperty3.default)({}, modelKey, createdModel));
   }, {});
 };
 
-module.exports = function createOpenApiComponents(_ref) {
-  var endpoints = _ref.endpoints,
-      models = _ref.models,
-      security = _ref.security;
+module.exports = function createOpenApiComponents(_ref4) {
+  var endpoints = _ref4.endpoints,
+      models = _ref4.models,
+      normalize = _ref4.normalize,
+      security = _ref4.security;
 
-  var requests = extractRequestsFromEndpoints(endpoints);
-  var responses = extractResponsesFromEndpoints(endpoints);
-  var extractedModels = extractModelsFromModels(models);
+  var requests = extractRequestsFromEndpoints({ endpoints: endpoints, normalize: normalize });
+  var responses = extractResponsesFromEndpoints({ endpoints: endpoints, normalize: normalize });
+  var extractedModels = extractModelsFromModels({ models: models, normalize: normalize });
 
   return {
     schemas: (0, _extends6.default)({}, extractedModels, requests, responses),

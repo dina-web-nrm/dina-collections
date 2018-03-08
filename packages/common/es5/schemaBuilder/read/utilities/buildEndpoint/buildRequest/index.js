@@ -1,5 +1,6 @@
 'use strict';
 
+var buildRelationships = require('../buildResponse/buildRelationships');
 var buildRaw = require('./buildRaw');
 
 
@@ -10,7 +11,12 @@ module.exports = function createRequest(_ref) {
       modelReference = _ref.modelReference,
       operationId = _ref.operationId,
       raw = _ref.raw,
+      relations = _ref.relations,
       resource = _ref.resource;
+
+  var relationships = buildRelationships({
+    relations: relations
+  });
 
   var name = operationId + 'Request';
   if (raw) {
@@ -48,7 +54,8 @@ module.exports = function createRequest(_ref) {
                   },
                   attributes: modelReference ? undefined : {
                     $ref: '__ROOT__' + resource
-                  }
+                  },
+                  relationships: relationships
                 }
               }
             }
@@ -83,7 +90,8 @@ module.exports = function createRequest(_ref) {
               },
               attributes: modelReference ? undefined : {
                 $ref: '__ROOT__' + resource
-              }
+              },
+              relationships: relationships
             }
           }
         }

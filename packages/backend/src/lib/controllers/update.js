@@ -3,7 +3,7 @@ const transformInput = require('./transformations/inputObject')
 const transformOutput = require('./transformations/outputObject')
 
 module.exports = function update({ operation, models }) {
-  const { resource } = operation
+  const { resource, relations } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -14,7 +14,7 @@ module.exports = function update({ operation, models }) {
 
     return model
       .update({
-        doc: transformInput(input),
+        doc: transformInput({ input, relations }),
         id,
       })
       .then(transformOutput)

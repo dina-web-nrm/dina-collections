@@ -84,9 +84,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -140,9 +138,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -198,9 +194,10 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
+              "enum": [
+                "primary"
+              ],
               "type": "string"
             }
           },
@@ -254,9 +251,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -371,9 +366,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -427,9 +420,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -485,9 +476,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -541,9 +530,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -599,9 +586,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -655,9 +640,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -713,9 +696,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -779,9 +760,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -827,9 +806,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -883,9 +860,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -941,9 +916,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1007,9 +980,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1055,9 +1026,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1111,9 +1080,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1169,9 +1136,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1235,9 +1200,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1283,9 +1246,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1339,9 +1300,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1397,9 +1356,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1519,9 +1476,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1567,9 +1522,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1643,9 +1596,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1701,9 +1652,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1767,9 +1716,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1807,6 +1754,246 @@
         ]
       }
     },
+    "/api/specimen/v01/specimens/{id}/relationships/physicalUnits": {
+      "patch": {
+        "operationId": "updateSpecimenPhysicalUnits",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update specimen -> physicalUnits",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "get": {
+        "operationId": "getSpecimenPhysicalUnits",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenPhysicalUnitsResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find specimen -> physicalUnits",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/specimens/{id}/relationships/featureObservationTypes": {
+      "patch": {
+        "operationId": "updateSpecimenFeatureObservationTypes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateSpecimenFeatureObservationTypesRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenFeatureObservationTypesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update specimen -> featureObservationTypes",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "get": {
+        "operationId": "getSpecimenFeatureObservationTypes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenFeatureObservationTypesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find specimen -> featureObservationTypes",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
     "/api/specimen/v01/specimens/{id}/versions/{versionId}": {
       "get": {
         "description": "The id of the returned resource is the versionId and not the ordinary id",
@@ -1836,9 +2023,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1894,9 +2079,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -1968,9 +2151,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2024,9 +2205,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2082,9 +2261,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2148,9 +2325,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2206,9 +2381,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2272,9 +2445,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2341,9 +2512,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2399,9 +2568,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2447,9 +2614,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2503,9 +2668,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2561,9 +2724,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2627,9 +2788,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2668,72 +2827,6 @@
       }
     },
     "/api/storage/v01/storageLocations/{id}/relationships/physicalUnits": {
-      "patch": {
-        "operationId": "updateStorageLocationPhysicalUnits",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "storageLocation id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
-            "schema": {
-              "default": "primary",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": "false",
-            "schema": {
-              "default": "false",
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateStorageLocationPhysicalUnitsRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateStorageLocationPhysicalUnitsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Update storageLocation -> physicalUnits",
-        "tags": [
-          "storageService"
-        ]
-      },
       "get": {
         "operationId": "getStorageLocationPhysicalUnits",
         "parameters": [
@@ -2751,9 +2844,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2833,9 +2924,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2881,9 +2970,7 @@
             "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "example": "primary",
             "schema": {
-              "default": "primary",
               "type": "string"
             }
           },
@@ -2960,6 +3047,42 @@
           }
         },
         "description": "### Definition\n\nInformation pertaining to a specific date or a date range.\n\n### Note(s)\n\nIncludes for example verbatim information about when something happened.\n",
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "externalModelReference": {
+        "additionalProperties": false,
+        "description": "A reference to a model owned by another service",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type"
+        ],
+        "x-category": "core",
+        "x-modelType": "model"
+      },
+      "internalModelReference": {
+        "additionalProperties": false,
+        "description": "A reference to a model owned by the same service but stored in normalized form",
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "uuid",
+          "type"
+        ],
         "x-category": "core",
         "x-modelType": "model"
       },
@@ -3092,7 +3215,8 @@
           }
         },
         "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "curatedListType": {
         "additionalProperties": false,
@@ -3109,7 +3233,8 @@
           }
         },
         "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "distinguishedUnitObservationType": {
         "additionalProperties": false,
@@ -3141,7 +3266,8 @@
           "typeName"
         ],
         "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "featureObservationType": {
         "additionalProperties": false,
@@ -3348,7 +3474,8 @@
           }
         },
         "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "deathCircumstance": {
         "additionalProperties": false,
@@ -3459,7 +3586,8 @@
           }
         },
         "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "event": {
         "additionalProperties": false,
@@ -3668,9 +3796,6 @@
           "individualGroup": {
             "$ref": "#/components/schemas/individualGroup"
           },
-          "physicalUnits": {
-            "$ref": "#/components/schemas/physicalUnit"
-          },
           "distinguishedUnits": {
             "type": "array",
             "items": {
@@ -3782,7 +3907,8 @@
           }
         },
         "x-category": "storageApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "taxon": {
         "additionalProperties": false,
@@ -3902,7 +4028,8 @@
           "valid_name"
         ],
         "x-category": "taxonomyApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "description": ""
       },
       "createAgentRequest": {
         "additionalProperties": false,
@@ -3949,7 +4076,8 @@
               "name": "orvar"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateAgentRequest": {
         "additionalProperties": false,
@@ -3978,7 +4106,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "loginUserRequest": {
         "type": "object",
@@ -4006,7 +4135,8 @@
           "grant_type",
           "password",
           "username"
-        ]
+        ],
+        "description": ""
       },
       "createExpeditionRequest": {
         "additionalProperties": false,
@@ -4049,7 +4179,8 @@
             "type": "expedition",
             "attributes": {}
           }
-        }
+        },
+        "description": ""
       },
       "updateExpeditionRequest": {
         "additionalProperties": false,
@@ -4078,7 +4209,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createDistinguishedUnitObservationTypeRequest": {
         "additionalProperties": false,
@@ -4125,7 +4257,8 @@
               "typeName": "sex"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateDistinguishedUnitObservationTypeRequest": {
         "additionalProperties": false,
@@ -4154,7 +4287,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createFeatureObservationTypeRequest": {
         "additionalProperties": false,
@@ -4203,7 +4337,8 @@
               "typeName": "string"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateFeatureObservationTypeRequest": {
         "additionalProperties": false,
@@ -4232,7 +4367,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createCatalogNumberRequest": {
         "additionalProperties": false,
@@ -4285,7 +4421,8 @@
               "value": "58412812"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateCatalogNumberRequest": {
         "additionalProperties": false,
@@ -4314,7 +4451,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createCuratedLocalityRequest": {
         "additionalProperties": false,
@@ -4340,6 +4478,100 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/curatedLocality"
+              },
+              "relationships": {
+                "properties": {
+                  "children": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "descendants": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parent": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               }
             }
           }
@@ -4397,7 +4629,8 @@
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateCuratedLocalityRequest": {
         "additionalProperties": false,
@@ -4423,10 +4656,105 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/curatedLocality"
+              },
+              "relationships": {
+                "properties": {
+                  "children": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "descendants": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parent": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               }
             }
           }
-        }
+        },
+        "description": ""
       },
       "createSpecimenRequest": {
         "additionalProperties": false,
@@ -4452,6 +4780,63 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/specimen"
+              },
+              "relationships": {
+                "properties": {
+                  "featureObservationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "featureObservationType"
+                              ],
+                              "example": "featureObservationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               }
             }
           }
@@ -4460,6 +4845,24 @@
           "fullFormExample": {
             "data": {
               "type": "specimen",
+              "relationships": {
+                "physicalUnits": {
+                  "data": [
+                    {
+                      "id": "2234",
+                      "type": "physicalUnit"
+                    }
+                  ]
+                },
+                "featureObservationTypes": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "type": "featureObservationType"
+                    }
+                  ]
+                }
+              },
               "attributes": {
                 "individualGroup": {
                   "taxonInformation": {
@@ -4480,8 +4883,8 @@
                       "featureObservationAgent": "featureObservationAgent",
                       "featureObservationText": "21",
                       "featureObservationType": {
-                        "id": "3",
-                        "typeName": "age"
+                        "id": "1",
+                        "type": "featureObservationType"
                       },
                       "methodText": "methodText"
                     }
@@ -4490,8 +4893,8 @@
                     {
                       "alternateIdentifiersText": "alternateIdentifiersText",
                       "physicalUnit": {
-                        "normalStorageLocationText": "normalStorageLocationText",
-                        "storedUnderTaxonName": "Sorex minutus"
+                        "id": "2234",
+                        "type": "physicalUnit"
                       },
                       "physicalUnitText": "physicalUnitText"
                     }
@@ -4564,6 +4967,24 @@
           "primary": {
             "data": {
               "type": "specimen",
+              "relationships": {
+                "physicalUnits": {
+                  "data": [
+                    {
+                      "id": "2234",
+                      "type": "physicalUnit"
+                    }
+                  ]
+                },
+                "featureObservationTypes": {
+                  "data": [
+                    {
+                      "id": "2",
+                      "type": "featureObservationType"
+                    }
+                  ]
+                }
+              },
               "attributes": {
                 "individualGroup": {
                   "taxonInformation": {},
@@ -4656,8 +5077,8 @@
                       },
                       "featureObservationText": "10 years",
                       "featureObservationType": {
-                        "typeName": "string",
-                        "id": "string"
+                        "id": "2",
+                        "type": "featureObservationType"
                       },
                       "methodText": "Known age"
                     }
@@ -4731,16 +5152,8 @@
                       "id": "string",
                       "physicalUnitText": "Skin complete, prepared",
                       "physicalUnit": {
-                        "id": "string",
-                        "distinguishedUnits": [
-                          null
-                        ],
-                        "normalStorageLocationText": "string",
-                        "storedUnderTaxonName": "Sorex minutus",
-                        "storageLocation": {
-                          "id": "string",
-                          "locationText": "string"
-                        }
+                        "id": "2234",
+                        "type": "physicalUnit"
                       }
                     }
                   ],
@@ -4754,6 +5167,24 @@
         "example": {
           "data": {
             "type": "specimen",
+            "relationships": {
+              "physicalUnits": {
+                "data": [
+                  {
+                    "id": "2234",
+                    "type": "physicalUnit"
+                  }
+                ]
+              },
+              "featureObservationTypes": {
+                "data": [
+                  {
+                    "id": "2",
+                    "type": "featureObservationType"
+                  }
+                ]
+              }
+            },
             "attributes": {
               "individualGroup": {
                 "taxonInformation": {},
@@ -4846,8 +5277,8 @@
                     },
                     "featureObservationText": "10 years",
                     "featureObservationType": {
-                      "typeName": "string",
-                      "id": "string"
+                      "id": "2",
+                      "type": "featureObservationType"
                     },
                     "methodText": "Known age"
                   }
@@ -4921,16 +5352,8 @@
                     "id": "string",
                     "physicalUnitText": "Skin complete, prepared",
                     "physicalUnit": {
-                      "id": "string",
-                      "distinguishedUnits": [
-                        null
-                      ],
-                      "normalStorageLocationText": "string",
-                      "storedUnderTaxonName": "Sorex minutus",
-                      "storageLocation": {
-                        "id": "string",
-                        "locationText": "string"
-                      }
+                      "id": "2234",
+                      "type": "physicalUnit"
                     }
                   }
                 ],
@@ -4939,7 +5362,8 @@
               "version": 0
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateSpecimenRequest": {
         "additionalProperties": false,
@@ -4965,192 +5389,70 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/specimen"
-              }
-            }
-          }
-        }
-      },
-      "createPhysicalUnitRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
               },
-              "type": {
-                "default": "physicalUnit",
-                "enum": [
-                  "physicalUnit"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "physicalUnit",
-              "attributes": {
-                "normalStorageLocationText": "string",
-                "storedUnderTaxonName": "Sorex minutus"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "physicalUnit",
-            "attributes": {
-              "normalStorageLocationText": "string",
-              "storedUnderTaxonName": "Sorex minutus"
-            }
-          }
-        }
-      },
-      "updatePhysicalUnitRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "physicalUnit",
-                "enum": [
-                  "physicalUnit"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
-              }
-            }
-          }
-        }
-      },
-      "updatePhysicalUnitStorageLocationRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "storageLocation",
-                "enum": [
-                  "storageLocation"
-                ],
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-      "createStorageLocationRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "storageLocation",
-                "enum": [
-                  "storageLocation"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/storageLocation"
+              "relationships": {
+                "properties": {
+                  "featureObservationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "featureObservationType"
+                              ],
+                              "example": "featureObservationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               }
             }
           }
         },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "storageLocation",
-              "attributes": {
-                "locationText": "string"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "storageLocation",
-            "attributes": {
-              "locationText": "string"
-            }
-          }
-        }
+        "description": ""
       },
-      "updateStorageLocationRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "storageLocation",
-                "enum": [
-                  "storageLocation"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/storageLocation"
-              }
-            }
-          }
-        }
-      },
-      "updateStorageLocationPhysicalUnitsRequest": {
+      "updateSpecimenPhysicalUnitsRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -5177,7 +5479,369 @@
               }
             }
           }
-        }
+        },
+        "description": ""
+      },
+      "updateSpecimenFeatureObservationTypesRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "default": "featureObservationType",
+                  "enum": [
+                    "featureObservationType"
+                  ],
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                }
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "createPhysicalUnitRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "physicalUnit",
+                "enum": [
+                  "physicalUnit"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/physicalUnit"
+              },
+              "relationships": {
+                "properties": {
+                  "storageLocation": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "storageLocation"
+                                ],
+                                "example": "storageLocation",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "type": "physicalUnit",
+              "attributes": {
+                "normalStorageLocationText": "string",
+                "storedUnderTaxonName": "Sorex minutus"
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "type": "physicalUnit",
+            "attributes": {
+              "normalStorageLocationText": "string",
+              "storedUnderTaxonName": "Sorex minutus"
+            }
+          }
+        },
+        "description": ""
+      },
+      "updatePhysicalUnitRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "physicalUnit",
+                "enum": [
+                  "physicalUnit"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/physicalUnit"
+              },
+              "relationships": {
+                "properties": {
+                  "storageLocation": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "storageLocation"
+                                ],
+                                "example": "storageLocation",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "updatePhysicalUnitStorageLocationRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "storageLocation",
+                "enum": [
+                  "storageLocation"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "createStorageLocationRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "storageLocation",
+                "enum": [
+                  "storageLocation"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/storageLocation"
+              },
+              "relationships": {
+                "properties": {
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "type": "storageLocation",
+              "attributes": {
+                "locationText": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "type": "storageLocation",
+            "attributes": {
+              "locationText": "string"
+            }
+          }
+        },
+        "description": ""
+      },
+      "updateStorageLocationRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "storageLocation",
+                "enum": [
+                  "storageLocation"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/storageLocation"
+              },
+              "relationships": {
+                "properties": {
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "description": ""
       },
       "createAgentResponse": {
         "additionalProperties": false,
@@ -5191,10 +5855,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "agent",
@@ -5222,7 +5882,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getAgentResponse": {
         "additionalProperties": false,
@@ -5236,10 +5897,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "agent",
@@ -5284,7 +5941,8 @@
               "name": "Ingimar"
             }
           }
-        }
+        },
+        "description": ""
       },
       "updateAgentResponse": {
         "additionalProperties": false,
@@ -5298,10 +5956,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "agent",
@@ -5329,7 +5983,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getAgentsResponse": {
         "additionalProperties": false,
@@ -5345,10 +6000,6 @@
                 "id": {
                   "example": "1234",
                   "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
                 },
                 "type": {
                   "default": "agent",
@@ -5378,7 +6029,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getUserResponse": {
         "type": "object",
@@ -5412,7 +6064,8 @@
         "required": [
           "email",
           "preferred_username"
-        ]
+        ],
+        "description": ""
       },
       "loginUserResponse": {
         "type": "object",
@@ -5449,7 +6102,8 @@
         },
         "required": [
           "access_token"
-        ]
+        ],
+        "description": ""
       },
       "createExpeditionResponse": {
         "additionalProperties": false,
@@ -5463,10 +6117,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "expedition",
@@ -5494,7 +6144,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getExpeditionResponse": {
         "additionalProperties": false,
@@ -5509,10 +6160,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "expedition",
                 "type": "string"
@@ -5539,7 +6186,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateExpeditionResponse": {
         "additionalProperties": false,
@@ -5554,10 +6202,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "expedition",
                 "type": "string"
@@ -5584,7 +6228,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getExpeditionsResponse": {
         "additionalProperties": false,
@@ -5600,10 +6245,6 @@
                 "id": {
                   "example": "1234",
                   "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
                 },
                 "type": {
                   "default": "expedition",
@@ -5633,7 +6274,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
@@ -5647,10 +6289,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "distinguishedUnitObservationType",
@@ -5678,7 +6316,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
@@ -5693,10 +6332,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "distinguishedUnitObservationType",
                 "type": "string"
@@ -5723,7 +6358,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getDistinguishedUnitObservationTypeResponse": {
         "additionalProperties": false,
@@ -5738,10 +6374,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "distinguishedUnitObservationType",
                 "type": "string"
@@ -5768,7 +6400,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getDistinguishedUnitObservationTypesResponse": {
         "additionalProperties": false,
@@ -5784,10 +6417,6 @@
                 "id": {
                   "example": "1234",
                   "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
                 },
                 "type": {
                   "default": "distinguishedUnitObservationType",
@@ -5817,7 +6446,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createFeatureObservationTypeResponse": {
         "additionalProperties": false,
@@ -5831,10 +6461,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "featureObservationType",
@@ -5862,7 +6488,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateFeatureObservationTypeResponse": {
         "additionalProperties": false,
@@ -5877,10 +6504,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "featureObservationType",
                 "type": "string"
@@ -5907,7 +6530,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getFeatureObservationTypeResponse": {
         "additionalProperties": false,
@@ -5922,10 +6546,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "featureObservationType",
                 "type": "string"
@@ -5952,7 +6572,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getFeatureObservationTypesResponse": {
         "additionalProperties": false,
@@ -5968,10 +6589,6 @@
                 "id": {
                   "example": "1234",
                   "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
                 },
                 "type": {
                   "default": "featureObservationType",
@@ -6001,7 +6618,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createCatalogNumberResponse": {
         "additionalProperties": false,
@@ -6015,10 +6633,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "catalogNumber",
@@ -6046,7 +6660,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateCatalogNumberResponse": {
         "additionalProperties": false,
@@ -6061,10 +6676,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "catalogNumber",
                 "type": "string"
@@ -6091,7 +6702,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getCatalogNumberResponse": {
         "additionalProperties": false,
@@ -6106,10 +6718,6 @@
                 "example": "1234",
                 "type": "string"
               },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
               "type": {
                 "default": "catalogNumber",
                 "type": "string"
@@ -6136,7 +6744,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getCatalogNumbersResponse": {
         "additionalProperties": false,
@@ -6152,10 +6761,6 @@
                 "id": {
                   "example": "1234",
                   "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
                 },
                 "type": {
                   "default": "catalogNumber",
@@ -6185,7 +6790,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createCuratedLocalityResponse": {
         "additionalProperties": false,
@@ -6201,7 +6807,97 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
+                "properties": {
+                  "children": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "descendants": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parent": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
                 "type": "object"
               },
               "type": {
@@ -6230,7 +6926,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateCuratedLocalityResponse": {
         "additionalProperties": false,
@@ -6246,62 +6943,22 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "curatedLocality",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getCuratedLocalityResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
                 "properties": {
                   "children": {
+                    "additionalProperties": false,
                     "properties": {
                       "data": {
                         "items": {
+                          "additionalProperties": false,
                           "properties": {
                             "id": {
                               "example": "1234",
                               "type": "string"
                             },
                             "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
                               "example": "curatedLocality",
                               "type": "string"
                             }
@@ -6309,30 +6966,25 @@
                           "type": "object"
                         },
                         "type": "array"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
                       }
                     },
                     "type": "object"
                   },
                   "descendants": {
+                    "additionalProperties": false,
                     "properties": {
                       "data": {
                         "items": {
+                          "additionalProperties": false,
                           "properties": {
                             "id": {
                               "example": "1234",
                               "type": "string"
                             },
                             "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
                               "example": "curatedLocality",
                               "type": "string"
                             }
@@ -6340,46 +6992,45 @@
                           "type": "object"
                         },
                         "type": "array"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
                       }
                     },
                     "type": "object"
                   },
                   "parent": {
-                    "properties": {
-                      "data": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
                         "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "example": "curatedLocality",
-                            "type": "string"
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
                           }
                         },
                         "type": "object"
                       },
-                      "links": {
+                      {
+                        "additionalProperties": false,
                         "properties": {
-                          "self": {
-                            "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
-                            "type": "string",
-                            "x-faker": "internet.url"
+                          "data": {
+                            "type": "null"
                           }
                         },
                         "type": "object"
                       }
-                    },
+                    ],
                     "type": "object"
                   }
                 },
@@ -6411,7 +7062,144 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
+      },
+      "getCuratedLocalityResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "children": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "descendants": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "parent": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": {
+                "default": "curatedLocality",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
       },
       "getCuratedLocalitiesResponse": {
         "additionalProperties": false,
@@ -6431,15 +7219,20 @@
                 "relationships": {
                   "properties": {
                     "children": {
+                      "additionalProperties": false,
                       "properties": {
                         "data": {
                           "items": {
+                            "additionalProperties": false,
                             "properties": {
                               "id": {
                                 "example": "1234",
                                 "type": "string"
                               },
                               "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
                                 "example": "curatedLocality",
                                 "type": "string"
                               }
@@ -6447,30 +7240,25 @@
                             "type": "object"
                           },
                           "type": "array"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/children",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
                         }
                       },
                       "type": "object"
                     },
                     "descendants": {
+                      "additionalProperties": false,
                       "properties": {
                         "data": {
                           "items": {
+                            "additionalProperties": false,
                             "properties": {
                               "id": {
                                 "example": "1234",
                                 "type": "string"
                               },
                               "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
                                 "example": "curatedLocality",
                                 "type": "string"
                               }
@@ -6478,46 +7266,45 @@
                             "type": "object"
                           },
                           "type": "array"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/descendants",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
                         }
                       },
                       "type": "object"
                     },
                     "parent": {
-                      "properties": {
-                        "data": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
                           "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "example": "curatedLocality",
-                              "type": "string"
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "curatedLocality"
+                                  ],
+                                  "example": "curatedLocality",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
                             }
                           },
                           "type": "object"
                         },
-                        "links": {
+                        {
+                          "additionalProperties": false,
                           "properties": {
-                            "self": {
-                              "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
-                              "type": "string",
-                              "x-faker": "internet.url"
+                            "data": {
+                              "type": "null"
                             }
                           },
                           "type": "object"
                         }
-                      },
+                      ],
                       "type": "object"
                     }
                   },
@@ -6551,7 +7338,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createSpecimenResponse": {
         "additionalProperties": false,
@@ -6567,7 +7355,60 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
+                "properties": {
+                  "featureObservationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "featureObservationType"
+                              ],
+                              "example": "featureObservationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
                 "type": "object"
               },
               "type": {
@@ -6596,7 +7437,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateSpecimenResponse": {
         "additionalProperties": false,
@@ -6612,62 +7454,48 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "specimen",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getSpecimenResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/specimen"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "featureObservationTypes": {
+                    "additionalProperties": false,
                     "properties": {
                       "data": {
                         "items": {
+                          "additionalProperties": false,
                           "properties": {
                             "id": {
                               "example": "1234",
                               "type": "string"
                             },
                             "type": {
+                              "enum": [
+                                "featureObservationType"
+                              ],
+                              "example": "featureObservationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
                               "example": "physicalUnit",
                               "type": "string"
                             }
@@ -6675,16 +7503,6 @@
                           "type": "object"
                         },
                         "type": "array"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
                       }
                     },
                     "type": "object"
@@ -6718,7 +7536,291 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
+      },
+      "updateSpecimenPhysicalUnitsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/specimen"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "specimen",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getSpecimenPhysicalUnitsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/physicalUnit"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "physicalUnit",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "updateSpecimenFeatureObservationTypesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/specimen"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "specimen",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/featureObservationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getSpecimenFeatureObservationTypesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/featureObservationType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "featureObservationType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/featureObservationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getSpecimenResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/specimen"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "featureObservationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "featureObservationType"
+                              ],
+                              "example": "featureObservationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": {
+                "default": "specimen",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimensResponse": {
         "additionalProperties": false,
@@ -6737,16 +7839,47 @@
                 },
                 "relationships": {
                   "properties": {
-                    "physicalUnits": {
+                    "featureObservationTypes": {
+                      "additionalProperties": false,
                       "properties": {
                         "data": {
                           "items": {
+                            "additionalProperties": false,
                             "properties": {
                               "id": {
                                 "example": "1234",
                                 "type": "string"
                               },
                               "type": {
+                                "enum": [
+                                  "featureObservationType"
+                                ],
+                                "example": "featureObservationType",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "physicalUnits": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "physicalUnit"
+                                ],
                                 "example": "physicalUnit",
                                 "type": "string"
                               }
@@ -6754,16 +7887,6 @@
                             "type": "object"
                           },
                           "type": "array"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -6799,7 +7922,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimenVersionResponse": {
         "additionalProperties": false,
@@ -6816,16 +7940,47 @@
               },
               "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "featureObservationTypes": {
+                    "additionalProperties": false,
                     "properties": {
                       "data": {
                         "items": {
+                          "additionalProperties": false,
                           "properties": {
                             "id": {
                               "example": "1234",
                               "type": "string"
                             },
                             "type": {
+                              "enum": [
+                                "featureObservationType"
+                              ],
+                              "example": "featureObservationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
                               "example": "physicalUnit",
                               "type": "string"
                             }
@@ -6833,16 +7988,6 @@
                           "type": "object"
                         },
                         "type": "array"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
                       }
                     },
                     "type": "object"
@@ -6876,7 +8021,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getSpecimenVersionsResponse": {
         "additionalProperties": false,
@@ -6895,16 +8041,47 @@
                 },
                 "relationships": {
                   "properties": {
-                    "physicalUnits": {
+                    "featureObservationTypes": {
+                      "additionalProperties": false,
                       "properties": {
                         "data": {
                           "items": {
+                            "additionalProperties": false,
                             "properties": {
                               "id": {
                                 "example": "1234",
                                 "type": "string"
                               },
                               "type": {
+                                "enum": [
+                                  "featureObservationType"
+                                ],
+                                "example": "featureObservationType",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "physicalUnits": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "physicalUnit"
+                                ],
                                 "example": "physicalUnit",
                                 "type": "string"
                               }
@@ -6912,16 +8089,6 @@
                             "type": "object"
                           },
                           "type": "array"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -6957,7 +8124,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getStatusResponse": {
         "type": "object",
@@ -6974,7 +8142,8 @@
           "meta": {
             "type": "object"
           }
-        }
+        },
+        "description": ""
       },
       "createPhysicalUnitResponse": {
         "additionalProperties": false,
@@ -6990,7 +8159,45 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
+                "properties": {
+                  "storageLocation": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "storageLocation"
+                                ],
+                                "example": "storageLocation",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
                 "type": "object"
               },
               "type": {
@@ -7019,7 +8226,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updatePhysicalUnitResponse": {
         "additionalProperties": false,
@@ -7035,168 +8243,42 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "physicalUnit",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "updatePhysicalUnitStorageLocationResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "physicalUnit",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getPhysicalUnitStorageLocationResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/storageLocation"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "storageLocation",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getPhysicalUnitResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
                 "properties": {
                   "storageLocation": {
-                    "properties": {
-                      "data": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
                         "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "example": "storageLocation",
-                            "type": "string"
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "storageLocation"
+                                ],
+                                "example": "storageLocation",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
                           }
                         },
                         "type": "object"
                       },
-                      "links": {
+                      {
+                        "additionalProperties": false,
                         "properties": {
-                          "self": {
-                            "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
-                            "type": "string",
-                            "x-faker": "internet.url"
+                          "data": {
+                            "type": "null"
                           }
                         },
                         "type": "object"
                       }
-                    },
+                    ],
                     "type": "object"
                   }
                 },
@@ -7228,7 +8310,176 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
+      },
+      "updatePhysicalUnitStorageLocationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/physicalUnit"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "physicalUnit",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getPhysicalUnitStorageLocationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/storageLocation"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "storageLocation",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getPhysicalUnitResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/physicalUnit"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "storageLocation": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "storageLocation"
+                                ],
+                                "example": "storageLocation",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": {
+                "default": "physicalUnit",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/physicalUnits/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitsResponse": {
         "additionalProperties": false,
@@ -7248,31 +8499,40 @@
                 "relationships": {
                   "properties": {
                     "storageLocation": {
-                      "properties": {
-                        "data": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
                           "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "example": "storageLocation",
-                              "type": "string"
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "storageLocation"
+                                  ],
+                                  "example": "storageLocation",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
                             }
                           },
                           "type": "object"
                         },
-                        "links": {
+                        {
+                          "additionalProperties": false,
                           "properties": {
-                            "self": {
-                              "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
-                              "type": "string",
-                              "x-faker": "internet.url"
+                            "data": {
+                              "type": "null"
                             }
                           },
                           "type": "object"
                         }
-                      },
+                      ],
                       "type": "object"
                     }
                   },
@@ -7306,7 +8566,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitVersionResponse": {
         "additionalProperties": false,
@@ -7324,31 +8585,40 @@
               "relationships": {
                 "properties": {
                   "storageLocation": {
-                    "properties": {
-                      "data": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
                         "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "example": "storageLocation",
-                            "type": "string"
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "storageLocation"
+                                ],
+                                "example": "storageLocation",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
                           }
                         },
                         "type": "object"
                       },
-                      "links": {
+                      {
+                        "additionalProperties": false,
                         "properties": {
-                          "self": {
-                            "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
-                            "type": "string",
-                            "x-faker": "internet.url"
+                          "data": {
+                            "type": "null"
                           }
                         },
                         "type": "object"
                       }
-                    },
+                    ],
                     "type": "object"
                   }
                 },
@@ -7380,7 +8650,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getPhysicalUnitVersionsResponse": {
         "additionalProperties": false,
@@ -7400,31 +8671,40 @@
                 "relationships": {
                   "properties": {
                     "storageLocation": {
-                      "properties": {
-                        "data": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
                           "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "example": "storageLocation",
-                              "type": "string"
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "storageLocation"
+                                  ],
+                                  "example": "storageLocation",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
                             }
                           },
                           "type": "object"
                         },
-                        "links": {
+                        {
+                          "additionalProperties": false,
                           "properties": {
-                            "self": {
-                              "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
-                              "type": "string",
-                              "x-faker": "internet.url"
+                            "data": {
+                              "type": "null"
                             }
                           },
                           "type": "object"
                         }
-                      },
+                      ],
                       "type": "object"
                     }
                   },
@@ -7458,7 +8738,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "createStorageLocationResponse": {
         "additionalProperties": false,
@@ -7474,7 +8755,34 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
+                "properties": {
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
                 "type": "object"
               },
               "type": {
@@ -7503,7 +8811,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "updateStorageLocationResponse": {
         "additionalProperties": false,
@@ -7519,160 +8828,22 @@
                 "type": "string"
               },
               "relationships": {
-                "properties": {},
-                "type": "object"
-              },
-              "type": {
-                "default": "storageLocation",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/storage/v01/storageLocations/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "updateStorageLocationPhysicalUnitsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/storageLocation"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "storageLocation",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getStorageLocationPhysicalUnitsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
-                },
-                "type": {
-                  "default": "physicalUnit",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {}
-      },
-      "getStorageLocationResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/storageLocation"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "relationships": {
                 "properties": {
                   "physicalUnits": {
+                    "additionalProperties": false,
                     "properties": {
                       "data": {
                         "items": {
+                          "additionalProperties": false,
                           "properties": {
                             "id": {
                               "example": "1234",
                               "type": "string"
                             },
                             "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
                               "example": "physicalUnit",
                               "type": "string"
                             }
@@ -7680,16 +8851,6 @@
                           "type": "object"
                         },
                         "type": "array"
-                      },
-                      "links": {
-                        "properties": {
-                          "self": {
-                            "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
-                            "type": "string",
-                            "x-faker": "internet.url"
-                          }
-                        },
-                        "type": "object"
                       }
                     },
                     "type": "object"
@@ -7723,7 +8884,127 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
+      },
+      "getStorageLocationPhysicalUnitsResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/physicalUnit"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "physicalUnit",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getStorageLocationResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/storageLocation"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "physicalUnits": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "physicalUnit"
+                              ],
+                              "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
+              "type": {
+                "default": "storageLocation",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/storage/v01/storageLocations/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
       },
       "getStorageLocationsResponse": {
         "additionalProperties": false,
@@ -7743,15 +9024,20 @@
                 "relationships": {
                   "properties": {
                     "physicalUnits": {
+                      "additionalProperties": false,
                       "properties": {
                         "data": {
                           "items": {
+                            "additionalProperties": false,
                             "properties": {
                               "id": {
                                 "example": "1234",
                                 "type": "string"
                               },
                               "type": {
+                                "enum": [
+                                  "physicalUnit"
+                                ],
                                 "example": "physicalUnit",
                                 "type": "string"
                               }
@@ -7759,16 +9045,6 @@
                             "type": "object"
                           },
                           "type": "array"
-                        },
-                        "links": {
-                          "properties": {
-                            "self": {
-                              "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
-                              "type": "string",
-                              "x-faker": "internet.url"
-                            }
-                          },
-                          "type": "object"
                         }
                       },
                       "type": "object"
@@ -7804,7 +9080,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getTaxonByIdResponse": {
         "additionalProperties": false,
@@ -7818,10 +9095,6 @@
               "id": {
                 "example": "1234",
                 "type": "string"
-              },
-              "relationships": {
-                "properties": {},
-                "type": "object"
               },
               "type": {
                 "default": "taxon",
@@ -7849,7 +9122,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       },
       "getTaxaByNameResponse": {
         "additionalProperties": false,
@@ -7865,10 +9139,6 @@
                 "id": {
                   "example": "1234",
                   "type": "string"
-                },
-                "relationships": {
-                  "properties": {},
-                  "type": "object"
                 },
                 "type": {
                   "default": "taxon",
@@ -7898,7 +9168,8 @@
           }
         },
         "type": "object",
-        "x-examples": {}
+        "x-examples": {},
+        "description": ""
       }
     },
     "securitySchemes": {

@@ -2,12 +2,39 @@
   "additionalProperties": false,
   "description": "This is a description",
   "properties": {
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "physicalUnits": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__physicalUnit",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "featureObservationTypes": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__featureObservationType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        }
+      }
+    },
     "individualGroup": {
       "$ref": "__ROOT__individualGroup"
     },
-    "physicalUnits": {
-      "$ref": "__ROOT__physicalUnit"
-    },
+
     "distinguishedUnits": {
       "type": "array",
       "items": { "$ref": "__ROOT__distinguishedUnit" }
