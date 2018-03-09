@@ -138,6 +138,21 @@
     "x-modelType": "model",
     "id": "position"
   },
+  "translatedString": {
+    "additionalProperties": false,
+    "properties": {
+      "en": {
+        "type": "string"
+      },
+      "sv": {
+        "type": "string"
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "description": "",
+    "id": "translatedString"
+  },
   "verticalPosition": {
     "additionalProperties": false,
     "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
@@ -274,20 +289,107 @@
   "featureObservationType": {
     "additionalProperties": false,
     "properties": {
-      "typeName": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "group": {
+        "type": "string"
+      },
+      "selectableValues": {
+        "type": "array",
+        "items": {
+          "$ref": "selectableValue"
+        }
+      },
+      "selectableUnits": {
+        "type": "array",
+        "items": {
+          "$ref": "selectableUnit"
+        }
+      },
+      "selectableMethods": {
+        "type": "array",
+        "items": {
+          "$ref": "selectableMethod"
+        }
+      },
+      "description": {
         "type": "string"
       },
       "id": {
         "type": "string"
       }
     },
-    "required": [
-      "typeName"
-    ],
     "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
     "x-category": "curatedListApi",
     "x-modelType": "model",
     "id": "featureObservationType"
+  },
+  "selectableMethod": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "description": {
+        "type": "string"
+      },
+      "methodType": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "selectableMethod"
+  },
+  "selectableUnit": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "description": {
+        "type": "string"
+      },
+      "unitType": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "selectableUnit"
+  },
+  "selectableValue": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "description": {
+        "type": "string"
+      },
+      "valueType": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "selectableValue"
   },
   "catalogNumber": {
     "type": "object",
@@ -4708,7 +4810,10 @@
           "id": "1234",
           "type": "featureObservationType",
           "attributes": {
-            "typeName": "string"
+            "name": {
+              "en": "bone",
+              "sv": "ben"
+            }
           }
         }
       }
@@ -4718,7 +4823,10 @@
         "id": "1234",
         "type": "featureObservationType",
         "attributes": {
-          "typeName": "string"
+          "name": {
+            "en": "bone",
+            "sv": "ben"
+          }
         }
       }
     },

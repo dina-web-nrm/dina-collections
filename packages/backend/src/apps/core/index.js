@@ -1,4 +1,5 @@
 const now = require('performance-now')
+
 const startTime = now()
 const openApiSpec = require('common/dist/openApi.json')
 const createLog = require('../../utilities/log')
