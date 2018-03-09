@@ -2,9 +2,11 @@ import flattenObjectResponse, { flattenRelationships } from './index'
 
 describe('utilities/transformations/flattenObjectResponse', () => {
   describe('flattenRelationships', () => {
+    it('returns falsy value', () => {
+      expect(flattenRelationships(undefined)).toEqual(undefined)
+      expect(flattenRelationships(null)).toEqual(null)
+    })
     it('returns empty object', () => {
-      expect(flattenRelationships(undefined)).toEqual({})
-      expect(flattenRelationships(null)).toEqual({})
       expect(flattenRelationships({})).toEqual({})
     })
     it('flattens singular and multiple resources', () => {
@@ -28,6 +30,20 @@ describe('utilities/transformations/flattenObjectResponse', () => {
   })
 
   describe('flattenObjectResponse', () => {
+    it('returns object with undefined properties', () => {
+      const undefinedProperties = {
+        attributes: undefined,
+        id: undefined,
+        relationships: undefined,
+        type: undefined,
+      }
+
+      expect(flattenObjectResponse({})).toEqual(undefinedProperties)
+      expect(flattenObjectResponse({ data: undefined })).toEqual(
+        undefinedProperties
+      )
+    })
+
     it('flattens API response with singular resource', () => {
       const attributes = {
         name: 'Ada Lovelace',
