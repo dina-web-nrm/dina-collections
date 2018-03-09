@@ -35,7 +35,7 @@ describe('domainModules/storageService/selectors', () => {
   it('returns physicalUnits', () => {
     expect(getPhysicalUnits(state)).toEqual(state.resources.physicalUnits)
   })
-  it('returns physicaUnit by id', () => {
+  it('returns physicalUnit by id', () => {
     expect(getPhysicalUnit(state, 'a')).toEqual(state.resources.physicalUnits.a)
   })
   it('returns storageLocations', () => {
