@@ -4,7 +4,10 @@ import transformDistinguishedUnits from './transformDistinguishedUnits'
 import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
-export default function transformInput(individualGroup = {}) {
+export default function transformInput({
+  individualGroup = {},
+  physicalUnits = {},
+}) {
   const { id, type, ...rest } = individualGroup
   const attributes = { ...rest }
 
@@ -14,9 +17,10 @@ export default function transformInput(individualGroup = {}) {
   const featureObservations = transformFeatureObservations(
     attributes.featureObservations
   )
-  const distinguishedUnits = transformDistinguishedUnits(
-    attributes.distinguishedUnits
-  )
+  const distinguishedUnits = transformDistinguishedUnits({
+    distinguishedUnits: attributes.distinguishedUnits,
+    physicalUnits,
+  })
   const identifiers = transformIdentifiers(attributes.identifiers)
   const individualCircumstances = transformIndividualCircumstances(
     attributes.individualCircumstances

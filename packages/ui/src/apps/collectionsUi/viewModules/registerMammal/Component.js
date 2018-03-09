@@ -9,20 +9,20 @@ import transformOutput from 'domainModules/collectionMammals/components/MammalFo
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const mapDispatchToProps = {
-  registerMammal: mammalActionCreators.registerMammal,
+  createSpecimen: mammalActionCreators.createSpecimen,
 }
 
 const propTypes = {
-  registerMammal: PropTypes.func.isRequired,
+  createSpecimen: PropTypes.func.isRequired,
 }
 
-const RegisterMammal = ({ registerMammal }) => {
+const RegisterMammal = ({ createSpecimen }) => {
   const initialData = transformInput({})
   return (
     <PageTemplate>
       <MammalForm
         handleFormSubmit={formOutput => {
-          return registerMammal(transformOutput(formOutput))
+          return createSpecimen(transformOutput(formOutput))
         }}
         initialData={initialData}
         mode="register"
