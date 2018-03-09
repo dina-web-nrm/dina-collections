@@ -92,7 +92,6 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
           goog: {
             id: 'goog',
             name: 'Google Inc.',
-            relationships: {},
             type: 'type',
           },
         }
@@ -126,13 +125,11 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
         appl: {
           id: 'appl',
           name: 'Apple Inc.',
-          relationships: {},
           type: 'type',
         },
         goog: {
           id: 'goog',
           name: 'Google Inc.',
-          relationships: {},
           type: 'type',
         },
       }
@@ -143,7 +140,6 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
         payload: {
           id: 'goog',
           name: 'Alphabet Inc.',
-          relationships: {},
           type: 'type',
         },
         type: STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_SUCCESS,

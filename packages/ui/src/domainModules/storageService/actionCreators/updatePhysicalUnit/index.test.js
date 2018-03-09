@@ -91,14 +91,12 @@ describe('domainModules/storageService/actionCreators/updatePhysicalUnit', () =>
       data: {
         attributes,
         id,
-        relationships: {},
         type: 'type',
       },
     }
     const transformedResponse = {
       ...attributes,
       id,
-      relationships: {},
       type: 'type',
     }
 
