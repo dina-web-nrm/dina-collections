@@ -4,7 +4,7 @@ import { Button, Form, Message, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { reduxForm, SubmissionError } from 'redux-form'
-import { createFormSchemaValidator } from 'common/es5/error'
+import formValidator from 'common/es5/error/validators/formValidator'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Field, Input } from 'coreModules/form/components'
@@ -89,7 +89,7 @@ RawLoginForm.defaultProps = defaultProps
 
 export const LoginForm = reduxForm({
   form: 'simple',
-  validate: createFormSchemaValidator({ schema: loginRequestSchema }),
+  validate: formValidator({ schema: loginRequestSchema }),
 })(RawLoginForm)
 
 export default compose(connect(null, mapDispatchToProps))(LoginForm)

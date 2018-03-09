@@ -1,10 +1,15 @@
+const backendError = require('common/src/error/errorFactories/backendError')
+const backendError400 = require('common/src/error/errorFactories/backendError400')
+
 const JSON_API_HEADER = 'application/vnd.api+json'
 
 module.exports = function validateAccept(headerString) {
   if (!headerString) {
-    const error = new Error('Provide accept header')
-    error.status = 400
-    return error
+    return backendError400({
+      code: 'REQUEST_ERROR',
+      detail: 'Provide accept header',
+      throwError: false,
+    })
   }
   const headerArray = headerString.split(',')
 
@@ -21,11 +26,12 @@ module.exports = function validateAccept(headerString) {
     }
   }
   if (containsModifiedJsonApiHeader && !containsCorrectJsonApiHeader) {
-    const error = new Error(
-      `Provide correct json api accept header got: ${headerString}`
-    )
-    error.status = 406
-    return error
+    return backendError({
+      code: 'REQUEST_ERROR',
+      detail: `Provide correct json api accept header got: ${headerString}`,
+      status: 406,
+      throwError: false,
+    })
   }
 
   return null

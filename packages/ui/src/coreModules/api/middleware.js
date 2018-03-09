@@ -1,5 +1,5 @@
 import globalUserSelectors from 'coreModules/user/globalSelectors'
-import { createSystemSchemaValidator } from 'common/es5/error'
+import createSystemFrontendValidator from 'common/es5/error/validators/createSystemFrontendValidator'
 import { createApiClient } from 'common/es5/apiClient'
 
 export const buildAuthHeaders = state => {
@@ -12,9 +12,9 @@ export const buildAuthHeaders = state => {
 
 export default function createApiMiddleware(apiClientOptions) {
   const systemValidate = (input, schema) => {
-    const validator = createSystemSchemaValidator({
-      context: 'apiClient',
+    const validator = createSystemFrontendValidator({
       schema,
+      type: 'config',
     })
     return validator(input)
   }

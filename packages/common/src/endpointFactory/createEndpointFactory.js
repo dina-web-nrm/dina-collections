@@ -1,5 +1,6 @@
 const openApiSpec = require('../../dist/openApi.json')
-const { createSystemModelSchemaValidator } = require('../error')
+const createBackendApiClientValidator = require('../error/validators/createBackendApiClientValidator')
+const createFrontendApiClientValidator = require('../error/validators/createFrontendApiClientValidator')
 const createMockGenerator = require('../jsonSchema/createMockGenerator')
 
 const buildOperationIdPathnameMap = () => {
@@ -59,11 +60,15 @@ const getBodyValidator = ({ methodSpecification, origin }) => {
 
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
-    return createSystemModelSchemaValidator({
-      context: 'inputBodyValidation',
+    if (origin === 'server') {
+      return createBackendApiClientValidator({
+        model: modelName,
+        type: 'request-body',
+      })
+    }
+    return createFrontendApiClientValidator({
       model: modelName,
-      origin,
-      throwOnError: true,
+      type: 'request-body',
     })
   }
 
@@ -76,18 +81,17 @@ const getResponseValidator = ({ methodSpecification, origin }) => {
   )
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
-    if (modelName) {
-      return createSystemModelSchemaValidator({
-        context: 'responseValidation',
+    if (origin === 'server') {
+      return createBackendApiClientValidator({
         model: modelName,
-        origin,
-        throwOnError: true,
+        schema,
+        type: 'response',
       })
     }
-    return createSystemModelSchemaValidator({
-      origin,
+    return createFrontendApiClientValidator({
+      model: modelName,
       schema,
-      throwOnError: true,
+      type: 'response',
     })
   }
 

@@ -16,6 +16,7 @@ describe('lib/serviceRouter/middlewares/validateContentType', () => {
   it('Returns error if a modified json api headers provided ', () => {
     const error = validateContentType('application/vnd.api+json;version=1')
     expect(error).toBeTruthy()
+
     expect(error.status).toBe(415)
   })
   it('Returns error if body and incorrect contentType provided ', () => {

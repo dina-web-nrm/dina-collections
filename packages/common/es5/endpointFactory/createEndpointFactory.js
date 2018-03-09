@@ -19,10 +19,8 @@ var _keys2 = _interopRequireDefault(_keys);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var openApiSpec = require('../../dist/openApi.json');
-
-var _require = require('../error'),
-    createSystemModelSchemaValidator = _require.createSystemModelSchemaValidator;
-
+var createBackendApiClientValidator = require('../error/validators/createBackendApiClientValidator');
+var createFrontendApiClientValidator = require('../error/validators/createFrontendApiClientValidator');
 var createMockGenerator = require('../jsonSchema/createMockGenerator');
 
 var buildOperationIdPathnameMap = function buildOperationIdPathnameMap() {
@@ -74,11 +72,15 @@ var getBodyValidator = function getBodyValidator(_ref) {
 
   if (schema) {
     var modelName = getModelNameFromSchema(schema);
-    return createSystemModelSchemaValidator({
-      context: 'inputBodyValidation',
+    if (origin === 'server') {
+      return createBackendApiClientValidator({
+        model: modelName,
+        type: 'request-body'
+      });
+    }
+    return createFrontendApiClientValidator({
       model: modelName,
-      origin: origin,
-      throwOnError: true
+      type: 'request-body'
     });
   }
 
@@ -92,18 +94,17 @@ var getResponseValidator = function getResponseValidator(_ref2) {
   var schema = getSchemaFromResponse(methodSpecification.responses[200] || methodSpecification.responses[201]);
   if (schema) {
     var modelName = getModelNameFromSchema(schema);
-    if (modelName) {
-      return createSystemModelSchemaValidator({
-        context: 'responseValidation',
+    if (origin === 'server') {
+      return createBackendApiClientValidator({
         model: modelName,
-        origin: origin,
-        throwOnError: true
+        schema: schema,
+        type: 'response'
       });
     }
-    return createSystemModelSchemaValidator({
-      origin: origin,
+    return createFrontendApiClientValidator({
+      model: modelName,
       schema: schema,
-      throwOnError: true
+      type: 'response'
     });
   }
 

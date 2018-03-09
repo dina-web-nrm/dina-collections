@@ -1,0 +1,115 @@
+* Might make sense to inject the schema from validators
+* When refactor createEndpointConfig inject validatorFactory
+
+
+
+
+
+
+
+
+
+
+
+
+1. import validators from new validator folder
+2. refactor validators
+
+* formValidator
+* backendModelValidator // normalized?
+* apiClientValidator // normalized
+
+* systemValidator // no json schema
+
+
+
+
+
+
+
+* frontendValidator
+* backendValidator
+
+
+
+
+
+
+
+
+
+
+
+
+ERROR_CODES = {
+  [key]: {
+    title,
+    description,
+  }
+}
+
+=> {
+  [key]: {
+      title,
+      description,
+      code (from title),
+    }
+}
+
+In api
+-> specify errors like
+
+
+errors: {
+  400: {
+    "BAD_REQUEST",
+    "BLA_REQUEST"
+  }
+}
+
+
+return array from api with json schema validation error stuff. add some extra concept for json schema error part. in meta?
+
+const createError = () => {
+  return {
+    title,
+    description,
+    id,
+    status, // only for api
+    code,
+    detail,
+
+  }
+}
+
+
+
+
+* separate validators (inklude createValidator) to separate folder
+* move out handle errors
+like
+
+
+
+const createFormValidator = (options) => {
+  const validator = createValidater(options)
+  const errorBuilder = createFormHandler()
+  return (obj) => {
+    const validationResult = validator(obj)
+    if (!validationResult) {
+      return validationResult
+    }
+
+    return(errorBuilder(ajvMapper(bla)))
+
+
+  }
+}
+
+
+
+const createValidater = (options) => {
+  return (obj) => {
+    return error
+  }
+}

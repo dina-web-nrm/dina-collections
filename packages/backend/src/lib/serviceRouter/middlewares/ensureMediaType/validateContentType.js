@@ -1,3 +1,5 @@
+const backendError = require('common/src/error/errorFactories/backendError')
+
 const JSON_API_HEADER = 'application/vnd.api+json'
 
 module.exports = function validateContentType(headerString, body) {
@@ -9,19 +11,25 @@ module.exports = function validateContentType(headerString, body) {
     headerString.indexOf(JSON_API_HEADER) !== -1 &&
     headerString !== JSON_API_HEADER
   ) {
-    const error = new Error(
-      `Provide correct json api content-type header got: ${headerString}`
-    )
-    error.status = 415
-    return error
+    return backendError({
+      code: 'REQUEST_ERROR',
+      detail: `Provide correct json api content-type header got: ${
+        headerString
+      }`,
+      status: 415,
+      throwError: false,
+    })
   }
 
   if (body && headerString !== JSON_API_HEADER) {
-    const error = new Error(
-      `Provide correct json api content-type header got: ${headerString}`
-    )
-    error.status = 415
-    return error
+    return backendError({
+      code: 'REQUEST_ERROR',
+      detail: `Provide correct json api content-type header got: ${
+        headerString
+      }`,
+      status: 415,
+      throwError: false,
+    })
   }
 
   return null

@@ -1,3 +1,4 @@
+const backendError404 = require('common/src/error/errorFactories/backendError404')
 const createArrayResponse = require('./transformations/createArrayResponse')
 const transformOutput = require('./transformations/outputArray')
 
@@ -13,9 +14,10 @@ module.exports = function getVersionsById({ operation, models }) {
       .getWhere({ forceCurrentVersion: false, where: { id } })
       .then(res => {
         if (!(res && res.length)) {
-          const error = new Error(`${resource} with id: ${id} not found`)
-          error.status = 404
-          throw error
+          backendError404({
+            code: 'RESOURCE_NOT_FOUND_ERROR',
+            detail: `${resource} with id: ${id} not found`,
+          })
         }
         return res
       })

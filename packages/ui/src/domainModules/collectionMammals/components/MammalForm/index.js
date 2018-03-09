@@ -13,7 +13,7 @@ import {
   reduxForm,
   SubmissionError,
 } from 'redux-form'
-import { createFormModelSchemaValidator } from 'common/es5/error'
+import formValidator from 'common/es5/error/validators/formValidator'
 import { FormSchemaError } from 'coreModules/error/components'
 import { clearTaxonSearch } from 'domainModules/taxonomy/actionCreators'
 import createLog from 'utilities/log'
@@ -229,9 +229,7 @@ RawMammalForm.defaultProps = defaultProps
 
 export const MammalForm = reduxForm({
   form: FORM_NAME,
-  validate: createFormModelSchemaValidator({
-    model: 'individualGroup',
-  }),
+  validate: formValidator({ model: 'individualGroup' }),
 })(RawMammalForm)
 
 export default compose(

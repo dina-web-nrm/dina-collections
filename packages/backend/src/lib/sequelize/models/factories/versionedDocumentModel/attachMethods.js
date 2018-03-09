@@ -3,7 +3,7 @@ const getByIdFactory = require('./methods/getByIdFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
 const updateFactory = require('./methods/updateFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
-const { createSystemModelSchemaValidator } = require('common/src/error')
+const dbValidator = require('common/src/error/validators/dbValidator')
 
 module.exports = function attachMethods({
   sequelize,
@@ -16,8 +16,7 @@ module.exports = function attachMethods({
     return null
   }
   if (schemaModelName) {
-    validate = createSystemModelSchemaValidator({
-      context: 'modelValidation',
+    validate = dbValidator({
       model: schemaModelName,
       throwOnError: false,
     })

@@ -1,7 +1,7 @@
 require('isomorphic-fetch')
 
 const jsonApiSchema = require('common/src/apiClient/schemas/jsonApi')
-const { createSystemModelSchemaValidator } = require('common/src/error')
+const createSystemFrontendValidator = require('common/src/error/validators/createSystemFrontendValidator')
 const createEndpoint = require('common/src/endpointFactory/server')
 const { createApiClient } = require('common/src/apiClient')
 
@@ -41,11 +41,10 @@ exports.login = ({ password = testPassword, username = testUsername } = {}) => {
     })
 }
 
-const jsonApiValidator = createSystemModelSchemaValidator({
-  context: 'jsonApiTestValidator',
-  origin: 'server',
+const jsonApiValidator = createSystemFrontendValidator({
   schema: jsonApiSchema,
   throwOnError: true,
+  type: 'config',
 })
 
 const createTestClient = ({
