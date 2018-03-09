@@ -88,7 +88,6 @@ describe('domainModules/storageService/actionCreators/createStorageLocation', ()
     const transformedResponse = {
       id: '123',
       name: 'Alan',
-      relationships: {},
       type: 'type',
     }
 

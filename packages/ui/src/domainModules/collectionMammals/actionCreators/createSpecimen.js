@@ -1,20 +1,16 @@
-import {
-  createPhysicalUnit,
-  updatePhysicalUnit,
-} from 'domainModules/storageService/actionCreators'
+import { createPhysicalUnit } from 'domainModules/storageService/actionCreators'
 import { PHYSICAL_UNIT } from 'domainModules/storageService/constants'
 
-import { getSpecimen } from '../actionCreators'
 import {
-  COLLECTION_MAMMALS_UPDATE_SPECIMEN_FAIL,
-  COLLECTION_MAMMALS_UPDATE_SPECIMEN_REQUEST,
-  COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS,
+  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_FAIL,
+  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_REQUEST,
+  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
 } from '../actionTypes'
-import { UPDATE_SPECIMEN } from '../endpoints'
+import { REGISTER_MAMMAL } from '../endpoints'
 import { getCatalogNumberFromIdentifiers } from '../utilities'
 
-export default function updateSpecimen(
-  { id, specimen, physicalUnits, throwError = true } = {}
+export default function createSpecimen(
+  { specimen, physicalUnits, throwError = true } = {}
 ) {
   const { individualGroup } = specimen
 
@@ -27,12 +23,6 @@ export default function updateSpecimen(
   return (dispatch, getState, { apiClient }) => {
     return Promise.all(
       physicalUnits.map(physicalUnit => {
-        if (physicalUnit.id) {
-          return dispatch(
-            updatePhysicalUnit({ physicalUnit, throwError: true })
-          )
-        }
-
         return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
       })
     ).then(savedPhysicalUnits => {
@@ -58,9 +48,9 @@ export default function updateSpecimen(
           },
           relationships: {
             physicalUnits: {
-              data: savedPhysicalUnits.map(({ id: physicalUnitId }) => {
+              data: savedPhysicalUnits.map(({ id }) => {
                 return {
-                  id: physicalUnitId,
+                  id,
                   type: PHYSICAL_UNIT,
                 }
               }),
@@ -71,21 +61,19 @@ export default function updateSpecimen(
 
       dispatch({
         meta,
-        type: COLLECTION_MAMMALS_UPDATE_SPECIMEN_REQUEST,
+        type: COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_REQUEST,
       })
 
       return apiClient
-        .call(UPDATE_SPECIMEN, {
+        .call(REGISTER_MAMMAL, {
           body,
-          pathParams: { id },
         })
         .then(
           response => {
             dispatch({
               payload: response,
-              type: COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS,
+              type: COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
             })
-            dispatch(getSpecimen({ id }))
             return response
           },
           error => {
@@ -93,7 +81,7 @@ export default function updateSpecimen(
               error: true,
               meta,
               payload: error,
-              type: COLLECTION_MAMMALS_UPDATE_SPECIMEN_FAIL,
+              type: COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_FAIL,
             })
             // for redux form
             if (throwError) {

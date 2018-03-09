@@ -72,14 +72,12 @@ describe('domainModules/storageService/actionCreators/getPhysicalUnit', () => {
           name: 'Alan',
         },
         id,
-        relationships: {},
         type: 'type',
       },
     }
     const transformedResponse = {
       id,
       name: 'Alan',
-      relationships: {},
       type: 'type',
     }
 

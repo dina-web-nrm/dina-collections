@@ -2,7 +2,8 @@ const individualGroup = {
   distinguishedUnits: [
     {
       physicalUnit: {
-        storedUnderTaxonName: 'Chironectes minimus',
+        id: '1',
+        type: 'physicalUnit',
       },
     },
   ],
@@ -31,6 +32,13 @@ const individualGroup = {
     ],
   },
 }
+const physicalUnits = {
+  1: {
+    id: '1',
+    storedUnderTaxonName: 'Chironectes minimus',
+    type: 'physicalUnit',
+  },
+}
 const mutations = [
   {
     name: 'taxonInformation.determinations.0.determinedByAgentText',
@@ -38,39 +46,50 @@ const mutations = [
   },
 ]
 const expectedOutput = {
-  individualGroup: {
-    distinguishedUnits: [
-      {
-        physicalUnit: {
-          storedUnderTaxonName: 'Chironectes minimus',
-        },
-      },
-    ],
-    featureObservations: [
-      {
-        featureObservationText: 'female',
-        featureObservationType: {
-          id: '1',
-          typeName: 'sex',
-        },
-      },
-    ],
-    identifiers: [
-      {
-        identifier: {
-          identifierType: 'catalogNumber',
-          value: '444444',
-        },
-      },
-    ],
-    individualCircumstances: [],
-    taxonInformation: {
-      determinations: [
+  physicalUnits: [
+    {
+      id: '1',
+      storedUnderTaxonName: 'Chironectes minimus',
+      type: 'physicalUnit',
+    },
+  ],
+  specimen: {
+    individualGroup: {
+      distinguishedUnits: [
         {
-          determinedByAgentText: 'John, Doe',
-          taxonNameStandardized: 'Chironectes minimus',
+          physicalUnit: {
+            id: '1',
+            storedUnderTaxonName: 'Chironectes minimus',
+            type: 'physicalUnit',
+          },
         },
       ],
+      featureObservations: [
+        {
+          featureObservationText: 'female',
+          featureObservationType: {
+            id: '1',
+            typeName: 'sex',
+          },
+        },
+      ],
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            value: '444444',
+          },
+        },
+      ],
+      individualCircumstances: [],
+      taxonInformation: {
+        determinations: [
+          {
+            determinedByAgentText: 'John, Doe',
+            taxonNameStandardized: 'Chironectes minimus',
+          },
+        ],
+      },
     },
   },
 }
@@ -78,7 +97,7 @@ const expectedOutput = {
 const scenario = {
   description: 'Update existing record by adding determinedByAgentText',
   expectedOutput,
-  input: individualGroup,
+  input: { individualGroup, physicalUnits },
   mutations,
 }
 

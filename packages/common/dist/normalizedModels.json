@@ -919,6 +919,9 @@
       },
       "storageLocation": {
         "$ref": "storageLocation"
+      },
+      "type": {
+        "type": "string"
       }
     },
     "description": "### Definition\n\nThe smallest recognized physical “thing” in the collection. A set of identifiable units. One or more.\n\n### Example(s)\n\nEx.1. A herbarium sheet with multiple leafs (many identifiable units)\nEx.2. A device where a skin is mounted at (one identifiable unit)\nEx.3. A device where a stone with a moss is mounted (two identifiable unit)\n",

@@ -1,8 +1,8 @@
 import clearSearchParameters from './clearSearchParameters'
+import createSpecimen from './createSpecimen'
 import getIndividualGroupByCatalogNumber from './getIndividualGroupByCatalogNumber'
-import getSpecimenById from './getSpecimenById'
+import getSpecimen from './getSpecimen'
 import lookupMammals from './lookupMammals'
-import registerMammal from './registerMammal'
 import setAccordionActiveIndex from './setAccordionActiveIndex'
 import updateFeatureTypeNameSearchQuery from './updateFeatureTypeNameSearchQuery'
 import updateLocalityInformationSearchQuery from './updateLocalityInformationSearchQuery'
@@ -11,10 +11,10 @@ import updateSpecimen from './updateSpecimen'
 
 export {
   clearSearchParameters,
+  createSpecimen,
   getIndividualGroupByCatalogNumber,
-  getSpecimenById,
+  getSpecimen,
   lookupMammals,
-  registerMammal,
   setAccordionActiveIndex,
   updateFeatureTypeNameSearchQuery,
   updateLocalityInformationSearchQuery,

@@ -93,7 +93,6 @@ describe('domainModules/storageService/reducer/resources/physicalUnits', () => {
           goog: {
             id: 'goog',
             name: 'Google Inc.',
-            relationships: {},
             type: 'type',
           },
         }
@@ -127,13 +126,11 @@ describe('domainModules/storageService/reducer/resources/physicalUnits', () => {
         appl: {
           id: 'appl',
           name: 'Apple Inc.',
-          relationships: {},
           type: 'type',
         },
         goog: {
           id: 'goog',
           name: 'Google Inc.',
-          relationships: {},
           type: 'type',
         },
       }
@@ -144,7 +141,6 @@ describe('domainModules/storageService/reducer/resources/physicalUnits', () => {
         payload: {
           id: 'goog',
           name: 'Alphabet Inc.',
-          relationships: {},
           type: 'type',
         },
         type: STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_SUCCESS,

@@ -176,87 +176,95 @@ const mutations = [
 ]
 
 const expectedOutput = {
-  individualGroup: {
-    distinguishedUnits: [
-      {
-        alternateIdentifiersText: 'alternateIdentifiersText',
-        physicalUnit: {
-          normalStorageLocationText: 'normalStorageLocationText',
-          storedUnderTaxonName: 'Sorex minutus',
-        },
-        physicalUnitText: 'physicalUnitText',
-      },
-    ],
-    featureObservations: [
-      {
-        date: 'date',
-        featureObservationAgent: 'featureObservationAgent',
-        featureObservationText: '21',
-        featureObservationType: {
-          id: '3',
-          typeName: 'age',
-        },
-        methodText: 'methodText',
-      },
-    ],
-
-    identifiers: [
-      {
-        identifier: {
-          identifierType: 'catalogNumber',
-          nameSpace: '',
-          value: '123456',
-        },
-        publishRecord: true,
-        remarks: '',
-      },
-    ],
-    individualCircumstances: [
-      {
-        collectorsText: 'collectorsText',
-        event: {
-          endDate: 'endDate',
-          expeditionText: 'expeditionText',
-          localityInformation: {
-            coordinatesVerbatim: 'coordinatesVerbatim',
-            curatedLocalities: [
-              { id: 'Africa', type: 'continent' },
-              { id: 'Algeria', type: 'country' },
-              { id: 'Balearic Islands', type: 'province' },
-              { id: 'GaspÃ© Peninsula', type: 'district' },
-              { id: 'Skansen', type: 'locality' },
-            ],
-            georeferenceSourcesText: 'georeferenceSourcesText',
-            localityVerbatim: 'localityVerbatim',
-            position: {
-              geodeticDatum: 'geodeticDatum text',
-              latitude: 'latitude-string',
-              longitude: 'longitude-string',
-              uncertaintyInMeters: 10,
-            },
-            remarks: 'remarks',
-            verticalPosition: {
-              maximumDepthInMeters: 100,
-              maximumElevationInMeters: 100,
-              minimumDepthInMeters: 20,
-              minimumElevationInMeters: 20,
-            },
-          },
-          startDate: 'startDate',
-        },
-      },
-    ],
-    taxonInformation: {
-      determinations: [
+  physicalUnits: [
+    {
+      normalStorageLocationText: 'normalStorageLocationText',
+      storedUnderTaxonName: 'Sorex minutus',
+    },
+  ],
+  specimen: {
+    individualGroup: {
+      distinguishedUnits: [
         {
-          date: 'date',
-          determinationVerbatim: 'determinationVerbatim',
-          determinedByAgentText: 'determinedByAgentText',
-          isCurrentDetermination: true,
-          remarks: 'remarks',
-          taxonNameStandardized: 'Sorex minutus',
+          alternateIdentifiersText: 'alternateIdentifiersText',
+          physicalUnit: {
+            normalStorageLocationText: 'normalStorageLocationText',
+            storedUnderTaxonName: 'Sorex minutus',
+          },
+          physicalUnitText: 'physicalUnitText',
         },
       ],
+      featureObservations: [
+        {
+          date: 'date',
+          featureObservationAgent: 'featureObservationAgent',
+          featureObservationText: '21',
+          featureObservationType: {
+            id: '3',
+            typeName: 'age',
+          },
+          methodText: 'methodText',
+        },
+      ],
+
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            nameSpace: '',
+            value: '123456',
+          },
+          publishRecord: true,
+          remarks: '',
+        },
+      ],
+      individualCircumstances: [
+        {
+          collectorsText: 'collectorsText',
+          event: {
+            endDate: 'endDate',
+            expeditionText: 'expeditionText',
+            localityInformation: {
+              coordinatesVerbatim: 'coordinatesVerbatim',
+              curatedLocalities: [
+                { id: 'Africa', type: 'continent' },
+                { id: 'Algeria', type: 'country' },
+                { id: 'Balearic Islands', type: 'province' },
+                { id: 'GaspÃ© Peninsula', type: 'district' },
+                { id: 'Skansen', type: 'locality' },
+              ],
+              georeferenceSourcesText: 'georeferenceSourcesText',
+              localityVerbatim: 'localityVerbatim',
+              position: {
+                geodeticDatum: 'geodeticDatum text',
+                latitude: 'latitude-string',
+                longitude: 'longitude-string',
+                uncertaintyInMeters: 10,
+              },
+              remarks: 'remarks',
+              verticalPosition: {
+                maximumDepthInMeters: 100,
+                maximumElevationInMeters: 100,
+                minimumDepthInMeters: 20,
+                minimumElevationInMeters: 20,
+              },
+            },
+            startDate: 'startDate',
+          },
+        },
+      ],
+      taxonInformation: {
+        determinations: [
+          {
+            date: 'date',
+            determinationVerbatim: 'determinationVerbatim',
+            determinedByAgentText: 'determinedByAgentText',
+            isCurrentDetermination: true,
+            remarks: 'remarks',
+            taxonNameStandardized: 'Sorex minutus',
+          },
+        ],
+      },
     },
   },
 }
@@ -272,7 +280,7 @@ const postSubmitTest = ({ submitResult }) => {
 }
 
 const scenario = {
-  description: 'Regster new mammal form with all fields',
+  description: 'Register new mammal form with all fields',
   expectedOutput,
   input: {},
   mutations,
