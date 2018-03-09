@@ -1,3 +1,8 @@
-export const moduleOrder = ['taxonomy', 'storageService', 'collectionMammals']
+export const moduleOrder = [
+  'curatedListService',
+  'storageService',
+  'taxonomy',
+  'collectionMammals',
+]
 
 export const type = 'module'
