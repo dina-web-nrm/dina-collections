@@ -6,6 +6,7 @@ import {
   immutableReplace,
 } from './immutableUtilities'
 import updateResourceInState from './updateResourceInState'
+import updateResourcesInState from './updateResourcesInState'
 
 export {
   buildPath,
@@ -14,4 +15,5 @@ export {
   createSetter,
   immutableReplace,
   updateResourceInState,
+  updateResourcesInState,
 }
