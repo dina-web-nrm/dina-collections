@@ -5,6 +5,7 @@ import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
 import {
   STORAGE_SERVICE_CREATE_STORAGE_LOCATION_SUCCESS,
   STORAGE_SERVICE_GET_STORAGE_LOCATION_SUCCESS,
+  STORAGE_SERVICE_GET_STORAGE_LOCATIONS_SUCCESS,
   STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_SUCCESS,
 } from '../../../actionTypes'
 
@@ -14,13 +15,10 @@ const tryImport = () => {
   return import('./index')
 }
 
-const getStorageLocationPayload = () => {
+const getPayload = () => {
   return {
-    attributes: {
-      locationText: 'string',
-    },
     id: 'a73jhdc62sdgs5x4dsh2',
-    relationships: {},
+    name: 'Alan',
     type: 'type',
   }
 }
@@ -55,17 +53,17 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
       expect(testValue).toEqual(expectedResult)
     })
 
-    const createAndGetSuccessTypes = [
+    const createAndGetOneSuccesses = [
       STORAGE_SERVICE_CREATE_STORAGE_LOCATION_SUCCESS,
       STORAGE_SERVICE_GET_STORAGE_LOCATION_SUCCESS,
     ]
 
-    createAndGetSuccessTypes.forEach(actionType => {
+    createAndGetOneSuccesses.forEach(actionType => {
       it(`sets new resource in state from initial empty state on ${
         actionType
       }`, () => {
-        const payload = getStorageLocationPayload()
-        const { id, relationships, ...attributes } = payload
+        const payload = getPayload()
+        const { id, ...rest } = payload
         const action = {
           payload,
           type: actionType,
@@ -74,9 +72,8 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
         const testValue = reducer(undefined, action)
         const expectedResult = {
           [id]: {
-            ...attributes,
+            ...rest,
             id,
-            relationships,
           },
         }
 
@@ -84,7 +81,7 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
       })
     })
 
-    createAndGetSuccessTypes.forEach(actionType => {
+    createAndGetOneSuccesses.forEach(actionType => {
       it(`sets new resource when keeping other resources on ${
         actionType
       }`, () => {
@@ -97,8 +94,8 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
         }
         deepFreeze(state)
 
-        const payload = getStorageLocationPayload()
-        const { id, relationships, ...attributes } = payload
+        const payload = getPayload()
+        const { id, ...rest } = payload
         const action = {
           payload,
           type: actionType,
@@ -108,14 +105,58 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
         const expectedResult = {
           ...state,
           [id]: {
-            ...attributes,
+            ...rest,
             id,
-            relationships,
           },
         }
 
         expect(testValue).toEqual(expectedResult)
       })
+    })
+
+    it(`replaces whole state on ${
+      STORAGE_SERVICE_GET_STORAGE_LOCATIONS_SUCCESS
+    }`, () => {
+      const state = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
+      }
+      deepFreeze(state)
+
+      const action = {
+        payload: [
+          {
+            id: '2',
+            name: 'Beau',
+            type: 'type',
+          },
+          {
+            id: '3',
+            name: 'Celine',
+            type: 'type',
+          },
+        ],
+        type: STORAGE_SERVICE_GET_STORAGE_LOCATIONS_SUCCESS,
+      }
+
+      const testValue = reducer(state, action)
+      const expectedResult = {
+        2: {
+          id: '2',
+          name: 'Beau',
+          type: 'type',
+        },
+        3: {
+          id: '3',
+          name: 'Celine',
+          type: 'type',
+        },
+      }
+
+      expect(testValue).toEqual(expectedResult)
     })
 
     it(`updates existing resource when keeping other resources on ${
@@ -144,15 +185,14 @@ describe('domainModules/storageService/reducer/resources/storageLocations', () =
         },
         type: STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_SUCCESS,
       }
-      const { id, relationships, ...attributes } = action.payload
+      const { id, ...rest } = action.payload
 
       const testValue = reducer(state, action)
       const expectedResult = {
         ...state,
         [id]: {
-          ...attributes,
+          ...rest,
           id,
-          relationships,
         },
       }
 
