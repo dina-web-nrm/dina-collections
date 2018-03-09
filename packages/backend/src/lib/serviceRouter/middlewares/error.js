@@ -1,46 +1,30 @@
+const sanitizeBackendError = require('common/src/error/errorFactories/sanitizeBackendError')
 const createLog = require('../../../utilities/log')
 
 const log = createLog('errorMiddleware')
 
 module.exports = function createErrorMiddleware({ config }) {
   /* eslint-disable no-unused-vars */
-  return (err, req, res, next) => {
+  return (incomingError, req, res, next) => {
     /* eslint-enable no-unused-vars */
-    // ensure know error or pass on other error
+    const err = sanitizeBackendError({
+      error: incomingError,
+      log,
+    })
 
     if (config.log.error) {
+      // add method to print error
       log.err(
-        `${res.locals.id}: Got api error: ${err.stack} \n ${JSON.stringify(
+        `${res.locals.id}: Got api error: ${err.title} \n ${JSON.stringify(
           err,
           null,
           2
-        )}`
+        )} \n ${incomingError.stack}`
       )
     }
+
     res.setHeader('Content-Type', 'application/vnd.api+json')
-    if (err.status === 400) {
-      res.status(400)
-      return res.send({
-        errors: err.errors,
-        message: err.message || err.stack,
-        originalKey: err.name,
-      })
-    }
-
-    if (err.status === 404) {
-      res.status(404)
-      return res.send({
-        errors: err.errors,
-        message: err.message || err.stack,
-        originalKey: err.name,
-      })
-    }
-
-    res.status(500)
-    return res.send({
-      errors: err.errors,
-      message: err.message || err.stack,
-      originalKey: err.name,
-    })
+    res.status(err.status || 500)
+    return res.send(err)
   }
 }

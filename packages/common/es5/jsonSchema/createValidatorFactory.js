@@ -34,7 +34,7 @@ module.exports = function createValidatorFactory(models) {
         customSchema = _ref.schema,
         model = _ref.model,
         errorHandler = _ref.errorHandler,
-        throwOnError = _ref.throwOnError,
+        throwError = _ref.throwError,
         options = _ref.options;
 
     var ajv = options ? createAjv(options) : defaultAjv;
@@ -57,7 +57,8 @@ module.exports = function createValidatorFactory(models) {
       }
 
       var error = errorHandler ? errorHandler(validate.errors) : validate.errors;
-      if (throwOnError) {
+
+      if (throwError) {
         throw error;
       }
 

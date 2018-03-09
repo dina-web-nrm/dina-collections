@@ -1,3 +1,4 @@
+const backendError404 = require('common/src/error/errorFactories/backendError404')
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
@@ -31,11 +32,12 @@ module.exports = function getRelationsHasOne({ operation, models }) {
       })
       .then(result => {
         if (!(result && result[relationKey])) {
-          const error = new Error(
-            `Cant find relation ${relationKey} for ${resource} id ${id} `
-          )
-          error.status = 404
-          throw error
+          backendError404({
+            code: 'RESOURCE_NOT_FOUND_ERROR',
+            detail: `Cant find relation ${relationKey} for ${resource} id ${
+              id
+            } `,
+          })
         }
 
         return result[relationKey].dataValues

@@ -1,3 +1,4 @@
+const backendError404 = require('common/src/error/errorFactories/backendError404')
 const extractRelationships = require('./relationshipsUtilities/extractRelationships')
 const createArrayResponse = require('./transformations/createArrayResponse')
 
@@ -31,11 +32,10 @@ module.exports = function updateRelationHasMany({ operation, models }) {
 
     return model.getById({ id }).then(fetchedResource => {
       if (!fetchedResource) {
-        const error = new Error(
-          `Cant find resource: ${resource}, with id: ${id} `
-        )
-        error.status = 404
-        throw error
+        backendError404({
+          code: 'RESOURCE_NOT_FOUND_ERROR',
+          detail: `Cant find resource: ${resource}, with id: ${id} `,
+        })
       }
 
       const newDocument = {

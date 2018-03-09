@@ -1,3 +1,4 @@
+const backendError404 = require('common/src/error/errorFactories/backendError404')
 const { diff } = require('deep-diff')
 
 const mergeRelationships = (oldDoc, newDoc) => {
@@ -43,9 +44,10 @@ module.exports = function updateFactory({
 
     return getById({ id, raw: false }).then(existingModel => {
       if (!existingModel) {
-        const error = new Error(`Not found for id ${id}`)
-        error.status = 404
-        return Promise.reject(error)
+        backendError404({
+          code: 'RESOURCE_NOT_FOUND_ERROR',
+          detail: `Not found for id ${id}`,
+        })
       }
       const storedData = existingModel.get()
 

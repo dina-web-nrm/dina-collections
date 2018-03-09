@@ -29,7 +29,7 @@ module.exports = function createValidatorFactory(models) {
     schema: customSchema,
     model,
     errorHandler,
-    throwOnError,
+    throwError,
     options,
   }) {
     const ajv = options ? createAjv(options) : defaultAjv
@@ -46,7 +46,6 @@ module.exports = function createValidatorFactory(models) {
 
     const schema = models[model] || customSchema
     return obj => {
-      // console.log('obj', JSON.stringify(obj, null, 2))
       const objToTest = dataPath && obj ? objectPath.get(obj, dataPath) : obj
       const validate = ajv.compile(schema)
       const valid = validate(objToTest)
@@ -57,7 +56,8 @@ module.exports = function createValidatorFactory(models) {
       const error = errorHandler
         ? errorHandler(validate.errors)
         : validate.errors
-      if (throwOnError) {
+
+      if (throwError) {
         throw error
       }
 

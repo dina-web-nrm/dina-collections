@@ -1,3 +1,4 @@
+const backendError404 = require('common/src/error/errorFactories/backendError404')
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
@@ -19,9 +20,10 @@ module.exports = function getOne({ operation, models }) {
     const { pathParams: { id } } = request
     return model.getById({ id, include, raw: false }).then(fetchedResource => {
       if (!fetchedResource) {
-        const error = new Error(`${resource} with id: ${id} not found`)
-        error.status = 404
-        throw error
+        backendError404({
+          code: 'RESOURCE_NOT_FOUND_ERROR',
+          detail: `${resource} with id: ${id} not found`,
+        })
       }
       const relationships =
         includeRelations &&

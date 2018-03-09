@@ -2,7 +2,7 @@
 import path from 'path'
 import fs from 'fs'
 import validateAgainstSchema from 'common/es5/jsonSchema/validateAgainstSchema'
-import isKnownError from 'common/es5/error/isKnownError'
+import isDinaError from 'common/es5/error//utilities/isDinaError'
 import { createApiClient } from 'common/es5/apiClient'
 import { testNotificationSpecification } from 'coreModules/notifications/utilities'
 
@@ -92,7 +92,7 @@ const testEndpoint = (apiClient, endpoint) => {
           throw err.stack
         }
 
-        if (isKnownError(err) && err.error) {
+        if (isDinaError(err) && err.error) {
           const formattedError = {
             message: JSON.stringify(err, null, 2),
           }
