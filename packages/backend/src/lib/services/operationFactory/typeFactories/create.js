@@ -2,17 +2,25 @@ const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
 module.exports = function create({
   basePath,
+  errors: errorsInput = {},
   exampleRequests = {},
   exampleResponses = {},
   operationId,
   queryParams,
-  resource,
   relations,
+  resource,
   resourcePlural,
   ...rest
 }) {
+  const errors = {
+    '400': ['REQUEST_BODY_VALIDATION_ERROR', 'REQUEST_ERROR'],
+    '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
+    ...errorsInput,
+  }
+
   return {
     ...rest,
+    errors,
     method: 'post',
     operationId: operationId || `create${capitalizeFirstLetter(resource)}`,
     operationType: 'create',

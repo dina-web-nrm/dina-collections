@@ -4,6 +4,7 @@ const buildRequest = require('./buildRequest')
 module.exports = function buildEndpoint({
   auth = true,
   description,
+  errors,
   method,
   operationId,
   path,
@@ -47,6 +48,7 @@ module.exports = function buildEndpoint({
 
   return {
     description,
+    errors,
     method,
     operationId,
     path,
