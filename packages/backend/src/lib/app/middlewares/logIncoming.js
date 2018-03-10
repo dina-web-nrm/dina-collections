@@ -1,5 +1,5 @@
 const createLog = require('../../../utilities/log')
-const uuidv1 = require('uuid/v1')
+const uuidv1 = require('uuid/v4')
 
 const log = createLog('logIncomingRequest')
 

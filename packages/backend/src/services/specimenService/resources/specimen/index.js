@@ -7,6 +7,9 @@ module.exports = {
   basePath: '/api/specimen/v01',
   operations: [
     {
+      errors: {
+        '400': ['REQUEST_BODY_VALIDATION_ERROR'],
+      },
       exampleRequests: { fullFormExample, primary: createRequestSuccess },
       type: 'create',
       validateBody,
