@@ -6,7 +6,9 @@ const expectedActionCreators = [
   'createPhysicalUnit',
   'createStorageLocation',
   'getPhysicalUnit',
+  'getPhysicalUnits',
   'getStorageLocation',
+  'getStorageLocations',
   'updatePhysicalUnit',
   'updateStorageLocation',
 ]

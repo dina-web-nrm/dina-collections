@@ -42,6 +42,9 @@ describe('domainModules/storageService/actionCreators/getStorageLocation', () =>
     const callSpy = jest.fn()
 
     apiClient.mock({
+      responses: {
+        [operationId]: { data: {} },
+      },
       spies: {
         [operationId]: callSpy,
       },

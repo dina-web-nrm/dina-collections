@@ -32,7 +32,7 @@ export default function updateStorageLocation(
 
     return apiClient.call(UPDATE_STORAGE_LOCATION, callParams).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_SUCCESS,

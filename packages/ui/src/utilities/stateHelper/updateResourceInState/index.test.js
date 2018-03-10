@@ -1,6 +1,6 @@
 import deepFreeze from 'deep-freeze'
 
-import updateResourceInState from './updateResourceInState'
+import updateResourceInState from './index'
 
 describe('utilities/stateHelper/updateResourceInState', () => {
   it('returns state if action does not contain payload', () => {

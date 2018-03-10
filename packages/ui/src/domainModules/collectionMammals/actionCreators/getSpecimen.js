@@ -37,7 +37,7 @@ export default function getSpecimen({ id, throwError = false } = {}) {
               .then(() => {
                 dispatch({
                   meta,
-                  payload: flattenObjectResponse(response),
+                  payload: flattenObjectResponse(response.data),
                   type: COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS,
                 })
                 return response
@@ -58,7 +58,7 @@ export default function getSpecimen({ id, throwError = false } = {}) {
 
           dispatch({
             meta,
-            payload: flattenObjectResponse(response),
+            payload: flattenObjectResponse(response.data),
             type: COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS,
           })
           return response

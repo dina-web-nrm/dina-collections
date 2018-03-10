@@ -1,3 +1,4 @@
+import flattenArrayResponse from './flattenArrayResponse'
 import flattenObjectResponse from './flattenObjectResponse'
 
-export { flattenObjectResponse }
+export { flattenArrayResponse, flattenObjectResponse }

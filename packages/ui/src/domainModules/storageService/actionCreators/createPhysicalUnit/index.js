@@ -26,7 +26,7 @@ export default function createPhysicalUnit(
 
     return apiClient.call(CREATE_PHYSICAL_UNIT, { body }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS,

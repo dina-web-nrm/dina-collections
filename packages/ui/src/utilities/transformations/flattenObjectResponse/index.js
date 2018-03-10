@@ -1,6 +1,6 @@
 export const flattenRelationships = relationships => {
   if (!relationships) {
-    return {}
+    return relationships
   }
 
   const relationshipKeys = Object.keys(relationships)
@@ -17,12 +17,8 @@ export const flattenRelationships = relationships => {
   }, {})
 }
 
-export default function flattenObjectResponse(response) {
-  if (!response || !response.data) {
-    return response
-  }
-
-  const { id, attributes, relationships, type } = response.data
+export default function flattenObjectResponse(responseData = {}) {
+  const { id, attributes, relationships, type } = responseData || {}
 
   const flattenedRelationships = flattenRelationships(relationships)
 

@@ -32,7 +32,7 @@ export default function updatePhysicalUnit(
 
     return apiClient.call(UPDATE_PHYSICAL_UNIT, callParams).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_SUCCESS,
