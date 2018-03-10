@@ -14,7 +14,7 @@ export default function getStorageLocations({ throwError = false } = {}) {
     })
     return apiClient.call(GET_STORAGE_LOCATIONS).then(
       response => {
-        const transformedResponse = flattenArrayResponse(response)
+        const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: STORAGE_SERVICE_GET_STORAGE_LOCATIONS_SUCCESS,

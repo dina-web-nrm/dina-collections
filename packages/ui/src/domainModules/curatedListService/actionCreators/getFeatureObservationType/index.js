@@ -19,7 +19,7 @@ export default function getFeatureObservationType(
     })
     return apiClient.call(GET_FEATURE_OBSERVATION_TYPE, { pathParams }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           meta: { id },
           payload: transformedResponse,

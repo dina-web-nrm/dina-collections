@@ -42,6 +42,9 @@ describe('domainModules/identifierService/actionCreators/getCatalogNumber', () =
     const callSpy = jest.fn()
 
     apiClient.mock({
+      responses: {
+        [operationId]: { data: {} },
+      },
       spies: {
         [operationId]: callSpy,
       },

@@ -26,7 +26,7 @@ export default function createFeatureObservationType(
 
     return apiClient.call(CREATE_FEATURE_OBSERVATION_TYPE, { body }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_SUCCESS,

@@ -7,8 +7,6 @@ describe('utilities/transformations/flattenArrayResponse', () => {
     expect(flattenArrayResponse(undefined)).toEqual([])
     expect(flattenArrayResponse(null)).toEqual([])
     expect(flattenArrayResponse({})).toEqual([])
-    expect(flattenArrayResponse({ data: undefined })).toEqual([])
-    expect(flattenArrayResponse({ data: [] })).toEqual([])
   })
 
   it('flattens API response with array of resources', () => {
@@ -50,10 +48,10 @@ describe('utilities/transformations/flattenArrayResponse', () => {
       ],
     }
 
-    const testValue = flattenArrayResponse(response)
+    const testValue = flattenArrayResponse(response.data)
     const expectedResult = [
-      flattenObjectResponse({ data: response.data[0] }),
-      flattenObjectResponse({ data: response.data[1] }),
+      flattenObjectResponse(response.data[0]),
+      flattenObjectResponse(response.data[1]),
     ]
 
     expect(testValue).toEqual(expectedResult)

@@ -44,6 +44,9 @@ describe('domainModules/storageService/actionCreators/createPhysicalUnit', () =>
     const callSpy = jest.fn()
 
     apiClient.mock({
+      responses: {
+        [operationId]: { data: {} },
+      },
       spies: {
         [operationId]: callSpy,
       },

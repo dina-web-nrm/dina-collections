@@ -17,7 +17,7 @@ export default function getStorageLocation({ id, throwError = false } = {}) {
     })
     return apiClient.call(GET_STORAGE_LOCATION, { pathParams }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           meta: { id },
           payload: transformedResponse,

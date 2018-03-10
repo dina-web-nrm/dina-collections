@@ -17,8 +17,8 @@ export const flattenRelationships = relationships => {
   }, {})
 }
 
-export default function flattenObjectResponse(response = {}) {
-  const { id, attributes, relationships, type } = response.data || {}
+export default function flattenObjectResponse(responseData = {}) {
+  const { id, attributes, relationships, type } = responseData || {}
 
   const flattenedRelationships = flattenRelationships(relationships)
 

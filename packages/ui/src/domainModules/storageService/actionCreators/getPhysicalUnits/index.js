@@ -14,7 +14,7 @@ export default function getPhysicalUnits({ throwError = false } = {}) {
     })
     return apiClient.call(GET_PHYSICAL_UNITS).then(
       response => {
-        const transformedResponse = flattenArrayResponse(response)
+        const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: STORAGE_SERVICE_GET_PHYSICAL_UNITS_SUCCESS,

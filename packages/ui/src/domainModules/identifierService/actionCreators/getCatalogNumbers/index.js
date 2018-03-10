@@ -14,7 +14,7 @@ export default function getCatalogNumbers({ throwError = false } = {}) {
     })
     return apiClient.call(GET_CATALOG_NUMBERS).then(
       response => {
-        const transformedResponse = flattenArrayResponse(response)
+        const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: IDENTIFIER_SERVICE_GET_CATALOG_NUMBERS_SUCCESS,

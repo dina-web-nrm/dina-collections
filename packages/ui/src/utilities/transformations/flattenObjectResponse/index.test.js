@@ -38,10 +38,8 @@ describe('utilities/transformations/flattenObjectResponse', () => {
         type: undefined,
       }
 
+      expect(flattenObjectResponse(undefined)).toEqual(undefinedProperties)
       expect(flattenObjectResponse({})).toEqual(undefinedProperties)
-      expect(flattenObjectResponse({ data: undefined })).toEqual(
-        undefinedProperties
-      )
     })
 
     it('flattens API response with singular resource', () => {
@@ -76,7 +74,7 @@ describe('utilities/transformations/flattenObjectResponse', () => {
         },
       }
 
-      const testValue = flattenObjectResponse(response)
+      const testValue = flattenObjectResponse(response.data)
       const expectedResult = {
         ...attributes,
         ...flattenRelationships(relationships),

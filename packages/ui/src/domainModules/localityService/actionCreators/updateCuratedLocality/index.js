@@ -32,7 +32,7 @@ export default function updateCuratedLocality(
 
     return apiClient.call(UPDATE_CURATED_LOCALITY, callParams).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_SUCCESS,

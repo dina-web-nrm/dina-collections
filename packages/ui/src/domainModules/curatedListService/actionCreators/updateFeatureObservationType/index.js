@@ -32,7 +32,7 @@ export default function updateFeatureObservationType(
 
     return apiClient.call(UPDATE_FEATURE_OBSERVATION_TYPE, callParams).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_SUCCESS,

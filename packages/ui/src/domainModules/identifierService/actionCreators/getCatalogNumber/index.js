@@ -17,7 +17,7 @@ export default function getCatalogNumber({ id, throwError = false } = {}) {
     })
     return apiClient.call(GET_CATALOG_NUMBER, { pathParams }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           meta: { id },
           payload: transformedResponse,

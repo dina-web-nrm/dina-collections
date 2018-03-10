@@ -42,6 +42,9 @@ describe('domainModules/curatedListService/actionCreators/getFeatureObservationT
     const callSpy = jest.fn()
 
     apiClient.mock({
+      responses: {
+        [operationId]: { data: [] },
+      },
       spies: {
         [operationId]: callSpy,
       },

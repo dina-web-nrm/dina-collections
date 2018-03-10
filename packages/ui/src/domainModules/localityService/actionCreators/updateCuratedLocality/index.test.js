@@ -47,6 +47,9 @@ describe('domainModules/localityService/actionCreators/updateCuratedLocality', (
     const callSpy = jest.fn()
 
     apiClient.mock({
+      responses: {
+        [operationId]: { data: {} },
+      },
       spies: {
         [operationId]: callSpy,
       },

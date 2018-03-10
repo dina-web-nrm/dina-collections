@@ -17,7 +17,7 @@ export default function getCuratedLocality({ id, throwError = false } = {}) {
     })
     return apiClient.call(GET_CURATED_LOCALITY, { pathParams }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           meta: { id },
           payload: transformedResponse,

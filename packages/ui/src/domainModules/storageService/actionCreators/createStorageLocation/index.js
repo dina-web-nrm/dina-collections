@@ -26,7 +26,7 @@ export default function createStorageLocation(
 
     return apiClient.call(CREATE_STORAGE_LOCATION, { body }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: STORAGE_SERVICE_CREATE_STORAGE_LOCATION_SUCCESS,

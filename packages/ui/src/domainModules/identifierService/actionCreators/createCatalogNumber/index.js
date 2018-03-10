@@ -26,7 +26,7 @@ export default function createCatalogNumber(
 
     return apiClient.call(CREATE_CATALOG_NUMBER, { body }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: IDENTIFIER_SERVICE_CREATE_CATALOG_NUMBER_SUCCESS,

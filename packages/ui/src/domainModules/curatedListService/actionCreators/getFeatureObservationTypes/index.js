@@ -16,7 +16,7 @@ export default function getFeatureObservationTypes(
     })
     return apiClient.call(GET_FEATURE_OBSERVATION_TYPES).then(
       response => {
-        const transformedResponse = flattenArrayResponse(response)
+        const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_SUCCESS,

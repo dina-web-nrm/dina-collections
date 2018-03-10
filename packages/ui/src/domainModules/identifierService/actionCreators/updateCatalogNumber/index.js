@@ -32,7 +32,7 @@ export default function updateCatalogNumber(
 
     return apiClient.call(UPDATE_CATALOG_NUMBER, callParams).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: IDENTIFIER_SERVICE_UPDATE_CATALOG_NUMBER_SUCCESS,

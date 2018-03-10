@@ -14,7 +14,7 @@ export default function getCuratedLocalities({ throwError = false } = {}) {
     })
     return apiClient.call(GET_CURATED_LOCALITIES).then(
       response => {
-        const transformedResponse = flattenArrayResponse(response)
+        const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_SUCCESS,

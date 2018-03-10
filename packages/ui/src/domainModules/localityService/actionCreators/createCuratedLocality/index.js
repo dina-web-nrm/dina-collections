@@ -26,7 +26,7 @@ export default function createCuratedLocality(
 
     return apiClient.call(CREATE_CURATED_LOCALITY, { body }).then(
       response => {
-        const transformedResponse = flattenObjectResponse(response)
+        const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
           payload: transformedResponse,
           type: LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_SUCCESS,
