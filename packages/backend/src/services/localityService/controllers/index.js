@@ -1,0 +1,1 @@
+exports.curatedLocalityGetWhere = require('./curatedLocalityGetWhere')

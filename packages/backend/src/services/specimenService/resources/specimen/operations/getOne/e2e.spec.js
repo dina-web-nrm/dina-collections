@@ -74,6 +74,7 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataPhysicalUnitRelationsId,
               expectedType: 'specimen',
               relationships: {
+                curatedLocalities: { data: [] },
                 featureObservationTypes: {
                   data: [],
                 },
@@ -105,6 +106,7 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataNoRelationsId,
               expectedType: 'specimen',
               relationships: {
+                curatedLocalities: { data: [] },
                 featureObservationTypes: {
                   data: [],
                 },

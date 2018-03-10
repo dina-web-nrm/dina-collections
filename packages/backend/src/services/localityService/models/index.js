@@ -1,3 +1,4 @@
+const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
 const curatedLocalityFactory = function curatedLocality({ sequelize }) {
@@ -30,5 +31,9 @@ module.exports = [
   {
     factory: setupRelations,
     name: 'setupRelations',
+  },
+  {
+    factory: loadInitialData,
+    name: 'loadInitialData',
   },
 ]

@@ -28,6 +28,18 @@
               }
             }
           }
+        },
+        "curatedLocalities": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__curatedLocality",
+                "x-reference-type": "external"
+              }
+            }
+          }
         }
       }
     },
