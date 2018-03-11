@@ -1,13 +1,22 @@
-const backendError400 = require('common/src/error/errorFactories/backendError404')
+const backendError404 = require('common/src/error/errorFactories/backendError404')
+const backendError400 = require('common/src/error/errorFactories/backendError400')
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
 module.exports = function updateRelationHasOne({ operation, models }) {
-  const { relation: { key: relationKey }, resource } = operation
+  const {
+    relation: { key: relationKey, resource: relationResource },
+    resource,
+  } = operation
 
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
+  }
+
+  const relationModel = models[relationResource]
+  if (!relationModel) {
+    throw new Error(`Relation model not provided for ${relationResource}`)
   }
 
   const foreignKeyName = `${relationKey}VersionId`
@@ -15,25 +24,37 @@ module.exports = function updateRelationHasOne({ operation, models }) {
   return ({ request }) => {
     const { body: { data: { id: targetModelId, type } } } = request
     const { pathParams: { id: coreModelId } } = request
-    if (!type || type !== relationKey) {
+    if (!type || type !== relationResource) {
       backendError400({
         code: 'REQUEST_ERROR',
-        detail: `Wrong type. ${type} !== ${relationKey}`,
+        detail: `Wrong type. ${type} !== ${relationResource}`,
       })
     }
-    return model
-      .update({
-        foreignKeyName,
-        foreignKeyValue: targetModelId,
-        id: coreModelId,
-      })
-      .then(transformOutput)
-      .then(output => {
-        return createObjectResponse({
-          data: output,
-          id: output.id,
-          type: resource,
-        })
+
+    return relationModel
+      .getById({ id: targetModelId, raw: true })
+      .then(fetchedRelationResource => {
+        if (!fetchedRelationResource) {
+          backendError404({
+            code: 'RESOURCE_NOT_FOUND_ERROR',
+            detail: `Cant find relation resource with id ${targetModelId}`,
+          })
+        }
+        const { versionId: targetVersionId } = fetchedRelationResource
+        return model
+          .update({
+            foreignKeyName,
+            foreignKeyValue: targetVersionId,
+            id: coreModelId,
+          })
+          .then(transformOutput)
+          .then(output => {
+            return createObjectResponse({
+              data: output,
+              id: output.id,
+              type: resource,
+            })
+          })
       })
   }
 }

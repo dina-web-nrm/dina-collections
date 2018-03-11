@@ -2134,6 +2134,72 @@
         ]
       }
     },
+    "/api/locality/v01/curatedLocalities/{id}/relationships/parent": {
+      "patch": {
+        "operationId": "updateCuratedLocalityParent",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "curatedLocality id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateCuratedLocalityParentRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocalityParentResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update curatedLocality -> parent",
+        "tags": [
+          "localityService"
+        ]
+      }
+    },
     "/api/specimen/v01/specimens": {
       "post": {
         "operationId": "createSpecimen",
@@ -9544,32 +9610,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -9722,32 +9762,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -9787,6 +9801,33 @@
                   }
                 },
                 "type": "object"
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "updateCuratedLocalityParentRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "curatedLocality",
+                "enum": [
+                  "curatedLocality"
+                ],
+                "type": "string"
               }
             }
           }
@@ -12009,32 +12050,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -12145,32 +12160,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -12240,6 +12229,48 @@
         "x-examples": {},
         "description": ""
       },
+      "updateCuratedLocalityParentResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "curatedLocality",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
       "getCuratedLocalityResponse": {
         "additionalProperties": false,
         "properties": {
@@ -12256,32 +12287,6 @@
               "relationships": {
                 "properties": {
                   "children": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "descendants": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -12394,32 +12399,6 @@
                 "relationships": {
                   "properties": {
                     "children": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "curatedLocality"
-                                ],
-                                "example": "curatedLocality",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "descendants": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {

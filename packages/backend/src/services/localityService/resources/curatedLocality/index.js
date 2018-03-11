@@ -11,7 +11,11 @@ module.exports = {
       type: 'update',
     },
     {
-      includeRelations: false,
+      relationKey: 'parent',
+      type: 'updateRelationHasOne',
+    },
+    {
+      includeRelations: true,
       queryParams: {
         'filter[descendantLevels]': {
           description:
@@ -81,10 +85,10 @@ module.exports = {
       format: 'array',
       resource: 'curatedLocality',
     },
-    descendants: {
-      format: 'array',
-      resource: 'curatedLocality',
-    },
+    // descendants: {
+    //   format: 'array',
+    //   resource: 'curatedLocality',
+    // },
     parent: {
       format: 'object',
       resource: 'curatedLocality',

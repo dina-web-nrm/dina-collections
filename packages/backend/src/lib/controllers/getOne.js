@@ -16,7 +16,6 @@ module.exports = function getOne({ operation, models }) {
     if (relations && includeRelations) {
       include = buildIncludeArray({ models, relations })
     }
-
     const { pathParams: { id } } = request
     return model.getById({ id, include, raw: false }).then(fetchedResource => {
       if (!fetchedResource) {
