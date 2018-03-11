@@ -14,6 +14,7 @@ module.exports = function buildEndpoint({
   resource,
   response: responseInput = {},
   summary,
+  tags,
 }) {
   const pathParams = rawPathParams.reduce((obj, key) => {
     return {
@@ -64,5 +65,6 @@ module.exports = function buildEndpoint({
         ]
       : undefined,
     summary,
+    tags,
   }
 }

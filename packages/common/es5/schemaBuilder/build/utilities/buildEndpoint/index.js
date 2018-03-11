@@ -27,7 +27,8 @@ module.exports = function buildEndpoint(_ref) {
       resource = _ref.resource,
       _ref$response = _ref.response,
       responseInput = _ref$response === undefined ? {} : _ref$response,
-      summary = _ref.summary;
+      summary = _ref.summary,
+      tags = _ref.tags;
 
   var pathParams = rawPathParams.reduce(function (obj, key) {
     return (0, _extends4.default)({}, obj, (0, _defineProperty3.default)({}, key, {
@@ -66,6 +67,7 @@ module.exports = function buildEndpoint(_ref) {
     security: auth ? [{
       bearerAuth: []
     }] : undefined,
-    summary: summary
+    summary: summary,
+    tags: tags
   };
 };

@@ -1,9 +1,10 @@
+const buildEndpoints = require('./buildEndpoints')
 const createOpenApi = require('./openApi')
 const createModels = require('./models')
 
 module.exports = function build({
   apis,
-  endpoints,
+  endpoints: endpointsInput,
   errors,
   info,
   models,
@@ -12,6 +13,8 @@ module.exports = function build({
   security,
   servers,
 }) {
+  const endpoints = buildEndpoints(endpointsInput)
+
   const openApi = createOpenApi({
     apis,
     endpoints,
