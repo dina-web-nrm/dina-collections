@@ -7,6 +7,9 @@ module.exports = {
   basePath: '/api/specimen/v01',
   operations: [
     {
+      errors: {
+        '400': ['REQUEST_BODY_VALIDATION_ERROR'],
+      },
       exampleRequests: { fullFormExample, primary: createRequestSuccess },
       type: 'create',
       validateBody,
@@ -29,6 +32,14 @@ module.exports = {
     },
     {
       relationKey: 'featureObservationTypes',
+      type: 'getRelationHasMany',
+    },
+    {
+      relationKey: 'curatedLocalities',
+      type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'curatedLocalities',
       type: 'getRelationHasMany',
     },
     {
@@ -65,6 +76,11 @@ module.exports = {
     },
   ],
   relations: {
+    curatedLocalities: {
+      format: 'array',
+      resource: 'curatedLocality',
+      storeInDocument: true,
+    },
     featureObservationTypes: {
       format: 'array',
       resource: 'featureObservationType',

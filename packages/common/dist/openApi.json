@@ -76,7 +76,7 @@
     }
   ],
   "paths": {
-    "/api/agent//v01/agents": {
+    "/api/agent/v01/agents": {
       "post": {
         "operationId": "createAgent",
         "parameters": [
@@ -119,6 +119,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createAgent-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createAgent-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -163,6 +183,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAgents-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAgents-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -176,7 +216,7 @@
         ]
       }
     },
-    "/api/agent//v01/agents/{id}": {
+    "/api/agent/v01/agents/{id}": {
       "get": {
         "operationId": "getAgent",
         "parameters": [
@@ -222,6 +262,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAgent-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAgent-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getAgent-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -286,6 +356,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateAgent-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateAgent-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateAgent-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -401,6 +501,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createExpedition-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createExpedition-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -445,6 +565,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getExpeditions-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getExpeditions-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -501,6 +641,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getExpedition-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getExpedition-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getExpedition-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -565,6 +735,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateExpedition-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateExpedition-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateExpedition-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -621,6 +821,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createDistinguishedUnitObservationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createDistinguishedUnitObservationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -665,6 +885,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypes-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypes-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -731,6 +971,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -785,6 +1055,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getDistinguishedUnitObservationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -841,6 +1141,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createFeatureObservationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createFeatureObservationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -885,6 +1205,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationTypes-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationTypes-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -951,6 +1291,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateFeatureObservationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateFeatureObservationType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateFeatureObservationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1005,6 +1375,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getFeatureObservationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1061,6 +1461,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createCatalogNumber-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createCatalogNumber-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1105,6 +1525,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCatalogNumbers-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCatalogNumbers-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1171,6 +1611,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCatalogNumber-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCatalogNumber-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCatalogNumber-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1225,6 +1695,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCatalogNumber-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCatalogNumber-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCatalogNumber-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1281,6 +1781,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createCuratedLocality-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createCuratedLocality-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1296,6 +1816,26 @@
       "get": {
         "operationId": "getCuratedLocalities",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "example": "country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[search]",
+            "description": "Filter by string search",
+            "example": "swe",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "exampleId",
@@ -1325,6 +1865,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocalities-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocalities-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1391,6 +1951,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocality-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocality-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocality-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1419,7 +2009,7 @@
           {
             "in": "query",
             "name": "filter[descendantLevels]",
-            "description": "Levels of descendants to include. Only relevant if relationships descendants provided",
+            "description": "NOT IMPLEMENTED - Levels of descendants to include. Only relevant if relationships descendants provided",
             "example": [
               "country",
               "city"
@@ -1435,7 +2025,7 @@
           {
             "in": "query",
             "name": "includes",
-            "description": "Add includes",
+            "description": "NOT IMPLEMENTED - Add includes",
             "example": [
               "descendants",
               "children"
@@ -1501,6 +2091,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocality-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocality-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getCuratedLocality-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1557,6 +2177,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createSpecimen-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createSpecimen-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1621,6 +2261,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimens-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimens-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1687,6 +2347,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimen-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimen-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimen-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1741,6 +2431,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimen-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimen-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimen-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1807,6 +2527,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnits-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnits-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnits-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1861,6 +2611,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenPhysicalUnits-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenPhysicalUnits-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenPhysicalUnits-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1927,6 +2707,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenFeatureObservationTypes-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenFeatureObservationTypes-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenFeatureObservationTypes-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1981,6 +2791,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenFeatureObservationTypes-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenFeatureObservationTypes-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenFeatureObservationTypes-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -1989,6 +2829,186 @@
           }
         ],
         "summary": "Find specimen -> featureObservationTypes",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/specimens/{id}/relationships/curatedLocalities": {
+      "patch": {
+        "operationId": "updateSpecimenCuratedLocalities",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateSpecimenCuratedLocalitiesRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalitiesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalities-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalities-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalities-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update specimen -> curatedLocalities",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "get": {
+        "operationId": "getSpecimenCuratedLocalities",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenCuratedLocalitiesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenCuratedLocalities-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenCuratedLocalities-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenCuratedLocalities-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find specimen -> curatedLocalities",
         "tags": [
           "specimenService"
         ]
@@ -2048,6 +3068,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenVersion-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenVersion-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenVersion-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2104,6 +3154,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenVersions-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenVersions-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2186,6 +3256,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createPhysicalUnit-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createPhysicalUnit-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2230,6 +3320,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnits-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnits-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2296,6 +3406,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePhysicalUnit-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePhysicalUnit-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePhysicalUnit-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2350,6 +3490,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnit-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnit-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnit-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2416,6 +3586,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocation-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocation-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocation-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2470,6 +3670,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocation-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocation-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocation-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2537,6 +3767,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitVersion-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitVersion-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitVersion-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2593,6 +3853,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitVersions-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPhysicalUnitVersions-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2649,6 +3929,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createStorageLocation-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createStorageLocation-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2693,6 +3993,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocations-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocations-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2759,6 +4079,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateStorageLocation-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateStorageLocation-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateStorageLocation-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2813,6 +4163,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocation-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocation-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocation-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2869,6 +4249,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnits-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnits-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnits-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2949,6 +4359,36 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxonById-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxonById-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxonById-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -2995,6 +4435,26 @@
               }
             },
             "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxaByName-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getTaxaByName-500"
+                }
+              }
+            },
+            "description": "Error: 500"
           }
         },
         "security": [
@@ -3011,6 +4471,24 @@
   },
   "components": {
     "schemas": {
+      "400": {
+        "description": "Bad Request",
+        "example": "400",
+        "title": "400",
+        "type": "integer"
+      },
+      "404": {
+        "description": "Not Found",
+        "example": "404",
+        "title": "404",
+        "type": "integer"
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "example": "500",
+        "title": "500",
+        "type": "integer"
+      },
       "agent": {
         "additionalProperties": false,
         "description": "WIP",
@@ -3142,6 +4620,20 @@
         "x-category": "core",
         "x-modelType": "model"
       },
+      "translatedString": {
+        "additionalProperties": false,
+        "properties": {
+          "en": {
+            "type": "string"
+          },
+          "sv": {
+            "type": "string"
+          }
+        },
+        "x-category": "core",
+        "x-modelType": "model",
+        "description": ""
+      },
       "verticalPosition": {
         "additionalProperties": false,
         "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
@@ -3272,19 +4764,103 @@
       "featureObservationType": {
         "additionalProperties": false,
         "properties": {
-          "typeName": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString"
+          },
+          "group": {
+            "type": "string"
+          },
+          "selectableValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/selectableValue"
+            }
+          },
+          "selectableUnits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/selectableUnit"
+            }
+          },
+          "selectableMethods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/selectableMethod"
+            }
+          },
+          "description": {
             "type": "string"
           },
           "id": {
             "type": "string"
           }
         },
-        "required": [
-          "typeName"
-        ],
         "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
         "x-category": "curatedListApi",
         "x-modelType": "model"
+      },
+      "selectableMethod": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString"
+          },
+          "description": {
+            "type": "string"
+          },
+          "methodType": {
+            "type": "string"
+          }
+        },
+        "x-category": "curatedListApi",
+        "x-modelType": "model",
+        "description": ""
+      },
+      "selectableUnit": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString"
+          },
+          "description": {
+            "type": "string"
+          },
+          "unitType": {
+            "type": "string"
+          }
+        },
+        "x-category": "curatedListApi",
+        "x-modelType": "model",
+        "description": ""
+      },
+      "selectableValue": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString"
+          },
+          "description": {
+            "type": "string"
+          },
+          "valueType": {
+            "type": "string"
+          }
+        },
+        "x-category": "curatedListApi",
+        "x-modelType": "model",
+        "description": ""
       },
       "catalogNumber": {
         "type": "object",
@@ -3365,9 +4941,9 @@
             "type": "string",
             "description": "Description of the locality"
           },
-          "type": {
+          "group": {
             "type": "string",
-            "description": "Type of locality",
+            "description": "Group of locality",
             "enum": [
               "continent",
               "country",
@@ -4034,6 +5610,3452 @@
         "x-modelType": "model",
         "description": ""
       },
+      "BaseError": {
+        "properties": {
+          "description": {
+            "description": "Description of the returned errorCode",
+            "type": "string"
+          },
+          "detail": {
+            "description": "a human-readable explanation specific to this occurrence of the problem.",
+            "type": "string"
+          },
+          "id": {
+            "description": "a unique identifier for this particular occurrence of the problem.",
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "parameterErrors": {
+            "type": "string"
+          },
+          "title": {
+            "description": "A short, human-readable summary of the problem. Associated with the error code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "code"
+        ],
+        "title": "Base error",
+        "type": "object"
+      },
+      "REQUEST_BODY_VALIDATION_ERROR": {
+        "description": "Input body dont pass validations",
+        "example": "REQUEST_BODY_VALIDATION_ERROR",
+        "title": "REQUEST_BODY_VALIDATION_ERROR",
+        "type": "string"
+      },
+      "REQUEST_ERROR": {
+        "description": "Something is wrong with the request. See details",
+        "example": "REQUEST_ERROR",
+        "title": "REQUEST_ERROR",
+        "type": "string"
+      },
+      "createAgent-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "RESPONSE_VALIDATION_ERROR": {
+        "description": "Output dont pass validations",
+        "example": "RESPONSE_VALIDATION_ERROR",
+        "title": "RESPONSE_VALIDATION_ERROR",
+        "type": "string"
+      },
+      "INTERNAL_SERVER_ERROR": {
+        "description": "Error occured on server",
+        "example": "INTERNAL_SERVER_ERROR",
+        "title": "INTERNAL_SERVER_ERROR",
+        "type": "string"
+      },
+      "createAgent-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getAgent-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "RESOURCE_NOT_FOUND_ERROR": {
+        "description": "Requested resource not found. See details",
+        "example": "RESOURCE_NOT_FOUND_ERROR",
+        "title": "RESOURCE_NOT_FOUND_ERROR",
+        "type": "string"
+      },
+      "getAgent-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getAgent-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateAgent-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateAgent-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateAgent-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getAgents-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getAgents-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createExpedition-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createExpedition-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getExpedition-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getExpedition-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getExpedition-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateExpedition-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateExpedition-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateExpedition-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getExpeditions-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getExpeditions-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createDistinguishedUnitObservationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createDistinguishedUnitObservationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateDistinguishedUnitObservationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateDistinguishedUnitObservationType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateDistinguishedUnitObservationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getDistinguishedUnitObservationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getDistinguishedUnitObservationType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getDistinguishedUnitObservationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getDistinguishedUnitObservationTypes-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getDistinguishedUnitObservationTypes-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createFeatureObservationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createFeatureObservationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateFeatureObservationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateFeatureObservationType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateFeatureObservationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getFeatureObservationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getFeatureObservationType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getFeatureObservationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getFeatureObservationTypes-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getFeatureObservationTypes-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createCatalogNumber-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createCatalogNumber-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateCatalogNumber-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateCatalogNumber-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateCatalogNumber-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getCatalogNumber-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getCatalogNumber-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getCatalogNumber-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getCatalogNumbers-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getCatalogNumbers-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createCuratedLocality-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createCuratedLocality-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateCuratedLocality-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateCuratedLocality-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateCuratedLocality-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getCuratedLocality-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getCuratedLocality-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getCuratedLocality-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getCuratedLocalities-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getCuratedLocalities-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createSpecimen-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createSpecimen-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateSpecimen-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateSpecimen-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateSpecimen-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateSpecimenPhysicalUnits-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateSpecimenPhysicalUnits-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateSpecimenPhysicalUnits-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimenPhysicalUnits-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimenPhysicalUnits-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getSpecimenPhysicalUnits-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateSpecimenFeatureObservationTypes-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateSpecimenFeatureObservationTypes-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateSpecimenFeatureObservationTypes-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimenFeatureObservationTypes-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimenFeatureObservationTypes-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getSpecimenFeatureObservationTypes-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateSpecimenCuratedLocalities-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateSpecimenCuratedLocalities-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateSpecimenCuratedLocalities-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimenCuratedLocalities-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimenCuratedLocalities-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getSpecimenCuratedLocalities-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimen-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimen-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getSpecimen-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimens-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimens-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimenVersion-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimenVersion-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getSpecimenVersion-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimenVersions-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimenVersions-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createPhysicalUnit-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createPhysicalUnit-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updatePhysicalUnit-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updatePhysicalUnit-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updatePhysicalUnit-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updatePhysicalUnitStorageLocation-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updatePhysicalUnitStorageLocation-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updatePhysicalUnitStorageLocation-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPhysicalUnitStorageLocation-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPhysicalUnitStorageLocation-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getPhysicalUnitStorageLocation-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPhysicalUnit-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPhysicalUnit-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getPhysicalUnit-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPhysicalUnits-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPhysicalUnits-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPhysicalUnitVersion-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPhysicalUnitVersion-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getPhysicalUnitVersion-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPhysicalUnitVersions-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPhysicalUnitVersions-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createStorageLocation-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createStorageLocation-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateStorageLocation-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateStorageLocation-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateStorageLocation-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getStorageLocationPhysicalUnits-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getStorageLocationPhysicalUnits-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getStorageLocationPhysicalUnits-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getStorageLocation-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getStorageLocation-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getStorageLocation-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getStorageLocations-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getStorageLocations-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getTaxonById-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getTaxonById-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getTaxonById-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getTaxaByName-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getTaxaByName-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
       "createAgentRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -4327,7 +9349,10 @@
               "id": "1234",
               "type": "featureObservationType",
               "attributes": {
-                "typeName": "string"
+                "name": {
+                  "en": "bone",
+                  "sv": "ben"
+                }
               }
             }
           }
@@ -4337,7 +9362,10 @@
             "id": "1234",
             "type": "featureObservationType",
             "attributes": {
-              "typeName": "string"
+              "name": {
+                "en": "bone",
+                "sv": "ben"
+              }
             }
           }
         },
@@ -4786,6 +9814,32 @@
               },
               "relationships": {
                 "properties": {
+                  "curatedLocalities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureObservationTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -4849,11 +9903,27 @@
             "data": {
               "type": "specimen",
               "relationships": {
-                "physicalUnits": {
+                "curatedLocalities": {
                   "data": [
                     {
-                      "id": "2234",
-                      "type": "physicalUnit"
+                      "id": "1",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "2",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "3",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "4",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "5",
+                      "type": "curatedLocality"
                     }
                   ]
                 },
@@ -4862,6 +9932,14 @@
                     {
                       "id": "1",
                       "type": "featureObservationType"
+                    }
+                  ]
+                },
+                "physicalUnits": {
+                  "data": [
+                    {
+                      "id": "2234",
+                      "type": "physicalUnit"
                     }
                   ]
                 }
@@ -4923,24 +10001,24 @@
                           "coordinatesVerbatim": "coordinatesVerbatim",
                           "curatedLocalities": [
                             {
-                              "id": "Africa",
-                              "type": "continent"
+                              "id": "1",
+                              "type": "curatedLocality"
                             },
                             {
-                              "id": "Algeria",
-                              "type": "country"
+                              "id": "2",
+                              "type": "curatedLocality"
                             },
                             {
-                              "id": "Balearic Islands",
-                              "type": "province"
+                              "id": "3",
+                              "type": "curatedLocality"
                             },
                             {
-                              "id": "GaspÃ© Peninsula",
-                              "type": "district"
+                              "id": "4",
+                              "type": "curatedLocality"
                             },
                             {
-                              "id": "Skansen",
-                              "type": "locality"
+                              "id": "5",
+                              "type": "curatedLocality"
                             }
                           ],
                           "georeferenceSourcesText": "georeferenceSourcesText",
@@ -4971,11 +10049,27 @@
             "data": {
               "type": "specimen",
               "relationships": {
-                "physicalUnits": {
+                "curatedLocalities": {
                   "data": [
                     {
-                      "id": "2234",
-                      "type": "physicalUnit"
+                      "id": "1",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "2",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "3",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "4",
+                      "type": "curatedLocality"
+                    },
+                    {
+                      "id": "5",
+                      "type": "curatedLocality"
                     }
                   ]
                 },
@@ -4984,6 +10078,14 @@
                     {
                       "id": "2",
                       "type": "featureObservationType"
+                    }
+                  ]
+                },
+                "physicalUnits": {
+                  "data": [
+                    {
+                      "id": "2234",
+                      "type": "physicalUnit"
                     }
                   ]
                 }
@@ -5014,32 +10116,24 @@
                         "localityInformation": {
                           "curatedLocalities": [
                             {
-                              "name": "string",
-                              "versionId": "string",
-                              "createdAt": "string",
-                              "createdBy": "string",
-                              "updatedBy": "string",
-                              "updatedAt": "string",
-                              "id": "string",
-                              "description": "string",
-                              "type": "continent",
-                              "centralPosition": {
-                                "latitude": "string",
-                                "longitude": "string",
-                                "geodeticDatum": "string",
-                                "uncertaintyInMeters": 0
-                              },
-                              "polygon": {
-                                "vertices": [
-                                  null
-                                ]
-                              },
-                              "verticalPosition": {
-                                "maximumDepthInMeters": 0,
-                                "maximumElevationInMeters": 0,
-                                "minimumDepthInMeters": 0,
-                                "minimumElevationInMeters": 0
-                              }
+                              "id": "1",
+                              "type": "curatedLocality"
+                            },
+                            {
+                              "id": "2",
+                              "type": "curatedLocality"
+                            },
+                            {
+                              "id": "3",
+                              "type": "curatedLocality"
+                            },
+                            {
+                              "id": "4",
+                              "type": "curatedLocality"
+                            },
+                            {
+                              "id": "5",
+                              "type": "curatedLocality"
                             }
                           ],
                           "position": {
@@ -5171,11 +10265,27 @@
           "data": {
             "type": "specimen",
             "relationships": {
-              "physicalUnits": {
+              "curatedLocalities": {
                 "data": [
                   {
-                    "id": "2234",
-                    "type": "physicalUnit"
+                    "id": "1",
+                    "type": "curatedLocality"
+                  },
+                  {
+                    "id": "2",
+                    "type": "curatedLocality"
+                  },
+                  {
+                    "id": "3",
+                    "type": "curatedLocality"
+                  },
+                  {
+                    "id": "4",
+                    "type": "curatedLocality"
+                  },
+                  {
+                    "id": "5",
+                    "type": "curatedLocality"
                   }
                 ]
               },
@@ -5184,6 +10294,14 @@
                   {
                     "id": "2",
                     "type": "featureObservationType"
+                  }
+                ]
+              },
+              "physicalUnits": {
+                "data": [
+                  {
+                    "id": "2234",
+                    "type": "physicalUnit"
                   }
                 ]
               }
@@ -5214,32 +10332,24 @@
                       "localityInformation": {
                         "curatedLocalities": [
                           {
-                            "name": "string",
-                            "versionId": "string",
-                            "createdAt": "string",
-                            "createdBy": "string",
-                            "updatedBy": "string",
-                            "updatedAt": "string",
-                            "id": "string",
-                            "description": "string",
-                            "type": "continent",
-                            "centralPosition": {
-                              "latitude": "string",
-                              "longitude": "string",
-                              "geodeticDatum": "string",
-                              "uncertaintyInMeters": 0
-                            },
-                            "polygon": {
-                              "vertices": [
-                                null
-                              ]
-                            },
-                            "verticalPosition": {
-                              "maximumDepthInMeters": 0,
-                              "maximumElevationInMeters": 0,
-                              "minimumDepthInMeters": 0,
-                              "minimumElevationInMeters": 0
-                            }
+                            "id": "1",
+                            "type": "curatedLocality"
+                          },
+                          {
+                            "id": "2",
+                            "type": "curatedLocality"
+                          },
+                          {
+                            "id": "3",
+                            "type": "curatedLocality"
+                          },
+                          {
+                            "id": "4",
+                            "type": "curatedLocality"
+                          },
+                          {
+                            "id": "5",
+                            "type": "curatedLocality"
                           }
                         ],
                         "position": {
@@ -5395,6 +10505,32 @@
               },
               "relationships": {
                 "properties": {
+                  "curatedLocalities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureObservationTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -5502,6 +10638,36 @@
                   "default": "featureObservationType",
                   "enum": [
                     "featureObservationType"
+                  ],
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string",
+                  "example": "1234"
+                }
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "updateSpecimenCuratedLocalitiesRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "default": "curatedLocality",
+                  "enum": [
+                    "curatedLocality"
                   ],
                   "type": "string"
                 },
@@ -5872,7 +11038,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent//v01/agents",
+                "example": "https://domain/api/agent/v01/agents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -5914,7 +11080,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent//v01/agents/{id}",
+                "example": "https://domain/api/agent/v01/agents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -5973,7 +11139,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent//v01/agents/{id}",
+                "example": "https://domain/api/agent/v01/agents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -6019,7 +11185,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent//v01/agents",
+                "example": "https://domain/api/agent/v01/agents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -7359,6 +12525,32 @@
               },
               "relationships": {
                 "properties": {
+                  "curatedLocalities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureObservationTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -7458,6 +12650,32 @@
               },
               "relationships": {
                 "properties": {
+                  "curatedLocalities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureObservationTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -7726,6 +12944,98 @@
         "x-examples": {},
         "description": ""
       },
+      "updateSpecimenCuratedLocalitiesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/specimen"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "specimen",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/curatedLocalities",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
+      "getSpecimenCuratedLocalitiesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/curatedLocality"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "curatedLocality",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/curatedLocalities",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
       "getSpecimenResponse": {
         "additionalProperties": false,
         "properties": {
@@ -7741,6 +13051,32 @@
               },
               "relationships": {
                 "properties": {
+                  "curatedLocalities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureObservationTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -7842,6 +13178,32 @@
                 },
                 "relationships": {
                   "properties": {
+                    "curatedLocalities": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "featureObservationTypes": {
                       "additionalProperties": false,
                       "properties": {
@@ -7943,6 +13305,32 @@
               },
               "relationships": {
                 "properties": {
+                  "curatedLocalities": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "curatedLocality"
+                              ],
+                              "example": "curatedLocality",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureObservationTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -8044,6 +13432,32 @@
                 },
                 "relationships": {
                   "properties": {
+                    "curatedLocalities": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "curatedLocality"
+                                ],
+                                "example": "curatedLocality",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
                     "featureObservationTypes": {
                       "additionalProperties": false,
                       "properties": {

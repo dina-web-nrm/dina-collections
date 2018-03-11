@@ -138,6 +138,21 @@
     "x-modelType": "model",
     "id": "position"
   },
+  "translatedString": {
+    "additionalProperties": false,
+    "properties": {
+      "en": {
+        "type": "string"
+      },
+      "sv": {
+        "type": "string"
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "description": "",
+    "id": "translatedString"
+  },
   "verticalPosition": {
     "additionalProperties": false,
     "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
@@ -274,20 +289,107 @@
   "featureObservationType": {
     "additionalProperties": false,
     "properties": {
-      "typeName": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "group": {
+        "type": "string"
+      },
+      "selectableValues": {
+        "type": "array",
+        "items": {
+          "$ref": "selectableValue"
+        }
+      },
+      "selectableUnits": {
+        "type": "array",
+        "items": {
+          "$ref": "selectableUnit"
+        }
+      },
+      "selectableMethods": {
+        "type": "array",
+        "items": {
+          "$ref": "selectableMethod"
+        }
+      },
+      "description": {
         "type": "string"
       },
       "id": {
         "type": "string"
       }
     },
-    "required": [
-      "typeName"
-    ],
     "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
     "x-category": "curatedListApi",
     "x-modelType": "model",
     "id": "featureObservationType"
+  },
+  "selectableMethod": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "description": {
+        "type": "string"
+      },
+      "methodType": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "selectableMethod"
+  },
+  "selectableUnit": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "description": {
+        "type": "string"
+      },
+      "unitType": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "selectableUnit"
+  },
+  "selectableValue": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string"
+      },
+      "name": {
+        "$ref": "translatedString"
+      },
+      "description": {
+        "type": "string"
+      },
+      "valueType": {
+        "type": "string"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "selectableValue"
   },
   "catalogNumber": {
     "type": "object",
@@ -370,9 +472,9 @@
         "type": "string",
         "description": "Description of the locality"
       },
-      "type": {
+      "group": {
         "type": "string",
-        "description": "Type of locality",
+        "description": "Group of locality",
         "enum": [
           "continent",
           "country",
@@ -734,7 +836,7 @@
         "description": "An array with curated localities",
         "type": "array",
         "items": {
-          "$ref": "curatedLocality"
+          "$ref": "externalModelReference"
         }
       },
       "position": {
@@ -828,6 +930,17 @@
             }
           },
           "featureObservationTypes": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
+          "curatedLocalities": {
             "type": "object",
             "properties": {
               "data": {
@@ -1113,7 +1226,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents",
+            "example": "https://domain/api/agent/v01/agents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1155,7 +1268,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/agents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1214,7 +1327,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/agents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1260,7 +1373,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents",
+            "example": "https://domain/api/agent/v01/agents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2600,6 +2713,32 @@
           },
           "relationships": {
             "properties": {
+              "curatedLocalities": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "curatedLocality"
+                          ],
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureObservationTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -2699,6 +2838,32 @@
           },
           "relationships": {
             "properties": {
+              "curatedLocalities": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "curatedLocality"
+                          ],
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureObservationTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -2967,6 +3132,98 @@
     "x-examples": {},
     "description": ""
   },
+  "updateSpecimenCuratedLocalitiesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "specimen"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "specimen",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/curatedLocalities",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getSpecimenCuratedLocalitiesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "curatedLocality"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "curatedLocality",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/curatedLocalities",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
   "getSpecimenResponse": {
     "additionalProperties": false,
     "properties": {
@@ -2982,6 +3239,32 @@
           },
           "relationships": {
             "properties": {
+              "curatedLocalities": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "curatedLocality"
+                          ],
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureObservationTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -3083,6 +3366,32 @@
             },
             "relationships": {
               "properties": {
+                "curatedLocalities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "curatedLocality"
+                            ],
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "featureObservationTypes": {
                   "additionalProperties": false,
                   "properties": {
@@ -3184,6 +3493,32 @@
           },
           "relationships": {
             "properties": {
+              "curatedLocalities": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "curatedLocality"
+                          ],
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureObservationTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -3285,6 +3620,32 @@
             },
             "relationships": {
               "properties": {
+                "curatedLocalities": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "curatedLocality"
+                            ],
+                            "example": "curatedLocality",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "featureObservationTypes": {
                   "additionalProperties": false,
                   "properties": {
@@ -4708,7 +5069,10 @@
           "id": "1234",
           "type": "featureObservationType",
           "attributes": {
-            "typeName": "string"
+            "name": {
+              "en": "bone",
+              "sv": "ben"
+            }
           }
         }
       }
@@ -4718,7 +5082,10 @@
         "id": "1234",
         "type": "featureObservationType",
         "attributes": {
-          "typeName": "string"
+          "name": {
+            "en": "bone",
+            "sv": "ben"
+          }
         }
       }
     },
@@ -5167,6 +5534,32 @@
           },
           "relationships": {
             "properties": {
+              "curatedLocalities": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "curatedLocality"
+                          ],
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureObservationTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -5230,11 +5623,27 @@
         "data": {
           "type": "specimen",
           "relationships": {
-            "physicalUnits": {
+            "curatedLocalities": {
               "data": [
                 {
-                  "id": "2234",
-                  "type": "physicalUnit"
+                  "id": "1",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "2",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "3",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "4",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "5",
+                  "type": "curatedLocality"
                 }
               ]
             },
@@ -5243,6 +5652,14 @@
                 {
                   "id": "1",
                   "type": "featureObservationType"
+                }
+              ]
+            },
+            "physicalUnits": {
+              "data": [
+                {
+                  "id": "2234",
+                  "type": "physicalUnit"
                 }
               ]
             }
@@ -5304,24 +5721,24 @@
                       "coordinatesVerbatim": "coordinatesVerbatim",
                       "curatedLocalities": [
                         {
-                          "id": "Africa",
-                          "type": "continent"
+                          "id": "1",
+                          "type": "curatedLocality"
                         },
                         {
-                          "id": "Algeria",
-                          "type": "country"
+                          "id": "2",
+                          "type": "curatedLocality"
                         },
                         {
-                          "id": "Balearic Islands",
-                          "type": "province"
+                          "id": "3",
+                          "type": "curatedLocality"
                         },
                         {
-                          "id": "GaspÃ© Peninsula",
-                          "type": "district"
+                          "id": "4",
+                          "type": "curatedLocality"
                         },
                         {
-                          "id": "Skansen",
-                          "type": "locality"
+                          "id": "5",
+                          "type": "curatedLocality"
                         }
                       ],
                       "georeferenceSourcesText": "georeferenceSourcesText",
@@ -5352,11 +5769,27 @@
         "data": {
           "type": "specimen",
           "relationships": {
-            "physicalUnits": {
+            "curatedLocalities": {
               "data": [
                 {
-                  "id": "2234",
-                  "type": "physicalUnit"
+                  "id": "1",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "2",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "3",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "4",
+                  "type": "curatedLocality"
+                },
+                {
+                  "id": "5",
+                  "type": "curatedLocality"
                 }
               ]
             },
@@ -5365,6 +5798,14 @@
                 {
                   "id": "2",
                   "type": "featureObservationType"
+                }
+              ]
+            },
+            "physicalUnits": {
+              "data": [
+                {
+                  "id": "2234",
+                  "type": "physicalUnit"
                 }
               ]
             }
@@ -5395,32 +5836,24 @@
                     "localityInformation": {
                       "curatedLocalities": [
                         {
-                          "name": "string",
-                          "versionId": "string",
-                          "createdAt": "string",
-                          "createdBy": "string",
-                          "updatedBy": "string",
-                          "updatedAt": "string",
-                          "id": "string",
-                          "description": "string",
-                          "type": "continent",
-                          "centralPosition": {
-                            "latitude": "string",
-                            "longitude": "string",
-                            "geodeticDatum": "string",
-                            "uncertaintyInMeters": 0
-                          },
-                          "polygon": {
-                            "vertices": [
-                              null
-                            ]
-                          },
-                          "verticalPosition": {
-                            "maximumDepthInMeters": 0,
-                            "maximumElevationInMeters": 0,
-                            "minimumDepthInMeters": 0,
-                            "minimumElevationInMeters": 0
-                          }
+                          "id": "1",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "2",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "3",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "4",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "5",
+                          "type": "curatedLocality"
                         }
                       ],
                       "position": {
@@ -5552,11 +5985,27 @@
       "data": {
         "type": "specimen",
         "relationships": {
-          "physicalUnits": {
+          "curatedLocalities": {
             "data": [
               {
-                "id": "2234",
-                "type": "physicalUnit"
+                "id": "1",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "2",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "3",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "4",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "5",
+                "type": "curatedLocality"
               }
             ]
           },
@@ -5565,6 +6014,14 @@
               {
                 "id": "2",
                 "type": "featureObservationType"
+              }
+            ]
+          },
+          "physicalUnits": {
+            "data": [
+              {
+                "id": "2234",
+                "type": "physicalUnit"
               }
             ]
           }
@@ -5595,32 +6052,24 @@
                   "localityInformation": {
                     "curatedLocalities": [
                       {
-                        "name": "string",
-                        "versionId": "string",
-                        "createdAt": "string",
-                        "createdBy": "string",
-                        "updatedBy": "string",
-                        "updatedAt": "string",
-                        "id": "string",
-                        "description": "string",
-                        "type": "continent",
-                        "centralPosition": {
-                          "latitude": "string",
-                          "longitude": "string",
-                          "geodeticDatum": "string",
-                          "uncertaintyInMeters": 0
-                        },
-                        "polygon": {
-                          "vertices": [
-                            null
-                          ]
-                        },
-                        "verticalPosition": {
-                          "maximumDepthInMeters": 0,
-                          "maximumElevationInMeters": 0,
-                          "minimumDepthInMeters": 0,
-                          "minimumElevationInMeters": 0
-                        }
+                        "id": "1",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "2",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "3",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "4",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "5",
+                        "type": "curatedLocality"
                       }
                     ],
                     "position": {
@@ -5776,6 +6225,32 @@
           },
           "relationships": {
             "properties": {
+              "curatedLocalities": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "curatedLocality"
+                          ],
+                          "example": "curatedLocality",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureObservationTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -5883,6 +6358,36 @@
               "default": "featureObservationType",
               "enum": [
                 "featureObservationType"
+              ],
+              "type": "string"
+            },
+            "id": {
+              "type": "string",
+              "example": "1234"
+            }
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateSpecimenCuratedLocalitiesRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "array",
+        "additionalProperties": false,
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "default": "curatedLocality",
+              "enum": [
+                "curatedLocality"
               ],
               "type": "string"
             },

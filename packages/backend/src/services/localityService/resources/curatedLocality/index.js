@@ -15,7 +15,7 @@ module.exports = {
       queryParams: {
         'filter[descendantLevels]': {
           description:
-            'Levels of descendants to include. Only relevant if relationships descendants provided',
+            'NOT IMPLEMENTED - Levels of descendants to include. Only relevant if relationships descendants provided',
           example: ['country', 'city'],
           required: false,
           schema: {
@@ -25,9 +25,8 @@ module.exports = {
             type: 'array',
           },
         },
-
         includes: {
-          description: 'Add includes',
+          description: 'NOT IMPLEMENTED - Add includes',
           example: ['descendants', 'children'],
           required: false,
           schema: {
@@ -54,7 +53,26 @@ module.exports = {
       type: 'getOne',
     },
     {
+      controller: 'curatedLocalityGetWhere',
       includeRelations: false,
+      queryParams: {
+        'filter[group]': {
+          description: 'Filter by group',
+          example: 'country',
+          required: false,
+          schema: {
+            type: 'string',
+          },
+        },
+        'filter[search]': {
+          description: 'Filter by string search',
+          example: 'swe',
+          required: false,
+          schema: {
+            type: 'string',
+          },
+        },
+      },
       type: 'getMany',
     },
   ],

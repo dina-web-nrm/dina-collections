@@ -36,9 +36,9 @@
       "type": "string",
       "description": "Description of the locality"
     },
-    "type": {
+    "group": {
       "type": "string",
-      "description": "Type of locality",
+      "description": "Group of locality",
       "enum": [
         "continent",
         "country",

@@ -49,6 +49,7 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
+                curatedLocalities: { data: [] },
                 featureObservationTypes: {
                   data: [],
                 },
@@ -86,6 +87,7 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   ...simpleDataPhysicalUnitRelations.data.relationships,
+                  curatedLocalities: { data: [] },
                   featureObservationTypes: {
                     data: [],
                   },

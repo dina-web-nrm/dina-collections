@@ -1,3 +1,4 @@
+const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
 exports.featureObservationType = function featureObservationType({
@@ -21,3 +22,5 @@ exports.distinguishedUnitObservationType = function distinguishedUnitObservation
     sequelize,
   })
 }
+
+exports.loadInitialData = loadInitialData

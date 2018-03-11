@@ -1,5 +1,5 @@
 # Tree for services
-Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
+Generated at: 2018-03-10T13:50:12.991Z
 ## Tree
 ```bash
 ├── agentService
@@ -43,7 +43,15 @@ Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       ├── ageStage.js
+│   │       ├── boneCount.js
+│   │       ├── condition.js
+│   │       ├── index.js
+│   │       ├── length.js
+│   │       ├── sex.js
+│   │       └── weight.js
 │   └── resources
 │       ├── distinguishedUnitObservationType
 │       │   ├── index.js
@@ -71,13 +79,18 @@ Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
 │       └── index.js
 ├── index.js
 ├── localityService
+│   ├── controllers
+│   │   ├── curatedLocalityGetWhere.js
+│   │   └── index.js
 │   ├── e2e.spec.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   ├── resources
 │   │   ├── curatedLocality
 │   │   │   ├── create

@@ -10,13 +10,15 @@ module.exports = function createFactory(
   if (!Model) {
     throw new Error('Have to provide model')
   }
-  return function create(doc) {
+  // TODO 'dont allow id like this but create another metgod'
+  return function create(doc, id) {
     if (!doc) {
       return Promise.reject(new Error('doc not provided'))
     }
 
     const data = {
       document: doc,
+      id,
       isCurrentVersion: true,
       schemaCompliant: validate ? !validate(doc) : undefined,
       schemaVersion: schemaVersion || undefined,

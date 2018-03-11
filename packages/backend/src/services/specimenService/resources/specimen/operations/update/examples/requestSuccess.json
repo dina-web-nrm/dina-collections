@@ -2,12 +2,13 @@
   "data": {
     "type": "specimen",
     "relationships": {
-      "physicalUnits": {
+      "curatedLocalities": {
         "data": [
-          {
-            "id": "4234",
-            "type": "physicalUnit"
-          }
+          { "id": "1", "type": "curatedLocality" },
+          { "id": "2", "type": "curatedLocality" },
+          { "id": "3", "type": "curatedLocality" },
+          { "id": "4", "type": "curatedLocality" },
+          { "id": "5", "type": "curatedLocality" }
         ]
       },
      "featureObservationTypes": {
@@ -15,6 +16,14 @@
           {
             "id": "2",
             "type": "featureObservationType"
+          }
+        ]
+      },
+      "physicalUnits": {
+        "data": [
+          {
+            "id": "4234",
+            "type": "physicalUnit"
           }
         ]
       }
@@ -75,11 +84,11 @@
               "localityInformation": {
                 "coordinatesVerbatim": "coordinatesVerbatim",
                 "curatedLocalities": [
-                  { "id": "Africa", "type": "continent" },
-                  { "id": "Algeria", "type": "country" },
-                  { "id": "Balearic Islands", "type": "province" },
-                  { "id": "GaspÃ© Peninsula", "type": "district" },
-                  { "id": "Skansen", "type": "locality" }
+                  { "id": "1", "type": "curatedLocality" },
+                  { "id": "2", "type": "curatedLocality" },
+                  { "id": "3", "type": "curatedLocality" },
+                  { "id": "4", "type": "curatedLocality" },
+                  { "id": "5", "type": "curatedLocality" }
                 ],
                 "georeferenceSourcesText": "georeferenceSourcesText",
                 "localityVerbatim": "localityVerbatim",

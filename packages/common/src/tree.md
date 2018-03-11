@@ -1,5 +1,5 @@
 # Tree for src
-Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
+Generated at: 2018-03-10T13:50:12.008Z
 ## Tree
 ```bash
 ├── Dependor
@@ -54,27 +54,37 @@ Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
 │   ├── getModelNameFromParameter.js
 │   └── server.js
 ├── error
-│   ├── constants.js
+│   ├── constants
+│   │   ├── errorCodes.js
+│   │   ├── errorCodes.spec.js
+│   │   ├── errorStatus.js
+│   │   ├── errorStatus.spec.js
+│   │   └── jsonSchemaErrorCodes.js
+│   ├── constants-not-used.js
 │   ├── errorFactories
-│   │   ├── base.js
-│   │   ├── form.js
-│   │   ├── server.js
-│   │   └── system.js
-│   ├── errorMappers
-│   │   ├── ajv
+│   │   ├── backendError.js
+│   │   ├── backendError400.js
+│   │   ├── backendError404.js
+│   │   ├── backendError500.js
+│   │   ├── createParameterErrorsFromAjv
 │   │   │   ├── decorateAdditionalProperties.js
 │   │   │   ├── index.js
 │   │   │   ├── mapErrors.js
 │   │   │   └── transform.js
-│   │   └── api
-│   │       └── index.js
-│   ├── index.js
+│   │   ├── frontendError.js
+│   │   ├── sanitizeBackendError.js
+│   │   └── transformToReduxFormError.js
 │   ├── isKnownError.js
+│   ├── utilities
+│   │   ├── createErrorId.js
+│   │   ├── isDinaError.js
+│   │   └── transformToReduxFormError.js
 │   └── validators
-│       ├── formModelSchema.js
-│       ├── formSchema.js
-│       ├── systemModelSchema.js
-│       └── systemSchema.js
+│       ├── createBackendApiClientValidator.js
+│       ├── createFrontendApiClientValidator.js
+│       ├── createSystemFrontendValidator.js
+│       ├── dbValidator.js
+│       └── formValidator.js
 ├── jsonSchema
 │   ├── createMockDataFromSchema.js
 │   ├── createMockGenerator.js

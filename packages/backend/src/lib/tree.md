@@ -1,5 +1,5 @@
 # Tree for lib
-Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
+Generated at: 2018-03-10T13:50:12.989Z
 ## Tree
 ```bash
 ├── app
@@ -50,7 +50,10 @@ Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
 │       ├── factories
 │       │   └── versionedDocumentModel
 │       ├── index.js
-│       └── syncModels.js
+│       ├── loadInitialData.js
+│       ├── syncModels.js
+│       └── utilities
+│           └── extractModelFunctionsFromServices.js
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
