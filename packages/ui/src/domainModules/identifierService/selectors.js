@@ -21,14 +21,3 @@ export const getCatalogNumber = createSelector(
     return catalogNumbers[id]
   }
 )
-
-export const getStorageLocations = createSelector(getResources, resources => {
-  return resources.storageLocations
-})
-
-export const getStorageLocation = createSelector(
-  [getStorageLocations, getSecondArgument],
-  (storageLocations, id) => {
-    return storageLocations[id]
-  }
-)

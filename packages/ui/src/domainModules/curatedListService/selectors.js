@@ -24,14 +24,3 @@ export const getFeatureObservationType = createSelector(
     return featureObservationTypes[id]
   }
 )
-
-export const getStorageLocations = createSelector(getResources, resources => {
-  return resources.storageLocations
-})
-
-export const getStorageLocation = createSelector(
-  [getStorageLocations, getSecondArgument],
-  (storageLocations, id) => {
-    return storageLocations[id]
-  }
-)
