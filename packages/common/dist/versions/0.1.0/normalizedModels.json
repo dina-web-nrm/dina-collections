@@ -504,13 +504,16 @@
         "description": "A vertical position",
         "type": "object",
         "$ref": "verticalPosition"
+      },
+      "type": {
+        "type": "string"
       }
     },
     "x-required": [
       "name",
       "id",
       "description",
-      "type"
+      "group"
     ],
     "description": "### Definition\n\nA defined location with known extension in space.\n",
     "x-category": "localityApi",
