@@ -1,5 +1,4 @@
 import { createPhysicalUnit } from 'domainModules/storageService/actionCreators'
-import { PHYSICAL_UNIT } from 'domainModules/storageService/constants'
 
 import {
   COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_FAIL,
@@ -8,14 +7,21 @@ import {
 } from '../actionTypes'
 import { REGISTER_MAMMAL } from '../endpoints'
 import { getCatalogNumberFromIdentifiers } from '../utilities'
+import buildSpecimenBody from './utilities/buildSpecimenBody'
 
 export default function createSpecimen(
-  { specimen, physicalUnits, throwError = true } = {}
+  {
+    curatedLocalities = [],
+    physicalUnits = [],
+    specimen,
+    throwError = true,
+  } = {}
 ) {
   const { individualGroup } = specimen
 
   const meta = {
     catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
+    curatedLocalities,
     individualGroup,
     physicalUnits,
   }
@@ -26,38 +32,11 @@ export default function createSpecimen(
         return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
       })
     ).then(savedPhysicalUnits => {
-      const individualGroupWithRelationships = {
-        ...individualGroup,
-        distinguishedUnits: individualGroup.distinguishedUnits.map(
-          (distinguishedUnit, index) => {
-            return {
-              ...distinguishedUnit,
-              physicalUnit: {
-                id: savedPhysicalUnits[index].id,
-                type: PHYSICAL_UNIT,
-              },
-            }
-          }
-        ),
-      }
-
-      const body = {
-        data: {
-          attributes: {
-            individualGroup: individualGroupWithRelationships,
-          },
-          relationships: {
-            physicalUnits: {
-              data: savedPhysicalUnits.map(({ id }) => {
-                return {
-                  id,
-                  type: PHYSICAL_UNIT,
-                }
-              }),
-            },
-          },
-        },
-      }
+      const body = buildSpecimenBody({
+        curatedLocalities,
+        individualGroup,
+        savedPhysicalUnits,
+      })
 
       dispatch({
         meta,

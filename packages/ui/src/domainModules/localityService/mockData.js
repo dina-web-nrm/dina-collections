@@ -1,4 +1,20 @@
-const continents = [
+let incrementingId = 1
+
+const createMapCuratedLocality = group => {
+  return name => {
+    incrementingId += 1
+    return {
+      attributes: {
+        group,
+        name: name.toLowerCase(),
+      },
+      id: String(incrementingId),
+      type: 'curatedLocality',
+    }
+  }
+}
+
+const CONTINENTS = [
   'Africa',
   'Antarctica',
   'Arctic Ocean',
@@ -10,14 +26,9 @@ const continents = [
   'Oceania',
   'Pacific Ocean',
   'South America',
-].map(name => {
-  return {
-    group: 'continent',
-    name,
-  }
-})
+].map(createMapCuratedLocality('continent'))
 
-const countries = [
+const COUNTRIES = [
   'Algeria',
   'Angola',
   'Antarctica',
@@ -184,14 +195,9 @@ const countries = [
   'Zambia',
   'ZIMBABWE',
   'Zimbabwe',
-].map(name => {
-  return {
-    group: 'country',
-    name,
-  }
-})
+].map(createMapCuratedLocality('country'))
 
-const provinces = [
+const PROVINCES = [
   'Balearic Islands',
   'Adana',
   'Ahvenanmaa',
@@ -612,14 +618,9 @@ const provinces = [
   'Ã…ngermanland',
   'Ã…sele Lappmark',
   'Ã…sele lappmark',
-].map(name => {
-  return {
-    group: 'province',
-    name,
-  }
-})
+].map(createMapCuratedLocality('province'))
 
-const districts = [
+const DISTRICTS = [
   'GaspÃ© Peninsula',
   'Algoma District',
   'AlnÃ¶',
@@ -768,30 +769,11 @@ const districts = [
   'Ã…land',
   'Ã…nge',
   'Ã…nge kommun',
-].map(name => {
-  return {
-    group: 'district',
-    name,
-  }
-})
+].map(createMapCuratedLocality('district'))
 
-module.exports = function loadInitialData({ models }) {
-  const curatedLocalities = [
-    ...continents,
-    ...countries,
-    ...provinces,
-    ...districts,
-  ].map(({ name, group }, id) => {
-    return {
-      group,
-      id,
-      name: name && name.toLowerCase(),
-    }
-  })
-  const { create } = models.curatedLocality
-  const promises = curatedLocalities.map(curatedLocality => {
-    const { id, ...rest } = curatedLocality
-    return create(rest, id)
-  })
-  return Promise.all(promises)
-}
+export const curatedLocalities = [
+  ...CONTINENTS,
+  ...COUNTRIES,
+  ...PROVINCES,
+  ...DISTRICTS,
+]

@@ -6,6 +6,13 @@ import { connect } from 'react-redux'
 import createLog from 'utilities/log'
 import { DropdownSearch } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  PROVINCE,
+} from 'domainModules/localityService/constants'
+import localitySelectors from 'domainModules/localityService/globalSelectors'
 
 const log = createLog('domainModules:collectionMammals:LocalityDropdownSearch')
 
@@ -18,9 +25,10 @@ const createMapTextKeyToTranslatedText = i18n => ({ textKey, ...rest }) => {
   }
 }
 
-const mapStateToProps = (state, { getSearchQuery, input }) => {
+const mapStateToProps = (state, { getSearchQuery, group, input }) => {
   log.debug('input.value', input.value)
   return {
+    options: localitySelectors.getDropdownOptions(state, group),
     searchQuery: getSearchQuery(state, input.name),
   }
 }
@@ -28,6 +36,7 @@ const mapStateToProps = (state, { getSearchQuery, input }) => {
 const propTypes = {
   errorScope: PropTypes.string,
   getSearchQuery: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  group: PropTypes.oneOf([CONTINENT, COUNTRY, DISTRICT, PROVINCE]).isRequired,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -130,12 +139,17 @@ class LocalityDropdownSearch extends Component {
       input,
       label,
       meta,
+      options,
       required,
       searchQuery,
       ...rest
     } = this.props
 
-    const { value } = input
+    if (!options.length) {
+      return null
+    }
+
+    const { name, value } = input
 
     log.debug('render value', value)
     return (
@@ -144,13 +158,8 @@ class LocalityDropdownSearch extends Component {
         helpText={helpText}
         initialText={initialText}
         input={{
-          name: input.name,
-          value: value
-            ? i18n.moduleTranslate({
-                fallback: value,
-                textKey: value,
-              })
-            : '',
+          name,
+          value,
         }}
         label={label}
         meta={meta}

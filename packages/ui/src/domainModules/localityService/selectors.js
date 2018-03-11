@@ -1,4 +1,7 @@
 import { createSelector } from 'reselect'
+
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import { MODULE_NAME } from './constants'
@@ -15,6 +18,13 @@ export const getCuratedLocalities = createSelector(getResources, resources => {
   return resources.curatedLocalities
 })
 
+export const getHasCuratedLocalities = createSelector(
+  getCuratedLocalities,
+  curatedLocalities => {
+    return Object.keys(curatedLocalities).length > 0
+  }
+)
+
 export const getCuratedLocality = createSelector(
   [getCuratedLocalities, getSecondArgument],
   (curatedLocalities, id) => {
@@ -22,13 +32,17 @@ export const getCuratedLocality = createSelector(
   }
 )
 
-export const getStorageLocations = createSelector(getResources, resources => {
-  return resources.storageLocations
-})
-
-export const getStorageLocation = createSelector(
-  [getStorageLocations, getSecondArgument],
-  (storageLocations, id) => {
-    return storageLocations[id]
+export const getDropdownOptions = createSelector(
+  [getCuratedLocalities, getSecondArgument],
+  (curatedLocalities, groupFilter) => {
+    return Object.values(curatedLocalities)
+      .filter(({ group }) => group === groupFilter)
+      .map(({ id, name }) => {
+        return {
+          key: id,
+          textKey: capitalizeFirstLetter(name),
+          value: id,
+        }
+      })
   }
 )

@@ -22,9 +22,10 @@ export default function transformOutput(formData) {
   const { distinguishedUnits, physicalUnits } = transformDistinguishedUnits(
     formData.distinguishedUnits
   )
-  const individualCircumstances = transformIndividualCircumstances(
-    formData.individualCircumstances
-  )
+  const {
+    curatedLocalities,
+    individualCircumstances,
+  } = transformIndividualCircumstances(formData.individualCircumstances)
 
   const individualGroup = {
     ...formData,
@@ -36,6 +37,7 @@ export default function transformOutput(formData) {
   }
 
   return {
+    curatedLocalities,
     physicalUnits,
     specimen: {
       individualGroup,

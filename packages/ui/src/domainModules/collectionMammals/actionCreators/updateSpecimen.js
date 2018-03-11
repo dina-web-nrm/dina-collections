@@ -2,7 +2,6 @@ import {
   createPhysicalUnit,
   updatePhysicalUnit,
 } from 'domainModules/storageService/actionCreators'
-import { PHYSICAL_UNIT } from 'domainModules/storageService/constants'
 
 import { getSpecimen } from '../actionCreators'
 import {
@@ -12,14 +11,22 @@ import {
 } from '../actionTypes'
 import { UPDATE_SPECIMEN } from '../endpoints'
 import { getCatalogNumberFromIdentifiers } from '../utilities'
+import buildSpecimenBody from './utilities/buildSpecimenBody'
 
 export default function updateSpecimen(
-  { id, specimen, physicalUnits, throwError = true } = {}
+  {
+    curatedLocalities = [],
+    id,
+    physicalUnits = [],
+    specimen,
+    throwError = true,
+  } = {}
 ) {
   const { individualGroup } = specimen
 
   const meta = {
     catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
+    curatedLocalities,
     individualGroup,
     physicalUnits,
   }
@@ -36,38 +43,11 @@ export default function updateSpecimen(
         return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
       })
     ).then(savedPhysicalUnits => {
-      const individualGroupWithRelationships = {
-        ...individualGroup,
-        distinguishedUnits: individualGroup.distinguishedUnits.map(
-          (distinguishedUnit, index) => {
-            return {
-              ...distinguishedUnit,
-              physicalUnit: {
-                id: savedPhysicalUnits[index].id,
-                type: PHYSICAL_UNIT,
-              },
-            }
-          }
-        ),
-      }
-
-      const body = {
-        data: {
-          attributes: {
-            individualGroup: individualGroupWithRelationships,
-          },
-          relationships: {
-            physicalUnits: {
-              data: savedPhysicalUnits.map(({ id: physicalUnitId }) => {
-                return {
-                  id: physicalUnitId,
-                  type: PHYSICAL_UNIT,
-                }
-              }),
-            },
-          },
-        },
-      }
+      const body = buildSpecimenBody({
+        curatedLocalities,
+        individualGroup,
+        savedPhysicalUnits,
+      })
 
       dispatch({
         meta,
