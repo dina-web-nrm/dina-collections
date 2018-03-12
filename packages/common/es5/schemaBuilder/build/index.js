@@ -1,11 +1,12 @@
 'use strict';
 
+var buildEndpoints = require('./buildEndpoints');
 var createOpenApi = require('./openApi');
 var createModels = require('./models');
 
 module.exports = function build(_ref) {
   var apis = _ref.apis,
-      endpoints = _ref.endpoints,
+      endpointsInput = _ref.endpoints,
       errors = _ref.errors,
       info = _ref.info,
       models = _ref.models,
@@ -13,6 +14,8 @@ module.exports = function build(_ref) {
       parameters = _ref.parameters,
       security = _ref.security,
       servers = _ref.servers;
+
+  var endpoints = buildEndpoints(endpointsInput);
 
   var openApi = createOpenApi({
     apis: apis,

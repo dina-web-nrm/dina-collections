@@ -1,3 +1,4 @@
+const extractErrorsFromEndpoints = require('./extractErrorsFromEndpoints')
 const createModel = require('../../utilities/createModel')
 
 const referencePath = '#/components/schemas/'
@@ -70,11 +71,13 @@ module.exports = function createOpenApiComponents({
 }) {
   const requests = extractRequestsFromEndpoints({ endpoints, normalize })
   const responses = extractResponsesFromEndpoints({ endpoints, normalize })
+  const errors = extractErrorsFromEndpoints({ endpoints, normalize })
   const extractedModels = extractModelsFromModels({ models, normalize })
 
   return {
     schemas: {
       ...extractedModels,
+      ...errors,
       ...requests,
       ...responses,
     },

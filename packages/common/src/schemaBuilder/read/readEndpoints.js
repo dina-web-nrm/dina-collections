@@ -1,5 +1,3 @@
-const buildEndpoint = require('../utilities/buildEndpoint')
-
 module.exports = function readEndpoints(services) {
   const endpoints = {}
   Object.keys(services).forEach(serviceName => {
@@ -11,13 +9,13 @@ module.exports = function readEndpoints(services) {
       Object.keys(operations).forEach(operationId => {
         const operation = operations[operationId]
 
-        const endpoint = buildEndpoint({
+        const endpoint = {
           operationId,
           ...operation,
-        })
+        }
 
-        const tags = endpoint.tags
-          ? [...endpoint.tags, serviceName]
+        const tags = operation.tags
+          ? [...operation.tags, serviceName]
           : [serviceName]
 
         endpoints[operationId] = {

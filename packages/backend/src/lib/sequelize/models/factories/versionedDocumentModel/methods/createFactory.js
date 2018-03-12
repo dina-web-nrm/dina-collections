@@ -10,7 +10,7 @@ module.exports = function createFactory(
   if (!Model) {
     throw new Error('Have to provide model')
   }
-  // Todo 'dont allow id like this but create another metgod'
+  // TODO 'dont allow id like this but create another metgod'
   return function create(doc, id) {
     if (!doc) {
       return Promise.reject(new Error('doc not provided'))

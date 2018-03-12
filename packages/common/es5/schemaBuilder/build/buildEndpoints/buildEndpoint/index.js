@@ -17,6 +17,7 @@ module.exports = function buildEndpoint(_ref) {
   var _ref$auth = _ref.auth,
       auth = _ref$auth === undefined ? true : _ref$auth,
       description = _ref.description,
+      errors = _ref.errors,
       method = _ref.method,
       operationId = _ref.operationId,
       path = _ref.path,
@@ -27,7 +28,8 @@ module.exports = function buildEndpoint(_ref) {
       resource = _ref.resource,
       _ref$response = _ref.response,
       responseInput = _ref$response === undefined ? {} : _ref$response,
-      summary = _ref.summary;
+      summary = _ref.summary,
+      tags = _ref.tags;
 
   var pathParams = rawPathParams.reduce(function (obj, key) {
     return (0, _extends4.default)({}, obj, (0, _defineProperty3.default)({}, key, {
@@ -56,6 +58,7 @@ module.exports = function buildEndpoint(_ref) {
 
   return {
     description: description,
+    errors: errors,
     method: method,
     operationId: operationId,
     path: path,
@@ -66,6 +69,7 @@ module.exports = function buildEndpoint(_ref) {
     security: auth ? [{
       bearerAuth: []
     }] : undefined,
-    summary: summary
+    summary: summary,
+    tags: tags
   };
 };

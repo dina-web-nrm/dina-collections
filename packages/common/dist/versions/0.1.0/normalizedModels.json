@@ -1232,7 +1232,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents",
+            "example": "https://domain/api/agent/v01/agents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1274,7 +1274,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/agents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1333,7 +1333,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/agents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1379,7 +1379,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent//v01/agents",
+            "example": "https://domain/api/agent/v01/agents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"

@@ -4,6 +4,7 @@ const buildRequest = require('./buildRequest')
 module.exports = function buildEndpoint({
   auth = true,
   description,
+  errors,
   method,
   operationId,
   path,
@@ -13,6 +14,7 @@ module.exports = function buildEndpoint({
   resource,
   response: responseInput = {},
   summary,
+  tags,
 }) {
   const pathParams = rawPathParams.reduce((obj, key) => {
     return {
@@ -47,6 +49,7 @@ module.exports = function buildEndpoint({
 
   return {
     description,
+    errors,
     method,
     operationId,
     path,
@@ -62,5 +65,6 @@ module.exports = function buildEndpoint({
         ]
       : undefined,
     summary,
+    tags,
   }
 }
