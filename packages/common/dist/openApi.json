@@ -5619,15 +5619,15 @@
       "BaseError": {
         "properties": {
           "description": {
-            "description": "Description of the returned errorCode",
+            "description": "Description of the returned code",
             "type": "string"
           },
           "detail": {
-            "description": "a human-readable explanation specific to this occurrence of the problem.",
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
             "type": "string"
           },
           "id": {
-            "description": "a unique identifier for this particular occurrence of the problem.",
+            "description": "A unique identifier for this particular occurrence of the problem.",
             "type": "string"
           },
           "message": {
@@ -5637,7 +5637,7 @@
             "type": "string"
           },
           "title": {
-            "description": "A short, human-readable summary of the problem. Associated with the error code",
+            "description": "A short, human-readable summary of the problem. Associated with the code",
             "type": "string"
           }
         },
@@ -5649,7 +5649,7 @@
         "type": "object"
       },
       "REQUEST_BODY_VALIDATION_ERROR": {
-        "description": "Input body dont pass validations",
+        "description": "Input body does not pass validations",
         "example": "REQUEST_BODY_VALIDATION_ERROR",
         "title": "REQUEST_BODY_VALIDATION_ERROR",
         "type": "string"
@@ -5688,13 +5688,13 @@
         "type": "object"
       },
       "RESPONSE_VALIDATION_ERROR": {
-        "description": "Output dont pass validations",
+        "description": "Output does not pass validations",
         "example": "RESPONSE_VALIDATION_ERROR",
         "title": "RESPONSE_VALIDATION_ERROR",
         "type": "string"
       },
       "INTERNAL_SERVER_ERROR": {
-        "description": "Error occured on server",
+        "description": "Error occurred on server",
         "example": "INTERNAL_SERVER_ERROR",
         "title": "INTERNAL_SERVER_ERROR",
         "type": "string"

@@ -19,12 +19,16 @@ var errorCodes = {
     description: 'Something is wrong with configuration. See details',
     title: 'Config error'
   },
+  INTERNAL_SERVER_ERROR: {
+    description: 'Error occurred on server',
+    title: 'Internal server error'
+  },
   INTERNAL_SERVER_ERROR_INVALID_ERROR_CODE: {
-    description: 'Error occured on server. Tried to throw an error with an invalid error code',
+    description: 'Error occurred on server. Tried to throw an error with an invalid error code',
     title: 'Internal server error'
   },
   INTERNAL_SERVER_ERROR_INVALID_STATUS_CODE: {
-    description: 'Error occured on server. Tried to throw an error with an invalid status code',
+    description: 'Error occurred on server. Tried to throw an error with an invalid status code',
     title: 'Internal server error'
   },
   NOT_FOUND_ERROR: {
@@ -32,7 +36,7 @@ var errorCodes = {
     title: 'Not found error'
   },
   REQUEST_BODY_VALIDATION_ERROR: {
-    description: 'Input body dont pass validations',
+    description: 'Input body does not pass validations',
     title: 'Request body validation error'
   },
   REQUEST_ERROR: {
@@ -44,7 +48,7 @@ var errorCodes = {
     title: 'Not found error'
   },
   RESPONSE_VALIDATION_ERROR: {
-    description: 'Output dont pass validations',
+    description: 'Output does not pass validations',
     title: 'Response validation error'
   }
 };

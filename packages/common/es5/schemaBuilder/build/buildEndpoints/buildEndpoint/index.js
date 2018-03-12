@@ -17,6 +17,7 @@ module.exports = function buildEndpoint(_ref) {
   var _ref$auth = _ref.auth,
       auth = _ref$auth === undefined ? true : _ref$auth,
       description = _ref.description,
+      errors = _ref.errors,
       method = _ref.method,
       operationId = _ref.operationId,
       path = _ref.path,
@@ -57,6 +58,7 @@ module.exports = function buildEndpoint(_ref) {
 
   return {
     description: description,
+    errors: errors,
     method: method,
     operationId: operationId,
     path: path,

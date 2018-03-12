@@ -14,6 +14,7 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var extractErrorsFromEndpoints = require('./extractErrorsFromEndpoints');
 var createModel = require('../../utilities/createModel');
 
 var referencePath = '#/components/schemas/';
@@ -94,10 +95,11 @@ module.exports = function createOpenApiComponents(_ref4) {
 
   var requests = extractRequestsFromEndpoints({ endpoints: endpoints, normalize: normalize });
   var responses = extractResponsesFromEndpoints({ endpoints: endpoints, normalize: normalize });
+  var errors = extractErrorsFromEndpoints({ endpoints: endpoints, normalize: normalize });
   var extractedModels = extractModelsFromModels({ models: models, normalize: normalize });
 
   return {
-    schemas: (0, _extends6.default)({}, extractedModels, requests, responses),
+    schemas: (0, _extends6.default)({}, extractedModels, errors, requests, responses),
     securitySchemes: (0, _extends6.default)({}, security)
   };
 };
