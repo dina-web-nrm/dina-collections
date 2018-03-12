@@ -45,6 +45,9 @@ apiDescribe('specimen', () => {
           return makeTestCall({
             operationId: 'getSpecimen',
             pathParams: { id: createdSpecimen.data.id },
+            queryParams: {
+              relationships: ['all'],
+            },
           }).then(response => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
@@ -82,6 +85,9 @@ apiDescribe('specimen', () => {
             return makeTestCall({
               operationId: 'getSpecimen',
               pathParams: { id: createdSpecimen.data.id },
+              queryParams: {
+                relationships: ['all'],
+              },
             }).then(response => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
@@ -118,6 +124,9 @@ apiDescribe('specimen', () => {
             return makeTestCall({
               operationId: 'getSpecimen',
               pathParams: { id: createdSpecimen.data.id },
+              queryParams: {
+                relationships: ['all'],
+              },
             }).then(response => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',

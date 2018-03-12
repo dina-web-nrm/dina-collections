@@ -199,6 +199,9 @@ apiDescribe('curatedLocality', () => {
             pathParams: {
               id: childId,
             },
+            queryParams: {
+              relationships: ['all'],
+            },
           }).then(res => {
             expect(res.data.relationships.parent.data.id).toBe(parentId)
           })

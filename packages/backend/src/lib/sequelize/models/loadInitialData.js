@@ -42,8 +42,12 @@ const extractLoadInitialDataFromServies = services => {
 }
 
 module.exports = function loadInitialData({ config, services, models }) {
-  if (!config.db.flushOnRestart) {
-    log.debug('Dont load initial data: flushOnRestart = false')
+  if (!config.db.flushOnRestart || !config.db.loadInitialData) {
+    log.debug(
+      `Dont load initial data: flushOnRestart = ${
+        config.db.flushOnRestart
+      }, loadInitialData = ${config.db.loadInitialData}`
+    )
     return Promise.resolve(true)
   }
   log.debug('Load initial data:')

@@ -2045,17 +2045,19 @@
           {
             "in": "query",
             "name": "relationships",
-            "description": "Add relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "descendants",
-              "children"
+              "children",
+              "parent"
             ],
-            "required": false,
             "schema": {
               "items": {
                 "enum": [
-                  "descendants",
-                  "children"
+                  "all",
+                  [
+                    "children",
+                    "parent"
+                  ]
                 ],
                 "type": "string"
               },
@@ -2514,6 +2516,30 @@
             "schema": {
               "default": "false",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "curatedLocalities",
+              "featureObservationTypes",
+              "physicalUnits"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "curatedLocalities",
+                    "featureObservationTypes",
+                    "physicalUnits"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],
@@ -3404,6 +3430,26 @@
               "default": "false",
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "storageLocation"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "storageLocation"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
           }
         ],
         "responses": {
@@ -3573,6 +3619,26 @@
             "schema": {
               "default": "false",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "storageLocation"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "storageLocation"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],
@@ -4077,6 +4143,26 @@
               "default": "false",
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "physicalUnits"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "physicalUnits"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
           }
         ],
         "responses": {
@@ -4246,6 +4332,26 @@
             "schema": {
               "default": "false",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "physicalUnits"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "physicalUnits"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],

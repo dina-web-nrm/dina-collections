@@ -53,6 +53,7 @@ module.exports = function updateRelationHasMany({ operation, models }) {
         .then(updatedResource => {
           const relationships = extractRelationships({
             fetchedResource: updatedResource,
+            queryParamRelationships: relationKey,
             relations,
           })
           return relationships[relationKey].data || []

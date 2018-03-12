@@ -9,6 +9,7 @@ module.exports = function createOperationObjectSpecification({
   } = operationSpecificationInput
 
   const availableExamples = Object.keys(exampleResponses || {})
+  // TODO move this to utility and call from typeFactory
   const queryParams = {
     ...queryParamsInput,
     exampleId: {

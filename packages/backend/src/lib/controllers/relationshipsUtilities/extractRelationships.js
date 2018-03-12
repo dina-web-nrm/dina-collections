@@ -1,3 +1,5 @@
+const shouldIncludeRelation = require('./shouldIncludeRelation')
+
 const buildEmptyRelationship = relation => {
   if (relation.format === 'array') {
     return {
@@ -9,8 +11,16 @@ const buildEmptyRelationship = relation => {
   }
 }
 
-const addEmptyRelationships = ({ relationshipsData = {}, relations }) => {
+const addEmptyRelationships = ({
+  queryParamRelationships,
+  relations,
+  relationshipsData = {},
+}) => {
   return Object.keys(relations).reduce((relationships, relationKey) => {
+    if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
+      return relationships
+    }
+
     const relation = relations[relationKey]
     if (relationshipsData[relationKey]) {
       return {
@@ -25,10 +35,17 @@ const addEmptyRelationships = ({ relationshipsData = {}, relations }) => {
   }, {})
 }
 
-module.exports = function extractRelationships({ fetchedResource, relations }) {
+module.exports = function extractRelationships({
+  fetchedResource,
+  queryParamRelationships,
+  relations,
+}) {
   const dataValues = fetchedResource.dataValues || fetchedResource
   const relationshipsData = Object.keys(relations).reduce(
     (relationships, relationKey) => {
+      if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
+        return relationships
+      }
       const {
         format: relationFormat,
         resource: relationResource,
@@ -68,6 +85,10 @@ module.exports = function extractRelationships({ fetchedResource, relations }) {
     },
     {}
   )
-  const res = addEmptyRelationships({ relations, relationshipsData })
+  const res = addEmptyRelationships({
+    queryParamRelationships,
+    relations,
+    relationshipsData,
+  })
   return res
 }
