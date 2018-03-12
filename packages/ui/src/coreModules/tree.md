@@ -1,5 +1,5 @@
 # Tree for coreModules
-Generated at commit: 385418b701586ccb9a99ec5d93f98e8876fc4aff
+Generated at: 2018-03-10T13:50:11.069Z
 ## Tree
 ```bash
 ├── allModules.js

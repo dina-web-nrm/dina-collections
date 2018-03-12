@@ -12,19 +12,25 @@ export default function transformOutput(formData) {
   )
 
   const taxonInformation = transformTaxonInformation(formData.taxonInformation)
+
   const identifiers = transformIdentifiers(
     formData.identifiers,
     newCatalogNumber
   )
-  const featureObservations = transformFeatureObservations(
-    formData.featureObservations
-  )
+
+  const {
+    featureObservations,
+    featureObservationTypes,
+  } = transformFeatureObservations(formData.featureObservations)
+
   const { distinguishedUnits, physicalUnits } = transformDistinguishedUnits(
     formData.distinguishedUnits
   )
-  const individualCircumstances = transformIndividualCircumstances(
-    formData.individualCircumstances
-  )
+
+  const {
+    curatedLocalities,
+    individualCircumstances,
+  } = transformIndividualCircumstances(formData.individualCircumstances)
 
   const individualGroup = {
     ...formData,
@@ -36,6 +42,8 @@ export default function transformOutput(formData) {
   }
 
   return {
+    curatedLocalities,
+    featureObservationTypes,
     physicalUnits,
     specimen: {
       individualGroup,

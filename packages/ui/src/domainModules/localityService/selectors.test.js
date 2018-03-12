@@ -1,8 +1,10 @@
 import {
-  getLocalState,
-  getResources,
   getCuratedLocalities,
   getCuratedLocality,
+  getDropdownOptions,
+  getHasCuratedLocalities,
+  getLocalState,
+  getResources,
 } from './selectors'
 
 describe('domainModules/localityService/selectors', () => {
@@ -12,8 +14,31 @@ describe('domainModules/localityService/selectors', () => {
     state = {
       resources: {
         curatedLocalities: {
-          a: { id: 'a' },
-          b: { id: 'b' },
+          idAsia: {
+            group: 'continent',
+            id: 'idAsia',
+            name: 'asia',
+          },
+          idCanada: {
+            group: 'country',
+            id: 'idCanada',
+            name: 'canada',
+          },
+          idGermany: {
+            group: 'country',
+            id: 'idGermany',
+            name: 'germany',
+          },
+          idOntario: {
+            group: 'province',
+            id: 'idOntario',
+            name: 'ontario',
+          },
+          idSweden: {
+            group: 'country',
+            id: 'idSweden',
+            name: 'sweden',
+          },
         },
       },
     }
@@ -35,5 +60,40 @@ describe('domainModules/localityService/selectors', () => {
     expect(getCuratedLocality(state, 'a')).toEqual(
       state.resources.curatedLocalities.a
     )
+  })
+
+  describe('getHasCuratedLocalities', () => {
+    it('returns true', () => {
+      expect(getHasCuratedLocalities(state)).toEqual(true)
+    })
+    it('returns false', () => {
+      expect(
+        getHasCuratedLocalities({ resources: { curatedLocalities: {} } })
+      ).toEqual(false)
+    })
+  })
+
+  it('returns dropdown options by group', () => {
+    const group = 'country'
+    const testValue = getDropdownOptions(state, group)
+    const expectedResult = [
+      {
+        key: 'idCanada',
+        text: 'Canada',
+        value: 'idCanada',
+      },
+      {
+        key: 'idGermany',
+        text: 'Germany',
+        value: 'idGermany',
+      },
+      {
+        key: 'idSweden',
+        text: 'Sweden',
+        value: 'idSweden',
+      },
+    ]
+
+    expect(testValue).toEqual(expectedResult)
   })
 })

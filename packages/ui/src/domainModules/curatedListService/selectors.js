@@ -25,13 +25,9 @@ export const getFeatureObservationType = createSelector(
   }
 )
 
-export const getStorageLocations = createSelector(getResources, resources => {
-  return resources.storageLocations
-})
-
-export const getStorageLocation = createSelector(
-  [getStorageLocations, getSecondArgument],
-  (storageLocations, id) => {
-    return storageLocations[id]
+export const getHasFeatureObservationTypes = createSelector(
+  getFeatureObservationTypes,
+  featureObservationTypes => {
+    return Object.keys(featureObservationTypes).length > 0
   }
 )

@@ -24,8 +24,8 @@ const mutations = [
     interaction: 'click',
   },
   {
-    name: 'featureObservations.0.featureObservationType.typeName.hidden',
-    value: 'age',
+    name: 'featureObservations.0.featureObservationType.id.hidden',
+    value: '3',
   },
 
   {
@@ -38,7 +38,7 @@ const mutations = [
   },
   {
     name: 'featureObservations.0.featureObservationText',
-    value: '21',
+    value: 'cadaverous',
   },
   {
     name: 'featureObservations.0.methodText',
@@ -176,6 +176,19 @@ const mutations = [
 ]
 
 const expectedOutput = {
+  curatedLocalities: [
+    { id: 'Africa', type: 'curatedLocality' },
+    { id: 'Algeria', type: 'curatedLocality' },
+    { id: 'Balearic Islands', type: 'curatedLocality' },
+    { id: 'GaspÃ© Peninsula', type: 'curatedLocality' },
+    { id: 'Skansen', type: 'curatedLocality' },
+  ],
+  featureObservationTypes: [
+    {
+      id: '3',
+      type: 'featureObservationType',
+    },
+  ],
   physicalUnits: [
     {
       normalStorageLocationText: 'normalStorageLocationText',
@@ -198,10 +211,10 @@ const expectedOutput = {
         {
           date: 'date',
           featureObservationAgent: 'featureObservationAgent',
-          featureObservationText: '21',
+          featureObservationText: 'cadaverous',
           featureObservationType: {
             id: '3',
-            typeName: 'age',
+            type: 'featureObservationType',
           },
           methodText: 'methodText',
         },
@@ -227,11 +240,11 @@ const expectedOutput = {
             localityInformation: {
               coordinatesVerbatim: 'coordinatesVerbatim',
               curatedLocalities: [
-                { id: 'Africa', type: 'continent' },
-                { id: 'Algeria', type: 'country' },
-                { id: 'Balearic Islands', type: 'province' },
-                { id: 'GaspÃ© Peninsula', type: 'district' },
-                { id: 'Skansen', type: 'locality' },
+                { id: 'Africa', type: 'curatedLocality' },
+                { id: 'Algeria', type: 'curatedLocality' },
+                { id: 'Balearic Islands', type: 'curatedLocality' },
+                { id: 'GaspÃ© Peninsula', type: 'curatedLocality' },
+                { id: 'Skansen', type: 'curatedLocality' },
               ],
               georeferenceSourcesText: 'georeferenceSourcesText',
               localityVerbatim: 'localityVerbatim',

@@ -10,11 +10,23 @@ import {
   actionCreators as mammalActionCreators,
   globalSelectors as mammalSelectors,
 } from 'domainModules/collectionMammals'
+import {
+  actionCreators as curatedListActionCreators,
+  globalSelectors as curatedListSelectors,
+} from 'domainModules/curatedListService'
+import {
+  actionCreators as localityActionCreators,
+  globalSelectors as localitySelectors,
+} from 'domainModules/localityService'
 import { globalSelectors as storageSelectors } from 'domainModules/storageService'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const mapStateToProps = (state, { match }) => {
   return {
+    hasCuratedLocalities: localitySelectors.getHasCuratedLocalities(state),
+    hasFeatureObservationTypes: curatedListSelectors.getHasFeatureObservationTypes(
+      state
+    ),
     individualGroup: mammalSelectors.getIndividualGroupBySpecimenId(
       state,
       match.params.specimenId
@@ -23,12 +35,19 @@ const mapStateToProps = (state, { match }) => {
   }
 }
 const mapDispatchToProps = {
+  getCuratedLocalities: localityActionCreators.getCuratedLocalities,
+  getFeatureObservationTypes:
+    curatedListActionCreators.getFeatureObservationTypes,
   getSpecimen: mammalActionCreators.getSpecimen,
   updateSpecimen: mammalActionCreators.updateSpecimen,
 }
 
 const propTypes = {
+  getCuratedLocalities: PropTypes.func.isRequired,
+  getFeatureObservationTypes: PropTypes.func.isRequired,
   getSpecimen: PropTypes.func.isRequired,
+  hasCuratedLocalities: PropTypes.bool.isRequired,
+  hasFeatureObservationTypes: PropTypes.bool.isRequired,
   individualGroup: PropTypes.shape({
     // TODO: define and possibly centralize propTypes for individualGroup
   }),
@@ -47,10 +66,14 @@ const defaultProps = {
 class EditMammal extends Component {
   componentWillMount() {
     this.props.getSpecimen({ id: this.props.match.params.specimenId })
+    this.props.getCuratedLocalities()
+    this.props.getFeatureObservationTypes()
   }
 
   render() {
     const {
+      hasCuratedLocalities,
+      hasFeatureObservationTypes,
       individualGroup,
       match: { params: { specimenId } },
       physicalUnits,
@@ -61,18 +84,20 @@ class EditMammal extends Component {
 
     return (
       <PageTemplate>
-        {individualGroup && (
-          <MammalForm
-            handleFormSubmit={formOutput => {
-              return updateSpecimen({
-                id: specimenId,
-                ...transformOutput(formOutput),
-              })
-            }}
-            initialData={initialData}
-            mode="edit"
-          />
-        )}
+        {hasCuratedLocalities &&
+          hasFeatureObservationTypes &&
+          individualGroup && (
+            <MammalForm
+              handleFormSubmit={formOutput => {
+                return updateSpecimen({
+                  id: specimenId,
+                  ...transformOutput(formOutput),
+                })
+              }}
+              initialData={initialData}
+              mode="edit"
+            />
+          )}
       </PageTemplate>
     )
   }

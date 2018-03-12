@@ -94,6 +94,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  curatedLocalities: { data: [] },
                   featureObservationTypes: {
                     data: [],
                   },
@@ -128,6 +129,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  curatedLocalities: { data: [] },
                   featureObservationTypes: {
                     data: [],
                   },
@@ -167,6 +169,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  curatedLocalities: { data: [] },
                   featureObservationTypes: {
                     data: [],
                   },
@@ -211,6 +214,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  curatedLocalities: { data: [] },
                   featureObservationTypes: {
                     data: [
                       {
@@ -259,6 +263,7 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
+                curatedLocalities: { data: [] },
                 featureObservationTypes: {
                   data: [],
                 },
@@ -295,6 +300,7 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
+                curatedLocalities: { data: [] },
                 featureObservationTypes: {
                   data: [],
                 },

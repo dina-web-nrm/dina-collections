@@ -1,28 +1,49 @@
 import transformLocalityInformation from './transformLocalityInformation'
 
-export default function transformOccurrences(individualCircumstances) {
+export default function transformIndividualCircumstances(
+  individualCircumstances
+) {
   if (!individualCircumstances) {
     return []
   }
 
-  return individualCircumstances.map(individualCircumstance => {
-    if (
-      individualCircumstance.event &&
-      individualCircumstance.event.localityInformation
-    ) {
-      const localityInformation = transformLocalityInformation(
+  let curatedLocalities = []
+
+  const transformedIndividualCircumstances = individualCircumstances.map(
+    individualCircumstance => {
+      if (
+        individualCircumstance.event &&
         individualCircumstance.event.localityInformation
-      )
+      ) {
+        const localityInformation = transformLocalityInformation(
+          individualCircumstance.event.localityInformation
+        )
 
-      return {
-        ...individualCircumstance,
-        event: {
-          ...individualCircumstance.event,
-          localityInformation,
-        },
+        if (
+          localityInformation.curatedLocalities &&
+          localityInformation.curatedLocalities.length
+        ) {
+          curatedLocalities = [
+            ...curatedLocalities,
+            ...localityInformation.curatedLocalities,
+          ]
+        }
+
+        return {
+          ...individualCircumstance,
+          event: {
+            ...individualCircumstance.event,
+            localityInformation,
+          },
+        }
       }
-    }
 
-    return individualCircumstance
-  })
+      return individualCircumstance
+    }
+  )
+
+  return {
+    curatedLocalities,
+    individualCircumstances: transformedIndividualCircumstances,
+  }
 }

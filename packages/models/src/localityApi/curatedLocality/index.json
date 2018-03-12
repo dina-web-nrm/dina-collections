@@ -15,18 +15,15 @@
     },
     "createdBy": {
       "type": "string",
-      "description":
-        "Some kind of reference to the individual that created the locality"
+      "description": "Some kind of reference to the individual that created the locality"
     },
     "updatedBy": {
       "type": "string",
-      "description":
-        "Some kind of reference to the individual that updated/created the specific version"
+      "description": "Some kind of reference to the individual that updated/created the specific version"
     },
     "updatedAt": {
       "type": "string",
-      "description":
-        "Timestamp corresponding to when updated. Could be called versionCreatedAt"
+      "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
     },
     "id": {
       "type": "string",
@@ -36,9 +33,9 @@
       "type": "string",
       "description": "Description of the locality"
     },
-    "type": {
+    "group": {
       "type": "string",
-      "description": "Type of locality",
+      "description": "Group of locality",
       "enum": [
         "continent",
         "country",
@@ -68,7 +65,15 @@
       "description": "A vertical position",
       "type": "object",
       "$ref": "__ROOT__verticalPosition"
+    },
+    "type": {
+      "type": "string"
     }
   },
-  "x-required": ["name", "id", "description", "type"]
+  "x-required": [
+    "name",
+    "id",
+    "description",
+    "group"
+  ]
 }

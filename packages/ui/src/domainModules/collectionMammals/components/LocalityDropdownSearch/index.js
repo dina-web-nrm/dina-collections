@@ -5,22 +5,20 @@ import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
 import { DropdownSearch } from 'coreModules/form/components'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  PROVINCE,
+} from 'domainModules/localityService/constants'
+import localitySelectors from 'domainModules/localityService/globalSelectors'
 
 const log = createLog('domainModules:collectionMammals:LocalityDropdownSearch')
 
-const createMapTextKeyToTranslatedText = i18n => ({ textKey, ...rest }) => {
-  // replace textKey with text, which is the prop expected by Semantic
-  // https://react.semantic-ui.com/modules/dropdown
-  return {
-    ...rest,
-    text: i18n.moduleTranslate({ fallback: textKey, textKey }),
-  }
-}
-
-const mapStateToProps = (state, { getSearchQuery, input }) => {
+const mapStateToProps = (state, { getSearchQuery, group, input }) => {
   log.debug('input.value', input.value)
   return {
+    options: localitySelectors.getDropdownOptions(state, group),
     searchQuery: getSearchQuery(state, input.name),
   }
 }
@@ -28,10 +26,8 @@ const mapStateToProps = (state, { getSearchQuery, input }) => {
 const propTypes = {
   errorScope: PropTypes.string,
   getSearchQuery: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  group: PropTypes.oneOf([CONTINENT, COUNTRY, DISTRICT, PROVINCE]).isRequired,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   initialText: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -47,7 +43,7 @@ const propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
-      textKey: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
@@ -70,39 +66,20 @@ class LocalityDropdownSearch extends Component {
     super(props)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
-    this.mapTextKeyToTranslatedText = createMapTextKeyToTranslatedText(
-      props.i18n
-    )
   }
 
   getMatchingResults(searchQuery) {
     log.debug('get matching results for searchQuery', searchQuery)
-    const { i18n, options } = this.props
+    const { options } = this.props
 
     if (!searchQuery) {
-      log.debug(
-        'options.map(this.mapTextKeyToTranslatedText)',
-        options.map(this.mapTextKeyToTranslatedText)
-      )
-      return options.map(this.mapTextKeyToTranslatedText)
+      return options
     }
 
     const lowerCaseSearchQuery = searchQuery.toLowerCase()
-    log.debug(
-      'options.filter.map',
-      options
-        .filter(({ textKey }) => {
-          return i18n
-            .moduleTranslate({
-              textKey,
-            })
-            .toLowerCase()
-            .includes(lowerCaseSearchQuery)
-        })
-        .map(this.mapTextKeyToTranslatedText)
-    )
-    return options.map(this.mapTextKeyToTranslatedText).filter(({ text }) => {
-      return text.toLowerCase().includes(lowerCaseSearchQuery)
+
+    return options.filter(({ text }) => {
+      return text.tolowerCase().includes(lowerCaseSearchQuery)
     })
   }
 
@@ -125,17 +102,17 @@ class LocalityDropdownSearch extends Component {
     const {
       errorScope,
       helpText,
-      i18n,
       initialText,
       input,
       label,
       meta,
+      options,
       required,
       searchQuery,
       ...rest
     } = this.props
 
-    const { value } = input
+    const { name, value } = input
 
     log.debug('render value', value)
     return (
@@ -144,13 +121,8 @@ class LocalityDropdownSearch extends Component {
         helpText={helpText}
         initialText={initialText}
         input={{
-          name: input.name,
-          value: value
-            ? i18n.moduleTranslate({
-                fallback: value,
-                textKey: value,
-              })
-            : '',
+          name,
+          value,
         }}
         label={label}
         meta={meta}
@@ -171,10 +143,4 @@ class LocalityDropdownSearch extends Component {
 LocalityDropdownSearch.propTypes = propTypes
 LocalityDropdownSearch.defaultProps = defaultProps
 
-export default compose(
-  withI18n({
-    module: 'collectionMammals',
-    scope: 'occurrences.localityInformation',
-  }),
-  connect(mapStateToProps)
-)(LocalityDropdownSearch)
+export default compose(connect(mapStateToProps))(LocalityDropdownSearch)
