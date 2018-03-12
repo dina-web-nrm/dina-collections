@@ -11,8 +11,8 @@ const individualGroup = {
     {
       featureObservationText: 'female',
       featureObservationType: {
-        id: '1',
-        typeName: 'sex',
+        id: '22',
+        type: 'featureObservationType',
       },
     },
   ],
@@ -46,6 +46,13 @@ const mutations = [
   },
 ]
 const expectedOutput = {
+  curatedLocalities: [],
+  featureObservationTypes: [
+    {
+      id: '22',
+      type: 'featureObservationType',
+    },
+  ],
   physicalUnits: [
     {
       id: '1',
@@ -68,8 +75,8 @@ const expectedOutput = {
         {
           featureObservationText: 'female',
           featureObservationType: {
-            id: '1',
-            typeName: 'sex',
+            id: '22',
+            type: 'featureObservationType',
           },
         },
       ],

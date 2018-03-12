@@ -3,6 +3,7 @@ import {
   getResources,
   getFeatureObservationTypes,
   getFeatureObservationType,
+  getHasFeatureObservationTypes,
 } from './selectors'
 
 describe('domainModules/curatedListService/selectors', () => {
@@ -35,5 +36,18 @@ describe('domainModules/curatedListService/selectors', () => {
     expect(getFeatureObservationType(state, 'a')).toEqual(
       state.resources.featureObservationTypes.a
     )
+  })
+
+  describe('getHasFeatureObservationTypes', () => {
+    it('returns true', () => {
+      expect(getHasFeatureObservationTypes(state)).toEqual(true)
+    })
+    it('returns false', () => {
+      expect(
+        getHasFeatureObservationTypes({
+          resources: { featureObservationTypes: {} },
+        })
+      ).toEqual(false)
+    })
   })
 })

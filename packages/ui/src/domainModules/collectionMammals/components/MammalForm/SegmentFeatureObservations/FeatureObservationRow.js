@@ -6,11 +6,20 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import FeatureTypeNameDropdown from '../../FeatureTypeNameDropdown'
 
 const propTypes = {
+  featureObservationTypes: PropTypes.object.isRequired,
   getPath: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
   index: PropTypes.number.isRequired,
 }
 
-function FeatureObservationRow({ index, getPath }) {
+function FeatureObservationRow({
+  featureObservationTypes,
+  getPath,
+  index,
+  i18n: { moduleTranslate },
+}) {
   return (
     <Table.Row key={index}>
       <Table.Cell
@@ -20,8 +29,16 @@ function FeatureObservationRow({ index, getPath }) {
           autoComplete="off"
           className="transparent"
           component={FeatureTypeNameDropdown}
+          format={id => {
+            if (featureObservationTypes[id]) {
+              const { key } = featureObservationTypes[id]
+              return moduleTranslate({ fallback: key, textKey: key })
+            }
+
+            return ''
+          }}
           module="collectionMammals"
-          name={getPath('featureObservationType.typeName')}
+          name={getPath('featureObservationType.id')}
           type="text"
         />
       </Table.Cell>

@@ -24,3 +24,10 @@ export const getFeatureObservationType = createSelector(
     return featureObservationTypes[id]
   }
 )
+
+export const getHasFeatureObservationTypes = createSelector(
+  getFeatureObservationTypes,
+  featureObservationTypes => {
+    return Object.keys(featureObservationTypes).length > 0
+  }
+)

@@ -56,36 +56,40 @@ describe('domainModules/localityService/selectors', () => {
       state.resources.curatedLocalities
     )
   })
-  it('returns true', () => {
-    expect(getHasCuratedLocalities(state)).toEqual(true)
-  })
-  it('returns false', () => {
-    expect(
-      getHasCuratedLocalities({ resources: { curatedLocalities: {} } })
-    ).toEqual(false)
-  })
   it('returns curatedLocality by id', () => {
     expect(getCuratedLocality(state, 'a')).toEqual(
       state.resources.curatedLocalities.a
     )
   })
+
+  describe('getHasCuratedLocalities', () => {
+    it('returns true', () => {
+      expect(getHasCuratedLocalities(state)).toEqual(true)
+    })
+    it('returns false', () => {
+      expect(
+        getHasCuratedLocalities({ resources: { curatedLocalities: {} } })
+      ).toEqual(false)
+    })
+  })
+
   it('returns dropdown options by group', () => {
     const group = 'country'
     const testValue = getDropdownOptions(state, group)
     const expectedResult = [
       {
         key: 'idCanada',
-        textKey: 'canada',
+        text: 'Canada',
         value: 'idCanada',
       },
       {
         key: 'idGermany',
-        textKey: 'germany',
+        text: 'Germany',
         value: 'idGermany',
       },
       {
         key: 'idSweden',
-        textKey: 'sweden',
+        text: 'Sweden',
         value: 'idSweden',
       },
     ]

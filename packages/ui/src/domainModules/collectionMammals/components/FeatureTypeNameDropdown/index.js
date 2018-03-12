@@ -5,15 +5,15 @@ import { connect } from 'react-redux'
 
 import { DropdownSearch } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import { FEATURE_OBSERVATION_TYPE_NAMES } from '../../constants'
+import { FEATURE_OBSERVATION_TYPES } from '../../constants'
 import { updateFeatureTypeNameSearchQuery } from '../../actionCreators'
 import globalSelectors from '../../globalSelectors'
 
-const AVAILABLE_TYPE_NAMES = FEATURE_OBSERVATION_TYPE_NAMES.map(typeName => {
+const AVAILABLE_TYPE_NAMES = FEATURE_OBSERVATION_TYPES.map(({ id, key }) => {
   return {
-    key: typeName,
-    textKey: typeName,
-    value: typeName,
+    key,
+    textKey: key,
+    value: id,
   }
 })
 
@@ -73,7 +73,7 @@ class FeatureTypeNameDropdown extends Component {
         // https://react.semantic-ui.com/modules/dropdown
         return {
           ...rest,
-          text: this.props.i18n.moduleTranslate({ textKey }),
+          text: this.props.i18n.moduleTranslate({ fallback: textKey, textKey }),
         }
       })
     }
@@ -92,7 +92,7 @@ class FeatureTypeNameDropdown extends Component {
       // https://react.semantic-ui.com/modules/dropdown
       return {
         ...rest,
-        text: this.props.i18n.moduleTranslate({ textKey }),
+        text: this.props.i18n.moduleTranslate({ fallback: textKey, textKey }),
       }
     })
   }
@@ -124,7 +124,7 @@ class FeatureTypeNameDropdown extends Component {
       searchQuery,
     } = this.props
 
-    const { value } = input
+    const { name, value } = input
 
     return (
       <DropdownSearch
@@ -133,15 +133,7 @@ class FeatureTypeNameDropdown extends Component {
         initialText={i18n.moduleTranslate({
           textKey: 'featureType',
         })}
-        input={{
-          name: input.name,
-          value: value
-            ? i18n.moduleTranslate({
-                fallback: value,
-                textKey: value,
-              })
-            : '',
-        }}
+        input={{ name, value }}
         label={label}
         meta={meta}
         onChange={this.handleSelect}

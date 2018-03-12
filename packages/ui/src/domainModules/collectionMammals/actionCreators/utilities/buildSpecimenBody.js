@@ -2,6 +2,7 @@ import { PHYSICAL_UNIT } from 'domainModules/storageService/constants'
 
 export default function({
   curatedLocalities,
+  featureObservationTypes,
   individualGroup,
   savedPhysicalUnits,
 }) {
@@ -32,6 +33,9 @@ export default function({
       relationships: {
         curatedLocalities: {
           data: curatedLocalities,
+        },
+        featureObservationTypes: {
+          data: featureObservationTypes,
         },
         physicalUnits: {
           data: cleanedPhysicalUnits,

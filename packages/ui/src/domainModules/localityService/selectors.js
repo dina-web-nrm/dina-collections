@@ -18,17 +18,17 @@ export const getCuratedLocalities = createSelector(getResources, resources => {
   return resources.curatedLocalities
 })
 
-export const getHasCuratedLocalities = createSelector(
-  getCuratedLocalities,
-  curatedLocalities => {
-    return Object.keys(curatedLocalities).length > 0
-  }
-)
-
 export const getCuratedLocality = createSelector(
   [getCuratedLocalities, getSecondArgument],
   (curatedLocalities, id) => {
     return curatedLocalities[id]
+  }
+)
+
+export const getHasCuratedLocalities = createSelector(
+  getCuratedLocalities,
+  curatedLocalities => {
+    return Object.keys(curatedLocalities).length > 0
   }
 )
 
@@ -40,7 +40,7 @@ export const getDropdownOptions = createSelector(
       .map(({ id, name }) => {
         return {
           key: id,
-          textKey: capitalizeFirstLetter(name),
+          text: capitalizeFirstLetter(name),
           value: id,
         }
       })

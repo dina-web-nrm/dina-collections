@@ -5,8 +5,10 @@ import { connect } from 'react-redux'
 import { Header, Segment } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { FormTable } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { globalSelectors as curatedListSelectors } from 'domainModules/curatedListService'
 import Footer from './Footer'
 import FeatureObservationRow from './FeatureObservationRow'
 
@@ -25,11 +27,18 @@ const columnHeaderTextKeys = [
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
     featureObservations: formValueSelector(state, 'featureObservations'),
+    featureObservationTypes: curatedListSelectors.getFeatureObservationTypes(
+      state
+    ),
   }
 }
 
 const propTypes = {
   featureObservations: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
+  featureObservationTypes: PropTypes.object.isRequired,
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
 }
 const defaultProps = {
   featureObservations: undefined,
@@ -37,7 +46,7 @@ const defaultProps = {
 
 class SegmentFeatureObservations extends Component {
   render() {
-    const { featureObservations } = this.props
+    const { featureObservations, featureObservationTypes, i18n } = this.props
 
     return (
       <Segment color="green">
@@ -51,7 +60,14 @@ class SegmentFeatureObservations extends Component {
             (featureObservations && featureObservations.length) || 0
           }
           renderRow={({ index }) => {
-            return <FeatureObservationRow index={index} key={index} />
+            return (
+              <FeatureObservationRow
+                featureObservationTypes={featureObservationTypes}
+                i18n={i18n}
+                index={index}
+                key={index}
+              />
+            )
           }}
         />
       </Segment>
@@ -64,5 +80,9 @@ SegmentFeatureObservations.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps),
+  withI18n({
+    module: 'collectionMammals',
+    scope: 'featureObservations',
+  }),
   pathBuilder({ name: 'featureObservations' })
 )(SegmentFeatureObservations)
