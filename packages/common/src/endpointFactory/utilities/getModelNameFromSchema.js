@@ -1,5 +1,9 @@
-module.exports = function getModelNameFromParameter({ schema }) {
+module.exports = function getModelNameFromSchema(schema) {
   if (!schema) {
+    return null
+  }
+
+  if (!schema.$ref) {
     return null
   }
 

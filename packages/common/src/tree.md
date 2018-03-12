@@ -1,5 +1,5 @@
 # Tree for src
-Generated at: 2018-03-12T13:48:21.589Z
+Generated at: 2018-03-12T15:22:40.633Z
 ## Tree
 ```bash
 ├── Dependor
@@ -48,11 +48,18 @@ Generated at: 2018-03-12T13:48:21.589Z
 │   └── index.js
 ├── endpointFactory
 │   ├── client.js
-│   ├── createBodyValidator.js
 │   ├── createEndpointFactory.js
-│   ├── createMockFunction.js
-│   ├── getModelNameFromParameter.js
-│   └── server.js
+│   ├── server.js
+│   └── utilities
+│       ├── buildOperationIdPathnameMap.js
+│       ├── createGetExample.js
+│       ├── createMockData.js
+│       ├── getBodyValidator.js
+│       ├── getExamplesFromMethodSpecifiction.js
+│       ├── getModelNameFromSchema.js
+│       ├── getResponseValidator.js
+│       ├── getSchemaFromRequestBody.js
+│       └── getSchemaFromResponse.js
 ├── error
 │   ├── constants
 │   │   ├── errorCodes.js
