@@ -19,6 +19,9 @@ export default function getSpecimen({ id, throwError = false } = {}) {
     return apiClient
       .call(GET_SPECIMEN, {
         pathParams: { id },
+        queryParams: {
+          relationships: ['all'],
+        },
       })
       .then(
         response => {

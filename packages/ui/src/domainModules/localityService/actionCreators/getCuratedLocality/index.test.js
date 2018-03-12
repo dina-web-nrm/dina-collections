@@ -53,6 +53,9 @@ describe('domainModules/localityService/actionCreators/getCuratedLocality', () =
     const testAction = getCuratedLocality({ id })
     const expectedCallParams = {
       pathParams: { id },
+      queryParams: {
+        relationships: ['all'],
+      },
     }
 
     expect.assertions(3)

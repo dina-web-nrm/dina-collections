@@ -15,28 +15,35 @@ export default function getPhysicalUnit({ id, throwError = false } = {}) {
       meta: { id },
       type: STORAGE_SERVICE_GET_PHYSICAL_UNIT_REQUEST,
     })
-    return apiClient.call(GET_PHYSICAL_UNIT, { pathParams }).then(
-      response => {
-        const transformedResponse = flattenObjectResponse(response.data)
-        dispatch({
-          meta: { id },
-          payload: transformedResponse,
-          type: STORAGE_SERVICE_GET_PHYSICAL_UNIT_SUCCESS,
-        })
-        return transformedResponse
-      },
-      error => {
-        dispatch({
-          error: true,
-          meta: { id },
-          payload: error,
-          type: STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL,
-        })
+    return apiClient
+      .call(GET_PHYSICAL_UNIT, {
+        pathParams,
+        queryParams: {
+          relationships: ['all'],
+        },
+      })
+      .then(
+        response => {
+          const transformedResponse = flattenObjectResponse(response.data)
+          dispatch({
+            meta: { id },
+            payload: transformedResponse,
+            type: STORAGE_SERVICE_GET_PHYSICAL_UNIT_SUCCESS,
+          })
+          return transformedResponse
+        },
+        error => {
+          dispatch({
+            error: true,
+            meta: { id },
+            payload: error,
+            type: STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL,
+          })
 
-        if (throwError) {
-          throw error
+          if (throwError) {
+            throw error
+          }
         }
-      }
-    )
+      )
   }
 }
