@@ -22,8 +22,8 @@ const buildWhere = ({ group, model, parentId, search }) => {
 
   return model
     .getWhere({
+      forceCurrentVersion: false,
       where: {
-        forceCurrentVersion: false,
         id: parentId,
       },
     })
