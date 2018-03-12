@@ -31,6 +31,7 @@ const api = {
 const db = {
   database: process.env.DB_DATABASE || 'postgres',
   flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
+  loadInitialData: process.env.LOAD_INITIAL_DATA === 'true' || false,
   password: process.env.DB_PASSWORD || 'mysecretpassword',
   url: process.env.DB_URL || '127.0.0.1:5432',
   username: process.env.DB_USERNAME || 'postgres',

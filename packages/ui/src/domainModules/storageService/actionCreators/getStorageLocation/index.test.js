@@ -53,6 +53,9 @@ describe('domainModules/storageService/actionCreators/getStorageLocation', () =>
     const testAction = getStorageLocation({ id })
     const expectedCallParams = {
       pathParams: { id },
+      queryParams: {
+        relationships: ['all'],
+      },
     }
 
     expect.assertions(3)

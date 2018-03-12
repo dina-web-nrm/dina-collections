@@ -40,6 +40,9 @@ apiDescribe('specimen', () => {
             return makeTestCall({
               operationId: 'getSpecimen',
               pathParams: { id: simpleDataPhysicalUnitRelationsId },
+              queryParams: {
+                relationships: ['all'],
+              },
             })
           })
           .then(response => {
@@ -92,6 +95,9 @@ apiDescribe('specimen', () => {
             return makeTestCall({
               operationId: 'getSpecimen',
               pathParams: { id: simpleDataPhysicalUnitRelationsId },
+              queryParams: {
+                relationships: ['all'],
+              },
             })
           })
           .then(response => {
@@ -139,6 +145,9 @@ apiDescribe('specimen', () => {
           return makeTestCall({
             operationId: 'getSpecimen',
             pathParams: { id: simpleDataNoRelationsId },
+            queryParams: {
+              relationships: ['all'],
+            },
           })
         })
         .then(response => {

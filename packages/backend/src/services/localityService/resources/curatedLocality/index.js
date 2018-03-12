@@ -11,12 +11,15 @@ module.exports = {
       type: 'update',
     },
     {
-      includeRelations: false,
+      relationKey: 'parent',
+      type: 'updateRelationHasOne',
+    },
+    {
+      includeRelations: true,
       queryParams: {
         'filter[descendantLevels]': {
           description:
-            'NOT IMPLEMENTED - Levels of descendants to include. Only relevant if relationships descendants provided',
-          example: ['country', 'city'],
+            'NOT IMPLEMENTED - Levels of descendants to include. Only relevant if relationships descendants provided. example: [country, city]',
           required: false,
           schema: {
             items: {
@@ -26,8 +29,8 @@ module.exports = {
           },
         },
         includes: {
-          description: 'NOT IMPLEMENTED - Add includes',
-          example: ['descendants', 'children'],
+          description:
+            'NOT IMPLEMENTED - Add includes. example [descendants, children]',
           required: false,
           schema: {
             items: {
@@ -38,8 +41,7 @@ module.exports = {
           },
         },
         relationships: {
-          description: 'Add relationships',
-          example: ['descendants', 'children'],
+          description: 'Add relationships. example [descendants, children]',
           required: false,
           schema: {
             items: {
@@ -53,20 +55,25 @@ module.exports = {
       type: 'getOne',
     },
     {
-      controller: 'curatedLocalityGetWhere',
+      controller: 'curatedLocalityGetMany',
       includeRelations: false,
       queryParams: {
         'filter[group]': {
-          description: 'Filter by group',
-          example: 'country',
+          description: 'Filter by group, example: country',
+          required: false,
+          schema: {
+            type: 'string',
+          },
+        },
+        'filter[parentId]': {
+          description: 'Filter by parentId, example 123',
           required: false,
           schema: {
             type: 'string',
           },
         },
         'filter[search]': {
-          description: 'Filter by string search',
-          example: 'swe',
+          description: 'Filter by string search, example swe',
           required: false,
           schema: {
             type: 'string',
@@ -78,10 +85,6 @@ module.exports = {
   ],
   relations: {
     children: {
-      format: 'array',
-      resource: 'curatedLocality',
-    },
-    descendants: {
       format: 'array',
       resource: 'curatedLocality',
     },

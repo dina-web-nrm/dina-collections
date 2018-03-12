@@ -53,6 +53,9 @@ describe('domainModules/storageService/actionCreators/getPhysicalUnit', () => {
     const testAction = getPhysicalUnit({ id })
     const expectedCallParams = {
       pathParams: { id },
+      queryParams: {
+        relationships: ['all'],
+      },
     }
 
     expect.assertions(3)

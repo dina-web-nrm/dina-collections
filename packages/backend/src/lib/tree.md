@@ -1,5 +1,5 @@
 # Tree for lib
-Generated at: 2018-03-10T13:50:12.989Z
+Generated at: 2018-03-12T13:48:22.571Z
 ## Tree
 ```bash
 ├── app
@@ -30,7 +30,8 @@ Generated at: 2018-03-10T13:50:12.989Z
 │   ├── index.js
 │   ├── relationshipsUtilities
 │   │   ├── buildIncludeArray.js
-│   │   └── extractRelationships.js
+│   │   ├── extractRelationships.js
+│   │   └── shouldIncludeRelation.js
 │   ├── transformations
 │   │   ├── createArrayResponse.js
 │   │   ├── createObjectResponse.js

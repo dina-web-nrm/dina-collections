@@ -17,28 +17,32 @@ export default function getFeatureObservationType(
       meta: { id },
       type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_REQUEST,
     })
-    return apiClient.call(GET_FEATURE_OBSERVATION_TYPE, { pathParams }).then(
-      response => {
-        const transformedResponse = flattenObjectResponse(response.data)
-        dispatch({
-          meta: { id },
-          payload: transformedResponse,
-          type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_SUCCESS,
-        })
-        return transformedResponse
-      },
-      error => {
-        dispatch({
-          error: true,
-          meta: { id },
-          payload: error,
-          type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL,
-        })
+    return apiClient
+      .call(GET_FEATURE_OBSERVATION_TYPE, {
+        pathParams,
+      })
+      .then(
+        response => {
+          const transformedResponse = flattenObjectResponse(response.data)
+          dispatch({
+            meta: { id },
+            payload: transformedResponse,
+            type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_SUCCESS,
+          })
+          return transformedResponse
+        },
+        error => {
+          dispatch({
+            error: true,
+            meta: { id },
+            payload: error,
+            type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL,
+          })
 
-        if (throwError) {
-          throw error
+          if (throwError) {
+            throw error
+          }
         }
-      }
-    )
+      )
   }
 }

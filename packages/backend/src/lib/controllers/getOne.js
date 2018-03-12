@@ -12,12 +12,20 @@ module.exports = function getOne({ operation, models }) {
     throw new Error(`Model not provided for ${resource}`)
   }
   return ({ request }) => {
+    const {
+      pathParams: { id },
+      queryParams: { relationships: queryParamRelationships = '' },
+    } = request
+
     let include
-    if (relations && includeRelations) {
-      include = buildIncludeArray({ models, relations })
+    if (relations && includeRelations && queryParamRelationships) {
+      include = buildIncludeArray({
+        models,
+        queryParamRelationships,
+        relations,
+      })
     }
 
-    const { pathParams: { id } } = request
     return model.getById({ id, include, raw: false }).then(fetchedResource => {
       if (!fetchedResource) {
         backendError404({
@@ -29,6 +37,7 @@ module.exports = function getOne({ operation, models }) {
         includeRelations &&
         extractRelationships({
           fetchedResource,
+          queryParamRelationships,
           relations,
         })
 

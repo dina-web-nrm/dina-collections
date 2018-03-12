@@ -12,26 +12,32 @@ export default function getCuratedLocalities({ throwError = false } = {}) {
     dispatch({
       type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_REQUEST,
     })
-    return apiClient.call(GET_CURATED_LOCALITIES).then(
-      response => {
-        const transformedResponse = flattenArrayResponse(response.data)
-        dispatch({
-          payload: transformedResponse,
-          type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_SUCCESS,
-        })
-        return transformedResponse
-      },
-      error => {
-        dispatch({
-          error: true,
-          payload: error,
-          type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_FAIL,
-        })
+    return apiClient
+      .call(GET_CURATED_LOCALITIES, {
+        queryParams: {
+          relationships: ['all'],
+        },
+      })
+      .then(
+        response => {
+          const transformedResponse = flattenArrayResponse(response.data)
+          dispatch({
+            payload: transformedResponse,
+            type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_SUCCESS,
+          })
+          return transformedResponse
+        },
+        error => {
+          dispatch({
+            error: true,
+            payload: error,
+            type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_FAIL,
+          })
 
-        if (throwError) {
-          throw error
+          if (throwError) {
+            throw error
+          }
         }
-      }
-    )
+      )
   }
 }

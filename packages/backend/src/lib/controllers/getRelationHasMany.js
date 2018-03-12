@@ -25,7 +25,11 @@ module.exports = function getRelationsHasMany({ operation, models }) {
 
     let include
     if (relations) {
-      include = buildIncludeArray({ models, relations })
+      include = buildIncludeArray({
+        models,
+        queryParamRelationships: relationKey,
+        relations,
+      })
     }
     return model
       .getOneWhere({
@@ -42,6 +46,7 @@ module.exports = function getRelationsHasMany({ operation, models }) {
         }
         const relationships = extractRelationships({
           fetchedResource: result,
+          queryParamRelationships: relationKey,
           relations,
         })
         return relationships[relationKey].data || []

@@ -9,24 +9,35 @@ module.exports = function getMany({ operation, models }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
-  return () => {
+  return ({ request }) => {
+    const {
+      queryParams: { relationships: queryParamRelationships = '' },
+    } = request
+
     let include
-    if (relations && includeRelations) {
-      include = buildIncludeArray({ models, relations })
+    if (relations && includeRelations && queryParamRelationships) {
+      include = buildIncludeArray({
+        models,
+        queryParamRelationships,
+        relations,
+      })
     }
+
     return model.getWhere({ include, raw: false, where: {} }).then(items => {
       return createArrayResponse({
         items: items.map(item => {
           const transformedItem = transformOutput(item)
+          const relationships =
+            includeRelations &&
+            extractRelationships({
+              fetchedResource: item,
+              queryParamRelationships,
+              relations,
+            })
+
           return {
             ...transformedItem,
-            relationships:
-              relations &&
-              includeRelations &&
-              extractRelationships({
-                fetchedResource: item,
-                relations,
-              }),
+            relationships,
           }
         }),
         type: resource,

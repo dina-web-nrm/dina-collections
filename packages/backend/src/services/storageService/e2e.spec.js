@@ -201,10 +201,14 @@ apiDescribe('storage', () => {
             pathParams: {
               id: physicalUnitId,
             },
+            queryParams: {
+              relationships: ['all'],
+            },
             validateOutput: true,
           }).then(physicalUnit => {
             expect(physicalUnit).toBeTruthy()
             expect(physicalUnit.data).toBeTruthy()
+            expect(physicalUnit.data.relationships).toBeTruthy()
             expect(physicalUnit.data.relationships.storageLocation).toBeTruthy()
           })
         })
@@ -214,6 +218,9 @@ apiDescribe('storage', () => {
             operationId: 'getStorageLocation',
             pathParams: {
               id: storageLocationId,
+            },
+            queryParams: {
+              relationships: ['all'],
             },
             validateOutput: true,
           }).then(storageLocation => {
@@ -230,6 +237,9 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             operationId: 'getPhysicalUnits',
+            queryParams: {
+              relationships: ['all'],
+            },
             validateOutput: true,
           }).then(physicalUnits => {
             expect(physicalUnits).toBeTruthy()
@@ -243,6 +253,9 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             operationId: 'getStorageLocations',
+            queryParams: {
+              relationships: ['all'],
+            },
             validateOutput: true,
           }).then(storageLocations => {
             expect(storageLocations).toBeTruthy()

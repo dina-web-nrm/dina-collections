@@ -1819,8 +1819,16 @@
           {
             "in": "query",
             "name": "filter[group]",
-            "description": "Filter by group",
-            "example": "country",
+            "description": "Filter by group, example: country",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[parentId]",
+            "description": "Filter by parentId, example 123",
             "required": false,
             "schema": {
               "type": "string"
@@ -1829,8 +1837,7 @@
           {
             "in": "query",
             "name": "filter[search]",
-            "description": "Filter by string search",
-            "example": "swe",
+            "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
               "type": "string"
@@ -2009,11 +2016,7 @@
           {
             "in": "query",
             "name": "filter[descendantLevels]",
-            "description": "NOT IMPLEMENTED - Levels of descendants to include. Only relevant if relationships descendants provided",
-            "example": [
-              "country",
-              "city"
-            ],
+            "description": "NOT IMPLEMENTED - Levels of descendants to include. Only relevant if relationships descendants provided. example: [country, city]",
             "required": false,
             "schema": {
               "items": {
@@ -2025,11 +2028,7 @@
           {
             "in": "query",
             "name": "includes",
-            "description": "NOT IMPLEMENTED - Add includes",
-            "example": [
-              "descendants",
-              "children"
-            ],
+            "description": "NOT IMPLEMENTED - Add includes. example [descendants, children]",
             "required": false,
             "schema": {
               "items": {
@@ -2045,17 +2044,19 @@
           {
             "in": "query",
             "name": "relationships",
-            "description": "Add relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "descendants",
-              "children"
+              "children",
+              "parent"
             ],
-            "required": false,
             "schema": {
               "items": {
                 "enum": [
-                  "descendants",
-                  "children"
+                  "all",
+                  [
+                    "children",
+                    "parent"
+                  ]
                 ],
                 "type": "string"
               },
@@ -2129,6 +2130,102 @@
           }
         ],
         "summary": "Find curatedLocality by id",
+        "tags": [
+          "localityService"
+        ]
+      }
+    },
+    "/api/locality/v01/curatedLocalities/{id}/relationships/parent": {
+      "patch": {
+        "operationId": "updateCuratedLocalityParent",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "curatedLocality id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": "false",
+            "schema": {
+              "default": "false",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateCuratedLocalityParentRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocalityParentResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocalityParent-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocalityParent-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateCuratedLocalityParent-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update curatedLocality -> parent",
         "tags": [
           "localityService"
         ]
@@ -2418,6 +2515,30 @@
             "schema": {
               "default": "false",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "curatedLocalities",
+              "featureObservationTypes",
+              "physicalUnits"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "curatedLocalities",
+                    "featureObservationTypes",
+                    "physicalUnits"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],
@@ -3308,6 +3429,26 @@
               "default": "false",
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "storageLocation"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "storageLocation"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
           }
         ],
         "responses": {
@@ -3477,6 +3618,26 @@
             "schema": {
               "default": "false",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "storageLocation"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "storageLocation"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],
@@ -3981,6 +4142,26 @@
               "default": "false",
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "physicalUnits"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "physicalUnits"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
           }
         ],
         "responses": {
@@ -4150,6 +4331,26 @@
             "schema": {
               "default": "false",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "physicalUnits"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  [
+                    "physicalUnits"
+                  ]
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],
@@ -7100,6 +7301,84 @@
         "title": "Internal Server Error",
         "type": "object"
       },
+      "updateCuratedLocalityParent-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateCuratedLocalityParent-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateCuratedLocalityParent-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
       "getCuratedLocality-400": {
         "allOf": [
           {
@@ -9544,32 +9823,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -9722,32 +9975,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -9787,6 +10014,33 @@
                   }
                 },
                 "type": "object"
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "updateCuratedLocalityParentRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "curatedLocality",
+                "enum": [
+                  "curatedLocality"
+                ],
+                "type": "string"
               }
             }
           }
@@ -12009,32 +12263,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -12145,32 +12373,6 @@
                     },
                     "type": "object"
                   },
-                  "descendants": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "parent": {
                     "oneOf": [
                       {
@@ -12240,6 +12442,48 @@
         "x-examples": {},
         "description": ""
       },
+      "updateCuratedLocalityParentResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/curatedLocality"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "curatedLocality",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
       "getCuratedLocalityResponse": {
         "additionalProperties": false,
         "properties": {
@@ -12256,32 +12500,6 @@
               "relationships": {
                 "properties": {
                   "children": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "descendants": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -12394,32 +12612,6 @@
                 "relationships": {
                   "properties": {
                     "children": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "curatedLocality"
-                                ],
-                                "example": "curatedLocality",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "descendants": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {

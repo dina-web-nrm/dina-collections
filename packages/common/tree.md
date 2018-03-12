@@ -1,5 +1,5 @@
 # Tree for root
-Generated at: 2018-03-10T13:50:12.006Z
+Generated at: 2018-03-12T13:48:21.587Z
 ## Tree
 ```bash
 ├── README.md
@@ -25,6 +25,7 @@ Generated at: 2018-03-10T13:50:12.006Z
 │   ├── jsonSchema
 │   ├── schemaBuilder
 │   ├── scripts
+│   ├── stringFormatters
 │   └── tree.md
 ├── package.json
 ├── src
@@ -37,6 +38,7 @@ Generated at: 2018-03-10T13:50:12.006Z
 │   ├── jsonSchema
 │   ├── schemaBuilder
 │   ├── scripts
+│   ├── stringFormatters
 │   └── tree.md
 ├── tree.md
 └── yarn.lock
