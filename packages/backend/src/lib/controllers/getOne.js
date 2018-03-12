@@ -41,7 +41,6 @@ module.exports = function getOne({ operation, models }) {
           relations,
         })
 
-      console.log('relationships', relationships)
       const output = transformOutput(fetchedResource)
       return createObjectResponse({
         data: output,

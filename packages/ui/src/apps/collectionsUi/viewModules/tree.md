@@ -1,5 +1,5 @@
 # Tree for collectionsUi viewModules
-Generated at: 2018-03-10T13:50:11.066Z
+Generated at: 2018-03-12T13:48:20.624Z
 ## Tree
 ```bash
 ├── allModules.js

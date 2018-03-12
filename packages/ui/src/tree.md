@@ -1,5 +1,5 @@
 # Tree for src
-Generated at: 2018-03-10T13:50:11.065Z
+Generated at: 2018-03-12T13:48:20.621Z
 ## Tree
 ```bash
 ├── apps
@@ -29,7 +29,10 @@ Generated at: 2018-03-10T13:50:11.065Z
 ├── domainModules
 │   ├── allModules.js
 │   ├── collectionMammals
+│   ├── curatedListService
+│   ├── identifierService
 │   ├── index.js
+│   ├── localityService
 │   ├── storageService
 │   ├── taxonomy
 │   └── tree.md

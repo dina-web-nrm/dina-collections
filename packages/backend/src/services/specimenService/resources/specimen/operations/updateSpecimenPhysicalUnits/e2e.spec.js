@@ -36,7 +36,6 @@ apiDescribe('specimen', () => {
           operationId: 'updateSpecimenPhysicalUnits',
           pathParams: { id: simpleDataPhysicalUnitRelationsId },
         })
-          .catch(err => {})
           .then(() => {
             return makeTestCall({
               operationId: 'getSpecimen',

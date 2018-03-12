@@ -90,9 +90,6 @@ apiDescribe('specimen', () => {
       })
       describe('existing relations dont include relationships if not in query', () => {
         let simpleDataPhysicalUnitRelationsId
-        const simpleDataPhysicalUnitRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
-        )
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalUnitRelations'),

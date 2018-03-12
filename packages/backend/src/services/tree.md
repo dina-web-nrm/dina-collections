@@ -1,5 +1,5 @@
 # Tree for services
-Generated at: 2018-03-10T13:50:12.991Z
+Generated at: 2018-03-12T13:48:22.572Z
 ## Tree
 ```bash
 ├── agentService
@@ -80,7 +80,7 @@ Generated at: 2018-03-10T13:50:12.991Z
 ├── index.js
 ├── localityService
 │   ├── controllers
-│   │   ├── curatedLocalityGetWhere.js
+│   │   ├── curatedLocalityGetMany.js
 │   │   └── index.js
 │   ├── e2e.spec.js
 │   ├── index.js
@@ -96,7 +96,7 @@ Generated at: 2018-03-10T13:50:12.991Z
 │   │   │   ├── create
 │   │   │   └── index.js
 │   │   └── index.js
-│   └── todo.md
+│   └── todo
 ├── organizationService
 │   ├── index.js
 │   ├── info

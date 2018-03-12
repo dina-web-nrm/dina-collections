@@ -1,5 +1,5 @@
 # Tree for domainModules
-Generated at: 2018-03-10T13:50:11.066Z
+Generated at: 2018-03-12T13:48:20.625Z
 ## Tree
 ```bash
 ├── allModules.js
@@ -13,21 +13,21 @@ Generated at: 2018-03-10T13:50:11.066Z
 │   │       └── localityInformation
 │   ├── actionCreators
 │   │   ├── clearSearchParameters.js
+│   │   ├── createSpecimen.js
 │   │   ├── getIndividualGroupByCatalogNumber.js
-│   │   ├── getSpecimenById.js
+│   │   ├── getSpecimen.js
 │   │   ├── index.js
 │   │   ├── lookupMammals.js
-│   │   ├── registerMammal.js
 │   │   ├── setAccordionActiveIndex.js
 │   │   ├── updateFeatureTypeNameSearchQuery.js
 │   │   ├── updateLocalityInformationSearchQuery.js
 │   │   ├── updateSearchParameter.js
-│   │   └── updateSpecimen.js
+│   │   ├── updateSpecimen.js
+│   │   └── utilities
+│   │       └── buildSpecimenBody.js
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── FeatureTypeNameDropdown
-│   │   │   └── index.js
-│   │   ├── FeatureTypeNameSearch
 │   │   │   └── index.js
 │   │   ├── LocalityDropdownSearch
 │   │   │   └── index.js
@@ -56,7 +56,114 @@ Generated at: 2018-03-10T13:50:11.066Z
 │   ├── selectors.js
 │   ├── translations.json
 │   └── utilities.js
+├── curatedListService
+│   ├── actionCreators
+│   │   ├── createFeatureObservationType
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getFeatureObservationType
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getFeatureObservationTypes
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── updateFeatureObservationType
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── actionTypes.js
+│   ├── actionTypes.test.js
+│   ├── constants.js
+│   ├── constants.test.js
+│   ├── endpoints.js
+│   ├── endpoints.test.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
+│   ├── index.js
+│   ├── index.test.js
+│   ├── reducer
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── resources
+│   │       ├── featureObservationTypes
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── selectors.js
+│   └── selectors.test.js
+├── identifierService
+│   ├── actionCreators
+│   │   ├── createCatalogNumber
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getCatalogNumber
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getCatalogNumbers
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── updateCatalogNumber
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── actionTypes.js
+│   ├── actionTypes.test.js
+│   ├── constants.js
+│   ├── constants.test.js
+│   ├── endpoints.js
+│   ├── endpoints.test.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
+│   ├── index.js
+│   ├── index.test.js
+│   ├── reducer
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── resources
+│   │       ├── catalogNumbers
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── selectors.js
+│   └── selectors.test.js
 ├── index.js
+├── localityService
+│   ├── actionCreators
+│   │   ├── createCuratedLocality
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getCuratedLocalities
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getCuratedLocality
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── updateCuratedLocality
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── actionTypes.js
+│   ├── actionTypes.test.js
+│   ├── constants.js
+│   ├── constants.test.js
+│   ├── endpoints.js
+│   ├── endpoints.test.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
+│   ├── index.js
+│   ├── index.test.js
+│   ├── mockData.js
+│   ├── mockData.test.js
+│   ├── reducer
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── resources
+│   │       ├── curatedLocalities
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── selectors.js
+│   └── selectors.test.js
 ├── storageService
 │   ├── actionCreators
 │   │   ├── createPhysicalUnit
@@ -68,7 +175,13 @@ Generated at: 2018-03-10T13:50:11.066Z
 │   │   ├── getPhysicalUnit
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
+│   │   ├── getPhysicalUnits
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
 │   │   ├── getStorageLocation
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getStorageLocations
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js

@@ -1,1 +1,1 @@
-exports.curatedLocalityGetWhere = require('./curatedLocalityGetWhere')
+exports.curatedLocalityGetMany = require('./curatedLocalityGetMany')
