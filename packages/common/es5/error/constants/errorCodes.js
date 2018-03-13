@@ -43,6 +43,10 @@ var errorCodes = {
     description: 'Something is wrong with the request. See details',
     title: 'Request error'
   },
+  REQUEST_QUERY_VALIDATION_ERROR: {
+    description: 'Query params does not pass validations',
+    title: 'Query validation error'
+  },
   RESOURCE_NOT_FOUND_ERROR: {
     description: 'Requested resource not found. See details',
     title: 'Not found error'

@@ -3,7 +3,7 @@
 var getSchemaFromResponse = require('./getSchemaFromResponse');
 var getModelNameFromSchema = require('./getModelNameFromSchema');
 
-module.exports = function getResponseValidator(_ref) {
+module.exports = function createResponseValidator(_ref) {
   var createApiClientValidator = _ref.createApiClientValidator,
       methodSpecification = _ref.methodSpecification;
 

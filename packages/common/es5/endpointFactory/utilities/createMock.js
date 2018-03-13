@@ -4,7 +4,7 @@ var createMockGenerator = require('../../jsonSchema/createMockGenerator');
 var getSchemaFromResponse = require('./getSchemaFromResponse');
 var getModelNameFromSchema = require('./getModelNameFromSchema');
 
-module.exports = function createMockData(_ref) {
+module.exports = function createMock(_ref) {
   var importFaker = _ref.importFaker,
       methodSpecification = _ref.methodSpecification;
 
