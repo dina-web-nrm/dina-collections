@@ -3,6 +3,7 @@ const getByIdFactory = require('./methods/getByIdFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
 const updateFactory = require('./methods/updateFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
+const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
 
 module.exports = function attachMethods({
@@ -34,6 +35,12 @@ module.exports = function attachMethods({
     validate,
   })
 
+  const bulkCreate = bulkCreateFactory({
+    Model,
+    schemaVersion,
+    validate,
+  })
+
   const update = updateFactory({
     getById,
     Model,
@@ -42,6 +49,7 @@ module.exports = function attachMethods({
   })
 
   const coreMethods = {
+    bulkCreate,
     create,
     getById,
     getOneWhere,

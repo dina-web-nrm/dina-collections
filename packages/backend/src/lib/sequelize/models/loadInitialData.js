@@ -1,3 +1,4 @@
+const chainPromises = require('common/src/chainPromises')
 const createLog = require('../../../utilities/log')
 
 const log = createLog('lib/sequelize', 1)
@@ -52,15 +53,18 @@ module.exports = function loadInitialData({ config, services, models }) {
   }
   log.debug('Load initial data:')
   const loadInitialDataFunctions = extractLoadInitialDataFromServies(services)
-  return Promise.all(
+
+  return chainPromises(
     loadInitialDataFunctions.map(
       ({ serviceName, loadInitialData: loadInitialDataFunction }) => {
-        log.scope().debug(`${serviceName}`)
-        return Promise.resolve(
-          loadInitialDataFunction({
-            models,
-          })
-        )
+        return () => {
+          log.scope().debug(`${serviceName}`)
+          return Promise.resolve(
+            loadInitialDataFunction({
+              models,
+            })
+          )
+        }
       }
     )
   )

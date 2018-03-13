@@ -15,9 +15,12 @@ const featureTypes = [
 ]
 
 module.exports = function loadInitialData({ models }) {
-  const { create } = models.featureObservationType
-  const promises = featureTypes.map(featureType => {
-    return create(featureType)
+  const items = featureTypes.map((featureType, index) => {
+    return {
+      doc: featureType,
+      id: index + 1,
+    }
   })
-  return Promise.all(promises)
+
+  return models.featureObservationType.bulkCreate(items)
 }

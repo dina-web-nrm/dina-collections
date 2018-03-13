@@ -10,31 +10,38 @@ module.exports = function createFactory(
   if (!Model) {
     throw new Error('Have to provide model')
   }
+
+  Model.hook('afterCreate', newModel => {
+    // This means that it already has an id and this id should not be overwritten
+    if (newModel.dataValues.id) {
+      return newModel
+    }
+    newModel.set('id', newModel.get('versionId'))
+    return newModel.save()
+  })
+
   // TODO 'dont allow id like this but create another metgod'
-  return function create(doc, id) {
+  return function create(doc, versionId) {
     if (!doc) {
       return Promise.reject(new Error('doc not provided'))
     }
 
     const data = {
       document: doc,
-      id,
       isCurrentVersion: true,
       schemaCompliant: validate ? !validate(doc) : undefined,
       schemaVersion: schemaVersion || undefined,
+      versionId,
     }
 
-    log.debug(`Create instance for model ${Model.tableName}`)
     return Model.create(data).then(newModel => {
-      newModel.set('id', newModel.get('versionId'))
-      return newModel.save().then(res => {
-        log.debug(
-          `Created instance for model ${Model.tableName}. id: ${
-            res.dataValues.id
-          }, versionId: ${res.dataValues.versionId}`
-        )
-        return res.dataValues
-      })
+      log.debug(
+        `Created instance for model ${Model.tableName}. id: ${
+          newModel.dataValues.id
+        }, versionId: ${newModel.dataValues.versionId}`
+      )
+
+      return newModel.dataValues
     })
   }
 }
