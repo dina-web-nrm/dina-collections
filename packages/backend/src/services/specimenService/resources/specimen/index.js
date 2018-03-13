@@ -1,3 +1,4 @@
+const filterWhereFactory = require('../../../../lib/controllers/queryUtilities/filterWhereFactory')
 const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const fullFormExample = require('./operations/create/examples/fullFormExample.json')
 const validateBody = require('./operations/create/validators/validateBody')
@@ -47,7 +48,13 @@ module.exports = {
       type: 'getOne',
     },
     {
-      controller: 'specimenGetWhere',
+      buildWhere: filterWhereFactory({
+        catalogNumber:
+          'document.individualGroup.identifiers.0.identifier.value',
+        taxonNameStandardized:
+          'document.individualGroup.taxonInformation.determinations.0.taxonNameStandardized',
+      }),
+      includeRelations: true,
       queryParams: {
         'filter[catalogNumber]': {
           description: 'catalog number used to filter specimens',

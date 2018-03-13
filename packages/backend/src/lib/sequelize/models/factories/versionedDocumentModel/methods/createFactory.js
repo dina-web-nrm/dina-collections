@@ -20,8 +20,7 @@ module.exports = function createFactory(
     return newModel.save()
   })
 
-  // TODO 'dont allow id like this but create another metgod'
-  return function create(doc, versionId) {
+  return function create(doc) {
     if (!doc) {
       return Promise.reject(new Error('doc not provided'))
     }
@@ -31,8 +30,8 @@ module.exports = function createFactory(
       isCurrentVersion: true,
       schemaCompliant: validate ? !validate(doc) : undefined,
       schemaVersion: schemaVersion || undefined,
-      versionId,
     }
+    log.debug(`Creating instance for model ${Model.tableName}`)
 
     return Model.create(data).then(newModel => {
       log.debug(

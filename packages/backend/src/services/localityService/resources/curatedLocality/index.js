@@ -1,4 +1,5 @@
 const createRequestSuccess = require('./create/examples/requestSuccess.json')
+const buildWhere = require('./getMany/buildWhere')
 
 module.exports = {
   basePath: '/api/locality/v01',
@@ -55,7 +56,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      controller: 'curatedLocalityGetMany',
+      buildWhere,
       includeRelations: false,
       queryParams: {
         'filter[group]': {

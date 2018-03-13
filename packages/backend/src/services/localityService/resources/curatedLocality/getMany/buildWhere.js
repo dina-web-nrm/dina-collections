@@ -1,9 +1,9 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 const { Op } = require('sequelize')
-const createArrayResponse = require('../../../lib/controllers/transformations/createArrayResponse')
-const transformOutput = require('../../../lib/controllers/transformations/outputArray')
 
-const buildWhere = ({ group, model, parentId, search }) => {
+module.exports = function buildWhereFactory({ request, model }) {
+  const { queryParams: { filter: { group, parentId, search } = {} } } = request
+
   const where = {}
 
   if (group !== undefined) {
@@ -43,31 +43,4 @@ const buildWhere = ({ group, model, parentId, search }) => {
       }
       return where
     })
-}
-
-module.exports = function curatedLocalityGetWhere({ operation, models }) {
-  const { resource } = operation
-  return ({ request }) => {
-    const {
-      queryParams: { filter: { search, group, parentId } = {} },
-    } = request
-    const model = models[resource]
-
-    return buildWhere({
-      group,
-      model,
-      parentId,
-      search,
-    }).then(where => {
-      return model
-        .getWhere({ where })
-        .then(transformOutput)
-        .then(items => {
-          return createArrayResponse({
-            items,
-            type: resource,
-          })
-        })
-    })
-  }
 }

@@ -1,4 +1,5 @@
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
+
 module.exports = function createSpecimen({ sequelize }) {
   return createModel({
     name: 'Specimen',

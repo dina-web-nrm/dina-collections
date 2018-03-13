@@ -77,7 +77,7 @@ var mapQueryParam = function mapQueryParam(_ref) {
 
       case 'integer':
         {
-          if (queryParam.match(/^-{0,1}\d+$/)) {
+          if (('' + queryParam).match(/^-{0,1}\d+$/)) {
             parsedQueryParam = parseInt(queryParam, 10);
           }
 

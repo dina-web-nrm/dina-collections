@@ -60,7 +60,7 @@ const mapQueryParam = ({
       }
 
       case 'integer': {
-        if (queryParam.match(/^-{0,1}\d+$/)) {
+        if (`${queryParam}`.match(/^-{0,1}\d+$/)) {
           parsedQueryParam = parseInt(queryParam, 10)
         }
 
