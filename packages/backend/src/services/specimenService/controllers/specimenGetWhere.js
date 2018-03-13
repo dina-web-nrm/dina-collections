@@ -29,8 +29,10 @@ module.exports = function specimenGetWhere({ operation, models }) {
     }
     if (taxonNameStandardized) {
       return model
-        .getAllByTaxonName({
-          taxonName: taxonNameStandardized,
+        .getWhere({
+          where: {
+            'document.individualGroup.taxonInformation.determinations.0.taxonNameStandardized': taxonNameStandardized,
+          },
         })
         .then(transformOutput)
         .then(items => {
