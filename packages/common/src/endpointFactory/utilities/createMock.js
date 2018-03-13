@@ -2,7 +2,7 @@ const createMockGenerator = require('../../jsonSchema/createMockGenerator')
 const getSchemaFromResponse = require('./getSchemaFromResponse')
 const getModelNameFromSchema = require('./getModelNameFromSchema')
 
-module.exports = function createMockData({ importFaker, methodSpecification }) {
+module.exports = function createMock({ importFaker, methodSpecification }) {
   const schema = getSchemaFromResponse(
     methodSpecification.responses[200] || methodSpecification.responses[201]
   )

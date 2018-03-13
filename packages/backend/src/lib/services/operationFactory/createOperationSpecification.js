@@ -22,10 +22,10 @@ module.exports = function createOperationObjectSpecification({
     },
     mock: {
       description: 'Will return mock data',
-      example: 'false',
+      example: false,
       schema: {
-        default: 'false',
-        type: 'string',
+        default: false,
+        type: 'boolean',
       },
     },
   }

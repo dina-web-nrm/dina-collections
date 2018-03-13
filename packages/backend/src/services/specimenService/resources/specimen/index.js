@@ -57,7 +57,7 @@ module.exports = {
             type: 'string',
           },
         },
-        'filter[identifiedTaxonNameStandardized]': {
+        'filter[taxonNameStandardized]': {
           description: 'Standardized taxon name used to filter specimens',
           example: 'Chironectes minimus',
           required: false,

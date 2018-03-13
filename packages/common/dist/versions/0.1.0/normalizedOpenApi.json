@@ -92,10 +92,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -166,10 +166,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -245,10 +245,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -329,10 +329,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -474,10 +474,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -548,10 +548,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -624,10 +624,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -708,10 +708,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -794,10 +794,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -868,10 +868,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -944,10 +944,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1038,10 +1038,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1114,10 +1114,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1188,10 +1188,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1264,10 +1264,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1358,10 +1358,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1434,10 +1434,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1508,10 +1508,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1584,10 +1584,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1678,10 +1678,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1754,10 +1754,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1855,10 +1855,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -1931,10 +1931,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2053,10 +2053,8 @@
               "items": {
                 "enum": [
                   "all",
-                  [
-                    "children",
-                    "parent"
-                  ]
+                  "children",
+                  "parent"
                 ],
                 "type": "string"
               },
@@ -2075,10 +2073,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2161,10 +2159,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2247,10 +2245,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2321,7 +2319,7 @@
           },
           {
             "in": "query",
-            "name": "filter[identifiedTaxonNameStandardized]",
+            "name": "filter[taxonNameStandardized]",
             "description": "Standardized taxon name used to filter specimens",
             "example": "Chironectes minimus",
             "required": false,
@@ -2341,10 +2339,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2417,10 +2415,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2511,10 +2509,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           },
           {
@@ -2530,11 +2528,9 @@
               "items": {
                 "enum": [
                   "all",
-                  [
-                    "curatedLocalities",
-                    "featureObservationTypes",
-                    "physicalUnits"
-                  ]
+                  "curatedLocalities",
+                  "featureObservationTypes",
+                  "physicalUnits"
                 ],
                 "type": "string"
               },
@@ -2621,10 +2617,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2715,10 +2711,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2801,10 +2797,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2895,10 +2891,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -2981,10 +2977,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3075,10 +3071,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3172,10 +3168,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3258,10 +3254,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3350,10 +3346,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3424,10 +3420,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           },
           {
@@ -3441,9 +3437,7 @@
               "items": {
                 "enum": [
                   "all",
-                  [
-                    "storageLocation"
-                  ]
+                  "storageLocation"
                 ],
                 "type": "string"
               },
@@ -3520,10 +3514,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3614,10 +3608,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           },
           {
@@ -3631,9 +3625,7 @@
               "items": {
                 "enum": [
                   "all",
-                  [
-                    "storageLocation"
-                  ]
+                  "storageLocation"
                 ],
                 "type": "string"
               },
@@ -3720,10 +3712,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3814,10 +3806,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3911,10 +3903,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -3997,10 +3989,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -4063,10 +4055,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -4137,10 +4129,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           },
           {
@@ -4154,9 +4146,7 @@
               "items": {
                 "enum": [
                   "all",
-                  [
-                    "physicalUnits"
-                  ]
+                  "physicalUnits"
                 ],
                 "type": "string"
               },
@@ -4233,10 +4223,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -4327,10 +4317,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           },
           {
@@ -4344,9 +4334,7 @@
               "items": {
                 "enum": [
                   "all",
-                  [
-                    "physicalUnits"
-                  ]
+                  "physicalUnits"
                 ],
                 "type": "string"
               },
@@ -4433,10 +4421,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -4543,10 +4531,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],
@@ -4619,10 +4607,10 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": "false",
+            "example": false,
             "schema": {
-              "default": "false",
-              "type": "string"
+              "default": false,
+              "type": "boolean"
             }
           }
         ],

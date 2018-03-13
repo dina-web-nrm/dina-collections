@@ -10,7 +10,7 @@ module.exports = function intercept({
     const {
       queryParams: { mock: mockRequested, exampleId: requestedExampleId },
     } = request
-    if (mockRequested === 'true' && endpointMock) {
+    if (mockRequested === true && endpointMock) {
       if (requestedExampleId && getExample) {
         return getExample(requestedExampleId).then(example => {
           if (!example) {

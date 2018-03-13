@@ -1,8 +1,10 @@
 const buildOperationIdPathnameMap = require('./utilities/buildOperationIdPathnameMap')
-const getBodyValidator = require('./utilities/getBodyValidator')
-const getResponseValidator = require('./utilities/getResponseValidator')
+const createBodyValidator = require('./utilities/createBodyValidator')
 const createGetExample = require('./utilities/createGetExample')
-const createMockData = require('./utilities/createMockData')
+const createMock = require('./utilities/createMock')
+const createQueryParamValidator = require('./utilities/createQueryParamValidator')
+const createResponseValidator = require('./utilities/createResponseValidator')
+const createMapQueryParams = require('./utilities/createMapQueryParams')
 const openApiSpec = require('../../dist/openApi.json')
 
 const map = buildOperationIdPathnameMap(openApiSpec)
@@ -22,19 +24,24 @@ module.exports = function createEndpointFactory({
         methodSpecification,
         openApiSpec,
       }),
+      mapQueryParams: createMapQueryParams({ methodSpecification }),
       methodName,
-      mock: createMockData({
+      mock: createMock({
         importFaker,
         methodSpecification,
       }),
 
       operationId,
       pathname,
-      validateBody: getBodyValidator({
+      validateBody: createBodyValidator({
         createApiClientValidator,
         methodSpecification,
       }),
-      validateResponse: getResponseValidator({
+      validateQueryParams: createQueryParamValidator({
+        createApiClientValidator,
+        methodSpecification,
+      }),
+      validateResponse: createResponseValidator({
         createApiClientValidator,
         methodSpecification,
       }),

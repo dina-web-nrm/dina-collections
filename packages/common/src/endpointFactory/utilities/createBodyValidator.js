@@ -1,19 +1,18 @@
-const getSchemaFromResponse = require('./getSchemaFromResponse')
 const getModelNameFromSchema = require('./getModelNameFromSchema')
+const getSchemaFromRequestBody = require('./getSchemaFromRequestBody')
 
-module.exports = function getResponseValidator({
+module.exports = function createBodyValidator({
   createApiClientValidator,
   methodSpecification,
 }) {
-  const schema = getSchemaFromResponse(
-    methodSpecification.responses[200] || methodSpecification.responses[201]
-  )
+  const schema = getSchemaFromRequestBody(methodSpecification.requestBody)
+
   if (schema) {
     const modelName = getModelNameFromSchema(schema)
+
     return createApiClientValidator({
       model: modelName,
-      schema,
-      type: 'response',
+      type: 'request-body',
     })
   }
 
