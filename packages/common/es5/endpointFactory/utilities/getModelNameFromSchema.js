@@ -1,9 +1,11 @@
 'use strict';
 
-module.exports = function getModelNameFromParameter(_ref) {
-  var schema = _ref.schema;
-
+module.exports = function getModelNameFromSchema(schema) {
   if (!schema) {
+    return null;
+  }
+
+  if (!schema.$ref) {
     return null;
   }
 

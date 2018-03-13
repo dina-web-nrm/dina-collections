@@ -21,6 +21,11 @@ module.exports = {
         type: 'string'
       }
     },
+    mapQueryParams: {
+      not: {
+        type: 'string'
+      }
+    },
     mapResponse: {
       not: {
         type: 'string'

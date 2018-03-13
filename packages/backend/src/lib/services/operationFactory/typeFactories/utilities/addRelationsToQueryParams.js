@@ -7,7 +7,7 @@ module.exports = function addRelationsToQueryParams({
     ...queryParams,
   }
   if (includeRelations) {
-    const relationEnum = Object.keys(relations)
+    const relationEnum = Object.keys(relations) || []
     updatedQueryParams = {
       ...updatedQueryParams,
       relationships: {
@@ -15,7 +15,7 @@ module.exports = function addRelationsToQueryParams({
         example: relationEnum,
         schema: {
           items: {
-            enum: ['all', relationEnum],
+            enum: ['all', ...relationEnum],
             type: 'string',
           },
           type: 'array',

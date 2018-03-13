@@ -1,5 +1,5 @@
 # Tree for src
-Generated at: 2018-03-10T13:50:12.008Z
+Generated at: 2018-03-13T11:53:30.317Z
 ## Tree
 ```bash
 ├── Dependor
@@ -48,11 +48,21 @@ Generated at: 2018-03-10T13:50:12.008Z
 │   └── index.js
 ├── endpointFactory
 │   ├── client.js
-│   ├── createBodyValidator.js
 │   ├── createEndpointFactory.js
-│   ├── createMockFunction.js
-│   ├── getModelNameFromParameter.js
-│   └── server.js
+│   ├── server.js
+│   └── utilities
+│       ├── buildOperationIdPathnameMap.js
+│       ├── createBodyValidator.js
+│       ├── createGetExample.js
+│       ├── createMapQueryParams.js
+│       ├── createMapQueryParams.test.js
+│       ├── createMock.js
+│       ├── createQueryParamValidator.js
+│       ├── createResponseValidator.js
+│       ├── getExamplesFromMethodSpecifiction.js
+│       ├── getModelNameFromSchema.js
+│       ├── getSchemaFromRequestBody.js
+│       └── getSchemaFromResponse.js
 ├── error
 │   ├── constants
 │   │   ├── errorCodes.js
@@ -97,6 +107,9 @@ Generated at: 2018-03-10T13:50:12.008Z
 │   └── validateAgainstSchema.js
 ├── schemaBuilder
 │   ├── build
+│   │   ├── buildEndpoints
+│   │   │   ├── buildEndpoint
+│   │   │   └── index.js
 │   │   ├── index.js
 │   │   ├── models
 │   │   │   └── index.js
@@ -107,14 +120,6 @@ Generated at: 2018-03-10T13:50:12.008Z
 │   │   │   ├── createOpenApiSecurity.js
 │   │   │   ├── createOpenApiServers.js
 │   │   │   ├── createOpenApiTags.js
-│   │   │   └── index.js
-│   │   ├── swagger
-│   │   │   ├── createSwaggerDefinitions
-│   │   │   ├── createSwaggerInfo.js
-│   │   │   ├── createSwaggerPaths
-│   │   │   ├── createSwaggerSecurity.js
-│   │   │   ├── createSwaggerServers.js
-│   │   │   ├── createSwaggerTags.js
 │   │   │   └── index.js
 │   │   └── utilities
 │   │       ├── createModel.js
@@ -132,12 +137,7 @@ Generated at: 2018-03-10T13:50:12.008Z
 │   ├── read
 │   │   ├── index.js
 │   │   ├── readApis.js
-│   │   ├── readEndpoints
-│   │   │   ├── index.js
-│   │   │   ├── readBody.js
-│   │   │   ├── readEndpoint.js
-│   │   │   ├── readResponse.js
-│   │   │   └── walkEndpoints.js
+│   │   ├── readEndpoints.js
 │   │   ├── readErrors.js
 │   │   ├── readInfo.js
 │   │   ├── readModels.js
@@ -145,7 +145,6 @@ Generated at: 2018-03-10T13:50:12.008Z
 │   │   ├── readSecurity.js
 │   │   ├── readServers.js
 │   │   └── utilities
-│   │       ├── buildEndpoint
 │   │       ├── readJsonFromDirectory.js
 │   │       ├── readParameterFromJsonFile.js
 │   │       └── readParameterFromMarkdownFile.js
@@ -153,10 +152,17 @@ Generated at: 2018-03-10T13:50:12.008Z
 │   │   ├── endpoint.json
 │   │   ├── openApi.json
 │   │   └── swagger.json
+│   ├── todo
 │   └── write
 │       └── index.js
 ├── scripts
 │   └── buildFileStructureTrees.js
+├── stringFormatters
+│   ├── capitalizeFirstLetter
+│   │   ├── index.js
+│   │   └── index.test.js
+│   ├── index.js
+│   └── index.test.js
 └── tree.md
 
 ```
