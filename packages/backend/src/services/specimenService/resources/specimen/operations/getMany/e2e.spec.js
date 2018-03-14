@@ -115,7 +115,7 @@ apiDescribe('specimen', () => {
           'simpleDataPhysicalUnitRelations'
         )
         modifiedSimpleDataRelations.data.attributes.individualGroup.identifiers[0].identifier.value =
-          '555111'
+          '555112'
 
         return makeTestCall({
           body: modifiedSimpleDataRelations,
@@ -129,7 +129,9 @@ apiDescribe('specimen', () => {
         return makeTestCall({
           operationId: 'getSpecimens',
           queryParams: {
-            'filter[catalogNumber]': '555111',
+            'filter[catalogNumber]': '555112',
+            limit: 1,
+            relationships: ['physicalUnits'],
           },
         }).then(response => {
           expectMultipleResourcesResponse({

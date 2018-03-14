@@ -784,14 +784,18 @@ module.exports = function loadInitialData({ models }) {
   ].map(({ name, group }, id) => {
     return {
       group,
-      id,
+      id: id + 1,
       name: name && name.toLowerCase(),
     }
   })
-  const { create } = models.curatedLocality
-  const promises = curatedLocalities.map(curatedLocality => {
+
+  const items = curatedLocalities.map(curatedLocality => {
     const { id, ...rest } = curatedLocality
-    return create(rest, id)
+    return {
+      doc: rest,
+      id,
+    }
   })
-  return Promise.all(promises)
+
+  return models.curatedLocality.bulkCreate(items)
 }

@@ -1,3 +1,5 @@
+const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
+const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
@@ -13,11 +15,20 @@ module.exports = function getMany({
   resourcePlural,
   ...rest
 }) {
-  const queryParams = addRelationsToQueryParams({
+  let queryParams = addRelationsToQueryParams({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
   })
+
+  queryParams = addLimitToQueryParams({
+    queryParams,
+  })
+
+  queryParams = addOffsetToQueryParams({
+    queryParams,
+  })
+
   const errors = {
     '400': ['REQUEST_ERROR'],
     '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
