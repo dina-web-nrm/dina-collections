@@ -1,5 +1,5 @@
 # Tree for services
-Generated at: 2018-03-13T11:53:31.399Z
+Generated at: 2018-03-14T11:13:53.789Z
 ## Tree
 ```bash
 ├── agentService
@@ -79,9 +79,6 @@ Generated at: 2018-03-13T11:53:31.399Z
 │       └── index.js
 ├── index.js
 ├── localityService
-│   ├── controllers
-│   │   ├── curatedLocalityGetMany.js
-│   │   └── index.js
 │   ├── e2e.spec.js
 │   ├── index.js
 │   ├── info
@@ -94,6 +91,7 @@ Generated at: 2018-03-13T11:53:31.399Z
 │   ├── resources
 │   │   ├── curatedLocality
 │   │   │   ├── create
+│   │   │   ├── getMany
 │   │   │   └── index.js
 │   │   └── index.js
 │   └── todo
@@ -105,19 +103,13 @@ Generated at: 2018-03-13T11:53:31.399Z
 │   └── resources
 │       └── index.js
 ├── specimenService
-│   ├── controllers
-│   │   ├── index.js
-│   │   └── specimenGetWhere.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── modelMethods
-│   │   │   └── getAllByTaxonNameFactory.js
-│   │   ├── specimen.js
-│   │   └── specimen.spec.js
+│   │   └── specimen.js
 │   ├── resources
 │   │   ├── index.js
 │   │   └── specimen
@@ -158,8 +150,7 @@ Generated at: 2018-03-13T11:53:31.399Z
 │   └── resources
 │       ├── index.js
 │       └── taxon
-│           ├── index.js
-│           └── operations
+│           └── index.js
 └── tree.md
 
 ```

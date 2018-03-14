@@ -1,5 +1,5 @@
 # Tree for src
-Generated at: 2018-03-13T11:53:31.397Z
+Generated at: 2018-03-14T11:13:53.786Z
 ## Tree
 ```bash
 ├── apps
@@ -36,7 +36,8 @@ Generated at: 2018-03-13T11:53:31.397Z
 │   ├── taxonService
 │   └── tree.md
 ├── tests
-│   └── testOperations
+│   ├── testCoreCrudRequests
+│   └── testStructure
 ├── tree.md
 └── utilities
     ├── log
