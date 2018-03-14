@@ -3,8 +3,12 @@ import { FEATURE_OBSERVATION_TYPE } from 'domainModules/curatedListService/const
 export default function transformFeatureObservations(featureObservations = []) {
   let featureObservationTypes = []
 
-  const transformedFeatureObservations = featureObservations.map(
-    ({ featureObservationType, ...rest }) => {
+  const transformedFeatureObservations = featureObservations
+    .map(({ featureObservationType, ...rest }) => {
+      if (!Object.keys(rest).length) {
+        return null
+      }
+
       const transformedFeatureObservationType = {
         ...featureObservationType,
         type: FEATURE_OBSERVATION_TYPE,
@@ -19,8 +23,8 @@ export default function transformFeatureObservations(featureObservations = []) {
         ...rest,
         featureObservationType: transformedFeatureObservationType,
       }
-    }
-  )
+    })
+    .filter(item => !!item)
 
   return {
     featureObservations: transformedFeatureObservations,

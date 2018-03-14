@@ -344,23 +344,35 @@
     },
     "agent": {
       "en": "Agent",
-      "sv": ""
+      "sv": "Agent"
+    },
+    "age-stage": {
+      "en": "Age stage",
+      "sv": "Åldersstadium"
     },
     "ageStage": {
       "en": "Age stage",
       "sv": "Åldersstadium"
     },
+    "bone-count": {
+      "en": "Bone counts",
+      "sv": "Benantal"
+    },
+    "condition": {
+      "en": "Condition",
+      "sv": "Tillstånd"
+    },
     "conditionAtCollecting": {
       "en": "Condition at collecting",
-      "sv": ""
+      "sv": "Tillstånd vid insamling"
     },
     "date": {
       "en": "Date",
-      "sv": ""
+      "sv": "Datum"
     },
     "feature": {
       "en": "Feature",
-      "sv": ""
+      "sv": "Egenskap"
     },
     "features": {
       "en": "Features",
@@ -368,19 +380,35 @@
     },
     "featureType": {
       "en": "Feature type",
-      "sv": ""
+      "sv": "Egenskapstyp"
+    },
+    "length": {
+      "en": "Lengths",
+      "sv": "Längder"
     },
     "method": {
       "en": "Method",
-      "sv": ""
+      "sv": "Metod"
     },
     "sex": {
       "en": "Sex",
       "sv": "Kön"
     },
+    "stage-and-age": {
+      "en": "Stage and age",
+      "sv": "Stadium och ålder"
+    },
+    "unit": {
+      "en": "Unit",
+      "sv": "Enhet"
+    },
     "value": {
       "en": "Value",
-      "sv": ""
+      "sv": "Värde"
+    },
+    "weight": {
+      "en": "Weights",
+      "sv": "Vikter"
     }
   },
   "distinguishedUnits": {

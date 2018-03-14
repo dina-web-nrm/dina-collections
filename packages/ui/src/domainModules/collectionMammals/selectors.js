@@ -1,17 +1,34 @@
+import { createSelector } from 'reselect'
+import getSecondArgument from 'utilities/getSecondArgument'
+
 export const getLocalState = state => {
   return state.collectionMammals
 }
 
-export const getAccordionActiveIndex = (state, accordion) => {
-  return state.accordion[accordion]
+export const getAccordions = state => {
+  return state.accordions
 }
 
-export const getFeatureTypeNameSearchQueries = state => {
-  return state.featureTypeNameSearchQueries
+export const getAccordion = createSelector(
+  [getAccordions, getSecondArgument],
+  (accordions, accordionName) => {
+    return accordions[accordionName]
+  }
+)
+
+export const getAccordionActiveIndex = createSelector(
+  [getAccordion],
+  accordion => {
+    return accordion && accordion.activeIndex
+  }
+)
+
+export const getFeatureObservationSearchQueries = state => {
+  return state.featureObservationSearchQueries
 }
 
-export const getFeatureTypeNameSearchQuery = (state, inputName) => {
-  const queries = getFeatureTypeNameSearchQueries(state)
+export const getFeatureObservationSearchQuery = (state, inputName) => {
+  const queries = getFeatureObservationSearchQueries(state)
   return queries[inputName]
 }
 

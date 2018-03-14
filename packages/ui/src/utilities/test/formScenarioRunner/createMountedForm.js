@@ -6,6 +6,7 @@ export default function createMountedForm({
   formInitialValues,
   formName,
   formOptions = {},
+  initialState,
 }) {
   const handleFormSubmit = data => {
     return Promise.resolve(data)
@@ -19,6 +20,7 @@ export default function createMountedForm({
       />
     ),
     fullExport: true,
+    initialState,
   })
 
   return {

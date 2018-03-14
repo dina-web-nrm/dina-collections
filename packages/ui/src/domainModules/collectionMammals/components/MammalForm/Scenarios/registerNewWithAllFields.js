@@ -1,3 +1,5 @@
+import initialState from './initialState'
+
 const mutations = [
   { name: 'taxonInformation.determinations.0.date', value: 'date' },
   {
@@ -19,16 +21,6 @@ const mutations = [
     value: 'Sorex minutus',
   },
   {
-    id: 'add-feature-observation',
-    ignore: true,
-    interaction: 'click',
-  },
-  {
-    name: 'featureObservations.0.featureObservationType.id.hidden',
-    value: '3',
-  },
-
-  {
     name: 'featureObservations.0.date',
     value: 'date',
   },
@@ -37,12 +29,16 @@ const mutations = [
     value: 'featureObservationAgent',
   },
   {
-    name: 'featureObservations.0.featureObservationText',
-    value: 'cadaverous',
+    name: 'featureObservations.0.featureObservationText.hidden',
+    value: 'juvenile',
   },
   {
-    name: 'featureObservations.0.methodText',
-    value: 'methodText',
+    name: 'featureObservations.0.methodText.hidden',
+    value: 'known-age',
+  },
+  {
+    name: 'featureObservations.0.remarks',
+    value: 'remarks',
   },
   {
     name: 'distinguishedUnits.0.alternateIdentifiersText',
@@ -185,7 +181,7 @@ const expectedOutput = {
   ],
   featureObservationTypes: [
     {
-      id: '3',
+      id: '1',
       type: 'featureObservationType',
     },
   ],
@@ -211,12 +207,13 @@ const expectedOutput = {
         {
           date: 'date',
           featureObservationAgent: 'featureObservationAgent',
-          featureObservationText: 'cadaverous',
+          featureObservationText: 'juvenile',
           featureObservationType: {
-            id: '3',
+            id: '1',
             type: 'featureObservationType',
           },
-          methodText: 'methodText',
+          methodText: 'known-age',
+          remarks: 'remarks',
         },
       ],
 
@@ -289,12 +286,24 @@ const postSubmitTest = ({ submitResult }) => {
       .filter(({ ignore }) => !ignore)
       .map(mutation => (mutation.name || '').replace('.hidden', ''))
       .sort()
-  ).toMatchObject(Object.keys(registeredFields).sort())
+  ).toMatchObject(
+    Object.keys(registeredFields)
+      .filter(key => {
+        // filter out unused featureObservationTypes, also done in transform output
+        if (key.indexOf('featureObservations.') === 0) {
+          return key.indexOf('featureObservations.0') === 0
+        }
+
+        return true
+      })
+      .sort()
+  )
 }
 
 const scenario = {
   description: 'Register new mammal form with all fields',
   expectedOutput,
+  initialState,
   input: {},
   mutations,
   postSubmitTest,

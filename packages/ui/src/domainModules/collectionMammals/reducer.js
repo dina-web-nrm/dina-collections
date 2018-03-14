@@ -8,7 +8,7 @@ import {
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_SUCCESS,
   COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
   COLLECTION_MAMMALS_SET_ACCORDION_ACTIVE_INDEX,
-  COLLECTION_MAMMALS_UPDATE_FEATURE_TYPE_NAME_SEARCH_QUERY,
+  COLLECTION_MAMMALS_UPDATE_FEATURE_OBSERVATION_SEARCH_QUERY,
   COLLECTION_MAMMALS_UPDATE_LOCALITY_INFORMATION_SEARCH_QUERY,
   COLLECTION_MAMMALS_UPDATE_SEARCH_PARAMETER,
   COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS,
@@ -20,8 +20,8 @@ const getLookupSearch = createGetter(['lookup', 'search'])
 const setLookupSearch = createSetter(['lookup', 'search'])
 
 const initialState = {
-  accordion: {},
-  featureTypeNameSearchQueries: {},
+  accordions: {},
+  featureObservationSearchQueries: {},
   individualGroups: {},
   localityInformationSearchQueries: {},
   lookup: {
@@ -72,18 +72,21 @@ export default function reducer(state = initialState, action) {
     case COLLECTION_MAMMALS_SET_ACCORDION_ACTIVE_INDEX: {
       return {
         ...state,
-        accordion: {
-          ...state.accordion,
-          [action.payload.accordion]: action.payload.activeIndex,
+        accordions: {
+          ...state.accordions,
+          [action.payload.accordion]: {
+            ...state.accordions[action.payload.accordion],
+            activeIndex: action.payload.activeIndex,
+          },
         },
       }
     }
 
-    case COLLECTION_MAMMALS_UPDATE_FEATURE_TYPE_NAME_SEARCH_QUERY: {
+    case COLLECTION_MAMMALS_UPDATE_FEATURE_OBSERVATION_SEARCH_QUERY: {
       return {
         ...state,
-        featureTypeNameSearchQueries: {
-          ...state.featureTypeNameSearchQueries,
+        featureObservationSearchQueries: {
+          ...state.featureObservationSearchQueries,
           [action.meta.inputName]: action.payload,
         },
       }

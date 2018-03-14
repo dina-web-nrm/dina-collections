@@ -1,60 +1,63 @@
-'use strict';
-
 module.exports = {
   additionalProperties: false,
   properties: {
     baseUrl: {
-      type: 'string'
+      type: 'string',
     },
     getExample: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     mapBody: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     mapHeaders: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     mapQueryParams: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     mapResponse: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     methodName: {
-      type: 'string'
+      type: 'string',
     },
     mock: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     operationId: {
-      type: 'string'
+      type: 'string',
     },
     pathname: {
-      type: 'string'
+      type: 'string',
     },
     validateBody: {
       not: {
-        type: 'string'
-      }
+        type: 'string',
+      },
+    },
+    validateQueryParams: {
+      not: {
+        type: 'string',
+      },
     },
     validateResponse: {
       not: {
-        type: 'string'
-      }
-    }
+        type: 'string',
+      },
+    },
   },
-  required: []
-};
+  required: [],
+}

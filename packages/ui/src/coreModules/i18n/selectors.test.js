@@ -2,6 +2,7 @@ import deepFreeze from 'deep-freeze'
 
 import {
   getAvailableLanguages,
+  getDefaultLanguage,
   getLanguage,
   getLocalState,
   getMarkdown,
@@ -38,13 +39,26 @@ describe('i18n/selectors', () => {
   })
   describe('getLanguage', () => {
     it('returns language', () => {
-      const language = { something: [] }
+      const language = 'en'
       const state = {
         language,
       }
       deepFreeze(state)
       const testValue = getLanguage(state)
       const result = language
+
+      expect(testValue).toEqual(result)
+    })
+  })
+  describe('getDefaultLanguage', () => {
+    it('returns defaultLanguage', () => {
+      const defaultLanguage = 'en'
+      const state = {
+        defaultLanguage,
+      }
+      deepFreeze(state)
+      const testValue = getDefaultLanguage(state)
+      const result = defaultLanguage
 
       expect(testValue).toEqual(result)
     })

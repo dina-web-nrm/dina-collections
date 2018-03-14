@@ -100,6 +100,7 @@ function DropdownSearch({
           onChange(event, { value })
         }}
         type="hidden"
+        value={input.value || ''}
       />
       {displayError && (
         <FormFieldError
