@@ -1,5 +1,5 @@
 # Tree for lib
-Generated at: 2018-03-13T11:53:31.396Z
+Generated at: 2018-03-14T11:13:53.789Z
 ## Tree
 ```bash
 ├── app
@@ -28,6 +28,9 @@ Generated at: 2018-03-13T11:53:31.396Z
 │   ├── getVersion.js
 │   ├── getVersions.js
 │   ├── index.js
+│   ├── queryUtilities
+│   │   ├── defaultWhereFactory.js
+│   │   └── filterWhereFactory.js
 │   ├── relationshipsUtilities
 │   │   ├── buildIncludeArray.js
 │   │   ├── extractRelationships.js
@@ -84,6 +87,7 @@ Generated at: 2018-03-13T11:53:31.396Z
 │   │       ├── getVersion.js
 │   │       ├── getVersions.js
 │   │       ├── index.js
+│   │       ├── schemas
 │   │       ├── update.js
 │   │       ├── updateRelationHasMany.js
 │   │       ├── updateRelationHasOne.js
@@ -92,9 +96,20 @@ Generated at: 2018-03-13T11:53:31.396Z
 │   │   ├── createOperationMap.js
 │   │   ├── createResourceSpecification.js
 │   │   └── index.js
-│   └── serviceFactory
-│       ├── createServiceSpecification.js
-│       └── index.js
+│   ├── schemas
+│   │   ├── operationSpecification.js
+│   │   ├── resourceSpecification.js
+│   │   └── serviceSpecification.js
+│   ├── serviceFactory
+│   │   ├── createServiceSpecification.js
+│   │   └── index.js
+│   └── utilities
+│       ├── testOperationSpecification.js
+│       ├── testOperationSpecification.spec.js
+│       ├── testResourceSpecification.js
+│       ├── testResourceSpecification.spec.js
+│       ├── testServiceSpecification.js
+│       └── testServiceSpecification.spec.js
 └── tree.md
 
 ```

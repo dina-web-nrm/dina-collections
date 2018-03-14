@@ -1,11 +1,12 @@
 /* eslint-disable sort-keys */
 module.exports = {
+  basePath: '/auth/realms/dina/protocol/openid-connect',
   operations: [
     {
       auth: false,
       method: 'post',
       operationId: 'loginUser',
-      path: '/auth/realms/dina/protocol/openid-connect/token',
+      path: '/token',
       raw: true,
       resource: 'user',
       request: {
@@ -48,6 +49,7 @@ module.exports = {
         },
       },
       summary: 'Gets user token',
+      type: 'raw',
     },
   ],
 }

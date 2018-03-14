@@ -1,5 +1,5 @@
 # Tree for coreModules
-Generated at: 2018-03-13T11:53:29.337Z
+Generated at: 2018-03-14T11:13:51.951Z
 ## Tree
 ```bash
 ├── allModules.js

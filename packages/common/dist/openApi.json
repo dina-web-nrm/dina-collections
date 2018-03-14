@@ -45,6 +45,7 @@
       "name": "curatedEventService"
     },
     {
+      "description": "Api managing curated lists.\n",
       "name": "curatedListService"
     },
     {
@@ -417,7 +418,7 @@
         ]
       }
     },
-    "/auth/realms/dina/protocol/openid-connect/userInfo": {
+    "/userInfo": {
       "get": {
         "operationId": "getUser",
         "parameters": [],
@@ -444,7 +445,7 @@
         ]
       }
     },
-    "/auth/realms/dina/protocol/openid-connect/token": {
+    "/token": {
       "post": {
         "operationId": "loginUser",
         "parameters": [],
@@ -3452,7 +3453,7 @@
         ]
       }
     },
-    "/api/status/v01/status": {
+    "/status": {
       "get": {
         "operationId": "getStatus",
         "parameters": [],

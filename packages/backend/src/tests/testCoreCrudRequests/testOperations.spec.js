@@ -265,7 +265,7 @@ const testApi = ({ service, serviceName }) => {
   })
 }
 
-apiDescribe('defaultRequests', () => {
+apiDescribe('lib/tests/testCoreCrudRequests', () => {
   beforeAll(() => {
     return waitForApiRestart()
   })
