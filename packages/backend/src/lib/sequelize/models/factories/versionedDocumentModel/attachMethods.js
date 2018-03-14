@@ -2,6 +2,7 @@ const createFactory = require('./methods/createFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
 const updateFactory = require('./methods/updateFactory')
+const updatePrimaryKeyFactory = require('./methods/updatePrimaryKeyFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
@@ -35,16 +36,24 @@ module.exports = function attachMethods({
     validate,
   })
 
-  const bulkCreate = bulkCreateFactory({
+  const update = updateFactory({
+    getById,
     Model,
     schemaVersion,
     validate,
   })
 
-  const update = updateFactory({
-    getById,
+  const updatePrimaryKey = updatePrimaryKeyFactory({
     Model,
     schemaVersion,
+    sequelize,
+    validate,
+  })
+
+  const bulkCreate = bulkCreateFactory({
+    Model,
+    schemaVersion,
+    updatePrimaryKey,
     validate,
   })
 
