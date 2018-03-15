@@ -4,6 +4,11 @@ module.exports = {
     {
       connect: false,
       operationId: 'getTaxonById',
+      type: 'getOne',
+    },
+    {
+      connect: false,
+      operationId: 'getTaxaByName',
       queryParams: {
         'filter[name]': {
           description:
@@ -24,12 +29,6 @@ module.exports = {
           },
         },
       },
-
-      type: 'getOne',
-    },
-    {
-      connect: false,
-      operationId: 'getTaxaByName',
       type: 'getMany',
     },
   ],

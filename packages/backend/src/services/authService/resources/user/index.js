@@ -5,7 +5,7 @@ module.exports = {
     {
       method: 'get',
       operationId: 'getUser',
-      path: '/userInfo',
+      path: '/auth/realms/dina/protocol/openid-connect/userInfo',
       raw: true,
       resource: 'user',
       response: {

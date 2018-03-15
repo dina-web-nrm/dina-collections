@@ -418,7 +418,7 @@
         ]
       }
     },
-    "/userInfo": {
+    "/auth/realms/dina/protocol/openid-connect/userInfo": {
       "get": {
         "operationId": "getUser",
         "parameters": [],
@@ -445,7 +445,7 @@
         ]
       }
     },
-    "/token": {
+    "/auth/realms/dina/protocol/openid-connect/token": {
       "post": {
         "operationId": "loginUser",
         "parameters": [],
@@ -4682,30 +4682,6 @@
           },
           {
             "in": "query",
-            "name": "filter[name]",
-            "description": "Taxon name - accepted scientific, synonym or vernacular name",
-            "example": "Alces alces",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "search_type",
-            "description": "Search type - exact (default) or partial",
-            "example": "exact",
-            "required": false,
-            "schema": {
-              "enum": [
-                "exact",
-                "partial"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "exampleId",
             "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
             "schema": {
@@ -4780,6 +4756,30 @@
       "get": {
         "operationId": "getTaxaByName",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[name]",
+            "description": "Taxon name - accepted scientific, synonym or vernacular name",
+            "example": "Alces alces",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "search_type",
+            "description": "Search type - exact (default) or partial",
+            "example": "exact",
+            "required": false,
+            "schema": {
+              "enum": [
+                "exact",
+                "partial"
+              ],
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "exampleId",

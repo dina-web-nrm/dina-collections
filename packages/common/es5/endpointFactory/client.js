@@ -9,5 +9,6 @@ var importFaker = function importFaker() {
 
 module.exports = createEndpointFactory({
   createApiClientValidator: createFrontendApiClientValidator,
-  importFaker: importFaker
+  importFaker: importFaker,
+  origin: 'client'
 });

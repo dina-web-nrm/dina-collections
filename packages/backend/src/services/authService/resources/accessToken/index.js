@@ -6,7 +6,7 @@ module.exports = {
       auth: false,
       method: 'post',
       operationId: 'loginUser',
-      path: '/token',
+      path: '/auth/realms/dina/protocol/openid-connect/token',
       raw: true,
       resource: 'user',
       request: {

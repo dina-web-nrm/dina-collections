@@ -12,6 +12,7 @@ const map = buildOperationIdPathnameMap(openApiSpec)
 module.exports = function createEndpointFactory({
   createApiClientValidator,
   importFaker,
+  origin,
 }) {
   return function createEndpoint({ operationId, ...rest }) {
     if (!map[operationId]) {
@@ -24,7 +25,8 @@ module.exports = function createEndpointFactory({
         methodSpecification,
         openApiSpec,
       }),
-      mapQueryParams: createMapQueryParams({ methodSpecification }),
+      mapQueryParams:
+        origin === 'server' && createMapQueryParams({ methodSpecification }),
       methodName,
       mock: createMock({
         importFaker,
@@ -37,10 +39,12 @@ module.exports = function createEndpointFactory({
         createApiClientValidator,
         methodSpecification,
       }),
-      validateQueryParams: createQueryParamValidator({
-        createApiClientValidator,
-        methodSpecification,
-      }),
+      validateQueryParams:
+        origin === 'server' &&
+        createQueryParamValidator({
+          createApiClientValidator,
+          methodSpecification,
+        }),
       validateResponse: createResponseValidator({
         createApiClientValidator,
         methodSpecification,
