@@ -14,7 +14,7 @@ import globalSelectors from '../../../globalSelectors'
 import FeatureObservationDropdownSearch from '../../FeatureObservationDropdownSearch'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:FeatureObservationsTable:FeatureObservationsTableRow'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
 )
 
 const mapSelectablesToDropdownOptions = (

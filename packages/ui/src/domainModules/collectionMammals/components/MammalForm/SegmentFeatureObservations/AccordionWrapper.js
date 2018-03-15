@@ -11,7 +11,7 @@ import globalSelectors from '../../../globalSelectors'
 import AccordionItem from './AccordionItem'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:AccordionWrapper'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:AccordionWrapper'
 )
 
 const mapStateToProps = (state, { groupsAndHeadlines }) => {

@@ -7,7 +7,7 @@ import { ModuleTranslate } from 'coreModules/i18n/components'
 import FeatureObservationsTable from './FeatureObservationsTable'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:AccordionItem'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:AccordionItem'
 )
 
 const propTypes = {

@@ -10,7 +10,7 @@ import curatedListSelectors from 'domainModules/curatedListService/globalSelecto
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:FeatureObservationsTable'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTable'
 )
 
 const getTableColumns = features => {

@@ -4,10 +4,14 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Accordion } from 'semantic-ui-react'
-
+import createLog from 'utilities/log'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import globalSelectors from '../../../globalSelectors'
 import AccordionItem from './AccordionItem'
+
+const log = createLog(
+  'modules:collectionMammals:MammalForm:SegmentDeterminations:AccordionWrapper'
+)
 
 const mapStateToProps = state => {
   return {
@@ -70,6 +74,7 @@ class AccordionWrapper extends Component {
       setAccordionActiveIndex,
     } = this.props
 
+    log.render()
     return (
       <Accordion fluid styled>
         {determinations &&

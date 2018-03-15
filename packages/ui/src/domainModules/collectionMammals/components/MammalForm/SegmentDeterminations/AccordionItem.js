@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Accordion, Button, Grid, Icon, Popup } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import {
   ButtonCopyPasteField,
@@ -12,6 +13,10 @@ import {
 } from 'coreModules/form/components'
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxonomy/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+
+const log = createLog(
+  'modules:collectionMammals:MammalForm:SegmentDeterminations:AccordionItem'
+)
 
 const propTypes = {
   active: PropTypes.bool.isRequired,
@@ -89,6 +94,7 @@ class AccordionItem extends Component {
 
     const taxonNameFieldKey = getPath('taxonNameStandardized')
 
+    log.render()
     return [
       <Accordion.Title
         active={active}
