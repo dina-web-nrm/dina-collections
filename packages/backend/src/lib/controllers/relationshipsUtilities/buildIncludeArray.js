@@ -1,10 +1,20 @@
 const shouldIncludeRelation = require('./shouldIncludeRelation')
 
-module.exports = function buildIncludeArray({
-  models,
-  queryParamRelationships,
-  relations,
-}) {
+module.exports = function buildIncludeArray(
+  { models, queryParamRelationships, relations = [] } = {}
+) {
+  if (!(models && typeof models === 'object')) {
+    throw new Error('Provide model object')
+  }
+
+  Object.keys(models).forEach(modelKey => {
+    if (!models[modelKey].Model) {
+      throw new Error(
+        `Model with key: ${modelKey} dont have sequalize Model instance`
+      )
+    }
+  })
+
   return Object.keys(relations)
     .map(relationKey => {
       const { resource: relationResource, storeInDocument } = relations[

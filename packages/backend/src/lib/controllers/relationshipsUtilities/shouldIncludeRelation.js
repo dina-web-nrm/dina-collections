@@ -1,7 +1,6 @@
-module.exports = function shouldIncludeRelation({
-  queryParamRelationships = '',
-  relationKey,
-}) {
+module.exports = function shouldIncludeRelation(
+  { queryParamRelationships = [], relationKey } = {}
+) {
   return (
     queryParamRelationships.includes(relationKey) ||
     queryParamRelationships.includes('all')
