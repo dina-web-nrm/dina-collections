@@ -34,7 +34,7 @@ const propTypes = {
 class SegmentFeatureObservations extends PureComponent {
   render() {
     const { changeFieldValue, getPath, mode } = this.props
-    log.debug('this.props', this.props)
+
     log.render()
     return (
       <Segment color="green">
