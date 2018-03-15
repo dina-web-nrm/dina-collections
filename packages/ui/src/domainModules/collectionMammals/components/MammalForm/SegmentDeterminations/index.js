@@ -4,10 +4,15 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Button, Grid, Header, Segment } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import setAccordionActiveIndexAC from '../../../actionCreators/setAccordionActiveIndex'
 import AccordionWrapper from './AccordionWrapper'
+
+const log = createLog(
+  'modules:collectionMammals:MammalForm:SegmentDeterminations'
+)
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
@@ -56,6 +61,7 @@ const SegmentDeterminations = ({
 }) => {
   const { determinations } = taxonInformation
 
+  log.render()
   return (
     <Segment color="green">
       <Header size="medium">

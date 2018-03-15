@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Accordion, Icon } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 import FeatureObservationsTable from './FeatureObservationsTable'
 
 const log = createLog(
@@ -14,9 +15,6 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   groups: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   headlineKey: PropTypes.string.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   index: PropTypes.number.isRequired,
   setAccordionActiveIndex: PropTypes.func.isRequired,
   tableRowIndexStart: PropTypes.number.isRequired,
@@ -29,7 +27,6 @@ class AccordionItem extends Component {
       changeFieldValue,
       groups,
       headlineKey,
-      i18n,
       index,
       setAccordionActiveIndex,
       tableRowIndexStart,
@@ -50,13 +47,17 @@ class AccordionItem extends Component {
         }}
       >
         <Icon name="dropdown" />
-        {i18n.moduleTranslate({ fallback: headlineKey, textKey: headlineKey })}
+        <ModuleTranslate
+          fallback={headlineKey}
+          module="collectionMammals"
+          scope="featureObservations"
+          textKey={headlineKey}
+        />
       </Accordion.Title>,
       <Accordion.Content active={active} key={`${index}.2`}>
         <FeatureObservationsTable
           changeFieldValue={changeFieldValue}
           groups={groups}
-          i18n={i18n}
           tableRowIndexStart={tableRowIndexStart}
         />
       </Accordion.Content>,

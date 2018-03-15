@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 import curatedListSelectors from 'domainModules/curatedListService/globalSelectors'
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
@@ -38,16 +39,12 @@ const mapStateToProps = (state, { groups }) => {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   features: PropTypes.arrayOf(PropTypes.object).isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   tableRowIndexStart: PropTypes.number.isRequired,
 }
 
 function FeatureObservationTable({
   changeFieldValue,
   features,
-  i18n,
   tableRowIndexStart,
 }) {
   if (!features.length) {
@@ -65,7 +62,11 @@ function FeatureObservationTable({
           {tableColumns.map(textKey => {
             return (
               <Table.HeaderCell key={textKey}>
-                {i18n.moduleTranslate({ textKey })}
+                <ModuleTranslate
+                  module="collectionMammals"
+                  scope="featureObservations"
+                  textKey={textKey}
+                />
               </Table.HeaderCell>
             )
           })}
@@ -77,7 +78,6 @@ function FeatureObservationTable({
             <FeatureObservationsTableRow
               changeFieldValue={changeFieldValue}
               feature={feature}
-              i18n={i18n}
               index={tableRowIndexStart + index}
               key={feature.key}
             />

@@ -52,9 +52,6 @@ const propTypes = {
       headlineKey: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
   setAccordionActiveIndex: PropTypes.func.isRequired,
   totalNumberOfFeatures: PropTypes.number.isRequired,
@@ -79,7 +76,6 @@ class AccordionWrapper extends Component {
       activeIndex,
       changeFieldValue,
       groupsAndHeadlines,
-      i18n,
       setAccordionActiveIndex,
       ...groupHeadlineToNumberMap
     } = this.props
@@ -96,7 +92,6 @@ class AccordionWrapper extends Component {
               changeFieldValue={changeFieldValue}
               groups={groups}
               headlineKey={headlineKey}
-              i18n={i18n}
               index={index}
               key={headlineKey}
               setAccordionActiveIndex={setAccordionActiveIndex}

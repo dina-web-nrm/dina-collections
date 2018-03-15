@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Grid, Header, Segment } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import AccordionWrapper from './AccordionWrapper'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations'
 )
 
 const GROUPS_AND_HEADLINES = [
@@ -29,16 +28,13 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
 }
 
-class SegmentFeatureObservations extends Component {
+class SegmentFeatureObservations extends PureComponent {
   render() {
-    const { changeFieldValue, getPath, i18n, mode } = this.props
-
+    const { changeFieldValue, getPath, mode } = this.props
+    log.debug('this.props', this.props)
     log.render()
     return (
       <Segment color="green">
@@ -51,7 +47,6 @@ class SegmentFeatureObservations extends Component {
               changeFieldValue={changeFieldValue}
               getPath={getPath}
               groupsAndHeadlines={GROUPS_AND_HEADLINES}
-              i18n={i18n}
               mode={mode}
             />
           </Grid.Column>
@@ -63,10 +58,6 @@ class SegmentFeatureObservations extends Component {
 
 SegmentFeatureObservations.propTypes = propTypes
 
-export default compose(
-  withI18n({
-    module: 'collectionMammals',
-    scope: 'featureObservations',
-  }),
-  pathBuilder({ name: 'featureObservations' })
-)(SegmentFeatureObservations)
+export default compose(pathBuilder({ name: 'featureObservations' }))(
+  SegmentFeatureObservations
+)
