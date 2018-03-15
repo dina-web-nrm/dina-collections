@@ -5,5 +5,4 @@ const importFaker = require('../jsonSchema/importJsonFakerSync')
 module.exports = createEndpointFactory({
   createApiClientValidator: createBackendApiClientValidator,
   importFaker,
-  origin: 'server',
 })

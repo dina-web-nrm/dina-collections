@@ -6,5 +6,4 @@ const importFaker = () => import('json-schema-faker')
 module.exports = createEndpointFactory({
   createApiClientValidator: createFrontendApiClientValidator,
   importFaker,
-  origin: 'client',
 })

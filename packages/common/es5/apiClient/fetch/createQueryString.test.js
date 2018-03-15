@@ -14,4 +14,16 @@ describe('apiClient/preProcess/createQueryString', function () {
 
     expect(createQueryString(queryParameters)).toEqual(expectedResult);
   });
+  it('handle object case', function () {
+    var queryParameters = {
+      email: 'test@email.co',
+      filter: { name: '1234' },
+      password: undefined,
+      token: 'secret'
+    };
+
+    var expectedResult = 'email=test@email.co&filter[name]=1234&token=secret';
+
+    expect(createQueryString(queryParameters, false)).toEqual(expectedResult);
+  });
 });

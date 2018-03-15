@@ -11,7 +11,9 @@ export default function fetchTaxonSearchResults(queryParamsOverride) {
     const state = getState()
 
     const queryParams = queryParamsOverride || {
-      'filter[name]': globalSelectors.getLookupSearchFilterName(state),
+      filter: {
+        name: globalSelectors.getLookupSearchFilterName(state),
+      },
       search_type: globalSelectors.getLookupSearchType(state),
     }
 

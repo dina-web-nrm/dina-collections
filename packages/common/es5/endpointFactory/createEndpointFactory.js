@@ -23,8 +23,7 @@ var map = buildOperationIdPathnameMap(openApiSpec);
 
 module.exports = function createEndpointFactory(_ref) {
   var createApiClientValidator = _ref.createApiClientValidator,
-      importFaker = _ref.importFaker,
-      origin = _ref.origin;
+      importFaker = _ref.importFaker;
 
   return function createEndpoint(_ref2) {
     var operationId = _ref2.operationId,
@@ -44,7 +43,7 @@ module.exports = function createEndpointFactory(_ref) {
         methodSpecification: methodSpecification,
         openApiSpec: openApiSpec
       }),
-      mapQueryParams: origin === 'server' && createMapQueryParams({ methodSpecification: methodSpecification }),
+      mapQueryParams: createMapQueryParams({ methodSpecification: methodSpecification }),
       methodName: methodName,
       mock: createMock({
         importFaker: importFaker,
@@ -57,7 +56,7 @@ module.exports = function createEndpointFactory(_ref) {
         createApiClientValidator: createApiClientValidator,
         methodSpecification: methodSpecification
       }),
-      validateQueryParams: origin === 'server' && createQueryParamValidator({
+      validateQueryParams: createQueryParamValidator({
         createApiClientValidator: createApiClientValidator,
         methodSpecification: methodSpecification
       }),

@@ -12,4 +12,16 @@ describe('apiClient/preProcess/createQueryString', () => {
 
     expect(createQueryString(queryParameters)).toEqual(expectedResult)
   })
+  it('handle object case', () => {
+    const queryParameters = {
+      email: 'test@email.co',
+      filter: { name: '1234' },
+      password: undefined,
+      token: 'secret',
+    }
+
+    const expectedResult = 'email=test@email.co&filter[name]=1234&token=secret'
+
+    expect(createQueryString(queryParameters, false)).toEqual(expectedResult)
+  })
 })
