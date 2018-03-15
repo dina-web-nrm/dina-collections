@@ -18,7 +18,12 @@ export default function getIndividualGroupByCatalogNumber(
     })
     return apiClient
       .call(GET_INDIVIDUAL_GROUP_BY_CATALOG_NUMBER, {
-        queryParams: { 'filter[catalogNumber]': catalogNumber, include },
+        queryParams: {
+          filter: {
+            catalogNumber,
+          },
+          include,
+        },
       })
       .then(
         response => {
