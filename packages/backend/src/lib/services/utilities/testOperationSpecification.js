@@ -11,10 +11,10 @@ const updateRelationHasOne = require('../operationFactory/typeFactories/schemas/
 const raw = require('../operationFactory/typeFactories/schemas/raw')
 
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
-const createSystemFrontendValidator = require('common/src/error/validators/createSystemFrontendValidator')
+const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
 
 const validate = (schema, obj) => {
-  return createSystemFrontendValidator({
+  return createSystemBackendValidator({
     schema,
     throwError: false,
     type: 'config',

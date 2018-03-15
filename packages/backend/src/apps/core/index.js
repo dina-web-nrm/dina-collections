@@ -67,6 +67,7 @@ process.on('uncaughtException', err => {
 
 process.on('unhandledRejection', err => {
   log.crit('unhandledRejection process exiting in 5000 ms')
+  log.crit(err)
   log.crit(err.stack)
   setTimeout(() => {
     process.exit(1)
