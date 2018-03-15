@@ -5,20 +5,14 @@ import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
 import { DropdownSearch } from 'coreModules/form/components'
-import {
-  CONTINENT,
-  COUNTRY,
-  DISTRICT,
-  PROVINCE,
-} from 'domainModules/localityService/constants'
-import localitySelectors from 'domainModules/localityService/globalSelectors'
 
-const log = createLog('domainModules:collectionMammals:LocalityDropdownSearch')
+const log = createLog(
+  'domainModules:collectionMammals:FeatureObservationDropdownSearch'
+)
 
-const mapStateToProps = (state, { getSearchQuery, group, input }) => {
+const mapStateToProps = (state, { getSearchQuery, input }) => {
   log.debug('input.value', input.value)
   return {
-    options: localitySelectors.getDropdownOptions(state, group),
     searchQuery: getSearchQuery(state, input.name),
   }
 }
@@ -26,7 +20,6 @@ const mapStateToProps = (state, { getSearchQuery, group, input }) => {
 const propTypes = {
   errorScope: PropTypes.string,
   getSearchQuery: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
-  group: PropTypes.oneOf([CONTINENT, COUNTRY, DISTRICT, PROVINCE]).isRequired,
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   initialText: PropTypes.string,
   input: PropTypes.shape({
@@ -61,7 +54,7 @@ const defaultProps = {
   searchQuery: undefined,
 }
 
-class LocalityDropdownSearch extends Component {
+class FeatureObservationDropdownSearch extends Component {
   constructor(props) {
     super(props)
     this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -140,7 +133,9 @@ class LocalityDropdownSearch extends Component {
   }
 }
 
-LocalityDropdownSearch.propTypes = propTypes
-LocalityDropdownSearch.defaultProps = defaultProps
+FeatureObservationDropdownSearch.propTypes = propTypes
+FeatureObservationDropdownSearch.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps))(LocalityDropdownSearch)
+export default compose(connect(mapStateToProps))(
+  FeatureObservationDropdownSearch
+)

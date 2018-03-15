@@ -27,5 +27,6 @@ module.exports = [
   {
     group: 'age-and-stage',
     key: 'age',
+    selectableMethods,
   },
 ]

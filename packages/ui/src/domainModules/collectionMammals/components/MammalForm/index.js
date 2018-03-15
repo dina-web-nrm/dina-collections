@@ -173,7 +173,10 @@ class RawMammalForm extends Component {
             <SegmentIndividualCircumstances
               formValueSelector={formValueSelector}
             />
-            <SegmentFeatureObservations formValueSelector={formValueSelector} />
+            <SegmentFeatureObservations
+              changeFieldValue={this.changeFieldValue}
+              mode={mode}
+            />
             <SegmentDistinguishedUnits />
             <SegmentOther />
 

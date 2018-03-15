@@ -19,7 +19,7 @@ Generated at: 2018-03-14T11:13:51.954Z
 │   │   ├── index.js
 │   │   ├── lookupMammals.js
 │   │   ├── setAccordionActiveIndex.js
-│   │   ├── updateFeatureTypeNameSearchQuery.js
+│   │   ├── updateFeatureObservationSearchQuery.js
 │   │   ├── updateLocalityInformationSearchQuery.js
 │   │   ├── updateSearchParameter.js
 │   │   ├── updateSpecimen.js

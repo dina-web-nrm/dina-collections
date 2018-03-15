@@ -1,9 +1,12 @@
 import {
   getLocalState,
   getResources,
-  getFeatureObservationTypes,
   getFeatureObservationType,
+  getGroupedFeatureObservationTypeIds,
+  getFeatureObservationTypes,
+  getFeatureObservationTypesInGroups,
   getHasFeatureObservationTypes,
+  getNumberOfFeatureObservationTypesInGroups,
 } from './selectors'
 
 describe('domainModules/curatedListService/selectors', () => {
@@ -13,8 +16,54 @@ describe('domainModules/curatedListService/selectors', () => {
     state = {
       resources: {
         featureObservationTypes: {
-          a: { id: 'a' },
-          b: { id: 'b' },
+          a: {
+            group: 'age',
+            id: 'a',
+            selectableMethods: [
+              {
+                key: 'known-age',
+                name: {
+                  en: 'known age',
+                },
+              },
+              {
+                key: 'sectioned-teeth',
+                name: {
+                  en: 'sectioned teeth',
+                },
+              },
+              {
+                key: 'other',
+                name: {
+                  en: 'other',
+                },
+              },
+            ],
+          },
+          b: {
+            group: 'sex',
+            id: 'b',
+            selectableValues: [
+              {
+                key: 'female',
+                name: {
+                  en: 'female',
+                  sv: 'hona',
+                },
+              },
+              {
+                key: 'male',
+                name: {
+                  en: 'male',
+                  sv: 'hane',
+                },
+              },
+            ],
+          },
+          c: {
+            group: 'age-stage',
+            id: 'c',
+          },
         },
       },
     }
@@ -49,5 +98,32 @@ describe('domainModules/curatedListService/selectors', () => {
         })
       ).toEqual(false)
     })
+  })
+
+  it('returns featureObservationTypeIds by group', () => {
+    const expectedResult = {
+      age: ['a'],
+      'age-stage': ['c'],
+      sex: ['b'],
+    }
+
+    expect(getGroupedFeatureObservationTypeIds(state)).toEqual(expectedResult)
+  })
+
+  it('returns featureObservationTypes in provided groups', () => {
+    const expectedResult = [
+      state.resources.featureObservationTypes.a,
+      state.resources.featureObservationTypes.c,
+    ]
+
+    expect(
+      getFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
+    ).toEqual(expectedResult)
+  })
+
+  it('returns numberOfFeatureObservationTypes in provided groups', () => {
+    expect(
+      getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
+    ).toEqual(2)
   })
 })

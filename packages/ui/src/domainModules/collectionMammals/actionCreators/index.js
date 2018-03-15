@@ -4,7 +4,7 @@ import getIndividualGroupByCatalogNumber from './getIndividualGroupByCatalogNumb
 import getSpecimen from './getSpecimen'
 import lookupMammals from './lookupMammals'
 import setAccordionActiveIndex from './setAccordionActiveIndex'
-import updateFeatureTypeNameSearchQuery from './updateFeatureTypeNameSearchQuery'
+import updateFeatureObservationSearchQuery from './updateFeatureObservationSearchQuery'
 import updateLocalityInformationSearchQuery from './updateLocalityInformationSearchQuery'
 import updateSearchParameter from './updateSearchParameter'
 import updateSpecimen from './updateSpecimen'
@@ -16,7 +16,7 @@ export {
   getSpecimen,
   lookupMammals,
   setAccordionActiveIndex,
-  updateFeatureTypeNameSearchQuery,
+  updateFeatureObservationSearchQuery,
   updateLocalityInformationSearchQuery,
   updateSearchParameter,
   updateSpecimen,

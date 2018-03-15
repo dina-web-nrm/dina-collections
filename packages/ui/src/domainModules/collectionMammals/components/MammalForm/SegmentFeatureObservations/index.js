@@ -1,85 +1,69 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import { Header, Segment } from 'semantic-ui-react'
+import { Grid, Header, Segment } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import { FormTable } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { globalSelectors as curatedListSelectors } from 'domainModules/curatedListService'
-import Footer from './Footer'
-import FeatureObservationRow from './FeatureObservationRow'
+import AccordionWrapper from './AccordionWrapper'
+
+const log = createLog(
+  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations'
+)
+
+const GROUPS_AND_HEADLINES = [
+  { groups: ['age-stage', 'age-and-stage'], headlineKey: 'stage-and-age' },
+  { groups: ['sex'], headlineKey: 'sex' },
+  { groups: ['bone-count'], headlineKey: 'bone-count' },
+  { groups: ['weight'], headlineKey: 'weight' },
+  { groups: ['length'], headlineKey: 'length' },
+  { groups: ['condition'], headlineKey: 'condition' },
+]
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'featureObservations',
 })
 
-const columnHeaderTextKeys = [
-  'modules.collectionMammals.featureObservations.feature',
-  'modules.collectionMammals.featureObservations.value',
-  'modules.collectionMammals.featureObservations.method',
-  'modules.collectionMammals.featureObservations.agent',
-  'modules.collectionMammals.featureObservations.date',
-]
-
-const mapStateToProps = (state, { formValueSelector }) => {
-  return {
-    featureObservations: formValueSelector(state, 'featureObservations'),
-    featureObservationTypes: curatedListSelectors.getFeatureObservationTypes(
-      state
-    ),
-  }
-}
-
 const propTypes = {
-  featureObservations: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
-  featureObservationTypes: PropTypes.object.isRequired,
+  changeFieldValue: PropTypes.func.isRequired,
+  getPath: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
-}
-const defaultProps = {
-  featureObservations: undefined,
+  mode: PropTypes.oneOf(['edit', 'register']).isRequired,
 }
 
 class SegmentFeatureObservations extends Component {
   render() {
-    const { featureObservations, featureObservationTypes, i18n } = this.props
+    const { changeFieldValue, getPath, i18n, mode } = this.props
 
+    log.render()
     return (
       <Segment color="green">
         <Header size="medium">
           <ModuleTranslate textKey="features" />
         </Header>
-        <FormTable
-          columnHeaderTextKeys={columnHeaderTextKeys}
-          footer={<Footer />}
-          numberOfRows={
-            (featureObservations && featureObservations.length) || 0
-          }
-          renderRow={({ index }) => {
-            return (
-              <FeatureObservationRow
-                featureObservationTypes={featureObservationTypes}
-                i18n={i18n}
-                index={index}
-                key={index}
-              />
-            )
-          }}
-        />
+        <Grid textAlign="left" verticalAlign="top">
+          <Grid.Column mobile={16}>
+            <AccordionWrapper
+              changeFieldValue={changeFieldValue}
+              getPath={getPath}
+              groupsAndHeadlines={GROUPS_AND_HEADLINES}
+              i18n={i18n}
+              mode={mode}
+            />
+          </Grid.Column>
+        </Grid>
       </Segment>
     )
   }
 }
 
 SegmentFeatureObservations.propTypes = propTypes
-SegmentFeatureObservations.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps),
   withI18n({
     module: 'collectionMammals',
     scope: 'featureObservations',

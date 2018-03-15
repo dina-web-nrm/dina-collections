@@ -50,6 +50,11 @@ module.exports = {
         type: 'string'
       }
     },
+    validateQueryParams: {
+      not: {
+        type: 'string'
+      }
+    },
     validateResponse: {
       not: {
         type: 'string'

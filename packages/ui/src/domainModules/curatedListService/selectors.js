@@ -31,3 +31,48 @@ export const getHasFeatureObservationTypes = createSelector(
     return Object.keys(featureObservationTypes).length > 0
   }
 )
+
+export const getGroupedFeatureObservationTypeIds = createSelector(
+  getFeatureObservationTypes,
+  featureObservationTypes => {
+    return Object.values(featureObservationTypes).reduce(
+      (groupToIdsMap, { id, group }) => {
+        return {
+          ...groupToIdsMap,
+          [group]: groupToIdsMap[group] ? [...groupToIdsMap[group], id] : [id],
+        }
+      },
+      {}
+    )
+  }
+)
+
+export const getFeatureObservationTypesInGroups = createSelector(
+  [
+    getFeatureObservationTypes,
+    getGroupedFeatureObservationTypeIds,
+    getSecondArgument,
+  ],
+  (featureObservationTypes, groupToIdsMap, groups) => {
+    return groups.reduce((arr, group) => {
+      const featureObservationTypeIds = groupToIdsMap[group]
+
+      const groupFeatureObservationTypes =
+        featureObservationTypeIds &&
+        featureObservationTypeIds.map(id => {
+          return featureObservationTypes[id]
+        })
+
+      return groupFeatureObservationTypes
+        ? [...arr, ...groupFeatureObservationTypes]
+        : arr
+    }, [])
+  }
+)
+
+export const getNumberOfFeatureObservationTypesInGroups = createSelector(
+  getFeatureObservationTypesInGroups,
+  featureObservationTypes => {
+    return featureObservationTypes.length
+  }
+)
