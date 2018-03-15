@@ -46,6 +46,7 @@ module.exports = function createQueryValidator({
 }) {
   const querySchema = buildQuerySchema({ methodSpecification })
   return createApiClientValidator({
+    operationId: methodSpecification.operationId,
     schema: querySchema,
     type: 'request-query',
   })

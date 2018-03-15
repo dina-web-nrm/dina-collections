@@ -12,6 +12,7 @@ module.exports = function createBodyValidator({
 
     return createApiClientValidator({
       model: modelName,
+      operationId: methodSpecification.operationId,
       type: 'request-body',
     })
   }

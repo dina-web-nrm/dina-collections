@@ -56,6 +56,7 @@ module.exports = function createQueryValidator(_ref2) {
 
   var querySchema = buildQuerySchema({ methodSpecification: methodSpecification });
   return createApiClientValidator({
+    operationId: methodSpecification.operationId,
     schema: querySchema,
     type: 'request-query'
   });
