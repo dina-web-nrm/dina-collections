@@ -53,6 +53,8 @@ module.exports = function createConnector({
     handler: controller,
     methodConfigInput: {
       method,
+      requestContentType: 'application/vnd.api+json',
+      responseContentType: 'application/vnd.api+json',
     },
   })
 

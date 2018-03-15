@@ -14,6 +14,7 @@ module.exports = function frontendError(_ref) {
       detail = _ref.detail,
       parameterErrors = _ref.parameterErrors,
       path = _ref.path,
+      source = _ref.source,
       inputStatus = _ref.status,
       _ref$throwError = _ref.throwError,
       throwError = _ref$throwError === undefined ? true : _ref$throwError;
@@ -34,6 +35,7 @@ module.exports = function frontendError(_ref) {
     detail: detail,
     parameterErrors: parameterErrors,
     path: path,
+    source: source,
     stack: stack,
     status: Number(status)
   });

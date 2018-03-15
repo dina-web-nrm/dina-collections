@@ -12,6 +12,7 @@ module.exports = function createResponseValidator({
     const modelName = getModelNameFromSchema(schema)
     return createApiClientValidator({
       model: modelName,
+      operationId: methodSpecification.operationId,
       schema,
       type: 'response',
     })

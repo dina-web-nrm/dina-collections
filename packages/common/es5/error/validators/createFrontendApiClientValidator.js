@@ -35,6 +35,7 @@ var typeOptionMap = {
 
 module.exports = function createFrontendApiClientValidator(_ref) {
   var model = _ref.model,
+      operationId = _ref.operationId,
       schema = _ref.schema,
       throwError = _ref.throwError,
       type = _ref.type;
@@ -44,7 +45,7 @@ module.exports = function createFrontendApiClientValidator(_ref) {
     throw new Error('Invalid type: ' + type);
   }
 
-  var source = 'frontendApiClientValidator';
+  var source = operationId ? 'frontendApiClientValidator - ' + operationId : 'frontendApiClientValidator';
 
   var validator = createSchemaValidator({ model: model, schema: schema });
 

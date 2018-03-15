@@ -6,6 +6,7 @@ module.exports = function frontendError({
   detail,
   parameterErrors,
   path,
+  source,
   status: inputStatus,
   throwError = true,
 }) {
@@ -24,6 +25,7 @@ module.exports = function frontendError({
     detail,
     parameterErrors,
     path,
+    source,
     stack,
     status: Number(status),
   }

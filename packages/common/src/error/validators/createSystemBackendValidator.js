@@ -1,5 +1,5 @@
 const createSchemaValidator = require('../../jsonSchema/createNormalizedValidator')
-const frontendError = require('../errorFactories/frontendError')
+const backendError = require('../errorFactories/backendError')
 const createParameterErrorsFromAjv = require('../errorFactories/createParameterErrorsFromAjv')
 
 const typeOptionMap = {
@@ -20,7 +20,7 @@ module.exports = function createSystemFrontendValidator({
     throw new Error(`Invalid type: ${type}`)
   }
 
-  const source = 'systemFrontendValidator'
+  const source = 'systemBackendValidator'
 
   const validator = createSchemaValidator({ model, schema })
 
@@ -33,7 +33,7 @@ module.exports = function createSystemFrontendValidator({
     const parameterErrors = createParameterErrorsFromAjv(ajvErrors)
     const detail = JSON.stringify(parameterErrors || {})
 
-    return frontendError({
+    return backendError({
       ...options,
       detail,
       model,
