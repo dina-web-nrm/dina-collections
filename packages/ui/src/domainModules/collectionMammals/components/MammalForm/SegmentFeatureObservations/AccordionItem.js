@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Accordion, Icon } from 'semantic-ui-react'
 
@@ -20,7 +20,7 @@ const propTypes = {
   tableRowIndexStart: PropTypes.number.isRequired,
 }
 
-class AccordionItem extends Component {
+class AccordionItem extends PureComponent {
   render() {
     const {
       active,
