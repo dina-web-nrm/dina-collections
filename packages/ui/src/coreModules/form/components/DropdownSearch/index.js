@@ -2,8 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown, Form } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { FormFieldError } from '../../../error/components'
 import FieldLabel from '../FieldLabel'
+
+const log = createLog('modules:form:DropdownSearch')
 
 const propTypes = {
   autoComplete: PropTypes.string,
@@ -64,6 +67,8 @@ function DropdownSearch({
 }) {
   const displayError = touched && !!error
   const hiddenInputName = `${input.name}.hidden`
+
+  log.render()
   return (
     <Form.Field
       error={displayError}

@@ -6,7 +6,7 @@ import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
-import curatedListSelectors from 'domainModules/curatedListService/globalSelectors'
+import { makeGetFeatureObservationTypesInGroups } from 'domainModules/curatedListService/globalSelectorFactories'
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(
@@ -27,12 +27,13 @@ const getTableColumns = features => {
   return columns.concat(['date', 'agent', 'remarks'])
 }
 
-const mapStateToProps = (state, { groups }) => {
-  return {
-    features: curatedListSelectors.getFeatureObservationTypesInGroups(
-      state,
-      groups
-    ),
+const makeMapStateToProps = () => {
+  const getFeatureObservationTypesInGroups = makeGetFeatureObservationTypesInGroups()
+
+  return (state, { groups }) => {
+    return {
+      features: getFeatureObservationTypesInGroups(state, groups),
+    }
   }
 }
 
@@ -90,4 +91,4 @@ function FeatureObservationTable({
 
 FeatureObservationTable.propTypes = propTypes
 
-export default compose(connect(mapStateToProps))(FeatureObservationTable)
+export default compose(connect(makeMapStateToProps))(FeatureObservationTable)

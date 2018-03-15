@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Accordion } from 'semantic-ui-react'
+
 import createLog from 'utilities/log'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import globalSelectors from '../../../globalSelectors'

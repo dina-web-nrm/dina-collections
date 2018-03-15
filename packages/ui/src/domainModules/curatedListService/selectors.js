@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect'
+
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import { MODULE_NAME } from './constants'
@@ -51,10 +52,10 @@ export const getFeatureObservationTypesInGroups = createSelector(
   [
     getFeatureObservationTypes,
     getGroupedFeatureObservationTypeIds,
-    getSecondArgument,
+    (_, groups) => (groups ? groups.join() : ''),
   ],
-  (featureObservationTypes, groupToIdsMap, groups) => {
-    return groups.reduce((arr, group) => {
+  (featureObservationTypes, groupToIdsMap, groupsString) => {
+    return groupsString.split(',').reduce((arr, group) => {
       const featureObservationTypeIds = groupToIdsMap[group]
 
       const groupFeatureObservationTypes =
