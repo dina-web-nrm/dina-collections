@@ -1,29 +1,7 @@
 {
   "additionalProperties": false,
   "properties": {
-    "parent": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Parent taxon identifier"
-        },
-        "scientific_name": {
-          "type": "string",
-          "description": "Parent taxon scientific name"
-        },
-        "rank": {
-          "type": "string",
-          "description": "Parent taxon rank"
-        }
-      },
-      "required": [
-        "id",
-        "scientific_name",
-        "rank"
-      ]
-    },
-    "rubin_number": {
+    "rubinNumber": {
       "type": "string",
       "description": "Rubin storage number for the taxon"
     },
@@ -72,7 +50,7 @@
       "type": "string",
       "description": "Taxon rank"
     },
-    "scientific_name": {
+    "scientificName": {
       "type": "string",
       "description": "Taxon scientific name, binomial if species"
     },
@@ -80,16 +58,16 @@
       "type": "string",
       "description": "Taxon author without the year"
     },
-    "author_date": {
+    "authorDate": {
       "type": "string",
       "description": "Taxon author year"
     },
-    "valid_name": {
+    "validName": {
       "type": "boolean",
       "description": "Is the name taxonomically valid",
       "default": false
     },
-    "vernacular_names": {
+    "vernacularNames": {
       "type": "object",
       "properties": {
         "en": {
@@ -98,6 +76,13 @@
             "type": "string",
             "description": "Vernacular (common) English names for the taxon"
           }
+        },
+        "sv": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Vernacular (common) Swedish names for the taxon"
+          }
         }
       }
     },
@@ -105,14 +90,14 @@
       "type": "string",
       "description": "List of synonyms as free-form text"
     },
-    "sort_order": {
+    "sortOrder": {
       "type": "string",
       "description": "Taxonomical sort order code from Mammal Species of the World list"
     }
   },
   "required": [
     "rank",
-    "scientific_name",
-    "valid_name"
+    "scientificName",
+    "validName"
   ]
 }

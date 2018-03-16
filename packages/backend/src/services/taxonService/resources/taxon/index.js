@@ -1,30 +1,38 @@
+const buildWhere = require('./getMany/buildWhere')
+
 module.exports = {
-  basePath: '',
+  basePath: '/api/taxonomy/v01',
   operations: [
     {
-      connect: false,
+      connect: true,
+      type: 'create',
+    },
+    {
+      connect: true,
+      type: 'update',
+    },
+    {
+      connect: true,
+      relationKey: 'parent',
+      type: 'updateRelationHasOne',
+    },
+    {
+      connect: true,
+      includeRelations: true,
       operationId: 'getTaxonById',
       type: 'getOne',
     },
     {
-      connect: false,
+      buildWhere,
+      connect: true,
+      includeRelations: true,
       operationId: 'getTaxaByName',
       queryParams: {
         'filter[name]': {
           description:
             'Taxon name - accepted scientific, synonym or vernacular name',
-          example: 'Alces alces',
-          required: true,
-          schema: {
-            type: 'string',
-          },
-        },
-        search_type: {
-          description: 'Search type - exact (default) or partial',
-          example: 'exact',
           required: false,
           schema: {
-            enum: ['exact', 'partial'],
             type: 'string',
           },
         },
@@ -32,6 +40,16 @@ module.exports = {
       type: 'getMany',
     },
   ],
+  relations: {
+    children: {
+      format: 'array',
+      resource: 'taxon',
+    },
+    parent: {
+      format: 'object',
+      resource: 'taxon',
+    },
+  },
   resource: 'taxon',
   resourcePlural: 'taxon',
 }

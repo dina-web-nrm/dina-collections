@@ -12,14 +12,6 @@
       "xfwd": true,
       "changeOrigin": true
     },
-    "/taxonomy": {
-      "changeOrigin": true,
-      "pathRewrite": {
-        "^/taxonomy": ""
-      },
-      "target": "https://alpha-slimtaxonomy.dina-web.net",
-      "xfwd": true
-    },
     "/api": {
       "target": "http://127.0.0.1:4444",
       "xfwd": true,

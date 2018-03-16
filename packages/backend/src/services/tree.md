@@ -1,5 +1,5 @@
 # Tree for services
-Generated at: 2018-03-14T11:13:53.789Z
+Generated at: 2018-03-16T10:35:04.384Z
 ## Tree
 ```bash
 ├── agentService
@@ -147,9 +147,15 @@ Generated at: 2018-03-14T11:13:53.789Z
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
+│   ├── models
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       ├── index.js
+│   │       └── mammals.json
 │   └── resources
 │       ├── index.js
 │       └── taxon
+│           ├── getMany
 │           └── index.js
 └── tree.md
 

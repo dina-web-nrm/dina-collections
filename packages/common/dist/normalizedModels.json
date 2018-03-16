@@ -1095,29 +1095,7 @@
   "taxon": {
     "additionalProperties": false,
     "properties": {
-      "parent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Parent taxon identifier"
-          },
-          "scientific_name": {
-            "type": "string",
-            "description": "Parent taxon scientific name"
-          },
-          "rank": {
-            "type": "string",
-            "description": "Parent taxon rank"
-          }
-        },
-        "required": [
-          "id",
-          "scientific_name",
-          "rank"
-        ]
-      },
-      "rubin_number": {
+      "rubinNumber": {
         "type": "string",
         "description": "Rubin storage number for the taxon"
       },
@@ -1166,7 +1144,7 @@
         "type": "string",
         "description": "Taxon rank"
       },
-      "scientific_name": {
+      "scientificName": {
         "type": "string",
         "description": "Taxon scientific name, binomial if species"
       },
@@ -1174,16 +1152,16 @@
         "type": "string",
         "description": "Taxon author without the year"
       },
-      "author_date": {
+      "authorDate": {
         "type": "string",
         "description": "Taxon author year"
       },
-      "valid_name": {
+      "validName": {
         "type": "boolean",
         "description": "Is the name taxonomically valid",
         "default": false
       },
-      "vernacular_names": {
+      "vernacularNames": {
         "type": "object",
         "properties": {
           "en": {
@@ -1192,6 +1170,13 @@
               "type": "string",
               "description": "Vernacular (common) English names for the taxon"
             }
+          },
+          "sv": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Vernacular (common) Swedish names for the taxon"
+            }
           }
         }
       },
@@ -1199,15 +1184,15 @@
         "type": "string",
         "description": "List of synonyms as free-form text"
       },
-      "sort_order": {
+      "sortOrder": {
         "type": "string",
         "description": "Taxonomical sort order code from Mammal Species of the World list"
       }
     },
     "required": [
       "rank",
-      "scientific_name",
-      "valid_name"
+      "scientificName",
+      "validName"
     ],
     "x-category": "taxonomyApi",
     "x-modelType": "model",
@@ -4640,7 +4625,227 @@
     "x-examples": {},
     "description": ""
   },
-  "getTaxonByIdResponse": {
+  "createTaxonResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "taxon"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "parent": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "taxon",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/taxonomy/v01/taxon",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateTaxonResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "taxon"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "parent": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "taxon",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/taxonomy/v01/taxon/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "updateTaxonParentResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -4666,7 +4871,117 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/taxon/{id}",
+            "example": "https://domain/api/taxonomy/v01/taxon/{id}/relationships/parent",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
+  "getTaxonByIdResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "taxon"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "parent": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
+          "type": {
+            "default": "taxon",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/taxonomy/v01/taxon/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -4697,6 +5012,74 @@
               "example": "1234",
               "type": "string"
             },
+            "relationships": {
+              "properties": {
+                "children": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "parent": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "type": "null"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ],
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
             "type": {
               "default": "taxon",
               "type": "string"
@@ -4712,7 +5095,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/taxon",
+            "example": "https://domain/api/taxonomy/v01/taxon",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -6653,6 +7036,230 @@
               }
             },
             "type": "object"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "createTaxonRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "taxon",
+            "enum": [
+              "taxon"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "taxon"
+          },
+          "relationships": {
+            "properties": {
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "parent": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    },
+    "x-examples": {},
+    "description": ""
+  },
+  "updateTaxonRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "taxon",
+            "enum": [
+              "taxon"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "taxon"
+          },
+          "relationships": {
+            "properties": {
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "parent": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    },
+    "description": ""
+  },
+  "updateTaxonParentRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "taxon",
+            "enum": [
+              "taxon"
+            ],
+            "type": "string"
           }
         }
       }
