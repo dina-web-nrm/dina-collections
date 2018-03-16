@@ -7,9 +7,10 @@ import transformInput from 'domainModules/collectionMammals/components/MammalFor
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
 
 import {
-  actionCreators as mammalActionCreators,
-  globalSelectors as mammalSelectors,
-} from 'domainModules/collectionMammals'
+  actionCreators as specimenActionCreators,
+  globalSelectors as specimenSelectors,
+} from 'domainModules/specimenService'
+
 import {
   actionCreators as curatedListActionCreators,
   globalSelectors as curatedListSelectors,
@@ -22,6 +23,8 @@ import { globalSelectors as storageSelectors } from 'domainModules/storageServic
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const mapStateToProps = (state, { match }) => {
+  const specimen = specimenSelectors.getSpecimen(state, match.params.specimenId)
+
   return {
     featureObservationTypes: curatedListSelectors.getFeatureObservationTypes(
       state
@@ -30,10 +33,7 @@ const mapStateToProps = (state, { match }) => {
     hasFeatureObservationTypes: curatedListSelectors.getHasFeatureObservationTypes(
       state
     ),
-    individualGroup: mammalSelectors.getIndividualGroupBySpecimenId(
-      state,
-      match.params.specimenId
-    ),
+    individualGroup: specimen && specimen.individualGroup,
     physicalUnits: storageSelectors.getPhysicalUnits(state),
   }
 }
@@ -41,8 +41,8 @@ const mapDispatchToProps = {
   getCuratedLocalities: localityActionCreators.getCuratedLocalities,
   getFeatureObservationTypes:
     curatedListActionCreators.getFeatureObservationTypes,
-  getSpecimen: mammalActionCreators.getSpecimen,
-  updateSpecimen: mammalActionCreators.updateSpecimen,
+  getSpecimen: specimenActionCreators.getSpecimen,
+  updateSpecimen: specimenActionCreators.updateSpecimen,
 }
 
 const propTypes = {

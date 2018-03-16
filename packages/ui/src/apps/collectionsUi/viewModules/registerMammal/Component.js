@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { actionCreators as mammalActionCreators } from 'domainModules/collectionMammals'
+import { actionCreators as specimenActionCreators } from 'domainModules/specimenService'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
@@ -25,7 +25,7 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = {
-  createSpecimen: mammalActionCreators.createSpecimen,
+  createSpecimen: specimenActionCreators.createSpecimen,
   getCuratedLocalities: localityActionCreators.getCuratedLocalities,
   getFeatureObservationTypes:
     curatedListActionCreators.getFeatureObservationTypes,
@@ -62,6 +62,7 @@ class RegisterMammal extends Component {
                 return createSpecimen(transformOutput(formOutput))
               }}
               initialData={initialData}
+              initialValues={initialData}
               mode="register"
               redirectOnSuccess
             />
