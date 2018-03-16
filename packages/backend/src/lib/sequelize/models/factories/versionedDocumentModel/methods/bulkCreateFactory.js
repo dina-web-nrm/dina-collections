@@ -16,19 +16,20 @@ module.exports = function bulkCreateFactory(
     log.debug(`Start create ${items.length} items for: ${Model.tableName}`)
 
     return Model.bulkCreate(
-      items.map(item => {
+      items.map(({ doc, id, ...rest }) => {
         return {
-          document: item.doc,
-          id: item.id,
+          document: doc,
+          id,
           isCurrentVersion: true,
           schemaCompliant: false,
           schemaVersion: schemaVersion || undefined,
-          versionId: item.id,
+          versionId: id,
+          ...rest,
         }
       })
     ).then(() => {
       log.debug(`Successsfulle created ${items.length} items`)
-      const lastId = items[items.length - 1].id
+      const lastId = Number(items[items.length - 1].id)
       const newId = lastId + 1
       return updatePrimaryKey(newId)
     })

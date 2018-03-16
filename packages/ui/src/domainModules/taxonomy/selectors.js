@@ -29,8 +29,3 @@ export const getLookupSearchFilterName = createSelector(
   getLookup,
   lookup => lookup.searchFilterName
 )
-
-export const getLookupSearchType = createSelector(
-  getLookup,
-  lookup => lookup.searchType
-)

@@ -1,5 +1,5 @@
 # Tree for coreModules
-Generated at: 2018-03-14T11:13:51.951Z
+Generated at: 2018-03-16T10:35:02.346Z
 ## Tree
 ```bash
 ├── allModules.js
@@ -130,6 +130,8 @@ Generated at: 2018-03-14T11:13:51.951Z
 │   ├── constants.js
 │   ├── index.js
 │   ├── middleware.js
+│   ├── notifications
+│   │   └── index.js
 │   └── translations.json
 ├── form
 │   ├── components

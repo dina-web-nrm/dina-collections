@@ -14,7 +14,7 @@ export default function fetchTaxonSearchResults(queryParamsOverride) {
       filter: {
         name: globalSelectors.getLookupSearchFilterName(state),
       },
-      search_type: globalSelectors.getLookupSearchType(state),
+      limit: 5,
     }
 
     dispatch({

@@ -11,7 +11,7 @@ var _stringify2 = _interopRequireDefault(_stringify);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createSchemaValidator = require('../../jsonSchema/createNormalizedValidator');
-var frontendError = require('../errorFactories/frontendError');
+var backendError = require('../errorFactories/backendError');
 var createParameterErrorsFromAjv = require('../errorFactories/createParameterErrorsFromAjv');
 
 var typeOptionMap = {
@@ -32,7 +32,7 @@ module.exports = function createSystemFrontendValidator(_ref) {
     throw new Error('Invalid type: ' + type);
   }
 
-  var source = 'systemFrontendValidator';
+  var source = 'systemBackendValidator';
 
   var validator = createSchemaValidator({ model: model, schema: schema });
 
@@ -45,7 +45,7 @@ module.exports = function createSystemFrontendValidator(_ref) {
     var parameterErrors = createParameterErrorsFromAjv(ajvErrors);
     var detail = (0, _stringify2.default)(parameterErrors || {});
 
-    return frontendError((0, _extends3.default)({}, options, {
+    return backendError((0, _extends3.default)({}, options, {
       detail: detail,
       model: model,
       parameterErrors: parameterErrors,

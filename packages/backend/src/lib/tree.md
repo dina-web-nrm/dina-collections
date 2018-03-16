@@ -1,5 +1,5 @@
 # Tree for lib
-Generated at: 2018-03-14T11:13:53.789Z
+Generated at: 2018-03-16T10:35:04.384Z
 ## Tree
 ```bash
 ├── app
@@ -33,8 +33,16 @@ Generated at: 2018-03-14T11:13:53.789Z
 │   │   └── filterWhereFactory.js
 │   ├── relationshipsUtilities
 │   │   ├── buildIncludeArray.js
-│   │   ├── extractRelationships.js
-│   │   └── shouldIncludeRelation.js
+│   │   ├── buildIncludeArray.spec.js
+│   │   ├── extractRelationships
+│   │   │   ├── addEmptyRelationships.js
+│   │   │   ├── addEmptyRelationships.spec.js
+│   │   │   ├── buildEmptyRelationship.js
+│   │   │   ├── buildEmptyRelationship.spec.js
+│   │   │   ├── extractRelationship.js
+│   │   │   └── index.js
+│   │   ├── shouldIncludeRelation.js
+│   │   └── shouldIncludeRelation.spec.js
 │   ├── transformations
 │   │   ├── createArrayResponse.js
 │   │   ├── createObjectResponse.js
@@ -97,7 +105,6 @@ Generated at: 2018-03-14T11:13:53.789Z
 │   │   ├── createResourceSpecification.js
 │   │   └── index.js
 │   ├── schemas
-│   │   ├── operationSpecification.js
 │   │   ├── resourceSpecification.js
 │   │   └── serviceSpecification.js
 │   ├── serviceFactory
