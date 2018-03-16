@@ -1,4 +1,5 @@
+import ConnectedFormSchemaError from './ConnectedFormSchemaError'
 import FormFieldError from './FormFieldError'
 import FormSchemaError from './FormSchemaError'
 
-export { FormFieldError, FormSchemaError }
+export { ConnectedFormSchemaError, FormFieldError, FormSchemaError }

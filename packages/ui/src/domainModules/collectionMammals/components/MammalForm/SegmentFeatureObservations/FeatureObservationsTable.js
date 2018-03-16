@@ -5,11 +5,12 @@ import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import curatedListSelectors from 'domainModules/curatedListService/globalSelectors'
+import { ModuleTranslate } from 'coreModules/i18n/components'
+import { makeGetFeatureObservationTypesInGroups } from 'domainModules/curatedListService/globalSelectorFactories'
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:FeatureObservationsTable'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTable'
 )
 
 const getTableColumns = features => {
@@ -26,35 +27,33 @@ const getTableColumns = features => {
   return columns.concat(['date', 'agent', 'remarks'])
 }
 
-const mapStateToProps = (state, { groups }) => {
-  return {
-    features: curatedListSelectors.getFeatureObservationTypesInGroups(
-      state,
-      groups
-    ),
+const makeMapStateToProps = () => {
+  const getFeatureObservationTypesInGroups = makeGetFeatureObservationTypesInGroups()
+
+  return (state, { groups }) => {
+    return {
+      featureObservationTypes: getFeatureObservationTypesInGroups(
+        state,
+        groups
+      ),
+    }
   }
 }
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  features: PropTypes.arrayOf(PropTypes.object).isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
-  tableRowIndexStart: PropTypes.number.isRequired,
+  featureObservationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 function FeatureObservationTable({
   changeFieldValue,
-  features,
-  i18n,
-  tableRowIndexStart,
+  featureObservationTypes,
 }) {
-  if (!features.length) {
+  if (!featureObservationTypes.length) {
     return null
   }
 
-  const tableColumns = getTableColumns(features)
+  const tableColumns = getTableColumns(featureObservationTypes)
 
   log.render()
   return (
@@ -65,21 +64,24 @@ function FeatureObservationTable({
           {tableColumns.map(textKey => {
             return (
               <Table.HeaderCell key={textKey}>
-                {i18n.moduleTranslate({ textKey })}
+                <ModuleTranslate
+                  module="collectionMammals"
+                  scope="featureObservations"
+                  textKey={textKey}
+                />
               </Table.HeaderCell>
             )
           })}
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {features.map((feature, index) => {
+        {featureObservationTypes.map(featureObservationType => {
           return (
             <FeatureObservationsTableRow
               changeFieldValue={changeFieldValue}
-              feature={feature}
-              i18n={i18n}
-              index={tableRowIndexStart + index}
-              key={feature.key}
+              featureObservationType={featureObservationType}
+              index={featureObservationType.id}
+              key={featureObservationType.key}
             />
           )
         })}
@@ -90,4 +92,4 @@ function FeatureObservationTable({
 
 FeatureObservationTable.propTypes = propTypes
 
-export default compose(connect(mapStateToProps))(FeatureObservationTable)
+export default compose(connect(makeMapStateToProps))(FeatureObservationTable)

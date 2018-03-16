@@ -5,38 +5,17 @@ import { connect } from 'react-redux'
 import { Accordion } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import curatedListSelectors from 'domainModules/curatedListService/globalSelectors'
 import setAccordionActiveIndexAC from '../../../actionCreators/setAccordionActiveIndex'
 import globalSelectors from '../../../globalSelectors'
 import AccordionItem from './AccordionItem'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:AccordionWrapper'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:AccordionWrapper'
 )
 
-const mapStateToProps = (state, { groupsAndHeadlines }) => {
-  const numberOfFeaturesPerGroup = groupsAndHeadlines.reduce(
-    (groupHeadlineToNumberMap, { groups, headlineKey }) => {
-      return {
-        ...groupHeadlineToNumberMap,
-        [headlineKey]: curatedListSelectors.getNumberOfFeatureObservationTypesInGroups(
-          state,
-          groups
-        ),
-      }
-    },
-    {}
-  )
-
-  const totalNumberOfFeatures = Object.values(numberOfFeaturesPerGroup).reduce(
-    (acc, count) => acc + count,
-    0
-  )
-
+const mapStateToProps = state => {
   return {
-    ...numberOfFeaturesPerGroup,
     activeIndex: globalSelectors.getAccordionActiveIndex(state, 'features'),
-    totalNumberOfFeatures,
   }
 }
 const mapDispatchToProps = {
@@ -52,12 +31,8 @@ const propTypes = {
       headlineKey: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
   setAccordionActiveIndex: PropTypes.func.isRequired,
-  totalNumberOfFeatures: PropTypes.number.isRequired,
 }
 const defaultProps = {
   activeIndex: undefined,
@@ -79,34 +54,24 @@ class AccordionWrapper extends Component {
       activeIndex,
       changeFieldValue,
       groupsAndHeadlines,
-      i18n,
       setAccordionActiveIndex,
-      ...groupHeadlineToNumberMap
     } = this.props
-
-    let tableRowIndexStart = 0
 
     log.render()
     return (
       <Accordion fluid styled>
         {groupsAndHeadlines.map(({ groups, headlineKey }, index) => {
-          const component = (
+          return (
             <AccordionItem
               active={activeIndex === index}
               changeFieldValue={changeFieldValue}
               groups={groups}
               headlineKey={headlineKey}
-              i18n={i18n}
               index={index}
               key={headlineKey}
               setAccordionActiveIndex={setAccordionActiveIndex}
-              tableRowIndexStart={tableRowIndexStart}
             />
           )
-          const numberOfFeaturesInGroup = groupHeadlineToNumberMap[headlineKey]
-          tableRowIndexStart += numberOfFeaturesInGroup
-
-          return component
         })}
       </Accordion>
     )

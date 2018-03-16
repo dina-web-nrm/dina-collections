@@ -7,11 +7,10 @@ import createLog from 'utilities/log'
 import { DropdownSearch } from 'coreModules/form/components'
 
 const log = createLog(
-  'domainModules:collectionMammals:FeatureObservationDropdownSearch'
+  'modules:collectionMammals:FeatureObservationDropdownSearch'
 )
 
 const mapStateToProps = (state, { getSearchQuery, input }) => {
-  log.debug('input.value', input.value)
   return {
     searchQuery: getSearchQuery(state, input.name),
   }
@@ -62,7 +61,6 @@ class FeatureObservationDropdownSearch extends Component {
   }
 
   getMatchingResults(searchQuery) {
-    log.debug('get matching results for searchQuery', searchQuery)
     const { options } = this.props
 
     if (!searchQuery) {
@@ -107,7 +105,7 @@ class FeatureObservationDropdownSearch extends Component {
 
     const { name, value } = input
 
-    log.debug('render value', value)
+    log.render()
     return (
       <DropdownSearch
         errorScope={errorScope}

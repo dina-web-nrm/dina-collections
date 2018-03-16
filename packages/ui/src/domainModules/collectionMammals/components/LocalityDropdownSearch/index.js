@@ -5,21 +5,24 @@ import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
 import { DropdownSearch } from 'coreModules/form/components'
+import { makeGetDropdownOptions } from 'domainModules/localityService/globalSelectorFactories'
 import {
   CONTINENT,
   COUNTRY,
   DISTRICT,
   PROVINCE,
 } from 'domainModules/localityService/constants'
-import localitySelectors from 'domainModules/localityService/globalSelectors'
 
-const log = createLog('domainModules:collectionMammals:LocalityDropdownSearch')
+const log = createLog('modules:collectionMammals:LocalityDropdownSearch')
 
-const mapStateToProps = (state, { getSearchQuery, group, input }) => {
-  log.debug('input.value', input.value)
-  return {
-    options: localitySelectors.getDropdownOptions(state, group),
-    searchQuery: getSearchQuery(state, input.name),
+const makeMapStateToProps = () => {
+  const getDropdownOptions = makeGetDropdownOptions()
+
+  return (state, { getSearchQuery, group, input }) => {
+    return {
+      options: getDropdownOptions(state, group),
+      searchQuery: getSearchQuery(state, input.name),
+    }
   }
 }
 
@@ -69,7 +72,6 @@ class LocalityDropdownSearch extends Component {
   }
 
   getMatchingResults(searchQuery) {
-    log.debug('get matching results for searchQuery', searchQuery)
     const { options } = this.props
 
     if (!searchQuery) {
@@ -114,7 +116,7 @@ class LocalityDropdownSearch extends Component {
 
     const { name, value } = input
 
-    log.debug('render value', value)
+    log.render()
     return (
       <DropdownSearch
         errorScope={errorScope}
@@ -143,4 +145,4 @@ class LocalityDropdownSearch extends Component {
 LocalityDropdownSearch.propTypes = propTypes
 LocalityDropdownSearch.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps))(LocalityDropdownSearch)
+export default compose(connect(makeMapStateToProps))(LocalityDropdownSearch)

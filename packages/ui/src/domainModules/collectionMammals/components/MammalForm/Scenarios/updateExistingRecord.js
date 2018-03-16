@@ -32,6 +32,16 @@ const individualGroup = {
     ],
   },
 }
+const featureObservationTypes = {
+  1: {
+    id: '1',
+    type: 'featureObservationType',
+  },
+  22: {
+    id: '22',
+    type: 'featureObservationType',
+  },
+}
 const physicalUnits = {
   1: {
     id: '1',
@@ -104,7 +114,7 @@ const expectedOutput = {
 const scenario = {
   description: 'Update existing record by adding determinedByAgentText',
   expectedOutput,
-  input: { individualGroup, physicalUnits },
+  input: { featureObservationTypes, individualGroup, physicalUnits },
   mutations,
 }
 

@@ -59,7 +59,13 @@ const Translate = (
     capitalize && translation ? capitalizeFirstLetter(translation) : translation
 
   if (!output || outputIsATextKey({ output, textKey, textKeys })) {
-    console.warn(`Translation not found for path: ${textKey}`, translations) // eslint-disable-line no-console
+    /* eslint-disable no-console */
+    console.warn(
+      `Translation not found for path: ${textKey ||
+        (textKeys && textKeys.join(', '))}`,
+      translations
+    )
+    /* eslint-enable no-console */
   }
 
   if (outputIsATextKey({ output, textKey, textKeys }) && fallback) {

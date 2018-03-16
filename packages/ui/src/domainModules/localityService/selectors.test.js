@@ -1,7 +1,6 @@
 import {
   getCuratedLocalities,
   getCuratedLocality,
-  getDropdownOptions,
   getHasCuratedLocalities,
   getLocalState,
   getResources,
@@ -71,29 +70,5 @@ describe('domainModules/localityService/selectors', () => {
         getHasCuratedLocalities({ resources: { curatedLocalities: {} } })
       ).toEqual(false)
     })
-  })
-
-  it('returns dropdown options by group', () => {
-    const group = 'country'
-    const testValue = getDropdownOptions(state, group)
-    const expectedResult = [
-      {
-        key: 'idCanada',
-        text: 'Canada',
-        value: 'idCanada',
-      },
-      {
-        key: 'idGermany',
-        text: 'Germany',
-        value: 'idGermany',
-      },
-      {
-        key: 'idSweden',
-        text: 'Sweden',
-        value: 'idSweden',
-      },
-    ]
-
-    expect(testValue).toEqual(expectedResult)
   })
 })

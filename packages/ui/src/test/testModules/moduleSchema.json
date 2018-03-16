@@ -21,6 +21,9 @@
         "type": "string"
       }
     },
+    "globalSelectorFactories": {
+      "type": "object"
+    },
     "globalSelectors": {
       "type": "object"
     },
@@ -60,15 +63,15 @@
     "shortcuts": {
       "type": "object"
     },
-
     "translations": {
       "type": "object"
     },
-
     "utilities": {
       "type": "object"
     }
   },
-  "required": ["name"],
+  "required": [
+    "name"
+  ],
   "type": "object"
 }

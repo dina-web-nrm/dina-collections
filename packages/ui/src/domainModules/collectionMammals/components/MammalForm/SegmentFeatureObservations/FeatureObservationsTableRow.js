@@ -6,6 +6,7 @@ import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { Field, Input } from 'coreModules/form/components'
+import { ModuleTranslate } from 'coreModules/i18n/components'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import updateFeatureObservationSearchQueryAC from '../../../actionCreators/updateFeatureObservationSearchQuery'
@@ -13,7 +14,7 @@ import globalSelectors from '../../../globalSelectors'
 import FeatureObservationDropdownSearch from '../../FeatureObservationDropdownSearch'
 
 const log = createLog(
-  'domainModules:collectionMammals:components:MammalForm:SegmentFeatureObservations:FeatureObservationsTable:FeatureObservationsTableRow'
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
 )
 
 const mapSelectablesToDropdownOptions = (
@@ -53,12 +54,9 @@ const mapDispatchToProps = {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   defaultLanguage: PropTypes.string.isRequired,
-  feature: PropTypes.object.isRequired,
+  featureObservationType: PropTypes.object.isRequired,
   getPath: PropTypes.func.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.string.isRequired,
   language: PropTypes.string,
   updateFeatureObservationSearchQuery: PropTypes.func.isRequired,
 }
@@ -68,17 +66,19 @@ const defaultProps = {
 
 class FeatureObservationTableRow extends Component {
   componentWillMount() {
-    const { changeFieldValue, getPath, feature } = this.props
-    changeFieldValue(getPath('featureObservationType.id'), feature.id)
+    const { changeFieldValue, getPath, featureObservationType } = this.props
+    changeFieldValue(
+      getPath('featureObservationType.id'),
+      featureObservationType.id
+    )
   }
 
   render() {
     const {
       defaultLanguage,
-      feature,
+      featureObservationType,
       getPath,
       index,
-      i18n: { moduleTranslate },
       language,
       updateFeatureObservationSearchQuery,
     } = this.props
@@ -88,7 +88,7 @@ class FeatureObservationTableRow extends Component {
       selectableMethods,
       selectableUnits,
       selectableValues,
-    } = feature
+    } = featureObservationType
 
     const hasSelectableMethods = !!selectableMethods
     const hasSelectableUnits = !!selectableUnits
@@ -118,10 +118,12 @@ class FeatureObservationTableRow extends Component {
     return (
       <Table.Row key={index}>
         <Table.Cell key={getPath('featureObservationType.id')}>
-          {moduleTranslate({
-            fallback: key,
-            textKey: key,
-          })}
+          <ModuleTranslate
+            fallback={key}
+            module="collectionMammals"
+            scope="featureObservations"
+            textKey={key}
+          />
         </Table.Cell>
         {hasSelectableValues ? (
           <Table.Cell key={getPath('featureObservationText')}>
