@@ -12,12 +12,13 @@ import {
   reduxForm,
   SubmissionError,
 } from 'redux-form'
-import formValidator from 'common/es5/error/validators/formValidator'
+import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { clearTaxonSearch } from 'domainModules/taxonomy/actionCreators'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { MAMMAL_FORM_NAME } from '../../constants'
+import { mammalFormModels } from '../../schemas'
 import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
 import SegmentDeterminations from './SegmentDeterminations'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
@@ -214,7 +215,10 @@ RawMammalForm.defaultProps = defaultProps
 
 export const MammalForm = reduxForm({
   form: FORM_NAME,
-  validate: formValidator({ model: 'individualGroup' }),
+  validate: customFormValidator({
+    model: 'individualGroup',
+    models: mammalFormModels,
+  }),
 })(RawMammalForm)
 
 export default compose(withRouter, connect(undefined, mapDispatchToProps))(
