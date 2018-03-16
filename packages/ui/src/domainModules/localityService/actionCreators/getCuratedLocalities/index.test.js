@@ -3,7 +3,7 @@ import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiCli
 import getCuratedLocalities from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('domainModules/localityService/actionCreators/getCuratedLocalities', () => {
+describe('domainModules/curatedLocalityService/actionCreators/getCuratedLocalities', () => {
   let store
   let apiClient
 
@@ -21,9 +21,7 @@ describe('domainModules/localityService/actionCreators/getCuratedLocalities', ()
   it(`dispatches ${
     actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITIES_REQUEST
   }`, () => {
-    const id = '123'
-
-    const testAction = getCuratedLocalities({ id })
+    const testAction = getCuratedLocalities()
 
     const expectedAction = {
       type: actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITIES_REQUEST,
@@ -36,20 +34,19 @@ describe('domainModules/localityService/actionCreators/getCuratedLocalities', ()
 
   it(`calls getCuratedLocalities`, () => {
     const operationId = 'getCuratedLocalities'
-    const id = '123'
 
     const callSpy = jest.fn()
 
     apiClient.mock({
       responses: {
-        [operationId]: { data: {} },
+        [operationId]: { data: [] },
       },
       spies: {
         [operationId]: callSpy,
       },
     })
 
-    const testAction = getCuratedLocalities({ id })
+    const testAction = getCuratedLocalities()
 
     expect.assertions(2)
 
@@ -63,7 +60,6 @@ describe('domainModules/localityService/actionCreators/getCuratedLocalities', ()
     actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITIES_SUCCESS
   } and returns transformed response`, () => {
     const operationId = 'getCuratedLocalities'
-    const id = '123'
     const mockResponse = {
       data: [
         {
@@ -101,7 +97,7 @@ describe('domainModules/localityService/actionCreators/getCuratedLocalities', ()
       },
     })
 
-    const testAction = getCuratedLocalities({ id })
+    const testAction = getCuratedLocalities()
 
     const expectedFirstAction = {
       type: actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITIES_REQUEST,
@@ -126,7 +122,6 @@ describe('domainModules/localityService/actionCreators/getCuratedLocalities', ()
     actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITIES_FAIL
   } without throwing error`, () => {
     const operationId = 'getCuratedLocalities'
-    const id = '123'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -135,7 +130,7 @@ describe('domainModules/localityService/actionCreators/getCuratedLocalities', ()
       },
     })
 
-    const testAction = getCuratedLocalities({ id })
+    const testAction = getCuratedLocalities()
 
     const expectedFirstAction = {
       type: actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITIES_REQUEST,
