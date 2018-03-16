@@ -3,7 +3,7 @@ export default function transformLocalityInformation(localityInformation) {
     return localityInformation
   }
 
-  const curatedLocalities = localityInformation.curatedLocalities.map(
+  const curatedLocalities = (localityInformation.curatedLocalities || []).map(
     ({ id }) => {
       return {
         id,

@@ -5,6 +5,7 @@ import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
 export default function transformInput({
+  featureObservationTypes = {},
   individualGroup = {},
   physicalUnits = {},
 }) {
@@ -14,9 +15,10 @@ export default function transformInput({
   const taxonInformation = transformTaxonInformation(
     attributes.taxonInformation
   )
-  const featureObservations = transformFeatureObservations(
-    attributes.featureObservations
-  )
+  const featureObservations = transformFeatureObservations({
+    featureObservations: attributes.featureObservations,
+    featureObservationTypes,
+  })
   const distinguishedUnits = transformDistinguishedUnits({
     distinguishedUnits: attributes.distinguishedUnits,
     physicalUnits,

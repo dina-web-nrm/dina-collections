@@ -21,23 +21,23 @@ const mutations = [
     value: 'Sorex minutus',
   },
   {
-    name: 'featureObservations.0.date',
+    name: 'featureObservations.1.date',
     value: 'date',
   },
   {
-    name: 'featureObservations.0.featureObservationAgent',
+    name: 'featureObservations.1.featureObservationAgent',
     value: 'featureObservationAgent',
   },
   {
-    name: 'featureObservations.0.featureObservationText.hidden',
+    name: 'featureObservations.1.featureObservationText.hidden',
     value: 'juvenile',
   },
   {
-    name: 'featureObservations.0.methodText.hidden',
+    name: 'featureObservations.1.methodText.hidden',
     value: 'known-age',
   },
   {
-    name: 'featureObservations.0.remarks',
+    name: 'featureObservations.1.remarks',
     value: 'remarks',
   },
   {
@@ -291,7 +291,7 @@ const postSubmitTest = ({ submitResult }) => {
       .filter(key => {
         // filter out unused featureObservationTypes, also done in transform output
         if (key.indexOf('featureObservations.') === 0) {
-          return key.indexOf('featureObservations.0') === 0
+          return key.indexOf('featureObservations.1.') === 0
         }
 
         return true

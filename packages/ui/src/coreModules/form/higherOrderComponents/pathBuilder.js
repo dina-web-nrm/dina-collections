@@ -14,7 +14,7 @@ const childContextTypes = {
 }
 
 const propTypes = {
-  index: PropTypes.number,
+  index: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   name: PropTypes.string,
 }
 

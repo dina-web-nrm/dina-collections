@@ -54,9 +54,9 @@ const mapDispatchToProps = {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   defaultLanguage: PropTypes.string.isRequired,
-  feature: PropTypes.object.isRequired,
+  featureObservationType: PropTypes.object.isRequired,
   getPath: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.string.isRequired,
   language: PropTypes.string,
   updateFeatureObservationSearchQuery: PropTypes.func.isRequired,
 }
@@ -66,14 +66,17 @@ const defaultProps = {
 
 class FeatureObservationTableRow extends Component {
   componentWillMount() {
-    const { changeFieldValue, getPath, feature } = this.props
-    changeFieldValue(getPath('featureObservationType.id'), feature.id)
+    const { changeFieldValue, getPath, featureObservationType } = this.props
+    changeFieldValue(
+      getPath('featureObservationType.id'),
+      featureObservationType.id
+    )
   }
 
   render() {
     const {
       defaultLanguage,
-      feature,
+      featureObservationType,
       getPath,
       index,
       language,
@@ -85,7 +88,7 @@ class FeatureObservationTableRow extends Component {
       selectableMethods,
       selectableUnits,
       selectableValues,
-    } = feature
+    } = featureObservationType
 
     const hasSelectableMethods = !!selectableMethods
     const hasSelectableUnits = !!selectableUnits

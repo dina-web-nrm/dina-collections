@@ -32,27 +32,28 @@ const makeMapStateToProps = () => {
 
   return (state, { groups }) => {
     return {
-      features: getFeatureObservationTypesInGroups(state, groups),
+      featureObservationTypes: getFeatureObservationTypesInGroups(
+        state,
+        groups
+      ),
     }
   }
 }
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  features: PropTypes.arrayOf(PropTypes.object).isRequired,
-  tableRowIndexStart: PropTypes.number.isRequired,
+  featureObservationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 function FeatureObservationTable({
   changeFieldValue,
-  features,
-  tableRowIndexStart,
+  featureObservationTypes,
 }) {
-  if (!features.length) {
+  if (!featureObservationTypes.length) {
     return null
   }
 
-  const tableColumns = getTableColumns(features)
+  const tableColumns = getTableColumns(featureObservationTypes)
 
   log.render()
   return (
@@ -74,13 +75,13 @@ function FeatureObservationTable({
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {features.map((feature, index) => {
+        {featureObservationTypes.map(featureObservationType => {
           return (
             <FeatureObservationsTableRow
               changeFieldValue={changeFieldValue}
-              feature={feature}
-              index={tableRowIndexStart + index}
-              key={feature.key}
+              featureObservationType={featureObservationType}
+              index={featureObservationType.id}
+              key={featureObservationType.key}
             />
           )
         })}

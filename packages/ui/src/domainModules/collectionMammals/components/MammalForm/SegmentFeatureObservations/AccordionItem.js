@@ -17,7 +17,6 @@ const propTypes = {
   headlineKey: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   setAccordionActiveIndex: PropTypes.func.isRequired,
-  tableRowIndexStart: PropTypes.number.isRequired,
 }
 
 class AccordionItem extends PureComponent {
@@ -29,7 +28,6 @@ class AccordionItem extends PureComponent {
       headlineKey,
       index,
       setAccordionActiveIndex,
-      tableRowIndexStart,
     } = this.props
 
     log.render()
@@ -58,7 +56,6 @@ class AccordionItem extends PureComponent {
         <FeatureObservationsTable
           changeFieldValue={changeFieldValue}
           groups={groups}
-          tableRowIndexStart={tableRowIndexStart}
         />
       </Accordion.Content>,
     ]

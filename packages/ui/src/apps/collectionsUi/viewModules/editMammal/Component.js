@@ -23,6 +23,9 @@ import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const mapStateToProps = (state, { match }) => {
   return {
+    featureObservationTypes: curatedListSelectors.getFeatureObservationTypes(
+      state
+    ),
     hasCuratedLocalities: localitySelectors.getHasCuratedLocalities(state),
     hasFeatureObservationTypes: curatedListSelectors.getHasFeatureObservationTypes(
       state
@@ -43,6 +46,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  featureObservationTypes: PropTypes.object.isRequired,
   getCuratedLocalities: PropTypes.func.isRequired,
   getFeatureObservationTypes: PropTypes.func.isRequired,
   getSpecimen: PropTypes.func.isRequired,
@@ -72,6 +76,7 @@ class EditMammal extends Component {
 
   render() {
     const {
+      featureObservationTypes,
       hasCuratedLocalities,
       hasFeatureObservationTypes,
       individualGroup,
@@ -80,7 +85,11 @@ class EditMammal extends Component {
       updateSpecimen,
     } = this.props
 
-    const initialData = transformInput({ individualGroup, physicalUnits })
+    const initialData = transformInput({
+      featureObservationTypes,
+      individualGroup,
+      physicalUnits,
+    })
 
     return (
       <PageTemplate>
