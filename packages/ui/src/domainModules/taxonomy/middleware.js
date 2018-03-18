@@ -14,9 +14,9 @@ const debounceTaxonSearch = debounce(
       dispatch(fetchTaxonSearchResults())
     }
   },
-  500,
+  100,
   {
-    maxWait: 1000,
+    maxWait: 500,
   }
 )
 
