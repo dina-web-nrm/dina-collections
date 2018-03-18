@@ -15,9 +15,13 @@ export const getLookupLoading = createSelector(
   lookup => lookup.loading
 )
 
-export const getLookupResult = createSelector(
-  getLookup,
-  lookup => lookup.result
+export const getLookupResult = createSelector(getLookup, lookup =>
+  (lookup.result || []).map(item => {
+    return {
+      key: item.id,
+      title: item.attributes.scientificName,
+    }
+  })
 )
 
 export const getLookupSearch = createSelector(

@@ -735,7 +735,7 @@ exports[`storyshots Storyshots coreModules/error/FormSchemaError Default 1`] = `
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/form/Checkbox Default 1`] = `
+exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -761,7 +761,6 @@ exports[`storyshots Storyshots coreModules/form/Checkbox Default 1`] = `
           onChange={[Function]}
           onClick={[Function]}
           onMouseDown={[Function]}
-          scope="some-scope"
         >
           <input
             checked={false}
@@ -776,52 +775,6 @@ exports[`storyshots Storyshots coreModules/form/Checkbox Default 1`] = `
           />
           <label
             htmlFor={undefined}
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots coreModules/form/Input Default 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="field"
-        style={
-          Object {
-            "position": "relative",
-          }
-        }
-      >
-        <label
-          htmlFor="inputName"
-        >
-          This is a label
-        </label>
-        <div
-          className="ui input"
-          scope="some-scope"
-        >
-          <input
-            autoComplete={undefined}
-            disabled={undefined}
-            name="inputName"
-            onChange={[Function]}
-            placeholder={undefined}
-            tabIndex={undefined}
-            type="text"
           />
         </div>
       </div>
@@ -1524,7 +1477,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           >
             <div
               className="ui left icon input"
-              scope={undefined}
             >
               <input
                 autoComplete="off"
@@ -1556,7 +1508,6 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           >
             <div
               className="ui left icon input"
-              scope={undefined}
             >
               <input
                 autoComplete="off"

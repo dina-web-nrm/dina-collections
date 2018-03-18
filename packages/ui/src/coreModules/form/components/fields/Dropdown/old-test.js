@@ -1,6 +1,6 @@
 /* eslint-disable no-console, prefer-destructuring */
 import React from 'react'
-import { times } from 'lodash'
+import { times } from 'lodash' // eslint-disable-line
 
 import uiDescribe from 'utilities/test/uiDescribe'
 import setupTestComponent from 'utilities/test/setupTestComponent'

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Search } from 'semantic-ui-react'
-import { FormFieldError } from '../../error/components'
-import FieldLabel from './FieldLabel'
+import { FormFieldError } from '../../../../error/components'
+import FieldLabel from '../../FieldTemplate/FieldLabel'
 
 const propTypes = {
   errorScope: PropTypes.string,

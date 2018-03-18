@@ -11,6 +11,7 @@ import {
   Field,
   Input,
 } from 'coreModules/form/components'
+
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxonomy/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
@@ -154,7 +155,7 @@ class AccordionItem extends Component {
                 label={moduleTranslate({ textKey: 'verbatimTaxonName' })}
                 module="collectionMammals"
                 name={getPath('determinationVerbatim')}
-                type="text"
+                type="input-text"
               />
             </Grid.Column>
           </Grid.Row>
@@ -165,7 +166,7 @@ class AccordionItem extends Component {
               label={moduleTranslate({ textKey: 'determinedBy' })}
               module="collectionMammals"
               name={getPath('determinedByAgentText')}
-              type="text"
+              type="input-text"
             />
           </Grid.Column>
           <Grid.Column computer={3} mobile={8} tablet={3}>
@@ -175,7 +176,7 @@ class AccordionItem extends Component {
               label={moduleTranslate({ textKey: 'date' })}
               module="collectionMammals"
               name={getPath('date')}
-              type="text"
+              type="input-text"
             />
           </Grid.Column>
           <Grid.Column computer={8} mobile={16} tablet={8}>
@@ -185,7 +186,7 @@ class AccordionItem extends Component {
               label={moduleTranslate({ textKey: 'remarks' })}
               module="collectionMammals"
               name={getPath('remarks')}
-              type="text"
+              type="input-text"
             />
           </Grid.Column>
           <Grid.Column mobile={16}>

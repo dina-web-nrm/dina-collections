@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import SearchInputWithResults from 'coreModules/form/components/SearchInputWithResults'
+import SearchInputWithResults from './SearchInputWithResults'
 import DisplaySearchResult from '../DisplaySearchResult'
 import { days, months, years } from './dateOptions'
-import { DAY, MONTH, YEAR } from '../../constants'
+import { DAY, MONTH, YEAR } from '../../../constants'
 
 const createStringMatch = controlledValue => value => {
   return String(value).indexOf(String(controlledValue)) === 0

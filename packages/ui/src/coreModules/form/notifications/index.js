@@ -6,7 +6,7 @@ import {
   FIXED,
   INLINE,
 } from 'coreModules/notifications/constants'
-import HelpTextNotification from '../components/HelpTextNotification'
+import HelpTextNotification from '../components/migrate/HelpTextNotification'
 
 const fieldHelpTextDefaults = {
   collision: COLLISION_REPLACE,

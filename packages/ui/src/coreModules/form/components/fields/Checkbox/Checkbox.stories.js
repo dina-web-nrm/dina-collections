@@ -4,9 +4,9 @@ import { storiesOf } from '@storybook/react'
 import 'common/dist/semantic.css' // eslint-disable-line
 import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import withInfo from 'utilities/test/customStorybookWithInfo'
-import Checkbox from './Checkbox'
+import Checkbox from './index'
 
-storiesOf('coreModules/form/Checkbox', module)
+storiesOf('coreModules/form/Fields/Checkbox', module)
   .addDecorator(createStoryDecorator())
   .add(
     'Default',

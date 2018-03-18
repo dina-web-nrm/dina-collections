@@ -4,64 +4,71 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
-import { DropdownSearch } from 'coreModules/form/components'
+import { Dropdown } from 'coreModules/form/components'
+import i18nSelectors from 'coreModules/i18n/globalSelectors'
 
 const log = createLog(
   'modules:collectionMammals:FeatureObservationDropdownSearch'
 )
 
-const mapStateToProps = (state, { getSearchQuery, input }) => {
+const mapSelectablesToDropdownOptions = (
+  selectables,
+  { language, defaultLanguage } = {}
+) => {
+  return selectables.map(({ key, name }) => {
+    if (typeof name === 'string') {
+      return {
+        key,
+        text: name,
+        value: key,
+      }
+    }
+
+    const potentialBackendTranslation =
+      (language || defaultLanguage) && (name[language] || name[defaultLanguage])
+
+    return {
+      key,
+      text: potentialBackendTranslation || key,
+      value: key,
+    }
+  })
+}
+
+const mapStateToProps = state => {
   return {
-    searchQuery: getSearchQuery(state, input.name),
+    defaultLanguage: i18nSelectors.getDefaultLanguage(state),
+    language: i18nSelectors.getLanguage(state),
   }
 }
 
 const propTypes = {
-  errorScope: PropTypes.string,
-  getSearchQuery: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
-  helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  initialText: PropTypes.string,
-  input: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-  }).isRequired,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  meta: PropTypes.shape({
-    error: PropTypes.object,
-    touched: PropTypes.bool.isRequired,
-  }).isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  required: PropTypes.bool,
-  searchQuery: PropTypes.string,
+  defaultLanguage: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  rawOptions: PropTypes.array.isRequired,
   updateSearchQuery: PropTypes.func.isRequired,
-}
-
-const defaultProps = {
-  errorScope: undefined,
-  helpText: undefined,
-  initialText: undefined,
-  label: undefined,
-  required: false,
-  searchQuery: undefined,
 }
 
 class FeatureObservationDropdownSearch extends Component {
   constructor(props) {
     super(props)
-    this.handleSearchChange = this.handleSearchChange.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
+    const { rawOptions, defaultLanguage, language } = props
+
+    this.getMatchingResults = this.getMatchingResults.bind(this)
+    this.format = this.format.bind(this)
+
+    this.state = {
+      options:
+        !!props.rawOptions &&
+        mapSelectablesToDropdownOptions(rawOptions, {
+          defaultLanguage,
+          language,
+        }),
+    }
   }
 
   getMatchingResults(searchQuery) {
-    const { options } = this.props
+    const { options } = this.state
 
     if (!searchQuery) {
       return options
@@ -74,65 +81,31 @@ class FeatureObservationDropdownSearch extends Component {
     })
   }
 
-  handleSearchChange(event, { searchQuery }) {
-    this.props.updateSearchQuery({
-      inputName: this.props.input.name,
-      searchQuery,
-    })
-  }
+  format(value) {
+    const { options } = this.state
 
-  handleSelect(event, { value }) {
-    this.props.updateSearchQuery({
-      inputName: this.props.input.name,
-      searchQuery: '',
-    })
-    this.props.input.onBlur(value)
+    const option = options.find(
+      ({ value: optionValue }) => optionValue === value
+    )
+    return option && option.text
   }
 
   render() {
-    const {
-      errorScope,
-      helpText,
-      initialText,
-      input,
-      label,
-      meta,
-      options,
-      required,
-      searchQuery,
-      ...rest
-    } = this.props
-
-    const { name, value } = input
+    const { ...rest } = this.props
 
     log.render()
     return (
-      <DropdownSearch
-        errorScope={errorScope}
-        helpText={helpText}
-        initialText={initialText}
-        input={{
-          name,
-          value,
-        }}
-        label={label}
-        meta={meta}
-        onChange={this.handleSelect}
-        onSearchChange={this.handleSearchChange}
-        required={required}
-        selectOnBlur={false}
+      <Dropdown
         {...rest}
-        options={
-          // putting options last to override options in rest
-          this.getMatchingResults(searchQuery)
-        }
+        format={this.format}
+        getOptions={this.getMatchingResults}
+        type="dropdown-search-local"
       />
     )
   }
 }
 
 FeatureObservationDropdownSearch.propTypes = propTypes
-FeatureObservationDropdownSearch.defaultProps = defaultProps
 
 export default compose(connect(mapStateToProps))(
   FeatureObservationDropdownSearch

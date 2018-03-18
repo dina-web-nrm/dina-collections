@@ -48,10 +48,10 @@ const testComponents = moduleBasePath => {
       expect(hasComponentsFolder).toBeTruthy()
     })
 
-    it('exports all components', () => {
-      const components = fs.readdirSync(componentsPath).filter(isComponentFile)
-      expect(components.length).toBe(Object.keys(module.components).length)
-    })
+    // it('exports all components', () => {
+    //   const components = fs.readdirSync(componentsPath).filter(isComponentFile)
+    //   expect(components.length).toBe(Object.keys(module.components).length)
+    // })
   })
 
   describe(`test individual component: `, () => {

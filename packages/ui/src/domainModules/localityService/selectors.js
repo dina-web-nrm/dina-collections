@@ -1,8 +1,14 @@
 import { createSelector } from 'reselect'
-
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import getSecondArgument from 'utilities/getSecondArgument'
 
-import { MODULE_NAME } from './constants'
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  MODULE_NAME,
+  PROVINCE,
+} from './constants'
 
 export const getLocalState = state => {
   return state[MODULE_NAME]
@@ -29,3 +35,29 @@ export const getHasCuratedLocalities = createSelector(
     return Object.keys(curatedLocalities).length > 0
   }
 )
+
+const createDropdownSelector = groupFilter => {
+  return createSelector(
+    [getCuratedLocalities, getSecondArgument],
+    (curatedLocalities, searchQuery = '') => {
+      const lowerCaseSearchQuery = searchQuery.toLowerCase()
+      return Object.values(curatedLocalities)
+        .filter(({ group }) => group === groupFilter)
+        .map(({ id, name }) => {
+          return {
+            key: id,
+            text: capitalizeFirstLetter(name),
+            value: id,
+          }
+        })
+        .filter(({ text }) => {
+          return text.toLowerCase().includes(lowerCaseSearchQuery)
+        })
+    }
+  )
+}
+
+export const getDropdownContinentOptions = createDropdownSelector(CONTINENT)
+export const getDropdownCountryOptions = createDropdownSelector(COUNTRY)
+export const getDropdownDistrictOptions = createDropdownSelector(DISTRICT)
+export const getDropdownProvinceOptions = createDropdownSelector(PROVINCE)

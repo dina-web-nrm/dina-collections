@@ -3,9 +3,9 @@ import React from 'react'
 import setupTestComponent from 'utilities/test/setupTestComponent'
 import uiDescribe from 'utilities/test/uiDescribe'
 
-import Input from './index'
+import TextField from './index'
 
-uiDescribe('coreModules/form/components/Input', () => {
+uiDescribe('coreModules/form/components/TextField', () => {
   let wrapper
   let emptyObj
   let baseMeta
@@ -18,7 +18,12 @@ uiDescribe('coreModules/form/components/Input', () => {
   it('renders without crashing when given required props', () => {
     setupTestComponent({
       component: (
-        <Input input={emptyObj} meta={baseMeta} module="module" name="name" />
+        <TextField
+          input={emptyObj}
+          meta={baseMeta}
+          module="module"
+          name="name"
+        />
       ),
     })
   })
@@ -26,7 +31,12 @@ uiDescribe('coreModules/form/components/Input', () => {
   it('renders a text <input> by default', () => {
     wrapper = setupTestComponent({
       component: (
-        <Input input={emptyObj} meta={baseMeta} module="module" name="name" />
+        <TextField
+          input={emptyObj}
+          meta={baseMeta}
+          module="module"
+          name="name"
+        />
       ),
     })
 
@@ -36,7 +46,7 @@ uiDescribe('coreModules/form/components/Input', () => {
   it('renders a number <input>', () => {
     wrapper = setupTestComponent({
       component: (
-        <Input
+        <TextField
           input={emptyObj}
           meta={baseMeta}
           module="module"
@@ -53,7 +63,7 @@ uiDescribe('coreModules/form/components/Input', () => {
     const controlledValue = 'controlledValue'
     wrapper = setupTestComponent({
       component: (
-        <Input
+        <TextField
           input={{ value: controlledValue }}
           meta={baseMeta}
           module="module"
@@ -61,7 +71,6 @@ uiDescribe('coreModules/form/components/Input', () => {
         />
       ),
     })
-
     expect(wrapper.find('input').props().value).toEqual(controlledValue)
   })
 
@@ -79,7 +88,7 @@ uiDescribe('coreModules/form/components/Input', () => {
     }
 
     wrapper = setupTestComponent({
-      component: <Input {...props} />,
+      component: <TextField {...props} />,
     })
 
     wrapper.find('input').simulate('change', e)

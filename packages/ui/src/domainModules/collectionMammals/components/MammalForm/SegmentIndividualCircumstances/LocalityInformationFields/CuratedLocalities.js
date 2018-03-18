@@ -9,10 +9,7 @@ import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import { Field, Input } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-
-import globalSelectors from 'domainModules/collectionMammals/globalSelectors'
 import LocalityDropdownSearch from 'domainModules/collectionMammals/components/LocalityDropdownSearch'
-import updateLocalityInformationSearchQueryAC from 'domainModules/collectionMammals/actionCreators/updateLocalityInformationSearchQuery'
 import localitySelectors from 'domainModules/localityService/globalSelectors'
 import {
   CONTINENT,
@@ -29,9 +26,6 @@ const mapStateToProps = state => {
     curatedLocalities: localitySelectors.getCuratedLocalities(state),
   }
 }
-const mapDispatchToProps = {
-  updateLocalityInformationSearchQuery: updateLocalityInformationSearchQueryAC,
-}
 
 const propTypes = {
   curatedLocalities: PropTypes.object.isRequired,
@@ -39,14 +33,12 @@ const propTypes = {
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
-  updateLocalityInformationSearchQuery: PropTypes.func.isRequired,
 }
 
 function LocalityInformationFields({
   curatedLocalities,
   getPath,
   i18n: { moduleTranslate },
-  updateLocalityInformationSearchQuery,
 }) {
   const formatLocalityName = id => {
     return curatedLocalities[id]
@@ -62,7 +54,6 @@ function LocalityInformationFields({
             autoComplete="off"
             component={LocalityDropdownSearch}
             format={formatLocalityName}
-            getSearchQuery={globalSelectors.getLocalityInformationSearchQuery}
             group={CONTINENT}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('continentStandardized'),
@@ -74,7 +65,6 @@ function LocalityInformationFields({
             label={moduleTranslate({ textKey: 'continentStandardized' })}
             module="collectionMammals"
             name={getPath('0.id')}
-            updateSearchQuery={updateLocalityInformationSearchQuery}
           />
         </Grid.Column>
         <Grid.Column computer={4} mobile={16} tablet={8}>
@@ -82,7 +72,6 @@ function LocalityInformationFields({
             autoComplete="off"
             component={LocalityDropdownSearch}
             format={formatLocalityName}
-            getSearchQuery={globalSelectors.getLocalityInformationSearchQuery}
             group={COUNTRY}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('countryStandardized'),
@@ -94,7 +83,6 @@ function LocalityInformationFields({
             label={moduleTranslate({ textKey: 'countryStandardized' })}
             module="collectionMammals"
             name={getPath('1.id')}
-            updateSearchQuery={updateLocalityInformationSearchQuery}
           />
         </Grid.Column>
         <Grid.Column computer={4} mobile={16} tablet={8}>
@@ -102,7 +90,6 @@ function LocalityInformationFields({
             autoComplete="off"
             component={LocalityDropdownSearch}
             format={formatLocalityName}
-            getSearchQuery={globalSelectors.getLocalityInformationSearchQuery}
             group={PROVINCE}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('provinceStandardized'),
@@ -114,7 +101,6 @@ function LocalityInformationFields({
             label={moduleTranslate({ textKey: 'provinceStandardized' })}
             module="collectionMammals"
             name={getPath('2.id')}
-            updateSearchQuery={updateLocalityInformationSearchQuery}
           />
         </Grid.Column>
         <Grid.Column computer={4} mobile={16} tablet={8}>
@@ -122,7 +108,6 @@ function LocalityInformationFields({
             autoComplete="off"
             component={LocalityDropdownSearch}
             format={formatLocalityName}
-            getSearchQuery={globalSelectors.getLocalityInformationSearchQuery}
             group={DISTRICT}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('districtStandardized'),
@@ -134,7 +119,6 @@ function LocalityInformationFields({
             label={moduleTranslate({ textKey: 'districtStandardized' })}
             module="collectionMammals"
             name={getPath('3.id')}
-            updateSearchQuery={updateLocalityInformationSearchQuery}
           />
         </Grid.Column>
       </Grid.Row>
@@ -161,7 +145,7 @@ function LocalityInformationFields({
 LocalityInformationFields.propTypes = propTypes
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   withI18n({
     module: 'collectionMammals',
     scope: 'individualCircumstances.localityInformation.curatedLocalities',

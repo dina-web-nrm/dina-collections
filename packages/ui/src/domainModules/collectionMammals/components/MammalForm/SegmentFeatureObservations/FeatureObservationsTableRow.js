@@ -1,67 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { Field, Input } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'
-import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import updateFeatureObservationSearchQueryAC from '../../../actionCreators/updateFeatureObservationSearchQuery'
-import globalSelectors from '../../../globalSelectors'
 import FeatureObservationDropdownSearch from '../../FeatureObservationDropdownSearch'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
 )
 
-const mapSelectablesToDropdownOptions = (
-  selectables,
-  { language, defaultLanguage } = {}
-) => {
-  return selectables.map(({ key, name }) => {
-    if (typeof name === 'string') {
-      return {
-        key,
-        text: name,
-        value: key,
-      }
-    }
-
-    const potentialBackendTranslation =
-      (language || defaultLanguage) && (name[language] || name[defaultLanguage])
-
-    return {
-      key,
-      text: potentialBackendTranslation || key,
-      value: key,
-    }
-  })
-}
-
-const mapStateToProps = state => {
-  return {
-    defaultLanguage: i18nSelectors.getDefaultLanguage(state),
-    language: i18nSelectors.getLanguage(state),
-  }
-}
-const mapDispatchToProps = {
-  updateFeatureObservationSearchQuery: updateFeatureObservationSearchQueryAC,
-}
-
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  defaultLanguage: PropTypes.string.isRequired,
   featureObservationType: PropTypes.object.isRequired,
   getPath: PropTypes.func.isRequired,
   index: PropTypes.string.isRequired,
-  language: PropTypes.string,
-  updateFeatureObservationSearchQuery: PropTypes.func.isRequired,
-}
-const defaultProps = {
-  language: undefined,
 }
 
 class FeatureObservationTableRow extends Component {
@@ -74,14 +30,7 @@ class FeatureObservationTableRow extends Component {
   }
 
   render() {
-    const {
-      defaultLanguage,
-      featureObservationType,
-      getPath,
-      index,
-      language,
-      updateFeatureObservationSearchQuery,
-    } = this.props
+    const { featureObservationType, getPath, index } = this.props
 
     const {
       key,
@@ -93,26 +42,6 @@ class FeatureObservationTableRow extends Component {
     const hasSelectableMethods = !!selectableMethods
     const hasSelectableUnits = !!selectableUnits
     const hasSelectableValues = !!selectableValues
-
-    // TODO: Move to selectors
-    const selectableMethodOptions =
-      hasSelectableMethods &&
-      mapSelectablesToDropdownOptions(selectableMethods, {
-        defaultLanguage,
-        language,
-      })
-    const selectableUnitOptions =
-      hasSelectableUnits &&
-      mapSelectablesToDropdownOptions(selectableUnits, {
-        defaultLanguage,
-        language,
-      })
-    const selectableValueOptions =
-      hasSelectableValues &&
-      mapSelectablesToDropdownOptions(selectableValues, {
-        defaultLanguage,
-        language,
-      })
 
     log.render()
     return (
@@ -131,18 +60,10 @@ class FeatureObservationTableRow extends Component {
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
-              format={value => {
-                const option = selectableValueOptions.find(
-                  ({ value: optionValue }) => optionValue === value
-                )
-                return option && option.text
-              }}
-              getSearchQuery={globalSelectors.getFeatureObservationSearchQuery}
               module="collectionMammals"
               name={getPath('featureObservationText')}
-              options={selectableValueOptions}
+              rawOptions={selectableValues}
               type="text"
-              updateSearchQuery={updateFeatureObservationSearchQuery}
             />
           </Table.Cell>
         ) : (
@@ -157,24 +78,17 @@ class FeatureObservationTableRow extends Component {
             />
           </Table.Cell>
         )}
+
         {hasSelectableUnits && (
           <Table.Cell key={getPath('featureObservationUnit')}>
             <Field
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
-              format={value => {
-                const option = selectableUnitOptions.find(
-                  ({ value: optionValue }) => optionValue === value
-                )
-                return option && option.text
-              }}
-              getSearchQuery={globalSelectors.getFeatureObservationSearchQuery}
               module="collectionMammals"
               name={getPath('featureObservationUnit')}
-              options={selectableUnitOptions}
+              rawOptions={selectableUnits}
               type="text"
-              updateSearchQuery={updateFeatureObservationSearchQuery}
             />
           </Table.Cell>
         )}
@@ -184,21 +98,14 @@ class FeatureObservationTableRow extends Component {
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
-              format={value => {
-                const option = selectableMethodOptions.find(
-                  ({ value: optionValue }) => optionValue === value
-                )
-                return option && option.text
-              }}
-              getSearchQuery={globalSelectors.getFeatureObservationSearchQuery}
               module="collectionMammals"
               name={getPath('methodText')}
-              options={selectableMethodOptions}
+              rawOptions={selectableMethods}
               type="text"
-              updateSearchQuery={updateFeatureObservationSearchQuery}
             />
           </Table.Cell>
         )}
+
         <Table.Cell key={getPath('featureObservationDate')} width={1}>
           <Field
             autoComplete="off"
@@ -235,9 +142,5 @@ class FeatureObservationTableRow extends Component {
 }
 
 FeatureObservationTableRow.propTypes = propTypes
-FeatureObservationTableRow.defaultProps = defaultProps
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  pathBuilder()
-)(FeatureObservationTableRow)
+export default compose(pathBuilder())(FeatureObservationTableRow)
