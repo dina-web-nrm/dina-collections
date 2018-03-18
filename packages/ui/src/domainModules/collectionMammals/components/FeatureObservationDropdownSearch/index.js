@@ -75,10 +75,15 @@ class FeatureObservationDropdownSearch extends Component {
     }
 
     const lowerCaseSearchQuery = searchQuery.toLowerCase()
-
-    return options.filter(({ text }) => {
-      return text.toLowerCase().includes(lowerCaseSearchQuery)
+    const firstLetterMatches = options.filter(({ text }) => {
+      return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
     })
+
+    const otherMatches = options.filter(({ text }) => {
+      return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+    })
+
+    return [...firstLetterMatches, ...otherMatches]
   }
 
   format(value) {
