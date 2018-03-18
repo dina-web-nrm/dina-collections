@@ -41,7 +41,7 @@ const createDropdownSelector = groupFilter => {
     [getCuratedLocalities, getSecondArgument],
     (curatedLocalities, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
-      return Object.values(curatedLocalities)
+      const firstLetterMatches = Object.values(curatedLocalities)
         .filter(({ group }) => group === groupFilter)
         .map(({ id, name }) => {
           return {
@@ -51,8 +51,23 @@ const createDropdownSelector = groupFilter => {
           }
         })
         .filter(({ text }) => {
-          return text.toLowerCase().includes(lowerCaseSearchQuery)
+          return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
         })
+
+      const otherMatches = Object.values(curatedLocalities)
+        .filter(({ group }) => group === groupFilter)
+        .map(({ id, name }) => {
+          return {
+            key: id,
+            text: capitalizeFirstLetter(name),
+            value: id,
+          }
+        })
+        .filter(({ text }) => {
+          return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+        })
+
+      return [...firstLetterMatches, ...otherMatches].slice(0, 5)
     }
   )
 }
