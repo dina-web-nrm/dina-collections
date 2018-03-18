@@ -1,5 +1,4 @@
 # Tree for coreModules
-Generated at: 2018-03-16T10:35:02.346Z
 ## Tree
 ```bash
 ├── allModules.js
@@ -122,6 +121,7 @@ Generated at: 2018-03-16T10:35:02.346Z
 │       └── getPropertyIsModel.js
 ├── error
 │   ├── components
+│   │   ├── ConnectedFormSchemaError.js
 │   │   ├── FormFieldError.js
 │   │   ├── FormFieldError.stories.js
 │   │   ├── FormSchemaError.js
@@ -135,29 +135,28 @@ Generated at: 2018-03-16T10:35:02.346Z
 │   └── translations.json
 ├── form
 │   ├── components
-│   │   ├── ButtonCopyPasteField.js
-│   │   ├── Checkbox.js
-│   │   ├── Checkbox.stories.js
-│   │   ├── DisplaySearchResult.js
-│   │   ├── DropdownSearch
-│   │   │   ├── index.js
-│   │   │   └── index.spec.js
-│   │   ├── Field.js
-│   │   ├── FieldLabel.js
-│   │   ├── FormTable
-│   │   │   ├── FormTableHeaderRow.js
+│   │   ├── FieldTemplate
+│   │   │   ├── FieldLabel.js
 │   │   │   └── index.js
-│   │   ├── HelpTextNotification.js
-│   │   ├── Input
-│   │   │   ├── index.js
-│   │   │   ├── index.spec.js
-│   │   │   └── index.stories.js
-│   │   ├── InputDatePart
-│   │   │   ├── dateOptions.js
+│   │   ├── FieldWrapper
 │   │   │   └── index.js
-│   │   ├── SearchInputWithResults.js
-│   │   ├── TranslateSearchResult.js
-│   │   └── index.js
+│   │   ├── fields
+│   │   │   ├── Checkbox
+│   │   │   ├── Dropdown
+│   │   │   ├── Input
+│   │   │   └── Search
+│   │   ├── index.js
+│   │   ├── inputs
+│   │   │   ├── Checkbox
+│   │   │   ├── Dropdown
+│   │   │   ├── Input
+│   │   │   └── Search
+│   │   └── migrate
+│   │       ├── ButtonCopyPasteField.js
+│   │       ├── DisplaySearchResult.js
+│   │       ├── FormTable
+│   │       ├── HelpTextNotification.js
+│   │       └── InputDatePart
 │   ├── constants.js
 │   ├── higherOrderComponents
 │   │   ├── index.js

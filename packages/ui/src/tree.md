@@ -1,5 +1,4 @@
 # Tree for src
-Generated at: 2018-03-16T10:35:02.341Z
 ## Tree
 ```bash
 ├── apps
@@ -72,6 +71,7 @@ Generated at: 2018-03-16T10:35:02.341Z
     ├── chainPromises
     ├── endpointFactory
     ├── getSecondArgument
+    ├── getThirdArgument
     ├── log
     ├── markdown
     ├── stateHelper

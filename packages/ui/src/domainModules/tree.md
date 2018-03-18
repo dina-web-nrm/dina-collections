@@ -1,5 +1,4 @@
 # Tree for domainModules
-Generated at: 2018-03-16T10:35:02.344Z
 ## Tree
 ```bash
 ├── allModules.js
@@ -53,6 +52,7 @@ Generated at: 2018-03-16T10:35:02.344Z
 │   ├── middleware.js
 │   ├── mockData.js
 │   ├── reducer.js
+│   ├── schemas.js
 │   ├── selectors.js
 │   ├── translations.json
 │   └── utilities.js
@@ -78,6 +78,8 @@ Generated at: 2018-03-16T10:35:02.344Z
 │   ├── constants.test.js
 │   ├── endpoints.js
 │   ├── endpoints.test.js
+│   ├── globalSelectorFactories.js
+│   ├── globalSelectorFactories.test.js
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── index.js
@@ -221,8 +223,6 @@ Generated at: 2018-03-16T10:35:02.344Z
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── TaxonNameSearchInputWithResults
-│   │   │   └── index.js
-│   │   ├── TaxonNameSearchResult
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
