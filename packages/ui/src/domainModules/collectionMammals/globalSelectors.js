@@ -17,11 +17,28 @@ import wrapSelectors from 'utilities/wrapSelectors'
 import transformInput from './components/MammalForm/transformations/input'
 import * as selectors from './selectors'
 
-const getUpdateSpecimenInitialValues = createSelector(
-  state => getFeatureObservationTypes(getCuratedListState(state)),
-  (state, specimenId) =>
-    getSpecimenIndividualGroup(getSpecimenState(state), specimenId),
-  state => getPhysicalUnits(getStorageState(state)),
+const getFeatureObservationTypesGlobal = state => {
+  return getFeatureObservationTypes(getCuratedListState(state))
+}
+
+const getInitialIndividualGroup = (state, specimenId) => {
+  if (!specimenId) {
+    return {}
+  }
+
+  return getSpecimenIndividualGroup(getSpecimenState(state), specimenId)
+}
+
+const getPhysicalUnitsGlobal = state => {
+  return getPhysicalUnits(getStorageState(state))
+}
+
+const getMammalFormInitialValues = createSelector(
+  [
+    getFeatureObservationTypesGlobal,
+    getInitialIndividualGroup,
+    getPhysicalUnitsGlobal,
+  ],
   (featureObservationTypes, individualGroup, physicalUnits) => {
     return transformInput({
       featureObservationTypes,
@@ -33,5 +50,5 @@ const getUpdateSpecimenInitialValues = createSelector(
 
 export default {
   ...wrapSelectors(selectors),
-  getUpdateSpecimenInitialValues,
+  getMammalFormInitialValues,
 }
