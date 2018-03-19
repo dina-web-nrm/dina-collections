@@ -8,9 +8,10 @@ const propTypes = {
 
 const CheckboxInput = ({ input }) => {
   const { value, onChange: reduxFormOnChange, ...inputRest } = input
+  const checked = !!value
   return (
     <Checkbox
-      checked={!!value}
+      checked={checked}
       onChange={(event, data) => {
         reduxFormOnChange(data.checked)
       }}

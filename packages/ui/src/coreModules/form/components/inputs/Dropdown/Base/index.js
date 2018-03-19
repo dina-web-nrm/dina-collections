@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown } from 'semantic-ui-react'
+import config from 'config'
 
 const propTypes = {
   autoComplete: PropTypes.string,
   format: PropTypes.func,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  mountHidden: PropTypes.bool,
   onSearchChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -16,13 +18,13 @@ const propTypes = {
         .isRequired,
     }).isRequired
   ).isRequired,
-
-  selectOnBlur: PropTypes.string,
+  selectOnBlur: PropTypes.bool,
 }
 const defaultProps = {
   autoComplete: undefined,
   format: undefined,
   initialText: '',
+  mountHidden: config.isTest,
   selectOnBlur: false,
 }
 
@@ -45,7 +47,7 @@ class DropdownSearchInput extends Component {
 
     this.props.onSearchChange({
       inputName: this.props.input.name,
-      searchQuery: '',
+      searchQuery: value,
     })
     const formattedValue = format ? format(value) : value
     this.props.input.onBlur(formattedValue)
@@ -54,10 +56,11 @@ class DropdownSearchInput extends Component {
   render() {
     const {
       autoComplete,
-      input,
-      selectOnBlur,
-      options,
       initialText,
+      input,
+      mountHidden,
+      options,
+      selectOnBlur,
     } = this.props
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
@@ -76,16 +79,19 @@ class DropdownSearchInput extends Component {
           onBlur={undefined}
           onChange={this.handleOnChange}
         />
-        <input
-          {...input}
-          name={hiddenInputName}
-          onChange={event => {
-            const { value } = event.target
-            onChange(event, { value })
-          }}
-          type="hidden"
-          value={input.value || ''}
-        />
+        {mountHidden && (
+          <input
+            className="hidden"
+            {...input}
+            name={hiddenInputName}
+            onChange={event => {
+              const { value } = event.target
+              onChange(event, { value })
+            }}
+            type="hidden"
+            value={input.value || ''}
+          />
+        )}
       </React.Fragment>
     )
   }

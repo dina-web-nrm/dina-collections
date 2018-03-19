@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Search } from 'semantic-ui-react'
+import config from 'config'
 import DefaultResultRenderer from './DefaultResultRenderer'
 
 const propTypes = {
@@ -11,14 +12,23 @@ const propTypes = {
     value: PropTypes.string,
   }).isRequired,
   isLoading: PropTypes.bool,
+  mountHidden: PropTypes.bool,
   onSearchChange: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+    }).isRequired
+  ).isRequired,
   resultRenderer: PropTypes.func,
   searchQuery: PropTypes.string,
 }
 
 const defaultProps = {
   isLoading: false,
+  mountHidden: config.isTest,
   resultRenderer: DefaultResultRenderer,
   searchQuery: null,
 }
@@ -64,9 +74,16 @@ class SearchBase extends Component {
   }
 
   render() {
-    const { input, isLoading, resultRenderer, options } = this.props
+    const {
+      input,
+      isLoading,
+      resultRenderer,
+      mountHidden,
+      options,
+    } = this.props
     const hiddenInputName = `${input.name}.hidden`
     const value = this.getValue()
+
     return (
       <React.Fragment>
         <Search
@@ -78,15 +95,18 @@ class SearchBase extends Component {
           {...input}
           value={value}
         />
-        <input
-          hidden
-          {...input}
-          name={hiddenInputName}
-          onChange={event => {
-            const { value: title } = event.target
-            this.handleResultSelect(event, { result: { title } })
-          }}
-        />
+        {mountHidden && (
+          <input
+            hidden
+            {...input}
+            name={hiddenInputName}
+            onChange={event => {
+              const { value: title } = event.target
+              this.handleResultSelect(event, { result: { title } })
+            }}
+            value={value}
+          />
+        )}
       </React.Fragment>
     )
   }
