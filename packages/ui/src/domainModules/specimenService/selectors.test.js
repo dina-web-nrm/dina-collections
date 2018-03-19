@@ -1,9 +1,11 @@
 import {
-  getSpecimens,
-  getSpecimen,
   getHasSpecimens,
   getLocalState,
   getResources,
+  getSpecimen,
+  getSpecimenFeatureObservations,
+  getSpecimenIndividualGroup,
+  getSpecimens,
 } from './selectors'
 
 describe('domainModules/specimenService/selectors', () => {
@@ -13,30 +15,31 @@ describe('domainModules/specimenService/selectors', () => {
     state = {
       resources: {
         specimens: {
-          idAsia: {
-            group: 'continent',
-            id: 'idAsia',
-            name: 'asia',
+          a: {
+            id: 'a',
+            individualGroup: {
+              featureObservations: [
+                {
+                  featureObservationText: 'bearSkin',
+                  featureObservationType: {
+                    id: 'skin',
+                  },
+                },
+              ],
+            },
           },
-          idCanada: {
-            group: 'country',
-            id: 'idCanada',
-            name: 'canada',
-          },
-          idGermany: {
-            group: 'country',
-            id: 'idGermany',
-            name: 'germany',
-          },
-          idOntario: {
-            group: 'province',
-            id: 'idOntario',
-            name: 'ontario',
-          },
-          idSweden: {
-            group: 'country',
-            id: 'idSweden',
-            name: 'sweden',
+          b: {
+            id: 'b',
+            individualGroup: {
+              featureObservations: [
+                {
+                  featureObservationText: 'pandaSkin',
+                  featureObservationType: {
+                    id: 'skin',
+                  },
+                },
+              ],
+            },
           },
         },
       },
@@ -55,6 +58,16 @@ describe('domainModules/specimenService/selectors', () => {
   })
   it('returns specimen by id', () => {
     expect(getSpecimen(state, 'a')).toEqual(state.resources.specimens.a)
+  })
+  it('returns specimen individualGroup by id', () => {
+    expect(getSpecimenIndividualGroup(state, 'a')).toEqual(
+      state.resources.specimens.a.individualGroup
+    )
+  })
+  it('returns specimen individualGroup featureObservations by id', () => {
+    expect(getSpecimenFeatureObservations(state, 'a')).toEqual(
+      state.resources.specimens.a.individualGroup.featureObservations
+    )
   })
 
   describe('getHasSpecimens', () => {
