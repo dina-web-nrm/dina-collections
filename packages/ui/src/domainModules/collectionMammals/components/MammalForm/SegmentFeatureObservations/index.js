@@ -1,11 +1,17 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { Grid, Header, Segment } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import {
+  actionCreators as curatedListActionCreators,
+  globalSelectors as curatedListGlobalSelectors,
+} from 'domainModules/curatedListService'
 import AccordionWrapper from './AccordionWrapper'
 
 const log = createLog(
@@ -25,19 +31,42 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'featureObservations',
 })
 
+const mapStateToProps = state => {
+  return {
+    hasFeatureObservations: curatedListGlobalSelectors.getHasFeatureObservationTypes(
+      state
+    ),
+  }
+}
+const mapDispatchToProps = {
+  getFeatureObservationTypes:
+    curatedListActionCreators.getFeatureObservationTypes,
+}
+
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
+  getFeatureObservationTypes: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
+  hasFeatureObservations: PropTypes.bool.isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
 }
 
 class SegmentFeatureObservations extends PureComponent {
+  componentDidMount() {
+    this.props.getFeatureObservationTypes()
+  }
+
   render() {
-    const { changeFieldValue, getPath, mode } = this.props
+    const {
+      changeFieldValue,
+      getPath,
+      hasFeatureObservations,
+      mode,
+    } = this.props
 
     log.render()
     return (
-      <Segment color="green">
+      <Segment color="green" loading={!hasFeatureObservations}>
         <Header size="medium">
           <ModuleTranslate textKey="features" />
         </Header>
@@ -58,6 +87,8 @@ class SegmentFeatureObservations extends PureComponent {
 
 SegmentFeatureObservations.propTypes = propTypes
 
-export default compose(pathBuilder({ name: 'featureObservations' }))(
-  SegmentFeatureObservations
-)
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+  pathBuilder({ name: 'featureObservations' })
+)(SegmentFeatureObservations)
