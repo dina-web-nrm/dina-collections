@@ -15,7 +15,7 @@ export default function createMountedForm({
     component: (
       <FormComponent
         handleFormSubmit={handleFormSubmit}
-        initialData={formInitialValues}
+        initialValues={formInitialValues}
         {...formOptions}
       />
     ),

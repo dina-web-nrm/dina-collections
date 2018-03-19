@@ -46,10 +46,6 @@ const propTypes = {
   error: PropTypes.string,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  initialData: PropTypes.shape({
-    // TODO: define and possibly centralize propTypes for individualGroup
-  }),
-  initialize: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -69,7 +65,6 @@ const propTypes = {
 
 const defaultProps = {
   error: '',
-  initialData: {},
   mode: 'register',
   redirectOnSuccess: false,
 }
@@ -78,7 +73,6 @@ class RawMammalForm extends Component {
   constructor(props) {
     super(props)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    props.initialize(props.initialData)
   }
 
   componentWillUnmount() {
@@ -214,7 +208,10 @@ RawMammalForm.propTypes = propTypes
 RawMammalForm.defaultProps = defaultProps
 
 export const MammalForm = reduxForm({
+  enableReinitialize: true,
   form: FORM_NAME,
+  keepDirtyOnReinitialize: true,
+  updateUnregisteredFields: true,
   validate: customFormValidator({
     model: 'individualGroup',
     models: mammalFormModels,

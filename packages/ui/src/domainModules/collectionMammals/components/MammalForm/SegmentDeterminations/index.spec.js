@@ -35,7 +35,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -49,7 +49,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -96,7 +96,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -128,7 +128,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -222,7 +222,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
         component: (
           <MammalForm
             handleFormSubmit={handleFormSubmit}
-            initialData={transformInput({})}
+            initialValues={transformInput({})}
           />
         ),
         fullExport: true,
