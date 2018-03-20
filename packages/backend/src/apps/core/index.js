@@ -10,6 +10,7 @@ const createModels = require('../../lib/sequelize/models')
 const createConnectors = require('../../lib/connectors')
 const serviceDefinitions = require('../../services')
 const createServices = require('../../lib/services')
+const createAuth = require('../../lib/auth')
 const config = require('./config')
 
 const log = createLog('server')
@@ -18,6 +19,7 @@ log.info(`Dependencies required after: ${now() - startTime} milliseconds`)
 const services = createServices({ config, serviceDefinitions })
 
 const bootstrapStartTime = now()
+const auth = createAuth({ config })
 initializeSequelize({
   config,
 })
@@ -35,10 +37,12 @@ initializeSequelize({
   .then(({ connectors }) => {
     log.info(`Connectors created after: ${now() - startTime} milliseconds`)
     const serviceRouter = createServiceRouter({
+      auth,
       config,
       connectors,
     })
     const app = createApp({
+      auth,
       config,
       openApiSpec,
       routers: [serviceRouter],

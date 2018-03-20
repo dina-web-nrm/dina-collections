@@ -1,6 +1,7 @@
 const express = require('express')
 const createLog = require('../../utilities/log')
 const errorMiddlewareFactory = require('./middlewares/error')
+const authorizeMiddlewareFactory = require('./middlewares/authorize')
 const decorateLocalsUserInputMiddlewareFactory = require('./middlewares/decorateLocalsUserInput')
 const requestHandlerMiddlewareFactory = require('./middlewares/requestHandler')
 const ensureMediaTypeMiddlewareFactory = require('./middlewares/ensureMediaType')
@@ -8,8 +9,9 @@ const expressifyPath = require('./utilities/expressifyPath')
 
 const log = createLog('lib/serviceRouter')
 
-module.exports = function serviceRouterFactory({ config, connectors }) {
+module.exports = function serviceRouterFactory({ auth, config, connectors }) {
   const errorMiddleware = errorMiddlewareFactory({ config })
+  const authorizeMiddleware = authorizeMiddlewareFactory({ auth, config })
   const decorateLocalsUserInputMiddleware = decorateLocalsUserInputMiddlewareFactory(
     {
       config,
@@ -20,6 +22,7 @@ module.exports = function serviceRouterFactory({ config, connectors }) {
   const serviceRouter = express.Router({ mergeParams: true })
 
   serviceRouter.use(ensureMediaTypeMiddleware)
+  serviceRouter.use(authorizeMiddleware)
   log.info('Registering service routes')
   const scopedLog = log.scope()
   Object.keys(connectors).forEach(operationId => {
