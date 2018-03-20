@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Grid, Header, Segment } from 'semantic-ui-react'
 
+import config from 'config'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
@@ -53,7 +54,9 @@ const propTypes = {
 
 class SegmentFeatureObservations extends PureComponent {
   componentDidMount() {
-    this.props.getFeatureObservationTypes()
+    if (!config.isTest) {
+      this.props.getFeatureObservationTypes()
+    }
   }
 
   render() {
