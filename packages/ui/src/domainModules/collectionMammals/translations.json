@@ -469,6 +469,10 @@
     "en": "Id",
     "sv": "Id"
   },
+  "loading": {
+    "en": "Loading...",
+    "sv": "Laddar..."
+  },
   "locality": {
     "en": "Locality",
     "sv": "Lokalitet"

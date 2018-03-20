@@ -2,70 +2,45 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { actionCreators as mammalActionCreators } from 'domainModules/collectionMammals'
+import createLog from 'utilities/log'
+import { actionCreators as specimenActionCreators } from 'domainModules/specimenService'
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
-import {
-  actionCreators as curatedListActionCreators,
-  globalSelectors as curatedListSelectors,
-} from 'domainModules/curatedListService'
-import {
-  actionCreators as localityActionCreators,
-  globalSelectors as localitySelectors,
-} from 'domainModules/localityService'
+import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
+
+const log = createLog('modules:editMammal:Component')
 
 const mapStateToProps = state => {
   return {
-    hasCuratedLocalities: localitySelectors.getHasCuratedLocalities(state),
-    hasFeatureObservationTypes: curatedListSelectors.getHasFeatureObservationTypes(
-      state
-    ),
+    initialValues: mammalSelectors.getMammalFormInitialValues(state),
   }
 }
 const mapDispatchToProps = {
-  createSpecimen: mammalActionCreators.createSpecimen,
-  getCuratedLocalities: localityActionCreators.getCuratedLocalities,
-  getFeatureObservationTypes:
-    curatedListActionCreators.getFeatureObservationTypes,
+  createSpecimen: specimenActionCreators.createSpecimen,
 }
 
 const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
-  getCuratedLocalities: PropTypes.func.isRequired,
-  getFeatureObservationTypes: PropTypes.func.isRequired,
-  hasCuratedLocalities: PropTypes.bool.isRequired,
-  hasFeatureObservationTypes: PropTypes.bool.isRequired,
+  initialValues: PropTypes.object.isRequired,
 }
 
 class RegisterMammal extends Component {
-  componentWillMount() {
-    this.props.getCuratedLocalities()
-    this.props.getFeatureObservationTypes()
-  }
-
   render() {
-    const {
-      createSpecimen,
-      hasCuratedLocalities,
-      hasFeatureObservationTypes,
-    } = this.props
+    const { createSpecimen, initialValues } = this.props
 
-    const initialData = transformInput({})
+    log.render()
+    log.debug('initialValues', initialValues)
     return (
       <PageTemplate>
-        {hasCuratedLocalities &&
-          hasFeatureObservationTypes && (
-            <MammalForm
-              handleFormSubmit={formOutput => {
-                return createSpecimen(transformOutput(formOutput))
-              }}
-              initialData={initialData}
-              mode="register"
-              redirectOnSuccess
-            />
-          )}
+        <MammalForm
+          handleFormSubmit={formOutput => {
+            return createSpecimen(transformOutput(formOutput))
+          }}
+          initialValues={initialValues}
+          mode="register"
+          redirectOnSuccess
+        />
       </PageTemplate>
     )
   }

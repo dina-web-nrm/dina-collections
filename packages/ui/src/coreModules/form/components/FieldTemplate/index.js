@@ -5,7 +5,7 @@ import { FormFieldError } from '../../../error/components'
 import FieldLabel from './FieldLabel'
 
 export const propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   errorScope: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -15,14 +15,16 @@ export const propTypes = {
     touched: PropTypes.bool.isRequired,
   }).isRequired,
   module: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   required: PropTypes.bool,
 }
 export const defaultProps = {
+  children: undefined,
   errorScope: undefined,
   helpNotificationProps: undefined,
   helpText: undefined,
   label: undefined,
+  name: undefined,
   required: false,
 }
 

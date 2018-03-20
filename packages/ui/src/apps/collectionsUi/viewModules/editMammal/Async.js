@@ -8,6 +8,7 @@ export default createAsyncView({
       import('domainModules/curatedListService'),
       import('domainModules/identifierService'),
       import('domainModules/localityService'),
+      import('domainModules/specimenService'),
       import('domainModules/storageService'),
       import('domainModules/taxonomy'),
       import('domainModules/collectionMammals'),

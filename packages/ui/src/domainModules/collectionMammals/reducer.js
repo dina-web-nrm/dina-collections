@@ -2,16 +2,12 @@ import { createGetter, createSetter } from 'utilities/stateHelper'
 
 import {
   COLLECTION_MAMMALS_CLEAR_SEARCH_PARAMETERS,
-  COLLECTION_MAMMALS_GET_BY_CATALOG_NUMBER_SUCCESS,
-  COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_FAIL,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_SUCCESS,
-  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
   COLLECTION_MAMMALS_SET_ACCORDION_ACTIVE_INDEX,
   COLLECTION_MAMMALS_UPDATE_FEATURE_OBSERVATION_SEARCH_QUERY,
   COLLECTION_MAMMALS_UPDATE_LOCALITY_INFORMATION_SEARCH_QUERY,
   COLLECTION_MAMMALS_UPDATE_SEARCH_PARAMETER,
-  COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS,
 } from './actionTypes'
 
 const setLookupError = createSetter(['lookup', 'error'])
@@ -22,7 +18,6 @@ const setLookupSearch = createSetter(['lookup', 'search'])
 const initialState = {
   accordions: {},
   featureObservationSearchQueries: {},
-  individualGroups: {},
   localityInformationSearchQueries: {},
   lookup: {
     error: null,
@@ -35,28 +30,6 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case COLLECTION_MAMMALS_CLEAR_SEARCH_PARAMETERS: {
       return setLookupSearch(state, {})
-    }
-
-    case COLLECTION_MAMMALS_GET_BY_CATALOG_NUMBER_SUCCESS: {
-      return {
-        ...state,
-        individualGroups: {
-          ...state.individualGroups,
-          [action.meta.catalogNumber]: action.payload.individualGroup,
-        },
-      }
-    }
-
-    case COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS:
-    case COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS:
-    case COLLECTION_MAMMALS_UPDATE_SPECIMEN_SUCCESS: {
-      return {
-        ...state,
-        individualGroups: {
-          ...state.individualGroups,
-          [action.payload.id]: action.payload.individualGroup,
-        },
-      }
     }
 
     case COLLECTION_MAMMALS_LOOKUP_MAMMALS_FAIL: {

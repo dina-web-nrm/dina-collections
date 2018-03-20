@@ -1,31 +1,33 @@
 import { getPhysicalUnit } from 'domainModules/storageService/actionCreators'
-import flattenObjectResponse from 'utilities/transformations/flattenObjectResponse'
+import { flattenObjectResponse } from 'utilities/transformations'
 
 import {
-  COLLECTION_MAMMALS_GET_SPECIMEN_FAIL,
-  COLLECTION_MAMMALS_GET_SPECIMEN_REQUEST,
-  COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS,
-} from '../actionTypes'
-import { GET_SPECIMEN } from '../endpoints'
+  SPECIMEN_SERVICE_GET_SPECIMEN_FAIL,
+  SPECIMEN_SERVICE_GET_SPECIMEN_REQUEST,
+  SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS,
+} from '../../actionTypes'
+import { GET_SPECIMEN } from '../../endpoints'
 
 export default function getSpecimen({ id, throwError = false } = {}) {
   const meta = { id }
+  const pathParams = { id }
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
       meta,
-      type: COLLECTION_MAMMALS_GET_SPECIMEN_REQUEST,
+      type: SPECIMEN_SERVICE_GET_SPECIMEN_REQUEST,
     })
     return apiClient
       .call(GET_SPECIMEN, {
-        pathParams: { id },
+        pathParams,
         queryParams: {
           relationships: ['all'],
         },
       })
       .then(
         response => {
-          if (response.data.relationships) {
+          const transformedResponse = flattenObjectResponse(response.data)
+          if (response.data && response.data.relationships) {
             const { physicalUnits } = response.data.relationships
             return Promise.all(
               physicalUnits.data.map(physicalUnit => {
@@ -40,8 +42,8 @@ export default function getSpecimen({ id, throwError = false } = {}) {
               .then(() => {
                 dispatch({
                   meta,
-                  payload: flattenObjectResponse(response.data),
-                  type: COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS,
+                  payload: transformedResponse,
+                  type: SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS,
                 })
                 return response
               })
@@ -50,7 +52,7 @@ export default function getSpecimen({ id, throwError = false } = {}) {
                   error: true,
                   meta,
                   payload: errors,
-                  type: COLLECTION_MAMMALS_GET_SPECIMEN_FAIL,
+                  type: SPECIMEN_SERVICE_GET_SPECIMEN_FAIL,
                 })
 
                 if (throwError) {
@@ -61,17 +63,17 @@ export default function getSpecimen({ id, throwError = false } = {}) {
 
           dispatch({
             meta,
-            payload: flattenObjectResponse(response.data),
-            type: COLLECTION_MAMMALS_GET_SPECIMEN_SUCCESS,
+            payload: transformedResponse,
+            type: SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS,
           })
-          return response
+          return transformedResponse
         },
         error => {
           dispatch({
             error: true,
-            meta,
+            meta: { id },
             payload: error,
-            type: COLLECTION_MAMMALS_GET_SPECIMEN_FAIL,
+            type: SPECIMEN_SERVICE_GET_SPECIMEN_FAIL,
           })
 
           if (throwError) {

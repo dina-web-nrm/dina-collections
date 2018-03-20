@@ -1,11 +1,12 @@
 import { PHYSICAL_UNIT } from 'domainModules/storageService/constants'
+import { SPECIMEN } from './constants'
 
-export default function({
+export const buildSpecimenBody = ({
   curatedLocalities,
   featureObservationTypes,
   individualGroup,
   savedPhysicalUnits,
-}) {
+}) => {
   const cleanedPhysicalUnits = savedPhysicalUnits.map(({ id }) => {
     return {
       id,
@@ -41,8 +42,21 @@ export default function({
           data: cleanedPhysicalUnits,
         },
       },
+      type: SPECIMEN,
     },
   }
 
   return body
+}
+
+export const getCatalogNumberFromIdentifiers = (identifiers = []) => {
+  const catalogNumberIdentifier = identifiers.find(({ identifier }) => {
+    return identifier && identifier.identifierType === 'catalogNumber'
+  })
+
+  return (
+    catalogNumberIdentifier &&
+    catalogNumberIdentifier.identifier &&
+    catalogNumberIdentifier.identifier.value
+  )
 }

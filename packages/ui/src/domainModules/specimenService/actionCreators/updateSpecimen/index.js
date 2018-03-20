@@ -1,18 +1,27 @@
-import { createPhysicalUnit } from 'domainModules/storageService/actionCreators'
-
 import {
-  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_FAIL,
-  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_REQUEST,
-  COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
-} from '../actionTypes'
-import { REGISTER_MAMMAL } from '../endpoints'
-import { getCatalogNumberFromIdentifiers } from '../utilities'
-import buildSpecimenBody from './utilities/buildSpecimenBody'
+  createPhysicalUnit,
+  updatePhysicalUnit,
+} from 'domainModules/storageService/actionCreators'
 
-export default function createSpecimen(
+import { flattenObjectResponse } from 'utilities/transformations'
+
+import { getSpecimen } from '../../actionCreators'
+import {
+  SPECIMEN_SERVICE_UPDATE_SPECIMEN_FAIL,
+  SPECIMEN_SERVICE_UPDATE_SPECIMEN_REQUEST,
+  SPECIMEN_SERVICE_UPDATE_SPECIMEN_SUCCESS,
+} from '../../actionTypes'
+import { UPDATE_SPECIMEN } from '../../endpoints'
+import {
+  buildSpecimenBody,
+  getCatalogNumberFromIdentifiers,
+} from '../../utilities'
+
+export default function updateSpecimen(
   {
     curatedLocalities = [],
     featureObservationTypes = [],
+    id,
     physicalUnits = [],
     specimen,
     throwError = true,
@@ -31,6 +40,12 @@ export default function createSpecimen(
   return (dispatch, getState, { apiClient }) => {
     return Promise.all(
       physicalUnits.map(physicalUnit => {
+        if (physicalUnit.id) {
+          return dispatch(
+            updatePhysicalUnit({ physicalUnit, throwError: true })
+          )
+        }
+
         return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
       })
     ).then(savedPhysicalUnits => {
@@ -43,27 +58,30 @@ export default function createSpecimen(
 
       dispatch({
         meta,
-        type: COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_REQUEST,
+        type: SPECIMEN_SERVICE_UPDATE_SPECIMEN_REQUEST,
       })
 
       return apiClient
-        .call(REGISTER_MAMMAL, {
+        .call(UPDATE_SPECIMEN, {
           body,
+          pathParams: { id },
         })
         .then(
           response => {
+            const transformedResponse = flattenObjectResponse(response.data)
             dispatch({
-              payload: response,
-              type: COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_SUCCESS,
+              payload: transformedResponse,
+              type: SPECIMEN_SERVICE_UPDATE_SPECIMEN_SUCCESS,
             })
-            return response
+            dispatch(getSpecimen({ id }))
+            return transformedResponse
           },
           error => {
             dispatch({
               error: true,
               meta,
               payload: error,
-              type: COLLECTION_MAMMALS_REGISTER_NEW_MAMMAL_FAIL,
+              type: SPECIMEN_SERVICE_UPDATE_SPECIMEN_FAIL,
             })
             // for redux form
             if (throwError) {
