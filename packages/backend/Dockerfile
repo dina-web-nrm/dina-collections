@@ -4,7 +4,7 @@ RUN apk update && apk add bash
 
 # Bundle APP files
 # Note that context need to be packages
-COPY api /etc/api/
+COPY backend /etc/api/
 COPY common /etc/common/
 
 # Install app dependencies
