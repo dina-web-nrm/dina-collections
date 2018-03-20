@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Header, Grid, Segment } from 'semantic-ui-react'
 
+import config from 'config'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Field, Input } from 'coreModules/form/components'
@@ -37,7 +38,9 @@ const propTypes = {
 
 class SegmentIndividualCircumstances extends PureComponent {
   componentDidMount() {
-    this.props.getCuratedLocalities()
+    if (!config.isTest) {
+      this.props.getCuratedLocalities()
+    }
   }
 
   render() {
