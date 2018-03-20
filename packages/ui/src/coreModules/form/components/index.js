@@ -1,27 +1,25 @@
-import ButtonCopyPasteField from './ButtonCopyPasteField'
-import Checkbox from './Checkbox'
-import DisplaySearchResult from './DisplaySearchResult'
-import DropdownSearch from './DropdownSearch'
-import Field from './Field'
-import FieldLabel from './FieldLabel'
-import FormTable from './FormTable'
-import HelpTextNotification from './HelpTextNotification'
-import Input from './Input'
-import InputDatePart from './InputDatePart'
-import SearchInputWithResults from './SearchInputWithResults'
-import TranslateSearchResult from './TranslateSearchResult'
+import ButtonCopyPasteField from './migrate/ButtonCopyPasteField'
+import Checkbox from './fields/Checkbox'
+import DisplaySearchResult from './migrate/DisplaySearchResult'
+import Dropdown from './fields/Dropdown'
+import Search from './fields/Search'
+import Field from './FieldWrapper'
+import FieldLabel from './FieldTemplate/FieldLabel'
+import FormTable from './migrate/FormTable'
+import HelpTextNotification from './migrate/HelpTextNotification'
+import Input from './fields/Input'
+import InputDatePart from './migrate/InputDatePart'
 
 export {
   ButtonCopyPasteField,
   Checkbox,
   DisplaySearchResult,
-  DropdownSearch,
+  Dropdown,
   Field,
   FieldLabel,
   FormTable,
   HelpTextNotification,
   Input,
   InputDatePart,
-  SearchInputWithResults,
-  TranslateSearchResult,
+  Search,
 }

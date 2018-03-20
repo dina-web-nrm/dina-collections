@@ -1,5 +1,4 @@
 # Tree for apps
-Generated at: 2018-03-16T10:35:02.340Z
 ## Tree
 ```bash
 ├── collectionsUi

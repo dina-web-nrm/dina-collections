@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Form, Icon } from 'semantic-ui-react'
 
-import FieldLabel from './FieldLabel'
+import FieldLabel from '../FieldTemplate/FieldLabel'
 
 const mapStateToProps = (state, { copyField, formValueSelector }) => {
   return {

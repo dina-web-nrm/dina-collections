@@ -4,7 +4,6 @@ import * as constants from './constants'
 import * as endpoints from './endpoints'
 import * as selectors from './selectors'
 import globalSelectors from './globalSelectors'
-import globalSelectorFactories from './globalSelectorFactories'
 import reducer from './reducer'
 
 const name = constants.MODULE_NAME
@@ -15,7 +14,6 @@ export {
   constants,
   endpoints,
   globalSelectors,
-  globalSelectorFactories,
   name,
   reducer,
   selectors,

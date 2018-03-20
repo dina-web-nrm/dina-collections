@@ -1,5 +1,4 @@
 # Tree for root
-Generated at: 2018-03-16T10:35:02.342Z
 ## Tree
 ```bash
 ├── Dockerfile

@@ -1,5 +1,4 @@
 # Tree for root
-Generated at: 2018-03-16T10:35:03.322Z
 ## Tree
 ```bash
 ├── README.md
