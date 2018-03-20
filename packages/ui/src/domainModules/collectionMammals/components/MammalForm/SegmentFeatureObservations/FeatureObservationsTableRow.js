@@ -106,7 +106,7 @@ class FeatureObservationTableRow extends Component {
           </Table.Cell>
         )}
 
-        <Table.Cell key={getPath('featureObservationDate')} width={1}>
+        <Table.Cell key={getPath('date')} width={1}>
           <Field
             autoComplete="off"
             className="transparent"
