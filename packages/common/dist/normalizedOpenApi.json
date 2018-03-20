@@ -1954,6 +1954,26 @@
           },
           {
             "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "children",
+              "parent"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  "children",
+                  "parent"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -5635,6 +5655,7 @@
               "geodeticDatum",
               "locality",
               "province",
+              "root",
               "rubin"
             ]
           },

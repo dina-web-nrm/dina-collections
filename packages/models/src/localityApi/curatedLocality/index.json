@@ -43,6 +43,7 @@
         "geodeticDatum",
         "locality",
         "province",
+        "root",
         "rubin"
       ]
     },
