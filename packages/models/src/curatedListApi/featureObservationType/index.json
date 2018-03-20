@@ -1,10 +1,41 @@
 {
   "additionalProperties": false,
   "properties": {
-    "typeName": {
+    "key": {
       "type": "string"
     },
-    "id": { "type": "string"}
-  },
-  "required":["typeName"]
+    "name": {
+      "$ref": "__ROOT__translatedString"
+    },
+    "group": {
+      "type": "string"
+    },
+    "selectableValues": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__selectableValue"
+      }
+    },
+    "selectableUnits": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__selectableUnit"
+      }
+    },
+    "selectableMethods": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__selectableMethod"
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    }
+  }
 }

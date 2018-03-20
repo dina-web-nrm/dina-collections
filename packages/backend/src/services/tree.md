@@ -1,5 +1,4 @@
 # Tree for services
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── agentService
@@ -43,7 +42,15 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       ├── ageStage.js
+│   │       ├── boneCount.js
+│   │       ├── condition.js
+│   │       ├── index.js
+│   │       ├── length.js
+│   │       ├── sex.js
+│   │       └── weight.js
 │   └── resources
 │       ├── distinguishedUnitObservationType
 │       │   ├── index.js
@@ -77,13 +84,16 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   ├── resources
 │   │   ├── curatedLocality
 │   │   │   ├── create
+│   │   │   ├── getMany
 │   │   │   └── index.js
 │   │   └── index.js
-│   └── todo.md
+│   └── todo
 ├── organizationService
 │   ├── index.js
 │   ├── info
@@ -92,26 +102,20 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   └── resources
 │       └── index.js
 ├── specimenService
-│   ├── controllers
-│   │   ├── index.js
-│   │   └── specimenGetWhere.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── modelMethods
-│   │   │   └── getAllByTaxonNameFactory.js
-│   │   ├── specimen.js
-│   │   └── specimen.spec.js
+│   │   └── specimen.js
 │   ├── resources
 │   │   ├── index.js
 │   │   └── specimen
 │   │       ├── index.js
-│   │       └── operations
-│   └── testData
-│       └── individualGroup.js
+│   │       ├── operations
+│   │       └── testData
+│   └── todo.md
 ├── statusService
 │   ├── controllers
 │   │   ├── getStatus.js
@@ -142,11 +146,16 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
+│   ├── models
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       ├── index.js
+│   │       └── mammals.json
 │   └── resources
 │       ├── index.js
 │       └── taxon
-│           ├── index.js
-│           └── operations
+│           ├── getMany
+│           └── index.js
 └── tree.md
 
 ```

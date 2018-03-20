@@ -1,35 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
 
-import {
-  actionCreators as mammalActionCreators,
-  globalSelectors as mammalSelectors,
-} from 'domainModules/collectionMammals'
+import createLog from 'utilities/log'
+import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
+import { actionCreators as specimenActionCreators } from 'domainModules/specimenService'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
+
+const log = createLog('modules:editMammal:Component')
 
 const mapStateToProps = (state, { match }) => {
   return {
-    individualGroup: mammalSelectors.getIndividualGroupBySpecimenId(
+    initialValues: mammalSelectors.getMammalFormInitialValues(
       state,
       match.params.specimenId
     ),
   }
 }
 const mapDispatchToProps = {
-  getSpecimenById: mammalActionCreators.getSpecimenById,
-  updateSpecimen: mammalActionCreators.updateSpecimen,
+  getSpecimen: specimenActionCreators.getSpecimen,
+  updateSpecimen: specimenActionCreators.updateSpecimen,
 }
 
 const propTypes = {
-  getSpecimenById: PropTypes.func.isRequired,
-  individualGroup: PropTypes.shape({
-    // TODO: define and possibly centralize propTypes for individualGroup
-  }),
+  getSpecimen: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       specimenId: PropTypes.string.isRequired,
@@ -37,35 +34,38 @@ const propTypes = {
   }).isRequired,
   updateSpecimen: PropTypes.func.isRequired,
 }
-const defaultProps = {
-  individualGroup: undefined,
-}
 
 class EditMammal extends Component {
   componentWillMount() {
-    this.props.getSpecimenById(this.props.match.params.specimenId)
+    this.props.getSpecimen({ id: this.props.match.params.specimenId })
   }
 
   render() {
-    const { individualGroup, updateSpecimen } = this.props
-    const initialData = transformInput(individualGroup)
+    const {
+      initialValues,
+      match: { params: { specimenId } },
+      updateSpecimen,
+    } = this.props
+
+    log.render()
+    log.debug('initialValues', initialValues)
     return (
       <PageTemplate>
-        {individualGroup && (
-          <MammalForm
-            handleFormSubmit={formOutput => {
-              return updateSpecimen(transformOutput(formOutput))
-            }}
-            initialData={initialData}
-            mode="edit"
-          />
-        )}
+        <MammalForm
+          handleFormSubmit={formOutput => {
+            return updateSpecimen({
+              id: specimenId,
+              ...transformOutput(formOutput),
+            })
+          }}
+          initialValues={initialValues}
+          mode="edit"
+        />
       </PageTemplate>
     )
   }
 }
 
 EditMammal.propTypes = propTypes
-EditMammal.defaultProps = defaultProps
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditMammal)

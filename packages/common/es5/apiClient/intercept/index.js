@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-var _extends2 = require('babel-runtime/helpers/extends');
+var _extends2 = require("babel-runtime/helpers/extends");
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _promise = require('babel-runtime/core-js/promise');
+var _promise = require("babel-runtime/core-js/promise");
 
 var _promise2 = _interopRequireDefault(_promise);
 
@@ -25,11 +25,11 @@ module.exports = function intercept(_ref) {
         mockRequested = _request$queryParams.mock,
         requestedExampleId = _request$queryParams.exampleId;
 
-    if (mockRequested === 'true' && endpointMock) {
+    if (mockRequested === true && endpointMock) {
       if (requestedExampleId && getExample) {
         return getExample(requestedExampleId).then(function (example) {
           if (!example) {
-            var error = new Error('Example with key: ' + requestedExampleId + ' not found');
+            var error = new Error("Example with key: " + requestedExampleId + " not found");
             error.status = 404;
             throw error;
           }

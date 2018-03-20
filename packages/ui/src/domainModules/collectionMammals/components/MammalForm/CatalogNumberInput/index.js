@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { Button, Form, Header, Input, Modal } from 'semantic-ui-react'
 import { FormFieldError } from 'coreModules/error/components'
-import FieldLabel from 'coreModules/form/components/FieldLabel'
+import FieldLabel from 'coreModules/form/components/FieldTemplate/FieldLabel'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
 

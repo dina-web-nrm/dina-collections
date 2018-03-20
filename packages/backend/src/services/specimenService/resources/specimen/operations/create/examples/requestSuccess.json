@@ -1,6 +1,34 @@
 {
   "data": {
     "type": "specimen",
+    "relationships": {
+      "curatedLocalities": {
+        "data": [
+          { "id": "1", "type": "curatedLocality" },
+          { "id": "2", "type": "curatedLocality" },
+          { "id": "3", "type": "curatedLocality" },
+          { "id": "4", "type": "curatedLocality" },
+          { "id": "5", "type": "curatedLocality" }
+        ]
+      },
+     "featureObservationTypes": {
+        "data": [
+          {
+            "id": "2",
+            "type": "featureObservationType"
+          }
+        ]
+      },
+      "physicalUnits": {
+        "data": [
+          {
+            "id": "2234",
+            "type": "physicalUnit"
+          }
+        ]
+      }
+    },
+
     "attributes": {
       "individualGroup": {
         "taxonInformation": {},
@@ -26,34 +54,11 @@
               "expeditionText": "Vega Expedition",
               "localityInformation": {
                 "curatedLocalities": [
-                  {
-                    "name": "string",
-                    "versionId": "string",
-                    "createdAt": "string",
-                    "createdBy": "string",
-                    "updatedBy": "string",
-                    "updatedAt": "string",
-                    "id": "string",
-                    "description": "string",
-                    "type": "continent",
-                    "centralPosition": {
-                      "latitude": "string",
-                      "longitude": "string",
-                      "geodeticDatum": "string",
-                      "uncertaintyInMeters": 0
-                    },
-                    "polygon": {
-                      "vertices": [
-                        null
-                      ]
-                    },
-                    "verticalPosition": {
-                      "maximumDepthInMeters": 0,
-                      "maximumElevationInMeters": 0,
-                      "minimumDepthInMeters": 0,
-                      "minimumElevationInMeters": 0
-                    }
-                  }
+                  { "id": "1", "type": "curatedLocality" },
+                  { "id": "2", "type": "curatedLocality" },
+                  { "id": "3", "type": "curatedLocality" },
+                  { "id": "4", "type": "curatedLocality" },
+                  { "id": "5", "type": "curatedLocality" }
                 ],
                 "position": {
                   "latitude": "string",
@@ -62,9 +67,7 @@
                   "uncertaintyInMeters": 0
                 },
                 "polygon": {
-                  "vertices": [
-                    null
-                  ]
+                  "vertices": [null]
                 },
                 "verticalPosition": {
                   "maximumDepthInMeters": 0,
@@ -93,8 +96,8 @@
             },
             "featureObservationText": "10 years",
             "featureObservationType": {
-              "typeName": "string",
-              "id": "string"
+              "id": "2",
+              "type": "featureObservationType"
             },
             "methodText": "Known age"
           }
@@ -147,9 +150,7 @@
                     "uncertaintyInMeters": 0
                   },
                   "polygon": {
-                    "vertices": [
-                      null
-                    ]
+                    "vertices": [null]
                   },
                   "verticalPosition": {
                     "maximumDepthInMeters": 0,
@@ -168,16 +169,8 @@
             "id": "string",
             "physicalUnitText": "Skin complete, prepared",
             "physicalUnit": {
-              "id": "string",
-              "distinguishedUnits": [
-                null
-              ],
-              "normalStorageLocationText": "string",
-              "storedUnderTaxonName": "Sorex minutus",
-              "storageLocation": {
-                "id": "string",
-                "locationText": "string"
-              }
+              "id": "2234",
+              "type": "physicalUnit"
             }
           }
         ],

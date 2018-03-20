@@ -2,6 +2,7 @@ const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
 
 module.exports = function updateRelation({
   basePath,
+  errors: errorsInput = {},
   exampleRequests = {},
   exampleResponses = {},
   queryParams,
@@ -11,6 +12,12 @@ module.exports = function updateRelation({
   resourcePlural,
   ...rest
 }) {
+  const errors = {
+    '400': ['REQUEST_BODY_VALIDATION_ERROR', 'REQUEST_ERROR'],
+    '404': ['RESOURCE_NOT_FOUND_ERROR'],
+    '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
+    ...errorsInput,
+  }
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
 
@@ -20,6 +27,7 @@ module.exports = function updateRelation({
 
   return {
     ...rest,
+    errors,
     method: 'patch',
     operationId,
     operationType: 'updateRelationHasOne',

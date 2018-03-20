@@ -1,41 +1,41 @@
-export const getFeatureObservationTypeId = ({ typeName }) => {
-  switch (typeName) {
-    case 'sex': {
-      return '1'
-    }
-    case 'length': {
-      return '2'
-    }
-    case 'age': {
-      return '3'
-    }
-    case 'weight': {
-      return '4'
-    }
-    case 'conditionAtCollecting': {
-      return '5'
-    }
-    case 'ageStage': {
-      return '6'
-    }
-    default: {
-      throw new Error(`Unknown typeName: ${typeName}`)
-    }
-  }
-}
+import { FEATURE_OBSERVATION_TYPE } from 'domainModules/curatedListService/constants'
 
-export default function transformFeatureObservations(featureObservations = []) {
-  return featureObservations
-    .filter(featureObservation => {
-      return featureObservation.featureObservationText
-    })
-    .map(({ featureObservationType, ...rest }) => {
+export default function transformFeatureObservations(featureObservations = {}) {
+  let featureObservationTypes = []
+
+  const transformedFeatureObservations = Object.keys(featureObservations)
+    .map(featureObservationTypeId => {
+      const featureObservation = featureObservations[featureObservationTypeId]
+
+      if (!featureObservation) {
+        return null
+      }
+
+      const { featureObservationType, ...rest } = featureObservation
+
+      if (!Object.keys(rest).length) {
+        return null
+      }
+
+      const transformedFeatureObservationType = {
+        id: featureObservationType.id,
+        type: FEATURE_OBSERVATION_TYPE,
+      }
+
+      featureObservationTypes = [
+        ...featureObservationTypes,
+        transformedFeatureObservationType,
+      ]
+
       return {
         ...rest,
-        featureObservationType: {
-          ...featureObservationType,
-          id: getFeatureObservationTypeId(featureObservationType),
-        },
+        featureObservationType: transformedFeatureObservationType,
       }
     })
+    .filter(item => !!item)
+
+  return {
+    featureObservations: transformedFeatureObservations,
+    featureObservationTypes,
+  }
 }

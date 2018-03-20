@@ -1,11 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const { exec } = require('child_process')
-const git = require('git-rev-sync')
-
-const getCurrentGitCommit = () => {
-  return git.long()
-}
 
 const buildLinkContentArray = ({ name, rootRelativePath, trees }) => {
   return trees
@@ -52,11 +47,9 @@ const buildTreeDocumentation = ({
     relativePath,
   }).then(treeContentArray => {
     const treeLinks = buildLinkContentArray({ name, rootRelativePath, trees })
-    const currentCommit = getCurrentGitCommit()
 
     const fileContent = [
       `# Tree for ${name}`,
-      `Generated at commit: ${currentCommit}`,
       '## Tree',
       ...treeContentArray,
       '',

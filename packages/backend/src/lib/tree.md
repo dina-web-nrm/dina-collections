@@ -1,5 +1,4 @@
 # Tree for lib
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── app
@@ -28,9 +27,21 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   ├── getVersion.js
 │   ├── getVersions.js
 │   ├── index.js
+│   ├── queryUtilities
+│   │   ├── defaultWhereFactory.js
+│   │   └── filterWhereFactory.js
 │   ├── relationshipsUtilities
 │   │   ├── buildIncludeArray.js
-│   │   └── extractRelationships.js
+│   │   ├── buildIncludeArray.spec.js
+│   │   ├── extractRelationships
+│   │   │   ├── addEmptyRelationships.js
+│   │   │   ├── addEmptyRelationships.spec.js
+│   │   │   ├── buildEmptyRelationship.js
+│   │   │   ├── buildEmptyRelationship.spec.js
+│   │   │   ├── extractRelationship.js
+│   │   │   └── index.js
+│   │   ├── shouldIncludeRelation.js
+│   │   └── shouldIncludeRelation.spec.js
 │   ├── transformations
 │   │   ├── createArrayResponse.js
 │   │   ├── createObjectResponse.js
@@ -40,7 +51,6 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   ├── update.js
 │   ├── updateRelationHasMany.js
 │   └── updateRelationHasOne.js
-├── overview.md
 ├── sequelize
 │   ├── db
 │   │   └── index.js
@@ -51,7 +61,10 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │       ├── factories
 │       │   └── versionedDocumentModel
 │       ├── index.js
-│       └── syncModels.js
+│       ├── loadInitialData.js
+│       ├── syncModels.js
+│       └── utilities
+│           └── extractModelFunctionsFromServices.js
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
@@ -81,6 +94,7 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │       ├── getVersion.js
 │   │       ├── getVersions.js
 │   │       ├── index.js
+│   │       ├── schemas
 │   │       ├── update.js
 │   │       ├── updateRelationHasMany.js
 │   │       ├── updateRelationHasOne.js
@@ -89,9 +103,19 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │   ├── createOperationMap.js
 │   │   ├── createResourceSpecification.js
 │   │   └── index.js
-│   └── serviceFactory
-│       ├── createServiceSpecification.js
-│       └── index.js
+│   ├── schemas
+│   │   ├── resourceSpecification.js
+│   │   └── serviceSpecification.js
+│   ├── serviceFactory
+│   │   ├── createServiceSpecification.js
+│   │   └── index.js
+│   └── utilities
+│       ├── testOperationSpecification.js
+│       ├── testOperationSpecification.spec.js
+│       ├── testResourceSpecification.js
+│       ├── testResourceSpecification.spec.js
+│       ├── testServiceSpecification.js
+│       └── testServiceSpecification.spec.js
 └── tree.md
 
 ```

@@ -12,19 +12,22 @@ const defaultConfig = defaultTestConfig()
 export default function setupTestComponent({
   component,
   config: customConfig,
-  initialState,
   fullExport = false,
+  initialState,
+  wrap = true,
 }) {
   const config = customConfig || defaultConfig
   const store = createTestStore({ config, initialState })
 
-  const rootComponent = mount(
-    <Provider store={store}>
-      <ConnectedRouter history={config.routing}>
-        <I18nProvider>{component}</I18nProvider>
-      </ConnectedRouter>
-    </Provider>
-  )
+  const rootComponent = !wrap
+    ? mount(component)
+    : mount(
+        <Provider store={store}>
+          <ConnectedRouter history={config.routing}>
+            <I18nProvider>{component}</I18nProvider>
+          </ConnectedRouter>
+        </Provider>
+      )
 
   if (fullExport) {
     return {

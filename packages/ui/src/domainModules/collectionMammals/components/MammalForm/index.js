@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
@@ -9,16 +9,16 @@ import {
   arrayRemove,
   change,
   formValueSelector as formValueSelectorFactory,
-  getFormSyncErrors,
   reduxForm,
   SubmissionError,
 } from 'redux-form'
-import { createFormModelSchemaValidator } from 'common/es5/error'
-import { FormSchemaError } from 'coreModules/error/components'
+import customFormValidator from 'common/es5/error/validators/customFormValidator'
+import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { clearTaxonSearch } from 'domainModules/taxonomy/actionCreators'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { MAMMAL_FORM_NAME } from '../../constants'
+import { mammalFormModels } from '../../schemas'
 import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
 import SegmentDeterminations from './SegmentDeterminations'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
@@ -32,16 +32,6 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 const FORM_NAME = MAMMAL_FORM_NAME
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
-const getFormSyncErrorsSelector = getFormSyncErrors(FORM_NAME)
-
-const mapStateToProps = state => {
-  const syncErrors = getFormSyncErrorsSelector(state)
-
-  return {
-    // TODO: make this dynamic
-    schemaErrors: syncErrors && syncErrors.schemaErrors,
-  }
-}
 
 const mapDispatchToProps = {
   changeFormValue: change,
@@ -56,10 +46,6 @@ const propTypes = {
   error: PropTypes.string,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  initialData: PropTypes.shape({
-    // TODO: define and possibly centralize propTypes for individualGroup
-  }),
-  initialize: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -72,9 +58,6 @@ const propTypes = {
   redirectOnSuccess: PropTypes.bool,
   removeArrayField: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  schemaErrors: PropTypes.arrayOf(
-    PropTypes.shape({ errorCode: PropTypes.string.isRequired })
-  ),
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -82,17 +65,14 @@ const propTypes = {
 
 const defaultProps = {
   error: '',
-  initialData: {},
   mode: 'register',
   redirectOnSuccess: false,
-  schemaErrors: [],
 }
 
 class RawMammalForm extends Component {
   constructor(props) {
     super(props)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    props.initialize(props.initialData)
   }
 
   componentWillUnmount() {
@@ -145,7 +125,6 @@ class RawMammalForm extends Component {
       mode,
       pristine,
       reset,
-      schemaErrors,
       submitting,
       submitFailed,
       submitSucceeded,
@@ -173,7 +152,10 @@ class RawMammalForm extends Component {
             <SegmentIndividualCircumstances
               formValueSelector={formValueSelector}
             />
-            <SegmentFeatureObservations formValueSelector={formValueSelector} />
+            <SegmentFeatureObservations
+              changeFieldValue={this.changeFieldValue}
+              mode={mode}
+            />
             <SegmentDistinguishedUnits />
             <SegmentOther />
 
@@ -190,9 +172,7 @@ class RawMammalForm extends Component {
                 >
                   <ModuleTranslate textKey="cancel" />
                 </Button>
-                {schemaErrors.length > 0 && (
-                  <FormSchemaError errors={schemaErrors} />
-                )}
+                <ConnectedFormSchemaError form={FORM_NAME} />
                 {invalid &&
                   !error &&
                   submitFailed && (
@@ -228,13 +208,16 @@ RawMammalForm.propTypes = propTypes
 RawMammalForm.defaultProps = defaultProps
 
 export const MammalForm = reduxForm({
+  enableReinitialize: true,
   form: FORM_NAME,
-  validate: createFormModelSchemaValidator({
+  keepDirtyOnReinitialize: true,
+  updateUnregisteredFields: true,
+  validate: customFormValidator({
     model: 'individualGroup',
+    models: mammalFormModels,
   }),
 })(RawMammalForm)
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
-)(MammalForm)
+export default compose(withRouter, connect(undefined, mapDispatchToProps))(
+  MammalForm
+)

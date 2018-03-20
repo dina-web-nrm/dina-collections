@@ -1,3 +1,4 @@
+const filterWhereFactory = require('../../../../lib/controllers/queryUtilities/filterWhereFactory')
 const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const fullFormExample = require('./operations/create/examples/fullFormExample.json')
 const validateBody = require('./operations/create/validators/validateBody')
@@ -7,6 +8,9 @@ module.exports = {
   basePath: '/api/specimen/v01',
   operations: [
     {
+      errors: {
+        '400': ['REQUEST_BODY_VALIDATION_ERROR'],
+      },
       exampleRequests: { fullFormExample, primary: createRequestSuccess },
       type: 'create',
       validateBody,
@@ -15,20 +19,42 @@ module.exports = {
       exampleRequests: { primary: updateRequestSuccess },
       type: 'update',
     },
-    // {
-    //   exampleRequests: { primary: updateRequestSuccess },
-    //   relationKey: 'physicalUnits',
-    //   type: 'updateRelation',
-    // },
-    // {
-    //   relationKey: 'physicalUnits',
-    //   type: 'getRelationHasMany',
-    // },
     {
+      relationKey: 'physicalUnits',
+      type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'physicalUnits',
+      type: 'getRelationHasMany',
+    },
+    {
+      relationKey: 'featureObservationTypes',
+      type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'featureObservationTypes',
+      type: 'getRelationHasMany',
+    },
+    {
+      relationKey: 'curatedLocalities',
+      type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'curatedLocalities',
+      type: 'getRelationHasMany',
+    },
+    {
+      includeRelations: true,
       type: 'getOne',
     },
     {
-      controller: 'specimenGetWhere',
+      buildWhere: filterWhereFactory({
+        catalogNumber:
+          'document.individualGroup.identifiers.0.identifier.value',
+        taxonNameStandardized:
+          'document.individualGroup.taxonInformation.determinations.0.taxonNameStandardized',
+      }),
+      includeRelations: true,
       queryParams: {
         'filter[catalogNumber]': {
           description: 'catalog number used to filter specimens',
@@ -38,7 +64,7 @@ module.exports = {
             type: 'string',
           },
         },
-        'filter[identifiedTaxonNameStandardized]': {
+        'filter[taxonNameStandardized]': {
           description: 'Standardized taxon name used to filter specimens',
           example: 'Chironectes minimus',
           required: false,
@@ -57,9 +83,20 @@ module.exports = {
     },
   ],
   relations: {
+    curatedLocalities: {
+      format: 'array',
+      resource: 'curatedLocality',
+      storeInDocument: true,
+    },
+    featureObservationTypes: {
+      format: 'array',
+      resource: 'featureObservationType',
+      storeInDocument: true,
+    },
     physicalUnits: {
       format: 'array',
       resource: 'physicalUnit',
+      storeInDocument: true,
     },
   },
   resource: 'specimen',

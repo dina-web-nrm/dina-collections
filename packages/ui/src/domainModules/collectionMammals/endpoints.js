@@ -34,8 +34,7 @@ export const GET_INDIVIDUAL_GROUP_BY_CATALOG_NUMBER = createEndpoint({
   operationId: 'getSpecimens',
 })
 
-export const GET_SPECIMEN_BY_ID = createEndpoint({
-  mapResponse: result => flattenDataAttributes(extractData(result)),
+export const GET_SPECIMEN = createEndpoint({
   mock: ({ request: { pathParams, queryParams } }) => {
     return { data: getSpecimen({ pathParams, queryParams }) }
   },

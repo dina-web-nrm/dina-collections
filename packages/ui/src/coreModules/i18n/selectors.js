@@ -8,6 +8,10 @@ export const getAvailableLanguages = state => {
   return state.availableLanguages
 }
 
+export const getDefaultLanguage = state => {
+  return state.defaultLanguage
+}
+
 export const getLanguage = state => {
   return state.language
 }

@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys */
 module.exports = {
+  basePath: '/auth/realms/dina/protocol/openid-connect',
   operations: [
     {
       method: 'get',
@@ -28,6 +29,7 @@ module.exports = {
         },
       },
       summary: 'Gets user object',
+      type: 'raw',
     },
   ],
 }

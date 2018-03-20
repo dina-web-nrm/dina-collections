@@ -1,5 +1,4 @@
 # Tree for src
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── Dependor
@@ -48,43 +47,70 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   └── index.js
 ├── endpointFactory
 │   ├── client.js
-│   ├── createBodyValidator.js
 │   ├── createEndpointFactory.js
-│   ├── createMockFunction.js
-│   ├── getModelNameFromParameter.js
-│   └── server.js
+│   ├── server.js
+│   └── utilities
+│       ├── buildOperationIdPathnameMap.js
+│       ├── createBodyValidator.js
+│       ├── createGetExample.js
+│       ├── createMapQueryParams.js
+│       ├── createMapQueryParams.test.js
+│       ├── createMock.js
+│       ├── createQueryParamValidator.js
+│       ├── createResponseValidator.js
+│       ├── getExamplesFromMethodSpecifiction.js
+│       ├── getModelNameFromSchema.js
+│       ├── getSchemaFromRequestBody.js
+│       └── getSchemaFromResponse.js
 ├── error
-│   ├── constants.js
+│   ├── constants
+│   │   ├── errorCodes.js
+│   │   ├── errorCodes.spec.js
+│   │   ├── errorStatus.js
+│   │   ├── errorStatus.spec.js
+│   │   └── jsonSchemaErrorCodes.js
+│   ├── constants-not-used.js
 │   ├── errorFactories
-│   │   ├── base.js
-│   │   ├── form.js
-│   │   ├── server.js
-│   │   └── system.js
-│   ├── errorMappers
-│   │   ├── ajv
+│   │   ├── backendError.js
+│   │   ├── backendError400.js
+│   │   ├── backendError404.js
+│   │   ├── backendError500.js
+│   │   ├── createParameterErrorsFromAjv
 │   │   │   ├── decorateAdditionalProperties.js
 │   │   │   ├── index.js
 │   │   │   ├── mapErrors.js
 │   │   │   └── transform.js
-│   │   └── api
-│   │       └── index.js
-│   ├── index.js
+│   │   ├── frontendError.js
+│   │   ├── sanitizeBackendError.js
+│   │   └── transformToReduxFormError.js
 │   ├── isKnownError.js
+│   ├── utilities
+│   │   ├── createErrorId.js
+│   │   ├── isDinaError.js
+│   │   └── transformToReduxFormError.js
 │   └── validators
-│       ├── formModelSchema.js
-│       ├── formSchema.js
-│       ├── systemModelSchema.js
-│       └── systemSchema.js
+│       ├── createBackendApiClientValidator.js
+│       ├── createFrontendApiClientValidator.js
+│       ├── createSystemBackendValidator.js
+│       ├── createSystemFrontendValidator.js
+│       ├── customFormValidator.js
+│       ├── dbValidator.js
+│       └── formValidator.js
 ├── jsonSchema
 │   ├── createMockDataFromSchema.js
 │   ├── createMockGenerator.js
+│   ├── createNormalizedValidator.js
 │   ├── createValidator.js
+│   ├── createValidatorFactory.js
 │   ├── importJsonFakerSync.js
 │   ├── index.js
 │   ├── validateAgainstModel.js
 │   └── validateAgainstSchema.js
 ├── schemaBuilder
 │   ├── build
+│   │   ├── buildEndpoints
+│   │   │   ├── buildEndpoint
+│   │   │   └── index.js
 │   │   ├── index.js
 │   │   ├── models
 │   │   │   └── index.js
@@ -96,16 +122,10 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │   │   ├── createOpenApiServers.js
 │   │   │   ├── createOpenApiTags.js
 │   │   │   └── index.js
-│   │   ├── swagger
-│   │   │   ├── createSwaggerDefinitions
-│   │   │   ├── createSwaggerInfo.js
-│   │   │   ├── createSwaggerPaths
-│   │   │   ├── createSwaggerSecurity.js
-│   │   │   ├── createSwaggerServers.js
-│   │   │   ├── createSwaggerTags.js
-│   │   │   └── index.js
 │   │   └── utilities
-│   │       └── interpolate.js
+│   │       ├── createModel.js
+│   │       ├── interpolate.js
+│   │       └── normalizeModel.js
 │   ├── buildTests
 │   │   ├── openApi
 │   │   │   └── index.test.js
@@ -118,12 +138,7 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   ├── read
 │   │   ├── index.js
 │   │   ├── readApis.js
-│   │   ├── readEndpoints
-│   │   │   ├── index.js
-│   │   │   ├── readBody.js
-│   │   │   ├── readEndpoint.js
-│   │   │   ├── readResponse.js
-│   │   │   └── walkEndpoints.js
+│   │   ├── readEndpoints.js
 │   │   ├── readErrors.js
 │   │   ├── readInfo.js
 │   │   ├── readModels.js
@@ -131,7 +146,6 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │   ├── readSecurity.js
 │   │   ├── readServers.js
 │   │   └── utilities
-│   │       ├── buildEndpoint
 │   │       ├── readJsonFromDirectory.js
 │   │       ├── readParameterFromJsonFile.js
 │   │       └── readParameterFromMarkdownFile.js
@@ -139,10 +153,17 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   │   ├── endpoint.json
 │   │   ├── openApi.json
 │   │   └── swagger.json
+│   ├── todo
 │   └── write
 │       └── index.js
 ├── scripts
 │   └── buildFileStructureTrees.js
+├── stringFormatters
+│   ├── capitalizeFirstLetter
+│   │   ├── index.js
+│   │   └── index.test.js
+│   ├── index.js
+│   └── index.test.js
 └── tree.md
 
 ```

@@ -76,9 +76,10 @@ window.onload = function() {
     url: "/docs/openApi.json",
     dom_id: '#swagger-ui',
     deepLinking: true,
+    defaultModelRendering: 'model',
+    defaultModelsExpandDepth: 0,
     displayOperationId: true,
     docExpansion: 'none',
-    defaultModelsExpandDepth: 0,
     defaultModelExpandDepth: 0,
     presets: [
       SwaggerUIBundle.presets.apis,

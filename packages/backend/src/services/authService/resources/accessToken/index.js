@@ -1,5 +1,6 @@
 /* eslint-disable sort-keys */
 module.exports = {
+  basePath: '/auth/realms/dina/protocol/openid-connect',
   operations: [
     {
       auth: false,
@@ -48,6 +49,7 @@ module.exports = {
         },
       },
       summary: 'Gets user token',
+      type: 'raw',
     },
   ],
 }

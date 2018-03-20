@@ -4,26 +4,28 @@ module.exports = function createOperationObjectSpecification({
 }) {
   const {
     connect = true,
+    exampleResponses,
     queryParams: queryParamsInput,
   } = operationSpecificationInput
 
+  const availableExamples = Object.keys(exampleResponses || {})
+  // TODO move this to utility and call from typeFactory
   const queryParams = {
     ...queryParamsInput,
     exampleId: {
       description:
         'Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter',
-      example: 'primary',
       schema: {
-        default: 'primary',
+        enum: availableExamples.length ? availableExamples : undefined,
         type: 'string',
       },
     },
     mock: {
       description: 'Will return mock data',
-      example: 'false',
+      example: false,
       schema: {
-        default: 'false',
-        type: 'string',
+        default: false,
+        type: 'boolean',
       },
     },
   }

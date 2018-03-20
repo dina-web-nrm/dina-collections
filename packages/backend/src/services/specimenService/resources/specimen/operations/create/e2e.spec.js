@@ -3,63 +3,156 @@ const {
   makeTestCall,
 } = require('../../../../../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../../../../../utilities/test/waitForApiRestart')
+const expectSingleResourceResponse = require('../../../../../../utilities/test/expectSingleResourceResponse')
+const expectError400 = require('../../../../../../utilities/test/expectError400')
 
-const { UNEXPECTED_SUCCESS } = require('../../../../testData/individualGroup')
+const { getTestData } = require('../../testData')
 
 const fullFormExample = require('./examples/fullFormExample')
 
-const badRequestMissingCatalogNumber = {
-  data: {
-    attributes: {
-      individualGroup: {
-        distinguishedUnits: [],
-        featureObservations: [],
-        identifiers: [],
-        taxonInformation: {},
-      },
-    },
-    type: 'specimen',
-  },
-}
-
 apiDescribe('specimen', () => {
-  let authToken
   beforeAll(() => {
-    return waitForApiRestart().then(() => {
-      authToken = 1234
-    })
+    return waitForApiRestart()
   })
-
-  it('Runs specimen tests', () => {
-    expect(!!authToken).toBeTruthy()
-    expect(1).toBe(1)
-  })
-
-  describe('createIndividualGroup', () => {
-    it('Succeed with full form example', () => {
-      return makeTestCall({
-        authToken,
-        body: fullFormExample,
-        operationId: 'createSpecimen',
-      }).then(res => {
-        expect(res).toBeTruthy()
-        expect(res.data).toBeTruthy()
-        expect(res.data.type).toBe('specimen')
-        expect(res.data.attributes).toBeTruthy()
+  describe('create', () => {
+    describe('base cases', () => {
+      it('Succeed with full form example', () => {
+        return makeTestCall({
+          body: fullFormExample,
+          operationId: 'createSpecimen',
+        }).then(response => {
+          expectSingleResourceResponse({
+            expectedType: 'specimen',
+            response,
+          })
+        })
+      })
+      it('Fails create with missing catalog number', () => {
+        return expectError400(
+          makeTestCall({
+            body: getTestData('badRequestMissingCatalogNumber'),
+            operationId: 'createSpecimen',
+          })
+        )
       })
     })
-    it('Fails create with missing catalog number', () => {
-      return makeTestCall({
-        authToken,
-        body: badRequestMissingCatalogNumber,
-        operationId: 'createSpecimen',
+    describe('relations', () => {
+      it('Succeed with simpleDataNoRelations and responseource are created with default relationships', () => {
+        return makeTestCall({
+          body: getTestData('simpleDataNoRelations'),
+          operationId: 'createSpecimen',
+        }).then(createdSpecimen => {
+          return makeTestCall({
+            operationId: 'getSpecimen',
+            pathParams: { id: createdSpecimen.data.id },
+            queryParams: {
+              relationships: ['all'],
+            },
+          }).then(response => {
+            expectSingleResourceResponse({
+              expectedType: 'specimen',
+              relationships: {
+                curatedLocalities: { data: [] },
+                featureObservationTypes: {
+                  data: [],
+                },
+                physicalUnits: {
+                  data: [],
+                },
+              },
+              response,
+            })
+          })
+        })
       })
-        .then(() => {
-          throw new Error(UNEXPECTED_SUCCESS)
+      it('Succeed with simpleDataPhysicalUnitRelations. Physical unit relationships are included in get response but not in create response', () => {
+        const simpleDataPhysicalUnitRelations = getTestData(
+          'simpleDataPhysicalUnitRelations'
+        )
+        return makeTestCall({
+          body: simpleDataPhysicalUnitRelations,
+          operationId: 'createSpecimen',
         })
-        .catch(err => {
-          expect(err.message).not.toBe(UNEXPECTED_SUCCESS)
+          .then(response => {
+            expectSingleResourceResponse({
+              expectedType: 'specimen',
+              relationships: false,
+              response,
+            })
+            return response
+          })
+          .then(createdSpecimen => {
+            return makeTestCall({
+              operationId: 'getSpecimen',
+              pathParams: { id: createdSpecimen.data.id },
+              queryParams: {
+                relationships: ['all'],
+              },
+            }).then(response => {
+              expectSingleResourceResponse({
+                expectedType: 'specimen',
+                relationships: {
+                  ...simpleDataPhysicalUnitRelations.data.relationships,
+                  curatedLocalities: { data: [] },
+                  featureObservationTypes: {
+                    data: [],
+                  },
+                },
+                response,
+              })
+            })
+          })
+      })
+      it('Succeed with simpleDataMultipleRelations. Multiple relationships are included in get response but not in create response', () => {
+        const simpleDataMultipleRelations = getTestData(
+          'simpleDataMultipleRelations'
+        )
+        return makeTestCall({
+          body: simpleDataMultipleRelations,
+          operationId: 'createSpecimen',
         })
+          .then(response => {
+            expectSingleResourceResponse({
+              expectedType: 'specimen',
+              relationships: false,
+              response,
+            })
+
+            return response
+          })
+          .then(createdSpecimen => {
+            return makeTestCall({
+              operationId: 'getSpecimen',
+              pathParams: { id: createdSpecimen.data.id },
+              queryParams: {
+                relationships: ['all'],
+              },
+            }).then(response => {
+              expectSingleResourceResponse({
+                expectedType: 'specimen',
+                relationships: simpleDataMultipleRelations.data.relationships,
+                response,
+              })
+            })
+          })
+      })
+
+      it('Fails with simpleDataInvalidRelations', () => {
+        return expectError400(
+          makeTestCall({
+            body: getTestData('simpleDataInvalidRelations'),
+            operationId: 'createSpecimen',
+          })
+        )
+      })
+      it('Fails with simpleDataInvalidRelationsFormat', () => {
+        return expectError400(
+          makeTestCall({
+            body: getTestData('simpleDataInvalidRelationsFormat'),
+            operationId: 'createSpecimen',
+          })
+        )
+      })
     })
   })
 })

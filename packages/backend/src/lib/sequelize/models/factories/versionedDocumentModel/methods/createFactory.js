@@ -21,8 +21,8 @@ module.exports = function createFactory(
       schemaCompliant: validate ? !validate(doc) : undefined,
       schemaVersion: schemaVersion || undefined,
     }
+    log.debug(`Creating instance for model ${Model.tableName}`)
 
-    log.debug(`Create instance for model ${Model.tableName}`)
     return Model.create(data).then(newModel => {
       newModel.set('id', newModel.get('versionId'))
       return newModel.save().then(res => {

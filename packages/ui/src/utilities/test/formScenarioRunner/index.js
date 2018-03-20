@@ -28,6 +28,7 @@ export default function runFormScenarios({
         expectedOutput,
         expectFormSubmitSuccess = true,
         formOptions,
+        initialState,
         input = {},
         mutations = [],
         description,
@@ -51,6 +52,7 @@ export default function runFormScenarios({
               formInitialValues,
               formName,
               formOptions,
+              initialState,
             })
           }).not.toThrow()
         })

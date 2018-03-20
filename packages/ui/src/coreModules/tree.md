@@ -1,5 +1,4 @@
 # Tree for coreModules
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── allModules.js
@@ -122,6 +121,7 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │       └── getPropertyIsModel.js
 ├── error
 │   ├── components
+│   │   ├── ConnectedFormSchemaError.js
 │   │   ├── FormFieldError.js
 │   │   ├── FormFieldError.stories.js
 │   │   ├── FormSchemaError.js
@@ -130,32 +130,33 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 │   ├── constants.js
 │   ├── index.js
 │   ├── middleware.js
+│   ├── notifications
+│   │   └── index.js
 │   └── translations.json
 ├── form
 │   ├── components
-│   │   ├── ButtonCopyPasteField.js
-│   │   ├── Checkbox.js
-│   │   ├── Checkbox.stories.js
-│   │   ├── DisplaySearchResult.js
-│   │   ├── DropdownSearch
-│   │   │   ├── index.js
-│   │   │   └── index.spec.js
-│   │   ├── Field.js
-│   │   ├── FieldLabel.js
-│   │   ├── FormTable
-│   │   │   ├── FormTableHeaderRow.js
+│   │   ├── FieldTemplate
+│   │   │   ├── FieldLabel.js
 │   │   │   └── index.js
-│   │   ├── HelpTextNotification.js
-│   │   ├── Input
-│   │   │   ├── index.js
-│   │   │   ├── index.spec.js
-│   │   │   └── index.stories.js
-│   │   ├── InputDatePart
-│   │   │   ├── dateOptions.js
+│   │   ├── FieldWrapper
 │   │   │   └── index.js
-│   │   ├── SearchInputWithResults.js
-│   │   ├── TranslateSearchResult.js
-│   │   └── index.js
+│   │   ├── fields
+│   │   │   ├── Checkbox
+│   │   │   ├── Dropdown
+│   │   │   ├── Input
+│   │   │   └── Search
+│   │   ├── index.js
+│   │   ├── inputs
+│   │   │   ├── Checkbox
+│   │   │   ├── Dropdown
+│   │   │   ├── Input
+│   │   │   └── Search
+│   │   └── migrate
+│   │       ├── ButtonCopyPasteField.js
+│   │       ├── DisplaySearchResult.js
+│   │       ├── FormTable
+│   │       ├── HelpTextNotification.js
+│   │       └── InputDatePart
 │   ├── constants.js
 │   ├── higherOrderComponents
 │   │   ├── index.js

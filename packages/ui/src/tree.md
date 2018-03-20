@@ -1,5 +1,4 @@
 # Tree for src
-Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ## Tree
 ```bash
 ├── apps
@@ -29,7 +28,11 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
 ├── domainModules
 │   ├── allModules.js
 │   ├── collectionMammals
+│   ├── curatedListService
+│   ├── identifierService
 │   ├── index.js
+│   ├── localityService
+│   ├── storageService
 │   ├── taxonomy
 │   └── tree.md
 ├── index.js
@@ -67,10 +70,13 @@ Generated at commit: 97b80ab8dc7987fd6429105d10728cd735e84c45
     ├── Dependor
     ├── chainPromises
     ├── endpointFactory
+    ├── getSecondArgument
+    ├── getThirdArgument
     ├── log
     ├── markdown
     ├── stateHelper
     ├── test
+    ├── transformations
     └── wrapSelectors
 
 ```

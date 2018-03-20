@@ -1,15 +1,16 @@
+const backendError400 = require('common/src/error/errorFactories/backendError400')
 const objectPath = require('object-path')
 
 module.exports = function validateBody(body) {
-  // todo solve with x-server-required keyword for schema
   if (
     !objectPath.get(
       body,
       'data.attributes.individualGroup.identifiers.0.identifier.value'
     )
   ) {
-    const error = new Error('Catalog number is required')
-    error.status = 400
-    throw error
+    backendError400({
+      code: 'REQUEST_ERROR',
+      detail: 'Catalog number is required',
+    })
   }
 }

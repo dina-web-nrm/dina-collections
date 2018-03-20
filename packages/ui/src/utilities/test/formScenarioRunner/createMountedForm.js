@@ -6,6 +6,7 @@ export default function createMountedForm({
   formInitialValues,
   formName,
   formOptions = {},
+  initialState,
 }) {
   const handleFormSubmit = data => {
     return Promise.resolve(data)
@@ -14,11 +15,12 @@ export default function createMountedForm({
     component: (
       <FormComponent
         handleFormSubmit={handleFormSubmit}
-        initialData={formInitialValues}
+        initialValues={formInitialValues}
         {...formOptions}
       />
     ),
     fullExport: true,
+    initialState,
   })
 
   return {

@@ -21,6 +21,11 @@ module.exports = {
         type: 'string'
       }
     },
+    mapQueryParams: {
+      not: {
+        type: 'string'
+      }
+    },
     mapResponse: {
       not: {
         type: 'string'
@@ -41,6 +46,11 @@ module.exports = {
       type: 'string'
     },
     validateBody: {
+      not: {
+        type: 'string'
+      }
+    },
+    validateQueryParams: {
       not: {
         type: 'string'
       }

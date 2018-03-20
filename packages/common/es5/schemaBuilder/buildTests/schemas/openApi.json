@@ -400,7 +400,8 @@
             "integer",
             "number",
             "object",
-            "string"
+            "string",
+            "null"
           ]
         },
         "not": {

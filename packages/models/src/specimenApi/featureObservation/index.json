@@ -1,12 +1,32 @@
 {
   "additionalProperties": false,
   "properties": {
-    "featureObservationAgent": { "type": "string", "example": "Doe, J." },
+    "featureObservationAgent": {
+      "type": "string",
+      "example": "Doe, J."
+    },
     "date": {
       "$ref": "__ROOT__date"
     },
-    "featureObservationText": { "type": "string", "example": "10 years" },
-    "featureObservationType": { "$ref": "__ROOT__featureObservationType" },
-    "methodText": { "type": "string", "example": "Known age" }
+    "featureObservationText": {
+      "type": "string",
+      "example": "10 years"
+    },
+    "featureObservationUnit": {
+      "type": "string",
+      "example": "kg"
+    },
+    "featureObservationType": {
+      "$ref": "__ROOT__featureObservationType",
+      "x-reference-type": "external"
+    },
+    "methodText": {
+      "type": "string",
+      "example": "Known age"
+    },
+    "remarks": {
+      "type": "string",
+      "example": "According to catalog card"
+    }
   }
 }

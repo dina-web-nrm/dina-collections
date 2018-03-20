@@ -2,7 +2,8 @@ const individualGroup = {
   distinguishedUnits: [
     {
       physicalUnit: {
-        storedUnderTaxonName: 'Chironectes minimus',
+        id: '1',
+        type: 'physicalUnit',
       },
     },
   ],
@@ -10,8 +11,8 @@ const individualGroup = {
     {
       featureObservationText: 'female',
       featureObservationType: {
-        id: '1',
-        typeName: 'sex',
+        id: '22',
+        type: 'featureObservationType',
       },
     },
   ],
@@ -31,6 +32,23 @@ const individualGroup = {
     ],
   },
 }
+const featureObservationTypes = {
+  1: {
+    id: '1',
+    type: 'featureObservationType',
+  },
+  22: {
+    id: '22',
+    type: 'featureObservationType',
+  },
+}
+const physicalUnits = {
+  1: {
+    id: '1',
+    storedUnderTaxonName: 'Chironectes minimus',
+    type: 'physicalUnit',
+  },
+}
 const mutations = [
   {
     name: 'taxonInformation.determinations.0.determinedByAgentText',
@@ -38,39 +56,57 @@ const mutations = [
   },
 ]
 const expectedOutput = {
-  individualGroup: {
-    distinguishedUnits: [
-      {
-        physicalUnit: {
-          storedUnderTaxonName: 'Chironectes minimus',
-        },
-      },
-    ],
-    featureObservations: [
-      {
-        featureObservationText: 'female',
-        featureObservationType: {
-          id: '1',
-          typeName: 'sex',
-        },
-      },
-    ],
-    identifiers: [
-      {
-        identifier: {
-          identifierType: 'catalogNumber',
-          value: '444444',
-        },
-      },
-    ],
-    individualCircumstances: [],
-    taxonInformation: {
-      determinations: [
+  curatedLocalities: [],
+  featureObservationTypes: [
+    {
+      id: '22',
+      type: 'featureObservationType',
+    },
+  ],
+  physicalUnits: [
+    {
+      id: '1',
+      storedUnderTaxonName: 'Chironectes minimus',
+      type: 'physicalUnit',
+    },
+  ],
+  specimen: {
+    individualGroup: {
+      distinguishedUnits: [
         {
-          determinedByAgentText: 'John, Doe',
-          taxonNameStandardized: 'Chironectes minimus',
+          physicalUnit: {
+            id: '1',
+            storedUnderTaxonName: 'Chironectes minimus',
+            type: 'physicalUnit',
+          },
         },
       ],
+      featureObservations: [
+        {
+          featureObservationText: 'female',
+          featureObservationType: {
+            id: '22',
+            type: 'featureObservationType',
+          },
+        },
+      ],
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            value: '444444',
+          },
+        },
+      ],
+      individualCircumstances: [],
+      taxonInformation: {
+        determinations: [
+          {
+            determinedByAgentText: 'John, Doe',
+            taxonNameStandardized: 'Chironectes minimus',
+          },
+        ],
+      },
     },
   },
 }
@@ -78,7 +114,7 @@ const expectedOutput = {
 const scenario = {
   description: 'Update existing record by adding determinedByAgentText',
   expectedOutput,
-  input: individualGroup,
+  input: { featureObservationTypes, individualGroup, physicalUnits },
   mutations,
 }
 

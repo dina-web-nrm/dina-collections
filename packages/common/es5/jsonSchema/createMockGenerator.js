@@ -1,6 +1,6 @@
 'use strict';
 
-var models = require('../../dist/models.json');
+var models = require('../../dist/normalizedModels.json');
 var createMockDataFromSchema = require('./createMockDataFromSchema');
 
 module.exports = function createMockGenerator(_ref) {

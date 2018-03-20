@@ -1,18 +1,34 @@
+const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
-const buildRelations = require('./utilities/buildRelations')
 
 module.exports = function getOne({
   basePath,
+  errors: errorsInput = {},
   exampleResponses = {},
+  includeRelations,
   operationId,
-  queryParams,
+  queryParams: queryParamsInput,
   relations,
   resource,
   resourcePlural,
   ...rest
 }) {
+  const queryParams = addRelationsToQueryParams({
+    includeRelations,
+    queryParams: queryParamsInput,
+    relations,
+  })
+  const errors = {
+    '400': ['REQUEST_ERROR'],
+    '404': ['RESOURCE_NOT_FOUND_ERROR'],
+    '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
+    ...errorsInput,
+  }
+
   return {
     ...rest,
+    errors,
+    includeRelations,
     method: 'get',
     operationId: operationId || `get${capitalizeFirstLetter(resource)}`,
     operationType: 'getOne',
@@ -24,11 +40,7 @@ module.exports = function getOne({
     response: {
       examples: exampleResponses,
       format: 'object',
-      relations: buildRelations({
-        basePath,
-        relations,
-        resourcePlural,
-      }),
+      relations,
     },
     summary: `Find ${resource} by id`,
   }

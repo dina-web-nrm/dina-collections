@@ -1,12 +1,10 @@
-import FeatureTypeNameDropdown from './FeatureTypeNameDropdown'
-import FeatureTypeNameSearch from './FeatureTypeNameSearch'
+import FeatureObservationDropdownSearch from './FeatureObservationDropdownSearch'
 import LocalityDropdownSearch from './LocalityDropdownSearch'
 import LookupMammals from './LookupMammals'
 import MammalForm from './MammalForm'
 
 export {
-  FeatureTypeNameDropdown,
-  FeatureTypeNameSearch,
+  FeatureObservationDropdownSearch,
   LocalityDropdownSearch,
   LookupMammals,
   MammalForm,

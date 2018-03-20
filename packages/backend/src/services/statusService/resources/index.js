@@ -1,10 +1,11 @@
 /* eslint-disable sort-keys */
 exports.status = {
+  basePath: '/api/status/v01',
   operations: [
     {
       controller: 'getStatus',
       method: 'get',
-      path: '/api/status/v01/status',
+      path: '/status',
       operationId: 'getStatus',
       raw: true,
       resource: 'status',
@@ -30,6 +31,7 @@ exports.status = {
           },
         },
       },
+      type: 'raw',
     },
   ],
 }

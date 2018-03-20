@@ -94,7 +94,7 @@ function createApiClient(apiConfigInput) {
   const call = (endpointConfigInput, userInput = {}) => {
     const { methodName } = endpointConfigInput
     if (!methodName) {
-      throw new new Error('methodName is required when using call')()
+      throw new Error('methodName is required when using call')
     }
     switch (methodName) {
       case 'formPost': {

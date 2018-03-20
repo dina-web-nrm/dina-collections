@@ -1,0 +1,71 @@
+import { createSelector } from 'reselect'
+import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import getSecondArgument from 'utilities/getSecondArgument'
+
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  MODULE_NAME,
+  PROVINCE,
+} from './constants'
+
+export const getLocalState = state => {
+  return state[MODULE_NAME]
+}
+
+export const getResources = state => {
+  return state.resources
+}
+
+export const getCuratedLocalities = createSelector(getResources, resources => {
+  return resources.curatedLocalities
+})
+
+export const getCuratedLocality = createSelector(
+  [getCuratedLocalities, getSecondArgument],
+  (curatedLocalities, id) => {
+    return curatedLocalities[id]
+  }
+)
+
+export const getHasCuratedLocalities = createSelector(
+  getCuratedLocalities,
+  curatedLocalities => {
+    return Object.keys(curatedLocalities).length > 0
+  }
+)
+
+const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
+  return createSelector(
+    [getCuratedLocalities, getSecondArgument],
+    (curatedLocalities, searchQuery = '') => {
+      const lowerCaseSearchQuery = searchQuery.toLowerCase()
+      const mappedGroupLocalities = Object.values(curatedLocalities)
+        .filter(({ group }) => group === groupFilter)
+        .map(({ id, name }) => {
+          return {
+            key: id,
+            text: capitalizeFirstLetter(name),
+            value: id,
+          }
+        })
+
+      const firstLetterMatches = mappedGroupLocalities.filter(({ text }) => {
+        return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      })
+
+      const otherMatches = mappedGroupLocalities.filter(({ text }) => {
+        return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+      })
+
+      return [...firstLetterMatches, ...otherMatches].slice(0, numberOfResults)
+    }
+  )
+}
+
+// setting 15 so all continents are shown in initial options list
+export const getDropdownContinentOptions = createDropdownSelector(CONTINENT, 15)
+export const getDropdownCountryOptions = createDropdownSelector(COUNTRY)
+export const getDropdownDistrictOptions = createDropdownSelector(DISTRICT)
+export const getDropdownProvinceOptions = createDropdownSelector(PROVINCE)

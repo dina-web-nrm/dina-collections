@@ -1,68 +1,97 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Header, Segment } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
+import { Grid, Header, Segment } from 'semantic-ui-react'
 
+import config from 'config'
+import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { FormTable } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import Footer from './Footer'
-import FeatureObservationRow from './FeatureObservationRow'
+import {
+  actionCreators as curatedListActionCreators,
+  globalSelectors as curatedListGlobalSelectors,
+} from 'domainModules/curatedListService'
+import AccordionWrapper from './AccordionWrapper'
+
+const log = createLog(
+  'modules:collectionMammals:MammalForm:SegmentFeatureObservations'
+)
+
+const GROUPS_AND_HEADLINES = [
+  { groups: ['age-stage', 'age-and-stage'], headlineKey: 'stage-and-age' },
+  { groups: ['sex'], headlineKey: 'sex' },
+  { groups: ['bone-count'], headlineKey: 'bone-count' },
+  { groups: ['weight'], headlineKey: 'weight' },
+  { groups: ['length'], headlineKey: 'length' },
+  { groups: ['condition'], headlineKey: 'condition' },
+]
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'featureObservations',
 })
 
-const columnHeaderTextKeys = [
-  'modules.collectionMammals.featureObservations.feature',
-  'modules.collectionMammals.featureObservations.value',
-  'modules.collectionMammals.featureObservations.method',
-  'modules.collectionMammals.featureObservations.agent',
-  'modules.collectionMammals.featureObservations.date',
-]
-
-const mapStateToProps = (state, { formValueSelector }) => {
+const mapStateToProps = state => {
   return {
-    featureObservations: formValueSelector(state, 'featureObservations'),
+    hasFeatureObservations: curatedListGlobalSelectors.getHasFeatureObservationTypes(
+      state
+    ),
   }
+}
+const mapDispatchToProps = {
+  getFeatureObservationTypes:
+    curatedListActionCreators.getFeatureObservationTypes,
 }
 
 const propTypes = {
-  featureObservations: PropTypes.arrayOf(PropTypes.shape({}).isRequired),
-}
-const defaultProps = {
-  featureObservations: undefined,
+  changeFieldValue: PropTypes.func.isRequired,
+  getFeatureObservationTypes: PropTypes.func.isRequired,
+  getPath: PropTypes.func.isRequired,
+  hasFeatureObservations: PropTypes.bool.isRequired,
+  mode: PropTypes.oneOf(['edit', 'register']).isRequired,
 }
 
-class SegmentFeatureObservations extends Component {
+class SegmentFeatureObservations extends PureComponent {
+  componentDidMount() {
+    if (!config.isTest) {
+      this.props.getFeatureObservationTypes()
+    }
+  }
+
   render() {
-    const { featureObservations } = this.props
+    const {
+      changeFieldValue,
+      getPath,
+      hasFeatureObservations,
+      mode,
+    } = this.props
 
+    log.render()
     return (
-      <Segment color="green">
+      <Segment color="green" loading={!hasFeatureObservations}>
         <Header size="medium">
           <ModuleTranslate textKey="features" />
         </Header>
-        <FormTable
-          columnHeaderTextKeys={columnHeaderTextKeys}
-          footer={<Footer />}
-          numberOfRows={
-            (featureObservations && featureObservations.length) || 0
-          }
-          renderRow={({ index }) => {
-            return <FeatureObservationRow index={index} key={index} />
-          }}
-        />
+        <Grid textAlign="left" verticalAlign="top">
+          <Grid.Column mobile={16}>
+            <AccordionWrapper
+              changeFieldValue={changeFieldValue}
+              getPath={getPath}
+              groupsAndHeadlines={GROUPS_AND_HEADLINES}
+              mode={mode}
+            />
+          </Grid.Column>
+        </Grid>
       </Segment>
     )
   }
 }
 
 SegmentFeatureObservations.propTypes = propTypes
-SegmentFeatureObservations.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps),
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
   pathBuilder({ name: 'featureObservations' })
 )(SegmentFeatureObservations)

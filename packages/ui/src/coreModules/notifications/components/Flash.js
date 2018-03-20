@@ -5,8 +5,10 @@ import { Message } from 'semantic-ui-react'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 const propTypes = {
+  description: PropTypes.string,
   descriptionKey: PropTypes.string,
   descriptionParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  header: PropTypes.string,
   headerKey: PropTypes.string,
   headerParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   i18n: PropTypes.shape({
@@ -18,8 +20,10 @@ const propTypes = {
   ttl: PropTypes.number,
 }
 const defaultProps = {
+  description: undefined,
   descriptionKey: undefined,
   descriptionParams: undefined,
+  header: undefined,
   headerKey: undefined,
   headerParams: undefined,
   level: 'info',
@@ -46,26 +50,30 @@ export class Flash extends Component {
 
   render() {
     const {
+      description,
       descriptionKey,
       descriptionParams,
+      header,
       headerKey,
       headerParams,
+      i18n: { translate },
       level,
       removeNotification,
       sequentialId,
-      i18n: { translate },
     } = this.props
 
     return (
       <Message
         className="flash"
         content={
-          descriptionKey &&
-          translate({ params: descriptionParams, textKey: descriptionKey })
+          description ||
+          (descriptionKey &&
+            translate({ params: descriptionParams, textKey: descriptionKey }))
         }
         error={level === 'error'}
         header={
-          headerKey && translate({ params: headerParams, textKey: headerKey })
+          header ||
+          (headerKey && translate({ params: headerParams, textKey: headerKey }))
         }
         info={level === 'info'}
         onClick={() => removeNotification({ sequentialId })}

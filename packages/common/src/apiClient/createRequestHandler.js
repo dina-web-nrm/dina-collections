@@ -1,6 +1,7 @@
 const intercept = require('./intercept')
 const handleError = require('./error')
 
+const validateEndpointConfig = require('./validation/validateEndpointConfig')
 const validateMethodConfig = require('./validation/validateMethodConfig')
 const createResponse = require('./createResponse')
 const createRequest = require('./createRequest')
@@ -18,7 +19,7 @@ module.exports = function createRequestHandler({
   }
 
   validateMethodConfig(methodConfigInput, apiConfig)
-
+  validateEndpointConfig(endpointConfig, apiConfig)
   return function routeFunction({ user, userInput }) {
     return createRequest({
       apiConfig,

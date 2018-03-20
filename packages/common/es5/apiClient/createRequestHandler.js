@@ -9,6 +9,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var intercept = require('./intercept');
 var handleError = require('./error');
 
+var validateEndpointConfig = require('./validation/validateEndpointConfig');
 var validateMethodConfig = require('./validation/validateMethodConfig');
 var createResponse = require('./createResponse');
 var createRequest = require('./createRequest');
@@ -25,7 +26,7 @@ module.exports = function createRequestHandler(_ref) {
   }, methodConfigInput);
 
   validateMethodConfig(methodConfigInput, apiConfig);
-
+  validateEndpointConfig(endpointConfig, apiConfig);
   return function routeFunction(_ref2) {
     var user = _ref2.user,
         userInput = _ref2.userInput;

@@ -1,5 +1,6 @@
 const createLog = require('../../../utilities/log')
 const syncModels = require('./syncModels')
+const loadInitialData = require('./loadInitialData')
 const createModels = require('./createModels')
 const createRelations = require('./createRelations')
 
@@ -21,10 +22,15 @@ module.exports = function setupModels({ config, sequelize, services }) {
             models,
           }).then(() => {
             log.info('Setup models done')
-
-            return {
+            return loadInitialData({
+              config,
               models,
-            }
+              services,
+            }).then(() => {
+              return {
+                models,
+              }
+            })
           })
         })
       }

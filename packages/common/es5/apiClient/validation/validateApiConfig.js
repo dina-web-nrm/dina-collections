@@ -18,7 +18,6 @@ module.exports = function validateApiConfig() {
 
   var systemValidate = apiConfig.systemValidate;
 
-
   var error = systemValidate && systemValidate(apiConfig, apiConfigSchema);
   if (error) {
     throw error;

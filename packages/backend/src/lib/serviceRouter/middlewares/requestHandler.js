@@ -23,7 +23,6 @@ module.exports = function createRequestHandlerMiddleware({
     })
       .then(result => {
         log.info(`${res.locals.id}: Sending route function result`)
-
         if (config.log.outgoingResponse) {
           log.debug(
             `${res.locals.id}: Sending response 200 ${JSON.stringify(result)}`

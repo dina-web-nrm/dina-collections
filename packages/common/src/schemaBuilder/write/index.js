@@ -8,7 +8,9 @@ const createIndexFile = ({ available, versionIndexFilePath }) => {
       .map(availableVersion => {
         return `exports['${availableVersion}'] = {
   models: require('./${availableVersion}/models.json'),
+  normalizedModels: require('./${availableVersion}/normalizedModels.json'),
   openApi: require('./${availableVersion}/openApi.json'),
+  normalizedOpenApi: require('./${availableVersion}/normalizedOpenApi.json'),
 }`
       })
       .join('\n') + '\n'
@@ -55,8 +57,16 @@ const ensureDirectoryExistence = dirPath => {
   return true
 }
 
+const getOpenApiFileName = normalize => {
+  return normalize ? 'normalizedOpenApi.json' : 'openApi.json'
+}
+
+const getModelsFileName = normalize => {
+  return normalize ? 'normalizedModels.json' : 'models.json'
+}
+
 module.exports = function write(
-  { models, openApi, setCurrent, version = '' } = {}
+  { models, normalize, openApi, setCurrent, version = '' } = {}
 ) {
   const buildDirectory = path.join(__dirname, '../../../../common/dist')
   const versionsBaseDirectory = path.join(buildDirectory, 'versions')
@@ -69,12 +79,12 @@ module.exports = function write(
   ensureDirectoryExistence(baseDirectory)
 
   fs.writeFileSync(
-    path.join(baseDirectory, 'openApi.json'),
+    path.join(baseDirectory, getOpenApiFileName(normalize)),
     JSON.stringify(openApi, null, 2)
   )
 
   fs.writeFileSync(
-    path.join(baseDirectory, 'models.json'),
+    path.join(baseDirectory, getModelsFileName(normalize)),
     JSON.stringify(models, null, 2)
   )
 

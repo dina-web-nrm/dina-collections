@@ -35,7 +35,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -49,7 +49,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -80,12 +80,13 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     expect(syncErrors).toBe(undefined)
     const output = transformOutput(values)
     // should now have empty identification
-    expect(output.individualGroup.taxonInformation.determinations.length).toBe(
-      1
-    )
     expect(
-      Object.keys(output.individualGroup.taxonInformation.determinations[0])
-        .length
+      output.specimen.individualGroup.taxonInformation.determinations.length
+    ).toBe(1)
+    expect(
+      Object.keys(
+        output.specimen.individualGroup.taxonInformation.determinations[0]
+      ).length
     ).toBe(0)
     expect(submitFailed).toBe(undefined)
   })
@@ -95,7 +96,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -127,7 +128,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       component: (
         <MammalForm
           handleFormSubmit={handleFormSubmit}
-          initialData={transformInput({})}
+          initialValues={transformInput({})}
         />
       ),
       fullExport: true,
@@ -221,7 +222,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
         component: (
           <MammalForm
             handleFormSubmit={handleFormSubmit}
-            initialData={transformInput({})}
+            initialValues={transformInput({})}
           />
         ),
         fullExport: true,

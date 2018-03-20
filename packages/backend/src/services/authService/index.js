@@ -1,4 +1,4 @@
 exports.info = require('./info')
 exports.resources = require('./resources')
 
-exports.name = 'authApi'
+exports.name = 'authService'

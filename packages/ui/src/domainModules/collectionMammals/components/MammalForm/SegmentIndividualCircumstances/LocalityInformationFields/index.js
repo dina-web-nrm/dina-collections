@@ -6,6 +6,7 @@ import { compose } from 'redux'
 import { Field, Input } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 
 import CuratedLocalities from './CuratedLocalities'
 import Position from './Position'
@@ -25,7 +26,7 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
   return (
     <Grid textAlign="left" verticalAlign="top">
       <Grid.Column mobile={16}>
-        <Field
+        <FieldWrapper
           autoComplete="off"
           component={Input}
           helpNotificationProps={{

@@ -6,12 +6,7 @@ import {
 import { LOOKUP_MAMMALS } from '../endpoints'
 
 export default function lookupMammals(filterParams = {}) {
-  const queryParams = Object.keys(filterParams).reduce((query, filterName) => {
-    return {
-      ...query,
-      [`filter[${filterName}]`]: filterParams[filterName],
-    }
-  })
+  const queryParams = { filter: filterParams }
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({

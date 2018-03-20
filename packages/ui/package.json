@@ -12,14 +12,6 @@
       "xfwd": true,
       "changeOrigin": true
     },
-    "/taxonomy": {
-      "changeOrigin": true,
-      "pathRewrite": {
-        "^/taxonomy": ""
-      },
-      "target": "https://alpha-slimtaxonomy.dina-web.net",
-      "xfwd": true
-    },
     "/api": {
       "target": "http://127.0.0.1:4444",
       "xfwd": true,
@@ -52,6 +44,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.3.0",
     "redux-module-local-storage": "^1.1.0",
     "reselect": "^3.0.1",
     "semantic-ui-react": "^0.77.2",
@@ -113,7 +106,6 @@
     "npm-run-all": "^4.1.1",
     "raw-loader": "^0.5.1",
     "react-test-renderer": "^16.2.0",
-    "redux-mock-store": "^1.3.0",
     "source-map-explorer": "^1.5.0",
     "storybook-readme": "3.0.6"
   },

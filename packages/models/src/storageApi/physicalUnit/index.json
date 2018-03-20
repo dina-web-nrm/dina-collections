@@ -1,10 +1,14 @@
 {
   "additionalProperties": false,
   "properties": {
-    "id": { "type": "string" },
+    "id": {
+      "type": "string"
+    },
     "distinguishedUnits": {
       "type": "array",
-      "items": { "$ref": "__ROOT__distinguishedUnit" }
+      "items": {
+        "$ref": "__ROOT__distinguishedUnit"
+      }
     },
     "normalStorageLocationText": {
       "description": "Will be moved to storageLocation",
@@ -15,6 +19,11 @@
       "type": "string",
       "example": "Sorex minutus"
     },
-    "storageLocation": { "$ref": "__ROOT__storageLocation" }
+    "storageLocation": {
+      "$ref": "__ROOT__storageLocation"
+    },
+    "type": {
+      "type": "string"
+    }
   }
 }

@@ -1,18 +1,43 @@
+const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
+const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
+const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
 const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
-const buildRelations = require('./utilities/buildRelations')
 
 module.exports = function getMany({
   basePath,
+  errors: errorsInput = {},
   exampleResponses = {},
+  includeRelations,
   operationId,
-  queryParams,
+  queryParams: queryParamsInput,
   relations,
   resource,
   resourcePlural,
   ...rest
 }) {
+  let queryParams = addRelationsToQueryParams({
+    includeRelations,
+    queryParams: queryParamsInput,
+    relations,
+  })
+
+  queryParams = addLimitToQueryParams({
+    queryParams,
+  })
+
+  queryParams = addOffsetToQueryParams({
+    queryParams,
+  })
+
+  const errors = {
+    '400': ['REQUEST_ERROR'],
+    '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
+    ...errorsInput,
+  }
   return {
     ...rest,
+    errors,
+    includeRelations,
     method: 'get',
     operationId: operationId || `get${capitalizeFirstLetter(resourcePlural)}`,
     operationType: 'getMany',
@@ -23,11 +48,7 @@ module.exports = function getMany({
     response: {
       examples: exampleResponses,
       format: 'array',
-      relations: buildRelations({
-        basePath,
-        relations,
-        resourcePlural,
-      }),
+      relations,
     },
     summary: `Find ${resourcePlural}`,
   }

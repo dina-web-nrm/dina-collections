@@ -1,0 +1,105 @@
+Scope form component inputs
+* FieldWrapper
+* FieldBase
+* Inputs
+** Checkbox
+** Selects
+** Search?
+* FormInputs
+
+or 
+* FieldWrapper
+* FieldBase
+* Checkbox
+** CheckboxInput
+** CheckboxField
+* Selects
+* Search?
+* FormInputs
+
+
+
+* Checkbox
+* Button
+* 
+** 
+
+<FieldWrapper>
+  component={FormField}
+<FieldWrapper>
+
+
+<CheckboxField>
+  <FieldBase>
+    <CheckboxInput>
+  <FieldBase>
+
+<FormField>
+
+
+
+* Rename taxonomy to taxonomyService?
+* Refactor collectionMammals and create separate module specimenService.
+* Refactor FeatureObservationDropdownSearch and LocalityDropdownSearch
+  * could SearchInputWith result be a part of the same structure?
+  * create DropdownSearch
+
+  ** should work both as controlled and not controlled component
+  ** expects paramenters:
+    onSearchUpdate,
+    onSelectResult,
+    input: (name, value)
+    options,
+
+  * create LocalDropdownSearch
+  ** (inject options to search in everything local)
+  ** use higher order component wrapping DropdownSearch
+  ** expects paramenters:
+    onChange,
+    options,
+    input: (name, value)
+
+  * create ApiDropdownSearch
+  ** (inject action creator to fetch options. Keep options and search string local)
+  ** use higher order component wrapping DropdownSearch
+  ** expects paramenters:
+    onChange,
+    fetchOptions,
+    input: (name, value)
+
+  * create CustomDropdownSearch
+  ** use higher order component wrapping DropdownSearch
+  ** expects paramenters:
+    onChange,
+    onSearchUpdate,
+    getOptions,
+    getSearch,
+    input: (name, value)
+
+
+
+
+
+Domain Components
+  * FeatureObservationDropdownSearch
+    -> options injected as prop
+    -> searchQuery in central state getSearchQuery injected
+    -> uses DropdownSearch
+
+  * LocalityDropdownSearch
+    -> options: localitySelectors.getDropdownOptions(state, group) in central state
+    -> searchQuery in central state getSearchQuery injected
+    -> uses DropdownSearch
+
+  * SegmentDetermination AccordingWrapper + Item
+    -> refactor according to paper 
+
+  * SegmentFeatureObservations AccordingWrapper + Item
+    -> refactor according to paper 
+
+  * FeatureObservationTable
+    -> likely should be specialized
+
+
+  * TaxonNameSearchInputWithResults
+    -> uses SearchInputWithResults

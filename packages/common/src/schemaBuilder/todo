@@ -1,0 +1,2 @@
+* Write e2e test with complex example. ex update with relations + something else
+* refactor buildRequest to use subfunctions

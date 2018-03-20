@@ -2,8 +2,10 @@ const createFactory = require('./methods/createFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
 const updateFactory = require('./methods/updateFactory')
+const updatePrimaryKeyFactory = require('./methods/updatePrimaryKeyFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
-const { createSystemModelSchemaValidator } = require('common/src/error')
+const bulkCreateFactory = require('./methods/bulkCreateFactory')
+const dbValidator = require('common/src/error/validators/dbValidator')
 
 module.exports = function attachMethods({
   sequelize,
@@ -16,8 +18,7 @@ module.exports = function attachMethods({
     return null
   }
   if (schemaModelName) {
-    validate = createSystemModelSchemaValidator({
-      context: 'modelValidation',
+    validate = dbValidator({
       model: schemaModelName,
       throwOnError: false,
     })
@@ -42,7 +43,22 @@ module.exports = function attachMethods({
     validate,
   })
 
+  const updatePrimaryKey = updatePrimaryKeyFactory({
+    Model,
+    schemaVersion,
+    sequelize,
+    validate,
+  })
+
+  const bulkCreate = bulkCreateFactory({
+    Model,
+    schemaVersion,
+    updatePrimaryKey,
+    validate,
+  })
+
   const coreMethods = {
+    bulkCreate,
     create,
     getById,
     getOneWhere,

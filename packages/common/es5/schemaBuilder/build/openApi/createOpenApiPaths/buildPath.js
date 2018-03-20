@@ -6,6 +6,7 @@ var buildRequest = require('./buildRequest');
 
 module.exports = function buildPath(endpoint) {
   var description = endpoint.description,
+      errors = endpoint.errors,
       headers = endpoint.headers,
       operationId = endpoint.operationId,
       pathParams = endpoint.pathParams,
@@ -16,7 +17,7 @@ module.exports = function buildPath(endpoint) {
       summary = endpoint.summary,
       tags = endpoint.tags;
 
-  var responses = buildResponses({ operationId: operationId, response: response });
+  var responses = buildResponses({ errors: errors, operationId: operationId, response: response });
   var requestBody = buildRequest({ operationId: operationId, request: request });
   var parameters = buildParameters({
     headers: headers,

@@ -1,6 +1,7 @@
 const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
+const expectSingleResourceResponse = require('../../utilities/test/expectSingleResourceResponse')
 
 const physicalUnitExample = {
   data: {
@@ -41,11 +42,11 @@ apiDescribe('storage', () => {
         body: physicalUnitExample,
         operationId: 'createPhysicalUnit',
         validateOutput: true,
-      }).then(res => {
-        expect(res).toBeTruthy()
-        expect(res.data).toBeTruthy()
-        expect(res.data.type).toBe('physicalUnit')
-        expect(res.data.attributes).toBeTruthy()
+      }).then(response => {
+        expectSingleResourceResponse({
+          expectedType: 'physicalUnit',
+          response,
+        })
       })
     })
   })
@@ -200,10 +201,14 @@ apiDescribe('storage', () => {
             pathParams: {
               id: physicalUnitId,
             },
+            queryParams: {
+              relationships: ['all'],
+            },
             validateOutput: true,
           }).then(physicalUnit => {
             expect(physicalUnit).toBeTruthy()
             expect(physicalUnit.data).toBeTruthy()
+            expect(physicalUnit.data.relationships).toBeTruthy()
             expect(physicalUnit.data.relationships.storageLocation).toBeTruthy()
           })
         })
@@ -213,6 +218,9 @@ apiDescribe('storage', () => {
             operationId: 'getStorageLocation',
             pathParams: {
               id: storageLocationId,
+            },
+            queryParams: {
+              relationships: ['all'],
             },
             validateOutput: true,
           }).then(storageLocation => {
@@ -229,6 +237,9 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             operationId: 'getPhysicalUnits',
+            queryParams: {
+              relationships: ['all'],
+            },
             validateOutput: true,
           }).then(physicalUnits => {
             expect(physicalUnits).toBeTruthy()
@@ -242,6 +253,9 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             operationId: 'getStorageLocations',
+            queryParams: {
+              relationships: ['all'],
+            },
             validateOutput: true,
           }).then(storageLocations => {
             expect(storageLocations).toBeTruthy()

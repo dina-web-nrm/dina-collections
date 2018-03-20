@@ -1,6 +1,33 @@
 {
   "data": {
     "type": "specimen",
+    "relationships": {
+      "curatedLocalities": {
+        "data": [
+          { "id": "1", "type": "curatedLocality" },
+          { "id": "2", "type": "curatedLocality" },
+          { "id": "3", "type": "curatedLocality" },
+          { "id": "4", "type": "curatedLocality" },
+          { "id": "5", "type": "curatedLocality" }
+        ]
+      },
+      "featureObservationTypes": {
+        "data": [
+          {
+            "id": "1",
+            "type": "featureObservationType"
+          }
+        ]
+      },
+      "physicalUnits": {
+        "data": [
+          {
+            "id": "2234",
+            "type": "physicalUnit"
+          }
+        ]
+      }
+    },
     "attributes": {
       "individualGroup": {
         "taxonInformation": {
@@ -21,8 +48,8 @@
             "featureObservationAgent": "featureObservationAgent",
             "featureObservationText": "21",
             "featureObservationType": {
-              "id": "3",
-              "typeName": "age"
+              "id": "1",
+              "type": "featureObservationType"
             },
             "methodText": "methodText"
           }
@@ -31,8 +58,8 @@
           {
             "alternateIdentifiersText": "alternateIdentifiersText",
             "physicalUnit": {
-              "normalStorageLocationText": "normalStorageLocationText",
-              "storedUnderTaxonName": "Sorex minutus"
+              "id": "2234",
+              "type": "physicalUnit"
             },
             "physicalUnitText": "physicalUnitText"
           }
@@ -57,11 +84,11 @@
               "localityInformation": {
                 "coordinatesVerbatim": "coordinatesVerbatim",
                 "curatedLocalities": [
-                  { "id": "Africa", "type": "continent" },
-                  { "id": "Algeria", "type": "country" },
-                  { "id": "Balearic Islands", "type": "province" },
-                  { "id": "GaspÃ© Peninsula", "type": "district" },
-                  { "id": "Skansen", "type": "locality" }
+                  { "id": "1", "type": "curatedLocality" },
+                  { "id": "2", "type": "curatedLocality" },
+                  { "id": "3", "type": "curatedLocality" },
+                  { "id": "4", "type": "curatedLocality" },
+                  { "id": "5", "type": "curatedLocality" }
                 ],
                 "georeferenceSourcesText": "georeferenceSourcesText",
                 "localityVerbatim": "localityVerbatim",

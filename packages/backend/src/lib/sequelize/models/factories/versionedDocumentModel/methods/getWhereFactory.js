@@ -3,6 +3,8 @@ module.exports = function getWhereFactory({ Model }) {
     {
       forceCurrentVersion = true,
       include = [],
+      limit,
+      offset,
       raw = true,
       where: whereInput,
     } = {}
@@ -18,11 +20,21 @@ module.exports = function getWhereFactory({ Model }) {
         }
       : whereInput
 
-    return Model.findAll({
+    const options = {
       include,
       order: [['id', 'DESC'], ['versionId', 'DESC']],
       raw,
       where,
-    })
+    }
+
+    if (limit) {
+      options.limit = limit
+    }
+
+    if (offset) {
+      options.offset = offset
+    }
+
+    return Model.findAll(options)
   }
 }

@@ -1,0 +1,11 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "en": {
+      "type": "string"
+    },
+    "sv": {
+      "type": "string"
+    }
+  }
+}

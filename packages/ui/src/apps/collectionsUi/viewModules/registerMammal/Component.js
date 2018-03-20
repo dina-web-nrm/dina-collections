@@ -1,37 +1,51 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { actionCreators as mammalActionCreators } from 'domainModules/collectionMammals'
+import createLog from 'utilities/log'
+import { actionCreators as specimenActionCreators } from 'domainModules/specimenService'
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
+import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
+const log = createLog('modules:editMammal:Component')
+
+const mapStateToProps = state => {
+  return {
+    initialValues: mammalSelectors.getMammalFormInitialValues(state),
+  }
+}
 const mapDispatchToProps = {
-  registerMammal: mammalActionCreators.registerMammal,
+  createSpecimen: specimenActionCreators.createSpecimen,
 }
 
 const propTypes = {
-  registerMammal: PropTypes.func.isRequired,
+  createSpecimen: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
 }
 
-const RegisterMammal = ({ registerMammal }) => {
-  const initialData = transformInput({})
-  return (
-    <PageTemplate>
-      <MammalForm
-        handleFormSubmit={formOutput => {
-          return registerMammal(transformOutput(formOutput))
-        }}
-        initialData={initialData}
-        mode="register"
-        redirectOnSuccess
-      />
-    </PageTemplate>
-  )
+class RegisterMammal extends Component {
+  render() {
+    const { createSpecimen, initialValues } = this.props
+
+    log.render()
+    log.debug('initialValues', initialValues)
+    return (
+      <PageTemplate>
+        <MammalForm
+          handleFormSubmit={formOutput => {
+            return createSpecimen(transformOutput(formOutput))
+          }}
+          initialValues={initialValues}
+          mode="register"
+          redirectOnSuccess
+        />
+      </PageTemplate>
+    )
+  }
 }
 
 RegisterMammal.propTypes = propTypes
 
-export default connect(null, mapDispatchToProps)(RegisterMammal)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterMammal)

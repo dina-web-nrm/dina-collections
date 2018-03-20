@@ -8,7 +8,6 @@ module.exports = function validateApiConfig(apiConfigInput = {}) {
   }
 
   const { systemValidate } = apiConfig
-
   const error = systemValidate && systemValidate(apiConfig, apiConfigSchema)
   if (error) {
     throw error
