@@ -5,7 +5,6 @@ import config from 'config'
 
 const propTypes = {
   autoComplete: PropTypes.string,
-  format: PropTypes.func,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   mountHidden: PropTypes.bool,
@@ -18,13 +17,14 @@ const propTypes = {
         .isRequired,
     }).isRequired
   ).isRequired,
+  parse: PropTypes.func,
   selectOnBlur: PropTypes.bool,
 }
 const defaultProps = {
   autoComplete: undefined,
-  format: undefined,
   initialText: '',
   mountHidden: config.isTest,
+  parse: undefined,
   selectOnBlur: false,
 }
 
@@ -43,14 +43,14 @@ class DropdownSearchInput extends Component {
   }
 
   handleOnChange(event, { value }) {
-    const { format } = this.props
+    const { parse } = this.props
 
     this.props.onSearchChange({
       inputName: this.props.input.name,
       searchQuery: value,
     })
-    const formattedValue = format ? format(value) : value
-    this.props.input.onBlur(formattedValue)
+    const parsedValue = parse ? parse(value) : value
+    this.props.input.onBlur(parsedValue)
   }
 
   render() {

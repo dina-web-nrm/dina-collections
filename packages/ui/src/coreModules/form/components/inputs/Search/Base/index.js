@@ -22,6 +22,7 @@ const propTypes = {
         .isRequired,
     }).isRequired
   ).isRequired,
+  parse: PropTypes.func,
   resultRenderer: PropTypes.func,
   searchQuery: PropTypes.string,
 }
@@ -29,6 +30,7 @@ const propTypes = {
 const defaultProps = {
   isLoading: false,
   mountHidden: config.isTest,
+  parse: undefined,
   resultRenderer: DefaultResultRenderer,
   searchQuery: null,
 }
