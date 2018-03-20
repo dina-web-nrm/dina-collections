@@ -5,16 +5,18 @@ const createErrorHandlerMiddleware = require('./middlewares/errorHandler')
 const createLogIncomingMiddleware = require('./middlewares/logIncoming')
 const createDocsMiddleware = require('./middlewares/docs')
 const createPingRouteMiddleware = require('./middlewares/pingRoute')
-const createKeycloakMiddleware = require('./middlewares/keycloak')
+const createAuthenticateMiddleware = require('./middlewares/authenticate')
 
-module.exports = function createApp({ config, openApiSpec, routers } = {}) {
+module.exports = function createApp(
+  { auth, config, openApiSpec, routers } = {}
+) {
   const app = express()
 
   const docsMiddleware = createDocsMiddleware({ openApiSpec })
   const logIncomingMiddleware = createLogIncomingMiddleware()
   const errorHandlerMiddleware = createErrorHandlerMiddleware()
   const pingRouteMiddleware = createPingRouteMiddleware()
-  const keycloakMiddleware = createKeycloakMiddleware({ config })
+  const authenticateMiddleware = createAuthenticateMiddleware({ auth, config })
 
   app.use(responseTime())
   app.use(logIncomingMiddleware)
@@ -29,7 +31,7 @@ module.exports = function createApp({ config, openApiSpec, routers } = {}) {
       type: ['application/vnd.api+json', 'application/json'],
     })
   )
-  app.use(keycloakMiddleware)
+  app.use(authenticateMiddleware)
 
   app.use(pingRouteMiddleware)
 
