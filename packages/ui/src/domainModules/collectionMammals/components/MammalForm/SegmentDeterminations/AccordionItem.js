@@ -12,7 +12,7 @@ import {
   Input,
 } from 'coreModules/form/components'
 
-import { TaxonNameSearchInputWithResults } from 'domainModules/taxonomy/components'
+import { TaxonNameSearchInputWithResults } from 'domainModules/taxonService/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(

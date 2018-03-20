@@ -1,5 +1,5 @@
 /* eslint-disable sort-keys */
-export const taxonomyResponse = {
+export const taxa = {
   data: [
     {
       type: 'taxon',

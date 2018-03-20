@@ -10,7 +10,7 @@ export default createAsyncView({
       import('domainModules/localityService'),
       import('domainModules/specimenService'),
       import('domainModules/storageService'),
-      import('domainModules/taxonomy'),
+      import('domainModules/taxonService'),
       import('domainModules/collectionMammals'),
     ]
   },
