@@ -4,7 +4,7 @@ import * as identifierService from './identifierService'
 import * as localityService from './localityService'
 import * as specimenService from './specimenService'
 import * as storageService from './storageService'
-import * as taxonomy from './taxonomy'
+import * as taxonService from './taxonService'
 
 const modules = [
   curatedListService,
@@ -12,7 +12,7 @@ const modules = [
   localityService,
   specimenService,
   storageService,
-  taxonomy,
+  taxonService,
   collectionMammals,
 ]
 

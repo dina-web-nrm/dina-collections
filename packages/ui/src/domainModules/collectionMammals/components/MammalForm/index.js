@@ -14,7 +14,7 @@ import {
 } from 'redux-form'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
-import { clearTaxonSearch } from 'domainModules/taxonomy/actionCreators'
+import { clearTaxonSearch } from 'domainModules/taxonService/actionCreators'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { MAMMAL_FORM_NAME } from '../../constants'

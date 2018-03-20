@@ -1,8 +1,8 @@
-import { TAXONOMY_UPDATE_SEARCH_FILTER_NAME } from '../actionTypes'
+import { TAXON_SERVICE_UPDATE_SEARCH_FILTER_NAME } from '../actionTypes'
 
 export default function updateTaxonSearchFilterName(filterNameSearchString) {
   return {
     payload: filterNameSearchString,
-    type: TAXONOMY_UPDATE_SEARCH_FILTER_NAME,
+    type: TAXON_SERVICE_UPDATE_SEARCH_FILTER_NAME,
   }
 }
