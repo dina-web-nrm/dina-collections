@@ -57,7 +57,7 @@ module.exports = {
     },
     {
       buildWhere,
-      includeRelations: false,
+      includeRelations: true,
       queryParams: {
         'filter[group]': {
           description: 'Filter by group, example: country',

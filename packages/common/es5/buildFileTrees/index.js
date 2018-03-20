@@ -20,10 +20,6 @@ var fs = require('fs');
 var _require = require('child_process'),
     exec = _require.exec;
 
-var getCurrentTime = function getCurrentTime() {
-  return new Date().toISOString();
-};
-
 var buildLinkContentArray = function buildLinkContentArray(_ref) {
   var name = _ref.name,
       rootRelativePath = _ref.rootRelativePath,
@@ -79,9 +75,8 @@ var buildTreeDocumentation = function buildTreeDocumentation(_ref5) {
     relativePath: relativePath
   }).then(function (treeContentArray) {
     var treeLinks = buildLinkContentArray({ name: name, rootRelativePath: rootRelativePath, trees: trees });
-    var currentTime = getCurrentTime();
 
-    var fileContent = ['# Tree for ' + name, 'Generated at: ' + currentTime, '## Tree'].concat((0, _toConsumableArray3.default)(treeContentArray), ['', '## Links'], (0, _toConsumableArray3.default)(treeLinks)).join('\n');
+    var fileContent = ['# Tree for ' + name, '## Tree'].concat((0, _toConsumableArray3.default)(treeContentArray), ['', '## Links'], (0, _toConsumableArray3.default)(treeLinks)).join('\n');
 
     var filePath = path.join(relativePath, 'tree.md');
     fs.writeFileSync(filePath, fileContent, 'utf8');
