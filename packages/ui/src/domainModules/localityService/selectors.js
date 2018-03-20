@@ -36,7 +36,7 @@ export const getHasCuratedLocalities = createSelector(
   }
 )
 
-const createDropdownSelector = groupFilter => {
+const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
   return createSelector(
     [getCuratedLocalities, getSecondArgument],
     (curatedLocalities, searchQuery = '') => {
@@ -59,12 +59,13 @@ const createDropdownSelector = groupFilter => {
         return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
       })
 
-      return [...firstLetterMatches, ...otherMatches].slice(0, 5)
+      return [...firstLetterMatches, ...otherMatches].slice(0, numberOfResults)
     }
   )
 }
 
-export const getDropdownContinentOptions = createDropdownSelector(CONTINENT)
+// setting 15 so all continents are shown in initial options list
+export const getDropdownContinentOptions = createDropdownSelector(CONTINENT, 15)
 export const getDropdownCountryOptions = createDropdownSelector(COUNTRY)
 export const getDropdownDistrictOptions = createDropdownSelector(DISTRICT)
 export const getDropdownProvinceOptions = createDropdownSelector(PROVINCE)
