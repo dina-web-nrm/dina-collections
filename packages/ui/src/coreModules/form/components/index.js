@@ -1,7 +1,7 @@
 import ButtonCopyPasteField from './migrate/ButtonCopyPasteField'
 import Checkbox from './fields/Checkbox'
 import DisplaySearchResult from './migrate/DisplaySearchResult'
-import Dropdown from './fields/Dropdown'
+import DropdownSearch from './fields/DropdownSearch'
 import Search from './fields/Search'
 import Field from './FieldWrapper'
 import FieldLabel from './FieldTemplate/FieldLabel'
@@ -14,7 +14,7 @@ export {
   ButtonCopyPasteField,
   Checkbox,
   DisplaySearchResult,
-  Dropdown,
+  DropdownSearch,
   Field,
   FieldLabel,
   FormTable,

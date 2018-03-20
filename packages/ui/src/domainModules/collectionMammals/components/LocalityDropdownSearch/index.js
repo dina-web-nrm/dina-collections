@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Dropdown } from 'coreModules/form/components'
+import { DropdownSearch } from 'coreModules/form/components'
 import { connect } from 'react-redux'
 import {
   CONTINENT,
@@ -55,7 +55,7 @@ class LocalityDropdownSearch extends Component {
     }
 
     return (
-      <Dropdown
+      <DropdownSearch
         {...rest}
         getOptions={getDropdownOptions}
         getSearchQuery={mammalSelectors.getLocalityInformationSearchQuery}

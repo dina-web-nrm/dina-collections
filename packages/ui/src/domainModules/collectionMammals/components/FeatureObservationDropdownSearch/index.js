@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
-import { Dropdown } from 'coreModules/form/components'
+import { DropdownSearch } from 'coreModules/form/components'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 
 const log = createLog(
@@ -99,7 +99,7 @@ class FeatureObservationDropdownSearch extends Component {
 
     log.render()
     return (
-      <Dropdown
+      <DropdownSearch
         {...rest}
         format={this.format}
         getOptions={this.getMatchingResults}
