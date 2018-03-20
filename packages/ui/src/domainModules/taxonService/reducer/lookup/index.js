@@ -1,31 +1,31 @@
 import { createSetter } from 'utilities/stateHelper'
 
 import {
-  TAXON_SERVICE_CLEAR_SEARCH,
+  TAXON_SERVICE_CLEAR_SEARCH_QUERY,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
-  TAXON_SERVICE_UPDATE_SEARCH_FILTER_NAME,
+  TAXON_SERVICE_UPDATE_SEARCH_QUERY,
 } from '../../actionTypes'
 
 const setLookupError = createSetter(['error'])
 const setLookupLoading = createSetter(['loading'])
 const setLookupResult = createSetter(['result'])
-const setLookupSearchFilterName = createSetter(['searchFilterName'])
+const setLookupSearchQuery = createSetter(['searchQuery'])
 
 export const getInitialState = () => {
   return {
     error: null,
     loading: false,
     result: [],
-    searchFilterName: null,
+    searchQuery: null,
   }
 }
 
 export default function reducer(state = getInitialState(), action) {
   switch (action.type) {
-    case TAXON_SERVICE_CLEAR_SEARCH: {
-      return setLookupSearchFilterName(setLookupResult(state, []), null)
+    case TAXON_SERVICE_CLEAR_SEARCH_QUERY: {
+      return setLookupSearchQuery(setLookupResult(state, []), null)
     }
 
     case TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST: {
@@ -37,16 +37,19 @@ export default function reducer(state = getInitialState(), action) {
         setLookupLoading(state, false),
         []
       )
-      return setLookupError(emptyResultState, action.payload.error)
+      return setLookupError(emptyResultState, action.payload)
     }
 
     case TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS: {
-      const emptyErrorState = setLookupError(setLookupLoading(state, false), [])
+      const emptyErrorState = setLookupError(
+        setLookupLoading(state, false),
+        null
+      )
       return setLookupResult(emptyErrorState, action.payload || [])
     }
 
-    case TAXON_SERVICE_UPDATE_SEARCH_FILTER_NAME: {
-      return setLookupSearchFilterName(state, action.payload)
+    case TAXON_SERVICE_UPDATE_SEARCH_QUERY: {
+      return setLookupSearchQuery(state, action.payload)
     }
 
     default:

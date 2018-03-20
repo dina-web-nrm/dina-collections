@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
-  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 }
 
-function DefaultAutocompleteResult({ title }) {
-  return <div>{title}</div>
+function DefaultAutocompleteResult({ text }) {
+  return <div>{text}</div>
 }
 
 DefaultAutocompleteResult.propTypes = propTypes

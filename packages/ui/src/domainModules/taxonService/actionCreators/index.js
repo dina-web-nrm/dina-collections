@@ -1,17 +1,17 @@
-import clearTaxonSearch from './clearTaxonSearch'
+import clearTaxonSearchQuery from './clearTaxonSearchQuery'
 import createTaxon from './createTaxon'
 import getTaxaForLookup from './getTaxaForLookup'
 import getTaxaByName from './getTaxaByName'
 import getTaxon from './getTaxon'
 import updateTaxon from './updateTaxon'
-import updateTaxonSearchFilterName from './updateTaxonSearchFilterName'
+import updateTaxonSearchQuery from './updateTaxonSearchQuery'
 
 export {
-  clearTaxonSearch,
+  clearTaxonSearchQuery,
   createTaxon,
   getTaxon,
   getTaxaForLookup,
   getTaxaByName,
   updateTaxon,
-  updateTaxonSearchFilterName,
+  updateTaxonSearchQuery,
 }

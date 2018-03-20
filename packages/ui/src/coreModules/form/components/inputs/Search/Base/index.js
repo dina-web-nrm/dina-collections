@@ -65,8 +65,8 @@ class SearchBase extends Component {
 
   handleResultSelect(event, { result }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    if (result && result.title) {
-      const value = result.title
+    if (result && result.text) {
+      const value = result.text
 
       this.props.input.onBlur(value)
       this.props.onSearchChange(null)
@@ -101,8 +101,8 @@ class SearchBase extends Component {
             {...input}
             name={hiddenInputName}
             onChange={event => {
-              const { value: title } = event.target
-              this.handleResultSelect(event, { result: { title } })
+              const { value: text } = event.target
+              this.handleResultSelect(event, { result: { text } })
             }}
             value={value}
           />

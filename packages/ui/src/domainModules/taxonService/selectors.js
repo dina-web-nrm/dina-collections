@@ -33,21 +33,24 @@ export const getLookupLoading = createSelector(
   lookup => lookup.loading
 )
 
-export const getLookupResult = createSelector(getLookup, lookup =>
-  (lookup.result || []).map(item => {
-    return {
-      key: item.id,
-      title: item.scientificName,
-    }
-  })
+export const getLookupResult = createSelector(getLookup, lookup => {
+  return lookup.result || []
+})
+
+export const getLookupDropdownOptions = createSelector(
+  getLookupResult,
+  lookupResult => {
+    return lookupResult.map(item => {
+      return {
+        key: item.id,
+        text: item.scientificName,
+        value: item.id,
+      }
+    })
+  }
 )
 
-export const getLookupSearch = createSelector(
+export const getLookupSearchQuery = createSelector(
   getLookup,
-  lookup => lookup.search
-)
-
-export const getLookupSearchFilterName = createSelector(
-  getLookup,
-  lookup => lookup.searchFilterName
+  lookup => lookup.searchQuery
 )

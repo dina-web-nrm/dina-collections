@@ -3,13 +3,13 @@ const tryImport = () => {
 }
 
 const expectedActionCreators = [
-  'clearTaxonSearch',
+  'clearTaxonSearchQuery',
   'createTaxon',
   'getTaxaByName',
   'getTaxaForLookup',
   'getTaxon',
   'updateTaxon',
-  'updateTaxonSearchFilterName',
+  'updateTaxonSearchQuery',
 ]
 
 describe('domainModules/taxonService/actionCreators', () => {
