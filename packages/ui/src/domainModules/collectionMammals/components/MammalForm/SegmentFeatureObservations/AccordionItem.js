@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Accordion, Icon } from 'semantic-ui-react'
 
+import config from 'config'
 import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import FeatureObservationsTable from './FeatureObservationsTable'
@@ -24,7 +25,7 @@ class AccordionItem extends PureComponent {
     super(props)
     this.state = {
       loading: false,
-      renderContent: props.active,
+      renderContent: props.active || config.isTest,
     }
   }
 
