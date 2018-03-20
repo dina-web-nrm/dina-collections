@@ -46,7 +46,6 @@ const propTypes = {
   defaultLanguage: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
   rawOptions: PropTypes.array.isRequired,
-  updateSearchQuery: PropTypes.func.isRequired,
 }
 
 class FeatureObservationDropdownSearch extends Component {
