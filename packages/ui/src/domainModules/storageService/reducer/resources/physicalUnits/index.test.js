@@ -114,7 +114,7 @@ describe('domainModules/storageService/reducer/resources/physicalUnits', () => {
       })
     })
 
-    it(`replaces whole state on ${
+    it(`merges previous state with new data on ${
       STORAGE_SERVICE_GET_PHYSICAL_UNITS_SUCCESS
     }`, () => {
       const state = {
@@ -144,6 +144,11 @@ describe('domainModules/storageService/reducer/resources/physicalUnits', () => {
 
       const testValue = reducer(state, action)
       const expectedResult = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
         2: {
           id: '2',
           name: 'Beau',

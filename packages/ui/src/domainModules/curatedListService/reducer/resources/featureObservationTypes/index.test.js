@@ -114,7 +114,7 @@ describe('domainModules/curatedListService/reducer/resources/featureObservationT
       })
     })
 
-    it(`replaces whole state on ${
+    it(`merges previous state with new data on ${
       CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_SUCCESS
     }`, () => {
       const state = {
@@ -144,6 +144,11 @@ describe('domainModules/curatedListService/reducer/resources/featureObservationT
 
       const testValue = reducer(state, action)
       const expectedResult = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
         2: {
           id: '2',
           name: 'Beau',

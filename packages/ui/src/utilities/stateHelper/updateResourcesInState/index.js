@@ -7,11 +7,16 @@ export default function updateResourcesInState(state, action = {}) {
     return state
   }
 
-  const newResourcesMap = action.payload.reduce((idToResourceMap, resource) => {
-    const { id } = resource
-    idToResourceMap[id] = resource // eslint-disable-line no-param-reassign
-    return idToResourceMap
-  }, {})
+  const initialState = { ...state }
 
-  return newResourcesMap
+  const newState = action.payload.reduce((idToResourceMap, resource) => {
+    const { id } = resource
+
+    // this is ok since we did a spread of the state above, so it's a new object
+    idToResourceMap[id] = resource // eslint-disable-line no-param-reassign
+
+    return idToResourceMap
+  }, initialState)
+
+  return newState
 }

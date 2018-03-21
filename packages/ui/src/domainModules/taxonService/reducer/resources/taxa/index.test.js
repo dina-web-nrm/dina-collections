@@ -114,7 +114,7 @@ describe('domainModules/taxonService/reducer/resources/taxa', () => {
       })
     })
 
-    it(`replaces whole state on ${
+    it(`merges previous state with new data on ${
       TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS
     }`, () => {
       const state = {
@@ -144,6 +144,11 @@ describe('domainModules/taxonService/reducer/resources/taxa', () => {
 
       const testValue = reducer(state, action)
       const expectedResult = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
         2: {
           id: '2',
           name: 'Beau',
