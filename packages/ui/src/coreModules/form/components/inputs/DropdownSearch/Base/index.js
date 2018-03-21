@@ -18,14 +18,12 @@ const propTypes = {
     }).isRequired
   ).isRequired,
   parse: PropTypes.func,
-  selectOnBlur: PropTypes.bool,
 }
 const defaultProps = {
   autoComplete: undefined,
   initialText: '',
   mountHidden: config.isTest,
   parse: undefined,
-  selectOnBlur: false,
 }
 
 class DropdownSearchInput extends Component {
@@ -66,7 +64,6 @@ class DropdownSearchInput extends Component {
       input,
       mountHidden,
       options,
-      selectOnBlur,
     } = this.props
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
@@ -78,7 +75,7 @@ class DropdownSearchInput extends Component {
           options={options}
           search
           selection
-          selectOnBlur={selectOnBlur}
+          selectOnBlur={false}
           selectOnNavigation={false}
           text={input.value || initialText}
           {...input}
