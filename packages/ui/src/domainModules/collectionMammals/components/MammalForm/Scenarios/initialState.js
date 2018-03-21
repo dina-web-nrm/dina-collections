@@ -5096,4 +5096,14 @@ export default {
       },
     },
   },
+  taxonService: {
+    resources: {
+      taxa: {
+        '2367': {
+          id: '2367',
+          scientificName: 'Sorex minutus',
+        },
+      },
+    },
+  },
 }

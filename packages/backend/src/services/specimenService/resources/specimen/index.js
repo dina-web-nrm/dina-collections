@@ -44,6 +44,10 @@ module.exports = {
       type: 'getRelationHasMany',
     },
     {
+      relationKey: 'taxa',
+      type: 'getRelationHasMany',
+    },
+    {
       includeRelations: true,
       type: 'getOne',
     },
@@ -96,6 +100,11 @@ module.exports = {
     physicalUnits: {
       format: 'array',
       resource: 'physicalUnit',
+      storeInDocument: true,
+    },
+    taxa: {
+      format: 'array',
+      resource: 'taxon',
       storeInDocument: true,
     },
   },

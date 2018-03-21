@@ -9,11 +9,16 @@ export default function transformTaxonInformation(taxonInformation) {
     return INITIAL_VALUES.taxonInformation
   }
 
+  const { determinations, taxa } = transformDeterminations(
+    taxonInformation.determinations ||
+      INITIAL_VALUES.taxonInformation.determinations
+  )
+
   return {
-    ...taxonInformation,
-    determinations: transformDeterminations(
-      taxonInformation.determinations ||
-        INITIAL_VALUES.taxonInformation.determinations
-    ),
+    taxa,
+    taxonInformation: {
+      ...taxonInformation,
+      determinations,
+    },
   }
 }

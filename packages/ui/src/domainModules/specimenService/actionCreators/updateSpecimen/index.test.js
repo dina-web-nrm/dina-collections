@@ -41,8 +41,15 @@ describe('domainModules/specimenService/actionCreators/updateSpecimen', () => {
   it(`calls updateSpecimen with correct body`, () => {
     const operationId = 'updateSpecimen'
     const id = '123'
+    const taxon = { id: '2367', type: 'taxon' }
     const attributes = {
-      individualGroup: { distinguishedUnits: [], identifiers: [] },
+      individualGroup: {
+        distinguishedUnits: [],
+        identifiers: [],
+        taxonInformation: {
+          determinations: [{ taxon }],
+        },
+      },
     }
     const specimen = {
       id,
@@ -60,7 +67,7 @@ describe('domainModules/specimenService/actionCreators/updateSpecimen', () => {
       },
     })
 
-    const testAction = updateSpecimen({ id, specimen })
+    const testAction = updateSpecimen({ id, specimen, taxa: [taxon] })
     const expectedCallParams = {
       body: {
         data: {
@@ -74,6 +81,9 @@ describe('domainModules/specimenService/actionCreators/updateSpecimen', () => {
             },
             physicalUnits: {
               data: [],
+            },
+            taxa: {
+              data: [{ id: '2367', type: 'taxon' }],
             },
           },
           type: SPECIMEN,
