@@ -2,7 +2,6 @@
 import path from 'path'
 import fs from 'fs'
 import validateAgainstSchema from 'common/es5/jsonSchema/validateAgainstSchema'
-import isDinaError from 'common/es5/error//utilities/isDinaError'
 import { createApiClient } from 'common/es5/apiClient'
 import { testNotificationSpecification } from 'coreModules/notifications/utilities'
 
@@ -81,55 +80,6 @@ const testComponents = moduleBasePath => {
   })
 }
 
-const testEndpoint = (apiClient, endpoint) => {
-  const { methodName, operationId, pathname } = endpoint
-  it(`Mock call ${operationId} ${methodName.toUpperCase()} ${
-    pathname
-  } success`, () => {
-    return expect(
-      apiClient.call(endpoint).catch(err => {
-        if (err.stack) {
-          throw err.stack
-        }
-
-        if (isDinaError(err) && err.error) {
-          const formattedError = {
-            message: JSON.stringify(err, null, 2),
-          }
-          throw formattedError
-        }
-        throw err
-      })
-    ).resolves.toBeTruthy()
-  })
-
-  it(`Mock call with wrong response data: ${
-    operationId
-  } ${methodName.toUpperCase()} ${pathname} fails`, () => {
-    const fakeDataEndpoint = {
-      ...endpoint,
-      mock: () => {
-        return {
-          data: {
-            a: 2,
-            b: 3,
-          },
-        }
-      },
-    }
-
-    return expect(apiClient.call(fakeDataEndpoint)).rejects.toBeTruthy()
-  })
-}
-
-const testEndpoints = endpoints => {
-  const apiClient = createApiMockClient()
-  Object.keys(endpoints).forEach(key => {
-    const endpoint = endpoints[key]
-    testEndpoint(apiClient, endpoint)
-  })
-}
-
 const testNotifications = notifications => {
   describe('notifications', () => {
     Object.keys(notifications).forEach(notificationType => {
@@ -174,10 +124,6 @@ const testModuleInFolder = ({
 
       if (module.components) {
         testComponents(moduleBasePath)
-      }
-
-      if (module.endpoints) {
-        testEndpoints(module.endpoints)
       }
 
       if (module.notifications) {
