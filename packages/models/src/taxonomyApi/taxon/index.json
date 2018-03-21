@@ -1,6 +1,12 @@
 {
   "additionalProperties": false,
   "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
     "rubinNumber": {
       "type": "string",
       "description": "Rubin storage number for the taxon"
@@ -94,10 +100,5 @@
       "type": "string",
       "description": "Taxonomical sort order code from Mammal Species of the World list"
     }
-  },
-  "required": [
-    "rank",
-    "scientificName",
-    "validName"
-  ]
+  }
 }

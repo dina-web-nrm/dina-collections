@@ -2481,7 +2481,8 @@
             "example": [
               "curatedLocalities",
               "featureObservationTypes",
-              "physicalUnits"
+              "physicalUnits",
+              "taxa"
             ],
             "schema": {
               "items": {
@@ -2489,7 +2490,8 @@
                   "all",
                   "curatedLocalities",
                   "featureObservationTypes",
-                  "physicalUnits"
+                  "physicalUnits",
+                  "taxa"
                 ],
                 "type": "string"
               },
@@ -2691,7 +2693,8 @@
             "example": [
               "curatedLocalities",
               "featureObservationTypes",
-              "physicalUnits"
+              "physicalUnits",
+              "taxa"
             ],
             "schema": {
               "items": {
@@ -2699,7 +2702,8 @@
                   "all",
                   "curatedLocalities",
                   "featureObservationTypes",
-                  "physicalUnits"
+                  "physicalUnits",
+                  "taxa"
                 ],
                 "type": "string"
               },
@@ -3295,6 +3299,92 @@
           }
         ],
         "summary": "Find specimen -> curatedLocalities",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/specimens/{id}/relationships/taxa": {
+      "get": {
+        "operationId": "getSpecimenTaxa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "specimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenTaxaResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenTaxa-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenTaxa-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getSpecimenTaxa-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find specimen -> taxa",
         "tags": [
           "specimenService"
         ]
@@ -5799,13 +5889,8 @@
           "date": {
             "$ref": "#/components/schemas/date"
           },
-          "taxonNameStandardized": {
-            "type": "string",
-            "description": "Should be a taxon reference",
-            "example": "Chironectes minimus"
-          },
           "taxon": {
-            "$ref": "#/components/schemas/individualGroup"
+            "$ref": "#/components/schemas/externalModelReference"
           },
           "isCurrentDetermination": {
             "type": "boolean",
@@ -6208,6 +6293,12 @@
       "taxon": {
         "additionalProperties": false,
         "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
           "rubinNumber": {
             "type": "string",
             "description": "Rubin storage number for the taxon"
@@ -6302,11 +6393,6 @@
             "description": "Taxonomical sort order code from Mammal Species of the World list"
           }
         },
-        "required": [
-          "rank",
-          "scientificName",
-          "validName"
-        ],
         "x-category": "taxonomyApi",
         "x-modelType": "model",
         "description": ""
@@ -8561,6 +8647,81 @@
         "type": "object"
       },
       "getSpecimenCuratedLocalities-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getSpecimenTaxa-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getSpecimenTaxa-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getSpecimenTaxa-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -10855,6 +11016,32 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "taxa": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -11537,6 +11724,32 @@
                                 "physicalUnit"
                               ],
                               "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "taxa": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
                               "type": "string"
                             }
                           },
@@ -13728,6 +13941,32 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "taxa": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -13844,6 +14083,32 @@
                                 "physicalUnit"
                               ],
                               "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "taxa": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
                               "type": "string"
                             }
                           },
@@ -14162,6 +14427,52 @@
         "x-examples": {},
         "description": ""
       },
+      "getSpecimenTaxaResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/taxon"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "taxon",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "jsonapi": {
+            "type": "object"
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/taxa",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object"
+          },
+          "meta": {
+            "type": "object"
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "description": ""
+      },
       "getSpecimenResponse": {
         "additionalProperties": false,
         "properties": {
@@ -14245,6 +14556,32 @@
                                 "physicalUnit"
                               ],
                               "example": "physicalUnit",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "taxa": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
                               "type": "string"
                             }
                           },
@@ -14381,6 +14718,32 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "taxa": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxon"
+                                ],
+                                "example": "taxon",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "type": "object"
@@ -14508,6 +14871,32 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "taxa": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxon"
+                              ],
+                              "example": "taxon",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -14626,6 +15015,32 @@
                                   "physicalUnit"
                                 ],
                                 "example": "physicalUnit",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "taxa": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxon"
+                                ],
+                                "example": "taxon",
                                 "type": "string"
                               }
                             },
