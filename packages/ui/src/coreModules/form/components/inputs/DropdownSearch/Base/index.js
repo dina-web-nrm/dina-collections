@@ -40,6 +40,11 @@ class DropdownSearchInput extends Component {
       inputName: this.props.input.name,
       searchQuery,
     })
+
+    if (this.props.input.value) {
+      // empty form value, if search is renewed after a value was selected
+      this.props.input.onChange('')
+    }
   }
 
   handleOnChange(event, { value }) {
@@ -47,8 +52,9 @@ class DropdownSearchInput extends Component {
 
     this.props.onSearchChange({
       inputName: this.props.input.name,
-      searchQuery: value,
+      searchQuery: undefined,
     })
+
     const parsedValue = parse ? parse(value) : value
     this.props.input.onBlur(parsedValue)
   }
