@@ -9,7 +9,9 @@ import { GET_TAXA_BY_NAME } from '../../endpoints'
 
 export default function getTaxa({ queryParams = {}, throwError = true } = {}) {
   return (dispatch, getState, { apiClient }) => {
+    const meta = { queryParams }
     dispatch({
+      meta,
       type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
     })
 
@@ -17,6 +19,7 @@ export default function getTaxa({ queryParams = {}, throwError = true } = {}) {
       response => {
         const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
+          meta,
           payload: transformedResponse,
           type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
         })
@@ -25,6 +28,7 @@ export default function getTaxa({ queryParams = {}, throwError = true } = {}) {
       error => {
         dispatch({
           error: true,
+          meta,
           payload: error,
           type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
         })

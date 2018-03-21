@@ -11,7 +11,9 @@ export default function getTaxaByName(
   { queryParams = {}, throwError = false } = {}
 ) {
   return (dispatch, getState, { apiClient }) => {
+    const meta = { queryParams }
     dispatch({
+      meta,
       type: TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
     })
 
@@ -19,6 +21,7 @@ export default function getTaxaByName(
       response => {
         const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
+          meta,
           payload: transformedResponse,
           type: TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
         })
@@ -27,6 +30,7 @@ export default function getTaxaByName(
       error => {
         dispatch({
           error: true,
+          meta,
           payload: error,
           type: TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
         })
