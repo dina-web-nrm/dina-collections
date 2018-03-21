@@ -13,6 +13,7 @@ import {
 } from 'coreModules/form/components'
 
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxonService/components'
+import taxonSelectors from 'domainModules/taxonService/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
@@ -93,7 +94,7 @@ class AccordionItem extends Component {
       .filter(str => !!str)
       .join(', ')
 
-    const taxonNameFieldKey = getPath('taxonNameStandardized')
+    const taxonIdFieldKey = getPath('taxon.id')
 
     log.render()
     return [
@@ -133,7 +134,7 @@ class AccordionItem extends Component {
                 component={TaxonNameSearchInputWithResults}
                 label={moduleTranslate({ textKey: 'taxonName' })}
                 module="collectionMammals"
-                name={taxonNameFieldKey}
+                name={taxonIdFieldKey}
                 type="text"
               />
             </Grid.Column>
@@ -141,10 +142,16 @@ class AccordionItem extends Component {
               <ButtonCopyPasteField
                 arrowIcon={`${isSmallScreen ? 'down' : 'right'} arrow`}
                 changeFieldValue={changeFieldValue}
-                copyField={taxonNameFieldKey}
+                copyField={taxonIdFieldKey}
                 fluid={!isSmallScreen}
-                formValueSelector={formValueSelector}
                 label={moduleTranslate({ textKey: 'copyToVerbatim' })}
+                newValueSelector={state => {
+                  const taxon = taxonSelectors.getTaxon(
+                    state,
+                    formValueSelector(state, taxonIdFieldKey)
+                  )
+                  return taxon && taxon.scientificName
+                }}
                 pasteField={getPath('determinationVerbatim')}
               />
             </Grid.Column>

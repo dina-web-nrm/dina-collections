@@ -5,9 +5,14 @@ import { Button, Form, Icon } from 'semantic-ui-react'
 
 import FieldLabel from '../FieldTemplate/FieldLabel'
 
-const mapStateToProps = (state, { copyField, formValueSelector }) => {
+const mapStateToProps = (
+  state,
+  { copyField, newValueSelector, formValueSelector }
+) => {
   return {
-    copyValue: formValueSelector(state, copyField),
+    copyValue:
+      (newValueSelector && newValueSelector(state)) ||
+      (formValueSelector && formValueSelector(state, copyField)),
   }
 }
 
@@ -21,7 +26,7 @@ const propTypes = {
   buttonClassNames: PropTypes.string,
   buttonText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   changeFieldValue: PropTypes.func.isRequired,
-  copyField: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
+  copyField: PropTypes.string.isRequired,
   copyValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   fluid: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
