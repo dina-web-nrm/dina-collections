@@ -2,6 +2,7 @@ import { createSelector } from 'reselect'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import { MODULE_NAME } from './constants'
+import { mapTaxonToOption } from './utilities'
 
 export const getLocalState = state => {
   return state[MODULE_NAME]
@@ -15,12 +16,13 @@ export const getTaxa = createSelector(getResources, resources => {
   return resources.taxa
 })
 
-export const getTaxon = createSelector(
-  [getTaxa, getSecondArgument],
-  (taxa, id) => {
-    return taxa[id]
-  }
-)
+export const getTaxon = (state, id) => {
+  return getTaxa(state)[id]
+}
+
+export const getTaxonOption = createSelector(getTaxon, taxon => {
+  return taxon && mapTaxonToOption(taxon)
+})
 
 export const getLookup = state => {
   return state.lookup
@@ -40,17 +42,16 @@ export const getLookupResult = createSelector(getLookup, lookup => {
 export const getLookupDropdownOptions = createSelector(
   getLookupResult,
   lookupResult => {
-    return lookupResult.map(item => {
-      return {
-        key: item.id,
-        text: item.scientificName,
-        value: item.id,
-      }
-    })
+    return lookupResult.map(mapTaxonToOption)
   }
 )
 
-export const getLookupSearchQuery = createSelector(
+export const getLookupSearchQueries = createSelector(
   getLookup,
-  lookup => lookup.searchQuery
+  lookup => lookup.searchQueries
+)
+
+export const getLookupSearchQuery = createSelector(
+  [getLookupSearchQueries, getSecondArgument],
+  (searchQueries, inputName) => searchQueries[inputName]
 )
