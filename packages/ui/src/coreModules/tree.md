@@ -142,13 +142,13 @@
 │   │   │   └── index.js
 │   │   ├── fields
 │   │   │   ├── Checkbox
-│   │   │   ├── Dropdown
+│   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   └── Search
 │   │   ├── index.js
 │   │   ├── inputs
 │   │   │   ├── Checkbox
-│   │   │   ├── Dropdown
+│   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   └── Search
 │   │   └── migrate
@@ -165,7 +165,9 @@
 │   ├── index.js
 │   ├── notifications
 │   │   └── index.js
-│   └── reducer.js
+│   ├── reducer.js
+│   └── utilities
+│       └── createInputTest.js
 ├── i18n
 │   ├── actionCreators
 │   │   ├── index.js
