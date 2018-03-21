@@ -1,7 +1,6 @@
 import { createSetter } from 'utilities/stateHelper'
 
 import {
-  TAXON_SERVICE_CLEAR_SEARCH_QUERY,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
@@ -24,10 +23,6 @@ export const getInitialState = () => {
 
 export default function reducer(state = getInitialState(), action) {
   switch (action.type) {
-    case TAXON_SERVICE_CLEAR_SEARCH_QUERY: {
-      return setLookupSearchQuery(setLookupResult(state, []), null)
-    }
-
     case TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST: {
       return setLookupLoading(state, true)
     }

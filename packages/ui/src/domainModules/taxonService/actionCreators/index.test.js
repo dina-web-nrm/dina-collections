@@ -3,7 +3,6 @@ const tryImport = () => {
 }
 
 const expectedActionCreators = [
-  'clearTaxonSearchQuery',
   'createTaxon',
   'getTaxaByName',
   'getTaxaForLookup',
