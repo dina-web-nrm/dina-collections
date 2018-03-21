@@ -25,6 +25,7 @@ const propTypes = {
   parse: PropTypes.func,
   resultRenderer: PropTypes.func,
   searchQuery: PropTypes.string,
+  text: PropTypes.string,
 }
 
 const defaultProps = {
@@ -33,31 +34,22 @@ const defaultProps = {
   parse: undefined,
   resultRenderer: DefaultResultRenderer,
   searchQuery: null,
+  text: undefined,
 }
 
 class SearchBase extends Component {
   constructor(props) {
     super(props)
-    this.getValue = this.getValue.bind(this)
     this.handleResultSelect = this.handleResultSelect.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
-  getValue() {
-    const { input: { value }, searchQuery } = this.props
-
-    const searchIsNotNull = searchQuery !== null
-
-    if (searchIsNotNull) {
-      return searchQuery
-    }
-
-    return value || ''
-  }
-
   handleSearchChange(event, { value }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    this.props.onSearchChange(value)
+    this.props.onSearchChange({
+      inputName: this.props.input.name,
+      searchQuery: value,
+    })
 
     if (this.props.input.value) {
       // empty form value, if search is renewed after taxonName selected
@@ -65,14 +57,17 @@ class SearchBase extends Component {
     }
   }
 
-  handleResultSelect(event, { result }) {
+  handleResultSelect(event, { result: { value } }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    if (result && result.text) {
-      const value = result.text
+    const { parse } = this.props
 
-      this.props.input.onBlur(value)
-      this.props.onSearchChange(null)
-    }
+    this.props.onSearchChange({
+      inputName: this.props.input.name,
+      searchQuery: undefined,
+    })
+
+    const parsedValue = parse ? parse(value) : value
+    this.props.input.onBlur(parsedValue)
   }
 
   render() {
@@ -82,9 +77,11 @@ class SearchBase extends Component {
       resultRenderer,
       mountHidden,
       options,
+      searchQuery,
+      text,
     } = this.props
+
     const hiddenInputName = `${input.name}.hidden`
-    const value = this.getValue()
 
     return (
       <React.Fragment>
@@ -95,7 +92,8 @@ class SearchBase extends Component {
           resultRenderer={resultRenderer}
           results={options}
           {...input}
-          value={value}
+          onBlur={undefined}
+          value={searchQuery || text}
         />
         {mountHidden && (
           <input
@@ -103,10 +101,10 @@ class SearchBase extends Component {
             {...input}
             name={hiddenInputName}
             onChange={event => {
-              const { value: text } = event.target
-              this.handleResultSelect(event, { result: { text } })
+              this.handleResultSelect(event, {
+                result: { value: event.target.value },
+              })
             }}
-            value={value}
           />
         )}
       </React.Fragment>
