@@ -10,14 +10,13 @@ import {
 const setLookupError = createSetter(['error'])
 const setLookupLoading = createSetter(['loading'])
 const setLookupResult = createSetter(['result'])
-const setLookupSearchQuery = createSetter(['searchQuery'])
 
 export const getInitialState = () => {
   return {
     error: null,
     loading: false,
     result: [],
-    searchQuery: null,
+    searchQueries: {},
   }
 }
 
@@ -44,7 +43,13 @@ export default function reducer(state = getInitialState(), action) {
     }
 
     case TAXON_SERVICE_UPDATE_SEARCH_QUERY: {
-      return setLookupSearchQuery(state, action.payload)
+      return {
+        ...state,
+        searchQueries: {
+          ...state.searchQueries,
+          [action.meta.inputName]: action.payload,
+        },
+      }
     }
 
     default:

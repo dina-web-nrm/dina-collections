@@ -23,7 +23,7 @@ describe('domainModules/taxonService/reducer/lookup', () => {
         error: null,
         loading: false,
         result: [],
-        searchQuery: null,
+        searchQueries: {},
       }
 
       expect(testValue).toEqual(expectedResult)
@@ -112,15 +112,16 @@ describe('domainModules/taxonService/reducer/lookup', () => {
     describe(TAXON_SERVICE_UPDATE_SEARCH_QUERY, () => {
       it('updates searchQuery', () => {
         const state = {
-          searchQuery: null,
+          searchQueries: {},
         }
         deepFreeze(state)
         const action = {
+          meta: { inputName: 'taxon.1' },
           payload: 'mouse',
           type: TAXON_SERVICE_UPDATE_SEARCH_QUERY,
         }
         const expectedState = {
-          searchQuery: 'mouse',
+          searchQueries: { 'taxon.1': 'mouse' },
         }
 
         expect(reducer(state, action)).toEqual(expectedState)

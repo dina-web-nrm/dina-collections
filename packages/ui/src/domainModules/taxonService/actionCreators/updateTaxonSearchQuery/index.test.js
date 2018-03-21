@@ -2,10 +2,12 @@ import updateTaxonSearchQuery from './index'
 
 describe('domainModules/taxonService/actionCreators/updateTaxonSearchQuery', () => {
   it('returns action', () => {
+    const inputName = 'taxon.2'
     const searchQuery = 'bat'
-    const testValue = updateTaxonSearchQuery(searchQuery)
+    const testValue = updateTaxonSearchQuery({ inputName, searchQuery })
     const expectedResult = {
-      payload: searchQuery,
+      meta: { inputName: 'taxon.2' },
+      payload: 'bat',
       type: 'TAXON_SERVICE_UPDATE_SEARCH_QUERY',
     }
 
