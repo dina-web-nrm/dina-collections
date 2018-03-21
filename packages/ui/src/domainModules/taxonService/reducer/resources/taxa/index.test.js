@@ -6,6 +6,7 @@ import {
   TAXON_SERVICE_CREATE_TAXON_SUCCESS,
   TAXON_SERVICE_GET_TAXON_SUCCESS,
   TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+  TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
   TAXON_SERVICE_UPDATE_TAXON_SUCCESS,
 } from '../../../actionTypes'
 
@@ -140,6 +141,56 @@ describe('domainModules/taxonService/reducer/resources/taxa', () => {
           },
         ],
         type: TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+      }
+
+      const testValue = reducer(state, action)
+      const expectedResult = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
+        2: {
+          id: '2',
+          name: 'Beau',
+          type: 'type',
+        },
+        3: {
+          id: '3',
+          name: 'Celine',
+          type: 'type',
+        },
+      }
+
+      expect(testValue).toEqual(expectedResult)
+    })
+
+    it(`merges previous state with new data on ${
+      TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS
+    }`, () => {
+      const state = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
+      }
+      deepFreeze(state)
+
+      const action = {
+        payload: [
+          {
+            id: '2',
+            name: 'Beau',
+            type: 'type',
+          },
+          {
+            id: '3',
+            name: 'Celine',
+            type: 'type',
+          },
+        ],
+        type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
       }
 
       const testValue = reducer(state, action)
