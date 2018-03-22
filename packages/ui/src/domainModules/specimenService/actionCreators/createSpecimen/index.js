@@ -19,6 +19,7 @@ export default function createSpecimen(
     featureObservationTypes = [],
     physicalUnits = [],
     specimen,
+    taxa = [],
     throwError = true,
   } = {}
 ) {
@@ -30,6 +31,7 @@ export default function createSpecimen(
     featureObservationTypes,
     individualGroup,
     physicalUnits,
+    taxa,
   }
 
   return (dispatch, getState, { apiClient }) => {
@@ -43,6 +45,7 @@ export default function createSpecimen(
         featureObservationTypes,
         individualGroup,
         savedPhysicalUnits,
+        taxa,
       })
 
       dispatch({

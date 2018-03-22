@@ -6,6 +6,7 @@ export const buildSpecimenBody = ({
   featureObservationTypes,
   individualGroup,
   savedPhysicalUnits,
+  taxa,
 }) => {
   const cleanedPhysicalUnits = savedPhysicalUnits.map(({ id }) => {
     return {
@@ -40,6 +41,9 @@ export const buildSpecimenBody = ({
         },
         physicalUnits: {
           data: cleanedPhysicalUnits,
+        },
+        taxa: {
+          data: taxa,
         },
       },
       type: SPECIMEN,

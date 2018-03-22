@@ -12,18 +12,12 @@
 │   │       └── localityInformation
 │   ├── actionCreators
 │   │   ├── clearSearchParameters.js
-│   │   ├── createSpecimen.js
-│   │   ├── getIndividualGroupByCatalogNumber.js
-│   │   ├── getSpecimen.js
 │   │   ├── index.js
 │   │   ├── lookupMammals.js
 │   │   ├── setAccordionActiveIndex.js
 │   │   ├── updateFeatureObservationSearchQuery.js
 │   │   ├── updateLocalityInformationSearchQuery.js
-│   │   ├── updateSearchParameter.js
-│   │   ├── updateSpecimen.js
-│   │   └── utilities
-│   │       └── buildSpecimenBody.js
+│   │   └── updateSearchParameter.js
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── FeatureObservationDropdownSearch
@@ -41,7 +35,6 @@
 │   │   │   ├── SegmentFeatureObservations
 │   │   │   ├── SegmentIndividualCircumstances
 │   │   │   ├── SegmentOther
-│   │   │   ├── WIP\ object\ shapes
 │   │   │   ├── index.js
 │   │   │   └── transformations
 │   │   └── index.js
@@ -166,6 +159,45 @@
 │   │       └── index.test.js
 │   ├── selectors.js
 │   └── selectors.test.js
+├── specimenService
+│   ├── actionCreators
+│   │   ├── createSpecimen
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getSpecimen
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getSpecimens
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── updateSpecimen
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── actionTypes.js
+│   ├── actionTypes.test.js
+│   ├── constants.js
+│   ├── constants.test.js
+│   ├── endpoints.js
+│   ├── endpoints.test.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
+│   ├── index.js
+│   ├── index.test.js
+│   ├── mockData.js
+│   ├── mockData.test.js
+│   ├── reducer
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   └── resources
+│   │       ├── index.js
+│   │       ├── index.test.js
+│   │       └── specimens
+│   ├── selectors.js
+│   ├── selectors.test.js
+│   ├── utilities.js
+│   └── utilities.test.js
 ├── storageService
 │   ├── actionCreators
 │   │   ├── createPhysicalUnit
@@ -214,25 +246,57 @@
 │   │       └── storageLocations
 │   ├── selectors.js
 │   └── selectors.test.js
-├── taxonomy
+├── taxonService
 │   ├── actionCreators
-│   │   ├── clearTaxonSearch.js
-│   │   ├── fetchTaxonSearchResults.js
+│   │   ├── createTaxon
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getTaxaByName
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getTaxaForLookup
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getTaxon
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
 │   │   ├── index.js
-│   │   └── updateTaxonSearchFilterName.js
+│   │   ├── index.test.js
+│   │   ├── updateTaxon
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   └── updateTaxonSearchQuery
+│   │       ├── index.js
+│   │       └── index.test.js
 │   ├── actionTypes.js
+│   ├── actionTypes.test.js
 │   ├── components
 │   │   ├── TaxonNameSearchInputWithResults
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
+│   ├── constants.test.js
 │   ├── endpoints.js
+│   ├── endpoints.test.js
 │   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
 │   ├── index.js
+│   ├── index.test.js
 │   ├── middleware.js
 │   ├── mockData.js
-│   ├── reducer.js
-│   └── selectors.js
+│   ├── mockData.test.js
+│   ├── reducer
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   ├── lookup
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   └── resources
+│   │       ├── index.js
+│   │       ├── index.test.js
+│   │       └── taxa
+│   ├── selectors.js
+│   └── selectors.test.js
 └── tree.md
 
 ```

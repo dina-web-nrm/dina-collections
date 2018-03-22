@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes'
 
 const expectedActionTypeValues = [
-  'TAXON_SERVICE_CLEAR_SEARCH_QUERY',
   'TAXON_SERVICE_CREATE_TAXON_FAIL',
   'TAXON_SERVICE_CREATE_TAXON_REQUEST',
   'TAXON_SERVICE_CREATE_TAXON_SUCCESS',

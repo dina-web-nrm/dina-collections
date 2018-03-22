@@ -5,7 +5,6 @@ import config from 'config'
 
 const propTypes = {
   autoComplete: PropTypes.string,
-  format: PropTypes.func,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   mountHidden: PropTypes.bool,
@@ -18,14 +17,13 @@ const propTypes = {
         .isRequired,
     }).isRequired
   ).isRequired,
-  selectOnBlur: PropTypes.bool,
+  parse: PropTypes.func,
 }
 const defaultProps = {
   autoComplete: undefined,
-  format: undefined,
   initialText: '',
   mountHidden: config.isTest,
-  selectOnBlur: false,
+  parse: undefined,
 }
 
 class DropdownSearchInput extends Component {
@@ -40,17 +38,23 @@ class DropdownSearchInput extends Component {
       inputName: this.props.input.name,
       searchQuery,
     })
+
+    if (this.props.input.value) {
+      // empty form value, if search is renewed after a value was selected
+      this.props.input.onChange('')
+    }
   }
 
   handleOnChange(event, { value }) {
-    const { format } = this.props
+    const { parse } = this.props
 
     this.props.onSearchChange({
       inputName: this.props.input.name,
-      searchQuery: value,
+      searchQuery: undefined,
     })
-    const formattedValue = format ? format(value) : value
-    this.props.input.onBlur(formattedValue)
+
+    const parsedValue = parse ? parse(value) : value
+    this.props.input.onBlur(parsedValue)
   }
 
   render() {
@@ -60,7 +64,6 @@ class DropdownSearchInput extends Component {
       input,
       mountHidden,
       options,
-      selectOnBlur,
     } = this.props
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
@@ -72,7 +75,7 @@ class DropdownSearchInput extends Component {
           options={options}
           search
           selection
-          selectOnBlur={selectOnBlur}
+          selectOnBlur={false}
           selectOnNavigation={false}
           text={input.value || initialText}
           {...input}

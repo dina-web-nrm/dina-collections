@@ -17,8 +17,8 @@ const mutations = [
   { name: 'taxonInformation.determinations.0.remarks', value: 'remarks' },
 
   {
-    name: 'taxonInformation.determinations.0.taxonNameStandardized.hidden',
-    value: 'Sorex minutus',
+    name: 'taxonInformation.determinations.0.taxon.id.hidden',
+    value: '2367',
   },
   {
     name: 'featureObservations.1.date',
@@ -271,12 +271,21 @@ const expectedOutput = {
             determinedByAgentText: 'determinedByAgentText',
             isCurrentDetermination: true,
             remarks: 'remarks',
-            taxonNameStandardized: 'Sorex minutus',
+            taxon: {
+              id: '2367',
+              type: 'taxon',
+            },
           },
         ],
       },
     },
   },
+  taxa: [
+    {
+      id: '2367',
+      type: 'taxon',
+    },
+  ],
 }
 
 const postSubmitTest = ({ submitResult }) => {

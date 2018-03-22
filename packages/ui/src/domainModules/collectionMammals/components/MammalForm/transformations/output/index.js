@@ -11,7 +11,9 @@ export default function transformOutput(formData) {
     Math.floor(Math.random() * (999999 - 100001) + 100000)
   )
 
-  const taxonInformation = transformTaxonInformation(formData.taxonInformation)
+  const { taxa, taxonInformation } = transformTaxonInformation(
+    formData.taxonInformation
+  )
 
   const identifiers = transformIdentifiers(
     formData.identifiers,
@@ -48,5 +50,6 @@ export default function transformOutput(formData) {
     specimen: {
       individualGroup,
     },
+    taxa,
   }
 }

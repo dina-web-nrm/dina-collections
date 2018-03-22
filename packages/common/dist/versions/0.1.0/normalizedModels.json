@@ -634,13 +634,8 @@
       "date": {
         "$ref": "date"
       },
-      "taxonNameStandardized": {
-        "type": "string",
-        "description": "Should be a taxon reference",
-        "example": "Chironectes minimus"
-      },
       "taxon": {
-        "$ref": "individualGroup"
+        "$ref": "externalModelReference"
       },
       "isCurrentDetermination": {
         "type": "boolean",
@@ -965,6 +960,17 @@
                 }
               }
             }
+          },
+          "taxa": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
           }
         }
       },
@@ -1096,6 +1102,12 @@
   "taxon": {
     "additionalProperties": false,
     "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
       "rubinNumber": {
         "type": "string",
         "description": "Rubin storage number for the taxon"
@@ -1190,11 +1202,6 @@
         "description": "Taxonomical sort order code from Mammal Species of the World list"
       }
     },
-    "required": [
-      "rank",
-      "scientificName",
-      "validName"
-    ],
     "x-category": "taxonomyApi",
     "x-modelType": "model",
     "description": "",
@@ -2728,6 +2735,32 @@
                   }
                 },
                 "type": "object"
+              },
+              "taxa": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -2844,6 +2877,32 @@
                             "physicalUnit"
                           ],
                           "example": "physicalUnit",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "taxa": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
                           "type": "string"
                         }
                       },
@@ -3162,6 +3221,52 @@
     "x-examples": {},
     "description": ""
   },
+  "getSpecimenTaxaResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "taxon"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "taxon",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array"
+      },
+      "jsonapi": {
+        "type": "object"
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/taxa",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object"
+      },
+      "meta": {
+        "type": "object"
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "description": ""
+  },
   "getSpecimenResponse": {
     "additionalProperties": false,
     "properties": {
@@ -3245,6 +3350,32 @@
                             "physicalUnit"
                           ],
                           "example": "physicalUnit",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "taxa": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
                           "type": "string"
                         }
                       },
@@ -3381,6 +3512,32 @@
                     }
                   },
                   "type": "object"
+                },
+                "taxa": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
                 }
               },
               "type": "object"
@@ -3508,6 +3665,32 @@
                   }
                 },
                 "type": "object"
+              },
+              "taxa": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -3626,6 +3809,32 @@
                               "physicalUnit"
                             ],
                             "example": "physicalUnit",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "taxa": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
                             "type": "string"
                           }
                         },
@@ -5922,6 +6131,32 @@
                   }
                 },
                 "type": "object"
+              },
+              "taxa": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -6604,6 +6839,32 @@
                             "physicalUnit"
                           ],
                           "example": "physicalUnit",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "taxa": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
                           "type": "string"
                         }
                       },

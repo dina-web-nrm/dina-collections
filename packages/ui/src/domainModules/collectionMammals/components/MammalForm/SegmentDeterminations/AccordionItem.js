@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { connect } from 'react-redux'
 import { Accordion, Button, Grid, Icon, Popup } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
@@ -13,11 +14,22 @@ import {
 } from 'coreModules/form/components'
 
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxonService/components'
+import taxonSelectors from 'domainModules/taxonService/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentDeterminations:AccordionItem'
 )
+
+const mapStateToProps = (state, { determination }) => {
+  const { taxon } = determination
+  const taxonResource =
+    taxon && taxon.id && taxonSelectors.getTaxon(state, taxon.id)
+
+  return {
+    taxonName: taxonResource && taxonResource.scientificName,
+  }
+}
 
 const propTypes = {
   active: PropTypes.bool.isRequired,
@@ -27,7 +39,7 @@ const propTypes = {
     determinedByAgentText: PropTypes.string,
     isCurrentDetermination: PropTypes.bool,
     remarks: PropTypes.string,
-    taxonNameStandardized: PropTypes.string,
+    taxon: PropTypes.string,
   }),
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
@@ -39,9 +51,11 @@ const propTypes = {
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   requireRemoveDeterminationConfirmation: PropTypes.bool.isRequired,
   setAccordionActiveIndex: PropTypes.func.isRequired,
+  taxonName: PropTypes.string,
 }
 const defaultProps = {
   determination: {},
+  taxonName: undefined,
 }
 
 class AccordionItem extends Component {
@@ -71,19 +85,14 @@ class AccordionItem extends Component {
       removeArrayFieldByIndex,
       requireRemoveDeterminationConfirmation,
       setAccordionActiveIndex,
+      taxonName,
     } = this.props
 
-    const {
-      date,
-      determinedByAgentText,
-      isCurrentDetermination,
-      remarks,
-      taxonNameStandardized,
-    } =
+    const { date, determinedByAgentText, isCurrentDetermination, remarks } =
       determination || {}
 
     const headline = [
-      taxonNameStandardized,
+      taxonName,
       determinedByAgentText,
       date,
       remarks,
@@ -93,7 +102,7 @@ class AccordionItem extends Component {
       .filter(str => !!str)
       .join(', ')
 
-    const taxonNameFieldKey = getPath('taxonNameStandardized')
+    const taxonIdFieldKey = getPath('taxon.id')
 
     log.render()
     return [
@@ -133,7 +142,7 @@ class AccordionItem extends Component {
                 component={TaxonNameSearchInputWithResults}
                 label={moduleTranslate({ textKey: 'taxonName' })}
                 module="collectionMammals"
-                name={taxonNameFieldKey}
+                name={taxonIdFieldKey}
                 type="text"
               />
             </Grid.Column>
@@ -141,10 +150,16 @@ class AccordionItem extends Component {
               <ButtonCopyPasteField
                 arrowIcon={`${isSmallScreen ? 'down' : 'right'} arrow`}
                 changeFieldValue={changeFieldValue}
-                copyField={taxonNameFieldKey}
+                copyField={taxonIdFieldKey}
                 fluid={!isSmallScreen}
-                formValueSelector={formValueSelector}
                 label={moduleTranslate({ textKey: 'copyToVerbatim' })}
+                newValueSelector={state => {
+                  const taxon = taxonSelectors.getTaxon(
+                    state,
+                    formValueSelector(state, taxonIdFieldKey)
+                  )
+                  return taxon && taxon.scientificName
+                }}
                 pasteField={getPath('determinationVerbatim')}
               />
             </Grid.Column>
@@ -262,6 +277,7 @@ export default compose(
     module: 'collectionMammals',
     scope: 'determination',
   }),
+  connect(mapStateToProps),
   pathBuilder({
     name: 'taxonInformation.determinations',
   })

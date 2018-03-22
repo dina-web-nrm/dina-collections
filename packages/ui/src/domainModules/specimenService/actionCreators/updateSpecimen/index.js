@@ -24,6 +24,7 @@ export default function updateSpecimen(
     id,
     physicalUnits = [],
     specimen,
+    taxa = [],
     throwError = true,
   } = {}
 ) {
@@ -35,6 +36,7 @@ export default function updateSpecimen(
     featureObservationTypes,
     individualGroup,
     physicalUnits,
+    taxa,
   }
 
   return (dispatch, getState, { apiClient }) => {
@@ -54,6 +56,7 @@ export default function updateSpecimen(
         featureObservationTypes,
         individualGroup,
         savedPhysicalUnits,
+        taxa,
       })
 
       dispatch({

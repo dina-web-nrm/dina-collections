@@ -20,12 +20,10 @@
     "date": {
       "$ref": "__ROOT__date"
     },
-    "taxonNameStandardized": {
-      "type": "string",
-      "description": "Should be a taxon reference",
-      "example": "Chironectes minimus"
+    "taxon": {
+      "$ref": "__ROOT__taxon",
+      "x-reference-type": "external"
     },
-    "taxon": {"$ref": "__ROOT__individualGroup"},
     "isCurrentDetermination": {
       "type": "boolean",
       "example": true

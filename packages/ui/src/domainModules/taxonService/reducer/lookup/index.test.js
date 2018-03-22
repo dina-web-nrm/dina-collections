@@ -5,7 +5,6 @@ import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
 import reducer, { getInitialState } from './index'
 
 import {
-  TAXON_SERVICE_CLEAR_SEARCH_QUERY,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
   TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
@@ -24,7 +23,7 @@ describe('domainModules/taxonService/reducer/lookup', () => {
         error: null,
         loading: false,
         result: [],
-        searchQuery: null,
+        searchQueries: {},
       }
 
       expect(testValue).toEqual(expectedResult)
@@ -51,24 +50,6 @@ describe('domainModules/taxonService/reducer/lookup', () => {
       expect(testValue).toEqual(expectedResult)
     })
 
-    describe(TAXON_SERVICE_CLEAR_SEARCH_QUERY, () => {
-      it('clears searchQuery', () => {
-        const state = {
-          result: [{ old: 'result' }],
-          searchQuery: 'bat',
-        }
-        deepFreeze(state)
-        const action = {
-          type: TAXON_SERVICE_CLEAR_SEARCH_QUERY,
-        }
-        const expectedState = {
-          result: [],
-          searchQuery: null,
-        }
-
-        expect(reducer(state, action)).toEqual(expectedState)
-      })
-    })
     describe(TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL, () => {
       it('sets loading false and clears result', () => {
         const state = {
@@ -131,15 +112,16 @@ describe('domainModules/taxonService/reducer/lookup', () => {
     describe(TAXON_SERVICE_UPDATE_SEARCH_QUERY, () => {
       it('updates searchQuery', () => {
         const state = {
-          searchQuery: null,
+          searchQueries: {},
         }
         deepFreeze(state)
         const action = {
+          meta: { inputName: 'taxon.1' },
           payload: 'mouse',
           type: TAXON_SERVICE_UPDATE_SEARCH_QUERY,
         }
         const expectedState = {
-          searchQuery: 'mouse',
+          searchQueries: { 'taxon.1': 'mouse' },
         }
 
         expect(reducer(state, action)).toEqual(expectedState)

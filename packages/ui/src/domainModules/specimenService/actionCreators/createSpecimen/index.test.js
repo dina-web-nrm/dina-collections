@@ -55,12 +55,16 @@ describe('domainModules/specimenService/actionCreators/createSpecimen', () => {
 
   it(`calls createSpecimen with correct body`, () => {
     const operationId = 'createSpecimen'
+    const taxon = { id: '2367', type: 'taxon' }
     const specimen = {
       individualGroup: {
         distinguishedUnits: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],
+        taxonInformation: {
+          determinations: [{ taxon }],
+        },
       },
     }
     const callSpy = jest.fn()
@@ -74,7 +78,7 @@ describe('domainModules/specimenService/actionCreators/createSpecimen', () => {
       },
     })
 
-    const testAction = createSpecimen({ specimen })
+    const testAction = createSpecimen({ specimen, taxa: [taxon] })
     const expectedCallParams = {
       body: {
         data: {
@@ -88,6 +92,9 @@ describe('domainModules/specimenService/actionCreators/createSpecimen', () => {
             },
             physicalUnits: {
               data: [],
+            },
+            taxa: {
+              data: [{ id: '2367', type: 'taxon' }],
             },
           },
           type: SPECIMEN,

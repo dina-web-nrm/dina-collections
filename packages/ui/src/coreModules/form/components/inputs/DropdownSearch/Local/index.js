@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import DropdownSearchBaseInput from '../Base'
 
 const propTypes = {
-  format: PropTypes.func,
   getOptions: PropTypes.func.isRequired,
   initialText: PropTypes.string,
   input: PropTypes.shape({
@@ -12,11 +11,12 @@ const propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string,
   }).isRequired,
+  parse: PropTypes.func,
 }
 
 const defaultProps = {
-  format: undefined,
   initialText: undefined,
+  parse: undefined,
 }
 
 class DropdownSearchLocalInput extends Component {
@@ -37,17 +37,17 @@ class DropdownSearchLocalInput extends Component {
   }
 
   render() {
-    const { format, initialText, input } = this.props
+    const { initialText, input, parse } = this.props
 
     const { options } = this.state
 
     return (
       <DropdownSearchBaseInput
-        format={format}
         initialText={initialText}
         input={input}
         onSearchChange={this.handleSearchChange}
         options={options}
+        parse={parse}
       />
     )
   }

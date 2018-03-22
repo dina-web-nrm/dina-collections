@@ -24,6 +24,7 @@ describe('domainModules/taxonService/actionCreators/getTaxaForLookup', () => {
     const testAction = getTaxaForLookup()
 
     const expectedAction = {
+      meta: { queryParams: {} },
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
     }
 
@@ -78,6 +79,7 @@ describe('domainModules/taxonService/actionCreators/getTaxaForLookup', () => {
         },
       ],
     }
+    const queryParams = { name: 'a' }
     const transformedResponse = [
       {
         id: '123',
@@ -97,12 +99,14 @@ describe('domainModules/taxonService/actionCreators/getTaxaForLookup', () => {
       },
     })
 
-    const testAction = getTaxaForLookup()
+    const testAction = getTaxaForLookup({ queryParams })
 
     const expectedFirstAction = {
+      meta: { queryParams },
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
     }
     const expectedSecondAction = {
+      meta: { queryParams },
       payload: transformedResponse,
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
     }
@@ -133,10 +137,12 @@ describe('domainModules/taxonService/actionCreators/getTaxaForLookup', () => {
     const testAction = getTaxaForLookup({ throwError: false })
 
     const expectedFirstAction = {
+      meta: { queryParams: {} },
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
+      meta: { queryParams: {} },
       payload: mockResponse,
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
     }
@@ -167,10 +173,12 @@ describe('domainModules/taxonService/actionCreators/getTaxaForLookup', () => {
     const testAction = getTaxaForLookup({ throwError: true })
 
     const expectedFirstAction = {
+      meta: { queryParams: {} },
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
+      meta: { queryParams: {} },
       payload: mockResponse,
       type: actionTypes.TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
     }

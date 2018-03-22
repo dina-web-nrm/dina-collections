@@ -1,7 +1,29 @@
 export default function transformDeterminations(determinations) {
+  let taxa = []
+  let mappedDeterminations = [{}]
+
   if (determinations && determinations.length) {
-    return determinations
+    mappedDeterminations = determinations.map(determination => {
+      if (!determination.taxon) {
+        return determination
+      }
+
+      const taxon = {
+        id: determination.taxon.id,
+        type: 'taxon',
+      }
+
+      taxa = [...taxa, taxon]
+
+      return {
+        ...determination,
+        taxon,
+      }
+    })
   }
 
-  return [{}]
+  return {
+    determinations: mappedDeterminations,
+    taxa,
+  }
 }

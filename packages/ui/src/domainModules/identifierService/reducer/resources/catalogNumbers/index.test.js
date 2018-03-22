@@ -114,7 +114,7 @@ describe('domainModules/identifierService/reducer/resources/catalogNumbers', () 
       })
     })
 
-    it(`replaces whole state on ${
+    it(`merges previous state with new data on ${
       IDENTIFIER_SERVICE_GET_CATALOG_NUMBERS_SUCCESS
     }`, () => {
       const state = {
@@ -144,6 +144,11 @@ describe('domainModules/identifierService/reducer/resources/catalogNumbers', () 
 
       const testValue = reducer(state, action)
       const expectedResult = {
+        1: {
+          id: '1',
+          name: 'Alan',
+          type: 'type',
+        },
         2: {
           id: '2',
           name: 'Beau',

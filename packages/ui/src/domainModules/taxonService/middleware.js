@@ -8,15 +8,19 @@ import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from './actionTypes'
 const log = createLog('domainModules:taxonService:middleware')
 
 const debounceTaxonSearch = debounce(
-  ({ dispatch, getState }) => {
+  ({ dispatch, getState, inputName }) => {
     log.debug('Debounce getTaxaForLookup')
+    const searchQuery = globalSelectors.getLookupSearchQuery(
+      getState(),
+      inputName
+    )
 
-    if (globalSelectors.getLookupSearchQuery(getState())) {
+    if (searchQuery) {
       dispatch(
         getTaxaForLookup({
           queryParams: {
             filter: {
-              name: globalSelectors.getLookupSearchQuery(getState()),
+              name: searchQuery,
             },
             limit: 10,
           },
@@ -36,7 +40,8 @@ export default function createTaxonMiddleware() {
     switch (action.type) {
       case TAXON_SERVICE_UPDATE_SEARCH_QUERY: {
         if (action.payload) {
-          debounceTaxonSearch({ dispatch, getState })
+          const { inputName } = action.meta
+          debounceTaxonSearch({ dispatch, getState, inputName })
         }
         break
       }

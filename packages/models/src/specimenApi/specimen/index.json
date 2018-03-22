@@ -40,30 +40,53 @@
               }
             }
           }
+        },
+        "taxa": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__taxon",
+                "x-reference-type": "external"
+              }
+            }
+          }
         }
       }
     },
     "individualGroup": {
       "$ref": "__ROOT__individualGroup"
     },
-
     "distinguishedUnits": {
       "type": "array",
-      "items": { "$ref": "__ROOT__distinguishedUnit" }
+      "items": {
+        "$ref": "__ROOT__distinguishedUnit"
+      }
     },
-    "id": { "type": "string" },
+    "id": {
+      "type": "string"
+    },
     "individualCircumstances": {
       "type": "array",
-      "items": { "$ref": "__ROOT__individualCircumstance" }
+      "items": {
+        "$ref": "__ROOT__individualCircumstance"
+      }
     },
     "collectingCircumstances": {
       "type": "array",
-      "items": { "$ref": "__ROOT__collectingCircumstance" }
+      "items": {
+        "$ref": "__ROOT__collectingCircumstance"
+      }
     },
     "events": {
       "type": "array",
-      "items": { "$ref": "__ROOT__event" }
+      "items": {
+        "$ref": "__ROOT__event"
+      }
     },
-    "version": { "type": "integer" }
+    "version": {
+      "type": "integer"
+    }
   }
 }

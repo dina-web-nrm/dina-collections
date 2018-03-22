@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import DropdownSearchConnectInput from '../../inputs/Dropdown/Connect'
-import DropdownSearchLocalInput from '../../inputs/Dropdown/Local'
+import DropdownSearchConnectInput from '../../inputs/DropdownSearch/Connect'
+import DropdownSearchLocalInput from '../../inputs/DropdownSearch/Local'
 
 import FieldTemplate, {
   defaultProps as fieldTemplateDefaultProps,

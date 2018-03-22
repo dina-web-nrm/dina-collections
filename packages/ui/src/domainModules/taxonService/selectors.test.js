@@ -6,9 +6,11 @@ import {
   getLookupLoading,
   getLookupResult,
   getLookupSearchQuery,
+  getLookupSearchQueries,
   getResources,
   getTaxa,
   getTaxon,
+  getTaxonOption,
 } from './selectors'
 
 describe('domainModules/taxonService/selectors', () => {
@@ -20,29 +22,31 @@ describe('domainModules/taxonService/selectors', () => {
         error: null,
         loading: false,
         result: [{ id: '123', scientificName: 'Sorex minutus' }],
-        searchQuery: 'bat',
+        searchQueries: {
+          'taxon.1': 'bat',
+        },
       },
       resources: {
         taxa: {
           a: {
             id: 'a',
-            name: 'asia',
+            scientificName: 'taxon a',
           },
           b: {
             id: 'b',
-            name: 'canada',
+            scientificName: 'taxon b',
           },
           c: {
             id: 'c',
-            name: 'germany',
+            scientificName: 'taxon c',
           },
           d: {
             id: 'd',
-            name: 'ontario',
+            scientificName: 'taxon d',
           },
           e: {
             id: 'e',
-            name: 'sweden',
+            scientificName: 'taxon e',
           },
         },
       },
@@ -64,7 +68,14 @@ describe('domainModules/taxonService/selectors', () => {
     it('returns taxon by id', () => {
       expect(getTaxon(state, 'a')).toEqual({
         id: 'a',
-        name: 'asia',
+        scientificName: 'taxon a',
+      })
+    })
+    it('returns taxon option', () => {
+      expect(getTaxonOption(state, 'a')).toEqual({
+        key: 'a',
+        text: 'taxon a',
+        value: 'a',
       })
     })
   })
@@ -89,8 +100,11 @@ describe('domainModules/taxonService/selectors', () => {
         { key: '123', text: 'Sorex minutus', value: '123' },
       ])
     })
+    it('returns lookupSearchQueries', () => {
+      expect(getLookupSearchQueries(state)).toEqual({ 'taxon.1': 'bat' })
+    })
     it('returns lookupSearchQuery', () => {
-      expect(getLookupSearchQuery(state)).toEqual('bat')
+      expect(getLookupSearchQuery(state, 'taxon.1')).toEqual('bat')
     })
   })
 })

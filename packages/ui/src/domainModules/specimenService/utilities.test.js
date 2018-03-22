@@ -65,6 +65,12 @@ describe('domainModules/specimenService/utilities', () => {
         type: 'physicalUnit',
       },
     ]
+    const taxa = [
+      {
+        id: '2367',
+        type: 'taxon',
+      },
+    ]
 
     const cleanedPhysicalUnits = [
       {
@@ -82,6 +88,7 @@ describe('domainModules/specimenService/utilities', () => {
       featureObservationTypes,
       individualGroup,
       savedPhysicalUnits,
+      taxa,
     })
     const expectedResult = {
       data: {
@@ -113,6 +120,9 @@ describe('domainModules/specimenService/utilities', () => {
           },
           physicalUnits: {
             data: cleanedPhysicalUnits,
+          },
+          taxa: {
+            data: taxa,
           },
         },
         type: 'specimen',
