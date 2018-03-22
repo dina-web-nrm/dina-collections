@@ -49,60 +49,20 @@ const propTypes = {
 }
 
 class FeatureObservationDropdownSearch extends Component {
-  constructor(props) {
-    super(props)
-    const { rawOptions, defaultLanguage, language } = props
-
-    this.getMatchingResults = this.getMatchingResults.bind(this)
-    this.format = this.format.bind(this)
-
-    this.state = {
-      options:
-        !!props.rawOptions &&
-        mapSelectablesToDropdownOptions(rawOptions, {
-          defaultLanguage,
-          language,
-        }),
-    }
-  }
-
-  getMatchingResults(searchQuery) {
-    const { options } = this.state
-
-    if (!searchQuery) {
-      return options
-    }
-
-    const lowerCaseSearchQuery = searchQuery.toLowerCase()
-    const firstLetterMatches = options.filter(({ text }) => {
-      return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
-    })
-
-    const otherMatches = options.filter(({ text }) => {
-      return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
-    })
-
-    return [...firstLetterMatches, ...otherMatches]
-  }
-
-  format(value) {
-    const { options } = this.state
-
-    const option = options.find(
-      ({ value: optionValue }) => optionValue === value
-    )
-    return option && option.text
-  }
-
   render() {
-    const { ...rest } = this.props
+    const { defaultLanguage, language, rawOptions, ...rest } = this.props
 
     log.render()
     return (
       <DropdownSearch
         {...rest}
-        format={this.format}
-        getOptions={this.getMatchingResults}
+        options={
+          !!rawOptions &&
+          mapSelectablesToDropdownOptions(rawOptions, {
+            defaultLanguage,
+            language,
+          })
+        }
         type="dropdown-search-local"
       />
     )
