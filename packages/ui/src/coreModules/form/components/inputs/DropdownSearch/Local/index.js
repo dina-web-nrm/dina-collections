@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import DropdownSearchBaseInput from '../Base'
 
 const propTypes = {
-  getOptions: PropTypes.func.isRequired,
+  filterOptions: PropTypes.func,
   initialText: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -11,10 +11,18 @@ const propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string,
   }).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   parse: PropTypes.func,
 }
 
 const defaultProps = {
+  filterOptions: undefined,
   initialText: undefined,
   parse: undefined,
 }
@@ -22,31 +30,53 @@ const defaultProps = {
 class DropdownSearchLocalInput extends Component {
   constructor(props) {
     super(props)
-    const searchQuery = null
     this.state = {
-      options: props.getOptions(searchQuery),
+      filteredOptions: props.options,
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
+  getFilteredOptions(searchQuery) {
+    const { filterOptions, options } = this.props
+
+    if (filterOptions) {
+      return filterOptions({ options, searchQuery })
+    }
+
+    if (!searchQuery) {
+      return options
+    }
+
+    const lowerCaseSearchQuery = searchQuery.toLowerCase()
+
+    const firstLetterMatches = options.filter(({ text }) => {
+      return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+    })
+
+    const otherMatches = options.filter(({ text }) => {
+      return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+    })
+
+    return [...firstLetterMatches, ...otherMatches]
+  }
+
   handleSearchChange({ searchQuery }) {
-    const options = this.props.getOptions(searchQuery)
     this.setState({
-      options,
+      filteredOptions: this.getFilteredOptions(searchQuery),
     })
   }
 
   render() {
     const { initialText, input, parse } = this.props
 
-    const { options } = this.state
+    const { filteredOptions } = this.state
 
     return (
       <DropdownSearchBaseInput
         initialText={initialText}
         input={input}
         onSearchChange={this.handleSearchChange}
-        options={options}
+        options={filteredOptions}
         parse={parse}
       />
     )
