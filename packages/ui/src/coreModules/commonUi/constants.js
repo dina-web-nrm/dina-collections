@@ -1,1 +1,6 @@
+export const ALL_COLLAPSED = 'allCollapsed'
+export const ALL_EXPANDED = 'allExpanded'
+export const FIRST_EXPANDED = 'firstExpanded'
 export const MODULE_NAME = 'commonUi'
+export const MULTI = 'multi'
+export const SINGLE = 'single'
