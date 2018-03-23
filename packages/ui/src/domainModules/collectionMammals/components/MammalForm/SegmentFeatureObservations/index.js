@@ -7,13 +7,15 @@ import { Grid, Header, Segment } from 'semantic-ui-react'
 
 import config from 'config'
 import createLog from 'utilities/log'
+import { Accordion } from 'coreModules/commonUi/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import {
   actionCreators as curatedListActionCreators,
   globalSelectors as curatedListGlobalSelectors,
 } from 'domainModules/curatedListService'
-import AccordionWrapper from './AccordionWrapper'
+import FeatureObservationsTable from './FeatureObservationsTable'
+import FeatureObservationsTitle from './FeatureObservationsTitle'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentFeatureObservations'
@@ -60,12 +62,7 @@ class SegmentFeatureObservations extends PureComponent {
   }
 
   render() {
-    const {
-      changeFieldValue,
-      getPath,
-      hasFeatureObservations,
-      mode,
-    } = this.props
+    const { changeFieldValue, hasFeatureObservations } = this.props
 
     log.render()
     return (
@@ -75,11 +72,16 @@ class SegmentFeatureObservations extends PureComponent {
         </Header>
         <Grid textAlign="left" verticalAlign="top">
           <Grid.Column mobile={16}>
-            <AccordionWrapper
-              changeFieldValue={changeFieldValue}
-              getPath={getPath}
-              groupsAndHeadlines={GROUPS_AND_HEADLINES}
-              mode={mode}
+            <Accordion
+              delayItemRenderUntilActive={!config.isTest}
+              items={GROUPS_AND_HEADLINES}
+              renderContent={props => (
+                <FeatureObservationsTable
+                  changeFieldValue={changeFieldValue}
+                  {...props}
+                />
+              )}
+              renderTitle={props => <FeatureObservationsTitle {...props} />}
             />
           </Grid.Column>
         </Grid>
