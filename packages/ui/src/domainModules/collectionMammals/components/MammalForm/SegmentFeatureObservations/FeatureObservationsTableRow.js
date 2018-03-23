@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Table } from 'semantic-ui-react'
@@ -20,7 +20,7 @@ const propTypes = {
   index: PropTypes.string.isRequired,
 }
 
-class FeatureObservationTableRow extends Component {
+class FeatureObservationTableRow extends PureComponent {
   componentWillMount() {
     const { changeFieldValue, getPath, featureObservationType } = this.props
     changeFieldValue(

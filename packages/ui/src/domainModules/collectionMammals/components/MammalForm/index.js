@@ -115,6 +115,7 @@ class RawMammalForm extends Component {
       error,
       handleSubmit,
       invalid,
+      match: { params: { specimenId } },
       mode,
       pristine,
       reset,
@@ -138,9 +139,10 @@ class RawMammalForm extends Component {
             />
             <SegmentDeterminations
               changeFieldValue={this.changeFieldValue}
+              editMode={mode === 'edit'}
               formValueSelector={formValueSelector}
-              mode={mode}
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+              specimenId={specimenId}
             />
             <SegmentIndividualCircumstances
               formValueSelector={formValueSelector}
