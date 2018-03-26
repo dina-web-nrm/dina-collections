@@ -1,28 +1,26 @@
 import { createGetter } from 'utilities/stateHelper'
 
-export default function createSelectors({ keyMap, name }) {
+export const createSelector = keySpecification => {
+  const { key } = keySpecification
+  const getter = createGetter([key])
+  return function selector(state, parameters) {
+    return getter(state, parameters)
+  }
+}
+
+export default function createSelectors({ keySpecifications, name }) {
   const getLocalState = state => {
     return state[name]
   }
 
-  const getSelectors = Object.keys(keyMap.set).reduce((selectors, key) => {
-    const getter = createGetter([key])
-    return {
-      ...selectors,
-      [key]: state => {
-        return getter(state)
-      },
-    }
-  }, {})
-
-  const indexGetSelectors = Object.keys(keyMap.indexSet).reduce(
+  const getSelectors = Object.keys(keySpecifications.set).reduce(
     (selectors, key) => {
-      const getter = createGetter([':index', key])
+      const keySpecification = keySpecifications.set[key]
+      const selector = createSelector(keySpecification)
+
       return {
         ...selectors,
-        [key]: (state, index) => {
-          return getter(state, { index })
-        },
+        [key]: selector,
       }
     },
     {}
@@ -31,6 +29,5 @@ export default function createSelectors({ keyMap, name }) {
   return {
     get: getSelectors,
     getLocalState,
-    indexGet: indexGetSelectors,
   }
 }

@@ -10,16 +10,18 @@ const {
   initialValues: {
     collectionBlockType: 'list',
     filter: {
-      group: '',
-      searchQuery: '',
+      localityCollection: {
+        group: '',
+        searchQuery: '',
+      },
     },
   },
   keys: [
     'collectionBlockType',
-    'filter',
-    'filter.searchQuery',
-    'filter.limit',
-    'filter.group',
+    'filter:index',
+    'filter:index.searchQuery',
+    'filter:index.limit',
+    'filter:index.group',
   ],
   name: 'locality',
 })

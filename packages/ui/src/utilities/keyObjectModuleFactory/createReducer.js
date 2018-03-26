@@ -1,81 +1,67 @@
 import { createDeleter, createSetter } from 'utilities/stateHelper'
 
-const createDelActionHandlers = delActionTypes => {
-  return Object.keys(delActionTypes).reduce((delHandlersCreators, key) => {
-    const { actionType } = delActionTypes[key]
-    const path = key.split('.')
-    const deleter = createDeleter(path)
+export const createDelActionHandler = delKeySpecification => {
+  const { key } = delKeySpecification
+  const path = key.split('.')
+  const deleter = createDeleter(path)
 
-    return {
-      ...delHandlersCreators,
-      [actionType]: state => {
-        return deleter(state)
-      },
-    }
-  }, {})
+  return function delActionHandler(state, action) {
+    const { parameters = undefined } = action.payload || {}
+    return deleter(state, parameters)
+  }
 }
 
-const createIndexDelActionHandlers = delActionTypes => {
-  return Object.keys(delActionTypes).reduce((delHandlersCreators, key) => {
-    const { actionType } = delActionTypes[key]
-    const deleter = createDeleter([':index', key])
-
-    return {
-      ...delHandlersCreators,
-      [actionType]: (state, payload) => {
-        if (payload && payload.index !== undefined) {
-          return deleter(state, { index: payload.index })
-        }
-        return state
-      },
-    }
-  }, {})
+export const createDelActionHandlers = delKeySpecifications => {
+  return Object.keys(delKeySpecifications).reduce(
+    (delHandlersCreators, key) => {
+      const delKeySpecification = delKeySpecifications[key]
+      const delActionHandler = createDelActionHandler(delKeySpecification)
+      const { actionType } = delKeySpecification
+      return {
+        ...delHandlersCreators,
+        [actionType]: delActionHandler,
+      }
+    },
+    {}
+  )
 }
 
-const createIndexSetActionHandlers = setActionTypes => {
-  return Object.keys(setActionTypes).reduce((setHandlersCreators, key) => {
-    const { actionType } = setActionTypes[key]
-    const setter = createSetter([':index', key])
+export const createSetActionHandler = setKeySpecification => {
+  const { key } = setKeySpecification
+  const path = key.split('.')
+  const setter = createSetter(path)
 
-    return {
-      ...setHandlersCreators,
-      [actionType]: (state, action) => {
-        const { index, value } = action.payload || {}
-        if (index !== undefined) {
-          return setter(state, { index }, value)
-        }
-        return state
-      },
-    }
-  }, {})
+  return function setActionHandler(state, action) {
+    const { value, parameters = undefined } = action.payload || {}
+    return setter(state, parameters, value)
+  }
 }
 
-const createSetActionHandlers = setActionTypes => {
-  return Object.keys(setActionTypes).reduce((setHandlersCreators, key) => {
-    const { actionType } = setActionTypes[key]
-    const path = key.split('.')
-    const setter = createSetter(path)
+export const createSetActionHandlers = setKeySpecifications => {
+  return Object.keys(setKeySpecifications).reduce(
+    (setHandlersCreators, key) => {
+      const setKeySpecification = setKeySpecifications[key]
+      const setActionHandler = createSetActionHandler(setKeySpecification)
+      const { actionType } = setKeySpecification
 
-    return {
-      ...setHandlersCreators,
-      [actionType]: (state, action) => {
-        const { value } = action.payload
-        return setter(state, value)
-      },
-    }
-  }, {})
+      return {
+        ...setHandlersCreators,
+        [actionType]: setActionHandler,
+      }
+    },
+    {}
+  )
 }
 
-export default function createReducer({ keyMap, initialValues = {} }) {
-  const delActionHandlers = createDelActionHandlers(keyMap.del)
-  const indexDelActionHandlers = createIndexDelActionHandlers(keyMap.indexDel)
-  const indexSetActionHandlers = createIndexSetActionHandlers(keyMap.indexSet)
-  const setActionHandlers = createSetActionHandlers(keyMap.set)
+export default function createReducer({
+  keySpecifications,
+  initialValues = {},
+}) {
+  const delActionHandlers = createDelActionHandlers(keySpecifications.del)
+  const setActionHandlers = createSetActionHandlers(keySpecifications.set)
 
   const actionHandlers = {
     ...delActionHandlers,
-    ...indexDelActionHandlers,
-    ...indexSetActionHandlers,
     ...setActionHandlers,
   }
 

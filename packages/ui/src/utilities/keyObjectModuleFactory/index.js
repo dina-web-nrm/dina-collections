@@ -1,29 +1,34 @@
 import createActionCreators from './createActionCreators'
-import createActionTypes from './createActionTypes'
+import extractActionTypes from './extractActionTypes'
 import createConstants from './createConstants'
 import createGlobalSelectors from './createGlobalSelectors'
-import createKeyMap from './createKeyMap'
+import createKeySpecifications from './createKeySpecifications'
 import createReducer from './createReducer'
 import createSelectors from './createSelectors'
 
-export default function({ initialValues, keys = [], name }) {
-  const actionPrefix = name
+export default function({
+  actionPrefix: actionPrefixInput,
+  initialValues,
+  keys = [],
+  name,
+}) {
+  const actionPrefix = actionPrefixInput || name
 
   const constants = createConstants({
     name,
   })
 
-  const keyMap = createKeyMap({
+  const keySpecifications = createKeySpecifications({
     actionPrefix,
     keys,
   })
 
-  const actionCreators = createActionCreators(keyMap)
+  const actionCreators = createActionCreators({ keySpecifications })
 
-  const reducer = createReducer({ initialValues, keyMap })
-  const selectors = createSelectors({ keyMap, name })
+  const reducer = createReducer({ initialValues, keySpecifications })
+  const selectors = createSelectors({ keySpecifications, name })
 
-  const actionTypes = createActionTypes({ keyMap })
+  const actionTypes = extractActionTypes({ keySpecifications })
 
   const globalSelectors = createGlobalSelectors(selectors)
   return {

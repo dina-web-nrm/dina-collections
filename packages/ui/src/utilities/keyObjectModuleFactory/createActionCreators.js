@@ -1,82 +1,95 @@
-const createDelActionCreators = delActionTypes => {
-  return Object.keys(delActionTypes).reduce((delActionCreators, key) => {
-    const { actionType } = delActionTypes[key]
+export const createDelActionCreator = delKeySpecification => {
+  const { actionType, parameters = [] } = delKeySpecification
+  const expectedNumberOfArgs = parameters.length
+  return function setActionCreator(...rawArgs) {
+    const args = Array.from(rawArgs)
+    const numberOfArgs = args.length
+    if (numberOfArgs !== expectedNumberOfArgs) {
+      throw new Error(
+        `Unexpected number of arguments: ${numberOfArgs} for del ${
+          delKeySpecification.key
+        }. Expected (${parameters.join(', ')})`
+      )
+    }
 
+    const populatedParameters = parameters.reduce(
+      (obj, parameterKey, index) => {
+        return {
+          ...obj,
+          [parameterKey]: args[index],
+        }
+      },
+      {}
+    )
+
+    return {
+      payload: {
+        parameters: populatedParameters,
+      },
+      type: actionType,
+    }
+  }
+}
+
+const createDelActionCreators = delKeySpecifications => {
+  return Object.keys(delKeySpecifications).reduce((delActionCreators, key) => {
+    const actionCreator = createDelActionCreator(delKeySpecifications[key])
     return {
       ...delActionCreators,
-      [key]: () => {
-        return {
-          type: actionType,
-        }
-      },
+      [key]: actionCreator,
     }
   }, {})
 }
 
-const createIndexDelActionCreators = delActionTypes => {
-  return Object.keys(delActionTypes).reduce((delActionCreators, key) => {
-    const { actionType } = delActionTypes[key]
+export const createSetActionCreator = setKeySpecification => {
+  const { actionType, parameters = [] } = setKeySpecification
+  const expectedNumberOfArgs = parameters.length + 1
+  return function setActionCreator(...rawArgs) {
+    const args = Array.from(rawArgs)
+    const numberOfArgs = args.length
+    if (numberOfArgs !== expectedNumberOfArgs) {
+      throw new Error(
+        `Unexpected number of arguments: ${numberOfArgs} for set ${
+          setKeySpecification.key
+        } Expected (${parameters.join(', ')}, value)`
+      )
+    }
+
+    const populatedParameters = parameters.reduce(
+      (obj, parameterKey, index) => {
+        return {
+          ...obj,
+          [parameterKey]: args[index],
+        }
+      },
+      {}
+    )
+
+    const value = args[args.length - 1]
 
     return {
-      ...delActionCreators,
-      [key]: index => {
-        if (index === undefined) {
-          throw new Error('Have to provide index')
-        }
-        return {
-          payload: {
-            index,
-          },
-          type: actionType,
-        }
+      payload: {
+        parameters: populatedParameters,
+        value,
       },
+      type: actionType,
     }
-  }, {})
+  }
 }
 
-const createIndexSetActionCreators = setActionTypes => {
-  return Object.keys(setActionTypes).reduce((setActionCreators, key) => {
-    const { actionType } = setActionTypes[key]
-
-    return {
-      ...setActionCreators,
-      [key]: (index, value) => {
-        if (index === undefined) {
-          throw new Error('Have to provide index')
-        }
-        return {
-          payload: {
-            index,
-            value,
-          },
-          type: actionType,
-        }
-      },
-    }
-  }, {})
-}
-
-const createSetActionCreators = setActionTypes => {
-  return Object.keys(setActionTypes).reduce((setActionCreators, key) => {
-    const { actionType } = setActionTypes[key]
-
+const createSetActionCreators = setKeySpecifications => {
+  return Object.keys(setKeySpecifications).reduce((setActionCreators, key) => {
+    const actionCreator = createSetActionCreator(setKeySpecifications[key])
     return {
       ...setActionCreators,
-      [key]: value => {
-        return {
-          payload: { value },
-          type: actionType,
-        }
-      },
+      [key]: actionCreator,
     }
   }, {})
 }
 
-export default function createActionCreators(keyMap) {
+export default function createActionCreators({ keySpecifications }) {
   return {
-    del: createDelActionCreators(keyMap.del),
-    indexDel: createIndexDelActionCreators(keyMap.indexDel),
-    indexSet: createIndexSetActionCreators(keyMap.indexSet),
-    set: createSetActionCreators(keyMap.set),
+    del: createDelActionCreators(keySpecifications.del),
+    set: createSetActionCreators(keySpecifications.set),
   }
 }

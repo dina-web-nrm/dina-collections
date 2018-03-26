@@ -12,7 +12,9 @@ import {
 import ListItem from './ListItem'
 
 const mapStateToProps = state => {
-  const filter = keyObjectGlobalSelectors.get.filter(state)
+  const filter = keyObjectGlobalSelectors.get['filter:index'](state, {
+    index: 'localityCollection',
+  })
   return {
     curatedLocalities: localityServiceSelectors.getCuratedLocalitiesArrayByFilter(
       state,
@@ -22,9 +24,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  delFilterLimit: keyObjectActionCreators.del['filter.limit'],
+  delFilterLimit: keyObjectActionCreators.del['filter:index.limit'],
   getCuratedLocalities: getCuratedLocalitiesAc,
-  setFilterLimit: keyObjectActionCreators.set['filter.limit'],
+  setFilterLimit: keyObjectActionCreators.set['filter:index.limit'],
 }
 
 const propTypes = {
@@ -43,14 +45,14 @@ const defaultProps = {
 
 class LocalityList extends Component {
   componentDidMount() {
-    this.props.setFilterLimit(10)
+    this.props.setFilterLimit('localityCollection', 10)
     this.props.getCuratedLocalities({
       queryParams: { relationships: ['all'] },
     })
   }
 
   componentWillUnmount() {
-    this.props.delFilterLimit()
+    this.props.delFilterLimit('localityCollection')
   }
 
   render() {

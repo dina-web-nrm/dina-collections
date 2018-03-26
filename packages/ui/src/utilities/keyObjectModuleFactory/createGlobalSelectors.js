@@ -6,15 +6,9 @@ export default function createGlobalSelectors(selectors) {
     ...selectors.get,
   })
 
-  const wrappedIndexGetSelectors = wrapSelectors({
-    getLocalState: selectors.getLocalState,
-    ...selectors.indexGet,
-  })
-
   const globalSelectors = {
     get: wrappedGetSelectors,
     getLocalState: selectors.getLocalState,
-    indexGet: wrappedIndexGetSelectors,
   }
   return globalSelectors
 }
