@@ -8,6 +8,8 @@ const propTypes = {
   iconPosition: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   placeholder: PropTypes.string,
+  size: PropTypes.string,
+  style: PropTypes.object,
   type: PropTypes.string,
 }
 const defaultProps = {
@@ -15,6 +17,8 @@ const defaultProps = {
   icon: undefined,
   iconPosition: 'left',
   placeholder: undefined,
+  size: undefined,
+  style: undefined,
   type: 'text',
 }
 
@@ -25,6 +29,8 @@ const TextInput = ({
   input,
   placeholder,
   type,
+  size,
+  style,
 }) => {
   return (
     <Input
@@ -34,6 +40,8 @@ const TextInput = ({
       placeholder={placeholder}
       type={type}
       {...input}
+      size={size}
+      style={style}
     />
   )
 }
