@@ -8,6 +8,7 @@ import FieldLabel from './FieldTemplate/FieldLabel'
 import FormTable from './migrate/FormTable'
 import HelpTextNotification from './migrate/HelpTextNotification'
 import Input from './fields/Input'
+import InputText from './inputs/Input/Text'
 import InputDatePart from './migrate/InputDatePart'
 
 export {
@@ -21,5 +22,6 @@ export {
   HelpTextNotification,
   Input,
   InputDatePart,
+  InputText,
   Search,
 }
