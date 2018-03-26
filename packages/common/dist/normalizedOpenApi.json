@@ -6262,7 +6262,19 @@
           "id": {
             "type": "string"
           },
+          "higherLevels": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
           "locationText": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "parentId": {
             "type": "string"
           }
         },
