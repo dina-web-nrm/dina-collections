@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { DropdownSearch } from 'coreModules/form/components'
 import { connect } from 'react-redux'
 import {
+  ALL,
   CONTINENT,
   COUNTRY,
   DISTRICT,
@@ -13,7 +14,8 @@ import mammalSelectors from 'domainModules/collectionMammals/globalSelectors'
 import updateLocalityInformationSearchQueryAC from 'domainModules/collectionMammals/actionCreators/updateLocalityInformationSearchQuery'
 
 const propTypes = {
-  group: PropTypes.oneOf([CONTINENT, COUNTRY, DISTRICT, PROVINCE]).isRequired,
+  group: PropTypes.oneOf([ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE])
+    .isRequired,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
@@ -33,6 +35,10 @@ class LocalityDropdownSearch extends Component {
 
     let getDropdownOptions
     switch (group) {
+      case ALL: {
+        getDropdownOptions = localitySelectors.getDropdownAllOptions
+        break
+      }
       case CONTINENT: {
         getDropdownOptions = localitySelectors.getDropdownContinentOptions
         break
