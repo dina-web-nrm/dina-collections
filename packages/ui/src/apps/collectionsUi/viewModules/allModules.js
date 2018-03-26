@@ -9,6 +9,7 @@ import * as login from './login'
 import * as settings from './settings'
 import * as docs from './docs'
 import * as pageNotFound from './pageNotFound'
+import * as manageLocalities from './manageLocalities'
 
 const modules = [
   publicModule,
@@ -18,6 +19,7 @@ const modules = [
   home,
   lookupMammals,
   registerMammal,
+  manageLocalities,
   login,
   settings,
   docs,
