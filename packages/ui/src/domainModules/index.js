@@ -1,11 +1,12 @@
 export const moduleOrder = [
+  'collectionMammals',
   'curatedListService',
   'identifierService',
+  'locality',
   'localityService',
   'specimenService',
   'storageService',
   'taxonService',
-  'collectionMammals',
 ]
 
 export const type = 'module'
