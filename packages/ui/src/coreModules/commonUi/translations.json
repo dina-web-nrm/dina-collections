@@ -45,6 +45,10 @@
     "models": {
       "en": "models",
       "sv": "modeller"
+    },
+    "manageLocalities": {
+      "en": "Localities",
+      "sv": "Platser"
     }
   }
 }

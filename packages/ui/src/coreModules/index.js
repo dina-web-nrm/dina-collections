@@ -2,6 +2,7 @@ export const moduleOrder = [
   'api',
   'bootstrap',
   'commonUi',
+  'layout',
   'devToolsExtension',
   'error',
   'form',

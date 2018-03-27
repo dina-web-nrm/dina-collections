@@ -4,24 +4,39 @@ import { Container } from 'semantic-ui-react'
 
 const propTypes = {
   children: PropTypes.node,
+  container: PropTypes.bool,
   hasFixedMenu: PropTypes.bool,
 }
 const defaultProps = {
   children: null,
+  container: true,
   hasFixedMenu: false,
 }
 
-const PageTemplate = ({ hasFixedMenu, children }) => {
+const PageTemplate = ({ hasFixedMenu, children, container }) => {
+  if (container) {
+    return (
+      <Container
+        style={{
+          minHeight: '100vh',
+          paddingBottom: 30,
+          paddingTop: hasFixedMenu ? 61.5 : 30,
+        }}
+      >
+        {children}
+      </Container>
+    )
+  }
   return (
-    <Container
+    <div
       style={{
         minHeight: '100vh',
-        paddingBottom: 30,
-        paddingTop: hasFixedMenu ? 61.5 : 30,
+        padding: 20,
+        paddingTop: hasFixedMenu ? 61.5 : 20,
       }}
     >
       {children}
-    </Container>
+    </div>
   )
 }
 

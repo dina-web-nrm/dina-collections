@@ -3,6 +3,7 @@ import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import {
+  ALL,
   CONTINENT,
   COUNTRY,
   DISTRICT,
@@ -21,6 +22,87 @@ export const getResources = state => {
 export const getCuratedLocalities = createSelector(getResources, resources => {
   return resources.curatedLocalities
 })
+
+export const getCuratedLocalitiesArray = createSelector(
+  getCuratedLocalities,
+  curatedLocalitiesObject => {
+    return Object.keys(curatedLocalitiesObject).map(key => {
+      return curatedLocalitiesObject[key]
+    })
+  }
+)
+
+export const getCuratedLocalitiesSortedArray = createSelector(
+  getCuratedLocalitiesArray,
+  curatedLocalitiesArray => {
+    return curatedLocalitiesArray.sort((a, b) => {
+      if (a.name < b.name) return -1
+      if (a.name > b.name) return 1
+      return 0
+    })
+  }
+)
+
+export const getCuratedLocalitiesArrayByFilter = createSelector(
+  getCuratedLocalitiesSortedArray,
+  getSecondArgument,
+  (curatedLocalitiesArray, filter = {}) => {
+    const {
+      searchQuery: searchQueryFilter,
+      limit: limitFilter,
+      group: groupFilter,
+    } = filter
+    let filteredCuratedLocalities = curatedLocalitiesArray
+    if (searchQueryFilter) {
+      const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
+      const firstLetterMatches = curatedLocalitiesArray.filter(({ name }) => {
+        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      })
+
+      const otherMatches = curatedLocalitiesArray.filter(({ name }) => {
+        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+      })
+
+      filteredCuratedLocalities = [...firstLetterMatches, ...otherMatches]
+    }
+
+    if (groupFilter) {
+      filteredCuratedLocalities = filteredCuratedLocalities.filter(
+        ({ group }) => group === groupFilter
+      )
+    }
+
+    if (limitFilter) {
+      return filteredCuratedLocalities.slice(0, limitFilter)
+    }
+    return filteredCuratedLocalities
+  }
+)
+
+export const getNextCuratedLocalityIdFromFilter = createSelector(
+  getCuratedLocalitiesArrayByFilter,
+  getSecondArgument,
+  (curatedLocalitiesArray, currentId) => {
+    const currentIndex = curatedLocalitiesArray.findIndex(element => {
+      return element.id === currentId
+    })
+    const nextIndex = Number(currentIndex) + 1
+    const element = curatedLocalitiesArray[nextIndex]
+    return element.id
+  }
+)
+
+export const getPrevCuratedLocalityIdFromFilter = createSelector(
+  getCuratedLocalitiesArrayByFilter,
+  getSecondArgument,
+  (curatedLocalitiesArray, currentId) => {
+    const currentIdex = curatedLocalitiesArray.findIndex(element => {
+      return element.id === currentId
+    })
+
+    return curatedLocalitiesArray[Number(currentIdex) - 1].id
+  }
+)
 
 export const getCuratedLocality = createSelector(
   [getCuratedLocalities, getSecondArgument],
@@ -42,7 +124,9 @@ const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
     (curatedLocalities, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
       const mappedGroupLocalities = Object.values(curatedLocalities)
-        .filter(({ group }) => group === groupFilter)
+        .filter(
+          ({ group }) => (groupFilter === 'all' ? true : group === groupFilter)
+        )
         .map(({ id, name }) => {
           return {
             key: id,
@@ -52,11 +136,11 @@ const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
         })
 
       const firstLetterMatches = mappedGroupLocalities.filter(({ text }) => {
-        return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+        return text && text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
       })
 
       const otherMatches = mappedGroupLocalities.filter(({ text }) => {
-        return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+        return text && text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
       })
 
       return [...firstLetterMatches, ...otherMatches].slice(0, numberOfResults)
@@ -69,3 +153,4 @@ export const getDropdownContinentOptions = createDropdownSelector(CONTINENT, 15)
 export const getDropdownCountryOptions = createDropdownSelector(COUNTRY)
 export const getDropdownDistrictOptions = createDropdownSelector(DISTRICT)
 export const getDropdownProvinceOptions = createDropdownSelector(PROVINCE)
+export const getDropdownAllOptions = createDropdownSelector(ALL)

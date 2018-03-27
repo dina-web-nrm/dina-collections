@@ -15,6 +15,7 @@ import LookupMammals from '../lookupMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
 import RegisterMammal from '../registerMammal/Async'
 import Settings from '../settings/Async'
+import ManageLocalities from '../manageLocalities/Async'
 
 const NAVIGATION_SIDEBAR_ITEMS = [
   {
@@ -34,6 +35,12 @@ const NAVIGATION_SIDEBAR_ITEMS = [
     icon: 'search',
     name: 'lookupMammals',
     path: '/app/mammals/lookup',
+  },
+  {
+    exact: false,
+    icon: 'map outline',
+    name: 'manageLocalities',
+    path: '/app/localities',
   },
   {
     exact: true,
@@ -72,6 +79,23 @@ class App extends Component {
             <Route
               component={EditMammal}
               path={`${match.url}/mammals/:specimenId/edit`}
+            />
+            <Route
+              component={ManageLocalities}
+              exact
+              path={`${match.url}/localities`}
+            />
+            <Route
+              component={ManageLocalities}
+              path={`${match.url}/localities/create`}
+            />
+            <Route
+              component={ManageLocalities}
+              path={`${match.url}/localities/:localityId/edit`}
+            />
+            <Route
+              component={ManageLocalities}
+              path={`${match.url}/localities/:localityId/inspect`}
             />
             <Route component={Settings} exact path={`${match.url}/settings`} />
             <Route component={PageNotFound} />

@@ -1477,6 +1477,7 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           >
             <div
               className="ui left icon input"
+              style={undefined}
             >
               <input
                 autoComplete="off"
@@ -1508,6 +1509,7 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           >
             <div
               className="ui left icon input"
+              style={undefined}
             >
               <input
                 autoComplete="off"

@@ -1,6 +1,7 @@
-export const MODULE_NAME = 'localityService'
+export const ALL = 'all'
 export const CONTINENT = 'continent'
 export const COUNTRY = 'country'
 export const CURATED_LOCALITY = 'curatedLocality'
 export const DISTRICT = 'district'
+export const MODULE_NAME = 'localityService'
 export const PROVINCE = 'province'

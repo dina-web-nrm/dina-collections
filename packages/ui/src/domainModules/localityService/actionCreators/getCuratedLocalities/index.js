@@ -7,12 +7,14 @@ import {
 } from '../../actionTypes'
 import { GET_CURATED_LOCALITIES } from '../../endpoints'
 
-export default function getCuratedLocalities({ throwError = false } = {}) {
+export default function getCuratedLocalities(
+  { queryParams = {}, throwError = false } = {}
+) {
   return (dispatch, getState, { apiClient }) => {
     dispatch({
       type: LOCALITY_SERVICE_GET_CURATED_LOCALITIES_REQUEST,
     })
-    return apiClient.call(GET_CURATED_LOCALITIES).then(
+    return apiClient.call(GET_CURATED_LOCALITIES, { queryParams }).then(
       response => {
         const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
