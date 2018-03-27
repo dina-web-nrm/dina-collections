@@ -32,6 +32,7 @@ class DropdownSearchLocalInput extends Component {
     super(props)
     this.state = {
       filteredOptions: props.options,
+      searchQuery: '',
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
   }
@@ -62,6 +63,9 @@ class DropdownSearchLocalInput extends Component {
 
   handleSearchChange({ searchQuery }) {
     this.setState({
+      searchQuery,
+    })
+    this.setState({
       filteredOptions: this.getFilteredOptions(searchQuery),
     })
   }
@@ -69,8 +73,7 @@ class DropdownSearchLocalInput extends Component {
   render() {
     const { initialText, input, parse } = this.props
 
-    const { filteredOptions } = this.state
-
+    const { filteredOptions, searchQuery } = this.state
     return (
       <DropdownSearchBaseInput
         initialText={initialText}
@@ -78,6 +81,7 @@ class DropdownSearchLocalInput extends Component {
         onSearchChange={this.handleSearchChange}
         options={filteredOptions}
         parse={parse}
+        searchQuery={searchQuery}
       />
     )
   }

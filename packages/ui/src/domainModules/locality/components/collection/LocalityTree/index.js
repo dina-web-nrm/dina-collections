@@ -42,6 +42,7 @@ class Localities extends Component {
   }
 
   componentWillMount() {
+    // TODO refactor this
     this.props
       .getCuratedLocalitiesAc({
         queryParams: { relationships: ['all'] },

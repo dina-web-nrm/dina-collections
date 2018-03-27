@@ -30,14 +30,17 @@ const mapDispatchToProps = {
 
 const propTypes = {
   collectionBlockType: PropTypes.string.isRequired,
-  filterGroup: PropTypes.string.isRequired,
+  filterGroup: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
-  searchQuery: PropTypes.string.isRequired,
+  searchQuery: PropTypes.string,
   setFilterGroup: PropTypes.func.isRequired,
   setSearchQuery: PropTypes.func.isRequired,
 }
 
-const defaultProps = {}
+const defaultProps = {
+  filterGroup: '',
+  searchQuery: '',
+}
 
 const groups = ['continent', 'country', 'district', 'province']
 
