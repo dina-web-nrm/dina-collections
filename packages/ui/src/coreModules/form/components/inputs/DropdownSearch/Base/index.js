@@ -5,6 +5,7 @@ import config from 'config'
 
 const propTypes = {
   autoComplete: PropTypes.string,
+  displayAsButton: PropTypes.bool,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   mountHidden: PropTypes.bool,
@@ -27,6 +28,7 @@ const propTypes = {
 }
 const defaultProps = {
   autoComplete: undefined,
+  displayAsButton: false,
   initialText: '',
   mountHidden: config.isTest,
   searchQuery: '',
@@ -58,6 +60,7 @@ class DropdownSearchInput extends Component {
   render() {
     const {
       autoComplete,
+      displayAsButton,
       initialText,
       input,
       mountHidden,
@@ -68,11 +71,14 @@ class DropdownSearchInput extends Component {
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
     const text = (selectedOption && selectedOption.text) || initialText
-
+    const style = displayAsButton
+      ? { background: 'white', borderRadius: 0, fontWeight: 'normal' }
+      : undefined
     return (
       <React.Fragment>
         <Dropdown
           autoComplete={autoComplete}
+          button={displayAsButton}
           onSearchChange={this.handleSearchChange}
           options={options}
           search
@@ -84,7 +90,8 @@ class DropdownSearchInput extends Component {
           {...input}
           onBlur={undefined}
           onChange={this.handleOnChange}
-          value={selectedOption && selectedOption.value}
+          style={style}
+          value={(selectedOption && selectedOption.value) || ''}
         />
         {mountHidden && (
           <input

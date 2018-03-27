@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'semantic-ui-react'
 import { DropdownSearch } from 'coreModules/form/components'
+
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import {
@@ -75,6 +77,7 @@ class LocalityDropdownSearch extends Component {
     if (!allLocalitiesFetched) {
       return null
     }
+    const leftIconButton = <Button icon="user" />
 
     return (
       <DropdownSearch
@@ -92,6 +95,7 @@ class LocalityDropdownSearch extends Component {
         onSearchChange={({ searchQuery }) => {
           updateSearchQuery(group, searchQuery)
         }}
+        rightIconButton={leftIconButton}
         type="dropdown-search-connect"
       />
     )

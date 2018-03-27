@@ -62,6 +62,7 @@ class CustomDropdownSearchInput extends Component {
       options,
       searchQuery,
       selectedOption,
+      ...rest
     } = this.props
 
     return (
@@ -72,6 +73,7 @@ class CustomDropdownSearchInput extends Component {
         options={options}
         searchQuery={searchQuery}
         selectedOption={selectedOption}
+        {...rest}
       />
     )
   }

@@ -10,13 +10,14 @@ const mapStateToProps = (
   { getOptions, getSearchQuery, getSearchLoading, getSelectedOption, input }
 ) => {
   const searchQuery = getSearchQuery(state, input.name)
-  const selectedOption = input.value && getSelectedOption(state, input.value)
+  const selectedOption =
+    (input.value && getSelectedOption(state, input.value)) || null
 
   return {
     isLoading: getSearchLoading(state),
     options: getOptions(state, searchQuery),
     searchQuery,
-    text: selectedOption && selectedOption.text,
+    selectedOption,
   }
 }
 
@@ -30,27 +31,41 @@ const propTypes = {
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   }).isRequired,
   isLoading: PropTypes.bool,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+    }).isRequired
+  ).isRequired,
   searchQuery: PropTypes.string,
-  text: PropTypes.string,
+  selectedOption: PropTypes.object,
 }
 
 const defaultProps = {
   isLoading: true,
   searchQuery: null,
+  selectedOption: null,
   text: undefined,
 }
 
 class ConnectSearchInput extends Component {
   render() {
-    const { options, isLoading, searchQuery, text, ...rest } = this.props
+    const {
+      isLoading,
+      options,
+      searchQuery,
+      selectedOption,
+      ...rest
+    } = this.props
 
     return (
       <SearchBaseInput
         isLoading={isLoading}
         options={options}
         searchQuery={searchQuery}
-        text={text}
+        selectedOption={selectedOption}
         {...rest}
       />
     )

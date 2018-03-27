@@ -5,13 +5,15 @@ import { compose } from 'redux'
 import { Field, Input } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
+import LocalityDropdownSearch from 'domainModules/locality/components/AdvancedLocalityDropdownSearch'
 import {
   CONTINENT,
   COUNTRY,
   DISTRICT,
   PROVINCE,
 } from 'domainModules/localityService/constants'
+
+import { MAMMAL_FORM_NAME as formName } from 'domainModules/collectionMammals/constants'
 
 const buildModuleTextKey = textKey =>
   `modules.collectionMammals.occurrences.localityInformation.${textKey}`
@@ -27,10 +29,11 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
   return (
     <React.Fragment>
       <Grid.Row>
-        <Grid.Column computer={4} mobile={16} tablet={8}>
+        <Grid.Column computer={8} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
             component={LocalityDropdownSearch}
+            formName={formName}
             group={CONTINENT}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('continentStandardized'),
@@ -44,10 +47,11 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
             name={getPath('0.id')}
           />
         </Grid.Column>
-        <Grid.Column computer={4} mobile={16} tablet={8}>
+        <Grid.Column computer={8} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
             component={LocalityDropdownSearch}
+            formName={formName}
             group={COUNTRY}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('countryStandardized'),
@@ -61,10 +65,11 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
             name={getPath('1.id')}
           />
         </Grid.Column>
-        <Grid.Column computer={4} mobile={16} tablet={8}>
+        <Grid.Column computer={8} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
             component={LocalityDropdownSearch}
+            formName={formName}
             group={PROVINCE}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('provinceStandardized'),
@@ -78,10 +83,11 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
             name={getPath('2.id')}
           />
         </Grid.Column>
-        <Grid.Column computer={4} mobile={16} tablet={8}>
+        <Grid.Column computer={8} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
             component={LocalityDropdownSearch}
+            formName={formName}
             group={DISTRICT}
             helpNotificationProps={{
               descriptionHeaderKey: buildModuleTextKey('districtStandardized'),

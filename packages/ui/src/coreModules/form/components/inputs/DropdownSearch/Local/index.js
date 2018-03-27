@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { createSelector } from 'reselect'
 import DropdownSearchBaseInput from '../Base'
 
 const propTypes = {
@@ -27,6 +28,19 @@ const defaultProps = {
   parse: undefined,
 }
 
+const createSelectedOptionSelector = options => {
+  return createSelector(
+    value => value,
+    value => {
+      return (
+        options.find(item => {
+          return item.value === value
+        }) || null
+      )
+    }
+  )
+}
+
 class DropdownSearchLocalInput extends Component {
   constructor(props) {
     super(props)
@@ -35,6 +49,8 @@ class DropdownSearchLocalInput extends Component {
       searchQuery: '',
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.getSelectedOption = this.getSelectedOption.bind(this)
+    this.optionSelector = createSelectedOptionSelector(props.options)
   }
 
   getFilteredOptions(searchQuery) {
@@ -61,6 +77,15 @@ class DropdownSearchLocalInput extends Component {
     return [...firstLetterMatches, ...otherMatches]
   }
 
+  getSelectedOption() {
+    const { input } = this.props
+    if (!input.value) {
+      return null
+    }
+    const res = this.optionSelector(input.value)
+    return res
+  }
+
   handleSearchChange({ searchQuery }) {
     this.setState({
       searchQuery,
@@ -82,6 +107,7 @@ class DropdownSearchLocalInput extends Component {
         options={filteredOptions}
         parse={parse}
         searchQuery={searchQuery}
+        selectedOption={this.getSelectedOption()}
       />
     )
   }
