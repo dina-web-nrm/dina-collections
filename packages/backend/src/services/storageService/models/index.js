@@ -1,3 +1,4 @@
+const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
 const physicalUnitModelFactory = function physicalUnit({ sequelize }) {
@@ -31,7 +32,7 @@ const setupRelations = function setupRelations({ models }) {
   })
 }
 
-module.exports = [
+const factories = [
   {
     factory: storageLocationModelFactory,
     name: 'storageLocation',
@@ -45,3 +46,12 @@ module.exports = [
     name: 'setupRelations',
   },
 ]
+
+if (loadInitialData) {
+  factories.push({
+    factory: loadInitialData,
+    name: 'loadInitialData',
+  })
+}
+
+module.exports = factories
