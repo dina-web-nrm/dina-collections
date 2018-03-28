@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon, Label, List } from 'semantic-ui-react'
+import {
+  SET_ITEM_EDIT,
+  SET_ITEM_INSPECT,
+} from 'domainModules/locality/interactions'
 
 const propTypes = {
   activeLocalityId: PropTypes.string,
   curatedLocality: PropTypes.object.isRequired,
+  displayNavigationButtons: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
 
@@ -21,16 +26,20 @@ const groupColorMap = {
 
 class ListItem extends Component {
   render() {
-    const { activeLocalityId, curatedLocality, onInteraction } = this.props
+    const {
+      activeLocalityId,
+      curatedLocality,
+      displayNavigationButtons,
+      onInteraction,
+    } = this.props
     return (
       <List.Item
         active={activeLocalityId === curatedLocality.id}
         key={curatedLocality.id}
         onClick={event => {
           event.preventDefault()
-          onInteraction('navigate', {
+          onInteraction(SET_ITEM_INSPECT, {
             itemId: curatedLocality.id,
-            target: 'inspect',
           })
         }}
       >
@@ -41,34 +50,36 @@ class ListItem extends Component {
           >
             {curatedLocality.group}
           </Label>
-          <Button
-            icon
-            onClick={event => {
-              event.preventDefault()
-              event.stopPropagation()
-              onInteraction('navigate', {
-                itemId: curatedLocality.id,
-                target: 'edit',
-              })
-            }}
-            size="tiny"
-          >
-            <Icon name="edit" />
-          </Button>
-          <Button
-            icon
-            onClick={event => {
-              event.preventDefault()
-              event.stopPropagation()
-              onInteraction('navigate', {
-                itemId: curatedLocality.id,
-                target: 'inspect',
-              })
-            }}
-            size="tiny"
-          >
-            <Icon name="folder open" />
-          </Button>
+          {displayNavigationButtons && (
+            <Button
+              icon
+              onClick={event => {
+                event.preventDefault()
+                event.stopPropagation()
+                onInteraction(SET_ITEM_EDIT, {
+                  itemId: curatedLocality.id,
+                })
+              }}
+              size="tiny"
+            >
+              <Icon name="edit" />
+            </Button>
+          )}
+          {displayNavigationButtons && (
+            <Button
+              icon
+              onClick={event => {
+                event.preventDefault()
+                event.stopPropagation()
+                onInteraction(SET_ITEM_INSPECT, {
+                  itemId: curatedLocality.id,
+                })
+              }}
+              size="tiny"
+            >
+              <Icon name="folder open" />
+            </Button>
+          )}
         </List.Content>
 
         <List.Content>

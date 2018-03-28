@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { createCuratedLocality as createCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
+import {
+  FORM_CREATE_SUCCESS,
+  SET_COLLECTION_LIST,
+} from 'domainModules/locality/interactions'
+
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
@@ -23,9 +28,7 @@ export class Create extends PureComponent {
         displayResetButton
         onBack={event => {
           event.preventDefault()
-          onInteraction('navigate', {
-            target: 'collection',
-          })
+          onInteraction(SET_COLLECTION_LIST)
         }}
         onSubmit={data => {
           this.props
@@ -33,7 +36,7 @@ export class Create extends PureComponent {
               curatedLocality: data,
             })
             .then(result => {
-              onInteraction('create-submit-success', {
+              onInteraction(FORM_CREATE_SUCCESS, {
                 itemId: result.id,
               })
             })

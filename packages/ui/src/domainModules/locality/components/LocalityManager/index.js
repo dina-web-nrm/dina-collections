@@ -10,6 +10,20 @@ import {
 import { Layout } from 'coreModules/layout/components'
 import { push } from 'react-router-redux'
 import { withLayout } from 'coreModules/layout/higherOrderComponents'
+import {
+  FORM_CREATE_SUCCESS,
+  FORM_EDIT_SUCCESS,
+  SET_COLLECTION,
+  SET_COLLECTION_LIST,
+  SET_COLLECTION_TREE,
+  SET_ITEM_CREATE,
+  SET_ITEM_EDIT,
+  SET_ITEM_INSPECT,
+  SET_LAYOUT_SINGLE_COLLECTION,
+  SET_LAYOUT_SINGLE_ITEM,
+  SET_LAYOUT_SPLIT,
+} from 'domainModules/locality/interactions'
+
 import ItemBlock from './blocks/Item'
 import CollectionBlock from './blocks/Collection'
 
@@ -57,47 +71,57 @@ class LocalityManager extends Component {
 
   handleInteraction(type, data) {
     switch (type) {
-      case 'layout-single-collection': {
+      case SET_LAYOUT_SINGLE_COLLECTION: {
         this.props.setLayoutMode('single')
         this.props.push(`/app/localities`)
         break
       }
-      case 'layout-split': {
+      case SET_LAYOUT_SPLIT: {
         this.props.setLayoutMode('split')
         break
       }
 
-      case 'layout-single-item': {
+      case SET_LAYOUT_SINGLE_ITEM: {
         this.props.setLayoutMode('single')
         break
       }
 
-      case 'set-collection-block-type': {
-        this.props.setCollectionBlockType(data.type)
+      case SET_COLLECTION_LIST: {
+        this.props.setCollectionBlockType('list')
+        this.props.push(`/app/localities`)
         break
       }
 
-      case 'navigate': {
-        const { target, itemId } = data
-
-        if (target === 'create') {
-          this.props.push(`/app/localities/create`)
-        }
-        if (target === 'inspect' && itemId !== '') {
-          this.props.push(`/app/localities/${itemId}/inspect`)
-        }
-        if (target === 'edit' && itemId !== '') {
-          this.props.push(`/app/localities/${itemId}/edit`)
-        }
-
-        if (target === 'collection') {
-          this.props.push(`/app/localities`)
-        }
-
+      case SET_COLLECTION_TREE: {
+        this.props.setCollectionBlockType('tree')
+        this.props.push(`/app/localities`)
         break
       }
-      case 'edit-submit-success':
-      case 'create-submit-success': {
+
+      case SET_COLLECTION: {
+        this.props.push(`/app/localities`)
+        break
+      }
+
+      case SET_ITEM_EDIT: {
+        const { itemId } = data
+        this.props.push(`/app/localities/${itemId}/edit`)
+        break
+      }
+
+      case SET_ITEM_INSPECT: {
+        const { itemId } = data
+        this.props.push(`/app/localities/${itemId}/inspect`)
+        break
+      }
+
+      case SET_ITEM_CREATE: {
+        this.props.push(`/app/localities/create`)
+        break
+      }
+
+      case FORM_EDIT_SUCCESS:
+      case FORM_CREATE_SUCCESS: {
         const { itemId } = data
         if (itemId) {
           this.props.push(`/app/localities/${itemId}/inspect`)

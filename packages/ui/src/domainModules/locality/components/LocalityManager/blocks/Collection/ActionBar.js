@@ -8,6 +8,12 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
 } from 'domainModules/locality/keyObjectModule'
 
+import {
+  SET_COLLECTION_LIST,
+  SET_COLLECTION_TREE,
+  SET_ITEM_CREATE,
+} from 'domainModules/locality/interactions'
+
 import { InputText } from 'coreModules/form/components'
 
 const mapStateToProps = state => {
@@ -30,6 +36,7 @@ const mapDispatchToProps = {
 
 const propTypes = {
   collectionBlockType: PropTypes.string.isRequired,
+  displayNavigationButtons: PropTypes.bool.isRequired,
   filterGroup: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
   searchQuery: PropTypes.string,
@@ -59,7 +66,11 @@ const dropdownOptions = [
 
 class ActionBar extends Component {
   render() {
-    const { collectionBlockType, onInteraction } = this.props
+    const {
+      collectionBlockType,
+      displayNavigationButtons,
+      onInteraction,
+    } = this.props
     return (
       <Form style={{ marginBottom: 10 }}>
         <Grid>
@@ -71,7 +82,7 @@ class ActionBar extends Component {
                   icon="numbered list"
                   onClick={event => {
                     event.preventDefault()
-                    onInteraction('set-collection-block-type', { type: 'list' })
+                    onInteraction(SET_COLLECTION_LIST)
                   }}
                 />
                 <Button
@@ -79,7 +90,7 @@ class ActionBar extends Component {
                   icon="tree"
                   onClick={event => {
                     event.preventDefault()
-                    onInteraction('set-collection-block-type', { type: 'tree' })
+                    onInteraction(SET_COLLECTION_TREE)
                   }}
                 />
               </Button.Group>
@@ -113,21 +124,22 @@ class ActionBar extends Component {
                 value={this.props.filterGroup}
               />
             </Grid.Column>
-
-            <Grid.Column textAlign="left" width={2}>
-              <Button.Group floated="right">
-                <Button
-                  color="orange"
-                  floaded="right"
-                  onClick={event => {
-                    event.preventDefault()
-                    onInteraction('navigate', { target: 'create' })
-                  }}
-                >
-                  New
-                </Button>
-              </Button.Group>
-            </Grid.Column>
+            {displayNavigationButtons && (
+              <Grid.Column textAlign="left" width={2}>
+                <Button.Group floated="right">
+                  <Button
+                    color="orange"
+                    floaded="right"
+                    onClick={event => {
+                      event.preventDefault()
+                      onInteraction(SET_ITEM_CREATE)
+                    }}
+                  >
+                    New
+                  </Button>
+                </Button.Group>
+              </Grid.Column>
+            )}
           </Grid.Row>
         </Grid>
       </Form>

@@ -30,6 +30,7 @@ const mapDispatchToProps = {
 const propTypes = {
   activeLocalityId: PropTypes.string,
   curatedLocalities: PropTypes.array,
+  displayNavigationButtons: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   setFilterLimit: PropTypes.func.isRequired,
 }
@@ -45,7 +46,12 @@ class LocalityList extends Component {
   }
 
   render() {
-    const { activeLocalityId, curatedLocalities, onInteraction } = this.props
+    const {
+      activeLocalityId,
+      curatedLocalities,
+      displayNavigationButtons,
+      onInteraction,
+    } = this.props
     return (
       <List divided selection size="small" verticalAlign="middle">
         {curatedLocalities.map(curatedLocality => {
@@ -53,6 +59,7 @@ class LocalityList extends Component {
             <ListItem
               activeLocalityId={activeLocalityId}
               curatedLocality={curatedLocality}
+              displayNavigationButtons={displayNavigationButtons}
               key={curatedLocality.id}
               onInteraction={onInteraction}
             />

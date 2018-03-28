@@ -6,6 +6,12 @@ import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDr
 import CreateBlock from 'domainModules/locality/components/LocalityManager/blocks/Item/Create'
 import CollectionBlock from 'domainModules/locality/components/LocalityManager/blocks/Collection'
 import { change } from 'redux-form'
+import {
+  FORM_CREATE_SUCCESS,
+  SET_COLLECTION_LIST,
+  SET_COLLECTION_TREE,
+  SET_ITEM_INSPECT,
+} from 'domainModules/locality/interactions'
 
 const mapDispatchToProps = {
   change,
@@ -14,12 +20,14 @@ const mapDispatchToProps = {
 const propTypes = {
   change: PropTypes.func.isRequired,
   formName: PropTypes.string.isRequired,
+  input: PropTypes.object.isRequired,
 }
 
 export class AdvancedLocalityDropdownSearch extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      collectionBlockType: 'list',
       createActive: false,
       pickerActive: false,
     }
@@ -54,19 +62,31 @@ export class AdvancedLocalityDropdownSearch extends Component {
 
   handleInteraction(type, data) {
     const { formName, input: { name } } = this.props
-    if (type === 'create-submit-success') {
+    if (type === FORM_CREATE_SUCCESS) {
       this.props.change(formName, name, data.itemId)
     }
 
-    if (type === 'navigate' && data.itemId) {
+    if (type === SET_ITEM_INSPECT) {
       this.props.change(formName, name, data.itemId)
+    }
+
+    if (type === SET_COLLECTION_LIST) {
+      this.setState({
+        collectionBlockType: 'list',
+      })
+    }
+
+    if (type === SET_COLLECTION_TREE) {
+      this.setState({
+        collectionBlockType: 'tree',
+      })
     }
 
     this.handleOnClose()
   }
 
   render() {
-    const { createActive, pickerActive } = this.state
+    const { collectionBlockType, createActive, pickerActive } = this.state
     const { ...rest } = this.props
     const picker = (
       <Button onClick={this.handlePickerButtonClick}>Picker</Button>
@@ -78,6 +98,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
         <Modal onClose={this.handleOnClose} open>
           <Modal.Content>
             <CreateBlock
+              displayNavigationButtons={false}
               itemBlockType="create"
               layoutMode="modal"
               onInteraction={this.handleInteraction}
@@ -92,7 +113,8 @@ export class AdvancedLocalityDropdownSearch extends Component {
         <Modal onClose={this.handleOnClose} open>
           <Modal.Content>
             <CollectionBlock
-              collectionBlockType="list"
+              collectionBlockType={collectionBlockType}
+              displayNavigationButtons={false}
               layoutMode="modal"
               onInteraction={this.handleInteraction}
             />
