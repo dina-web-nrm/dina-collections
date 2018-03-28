@@ -1,6 +1,8 @@
 import initialState from './initialState'
 
 const mutations = [
+  { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
+  { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
   { name: 'taxonInformation.determinations.0.date', value: 'date' },
   {
     name: 'taxonInformation.determinations.0.determinationVerbatim',
@@ -228,6 +230,7 @@ const expectedOutput = {
         },
       ],
       taxonInformation: {
+        curatorialName: 'curatorialName',
         determinations: [
           {
             date: 'date',
@@ -241,6 +244,7 @@ const expectedOutput = {
             },
           },
         ],
+        taxonRemarks: 'taxonRemarks',
       },
     },
   },

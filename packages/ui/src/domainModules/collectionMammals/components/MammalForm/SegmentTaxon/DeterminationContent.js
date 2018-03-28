@@ -148,6 +148,14 @@ class DeterminationContent extends Component {
           />
         </Grid.Column>
         <Grid.Column mobile={16}>
+          <Button
+            onClick={event => {
+              event.preventDefault()
+              handleSetInactive(index)
+            }}
+          >
+            Save
+          </Button>
           {skipRemoveDeterminationConfirmation && (
             <Button
               onClick={event => {
@@ -222,6 +230,6 @@ export default compose(
     scope: 'determination',
   }),
   pathBuilder({
-    name: 'taxonInformation.determinations',
+    name: 'determinations',
   })
 )(DeterminationContent)

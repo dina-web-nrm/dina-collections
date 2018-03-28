@@ -60,7 +60,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     const removeDeterminationButton = rootComponent
       .find('Accordion')
       .find('Button')
-      .at(1)
+      .at(2)
     removeDeterminationButton.simulate('click')
 
     // all determinations removed
@@ -111,7 +111,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       .find('Segment')
       .at(1)
       .find('Button')
-      .at(2)
+      .at(3)
 
     addDeterminationButton.simulate('click')
     addDeterminationButton.simulate('click')
@@ -142,7 +142,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       .find('Segment')
       .at(1)
       .find('Button')
-      .at(2)
+      .at(3)
 
     addDeterminationButton.simulate('click')
     addDeterminationButton.simulate('click')
@@ -237,7 +237,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
         .find('Segment')
         .at(1)
         .find('Button')
-        .at(2)
+        .at(3)
 
       addDeterminationButton.simulate('click')
 

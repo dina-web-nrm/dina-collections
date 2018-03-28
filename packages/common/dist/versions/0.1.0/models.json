@@ -1030,6 +1030,9 @@
       "curatorialName": {
         "type": "string"
       },
+      "taxonRemarks": {
+        "type": "string"
+      },
       "determinations": {
         "type": "array",
         "items": {
