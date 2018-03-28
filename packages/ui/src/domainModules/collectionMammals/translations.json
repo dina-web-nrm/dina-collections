@@ -532,5 +532,11 @@
   "year": {
     "en": "Year",
     "sv": "År"
+  },
+  "other": {
+    "readOnly": {
+      "en": "Read only",
+      "sv": "Enbart läsa"
+    }
   }
 }

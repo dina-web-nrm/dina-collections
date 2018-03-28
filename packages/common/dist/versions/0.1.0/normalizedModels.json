@@ -138,6 +138,14 @@
     "x-modelType": "model",
     "id": "position"
   },
+  "readOnly": {
+    "additionalProperties": true,
+    "properties": {},
+    "x-category": "core",
+    "x-modelType": "model",
+    "description": "",
+    "id": "readOnly"
+  },
   "translatedString": {
     "additionalProperties": false,
     "properties": {
@@ -831,6 +839,9 @@
           "$ref": "distinguishedUnit"
         }
       },
+      "readOnly": {
+        "$ref": "readOnly"
+      },
       "version": {
         "type": "integer"
       }
@@ -1003,6 +1014,9 @@
         "items": {
           "$ref": "event"
         }
+      },
+      "readOnly": {
+        "$ref": "readOnly"
       },
       "version": {
         "type": "integer"

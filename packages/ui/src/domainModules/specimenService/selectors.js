@@ -36,3 +36,8 @@ export const getSpecimenFeatureObservations = createSelector(
   getSpecimenIndividualGroup,
   individualGroup => individualGroup && individualGroup.featureObservations
 )
+
+export const getSpecimenReadOnly = createSelector(
+  getSpecimen,
+  specimen => specimen && specimen.readOnly
+)

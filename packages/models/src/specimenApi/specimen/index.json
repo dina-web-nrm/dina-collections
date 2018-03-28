@@ -87,6 +87,9 @@
     },
     "version": {
       "type": "integer"
+    },
+    "readOnly": {
+      "$ref": "__ROOT__readOnly"
     }
   }
 }

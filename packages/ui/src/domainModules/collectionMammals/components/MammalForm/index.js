@@ -43,6 +43,7 @@ const propTypes = {
   error: PropTypes.string,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
   invalid: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -122,8 +123,8 @@ class RawMammalForm extends Component {
       submitting,
       submitFailed,
       submitSucceeded,
+      initialValues,
     } = this.props
-
     log.render()
     return (
       <Form
@@ -152,7 +153,7 @@ class RawMammalForm extends Component {
               mode={mode}
             />
             <SegmentDistinguishedUnits />
-            <SegmentOther />
+            <SegmentOther readOnly={initialValues.readOnly} />
 
             <Segment>
               <div>
