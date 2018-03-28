@@ -7,6 +7,7 @@ import {
 import {
   getLocalState as getSpecimenState,
   getSpecimenIndividualGroup,
+  getSpecimenReadOnly,
 } from 'domainModules/specimenService/selectors'
 import {
   getLocalState as getStorageState,
@@ -29,6 +30,10 @@ const getInitialIndividualGroup = (state, specimenId) => {
   return getSpecimenIndividualGroup(getSpecimenState(state), specimenId)
 }
 
+const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
+  return getSpecimenReadOnly(getSpecimenState(state), specimenId)
+}
+
 const getPhysicalUnitsGlobal = state => {
   return getPhysicalUnits(getStorageState(state))
 }
@@ -38,12 +43,14 @@ const getMammalFormInitialValues = createSelector(
     getFeatureObservationTypesGlobal,
     getInitialIndividualGroup,
     getPhysicalUnitsGlobal,
+    getSpecimenReadOnlyGlobalSelector,
   ],
-  (featureObservationTypes, individualGroup, physicalUnits) => {
+  (featureObservationTypes, individualGroup, physicalUnits, readOnly) => {
     return transformInput({
       featureObservationTypes,
       individualGroup,
       physicalUnits,
+      readOnly,
     })
   }
 )

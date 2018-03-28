@@ -10,10 +10,12 @@ import HelpTextNotification from './migrate/HelpTextNotification'
 import Input from './fields/Input'
 import InputText from './inputs/Input/Text'
 import InputDatePart from './migrate/InputDatePart'
+import CustomData from './fields/CustomData'
 
 export {
   ButtonCopyPasteField,
   Checkbox,
+  CustomData,
   DisplaySearchResult,
   DropdownSearch,
   Field,

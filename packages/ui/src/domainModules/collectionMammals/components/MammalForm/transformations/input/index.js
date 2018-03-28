@@ -8,6 +8,7 @@ export default function transformInput({
   featureObservationTypes = {},
   individualGroup = {},
   physicalUnits = {},
+  readOnly = undefined,
 }) {
   const { id, type, ...rest } = individualGroup
   const attributes = { ...rest }
@@ -34,6 +35,7 @@ export default function transformInput({
     featureObservations,
     identifiers,
     individualCircumstances,
+    readOnly,
     taxonInformation,
   }
 }

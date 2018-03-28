@@ -95,7 +95,6 @@ class LookupMammals extends Component {
 
   render() {
     const { result, searchParameters } = this.props
-
     log.render()
     return (
       <div>
@@ -143,7 +142,7 @@ class LookupMammals extends Component {
           </Table.Header>
           {result.length ? (
             <Table.Body>
-              {result.map(({ id, individualGroup }) => {
+              {result.map(({ id, individualGroup } = {}) => {
                 const { taxonInformation, identifiers } = individualGroup
 
                 const catalogNumberIdentifier =
@@ -153,13 +152,14 @@ class LookupMammals extends Component {
                   ) || null
 
                 const { taxonNameStandardized } =
-                  taxonInformation &&
-                  taxonInformation.determinations &&
-                  taxonInformation.determinations.length &&
-                  (taxonInformation.determinations.find(
-                    ({ isCurrentDetermination }) => isCurrentDetermination
-                  ) ||
-                    taxonInformation.determinations[0])
+                  (taxonInformation &&
+                    taxonInformation.determinations &&
+                    taxonInformation.determinations.length &&
+                    (taxonInformation.determinations.find(
+                      ({ isCurrentDetermination }) => isCurrentDetermination
+                    ) ||
+                      taxonInformation.determinations[0])) ||
+                  {}
 
                 const tableValues = {
                   catalogNumber:

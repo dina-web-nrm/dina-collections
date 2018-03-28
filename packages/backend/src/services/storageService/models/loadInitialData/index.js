@@ -1,4 +1,4 @@
-const readInitialData = require('../../../utilities/readInitialData')
+const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function loadInitialData({ models }) {
   const storageLocations = readInitialData('storageLocations')

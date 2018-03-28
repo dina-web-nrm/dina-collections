@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "ajv": "^5.2.3",
+    "babel-plugin-react-css-modules": "^3.3.3",
     "common": "file:../common",
     "debug": "^3.1.0",
     "dns": "file:./src/mock/dns",
@@ -37,6 +38,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-json-inspector": "^7.1.1",
     "react-list": "^0.8.8",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",

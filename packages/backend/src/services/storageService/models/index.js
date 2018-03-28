@@ -32,7 +32,7 @@ const setupRelations = function setupRelations({ models }) {
   })
 }
 
-const factories = [
+module.exports = [
   {
     factory: storageLocationModelFactory,
     name: 'storageLocation',
@@ -45,13 +45,8 @@ const factories = [
     factory: setupRelations,
     name: 'setupRelations',
   },
-]
-
-if (loadInitialData) {
-  factories.push({
+  {
     factory: loadInitialData,
     name: 'loadInitialData',
-  })
-}
-
-module.exports = factories
+  },
+]

@@ -23,6 +23,9 @@
       "type": "array",
       "items": { "$ref": "__ROOT__distinguishedUnit" }
     },
+    "readOnly": {
+      "$ref": "__ROOT__readOnly"
+    },
     "version": { "type": "integer" }
   }
 }

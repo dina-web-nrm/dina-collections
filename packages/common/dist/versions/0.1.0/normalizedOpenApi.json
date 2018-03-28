@@ -5411,6 +5411,13 @@
         "x-category": "core",
         "x-modelType": "model"
       },
+      "readOnly": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "core",
+        "x-modelType": "model",
+        "description": ""
+      },
       "translatedString": {
         "additionalProperties": false,
         "properties": {
@@ -6080,6 +6087,9 @@
               "$ref": "#/components/schemas/distinguishedUnit"
             }
           },
+          "readOnly": {
+            "$ref": "#/components/schemas/readOnly"
+          },
           "version": {
             "type": "integer"
           }
@@ -6199,6 +6209,9 @@
             "items": {
               "$ref": "#/components/schemas/event"
             }
+          },
+          "readOnly": {
+            "$ref": "#/components/schemas/readOnly"
           },
           "version": {
             "type": "integer"

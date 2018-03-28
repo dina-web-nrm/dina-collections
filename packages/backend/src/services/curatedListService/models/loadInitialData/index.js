@@ -1,20 +1,12 @@
-const condition = require('./condition')
-const sex = require('./sex')
-const ageStage = require('./ageStage')
-const boneCount = require('./boneCount')
-const length = require('./length')
-const weight = require('./weight')
-
-const featureTypes = [
-  ...ageStage,
-  ...condition,
-  ...boneCount,
-  ...length,
-  ...sex,
-  ...weight,
-]
+const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function loadInitialData({ models }) {
+  const featureTypes = readInitialData('featureTypes', { isJson: false })
+
+  if (!featureTypes) {
+    return Promise.resolve()
+  }
+
   const items = featureTypes.map((featureType, index) => {
     return {
       doc: featureType,

@@ -49,6 +49,7 @@ export default function transformOutput(formData) {
     physicalUnits,
     specimen: {
       individualGroup,
+      readOnly: formData.readOnly,
     },
     taxa,
   }
