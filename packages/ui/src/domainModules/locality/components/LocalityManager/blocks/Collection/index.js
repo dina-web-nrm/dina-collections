@@ -8,22 +8,40 @@ import Header from './Header'
 
 const propTypes = {
   collectionBlockType: PropTypes.string.isRequired,
+  displayNavigationButtons: PropTypes.bool,
   layoutMode: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
 
+const defaultProps = {
+  displayNavigationButtons: true,
+}
+
 const CollectionBlock = ({
   collectionBlockType,
+  displayNavigationButtons,
   layoutMode,
   onInteraction,
   ...rest
 }) => {
   let content
   if (collectionBlockType === 'list') {
-    content = <LocalityList onInteraction={onInteraction} {...rest} />
+    content = (
+      <LocalityList
+        displayNavigationButtons={displayNavigationButtons}
+        onInteraction={onInteraction}
+        {...rest}
+      />
+    )
   }
   if (collectionBlockType === 'tree') {
-    content = <LocalityTree onInteraction={onInteraction} {...rest} />
+    content = (
+      <LocalityTree
+        displayNavigationButtons={displayNavigationButtons}
+        onInteraction={onInteraction}
+        {...rest}
+      />
+    )
   }
 
   return (
@@ -37,6 +55,7 @@ const CollectionBlock = ({
         preContent={
           <ActionBar
             collectionBlockType={collectionBlockType}
+            displayNavigationButtons={displayNavigationButtons}
             onInteraction={onInteraction}
           />
         }
@@ -47,6 +66,7 @@ const CollectionBlock = ({
   )
 }
 
+CollectionBlock.defaultProps = defaultProps
 CollectionBlock.propTypes = propTypes
 
 export default CollectionBlock

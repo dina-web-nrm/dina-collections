@@ -5,6 +5,7 @@ export default createAsyncView({
   modules: () => {
     return [
       import('coreModules/form'),
+      import('domainModules/locality'),
       import('domainModules/curatedListService'),
       import('domainModules/identifierService'),
       import('domainModules/localityService'),

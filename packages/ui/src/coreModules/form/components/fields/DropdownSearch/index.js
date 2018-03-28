@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'semantic-ui-react'
 import DropdownSearchConnectInput from '../../inputs/DropdownSearch/Connect'
 import DropdownSearchLocalInput from '../../inputs/DropdownSearch/Local'
 
@@ -30,6 +31,8 @@ function Select({
   module,
   required,
   type,
+  leftButton,
+  rightButton,
   ...rest
 }) {
   let Component
@@ -49,6 +52,7 @@ function Select({
   }
 
   const { name } = input
+  const displayAsButton = !!(leftButton || rightButton)
   return (
     <FieldTemplate
       errorScope={errorScope}
@@ -60,7 +64,21 @@ function Select({
       name={name}
       required={required}
     >
-      <Component {...rest} input={input} />
+      {displayAsButton ? (
+        <Button.Group>
+          {leftButton}
+
+          <Component
+            displayAsButton={displayAsButton}
+            {...rest}
+            input={input}
+          />
+
+          {rightButton}
+        </Button.Group>
+      ) : (
+        <Component {...rest} input={input} />
+      )}
     </FieldTemplate>
   )
 }

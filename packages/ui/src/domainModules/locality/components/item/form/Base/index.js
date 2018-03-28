@@ -2,22 +2,18 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Form, Grid } from 'semantic-ui-react'
 import { reduxForm } from 'redux-form'
-import { connect } from 'react-redux'
 import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
-import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
-import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input } from 'coreModules/form/components'
 import { ALL } from 'domainModules/localityService/constants'
-import LocalityDropdownSearch from 'domainModules/collectionMammals/components/LocalityDropdownSearch'
+import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
 import FormControll from './FormControll'
 
 const log = createLog('modules:user:EditForm')
 
 const propTypes = {
-  curatedLocalities: PropTypes.object.isRequired,
   displayBackButton: PropTypes.bool,
   displayResetButton: PropTypes.bool,
   error: PropTypes.string,
@@ -32,23 +28,15 @@ const propTypes = {
 }
 
 const defaultProps = {
-  curatedLocalities: {},
   displayBackButton: false,
   displayResetButton: false,
   error: '',
-}
-
-const mapStateToProps = state => {
-  return {
-    curatedLocalities: localityServiceSelectors.getCuratedLocalities(state),
-  }
 }
 
 export class Edit extends Component {
   render() {
     log.render()
     const {
-      curatedLocalities,
       displayBackButton,
       displayResetButton,
       error,
@@ -60,12 +48,6 @@ export class Edit extends Component {
       submitSucceeded,
       submitting,
     } = this.props
-    const formatLocalityName = id => {
-      return curatedLocalities[id]
-        ? capitalizeFirstLetter(curatedLocalities[id].name)
-        : ''
-    }
-
     return (
       <Form error={!!error} onSubmit={handleSubmit(this.props.onSubmit)}>
         <Grid textAlign="left" verticalAlign="top">
@@ -100,7 +82,6 @@ export class Edit extends Component {
               <FieldWrapper
                 autoComplete="off"
                 component={LocalityDropdownSearch}
-                format={formatLocalityName}
                 group={ALL}
                 label="Parent"
                 LocalityDropdownSearch
@@ -221,4 +202,4 @@ export const EditForm = reduxForm({
   validate: formValidator({ model: 'curatedLocality' }),
 })(Edit)
 
-export default connect(mapStateToProps)(EditForm)
+export default EditForm

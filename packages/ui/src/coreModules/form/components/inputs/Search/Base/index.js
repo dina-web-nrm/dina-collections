@@ -25,7 +25,7 @@ const propTypes = {
   parse: PropTypes.func,
   resultRenderer: PropTypes.func,
   searchQuery: PropTypes.string,
-  text: PropTypes.string,
+  selectedOption: PropTypes.object,
 }
 
 const defaultProps = {
@@ -34,7 +34,7 @@ const defaultProps = {
   parse: undefined,
   resultRenderer: DefaultResultRenderer,
   searchQuery: null,
-  text: undefined,
+  selectedOption: null,
 }
 
 class SearchBase extends Component {
@@ -78,7 +78,7 @@ class SearchBase extends Component {
       mountHidden,
       options,
       searchQuery,
-      text,
+      selectedOption,
     } = this.props
 
     const hiddenInputName = `${input.name}.hidden`
@@ -93,7 +93,7 @@ class SearchBase extends Component {
           results={options}
           {...input}
           onBlur={undefined}
-          value={searchQuery || text}
+          value={searchQuery || (selectedOption && selectedOption.text) || ''}
         />
         {mountHidden && (
           <input

@@ -2,16 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
 import { updateCuratedLocality as updateCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
 import BaseForm from './Base'
-
-const mapStateToProps = (state, ownProps) => {
-  const { itemId } = ownProps
-  return {
-    curatedLocality: localityServiceSelectors.getCuratedLocality(state, itemId),
-  }
-}
+import { createGetCuratedLocalityById } from '../../../higherOrderComponents'
 
 const mapDispatchToProps = {
   updateCuratedLocality: updateCuratedLocalityAc,
@@ -73,4 +66,7 @@ export class Edit extends PureComponent {
 Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Edit)
+export default compose(
+  createGetCuratedLocalityById,
+  connect(null, mapDispatchToProps)
+)(Edit)
