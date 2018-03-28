@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import { getCuratedLocalities as getCuratedLocalitiesAc } from 'domainModules/localityService/actionCreators'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
-import 'react-sortable-tree/style.css'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
 import {
   SET_ITEM_EDIT,
