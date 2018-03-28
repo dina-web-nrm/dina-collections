@@ -1,18 +1,30 @@
 const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function loadInitialData({ models }) {
+  const distinguishedUnitTypes = readInitialData('distinguishedUnitTypes')
   const featureTypes = readInitialData('featureTypes', { isJson: false })
 
-  if (!featureTypes) {
-    return Promise.resolve()
-  }
+  const featureObservationTypeItems = !featureTypes
+    ? Promise.resolve()
+    : featureTypes.map((featureType, index) => {
+        return {
+          doc: featureType,
+          id: index + 1,
+        }
+      })
 
-  const items = featureTypes.map((featureType, index) => {
-    return {
-      doc: featureType,
-      id: index + 1,
-    }
-  })
+  const distinguishedUnitTypeItems = !distinguishedUnitTypes
+    ? Promise.resolve()
+    : distinguishedUnitTypes.map(distinguishedUnitType => {
+        const { id, ...rest } = distinguishedUnitType
+        return {
+          doc: { ...rest },
+          id,
+        }
+      })
 
-  return models.featureObservationType.bulkCreate(items)
+  return Promise.all([
+    models.featureObservationType.bulkCreate(featureObservationTypeItems),
+    models.distinguishedUnitType.bulkCreate(distinguishedUnitTypeItems),
+  ])
 }
