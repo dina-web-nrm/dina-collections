@@ -2,24 +2,6 @@ export const getLocalState = state => {
   return state.collectionMammals
 }
 
-export const getFeatureObservationSearchQueries = state => {
-  return state.featureObservationSearchQueries
-}
-
-export const getFeatureObservationSearchQuery = (state, inputName) => {
-  const queries = getFeatureObservationSearchQueries(state)
-  return queries[inputName]
-}
-
-export const getLocalityInformationSearchQueries = state => {
-  return state.localityInformationSearchQueries
-}
-
-export const getLocalityInformationSearchQuery = (state, inputName) => {
-  const queries = getLocalityInformationSearchQueries(state)
-  return queries[inputName]
-}
-
 export const getLookupResult = state => {
   return state.lookup.result
 }

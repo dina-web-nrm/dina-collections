@@ -1,5 +1,6 @@
 export const moduleOrder = [
   'collectionMammals',
+  'curatedList',
   'curatedListService',
   'identifierService',
   'locality',

@@ -1,4 +1,5 @@
 import * as collectionMammals from './collectionMammals'
+import * as curatedList from './curatedList'
 import * as curatedListService from './curatedListService'
 import * as identifierService from './identifierService'
 import * as locality from './locality'
@@ -10,6 +11,7 @@ import * as taxonService from './taxonService'
 
 const modules = [
   collectionMammals,
+  curatedList,
   curatedListService,
   identifierService,
   locality,

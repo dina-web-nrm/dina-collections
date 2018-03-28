@@ -7,9 +7,7 @@ import createLog from 'utilities/log'
 import { DropdownSearch } from 'coreModules/form/components'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 
-const log = createLog(
-  'modules:collectionMammals:FeatureObservationDropdownSearch'
-)
+const log = createLog('modules:curatedList:FeatureObservationDropdownSearch')
 
 const mapSelectablesToDropdownOptions = (
   selectables,
