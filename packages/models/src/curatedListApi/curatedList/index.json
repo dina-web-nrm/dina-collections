@@ -6,7 +6,10 @@
     },
     "type": {
       "type": "string",
-      "enum": ["featureObservationType", "distinguishedUnitObservationType"]
+      "enum": [
+        "featureObservationType",
+        "distinguishedUnitType"
+      ]
     },
     "items": {
       "type": "array",

@@ -1,2 +1,2 @@
-exports.distinguishedUnitObservationType = require('./distinguishedUnitObservationType')
+exports.distinguishedUnitType = require('./distinguishedUnitType')
 exports.featureObservationType = require('./featureObservationType')

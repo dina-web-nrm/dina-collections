@@ -224,7 +224,7 @@
         "type": "string",
         "enum": [
           "featureObservationType",
-          "distinguishedUnitObservationType"
+          "distinguishedUnitType"
         ]
       },
       "items": {
@@ -248,7 +248,7 @@
             "$ref": "featureObservationType"
           },
           {
-            "$ref": "distinguishedUnitObservationType"
+            "$ref": "distinguishedUnitType"
           }
         ]
       }
@@ -258,39 +258,22 @@
     "description": "",
     "id": "curatedListType"
   },
-  "distinguishedUnitObservationType": {
+  "distinguishedUnitType": {
     "additionalProperties": false,
     "properties": {
-      "typeName": {
+      "category": {
         "type": "string",
-        "enum": [
-          "sex",
-          "length",
-          "age",
-          "weight",
-          "conditionAtCollecting",
-          "ageStage"
-        ]
+        "example": "skin"
       },
-      "id": {
+      "name": {
         "type": "string",
-        "enum": [
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6"
-        ]
+        "example": "hair, scales"
       }
     },
-    "required": [
-      "typeName"
-    ],
     "x-category": "curatedListApi",
     "x-modelType": "model",
     "description": "",
-    "id": "distinguishedUnitObservationType"
+    "id": "distinguishedUnitType"
   },
   "featureObservationType": {
     "additionalProperties": false,
@@ -601,6 +584,37 @@
     "description": "",
     "id": "collectingEvent"
   },
+  "curatorialAssessment": {
+    "additionalProperties": false,
+    "properties": {
+      "agent": {
+        "type": "string",
+        "example": "Doe, J."
+      },
+      "date": {
+        "$ref": "date"
+      },
+      "condition": {
+        "type": "string",
+        "example": "Good"
+      },
+      "conditionRemarks": {
+        "type": "string",
+        "example": "Small damage on left hind leg"
+      },
+      "inventoryStatusRemarks": {
+        "type": "string",
+        "example": "On loan"
+      },
+      "isInStorage": {
+        "type": "boolean"
+      }
+    },
+    "description": "### Definition\n\nAssessment whether specimen is in storage or not found.\n\n### Example(s)\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "curatorialAssessment"
+  },
   "deathCircumstance": {
     "additionalProperties": false,
     "properties": {
@@ -669,6 +683,15 @@
       "collectingCircumstance": {
         "$ref": "collectingCircumstance"
       },
+      "curatorialAssessments": {
+        "type": "array",
+        "items": {
+          "$ref": "curatorialAssessment"
+        }
+      },
+      "distinguishedUnitType": {
+        "$ref": "distinguishedUnitType"
+      },
       "id": {
         "type": "string"
       },
@@ -684,33 +707,6 @@
     "x-category": "specimenApi",
     "x-modelType": "model",
     "id": "distinguishedUnit"
-  },
-  "distinguishedUnitObservations": {
-    "additionalProperties": false,
-    "properties": {
-      "agent": {
-        "type": "string",
-        "example": "Doe, J."
-      },
-      "date": {
-        "$ref": "date"
-      },
-      "observationText": {
-        "type": "string",
-        "example": "10 years"
-      },
-      "observationType": {
-        "$ref": "distinguishedUnitObservationType"
-      },
-      "methodText": {
-        "type": "string",
-        "example": "Known age"
-      }
-    },
-    "x-category": "specimenApi",
-    "x-modelType": "model",
-    "description": "",
-    "id": "distinguishedUnitObservations"
   },
   "event": {
     "additionalProperties": false,
@@ -1668,21 +1664,21 @@
     "x-examples": {},
     "description": ""
   },
-  "createDistinguishedUnitObservationTypeResponse": {
+  "createDistinguishedUnitTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "distinguishedUnitObservationType"
+            "$ref": "distinguishedUnitType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "distinguishedUnitObservationType",
+            "default": "distinguishedUnitType",
             "type": "string"
           }
         },
@@ -1694,7 +1690,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1710,21 +1706,21 @@
     "x-examples": {},
     "description": ""
   },
-  "updateDistinguishedUnitObservationTypeResponse": {
+  "updateDistinguishedUnitTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "distinguishedUnitObservationType"
+            "$ref": "distinguishedUnitType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "distinguishedUnitObservationType",
+            "default": "distinguishedUnitType",
             "type": "string"
           }
         },
@@ -1736,7 +1732,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1752,21 +1748,21 @@
     "x-examples": {},
     "description": ""
   },
-  "getDistinguishedUnitObservationTypeResponse": {
+  "getDistinguishedUnitTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "distinguishedUnitObservationType"
+            "$ref": "distinguishedUnitType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "distinguishedUnitObservationType",
+            "default": "distinguishedUnitType",
             "type": "string"
           }
         },
@@ -1778,7 +1774,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1794,7 +1790,7 @@
     "x-examples": {},
     "description": ""
   },
-  "getDistinguishedUnitObservationTypesResponse": {
+  "getDistinguishedUnitTypesResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -1803,14 +1799,14 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "distinguishedUnitObservationType"
+              "$ref": "distinguishedUnitType"
             },
             "id": {
               "example": "1234",
               "type": "string"
             },
             "type": {
-              "default": "distinguishedUnitObservationType",
+              "default": "distinguishedUnitType",
               "type": "string"
             }
           },
@@ -1824,7 +1820,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+            "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -5529,7 +5525,7 @@
     },
     "description": ""
   },
-  "createDistinguishedUnitObservationTypeRequest": {
+  "createDistinguishedUnitTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -5545,14 +5541,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "distinguishedUnitObservationType",
+            "default": "distinguishedUnitType",
             "enum": [
-              "distinguishedUnitObservationType"
+              "distinguishedUnitType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "distinguishedUnitObservationType"
+            "$ref": "distinguishedUnitType"
           }
         }
       }
@@ -5560,24 +5556,26 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "distinguishedUnitObservationType",
+          "type": "distinguishedUnitType",
           "attributes": {
-            "typeName": "sex"
+            "category": "skin",
+            "name": "preparation name"
           }
         }
       }
     },
     "example": {
       "data": {
-        "type": "distinguishedUnitObservationType",
+        "type": "distinguishedUnitType",
         "attributes": {
-          "typeName": "sex"
+          "category": "skin",
+          "name": "preparation name"
         }
       }
     },
     "description": ""
   },
-  "updateDistinguishedUnitObservationTypeRequest": {
+  "updateDistinguishedUnitTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -5593,14 +5591,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "distinguishedUnitObservationType",
+            "default": "distinguishedUnitType",
             "enum": [
-              "distinguishedUnitObservationType"
+              "distinguishedUnitType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "distinguishedUnitObservationType"
+            "$ref": "distinguishedUnitType"
           }
         }
       }
@@ -6235,6 +6233,14 @@
                   "type": "physicalUnit"
                 }
               ]
+            },
+            "taxa": {
+              "data": [
+                {
+                  "id": "2367",
+                  "type": "taxon"
+                }
+              ]
             }
           },
           "attributes": {
@@ -6247,7 +6253,10 @@
                     "determinedByAgentText": "determinedByAgentText",
                     "isCurrentDetermination": true,
                     "remarks": "remarks",
-                    "taxonNameStandardized": "Sorex minutus"
+                    "taxon": {
+                      "id": "2367",
+                      "type": "taxon"
+                    }
                   }
                 ]
               },
@@ -7427,7 +7436,74 @@
         }
       }
     },
-    "x-examples": {},
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "taxon",
+          "attributes": {
+            "rubinNumber": "123456",
+            "higherTaxa": {
+              "order": "Parent order",
+              "suborder": "Parent suborder",
+              "infraorder": "Parent infraorder",
+              "superfamily": "Parent superfamily",
+              "family": "Parent family",
+              "subfamily": "Parent subfamily",
+              "tribe": "Parent tribe",
+              "genus": "Parent genus",
+              "subgenus": "Parent subgenus"
+            },
+            "rank": "Taxon rank",
+            "scientificName": "Sorex minutus",
+            "author": "John Doe",
+            "authorDate": "John Doe 2018",
+            "validName": true,
+            "vernacularNames": {
+              "en": [
+                "mouse"
+              ],
+              "sv": [
+                "mus"
+              ]
+            },
+            "synonyms": "synonyms"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "taxon",
+        "attributes": {
+          "rubinNumber": "123456",
+          "higherTaxa": {
+            "order": "Parent order",
+            "suborder": "Parent suborder",
+            "infraorder": "Parent infraorder",
+            "superfamily": "Parent superfamily",
+            "family": "Parent family",
+            "subfamily": "Parent subfamily",
+            "tribe": "Parent tribe",
+            "genus": "Parent genus",
+            "subgenus": "Parent subgenus"
+          },
+          "rank": "Taxon rank",
+          "scientificName": "Sorex minutus",
+          "author": "John Doe",
+          "authorDate": "John Doe 2018",
+          "validName": true,
+          "vernacularNames": {
+            "en": [
+              "mouse"
+            ],
+            "sv": [
+              "mus"
+            ]
+          },
+          "synonyms": "synonyms"
+        }
+      }
+    },
     "description": ""
   },
   "updateTaxonRequest": {
