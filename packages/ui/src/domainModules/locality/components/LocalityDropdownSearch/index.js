@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Button } from 'semantic-ui-react'
 import { DropdownSearch } from 'coreModules/form/components'
+
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import {
   ALL,
   CONTINENT,
@@ -10,10 +13,14 @@ import {
   PROVINCE,
 } from 'domainModules/localityService/constants'
 import localitySelectors from 'domainModules/localityService/globalSelectors'
-import mammalSelectors from 'domainModules/collectionMammals/globalSelectors'
-import updateLocalityInformationSearchQueryAC from 'domainModules/collectionMammals/actionCreators/updateLocalityInformationSearchQuery'
+import {
+  actionCreators,
+  globalSelectors,
+} from 'domainModules/locality/keyObjectModule'
+import { ensureAllLocalitiesFetched } from '../../higherOrderComponents'
 
 const propTypes = {
+  allLocalitiesFetched: PropTypes.bool.isRequired,
   group: PropTypes.oneOf([ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE])
     .isRequired,
   input: PropTypes.shape({
@@ -26,12 +33,19 @@ const propTypes = {
 }
 
 const mapDispatchToProps = {
-  updateSearchQuery: updateLocalityInformationSearchQueryAC,
+  updateSearchQuery:
+    actionCreators.set['localityDropdown.:identifier.searchQuery'],
 }
 
 class LocalityDropdownSearch extends Component {
   render() {
-    const { group, input, updateSearchQuery, ...rest } = this.props
+    const {
+      allLocalitiesFetched,
+      group,
+      input,
+      updateSearchQuery,
+      ...rest
+    } = this.props
 
     let getDropdownOptions
     switch (group) {
@@ -60,13 +74,28 @@ class LocalityDropdownSearch extends Component {
       }
     }
 
+    if (!allLocalitiesFetched) {
+      return null
+    }
+    const leftIconButton = <Button icon="user" />
+
     return (
       <DropdownSearch
         {...rest}
         getOptions={getDropdownOptions}
-        getSearchQuery={mammalSelectors.getLocalityInformationSearchQuery}
+        getSearchQuery={state => {
+          return globalSelectors.get[
+            'localityDropdown.:identifier.searchQuery'
+          ](state, {
+            identifier: group,
+          })
+        }}
+        getSelectedOption={localitySelectors.getCuratedLocalityOption}
         input={input}
-        onSearchChange={updateSearchQuery}
+        onSearchChange={({ searchQuery }) => {
+          updateSearchQuery(group, searchQuery)
+        }}
+        rightIconButton={leftIconButton}
         type="dropdown-search-connect"
       />
     )
@@ -75,4 +104,7 @@ class LocalityDropdownSearch extends Component {
 
 LocalityDropdownSearch.propTypes = propTypes
 
-export default connect(null, mapDispatchToProps)(LocalityDropdownSearch)
+export default compose(
+  connect(null, mapDispatchToProps),
+  ensureAllLocalitiesFetched
+)(LocalityDropdownSearch)

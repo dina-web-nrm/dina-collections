@@ -111,6 +111,21 @@ export const getCuratedLocality = createSelector(
   }
 )
 
+export const getCuratedLocalityOption = createSelector(
+  [getCuratedLocalities, getSecondArgument],
+  (curatedLocalities, id) => {
+    const curatedLocality = curatedLocalities[id]
+    if (!curatedLocality) {
+      return null
+    }
+    return {
+      key: curatedLocality.id,
+      text: capitalizeFirstLetter(curatedLocality.name),
+      value: curatedLocality.id,
+    }
+  }
+)
+
 export const getHasCuratedLocalities = createSelector(
   getCuratedLocalities,
   curatedLocalities => {
@@ -136,10 +151,16 @@ const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
         })
 
       const firstLetterMatches = mappedGroupLocalities.filter(({ text }) => {
+        if (!searchQuery) {
+          return true
+        }
         return text && text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
       })
 
       const otherMatches = mappedGroupLocalities.filter(({ text }) => {
+        if (!searchQuery) {
+          return false
+        }
         return text && text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
       })
 
