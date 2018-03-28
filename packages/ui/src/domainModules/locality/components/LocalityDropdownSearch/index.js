@@ -13,11 +13,11 @@ import {
   PROVINCE,
 } from 'domainModules/localityService/constants'
 import localitySelectors from 'domainModules/localityService/globalSelectors'
+import { ensureAllLocalitiesFetched } from 'domainModules/localityService/higherOrderComponents'
 import {
   actionCreators,
   globalSelectors,
 } from 'domainModules/locality/keyObjectModule'
-import { ensureAllLocalitiesFetched } from '../../higherOrderComponents'
 
 const propTypes = {
   allLocalitiesFetched: PropTypes.bool.isRequired,

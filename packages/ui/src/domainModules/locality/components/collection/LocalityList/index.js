@@ -4,13 +4,12 @@ import { List } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
+import { ensureAllLocalitiesFetched } from 'domainModules/localityService/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'domainModules/locality/keyObjectModule'
-import { ensureAllLocalitiesFetched } from 'domainModules/locality/higherOrderComponents'
 import { ITEM_CLICK } from 'domainModules/locality/interactions'
-
 import ListItem from './ListItem'
 
 const mapStateToProps = state => {
