@@ -1,9 +1,7 @@
-* fix locality search
-* fix scoping of fetchingAllLocalities
-* fix search so that it also get options passed down
-* Might make sense to remove input field from searchCallback
-
-
+* use new interactions
+* add prevent default to all form actions
+* add option show navigation (hide stuff that moves out from current view)
+* add possibility to use tree in modal
 
 1. Fix the initial data with update data from marcus
 ** rebase on fredriks stuff and fix all initial data
