@@ -13,6 +13,7 @@ const propTypes = {
   displayResetButton: PropTypes.bool,
   error: PropTypes.string,
   invalid: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
   submitFailed: PropTypes.bool.isRequired,
@@ -35,6 +36,7 @@ export class FormControll extends Component {
       displayResetButton,
       error,
       invalid,
+      onClose,
       pristine,
       reset,
       submitFailed,
@@ -53,13 +55,14 @@ export class FormControll extends Component {
               disabled={pristine || submitting}
               onClick={reset}
               size="large"
+              type="button"
             >
               <ModuleTranslate textKey="reset" />
             </Button>
           )}
 
           {displayBackButton && (
-            <Button basic onClick={reset} size="large">
+            <Button basic onClick={onClose} size="large" type="button">
               <ModuleTranslate textKey="back" />
             </Button>
           )}

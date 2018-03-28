@@ -30,7 +30,7 @@ const mapDispatchToProps = {
 const propTypes = {
   activeLocalityId: PropTypes.string,
   curatedLocalities: PropTypes.array,
-  displayNavigationButtons: PropTypes.func.isRequired,
+  displayNavigationButtons: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
   setFilterLimit: PropTypes.func.isRequired,
 }

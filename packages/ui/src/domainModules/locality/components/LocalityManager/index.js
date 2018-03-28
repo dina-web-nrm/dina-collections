@@ -11,6 +11,7 @@ import { Layout } from 'coreModules/layout/components'
 import { push } from 'react-router-redux'
 import { withLayout } from 'coreModules/layout/higherOrderComponents'
 import {
+  FORM_CANCEL,
   FORM_CREATE_SUCCESS,
   FORM_EDIT_SUCCESS,
   SET_COLLECTION,
@@ -98,6 +99,7 @@ class LocalityManager extends Component {
         break
       }
 
+      case FORM_CANCEL:
       case SET_COLLECTION: {
         this.props.push(`/app/localities`)
         break
