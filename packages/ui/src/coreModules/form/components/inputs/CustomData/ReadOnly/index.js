@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Inspector from 'react-json-inspector'
-import 'react-json-inspector/json-inspector.css'
 import { Button, Icon } from 'semantic-ui-react'
 
 const propTypes = {

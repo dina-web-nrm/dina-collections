@@ -1,5 +1,7 @@
 import rootConfig from 'config'
 import 'common/dist/semantic.css' // eslint-disable-line
+import 'react-sortable-tree/style.css'
+import 'react-json-inspector/json-inspector.css'
 import 'whatwg-fetch'
 import createStore from 'store/index'
 import { I18nProvider } from 'coreModules/i18n/components'
