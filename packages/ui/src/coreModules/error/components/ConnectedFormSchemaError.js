@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getFormSyncErrors } from 'redux-form'
 
-import FormSchemaError from './ConnectedFormSchemaError'
+import FormSchemaError from './FormSchemaError'
 
 const mapStateToProps = (state, { form }) => {
   const syncErrors = getFormSyncErrors(form)(state)
