@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { Block } from 'coreModules/layout/components'
 import { Button, Icon } from 'semantic-ui-react'
 
+import {
+  SET_LAYOUT_SINGLE_ITEM,
+  SET_LAYOUT_SPLIT,
+} from 'domainModules/locality/interactions'
+
 const propTypes = {
   layoutMode: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
@@ -21,7 +26,7 @@ export class Header extends Component {
               icon
               onClick={event => {
                 event.preventDefault()
-                onInteraction('layout-single-item')
+                onInteraction(SET_LAYOUT_SINGLE_ITEM)
               }}
               size="tiny"
             >
@@ -33,7 +38,7 @@ export class Header extends Component {
               icon
               onClick={event => {
                 event.preventDefault()
-                onInteraction('layout-split')
+                onInteraction(SET_LAYOUT_SPLIT)
               }}
               size="tiny"
             >

@@ -8,7 +8,9 @@ const {
   reducer,
 } = keyObjectModuleFactory({
   initialValues: {
+    allLocalitiesFetched: false,
     collectionBlockType: 'list',
+    fetchingAllLocalities: false,
     filter: {
       localityCollection: {
         group: '',
@@ -17,11 +19,14 @@ const {
     },
   },
   keys: [
+    'allLocalitiesFetched',
     'collectionBlockType',
+    'fetchingAllLocalities',
     'filter:index',
-    'filter:index.searchQuery',
-    'filter:index.limit',
     'filter:index.group',
+    'filter:index.limit',
+    'filter:index.searchQuery',
+    'localityDropdown.:identifier.searchQuery',
   ],
   name: 'locality',
 })

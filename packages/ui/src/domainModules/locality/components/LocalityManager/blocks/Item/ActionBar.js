@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Grid } from 'semantic-ui-react'
+import {
+  SET_COLLECTION,
+  SET_ITEM_CREATE,
+  SET_ITEM_EDIT,
+  SET_ITEM_INSPECT,
+} from 'domainModules/locality/interactions'
 
 const propTypes = {
   itemBlockType: PropTypes.string.isRequired,
@@ -25,7 +31,7 @@ class ActionBar extends Component {
                 icon="plus"
                 onClick={() => {
                   if (itemBlockType !== 'create') {
-                    this.props.onInteraction('navigate', { target: 'create' })
+                    this.props.onInteraction(SET_ITEM_CREATE)
                   }
                 }}
               />
@@ -36,10 +42,7 @@ class ActionBar extends Component {
                 icon="edit"
                 onClick={() => {
                   if (itemBlockType === 'inspect') {
-                    this.props.onInteraction('navigate', {
-                      itemId,
-                      target: 'edit',
-                    })
+                    this.props.onInteraction(SET_ITEM_EDIT, { itemId })
                   }
                 }}
               />
@@ -50,10 +53,7 @@ class ActionBar extends Component {
                 icon="folder open"
                 onClick={() => {
                   if (itemBlockType === 'edit') {
-                    this.props.onInteraction('navigate', {
-                      itemId,
-                      target: 'inspect',
-                    })
+                    this.props.onInteraction(SET_ITEM_INSPECT, { itemId })
                   }
                 }}
               />
@@ -61,9 +61,7 @@ class ActionBar extends Component {
               <Button
                 icon="remove"
                 onClick={() => {
-                  this.props.onInteraction('navigate', {
-                    target: 'collection',
-                  })
+                  this.props.onInteraction(SET_COLLECTION)
                 }}
               />
             </Button.Group>
