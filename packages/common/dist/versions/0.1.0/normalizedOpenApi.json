@@ -815,7 +815,7 @@
         ]
       }
     },
-    "/curatedListApi/v01/distinguishedUnitTypes": {
+    "/api/curatedList/v01/distinguishedUnitTypes": {
       "post": {
         "operationId": "createDistinguishedUnitType",
         "parameters": [
@@ -973,7 +973,7 @@
         ]
       }
     },
-    "/curatedListApi/v01/distinguishedUnitTypes/{id}": {
+    "/api/curatedList/v01/distinguishedUnitTypes/{id}": {
       "patch": {
         "operationId": "updateDistinguishedUnitType",
         "parameters": [
@@ -12965,7 +12965,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13007,7 +13007,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13049,7 +13049,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13095,7 +13095,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitTypes",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
