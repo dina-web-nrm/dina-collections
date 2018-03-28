@@ -5,17 +5,28 @@ import { connect } from 'react-redux'
 
 import DropdownSearchBaseInput from '../Base'
 
-const mapStateToProps = (state, { getSearchQuery, getOptions, input }) => {
+const mapStateToProps = (
+  state,
+  { getSearchQuery, getOptions, getSelectedOption, input }
+) => {
   const searchQuery = getSearchQuery(state, input.name)
+  const selectedOption =
+    (input.value &&
+      getSelectedOption &&
+      getSelectedOption(state, input.value)) ||
+    null
+
   return {
     options: getOptions(state, searchQuery),
     searchQuery,
+    selectedOption,
   }
 }
 
 const propTypes = {
   getOptions: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
   getSearchQuery: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  getSelectedOption: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   initialText: PropTypes.string,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -31,21 +42,38 @@ const propTypes = {
       value: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  searchQuery: PropTypes.string,
+  selectedOption: PropTypes.object,
 }
 
 const defaultProps = {
+  getSelectedOption: undefined,
   initialText: undefined,
+  searchQuery: '',
+  selectedOption: null,
 }
 
 class CustomDropdownSearchInput extends Component {
   render() {
-    const { initialText, input, options, onSearchChange } = this.props
+    const {
+      initialText,
+      input,
+      onSearchChange,
+      options,
+      searchQuery,
+      selectedOption,
+      ...rest
+    } = this.props
+
     return (
       <DropdownSearchBaseInput
         initialText={initialText}
         input={input}
         onSearchChange={onSearchChange}
         options={options}
+        searchQuery={searchQuery}
+        selectedOption={selectedOption}
+        {...rest}
       />
     )
   }
