@@ -48,6 +48,11 @@ class DropdownSearchInput extends Component {
       inputName: this.props.input.name,
       searchQuery,
     })
+
+    if (this.props.input.value) {
+      // empty form value, if search is renewed after a value was selected
+      this.props.input.onChange('')
+    }
   }
 
   handleOnChange(event, data) {

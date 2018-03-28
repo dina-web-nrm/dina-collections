@@ -22,7 +22,6 @@ const propTypes = {
         .isRequired,
     }).isRequired
   ).isRequired,
-  parse: PropTypes.func,
   resultRenderer: PropTypes.func,
   searchQuery: PropTypes.string,
   selectedOption: PropTypes.object,
@@ -31,7 +30,6 @@ const propTypes = {
 const defaultProps = {
   isLoading: false,
   mountHidden: config.isTest,
-  parse: undefined,
   resultRenderer: DefaultResultRenderer,
   searchQuery: null,
   selectedOption: null,
@@ -52,22 +50,16 @@ class SearchBase extends Component {
     })
 
     if (this.props.input.value) {
-      // empty form value, if search is renewed after taxonName selected
+      // empty form value, if search is renewed after a value was selected
       this.props.input.onChange('')
     }
   }
 
   handleResultSelect(event, { result: { value } }) {
     // see Semantic docs for details: https://react.semantic-ui.com/modules/search
-    const { parse } = this.props
+    this.handleSearchChange(null, { value: '' })
 
-    this.props.onSearchChange({
-      inputName: this.props.input.name,
-      searchQuery: undefined,
-    })
-
-    const parsedValue = parse ? parse(value) : value
-    this.props.input.onBlur(parsedValue)
+    this.props.input.onBlur(value)
   }
 
   render() {
