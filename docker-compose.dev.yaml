@@ -51,6 +51,8 @@ services:
     command: pm2-runtime start /etc/api/src/apps/core/index.js
     depends_on:
       - postgres
+    volumes:
+      - ./data:/data
 
   postgres:
     image: postgres
