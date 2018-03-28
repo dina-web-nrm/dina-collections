@@ -2,7 +2,8 @@ import { createGetter } from 'utilities/stateHelper'
 
 export const createSelector = keySpecification => {
   const { key } = keySpecification
-  const getter = createGetter([key])
+  const segments = key.split('.')
+  const getter = createGetter(segments)
   return function selector(state, parameters) {
     return getter(state, parameters)
   }

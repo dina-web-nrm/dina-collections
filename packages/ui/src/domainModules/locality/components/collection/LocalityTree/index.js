@@ -6,6 +6,10 @@ import { getCuratedLocalities as getCuratedLocalitiesAc } from 'domainModules/lo
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 import 'react-sortable-tree/style.css'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
+import {
+  SET_ITEM_EDIT,
+  SET_ITEM_INSPECT,
+} from 'domainModules/locality/interactions'
 
 const mapStateToProps = state => {
   return {
@@ -42,6 +46,7 @@ class Localities extends Component {
   }
 
   componentWillMount() {
+    // TODO refactor this
     this.props
       .getCuratedLocalitiesAc({
         queryParams: { relationships: ['all'] },
@@ -75,9 +80,8 @@ class Localities extends Component {
         <Button
           icon
           onClick={() => {
-            this.props.onInteraction('navigate', {
+            this.props.onInteraction(SET_ITEM_EDIT, {
               itemId: node.id,
-              target: 'edit',
             })
           }}
         >
@@ -86,9 +90,8 @@ class Localities extends Component {
         <Button
           icon
           onClick={() => {
-            this.props.onInteraction('navigate', {
+            this.props.onInteraction(SET_ITEM_INSPECT, {
               itemId: node.id,
-              target: 'inspect',
             })
           }}
         >

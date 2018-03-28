@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { createSelector } from 'reselect'
 import DropdownSearchBaseInput from '../Base'
 
 const propTypes = {
@@ -27,13 +28,29 @@ const defaultProps = {
   parse: undefined,
 }
 
+const createSelectedOptionSelector = options => {
+  return createSelector(
+    value => value,
+    value => {
+      return (
+        options.find(item => {
+          return item.value === value
+        }) || null
+      )
+    }
+  )
+}
+
 class DropdownSearchLocalInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
       filteredOptions: props.options,
+      searchQuery: '',
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.getSelectedOption = this.getSelectedOption.bind(this)
+    this.optionSelector = createSelectedOptionSelector(props.options)
   }
 
   getFilteredOptions(searchQuery) {
@@ -60,7 +77,19 @@ class DropdownSearchLocalInput extends Component {
     return [...firstLetterMatches, ...otherMatches]
   }
 
+  getSelectedOption() {
+    const { input } = this.props
+    if (!input.value) {
+      return null
+    }
+    const res = this.optionSelector(input.value)
+    return res
+  }
+
   handleSearchChange({ searchQuery }) {
+    this.setState({
+      searchQuery,
+    })
     this.setState({
       filteredOptions: this.getFilteredOptions(searchQuery),
     })
@@ -69,8 +98,7 @@ class DropdownSearchLocalInput extends Component {
   render() {
     const { initialText, input, parse } = this.props
 
-    const { filteredOptions } = this.state
-
+    const { filteredOptions, searchQuery } = this.state
     return (
       <DropdownSearchBaseInput
         initialText={initialText}
@@ -78,6 +106,8 @@ class DropdownSearchLocalInput extends Component {
         onSearchChange={this.handleSearchChange}
         options={filteredOptions}
         parse={parse}
+        searchQuery={searchQuery}
+        selectedOption={this.getSelectedOption()}
       />
     )
   }

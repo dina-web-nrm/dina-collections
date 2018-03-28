@@ -1,0 +1,42 @@
+* use new interactions
+* add prevent default to all form actions
+* add option show navigation (hide stuff that moves out from current view)
+* add possibility to use tree in modal
+
+1. Fix the initial data with update data from marcus
+** rebase on fredriks stuff and fix all initial data
+
+
+2. Implement new locality handling in form
+* Refactor the locality dropdown
+** Move curated locality dropdown to locality module
+** Possible implement namespacing
+** keep track if all localities fetched (in locality module for now)
+** do the mapping in the locality dropdown
+
+
+2.x
+** Refactor mammal form to use FormControll. FormActions (Call it FormActions instead)?
+** Move all non relevant locality stuff from localityService
+** Implement simple dropdown (should de the local dropdown) to be used for ex group
+** Remove weird dependency on collection mammals
+
+2.x
+** remove the index scoping
+** improve performance of the blocks
+  ** (Only fetch curated localities once)
+  ** Look if its possible to improve performance of the layout (not recreate the form)
+  ** look if its possible to work with debouce for search
+
+
+3. Implement next step determinations (potentially give to fredrik)
+* Move TaxonNameSearchInput... to taxon module
+* Change the form
+
+4. Implement better serach for specimens?
+* potentially implement the whole, list, create, edit setup that we have for loclities
+* in that case set viewmode to be single by default
+
+5. Implement user endpoint to keep user preferences
+
+5. use higher order components to fetch item

@@ -6,14 +6,23 @@ import Header from './Header'
 import ActionBar from './ActionBar'
 
 const propTypes = {
+  displayNavigationButtons: PropTypes.bool,
   itemBlockType: PropTypes.string.isRequired,
   layoutMode: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
+const defaultProps = {
+  displayNavigationButtons: true,
+}
 
 export class Create extends Component {
   render() {
-    const { itemBlockType, layoutMode, onInteraction } = this.props
+    const {
+      displayNavigationButtons,
+      itemBlockType,
+      layoutMode,
+      onInteraction,
+    } = this.props
     return (
       <Block>
         <Header
@@ -23,10 +32,12 @@ export class Create extends Component {
         />
         <Block.Content
           preContent={
-            <ActionBar
-              itemBlockType={itemBlockType}
-              onInteraction={onInteraction}
-            />
+            displayNavigationButtons && (
+              <ActionBar
+                itemBlockType={itemBlockType}
+                onInteraction={onInteraction}
+              />
+            )
           }
         >
           <CreateCuratedLocalityForm onInteraction={onInteraction} />
@@ -36,6 +47,7 @@ export class Create extends Component {
   }
 }
 
+Create.defaultProps = defaultProps
 Create.propTypes = propTypes
 
 export default Create

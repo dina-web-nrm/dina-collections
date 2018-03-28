@@ -5,6 +5,7 @@ import config from 'config'
 
 const propTypes = {
   autoComplete: PropTypes.string,
+  displayAsButton: PropTypes.bool,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   mountHidden: PropTypes.bool,
@@ -17,13 +18,22 @@ const propTypes = {
         .isRequired,
     }).isRequired
   ).isRequired,
-  parse: PropTypes.func,
+  searchQuery: PropTypes.string,
+  selectedOption: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  }),
+  text: PropTypes.string,
 }
 const defaultProps = {
   autoComplete: undefined,
+  displayAsButton: false,
   initialText: '',
   mountHidden: config.isTest,
-  parse: undefined,
+  searchQuery: '',
+  selectedOption: undefined,
+  text: undefined,
 }
 
 class DropdownSearchInput extends Component {
@@ -38,49 +48,50 @@ class DropdownSearchInput extends Component {
       inputName: this.props.input.name,
       searchQuery,
     })
-
-    if (this.props.input.value) {
-      // empty form value, if search is renewed after a value was selected
-      this.props.input.onChange('')
-    }
   }
 
-  handleOnChange(event, { value }) {
-    const { parse } = this.props
+  handleOnChange(event, data) {
+    const { value } = data
+    this.handleSearchChange(null, { searchQuery: '' })
 
-    this.props.onSearchChange({
-      inputName: this.props.input.name,
-      searchQuery: undefined,
-    })
-
-    const parsedValue = parse ? parse(value) : value
-    this.props.input.onBlur(parsedValue)
+    this.props.input.onBlur(value)
   }
 
   render() {
     const {
       autoComplete,
+      displayAsButton,
       initialText,
       input,
       mountHidden,
       options,
+      searchQuery,
+      selectedOption,
     } = this.props
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
+    const text = (selectedOption && selectedOption.text) || initialText
+    const style = displayAsButton
+      ? { background: 'white', borderRadius: 0, fontWeight: 'normal' }
+      : undefined
     return (
       <React.Fragment>
         <Dropdown
           autoComplete={autoComplete}
+          button={displayAsButton}
           onSearchChange={this.handleSearchChange}
           options={options}
           search
+          searchQuery={searchQuery}
           selection
           selectOnBlur={false}
           selectOnNavigation={false}
-          text={input.value || initialText}
+          text={searchQuery || text}
           {...input}
           onBlur={undefined}
           onChange={this.handleOnChange}
+          style={style}
+          value={(selectedOption && selectedOption.value) || ''}
         />
         {mountHidden && (
           <input
