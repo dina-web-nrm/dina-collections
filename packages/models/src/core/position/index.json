@@ -19,9 +19,12 @@
     "uncertaintyInMeters": {
       "type": "integer",
       "description": "Coordinate uncertainty in meters"
+    },
+    "referenceSystem": {
+      "type": "string",
+      "description": "TBA"
     }
-  },
-  "x-required": ["name", "id", "description", "type"]
+  }
 }
 
 
