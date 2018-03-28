@@ -20,6 +20,9 @@ const propTypes = {
 function Position({ getPath, i18n: { moduleTranslate } }) {
   return (
     <Grid.Row>
+      <Grid.Column mobile={16}>
+        <h3>Coordinate (interpreted)</h3>
+      </Grid.Column>
       <Grid.Column computer={4} mobile={16} tablet={8}>
         <Field
           autoComplete="off"
@@ -52,29 +55,9 @@ function Position({ getPath, i18n: { moduleTranslate } }) {
         <Field
           autoComplete="off"
           component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('uncertaintyInMeters'),
-            descriptionKey: buildModuleTextKey('helpTexts.uncertaintyInMeters'),
-          }}
-          label={moduleTranslate({
-            textKey: 'uncertaintyInMeters',
-          })}
+          label="Ref. syst"
           module="collectionMammals"
-          name={getPath('uncertaintyInMeters')}
-          type="number"
-        />
-      </Grid.Column>
-      <Grid.Column computer={4} mobile={16} tablet={8}>
-        <Field
-          autoComplete="off"
-          component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('geodeticDatum'),
-            descriptionKey: buildModuleTextKey('helpTexts.geodeticDatum'),
-          }}
-          label={moduleTranslate({ textKey: 'geodeticDatum' })}
-          module="collectionMammals"
-          name={getPath('geodeticDatum')}
+          name={getPath('referenceSystem')}
           type="text"
         />
       </Grid.Column>
