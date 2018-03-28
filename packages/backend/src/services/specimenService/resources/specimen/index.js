@@ -55,8 +55,8 @@ module.exports = {
       buildWhere: filterWhereFactory({
         catalogNumber:
           'document.individualGroup.identifiers.0.identifier.value',
-        taxonNameStandardized:
-          'document.individualGroup.taxonInformation.determinations.0.taxonNameStandardized',
+        // taxonNameStandardized:
+        //   'document.individualGroup.taxonInformation.determinations.0.taxon.scientificName',
       }),
       includeRelations: true,
       queryParams: {
@@ -68,14 +68,14 @@ module.exports = {
             type: 'string',
           },
         },
-        'filter[taxonNameStandardized]': {
-          description: 'Standardized taxon name used to filter specimens',
-          example: 'Chironectes minimus',
-          required: false,
-          schema: {
-            type: 'string',
-          },
-        },
+        // 'filter[taxonNameStandardized]': {
+        //   description: 'Standardized taxon name used to filter specimens',
+        //   example: 'Chironectes minimus',
+        //   required: false,
+        //   schema: {
+        //     type: 'string',
+        //   },
+        // },
       },
       type: 'getMany',
     },

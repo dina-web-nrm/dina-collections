@@ -20,10 +20,10 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const ID = 'id'
 const CATALOG_NUMBER = 'catalogNumber'
-const TAXON_NAME = 'taxonNameStandardized'
+// const TAXON_NAME = 'taxonNameStandardized'
 
-const TABLE_COLUMNS = [ID, CATALOG_NUMBER, TAXON_NAME]
-const SEARCH_PARAMETERS = [CATALOG_NUMBER, TAXON_NAME]
+const TABLE_COLUMNS = [ID, CATALOG_NUMBER]
+const SEARCH_PARAMETERS = [CATALOG_NUMBER]
 
 const mapStateToProps = state => {
   return {
@@ -63,7 +63,6 @@ const propTypes = {
   ).isRequired,
   searchParameters: PropTypes.shape({
     [CATALOG_NUMBER]: PropTypes.string,
-    [TAXON_NAME]: PropTypes.string,
   }).isRequired,
   updateSearchParameter: PropTypes.func.isRequired,
 }
@@ -143,7 +142,10 @@ class LookupMammals extends Component {
           {result.length ? (
             <Table.Body>
               {result.map(({ id, individualGroup } = {}) => {
-                const { taxonInformation, identifiers } = individualGroup
+                const {
+                  // taxonInformation,
+                  identifiers,
+                } = individualGroup
 
                 const catalogNumberIdentifier =
                   identifiers.find(
@@ -151,22 +153,22 @@ class LookupMammals extends Component {
                       identifier.identifierType === 'catalogNumber'
                   ) || null
 
-                const { taxonNameStandardized } =
-                  (taxonInformation &&
-                    taxonInformation.determinations &&
-                    taxonInformation.determinations.length &&
-                    (taxonInformation.determinations.find(
-                      ({ isCurrentDetermination }) => isCurrentDetermination
-                    ) ||
-                      taxonInformation.determinations[0])) ||
-                  {}
+                // const { taxon } =
+                //   (taxonInformation &&
+                //     taxonInformation.determinations &&
+                //     taxonInformation.determinations.length &&
+                //     (taxonInformation.determinations.find(
+                //       ({ isCurrentDetermination }) => isCurrentDetermination
+                //     ) ||
+                //       taxonInformation.determinations[0])) ||
+                //   {}
 
                 const tableValues = {
                   catalogNumber:
                     catalogNumberIdentifier &&
                     catalogNumberIdentifier.identifier.value,
                   id,
-                  taxonNameStandardized,
+                  // taxonNameStandardized: taxon && taxon.scientificName,
                 }
 
                 return (

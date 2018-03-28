@@ -1,3 +1,5 @@
+import { flattenArrayResponse } from 'utilities/transformations'
+
 import {
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_FAIL,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_REQUEST,
@@ -6,7 +8,7 @@ import {
 import { LOOKUP_MAMMALS } from '../endpoints'
 
 export default function lookupMammals(filterParams = {}) {
-  const queryParams = { filter: filterParams }
+  const queryParams = { filter: filterParams, relationships: ['taxa'] }
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
@@ -18,11 +20,12 @@ export default function lookupMammals(filterParams = {}) {
       })
       .then(
         response => {
+          const transformedResponse = flattenArrayResponse(response.data)
           dispatch({
-            payload: response,
+            payload: transformedResponse,
             type: COLLECTION_MAMMALS_LOOKUP_MAMMALS_SUCCESS,
           })
-          return response
+          return transformedResponse
         },
         error => {
           dispatch({

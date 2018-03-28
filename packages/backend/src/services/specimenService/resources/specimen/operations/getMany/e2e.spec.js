@@ -9,7 +9,7 @@ const fullFormExample = require('../create/examples/fullFormExample.json')
 const { getTestData } = require('../../testData')
 
 const validCatalogNumber = '123456'
-const validTaxonName = 'Sorex minutus'
+// const validTaxonName = 'Sorex minutus'
 
 apiDescribe('specimen', () => {
   beforeAll(() => {
@@ -65,50 +65,50 @@ apiDescribe('specimen', () => {
         })
       })
     })
-    describe('by taxonNameStandardized', () => {
-      it('Succeed with valid taxonNameStandardized', () => {
-        return makeTestCall({
-          operationId: 'getSpecimens',
-          queryParams: {
-            'filter[taxonNameStandardized]': validTaxonName,
-          },
-        }).then(response => {
-          expectMultipleResourcesResponse({
-            expectedType: 'specimen',
-            expectLength: true,
-            response,
-          })
-        })
-      })
-      it('Succeed with valid taxonNameStandardized', () => {
-        return makeTestCall({
-          operationId: 'getSpecimens',
-          queryParams: {
-            'filter[taxonNameStandardized]': validTaxonName,
-          },
-        }).then(response => {
-          expectMultipleResourcesResponse({
-            expectedType: 'specimen',
-            expectLength: true,
-            response,
-          })
-        })
-      })
-      it('Return empty array when taxon name dont exist', () => {
-        return makeTestCall({
-          operationId: 'getSpecimens',
-          queryParams: {
-            'filter[taxonNameStandardized]': 'not-existing',
-          },
-        }).then(response => {
-          expectMultipleResourcesResponse({
-            expectedLength: 0,
-            expectedType: 'specimen',
-            response,
-          })
-        })
-      })
-    })
+    // describe('by taxonNameStandardized', () => {
+    //   it('Succeed with valid taxonNameStandardized', () => {
+    //     return makeTestCall({
+    //       operationId: 'getSpecimens',
+    //       queryParams: {
+    //         'filter[taxonNameStandardized]': validTaxonName,
+    //       },
+    //     }).then(response => {
+    //       expectMultipleResourcesResponse({
+    //         expectedType: 'specimen',
+    //         expectLength: true,
+    //         response,
+    //       })
+    //     })
+    //   })
+    //   it('Succeed with valid taxonNameStandardized', () => {
+    //     return makeTestCall({
+    //       operationId: 'getSpecimens',
+    //       queryParams: {
+    //         'filter[taxonNameStandardized]': validTaxonName,
+    //       },
+    //     }).then(response => {
+    //       expectMultipleResourcesResponse({
+    //         expectedType: 'specimen',
+    //         expectLength: true,
+    //         response,
+    //       })
+    //     })
+    //   })
+    //   it('Return empty array when taxon name dont exist', () => {
+    //     return makeTestCall({
+    //       operationId: 'getSpecimens',
+    //       queryParams: {
+    //         'filter[taxonNameStandardized]': 'not-existing',
+    //       },
+    //     }).then(response => {
+    //       expectMultipleResourcesResponse({
+    //         expectedLength: 0,
+    //         expectedType: 'specimen',
+    //         response,
+    //       })
+    //     })
+    //   })
+    // })
     describe('relation cases', () => {
       beforeAll(() => {
         const modifiedSimpleDataRelations = getTestData(
