@@ -1,7 +1,13 @@
-const mammals = require('./mammals.json')
+const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function loadInitialData({ models }) {
-  const items = mammals.map(
+  const mammalTaxa = readInitialData('mammalTaxa')
+
+  if (!mammalTaxa) {
+    return Promise.resolve()
+  }
+
+  const items = mammalTaxa.map(
     ({
       id,
       parentId,
