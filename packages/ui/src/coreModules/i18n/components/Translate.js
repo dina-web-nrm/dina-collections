@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import config from 'config'
 
 import {
   capitalizeFirstLetter,
@@ -59,13 +60,15 @@ const Translate = (
     capitalize && translation ? capitalizeFirstLetter(translation) : translation
 
   if (!output || outputIsATextKey({ output, textKey, textKeys })) {
-    /* eslint-disable no-console */
-    console.warn(
-      `Translation not found for path: ${textKey ||
-        (textKeys && textKeys.join(', '))}`,
-      translations
-    )
-    /* eslint-enable no-console */
+    if (!config.isTest) {
+      /* eslint-disable no-console */
+      console.warn(
+        `Translation not found for path: ${textKey ||
+          (textKeys && textKeys.join(', '))}`,
+        translations
+      )
+      /* eslint-enable no-console */
+    }
   }
 
   if (outputIsATextKey({ output, textKey, textKeys }) && fallback) {
