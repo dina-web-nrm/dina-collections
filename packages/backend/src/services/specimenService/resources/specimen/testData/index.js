@@ -114,6 +114,9 @@ testData.simpleDataMultipleRelations = {
           },
         ],
       },
+      taxa: {
+        data: [],
+      },
     },
     type: 'specimen',
   },

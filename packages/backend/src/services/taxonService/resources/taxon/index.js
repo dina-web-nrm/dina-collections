@@ -1,10 +1,12 @@
-const buildWhere = require('./getMany/buildWhere')
+const buildWhere = require('./operations/getMany/buildWhere.js')
+const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
   operations: [
     {
       connect: true,
+      exampleRequests: { primary: createTaxonRequestSuccess },
       type: 'create',
     },
     {
