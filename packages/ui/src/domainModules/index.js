@@ -5,6 +5,7 @@ export const moduleOrder = [
   'locality',
   'localityService',
   'specimenService',
+  'storage',
   'storageService',
   'taxonService',
 ]
