@@ -3,16 +3,20 @@ const path = require('path')
 const relativeRootPath = '../../../../../'
 const dataPath = path.join(__dirname, relativeRootPath, 'data')
 
-const buildInitialDataFileName = resource => {
-  return `.${resource}.json`
+const buildInitialDataFileName = (resource, isJson) => {
+  if (isJson) {
+    return `.${resource}.json`
+  }
+
+  return `.${resource}`
 }
 
-const buildInitialDataFilePath = resource => {
-  return path.join(dataPath, buildInitialDataFileName(resource))
+const buildInitialDataFilePath = (resource, isJson) => {
+  return path.join(dataPath, buildInitialDataFileName(resource, isJson))
 }
 
-module.exports = function readInitialData(resource) {
-  const initialDataPath = buildInitialDataFilePath(resource)
+module.exports = function readInitialData(resource, { isJson = true } = {}) {
+  const initialDataPath = buildInitialDataFilePath(resource, isJson)
   let data = null
   try {
     data = require(initialDataPath) // eslint-disable-line global-require, import/no-dynamic-require
