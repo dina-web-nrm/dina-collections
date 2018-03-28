@@ -9,7 +9,7 @@ const {
   reducer,
 } = keyObjectModuleFactory({
   initialValues: {
-    layoutMode: 'split',
+    layoutMode: 'single',
   },
   keys: ['layoutMode'],
   name,
