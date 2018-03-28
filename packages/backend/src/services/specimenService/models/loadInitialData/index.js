@@ -1,7 +1,13 @@
+const readInitialData = require('../../../../utilities/readInitialData')
 const mapSpecimen = require('./mapSpecimen')
-const rawSpecimens = require('./specimens.json')
 
 module.exports = function loadInitialData({ models }) {
+  const rawSpecimens = readInitialData('specimens')
+
+  if (!rawSpecimens) {
+    return Promise.resolve()
+  }
+
   return Promise.all(
     rawSpecimens.map(rawSpecimen => {
       return mapSpecimen(rawSpecimen)
