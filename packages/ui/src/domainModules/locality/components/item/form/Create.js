@@ -6,7 +6,6 @@ import { createCuratedLocality as createCuratedLocalityAc } from 'domainModules/
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
-  SET_COLLECTION_LIST,
 } from 'domainModules/locality/interactions'
 
 import BaseForm from './Base'

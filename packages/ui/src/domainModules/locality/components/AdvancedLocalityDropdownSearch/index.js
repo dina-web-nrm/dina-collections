@@ -66,7 +66,6 @@ export class AdvancedLocalityDropdownSearch extends Component {
   }
 
   handleInteraction(type, data) {
-    console.log('type', type)
     const { formName, input: { name } } = this.props
     if (type === FORM_CREATE_SUCCESS) {
       this.props.change(formName, name, data.itemId)
