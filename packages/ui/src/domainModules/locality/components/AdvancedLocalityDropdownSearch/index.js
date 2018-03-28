@@ -7,9 +7,11 @@ import CreateBlock from 'domainModules/locality/components/LocalityManager/block
 import CollectionBlock from 'domainModules/locality/components/LocalityManager/blocks/Collection'
 import { change } from 'redux-form'
 import {
+  FORM_CANCEL,
   FORM_CREATE_SUCCESS,
   SET_COLLECTION_LIST,
   SET_COLLECTION_TREE,
+  SET_ITEM_CREATE,
   SET_ITEM_INSPECT,
 } from 'domainModules/locality/interactions'
 
@@ -31,10 +33,24 @@ export class AdvancedLocalityDropdownSearch extends Component {
       createActive: false,
       pickerActive: false,
     }
-    this.handleOnClose = this.handleOnClose.bind(this)
-    this.handleCreateButtonClick = this.handleCreateButtonClick.bind(this)
-    this.handlePickerButtonClick = this.handlePickerButtonClick.bind(this)
     this.handleInteraction = this.handleInteraction.bind(this)
+    this.handleOnClose = this.handleOnClose.bind(this)
+    this.handlePickerButtonClick = this.handlePickerButtonClick.bind(this)
+    this.setCreateActive = this.setCreateActive.bind(this)
+  }
+
+  setCreateActive() {
+    this.setState({
+      createActive: true,
+      pickerActive: false,
+    })
+  }
+
+  setPickerActive() {
+    this.setState({
+      createActive: false,
+      pickerActive: true,
+    })
   }
 
   handleOnClose() {
@@ -44,23 +60,13 @@ export class AdvancedLocalityDropdownSearch extends Component {
     })
   }
 
-  handleCreateButtonClick(event) {
-    event.preventDefault()
-    this.setState({
-      createActive: true,
-      pickerActive: false,
-    })
-  }
-
   handlePickerButtonClick(event) {
     event.preventDefault()
-    this.setState({
-      createActive: false,
-      pickerActive: true,
-    })
+    this.setPickerActive()
   }
 
   handleInteraction(type, data) {
+    console.log('type', type)
     const { formName, input: { name } } = this.props
     if (type === FORM_CREATE_SUCCESS) {
       this.props.change(formName, name, data.itemId)
@@ -68,6 +74,13 @@ export class AdvancedLocalityDropdownSearch extends Component {
 
     if (type === SET_ITEM_INSPECT) {
       this.props.change(formName, name, data.itemId)
+    }
+
+    if (type === SET_ITEM_CREATE) {
+      return this.setCreateActive()
+    }
+    if (type === FORM_CANCEL) {
+      return this.setPickerActive()
     }
 
     if (type === SET_COLLECTION_LIST) {
@@ -82,7 +95,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
       })
     }
 
-    this.handleOnClose()
+    return this.handleOnClose()
   }
 
   render() {
@@ -91,7 +104,6 @@ export class AdvancedLocalityDropdownSearch extends Component {
     const picker = (
       <Button onClick={this.handlePickerButtonClick}>Picker</Button>
     )
-    const create = <Button onClick={this.handleCreateButtonClick}>New</Button>
 
     if (createActive) {
       return (
@@ -114,7 +126,6 @@ export class AdvancedLocalityDropdownSearch extends Component {
           <Modal.Content>
             <CollectionBlock
               collectionBlockType={collectionBlockType}
-              displayNavigationButtons={false}
               layoutMode="modal"
               onInteraction={this.handleInteraction}
             />
@@ -123,13 +134,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
       )
     }
 
-    return (
-      <LocalityDropdownSearch
-        leftButton={picker}
-        rightButton={create}
-        {...rest}
-      />
-    )
+    return <LocalityDropdownSearch leftButton={picker} {...rest} />
   }
 }
 
