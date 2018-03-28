@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { Field, Input } from 'coreModules/form/components'
@@ -21,7 +21,7 @@ function Position({ getPath, i18n: { moduleTranslate } }) {
   return (
     <Grid.Row>
       <Grid.Column mobile={16}>
-        <h3>Coordinate (interpreted)</h3>
+        <Header size="small">Coordinate (interpreted)</Header>
       </Grid.Column>
       <Grid.Column computer={4} mobile={16} tablet={8}>
         <Field

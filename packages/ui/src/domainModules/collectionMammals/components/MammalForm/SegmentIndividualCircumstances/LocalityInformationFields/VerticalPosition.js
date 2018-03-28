@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { Field, Input } from 'coreModules/form/components'
@@ -25,7 +25,7 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
           <Grid>
             <Grid.Row>
               <Grid.Column mobile={16}>
-                <h3>Elevation (m)</h3>
+                <Header size="small">Elevation (m)</Header>
               </Grid.Column>
               <Grid.Column computer={8} mobile={16} tablet={8}>
                 <Field
@@ -74,7 +74,7 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
           <Grid>
             <Grid.Row>
               <Grid.Column mobile={16}>
-                <h3>Dept (m)</h3>
+                <Header size="small">Dept (m)</Header>
               </Grid.Column>
               <Grid.Column computer={8} mobile={16} tablet={8}>
                 <Field
