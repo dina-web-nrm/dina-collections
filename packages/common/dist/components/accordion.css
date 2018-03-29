@@ -261,10 +261,12 @@
 /* Title */
 .ui.styled.accordion .title {
   background: white;
+  color: rgba(0, 0, 0, 0.95);
 }
 
 /* Active */
 .ui.styled.accordion .active.title {
   border-top: 1px solid #1e8c45 !important;
   background: #f5f5f4;
+  color: rgba(0, 0, 0, 0.95);
 }

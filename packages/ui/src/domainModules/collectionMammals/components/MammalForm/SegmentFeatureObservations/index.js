@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Grid, Header, Segment } from 'semantic-ui-react'
 
@@ -10,10 +9,7 @@ import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import {
-  actionCreators as curatedListActionCreators,
-  globalSelectors as curatedListGlobalSelectors,
-} from 'domainModules/curatedListService'
+import { ensureAllFeatureObservationTypesFetched } from 'domainModules/curatedListService/higherOrderComponents'
 import FeatureObservationsTable from './FeatureObservationsTable'
 import FeatureObservationsTitle from './FeatureObservationsTitle'
 
@@ -34,39 +30,21 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'featureObservations',
 })
 
-const mapStateToProps = state => {
-  return {
-    hasFeatureObservations: curatedListGlobalSelectors.getHasFeatureObservationTypes(
-      state
-    ),
-  }
-}
-const mapDispatchToProps = {
-  getFeatureObservationTypes:
-    curatedListActionCreators.getFeatureObservationTypes,
-}
-
 const propTypes = {
+  allFeatureObservationTypesFetched: PropTypes.bool.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   getFeatureObservationTypes: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
-  hasFeatureObservations: PropTypes.bool.isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
 }
 
 class SegmentFeatureObservations extends PureComponent {
-  componentDidMount() {
-    if (!config.isTest) {
-      this.props.getFeatureObservationTypes()
-    }
-  }
-
   render() {
-    const { changeFieldValue, hasFeatureObservations } = this.props
+    const { changeFieldValue, allFeatureObservationTypesFetched } = this.props
 
     log.render()
     return (
-      <Segment color="green" loading={!hasFeatureObservations}>
+      <Segment color="green" loading={!allFeatureObservationTypesFetched}>
         <Header size="medium">
           <ModuleTranslate textKey="features" />
         </Header>
@@ -94,6 +72,6 @@ SegmentFeatureObservations.propTypes = propTypes
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, mapDispatchToProps),
+  ensureAllFeatureObservationTypesFetched,
   pathBuilder({ name: 'featureObservations' })
 )(SegmentFeatureObservations)

@@ -4,6 +4,7 @@ const tryImport = () => {
 
 const expectedActionCreators = [
   'createFeatureObservationType',
+  'getDistinguishedUnitTypes',
   'getFeatureObservationType',
   'getFeatureObservationTypes',
   'updateFeatureObservationType',

@@ -11,8 +11,9 @@ export default function({
   initialValues,
   keys = [],
   name,
+  reducerKey,
 }) {
-  const actionPrefix = actionPrefixInput || name
+  const actionPrefix = actionPrefixInput || name.toUpperCase()
 
   const constants = createConstants({
     name,
@@ -26,7 +27,8 @@ export default function({
   const actionCreators = createActionCreators({ keySpecifications })
 
   const reducer = createReducer({ initialValues, keySpecifications })
-  const selectors = createSelectors({ keySpecifications, name })
+
+  const selectors = createSelectors({ keySpecifications, name, reducerKey })
 
   const actionTypes = extractActionTypes({ keySpecifications })
 

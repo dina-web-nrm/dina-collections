@@ -104,6 +104,9 @@ apiDescribe('specimen', () => {
                     data: [],
                   },
                   ...simpleDataPhysicalUnitRelations.data.relationships,
+                  taxa: {
+                    data: [],
+                  },
                 },
                 response,
               })
@@ -142,6 +145,9 @@ apiDescribe('specimen', () => {
                     data: [],
                   },
                   physicalUnits: {
+                    data: [],
+                  },
+                  taxa: {
                     data: [],
                   },
                 },
@@ -186,6 +192,9 @@ apiDescribe('specimen', () => {
                   },
                   physicalUnits: {
                     data: [{ id: '1234', type: 'physicalUnit' }],
+                  },
+                  taxa: {
+                    data: [],
                   },
                 },
                 response,
@@ -240,6 +249,9 @@ apiDescribe('specimen', () => {
                   physicalUnits:
                     simpleDataPhysicalUnitRelations.data.relationships
                       .physicalUnits,
+                  taxa: {
+                    data: [],
+                  },
                 },
                 response,
               })
@@ -287,6 +299,9 @@ apiDescribe('specimen', () => {
                 physicalUnits: {
                   data: [],
                 },
+                taxa: {
+                  data: [],
+                },
               },
               response,
             })
@@ -326,6 +341,9 @@ apiDescribe('specimen', () => {
                 },
                 physicalUnits: {
                   data: [{ id: '1234', type: 'physicalUnit' }],
+                },
+                taxa: {
+                  data: [],
                 },
               },
               response,

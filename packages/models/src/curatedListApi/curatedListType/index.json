@@ -7,7 +7,7 @@
           "$ref": "__ROOT__featureObservationType"
         },
         {
-          "$ref": "__ROOT__distinguishedUnitObservationType"
+          "$ref": "__ROOT__distinguishedUnitType"
         }
       ]
     }

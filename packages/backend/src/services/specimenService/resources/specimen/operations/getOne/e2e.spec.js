@@ -63,7 +63,7 @@ apiDescribe('specimen', () => {
             simpleDataPhysicalUnitRelationsId = response.data.id
           })
         })
-        it('Fetch responseource with physical unit relationships', () => {
+        it('Fetch resource with physical unit relationships', () => {
           return makeTestCall({
             operationId: 'getSpecimen',
             pathParams: {
@@ -82,6 +82,9 @@ apiDescribe('specimen', () => {
                   data: [],
                 },
                 ...simpleDataPhysicalUnitRelations.data.relationships,
+                taxa: {
+                  data: [],
+                },
               },
               response,
             })
@@ -98,7 +101,7 @@ apiDescribe('specimen', () => {
             simpleDataPhysicalUnitRelationsId = response.data.id
           })
         })
-        it('Fetch responseource with physical unit relationships', () => {
+        it('Fetch resource with physical unit relationships', () => {
           return makeTestCall({
             operationId: 'getSpecimen',
             pathParams: {
@@ -124,7 +127,7 @@ apiDescribe('specimen', () => {
             simpleDataPhysicalUnitRelationsId = response.data.id
           })
         })
-        it('Fetch responseource with physical unit relationships', () => {
+        it('Fetch resource with physical unit relationships', () => {
           return makeTestCall({
             operationId: 'getSpecimen',
             pathParams: {
@@ -158,7 +161,7 @@ apiDescribe('specimen', () => {
             simpleDataNoRelationsId = response.data.id
           })
         })
-        it('Fetch responseource with default relationships', () => {
+        it('Fetch resource with default relationships', () => {
           return makeTestCall({
             operationId: 'getSpecimen',
 
@@ -178,6 +181,9 @@ apiDescribe('specimen', () => {
                   data: [],
                 },
                 physicalUnits: {
+                  data: [],
+                },
+                taxa: {
                   data: [],
                 },
               },

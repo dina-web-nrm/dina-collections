@@ -8,7 +8,7 @@ import localityServiceSelectors from 'domainModules/localityService/globalSelect
 import {
   createGetCuratedLocalityById,
   ensureAllLocalitiesFetched,
-} from '../../../higherOrderComponents'
+} from 'domainModules/localityService/higherOrderComponents'
 
 const mapStateToProps = (state, ownProps) => {
   const { curatedLocality } = ownProps

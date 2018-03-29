@@ -12,7 +12,7 @@ export const propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   meta: PropTypes.shape({
     error: PropTypes.object,
-    touched: PropTypes.bool.isRequired,
+    touched: PropTypes.bool,
   }).isRequired,
   module: PropTypes.string.isRequired,
   name: PropTypes.string,

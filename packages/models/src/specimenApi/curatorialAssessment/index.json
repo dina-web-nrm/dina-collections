@@ -1,0 +1,27 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "agent": {
+      "type": "string",
+      "example": "Doe, J."
+    },
+    "date": {
+      "$ref": "__ROOT__date"
+    },
+    "condition": {
+      "type": "string",
+      "example": "Good"
+    },
+    "conditionRemarks": {
+      "type": "string",
+      "example": "Small damage on left hind leg"
+    },
+    "inventoryStatusRemarks": {
+      "type": "string",
+      "example": "On loan"
+    },
+    "isInStorage": {
+      "type": "boolean"
+    }
+  }
+}

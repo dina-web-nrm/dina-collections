@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { getCuratedLocalities as getCuratedLocalitiesAc } from 'domainModules/localityService/actionCreators'
+import { getCuratedLocalities as getCuratedLocalitiesAc } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
 export default function ensureAllLocalitiesFetched(ComposedComponent) {

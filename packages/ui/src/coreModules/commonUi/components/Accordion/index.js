@@ -22,7 +22,7 @@ const propTypes = {
     ALL_EXPANDED,
     FIRST_EXPANDED,
   ]),
-  items: PropTypes.array,
+  items: PropTypes.arrayOf(PropTypes.object.isRequired),
   renderContent: PropTypes.func,
   renderTitle: PropTypes.func.isRequired,
   selectMode: PropTypes.oneOf([MULTI, SINGLE]),

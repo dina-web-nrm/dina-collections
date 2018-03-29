@@ -815,9 +815,9 @@
         ]
       }
     },
-    "/curatedListApi/v01/distinguishedUnitObservationTypes": {
+    "/api/curatedList/v01/distinguishedUnitTypes": {
       "post": {
-        "operationId": "createDistinguishedUnitObservationType",
+        "operationId": "createDistinguishedUnitType",
         "parameters": [
           {
             "in": "query",
@@ -842,7 +842,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeRequest"
+                "$ref": "#/components/schemas/createDistinguishedUnitTypeRequest"
               }
             }
           },
@@ -853,7 +853,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createDistinguishedUnitObservationTypeResponse"
+                  "$ref": "#/components/schemas/createDistinguishedUnitTypeResponse"
                 }
               }
             },
@@ -863,7 +863,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createDistinguishedUnitObservationType-400"
+                  "$ref": "#/components/schemas/createDistinguishedUnitType-400"
                 }
               }
             },
@@ -873,7 +873,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createDistinguishedUnitObservationType-500"
+                  "$ref": "#/components/schemas/createDistinguishedUnitType-500"
                 }
               }
             },
@@ -885,13 +885,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create distinguishedUnitObservationType",
+        "summary": "Create distinguishedUnitType",
         "tags": [
           "curatedListService"
         ]
       },
       "get": {
-        "operationId": "getDistinguishedUnitObservationTypes",
+        "operationId": "getDistinguishedUnitTypes",
         "parameters": [
           {
             "in": "query",
@@ -935,7 +935,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypesResponse"
+                  "$ref": "#/components/schemas/getDistinguishedUnitTypesResponse"
                 }
               }
             },
@@ -945,7 +945,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypes-400"
+                  "$ref": "#/components/schemas/getDistinguishedUnitTypes-400"
                 }
               }
             },
@@ -955,7 +955,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypes-500"
+                  "$ref": "#/components/schemas/getDistinguishedUnitTypes-500"
                 }
               }
             },
@@ -967,20 +967,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find distinguishedUnitObservationTypes",
+        "summary": "Find distinguishedUnitTypes",
         "tags": [
           "curatedListService"
         ]
       }
     },
-    "/curatedListApi/v01/distinguishedUnitObservationTypes/{id}": {
+    "/api/curatedList/v01/distinguishedUnitTypes/{id}": {
       "patch": {
-        "operationId": "updateDistinguishedUnitObservationType",
+        "operationId": "updateDistinguishedUnitType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "distinguishedUnitObservationType id",
+            "description": "distinguishedUnitType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1010,7 +1010,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeRequest"
+                "$ref": "#/components/schemas/updateDistinguishedUnitTypeRequest"
               }
             }
           },
@@ -1021,7 +1021,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationTypeResponse"
+                  "$ref": "#/components/schemas/updateDistinguishedUnitTypeResponse"
                 }
               }
             },
@@ -1031,7 +1031,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationType-400"
+                  "$ref": "#/components/schemas/updateDistinguishedUnitType-400"
                 }
               }
             },
@@ -1041,7 +1041,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationType-404"
+                  "$ref": "#/components/schemas/updateDistinguishedUnitType-404"
                 }
               }
             },
@@ -1051,7 +1051,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitObservationType-500"
+                  "$ref": "#/components/schemas/updateDistinguishedUnitType-500"
                 }
               }
             },
@@ -1063,18 +1063,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates distinguishedUnitObservationType",
+        "summary": "Updates distinguishedUnitType",
         "tags": [
           "curatedListService"
         ]
       },
       "get": {
-        "operationId": "getDistinguishedUnitObservationType",
+        "operationId": "getDistinguishedUnitType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "distinguishedUnitObservationType id",
+            "description": "distinguishedUnitType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1105,7 +1105,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationTypeResponse"
+                  "$ref": "#/components/schemas/getDistinguishedUnitTypeResponse"
                 }
               }
             },
@@ -1115,7 +1115,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationType-400"
+                  "$ref": "#/components/schemas/getDistinguishedUnitType-400"
                 }
               }
             },
@@ -1125,7 +1125,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationType-404"
+                  "$ref": "#/components/schemas/getDistinguishedUnitType-404"
                 }
               }
             },
@@ -1135,7 +1135,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitObservationType-500"
+                  "$ref": "#/components/schemas/getDistinguishedUnitType-500"
                 }
               }
             },
@@ -1147,7 +1147,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find distinguishedUnitObservationType by id",
+        "summary": "Find distinguishedUnitType by id",
         "tags": [
           "curatedListService"
         ]
@@ -2441,16 +2441,6 @@
             "name": "filter[catalogNumber]",
             "description": "catalog number used to filter specimens",
             "example": "123456",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[taxonNameStandardized]",
-            "description": "Standardized taxon name used to filter specimens",
-            "example": "Chironectes minimus",
             "required": false,
             "schema": {
               "type": "string"
@@ -5492,7 +5482,7 @@
             "type": "string",
             "enum": [
               "featureObservationType",
-              "distinguishedUnitObservationType"
+              "distinguishedUnitType"
             ]
           },
           "items": {
@@ -5515,7 +5505,7 @@
                 "$ref": "#/components/schemas/featureObservationType"
               },
               {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitType"
               }
             ]
           }
@@ -5524,35 +5514,18 @@
         "x-modelType": "model",
         "description": ""
       },
-      "distinguishedUnitObservationType": {
+      "distinguishedUnitType": {
         "additionalProperties": false,
         "properties": {
-          "typeName": {
+          "category": {
             "type": "string",
-            "enum": [
-              "sex",
-              "length",
-              "age",
-              "weight",
-              "conditionAtCollecting",
-              "ageStage"
-            ]
+            "example": "skin"
           },
-          "id": {
+          "name": {
             "type": "string",
-            "enum": [
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6"
-            ]
+            "example": "hair, scales"
           }
         },
-        "required": [
-          "typeName"
-        ],
         "x-category": "curatedListApi",
         "x-modelType": "model",
         "description": ""
@@ -5856,6 +5829,36 @@
         "x-modelType": "model",
         "description": ""
       },
+      "curatorialAssessment": {
+        "additionalProperties": false,
+        "properties": {
+          "agent": {
+            "type": "string",
+            "example": "Doe, J."
+          },
+          "date": {
+            "$ref": "#/components/schemas/date"
+          },
+          "condition": {
+            "type": "string",
+            "example": "Good"
+          },
+          "conditionRemarks": {
+            "type": "string",
+            "example": "Small damage on left hind leg"
+          },
+          "inventoryStatusRemarks": {
+            "type": "string",
+            "example": "On loan"
+          },
+          "isInStorage": {
+            "type": "boolean"
+          }
+        },
+        "description": "### Definition\n\nAssessment whether specimen is in storage or not found.\n\n### Example(s)\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n",
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
       "deathCircumstance": {
         "additionalProperties": false,
         "properties": {
@@ -5922,6 +5925,15 @@
           "collectingCircumstance": {
             "$ref": "#/components/schemas/collectingCircumstance"
           },
+          "curatorialAssessments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/curatorialAssessment"
+            }
+          },
+          "distinguishedUnitType": {
+            "$ref": "#/components/schemas/distinguishedUnitType"
+          },
           "id": {
             "type": "string"
           },
@@ -5936,32 +5948,6 @@
         "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
         "x-category": "specimenApi",
         "x-modelType": "model"
-      },
-      "distinguishedUnitObservations": {
-        "additionalProperties": false,
-        "properties": {
-          "agent": {
-            "type": "string",
-            "example": "Doe, J."
-          },
-          "date": {
-            "$ref": "#/components/schemas/date"
-          },
-          "observationText": {
-            "type": "string",
-            "example": "10 years"
-          },
-          "observationType": {
-            "$ref": "#/components/schemas/distinguishedUnitObservationType"
-          },
-          "methodText": {
-            "type": "string",
-            "example": "Known age"
-          }
-        },
-        "x-category": "specimenApi",
-        "x-modelType": "model",
-        "description": ""
       },
       "event": {
         "additionalProperties": false,
@@ -7001,7 +6987,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "createDistinguishedUnitObservationType-400": {
+      "createDistinguishedUnitType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7028,7 +7014,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "createDistinguishedUnitObservationType-500": {
+      "createDistinguishedUnitType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7055,7 +7041,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updateDistinguishedUnitObservationType-400": {
+      "updateDistinguishedUnitType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7082,7 +7068,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updateDistinguishedUnitObservationType-404": {
+      "updateDistinguishedUnitType-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7106,7 +7092,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updateDistinguishedUnitObservationType-500": {
+      "updateDistinguishedUnitType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7133,7 +7119,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getDistinguishedUnitObservationType-400": {
+      "getDistinguishedUnitType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7157,7 +7143,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getDistinguishedUnitObservationType-404": {
+      "getDistinguishedUnitType-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7181,7 +7167,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getDistinguishedUnitObservationType-500": {
+      "getDistinguishedUnitType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7208,7 +7194,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getDistinguishedUnitObservationTypes-400": {
+      "getDistinguishedUnitTypes-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7232,7 +7218,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getDistinguishedUnitObservationTypes-500": {
+      "getDistinguishedUnitTypes-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -10413,7 +10399,7 @@
         },
         "description": ""
       },
-      "createDistinguishedUnitObservationTypeRequest": {
+      "createDistinguishedUnitTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10429,14 +10415,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "distinguishedUnitObservationType",
+                "default": "distinguishedUnitType",
                 "enum": [
-                  "distinguishedUnitObservationType"
+                  "distinguishedUnitType"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitType"
               }
             }
           }
@@ -10444,24 +10430,26 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "distinguishedUnitObservationType",
+              "type": "distinguishedUnitType",
               "attributes": {
-                "typeName": "sex"
+                "category": "skin",
+                "name": "preparation name"
               }
             }
           }
         },
         "example": {
           "data": {
-            "type": "distinguishedUnitObservationType",
+            "type": "distinguishedUnitType",
             "attributes": {
-              "typeName": "sex"
+              "category": "skin",
+              "name": "preparation name"
             }
           }
         },
         "description": ""
       },
-      "updateDistinguishedUnitObservationTypeRequest": {
+      "updateDistinguishedUnitTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10477,14 +10465,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "distinguishedUnitObservationType",
+                "default": "distinguishedUnitType",
                 "enum": [
-                  "distinguishedUnitObservationType"
+                  "distinguishedUnitType"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitType"
               }
             }
           }
@@ -11119,6 +11107,14 @@
                       "type": "physicalUnit"
                     }
                   ]
+                },
+                "taxa": {
+                  "data": [
+                    {
+                      "id": "2367",
+                      "type": "taxon"
+                    }
+                  ]
                 }
               },
               "attributes": {
@@ -11131,7 +11127,10 @@
                         "determinedByAgentText": "determinedByAgentText",
                         "isCurrentDetermination": true,
                         "remarks": "remarks",
-                        "taxonNameStandardized": "Sorex minutus"
+                        "taxon": {
+                          "id": "2367",
+                          "type": "taxon"
+                        }
                       }
                     ]
                   },
@@ -12311,7 +12310,74 @@
             }
           }
         },
-        "x-examples": {},
+        "x-examples": {
+          "primary": {
+            "data": {
+              "type": "taxon",
+              "attributes": {
+                "rubinNumber": "123456",
+                "higherTaxa": {
+                  "order": "Parent order",
+                  "suborder": "Parent suborder",
+                  "infraorder": "Parent infraorder",
+                  "superfamily": "Parent superfamily",
+                  "family": "Parent family",
+                  "subfamily": "Parent subfamily",
+                  "tribe": "Parent tribe",
+                  "genus": "Parent genus",
+                  "subgenus": "Parent subgenus"
+                },
+                "rank": "Taxon rank",
+                "scientificName": "Sorex minutus",
+                "author": "John Doe",
+                "authorDate": "John Doe 2018",
+                "validName": true,
+                "vernacularNames": {
+                  "en": [
+                    "mouse"
+                  ],
+                  "sv": [
+                    "mus"
+                  ]
+                },
+                "synonyms": "synonyms"
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "type": "taxon",
+            "attributes": {
+              "rubinNumber": "123456",
+              "higherTaxa": {
+                "order": "Parent order",
+                "suborder": "Parent suborder",
+                "infraorder": "Parent infraorder",
+                "superfamily": "Parent superfamily",
+                "family": "Parent family",
+                "subfamily": "Parent subfamily",
+                "tribe": "Parent tribe",
+                "genus": "Parent genus",
+                "subgenus": "Parent subgenus"
+              },
+              "rank": "Taxon rank",
+              "scientificName": "Sorex minutus",
+              "author": "John Doe",
+              "authorDate": "John Doe 2018",
+              "validName": true,
+              "vernacularNames": {
+                "en": [
+                  "mouse"
+                ],
+                "sv": [
+                  "mus"
+                ]
+              },
+              "synonyms": "synonyms"
+            }
+          }
+        },
         "description": ""
       },
       "updateTaxonRequest": {
@@ -12873,21 +12939,21 @@
         "x-examples": {},
         "description": ""
       },
-      "createDistinguishedUnitObservationTypeResponse": {
+      "createDistinguishedUnitTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "distinguishedUnitObservationType",
+                "default": "distinguishedUnitType",
                 "type": "string"
               }
             },
@@ -12899,7 +12965,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -12915,21 +12981,21 @@
         "x-examples": {},
         "description": ""
       },
-      "updateDistinguishedUnitObservationTypeResponse": {
+      "updateDistinguishedUnitTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "distinguishedUnitObservationType",
+                "default": "distinguishedUnitType",
                 "type": "string"
               }
             },
@@ -12941,7 +13007,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -12957,21 +13023,21 @@
         "x-examples": {},
         "description": ""
       },
-      "getDistinguishedUnitObservationTypeResponse": {
+      "getDistinguishedUnitTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                "$ref": "#/components/schemas/distinguishedUnitType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "distinguishedUnitObservationType",
+                "default": "distinguishedUnitType",
                 "type": "string"
               }
             },
@@ -12983,7 +13049,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -12999,7 +13065,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getDistinguishedUnitObservationTypesResponse": {
+      "getDistinguishedUnitTypesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -13008,14 +13074,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/distinguishedUnitObservationType"
+                  "$ref": "#/components/schemas/distinguishedUnitType"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "distinguishedUnitObservationType",
+                  "default": "distinguishedUnitType",
                   "type": "string"
                 }
               },
@@ -13029,7 +13095,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/curatedListApi/v01/distinguishedUnitObservationTypes",
+                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

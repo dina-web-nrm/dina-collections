@@ -4,8 +4,6 @@ import {
   COLLECTION_MAMMALS_CLEAR_SEARCH_PARAMETERS,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_FAIL,
   COLLECTION_MAMMALS_LOOKUP_MAMMALS_SUCCESS,
-  COLLECTION_MAMMALS_UPDATE_FEATURE_OBSERVATION_SEARCH_QUERY,
-  COLLECTION_MAMMALS_UPDATE_LOCALITY_INFORMATION_SEARCH_QUERY,
   COLLECTION_MAMMALS_UPDATE_SEARCH_PARAMETER,
 } from './actionTypes'
 
@@ -15,7 +13,6 @@ const getLookupSearch = createGetter(['lookup', 'search'])
 const setLookupSearch = createSetter(['lookup', 'search'])
 
 const initialState = {
-  featureObservationSearchQueries: {},
   localityInformationSearchQueries: {},
   lookup: {
     error: null,
@@ -38,26 +35,6 @@ export default function reducer(state = initialState, action) {
     case COLLECTION_MAMMALS_LOOKUP_MAMMALS_SUCCESS: {
       const emptyErrorState = setLookupError(state, [])
       return setLookupResult(emptyErrorState, action.payload)
-    }
-
-    case COLLECTION_MAMMALS_UPDATE_FEATURE_OBSERVATION_SEARCH_QUERY: {
-      return {
-        ...state,
-        featureObservationSearchQueries: {
-          ...state.featureObservationSearchQueries,
-          [action.meta.inputName]: action.payload,
-        },
-      }
-    }
-
-    case COLLECTION_MAMMALS_UPDATE_LOCALITY_INFORMATION_SEARCH_QUERY: {
-      return {
-        ...state,
-        localityInformationSearchQueries: {
-          ...state.localityInformationSearchQueries,
-          [action.meta.inputName]: action.payload,
-        },
-      }
     }
 
     case COLLECTION_MAMMALS_UPDATE_SEARCH_PARAMETER: {

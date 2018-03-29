@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
-import { getCuratedLocality as getCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
+import localityServiceSelectors from '../globalSelectors'
+import { getCuratedLocality as getCuratedLocalityAc } from '../actionCreators'
 
 export default function createGetCuratedLocalityById(ComposedComponent) {
   const mapStateToProps = (state, ownProps) => {

@@ -4,6 +4,7 @@ import InformationSidebar from './InformationSidebar'
 import NavigationSidebar from './NavigationSidebar'
 import PageTemplate from './PageTemplate'
 import TranslatedLabel from './TranslatedLabel'
+import ThreeColumnGrid from './ThreeColumnGrid'
 import ViewWrap from './ViewWrap'
 
 export {
@@ -12,6 +13,7 @@ export {
   InformationSidebar,
   NavigationSidebar,
   PageTemplate,
+  ThreeColumnGrid,
   TranslatedLabel,
   ViewWrap,
 }

@@ -7,10 +7,9 @@ const {
   globalSelectors,
   reducer,
 } = keyObjectModuleFactory({
+  actionPrefix: 'LOCALITY',
   initialValues: {
-    allLocalitiesFetched: false,
     collectionBlockType: 'list',
-    fetchingAllLocalities: false,
     filter: {
       group: 'continent',
       offset: 0,
@@ -18,7 +17,6 @@ const {
     },
   },
   keys: [
-    'allLocalitiesFetched',
     'collectionBlockType',
     'fetchingAllLocalities',
     'filter',

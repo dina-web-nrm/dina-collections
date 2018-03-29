@@ -56,6 +56,9 @@ apiDescribe('specimen', () => {
                 physicalUnits: {
                   data: [],
                 },
+                taxa: {
+                  data: [],
+                },
               },
               response,
             })
@@ -160,6 +163,9 @@ apiDescribe('specimen', () => {
               },
               physicalUnits: {
                 data: [{ id: '1337', type: 'physicalUnit' }],
+              },
+              taxa: {
+                data: [],
               },
             },
             response,

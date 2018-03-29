@@ -7,7 +7,7 @@ import createLog from 'utilities/log'
 import { Field, Input } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import FeatureObservationDropdownSearch from '../../FeatureObservationDropdownSearch'
+import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'

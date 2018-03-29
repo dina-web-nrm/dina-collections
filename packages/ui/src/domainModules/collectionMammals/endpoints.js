@@ -42,7 +42,6 @@ export const GET_SPECIMEN = createEndpoint({
 })
 
 export const LOOKUP_MAMMALS = createEndpoint({
-  mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: createLookupMammalsResponse,
   operationId: 'getSpecimens',
 })

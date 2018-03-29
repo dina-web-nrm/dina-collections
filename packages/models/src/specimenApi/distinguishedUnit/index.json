@@ -14,11 +14,25 @@
     "collectingCircumstance": {
       "$ref": "__ROOT__collectingCircumstance"
     },
-    "id": { "type": "string" },
+    "curatorialAssessments": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__curatorialAssessment"
+      }
+    },
+    "distinguishedUnitType": {
+      "$ref": "__ROOT__distinguishedUnitType"
+    },
+    "id": {
+      "type": "string"
+    },
     "physicalUnitText": {
       "type": "string",
       "example": "Skin complete, prepared"
     },
-    "physicalUnit": { "$ref": "__ROOT__physicalUnit", "x-reference-type": "external" }
+    "physicalUnit": {
+      "$ref": "__ROOT__physicalUnit",
+      "x-reference-type": "external"
+    }
   }
 }

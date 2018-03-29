@@ -59,6 +59,9 @@ apiDescribe('specimen', () => {
                 physicalUnits: {
                   data: [],
                 },
+                taxa: {
+                  data: [],
+                },
               },
               response,
             })
@@ -95,6 +98,9 @@ apiDescribe('specimen', () => {
                   ...simpleDataPhysicalUnitRelations.data.relationships,
                   curatedLocalities: { data: [] },
                   featureObservationTypes: {
+                    data: [],
+                  },
+                  taxa: {
                     data: [],
                   },
                 },

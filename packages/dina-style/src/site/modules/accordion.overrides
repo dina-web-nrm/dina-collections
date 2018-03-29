@@ -2,7 +2,6 @@
         User Overrides
 *******************************/
 
-
 /* Content */
 .ui.styled.accordion .content,
 .ui.styled.accordion .accordion .content {
@@ -12,10 +11,12 @@
 /* Title */
 .ui.styled.accordion .title {
   background: @styledInactiveTitleBackground;
+  color: @styledActiveTitleColor;
 }
 
 /* Active */
 .ui.styled.accordion .active.title {
   border-top: @coloredBorderSize solid @green !important;
   background: @styledContentBackground;
+  color: @styledActiveTitleColor;
 }
