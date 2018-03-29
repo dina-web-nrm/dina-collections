@@ -106,5 +106,5 @@ LocalityDropdownSearch.propTypes = propTypes
 
 export default compose(
   connect(null, mapDispatchToProps),
-  ensureAllLocalitiesFetched
+  ensureAllLocalitiesFetched()
 )(LocalityDropdownSearch)

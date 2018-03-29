@@ -6,7 +6,7 @@ import { compose } from 'redux'
 import { getCuratedLocalities as getCuratedLocalitiesAc } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
-export default function ensureAllLocalitiesFetched(ComposedComponent) {
+const ensureAllLocalitiesFetched = () => ComposedComponent => {
   const mapStateToProps = state => ({
     allLocalitiesFetched: globalSelectors.get.allLocalitiesFetched(state),
     fetchingAllLocalities: globalSelectors.get.fetchingAllLocalities(state),
@@ -58,3 +58,5 @@ export default function ensureAllLocalitiesFetched(ComposedComponent) {
     FetchAllLocalities
   )
 }
+
+export default ensureAllLocalitiesFetched

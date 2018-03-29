@@ -6,7 +6,7 @@ import { compose } from 'redux'
 import { getStorageLocations as getStorageLocationsAC } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
-export default function ensureAllStorageLocationsFetched(ComposedComponent) {
+const ensureAllStorageLocationsFetched = () => ComposedComponent => {
   const mapStateToProps = state => ({
     allStorageLocationsFetched: globalSelectors.get.allStorageLocationsFetched(
       state
@@ -66,3 +66,5 @@ export default function ensureAllStorageLocationsFetched(ComposedComponent) {
     FetchAllStorageLocations
   )
 }
+
+export default ensureAllStorageLocationsFetched

@@ -7,9 +7,7 @@ import config from 'config'
 import { getFeatureObservationTypes as getFeatureObservationTypesAC } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
-export default function ensureAllFeatureObservationTypesFetched(
-  ComposedComponent
-) {
+const ensureAllFeatureObservationTypesFetched = () => ComposedComponent => {
   const mapStateToProps = state => ({
     allFeatureObservationTypesFetched: globalSelectors.get.allFeatureObservationTypesFetched(
       state
@@ -75,3 +73,5 @@ export default function ensureAllFeatureObservationTypesFetched(
     FetchAllFeatureObservationTypes
   )
 }
+
+export default ensureAllFeatureObservationTypesFetched

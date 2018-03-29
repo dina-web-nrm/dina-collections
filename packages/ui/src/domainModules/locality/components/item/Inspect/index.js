@@ -173,7 +173,7 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  ensureAllLocalitiesFetched,
-  createGetCuratedLocalityById,
+  ensureAllLocalitiesFetched(),
+  createGetCuratedLocalityById(),
   connect(mapStateToProps)
 )(Inspect)

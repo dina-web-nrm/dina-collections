@@ -6,9 +6,7 @@ import { compose } from 'redux'
 import { getDistinguishedUnitTypes as getDistinguishedUnitTypesAC } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
-export default function ensureAllDistinguishedUnitTypesFetched(
-  ComposedComponent
-) {
+const ensureAllDistinguishedUnitTypesFetched = () => ComposedComponent => {
   const mapStateToProps = state => ({
     allDistinguishedUnitTypesFetched: globalSelectors.get.allDistinguishedUnitTypesFetched(
       state
@@ -71,3 +69,5 @@ export default function ensureAllDistinguishedUnitTypesFetched(
     FetchAllDistinguishedUnitTypes
   )
 }
+
+export default ensureAllDistinguishedUnitTypesFetched

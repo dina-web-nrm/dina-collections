@@ -195,6 +195,6 @@ LocalityList.propTypes = propTypes
 LocalityList.defaultProps = defaultProps
 
 export default compose(
-  ensureAllLocalitiesFetched,
+  ensureAllLocalitiesFetched(),
   connect(mapStateToProps, mapDispatchToProps)
 )(LocalityList)

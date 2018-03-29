@@ -3,16 +3,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import objectPath from 'object-path'
 import localityServiceSelectors from '../globalSelectors'
 import { getCuratedLocality as getCuratedLocalityAc } from '../actionCreators'
 
-export default function createGetCuratedLocalityById(ComposedComponent) {
+const createGetCuratedLocalityById = (
+  idPath = 'itemId'
+) => ComposedComponent => {
   const mapStateToProps = (state, ownProps) => {
-    const { itemId } = ownProps
+    const itemId = objectPath.get(ownProps, idPath)
     return {
       curatedLocality: !itemId
         ? null
         : localityServiceSelectors.getCuratedLocality(state, itemId),
+      itemId,
     }
   }
 
@@ -73,3 +77,5 @@ export default function createGetCuratedLocalityById(ComposedComponent) {
     GetCuratedLocalityById
   )
 }
+
+export default createGetCuratedLocalityById
