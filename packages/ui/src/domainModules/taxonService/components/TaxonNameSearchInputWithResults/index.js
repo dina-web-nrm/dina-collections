@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { Search } from 'coreModules/form/components'
+import createGetTaxonById from '../../higherOrderComponents/createGetTaxonById'
 import globalSelectors from '../../globalSelectors'
 import updateTaxonSearchQueryAC from '../../actionCreators/updateTaxonSearchQuery'
 
@@ -32,6 +34,7 @@ class TaxonNameSearchInputWithResults extends Component {
 
 TaxonNameSearchInputWithResults.propTypes = propTypes
 
-export default connect(undefined, mapDispatchToProps)(
-  TaxonNameSearchInputWithResults
-)
+export default compose(
+  createGetTaxonById('input.value'),
+  connect(undefined, mapDispatchToProps)
+)(TaxonNameSearchInputWithResults)

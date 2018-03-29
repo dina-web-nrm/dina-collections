@@ -29,20 +29,12 @@ export default function getSpecimen({ id, throwError = false } = {}) {
         response => {
           const transformedResponse = flattenObjectResponse(response.data)
           if (response.data && response.data.relationships) {
-            const { physicalUnits, taxa } = response.data.relationships
+            const { physicalUnits } = response.data.relationships
             return Promise.all([
               ...physicalUnits.data.map(physicalUnit => {
                 return dispatch(
                   getPhysicalUnit({
                     id: physicalUnit.id,
-                    throwError: true,
-                  })
-                )
-              }),
-              ...taxa.data.map(taxon => {
-                return dispatch(
-                  getTaxon({
-                    id: taxon.id,
                     throwError: true,
                   })
                 )
