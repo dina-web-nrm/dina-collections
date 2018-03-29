@@ -25,54 +25,38 @@ const propTypes = {
 function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
   return (
     <Grid textAlign="left" verticalAlign="top">
-      <Grid.Column mobile={16}>
-        <FieldWrapper
-          autoComplete="off"
-          component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('localityVerbatim'),
-            descriptionKey: buildModuleTextKey('helpTexts.localityVerbatim'),
-          }}
-          label={moduleTranslate({ textKey: 'localityVerbatim' })}
-          module="collectionMammals"
-          name={getPath('localityVerbatim')}
-          type="text"
-        />
-      </Grid.Column>
-      <CuratedLocalities />
-      <Grid.Column computer={8} mobile={16} tablet={8}>
-        <Field
-          autoComplete="off"
-          component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('coordinatesVerbatim'),
-            descriptionKey: buildModuleTextKey('helpTexts.coordinatesVerbatim'),
-          }}
-          label={moduleTranslate({ textKey: 'coordinatesVerbatim' })}
-          module="collectionMammals"
-          name={getPath('coordinatesVerbatim')}
-          type="text"
-        />
-      </Grid.Column>
-      <Position />
-      <Grid.Column computer={12} mobile={16} tablet={12}>
-        <Field
-          autoComplete="off"
-          component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('georeferenceSourcesText'),
-            descriptionKey: buildModuleTextKey(
-              'helpTexts.georeferenceSourcesText'
-            ),
-          }}
-          label={moduleTranslate({ textKey: 'georeferenceSourcesText' })}
-          module="collectionMammals"
-          name={getPath('georeferenceSourcesText')}
-          type="text"
-        />
-      </Grid.Column>
+      <Grid.Row>
+        <Grid.Column computer={8} mobile={16} tablet={8}>
+          <FieldWrapper
+            autoComplete="off"
+            component={Input}
+            helpNotificationProps={{
+              descriptionHeaderKey: buildModuleTextKey('localityVerbatim'),
+              descriptionKey: buildModuleTextKey('helpTexts.localityVerbatim'),
+            }}
+            label={moduleTranslate({ textKey: 'localityVerbatim' })}
+            module="collectionMammals"
+            name={getPath('localityVerbatim')}
+            type="text"
+          />
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column computer={8} mobile={16} tablet={8}>
+          <Field
+            autoComplete="off"
+            component={Input}
+            label="Locality name (normalized)"
+            module="collectionMammals"
+            name={getPath('localityName')}
+            type="text"
+          />
+        </Grid.Column>
+      </Grid.Row>
       <VerticalPosition />
-      <Grid.Column mobile={16}>
+      <Position />
+
+      <Grid.Column computer={8} mobile={16}>
         <Field
           autoComplete="off"
           component={Input}
@@ -86,6 +70,7 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
           type="text"
         />
       </Grid.Column>
+      <CuratedLocalities />
     </Grid>
   )
 }

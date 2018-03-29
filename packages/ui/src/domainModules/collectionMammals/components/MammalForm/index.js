@@ -19,7 +19,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import { MAMMAL_FORM_NAME } from '../../constants'
 import { mammalFormModels } from '../../schemas'
 import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
-import SegmentDeterminations from './SegmentDeterminations'
+import SegmentTaxon from './SegmentTaxon'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
 import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
 import SegmentDistinguishedUnits from './SegmentDistinguishedUnits'
@@ -138,7 +138,7 @@ class RawMammalForm extends Component {
               editMode={mode === 'edit'}
               formValueSelector={formValueSelector}
             />
-            <SegmentDeterminations
+            <SegmentTaxon
               changeFieldValue={this.changeFieldValue}
               editMode={mode === 'edit'}
               formValueSelector={formValueSelector}

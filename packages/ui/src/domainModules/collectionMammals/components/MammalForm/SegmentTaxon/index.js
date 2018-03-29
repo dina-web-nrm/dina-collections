@@ -10,7 +10,9 @@ import { Accordion } from 'coreModules/commonUi/components'
 import { FIRST_EXPANDED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
+import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import specimenSelectors from 'domainModules/specimenService/globalSelectors'
+import { Field, Input } from 'coreModules/form/components'
 import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
 
@@ -34,6 +36,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   editMode: PropTypes.bool.isRequired,
   formValueSelector: PropTypes.func.isRequired,
+  getPath: PropTypes.func.isRequired,
   hasSpecimen: PropTypes.bool.isRequired,
   isSmallScreen: PropTypes.bool.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -55,13 +58,14 @@ const defaultProps = {
 }
 
 const SegmentDeterminations = ({
-  taxonInformation,
   changeFieldValue,
+  editMode,
   formValueSelector,
+  getPath,
+  hasSpecimen,
   isSmallScreen,
   removeArrayFieldByIndex,
-  editMode,
-  hasSpecimen,
+  taxonInformation,
 }) => {
   const { determinations } = taxonInformation
   const renderAccordion = !editMode || (editMode && hasSpecimen)
@@ -69,10 +73,39 @@ const SegmentDeterminations = ({
   log.render()
   return (
     <Segment color="green" loading={!renderAccordion}>
-      <Header size="medium">
-        <ModuleTranslate scope="determination" textKey="determination" />
-      </Header>
+      <Header size="medium">Taxon</Header>
+
       <Grid textAlign="left" verticalAlign="top">
+        <Grid.Row>
+          <Grid.Column computer={4} mobile={16} tablet={8}>
+            <Field
+              autoComplete="off"
+              component={Input}
+              label="Curatorial name"
+              module="collectionMammals"
+              name={getPath('curatorialName')}
+              type="text"
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column computer={5} mobile={16} tablet={8}>
+            <Field
+              autoComplete="off"
+              component={Input}
+              label="Taxon remarks"
+              module="collectionMammals"
+              name={getPath('taxonRemarks')}
+              type="text"
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column mobile={16}>
+            <Header size="medium">Determinations</Header>
+          </Grid.Column>
+        </Grid.Row>
+
         <Grid.Column mobile={16}>
           {renderAccordion && (
             <Accordion
@@ -119,4 +152,9 @@ const SegmentDeterminations = ({
 SegmentDeterminations.propTypes = propTypes
 SegmentDeterminations.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps))(SegmentDeterminations)
+export default compose(
+  connect(mapStateToProps),
+  pathBuilder({
+    name: 'taxonInformation',
+  })
+)(SegmentDeterminations)

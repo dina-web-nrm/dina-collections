@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { Field, Input } from 'coreModules/form/components'
@@ -20,6 +20,9 @@ const propTypes = {
 function Position({ getPath, i18n: { moduleTranslate } }) {
   return (
     <Grid.Row>
+      <Grid.Column mobile={16}>
+        <Header size="small">Coordinate (interpreted)</Header>
+      </Grid.Column>
       <Grid.Column computer={4} mobile={16} tablet={8}>
         <Field
           autoComplete="off"
@@ -52,29 +55,9 @@ function Position({ getPath, i18n: { moduleTranslate } }) {
         <Field
           autoComplete="off"
           component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('uncertaintyInMeters'),
-            descriptionKey: buildModuleTextKey('helpTexts.uncertaintyInMeters'),
-          }}
-          label={moduleTranslate({
-            textKey: 'uncertaintyInMeters',
-          })}
+          label="Ref. syst"
           module="collectionMammals"
-          name={getPath('uncertaintyInMeters')}
-          type="number"
-        />
-      </Grid.Column>
-      <Grid.Column computer={4} mobile={16} tablet={8}>
-        <Field
-          autoComplete="off"
-          component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('geodeticDatum'),
-            descriptionKey: buildModuleTextKey('helpTexts.geodeticDatum'),
-          }}
-          label={moduleTranslate({ textKey: 'geodeticDatum' })}
-          module="collectionMammals"
-          name={getPath('geodeticDatum')}
+          name={getPath('referenceSystem')}
           type="text"
         />
       </Grid.Column>

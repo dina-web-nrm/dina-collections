@@ -5400,14 +5400,12 @@
           "uncertaintyInMeters": {
             "type": "integer",
             "description": "Coordinate uncertainty in meters"
+          },
+          "referenceSystem": {
+            "type": "string",
+            "description": "TBA"
           }
         },
-        "x-required": [
-          "name",
-          "id",
-          "description",
-          "type"
-        ],
         "x-category": "core",
         "x-modelType": "model"
       },
@@ -6127,7 +6125,7 @@
             "type": "string",
             "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
           },
-          "localityText": {
+          "localityName": {
             "type": "string",
             "description": "TBA"
           },
@@ -6210,11 +6208,11 @@
               "$ref": "#/components/schemas/event"
             }
           },
-          "readOnly": {
-            "$ref": "#/components/schemas/readOnly"
-          },
           "version": {
             "type": "integer"
+          },
+          "readOnly": {
+            "$ref": "#/components/schemas/readOnly"
           }
         },
         "x-category": "specimenApi",
@@ -6224,6 +6222,9 @@
         "additionalProperties": false,
         "properties": {
           "curatorialName": {
+            "type": "string"
+          },
+          "taxonRemarks": {
             "type": "string"
           },
           "determinations": {

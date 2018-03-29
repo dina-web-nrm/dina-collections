@@ -6,7 +6,7 @@ import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
-import { Input } from 'coreModules/form/components'
+import { Input, DropdownSearch } from 'coreModules/form/components'
 import { ALL } from 'domainModules/localityService/constants'
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
 import FormControll from './FormControll'
@@ -19,6 +19,7 @@ const propTypes = {
   error: PropTypes.string,
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
@@ -33,6 +34,15 @@ const defaultProps = {
   error: '',
 }
 
+const groups = ['continent', 'country', 'district', 'province']
+
+const dropdownOptions = groups.map(group => {
+  return {
+    text: group,
+    value: group,
+  }
+})
+
 export class Edit extends Component {
   render() {
     log.render()
@@ -42,6 +52,7 @@ export class Edit extends Component {
       error,
       handleSubmit,
       invalid,
+      onClose,
       pristine,
       reset,
       submitFailed,
@@ -69,11 +80,12 @@ export class Edit extends Component {
             <Grid.Column mobile={8}>
               <FieldWrapper
                 autoComplete="off"
-                component={Input}
+                component={DropdownSearch}
                 label="Group"
                 module="localities"
                 name="group"
-                type="text"
+                options={dropdownOptions}
+                type="dropdown-search-local"
               />
             </Grid.Column>
           </Grid.Row>
@@ -180,6 +192,7 @@ export class Edit extends Component {
             displayResetButton={displayResetButton}
             error={error}
             invalid={invalid}
+            onClose={onClose}
             pristine={pristine}
             reset={reset}
             submitFailed={submitFailed}

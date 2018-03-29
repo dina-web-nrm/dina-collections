@@ -205,20 +205,20 @@
       },
       "verticalPosition": {
         "maximumDepthInMeters": {
-          "en": "Max depth (m)",
-          "sv": "Maxdjup (m)"
+          "en": "Max",
+          "sv": "Max"
         },
         "maximumElevationInMeters": {
-          "en": "Max elevation (m)",
-          "sv": "Maxhöjd (m)"
+          "en": "Max",
+          "sv": "Max"
         },
         "minimumDepthInMeters": {
-          "en": "Min depth (m)",
-          "sv": "Mindjup(m)"
+          "en": "Min",
+          "sv": "Min"
         },
         "minimumElevationInMeters": {
-          "en": "Min elevation (m)",
-          "sv": "Minhöjd (m)"
+          "en": "Min",
+          "sv": "Min"
         }
       },
       "helpTexts": {

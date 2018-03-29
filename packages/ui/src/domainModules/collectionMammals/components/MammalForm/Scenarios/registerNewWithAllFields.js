@@ -1,6 +1,8 @@
 import initialState from './initialState'
 
 const mutations = [
+  { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
+  { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
   { name: 'taxonInformation.determinations.0.date', value: 'date' },
   {
     name: 'taxonInformation.determinations.0.determinationVerbatim',
@@ -76,11 +78,7 @@ const mutations = [
     name: 'individualCircumstances.0.event.expeditionText',
     value: 'expeditionText',
   },
-  {
-    name:
-      'individualCircumstances.0.event.localityInformation.coordinatesVerbatim',
-    value: 'coordinatesVerbatim',
-  },
+
   {
     name:
       'individualCircumstances.0.event.localityInformation.curatedLocalities.0.id.hidden',
@@ -92,43 +90,18 @@ const mutations = [
       'individualCircumstances.0.event.localityInformation.curatedLocalities.1.id.hidden',
     value: 'Algeria',
   },
-
-  {
-    name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.2.id.hidden',
-    value: 'Balearic Islands',
-  },
-
-  {
-    name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.3.id.hidden',
-    value: 'GaspÃ© Peninsula',
-  },
-
-  {
-    name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.4.id',
-    value: 'Skansen',
-  },
-
-  {
-    name:
-      'individualCircumstances.0.event.localityInformation.georeferenceSourcesText',
-    value: 'georeferenceSourcesText',
-  },
   {
     name:
       'individualCircumstances.0.event.localityInformation.localityVerbatim',
     value: 'localityVerbatim',
   },
   {
-    name: 'individualCircumstances.0.event.localityInformation.remarks',
-    value: 'remarks',
+    name: 'individualCircumstances.0.event.localityInformation.localityName',
+    value: 'localityName',
   },
   {
-    name:
-      'individualCircumstances.0.event.localityInformation.position.geodeticDatum',
-    value: 'geodeticDatum text',
+    name: 'individualCircumstances.0.event.localityInformation.remarks',
+    value: 'remarks',
   },
   {
     name:
@@ -142,9 +115,10 @@ const mutations = [
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.position.uncertaintyInMeters',
-    value: 10,
+      'individualCircumstances.0.event.localityInformation.position.referenceSystem',
+    value: 'referenceSystem',
   },
+
   {
     name:
       'individualCircumstances.0.event.localityInformation.verticalPosition.maximumDepthInMeters',
@@ -175,9 +149,6 @@ const expectedOutput = {
   curatedLocalities: [
     { id: 'Africa', type: 'curatedLocality' },
     { id: 'Algeria', type: 'curatedLocality' },
-    { id: 'Balearic Islands', type: 'curatedLocality' },
-    { id: 'GaspÃ© Peninsula', type: 'curatedLocality' },
-    { id: 'Skansen', type: 'curatedLocality' },
   ],
   featureObservationTypes: [
     {
@@ -235,21 +206,16 @@ const expectedOutput = {
             endDate: 'endDate',
             expeditionText: 'expeditionText',
             localityInformation: {
-              coordinatesVerbatim: 'coordinatesVerbatim',
               curatedLocalities: [
                 { id: 'Africa', type: 'curatedLocality' },
                 { id: 'Algeria', type: 'curatedLocality' },
-                { id: 'Balearic Islands', type: 'curatedLocality' },
-                { id: 'GaspÃ© Peninsula', type: 'curatedLocality' },
-                { id: 'Skansen', type: 'curatedLocality' },
               ],
-              georeferenceSourcesText: 'georeferenceSourcesText',
+              localityName: 'localityName',
               localityVerbatim: 'localityVerbatim',
               position: {
-                geodeticDatum: 'geodeticDatum text',
                 latitude: 'latitude-string',
                 longitude: 'longitude-string',
-                uncertaintyInMeters: 10,
+                referenceSystem: 'referenceSystem',
               },
               remarks: 'remarks',
               verticalPosition: {
@@ -264,6 +230,7 @@ const expectedOutput = {
         },
       ],
       taxonInformation: {
+        curatorialName: 'curatorialName',
         determinations: [
           {
             date: 'date',
@@ -277,6 +244,7 @@ const expectedOutput = {
             },
           },
         ],
+        taxonRemarks: 'taxonRemarks',
       },
     },
   },

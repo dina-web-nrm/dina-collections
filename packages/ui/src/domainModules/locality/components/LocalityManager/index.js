@@ -4,15 +4,17 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import {
-  actionCreators,
+  actionCreators as keyObjectActionCreators,
   globalSelectors,
 } from 'domainModules/locality/keyObjectModule'
 import { Layout } from 'coreModules/layout/components'
 import { push } from 'react-router-redux'
 import { withLayout } from 'coreModules/layout/higherOrderComponents'
 import {
+  FORM_CANCEL,
   FORM_CREATE_SUCCESS,
   FORM_EDIT_SUCCESS,
+  ITEM_CLICK,
   SET_COLLECTION,
   SET_COLLECTION_LIST,
   SET_COLLECTION_TREE,
@@ -49,7 +51,10 @@ const propTypes = {
   match: PropTypes.object.isRequired,
   push: PropTypes.func.isRequired,
   setCollectionBlockType: PropTypes.func.isRequired,
+  setFilterGroup: PropTypes.func.isRequired,
   setLayoutMode: PropTypes.func.isRequired,
+  setParentFilterId: PropTypes.func.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -60,7 +65,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   push,
-  setCollectionBlockType: actionCreators.set.collectionBlockType,
+  setCollectionBlockType: keyObjectActionCreators.set.collectionBlockType,
+  setFilterGroup: keyObjectActionCreators.set['filter.group'],
+  setParentFilterId: keyObjectActionCreators.set['filter.parentId'],
+  setSearchQuery: keyObjectActionCreators.set['filter.searchQuery'],
 }
 
 class LocalityManager extends Component {
@@ -98,6 +106,7 @@ class LocalityManager extends Component {
         break
       }
 
+      case FORM_CANCEL:
       case SET_COLLECTION: {
         this.props.push(`/app/localities`)
         break
@@ -108,7 +117,13 @@ class LocalityManager extends Component {
         this.props.push(`/app/localities/${itemId}/edit`)
         break
       }
-
+      case ITEM_CLICK: {
+        const { itemId } = data
+        this.props.setSearchQuery('')
+        this.props.setFilterGroup('')
+        this.props.setParentFilterId(itemId)
+        break
+      }
       case SET_ITEM_INSPECT: {
         const { itemId } = data
         this.props.push(`/app/localities/${itemId}/inspect`)

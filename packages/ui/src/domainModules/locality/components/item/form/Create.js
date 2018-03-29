@@ -4,8 +4,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { createCuratedLocality as createCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
 import {
+  FORM_CANCEL,
   FORM_CREATE_SUCCESS,
-  SET_COLLECTION_LIST,
 } from 'domainModules/locality/interactions'
 
 import BaseForm from './Base'
@@ -26,9 +26,9 @@ export class Create extends PureComponent {
       <BaseForm
         displayBackButton
         displayResetButton
-        onBack={event => {
+        onClose={event => {
           event.preventDefault()
-          onInteraction(SET_COLLECTION_LIST)
+          onInteraction(FORM_CANCEL)
         }}
         onSubmit={data => {
           this.props

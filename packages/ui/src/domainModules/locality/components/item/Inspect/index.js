@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
+import {
+  createGetCuratedLocalityById,
+  ensureAllLocalitiesFetched,
+} from '../../../higherOrderComponents'
 
 const mapStateToProps = (state, ownProps) => {
-  const { itemId } = ownProps
-  const curatedLocality = localityServiceSelectors.getCuratedLocality(
-    state,
-    itemId
-  )
+  const { curatedLocality } = ownProps
   const parent =
     curatedLocality &&
     curatedLocality.parent &&
@@ -19,14 +19,12 @@ const mapStateToProps = (state, ownProps) => {
       state,
       curatedLocality.parent.id
     )
-
   const children =
     curatedLocality &&
     curatedLocality.children &&
     curatedLocality.children.map(({ id }) => {
       return localityServiceSelectors.getCuratedLocality(state, id)
     })
-
   return {
     children,
     curatedLocality,
@@ -35,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const propTypes = {
+  allLocalitiesFetched: PropTypes.bool.isRequired,
   children: PropTypes.array,
   curatedLocality: PropTypes.object,
   parent: PropTypes.object,
@@ -48,11 +47,15 @@ const defaultProps = {
 
 export class Inspect extends Component {
   render() {
-    const { children, curatedLocality, parent } = this.props
-    if (!curatedLocality) {
+    const {
+      allLocalitiesFetched,
+      children,
+      curatedLocality,
+      parent,
+    } = this.props
+    if (!curatedLocality || !allLocalitiesFetched) {
       return null
     }
-
     return (
       <React.Fragment>
         <Table celled>
@@ -149,7 +152,7 @@ export class Inspect extends Component {
             {children &&
               children.map(child => {
                 return (
-                  <Table.Row>
+                  <Table.Row key={child.id}>
                     <Table.Cell>
                       <Link to={`/app/localities/${child.id}/inspect`}>
                         {child.id}
@@ -169,4 +172,8 @@ export class Inspect extends Component {
 Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps))(Inspect)
+export default compose(
+  ensureAllLocalitiesFetched,
+  createGetCuratedLocalityById,
+  connect(mapStateToProps)
+)(Inspect)

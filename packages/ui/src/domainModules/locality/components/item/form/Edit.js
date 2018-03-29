@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { updateCuratedLocality as updateCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
+import {
+  FORM_CANCEL,
+  FORM_EDIT_SUCCESS,
+} from 'domainModules/locality/interactions'
 import BaseForm from './Base'
 import { createGetCuratedLocalityById } from '../../../higherOrderComponents'
 
@@ -43,6 +47,10 @@ export class Edit extends PureComponent {
         displayBackButton
         displayResetButton
         initialValues={initialValues}
+        onClose={event => {
+          event.preventDefault()
+          onInteraction(FORM_CANCEL)
+        }}
         onInteraction={onInteraction}
         onSubmit={data => {
           this.props
@@ -53,7 +61,7 @@ export class Edit extends PureComponent {
               },
             })
             .then(result => {
-              onInteraction('edit-submit-success', {
+              onInteraction(FORM_EDIT_SUCCESS, {
                 itemId: result.id,
               })
             })

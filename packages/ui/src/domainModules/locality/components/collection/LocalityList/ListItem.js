@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon, Label, List } from 'semantic-ui-react'
 import {
+  ITEM_CLICK,
   SET_ITEM_EDIT,
   SET_ITEM_INSPECT,
 } from 'domainModules/locality/interactions'
@@ -9,12 +10,14 @@ import {
 const propTypes = {
   activeLocalityId: PropTypes.string,
   curatedLocality: PropTypes.object.isRequired,
+  cursorFocus: PropTypes.bool,
   displayNavigationButtons: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
   activeLocalityId: '',
+  cursorFocus: false,
 }
 
 const groupColorMap = {
@@ -29,19 +32,28 @@ class ListItem extends Component {
     const {
       activeLocalityId,
       curatedLocality,
+      cursorFocus,
       displayNavigationButtons,
       onInteraction,
     } = this.props
+
+    const style = cursorFocus
+      ? {
+          borderLeft: '3px solid black',
+        }
+      : {}
+
     return (
       <List.Item
         active={activeLocalityId === curatedLocality.id}
         key={curatedLocality.id}
         onClick={event => {
           event.preventDefault()
-          onInteraction(SET_ITEM_INSPECT, {
+          onInteraction(ITEM_CLICK, {
             itemId: curatedLocality.id,
           })
         }}
+        style={style}
       >
         <List.Content floated="right">
           <Label

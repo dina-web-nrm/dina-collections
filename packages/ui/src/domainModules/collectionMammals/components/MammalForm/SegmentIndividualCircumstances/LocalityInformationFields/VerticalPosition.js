@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { Field, Input } from 'coreModules/form/components'
@@ -21,75 +21,99 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
   return (
     <React.Fragment>
       <Grid.Row>
-        <Grid.Column computer={3} mobile={8} tablet={3}>
-          <Field
-            autoComplete="off"
-            component={Input}
-            helpNotificationProps={{
-              descriptionHeaderKey: buildModuleTextKey(
-                'minimumElevationInMeters'
-              ),
-              descriptionKey: buildModuleTextKey(
-                'helpTexts.minimumElevationInMeters'
-              ),
-            }}
-            label={moduleTranslate({ textKey: 'minimumElevationInMeters' })}
-            module="collectionMammals"
-            name={getPath('minimumElevationInMeters')}
-            type="number"
-          />
+        <Grid.Column computer={4} mobile={16} tablet={4}>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column mobile={16}>
+                <Header size="small">Elevation (m)</Header>
+              </Grid.Column>
+              <Grid.Column computer={8} mobile={16} tablet={8}>
+                <Field
+                  autoComplete="off"
+                  component={Input}
+                  helpNotificationProps={{
+                    descriptionHeaderKey: buildModuleTextKey(
+                      'minimumElevationInMeters'
+                    ),
+                    descriptionKey: buildModuleTextKey(
+                      'helpTexts.minimumElevationInMeters'
+                    ),
+                  }}
+                  label={moduleTranslate({
+                    textKey: 'minimumElevationInMeters',
+                  })}
+                  module="collectionMammals"
+                  name={getPath('minimumElevationInMeters')}
+                  type="number"
+                />
+              </Grid.Column>
+              <Grid.Column computer={8} mobile={16} tablet={8}>
+                <Field
+                  autoComplete="off"
+                  component={Input}
+                  helpNotificationProps={{
+                    descriptionHeaderKey: buildModuleTextKey(
+                      'maximumElevationInMeters'
+                    ),
+                    descriptionKey: buildModuleTextKey(
+                      'helpTexts.maximumElevationInMeters'
+                    ),
+                  }}
+                  label={moduleTranslate({
+                    textKey: 'maximumElevationInMeters',
+                  })}
+                  module="collectionMammals"
+                  name={getPath('maximumElevationInMeters')}
+                  type="number"
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Grid.Column>
-        <Grid.Column computer={3} mobile={8} tablet={3}>
-          <Field
-            autoComplete="off"
-            component={Input}
-            helpNotificationProps={{
-              descriptionHeaderKey: buildModuleTextKey(
-                'maximumElevationInMeters'
-              ),
-              descriptionKey: buildModuleTextKey(
-                'helpTexts.maximumElevationInMeters'
-              ),
-            }}
-            label={moduleTranslate({ textKey: 'maximumElevationInMeters' })}
-            module="collectionMammals"
-            name={getPath('maximumElevationInMeters')}
-            type="number"
-          />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
-        <Grid.Column computer={3} mobile={8} tablet={3}>
-          <Field
-            autoComplete="off"
-            component={Input}
-            helpNotificationProps={{
-              descriptionHeaderKey: buildModuleTextKey('minimumDepthInMeters'),
-              descriptionKey: buildModuleTextKey(
-                'helpTexts.minimumDepthInMeters'
-              ),
-            }}
-            label={moduleTranslate({ textKey: 'minimumDepthInMeters' })}
-            module="collectionMammals"
-            name={getPath('minimumDepthInMeters')}
-            type="number"
-          />
-        </Grid.Column>
-        <Grid.Column computer={3} mobile={8} tablet={3}>
-          <Field
-            autoComplete="off"
-            component={Input}
-            helpNotificationProps={{
-              descriptionHeaderKey: buildModuleTextKey('maximumDepthInMeters'),
-              descriptionKey: buildModuleTextKey(
-                'helpTexts.maximumDepthInMeters'
-              ),
-            }}
-            label={moduleTranslate({ textKey: 'maximumDepthInMeters' })}
-            module="collectionMammals"
-            name={getPath('maximumDepthInMeters')}
-            type="number"
-          />
+        <Grid.Column computer={4} mobile={16} tablet={4}>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column mobile={16}>
+                <Header size="small">Dept (m)</Header>
+              </Grid.Column>
+              <Grid.Column computer={8} mobile={16} tablet={8}>
+                <Field
+                  autoComplete="off"
+                  component={Input}
+                  helpNotificationProps={{
+                    descriptionHeaderKey: buildModuleTextKey(
+                      'minimumDepthInMeters'
+                    ),
+                    descriptionKey: buildModuleTextKey(
+                      'helpTexts.minimumDepthInMeters'
+                    ),
+                  }}
+                  label={moduleTranslate({ textKey: 'minimumDepthInMeters' })}
+                  module="collectionMammals"
+                  name={getPath('minimumDepthInMeters')}
+                  type="number"
+                />
+              </Grid.Column>
+              <Grid.Column computer={8} mobile={16} tablet={8}>
+                <Field
+                  autoComplete="off"
+                  component={Input}
+                  helpNotificationProps={{
+                    descriptionHeaderKey: buildModuleTextKey(
+                      'maximumDepthInMeters'
+                    ),
+                    descriptionKey: buildModuleTextKey(
+                      'helpTexts.maximumDepthInMeters'
+                    ),
+                  }}
+                  label={moduleTranslate({ textKey: 'maximumDepthInMeters' })}
+                  module="collectionMammals"
+                  name={getPath('maximumDepthInMeters')}
+                  type="number"
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Grid.Column>
       </Grid.Row>
     </React.Fragment>
