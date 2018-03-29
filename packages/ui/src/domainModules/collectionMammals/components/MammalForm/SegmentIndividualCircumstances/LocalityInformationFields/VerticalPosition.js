@@ -21,7 +21,7 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
   return (
     <React.Fragment>
       <Grid.Row>
-        <Grid.Column computer={3} mobile={16} tablet={4}>
+        <Grid.Column computer={4} mobile={16} tablet={4}>
           <Grid>
             <Grid.Row>
               <Grid.Column mobile={16}>
@@ -70,7 +70,7 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
             </Grid.Row>
           </Grid>
         </Grid.Column>
-        <Grid.Column computer={3} mobile={16} tablet={4}>
+        <Grid.Column computer={4} mobile={16} tablet={4}>
           <Grid>
             <Grid.Row>
               <Grid.Column mobile={16}>
