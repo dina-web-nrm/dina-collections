@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import config from 'config'
 import { getDistinguishedUnitTypes as getDistinguishedUnitTypesAC } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
@@ -39,6 +40,7 @@ const ensureAllDistinguishedUnitTypesFetched = () => ComposedComponent => {
         fetchingAllDistinguishedUnitTypes,
       } = this.props
       if (
+        !config.isTest &&
         !allDistinguishedUnitTypesFetched &&
         !fetchingAllDistinguishedUnitTypes
       ) {
