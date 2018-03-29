@@ -9,7 +9,7 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
 import { ALL } from 'domainModules/localityService/constants'
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
-import FormControll from './FormControll'
+import FormActions from './FormActions'
 
 const log = createLog('modules:user:EditForm')
 
@@ -187,7 +187,7 @@ export class Edit extends Component {
               />
             </Grid.Column>
           </Grid.Row>
-          <FormControll
+          <FormActions
             displayBackButton={displayBackButton}
             displayResetButton={displayResetButton}
             error={error}
