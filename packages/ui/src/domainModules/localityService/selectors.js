@@ -48,18 +48,28 @@ export const getCuratedLocalitiesArrayByFilter = createSelector(
   getSecondArgument,
   (curatedLocalitiesArray, filter = {}) => {
     const {
-      searchQuery: searchQueryFilter,
-      limit: limitFilter,
       group: groupFilter,
+      limit: limitFilter,
+      offset = 0,
+      parentId: parentIdFilter,
+      searchQuery: searchQueryFilter,
     } = filter
     let filteredCuratedLocalities = curatedLocalitiesArray
+
+    if (parentIdFilter) {
+      filteredCuratedLocalities = filteredCuratedLocalities.filter(locality => {
+        return (locality.parent && locality.parent.id) === parentIdFilter
+      })
+    }
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
-      const firstLetterMatches = curatedLocalitiesArray.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
-      })
+      const firstLetterMatches = filteredCuratedLocalities.filter(
+        ({ name }) => {
+          return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+        }
+      )
 
-      const otherMatches = curatedLocalitiesArray.filter(({ name }) => {
+      const otherMatches = filteredCuratedLocalities.filter(({ name }) => {
         return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
       })
 
@@ -73,9 +83,36 @@ export const getCuratedLocalitiesArrayByFilter = createSelector(
     }
 
     if (limitFilter) {
-      return filteredCuratedLocalities.slice(0, limitFilter)
+      return filteredCuratedLocalities.splice(offset, limitFilter)
     }
     return filteredCuratedLocalities
+  }
+)
+
+export const getCuratedLocalityAncestorsById = createSelector(
+  getCuratedLocalities,
+  getSecondArgument,
+  (curatedLocalities, currentId) => {
+    const ancestors = []
+    const walkUp = item => {
+      ancestors.push(item)
+      const parentId = item.parent && item.parent.id
+      if (parentId) {
+        const next = curatedLocalities[parentId]
+        if (next) {
+          walkUp(next)
+        }
+      }
+    }
+
+    const current = curatedLocalities[currentId]
+    if (!current) {
+      return ancestors
+    }
+
+    walkUp(current)
+
+    return ancestors.reverse()
   }
 )
 

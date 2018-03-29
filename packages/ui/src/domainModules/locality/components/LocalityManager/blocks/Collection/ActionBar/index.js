@@ -15,23 +15,20 @@ import {
 } from 'domainModules/locality/interactions'
 
 import { InputText } from 'coreModules/form/components'
+import AncestorTag from './AncestorTag'
 
 const mapStateToProps = state => {
   return {
-    filterGroup: keyObjectGlobalSelectors.get['filter:index.group'](state, {
-      index: 'localityCollection',
-    }),
-    searchQuery: keyObjectGlobalSelectors.get['filter:index.searchQuery'](
-      state,
-      { index: 'localityCollection' }
-    ),
+    filterGroup: keyObjectGlobalSelectors.get['filter.group'](state),
+    searchQuery: keyObjectGlobalSelectors.get['filter.searchQuery'](state),
   }
 }
 
 const mapDispatchToProps = {
-  setFilterGroup: keyObjectActionCreators.set['filter:index.group'],
+  setFilterGroup: keyObjectActionCreators.set['filter.group'],
   setListMode: keyObjectActionCreators.set.listMode,
-  setSearchQuery: keyObjectActionCreators.set['filter:index.searchQuery'],
+  setParentId: keyObjectActionCreators.set['filter.parentId'],
+  setSearchQuery: keyObjectActionCreators.set['filter.searchQuery'],
 }
 
 const propTypes = {
@@ -75,7 +72,7 @@ class ActionBar extends Component {
       <Form style={{ marginBottom: 10 }}>
         <Grid>
           <Grid.Row>
-            <Grid.Column width={14}>
+            <Grid.Column width={16}>
               <Button.Group floated="left">
                 <Button
                   active={collectionBlockType === 'list'}
@@ -98,10 +95,7 @@ class ActionBar extends Component {
                 icon="search"
                 input={{
                   onChange: event => {
-                    this.props.setSearchQuery(
-                      'localityCollection',
-                      event.target.value
-                    )
+                    this.props.setSearchQuery(event.target.value)
                   },
                   value: this.props.searchQuery,
                 }}
@@ -115,7 +109,7 @@ class ActionBar extends Component {
                 icon="filter"
                 labeled
                 onChange={(res, data) => {
-                  this.props.setFilterGroup('localityCollection', data.value)
+                  this.props.setFilterGroup(data.value)
                 }}
                 options={dropdownOptions}
                 placeholder="select group"
@@ -124,8 +118,11 @@ class ActionBar extends Component {
                 value={this.props.filterGroup}
               />
             </Grid.Column>
+            <Grid.Column verticalAlign="bottom" width={14}>
+              <AncestorTag />
+            </Grid.Column>
             {displayNavigationButtons && (
-              <Grid.Column textAlign="left" width={2}>
+              <Grid.Column textAlign="right" width={2}>
                 <Button.Group floated="right">
                   <Button
                     color="orange"

@@ -21,21 +21,42 @@ export default function createGetCuratedLocalityById(ComposedComponent) {
   }
 
   const propTypes = {
+    allLocalitiesFetched: PropTypes.bool,
     curatedLocality: PropTypes.object,
     getCuratedLocality: PropTypes.func.isRequired,
     itemId: PropTypes.string,
   }
 
   const defaultProps = {
+    allLocalitiesFetched: undefined,
     curatedLocality: null,
     itemId: '',
   }
 
   class GetCuratedLocalityById extends Component {
     componentDidMount() {
+      const { allLocalitiesFetched } = this.props
+      if (allLocalitiesFetched === undefined) {
+        const { itemId } = this.props
+        if (itemId) {
+          this.props.getCuratedLocality({ id: itemId })
+        }
+      }
+    }
+    componentWillReceiveProps(nextProps) {
+      const { allLocalitiesFetched } = this.props
       const { itemId } = this.props
-      if (itemId) {
-        this.props.getCuratedLocality({ id: itemId })
+      if (
+        allLocalitiesFetched === false &&
+        nextProps.allLocalitiesFetched === true
+      ) {
+        if (itemId) {
+          this.props.getCuratedLocality({ id: itemId })
+        }
+      }
+
+      if (nextProps.itemId && nextProps.itemId !== itemId) {
+        this.props.getCuratedLocality({ id: nextProps.itemId })
       }
     }
     render() {

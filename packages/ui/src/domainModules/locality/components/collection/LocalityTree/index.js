@@ -12,12 +12,7 @@ import {
 
 const mapStateToProps = state => {
   return {
-    searchQuery: keyObjectGlobalSelectors.get['filter:index.searchQuery'](
-      state,
-      {
-        index: 'localityCollection',
-      }
-    ),
+    searchQuery: keyObjectGlobalSelectors.get['filter.searchQuery'](state),
   }
 }
 

@@ -29,7 +29,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  curatedLocalities: [],
   localityId: '',
   onItemClick: undefined,
 }

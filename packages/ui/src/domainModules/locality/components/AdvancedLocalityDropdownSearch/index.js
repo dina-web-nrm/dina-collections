@@ -9,6 +9,7 @@ import { change } from 'redux-form'
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
+  ITEM_CLICK,
   SET_COLLECTION_LIST,
   SET_COLLECTION_TREE,
   SET_ITEM_CREATE,
@@ -71,7 +72,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
       this.props.change(formName, name, data.itemId)
     }
 
-    if (type === SET_ITEM_INSPECT) {
+    if (type === SET_ITEM_INSPECT || type === ITEM_CLICK) {
       this.props.change(formName, name, data.itemId)
     }
 
