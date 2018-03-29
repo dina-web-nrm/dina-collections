@@ -1,19 +1,39 @@
-import { PHYSICAL_UNIT } from 'domainModules/storageService/constants'
+import {
+  PHYSICAL_UNIT,
+  STORAGE_LOCATION,
+} from 'domainModules/storageService/constants'
 import { SPECIMEN } from './constants'
 
 export const buildSpecimenBody = ({
   curatedLocalities,
+  distinguishedUnitTypes,
   featureObservationTypes,
   individualGroup,
   savedPhysicalUnits,
+  storageLocations,
   taxa,
 }) => {
-  const cleanedPhysicalUnits = savedPhysicalUnits.map(({ id }) => {
-    return {
-      id,
-      type: PHYSICAL_UNIT,
+  const cleanedPhysicalUnits = savedPhysicalUnits.map(
+    ({ id, storageLocation }) => {
+      if (storageLocation) {
+        const cleanedStorageLocation = {
+          id: storageLocation.id,
+          type: STORAGE_LOCATION,
+        }
+
+        return {
+          id,
+          storageLocation: cleanedStorageLocation,
+          type: PHYSICAL_UNIT,
+        }
+      }
+
+      return {
+        id,
+        type: PHYSICAL_UNIT,
+      }
     }
-  })
+  )
 
   const individualGroupWithRelationships = {
     ...individualGroup,
@@ -36,11 +56,17 @@ export const buildSpecimenBody = ({
         curatedLocalities: {
           data: curatedLocalities,
         },
+        distinguishedUnitTypes: {
+          data: distinguishedUnitTypes,
+        },
         featureObservationTypes: {
           data: featureObservationTypes,
         },
         physicalUnits: {
           data: cleanedPhysicalUnits,
+        },
+        storageLocations: {
+          data: storageLocations,
         },
         taxa: {
           data: taxa,

@@ -2,7 +2,6 @@ import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiCli
 
 import updateSpecimen from './index'
 import * as actionTypes from '../../actionTypes'
-import { SPECIMEN } from '../../constants'
 
 describe('domainModules/specimenService/actionCreators/updateSpecimen', () => {
   let store
@@ -68,36 +67,17 @@ describe('domainModules/specimenService/actionCreators/updateSpecimen', () => {
     })
 
     const testAction = updateSpecimen({ id, specimen, taxa: [taxon] })
-    const expectedCallParams = {
-      body: {
-        data: {
-          attributes,
-          relationships: {
-            curatedLocalities: {
-              data: [],
-            },
-            featureObservationTypes: {
-              data: [],
-            },
-            physicalUnits: {
-              data: [],
-            },
-            taxa: {
-              data: [{ id: '2367', type: 'taxon' }],
-            },
-          },
-          type: SPECIMEN,
-        },
-      },
-      pathParams: { id },
-    }
 
-    expect.assertions(3)
+    expect.assertions(7)
 
     return store.dispatch(testAction).then(() => {
       expect(callSpy.mock.calls.length).toEqual(1)
       expect(callSpy.mock.calls[0][0]).toMatchObject({ operationId })
-      expect(callSpy.mock.calls[0][1]).toEqual(expectedCallParams)
+      expect(callSpy.mock.calls[0][1].body).toBeTruthy()
+      expect(callSpy.mock.calls[0][1].body.data).toBeTruthy()
+      expect(callSpy.mock.calls[0][1].body.data.attributes).toBeTruthy()
+      expect(callSpy.mock.calls[0][1].body.data.relationships).toBeTruthy()
+      expect(callSpy.mock.calls[0][1].body.data.type).toBeTruthy()
     })
   })
 

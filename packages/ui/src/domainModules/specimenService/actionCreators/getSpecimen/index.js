@@ -1,5 +1,4 @@
 import { getPhysicalUnit } from 'domainModules/storageService/actionCreators'
-import { getTaxon } from 'domainModules/taxonService/actionCreators'
 import { flattenObjectResponse } from 'utilities/transformations'
 
 import {

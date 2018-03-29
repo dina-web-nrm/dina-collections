@@ -3,12 +3,22 @@ import { buildSpecimenBody, getCatalogNumberFromIdentifiers } from './utilities'
 describe('domainModules/specimenService/utilities', () => {
   describe('buildSpecimenBody', () => {
     const curatedLocalities = []
+    const distinguishedUnitTypes = {
+      '1': {
+        id: '1',
+        type: 'distinguishedUnitType',
+      },
+      '2': {
+        id: '2',
+        type: 'distinguishedUnitType',
+      },
+    }
     const featureObservationTypes = {
-      1: {
+      '1': {
         id: '1',
         type: 'featureObservationType',
       },
-      22: {
+      '22': {
         id: '22',
         type: 'featureObservationType',
       },
@@ -16,15 +26,31 @@ describe('domainModules/specimenService/utilities', () => {
     const individualGroup = {
       distinguishedUnits: [
         {
-          physicalUnit: {
+          distinguishedUnitType: {
+            category: 'skin',
             id: '1',
-            type: 'physicalUnit',
+            type: 'distinguishedUnitType',
+          },
+          physicalUnit: {
+            storageLocation: {
+              id: '1',
+              name: 'skin room',
+              type: 'storageLocation',
+            },
           },
         },
         {
-          physicalUnit: {
+          distinguishedUnitType: {
+            category: 'skeleton',
             id: '2',
-            type: 'physicalUnit',
+            type: 'distinguishedUnitType',
+          },
+          physicalUnit: {
+            storageLocation: {
+              id: '2',
+              name: 'bone room',
+              type: 'storageLocation',
+            },
           },
         },
       ],
@@ -56,13 +82,31 @@ describe('domainModules/specimenService/utilities', () => {
     const savedPhysicalUnits = [
       {
         id: '1',
-        storedUnderTaxonName: 'Chironectes minimus',
+        storageLocation: {
+          id: '1',
+          name: 'skin room',
+          type: 'storageLocation',
+        },
         type: 'physicalUnit',
       },
       {
         id: '2',
-        storedUnderTaxonName: 'Sorex minutus',
+        storageLocation: {
+          id: '2',
+          name: 'bone room',
+          type: 'storageLocation',
+        },
         type: 'physicalUnit',
+      },
+    ]
+    const storageLocations = [
+      {
+        id: '1',
+        type: 'storageLocation',
+      },
+      {
+        id: '2',
+        type: 'storageLocation',
       },
     ]
     const taxa = [
@@ -75,19 +119,29 @@ describe('domainModules/specimenService/utilities', () => {
     const cleanedPhysicalUnits = [
       {
         id: '1',
+        storageLocation: {
+          id: '1',
+          type: 'storageLocation',
+        },
         type: 'physicalUnit',
       },
       {
         id: '2',
+        storageLocation: {
+          id: '2',
+          type: 'storageLocation',
+        },
         type: 'physicalUnit',
       },
     ]
 
     const testValue = buildSpecimenBody({
       curatedLocalities,
+      distinguishedUnitTypes,
       featureObservationTypes,
       individualGroup,
       savedPhysicalUnits,
+      storageLocations,
       taxa,
     })
     const expectedResult = {
@@ -97,14 +151,32 @@ describe('domainModules/specimenService/utilities', () => {
             ...individualGroup,
             distinguishedUnits: [
               {
+                distinguishedUnitType: {
+                  category: 'skin',
+                  id: '1',
+                  type: 'distinguishedUnitType',
+                },
                 physicalUnit: {
                   id: '1',
+                  storageLocation: {
+                    id: '1',
+                    type: 'storageLocation',
+                  },
                   type: 'physicalUnit',
                 },
               },
               {
+                distinguishedUnitType: {
+                  category: 'skeleton',
+                  id: '2',
+                  type: 'distinguishedUnitType',
+                },
                 physicalUnit: {
                   id: '2',
+                  storageLocation: {
+                    id: '2',
+                    type: 'storageLocation',
+                  },
                   type: 'physicalUnit',
                 },
               },
@@ -115,11 +187,17 @@ describe('domainModules/specimenService/utilities', () => {
           curatedLocalities: {
             data: curatedLocalities,
           },
+          distinguishedUnitTypes: {
+            data: distinguishedUnitTypes,
+          },
           featureObservationTypes: {
             data: featureObservationTypes,
           },
           physicalUnits: {
             data: cleanedPhysicalUnits,
+          },
+          storageLocations: {
+            data: storageLocations,
           },
           taxa: {
             data: taxa,
