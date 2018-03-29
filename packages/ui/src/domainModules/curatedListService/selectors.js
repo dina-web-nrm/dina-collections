@@ -12,6 +12,13 @@ export const getResources = state => {
   return state.resources
 }
 
+export const getDistinguishedUnitTypes = createSelector(
+  getResources,
+  resources => {
+    return resources.distinguishedUnitTypes
+  }
+)
+
 export const getFeatureObservationTypes = createSelector(
   getResources,
   resources => {
