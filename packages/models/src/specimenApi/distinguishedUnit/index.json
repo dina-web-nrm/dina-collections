@@ -20,8 +20,12 @@
         "$ref": "__ROOT__curatorialAssessment"
       }
     },
+    "description": {
+      "type": "string"
+    },
     "distinguishedUnitType": {
-      "$ref": "__ROOT__distinguishedUnitType"
+      "$ref": "__ROOT__distinguishedUnitType",
+      "x-reference-type": "external"
     },
     "id": {
       "type": "string"

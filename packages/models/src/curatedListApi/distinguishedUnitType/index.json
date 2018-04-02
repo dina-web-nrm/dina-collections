@@ -1,6 +1,12 @@
 {
   "additionalProperties": false,
   "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
     "category": {
       "type": "string",
       "example": "skin"
