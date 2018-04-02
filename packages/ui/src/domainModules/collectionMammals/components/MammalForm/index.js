@@ -122,6 +122,9 @@ class RawMammalForm extends Component {
       submitSucceeded,
       initialValues,
     } = this.props
+
+    const isEditMode = mode === 'edit'
+
     log.render()
     return (
       <Form
@@ -132,12 +135,12 @@ class RawMammalForm extends Component {
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Column>
             <SegmentCatalogNumberIdentifier
-              editMode={mode === 'edit'}
+              editMode={isEditMode}
               formValueSelector={formValueSelector}
             />
             <SegmentTaxon
               changeFieldValue={this.changeFieldValue}
-              editMode={mode === 'edit'}
+              editMode={isEditMode}
               formValueSelector={formValueSelector}
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
               specimenId={specimenId}
@@ -149,7 +152,13 @@ class RawMammalForm extends Component {
               changeFieldValue={this.changeFieldValue}
               mode={mode}
             />
-            <SegmentDistinguishedUnits />
+
+            <SegmentDistinguishedUnits
+              changeFieldValue={this.changeFieldValue}
+              editMode={isEditMode}
+              formValueSelector={formValueSelector}
+              removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+            />
             <SegmentOther readOnly={initialValues.readOnly} />
             <FormActions
               error={error}

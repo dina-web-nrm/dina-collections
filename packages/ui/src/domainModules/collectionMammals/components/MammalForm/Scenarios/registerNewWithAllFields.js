@@ -43,20 +43,49 @@ const mutations = [
     value: 'remarks',
   },
   {
-    name: 'distinguishedUnits.0.alternateIdentifiersText',
-    value: 'alternateIdentifiersText',
+    id: 'new-skeleton',
+    ignore: true,
+    interaction: 'click',
   },
   {
-    name: 'distinguishedUnits.0.physicalUnit.normalStorageLocationText',
-    value: 'normalStorageLocationText',
+    name: 'distinguishedUnits.0.distinguishedUnitType.id.hidden',
+    value: '2',
+  },
+  {
+    name: 'distinguishedUnits.0.description',
+    value: 'description',
+  },
+  {
+    name: 'distinguishedUnits.0.physicalUnit.storageLocation.id.hidden',
+    value: '1',
   },
   {
     name: 'distinguishedUnits.0.physicalUnit.storedUnderTaxonName',
-    value: 'Sorex minutus',
+    value: 'storedUnderTaxonName',
   },
   {
-    name: 'distinguishedUnits.0.physicalUnitText',
-    value: 'physicalUnitText',
+    name: 'distinguishedUnits.0.curatorialAssessments.0.agent',
+    value: 'agent',
+  },
+  {
+    name: 'distinguishedUnits.0.curatorialAssessments.0.condition',
+    value: 'condition',
+  },
+  {
+    name: 'distinguishedUnits.0.curatorialAssessments.0.conditionRemarks',
+    value: 'conditionRemarks',
+  },
+  {
+    name: 'distinguishedUnits.0.curatorialAssessments.0.date',
+    value: 'date',
+  },
+  {
+    name: 'distinguishedUnits.0.curatorialAssessments.0.isInStorage',
+    value: true,
+  },
+  {
+    name: 'distinguishedUnits.0.curatorialAssessments.0.inventoryStatusRemarks',
+    value: 'inventoryStatusRemarks',
   },
   {
     name: 'identifiers.0.publishRecord',
@@ -150,6 +179,12 @@ const expectedOutput = {
     { id: 'Africa', type: 'curatedLocality' },
     { id: 'Algeria', type: 'curatedLocality' },
   ],
+  distinguishedUnitTypes: [
+    {
+      id: '2',
+      type: 'distinguishedUnitType',
+    },
+  ],
   featureObservationTypes: [
     {
       id: '1',
@@ -158,20 +193,39 @@ const expectedOutput = {
   ],
   physicalUnits: [
     {
-      normalStorageLocationText: 'normalStorageLocationText',
-      storedUnderTaxonName: 'Sorex minutus',
+      storageLocation: {
+        id: '1',
+        type: 'storageLocation',
+      },
+      storedUnderTaxonName: 'storedUnderTaxonName',
     },
   ],
   specimen: {
     individualGroup: {
       distinguishedUnits: [
         {
-          alternateIdentifiersText: 'alternateIdentifiersText',
-          physicalUnit: {
-            normalStorageLocationText: 'normalStorageLocationText',
-            storedUnderTaxonName: 'Sorex minutus',
+          curatorialAssessments: [
+            {
+              agent: 'agent',
+              condition: 'condition',
+              conditionRemarks: 'conditionRemarks',
+              date: 'date',
+              inventoryStatusRemarks: 'inventoryStatusRemarks',
+              isInStorage: true, // is set as default in form
+            },
+          ],
+          description: 'description',
+          distinguishedUnitType: {
+            id: '2',
+            type: 'distinguishedUnitType',
           },
-          physicalUnitText: 'physicalUnitText',
+          physicalUnit: {
+            storageLocation: {
+              id: '1',
+              type: 'storageLocation',
+            },
+            storedUnderTaxonName: 'storedUnderTaxonName',
+          },
         },
       ],
       featureObservations: [
@@ -229,6 +283,7 @@ const expectedOutput = {
           },
         },
       ],
+      readOnly: undefined,
       taxonInformation: {
         curatorialName: 'curatorialName',
         determinations: [
@@ -247,7 +302,14 @@ const expectedOutput = {
         taxonRemarks: 'taxonRemarks',
       },
     },
+    readOnly: undefined,
   },
+  storageLocations: [
+    {
+      id: '1',
+      type: 'storageLocation',
+    },
+  ],
   taxa: [
     {
       id: '2367',

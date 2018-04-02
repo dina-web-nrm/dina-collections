@@ -25,9 +25,12 @@ export default function transformOutput(formData) {
     featureObservationTypes,
   } = transformFeatureObservations(formData.featureObservations)
 
-  const { distinguishedUnits, physicalUnits } = transformDistinguishedUnits(
-    formData.distinguishedUnits
-  )
+  const {
+    distinguishedUnits,
+    distinguishedUnitTypes,
+    physicalUnits,
+    storageLocations,
+  } = transformDistinguishedUnits(formData.distinguishedUnits)
 
   const {
     curatedLocalities,
@@ -45,12 +48,14 @@ export default function transformOutput(formData) {
 
   return {
     curatedLocalities,
+    distinguishedUnitTypes,
     featureObservationTypes,
     physicalUnits,
     specimen: {
       individualGroup,
       readOnly: formData.readOnly,
     },
+    storageLocations,
     taxa,
   }
 }

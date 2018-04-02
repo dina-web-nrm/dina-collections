@@ -1,5 +1,5 @@
 const INITIAL_VALUES = {
-  determinations: [{ taxonNameStandardized: '' }],
+  determinations: [{}],
 }
 
 export default function transformDeterminations(determinations) {
