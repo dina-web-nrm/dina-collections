@@ -22,7 +22,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  curatedLocalities: {},
   displayBackButton: false,
   displayResetButton: false,
   error: '',

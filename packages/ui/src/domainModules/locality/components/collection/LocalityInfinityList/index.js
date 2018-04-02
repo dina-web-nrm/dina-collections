@@ -29,7 +29,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  localityId: '',
   onItemClick: undefined,
 }
 

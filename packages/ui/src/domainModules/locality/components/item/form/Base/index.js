@@ -11,7 +11,7 @@ import { ALL } from 'domainModules/localityService/constants'
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
 import FormActions from './FormActions'
 
-const log = createLog('modules:user:EditForm')
+const log = createLog('modules:locality:BaseForm')
 
 const propTypes = {
   displayBackButton: PropTypes.bool,
@@ -43,7 +43,7 @@ const dropdownOptions = groups.map(group => {
   }
 })
 
-export class Edit extends Component {
+export class BaseForm extends Component {
   render() {
     log.render()
     const {
@@ -205,14 +205,12 @@ export class Edit extends Component {
   }
 }
 
-Edit.propTypes = propTypes
-Edit.defaultProps = defaultProps
+BaseForm.propTypes = propTypes
+BaseForm.defaultProps = defaultProps
 
-export const EditForm = reduxForm({
+export default reduxForm({
   destroyOnUnmount: false,
   enableReinitialize: true,
   form: 'EditLocalities',
   validate: formValidator({ model: 'curatedLocality' }),
-})(Edit)
-
-export default EditForm
+})(BaseForm)

@@ -36,13 +36,13 @@ function ThreeColumnGrid({
   log.render()
   return (
     <Grid columns={numberOfColumns}>
-      {left && (
+      {!!left && (
         <Grid.Column textAlign={leftColumnTextAlign}>{left}</Grid.Column>
       )}
-      {center && (
+      {!!center && (
         <Grid.Column textAlign={centerColumnTextAlign}>{center}</Grid.Column>
       )}
-      {right && (
+      {!!right && (
         <Grid.Column textAlign={rightColumnTextAlign}>{right}</Grid.Column>
       )}
     </Grid>
