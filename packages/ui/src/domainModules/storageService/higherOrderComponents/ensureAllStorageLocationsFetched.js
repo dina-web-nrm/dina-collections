@@ -3,10 +3,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import config from 'config'
 import { getStorageLocations as getStorageLocationsAC } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
-export default function ensureAllStorageLocationsFetched(ComposedComponent) {
+const ensureAllStorageLocationsFetched = () => ComposedComponent => {
   const mapStateToProps = state => ({
     allStorageLocationsFetched: globalSelectors.get.allStorageLocationsFetched(
       state
@@ -38,7 +39,11 @@ export default function ensureAllStorageLocationsFetched(ComposedComponent) {
         allStorageLocationsFetched,
         fetchingAllStorageLocations,
       } = this.props
-      if (!allStorageLocationsFetched && !fetchingAllStorageLocations) {
+      if (
+        !config.isTest &&
+        !allStorageLocationsFetched &&
+        !fetchingAllStorageLocations
+      ) {
         this.props.setFetchingAllStorageLocations(true)
         this.props.getStorageLocations().then(() => {
           this.props.setAllStorageLocationsFetched(true)
@@ -66,3 +71,5 @@ export default function ensureAllStorageLocationsFetched(ComposedComponent) {
     FetchAllStorageLocations
   )
 }
+
+export default ensureAllStorageLocationsFetched

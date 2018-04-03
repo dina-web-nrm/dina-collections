@@ -22,13 +22,12 @@ const propTypes = {
 }
 
 const defaultProps = {
-  curatedLocalities: {},
   displayBackButton: false,
   displayResetButton: false,
   error: '',
 }
 
-export class FormControll extends Component {
+export class FormActions extends Component {
   render() {
     log.render()
     const {
@@ -93,7 +92,7 @@ export class FormControll extends Component {
   }
 }
 
-FormControll.propTypes = propTypes
-FormControll.defaultProps = defaultProps
+FormActions.propTypes = propTypes
+FormActions.defaultProps = defaultProps
 
-export default FormControll
+export default FormActions

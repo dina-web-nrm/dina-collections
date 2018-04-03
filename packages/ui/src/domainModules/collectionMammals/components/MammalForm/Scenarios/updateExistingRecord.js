@@ -48,7 +48,6 @@ const featureObservationTypes = {
 const physicalUnits = {
   1: {
     id: '1',
-    storedUnderTaxonName: 'Chironectes minimus',
     type: 'physicalUnit',
   },
 }
@@ -66,6 +65,7 @@ const mutations = [
 ]
 const expectedOutput = {
   curatedLocalities: [],
+  distinguishedUnitTypes: [],
   featureObservationTypes: [
     {
       id: '22',
@@ -75,7 +75,6 @@ const expectedOutput = {
   physicalUnits: [
     {
       id: '1',
-      storedUnderTaxonName: 'Chironectes minimus',
       type: 'physicalUnit',
     },
   ],
@@ -85,7 +84,7 @@ const expectedOutput = {
         {
           physicalUnit: {
             id: '1',
-            storedUnderTaxonName: 'Chironectes minimus',
+            storageLocation: undefined,
             type: 'physicalUnit',
           },
         },
@@ -108,6 +107,7 @@ const expectedOutput = {
         },
       ],
       individualCircumstances: [],
+      readOnly: undefined,
       taxonInformation: {
         determinations: [
           {
@@ -120,7 +120,9 @@ const expectedOutput = {
         ],
       },
     },
+    readOnly: undefined,
   },
+  storageLocations: [],
   taxa: [
     {
       id: '1078',

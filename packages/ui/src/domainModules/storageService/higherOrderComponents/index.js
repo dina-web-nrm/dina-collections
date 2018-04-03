@@ -1,3 +1,4 @@
+import createGetStorageLocationById from './createGetStorageLocationById'
 import ensureAllStorageLocationsFetched from './ensureAllStorageLocationsFetched'
 
-export { ensureAllStorageLocationsFetched }
+export { createGetStorageLocationById, ensureAllStorageLocationsFetched }

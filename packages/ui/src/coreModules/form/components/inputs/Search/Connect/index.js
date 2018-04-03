@@ -47,7 +47,6 @@ const defaultProps = {
   isLoading: true,
   searchQuery: null,
   selectedOption: null,
-  text: undefined,
 }
 
 class ConnectSearchInput extends Component {

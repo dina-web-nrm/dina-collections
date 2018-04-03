@@ -5517,6 +5517,12 @@
       "distinguishedUnitType": {
         "additionalProperties": false,
         "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
           "category": {
             "type": "string",
             "example": "skin"
@@ -5931,6 +5937,9 @@
               "$ref": "#/components/schemas/curatorialAssessment"
             }
           },
+          "description": {
+            "type": "string"
+          },
           "distinguishedUnitType": {
             "$ref": "#/components/schemas/distinguishedUnitType"
           },
@@ -6275,6 +6284,9 @@
             "type": "string"
           },
           "parentId": {
+            "type": "string"
+          },
+          "type": {
             "type": "string"
           }
         },

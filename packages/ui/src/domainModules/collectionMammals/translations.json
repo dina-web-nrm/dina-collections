@@ -416,7 +416,35 @@
       "en": "Alternate identifier(s)",
       "sv": "Alternativa identifierare"
     },
-    "normalStorageLocationText": {
+    "curatorialAssessments": {
+      "en": "Curatorial assessments",
+      "sv": ""
+    },
+    "editCuratorialAssessment": {
+      "en": "Edit curatorial assessment",
+      "sv": ""
+    },
+    "newAssessment": {
+      "en": "New assessment",
+      "sv": ""
+    },
+    "newCuratorialAssessment": {
+      "en": "New curatorial assessment",
+      "sv": ""
+    },
+    "newSkeleton": {
+      "en": "New skeleton",
+      "sv": ""
+    },
+    "newSkin": {
+      "en": "New skin",
+      "sv": ""
+    },
+    "newWetPreparation": {
+      "en": "New wet preparation",
+      "sv": ""
+    },
+    "normalStorageLocation": {
       "en": "Normal storage location",
       "sv": "Reguljär lagringsplats"
     },
@@ -424,9 +452,39 @@
       "en": "Description",
       "sv": "Beskrivning"
     },
+    "preparationType": {
+      "skin": {
+        "en": "Skin preparation types",
+        "sv": ""
+      },
+      "skeleton": {
+        "en": "Skeleton preparation types",
+        "sv": ""
+      },
+      "undefined": {
+        "en": "Preparation type",
+        "sv": ""
+      },
+      "wet-preparation": {
+        "en": "Wet preparation types",
+        "sv": ""
+      }
+    },
+    "skeleton": {
+      "en": "Skeleton",
+      "sv": "Skelett"
+    },
+    "skin": {
+      "en": "Skin",
+      "sv": "Skinn"
+    },
     "storedUnderTaxonName": {
       "en": "Stored under name",
       "sv": "Förvaras under namn"
+    },
+    "wet-preparation": {
+      "en": "Wet preparation",
+      "sv": ""
     }
   },
   "cancel": {
@@ -492,6 +550,14 @@
   "remarks": {
     "en": "Remarks",
     "sv": "Noteringar"
+  },
+  "remove": {
+    "en": "Remove",
+    "sv": "Ta bort"
+  },
+  "reset": {
+    "en": "Reset",
+    "sv": "Återställ"
   },
   "save": {
     "en": "Save",

@@ -261,6 +261,12 @@
   "distinguishedUnitType": {
     "additionalProperties": false,
     "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
       "category": {
         "type": "string",
         "example": "skin"
@@ -689,8 +695,11 @@
           "$ref": "curatorialAssessment"
         }
       },
+      "description": {
+        "type": "string"
+      },
       "distinguishedUnitType": {
-        "$ref": "distinguishedUnitType"
+        "$ref": "externalModelReference"
       },
       "id": {
         "type": "string"
@@ -1063,7 +1072,7 @@
         "example": "Sorex minutus"
       },
       "storageLocation": {
-        "$ref": "storageLocation"
+        "$ref": "externalModelReference"
       },
       "type": {
         "type": "string"
@@ -1093,6 +1102,9 @@
         "type": "string"
       },
       "parentId": {
+        "type": "string"
+      },
+      "type": {
         "type": "string"
       }
     },

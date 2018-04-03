@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react'
+import { Form, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { push } from 'react-router-redux'
@@ -13,9 +13,7 @@ import {
   SubmissionError,
 } from 'redux-form'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
-import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import createLog from 'utilities/log'
-import { createModuleTranslate } from 'coreModules/i18n/components'
 import { MAMMAL_FORM_NAME } from '../../constants'
 import { mammalFormModels } from '../../schemas'
 import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
@@ -24,10 +22,9 @@ import SegmentFeatureObservations from './SegmentFeatureObservations/index'
 import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
 import SegmentDistinguishedUnits from './SegmentDistinguishedUnits'
 import SegmentOther from './SegmentOther'
+import FormActions from './FormActions'
 
 const log = createLog('modules:collectionMammals:MammalForm')
-const ModuleTranslate = createModuleTranslate('collectionMammals')
-
 const FORM_NAME = MAMMAL_FORM_NAME
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
@@ -125,6 +122,9 @@ class RawMammalForm extends Component {
       submitSucceeded,
       initialValues,
     } = this.props
+
+    const isEditMode = mode === 'edit'
+
     log.render()
     return (
       <Form
@@ -135,12 +135,12 @@ class RawMammalForm extends Component {
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Column>
             <SegmentCatalogNumberIdentifier
-              editMode={mode === 'edit'}
+              editMode={isEditMode}
               formValueSelector={formValueSelector}
             />
             <SegmentTaxon
               changeFieldValue={this.changeFieldValue}
-              editMode={mode === 'edit'}
+              editMode={isEditMode}
               formValueSelector={formValueSelector}
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
               specimenId={specimenId}
@@ -152,47 +152,23 @@ class RawMammalForm extends Component {
               changeFieldValue={this.changeFieldValue}
               mode={mode}
             />
-            <SegmentDistinguishedUnits />
-            <SegmentOther readOnly={initialValues.readOnly} />
 
-            <Segment>
-              <div>
-                <Button disabled={submitting} size="large" type="submit">
-                  <ModuleTranslate textKey="save" />
-                </Button>
-                <Button
-                  basic
-                  disabled={pristine || submitting}
-                  onClick={reset}
-                  size="large"
-                >
-                  <ModuleTranslate textKey="cancel" />
-                </Button>
-                <ConnectedFormSchemaError form={FORM_NAME} />
-                {invalid &&
-                  !error &&
-                  submitFailed && (
-                    <Message
-                      error
-                      header={<ModuleTranslate textKey="formContainsErrors" />}
-                    />
-                  )}
-                {submitFailed &&
-                  error && (
-                    <Message
-                      content={error}
-                      error
-                      header={<ModuleTranslate textKey="submitFailed" />}
-                    />
-                  )}
-                {submitSucceeded && (
-                  <Message
-                    header={<ModuleTranslate textKey="saved" />}
-                    success
-                  />
-                )}
-              </div>
-            </Segment>
+            <SegmentDistinguishedUnits
+              changeFieldValue={this.changeFieldValue}
+              editMode={isEditMode}
+              formValueSelector={formValueSelector}
+              removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+            />
+            <SegmentOther readOnly={initialValues.readOnly} />
+            <FormActions
+              error={error}
+              invalid={invalid}
+              pristine={pristine}
+              reset={reset}
+              submitFailed={submitFailed}
+              submitSucceeded={submitSucceeded}
+              submitting={submitting}
+            />
           </Grid.Column>
         </Grid>
       </Form>

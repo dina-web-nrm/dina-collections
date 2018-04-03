@@ -20,7 +20,8 @@
       "example": "Sorex minutus"
     },
     "storageLocation": {
-      "$ref": "__ROOT__storageLocation"
+      "$ref": "__ROOT__storageLocation",
+      "x-reference-type": "external"
     },
     "type": {
       "type": "string"

@@ -5,7 +5,7 @@ module.exports = function loadInitialData({ models }) {
   const featureTypes = readInitialData('featureTypes', { isJson: false })
 
   const featureObservationTypeItems = !featureTypes
-    ? Promise.resolve()
+    ? null
     : featureTypes.map((featureType, index) => {
         return {
           doc: featureType,
@@ -14,7 +14,7 @@ module.exports = function loadInitialData({ models }) {
       })
 
   const distinguishedUnitTypeItems = !distinguishedUnitTypes
-    ? Promise.resolve()
+    ? null
     : distinguishedUnitTypes.map(distinguishedUnitType => {
         const { id, ...rest } = distinguishedUnitType
         return {
@@ -23,8 +23,16 @@ module.exports = function loadInitialData({ models }) {
         }
       })
 
+  const featureObservationTypeItemsPromise = featureObservationTypeItems
+    ? models.featureObservationType.bulkCreate(featureObservationTypeItems)
+    : Promise.resolve()
+
+  const distinguishedUnitTypeItemsPromise = distinguishedUnitTypeItems
+    ? models.distinguishedUnitType.bulkCreate(distinguishedUnitTypeItems)
+    : Promise.resolve()
+
   return Promise.all([
-    models.featureObservationType.bulkCreate(featureObservationTypeItems),
-    models.distinguishedUnitType.bulkCreate(distinguishedUnitTypeItems),
+    featureObservationTypeItemsPromise,
+    distinguishedUnitTypeItemsPromise,
   ])
 }

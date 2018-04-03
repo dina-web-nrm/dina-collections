@@ -75,6 +75,6 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  createGetCuratedLocalityById,
+  createGetCuratedLocalityById(),
   connect(null, mapDispatchToProps)
 )(Edit)

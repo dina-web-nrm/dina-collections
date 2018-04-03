@@ -31,3 +31,7 @@ export const GET_STORAGE_LOCATIONS = createEndpoint({
 export const UPDATE_STORAGE_LOCATION = createEndpoint({
   operationId: 'updateStorageLocation',
 })
+
+export const UPDATE_PHYSICAL_UNIT_STORAGE_LOCATION = createEndpoint({
+  operationId: 'updatePhysicalUnitStorageLocation',
+})
