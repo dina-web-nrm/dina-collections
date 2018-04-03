@@ -1,4 +1,4 @@
-import { FEATURE_OBSERVATION_TYPE } from 'domainModules/curatedListService/constants'
+import { FEATURE_OBSERVATION_TYPE } from 'dataModules/curatedListService/constants'
 
 export default function transformFeatureObservations(featureObservations = {}) {
   let featureObservationTypes = []

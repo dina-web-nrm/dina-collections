@@ -4,8 +4,8 @@ import ReactList from 'react-list'
 import { Button, Icon, Item } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
-import { getCuratedLocalities as getCuratedLocalitiesAc } from 'domainModules/localityService/actionCreators'
+import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
+import { getCuratedLocalities as getCuratedLocalitiesAc } from 'dataModules/localityService/actionCreators'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
 
 const mapStateToProps = state => {

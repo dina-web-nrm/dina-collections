@@ -6,7 +6,7 @@ import transformOutput from 'domainModules/collectionMammals/components/MammalFo
 
 import createLog from 'utilities/log'
 import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
-import { actionCreators as specimenActionCreators } from 'domainModules/specimenService'
+import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const log = createLog('modules:editMammal:Component')

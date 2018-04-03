@@ -8,10 +8,10 @@ import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
 import { FIRST_EXPANDED, ALL_COLLAPSED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { ensureAllStorageLocationsFetched } from 'domainModules/storageService/higherOrderComponents'
-import { ensureAllDistinguishedUnitTypesFetched } from 'domainModules/curatedListService/higherOrderComponents'
+import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
+import { ensureAllDistinguishedUnitTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { getStorageLocations } from 'domainModules/storageService/actionCreators'
+import { getStorageLocations } from 'dataModules/storageService/actionCreators'
 import {
   SKELETON,
   SKIN,

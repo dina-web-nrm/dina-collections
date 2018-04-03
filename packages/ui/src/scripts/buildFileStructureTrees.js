@@ -24,6 +24,11 @@ const trees = [
   },
   {
     levels: 4,
+    name: 'dataModules',
+    rootRelativePath: './src/dataModules',
+  },
+  {
+    levels: 4,
     name: 'domainModules',
     rootRelativePath: './src/domainModules',
   },

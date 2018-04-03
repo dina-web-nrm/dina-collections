@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { List } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
-import { ensureAllLocalitiesFetched } from 'domainModules/localityService/higherOrderComponents'
+import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
+import { ensureAllLocalitiesFetched } from 'dataModules/localityService/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,

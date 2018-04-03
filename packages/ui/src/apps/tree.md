@@ -48,6 +48,12 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
+│       ├── manageLocalities
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   ├── index.js
+│       │   └── translations.json
 │       ├── pageNotFound
 │       │   ├── Async.js
 │       │   ├── Component.js
@@ -86,5 +92,6 @@
 [root](../../tree.md)
 [src](../tree.md)
 [coreModules](../coreModules/tree.md)
+[dataModules](../dataModules/tree.md)
 [domainModules](../domainModules/tree.md)
 [collectionsUi viewModules](collectionsUi/viewModules/tree.md)

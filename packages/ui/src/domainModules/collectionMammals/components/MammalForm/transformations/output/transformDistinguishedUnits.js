@@ -1,8 +1,8 @@
-import { DISTINGUISHED_UNIT_TYPE } from 'domainModules/curatedListService/constants'
+import { DISTINGUISHED_UNIT_TYPE } from 'dataModules/curatedListService/constants'
 import {
   PHYSICAL_UNIT,
   STORAGE_LOCATION,
-} from 'domainModules/storageService/constants'
+} from 'dataModules/storageService/constants'
 
 export default function transformDistinguishedUnits(distinguishedUnits = []) {
   const distinguishedUnitTypes = []

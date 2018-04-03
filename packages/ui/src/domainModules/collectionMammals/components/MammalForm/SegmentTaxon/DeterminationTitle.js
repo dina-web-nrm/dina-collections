@@ -7,7 +7,7 @@ import { Icon } from 'semantic-ui-react'
 import createLog from 'utilities/log'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
-import taxonSelectors from 'domainModules/taxonService/globalSelectors'
+import taxonSelectors from 'dataModules/taxonService/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(

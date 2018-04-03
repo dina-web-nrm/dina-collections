@@ -8,7 +8,7 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
 } from 'domainModules/locality/keyObjectModule'
 
-import globalSelectors from 'domainModules/localityService/globalSelectors'
+import globalSelectors from 'dataModules/localityService/globalSelectors'
 
 const mapStateToProps = state => {
   const parentFilterId = keyObjectGlobalSelectors.get['filter.parentId'](state)

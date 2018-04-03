@@ -4,11 +4,11 @@ import { Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import localityServiceSelectors from 'domainModules/localityService/globalSelectors'
+import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
 import {
   createGetCuratedLocalityById,
   ensureAllLocalitiesFetched,
-} from 'domainModules/localityService/higherOrderComponents'
+} from 'dataModules/localityService/higherOrderComponents'
 
 const mapStateToProps = (state, ownProps) => {
   const { curatedLocality } = ownProps

@@ -10,9 +10,7 @@
 │   ├── coverage-final.json
 │   ├── lcov-report
 │   └── lcov.info
-├── ideas.md
 ├── nginx.conf
-├── notes\ refactor
 ├── package.json
 ├── public
 │   ├── favicon.ico
@@ -22,6 +20,7 @@
 │   ├── apps
 │   ├── config
 │   ├── coreModules
+│   ├── dataModules
 │   ├── domainModules
 │   ├── index.js
 │   ├── mock
@@ -45,5 +44,6 @@
 [src](src/tree.md)
 [apps](src/apps/tree.md)
 [coreModules](src/coreModules/tree.md)
+[dataModules](src/dataModules/tree.md)
 [domainModules](src/domainModules/tree.md)
 [collectionsUi viewModules](src/apps/collectionsUi/viewModules/tree.md)

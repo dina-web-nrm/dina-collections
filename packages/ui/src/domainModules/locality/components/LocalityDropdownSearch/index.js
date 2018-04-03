@@ -11,9 +11,9 @@ import {
   COUNTRY,
   DISTRICT,
   PROVINCE,
-} from 'domainModules/localityService/constants'
-import localitySelectors from 'domainModules/localityService/globalSelectors'
-import { ensureAllLocalitiesFetched } from 'domainModules/localityService/higherOrderComponents'
+} from 'dataModules/localityService/constants'
+import localitySelectors from 'dataModules/localityService/globalSelectors'
+import { ensureAllLocalitiesFetched } from 'dataModules/localityService/higherOrderComponents'
 import {
   actionCreators,
   globalSelectors,

@@ -6,13 +6,7 @@ export default createAsyncView({
     return [
       import('coreModules/form'),
       import('domainModules/locality'),
-      import('domainModules/curatedListService'),
-      import('domainModules/identifierService'),
-      import('domainModules/localityService'),
-      import('domainModules/specimenService'),
       import('domainModules/storage'),
-      import('domainModules/storageService'),
-      import('domainModules/taxonService'),
       import('domainModules/collectionMammals'),
     ]
   },

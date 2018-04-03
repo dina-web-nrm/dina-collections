@@ -51,6 +51,12 @@
 │   ├── constants.js
 │   ├── index.js
 │   └── translations.json
+├── manageLocalities
+│   ├── Async.js
+│   ├── Component.js
+│   ├── constants.js
+│   ├── index.js
+│   └── translations.json
 ├── pageNotFound
 │   ├── Async.js
 │   ├── Component.js
@@ -92,4 +98,5 @@
 [src](../../../tree.md)
 [apps](../../tree.md)
 [coreModules](../../../coreModules/tree.md)
+[dataModules](../../../dataModules/tree.md)
 [domainModules](../../../domainModules/tree.md)
