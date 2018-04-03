@@ -461,6 +461,10 @@
         "en": "Skeleton preparation types",
         "sv": ""
       },
+      "undefined": {
+        "en": "Preparation type",
+        "sv": ""
+      },
       "wet-preparation": {
         "en": "Wet preparation types",
         "sv": ""

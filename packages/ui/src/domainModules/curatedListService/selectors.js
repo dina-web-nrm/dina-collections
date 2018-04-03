@@ -19,6 +19,11 @@ export const getDistinguishedUnitTypes = createSelector(
   }
 )
 
+export const getDistinguishedUnitType = (state, id) => {
+  const distinguishedUnitTypes = getDistinguishedUnitTypes(state)
+  return distinguishedUnitTypes[id]
+}
+
 export const getFeatureObservationTypes = createSelector(
   getResources,
   resources => {

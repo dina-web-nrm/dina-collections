@@ -59,6 +59,23 @@ const getDistinguishedUnitTypeOptions = (state, category) => {
     case WET_PREPARATION: {
       return getDropdownWetPreparationOptions(state)
     }
+    case 'undefined': {
+      // fallback in edge case to show all options
+      return [
+        ...getDropdownSkeletonOptions(state).map(option => ({
+          ...option,
+          text: `${SKELETON}—${option.text}`,
+        })),
+        ...getDropdownSkinOptions(state).map(option => ({
+          ...option,
+          text: `${SKIN}—${option.text}`,
+        })),
+        ...getDropdownWetPreparationOptions(state).map(option => ({
+          ...option,
+          text: `${WET_PREPARATION}—${option.text}`,
+        })),
+      ]
+    }
     default: {
       throw new Error(`unknown distinguishedUnitType category: ${category}`)
     }

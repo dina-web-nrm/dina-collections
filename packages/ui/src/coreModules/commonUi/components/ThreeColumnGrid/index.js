@@ -16,11 +16,11 @@ const propTypes = {
 }
 const defaultProps = {
   center: undefined,
-  centerColumnTextAlign: 'center',
+  centerColumnTextAlign: 'left',
   left: undefined,
   leftColumnTextAlign: 'left',
   right: undefined,
-  rightColumnTextAlign: 'right',
+  rightColumnTextAlign: 'left',
 }
 
 function ThreeColumnGrid({
@@ -31,20 +31,18 @@ function ThreeColumnGrid({
   right,
   rightColumnTextAlign,
 }) {
-  const numberOfColumns = [left, center, right].filter(func => !!func).length
-
   log.render()
   return (
-    <Grid columns={numberOfColumns}>
-      {!!left && (
-        <Grid.Column textAlign={leftColumnTextAlign}>{left}</Grid.Column>
-      )}
-      {!!center && (
-        <Grid.Column textAlign={centerColumnTextAlign}>{center}</Grid.Column>
-      )}
-      {!!right && (
-        <Grid.Column textAlign={rightColumnTextAlign}>{right}</Grid.Column>
-      )}
+    <Grid columns={3}>
+      <Grid.Column textAlign={leftColumnTextAlign}>
+        {!!left && left}
+      </Grid.Column>
+      <Grid.Column textAlign={centerColumnTextAlign}>
+        {!!center && center}
+      </Grid.Column>
+      <Grid.Column textAlign={rightColumnTextAlign}>
+        {!!right && right}
+      </Grid.Column>
     </Grid>
   )
 }

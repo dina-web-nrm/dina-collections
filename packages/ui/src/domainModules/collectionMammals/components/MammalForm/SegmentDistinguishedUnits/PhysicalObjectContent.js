@@ -8,6 +8,7 @@ import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { StorageLocationSearch } from 'domainModules/storage/components'
+import { createGetDistinguishedUnitTypeById } from 'domainModules/curatedListService/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
 import {
   SKELETON,
@@ -21,13 +22,14 @@ const log = createLog(
   'modules:collectionMammals:MammalForm:PhysicalObjectContent'
 )
 
-const mapStateToProps = (state, { distinguishedUnitType }) => {
-  const { category } = distinguishedUnitType || {}
-
+const mapStateToProps = (state, { distinguishedUnitType, category }) => {
   return {
-    distinguishedUnitTypeOptions:
-      category &&
-      curatedListSelectors.getDistinguishedUnitTypeOptions(state, category),
+    distinguishedUnitTypeOptions: curatedListSelectors.getDistinguishedUnitTypeOptions(
+      state,
+      (distinguishedUnitType && distinguishedUnitType.category) ||
+        category ||
+        'undefined'
+    ),
   }
 }
 
@@ -35,7 +37,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.array,
   distinguishedUnitType: PropTypes.shape({
-    category: PropTypes.oneOf([SKELETON, SKIN, WET_PREPARATION]).isRequired,
+    category: PropTypes.oneOf([SKELETON, SKIN, WET_PREPARATION]),
   }),
   distinguishedUnitTypeOptions: PropTypes.array,
   getPath: PropTypes.func.isRequired,
@@ -59,10 +61,6 @@ function PhysicalObjectContent({
   i18n: { moduleTranslate },
   removeArrayFieldByIndex,
 }) {
-  if (!distinguishedUnitType || !distinguishedUnitType.category) {
-    return null
-  }
-
   log.render()
   return (
     <Grid textAlign="left" verticalAlign="top">
@@ -72,7 +70,9 @@ function PhysicalObjectContent({
             autoComplete="off"
             component={DropdownSearch}
             label={moduleTranslate({
-              textKey: `preparationType.${distinguishedUnitType.category}`,
+              textKey: `preparationType.${(distinguishedUnitType &&
+                distinguishedUnitType.category) ||
+                'undefined'}`,
             })}
             module="collectionMammals"
             name={getPath('distinguishedUnitType.id')}
@@ -118,6 +118,7 @@ PhysicalObjectContent.propTypes = propTypes
 PhysicalObjectContent.defaultProps = defaultProps
 
 export default compose(
+  createGetDistinguishedUnitTypeById('distinguishedUnitTypeId'),
   connect(mapStateToProps),
   withI18n({
     module: 'collectionMammals',

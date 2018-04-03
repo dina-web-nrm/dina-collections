@@ -15,13 +15,17 @@ export default function transformDistinguishedUnits(distinguishedUnits = []) {
 
     const mappedDistinguishedUnit = { ...distinguishedUnit }
 
-    if (distinguishedUnitType && distinguishedUnitType.id) {
-      const mappedDistinguishedUnitType = {
-        id: distinguishedUnitType.id,
-        type: DISTINGUISHED_UNIT_TYPE,
+    if (distinguishedUnitType) {
+      if (distinguishedUnitType.id) {
+        const mappedDistinguishedUnitType = {
+          id: distinguishedUnitType.id,
+          type: DISTINGUISHED_UNIT_TYPE,
+        }
+        distinguishedUnitTypes.push(mappedDistinguishedUnitType)
+        mappedDistinguishedUnit.distinguishedUnitType = mappedDistinguishedUnitType
+      } else {
+        delete mappedDistinguishedUnit.distinguishedUnitType
       }
-      distinguishedUnitTypes.push(mappedDistinguishedUnitType)
-      mappedDistinguishedUnit.distinguishedUnitType = mappedDistinguishedUnitType
     }
 
     if (physicalUnit) {

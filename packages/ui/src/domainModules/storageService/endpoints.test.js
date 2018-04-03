@@ -9,6 +9,7 @@ const expectedKeys = [
   'GET_STORAGE_LOCATIONS',
   'UPDATE_PHYSICAL_UNIT',
   'UPDATE_STORAGE_LOCATION',
+  'UPDATE_PHYSICAL_UNIT_STORAGE_LOCATION',
 ]
 
 describe('domainModules/storageService/endpoints', () => {

@@ -79,14 +79,33 @@ class SegmentDistinguishedUnits extends PureComponent {
                   renderContent={props => {
                     return (
                       <PhysicalObjectContent
+                        category={
+                          props.distinguishedUnitType &&
+                          props.distinguishedUnitType.category
+                        }
                         changeFieldValue={changeFieldValue}
-                        distinguishedUnitType={props.distinguishedUnitType}
+                        distinguishedUnitTypeId={
+                          props.distinguishedUnitType &&
+                          props.distinguishedUnitType.id
+                        }
                         removeArrayFieldByIndex={removeArrayFieldByIndex}
                         {...props}
                       />
                     )
                   }}
-                  renderTitle={props => <PhysicalObjectTitle {...props} />}
+                  renderTitle={props => (
+                    <PhysicalObjectTitle
+                      category={
+                        props.distinguishedUnitType &&
+                        props.distinguishedUnitType.category
+                      }
+                      distinguishedUnitTypeId={
+                        props.distinguishedUnitType &&
+                        props.distinguishedUnitType.id
+                      }
+                      {...props}
+                    />
+                  )}
                 />
               </Grid.Column>
             )}

@@ -6255,7 +6255,7 @@
             "example": "Sorex minutus"
           },
           "storageLocation": {
-            "$ref": "#/components/schemas/storageLocation"
+            "$ref": "#/components/schemas/externalModelReference"
           },
           "type": {
             "type": "string"

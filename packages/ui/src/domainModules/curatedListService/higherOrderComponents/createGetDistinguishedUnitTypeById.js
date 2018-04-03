@@ -6,46 +6,46 @@ import { compose } from 'redux'
 import objectPath from 'object-path'
 
 import config from 'config'
-import localityServiceSelectors from '../globalSelectors'
-import { getStorageLocation as getStorageLocationAc } from '../actionCreators'
+import curatedListServiceSelectors from '../globalSelectors'
+import { getDistinguishedUnitType as getDistinguishedUnitTypeAc } from '../actionCreators'
 
-const createGetStorageLocationById = (
+const createGetDistinguishedUnitTypeById = (
   idPath = 'itemId'
 ) => ComposedComponent => {
   const mapStateToProps = (state, ownProps) => {
     const itemId = objectPath.get(ownProps, idPath)
     return {
-      itemId,
-      storageLocation: !itemId
+      distinguishedUnitType: !itemId
         ? null
-        : localityServiceSelectors.getStorageLocation(state, itemId),
+        : curatedListServiceSelectors.getDistinguishedUnitType(state, itemId),
+      itemId,
     }
   }
 
   const mapDispathToProps = {
-    getStorageLocation: getStorageLocationAc,
+    getDistinguishedUnitType: getDistinguishedUnitTypeAc,
   }
 
   const propTypes = {
     allLocalitiesFetched: PropTypes.bool,
-    getStorageLocation: PropTypes.func.isRequired,
+    distinguishedUnitType: PropTypes.object,
+    getDistinguishedUnitType: PropTypes.func.isRequired,
     itemId: PropTypes.string,
-    storageLocation: PropTypes.object,
   }
 
   const defaultProps = {
     allLocalitiesFetched: undefined,
+    distinguishedUnitType: null,
     itemId: '',
-    storageLocation: null,
   }
 
-  class GetStorageLocationById extends Component {
+  class GetDistinguishedUnitTypeById extends Component {
     componentDidMount() {
       const { allLocalitiesFetched } = this.props
       if (!config.isTest && allLocalitiesFetched === undefined) {
         const { itemId } = this.props
         if (itemId) {
-          this.props.getStorageLocation({ id: itemId })
+          this.props.getDistinguishedUnitType({ id: itemId })
         }
       }
     }
@@ -57,27 +57,30 @@ const createGetStorageLocationById = (
         nextProps.allLocalitiesFetched === true
       ) {
         if (itemId) {
-          this.props.getStorageLocation({ id: itemId })
+          this.props.getDistinguishedUnitType({ id: itemId })
         }
       }
 
       if (nextProps.itemId && nextProps.itemId !== itemId) {
-        this.props.getStorageLocation({ id: nextProps.itemId })
+        this.props.getDistinguishedUnitType({ id: nextProps.itemId })
       }
     }
     render() {
-      const { storageLocation } = this.props
+      const { distinguishedUnitType } = this.props
       return (
-        <ComposedComponent storageLocation={storageLocation} {...this.props} />
+        <ComposedComponent
+          distinguishedUnitType={distinguishedUnitType}
+          {...this.props}
+        />
       )
     }
   }
 
-  GetStorageLocationById.propTypes = propTypes
-  GetStorageLocationById.defaultProps = defaultProps
+  GetDistinguishedUnitTypeById.propTypes = propTypes
+  GetDistinguishedUnitTypeById.defaultProps = defaultProps
   return compose(connect(mapStateToProps, mapDispathToProps))(
-    GetStorageLocationById
+    GetDistinguishedUnitTypeById
   )
 }
 
-export default createGetStorageLocationById
+export default createGetDistinguishedUnitTypeById
