@@ -77,7 +77,6 @@
                 },
                 "coordinatesVerbatim": "string",
                 "georeferenceSourcesText": "string",
-                "localityText": "string",
                 "remarks": "string",
                 "localityVerbatim": "string"
               }
@@ -160,7 +159,6 @@
                   },
                   "coordinatesVerbatim": "string",
                   "georeferenceSourcesText": "string",
-                  "localityText": "string",
                   "remarks": "string",
                   "localityVerbatim": "string"
                 }
