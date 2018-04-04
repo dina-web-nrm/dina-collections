@@ -1,10 +1,7 @@
-const tryImport = () => {
-  return import('./globalSelectors')
-}
+import globalSelectors from './globalSelectors'
 
 describe('dataModules/curatedListService/globalSelectors', () => {
-  it('imports without error', () => {
-    expect.assertions(1)
-    return expect(tryImport()).resolves.toBeTruthy()
+  it('returns object', () => {
+    return expect(typeof globalSelectors).toEqual('object')
   })
 })

@@ -1,13 +1,18 @@
 import { createSelector } from 'reselect'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import listSelectors from 'dataModules/curatedListService/globalSelectors'
+import curatedListServiceSelectors from 'dataModules/curatedListService/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
 import { SKELETON, SKIN, WET_PREPARATION } from './constants'
 
+const {
+  getDistinguishedUnitTypes,
+  getFeatureObservationTypes,
+} = curatedListServiceSelectors
+
 const createDropdownSelector = (categoryFilter, numberOfResults) => {
   return createSelector(
-    [listSelectors.getDistinguishedUnitTypes, getSecondArgument],
+    [getDistinguishedUnitTypes, getSecondArgument],
     (distinguishedUnitTypes, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
       const mappedDistinguishedUnitTypes = Object.values(distinguishedUnitTypes)
@@ -82,9 +87,57 @@ const getDistinguishedUnitTypeOptions = (state, category) => {
   }
 }
 
+const getGroupedFeatureObservationTypeIds = createSelector(
+  getFeatureObservationTypes,
+  featureObservationTypes => {
+    return Object.values(featureObservationTypes).reduce(
+      (groupToIdsMap, { id, group }) => {
+        return {
+          ...groupToIdsMap,
+          [group]: groupToIdsMap[group] ? [...groupToIdsMap[group], id] : [id],
+        }
+      },
+      {}
+    )
+  }
+)
+
+const getFeatureObservationTypesInGroups = createSelector(
+  [
+    getFeatureObservationTypes,
+    getGroupedFeatureObservationTypeIds,
+    (_, groups) => (groups ? groups.join() : ''),
+  ],
+  (featureObservationTypes, groupToIdsMap, groupsString) => {
+    return groupsString.split(',').reduce((arr, group) => {
+      const featureObservationTypeIds = groupToIdsMap[group]
+
+      const groupFeatureObservationTypes =
+        featureObservationTypeIds &&
+        featureObservationTypeIds.map(id => {
+          return featureObservationTypes[id]
+        })
+
+      return groupFeatureObservationTypes
+        ? [...arr, ...groupFeatureObservationTypes]
+        : arr
+    }, [])
+  }
+)
+
+const getNumberOfFeatureObservationTypesInGroups = createSelector(
+  getFeatureObservationTypesInGroups,
+  featureObservationTypes => {
+    return featureObservationTypes.length
+  }
+)
+
 export default {
   getDistinguishedUnitTypeOptions,
   getDropdownSkeletonOptions,
   getDropdownSkinOptions,
   getDropdownWetPreparationOptions,
+  getFeatureObservationTypesInGroups,
+  getGroupedFeatureObservationTypeIds,
+  getNumberOfFeatureObservationTypesInGroups,
 }

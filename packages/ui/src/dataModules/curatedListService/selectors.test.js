@@ -2,11 +2,8 @@ import {
   getLocalState,
   getResources,
   getFeatureObservationType,
-  getGroupedFeatureObservationTypeIds,
   getFeatureObservationTypes,
-  getFeatureObservationTypesInGroups,
   getHasFeatureObservationTypes,
-  getNumberOfFeatureObservationTypesInGroups,
 } from './selectors'
 
 describe('dataModules/curatedListService/selectors', () => {
@@ -116,53 +113,6 @@ describe('dataModules/curatedListService/selectors', () => {
           resources: { featureObservationTypes: {} },
         })
       ).toEqual(false)
-    })
-  })
-  describe('getGroupedFeatureObservationTypeIds', () => {
-    it('returns featureObservationTypeIds by group', () => {
-      const expectedResult = {
-        age: ['a'],
-        'age-stage': ['c'],
-        sex: ['b'],
-      }
-
-      expect(getGroupedFeatureObservationTypeIds(state)).toEqual(expectedResult)
-    })
-    it('returns same (===) result both times', () => {
-      expect(getGroupedFeatureObservationTypeIds(state)).toBe(
-        getGroupedFeatureObservationTypeIds(state)
-      )
-    })
-  })
-  describe('getFeatureObservationTypesInGroups', () => {
-    it('returns featureObservationTypes in provided groups', () => {
-      const expectedResult = [
-        state.resources.featureObservationTypes.a,
-        state.resources.featureObservationTypes.c,
-      ]
-
-      expect(
-        getFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toEqual(expectedResult)
-    })
-    it('returns same (===) result both times', () => {
-      expect(
-        getFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toBe(getFeatureObservationTypesInGroups(state, ['age', 'age-stage']))
-    })
-  })
-  describe('getNumberOfFeatureObservationTypesInGroups', () => {
-    it('returns numberOfFeatureObservationTypes in provided groups', () => {
-      expect(
-        getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toEqual(2)
-    })
-    it('returns same (===) result both times', () => {
-      expect(
-        getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toBe(
-        getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      )
     })
   })
 })
