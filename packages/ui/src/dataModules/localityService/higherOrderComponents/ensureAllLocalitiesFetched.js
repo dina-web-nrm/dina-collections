@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+
+import config from 'config'
 import { getCuratedLocalities as getCuratedLocalitiesAc } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
@@ -29,7 +31,7 @@ const ensureAllLocalitiesFetched = () => ComposedComponent => {
   class FetchAllLocalities extends Component {
     componentDidMount() {
       const { allLocalitiesFetched, fetchingAllLocalities } = this.props
-      if (!allLocalitiesFetched && !fetchingAllLocalities) {
+      if (!config.isTest && !allLocalitiesFetched && !fetchingAllLocalities) {
         this.props.setFetchingAllLocalities(true)
         this.props
           .getCuratedLocalities({

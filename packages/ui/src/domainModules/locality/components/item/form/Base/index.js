@@ -7,8 +7,14 @@ import formValidator from 'common/es5/error/validators/formValidator'
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
-import { ALL } from 'dataModules/localityService/constants'
-import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
+import LocalityDropdownSearch from '../../../../components/LocalityDropdownSearch'
+import {
+  ALL,
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  PROVINCE,
+} from '../../../../constants'
 import FormActions from './FormActions'
 
 const log = createLog('modules:locality:BaseForm')
@@ -34,7 +40,7 @@ const defaultProps = {
   error: '',
 }
 
-const groups = ['continent', 'country', 'district', 'province']
+const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
 
 const dropdownOptions = groups.map(group => {
   return {

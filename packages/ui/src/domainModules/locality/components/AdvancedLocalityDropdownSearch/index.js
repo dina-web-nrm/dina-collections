@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Modal, Button } from 'semantic-ui-react'
-import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
-import CreateBlock from 'domainModules/locality/components/LocalityManager/blocks/Item/Create'
-import CollectionBlock from 'domainModules/locality/components/LocalityManager/blocks/Collection'
 import { change } from 'redux-form'
+
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
@@ -14,7 +12,10 @@ import {
   SET_COLLECTION_TREE,
   SET_ITEM_CREATE,
   SET_ITEM_INSPECT,
-} from 'domainModules/locality/interactions'
+} from '../../interactions'
+import LocalityDropdownSearch from '../LocalityDropdownSearch'
+import CreateBlock from '../LocalityManager/blocks/Item/Create'
+import CollectionBlock from '../LocalityManager/blocks/Collection'
 
 const mapDispatchToProps = {
   change,

@@ -1,0 +1,5 @@
+export const ALL = 'all'
+export const CONTINENT = 'continent'
+export const COUNTRY = 'country'
+export const DISTRICT = 'district'
+export const PROVINCE = 'province'

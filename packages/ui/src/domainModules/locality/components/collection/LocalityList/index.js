@@ -8,8 +8,9 @@ import { ensureAllLocalitiesFetched } from 'dataModules/localityService/higherOr
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
-} from 'domainModules/locality/keyObjectModule'
-import { ITEM_CLICK } from 'domainModules/locality/interactions'
+} from '../../../keyObjectModule'
+import localitySelectors from '../../../globalSelectors'
+import { ITEM_CLICK } from '../../../interactions'
 import ListItem from './ListItem'
 
 const mapStateToProps = state => {
@@ -19,7 +20,7 @@ const mapStateToProps = state => {
     filterParentId &&
     localityServiceSelectors.getCuratedLocality(state, filterParentId)
 
-  const curatedLocalities = localityServiceSelectors.getCuratedLocalitiesArrayByFilter(
+  const curatedLocalities = localitySelectors.getCuratedLocalitiesArrayByFilter(
     state,
     filter
   )

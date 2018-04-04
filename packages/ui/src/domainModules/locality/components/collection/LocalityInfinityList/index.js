@@ -4,14 +4,14 @@ import ReactList from 'react-list'
 import { Button, Icon, Item } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
 import { getCuratedLocalities as getCuratedLocalitiesAc } from 'dataModules/localityService/actionCreators'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
+import localitySelectors from '../../../globalSelectors'
 
 const mapStateToProps = state => {
   const filter = keyObjectGlobalSelectors.get.filter(state)
   return {
-    curatedLocalities: localityServiceSelectors.getCuratedLocalitiesArrayByFilter(
+    curatedLocalities: localitySelectors.getCuratedLocalitiesArrayByFilter(
       state,
       filter
     ),

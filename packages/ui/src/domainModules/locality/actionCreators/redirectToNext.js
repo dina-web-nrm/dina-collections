@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux'
-import globalSelectors from 'dataModules/localityService/globalSelectors'
+import globalSelectors from '../globalSelectors'
 
 export default function redirectToNext(currentId) {
   return (dispatch, getState) => {
