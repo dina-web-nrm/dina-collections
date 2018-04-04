@@ -12,8 +12,8 @@ import {
   Input,
 } from 'coreModules/form/components'
 
-import { TaxonNameSearchInputWithResults } from 'domainModules/taxonService/components'
-import taxonSelectors from 'domainModules/taxonService/globalSelectors'
+import { TaxonNameSearchInputWithResults } from 'dataModules/taxonService/components'
+import taxonSelectors from 'dataModules/taxonService/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(

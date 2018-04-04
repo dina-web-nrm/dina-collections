@@ -66,6 +66,8 @@
 │   │   └── toggleLeftSidebar.js
 │   ├── actionTypes.js
 │   ├── components
+│   │   ├── Accordion
+│   │   │   └── index.js
 │   │   ├── Footer.js
 │   │   ├── Footer.stories.js
 │   │   ├── InformationSidebar
@@ -77,6 +79,8 @@
 │   │   ├── NavigationSidebar.stories.js
 │   │   ├── PageTemplate.js
 │   │   ├── PageTemplate.stories.js
+│   │   ├── ThreeColumnGrid
+│   │   │   └── index.js
 │   │   ├── TranslatedLabel.js
 │   │   ├── TranslatedLabel.stories.js
 │   │   ├── ViewWrap.js
@@ -142,12 +146,14 @@
 │   │   │   └── index.js
 │   │   ├── fields
 │   │   │   ├── Checkbox
+│   │   │   ├── CustomData
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   └── Search
 │   │   ├── index.js
 │   │   ├── inputs
 │   │   │   ├── Checkbox
+│   │   │   ├── CustomData
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   └── Search
@@ -232,6 +238,23 @@
 │   ├── shortcuts.js
 │   ├── translations.json
 │   └── utilities.js
+├── layout
+│   ├── components
+│   │   ├── Block
+│   │   │   ├── Content
+│   │   │   ├── Header
+│   │   │   └── index.js
+│   │   ├── Layout
+│   │   │   ├── index.js
+│   │   │   └── views
+│   │   └── index.js
+│   ├── constants.js
+│   ├── higherOrderComponents
+│   │   ├── index.js
+│   │   └── withLayout.js
+│   ├── index.js
+│   ├── keyObjectModule.js
+│   └── middleware.js
 ├── localStorage
 │   └── index.js
 ├── logger
@@ -315,5 +338,6 @@
 [root](../../tree.md)
 [src](../tree.md)
 [apps](../apps/tree.md)
+[dataModules](../dataModules/tree.md)
 [domainModules](../domainModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

@@ -3,16 +3,16 @@ import { createSelector } from 'reselect'
 import {
   getLocalState as getCuratedListState,
   getFeatureObservationTypes,
-} from 'domainModules/curatedListService/selectors'
+} from 'dataModules/curatedListService/selectors'
 import {
   getLocalState as getSpecimenState,
   getSpecimenIndividualGroup,
   getSpecimenReadOnly,
-} from 'domainModules/specimenService/selectors'
+} from 'dataModules/specimenService/selectors'
 import {
   getLocalState as getStorageState,
   getPhysicalUnits,
-} from 'domainModules/storageService/selectors'
+} from 'dataModules/storageService/selectors'
 
 import wrapSelectors from 'utilities/wrapSelectors'
 import transformInput from './components/MammalForm/transformations/input'

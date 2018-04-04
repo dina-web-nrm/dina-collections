@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import storageServiceSelectors from 'domainModules/storageService/globalSelectors'
+import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 const getStorageDropdownOptions = createSelector(

@@ -5,8 +5,8 @@ import { compose } from 'redux'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import { Icon, Label } from 'semantic-ui-react'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { createGetDistinguishedUnitTypeById } from 'domainModules/curatedListService/higherOrderComponents'
-import { createGetStorageLocationById } from 'domainModules/storageService/higherOrderComponents'
+import { createGetDistinguishedUnitTypeById } from 'dataModules/curatedListService/higherOrderComponents'
+import { createGetStorageLocationById } from 'dataModules/storageService/higherOrderComponents'
 import createLog from 'utilities/log'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {

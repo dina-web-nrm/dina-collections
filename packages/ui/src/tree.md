@@ -18,6 +18,7 @@
 │   ├── i18n
 │   ├── index.js
 │   ├── keyboardShortcuts
+│   ├── layout
 │   ├── localStorage
 │   ├── logger
 │   ├── notifications
@@ -25,9 +26,8 @@
 │   ├── size
 │   ├── tree.md
 │   └── user
-├── domainModules
+├── dataModules
 │   ├── allModules.js
-│   ├── collectionMammals
 │   ├── curatedListService
 │   ├── identifierService
 │   ├── index.js
@@ -35,6 +35,14 @@
 │   ├── specimenService
 │   ├── storageService
 │   ├── taxonService
+│   └── tree.md
+├── domainModules
+│   ├── allModules.js
+│   ├── collectionMammals
+│   ├── curatedList
+│   ├── index.js
+│   ├── locality
+│   ├── storage
 │   └── tree.md
 ├── index.js
 ├── mock
@@ -72,6 +80,7 @@
     ├── endpointFactory
     ├── getSecondArgument
     ├── getThirdArgument
+    ├── keyObjectModuleFactory
     ├── log
     ├── markdown
     ├── stateHelper
@@ -85,5 +94,6 @@
 [root](../tree.md)
 [apps](apps/tree.md)
 [coreModules](coreModules/tree.md)
+[dataModules](dataModules/tree.md)
 [domainModules](domainModules/tree.md)
 [collectionsUi viewModules](apps/collectionsUi/viewModules/tree.md)

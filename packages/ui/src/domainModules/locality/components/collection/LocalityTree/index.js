@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
-import { getCuratedLocalities as getCuratedLocalitiesAc } from 'domainModules/localityService/actionCreators'
+import { getCuratedLocalities as getCuratedLocalitiesAc } from 'dataModules/localityService/actionCreators'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
 import {

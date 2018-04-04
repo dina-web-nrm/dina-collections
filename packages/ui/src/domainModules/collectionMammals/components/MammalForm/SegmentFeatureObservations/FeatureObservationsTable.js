@@ -6,7 +6,7 @@ import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
-import { makeGetFeatureObservationTypesInGroups } from 'domainModules/curatedListService/globalSelectorFactories'
+import { makeGetFeatureObservationTypesInGroups } from 'dataModules/curatedListService/globalSelectorFactories'
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(

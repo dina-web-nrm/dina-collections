@@ -8,7 +8,7 @@ import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { StorageLocationSearch } from 'domainModules/storage/components'
-import { createGetDistinguishedUnitTypeById } from 'domainModules/curatedListService/higherOrderComponents'
+import { createGetDistinguishedUnitTypeById } from 'dataModules/curatedListService/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
 import {
   SKELETON,

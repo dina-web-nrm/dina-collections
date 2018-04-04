@@ -21,10 +21,10 @@ export default function createMammalMiddleware() {
     switch (action.type) {
       case reduxFormActionTypes.CHANGE: {
         if (
+          action.payload === true &&
           action.meta.form === MAMMAL_FORM_NAME &&
           action.meta.field &&
-          action.meta.field.includes('isCurrentDetermination') &&
-          action.payload === true
+          action.meta.field.includes('isCurrentDetermination')
         ) {
           // slice determinationIndex from field
           const beginIndex = 'taxonInformation.determinations.'.length

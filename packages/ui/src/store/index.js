@@ -3,6 +3,7 @@ import hotswapStoreEnhancer from 'coreModules/bootstrap/enhancer'
 import createLog from 'utilities/log'
 import { enhancer as devToolsExtensionEnhancer } from 'coreModules/devToolsExtension'
 import { moduleOrder as coreModuleOrder } from 'coreModules'
+import { moduleOrder as dataModuleOrder } from 'dataModules'
 import { moduleOrder as domainModuleOrder } from 'domainModules'
 
 const log = createLog('store')
@@ -18,7 +19,12 @@ export default function createStoreMain({
   const enhancers = [
     hotswapStoreEnhancer({
       config,
-      moduleOrder: [...coreModuleOrder, ...domainModuleOrder, ...viewOrder],
+      moduleOrder: [
+        ...coreModuleOrder,
+        ...dataModuleOrder,
+        ...domainModuleOrder,
+        ...viewOrder,
+      ],
     }),
     devToolsExtensionEnhancer && devToolsExtensionEnhancer(), // dont do this in production
   ].filter(enhancer => !!enhancer)

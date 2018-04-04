@@ -9,7 +9,7 @@ import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { ensureAllFeatureObservationTypesFetched } from 'domainModules/curatedListService/higherOrderComponents'
+import { ensureAllFeatureObservationTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
 import FeatureObservationsTable from './FeatureObservationsTable'
 import FeatureObservationsTitle from './FeatureObservationsTitle'
 

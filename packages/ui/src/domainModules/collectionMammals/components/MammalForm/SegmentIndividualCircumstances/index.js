@@ -12,7 +12,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import {
   actionCreators as localityActionCreators,
   globalSelectors as localitySelectors,
-} from 'domainModules/localityService'
+} from 'dataModules/localityService'
 import LocalityInformationFields from './LocalityInformationFields'
 
 const log = createLog(

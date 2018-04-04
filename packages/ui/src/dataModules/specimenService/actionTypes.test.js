@@ -1,0 +1,24 @@
+import * as actionTypes from './actionTypes'
+
+const expectedActionTypeValues = [
+  'SPECIMEN_SERVICE_CREATE_SPECIMEN_FAIL',
+  'SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST',
+  'SPECIMEN_SERVICE_CREATE_SPECIMEN_SUCCESS',
+  'SPECIMEN_SERVICE_GET_SPECIMEN_FAIL',
+  'SPECIMEN_SERVICE_GET_SPECIMEN_REQUEST',
+  'SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS',
+  'SPECIMEN_SERVICE_GET_SPECIMENS_FAIL',
+  'SPECIMEN_SERVICE_GET_SPECIMENS_REQUEST',
+  'SPECIMEN_SERVICE_GET_SPECIMENS_SUCCESS',
+  'SPECIMEN_SERVICE_UPDATE_SPECIMEN_FAIL',
+  'SPECIMEN_SERVICE_UPDATE_SPECIMEN_REQUEST',
+  'SPECIMEN_SERVICE_UPDATE_SPECIMEN_SUCCESS',
+]
+
+describe('dataModules/specimenService/actionTypes', () => {
+  it('exports expected types', () => {
+    expect(Object.values(actionTypes).sort()).toEqual(
+      expectedActionTypeValues.sort()
+    )
+  })
+})

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updateCuratedLocality as updateCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
-import { createGetCuratedLocalityById } from 'domainModules/localityService/higherOrderComponents'
+import { updateCuratedLocality as updateCuratedLocalityAc } from 'dataModules/localityService/actionCreators'
+import { createGetCuratedLocalityById } from 'dataModules/localityService/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,

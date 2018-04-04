@@ -7,7 +7,7 @@ import formValidator from 'common/es5/error/validators/formValidator'
 import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
-import { ALL } from 'domainModules/localityService/constants'
+import { ALL } from 'dataModules/localityService/constants'
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
 import FormActions from './FormActions'
 

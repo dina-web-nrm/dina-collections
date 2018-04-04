@@ -6,7 +6,7 @@ import { Field } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import LocalityDropdownSearch from 'domainModules/locality/components/AdvancedLocalityDropdownSearch'
-import { ALL, CONTINENT } from 'domainModules/localityService/constants'
+import { ALL, CONTINENT } from 'dataModules/localityService/constants'
 
 import { MAMMAL_FORM_NAME as formName } from 'domainModules/collectionMammals/constants'
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
-import { actionCreators as specimenActionCreators } from 'domainModules/specimenService'
+import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
 import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'

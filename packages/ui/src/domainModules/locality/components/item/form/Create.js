@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { createCuratedLocality as createCuratedLocalityAc } from 'domainModules/localityService/actionCreators'
+import { createCuratedLocality as createCuratedLocalityAc } from 'dataModules/localityService/actionCreators'
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
