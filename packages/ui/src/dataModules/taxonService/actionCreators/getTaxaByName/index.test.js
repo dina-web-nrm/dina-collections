@@ -31,6 +31,21 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
     expect(store.getActions()).toEqual([expectedAction])
   })
 
+  it(`dispatches ${
+    actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST
+  } with isLookup true`, () => {
+    const testAction = getTaxaByName({ isLookup: true })
+
+    const expectedAction = {
+      meta: { isLookup: true, queryParams: {} },
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+    }
+
+    store.dispatch(testAction)
+
+    expect(store.getActions()).toEqual([expectedAction])
+  })
+
   it(`calls getTaxaByName`, () => {
     const operationId = 'getTaxaByName'
 

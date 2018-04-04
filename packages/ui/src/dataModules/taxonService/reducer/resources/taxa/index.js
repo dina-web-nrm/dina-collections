@@ -2,11 +2,11 @@ import {
   updateResourceInState,
   updateResourcesInState,
 } from 'utilities/stateHelper'
+import { TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS } from 'domainModules/taxon/actionTypes'
 import {
   TAXON_SERVICE_CREATE_TAXON_SUCCESS,
   TAXON_SERVICE_GET_TAXON_SUCCESS,
   TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
-  TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
   TAXON_SERVICE_UPDATE_TAXON_SUCCESS,
 } from '../../../actionTypes'
 

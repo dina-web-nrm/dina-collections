@@ -1,21 +1,20 @@
 import deepFreeze from 'deep-freeze'
 
 import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
+import {
+  TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
+  TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+  TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+} from 'dataModules/taxonService/actionTypes'
+import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from '../../actionTypes'
 
 import reducer, { getInitialState } from './index'
-
-import {
-  TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
-  TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
-  TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
-  TAXON_SERVICE_UPDATE_SEARCH_QUERY,
-} from '../../actionTypes'
 
 const tryImport = () => {
   return import('./index')
 }
 
-describe('dataModules/taxonService/reducer/lookup', () => {
+describe('domainModules/taxon/reducer/lookup', () => {
   describe('getInitialState', () => {
     it('returns initialState', () => {
       const testValue = getInitialState()
@@ -50,7 +49,7 @@ describe('dataModules/taxonService/reducer/lookup', () => {
       expect(testValue).toEqual(expectedResult)
     })
 
-    describe(TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL, () => {
+    describe(TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL, () => {
       it('sets loading false and clears result', () => {
         const state = {
           error: null,
@@ -60,8 +59,9 @@ describe('dataModules/taxonService/reducer/lookup', () => {
         deepFreeze(state)
         const action = {
           error: true,
+          meta: { isLookup: true },
           payload: { status: 404 },
-          type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_FAIL,
+          type: TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
         }
         const expectedState = {
           error: { status: 404 },
@@ -72,14 +72,15 @@ describe('dataModules/taxonService/reducer/lookup', () => {
         expect(reducer(state, action)).toEqual(expectedState)
       })
     })
-    describe(TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST, () => {
+    describe(TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST, () => {
       it('sets loading true', () => {
         const state = {
           loading: false,
         }
         deepFreeze(state)
         const action = {
-          type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_REQUEST,
+          meta: { isLookup: true },
+          type: TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
         }
         const expectedState = {
           loading: true,
@@ -88,7 +89,7 @@ describe('dataModules/taxonService/reducer/lookup', () => {
         expect(reducer(state, action)).toEqual(expectedState)
       })
     })
-    describe(TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS, () => {
+    describe(TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS, () => {
       it('sets loading false and sets result and clears error', () => {
         const state = {
           error: { status: 404 },
@@ -97,8 +98,9 @@ describe('dataModules/taxonService/reducer/lookup', () => {
         }
         deepFreeze(state)
         const action = {
+          meta: { isLookup: true },
           payload: [{ some: 'result' }],
-          type: TAXON_SERVICE_GET_TAXA_FOR_LOOKUP_SUCCESS,
+          type: TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
         }
         const expectedState = {
           error: null,

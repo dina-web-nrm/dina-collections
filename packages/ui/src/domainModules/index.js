@@ -3,6 +3,7 @@ export const moduleOrder = [
   'curatedList',
   'locality',
   'storage',
+  'taxon',
 ]
 
 export const type = 'module'

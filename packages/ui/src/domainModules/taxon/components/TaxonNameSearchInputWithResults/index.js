@@ -4,19 +4,24 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { Search } from 'coreModules/form/components'
-import createGetTaxonById from '../../higherOrderComponents/createGetTaxonById'
-import globalSelectors from '../../globalSelectors'
+import createGetTaxonById from 'dataModules/taxonService/higherOrderComponents/createGetTaxonById'
 import updateTaxonSearchQueryAC from '../../actionCreators/updateTaxonSearchQuery'
+import globalSelectors from '../../globalSelectors'
 
-const mapDispatchToProps = { updateTaxonSearchQuery: updateTaxonSearchQueryAC }
+const mapDispatchToProps = {
+  updateTaxonSearchQuery: updateTaxonSearchQueryAC,
+}
 
 const propTypes = {
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   updateTaxonSearchQuery: PropTypes.func.isRequired,
 }
 
 class TaxonNameSearchInputWithResults extends Component {
   render() {
-    const { updateTaxonSearchQuery, ...rest } = this.props
+    const { updateTaxonSearchQuery, input, ...rest } = this.props
 
     return (
       <Search
@@ -24,6 +29,7 @@ class TaxonNameSearchInputWithResults extends Component {
         getSearchLoading={globalSelectors.getLookupLoading}
         getSearchQuery={globalSelectors.getLookupSearchQuery}
         getSelectedOption={globalSelectors.getTaxonOption}
+        input={input}
         onSearchChange={updateTaxonSearchQuery}
         {...rest}
         type="search-connect"

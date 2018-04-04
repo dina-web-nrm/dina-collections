@@ -1,17 +1,4 @@
-import {
-  getLocalState,
-  getLookup,
-  getLookupDropdownOptions,
-  getLookupError,
-  getLookupLoading,
-  getLookupResult,
-  getLookupSearchQuery,
-  getLookupSearchQueries,
-  getResources,
-  getTaxa,
-  getTaxon,
-  getTaxonOption,
-} from './selectors'
+import { getLocalState, getResources, getTaxa, getTaxon } from './selectors'
 
 describe('dataModules/taxonService/selectors', () => {
   let state
@@ -70,41 +57,6 @@ describe('dataModules/taxonService/selectors', () => {
         id: 'a',
         scientificName: 'taxon a',
       })
-    })
-    it('returns taxon option', () => {
-      expect(getTaxonOption(state, 'a')).toEqual({
-        key: 'a',
-        text: 'taxon a',
-        value: 'a',
-      })
-    })
-  })
-
-  describe('lookup', () => {
-    it('returns lookup', () => {
-      expect(getLookup(state)).toEqual(state.lookup)
-    })
-    it('returns lookupError', () => {
-      expect(getLookupError(state)).toEqual(null)
-    })
-    it('returns lookupLoading', () => {
-      expect(getLookupLoading(state)).toEqual(false)
-    })
-    it('returns lookupResult', () => {
-      expect(getLookupResult(state)).toEqual([
-        { id: '123', scientificName: 'Sorex minutus' },
-      ])
-    })
-    it('returns lookup dropdown options', () => {
-      expect(getLookupDropdownOptions(state)).toEqual([
-        { key: '123', text: 'Sorex minutus', value: '123' },
-      ])
-    })
-    it('returns lookupSearchQueries', () => {
-      expect(getLookupSearchQueries(state)).toEqual({ 'taxon.1': 'bat' })
-    })
-    it('returns lookupSearchQuery', () => {
-      expect(getLookupSearchQuery(state, 'taxon.1')).toEqual('bat')
     })
   })
 })

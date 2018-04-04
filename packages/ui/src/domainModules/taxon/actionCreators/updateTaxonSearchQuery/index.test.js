@@ -1,6 +1,6 @@
 import updateTaxonSearchQuery from './index'
 
-describe('dataModules/taxonService/actionCreators/updateTaxonSearchQuery', () => {
+describe('domainModules/taxon/actionCreators/updateTaxonSearchQuery', () => {
   it('returns action', () => {
     const inputName = 'taxon.2'
     const searchQuery = 'bat'
