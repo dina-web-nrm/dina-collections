@@ -1,11 +1,10 @@
 import { createSelector } from 'reselect'
 
+import curatedListServiceSelectors from 'dataModules/curatedListService/globalSelectors'
 import globalSelectors from './globalSelectors'
 
-const {
-  getFeatureObservationTypes,
-  getGroupedFeatureObservationTypeIds,
-} = globalSelectors
+const { getFeatureObservationTypes } = curatedListServiceSelectors
+const { getGroupedFeatureObservationTypeIds } = globalSelectors
 
 export const makeGetFeatureObservationTypesInGroups = () => {
   return createSelector(

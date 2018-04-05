@@ -1,15 +1,15 @@
 import debounce from 'lodash.debounce'
 
 import createLog from 'utilities/log'
+import { getTaxaByName } from 'dataModules/taxonService/actionCreators'
 import globalSelectors from './globalSelectors'
-import { getTaxaForLookup } from './actionCreators'
 import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from './actionTypes'
 
 const log = createLog('dataModules:taxonService:middleware')
 
 const debounceTaxonSearch = debounce(
   ({ dispatch, getState, inputName }) => {
-    log.debug('Debounce getTaxaForLookup')
+    log.debug('Debounce getTaxaByName')
     const searchQuery = globalSelectors.getLookupSearchQuery(
       getState(),
       inputName
@@ -17,7 +17,8 @@ const debounceTaxonSearch = debounce(
 
     if (searchQuery) {
       dispatch(
-        getTaxaForLookup({
+        getTaxaByName({
+          isLookup: true,
           queryParams: {
             filter: {
               name: searchQuery,

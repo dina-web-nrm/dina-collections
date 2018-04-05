@@ -5,10 +5,8 @@ const tryImport = () => {
 const expectedActionCreators = [
   'createTaxon',
   'getTaxaByName',
-  'getTaxaForLookup',
   'getTaxon',
   'updateTaxon',
-  'updateTaxonSearchQuery',
 ]
 
 describe('dataModules/taxonService/actionCreators', () => {

@@ -8,10 +8,10 @@ import {
 import { GET_TAXA_BY_NAME } from '../../endpoints'
 
 export default function getTaxaByName(
-  { queryParams = {}, throwError = false } = {}
+  { queryParams = {}, isLookup = false, throwError = false } = {}
 ) {
   return (dispatch, getState, { apiClient }) => {
-    const meta = { queryParams }
+    const meta = isLookup ? { isLookup, queryParams } : { queryParams }
     dispatch({
       meta,
       type: TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,

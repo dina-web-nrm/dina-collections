@@ -1,23 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
-import { DropdownSearch } from 'coreModules/form/components'
-
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {
-  ALL,
-  CONTINENT,
-  COUNTRY,
-  DISTRICT,
-  PROVINCE,
-} from 'dataModules/localityService/constants'
-import localitySelectors from 'dataModules/localityService/globalSelectors'
+
+import config from 'config'
+import { DropdownSearch } from 'coreModules/form/components'
 import { ensureAllLocalitiesFetched } from 'dataModules/localityService/higherOrderComponents'
-import {
-  actionCreators,
-  globalSelectors,
-} from 'domainModules/locality/keyObjectModule'
+import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
+import { actionCreators, globalSelectors } from '../../keyObjectModule'
+import localitySelectors from '../../globalSelectors'
 
 const propTypes = {
   allLocalitiesFetched: PropTypes.bool.isRequired,
@@ -74,7 +66,7 @@ class LocalityDropdownSearch extends Component {
       }
     }
 
-    if (!allLocalitiesFetched) {
+    if (!allLocalitiesFetched && !config.isTest) {
       return null
     }
     const leftIconButton = <Button icon="user" />

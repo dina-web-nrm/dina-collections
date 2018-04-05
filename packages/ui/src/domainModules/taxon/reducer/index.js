@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import resources from './resources'
+import lookup from './lookup'
 
 export default combineReducers({
-  resources,
+  lookup,
 })

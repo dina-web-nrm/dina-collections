@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Breadcrumb, Label, Icon } from 'semantic-ui-react'
+
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
-} from 'domainModules/locality/keyObjectModule'
-
-import globalSelectors from 'dataModules/localityService/globalSelectors'
+} from '../../../../../keyObjectModule'
+import globalSelectors from '../../../../../globalSelectors'
 
 const mapStateToProps = state => {
   const parentFilterId = keyObjectGlobalSelectors.get['filter.parentId'](state)

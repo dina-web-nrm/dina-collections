@@ -12,7 +12,7 @@ import {
   Input,
 } from 'coreModules/form/components'
 
-import { TaxonNameSearchInputWithResults } from 'dataModules/taxonService/components'
+import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import taxonSelectors from 'dataModules/taxonService/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
