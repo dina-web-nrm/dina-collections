@@ -135,7 +135,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
       )
     }
 
-    return <LocalityDropdownSearch leftButton={picker} {...rest} />
+    return <LocalityDropdownSearch rightButton={picker} {...rest} />
   }
 }
 
