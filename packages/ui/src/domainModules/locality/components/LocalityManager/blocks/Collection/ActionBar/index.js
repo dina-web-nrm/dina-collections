@@ -3,18 +3,23 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Button, Dropdown, Grid, Form } from 'semantic-ui-react'
+
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
 } from 'domainModules/locality/keyObjectModule'
-
 import {
   SET_COLLECTION_LIST,
   SET_COLLECTION_TREE,
   SET_ITEM_CREATE,
 } from 'domainModules/locality/interactions'
-
 import { InputText } from 'coreModules/form/components'
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  PROVINCE,
+} from '../../../../../constants'
 import AncestorTag from './AncestorTag'
 
 const mapStateToProps = state => {
@@ -46,7 +51,7 @@ const defaultProps = {
   searchQuery: '',
 }
 
-const groups = ['continent', 'country', 'district', 'province']
+const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
 
 const dropdownOptions = [
   {

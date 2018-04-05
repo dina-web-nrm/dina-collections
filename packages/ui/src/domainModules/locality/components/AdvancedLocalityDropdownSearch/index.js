@@ -80,18 +80,19 @@ export class AdvancedLocalityDropdownSearch extends Component {
     if (type === SET_ITEM_CREATE) {
       return this.setCreateActive()
     }
+
     if (type === FORM_CANCEL) {
       return this.setPickerActive()
     }
 
     if (type === SET_COLLECTION_LIST) {
-      this.setState({
+      return this.setState({
         collectionBlockType: 'list',
       })
     }
 
     if (type === SET_COLLECTION_TREE) {
-      this.setState({
+      return this.setState({
         collectionBlockType: 'tree',
       })
     }
