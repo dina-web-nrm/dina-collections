@@ -76,7 +76,7 @@ class ActionBar extends Component {
               <Button.Group floated="left">
                 <Button
                   active={collectionBlockType === 'list'}
-                  icon="numbered list"
+                  content="List"
                   onClick={event => {
                     event.preventDefault()
                     onInteraction(SET_COLLECTION_LIST)
@@ -84,7 +84,7 @@ class ActionBar extends Component {
                 />
                 <Button
                   active={collectionBlockType === 'tree'}
-                  icon="tree"
+                  content="Tree"
                   onClick={event => {
                     event.preventDefault()
                     onInteraction(SET_COLLECTION_TREE)
@@ -100,7 +100,6 @@ class ActionBar extends Component {
                   value: this.props.searchQuery,
                 }}
                 placeholder="search"
-                size="small"
                 style={{ marginLeft: 10 }}
               />
               <Dropdown
