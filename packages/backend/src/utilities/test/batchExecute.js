@@ -2,6 +2,7 @@
 
 const runBatch = ({
   count = 0,
+  createBatch,
   createEntry,
   execute,
   numberOfEntries,
@@ -16,19 +17,19 @@ const runBatch = ({
     numberOfentriesEachBatch
   )
 
-  const batchIdentifier = `${count}.batch`
-  const executeIdentifier = `${batchIdentifier}.execute`
-
-  const batchData = []
-  for (let index = 0; index < numberOfBatchEntries; index += 1) {
-    batchData[index] = createEntry(count + index)
+  let batchData = []
+  if (createBatch) {
+    batchData = createBatch({ numberOfBatchEntries, startCount: count })
+  } else {
+    for (let index = 0; index < numberOfBatchEntries; index += 1) {
+      batchData[index] = createEntry(count + index)
+    }
   }
 
-  console.time(executeIdentifier)
   return execute(batchData).then(() => {
-    console.timeEnd(executeIdentifier)
     return runBatch({
       count: count + numberOfBatchEntries,
+      createBatch,
       createEntry,
       execute,
       numberOfEntries,
@@ -38,23 +39,19 @@ const runBatch = ({
 }
 
 module.exports = function batchExecute({
+  createBatch,
   createEntry,
   execute,
   numberOfEntries,
   numberOfentriesEachBatch,
 }) {
-  console.time('batch')
   return runBatch({
+    createBatch,
     createEntry,
     execute,
     numberOfEntries,
     numberOfentriesEachBatch,
+  }).catch(err => {
+    console.error('Batch failed', err)
   })
-    .then(() => {
-      console.timeEnd('batch')
-    })
-    .catch(err => {
-      console.error('Batch failed', err)
-      console.timeEnd('batch')
-    })
 }
