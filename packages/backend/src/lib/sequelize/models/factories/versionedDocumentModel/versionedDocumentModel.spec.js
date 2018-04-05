@@ -27,7 +27,7 @@ const setup = () => {
   })
 }
 
-dbDescribe('lib/sequelize/models', () => {
+dbDescribe('lib/sequelize/models/versionedDocumentModel', () => {
   let model
   describe('createModel', () => {
     beforeAll(() => {

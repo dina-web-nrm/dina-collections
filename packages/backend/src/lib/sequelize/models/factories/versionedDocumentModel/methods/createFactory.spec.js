@@ -56,7 +56,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
       }
       return create(sampleDoc).then(res => {
         expect(res).toBeTruthy()
-        expect(res).toEqual({
+        expect(res.dataValues).toEqual({
           document: {
             email: 'anton@example.com',
           },
@@ -93,7 +93,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
       }
       return create(sampleDoc).then(res => {
         expect(res).toBeTruthy()
-        expect(res).toEqual({
+        expect(res.dataValues).toEqual({
           document: {
             email: 'anton@example.com',
           },
@@ -131,7 +131,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
       }
       return create(sampleDoc).then(res => {
         expect(res).toBeTruthy()
-        expect(res).toEqual({
+        expect(res.dataValues).toEqual({
           document: {
             email: 'anton@example.com',
           },

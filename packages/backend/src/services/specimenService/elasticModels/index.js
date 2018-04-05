@@ -1,5 +1,5 @@
 // const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
+const createModel = require('../../../lib/elasticsearch/models/factories/normalizedElasticModel')
 
 const normalizedColumnNames = [
   'determinations',
@@ -13,13 +13,11 @@ const normalizedColumnNames = [
   'taxonInformation',
 ]
 
-const specimenFactory = function specimen({ sequelize }) {
+const specimenFactory = function specimen({ elasticsearch }) {
   return createModel({
-    name: 'Specimen',
+    elasticsearch,
+    name: 'specimen',
     normalizedColumnNames,
-    schemaModelName: 'specimen',
-    schemaVersion: '1.0.1',
-    sequelize,
   })
 }
 
@@ -28,8 +26,4 @@ module.exports = [
     factory: specimenFactory,
     name: 'specimen',
   },
-  // {
-  //   factory: loadInitialData,
-  //   name: 'loadInitialData',
-  // },
 ]

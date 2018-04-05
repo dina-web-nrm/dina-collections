@@ -9,7 +9,6 @@ testData.badRequestMissingCatalogNumber = {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: [],
-        taxonInformation: {},
       },
     },
     type: 'specimen',
@@ -19,21 +18,22 @@ testData.badRequestMissingCatalogNumber = {
 testData.simpleDataNoRelations = {
   data: {
     attributes: {
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            nameSpace: '',
+            value: '123457',
+          },
+          lid: '4444-33333',
+          publishRecord: true,
+          remarks: '',
+        },
+      ],
       individualGroup: {
         distinguishedUnits: [],
         featureObservations: [],
-        identifiers: [
-          {
-            identifier: {
-              identifierType: 'catalogNumber',
-              nameSpace: '',
-              value: '123457',
-            },
-            publishRecord: true,
-            remarks: '',
-          },
-        ],
-        taxonInformation: {},
+        identifiers: ['4444-33333'],
       },
     },
     type: 'specimen',
@@ -43,21 +43,22 @@ testData.simpleDataNoRelations = {
 testData.simpleDataPhysicalUnitRelations = {
   data: {
     attributes: {
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            nameSpace: '',
+            value: '123458',
+          },
+          lid: '4444-33333',
+          publishRecord: true,
+          remarks: '',
+        },
+      ],
       individualGroup: {
         distinguishedUnits: [],
         featureObservations: [],
-        identifiers: [
-          {
-            identifier: {
-              identifierType: 'catalogNumber',
-              nameSpace: '',
-              value: '123458',
-            },
-            publishRecord: true,
-            remarks: '',
-          },
-        ],
-        taxonInformation: {},
+        identifiers: ['4444-33333'],
       },
     },
     relationships: {
@@ -77,21 +78,22 @@ testData.simpleDataPhysicalUnitRelations = {
 testData.simpleDataMultipleRelations = {
   data: {
     attributes: {
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            nameSpace: '',
+            value: '123458',
+          },
+          lid: '4444-33333',
+          publishRecord: true,
+          remarks: '',
+        },
+      ],
       individualGroup: {
         distinguishedUnits: [],
         featureObservations: [],
-        identifiers: [
-          {
-            identifier: {
-              identifierType: 'catalogNumber',
-              nameSpace: '',
-              value: '123458',
-            },
-            publishRecord: true,
-            remarks: '',
-          },
-        ],
-        taxonInformation: {},
+        identifiers: ['4444-33333'],
       },
     },
     relationships: {
@@ -125,21 +127,22 @@ testData.simpleDataMultipleRelations = {
 testData.simpleDataInvalidRelationsFormat = {
   data: {
     attributes: {
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            nameSpace: '',
+            value: '123458',
+          },
+          lid: '4444-33333',
+          publishRecord: true,
+          remarks: '',
+        },
+      ],
       individualGroup: {
         distinguishedUnits: [],
         featureObservations: [],
-        identifiers: [
-          {
-            identifier: {
-              identifierType: 'catalogNumber',
-              nameSpace: '',
-              value: '123458',
-            },
-            publishRecord: true,
-            remarks: '',
-          },
-        ],
-        taxonInformation: {},
+        identifiers: ['4444-33333'],
       },
     },
     relationships: {
@@ -155,21 +158,22 @@ testData.simpleDataInvalidRelationsFormat = {
 testData.simpleDataInvalidRelations = {
   data: {
     attributes: {
+      identifiers: [
+        {
+          identifier: {
+            identifierType: 'catalogNumber',
+            nameSpace: '',
+            value: '123458',
+          },
+          lid: '4444-33333',
+          publishRecord: true,
+          remarks: '',
+        },
+      ],
       individualGroup: {
         distinguishedUnits: [],
         featureObservations: [],
-        identifiers: [
-          {
-            identifier: {
-              identifierType: 'catalogNumber',
-              nameSpace: '',
-              value: '123458',
-            },
-            publishRecord: true,
-            remarks: '',
-          },
-        ],
-        taxonInformation: {},
+        identifiers: ['4444-33333'],
       },
     },
     relationships: {

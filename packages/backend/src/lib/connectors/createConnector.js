@@ -8,6 +8,7 @@ const log = createLog('lib/connectors', 1)
 module.exports = function createConnector({
   apiConfig,
   customControllerFactories,
+  elasticModels,
   models,
   operation,
   operationId,
@@ -39,6 +40,7 @@ module.exports = function createConnector({
   const controller =
     controllerFactory &&
     controllerFactory({
+      elasticModels,
       models,
       operation,
     })

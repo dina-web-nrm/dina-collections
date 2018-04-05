@@ -1,24 +1,37 @@
+const batchExecute = require('../../../../utilities/test/batchExecute')
 const readInitialData = require('../../../../utilities/readInitialData')
 const mapSpecimen = require('./mapSpecimen')
 
 module.exports = function loadInitialData({ models }) {
-  const rawSpecimens = readInitialData('specimens')
-
-  if (!rawSpecimens) {
+  const specimenTemplate = readInitialData('specimens')
+  if (!specimenTemplate) {
     return Promise.resolve()
   }
 
-  return Promise.all(
-    rawSpecimens.map(rawSpecimen => {
-      return mapSpecimen(rawSpecimen)
-    })
-  ).then(mappedSpecimens => {
-    const items = mappedSpecimens.map((mappedSpecimen, index) => {
-      return {
-        doc: mappedSpecimen,
-        id: index + 1,
-      }
-    })
-    return models.specimen.bulkCreate(items)
+  const createEntry = index => {
+    return specimenTemplate[index % specimenTemplate.length]
+  }
+
+  let id = 0
+  return batchExecute({
+    createEntry,
+    execute: items => {
+      return Promise.all(
+        items.map(rawSpecimen => {
+          return mapSpecimen(rawSpecimen)
+        })
+      ).then(mappedSpecimens => {
+        const tmp = mappedSpecimens.map(mappedSpecimen => {
+          id += 1
+          return {
+            doc: mappedSpecimen,
+            id,
+          }
+        })
+        return models.specimen.bulkCreate(tmp)
+      })
+    },
+    numberOfEntries: 1000,
+    numberOfentriesEachBatch: 200,
   })
 }

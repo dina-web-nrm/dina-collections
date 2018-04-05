@@ -16,7 +16,12 @@ const systemValidate = (obj, schema) => {
   })(obj)
 }
 
-module.exports = function createConnectors({ config, models, services }) {
+module.exports = function createConnectors({
+  config,
+  elasticModels,
+  models,
+  services,
+}) {
   log.info('Create connectors')
 
   const apiConfig = { ...config.api, log: config.log, systemValidate }
@@ -31,6 +36,7 @@ module.exports = function createConnectors({ config, models, services }) {
     const connector = createConnector({
       apiConfig,
       customControllerFactories,
+      elasticModels,
       models,
       operation,
       operationId,

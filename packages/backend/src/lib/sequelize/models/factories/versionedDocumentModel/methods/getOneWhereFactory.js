@@ -1,6 +1,6 @@
 module.exports = function getOneWhereFactory({ Model }) {
   return function getOneWhere(
-    { forceCurrentVersion = true, include = undefined, where, raw = true } = {}
+    { forceCurrentVersion = true, include = undefined, where } = {}
   ) {
     if (!where) {
       return Promise.reject(new Error('where not provided'))
@@ -8,7 +8,6 @@ module.exports = function getOneWhereFactory({ Model }) {
 
     return Model.findOne({
       include,
-      raw,
       where: {
         ...where,
         isCurrentVersion: forceCurrentVersion ? true : undefined,
