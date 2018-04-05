@@ -2,6 +2,9 @@
   "additionalProperties": false,
   "description": "This is a description",
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "taxonInformation": {
       "type": "object",
       "$ref": "__ROOT__taxonInformation"

@@ -1,0 +1,6 @@
+* add elastic to production server
+* fix elatic logging
+* repair tests
+* add kibana
+* add filebeat
+* protect kibana, filebeat and elastic

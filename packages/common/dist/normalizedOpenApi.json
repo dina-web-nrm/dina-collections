@@ -5665,6 +5665,9 @@
       "identifier": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "publishRecord": {
             "type": "boolean"
           },
@@ -5790,6 +5793,9 @@
       "collectingCircumstance": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -5809,6 +5815,9 @@
       "collectingEvent": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -5838,6 +5847,9 @@
       "curatorialAssessment": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "agent": {
             "type": "string",
             "example": "Doe, J."
@@ -5884,6 +5896,9 @@
       "determination": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "remarks": {
             "type": "string",
             "example": "Some remarks"
@@ -5918,6 +5933,9 @@
       "distinguishedUnit": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "alternateIdentifiersText": {
             "type": "string",
             "example": "Skin complete, prepared"
@@ -5961,6 +5979,9 @@
       "event": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "startDate": {
             "$ref": "#/components/schemas/date"
           },
@@ -5982,6 +6003,9 @@
       "featureObservation": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "featureObservationAgent": {
             "type": "string",
             "example": "Doe, J."
@@ -6016,6 +6040,9 @@
       "individualCircumstance": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "id": {
             "type": "string"
           },
@@ -6049,6 +6076,9 @@
         "additionalProperties": false,
         "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "taxonInformation": {
             "type": "object",
             "$ref": "#/components/schemas/taxonInformation"
@@ -6093,6 +6123,9 @@
       "localityInformation": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "curatedLocalities": {
             "description": "An array with curated localities",
             "type": "array",
@@ -6197,6 +6230,30 @@
               "$ref": "#/components/schemas/collectingCircumstance"
             }
           },
+          "determinations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/determination"
+            }
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/identifier"
+            }
+          },
+          "taxonInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/taxonInformation"
+            }
+          },
+          "featureObservations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/featureObservation"
+            }
+          },
           "events": {
             "type": "array",
             "items": {
@@ -6216,6 +6273,9 @@
       "taxonInformation": {
         "additionalProperties": false,
         "properties": {
+          "lid": {
+            "type": "string"
+          },
           "curatorialName": {
             "type": "string"
           },
@@ -11076,163 +11136,6 @@
           }
         },
         "x-examples": {
-          "fullFormExample": {
-            "data": {
-              "type": "specimen",
-              "relationships": {
-                "curatedLocalities": {
-                  "data": [
-                    {
-                      "id": "1",
-                      "type": "curatedLocality"
-                    },
-                    {
-                      "id": "2",
-                      "type": "curatedLocality"
-                    },
-                    {
-                      "id": "3",
-                      "type": "curatedLocality"
-                    },
-                    {
-                      "id": "4",
-                      "type": "curatedLocality"
-                    },
-                    {
-                      "id": "5",
-                      "type": "curatedLocality"
-                    }
-                  ]
-                },
-                "featureObservationTypes": {
-                  "data": [
-                    {
-                      "id": "1",
-                      "type": "featureObservationType"
-                    }
-                  ]
-                },
-                "physicalUnits": {
-                  "data": [
-                    {
-                      "id": "2234",
-                      "type": "physicalUnit"
-                    }
-                  ]
-                },
-                "taxa": {
-                  "data": [
-                    {
-                      "id": "2367",
-                      "type": "taxon"
-                    }
-                  ]
-                }
-              },
-              "attributes": {
-                "individualGroup": {
-                  "taxonInformation": {
-                    "determinations": [
-                      {
-                        "date": "date",
-                        "determinationVerbatim": "determinationVerbatim",
-                        "determinedByAgentText": "determinedByAgentText",
-                        "isCurrentDetermination": true,
-                        "remarks": "remarks",
-                        "taxon": {
-                          "id": "2367",
-                          "type": "taxon"
-                        }
-                      }
-                    ]
-                  },
-                  "featureObservations": [
-                    {
-                      "date": "date",
-                      "featureObservationAgent": "featureObservationAgent",
-                      "featureObservationText": "21",
-                      "featureObservationType": {
-                        "id": "1",
-                        "type": "featureObservationType"
-                      },
-                      "methodText": "methodText"
-                    }
-                  ],
-                  "distinguishedUnits": [
-                    {
-                      "alternateIdentifiersText": "alternateIdentifiersText",
-                      "physicalUnit": {
-                        "id": "2234",
-                        "type": "physicalUnit"
-                      },
-                      "physicalUnitText": "physicalUnitText"
-                    }
-                  ],
-                  "identifiers": [
-                    {
-                      "identifier": {
-                        "identifierType": "catalogNumber",
-                        "nameSpace": "",
-                        "value": "123456"
-                      },
-                      "publishRecord": true,
-                      "remarks": ""
-                    }
-                  ],
-                  "individualCircumstances": [
-                    {
-                      "collectorsText": "collectorsText",
-                      "event": {
-                        "endDate": "endDate",
-                        "expeditionText": "expeditionText",
-                        "localityInformation": {
-                          "coordinatesVerbatim": "coordinatesVerbatim",
-                          "curatedLocalities": [
-                            {
-                              "id": "1",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "2",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "3",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "4",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "5",
-                              "type": "curatedLocality"
-                            }
-                          ],
-                          "georeferenceSourcesText": "georeferenceSourcesText",
-                          "localityVerbatim": "localityVerbatim",
-                          "position": {
-                            "geodeticDatum": "geodeticDatum text",
-                            "latitude": "latitude-string",
-                            "longitude": "longitude-string",
-                            "uncertaintyInMeters": 10
-                          },
-                          "remarks": "remarks",
-                          "verticalPosition": {
-                            "maximumDepthInMeters": 100,
-                            "maximumElevationInMeters": 100,
-                            "minimumDepthInMeters": 20,
-                            "minimumElevationInMeters": 20
-                          }
-                        },
-                        "startDate": "startDate"
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
           "primary": {
             "data": {
               "type": "specimen",
@@ -11279,172 +11182,134 @@
                 }
               },
               "attributes": {
-                "individualGroup": {
-                  "taxonInformation": {},
-                  "individualCircumstances": [
-                    {
-                      "id": "string",
-                      "collectorsText": "Bergström, U",
-                      "event": {
-                        "startDate": {
-                          "isoDate": "string",
-                          "dateText": "Before 1800",
-                          "day": 25,
-                          "month": 12,
-                          "year": 1981
-                        },
-                        "endDate": {
-                          "isoDate": "string",
-                          "dateText": "Before 1800",
-                          "day": 25,
-                          "month": 12,
-                          "year": 1981
-                        },
-                        "expeditionText": "Vega Expedition",
-                        "localityInformation": {
-                          "curatedLocalities": [
-                            {
-                              "id": "1",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "2",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "3",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "4",
-                              "type": "curatedLocality"
-                            },
-                            {
-                              "id": "5",
-                              "type": "curatedLocality"
-                            }
-                          ],
-                          "position": {
-                            "latitude": "string",
-                            "longitude": "string",
-                            "geodeticDatum": "string",
-                            "uncertaintyInMeters": 0
-                          },
-                          "polygon": {
-                            "vertices": [
-                              null
-                            ]
-                          },
-                          "verticalPosition": {
-                            "maximumDepthInMeters": 0,
-                            "maximumElevationInMeters": 0,
-                            "minimumDepthInMeters": 0,
-                            "minimumElevationInMeters": 0
-                          },
-                          "coordinatesVerbatim": "string",
-                          "georeferenceSourcesText": "string",
-                          "localityText": "string",
-                          "remarks": "string",
-                          "localityVerbatim": "string"
-                        }
-                      }
-                    }
-                  ],
-                  "featureObservations": [
-                    {
-                      "featureObservationAgent": "Doe, J.",
-                      "date": {
-                        "isoDate": "string",
-                        "dateText": "Before 1800",
-                        "day": 25,
-                        "month": 12,
-                        "year": 1981
-                      },
-                      "featureObservationText": "10 years",
-                      "featureObservationType": {
-                        "id": "2",
-                        "type": "featureObservationType"
-                      },
-                      "methodText": "Known age"
-                    }
-                  ],
-                  "id": "string",
-                  "identifiers": [
-                    {
-                      "identifier": {
-                        "identifierType": "catalogNumber",
-                        "nameSpace": "",
-                        "value": "123456"
-                      },
-                      "publishRecord": true,
-                      "remarks": "Some remarks"
-                    }
-                  ],
-                  "distinguishedUnits": [
-                    {
-                      "alternateIdentifiersText": "Skin complete, prepared",
-                      "identifiers": [
+                "determinations": [
+                  {
+                    "determinationVerbatim": "determinationVerbatim",
+                    "determinedByAgentText": "determinedByAgentText",
+                    "isCurrentDetermination": true,
+                    "remarks": "remarks",
+                    "taxon": {
+                      "id": "2367",
+                      "type": "taxon"
+                    },
+                    "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
+                  }
+                ],
+                "distinguishedUnits": [
+                  {
+                    "alternateIdentifiersText": "alternateIdentifiersText",
+                    "physicalUnit": {
+                      "id": "2234",
+                      "type": "physicalUnit"
+                    },
+                    "physicalUnitText": "physicalUnitText",
+                    "lid": "af80e78b-c61e-485f-80a8-06d237400583"
+                  }
+                ],
+                "events": [
+                  {
+                    "endDate": "endDate",
+                    "expeditionText": "expeditionText",
+                    "localityInformation": {
+                      "coordinatesVerbatim": "coordinatesVerbatim",
+                      "curatedLocalities": [
                         {
-                          "publishRecord": true,
-                          "remarks": "Some remarks"
+                          "id": "1",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "2",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "3",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "4",
+                          "type": "curatedLocality"
+                        },
+                        {
+                          "id": "5",
+                          "type": "curatedLocality"
                         }
                       ],
-                      "collectingCircumstance": {
-                        "id": "string",
-                        "collectorsText": "Bergström, U",
-                        "event": {
-                          "startDate": {
-                            "isoDate": "string",
-                            "dateText": "Before 1800",
-                            "day": 25,
-                            "month": 12,
-                            "year": 1981
-                          },
-                          "endDate": {
-                            "isoDate": "string",
-                            "dateText": "Before 1800",
-                            "day": 25,
-                            "month": 12,
-                            "year": 1981
-                          },
-                          "expeditionText": "Vega Expedition",
-                          "localityInformation": {
-                            "position": {
-                              "latitude": "string",
-                              "longitude": "string",
-                              "geodeticDatum": "string",
-                              "uncertaintyInMeters": 0
-                            },
-                            "polygon": {
-                              "vertices": [
-                                null
-                              ]
-                            },
-                            "verticalPosition": {
-                              "maximumDepthInMeters": 0,
-                              "maximumElevationInMeters": 0,
-                              "minimumDepthInMeters": 0,
-                              "minimumElevationInMeters": 0
-                            },
-                            "coordinatesVerbatim": "string",
-                            "georeferenceSourcesText": "string",
-                            "localityText": "string",
-                            "remarks": "string",
-                            "localityVerbatim": "string"
-                          }
-                        }
+                      "georeferenceSourcesText": "georeferenceSourcesText",
+                      "localityVerbatim": "localityVerbatim",
+                      "position": {
+                        "geodeticDatum": "geodeticDatum text",
+                        "latitude": "latitude-string",
+                        "longitude": "longitude-string",
+                        "uncertaintyInMeters": 10
                       },
-                      "id": "string",
-                      "physicalUnitText": "Skin complete, prepared",
-                      "physicalUnit": {
-                        "id": "2234",
-                        "type": "physicalUnit"
+                      "remarks": "remarks",
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 100,
+                        "maximumElevationInMeters": 100,
+                        "minimumDepthInMeters": 20,
+                        "minimumElevationInMeters": 20
                       }
-                    }
-                  ],
-                  "version": 0
-                },
-                "version": 0
+                    },
+                    "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+                  }
+                ],
+                "featureObservations": [
+                  {
+                    "featureObservationAgent": "featureObservationAgent",
+                    "featureObservationText": "21",
+                    "featureObservationType": {
+                      "id": "1",
+                      "type": "featureObservationType"
+                    },
+                    "methodText": "methodText",
+                    "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+                  }
+                ],
+                "identifiers": [
+                  {
+                    "identifier": {
+                      "identifierType": "catalogNumber",
+                      "nameSpace": "",
+                      "value": "123456"
+                    },
+                    "publishRecord": true,
+                    "remarks": "",
+                    "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                  }
+                ],
+                "individualCircumstances": [
+                  {
+                    "collectorsText": "collectorsText",
+                    "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
+                    "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
+                  }
+                ],
+                "individualGroup": [
+                  {
+                    "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
+                    "featureObservations": [
+                      "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+                    ],
+                    "distinguishedUnits": [
+                      "af80e78b-c61e-485f-80a8-06d237400583"
+                    ],
+                    "identifiers": [
+                      "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                    ],
+                    "individualCircumstances": [
+                      "44ab19bf-4328-42d3-9f8e-c88854847234"
+                    ],
+                    "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+                  }
+                ],
+                "taxonInformation": [
+                  {
+                    "determinations": [
+                      "a70d054c-ec04-45bc-860b-d522f8f48328"
+                    ],
+                    "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+                  }
+                ]
               }
             }
           }
@@ -11495,172 +11360,134 @@
               }
             },
             "attributes": {
-              "individualGroup": {
-                "taxonInformation": {},
-                "individualCircumstances": [
-                  {
-                    "id": "string",
-                    "collectorsText": "Bergström, U",
-                    "event": {
-                      "startDate": {
-                        "isoDate": "string",
-                        "dateText": "Before 1800",
-                        "day": 25,
-                        "month": 12,
-                        "year": 1981
-                      },
-                      "endDate": {
-                        "isoDate": "string",
-                        "dateText": "Before 1800",
-                        "day": 25,
-                        "month": 12,
-                        "year": 1981
-                      },
-                      "expeditionText": "Vega Expedition",
-                      "localityInformation": {
-                        "curatedLocalities": [
-                          {
-                            "id": "1",
-                            "type": "curatedLocality"
-                          },
-                          {
-                            "id": "2",
-                            "type": "curatedLocality"
-                          },
-                          {
-                            "id": "3",
-                            "type": "curatedLocality"
-                          },
-                          {
-                            "id": "4",
-                            "type": "curatedLocality"
-                          },
-                          {
-                            "id": "5",
-                            "type": "curatedLocality"
-                          }
-                        ],
-                        "position": {
-                          "latitude": "string",
-                          "longitude": "string",
-                          "geodeticDatum": "string",
-                          "uncertaintyInMeters": 0
-                        },
-                        "polygon": {
-                          "vertices": [
-                            null
-                          ]
-                        },
-                        "verticalPosition": {
-                          "maximumDepthInMeters": 0,
-                          "maximumElevationInMeters": 0,
-                          "minimumDepthInMeters": 0,
-                          "minimumElevationInMeters": 0
-                        },
-                        "coordinatesVerbatim": "string",
-                        "georeferenceSourcesText": "string",
-                        "localityText": "string",
-                        "remarks": "string",
-                        "localityVerbatim": "string"
-                      }
-                    }
-                  }
-                ],
-                "featureObservations": [
-                  {
-                    "featureObservationAgent": "Doe, J.",
-                    "date": {
-                      "isoDate": "string",
-                      "dateText": "Before 1800",
-                      "day": 25,
-                      "month": 12,
-                      "year": 1981
-                    },
-                    "featureObservationText": "10 years",
-                    "featureObservationType": {
-                      "id": "2",
-                      "type": "featureObservationType"
-                    },
-                    "methodText": "Known age"
-                  }
-                ],
-                "id": "string",
-                "identifiers": [
-                  {
-                    "identifier": {
-                      "identifierType": "catalogNumber",
-                      "nameSpace": "",
-                      "value": "123456"
-                    },
-                    "publishRecord": true,
-                    "remarks": "Some remarks"
-                  }
-                ],
-                "distinguishedUnits": [
-                  {
-                    "alternateIdentifiersText": "Skin complete, prepared",
-                    "identifiers": [
+              "determinations": [
+                {
+                  "determinationVerbatim": "determinationVerbatim",
+                  "determinedByAgentText": "determinedByAgentText",
+                  "isCurrentDetermination": true,
+                  "remarks": "remarks",
+                  "taxon": {
+                    "id": "2367",
+                    "type": "taxon"
+                  },
+                  "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
+                }
+              ],
+              "distinguishedUnits": [
+                {
+                  "alternateIdentifiersText": "alternateIdentifiersText",
+                  "physicalUnit": {
+                    "id": "2234",
+                    "type": "physicalUnit"
+                  },
+                  "physicalUnitText": "physicalUnitText",
+                  "lid": "af80e78b-c61e-485f-80a8-06d237400583"
+                }
+              ],
+              "events": [
+                {
+                  "endDate": "endDate",
+                  "expeditionText": "expeditionText",
+                  "localityInformation": {
+                    "coordinatesVerbatim": "coordinatesVerbatim",
+                    "curatedLocalities": [
                       {
-                        "publishRecord": true,
-                        "remarks": "Some remarks"
+                        "id": "1",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "2",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "3",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "4",
+                        "type": "curatedLocality"
+                      },
+                      {
+                        "id": "5",
+                        "type": "curatedLocality"
                       }
                     ],
-                    "collectingCircumstance": {
-                      "id": "string",
-                      "collectorsText": "Bergström, U",
-                      "event": {
-                        "startDate": {
-                          "isoDate": "string",
-                          "dateText": "Before 1800",
-                          "day": 25,
-                          "month": 12,
-                          "year": 1981
-                        },
-                        "endDate": {
-                          "isoDate": "string",
-                          "dateText": "Before 1800",
-                          "day": 25,
-                          "month": 12,
-                          "year": 1981
-                        },
-                        "expeditionText": "Vega Expedition",
-                        "localityInformation": {
-                          "position": {
-                            "latitude": "string",
-                            "longitude": "string",
-                            "geodeticDatum": "string",
-                            "uncertaintyInMeters": 0
-                          },
-                          "polygon": {
-                            "vertices": [
-                              null
-                            ]
-                          },
-                          "verticalPosition": {
-                            "maximumDepthInMeters": 0,
-                            "maximumElevationInMeters": 0,
-                            "minimumDepthInMeters": 0,
-                            "minimumElevationInMeters": 0
-                          },
-                          "coordinatesVerbatim": "string",
-                          "georeferenceSourcesText": "string",
-                          "localityText": "string",
-                          "remarks": "string",
-                          "localityVerbatim": "string"
-                        }
-                      }
+                    "georeferenceSourcesText": "georeferenceSourcesText",
+                    "localityVerbatim": "localityVerbatim",
+                    "position": {
+                      "geodeticDatum": "geodeticDatum text",
+                      "latitude": "latitude-string",
+                      "longitude": "longitude-string",
+                      "uncertaintyInMeters": 10
                     },
-                    "id": "string",
-                    "physicalUnitText": "Skin complete, prepared",
-                    "physicalUnit": {
-                      "id": "2234",
-                      "type": "physicalUnit"
+                    "remarks": "remarks",
+                    "verticalPosition": {
+                      "maximumDepthInMeters": 100,
+                      "maximumElevationInMeters": 100,
+                      "minimumDepthInMeters": 20,
+                      "minimumElevationInMeters": 20
                     }
-                  }
-                ],
-                "version": 0
-              },
-              "version": 0
+                  },
+                  "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+                }
+              ],
+              "featureObservations": [
+                {
+                  "featureObservationAgent": "featureObservationAgent",
+                  "featureObservationText": "21",
+                  "featureObservationType": {
+                    "id": "1",
+                    "type": "featureObservationType"
+                  },
+                  "methodText": "methodText",
+                  "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+                }
+              ],
+              "identifiers": [
+                {
+                  "identifier": {
+                    "identifierType": "catalogNumber",
+                    "nameSpace": "",
+                    "value": "123456"
+                  },
+                  "publishRecord": true,
+                  "remarks": "",
+                  "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                }
+              ],
+              "individualCircumstances": [
+                {
+                  "collectorsText": "collectorsText",
+                  "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
+                  "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
+                }
+              ],
+              "individualGroup": [
+                {
+                  "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
+                  "featureObservations": [
+                    "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+                  ],
+                  "distinguishedUnits": [
+                    "af80e78b-c61e-485f-80a8-06d237400583"
+                  ],
+                  "identifiers": [
+                    "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                  ],
+                  "individualCircumstances": [
+                    "44ab19bf-4328-42d3-9f8e-c88854847234"
+                  ],
+                  "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+                }
+              ],
+              "taxonInformation": [
+                {
+                  "determinations": [
+                    "a70d054c-ec04-45bc-860b-d522f8f48328"
+                  ],
+                  "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+                }
+              ]
             }
           }
         },

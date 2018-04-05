@@ -5,6 +5,7 @@ module.exports = function createValidatorFactory(models) {
   const defaultOptions = {
     // errorDataPath: 'property',
     allErrors: true,
+    format: 'full',
     jsonPointers: true, // -> /members/0
     logger: false,
     useDefaults: true, // e.g.to may have default empty array
@@ -12,7 +13,7 @@ module.exports = function createValidatorFactory(models) {
   }
 
   const createAjv = options => {
-    const ajv = new Ajv(options)
+    const ajv = new Ajv({ ...options, format: 'full' })
 
     Object.keys(models).forEach(key => {
       ajv.addSchema(models[key], key)

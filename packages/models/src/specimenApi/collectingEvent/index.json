@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "id": {
       "type": "string"
     },

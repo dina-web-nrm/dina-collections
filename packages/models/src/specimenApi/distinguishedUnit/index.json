@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "alternateIdentifiersText": {
       "type": "string",
       "example": "Skin complete, prepared"
