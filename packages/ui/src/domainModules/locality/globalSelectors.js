@@ -40,6 +40,7 @@ const getCuratedLocalitiesArrayByFilter = createSelector(
         return (locality.parent && locality.parent.id) === parentIdFilter
       })
     }
+
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
       const firstLetterMatches = filteredCuratedLocalities.filter(
@@ -62,7 +63,13 @@ const getCuratedLocalitiesArrayByFilter = createSelector(
     }
 
     if (limitFilter) {
-      return filteredCuratedLocalities.splice(offset, limitFilter)
+      // avoid mutating filteredCuratedLocalities, as the mutation carried over
+      // to future calls of this selector
+      const localitiesToShow = [...filteredCuratedLocalities].splice(
+        offset,
+        limitFilter
+      )
+      return localitiesToShow
     }
     return filteredCuratedLocalities
   }
