@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Button, Icon, Label, List } from 'semantic-ui-react'
 import {
   ITEM_CLICK,
+  SET_ITEM_CREATE,
   SET_ITEM_EDIT,
   SET_ITEM_INSPECT,
 } from 'domainModules/locality/interactions'
@@ -90,6 +91,22 @@ class ListItem extends Component {
               size="tiny"
             >
               <Icon name="folder open" />
+            </Button>
+          )}
+          {displayNavigationButtons && (
+            <Button
+              color="orange"
+              onClick={event => {
+                event.preventDefault()
+                event.stopPropagation()
+                onInteraction(SET_ITEM_CREATE, {
+                  itemId: curatedLocality.id,
+                })
+              }}
+              size="tiny"
+              style={{ marginLeft: 10 }}
+            >
+              Add child
             </Button>
           )}
         </List.Content>

@@ -91,6 +91,10 @@ class App extends Component {
             />
             <Route
               component={ManageLocalities}
+              path={`${match.url}/localities/:localityId/createChild`}
+            />
+            <Route
+              component={ManageLocalities}
               path={`${match.url}/localities/:localityId/edit`}
             />
             <Route
