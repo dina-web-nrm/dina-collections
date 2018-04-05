@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
@@ -69,8 +68,6 @@ class LocalityDropdownSearch extends Component {
     if (!allLocalitiesFetched && !config.isTest) {
       return null
     }
-    const leftIconButton = <Button icon="user" />
-
     return (
       <DropdownSearch
         {...rest}
@@ -87,7 +84,6 @@ class LocalityDropdownSearch extends Component {
         onSearchChange={({ searchQuery }) => {
           updateSearchQuery(group, searchQuery)
         }}
-        rightIconButton={leftIconButton}
         type="dropdown-search-connect"
       />
     )
