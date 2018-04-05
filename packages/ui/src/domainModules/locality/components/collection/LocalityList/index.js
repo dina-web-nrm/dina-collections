@@ -15,7 +15,7 @@ import ListItem from './ListItem'
 
 const mapStateToProps = state => {
   const filter = keyObjectGlobalSelectors.get.filter(state)
-  const filterParentId = filter && filter.parentId
+  const filterParentId = (filter && filter.parentId) || undefined
   const filterParent =
     filterParentId &&
     localityServiceSelectors.getCuratedLocality(state, filterParentId)
@@ -95,9 +95,14 @@ class LocalityList extends Component {
   selectParent() {
     const { filterParent } = this.props
     if (filterParent && filterParent.parent && filterParent.parent.id) {
+      const filterParentParentId = filterParent.parent.id
       this.props.setFilterSearchGroup('')
       this.props.setFilterSearchSearchQuery('')
-      this.props.setFilterParentId(filterParent.parent.id)
+      if (filterParent.parent.id === '1') {
+        this.props.setFilterParentId('') // don't use root as only parent filter
+      } else {
+        this.props.setFilterParentId(filterParentParentId)
+      }
     }
   }
 
