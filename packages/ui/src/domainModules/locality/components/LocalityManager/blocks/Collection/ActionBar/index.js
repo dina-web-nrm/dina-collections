@@ -71,6 +71,7 @@ class ActionBar extends Component {
     const {
       collectionBlockType,
       displayNavigationButtons,
+      filterGroup,
       onInteraction,
     } = this.props
     return (
@@ -119,28 +120,24 @@ class ActionBar extends Component {
                 placeholder="select group"
                 size="small"
                 style={{ marginLeft: 10, minWidth: 140 }}
-                value={this.props.filterGroup}
+                value={filterGroup}
               />
+              {displayNavigationButtons && (
+                <Button
+                  color="orange"
+                  onClick={event => {
+                    event.preventDefault()
+                    onInteraction(SET_ITEM_CREATE)
+                  }}
+                  style={{ marginLeft: 10 }}
+                >
+                  New locality
+                </Button>
+              )}
             </Grid.Column>
             <Grid.Column verticalAlign="bottom" width={14}>
               <AncestorTag />
             </Grid.Column>
-            {displayNavigationButtons && (
-              <Grid.Column textAlign="right" width={2}>
-                <Button.Group floated="right">
-                  <Button
-                    color="orange"
-                    floaded="right"
-                    onClick={event => {
-                      event.preventDefault()
-                      onInteraction(SET_ITEM_CREATE)
-                    }}
-                  >
-                    New
-                  </Button>
-                </Button.Group>
-              </Grid.Column>
-            )}
           </Grid.Row>
         </Grid>
       </Form>
