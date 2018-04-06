@@ -17,7 +17,7 @@ export default function getTaxaByName(
       type: TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
     })
 
-    return apiClient.call(GET_TAXA_BY_NAME, queryParams).then(
+    return apiClient.call(GET_TAXA_BY_NAME, { queryParams }).then(
       response => {
         const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
