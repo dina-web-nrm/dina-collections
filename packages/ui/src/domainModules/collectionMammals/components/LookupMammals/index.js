@@ -141,12 +141,7 @@ class LookupMammals extends Component {
           </Table.Header>
           {result.length ? (
             <Table.Body>
-              {result.map(({ id, individualGroup } = {}) => {
-                const {
-                  // taxonInformation,
-                  identifiers,
-                } = individualGroup
-
+              {result.map(({ id, identifiers } = {}) => {
                 const catalogNumberIdentifier =
                   identifiers.find(
                     ({ identifier }) =>
