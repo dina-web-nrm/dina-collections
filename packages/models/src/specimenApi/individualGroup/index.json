@@ -6,25 +6,25 @@
       "type": "string"
     },
     "taxonInformation": {
-      "type": "object",
-      "$ref": "__ROOT__taxonInformation"
+      "$ref": "__ROOT__taxonInformation",
+      "x-reference-type": "internal"
     },
     "individualCircumstances": {
       "type": "array",
-      "items": { "$ref": "__ROOT__individualCircumstance" }
+      "items": { "$ref": "__ROOT__individualCircumstance", "x-reference-type": "internal" }
     },
     "featureObservations": {
       "type": "array",
-      "items": { "$ref": "__ROOT__featureObservation" }
+      "items": { "$ref": "__ROOT__featureObservation", "x-reference-type": "internal" }
     },
     "id": { "type": "string" },
     "identifiers": {
       "type": "array",
-      "items": { "$ref": "__ROOT__identifier" }
+      "items": { "$ref": "__ROOT__identifier", "x-reference-type": "internal" }
     },
     "distinguishedUnits": {
       "type": "array",
-      "items": { "$ref": "__ROOT__distinguishedUnit" }
+      "items": { "$ref": "__ROOT__distinguishedUnit", "x-reference-type": "internal" }
     },
     "readOnly": {
       "$ref": "__ROOT__readOnly"

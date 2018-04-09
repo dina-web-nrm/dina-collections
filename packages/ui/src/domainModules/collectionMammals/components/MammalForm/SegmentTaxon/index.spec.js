@@ -44,53 +44,6 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     hasOneEmptyDetermination(store)
   })
 
-  it('adds empty determination in transformOutput, if all determinations have been removed', () => {
-    const { store, rootComponent } = setupTestComponent({
-      component: (
-        <MammalForm
-          handleFormSubmit={handleFormSubmit}
-          initialValues={transformInput({})}
-        />
-      ),
-      fullExport: true,
-    })
-
-    hasOneEmptyDetermination(store)
-
-    const removeDeterminationButton = rootComponent
-      .find('Accordion')
-      .find('Button')
-      .at(2)
-    removeDeterminationButton.simulate('click')
-
-    // all determinations removed
-    expect(
-      store.getState().form.mammalForm.values.taxonInformation.determinations
-        .length
-    ).toBe(0)
-
-    const form = rootComponent.find('form')
-    form.simulate('submit')
-
-    const {
-      submitFailed,
-      values,
-      syncErrors,
-    } = store.getState().form.mammalForm
-    expect(syncErrors).toBe(undefined)
-    const output = transformOutput(values)
-    // should now have empty identification
-    expect(
-      output.specimen.individualGroup.taxonInformation.determinations.length
-    ).toBe(1)
-    expect(
-      Object.keys(
-        output.specimen.individualGroup.taxonInformation.determinations[0]
-      ).length
-    ).toBe(0)
-    expect(submitFailed).toBe(undefined)
-  })
-
   it('adds empty determination when clicking "Add determination"', () => {
     const { store, rootComponent } = setupTestComponent({
       component: (

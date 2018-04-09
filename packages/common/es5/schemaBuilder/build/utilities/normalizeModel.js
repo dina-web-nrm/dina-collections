@@ -49,9 +49,9 @@ var normalizeProperty = function normalizeProperty(_ref) {
   }
 
   if (normalize && property.$ref && property['x-reference-type'] && property['x-reference-type'] === 'internal') {
-    normalizedProperty = (0, _extends4.default)({}, property, {
-      $ref: '__ROOT__internalModelReference'
-    });
+    normalizedProperty = {
+      $ref: '__ROOT__lid'
+    };
   }
 
   if (normalizedProperty['x-reference-type']) {

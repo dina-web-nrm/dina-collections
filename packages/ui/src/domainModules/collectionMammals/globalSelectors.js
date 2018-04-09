@@ -6,7 +6,7 @@ import {
 } from 'dataModules/curatedListService/selectors'
 import {
   getLocalState as getSpecimenState,
-  getSpecimenIndividualGroup,
+  getSpecimen,
   getSpecimenReadOnly,
 } from 'dataModules/specimenService/selectors'
 import {
@@ -22,12 +22,12 @@ const getFeatureObservationTypesGlobal = state => {
   return getFeatureObservationTypes(getCuratedListState(state))
 }
 
-const getInitialIndividualGroup = (state, specimenId) => {
+const getInitialSpecimen = (state, specimenId) => {
   if (!specimenId) {
     return {}
   }
 
-  return getSpecimenIndividualGroup(getSpecimenState(state), specimenId)
+  return getSpecimen(getSpecimenState(state), specimenId)
 }
 
 const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
@@ -41,16 +41,16 @@ const getPhysicalUnitsGlobal = state => {
 const getMammalFormInitialValues = createSelector(
   [
     getFeatureObservationTypesGlobal,
-    getInitialIndividualGroup,
+    getInitialSpecimen,
     getPhysicalUnitsGlobal,
     getSpecimenReadOnlyGlobalSelector,
   ],
-  (featureObservationTypes, individualGroup, physicalUnits, readOnly) => {
+  (featureObservationTypes, specimen, physicalUnits, readOnly) => {
     return transformInput({
       featureObservationTypes,
-      individualGroup,
       physicalUnits,
       readOnly,
+      specimen,
     })
   }
 )

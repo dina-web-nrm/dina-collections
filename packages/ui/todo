@@ -1,0 +1,8 @@
+* Make normalize work on specimen.
+specimen in -> normalize and keep other props same for denormalize
+
+* Add normalize and denormalize as a part of transform input and output of form
+
+* Make form work on specimen
+
+* Reuse centralized column def

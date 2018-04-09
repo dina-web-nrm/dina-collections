@@ -15,6 +15,17 @@ const scenarios = [
   updateExistingRecord,
 ]
 
+const nonDenormalizingTransformInput = input => {
+  return transformInput({
+    ...input,
+    denormalize: false,
+  })
+}
+
+const nonNormalizingTransformOutput = output => {
+  return transformOutput(output, false)
+}
+
 uiDescribe(
   'domainModules/collectionMammals/components/MammalForm/Scenarios',
   () => {
@@ -23,8 +34,8 @@ uiDescribe(
       formName: 'mammalForm',
       mount: true,
       scenarios,
-      transformInput,
-      transformOutput,
+      transformInput: nonDenormalizingTransformInput,
+      transformOutput: nonNormalizingTransformOutput,
     })
   }
 )

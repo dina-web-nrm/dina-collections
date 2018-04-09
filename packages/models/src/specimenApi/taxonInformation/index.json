@@ -12,7 +12,7 @@
     },
     "determinations": {
       "type": "array",
-      "items": { "$ref": "__ROOT__determination" }
+      "items": { "$ref": "__ROOT__determination", "x-reference-type": "internal" }
     }
   }
 }

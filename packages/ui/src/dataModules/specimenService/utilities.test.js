@@ -23,37 +23,39 @@ describe('dataModules/specimenService/utilities', () => {
         type: 'featureObservationType',
       },
     }
-    const individualGroup = {
-      distinguishedUnits: [
-        {
-          distinguishedUnitType: {
-            category: 'skin',
+
+    const distinguishedUnits = [
+      {
+        distinguishedUnitType: {
+          category: 'skin',
+          id: '1',
+          type: 'distinguishedUnitType',
+        },
+        physicalUnit: {
+          storageLocation: {
             id: '1',
-            type: 'distinguishedUnitType',
-          },
-          physicalUnit: {
-            storageLocation: {
-              id: '1',
-              name: 'skin room',
-              type: 'storageLocation',
-            },
+            name: 'skin room',
+            type: 'storageLocation',
           },
         },
-        {
-          distinguishedUnitType: {
-            category: 'skeleton',
+      },
+      {
+        distinguishedUnitType: {
+          category: 'skeleton',
+          id: '2',
+          type: 'distinguishedUnitType',
+        },
+        physicalUnit: {
+          storageLocation: {
             id: '2',
-            type: 'distinguishedUnitType',
-          },
-          physicalUnit: {
-            storageLocation: {
-              id: '2',
-              name: 'bone room',
-              type: 'storageLocation',
-            },
+            name: 'bone room',
+            type: 'storageLocation',
           },
         },
-      ],
+      },
+    ]
+
+    const individualGroup = {
       featureObservations: [
         {
           featureObservationText: 'female',
@@ -139,48 +141,52 @@ describe('dataModules/specimenService/utilities', () => {
       curatedLocalities,
       distinguishedUnitTypes,
       featureObservationTypes,
-      individualGroup,
       savedPhysicalUnits,
+      specimen: {
+        distinguishedUnits,
+        individualGroup,
+      },
       storageLocations,
       taxa,
     })
+
     const expectedResult = {
       data: {
         attributes: {
+          distinguishedUnits: [
+            {
+              distinguishedUnitType: {
+                category: 'skin',
+                id: '1',
+                type: 'distinguishedUnitType',
+              },
+              physicalUnit: {
+                id: '1',
+                storageLocation: {
+                  id: '1',
+                  type: 'storageLocation',
+                },
+                type: 'physicalUnit',
+              },
+            },
+            {
+              distinguishedUnitType: {
+                category: 'skeleton',
+                id: '2',
+                type: 'distinguishedUnitType',
+              },
+              physicalUnit: {
+                id: '2',
+                storageLocation: {
+                  id: '2',
+                  type: 'storageLocation',
+                },
+                type: 'physicalUnit',
+              },
+            },
+          ],
           individualGroup: {
             ...individualGroup,
-            distinguishedUnits: [
-              {
-                distinguishedUnitType: {
-                  category: 'skin',
-                  id: '1',
-                  type: 'distinguishedUnitType',
-                },
-                physicalUnit: {
-                  id: '1',
-                  storageLocation: {
-                    id: '1',
-                    type: 'storageLocation',
-                  },
-                  type: 'physicalUnit',
-                },
-              },
-              {
-                distinguishedUnitType: {
-                  category: 'skeleton',
-                  id: '2',
-                  type: 'distinguishedUnitType',
-                },
-                physicalUnit: {
-                  id: '2',
-                  storageLocation: {
-                    id: '2',
-                    type: 'storageLocation',
-                  },
-                  type: 'physicalUnit',
-                },
-              },
-            ],
           },
         },
         relationships: {

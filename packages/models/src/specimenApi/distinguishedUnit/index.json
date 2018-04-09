@@ -11,11 +11,13 @@
     "identifiers": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__identifier"
+        "$ref": "__ROOT__identifier",
+        "x-reference-type": "internal"
       }
     },
     "collectingCircumstance": {
-      "$ref": "__ROOT__collectingCircumstance"
+      "$ref": "__ROOT__collectingCircumstance",
+      "x-reference-type": "internal"
     },
     "curatorialAssessments": {
       "type": "array",

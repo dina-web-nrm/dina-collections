@@ -1,98 +1,87 @@
-/* eslint-disable sort-keys */
+'use strict';
+
 module.exports = {
-  taxonInformation: {
-    determinations: [
-      {
+  id: '1234',
+  type: 'specimen',
+  individualGroup: {
+    taxonInformation: {
+      determinations: [{
         determinationVerbatim: 'determinationVerbatim',
         determinedByAgentText: 'determinedByAgentText',
         isCurrentDetermination: true,
         remarks: 'remarks',
         taxon: {
           id: '2367',
-          type: 'taxon',
-        },
-      },
-    ],
-  },
-  featureObservations: [
-    {
+          type: 'taxon'
+        }
+      }]
+    },
+    featureObservations: [{
       featureObservationAgent: 'featureObservationAgent',
       featureObservationText: '21',
       featureObservationType: {
         id: '1',
-        type: 'featureObservationType',
+        type: 'featureObservationType'
       },
-      methodText: 'methodText',
-    },
-  ],
-  distinguishedUnits: [
-    {
+      methodText: 'methodText'
+    }],
+    distinguishedUnits: [{
       alternateIdentifiersText: 'alternateIdentifiersText',
       physicalUnit: {
         id: '2234',
-        type: 'physicalUnit',
+        type: 'physicalUnit'
       },
-      physicalUnitText: 'physicalUnitText',
-    },
-  ],
-  identifiers: [
-    {
+      physicalUnitText: 'physicalUnitText'
+    }],
+    identifiers: [{
       identifier: {
         identifierType: 'catalogNumber',
         nameSpace: '',
-        value: '123456',
+        value: '123456'
       },
       publishRecord: true,
-      remarks: '',
-    },
-  ],
-  individualCircumstances: [
-    {
+      remarks: ''
+    }],
+    individualCircumstances: [{
       collectorsText: 'collectorsText',
       event: {
         endDate: 'endDate',
         expeditionText: 'expeditionText',
         localityInformation: {
           coordinatesVerbatim: 'coordinatesVerbatim',
-          curatedLocalities: [
-            {
-              id: '1',
-              type: 'curatedLocality',
-            },
-            {
-              id: '2',
-              type: 'curatedLocality',
-            },
-            {
-              id: '3',
-              type: 'curatedLocality',
-            },
-            {
-              id: '4',
-              type: 'curatedLocality',
-            },
-            {
-              id: '5',
-              type: 'curatedLocality',
-            },
-          ],
+          curatedLocalities: [{
+            id: '1',
+            type: 'curatedLocality'
+          }, {
+            id: '2',
+            type: 'curatedLocality'
+          }, {
+            id: '3',
+            type: 'curatedLocality'
+          }, {
+            id: '4',
+            type: 'curatedLocality'
+          }, {
+            id: '5',
+            type: 'curatedLocality'
+          }],
           georeferenceSourcesText: 'georeferenceSourcesText',
           localityVerbatim: 'localityVerbatim',
           position: {
             geodeticDatum: 'geodeticDatum text',
             latitude: 'latitude-string',
             longitude: 'longitude-string',
-            uncertaintyInMeters: 10,
+            uncertaintyInMeters: 10
           },
           remarks: 'remarks',
           verticalPosition: {
             maximumDepthInMeters: 100,
             maximumElevationInMeters: 100,
             minimumDepthInMeters: 20,
-            minimumElevationInMeters: 20,
-          },
-        },
-      },
-    },
-  ],
-}
+            minimumElevationInMeters: 20
+          }
+        }
+      }
+    }]
+  }
+};

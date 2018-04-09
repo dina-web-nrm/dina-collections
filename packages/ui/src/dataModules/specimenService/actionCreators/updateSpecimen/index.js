@@ -59,8 +59,8 @@ export default function updateSpecimen(
         curatedLocalities,
         distinguishedUnitTypes,
         featureObservationTypes,
-        individualGroup,
         savedPhysicalUnits,
+        specimen,
         storageLocations,
         taxa,
       })

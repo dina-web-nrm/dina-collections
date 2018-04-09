@@ -59,32 +59,14 @@
     "x-modelType": "model",
     "id": "externalModelReference"
   },
-  "internalModelReference": {
+  "lid": {
     "additionalProperties": false,
-    "description": "A reference to a model owned by the same service but stored in normalized form",
-    "properties": {
-      "uuid": {
-        "type": "string"
-      },
-      "type": {
-        "type": "string"
-      }
-    },
-    "required": [
-      "uuid",
-      "type"
-    ],
-    "x-category": "core",
-    "x-modelType": "model",
-    "id": "internalModelReference"
-  },
-  "modelReference": {
-    "additionalProperties": false,
-    "description": "A reference to a model",
+    "description": "A local identifier lid (local id). Should be a uuid",
+    "type": "string",
     "properties": {},
     "x-category": "core",
     "x-modelType": "model",
-    "id": "modelReference"
+    "id": "lid"
   },
   "notDefinedModel": {
     "additionalProperties": true,
@@ -558,7 +540,7 @@
         "description": "Name of the collector"
       },
       "event": {
-        "$ref": "event"
+        "$ref": "lid"
       }
     },
     "description": "### Definition\n\nThe context under which some specific material was collected.\n\n### Note(s)\n\nThis includes collecting information of various kinds, for example collector(s) and collecting method.\n",
@@ -701,11 +683,11 @@
       "identifiers": {
         "type": "array",
         "items": {
-          "$ref": "identifier"
+          "$ref": "lid"
         }
       },
       "collectingCircumstance": {
-        "$ref": "collectingCircumstance"
+        "$ref": "lid"
       },
       "curatorialAssessments": {
         "type": "array",
@@ -813,7 +795,7 @@
         "description": "Name of the collector"
       },
       "event": {
-        "$ref": "event"
+        "$ref": "lid"
       },
       "specificCircumstance": {
         "anyOf": [
@@ -842,19 +824,18 @@
         "type": "string"
       },
       "taxonInformation": {
-        "type": "object",
-        "$ref": "taxonInformation"
+        "$ref": "lid"
       },
       "individualCircumstances": {
         "type": "array",
         "items": {
-          "$ref": "individualCircumstance"
+          "$ref": "lid"
         }
       },
       "featureObservations": {
         "type": "array",
         "items": {
-          "$ref": "featureObservation"
+          "$ref": "lid"
         }
       },
       "id": {
@@ -863,13 +844,13 @@
       "identifiers": {
         "type": "array",
         "items": {
-          "$ref": "identifier"
+          "$ref": "lid"
         }
       },
       "distinguishedUnits": {
         "type": "array",
         "items": {
-          "$ref": "distinguishedUnit"
+          "$ref": "lid"
         }
       },
       "readOnly": {
@@ -1101,7 +1082,7 @@
       "determinations": {
         "type": "array",
         "items": {
-          "$ref": "determination"
+          "$ref": "lid"
         }
       }
     },
