@@ -1,6 +1,6 @@
 const normalizedSchemaSpecification = require('common/src/normalize/normalizedSchemaSpecification')
 
-// const loadInitialData = require('./loadInitialData')
+const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
 const normalizedColumnNames = Object.keys(
@@ -24,8 +24,8 @@ module.exports = [
     factory: specimenFactory,
     name: 'specimen',
   },
-  // {
-  //   factory: loadInitialData,
-  //   name: 'loadInitialData',
-  // },
+  {
+    factory: loadInitialData,
+    name: 'loadInitialData',
+  },
 ]

@@ -10,7 +10,6 @@ export default function transformInput({
   distinguishedUnitTypes = {},
   featureObservationTypes = {},
   physicalUnits = {},
-  readOnly = undefined,
   specimen = {},
   storageLocations = {},
 }) {
@@ -43,7 +42,6 @@ export default function transformInput({
     featureObservations,
     identifiers,
     individualCircumstances,
-    readOnly,
     taxonInformation,
   }
 }

@@ -50,11 +50,9 @@ export default function transformOutput(formData, normalize = true) {
   const specimen = normalize
     ? normalizeSpecimen({
         individualGroup,
-        readOnly: formData.readOnly,
       })
     : {
         individualGroup,
-        readOnly: formData.readOnly,
       }
 
   return {
