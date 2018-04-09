@@ -22,6 +22,7 @@
 │   ├── endpointFactory
 │   ├── error
 │   ├── jsonSchema
+│   ├── normalize
 │   ├── schemaBuilder
 │   ├── scripts
 │   ├── stringFormatters
@@ -35,6 +36,7 @@
 │   ├── endpointFactory
 │   ├── error
 │   ├── jsonSchema
+│   ├── normalize
 │   ├── schemaBuilder
 │   ├── scripts
 │   ├── stringFormatters

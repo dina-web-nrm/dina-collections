@@ -43,6 +43,7 @@
 │   ├── index.js
 │   ├── locality
 │   ├── storage
+│   ├── taxon
 │   └── tree.md
 ├── index.js
 ├── mock
@@ -65,6 +66,7 @@
 │   ├── import-named-export.js
 │   ├── import-namespace.js
 │   ├── print-to-console.js
+│   ├── private
 │   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js

@@ -44,15 +44,9 @@
 │   ├── models
 │   │   ├── index.js
 │   │   └── loadInitialData
-│   │       ├── ageStage.js
-│   │       ├── boneCount.js
-│   │       ├── condition.js
-│   │       ├── index.js
-│   │       ├── length.js
-│   │       ├── sex.js
-│   │       └── weight.js
+│   │       └── index.js
 │   └── resources
-│       ├── distinguishedUnitObservationType
+│       ├── distinguishedUnitType
 │       │   ├── index.js
 │       │   └── operations
 │       ├── featureObservationType
@@ -102,13 +96,21 @@
 │   └── resources
 │       └── index.js
 ├── specimenService
+│   ├── controllers
+│   │   └── index.js
+│   ├── elasticModels
+│   │   └── index.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   └── specimen.js
+│   │   └── loadInitialData
+│   │       ├── index.js
+│   │       ├── mapFunctions
+│   │       ├── mapSpecimen.js
+│   │       └── utilities
 │   ├── resources
 │   │   ├── index.js
 │   │   └── specimen
@@ -132,7 +134,9 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── physicalUnit
@@ -149,13 +153,12 @@
 │   ├── models
 │   │   ├── index.js
 │   │   └── loadInitialData
-│   │       ├── index.js
-│   │       └── mammals.json
+│   │       └── index.js
 │   └── resources
 │       ├── index.js
 │       └── taxon
-│           ├── getMany
-│           └── index.js
+│           ├── index.js
+│           └── operations
 └── tree.md
 
 ```

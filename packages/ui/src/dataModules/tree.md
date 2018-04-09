@@ -30,8 +30,6 @@
 │   ├── constants.test.js
 │   ├── endpoints.js
 │   ├── endpoints.test.js
-│   ├── globalSelectorFactories.js
-│   ├── globalSelectorFactories.test.js
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
@@ -228,26 +226,16 @@
 │   │   ├── getTaxaByName
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getTaxaForLookup
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
 │   │   ├── getTaxon
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   ├── updateTaxon
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   └── updateTaxonSearchQuery
+│   │   └── updateTaxon
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── actionTypes.js
 │   ├── actionTypes.test.js
-│   ├── components
-│   │   ├── TaxonNameSearchInputWithResults
-│   │   │   └── index.js
-│   │   └── index.js
 │   ├── constants.js
 │   ├── constants.test.js
 │   ├── endpoints.js
@@ -259,23 +247,17 @@
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
-│   ├── middleware.js
 │   ├── mockData.js
 │   ├── mockData.test.js
 │   ├── reducer
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   ├── lookup
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
 │   │   └── resources
 │   │       ├── index.js
 │   │       ├── index.test.js
 │   │       └── taxa
 │   ├── selectors.js
-│   ├── selectors.test.js
-│   ├── utilities.js
-│   └── utilities.test.js
+│   └── selectors.test.js
 └── tree.md
 
 ```

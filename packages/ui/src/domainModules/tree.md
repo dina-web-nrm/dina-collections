@@ -49,7 +49,10 @@
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
+│   ├── globalSelectorFactories.js
+│   ├── globalSelectorFactories.test.js
 │   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
 │   └── index.js
 ├── index.js
 ├── locality
@@ -73,6 +76,9 @@
 │   │   └── item
 │   │       ├── Inspect
 │   │       └── form
+│   ├── constants.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
 │   ├── index.js
 │   ├── interactions.js
 │   ├── keyObjectModule.js
@@ -86,6 +92,31 @@
 │   ├── globalSelectors.js
 │   ├── index.js
 │   └── keyObjectModule.js
+├── taxon
+│   ├── actionCreators
+│   │   ├── index.js
+│   │   └── updateTaxonSearchQuery
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── actionTypes.js
+│   ├── components
+│   │   ├── TaxonNameSearchInputWithResults
+│   │   │   └── index.js
+│   │   └── index.js
+│   ├── constants.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
+│   ├── index.js
+│   ├── middleware.js
+│   ├── reducer
+│   │   ├── index.js
+│   │   └── lookup
+│   │       ├── index.js
+│   │       └── index.test.js
+│   ├── selectors.js
+│   ├── selectors.test.js
+│   ├── utilities.js
+│   └── utilities.test.js
 └── tree.md
 
 ```

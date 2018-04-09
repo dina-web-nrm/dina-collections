@@ -106,6 +106,28 @@
 │   ├── index.js
 │   ├── validateAgainstModel.js
 │   └── validateAgainstSchema.js
+├── normalize
+│   ├── buildNormalizeSchema
+│   │   ├── getIdAttribute.js
+│   │   ├── getTypeAndRef.js
+│   │   ├── index.js
+│   │   └── processStrategy.js
+│   ├── denormalizeSpecimen
+│   │   ├── columnArrayToObject.js
+│   │   ├── denormalizeSpecimen.spec.js
+│   │   └── index.js
+│   ├── normalizeSpecimen
+│   │   ├── columnObjectToArray.js
+│   │   ├── index.js
+│   │   └── normalizeSpecimen.spec.js
+│   ├── normalizedSchemaSpecification.js
+│   ├── testData
+│   │   ├── denormalizedSpecimen.js
+│   │   ├── denormalizedSpecimenWithLids.js
+│   │   └── normalizedSpecimen.js
+│   └── verifySpecimenNormalization
+│       ├── index.js
+│       └── verifySpecimenNormalization.spec.js
 ├── schemaBuilder
 │   ├── build
 │   │   ├── buildEndpoints
