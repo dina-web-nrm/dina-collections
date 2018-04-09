@@ -1,7 +1,8 @@
+const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
+const getWhereFactory = require('./methods/getWhereFactory')
 const syncFactory = require('./methods/syncFactory')
 const updateFactory = require('./methods/updateFactory')
-const getWhereFactory = require('./methods/getWhereFactory')
 
 module.exports = function attachMethods({ elasticsearch, Model }) {
   const getWhere = getWhereFactory({ elasticsearch, Model })
@@ -20,7 +21,13 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
     Model,
   })
 
+  const bulkCreate = bulkCreateFactory({
+    elasticsearch,
+    Model,
+  })
+
   const coreMethods = {
+    bulkCreate,
     create,
     getWhere,
     sync,

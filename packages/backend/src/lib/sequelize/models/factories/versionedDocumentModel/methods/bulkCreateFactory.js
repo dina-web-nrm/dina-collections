@@ -27,7 +27,7 @@ module.exports = function bulkCreateFactory(
           document: doc,
           id,
           isCurrentVersion: true,
-          schemaCompliant: false,
+          schemaCompliant: true,
           schemaVersion: schemaVersion || undefined,
           versionId: id,
           ...rest,

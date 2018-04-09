@@ -58,6 +58,14 @@ module.exports = function createModel({
     },
     {
       getterMethods: getters,
+      indexes: [
+        {
+          fields: ['id'],
+        },
+        {
+          fields: ['id', 'isCurrentVersion'],
+        },
+      ],
       setterMethods: setters,
     }
   )

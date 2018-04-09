@@ -1,5 +1,5 @@
 const normalizedSchemaSpecification = require('common/src/normalize/normalizedSchemaSpecification')
-// const loadInitialData = require('./loadInitialData')
+const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/elasticsearch/models/factories/normalizedElasticModel')
 
 const normalizedColumnNames = Object.keys(
@@ -20,5 +20,9 @@ module.exports = [
   {
     factory: specimenFactory,
     name: 'specimen',
+  },
+  {
+    factory: loadInitialData,
+    name: 'loadInitialData',
   },
 ]

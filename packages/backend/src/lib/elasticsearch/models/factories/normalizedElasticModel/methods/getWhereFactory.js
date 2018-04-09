@@ -8,6 +8,7 @@ module.exports = function getWhereFactory({ Model, elasticsearch }) {
       .search({
         body,
         index: Model.name,
+        sort: 'id:desc',
         type: Model.name,
       })
       .then(res => {

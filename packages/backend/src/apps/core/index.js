@@ -22,58 +22,63 @@ const services = createServices({ config, serviceDefinitions })
 
 const bootstrapStartTime = now()
 const auth = createAuth({ config })
-initializeElasticsearch({
+
+initializeSequelize({
   config,
-}).then(({ elasticsearch }) => {
-  return createElasticsearchModels({
-    config,
-    elasticsearch,
-    services,
-  }).then(({ models: elasticModels }) => {
-    initializeSequelize({
-      config,
-    })
-      .then(({ sequelize }) => {
-        return createModels({
-          config,
-          sequelize,
-          services,
-        })
-      })
-      .then(({ models }) => {
-        log.info(
-          `Sequalize initialized after: ${now() - startTime} milliseconds`
-        )
-        return createConnectors({ config, elasticModels, models, services })
-      })
-      .then(({ connectors }) => {
-        log.info(`Connectors created after: ${now() - startTime} milliseconds`)
-        const serviceRouter = createServiceRouter({
-          auth,
-          config,
-          connectors,
-        })
-        const app = createApp({
-          auth,
-          config,
-          openApiSpec,
-          routers: [serviceRouter],
-        })
-        log.info(`App configured after: ${now() - startTime} milliseconds`)
-        return app.listen(config.api.port, () => {
-          log.info(
-            `Server started after: ${now() -
-              startTime} milliseconds. Bootstrap time: ${now() -
-              bootstrapStartTime}`
-          )
-          log.info(`Api listening to port ${config.api.port}`)
-        })
-      })
-      .catch(err => {
-        throw err
-      })
-  })
 })
+  .then(({ sequelize }) => {
+    return createModels({
+      config,
+      sequelize,
+      services,
+    })
+  })
+  .then(({ models }) => {
+    return initializeElasticsearch({
+      config,
+    }).then(({ elasticsearch }) => {
+      return createElasticsearchModels({
+        config,
+        elasticsearch,
+        sequelizeModels: models,
+        services,
+      })
+        .then(({ models: elasticModels }) => {
+          log.info(
+            `Sequalize initialized after: ${now() - startTime} milliseconds`
+          )
+          return createConnectors({ config, elasticModels, models, services })
+        })
+        .then(({ connectors }) => {
+          log.info(
+            `Connectors created after: ${now() - startTime} milliseconds`
+          )
+          const serviceRouter = createServiceRouter({
+            auth,
+            config,
+            connectors,
+          })
+          const app = createApp({
+            auth,
+            config,
+            openApiSpec,
+            routers: [serviceRouter],
+          })
+          log.info(`App configured after: ${now() - startTime} milliseconds`)
+          return app.listen(config.api.port, () => {
+            log.info(
+              `Server started after: ${now() -
+                startTime} milliseconds. Bootstrap time: ${now() -
+                bootstrapStartTime}`
+            )
+            log.info(`Api listening to port ${config.api.port}`)
+          })
+        })
+        .catch(err => {
+          throw err
+        })
+    })
+  })
 
 process.on('uncaughtException', err => {
   log.crit('uncaughtException process exiting in 5000 ms')
