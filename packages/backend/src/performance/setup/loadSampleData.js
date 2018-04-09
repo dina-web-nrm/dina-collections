@@ -60,7 +60,7 @@ module.exports = function loadSampleData({
     createBatch,
     execute,
     numberOfEntries,
-    numberOfentriesEachBatch: numberOfEntriesEachBatch,
+    numberOfEntriesEachBatch,
   }).then(() => {
     writeOutput('setup', times)
     return true

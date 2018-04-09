@@ -20,25 +20,9 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
     Model,
   })
 
-  // const updatePrimaryKey = updatePrimaryKeyFactory({
-  //   Model,
-  //   schemaVersion,
-  //   sequelize,
-  //   validate,
-  // })
-
-  // const bulkCreate = bulkCreateFactory({
-  //   Model,
-  //   schemaVersion,
-  //   updatePrimaryKey,
-  //   validate,
-  // })
-
   const coreMethods = {
-    // bulkCreate,
     create,
     getWhere,
-    Model,
     sync,
     update,
   }

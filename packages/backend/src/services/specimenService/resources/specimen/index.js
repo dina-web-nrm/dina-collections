@@ -52,10 +52,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      controller: 'getManySpecimen',
-      // buildWhere: filterWhereFactory({
-      //   catalogNumber: 'identifiers.0.identifier.value',
-      // }),
+      controller: 'getManySpecimens',
       includeRelations: true,
       queryParams: {
         'filter[catalogNumber]': {

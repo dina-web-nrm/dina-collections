@@ -3,7 +3,7 @@ const connectDb = require('./db')
 
 const log = createLog('lib/elasticsearch')
 
-module.exports = function initializeSequelize({ config }) {
+module.exports = function initializeElasticsearch({ config }) {
   log.info('Initialize elasticsearch started')
   return Promise.resolve().then(() => {
     return connectDb({ config }).then(elasticsearch => {

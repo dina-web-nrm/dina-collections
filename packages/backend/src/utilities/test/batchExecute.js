@@ -6,7 +6,7 @@ const runBatch = ({
   createEntry,
   execute,
   numberOfEntries,
-  numberOfentriesEachBatch,
+  numberOfEntriesEachBatch,
 }) => {
   if (count >= numberOfEntries) {
     return Promise.resolve()
@@ -14,7 +14,7 @@ const runBatch = ({
 
   const numberOfBatchEntries = Math.min(
     numberOfEntries - count,
-    numberOfentriesEachBatch
+    numberOfEntriesEachBatch
   )
 
   let batchData = []
@@ -33,7 +33,7 @@ const runBatch = ({
       createEntry,
       execute,
       numberOfEntries,
-      numberOfentriesEachBatch,
+      numberOfEntriesEachBatch,
     })
   })
 }
@@ -43,14 +43,14 @@ module.exports = function batchExecute({
   createEntry,
   execute,
   numberOfEntries,
-  numberOfentriesEachBatch,
+  numberOfEntriesEachBatch,
 }) {
   return runBatch({
     createBatch,
     createEntry,
     execute,
     numberOfEntries,
-    numberOfentriesEachBatch,
+    numberOfEntriesEachBatch,
   }).catch(err => {
     console.error('Batch failed', err)
   })

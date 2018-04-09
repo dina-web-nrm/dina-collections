@@ -32,6 +32,6 @@ module.exports = function loadInitialData({ models }) {
       })
     },
     numberOfEntries: 1000,
-    numberOfentriesEachBatch: 200,
+    numberOfEntriesEachBatch: 200,
   })
 }
