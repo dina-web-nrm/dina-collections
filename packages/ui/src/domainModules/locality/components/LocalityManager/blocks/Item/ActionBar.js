@@ -36,27 +36,29 @@ class ActionBar extends Component {
                 }}
               />
 
-              <Button
-                active={itemBlockType === 'edit'}
-                disabled={itemBlockType === 'create'}
-                icon="edit"
-                onClick={() => {
-                  if (itemBlockType === 'inspect') {
-                    this.props.onInteraction(SET_ITEM_EDIT, { itemId })
-                  }
-                }}
-              />
+              {itemBlockType !== 'create' && (
+                <Button
+                  active={itemBlockType === 'edit'}
+                  icon="edit"
+                  onClick={() => {
+                    if (itemBlockType === 'inspect') {
+                      this.props.onInteraction(SET_ITEM_EDIT, { itemId })
+                    }
+                  }}
+                />
+              )}
 
-              <Button
-                active={itemBlockType === 'inspect'}
-                disabled={itemBlockType === 'create'}
-                icon="folder open"
-                onClick={() => {
-                  if (itemBlockType === 'edit') {
-                    this.props.onInteraction(SET_ITEM_INSPECT, { itemId })
-                  }
-                }}
-              />
+              {itemBlockType !== 'create' && (
+                <Button
+                  active={itemBlockType === 'inspect'}
+                  icon="folder open"
+                  onClick={() => {
+                    if (itemBlockType === 'edit') {
+                      this.props.onInteraction(SET_ITEM_INSPECT, { itemId })
+                    }
+                  }}
+                />
+              )}
 
               <Button
                 icon="remove"

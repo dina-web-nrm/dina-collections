@@ -215,7 +215,6 @@ BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
-  destroyOnUnmount: false,
   enableReinitialize: true,
   form: 'EditLocalities',
   validate: formValidator({ model: 'curatedLocality' }),

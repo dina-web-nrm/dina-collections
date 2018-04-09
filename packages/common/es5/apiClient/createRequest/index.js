@@ -1,13 +1,27 @@
 'use strict';
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var mapInput = require('./mapInput');
 var validateInput = require('./validateInput');
+
+var allowedInputKeys = ['body', 'headers', 'pathParams', 'queryParams'];
 
 module.exports = function createRequest(_ref) {
   var apiConfig = _ref.apiConfig,
       endpointConfig = _ref.endpointConfig,
       methodConfig = _ref.methodConfig,
       userInput = _ref.userInput;
+
+  (0, _keys2.default)(userInput).forEach(function (key) {
+    if (!allowedInputKeys.includes(key)) {
+      throw new Error('userInput contains unexpected key: ' + key);
+    }
+  });
 
   return mapInput({
     apiConfig: apiConfig,

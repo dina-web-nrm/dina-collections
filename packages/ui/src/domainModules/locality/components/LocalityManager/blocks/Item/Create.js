@@ -8,11 +8,13 @@ import ActionBar from './ActionBar'
 const propTypes = {
   displayNavigationButtons: PropTypes.bool,
   itemBlockType: PropTypes.string.isRequired,
+  itemId: PropTypes.string,
   layoutMode: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
 const defaultProps = {
   displayNavigationButtons: true,
+  itemId: undefined,
 }
 
 export class Create extends Component {
@@ -20,9 +22,13 @@ export class Create extends Component {
     const {
       displayNavigationButtons,
       itemBlockType,
+      itemId,
       layoutMode,
       onInteraction,
     } = this.props
+
+    const initialValues = itemId && { parent: { id: itemId } }
+
     return (
       <Block>
         <Header
@@ -40,7 +46,10 @@ export class Create extends Component {
             )
           }
         >
-          <CreateCuratedLocalityForm onInteraction={onInteraction} />
+          <CreateCuratedLocalityForm
+            initialValues={initialValues}
+            onInteraction={onInteraction}
+          />
         </Block.Content>
       </Block>
     )

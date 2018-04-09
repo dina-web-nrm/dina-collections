@@ -5,7 +5,7 @@ import { compose } from 'redux'
 import { Field } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import LocalityDropdownSearch from 'domainModules/locality/components/AdvancedLocalityDropdownSearch'
+import { AdvancedLocalityDropdownSearch } from 'domainModules/locality/components'
 import { ALL, CONTINENT } from 'domainModules/locality/constants'
 
 import { MAMMAL_FORM_NAME as formName } from 'domainModules/collectionMammals/constants'
@@ -24,7 +24,7 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
         <Grid.Column computer={6} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
-            component={LocalityDropdownSearch}
+            component={AdvancedLocalityDropdownSearch}
             formName={formName}
             group={ALL}
             initialText={moduleTranslate({ textKey: 'choose' })}
@@ -38,7 +38,7 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
         <Grid.Column computer={6} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
-            component={LocalityDropdownSearch}
+            component={AdvancedLocalityDropdownSearch}
             formName={formName}
             group={CONTINENT}
             initialText={moduleTranslate({ textKey: 'choose' })}

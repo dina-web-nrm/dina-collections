@@ -3,18 +3,23 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Button, Dropdown, Grid, Form } from 'semantic-ui-react'
+
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
 } from 'domainModules/locality/keyObjectModule'
-
 import {
   SET_COLLECTION_LIST,
   SET_COLLECTION_TREE,
   SET_ITEM_CREATE,
 } from 'domainModules/locality/interactions'
-
 import { InputText } from 'coreModules/form/components'
+import {
+  CONTINENT,
+  COUNTRY,
+  DISTRICT,
+  PROVINCE,
+} from '../../../../../constants'
 import AncestorTag from './AncestorTag'
 
 const mapStateToProps = state => {
@@ -46,7 +51,7 @@ const defaultProps = {
   searchQuery: '',
 }
 
-const groups = ['continent', 'country', 'district', 'province']
+const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
 
 const dropdownOptions = [
   {
@@ -66,6 +71,7 @@ class ActionBar extends Component {
     const {
       collectionBlockType,
       displayNavigationButtons,
+      filterGroup,
       onInteraction,
     } = this.props
     return (
@@ -76,7 +82,7 @@ class ActionBar extends Component {
               <Button.Group floated="left">
                 <Button
                   active={collectionBlockType === 'list'}
-                  icon="numbered list"
+                  content="List"
                   onClick={event => {
                     event.preventDefault()
                     onInteraction(SET_COLLECTION_LIST)
@@ -84,7 +90,7 @@ class ActionBar extends Component {
                 />
                 <Button
                   active={collectionBlockType === 'tree'}
-                  icon="tree"
+                  content="Tree"
                   onClick={event => {
                     event.preventDefault()
                     onInteraction(SET_COLLECTION_TREE)
@@ -100,7 +106,6 @@ class ActionBar extends Component {
                   value: this.props.searchQuery,
                 }}
                 placeholder="search"
-                size="small"
                 style={{ marginLeft: 10 }}
               />
               <Dropdown
@@ -115,28 +120,24 @@ class ActionBar extends Component {
                 placeholder="select group"
                 size="small"
                 style={{ marginLeft: 10, minWidth: 140 }}
-                value={this.props.filterGroup}
+                value={filterGroup}
               />
+              {displayNavigationButtons && (
+                <Button
+                  color="orange"
+                  onClick={event => {
+                    event.preventDefault()
+                    onInteraction(SET_ITEM_CREATE)
+                  }}
+                  style={{ marginLeft: 10 }}
+                >
+                  New locality
+                </Button>
+              )}
             </Grid.Column>
             <Grid.Column verticalAlign="bottom" width={14}>
               <AncestorTag />
             </Grid.Column>
-            {displayNavigationButtons && (
-              <Grid.Column textAlign="right" width={2}>
-                <Button.Group floated="right">
-                  <Button
-                    color="orange"
-                    floaded="right"
-                    onClick={event => {
-                      event.preventDefault()
-                      onInteraction(SET_ITEM_CREATE)
-                    }}
-                  >
-                    New
-                  </Button>
-                </Button.Group>
-              </Grid.Column>
-            )}
           </Grid.Row>
         </Grid>
       </Form>

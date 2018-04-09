@@ -1,12 +1,20 @@
 const mapInput = require('./mapInput')
 const validateInput = require('./validateInput')
 
+const allowedInputKeys = ['body', 'headers', 'pathParams', 'queryParams']
+
 module.exports = function createRequest({
   apiConfig,
   endpointConfig,
   methodConfig,
   userInput,
 }) {
+  Object.keys(userInput).forEach(key => {
+    if (!allowedInputKeys.includes(key)) {
+      throw new Error(`userInput contains unexpected key: ${key}`)
+    }
+  })
+
   return mapInput({
     apiConfig,
     endpointConfig,

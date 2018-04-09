@@ -60,13 +60,23 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
       },
     })
 
-    const testAction = getTaxaByName()
+    const queryParams = {
+      filter: { name: 'sorex' },
+      limit: 10,
+    }
 
-    expect.assertions(2)
+    const testAction = getTaxaByName({ queryParams })
+
+    const expectedCallParams = {
+      queryParams,
+    }
+
+    expect.assertions(3)
 
     return store.dispatch(testAction).then(() => {
       expect(callSpy.mock.calls.length).toEqual(1)
       expect(callSpy.mock.calls[0][0]).toMatchObject({ operationId })
+      expect(callSpy.mock.calls[0][1]).toEqual(expectedCallParams)
     })
   })
 

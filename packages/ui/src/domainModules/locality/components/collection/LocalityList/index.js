@@ -9,13 +9,14 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from '../../../keyObjectModule'
+import { CONTINENT } from '../../../constants'
 import localitySelectors from '../../../globalSelectors'
 import { ITEM_CLICK } from '../../../interactions'
 import ListItem from './ListItem'
 
 const mapStateToProps = state => {
   const filter = keyObjectGlobalSelectors.get.filter(state)
-  const filterParentId = filter && filter.parentId
+  const filterParentId = (filter && filter.parentId) || undefined
   const filterParent =
     filterParentId &&
     localityServiceSelectors.getCuratedLocality(state, filterParentId)
@@ -69,7 +70,11 @@ class LocalityList extends Component {
       cursorIndex: 0,
     }
 
+    this.getIndexFromOffsetAndNumberOfLocalities = this.getIndexFromOffsetAndNumberOfLocalities.bind(
+      this
+    )
     this.handleKeyDown = this.handleKeyDown.bind(this)
+    this.setCursorIndex = this.setCursorIndex.bind(this)
   }
 
   componentDidMount() {
@@ -81,11 +86,23 @@ class LocalityList extends Component {
     document.removeEventListener('keydown', this.handleKeyDown)
   }
 
+  getIndexFromOffsetAndNumberOfLocalities() {
+    const { filter: { offset }, numberOfCuratedLocalities } = this.props
+
+    return Math.max(Math.min(offset, numberOfCuratedLocalities - 1), 0)
+  }
+
+  setCursorIndex(cursorIndex = 0) {
+    this.setState({ cursorIndex })
+  }
+
   expandLocalityAtCursor() {
     const { curatedLocalities } = this.props
     const { cursorIndex } = this.state
     const localityAtCursor = curatedLocalities[cursorIndex]
     if (localityAtCursor) {
+      this.props.setFilterOffset(0)
+      this.setCursorIndex(0)
       this.props.setFilterSearchGroup('')
       this.props.setFilterSearchSearchQuery('')
       this.props.setFilterParentId(localityAtCursor.id)
@@ -93,11 +110,24 @@ class LocalityList extends Component {
   }
 
   selectParent() {
-    const { filterParent } = this.props
+    const { filter, filterParent } = this.props
+
     if (filterParent && filterParent.parent && filterParent.parent.id) {
+      const filterParentParentId = filterParent.parent.id
       this.props.setFilterSearchGroup('')
       this.props.setFilterSearchSearchQuery('')
-      this.props.setFilterParentId(filterParent.parent.id)
+      this.props.setFilterOffset(this.getIndexFromOffsetAndNumberOfLocalities())
+
+      if (filterParent.parent.id === '1') {
+        this.props.setFilterParentId('') // don't use root as only parent filter
+
+        if (!filter.group) {
+          this.props.setFilterSearchGroup(CONTINENT)
+        }
+      } else {
+        this.setCursorIndex(this.getIndexFromOffsetAndNumberOfLocalities())
+        this.props.setFilterParentId(filterParentParentId)
+      }
     }
   }
 

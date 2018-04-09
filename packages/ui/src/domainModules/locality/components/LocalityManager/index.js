@@ -77,7 +77,7 @@ class LocalityManager extends Component {
     this.handleInteraction = this.handleInteraction.bind(this)
   }
 
-  handleInteraction(type, data) {
+  handleInteraction(type, data = {}) {
     switch (type) {
       case SET_LAYOUT_SINGLE_COLLECTION: {
         this.props.setLayoutMode('single')
@@ -131,6 +131,13 @@ class LocalityManager extends Component {
       }
 
       case SET_ITEM_CREATE: {
+        const { itemId } = data
+
+        if (itemId) {
+          this.props.push(`/app/localities/${itemId}/createChild`)
+          break
+        }
+
         this.props.push(`/app/localities/create`)
         break
       }
