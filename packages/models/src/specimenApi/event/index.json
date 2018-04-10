@@ -5,10 +5,10 @@
       "type": "string"
     },
     "startDate": {
-      "$ref": "__ROOT__date"
+      "type": "string"
     },
     "endDate": {
-      "$ref": "__ROOT__date"
+      "type": "string"
     },
     "expeditionText": { "type": "string", "example": "Vega Expedition" },
     "locationInformation": { "$ref": "__ROOT__locationInformation" }

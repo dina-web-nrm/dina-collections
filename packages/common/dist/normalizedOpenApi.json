@@ -4939,7 +4939,7 @@
         "x-category": "agentApi",
         "x-modelType": "model"
       },
-      "date": {
+      "dateWrapper": {
         "additionalProperties": false,
         "properties": {
           "isoDate": {
@@ -5477,7 +5477,7 @@
             "example": "Doe, J."
           },
           "date": {
-            "$ref": "#/components/schemas/date"
+            "type": "string"
           },
           "condition": {
             "type": "string",
@@ -5541,7 +5541,7 @@
             "example": "Doe, J."
           },
           "date": {
-            "$ref": "#/components/schemas/date"
+            "type": "string"
           },
           "taxon": {
             "$ref": "#/components/schemas/externalModelReference"
@@ -5562,10 +5562,10 @@
             "type": "string"
           },
           "startDate": {
-            "$ref": "#/components/schemas/date"
+            "type": "string"
           },
           "endDate": {
-            "$ref": "#/components/schemas/date"
+            "type": "string"
           },
           "expeditionText": {
             "type": "string",
@@ -5590,7 +5590,7 @@
             "example": "Doe, J."
           },
           "date": {
-            "$ref": "#/components/schemas/date"
+            "$ref": "#/components/schemas/dateWrapper"
           },
           "featureObservationText": {
             "type": "string",

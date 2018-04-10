@@ -11,7 +11,7 @@
     "x-modelType": "model",
     "id": "agent"
   },
-  "date": {
+  "dateWrapper": {
     "additionalProperties": false,
     "properties": {
       "isoDate": {
@@ -38,7 +38,7 @@
     "description": "### Definition\n\nInformation pertaining to a specific date or a date range.\n\n### Note(s)\n\nIncludes for example verbatim information about when something happened.\n",
     "x-category": "core",
     "x-modelType": "model",
-    "id": "date"
+    "id": "dateWrapper"
   },
   "externalModelReference": {
     "additionalProperties": false,
@@ -571,7 +571,7 @@
         "example": "Doe, J."
       },
       "date": {
-        "$ref": "date"
+        "type": "string"
       },
       "condition": {
         "type": "string",
@@ -637,7 +637,7 @@
         "example": "Doe, J."
       },
       "date": {
-        "$ref": "date"
+        "type": "string"
       },
       "taxon": {
         "$ref": "externalModelReference"
@@ -659,10 +659,10 @@
         "type": "string"
       },
       "startDate": {
-        "$ref": "date"
+        "type": "string"
       },
       "endDate": {
-        "$ref": "date"
+        "type": "string"
       },
       "expeditionText": {
         "type": "string",
@@ -688,7 +688,7 @@
         "example": "Doe, J."
       },
       "date": {
-        "$ref": "date"
+        "$ref": "dateWrapper"
       },
       "featureObservationText": {
         "type": "string",

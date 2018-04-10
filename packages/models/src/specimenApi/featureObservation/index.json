@@ -9,7 +9,7 @@
       "example": "Doe, J."
     },
     "date": {
-      "$ref": "__ROOT__date"
+      "$ref": "__ROOT__dateWrapper"
     },
     "featureObservationText": {
       "type": "string",
