@@ -50,6 +50,7 @@ services:
     command: pm2-runtime start /etc/api/src/apps/core/index.js
     depends_on:
       - postgres
+      - elasticsearch
     volumes:
       - ./data:/data
 
