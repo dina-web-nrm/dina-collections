@@ -8,19 +8,20 @@ import {
 import { CREATE_FEATURE_OBSERVATION_TYPE } from '../../endpoints'
 import { FEATURE_OBSERVATION_TYPE } from '../../constants'
 
-export default function createFeatureObservationType(
-  { featureObservationType, throwError = false } = {}
-) {
+export default function createFeatureType({
+  featureType,
+  throwError = false,
+} = {}) {
   const body = {
     data: {
-      attributes: { ...featureObservationType },
+      attributes: { ...featureType },
       type: FEATURE_OBSERVATION_TYPE,
     },
   }
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
-      meta: { featureObservationType },
+      meta: { featureType },
       type: CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     })
 
@@ -36,7 +37,7 @@ export default function createFeatureObservationType(
       error => {
         dispatch({
           error: true,
-          meta: { featureObservationType },
+          meta: { featureType },
           payload: error,
           type: CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL,
         })

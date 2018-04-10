@@ -1,10 +1,10 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import updateFeatureObservationType from './index'
+import updateFeatureType from './index'
 import * as actionTypes from '../../actionTypes'
 import { FEATURE_OBSERVATION_TYPE } from '../../constants'
 
-describe('dataModules/curatedListService/actionCreators/updateFeatureObservationType', () => {
+describe('dataModules/curatedListService/actionCreators/updateFeatureType', () => {
   let store
   let apiClient
 
@@ -22,11 +22,11 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_REQUEST
   }`, () => {
-    const featureObservationType = {}
-    const testAction = updateFeatureObservationType({ featureObservationType })
+    const featureType = {}
+    const testAction = updateFeatureType({ featureType })
 
     const expectedAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
@@ -36,14 +36,14 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls updateFeatureObservationType with correct body`, () => {
-    const operationId = 'updateFeatureObservationType'
-    const featureObservationType = {
+  it(`calls updateFeatureType with correct body`, () => {
+    const operationId = 'updateFeatureType'
+    const featureType = {
       id: '123',
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
-    const { id, ...attributes } = featureObservationType
+    const { id, ...attributes } = featureType
 
     const callSpy = jest.fn()
 
@@ -56,7 +56,7 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
       },
     })
 
-    const testAction = updateFeatureObservationType({ featureObservationType })
+    const testAction = updateFeatureType({ featureType })
     const expectedCallParams = {
       body: {
         data: {
@@ -80,13 +80,13 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'updateFeatureObservationType'
+    const operationId = 'updateFeatureType'
     const attributes = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
     const id = '123'
-    const featureObservationType = {
+    const featureType = {
       ...attributes,
       id,
     }
@@ -110,10 +110,10 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
       },
     })
 
-    const testAction = updateFeatureObservationType({ featureObservationType })
+    const testAction = updateFeatureType({ featureType })
 
     const expectedFirstAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
@@ -137,8 +137,8 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL
   } without throwing error`, () => {
-    const operationId = 'updateFeatureObservationType'
-    const featureObservationType = {
+    const operationId = 'updateFeatureType'
+    const featureType = {
       id: '123',
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -151,16 +151,16 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
       },
     })
 
-    const testAction = updateFeatureObservationType({ featureObservationType })
+    const testAction = updateFeatureType({ featureType })
 
     const expectedFirstAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { featureObservationType },
+      meta: { featureType },
       payload: mockError,
       type:
         actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL,
@@ -180,8 +180,8 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL
   } and throws error`, () => {
-    const operationId = 'updateFeatureObservationType'
-    const featureObservationType = {
+    const operationId = 'updateFeatureType'
+    const featureType = {
       id: '123',
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -194,19 +194,19 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureObservation
       },
     })
 
-    const testAction = updateFeatureObservationType({
-      featureObservationType,
+    const testAction = updateFeatureType({
+      featureType,
       throwError: true,
     })
 
     const expectedFirstAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { featureObservationType },
+      meta: { featureType },
       payload: mockError,
       type:
         actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL,

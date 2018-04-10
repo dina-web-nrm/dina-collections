@@ -13,14 +13,14 @@ describe('dataModules/specimenService/utilities', () => {
         type: 'distinguishedUnitType',
       },
     }
-    const featureObservationTypes = {
+    const featureTypes = {
       '1': {
         id: '1',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
       '22': {
         id: '22',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
     }
 
@@ -59,9 +59,9 @@ describe('dataModules/specimenService/utilities', () => {
       featureObservations: [
         {
           featureObservationText: 'female',
-          featureObservationType: {
+          featureType: {
             id: '22',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
         },
       ],
@@ -140,7 +140,7 @@ describe('dataModules/specimenService/utilities', () => {
     const testValue = buildSpecimenBody({
       curatedLocalities,
       distinguishedUnitTypes,
-      featureObservationTypes,
+      featureTypes,
       savedPhysicalUnits,
       specimen: {
         distinguishedUnits,
@@ -196,8 +196,8 @@ describe('dataModules/specimenService/utilities', () => {
           distinguishedUnitTypes: {
             data: distinguishedUnitTypes,
           },
-          featureObservationTypes: {
-            data: featureObservationTypes,
+          featureTypes: {
+            data: featureTypes,
           },
           physicalUnits: {
             data: cleanedPhysicalUnits,

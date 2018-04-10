@@ -7,7 +7,7 @@ import { SKELETON, SKIN, WET_PREPARATION } from './constants'
 
 const {
   getDistinguishedUnitTypes,
-  getFeatureObservationTypes,
+  getFeatureTypes,
 } = curatedListServiceSelectors
 
 const createDropdownSelector = (categoryFilter, numberOfResults) => {
@@ -87,10 +87,10 @@ const getDistinguishedUnitTypeOptions = (state, category) => {
   }
 }
 
-const getGroupedFeatureObservationTypeIds = createSelector(
-  getFeatureObservationTypes,
-  featureObservationTypes => {
-    return Object.values(featureObservationTypes).reduce(
+const getGroupedFeatureTypeIds = createSelector(
+  getFeatureTypes,
+  featureTypes => {
+    return Object.values(featureTypes).reduce(
       (groupToIdsMap, { id, group }) => {
         return {
           ...groupToIdsMap,
@@ -102,33 +102,31 @@ const getGroupedFeatureObservationTypeIds = createSelector(
   }
 )
 
-const getFeatureObservationTypesInGroups = createSelector(
+const getFeatureTypesInGroups = createSelector(
   [
-    getFeatureObservationTypes,
-    getGroupedFeatureObservationTypeIds,
+    getFeatureTypes,
+    getGroupedFeatureTypeIds,
     (_, groups) => (groups ? groups.join() : ''),
   ],
-  (featureObservationTypes, groupToIdsMap, groupsString) => {
+  (featureTypes, groupToIdsMap, groupsString) => {
     return groupsString.split(',').reduce((arr, group) => {
-      const featureObservationTypeIds = groupToIdsMap[group]
+      const featureTypeIds = groupToIdsMap[group]
 
-      const groupFeatureObservationTypes =
-        featureObservationTypeIds &&
-        featureObservationTypeIds.map(id => {
-          return featureObservationTypes[id]
+      const groupFeatureTypes =
+        featureTypeIds &&
+        featureTypeIds.map(id => {
+          return featureTypes[id]
         })
 
-      return groupFeatureObservationTypes
-        ? [...arr, ...groupFeatureObservationTypes]
-        : arr
+      return groupFeatureTypes ? [...arr, ...groupFeatureTypes] : arr
     }, [])
   }
 )
 
-const getNumberOfFeatureObservationTypesInGroups = createSelector(
-  getFeatureObservationTypesInGroups,
-  featureObservationTypes => {
-    return featureObservationTypes.length
+const getNumberOfFeatureTypesInGroups = createSelector(
+  getFeatureTypesInGroups,
+  featureTypes => {
+    return featureTypes.length
   }
 )
 
@@ -137,7 +135,7 @@ export default {
   getDropdownSkeletonOptions,
   getDropdownSkinOptions,
   getDropdownWetPreparationOptions,
-  getFeatureObservationTypesInGroups,
-  getGroupedFeatureObservationTypeIds,
-  getNumberOfFeatureObservationTypesInGroups,
+  getFeatureTypesInGroups,
+  getGroupedFeatureTypeIds,
+  getNumberOfFeatureTypesInGroups,
 }

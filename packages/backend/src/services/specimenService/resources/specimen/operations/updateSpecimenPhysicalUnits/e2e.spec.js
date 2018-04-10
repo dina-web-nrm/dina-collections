@@ -50,7 +50,7 @@ apiDescribe('specimen', () => {
               expectedType: 'specimen',
               relationships: {
                 curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
                 physicalUnits: {
@@ -158,7 +158,7 @@ apiDescribe('specimen', () => {
             expectedType: 'specimen',
             relationships: {
               curatedLocalities: { data: [] },
-              featureObservationTypes: {
+              featureTypes: {
                 data: [],
               },
               physicalUnits: {

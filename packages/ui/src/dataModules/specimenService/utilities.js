@@ -7,7 +7,7 @@ import { SPECIMEN } from './constants'
 export const buildSpecimenBody = ({
   curatedLocalities,
   distinguishedUnitTypes,
-  featureObservationTypes,
+  featureTypes,
   savedPhysicalUnits,
   specimen,
   storageLocations,
@@ -57,8 +57,8 @@ export const buildSpecimenBody = ({
         distinguishedUnitTypes: {
           data: distinguishedUnitTypes,
         },
-        featureObservationTypes: {
-          data: featureObservationTypes,
+        featureTypes: {
+          data: featureTypes,
         },
         physicalUnits: {
           data: cleanedPhysicalUnits,

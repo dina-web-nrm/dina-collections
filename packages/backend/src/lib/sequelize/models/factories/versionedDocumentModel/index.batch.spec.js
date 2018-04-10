@@ -23,8 +23,8 @@ const createData = catalogNumber => {
         featureObservations: [
           {
             featureObservationText: 'A condition at collecting',
-            featureObservationType: {
-              featureObservationTypeName: 'conditionAtCollecting',
+            featureType: {
+              featureTypeName: 'conditionAtCollecting',
               id: '2',
             },
           },
@@ -32,8 +32,8 @@ const createData = catalogNumber => {
             featureObservationAgent: 'JD',
             featureObservationDate: 'A date',
             featureObservationText: 'male',
-            featureObservationType: {
-              featureObservationTypeName: 'sex',
+            featureType: {
+              featureTypeName: 'sex',
               id: '1',
             },
             methodText: 'method text',

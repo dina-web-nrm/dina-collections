@@ -1,10 +1,12 @@
 # Tree for dataModules
+
 ## Tree
+
 ```bash
 ├── allModules.js
 ├── curatedListService
 │   ├── actionCreators
-│   │   ├── createFeatureObservationType
+│   │   ├── createFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── getDistinguishedUnitType
@@ -13,15 +15,15 @@
 │   │   ├── getDistinguishedUnitTypes
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getFeatureObservationType
+│   │   ├── getFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getFeatureObservationTypes
+│   │   ├── getFeatureTypes
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   └── updateFeatureObservationType
+│   │   └── updateFeatureType
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── actionTypes.js
@@ -35,7 +37,7 @@
 │   ├── higherOrderComponents
 │   │   ├── createGetDistinguishedUnitTypeById.js
 │   │   ├── ensureAllDistinguishedUnitTypesFetched.js
-│   │   ├── ensureAllFeatureObservationTypesFetched.js
+│   │   ├── ensureAllFeatureTypesFetched.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
@@ -45,7 +47,7 @@
 │   │   ├── index.test.js
 │   │   └── resources
 │   │       ├── distinguishedUnitTypes
-│   │       ├── featureObservationTypes
+│   │       ├── featureTypes
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── selectors.js
@@ -259,10 +261,10 @@
 │   ├── selectors.js
 │   └── selectors.test.js
 └── tree.md
-
 ```
 
 ## Links
+
 [root](../../tree.md)
 [src](../tree.md)
 [apps](../apps/tree.md)

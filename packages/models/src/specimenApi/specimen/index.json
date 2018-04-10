@@ -17,13 +17,13 @@
             }
           }
         },
-        "featureObservationTypes": {
+        "featureTypes": {
           "type": "object",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__featureObservationType",
+                "$ref": "__ROOT__featureType",
                 "x-reference-type": "external"
               }
             }

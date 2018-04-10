@@ -100,7 +100,7 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [],
                   },
                   ...simpleDataPhysicalUnitRelations.data.relationships,
@@ -141,7 +141,7 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [],
                   },
                   physicalUnits: {
@@ -161,7 +161,7 @@ apiDescribe('specimen', () => {
             'simpleDataPhysicalUnitRelations'
           )
           simpleDataPhysicalUnitRelationsWithEmptyRelations.data.relationships = {
-            featureObservationTypes: {
+            featureTypes: {
               data: [],
             },
             physicalUnits: {
@@ -187,7 +187,7 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [],
                   },
                   physicalUnits: {
@@ -205,21 +205,21 @@ apiDescribe('specimen', () => {
           const simpleDataPhysicalUnitRelations = getTestData(
             'simpleDataPhysicalUnitRelations'
           )
-          const simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes = getTestData(
+          const simpleDataPhysicalUnitRelationsWithAddedFeatureTypes = getTestData(
             'simpleDataPhysicalUnitRelations'
           )
-          simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes.data.relationships = {
-            featureObservationTypes: {
+          simpleDataPhysicalUnitRelationsWithAddedFeatureTypes.data.relationships = {
+            featureTypes: {
               data: [
                 {
                   id: '5555',
-                  type: 'featureObservationType',
+                  type: 'featureType',
                 },
               ],
             },
           }
           return makeTestCall({
-            body: simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes,
+            body: simpleDataPhysicalUnitRelationsWithAddedFeatureTypes,
             operationId: 'updateSpecimen',
             pathParams: { id: simpleDataPhysicalUnitRelationsId },
           })
@@ -237,11 +237,11 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [
                       {
                         id: '5555',
-                        type: 'featureObservationType',
+                        type: 'featureType',
                       },
                     ],
                   },
@@ -292,7 +292,7 @@ apiDescribe('specimen', () => {
               expectedType: 'specimen',
               relationships: {
                 curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
                 physicalUnits: {
@@ -335,7 +335,7 @@ apiDescribe('specimen', () => {
               expectedType: 'specimen',
               relationships: {
                 curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
                 physicalUnits: {

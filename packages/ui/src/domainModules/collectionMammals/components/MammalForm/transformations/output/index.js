@@ -21,10 +21,9 @@ export default function transformOutput(formData, normalize = true) {
     newCatalogNumber
   )
 
-  const {
-    featureObservations,
-    featureObservationTypes,
-  } = transformFeatureObservations(formData.featureObservations)
+  const { featureObservations, featureTypes } = transformFeatureObservations(
+    formData.featureObservations
+  )
 
   const {
     distinguishedUnits,
@@ -58,7 +57,7 @@ export default function transformOutput(formData, normalize = true) {
   return {
     curatedLocalities,
     distinguishedUnitTypes,
-    featureObservationTypes,
+    featureTypes,
     physicalUnits,
     specimen,
     storageLocations,

@@ -28,11 +28,11 @@ module.exports = {
       type: 'getRelationHasMany',
     },
     {
-      relationKey: 'featureObservationTypes',
+      relationKey: 'featureTypes',
       type: 'updateRelationHasMany',
     },
     {
-      relationKey: 'featureObservationTypes',
+      relationKey: 'featureTypes',
       type: 'getRelationHasMany',
     },
     {
@@ -79,9 +79,9 @@ module.exports = {
       resource: 'curatedLocality',
       storeInDocument: true,
     },
-    featureObservationTypes: {
+    featureTypes: {
       format: 'array',
-      resource: 'featureObservationType',
+      resource: 'featureType',
       storeInDocument: true,
     },
     physicalUnits: {

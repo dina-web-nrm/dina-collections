@@ -78,7 +78,7 @@ apiDescribe('specimen', () => {
               expectedType: 'specimen',
               relationships: {
                 curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
                 ...simpleDataPhysicalUnitRelations.data.relationships,
@@ -177,7 +177,7 @@ apiDescribe('specimen', () => {
               expectedType: 'specimen',
               relationships: {
                 curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
                 physicalUnits: {

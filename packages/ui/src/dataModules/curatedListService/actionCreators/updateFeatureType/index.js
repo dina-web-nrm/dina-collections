@@ -8,10 +8,11 @@ import {
 import { UPDATE_FEATURE_OBSERVATION_TYPE } from '../../endpoints'
 import { FEATURE_OBSERVATION_TYPE } from '../../constants'
 
-export default function updateFeatureObservationType(
-  { featureObservationType, throwError = false } = {}
-) {
-  const { id, ...rest } = featureObservationType
+export default function updateFeatureType({
+  featureType,
+  throwError = false,
+} = {}) {
+  const { id, ...rest } = featureType
 
   const callParams = {
     body: {
@@ -26,7 +27,7 @@ export default function updateFeatureObservationType(
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
-      meta: { featureObservationType },
+      meta: { featureType },
       type: CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     })
 
@@ -42,7 +43,7 @@ export default function updateFeatureObservationType(
       error => {
         dispatch({
           error: true,
-          meta: { featureObservationType },
+          meta: { featureType },
           payload: error,
           type: CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL,
         })

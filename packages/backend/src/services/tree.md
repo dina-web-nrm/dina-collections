@@ -1,5 +1,7 @@
 # Tree for services
+
 ## Tree
+
 ```bash
 ├── agentService
 │   ├── index.js
@@ -49,7 +51,7 @@
 │       ├── distinguishedUnitType
 │       │   ├── index.js
 │       │   └── operations
-│       ├── featureObservationType
+│       ├── featureType
 │       │   ├── index.js
 │       │   └── operations
 │       └── index.js
@@ -160,10 +162,10 @@
 │           ├── index.js
 │           └── operations
 └── tree.md
-
 ```
 
 ## Links
+
 [root](../../tree.md)
 [src](../tree.md)
 [lib](../lib/tree.md)

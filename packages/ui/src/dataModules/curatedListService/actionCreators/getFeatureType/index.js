@@ -7,9 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_FEATURE_OBSERVATION_TYPE } from '../../endpoints'
 
-export default function getFeatureObservationType(
-  { id, throwError = false } = {}
-) {
+export default function getFeatureType({ id, throwError = false } = {}) {
   const pathParams = { id }
 
   return (dispatch, getState, { apiClient }) => {

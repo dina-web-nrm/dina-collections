@@ -185,10 +185,10 @@ const expectedOutput = {
       type: 'distinguishedUnitType',
     },
   ],
-  featureObservationTypes: [
+  featureTypes: [
     {
       id: '1',
-      type: 'featureObservationType',
+      type: 'featureType',
     },
   ],
   physicalUnits: [
@@ -233,9 +233,9 @@ const expectedOutput = {
           date: 'date',
           featureObservationAgent: 'featureObservationAgent',
           featureObservationText: 'juvenile',
-          featureObservationType: {
+          featureType: {
             id: '1',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
           methodText: 'known-age',
           remarks: 'remarks',
@@ -328,7 +328,7 @@ const postSubmitTest = ({ submitResult }) => {
   ).toMatchObject(
     Object.keys(registeredFields)
       .filter(key => {
-        // filter out unused featureObservationTypes, also done in transform output
+        // filter out unused featureTypes, also done in transform output
         if (key.indexOf('featureObservations.') === 0) {
           return key.indexOf('featureObservations.1.') === 0
         }

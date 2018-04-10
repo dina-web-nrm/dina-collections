@@ -8,4 +8,4 @@ When a curator measures the wingspan and the weight of a bird, this counts as tw
 
 ### Note(s)
 
-The kinds of data for the observation is determined by its FeatureObservationType.
+The kinds of data for the observation is determined by its FeatureType.

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 import distinguishedUnitTypes from './distinguishedUnitTypes'
-import featureObservationTypes from './featureObservationTypes'
+import featureTypes from './featureTypes'
 
 export default combineReducers({
   distinguishedUnitTypes,
-  featureObservationTypes,
+  featureTypes,
 })

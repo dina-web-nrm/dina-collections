@@ -100,11 +100,11 @@ testData.simpleDataMultipleRelations = {
       curatedLocalities: {
         data: [{ id: '1', type: 'curatedLocality' }],
       },
-      featureObservationTypes: {
+      featureTypes: {
         data: [
           {
             id: '1',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
         ],
       },

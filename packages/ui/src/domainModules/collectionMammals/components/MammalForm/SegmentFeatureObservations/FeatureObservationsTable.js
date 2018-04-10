@@ -6,7 +6,7 @@ import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { ModuleTranslate } from 'coreModules/i18n/components'
-import { makeGetFeatureObservationTypesInGroups } from 'domainModules/curatedList/globalSelectorFactories'
+import { makeGetFeatureTypesInGroups } from 'domainModules/curatedList/globalSelectorFactories'
 import FeatureObservationsTableRow from './FeatureObservationsTableRow'
 
 const log = createLog(
@@ -28,32 +28,26 @@ const getTableColumns = features => {
 }
 
 const makeMapStateToProps = () => {
-  const getFeatureObservationTypesInGroups = makeGetFeatureObservationTypesInGroups()
+  const getFeatureTypesInGroups = makeGetFeatureTypesInGroups()
 
   return (state, { groups }) => {
     return {
-      featureObservationTypes: getFeatureObservationTypesInGroups(
-        state,
-        groups
-      ),
+      featureTypes: getFeatureTypesInGroups(state, groups),
     }
   }
 }
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  featureObservationTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  featureTypes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
-function FeatureObservationTable({
-  changeFieldValue,
-  featureObservationTypes,
-}) {
-  if (!featureObservationTypes.length) {
+function FeatureObservationTable({ changeFieldValue, featureTypes }) {
+  if (!featureTypes.length) {
     return null
   }
 
-  const tableColumns = getTableColumns(featureObservationTypes)
+  const tableColumns = getTableColumns(featureTypes)
 
   log.render()
   return (
@@ -75,13 +69,13 @@ function FeatureObservationTable({
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {featureObservationTypes.map(featureObservationType => {
+        {featureTypes.map(featureType => {
           return (
             <FeatureObservationsTableRow
               changeFieldValue={changeFieldValue}
-              featureObservationType={featureObservationType}
-              index={featureObservationType.id}
-              key={featureObservationType.key}
+              featureType={featureType}
+              index={featureType.id}
+              key={featureType.key}
             />
           )
         })}

@@ -19,9 +19,9 @@ module.exports = {
     featureObservations: [{
       featureObservationAgent: 'featureObservationAgent',
       featureObservationText: '21',
-      featureObservationType: {
+      featureType: {
         id: '1',
-        type: 'featureObservationType'
+        type: 'featureType'
       },
       methodText: 'methodText'
     }],

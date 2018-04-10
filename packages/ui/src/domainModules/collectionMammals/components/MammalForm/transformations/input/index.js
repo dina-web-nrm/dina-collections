@@ -8,7 +8,7 @@ import transformIndividualCircumstances from './transformIndividualCircumstances
 export default function transformInput({
   denormalize = true,
   distinguishedUnitTypes = {},
-  featureObservationTypes = {},
+  featureTypes = {},
   physicalUnits = {},
   specimen = {},
   storageLocations = {},
@@ -23,7 +23,7 @@ export default function transformInput({
   )
   const featureObservations = transformFeatureObservations({
     featureObservations: attributes.featureObservations,
-    featureObservationTypes,
+    featureTypes,
   })
   const distinguishedUnits = transformDistinguishedUnits({
     distinguishedUnits: attributes.distinguishedUnits,

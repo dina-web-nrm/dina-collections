@@ -3,29 +3,27 @@ import { createSelector } from 'reselect'
 import curatedListServiceSelectors from 'dataModules/curatedListService/globalSelectors'
 import globalSelectors from './globalSelectors'
 
-const { getFeatureObservationTypes } = curatedListServiceSelectors
-const { getGroupedFeatureObservationTypeIds } = globalSelectors
+const { getFeatureTypes } = curatedListServiceSelectors
+const { getGroupedFeatureTypeIds } = globalSelectors
 
-export const makeGetFeatureObservationTypesInGroups = () => {
+export const makeGetFeatureTypesInGroups = () => {
   return createSelector(
     [
-      getFeatureObservationTypes,
-      getGroupedFeatureObservationTypeIds,
+      getFeatureTypes,
+      getGroupedFeatureTypeIds,
       (_, groups) => (groups ? groups.join() : ''),
     ],
-    (featureObservationTypes, groupToIdsMap, groupsString) => {
+    (featureTypes, groupToIdsMap, groupsString) => {
       return groupsString.split(',').reduce((arr, group) => {
-        const featureObservationTypeIds = groupToIdsMap[group]
+        const featureTypeIds = groupToIdsMap[group]
 
-        const groupFeatureObservationTypes =
-          featureObservationTypeIds &&
-          featureObservationTypeIds.map(id => {
-            return featureObservationTypes[id]
+        const groupFeatureTypes =
+          featureTypeIds &&
+          featureTypeIds.map(id => {
+            return featureTypes[id]
           })
 
-        return groupFeatureObservationTypes
-          ? [...arr, ...groupFeatureObservationTypes]
-          : arr
+        return groupFeatureTypes ? [...arr, ...groupFeatureTypes] : arr
       }, [])
     }
   )

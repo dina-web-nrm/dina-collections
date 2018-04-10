@@ -4,7 +4,7 @@
     "item": {
       "anyOf": [
         {
-          "$ref": "__ROOT__featureObservationType"
+          "$ref": "__ROOT__featureType"
         },
         {
           "$ref": "__ROOT__distinguishedUnitType"

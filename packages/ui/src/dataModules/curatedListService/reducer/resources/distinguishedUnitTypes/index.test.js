@@ -23,7 +23,7 @@ const getPayload = () => {
   }
 }
 
-describe('dataModules/curatedListService/reducer/resources/featureObservationTypes', () => {
+describe('dataModules/curatedListService/reducer/resources/featureTypes', () => {
   describe('getInitialState', () => {
     it('returns empty object', () => {
       const testValue = getInitialState()
@@ -59,9 +59,7 @@ describe('dataModules/curatedListService/reducer/resources/featureObservationTyp
     ]
 
     createAndGetOneSuccesses.forEach(actionType => {
-      it(`sets new resource in state from initial empty state on ${
-        actionType
-      }`, () => {
+      it(`sets new resource in state from initial empty state on ${actionType}`, () => {
         const payload = getPayload()
         const { id, ...rest } = payload
         const action = {
@@ -82,9 +80,7 @@ describe('dataModules/curatedListService/reducer/resources/featureObservationTyp
     })
 
     createAndGetOneSuccesses.forEach(actionType => {
-      it(`sets new resource when keeping other resources on ${
-        actionType
-      }`, () => {
+      it(`sets new resource when keeping other resources on ${actionType}`, () => {
         const state = {
           goog: {
             id: 'goog',
@@ -114,9 +110,7 @@ describe('dataModules/curatedListService/reducer/resources/featureObservationTyp
       })
     })
 
-    it(`merges previous state with new data on ${
-      CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS
-    }`, () => {
+    it(`merges previous state with new data on ${CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS}`, () => {
       const state = {
         1: {
           id: '1',
@@ -164,9 +158,7 @@ describe('dataModules/curatedListService/reducer/resources/featureObservationTyp
       expect(testValue).toEqual(expectedResult)
     })
 
-    it(`updates existing resource when keeping other resources on ${
-      CURATED_LIST_SERVICE_UPDATE_DISTINGUISHED_UNIT_TYPE_SUCCESS
-    }`, () => {
+    it(`updates existing resource when keeping other resources on ${CURATED_LIST_SERVICE_UPDATE_DISTINGUISHED_UNIT_TYPE_SUCCESS}`, () => {
       const state = {
         appl: {
           id: 'appl',

@@ -24,23 +24,20 @@ export const getDistinguishedUnitType = (state, id) => {
   return distinguishedUnitTypes[id]
 }
 
-export const getFeatureObservationTypes = createSelector(
-  getResources,
-  resources => {
-    return resources.featureObservationTypes
+export const getFeatureTypes = createSelector(getResources, resources => {
+  return resources.featureTypes
+})
+
+export const getFeatureType = createSelector(
+  [getFeatureTypes, getSecondArgument],
+  (featureTypes, id) => {
+    return featureTypes[id]
   }
 )
 
-export const getFeatureObservationType = createSelector(
-  [getFeatureObservationTypes, getSecondArgument],
-  (featureObservationTypes, id) => {
-    return featureObservationTypes[id]
-  }
-)
-
-export const getHasFeatureObservationTypes = createSelector(
-  getFeatureObservationTypes,
-  featureObservationTypes => {
-    return Object.keys(featureObservationTypes).length > 0
+export const getHasFeatureTypes = createSelector(
+  getFeatureTypes,
+  featureTypes => {
+    return Object.keys(featureTypes).length > 0
   }
 )

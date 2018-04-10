@@ -26,11 +26,11 @@
           }
         ]
       },
-      "featureObservationTypes": {
+      "featureTypes": {
         "data": [
           {
             "id": "2",
-            "type": "featureObservationType"
+            "type": "featureType"
           }
         ]
       },
@@ -119,9 +119,9 @@
         {
           "featureObservationAgent": "featureObservationAgent",
           "featureObservationText": "21",
-          "featureObservationType": {
+          "featureType": {
             "id": "1",
-            "type": "featureObservationType"
+            "type": "featureType"
           },
           "methodText": "methodText",
           "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"

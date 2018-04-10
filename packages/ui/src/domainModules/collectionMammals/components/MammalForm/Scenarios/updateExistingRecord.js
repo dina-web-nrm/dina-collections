@@ -10,9 +10,9 @@ const individual = {
   featureObservations: [
     {
       featureObservationText: 'female',
-      featureObservationType: {
+      featureType: {
         id: '22',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
     },
   ],
@@ -35,14 +35,14 @@ const individual = {
     ],
   },
 }
-const featureObservationTypes = {
+const featureTypes = {
   1: {
     id: '1',
-    type: 'featureObservationType',
+    type: 'featureType',
   },
   22: {
     id: '22',
-    type: 'featureObservationType',
+    type: 'featureType',
   },
 }
 const physicalUnits = {
@@ -66,10 +66,10 @@ const mutations = [
 const expectedOutput = {
   curatedLocalities: [],
   distinguishedUnitTypes: [],
-  featureObservationTypes: [
+  featureTypes: [
     {
       id: '22',
-      type: 'featureObservationType',
+      type: 'featureType',
     },
   ],
   physicalUnits: [
@@ -92,9 +92,9 @@ const expectedOutput = {
       featureObservations: [
         {
           featureObservationText: 'female',
-          featureObservationType: {
+          featureType: {
             id: '22',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
         },
       ],
@@ -135,7 +135,7 @@ const scenario = {
   description: 'Update existing record by adding determinedByAgentText',
   expectedOutput,
   input: {
-    featureObservationTypes,
+    featureTypes,
     physicalUnits,
     specimen: { individual },
     taxa,

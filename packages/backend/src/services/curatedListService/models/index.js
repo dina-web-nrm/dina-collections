@@ -1,12 +1,10 @@
 const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
-exports.featureObservationType = function featureObservationType({
-  sequelize,
-}) {
+exports.featureType = function featureType({ sequelize }) {
   return createModel({
-    name: 'FeatureObservationType',
-    schemaModelName: 'featureObservationType',
+    name: 'FeatureType',
+    schemaModelName: 'featureType',
     schemaVersion: '1.0.1',
     sequelize,
   })

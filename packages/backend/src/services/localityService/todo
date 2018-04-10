@@ -1,5 +1,5 @@
 * Finalize currated locality
-* Rebase error on anton/implement-v1-featureObservationType
+* Rebase error on anton/implement-v1-featureType
 * Rebase refactor build and next step currated onto error.
 * Merge refactor build into integration branch
 * keep locality separate branch

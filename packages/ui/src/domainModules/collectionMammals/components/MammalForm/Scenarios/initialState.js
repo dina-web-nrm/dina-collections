@@ -2,7 +2,7 @@
 export default {
   curatedListService: {
     resources: {
-      featureObservationTypes: {
+      featureTypes: {
         '1': {
           key: 'age-stage',
           group: 'age-stage',
@@ -36,7 +36,7 @@ export default {
             },
           ],
           id: '1',
-          type: 'featureObservationType',
+          type: 'featureType',
         },
       },
       distinguishedUnitTypes: {

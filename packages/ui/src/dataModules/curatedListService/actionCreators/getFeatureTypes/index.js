@@ -7,9 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_FEATURE_OBSERVATION_TYPES } from '../../endpoints'
 
-export default function getFeatureObservationTypes(
-  { throwError = false } = {}
-) {
+export default function getFeatureTypes({ throwError = false } = {}) {
   return (dispatch, getState, { apiClient }) => {
     dispatch({
       type: CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_REQUEST,

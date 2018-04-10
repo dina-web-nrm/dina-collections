@@ -11,11 +11,11 @@
           { "id": "5", "type": "curatedLocality" }
         ]
       },
-     "featureObservationTypes": {
+     "featureTypes": {
         "data": [
           {
             "id": "2",
-            "type": "featureObservationType"
+            "type": "featureType"
           }
         ]
       },
@@ -94,9 +94,9 @@
               "year": 1981
             },
             "featureObservationText": "10 years",
-            "featureObservationType": {
+            "featureType": {
               "id": "2",
-              "type": "featureObservationType"
+              "type": "featureType"
             },
             "methodText": "Known age"
           }

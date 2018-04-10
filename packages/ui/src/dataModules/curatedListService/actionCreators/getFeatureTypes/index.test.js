@@ -1,9 +1,9 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getFeatureObservationType from './index'
+import getFeatureTypes from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('dataModules/curatedListService/actionCreators/getFeatureObservationType', () => {
+describe('dataModules/curatedListService/actionCreators/getFeatureTypes', () => {
   let store
   let apiClient
 
@@ -19,16 +19,15 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_REQUEST
+    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_REQUEST
   }`, () => {
     const id = '123'
 
-    const testAction = getFeatureObservationType({ id })
+    const testAction = getFeatureTypes({ id })
 
     const expectedAction = {
-      meta: { id },
       type:
-        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_REQUEST,
+        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -36,54 +35,66 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getFeatureObservationType`, () => {
-    const operationId = 'getFeatureObservationType'
+  it(`calls getFeatureTypes`, () => {
+    const operationId = 'getFeatureTypes'
     const id = '123'
 
     const callSpy = jest.fn()
 
     apiClient.mock({
       responses: {
-        [operationId]: { data: {} },
+        [operationId]: { data: [] },
       },
       spies: {
         [operationId]: callSpy,
       },
     })
 
-    const testAction = getFeatureObservationType({ id })
-    const expectedCallParams = {
-      pathParams: { id },
-    }
+    const testAction = getFeatureTypes({ id })
 
-    expect.assertions(3)
+    expect.assertions(2)
 
     return store.dispatch(testAction).then(() => {
       expect(callSpy.mock.calls.length).toEqual(1)
       expect(callSpy.mock.calls[0][0]).toMatchObject({ operationId })
-      expect(callSpy.mock.calls[0][1]).toEqual(expectedCallParams)
     })
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_SUCCESS
+    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getFeatureObservationType'
+    const operationId = 'getFeatureTypes'
     const id = '123'
     const mockResponse = {
-      data: {
-        attributes: {
-          name: 'Alan',
+      data: [
+        {
+          attributes: {
+            name: 'Ada',
+          },
+          id: '123',
+          type: 'type',
         },
-        id,
+        {
+          attributes: {
+            name: 'Alan',
+          },
+          id: '456',
+          type: 'type',
+        },
+      ],
+    }
+    const transformedResponse = [
+      {
+        id: '123',
+        name: 'Ada',
         type: 'type',
       },
-    }
-    const transformedResponse = {
-      id,
-      name: 'Alan',
-      type: 'type',
-    }
+      {
+        id: '456',
+        name: 'Alan',
+        type: 'type',
+      },
+    ]
 
     apiClient.mock({
       responses: {
@@ -91,18 +102,16 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
       },
     })
 
-    const testAction = getFeatureObservationType({ id })
+    const testAction = getFeatureTypes({ id })
 
     const expectedFirstAction = {
-      meta: { id },
       type:
-        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_REQUEST,
+        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_REQUEST,
     }
     const expectedSecondAction = {
-      meta: { id },
       payload: transformedResponse,
       type:
-        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_SUCCESS,
+        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_SUCCESS,
     }
 
     expect.assertions(2)
@@ -117,9 +126,9 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL
+    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_FAIL
   } without throwing error`, () => {
-    const operationId = 'getFeatureObservationType'
+    const operationId = 'getFeatureTypes'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -129,18 +138,16 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
       },
     })
 
-    const testAction = getFeatureObservationType({ id })
+    const testAction = getFeatureTypes({ id })
 
     const expectedFirstAction = {
-      meta: { id },
       type:
-        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_REQUEST,
+        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { id },
       payload: mockResponse,
-      type: actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_FAIL,
     }
 
     expect.assertions(2)
@@ -155,10 +162,9 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL
+    actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_FAIL
   } and throws error`, () => {
-    const operationId = 'getFeatureObservationType'
-    const id = '123'
+    const operationId = 'getFeatureTypes'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -167,18 +173,16 @@ describe('dataModules/curatedListService/actionCreators/getFeatureObservationTyp
       },
     })
 
-    const testAction = getFeatureObservationType({ id, throwError: true })
+    const testAction = getFeatureTypes({ throwError: true })
 
     const expectedFirstAction = {
-      meta: { id },
       type:
-        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_REQUEST,
+        actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { id },
       payload: mockResponse,
-      type: actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_FAIL,
     }
 
     expect.assertions(2)

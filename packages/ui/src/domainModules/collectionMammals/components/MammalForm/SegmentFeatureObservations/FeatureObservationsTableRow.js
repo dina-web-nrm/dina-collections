@@ -15,29 +15,26 @@ const log = createLog(
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  featureObservationType: PropTypes.object.isRequired,
+  featureType: PropTypes.object.isRequired,
   getPath: PropTypes.func.isRequired,
   index: PropTypes.string.isRequired,
 }
 
 class FeatureObservationTableRow extends PureComponent {
   componentWillMount() {
-    const { changeFieldValue, getPath, featureObservationType } = this.props
-    changeFieldValue(
-      getPath('featureObservationType.id'),
-      featureObservationType.id
-    )
+    const { changeFieldValue, getPath, featureType } = this.props
+    changeFieldValue(getPath('featureType.id'), featureType.id)
   }
 
   render() {
-    const { featureObservationType, getPath, index } = this.props
+    const { featureType, getPath, index } = this.props
 
     const {
       key,
       selectableMethods,
       selectableUnits,
       selectableValues,
-    } = featureObservationType
+    } = featureType
 
     const hasSelectableMethods = !!selectableMethods
     const hasSelectableUnits = !!selectableUnits
@@ -46,7 +43,7 @@ class FeatureObservationTableRow extends PureComponent {
     log.render()
     return (
       <Table.Row key={index}>
-        <Table.Cell key={getPath('featureObservationType.id')}>
+        <Table.Cell key={getPath('featureType.id')}>
           <ModuleTranslate
             fallback={key}
             module="collectionMammals"

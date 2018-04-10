@@ -1,15 +1,15 @@
-import createFeatureObservationType from './createFeatureObservationType'
+import createFeatureType from './createFeatureType'
 import getDistinguishedUnitType from './getDistinguishedUnitType'
 import getDistinguishedUnitTypes from './getDistinguishedUnitTypes'
-import getFeatureObservationType from './getFeatureObservationType'
-import getFeatureObservationTypes from './getFeatureObservationTypes'
-import updateFeatureObservationType from './updateFeatureObservationType'
+import getFeatureType from './getFeatureType'
+import getFeatureTypes from './getFeatureTypes'
+import updateFeatureType from './updateFeatureType'
 
 export {
-  createFeatureObservationType,
+  createFeatureType,
   getDistinguishedUnitType,
   getDistinguishedUnitTypes,
-  getFeatureObservationType,
-  getFeatureObservationTypes,
-  updateFeatureObservationType,
+  getFeatureType,
+  getFeatureTypes,
+  updateFeatureType,
 }

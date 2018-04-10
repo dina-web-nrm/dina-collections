@@ -16,7 +16,7 @@ import {
 export default function createSpecimen({
   curatedLocalities = [],
   distinguishedUnitTypes = [],
-  featureObservationTypes = [],
+  featureTypes = [],
   physicalUnits = [],
   specimen,
   storageLocations = [],
@@ -29,7 +29,7 @@ export default function createSpecimen({
     catalogNumber: getCatalogNumberFromIdentifiers(individual.identifiers),
     curatedLocalities,
     distinguishedUnitTypes,
-    featureObservationTypes,
+    featureTypes,
     individual,
     physicalUnits,
     storageLocations,
@@ -45,7 +45,7 @@ export default function createSpecimen({
       const body = buildSpecimenBody({
         curatedLocalities,
         distinguishedUnitTypes,
-        featureObservationTypes,
+        featureTypes,
         savedPhysicalUnits,
         specimen,
         storageLocations,

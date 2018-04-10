@@ -1,10 +1,10 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import createFeatureObservationType from './index'
+import createFeatureType from './index'
 import * as actionTypes from '../../actionTypes'
 import { FEATURE_OBSERVATION_TYPE } from '../../constants'
 
-describe('dataModules/curatedListService/actionCreators/createFeatureObservationType', () => {
+describe('dataModules/curatedListService/actionCreators/createFeatureType', () => {
   let store
   let apiClient
 
@@ -22,11 +22,11 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_REQUEST
   }`, () => {
-    const featureObservationType = {}
-    const testAction = createFeatureObservationType({ featureObservationType })
+    const featureType = {}
+    const testAction = createFeatureType({ featureType })
 
     const expectedAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
@@ -36,9 +36,9 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls createFeatureObservationType with correct body`, () => {
-    const operationId = 'createFeatureObservationType'
-    const featureObservationType = {
+  it(`calls createFeatureType with correct body`, () => {
+    const operationId = 'createFeatureType'
+    const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -53,11 +53,11 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
       },
     })
 
-    const testAction = createFeatureObservationType({ featureObservationType })
+    const testAction = createFeatureType({ featureType })
     const expectedCallParams = {
       body: {
         data: {
-          attributes: { ...featureObservationType },
+          attributes: { ...featureType },
           type: FEATURE_OBSERVATION_TYPE,
         },
       },
@@ -75,8 +75,8 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createFeatureObservationType'
-    const featureObservationType = {
+    const operationId = 'createFeatureType'
+    const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -102,10 +102,10 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
       },
     })
 
-    const testAction = createFeatureObservationType({ featureObservationType })
+    const testAction = createFeatureType({ featureType })
 
     const expectedFirstAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
@@ -129,8 +129,8 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL
   } without throwing error`, () => {
-    const operationId = 'createFeatureObservationType'
-    const featureObservationType = {
+    const operationId = 'createFeatureType'
+    const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -142,16 +142,16 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
       },
     })
 
-    const testAction = createFeatureObservationType({ featureObservationType })
+    const testAction = createFeatureType({ featureType })
 
     const expectedFirstAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { featureObservationType },
+      meta: { featureType },
       payload: mockError,
       type:
         actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL,
@@ -171,8 +171,8 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL
   } and throws error`, () => {
-    const operationId = 'createFeatureObservationType'
-    const featureObservationType = {
+    const operationId = 'createFeatureType'
+    const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -184,19 +184,19 @@ describe('dataModules/curatedListService/actionCreators/createFeatureObservation
       },
     })
 
-    const testAction = createFeatureObservationType({
-      featureObservationType,
+    const testAction = createFeatureType({
+      featureType,
       throwError: true,
     })
 
     const expectedFirstAction = {
-      meta: { featureObservationType },
+      meta: { featureType },
       type:
         actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { featureObservationType },
+      meta: { featureType },
       payload: mockError,
       type:
         actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL,

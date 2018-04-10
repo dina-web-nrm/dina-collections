@@ -21,7 +21,7 @@ describe('dataModules/specimenService/selectors', () => {
               featureObservations: [
                 {
                   featureObservationText: 'bearSkin',
-                  featureObservationType: {
+                  featureType: {
                     id: 'skin',
                   },
                 },
@@ -34,7 +34,7 @@ describe('dataModules/specimenService/selectors', () => {
               featureObservations: [
                 {
                   featureObservationText: 'pandaSkin',
-                  featureObservationType: {
+                  featureType: {
                     id: 'skin',
                   },
                 },

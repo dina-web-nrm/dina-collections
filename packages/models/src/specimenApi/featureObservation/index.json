@@ -19,8 +19,8 @@
       "type": "string",
       "example": "kg"
     },
-    "featureObservationType": {
-      "$ref": "__ROOT__featureObservationType",
+    "featureType": {
+      "$ref": "__ROOT__featureType",
       "x-reference-type": "external"
     },
     "methodText": {

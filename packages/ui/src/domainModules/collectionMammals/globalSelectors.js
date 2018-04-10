@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 
 import {
   getLocalState as getCuratedListState,
-  getFeatureObservationTypes,
+  getFeatureTypes,
 } from 'dataModules/curatedListService/selectors'
 import {
   getLocalState as getSpecimenState,
@@ -18,8 +18,8 @@ import wrapSelectors from 'utilities/wrapSelectors'
 import transformInput from './components/MammalForm/transformations/input'
 import * as selectors from './selectors'
 
-const getFeatureObservationTypesGlobal = state => {
-  return getFeatureObservationTypes(getCuratedListState(state))
+const getFeatureTypesGlobal = state => {
+  return getFeatureTypes(getCuratedListState(state))
 }
 
 const getInitialSpecimen = (state, specimenId) => {
@@ -40,14 +40,14 @@ const getPhysicalUnitsGlobal = state => {
 
 const getMammalFormInitialValues = createSelector(
   [
-    getFeatureObservationTypesGlobal,
+    getFeatureTypesGlobal,
     getInitialSpecimen,
     getPhysicalUnitsGlobal,
     getSpecimenReadOnlyGlobalSelector,
   ],
-  (featureObservationTypes, specimen, physicalUnits, readOnly) => {
+  (featureTypes, specimen, physicalUnits, readOnly) => {
     return transformInput({
-      featureObservationTypes,
+      featureTypes,
       physicalUnits,
       readOnly,
       specimen,
