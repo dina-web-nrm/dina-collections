@@ -80,6 +80,7 @@ const expectedOutput = {
   preparationTypes: [],
   specimen: {
     individual: {
+      collectingInformation: [],
       collectionItems: [
         {
           physicalObject: {
@@ -106,7 +107,6 @@ const expectedOutput = {
           },
         },
       ],
-      individualCircumstances: [],
       readOnly: undefined,
       taxonInformation: {
         determinations: [

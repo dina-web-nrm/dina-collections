@@ -28,7 +28,7 @@
 │   │   │   ├── SegmentCatalogNumberIdentifier
 │   │   │   ├── SegmentCollectionItems
 │   │   │   ├── SegmentFeatureObservations
-│   │   │   ├── SegmentIndividualCircumstances
+│   │   │   ├── SegmentCollectingInformation
 │   │   │   ├── SegmentOther
 │   │   │   ├── SegmentTaxon
 │   │   │   ├── index.js

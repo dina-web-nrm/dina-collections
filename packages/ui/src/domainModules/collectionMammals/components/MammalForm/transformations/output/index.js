@@ -3,7 +3,7 @@ import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
 import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
-import transformIndividualCircumstances from './transformIndividualCircumstances'
+import transformCollectingInformation from './transformCollectingInformation'
 
 export default function transformOutput(formData, normalize = true) {
   // TODO: set in backend instead
@@ -32,16 +32,16 @@ export default function transformOutput(formData, normalize = true) {
     storageLocations,
   } = transformCollectionItems(formData.collectionItems)
 
-  const { places, individualCircumstances } = transformIndividualCircumstances(
-    formData.individualCircumstances
+  const { places, collectingInformation } = transformCollectingInformation(
+    formData.collectingInformation
   )
 
   const individual = {
     ...formData,
+    collectingInformation,
     collectionItems,
     featureObservations,
     identifiers,
-    individualCircumstances,
     taxonInformation,
   }
 

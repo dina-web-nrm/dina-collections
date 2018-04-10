@@ -32,7 +32,7 @@
     "attributes": {
       "individual": {
         "taxonInformation": {},
-        "individualCircumstances": [
+        "collectingInformation": [
           {
             "id": "string",
             "collectorsText": "Bergström, U",

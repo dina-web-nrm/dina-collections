@@ -1,6 +1,9 @@
 'use strict';
 
 var specimen = {
+  collectingInformation: {
+    column: 'collectingInformation'
+  },
   collectionItem: {
     column: 'collectionItems'
   },
@@ -18,9 +21,6 @@ var specimen = {
   },
   individual: {
     column: 'individual'
-  },
-  individualCircumstance: {
-    column: 'individualCircumstances'
   },
   relationships: {
     column: 'relationships',

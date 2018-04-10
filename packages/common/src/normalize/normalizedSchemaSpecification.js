@@ -1,4 +1,7 @@
 const specimen = {
+  collectingInformation: {
+    column: 'collectingInformation',
+  },
   collectionItem: {
     column: 'collectionItems',
   },
@@ -16,9 +19,6 @@ const specimen = {
   },
   individual: {
     column: 'individual',
-  },
-  individualCircumstance: {
-    column: 'individualCircumstances',
   },
   relationships: {
     column: 'relationships',

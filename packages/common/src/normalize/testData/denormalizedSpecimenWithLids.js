@@ -55,7 +55,7 @@ module.exports = {
         remarks: '',
       },
     ],
-    individualCircumstances: [
+    collectingInformation: [
       {
         lid: 'e7253de8-6262-4fd6-8192-40dec5970f41',
         collectorsText: 'collectorsText',

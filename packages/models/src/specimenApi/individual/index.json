@@ -9,9 +9,9 @@
       "$ref": "__ROOT__taxonInformation",
       "x-reference-type": "internal"
     },
-    "individualCircumstances": {
+    "collectingInformation": {
       "type": "array",
-      "items": { "$ref": "__ROOT__individualCircumstance", "x-reference-type": "internal" }
+      "items": { "$ref": "__ROOT__collectingInformation", "x-reference-type": "internal" }
     },
     "featureObservations": {
       "type": "array",

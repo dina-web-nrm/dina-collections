@@ -16,7 +16,7 @@ import {
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentIndividualCircumstances'
+  'modules:collectionMammals:MammalForm:SegmentCollectingInformation'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -36,7 +36,7 @@ const propTypes = {
   hasPlaces: PropTypes.bool.isRequired,
 }
 
-class SegmentIndividualCircumstances extends PureComponent {
+class SegmentCollectingInformation extends PureComponent {
   componentDidMount() {
     if (!config.isTest) {
       this.props.getPlaces()
@@ -61,7 +61,7 @@ class SegmentIndividualCircumstances extends PureComponent {
               component={Input}
               label={
                 <ModuleTranslate
-                  scope="individualCircumstances"
+                  scope="collectingInformation"
                   textKey="collectorsText"
                 />
               }
@@ -77,7 +77,7 @@ class SegmentIndividualCircumstances extends PureComponent {
               component={Input}
               label={
                 <ModuleTranslate
-                  scope="individualCircumstances"
+                  scope="collectingInformation"
                   textKey="expeditionText"
                 />
               }
@@ -92,7 +92,7 @@ class SegmentIndividualCircumstances extends PureComponent {
               component={Input}
               label={
                 <ModuleTranslate
-                  scope="individualCircumstances"
+                  scope="collectingInformation"
                   textKey="startDate"
                 />
               }
@@ -107,7 +107,7 @@ class SegmentIndividualCircumstances extends PureComponent {
               component={Input}
               label={
                 <ModuleTranslate
-                  scope="individualCircumstances"
+                  scope="collectingInformation"
                   textKey="endDate"
                 />
               }
@@ -122,9 +122,9 @@ class SegmentIndividualCircumstances extends PureComponent {
   }
 }
 
-SegmentIndividualCircumstances.propTypes = propTypes
+SegmentCollectingInformation.propTypes = propTypes
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  pathBuilder({ name: 'individualCircumstances.0' })
-)(SegmentIndividualCircumstances)
+  pathBuilder({ name: 'collectingInformation.0' })
+)(SegmentCollectingInformation)

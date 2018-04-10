@@ -69,7 +69,7 @@ module.exports = {
       lid: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
     },
   ],
-  individualCircumstances: [
+  collectingInformation: [
     {
       collectorsText: 'collectorsText',
       event: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
@@ -116,7 +116,7 @@ module.exports = {
     featureObservations: ['21a79d27-3848-4f13-8179-6011a2e98298'],
     collectionItems: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
     identifiers: ['9c9b1543-5b24-44ac-8032-cea5d430bcb7'],
-    individualCircumstances: ['e7253de8-6262-4fd6-8192-40dec5970f41'],
+    collectingInformation: ['e7253de8-6262-4fd6-8192-40dec5970f41'],
     lid: '15413ab7-4c2f-4072-b2ae-3192f2887808',
   },
 }

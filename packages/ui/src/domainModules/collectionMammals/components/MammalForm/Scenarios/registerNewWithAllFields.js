@@ -96,80 +96,78 @@ const mutations = [
     value: '123456',
   },
   {
-    name: 'individualCircumstances.0.collectorsText',
+    name: 'collectingInformation.0.collectorsText',
     value: 'collectorsText',
   },
   {
-    name: 'individualCircumstances.0.event.endDate',
+    name: 'collectingInformation.0.event.endDate',
     value: 'endDate',
   },
   {
-    name: 'individualCircumstances.0.event.expeditionText',
+    name: 'collectingInformation.0.event.expeditionText',
     value: 'expeditionText',
   },
 
   {
     name:
-      'individualCircumstances.0.event.locationInformation.places.0.id.hidden',
+      'collectingInformation.0.event.locationInformation.places.0.id.hidden',
     value: 'Africa',
   },
 
   {
     name:
-      'individualCircumstances.0.event.locationInformation.places.1.id.hidden',
+      'collectingInformation.0.event.locationInformation.places.1.id.hidden',
     value: 'Algeria',
   },
   {
-    name:
-      'individualCircumstances.0.event.locationInformation.localityVerbatim',
+    name: 'collectingInformation.0.event.locationInformation.localityVerbatim',
     value: 'localityVerbatim',
   },
   {
-    name: 'individualCircumstances.0.event.locationInformation.localityName',
+    name: 'collectingInformation.0.event.locationInformation.localityName',
     value: 'localityName',
   },
   {
-    name: 'individualCircumstances.0.event.locationInformation.remarks',
+    name: 'collectingInformation.0.event.locationInformation.remarks',
     value: 'remarks',
   },
   {
-    name:
-      'individualCircumstances.0.event.locationInformation.position.latitude',
+    name: 'collectingInformation.0.event.locationInformation.position.latitude',
     value: 'latitude-string',
   },
   {
     name:
-      'individualCircumstances.0.event.locationInformation.position.longitude',
+      'collectingInformation.0.event.locationInformation.position.longitude',
     value: 'longitude-string',
   },
   {
     name:
-      'individualCircumstances.0.event.locationInformation.position.referenceSystem',
+      'collectingInformation.0.event.locationInformation.position.referenceSystem',
     value: 'referenceSystem',
   },
 
   {
     name:
-      'individualCircumstances.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
     value: 100,
   },
   {
     name:
-      'individualCircumstances.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
     value: 100,
   },
   {
     name:
-      'individualCircumstances.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
     value: 20,
   },
   {
     name:
-      'individualCircumstances.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
     value: 20,
   },
   {
-    name: 'individualCircumstances.0.event.startDate',
+    name: 'collectingInformation.0.event.startDate',
     value: 'startDate',
   },
 ]
@@ -200,6 +198,36 @@ const expectedOutput = {
   ],
   specimen: {
     individual: {
+      collectingInformation: [
+        {
+          collectorsText: 'collectorsText',
+          event: {
+            endDate: 'endDate',
+            expeditionText: 'expeditionText',
+            locationInformation: {
+              localityName: 'localityName',
+              localityVerbatim: 'localityVerbatim',
+              places: [
+                { id: 'Africa', type: 'place' },
+                { id: 'Algeria', type: 'place' },
+              ],
+              position: {
+                latitude: 'latitude-string',
+                longitude: 'longitude-string',
+                referenceSystem: 'referenceSystem',
+              },
+              remarks: 'remarks',
+              verticalPosition: {
+                maximumDepthInMeters: 100,
+                maximumElevationInMeters: 100,
+                minimumDepthInMeters: 20,
+                minimumElevationInMeters: 20,
+              },
+            },
+            startDate: 'startDate',
+          },
+        },
+      ],
       collectionItems: [
         {
           curatorialAssessments: [
@@ -249,36 +277,6 @@ const expectedOutput = {
           },
           publishRecord: true,
           remarks: '',
-        },
-      ],
-      individualCircumstances: [
-        {
-          collectorsText: 'collectorsText',
-          event: {
-            endDate: 'endDate',
-            expeditionText: 'expeditionText',
-            locationInformation: {
-              localityName: 'localityName',
-              localityVerbatim: 'localityVerbatim',
-              places: [
-                { id: 'Africa', type: 'place' },
-                { id: 'Algeria', type: 'place' },
-              ],
-              position: {
-                latitude: 'latitude-string',
-                longitude: 'longitude-string',
-                referenceSystem: 'referenceSystem',
-              },
-              remarks: 'remarks',
-              verticalPosition: {
-                maximumDepthInMeters: 100,
-                maximumElevationInMeters: 100,
-                minimumDepthInMeters: 20,
-                minimumElevationInMeters: 20,
-              },
-            },
-            startDate: 'startDate',
-          },
         },
       ],
       readOnly: undefined,

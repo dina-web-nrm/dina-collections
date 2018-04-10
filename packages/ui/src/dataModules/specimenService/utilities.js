@@ -54,11 +54,11 @@ export const buildSpecimenBody = ({
         featureTypes: {
           data: featureTypes,
         },
-        places: {
-          data: places,
-        },
         physicalObjects: {
           data: cleanedPhysicalObjects,
+        },
+        places: {
+          data: places,
         },
         preparationTypes: {
           data: preparationTypes,

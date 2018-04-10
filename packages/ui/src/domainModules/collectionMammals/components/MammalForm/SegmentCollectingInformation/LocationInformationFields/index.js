@@ -80,7 +80,7 @@ LocationInformationFields.propTypes = propTypes
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'individualCircumstances.locationInformation',
+    scope: 'collectingInformation.locationInformation',
   }),
   pathBuilder({ name: 'event.locationInformation' })
 )(LocationInformationFields)

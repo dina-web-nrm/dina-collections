@@ -3,13 +3,13 @@ import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
 import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
-import transformIndividualCircumstances from './transformIndividualCircumstances'
+import transformCollectingInformation from './transformCollectingInformation'
 
 export default function transformInput({
   denormalize = true,
-  preparationTypes = {},
   featureTypes = {},
   physicalObjects = {},
+  preparationTypes = {},
   specimen = {},
   storageLocations = {},
 }) {
@@ -32,16 +32,16 @@ export default function transformInput({
     storageLocations,
   })
   const identifiers = transformIdentifiers(attributes.identifiers)
-  const individualCircumstances = transformIndividualCircumstances(
-    attributes.individualCircumstances
+  const collectingInformation = transformCollectingInformation(
+    attributes.collectingInformation
   )
 
   return {
     ...attributes,
+    collectingInformation,
     collectionItems,
     featureObservations,
     identifiers,
-    individualCircumstances,
     taxonInformation,
   }
 }

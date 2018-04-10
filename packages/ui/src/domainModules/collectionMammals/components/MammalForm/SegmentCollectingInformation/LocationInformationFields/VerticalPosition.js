@@ -125,7 +125,7 @@ VerticalPosition.propTypes = propTypes
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'individualCircumstances.locationInformation.verticalPosition',
+    scope: 'collectingInformation.locationInformation.verticalPosition',
   }),
   pathBuilder({ name: 'verticalPosition' })
 )(VerticalPosition)

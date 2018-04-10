@@ -42,7 +42,7 @@ module.exports = {
       publishRecord: true,
       remarks: ''
     }],
-    individualCircumstances: [{
+    collectingInformation: [{
       collectorsText: 'collectorsText',
       event: {
         endDate: 'endDate',

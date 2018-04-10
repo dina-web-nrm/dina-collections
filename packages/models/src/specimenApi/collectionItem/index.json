@@ -15,8 +15,8 @@
         "x-reference-type": "internal"
       }
     },
-    "collectingCircumstance": {
-      "$ref": "__ROOT__collectingCircumstance",
+    "collectingInformation": {
+      "$ref": "__ROOT__collectingInformation",
       "x-reference-type": "internal"
     },
     "curatorialAssessments": {

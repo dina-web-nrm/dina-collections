@@ -504,7 +504,7 @@
     "x-modelType": "model",
     "id": "place"
   },
-  "collectingCircumstance": {
+  "collectingInformation": {
     "additionalProperties": false,
     "properties": {
       "lid": {
@@ -525,40 +525,7 @@
     "description": "### Definition\n\nThe context under which some specific material was collected.\n\n### Note(s)\n\nThis includes collecting information of various kinds, for example collector(s) and collecting method.\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "collectingCircumstance"
-  },
-  "collectingEvent": {
-    "additionalProperties": false,
-    "properties": {
-      "lid": {
-        "type": "string"
-      },
-      "id": {
-        "type": "string"
-      },
-      "collectorsText": {
-        "type": "string",
-        "example": "Bergström, U",
-        "description": "Name of the collector"
-      },
-      "startDate": {
-        "$ref": "date"
-      },
-      "endDate": {
-        "$ref": "date"
-      },
-      "expeditionText": {
-        "type": "string",
-        "example": "Vega Expedition"
-      },
-      "locationInformation": {
-        "$ref": "locationInformation"
-      }
-    },
-    "x-category": "specimenApi",
-    "x-modelType": "model",
-    "description": "",
-    "id": "collectingEvent"
+    "id": "collectingInformation"
   },
   "collectionItem": {
     "additionalProperties": false,
@@ -576,7 +543,7 @@
           "$ref": "lid"
         }
       },
-      "collectingCircumstance": {
+      "collectingInformation": {
         "$ref": "lid"
       },
       "curatorialAssessments": {
@@ -641,7 +608,7 @@
     "x-modelType": "model",
     "id": "curatorialAssessment"
   },
-  "deathCircumstance": {
+  "deathInformation": {
     "additionalProperties": false,
     "properties": {
       "id": {
@@ -651,12 +618,15 @@
         "type": "string",
         "example": "Bergström, U",
         "description": "Name of the collector"
+      },
+      "event": {
+        "$ref": "lid"
       }
     },
     "description": "### Definition\n\nInformation about the death of an individual or group of individuals.\n\n### Note(s)\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "deathCircumstance"
+    "id": "deathInformation"
   },
   "determination": {
     "additionalProperties": false,
@@ -769,7 +739,7 @@
       "taxonInformation": {
         "$ref": "lid"
       },
-      "individualCircumstances": {
+      "collectingInformation": {
         "type": "array",
         "items": {
           "$ref": "lid"
@@ -806,42 +776,6 @@
     "x-category": "specimenApi",
     "x-modelType": "model",
     "id": "individual"
-  },
-  "individualCircumstance": {
-    "additionalProperties": false,
-    "properties": {
-      "lid": {
-        "type": "string"
-      },
-      "id": {
-        "type": "string"
-      },
-      "collectorsText": {
-        "type": "string",
-        "example": "Bergström, U",
-        "description": "Name of the collector"
-      },
-      "event": {
-        "$ref": "lid"
-      },
-      "specificCircumstance": {
-        "anyOf": [
-          {
-            "$ref": "originCircumstance"
-          },
-          {
-            "$ref": "observationCircumstance"
-          },
-          {
-            "$ref": "deathCircumstance"
-          }
-        ]
-      }
-    },
-    "description": "### Definition\n\nThe context for the participation of an individual in a particular event.\n\n### Note(s)\n\nThis is a container for information about e.g. death, origin and observations of the individual (or group of individuals). Circumstances for the collecting event are handled separately (see collectingCircumstance).\n",
-    "x-category": "specimenApi",
-    "x-modelType": "model",
-    "id": "individualCircumstance"
   },
   "locationInformation": {
     "additionalProperties": false,
@@ -894,7 +828,7 @@
     "x-modelType": "model",
     "id": "locationInformation"
   },
-  "observationCircumstance": {
+  "observationInformation": {
     "additionalProperties": false,
     "properties": {
       "id": {
@@ -904,14 +838,17 @@
         "type": "string",
         "example": "Bergström, U",
         "description": "Name of the collector"
+      },
+      "event": {
+        "$ref": "lid"
       }
     },
     "description": "### Definition\n\nInformation about an observation of an individual or group of individuals.\n\n### Note(s)\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "observationCircumstance"
+    "id": "observationInformation"
   },
-  "originCircumstance": {
+  "originInformation": {
     "additionalProperties": false,
     "properties": {
       "id": {
@@ -921,12 +858,15 @@
         "type": "string",
         "example": "Bergström, U",
         "description": "Name of the collector"
+      },
+      "event": {
+        "$ref": "lid"
       }
     },
     "description": "### Definition\n\nInformation about the origin of an individual or group of individuals.\n\n### Note(s)\n\nThis can for example involve the genetic origin or a specific event when an individual moved from an place to another.\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "originCircumstance"
+    "id": "originInformation"
   },
   "specimen": {
     "additionalProperties": false,
@@ -993,16 +933,16 @@
       "id": {
         "type": "string"
       },
-      "individualCircumstances": {
+      "collectingInformation": {
         "type": "array",
         "items": {
-          "$ref": "individualCircumstance"
+          "$ref": "collectingInformation"
         }
       },
-      "collectingCircumstances": {
+      "collectingInformations": {
         "type": "array",
         "items": {
-          "$ref": "collectingCircumstance"
+          "$ref": "collectingInformation"
         }
       },
       "determinations": {

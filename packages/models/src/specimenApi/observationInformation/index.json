@@ -8,6 +8,10 @@
       "type": "string",
       "example": "Bergström, U",
       "description": "Name of the collector"
+    },
+    "event": {
+      "$ref": "__ROOT__event",
+      "x-reference-type": "internal"
     }
   }
 }

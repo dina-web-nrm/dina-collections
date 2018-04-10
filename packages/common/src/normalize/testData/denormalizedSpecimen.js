@@ -49,7 +49,7 @@ module.exports = {
         remarks: '',
       },
     ],
-    individualCircumstances: [
+    collectingInformation: [
       {
         collectorsText: 'collectorsText',
         event: {

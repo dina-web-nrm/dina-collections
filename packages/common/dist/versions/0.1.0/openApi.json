@@ -5753,7 +5753,7 @@
         "x-category": "localityApi",
         "x-modelType": "model"
       },
-      "collectingCircumstance": {
+      "collectingInformation": {
         "additionalProperties": false,
         "properties": {
           "lid": {
@@ -5775,38 +5775,6 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "collectingEvent": {
-        "additionalProperties": false,
-        "properties": {
-          "lid": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "collectorsText": {
-            "type": "string",
-            "example": "Bergström, U",
-            "description": "Name of the collector"
-          },
-          "startDate": {
-            "$ref": "#/components/schemas/date"
-          },
-          "endDate": {
-            "$ref": "#/components/schemas/date"
-          },
-          "expeditionText": {
-            "type": "string",
-            "example": "Vega Expedition"
-          },
-          "locationInformation": {
-            "$ref": "#/components/schemas/locationInformation"
-          }
-        },
-        "x-category": "specimenApi",
-        "x-modelType": "model",
-        "description": ""
-      },
       "collectionItem": {
         "additionalProperties": false,
         "properties": {
@@ -5823,8 +5791,8 @@
               "$ref": "#/components/schemas/identifier"
             }
           },
-          "collectingCircumstance": {
-            "$ref": "#/components/schemas/collectingCircumstance"
+          "collectingInformation": {
+            "$ref": "#/components/schemas/collectingInformation"
           },
           "curatorialAssessments": {
             "type": "array",
@@ -5886,7 +5854,7 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "deathCircumstance": {
+      "deathInformation": {
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -5896,6 +5864,9 @@
             "type": "string",
             "example": "Bergström, U",
             "description": "Name of the collector"
+          },
+          "event": {
+            "$ref": "#/components/schemas/event"
           }
         },
         "description": "### Definition\n\nInformation about the death of an individual or group of individuals.\n\n### Note(s)\n",
@@ -6010,10 +5981,10 @@
           "taxonInformation": {
             "$ref": "#/components/schemas/taxonInformation"
           },
-          "individualCircumstances": {
+          "collectingInformation": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/individualCircumstance"
+              "$ref": "#/components/schemas/collectingInformation"
             }
           },
           "featureObservations": {
@@ -6044,41 +6015,6 @@
             "type": "integer"
           }
         },
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
-      "individualCircumstance": {
-        "additionalProperties": false,
-        "properties": {
-          "lid": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "collectorsText": {
-            "type": "string",
-            "example": "Bergström, U",
-            "description": "Name of the collector"
-          },
-          "event": {
-            "$ref": "#/components/schemas/event"
-          },
-          "specificCircumstance": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/originCircumstance"
-              },
-              {
-                "$ref": "#/components/schemas/observationCircumstance"
-              },
-              {
-                "$ref": "#/components/schemas/deathCircumstance"
-              }
-            ]
-          }
-        },
-        "description": "### Definition\n\nThe context for the participation of an individual in a particular event.\n\n### Note(s)\n\nThis is a container for information about e.g. death, origin and observations of the individual (or group of individuals). Circumstances for the collecting event are handled separately (see collectingCircumstance).\n",
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
@@ -6132,7 +6068,7 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "observationCircumstance": {
+      "observationInformation": {
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -6142,13 +6078,16 @@
             "type": "string",
             "example": "Bergström, U",
             "description": "Name of the collector"
+          },
+          "event": {
+            "$ref": "#/components/schemas/event"
           }
         },
         "description": "### Definition\n\nInformation about an observation of an individual or group of individuals.\n\n### Note(s)\n",
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "originCircumstance": {
+      "originInformation": {
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -6158,6 +6097,9 @@
             "type": "string",
             "example": "Bergström, U",
             "description": "Name of the collector"
+          },
+          "event": {
+            "$ref": "#/components/schemas/event"
           }
         },
         "description": "### Definition\n\nInformation about the origin of an individual or group of individuals.\n\n### Note(s)\n\nThis can for example involve the genetic origin or a specific event when an individual moved from an place to another.\n",
@@ -6180,16 +6122,16 @@
           "id": {
             "type": "string"
           },
-          "individualCircumstances": {
+          "collectingInformation": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/individualCircumstance"
+              "$ref": "#/components/schemas/collectingInformation"
             }
           },
-          "collectingCircumstances": {
+          "collectingInformations": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/collectingCircumstance"
+              "$ref": "#/components/schemas/collectingInformation"
             }
           },
           "determinations": {

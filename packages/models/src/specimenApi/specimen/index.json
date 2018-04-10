@@ -67,16 +67,16 @@
     "id": {
       "type": "string"
     },
-    "individualCircumstances": {
+    "collectingInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__individualCircumstance"
+        "$ref": "__ROOT__collectingInformation"
       }
     },
-    "collectingCircumstances": {
+    "collectingInformations": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectingCircumstance"
+        "$ref": "__ROOT__collectingInformation"
       }
     },
     "determinations": {
