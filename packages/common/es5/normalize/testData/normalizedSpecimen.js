@@ -74,14 +74,12 @@ module.exports = {
     lid: '21a79d27-3848-4f13-8179-6011a2e98298'
   }],
   identifiers: [{
-    identifier: {
-      identifierType: 'catalogNumber',
-      nameSpace: '',
-      value: '123456'
-    },
+    identifierType: 'catalogNumber',
+    lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7',
+    nameSpace: '',
     publishRecord: true,
     remarks: '',
-    lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7'
+    value: '123456'
   }],
   collectionItems: [{
     alternateIdentifiersText: 'alternateIdentifiersText',

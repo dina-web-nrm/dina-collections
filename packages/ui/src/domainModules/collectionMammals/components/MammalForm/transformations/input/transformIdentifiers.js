@@ -1,13 +1,11 @@
 const INITIAL_VALUES = {
   identifiers: [
     {
-      identifier: {
-        identifierType: 'catalogNumber',
-        nameSpace: '',
-        value: '',
-      },
+      identifierType: 'catalogNumber',
+      nameSpace: '',
       publishRecord: false,
       remarks: '',
+      value: '',
     },
   ],
 }

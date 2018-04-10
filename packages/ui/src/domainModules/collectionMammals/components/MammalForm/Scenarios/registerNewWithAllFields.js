@@ -92,7 +92,7 @@ const mutations = [
     value: true,
   },
   {
-    name: 'identifiers.0.identifier.value',
+    name: 'identifiers.0.value',
     value: '123456',
   },
   {
@@ -270,13 +270,11 @@ const expectedOutput = {
 
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123456',
-          },
+          identifierType: 'catalogNumber',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123456',
         },
       ],
       readOnly: undefined,

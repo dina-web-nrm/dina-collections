@@ -371,29 +371,6 @@
     "description": "",
     "id": "selectableValue"
   },
-  "catalogNumber": {
-    "type": "object",
-    "properties": {
-      "identifierType": {
-        "type": "string",
-        "pattern": "catalogNumber"
-      },
-      "nameSpace": {
-        "type": "string",
-        "example": "mammal"
-      },
-      "value": {
-        "type": "string",
-        "description": "Catalog number is a string of 6 or 8 digits",
-        "pattern": "^$|^[0-9]{6}$|^[0-9]{8}$",
-        "example": "584028"
-      }
-    },
-    "description": "### Definition\n\nA unique identifier for a unit within a catalog.\n",
-    "x-category": "identifierApi",
-    "x-modelType": "model",
-    "id": "catalogNumber"
-  },
   "identifier": {
     "additionalProperties": false,
     "properties": {
@@ -407,12 +384,21 @@
         "type": "string",
         "example": "Some remarks"
       },
-      "identifier": {
-        "anyOf": [
-          {
-            "$ref": "catalogNumber"
-          }
-        ]
+      "identifierType": {
+        "type": "string",
+        "example": "catalogNumber"
+      },
+      "value": {
+        "type": "string",
+        "example": "584028"
+      },
+      "nameSpace": {
+        "type": "string",
+        "example": "mammal"
+      },
+      "validation": {
+        "type": "string",
+        "example": "^$|^[0-9]{6}$|^[0-9]{8}$"
       }
     },
     "description": "### Definition\n\nTba\n",
@@ -1944,178 +1930,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/curatedList/v01/featureTypes",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "createCatalogNumberResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "catalogNumber"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "type": {
-            "default": "catalogNumber",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/identifier/v01/catalogNumbers",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "updateCatalogNumberResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "catalogNumber"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "type": {
-            "default": "catalogNumber",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "getCatalogNumberResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "catalogNumber"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "type": {
-            "default": "catalogNumber",
-            "type": "string"
-          }
-        },
-        "type": "object"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object"
-      },
-      "meta": {
-        "type": "object"
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "description": ""
-  },
-  "getCatalogNumbersResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "catalogNumber"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "type": {
-              "default": "catalogNumber",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array"
-      },
-      "jsonapi": {
-        "type": "object"
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/identifier/v01/catalogNumbers",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -5642,90 +5456,6 @@
     },
     "description": ""
   },
-  "createCatalogNumberRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "default": "catalogNumber",
-            "enum": [
-              "catalogNumber"
-            ],
-            "type": "string"
-          },
-          "attributes": {
-            "$ref": "catalogNumber"
-          }
-        }
-      }
-    },
-    "x-examples": {
-      "primary": {
-        "data": {
-          "id": "1234",
-          "type": "catalogNumber",
-          "attributes": {
-            "identifierType": "catalogNumber",
-            "nameSpace": "mammal",
-            "value": "58412812"
-          }
-        }
-      }
-    },
-    "example": {
-      "data": {
-        "id": "1234",
-        "type": "catalogNumber",
-        "attributes": {
-          "identifierType": "catalogNumber",
-          "nameSpace": "mammal",
-          "value": "58412812"
-        }
-      }
-    },
-    "description": ""
-  },
-  "updateCatalogNumberRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "example": "1234"
-          },
-          "type": {
-            "default": "catalogNumber",
-            "enum": [
-              "catalogNumber"
-            ],
-            "type": "string"
-          },
-          "attributes": {
-            "$ref": "catalogNumber"
-          }
-        }
-      }
-    },
-    "description": ""
-  },
   "createPlaceRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -6272,17 +6002,15 @@
             ],
             "identifiers": [
               {
-                "identifier": {
-                  "identifierType": "catalogNumber",
-                  "nameSpace": "",
-                  "value": "123456"
-                },
+                "identifierType": "catalogNumber",
+                "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+                "nameSpace": "",
                 "publishRecord": true,
                 "remarks": "",
-                "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                "value": "123456"
               }
             ],
-            "individualCircumstances": [
+            "collectingInformation": [
               {
                 "collectorsText": "collectorsText",
                 "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
@@ -6301,7 +6029,7 @@
                 "identifiers": [
                   "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
                 ],
-                "individualCircumstances": [
+                "collectingInformation": [
                   "44ab19bf-4328-42d3-9f8e-c88854847234"
                 ],
                 "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
@@ -6450,17 +6178,15 @@
           ],
           "identifiers": [
             {
-              "identifier": {
-                "identifierType": "catalogNumber",
-                "nameSpace": "",
-                "value": "123456"
-              },
+              "identifierType": "catalogNumber",
+              "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+              "nameSpace": "",
               "publishRecord": true,
               "remarks": "",
-              "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+              "value": "123456"
             }
           ],
-          "individualCircumstances": [
+          "collectingInformation": [
             {
               "collectorsText": "collectorsText",
               "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
@@ -6479,7 +6205,7 @@
               "identifiers": [
                 "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
               ],
-              "individualCircumstances": [
+              "collectingInformation": [
                 "44ab19bf-4328-42d3-9f8e-c88854847234"
               ],
               "lid": "836625c3-a049-4323-8b52-4bc425f5be04"

@@ -104,13 +104,11 @@
         "id": "string",
         "identifiers": [
           {
-            "identifier": {
-              "identifierType": "catalogNumber",
-              "nameSpace": "",
-              "value": "123456"
-            },
+            "identifierType": "catalogNumber",
+            "nameSpace": "",
             "publishRecord": true,
-            "remarks": "Some remarks"
+            "remarks": "Some remarks",
+            "value": "123456"
           }
         ],
         "collectionItems": [

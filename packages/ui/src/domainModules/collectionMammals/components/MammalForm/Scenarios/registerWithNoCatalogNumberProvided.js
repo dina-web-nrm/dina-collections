@@ -1,6 +1,6 @@
 const postTransformOutputTest = ({ transformedOutput }) => {
   expect(
-    transformedOutput.specimen.individual.identifiers[0].identifier.value
+    transformedOutput.specimen.individual.identifiers[0].value
   ).toBeTruthy()
 }
 

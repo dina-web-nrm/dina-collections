@@ -18,10 +18,8 @@ const individual = {
   ],
   identifiers: [
     {
-      identifier: {
-        identifierType: 'catalogNumber',
-        value: '444444',
-      },
+      identifierType: 'catalogNumber',
+      value: '444444',
     },
   ],
   taxonInformation: {
@@ -101,10 +99,8 @@ const expectedOutput = {
       ],
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            value: '444444',
-          },
+          identifierType: 'catalogNumber',
+          value: '444444',
         },
       ],
       readOnly: undefined,

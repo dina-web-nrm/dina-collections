@@ -20,14 +20,12 @@ testData.simpleDataNoRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123457',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123457',
         },
       ],
       individual: {
@@ -45,14 +43,12 @@ testData.simpleDataPhysicalObjectRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
       individual: {
@@ -80,14 +76,12 @@ testData.simpleDataMultipleRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
       individual: {
@@ -129,14 +123,12 @@ testData.simpleDataInvalidRelationsFormat = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
       individual: {
@@ -160,14 +152,12 @@ testData.simpleDataInvalidRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
       individual: {

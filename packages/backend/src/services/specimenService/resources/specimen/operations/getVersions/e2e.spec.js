@@ -27,7 +27,7 @@ apiDescribe('specimen', () => {
           const updatedSimpleDataNoRelations = getTestData(
             'simpleDataNoRelations'
           )
-          updatedSimpleDataNoRelations.data.attributes.identifiers[0].identifier.value =
+          updatedSimpleDataNoRelations.data.attributes.identifiers[0].value =
             '555555'
 
           existingId = response.data.id

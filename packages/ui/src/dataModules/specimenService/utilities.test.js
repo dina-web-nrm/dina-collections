@@ -67,10 +67,8 @@ describe('dataModules/specimenService/utilities', () => {
       ],
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            value: '444444',
-          },
+          identifierType: 'catalogNumber',
+          value: '444444',
         },
       ],
       taxonInformation: {
@@ -218,8 +216,8 @@ describe('dataModules/specimenService/utilities', () => {
   describe('getCatalogNumberFromIdentifiers', () => {
     it('returns catalogNumber', () => {
       const identifiers = [
-        { identifier: { identifierType: 'other', value: 'abc' } },
-        { identifier: { identifierType: 'catalogNumber', value: '123456' } },
+        { identifierType: 'other', value: 'abc' },
+        { identifierType: 'catalogNumber', value: '123456' },
       ]
       expect(getCatalogNumberFromIdentifiers(identifiers)).toEqual('123456')
     })

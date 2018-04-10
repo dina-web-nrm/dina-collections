@@ -9,14 +9,6 @@ const batchExecute = require('../../../../../utilities/test/batchExecute')
 const createData = catalogNumber => {
   return {
     data: {
-      additionalData: [
-        {
-          attributes: {
-            catalogNumber: '584028',
-          },
-          type: 'catalogedUnit',
-        },
-      ],
       attributes: {
         causeOfDeathStandardized: 'Standardized death cause',
         causeOfDeathText: 'Cause of death ',

@@ -115,14 +115,12 @@
       ],
       "identifiers": [
         {
-          "identifier": {
-            "identifierType": "catalogNumber",
-            "nameSpace": "",
-            "value": "123456"
-          },
+          "identifierType": "catalogNumber",
+          "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+          "nameSpace": "",
           "publishRecord": true,
           "remarks": "",
-          "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+          "value": "123456"
         }
       ],
       "collectingInformation": [

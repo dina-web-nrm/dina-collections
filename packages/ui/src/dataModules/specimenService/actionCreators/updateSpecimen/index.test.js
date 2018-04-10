@@ -88,9 +88,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const attributes = {
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const id = '123'
@@ -142,9 +140,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
       id: '123',
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }
@@ -177,9 +173,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
       id: '123',
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }

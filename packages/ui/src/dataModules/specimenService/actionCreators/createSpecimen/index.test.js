@@ -58,9 +58,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const specimen = {
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
         taxonInformation: {
           determinations: [{ taxon }],
         },
@@ -99,9 +97,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const specimen = {
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
 
@@ -149,9 +145,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const specimen = {
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }
@@ -183,9 +177,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const specimen = {
       individual: {
         collectionItems: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }

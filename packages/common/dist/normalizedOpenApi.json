@@ -53,10 +53,6 @@
       "name": "externalEventService"
     },
     {
-      "description": "Api managing identifiers like catalogNumber.\n",
-      "name": "identifierService"
-    },
-    {
       "description": "Locality Service\n",
       "name": "localityService"
     },
@@ -1488,344 +1484,6 @@
         "summary": "Find featureType by id",
         "tags": [
           "curatedListService"
-        ]
-      }
-    },
-    "/api/identifier/v01/catalogNumbers": {
-      "post": {
-        "operationId": "createCatalogNumber",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/createCatalogNumberRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createCatalogNumberResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createCatalogNumber-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createCatalogNumber-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create catalogNumber",
-        "tags": [
-          "identifierService"
-        ]
-      },
-      "get": {
-        "operationId": "getCatalogNumbers",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumbersResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumbers-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumbers-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find catalogNumbers",
-        "tags": [
-          "identifierService"
-        ]
-      }
-    },
-    "/api/identifier/v01/catalogNumbers/{id}": {
-      "patch": {
-        "operationId": "updateCatalogNumber",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "catalogNumber id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateCatalogNumberRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateCatalogNumberResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateCatalogNumber-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateCatalogNumber-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateCatalogNumber-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates catalogNumber",
-        "tags": [
-          "identifierService"
-        ]
-      },
-      "get": {
-        "operationId": "getCatalogNumber",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "catalogNumber id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumberResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumber-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumber-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getCatalogNumber-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find catalogNumber by id",
-        "tags": [
-          "identifierService"
         ]
       }
     },
@@ -5623,28 +5281,6 @@
         "x-modelType": "model",
         "description": ""
       },
-      "catalogNumber": {
-        "type": "object",
-        "properties": {
-          "identifierType": {
-            "type": "string",
-            "pattern": "catalogNumber"
-          },
-          "nameSpace": {
-            "type": "string",
-            "example": "mammal"
-          },
-          "value": {
-            "type": "string",
-            "description": "Catalog number is a string of 6 or 8 digits",
-            "pattern": "^$|^[0-9]{6}$|^[0-9]{8}$",
-            "example": "584028"
-          }
-        },
-        "description": "### Definition\n\nA unique identifier for a unit within a catalog.\n",
-        "x-category": "identifierApi",
-        "x-modelType": "model"
-      },
       "identifier": {
         "additionalProperties": false,
         "properties": {
@@ -5658,12 +5294,21 @@
             "type": "string",
             "example": "Some remarks"
           },
-          "identifier": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/catalogNumber"
-              }
-            ]
+          "identifierType": {
+            "type": "string",
+            "example": "catalogNumber"
+          },
+          "value": {
+            "type": "string",
+            "example": "584028"
+          },
+          "nameSpace": {
+            "type": "string",
+            "example": "mammal"
+          },
+          "validation": {
+            "type": "string",
+            "example": "^$|^[0-9]{6}$|^[0-9]{8}$"
           }
         },
         "description": "### Definition\n\nTba\n",
@@ -7433,264 +7078,6 @@
         "type": "object"
       },
       "getFeatureTypes-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "createCatalogNumber-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "createCatalogNumber-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "updateCatalogNumber-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "updateCatalogNumber-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "updateCatalogNumber-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getCatalogNumber-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getCatalogNumber-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "getCatalogNumber-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getCatalogNumbers-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getCatalogNumbers-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -10521,90 +9908,6 @@
         },
         "description": ""
       },
-      "createCatalogNumberRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "catalogNumber",
-                "enum": [
-                  "catalogNumber"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/catalogNumber"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "id": "1234",
-              "type": "catalogNumber",
-              "attributes": {
-                "identifierType": "catalogNumber",
-                "nameSpace": "mammal",
-                "value": "58412812"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "id": "1234",
-            "type": "catalogNumber",
-            "attributes": {
-              "identifierType": "catalogNumber",
-              "nameSpace": "mammal",
-              "value": "58412812"
-            }
-          }
-        },
-        "description": ""
-      },
-      "updateCatalogNumberRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "catalogNumber",
-                "enum": [
-                  "catalogNumber"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/catalogNumber"
-              }
-            }
-          }
-        },
-        "description": ""
-      },
       "createPlaceRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -11151,17 +10454,15 @@
                 ],
                 "identifiers": [
                   {
-                    "identifier": {
-                      "identifierType": "catalogNumber",
-                      "nameSpace": "",
-                      "value": "123456"
-                    },
+                    "identifierType": "catalogNumber",
+                    "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+                    "nameSpace": "",
                     "publishRecord": true,
                     "remarks": "",
-                    "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                    "value": "123456"
                   }
                 ],
-                "individualCircumstances": [
+                "collectingInformation": [
                   {
                     "collectorsText": "collectorsText",
                     "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
@@ -11180,7 +10481,7 @@
                     "identifiers": [
                       "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
                     ],
-                    "individualCircumstances": [
+                    "collectingInformation": [
                       "44ab19bf-4328-42d3-9f8e-c88854847234"
                     ],
                     "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
@@ -11329,17 +10630,15 @@
               ],
               "identifiers": [
                 {
-                  "identifier": {
-                    "identifierType": "catalogNumber",
-                    "nameSpace": "",
-                    "value": "123456"
-                  },
+                  "identifierType": "catalogNumber",
+                  "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+                  "nameSpace": "",
                   "publishRecord": true,
                   "remarks": "",
-                  "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                  "value": "123456"
                 }
               ],
-              "individualCircumstances": [
+              "collectingInformation": [
                 {
                   "collectorsText": "collectorsText",
                   "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
@@ -11358,7 +10657,7 @@
                   "identifiers": [
                     "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
                   ],
-                  "individualCircumstances": [
+                  "collectingInformation": [
                     "44ab19bf-4328-42d3-9f8e-c88854847234"
                   ],
                   "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
@@ -12991,178 +12290,6 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/curatedList/v01/featureTypes",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "createCatalogNumberResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/catalogNumber"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "catalogNumber",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/identifier/v01/catalogNumbers",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "updateCatalogNumberResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/catalogNumber"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "catalogNumber",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getCatalogNumberResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/catalogNumber"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "catalogNumber",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/identifier/v01/catalogNumbers/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getCatalogNumbersResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/catalogNumber"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "catalogNumber",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/identifier/v01/catalogNumbers",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

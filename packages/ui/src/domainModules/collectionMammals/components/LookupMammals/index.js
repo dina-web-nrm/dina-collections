@@ -46,10 +46,8 @@ const propTypes = {
     PropTypes.shape({
       identifiers: PropTypes.arrayOf(
         PropTypes.shape({
-          identifier: PropTypes.shape({
-            identifierType: PropTypes.string.isRequired,
-            value: PropTypes.string.isRequired,
-          }).isRequired,
+          identifierType: PropTypes.string.isRequired,
+          value: PropTypes.string.isRequired,
         }).isRequired
       ),
       taxonInformation: PropTypes.shape({
@@ -144,8 +142,7 @@ class LookupMammals extends Component {
               {result.map(({ id, identifiers } = {}) => {
                 const catalogNumberIdentifier =
                   identifiers.find(
-                    ({ identifier }) =>
-                      identifier.identifierType === 'catalogNumber'
+                    ({ identifierType }) => identifierType === 'catalogNumber'
                   ) || null
 
                 // const { taxon } =
@@ -160,8 +157,7 @@ class LookupMammals extends Component {
 
                 const tableValues = {
                   catalogNumber:
-                    catalogNumberIdentifier &&
-                    catalogNumberIdentifier.identifier.value,
+                    catalogNumberIdentifier && catalogNumberIdentifier.value,
                   id,
                   // taxonNameStandardized: taxon && taxon.scientificName,
                 }

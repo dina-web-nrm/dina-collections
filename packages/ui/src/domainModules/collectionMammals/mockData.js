@@ -16,7 +16,7 @@ export const getSpecimen = ({ pathParams = {}, queryParams = {} } = {}) => {
 
   return immutable.set(
     withId,
-    'attributes.individual.identifiers.0.identifier.value',
+    'attributes.individual.identifiers.0.value',
     queryParams['filter[catalogNumber]'] ||
       String(Math.round(100000 + Math.random() * 99999))
   )

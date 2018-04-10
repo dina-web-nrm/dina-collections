@@ -40,11 +40,9 @@ module.exports = {
     ],
     identifiers: [
       {
-        identifier: {
-          identifierType: 'catalogNumber',
-          nameSpace: '',
-          value: '123456',
-        },
+        identifierType: 'catalogNumber',
+        nameSpace: '',
+        value: '123456',
         publishRecord: true,
         remarks: '',
       },

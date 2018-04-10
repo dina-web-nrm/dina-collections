@@ -6,12 +6,21 @@
     },
     "publishRecord": { "type": "boolean" },
     "remarks": { "type": "string", "example": "Some remarks" },
-    "identifier": {
-      "anyOf": [
-        {
-          "$ref": "__ROOT__catalogNumber"
-        }
-      ]
+    "identifierType": {
+      "type": "string",
+      "example": "catalogNumber"
+    },
+    "value": {
+      "type": "string",
+      "example": "584028"
+    },
+    "nameSpace": {
+      "type": "string",
+      "example": "mammal"
+    },
+    "validation": {
+      "type": "string",
+      "example": "^$|^[0-9]{6}$|^[0-9]{8}$"
     }
   }
 }
