@@ -23,9 +23,9 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     apiClient.reset()
   })
 
-  it(`dispatches ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST} followed by ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS} and ${
-    actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST
-  }`, () => {
+  it(`dispatches ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST} followed by ${
+    STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS
+  } and ${actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST}`, () => {
     const physicalUnits = [
       {
         normalStorageLocation: 'Sorex minutus',

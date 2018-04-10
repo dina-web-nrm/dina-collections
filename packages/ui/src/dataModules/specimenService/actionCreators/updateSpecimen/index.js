@@ -17,17 +17,19 @@ import {
   getCatalogNumberFromIdentifiers,
 } from '../../utilities'
 
-export default function updateSpecimen({
-  curatedLocalities = [],
-  distinguishedUnitTypes = [],
-  featureTypes = [],
-  id,
-  physicalUnits = [],
-  specimen,
-  storageLocations = [],
-  taxa = [],
-  throwError = true,
-} = {}) {
+export default function updateSpecimen(
+  {
+    curatedLocalities = [],
+    distinguishedUnitTypes = [],
+    featureTypes = [],
+    id,
+    physicalUnits = [],
+    specimen,
+    storageLocations = [],
+    taxa = [],
+    throwError = true,
+  } = {}
+) {
   const { individual } = specimen
 
   const meta = {

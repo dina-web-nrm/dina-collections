@@ -8,10 +8,9 @@ import {
 import { CREATE_FEATURE_OBSERVATION_TYPE } from '../../endpoints'
 import { FEATURE_OBSERVATION_TYPE } from '../../constants'
 
-export default function createFeatureType({
-  featureType,
-  throwError = false,
-} = {}) {
+export default function createFeatureType(
+  { featureType, throwError = false } = {}
+) {
   const body = {
     data: {
       attributes: { ...featureType },

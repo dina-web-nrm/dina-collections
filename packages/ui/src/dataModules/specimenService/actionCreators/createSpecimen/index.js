@@ -13,16 +13,18 @@ import {
   getCatalogNumberFromIdentifiers,
 } from '../../utilities'
 
-export default function createSpecimen({
-  curatedLocalities = [],
-  distinguishedUnitTypes = [],
-  featureTypes = [],
-  physicalUnits = [],
-  specimen,
-  storageLocations = [],
-  taxa = [],
-  throwError = true,
-} = {}) {
+export default function createSpecimen(
+  {
+    curatedLocalities = [],
+    distinguishedUnitTypes = [],
+    featureTypes = [],
+    physicalUnits = [],
+    specimen,
+    storageLocations = [],
+    taxa = [],
+    throwError = true,
+  } = {}
+) {
   const { individual } = specimen
 
   const meta = {

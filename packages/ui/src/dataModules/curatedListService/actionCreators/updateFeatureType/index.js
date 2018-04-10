@@ -8,10 +8,9 @@ import {
 import { UPDATE_FEATURE_OBSERVATION_TYPE } from '../../endpoints'
 import { FEATURE_OBSERVATION_TYPE } from '../../constants'
 
-export default function updateFeatureType({
-  featureType,
-  throwError = false,
-} = {}) {
+export default function updateFeatureType(
+  { featureType, throwError = false } = {}
+) {
   const { id, ...rest } = featureType
 
   const callParams = {
