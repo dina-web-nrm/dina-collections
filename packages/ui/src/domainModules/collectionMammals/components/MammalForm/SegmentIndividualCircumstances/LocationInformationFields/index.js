@@ -8,7 +8,7 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 
-import CuratedLocalities from './CuratedLocalities'
+import Places from './Places'
 import Position from './Position'
 import VerticalPosition from './VerticalPosition'
 
@@ -70,7 +70,7 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
           type="text"
         />
       </Grid.Column>
-      <CuratedLocalities />
+      <Places />
     </Grid>
   )
 }

@@ -51,18 +51,18 @@ export default {
   },
   localityService: {
     resources: {
-      curatedLocalities: {
+      places: {
         '1': {
           name: 'africa',
           group: 'continent',
           id: '1',
-          type: 'curatedLocality',
+          type: 'place',
         },
         '12': {
           name: 'algeria',
           group: 'country',
           id: '12',
-          type: 'curatedLocality',
+          type: 'place',
         },
       },
     },

@@ -4,10 +4,10 @@
     "lid": {
       "type": "string"
     },
-    "curatedLocalities": {
+    "places": {
       "description": "An array with curated localities",
       "type": "array",
-      "items": { "$ref": "__ROOT__curatedLocality", "x-reference-type": "external" }
+      "items": { "$ref": "__ROOT__place", "x-reference-type": "external" }
     },
     "position": {
       "type": "object",

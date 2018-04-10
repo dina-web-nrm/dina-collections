@@ -139,7 +139,7 @@
       "sv": ""
     },
     "locationInformation": {
-      "curatedLocalities": {
+      "places": {
         "choose": {
           "en": "Choose...",
           "sv": "Välj..."

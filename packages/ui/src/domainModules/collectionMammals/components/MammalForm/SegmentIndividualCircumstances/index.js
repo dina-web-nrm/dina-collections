@@ -23,37 +23,37 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = state => {
   return {
-    hasCuratedLocalities: localitySelectors.getHasCuratedLocalities(state),
+    hasPlaces: localitySelectors.getHasPlaces(state),
   }
 }
 const mapDispatchToProps = {
-  getCuratedLocalities: localityActionCreators.getCuratedLocalities,
+  getPlaces: localityActionCreators.getPlaces,
 }
 
 const propTypes = {
-  getCuratedLocalities: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
-  hasCuratedLocalities: PropTypes.bool.isRequired,
+  getPlaces: PropTypes.func.isRequired,
+  hasPlaces: PropTypes.bool.isRequired,
 }
 
 class SegmentIndividualCircumstances extends PureComponent {
   componentDidMount() {
     if (!config.isTest) {
-      this.props.getCuratedLocalities()
+      this.props.getPlaces()
     }
   }
 
   render() {
-    const { getPath, hasCuratedLocalities } = this.props
+    const { getPath, hasPlaces } = this.props
 
     log.render()
     return (
-      <Segment color="green" loading={!hasCuratedLocalities}>
+      <Segment color="green" loading={!hasPlaces}>
         <Header size="medium">
           <ModuleTranslate textKey="collectingInformation" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
-          {hasCuratedLocalities && <LocationInformationFields />}
+          {hasPlaces && <LocationInformationFields />}
 
           <Grid.Column computer={10} mobile={16}>
             <Field

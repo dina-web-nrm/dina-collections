@@ -23,7 +23,7 @@ const getPayload = () => {
   }
 }
 
-describe('dataModules/localityService/reducer/resources/curatedLocalities', () => {
+describe('dataModules/localityService/reducer/resources/places', () => {
   describe('getInitialState', () => {
     it('returns empty object', () => {
       const testValue = getInitialState()

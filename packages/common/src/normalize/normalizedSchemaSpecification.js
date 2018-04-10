@@ -1,9 +1,9 @@
 const specimen = {
-  determination: {
-    column: 'determinations',
-  },
   collectionItem: {
     column: 'collectionItems',
+  },
+  determination: {
+    column: 'determinations',
   },
   event: {
     column: 'events',
@@ -14,11 +14,11 @@ const specimen = {
   identifier: {
     column: 'identifiers',
   },
-  individualCircumstance: {
-    column: 'individualCircumstances',
-  },
   individual: {
     column: 'individual',
+  },
+  individualCircumstance: {
+    column: 'individualCircumstances',
   },
   relationships: {
     column: 'relationships',

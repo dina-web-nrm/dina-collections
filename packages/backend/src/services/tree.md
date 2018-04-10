@@ -84,7 +84,7 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   ├── resources
-│   │   ├── curatedLocality
+│   │   ├── place
 │   │   │   ├── create
 │   │   │   ├── getMany
 │   │   │   └── index.js

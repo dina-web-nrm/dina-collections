@@ -3,17 +3,15 @@ export default function transformLocationInformation(locationInformation) {
     return locationInformation
   }
 
-  const curatedLocalities = (locationInformation.curatedLocalities || []).map(
-    ({ id }) => {
-      return {
-        id,
-        type: 'curatedLocality',
-      }
+  const places = (locationInformation.places || []).map(({ id }) => {
+    return {
+      id,
+      type: 'place',
     }
-  )
+  })
 
   return {
     ...locationInformation,
-    curatedLocalities,
+    places,
   }
 }

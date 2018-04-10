@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { createCuratedLocality as createCuratedLocalityAc } from 'dataModules/localityService/actionCreators'
+import { createPlace as createPlaceAc } from 'dataModules/localityService/actionCreators'
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
@@ -11,11 +11,11 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  createCuratedLocality: createCuratedLocalityAc,
+  createPlace: createPlaceAc,
 }
 
 const propTypes = {
-  createCuratedLocality: PropTypes.func.isRequired,
+  createPlace: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
 }
 
@@ -32,8 +32,8 @@ export class Create extends PureComponent {
         }}
         onSubmit={data => {
           this.props
-            .createCuratedLocality({
-              curatedLocality: data,
+            .createPlace({
+              place: data,
             })
             .then(result => {
               onInteraction(FORM_CREATE_SUCCESS, {

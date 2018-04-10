@@ -28,26 +28,26 @@ module.exports = {
       expeditionText: 'expeditionText',
       locationInformation: {
         coordinatesVerbatim: 'coordinatesVerbatim',
-        curatedLocalities: [
+        places: [
           {
             id: '1',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '2',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '3',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '4',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '5',
-            type: 'curatedLocality',
+            type: 'place',
           },
         ],
         georeferenceSourcesText: 'georeferenceSourcesText',

@@ -7,7 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_CURATED_LOCALITY } from '../../endpoints'
 
-export default function getCuratedLocality({ id, throwError = false } = {}) {
+export default function getPlace({ id, throwError = false } = {}) {
   const pathParams = { id }
 
   return (dispatch, getState, { apiClient }) => {

@@ -6,26 +6,20 @@ import getSecondArgument from 'utilities/getSecondArgument'
 
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from './constants'
 
-const {
-  getCuratedLocalities,
-  getCuratedLocalitiesArray,
-} = localityServiceSelectors
+const { getPlaces, getPlacesArray } = localityServiceSelectors
 
-const getCuratedLocalitiesSortedArray = createSelector(
-  getCuratedLocalitiesArray,
-  curatedLocalitiesArray => {
-    return curatedLocalitiesArray.sort((a, b) => {
-      if (a.name < b.name) return -1
-      if (a.name > b.name) return 1
-      return 0
-    })
-  }
-)
+const getPlacesSortedArray = createSelector(getPlacesArray, placesArray => {
+  return placesArray.sort((a, b) => {
+    if (a.name < b.name) return -1
+    if (a.name > b.name) return 1
+    return 0
+  })
+})
 
-const getCuratedLocalitiesArrayByFilter = createSelector(
-  getCuratedLocalitiesSortedArray,
+const getPlacesArrayByFilter = createSelector(
+  getPlacesSortedArray,
   getSecondArgument,
-  (curatedLocalitiesArray, filter = {}) => {
+  (placesArray, filter = {}) => {
     const {
       group: groupFilter,
       limit: limitFilter,
@@ -33,65 +27,60 @@ const getCuratedLocalitiesArrayByFilter = createSelector(
       parentId: parentIdFilter,
       searchQuery: searchQueryFilter,
     } = filter
-    let filteredCuratedLocalities = curatedLocalitiesArray
+    let filteredPlaces = placesArray
 
     if (parentIdFilter) {
-      filteredCuratedLocalities = filteredCuratedLocalities.filter(locality => {
+      filteredPlaces = filteredPlaces.filter(locality => {
         return (locality.parent && locality.parent.id) === parentIdFilter
       })
     }
 
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
-      const firstLetterMatches = filteredCuratedLocalities.filter(
-        ({ name }) => {
-          return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
-        }
-      )
+      const firstLetterMatches = filteredPlaces.filter(({ name }) => {
+        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      })
 
-      const otherMatches = filteredCuratedLocalities.filter(({ name }) => {
+      const otherMatches = filteredPlaces.filter(({ name }) => {
         return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
       })
 
-      filteredCuratedLocalities = [...firstLetterMatches, ...otherMatches]
+      filteredPlaces = [...firstLetterMatches, ...otherMatches]
     }
 
     if (groupFilter) {
-      filteredCuratedLocalities = filteredCuratedLocalities.filter(
+      filteredPlaces = filteredPlaces.filter(
         ({ group }) => group === groupFilter
       )
     }
 
     if (limitFilter) {
-      // avoid mutating filteredCuratedLocalities, as the mutation carried over
+      // avoid mutating filteredPlaces, as the mutation carried over
       // to future calls of this selector
-      const localitiesToShow = [...filteredCuratedLocalities].splice(
-        offset,
-        limitFilter
-      )
+      const localitiesToShow = [...filteredPlaces].splice(offset, limitFilter)
       return localitiesToShow
     }
-    return filteredCuratedLocalities
+    return filteredPlaces
   }
 )
 
-const getCuratedLocalityAncestorsById = createSelector(
-  getCuratedLocalities,
+const getPlaceAncestorsById = createSelector(
+  getPlaces,
   getSecondArgument,
-  (curatedLocalities, currentId) => {
+  (places, currentId) => {
     const ancestors = []
     const walkUp = item => {
       ancestors.push(item)
       const parentId = item.parent && item.parent.id
       if (parentId) {
-        const next = curatedLocalities[parentId]
+        const next = places[parentId]
         if (next) {
           walkUp(next)
         }
       }
     }
 
-    const current = curatedLocalities[currentId]
+    const current = places[currentId]
     if (!current) {
       return ancestors
     }
@@ -102,52 +91,52 @@ const getCuratedLocalityAncestorsById = createSelector(
   }
 )
 
-const getNextCuratedLocalityIdFromFilter = createSelector(
-  getCuratedLocalitiesArrayByFilter,
+const getNextPlaceIdFromFilter = createSelector(
+  getPlacesArrayByFilter,
   getSecondArgument,
-  (curatedLocalitiesArray, currentId) => {
-    const currentIndex = curatedLocalitiesArray.findIndex(element => {
+  (placesArray, currentId) => {
+    const currentIndex = placesArray.findIndex(element => {
       return element.id === currentId
     })
     const nextIndex = Number(currentIndex) + 1
-    const element = curatedLocalitiesArray[nextIndex]
+    const element = placesArray[nextIndex]
     return element.id
   }
 )
 
-const getPrevCuratedLocalityIdFromFilter = createSelector(
-  getCuratedLocalitiesArrayByFilter,
+const getPrevPlaceIdFromFilter = createSelector(
+  getPlacesArrayByFilter,
   getSecondArgument,
-  (curatedLocalitiesArray, currentId) => {
-    const currentIdex = curatedLocalitiesArray.findIndex(element => {
+  (placesArray, currentId) => {
+    const currentIdex = placesArray.findIndex(element => {
       return element.id === currentId
     })
 
-    return curatedLocalitiesArray[Number(currentIdex) - 1].id
+    return placesArray[Number(currentIdex) - 1].id
   }
 )
 
-const getCuratedLocalityOption = createSelector(
-  [getCuratedLocalities, getSecondArgument],
-  (curatedLocalities, id) => {
-    const curatedLocality = curatedLocalities[id]
-    if (!curatedLocality) {
+const getPlaceOption = createSelector(
+  [getPlaces, getSecondArgument],
+  (places, id) => {
+    const place = places[id]
+    if (!place) {
       return null
     }
     return {
-      key: curatedLocality.id,
-      text: capitalizeFirstLetter(curatedLocality.name),
-      value: curatedLocality.id,
+      key: place.id,
+      text: capitalizeFirstLetter(place.name),
+      value: place.id,
     }
   }
 )
 
 const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
   return createSelector(
-    [getCuratedLocalities, getSecondArgument],
-    (curatedLocalities, searchQuery = '') => {
+    [getPlaces, getSecondArgument],
+    (places, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
-      const mappedGroupLocalities = Object.values(curatedLocalities)
+      const mappedGroupLocalities = Object.values(places)
         .filter(
           ({ group }) => (groupFilter === 'all' ? true : group === groupFilter)
         )
@@ -186,15 +175,15 @@ const getDropdownProvinceOptions = createDropdownSelector(PROVINCE)
 const getDropdownAllOptions = createDropdownSelector(ALL)
 
 export default {
-  getCuratedLocalitiesArrayByFilter,
-  getCuratedLocalitiesSortedArray,
-  getCuratedLocalityAncestorsById,
-  getCuratedLocalityOption,
   getDropdownAllOptions,
   getDropdownContinentOptions,
   getDropdownCountryOptions,
   getDropdownDistrictOptions,
   getDropdownProvinceOptions,
-  getNextCuratedLocalityIdFromFilter,
-  getPrevCuratedLocalityIdFromFilter,
+  getNextPlaceIdFromFilter,
+  getPlaceAncestorsById,
+  getPlaceOption,
+  getPlacesArrayByFilter,
+  getPlacesSortedArray,
+  getPrevPlaceIdFromFilter,
 }

@@ -217,5 +217,5 @@ BaseForm.defaultProps = defaultProps
 export default reduxForm({
   enableReinitialize: true,
   form: 'EditLocalities',
-  validate: formValidator({ model: 'curatedLocality' }),
+  validate: formValidator({ model: 'place' }),
 })(BaseForm)

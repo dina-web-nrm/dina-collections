@@ -1,4 +1,4 @@
-import createGetCuratedLocalityById from './createGetCuratedLocalityById'
-import ensureAllLocalitiesFetched from './ensureAllLocalitiesFetched'
+import createGetPlaceById from './createGetPlaceById'
+import ensureAllPlacesFetched from './ensureAllPlacesFetched'
 
-export { createGetCuratedLocalityById, ensureAllLocalitiesFetched }
+export { createGetPlaceById, ensureAllPlacesFetched }

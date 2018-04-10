@@ -90,18 +90,18 @@
 ├── index.js
 ├── localityService
 │   ├── actionCreators
-│   │   ├── createCuratedLocality
+│   │   ├── createPlace
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getCuratedLocalities
+│   │   ├── getPlaces
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getCuratedLocality
+│   │   ├── getPlace
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   └── updateCuratedLocality
+│   │   └── updatePlace
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── actionTypes.js
@@ -113,8 +113,8 @@
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
-│   │   ├── createGetCuratedLocalityById.js
-│   │   ├── ensureAllLocalitiesFetched.js
+│   │   ├── createGetPlaceById.js
+│   │   ├── ensureAllPlacesFetched.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
@@ -125,7 +125,7 @@
 │   │   ├── index.js
 │   │   ├── index.test.js
 │   │   └── resources
-│   │       ├── curatedLocalities
+│   │       ├── places
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── selectors.js

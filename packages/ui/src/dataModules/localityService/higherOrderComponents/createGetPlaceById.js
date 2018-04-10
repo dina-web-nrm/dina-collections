@@ -5,45 +5,41 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import objectPath from 'object-path'
 import localityServiceSelectors from '../globalSelectors'
-import { getCuratedLocality as getCuratedLocalityAc } from '../actionCreators'
+import { getPlace as getPlaceAc } from '../actionCreators'
 
-const createGetCuratedLocalityById = (
-  idPath = 'itemId'
-) => ComposedComponent => {
+const createGetPlaceById = (idPath = 'itemId') => ComposedComponent => {
   const mapStateToProps = (state, ownProps) => {
     const itemId = objectPath.get(ownProps, idPath)
     return {
-      curatedLocality: !itemId
-        ? null
-        : localityServiceSelectors.getCuratedLocality(state, itemId),
       itemId,
+      place: !itemId ? null : localityServiceSelectors.getPlace(state, itemId),
     }
   }
 
   const mapDispathToProps = {
-    getCuratedLocality: getCuratedLocalityAc,
+    getPlace: getPlaceAc,
   }
 
   const propTypes = {
     allLocalitiesFetched: PropTypes.bool,
-    curatedLocality: PropTypes.object,
-    getCuratedLocality: PropTypes.func.isRequired,
+    getPlace: PropTypes.func.isRequired,
     itemId: PropTypes.string,
+    place: PropTypes.object,
   }
 
   const defaultProps = {
     allLocalitiesFetched: undefined,
-    curatedLocality: null,
     itemId: '',
+    place: null,
   }
 
-  class GetCuratedLocalityById extends Component {
+  class GetPlaceById extends Component {
     componentDidMount() {
       const { allLocalitiesFetched } = this.props
       if (allLocalitiesFetched === undefined) {
         const { itemId } = this.props
         if (itemId) {
-          this.props.getCuratedLocality({ id: itemId })
+          this.props.getPlace({ id: itemId })
         }
       }
     }
@@ -55,27 +51,23 @@ const createGetCuratedLocalityById = (
         nextProps.allLocalitiesFetched === true
       ) {
         if (itemId) {
-          this.props.getCuratedLocality({ id: itemId })
+          this.props.getPlace({ id: itemId })
         }
       }
 
       if (nextProps.itemId && nextProps.itemId !== itemId) {
-        this.props.getCuratedLocality({ id: nextProps.itemId })
+        this.props.getPlace({ id: nextProps.itemId })
       }
     }
     render() {
-      const { curatedLocality } = this.props
-      return (
-        <ComposedComponent curatedLocality={curatedLocality} {...this.props} />
-      )
+      const { place } = this.props
+      return <ComposedComponent place={place} {...this.props} />
     }
   }
 
-  GetCuratedLocalityById.propTypes = propTypes
-  GetCuratedLocalityById.defaultProps = defaultProps
-  return compose(connect(mapStateToProps, mapDispathToProps))(
-    GetCuratedLocalityById
-  )
+  GetPlaceById.propTypes = propTypes
+  GetPlaceById.defaultProps = defaultProps
+  return compose(connect(mapStateToProps, mapDispathToProps))(GetPlaceById)
 }
 
-export default createGetCuratedLocalityById
+export default createGetPlaceById

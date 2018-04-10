@@ -32,10 +32,9 @@ export default function transformOutput(formData, normalize = true) {
     storageLocations,
   } = transformCollectionItems(formData.collectionItems)
 
-  const {
-    curatedLocalities,
-    individualCircumstances,
-  } = transformIndividualCircumstances(formData.individualCircumstances)
+  const { places, individualCircumstances } = transformIndividualCircumstances(
+    formData.individualCircumstances
+  )
 
   const individual = {
     ...formData,
@@ -55,9 +54,9 @@ export default function transformOutput(formData, normalize = true) {
       }
 
   return {
-    curatedLocalities,
     featureTypes,
     physicalObjects,
+    places,
     preparationTypes,
     specimen,
     storageLocations,

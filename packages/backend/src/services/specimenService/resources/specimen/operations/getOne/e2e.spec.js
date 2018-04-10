@@ -77,10 +77,10 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataPhysicalObjectRelationsId,
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
                 featureTypes: {
                   data: [],
                 },
+                places: { data: [] },
                 ...simpleDataPhysicalObjectRelations.data.relationships,
                 taxa: {
                   data: [],
@@ -134,14 +134,14 @@ apiDescribe('specimen', () => {
               id: simpleDataPhysicalObjectRelationsId,
             },
             queryParams: {
-              relationships: ['curatedLocalities'],
+              relationships: ['places'],
             },
           }).then(response => {
             expectSingleResourceResponse({
               expectedId: simpleDataPhysicalObjectRelationsId,
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: {
+                places: {
                   data: [],
                 },
               },
@@ -176,13 +176,13 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataNoRelationsId,
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
                 featureTypes: {
                   data: [],
                 },
                 physicalObjects: {
                   data: [],
                 },
+                places: { data: [] },
                 taxa: {
                   data: [],
                 },

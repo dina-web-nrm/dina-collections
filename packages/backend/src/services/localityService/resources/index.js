@@ -1,1 +1,1 @@
-exports.curatedLocality = require('./curatedLocality')
+exports.place = require('./place')

@@ -10,10 +10,10 @@ import {
 
 const propTypes = {
   activeLocalityId: PropTypes.string,
-  curatedLocality: PropTypes.object.isRequired,
   cursorFocus: PropTypes.bool,
   displayNavigationButtons: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
+  place: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
@@ -32,7 +32,7 @@ class ListItem extends Component {
   render() {
     const {
       activeLocalityId,
-      curatedLocality,
+      place,
       cursorFocus,
       displayNavigationButtons,
       onInteraction,
@@ -46,22 +46,19 @@ class ListItem extends Component {
 
     return (
       <List.Item
-        active={activeLocalityId === curatedLocality.id}
-        key={curatedLocality.id}
+        active={activeLocalityId === place.id}
+        key={place.id}
         onClick={event => {
           event.preventDefault()
           onInteraction(ITEM_CLICK, {
-            itemId: curatedLocality.id,
+            itemId: place.id,
           })
         }}
         style={style}
       >
         <List.Content floated="right">
-          <Label
-            color={groupColorMap[curatedLocality.group]}
-            style={{ marginRight: 20 }}
-          >
-            {curatedLocality.group}
+          <Label color={groupColorMap[place.group]} style={{ marginRight: 20 }}>
+            {place.group}
           </Label>
           {displayNavigationButtons && (
             <Button
@@ -70,7 +67,7 @@ class ListItem extends Component {
                 event.preventDefault()
                 event.stopPropagation()
                 onInteraction(SET_ITEM_EDIT, {
-                  itemId: curatedLocality.id,
+                  itemId: place.id,
                 })
               }}
               size="tiny"
@@ -85,7 +82,7 @@ class ListItem extends Component {
                 event.preventDefault()
                 event.stopPropagation()
                 onInteraction(SET_ITEM_INSPECT, {
-                  itemId: curatedLocality.id,
+                  itemId: place.id,
                 })
               }}
               size="tiny"
@@ -100,7 +97,7 @@ class ListItem extends Component {
                 event.preventDefault()
                 event.stopPropagation()
                 onInteraction(SET_ITEM_CREATE, {
-                  itemId: curatedLocality.id,
+                  itemId: place.id,
                 })
               }}
               size="tiny"
@@ -112,7 +109,7 @@ class ListItem extends Component {
         </List.Content>
 
         <List.Content>
-          <h3>{curatedLocality.name}</h3>
+          <h3>{place.name}</h3>
         </List.Content>
       </List.Item>
     )

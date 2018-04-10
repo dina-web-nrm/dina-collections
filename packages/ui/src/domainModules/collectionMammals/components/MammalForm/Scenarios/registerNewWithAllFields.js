@@ -110,13 +110,13 @@ const mutations = [
 
   {
     name:
-      'individualCircumstances.0.event.locationInformation.curatedLocalities.0.id.hidden',
+      'individualCircumstances.0.event.locationInformation.places.0.id.hidden',
     value: 'Africa',
   },
 
   {
     name:
-      'individualCircumstances.0.event.locationInformation.curatedLocalities.1.id.hidden',
+      'individualCircumstances.0.event.locationInformation.places.1.id.hidden',
     value: 'Algeria',
   },
   {
@@ -175,16 +175,13 @@ const mutations = [
 ]
 
 const expectedOutput = {
-  curatedLocalities: [
-    { id: 'Africa', type: 'curatedLocality' },
-    { id: 'Algeria', type: 'curatedLocality' },
-  ],
   featureTypes: [
     {
       id: '1',
       type: 'featureType',
     },
   ],
+
   physicalObjects: [
     {
       storageLocation: {
@@ -194,6 +191,7 @@ const expectedOutput = {
       storedUnderTaxonName: 'storedUnderTaxonName',
     },
   ],
+  places: [{ id: 'Africa', type: 'place' }, { id: 'Algeria', type: 'place' }],
   preparationTypes: [
     {
       id: '2',
@@ -260,12 +258,12 @@ const expectedOutput = {
             endDate: 'endDate',
             expeditionText: 'expeditionText',
             locationInformation: {
-              curatedLocalities: [
-                { id: 'Africa', type: 'curatedLocality' },
-                { id: 'Algeria', type: 'curatedLocality' },
-              ],
               localityName: 'localityName',
               localityVerbatim: 'localityVerbatim',
+              places: [
+                { id: 'Africa', type: 'place' },
+                { id: 'Algeria', type: 'place' },
+              ],
               position: {
                 latitude: 'latitude-string',
                 longitude: 'longitude-string',

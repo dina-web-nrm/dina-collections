@@ -3,10 +3,10 @@ const tryImport = () => {
 }
 
 const expectedActionCreators = [
-  'createCuratedLocality',
-  'getCuratedLocality',
-  'getCuratedLocalities',
-  'updateCuratedLocality',
+  'createPlace',
+  'getPlace',
+  'getPlaces',
+  'updatePlace',
 ]
 
 describe('dataModules/localityService/actionCreators', () => {

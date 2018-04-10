@@ -2,7 +2,7 @@ import { buildSpecimenBody, getCatalogNumberFromIdentifiers } from './utilities'
 
 describe('dataModules/specimenService/utilities', () => {
   describe('buildSpecimenBody', () => {
-    const curatedLocalities = []
+    const places = []
     const preparationTypes = {
       '1': {
         id: '1',
@@ -138,8 +138,8 @@ describe('dataModules/specimenService/utilities', () => {
     ]
 
     const testValue = buildSpecimenBody({
-      curatedLocalities,
       featureTypes,
+      places,
       preparationTypes,
       savedPhysicalObjects,
       specimen: {
@@ -190,14 +190,14 @@ describe('dataModules/specimenService/utilities', () => {
           },
         },
         relationships: {
-          curatedLocalities: {
-            data: curatedLocalities,
-          },
           featureTypes: {
             data: featureTypes,
           },
           physicalObjects: {
             data: cleanedPhysicalObjects,
+          },
+          places: {
+            data: places,
           },
           preparationTypes: {
             data: preparationTypes,

@@ -1,9 +1,9 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getCuratedLocality from './index'
+import getPlace from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('dataModules/localityService/actionCreators/getCuratedLocality', () => {
+describe('dataModules/localityService/actionCreators/getPlace', () => {
   let store
   let apiClient
 
@@ -23,7 +23,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
   }`, () => {
     const id = '123'
 
-    const testAction = getCuratedLocality({ id })
+    const testAction = getPlace({ id })
 
     const expectedAction = {
       meta: { id },
@@ -35,8 +35,8 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getCuratedLocality`, () => {
-    const operationId = 'getCuratedLocality'
+  it(`calls getPlace`, () => {
+    const operationId = 'getPlace'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -50,7 +50,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
       },
     })
 
-    const testAction = getCuratedLocality({ id })
+    const testAction = getPlace({ id })
     const expectedCallParams = {
       pathParams: { id },
       queryParams: {
@@ -70,7 +70,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
   it(`dispatches ${
     actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITY_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getCuratedLocality'
+    const operationId = 'getPlace'
     const id = '123'
     const mockResponse = {
       data: {
@@ -93,7 +93,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
       },
     })
 
-    const testAction = getCuratedLocality({ id })
+    const testAction = getPlace({ id })
 
     const expectedFirstAction = {
       meta: { id },
@@ -119,7 +119,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
   it(`dispatches ${
     actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITY_FAIL
   } without throwing error`, () => {
-    const operationId = 'getCuratedLocality'
+    const operationId = 'getPlace'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -129,7 +129,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
       },
     })
 
-    const testAction = getCuratedLocality({ id })
+    const testAction = getPlace({ id })
 
     const expectedFirstAction = {
       meta: { id },
@@ -156,7 +156,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
   it(`dispatches ${
     actionTypes.LOCALITY_SERVICE_GET_CURATED_LOCALITY_FAIL
   } and throws error`, () => {
-    const operationId = 'getCuratedLocality'
+    const operationId = 'getPlace'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -166,7 +166,7 @@ describe('dataModules/localityService/actionCreators/getCuratedLocality', () => 
       },
     })
 
-    const testAction = getCuratedLocality({ id, throwError: true })
+    const testAction = getPlace({ id, throwError: true })
 
     const expectedFirstAction = {
       meta: { id },

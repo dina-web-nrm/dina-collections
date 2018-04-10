@@ -58,7 +58,10 @@ const createData = catalogNumber => {
             isDeathEvent: true,
             locationInformation: {
               coordinatesVerbatim: 'coord-string',
-              curatedLocalities: [
+              georeferenceSourcesText: 'georeferenceSourcesText text',
+              localityRemarks: 'localityRemarks text',
+              localityVerbatim: 'Some localityVerbatim text',
+              places: [
                 {
                   id: '123',
                 },
@@ -66,9 +69,6 @@ const createData = catalogNumber => {
                   id: '125',
                 },
               ],
-              georeferenceSourcesText: 'georeferenceSourcesText text',
-              localityRemarks: 'localityRemarks text',
-              localityVerbatim: 'Some localityVerbatim text',
               position: {
                 latitude: 'latitude-string',
                 longitude: 'longitude-string',

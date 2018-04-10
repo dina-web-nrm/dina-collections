@@ -19,7 +19,7 @@ import {
 
 export default function updateSpecimen(
   {
-    curatedLocalities = [],
+    places = [],
     featureTypes = [],
     id,
     physicalObjects = [],
@@ -34,10 +34,10 @@ export default function updateSpecimen(
 
   const meta = {
     catalogNumber: getCatalogNumberFromIdentifiers(individual.identifiers),
-    curatedLocalities,
     featureTypes,
     individual,
     physicalObjects,
+    places,
     preparationTypes,
     storageLocations,
     taxa,
@@ -58,8 +58,8 @@ export default function updateSpecimen(
       })
     ).then(savedPhysicalObjects => {
       const body = buildSpecimenBody({
-        curatedLocalities,
         featureTypes,
+        places,
         preparationTypes,
         savedPhysicalObjects,
         specimen,

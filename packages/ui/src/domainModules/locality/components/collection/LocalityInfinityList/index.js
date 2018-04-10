@@ -4,28 +4,25 @@ import ReactList from 'react-list'
 import { Button, Icon, Item } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { getCuratedLocalities as getCuratedLocalitiesAc } from 'dataModules/localityService/actionCreators'
+import { getPlaces as getPlacesAc } from 'dataModules/localityService/actionCreators'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
 import localitySelectors from '../../../globalSelectors'
 
 const mapStateToProps = state => {
   const filter = keyObjectGlobalSelectors.get.filter(state)
   return {
-    curatedLocalities: localitySelectors.getCuratedLocalitiesArrayByFilter(
-      state,
-      filter
-    ),
+    places: localitySelectors.getPlacesArrayByFilter(state, filter),
   }
 }
 
 const mapDispatchToProps = {
-  getCuratedLocalities: getCuratedLocalitiesAc,
+  getPlaces: getPlacesAc,
 }
 
 const propTypes = {
-  curatedLocalities: PropTypes.array.isRequired,
-  getCuratedLocalities: PropTypes.func.isRequired,
+  getPlaces: PropTypes.func.isRequired,
   onItemClick: PropTypes.func,
+  places: PropTypes.array.isRequired,
 }
 
 const defaultProps = {
@@ -40,7 +37,7 @@ class LocalityList extends Component {
     this.handleItemClick = this.handleItemClick.bind(this)
   }
   componentDidMount() {
-    this.props.getCuratedLocalities({
+    this.props.getPlaces({
       queryParams: { relationships: ['all'] },
     })
   }
@@ -52,10 +49,10 @@ class LocalityList extends Component {
   }
 
   renderItem(index) {
-    const curatedLocality = this.props.curatedLocalities[index]
+    const place = this.props.places[index]
     return (
       <Item
-        key={curatedLocality.id}
+        key={place.id}
         style={{
           borderBottom: '1px solid rgba(34,36,38,.15)',
           height: '50px',
@@ -65,12 +62,12 @@ class LocalityList extends Component {
       >
         <Item.Content>
           <Item.Header as="h4">
-            {curatedLocality.name} ({curatedLocality.group})
+            {place.name} ({place.group})
             <Button.Group basic floated="right" size="small">
               <Button
                 icon
                 onClick={() => {
-                  this.handleItemClick(curatedLocality.id, 'edit')
+                  this.handleItemClick(place.id, 'edit')
                 }}
               >
                 <Icon name="edit" />
@@ -78,7 +75,7 @@ class LocalityList extends Component {
               <Button
                 icon
                 onClick={() => {
-                  this.handleItemClick(curatedLocality.id, 'view')
+                  this.handleItemClick(place.id, 'view')
                 }}
               >
                 <Icon name="folder open" />
@@ -95,7 +92,7 @@ class LocalityList extends Component {
       <div style={{ maxHeight: 400, overflow: 'auto' }}>
         <ReactList
           itemRenderer={this.renderItem}
-          length={this.props.curatedLocalities.length}
+          length={this.props.places.length}
           type="uniform"
         />
       </div>

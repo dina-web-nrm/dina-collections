@@ -14,17 +14,17 @@ describe('lib/controllers/relationshipsUtilities/buildIncludeArray', () => {
     const relations = {
       children: {
         format: 'array',
-        resource: 'curatedLocality',
+        resource: 'place',
       },
       parent: {
         format: 'object',
-        resource: 'curatedLocality',
+        resource: 'place',
       },
     }
     const models = {
-      curatedLocality: {
+      place: {
         Model: {
-          key: 'curatedLocality',
+          key: 'place',
         },
       },
     }
@@ -41,7 +41,7 @@ describe('lib/controllers/relationshipsUtilities/buildIncludeArray', () => {
       {
         as: 'children',
         model: {
-          key: 'curatedLocality',
+          key: 'place',
         },
       },
     ])

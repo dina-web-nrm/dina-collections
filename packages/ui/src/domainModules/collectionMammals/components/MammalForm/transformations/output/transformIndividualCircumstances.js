@@ -7,7 +7,7 @@ export default function transformIndividualCircumstances(
     return []
   }
 
-  let curatedLocalities = []
+  let places = []
 
   const transformedIndividualCircumstances = individualCircumstances.map(
     individualCircumstance => {
@@ -19,14 +19,8 @@ export default function transformIndividualCircumstances(
           individualCircumstance.event.locationInformation
         )
 
-        if (
-          locationInformation.curatedLocalities &&
-          locationInformation.curatedLocalities.length
-        ) {
-          curatedLocalities = [
-            ...curatedLocalities,
-            ...locationInformation.curatedLocalities,
-          ]
+        if (locationInformation.places && locationInformation.places.length) {
+          places = [...places, ...locationInformation.places]
         }
 
         return {
@@ -43,7 +37,7 @@ export default function transformIndividualCircumstances(
   )
 
   return {
-    curatedLocalities,
     individualCircumstances: transformedIndividualCircumstances,
+    places,
   }
 }

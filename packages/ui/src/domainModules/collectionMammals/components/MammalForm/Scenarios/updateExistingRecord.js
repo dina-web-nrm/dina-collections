@@ -64,8 +64,6 @@ const mutations = [
   },
 ]
 const expectedOutput = {
-  curatedLocalities: [],
-
   featureTypes: [
     {
       id: '22',
@@ -78,6 +76,7 @@ const expectedOutput = {
       type: 'physicalObject',
     },
   ],
+  places: [],
   preparationTypes: [],
   specimen: {
     individual: {

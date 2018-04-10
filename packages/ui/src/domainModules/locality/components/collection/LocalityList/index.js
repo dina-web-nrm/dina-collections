@@ -4,7 +4,7 @@ import { List } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
-import { ensureAllLocalitiesFetched } from 'dataModules/localityService/higherOrderComponents'
+import { ensureAllPlacesFetched } from 'dataModules/localityService/higherOrderComponents'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
@@ -18,19 +18,15 @@ const mapStateToProps = state => {
   const filter = keyObjectGlobalSelectors.get.filter(state)
   const filterParentId = (filter && filter.parentId) || undefined
   const filterParent =
-    filterParentId &&
-    localityServiceSelectors.getCuratedLocality(state, filterParentId)
+    filterParentId && localityServiceSelectors.getPlace(state, filterParentId)
 
-  const curatedLocalities = localitySelectors.getCuratedLocalitiesArrayByFilter(
-    state,
-    filter
-  )
+  const places = localitySelectors.getPlacesArrayByFilter(state, filter)
 
   return {
-    curatedLocalities,
     filter,
     filterParent,
-    numberOfCuratedLocalities: curatedLocalities.length,
+    numberOfPlaces: places.length,
+    places,
   }
 }
 
@@ -44,12 +40,12 @@ const mapDispatchToProps = {
 
 const propTypes = {
   activeLocalityId: PropTypes.string,
-  curatedLocalities: PropTypes.array,
   displayNavigationButtons: PropTypes.bool.isRequired,
   filter: PropTypes.object.isRequired,
   filterParent: PropTypes.object,
-  numberOfCuratedLocalities: PropTypes.number.isRequired,
+  numberOfPlaces: PropTypes.number.isRequired,
   onInteraction: PropTypes.func.isRequired,
+  places: PropTypes.array,
   setFilterLimit: PropTypes.func.isRequired,
   setFilterOffset: PropTypes.func.isRequired,
   setFilterParentId: PropTypes.func.isRequired,
@@ -59,8 +55,8 @@ const propTypes = {
 
 const defaultProps = {
   activeLocalityId: '',
-  curatedLocalities: [],
   filterParent: undefined,
+  places: [],
 }
 
 class LocalityList extends Component {
@@ -87,9 +83,9 @@ class LocalityList extends Component {
   }
 
   getIndexFromOffsetAndNumberOfLocalities() {
-    const { filter: { offset }, numberOfCuratedLocalities } = this.props
+    const { filter: { offset }, numberOfPlaces } = this.props
 
-    return Math.max(Math.min(offset, numberOfCuratedLocalities - 1), 0)
+    return Math.max(Math.min(offset, numberOfPlaces - 1), 0)
   }
 
   setCursorIndex(cursorIndex = 0) {
@@ -97,9 +93,9 @@ class LocalityList extends Component {
   }
 
   expandLocalityAtCursor() {
-    const { curatedLocalities } = this.props
+    const { places } = this.props
     const { cursorIndex } = this.state
-    const localityAtCursor = curatedLocalities[cursorIndex]
+    const localityAtCursor = places[cursorIndex]
     if (localityAtCursor) {
       this.props.setFilterOffset(0)
       this.setCursorIndex(0)
@@ -132,9 +128,9 @@ class LocalityList extends Component {
   }
 
   selectLocalityAtCursor() {
-    const { curatedLocalities } = this.props
+    const { places } = this.props
     const { cursorIndex } = this.state
-    const localityAtCursor = curatedLocalities[cursorIndex]
+    const localityAtCursor = places[cursorIndex]
     if (localityAtCursor) {
       this.props.onInteraction(ITEM_CLICK, { itemId: localityAtCursor.id })
     }
@@ -156,10 +152,10 @@ class LocalityList extends Component {
   }
 
   moveCursorDown() {
-    const { filter: { offset, limit }, numberOfCuratedLocalities } = this.props
+    const { filter: { offset, limit }, numberOfPlaces } = this.props
     const { cursorIndex } = this.state
 
-    if (cursorIndex === numberOfCuratedLocalities) {
+    if (cursorIndex === numberOfPlaces) {
       return null
     }
     if (cursorIndex === limit - 1) {
@@ -198,22 +194,22 @@ class LocalityList extends Component {
     const { cursorIndex } = this.state
     const {
       activeLocalityId,
-      curatedLocalities,
+      places,
       displayNavigationButtons,
       onInteraction,
     } = this.props
     return (
       <List divided selection size="small" verticalAlign="middle">
-        {curatedLocalities.map((curatedLocality, index) => {
+        {places.map((place, index) => {
           const cursorFocus = index === cursorIndex
           return (
             <ListItem
               activeLocalityId={activeLocalityId}
-              curatedLocality={curatedLocality}
               cursorFocus={cursorFocus}
               displayNavigationButtons={displayNavigationButtons}
-              key={curatedLocality.id}
+              key={place.id}
               onInteraction={onInteraction}
+              place={place}
             />
           )
         })}
@@ -226,6 +222,6 @@ LocalityList.propTypes = propTypes
 LocalityList.defaultProps = defaultProps
 
 export default compose(
-  ensureAllLocalitiesFetched(),
+  ensureAllPlacesFetched(),
   connect(mapStateToProps, mapDispatchToProps)
 )(LocalityList)

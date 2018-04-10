@@ -49,13 +49,13 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
                 featureTypes: {
                   data: [],
                 },
                 physicalObjects: {
                   data: [],
                 },
+                places: { data: [] },
                 taxa: {
                   data: [],
                 },
@@ -157,13 +157,13 @@ apiDescribe('specimen', () => {
           expectSingleResourceResponse({
             expectedType: 'specimen',
             relationships: {
-              curatedLocalities: { data: [] },
               featureTypes: {
                 data: [],
               },
               physicalObjects: {
                 data: [{ id: '1337', type: 'physicalObject' }],
               },
+              places: { data: [] },
               taxa: {
                 data: [],
               },

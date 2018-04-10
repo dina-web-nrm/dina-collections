@@ -7,7 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_CURATED_LOCALITIES } from '../../endpoints'
 
-export default function getCuratedLocalities(
+export default function getPlaces(
   { queryParams = {}, throwError = false } = {}
 ) {
   return (dispatch, getState, { apiClient }) => {

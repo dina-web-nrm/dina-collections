@@ -8,10 +8,8 @@ import {
 import { UPDATE_CURATED_LOCALITY } from '../../endpoints'
 import { CURATED_LOCALITY } from '../../constants'
 
-export default function updateCuratedLocality(
-  { curatedLocality, throwError = false } = {}
-) {
-  const { id, ...rest } = curatedLocality
+export default function updatePlace({ place, throwError = false } = {}) {
+  const { id, ...rest } = place
 
   const callParams = {
     body: {
@@ -26,7 +24,7 @@ export default function updateCuratedLocality(
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
-      meta: { curatedLocality },
+      meta: { place },
       type: LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_REQUEST,
     })
 
@@ -42,7 +40,7 @@ export default function updateCuratedLocality(
       error => {
         dispatch({
           error: true,
-          meta: { curatedLocality },
+          meta: { place },
           payload: error,
           type: LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_FAIL,
         })

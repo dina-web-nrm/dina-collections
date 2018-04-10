@@ -97,9 +97,6 @@ testData.simpleDataMultipleRelations = {
       },
     },
     relationships: {
-      curatedLocalities: {
-        data: [{ id: '1', type: 'curatedLocality' }],
-      },
       featureTypes: {
         data: [
           {
@@ -115,6 +112,9 @@ testData.simpleDataMultipleRelations = {
             type: 'physicalObject',
           },
         ],
+      },
+      places: {
+        data: [{ id: '1', type: 'place' }],
       },
       taxa: {
         data: [],

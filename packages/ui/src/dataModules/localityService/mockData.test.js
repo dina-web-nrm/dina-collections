@@ -1,6 +1,6 @@
 import * as mockData from './mockData'
 
-const expectedMockData = ['curatedLocalities']
+const expectedMockData = ['places']
 
 describe('dataModules/localityService/actionTypes', () => {
   it('exports expected types', () => {

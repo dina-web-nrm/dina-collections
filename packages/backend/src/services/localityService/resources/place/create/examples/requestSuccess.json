@@ -1,6 +1,6 @@
 {
   "data": {
-    "type": "curatedLocality",
+    "type": "place",
     "attributes": {
       "name": "string",
       "versionId": "string",

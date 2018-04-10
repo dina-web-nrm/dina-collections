@@ -3,7 +3,7 @@ import globalSelectors from '../globalSelectors'
 
 export default function redirectToPrev(currentId) {
   return (dispatch, getState) => {
-    const prevId = globalSelectors.getPrevCuratedLocalityIdFromFilter(
+    const prevId = globalSelectors.getPrevPlaceIdFromFilter(
       getState(),
       currentId
     )

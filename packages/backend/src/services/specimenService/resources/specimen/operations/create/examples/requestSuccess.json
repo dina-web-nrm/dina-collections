@@ -2,13 +2,13 @@
   "data": {
     "type": "specimen",
     "relationships": {
-      "curatedLocalities": {
+      "places": {
         "data": [
-          { "id": "1", "type": "curatedLocality" },
-          { "id": "2", "type": "curatedLocality" },
-          { "id": "3", "type": "curatedLocality" },
-          { "id": "4", "type": "curatedLocality" },
-          { "id": "5", "type": "curatedLocality" }
+          { "id": "1", "type": "place" },
+          { "id": "2", "type": "place" },
+          { "id": "3", "type": "place" },
+          { "id": "4", "type": "place" },
+          { "id": "5", "type": "place" }
         ]
       },
      "featureTypes": {
@@ -53,12 +53,12 @@
               },
               "expeditionText": "Vega Expedition",
               "locationInformation": {
-                "curatedLocalities": [
-                  { "id": "1", "type": "curatedLocality" },
-                  { "id": "2", "type": "curatedLocality" },
-                  { "id": "3", "type": "curatedLocality" },
-                  { "id": "4", "type": "curatedLocality" },
-                  { "id": "5", "type": "curatedLocality" }
+                "places": [
+                  { "id": "1", "type": "place" },
+                  { "id": "2", "type": "place" },
+                  { "id": "3", "type": "place" },
+                  { "id": "4", "type": "place" },
+                  { "id": "5", "type": "place" }
                 ],
                 "position": {
                   "latitude": "string",

@@ -5,7 +5,7 @@ import {
 import { SPECIMEN } from './constants'
 
 export const buildSpecimenBody = ({
-  curatedLocalities,
+  places,
   featureTypes,
   preparationTypes,
   savedPhysicalObjects,
@@ -51,11 +51,11 @@ export const buildSpecimenBody = ({
     data: {
       attributes: specimenWithRelationships,
       relationships: {
-        curatedLocalities: {
-          data: curatedLocalities,
-        },
         featureTypes: {
           data: featureTypes,
+        },
+        places: {
+          data: places,
         },
         physicalObjects: {
           data: cleanedPhysicalObjects,

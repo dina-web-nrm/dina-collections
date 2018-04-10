@@ -29,13 +29,13 @@
             }
           }
         },
-        "curatedLocalities": {
+        "places": {
           "type": "object",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__curatedLocality",
+                "$ref": "__ROOT__place",
                 "x-reference-type": "external"
               }
             }

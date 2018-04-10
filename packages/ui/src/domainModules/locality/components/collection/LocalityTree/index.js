@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
-import { getCuratedLocalities as getCuratedLocalitiesAc } from 'dataModules/localityService/actionCreators'
+import { getPlaces as getPlacesAc } from 'dataModules/localityService/actionCreators'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
 import {
@@ -17,11 +17,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  getCuratedLocalitiesAc,
+  getPlacesAc,
 }
 
 const propTypes = {
-  getCuratedLocalitiesAc: PropTypes.func.isRequired,
+  getPlacesAc: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   searchQuery: PropTypes.string,
 }
@@ -42,7 +42,7 @@ class Localities extends Component {
   componentWillMount() {
     // TODO refactor this
     this.props
-      .getCuratedLocalitiesAc({
+      .getPlacesAc({
         queryParams: { relationships: ['all'] },
       })
       .then(localities => {

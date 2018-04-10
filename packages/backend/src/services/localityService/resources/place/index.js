@@ -87,13 +87,13 @@ module.exports = {
   relations: {
     children: {
       format: 'array',
-      resource: 'curatedLocality',
+      resource: 'place',
     },
     parent: {
       format: 'object',
-      resource: 'curatedLocality',
+      resource: 'place',
     },
   },
-  resource: 'curatedLocality',
-  resourcePlural: 'curatedLocalities',
+  resource: 'place',
+  resourcePlural: 'places',
 }

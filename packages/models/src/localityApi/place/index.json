@@ -55,7 +55,7 @@
     "parent": {
       "type": "object",
       "description": "A polygon describing the edges",
-      "$ref": "__ROOT__curatedLocality"
+      "$ref": "__ROOT__place"
     },
     "polygon": {
       "type": "object",

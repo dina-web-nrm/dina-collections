@@ -1829,9 +1829,9 @@
         ]
       }
     },
-    "/api/locality/v01/curatedLocalities": {
+    "/api/locality/v01/places": {
       "post": {
-        "operationId": "createCuratedLocality",
+        "operationId": "createPlace",
         "parameters": [
           {
             "in": "query",
@@ -1856,7 +1856,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/createCuratedLocalityRequest"
+                "$ref": "#/components/schemas/createPlaceRequest"
               }
             }
           },
@@ -1867,7 +1867,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createCuratedLocalityResponse"
+                  "$ref": "#/components/schemas/createPlaceResponse"
                 }
               }
             },
@@ -1877,7 +1877,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createCuratedLocality-400"
+                  "$ref": "#/components/schemas/createPlace-400"
                 }
               }
             },
@@ -1887,7 +1887,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createCuratedLocality-500"
+                  "$ref": "#/components/schemas/createPlace-500"
                 }
               }
             },
@@ -1899,13 +1899,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create curatedLocality",
+        "summary": "Create place",
         "tags": [
           "localityService"
         ]
       },
       "get": {
-        "operationId": "getCuratedLocalities",
+        "operationId": "getPlaces",
         "parameters": [
           {
             "in": "query",
@@ -1996,7 +1996,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocalitiesResponse"
+                  "$ref": "#/components/schemas/getPlacesResponse"
                 }
               }
             },
@@ -2006,7 +2006,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocalities-400"
+                  "$ref": "#/components/schemas/getPlaces-400"
                 }
               }
             },
@@ -2016,7 +2016,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocalities-500"
+                  "$ref": "#/components/schemas/getPlaces-500"
                 }
               }
             },
@@ -2028,20 +2028,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find curatedLocalities",
+        "summary": "Find places",
         "tags": [
           "localityService"
         ]
       }
     },
-    "/api/locality/v01/curatedLocalities/{id}": {
+    "/api/locality/v01/places/{id}": {
       "patch": {
-        "operationId": "updateCuratedLocality",
+        "operationId": "updatePlace",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "curatedLocality id",
+            "description": "place id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2071,7 +2071,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updateCuratedLocalityRequest"
+                "$ref": "#/components/schemas/updatePlaceRequest"
               }
             }
           },
@@ -2082,7 +2082,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityResponse"
+                  "$ref": "#/components/schemas/updatePlaceResponse"
                 }
               }
             },
@@ -2092,7 +2092,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocality-400"
+                  "$ref": "#/components/schemas/updatePlace-400"
                 }
               }
             },
@@ -2102,7 +2102,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocality-404"
+                  "$ref": "#/components/schemas/updatePlace-404"
                 }
               }
             },
@@ -2112,7 +2112,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocality-500"
+                  "$ref": "#/components/schemas/updatePlace-500"
                 }
               }
             },
@@ -2124,18 +2124,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates curatedLocality",
+        "summary": "Updates place",
         "tags": [
           "localityService"
         ]
       },
       "get": {
-        "operationId": "getCuratedLocality",
+        "operationId": "getPlace",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "curatedLocality id",
+            "description": "place id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2214,7 +2214,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocalityResponse"
+                  "$ref": "#/components/schemas/getPlaceResponse"
                 }
               }
             },
@@ -2224,7 +2224,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocality-400"
+                  "$ref": "#/components/schemas/getPlace-400"
                 }
               }
             },
@@ -2234,7 +2234,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocality-404"
+                  "$ref": "#/components/schemas/getPlace-404"
                 }
               }
             },
@@ -2244,7 +2244,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getCuratedLocality-500"
+                  "$ref": "#/components/schemas/getPlace-500"
                 }
               }
             },
@@ -2256,20 +2256,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find curatedLocality by id",
+        "summary": "Find place by id",
         "tags": [
           "localityService"
         ]
       }
     },
-    "/api/locality/v01/curatedLocalities/{id}/relationships/parent": {
+    "/api/locality/v01/places/{id}/relationships/parent": {
       "patch": {
-        "operationId": "updateCuratedLocalityParent",
+        "operationId": "updatePlaceParent",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "curatedLocality id",
+            "description": "place id",
             "example": "1",
             "required": true,
             "schema": {
@@ -2299,7 +2299,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updateCuratedLocalityParentRequest"
+                "$ref": "#/components/schemas/updatePlaceParentRequest"
               }
             }
           },
@@ -2310,7 +2310,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityParentResponse"
+                  "$ref": "#/components/schemas/updatePlaceParentResponse"
                 }
               }
             },
@@ -2320,7 +2320,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityParent-400"
+                  "$ref": "#/components/schemas/updatePlaceParent-400"
                 }
               }
             },
@@ -2330,7 +2330,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityParent-404"
+                  "$ref": "#/components/schemas/updatePlaceParent-404"
                 }
               }
             },
@@ -2340,7 +2340,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateCuratedLocalityParent-500"
+                  "$ref": "#/components/schemas/updatePlaceParent-500"
                 }
               }
             },
@@ -2352,7 +2352,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update curatedLocality -> parent",
+        "summary": "Update place -> parent",
         "tags": [
           "localityService"
         ]
@@ -2469,18 +2469,18 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "curatedLocalities",
               "featureTypes",
               "physicalObjects",
+              "places",
               "taxa"
             ],
             "schema": {
               "items": {
                 "enum": [
                   "all",
-                  "curatedLocalities",
                   "featureTypes",
                   "physicalObjects",
+                  "places",
                   "taxa"
                 ],
                 "type": "string"
@@ -2681,18 +2681,18 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "curatedLocalities",
               "featureTypes",
               "physicalObjects",
+              "places",
               "taxa"
             ],
             "schema": {
               "items": {
                 "enum": [
                   "all",
-                  "curatedLocalities",
                   "featureTypes",
                   "physicalObjects",
+                  "places",
                   "taxa"
                 ],
                 "type": "string"
@@ -3114,9 +3114,9 @@
         ]
       }
     },
-    "/api/specimen/v01/specimens/{id}/relationships/curatedLocalities": {
+    "/api/specimen/v01/specimens/{id}/relationships/places": {
       "patch": {
-        "operationId": "updateSpecimenCuratedLocalities",
+        "operationId": "updateSpecimenPlaces",
         "parameters": [
           {
             "in": "path",
@@ -3151,7 +3151,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updateSpecimenCuratedLocalitiesRequest"
+                "$ref": "#/components/schemas/updateSpecimenPlacesRequest"
               }
             }
           },
@@ -3162,7 +3162,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalitiesResponse"
+                  "$ref": "#/components/schemas/updateSpecimenPlacesResponse"
                 }
               }
             },
@@ -3172,7 +3172,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalities-400"
+                  "$ref": "#/components/schemas/updateSpecimenPlaces-400"
                 }
               }
             },
@@ -3182,7 +3182,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalities-404"
+                  "$ref": "#/components/schemas/updateSpecimenPlaces-404"
                 }
               }
             },
@@ -3192,7 +3192,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenCuratedLocalities-500"
+                  "$ref": "#/components/schemas/updateSpecimenPlaces-500"
                 }
               }
             },
@@ -3204,13 +3204,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update specimen -> curatedLocalities",
+        "summary": "Update specimen -> places",
         "tags": [
           "specimenService"
         ]
       },
       "get": {
-        "operationId": "getSpecimenCuratedLocalities",
+        "operationId": "getSpecimenPlaces",
         "parameters": [
           {
             "in": "path",
@@ -3246,7 +3246,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenCuratedLocalitiesResponse"
+                  "$ref": "#/components/schemas/getSpecimenPlacesResponse"
                 }
               }
             },
@@ -3256,7 +3256,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenCuratedLocalities-400"
+                  "$ref": "#/components/schemas/getSpecimenPlaces-400"
                 }
               }
             },
@@ -3266,7 +3266,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenCuratedLocalities-404"
+                  "$ref": "#/components/schemas/getSpecimenPlaces-404"
                 }
               }
             },
@@ -3276,7 +3276,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenCuratedLocalities-500"
+                  "$ref": "#/components/schemas/getSpecimenPlaces-500"
                 }
               }
             },
@@ -3288,7 +3288,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find specimen -> curatedLocalities",
+        "summary": "Find specimen -> places",
         "tags": [
           "specimenService"
         ]
@@ -5670,7 +5670,7 @@
         "x-category": "identifierApi",
         "x-modelType": "model"
       },
-      "curatedLocality": {
+      "place": {
         "additionalProperties": false,
         "properties": {
           "name": {
@@ -5727,7 +5727,7 @@
           "parent": {
             "type": "object",
             "description": "A polygon describing the edges",
-            "$ref": "#/components/schemas/curatedLocality"
+            "$ref": "#/components/schemas/place"
           },
           "polygon": {
             "type": "object",
@@ -5750,26 +5750,6 @@
           "group"
         ],
         "description": "### Definition\n\nA defined location with known extension in space.\n",
-        "x-category": "localityApi",
-        "x-modelType": "model"
-      },
-      "curatedLocalityRelation": {
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "to": {
-            "$ref": "#/components/schemas/curatedLocality"
-          },
-          "from": {
-            "$ref": "#/components/schemas/curatedLocality"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
         "x-category": "localityApi",
         "x-modelType": "model"
       },
@@ -6108,7 +6088,7 @@
           "lid": {
             "type": "string"
           },
-          "curatedLocalities": {
+          "places": {
             "description": "An array with curated localities",
             "type": "array",
             "items": {
@@ -6335,26 +6315,6 @@
         "description": "### Definition\n\nA delimited space in the collection where one ore more physical units can be placed.\n",
         "x-category": "storageApi",
         "x-modelType": "model"
-      },
-      "storageLocationRelation": {
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "to": {
-            "$ref": "#/components/schemas/storageLocation"
-          },
-          "from": {
-            "$ref": "#/components/schemas/storageLocation"
-          },
-          "type": {
-            "type": "string"
-          }
-        },
-        "x-category": "storageApi",
-        "x-modelType": "model",
-        "description": ""
       },
       "taxon": {
         "additionalProperties": false,
@@ -7815,7 +7775,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "createCuratedLocality-400": {
+      "createPlace-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7842,7 +7802,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "createCuratedLocality-500": {
+      "createPlace-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7869,7 +7829,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updateCuratedLocality-400": {
+      "updatePlace-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7896,7 +7856,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updateCuratedLocality-404": {
+      "updatePlace-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7920,7 +7880,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updateCuratedLocality-500": {
+      "updatePlace-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7947,7 +7907,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updateCuratedLocalityParent-400": {
+      "updatePlaceParent-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7974,7 +7934,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updateCuratedLocalityParent-404": {
+      "updatePlaceParent-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7998,7 +7958,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updateCuratedLocalityParent-500": {
+      "updatePlaceParent-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8025,7 +7985,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getCuratedLocality-400": {
+      "getPlace-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8049,7 +8009,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getCuratedLocality-404": {
+      "getPlace-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8073,7 +8033,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getCuratedLocality-500": {
+      "getPlace-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8100,7 +8060,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getCuratedLocalities-400": {
+      "getPlaces-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8124,7 +8084,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getCuratedLocalities-500": {
+      "getPlaces-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8586,7 +8546,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updateSpecimenCuratedLocalities-400": {
+      "updateSpecimenPlaces-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8613,7 +8573,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updateSpecimenCuratedLocalities-404": {
+      "updateSpecimenPlaces-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8637,7 +8597,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updateSpecimenCuratedLocalities-500": {
+      "updateSpecimenPlaces-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8664,7 +8624,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getSpecimenCuratedLocalities-400": {
+      "getSpecimenPlaces-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8688,7 +8648,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getSpecimenCuratedLocalities-404": {
+      "getSpecimenPlaces-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8712,7 +8672,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getSpecimenCuratedLocalities-500": {
+      "getSpecimenPlaces-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -10703,7 +10663,7 @@
         },
         "description": ""
       },
-      "createCuratedLocalityRequest": {
+      "createPlaceRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10719,14 +10679,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "enum": [
-                  "curatedLocality"
+                  "place"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
+                "$ref": "#/components/schemas/place"
               },
               "relationships": {
                 "properties": {
@@ -10743,9 +10703,9 @@
                             },
                             "type": {
                               "enum": [
-                                "curatedLocality"
+                                "place"
                               ],
-                              "example": "curatedLocality",
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -10770,9 +10730,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "curatedLocality"
+                                  "place"
                                 ],
-                                "example": "curatedLocality",
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -10802,7 +10762,7 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "curatedLocality",
+              "type": "place",
               "attributes": {
                 "name": "string",
                 "versionId": "string",
@@ -10829,7 +10789,7 @@
         },
         "example": {
           "data": {
-            "type": "curatedLocality",
+            "type": "place",
             "attributes": {
               "name": "string",
               "versionId": "string",
@@ -10855,7 +10815,7 @@
         },
         "description": ""
       },
-      "updateCuratedLocalityRequest": {
+      "updatePlaceRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10871,14 +10831,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "enum": [
-                  "curatedLocality"
+                  "place"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
+                "$ref": "#/components/schemas/place"
               },
               "relationships": {
                 "properties": {
@@ -10895,9 +10855,9 @@
                             },
                             "type": {
                               "enum": [
-                                "curatedLocality"
+                                "place"
                               ],
-                              "example": "curatedLocality",
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -10922,9 +10882,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "curatedLocality"
+                                  "place"
                                 ],
-                                "example": "curatedLocality",
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -10953,7 +10913,7 @@
         },
         "description": ""
       },
-      "updateCuratedLocalityParentRequest": {
+      "updatePlaceParentRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10969,9 +10929,9 @@
                 "example": "1234"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "enum": [
-                  "curatedLocality"
+                  "place"
                 ],
                 "type": "string"
               }
@@ -11007,32 +10967,6 @@
               },
               "relationships": {
                 "properties": {
-                  "curatedLocalities": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -11085,6 +11019,32 @@
                     },
                     "type": "object"
                   },
+                  "places": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "place"
+                              ],
+                              "example": "place",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "taxa": {
                     "additionalProperties": false,
                     "properties": {
@@ -11122,27 +11082,27 @@
             "data": {
               "type": "specimen",
               "relationships": {
-                "curatedLocalities": {
+                "places": {
                   "data": [
                     {
                       "id": "1",
-                      "type": "curatedLocality"
+                      "type": "place"
                     },
                     {
                       "id": "2",
-                      "type": "curatedLocality"
+                      "type": "place"
                     },
                     {
                       "id": "3",
-                      "type": "curatedLocality"
+                      "type": "place"
                     },
                     {
                       "id": "4",
-                      "type": "curatedLocality"
+                      "type": "place"
                     },
                     {
                       "id": "5",
-                      "type": "curatedLocality"
+                      "type": "place"
                     }
                   ]
                 },
@@ -11194,26 +11154,26 @@
                     "expeditionText": "expeditionText",
                     "locationInformation": {
                       "coordinatesVerbatim": "coordinatesVerbatim",
-                      "curatedLocalities": [
+                      "places": [
                         {
                           "id": "1",
-                          "type": "curatedLocality"
+                          "type": "place"
                         },
                         {
                           "id": "2",
-                          "type": "curatedLocality"
+                          "type": "place"
                         },
                         {
                           "id": "3",
-                          "type": "curatedLocality"
+                          "type": "place"
                         },
                         {
                           "id": "4",
-                          "type": "curatedLocality"
+                          "type": "place"
                         },
                         {
                           "id": "5",
-                          "type": "curatedLocality"
+                          "type": "place"
                         }
                       ],
                       "georeferenceSourcesText": "georeferenceSourcesText",
@@ -11300,27 +11260,27 @@
           "data": {
             "type": "specimen",
             "relationships": {
-              "curatedLocalities": {
+              "places": {
                 "data": [
                   {
                     "id": "1",
-                    "type": "curatedLocality"
+                    "type": "place"
                   },
                   {
                     "id": "2",
-                    "type": "curatedLocality"
+                    "type": "place"
                   },
                   {
                     "id": "3",
-                    "type": "curatedLocality"
+                    "type": "place"
                   },
                   {
                     "id": "4",
-                    "type": "curatedLocality"
+                    "type": "place"
                   },
                   {
                     "id": "5",
-                    "type": "curatedLocality"
+                    "type": "place"
                   }
                 ]
               },
@@ -11372,26 +11332,26 @@
                   "expeditionText": "expeditionText",
                   "locationInformation": {
                     "coordinatesVerbatim": "coordinatesVerbatim",
-                    "curatedLocalities": [
+                    "places": [
                       {
                         "id": "1",
-                        "type": "curatedLocality"
+                        "type": "place"
                       },
                       {
                         "id": "2",
-                        "type": "curatedLocality"
+                        "type": "place"
                       },
                       {
                         "id": "3",
-                        "type": "curatedLocality"
+                        "type": "place"
                       },
                       {
                         "id": "4",
-                        "type": "curatedLocality"
+                        "type": "place"
                       },
                       {
                         "id": "5",
-                        "type": "curatedLocality"
+                        "type": "place"
                       }
                     ],
                     "georeferenceSourcesText": "georeferenceSourcesText",
@@ -11502,32 +11462,6 @@
               },
               "relationships": {
                 "properties": {
-                  "curatedLocalities": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -11570,6 +11504,32 @@
                                 "physicalObject"
                               ],
                               "example": "physicalObject",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "places": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "place"
+                              ],
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -11674,7 +11634,7 @@
         },
         "description": ""
       },
-      "updateSpecimenCuratedLocalitiesRequest": {
+      "updateSpecimenPlacesRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -11688,9 +11648,9 @@
               "type": "object",
               "properties": {
                 "type": {
-                  "default": "curatedLocality",
+                  "default": "place",
                   "enum": [
-                    "curatedLocality"
+                    "place"
                   ],
                   "type": "string"
                 },
@@ -13276,14 +13236,14 @@
         "x-examples": {},
         "description": ""
       },
-      "createCuratedLocalityResponse": {
+      "createPlaceResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
+                "$ref": "#/components/schemas/place"
               },
               "id": {
                 "example": "1234",
@@ -13304,9 +13264,9 @@
                             },
                             "type": {
                               "enum": [
-                                "curatedLocality"
+                                "place"
                               ],
-                              "example": "curatedLocality",
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -13331,9 +13291,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "curatedLocality"
+                                  "place"
                                 ],
-                                "example": "curatedLocality",
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -13358,7 +13318,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "type": "string"
               }
             },
@@ -13370,7 +13330,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities",
+                "example": "https://domain/api/locality/v01/places",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13386,14 +13346,14 @@
         "x-examples": {},
         "description": ""
       },
-      "updateCuratedLocalityResponse": {
+      "updatePlaceResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
+                "$ref": "#/components/schemas/place"
               },
               "id": {
                 "example": "1234",
@@ -13414,9 +13374,9 @@
                             },
                             "type": {
                               "enum": [
-                                "curatedLocality"
+                                "place"
                               ],
-                              "example": "curatedLocality",
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -13441,9 +13401,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "curatedLocality"
+                                  "place"
                                 ],
-                                "example": "curatedLocality",
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -13468,7 +13428,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "type": "string"
               }
             },
@@ -13480,7 +13440,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
+                "example": "https://domain/api/locality/v01/places/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13496,21 +13456,21 @@
         "x-examples": {},
         "description": ""
       },
-      "updateCuratedLocalityParentResponse": {
+      "updatePlaceParentResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
+                "$ref": "#/components/schemas/place"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "type": "string"
               }
             },
@@ -13522,7 +13482,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}/relationships/parent",
+                "example": "https://domain/api/locality/v01/places/{id}/relationships/parent",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13538,14 +13498,14 @@
         "x-examples": {},
         "description": ""
       },
-      "getCuratedLocalityResponse": {
+      "getPlaceResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/curatedLocality"
+                "$ref": "#/components/schemas/place"
               },
               "id": {
                 "example": "1234",
@@ -13566,9 +13526,9 @@
                             },
                             "type": {
                               "enum": [
-                                "curatedLocality"
+                                "place"
                               ],
-                              "example": "curatedLocality",
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -13593,9 +13553,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "curatedLocality"
+                                  "place"
                                 ],
-                                "example": "curatedLocality",
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -13620,7 +13580,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "curatedLocality",
+                "default": "place",
                 "type": "string"
               }
             },
@@ -13632,7 +13592,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities/{id}",
+                "example": "https://domain/api/locality/v01/places/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13648,7 +13608,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getCuratedLocalitiesResponse": {
+      "getPlacesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -13657,7 +13617,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/curatedLocality"
+                  "$ref": "#/components/schemas/place"
                 },
                 "id": {
                   "example": "1234",
@@ -13678,9 +13638,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "curatedLocality"
+                                  "place"
                                 ],
-                                "example": "curatedLocality",
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -13705,9 +13665,9 @@
                                 },
                                 "type": {
                                   "enum": [
-                                    "curatedLocality"
+                                    "place"
                                   ],
-                                  "example": "curatedLocality",
+                                  "example": "place",
                                   "type": "string"
                                 }
                               },
@@ -13732,7 +13692,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "curatedLocality",
+                  "default": "place",
                   "type": "string"
                 }
               },
@@ -13746,7 +13706,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/locality/v01/curatedLocalities",
+                "example": "https://domain/api/locality/v01/places",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -13777,32 +13737,6 @@
               },
               "relationships": {
                 "properties": {
-                  "curatedLocalities": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -13845,6 +13779,32 @@
                                 "physicalObject"
                               ],
                               "example": "physicalObject",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "places": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "place"
+                              ],
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -13928,32 +13888,6 @@
               },
               "relationships": {
                 "properties": {
-                  "curatedLocalities": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -13996,6 +13930,32 @@
                                 "physicalObject"
                               ],
                               "example": "physicalObject",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "places": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "place"
+                              ],
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -14248,7 +14208,7 @@
         "x-examples": {},
         "description": ""
       },
-      "updateSpecimenCuratedLocalitiesResponse": {
+      "updateSpecimenPlacesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -14278,7 +14238,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/curatedLocalities",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/places",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -14294,7 +14254,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getSpecimenCuratedLocalitiesResponse": {
+      "getSpecimenPlacesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -14303,14 +14263,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/curatedLocality"
+                  "$ref": "#/components/schemas/place"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "curatedLocality",
+                  "default": "place",
                   "type": "string"
                 }
               },
@@ -14324,7 +14284,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/curatedLocalities",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/places",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -14401,32 +14361,6 @@
               },
               "relationships": {
                 "properties": {
-                  "curatedLocalities": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -14469,6 +14403,32 @@
                                 "physicalObject"
                               ],
                               "example": "physicalObject",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "places": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "place"
+                              ],
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -14554,32 +14514,6 @@
                 },
                 "relationships": {
                   "properties": {
-                    "curatedLocalities": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "curatedLocality"
-                                ],
-                                "example": "curatedLocality",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
                     "featureTypes": {
                       "additionalProperties": false,
                       "properties": {
@@ -14622,6 +14556,32 @@
                                   "physicalObject"
                                 ],
                                 "example": "physicalObject",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "places": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "place"
+                                ],
+                                "example": "place",
                                 "type": "string"
                               }
                             },
@@ -14707,32 +14667,6 @@
               },
               "relationships": {
                 "properties": {
-                  "curatedLocalities": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "curatedLocality"
-                              ],
-                              "example": "curatedLocality",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -14775,6 +14709,32 @@
                                 "physicalObject"
                               ],
                               "example": "physicalObject",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "places": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "place"
+                              ],
+                              "example": "place",
                               "type": "string"
                             }
                           },
@@ -14860,32 +14820,6 @@
                 },
                 "relationships": {
                   "properties": {
-                    "curatedLocalities": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "curatedLocality"
-                                ],
-                                "example": "curatedLocality",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
                     "featureTypes": {
                       "additionalProperties": false,
                       "properties": {
@@ -14928,6 +14862,32 @@
                                   "physicalObject"
                                 ],
                                 "example": "physicalObject",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "places": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "place"
+                                ],
+                                "example": "place",
                                 "type": "string"
                               }
                             },

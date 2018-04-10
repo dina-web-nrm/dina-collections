@@ -1,10 +1,10 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import createCuratedLocality from './index'
+import updatePlace from './index'
 import * as actionTypes from '../../actionTypes'
 import { CURATED_LOCALITY } from '../../constants'
 
-describe('dataModules/localityService/actionCreators/createCuratedLocality', () => {
+describe('dataModules/localityService/actionCreators/updatePlace', () => {
   let store
   let apiClient
 
@@ -20,14 +20,14 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
   })
 
   it(`dispatches ${
-    actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_REQUEST
+    actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_REQUEST
   }`, () => {
-    const curatedLocality = {}
-    const testAction = createCuratedLocality({ curatedLocality })
+    const place = {}
+    const testAction = updatePlace({ place })
 
     const expectedAction = {
-      meta: { curatedLocality },
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_REQUEST,
+      meta: { place },
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -35,12 +35,15 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls createCuratedLocality with correct body`, () => {
-    const operationId = 'createCuratedLocality'
-    const curatedLocality = {
+  it(`calls updatePlace with correct body`, () => {
+    const operationId = 'updatePlace'
+    const place = {
+      id: '123',
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
+    const { id, ...attributes } = place
+
     const callSpy = jest.fn()
 
     apiClient.mock({
@@ -52,14 +55,16 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
       },
     })
 
-    const testAction = createCuratedLocality({ curatedLocality })
+    const testAction = updatePlace({ place })
     const expectedCallParams = {
       body: {
         data: {
-          attributes: { ...curatedLocality },
+          attributes,
+          id,
           type: CURATED_LOCALITY,
         },
       },
+      pathParams: { id },
     }
 
     expect.assertions(3)
@@ -72,26 +77,29 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
   })
 
   it(`dispatches ${
-    actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_SUCCESS
+    actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createCuratedLocality'
-    const curatedLocality = {
+    const operationId = 'updatePlace'
+    const attributes = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
+    }
+    const id = '123'
+    const place = {
+      ...attributes,
+      id,
     }
 
     const mockResponse = {
       data: {
-        attributes: {
-          name: 'Alan',
-        },
-        id: '123',
+        attributes,
+        id,
         type: 'type',
       },
     }
     const transformedResponse = {
-      id: '123',
-      name: 'Alan',
+      ...attributes,
+      id,
       type: 'type',
     }
 
@@ -101,15 +109,15 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
       },
     })
 
-    const testAction = createCuratedLocality({ curatedLocality })
+    const testAction = updatePlace({ place })
 
     const expectedFirstAction = {
-      meta: { curatedLocality },
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_REQUEST,
+      meta: { place },
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_REQUEST,
     }
     const expectedSecondAction = {
       payload: transformedResponse,
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_SUCCESS,
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_SUCCESS,
     }
 
     expect.assertions(2)
@@ -124,10 +132,11 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
   })
 
   it(`dispatches ${
-    actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_FAIL
+    actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_FAIL
   } without throwing error`, () => {
-    const operationId = 'createCuratedLocality'
-    const curatedLocality = {
+    const operationId = 'updatePlace'
+    const place = {
+      id: '123',
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -139,17 +148,17 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
       },
     })
 
-    const testAction = createCuratedLocality({ curatedLocality })
+    const testAction = updatePlace({ place })
 
     const expectedFirstAction = {
-      meta: { curatedLocality },
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_REQUEST,
+      meta: { place },
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { curatedLocality },
+      meta: { place },
       payload: mockError,
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_FAIL,
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_FAIL,
     }
 
     expect.assertions(2)
@@ -164,10 +173,11 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
   })
 
   it(`dispatches ${
-    actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_FAIL
+    actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_FAIL
   } and throws error`, () => {
-    const operationId = 'createCuratedLocality'
-    const curatedLocality = {
+    const operationId = 'updatePlace'
+    const place = {
+      id: '123',
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -179,20 +189,20 @@ describe('dataModules/localityService/actionCreators/createCuratedLocality', () 
       },
     })
 
-    const testAction = createCuratedLocality({
-      curatedLocality,
+    const testAction = updatePlace({
+      place,
       throwError: true,
     })
 
     const expectedFirstAction = {
-      meta: { curatedLocality },
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_REQUEST,
+      meta: { place },
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { curatedLocality },
+      meta: { place },
       payload: mockError,
-      type: actionTypes.LOCALITY_SERVICE_CREATE_CURATED_LOCALITY_FAIL,
+      type: actionTypes.LOCALITY_SERVICE_UPDATE_CURATED_LOCALITY_FAIL,
     }
 
     expect.assertions(2)

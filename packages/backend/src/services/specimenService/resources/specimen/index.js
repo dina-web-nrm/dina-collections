@@ -36,11 +36,11 @@ module.exports = {
       type: 'getRelationHasMany',
     },
     {
-      relationKey: 'curatedLocalities',
+      relationKey: 'places',
       type: 'updateRelationHasMany',
     },
     {
-      relationKey: 'curatedLocalities',
+      relationKey: 'places',
       type: 'getRelationHasMany',
     },
     {
@@ -74,11 +74,6 @@ module.exports = {
     },
   ],
   relations: {
-    curatedLocalities: {
-      format: 'array',
-      resource: 'curatedLocality',
-      storeInDocument: true,
-    },
     featureTypes: {
       format: 'array',
       resource: 'featureType',
@@ -87,6 +82,11 @@ module.exports = {
     physicalObjects: {
       format: 'array',
       resource: 'physicalObject',
+      storeInDocument: true,
+    },
+    places: {
+      format: 'array',
+      resource: 'place',
       storeInDocument: true,
     },
     taxa: {

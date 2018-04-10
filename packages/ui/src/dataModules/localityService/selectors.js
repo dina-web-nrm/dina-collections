@@ -11,29 +11,23 @@ export const getResources = state => {
   return state.resources
 }
 
-export const getCuratedLocalities = createSelector(getResources, resources => {
-  return resources.curatedLocalities
+export const getPlaces = createSelector(getResources, resources => {
+  return resources.places
 })
 
-export const getCuratedLocalitiesArray = createSelector(
-  getCuratedLocalities,
-  curatedLocalitiesObject => {
-    return Object.keys(curatedLocalitiesObject).map(key => {
-      return curatedLocalitiesObject[key]
-    })
+export const getPlacesArray = createSelector(getPlaces, placesObject => {
+  return Object.keys(placesObject).map(key => {
+    return placesObject[key]
+  })
+})
+
+export const getPlace = createSelector(
+  [getPlaces, getSecondArgument],
+  (places, id) => {
+    return places[id]
   }
 )
 
-export const getCuratedLocality = createSelector(
-  [getCuratedLocalities, getSecondArgument],
-  (curatedLocalities, id) => {
-    return curatedLocalities[id]
-  }
-)
-
-export const getHasCuratedLocalities = createSelector(
-  getCuratedLocalities,
-  curatedLocalities => {
-    return Object.keys(curatedLocalities).length > 0
-  }
-)
+export const getHasPlaces = createSelector(getPlaces, places => {
+  return Object.keys(places).length > 0
+})

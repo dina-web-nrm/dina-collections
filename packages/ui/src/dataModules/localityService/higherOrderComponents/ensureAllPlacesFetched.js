@@ -5,17 +5,17 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 import config from 'config'
-import { getCuratedLocalities as getCuratedLocalitiesAc } from '../actionCreators'
+import { getPlaces as getPlacesAc } from '../actionCreators'
 import { actionCreators, globalSelectors } from '../keyObjectModule'
 
-const ensureAllLocalitiesFetched = () => ComposedComponent => {
+const ensureAllPlacesFetched = () => ComposedComponent => {
   const mapStateToProps = state => ({
     allLocalitiesFetched: globalSelectors.get.allLocalitiesFetched(state),
     fetchingAllLocalities: globalSelectors.get.fetchingAllLocalities(state),
   })
 
   const mapDispathToProps = {
-    getCuratedLocalities: getCuratedLocalitiesAc,
+    getPlaces: getPlacesAc,
     setAllLocalitiesFetched: actionCreators.set.allLocalitiesFetched,
     setFetchingAllLocalities: actionCreators.set.fetchingAllLocalities,
   }
@@ -23,7 +23,7 @@ const ensureAllLocalitiesFetched = () => ComposedComponent => {
   const propTypes = {
     allLocalitiesFetched: PropTypes.bool.isRequired,
     fetchingAllLocalities: PropTypes.bool.isRequired,
-    getCuratedLocalities: PropTypes.func.isRequired,
+    getPlaces: PropTypes.func.isRequired,
     setAllLocalitiesFetched: PropTypes.func.isRequired,
     setFetchingAllLocalities: PropTypes.func.isRequired,
   }
@@ -34,7 +34,7 @@ const ensureAllLocalitiesFetched = () => ComposedComponent => {
       if (!config.isTest && !allLocalitiesFetched && !fetchingAllLocalities) {
         this.props.setFetchingAllLocalities(true)
         this.props
-          .getCuratedLocalities({
+          .getPlaces({
             queryParams: { relationships: ['parent'] },
           })
           .then(() => {
@@ -61,4 +61,4 @@ const ensureAllLocalitiesFetched = () => ComposedComponent => {
   )
 }
 
-export default ensureAllLocalitiesFetched
+export default ensureAllPlacesFetched
