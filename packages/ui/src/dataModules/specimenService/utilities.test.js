@@ -56,6 +56,11 @@ describe('dataModules/specimenService/utilities', () => {
     ]
 
     const individual = {
+      determinations: [
+        {
+          taxonNameStandardized: 'Chironectes minimus',
+        },
+      ],
       featureObservations: [
         {
           featureObservationText: 'female',
@@ -71,13 +76,7 @@ describe('dataModules/specimenService/utilities', () => {
           value: '444444',
         },
       ],
-      taxonInformation: {
-        determinations: [
-          {
-            taxonNameStandardized: 'Chironectes minimus',
-          },
-        ],
-      },
+      taxonInformation: {},
     }
     const savedPhysicalObjects = [
       {

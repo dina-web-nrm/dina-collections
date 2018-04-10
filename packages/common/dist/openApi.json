@@ -5623,6 +5623,12 @@
           "lid": {
             "type": "string"
           },
+          "determinations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/determination"
+            }
+          },
           "taxonInformation": {
             "$ref": "#/components/schemas/taxonInformation"
           },
@@ -5830,12 +5836,6 @@
           },
           "taxonRemarks": {
             "type": "string"
-          },
-          "determinations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/determination"
-            }
           }
         },
         "description": "### Definition\n\nThe taxon to which an individual is currently assigned according to a local classification.\n",

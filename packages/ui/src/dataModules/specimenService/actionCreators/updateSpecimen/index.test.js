@@ -44,10 +44,9 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const attributes = {
       individual: {
         collectionItems: [],
+        determinations: [{ taxon }],
         identifiers: [],
-        taxonInformation: {
-          determinations: [{ taxon }],
-        },
+        taxonInformation: {},
       },
     }
     const specimen = {

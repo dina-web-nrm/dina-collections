@@ -7,6 +7,14 @@ const individual = {
       },
     },
   ],
+  determinations: [
+    {
+      taxon: {
+        id: '1078',
+        type: 'taxon',
+      },
+    },
+  ],
   featureObservations: [
     {
       featureObservationText: 'female',
@@ -22,16 +30,7 @@ const individual = {
       value: '444444',
     },
   ],
-  taxonInformation: {
-    determinations: [
-      {
-        taxon: {
-          id: '1078',
-          type: 'taxon',
-        },
-      },
-    ],
-  },
+  taxonInformation: {},
 }
 const featureTypes = {
   1: {
@@ -57,7 +56,7 @@ const taxa = {
 }
 const mutations = [
   {
-    name: 'taxonInformation.determinations.0.determinedByAgentText',
+    name: 'determinations.0.determinedByAgentText',
     value: 'John, Doe',
   },
 ]
@@ -88,6 +87,15 @@ const expectedOutput = {
           },
         },
       ],
+      determinations: [
+        {
+          determinedByAgentText: 'John, Doe',
+          taxon: {
+            id: '1078',
+            type: 'taxon',
+          },
+        },
+      ],
       featureObservations: [
         {
           featureObservationText: 'female',
@@ -104,17 +112,7 @@ const expectedOutput = {
         },
       ],
       readOnly: undefined,
-      taxonInformation: {
-        determinations: [
-          {
-            determinedByAgentText: 'John, Doe',
-            taxon: {
-              id: '1078',
-              type: 'taxon',
-            },
-          },
-        ],
-      },
+      taxonInformation: {},
     },
     readOnly: undefined,
   },

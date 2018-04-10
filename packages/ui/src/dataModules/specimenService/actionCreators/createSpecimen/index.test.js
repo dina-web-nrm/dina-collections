@@ -58,10 +58,9 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const specimen = {
       individual: {
         collectionItems: [],
+        determinations: [{ taxon }],
         identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
-        taxonInformation: {
-          determinations: [{ taxon }],
-        },
+        taxonInformation: {},
       },
     }
     const callSpy = jest.fn()

@@ -5,6 +5,10 @@
     "lid": {
       "type": "string"
     },
+    "determinations": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__determination", "x-reference-type": "internal" }
+    },
     "taxonInformation": {
       "$ref": "__ROOT__taxonInformation",
       "x-reference-type": "internal"

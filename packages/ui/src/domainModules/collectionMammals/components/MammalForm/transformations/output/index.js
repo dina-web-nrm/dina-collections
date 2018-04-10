@@ -1,9 +1,10 @@
 import normalizeSpecimen from 'common/es5/normalize/normalizeSpecimen'
-import transformTaxonInformation from './transformTaxonInformation'
-import transformFeatureObservations from './transformFeatureObservations'
-import transformCollectionItems from './transformCollectionItems'
-import transformIdentifiers from './transformIdentifiers'
 import transformCollectingInformation from './transformCollectingInformation'
+import transformCollectionItems from './transformCollectionItems'
+import transformDeterminations from './transformDeterminations'
+import transformFeatureObservations from './transformFeatureObservations'
+import transformIdentifiers from './transformIdentifiers'
+import transformTaxonInformation from './transformTaxonInformation'
 
 export default function transformOutput(formData, normalize = true) {
   // TODO: set in backend instead
@@ -12,8 +13,10 @@ export default function transformOutput(formData, normalize = true) {
     Math.floor(Math.random() * (999999 - 100001) + 100000)
   )
 
-  const { taxa, taxonInformation } = transformTaxonInformation(
-    formData.taxonInformation
+  const taxonInformation = transformTaxonInformation(formData.taxonInformation)
+
+  const { determinations, taxa } = transformDeterminations(
+    formData.determinations
   )
 
   const identifiers = transformIdentifiers(
@@ -40,6 +43,7 @@ export default function transformOutput(formData, normalize = true) {
     ...formData,
     collectingInformation,
     collectionItems,
+    determinations,
     featureObservations,
     identifiers,
     taxonInformation,

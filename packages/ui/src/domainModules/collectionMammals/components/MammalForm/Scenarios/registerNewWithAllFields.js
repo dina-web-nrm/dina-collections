@@ -3,23 +3,23 @@ import initialState from './initialState'
 const mutations = [
   { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
   { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
-  { name: 'taxonInformation.determinations.0.date', value: 'date' },
+  { name: 'determinations.0.date', value: 'date' },
   {
-    name: 'taxonInformation.determinations.0.determinationVerbatim',
+    name: 'determinations.0.determinationVerbatim',
     value: 'determinationVerbatim',
   },
   {
-    name: 'taxonInformation.determinations.0.determinedByAgentText',
+    name: 'determinations.0.determinedByAgentText',
     value: 'determinedByAgentText',
   },
   {
-    name: 'taxonInformation.determinations.0.isCurrentDetermination',
+    name: 'determinations.0.isCurrentDetermination',
     value: true,
   },
-  { name: 'taxonInformation.determinations.0.remarks', value: 'remarks' },
+  { name: 'determinations.0.remarks', value: 'remarks' },
 
   {
-    name: 'taxonInformation.determinations.0.taxon.id.hidden',
+    name: 'determinations.0.taxon.id.hidden',
     value: '2367',
   },
   {
@@ -254,6 +254,19 @@ const expectedOutput = {
           },
         },
       ],
+      determinations: [
+        {
+          date: 'date',
+          determinationVerbatim: 'determinationVerbatim',
+          determinedByAgentText: 'determinedByAgentText',
+          isCurrentDetermination: true,
+          remarks: 'remarks',
+          taxon: {
+            id: '2367',
+            type: 'taxon',
+          },
+        },
+      ],
       featureObservations: [
         {
           date: 'date',
@@ -280,19 +293,6 @@ const expectedOutput = {
       readOnly: undefined,
       taxonInformation: {
         curatorialName: 'curatorialName',
-        determinations: [
-          {
-            date: 'date',
-            determinationVerbatim: 'determinationVerbatim',
-            determinedByAgentText: 'determinedByAgentText',
-            isCurrentDetermination: true,
-            remarks: 'remarks',
-            taxon: {
-              id: '2367',
-              type: 'taxon',
-            },
-          },
-        ],
         taxonRemarks: 'taxonRemarks',
       },
     },

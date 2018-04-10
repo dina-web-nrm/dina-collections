@@ -4,21 +4,21 @@ module.exports = {
   type: 'specimen',
   individual: {
     lid: '15413ab7-4c2f-4072-b2ae-3192f2887808',
+    determinations: [
+      {
+        lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4',
+        determinationVerbatim: 'determinationVerbatim',
+        determinedByAgentText: 'determinedByAgentText',
+        isCurrentDetermination: true,
+        remarks: 'remarks',
+        taxon: {
+          id: '2367',
+          type: 'taxon',
+        },
+      },
+    ],
     taxonInformation: {
       lid: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32',
-      determinations: [
-        {
-          lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4',
-          determinationVerbatim: 'determinationVerbatim',
-          determinedByAgentText: 'determinedByAgentText',
-          isCurrentDetermination: true,
-          remarks: 'remarks',
-          taxon: {
-            id: '2367',
-            type: 'taxon',
-          },
-        },
-      ],
     },
     featureObservations: [
       {

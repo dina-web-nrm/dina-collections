@@ -722,6 +722,12 @@
       "lid": {
         "type": "string"
       },
+      "determinations": {
+        "type": "array",
+        "items": {
+          "$ref": "lid"
+        }
+      },
       "taxonInformation": {
         "$ref": "lid"
       },
@@ -983,12 +989,6 @@
       },
       "taxonRemarks": {
         "type": "string"
-      },
-      "determinations": {
-        "type": "array",
-        "items": {
-          "$ref": "lid"
-        }
       }
     },
     "description": "### Definition\n\nThe taxon to which an individual is currently assigned according to a local classification.\n",

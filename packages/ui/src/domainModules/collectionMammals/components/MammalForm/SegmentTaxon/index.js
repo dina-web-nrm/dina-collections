@@ -24,6 +24,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector, specimenId }) => {
   return {
+    determinations: formValueSelector(state, 'determinations'),
     hasSpecimen: !!(
       specimenId && specimenSelectors.getSpecimen(state, specimenId)
     ),
@@ -34,6 +35,15 @@ const mapStateToProps = (state, { formValueSelector, specimenId }) => {
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
+  determinations: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.string,
+      determinedByAgentText: PropTypes.string,
+      isCurrentDetermination: PropTypes.bool,
+      remarks: PropTypes.string,
+      taxonNameStandardized: PropTypes.string,
+    })
+  ).isRequired,
   editMode: PropTypes.bool.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
@@ -42,32 +52,22 @@ const propTypes = {
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   taxonInformation: PropTypes.shape({
     curatorialName: PropTypes.string,
-    determinations: PropTypes.arrayOf(
-      PropTypes.shape({
-        date: PropTypes.string,
-        determinedByAgentText: PropTypes.string,
-        isCurrentDetermination: PropTypes.bool,
-        remarks: PropTypes.string,
-        taxonNameStandardized: PropTypes.string,
-      })
-    ).isRequired,
   }),
 }
 const defaultProps = {
-  taxonInformation: { determinations: [] },
+  taxonInformation: {},
 }
 
 const SegmentDeterminations = ({
   changeFieldValue,
+  determinations,
   editMode,
   formValueSelector,
   getPath,
   hasSpecimen,
   isSmallScreen,
   removeArrayFieldByIndex,
-  taxonInformation,
 }) => {
-  const { determinations } = taxonInformation
   const renderAccordion = !editMode || (editMode && hasSpecimen)
 
   log.render()
@@ -83,7 +83,7 @@ const SegmentDeterminations = ({
               component={Input}
               label="Curatorial name"
               module="collectionMammals"
-              name={getPath('curatorialName')}
+              name={getPath('taxonInformation.curatorialName')}
               type="text"
             />
           </Grid.Column>
@@ -95,7 +95,7 @@ const SegmentDeterminations = ({
               component={Input}
               label="Taxon remarks"
               module="collectionMammals"
-              name={getPath('taxonRemarks')}
+              name={getPath('taxonInformation.taxonRemarks')}
               type="text"
             />
           </Grid.Column>
@@ -135,10 +135,7 @@ const SegmentDeterminations = ({
           <Button
             onClick={event => {
               event.preventDefault()
-              changeFieldValue(
-                `taxonInformation.determinations.${determinations.length}`,
-                {}
-              )
+              changeFieldValue(`determinations.${determinations.length}`, {})
             }}
           >
             <ModuleTranslate scope="determination" textKey="addDetermination" />
@@ -152,9 +149,6 @@ const SegmentDeterminations = ({
 SegmentDeterminations.propTypes = propTypes
 SegmentDeterminations.defaultProps = defaultProps
 
-export default compose(
-  connect(mapStateToProps),
-  pathBuilder({
-    name: 'taxonInformation',
-  })
-)(SegmentDeterminations)
+export default compose(connect(mapStateToProps), pathBuilder())(
+  SegmentDeterminations
+)

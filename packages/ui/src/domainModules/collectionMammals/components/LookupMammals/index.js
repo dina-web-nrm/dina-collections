@@ -44,19 +44,18 @@ const propTypes = {
   push: PropTypes.func.isRequired,
   result: PropTypes.arrayOf(
     PropTypes.shape({
+      determinations: PropTypes.arrayOf(
+        PropTypes.shape({
+          isCurrentDetermination: PropTypes.bool.isRequired,
+        })
+      ).isRequired,
       identifiers: PropTypes.arrayOf(
         PropTypes.shape({
           identifierType: PropTypes.string.isRequired,
           value: PropTypes.string.isRequired,
         }).isRequired
       ),
-      taxonInformation: PropTypes.shape({
-        determinations: PropTypes.arrayOf(
-          PropTypes.shape({
-            isCurrentDetermination: PropTypes.bool.isRequired,
-          }).isRequired
-        ).isRequired,
-      }),
+      taxonInformation: PropTypes.object.isRequired,
     })
   ).isRequired,
   searchParameters: PropTypes.shape({
@@ -145,21 +144,10 @@ class LookupMammals extends Component {
                     ({ identifierType }) => identifierType === 'catalogNumber'
                   ) || null
 
-                // const { taxon } =
-                //   (taxonInformation &&
-                //     taxonInformation.determinations &&
-                //     taxonInformation.determinations.length &&
-                //     (taxonInformation.determinations.find(
-                //       ({ isCurrentDetermination }) => isCurrentDetermination
-                //     ) ||
-                //       taxonInformation.determinations[0])) ||
-                //   {}
-
                 const tableValues = {
                   catalogNumber:
                     catalogNumberIdentifier && catalogNumberIdentifier.value,
                   id,
-                  // taxonNameStandardized: taxon && taxon.scientificName,
                 }
 
                 return (

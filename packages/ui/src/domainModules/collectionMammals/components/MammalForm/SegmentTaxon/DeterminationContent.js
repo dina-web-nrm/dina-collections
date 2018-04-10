@@ -161,10 +161,7 @@ class DeterminationContent extends Component {
               onClick={event => {
                 event.preventDefault()
                 handleSetInactive(index)
-                removeArrayFieldByIndex(
-                  'taxonInformation.determinations',
-                  index
-                )
+                removeArrayFieldByIndex('determinations', index)
               }}
             >
               {moduleTranslate({ textKey: 'remove' })}
@@ -196,10 +193,7 @@ class DeterminationContent extends Component {
                     event.preventDefault()
                     this.handleCloseRemovePopup()
                     handleSetInactive(index)
-                    removeArrayFieldByIndex(
-                      'taxonInformation.determinations',
-                      index
-                    )
+                    removeArrayFieldByIndex('determinations', index)
                   }}
                 >
                   {moduleTranslate({ textKey: 'remove' })}

@@ -81,6 +81,6 @@ export default compose(
   }),
   connect(mapStateToProps),
   pathBuilder({
-    name: 'taxonInformation.determinations',
+    name: 'determinations',
   })
 )(DeterminationContent)

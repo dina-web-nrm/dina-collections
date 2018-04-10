@@ -1,5 +1,6 @@
 import denormalizeSpecimen from 'common/es5/normalize/denormalizeSpecimen'
 import transformTaxonInformation from './transformTaxonInformation'
+import transformDeterminations from './transformDeterminations'
 import transformFeatureObservations from './transformFeatureObservations'
 import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
@@ -21,6 +22,9 @@ export default function transformInput({
   const taxonInformation = transformTaxonInformation(
     attributes.taxonInformation
   )
+
+  const determinations = transformDeterminations(attributes.determinations)
+
   const featureObservations = transformFeatureObservations({
     featureObservations: attributes.featureObservations,
     featureTypes,
@@ -40,6 +44,7 @@ export default function transformInput({
     ...attributes,
     collectingInformation,
     collectionItems,
+    determinations,
     featureObservations,
     identifiers,
     taxonInformation,

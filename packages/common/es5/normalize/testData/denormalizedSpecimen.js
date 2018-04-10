@@ -4,18 +4,17 @@ module.exports = {
   id: '1234',
   type: 'specimen',
   individual: {
-    taxonInformation: {
-      determinations: [{
-        determinationVerbatim: 'determinationVerbatim',
-        determinedByAgentText: 'determinedByAgentText',
-        isCurrentDetermination: true,
-        remarks: 'remarks',
-        taxon: {
-          id: '2367',
-          type: 'taxon'
-        }
-      }]
-    },
+    determinations: [{
+      determinationVerbatim: 'determinationVerbatim',
+      determinedByAgentText: 'determinedByAgentText',
+      isCurrentDetermination: true,
+      remarks: 'remarks',
+      taxon: {
+        id: '2367',
+        type: 'taxon'
+      }
+    }],
+    taxonInformation: {},
     featureObservations: [{
       featureObservationAgent: 'featureObservationAgent',
       featureObservationText: '21',
