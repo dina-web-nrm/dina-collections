@@ -8,7 +8,7 @@ import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { StorageLocationSearch } from 'domainModules/storage/components'
-import { createGetDistinguishedUnitTypeById } from 'dataModules/curatedListService/higherOrderComponents'
+import { createGetPreparationTypeById } from 'dataModules/curatedListService/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
 import {
   SKELETON,
@@ -22,13 +22,11 @@ const log = createLog(
   'modules:collectionMammals:MammalForm:PhysicalObjectContent'
 )
 
-const mapStateToProps = (state, { distinguishedUnitType, category }) => {
+const mapStateToProps = (state, { preparationType, category }) => {
   return {
-    distinguishedUnitTypeOptions: curatedListSelectors.getDistinguishedUnitTypeOptions(
+    preparationTypeOptions: curatedListSelectors.getPreparationTypeOptions(
       state,
-      (distinguishedUnitType && distinguishedUnitType.category) ||
-        category ||
-        'undefined'
+      (preparationType && preparationType.category) || category || 'undefined'
     ),
   }
 }
@@ -36,27 +34,27 @@ const mapStateToProps = (state, { distinguishedUnitType, category }) => {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.array,
-  distinguishedUnitType: PropTypes.shape({
-    category: PropTypes.oneOf([SKELETON, SKIN, WET_PREPARATION]),
-  }),
-  distinguishedUnitTypeOptions: PropTypes.array,
   getPath: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
+  preparationType: PropTypes.shape({
+    category: PropTypes.oneOf([SKELETON, SKIN, WET_PREPARATION]),
+  }),
+  preparationTypeOptions: PropTypes.array,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
   curatorialAssessments: undefined,
-  distinguishedUnitType: undefined,
-  distinguishedUnitTypeOptions: [],
+  preparationType: undefined,
+  preparationTypeOptions: [],
 }
 
 function PhysicalObjectContent({
-  distinguishedUnitType,
+  preparationType,
   changeFieldValue,
   curatorialAssessments,
-  distinguishedUnitTypeOptions,
+  preparationTypeOptions,
   getPath,
   i18n: { moduleTranslate },
   removeArrayFieldByIndex,
@@ -70,13 +68,13 @@ function PhysicalObjectContent({
             autoComplete="off"
             component={DropdownSearch}
             label={moduleTranslate({
-              textKey: `preparationType.${(distinguishedUnitType &&
-                distinguishedUnitType.category) ||
+              textKey: `preparationType.${(preparationType &&
+                preparationType.category) ||
                 'undefined'}`,
             })}
             module="collectionMammals"
-            name={getPath('distinguishedUnitType.id')}
-            options={distinguishedUnitTypeOptions}
+            name={getPath('preparationType.id')}
+            options={preparationTypeOptions}
             type="dropdown-search-local"
           />
         </Grid.Column>
@@ -118,11 +116,11 @@ PhysicalObjectContent.propTypes = propTypes
 PhysicalObjectContent.defaultProps = defaultProps
 
 export default compose(
-  createGetDistinguishedUnitTypeById('distinguishedUnitTypeId'),
+  createGetPreparationTypeById('preparationTypeId'),
   connect(mapStateToProps),
   withI18n({
     module: 'collectionMammals',
-    scope: 'distinguishedUnits',
+    scope: 'collectionItems',
   }),
   pathBuilder()
 )(PhysicalObjectContent)

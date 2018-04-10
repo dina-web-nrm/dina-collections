@@ -28,8 +28,8 @@
     "description": {
       "type": "string"
     },
-    "distinguishedUnitType": {
-      "$ref": "__ROOT__distinguishedUnitType",
+    "preparationType": {
+      "$ref": "__ROOT__preparationType",
       "x-reference-type": "external"
     },
     "id": {

@@ -1,11 +1,11 @@
-const createDistinguishedUnitTypeRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const createPreparationTypeRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
   basePath: '/api/curatedList/v01',
   operations: [
     {
       exampleRequests: {
-        primary: createDistinguishedUnitTypeRequestSuccess,
+        primary: createPreparationTypeRequestSuccess,
       },
       type: 'create',
     },
@@ -20,5 +20,5 @@ module.exports = {
     },
   ],
 
-  resource: 'distinguishedUnitType',
+  resource: 'preparationType',
 }

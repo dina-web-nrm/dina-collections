@@ -43,7 +43,7 @@
           "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
         }
       ],
-      "distinguishedUnits": [
+      "collectionItems": [
         {
           "alternateIdentifiersText": "alternateIdentifiersText",
           "physicalUnit": {
@@ -136,7 +136,7 @@
         {
           "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
           "featureObservations": ["eed22ecc-7927-4b32-ae36-8e4e1dd465a8"],
-          "distinguishedUnits": ["af80e78b-c61e-485f-80a8-06d237400583"],
+          "collectionItems": ["af80e78b-c61e-485f-80a8-06d237400583"],
           "identifiers": ["9fc8671a-c801-4e62-b0b4-9a946be2ba09"],
           "individualCircumstances": ["44ab19bf-4328-42d3-9f8e-c88854847234"],
           "lid": "836625c3-a049-4323-8b52-4bc425f5be04"

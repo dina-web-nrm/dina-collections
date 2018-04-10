@@ -1,2 +1,2 @@
-exports.distinguishedUnitType = require('./distinguishedUnitType')
+exports.preparationType = require('./preparationType')
 exports.featureType = require('./featureType')

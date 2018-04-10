@@ -28,7 +28,7 @@ module.exports = {
         methodText: 'methodText',
       },
     ],
-    distinguishedUnits: [
+    collectionItems: [
       {
         alternateIdentifiersText: 'alternateIdentifiersText',
         physicalUnit: {

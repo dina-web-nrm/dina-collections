@@ -4,10 +4,10 @@
     "id": {
       "type": "string"
     },
-    "distinguishedUnits": {
+    "collectionItems": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__distinguishedUnit"
+        "$ref": "__ROOT__collectionItem"
       }
     },
     "normalStorageLocationText": {

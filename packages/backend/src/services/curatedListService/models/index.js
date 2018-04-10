@@ -10,10 +10,10 @@ exports.featureType = function featureType({ sequelize }) {
   })
 }
 
-exports.distinguishedUnitType = function distinguishedUnitType({ sequelize }) {
+exports.preparationType = function preparationType({ sequelize }) {
   return createModel({
-    name: 'DistinguishedUnitType',
-    schemaModelName: 'distinguishedUnitType',
+    name: 'PreparationType',
+    schemaModelName: 'preparationType',
     schemaVersion: '1.0.1',
     sequelize,
   })

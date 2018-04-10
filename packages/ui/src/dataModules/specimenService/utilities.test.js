@@ -3,14 +3,14 @@ import { buildSpecimenBody, getCatalogNumberFromIdentifiers } from './utilities'
 describe('dataModules/specimenService/utilities', () => {
   describe('buildSpecimenBody', () => {
     const curatedLocalities = []
-    const distinguishedUnitTypes = {
+    const preparationTypes = {
       '1': {
         id: '1',
-        type: 'distinguishedUnitType',
+        type: 'preparationType',
       },
       '2': {
         id: '2',
-        type: 'distinguishedUnitType',
+        type: 'preparationType',
       },
     }
     const featureTypes = {
@@ -24,13 +24,8 @@ describe('dataModules/specimenService/utilities', () => {
       },
     }
 
-    const distinguishedUnits = [
+    const collectionItems = [
       {
-        distinguishedUnitType: {
-          category: 'skin',
-          id: '1',
-          type: 'distinguishedUnitType',
-        },
         physicalUnit: {
           storageLocation: {
             id: '1',
@@ -38,19 +33,24 @@ describe('dataModules/specimenService/utilities', () => {
             type: 'storageLocation',
           },
         },
+        preparationType: {
+          category: 'skin',
+          id: '1',
+          type: 'preparationType',
+        },
       },
       {
-        distinguishedUnitType: {
-          category: 'skeleton',
-          id: '2',
-          type: 'distinguishedUnitType',
-        },
         physicalUnit: {
           storageLocation: {
             id: '2',
             name: 'bone room',
             type: 'storageLocation',
           },
+        },
+        preparationType: {
+          category: 'skeleton',
+          id: '2',
+          type: 'preparationType',
         },
       },
     ]
@@ -139,11 +139,11 @@ describe('dataModules/specimenService/utilities', () => {
 
     const testValue = buildSpecimenBody({
       curatedLocalities,
-      distinguishedUnitTypes,
       featureTypes,
+      preparationTypes,
       savedPhysicalUnits,
       specimen: {
-        distinguishedUnits,
+        collectionItems,
         individual,
       },
       storageLocations,
@@ -153,13 +153,8 @@ describe('dataModules/specimenService/utilities', () => {
     const expectedResult = {
       data: {
         attributes: {
-          distinguishedUnits: [
+          collectionItems: [
             {
-              distinguishedUnitType: {
-                category: 'skin',
-                id: '1',
-                type: 'distinguishedUnitType',
-              },
               physicalUnit: {
                 id: '1',
                 storageLocation: {
@@ -168,13 +163,13 @@ describe('dataModules/specimenService/utilities', () => {
                 },
                 type: 'physicalUnit',
               },
+              preparationType: {
+                category: 'skin',
+                id: '1',
+                type: 'preparationType',
+              },
             },
             {
-              distinguishedUnitType: {
-                category: 'skeleton',
-                id: '2',
-                type: 'distinguishedUnitType',
-              },
               physicalUnit: {
                 id: '2',
                 storageLocation: {
@@ -182,6 +177,11 @@ describe('dataModules/specimenService/utilities', () => {
                   type: 'storageLocation',
                 },
                 type: 'physicalUnit',
+              },
+              preparationType: {
+                category: 'skeleton',
+                id: '2',
+                type: 'preparationType',
               },
             },
           ],
@@ -193,14 +193,14 @@ describe('dataModules/specimenService/utilities', () => {
           curatedLocalities: {
             data: curatedLocalities,
           },
-          distinguishedUnitTypes: {
-            data: distinguishedUnitTypes,
-          },
           featureTypes: {
             data: featureTypes,
           },
           physicalUnits: {
             data: cleanedPhysicalUnits,
+          },
+          preparationTypes: {
+            data: preparationTypes,
           },
           storageLocations: {
             data: storageLocations,

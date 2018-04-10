@@ -16,9 +16,9 @@ import {
 export default function createSpecimen(
   {
     curatedLocalities = [],
-    distinguishedUnitTypes = [],
     featureTypes = [],
     physicalUnits = [],
+    preparationTypes = [],
     specimen,
     storageLocations = [],
     taxa = [],
@@ -30,10 +30,10 @@ export default function createSpecimen(
   const meta = {
     catalogNumber: getCatalogNumberFromIdentifiers(individual.identifiers),
     curatedLocalities,
-    distinguishedUnitTypes,
     featureTypes,
     individual,
     physicalUnits,
+    preparationTypes,
     storageLocations,
     taxa,
   }
@@ -46,8 +46,8 @@ export default function createSpecimen(
     ).then(savedPhysicalUnits => {
       const body = buildSpecimenBody({
         curatedLocalities,
-        distinguishedUnitTypes,
         featureTypes,
+        preparationTypes,
         savedPhysicalUnits,
         specimen,
         storageLocations,

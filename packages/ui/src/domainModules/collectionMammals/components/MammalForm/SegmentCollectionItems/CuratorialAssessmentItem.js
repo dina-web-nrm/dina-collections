@@ -7,7 +7,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'distinguishedUnits',
+  scope: 'collectionItems',
 })
 
 const propTypes = {

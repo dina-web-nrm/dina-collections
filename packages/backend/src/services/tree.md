@@ -48,7 +48,7 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   └── resources
-│       ├── distinguishedUnitType
+│       ├── preparationType
 │       │   ├── index.js
 │       │   └── operations
 │       ├── featureType
@@ -166,7 +166,5 @@
 
 ## Links
 
-[root](../../tree.md)
-[src](../tree.md)
-[lib](../lib/tree.md)
+[root](../../tree.md) [src](../tree.md) [lib](../lib/tree.md)
 [apps](../apps/tree.md)

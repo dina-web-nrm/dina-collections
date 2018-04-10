@@ -1,9 +1,9 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getDistinguishedUnitType from './index'
+import getPreparationType from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType', () => {
+describe('dataModules/curatedListService/actionCreators/getPreparationType', () => {
   let store
   let apiClient
 
@@ -23,7 +23,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
   }`, () => {
     const id = '123'
 
-    const testAction = getDistinguishedUnitType({ id })
+    const testAction = getPreparationType({ id })
 
     const expectedAction = {
       meta: { id },
@@ -36,8 +36,8 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getDistinguishedUnitType`, () => {
-    const operationId = 'getDistinguishedUnitType'
+  it(`calls getPreparationType`, () => {
+    const operationId = 'getPreparationType'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -51,7 +51,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
       },
     })
 
-    const testAction = getDistinguishedUnitType({ id })
+    const testAction = getPreparationType({ id })
     const expectedCallParams = {
       pathParams: { id },
     }
@@ -68,7 +68,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getDistinguishedUnitType'
+    const operationId = 'getPreparationType'
     const id = '123'
     const mockResponse = {
       data: {
@@ -91,7 +91,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
       },
     })
 
-    const testAction = getDistinguishedUnitType({ id })
+    const testAction = getPreparationType({ id })
 
     const expectedFirstAction = {
       meta: { id },
@@ -119,7 +119,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_FAIL
   } without throwing error`, () => {
-    const operationId = 'getDistinguishedUnitType'
+    const operationId = 'getPreparationType'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -129,7 +129,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
       },
     })
 
-    const testAction = getDistinguishedUnitType({ id })
+    const testAction = getPreparationType({ id })
 
     const expectedFirstAction = {
       meta: { id },
@@ -157,7 +157,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_FAIL
   } and throws error`, () => {
-    const operationId = 'getDistinguishedUnitType'
+    const operationId = 'getPreparationType'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -167,7 +167,7 @@ describe('dataModules/curatedListService/actionCreators/getDistinguishedUnitType
       },
     })
 
-    const testAction = getDistinguishedUnitType({ id, throwError: true })
+    const testAction = getPreparationType({ id, throwError: true })
 
     const expectedFirstAction = {
       meta: { id },

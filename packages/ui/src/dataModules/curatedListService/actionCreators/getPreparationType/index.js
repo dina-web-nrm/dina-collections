@@ -7,9 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_DISTINGUISHED_UNIT_TYPE } from '../../endpoints'
 
-export default function getDistinguishedUnitType(
-  { id, throwError = false } = {}
-) {
+export default function getPreparationType({ id, throwError = false } = {}) {
   const pathParams = { id }
 
   return (dispatch, getState, { apiClient }) => {

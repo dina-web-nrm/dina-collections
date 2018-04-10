@@ -4,27 +4,27 @@ import {
   STORAGE_LOCATION,
 } from 'dataModules/storageService/constants'
 
-export default function transformDistinguishedUnits(distinguishedUnits = []) {
-  const distinguishedUnitTypes = []
+export default function transformCollectionItems(collectionItems = []) {
+  const preparationTypes = []
   const physicalUnits = []
   const storageLocations = []
 
-  const mappedDistinguishedUnits = distinguishedUnits.map(distinguishedUnit => {
-    const { distinguishedUnitType, physicalUnit } = distinguishedUnit
+  const mappedCollectionItems = collectionItems.map(collectionItem => {
+    const { preparationType, physicalUnit } = collectionItem
     const { storageLocation } = physicalUnit || {}
 
-    const mappedDistinguishedUnit = { ...distinguishedUnit }
+    const mappedCollectionItem = { ...collectionItem }
 
-    if (distinguishedUnitType) {
-      if (distinguishedUnitType.id) {
-        const mappedDistinguishedUnitType = {
-          id: distinguishedUnitType.id,
+    if (preparationType) {
+      if (preparationType.id) {
+        const mappedPreparationType = {
+          id: preparationType.id,
           type: DISTINGUISHED_UNIT_TYPE,
         }
-        distinguishedUnitTypes.push(mappedDistinguishedUnitType)
-        mappedDistinguishedUnit.distinguishedUnitType = mappedDistinguishedUnitType
+        preparationTypes.push(mappedPreparationType)
+        mappedCollectionItem.preparationType = mappedPreparationType
       } else {
-        delete mappedDistinguishedUnit.distinguishedUnitType
+        delete mappedCollectionItem.preparationType
       }
     }
 
@@ -37,7 +37,7 @@ export default function transformDistinguishedUnits(distinguishedUnits = []) {
           type: STORAGE_LOCATION,
         }
         storageLocations.push(mappedStorageLocation)
-        mappedDistinguishedUnit.physicalUnit.storageLocation = mappedStorageLocation
+        mappedCollectionItem.physicalUnit.storageLocation = mappedStorageLocation
       }
 
       const mappedPhysicalUnit = physicalUnit.id
@@ -54,16 +54,16 @@ export default function transformDistinguishedUnits(distinguishedUnits = []) {
       }
 
       physicalUnits.push(mappedPhysicalUnit)
-      mappedDistinguishedUnit.physicalUnit = mappedPhysicalUnit
+      mappedCollectionItem.physicalUnit = mappedPhysicalUnit
     }
 
-    return mappedDistinguishedUnit
+    return mappedCollectionItem
   })
 
   return {
-    distinguishedUnits: mappedDistinguishedUnits,
-    distinguishedUnitTypes,
+    collectionItems: mappedCollectionItems,
     physicalUnits,
+    preparationTypes,
     storageLocations,
   }
 }

@@ -9,10 +9,10 @@
 │   │   ├── createFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getDistinguishedUnitType
+│   │   ├── getPreparationType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getDistinguishedUnitTypes
+│   │   ├── getPreparationTypes
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── getFeatureType
@@ -35,8 +35,8 @@
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
-│   │   ├── createGetDistinguishedUnitTypeById.js
-│   │   ├── ensureAllDistinguishedUnitTypesFetched.js
+│   │   ├── createGetPreparationTypeById.js
+│   │   ├── ensureAllPreparationTypesFetched.js
 │   │   ├── ensureAllFeatureTypesFetched.js
 │   │   └── index.js
 │   ├── index.js
@@ -46,7 +46,7 @@
 │   │   ├── index.js
 │   │   ├── index.test.js
 │   │   └── resources
-│   │       ├── distinguishedUnitTypes
+│   │       ├── preparationTypes
 │   │       ├── featureTypes
 │   │       ├── index.js
 │   │       └── index.test.js
@@ -265,9 +265,6 @@
 
 ## Links
 
-[root](../../tree.md)
-[src](../tree.md)
-[apps](../apps/tree.md)
-[coreModules](../coreModules/tree.md)
-[domainModules](../domainModules/tree.md)
+[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
+[coreModules](../coreModules/tree.md) [domainModules](../domainModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

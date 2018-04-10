@@ -206,7 +206,7 @@
         "type": "string",
         "enum": [
           "featureType",
-          "distinguishedUnitType"
+          "preparationType"
         ]
       },
       "items": {
@@ -230,7 +230,7 @@
             "$ref": "featureType"
           },
           {
-            "$ref": "distinguishedUnitType"
+            "$ref": "preparationType"
           }
         ]
       }
@@ -239,29 +239,6 @@
     "x-modelType": "model",
     "description": "",
     "id": "curatedListType"
-  },
-  "distinguishedUnitType": {
-    "additionalProperties": false,
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "type": {
-        "type": "string"
-      },
-      "category": {
-        "type": "string",
-        "example": "skin"
-      },
-      "name": {
-        "type": "string",
-        "example": "hair, scales"
-      }
-    },
-    "x-category": "curatedListApi",
-    "x-modelType": "model",
-    "description": "",
-    "id": "distinguishedUnitType"
   },
   "featureType": {
     "additionalProperties": false,
@@ -307,6 +284,29 @@
     "x-category": "curatedListApi",
     "x-modelType": "model",
     "id": "featureType"
+  },
+  "preparationType": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string",
+        "example": "skin"
+      },
+      "name": {
+        "type": "string",
+        "example": "hair, scales"
+      }
+    },
+    "x-category": "curatedListApi",
+    "x-modelType": "model",
+    "description": "",
+    "id": "preparationType"
   },
   "selectableMethod": {
     "additionalProperties": false,
@@ -581,6 +581,53 @@
     "description": "",
     "id": "collectingEvent"
   },
+  "collectionItem": {
+    "additionalProperties": false,
+    "properties": {
+      "lid": {
+        "type": "string"
+      },
+      "alternateIdentifiersText": {
+        "type": "string",
+        "example": "Skin complete, prepared"
+      },
+      "identifiers": {
+        "type": "array",
+        "items": {
+          "$ref": "lid"
+        }
+      },
+      "collectingCircumstance": {
+        "$ref": "lid"
+      },
+      "curatorialAssessments": {
+        "type": "array",
+        "items": {
+          "$ref": "curatorialAssessment"
+        }
+      },
+      "description": {
+        "type": "string"
+      },
+      "preparationType": {
+        "$ref": "externalModelReference"
+      },
+      "id": {
+        "type": "string"
+      },
+      "physicalUnitText": {
+        "type": "string",
+        "example": "Skin complete, prepared"
+      },
+      "physicalUnit": {
+        "$ref": "externalModelReference"
+      }
+    },
+    "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "collectionItem"
+  },
   "curatorialAssessment": {
     "additionalProperties": false,
     "properties": {
@@ -669,53 +716,6 @@
     "x-category": "specimenApi",
     "x-modelType": "model",
     "id": "determination"
-  },
-  "distinguishedUnit": {
-    "additionalProperties": false,
-    "properties": {
-      "lid": {
-        "type": "string"
-      },
-      "alternateIdentifiersText": {
-        "type": "string",
-        "example": "Skin complete, prepared"
-      },
-      "identifiers": {
-        "type": "array",
-        "items": {
-          "$ref": "lid"
-        }
-      },
-      "collectingCircumstance": {
-        "$ref": "lid"
-      },
-      "curatorialAssessments": {
-        "type": "array",
-        "items": {
-          "$ref": "curatorialAssessment"
-        }
-      },
-      "description": {
-        "type": "string"
-      },
-      "distinguishedUnitType": {
-        "$ref": "externalModelReference"
-      },
-      "id": {
-        "type": "string"
-      },
-      "physicalUnitText": {
-        "type": "string",
-        "example": "Skin complete, prepared"
-      },
-      "physicalUnit": {
-        "$ref": "externalModelReference"
-      }
-    },
-    "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
-    "x-category": "specimenApi",
-    "x-modelType": "model",
-    "id": "distinguishedUnit"
   },
   "event": {
     "additionalProperties": false,
@@ -811,7 +811,7 @@
           "$ref": "lid"
         }
       },
-      "distinguishedUnits": {
+      "collectionItems": {
         "type": "array",
         "items": {
           "$ref": "lid"
@@ -1005,10 +1005,10 @@
       "individual": {
         "$ref": "individual"
       },
-      "distinguishedUnits": {
+      "collectionItems": {
         "type": "array",
         "items": {
-          "$ref": "distinguishedUnit"
+          "$ref": "collectionItem"
         }
       },
       "id": {
@@ -1097,10 +1097,10 @@
       "id": {
         "type": "string"
       },
-      "distinguishedUnits": {
+      "collectionItems": {
         "type": "array",
         "items": {
-          "$ref": "distinguishedUnit"
+          "$ref": "collectionItem"
         }
       },
       "normalStorageLocationText": {
@@ -1717,21 +1717,21 @@
     "x-examples": {},
     "description": ""
   },
-  "createDistinguishedUnitTypeResponse": {
+  "createPreparationTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "distinguishedUnitType"
+            "$ref": "preparationType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "distinguishedUnitType",
+            "default": "preparationType",
             "type": "string"
           }
         },
@@ -1743,7 +1743,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
+            "example": "https://domain/api/curatedList/v01/preparationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1759,21 +1759,21 @@
     "x-examples": {},
     "description": ""
   },
-  "updateDistinguishedUnitTypeResponse": {
+  "updatePreparationTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "distinguishedUnitType"
+            "$ref": "preparationType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "distinguishedUnitType",
+            "default": "preparationType",
             "type": "string"
           }
         },
@@ -1785,7 +1785,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
+            "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1801,21 +1801,21 @@
     "x-examples": {},
     "description": ""
   },
-  "getDistinguishedUnitTypeResponse": {
+  "getPreparationTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "distinguishedUnitType"
+            "$ref": "preparationType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "distinguishedUnitType",
+            "default": "preparationType",
             "type": "string"
           }
         },
@@ -1827,7 +1827,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
+            "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1843,7 +1843,7 @@
     "x-examples": {},
     "description": ""
   },
-  "getDistinguishedUnitTypesResponse": {
+  "getPreparationTypesResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -1852,14 +1852,14 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "distinguishedUnitType"
+              "$ref": "preparationType"
             },
             "id": {
               "example": "1234",
               "type": "string"
             },
             "type": {
-              "default": "distinguishedUnitType",
+              "default": "preparationType",
               "type": "string"
             }
           },
@@ -1873,7 +1873,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
+            "example": "https://domain/api/curatedList/v01/preparationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -5578,7 +5578,7 @@
     },
     "description": ""
   },
-  "createDistinguishedUnitTypeRequest": {
+  "createPreparationTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -5594,14 +5594,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "distinguishedUnitType",
+            "default": "preparationType",
             "enum": [
-              "distinguishedUnitType"
+              "preparationType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "distinguishedUnitType"
+            "$ref": "preparationType"
           }
         }
       }
@@ -5609,7 +5609,7 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "distinguishedUnitType",
+          "type": "preparationType",
           "attributes": {
             "category": "skin",
             "name": "preparation name"
@@ -5619,7 +5619,7 @@
     },
     "example": {
       "data": {
-        "type": "distinguishedUnitType",
+        "type": "preparationType",
         "attributes": {
           "category": "skin",
           "name": "preparation name"
@@ -5628,7 +5628,7 @@
     },
     "description": ""
   },
-  "updateDistinguishedUnitTypeRequest": {
+  "updatePreparationTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -5644,14 +5644,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "distinguishedUnitType",
+            "default": "preparationType",
             "enum": [
-              "distinguishedUnitType"
+              "preparationType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "distinguishedUnitType"
+            "$ref": "preparationType"
           }
         }
       }
@@ -6302,7 +6302,7 @@
                 "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
               }
             ],
-            "distinguishedUnits": [
+            "collectionItems": [
               {
                 "alternateIdentifiersText": "alternateIdentifiersText",
                 "physicalUnit": {
@@ -6397,7 +6397,7 @@
                 "featureObservations": [
                   "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
                 ],
-                "distinguishedUnits": [
+                "collectionItems": [
                   "af80e78b-c61e-485f-80a8-06d237400583"
                 ],
                 "identifiers": [
@@ -6480,7 +6480,7 @@
               "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
             }
           ],
-          "distinguishedUnits": [
+          "collectionItems": [
             {
               "alternateIdentifiersText": "alternateIdentifiersText",
               "physicalUnit": {
@@ -6575,7 +6575,7 @@
               "featureObservations": [
                 "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
               ],
-              "distinguishedUnits": [
+              "collectionItems": [
                 "af80e78b-c61e-485f-80a8-06d237400583"
               ],
               "identifiers": [

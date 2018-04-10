@@ -8,7 +8,7 @@
       "type": "string",
       "enum": [
         "featureType",
-        "distinguishedUnitType"
+        "preparationType"
       ]
     },
     "items": {

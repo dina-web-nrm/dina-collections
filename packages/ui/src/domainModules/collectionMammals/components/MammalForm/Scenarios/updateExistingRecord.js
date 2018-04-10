@@ -1,5 +1,5 @@
 const individual = {
-  distinguishedUnits: [
+  collectionItems: [
     {
       physicalUnit: {
         id: '1',
@@ -65,7 +65,7 @@ const mutations = [
 ]
 const expectedOutput = {
   curatedLocalities: [],
-  distinguishedUnitTypes: [],
+
   featureTypes: [
     {
       id: '22',
@@ -78,9 +78,10 @@ const expectedOutput = {
       type: 'physicalUnit',
     },
   ],
+  preparationTypes: [],
   specimen: {
     individual: {
-      distinguishedUnits: [
+      collectionItems: [
         {
           physicalUnit: {
             id: '1',

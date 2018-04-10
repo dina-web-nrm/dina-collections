@@ -29,7 +29,7 @@ module.exports = {
       },
       methodText: 'methodText'
     }],
-    distinguishedUnits: [{
+    collectionItems: [{
       lid: '69d0e98a-b038-4f4d-9770-cb8c8aaa68a5',
       alternateIdentifiersText: 'alternateIdentifiersText',
       physicalUnit: {

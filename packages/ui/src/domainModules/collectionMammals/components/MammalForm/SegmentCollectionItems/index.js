@@ -9,7 +9,7 @@ import { Accordion } from 'coreModules/commonUi/components'
 import { FIRST_EXPANDED, ALL_COLLAPSED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
-import { ensureAllDistinguishedUnitTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
+import { ensureAllPreparationTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { getStorageLocations } from 'dataModules/storageService/actionCreators'
 import {
@@ -21,40 +21,40 @@ import PhysicalObjectContent from './PhysicalObjectContent'
 import PhysicalObjectTitle from './PhysicalObjectTitle'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentDistinguishedUnits'
+  'modules:collectionMammals:MammalForm:SegmentCollectionItems'
 )
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'distinguishedUnits',
+  scope: 'collectionItems',
 })
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    distinguishedUnits: formValueSelector(state, 'distinguishedUnits'),
+    collectionItems: formValueSelector(state, 'collectionItems'),
   }
 }
 const mapDispatchToProps = { getStorageLocations }
 
 const propTypes = {
-  allDistinguishedUnitTypesFetched: PropTypes.bool.isRequired,
+  allPreparationTypesFetched: PropTypes.bool.isRequired,
   allStorageLocationsFetched: PropTypes.bool.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
-  distinguishedUnits: PropTypes.array,
+  collectionItems: PropTypes.array,
   editMode: PropTypes.bool.isRequired,
   getStorageLocations: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  distinguishedUnits: [],
+  collectionItems: [],
 }
 
-class SegmentDistinguishedUnits extends PureComponent {
+class SegmentCollectionItems extends PureComponent {
   render() {
     const {
-      allDistinguishedUnitTypesFetched,
+      allPreparationTypesFetched,
       allStorageLocationsFetched,
       changeFieldValue,
-      distinguishedUnits,
+      collectionItems,
       editMode,
       removeArrayFieldByIndex,
     } = this.props
@@ -62,31 +62,28 @@ class SegmentDistinguishedUnits extends PureComponent {
     return (
       <Segment
         color="green"
-        loading={
-          !(allStorageLocationsFetched && allDistinguishedUnitTypesFetched)
-        }
+        loading={!(allStorageLocationsFetched && allPreparationTypesFetched)}
       >
         <Header size="medium">
           <ModuleTranslate textKey="physicalObjects" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
-          {distinguishedUnits &&
-            distinguishedUnits.length > 0 && (
+          {collectionItems &&
+            collectionItems.length > 0 && (
               <Grid.Column computer={16}>
                 <Accordion
                   initialActiveMode={editMode ? ALL_COLLAPSED : FIRST_EXPANDED}
-                  items={distinguishedUnits}
+                  items={collectionItems}
                   renderContent={props => {
                     return (
                       <PhysicalObjectContent
                         category={
-                          props.distinguishedUnitType &&
-                          props.distinguishedUnitType.category
+                          props.preparationType &&
+                          props.preparationType.category
                         }
                         changeFieldValue={changeFieldValue}
-                        distinguishedUnitTypeId={
-                          props.distinguishedUnitType &&
-                          props.distinguishedUnitType.id
+                        preparationTypeId={
+                          props.preparationType && props.preparationType.id
                         }
                         removeArrayFieldByIndex={removeArrayFieldByIndex}
                         {...props}
@@ -96,12 +93,10 @@ class SegmentDistinguishedUnits extends PureComponent {
                   renderTitle={props => (
                     <PhysicalObjectTitle
                       category={
-                        props.distinguishedUnitType &&
-                        props.distinguishedUnitType.category
+                        props.preparationType && props.preparationType.category
                       }
-                      distinguishedUnitTypeId={
-                        props.distinguishedUnitType &&
-                        props.distinguishedUnitType.id
+                      preparationTypeId={
+                        props.preparationType && props.preparationType.id
                       }
                       {...props}
                     />
@@ -116,8 +111,8 @@ class SegmentDistinguishedUnits extends PureComponent {
                 onClick={event => {
                   event.preventDefault()
                   changeFieldValue(
-                    `distinguishedUnits.${distinguishedUnits.length}`,
-                    { distinguishedUnitType: { category: SKELETON } }
+                    `collectionItems.${collectionItems.length}`,
+                    { preparationType: { category: SKELETON } }
                   )
                 }}
               >
@@ -128,8 +123,8 @@ class SegmentDistinguishedUnits extends PureComponent {
                 onClick={event => {
                   event.preventDefault()
                   changeFieldValue(
-                    `distinguishedUnits.${distinguishedUnits.length}`,
-                    { distinguishedUnitType: { category: SKIN } }
+                    `collectionItems.${collectionItems.length}`,
+                    { preparationType: { category: SKIN } }
                   )
                 }}
               >
@@ -140,8 +135,8 @@ class SegmentDistinguishedUnits extends PureComponent {
                 onClick={event => {
                   event.preventDefault()
                   changeFieldValue(
-                    `distinguishedUnits.${distinguishedUnits.length}`,
-                    { distinguishedUnitType: { category: WET_PREPARATION } }
+                    `collectionItems.${collectionItems.length}`,
+                    { preparationType: { category: WET_PREPARATION } }
                   )
                 }}
               >
@@ -155,14 +150,14 @@ class SegmentDistinguishedUnits extends PureComponent {
   }
 }
 
-SegmentDistinguishedUnits.propTypes = propTypes
-SegmentDistinguishedUnits.defaultProps = defaultProps
+SegmentCollectionItems.propTypes = propTypes
+SegmentCollectionItems.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  ensureAllDistinguishedUnitTypesFetched(),
+  ensureAllPreparationTypesFetched(),
   ensureAllStorageLocationsFetched(),
   pathBuilder({
-    name: 'distinguishedUnits',
+    name: 'collectionItems',
   })
-)(SegmentDistinguishedUnits)
+)(SegmentCollectionItems)

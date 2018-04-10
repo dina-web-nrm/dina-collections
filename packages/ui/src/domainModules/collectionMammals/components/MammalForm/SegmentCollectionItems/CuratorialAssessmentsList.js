@@ -11,7 +11,7 @@ import CreateCuratorialAssessment from './CuratorialAssessmentForm/Create'
 import FieldsForTest from './CuratorialAssessmentForm/Test'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'distinguishedUnits',
+  scope: 'collectionItems',
 })
 
 const propTypes = {

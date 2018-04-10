@@ -1,7 +1,7 @@
 import normalizeSpecimen from 'common/es5/normalize/normalizeSpecimen'
 import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
-import transformDistinguishedUnits from './transformDistinguishedUnits'
+import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
@@ -26,11 +26,11 @@ export default function transformOutput(formData, normalize = true) {
   )
 
   const {
-    distinguishedUnits,
-    distinguishedUnitTypes,
+    collectionItems,
+    preparationTypes,
     physicalUnits,
     storageLocations,
-  } = transformDistinguishedUnits(formData.distinguishedUnits)
+  } = transformCollectionItems(formData.collectionItems)
 
   const {
     curatedLocalities,
@@ -39,7 +39,7 @@ export default function transformOutput(formData, normalize = true) {
 
   const individual = {
     ...formData,
-    distinguishedUnits,
+    collectionItems,
     featureObservations,
     identifiers,
     individualCircumstances,
@@ -56,9 +56,9 @@ export default function transformOutput(formData, normalize = true) {
 
   return {
     curatedLocalities,
-    distinguishedUnitTypes,
     featureTypes,
     physicalUnits,
+    preparationTypes,
     specimen,
     storageLocations,
     taxa,

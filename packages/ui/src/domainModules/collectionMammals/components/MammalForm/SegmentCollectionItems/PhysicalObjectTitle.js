@@ -5,12 +5,12 @@ import { compose } from 'redux'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import { Icon, Label } from 'semantic-ui-react'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { createGetDistinguishedUnitTypeById } from 'dataModules/curatedListService/higherOrderComponents'
+import { createGetPreparationTypeById } from 'dataModules/curatedListService/higherOrderComponents'
 import { createGetStorageLocationById } from 'dataModules/storageService/higherOrderComponents'
 import createLog from 'utilities/log'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'distinguishedUnits',
+  scope: 'collectionItems',
 })
 
 const log = createLog(
@@ -21,7 +21,7 @@ const propTypes = {
   active: PropTypes.bool.isRequired,
   category: PropTypes.string,
   curatorialAssessments: PropTypes.array,
-  distinguishedUnitType: PropTypes.shape({
+  preparationType: PropTypes.shape({
     category: PropTypes.string,
     name: PropTypes.string,
   }),
@@ -30,7 +30,7 @@ const propTypes = {
 const defaultProps = {
   category: undefined,
   curatorialAssessments: undefined,
-  distinguishedUnitType: undefined,
+  preparationType: undefined,
   storageLocation: undefined,
 }
 
@@ -38,7 +38,7 @@ function PhysicalObjectTitle({
   active,
   category,
   curatorialAssessments,
-  distinguishedUnitType,
+  preparationType,
   storageLocation,
 }) {
   if (active) {
@@ -59,23 +59,21 @@ function PhysicalObjectTitle({
         )
       }
       left={
-        distinguishedUnitType || category ? (
+        preparationType || category ? (
           <React.Fragment>
             <Icon name="dropdown" />
             <ModuleTranslate
               fallback={
-                (distinguishedUnitType && distinguishedUnitType.category) ||
-                category
+                (preparationType && preparationType.category) || category
               }
               textKey={
-                (distinguishedUnitType && distinguishedUnitType.category) ||
-                category
+                (preparationType && preparationType.category) || category
               }
             />
-            {distinguishedUnitType &&
-              distinguishedUnitType.name && (
+            {preparationType &&
+              preparationType.name && (
                 <span style={{ fontWeight: 'normal' }}>
-                  {` (${distinguishedUnitType.name})`}
+                  {` (${preparationType.name})`}
                 </span>
               )}
           </React.Fragment>
@@ -103,6 +101,6 @@ PhysicalObjectTitle.propTypes = propTypes
 PhysicalObjectTitle.defaultProps = defaultProps
 
 export default compose(
-  createGetDistinguishedUnitTypeById('distinguishedUnitTypeId'),
+  createGetPreparationTypeById('preparationTypeId'),
   createGetStorageLocationById('physicalUnit.storageLocation.id')
 )(PhysicalObjectTitle)

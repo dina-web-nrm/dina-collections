@@ -815,9 +815,9 @@
         ]
       }
     },
-    "/api/curatedList/v01/distinguishedUnitTypes": {
+    "/api/curatedList/v01/preparationTypes": {
       "post": {
-        "operationId": "createDistinguishedUnitType",
+        "operationId": "createPreparationType",
         "parameters": [
           {
             "in": "query",
@@ -842,7 +842,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/createDistinguishedUnitTypeRequest"
+                "$ref": "#/components/schemas/createPreparationTypeRequest"
               }
             }
           },
@@ -853,7 +853,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createDistinguishedUnitTypeResponse"
+                  "$ref": "#/components/schemas/createPreparationTypeResponse"
                 }
               }
             },
@@ -863,7 +863,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createDistinguishedUnitType-400"
+                  "$ref": "#/components/schemas/createPreparationType-400"
                 }
               }
             },
@@ -873,7 +873,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createDistinguishedUnitType-500"
+                  "$ref": "#/components/schemas/createPreparationType-500"
                 }
               }
             },
@@ -885,13 +885,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create distinguishedUnitType",
+        "summary": "Create preparationType",
         "tags": [
           "curatedListService"
         ]
       },
       "get": {
-        "operationId": "getDistinguishedUnitTypes",
+        "operationId": "getPreparationTypes",
         "parameters": [
           {
             "in": "query",
@@ -935,7 +935,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitTypesResponse"
+                  "$ref": "#/components/schemas/getPreparationTypesResponse"
                 }
               }
             },
@@ -945,7 +945,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitTypes-400"
+                  "$ref": "#/components/schemas/getPreparationTypes-400"
                 }
               }
             },
@@ -955,7 +955,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitTypes-500"
+                  "$ref": "#/components/schemas/getPreparationTypes-500"
                 }
               }
             },
@@ -967,20 +967,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find distinguishedUnitTypes",
+        "summary": "Find preparationTypes",
         "tags": [
           "curatedListService"
         ]
       }
     },
-    "/api/curatedList/v01/distinguishedUnitTypes/{id}": {
+    "/api/curatedList/v01/preparationTypes/{id}": {
       "patch": {
-        "operationId": "updateDistinguishedUnitType",
+        "operationId": "updatePreparationType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "distinguishedUnitType id",
+            "description": "preparationType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1010,7 +1010,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updateDistinguishedUnitTypeRequest"
+                "$ref": "#/components/schemas/updatePreparationTypeRequest"
               }
             }
           },
@@ -1021,7 +1021,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitTypeResponse"
+                  "$ref": "#/components/schemas/updatePreparationTypeResponse"
                 }
               }
             },
@@ -1031,7 +1031,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitType-400"
+                  "$ref": "#/components/schemas/updatePreparationType-400"
                 }
               }
             },
@@ -1041,7 +1041,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitType-404"
+                  "$ref": "#/components/schemas/updatePreparationType-404"
                 }
               }
             },
@@ -1051,7 +1051,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateDistinguishedUnitType-500"
+                  "$ref": "#/components/schemas/updatePreparationType-500"
                 }
               }
             },
@@ -1063,18 +1063,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates distinguishedUnitType",
+        "summary": "Updates preparationType",
         "tags": [
           "curatedListService"
         ]
       },
       "get": {
-        "operationId": "getDistinguishedUnitType",
+        "operationId": "getPreparationType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "distinguishedUnitType id",
+            "description": "preparationType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -1105,7 +1105,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitTypeResponse"
+                  "$ref": "#/components/schemas/getPreparationTypeResponse"
                 }
               }
             },
@@ -1115,7 +1115,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitType-400"
+                  "$ref": "#/components/schemas/getPreparationType-400"
                 }
               }
             },
@@ -1125,7 +1125,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitType-404"
+                  "$ref": "#/components/schemas/getPreparationType-404"
                 }
               }
             },
@@ -1135,7 +1135,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getDistinguishedUnitType-500"
+                  "$ref": "#/components/schemas/getPreparationType-500"
                 }
               }
             },
@@ -1147,7 +1147,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find distinguishedUnitType by id",
+        "summary": "Find preparationType by id",
         "tags": [
           "curatedListService"
         ]
@@ -5465,7 +5465,7 @@
             "type": "string",
             "enum": [
               "featureType",
-              "distinguishedUnitType"
+              "preparationType"
             ]
           },
           "items": {
@@ -5488,31 +5488,9 @@
                 "$ref": "#/components/schemas/featureType"
               },
               {
-                "$ref": "#/components/schemas/distinguishedUnitType"
+                "$ref": "#/components/schemas/preparationType"
               }
             ]
-          }
-        },
-        "x-category": "curatedListApi",
-        "x-modelType": "model",
-        "description": ""
-      },
-      "distinguishedUnitType": {
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string",
-            "example": "skin"
-          },
-          "name": {
-            "type": "string",
-            "example": "hair, scales"
           }
         },
         "x-category": "curatedListApi",
@@ -5562,6 +5540,28 @@
         "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
         "x-category": "curatedListApi",
         "x-modelType": "model"
+      },
+      "preparationType": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "example": "skin"
+          },
+          "name": {
+            "type": "string",
+            "example": "hair, scales"
+          }
+        },
+        "x-category": "curatedListApi",
+        "x-modelType": "model",
+        "description": ""
       },
       "selectableMethod": {
         "additionalProperties": false,
@@ -5827,6 +5827,52 @@
         "x-modelType": "model",
         "description": ""
       },
+      "collectionItem": {
+        "additionalProperties": false,
+        "properties": {
+          "lid": {
+            "type": "string"
+          },
+          "alternateIdentifiersText": {
+            "type": "string",
+            "example": "Skin complete, prepared"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/identifier"
+            }
+          },
+          "collectingCircumstance": {
+            "$ref": "#/components/schemas/collectingCircumstance"
+          },
+          "curatorialAssessments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/curatorialAssessment"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "preparationType": {
+            "$ref": "#/components/schemas/preparationType"
+          },
+          "id": {
+            "type": "string"
+          },
+          "physicalUnitText": {
+            "type": "string",
+            "example": "Skin complete, prepared"
+          },
+          "physicalUnit": {
+            "$ref": "#/components/schemas/physicalUnit"
+          }
+        },
+        "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n",
+        "x-category": "specimenApi",
+        "x-modelType": "model"
+      },
       "curatorialAssessment": {
         "additionalProperties": false,
         "properties": {
@@ -5910,52 +5956,6 @@
           }
         },
         "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
-      },
-      "distinguishedUnit": {
-        "additionalProperties": false,
-        "properties": {
-          "lid": {
-            "type": "string"
-          },
-          "alternateIdentifiersText": {
-            "type": "string",
-            "example": "Skin complete, prepared"
-          },
-          "identifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/identifier"
-            }
-          },
-          "collectingCircumstance": {
-            "$ref": "#/components/schemas/collectingCircumstance"
-          },
-          "curatorialAssessments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/curatorialAssessment"
-            }
-          },
-          "description": {
-            "type": "string"
-          },
-          "distinguishedUnitType": {
-            "$ref": "#/components/schemas/distinguishedUnitType"
-          },
-          "id": {
-            "type": "string"
-          },
-          "physicalUnitText": {
-            "type": "string",
-            "example": "Skin complete, prepared"
-          },
-          "physicalUnit": {
-            "$ref": "#/components/schemas/physicalUnit"
-          }
-        },
-        "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n### Note(s)\n\nThis should probably be renamed \"distinguishedUnit\".\n",
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
@@ -6051,10 +6051,10 @@
               "$ref": "#/components/schemas/identifier"
             }
           },
-          "distinguishedUnits": {
+          "collectionItems": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/distinguishedUnit"
+              "$ref": "#/components/schemas/collectionItem"
             }
           },
           "readOnly": {
@@ -6191,10 +6191,10 @@
           "individual": {
             "$ref": "#/components/schemas/individual"
           },
-          "distinguishedUnits": {
+          "collectionItems": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/distinguishedUnit"
+              "$ref": "#/components/schemas/collectionItem"
             }
           },
           "id": {
@@ -6281,10 +6281,10 @@
           "id": {
             "type": "string"
           },
-          "distinguishedUnits": {
+          "collectionItems": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/distinguishedUnit"
+              "$ref": "#/components/schemas/collectionItem"
             }
           },
           "normalStorageLocationText": {
@@ -7041,7 +7041,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "createDistinguishedUnitType-400": {
+      "createPreparationType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7068,7 +7068,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "createDistinguishedUnitType-500": {
+      "createPreparationType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7095,7 +7095,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updateDistinguishedUnitType-400": {
+      "updatePreparationType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7122,7 +7122,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updateDistinguishedUnitType-404": {
+      "updatePreparationType-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7146,7 +7146,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updateDistinguishedUnitType-500": {
+      "updatePreparationType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7173,7 +7173,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getDistinguishedUnitType-400": {
+      "getPreparationType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7197,7 +7197,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getDistinguishedUnitType-404": {
+      "getPreparationType-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7221,7 +7221,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getDistinguishedUnitType-500": {
+      "getPreparationType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7248,7 +7248,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getDistinguishedUnitTypes-400": {
+      "getPreparationTypes-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -7272,7 +7272,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getDistinguishedUnitTypes-500": {
+      "getPreparationTypes-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -10453,7 +10453,7 @@
         },
         "description": ""
       },
-      "createDistinguishedUnitTypeRequest": {
+      "createPreparationTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10469,14 +10469,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "distinguishedUnitType",
+                "default": "preparationType",
                 "enum": [
-                  "distinguishedUnitType"
+                  "preparationType"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitType"
+                "$ref": "#/components/schemas/preparationType"
               }
             }
           }
@@ -10484,7 +10484,7 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "distinguishedUnitType",
+              "type": "preparationType",
               "attributes": {
                 "category": "skin",
                 "name": "preparation name"
@@ -10494,7 +10494,7 @@
         },
         "example": {
           "data": {
-            "type": "distinguishedUnitType",
+            "type": "preparationType",
             "attributes": {
               "category": "skin",
               "name": "preparation name"
@@ -10503,7 +10503,7 @@
         },
         "description": ""
       },
-      "updateDistinguishedUnitTypeRequest": {
+      "updatePreparationTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -10519,14 +10519,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "distinguishedUnitType",
+                "default": "preparationType",
                 "enum": [
-                  "distinguishedUnitType"
+                  "preparationType"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitType"
+                "$ref": "#/components/schemas/preparationType"
               }
             }
           }
@@ -11177,7 +11177,7 @@
                     "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
                   }
                 ],
-                "distinguishedUnits": [
+                "collectionItems": [
                   {
                     "alternateIdentifiersText": "alternateIdentifiersText",
                     "physicalUnit": {
@@ -11272,7 +11272,7 @@
                     "featureObservations": [
                       "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
                     ],
-                    "distinguishedUnits": [
+                    "collectionItems": [
                       "af80e78b-c61e-485f-80a8-06d237400583"
                     ],
                     "identifiers": [
@@ -11355,7 +11355,7 @@
                   "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
                 }
               ],
-              "distinguishedUnits": [
+              "collectionItems": [
                 {
                   "alternateIdentifiersText": "alternateIdentifiersText",
                   "physicalUnit": {
@@ -11450,7 +11450,7 @@
                   "featureObservations": [
                     "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
                   ],
-                  "distinguishedUnits": [
+                  "collectionItems": [
                     "af80e78b-c61e-485f-80a8-06d237400583"
                   ],
                   "identifiers": [
@@ -12760,21 +12760,21 @@
         "x-examples": {},
         "description": ""
       },
-      "createDistinguishedUnitTypeResponse": {
+      "createPreparationTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitType"
+                "$ref": "#/components/schemas/preparationType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "distinguishedUnitType",
+                "default": "preparationType",
                 "type": "string"
               }
             },
@@ -12786,7 +12786,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
+                "example": "https://domain/api/curatedList/v01/preparationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -12802,21 +12802,21 @@
         "x-examples": {},
         "description": ""
       },
-      "updateDistinguishedUnitTypeResponse": {
+      "updatePreparationTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitType"
+                "$ref": "#/components/schemas/preparationType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "distinguishedUnitType",
+                "default": "preparationType",
                 "type": "string"
               }
             },
@@ -12828,7 +12828,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -12844,21 +12844,21 @@
         "x-examples": {},
         "description": ""
       },
-      "getDistinguishedUnitTypeResponse": {
+      "getPreparationTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/distinguishedUnitType"
+                "$ref": "#/components/schemas/preparationType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "distinguishedUnitType",
+                "default": "preparationType",
                 "type": "string"
               }
             },
@@ -12870,7 +12870,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -12886,7 +12886,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getDistinguishedUnitTypesResponse": {
+      "getPreparationTypesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -12895,14 +12895,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/distinguishedUnitType"
+                  "$ref": "#/components/schemas/preparationType"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "distinguishedUnitType",
+                  "default": "preparationType",
                   "type": "string"
                 }
               },
@@ -12916,7 +12916,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/distinguishedUnitTypes",
+                "example": "https://domain/api/curatedList/v01/preparationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

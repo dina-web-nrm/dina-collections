@@ -22,9 +22,9 @@
       "type": "array",
       "items": { "$ref": "__ROOT__identifier", "x-reference-type": "internal" }
     },
-    "distinguishedUnits": {
+    "collectionItems": {
       "type": "array",
-      "items": { "$ref": "__ROOT__distinguishedUnit", "x-reference-type": "internal" }
+      "items": { "$ref": "__ROOT__collectionItem", "x-reference-type": "internal" }
     },
     "readOnly": {
       "$ref": "__ROOT__readOnly"

@@ -24,7 +24,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const id = '123'
     const specimen = {
       id,
-      individual: { distinguishedUnits: [], identifiers: [] },
+      individual: { collectionItems: [], identifiers: [] },
     }
     const testAction = updateSpecimen({ id, specimen })
 
@@ -43,7 +43,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const taxon = { id: '2367', type: 'taxon' }
     const attributes = {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [],
         taxonInformation: {
           determinations: [{ taxon }],
@@ -87,7 +87,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const operationId = 'updateSpecimen'
     const attributes = {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],
@@ -141,7 +141,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const specimen = {
       id: '123',
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],
@@ -176,7 +176,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const specimen = {
       id: '123',
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],

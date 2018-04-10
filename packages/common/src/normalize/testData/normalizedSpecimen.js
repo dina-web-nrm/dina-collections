@@ -100,7 +100,7 @@ module.exports = {
       lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7',
     },
   ],
-  distinguishedUnits: [
+  collectionItems: [
     {
       alternateIdentifiersText: 'alternateIdentifiersText',
       physicalUnit: {
@@ -114,7 +114,7 @@ module.exports = {
   individual: {
     taxonInformation: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32',
     featureObservations: ['21a79d27-3848-4f13-8179-6011a2e98298'],
-    distinguishedUnits: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
+    collectionItems: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
     identifiers: ['9c9b1543-5b24-44ac-8032-cea5d430bcb7'],
     individualCircumstances: ['e7253de8-6262-4fd6-8192-40dec5970f41'],
     lid: '15413ab7-4c2f-4072-b2ae-3192f2887808',

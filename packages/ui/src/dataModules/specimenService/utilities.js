@@ -6,8 +6,8 @@ import { SPECIMEN } from './constants'
 
 export const buildSpecimenBody = ({
   curatedLocalities,
-  distinguishedUnitTypes,
   featureTypes,
+  preparationTypes,
   savedPhysicalUnits,
   specimen,
   storageLocations,
@@ -37,10 +37,10 @@ export const buildSpecimenBody = ({
 
   const specimenWithRelationships = {
     ...specimen,
-    distinguishedUnits: (specimen.distinguishedUnits || []).map(
-      (distinguishedUnit, index) => {
+    collectionItems: (specimen.collectionItems || []).map(
+      (collectionItem, index) => {
         return {
-          ...distinguishedUnit,
+          ...collectionItem,
           physicalUnit: cleanedPhysicalUnits[index],
         }
       }
@@ -54,14 +54,14 @@ export const buildSpecimenBody = ({
         curatedLocalities: {
           data: curatedLocalities,
         },
-        distinguishedUnitTypes: {
-          data: distinguishedUnitTypes,
-        },
         featureTypes: {
           data: featureTypes,
         },
         physicalUnits: {
           data: cleanedPhysicalUnits,
+        },
+        preparationTypes: {
+          data: preparationTypes,
         },
         storageLocations: {
           data: storageLocations,

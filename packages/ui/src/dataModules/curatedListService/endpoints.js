@@ -1,11 +1,11 @@
 import createEndpoint from 'utilities/endpointFactory/client'
 
 export const GET_DISTINGUISHED_UNIT_TYPE = createEndpoint({
-  operationId: 'getDistinguishedUnitType',
+  operationId: 'getPreparationType',
 })
 
 export const GET_DISTINGUISHED_UNIT_TYPES = createEndpoint({
-  operationId: 'getDistinguishedUnitTypes',
+  operationId: 'getPreparationTypes',
 })
 
 export const CREATE_FEATURE_OBSERVATION_TYPE = createEndpoint({

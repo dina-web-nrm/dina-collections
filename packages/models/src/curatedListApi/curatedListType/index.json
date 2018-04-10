@@ -7,7 +7,7 @@
           "$ref": "__ROOT__featureType"
         },
         {
-          "$ref": "__ROOT__distinguishedUnitType"
+          "$ref": "__ROOT__preparationType"
         }
       ]
     }

@@ -4,8 +4,8 @@ var specimen = {
   determination: {
     column: 'determinations'
   },
-  distinguishedUnit: {
-    column: 'distinguishedUnits'
+  collectionItem: {
+    column: 'collectionItems'
   },
   event: {
     column: 'events'

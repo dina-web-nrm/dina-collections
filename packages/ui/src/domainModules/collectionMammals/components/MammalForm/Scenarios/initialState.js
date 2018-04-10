@@ -39,12 +39,12 @@ export default {
           type: 'featureType',
         },
       },
-      distinguishedUnitTypes: {
+      preparationTypes: {
         '2': {
           category: 'skeleton',
           id: '2',
           name: 'complete, mounted skeleton',
-          type: 'distinguishedUnitType',
+          type: 'preparationType',
         },
       },
     },

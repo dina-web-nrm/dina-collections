@@ -7,7 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_DISTINGUISHED_UNIT_TYPES } from '../../endpoints'
 
-export default function getDistinguishedUnitTypes({ throwError = false } = {}) {
+export default function getPreparationTypes({ throwError = false } = {}) {
   return (dispatch, getState, { apiClient }) => {
     dispatch({
       type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,

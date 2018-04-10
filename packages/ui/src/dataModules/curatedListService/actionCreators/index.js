@@ -1,14 +1,14 @@
 import createFeatureType from './createFeatureType'
-import getDistinguishedUnitType from './getDistinguishedUnitType'
-import getDistinguishedUnitTypes from './getDistinguishedUnitTypes'
+import getPreparationType from './getPreparationType'
+import getPreparationTypes from './getPreparationTypes'
 import getFeatureType from './getFeatureType'
 import getFeatureTypes from './getFeatureTypes'
 import updateFeatureType from './updateFeatureType'
 
 export {
   createFeatureType,
-  getDistinguishedUnitType,
-  getDistinguishedUnitTypes,
+  getPreparationType,
+  getPreparationTypes,
   getFeatureType,
   getFeatureTypes,
   updateFeatureType,

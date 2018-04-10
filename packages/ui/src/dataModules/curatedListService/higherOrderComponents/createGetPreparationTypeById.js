@@ -7,45 +7,45 @@ import objectPath from 'object-path'
 
 import config from 'config'
 import curatedListServiceSelectors from '../globalSelectors'
-import { getDistinguishedUnitType as getDistinguishedUnitTypeAc } from '../actionCreators'
+import { getPreparationType as getPreparationTypeAc } from '../actionCreators'
 
-const createGetDistinguishedUnitTypeById = (
+const createGetPreparationTypeById = (
   idPath = 'itemId'
 ) => ComposedComponent => {
   const mapStateToProps = (state, ownProps) => {
     const itemId = objectPath.get(ownProps, idPath)
     return {
-      distinguishedUnitType: !itemId
-        ? null
-        : curatedListServiceSelectors.getDistinguishedUnitType(state, itemId),
       itemId,
+      preparationType: !itemId
+        ? null
+        : curatedListServiceSelectors.getPreparationType(state, itemId),
     }
   }
 
   const mapDispathToProps = {
-    getDistinguishedUnitType: getDistinguishedUnitTypeAc,
+    getPreparationType: getPreparationTypeAc,
   }
 
   const propTypes = {
     allLocalitiesFetched: PropTypes.bool,
-    distinguishedUnitType: PropTypes.object,
-    getDistinguishedUnitType: PropTypes.func.isRequired,
+    getPreparationType: PropTypes.func.isRequired,
     itemId: PropTypes.string,
+    preparationType: PropTypes.object,
   }
 
   const defaultProps = {
     allLocalitiesFetched: undefined,
-    distinguishedUnitType: null,
     itemId: '',
+    preparationType: null,
   }
 
-  class GetDistinguishedUnitTypeById extends Component {
+  class GetPreparationTypeById extends Component {
     componentDidMount() {
       const { allLocalitiesFetched } = this.props
       if (!config.isTest && allLocalitiesFetched === undefined) {
         const { itemId } = this.props
         if (itemId) {
-          this.props.getDistinguishedUnitType({ id: itemId })
+          this.props.getPreparationType({ id: itemId })
         }
       }
     }
@@ -57,30 +57,27 @@ const createGetDistinguishedUnitTypeById = (
         nextProps.allLocalitiesFetched === true
       ) {
         if (itemId) {
-          this.props.getDistinguishedUnitType({ id: itemId })
+          this.props.getPreparationType({ id: itemId })
         }
       }
 
       if (nextProps.itemId && nextProps.itemId !== itemId) {
-        this.props.getDistinguishedUnitType({ id: nextProps.itemId })
+        this.props.getPreparationType({ id: nextProps.itemId })
       }
     }
     render() {
-      const { distinguishedUnitType } = this.props
+      const { preparationType } = this.props
       return (
-        <ComposedComponent
-          distinguishedUnitType={distinguishedUnitType}
-          {...this.props}
-        />
+        <ComposedComponent preparationType={preparationType} {...this.props} />
       )
     }
   }
 
-  GetDistinguishedUnitTypeById.propTypes = propTypes
-  GetDistinguishedUnitTypeById.defaultProps = defaultProps
+  GetPreparationTypeById.propTypes = propTypes
+  GetPreparationTypeById.defaultProps = defaultProps
   return compose(connect(mapStateToProps, mapDispathToProps))(
-    GetDistinguishedUnitTypeById
+    GetPreparationTypeById
   )
 }
 
-export default createGetDistinguishedUnitTypeById
+export default createGetPreparationTypeById

@@ -6,7 +6,7 @@ testData.badRequestMissingCatalogNumber = {
   data: {
     attributes: {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         featureObservations: [],
         identifiers: [],
       },
@@ -31,7 +31,7 @@ testData.simpleDataNoRelations = {
         },
       ],
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
@@ -56,7 +56,7 @@ testData.simpleDataPhysicalUnitRelations = {
         },
       ],
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
@@ -91,7 +91,7 @@ testData.simpleDataMultipleRelations = {
         },
       ],
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
@@ -140,7 +140,7 @@ testData.simpleDataInvalidRelationsFormat = {
         },
       ],
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
@@ -171,7 +171,7 @@ testData.simpleDataInvalidRelations = {
         },
       ],
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },

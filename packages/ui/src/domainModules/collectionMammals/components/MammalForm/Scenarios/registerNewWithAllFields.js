@@ -48,43 +48,43 @@ const mutations = [
     interaction: 'click',
   },
   {
-    name: 'distinguishedUnits.0.distinguishedUnitType.id.hidden',
+    name: 'collectionItems.0.preparationType.id.hidden',
     value: '2',
   },
   {
-    name: 'distinguishedUnits.0.description',
+    name: 'collectionItems.0.description',
     value: 'description',
   },
   {
-    name: 'distinguishedUnits.0.physicalUnit.storageLocation.id.hidden',
+    name: 'collectionItems.0.physicalUnit.storageLocation.id.hidden',
     value: '1',
   },
   {
-    name: 'distinguishedUnits.0.physicalUnit.storedUnderTaxonName',
+    name: 'collectionItems.0.physicalUnit.storedUnderTaxonName',
     value: 'storedUnderTaxonName',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.agent',
+    name: 'collectionItems.0.curatorialAssessments.0.agent',
     value: 'agent',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.condition',
+    name: 'collectionItems.0.curatorialAssessments.0.condition',
     value: 'condition',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.conditionRemarks',
+    name: 'collectionItems.0.curatorialAssessments.0.conditionRemarks',
     value: 'conditionRemarks',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.date',
+    name: 'collectionItems.0.curatorialAssessments.0.date',
     value: 'date',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.isInStorage',
+    name: 'collectionItems.0.curatorialAssessments.0.isInStorage',
     value: true,
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.inventoryStatusRemarks',
+    name: 'collectionItems.0.curatorialAssessments.0.inventoryStatusRemarks',
     value: 'inventoryStatusRemarks',
   },
   {
@@ -179,12 +179,6 @@ const expectedOutput = {
     { id: 'Africa', type: 'curatedLocality' },
     { id: 'Algeria', type: 'curatedLocality' },
   ],
-  distinguishedUnitTypes: [
-    {
-      id: '2',
-      type: 'distinguishedUnitType',
-    },
-  ],
   featureTypes: [
     {
       id: '1',
@@ -200,9 +194,15 @@ const expectedOutput = {
       storedUnderTaxonName: 'storedUnderTaxonName',
     },
   ],
+  preparationTypes: [
+    {
+      id: '2',
+      type: 'preparationType',
+    },
+  ],
   specimen: {
     individual: {
-      distinguishedUnits: [
+      collectionItems: [
         {
           curatorialAssessments: [
             {
@@ -215,16 +215,16 @@ const expectedOutput = {
             },
           ],
           description: 'description',
-          distinguishedUnitType: {
-            id: '2',
-            type: 'distinguishedUnitType',
-          },
           physicalUnit: {
             storageLocation: {
               id: '1',
               type: 'storageLocation',
             },
             storedUnderTaxonName: 'storedUnderTaxonName',
+          },
+          preparationType: {
+            id: '2',
+            type: 'preparationType',
           },
         },
       ],
@@ -304,6 +304,7 @@ const expectedOutput = {
     },
     readOnly: undefined,
   },
+
   storageLocations: [
     {
       id: '1',

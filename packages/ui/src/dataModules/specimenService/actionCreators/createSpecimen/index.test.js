@@ -32,7 +32,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
       },
     ]
     const specimen = {
-      individual: { distinguishedUnits: [], identifiers: [] },
+      individual: { collectionItems: [], identifiers: [] },
     }
     const testAction = createSpecimen({ physicalUnits, specimen })
 
@@ -57,7 +57,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const taxon = { id: '2367', type: 'taxon' }
     const specimen = {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],
@@ -98,7 +98,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const operationId = 'createSpecimen'
     const specimen = {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],
@@ -148,7 +148,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const operationId = 'createSpecimen'
     const specimen = {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],
@@ -182,7 +182,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const operationId = 'createSpecimen'
     const specimen = {
       individual: {
-        distinguishedUnits: [],
+        collectionItems: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
         ],

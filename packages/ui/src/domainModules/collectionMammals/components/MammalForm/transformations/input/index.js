@@ -1,13 +1,13 @@
 import denormalizeSpecimen from 'common/es5/normalize/denormalizeSpecimen'
 import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
-import transformDistinguishedUnits from './transformDistinguishedUnits'
+import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
 export default function transformInput({
   denormalize = true,
-  distinguishedUnitTypes = {},
+  preparationTypes = {},
   featureTypes = {},
   physicalUnits = {},
   specimen = {},
@@ -25,10 +25,10 @@ export default function transformInput({
     featureObservations: attributes.featureObservations,
     featureTypes,
   })
-  const distinguishedUnits = transformDistinguishedUnits({
-    distinguishedUnits: attributes.distinguishedUnits,
-    distinguishedUnitTypes,
+  const collectionItems = transformCollectionItems({
+    collectionItems: attributes.collectionItems,
     physicalUnits,
+    preparationTypes,
     storageLocations,
   })
   const identifiers = transformIdentifiers(attributes.identifiers)
@@ -38,7 +38,7 @@ export default function transformInput({
 
   return {
     ...attributes,
-    distinguishedUnits,
+    collectionItems,
     featureObservations,
     identifiers,
     individualCircumstances,

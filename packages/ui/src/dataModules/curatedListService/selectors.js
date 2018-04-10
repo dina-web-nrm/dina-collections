@@ -12,16 +12,13 @@ export const getResources = state => {
   return state.resources
 }
 
-export const getDistinguishedUnitTypes = createSelector(
-  getResources,
-  resources => {
-    return resources.distinguishedUnitTypes
-  }
-)
+export const getPreparationTypes = createSelector(getResources, resources => {
+  return resources.preparationTypes
+})
 
-export const getDistinguishedUnitType = (state, id) => {
-  const distinguishedUnitTypes = getDistinguishedUnitTypes(state)
-  return distinguishedUnitTypes[id]
+export const getPreparationType = (state, id) => {
+  const preparationTypes = getPreparationTypes(state)
+  return preparationTypes[id]
 }
 
 export const getFeatureTypes = createSelector(getResources, resources => {

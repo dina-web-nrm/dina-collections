@@ -9,16 +9,16 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'CURATED_LIST_SERVICE',
   initialValues: {
-    allDistinguishedUnitTypesFetched: false,
     allFeatureTypesFetched: false,
-    fetchingAllDistinguishedUnitTypes: false,
+    allPreparationTypesFetched: false,
     fetchingAllFeatureTypes: false,
+    fetchingAllPreparationTypes: false,
   },
   keys: [
-    'allDistinguishedUnitTypesFetched',
     'allFeatureTypesFetched',
-    'fetchingAllDistinguishedUnitTypes',
+    'allPreparationTypesFetched',
     'fetchingAllFeatureTypes',
+    'fetchingAllPreparationTypes',
   ],
   name: 'curatedListService',
   reducerKey: 'keyObject',

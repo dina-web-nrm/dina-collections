@@ -1,6 +1,6 @@
 {
   "data": {
-    "type": "distinguishedUnitType",
+    "type": "preparationType",
     "attributes": {
       "category": "skin",
       "name": "preparation name"

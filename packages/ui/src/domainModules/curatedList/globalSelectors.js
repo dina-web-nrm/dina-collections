@@ -5,17 +5,14 @@ import curatedListServiceSelectors from 'dataModules/curatedListService/globalSe
 import getSecondArgument from 'utilities/getSecondArgument'
 import { SKELETON, SKIN, WET_PREPARATION } from './constants'
 
-const {
-  getDistinguishedUnitTypes,
-  getFeatureTypes,
-} = curatedListServiceSelectors
+const { getPreparationTypes, getFeatureTypes } = curatedListServiceSelectors
 
 const createDropdownSelector = (categoryFilter, numberOfResults) => {
   return createSelector(
-    [getDistinguishedUnitTypes, getSecondArgument],
-    (distinguishedUnitTypes, searchQuery = '') => {
+    [getPreparationTypes, getSecondArgument],
+    (preparationTypes, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
-      const mappedDistinguishedUnitTypes = Object.values(distinguishedUnitTypes)
+      const mappedPreparationTypes = Object.values(preparationTypes)
         .filter(
           ({ category }) =>
             categoryFilter === 'all' ? true : category === categoryFilter
@@ -28,16 +25,14 @@ const createDropdownSelector = (categoryFilter, numberOfResults) => {
           }
         })
 
-      const firstLetterMatches = mappedDistinguishedUnitTypes.filter(
-        ({ text }) => {
-          if (!searchQuery) {
-            return true
-          }
-          return text && text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      const firstLetterMatches = mappedPreparationTypes.filter(({ text }) => {
+        if (!searchQuery) {
+          return true
         }
-      )
+        return text && text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      })
 
-      const otherMatches = mappedDistinguishedUnitTypes.filter(({ text }) => {
+      const otherMatches = mappedPreparationTypes.filter(({ text }) => {
         if (!searchQuery) {
           return false
         }
@@ -53,7 +48,7 @@ const getDropdownSkeletonOptions = createDropdownSelector(SKELETON)
 const getDropdownSkinOptions = createDropdownSelector(SKIN)
 const getDropdownWetPreparationOptions = createDropdownSelector(WET_PREPARATION)
 
-const getDistinguishedUnitTypeOptions = (state, category) => {
+const getPreparationTypeOptions = (state, category) => {
   switch (category) {
     case SKELETON: {
       return getDropdownSkeletonOptions(state)
@@ -82,7 +77,7 @@ const getDistinguishedUnitTypeOptions = (state, category) => {
       ]
     }
     default: {
-      throw new Error(`unknown distinguishedUnitType category: ${category}`)
+      throw new Error(`unknown preparationType category: ${category}`)
     }
   }
 }
@@ -131,11 +126,11 @@ const getNumberOfFeatureTypesInGroups = createSelector(
 )
 
 export default {
-  getDistinguishedUnitTypeOptions,
   getDropdownSkeletonOptions,
   getDropdownSkinOptions,
   getDropdownWetPreparationOptions,
   getFeatureTypesInGroups,
   getGroupedFeatureTypeIds,
   getNumberOfFeatureTypesInGroups,
+  getPreparationTypeOptions,
 }
