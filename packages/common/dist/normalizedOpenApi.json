@@ -5819,8 +5819,8 @@
             "type": "string",
             "example": "Vega Expedition"
           },
-          "localityInformation": {
-            "$ref": "#/components/schemas/localityInformation"
+          "locationInformation": {
+            "$ref": "#/components/schemas/locationInformation"
           }
         },
         "x-category": "specimenApi",
@@ -5975,8 +5975,8 @@
             "type": "string",
             "example": "Vega Expedition"
           },
-          "localityInformation": {
-            "$ref": "#/components/schemas/localityInformation"
+          "locationInformation": {
+            "$ref": "#/components/schemas/locationInformation"
           }
         },
         "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
@@ -6102,7 +6102,7 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "localityInformation": {
+      "locationInformation": {
         "additionalProperties": false,
         "properties": {
           "lid": {
@@ -11192,7 +11192,7 @@
                   {
                     "endDate": "endDate",
                     "expeditionText": "expeditionText",
-                    "localityInformation": {
+                    "locationInformation": {
                       "coordinatesVerbatim": "coordinatesVerbatim",
                       "curatedLocalities": [
                         {
@@ -11370,7 +11370,7 @@
                 {
                   "endDate": "endDate",
                   "expeditionText": "expeditionText",
-                  "localityInformation": {
+                  "locationInformation": {
                     "coordinatesVerbatim": "coordinatesVerbatim",
                     "curatedLocalities": [
                       {

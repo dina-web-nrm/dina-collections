@@ -20,6 +20,6 @@
       "$ref": "__ROOT__date"
     },
     "expeditionText": { "type": "string", "example": "Vega Expedition" },
-    "localityInformation": { "$ref": "__ROOT__localityInformation" }
+    "locationInformation": { "$ref": "__ROOT__locationInformation" }
   }
 }

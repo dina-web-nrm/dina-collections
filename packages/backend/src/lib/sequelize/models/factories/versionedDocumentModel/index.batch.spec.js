@@ -56,7 +56,7 @@ const createData = catalogNumber => {
             establishmentMeansStandardized: 'establishmentMeansStandardized',
             expeditionText: 'Vega Expedition',
             isDeathEvent: true,
-            localityInformation: {
+            locationInformation: {
               coordinatesVerbatim: 'coord-string',
               curatedLocalities: [
                 {

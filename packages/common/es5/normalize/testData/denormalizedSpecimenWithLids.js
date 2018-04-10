@@ -55,7 +55,7 @@ module.exports = {
         lid: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
         endDate: 'endDate',
         expeditionText: 'expeditionText',
-        localityInformation: {
+        locationInformation: {
           coordinatesVerbatim: 'coordinatesVerbatim',
           curatedLocalities: [{
             id: '1',

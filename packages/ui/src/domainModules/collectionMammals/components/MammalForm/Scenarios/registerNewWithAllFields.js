@@ -110,62 +110,62 @@ const mutations = [
 
   {
     name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.0.id.hidden',
+      'individualCircumstances.0.event.locationInformation.curatedLocalities.0.id.hidden',
     value: 'Africa',
   },
 
   {
     name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.1.id.hidden',
+      'individualCircumstances.0.event.locationInformation.curatedLocalities.1.id.hidden',
     value: 'Algeria',
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.localityVerbatim',
+      'individualCircumstances.0.event.locationInformation.localityVerbatim',
     value: 'localityVerbatim',
   },
   {
-    name: 'individualCircumstances.0.event.localityInformation.localityName',
+    name: 'individualCircumstances.0.event.locationInformation.localityName',
     value: 'localityName',
   },
   {
-    name: 'individualCircumstances.0.event.localityInformation.remarks',
+    name: 'individualCircumstances.0.event.locationInformation.remarks',
     value: 'remarks',
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.position.latitude',
+      'individualCircumstances.0.event.locationInformation.position.latitude',
     value: 'latitude-string',
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.position.longitude',
+      'individualCircumstances.0.event.locationInformation.position.longitude',
     value: 'longitude-string',
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.position.referenceSystem',
+      'individualCircumstances.0.event.locationInformation.position.referenceSystem',
     value: 'referenceSystem',
   },
 
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.maximumDepthInMeters',
+      'individualCircumstances.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
     value: 100,
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.maximumElevationInMeters',
+      'individualCircumstances.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
     value: 100,
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.minimumDepthInMeters',
+      'individualCircumstances.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
     value: 20,
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.minimumElevationInMeters',
+      'individualCircumstances.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
     value: 20,
   },
   {
@@ -259,7 +259,7 @@ const expectedOutput = {
           event: {
             endDate: 'endDate',
             expeditionText: 'expeditionText',
-            localityInformation: {
+            locationInformation: {
               curatedLocalities: [
                 { id: 'Africa', type: 'curatedLocality' },
                 { id: 'Algeria', type: 'curatedLocality' },

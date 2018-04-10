@@ -11,7 +11,7 @@
 │   │   │   └── addCatalogNumberModal.sv.md
 │   │   ├── index.json
 │   │   └── occurrences
-│   │       └── localityInformation
+│   │       └── locationInformation
 │   ├── actionCreators
 │   │   ├── clearSearchParameters.js
 │   │   ├── index.js

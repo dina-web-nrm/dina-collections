@@ -52,7 +52,7 @@
                 "year": 1981
               },
               "expeditionText": "Vega Expedition",
-              "localityInformation": {
+              "locationInformation": {
                 "curatedLocalities": [
                   { "id": "1", "type": "curatedLocality" },
                   { "id": "2", "type": "curatedLocality" },
@@ -141,7 +141,7 @@
                   "year": 1981
                 },
                 "expeditionText": "Vega Expedition",
-                "localityInformation": {
+                "locationInformation": {
                   "position": {
                     "latitude": "string",
                     "longitude": "string",

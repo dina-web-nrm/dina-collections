@@ -22,7 +22,7 @@ module.exports = {
   events: [{
     endDate: 'endDate',
     expeditionText: 'expeditionText',
-    localityInformation: {
+    locationInformation: {
       coordinatesVerbatim: 'coordinatesVerbatim',
       curatedLocalities: [{
         id: '1',

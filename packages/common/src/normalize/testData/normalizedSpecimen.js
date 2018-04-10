@@ -26,7 +26,7 @@ module.exports = {
     {
       endDate: 'endDate',
       expeditionText: 'expeditionText',
-      localityInformation: {
+      locationInformation: {
         coordinatesVerbatim: 'coordinatesVerbatim',
         curatedLocalities: [
           {

@@ -1,4 +1,4 @@
-import transformLocalityInformation from './transformLocalityInformation'
+import transformLocationInformation from './transformLocationInformation'
 
 export default function transformIndividualCircumstances(
   individualCircumstances
@@ -13,19 +13,19 @@ export default function transformIndividualCircumstances(
     individualCircumstance => {
       if (
         individualCircumstance.event &&
-        individualCircumstance.event.localityInformation
+        individualCircumstance.event.locationInformation
       ) {
-        const localityInformation = transformLocalityInformation(
-          individualCircumstance.event.localityInformation
+        const locationInformation = transformLocationInformation(
+          individualCircumstance.event.locationInformation
         )
 
         if (
-          localityInformation.curatedLocalities &&
-          localityInformation.curatedLocalities.length
+          locationInformation.curatedLocalities &&
+          locationInformation.curatedLocalities.length
         ) {
           curatedLocalities = [
             ...curatedLocalities,
-            ...localityInformation.curatedLocalities,
+            ...locationInformation.curatedLocalities,
           ]
         }
 
@@ -33,7 +33,7 @@ export default function transformIndividualCircumstances(
           ...individualCircumstance,
           event: {
             ...individualCircumstance.event,
-            localityInformation,
+            locationInformation,
           },
         }
       }

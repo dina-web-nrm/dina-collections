@@ -572,8 +572,8 @@
         "type": "string",
         "example": "Vega Expedition"
       },
-      "localityInformation": {
-        "$ref": "localityInformation"
+      "locationInformation": {
+        "$ref": "locationInformation"
       }
     },
     "x-category": "specimenApi",
@@ -733,8 +733,8 @@
         "type": "string",
         "example": "Vega Expedition"
       },
-      "localityInformation": {
-        "$ref": "localityInformation"
+      "locationInformation": {
+        "$ref": "locationInformation"
       }
     },
     "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
@@ -864,7 +864,7 @@
     "x-modelType": "model",
     "id": "individualCircumstance"
   },
-  "localityInformation": {
+  "locationInformation": {
     "additionalProperties": false,
     "properties": {
       "lid": {
@@ -913,7 +913,7 @@
     "description": "### Definition\n\nInformation pertaining to a specific location.\n\n### Note(s)\n\nIncludes for example verbatim information about a location.\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "localityInformation"
+    "id": "locationInformation"
   },
   "observationCircumstance": {
     "additionalProperties": false,
@@ -6317,7 +6317,7 @@
               {
                 "endDate": "endDate",
                 "expeditionText": "expeditionText",
-                "localityInformation": {
+                "locationInformation": {
                   "coordinatesVerbatim": "coordinatesVerbatim",
                   "curatedLocalities": [
                     {
@@ -6495,7 +6495,7 @@
             {
               "endDate": "endDate",
               "expeditionText": "expeditionText",
-              "localityInformation": {
+              "locationInformation": {
                 "coordinatesVerbatim": "coordinatesVerbatim",
                 "curatedLocalities": [
                   {

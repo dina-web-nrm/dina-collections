@@ -13,7 +13,7 @@ import Position from './Position'
 import VerticalPosition from './VerticalPosition'
 
 const buildModuleTextKey = textKey =>
-  `modules.collectionMammals.occurrences.localityInformation.${textKey}`
+  `modules.collectionMammals.occurrences.locationInformation.${textKey}`
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
@@ -22,7 +22,7 @@ const propTypes = {
   }).isRequired,
 }
 
-function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
+function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
   return (
     <Grid textAlign="left" verticalAlign="top">
       <Grid.Row>
@@ -75,12 +75,12 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
   )
 }
 
-LocalityInformationFields.propTypes = propTypes
+LocationInformationFields.propTypes = propTypes
 
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'individualCircumstances.localityInformation',
+    scope: 'individualCircumstances.locationInformation',
   }),
-  pathBuilder({ name: 'event.localityInformation' })
-)(LocalityInformationFields)
+  pathBuilder({ name: 'event.locationInformation' })
+)(LocationInformationFields)

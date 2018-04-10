@@ -13,7 +13,7 @@ import {
   actionCreators as localityActionCreators,
   globalSelectors as localitySelectors,
 } from 'dataModules/localityService'
-import LocalityInformationFields from './LocalityInformationFields'
+import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentIndividualCircumstances'
@@ -53,7 +53,7 @@ class SegmentIndividualCircumstances extends PureComponent {
           <ModuleTranslate textKey="collectingInformation" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
-          {hasCuratedLocalities && <LocalityInformationFields />}
+          {hasCuratedLocalities && <LocationInformationFields />}
 
           <Grid.Column computer={10} mobile={16}>
             <Field

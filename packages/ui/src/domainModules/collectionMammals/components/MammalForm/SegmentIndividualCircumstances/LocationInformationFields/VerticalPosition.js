@@ -8,7 +8,7 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const buildModuleTextKey = textKey =>
-  `modules.collectionMammals.occurrences.localityInformation.${textKey}`
+  `modules.collectionMammals.occurrences.locationInformation.${textKey}`
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
@@ -125,7 +125,7 @@ VerticalPosition.propTypes = propTypes
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'individualCircumstances.localityInformation.verticalPosition',
+    scope: 'individualCircumstances.locationInformation.verticalPosition',
   }),
   pathBuilder({ name: 'verticalPosition' })
 )(VerticalPosition)

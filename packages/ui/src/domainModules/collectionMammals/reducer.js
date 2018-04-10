@@ -13,7 +13,7 @@ const getLookupSearch = createGetter(['lookup', 'search'])
 const setLookupSearch = createSetter(['lookup', 'search'])
 
 const initialState = {
-  localityInformationSearchQueries: {},
+  locationInformationSearchQueries: {},
   lookup: {
     error: null,
     result: [],

@@ -17,7 +17,7 @@ const propTypes = {
   }).isRequired,
 }
 
-function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
+function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
   return (
     <React.Fragment>
       <Grid.Row>
@@ -52,12 +52,12 @@ function LocalityInformationFields({ getPath, i18n: { moduleTranslate } }) {
   )
 }
 
-LocalityInformationFields.propTypes = propTypes
+LocationInformationFields.propTypes = propTypes
 
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'individualCircumstances.localityInformation.curatedLocalities',
+    scope: 'individualCircumstances.locationInformation.curatedLocalities',
   }),
   pathBuilder({ name: 'curatedLocalities' })
-)(LocalityInformationFields)
+)(LocationInformationFields)
