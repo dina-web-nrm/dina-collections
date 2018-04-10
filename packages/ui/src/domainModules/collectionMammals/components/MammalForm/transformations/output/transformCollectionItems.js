@@ -6,12 +6,12 @@ import {
 
 export default function transformCollectionItems(collectionItems = []) {
   const preparationTypes = []
-  const physicalUnits = []
+  const physicalObjects = []
   const storageLocations = []
 
   const mappedCollectionItems = collectionItems.map(collectionItem => {
-    const { preparationType, physicalUnit } = collectionItem
-    const { storageLocation } = physicalUnit || {}
+    const { preparationType, physicalObject } = collectionItem
+    const { storageLocation } = physicalObject || {}
 
     const mappedCollectionItem = { ...collectionItem }
 
@@ -28,7 +28,7 @@ export default function transformCollectionItems(collectionItems = []) {
       }
     }
 
-    if (physicalUnit) {
+    if (physicalObject) {
       let mappedStorageLocation
 
       if (storageLocation && storageLocation.id) {
@@ -37,24 +37,24 @@ export default function transformCollectionItems(collectionItems = []) {
           type: STORAGE_LOCATION,
         }
         storageLocations.push(mappedStorageLocation)
-        mappedCollectionItem.physicalUnit.storageLocation = mappedStorageLocation
+        mappedCollectionItem.physicalObject.storageLocation = mappedStorageLocation
       }
 
-      const mappedPhysicalUnit = physicalUnit.id
+      const mappedPhysicalObject = physicalObject.id
         ? {
-            id: physicalUnit.id,
+            id: physicalObject.id,
             type: PHYSICAL_UNIT,
           }
         : {
-            ...physicalUnit,
+            ...physicalObject,
           }
 
-      if (!mappedPhysicalUnit.storageLocation) {
-        delete mappedPhysicalUnit.storageLocation
+      if (!mappedPhysicalObject.storageLocation) {
+        delete mappedPhysicalObject.storageLocation
       }
 
-      physicalUnits.push(mappedPhysicalUnit)
-      mappedCollectionItem.physicalUnit = mappedPhysicalUnit
+      physicalObjects.push(mappedPhysicalObject)
+      mappedCollectionItem.physicalObject = mappedPhysicalObject
     }
 
     return mappedCollectionItem
@@ -62,7 +62,7 @@ export default function transformCollectionItems(collectionItems = []) {
 
   return {
     collectionItems: mappedCollectionItems,
-    physicalUnits,
+    physicalObjects,
     preparationTypes,
     storageLocations,
   }

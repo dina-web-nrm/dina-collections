@@ -112,7 +112,7 @@ apiDescribe('specimen', () => {
     describe('relation cases', () => {
       beforeAll(() => {
         const modifiedSimpleDataRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+          'simpleDataPhysicalObjectRelations'
         )
         modifiedSimpleDataRelations.data.attributes.identifiers[0].identifier.value =
           '555112'
@@ -122,16 +122,16 @@ apiDescribe('specimen', () => {
           operationId: 'createSpecimen',
         })
       })
-      it('Succeed with simpleDataPhysicalUnitRelations', () => {
-        const simpleDataPhysicalUnitRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+      it('Succeed with simpleDataPhysicalObjectRelations', () => {
+        const simpleDataPhysicalObjectRelations = getTestData(
+          'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
           operationId: 'getSpecimens',
           queryParams: {
             'filter[catalogNumber]': '555112',
             limit: 1,
-            relationships: ['physicalUnits'],
+            relationships: ['physicalObjects'],
           },
         }).then(response => {
           expectMultipleResourcesResponse({
@@ -143,7 +143,7 @@ apiDescribe('specimen', () => {
           expect(response.data[0].attributes).toBeTruthy()
           expect(response.data[0].relationships).toBeTruthy()
           expect(response.data[0].relationships).toEqual(
-            simpleDataPhysicalUnitRelations.data.relationships
+            simpleDataPhysicalObjectRelations.data.relationships
           )
         })
       })

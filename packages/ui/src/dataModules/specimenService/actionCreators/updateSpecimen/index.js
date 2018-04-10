@@ -1,6 +1,6 @@
 import {
-  createPhysicalUnit,
-  updatePhysicalUnit,
+  createPhysicalObject,
+  updatePhysicalObject,
 } from 'dataModules/storageService/actionCreators'
 
 import { flattenObjectResponse } from 'utilities/transformations'
@@ -22,7 +22,7 @@ export default function updateSpecimen(
     curatedLocalities = [],
     featureTypes = [],
     id,
-    physicalUnits = [],
+    physicalObjects = [],
     preparationTypes = [],
     specimen,
     storageLocations = [],
@@ -37,7 +37,7 @@ export default function updateSpecimen(
     curatedLocalities,
     featureTypes,
     individual,
-    physicalUnits,
+    physicalObjects,
     preparationTypes,
     storageLocations,
     taxa,
@@ -45,21 +45,23 @@ export default function updateSpecimen(
 
   return (dispatch, getState, { apiClient }) => {
     return Promise.all(
-      physicalUnits.map(physicalUnit => {
-        if (physicalUnit.id) {
+      physicalObjects.map(physicalObject => {
+        if (physicalObject.id) {
           return dispatch(
-            updatePhysicalUnit({ physicalUnit, throwError: true })
+            updatePhysicalObject({ physicalObject, throwError: true })
           )
         }
 
-        return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
+        return dispatch(
+          createPhysicalObject({ physicalObject, throwError: true })
+        )
       })
-    ).then(savedPhysicalUnits => {
+    ).then(savedPhysicalObjects => {
       const body = buildSpecimenBody({
         curatedLocalities,
         featureTypes,
         preparationTypes,
-        savedPhysicalUnits,
+        savedPhysicalObjects,
         specimen,
         storageLocations,
         taxa,

@@ -3,13 +3,13 @@ const tryImport = () => {
 }
 
 const expectedActionCreators = [
-  'createPhysicalUnit',
+  'createPhysicalObject',
   'createStorageLocation',
-  'getPhysicalUnit',
-  'getPhysicalUnits',
+  'getPhysicalObject',
+  'getPhysicalObjects',
   'getStorageLocation',
   'getStorageLocations',
-  'updatePhysicalUnit',
+  'updatePhysicalObject',
   'updateStorageLocation',
 ]
 

@@ -40,7 +40,7 @@ testData.simpleDataNoRelations = {
   },
 }
 
-testData.simpleDataPhysicalUnitRelations = {
+testData.simpleDataPhysicalObjectRelations = {
   data: {
     attributes: {
       identifiers: [
@@ -62,11 +62,11 @@ testData.simpleDataPhysicalUnitRelations = {
       },
     },
     relationships: {
-      physicalUnits: {
+      physicalObjects: {
         data: [
           {
             id: '2234',
-            type: 'physicalUnit',
+            type: 'physicalObject',
           },
         ],
       },
@@ -108,11 +108,11 @@ testData.simpleDataMultipleRelations = {
           },
         ],
       },
-      physicalUnits: {
+      physicalObjects: {
         data: [
           {
             id: '2234',
-            type: 'physicalUnit',
+            type: 'physicalObject',
           },
         ],
       },
@@ -146,9 +146,9 @@ testData.simpleDataInvalidRelationsFormat = {
       },
     },
     relationships: {
-      physicalUnits: {
+      physicalObjects: {
         id: '2234',
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     },
     type: 'specimen',
@@ -177,7 +177,7 @@ testData.simpleDataInvalidRelations = {
       },
     },
     relationships: {
-      physicalUnits: {
+      physicalObjects: {
         id: '2234',
         type: 'storageLocation',
       },

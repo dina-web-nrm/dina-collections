@@ -26,7 +26,7 @@ describe('dataModules/specimenService/utilities', () => {
 
     const collectionItems = [
       {
-        physicalUnit: {
+        physicalObject: {
           storageLocation: {
             id: '1',
             name: 'skin room',
@@ -40,7 +40,7 @@ describe('dataModules/specimenService/utilities', () => {
         },
       },
       {
-        physicalUnit: {
+        physicalObject: {
           storageLocation: {
             id: '2',
             name: 'bone room',
@@ -81,7 +81,7 @@ describe('dataModules/specimenService/utilities', () => {
         ],
       },
     }
-    const savedPhysicalUnits = [
+    const savedPhysicalObjects = [
       {
         id: '1',
         storageLocation: {
@@ -89,7 +89,7 @@ describe('dataModules/specimenService/utilities', () => {
           name: 'skin room',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
       {
         id: '2',
@@ -98,7 +98,7 @@ describe('dataModules/specimenService/utilities', () => {
           name: 'bone room',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     ]
     const storageLocations = [
@@ -118,14 +118,14 @@ describe('dataModules/specimenService/utilities', () => {
       },
     ]
 
-    const cleanedPhysicalUnits = [
+    const cleanedPhysicalObjects = [
       {
         id: '1',
         storageLocation: {
           id: '1',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
       {
         id: '2',
@@ -133,7 +133,7 @@ describe('dataModules/specimenService/utilities', () => {
           id: '2',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     ]
 
@@ -141,7 +141,7 @@ describe('dataModules/specimenService/utilities', () => {
       curatedLocalities,
       featureTypes,
       preparationTypes,
-      savedPhysicalUnits,
+      savedPhysicalObjects,
       specimen: {
         collectionItems,
         individual,
@@ -155,13 +155,13 @@ describe('dataModules/specimenService/utilities', () => {
         attributes: {
           collectionItems: [
             {
-              physicalUnit: {
+              physicalObject: {
                 id: '1',
                 storageLocation: {
                   id: '1',
                   type: 'storageLocation',
                 },
-                type: 'physicalUnit',
+                type: 'physicalObject',
               },
               preparationType: {
                 category: 'skin',
@@ -170,13 +170,13 @@ describe('dataModules/specimenService/utilities', () => {
               },
             },
             {
-              physicalUnit: {
+              physicalObject: {
                 id: '2',
                 storageLocation: {
                   id: '2',
                   type: 'storageLocation',
                 },
-                type: 'physicalUnit',
+                type: 'physicalObject',
               },
               preparationType: {
                 category: 'skeleton',
@@ -196,8 +196,8 @@ describe('dataModules/specimenService/utilities', () => {
           featureTypes: {
             data: featureTypes,
           },
-          physicalUnits: {
-            data: cleanedPhysicalUnits,
+          physicalObjects: {
+            data: cleanedPhysicalObjects,
           },
           preparationTypes: {
             data: preparationTypes,

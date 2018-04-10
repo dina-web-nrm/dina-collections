@@ -448,7 +448,7 @@
       "en": "Normal storage location",
       "sv": "Reguljär lagringsplats"
     },
-    "physicalUnitText": {
+    "physicalObjectText": {
       "en": "Description",
       "sv": "Beskrivning"
     },

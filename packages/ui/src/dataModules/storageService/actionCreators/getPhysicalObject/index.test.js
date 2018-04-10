@@ -1,9 +1,9 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getPhysicalUnits from './index'
+import getPhysicalObject from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
+describe('dataModules/storageService/actionCreators/getPhysicalObject', () => {
   let store
   let apiClient
 
@@ -19,12 +19,15 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
   })
 
   it(`dispatches ${
-    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_REQUEST
+    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_REQUEST
   }`, () => {
-    const testAction = getPhysicalUnits()
+    const id = '123'
+
+    const testAction = getPhysicalObject({ id })
 
     const expectedAction = {
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_REQUEST,
+      meta: { id },
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -32,64 +35,57 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getPhysicalUnits`, () => {
-    const operationId = 'getPhysicalUnits'
+  it(`calls getPhysicalObject`, () => {
+    const operationId = 'getPhysicalObject'
+    const id = '123'
 
     const callSpy = jest.fn()
 
     apiClient.mock({
       responses: {
-        [operationId]: { data: [] },
+        [operationId]: { data: {} },
       },
       spies: {
         [operationId]: callSpy,
       },
     })
 
-    const testAction = getPhysicalUnits()
+    const testAction = getPhysicalObject({ id })
+    const expectedCallParams = {
+      pathParams: { id },
+      queryParams: {
+        relationships: ['all'],
+      },
+    }
 
-    expect.assertions(2)
+    expect.assertions(3)
 
     return store.dispatch(testAction).then(() => {
       expect(callSpy.mock.calls.length).toEqual(1)
       expect(callSpy.mock.calls[0][0]).toMatchObject({ operationId })
+      expect(callSpy.mock.calls[0][1]).toEqual(expectedCallParams)
     })
   })
 
   it(`dispatches ${
-    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_SUCCESS
+    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getPhysicalUnits'
+    const operationId = 'getPhysicalObject'
+    const id = '123'
     const mockResponse = {
-      data: [
-        {
-          attributes: {
-            name: 'Ada',
-          },
-          id: '123',
-          type: 'type',
+      data: {
+        attributes: {
+          name: 'Alan',
         },
-        {
-          attributes: {
-            name: 'Alan',
-          },
-          id: '456',
-          type: 'type',
-        },
-      ],
+        id,
+        type: 'type',
+      },
     }
-    const transformedResponse = [
-      {
-        id: '123',
-        name: 'Ada',
-        type: 'type',
-      },
-      {
-        id: '456',
-        name: 'Alan',
-        type: 'type',
-      },
-    ]
+    const transformedResponse = {
+      id,
+      name: 'Alan',
+      type: 'type',
+    }
 
     apiClient.mock({
       responses: {
@@ -97,14 +93,16 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
       },
     })
 
-    const testAction = getPhysicalUnits()
+    const testAction = getPhysicalObject({ id })
 
     const expectedFirstAction = {
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_REQUEST,
+      meta: { id },
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_REQUEST,
     }
     const expectedSecondAction = {
+      meta: { id },
       payload: transformedResponse,
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_SUCCESS,
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_SUCCESS,
     }
 
     expect.assertions(2)
@@ -119,9 +117,10 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
   })
 
   it(`dispatches ${
-    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_FAIL
+    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL
   } without throwing error`, () => {
-    const operationId = 'getPhysicalUnits'
+    const operationId = 'getPhysicalObject'
+    const id = '123'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -130,15 +129,17 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
       },
     })
 
-    const testAction = getPhysicalUnits()
+    const testAction = getPhysicalObject({ id })
 
     const expectedFirstAction = {
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_REQUEST,
+      meta: { id },
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
+      meta: { id },
       payload: mockResponse,
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_FAIL,
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL,
     }
 
     expect.assertions(2)
@@ -153,9 +154,10 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
   })
 
   it(`dispatches ${
-    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_FAIL
+    actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL
   } and throws error`, () => {
-    const operationId = 'getPhysicalUnits'
+    const operationId = 'getPhysicalObject'
+    const id = '123'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -164,15 +166,17 @@ describe('dataModules/storageService/actionCreators/getPhysicalUnits', () => {
       },
     })
 
-    const testAction = getPhysicalUnits({ throwError: true })
+    const testAction = getPhysicalObject({ id, throwError: true })
 
     const expectedFirstAction = {
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_REQUEST,
+      meta: { id },
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
+      meta: { id },
       payload: mockResponse,
-      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNITS_FAIL,
+      type: actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL,
     }
 
     expect.assertions(2)

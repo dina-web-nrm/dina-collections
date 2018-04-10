@@ -85,11 +85,11 @@ module.exports = {
   }],
   collectionItems: [{
     alternateIdentifiersText: 'alternateIdentifiersText',
-    physicalUnit: {
+    physicalObject: {
       id: '2234',
-      type: 'physicalUnit'
+      type: 'physicalObject'
     },
-    physicalUnitText: 'physicalUnitText',
+    physicalObjectText: 'physicalObjectText',
     lid: '69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'
   }],
   individual: {

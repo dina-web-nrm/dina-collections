@@ -7,7 +7,7 @@ import {
 } from '../../actionTypes'
 import { GET_PHYSICAL_UNIT } from '../../endpoints'
 
-export default function getPhysicalUnit({ id, throwError = false } = {}) {
+export default function getPhysicalObject({ id, throwError = false } = {}) {
   const pathParams = { id }
 
   return (dispatch, getState, { apiClient }) => {

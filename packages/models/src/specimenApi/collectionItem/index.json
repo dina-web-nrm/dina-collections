@@ -35,12 +35,12 @@
     "id": {
       "type": "string"
     },
-    "physicalUnitText": {
+    "physicalObjectText": {
       "type": "string",
       "example": "Skin complete, prepared"
     },
-    "physicalUnit": {
-      "$ref": "__ROOT__physicalUnit",
+    "physicalObject": {
+      "$ref": "__ROOT__physicalObject",
       "x-reference-type": "external"
     }
   }

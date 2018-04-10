@@ -34,11 +34,11 @@
           }
         ]
       },
-      "physicalUnits": {
+      "physicalObjects": {
         "data": [
           {
             "id": "4234",
-            "type": "physicalUnit"
+            "type": "physicalObject"
           }
         ]
       }
@@ -60,11 +60,11 @@
       "collectionItems": [
         {
           "alternateIdentifiersText": "alternateIdentifiersText",
-          "physicalUnit": {
+          "physicalObject": {
             "id": "2234",
-            "type": "physicalUnit"
+            "type": "physicalObject"
           },
-          "physicalUnitText": "physicalUnitText",
+          "physicalObjectText": "physicalObjectText",
           "lid": "af80e78b-c61e-485f-80a8-06d237400583"
         }
       ],

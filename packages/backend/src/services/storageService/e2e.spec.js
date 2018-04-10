@@ -3,13 +3,13 @@ const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 const expectSingleResourceResponse = require('../../utilities/test/expectSingleResourceResponse')
 
-const physicalUnitExample = {
+const physicalObjectExample = {
   data: {
     attributes: {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     },
-    type: 'physicalUnit',
+    type: 'physicalObject',
   },
 }
 
@@ -35,16 +35,16 @@ apiDescribe('storage', () => {
     expect(1).toBe(1)
   })
 
-  describe('createPhysicalUnit', () => {
+  describe('createPhysicalObject', () => {
     it('Succeed with simple example', () => {
       return makeTestCall({
         authToken,
-        body: physicalUnitExample,
-        operationId: 'createPhysicalUnit',
+        body: physicalObjectExample,
+        operationId: 'createPhysicalObject',
         validateOutput: true,
       }).then(response => {
         expectSingleResourceResponse({
-          expectedType: 'physicalUnit',
+          expectedType: 'physicalObject',
           response,
         })
       })
@@ -68,7 +68,7 @@ apiDescribe('storage', () => {
   describe('Tmp', () => {
     it('Succeed with complex relation example', () => {
       let storageLocationId
-      let physicalUnitId
+      let physicalObjectId
       return makeTestCall({
         authToken,
         body: storageLocationExample,
@@ -86,14 +86,14 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            body: physicalUnitExample,
-            operationId: 'createPhysicalUnit',
+            body: physicalObjectExample,
+            operationId: 'createPhysicalObject',
             validateOutput: true,
-          }).then(physicalUnitRes => {
-            expect(physicalUnitRes).toBeTruthy()
-            expect(physicalUnitRes.data).toBeTruthy()
-            expect(physicalUnitRes.data.type).toBe('physicalUnit')
-            physicalUnitId = physicalUnitRes.data.id
+          }).then(physicalObjectRes => {
+            expect(physicalObjectRes).toBeTruthy()
+            expect(physicalObjectRes.data).toBeTruthy()
+            expect(physicalObjectRes.data.type).toBe('physicalObject')
+            physicalObjectId = physicalObjectRes.data.id
           })
         })
         .then(() => {
@@ -105,9 +105,9 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId: 'updatePhysicalUnitStorageLocation',
+            operationId: 'updatePhysicalObjectStorageLocation',
             pathParams: {
-              id: physicalUnitId,
+              id: physicalObjectId,
             },
             validateOutput: true,
           }).then(createRelationRes => {
@@ -118,9 +118,9 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalUnitStorageLocation',
+            operationId: 'getPhysicalObjectStorageLocation',
             pathParams: {
-              id: physicalUnitId,
+              id: physicalObjectId,
             },
             validateOutput: true,
           }).then(getRelationRes => {
@@ -131,7 +131,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getStorageLocationPhysicalUnits',
+            operationId: 'getStorageLocationPhysicalObjects',
             pathParams: {
               id: storageLocationId,
             },
@@ -147,7 +147,7 @@ apiDescribe('storage', () => {
   describe('Tmp2', () => {
     it('Succeed with relation example', () => {
       let storageLocationId
-      let physicalUnitId
+      let physicalObjectId
       return makeTestCall({
         authToken,
         body: storageLocationExample,
@@ -165,14 +165,14 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            body: physicalUnitExample,
-            operationId: 'createPhysicalUnit',
+            body: physicalObjectExample,
+            operationId: 'createPhysicalObject',
             validateOutput: true,
-          }).then(physicalUnitRes => {
-            expect(physicalUnitRes).toBeTruthy()
-            expect(physicalUnitRes.data).toBeTruthy()
-            expect(physicalUnitRes.data.type).toBe('physicalUnit')
-            physicalUnitId = physicalUnitRes.data.id
+          }).then(physicalObjectRes => {
+            expect(physicalObjectRes).toBeTruthy()
+            expect(physicalObjectRes.data).toBeTruthy()
+            expect(physicalObjectRes.data.type).toBe('physicalObject')
+            physicalObjectId = physicalObjectRes.data.id
           })
         })
         .then(() => {
@@ -184,9 +184,9 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId: 'updatePhysicalUnitStorageLocation',
+            operationId: 'updatePhysicalObjectStorageLocation',
             pathParams: {
-              id: physicalUnitId,
+              id: physicalObjectId,
             },
             validateOutput: true,
           }).then(createRelationRes => {
@@ -197,19 +197,21 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalUnit',
+            operationId: 'getPhysicalObject',
             pathParams: {
-              id: physicalUnitId,
+              id: physicalObjectId,
             },
             queryParams: {
               relationships: ['all'],
             },
             validateOutput: true,
-          }).then(physicalUnit => {
-            expect(physicalUnit).toBeTruthy()
-            expect(physicalUnit.data).toBeTruthy()
-            expect(physicalUnit.data.relationships).toBeTruthy()
-            expect(physicalUnit.data.relationships.storageLocation).toBeTruthy()
+          }).then(physicalObject => {
+            expect(physicalObject).toBeTruthy()
+            expect(physicalObject.data).toBeTruthy()
+            expect(physicalObject.data.relationships).toBeTruthy()
+            expect(
+              physicalObject.data.relationships.storageLocation
+            ).toBeTruthy()
           })
         })
         .then(() => {
@@ -226,24 +228,24 @@ apiDescribe('storage', () => {
           }).then(storageLocation => {
             expect(storageLocation).toBeTruthy()
             expect(
-              storageLocation.data.relationships.physicalUnits
+              storageLocation.data.relationships.physicalObjects
             ).toBeTruthy()
             expect(
-              storageLocation.data.relationships.physicalUnits.data[0]
+              storageLocation.data.relationships.physicalObjects.data[0]
             ).toBeTruthy()
           })
         })
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalUnits',
+            operationId: 'getPhysicalObjects',
             queryParams: {
               relationships: ['all'],
             },
             validateOutput: true,
-          }).then(physicalUnits => {
-            expect(physicalUnits).toBeTruthy()
-            const { data } = physicalUnits
+          }).then(physicalObjects => {
+            expect(physicalObjects).toBeTruthy()
+            const { data } = physicalObjects
             expect(data[0].relationships.storageLocation.data.id).toBe(
               storageLocationId
             )
@@ -260,8 +262,8 @@ apiDescribe('storage', () => {
           }).then(storageLocations => {
             expect(storageLocations).toBeTruthy()
             const { data } = storageLocations
-            expect(data[0].relationships.physicalUnits.data[0].id).toBe(
-              physicalUnitId
+            expect(data[0].relationships.physicalObjects.data[0].id).toBe(
+              physicalObjectId
             )
           })
         })

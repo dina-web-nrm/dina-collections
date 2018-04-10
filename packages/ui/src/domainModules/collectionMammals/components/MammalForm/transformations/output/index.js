@@ -28,7 +28,7 @@ export default function transformOutput(formData, normalize = true) {
   const {
     collectionItems,
     preparationTypes,
-    physicalUnits,
+    physicalObjects,
     storageLocations,
   } = transformCollectionItems(formData.collectionItems)
 
@@ -57,7 +57,7 @@ export default function transformOutput(formData, normalize = true) {
   return {
     curatedLocalities,
     featureTypes,
-    physicalUnits,
+    physicalObjects,
     preparationTypes,
     specimen,
     storageLocations,

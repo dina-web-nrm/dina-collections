@@ -9,7 +9,7 @@ export default function transformInput({
   denormalize = true,
   preparationTypes = {},
   featureTypes = {},
-  physicalUnits = {},
+  physicalObjects = {},
   specimen = {},
   storageLocations = {},
 }) {
@@ -27,7 +27,7 @@ export default function transformInput({
   })
   const collectionItems = transformCollectionItems({
     collectionItems: attributes.collectionItems,
-    physicalUnits,
+    physicalObjects,
     preparationTypes,
     storageLocations,
   })

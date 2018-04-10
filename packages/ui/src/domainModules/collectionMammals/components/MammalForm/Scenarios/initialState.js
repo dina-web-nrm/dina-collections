@@ -69,14 +69,14 @@ export default {
   },
   storageService: {
     resources: {
-      physicalUnits: {
+      physicalObjects: {
         '1': {
           id: '1',
           storageLocation: {
             id: '1',
             type: 'storageLocation',
           },
-          type: 'physicalUnit',
+          type: 'physicalObject',
         },
       },
       storageLocations: {

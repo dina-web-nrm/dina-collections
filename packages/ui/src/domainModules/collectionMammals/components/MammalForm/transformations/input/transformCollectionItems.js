@@ -5,7 +5,7 @@ const INITIAL_VALUES = {
 export default function transformCollectionItems({
   collectionItems,
   preparationTypes,
-  physicalUnits,
+  physicalObjects,
   storageLocations,
 }) {
   if (!collectionItems) {
@@ -13,8 +13,8 @@ export default function transformCollectionItems({
   }
 
   return collectionItems.map(collectionItem => {
-    const { preparationType, physicalUnit } = collectionItem
-    const { storageLocation } = physicalUnit || {}
+    const { preparationType, physicalObject } = collectionItem
+    const { storageLocation } = physicalObject || {}
 
     const mappedCollectionItem = {
       ...collectionItem,
@@ -25,15 +25,15 @@ export default function transformCollectionItems({
         preparationTypes[preparationType.id]
     }
 
-    if (physicalUnit && physicalUnits[physicalUnit.id]) {
-      const mappedPhysicalUnit = physicalUnits[physicalUnit.id]
+    if (physicalObject && physicalObjects[physicalObject.id]) {
+      const mappedPhysicalObject = physicalObjects[physicalObject.id]
 
       if (storageLocation && storageLocations[storageLocation.id]) {
-        mappedPhysicalUnit.storageLocation =
+        mappedPhysicalObject.storageLocation =
           storageLocations[storageLocation.id]
       }
 
-      mappedCollectionItem.physicalUnit = mappedPhysicalUnit
+      mappedCollectionItem.physicalObject = mappedPhysicalObject
     }
 
     return mappedCollectionItem

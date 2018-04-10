@@ -19,11 +19,11 @@
           }
         ]
       },
-      "physicalUnits": {
+      "physicalObjects": {
         "data": [
           {
             "id": "2234",
-            "type": "physicalUnit"
+            "type": "physicalObject"
           }
         ]
       }
@@ -165,10 +165,10 @@
               }
             },
             "id": "string",
-            "physicalUnitText": "Skin complete, prepared",
-            "physicalUnit": {
+            "physicalObjectText": "Skin complete, prepared",
+            "physicalObject": {
               "id": "2234",
-              "type": "physicalUnit"
+              "type": "physicalObject"
             }
           }
         ],

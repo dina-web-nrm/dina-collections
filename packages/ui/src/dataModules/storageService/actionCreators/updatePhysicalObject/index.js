@@ -8,10 +8,10 @@ import {
 import { UPDATE_PHYSICAL_UNIT } from '../../endpoints'
 import { PHYSICAL_UNIT } from '../../constants'
 
-export default function updatePhysicalUnit(
-  { physicalUnit, throwError = false } = {}
+export default function updatePhysicalObject(
+  { physicalObject, throwError = false } = {}
 ) {
-  const { id, ...rest } = physicalUnit
+  const { id, ...rest } = physicalObject
 
   const callParams = {
     body: {
@@ -26,7 +26,7 @@ export default function updatePhysicalUnit(
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
-      meta: { physicalUnit },
+      meta: { physicalObject },
       type: STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_REQUEST,
     })
 
@@ -42,7 +42,7 @@ export default function updatePhysicalUnit(
       error => {
         dispatch({
           error: true,
-          meta: { physicalUnit },
+          meta: { physicalObject },
           payload: error,
           type: STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_FAIL,
         })

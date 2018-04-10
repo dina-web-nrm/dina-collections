@@ -1,19 +1,19 @@
 import createEndpoint from 'utilities/endpointFactory/client'
 
 export const CREATE_PHYSICAL_UNIT = createEndpoint({
-  operationId: 'createPhysicalUnit',
+  operationId: 'createPhysicalObject',
 })
 
 export const GET_PHYSICAL_UNIT = createEndpoint({
-  operationId: 'getPhysicalUnit',
+  operationId: 'getPhysicalObject',
 })
 
 export const GET_PHYSICAL_UNITS = createEndpoint({
-  operationId: 'getPhysicalUnits',
+  operationId: 'getPhysicalObjects',
 })
 
 export const UPDATE_PHYSICAL_UNIT = createEndpoint({
-  operationId: 'updatePhysicalUnit',
+  operationId: 'updatePhysicalObject',
 })
 
 export const CREATE_STORAGE_LOCATION = createEndpoint({
@@ -33,5 +33,5 @@ export const UPDATE_STORAGE_LOCATION = createEndpoint({
 })
 
 export const UPDATE_PHYSICAL_UNIT_STORAGE_LOCATION = createEndpoint({
-  operationId: 'updatePhysicalUnitStorageLocation',
+  operationId: 'updatePhysicalObjectStorageLocation',
 })

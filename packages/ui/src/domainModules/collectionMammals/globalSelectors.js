@@ -11,7 +11,7 @@ import {
 } from 'dataModules/specimenService/selectors'
 import {
   getLocalState as getStorageState,
-  getPhysicalUnits,
+  getPhysicalObjects,
 } from 'dataModules/storageService/selectors'
 
 import wrapSelectors from 'utilities/wrapSelectors'
@@ -34,21 +34,21 @@ const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
   return getSpecimenReadOnly(getSpecimenState(state), specimenId)
 }
 
-const getPhysicalUnitsGlobal = state => {
-  return getPhysicalUnits(getStorageState(state))
+const getPhysicalObjectsGlobal = state => {
+  return getPhysicalObjects(getStorageState(state))
 }
 
 const getMammalFormInitialValues = createSelector(
   [
     getFeatureTypesGlobal,
     getInitialSpecimen,
-    getPhysicalUnitsGlobal,
+    getPhysicalObjectsGlobal,
     getSpecimenReadOnlyGlobalSelector,
   ],
-  (featureTypes, specimen, physicalUnits, readOnly) => {
+  (featureTypes, specimen, physicalObjects, readOnly) => {
     return transformInput({
       featureTypes,
-      physicalUnits,
+      physicalObjects,
       readOnly,
       specimen,
     })

@@ -1,4 +1,4 @@
-import { createPhysicalUnit } from 'dataModules/storageService/actionCreators'
+import { createPhysicalObject } from 'dataModules/storageService/actionCreators'
 
 import { flattenObjectResponse } from 'utilities/transformations'
 
@@ -17,7 +17,7 @@ export default function createSpecimen(
   {
     curatedLocalities = [],
     featureTypes = [],
-    physicalUnits = [],
+    physicalObjects = [],
     preparationTypes = [],
     specimen,
     storageLocations = [],
@@ -32,7 +32,7 @@ export default function createSpecimen(
     curatedLocalities,
     featureTypes,
     individual,
-    physicalUnits,
+    physicalObjects,
     preparationTypes,
     storageLocations,
     taxa,
@@ -40,15 +40,17 @@ export default function createSpecimen(
 
   return (dispatch, getState, { apiClient }) => {
     return Promise.all(
-      physicalUnits.map(physicalUnit => {
-        return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
+      physicalObjects.map(physicalObject => {
+        return dispatch(
+          createPhysicalObject({ physicalObject, throwError: true })
+        )
       })
-    ).then(savedPhysicalUnits => {
+    ).then(savedPhysicalObjects => {
       const body = buildSpecimenBody({
         curatedLocalities,
         featureTypes,
         preparationTypes,
-        savedPhysicalUnits,
+        savedPhysicalObjects,
         specimen,
         storageLocations,
         taxa,

@@ -13,45 +13,45 @@ apiDescribe('specimen', () => {
     return waitForApiRestart()
   })
 
-  describe('getSpecimenPhysicalUnits', () => {
+  describe('getSpecimenPhysicalObjects', () => {
     describe('existing relations', () => {
-      let simpleDataPhysicalUnitRelationsId
+      let simpleDataPhysicalObjectRelationsId
       beforeAll(() => {
         return makeTestCall({
-          body: getTestData('simpleDataPhysicalUnitRelations'),
+          body: getTestData('simpleDataPhysicalObjectRelations'),
           operationId: 'createSpecimen',
         }).then(response => {
-          simpleDataPhysicalUnitRelationsId = response.data.id
+          simpleDataPhysicalObjectRelationsId = response.data.id
         })
       })
-      it('Succeed fetch simpleDataPhysicalUnitRelations', () => {
-        const simpleDataPhysicalUnitRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+      it('Succeed fetch simpleDataPhysicalObjectRelations', () => {
+        const simpleDataPhysicalObjectRelations = getTestData(
+          'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
-          operationId: 'getSpecimenPhysicalUnits',
+          operationId: 'getSpecimenPhysicalObjects',
           pathParams: {
-            id: simpleDataPhysicalUnitRelationsId,
+            id: simpleDataPhysicalObjectRelationsId,
           },
         }).then(response => {
           expectMultipleResourcesResponse({
-            expectedType: 'physicalUnit',
+            expectedType: 'physicalObject',
             expectLength: true,
             response,
           })
 
           expect(response.data[0].id).toBe(
-            simpleDataPhysicalUnitRelations.data.relationships.physicalUnits
+            simpleDataPhysicalObjectRelations.data.relationships.physicalObjects
               .data[0].id
           )
-          expect(response.data[0].type).toBe('physicalUnit')
+          expect(response.data[0].type).toBe('physicalObject')
           expect(response.data[0].attributes).toBeTruthy()
         })
       })
       it('Fail fetch with 404 when non existing id provided', () => {
         return expectError404(
           makeTestCall({
-            operationId: 'getSpecimenPhysicalUnits',
+            operationId: 'getSpecimenPhysicalObjects',
             pathParams: {
               id: '17171717',
             },
@@ -70,16 +70,16 @@ apiDescribe('specimen', () => {
           simpleDataNoRelationsId = response.data.id
         })
       })
-      it('Return empty array when no physicalUnits exist', () => {
+      it('Return empty array when no physicalObjects exist', () => {
         return makeTestCall({
-          operationId: 'getSpecimenPhysicalUnits',
+          operationId: 'getSpecimenPhysicalObjects',
           pathParams: {
             id: simpleDataNoRelationsId,
           },
         }).then(response => {
           expectMultipleResourcesResponse({
             expectedLength: 0,
-            expectedType: 'physicalUnit',
+            expectedType: 'physicalObject',
             response,
           })
         })

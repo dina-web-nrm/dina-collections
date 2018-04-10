@@ -1,10 +1,10 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import createPhysicalUnit from './index'
+import createPhysicalObject from './index'
 import * as actionTypes from '../../actionTypes'
 import { PHYSICAL_UNIT } from '../../constants'
 
-describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
+describe('dataModules/storageService/actionCreators/createPhysicalObject', () => {
   let store
   let apiClient
 
@@ -22,11 +22,11 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST
   }`, () => {
-    const physicalUnit = {}
-    const testAction = createPhysicalUnit({ physicalUnit })
+    const physicalObject = {}
+    const testAction = createPhysicalObject({ physicalObject })
 
     const expectedAction = {
-      meta: { physicalUnit },
+      meta: { physicalObject },
       type: actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST,
     }
 
@@ -35,9 +35,9 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls createPhysicalUnit with correct body`, () => {
-    const operationId = 'createPhysicalUnit'
-    const physicalUnit = {
+  it(`calls createPhysicalObject with correct body`, () => {
+    const operationId = 'createPhysicalObject'
+    const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -52,11 +52,11 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
       },
     })
 
-    const testAction = createPhysicalUnit({ physicalUnit })
+    const testAction = createPhysicalObject({ physicalObject })
     const expectedCallParams = {
       body: {
         data: {
-          attributes: { ...physicalUnit },
+          attributes: { ...physicalObject },
           type: PHYSICAL_UNIT,
         },
       },
@@ -74,8 +74,8 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createPhysicalUnit'
-    const physicalUnit = {
+    const operationId = 'createPhysicalObject'
+    const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -101,10 +101,10 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
       },
     })
 
-    const testAction = createPhysicalUnit({ physicalUnit })
+    const testAction = createPhysicalObject({ physicalObject })
 
     const expectedFirstAction = {
-      meta: { physicalUnit },
+      meta: { physicalObject },
       type: actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST,
     }
     const expectedSecondAction = {
@@ -126,8 +126,8 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL
   } without throwing error`, () => {
-    const operationId = 'createPhysicalUnit'
-    const physicalUnit = {
+    const operationId = 'createPhysicalObject'
+    const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -139,15 +139,15 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
       },
     })
 
-    const testAction = createPhysicalUnit({ physicalUnit })
+    const testAction = createPhysicalObject({ physicalObject })
 
     const expectedFirstAction = {
-      meta: { physicalUnit },
+      meta: { physicalObject },
       type: actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { physicalUnit },
+      meta: { physicalObject },
       payload: mockError,
       type: actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL,
     }
@@ -166,8 +166,8 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL
   } and throws error`, () => {
-    const operationId = 'createPhysicalUnit'
-    const physicalUnit = {
+    const operationId = 'createPhysicalObject'
+    const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
     }
@@ -179,15 +179,18 @@ describe('dataModules/storageService/actionCreators/createPhysicalUnit', () => {
       },
     })
 
-    const testAction = createPhysicalUnit({ physicalUnit, throwError: true })
+    const testAction = createPhysicalObject({
+      physicalObject,
+      throwError: true,
+    })
 
     const expectedFirstAction = {
-      meta: { physicalUnit },
+      meta: { physicalObject },
       type: actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { physicalUnit },
+      meta: { physicalObject },
       payload: mockError,
       type: actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL,
     }

@@ -11,10 +11,10 @@ import {
 } from '../../endpoints'
 import { PHYSICAL_UNIT, STORAGE_LOCATION } from '../../constants'
 
-export default function createPhysicalUnit(
-  { physicalUnit, throwError = false } = {}
+export default function createPhysicalObject(
+  { physicalObject, throwError = false } = {}
 ) {
-  const { storageLocation, ...rest } = physicalUnit
+  const { storageLocation, ...rest } = physicalObject
 
   const body = {
     data: {
@@ -25,7 +25,7 @@ export default function createPhysicalUnit(
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
-      meta: { physicalUnit },
+      meta: { physicalObject },
       type: STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST,
     })
 
@@ -66,7 +66,7 @@ export default function createPhysicalUnit(
       error => {
         dispatch({
           error: true,
-          meta: { physicalUnit },
+          meta: { physicalObject },
           payload: error,
           type: STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL,
         })

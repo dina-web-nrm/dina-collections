@@ -102,5 +102,5 @@ PhysicalObjectTitle.defaultProps = defaultProps
 
 export default compose(
   createGetPreparationTypeById('preparationTypeId'),
-  createGetStorageLocationById('physicalUnit.storageLocation.id')
+  createGetStorageLocationById('physicalObject.storageLocation.id')
 )(PhysicalObjectTitle)

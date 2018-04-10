@@ -94,7 +94,7 @@ function PhysicalObjectContent({
             component={StorageLocationSearch}
             label={moduleTranslate({ textKey: 'normalStorageLocation' })}
             module="collectionMammals"
-            name={getPath('physicalUnit.storageLocation.id')}
+            name={getPath('physicalObject.storageLocation.id')}
             type="search-connect"
           />
         </Grid.Column>

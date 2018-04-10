@@ -1,10 +1,10 @@
-const createPhysicalUnitRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const createPhysicalObjectRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
   basePath: '/api/storage/v01',
   operations: [
     {
-      exampleRequests: { primary: createPhysicalUnitRequestSuccess },
+      exampleRequests: { primary: createPhysicalObjectRequestSuccess },
       type: 'create',
     },
     {
@@ -40,5 +40,5 @@ module.exports = {
       type: 'hasOne',
     },
   },
-  resource: 'physicalUnit',
+  resource: 'physicalObject',
 }

@@ -1,4 +1,4 @@
-import { getPhysicalUnit } from 'dataModules/storageService/actionCreators'
+import { getPhysicalObject } from 'dataModules/storageService/actionCreators'
 import { flattenObjectResponse } from 'utilities/transformations'
 
 import {
@@ -28,12 +28,12 @@ export default function getSpecimen({ id, throwError = false } = {}) {
         response => {
           const transformedResponse = flattenObjectResponse(response.data)
           if (response.data && response.data.relationships) {
-            const { physicalUnits } = response.data.relationships
+            const { physicalObjects } = response.data.relationships
             return Promise.all([
-              ...physicalUnits.data.map(physicalUnit => {
+              ...physicalObjects.data.map(physicalObject => {
                 return dispatch(
-                  getPhysicalUnit({
-                    id: physicalUnit.id,
+                  getPhysicalObject({
+                    id: physicalObject.id,
                     throwError: true,
                   })
                 )

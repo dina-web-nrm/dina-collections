@@ -37,7 +37,7 @@ class SegmentOther extends PureComponent {
                 />
               }
               module="collectionMammals"
-              name="collectionItems.0.physicalUnit.storedUnderTaxonName"
+              name="collectionItems.0.physicalObject.storedUnderTaxonName"
               type="text"
             />
           </Grid.Column>

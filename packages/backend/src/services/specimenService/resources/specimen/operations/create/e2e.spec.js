@@ -56,7 +56,7 @@ apiDescribe('specimen', () => {
                 featureTypes: {
                   data: [],
                 },
-                physicalUnits: {
+                physicalObjects: {
                   data: [],
                 },
                 taxa: {
@@ -68,12 +68,12 @@ apiDescribe('specimen', () => {
           })
         })
       })
-      it('Succeed with simpleDataPhysicalUnitRelations. Physical unit relationships are included in get response but not in create response', () => {
-        const simpleDataPhysicalUnitRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+      it('Succeed with simpleDataPhysicalObjectRelations. Physical unit relationships are included in get response but not in create response', () => {
+        const simpleDataPhysicalObjectRelations = getTestData(
+          'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
-          body: simpleDataPhysicalUnitRelations,
+          body: simpleDataPhysicalObjectRelations,
           operationId: 'createSpecimen',
         })
           .then(response => {
@@ -95,7 +95,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  ...simpleDataPhysicalUnitRelations.data.relationships,
+                  ...simpleDataPhysicalObjectRelations.data.relationships,
                   curatedLocalities: { data: [] },
                   featureTypes: {
                     data: [],

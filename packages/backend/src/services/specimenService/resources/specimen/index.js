@@ -20,11 +20,11 @@ module.exports = {
       type: 'update',
     },
     {
-      relationKey: 'physicalUnits',
+      relationKey: 'physicalObjects',
       type: 'updateRelationHasMany',
     },
     {
-      relationKey: 'physicalUnits',
+      relationKey: 'physicalObjects',
       type: 'getRelationHasMany',
     },
     {
@@ -84,9 +84,9 @@ module.exports = {
       resource: 'featureType',
       storeInDocument: true,
     },
-    physicalUnits: {
+    physicalObjects: {
       format: 'array',
-      resource: 'physicalUnit',
+      resource: 'physicalObject',
       storeInDocument: true,
     },
     taxa: {

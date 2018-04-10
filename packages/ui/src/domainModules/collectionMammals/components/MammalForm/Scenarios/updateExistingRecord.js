@@ -1,9 +1,9 @@
 const individual = {
   collectionItems: [
     {
-      physicalUnit: {
+      physicalObject: {
         id: '1',
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     },
   ],
@@ -45,10 +45,10 @@ const featureTypes = {
     type: 'featureType',
   },
 }
-const physicalUnits = {
+const physicalObjects = {
   1: {
     id: '1',
-    type: 'physicalUnit',
+    type: 'physicalObject',
   },
 }
 const taxa = {
@@ -72,10 +72,10 @@ const expectedOutput = {
       type: 'featureType',
     },
   ],
-  physicalUnits: [
+  physicalObjects: [
     {
       id: '1',
-      type: 'physicalUnit',
+      type: 'physicalObject',
     },
   ],
   preparationTypes: [],
@@ -83,10 +83,10 @@ const expectedOutput = {
     individual: {
       collectionItems: [
         {
-          physicalUnit: {
+          physicalObject: {
             id: '1',
             storageLocation: undefined,
-            type: 'physicalUnit',
+            type: 'physicalObject',
           },
         },
       ],
@@ -137,7 +137,7 @@ const scenario = {
   expectedOutput,
   input: {
     featureTypes,
-    physicalUnits,
+    physicalObjects,
     specimen: { individual },
     taxa,
   },

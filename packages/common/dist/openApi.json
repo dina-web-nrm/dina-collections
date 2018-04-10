@@ -2471,7 +2471,7 @@
             "example": [
               "curatedLocalities",
               "featureTypes",
-              "physicalUnits",
+              "physicalObjects",
               "taxa"
             ],
             "schema": {
@@ -2480,7 +2480,7 @@
                   "all",
                   "curatedLocalities",
                   "featureTypes",
-                  "physicalUnits",
+                  "physicalObjects",
                   "taxa"
                 ],
                 "type": "string"
@@ -2683,7 +2683,7 @@
             "example": [
               "curatedLocalities",
               "featureTypes",
-              "physicalUnits",
+              "physicalObjects",
               "taxa"
             ],
             "schema": {
@@ -2692,7 +2692,7 @@
                   "all",
                   "curatedLocalities",
                   "featureTypes",
-                  "physicalUnits",
+                  "physicalObjects",
                   "taxa"
                 ],
                 "type": "string"
@@ -2754,9 +2754,9 @@
         ]
       }
     },
-    "/api/specimen/v01/specimens/{id}/relationships/physicalUnits": {
+    "/api/specimen/v01/specimens/{id}/relationships/physicalObjects": {
       "patch": {
-        "operationId": "updateSpecimenPhysicalUnits",
+        "operationId": "updateSpecimenPhysicalObjects",
         "parameters": [
           {
             "in": "path",
@@ -2791,7 +2791,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsRequest"
+                "$ref": "#/components/schemas/updateSpecimenPhysicalObjectsRequest"
               }
             }
           },
@@ -2802,7 +2802,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnitsResponse"
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalObjectsResponse"
                 }
               }
             },
@@ -2812,7 +2812,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnits-400"
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalObjects-400"
                 }
               }
             },
@@ -2822,7 +2822,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnits-404"
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalObjects-404"
                 }
               }
             },
@@ -2832,7 +2832,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updateSpecimenPhysicalUnits-500"
+                  "$ref": "#/components/schemas/updateSpecimenPhysicalObjects-500"
                 }
               }
             },
@@ -2844,13 +2844,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update specimen -> physicalUnits",
+        "summary": "Update specimen -> physicalObjects",
         "tags": [
           "specimenService"
         ]
       },
       "get": {
-        "operationId": "getSpecimenPhysicalUnits",
+        "operationId": "getSpecimenPhysicalObjects",
         "parameters": [
           {
             "in": "path",
@@ -2886,7 +2886,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenPhysicalUnitsResponse"
+                  "$ref": "#/components/schemas/getSpecimenPhysicalObjectsResponse"
                 }
               }
             },
@@ -2896,7 +2896,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenPhysicalUnits-400"
+                  "$ref": "#/components/schemas/getSpecimenPhysicalObjects-400"
                 }
               }
             },
@@ -2906,7 +2906,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenPhysicalUnits-404"
+                  "$ref": "#/components/schemas/getSpecimenPhysicalObjects-404"
                 }
               }
             },
@@ -2916,7 +2916,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getSpecimenPhysicalUnits-500"
+                  "$ref": "#/components/schemas/getSpecimenPhysicalObjects-500"
                 }
               }
             },
@@ -2928,7 +2928,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find specimen -> physicalUnits",
+        "summary": "Find specimen -> physicalObjects",
         "tags": [
           "specimenService"
         ]
@@ -3579,9 +3579,9 @@
         ]
       }
     },
-    "/api/storage/v01/physicalUnits": {
+    "/api/storage/v01/physicalObjects": {
       "post": {
-        "operationId": "createPhysicalUnit",
+        "operationId": "createPhysicalObject",
         "parameters": [
           {
             "in": "query",
@@ -3606,7 +3606,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/createPhysicalUnitRequest"
+                "$ref": "#/components/schemas/createPhysicalObjectRequest"
               }
             }
           },
@@ -3617,7 +3617,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createPhysicalUnitResponse"
+                  "$ref": "#/components/schemas/createPhysicalObjectResponse"
                 }
               }
             },
@@ -3627,7 +3627,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createPhysicalUnit-400"
+                  "$ref": "#/components/schemas/createPhysicalObject-400"
                 }
               }
             },
@@ -3637,7 +3637,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createPhysicalUnit-500"
+                  "$ref": "#/components/schemas/createPhysicalObject-500"
                 }
               }
             },
@@ -3649,13 +3649,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create physicalUnit",
+        "summary": "Create physicalObject",
         "tags": [
           "storageService"
         ]
       },
       "get": {
-        "operationId": "getPhysicalUnits",
+        "operationId": "getPhysicalObjects",
         "parameters": [
           {
             "in": "query",
@@ -3717,7 +3717,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitsResponse"
+                  "$ref": "#/components/schemas/getPhysicalObjectsResponse"
                 }
               }
             },
@@ -3727,7 +3727,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnits-400"
+                  "$ref": "#/components/schemas/getPhysicalObjects-400"
                 }
               }
             },
@@ -3737,7 +3737,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnits-500"
+                  "$ref": "#/components/schemas/getPhysicalObjects-500"
                 }
               }
             },
@@ -3749,20 +3749,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find physicalUnits",
+        "summary": "Find physicalObjects",
         "tags": [
           "storageService"
         ]
       }
     },
-    "/api/storage/v01/physicalUnits/{id}": {
+    "/api/storage/v01/physicalObjects/{id}": {
       "patch": {
-        "operationId": "updatePhysicalUnit",
+        "operationId": "updatePhysicalObject",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "physicalObject id",
             "example": "1",
             "required": true,
             "schema": {
@@ -3792,7 +3792,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updatePhysicalUnitRequest"
+                "$ref": "#/components/schemas/updatePhysicalObjectRequest"
               }
             }
           },
@@ -3803,7 +3803,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnitResponse"
+                  "$ref": "#/components/schemas/updatePhysicalObjectResponse"
                 }
               }
             },
@@ -3813,7 +3813,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnit-400"
+                  "$ref": "#/components/schemas/updatePhysicalObject-400"
                 }
               }
             },
@@ -3823,7 +3823,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnit-404"
+                  "$ref": "#/components/schemas/updatePhysicalObject-404"
                 }
               }
             },
@@ -3833,7 +3833,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnit-500"
+                  "$ref": "#/components/schemas/updatePhysicalObject-500"
                 }
               }
             },
@@ -3845,18 +3845,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates physicalUnit",
+        "summary": "Updates physicalObject",
         "tags": [
           "storageService"
         ]
       },
       "get": {
-        "operationId": "getPhysicalUnit",
+        "operationId": "getPhysicalObject",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "physicalObject id",
             "example": "1",
             "required": true,
             "schema": {
@@ -3905,7 +3905,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitResponse"
+                  "$ref": "#/components/schemas/getPhysicalObjectResponse"
                 }
               }
             },
@@ -3915,7 +3915,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnit-400"
+                  "$ref": "#/components/schemas/getPhysicalObject-400"
                 }
               }
             },
@@ -3925,7 +3925,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnit-404"
+                  "$ref": "#/components/schemas/getPhysicalObject-404"
                 }
               }
             },
@@ -3935,7 +3935,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnit-500"
+                  "$ref": "#/components/schemas/getPhysicalObject-500"
                 }
               }
             },
@@ -3947,20 +3947,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find physicalUnit by id",
+        "summary": "Find physicalObject by id",
         "tags": [
           "storageService"
         ]
       }
     },
-    "/api/storage/v01/physicalUnits/{id}/relationships/storageLocation": {
+    "/api/storage/v01/physicalObjects/{id}/relationships/storageLocation": {
       "patch": {
-        "operationId": "updatePhysicalUnitStorageLocation",
+        "operationId": "updatePhysicalObjectStorageLocation",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "physicalObject id",
             "example": "1",
             "required": true,
             "schema": {
@@ -3990,7 +3990,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updatePhysicalUnitStorageLocationRequest"
+                "$ref": "#/components/schemas/updatePhysicalObjectStorageLocationRequest"
               }
             }
           },
@@ -4001,7 +4001,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocationResponse"
+                  "$ref": "#/components/schemas/updatePhysicalObjectStorageLocationResponse"
                 }
               }
             },
@@ -4011,7 +4011,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocation-400"
+                  "$ref": "#/components/schemas/updatePhysicalObjectStorageLocation-400"
                 }
               }
             },
@@ -4021,7 +4021,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocation-404"
+                  "$ref": "#/components/schemas/updatePhysicalObjectStorageLocation-404"
                 }
               }
             },
@@ -4031,7 +4031,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePhysicalUnitStorageLocation-500"
+                  "$ref": "#/components/schemas/updatePhysicalObjectStorageLocation-500"
                 }
               }
             },
@@ -4043,18 +4043,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update physicalUnit -> storageLocation",
+        "summary": "Update physicalObject -> storageLocation",
         "tags": [
           "storageService"
         ]
       },
       "get": {
-        "operationId": "getPhysicalUnitStorageLocation",
+        "operationId": "getPhysicalObjectStorageLocation",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "physicalObject id",
             "example": "1",
             "required": true,
             "schema": {
@@ -4085,7 +4085,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocationResponse"
+                  "$ref": "#/components/schemas/getPhysicalObjectStorageLocationResponse"
                 }
               }
             },
@@ -4095,7 +4095,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocation-400"
+                  "$ref": "#/components/schemas/getPhysicalObjectStorageLocation-400"
                 }
               }
             },
@@ -4105,7 +4105,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocation-404"
+                  "$ref": "#/components/schemas/getPhysicalObjectStorageLocation-404"
                 }
               }
             },
@@ -4115,7 +4115,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitStorageLocation-500"
+                  "$ref": "#/components/schemas/getPhysicalObjectStorageLocation-500"
                 }
               }
             },
@@ -4127,21 +4127,21 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find physicalUnit -> storageLocation",
+        "summary": "Find physicalObject -> storageLocation",
         "tags": [
           "storageService"
         ]
       }
     },
-    "/api/storage/v01/physicalUnits/{id}/versions/{versionId}": {
+    "/api/storage/v01/physicalObjects/{id}/versions/{versionId}": {
       "get": {
         "description": "The id of the returned resource is the versionId and not the ordinary id",
-        "operationId": "getPhysicalUnitVersion",
+        "operationId": "getPhysicalObjectVersion",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "physicalObject id",
             "example": "1",
             "required": true,
             "schema": {
@@ -4151,7 +4151,7 @@
           {
             "in": "path",
             "name": "versionId",
-            "description": "physicalUnit versionId",
+            "description": "physicalObject versionId",
             "example": "1",
             "required": true,
             "schema": {
@@ -4182,7 +4182,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersionResponse"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersionResponse"
                 }
               }
             },
@@ -4192,7 +4192,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersion-400"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersion-400"
                 }
               }
             },
@@ -4202,7 +4202,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersion-404"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersion-404"
                 }
               }
             },
@@ -4212,7 +4212,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersion-500"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersion-500"
                 }
               }
             },
@@ -4224,20 +4224,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find physicalUnit version by id and versionId",
+        "summary": "Find physicalObject version by id and versionId",
         "tags": [
           "storageService"
         ]
       }
     },
-    "/api/storage/v01/physicalUnits/{id}/versions": {
+    "/api/storage/v01/physicalObjects/{id}/versions": {
       "get": {
-        "operationId": "getPhysicalUnitVersions",
+        "operationId": "getPhysicalObjectVersions",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "physicalUnit id",
+            "description": "physicalObject id",
             "example": "1",
             "required": true,
             "schema": {
@@ -4268,7 +4268,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersionsResponse"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersionsResponse"
                 }
               }
             },
@@ -4278,7 +4278,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersions-400"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersions-400"
                 }
               }
             },
@@ -4288,7 +4288,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPhysicalUnitVersions-500"
+                  "$ref": "#/components/schemas/getPhysicalObjectVersions-500"
                 }
               }
             },
@@ -4300,7 +4300,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find physicalUnits versions",
+        "summary": "Find physicalObjects versions",
         "tags": [
           "storageService"
         ]
@@ -4407,13 +4407,13 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "physicalUnits"
+              "physicalObjects"
             ],
             "schema": {
               "items": {
                 "enum": [
                   "all",
-                  "physicalUnits"
+                  "physicalObjects"
                 ],
                 "type": "string"
               },
@@ -4613,13 +4613,13 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "physicalUnits"
+              "physicalObjects"
             ],
             "schema": {
               "items": {
                 "enum": [
                   "all",
-                  "physicalUnits"
+                  "physicalObjects"
                 ],
                 "type": "string"
               },
@@ -4680,9 +4680,9 @@
         ]
       }
     },
-    "/api/storage/v01/storageLocations/{id}/relationships/physicalUnits": {
+    "/api/storage/v01/storageLocations/{id}/relationships/physicalObjects": {
       "get": {
-        "operationId": "getStorageLocationPhysicalUnits",
+        "operationId": "getStorageLocationPhysicalObjects",
         "parameters": [
           {
             "in": "path",
@@ -4718,7 +4718,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnitsResponse"
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalObjectsResponse"
                 }
               }
             },
@@ -4728,7 +4728,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnits-400"
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalObjects-400"
                 }
               }
             },
@@ -4738,7 +4738,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnits-404"
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalObjects-404"
                 }
               }
             },
@@ -4748,7 +4748,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getStorageLocationPhysicalUnits-500"
+                  "$ref": "#/components/schemas/getStorageLocationPhysicalObjects-500"
                 }
               }
             },
@@ -4760,7 +4760,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find storageLocation -> physicalUnits",
+        "summary": "Find storageLocation -> physicalObjects",
         "tags": [
           "storageService"
         ]
@@ -5861,12 +5861,12 @@
           "id": {
             "type": "string"
           },
-          "physicalUnitText": {
+          "physicalObjectText": {
             "type": "string",
             "example": "Skin complete, prepared"
           },
-          "physicalUnit": {
-            "$ref": "#/components/schemas/physicalUnit"
+          "physicalObject": {
+            "$ref": "#/components/schemas/physicalObject"
           }
         },
         "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n",
@@ -6275,7 +6275,7 @@
         "x-category": "specimenApi",
         "x-modelType": "model"
       },
-      "physicalUnit": {
+      "physicalObject": {
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -8280,7 +8280,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updateSpecimenPhysicalUnits-400": {
+      "updateSpecimenPhysicalObjects-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8307,7 +8307,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updateSpecimenPhysicalUnits-404": {
+      "updateSpecimenPhysicalObjects-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8331,7 +8331,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updateSpecimenPhysicalUnits-500": {
+      "updateSpecimenPhysicalObjects-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8358,7 +8358,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getSpecimenPhysicalUnits-400": {
+      "getSpecimenPhysicalObjects-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8382,7 +8382,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getSpecimenPhysicalUnits-404": {
+      "getSpecimenPhysicalObjects-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8406,7 +8406,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getSpecimenPhysicalUnits-500": {
+      "getSpecimenPhysicalObjects-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9066,7 +9066,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "createPhysicalUnit-400": {
+      "createPhysicalObject-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9093,7 +9093,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "createPhysicalUnit-500": {
+      "createPhysicalObject-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9120,7 +9120,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updatePhysicalUnit-400": {
+      "updatePhysicalObject-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9147,7 +9147,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updatePhysicalUnit-404": {
+      "updatePhysicalObject-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9171,7 +9171,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updatePhysicalUnit-500": {
+      "updatePhysicalObject-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9198,7 +9198,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updatePhysicalUnitStorageLocation-400": {
+      "updatePhysicalObjectStorageLocation-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9225,7 +9225,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "updatePhysicalUnitStorageLocation-404": {
+      "updatePhysicalObjectStorageLocation-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9249,7 +9249,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updatePhysicalUnitStorageLocation-500": {
+      "updatePhysicalObjectStorageLocation-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9276,7 +9276,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPhysicalUnitStorageLocation-400": {
+      "getPhysicalObjectStorageLocation-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9300,7 +9300,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPhysicalUnitStorageLocation-404": {
+      "getPhysicalObjectStorageLocation-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9324,7 +9324,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getPhysicalUnitStorageLocation-500": {
+      "getPhysicalObjectStorageLocation-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9351,7 +9351,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPhysicalUnit-400": {
+      "getPhysicalObject-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9375,7 +9375,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPhysicalUnit-404": {
+      "getPhysicalObject-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9399,7 +9399,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getPhysicalUnit-500": {
+      "getPhysicalObject-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9426,7 +9426,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPhysicalUnits-400": {
+      "getPhysicalObjects-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9450,7 +9450,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPhysicalUnits-500": {
+      "getPhysicalObjects-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9477,7 +9477,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPhysicalUnitVersion-400": {
+      "getPhysicalObjectVersion-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9501,7 +9501,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPhysicalUnitVersion-404": {
+      "getPhysicalObjectVersion-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9525,7 +9525,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getPhysicalUnitVersion-500": {
+      "getPhysicalObjectVersion-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9552,7 +9552,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPhysicalUnitVersions-400": {
+      "getPhysicalObjectVersions-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9576,7 +9576,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPhysicalUnitVersions-500": {
+      "getPhysicalObjectVersions-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9735,7 +9735,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getStorageLocationPhysicalUnits-400": {
+      "getStorageLocationPhysicalObjects-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9759,7 +9759,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getStorageLocationPhysicalUnits-404": {
+      "getStorageLocationPhysicalObjects-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -9783,7 +9783,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getStorageLocationPhysicalUnits-500": {
+      "getStorageLocationPhysicalObjects-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -11059,7 +11059,7 @@
                     },
                     "type": "object"
                   },
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -11072,9 +11072,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -11154,11 +11154,11 @@
                     }
                   ]
                 },
-                "physicalUnits": {
+                "physicalObjects": {
                   "data": [
                     {
                       "id": "2234",
-                      "type": "physicalUnit"
+                      "type": "physicalObject"
                     }
                   ]
                 }
@@ -11180,11 +11180,11 @@
                 "collectionItems": [
                   {
                     "alternateIdentifiersText": "alternateIdentifiersText",
-                    "physicalUnit": {
+                    "physicalObject": {
                       "id": "2234",
-                      "type": "physicalUnit"
+                      "type": "physicalObject"
                     },
-                    "physicalUnitText": "physicalUnitText",
+                    "physicalObjectText": "physicalObjectText",
                     "lid": "af80e78b-c61e-485f-80a8-06d237400583"
                   }
                 ],
@@ -11332,11 +11332,11 @@
                   }
                 ]
               },
-              "physicalUnits": {
+              "physicalObjects": {
                 "data": [
                   {
                     "id": "2234",
-                    "type": "physicalUnit"
+                    "type": "physicalObject"
                   }
                 ]
               }
@@ -11358,11 +11358,11 @@
               "collectionItems": [
                 {
                   "alternateIdentifiersText": "alternateIdentifiersText",
-                  "physicalUnit": {
+                  "physicalObject": {
                     "id": "2234",
-                    "type": "physicalUnit"
+                    "type": "physicalObject"
                   },
-                  "physicalUnitText": "physicalUnitText",
+                  "physicalObjectText": "physicalObjectText",
                   "lid": "af80e78b-c61e-485f-80a8-06d237400583"
                 }
               ],
@@ -11554,7 +11554,7 @@
                     },
                     "type": "object"
                   },
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -11567,9 +11567,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -11614,7 +11614,7 @@
         },
         "description": ""
       },
-      "updateSpecimenPhysicalUnitsRequest": {
+      "updateSpecimenPhysicalObjectsRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -11628,9 +11628,9 @@
               "type": "object",
               "properties": {
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "physicalObject",
                   "enum": [
-                    "physicalUnit"
+                    "physicalObject"
                   ],
                   "type": "string"
                 },
@@ -11704,7 +11704,7 @@
         },
         "description": ""
       },
-      "createPhysicalUnitRequest": {
+      "createPhysicalObjectRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -11720,14 +11720,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "enum": [
-                  "physicalUnit"
+                  "physicalObject"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "relationships": {
                 "properties": {
@@ -11777,7 +11777,7 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "physicalUnit",
+              "type": "physicalObject",
               "attributes": {
                 "normalStorageLocationText": "string",
                 "storedUnderTaxonName": "Sorex minutus"
@@ -11787,7 +11787,7 @@
         },
         "example": {
           "data": {
-            "type": "physicalUnit",
+            "type": "physicalObject",
             "attributes": {
               "normalStorageLocationText": "string",
               "storedUnderTaxonName": "Sorex minutus"
@@ -11796,7 +11796,7 @@
         },
         "description": ""
       },
-      "updatePhysicalUnitRequest": {
+      "updatePhysicalObjectRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -11812,14 +11812,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "enum": [
-                  "physicalUnit"
+                  "physicalObject"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "relationships": {
                 "properties": {
@@ -11868,7 +11868,7 @@
         },
         "description": ""
       },
-      "updatePhysicalUnitStorageLocationRequest": {
+      "updatePhysicalObjectStorageLocationRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -11922,7 +11922,7 @@
               },
               "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -11935,9 +11935,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -12001,7 +12001,7 @@
               },
               "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -12014,9 +12014,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -13829,7 +13829,7 @@
                     },
                     "type": "object"
                   },
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -13842,9 +13842,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -13980,7 +13980,7 @@
                     },
                     "type": "object"
                   },
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -13993,9 +13993,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -14064,7 +14064,7 @@
         "x-examples": {},
         "description": ""
       },
-      "updateSpecimenPhysicalUnitsResponse": {
+      "updateSpecimenPhysicalObjectsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -14094,7 +14094,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalObjects",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -14110,7 +14110,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getSpecimenPhysicalUnitsResponse": {
+      "getSpecimenPhysicalObjectsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -14119,14 +14119,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
+                  "$ref": "#/components/schemas/physicalObject"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "physicalObject",
                   "type": "string"
                 }
               },
@@ -14140,7 +14140,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalUnits",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/physicalObjects",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -14453,7 +14453,7 @@
                     },
                     "type": "object"
                   },
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -14466,9 +14466,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -14606,7 +14606,7 @@
                       },
                       "type": "object"
                     },
-                    "physicalUnits": {
+                    "physicalObjects": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {
@@ -14619,9 +14619,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "physicalUnit"
+                                  "physicalObject"
                                 ],
-                                "example": "physicalUnit",
+                                "example": "physicalObject",
                                 "type": "string"
                               }
                             },
@@ -14759,7 +14759,7 @@
                     },
                     "type": "object"
                   },
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -14772,9 +14772,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -14912,7 +14912,7 @@
                       },
                       "type": "object"
                     },
-                    "physicalUnits": {
+                    "physicalObjects": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {
@@ -14925,9 +14925,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "physicalUnit"
+                                  "physicalObject"
                                 ],
-                                "example": "physicalUnit",
+                                "example": "physicalObject",
                                 "type": "string"
                               }
                             },
@@ -15016,14 +15016,14 @@
         },
         "description": ""
       },
-      "createPhysicalUnitResponse": {
+      "createPhysicalObjectResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "id": {
                 "example": "1234",
@@ -15072,7 +15072,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "type": "string"
               }
             },
@@ -15084,7 +15084,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits",
+                "example": "https://domain/api/storage/v01/physicalObjects",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15100,14 +15100,14 @@
         "x-examples": {},
         "description": ""
       },
-      "updatePhysicalUnitResponse": {
+      "updatePhysicalObjectResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "id": {
                 "example": "1234",
@@ -15156,7 +15156,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "type": "string"
               }
             },
@@ -15168,7 +15168,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}",
+                "example": "https://domain/api/storage/v01/physicalObjects/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15184,21 +15184,21 @@
         "x-examples": {},
         "description": ""
       },
-      "updatePhysicalUnitStorageLocationResponse": {
+      "updatePhysicalObjectStorageLocationResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "type": "string"
               }
             },
@@ -15210,7 +15210,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                "example": "https://domain/api/storage/v01/physicalObjects/{id}/relationships/storageLocation",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15226,7 +15226,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getPhysicalUnitStorageLocationResponse": {
+      "getPhysicalObjectStorageLocationResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -15252,7 +15252,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}/relationships/storageLocation",
+                "example": "https://domain/api/storage/v01/physicalObjects/{id}/relationships/storageLocation",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15268,14 +15268,14 @@
         "x-examples": {},
         "description": ""
       },
-      "getPhysicalUnitResponse": {
+      "getPhysicalObjectResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "id": {
                 "example": "1234",
@@ -15324,7 +15324,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "type": "string"
               }
             },
@@ -15336,7 +15336,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}",
+                "example": "https://domain/api/storage/v01/physicalObjects/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15352,7 +15352,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getPhysicalUnitsResponse": {
+      "getPhysicalObjectsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -15361,7 +15361,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
+                  "$ref": "#/components/schemas/physicalObject"
                 },
                 "id": {
                   "example": "1234",
@@ -15410,7 +15410,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "physicalObject",
                   "type": "string"
                 }
               },
@@ -15424,7 +15424,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits",
+                "example": "https://domain/api/storage/v01/physicalObjects",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15440,14 +15440,14 @@
         "x-examples": {},
         "description": ""
       },
-      "getPhysicalUnitVersionResponse": {
+      "getPhysicalObjectVersionResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/physicalUnit"
+                "$ref": "#/components/schemas/physicalObject"
               },
               "id": {
                 "example": "1234",
@@ -15496,7 +15496,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "physicalUnit",
+                "default": "physicalObject",
                 "type": "string"
               }
             },
@@ -15508,7 +15508,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}/versions/{versionId}",
+                "example": "https://domain/api/storage/v01/physicalObjects/{id}/versions/{versionId}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15524,7 +15524,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getPhysicalUnitVersionsResponse": {
+      "getPhysicalObjectVersionsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -15533,7 +15533,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
+                  "$ref": "#/components/schemas/physicalObject"
                 },
                 "id": {
                   "example": "1234",
@@ -15582,7 +15582,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "physicalObject",
                   "type": "string"
                 }
               },
@@ -15596,7 +15596,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/physicalUnits/{id}/versions",
+                "example": "https://domain/api/storage/v01/physicalObjects/{id}/versions",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15627,7 +15627,7 @@
               },
               "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -15640,9 +15640,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -15700,7 +15700,7 @@
               },
               "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -15713,9 +15713,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -15758,7 +15758,7 @@
         "x-examples": {},
         "description": ""
       },
-      "getStorageLocationPhysicalUnitsResponse": {
+      "getStorageLocationPhysicalObjectsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -15767,14 +15767,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/physicalUnit"
+                  "$ref": "#/components/schemas/physicalObject"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "physicalUnit",
+                  "default": "physicalObject",
                   "type": "string"
                 }
               },
@@ -15788,7 +15788,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalUnits",
+                "example": "https://domain/api/storage/v01/storageLocations/{id}/relationships/physicalObjects",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -15819,7 +15819,7 @@
               },
               "relationships": {
                 "properties": {
-                  "physicalUnits": {
+                  "physicalObjects": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -15832,9 +15832,9 @@
                             },
                             "type": {
                               "enum": [
-                                "physicalUnit"
+                                "physicalObject"
                               ],
-                              "example": "physicalUnit",
+                              "example": "physicalObject",
                               "type": "string"
                             }
                           },
@@ -15894,7 +15894,7 @@
                 },
                 "relationships": {
                   "properties": {
-                    "physicalUnits": {
+                    "physicalObjects": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {
@@ -15907,9 +15907,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "physicalUnit"
+                                  "physicalObject"
                                 ],
-                                "example": "physicalUnit",
+                                "example": "physicalObject",
                                 "type": "string"
                               }
                             },

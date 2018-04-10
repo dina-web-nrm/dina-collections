@@ -23,7 +23,7 @@ const getPayload = () => {
   }
 }
 
-describe('dataModules/storageService/reducer/resources/physicalUnits', () => {
+describe('dataModules/storageService/reducer/resources/physicalObjects', () => {
   describe('getInitialState', () => {
     it('returns empty object', () => {
       const testValue = getInitialState()

@@ -169,16 +169,16 @@
 │   └── utilities.test.js
 ├── storageService
 │   ├── actionCreators
-│   │   ├── createPhysicalUnit
+│   │   ├── createPhysicalObject
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── createStorageLocation
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPhysicalUnit
+│   │   ├── getPhysicalObject
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPhysicalUnits
+│   │   ├── getPhysicalObjects
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── getStorageLocation
@@ -189,7 +189,7 @@
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   ├── updatePhysicalUnit
+│   │   ├── updatePhysicalObject
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   └── updateStorageLocation
@@ -216,7 +216,7 @@
 │   │   └── resources
 │   │       ├── index.js
 │   │       ├── index.test.js
-│   │       ├── physicalUnits
+│   │       ├── physicalObjects
 │   │       └── storageLocations
 │   ├── selectors.js
 │   └── selectors.test.js

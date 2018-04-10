@@ -56,11 +56,11 @@ const mutations = [
     value: 'description',
   },
   {
-    name: 'collectionItems.0.physicalUnit.storageLocation.id.hidden',
+    name: 'collectionItems.0.physicalObject.storageLocation.id.hidden',
     value: '1',
   },
   {
-    name: 'collectionItems.0.physicalUnit.storedUnderTaxonName',
+    name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
     value: 'storedUnderTaxonName',
   },
   {
@@ -185,7 +185,7 @@ const expectedOutput = {
       type: 'featureType',
     },
   ],
-  physicalUnits: [
+  physicalObjects: [
     {
       storageLocation: {
         id: '1',
@@ -215,7 +215,7 @@ const expectedOutput = {
             },
           ],
           description: 'description',
-          physicalUnit: {
+          physicalObject: {
             storageLocation: {
               id: '1',
               type: 'storageLocation',

@@ -141,7 +141,7 @@
 │   │       └── index.js
 │   └── resources
 │       ├── index.js
-│       ├── physicalUnit
+│       ├── physicalObject
 │       │   ├── index.js
 │       │   └── operations
 │       └── storageLocation

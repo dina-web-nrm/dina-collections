@@ -5,13 +5,13 @@
     "relationships": {
       "type": "object",
       "properties": {
-        "physicalUnits": {
+        "physicalObjects": {
           "type": "object",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__physicalUnit",
+                "$ref": "__ROOT__physicalObject",
                 "x-reference-type": "external"
               }
             }

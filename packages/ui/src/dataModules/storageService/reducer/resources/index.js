@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import physicalUnits from './physicalUnits'
+import physicalObjects from './physicalObjects'
 import storageLocations from './storageLocations'
 
-export default combineReducers({ physicalUnits, storageLocations })
+export default combineReducers({ physicalObjects, storageLocations })

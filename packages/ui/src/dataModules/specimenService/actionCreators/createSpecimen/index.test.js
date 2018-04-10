@@ -26,7 +26,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   it(`dispatches ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST} followed by ${
     STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS
   } and ${actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST}`, () => {
-    const physicalUnits = [
+    const physicalObjects = [
       {
         normalStorageLocation: 'Sorex minutus',
       },
@@ -34,7 +34,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const specimen = {
       individual: { collectionItems: [], identifiers: [] },
     }
-    const testAction = createSpecimen({ physicalUnits, specimen })
+    const testAction = createSpecimen({ physicalObjects, specimen })
 
     expect.assertions(3)
 

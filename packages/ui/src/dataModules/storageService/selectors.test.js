@@ -1,9 +1,9 @@
 import {
   getLocalState,
   getResources,
-  getPhysicalUnits,
+  getPhysicalObjects,
   getStorageLocations,
-  getPhysicalUnit,
+  getPhysicalObject,
   getStorageLocation,
 } from './selectors'
 
@@ -13,7 +13,7 @@ describe('dataModules/storageService/selectors', () => {
   beforeEach(() => {
     state = {
       resources: {
-        physicalUnits: {
+        physicalObjects: {
           a: { id: 'a' },
           b: { id: 'b' },
         },
@@ -32,11 +32,13 @@ describe('dataModules/storageService/selectors', () => {
   it('returns resources', () => {
     expect(getResources(state)).toEqual(state.resources)
   })
-  it('returns physicalUnits', () => {
-    expect(getPhysicalUnits(state)).toEqual(state.resources.physicalUnits)
+  it('returns physicalObjects', () => {
+    expect(getPhysicalObjects(state)).toEqual(state.resources.physicalObjects)
   })
-  it('returns physicalUnit by id', () => {
-    expect(getPhysicalUnit(state, 'a')).toEqual(state.resources.physicalUnits.a)
+  it('returns physicalObject by id', () => {
+    expect(getPhysicalObject(state, 'a')).toEqual(
+      state.resources.physicalObjects.a
+    )
   })
   it('returns storageLocations', () => {
     expect(getStorageLocations(state)).toEqual(state.resources.storageLocations)

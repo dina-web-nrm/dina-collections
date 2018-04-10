@@ -89,7 +89,7 @@ const createData = catalogNumber => {
           },
         ],
         originStandardized: 'Standardized origin',
-        physicalUnits: [
+        physicalObjects: [
           {
             alternateIdentifiersText: 'alternateIdentifiersText',
             catalogedUnit: {
@@ -98,7 +98,7 @@ const createData = catalogNumber => {
               storedUnderTaxonName: 'Sorex minutus',
             },
             normalStorageLocationText: 'normalStorageLocationText',
-            physicalUnitText: 'physicalUnitText',
+            physicalObjectText: 'physicalObjectText',
           },
         ],
       },

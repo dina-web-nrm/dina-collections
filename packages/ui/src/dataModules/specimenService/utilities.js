@@ -8,12 +8,12 @@ export const buildSpecimenBody = ({
   curatedLocalities,
   featureTypes,
   preparationTypes,
-  savedPhysicalUnits,
+  savedPhysicalObjects,
   specimen,
   storageLocations,
   taxa,
 }) => {
-  const cleanedPhysicalUnits = savedPhysicalUnits.map(
+  const cleanedPhysicalObjects = savedPhysicalObjects.map(
     ({ id, storageLocation }) => {
       if (storageLocation) {
         const cleanedStorageLocation = {
@@ -41,7 +41,7 @@ export const buildSpecimenBody = ({
       (collectionItem, index) => {
         return {
           ...collectionItem,
-          physicalUnit: cleanedPhysicalUnits[index],
+          physicalObject: cleanedPhysicalObjects[index],
         }
       }
     ),
@@ -57,8 +57,8 @@ export const buildSpecimenBody = ({
         featureTypes: {
           data: featureTypes,
         },
-        physicalUnits: {
-          data: cleanedPhysicalUnits,
+        physicalObjects: {
+          data: cleanedPhysicalObjects,
         },
         preparationTypes: {
           data: preparationTypes,
