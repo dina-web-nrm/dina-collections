@@ -79,6 +79,31 @@
         "$ref": "__ROOT__collectingCircumstance"
       }
     },
+    "determinations": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__determination"
+      }
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__identifier"
+      }
+    },
+    "taxonInformation": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxonInformation"
+      }
+    },
+
+    "featureObservations": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__featureObservation"
+      }
+    },
     "events": {
       "type": "array",
       "items": {

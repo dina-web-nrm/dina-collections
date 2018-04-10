@@ -5,7 +5,7 @@ const {
 const waitForApiRestart = require('../../../../../../utilities/test/waitForApiRestart')
 const expectMultipleResourcesResponse = require('../../../../../../utilities/test/expectMultipleResourcesResponse')
 
-const fullFormExample = require('../create/examples/fullFormExample.json')
+const fullFormExample = require('../create/examples/normalizedRequestSuccess.json')
 const { getTestData } = require('../../testData')
 
 const validCatalogNumber = '123456'
@@ -114,7 +114,7 @@ apiDescribe('specimen', () => {
         const modifiedSimpleDataRelations = getTestData(
           'simpleDataPhysicalUnitRelations'
         )
-        modifiedSimpleDataRelations.data.attributes.individualGroup.identifiers[0].identifier.value =
+        modifiedSimpleDataRelations.data.attributes.identifiers[0].identifier.value =
           '555112'
 
         return makeTestCall({

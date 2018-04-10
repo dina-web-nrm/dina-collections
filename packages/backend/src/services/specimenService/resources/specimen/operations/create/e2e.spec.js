@@ -8,7 +8,7 @@ const expectError400 = require('../../../../../../utilities/test/expectError400'
 
 const { getTestData } = require('../../testData')
 
-const fullFormExample = require('./examples/fullFormExample')
+const fullFormExample = require('./examples/normalizedRequestSuccess')
 
 apiDescribe('specimen', () => {
   beforeAll(() => {

@@ -5,7 +5,6 @@ module.exports = function getWhereFactory({ Model }) {
       include = [],
       limit,
       offset,
-      raw = true,
       where: whereInput,
     } = {}
   ) {
@@ -23,7 +22,6 @@ module.exports = function getWhereFactory({ Model }) {
     const options = {
       include,
       order: [['id', 'DESC'], ['versionId', 'DESC']],
-      raw,
       where,
     }
 

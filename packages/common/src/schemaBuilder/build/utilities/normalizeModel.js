@@ -44,8 +44,7 @@ const normalizeProperty = ({ normalize, property, incjetedNormalizeModel }) => {
     property['x-reference-type'] === 'internal'
   ) {
     normalizedProperty = {
-      ...property,
-      $ref: '__ROOT__internalModelReference',
+      $ref: '__ROOT__lid',
     }
   }
 

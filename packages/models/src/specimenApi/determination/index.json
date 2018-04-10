@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "remarks": {
       "type": "string",
       "example": "Some remarks"

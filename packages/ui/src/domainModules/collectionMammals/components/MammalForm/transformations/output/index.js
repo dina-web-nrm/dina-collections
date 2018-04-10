@@ -1,10 +1,11 @@
+import normalizeSpecimen from 'common/es5/normalize/normalizeSpecimen'
 import transformTaxonInformation from './transformTaxonInformation'
 import transformFeatureObservations from './transformFeatureObservations'
 import transformDistinguishedUnits from './transformDistinguishedUnits'
 import transformIdentifiers from './transformIdentifiers'
 import transformIndividualCircumstances from './transformIndividualCircumstances'
 
-export default function transformOutput(formData) {
+export default function transformOutput(formData, normalize = true) {
   // TODO: set in backend instead
   // if no catalogNumber provided, use this
   const newCatalogNumber = String(
@@ -46,15 +47,20 @@ export default function transformOutput(formData) {
     taxonInformation,
   }
 
+  const specimen = normalize
+    ? normalizeSpecimen({
+        individualGroup,
+      })
+    : {
+        individualGroup,
+      }
+
   return {
     curatedLocalities,
     distinguishedUnitTypes,
     featureObservationTypes,
     physicalUnits,
-    specimen: {
-      individualGroup,
-      readOnly: formData.readOnly,
-    },
+    specimen,
     storageLocations,
     taxa,
   }

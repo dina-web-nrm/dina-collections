@@ -2,14 +2,16 @@ import applyMutationMountedForm from './applyMutationMountedForm'
 import createMountedForm from './createMountedForm'
 import submitMountedForm from './submitMountedForm'
 import createMutation from './createMutation'
+import defaultTransformInput from './defaultTransformInput'
+import defaultTransformOutput from './defaultTransformOutput'
 
 export default function runFormScenarios({
   FormComponent,
   formName,
   mount,
   scenarios,
-  transformInput,
-  transformOutput,
+  transformInput = defaultTransformInput,
+  transformOutput = defaultTransformOutput,
 }) {
   let create
   let applyMutation

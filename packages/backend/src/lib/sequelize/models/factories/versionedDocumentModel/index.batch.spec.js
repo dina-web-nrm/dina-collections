@@ -159,7 +159,7 @@ batchDescribe('lib/sequelize/models', () => {
             createEntry,
             execute,
             numberOfEntries: 300000,
-            numberOfentriesEachBatch: 10000,
+            numberOfEntriesEachBatch: 10000,
           }).then(() => {
             expect(1).toBe(1)
           })

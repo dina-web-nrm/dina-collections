@@ -52,9 +52,12 @@ module.exports = function updateFactory({
       const storedData = existingModel.get()
 
       let newModel = {
-        ...storedData,
         diff: null,
+        id: storedData.id,
         isCurrentVersion: true,
+        schemaCompliant: storedData.schemaCompliant,
+        version: storedData.version,
+        versionId: storedData.versionId,
       }
       if (doc !== undefined) {
         const newDoc = mergeRelationships(storedData.document, doc)
@@ -78,7 +81,7 @@ module.exports = function updateFactory({
       existingModel.set({ isCurrentVersion: false })
       return existingModel.save().then(() => {
         return Model.create(newModel).then(savedModel => {
-          return savedModel.dataValues
+          return savedModel
         })
       })
     })

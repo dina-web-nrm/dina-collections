@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "agent": {
       "type": "string",
       "example": "Doe, J."

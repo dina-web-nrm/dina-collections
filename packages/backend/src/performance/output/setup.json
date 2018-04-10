@@ -1,0 +1,30 @@
+{
+  "bulkCreate": {
+    "versionedDocumentModel": [
+      428,
+      426,
+      382,
+      456,
+      448,
+      473,
+      356,
+      565,
+      472,
+      461
+    ]
+  },
+  "createSampleData": [
+    2669,
+    2526,
+    2583,
+    2545,
+    2560,
+    2604,
+    2505,
+    2602,
+    2651,
+    2706
+  ],
+  "numberOfEntries": 1000,
+  "numberOfEntriesEachBatch": 100
+}

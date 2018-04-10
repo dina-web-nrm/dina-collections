@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "publishRecord": { "type": "boolean" },
     "remarks": { "type": "string", "example": "Some remarks" },
     "identifier": {

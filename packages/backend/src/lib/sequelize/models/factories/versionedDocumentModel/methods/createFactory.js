@@ -5,7 +5,7 @@ const log = createLog(
 )
 
 module.exports = function createFactory(
-  { Model, validate, schemaVersion } = {}
+  { Model, schemaVersion, validate } = {}
 ) {
   if (!Model) {
     throw new Error('Have to provide model')
@@ -31,7 +31,7 @@ module.exports = function createFactory(
             res.dataValues.id
           }, versionId: ${res.dataValues.versionId}`
         )
-        return res.dataValues
+        return res
       })
     })
   }

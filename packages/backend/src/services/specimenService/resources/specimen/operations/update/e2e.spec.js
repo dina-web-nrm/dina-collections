@@ -7,7 +7,7 @@ const expectError404 = require('../../../../../../utilities/test/expectError404'
 const expectError400 = require('../../../../../../utilities/test/expectError400')
 const expectSingleResourceResponse = require('../../../../../../utilities/test/expectSingleResourceResponse')
 
-const fullFormExample = require('../create/examples/fullFormExample.json')
+const fullFormExample = require('../create/examples/normalizedRequestSuccess.json')
 const updateFullFormExample = require('./examples/requestSuccess.json')
 
 const { getTestData } = require('../../testData')
@@ -112,6 +112,7 @@ apiDescribe('specimen', () => {
               })
             })
         })
+
         it('Return empty array if relationships physicalUnits set to empty array', () => {
           const simpleDataPhysicalUnitRelationsWithEmptyRelations = getTestData(
             'simpleDataPhysicalUnitRelations'
@@ -121,7 +122,6 @@ apiDescribe('specimen', () => {
               data: [],
             },
           }
-
           return makeTestCall({
             body: simpleDataPhysicalUnitRelationsWithEmptyRelations,
             operationId: 'updateSpecimen',
@@ -155,6 +155,7 @@ apiDescribe('specimen', () => {
               })
             })
         })
+
         it('Return update relationships if provided. Dont update non existing other relations', () => {
           const simpleDataPhysicalUnitRelationsWithEmptyRelations = getTestData(
             'simpleDataPhysicalUnitRelations'
@@ -167,7 +168,6 @@ apiDescribe('specimen', () => {
               data: [{ id: '1234', type: 'physicalUnit' }],
             },
           }
-
           return makeTestCall({
             body: simpleDataPhysicalUnitRelationsWithEmptyRelations,
             operationId: 'updateSpecimen',
@@ -218,7 +218,6 @@ apiDescribe('specimen', () => {
               ],
             },
           }
-
           return makeTestCall({
             body: simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes,
             operationId: 'updateSpecimen',

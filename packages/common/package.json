@@ -22,6 +22,8 @@
   "dependencies": {
     "ajv": "^5.2.3",
     "json-schema-faker": "^0.4.4",
+    "lodash": "^4.17.5",
+    "normalizr": "^3.2.4",
     "object-path": "^0.11.4",
     "redux": "^3.7.2",
     "uuid": "^3.2.1"

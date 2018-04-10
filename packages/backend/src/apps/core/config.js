@@ -37,6 +37,12 @@ const db = {
   username: process.env.DB_USERNAME || 'postgres',
 }
 
+const elasticsearch = {
+  flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
+  loadInitialData: process.env.LOAD_INITIAL_DATA === 'true' || false,
+  url: process.env.ELASTICSEARCH_URL || '127.0.0.1:9200',
+}
+
 const disableAuth = process.env.DISABLE_AUTH === 'true'
 
 const auth = {
@@ -77,6 +83,7 @@ module.exports = {
   api,
   auth,
   db,
+  elasticsearch,
   env,
   log,
   services,

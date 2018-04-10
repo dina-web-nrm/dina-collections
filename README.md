@@ -103,18 +103,24 @@ yarn start:ui:mock
 
 1. Start postgres db
 
-```
-docker-compose -f docker-compose.dev.yaml up -d postgres
-```
+	```
+	docker-compose -f docker-compose.dev.yaml up -d postgres
+	```
 
-2. Start backend
+2. Start elasticsearch
 
-```
-yarn start:backend
-```
+	```
+	docker-compose -f docker-compose.dev.yaml up -d elasticsearch
+	```
 
-3. Start frontend server
+3. Start backend
 
-```
-yarn start:ui
-```
+	```
+	yarn start:backend
+	```
+
+4. Start frontend server
+
+	```
+	yarn start:ui
+	```

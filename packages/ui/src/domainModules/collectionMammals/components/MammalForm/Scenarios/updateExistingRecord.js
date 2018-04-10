@@ -134,7 +134,12 @@ const expectedOutput = {
 const scenario = {
   description: 'Update existing record by adding determinedByAgentText',
   expectedOutput,
-  input: { featureObservationTypes, individualGroup, physicalUnits, taxa },
+  input: {
+    featureObservationTypes,
+    physicalUnits,
+    specimen: { individualGroup },
+    taxa,
+  },
   mutations,
 }
 

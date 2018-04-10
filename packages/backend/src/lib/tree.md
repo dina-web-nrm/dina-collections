@@ -4,14 +4,16 @@
 ├── app
 │   ├── index.js
 │   └── middlewares
+│       ├── authenticate
+│       │   └── index.js
 │       ├── docs
 │       │   ├── index.html
 │       │   └── index.js
 │       ├── errorHandler.js
-│       ├── keycloak
-│       │   └── index.js
 │       ├── logIncoming.js
 │       └── pingRoute.js
+├── auth
+│   └── index.js
 ├── connectors
 │   ├── createConnector.js
 │   ├── extractCustomControllersFromServices.js
@@ -51,6 +53,18 @@
 │   ├── update.js
 │   ├── updateRelationHasMany.js
 │   └── updateRelationHasOne.js
+├── elasticsearch
+│   ├── db
+│   │   └── index.js
+│   ├── index.js
+│   └── models
+│       ├── createModels.js
+│       ├── factories
+│       │   └── normalizedElasticModel
+│       ├── index.js
+│       ├── syncModels.js
+│       └── utilities
+│           └── extractModelFunctionsFromServices.js
 ├── sequelize
 │   ├── db
 │   │   └── index.js
@@ -68,7 +82,7 @@
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
-│   │   ├── authenticate.js
+│   │   ├── authorize.js
 │   │   ├── decorateLocalsUserInput.js
 │   │   ├── ensureMediaType
 │   │   │   ├── index.js

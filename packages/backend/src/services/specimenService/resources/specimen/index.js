@@ -1,6 +1,4 @@
-const filterWhereFactory = require('../../../../lib/controllers/queryUtilities/filterWhereFactory')
-const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const fullFormExample = require('./operations/create/examples/fullFormExample.json')
+const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
 
@@ -8,14 +6,16 @@ module.exports = {
   basePath: '/api/specimen/v01',
   operations: [
     {
+      controller: 'createSpecimen',
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
-      exampleRequests: { fullFormExample, primary: createRequestSuccess },
+      exampleRequests: { primary: normalizedRequestSuccess },
       type: 'create',
       validateBody,
     },
     {
+      controller: 'updateSpecimen',
       exampleRequests: { primary: updateRequestSuccess },
       type: 'update',
     },
@@ -52,12 +52,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      buildWhere: filterWhereFactory({
-        catalogNumber:
-          'document.individualGroup.identifiers.0.identifier.value',
-        // taxonNameStandardized:
-        //   'document.individualGroup.taxonInformation.determinations.0.taxon.scientificName',
-      }),
+      controller: 'getManySpecimens',
       includeRelations: true,
       queryParams: {
         'filter[catalogNumber]': {
@@ -68,14 +63,6 @@ module.exports = {
             type: 'string',
           },
         },
-        // 'filter[taxonNameStandardized]': {
-        //   description: 'Standardized taxon name used to filter specimens',
-        //   example: 'Chironectes minimus',
-        //   required: false,
-        //   schema: {
-        //     type: 'string',
-        //   },
-        // },
       },
       type: 'getMany',
     },

@@ -48,8 +48,8 @@ export default function createSpecimen(
         curatedLocalities,
         distinguishedUnitTypes,
         featureObservationTypes,
-        individualGroup,
         savedPhysicalUnits,
+        specimen,
         storageLocations,
         taxa,
       })

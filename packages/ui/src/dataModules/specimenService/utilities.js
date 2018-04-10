@@ -8,8 +8,8 @@ export const buildSpecimenBody = ({
   curatedLocalities,
   distinguishedUnitTypes,
   featureObservationTypes,
-  individualGroup,
   savedPhysicalUnits,
+  specimen,
   storageLocations,
   taxa,
 }) => {
@@ -35,9 +35,9 @@ export const buildSpecimenBody = ({
     }
   )
 
-  const individualGroupWithRelationships = {
-    ...individualGroup,
-    distinguishedUnits: individualGroup.distinguishedUnits.map(
+  const specimenWithRelationships = {
+    ...specimen,
+    distinguishedUnits: (specimen.distinguishedUnits || []).map(
       (distinguishedUnit, index) => {
         return {
           ...distinguishedUnit,
@@ -49,9 +49,7 @@ export const buildSpecimenBody = ({
 
   const body = {
     data: {
-      attributes: {
-        individualGroup: individualGroupWithRelationships,
-      },
+      attributes: specimenWithRelationships,
       relationships: {
         curatedLocalities: {
           data: curatedLocalities,

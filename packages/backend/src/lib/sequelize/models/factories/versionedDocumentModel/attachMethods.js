@@ -1,10 +1,11 @@
+const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
+const getCountFactory = require('./methods/getCountFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
+const getWhereFactory = require('./methods/getWhereFactory')
 const updateFactory = require('./methods/updateFactory')
 const updatePrimaryKeyFactory = require('./methods/updatePrimaryKeyFactory')
-const getWhereFactory = require('./methods/getWhereFactory')
-const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
 
 module.exports = function attachMethods({
@@ -28,6 +29,7 @@ module.exports = function attachMethods({
     Model,
   })
 
+  const getCount = getCountFactory({ Model })
   const getOneWhere = getOneWhereFactory({ Model })
   const getWhere = getWhereFactory({ Model })
   const create = createFactory({
@@ -61,6 +63,7 @@ module.exports = function attachMethods({
     bulkCreate,
     create,
     getById,
+    getCount,
     getOneWhere,
     getWhere,
     Model,

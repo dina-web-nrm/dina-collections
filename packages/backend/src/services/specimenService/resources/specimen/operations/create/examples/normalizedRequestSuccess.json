@@ -1,0 +1,153 @@
+{
+  "data": {
+    "type": "specimen",
+    "relationships": {
+      "curatedLocalities": {
+        "data": [
+          { "id": "1", "type": "curatedLocality" },
+          { "id": "2", "type": "curatedLocality" },
+          { "id": "3", "type": "curatedLocality" },
+          { "id": "4", "type": "curatedLocality" },
+          { "id": "5", "type": "curatedLocality" }
+        ]
+      },
+      "featureObservationTypes": {
+        "data": [
+          {
+            "id": "2",
+            "type": "featureObservationType"
+          }
+        ]
+      },
+      "physicalUnits": {
+        "data": [
+          {
+            "id": "2234",
+            "type": "physicalUnit"
+          }
+        ]
+      }
+    },
+
+    "attributes": {
+      "determinations": [
+        {
+          "determinationVerbatim": "determinationVerbatim",
+          "determinedByAgentText": "determinedByAgentText",
+          "isCurrentDetermination": true,
+          "remarks": "remarks",
+          "taxon": {
+            "id": "2367",
+            "type": "taxon"
+          },
+          "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
+        }
+      ],
+      "distinguishedUnits": [
+        {
+          "alternateIdentifiersText": "alternateIdentifiersText",
+          "physicalUnit": {
+            "id": "2234",
+            "type": "physicalUnit"
+          },
+          "physicalUnitText": "physicalUnitText",
+          "lid": "af80e78b-c61e-485f-80a8-06d237400583"
+        }
+      ],
+      "events": [
+        {
+          "endDate": "endDate",
+          "expeditionText": "expeditionText",
+          "localityInformation": {
+            "coordinatesVerbatim": "coordinatesVerbatim",
+            "curatedLocalities": [
+              {
+                "id": "1",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "2",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "3",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "4",
+                "type": "curatedLocality"
+              },
+              {
+                "id": "5",
+                "type": "curatedLocality"
+              }
+            ],
+            "georeferenceSourcesText": "georeferenceSourcesText",
+            "localityVerbatim": "localityVerbatim",
+            "position": {
+              "geodeticDatum": "geodeticDatum text",
+              "latitude": "latitude-string",
+              "longitude": "longitude-string",
+              "uncertaintyInMeters": 10
+            },
+            "remarks": "remarks",
+            "verticalPosition": {
+              "maximumDepthInMeters": 100,
+              "maximumElevationInMeters": 100,
+              "minimumDepthInMeters": 20,
+              "minimumElevationInMeters": 20
+            }
+          },
+          "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+        }
+      ],
+      "featureObservations": [
+        {
+          "featureObservationAgent": "featureObservationAgent",
+          "featureObservationText": "21",
+          "featureObservationType": {
+            "id": "1",
+            "type": "featureObservationType"
+          },
+          "methodText": "methodText",
+          "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+        }
+      ],
+      "identifiers": [
+        {
+          "identifier": {
+            "identifierType": "catalogNumber",
+            "nameSpace": "",
+            "value": "123456"
+          },
+          "publishRecord": true,
+          "remarks": "",
+          "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+        }
+      ],
+      "individualCircumstances": [
+        {
+          "collectorsText": "collectorsText",
+          "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
+          "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
+        }
+      ],
+      "individualGroup": [
+        {
+          "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
+          "featureObservations": ["eed22ecc-7927-4b32-ae36-8e4e1dd465a8"],
+          "distinguishedUnits": ["af80e78b-c61e-485f-80a8-06d237400583"],
+          "identifiers": ["9fc8671a-c801-4e62-b0b4-9a946be2ba09"],
+          "individualCircumstances": ["44ab19bf-4328-42d3-9f8e-c88854847234"],
+          "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+        }
+      ],
+      "taxonInformation": [
+        {
+          "determinations": ["a70d054c-ec04-45bc-860b-d522f8f48328"],
+          "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+        }
+      ]
+    }
+  }
+}

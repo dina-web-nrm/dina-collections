@@ -2,7 +2,7 @@ const createObjectResponse = require('./transformations/createObjectResponse')
 const transformInput = require('./transformations/inputObject')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function update({ operation, models }) {
+module.exports = function update({ operation, models, postUpdateHook }) {
   const { resource, relations } = operation
   const model = models[resource]
   if (!model) {
@@ -18,6 +18,12 @@ module.exports = function update({ operation, models }) {
         id,
       })
       .then(transformOutput)
+      .then(res => {
+        if (postUpdateHook) {
+          return postUpdateHook(res)
+        }
+        return res
+      })
       .then(output => {
         return createObjectResponse({
           data: output,

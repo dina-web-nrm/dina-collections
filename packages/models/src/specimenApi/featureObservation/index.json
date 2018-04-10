@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "featureObservationAgent": {
       "type": "string",
       "example": "Doe, J."

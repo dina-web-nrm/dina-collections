@@ -11,12 +11,19 @@
 │   └── versionInfo.md
 ├── lib
 │   ├── app
+│   ├── auth
 │   ├── connectors
 │   ├── controllers
+│   ├── elasticsearch
 │   ├── sequelize
 │   ├── serviceRouter
 │   ├── services
 │   └── tree.md
+├── performance
+│   ├── index.js
+│   ├── output
+│   ├── setup
+│   └── utilities
 ├── scripts
 │   └── buildFileStructureTrees.js
 ├── services
@@ -40,6 +47,7 @@
 ├── tree.md
 └── utilities
     ├── log
+    ├── readInitialData
     └── test
 
 ```

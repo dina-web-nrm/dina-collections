@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "id": {
       "type": "string"
     },
@@ -10,7 +13,8 @@
       "description": "Name of the collector"
     },
     "event": {
-      "$ref": "__ROOT__event"
+      "$ref": "__ROOT__event",
+      "x-reference-type": "internal"
     },
     "specificCircumstance": {
       "anyOf": [

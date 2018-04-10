@@ -4,6 +4,10 @@ var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var objectPath = require('object-path');
@@ -12,13 +16,14 @@ var Ajv = require('ajv');
 module.exports = function createValidatorFactory(models) {
   var defaultOptions = {
     allErrors: true,
+    format: 'full',
     jsonPointers: true,
     logger: false,
     useDefaults: true,
     verbose: false };
 
   var createAjv = function createAjv(options) {
-    var ajv = new Ajv(options);
+    var ajv = new Ajv((0, _extends3.default)({}, options, { format: 'full' }));
 
     (0, _keys2.default)(models).forEach(function (key) {
       ajv.addSchema(models[key], key);

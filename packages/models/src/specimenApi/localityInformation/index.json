@@ -1,6 +1,9 @@
 {
   "additionalProperties": false,
   "properties": {
+    "lid": {
+      "type": "string"
+    },
     "curatedLocalities": {
       "description": "An array with curated localities",
       "type": "array",
