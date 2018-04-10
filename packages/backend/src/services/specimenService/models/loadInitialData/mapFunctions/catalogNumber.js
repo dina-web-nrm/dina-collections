@@ -3,9 +3,9 @@ const objectPath = require('object-path')
 
 module.exports = function mapCatalogNumber({ rawSpecimen, specimen }) {
   const fromPath = 'catalogNumber'
-  const toPath = 'individualGroup.identifiers.0.identifier.value'
+  const toPath = 'individual.identifiers.0.identifier.value'
   const identifierTypePath =
-    'individualGroup.identifiers.0.identifier.identifierType'
+    'individual.identifiers.0.identifier.identifierType'
 
   let updatedSpecimen = specimen
   let updatedRawSpecimen = rawSpecimen

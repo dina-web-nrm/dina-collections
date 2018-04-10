@@ -4,7 +4,7 @@ import {
   getResources,
   getSpecimen,
   getSpecimenFeatureObservations,
-  getSpecimenIndividualGroup,
+  getSpecimenIndividual,
   getSpecimens,
 } from './selectors'
 
@@ -17,7 +17,7 @@ describe('dataModules/specimenService/selectors', () => {
         specimens: {
           a: {
             id: 'a',
-            individualGroup: {
+            individual: {
               featureObservations: [
                 {
                   featureObservationText: 'bearSkin',
@@ -30,7 +30,7 @@ describe('dataModules/specimenService/selectors', () => {
           },
           b: {
             id: 'b',
-            individualGroup: {
+            individual: {
               featureObservations: [
                 {
                   featureObservationText: 'pandaSkin',
@@ -59,14 +59,14 @@ describe('dataModules/specimenService/selectors', () => {
   it('returns specimen by id', () => {
     expect(getSpecimen(state, 'a')).toEqual(state.resources.specimens.a)
   })
-  it('returns specimen individualGroup by id', () => {
-    expect(getSpecimenIndividualGroup(state, 'a')).toEqual(
-      state.resources.specimens.a.individualGroup
+  it('returns specimen individual by id', () => {
+    expect(getSpecimenIndividual(state, 'a')).toEqual(
+      state.resources.specimens.a.individual
     )
   })
-  it('returns specimen individualGroup featureObservations by id', () => {
+  it('returns specimen individual featureObservations by id', () => {
     expect(getSpecimenFeatureObservations(state, 'a')).toEqual(
-      state.resources.specimens.a.individualGroup.featureObservations
+      state.resources.specimens.a.individual.featureObservations
     )
   })
 

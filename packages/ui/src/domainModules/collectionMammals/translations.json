@@ -107,7 +107,7 @@
       "sv": "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
     }
   },
-  "individualGroup": {
+  "individual": {
     "causeOfDeathStandardized": {
       "en": "Cause of death",
       "sv": ""

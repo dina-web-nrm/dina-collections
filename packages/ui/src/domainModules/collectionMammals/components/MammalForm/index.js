@@ -185,7 +185,7 @@ export const MammalForm = reduxForm({
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
   validate: customFormValidator({
-    model: 'individualGroup',
+    model: 'individual',
     models: mammalFormModels,
   }),
 })(RawMammalForm)

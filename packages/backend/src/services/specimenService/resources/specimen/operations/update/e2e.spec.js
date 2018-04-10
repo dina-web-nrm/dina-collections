@@ -32,7 +32,7 @@ apiDescribe('specimen', () => {
           existingId = response.data.id
         })
       })
-      it('Succeed with valid individualGroup', () => {
+      it('Succeed with valid individual', () => {
         return makeTestCall({
           body: updateFullFormExample,
           operationId: 'updateSpecimen',

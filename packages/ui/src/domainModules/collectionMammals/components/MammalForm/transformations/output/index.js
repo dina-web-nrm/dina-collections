@@ -38,7 +38,7 @@ export default function transformOutput(formData, normalize = true) {
     individualCircumstances,
   } = transformIndividualCircumstances(formData.individualCircumstances)
 
-  const individualGroup = {
+  const individual = {
     ...formData,
     distinguishedUnits,
     featureObservations,
@@ -49,10 +49,10 @@ export default function transformOutput(formData, normalize = true) {
 
   const specimen = normalize
     ? normalizeSpecimen({
-        individualGroup,
+        individual,
       })
     : {
-        individualGroup,
+        individual,
       }
 
   return {

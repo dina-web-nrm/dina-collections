@@ -23,16 +23,16 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     apiClient.reset()
   })
 
-  it(`dispatches ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST} followed by ${
-    STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS
-  } and ${actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST}`, () => {
+  it(`dispatches ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST} followed by ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS} and ${
+    actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST
+  }`, () => {
     const physicalUnits = [
       {
         normalStorageLocation: 'Sorex minutus',
       },
     ]
     const specimen = {
-      individualGroup: { distinguishedUnits: [], identifiers: [] },
+      individual: { distinguishedUnits: [], identifiers: [] },
     }
     const testAction = createSpecimen({ physicalUnits, specimen })
 
@@ -56,7 +56,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const operationId = 'createSpecimen'
     const taxon = { id: '2367', type: 'taxon' }
     const specimen = {
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
@@ -97,7 +97,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   } and returns transformed response`, () => {
     const operationId = 'createSpecimen'
     const specimen = {
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
@@ -147,7 +147,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   } without throwing error`, () => {
     const operationId = 'createSpecimen'
     const specimen = {
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },
@@ -181,7 +181,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   } and throws error`, () => {
     const operationId = 'createSpecimen'
     const specimen = {
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         identifiers: [
           { identifier: { identifierType: 'catalogNumber', value: '123' } },

@@ -15,8 +15,8 @@ export default function transformInput({
 }) {
   const { id, type, ...rawSpeciment } = specimen
   const attributes = denormalize
-    ? denormalizeSpecimen(rawSpeciment).individualGroup
-    : rawSpeciment.individualGroup || {}
+    ? denormalizeSpecimen(rawSpeciment).individual
+    : rawSpeciment.individual || {}
 
   const taxonInformation = transformTaxonInformation(
     attributes.taxonInformation

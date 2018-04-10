@@ -7,7 +7,7 @@ const mutations = [
 
 const postTransformOutputTest = ({ transformedOutput }) => {
   expect(
-    transformedOutput.specimen.individualGroup.identifiers[0].identifier.value
+    transformedOutput.specimen.individual.identifiers[0].identifier.value
   ).toBe('123456')
 }
 

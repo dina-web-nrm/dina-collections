@@ -55,7 +55,7 @@ describe('dataModules/specimenService/utilities', () => {
       },
     ]
 
-    const individualGroup = {
+    const individual = {
       featureObservations: [
         {
           featureObservationText: 'female',
@@ -144,7 +144,7 @@ describe('dataModules/specimenService/utilities', () => {
       savedPhysicalUnits,
       specimen: {
         distinguishedUnits,
-        individualGroup,
+        individual,
       },
       storageLocations,
       taxa,
@@ -185,8 +185,8 @@ describe('dataModules/specimenService/utilities', () => {
               },
             },
           ],
-          individualGroup: {
-            ...individualGroup,
+          individual: {
+            ...individual,
           },
         },
         relationships: {

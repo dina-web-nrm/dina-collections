@@ -5,7 +5,7 @@ const testData = {}
 testData.badRequestMissingCatalogNumber = {
   data: {
     attributes: {
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: [],
@@ -30,7 +30,7 @@ testData.simpleDataNoRelations = {
           remarks: '',
         },
       ],
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
@@ -55,7 +55,7 @@ testData.simpleDataPhysicalUnitRelations = {
           remarks: '',
         },
       ],
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
@@ -90,7 +90,7 @@ testData.simpleDataMultipleRelations = {
           remarks: '',
         },
       ],
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
@@ -139,7 +139,7 @@ testData.simpleDataInvalidRelationsFormat = {
           remarks: '',
         },
       ],
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
@@ -170,7 +170,7 @@ testData.simpleDataInvalidRelations = {
           remarks: '',
         },
       ],
-      individualGroup: {
+      individual: {
         distinguishedUnits: [],
         featureObservations: [],
         identifiers: ['4444-33333'],

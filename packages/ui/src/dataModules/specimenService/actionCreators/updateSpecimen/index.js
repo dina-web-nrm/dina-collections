@@ -17,27 +17,25 @@ import {
   getCatalogNumberFromIdentifiers,
 } from '../../utilities'
 
-export default function updateSpecimen(
-  {
-    curatedLocalities = [],
-    distinguishedUnitTypes = [],
-    featureObservationTypes = [],
-    id,
-    physicalUnits = [],
-    specimen,
-    storageLocations = [],
-    taxa = [],
-    throwError = true,
-  } = {}
-) {
-  const { individualGroup } = specimen
+export default function updateSpecimen({
+  curatedLocalities = [],
+  distinguishedUnitTypes = [],
+  featureObservationTypes = [],
+  id,
+  physicalUnits = [],
+  specimen,
+  storageLocations = [],
+  taxa = [],
+  throwError = true,
+} = {}) {
+  const { individual } = specimen
 
   const meta = {
-    catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
+    catalogNumber: getCatalogNumberFromIdentifiers(individual.identifiers),
     curatedLocalities,
     distinguishedUnitTypes,
     featureObservationTypes,
-    individualGroup,
+    individual,
     physicalUnits,
     storageLocations,
     taxa,

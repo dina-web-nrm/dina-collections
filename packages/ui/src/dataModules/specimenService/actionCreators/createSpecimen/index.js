@@ -13,26 +13,24 @@ import {
   getCatalogNumberFromIdentifiers,
 } from '../../utilities'
 
-export default function createSpecimen(
-  {
-    curatedLocalities = [],
-    distinguishedUnitTypes = [],
-    featureObservationTypes = [],
-    physicalUnits = [],
-    specimen,
-    storageLocations = [],
-    taxa = [],
-    throwError = true,
-  } = {}
-) {
-  const { individualGroup } = specimen
+export default function createSpecimen({
+  curatedLocalities = [],
+  distinguishedUnitTypes = [],
+  featureObservationTypes = [],
+  physicalUnits = [],
+  specimen,
+  storageLocations = [],
+  taxa = [],
+  throwError = true,
+} = {}) {
+  const { individual } = specimen
 
   const meta = {
-    catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
+    catalogNumber: getCatalogNumberFromIdentifiers(individual.identifiers),
     curatedLocalities,
     distinguishedUnitTypes,
     featureObservationTypes,
-    individualGroup,
+    individual,
     physicalUnits,
     storageLocations,
     taxa,

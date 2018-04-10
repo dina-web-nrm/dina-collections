@@ -5,7 +5,7 @@ const columnArrayToObject = require('./columnArrayToObject')
 
 const normalizeSchema = buildNormalizeSchema({
   normalizedSchemaSpecification: normalizedSchemaSpecification.specimen,
-  rootSchema: 'individualGroup',
+  rootSchema: 'individual',
 })
 
 const columnNames = Object.keys(normalizedSchemaSpecification.specimen).map(
@@ -14,8 +14,8 @@ const columnNames = Object.keys(normalizedSchemaSpecification.specimen).map(
   }
 )
 
-module.exports = function denormalizeIndividualGroup(normalizedSpecimen) {
-  const { individualGroup = {} } = normalizedSpecimen
+module.exports = function denormalizeIndividual(normalizedSpecimen) {
+  const { individual = {} } = normalizedSpecimen
 
   const rest = {}
   const entities = Object.keys(normalizedSpecimen).reduce((obj, columnName) => {
@@ -23,7 +23,7 @@ module.exports = function denormalizeIndividualGroup(normalizedSpecimen) {
       rest[columnName] = normalizedSpecimen[columnName]
       return obj
     }
-    if (columnName === 'individualGroup') {
+    if (columnName === 'individual') {
       return {
         ...obj,
         [columnName]: columnArrayToObject([normalizedSpecimen[columnName]]),
@@ -36,10 +36,10 @@ module.exports = function denormalizeIndividualGroup(normalizedSpecimen) {
   }, {})
 
   const denormalizedData = denormalize(
-    individualGroup.lid,
-    normalizeSchema.individualGroup,
+    individual.lid,
+    normalizeSchema.individual,
     entities
   )
 
-  return { individualGroup: denormalizedData || {}, ...rest }
+  return { individual: denormalizedData || {}, ...rest }
 }

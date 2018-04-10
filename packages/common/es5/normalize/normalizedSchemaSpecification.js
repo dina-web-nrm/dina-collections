@@ -19,8 +19,8 @@ var specimen = {
   individualCircumstance: {
     column: 'individualCircumstances'
   },
-  individualGroup: {
-    column: 'individualGroup'
+  individual: {
+    column: 'individual'
   },
   relationships: {
     column: 'relationships',

@@ -2,7 +2,7 @@
 module.exports = {
   id: '1234',
   type: 'specimen',
-  individualGroup: {
+  individual: {
     lid: '15413ab7-4c2f-4072-b2ae-3192f2887808',
     taxonInformation: {
       lid: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32',

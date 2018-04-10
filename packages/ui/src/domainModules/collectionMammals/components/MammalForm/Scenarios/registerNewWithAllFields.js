@@ -201,7 +201,7 @@ const expectedOutput = {
     },
   ],
   specimen: {
-    individualGroup: {
+    individual: {
       distinguishedUnits: [
         {
           curatorialAssessments: [

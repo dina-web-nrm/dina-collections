@@ -1,4 +1,4 @@
-const individualGroup = {
+const individual = {
   distinguishedUnits: [
     {
       physicalUnit: {
@@ -79,7 +79,7 @@ const expectedOutput = {
     },
   ],
   specimen: {
-    individualGroup: {
+    individual: {
       distinguishedUnits: [
         {
           physicalUnit: {
@@ -137,7 +137,7 @@ const scenario = {
   input: {
     featureObservationTypes,
     physicalUnits,
-    specimen: { individualGroup },
+    specimen: { individual },
     taxa,
   },
   mutations,

@@ -2,7 +2,7 @@
 module.exports = {
   id: '1234',
   type: 'specimen',
-  individualGroup: {
+  individual: {
     taxonInformation: {
       determinations: [
         {

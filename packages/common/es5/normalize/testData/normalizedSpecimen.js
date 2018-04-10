@@ -92,7 +92,7 @@ module.exports = {
     physicalUnitText: 'physicalUnitText',
     lid: '69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'
   }],
-  individualGroup: {
+  individual: {
     taxonInformation: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32',
     featureObservations: ['21a79d27-3848-4f13-8179-6011a2e98298'],
     distinguishedUnits: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],

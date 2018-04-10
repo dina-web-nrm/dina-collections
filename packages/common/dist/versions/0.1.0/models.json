@@ -780,43 +780,7 @@
     "x-modelType": "model",
     "id": "featureObservation"
   },
-  "individualCircumstance": {
-    "additionalProperties": false,
-    "properties": {
-      "lid": {
-        "type": "string"
-      },
-      "id": {
-        "type": "string"
-      },
-      "collectorsText": {
-        "type": "string",
-        "example": "Bergström, U",
-        "description": "Name of the collector"
-      },
-      "event": {
-        "$ref": "event"
-      },
-      "specificCircumstance": {
-        "anyOf": [
-          {
-            "$ref": "originCircumstance"
-          },
-          {
-            "$ref": "observationCircumstance"
-          },
-          {
-            "$ref": "deathCircumstance"
-          }
-        ]
-      }
-    },
-    "description": "### Definition\n\nThe context for the participation of an individual in a particular event.\n\n### Note(s)\n\nThis is a container for information about e.g. death, origin and observations of the individual (or group of individuals). Circumstances for the collecting event are handled separately (see collectingCircumstance).\n",
-    "x-category": "specimenApi",
-    "x-modelType": "model",
-    "id": "individualCircumstance"
-  },
-  "individualGroup": {
+  "individual": {
     "additionalProperties": false,
     "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
     "properties": {
@@ -862,7 +826,43 @@
     },
     "x-category": "specimenApi",
     "x-modelType": "model",
-    "id": "individualGroup"
+    "id": "individual"
+  },
+  "individualCircumstance": {
+    "additionalProperties": false,
+    "properties": {
+      "lid": {
+        "type": "string"
+      },
+      "id": {
+        "type": "string"
+      },
+      "collectorsText": {
+        "type": "string",
+        "example": "Bergström, U",
+        "description": "Name of the collector"
+      },
+      "event": {
+        "$ref": "event"
+      },
+      "specificCircumstance": {
+        "anyOf": [
+          {
+            "$ref": "originCircumstance"
+          },
+          {
+            "$ref": "observationCircumstance"
+          },
+          {
+            "$ref": "deathCircumstance"
+          }
+        ]
+      }
+    },
+    "description": "### Definition\n\nThe context for the participation of an individual in a particular event.\n\n### Note(s)\n\nThis is a container for information about e.g. death, origin and observations of the individual (or group of individuals). Circumstances for the collecting event are handled separately (see collectingCircumstance).\n",
+    "x-category": "specimenApi",
+    "x-modelType": "model",
+    "id": "individualCircumstance"
   },
   "localityInformation": {
     "additionalProperties": false,
@@ -1002,8 +1002,8 @@
           }
         }
       },
-      "individualGroup": {
-        "$ref": "individualGroup"
+      "individual": {
+        "$ref": "individual"
       },
       "distinguishedUnits": {
         "type": "array",
@@ -1086,7 +1086,7 @@
         }
       }
     },
-    "description": "### Definition\n\nThe taxon to which an individualGroup is currently assigned according to a local classification.\n",
+    "description": "### Definition\n\nThe taxon to which an individual is currently assigned according to a local classification.\n",
     "x-category": "specimenApi",
     "x-modelType": "model",
     "id": "taxonInformation"
@@ -6391,7 +6391,7 @@
                 "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
               }
             ],
-            "individualGroup": [
+            "individual": [
               {
                 "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
                 "featureObservations": [
@@ -6569,7 +6569,7 @@
               "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
             }
           ],
-          "individualGroup": [
+          "individual": [
             {
               "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
               "featureObservations": [

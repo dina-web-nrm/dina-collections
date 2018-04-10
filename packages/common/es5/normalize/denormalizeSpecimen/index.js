@@ -23,16 +23,16 @@ var columnArrayToObject = require('./columnArrayToObject');
 
 var normalizeSchema = buildNormalizeSchema({
   normalizedSchemaSpecification: normalizedSchemaSpecification.specimen,
-  rootSchema: 'individualGroup'
+  rootSchema: 'individual'
 });
 
 var columnNames = (0, _keys2.default)(normalizedSchemaSpecification.specimen).map(function (key) {
   return normalizedSchemaSpecification.specimen[key].column;
 });
 
-module.exports = function denormalizeIndividualGroup(normalizedSpecimen) {
-  var _normalizedSpecimen$i = normalizedSpecimen.individualGroup,
-      individualGroup = _normalizedSpecimen$i === undefined ? {} : _normalizedSpecimen$i;
+module.exports = function denormalizeIndividual(normalizedSpecimen) {
+  var _normalizedSpecimen$i = normalizedSpecimen.individual,
+      individual = _normalizedSpecimen$i === undefined ? {} : _normalizedSpecimen$i;
 
 
   var rest = {};
@@ -41,13 +41,13 @@ module.exports = function denormalizeIndividualGroup(normalizedSpecimen) {
       rest[columnName] = normalizedSpecimen[columnName];
       return obj;
     }
-    if (columnName === 'individualGroup') {
+    if (columnName === 'individual') {
       return (0, _extends5.default)({}, obj, (0, _defineProperty3.default)({}, columnName, columnArrayToObject([normalizedSpecimen[columnName]])));
     }
     return (0, _extends5.default)({}, obj, (0, _defineProperty3.default)({}, columnName, columnArrayToObject(normalizedSpecimen[columnName]) || {}));
   }, {});
 
-  var denormalizedData = denormalize(individualGroup.lid, normalizeSchema.individualGroup, entities);
+  var denormalizedData = denormalize(individual.lid, normalizeSchema.individual, entities);
 
-  return (0, _extends5.default)({ individualGroup: denormalizedData || {} }, rest);
+  return (0, _extends5.default)({ individual: denormalizedData || {} }, rest);
 };

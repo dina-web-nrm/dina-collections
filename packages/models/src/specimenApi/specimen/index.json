@@ -55,8 +55,8 @@
         }
       }
     },
-    "individualGroup": {
-      "$ref": "__ROOT__individualGroup"
+    "individual": {
+      "$ref": "__ROOT__individual"
     },
     "distinguishedUnits": {
       "type": "array",
