@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updatePlace as updatePlaceAc } from 'dataModules/localityService/actionCreators'
-import { createGetPlaceById } from 'dataModules/localityService/higherOrderComponents'
+import { updatePlace as updatePlaceAc } from 'dataModules/placeService/actionCreators'
+import { createGetPlaceById } from 'dataModules/placeService/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
-} from 'domainModules/locality/interactions'
+} from 'coreModules/crudBlocks/constants'
 import BaseForm from './Base'
 
 const mapDispatchToProps = {

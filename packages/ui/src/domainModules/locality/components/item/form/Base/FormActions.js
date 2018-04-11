@@ -5,7 +5,7 @@ import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
-const log = createLog('modules:user:EditForm')
+const log = createLog('modules:locality:BaseForm:FormActions')
 const ModuleTranslate = createModuleTranslate('locality')
 
 const propTypes = {

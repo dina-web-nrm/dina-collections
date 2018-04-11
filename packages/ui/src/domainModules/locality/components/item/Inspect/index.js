@@ -4,23 +4,24 @@ import { Table } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
+import placeServiceSelectors from 'dataModules/placeService/globalSelectors'
 import {
   createGetPlaceById,
   ensureAllPlacesFetched,
-} from 'dataModules/localityService/higherOrderComponents'
+} from 'dataModules/placeService/higherOrderComponents'
 
 const mapStateToProps = (state, ownProps) => {
   const { place } = ownProps
+
   const parent =
     place &&
     place.parent &&
-    localityServiceSelectors.getPlace(state, place.parent.id)
+    placeServiceSelectors.getPlace(state, place.parent.id)
   const children =
     place &&
     place.children &&
     place.children.map(({ id }) => {
-      return localityServiceSelectors.getPlace(state, id)
+      return placeServiceSelectors.getPlace(state, id)
     })
   return {
     children,
@@ -30,10 +31,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const propTypes = {
-  allLocalitiesFetched: PropTypes.bool.isRequired,
+  allPlacesFetched: PropTypes.bool.isRequired,
   children: PropTypes.array,
   parent: PropTypes.object,
   place: PropTypes.object,
+  urlBasePath: PropTypes.string.isRequired,
 }
 
 const defaultProps = {
@@ -44,8 +46,14 @@ const defaultProps = {
 
 export class Inspect extends Component {
   render() {
-    const { allLocalitiesFetched, children, place, parent } = this.props
-    if (!place || !allLocalitiesFetched) {
+    const {
+      allPlacesFetched,
+      children,
+      place,
+      parent,
+      urlBasePath,
+    } = this.props
+    if (!place || !allPlacesFetched) {
       return null
     }
     return (
@@ -60,7 +68,7 @@ export class Inspect extends Component {
           {place && (
             <Table.Body>
               <Table.Row>
-                <Table.Cell>Namn</Table.Cell>
+                <Table.Cell>Name</Table.Cell>
                 <Table.Cell>{place.name}</Table.Cell>
               </Table.Row>
               <Table.Row>
@@ -122,7 +130,7 @@ export class Inspect extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <Link to={`/app/localities/${parent.id}/inspect`}>
+                  <Link to={`${urlBasePath}/${parent.id}/inspect`}>
                     {parent.id}
                   </Link>
                 </Table.Cell>
@@ -146,7 +154,7 @@ export class Inspect extends Component {
                 return (
                   <Table.Row key={child.id}>
                     <Table.Cell>
-                      <Link to={`/app/localities/${child.id}/inspect`}>
+                      <Link to={`${urlBasePath}/${child.id}/inspect`}>
                         {child.id}
                       </Link>
                     </Table.Cell>

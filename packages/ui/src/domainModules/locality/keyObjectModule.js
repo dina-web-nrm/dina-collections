@@ -9,24 +9,9 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'LOCALITY',
   initialValues: {
-    collectionBlockType: 'list',
-    filter: {
-      group: 'continent',
-      offset: 0,
-      searchQuery: '',
-    },
+    localityDropdown: {},
   },
-  keys: [
-    'collectionBlockType',
-    'fetchingAllLocalities',
-    'filter',
-    'filter.group',
-    'filter.limit',
-    'filter.searchQuery',
-    'filter.parentId',
-    'filter.offset',
-    'localityDropdown.:identifier.searchQuery',
-  ],
+  keys: ['localityDropdown.:identifier.searchQuery'],
   name: 'locality',
 })
 

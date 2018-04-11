@@ -5,6 +5,11 @@ import { Modal, Button } from 'semantic-ui-react'
 import { change } from 'redux-form'
 
 import {
+  CollectionBlock,
+  CreateBlock,
+  InspectBlock,
+} from 'coreModules/crudBlocks/components'
+import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
   ITEM_CLICK,
@@ -13,11 +18,8 @@ import {
   SET_COLLECTION_TREE,
   SET_ITEM_CREATE,
   SET_ITEM_INSPECT,
-} from '../../interactions'
+} from 'coreModules/crudBlocks/constants'
 import LocalityDropdownSearch from '../LocalityDropdownSearch'
-import CreateBlock from '../LocalityManager/blocks/Item/Create'
-import InspectBlock from '../LocalityManager/blocks/Item/Inspect'
-import CollectionBlock from '../LocalityManager/blocks/Collection'
 
 const mapDispatchToProps = {
   change,
@@ -142,6 +144,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
         <Modal onClose={this.handleOnClose} open>
           <Modal.Content>
             <CreateBlock
+              disableEdit
               itemBlockType="create"
               layoutMode="modal"
               onInteraction={this.handleInteraction}
@@ -156,6 +159,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
         <Modal onClose={this.handleOnClose} open>
           <Modal.Content>
             <InspectBlock
+              disableEdit
               itemBlockType="inspect"
               itemId={inspectItemId}
               layoutMode="modal"
@@ -172,6 +176,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
           <Modal.Content>
             <CollectionBlock
               collectionBlockType={collectionBlockType}
+              disableEdit
               layoutMode="modal"
               onInteraction={this.handleInteraction}
             />

@@ -1,14 +1,14 @@
 {
   "save": {
-    "en": "save",
+    "en": "Save",
     "sv": "Spara"
   },
   "back": {
-    "en": "back",
-    "sv": "back"
+    "en": "Back",
+    "sv": "Tillbaka"
   },
   "reset": {
-    "en": "reset",
-    "sv": "reset"
+    "en": "Reset",
+    "sv": "Återställ"
   }
 }

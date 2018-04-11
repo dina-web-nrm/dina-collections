@@ -1,41 +1,45 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon, Label, List } from 'semantic-ui-react'
+
 import {
   ITEM_CLICK,
-  SET_ITEM_CREATE,
+  SET_ITEM_CREATE_CHILD,
   SET_ITEM_EDIT,
   SET_ITEM_INSPECT,
-} from 'domainModules/locality/interactions'
+} from 'coreModules/crudBlocks/constants'
+import { CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../../constants'
 
 const propTypes = {
-  activeLocalityId: PropTypes.string,
   cursorFocus: PropTypes.bool,
+  disableEdit: PropTypes.bool.isRequired,
   displayNavigationButtons: PropTypes.bool.isRequired,
+  itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
   place: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
-  activeLocalityId: '',
   cursorFocus: false,
+  itemId: '',
 }
 
 const groupColorMap = {
-  continent: 'violet',
-  country: 'teal',
-  district: 'purple',
-  province: 'blue',
+  [CONTINENT]: 'violet',
+  [COUNTRY]: 'teal',
+  [DISTRICT]: 'purple',
+  [PROVINCE]: 'blue',
 }
 
 class ListItem extends Component {
   render() {
     const {
-      activeLocalityId,
-      place,
       cursorFocus,
+      disableEdit,
       displayNavigationButtons,
+      itemId,
       onInteraction,
+      place,
     } = this.props
 
     const style = cursorFocus
@@ -46,7 +50,7 @@ class ListItem extends Component {
 
     return (
       <List.Item
-        active={activeLocalityId === place.id}
+        active={itemId === place.id}
         key={place.id}
         onClick={event => {
           event.preventDefault()
@@ -60,21 +64,22 @@ class ListItem extends Component {
           <Label color={groupColorMap[place.group]} style={{ marginRight: 20 }}>
             {place.group}
           </Label>
-          {displayNavigationButtons && (
-            <Button
-              icon
-              onClick={event => {
-                event.preventDefault()
-                event.stopPropagation()
-                onInteraction(SET_ITEM_EDIT, {
-                  itemId: place.id,
-                })
-              }}
-              size="tiny"
-            >
-              <Icon name="edit" />
-            </Button>
-          )}
+          {displayNavigationButtons &&
+            !disableEdit && (
+              <Button
+                icon
+                onClick={event => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                  onInteraction(SET_ITEM_EDIT, {
+                    itemId: place.id,
+                  })
+                }}
+                size="tiny"
+              >
+                <Icon name="edit" />
+              </Button>
+            )}
           {displayNavigationButtons && (
             <Button
               icon
@@ -96,7 +101,7 @@ class ListItem extends Component {
               onClick={event => {
                 event.preventDefault()
                 event.stopPropagation()
-                onInteraction(SET_ITEM_CREATE, {
+                onInteraction(SET_ITEM_CREATE_CHILD, {
                   itemId: place.id,
                 })
               }}

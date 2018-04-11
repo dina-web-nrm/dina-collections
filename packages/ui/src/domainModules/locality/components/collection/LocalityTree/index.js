@@ -2,17 +2,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
-import { getPlaces as getPlacesAc } from 'dataModules/localityService/actionCreators'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
-import { globalSelectors as keyObjectGlobalSelectors } from 'domainModules/locality/keyObjectModule'
+
+import { getPlaces as getPlacesAc } from 'dataModules/placeService/actionCreators'
+import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/crudBlocks/keyObjectModule'
 import {
   SET_ITEM_EDIT,
   SET_ITEM_INSPECT,
-} from 'domainModules/locality/interactions'
+} from 'coreModules/crudBlocks/constants'
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { name }) => {
   return {
-    searchQuery: keyObjectGlobalSelectors.get['filter.searchQuery'](state),
+    searchQuery: keyObjectGlobalSelectors.get[':name.filter.searchQuery'](
+      state,
+      { name }
+    ),
   }
 }
 
@@ -21,6 +25,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  disableEdit: PropTypes.bool.isRequired,
   getPlacesAc: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   searchQuery: PropTypes.string,
@@ -45,8 +50,8 @@ class Localities extends Component {
       .getPlacesAc({
         queryParams: { relationships: ['all'] },
       })
-      .then(localities => {
-        const flatData = localities.map(locality => {
+      .then(places => {
+        const flatData = places.map(locality => {
           return {
             id: locality.id,
             parentId: (locality.parent && locality.parent.id) || '0',
@@ -71,16 +76,18 @@ class Localities extends Component {
   generateNodeProps({ node }) {
     return {
       buttons: [
-        <Button
-          icon
-          onClick={() => {
-            this.props.onInteraction(SET_ITEM_EDIT, {
-              itemId: node.id,
-            })
-          }}
-        >
-          <Icon name="edit" />
-        </Button>,
+        this.props.disableEdit ? null : (
+          <Button
+            icon
+            onClick={() => {
+              this.props.onInteraction(SET_ITEM_EDIT, {
+                itemId: node.id,
+              })
+            }}
+          >
+            <Icon name="edit" />
+          </Button>
+        ),
         <Button
           icon
           onClick={() => {
@@ -91,7 +98,7 @@ class Localities extends Component {
         >
           <Icon name="folder open" />
         </Button>,
-      ],
+      ].filter(element => !!element),
     }
   }
   render() {

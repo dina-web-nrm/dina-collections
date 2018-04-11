@@ -17,6 +17,8 @@ import {
 } from '../../../../constants'
 import FormActions from './FormActions'
 
+export const FORM_NAME = 'place'
+
 const log = createLog('modules:locality:BaseForm')
 
 const propTypes = {
@@ -40,10 +42,11 @@ const defaultProps = {
   error: '',
 }
 
-const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
+const groups = [ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE]
 
 const dropdownOptions = groups.map(group => {
   return {
+    key: group,
     text: group,
     value: group,
   }
@@ -78,7 +81,7 @@ export class BaseForm extends Component {
                   descriptionKey: 'nameDescription',
                 }}
                 label="Name"
-                module="localities"
+                module="locality"
                 name="name"
                 type="text"
               />
@@ -88,7 +91,7 @@ export class BaseForm extends Component {
                 autoComplete="off"
                 component={DropdownSearch}
                 label="Group"
-                module="localities"
+                module="locality"
                 name="group"
                 options={dropdownOptions}
                 type="dropdown-search-local"
@@ -102,8 +105,7 @@ export class BaseForm extends Component {
                 component={LocalityDropdownSearch}
                 group={ALL}
                 label="Parent"
-                LocalityDropdownSearch
-                module="localities"
+                module="locality"
                 name="parent.id"
                 type="text"
               />
@@ -118,7 +120,7 @@ export class BaseForm extends Component {
                     autoComplete="off"
                     component={Input}
                     label="Min"
-                    module="localities"
+                    module="locality"
                     name="verticalPosition.minimumElevationInMeters"
                     type="text"
                   />
@@ -128,7 +130,7 @@ export class BaseForm extends Component {
                     autoComplete="off"
                     component={Input}
                     label="Max"
-                    module="localities"
+                    module="locality"
                     name="verticalPosition.maximumElevationInMeters"
                     type="text"
                   />
@@ -143,7 +145,7 @@ export class BaseForm extends Component {
                     autoComplete="off"
                     component={Input}
                     label="Max"
-                    module="localities"
+                    module="locality"
                     name="verticalPosition.maximumDepthInMeters"
                     type="text"
                   />
@@ -153,7 +155,7 @@ export class BaseForm extends Component {
                     autoComplete="off"
                     component={Input}
                     label="Max"
-                    module="localities"
+                    module="locality"
                     name="verticalPosition.minimumDepthInMeters"
                     type="text"
                   />
@@ -167,7 +169,7 @@ export class BaseForm extends Component {
                 autoComplete="off"
                 component={Input}
                 label="Latitude"
-                module="localities"
+                module="locality"
                 name="centralPosition.latitude"
                 type="text"
               />
@@ -177,7 +179,7 @@ export class BaseForm extends Component {
                 autoComplete="off"
                 component={Input}
                 label="Longitude"
-                module="localities"
+                module="locality"
                 name="centralPosition.longitude"
                 type="text"
               />
@@ -187,7 +189,7 @@ export class BaseForm extends Component {
                 autoComplete="off"
                 component={Input}
                 label="Uncertainty"
-                module="localities"
+                module="locality"
                 name="centralPosition.uncertaintyInMeters"
                 type="text"
               />
@@ -215,7 +217,8 @@ BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
+  destroyOnUnmount: false, // to keep values when switching layout
   enableReinitialize: true,
-  form: 'EditLocalities',
+  form: FORM_NAME,
   validate: formValidator({ model: 'place' }),
 })(BaseForm)
