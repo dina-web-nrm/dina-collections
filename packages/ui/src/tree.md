@@ -29,7 +29,6 @@
 ├── dataModules
 │   ├── allModules.js
 │   ├── curatedListService
-│   ├── identifierService
 │   ├── index.js
 │   ├── localityService
 │   ├── specimenService

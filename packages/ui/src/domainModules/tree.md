@@ -1,7 +1,5 @@
 # Tree for domainModules
-
 ## Tree
-
 ```bash
 ├── allModules.js
 ├── collectionMammals
@@ -11,7 +9,7 @@
 │   │   │   └── addCatalogNumberModal.sv.md
 │   │   ├── index.json
 │   │   └── occurrences
-│   │       └── locationInformation
+│   │       └── localityInformation
 │   ├── actionCreators
 │   │   ├── clearSearchParameters.js
 │   │   ├── index.js
@@ -26,9 +24,9 @@
 │   │   │   ├── FormActions.js
 │   │   │   ├── Scenarios
 │   │   │   ├── SegmentCatalogNumberIdentifier
+│   │   │   ├── SegmentCollectingInformation
 │   │   │   ├── SegmentCollectionItems
 │   │   │   ├── SegmentFeatureObservations
-│   │   │   ├── SegmentCollectingInformation
 │   │   │   ├── SegmentOther
 │   │   │   ├── SegmentTaxon
 │   │   │   ├── index.js
@@ -120,10 +118,13 @@
 │   ├── utilities.js
 │   └── utilities.test.js
 └── tree.md
+
 ```
 
 ## Links
-
-[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
-[coreModules](../coreModules/tree.md) [dataModules](../dataModules/tree.md)
+[root](../../tree.md)
+[src](../tree.md)
+[apps](../apps/tree.md)
+[coreModules](../coreModules/tree.md)
+[dataModules](../dataModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

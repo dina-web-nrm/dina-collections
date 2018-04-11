@@ -1,7 +1,5 @@
 # Tree for services
-
 ## Tree
-
 ```bash
 ├── agentService
 │   ├── index.js
@@ -48,29 +46,17 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   └── resources
-│       ├── preparationType
-│       │   ├── index.js
-│       │   └── operations
 │       ├── featureType
 │       │   ├── index.js
 │       │   └── operations
-│       └── index.js
+│       ├── index.js
+│       └── preparationType
+│           ├── index.js
+│           └── operations
 ├── externalEventService
 │   ├── index.js
 │   └── info
 │       ├── description.md
-│       └── index.js
-├── identifierService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   ├── models
-│   │   └── index.js
-│   └── resources
-│       ├── catalogNumber
-│       │   ├── index.js
-│       │   └── operations
 │       └── index.js
 ├── index.js
 ├── localityService
@@ -84,11 +70,11 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   ├── resources
-│   │   ├── place
-│   │   │   ├── create
-│   │   │   ├── getMany
-│   │   │   └── index.js
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── place
+│   │       ├── create
+│   │       ├── getMany
+│   │       └── index.js
 │   └── todo
 ├── organizationService
 │   ├── index.js
@@ -101,7 +87,9 @@
 │   ├── controllers
 │   │   └── index.js
 │   ├── elasticModels
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
@@ -162,9 +150,11 @@
 │           ├── index.js
 │           └── operations
 └── tree.md
+
 ```
 
 ## Links
-
-[root](../../tree.md) [src](../tree.md) [lib](../lib/tree.md)
+[root](../../tree.md)
+[src](../tree.md)
+[lib](../lib/tree.md)
 [apps](../apps/tree.md)

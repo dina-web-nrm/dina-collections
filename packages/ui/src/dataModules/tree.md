@@ -1,7 +1,5 @@
 # Tree for dataModules
-
 ## Tree
-
 ```bash
 ├── allModules.js
 ├── curatedListService
@@ -9,16 +7,16 @@
 │   │   ├── createFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPreparationType
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getPreparationTypes
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
 │   │   ├── getFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── getFeatureTypes
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getPreparationType
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getPreparationTypes
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
@@ -36,8 +34,8 @@
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
 │   │   ├── createGetPreparationTypeById.js
-│   │   ├── ensureAllPreparationTypesFetched.js
 │   │   ├── ensureAllFeatureTypesFetched.js
+│   │   ├── ensureAllPreparationTypesFetched.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
@@ -46,45 +44,10 @@
 │   │   ├── index.js
 │   │   ├── index.test.js
 │   │   └── resources
-│   │       ├── preparationTypes
 │   │       ├── featureTypes
 │   │       ├── index.js
-│   │       └── index.test.js
-│   ├── selectors.js
-│   └── selectors.test.js
-├── identifierService
-│   ├── actionCreators
-│   │   ├── createCatalogNumber
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getCatalogNumber
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getCatalogNumbers
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── index.js
-│   │   ├── index.test.js
-│   │   └── updateCatalogNumber
-│   │       ├── index.js
-│   │       └── index.test.js
-│   ├── actionTypes.js
-│   ├── actionTypes.test.js
-│   ├── constants.js
-│   ├── constants.test.js
-│   ├── endpoints.js
-│   ├── endpoints.test.js
-│   ├── globalSelectors.js
-│   ├── globalSelectors.test.js
-│   ├── index.js
-│   ├── index.test.js
-│   ├── reducer
-│   │   ├── index.js
-│   │   ├── index.test.js
-│   │   └── resources
-│   │       ├── catalogNumbers
-│   │       ├── index.js
-│   │       └── index.test.js
+│   │       ├── index.test.js
+│   │       └── preparationTypes
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── index.js
@@ -93,10 +56,10 @@
 │   │   ├── createPlace
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPlaces
+│   │   ├── getPlace
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPlace
+│   │   ├── getPlaces
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
@@ -125,9 +88,9 @@
 │   │   ├── index.js
 │   │   ├── index.test.js
 │   │   └── resources
-│   │       ├── places
 │   │       ├── index.js
-│   │       └── index.test.js
+│   │       ├── index.test.js
+│   │       └── places
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── specimenService
@@ -261,10 +224,13 @@
 │   ├── selectors.js
 │   └── selectors.test.js
 └── tree.md
+
 ```
 
 ## Links
-
-[root](../../tree.md) [src](../tree.md) [apps](../apps/tree.md)
-[coreModules](../coreModules/tree.md) [domainModules](../domainModules/tree.md)
+[root](../../tree.md)
+[src](../tree.md)
+[apps](../apps/tree.md)
+[coreModules](../coreModules/tree.md)
+[domainModules](../domainModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)
