@@ -6,7 +6,7 @@ import { compose } from 'redux'
 import objectPath from 'object-path'
 
 import config from 'config'
-import localityServiceSelectors from '../globalSelectors'
+import storageServiceSelectors from '../globalSelectors'
 import { getStorageLocation as getStorageLocationAc } from '../actionCreators'
 
 const createGetStorageLocationById = (
@@ -14,11 +14,12 @@ const createGetStorageLocationById = (
 ) => ComposedComponent => {
   const mapStateToProps = (state, ownProps) => {
     const itemId = objectPath.get(ownProps, idPath)
+
     return {
       itemId,
       storageLocation: !itemId
         ? null
-        : localityServiceSelectors.getStorageLocation(state, itemId),
+        : storageServiceSelectors.getStorageLocation(state, itemId),
     }
   }
 
@@ -27,44 +28,34 @@ const createGetStorageLocationById = (
   }
 
   const propTypes = {
-    allLocalitiesFetched: PropTypes.bool,
     getStorageLocation: PropTypes.func.isRequired,
     itemId: PropTypes.string,
     storageLocation: PropTypes.object,
   }
 
   const defaultProps = {
-    allLocalitiesFetched: undefined,
     itemId: '',
     storageLocation: null,
   }
 
   class GetStorageLocationById extends Component {
     componentDidMount() {
-      const { allLocalitiesFetched } = this.props
-      if (!config.isTest && allLocalitiesFetched === undefined) {
-        const { itemId } = this.props
-        if (itemId) {
-          this.props.getStorageLocation({ id: itemId })
-        }
+      const { itemId } = this.props
+      if (itemId && !config.isTest) {
+        this.props.getStorageLocation({ id: itemId })
       }
     }
-    componentWillReceiveProps(nextProps) {
-      const { allLocalitiesFetched } = this.props
-      const { itemId } = this.props
-      if (
-        allLocalitiesFetched === false &&
-        nextProps.allLocalitiesFetched === true
-      ) {
-        if (itemId) {
-          this.props.getStorageLocation({ id: itemId })
-        }
-      }
 
-      if (nextProps.itemId && nextProps.itemId !== itemId) {
+    componentWillReceiveProps(nextProps) {
+      if (
+        nextProps.itemId &&
+        nextProps.itemId !== this.props.itemId &&
+        !config.isTest
+      ) {
         this.props.getStorageLocation({ id: nextProps.itemId })
       }
     }
+
     render() {
       const { storageLocation } = this.props
       return (
