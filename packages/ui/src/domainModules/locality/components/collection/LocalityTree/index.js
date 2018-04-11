@@ -4,12 +4,15 @@ import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 
+import { createSortAlphabeticallyByProperty } from 'common/es5/sortMethods'
 import { getPlaces as getPlacesAc } from 'dataModules/placeService/actionCreators'
 import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/crudBlocks/keyObjectModule'
 import {
   SET_ITEM_EDIT,
   SET_ITEM_INSPECT,
 } from 'coreModules/crudBlocks/constants'
+
+const sortAlphabetically = createSortAlphabeticallyByProperty('title')
 
 const mapStateToProps = (state, { name }) => {
   return {
@@ -51,13 +54,16 @@ class Localities extends Component {
         queryParams: { relationships: ['all'] },
       })
       .then(places => {
-        const flatData = places.map(locality => {
-          return {
-            id: locality.id,
-            parentId: (locality.parent && locality.parent.id) || '0',
-            title: locality.name,
-          }
-        })
+        const flatData = places
+          .map(locality => {
+            return {
+              id: locality.id,
+              parentId: (locality.parent && locality.parent.id) || '0',
+              title: locality.name,
+            }
+          })
+          .sort(sortAlphabetically)
+
         const parent = {
           id: '0',
           title: 'Earth',
