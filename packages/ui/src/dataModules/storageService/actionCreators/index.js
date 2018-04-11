@@ -1,19 +1,19 @@
-import createPhysicalUnit from './createPhysicalUnit'
+import createPhysicalObject from './createPhysicalObject'
 import createStorageLocation from './createStorageLocation'
-import getPhysicalUnit from './getPhysicalUnit'
-import getPhysicalUnits from './getPhysicalUnits'
+import getPhysicalObject from './getPhysicalObject'
+import getPhysicalObjects from './getPhysicalObjects'
 import getStorageLocation from './getStorageLocation'
 import getStorageLocations from './getStorageLocations'
-import updatePhysicalUnit from './updatePhysicalUnit'
+import updatePhysicalObject from './updatePhysicalObject'
 import updateStorageLocation from './updateStorageLocation'
 
 export {
-  createPhysicalUnit,
+  createPhysicalObject,
   createStorageLocation,
-  getPhysicalUnit,
-  getPhysicalUnits,
+  getPhysicalObject,
+  getPhysicalObjects,
   getStorageLocation,
   getStorageLocations,
-  updatePhysicalUnit,
+  updatePhysicalObject,
   updateStorageLocation,
 }

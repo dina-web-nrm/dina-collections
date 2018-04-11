@@ -1,4 +1,4 @@
-import { createPhysicalUnit } from 'dataModules/storageService/actionCreators'
+import { createPhysicalObject } from 'dataModules/storageService/actionCreators'
 
 import { flattenObjectResponse } from 'utilities/transformations'
 
@@ -15,40 +15,42 @@ import {
 
 export default function createSpecimen(
   {
-    curatedLocalities = [],
-    distinguishedUnitTypes = [],
-    featureObservationTypes = [],
-    physicalUnits = [],
+    featureTypes = [],
+    physicalObjects = [],
+    places = [],
+    preparationTypes = [],
     specimen,
     storageLocations = [],
     taxa = [],
     throwError = true,
   } = {}
 ) {
-  const { individualGroup } = specimen
+  const { individual } = specimen
 
   const meta = {
-    catalogNumber: getCatalogNumberFromIdentifiers(individualGroup.identifiers),
-    curatedLocalities,
-    distinguishedUnitTypes,
-    featureObservationTypes,
-    individualGroup,
-    physicalUnits,
+    catalogNumber: getCatalogNumberFromIdentifiers(individual.identifiers),
+    featureTypes,
+    individual,
+    physicalObjects,
+    places,
+    preparationTypes,
     storageLocations,
     taxa,
   }
 
   return (dispatch, getState, { apiClient }) => {
     return Promise.all(
-      physicalUnits.map(physicalUnit => {
-        return dispatch(createPhysicalUnit({ physicalUnit, throwError: true }))
+      physicalObjects.map(physicalObject => {
+        return dispatch(
+          createPhysicalObject({ physicalObject, throwError: true })
+        )
       })
-    ).then(savedPhysicalUnits => {
+    ).then(savedPhysicalObjects => {
       const body = buildSpecimenBody({
-        curatedLocalities,
-        distinguishedUnitTypes,
-        featureObservationTypes,
-        savedPhysicalUnits,
+        featureTypes,
+        places,
+        preparationTypes,
+        savedPhysicalObjects,
         specimen,
         storageLocations,
         taxa,

@@ -3,23 +3,23 @@ import initialState from './initialState'
 const mutations = [
   { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
   { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
-  { name: 'taxonInformation.determinations.0.date', value: 'date' },
+  { name: 'determinations.0.date', value: 'date' },
   {
-    name: 'taxonInformation.determinations.0.determinationVerbatim',
+    name: 'determinations.0.determinationVerbatim',
     value: 'determinationVerbatim',
   },
   {
-    name: 'taxonInformation.determinations.0.determinedByAgentText',
+    name: 'determinations.0.determinedByAgentText',
     value: 'determinedByAgentText',
   },
   {
-    name: 'taxonInformation.determinations.0.isCurrentDetermination',
+    name: 'determinations.0.isCurrentDetermination',
     value: true,
   },
-  { name: 'taxonInformation.determinations.0.remarks', value: 'remarks' },
+  { name: 'determinations.0.remarks', value: 'remarks' },
 
   {
-    name: 'taxonInformation.determinations.0.taxon.id.hidden',
+    name: 'determinations.0.taxon.id.hidden',
     value: '2367',
   },
   {
@@ -48,43 +48,43 @@ const mutations = [
     interaction: 'click',
   },
   {
-    name: 'distinguishedUnits.0.distinguishedUnitType.id.hidden',
+    name: 'collectionItems.0.preparationType.id.hidden',
     value: '2',
   },
   {
-    name: 'distinguishedUnits.0.description',
+    name: 'collectionItems.0.description',
     value: 'description',
   },
   {
-    name: 'distinguishedUnits.0.physicalUnit.storageLocation.id.hidden',
+    name: 'collectionItems.0.physicalObject.storageLocation.id.hidden',
     value: '1',
   },
   {
-    name: 'distinguishedUnits.0.physicalUnit.storedUnderTaxonName',
+    name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
     value: 'storedUnderTaxonName',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.agent',
+    name: 'collectionItems.0.curatorialAssessments.0.agent',
     value: 'agent',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.condition',
+    name: 'collectionItems.0.curatorialAssessments.0.condition',
     value: 'condition',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.conditionRemarks',
+    name: 'collectionItems.0.curatorialAssessments.0.conditionRemarks',
     value: 'conditionRemarks',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.date',
+    name: 'collectionItems.0.curatorialAssessments.0.date',
     value: 'date',
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.isInStorage',
+    name: 'collectionItems.0.curatorialAssessments.0.isInStorage',
     value: true,
   },
   {
-    name: 'distinguishedUnits.0.curatorialAssessments.0.inventoryStatusRemarks',
+    name: 'collectionItems.0.curatorialAssessments.0.inventoryStatusRemarks',
     value: 'inventoryStatusRemarks',
   },
   {
@@ -92,106 +92,95 @@ const mutations = [
     value: true,
   },
   {
-    name: 'identifiers.0.identifier.value',
+    name: 'identifiers.0.value',
     value: '123456',
   },
   {
-    name: 'individualCircumstances.0.collectorsText',
+    name: 'collectingInformation.0.collectorsText',
     value: 'collectorsText',
   },
   {
-    name: 'individualCircumstances.0.event.endDate',
+    name: 'collectingInformation.0.event.endDate',
     value: 'endDate',
   },
   {
-    name: 'individualCircumstances.0.event.expeditionText',
+    name: 'collectingInformation.0.event.expeditionText',
     value: 'expeditionText',
   },
 
   {
     name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.0.id.hidden',
+      'collectingInformation.0.event.locationInformation.places.0.id.hidden',
     value: 'Africa',
   },
 
   {
     name:
-      'individualCircumstances.0.event.localityInformation.curatedLocalities.1.id.hidden',
+      'collectingInformation.0.event.locationInformation.places.1.id.hidden',
     value: 'Algeria',
   },
   {
-    name:
-      'individualCircumstances.0.event.localityInformation.localityVerbatim',
+    name: 'collectingInformation.0.event.locationInformation.localityVerbatim',
     value: 'localityVerbatim',
   },
   {
-    name: 'individualCircumstances.0.event.localityInformation.localityName',
+    name: 'collectingInformation.0.event.locationInformation.localityName',
     value: 'localityName',
   },
   {
-    name: 'individualCircumstances.0.event.localityInformation.remarks',
+    name: 'collectingInformation.0.event.locationInformation.remarks',
     value: 'remarks',
   },
   {
-    name:
-      'individualCircumstances.0.event.localityInformation.position.latitude',
+    name: 'collectingInformation.0.event.locationInformation.position.latitude',
     value: 'latitude-string',
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.position.longitude',
+      'collectingInformation.0.event.locationInformation.position.longitude',
     value: 'longitude-string',
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.position.referenceSystem',
+      'collectingInformation.0.event.locationInformation.position.referenceSystem',
     value: 'referenceSystem',
   },
 
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.maximumDepthInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
     value: 100,
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.maximumElevationInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
     value: 100,
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.minimumDepthInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
     value: 20,
   },
   {
     name:
-      'individualCircumstances.0.event.localityInformation.verticalPosition.minimumElevationInMeters',
+      'collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
     value: 20,
   },
   {
-    name: 'individualCircumstances.0.event.startDate',
+    name: 'collectingInformation.0.event.startDate',
     value: 'startDate',
   },
 ]
 
 const expectedOutput = {
-  curatedLocalities: [
-    { id: 'Africa', type: 'curatedLocality' },
-    { id: 'Algeria', type: 'curatedLocality' },
-  ],
-  distinguishedUnitTypes: [
-    {
-      id: '2',
-      type: 'distinguishedUnitType',
-    },
-  ],
-  featureObservationTypes: [
+  featureTypes: [
     {
       id: '1',
-      type: 'featureObservationType',
+      type: 'featureType',
     },
   ],
-  physicalUnits: [
+
+  physicalObjects: [
     {
       storageLocation: {
         id: '1',
@@ -200,72 +189,28 @@ const expectedOutput = {
       storedUnderTaxonName: 'storedUnderTaxonName',
     },
   ],
+  places: [{ id: 'Africa', type: 'place' }, { id: 'Algeria', type: 'place' }],
+  preparationTypes: [
+    {
+      id: '2',
+      type: 'preparationType',
+    },
+  ],
   specimen: {
-    individualGroup: {
-      distinguishedUnits: [
-        {
-          curatorialAssessments: [
-            {
-              agent: 'agent',
-              condition: 'condition',
-              conditionRemarks: 'conditionRemarks',
-              date: 'date',
-              inventoryStatusRemarks: 'inventoryStatusRemarks',
-              isInStorage: true, // is set as default in form
-            },
-          ],
-          description: 'description',
-          distinguishedUnitType: {
-            id: '2',
-            type: 'distinguishedUnitType',
-          },
-          physicalUnit: {
-            storageLocation: {
-              id: '1',
-              type: 'storageLocation',
-            },
-            storedUnderTaxonName: 'storedUnderTaxonName',
-          },
-        },
-      ],
-      featureObservations: [
-        {
-          date: 'date',
-          featureObservationAgent: 'featureObservationAgent',
-          featureObservationText: 'juvenile',
-          featureObservationType: {
-            id: '1',
-            type: 'featureObservationType',
-          },
-          methodText: 'known-age',
-          remarks: 'remarks',
-        },
-      ],
-
-      identifiers: [
-        {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123456',
-          },
-          publishRecord: true,
-          remarks: '',
-        },
-      ],
-      individualCircumstances: [
+    individual: {
+      collectingInformation: [
         {
           collectorsText: 'collectorsText',
           event: {
             endDate: 'endDate',
             expeditionText: 'expeditionText',
-            localityInformation: {
-              curatedLocalities: [
-                { id: 'Africa', type: 'curatedLocality' },
-                { id: 'Algeria', type: 'curatedLocality' },
-              ],
+            locationInformation: {
               localityName: 'localityName',
               localityVerbatim: 'localityVerbatim',
+              places: [
+                { id: 'Africa', type: 'place' },
+                { id: 'Algeria', type: 'place' },
+              ],
               position: {
                 latitude: 'latitude-string',
                 longitude: 'longitude-string',
@@ -283,27 +228,77 @@ const expectedOutput = {
           },
         },
       ],
+      collectionItems: [
+        {
+          curatorialAssessments: [
+            {
+              agent: 'agent',
+              condition: 'condition',
+              conditionRemarks: 'conditionRemarks',
+              date: 'date',
+              inventoryStatusRemarks: 'inventoryStatusRemarks',
+              isInStorage: true, // is set as default in form
+            },
+          ],
+          description: 'description',
+          physicalObject: {
+            storageLocation: {
+              id: '1',
+              type: 'storageLocation',
+            },
+            storedUnderTaxonName: 'storedUnderTaxonName',
+          },
+          preparationType: {
+            id: '2',
+            type: 'preparationType',
+          },
+        },
+      ],
+      determinations: [
+        {
+          date: 'date',
+          determinationVerbatim: 'determinationVerbatim',
+          determinedByAgentText: 'determinedByAgentText',
+          isCurrentDetermination: true,
+          remarks: 'remarks',
+          taxon: {
+            id: '2367',
+            type: 'taxon',
+          },
+        },
+      ],
+      featureObservations: [
+        {
+          date: 'date',
+          featureObservationAgent: 'featureObservationAgent',
+          featureObservationText: 'juvenile',
+          featureType: {
+            id: '1',
+            type: 'featureType',
+          },
+          methodText: 'known-age',
+          remarks: 'remarks',
+        },
+      ],
+
+      identifiers: [
+        {
+          identifierType: 'catalogNumber',
+          nameSpace: '',
+          publishRecord: true,
+          remarks: '',
+          value: '123456',
+        },
+      ],
       readOnly: undefined,
       taxonInformation: {
         curatorialName: 'curatorialName',
-        determinations: [
-          {
-            date: 'date',
-            determinationVerbatim: 'determinationVerbatim',
-            determinedByAgentText: 'determinedByAgentText',
-            isCurrentDetermination: true,
-            remarks: 'remarks',
-            taxon: {
-              id: '2367',
-              type: 'taxon',
-            },
-          },
-        ],
         taxonRemarks: 'taxonRemarks',
       },
     },
     readOnly: undefined,
   },
+
   storageLocations: [
     {
       id: '1',
@@ -328,7 +323,7 @@ const postSubmitTest = ({ submitResult }) => {
   ).toMatchObject(
     Object.keys(registeredFields)
       .filter(key => {
-        // filter out unused featureObservationTypes, also done in transform output
+        // filter out unused featureTypes, also done in transform output
         if (key.indexOf('featureObservations.') === 0) {
           return key.indexOf('featureObservations.1.') === 0
         }

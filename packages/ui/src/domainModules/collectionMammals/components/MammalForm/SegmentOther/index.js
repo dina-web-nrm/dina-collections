@@ -32,12 +32,12 @@ class SegmentOther extends PureComponent {
               disabled
               label={
                 <ModuleTranslate
-                  scope="distinguishedUnits"
+                  scope="collectionItems"
                   textKey="storedUnderTaxonName"
                 />
               }
               module="collectionMammals"
-              name="distinguishedUnits.0.physicalUnit.storedUnderTaxonName"
+              name="collectionItems.0.physicalObject.storedUnderTaxonName"
               type="text"
             />
           </Grid.Column>

@@ -1,7 +1,7 @@
 import {
-  getCuratedLocalities,
-  getCuratedLocality,
-  getHasCuratedLocalities,
+  getPlaces,
+  getPlace,
+  getHasPlaces,
   getLocalState,
   getResources,
 } from './selectors'
@@ -12,7 +12,7 @@ describe('dataModules/localityService/selectors', () => {
   beforeEach(() => {
     state = {
       resources: {
-        curatedLocalities: {
+        places: {
           idAsia: {
             group: 'continent',
             id: 'idAsia',
@@ -50,25 +50,19 @@ describe('dataModules/localityService/selectors', () => {
   it('returns resources', () => {
     expect(getResources(state)).toEqual(state.resources)
   })
-  it('returns curatedLocalities', () => {
-    expect(getCuratedLocalities(state)).toEqual(
-      state.resources.curatedLocalities
-    )
+  it('returns places', () => {
+    expect(getPlaces(state)).toEqual(state.resources.places)
   })
-  it('returns curatedLocality by id', () => {
-    expect(getCuratedLocality(state, 'a')).toEqual(
-      state.resources.curatedLocalities.a
-    )
+  it('returns place by id', () => {
+    expect(getPlace(state, 'a')).toEqual(state.resources.places.a)
   })
 
-  describe('getHasCuratedLocalities', () => {
+  describe('getHasPlaces', () => {
     it('returns true', () => {
-      expect(getHasCuratedLocalities(state)).toEqual(true)
+      expect(getHasPlaces(state)).toEqual(true)
     })
     it('returns false', () => {
-      expect(
-        getHasCuratedLocalities({ resources: { curatedLocalities: {} } })
-      ).toEqual(false)
+      expect(getHasPlaces({ resources: { places: {} } })).toEqual(false)
     })
   })
 })

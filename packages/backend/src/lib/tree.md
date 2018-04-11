@@ -62,6 +62,7 @@
 │       ├── factories
 │       │   └── normalizedElasticModel
 │       ├── index.js
+│       ├── loadInitialData.js
 │       ├── syncModels.js
 │       └── utilities
 │           └── extractModelFunctionsFromServices.js

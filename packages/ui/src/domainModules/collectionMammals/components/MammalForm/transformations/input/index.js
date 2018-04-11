@@ -1,47 +1,52 @@
 import denormalizeSpecimen from 'common/es5/normalize/denormalizeSpecimen'
 import transformTaxonInformation from './transformTaxonInformation'
+import transformDeterminations from './transformDeterminations'
 import transformFeatureObservations from './transformFeatureObservations'
-import transformDistinguishedUnits from './transformDistinguishedUnits'
+import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
-import transformIndividualCircumstances from './transformIndividualCircumstances'
+import transformCollectingInformation from './transformCollectingInformation'
 
 export default function transformInput({
   denormalize = true,
-  distinguishedUnitTypes = {},
-  featureObservationTypes = {},
-  physicalUnits = {},
+  featureTypes = {},
+  physicalObjects = {},
+  preparationTypes = {},
   specimen = {},
   storageLocations = {},
 }) {
   const { id, type, ...rawSpeciment } = specimen
   const attributes = denormalize
-    ? denormalizeSpecimen(rawSpeciment).individualGroup
-    : rawSpeciment.individualGroup || {}
+    ? denormalizeSpecimen(rawSpeciment).individual
+    : rawSpeciment.individual || {}
 
   const taxonInformation = transformTaxonInformation(
     attributes.taxonInformation
   )
+
+  const determinations = transformDeterminations(attributes.determinations)
+
   const featureObservations = transformFeatureObservations({
     featureObservations: attributes.featureObservations,
-    featureObservationTypes,
+    featureTypes,
   })
-  const distinguishedUnits = transformDistinguishedUnits({
-    distinguishedUnits: attributes.distinguishedUnits,
-    distinguishedUnitTypes,
-    physicalUnits,
+  const collectionItems = transformCollectionItems({
+    collectionItems: attributes.collectionItems,
+    physicalObjects,
+    preparationTypes,
     storageLocations,
   })
   const identifiers = transformIdentifiers(attributes.identifiers)
-  const individualCircumstances = transformIndividualCircumstances(
-    attributes.individualCircumstances
+  const collectingInformation = transformCollectingInformation(
+    attributes.collectingInformation
   )
 
   return {
     ...attributes,
-    distinguishedUnits,
+    collectingInformation,
+    collectionItems,
+    determinations,
     featureObservations,
     identifiers,
-    individualCircumstances,
     taxonInformation,
   }
 }

@@ -4,7 +4,7 @@ import models from 'common/dist/models.json'
 
 export const mammalFormModels = immutable.set(
   models,
-  'individualGroup.properties.featureObservations',
+  'individual.properties.featureObservations',
   {
     patternProperties: {
       '/./g': {

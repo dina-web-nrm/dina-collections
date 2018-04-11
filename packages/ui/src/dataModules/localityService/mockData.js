@@ -1,6 +1,6 @@
 let incrementingId = 1
 
-const createMapCuratedLocality = group => {
+const createMapPlace = group => {
   return name => {
     incrementingId += 1
     return {
@@ -9,7 +9,7 @@ const createMapCuratedLocality = group => {
         name: name.toLowerCase(),
       },
       id: String(incrementingId),
-      type: 'curatedLocality',
+      type: 'place',
     }
   }
 }
@@ -26,7 +26,7 @@ const CONTINENTS = [
   'Oceania',
   'Pacific Ocean',
   'South America',
-].map(createMapCuratedLocality('continent'))
+].map(createMapPlace('continent'))
 
 const COUNTRIES = [
   'Algeria',
@@ -195,7 +195,7 @@ const COUNTRIES = [
   'Zambia',
   'ZIMBABWE',
   'Zimbabwe',
-].map(createMapCuratedLocality('country'))
+].map(createMapPlace('country'))
 
 const PROVINCES = [
   'Balearic Islands',
@@ -618,7 +618,7 @@ const PROVINCES = [
   'Ã…ngermanland',
   'Ã…sele Lappmark',
   'Ã…sele lappmark',
-].map(createMapCuratedLocality('province'))
+].map(createMapPlace('province'))
 
 const DISTRICTS = [
   'GaspÃ© Peninsula',
@@ -769,11 +769,6 @@ const DISTRICTS = [
   'Ã…land',
   'Ã…nge',
   'Ã…nge kommun',
-].map(createMapCuratedLocality('district'))
+].map(createMapPlace('district'))
 
-export const curatedLocalities = [
-  ...CONTINENTS,
-  ...COUNTRIES,
-  ...PROVINCES,
-  ...DISTRICTS,
-]
+export const places = [...CONTINENTS, ...COUNTRIES, ...PROVINCES, ...DISTRICTS]

@@ -1,0 +1,38 @@
+{
+  "additionalProperties": false,
+  "description": "This is a description",
+  "properties": {
+    "lid": {
+      "type": "string"
+    },
+    "determinations": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__determination", "x-reference-type": "internal" }
+    },
+    "taxonInformation": {
+      "$ref": "__ROOT__taxonInformation",
+      "x-reference-type": "internal"
+    },
+    "collectingInformation": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__collectingInformation", "x-reference-type": "internal" }
+    },
+    "featureObservations": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__featureObservation", "x-reference-type": "internal" }
+    },
+    "id": { "type": "string" },
+    "identifiers": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__identifier", "x-reference-type": "internal" }
+    },
+    "collectionItems": {
+      "type": "array",
+      "items": { "$ref": "__ROOT__collectionItem", "x-reference-type": "internal" }
+    },
+    "readOnly": {
+      "$ref": "__ROOT__readOnly"
+    },
+    "version": { "type": "integer" }
+  }
+}

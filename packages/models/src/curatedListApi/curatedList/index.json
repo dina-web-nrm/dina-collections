@@ -7,8 +7,8 @@
     "type": {
       "type": "string",
       "enum": [
-        "featureObservationType",
-        "distinguishedUnitType"
+        "featureType",
+        "preparationType"
       ]
     },
     "items": {

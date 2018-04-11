@@ -1,2 +1,2 @@
-exports.physicalUnit = require('./physicalUnit')
+exports.physicalObject = require('./physicalObject')
 exports.storageLocation = require('./storageLocation')

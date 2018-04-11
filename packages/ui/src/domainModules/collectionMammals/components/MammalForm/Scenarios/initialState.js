@@ -2,7 +2,7 @@
 export default {
   curatedListService: {
     resources: {
-      featureObservationTypes: {
+      featureTypes: {
         '1': {
           key: 'age-stage',
           group: 'age-stage',
@@ -36,47 +36,47 @@ export default {
             },
           ],
           id: '1',
-          type: 'featureObservationType',
+          type: 'featureType',
         },
       },
-      distinguishedUnitTypes: {
+      preparationTypes: {
         '2': {
           category: 'skeleton',
           id: '2',
           name: 'complete, mounted skeleton',
-          type: 'distinguishedUnitType',
+          type: 'preparationType',
         },
       },
     },
   },
   localityService: {
     resources: {
-      curatedLocalities: {
+      places: {
         '1': {
           name: 'africa',
           group: 'continent',
           id: '1',
-          type: 'curatedLocality',
+          type: 'place',
         },
         '12': {
           name: 'algeria',
           group: 'country',
           id: '12',
-          type: 'curatedLocality',
+          type: 'place',
         },
       },
     },
   },
   storageService: {
     resources: {
-      physicalUnits: {
+      physicalObjects: {
         '1': {
           id: '1',
           storageLocation: {
             id: '1',
             type: 'storageLocation',
           },
-          type: 'physicalUnit',
+          type: 'physicalObject',
         },
       },
       storageLocations: {

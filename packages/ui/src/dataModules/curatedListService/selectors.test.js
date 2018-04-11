@@ -1,9 +1,9 @@
 import {
   getLocalState,
   getResources,
-  getFeatureObservationType,
-  getFeatureObservationTypes,
-  getHasFeatureObservationTypes,
+  getFeatureType,
+  getFeatureTypes,
+  getHasFeatureTypes,
 } from './selectors'
 
 describe('dataModules/curatedListService/selectors', () => {
@@ -12,7 +12,7 @@ describe('dataModules/curatedListService/selectors', () => {
   beforeEach(() => {
     state = {
       resources: {
-        featureObservationTypes: {
+        featureTypes: {
           a: {
             group: 'age',
             id: 'a',
@@ -78,39 +78,31 @@ describe('dataModules/curatedListService/selectors', () => {
       expect(getResources(state)).toBe(getResources(state))
     })
   })
-  describe('getFeatureObservationTypes', () => {
-    it('returns featureObservationTypes', () => {
-      expect(getFeatureObservationTypes(state)).toEqual(
-        state.resources.featureObservationTypes
-      )
+  describe('getFeatureTypes', () => {
+    it('returns featureTypes', () => {
+      expect(getFeatureTypes(state)).toEqual(state.resources.featureTypes)
     })
     it('returns same (===) result both times', () => {
-      expect(getFeatureObservationTypes(state)).toBe(
-        getFeatureObservationTypes(state)
-      )
+      expect(getFeatureTypes(state)).toBe(getFeatureTypes(state))
     })
   })
-  describe('getFeatureObservationType', () => {
-    it('returns featureObservationType by id', () => {
-      expect(getFeatureObservationType(state, 'a')).toEqual(
-        state.resources.featureObservationTypes.a
-      )
+  describe('getFeatureType', () => {
+    it('returns featureType by id', () => {
+      expect(getFeatureType(state, 'a')).toEqual(state.resources.featureTypes.a)
     })
     it('returns same (===) result both times', () => {
-      expect(getFeatureObservationType(state, 'a')).toBe(
-        getFeatureObservationType(state, 'a')
-      )
+      expect(getFeatureType(state, 'a')).toBe(getFeatureType(state, 'a'))
     })
   })
 
-  describe('getHasFeatureObservationTypes', () => {
+  describe('getHasFeatureTypes', () => {
     it('returns true', () => {
-      expect(getHasFeatureObservationTypes(state)).toEqual(true)
+      expect(getHasFeatureTypes(state)).toEqual(true)
     })
     it('returns false', () => {
       expect(
-        getHasFeatureObservationTypes({
-          resources: { featureObservationTypes: {} },
+        getHasFeatureTypes({
+          resources: { featureTypes: {} },
         })
       ).toEqual(false)
     })

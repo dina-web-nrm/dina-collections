@@ -1,54 +1,51 @@
-const individualGroup = {
-  distinguishedUnits: [
+const individual = {
+  collectionItems: [
     {
-      physicalUnit: {
+      physicalObject: {
         id: '1',
-        type: 'physicalUnit',
+        type: 'physicalObject',
+      },
+    },
+  ],
+  determinations: [
+    {
+      taxon: {
+        id: '1078',
+        type: 'taxon',
       },
     },
   ],
   featureObservations: [
     {
       featureObservationText: 'female',
-      featureObservationType: {
+      featureType: {
         id: '22',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
     },
   ],
   identifiers: [
     {
-      identifier: {
-        identifierType: 'catalogNumber',
-        value: '444444',
-      },
+      identifierType: 'catalogNumber',
+      value: '444444',
     },
   ],
-  taxonInformation: {
-    determinations: [
-      {
-        taxon: {
-          id: '1078',
-          type: 'taxon',
-        },
-      },
-    ],
-  },
+  taxonInformation: {},
 }
-const featureObservationTypes = {
+const featureTypes = {
   1: {
     id: '1',
-    type: 'featureObservationType',
+    type: 'featureType',
   },
   22: {
     id: '22',
-    type: 'featureObservationType',
+    type: 'featureType',
   },
 }
-const physicalUnits = {
+const physicalObjects = {
   1: {
     id: '1',
-    type: 'physicalUnit',
+    type: 'physicalObject',
   },
 }
 const taxa = {
@@ -59,66 +56,63 @@ const taxa = {
 }
 const mutations = [
   {
-    name: 'taxonInformation.determinations.0.determinedByAgentText',
+    name: 'determinations.0.determinedByAgentText',
     value: 'John, Doe',
   },
 ]
 const expectedOutput = {
-  curatedLocalities: [],
-  distinguishedUnitTypes: [],
-  featureObservationTypes: [
+  featureTypes: [
     {
       id: '22',
-      type: 'featureObservationType',
+      type: 'featureType',
     },
   ],
-  physicalUnits: [
+  physicalObjects: [
     {
       id: '1',
-      type: 'physicalUnit',
+      type: 'physicalObject',
     },
   ],
+  places: [],
+  preparationTypes: [],
   specimen: {
-    individualGroup: {
-      distinguishedUnits: [
+    individual: {
+      collectingInformation: [],
+      collectionItems: [
         {
-          physicalUnit: {
+          physicalObject: {
             id: '1',
             storageLocation: undefined,
-            type: 'physicalUnit',
+            type: 'physicalObject',
+          },
+        },
+      ],
+      determinations: [
+        {
+          determinedByAgentText: 'John, Doe',
+          taxon: {
+            id: '1078',
+            type: 'taxon',
           },
         },
       ],
       featureObservations: [
         {
           featureObservationText: 'female',
-          featureObservationType: {
+          featureType: {
             id: '22',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
         },
       ],
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            value: '444444',
-          },
+          identifierType: 'catalogNumber',
+          value: '444444',
         },
       ],
-      individualCircumstances: [],
       readOnly: undefined,
-      taxonInformation: {
-        determinations: [
-          {
-            determinedByAgentText: 'John, Doe',
-            taxon: {
-              id: '1078',
-              type: 'taxon',
-            },
-          },
-        ],
-      },
+      taxonInformation: {},
     },
     readOnly: undefined,
   },
@@ -135,9 +129,9 @@ const scenario = {
   description: 'Update existing record by adding determinedByAgentText',
   expectedOutput,
   input: {
-    featureObservationTypes,
-    physicalUnits,
-    specimen: { individualGroup },
+    featureTypes,
+    physicalObjects,
+    specimen: { individual },
     taxa,
   },
   mutations,

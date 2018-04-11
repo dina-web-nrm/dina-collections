@@ -1,10 +1,10 @@
 const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function loadInitialData({ models }) {
-  const distinguishedUnitTypes = readInitialData('distinguishedUnitTypes')
+  const preparationTypes = readInitialData('preparationTypes')
   const featureTypes = readInitialData('featureTypes', { isJson: false })
 
-  const featureObservationTypeItems = !featureTypes
+  const featureTypeItems = !featureTypes
     ? null
     : featureTypes.map((featureType, index) => {
         return {
@@ -13,26 +13,23 @@ module.exports = function loadInitialData({ models }) {
         }
       })
 
-  const distinguishedUnitTypeItems = !distinguishedUnitTypes
+  const preparationTypeItems = !preparationTypes
     ? null
-    : distinguishedUnitTypes.map(distinguishedUnitType => {
-        const { id, ...rest } = distinguishedUnitType
+    : preparationTypes.map(preparationType => {
+        const { id, ...rest } = preparationType
         return {
           doc: { ...rest },
           id,
         }
       })
 
-  const featureObservationTypeItemsPromise = featureObservationTypeItems
-    ? models.featureObservationType.bulkCreate(featureObservationTypeItems)
+  const featureTypeItemsPromise = featureTypeItems
+    ? models.featureType.bulkCreate(featureTypeItems)
     : Promise.resolve()
 
-  const distinguishedUnitTypeItemsPromise = distinguishedUnitTypeItems
-    ? models.distinguishedUnitType.bulkCreate(distinguishedUnitTypeItems)
+  const preparationTypeItemsPromise = preparationTypeItems
+    ? models.preparationType.bulkCreate(preparationTypeItems)
     : Promise.resolve()
 
-  return Promise.all([
-    featureObservationTypeItemsPromise,
-    distinguishedUnitTypeItemsPromise,
-  ])
+  return Promise.all([featureTypeItemsPromise, preparationTypeItemsPromise])
 }

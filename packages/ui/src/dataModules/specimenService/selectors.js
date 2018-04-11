@@ -27,14 +27,14 @@ export const getHasSpecimens = createSelector(getSpecimens, specimens => {
   return Object.keys(specimens).length > 0
 })
 
-export const getSpecimenIndividualGroup = createSelector(
+export const getSpecimenIndividual = createSelector(
   getSpecimen,
-  specimen => specimen && specimen.individualGroup
+  specimen => specimen && specimen.individual
 )
 
 export const getSpecimenFeatureObservations = createSelector(
-  getSpecimenIndividualGroup,
-  individualGroup => individualGroup && individualGroup.featureObservations
+  getSpecimenIndividual,
+  individual => individual && individual.featureObservations
 )
 
 export const getSpecimenReadOnly = createSelector(

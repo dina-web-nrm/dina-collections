@@ -1,7 +1,5 @@
-import transformDeterminations from './transformDeterminations'
-
 const INITIAL_VALUES = {
-  taxonInformation: { determinations: [] },
+  taxonInformation: {},
 }
 
 export default function transformTaxonInformation(taxonInformation) {
@@ -9,16 +7,5 @@ export default function transformTaxonInformation(taxonInformation) {
     return INITIAL_VALUES.taxonInformation
   }
 
-  const { determinations, taxa } = transformDeterminations(
-    taxonInformation.determinations ||
-      INITIAL_VALUES.taxonInformation.determinations
-  )
-
-  return {
-    taxa,
-    taxonInformation: {
-      ...taxonInformation,
-      determinations,
-    },
-  }
+  return taxonInformation
 }

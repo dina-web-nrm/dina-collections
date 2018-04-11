@@ -3,67 +3,64 @@
 module.exports = {
   id: '1234',
   type: 'specimen',
-  individualGroup: {
-    taxonInformation: {
-      determinations: [{
-        determinationVerbatim: 'determinationVerbatim',
-        determinedByAgentText: 'determinedByAgentText',
-        isCurrentDetermination: true,
-        remarks: 'remarks',
-        taxon: {
-          id: '2367',
-          type: 'taxon'
-        }
-      }]
-    },
+  individual: {
+    determinations: [{
+      determinationVerbatim: 'determinationVerbatim',
+      determinedByAgentText: 'determinedByAgentText',
+      isCurrentDetermination: true,
+      remarks: 'remarks',
+      taxon: {
+        id: '2367',
+        type: 'taxon'
+      }
+    }],
+    taxonInformation: {},
     featureObservations: [{
       featureObservationAgent: 'featureObservationAgent',
       featureObservationText: '21',
-      featureObservationType: {
+      featureType: {
         id: '1',
-        type: 'featureObservationType'
+        type: 'featureType'
       },
       methodText: 'methodText'
     }],
-    distinguishedUnits: [{
+    collectionItems: [{
       alternateIdentifiersText: 'alternateIdentifiersText',
-      physicalUnit: {
+      physicalObject: {
         id: '2234',
-        type: 'physicalUnit'
+        type: 'physicalObject'
       },
-      physicalUnitText: 'physicalUnitText'
+      physicalObjectText: 'physicalObjectText'
     }],
     identifiers: [{
-      identifier: {
-        identifierType: 'catalogNumber',
-        nameSpace: '',
-        value: '123456'
-      },
+      identifierType: 'catalogNumber',
+      nameSpace: '',
+      value: '123456',
       publishRecord: true,
       remarks: ''
     }],
-    individualCircumstances: [{
+    collectingInformation: [{
       collectorsText: 'collectorsText',
       event: {
         endDate: 'endDate',
         expeditionText: 'expeditionText',
-        localityInformation: {
+        locationInformation: {
           coordinatesVerbatim: 'coordinatesVerbatim',
-          curatedLocalities: [{
+          places: [{
             id: '1',
-            type: 'curatedLocality'
+            type: 'place'
           }, {
             id: '2',
-            type: 'curatedLocality'
+            type: 'place'
           }, {
             id: '3',
-            type: 'curatedLocality'
+            type: 'place'
           }, {
             id: '4',
-            type: 'curatedLocality'
+            type: 'place'
           }, {
             id: '5',
-            type: 'curatedLocality'
+            type: 'place'
           }],
           georeferenceSourcesText: 'georeferenceSourcesText',
           localityVerbatim: 'localityVerbatim',

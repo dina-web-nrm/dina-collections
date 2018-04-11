@@ -19,8 +19,8 @@ import { mammalFormModels } from '../../schemas'
 import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
 import SegmentTaxon from './SegmentTaxon'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
-import SegmentIndividualCircumstances from './SegmentIndividualCircumstances/index'
-import SegmentDistinguishedUnits from './SegmentDistinguishedUnits'
+import SegmentCollectingInformation from './SegmentCollectingInformation/index'
+import SegmentCollectionItems from './SegmentCollectionItems'
 import SegmentOther from './SegmentOther'
 import FormActions from './FormActions'
 
@@ -145,7 +145,7 @@ class RawMammalForm extends Component {
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
               specimenId={specimenId}
             />
-            <SegmentIndividualCircumstances
+            <SegmentCollectingInformation
               formValueSelector={formValueSelector}
             />
             <SegmentFeatureObservations
@@ -153,7 +153,7 @@ class RawMammalForm extends Component {
               mode={mode}
             />
 
-            <SegmentDistinguishedUnits
+            <SegmentCollectionItems
               changeFieldValue={this.changeFieldValue}
               editMode={isEditMode}
               formValueSelector={formValueSelector}
@@ -185,7 +185,7 @@ export const MammalForm = reduxForm({
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
   validate: customFormValidator({
-    model: 'individualGroup',
+    model: 'individual',
     models: mammalFormModels,
   }),
 })(RawMammalForm)

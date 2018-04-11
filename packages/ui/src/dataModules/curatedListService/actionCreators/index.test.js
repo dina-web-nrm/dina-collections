@@ -3,12 +3,12 @@ const tryImport = () => {
 }
 
 const expectedActionCreators = [
-  'createFeatureObservationType',
-  'getDistinguishedUnitType',
-  'getDistinguishedUnitTypes',
-  'getFeatureObservationType',
-  'getFeatureObservationTypes',
-  'updateFeatureObservationType',
+  'createFeatureType',
+  'getPreparationType',
+  'getPreparationTypes',
+  'getFeatureType',
+  'getFeatureTypes',
+  'updateFeatureType',
 ]
 
 describe('dataModules/curatedListService/actionCreators', () => {

@@ -20,27 +20,27 @@ module.exports = {
       type: 'update',
     },
     {
-      relationKey: 'physicalUnits',
+      relationKey: 'physicalObjects',
       type: 'updateRelationHasMany',
     },
     {
-      relationKey: 'physicalUnits',
+      relationKey: 'physicalObjects',
       type: 'getRelationHasMany',
     },
     {
-      relationKey: 'featureObservationTypes',
+      relationKey: 'featureTypes',
       type: 'updateRelationHasMany',
     },
     {
-      relationKey: 'featureObservationTypes',
+      relationKey: 'featureTypes',
       type: 'getRelationHasMany',
     },
     {
-      relationKey: 'curatedLocalities',
+      relationKey: 'places',
       type: 'updateRelationHasMany',
     },
     {
-      relationKey: 'curatedLocalities',
+      relationKey: 'places',
       type: 'getRelationHasMany',
     },
     {
@@ -74,19 +74,19 @@ module.exports = {
     },
   ],
   relations: {
-    curatedLocalities: {
+    featureTypes: {
       format: 'array',
-      resource: 'curatedLocality',
+      resource: 'featureType',
       storeInDocument: true,
     },
-    featureObservationTypes: {
+    physicalObjects: {
       format: 'array',
-      resource: 'featureObservationType',
+      resource: 'physicalObject',
       storeInDocument: true,
     },
-    physicalUnits: {
+    places: {
       format: 'array',
-      resource: 'physicalUnit',
+      resource: 'place',
       storeInDocument: true,
     },
     taxa: {

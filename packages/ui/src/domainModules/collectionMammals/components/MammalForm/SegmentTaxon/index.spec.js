@@ -8,17 +8,11 @@ import transformOutput from '../transformations/output'
 import { dep } from '../../../middleware'
 
 const hasOneEmptyDetermination = store => {
+  expect(store.getState().form.mammalForm.values.determinations).toBeTruthy()
+  expect(store.getState().form.mammalForm.values.determinations.length).toBe(1)
   expect(
-    store.getState().form.mammalForm.values.taxonInformation.determinations
-  ).toBeTruthy()
-  expect(
-    store.getState().form.mammalForm.values.taxonInformation.determinations
+    Object.keys(store.getState().form.mammalForm.values.determinations[0])
       .length
-  ).toBe(1)
-  expect(
-    Object.keys(
-      store.getState().form.mammalForm.values.taxonInformation.determinations[0]
-    ).length
   ).toBe(0)
 }
 
@@ -55,10 +49,9 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       fullExport: true,
     })
 
-    expect(
-      store.getState().form.mammalForm.values.taxonInformation.determinations
-        .length
-    ).toBe(1)
+    expect(store.getState().form.mammalForm.values.determinations.length).toBe(
+      1
+    )
 
     const addDeterminationButton = rootComponent
       .find('Segment')
@@ -70,10 +63,9 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     addDeterminationButton.simulate('click')
     addDeterminationButton.simulate('click')
 
-    expect(
-      store.getState().form.mammalForm.values.taxonInformation.determinations
-        .length
-    ).toBe(4)
+    expect(store.getState().form.mammalForm.values.determinations.length).toBe(
+      4
+    )
   })
 
   it('sets other determinations as not current when setting one as current', () => {
@@ -87,10 +79,9 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       fullExport: true,
     })
 
-    expect(
-      store.getState().form.mammalForm.values.taxonInformation.determinations
-        .length
-    ).toBe(1)
+    expect(store.getState().form.mammalForm.values.determinations.length).toBe(
+      1
+    )
     const addDeterminationButton = rootComponent
       .find('Segment')
       .at(1)
@@ -100,54 +91,47 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     addDeterminationButton.simulate('click')
     addDeterminationButton.simulate('click')
 
-    expect(
-      store.getState().form.mammalForm.values.taxonInformation.determinations
-        .length
-    ).toBe(3)
+    expect(store.getState().form.mammalForm.values.determinations.length).toBe(
+      3
+    )
 
-    let {
-      determinations,
-    } = store.getState().form.mammalForm.values.taxonInformation
+    let { determinations } = store.getState().form.mammalForm.values
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBeFalsy()
 
     const checkbox1 = rootComponent
-      .find('[name="taxonInformation.determinations.0.isCurrentDetermination"]')
+      .find('[name="determinations.0.isCurrentDetermination"]')
       .find('Checkbox')
     const checkbox2 = rootComponent
-      .find('[name="taxonInformation.determinations.1.isCurrentDetermination"]')
+      .find('[name="determinations.1.isCurrentDetermination"]')
       .find('Checkbox')
     const checkbox3 = rootComponent
-      .find('[name="taxonInformation.determinations.2.isCurrentDetermination"]')
+      .find('[name="determinations.2.isCurrentDetermination"]')
       .find('Checkbox')
 
     // check first box
     checkbox1.simulate('click')
-    determinations = store.getState().form.mammalForm.values.taxonInformation
-      .determinations
+    determinations = store.getState().form.mammalForm.values.determinations
     expect(determinations[0].isCurrentDetermination).toBe(true)
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBeFalsy()
     // check second box, first should be unchecked
     checkbox2.simulate('click')
-    determinations = store.getState().form.mammalForm.values.taxonInformation
-      .determinations
+    determinations = store.getState().form.mammalForm.values.determinations
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBe(true)
     expect(determinations[2].isCurrentDetermination).toBeFalsy()
 
     // check third box, second should be unchecked
     checkbox3.simulate('click')
-    determinations = store.getState().form.mammalForm.values.taxonInformation
-      .determinations
+    determinations = store.getState().form.mammalForm.values.determinations
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBe(true)
     // uncheck third box
     checkbox3.simulate('click')
-    determinations = store.getState().form.mammalForm.values.taxonInformation
-      .determinations
+    determinations = store.getState().form.mammalForm.values.determinations
     expect(determinations[0].isCurrentDetermination).toBeFalsy()
     expect(determinations[1].isCurrentDetermination).toBeFalsy()
     expect(determinations[2].isCurrentDetermination).toBe(false)
@@ -182,8 +166,7 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       })
 
       expect(
-        store.getState().form.mammalForm.values.taxonInformation.determinations
-          .length
+        store.getState().form.mammalForm.values.determinations.length
       ).toBe(1)
 
       const addDeterminationButton = rootComponent
@@ -194,34 +177,26 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
 
       addDeterminationButton.simulate('click')
 
-      let {
-        determinations,
-      } = store.getState().form.mammalForm.values.taxonInformation
+      let { determinations } = store.getState().form.mammalForm.values
       expect(determinations[0].isCurrentDetermination).toBeFalsy()
       expect(determinations[1].isCurrentDetermination).toBeFalsy()
 
       const checkbox1 = rootComponent
-        .find(
-          '[name="taxonInformation.determinations.0.isCurrentDetermination"]'
-        )
+        .find('[name="determinations.0.isCurrentDetermination"]')
         .find('Checkbox')
       const checkbox2 = rootComponent
-        .find(
-          '[name="taxonInformation.determinations.1.isCurrentDetermination"]'
-        )
+        .find('[name="determinations.1.isCurrentDetermination"]')
         .find('Checkbox')
 
       // check first box
       checkbox1.simulate('click')
-      determinations = store.getState().form.mammalForm.values.taxonInformation
-        .determinations
+      determinations = store.getState().form.mammalForm.values.determinations
       expect(determinations[0].isCurrentDetermination).toBe(true)
       expect(determinations[1].isCurrentDetermination).toBeFalsy()
 
       // check second box, first should be unchecked and createNotification dispatched
       checkbox2.simulate('click')
-      determinations = store.getState().form.mammalForm.values.taxonInformation
-        .determinations
+      determinations = store.getState().form.mammalForm.values.determinations
       expect(determinations[0].isCurrentDetermination).toBeFalsy()
       expect(determinations[1].isCurrentDetermination).toBe(true)
       expect(mockCreateNotification.mock.calls.length).toBe(1)

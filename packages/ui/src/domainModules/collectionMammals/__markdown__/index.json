@@ -6,7 +6,7 @@
     }
   },
   "occurrences": {
-    "localityInformation": {
+    "locationInformation": {
       "helpTexts": {
         "localityVerbatim": {
           "en": "<p>Verbatim locality names and description, as in the original source, typos and all.</p>\n",

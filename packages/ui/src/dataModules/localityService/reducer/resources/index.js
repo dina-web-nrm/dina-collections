@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
 
-import curatedLocalities from './curatedLocalities'
+import places from './places'
 
-export default combineReducers({ curatedLocalities })
+export default combineReducers({ places })

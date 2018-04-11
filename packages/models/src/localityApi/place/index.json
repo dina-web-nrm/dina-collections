@@ -1,0 +1,80 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the locality"
+    },
+    "versionId": {
+      "type": "string",
+      "description": "Id of the specific version"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "Timestamp corresponding to when created"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Some kind of reference to the individual that created the locality"
+    },
+    "updatedBy": {
+      "type": "string",
+      "description": "Some kind of reference to the individual that updated/created the specific version"
+    },
+    "updatedAt": {
+      "type": "string",
+      "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier that is consistent over time"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the locality"
+    },
+    "group": {
+      "type": "string",
+      "description": "Group of locality",
+      "enum": [
+        "continent",
+        "country",
+        "district",
+        "geodeticDatum",
+        "locality",
+        "province",
+        "root",
+        "rubin"
+      ]
+    },
+    "centralPosition": {
+      "type": "object",
+      "description": "A position describing the center",
+      "$ref": "__ROOT__position"
+    },
+    "parent": {
+      "type": "object",
+      "description": "A polygon describing the edges",
+      "$ref": "__ROOT__place"
+    },
+    "polygon": {
+      "type": "object",
+      "description": "A polygon describing the edges",
+      "$ref": "__ROOT__polygon"
+    },
+    "verticalPosition": {
+      "description": "A vertical position",
+      "type": "object",
+      "$ref": "__ROOT__verticalPosition"
+    },
+    "type": {
+      "type": "string"
+    }
+  },
+  "x-required": [
+    "name",
+    "id",
+    "description",
+    "group"
+  ]
+}

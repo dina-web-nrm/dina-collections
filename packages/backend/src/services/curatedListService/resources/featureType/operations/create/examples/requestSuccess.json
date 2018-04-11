@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "1234",
+    "type": "featureType",
+    "attributes": {
+      "name": {
+        "en": "bone",
+        "sv": "ben"
+      }
+    }
+  }
+}

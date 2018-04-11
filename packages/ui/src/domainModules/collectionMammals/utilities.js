@@ -1,11 +1,6 @@
 export const getCatalogNumberFromIdentifiers = (identifiers = []) => {
-  const catalogNumberIdentifier = identifiers.find(({ identifier }) => {
-    return identifier && identifier.identifierType === 'catalogNumber'
+  const catalogNumberIdentifier = identifiers.find(({ identifierType }) => {
+    return identifierType === 'catalogNumber'
   })
-
-  return (
-    catalogNumberIdentifier &&
-    catalogNumberIdentifier.identifier &&
-    catalogNumberIdentifier.identifier.value
-  )
+  return catalogNumberIdentifier && catalogNumberIdentifier.value
 }

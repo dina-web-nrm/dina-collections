@@ -1,4 +1,4 @@
-import { makeGetFeatureObservationTypesInGroups } from './globalSelectorFactories'
+import { makeGetFeatureTypesInGroups } from './globalSelectorFactories'
 
 describe('domainModules/curatedList/globalSelectorFactories', () => {
   let state
@@ -7,7 +7,7 @@ describe('domainModules/curatedList/globalSelectorFactories', () => {
     state = {
       curatedListService: {
         resources: {
-          featureObservationTypes: {
+          featureTypes: {
             a: {
               group: 'age',
               id: 'a',
@@ -62,24 +62,24 @@ describe('domainModules/curatedList/globalSelectorFactories', () => {
     }
   })
 
-  describe('makeGetFeatureObservationTypesInGroups', () => {
-    it('returns featureObservationTypes in provided groups', () => {
-      const getFeatureObservationTypesInGroups = makeGetFeatureObservationTypesInGroups()
+  describe('makeGetFeatureTypesInGroups', () => {
+    it('returns featureTypes in provided groups', () => {
+      const getFeatureTypesInGroups = makeGetFeatureTypesInGroups()
       const expectedResult = [
-        state.curatedListService.resources.featureObservationTypes.a,
-        state.curatedListService.resources.featureObservationTypes.c,
+        state.curatedListService.resources.featureTypes.a,
+        state.curatedListService.resources.featureTypes.c,
       ]
 
-      expect(
-        getFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toEqual(expectedResult)
+      expect(getFeatureTypesInGroups(state, ['age', 'age-stage'])).toEqual(
+        expectedResult
+      )
     })
 
     it('returns same (===) value both times', () => {
-      const getFeatureObservationTypesInGroups = makeGetFeatureObservationTypesInGroups()
-      expect(
-        getFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toBe(getFeatureObservationTypesInGroups(state, ['age', 'age-stage']))
+      const getFeatureTypesInGroups = makeGetFeatureTypesInGroups()
+      expect(getFeatureTypesInGroups(state, ['age', 'age-stage'])).toBe(
+        getFeatureTypesInGroups(state, ['age', 'age-stage'])
+      )
     })
   })
 })

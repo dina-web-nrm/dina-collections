@@ -52,13 +52,14 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
-                physicalUnits: {
+
+                physicalObjects: {
                   data: [],
                 },
+                places: { data: [] },
                 taxa: {
                   data: [],
                 },
@@ -68,12 +69,12 @@ apiDescribe('specimen', () => {
           })
         })
       })
-      it('Succeed with simpleDataPhysicalUnitRelations. Physical unit relationships are included in get response but not in create response', () => {
-        const simpleDataPhysicalUnitRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+      it('Succeed with simpleDataPhysicalObjectRelations. Physical unit relationships are included in get response but not in create response', () => {
+        const simpleDataPhysicalObjectRelations = getTestData(
+          'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
-          body: simpleDataPhysicalUnitRelations,
+          body: simpleDataPhysicalObjectRelations,
           operationId: 'createSpecimen',
         })
           .then(response => {
@@ -95,11 +96,11 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  ...simpleDataPhysicalUnitRelations.data.relationships,
-                  curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  ...simpleDataPhysicalObjectRelations.data.relationships,
+                  featureTypes: {
                     data: [],
                   },
+                  places: { data: [] },
                   taxa: {
                     data: [],
                   },

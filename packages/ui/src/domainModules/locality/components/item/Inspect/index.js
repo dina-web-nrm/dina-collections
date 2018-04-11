@@ -6,54 +6,46 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
 import {
-  createGetCuratedLocalityById,
-  ensureAllLocalitiesFetched,
+  createGetPlaceById,
+  ensureAllPlacesFetched,
 } from 'dataModules/localityService/higherOrderComponents'
 
 const mapStateToProps = (state, ownProps) => {
-  const { curatedLocality } = ownProps
+  const { place } = ownProps
   const parent =
-    curatedLocality &&
-    curatedLocality.parent &&
-    localityServiceSelectors.getCuratedLocality(
-      state,
-      curatedLocality.parent.id
-    )
+    place &&
+    place.parent &&
+    localityServiceSelectors.getPlace(state, place.parent.id)
   const children =
-    curatedLocality &&
-    curatedLocality.children &&
-    curatedLocality.children.map(({ id }) => {
-      return localityServiceSelectors.getCuratedLocality(state, id)
+    place &&
+    place.children &&
+    place.children.map(({ id }) => {
+      return localityServiceSelectors.getPlace(state, id)
     })
   return {
     children,
-    curatedLocality,
     parent,
+    place,
   }
 }
 
 const propTypes = {
   allLocalitiesFetched: PropTypes.bool.isRequired,
   children: PropTypes.array,
-  curatedLocality: PropTypes.object,
   parent: PropTypes.object,
+  place: PropTypes.object,
 }
 
 const defaultProps = {
   children: [],
-  curatedLocality: undefined,
   parent: null,
+  place: undefined,
 }
 
 export class Inspect extends Component {
   render() {
-    const {
-      allLocalitiesFetched,
-      children,
-      curatedLocality,
-      parent,
-    } = this.props
-    if (!curatedLocality || !allLocalitiesFetched) {
+    const { allLocalitiesFetched, children, place, parent } = this.props
+    if (!place || !allLocalitiesFetched) {
       return null
     }
     return (
@@ -65,55 +57,55 @@ export class Inspect extends Component {
               <Table.HeaderCell>Value</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          {curatedLocality && (
+          {place && (
             <Table.Body>
               <Table.Row>
                 <Table.Cell>Namn</Table.Cell>
-                <Table.Cell>{curatedLocality.name}</Table.Cell>
+                <Table.Cell>{place.name}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>id</Table.Cell>
-                <Table.Cell>{curatedLocality.id}</Table.Cell>
+                <Table.Cell>{place.id}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MaximumElevationInMeters</Table.Cell>
                 <Table.Cell>
-                  {curatedLocality.verticalPosition &&
-                    curatedLocality.verticalPosition.maximummElevationInMeters}
+                  {place.verticalPosition &&
+                    place.verticalPosition.maximummElevationInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MinimumElevationInMeters</Table.Cell>
                 <Table.Cell>
-                  {curatedLocality.verticalPosition &&
-                    curatedLocality.verticalPosition.minimumElevationInMeters}
+                  {place.verticalPosition &&
+                    place.verticalPosition.minimumElevationInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MaximumDepthInMeters</Table.Cell>
                 <Table.Cell>
-                  {curatedLocality.verticalPosition &&
-                    curatedLocality.verticalPosition.maximumDepthInMeters}
+                  {place.verticalPosition &&
+                    place.verticalPosition.maximumDepthInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MinimumDepthInMeters</Table.Cell>
                 <Table.Cell>
-                  {curatedLocality.verticalPosition &&
-                    curatedLocality.verticalPosition.minimumDepthInMeters}
+                  {place.verticalPosition &&
+                    place.verticalPosition.minimumDepthInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Latitude</Table.Cell>
-                <Table.Cell>{curatedLocality.latitude}</Table.Cell>
+                <Table.Cell>{place.latitude}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Longitude</Table.Cell>
-                <Table.Cell>{curatedLocality.longitude}</Table.Cell>
+                <Table.Cell>{place.longitude}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>UncertaintyInMeters</Table.Cell>
-                <Table.Cell>{curatedLocality.uncertaintyInMeters}</Table.Cell>
+                <Table.Cell>{place.uncertaintyInMeters}</Table.Cell>
               </Table.Row>
             </Table.Body>
           )}
@@ -173,7 +165,7 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  ensureAllLocalitiesFetched(),
-  createGetCuratedLocalityById(),
+  ensureAllPlacesFetched(),
+  createGetPlaceById(),
   connect(mapStateToProps)
 )(Inspect)

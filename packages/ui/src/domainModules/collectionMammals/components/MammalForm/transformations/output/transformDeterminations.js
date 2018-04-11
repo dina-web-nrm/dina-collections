@@ -1,4 +1,4 @@
-export default function transformDeterminations(determinations) {
+export default function transformDeterminations(determinations = []) {
   let taxa = []
   let mappedDeterminations = [{}]
 

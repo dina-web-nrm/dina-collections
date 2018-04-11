@@ -1,14 +1,14 @@
 const mutations = [
   {
-    name: 'identifiers.0.identifier.value',
+    name: 'identifiers.0.value',
     value: '123456',
   },
 ]
 
 const postTransformOutputTest = ({ transformedOutput }) => {
-  expect(
-    transformedOutput.specimen.individualGroup.identifiers[0].identifier.value
-  ).toBe('123456')
+  expect(transformedOutput.specimen.individual.identifiers[0].value).toBe(
+    '123456'
+  )
 }
 
 const scenario = {

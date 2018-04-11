@@ -31,7 +31,7 @@ var columnObjectToArray = require('./columnObjectToArray');
 
 var normalizeSchema = buildNormalizeSchema({
   normalizedSchemaSpecification: normalizedSchemaSpecification.specimen,
-  rootSchema: 'individualGroup'
+  rootSchema: 'individual'
 });
 
 var columnNames = (0, _keys2.default)(normalizedSchemaSpecification.specimen).map(function (key) {
@@ -40,12 +40,12 @@ var columnNames = (0, _keys2.default)(normalizedSchemaSpecification.specimen).ma
 
 module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
   var denormalizedSpecimen = JSON.parse((0, _stringify2.default)(denormalizedSpecimenInput));
-  var _denormalizedSpecimen = denormalizedSpecimen.individualGroup,
-      individualGroup = _denormalizedSpecimen === undefined ? {} : _denormalizedSpecimen,
-      rest = (0, _objectWithoutProperties3.default)(denormalizedSpecimen, ['individualGroup']);
+  var _denormalizedSpecimen = denormalizedSpecimen.individual,
+      individual = _denormalizedSpecimen === undefined ? {} : _denormalizedSpecimen,
+      rest = (0, _objectWithoutProperties3.default)(denormalizedSpecimen, ['individual']);
 
 
-  var normalizedData = normalize(individualGroup, normalizeSchema.individualGroup);
+  var normalizedData = normalize(individual, normalizeSchema.individual);
 
   var entities = normalizedData.entities;
 
@@ -53,7 +53,7 @@ module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
     if (!columnNames.includes(columnName)) {
       return (0, _extends6.default)({}, obj, (0, _defineProperty3.default)({}, columnName, entities[columnName]));
     }
-    if (columnName === 'individualGroup') {
+    if (columnName === 'individual') {
       return (0, _extends6.default)({}, obj, (0, _defineProperty3.default)({}, columnName, columnObjectToArray(entities[columnName])[0]));
     }
     return (0, _extends6.default)({}, obj, (0, _defineProperty3.default)({}, columnName, columnObjectToArray(entities[columnName])));

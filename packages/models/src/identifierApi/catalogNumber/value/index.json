@@ -1,6 +1,0 @@
-{
-  "type": "string",
-  "description": "Catalog number is a string of 6 or 8 digits",
-  "pattern": "^$|^[0-9]{6}$|^[0-9]{8}$",
-  "example": "584028"
-}

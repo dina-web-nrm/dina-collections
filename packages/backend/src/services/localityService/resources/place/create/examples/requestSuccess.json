@@ -1,0 +1,26 @@
+{
+  "data": {
+    "type": "place",
+    "attributes": {
+      "name": "string",
+      "versionId": "string",
+      "createdAt": "string",
+      "createdBy": "string",
+      "updatedBy": "string",
+      "updatedAt": "string",
+      "description": "string",
+      "centralPosition": {
+        "latitude": "string",
+        "longitude": "string",
+        "geodeticDatum": "string",
+        "uncertaintyInMeters": 0
+      },
+      "verticalPosition": {
+        "maximumDepthInMeters": 0,
+        "maximumElevationInMeters": 0,
+        "minimumDepthInMeters": 0,
+        "minimumElevationInMeters": 0
+      }
+    }
+  }
+}

@@ -2,37 +2,37 @@
   "data": {
     "type": "specimen",
     "relationships": {
-      "curatedLocalities": {
+      "places": {
         "data": [
-          { "id": "1", "type": "curatedLocality" },
-          { "id": "2", "type": "curatedLocality" },
-          { "id": "3", "type": "curatedLocality" },
-          { "id": "4", "type": "curatedLocality" },
-          { "id": "5", "type": "curatedLocality" }
+          { "id": "1", "type": "place" },
+          { "id": "2", "type": "place" },
+          { "id": "3", "type": "place" },
+          { "id": "4", "type": "place" },
+          { "id": "5", "type": "place" }
         ]
       },
-     "featureObservationTypes": {
+     "featureTypes": {
         "data": [
           {
             "id": "2",
-            "type": "featureObservationType"
+            "type": "featureType"
           }
         ]
       },
-      "physicalUnits": {
+      "physicalObjects": {
         "data": [
           {
             "id": "2234",
-            "type": "physicalUnit"
+            "type": "physicalObject"
           }
         ]
       }
     },
 
     "attributes": {
-      "individualGroup": {
+      "individual": {
         "taxonInformation": {},
-        "individualCircumstances": [
+        "collectingInformation": [
           {
             "id": "string",
             "collectorsText": "Bergström, U",
@@ -52,13 +52,13 @@
                 "year": 1981
               },
               "expeditionText": "Vega Expedition",
-              "localityInformation": {
-                "curatedLocalities": [
-                  { "id": "1", "type": "curatedLocality" },
-                  { "id": "2", "type": "curatedLocality" },
-                  { "id": "3", "type": "curatedLocality" },
-                  { "id": "4", "type": "curatedLocality" },
-                  { "id": "5", "type": "curatedLocality" }
+              "locationInformation": {
+                "places": [
+                  { "id": "1", "type": "place" },
+                  { "id": "2", "type": "place" },
+                  { "id": "3", "type": "place" },
+                  { "id": "4", "type": "place" },
+                  { "id": "5", "type": "place" }
                 ],
                 "position": {
                   "latitude": "string",
@@ -94,9 +94,9 @@
               "year": 1981
             },
             "featureObservationText": "10 years",
-            "featureObservationType": {
+            "featureType": {
               "id": "2",
-              "type": "featureObservationType"
+              "type": "featureType"
             },
             "methodText": "Known age"
           }
@@ -104,16 +104,14 @@
         "id": "string",
         "identifiers": [
           {
-            "identifier": {
-              "identifierType": "catalogNumber",
-              "nameSpace": "",
-              "value": "123456"
-            },
+            "identifierType": "catalogNumber",
+            "nameSpace": "",
             "publishRecord": true,
-            "remarks": "Some remarks"
+            "remarks": "Some remarks",
+            "value": "123456"
           }
         ],
-        "distinguishedUnits": [
+        "collectionItems": [
           {
             "alternateIdentifiersText": "Skin complete, prepared",
             "identifiers": [
@@ -141,7 +139,7 @@
                   "year": 1981
                 },
                 "expeditionText": "Vega Expedition",
-                "localityInformation": {
+                "locationInformation": {
                   "position": {
                     "latitude": "string",
                     "longitude": "string",
@@ -165,10 +163,10 @@
               }
             },
             "id": "string",
-            "physicalUnitText": "Skin complete, prepared",
-            "physicalUnit": {
+            "physicalObjectText": "Skin complete, prepared",
+            "physicalObject": {
               "id": "2234",
-              "type": "physicalUnit"
+              "type": "physicalObject"
             }
           }
         ],

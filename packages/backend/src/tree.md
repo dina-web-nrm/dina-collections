@@ -32,7 +32,6 @@
 │   ├── curatedEventService
 │   ├── curatedListService
 │   ├── externalEventService
-│   ├── identifierService
 │   ├── index.js
 │   ├── localityService
 │   ├── organizationService

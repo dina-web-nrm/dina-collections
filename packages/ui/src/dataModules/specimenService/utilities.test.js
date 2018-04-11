@@ -2,86 +2,83 @@ import { buildSpecimenBody, getCatalogNumberFromIdentifiers } from './utilities'
 
 describe('dataModules/specimenService/utilities', () => {
   describe('buildSpecimenBody', () => {
-    const curatedLocalities = []
-    const distinguishedUnitTypes = {
+    const places = []
+    const preparationTypes = {
       '1': {
         id: '1',
-        type: 'distinguishedUnitType',
+        type: 'preparationType',
       },
       '2': {
         id: '2',
-        type: 'distinguishedUnitType',
+        type: 'preparationType',
       },
     }
-    const featureObservationTypes = {
+    const featureTypes = {
       '1': {
         id: '1',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
       '22': {
         id: '22',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
     }
 
-    const distinguishedUnits = [
+    const collectionItems = [
       {
-        distinguishedUnitType: {
-          category: 'skin',
-          id: '1',
-          type: 'distinguishedUnitType',
-        },
-        physicalUnit: {
+        physicalObject: {
           storageLocation: {
             id: '1',
             name: 'skin room',
             type: 'storageLocation',
           },
         },
+        preparationType: {
+          category: 'skin',
+          id: '1',
+          type: 'preparationType',
+        },
       },
       {
-        distinguishedUnitType: {
-          category: 'skeleton',
-          id: '2',
-          type: 'distinguishedUnitType',
-        },
-        physicalUnit: {
+        physicalObject: {
           storageLocation: {
             id: '2',
             name: 'bone room',
             type: 'storageLocation',
           },
         },
+        preparationType: {
+          category: 'skeleton',
+          id: '2',
+          type: 'preparationType',
+        },
       },
     ]
 
-    const individualGroup = {
+    const individual = {
+      determinations: [
+        {
+          taxonNameStandardized: 'Chironectes minimus',
+        },
+      ],
       featureObservations: [
         {
           featureObservationText: 'female',
-          featureObservationType: {
+          featureType: {
             id: '22',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
         },
       ],
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            value: '444444',
-          },
+          identifierType: 'catalogNumber',
+          value: '444444',
         },
       ],
-      taxonInformation: {
-        determinations: [
-          {
-            taxonNameStandardized: 'Chironectes minimus',
-          },
-        ],
-      },
+      taxonInformation: {},
     }
-    const savedPhysicalUnits = [
+    const savedPhysicalObjects = [
       {
         id: '1',
         storageLocation: {
@@ -89,7 +86,7 @@ describe('dataModules/specimenService/utilities', () => {
           name: 'skin room',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
       {
         id: '2',
@@ -98,7 +95,7 @@ describe('dataModules/specimenService/utilities', () => {
           name: 'bone room',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     ]
     const storageLocations = [
@@ -118,14 +115,14 @@ describe('dataModules/specimenService/utilities', () => {
       },
     ]
 
-    const cleanedPhysicalUnits = [
+    const cleanedPhysicalObjects = [
       {
         id: '1',
         storageLocation: {
           id: '1',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
       {
         id: '2',
@@ -133,18 +130,18 @@ describe('dataModules/specimenService/utilities', () => {
           id: '2',
           type: 'storageLocation',
         },
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     ]
 
     const testValue = buildSpecimenBody({
-      curatedLocalities,
-      distinguishedUnitTypes,
-      featureObservationTypes,
-      savedPhysicalUnits,
+      featureTypes,
+      places,
+      preparationTypes,
+      savedPhysicalObjects,
       specimen: {
-        distinguishedUnits,
-        individualGroup,
+        collectionItems,
+        individual,
       },
       storageLocations,
       taxa,
@@ -153,54 +150,54 @@ describe('dataModules/specimenService/utilities', () => {
     const expectedResult = {
       data: {
         attributes: {
-          distinguishedUnits: [
+          collectionItems: [
             {
-              distinguishedUnitType: {
-                category: 'skin',
-                id: '1',
-                type: 'distinguishedUnitType',
-              },
-              physicalUnit: {
+              physicalObject: {
                 id: '1',
                 storageLocation: {
                   id: '1',
                   type: 'storageLocation',
                 },
-                type: 'physicalUnit',
+                type: 'physicalObject',
+              },
+              preparationType: {
+                category: 'skin',
+                id: '1',
+                type: 'preparationType',
               },
             },
             {
-              distinguishedUnitType: {
-                category: 'skeleton',
-                id: '2',
-                type: 'distinguishedUnitType',
-              },
-              physicalUnit: {
+              physicalObject: {
                 id: '2',
                 storageLocation: {
                   id: '2',
                   type: 'storageLocation',
                 },
-                type: 'physicalUnit',
+                type: 'physicalObject',
+              },
+              preparationType: {
+                category: 'skeleton',
+                id: '2',
+                type: 'preparationType',
               },
             },
           ],
-          individualGroup: {
-            ...individualGroup,
+          individual: {
+            ...individual,
           },
         },
         relationships: {
-          curatedLocalities: {
-            data: curatedLocalities,
+          featureTypes: {
+            data: featureTypes,
           },
-          distinguishedUnitTypes: {
-            data: distinguishedUnitTypes,
+          physicalObjects: {
+            data: cleanedPhysicalObjects,
           },
-          featureObservationTypes: {
-            data: featureObservationTypes,
+          places: {
+            data: places,
           },
-          physicalUnits: {
-            data: cleanedPhysicalUnits,
+          preparationTypes: {
+            data: preparationTypes,
           },
           storageLocations: {
             data: storageLocations,
@@ -218,8 +215,8 @@ describe('dataModules/specimenService/utilities', () => {
   describe('getCatalogNumberFromIdentifiers', () => {
     it('returns catalogNumber', () => {
       const identifiers = [
-        { identifier: { identifierType: 'other', value: 'abc' } },
-        { identifier: { identifierType: 'catalogNumber', value: '123456' } },
+        { identifierType: 'other', value: 'abc' },
+        { identifierType: 'catalogNumber', value: '123456' },
       ]
       expect(getCatalogNumberFromIdentifiers(identifiers)).toEqual('123456')
     })

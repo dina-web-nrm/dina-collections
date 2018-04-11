@@ -1,16 +1,13 @@
 export function createFillCatalogNumber(newCatalogNumber) {
   return function fillCatalogNumber(identifier) {
     if (
-      identifier.identifier &&
-      identifier.identifier.identifierType === 'catalogNumber' &&
-      !identifier.identifier.value
+      identifier &&
+      identifier.identifierType === 'catalogNumber' &&
+      !identifier.value
     ) {
       return {
         ...identifier,
-        identifier: {
-          ...identifier.identifier,
-          value: newCatalogNumber,
-        },
+        value: newCatalogNumber,
       }
     }
 

@@ -11,14 +11,14 @@ export const getResources = state => {
   return state.resources
 }
 
-export const getPhysicalUnits = createSelector(getResources, resources => {
-  return resources.physicalUnits
+export const getPhysicalObjects = createSelector(getResources, resources => {
+  return resources.physicalObjects
 })
 
-export const getPhysicalUnit = createSelector(
-  [getPhysicalUnits, getSecondArgument],
-  (physicalUnits, id) => {
-    return physicalUnits[id]
+export const getPhysicalObject = createSelector(
+  [getPhysicalObjects, getSecondArgument],
+  (physicalObjects, id) => {
+    return physicalObjects[id]
   }
 )
 

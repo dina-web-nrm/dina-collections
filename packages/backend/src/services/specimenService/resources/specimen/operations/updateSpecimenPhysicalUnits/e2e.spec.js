@@ -15,31 +15,31 @@ apiDescribe('specimen', () => {
     return waitForApiRestart()
   })
 
-  describe('updateSpecimenPhysicalUnits', () => {
+  describe('updateSpecimenPhysicalObjects', () => {
     describe('existing relations', () => {
-      let simpleDataPhysicalUnitRelationsId
+      let simpleDataPhysicalObjectRelationsId
       beforeEach(() => {
         return makeTestCall({
-          body: getTestData('simpleDataPhysicalUnitRelations'),
+          body: getTestData('simpleDataPhysicalObjectRelations'),
           operationId: 'createSpecimen',
         }).then(response => {
-          simpleDataPhysicalUnitRelationsId = response.data.id
+          simpleDataPhysicalObjectRelationsId = response.data.id
         })
       })
 
-      it('Update physicalUnits to empty array if set to empty array', () => {
+      it('Update physicalObjects to empty array if set to empty array', () => {
         const emptyRelationships = {
           data: [],
         }
         return makeTestCall({
           body: emptyRelationships,
-          operationId: 'updateSpecimenPhysicalUnits',
-          pathParams: { id: simpleDataPhysicalUnitRelationsId },
+          operationId: 'updateSpecimenPhysicalObjects',
+          pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
           .then(() => {
             return makeTestCall({
               operationId: 'getSpecimen',
-              pathParams: { id: simpleDataPhysicalUnitRelationsId },
+              pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
                 relationships: ['all'],
               },
@@ -49,13 +49,13 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
-                physicalUnits: {
+                physicalObjects: {
                   data: [],
                 },
+                places: { data: [] },
                 taxa: {
                   data: [],
                 },
@@ -71,7 +71,7 @@ apiDescribe('specimen', () => {
         return expectError404(
           makeTestCall({
             body: emptyRelationships,
-            operationId: 'updateSpecimenPhysicalUnits',
+            operationId: 'updateSpecimenPhysicalObjects',
             pathParams: { id: '4433441' },
           })
         )
@@ -79,25 +79,25 @@ apiDescribe('specimen', () => {
 
       it('Return updated relationships if provided', () => {
         const newRelationships = {
-          data: [{ id: '1337', type: 'physicalUnit' }],
+          data: [{ id: '1337', type: 'physicalObject' }],
         }
         return makeTestCall({
           body: newRelationships,
-          operationId: 'updateSpecimenPhysicalUnits',
-          pathParams: { id: simpleDataPhysicalUnitRelationsId },
+          operationId: 'updateSpecimenPhysicalObjects',
+          pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
           .then(response => {
             expectMultipleResourcesResponse({
-              expectedType: 'physicalUnit',
+              expectedType: 'physicalObject',
               response,
             })
             expect(response.data).toEqual([
-              { attributes: {}, id: '1337', type: 'physicalUnit' },
+              { attributes: {}, id: '1337', type: 'physicalObject' },
             ])
 
             return makeTestCall({
               operationId: 'getSpecimen',
-              pathParams: { id: simpleDataPhysicalUnitRelationsId },
+              pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
                 relationships: ['all'],
               },
@@ -106,8 +106,8 @@ apiDescribe('specimen', () => {
           .then(response => {
             expect(response).toBeTruthy()
             expect(response.data).toBeTruthy()
-            expect(response.data.relationships.physicalUnits.data).toEqual([
-              { id: '1337', type: 'physicalUnit' },
+            expect(response.data.relationships.physicalObjects.data).toEqual([
+              { id: '1337', type: 'physicalObject' },
             ])
           })
       })
@@ -118,8 +118,8 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: newRelationships,
-            operationId: 'updateSpecimenPhysicalUnits',
-            pathParams: { id: simpleDataPhysicalUnitRelationsId },
+            operationId: 'updateSpecimenPhysicalObjects',
+            pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
         )
       })
@@ -137,11 +137,11 @@ apiDescribe('specimen', () => {
     })
     it('Return update relationships if provided', () => {
       const newRelationships = {
-        data: [{ id: '1337', type: 'physicalUnit' }],
+        data: [{ id: '1337', type: 'physicalObject' }],
       }
       return makeTestCall({
         body: newRelationships,
-        operationId: 'updateSpecimenPhysicalUnits',
+        operationId: 'updateSpecimenPhysicalObjects',
         pathParams: { id: simpleDataNoRelationsId },
       })
         .then(() => {
@@ -157,13 +157,13 @@ apiDescribe('specimen', () => {
           expectSingleResourceResponse({
             expectedType: 'specimen',
             relationships: {
-              curatedLocalities: { data: [] },
-              featureObservationTypes: {
+              featureTypes: {
                 data: [],
               },
-              physicalUnits: {
-                data: [{ id: '1337', type: 'physicalUnit' }],
+              physicalObjects: {
+                data: [{ id: '1337', type: 'physicalObject' }],
               },
+              places: { data: [] },
               taxa: {
                 data: [],
               },

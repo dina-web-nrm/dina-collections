@@ -1,9 +1,9 @@
-import createGetDistinguishedUnitTypeById from './createGetDistinguishedUnitTypeById'
-import ensureAllDistinguishedUnitTypesFetched from './ensureAllDistinguishedUnitTypesFetched'
-import ensureAllFeatureObservationTypesFetched from './ensureAllFeatureObservationTypesFetched'
+import createGetPreparationTypeById from './createGetPreparationTypeById'
+import ensureAllFeatureTypesFetched from './ensureAllFeatureTypesFetched'
+import ensureAllPreparationTypesFetched from './ensureAllPreparationTypesFetched'
 
 export {
-  createGetDistinguishedUnitTypeById,
-  ensureAllDistinguishedUnitTypesFetched,
-  ensureAllFeatureObservationTypesFetched,
+  createGetPreparationTypeById,
+  ensureAllFeatureTypesFetched,
+  ensureAllPreparationTypesFetched,
 }

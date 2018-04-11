@@ -46,29 +46,17 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   └── resources
-│       ├── distinguishedUnitType
+│       ├── featureType
 │       │   ├── index.js
 │       │   └── operations
-│       ├── featureObservationType
-│       │   ├── index.js
-│       │   └── operations
-│       └── index.js
+│       ├── index.js
+│       └── preparationType
+│           ├── index.js
+│           └── operations
 ├── externalEventService
 │   ├── index.js
 │   └── info
 │       ├── description.md
-│       └── index.js
-├── identifierService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   ├── models
-│   │   └── index.js
-│   └── resources
-│       ├── catalogNumber
-│       │   ├── index.js
-│       │   └── operations
 │       └── index.js
 ├── index.js
 ├── localityService
@@ -82,11 +70,11 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   ├── resources
-│   │   ├── curatedLocality
-│   │   │   ├── create
-│   │   │   ├── getMany
-│   │   │   └── index.js
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── place
+│   │       ├── create
+│   │       ├── getMany
+│   │       └── index.js
 │   └── todo
 ├── organizationService
 │   ├── index.js
@@ -99,7 +87,9 @@
 │   ├── controllers
 │   │   └── index.js
 │   ├── elasticModels
-│   │   └── index.js
+│   │   ├── index.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
@@ -139,7 +129,7 @@
 │   │       └── index.js
 │   └── resources
 │       ├── index.js
-│       ├── physicalUnit
+│       ├── physicalObject
 │       │   ├── index.js
 │       │   └── operations
 │       └── storageLocation

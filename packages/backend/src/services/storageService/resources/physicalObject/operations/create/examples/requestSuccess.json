@@ -1,0 +1,9 @@
+{
+  "data": {
+    "type": "physicalObject",
+    "attributes": {
+      "normalStorageLocationText": "string",
+      "storedUnderTaxonName": "Sorex minutus"
+    }
+  }
+}

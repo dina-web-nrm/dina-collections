@@ -31,7 +31,7 @@ module.exports = function loadInitialData({ models }) {
         return models.specimen.bulkCreate(tmp)
       })
     },
-    numberOfEntries: 5000,
-    numberOfEntriesEachBatch: 500,
+    numberOfEntries: 100,
+    numberOfEntriesEachBatch: 10,
   })
 }

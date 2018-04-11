@@ -9,7 +9,6 @@ const fullFormExample = require('../create/examples/normalizedRequestSuccess.jso
 const { getTestData } = require('../../testData')
 
 const validCatalogNumber = '123456'
-// const validTaxonName = 'Sorex minutus'
 
 apiDescribe('specimen', () => {
   beforeAll(() => {
@@ -65,56 +64,12 @@ apiDescribe('specimen', () => {
         })
       })
     })
-    // describe('by taxonNameStandardized', () => {
-    //   it('Succeed with valid taxonNameStandardized', () => {
-    //     return makeTestCall({
-    //       operationId: 'getSpecimens',
-    //       queryParams: {
-    //         'filter[taxonNameStandardized]': validTaxonName,
-    //       },
-    //     }).then(response => {
-    //       expectMultipleResourcesResponse({
-    //         expectedType: 'specimen',
-    //         expectLength: true,
-    //         response,
-    //       })
-    //     })
-    //   })
-    //   it('Succeed with valid taxonNameStandardized', () => {
-    //     return makeTestCall({
-    //       operationId: 'getSpecimens',
-    //       queryParams: {
-    //         'filter[taxonNameStandardized]': validTaxonName,
-    //       },
-    //     }).then(response => {
-    //       expectMultipleResourcesResponse({
-    //         expectedType: 'specimen',
-    //         expectLength: true,
-    //         response,
-    //       })
-    //     })
-    //   })
-    //   it('Return empty array when taxon name dont exist', () => {
-    //     return makeTestCall({
-    //       operationId: 'getSpecimens',
-    //       queryParams: {
-    //         'filter[taxonNameStandardized]': 'not-existing',
-    //       },
-    //     }).then(response => {
-    //       expectMultipleResourcesResponse({
-    //         expectedLength: 0,
-    //         expectedType: 'specimen',
-    //         response,
-    //       })
-    //     })
-    //   })
-    // })
     describe('relation cases', () => {
       beforeAll(() => {
         const modifiedSimpleDataRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+          'simpleDataPhysicalObjectRelations'
         )
-        modifiedSimpleDataRelations.data.attributes.identifiers[0].identifier.value =
+        modifiedSimpleDataRelations.data.attributes.identifiers[0].value =
           '555112'
 
         return makeTestCall({
@@ -122,16 +77,16 @@ apiDescribe('specimen', () => {
           operationId: 'createSpecimen',
         })
       })
-      it('Succeed with simpleDataPhysicalUnitRelations', () => {
-        const simpleDataPhysicalUnitRelations = getTestData(
-          'simpleDataPhysicalUnitRelations'
+      it('Succeed with simpleDataPhysicalObjectRelations', () => {
+        const simpleDataPhysicalObjectRelations = getTestData(
+          'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
           operationId: 'getSpecimens',
           queryParams: {
             'filter[catalogNumber]': '555112',
             limit: 1,
-            relationships: ['physicalUnits'],
+            relationships: ['physicalObjects'],
           },
         }).then(response => {
           expectMultipleResourcesResponse({
@@ -143,7 +98,7 @@ apiDescribe('specimen', () => {
           expect(response.data[0].attributes).toBeTruthy()
           expect(response.data[0].relationships).toBeTruthy()
           expect(response.data[0].relationships).toEqual(
-            simpleDataPhysicalUnitRelations.data.relationships
+            simpleDataPhysicalObjectRelations.data.relationships
           )
         })
       })

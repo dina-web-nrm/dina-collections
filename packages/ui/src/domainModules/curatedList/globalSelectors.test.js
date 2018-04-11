@@ -1,9 +1,9 @@
 import globalSelectors from './globalSelectors'
 
 const {
-  getGroupedFeatureObservationTypeIds,
-  getFeatureObservationTypesInGroups,
-  getNumberOfFeatureObservationTypesInGroups,
+  getGroupedFeatureTypeIds,
+  getFeatureTypesInGroups,
+  getNumberOfFeatureTypesInGroups,
 } = globalSelectors
 
 describe('domainModules/curatedList/globalSelectors', () => {
@@ -19,7 +19,7 @@ describe('domainModules/curatedList/globalSelectors', () => {
     state = {
       curatedListService: {
         resources: {
-          featureObservationTypes: {
+          featureTypes: {
             a: {
               group: 'age',
               id: 'a',
@@ -74,24 +74,24 @@ describe('domainModules/curatedList/globalSelectors', () => {
     }
   })
 
-  describe('getGroupedFeatureObservationTypeIds', () => {
-    it('returns featureObservationTypeIds by group', () => {
+  describe('getGroupedFeatureTypeIds', () => {
+    it('returns featureTypeIds by group', () => {
       const expectedResult = {
         age: ['a'],
         'age-stage': ['c'],
         sex: ['b'],
       }
 
-      expect(getGroupedFeatureObservationTypeIds(state)).toEqual(expectedResult)
+      expect(getGroupedFeatureTypeIds(state)).toEqual(expectedResult)
     })
     it('returns same (===) result both times', () => {
-      expect(getGroupedFeatureObservationTypeIds(state)).toBe(
-        getGroupedFeatureObservationTypeIds(state)
+      expect(getGroupedFeatureTypeIds(state)).toBe(
+        getGroupedFeatureTypeIds(state)
       )
     })
   })
-  describe('getFeatureObservationTypesInGroups', () => {
-    it('returns featureObservationTypes in provided groups', () => {
+  describe('getFeatureTypesInGroups', () => {
+    it('returns featureTypes in provided groups', () => {
       const groups = ['age', 'age-stage']
       const expectedResult = [
         {
@@ -124,27 +124,23 @@ describe('domainModules/curatedList/globalSelectors', () => {
         },
       ]
 
-      expect(getFeatureObservationTypesInGroups(state, groups)).toEqual(
-        expectedResult
-      )
+      expect(getFeatureTypesInGroups(state, groups)).toEqual(expectedResult)
     })
     it('returns same (===) result both times', () => {
-      expect(
-        getFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toBe(getFeatureObservationTypesInGroups(state, ['age', 'age-stage']))
+      expect(getFeatureTypesInGroups(state, ['age', 'age-stage'])).toBe(
+        getFeatureTypesInGroups(state, ['age', 'age-stage'])
+      )
     })
   })
-  describe('getNumberOfFeatureObservationTypesInGroups', () => {
-    it('returns numberOfFeatureObservationTypes in provided groups', () => {
+  describe('getNumberOfFeatureTypesInGroups', () => {
+    it('returns numberOfFeatureTypes in provided groups', () => {
       expect(
-        getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
+        getNumberOfFeatureTypesInGroups(state, ['age', 'age-stage'])
       ).toEqual(2)
     })
     it('returns same (===) result both times', () => {
-      expect(
-        getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
-      ).toBe(
-        getNumberOfFeatureObservationTypesInGroups(state, ['age', 'age-stage'])
+      expect(getNumberOfFeatureTypesInGroups(state, ['age', 'age-stage'])).toBe(
+        getNumberOfFeatureTypesInGroups(state, ['age', 'age-stage'])
       )
     })
   })

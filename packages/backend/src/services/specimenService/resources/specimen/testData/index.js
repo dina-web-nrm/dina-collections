@@ -5,8 +5,8 @@ const testData = {}
 testData.badRequestMissingCatalogNumber = {
   data: {
     attributes: {
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
         featureObservations: [],
         identifiers: [],
       },
@@ -20,18 +20,16 @@ testData.simpleDataNoRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123457',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123457',
         },
       ],
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
@@ -40,33 +38,31 @@ testData.simpleDataNoRelations = {
   },
 }
 
-testData.simpleDataPhysicalUnitRelations = {
+testData.simpleDataPhysicalObjectRelations = {
   data: {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
     },
     relationships: {
-      physicalUnits: {
+      physicalObjects: {
         data: [
           {
             id: '2234',
-            type: 'physicalUnit',
+            type: 'physicalObject',
           },
         ],
       },
@@ -80,41 +76,39 @@ testData.simpleDataMultipleRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
     },
     relationships: {
-      curatedLocalities: {
-        data: [{ id: '1', type: 'curatedLocality' }],
-      },
-      featureObservationTypes: {
+      featureTypes: {
         data: [
           {
             id: '1',
-            type: 'featureObservationType',
+            type: 'featureType',
           },
         ],
       },
-      physicalUnits: {
+      physicalObjects: {
         data: [
           {
             id: '2234',
-            type: 'physicalUnit',
+            type: 'physicalObject',
           },
         ],
+      },
+      places: {
+        data: [{ id: '1', type: 'place' }],
       },
       taxa: {
         data: [],
@@ -129,26 +123,24 @@ testData.simpleDataInvalidRelationsFormat = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
     },
     relationships: {
-      physicalUnits: {
+      physicalObjects: {
         id: '2234',
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
     },
     type: 'specimen',
@@ -160,24 +152,22 @@ testData.simpleDataInvalidRelations = {
     attributes: {
       identifiers: [
         {
-          identifier: {
-            identifierType: 'catalogNumber',
-            nameSpace: '',
-            value: '123458',
-          },
+          identifierType: 'catalogNumber',
           lid: '4444-33333',
+          nameSpace: '',
           publishRecord: true,
           remarks: '',
+          value: '123458',
         },
       ],
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
         featureObservations: [],
         identifiers: ['4444-33333'],
       },
     },
     relationships: {
-      physicalUnits: {
+      physicalObjects: {
         id: '2234',
         type: 'storageLocation',
       },

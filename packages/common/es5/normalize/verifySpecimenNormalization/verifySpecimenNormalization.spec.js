@@ -10,23 +10,23 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var verifyIndividualGroupNormalization = require('./index');
-var normalizedIndividualGroup = require('../testData/normalizedSpecimen');
+var verifyIndividualNormalization = require('./index');
+var normalizedIndividual = require('../testData/normalizedSpecimen');
 
-describe('normalize/verifyIndividualGroupNormalization', function () {
+describe('normalize/verifyIndividualNormalization', function () {
   it('is a function', function () {
-    expect(typeof verifyIndividualGroupNormalization === 'undefined' ? 'undefined' : (0, _typeof3.default)(verifyIndividualGroupNormalization)).toBe('function');
+    expect(typeof verifyIndividualNormalization === 'undefined' ? 'undefined' : (0, _typeof3.default)(verifyIndividualNormalization)).toBe('function');
   });
 
   it('dont throw in base case', function () {
     expect(function () {
-      verifyIndividualGroupNormalization(normalizedIndividualGroup);
+      verifyIndividualNormalization(normalizedIndividual);
     }).not.toThrow();
   });
   it('is resonable fast', function () {
     for (var i = 0; i < 1000; i += 1) {
-      var input = JSON.parse((0, _stringify2.default)(normalizedIndividualGroup));
-      verifyIndividualGroupNormalization(input);
+      var input = JSON.parse((0, _stringify2.default)(normalizedIndividual));
+      verifyIndividualNormalization(input);
     }
   });
 });

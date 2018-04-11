@@ -26,15 +26,15 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   it(`dispatches ${STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_REQUEST} followed by ${
     STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS
   } and ${actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST}`, () => {
-    const physicalUnits = [
+    const physicalObjects = [
       {
         normalStorageLocation: 'Sorex minutus',
       },
     ]
     const specimen = {
-      individualGroup: { distinguishedUnits: [], identifiers: [] },
+      individual: { collectionItems: [], identifiers: [] },
     }
-    const testAction = createSpecimen({ physicalUnits, specimen })
+    const testAction = createSpecimen({ physicalObjects, specimen })
 
     expect.assertions(3)
 
@@ -56,14 +56,11 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
     const operationId = 'createSpecimen'
     const taxon = { id: '2367', type: 'taxon' }
     const specimen = {
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
-        taxonInformation: {
-          determinations: [{ taxon }],
-        },
+      individual: {
+        collectionItems: [],
+        determinations: [{ taxon }],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
+        taxonInformation: {},
       },
     }
     const callSpy = jest.fn()
@@ -97,11 +94,9 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   } and returns transformed response`, () => {
     const operationId = 'createSpecimen'
     const specimen = {
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+      individual: {
+        collectionItems: [],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
 
@@ -147,11 +142,9 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   } without throwing error`, () => {
     const operationId = 'createSpecimen'
     const specimen = {
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+      individual: {
+        collectionItems: [],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }
@@ -181,11 +174,9 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   } and throws error`, () => {
     const operationId = 'createSpecimen'
     const specimen = {
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+      individual: {
+        collectionItems: [],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }

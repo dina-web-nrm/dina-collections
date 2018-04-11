@@ -24,7 +24,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const id = '123'
     const specimen = {
       id,
-      individualGroup: { distinguishedUnits: [], identifiers: [] },
+      individual: { collectionItems: [], identifiers: [] },
     }
     const testAction = updateSpecimen({ id, specimen })
 
@@ -42,12 +42,11 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const id = '123'
     const taxon = { id: '2367', type: 'taxon' }
     const attributes = {
-      individualGroup: {
-        distinguishedUnits: [],
+      individual: {
+        collectionItems: [],
+        determinations: [{ taxon }],
         identifiers: [],
-        taxonInformation: {
-          determinations: [{ taxon }],
-        },
+        taxonInformation: {},
       },
     }
     const specimen = {
@@ -86,11 +85,9 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
   } and returns transformed response`, () => {
     const operationId = 'updateSpecimen'
     const attributes = {
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+      individual: {
+        collectionItems: [],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const id = '123'
@@ -140,11 +137,9 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const operationId = 'updateSpecimen'
     const specimen = {
       id: '123',
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+      individual: {
+        collectionItems: [],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }
@@ -175,11 +170,9 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
     const operationId = 'updateSpecimen'
     const specimen = {
       id: '123',
-      individualGroup: {
-        distinguishedUnits: [],
-        identifiers: [
-          { identifier: { identifierType: 'catalogNumber', value: '123' } },
-        ],
+      individual: {
+        collectionItems: [],
+        identifiers: [{ identifierType: 'catalogNumber', value: '123' }],
       },
     }
     const mockError = { status: 500 }

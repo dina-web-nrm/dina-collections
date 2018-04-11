@@ -5,7 +5,7 @@ import { compose } from 'redux'
 
 import config from 'config'
 import { DropdownSearch } from 'coreModules/form/components'
-import { ensureAllLocalitiesFetched } from 'dataModules/localityService/higherOrderComponents'
+import { ensureAllPlacesFetched } from 'dataModules/localityService/higherOrderComponents'
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
 import { actionCreators, globalSelectors } from '../../keyObjectModule'
 import localitySelectors from '../../globalSelectors'
@@ -79,7 +79,7 @@ class LocalityDropdownSearch extends Component {
             identifier: group,
           })
         }}
-        getSelectedOption={localitySelectors.getCuratedLocalityOption}
+        getSelectedOption={localitySelectors.getPlaceOption}
         input={input}
         onSearchChange={({ searchQuery }) => {
           updateSearchQuery(group, searchQuery)
@@ -94,5 +94,5 @@ LocalityDropdownSearch.propTypes = propTypes
 
 export default compose(
   connect(null, mapDispatchToProps),
-  ensureAllLocalitiesFetched()
+  ensureAllPlacesFetched()
 )(LocalityDropdownSearch)

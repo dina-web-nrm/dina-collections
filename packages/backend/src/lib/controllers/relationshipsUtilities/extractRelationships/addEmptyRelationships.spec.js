@@ -22,11 +22,11 @@ describe('lib/controllers/relationshipsUtilities/extractRelationships/extractRel
     const relations = {
       children: {
         format: 'array',
-        resource: 'curatedLocality',
+        resource: 'place',
       },
       parent: {
         format: 'object',
-        resource: 'curatedLocality',
+        resource: 'place',
       },
     }
     const relationshipsData = {

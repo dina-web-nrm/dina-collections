@@ -107,7 +107,7 @@
       "sv": "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
     }
   },
-  "individualGroup": {
+  "individual": {
     "causeOfDeathStandardized": {
       "en": "Cause of death",
       "sv": ""
@@ -121,7 +121,7 @@
       "sv": ""
     }
   },
-  "individualCircumstances": {
+  "collectingInformation": {
     "collectingInformation": {
       "en": "Collecting information",
       "sv": "Insamlingsinformation"
@@ -138,8 +138,8 @@
       "en": "Is death event",
       "sv": ""
     },
-    "localityInformation": {
-      "curatedLocalities": {
+    "locationInformation": {
+      "places": {
         "choose": {
           "en": "Choose...",
           "sv": "Välj..."
@@ -411,7 +411,7 @@
       "sv": "Vikter"
     }
   },
-  "distinguishedUnits": {
+  "collectionItems": {
     "alternateIdentifiersText": {
       "en": "Alternate identifier(s)",
       "sv": "Alternativa identifierare"
@@ -448,7 +448,7 @@
       "en": "Normal storage location",
       "sv": "Reguljär lagringsplats"
     },
-    "physicalUnitText": {
+    "physicalObjectText": {
       "en": "Description",
       "sv": "Beskrivning"
     },
@@ -502,10 +502,6 @@
   "collectingDate": {
     "en": "Collecting date",
     "sv": "Insamlingsdatum"
-  },
-  "collectingInformation": {
-    "en": "Collecting information",
-    "sv": "Insamlingsinformation"
   },
   "collectors": {
     "en": "Collector(s)",

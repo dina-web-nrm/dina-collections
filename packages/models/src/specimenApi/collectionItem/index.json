@@ -1,0 +1,47 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "lid": {
+      "type": "string"
+    },
+    "alternateIdentifiersText": {
+      "type": "string",
+      "example": "Skin complete, prepared"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__identifier",
+        "x-reference-type": "internal"
+      }
+    },
+    "collectingInformation": {
+      "$ref": "__ROOT__collectingInformation",
+      "x-reference-type": "internal"
+    },
+    "curatorialAssessments": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__curatorialAssessment"
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "preparationType": {
+      "$ref": "__ROOT__preparationType",
+      "x-reference-type": "external"
+    },
+    "id": {
+      "type": "string"
+    },
+    "physicalObjectText": {
+      "type": "string",
+      "example": "Skin complete, prepared"
+    },
+    "physicalObject": {
+      "$ref": "__ROOT__physicalObject",
+      "x-reference-type": "external"
+    }
+  }
+}

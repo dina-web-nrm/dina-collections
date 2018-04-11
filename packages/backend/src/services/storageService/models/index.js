@@ -1,10 +1,10 @@
 const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
 
-const physicalUnitModelFactory = function physicalUnit({ sequelize }) {
+const physicalObjectModelFactory = function physicalObject({ sequelize }) {
   return createModel({
-    name: 'PhysicalUnit',
-    schemaModelName: 'physicalUnit',
+    name: 'PhysicalObject',
+    schemaModelName: 'physicalObject',
     schemaVersion: '1.0.1',
     sequelize,
   })
@@ -20,12 +20,12 @@ const storageLocationModelFactory = function storageLocation({ sequelize }) {
 }
 
 const setupRelations = function setupRelations({ models }) {
-  const { physicalUnit, storageLocation } = models
-  storageLocation.Model.hasMany(physicalUnit.Model, {
-    as: 'physicalUnits',
+  const { physicalObject, storageLocation } = models
+  storageLocation.Model.hasMany(physicalObject.Model, {
+    as: 'physicalObjects',
     foreignKey: 'storageLocationVersionId',
   })
-  physicalUnit.Model.belongsTo(storageLocation.Model, {
+  physicalObject.Model.belongsTo(storageLocation.Model, {
     as: 'storageLocation',
     foreignKey: 'storageLocationVersionId',
     targetKey: 'versionId',
@@ -38,8 +38,8 @@ module.exports = [
     name: 'storageLocation',
   },
   {
-    factory: physicalUnitModelFactory,
-    name: 'physicalUnit',
+    factory: physicalObjectModelFactory,
+    name: 'physicalObject',
   },
   {
     factory: setupRelations,

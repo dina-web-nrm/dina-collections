@@ -5,37 +5,37 @@
     "relationships": {
       "type": "object",
       "properties": {
-        "physicalUnits": {
+        "physicalObjects": {
           "type": "object",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__physicalUnit",
+                "$ref": "__ROOT__physicalObject",
                 "x-reference-type": "external"
               }
             }
           }
         },
-        "featureObservationTypes": {
+        "featureTypes": {
           "type": "object",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__featureObservationType",
+                "$ref": "__ROOT__featureType",
                 "x-reference-type": "external"
               }
             }
           }
         },
-        "curatedLocalities": {
+        "places": {
           "type": "object",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__curatedLocality",
+                "$ref": "__ROOT__place",
                 "x-reference-type": "external"
               }
             }
@@ -55,28 +55,22 @@
         }
       }
     },
-    "individualGroup": {
-      "$ref": "__ROOT__individualGroup"
+    "individual": {
+      "$ref": "__ROOT__individual"
     },
-    "distinguishedUnits": {
+    "collectionItems": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__distinguishedUnit"
+        "$ref": "__ROOT__collectionItem"
       }
     },
     "id": {
       "type": "string"
     },
-    "individualCircumstances": {
+    "collectingInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__individualCircumstance"
-      }
-    },
-    "collectingCircumstances": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__collectingCircumstance"
+        "$ref": "__ROOT__collectingInformation"
       }
     },
     "determinations": {

@@ -38,7 +38,7 @@ class SegmentCatalogNumberIdentifier extends PureComponent {
               helpText={<ModuleTranslate textKey="sixOrEightDigits" />}
               label={<ModuleTranslate textKey="catalogNumber" />}
               module="collectionMammals"
-              name={getPath('identifier.value')}
+              name={getPath('value')}
               type="text"
             />
           </Grid.Column>

@@ -21,5 +21,5 @@ module.exports = function loadInitialData({ models }) {
     }
   })
 
-  return models.curatedLocality.bulkCreate(items)
+  return models.place.bulkCreate(items)
 }

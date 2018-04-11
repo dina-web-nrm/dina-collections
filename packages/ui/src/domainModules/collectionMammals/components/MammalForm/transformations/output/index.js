@@ -1,9 +1,10 @@
 import normalizeSpecimen from 'common/es5/normalize/normalizeSpecimen'
-import transformTaxonInformation from './transformTaxonInformation'
+import transformCollectingInformation from './transformCollectingInformation'
+import transformCollectionItems from './transformCollectionItems'
+import transformDeterminations from './transformDeterminations'
 import transformFeatureObservations from './transformFeatureObservations'
-import transformDistinguishedUnits from './transformDistinguishedUnits'
 import transformIdentifiers from './transformIdentifiers'
-import transformIndividualCircumstances from './transformIndividualCircumstances'
+import transformTaxonInformation from './transformTaxonInformation'
 
 export default function transformOutput(formData, normalize = true) {
   // TODO: set in backend instead
@@ -12,8 +13,10 @@ export default function transformOutput(formData, normalize = true) {
     Math.floor(Math.random() * (999999 - 100001) + 100000)
   )
 
-  const { taxa, taxonInformation } = transformTaxonInformation(
-    formData.taxonInformation
+  const taxonInformation = transformTaxonInformation(formData.taxonInformation)
+
+  const { determinations, taxa } = transformDeterminations(
+    formData.determinations
   )
 
   const identifiers = transformIdentifiers(
@@ -21,45 +24,44 @@ export default function transformOutput(formData, normalize = true) {
     newCatalogNumber
   )
 
-  const {
-    featureObservations,
-    featureObservationTypes,
-  } = transformFeatureObservations(formData.featureObservations)
+  const { featureObservations, featureTypes } = transformFeatureObservations(
+    formData.featureObservations
+  )
 
   const {
-    distinguishedUnits,
-    distinguishedUnitTypes,
-    physicalUnits,
+    collectionItems,
+    preparationTypes,
+    physicalObjects,
     storageLocations,
-  } = transformDistinguishedUnits(formData.distinguishedUnits)
+  } = transformCollectionItems(formData.collectionItems)
 
-  const {
-    curatedLocalities,
-    individualCircumstances,
-  } = transformIndividualCircumstances(formData.individualCircumstances)
+  const { places, collectingInformation } = transformCollectingInformation(
+    formData.collectingInformation
+  )
 
-  const individualGroup = {
+  const individual = {
     ...formData,
-    distinguishedUnits,
+    collectingInformation,
+    collectionItems,
+    determinations,
     featureObservations,
     identifiers,
-    individualCircumstances,
     taxonInformation,
   }
 
   const specimen = normalize
     ? normalizeSpecimen({
-        individualGroup,
+        individual,
       })
     : {
-        individualGroup,
+        individual,
       }
 
   return {
-    curatedLocalities,
-    distinguishedUnitTypes,
-    featureObservationTypes,
-    physicalUnits,
+    featureTypes,
+    physicalObjects,
+    places,
+    preparationTypes,
     specimen,
     storageLocations,
     taxa,

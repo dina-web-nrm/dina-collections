@@ -1,5 +1,5 @@
 * Finalize currated locality
-* Rebase error on anton/implement-v1-featureObservationType
+* Rebase error on anton/implement-v1-featureType
 * Rebase refactor build and next step currated onto error.
 * Merge refactor build into integration branch
 * keep locality separate branch
@@ -20,12 +20,12 @@ WITH    RECURSIVE
         q AS
         (
         SELECT  "id", "parentVersionId","isCurrentVersion","versionId", "schemaVersion", "document"
-        FROM    "CuratedLocalities" h
+        FROM    "Places" h
         WHERE   "versionId" = 32
         UNION ALL
         SELECT  hc."id", hc."parentVersionId", hc."isCurrentVersion",hc."versionId", hc."schemaVersion", hc."document"
         FROM    q
-        JOIN    "CuratedLocalities" hc
+        JOIN    "Places" hc
         ON      hc."parentVersionId" = q."versionId"
         )
 SELECT  *
@@ -36,12 +36,12 @@ WITH    RECURSIVE
         q AS
         (
         SELECT  *
-        FROM    "CuratedLocalities" h
+        FROM    "Places" h
         WHERE   "versionId" = 32
         UNION ALL
         SELECT  hc.*
         FROM    q
-        JOIN    "CuratedLocalities" hc
+        JOIN    "Places" hc
         ON      hc."parentVersionId" = q."versionId"
         )
 SELECT  *
@@ -60,16 +60,16 @@ FROM    q;
 
 1. createNew
 
-* POST /api/locality/v01/curatedLocalities
+* POST /api/locality/v01/places
 * remove parents from incoming document
 * standard
 
 2. updateRelation parent hasOne
 
-* PATH /api/locality/v01/curatedLocalities/:id/relationships/parent
+* PATH /api/locality/v01/places/:id/relationships/parent
   {
   id: 123,
-  type: 'curatedLocality'
+  type: 'place'
   }
 * 1. create parent link as standard
   2. update parents in document
@@ -83,7 +83,7 @@ FROM    q;
 
 2. getOne
 
-* GET /api/locality/v01/curatedLocalities/:id
+* GET /api/locality/v01/places/:id
 * standard (including parent and childRelations)
 * remove parents from document
 * includes to add decendents.

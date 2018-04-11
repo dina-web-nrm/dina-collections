@@ -13,7 +13,6 @@ import * as logger from 'coreModules/logger'
 import * as routing from 'coreModules/routing'
 
 import * as curatedListService from 'dataModules/curatedListService'
-import * as identifierService from 'dataModules/identifierService'
 import * as localityService from 'dataModules/localityService'
 import * as specimenService from 'dataModules/specimenService'
 import * as storageService from 'dataModules/storageService'
@@ -35,7 +34,6 @@ const modules = [
   routing,
 
   curatedListService,
-  identifierService,
   localityService,
   specimenService,
   storageService,

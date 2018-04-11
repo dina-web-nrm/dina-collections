@@ -13,7 +13,7 @@ import globalSelectors from '../../../../../globalSelectors'
 const mapStateToProps = state => {
   const parentFilterId = keyObjectGlobalSelectors.get['filter.parentId'](state)
   const ancestors = parentFilterId
-    ? globalSelectors.getCuratedLocalityAncestorsById(state, parentFilterId)
+    ? globalSelectors.getPlaceAncestorsById(state, parentFilterId)
     : undefined
   return {
     ancestors,

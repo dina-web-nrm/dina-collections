@@ -2,48 +2,48 @@ const apiDescribe = require('../../utilities/test/apiDescribe')
 const { makeTestCall } = require('../../utilities/test/testApiClient')
 const waitForApiRestart = require('../../utilities/test/waitForApiRestart')
 
-const simpleCuratedLocalityParent = {
+const simplePlaceParent = {
   data: {
     attributes: {
       name: 'europe',
     },
-    type: 'curatedLocality',
+    type: 'place',
   },
 }
 
-const simpleCuratedLocality = {
+const simplePlace = {
   data: {
     attributes: {
       name: 'sweden',
     },
-    type: 'curatedLocality',
+    type: 'place',
   },
 }
 
-const simpleCuratedLocalityChild = {
+const simplePlaceChild = {
   data: {
     attributes: {
       name: 'ronneby',
     },
-    type: 'curatedLocality',
+    type: 'place',
   },
 }
 
-const simpleCuratedLocalityUpdate = {
+const simplePlaceUpdate = {
   data: {
     attributes: {
       description: 'country',
       name: 'sweden',
     },
-    type: 'curatedLocality',
+    type: 'place',
   },
 }
 
-it('Runs curatedLocality tests', () => {
+it('Runs place tests', () => {
   expect(1).toBe(1)
 })
 
-apiDescribe('curatedLocality', () => {
+apiDescribe('place', () => {
   let authToken
   beforeAll(() => {
     return waitForApiRestart().then(() => {
@@ -51,29 +51,29 @@ apiDescribe('curatedLocality', () => {
     })
   })
 
-  it('Runs curatedLocality tests', () => {
+  it('Runs place tests', () => {
     expect(!!authToken).toBeTruthy()
     expect(1).toBe(1)
   })
 
-  describe('createCuratedLocality', () => {
+  describe('createPlace', () => {
     it('Succeed with simpleCase', () => {
       return makeTestCall({
         authToken,
-        body: simpleCuratedLocality,
-        operationId: 'createCuratedLocality',
+        body: simplePlace,
+        operationId: 'createPlace',
       }).then(res => {
         expect(res).toBeTruthy()
       })
     })
   })
-  describe('getCuratedLocality', () => {
+  describe('getPlace', () => {
     let id
     beforeEach(() => {
       return makeTestCall({
         authToken,
-        body: simpleCuratedLocality,
-        operationId: 'createCuratedLocality',
+        body: simplePlace,
+        operationId: 'createPlace',
       }).then(res => {
         expect(res).toBeTruthy()
         id = res.data.id // eslint-disable-line prefer-destructuring
@@ -82,7 +82,7 @@ apiDescribe('curatedLocality', () => {
     it('Works with simple get', () => {
       return makeTestCall({
         authToken,
-        operationId: 'getCuratedLocality',
+        operationId: 'getPlace',
         pathParams: {
           id,
         },
@@ -91,13 +91,13 @@ apiDescribe('curatedLocality', () => {
       })
     })
   })
-  describe('updateCuratedLocality', () => {
+  describe('updatePlace', () => {
     let id
     beforeEach(() => {
       return makeTestCall({
         authToken,
-        body: simpleCuratedLocality,
-        operationId: 'createCuratedLocality',
+        body: simplePlace,
+        operationId: 'createPlace',
       }).then(res => {
         expect(res).toBeTruthy()
         id = res.data.id // eslint-disable-line prefer-destructuring
@@ -106,8 +106,8 @@ apiDescribe('curatedLocality', () => {
     it('Works with simple get', () => {
       return makeTestCall({
         authToken,
-        body: simpleCuratedLocalityUpdate,
-        operationId: 'updateCuratedLocality',
+        body: simplePlaceUpdate,
+        operationId: 'updatePlace',
         pathParams: {
           id,
         },
@@ -115,8 +115,8 @@ apiDescribe('curatedLocality', () => {
         expect(res).toBeTruthy()
         return makeTestCall({
           authToken,
-          body: simpleCuratedLocalityUpdate,
-          operationId: 'updateCuratedLocality',
+          body: simplePlaceUpdate,
+          operationId: 'updatePlace',
           pathParams: {
             id,
           },
@@ -133,8 +133,8 @@ apiDescribe('curatedLocality', () => {
     it('works', () => {
       return makeTestCall({
         authToken,
-        body: simpleCuratedLocalityParent,
-        operationId: 'createCuratedLocality',
+        body: simplePlaceParent,
+        operationId: 'createPlace',
       })
         .then(res => {
           expect(res).toBeTruthy()
@@ -143,8 +143,8 @@ apiDescribe('curatedLocality', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            body: simpleCuratedLocality,
-            operationId: 'createCuratedLocality',
+            body: simplePlace,
+            operationId: 'createPlace',
           }).then(res => {
             childId = res.data.id // eslint-disable-line prefer-destructuring
           })
@@ -152,8 +152,8 @@ apiDescribe('curatedLocality', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            body: simpleCuratedLocalityChild,
-            operationId: 'createCuratedLocality',
+            body: simplePlaceChild,
+            operationId: 'createPlace',
           }).then(res => {
             grandchildId = res.data.id // eslint-disable-line prefer-destructuring
           })
@@ -164,10 +164,10 @@ apiDescribe('curatedLocality', () => {
             body: {
               data: {
                 id: parentId,
-                type: 'curatedLocality',
+                type: 'place',
               },
             },
-            operationId: 'updateCuratedLocalityParent',
+            operationId: 'updatePlaceParent',
             pathParams: {
               id: childId,
             },
@@ -181,10 +181,10 @@ apiDescribe('curatedLocality', () => {
             body: {
               data: {
                 id: childId,
-                type: 'curatedLocality',
+                type: 'place',
               },
             },
-            operationId: 'updateCuratedLocalityParent',
+            operationId: 'updatePlaceParent',
             pathParams: {
               id: grandchildId,
             },
@@ -195,7 +195,7 @@ apiDescribe('curatedLocality', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getCuratedLocality',
+            operationId: 'getPlace',
             pathParams: {
               id: childId,
             },

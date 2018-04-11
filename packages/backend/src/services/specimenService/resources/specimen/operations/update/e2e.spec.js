@@ -32,7 +32,7 @@ apiDescribe('specimen', () => {
           existingId = response.data.id
         })
       })
-      it('Succeed with valid individualGroup', () => {
+      it('Succeed with valid individual', () => {
         return makeTestCall({
           body: updateFullFormExample,
           operationId: 'updateSpecimen',
@@ -60,35 +60,35 @@ apiDescribe('specimen', () => {
       })
     })
     describe('relation cases', () => {
-      describe('existing physicalUnit relations', () => {
-        let simpleDataPhysicalUnitRelationsId
+      describe('existing physicalObject relations', () => {
+        let simpleDataPhysicalObjectRelationsId
         beforeEach(() => {
           return makeTestCall({
-            body: getTestData('simpleDataPhysicalUnitRelations'),
+            body: getTestData('simpleDataPhysicalObjectRelations'),
             operationId: 'createSpecimen',
           }).then(response => {
-            simpleDataPhysicalUnitRelationsId = response.data.id
+            simpleDataPhysicalObjectRelationsId = response.data.id
           })
         })
         it('Dont modify relationships if relationships not updated', () => {
-          const simpleDataPhysicalUnitRelations = getTestData(
-            'simpleDataPhysicalUnitRelations'
+          const simpleDataPhysicalObjectRelations = getTestData(
+            'simpleDataPhysicalObjectRelations'
           )
-          const simpleDataPhysicalUnitRelationsWithoutRelations = getTestData(
-            'simpleDataPhysicalUnitRelations'
+          const simpleDataPhysicalObjectRelationsWithoutRelations = getTestData(
+            'simpleDataPhysicalObjectRelations'
           )
-          delete simpleDataPhysicalUnitRelationsWithoutRelations.data
+          delete simpleDataPhysicalObjectRelationsWithoutRelations.data
             .relationships
           return makeTestCall({
-            body: simpleDataPhysicalUnitRelationsWithoutRelations,
+            body: simpleDataPhysicalObjectRelationsWithoutRelations,
             operationId: 'updateSpecimen',
-            pathParams: { id: simpleDataPhysicalUnitRelationsId },
+            pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
             .then(() => {
               return makeTestCall({
                 operationId: 'getSpecimen',
                 pathParams: {
-                  id: simpleDataPhysicalUnitRelationsId,
+                  id: simpleDataPhysicalObjectRelationsId,
                 },
                 queryParams: {
                   relationships: ['all'],
@@ -99,11 +99,11 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [],
                   },
-                  ...simpleDataPhysicalUnitRelations.data.relationships,
+                  places: { data: [] },
+                  ...simpleDataPhysicalObjectRelations.data.relationships,
                   taxa: {
                     data: [],
                   },
@@ -113,24 +113,24 @@ apiDescribe('specimen', () => {
             })
         })
 
-        it('Return empty array if relationships physicalUnits set to empty array', () => {
-          const simpleDataPhysicalUnitRelationsWithEmptyRelations = getTestData(
-            'simpleDataPhysicalUnitRelations'
+        it('Return empty array if relationships physicalObjects set to empty array', () => {
+          const simpleDataPhysicalObjectRelationsWithEmptyRelations = getTestData(
+            'simpleDataPhysicalObjectRelations'
           )
-          simpleDataPhysicalUnitRelationsWithEmptyRelations.data.relationships = {
-            physicalUnits: {
+          simpleDataPhysicalObjectRelationsWithEmptyRelations.data.relationships = {
+            physicalObjects: {
               data: [],
             },
           }
           return makeTestCall({
-            body: simpleDataPhysicalUnitRelationsWithEmptyRelations,
+            body: simpleDataPhysicalObjectRelationsWithEmptyRelations,
             operationId: 'updateSpecimen',
-            pathParams: { id: simpleDataPhysicalUnitRelationsId },
+            pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
             .then(() => {
               return makeTestCall({
                 operationId: 'getSpecimen',
-                pathParams: { id: simpleDataPhysicalUnitRelationsId },
+                pathParams: { id: simpleDataPhysicalObjectRelationsId },
                 queryParams: {
                   relationships: ['all'],
                 },
@@ -140,13 +140,14 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [],
                   },
-                  physicalUnits: {
+
+                  physicalObjects: {
                     data: [],
                   },
+                  places: { data: [] },
                   taxa: {
                     data: [],
                   },
@@ -157,26 +158,26 @@ apiDescribe('specimen', () => {
         })
 
         it('Return update relationships if provided. Dont update non existing other relations', () => {
-          const simpleDataPhysicalUnitRelationsWithEmptyRelations = getTestData(
-            'simpleDataPhysicalUnitRelations'
+          const simpleDataPhysicalObjectRelationsWithEmptyRelations = getTestData(
+            'simpleDataPhysicalObjectRelations'
           )
-          simpleDataPhysicalUnitRelationsWithEmptyRelations.data.relationships = {
-            featureObservationTypes: {
+          simpleDataPhysicalObjectRelationsWithEmptyRelations.data.relationships = {
+            featureTypes: {
               data: [],
             },
-            physicalUnits: {
-              data: [{ id: '1234', type: 'physicalUnit' }],
+            physicalObjects: {
+              data: [{ id: '1234', type: 'physicalObject' }],
             },
           }
           return makeTestCall({
-            body: simpleDataPhysicalUnitRelationsWithEmptyRelations,
+            body: simpleDataPhysicalObjectRelationsWithEmptyRelations,
             operationId: 'updateSpecimen',
-            pathParams: { id: simpleDataPhysicalUnitRelationsId },
+            pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
             .then(() => {
               return makeTestCall({
                 operationId: 'getSpecimen',
-                pathParams: { id: simpleDataPhysicalUnitRelationsId },
+                pathParams: { id: simpleDataPhysicalObjectRelationsId },
                 queryParams: {
                   relationships: ['all'],
                 },
@@ -186,13 +187,14 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [],
                   },
-                  physicalUnits: {
-                    data: [{ id: '1234', type: 'physicalUnit' }],
+
+                  physicalObjects: {
+                    data: [{ id: '1234', type: 'physicalObject' }],
                   },
+                  places: { data: [] },
                   taxa: {
                     data: [],
                   },
@@ -202,31 +204,31 @@ apiDescribe('specimen', () => {
             })
         })
         it('Return update relationships if provided. Dont update existing other relations', () => {
-          const simpleDataPhysicalUnitRelations = getTestData(
-            'simpleDataPhysicalUnitRelations'
+          const simpleDataPhysicalObjectRelations = getTestData(
+            'simpleDataPhysicalObjectRelations'
           )
-          const simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes = getTestData(
-            'simpleDataPhysicalUnitRelations'
+          const simpleDataPhysicalObjectRelationsWithAddedFeatureTypes = getTestData(
+            'simpleDataPhysicalObjectRelations'
           )
-          simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes.data.relationships = {
-            featureObservationTypes: {
+          simpleDataPhysicalObjectRelationsWithAddedFeatureTypes.data.relationships = {
+            featureTypes: {
               data: [
                 {
                   id: '5555',
-                  type: 'featureObservationType',
+                  type: 'featureType',
                 },
               ],
             },
           }
           return makeTestCall({
-            body: simpleDataPhysicalUnitRelationsWithAddedFeatureObservationTypes,
+            body: simpleDataPhysicalObjectRelationsWithAddedFeatureTypes,
             operationId: 'updateSpecimen',
-            pathParams: { id: simpleDataPhysicalUnitRelationsId },
+            pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
             .then(() => {
               return makeTestCall({
                 operationId: 'getSpecimen',
-                pathParams: { id: simpleDataPhysicalUnitRelationsId },
+                pathParams: { id: simpleDataPhysicalObjectRelationsId },
                 queryParams: {
                   relationships: ['all'],
                 },
@@ -236,18 +238,19 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  curatedLocalities: { data: [] },
-                  featureObservationTypes: {
+                  featureTypes: {
                     data: [
                       {
                         id: '5555',
-                        type: 'featureObservationType',
+                        type: 'featureType',
                       },
                     ],
                   },
-                  physicalUnits:
-                    simpleDataPhysicalUnitRelations.data.relationships
-                      .physicalUnits,
+
+                  physicalObjects:
+                    simpleDataPhysicalObjectRelations.data.relationships
+                      .physicalObjects,
+                  places: { data: [] },
                   taxa: {
                     data: [],
                   },
@@ -291,13 +294,14 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
-                physicalUnits: {
+
+                physicalObjects: {
                   data: [],
                 },
+                places: { data: [] },
                 taxa: {
                   data: [],
                 },
@@ -311,8 +315,8 @@ apiDescribe('specimen', () => {
           'simpleDataNoRelations'
         )
         simpleDataNoRelationsWithEmptyRelations.data.relationships = {
-          physicalUnits: {
-            data: [{ id: '1234', type: 'physicalUnit' }],
+          physicalObjects: {
+            data: [{ id: '1234', type: 'physicalObject' }],
           },
         }
 
@@ -334,13 +338,14 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                curatedLocalities: { data: [] },
-                featureObservationTypes: {
+                featureTypes: {
                   data: [],
                 },
-                physicalUnits: {
-                  data: [{ id: '1234', type: 'physicalUnit' }],
+
+                physicalObjects: {
+                  data: [{ id: '1234', type: 'physicalObject' }],
                 },
+                places: { data: [] },
                 taxa: {
                   data: [],
                 },
@@ -354,7 +359,7 @@ apiDescribe('specimen', () => {
           'simpleDataNoRelations'
         )
         simpleDataNoRelationsWithEmptyRelations.data.relationships = {
-          physicalUnits: {
+          physicalObjects: {
             data: [{ id: '1234', type: 'catUnit' }],
           },
         }

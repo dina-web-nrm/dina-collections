@@ -9,7 +9,7 @@
 │   │   │   └── addCatalogNumberModal.sv.md
 │   │   ├── index.json
 │   │   └── occurrences
-│   │       └── localityInformation
+│   │       └── locationInformation
 │   ├── actionCreators
 │   │   ├── clearSearchParameters.js
 │   │   ├── index.js
@@ -24,9 +24,9 @@
 │   │   │   ├── FormActions.js
 │   │   │   ├── Scenarios
 │   │   │   ├── SegmentCatalogNumberIdentifier
-│   │   │   ├── SegmentDistinguishedUnits
+│   │   │   ├── SegmentCollectingInformation
+│   │   │   ├── SegmentCollectionItems
 │   │   │   ├── SegmentFeatureObservations
-│   │   │   ├── SegmentIndividualCircumstances
 │   │   │   ├── SegmentOther
 │   │   │   ├── SegmentTaxon
 │   │   │   ├── index.js

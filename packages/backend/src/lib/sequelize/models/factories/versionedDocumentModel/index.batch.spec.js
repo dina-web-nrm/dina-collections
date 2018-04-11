@@ -9,22 +9,14 @@ const batchExecute = require('../../../../../utilities/test/batchExecute')
 const createData = catalogNumber => {
   return {
     data: {
-      additionalData: [
-        {
-          attributes: {
-            catalogNumber: '584028',
-          },
-          type: 'catalogedUnit',
-        },
-      ],
       attributes: {
         causeOfDeathStandardized: 'Standardized death cause',
         causeOfDeathText: 'Cause of death ',
         featureObservations: [
           {
             featureObservationText: 'A condition at collecting',
-            featureObservationType: {
-              featureObservationTypeName: 'conditionAtCollecting',
+            featureType: {
+              featureTypeName: 'conditionAtCollecting',
               id: '2',
             },
           },
@@ -32,8 +24,8 @@ const createData = catalogNumber => {
             featureObservationAgent: 'JD',
             featureObservationDate: 'A date',
             featureObservationText: 'male',
-            featureObservationType: {
-              featureObservationTypeName: 'sex',
+            featureType: {
+              featureTypeName: 'sex',
               id: '1',
             },
             methodText: 'method text',
@@ -56,9 +48,12 @@ const createData = catalogNumber => {
             establishmentMeansStandardized: 'establishmentMeansStandardized',
             expeditionText: 'Vega Expedition',
             isDeathEvent: true,
-            localityInformation: {
+            locationInformation: {
               coordinatesVerbatim: 'coord-string',
-              curatedLocalities: [
+              georeferenceSourcesText: 'georeferenceSourcesText text',
+              localityRemarks: 'localityRemarks text',
+              localityVerbatim: 'Some localityVerbatim text',
+              places: [
                 {
                   id: '123',
                 },
@@ -66,9 +61,6 @@ const createData = catalogNumber => {
                   id: '125',
                 },
               ],
-              georeferenceSourcesText: 'georeferenceSourcesText text',
-              localityRemarks: 'localityRemarks text',
-              localityVerbatim: 'Some localityVerbatim text',
               position: {
                 latitude: 'latitude-string',
                 longitude: 'longitude-string',
@@ -89,7 +81,7 @@ const createData = catalogNumber => {
           },
         ],
         originStandardized: 'Standardized origin',
-        physicalUnits: [
+        physicalObjects: [
           {
             alternateIdentifiersText: 'alternateIdentifiersText',
             catalogedUnit: {
@@ -98,7 +90,7 @@ const createData = catalogNumber => {
               storedUnderTaxonName: 'Sorex minutus',
             },
             normalStorageLocationText: 'normalStorageLocationText',
-            physicalUnitText: 'physicalUnitText',
+            physicalObjectText: 'physicalObjectText',
           },
         ],
       },

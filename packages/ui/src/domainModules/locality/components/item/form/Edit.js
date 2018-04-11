@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updateCuratedLocality as updateCuratedLocalityAc } from 'dataModules/localityService/actionCreators'
-import { createGetCuratedLocalityById } from 'dataModules/localityService/higherOrderComponents'
+import { updatePlace as updatePlaceAc } from 'dataModules/localityService/actionCreators'
+import { createGetPlaceById } from 'dataModules/localityService/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -11,29 +11,29 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  updateCuratedLocality: updateCuratedLocalityAc,
+  updatePlace: updatePlaceAc,
 }
 
 const propTypes = {
-  curatedLocality: PropTypes.object,
   itemId: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
-  updateCuratedLocality: PropTypes.func.isRequired,
+  place: PropTypes.object,
+  updatePlace: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  curatedLocality: undefined,
+  place: undefined,
 }
 
 export class Edit extends PureComponent {
   render() {
-    const { curatedLocality, onInteraction, itemId } = this.props
-    const initialValues = curatedLocality && {
-      group: curatedLocality.group,
-      name: curatedLocality.name,
-      parent: curatedLocality.parent
+    const { place, onInteraction, itemId } = this.props
+    const initialValues = place && {
+      group: place.group,
+      name: place.name,
+      parent: place.parent
         ? {
-            id: curatedLocality.parent.id,
+            id: place.parent.id,
           }
         : {},
     }
@@ -54,8 +54,8 @@ export class Edit extends PureComponent {
         onInteraction={onInteraction}
         onSubmit={data => {
           this.props
-            .updateCuratedLocality({
-              curatedLocality: {
+            .updatePlace({
+              place: {
                 id: itemId,
                 ...data,
               },
@@ -74,7 +74,6 @@ export class Edit extends PureComponent {
 Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
-export default compose(
-  createGetCuratedLocalityById(),
-  connect(null, mapDispatchToProps)
-)(Edit)
+export default compose(createGetPlaceById(), connect(null, mapDispatchToProps))(
+  Edit
+)

@@ -1,11 +1,6 @@
-import createCuratedLocality from './createCuratedLocality'
-import getCuratedLocality from './getCuratedLocality'
-import getCuratedLocalities from './getCuratedLocalities'
-import updateCuratedLocality from './updateCuratedLocality'
+import createPlace from './createPlace'
+import getPlace from './getPlace'
+import getPlaces from './getPlaces'
+import updatePlace from './updatePlace'
 
-export {
-  createCuratedLocality,
-  getCuratedLocality,
-  getCuratedLocalities,
-  updateCuratedLocality,
-}
+export { createPlace, getPlace, getPlaces, updatePlace }

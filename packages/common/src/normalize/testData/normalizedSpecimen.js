@@ -18,7 +18,6 @@ module.exports = {
 
   taxonInformation: [
     {
-      determinations: ['f2d775a3-ae22-4715-a83e-f2bd736ec2c4'],
       lid: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32',
     },
   ],
@@ -26,28 +25,28 @@ module.exports = {
     {
       endDate: 'endDate',
       expeditionText: 'expeditionText',
-      localityInformation: {
+      locationInformation: {
         coordinatesVerbatim: 'coordinatesVerbatim',
-        curatedLocalities: [
+        places: [
           {
             id: '1',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '2',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '3',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '4',
-            type: 'curatedLocality',
+            type: 'place',
           },
           {
             id: '5',
-            type: 'curatedLocality',
+            type: 'place',
           },
         ],
         georeferenceSourcesText: 'georeferenceSourcesText',
@@ -69,7 +68,7 @@ module.exports = {
       lid: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
     },
   ],
-  individualCircumstances: [
+  collectingInformation: [
     {
       collectorsText: 'collectorsText',
       event: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
@@ -80,9 +79,9 @@ module.exports = {
     {
       featureObservationAgent: 'featureObservationAgent',
       featureObservationText: '21',
-      featureObservationType: {
+      featureType: {
         id: '1',
-        type: 'featureObservationType',
+        type: 'featureType',
       },
       methodText: 'methodText',
       lid: '21a79d27-3848-4f13-8179-6011a2e98298',
@@ -90,33 +89,32 @@ module.exports = {
   ],
   identifiers: [
     {
-      identifier: {
-        identifierType: 'catalogNumber',
-        nameSpace: '',
-        value: '123456',
-      },
+      identifierType: 'catalogNumber',
+      lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7',
+      nameSpace: '',
       publishRecord: true,
       remarks: '',
-      lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7',
+      value: '123456',
     },
   ],
-  distinguishedUnits: [
+  collectionItems: [
     {
       alternateIdentifiersText: 'alternateIdentifiersText',
-      physicalUnit: {
+      physicalObject: {
         id: '2234',
-        type: 'physicalUnit',
+        type: 'physicalObject',
       },
-      physicalUnitText: 'physicalUnitText',
+      physicalObjectText: 'physicalObjectText',
       lid: '69d0e98a-b038-4f4d-9770-cb8c8aaa68a5',
     },
   ],
-  individualGroup: {
+  individual: {
+    determinations: ['f2d775a3-ae22-4715-a83e-f2bd736ec2c4'],
     taxonInformation: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32',
     featureObservations: ['21a79d27-3848-4f13-8179-6011a2e98298'],
-    distinguishedUnits: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
+    collectionItems: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
     identifiers: ['9c9b1543-5b24-44ac-8032-cea5d430bcb7'],
-    individualCircumstances: ['e7253de8-6262-4fd6-8192-40dec5970f41'],
+    collectingInformation: ['e7253de8-6262-4fd6-8192-40dec5970f41'],
     lid: '15413ab7-4c2f-4072-b2ae-3192f2887808',
   },
 }

@@ -4,7 +4,7 @@ import { Block } from 'coreModules/layout/components'
 
 import Header from './Header'
 import ActionBar from './ActionBar'
-import EditCuratedLocalityForm from '../../../item/form/Edit'
+import EditPlaceForm from '../../../item/form/Edit'
 
 const propTypes = {
   itemBlockType: PropTypes.string.isRequired,
@@ -35,10 +35,7 @@ export class Edit extends Component {
             />
           }
         >
-          <EditCuratedLocalityForm
-            itemId={itemId}
-            onInteraction={onInteraction}
-          />
+          <EditPlaceForm itemId={itemId} onInteraction={onInteraction} />
         </Block.Content>
       </Block>
     )

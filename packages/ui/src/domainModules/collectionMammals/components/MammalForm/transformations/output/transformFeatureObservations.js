@@ -1,41 +1,38 @@
 import { FEATURE_OBSERVATION_TYPE } from 'dataModules/curatedListService/constants'
 
 export default function transformFeatureObservations(featureObservations = {}) {
-  let featureObservationTypes = []
+  let featureTypes = []
 
   const transformedFeatureObservations = Object.keys(featureObservations)
-    .map(featureObservationTypeId => {
-      const featureObservation = featureObservations[featureObservationTypeId]
+    .map(featureTypeId => {
+      const featureObservation = featureObservations[featureTypeId]
 
       if (!featureObservation) {
         return null
       }
 
-      const { featureObservationType, ...rest } = featureObservation
+      const { featureType, ...rest } = featureObservation
 
       if (!Object.keys(rest).length) {
         return null
       }
 
-      const transformedFeatureObservationType = {
-        id: featureObservationType.id,
+      const transformedFeatureType = {
+        id: featureType.id,
         type: FEATURE_OBSERVATION_TYPE,
       }
 
-      featureObservationTypes = [
-        ...featureObservationTypes,
-        transformedFeatureObservationType,
-      ]
+      featureTypes = [...featureTypes, transformedFeatureType]
 
       return {
         ...rest,
-        featureObservationType: transformedFeatureObservationType,
+        featureType: transformedFeatureType,
       }
     })
     .filter(item => !!item)
 
   return {
     featureObservations: transformedFeatureObservations,
-    featureObservationTypes,
+    featureTypes,
   }
 }

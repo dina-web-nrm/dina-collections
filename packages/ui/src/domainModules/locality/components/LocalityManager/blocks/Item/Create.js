@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Block } from 'coreModules/layout/components'
-import CreateCuratedLocalityForm from '../../../item/form/Create'
+import CreatePlaceForm from '../../../item/form/Create'
 import Header from './Header'
 import ActionBar from './ActionBar'
 
@@ -46,7 +46,7 @@ export class Create extends Component {
             )
           }
         >
-          <CreateCuratedLocalityForm
+          <CreatePlaceForm
             initialValues={initialValues}
             onInteraction={onInteraction}
           />

@@ -4,24 +4,24 @@
 ├── allModules.js
 ├── curatedListService
 │   ├── actionCreators
-│   │   ├── createFeatureObservationType
+│   │   ├── createFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getDistinguishedUnitType
+│   │   ├── getFeatureType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getDistinguishedUnitTypes
+│   │   ├── getFeatureTypes
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getFeatureObservationType
+│   │   ├── getPreparationType
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getFeatureObservationTypes
+│   │   ├── getPreparationTypes
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   └── updateFeatureObservationType
+│   │   └── updateFeatureType
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── actionTypes.js
@@ -33,9 +33,9 @@
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
-│   │   ├── createGetDistinguishedUnitTypeById.js
-│   │   ├── ensureAllDistinguishedUnitTypesFetched.js
-│   │   ├── ensureAllFeatureObservationTypesFetched.js
+│   │   ├── createGetPreparationTypeById.js
+│   │   ├── ensureAllFeatureTypesFetched.js
+│   │   ├── ensureAllPreparationTypesFetched.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
@@ -44,62 +44,27 @@
 │   │   ├── index.js
 │   │   ├── index.test.js
 │   │   └── resources
-│   │       ├── distinguishedUnitTypes
-│   │       ├── featureObservationTypes
+│   │       ├── featureTypes
 │   │       ├── index.js
-│   │       └── index.test.js
-│   ├── selectors.js
-│   └── selectors.test.js
-├── identifierService
-│   ├── actionCreators
-│   │   ├── createCatalogNumber
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getCatalogNumber
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getCatalogNumbers
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── index.js
-│   │   ├── index.test.js
-│   │   └── updateCatalogNumber
-│   │       ├── index.js
-│   │       └── index.test.js
-│   ├── actionTypes.js
-│   ├── actionTypes.test.js
-│   ├── constants.js
-│   ├── constants.test.js
-│   ├── endpoints.js
-│   ├── endpoints.test.js
-│   ├── globalSelectors.js
-│   ├── globalSelectors.test.js
-│   ├── index.js
-│   ├── index.test.js
-│   ├── reducer
-│   │   ├── index.js
-│   │   ├── index.test.js
-│   │   └── resources
-│   │       ├── catalogNumbers
-│   │       ├── index.js
-│   │       └── index.test.js
+│   │       ├── index.test.js
+│   │       └── preparationTypes
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── index.js
 ├── localityService
 │   ├── actionCreators
-│   │   ├── createCuratedLocality
+│   │   ├── createPlace
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getCuratedLocalities
+│   │   ├── getPlace
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getCuratedLocality
+│   │   ├── getPlaces
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   └── updateCuratedLocality
+│   │   └── updatePlace
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── actionTypes.js
@@ -111,8 +76,8 @@
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
-│   │   ├── createGetCuratedLocalityById.js
-│   │   ├── ensureAllLocalitiesFetched.js
+│   │   ├── createGetPlaceById.js
+│   │   ├── ensureAllPlacesFetched.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
@@ -123,9 +88,9 @@
 │   │   ├── index.js
 │   │   ├── index.test.js
 │   │   └── resources
-│   │       ├── curatedLocalities
 │   │       ├── index.js
-│   │       └── index.test.js
+│   │       ├── index.test.js
+│   │       └── places
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── specimenService
@@ -167,16 +132,16 @@
 │   └── utilities.test.js
 ├── storageService
 │   ├── actionCreators
-│   │   ├── createPhysicalUnit
+│   │   ├── createPhysicalObject
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── createStorageLocation
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPhysicalUnit
+│   │   ├── getPhysicalObject
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getPhysicalUnits
+│   │   ├── getPhysicalObjects
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── getStorageLocation
@@ -187,7 +152,7 @@
 │   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   ├── updatePhysicalUnit
+│   │   ├── updatePhysicalObject
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   └── updateStorageLocation
@@ -214,7 +179,7 @@
 │   │   └── resources
 │   │       ├── index.js
 │   │       ├── index.test.js
-│   │       ├── physicalUnits
+│   │       ├── physicalObjects
 │   │       └── storageLocations
 │   ├── selectors.js
 │   └── selectors.test.js
