@@ -11,5 +11,5 @@ export default function updateResourceInState(state, action = {}) {
 
   const { id } = action.payload
 
-  return immutable.set(state, id, action.payload)
+  return immutable.assign(state, id, action.payload)
 }
