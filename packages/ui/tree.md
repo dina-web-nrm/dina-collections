@@ -4,18 +4,6 @@
 ├── Dockerfile
 ├── LICENCE
 ├── README.md
-├── build
-│   ├── asset-manifest.json
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── manifest.json
-│   ├── service-worker.js
-│   └── static
-├── build-storybook
-│   ├── favicon.ico
-│   ├── iframe.html
-│   ├── index.html
-│   └── static
 ├── config.scripts.js
 ├── coverage
 │   ├── clover.xml
@@ -28,7 +16,6 @@
 │   ├── favicon.ico
 │   ├── index.html
 │   └── manifest.json
-├── sample.config.scripts.js
 ├── src
 │   ├── apps
 │   ├── config
