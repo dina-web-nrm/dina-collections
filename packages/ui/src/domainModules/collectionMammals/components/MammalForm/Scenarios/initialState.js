@@ -49,7 +49,7 @@ export default {
       },
     },
   },
-  localityService: {
+  placeService: {
     resources: {
       places: {
         '1': {

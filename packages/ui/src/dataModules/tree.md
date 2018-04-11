@@ -51,7 +51,7 @@
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── index.js
-├── localityService
+├── placeService
 │   ├── actionCreators
 │   │   ├── createPlace
 │   │   │   ├── index.js

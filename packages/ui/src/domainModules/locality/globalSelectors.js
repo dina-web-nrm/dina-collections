@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect'
 
-import localityServiceSelectors from 'dataModules/localityService/globalSelectors'
+import placeServiceSelectors from 'dataModules/placeService/globalSelectors'
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from './constants'
 
-const { getPlaces, getPlacesArray } = localityServiceSelectors
+const { getPlaces, getPlacesArray } = placeServiceSelectors
 
 const getPlacesSortedArray = createSelector(getPlacesArray, placesArray => {
   return placesArray.sort((a, b) => {
