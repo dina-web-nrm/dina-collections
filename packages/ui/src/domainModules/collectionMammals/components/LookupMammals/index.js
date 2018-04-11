@@ -55,7 +55,6 @@ const propTypes = {
           value: PropTypes.string.isRequired,
         }).isRequired
       ),
-      taxonInformation: PropTypes.object.isRequired,
     })
   ).isRequired,
   searchParameters: PropTypes.shape({
