@@ -931,12 +931,6 @@
           "$ref": "collectingInformation"
         }
       },
-      "collectingInformations": {
-        "type": "array",
-        "items": {
-          "$ref": "collectingInformation"
-        }
-      },
       "determinations": {
         "type": "array",
         "items": {
@@ -6019,6 +6013,9 @@
             ],
             "individual": [
               {
+                "determinations": [
+                  "a70d054c-ec04-45bc-860b-d522f8f48328"
+                ],
                 "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
                 "featureObservations": [
                   "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
@@ -6037,9 +6034,6 @@
             ],
             "taxonInformation": [
               {
-                "determinations": [
-                  "a70d054c-ec04-45bc-860b-d522f8f48328"
-                ],
                 "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
               }
             ]
@@ -6195,6 +6189,9 @@
           ],
           "individual": [
             {
+              "determinations": [
+                "a70d054c-ec04-45bc-860b-d522f8f48328"
+              ],
               "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
               "featureObservations": [
                 "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
@@ -6213,9 +6210,6 @@
           ],
           "taxonInformation": [
             {
-              "determinations": [
-                "a70d054c-ec04-45bc-860b-d522f8f48328"
-              ],
               "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
             }
           ]

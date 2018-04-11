@@ -73,12 +73,6 @@
         "$ref": "__ROOT__collectingInformation"
       }
     },
-    "collectingInformations": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__collectingInformation"
-      }
-    },
     "determinations": {
       "type": "array",
       "items": {
