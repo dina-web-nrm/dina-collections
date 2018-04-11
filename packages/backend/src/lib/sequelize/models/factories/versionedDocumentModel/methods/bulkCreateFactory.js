@@ -23,6 +23,7 @@ module.exports = function bulkCreateFactory(
             throw errors
           }
         }
+
         return {
           document: doc,
           id,
@@ -37,7 +38,7 @@ module.exports = function bulkCreateFactory(
       if (!items.length) {
         return null
       }
-      log.debug(`Successsfulle created ${items.length} items`)
+      log.debug(`Successfully created ${items.length} items`)
       const lastId = Number(items[items.length - 1].id)
       const newId = lastId + 1
       return updatePrimaryKey(newId)
