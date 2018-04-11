@@ -7,6 +7,7 @@ export const moduleOrder = [
   'lookupMammals',
   'registerMammal',
   'manageLocalities',
+  'manageStorageLocations',
   'login',
   'settings',
   'docs',
