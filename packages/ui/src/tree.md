@@ -11,6 +11,7 @@
 │   ├── api
 │   ├── bootstrap
 │   ├── commonUi
+│   ├── crudBlocks
 │   ├── devToolsExtension
 │   ├── documentation
 │   ├── error

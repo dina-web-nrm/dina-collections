@@ -1,6 +1,7 @@
 import * as api from './api'
 import * as bootstrap from './bootstrap'
 import * as commonUi from './commonUi'
+import * as crudBlocks from './crudBlocks'
 import * as devToolsExtension from './devToolsExtension'
 import * as documentation from './documentation'
 import * as error from './error'
@@ -31,6 +32,7 @@ const modules = [
   size,
   user,
   keyboardShortcuts,
+  crudBlocks,
   documentation,
 ]
 

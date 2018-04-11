@@ -94,6 +94,17 @@
 │   ├── sample.md
 │   ├── selectors.js
 │   └── translations.json
+├── crudBlocks
+│   ├── components
+│   │   ├── CrudBlocksWrapper
+│   │   │   └── index.js
+│   │   ├── blocks
+│   │   │   ├── Collection
+│   │   │   └── Item
+│   │   └── index.js
+│   ├── constants.js
+│   ├── index.js
+│   └── keyObjectModule.js
 ├── devToolsExtension
 │   └── index.js
 ├── documentation
