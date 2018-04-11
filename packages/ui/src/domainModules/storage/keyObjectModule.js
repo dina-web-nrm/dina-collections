@@ -14,7 +14,18 @@ const {
       searchQuery: '',
     },
   },
-  keys: ['search', 'search.searchQuery', 'search.loading'],
+  keys: [
+    ':name.collectionBlockType',
+    ':name.filter',
+    ':name.filter.group',
+    ':name.filter.limit',
+    ':name.filter.searchQuery',
+    ':name.filter.parentId',
+    ':name.filter.offset',
+    'search',
+    'search.searchQuery',
+    'search.loading',
+  ],
   name: 'storage',
 })
 

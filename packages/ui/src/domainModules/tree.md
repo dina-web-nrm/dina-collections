@@ -66,10 +66,8 @@
 │   │   ├── LocalityDropdownSearch
 │   │   │   └── index.js
 │   │   ├── LocalityManager
-│   │   │   ├── blocks
 │   │   │   └── index.js
 │   │   ├── collection
-│   │   │   ├── LocalityInfinityList
 │   │   │   ├── LocalityList
 │   │   │   └── LocalityTree
 │   │   ├── index.js
@@ -85,13 +83,23 @@
 │   └── translations.json
 ├── storage
 │   ├── components
-│   │   ├── StorageLocationSearch
+│   │   ├── StorageLocationDropdownSearch
 │   │   │   └── index.js
-│   │   └── index.js
+│   │   ├── StorageLocationManager
+│   │   │   └── index.js
+│   │   ├── collection
+│   │   │   ├── StorageLocationsList
+│   │   │   └── StorageLocationsTree
+│   │   ├── index.js
+│   │   └── item
+│   │       ├── Inspect
+│   │       └── form
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── index.js
-│   └── keyObjectModule.js
+│   ├── interactions.js
+│   ├── keyObjectModule.js
+│   └── translations.json
 ├── taxon
 │   ├── actionCreators
 │   │   ├── index.js
