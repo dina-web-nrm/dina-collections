@@ -19,7 +19,14 @@ describe('utilities/keyObjectModuleFactory/createActionCreators', () => {
         payload: { parameters: {} },
         type: 'SOME_ACTION',
       })
-      expect(() => actionCreator('a')).toThrow()
+    })
+    it('throws if getting argument when no params required', () => {
+      const actionCreator = createDelActionCreator({
+        actionType: 'SOME_ACTION',
+        key: 'search',
+        parameters: [],
+      })
+      expect(() => actionCreator({})).toThrow()
     })
     it('handles complex example', () => {
       const actionCreator = createDelActionCreator({
@@ -28,12 +35,28 @@ describe('utilities/keyObjectModuleFactory/createActionCreators', () => {
         parameters: ['root', 'index'],
       })
       expect(typeof actionCreator).toBe('function')
-      expect(actionCreator('a', 'b')).toEqual({
+      expect(actionCreator({ index: 'b', root: 'a' })).toEqual({
         payload: { parameters: { index: 'b', root: 'a' } },
         type: 'SOME_ACTION',
       })
-
-      expect(() => actionCreator('a')).toThrow()
+    })
+    it('throws if getting argument of wrong type', () => {
+      const actionCreator = createDelActionCreator({
+        actionType: 'SOME_ACTION',
+        key: ':root.object.:index.value',
+        parameters: ['root', 'index'],
+      })
+      expect(() => actionCreator('mistake')).toThrow()
+    })
+    it('throws if getting extra arguments', () => {
+      const actionCreator = createDelActionCreator({
+        actionType: 'SOME_ACTION',
+        key: ':root.object.:index.value',
+        parameters: ['root', 'index'],
+      })
+      expect(() =>
+        actionCreator('mistake', { index: 'b', root: 'a' })
+      ).toThrow()
     })
   })
   describe('createSetActionCreator', () => {
@@ -51,7 +74,15 @@ describe('utilities/keyObjectModuleFactory/createActionCreators', () => {
         payload: { parameters: {}, value: 'test' },
         type: 'SOME_ACTION',
       })
-      expect(() => actionCreator('a', 'test')).toThrow()
+    })
+    it('throws on incorrect number of args', () => {
+      const actionCreator = createSetActionCreator({
+        actionType: 'SOME_ACTION',
+        key: 'search',
+        parameters: [],
+      })
+
+      expect(() => actionCreator('a', {})).toThrow()
     })
     it('handles complex example', () => {
       const actionCreator = createSetActionCreator({
@@ -60,12 +91,28 @@ describe('utilities/keyObjectModuleFactory/createActionCreators', () => {
         parameters: ['root', 'index'],
       })
       expect(typeof actionCreator).toBe('function')
-      expect(actionCreator('a', 'b', 'test')).toEqual({
+      expect(actionCreator('test', { index: 'b', root: 'a' })).toEqual({
         payload: { parameters: { index: 'b', root: 'a' }, value: 'test' },
         type: 'SOME_ACTION',
       })
+    })
+    it('throws on incorrect number of args', () => {
+      const actionCreator = createSetActionCreator({
+        actionType: 'SOME_ACTION',
+        key: ':root.object.:index.value',
+        parameters: ['root', 'index'],
+      })
 
-      expect(() => actionCreator('a', 'test')).toThrow()
+      expect(() => actionCreator('a')).toThrow()
+    })
+    it('throws on incorrect type of second arg', () => {
+      const actionCreator = createSetActionCreator({
+        actionType: 'SOME_ACTION',
+        key: ':root.object.:index.value',
+        parameters: ['root', 'index'],
+      })
+
+      expect(() => actionCreator('a', 'shouldBeObject')).toThrow()
     })
   })
 })
