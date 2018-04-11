@@ -6,12 +6,17 @@ const {
   actionTypes,
   constants,
   globalSelectors,
+  selectors,
   reducer,
 } = keyObjectModuleFactory({
-  initialValues: {
-    layoutMode: 'single',
-  },
-  keys: ['layoutMode'],
+  keys: [':name.layoutMode'],
   name,
 })
-export { actionCreators, actionTypes, constants, globalSelectors, reducer }
+export {
+  actionCreators,
+  actionTypes,
+  constants,
+  globalSelectors,
+  selectors,
+  reducer,
+}
