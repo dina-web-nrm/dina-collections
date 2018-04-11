@@ -503,10 +503,6 @@
     "en": "Collecting date",
     "sv": "Insamlingsdatum"
   },
-  "collectingInformation": {
-    "en": "Collecting information",
-    "sv": "Insamlingsinformation"
-  },
   "collectors": {
     "en": "Collector(s)",
     "sv": "Insamlare"

@@ -50,7 +50,7 @@ class SegmentCollectingInformation extends PureComponent {
     return (
       <Segment color="green" loading={!hasPlaces}>
         <Header size="medium">
-          <ModuleTranslate textKey="collectingInformation" />
+          <ModuleTranslate textKey="collectingInformation.collectingInformation" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
           {hasPlaces && <LocationInformationFields />}
