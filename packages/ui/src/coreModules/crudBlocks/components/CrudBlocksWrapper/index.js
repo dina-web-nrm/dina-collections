@@ -71,7 +71,6 @@ const mapDispatchToProps = {
 
 const propTypes = {
   collectionBlockType: PropTypes.string,
-  customHandleInteraction: PropTypes.func,
   disableEdit: PropTypes.bool,
   dropdownFilterOptions: PropTypes.array.isRequired,
   getAncestorsByParentId: PropTypes.func.isRequired,
@@ -79,6 +78,7 @@ const propTypes = {
   layoutMode: PropTypes.string,
   match: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
+  onInteraction: PropTypes.func,
   renderCreateForm: PropTypes.func,
   renderEditForm: PropTypes.func,
   renderInspectView: PropTypes.func,
@@ -94,9 +94,9 @@ const propTypes = {
 }
 const defaultProps = {
   collectionBlockType: LIST,
-  customHandleInteraction: undefined,
   disableEdit: false,
   layoutMode: SINGLE,
+  onInteraction: undefined,
   renderCreateForm: undefined,
   renderEditForm: undefined,
   renderInspectView: undefined,
@@ -118,7 +118,7 @@ class CrudBlocksWrapper extends Component {
 
   handleInteraction(type, data = {}) {
     const {
-      customHandleInteraction,
+      onInteraction: handleInteraction,
       name,
       routerPush,
       setCollectionBlockType,
@@ -209,8 +209,8 @@ class CrudBlocksWrapper extends Component {
       }
     }
 
-    if (customHandleInteraction) {
-      customHandleInteraction(type, data)
+    if (handleInteraction) {
+      handleInteraction(type, data)
     }
   }
 
