@@ -57,7 +57,7 @@ module.exports = function readParameterFromJsonFile(_ref) {
 
       if (includeProperties) {
         var fileNames = fs.readdirSync(parameterJsonFolderPath).filter(function (fileName) {
-          return !['index.json', 'description.md', 'example.json'].includes(fileName);
+          return !['index.json', 'example.json'].includes(fileName) && fileName.indexOf('.md') === -1;
         });
 
         var extraProperties = fileNames.reduce(function (properties, fileName) {

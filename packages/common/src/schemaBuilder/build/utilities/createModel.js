@@ -1,6 +1,7 @@
 /* eslint-disable sort-keys */
 const interpolate = require('../utilities/interpolate')
 const normalizeModel = require('../utilities/normalizeModel')
+const splitDescription = require('./splitDescription')
 
 module.exports = function createModel({
   examples,
@@ -12,7 +13,7 @@ module.exports = function createModel({
 }) {
   const normalizedModel = normalizeModel({ model, normalize })
 
-  const cleanedModel = normalizedModel
+  const cleanedModel = JSON.parse(JSON.stringify(normalizedModel))
 
   if (
     removeRelationships &&
@@ -34,6 +35,21 @@ module.exports = function createModel({
       cleanedModel.example = examples.primary
     }
   }
+
+  Object.keys(cleanedModel.properties).forEach(property => {
+    const { summary, description } = splitDescription(
+      cleanedModel.properties[property].description,
+      property === 'identifierType'
+    )
+
+    cleanedModel.properties[property].description = description
+    cleanedModel.properties[property]['x-summary'] = summary
+  })
+
+  const { summary, description } = splitDescription(cleanedModel.description)
+
+  cleanedModel.description = description
+  cleanedModel['x-summary'] = summary
 
   return interpolate(
     {

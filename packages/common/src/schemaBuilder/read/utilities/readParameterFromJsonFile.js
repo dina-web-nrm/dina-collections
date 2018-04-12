@@ -61,8 +61,9 @@ module.exports = function readParameterFromJsonFile({
         const fileNames = fs
           .readdirSync(parameterJsonFolderPath)
           .filter(fileName => {
-            return !['index.json', 'description.md', 'example.json'].includes(
-              fileName
+            return (
+              !['index.json', 'example.json'].includes(fileName) &&
+              fileName.indexOf('.md') === -1
             )
           })
 
