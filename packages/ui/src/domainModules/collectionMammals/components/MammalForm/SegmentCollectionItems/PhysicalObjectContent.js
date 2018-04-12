@@ -7,7 +7,7 @@ import { Grid } from 'semantic-ui-react'
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import { StorageLocationSearch } from 'domainModules/storage/components'
+import { StorageLocationDropdownSearch } from 'domainModules/storage/components'
 import { createGetPreparationTypeById } from 'dataModules/curatedListService/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
 import {
@@ -15,6 +15,7 @@ import {
   SKIN,
   WET_PREPARATION,
 } from 'domainModules/curatedList/constants'
+import { ALL } from 'domainModules/storage/constants'
 import createLog from 'utilities/log'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 
@@ -91,11 +92,12 @@ function PhysicalObjectContent({
         <Grid.Column computer={16} mobile={16} tablet={16}>
           <Field
             autoComplete="off"
-            component={StorageLocationSearch}
+            component={StorageLocationDropdownSearch}
+            group={ALL}
             label={moduleTranslate({ textKey: 'normalStorageLocation' })}
             module="collectionMammals"
             name={getPath('physicalObject.storageLocation.id')}
-            type="search-connect"
+            showParentName
           />
         </Grid.Column>
       </Grid.Row>

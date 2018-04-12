@@ -33,7 +33,7 @@ module.exports = function bulkCreateFactory({ Model, elasticsearch } = {}) {
         refresh: !config.env.isProduction,
       })
       .then(() => {
-        log.debug(`Successsfulle created ${items.length} items`)
+        log.debug(`Successfully created ${items.length} items`)
         return true
       })
   }

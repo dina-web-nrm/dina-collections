@@ -14,6 +14,7 @@ export const moduleOrder = [
   'size',
   'user',
   'keyboardShortcuts',
+  'crudBlocks',
   'documentation',
 ]
 

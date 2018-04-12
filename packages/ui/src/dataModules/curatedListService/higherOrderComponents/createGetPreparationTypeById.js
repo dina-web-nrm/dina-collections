@@ -27,44 +27,34 @@ const createGetPreparationTypeById = (
   }
 
   const propTypes = {
-    allLocalitiesFetched: PropTypes.bool,
     getPreparationType: PropTypes.func.isRequired,
     itemId: PropTypes.string,
     preparationType: PropTypes.object,
   }
 
   const defaultProps = {
-    allLocalitiesFetched: undefined,
     itemId: '',
     preparationType: null,
   }
 
   class GetPreparationTypeById extends Component {
     componentDidMount() {
-      const { allLocalitiesFetched } = this.props
-      if (!config.isTest && allLocalitiesFetched === undefined) {
-        const { itemId } = this.props
-        if (itemId) {
-          this.props.getPreparationType({ id: itemId })
-        }
+      const { itemId } = this.props
+      if (itemId && !config.isTest) {
+        this.props.getPreparationType({ id: itemId })
       }
     }
-    componentWillReceiveProps(nextProps) {
-      const { allLocalitiesFetched } = this.props
-      const { itemId } = this.props
-      if (
-        allLocalitiesFetched === false &&
-        nextProps.allLocalitiesFetched === true
-      ) {
-        if (itemId) {
-          this.props.getPreparationType({ id: itemId })
-        }
-      }
 
-      if (nextProps.itemId && nextProps.itemId !== itemId) {
+    componentWillReceiveProps(nextProps) {
+      if (
+        nextProps.itemId &&
+        nextProps.itemId !== this.props.itemId &&
+        !config.isTest
+      ) {
         this.props.getPreparationType({ id: nextProps.itemId })
       }
     }
+
     render() {
       const { preparationType } = this.props
       return (

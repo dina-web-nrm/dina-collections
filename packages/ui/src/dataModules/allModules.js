@@ -1,12 +1,12 @@
 import * as curatedListService from './curatedListService'
-import * as localityService from './localityService'
+import * as placeService from './placeService'
 import * as specimenService from './specimenService'
 import * as storageService from './storageService'
 import * as taxonService from './taxonService'
 
 const modules = [
   curatedListService,
-  localityService,
+  placeService,
   specimenService,
   storageService,
   taxonService,

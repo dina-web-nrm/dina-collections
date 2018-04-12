@@ -45,10 +45,14 @@ const ensureAllStorageLocationsFetched = () => ComposedComponent => {
         !fetchingAllStorageLocations
       ) {
         this.props.setFetchingAllStorageLocations(true)
-        this.props.getStorageLocations().then(() => {
-          this.props.setAllStorageLocationsFetched(true)
-          this.props.setFetchingAllStorageLocations(false)
-        })
+        this.props
+          .getStorageLocations({
+            queryParams: { relationships: ['parent'] },
+          })
+          .then(() => {
+            this.props.setAllStorageLocationsFetched(true)
+            this.props.setFetchingAllStorageLocations(false)
+          })
       }
     }
     render() {

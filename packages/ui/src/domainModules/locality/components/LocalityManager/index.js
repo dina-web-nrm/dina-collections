@@ -1,196 +1,68 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import {
-  actionCreators as keyObjectActionCreators,
-  globalSelectors,
-} from 'domainModules/locality/keyObjectModule'
-import { Layout } from 'coreModules/layout/components'
-import { push } from 'react-router-redux'
-import { withLayout } from 'coreModules/layout/higherOrderComponents'
-import {
-  FORM_CANCEL,
-  FORM_CREATE_SUCCESS,
-  FORM_EDIT_SUCCESS,
-  ITEM_CLICK,
-  SET_COLLECTION,
-  SET_COLLECTION_LIST,
-  SET_COLLECTION_TREE,
-  SET_ITEM_CREATE,
-  SET_ITEM_EDIT,
-  SET_ITEM_INSPECT,
-  SET_LAYOUT_SINGLE_COLLECTION,
-  SET_LAYOUT_SINGLE_ITEM,
-  SET_LAYOUT_SPLIT,
-} from 'domainModules/locality/interactions'
 
-import ItemBlock from './blocks/Item'
-import CollectionBlock from './blocks/Collection'
+import { CrudBlocksWrapper } from 'coreModules/crudBlocks/components'
 
-const getItemBlockType = ({ localityId, url }) => {
-  let itemBlockType = null
-  if (localityId && url.indexOf('edit') > -1) {
-    itemBlockType = 'edit'
-  }
-  if (localityId && url.indexOf('inspect') > -1) {
-    itemBlockType = 'inspect'
-  }
+import globalSelectors from '../../globalSelectors'
+import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
+import CreateForm from '../item/form/Create'
+import EditForm from '../item/form/Edit'
+import InspectView from '../item/Inspect'
+import LocalityList from '../collection/LocalityList'
+import LocalityTree from '../collection/LocalityTree'
 
-  if (url.indexOf('create') > -1) {
-    itemBlockType = 'create'
-  }
+const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
 
-  return itemBlockType
-}
+const DROPDOWN_FILTER_OPTIONS = [
+  {
+    key: ALL,
+    text: ALL,
+    value: '',
+  },
+  ...groups.map(group => {
+    return {
+      key: group,
+      text: group,
+      value: group,
+    }
+  }),
+]
 
-const propTypes = {
-  collectionBlockType: PropTypes.string.isRequired,
-  layoutMode: PropTypes.string.isRequired,
-  match: PropTypes.object.isRequired,
-  push: PropTypes.func.isRequired,
-  setCollectionBlockType: PropTypes.func.isRequired,
-  setFilterGroup: PropTypes.func.isRequired,
-  setLayoutMode: PropTypes.func.isRequired,
-  setParentFilterId: PropTypes.func.isRequired,
-  setSearchQuery: PropTypes.func.isRequired,
-}
-
-const mapStateToProps = state => {
-  return {
-    collectionBlockType: globalSelectors.get.collectionBlockType(state),
-  }
-}
-
-const mapDispatchToProps = {
-  push,
-  setCollectionBlockType: keyObjectActionCreators.set.collectionBlockType,
-  setFilterGroup: keyObjectActionCreators.set['filter.group'],
-  setParentFilterId: keyObjectActionCreators.set['filter.parentId'],
-  setSearchQuery: keyObjectActionCreators.set['filter.searchQuery'],
-}
+const propTypes = {}
 
 class LocalityManager extends Component {
-  constructor(props) {
-    super(props)
-    this.handleInteraction = this.handleInteraction.bind(this)
+  static renderCreateBlockChild(props) {
+    return <CreateForm {...props} />
   }
 
-  handleInteraction(type, data = {}) {
-    switch (type) {
-      case SET_LAYOUT_SINGLE_COLLECTION: {
-        this.props.setLayoutMode('single')
-        this.props.push(`/app/localities`)
-        break
-      }
-      case SET_LAYOUT_SPLIT: {
-        this.props.setLayoutMode('split')
-        break
-      }
+  static renderEditBlockChild(props) {
+    return <EditForm {...props} />
+  }
 
-      case SET_LAYOUT_SINGLE_ITEM: {
-        this.props.setLayoutMode('single')
-        break
-      }
+  static renderInspectBlockChild(props) {
+    return <InspectView {...props} />
+  }
 
-      case SET_COLLECTION_LIST: {
-        this.props.setCollectionBlockType('list')
-        this.props.push(`/app/localities`)
-        break
-      }
+  static renderList(props) {
+    return <LocalityList {...props} />
+  }
 
-      case SET_COLLECTION_TREE: {
-        this.props.setCollectionBlockType('tree')
-        this.props.push(`/app/localities`)
-        break
-      }
-
-      case FORM_CANCEL:
-      case SET_COLLECTION: {
-        this.props.push(`/app/localities`)
-        break
-      }
-
-      case SET_ITEM_EDIT: {
-        const { itemId } = data
-        this.props.push(`/app/localities/${itemId}/edit`)
-        break
-      }
-      case ITEM_CLICK: {
-        const { itemId } = data
-        this.props.setSearchQuery('')
-        this.props.setFilterGroup('')
-        this.props.setParentFilterId(itemId)
-        break
-      }
-      case SET_ITEM_INSPECT: {
-        const { itemId } = data
-        this.props.push(`/app/localities/${itemId}/inspect`)
-        break
-      }
-
-      case SET_ITEM_CREATE: {
-        const { itemId } = data
-
-        if (itemId) {
-          this.props.push(`/app/localities/${itemId}/createChild`)
-          break
-        }
-
-        this.props.push(`/app/localities/create`)
-        break
-      }
-
-      case FORM_EDIT_SUCCESS:
-      case FORM_CREATE_SUCCESS: {
-        const { itemId } = data
-        if (itemId) {
-          this.props.push(`/app/localities/${itemId}/inspect`)
-        } else {
-          this.props.push(`/app/localities`)
-        }
-
-        break
-      }
-      default: {
-        throw new Error(`Unknown interaction of type ${type}`)
-      }
-    }
+  static renderTree(props) {
+    return <LocalityTree {...props} />
   }
 
   render() {
-    const {
-      collectionBlockType,
-      layoutMode,
-      match: { params = {}, url = '' } = {},
-    } = this.props
-    const { localityId } = params
-    const itemBlockType = getItemBlockType({ localityId, url })
-
-    const itemBlock = itemBlockType && (
-      <ItemBlock
-        itemBlockType={itemBlockType}
-        itemId={localityId}
-        layoutMode={layoutMode}
-        onInteraction={this.handleInteraction}
-      />
-    )
-    const collectionBlock =
-      layoutMode === 'single' && itemBlock ? null : (
-        <CollectionBlock
-          collectionBlockType={collectionBlockType}
-          itemId={localityId}
-          layoutMode={layoutMode}
-          onInteraction={this.handleInteraction}
-        />
-      )
-
     return (
-      <Layout
-        layoutMode={layoutMode}
-        primaryBlock={collectionBlock || itemBlock}
-        secondaryBlock={collectionBlock && itemBlock}
+      <CrudBlocksWrapper
+        dropdownFilterOptions={DROPDOWN_FILTER_OPTIONS}
+        getAncestorsByParentId={globalSelectors.getPlaceAncestorsById}
+        itemIdParamName="localityId"
+        name="locality"
+        renderCreateBlockChild={LocalityManager.renderCreateBlockChild}
+        renderEditBlockChild={LocalityManager.renderEditBlockChild}
+        renderInspectBlockChild={LocalityManager.renderInspectBlockChild}
+        renderList={LocalityManager.renderList}
+        renderTree={LocalityManager.renderTree}
+        urlBasePath="/app/localities"
       />
     )
   }
@@ -198,8 +70,4 @@ class LocalityManager extends Component {
 
 LocalityManager.propTypes = propTypes
 
-export default compose(
-  withRouter,
-  withLayout,
-  connect(mapStateToProps, mapDispatchToProps)
-)(LocalityManager)
+export default LocalityManager

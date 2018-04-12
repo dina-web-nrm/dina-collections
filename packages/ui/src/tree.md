@@ -11,6 +11,7 @@
 │   ├── api
 │   ├── bootstrap
 │   ├── commonUi
+│   ├── crudBlocks
 │   ├── devToolsExtension
 │   ├── documentation
 │   ├── error
@@ -30,7 +31,7 @@
 │   ├── allModules.js
 │   ├── curatedListService
 │   ├── index.js
-│   ├── localityService
+│   ├── placeService
 │   ├── specimenService
 │   ├── storageService
 │   ├── taxonService
@@ -65,7 +66,6 @@
 │   ├── import-named-export.js
 │   ├── import-namespace.js
 │   ├── print-to-console.js
-│   ├── private
 │   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js

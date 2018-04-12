@@ -7,16 +7,16 @@ import {
 } from '../../actionTypes'
 import { GET_PHYSICAL_UNITS } from '../../endpoints'
 
-export default function getPhysicalObjects({ throwError = false } = {}) {
+export default function getPhysicalObjects(
+  { queryParams, throwError = false } = {}
+) {
   return (dispatch, getState, { apiClient }) => {
     dispatch({
       type: STORAGE_SERVICE_GET_PHYSICAL_UNITS_REQUEST,
     })
     return apiClient
       .call(GET_PHYSICAL_UNITS, {
-        queryParams: {
-          relationships: ['all'],
-        },
+        queryParams,
       })
       .then(
         response => {

@@ -47,4 +47,57 @@ describe('utilities/stateHelper/updateResourceInState', () => {
 
     expect(testValue).toEqual(expectedResult)
   })
+  it('does shallow merge of new and old data', () => {
+    const state = {
+      '1': {
+        children: ['2', '3'],
+        group: 'oldGroup',
+        id: '1',
+      },
+    }
+    deepFreeze(state)
+
+    const action = {
+      payload: {
+        group: 'newGroup',
+        id: '1',
+        somethingNew: { awesome: 'yes' },
+      },
+    }
+
+    const testValue = updateResourceInState(state, action)
+    const expectedResult = {
+      '1': {
+        children: ['2', '3'],
+        group: 'newGroup',
+        id: '1',
+        somethingNew: { awesome: 'yes' },
+      },
+    }
+
+    expect(testValue).toEqual(expectedResult)
+  })
+  it('sets new data if old resource is undefined', () => {
+    const state = {}
+    deepFreeze(state)
+
+    const action = {
+      payload: {
+        group: 'newGroup',
+        id: '1',
+        somethingNew: { awesome: 'yes' },
+      },
+    }
+
+    const testValue = updateResourceInState(state, action)
+    const expectedResult = {
+      '1': {
+        group: 'newGroup',
+        id: '1',
+        somethingNew: { awesome: 'yes' },
+      },
+    }
+
+    expect(testValue).toEqual(expectedResult)
+  })
 })

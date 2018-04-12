@@ -1,3 +1,5 @@
+import immutable from 'object-path-immutable'
+
 export default function updateResourcesInState(state, action = {}) {
   if (!action.payload) {
     return state
@@ -12,10 +14,7 @@ export default function updateResourcesInState(state, action = {}) {
   const newState = action.payload.reduce((idToResourceMap, resource) => {
     const { id } = resource
 
-    // this is ok since we did a spread of the state above, so it's a new object
-    idToResourceMap[id] = resource // eslint-disable-line no-param-reassign
-
-    return idToResourceMap
+    return immutable.assign(idToResourceMap, id, resource)
   }, initialState)
 
   return newState

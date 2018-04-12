@@ -32,3 +32,10 @@ export const getStorageLocation = createSelector(
     return storageLocations[id]
   }
 )
+
+export const getStorageLocationsArray = createSelector(
+  getStorageLocations,
+  storageLocationsObject => {
+    return Object.values(storageLocationsObject)
+  }
+)

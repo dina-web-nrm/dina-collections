@@ -49,6 +49,10 @@
     "manageLocalities": {
       "en": "Localities",
       "sv": "Platser"
+    },
+    "manageStorageLocations": {
+      "en": "Storage locations",
+      "sv": "Förvarings-platser"
     }
   }
 }

@@ -1,26 +1,35 @@
 export const createDelActionCreator = delKeySpecification => {
   const { actionType, parameters = [] } = delKeySpecification
-  const expectedNumberOfArgs = parameters.length
-  return function setActionCreator(...rawArgs) {
+  const hasParameters = !!parameters.length
+  const expectedNumberOfArgs = hasParameters ? 1 : 0
+
+  return function delActionCreator(...rawArgs) {
     const args = Array.from(rawArgs)
     const numberOfArgs = args.length
     if (numberOfArgs !== expectedNumberOfArgs) {
       throw new Error(
         `Unexpected number of arguments: ${numberOfArgs} for del ${
           delKeySpecification.key
-        }. Expected (${parameters.join(', ')})`
+        }. Expected to be called with: ${hasParameters ? '(params)' : '()'}`
       )
     }
 
-    const populatedParameters = parameters.reduce(
-      (obj, parameterKey, index) => {
-        return {
-          ...obj,
-          [parameterKey]: args[index],
-        }
-      },
-      {}
-    )
+    const [inputParams] = args
+
+    if (hasParameters && typeof inputParams !== 'object') {
+      throw new Error(
+        `Unexpected type of params: ${typeof inputParams} for del ${
+          delKeySpecification.key
+        } Expected object with keys: ${parameters.join(', ')}`
+      )
+    }
+
+    const populatedParameters = parameters.reduce((obj, parameterKey) => {
+      return {
+        ...obj,
+        [parameterKey]: inputParams[parameterKey],
+      }
+    }, {})
 
     return {
       payload: {
@@ -43,7 +52,9 @@ const createDelActionCreators = delKeySpecifications => {
 
 export const createSetActionCreator = setKeySpecification => {
   const { actionType, parameters = [] } = setKeySpecification
-  const expectedNumberOfArgs = parameters.length + 1
+  const hasParameters = !!parameters.length
+  const expectedNumberOfArgs = hasParameters ? 2 : 1
+
   return function setActionCreator(...rawArgs) {
     const args = Array.from(rawArgs)
     const numberOfArgs = args.length
@@ -51,21 +62,30 @@ export const createSetActionCreator = setKeySpecification => {
       throw new Error(
         `Unexpected number of arguments: ${numberOfArgs} for set ${
           setKeySpecification.key
-        } Expected (${parameters.join(', ')}, value)`
+        }. Expected to be called with: ${
+          hasParameters ? '(value, params)' : '(value)'
+        }`
       )
     }
 
-    const populatedParameters = parameters.reduce(
-      (obj, parameterKey, index) => {
-        return {
-          ...obj,
-          [parameterKey]: args[index],
-        }
-      },
-      {}
-    )
+    const [value, inputParams] = args
 
-    const value = args[args.length - 1]
+    if (hasParameters && typeof inputParams !== 'object') {
+      throw new Error(
+        `Unexpected type of params: ${typeof inputParams} for set ${
+          setKeySpecification.key
+        } Expected object with keys: ${parameters.join(', ')}`
+      )
+    }
+
+    const populatedParameters = hasParameters
+      ? parameters.reduce((obj, parameterKey) => {
+          return {
+            ...obj,
+            [parameterKey]: inputParams[parameterKey],
+          }
+        }, {})
+      : {}
 
     return {
       payload: {

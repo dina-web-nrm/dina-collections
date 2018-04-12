@@ -1,32 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { LAYOUT_SINGLE, LAYOUT_SPLIT, LAYOUT_MODAL } from '../../constants'
+import { MODAL, SINGLE, SPLIT } from '../../constants'
 import ModalView from './views/Modal'
 import SingleView from './views/Single'
 import SplitView from './views/Split'
 
 const propTypes = {
-  layoutMode: PropTypes.oneOf([LAYOUT_SINGLE, LAYOUT_SPLIT, LAYOUT_MODAL])
-    .isRequired,
+  layoutMode: PropTypes.oneOf([MODAL, SINGLE, SPLIT]).isRequired,
   primaryBlock: PropTypes.node.isRequired,
   secondaryBlock: PropTypes.node,
 }
 
 const defaultProps = {
+  layoutMode: SINGLE,
   secondaryBlock: null,
 }
 
 const Layout = ({ layoutMode, primaryBlock, secondaryBlock }) => {
-  if (layoutMode === LAYOUT_SINGLE) {
+  if (layoutMode === SINGLE) {
     return <SingleView primaryBlock={primaryBlock} />
   }
-  if (layoutMode === LAYOUT_SPLIT) {
+
+  if (layoutMode === SPLIT) {
     return (
       <SplitView primaryBlock={primaryBlock} secondaryBlock={secondaryBlock} />
     )
   }
 
-  if (layoutMode === LAYOUT_MODAL) {
+  if (layoutMode === MODAL) {
     return (
       <ModalView primaryBlock={primaryBlock} secondaryBlock={secondaryBlock} />
     )

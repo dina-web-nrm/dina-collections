@@ -13,7 +13,7 @@ import * as logger from 'coreModules/logger'
 import * as routing from 'coreModules/routing'
 
 import * as curatedListService from 'dataModules/curatedListService'
-import * as localityService from 'dataModules/localityService'
+import * as placeService from 'dataModules/placeService'
 import * as specimenService from 'dataModules/specimenService'
 import * as storageService from 'dataModules/storageService'
 import * as taxonService from 'dataModules/taxonService'
@@ -34,7 +34,7 @@ const modules = [
   routing,
 
   curatedListService,
-  localityService,
+  placeService,
   specimenService,
   storageService,
   taxonService,

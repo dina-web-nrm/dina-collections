@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import objectPath from 'object-path'
+
+import config from 'config'
 import globalSelectors from '../globalSelectors'
 import { getTaxon as getTaxonAC } from '../actionCreators'
 
@@ -21,26 +23,31 @@ const createGetTaxonById = (idPath = 'itemId') => ComposedComponent => {
   }
 
   const propTypes = {
-    allLocalitiesFetched: PropTypes.bool,
     getTaxon: PropTypes.func.isRequired,
     itemId: PropTypes.string,
     taxon: PropTypes.object,
   }
 
   const defaultProps = {
-    allLocalitiesFetched: undefined,
     itemId: '',
     taxon: null,
   }
 
   class GetTaxonById extends Component {
     componentDidMount() {
-      const { allLocalitiesFetched } = this.props
-      if (allLocalitiesFetched === undefined) {
-        const { itemId } = this.props
-        if (itemId) {
-          this.props.getTaxon({ id: itemId })
-        }
+      const { itemId } = this.props
+      if (itemId && !config.isTest) {
+        this.props.getTaxon({ id: itemId })
+      }
+    }
+
+    componentWillReceiveProps(nextProps) {
+      if (
+        nextProps.itemId &&
+        nextProps.itemId !== this.props.itemId &&
+        !config.isTest
+      ) {
+        this.props.getTaxon({ id: nextProps.itemId })
       }
     }
 

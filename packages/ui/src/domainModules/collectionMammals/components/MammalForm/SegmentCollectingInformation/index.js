@@ -11,8 +11,8 @@ import { Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import {
   actionCreators as localityActionCreators,
-  globalSelectors as localitySelectors,
-} from 'dataModules/localityService'
+  globalSelectors as placeSelectors,
+} from 'dataModules/placeService'
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
@@ -23,7 +23,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = state => {
   return {
-    hasPlaces: localitySelectors.getHasPlaces(state),
+    hasPlaces: placeSelectors.getHasPlaces(state),
   }
 }
 const mapDispatchToProps = {

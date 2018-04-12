@@ -16,6 +16,7 @@ import PageNotFound from '../pageNotFound/Async'
 import RegisterMammal from '../registerMammal/Async'
 import Settings from '../settings/Async'
 import ManageLocalities from '../manageLocalities/Async'
+import ManageStorageLocations from '../manageStorageLocations/Async'
 
 const NAVIGATION_SIDEBAR_ITEMS = [
   {
@@ -38,9 +39,15 @@ const NAVIGATION_SIDEBAR_ITEMS = [
   },
   {
     exact: false,
-    icon: 'map outline',
+    icon: 'location arrow',
     name: 'manageLocalities',
     path: '/app/localities',
+  },
+  {
+    exact: false,
+    icon: 'building',
+    name: 'manageStorageLocations',
+    path: '/app/storageLocations',
   },
   {
     exact: true,
@@ -100,6 +107,29 @@ class App extends Component {
             <Route
               component={ManageLocalities}
               path={`${match.url}/localities/:localityId/inspect`}
+            />
+            <Route
+              component={ManageStorageLocations}
+              exact
+              path={`${match.url}/storageLocations`}
+            />
+            <Route
+              component={ManageStorageLocations}
+              path={`${match.url}/storageLocations/create`}
+            />
+            <Route
+              component={ManageStorageLocations}
+              path={`${
+                match.url
+              }/storageLocations/:storageLocationId/createChild`}
+            />
+            <Route
+              component={ManageStorageLocations}
+              path={`${match.url}/storageLocations/:storageLocationId/edit`}
+            />
+            <Route
+              component={ManageStorageLocations}
+              path={`${match.url}/storageLocations/:storageLocationId/inspect`}
             />
             <Route component={Settings} exact path={`${match.url}/settings`} />
             <Route component={PageNotFound} />

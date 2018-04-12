@@ -5,21 +5,15 @@ import { compose } from 'redux'
 
 import config from 'config'
 import { DropdownSearch } from 'coreModules/form/components'
-import { ensureAllPlacesFetched } from 'dataModules/localityService/higherOrderComponents'
+import { ensureAllPlacesFetched } from 'dataModules/placeService/higherOrderComponents'
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
 import { actionCreators, globalSelectors } from '../../keyObjectModule'
 import localitySelectors from '../../globalSelectors'
 
 const propTypes = {
-  allLocalitiesFetched: PropTypes.bool.isRequired,
+  allPlacesFetched: PropTypes.bool.isRequired,
   group: PropTypes.oneOf([ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE])
     .isRequired,
-  input: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-  }).isRequired,
   updateSearchQuery: PropTypes.func.isRequired,
 }
 
@@ -30,13 +24,11 @@ const mapDispatchToProps = {
 
 class LocalityDropdownSearch extends Component {
   render() {
-    const {
-      allLocalitiesFetched,
-      group,
-      input,
-      updateSearchQuery,
-      ...rest
-    } = this.props
+    const { allPlacesFetched, group, updateSearchQuery, ...rest } = this.props
+
+    if (!allPlacesFetched && !config.isTest) {
+      return null
+    }
 
     let getDropdownOptions
     switch (group) {
@@ -65,9 +57,6 @@ class LocalityDropdownSearch extends Component {
       }
     }
 
-    if (!allLocalitiesFetched && !config.isTest) {
-      return null
-    }
     return (
       <DropdownSearch
         {...rest}
@@ -75,14 +64,11 @@ class LocalityDropdownSearch extends Component {
         getSearchQuery={state => {
           return globalSelectors.get[
             'localityDropdown.:identifier.searchQuery'
-          ](state, {
-            identifier: group,
-          })
+          ](state, { identifier: group })
         }}
         getSelectedOption={localitySelectors.getPlaceOption}
-        input={input}
         onSearchChange={({ searchQuery }) => {
-          updateSearchQuery(group, searchQuery)
+          updateSearchQuery(searchQuery, { identifier: group })
         }}
         type="dropdown-search-connect"
       />
@@ -93,6 +79,6 @@ class LocalityDropdownSearch extends Component {
 LocalityDropdownSearch.propTypes = propTypes
 
 export default compose(
-  connect(null, mapDispatchToProps),
-  ensureAllPlacesFetched()
+  ensureAllPlacesFetched(),
+  connect(null, mapDispatchToProps)
 )(LocalityDropdownSearch)

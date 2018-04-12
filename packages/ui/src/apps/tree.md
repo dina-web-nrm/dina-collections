@@ -54,6 +54,12 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
+│       ├── manageStorageLocations
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   ├── index.js
+│       │   └── translations.json
 │       ├── pageNotFound
 │       │   ├── Async.js
 │       │   ├── Component.js

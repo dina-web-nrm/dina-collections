@@ -4,13 +4,13 @@
     "id": {
       "type": "string"
     },
-    "higherLevels": {
+    "versionId": {
       "type": "string"
     },
-    "level": {
+    "group": {
       "type": "string"
     },
-    "locationText": {
+    "description": {
       "type": "string"
     },
     "name": {

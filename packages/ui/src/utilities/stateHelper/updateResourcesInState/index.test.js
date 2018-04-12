@@ -96,4 +96,47 @@ describe('utilities/stateHelper/updateResourcesInState', () => {
 
     expect(testValue).toEqual(expectedResult)
   })
+  it('does shallow merge of new and pre-existing resources', () => {
+    const state = {
+      1: {
+        firstName: 'Hal', // this is a pre-existing property
+        id: '1',
+        lastName: '2000',
+      },
+    }
+    deepFreeze(state)
+
+    const action = {
+      payload: [
+        {
+          group: 'super computers', // new property
+          id: '1',
+          lastName: '3000', // changed lastName
+        },
+        {
+          firstName: 'Alan',
+          id: '3',
+          lastName: 'Turing',
+        },
+      ],
+      type: 'someType',
+    }
+
+    const testValue = updateResourcesInState(state, action)
+    const expectedResult = {
+      1: {
+        firstName: 'Hal',
+        group: 'super computers',
+        id: '1',
+        lastName: '3000',
+      },
+      3: {
+        firstName: 'Alan',
+        id: '3',
+        lastName: 'Turing',
+      },
+    }
+
+    expect(testValue).toEqual(expectedResult)
+  })
 })

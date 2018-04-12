@@ -1,3 +1,4 @@
-import StorageLocationSearch from './StorageLocationSearch'
+import StorageLocationDropdownSearch from './StorageLocationDropdownSearch'
+import StorageLocationManager from './StorageLocationManager'
 
-export { StorageLocationSearch }
+export { StorageLocationDropdownSearch, StorageLocationManager }
