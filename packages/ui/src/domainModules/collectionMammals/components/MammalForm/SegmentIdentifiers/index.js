@@ -8,9 +8,7 @@ import { Checkbox, Field } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import CatalogNumberInput from '../CatalogNumberInput'
 
-const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentCatalogNumberIdentifier'
-)
+const log = createLog('modules:collectionMammals:MammalForm:SegmentIdentifiers')
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'identifiers',
@@ -22,7 +20,7 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
 }
 
-class SegmentCatalogNumberIdentifier extends PureComponent {
+class SegmentIdentifiers extends PureComponent {
   render() {
     const { editMode, formValueSelector, getPath } = this.props
     log.render()
@@ -59,8 +57,6 @@ class SegmentCatalogNumberIdentifier extends PureComponent {
   }
 }
 
-SegmentCatalogNumberIdentifier.propTypes = propTypes
+SegmentIdentifiers.propTypes = propTypes
 
-export default pathBuilder({ name: 'identifiers.0' })(
-  SegmentCatalogNumberIdentifier
-)
+export default pathBuilder({ name: 'identifiers.0' })(SegmentIdentifiers)

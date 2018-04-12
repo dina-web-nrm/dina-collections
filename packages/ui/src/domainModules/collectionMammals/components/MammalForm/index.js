@@ -16,7 +16,7 @@ import customFormValidator from 'common/es5/error/validators/customFormValidator
 import createLog from 'utilities/log'
 import { MAMMAL_FORM_NAME } from '../../constants'
 import { mammalFormModels } from '../../schemas'
-import SegmentCatalogNumberIdentifier from './SegmentCatalogNumberIdentifier'
+import SegmentIdentifiers from './SegmentIdentifiers'
 import SegmentTaxon from './SegmentTaxon'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
 import SegmentCollectingInformation from './SegmentCollectingInformation/index'
@@ -134,7 +134,7 @@ class RawMammalForm extends Component {
       >
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Column>
-            <SegmentCatalogNumberIdentifier
+            <SegmentIdentifiers
               editMode={isEditMode}
               formValueSelector={formValueSelector}
             />
