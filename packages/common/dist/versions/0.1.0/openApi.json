@@ -33,28 +33,16 @@
   ],
   "tags": [
     {
-      "description": "## Api managing agents.\n",
-      "name": "agentService"
-    },
-    {
       "description": "Auth api\n",
       "name": "authService"
-    },
-    {
-      "description": "CuratedEventApi - ex expeditions\n\n",
-      "name": "curatedEventService"
     },
     {
       "description": "Api managing curated lists.\n",
       "name": "curatedListService"
     },
     {
-      "description": "Api managing externalEvents like loan and acquisitions.\n",
-      "name": "externalEventService"
-    },
-    {
       "description": "Locality Service\n",
-      "name": "localityService"
+      "name": "placeService"
     },
     {
       "description": "Specimens api\n",
@@ -69,351 +57,10 @@
     },
     {
       "description": "Mock taxon api\n",
-      "name": "taxonService"
+      "name": "taxonomyService"
     }
   ],
   "paths": {
-    "/api/agent/v01/agents": {
-      "post": {
-        "operationId": "createAgent",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/createAgentRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createAgentResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createAgent-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createAgent-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create agent",
-        "tags": [
-          "agentService"
-        ]
-      },
-      "get": {
-        "operationId": "getAgents",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgentsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgents-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgents-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find agents",
-        "tags": [
-          "agentService"
-        ]
-      }
-    },
-    "/api/agent/v01/agents/{id}": {
-      "get": {
-        "operationId": "getAgent",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "agent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "enum": [
-                "primary"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgentResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgent-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgent-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgent-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find agent by id",
-        "tags": [
-          "agentService"
-        ]
-      },
-      "patch": {
-        "operationId": "updateAgent",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "agent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateAgentRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgentResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgent-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgent-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgent-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates agent",
-        "tags": [
-          "agentService"
-        ]
-      }
-    },
     "/auth/realms/dina/protocol/openid-connect/userInfo": {
       "get": {
         "operationId": "getUser",
@@ -470,344 +117,6 @@
         "summary": "Gets user token",
         "tags": [
           "authService"
-        ]
-      }
-    },
-    "/api/curatedEvent/v01/expeditions": {
-      "post": {
-        "operationId": "createExpedition",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/createExpeditionRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createExpeditionResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createExpedition-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createExpedition-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create expedition",
-        "tags": [
-          "curatedEventService"
-        ]
-      },
-      "get": {
-        "operationId": "getExpeditions",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditionsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditions-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditions-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find expeditions",
-        "tags": [
-          "curatedEventService"
-        ]
-      }
-    },
-    "/api/curatedEvent/v01/expeditions/{id}": {
-      "get": {
-        "operationId": "getExpedition",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "expedition id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditionResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpedition-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpedition-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpedition-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find expedition by id",
-        "tags": [
-          "curatedEventService"
-        ]
-      },
-      "patch": {
-        "operationId": "updateExpedition",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "expedition id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateExpeditionRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpeditionResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpedition-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpedition-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpedition-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates expedition",
-        "tags": [
-          "curatedEventService"
         ]
       }
     },
@@ -1559,7 +868,7 @@
         ],
         "summary": "Create place",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       },
       "get": {
@@ -1688,7 +997,7 @@
         ],
         "summary": "Find places",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       }
     },
@@ -1784,7 +1093,7 @@
         ],
         "summary": "Updates place",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       },
       "get": {
@@ -1916,7 +1225,7 @@
         ],
         "summary": "Find place by id",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       }
     },
@@ -2012,7 +1321,7 @@
         ],
         "summary": "Update place -> parent",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       }
     },
@@ -4655,7 +3964,7 @@
         ],
         "summary": "Create taxon",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       },
       "get": {
@@ -4766,7 +4075,7 @@
         ],
         "summary": "Find taxon",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       }
     },
@@ -4862,7 +4171,7 @@
         ],
         "summary": "Updates taxon",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       },
       "get": {
@@ -4966,7 +4275,7 @@
         ],
         "summary": "Find taxon by id",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       }
     },
@@ -5062,7 +4371,7 @@
         ],
         "summary": "Update taxon -> parent",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       }
     }
@@ -5086,17 +4395,6 @@
         "example": "500",
         "title": "500",
         "type": "integer"
-      },
-      "agent": {
-        "additionalProperties": false,
-        "description": "WIP",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        },
-        "x-category": "agentApi",
-        "x-modelType": "model"
       },
       "dateWrapper": {
         "additionalProperties": false,
@@ -5250,28 +4548,6 @@
         "x-category": "core",
         "x-modelType": "model"
       },
-      "curatedEvent": {
-        "additionalProperties": false,
-        "description": "### Definition\n\nA defined event with known extension in time and space.\n\n\n\n",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "x-category": "curatedEventApi",
-        "x-modelType": "model"
-      },
-      "expedition": {
-        "additionalProperties": false,
-        "description": "tba",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "x-category": "curatedEventApi",
-        "x-modelType": "model"
-      },
       "curatedList": {
         "additionalProperties": false,
         "properties": {
@@ -5292,7 +4568,7 @@
             }
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
         "description": ""
       },
@@ -5310,7 +4586,7 @@
             ]
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
         "description": ""
       },
@@ -5355,7 +4631,7 @@
           }
         },
         "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model"
       },
       "preparationType": {
@@ -5376,7 +4652,7 @@
             "example": "hair, scales"
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
         "description": ""
       },
@@ -5396,7 +4672,7 @@
             "type": "string"
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
         "description": ""
       },
@@ -5416,7 +4692,7 @@
             "type": "string"
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
         "description": ""
       },
@@ -5436,43 +4712,9 @@
             "type": "string"
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
         "description": ""
-      },
-      "identifier": {
-        "additionalProperties": false,
-        "properties": {
-          "lid": {
-            "type": "string"
-          },
-          "publishRecord": {
-            "type": "boolean"
-          },
-          "remarks": {
-            "type": "string",
-            "example": "Some remarks"
-          },
-          "identifierType": {
-            "type": "string",
-            "example": "catalogNumber"
-          },
-          "value": {
-            "type": "string",
-            "example": "584028"
-          },
-          "nameSpace": {
-            "type": "string",
-            "example": "mammal"
-          },
-          "validation": {
-            "type": "string",
-            "example": "^$|^[0-9]{6}$|^[0-9]{8}$"
-          }
-        },
-        "description": "### Definition\n\nTba\n",
-        "x-category": "identifierApi",
-        "x-modelType": "model"
       },
       "place": {
         "additionalProperties": false,
@@ -5554,7 +4796,7 @@
           "group"
         ],
         "description": "### Definition\n\nA defined location with known extension in space.\n",
-        "x-category": "localityApi",
+        "x-category": "placeService",
         "x-modelType": "model"
       },
       "collectingInformation": {
@@ -5576,7 +4818,7 @@
           }
         },
         "description": "### Definition\n\nThe context under which some specific material was collected.\n\n### Note(s)\n\nThis includes collecting information of various kinds, for example collector(s) and collecting method.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "collectionItem": {
@@ -5622,7 +4864,7 @@
           }
         },
         "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "curatorialAssessment": {
@@ -5655,7 +4897,7 @@
           }
         },
         "description": "### Definition\n\nAssessment whether specimen is in storage or not found.\n\n### Example(s)\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "deathInformation": {
@@ -5674,7 +4916,7 @@
           }
         },
         "description": "### Definition\n\nInformation about the death of an individual or group of individuals.\n\n### Note(s)\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "determination": {
@@ -5711,7 +4953,7 @@
           }
         },
         "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "event": {
@@ -5735,7 +4977,7 @@
           }
         },
         "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "featureObservation": {
@@ -5772,8 +5014,42 @@
           }
         },
         "description": "### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine) during a single event.\n\n### Example(s)\n\nWhen a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n\n### Note(s)\n\nThe kinds of data for the observation is determined by its FeatureType.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
+      },
+      "identifier": {
+        "additionalProperties": false,
+        "properties": {
+          "lid": {
+            "type": "string"
+          },
+          "publishRecord": {
+            "type": "boolean"
+          },
+          "remarks": {
+            "type": "string",
+            "example": "Some remarks"
+          },
+          "identifierType": {
+            "type": "string",
+            "example": "catalogNumber"
+          },
+          "value": {
+            "type": "string",
+            "example": "584028"
+          },
+          "nameSpace": {
+            "type": "string",
+            "example": "mammal"
+          },
+          "validation": {
+            "type": "string",
+            "example": "^$|^[0-9]{6}$|^[0-9]{8}$"
+          }
+        },
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "description": ""
       },
       "individual": {
         "additionalProperties": false,
@@ -5825,7 +5101,7 @@
             "type": "integer"
           }
         },
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "locationInformation": {
@@ -5875,7 +5151,7 @@
           }
         },
         "description": "### Definition\n\nInformation pertaining to a specific location.\n\n### Note(s)\n\nIncludes for example verbatim information about a location.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "observationInformation": {
@@ -5894,7 +5170,7 @@
           }
         },
         "description": "### Definition\n\nInformation about an observation of an individual or group of individuals.\n\n### Note(s)\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "originInformation": {
@@ -5913,7 +5189,7 @@
           }
         },
         "description": "### Definition\n\nInformation about the origin of an individual or group of individuals.\n\n### Note(s)\n\nThis can for example involve the genetic origin or a specific event when an individual moved from an place to another.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "specimen": {
@@ -5975,7 +5251,7 @@
             "$ref": "#/components/schemas/readOnly"
           }
         },
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "taxonInformation": {
@@ -5992,7 +5268,7 @@
           }
         },
         "description": "### Definition\n\nThe taxon to which an individual is currently assigned according to a local classification.\n",
-        "x-category": "specimenApi",
+        "x-category": "specimenService",
         "x-modelType": "model"
       },
       "physicalObject": {
@@ -6024,7 +5300,7 @@
           }
         },
         "description": "### Definition\n\nThe smallest recognized physical “thing” in the collection. A set of identifiable units. One or more.\n\n### Example(s)\n\nEx.1. A herbarium sheet with multiple leafs (many identifiable units)\nEx.2. A device where a skin is mounted at (one identifiable unit)\nEx.3. A device where a stone with a moss is mounted (two identifiable unit)\n",
-        "x-category": "storageApi",
+        "x-category": "storageService",
         "x-modelType": "model"
       },
       "storageLocation": {
@@ -6053,7 +5329,7 @@
           }
         },
         "description": "### Definition\n\nA delimited space in the collection where one ore more physical units can be placed.\n",
-        "x-category": "storageApi",
+        "x-category": "storageService",
         "x-modelType": "model"
       },
       "taxon": {
@@ -6159,7 +5435,7 @@
             "description": "Taxonomical sort order code from Mammal Species of the World list"
           }
         },
-        "x-category": "taxonomyApi",
+        "x-category": "taxonomyService",
         "x-modelType": "model",
         "description": ""
       },
@@ -6207,7 +5483,7 @@
         "title": "REQUEST_ERROR",
         "type": "string"
       },
-      "createAgent-400": {
+      "createPreparationType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -6245,528 +5521,6 @@
         "example": "INTERNAL_SERVER_ERROR",
         "title": "INTERNAL_SERVER_ERROR",
         "type": "string"
-      },
-      "createAgent-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getAgent-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "RESOURCE_NOT_FOUND_ERROR": {
-        "description": "Requested resource not found. See details",
-        "example": "RESOURCE_NOT_FOUND_ERROR",
-        "title": "RESOURCE_NOT_FOUND_ERROR",
-        "type": "string"
-      },
-      "getAgent-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "getAgent-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "updateAgent-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "updateAgent-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "updateAgent-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getAgents-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getAgents-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "createExpedition-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "createExpedition-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getExpedition-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getExpedition-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "getExpedition-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "updateExpedition-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "updateExpedition-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "updateExpedition-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getExpeditions-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getExpeditions-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "createPreparationType-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
       },
       "createPreparationType-500": {
         "allOf": [
@@ -6821,6 +5575,12 @@
         ],
         "title": "Bad Request",
         "type": "object"
+      },
+      "RESOURCE_NOT_FOUND_ERROR": {
+        "description": "Requested resource not found. See details",
+        "example": "RESOURCE_NOT_FOUND_ERROR",
+        "title": "RESOURCE_NOT_FOUND_ERROR",
+        "type": "string"
       },
       "updatePreparationType-404": {
         "allOf": [
@@ -9792,84 +8552,6 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "createAgentRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "agent",
-                "enum": [
-                  "agent"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "agent",
-              "attributes": {
-                "name": "orvar"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "agent",
-            "attributes": {
-              "name": "orvar"
-            }
-          }
-        },
-        "description": ""
-      },
-      "updateAgentRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "agent",
-                "enum": [
-                  "agent"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              }
-            }
-          }
-        },
-        "description": ""
-      },
       "loginUserRequest": {
         "type": "object",
         "additionalProperties": false,
@@ -9897,80 +8579,6 @@
           "password",
           "username"
         ],
-        "description": ""
-      },
-      "createExpeditionRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "expedition",
-                "enum": [
-                  "expedition"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "expedition",
-              "attributes": {}
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "expedition",
-            "attributes": {}
-          }
-        },
-        "description": ""
-      },
-      "updateExpeditionRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "expedition",
-                "enum": [
-                  "expedition"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              }
-            }
-          }
-        },
         "description": ""
       },
       "createPreparationTypeRequest": {
@@ -11911,195 +10519,6 @@
         },
         "description": ""
       },
-      "createAgentResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "agent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getAgentResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "agent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "agent",
-              "attributes": {
-                "name": "Ingimar"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "agent",
-            "attributes": {
-              "name": "Ingimar"
-            }
-          }
-        },
-        "description": ""
-      },
-      "updateAgentResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "agent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getAgentsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/agent"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "agent",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
       "getUserResponse": {
         "type": "object",
         "additionalProperties": false,
@@ -12171,178 +10590,6 @@
         "required": [
           "access_token"
         ],
-        "description": ""
-      },
-      "createExpeditionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "expedition",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getExpeditionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "expedition",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "updateExpeditionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "expedition",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getExpeditionsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/expedition"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "expedition",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
         "description": ""
       },
       "createPreparationTypeResponse": {
