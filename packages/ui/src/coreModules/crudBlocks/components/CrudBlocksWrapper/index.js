@@ -79,9 +79,9 @@ const propTypes = {
   layoutMode: PropTypes.string,
   match: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  renderCreateBlockChild: PropTypes.func,
-  renderEditBlockChild: PropTypes.func,
-  renderInspectBlockChild: PropTypes.func,
+  renderCreateForm: PropTypes.func,
+  renderEditForm: PropTypes.func,
+  renderInspectView: PropTypes.func,
   renderList: PropTypes.func,
   renderTree: PropTypes.func,
   routerPush: PropTypes.func.isRequired,
@@ -97,9 +97,9 @@ const defaultProps = {
   customHandleInteraction: undefined,
   disableEdit: false,
   layoutMode: SINGLE,
-  renderCreateBlockChild: undefined,
-  renderEditBlockChild: undefined,
-  renderInspectBlockChild: undefined,
+  renderCreateForm: undefined,
+  renderEditForm: undefined,
+  renderInspectView: undefined,
   renderList: undefined,
   renderTree: undefined,
 }
@@ -224,9 +224,9 @@ class CrudBlocksWrapper extends Component {
       itemIdParamName,
       match: { params = {}, url = '' } = {},
       name,
-      renderCreateBlockChild,
-      renderEditBlockChild,
-      renderInspectBlockChild,
+      renderCreateForm,
+      renderEditForm,
+      renderInspectView,
       renderList,
       renderTree,
       urlBasePath,
@@ -242,9 +242,9 @@ class CrudBlocksWrapper extends Component {
         itemId={itemId}
         layoutMode={layoutMode}
         onInteraction={this.handleInteraction}
-        renderCreateBlockChild={renderCreateBlockChild}
-        renderEditBlockChild={renderEditBlockChild}
-        renderInspectBlockChild={renderInspectBlockChild}
+        renderCreateForm={renderCreateForm}
+        renderEditForm={renderEditForm}
+        renderInspectView={renderInspectView}
         urlBasePath={urlBasePath}
       />
     )

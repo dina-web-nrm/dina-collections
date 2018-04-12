@@ -9,48 +9,48 @@ import InspectBlock from './Inspect'
 const propTypes = {
   disableEdit: PropTypes.bool.isRequired,
   itemBlockType: PropTypes.string.isRequired,
-  renderCreateBlockChild: PropTypes.func,
-  renderEditBlockChild: PropTypes.func,
-  renderInspectBlockChild: PropTypes.func,
+  renderCreateForm: PropTypes.func,
+  renderEditForm: PropTypes.func,
+  renderInspectView: PropTypes.func,
 }
 const defaultProps = {
-  renderCreateBlockChild: undefined,
-  renderEditBlockChild: undefined,
-  renderInspectBlockChild: undefined,
+  renderCreateForm: undefined,
+  renderEditForm: undefined,
+  renderInspectView: undefined,
 }
 
 const ItemBlock = ({
   disableEdit,
   itemBlockType,
-  renderCreateBlockChild,
-  renderEditBlockChild,
-  renderInspectBlockChild,
+  renderCreateForm,
+  renderEditForm,
+  renderInspectView,
   ...rest
 }) => {
-  if (itemBlockType === CREATE && renderCreateBlockChild) {
+  if (itemBlockType === CREATE && renderCreateForm) {
     return (
       <CreateBlock
         itemBlockType={itemBlockType}
-        renderChild={renderCreateBlockChild}
+        renderChild={renderCreateForm}
         {...rest}
       />
     )
   }
 
-  if (itemBlockType === EDIT && renderEditBlockChild && !disableEdit) {
+  if (itemBlockType === EDIT && renderEditForm && !disableEdit) {
     return (
       <EditBlock
         itemBlockType={itemBlockType}
-        renderChild={renderEditBlockChild}
+        renderChild={renderEditForm}
         {...rest}
       />
     )
   }
-  if (itemBlockType === INSPECT && renderInspectBlockChild) {
+  if (itemBlockType === INSPECT && renderInspectView) {
     return (
       <InspectBlock
         itemBlockType={itemBlockType}
-        renderChild={renderInspectBlockChild}
+        renderChild={renderInspectView}
         {...rest}
       />
     )
