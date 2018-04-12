@@ -96,6 +96,23 @@ const mutations = [
     value: '123456',
   },
   {
+    id: 'add-identifier',
+    ignore: true,
+    interaction: 'click',
+  },
+  {
+    name: 'identifiers.1.identifierType.hidden',
+    value: 'SVA nr',
+  },
+  {
+    name: 'identifiers.1.remarks',
+    value: 'remarks',
+  },
+  {
+    name: 'identifiers.1.value',
+    value: 'V0100/98',
+  },
+  {
     name: 'collectingInformation.0.collectorsText',
     value: 'collectorsText',
   },
@@ -289,14 +306,17 @@ const expectedOutput = {
           remarks: '',
           value: '123456',
         },
+        {
+          identifierType: 'SVA nr',
+          remarks: 'remarks',
+          value: 'V0100/98',
+        },
       ],
-      readOnly: undefined,
       taxonInformation: {
         curatorialName: 'curatorialName',
         taxonRemarks: 'taxonRemarks',
       },
     },
-    readOnly: undefined,
   },
 
   storageLocations: [

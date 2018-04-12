@@ -135,8 +135,10 @@ class RawMammalForm extends Component {
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Column>
             <SegmentIdentifiers
+              changeFieldValue={this.changeFieldValue}
               editMode={isEditMode}
               formValueSelector={formValueSelector}
+              removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             />
             <SegmentTaxon
               changeFieldValue={this.changeFieldValue}
