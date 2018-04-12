@@ -125,19 +125,36 @@ const getPrevStorageLocationIdFromFilter = createSelector(
   }
 )
 
-const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
+const createDropdownSelector = (
+  groupFilter,
+  { showParentName = false, numberOfResults = 6 } = {}
+) => {
   return createSelector(
     [getStorageLocations, getSecondArgument],
     (storageLocations, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
+
       const mappedGroupStorageLocations = Object.values(storageLocations)
         .filter(
           ({ group }) => (groupFilter === ALL ? true : group === groupFilter)
         )
-        .map(({ id, name }) => {
+        .map(({ id, name, parent }) => {
+          const parentName =
+            showParentName &&
+            parent &&
+            parent.id &&
+            storageLocations[parent.id] &&
+            storageLocations[parent.id].name
+
+          const text = parentName
+            ? `${capitalizeFirstLetter(name)} (in ${capitalizeFirstLetter(
+                parentName
+              )})`
+            : capitalizeFirstLetter(name)
+
           return {
             key: id,
-            text: capitalizeFirstLetter(name),
+            text,
             value: id,
           }
         })
@@ -169,6 +186,48 @@ const getDropdownGroup2Options = createDropdownSelector(GROUP_2)
 const getDropdownGroup3Options = createDropdownSelector(GROUP_3)
 const getDropdownGroup4Options = createDropdownSelector(GROUP_4)
 
+const getDropdownAllOptionsWithParentName = createDropdownSelector(ALL, {
+  showParentName: true,
+})
+const getDropdownGroup1OptionsWithParentName = createDropdownSelector(GROUP_1, {
+  showParentName: true,
+})
+const getDropdownGroup2OptionsWithParentName = createDropdownSelector(GROUP_2, {
+  showParentName: true,
+})
+const getDropdownGroup3OptionsWithParentName = createDropdownSelector(GROUP_3, {
+  showParentName: true,
+})
+const getDropdownGroup4OptionsWithParentName = createDropdownSelector(GROUP_4, {
+  showParentName: true,
+})
+
+const createGetDropdownAllOptions = ({ showParentName }) => {
+  return showParentName
+    ? getDropdownAllOptionsWithParentName
+    : getDropdownAllOptions
+}
+const createGetDropdownGroup1Options = ({ showParentName }) => {
+  return showParentName
+    ? getDropdownGroup1OptionsWithParentName
+    : getDropdownGroup1Options
+}
+const createGetDropdownGroup2Options = ({ showParentName }) => {
+  return showParentName
+    ? getDropdownGroup2OptionsWithParentName
+    : getDropdownGroup2Options
+}
+const createGetDropdownGroup3Options = ({ showParentName }) => {
+  return showParentName
+    ? getDropdownGroup3OptionsWithParentName
+    : getDropdownGroup3Options
+}
+const createGetDropdownGroup4Options = ({ showParentName }) => {
+  return showParentName
+    ? getDropdownGroup4OptionsWithParentName
+    : getDropdownGroup4Options
+}
+
 const getStorageLocationOption = createSelector(
   [getStorageLocations, getSecondArgument],
   (storageLocations, id) => {
@@ -185,11 +244,11 @@ const getStorageLocationOption = createSelector(
 )
 
 export default {
-  getDropdownAllOptions,
-  getDropdownGroup1Options,
-  getDropdownGroup2Options,
-  getDropdownGroup3Options,
-  getDropdownGroup4Options,
+  createGetDropdownAllOptions,
+  createGetDropdownGroup1Options,
+  createGetDropdownGroup2Options,
+  createGetDropdownGroup3Options,
+  createGetDropdownGroup4Options,
   getNextStorageLocationIdFromFilter,
   getPrevStorageLocationIdFromFilter,
   getStorageLocationAncestorsById,

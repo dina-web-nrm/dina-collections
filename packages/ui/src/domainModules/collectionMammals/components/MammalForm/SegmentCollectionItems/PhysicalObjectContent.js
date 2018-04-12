@@ -97,6 +97,7 @@ function PhysicalObjectContent({
             label={moduleTranslate({ textKey: 'normalStorageLocation' })}
             module="collectionMammals"
             name={getPath('physicalObject.storageLocation.id')}
+            showParentName
           />
         </Grid.Column>
       </Grid.Row>

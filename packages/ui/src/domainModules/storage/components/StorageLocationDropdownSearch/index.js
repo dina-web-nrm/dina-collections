@@ -20,7 +20,11 @@ const mapDispatchToProps = {
 const propTypes = {
   allStorageLocationsFetched: PropTypes.bool.isRequired,
   group: PropTypes.oneOf([ALL, GROUP_1, GROUP_2, GROUP_3, GROUP_4]).isRequired,
+  showParentName: PropTypes.bool,
   updateStorageSearchQuery: PropTypes.func.isRequired,
+}
+const defaultProps = {
+  showParentName: false,
 }
 
 class StorageLocationDropdownSearch extends Component {
@@ -28,6 +32,7 @@ class StorageLocationDropdownSearch extends Component {
     const {
       allStorageLocationsFetched,
       group,
+      showParentName,
       updateStorageSearchQuery,
       ...rest
     } = this.props
@@ -39,23 +44,33 @@ class StorageLocationDropdownSearch extends Component {
     let getDropdownOptions
     switch (group) {
       case ALL: {
-        getDropdownOptions = globalSelectors.getDropdownAllOptions
+        getDropdownOptions = globalSelectors.createGetDropdownAllOptions({
+          showParentName,
+        })
         break
       }
       case GROUP_1: {
-        getDropdownOptions = globalSelectors.getDropdownGroup1Options
+        getDropdownOptions = globalSelectors.createGetDropdownGroup1Options({
+          showParentName,
+        })
         break
       }
       case GROUP_2: {
-        getDropdownOptions = globalSelectors.getDropdownGroup2Options
+        getDropdownOptions = globalSelectors.createGetDropdownGroup2Options({
+          showParentName,
+        })
         break
       }
       case GROUP_3: {
-        getDropdownOptions = globalSelectors.getDropdownGroup3Options
+        getDropdownOptions = globalSelectors.createGetDropdownGroup3Options({
+          showParentName,
+        })
         break
       }
       case GROUP_4: {
-        getDropdownOptions = globalSelectors.getDropdownGroup4Options
+        getDropdownOptions = globalSelectors.createGetDropdownGroup4Options({
+          showParentName,
+        })
         break
       }
       default: {
@@ -79,6 +94,7 @@ class StorageLocationDropdownSearch extends Component {
 }
 
 StorageLocationDropdownSearch.propTypes = propTypes
+StorageLocationDropdownSearch.defaultProps = defaultProps
 
 export default compose(
   ensureAllStorageLocationsFetched(),
