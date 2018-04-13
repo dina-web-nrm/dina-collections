@@ -10,10 +10,13 @@ module.exports = function createModel({
   normalize,
   referencePath = '#/components/schemas/',
   removeRelationships = false,
+  version,
 }) {
+  const documentLink = `/docs/${version}/models/`
+
   const normalizedModel = normalizeModel({ model, normalize })
 
-  const cleanedModel = JSON.parse(JSON.stringify(normalizedModel))
+  let cleanedModel = JSON.parse(JSON.stringify(normalizedModel))
 
   if (
     removeRelationships &&
@@ -50,7 +53,7 @@ module.exports = function createModel({
 
   cleanedModel.description = description
   cleanedModel['x-summary'] = summary
-
+  cleanedModel = interpolate(cleanedModel, '__DOCLINK__', documentLink)
   return interpolate(
     {
       ...cleanedModel,

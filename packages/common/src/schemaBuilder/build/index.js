@@ -12,6 +12,7 @@ module.exports = function build({
   parameters,
   security,
   servers,
+  version,
 }) {
   const endpoints = buildEndpoints(endpointsInput)
 
@@ -25,6 +26,7 @@ module.exports = function build({
     parameters,
     security,
     servers,
+    version,
   })
 
   const cleanModels = createModels({
@@ -36,6 +38,7 @@ module.exports = function build({
     normalize,
     parameters,
     security,
+    version,
   })
 
   return {

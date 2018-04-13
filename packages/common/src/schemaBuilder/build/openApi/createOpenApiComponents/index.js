@@ -3,7 +3,7 @@ const createModel = require('../../utilities/createModel')
 
 const referencePath = '#/components/schemas/'
 
-const extractResponsesFromEndpoints = ({ endpoints, normalize }) => {
+const extractResponsesFromEndpoints = ({ endpoints, normalize, version }) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { response } = endpoints[endpointName]
     if (response) {
@@ -16,6 +16,7 @@ const extractResponsesFromEndpoints = ({ endpoints, normalize }) => {
             model: schema.content,
             normalize,
             referencePath,
+            version,
           }),
         }
       }
@@ -25,7 +26,7 @@ const extractResponsesFromEndpoints = ({ endpoints, normalize }) => {
   }, {})
 }
 
-const extractRequestsFromEndpoints = ({ endpoints, normalize }) => {
+const extractRequestsFromEndpoints = ({ endpoints, normalize, version }) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { request } = endpoints[endpointName]
     if (request) {
@@ -38,6 +39,7 @@ const extractRequestsFromEndpoints = ({ endpoints, normalize }) => {
             model: schema.body,
             normalize,
             referencePath,
+            version,
           }),
         }
       }
@@ -47,7 +49,7 @@ const extractRequestsFromEndpoints = ({ endpoints, normalize }) => {
   }, {})
 }
 
-const extractModelsFromModels = ({ models, normalize }) => {
+const extractModelsFromModels = ({ models, normalize, version }) => {
   return Object.keys(models).reduce((extractedModels, modelKey) => {
     const model = models[modelKey]
     const createdModel = createModel({
@@ -55,6 +57,7 @@ const extractModelsFromModels = ({ models, normalize }) => {
       normalize,
       referencePath,
       removeRelationships: true,
+      version,
     })
     return {
       ...extractedModels,
@@ -68,11 +71,24 @@ module.exports = function createOpenApiComponents({
   models,
   normalize,
   security,
+  version,
 }) {
-  const requests = extractRequestsFromEndpoints({ endpoints, normalize })
-  const responses = extractResponsesFromEndpoints({ endpoints, normalize })
-  const errors = extractErrorsFromEndpoints({ endpoints, normalize })
-  const extractedModels = extractModelsFromModels({ models, normalize })
+  const requests = extractRequestsFromEndpoints({
+    endpoints,
+    normalize,
+    version,
+  })
+  const responses = extractResponsesFromEndpoints({
+    endpoints,
+    normalize,
+    version,
+  })
+  const errors = extractErrorsFromEndpoints({ endpoints, normalize, version })
+  const extractedModels = extractModelsFromModels({
+    models,
+    normalize,
+    version,
+  })
 
   return {
     schemas: {

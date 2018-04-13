@@ -1,9 +1,9 @@
 const path = require('path')
 const DEFAULT_FS = require('fs')
-
+const currentVersion = require('common/dist/versions/info.json').current
 const { renderMarkdownToHtml } = require('../../utilities/markdown')
 
-// '[name].[language].md'
+const documentLink = `/docs/${currentVersion}/models/`
 const markdownLanguageRegex = /^([A-Za-z0-9-_]+)\.([a-z]+)\.md$/
 
 const parseFileName = fileName => {
@@ -31,8 +31,11 @@ const walkMarkdown = ({ directory, fs, initialTree }) => {
       })
     } else if (path.extname(file) === '.md') {
       const { language, fileName } = parseFileName(file)
-      const fileData = fs.readFileSync(path.join(directory, file), 'utf8')
-      const html = renderMarkdownToHtml(fileData)
+      let markdown = fs.readFileSync(path.join(directory, file), 'utf8')
+
+      markdown = markdown.replace(new RegExp('__DOCLINK__', 'g'), documentLink)
+
+      const html = renderMarkdownToHtml(markdown)
 
       tree[`${fileName}`] = Object.assign(tree[`${fileName}`] || {}, {
         [language]: html,

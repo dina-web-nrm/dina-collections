@@ -3,7 +3,11 @@ const createModel = require('../utilities/createModel')
 
 const referencePath = ''
 
-const extractResponseModelsFromEndpoints = (endpoints, normalize) => {
+const extractResponseModelsFromEndpoints = ({
+  endpoints,
+  normalize,
+  version,
+}) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { response } = endpoints[endpointName]
     if (response) {
@@ -17,6 +21,7 @@ const extractResponseModelsFromEndpoints = (endpoints, normalize) => {
             name,
             normalize,
             referencePath,
+            version,
           }),
         }
       }
@@ -26,7 +31,11 @@ const extractResponseModelsFromEndpoints = (endpoints, normalize) => {
   }, {})
 }
 
-const extractRequestModelsFromEndpoints = (endpoints, normalize) => {
+const extractRequestModelsFromEndpoints = ({
+  endpoints,
+  normalize,
+  version,
+}) => {
   return Object.keys(endpoints).reduce((responses, endpointName) => {
     const { request } = endpoints[endpointName]
     if (request) {
@@ -40,6 +49,7 @@ const extractRequestModelsFromEndpoints = (endpoints, normalize) => {
             name,
             normalize,
             referencePath,
+            version,
           }),
         }
       }
@@ -49,23 +59,42 @@ const extractRequestModelsFromEndpoints = (endpoints, normalize) => {
   }, {})
 }
 
-const extractModelsFromModels = (models, normalize) => {
+const extractModelsFromModels = ({ models, normalize, version }) => {
   return Object.keys(models).reduce((extractedModels, modelKey) => {
     const model = models[modelKey]
     return {
       ...extractedModels,
-      [modelKey]: createModel({ model, modelKey, normalize, referencePath }),
+      [modelKey]: createModel({
+        model,
+        modelKey,
+        normalize,
+        referencePath,
+        version,
+      }),
     }
   }, {})
 }
 
-module.exports = function createModels({ endpoints, models, normalize }) {
-  const requestModels = extractRequestModelsFromEndpoints(endpoints, normalize)
-  const responseModels = extractResponseModelsFromEndpoints(
+module.exports = function createModels({
+  endpoints,
+  models,
+  normalize,
+  version,
+}) {
+  const requestModels = extractRequestModelsFromEndpoints({
     endpoints,
-    normalize
-  )
-  const extractedModels = extractModelsFromModels(models, normalize)
+    normalize,
+    version,
+  })
+  const responseModels = extractResponseModelsFromEndpoints({
+    endpoints,
+    normalize,
+  })
+  const extractedModels = extractModelsFromModels({
+    models,
+    normalize,
+    version,
+  })
 
   return {
     ...extractedModels,

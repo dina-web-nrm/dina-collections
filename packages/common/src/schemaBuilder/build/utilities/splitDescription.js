@@ -31,6 +31,7 @@ module.exports = function splitDescription(descriptionInput) {
     summary = summaryArray
       .join(' ')
       .replace(startString, '')
+      .replace(new RegExp('#', 'g'), '')
       .trim()
 
     description = descriptionArray.join('\n').trim()

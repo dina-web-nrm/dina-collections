@@ -4,6 +4,7 @@ const write = require('./write')
 const build = require('./build')
 
 function main({ modelBasePath, apiBasePath, normalize }) {
+  const version = '0.1.0'
   const {
     apis,
     endpoints,
@@ -27,6 +28,7 @@ function main({ modelBasePath, apiBasePath, normalize }) {
     parameters,
     security,
     servers,
+    version,
   })
 
   write({
@@ -34,7 +36,7 @@ function main({ modelBasePath, apiBasePath, normalize }) {
     normalize,
     openApi,
     setCurrent: true,
-    version: '0.1.0',
+    version,
   })
 
   write({
