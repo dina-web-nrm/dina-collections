@@ -33,7 +33,12 @@ const Markdown = (
     console.warn(`Translation not found for path: ${textKey}`, markdown) // eslint-disable-line no-console
   }
 
-  return <div dangerouslySetInnerHTML={{ __html: output }} /> // eslint-disable-line react/no-danger
+  return (
+    <div
+      className="markdown-body"
+      dangerouslySetInnerHTML={{ __html: output }}
+    />
+  ) // eslint-disable-line react/no-danger
 }
 
 Markdown.contextTypes = contextTypes

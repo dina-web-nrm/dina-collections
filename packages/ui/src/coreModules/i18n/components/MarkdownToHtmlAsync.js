@@ -37,7 +37,12 @@ class MarkdownToHtmlAsync extends Component {
   }
   render() {
     if (this.state.html) {
-      return <div dangerouslySetInnerHTML={{ __html: this.state.html }} /> // eslint-disable-line react/no-danger
+      return (
+        <div
+          className="markdown-body"
+          dangerouslySetInnerHTML={{ __html: this.state.html }}
+        />
+      ) // eslint-disable-line react/no-danger
     }
     return <div />
   }
