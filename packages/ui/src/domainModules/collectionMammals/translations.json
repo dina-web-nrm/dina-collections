@@ -40,9 +40,27 @@
     }
   },
   "identifiers": {
+    "en": "Identifiers",
+    "sv": "Identifierare",
+    "addIdentifier": {
+      "en": "Add identifier",
+      "sv": "Lägg till identifierare"
+    },
+    "identifierType": {
+      "en": "Source/type",
+      "sv": "Källa/typ"
+    },
+    "value": {
+      "en": "Value",
+      "sv": "Värde"
+    },
     "remarks": {
-      "en": "Specimen remarks",
-      "sv": "Exemplarsnoteringar"
+      "en": "Remarks",
+      "sv": "Noteringar"
+    },
+    "remove": {
+      "en": "Remove",
+      "sv": "Ta bort"
     },
     "isPublic": {
       "en": "Public",
