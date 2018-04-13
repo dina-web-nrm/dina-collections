@@ -4521,8 +4521,8 @@
         "properties": {},
         "x-category": "core",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "translatedString": {
         "additionalProperties": false,
@@ -4538,8 +4538,8 @@
         },
         "x-category": "core",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "verticalPosition": {
         "additionalProperties": false,
@@ -4601,8 +4601,8 @@
         },
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "curatedListType": {
         "additionalProperties": false,
@@ -4621,8 +4621,8 @@
         },
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "featureType": {
         "additionalProperties": false,
@@ -4702,8 +4702,8 @@
         },
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "selectableMethod": {
         "additionalProperties": false,
@@ -4727,8 +4727,8 @@
         },
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "selectableUnit": {
         "additionalProperties": false,
@@ -4752,8 +4752,8 @@
         },
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "selectableValue": {
         "additionalProperties": false,
@@ -4777,8 +4777,8 @@
         },
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "place": {
         "additionalProperties": false,
@@ -5067,10 +5067,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.\n",
+        "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "A statement about a specimen's taxon name and/or type status, which is not itself a type status designation."
       },
       "event": {
         "additionalProperties": false,
@@ -5167,7 +5167,7 @@
           "identifierType": {
             "type": "string",
             "example": "catalogNumber",
-            "description": "## Identifier type description\n\nThis is some other text\nwith many lines",
+            "description": "# identifier -> identifierType\n\n### Identifier type description\n\nThis is some other text\n\nwith many lines [individual.lid](/docs/0.1.0/models/individual/lid)",
             "x-summary": "This is a short description of 60 characters"
           },
           "value": {
@@ -5188,8 +5188,8 @@
         },
         "x-category": "specimenService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "individual": {
         "additionalProperties": false,
@@ -5650,8 +5650,8 @@
         },
         "x-category": "taxonomyService",
         "x-modelType": "model",
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "BaseError": {
         "properties": {
@@ -8797,8 +8797,8 @@
           "password",
           "username"
         ],
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createPreparationTypeRequest": {
         "additionalProperties": false,
@@ -8849,8 +8849,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePreparationTypeRequest": {
         "additionalProperties": false,
@@ -8881,8 +8881,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createFeatureTypeRequest": {
         "additionalProperties": false,
@@ -8939,8 +8939,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateFeatureTypeRequest": {
         "additionalProperties": false,
@@ -8971,8 +8971,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createPlaceRequest": {
         "additionalProperties": false,
@@ -9125,8 +9125,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePlaceRequest": {
         "additionalProperties": false,
@@ -9225,8 +9225,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePlaceParentRequest": {
         "additionalProperties": false,
@@ -9254,8 +9254,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createSpecimenRequest": {
         "additionalProperties": false,
@@ -9747,8 +9747,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenRequest": {
         "additionalProperties": false,
@@ -9888,8 +9888,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenPhysicalObjectsRequest": {
         "additionalProperties": false,
@@ -9920,8 +9920,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenFeatureTypesRequest": {
         "additionalProperties": false,
@@ -9952,8 +9952,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenPlacesRequest": {
         "additionalProperties": false,
@@ -9984,8 +9984,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createPhysicalObjectRequest": {
         "additionalProperties": false,
@@ -10078,8 +10078,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePhysicalObjectRequest": {
         "additionalProperties": false,
@@ -10152,8 +10152,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePhysicalObjectStorageLocationRequest": {
         "additionalProperties": false,
@@ -10181,8 +10181,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createStorageLocationRequest": {
         "additionalProperties": false,
@@ -10325,8 +10325,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateStorageLocationRequest": {
         "additionalProperties": false,
@@ -10451,8 +10451,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateStorageLocationParentRequest": {
         "additionalProperties": false,
@@ -10480,8 +10480,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createTaxonRequest": {
         "additionalProperties": false,
@@ -10648,8 +10648,8 @@
             }
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateTaxonRequest": {
         "additionalProperties": false,
@@ -10748,8 +10748,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateTaxonParentRequest": {
         "additionalProperties": false,
@@ -10777,8 +10777,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getUserResponse": {
         "type": "object",
@@ -10819,8 +10819,8 @@
           "email",
           "preferred_username"
         ],
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "loginUserResponse": {
         "type": "object",
@@ -10865,8 +10865,8 @@
         "required": [
           "access_token"
         ],
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createPreparationTypeResponse": {
         "additionalProperties": false,
@@ -10912,8 +10912,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePreparationTypeResponse": {
         "additionalProperties": false,
@@ -10959,8 +10959,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPreparationTypeResponse": {
         "additionalProperties": false,
@@ -11006,8 +11006,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPreparationTypesResponse": {
         "additionalProperties": false,
@@ -11057,8 +11057,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createFeatureTypeResponse": {
         "additionalProperties": false,
@@ -11104,8 +11104,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateFeatureTypeResponse": {
         "additionalProperties": false,
@@ -11151,8 +11151,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getFeatureTypeResponse": {
         "additionalProperties": false,
@@ -11198,8 +11198,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getFeatureTypesResponse": {
         "additionalProperties": false,
@@ -11249,8 +11249,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createPlaceResponse": {
         "additionalProperties": false,
@@ -11364,8 +11364,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePlaceResponse": {
         "additionalProperties": false,
@@ -11479,8 +11479,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePlaceParentResponse": {
         "additionalProperties": false,
@@ -11526,8 +11526,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPlaceResponse": {
         "additionalProperties": false,
@@ -11641,8 +11641,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPlacesResponse": {
         "additionalProperties": false,
@@ -11760,8 +11760,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createSpecimenResponse": {
         "additionalProperties": false,
@@ -11916,8 +11916,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenResponse": {
         "additionalProperties": false,
@@ -12072,8 +12072,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenPhysicalObjectsResponse": {
         "additionalProperties": false,
@@ -12123,8 +12123,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenPhysicalObjectsResponse": {
         "additionalProperties": false,
@@ -12174,8 +12174,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenFeatureTypesResponse": {
         "additionalProperties": false,
@@ -12225,8 +12225,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenFeatureTypesResponse": {
         "additionalProperties": false,
@@ -12276,8 +12276,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateSpecimenPlacesResponse": {
         "additionalProperties": false,
@@ -12327,8 +12327,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenPlacesResponse": {
         "additionalProperties": false,
@@ -12378,8 +12378,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenTaxaResponse": {
         "additionalProperties": false,
@@ -12429,8 +12429,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenResponse": {
         "additionalProperties": false,
@@ -12585,8 +12585,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimensResponse": {
         "additionalProperties": false,
@@ -12745,8 +12745,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenVersionResponse": {
         "additionalProperties": false,
@@ -12901,8 +12901,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getSpecimenVersionsResponse": {
         "additionalProperties": false,
@@ -13061,8 +13061,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getStatusResponse": {
         "type": "object",
@@ -13082,8 +13082,8 @@
             "x-summary": ""
           }
         },
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createPhysicalObjectResponse": {
         "additionalProperties": false,
@@ -13171,8 +13171,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePhysicalObjectResponse": {
         "additionalProperties": false,
@@ -13260,8 +13260,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updatePhysicalObjectStorageLocationResponse": {
         "additionalProperties": false,
@@ -13307,8 +13307,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPhysicalObjectStorageLocationResponse": {
         "additionalProperties": false,
@@ -13354,8 +13354,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPhysicalObjectResponse": {
         "additionalProperties": false,
@@ -13443,8 +13443,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPhysicalObjectsResponse": {
         "additionalProperties": false,
@@ -13536,8 +13536,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPhysicalObjectVersionResponse": {
         "additionalProperties": false,
@@ -13625,8 +13625,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getPhysicalObjectVersionsResponse": {
         "additionalProperties": false,
@@ -13718,8 +13718,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createStorageLocationResponse": {
         "additionalProperties": false,
@@ -13859,8 +13859,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateStorageLocationResponse": {
         "additionalProperties": false,
@@ -14000,8 +14000,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateStorageLocationParentResponse": {
         "additionalProperties": false,
@@ -14047,8 +14047,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getStorageLocationPhysicalObjectsResponse": {
         "additionalProperties": false,
@@ -14098,8 +14098,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getStorageLocationResponse": {
         "additionalProperties": false,
@@ -14239,8 +14239,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getStorageLocationsResponse": {
         "additionalProperties": false,
@@ -14384,8 +14384,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "createTaxonResponse": {
         "additionalProperties": false,
@@ -14499,8 +14499,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateTaxonResponse": {
         "additionalProperties": false,
@@ -14614,8 +14614,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "updateTaxonParentResponse": {
         "additionalProperties": false,
@@ -14661,8 +14661,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getTaxonByIdResponse": {
         "additionalProperties": false,
@@ -14776,8 +14776,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       },
       "getTaxaByNameResponse": {
         "additionalProperties": false,
@@ -14895,8 +14895,8 @@
         },
         "type": "object",
         "x-examples": {},
-        "description": "",
-        "x-summary": ""
+        "x-summary": "",
+        "description": ""
       }
     },
     "securitySchemes": {
