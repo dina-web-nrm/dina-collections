@@ -3,28 +3,33 @@
 var startString = '## Short description';
 var stopString = '#';
 
-module.exports = function splitDescription(description) {
-  var descriptionArray = (description || '').split('\n');
-  var summaryStart = undefined;
-  var summaryStop = undefined;
+module.exports = function splitDescription(descriptionInput) {
+  var descriptionArray = (descriptionInput || '').split('\n');
+
+  var summaryStart = void 0;
+  var summaryStop = void 0;
 
   descriptionArray.forEach(function (line, index) {
-    if (summaryStart !== undefined && line.indexOf(startString) > -1) {
-      summaryStart = index;
-    }
-
-    if (summaryStop !== undefined && summaryStart && line.indexOf(stopString) > -1) {
+    if (summaryStop === undefined && summaryStart !== undefined && line.indexOf(stopString) > -1) {
       summaryStop = index;
+    }
+    if (summaryStart === undefined && line.indexOf(startString) > -1) {
+      summaryStart = index;
     }
   });
 
-  if (summaryStart) {
-    console.log('summaryStart', summaryStart);
-    console.log('summaryStop', summaryStop);
+  var description = descriptionInput;
+  var summary = '';
+
+  if (summaryStart !== undefined && summaryStop !== undefined) {
+    var summaryArray = descriptionArray.splice(summaryStart, summaryStop - summaryStart);
+    summary = summaryArray.join(' ').replace(startString, '').replace(new RegExp('#', 'g'), '').trim();
+
+    description = descriptionArray.join('\n').trim();
   }
 
   return {
     description: description,
-    summary: 'summary to be'
+    summary: summary
   };
 };

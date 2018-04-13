@@ -26,7 +26,10 @@ module.exports = function createModel(_ref) {
       _ref$referencePath = _ref.referencePath,
       referencePath = _ref$referencePath === undefined ? '#/components/schemas/' : _ref$referencePath,
       _ref$removeRelationsh = _ref.removeRelationships,
-      removeRelationships = _ref$removeRelationsh === undefined ? false : _ref$removeRelationsh;
+      removeRelationships = _ref$removeRelationsh === undefined ? false : _ref$removeRelationsh,
+      version = _ref.version;
+
+  var documentLink = '/docs/' + version + '/models/';
 
   var normalizedModel = normalizeModel({ model: model, normalize: normalize });
 
@@ -50,7 +53,7 @@ module.exports = function createModel(_ref) {
   }
 
   (0, _keys2.default)(cleanedModel.properties).forEach(function (property) {
-    var _splitDescription = splitDescription(cleanedModel.properties[property].description),
+    var _splitDescription = splitDescription(cleanedModel.properties[property].description, property === 'identifierType'),
         summary = _splitDescription.summary,
         description = _splitDescription.description;
 
@@ -64,7 +67,7 @@ module.exports = function createModel(_ref) {
 
   cleanedModel.description = description;
   cleanedModel['x-summary'] = summary;
-
+  cleanedModel = interpolate(cleanedModel, '__DOCLINK__', documentLink);
   return interpolate((0, _extends3.default)({}, cleanedModel, {
     description: cleanedModel.description || '',
     id: modelKey

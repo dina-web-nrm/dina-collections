@@ -21,7 +21,8 @@ var referencePath = '#/components/schemas/';
 
 var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(_ref) {
   var endpoints = _ref.endpoints,
-      normalize = _ref.normalize;
+      normalize = _ref.normalize,
+      version = _ref.version;
 
   return (0, _keys2.default)(endpoints).reduce(function (responses, endpointName) {
     var response = endpoints[endpointName].response;
@@ -36,7 +37,8 @@ var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(_ref)
           examples: examples,
           model: schema.content,
           normalize: normalize,
-          referencePath: referencePath
+          referencePath: referencePath,
+          version: version
         })));
       }
     }
@@ -47,7 +49,8 @@ var extractResponsesFromEndpoints = function extractResponsesFromEndpoints(_ref)
 
 var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(_ref2) {
   var endpoints = _ref2.endpoints,
-      normalize = _ref2.normalize;
+      normalize = _ref2.normalize,
+      version = _ref2.version;
 
   return (0, _keys2.default)(endpoints).reduce(function (responses, endpointName) {
     var request = endpoints[endpointName].request;
@@ -62,7 +65,8 @@ var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(_ref2) 
           examples: examples,
           model: schema.body,
           normalize: normalize,
-          referencePath: referencePath
+          referencePath: referencePath,
+          version: version
         })));
       }
     }
@@ -73,7 +77,8 @@ var extractRequestsFromEndpoints = function extractRequestsFromEndpoints(_ref2) 
 
 var extractModelsFromModels = function extractModelsFromModels(_ref3) {
   var models = _ref3.models,
-      normalize = _ref3.normalize;
+      normalize = _ref3.normalize,
+      version = _ref3.version;
 
   return (0, _keys2.default)(models).reduce(function (extractedModels, modelKey) {
     var model = models[modelKey];
@@ -81,7 +86,8 @@ var extractModelsFromModels = function extractModelsFromModels(_ref3) {
       model: model,
       normalize: normalize,
       referencePath: referencePath,
-      removeRelationships: true
+      removeRelationships: true,
+      version: version
     });
     return (0, _extends6.default)({}, extractedModels, (0, _defineProperty3.default)({}, modelKey, createdModel));
   }, {});
@@ -91,12 +97,25 @@ module.exports = function createOpenApiComponents(_ref4) {
   var endpoints = _ref4.endpoints,
       models = _ref4.models,
       normalize = _ref4.normalize,
-      security = _ref4.security;
+      security = _ref4.security,
+      version = _ref4.version;
 
-  var requests = extractRequestsFromEndpoints({ endpoints: endpoints, normalize: normalize });
-  var responses = extractResponsesFromEndpoints({ endpoints: endpoints, normalize: normalize });
-  var errors = extractErrorsFromEndpoints({ endpoints: endpoints, normalize: normalize });
-  var extractedModels = extractModelsFromModels({ models: models, normalize: normalize });
+  var requests = extractRequestsFromEndpoints({
+    endpoints: endpoints,
+    normalize: normalize,
+    version: version
+  });
+  var responses = extractResponsesFromEndpoints({
+    endpoints: endpoints,
+    normalize: normalize,
+    version: version
+  });
+  var errors = extractErrorsFromEndpoints({ endpoints: endpoints, normalize: normalize, version: version });
+  var extractedModels = extractModelsFromModels({
+    models: models,
+    normalize: normalize,
+    version: version
+  });
 
   return {
     schemas: (0, _extends6.default)({}, extractedModels, errors, requests, responses),

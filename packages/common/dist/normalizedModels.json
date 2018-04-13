@@ -794,7 +794,7 @@
       "identifierType": {
         "type": "string",
         "example": "catalogNumber",
-        "description": "# identifier -> identifierType\n\n### Identifier type description\n\nThis is some other text\n\nwith many lines [individual.lid](/docs/0.1.0/models/individual/lid)",
+        "description": "# identifierType\n\n### Identifier type description\n\nThis is some other text\n\nwith many lines [individual.lid](/docs/0.1.0/models/individual/lid)",
         "x-summary": "This is a short description of 60 characters"
       },
       "value": {
