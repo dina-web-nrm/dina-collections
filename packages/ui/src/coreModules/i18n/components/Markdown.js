@@ -36,9 +36,9 @@ const Markdown = (
   return (
     <div
       className="markdown-body"
-      dangerouslySetInnerHTML={{ __html: output }}
+      dangerouslySetInnerHTML={{ __html: output }} // eslint-disable-line react/no-danger
     />
-  ) // eslint-disable-line react/no-danger
+  )
 }
 
 Markdown.contextTypes = contextTypes

@@ -52,8 +52,8 @@ class DataModel extends Component {
     return (
       <Model
         model={model}
-        version={schemaVersion}
         specification={specification}
+        version={schemaVersion}
       />
     )
   }
