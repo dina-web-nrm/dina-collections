@@ -15,7 +15,10 @@ export default function getPropertySummary({
     }
 
     if (propertyIsArray) {
-      refModelId = property.items.$ref.replace('#/components/schemas/', '')
+      refModelId =
+        property.items &&
+        property.items.$ref &&
+        property.items.$ref.replace('#/components/schemas/', '')
     }
 
     const refModel =

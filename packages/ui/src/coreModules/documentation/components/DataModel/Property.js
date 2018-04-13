@@ -18,7 +18,9 @@ const Property = ({ model, property, version }) => {
 
   return (
     <Segment basic id={id}>
-      <MarkdownToHtmlAsync markdown={property.description} />
+      {property.description && (
+        <MarkdownToHtmlAsync markdown={property.description} />
+      )}
       <Segment color="blue" style={{ marginTop: '40px' }}>
         <Table celled>
           <Table.Header>

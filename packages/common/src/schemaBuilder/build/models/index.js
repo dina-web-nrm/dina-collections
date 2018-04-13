@@ -89,6 +89,7 @@ module.exports = function createModels({
   const responseModels = extractResponseModelsFromEndpoints({
     endpoints,
     normalize,
+    version,
   })
   const extractedModels = extractModelsFromModels({
     models,
