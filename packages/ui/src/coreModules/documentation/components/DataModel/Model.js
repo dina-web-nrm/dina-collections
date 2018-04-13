@@ -7,28 +7,27 @@ import PropertyOverview from './PropertyOverview'
 
 const propTypes = {
   model: PropTypes.object.isRequired,
+  specification: PropTypes.object.isRequired,
   version: PropTypes.string.isRequired,
 }
 
 const defaultProps = {}
 
-const Model = ({ model, version }) => {
+const Model = ({ model, version, specification }) => {
   const properties = Object.keys(model.properties).map(key => {
     return { key, ...model.properties[key] }
   })
+
   return (
     <Segment basic id={model.key}>
-      <h1>{model.key}</h1>
-
-      {model.description ? (
+      {model.description && (
         <MarkdownToHtmlAsync markdown={model.description} />
-      ) : (
-        <p>Model description</p>
       )}
 
       <PropertyOverview
         model={model}
         properties={properties}
+        specification={specification}
         version={version}
       />
     </Segment>

@@ -15,7 +15,6 @@ const GeneralDocs = ({ match }) => {
 
   return (
     <div>
-      <h2>{docName}</h2>
       <Markdown
         fallbackLanguage="en"
         textKey={`modules.docs.overview.${docName}`}
