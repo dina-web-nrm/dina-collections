@@ -428,7 +428,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
 exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`] = `
 <div>
   <div
-    className="ui inverted vertical labeled icon ui overlay left visible sidebar flex menu"
+    className="ui large inverted vertical labeled icon ui overlay left visible sidebar flex menu"
     style={
       Object {
         "overflow": "hidden",
@@ -994,6 +994,7 @@ exports[`storyshots Storyshots coreModules/i18n/Markdown Default 1`] = `
       className="ui green segment"
     >
       <div
+        className="markdown-body"
         dangerouslySetInnerHTML={
           Object {
             "__html": "<p>Detta är kompilerad markdown</p>",
@@ -1019,6 +1020,7 @@ exports[`storyshots Storyshots coreModules/i18n/Markdown Fallback language 1`] =
       className="ui green segment"
     >
       <div
+        className="markdown-body"
         dangerouslySetInnerHTML={
           Object {
             "__html": "<p>This is compiled markdown in fallback language en</p>",
