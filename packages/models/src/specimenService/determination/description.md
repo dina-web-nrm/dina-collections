@@ -1,3 +1,7 @@
+### Short description
+
+A statement about a specimen's taxon name and/or type status, which is not itself a type status designation.
+
 ### Definition
 
 A statement about a specimen's taxon name and/or type status, which is not itself a type status designation.
