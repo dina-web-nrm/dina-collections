@@ -30,15 +30,15 @@ const DROPDOWN_FILTER_OPTIONS = [
 const propTypes = {}
 
 class LocalityManager extends Component {
-  static renderCreateBlockChild(props) {
+  static renderCreateForm(props) {
     return <CreateForm {...props} />
   }
 
-  static renderEditBlockChild(props) {
+  static renderEditForm(props) {
     return <EditForm {...props} />
   }
 
-  static renderInspectBlockChild(props) {
+  static renderInspectView(props) {
     return <InspectView {...props} />
   }
 
@@ -57,9 +57,9 @@ class LocalityManager extends Component {
         getAncestorsByParentId={globalSelectors.getPlaceAncestorsById}
         itemIdParamName="localityId"
         name="locality"
-        renderCreateBlockChild={LocalityManager.renderCreateBlockChild}
-        renderEditBlockChild={LocalityManager.renderEditBlockChild}
-        renderInspectBlockChild={LocalityManager.renderInspectBlockChild}
+        renderCreateForm={LocalityManager.renderCreateForm}
+        renderEditForm={LocalityManager.renderEditForm}
+        renderInspectView={LocalityManager.renderInspectView}
         renderList={LocalityManager.renderList}
         renderTree={LocalityManager.renderTree}
         urlBasePath="/app/localities"

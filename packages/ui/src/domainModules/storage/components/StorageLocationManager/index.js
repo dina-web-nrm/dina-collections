@@ -30,15 +30,15 @@ const DROPDOWN_FILTER_OPTIONS = [
 const propTypes = {}
 
 class StorageManager extends Component {
-  static renderCreateBlockChild(props) {
+  static renderCreateForm(props) {
     return <CreateForm {...props} />
   }
 
-  static renderEditBlockChild(props) {
+  static renderEditForm(props) {
     return <EditForm {...props} />
   }
 
-  static renderInspectBlockChild(props) {
+  static renderInspectView(props) {
     return <InspectView {...props} />
   }
 
@@ -57,9 +57,9 @@ class StorageManager extends Component {
         getAncestorsByParentId={globalSelectors.getStorageLocationAncestorsById}
         itemIdParamName="storageLocationId"
         name="storage"
-        renderCreateBlockChild={StorageManager.renderCreateBlockChild}
-        renderEditBlockChild={StorageManager.renderEditBlockChild}
-        renderInspectBlockChild={StorageManager.renderInspectBlockChild}
+        renderCreateForm={StorageManager.renderCreateForm}
+        renderEditForm={StorageManager.renderEditForm}
+        renderInspectView={StorageManager.renderInspectView}
         renderList={StorageManager.renderList}
         renderTree={StorageManager.renderTree}
         urlBasePath="/app/storageLocations"
