@@ -105,7 +105,18 @@ export class AdvancedLocalityDropdownSearch extends Component {
     })
   }
 
-  handleOnClose() {
+  handleOnClose(event) {
+    // this is to fix bug with event bubbling up unexpectedly, causing modal to
+    // close even when it should not
+    if (
+      event &&
+      event.path &&
+      event.path[0] &&
+      (!event.path[0].className || !event.path[0].className.includes('modals'))
+    ) {
+      return
+    }
+
     this.setState({
       createActive: false,
       createChildToParentId: undefined,
