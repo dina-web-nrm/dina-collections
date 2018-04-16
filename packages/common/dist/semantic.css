@@ -25388,6 +25388,10 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.selectable.table tr {
+  cursor: pointer;
+}
 /*!
  * # Semantic UI 2.2.13 - Ad
  * http://github.com/semantic-org/semantic-ui/

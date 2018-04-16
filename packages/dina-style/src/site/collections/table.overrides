@@ -1,3 +1,6 @@
 /*******************************
          Site Overrides
 *******************************/
+.ui.selectable.table tr {
+  cursor: pointer;
+}
