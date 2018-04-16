@@ -3,29 +3,12 @@ import React, { Component } from 'react'
 import { CrudBlocksWrapper } from 'coreModules/crudBlocks/components'
 
 import globalSelectors from '../../globalSelectors'
-import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
+import { DROPDOWN_FILTER_OPTIONS } from '../../constants'
 import CreateForm from '../item/form/Create'
 import EditForm from '../item/form/Edit'
 import InspectView from '../item/Inspect'
 import LocalityList from '../collection/LocalityList'
 import LocalityTree from '../collection/LocalityTree'
-
-const groups = [CONTINENT, COUNTRY, DISTRICT, PROVINCE]
-
-const DROPDOWN_FILTER_OPTIONS = [
-  {
-    key: ALL,
-    text: ALL,
-    value: '',
-  },
-  ...groups.map(group => {
-    return {
-      key: group,
-      text: group,
-      value: group,
-    }
-  }),
-]
 
 const propTypes = {}
 

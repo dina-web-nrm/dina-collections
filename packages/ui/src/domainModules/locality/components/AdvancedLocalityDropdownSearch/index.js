@@ -20,6 +20,7 @@ import {
   SET_ITEM_INSPECT,
   TREE,
 } from 'coreModules/crudBlocks/constants'
+import { DROPDOWN_FILTER_OPTIONS } from '../../constants'
 import globalSelectors from '../../globalSelectors'
 import CreateForm from '../item/form/Create'
 import InspectView from '../item/Inspect'
@@ -204,6 +205,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
             <CollectionBlock
               collectionBlockType={collectionBlockType}
               disableEdit
+              dropdownFilterOptions={DROPDOWN_FILTER_OPTIONS}
               getAncestorsByParentId={globalSelectors.getPlaceAncestorsById}
               layoutMode="modal"
               name={NAME}
