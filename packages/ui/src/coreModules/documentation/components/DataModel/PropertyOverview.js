@@ -8,14 +8,16 @@ import createParameterLink from '../../utilities/createParameterLink'
 import getPropertyIsArray from '../../utilities/getPropertyIsArray'
 import getPropertyIsModel from '../../utilities/getPropertyIsModel'
 import getPropertyIsAnyOf from '../../utilities/getPropertyIsAnyOf'
+import getPropertySummary from '../../utilities/getPropertySummary'
 
 const propTypes = {
   model: PropTypes.object.isRequired,
   properties: PropTypes.array.isRequired,
+  specification: PropTypes.object.isRequired,
   version: PropTypes.string.isRequired,
 }
 
-const PropertyOverview = ({ properties, model, version }) => {
+const PropertyOverview = ({ properties, model, version, specification }) => {
   return (
     <Segment color="green" style={{ marginTop: '40px' }}>
       <h2>Properties</h2>
@@ -34,6 +36,13 @@ const PropertyOverview = ({ properties, model, version }) => {
             const propertyIsArray = getPropertyIsArray(property)
             const propertyIsModel = getPropertyIsModel(property)
             const propertyIsAnyOf = getPropertyIsAnyOf(property)
+            const propertySummary = getPropertySummary({
+              property,
+              propertyIsAnyOf,
+              propertyIsArray,
+              propertyIsModel,
+              specification,
+            })
             return (
               <Table.Row key={property.key}>
                 <Table.Cell>
@@ -51,7 +60,7 @@ const PropertyOverview = ({ properties, model, version }) => {
                     </Link>
                   )}
                 </Table.Cell>
-                <Table.Cell>{property.description}</Table.Cell>
+                <Table.Cell>{propertySummary}</Table.Cell>
                 <Table.Cell>
                   <Type property={property} version={version} />
                 </Table.Cell>

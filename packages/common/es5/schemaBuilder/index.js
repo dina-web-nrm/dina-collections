@@ -10,6 +10,8 @@ function main(_ref) {
       apiBasePath = _ref.apiBasePath,
       normalize = _ref.normalize;
 
+  var version = '0.1.0';
+
   var _read = read({
     apiBasePath: apiBasePath,
     modelBasePath: modelBasePath
@@ -32,7 +34,8 @@ function main(_ref) {
     normalize: normalize,
     parameters: parameters,
     security: security,
-    servers: servers
+    servers: servers,
+    version: version
   }),
       cleanModels = _build.cleanModels,
       openApi = _build.openApi;
@@ -42,7 +45,7 @@ function main(_ref) {
     normalize: normalize,
     openApi: openApi,
     setCurrent: true,
-    version: '0.1.0'
+    version: version
   });
 
   write({

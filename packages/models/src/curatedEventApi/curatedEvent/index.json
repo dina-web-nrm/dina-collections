@@ -1,7 +1,0 @@
-{
-  "additionalProperties": false,
-  "description": "tba",
-  "properties": {
-    "id": {"type": "string"}
-  }
-}

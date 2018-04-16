@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const readParameterFromJsonFile = require('./readParameterFromJsonFile')
 
 module.exports = function readJsonFromDirectory({
@@ -19,6 +20,24 @@ module.exports = function readJsonFromDirectory({
     })
 
     if (file) {
+      const { properties } = file
+      Object.keys(properties).forEach(property => {
+        const propertyDescriptionPath = path.join(
+          directory,
+          fileName,
+          `${property}.md`
+        )
+        if (
+          fs.existsSync(propertyDescriptionPath) &&
+          property !== 'description'
+        ) {
+          properties[property].description = fs.readFileSync(
+            propertyDescriptionPath,
+            'utf8'
+          )
+        }
+      })
+
       return {
         ...obj,
         [fileName]: file,

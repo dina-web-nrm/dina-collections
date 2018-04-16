@@ -13,7 +13,8 @@ module.exports = function build(_ref) {
       normalize = _ref.normalize,
       parameters = _ref.parameters,
       security = _ref.security,
-      servers = _ref.servers;
+      servers = _ref.servers,
+      version = _ref.version;
 
   var endpoints = buildEndpoints(endpointsInput);
 
@@ -26,7 +27,8 @@ module.exports = function build(_ref) {
     normalize: normalize,
     parameters: parameters,
     security: security,
-    servers: servers
+    servers: servers,
+    version: version
   });
 
   var cleanModels = createModels({
@@ -37,7 +39,8 @@ module.exports = function build(_ref) {
     models: models,
     normalize: normalize,
     parameters: parameters,
-    security: security
+    security: security,
+    version: version
   });
 
   return {

@@ -15,7 +15,8 @@ module.exports = function createOpenApi(_ref) {
       normalize = _ref.normalize,
       parameters = _ref.parameters,
       security = _ref.security,
-      servers = _ref.servers;
+      servers = _ref.servers,
+      version = _ref.version;
 
   return {
     openapi: '3.0.0',
@@ -29,7 +30,8 @@ module.exports = function createOpenApi(_ref) {
       models: models,
       normalize: normalize,
       parameters: parameters,
-      security: security
+      security: security,
+      version: version
     })
   };
 };

@@ -33,28 +33,16 @@
   ],
   "tags": [
     {
-      "description": "## Api managing agents.\n",
-      "name": "agentService"
-    },
-    {
       "description": "Auth api\n",
       "name": "authService"
-    },
-    {
-      "description": "CuratedEventApi - ex expeditions\n\n",
-      "name": "curatedEventService"
     },
     {
       "description": "Api managing curated lists.\n",
       "name": "curatedListService"
     },
     {
-      "description": "Api managing externalEvents like loan and acquisitions.\n",
-      "name": "externalEventService"
-    },
-    {
       "description": "Locality Service\n",
-      "name": "localityService"
+      "name": "placeService"
     },
     {
       "description": "Specimens api\n",
@@ -69,351 +57,10 @@
     },
     {
       "description": "Mock taxon api\n",
-      "name": "taxonService"
+      "name": "taxonomyService"
     }
   ],
   "paths": {
-    "/api/agent/v01/agents": {
-      "post": {
-        "operationId": "createAgent",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/createAgentRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createAgentResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createAgent-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createAgent-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create agent",
-        "tags": [
-          "agentService"
-        ]
-      },
-      "get": {
-        "operationId": "getAgents",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgentsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgents-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgents-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find agents",
-        "tags": [
-          "agentService"
-        ]
-      }
-    },
-    "/api/agent/v01/agents/{id}": {
-      "get": {
-        "operationId": "getAgent",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "agent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "enum": [
-                "primary"
-              ],
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgentResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgent-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgent-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getAgent-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find agent by id",
-        "tags": [
-          "agentService"
-        ]
-      },
-      "patch": {
-        "operationId": "updateAgent",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "agent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateAgentRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgentResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgent-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgent-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateAgent-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates agent",
-        "tags": [
-          "agentService"
-        ]
-      }
-    },
     "/auth/realms/dina/protocol/openid-connect/userInfo": {
       "get": {
         "operationId": "getUser",
@@ -470,344 +117,6 @@
         "summary": "Gets user token",
         "tags": [
           "authService"
-        ]
-      }
-    },
-    "/api/curatedEvent/v01/expeditions": {
-      "post": {
-        "operationId": "createExpedition",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/createExpeditionRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createExpeditionResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createExpedition-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/createExpedition-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create expedition",
-        "tags": [
-          "curatedEventService"
-        ]
-      },
-      "get": {
-        "operationId": "getExpeditions",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditionsResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditions-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditions-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find expeditions",
-        "tags": [
-          "curatedEventService"
-        ]
-      }
-    },
-    "/api/curatedEvent/v01/expeditions/{id}": {
-      "get": {
-        "operationId": "getExpedition",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "expedition id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpeditionResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpedition-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpedition-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getExpedition-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find expedition by id",
-        "tags": [
-          "curatedEventService"
-        ]
-      },
-      "patch": {
-        "operationId": "updateExpedition",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "expedition id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateExpeditionRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpeditionResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpedition-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpedition-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/updateExpedition-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates expedition",
-        "tags": [
-          "curatedEventService"
         ]
       }
     },
@@ -1559,7 +868,7 @@
         ],
         "summary": "Create place",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       },
       "get": {
@@ -1688,7 +997,7 @@
         ],
         "summary": "Find places",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       }
     },
@@ -1784,7 +1093,7 @@
         ],
         "summary": "Updates place",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       },
       "get": {
@@ -1916,7 +1225,7 @@
         ],
         "summary": "Find place by id",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       }
     },
@@ -2012,7 +1321,7 @@
         ],
         "summary": "Update place -> parent",
         "tags": [
-          "localityService"
+          "placeService"
         ]
       }
     },
@@ -4655,7 +3964,7 @@
         ],
         "summary": "Create taxon",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       },
       "get": {
@@ -4766,7 +4075,7 @@
         ],
         "summary": "Find taxon",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       }
     },
@@ -4862,7 +4171,7 @@
         ],
         "summary": "Updates taxon",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       },
       "get": {
@@ -4966,7 +4275,7 @@
         ],
         "summary": "Find taxon by id",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       }
     },
@@ -5062,7 +4371,7 @@
         ],
         "summary": "Update taxon -> parent",
         "tags": [
-          "taxonService"
+          "taxonomyService"
         ]
       }
     }
@@ -5087,54 +4396,51 @@
         "title": "500",
         "type": "integer"
       },
-      "agent": {
-        "additionalProperties": false,
-        "description": "WIP",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        },
-        "x-category": "agentApi",
-        "x-modelType": "model"
-      },
       "dateWrapper": {
         "additionalProperties": false,
         "properties": {
           "isoDate": {
             "type": "string",
-            "description": "A date in standard format. TBA"
+            "description": "A date in standard format. TBA",
+            "x-summary": ""
           },
           "dateText": {
             "type": "string",
-            "example": "Before 1800"
+            "example": "Before 1800",
+            "x-summary": ""
           },
           "day": {
             "type": "integer",
-            "example": 25
+            "example": 25,
+            "x-summary": ""
           },
           "month": {
             "type": "integer",
-            "example": 12
+            "example": 12,
+            "x-summary": ""
           },
           "year": {
             "type": "integer",
-            "example": 1981
+            "example": 1981,
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nInformation pertaining to a specific date or a date range.\n\n### Note(s)\n\nIncludes for example verbatim information about when something happened.\n",
         "x-category": "core",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "externalModelReference": {
         "additionalProperties": false,
         "description": "A reference to a model owned by another service",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "required": [
@@ -5142,7 +4448,8 @@
           "type"
         ],
         "x-category": "core",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "lid": {
         "additionalProperties": false,
@@ -5150,14 +4457,16 @@
         "type": "string",
         "properties": {},
         "x-category": "core",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "notDefinedModel": {
         "additionalProperties": true,
         "description": "A model to be used until proper concept is defined",
         "properties": {},
         "x-category": "core",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "polygon": {
         "additionalProperties": false,
@@ -5165,11 +4474,13 @@
         "properties": {
           "vertices": {
             "type": "array",
-            "description": "Corners of the polygon in sane format"
+            "description": "Corners of the polygon in sane format",
+            "x-summary": ""
           }
         },
         "x-category": "core",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "position": {
         "additionalProperties": false,
@@ -5177,47 +4488,57 @@
         "properties": {
           "latitude": {
             "type": "string",
-            "description": "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere."
+            "description": "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
+            "x-summary": ""
           },
           "longitude": {
             "type": "string",
-            "description": "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere."
+            "description": "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
+            "x-summary": ""
           },
           "geodeticDatum": {
             "type": "string",
-            "description": "Geodetic datum wip"
+            "description": "Geodetic datum wip",
+            "x-summary": ""
           },
           "uncertaintyInMeters": {
             "type": "integer",
-            "description": "Coordinate uncertainty in meters"
+            "description": "Coordinate uncertainty in meters",
+            "x-summary": ""
           },
           "referenceSystem": {
             "type": "string",
-            "description": "TBA"
+            "description": "TBA",
+            "x-summary": ""
           }
         },
         "x-category": "core",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "readOnly": {
         "additionalProperties": true,
         "properties": {},
         "x-category": "core",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "translatedString": {
         "additionalProperties": false,
         "properties": {
           "en": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "sv": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "x-category": "core",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "verticalPosition": {
@@ -5226,19 +4547,23 @@
         "properties": {
           "maximumDepthInMeters": {
             "type": "integer",
-            "description": "Max depth (m)"
+            "description": "Max depth (m)",
+            "x-summary": ""
           },
           "maximumElevationInMeters": {
             "type": "integer",
-            "description": "Max elevation (m)"
+            "description": "Max elevation (m)",
+            "x-summary": ""
           },
           "minimumDepthInMeters": {
             "type": "integer",
-            "description": "Min depth (m)"
+            "description": "Min depth (m)",
+            "x-summary": ""
           },
           "minimumElevationInMeters": {
             "type": "integer",
-            "description": "Min elevation (m)"
+            "description": "Min elevation (m)",
+            "x-summary": ""
           }
         },
         "x-required": [
@@ -5248,52 +4573,35 @@
           "type"
         ],
         "x-category": "core",
-        "x-modelType": "model"
-      },
-      "curatedEvent": {
-        "additionalProperties": false,
-        "description": "### Definition\n\nA defined event with known extension in time and space.\n\n\n\n",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "x-category": "curatedEventApi",
-        "x-modelType": "model"
-      },
-      "expedition": {
-        "additionalProperties": false,
-        "description": "tba",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        },
-        "x-category": "curatedEventApi",
-        "x-modelType": "model"
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "curatedList": {
         "additionalProperties": false,
         "properties": {
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "type": {
             "type": "string",
             "enum": [
               "featureType",
               "preparationType"
-            ]
+            ],
+            "x-summary": ""
           },
           "items": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/curatedListType"
-            }
+            },
+            "x-summary": ""
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "curatedListType": {
@@ -5307,207 +4615,213 @@
               {
                 "$ref": "#/components/schemas/preparationType"
               }
-            ]
+            ],
+            "x-summary": ""
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "featureType": {
         "additionalProperties": false,
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "name": {
-            "$ref": "#/components/schemas/translatedString"
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
           },
           "group": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "selectableValues": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/selectableValue"
-            }
+            },
+            "x-summary": ""
           },
           "selectableUnits": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/selectableUnit"
-            }
+            },
+            "x-summary": ""
           },
           "selectableMethods": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/selectableMethod"
-            }
+            },
+            "x-summary": ""
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nThe type of FeatureObservation. Will likely be a currated list\n\n### Example(s)\n\nSex\n",
-        "x-category": "curatedListApi",
-        "x-modelType": "model"
+        "x-category": "curatedListService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "preparationType": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "category": {
             "type": "string",
-            "example": "skin"
+            "example": "skin",
+            "x-summary": ""
           },
           "name": {
             "type": "string",
-            "example": "hair, scales"
+            "example": "hair, scales",
+            "x-summary": ""
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "selectableMethod": {
         "additionalProperties": false,
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "name": {
-            "$ref": "#/components/schemas/translatedString"
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "methodType": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "selectableUnit": {
         "additionalProperties": false,
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "name": {
-            "$ref": "#/components/schemas/translatedString"
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "unitType": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "selectableValue": {
         "additionalProperties": false,
         "properties": {
           "key": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "name": {
-            "$ref": "#/components/schemas/translatedString"
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "valueType": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
-        "x-category": "curatedListApi",
+        "x-category": "curatedListService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
-      },
-      "identifier": {
-        "additionalProperties": false,
-        "properties": {
-          "lid": {
-            "type": "string"
-          },
-          "publishRecord": {
-            "type": "boolean"
-          },
-          "remarks": {
-            "type": "string",
-            "example": "Some remarks"
-          },
-          "identifierType": {
-            "type": "string",
-            "example": "catalogNumber"
-          },
-          "value": {
-            "type": "string",
-            "example": "584028"
-          },
-          "nameSpace": {
-            "type": "string",
-            "example": "mammal"
-          },
-          "validation": {
-            "type": "string",
-            "example": "^$|^[0-9]{6}$|^[0-9]{8}$"
-          }
-        },
-        "description": "### Definition\n\nTba\n",
-        "x-category": "identifierApi",
-        "x-modelType": "model"
       },
       "place": {
         "additionalProperties": false,
         "properties": {
           "name": {
             "type": "string",
-            "description": "Name of the locality"
+            "description": "Name of the locality",
+            "x-summary": ""
           },
           "versionId": {
             "type": "string",
-            "description": "Id of the specific version"
+            "description": "Id of the specific version",
+            "x-summary": ""
           },
           "createdAt": {
             "type": "string",
-            "description": "Timestamp corresponding to when created"
+            "description": "Timestamp corresponding to when created",
+            "x-summary": ""
           },
           "createdBy": {
             "type": "string",
-            "description": "Some kind of reference to the individual that created the locality"
+            "description": "Some kind of reference to the individual that created the locality",
+            "x-summary": ""
           },
           "updatedBy": {
             "type": "string",
-            "description": "Some kind of reference to the individual that updated/created the specific version"
+            "description": "Some kind of reference to the individual that updated/created the specific version",
+            "x-summary": ""
           },
           "updatedAt": {
             "type": "string",
-            "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
+            "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt",
+            "x-summary": ""
           },
           "id": {
             "type": "string",
-            "description": "Unique identifier that is consistent over time"
+            "description": "Unique identifier that is consistent over time",
+            "x-summary": ""
           },
           "description": {
             "type": "string",
-            "description": "Description of the locality"
+            "description": "Description of the locality",
+            "x-summary": ""
           },
           "group": {
             "type": "string",
@@ -5521,30 +4835,36 @@
               "province",
               "root",
               "rubin"
-            ]
+            ],
+            "x-summary": ""
           },
           "centralPosition": {
             "type": "object",
             "description": "A position describing the center",
-            "$ref": "#/components/schemas/position"
+            "$ref": "#/components/schemas/position",
+            "x-summary": ""
           },
           "parent": {
             "type": "object",
             "description": "A polygon describing the edges",
-            "$ref": "#/components/schemas/place"
+            "$ref": "#/components/schemas/place",
+            "x-summary": ""
           },
           "polygon": {
             "type": "object",
             "description": "A polygon describing the edges",
-            "$ref": "#/components/schemas/polygon"
+            "$ref": "#/components/schemas/polygon",
+            "x-summary": ""
           },
           "verticalPosition": {
             "description": "A vertical position",
             "type": "object",
-            "$ref": "#/components/schemas/verticalPosition"
+            "$ref": "#/components/schemas/verticalPosition",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "x-required": [
@@ -5554,520 +4874,680 @@
           "group"
         ],
         "description": "### Definition\n\nA defined location with known extension in space.\n",
-        "x-category": "localityApi",
-        "x-modelType": "model"
+        "x-category": "placeService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "collectingInformation": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "collectorsText": {
             "type": "string",
             "example": "Bergström, U",
-            "description": "Name of the collector"
+            "description": "Name of the collector",
+            "x-summary": ""
           },
           "event": {
-            "$ref": "#/components/schemas/event"
+            "$ref": "#/components/schemas/event",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nThe context under which some specific material was collected.\n\n### Note(s)\n\nThis includes collecting information of various kinds, for example collector(s) and collecting method.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "collectionItem": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "alternateIdentifiersText": {
             "type": "string",
-            "example": "Skin complete, prepared"
+            "example": "Skin complete, prepared",
+            "x-summary": ""
           },
           "identifiers": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/identifier"
-            }
+            },
+            "x-summary": ""
           },
           "collectingInformation": {
-            "$ref": "#/components/schemas/collectingInformation"
+            "$ref": "#/components/schemas/collectingInformation",
+            "x-summary": ""
           },
           "curatorialAssessments": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/curatorialAssessment"
-            }
+            },
+            "x-summary": ""
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "preparationType": {
-            "$ref": "#/components/schemas/preparationType"
+            "$ref": "#/components/schemas/preparationType",
+            "x-summary": ""
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "physicalObjectText": {
             "type": "string",
-            "example": "Skin complete, prepared"
+            "example": "Skin complete, prepared",
+            "x-summary": ""
           },
           "physicalObject": {
-            "$ref": "#/components/schemas/physicalObject"
+            "$ref": "#/components/schemas/physicalObject",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "curatorialAssessment": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "agent": {
             "type": "string",
-            "example": "Doe, J."
+            "example": "Doe, J.",
+            "x-summary": ""
           },
           "date": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "condition": {
             "type": "string",
-            "example": "Good"
+            "example": "Good",
+            "x-summary": ""
           },
           "conditionRemarks": {
             "type": "string",
-            "example": "Small damage on left hind leg"
+            "example": "Small damage on left hind leg",
+            "x-summary": ""
           },
           "inventoryStatusRemarks": {
             "type": "string",
-            "example": "On loan"
+            "example": "On loan",
+            "x-summary": ""
           },
           "isInStorage": {
-            "type": "boolean"
+            "type": "boolean",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nAssessment whether specimen is in storage or not found.\n\n### Example(s)\n\n* 2017-01-02 Jane Doe. Not found. On loan\n* 2016-10-11 John Doe. In storage. Good condition.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "deathInformation": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "collectorsText": {
             "type": "string",
             "example": "Bergström, U",
-            "description": "Name of the collector"
+            "description": "Name of the collector",
+            "x-summary": ""
           },
           "event": {
-            "$ref": "#/components/schemas/event"
+            "$ref": "#/components/schemas/event",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nInformation about the death of an individual or group of individuals.\n\n### Note(s)\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "determination": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "remarks": {
             "type": "string",
-            "example": "Some remarks"
+            "example": "Some remarks",
+            "x-summary": ""
           },
           "determinationText": {
             "type": "string",
-            "example": "Sorex minutus, by Doe, J. on 1982-01-01"
+            "example": "Sorex minutus, by Doe, J. on 1982-01-01",
+            "x-summary": ""
           },
           "determinationVerbatim": {
             "type": "string",
-            "description": "In exactly the same words as were used originally"
+            "description": "In exactly the same words as were used originally",
+            "x-summary": ""
           },
           "determinedByAgentText": {
             "type": "string",
-            "example": "Doe, J."
+            "example": "Doe, J.",
+            "x-summary": ""
           },
           "date": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "taxon": {
-            "$ref": "#/components/schemas/taxon"
+            "$ref": "#/components/schemas/taxon",
+            "x-summary": ""
           },
           "isCurrentDetermination": {
             "type": "boolean",
-            "example": true
+            "example": true,
+            "x-summary": ""
           }
         },
-        "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.",
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "A statement about a specimen's taxon name and/or type status, which is not itself a type status designation."
       },
       "event": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "startDate": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "endDate": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "expeditionText": {
             "type": "string",
-            "example": "Vega Expedition"
+            "example": "Vega Expedition",
+            "x-summary": ""
           },
           "locationInformation": {
-            "$ref": "#/components/schemas/locationInformation"
+            "$ref": "#/components/schemas/locationInformation",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "featureObservation": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "featureObservationAgent": {
             "type": "string",
-            "example": "Doe, J."
+            "example": "Doe, J.",
+            "x-summary": ""
           },
           "date": {
-            "$ref": "#/components/schemas/dateWrapper"
+            "$ref": "#/components/schemas/dateWrapper",
+            "x-summary": ""
           },
           "featureObservationText": {
             "type": "string",
-            "example": "10 years"
+            "example": "10 years",
+            "x-summary": ""
           },
           "featureObservationUnit": {
             "type": "string",
-            "example": "kg"
+            "example": "kg",
+            "x-summary": ""
           },
           "featureType": {
-            "$ref": "#/components/schemas/featureType"
+            "$ref": "#/components/schemas/featureType",
+            "x-summary": ""
           },
           "methodText": {
             "type": "string",
-            "example": "Known age"
+            "example": "Known age",
+            "x-summary": ""
           },
           "remarks": {
             "type": "string",
-            "example": "According to catalog card"
+            "example": "According to catalog card",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine) during a single event.\n\n### Example(s)\n\nWhen a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n\n### Note(s)\n\nThe kinds of data for the observation is determined by its FeatureType.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
+      },
+      "identifier": {
+        "additionalProperties": false,
+        "properties": {
+          "lid": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "publishRecord": {
+            "type": "boolean",
+            "x-summary": ""
+          },
+          "remarks": {
+            "type": "string",
+            "example": "Some remarks",
+            "x-summary": ""
+          },
+          "identifierType": {
+            "type": "string",
+            "example": "catalogNumber",
+            "description": "# identifierType\n\n### Identifier type description\n\nThis is some other text\n\nwith many lines [individual.lid](/docs/0.1.0/models/individual/lid)",
+            "x-summary": "This is a short description of 60 characters"
+          },
+          "value": {
+            "type": "string",
+            "example": "584028",
+            "x-summary": ""
+          },
+          "nameSpace": {
+            "type": "string",
+            "example": "mammal",
+            "x-summary": ""
+          },
+          "validation": {
+            "type": "string",
+            "example": "^$|^[0-9]{6}$|^[0-9]{8}$",
+            "x-summary": ""
+          }
+        },
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
       },
       "individual": {
         "additionalProperties": false,
         "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "determinations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/determination"
-            }
+            },
+            "x-summary": ""
           },
           "taxonInformation": {
-            "$ref": "#/components/schemas/taxonInformation"
+            "$ref": "#/components/schemas/taxonInformation",
+            "x-summary": ""
           },
           "collectingInformation": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/collectingInformation"
-            }
+            },
+            "x-summary": ""
           },
           "featureObservations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/featureObservation"
-            }
+            },
+            "x-summary": ""
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "identifiers": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/identifier"
-            }
+            },
+            "x-summary": ""
           },
           "collectionItems": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/collectionItem"
-            }
+            },
+            "x-summary": ""
           },
           "readOnly": {
-            "$ref": "#/components/schemas/readOnly"
+            "$ref": "#/components/schemas/readOnly",
+            "x-summary": ""
           },
           "version": {
-            "type": "integer"
+            "type": "integer",
+            "x-summary": ""
           }
         },
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "locationInformation": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "places": {
             "description": "An array with curated localities",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/place"
-            }
+            },
+            "x-summary": ""
           },
           "position": {
             "type": "object",
-            "$ref": "#/components/schemas/position"
+            "$ref": "#/components/schemas/position",
+            "x-summary": ""
           },
           "polygon": {
             "type": "object",
-            "$ref": "#/components/schemas/polygon"
+            "$ref": "#/components/schemas/polygon",
+            "x-summary": ""
           },
           "verticalPosition": {
             "type": "object",
-            "$ref": "#/components/schemas/verticalPosition"
+            "$ref": "#/components/schemas/verticalPosition",
+            "x-summary": ""
           },
           "coordinatesVerbatim": {
             "type": "string",
-            "description": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source"
+            "description": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source",
+            "x-summary": ""
           },
           "georeferenceSourcesText": {
             "type": "string",
-            "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
+            "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
+            "x-summary": ""
           },
           "localityName": {
             "type": "string",
-            "description": "TBA"
+            "description": "TBA",
+            "x-summary": ""
           },
           "remarks": {
             "type": "string",
-            "description": "Notes on the locality"
+            "description": "Notes on the locality",
+            "x-summary": ""
           },
           "localityVerbatim": {
             "type": "string",
-            "description": "Verbatim locality names and description, as in the original source, typos and all."
+            "description": "Verbatim locality names and description, as in the original source, typos and all.",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nInformation pertaining to a specific location.\n\n### Note(s)\n\nIncludes for example verbatim information about a location.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "observationInformation": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "collectorsText": {
             "type": "string",
             "example": "Bergström, U",
-            "description": "Name of the collector"
+            "description": "Name of the collector",
+            "x-summary": ""
           },
           "event": {
-            "$ref": "#/components/schemas/event"
+            "$ref": "#/components/schemas/event",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nInformation about an observation of an individual or group of individuals.\n\n### Note(s)\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "originInformation": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "collectorsText": {
             "type": "string",
             "example": "Bergström, U",
-            "description": "Name of the collector"
+            "description": "Name of the collector",
+            "x-summary": ""
           },
           "event": {
-            "$ref": "#/components/schemas/event"
+            "$ref": "#/components/schemas/event",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nInformation about the origin of an individual or group of individuals.\n\n### Note(s)\n\nThis can for example involve the genetic origin or a specific event when an individual moved from an place to another.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "specimen": {
         "additionalProperties": false,
         "description": "This is a description",
         "properties": {
           "individual": {
-            "$ref": "#/components/schemas/individual"
+            "$ref": "#/components/schemas/individual",
+            "x-summary": ""
           },
           "collectionItems": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/collectionItem"
-            }
+            },
+            "x-summary": ""
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "collectingInformation": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/collectingInformation"
-            }
+            },
+            "x-summary": ""
           },
           "determinations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/determination"
-            }
+            },
+            "x-summary": ""
           },
           "identifiers": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/identifier"
-            }
+            },
+            "x-summary": ""
           },
           "taxonInformation": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/taxonInformation"
-            }
+            },
+            "x-summary": ""
           },
           "featureObservations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/featureObservation"
-            }
+            },
+            "x-summary": ""
           },
           "events": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/event"
-            }
+            },
+            "x-summary": ""
           },
           "version": {
-            "type": "integer"
+            "type": "integer",
+            "x-summary": ""
           },
           "readOnly": {
-            "$ref": "#/components/schemas/readOnly"
+            "$ref": "#/components/schemas/readOnly",
+            "x-summary": ""
           }
         },
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "taxonInformation": {
         "additionalProperties": false,
         "properties": {
           "lid": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "curatorialName": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "taxonRemarks": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nThe taxon to which an individual is currently assigned according to a local classification.\n",
-        "x-category": "specimenApi",
-        "x-modelType": "model"
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "physicalObject": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "collectionItems": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/collectionItem"
-            }
+            },
+            "x-summary": ""
           },
           "normalStorageLocationText": {
             "description": "Will be moved to storageLocation",
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "storedUnderTaxonName": {
             "description": "Will be moved to storageLocation",
             "type": "string",
-            "example": "Sorex minutus"
+            "example": "Sorex minutus",
+            "x-summary": ""
           },
           "storageLocation": {
-            "$ref": "#/components/schemas/storageLocation"
+            "$ref": "#/components/schemas/storageLocation",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nThe smallest recognized physical “thing” in the collection. A set of identifiable units. One or more.\n\n### Example(s)\n\nEx.1. A herbarium sheet with multiple leafs (many identifiable units)\nEx.2. A device where a skin is mounted at (one identifiable unit)\nEx.3. A device where a stone with a moss is mounted (two identifiable unit)\n",
-        "x-category": "storageApi",
-        "x-modelType": "model"
+        "x-category": "storageService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "storageLocation": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "versionId": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "group": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "parentId": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           }
         },
         "description": "### Definition\n\nA delimited space in the collection where one ore more physical units can be placed.\n",
-        "x-category": "storageApi",
-        "x-modelType": "model"
+        "x-category": "storageService",
+        "x-modelType": "model",
+        "x-summary": ""
       },
       "taxon": {
         "additionalProperties": false,
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "x-summary": ""
           },
           "rubinNumber": {
             "type": "string",
-            "description": "Rubin storage number for the taxon"
+            "description": "Rubin storage number for the taxon",
+            "x-summary": ""
           },
           "higherTaxa": {
             "type": "object",
@@ -6108,28 +5588,34 @@
                 "type": "string",
                 "description": "Parent subgenus"
               }
-            }
+            },
+            "x-summary": ""
           },
           "rank": {
             "type": "string",
-            "description": "Taxon rank"
+            "description": "Taxon rank",
+            "x-summary": ""
           },
           "scientificName": {
             "type": "string",
-            "description": "Taxon scientific name, binomial if species"
+            "description": "Taxon scientific name, binomial if species",
+            "x-summary": ""
           },
           "author": {
             "type": "string",
-            "description": "Taxon author without the year"
+            "description": "Taxon author without the year",
+            "x-summary": ""
           },
           "authorDate": {
             "type": "string",
-            "description": "Taxon author year"
+            "description": "Taxon author year",
+            "x-summary": ""
           },
           "validName": {
             "type": "boolean",
             "description": "Is the name taxonomically valid",
-            "default": false
+            "default": false,
+            "x-summary": ""
           },
           "vernacularNames": {
             "type": "object",
@@ -6148,19 +5634,23 @@
                   "description": "Vernacular (common) Swedish names for the taxon"
                 }
               }
-            }
+            },
+            "x-summary": ""
           },
           "synonyms": {
             "type": "string",
-            "description": "List of synonyms as free-form text"
+            "description": "List of synonyms as free-form text",
+            "x-summary": ""
           },
           "sortOrder": {
             "type": "string",
-            "description": "Taxonomical sort order code from Mammal Species of the World list"
+            "description": "Taxonomical sort order code from Mammal Species of the World list",
+            "x-summary": ""
           }
         },
-        "x-category": "taxonomyApi",
+        "x-category": "taxonomyService",
         "x-modelType": "model",
+        "x-summary": "",
         "description": ""
       },
       "BaseError": {
@@ -6207,7 +5697,7 @@
         "title": "REQUEST_ERROR",
         "type": "string"
       },
-      "createAgent-400": {
+      "createPreparationType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -6245,528 +5735,6 @@
         "example": "INTERNAL_SERVER_ERROR",
         "title": "INTERNAL_SERVER_ERROR",
         "type": "string"
-      },
-      "createAgent-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getAgent-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "RESOURCE_NOT_FOUND_ERROR": {
-        "description": "Requested resource not found. See details",
-        "example": "RESOURCE_NOT_FOUND_ERROR",
-        "title": "RESOURCE_NOT_FOUND_ERROR",
-        "type": "string"
-      },
-      "getAgent-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "getAgent-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "updateAgent-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "updateAgent-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "updateAgent-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getAgents-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getAgents-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "createExpedition-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "createExpedition-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getExpedition-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getExpedition-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "getExpedition-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "updateExpedition-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "updateExpedition-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "updateExpedition-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "getExpeditions-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "getExpeditions-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "createPreparationType-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
       },
       "createPreparationType-500": {
         "allOf": [
@@ -6821,6 +5789,12 @@
         ],
         "title": "Bad Request",
         "type": "object"
+      },
+      "RESOURCE_NOT_FOUND_ERROR": {
+        "description": "Requested resource not found. See details",
+        "example": "RESOURCE_NOT_FOUND_ERROR",
+        "title": "RESOURCE_NOT_FOUND_ERROR",
+        "type": "string"
       },
       "updatePreparationType-404": {
         "allOf": [
@@ -9792,103 +8766,29 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "createAgentRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "agent",
-                "enum": [
-                  "agent"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "agent",
-              "attributes": {
-                "name": "orvar"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "agent",
-            "attributes": {
-              "name": "orvar"
-            }
-          }
-        },
-        "description": ""
-      },
-      "updateAgentRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "agent",
-                "enum": [
-                  "agent"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              }
-            }
-          }
-        },
-        "description": ""
-      },
       "loginUserRequest": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "client_id": {
             "type": "string",
-            "example": "dina-reset"
+            "example": "dina-reset",
+            "x-summary": ""
           },
           "grant_type": {
             "type": "string",
-            "example": "password"
+            "example": "password",
+            "x-summary": ""
           },
           "password": {
             "type": "string",
-            "example": "xxxxx"
+            "example": "xxxxx",
+            "x-summary": ""
           },
           "username": {
             "type": "string",
-            "example": "john doe"
+            "example": "john doe",
+            "x-summary": ""
           }
         },
         "required": [
@@ -9897,80 +8797,7 @@
           "password",
           "username"
         ],
-        "description": ""
-      },
-      "createExpeditionRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "expedition",
-                "enum": [
-                  "expedition"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              }
-            }
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "expedition",
-              "attributes": {}
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "expedition",
-            "attributes": {}
-          }
-        },
-        "description": ""
-      },
-      "updateExpeditionRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "expedition",
-                "enum": [
-                  "expedition"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              }
-            }
-          }
-        },
+        "x-summary": "",
         "description": ""
       },
       "createPreparationTypeRequest": {
@@ -9998,7 +8825,8 @@
               "attributes": {
                 "$ref": "#/components/schemas/preparationType"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -10021,6 +8849,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updatePreparationTypeRequest": {
@@ -10048,9 +8877,11 @@
               "attributes": {
                 "$ref": "#/components/schemas/preparationType"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createFeatureTypeRequest": {
@@ -10078,7 +8909,8 @@
               "attributes": {
                 "$ref": "#/components/schemas/featureType"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -10107,6 +8939,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateFeatureTypeRequest": {
@@ -10134,9 +8967,11 @@
               "attributes": {
                 "$ref": "#/components/schemas/featureType"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createPlaceRequest": {
@@ -10232,7 +9067,8 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -10289,6 +9125,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updatePlaceRequest": {
@@ -10384,9 +9221,11 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updatePlaceParentRequest": {
@@ -10411,9 +9250,11 @@
                 ],
                 "type": "string"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createSpecimenRequest": {
@@ -10550,7 +9391,8 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -10905,6 +9747,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenRequest": {
@@ -11041,9 +9884,11 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenPhysicalObjectsRequest": {
@@ -11071,9 +9916,11 @@
                   "example": "1234"
                 }
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenFeatureTypesRequest": {
@@ -11101,9 +9948,11 @@
                   "example": "1234"
                 }
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenPlacesRequest": {
@@ -11131,9 +9980,11 @@
                   "example": "1234"
                 }
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createPhysicalObjectRequest": {
@@ -11203,7 +10054,8 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -11226,6 +10078,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updatePhysicalObjectRequest": {
@@ -11295,9 +10148,11 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updatePhysicalObjectStorageLocationRequest": {
@@ -11322,9 +10177,11 @@
                 ],
                 "type": "string"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createStorageLocationRequest": {
@@ -11446,7 +10303,8 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -11467,6 +10325,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateStorageLocationRequest": {
@@ -11588,9 +10447,11 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateStorageLocationParentRequest": {
@@ -11615,9 +10476,11 @@
                 ],
                 "type": "string"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createTaxonRequest": {
@@ -11713,7 +10576,8 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
         "x-examples": {
@@ -11784,6 +10648,7 @@
             }
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateTaxonRequest": {
@@ -11879,9 +10744,11 @@
                 },
                 "type": "object"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "updateTaxonParentRequest": {
@@ -11906,198 +10773,11 @@
                 ],
                 "type": "string"
               }
-            }
+            },
+            "x-summary": ""
           }
         },
-        "description": ""
-      },
-      "createAgentResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "agent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getAgentResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "agent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {
-          "primary": {
-            "data": {
-              "type": "agent",
-              "attributes": {
-                "name": "Ingimar"
-              }
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "type": "agent",
-            "attributes": {
-              "name": "Ingimar"
-            }
-          }
-        },
-        "description": ""
-      },
-      "updateAgentResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/agent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "agent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getAgentsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/agent"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "agent",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/agent/v01/agents",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getUserResponse": {
@@ -12106,33 +10786,40 @@
         "properties": {
           "email": {
             "type": "string",
-            "example": "john.doe@example.com"
+            "example": "john.doe@example.com",
+            "x-summary": ""
           },
           "family_name": {
             "type": "string",
-            "example": "Doe"
+            "example": "Doe",
+            "x-summary": ""
           },
           "given_name": {
             "type": "string",
-            "example": "John"
+            "example": "John",
+            "x-summary": ""
           },
           "name": {
             "type": "string",
-            "example": "John Doe"
+            "example": "John Doe",
+            "x-summary": ""
           },
           "preferred_username": {
             "type": "string",
-            "example": "john doe"
+            "example": "john doe",
+            "x-summary": ""
           },
           "sub": {
             "type": "string",
-            "example": "xxxx"
+            "example": "xxxx",
+            "x-summary": ""
           }
         },
         "required": [
           "email",
           "preferred_username"
         ],
+        "x-summary": "",
         "description": ""
       },
       "loginUserResponse": {
@@ -12141,208 +10828,44 @@
         "properties": {
           "access_token": {
             "type": "string",
-            "example": "xxxx"
+            "example": "xxxx",
+            "x-summary": ""
           },
           "expires_in": {
             "type": "integer",
-            "example": 300
+            "example": 300,
+            "x-summary": ""
           },
           "not-before-policy": {
             "type": "integer",
-            "example": 0
+            "example": 0,
+            "x-summary": ""
           },
           "refresh_expires_in": {
             "type": "integer",
-            "example": 1800
+            "example": 1800,
+            "x-summary": ""
           },
           "refresh_token": {
             "type": "string",
-            "example": "xxxx"
+            "example": "xxxx",
+            "x-summary": ""
           },
           "session_state": {
             "type": "string",
-            "example": "bearer"
+            "example": "bearer",
+            "x-summary": ""
           },
           "token_type": {
             "type": "string",
-            "example": "xxxx"
+            "example": "xxxx",
+            "x-summary": ""
           }
         },
         "required": [
           "access_token"
         ],
-        "description": ""
-      },
-      "createExpeditionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "expedition",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getExpeditionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "expedition",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "updateExpeditionResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "#/components/schemas/expedition"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "expedition",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "description": ""
-      },
-      "getExpeditionsResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/expedition"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "expedition",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array"
-          },
-          "jsonapi": {
-            "type": "object"
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/curatedEvent/v01/expeditions",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object"
-          },
-          "meta": {
-            "type": "object"
-          }
-        },
-        "type": "object",
-        "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "createPreparationTypeResponse": {
@@ -12363,10 +10886,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12377,14 +10902,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updatePreparationTypeResponse": {
@@ -12405,10 +10933,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12419,14 +10949,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPreparationTypeResponse": {
@@ -12447,10 +10980,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12461,14 +10996,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPreparationTypesResponse": {
@@ -12493,10 +11031,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12507,14 +11047,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "createFeatureTypeResponse": {
@@ -12535,10 +11078,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12549,14 +11094,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateFeatureTypeResponse": {
@@ -12577,10 +11125,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12591,14 +11141,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getFeatureTypeResponse": {
@@ -12619,10 +11172,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12633,14 +11188,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getFeatureTypesResponse": {
@@ -12665,10 +11223,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12679,14 +11239,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "createPlaceResponse": {
@@ -12775,10 +11338,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12789,14 +11354,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updatePlaceResponse": {
@@ -12885,10 +11453,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12899,14 +11469,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updatePlaceParentResponse": {
@@ -12927,10 +11500,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -12941,14 +11516,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPlaceResponse": {
@@ -13037,10 +11615,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13051,14 +11631,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPlacesResponse": {
@@ -13151,10 +11734,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13165,14 +11750,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "createSpecimenResponse": {
@@ -13302,10 +11890,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13316,14 +11906,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenResponse": {
@@ -13453,10 +12046,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13467,14 +12062,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenPhysicalObjectsResponse": {
@@ -13499,10 +12097,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13513,14 +12113,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenPhysicalObjectsResponse": {
@@ -13545,10 +12148,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13559,14 +12164,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenFeatureTypesResponse": {
@@ -13591,10 +12199,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13605,14 +12215,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenFeatureTypesResponse": {
@@ -13637,10 +12250,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13651,14 +12266,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateSpecimenPlacesResponse": {
@@ -13683,10 +12301,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13697,14 +12317,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenPlacesResponse": {
@@ -13729,10 +12352,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13743,14 +12368,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenTaxaResponse": {
@@ -13775,10 +12403,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13789,14 +12419,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenResponse": {
@@ -13926,10 +12559,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -13940,14 +12575,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimensResponse": {
@@ -14081,10 +12719,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14095,14 +12735,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenVersionResponse": {
@@ -14232,10 +12875,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14246,14 +12891,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getSpecimenVersionsResponse": {
@@ -14387,10 +13035,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14401,14 +13051,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getStatusResponse": {
@@ -14421,12 +13074,15 @@
               "up": {
                 "type": "boolean"
               }
-            }
+            },
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
+        "x-summary": "",
         "description": ""
       },
       "createPhysicalObjectResponse": {
@@ -14489,10 +13145,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14503,14 +13161,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updatePhysicalObjectResponse": {
@@ -14573,10 +13234,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14587,14 +13250,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updatePhysicalObjectStorageLocationResponse": {
@@ -14615,10 +13281,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14629,14 +13297,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPhysicalObjectStorageLocationResponse": {
@@ -14657,10 +13328,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14671,14 +13344,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPhysicalObjectResponse": {
@@ -14741,10 +13417,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14755,14 +13433,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPhysicalObjectsResponse": {
@@ -14829,10 +13510,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14843,14 +13526,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPhysicalObjectVersionResponse": {
@@ -14913,10 +13599,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -14927,14 +13615,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getPhysicalObjectVersionsResponse": {
@@ -15001,10 +13692,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15015,14 +13708,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "createStorageLocationResponse": {
@@ -15137,10 +13833,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15151,14 +13849,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateStorageLocationResponse": {
@@ -15273,10 +13974,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15287,14 +13990,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateStorageLocationParentResponse": {
@@ -15315,10 +14021,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15329,14 +14037,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getStorageLocationPhysicalObjectsResponse": {
@@ -15361,10 +14072,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15375,14 +14088,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getStorageLocationResponse": {
@@ -15497,10 +14213,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15511,14 +14229,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getStorageLocationsResponse": {
@@ -15637,10 +14358,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15651,14 +14374,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "createTaxonResponse": {
@@ -15747,10 +14473,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15761,14 +14489,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateTaxonResponse": {
@@ -15857,10 +14588,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15871,14 +14604,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "updateTaxonParentResponse": {
@@ -15899,10 +14635,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -15913,14 +14651,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getTaxonByIdResponse": {
@@ -16009,10 +14750,12 @@
                 "type": "string"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -16023,14 +14766,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       },
       "getTaxaByNameResponse": {
@@ -16123,10 +14869,12 @@
               },
               "type": "object"
             },
-            "type": "array"
+            "type": "array",
+            "x-summary": ""
           },
           "jsonapi": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "links": {
             "properties": {
@@ -16137,14 +14885,17 @@
                 "x-faker": "internet.url"
               }
             },
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           },
           "meta": {
-            "type": "object"
+            "type": "object",
+            "x-summary": ""
           }
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
         "description": ""
       }
     },

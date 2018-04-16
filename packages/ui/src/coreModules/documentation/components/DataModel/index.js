@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import extractModelFromSpecification from '../../utilities/extractModelFromSpecification'
 import Model from './Model'
 import Property from './Property'
 
@@ -14,16 +15,6 @@ const propTypes = {
       schemaVersion: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-}
-
-const extractModelFromSpecification = ({ modelId, specification }) => {
-  return Object.keys(specification.components.schemas)
-    .map(key => {
-      return { key, ...specification.components.schemas[key] }
-    })
-    .find(model => {
-      return model.key === modelId
-    })
 }
 
 class DataModel extends Component {
@@ -58,7 +49,13 @@ class DataModel extends Component {
       }
     }
 
-    return <Model model={model} version={schemaVersion} />
+    return (
+      <Model
+        model={model}
+        specification={specification}
+        version={schemaVersion}
+      />
+    )
   }
 }
 

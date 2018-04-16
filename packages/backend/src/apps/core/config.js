@@ -3,18 +3,13 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const services = {
-  agentService: true,
-  authService: true,
   curatedEventService: true,
   curatedListService: true,
-  externalEventService: true,
-  identifierService: true,
-  localityService: true,
-  // organizationService: true,
+  placeService: true,
   specimenService: true,
   statusService: true,
   storageService: true,
-  taxonService: true,
+  taxonomyService: true,
 }
 
 const api = {

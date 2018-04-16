@@ -18,7 +18,11 @@ var createModel = require('../utilities/createModel');
 
 var referencePath = '';
 
-var extractResponseModelsFromEndpoints = function extractResponseModelsFromEndpoints(endpoints, normalize) {
+var extractResponseModelsFromEndpoints = function extractResponseModelsFromEndpoints(_ref) {
+  var endpoints = _ref.endpoints,
+      normalize = _ref.normalize,
+      version = _ref.version;
+
   return (0, _keys2.default)(endpoints).reduce(function (responses, endpointName) {
     var response = endpoints[endpointName].response;
 
@@ -33,7 +37,8 @@ var extractResponseModelsFromEndpoints = function extractResponseModelsFromEndpo
           model: schema.content,
           name: name,
           normalize: normalize,
-          referencePath: referencePath
+          referencePath: referencePath,
+          version: version
         })));
       }
     }
@@ -42,7 +47,11 @@ var extractResponseModelsFromEndpoints = function extractResponseModelsFromEndpo
   }, {});
 };
 
-var extractRequestModelsFromEndpoints = function extractRequestModelsFromEndpoints(endpoints, normalize) {
+var extractRequestModelsFromEndpoints = function extractRequestModelsFromEndpoints(_ref2) {
+  var endpoints = _ref2.endpoints,
+      normalize = _ref2.normalize,
+      version = _ref2.version;
+
   return (0, _keys2.default)(endpoints).reduce(function (responses, endpointName) {
     var request = endpoints[endpointName].request;
 
@@ -57,7 +66,8 @@ var extractRequestModelsFromEndpoints = function extractRequestModelsFromEndpoin
           model: schema.body,
           name: name,
           normalize: normalize,
-          referencePath: referencePath
+          referencePath: referencePath,
+          version: version
         })));
       }
     }
@@ -66,21 +76,43 @@ var extractRequestModelsFromEndpoints = function extractRequestModelsFromEndpoin
   }, {});
 };
 
-var extractModelsFromModels = function extractModelsFromModels(models, normalize) {
+var extractModelsFromModels = function extractModelsFromModels(_ref3) {
+  var models = _ref3.models,
+      normalize = _ref3.normalize,
+      version = _ref3.version;
+
   return (0, _keys2.default)(models).reduce(function (extractedModels, modelKey) {
     var model = models[modelKey];
-    return (0, _extends6.default)({}, extractedModels, (0, _defineProperty3.default)({}, modelKey, createModel({ model: model, modelKey: modelKey, normalize: normalize, referencePath: referencePath })));
+    return (0, _extends6.default)({}, extractedModels, (0, _defineProperty3.default)({}, modelKey, createModel({
+      model: model,
+      modelKey: modelKey,
+      normalize: normalize,
+      referencePath: referencePath,
+      version: version
+    })));
   }, {});
 };
 
-module.exports = function createModels(_ref) {
-  var endpoints = _ref.endpoints,
-      models = _ref.models,
-      normalize = _ref.normalize;
+module.exports = function createModels(_ref4) {
+  var endpoints = _ref4.endpoints,
+      models = _ref4.models,
+      normalize = _ref4.normalize,
+      version = _ref4.version;
 
-  var requestModels = extractRequestModelsFromEndpoints(endpoints, normalize);
-  var responseModels = extractResponseModelsFromEndpoints(endpoints, normalize);
-  var extractedModels = extractModelsFromModels(models, normalize);
+  var requestModels = extractRequestModelsFromEndpoints({
+    endpoints: endpoints,
+    normalize: normalize,
+    version: version
+  });
+  var responseModels = extractResponseModelsFromEndpoints({
+    endpoints: endpoints,
+    normalize: normalize
+  });
+  var extractedModels = extractModelsFromModels({
+    models: models,
+    normalize: normalize,
+    version: version
+  });
 
   return (0, _extends6.default)({}, extractedModels, responseModels, requestModels);
 };

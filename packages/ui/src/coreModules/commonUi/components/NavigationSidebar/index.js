@@ -57,6 +57,7 @@ export const NavigationSidebar = ({
       className="flex"
       icon={nested ? undefined : 'labeled'}
       inverted
+      size="large"
       style={{ overflow: 'hidden', width }}
       vertical
       visible

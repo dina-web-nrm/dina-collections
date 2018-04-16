@@ -15,6 +15,7 @@ module.exports = function createOpenApi({
   parameters,
   security,
   servers,
+  version,
 }) {
   return {
     openapi: '3.0.0',
@@ -29,6 +30,7 @@ module.exports = function createOpenApi({
       normalize,
       parameters,
       security,
+      version,
     }),
   }
 }
