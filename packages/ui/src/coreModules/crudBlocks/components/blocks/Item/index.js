@@ -49,6 +49,7 @@ const ItemBlock = ({
   if (itemBlockType === INSPECT && renderInspectView) {
     return (
       <InspectBlock
+        disableEdit={disableEdit}
         itemBlockType={itemBlockType}
         renderChild={renderInspectView}
         {...rest}
