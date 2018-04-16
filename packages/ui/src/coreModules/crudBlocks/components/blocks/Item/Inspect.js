@@ -10,7 +10,10 @@ const propTypes = {
   layoutMode: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
   renderChild: PropTypes.func.isRequired,
-  urlBasePath: PropTypes.string.isRequired,
+  urlBasePath: PropTypes.string,
+}
+const defaultProps = {
+  urlBasePath: undefined,
 }
 
 export class InspectItemBlock extends Component {
@@ -41,7 +44,7 @@ export class InspectItemBlock extends Component {
             />
           }
         >
-          {renderChild({ itemId, urlBasePath })}
+          {renderChild({ itemId, onInteraction, urlBasePath })}
         </Block.Content>
       </Block>
     )
@@ -49,5 +52,6 @@ export class InspectItemBlock extends Component {
 }
 
 InspectItemBlock.propTypes = propTypes
+InspectItemBlock.defaultProps = defaultProps
 
 export default InspectItemBlock
