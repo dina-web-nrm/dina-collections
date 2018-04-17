@@ -24,7 +24,7 @@ const getFeatureTypesGlobal = state => {
 
 const getInitialSpecimen = (state, specimenId) => {
   if (!specimenId) {
-    return {}
+    return undefined
   }
 
   return getSpecimen(getSpecimenState(state), specimenId)
