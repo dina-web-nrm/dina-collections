@@ -874,6 +874,10 @@
         "$ref": "readOnly",
         "x-summary": ""
       },
+      "typeStatus": {
+        "type": "string",
+        "x-summary": ""
+      },
       "version": {
         "type": "integer",
         "x-summary": ""
