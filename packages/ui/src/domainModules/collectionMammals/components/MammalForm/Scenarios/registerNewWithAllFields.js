@@ -187,6 +187,10 @@ const mutations = [
     name: 'collectingInformation.0.event.startDate',
     value: 'startDate',
   },
+  {
+    name: 'typeStatus.hidden',
+    value: 'paratype',
+  },
 ]
 
 const expectedOutput = {
@@ -316,6 +320,7 @@ const expectedOutput = {
         curatorialName: 'curatorialName',
         taxonRemarks: 'taxonRemarks',
       },
+      typeStatus: 'paratype',
     },
   },
 
