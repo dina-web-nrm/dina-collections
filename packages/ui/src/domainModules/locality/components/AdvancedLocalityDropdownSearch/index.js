@@ -4,22 +4,31 @@ import { connect } from 'react-redux'
 import { Modal, Button } from 'semantic-ui-react'
 import { change } from 'redux-form'
 
+import { CollectionBlock, ItemBlock } from 'coreModules/crudBlocks/components'
 import {
-  CollectionBlock,
-  CreateBlock,
-  InspectBlock,
-} from 'coreModules/crudBlocks/components'
-import {
+  CREATE,
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
+  INSPECT,
   ITEM_CLICK,
+  LIST,
   SET_COLLECTION,
   SET_COLLECTION_LIST,
   SET_COLLECTION_TREE,
   SET_ITEM_CREATE,
+  SET_ITEM_CREATE_CHILD,
   SET_ITEM_INSPECT,
+  TREE,
 } from 'coreModules/crudBlocks/constants'
+import { DROPDOWN_FILTER_OPTIONS } from '../../constants'
+import globalSelectors from '../../globalSelectors'
+import CreateForm from '../item/form/Create'
+import InspectView from '../item/Inspect'
+import LocalityList from '../collection/LocalityList'
+import LocalityTree from '../collection/LocalityTree'
 import LocalityDropdownSearch from '../LocalityDropdownSearch'
+
+const NAME = 'localityPicker'
 
 const mapDispatchToProps = {
   change,
@@ -32,11 +41,28 @@ const propTypes = {
 }
 
 export class AdvancedLocalityDropdownSearch extends Component {
+  static renderCreateForm(props) {
+    return <CreateForm {...props} />
+  }
+
+  static renderInspectView(props) {
+    return <InspectView {...props} />
+  }
+
+  static renderList(props) {
+    return <LocalityList {...props} />
+  }
+
+  static renderTree(props) {
+    return <LocalityTree {...props} />
+  }
+
   constructor(props) {
     super(props)
     this.state = {
-      collectionBlockType: 'list',
+      collectionBlockType: LIST,
       createActive: false,
+      createChildToParentId: undefined,
       inspectActive: false,
       inspectItemId: undefined,
       pickerActive: false,
@@ -49,10 +75,12 @@ export class AdvancedLocalityDropdownSearch extends Component {
     this.setPickerActive = this.setPickerActive.bind(this)
   }
 
-  setCreateActive() {
+  setCreateActive(parentId) {
     this.setState({
       createActive: true,
+      createChildToParentId: parentId,
       inspectActive: false,
+      inspectItemId: undefined,
       pickerActive: false,
     })
   }
@@ -60,6 +88,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
   setInspectActive(itemId) {
     this.setState({
       createActive: false,
+      createChildToParentId: undefined,
       inspectActive: true,
       inspectItemId: itemId,
       pickerActive: false,
@@ -69,14 +98,28 @@ export class AdvancedLocalityDropdownSearch extends Component {
   setPickerActive() {
     this.setState({
       createActive: false,
+      createChildToParentId: undefined,
       inspectActive: false,
+      inspectItemId: undefined,
       pickerActive: true,
     })
   }
 
-  handleOnClose() {
+  handleOnClose(event) {
+    // this is to fix bug with event bubbling up unexpectedly, causing modal to
+    // close even when it should not
+    if (
+      event &&
+      event.path &&
+      event.path[0] &&
+      (!event.path[0].className || !event.path[0].className.includes('modals'))
+    ) {
+      return
+    }
+
     this.setState({
       createActive: false,
+      createChildToParentId: undefined,
       inspectActive: false,
       inspectItemId: undefined,
       pickerActive: false,
@@ -94,8 +137,9 @@ export class AdvancedLocalityDropdownSearch extends Component {
       this.props.change(formName, name, data.itemId)
     }
 
-    if (type === SET_ITEM_CREATE) {
-      return this.setCreateActive()
+    if (type === SET_ITEM_CREATE || type === SET_ITEM_CREATE_CHILD) {
+      const { itemId } = data
+      return this.setCreateActive(itemId)
     }
 
     if (type === SET_ITEM_INSPECT) {
@@ -113,13 +157,13 @@ export class AdvancedLocalityDropdownSearch extends Component {
 
     if (type === SET_COLLECTION_LIST) {
       return this.setState({
-        collectionBlockType: 'list',
+        collectionBlockType: LIST,
       })
     }
 
     if (type === SET_COLLECTION_TREE) {
       return this.setState({
-        collectionBlockType: 'tree',
+        collectionBlockType: TREE,
       })
     }
 
@@ -130,6 +174,7 @@ export class AdvancedLocalityDropdownSearch extends Component {
     const {
       collectionBlockType,
       createActive,
+      createChildToParentId,
       inspectActive,
       inspectItemId,
       pickerActive,
@@ -139,31 +184,25 @@ export class AdvancedLocalityDropdownSearch extends Component {
       <Button onClick={this.handlePickerButtonClick}>Picker</Button>
     )
 
-    if (createActive) {
-      return (
-        <Modal onClose={this.handleOnClose} open>
-          <Modal.Content>
-            <CreateBlock
-              disableEdit
-              itemBlockType="create"
-              layoutMode="modal"
-              onInteraction={this.handleInteraction}
-            />
-          </Modal.Content>
-        </Modal>
-      )
-    }
+    if (createActive || inspectActive) {
+      const itemId =
+        (inspectActive && inspectItemId) ||
+        (createActive && createChildToParentId)
 
-    if (inspectActive) {
       return (
         <Modal onClose={this.handleOnClose} open>
           <Modal.Content>
-            <InspectBlock
+            <ItemBlock
               disableEdit
-              itemBlockType="inspect"
-              itemId={inspectItemId}
+              itemBlockType={inspectActive ? INSPECT : CREATE}
+              itemId={itemId}
               layoutMode="modal"
+              name={NAME}
               onInteraction={this.handleInteraction}
+              renderCreateForm={AdvancedLocalityDropdownSearch.renderCreateForm}
+              renderInspectView={
+                AdvancedLocalityDropdownSearch.renderInspectView
+              }
             />
           </Modal.Content>
         </Modal>
@@ -177,8 +216,13 @@ export class AdvancedLocalityDropdownSearch extends Component {
             <CollectionBlock
               collectionBlockType={collectionBlockType}
               disableEdit
+              dropdownFilterOptions={DROPDOWN_FILTER_OPTIONS}
+              getAncestorsByParentId={globalSelectors.getPlaceAncestorsById}
               layoutMode="modal"
+              name={NAME}
               onInteraction={this.handleInteraction}
+              renderList={AdvancedLocalityDropdownSearch.renderList}
+              renderTree={AdvancedLocalityDropdownSearch.renderTree}
             />
           </Modal.Content>
         </Modal>

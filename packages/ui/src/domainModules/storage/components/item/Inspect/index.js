@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
@@ -9,6 +8,7 @@ import {
   createGetStorageLocationById,
   ensureAllStorageLocationsFetched,
 } from 'dataModules/storageService/higherOrderComponents'
+import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
 const mapStateToProps = (state, ownProps) => {
   const { storageLocation } = ownProps
@@ -33,9 +33,9 @@ const mapStateToProps = (state, ownProps) => {
 const propTypes = {
   allStorageLocationsFetched: PropTypes.bool,
   children: PropTypes.array,
+  onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.object,
   storageLocation: PropTypes.object,
-  urlBasePath: PropTypes.string.isRequired,
 }
 
 const defaultProps = {
@@ -50,9 +50,9 @@ export class Inspect extends Component {
     const {
       allStorageLocationsFetched,
       children,
-      storageLocation,
+      onInteraction: handleInteraction,
       parent,
-      urlBasePath,
+      storageLocation,
     } = this.props
 
     if (!storageLocation || !allStorageLocationsFetched) {
@@ -86,7 +86,7 @@ export class Inspect extends Component {
           )}
         </Table>
         <h2>Belongs to</h2>
-        <Table celled>
+        <Table celled selectable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>id</Table.HeaderCell>
@@ -95,20 +95,27 @@ export class Inspect extends Component {
           </Table.Header>
           {parent && (
             <Table.Body>
-              <Table.Row>
+              <Table.Row
+                onClick={event => {
+                  event.preventDefault()
+                  handleInteraction(SET_ITEM_INSPECT, {
+                    itemId: parent.id,
+                  })
+                }}
+              >
                 <Table.Cell>
-                  <Link to={`${urlBasePath}/${parent.id}/inspect`}>
-                    {parent.id}
-                  </Link>
+                  <a>{parent.id}</a>
                 </Table.Cell>
-                <Table.Cell>{parent.name}</Table.Cell>
+                <Table.Cell>
+                  <a>{parent.name}</a>
+                </Table.Cell>
               </Table.Row>
             </Table.Body>
           )}
         </Table>
 
         <h2>Contains</h2>
-        <Table celled>
+        <Table celled selectable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>id</Table.HeaderCell>
@@ -119,13 +126,21 @@ export class Inspect extends Component {
             {children &&
               children.map(child => {
                 return (
-                  <Table.Row key={child.id}>
+                  <Table.Row
+                    key={child.id}
+                    onClick={event => {
+                      event.preventDefault()
+                      handleInteraction(SET_ITEM_INSPECT, {
+                        itemId: child.id,
+                      })
+                    }}
+                  >
                     <Table.Cell>
-                      <Link to={`${urlBasePath}/${child.id}/inspect`}>
-                        {child.id}
-                      </Link>
+                      <a>{child.id}</a>
                     </Table.Cell>
-                    <Table.Cell>{child.name}</Table.Cell>
+                    <Table.Cell>
+                      <a>{child.name}</a>
+                    </Table.Cell>
                   </Table.Row>
                 )
               })}
