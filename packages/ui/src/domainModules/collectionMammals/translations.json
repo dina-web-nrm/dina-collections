@@ -104,10 +104,6 @@
       "en": "Taxon name, determiner, determination date, etc.",
       "sv": "Taxonnamn, bestämmare, bestämningsdatum, etc."
     },
-    "isCurrent": {
-      "en": "Is current",
-      "sv": "Är aktuell"
-    },
     "nowThisDeterminationCurrent": {
       "en": "Now only this determination is marked as current.",
       "sv": "Nu är endast denna bestämning markerad som aktuell."

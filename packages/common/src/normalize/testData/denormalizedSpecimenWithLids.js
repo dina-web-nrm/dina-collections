@@ -9,7 +9,6 @@ module.exports = {
         lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4',
         determinationVerbatim: 'determinationVerbatim',
         determinedByAgentText: 'determinedByAgentText',
-        isCurrentDetermination: true,
         remarks: 'remarks',
         taxon: {
           id: '2367',

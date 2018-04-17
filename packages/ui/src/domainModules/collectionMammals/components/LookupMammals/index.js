@@ -44,11 +44,6 @@ const propTypes = {
   push: PropTypes.func.isRequired,
   result: PropTypes.arrayOf(
     PropTypes.shape({
-      determinations: PropTypes.arrayOf(
-        PropTypes.shape({
-          isCurrentDetermination: PropTypes.bool.isRequired,
-        })
-      ).isRequired,
       identifiers: PropTypes.arrayOf(
         PropTypes.shape({
           identifierType: PropTypes.string.isRequired,

@@ -5,12 +5,7 @@ import { Button, Grid, Popup } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import {
-  ButtonCopyPasteField,
-  Checkbox,
-  Field,
-  Input,
-} from 'coreModules/form/components'
+import { ButtonCopyPasteField, Field, Input } from 'coreModules/form/components'
 
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import taxonSelectors from 'dataModules/taxonService/globalSelectors'
@@ -66,18 +61,6 @@ class DeterminationContent extends Component {
     log.render()
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Row>
-          <Grid.Column computer={2} mobile={8} tablet={2}>
-            <Field
-              autoComplete="off"
-              component={Checkbox}
-              label={moduleTranslate({ textKey: 'isCurrent' })}
-              module="collectionMammals"
-              name={getPath('isCurrentDetermination')}
-              type="checkbox"
-            />
-          </Grid.Column>
-        </Grid.Row>
         <Grid.Row>
           <Grid.Column computer={6} mobile={16} tablet={5}>
             <Field

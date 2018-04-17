@@ -39,7 +39,6 @@ const propTypes = {
     PropTypes.shape({
       date: PropTypes.string,
       determinedByAgentText: PropTypes.string,
-      isCurrentDetermination: PropTypes.bool,
       remarks: PropTypes.string,
       taxonNameStandardized: PropTypes.string,
     })

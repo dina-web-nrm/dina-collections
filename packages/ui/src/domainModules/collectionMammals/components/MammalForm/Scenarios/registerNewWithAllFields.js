@@ -12,10 +12,6 @@ const mutations = [
     name: 'determinations.0.determinedByAgentText',
     value: 'determinedByAgentText',
   },
-  {
-    name: 'determinations.0.isCurrentDetermination',
-    value: true,
-  },
   { name: 'determinations.0.remarks', value: 'remarks' },
 
   {
@@ -280,7 +276,6 @@ const expectedOutput = {
           date: 'date',
           determinationVerbatim: 'determinationVerbatim',
           determinedByAgentText: 'determinedByAgentText',
-          isCurrentDetermination: true,
           remarks: 'remarks',
           taxon: {
             id: '2367',

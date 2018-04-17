@@ -6,7 +6,6 @@ import * as endpoints from './endpoints'
 import * as selectors from './selectors'
 import globalSelectors from './globalSelectors'
 import markdown from './__markdown__/index.json'
-import middleware from './middleware'
 import reducer from './reducer'
 import translations from './translations.json'
 
@@ -20,7 +19,6 @@ export {
   endpoints,
   globalSelectors,
   markdown,
-  middleware,
   name,
   reducer,
   selectors,

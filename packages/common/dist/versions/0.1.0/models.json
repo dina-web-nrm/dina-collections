@@ -684,11 +684,6 @@
       "taxon": {
         "$ref": "taxon",
         "x-summary": ""
-      },
-      "isCurrentDetermination": {
-        "type": "boolean",
-        "example": true,
-        "x-summary": ""
       }
     },
     "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.",
@@ -6142,7 +6137,6 @@
               {
                 "determinationVerbatim": "determinationVerbatim",
                 "determinedByAgentText": "determinedByAgentText",
-                "isCurrentDetermination": true,
                 "remarks": "remarks",
                 "taxon": {
                   "id": "2367",
@@ -6318,7 +6312,6 @@
             {
               "determinationVerbatim": "determinationVerbatim",
               "determinedByAgentText": "determinedByAgentText",
-              "isCurrentDetermination": true,
               "remarks": "remarks",
               "taxon": {
                 "id": "2367",
