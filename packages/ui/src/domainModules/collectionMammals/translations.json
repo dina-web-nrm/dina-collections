@@ -65,6 +65,10 @@
     "isPublic": {
       "en": "Public",
       "sv": "Publikt"
+    },
+    "typeStatus": {
+      "en": "Type status",
+      "sv": "Typstatus"
     }
   },
   "determination": {
@@ -99,10 +103,6 @@
     "identificationText": {
       "en": "Taxon name, determiner, determination date, etc.",
       "sv": "Taxonnamn, bestämmare, bestämningsdatum, etc."
-    },
-    "isCurrent": {
-      "en": "Is current",
-      "sv": "Är aktuell"
     },
     "nowThisDeterminationCurrent": {
       "en": "Now only this determination is marked as current.",

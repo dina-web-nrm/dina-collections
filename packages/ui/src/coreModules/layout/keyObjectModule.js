@@ -9,7 +9,12 @@ const {
   selectors,
   reducer,
 } = keyObjectModuleFactory({
-  keys: [':name.layoutMode'],
+  initialValues: {
+    leftSidebar: {
+      isOpen: false,
+    },
+  },
+  keys: ['leftSidebar.isOpen', ':name.layoutMode'],
   name,
 })
 export {

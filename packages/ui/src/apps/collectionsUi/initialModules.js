@@ -4,6 +4,7 @@ import * as commonUi from 'coreModules/commonUi'
 import * as error from 'coreModules/error'
 import * as i18n from 'coreModules/i18n'
 import * as keyboardShortcuts from 'coreModules/keyboardShortcuts'
+import * as layout from 'coreModules/layout'
 import * as notifications from 'coreModules/notifications'
 import * as size from 'coreModules/size'
 import * as user from 'coreModules/user'
@@ -25,6 +26,7 @@ const modules = [
   error,
   i18n,
   keyboardShortcuts,
+  layout,
   notifications,
   size,
   user,

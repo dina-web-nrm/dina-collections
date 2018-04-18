@@ -6,7 +6,6 @@ module.exports = {
     {
       determinationVerbatim: 'determinationVerbatim',
       determinedByAgentText: 'determinedByAgentText',
-      isCurrentDetermination: true,
       remarks: 'remarks',
       taxon: {
         id: '2367',

@@ -6,7 +6,7 @@ import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import withInfo from 'utilities/test/customStorybookWithInfo'
 import ViewWrap from './ViewWrap'
 
-storiesOf('coreModules/commonUi/ViewWrap', module)
+storiesOf('coreModules/layout/ViewWrap', module)
   .addDecorator(createStoryDecorator())
   .add(
     'Default',

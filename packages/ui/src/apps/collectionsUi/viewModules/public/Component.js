@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import { Footer, ViewWrap } from 'coreModules/commonUi/components'
+import { Footer } from 'coreModules/commonUi/components'
+import { ViewWrap } from 'coreModules/layout/components'
 import Login from '../login/Async'
 import PageNotFound from '../pageNotFound/Async'
 import Start from '../start/Async'

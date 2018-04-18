@@ -3,19 +3,24 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Dimmer, Icon, Menu } from 'semantic-ui-react'
 import sizeSelectors from 'coreModules/size/globalSelectors'
-import toggleLeftSidebarAC from '../actionCreators/toggleLeftSidebar'
-import commonUiSelectors from '../globalSelectors'
+import {
+  actionCreators as keyObjectActionCreators,
+  globalSelectors as keyObjectGlobalSelectors,
+} from '../keyObjectModule'
+import layoutSelectors from '../globalSelectors'
 
 const mapStateToProps = state => {
   return {
     isLarge: sizeSelectors.getIsLarge(state),
-    leftSidebarIsOpen: commonUiSelectors.getLeftSidebarIsOpen(state),
-    rightSidebarIsOpen: commonUiSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
+    leftSidebarIsOpen: keyObjectGlobalSelectors.get['leftSidebar.isOpen'](
+      state
+    ),
+    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
   }
 }
 
 const mapDispatchToProps = {
-  toggleLeftSidebar: toggleLeftSidebarAC,
+  setLeftSidebarIsOpen: keyObjectActionCreators.set['leftSidebar.isOpen'],
 }
 
 const propTypes = {
@@ -26,7 +31,7 @@ const propTypes = {
   leftSidebarWidth: PropTypes.number,
   rightSidebarIsOpen: PropTypes.bool.isRequired,
   rightSidebarWidth: PropTypes.number,
-  toggleLeftSidebar: PropTypes.func.isRequired,
+  setLeftSidebarIsOpen: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -93,12 +98,13 @@ const ViewWrap = ({
   leftSidebarWidth,
   rightSidebarIsOpen,
   rightSidebarWidth,
-  toggleLeftSidebar,
+  setLeftSidebarIsOpen,
 }) => {
   const rightSidebarEnabled = true
 
   const leftSidebarAlwaysVisible = isLarge && leftSidebarEnabled
   const leftSidebarTogglable = !isLarge && leftSidebarEnabled
+
   const viewWrapStyle = getViewWrapStyle({
     leftSidebarAlwaysVisible,
     leftSidebarIsOpen,
@@ -109,6 +115,9 @@ const ViewWrap = ({
     rightSidebarWidth,
   })
   const dimmerActive = leftSidebarTogglable && leftSidebarIsOpen
+
+  const toggleLeftSidebar = () => setLeftSidebarIsOpen(!leftSidebarIsOpen)
+
   return (
     <div style={viewWrapStyle}>
       <Dimmer.Dimmable dimmed={dimmerActive}>

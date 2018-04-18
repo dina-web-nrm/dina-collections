@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Sidebar } from 'semantic-ui-react'
 import { NotificationDisplay } from 'coreModules/notifications/components'
-import commonUiSelectors from 'coreModules/commonUi/globalSelectors'
+import layoutSelectors from '../../globalSelectors'
 
 const mapStateToProps = state => {
   return {
-    rightSidebarIsOpen: commonUiSelectors.getRightSidebarIsOpen(state),
+    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
   }
 }
 

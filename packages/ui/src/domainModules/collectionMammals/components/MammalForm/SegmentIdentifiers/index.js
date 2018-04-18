@@ -6,15 +6,31 @@ import { Button, Grid, Segment } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { Checkbox, Field } from 'coreModules/form/components'
+import { Checkbox, DropdownSearch, Field } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import CatalogNumberInput from '../CatalogNumberInput'
+import CatalogNumberInput from './CatalogNumberInput'
 import IdentifiersTable from './IdentifiersTable'
 
 const log = createLog('modules:collectionMammals:MammalForm:SegmentIdentifiers')
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'identifiers',
+})
+
+const TYPE_SPECIMEN_OPTIONS = [
+  'holotype',
+  'lectotype',
+  'neotype',
+  'paralectotype',
+  'paratype',
+  'syntype',
+  'type',
+].map(value => {
+  return {
+    key: value,
+    text: value,
+    value,
+  }
 })
 
 const mapStateToProps = (state, { formValueSelector }) => {
@@ -48,7 +64,7 @@ class SegmentIdentifiers extends PureComponent {
       <Segment color="green">
         <Grid textAlign="left" verticalAlign="top">
           <Grid.Row>
-            <Grid.Column width={16}>
+            <Grid.Column computer={6} mobile={16} tablet={10}>
               <Field
                 autoComplete="off"
                 component={CatalogNumberInput}
@@ -61,8 +77,7 @@ class SegmentIdentifiers extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-
-            <Grid.Column computer={3} mobile={16}>
+            <Grid.Column computer={4} mobile={16} tablet={4}>
               <Field
                 autoComplete="off"
                 component={Checkbox}
@@ -70,6 +85,18 @@ class SegmentIdentifiers extends PureComponent {
                 module="collectionMammals"
                 name={getPath('0.publishRecord')}
                 type="checkbox"
+              />
+            </Grid.Column>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                className="transparent"
+                component={DropdownSearch}
+                label={<ModuleTranslate textKey="typeStatus" />}
+                module="collectionMammals"
+                name="typeStatus"
+                options={TYPE_SPECIMEN_OPTIONS}
+                type="dropdown-search-local"
               />
             </Grid.Column>
           </Grid.Row>

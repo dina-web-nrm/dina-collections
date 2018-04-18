@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 import taxonSelectors from 'dataModules/taxonService/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
@@ -27,17 +26,12 @@ const propTypes = {
   active: PropTypes.bool.isRequired,
   date: PropTypes.string,
   determinedByAgentText: PropTypes.string,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
-  isCurrentDetermination: PropTypes.bool,
   remarks: PropTypes.string,
   taxonName: PropTypes.string,
 }
 const defaultProps = {
   date: undefined,
   determinedByAgentText: undefined,
-  isCurrentDetermination: undefined,
   remarks: undefined,
   taxonName: undefined,
 }
@@ -46,19 +40,10 @@ function DeterminationContent({
   active,
   date,
   determinedByAgentText,
-  i18n: { moduleTranslate },
-  isCurrentDetermination,
   remarks,
   taxonName,
 }) {
-  const headline = [
-    taxonName,
-    determinedByAgentText,
-    date,
-    remarks,
-    isCurrentDetermination &&
-      moduleTranslate({ textKey: 'isCurrent' }).toLowerCase(),
-  ]
+  const headline = [taxonName, determinedByAgentText, date, remarks]
     .filter(str => !!str)
     .join(', ')
 
@@ -75,10 +60,6 @@ DeterminationContent.propTypes = propTypes
 DeterminationContent.defaultProps = defaultProps
 
 export default compose(
-  withI18n({
-    module: 'collectionMammals',
-    scope: 'determination',
-  }),
   connect(mapStateToProps),
   pathBuilder({
     name: 'determinations',

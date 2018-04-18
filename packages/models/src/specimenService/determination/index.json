@@ -26,10 +26,6 @@
     "taxon": {
       "$ref": "__ROOT__taxon",
       "x-reference-type": "external"
-    },
-    "isCurrentDetermination": {
-      "type": "boolean",
-      "example": true
     }
   }
 }

@@ -12,10 +12,6 @@ const mutations = [
     name: 'determinations.0.determinedByAgentText',
     value: 'determinedByAgentText',
   },
-  {
-    name: 'determinations.0.isCurrentDetermination',
-    value: true,
-  },
   { name: 'determinations.0.remarks', value: 'remarks' },
 
   {
@@ -187,6 +183,10 @@ const mutations = [
     name: 'collectingInformation.0.event.startDate',
     value: 'startDate',
   },
+  {
+    name: 'typeStatus.hidden',
+    value: 'paratype',
+  },
 ]
 
 const expectedOutput = {
@@ -276,7 +276,6 @@ const expectedOutput = {
           date: 'date',
           determinationVerbatim: 'determinationVerbatim',
           determinedByAgentText: 'determinedByAgentText',
-          isCurrentDetermination: true,
           remarks: 'remarks',
           taxon: {
             id: '2367',
@@ -316,6 +315,7 @@ const expectedOutput = {
         curatorialName: 'curatorialName',
         taxonRemarks: 'taxonRemarks',
       },
+      typeStatus: 'paratype',
     },
   },
 

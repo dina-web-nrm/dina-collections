@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
+
 import {
   InformationSidebar,
   NavigationSidebar,
   ViewWrap,
-} from 'coreModules/commonUi/components'
+} from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
 import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
 
@@ -70,7 +71,7 @@ class App extends Component {
 
     return (
       <div>
-        <ViewWrap leftSidebarEnabled>
+        <ViewWrap leftSidebarEnabled leftSidebarTogglable>
           <Switch>
             <Route component={Home} exact path={match.url} />
             <Route

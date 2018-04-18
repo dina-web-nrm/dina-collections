@@ -602,60 +602,6 @@ exports[`storyshots Storyshots coreModules/commonUi/TranslatedLabel Default 1`] 
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/commonUi/ViewWrap Default 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        style={
-          Object {
-            "bottom": "100%",
-            "left": 0,
-            "minHeight": "100%",
-            "minWidth": "100%",
-            "paddingLeft": 0,
-            "position": "relative",
-            "top": 0,
-            "transition": "transform 0.2s",
-            "zIndex": 1,
-          }
-        }
-      >
-        <div
-          className="dimmable"
-        >
-          <div
-            className="ui dimmer"
-            onClick={[Function]}
-          />
-          <div
-            className="ui fluid dina background"
-            style={
-              Object {
-                "overflow": "hidden",
-              }
-            }
-          >
-            <div>
-              View wrap content
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`storyshots Storyshots coreModules/error/FormFieldError Default 1`] = `
 <div>
   <div
@@ -1295,6 +1241,60 @@ exports[`storyshots Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay De
     <div
       className="ui green segment"
     />
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        style={
+          Object {
+            "bottom": "100%",
+            "left": 0,
+            "minHeight": "100%",
+            "minWidth": "100%",
+            "paddingLeft": 0,
+            "position": "relative",
+            "top": 0,
+            "transition": "transform 0.2s",
+            "zIndex": 1,
+          }
+        }
+      >
+        <div
+          className="dimmable"
+        >
+          <div
+            className="ui dimmer"
+            onClick={[Function]}
+          />
+          <div
+            className="ui fluid dina background"
+            style={
+              Object {
+                "overflow": "hidden",
+              }
+            }
+          >
+            <div>
+              View wrap content
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;

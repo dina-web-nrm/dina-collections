@@ -106,7 +106,8 @@ module.exports = function createModels(_ref4) {
   });
   var responseModels = extractResponseModelsFromEndpoints({
     endpoints: endpoints,
-    normalize: normalize
+    normalize: normalize,
+    version: version
   });
   var extractedModels = extractModelsFromModels({
     models: models,
