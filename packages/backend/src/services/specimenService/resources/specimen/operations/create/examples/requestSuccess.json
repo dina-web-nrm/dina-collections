@@ -4,14 +4,29 @@
     "relationships": {
       "places": {
         "data": [
-          { "id": "1", "type": "place" },
-          { "id": "2", "type": "place" },
-          { "id": "3", "type": "place" },
-          { "id": "4", "type": "place" },
-          { "id": "5", "type": "place" }
+          {
+            "id": "1",
+            "type": "place"
+          },
+          {
+            "id": "2",
+            "type": "place"
+          },
+          {
+            "id": "3",
+            "type": "place"
+          },
+          {
+            "id": "4",
+            "type": "place"
+          },
+          {
+            "id": "5",
+            "type": "place"
+          }
         ]
       },
-     "featureTypes": {
+      "featureTypes": {
         "data": [
           {
             "id": "2",
@@ -28,10 +43,10 @@
         ]
       }
     },
-
     "attributes": {
       "individual": {
         "taxonInformation": {},
+        "recordHistoryEvents": [],
         "collectingInformation": [
           {
             "id": "string",
@@ -54,11 +69,26 @@
               "expeditionText": "Vega Expedition",
               "locationInformation": {
                 "places": [
-                  { "id": "1", "type": "place" },
-                  { "id": "2", "type": "place" },
-                  { "id": "3", "type": "place" },
-                  { "id": "4", "type": "place" },
-                  { "id": "5", "type": "place" }
+                  {
+                    "id": "1",
+                    "type": "place"
+                  },
+                  {
+                    "id": "2",
+                    "type": "place"
+                  },
+                  {
+                    "id": "3",
+                    "type": "place"
+                  },
+                  {
+                    "id": "4",
+                    "type": "place"
+                  },
+                  {
+                    "id": "5",
+                    "type": "place"
+                  }
                 ],
                 "position": {
                   "latitude": "string",
@@ -67,7 +97,9 @@
                   "uncertaintyInMeters": 0
                 },
                 "polygon": {
-                  "vertices": [null]
+                  "vertices": [
+                    null
+                  ]
                 },
                 "verticalPosition": {
                   "maximumDepthInMeters": 0,
@@ -147,7 +179,9 @@
                     "uncertaintyInMeters": 0
                   },
                   "polygon": {
-                    "vertices": [null]
+                    "vertices": [
+                      null
+                    ]
                   },
                   "verticalPosition": {
                     "maximumDepthInMeters": 0,
