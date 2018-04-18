@@ -15,6 +15,13 @@ module.exports = {
         type: 'taxon'
       }
     }],
+    recordHistoryEvents: [{
+      agent: 'agent',
+      date: {
+        dateText: '2018'
+      },
+      lid: 'ee5f3ad9-2aeb-4d11-a479-3b09cc9a6145'
+    }],
     taxonInformation: {
       lid: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32'
     },

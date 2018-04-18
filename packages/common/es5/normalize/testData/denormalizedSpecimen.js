@@ -13,6 +13,12 @@ module.exports = {
         type: 'taxon'
       }
     }],
+    recordHistoryEvents: [{
+      agent: 'agent',
+      date: {
+        dateText: '2018'
+      }
+    }],
     taxonInformation: {},
     featureObservations: [{
       featureObservationAgent: 'featureObservationAgent',

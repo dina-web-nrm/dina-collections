@@ -13,7 +13,13 @@ module.exports = {
     },
     lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4'
   }],
-
+  recordHistoryEvents: [{
+    agent: 'agent',
+    date: {
+      dateText: '2018'
+    },
+    lid: 'ee5f3ad9-2aeb-4d11-a479-3b09cc9a6145'
+  }],
   taxonInformation: [{
     lid: 'f01e22cd-8ef8-4b91-825b-9b30feeeea32'
   }],
@@ -95,6 +101,7 @@ module.exports = {
     collectionItems: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
     identifiers: ['9c9b1543-5b24-44ac-8032-cea5d430bcb7'],
     collectingInformation: ['e7253de8-6262-4fd6-8192-40dec5970f41'],
+    recordHistoryEvents: ['ee5f3ad9-2aeb-4d11-a479-3b09cc9a6145'],
     lid: '15413ab7-4c2f-4072-b2ae-3192f2887808'
   }
 };

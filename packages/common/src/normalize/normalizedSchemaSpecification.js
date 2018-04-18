@@ -20,6 +20,9 @@ const specimen = {
   individual: {
     column: 'individual',
   },
+  recordHistoryEvent: {
+    column: 'recordHistoryEvents',
+  },
   relationships: {
     column: 'relationships',
     normalize: false,
