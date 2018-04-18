@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "lid": {
+      "type": "string"
+    },
+    "agent": {
+      "type": "string"
+    },
+    "date": {
+      "$ref": "__ROOT__dateWrapper"
+    },
+    "system": {
+      "type": "string",
+      "enum": [
+        "catalogCard"
+      ]
+    }
+  }
+}
