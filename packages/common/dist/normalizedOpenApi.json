@@ -5237,6 +5237,13 @@
             },
             "x-summary": ""
           },
+          "recordHistoryEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/recordHistoryEvent"
+            },
+            "x-summary": ""
+          },
           "readOnly": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
@@ -5361,6 +5368,34 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "recordHistoryEvent": {
+        "additionalProperties": false,
+        "properties": {
+          "lid": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "agent": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "date": {
+            "$ref": "#/components/schemas/dateWrapper",
+            "x-summary": ""
+          },
+          "system": {
+            "type": "string",
+            "enum": [
+              "catalogCard"
+            ],
+            "x-summary": ""
+          }
+        },
+        "description": "### Definition\n\nInformation about the history of the record.\n\n### Note(s)\n\nThis can for example involve creation of a catalog card, creation of a record in MAM2006 or edit of the record.\n",
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": ""
+      },
       "specimen": {
         "additionalProperties": false,
         "description": "This is a description",
@@ -5419,6 +5454,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/event"
+            },
+            "x-summary": ""
+          },
+          "recordHistoryEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/recordHistoryEvent"
             },
             "x-summary": ""
           },
@@ -9558,7 +9600,15 @@
                     "collectingInformation": [
                       "44ab19bf-4328-42d3-9f8e-c88854847234"
                     ],
+                    "requestHistoryEvents": [
+                      "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
+                    ],
                     "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+                  }
+                ],
+                "requestHistoryEvents": [
+                  {
+                    "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
                   }
                 ],
                 "taxonInformation": [
@@ -9733,7 +9783,15 @@
                   "collectingInformation": [
                     "44ab19bf-4328-42d3-9f8e-c88854847234"
                   ],
+                  "requestHistoryEvents": [
+                    "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
+                  ],
                   "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+                }
+              ],
+              "requestHistoryEvents": [
+                {
+                  "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
                 }
               ],
               "taxonInformation": [
