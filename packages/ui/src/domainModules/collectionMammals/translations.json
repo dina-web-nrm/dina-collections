@@ -3,6 +3,18 @@
     "en": "Add",
     "sv": "Lägg till"
   },
+  "catalogCard": {
+    "en": "Catalog card",
+    "sv": "Katalogkort"
+  },
+  "createdBy": {
+    "en": "Created by",
+    "sv": "Skapat av"
+  },
+  "date": {
+    "en": "Date",
+    "sv": "Datum"
+  },
   "catalogNumber": {
     "en": "Catalog number",
     "sv": "Katalognummer",
