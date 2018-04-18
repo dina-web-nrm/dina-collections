@@ -187,6 +187,14 @@ const mutations = [
     name: 'typeStatus.hidden',
     value: 'paratype',
   },
+  {
+    name: 'recordHistoryEvents.0.agent',
+    value: 'agent',
+  },
+  {
+    name: 'recordHistoryEvents.0.date.dateText',
+    value: 'dateText',
+  },
 ]
 
 const expectedOutput = {
@@ -309,6 +317,13 @@ const expectedOutput = {
           identifierType: 'SVA nr',
           remarks: 'remarks',
           value: 'V0100/98',
+        },
+      ],
+      recordHistoryEvents: [
+        {
+          agent: 'agent',
+          date: { dateText: 'dateText' },
+          system: 'catalogCard',
         },
       ],
       taxonInformation: {

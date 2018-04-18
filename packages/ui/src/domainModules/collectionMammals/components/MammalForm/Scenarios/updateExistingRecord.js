@@ -82,7 +82,6 @@ const expectedOutput = {
         {
           physicalObject: {
             id: '1',
-            storageLocation: undefined,
             type: 'physicalObject',
           },
         },
@@ -111,10 +110,9 @@ const expectedOutput = {
           value: '444444',
         },
       ],
-      readOnly: undefined,
+      recordHistoryEvents: [],
       taxonInformation: {},
     },
-    readOnly: undefined,
   },
   storageLocations: [],
   taxa: [
