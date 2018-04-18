@@ -14,6 +14,14 @@ module.exports = {
         },
       },
     ],
+    recordHistoryEvents: [
+      {
+        agent: 'agent',
+        date: {
+          dateText: '2018',
+        },
+      },
+    ],
     taxonInformation: {},
     featureObservations: [
       {

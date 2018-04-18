@@ -161,7 +161,10 @@ class RawMammalForm extends Component {
               formValueSelector={formValueSelector}
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             />
-            <SegmentOther readOnly={initialValues.readOnly} />
+            <SegmentOther
+              formValueSelector={formValueSelector}
+              readOnly={initialValues.readOnly}
+            />
             <FormActions
               error={error}
               invalid={invalid}

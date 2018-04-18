@@ -47,6 +47,12 @@
         "x-reference-type": "internal"
       }
     },
+    "recordHistoryEvents": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__recordHistoryEvent"
+      }
+    },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
     },

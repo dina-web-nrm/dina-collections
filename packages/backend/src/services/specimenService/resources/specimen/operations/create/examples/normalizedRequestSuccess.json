@@ -161,7 +161,15 @@
           "collectingInformation": [
             "44ab19bf-4328-42d3-9f8e-c88854847234"
           ],
+          "requestHistoryEvents": [
+            "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
+          ],
           "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+        }
+      ],
+      "requestHistoryEvents": [
+        {
+          "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
         }
       ],
       "taxonInformation": [

@@ -91,7 +91,6 @@
         "$ref": "__ROOT__taxonInformation"
       }
     },
-
     "featureObservations": {
       "type": "array",
       "items": {
@@ -102,6 +101,12 @@
       "type": "array",
       "items": {
         "$ref": "__ROOT__event"
+      }
+    },
+    "recordHistoryEvents": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__recordHistoryEvent"
       }
     },
     "version": {
