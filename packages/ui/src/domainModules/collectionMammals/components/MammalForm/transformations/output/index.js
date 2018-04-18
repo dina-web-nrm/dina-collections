@@ -4,6 +4,7 @@ import transformCollectionItems from './transformCollectionItems'
 import transformDeterminations from './transformDeterminations'
 import transformFeatureObservations from './transformFeatureObservations'
 import transformIdentifiers from './transformIdentifiers'
+import transformRecordHistoryEvents from './transformRecordHistoryEvents'
 import transformTaxonInformation from './transformTaxonInformation'
 
 export default function transformOutput(formData, normalize = true) {
@@ -39,6 +40,10 @@ export default function transformOutput(formData, normalize = true) {
     formData.collectingInformation
   )
 
+  const recordHistoryEvents = transformRecordHistoryEvents(
+    formData.recordHistoryEvents
+  )
+
   const individual = {
     ...formData,
     collectingInformation,
@@ -46,6 +51,7 @@ export default function transformOutput(formData, normalize = true) {
     determinations,
     featureObservations,
     identifiers,
+    recordHistoryEvents,
     taxonInformation,
   }
 
