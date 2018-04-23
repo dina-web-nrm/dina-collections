@@ -54,7 +54,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
       const sampleDoc = {
         email: 'anton@example.com',
       }
-      return create(sampleDoc).then(res => {
+      return create({ doc: sampleDoc }).then(res => {
         expect(res).toBeTruthy()
         expect(res.dataValues).toEqual({
           document: {
@@ -91,7 +91,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
       const sampleDoc = {
         email: 'anton@example.com',
       }
-      return create(sampleDoc).then(res => {
+      return create({ doc: sampleDoc }).then(res => {
         expect(res).toBeTruthy()
         expect(res.dataValues).toEqual({
           document: {
@@ -120,7 +120,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
         expect(successValidate.mock.calls.length).toBe(1)
       })
     })
-    it('Successfully create a new document when validation function fail', () => {
+    fit('Successfully create a new document when validation function fail', () => {
       const create = createFactory({
         Model: MockModel,
         schemaVersion: '1.1',
@@ -129,7 +129,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
       const sampleDoc = {
         email: 'anton@example.com',
       }
-      return create(sampleDoc).then(res => {
+      return create({ doc: sampleDoc }).then(res => {
         expect(res).toBeTruthy()
         expect(res.dataValues).toEqual({
           document: {
