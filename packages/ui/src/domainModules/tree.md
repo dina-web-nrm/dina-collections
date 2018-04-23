@@ -20,13 +20,12 @@
 │   │   ├── LookupMammals
 │   │   │   └── index.js
 │   │   ├── MammalForm
-│   │   │   ├── CatalogNumberInput
 │   │   │   ├── FormActions.js
 │   │   │   ├── Scenarios
-│   │   │   ├── SegmentCatalogNumberIdentifier
 │   │   │   ├── SegmentCollectingInformation
 │   │   │   ├── SegmentCollectionItems
 │   │   │   ├── SegmentFeatureObservations
+│   │   │   ├── SegmentIdentifiers
 │   │   │   ├── SegmentOther
 │   │   │   ├── SegmentTaxon
 │   │   │   ├── index.js
@@ -36,7 +35,6 @@
 │   ├── endpoints.js
 │   ├── globalSelectors.js
 │   ├── index.js
-│   ├── middleware.js
 │   ├── mockData.js
 │   ├── reducer.js
 │   ├── schemas.js
@@ -78,7 +76,6 @@
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── index.js
-│   ├── interactions.js
 │   ├── keyObjectModule.js
 │   └── translations.json
 ├── storage
@@ -97,7 +94,6 @@
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── index.js
-│   ├── interactions.js
 │   ├── keyObjectModule.js
 │   └── translations.json
 ├── taxon

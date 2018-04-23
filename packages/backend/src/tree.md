@@ -33,12 +33,12 @@
 │   ├── curatedListService
 │   ├── externalEventService
 │   ├── index.js
-│   ├── localityService
 │   ├── organizationService
+│   ├── placeService
 │   ├── specimenService
 │   ├── statusService
 │   ├── storageService
-│   ├── taxonService
+│   ├── taxonomyService
 │   └── tree.md
 ├── tests
 │   ├── testCoreCrudRequests

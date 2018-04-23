@@ -59,7 +59,14 @@
 │       ├── description.md
 │       └── index.js
 ├── index.js
-├── localityService
+├── organizationService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
+│   │   └── index.js
+│   └── resources
+│       └── index.js
+├── placeService
 │   ├── e2e.spec.js
 │   ├── index.js
 │   ├── info
@@ -76,13 +83,6 @@
 │   │       ├── getMany
 │   │       └── index.js
 │   └── todo
-├── organizationService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   └── resources
-│       └── index.js
 ├── specimenService
 │   ├── controllers
 │   │   └── index.js
@@ -135,7 +135,7 @@
 │       └── storageLocation
 │           ├── index.js
 │           └── operations
-├── taxonService
+├── taxonomyService
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
