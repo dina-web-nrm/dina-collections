@@ -1,6 +1,7 @@
 import * as api from './api'
 import * as bootstrap from './bootstrap'
 import * as commonUi from './commonUi'
+import * as crud from './crud'
 import * as crudBlocks from './crudBlocks'
 import * as devToolsExtension from './devToolsExtension'
 import * as documentation from './documentation'
@@ -19,6 +20,7 @@ import * as user from './user'
 const modules = [
   api,
   bootstrap,
+  crud,
   commonUi,
   layout,
   devToolsExtension,

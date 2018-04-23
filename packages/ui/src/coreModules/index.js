@@ -1,6 +1,7 @@
 export const moduleOrder = [
   'api',
   'bootstrap',
+  'crud',
   'commonUi',
   'layout',
   'devToolsExtension',
