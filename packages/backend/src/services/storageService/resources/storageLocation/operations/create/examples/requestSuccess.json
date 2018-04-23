@@ -2,7 +2,7 @@
   "data": {
     "type": "storageLocation",
     "attributes": {
-      "locationText": "string"
+      "name": "string"
     }
   }
 }

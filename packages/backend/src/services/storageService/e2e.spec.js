@@ -16,7 +16,7 @@ const physicalObjectExample = {
 const storageLocationExample = {
   data: {
     attributes: {
-      locationText: 'some location',
+      name: 'some location',
     },
     type: 'storageLocation',
   },
