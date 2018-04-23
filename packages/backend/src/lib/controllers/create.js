@@ -16,12 +16,12 @@ module.exports = function create({ operation = {}, models, postCreateHook }) {
     const { data: input } = body
 
     return model
-      .create({
-        doc: transformInput({
+      .create(
+        transformInput({
           input,
           relations,
-        }),
-      })
+        })
+      )
       .then(transformOutput)
       .then(res => {
         if (postCreateHook) {

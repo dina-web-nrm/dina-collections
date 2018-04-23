@@ -10,6 +10,7 @@ module.exports = function createFactory(
   if (!Model) {
     throw new Error('Have to provide model')
   }
+
   return function create({ doc, foreignKeyObject }) {
     if (!doc) {
       return Promise.reject(new Error('doc not provided'))

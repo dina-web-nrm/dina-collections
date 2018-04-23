@@ -120,7 +120,7 @@ describe('lib/modelFactories/versionedDocumentModel/methods/createFactory', () =
         expect(successValidate.mock.calls.length).toBe(1)
       })
     })
-    fit('Successfully create a new document when validation function fail', () => {
+    it('Successfully create a new document when validation function fail', () => {
       const create = createFactory({
         Model: MockModel,
         schemaVersion: '1.1',
