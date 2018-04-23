@@ -1,6 +1,7 @@
 import globalUserSelectors from 'coreModules/user/globalSelectors'
 import createSystemFrontendValidator from 'common/es5/error/validators/createSystemFrontendValidator'
-import { createApiClient } from 'common/es5/apiClient'
+import createApiClient from 'common/es5/jsonApiClient'
+import createEndpoint from 'utilities/endpointFactory/client'
 
 export const buildAuthHeaders = state => {
   const authToken = globalUserSelectors.getAuthToken(state)
@@ -19,7 +20,7 @@ export default function createApiMiddleware(apiClientOptions) {
     return validator(input)
   }
   return ({ dispatch, getState }) => {
-    const apiClient = createApiClient({
+    const apiConfigInput = {
       ...apiClientOptions,
       mapHeaders: headers => {
         return {
@@ -28,6 +29,11 @@ export default function createApiMiddleware(apiClientOptions) {
         }
       },
       systemValidate,
+    }
+
+    const apiClient = createApiClient({
+      apiConfigInput,
+      createEndpoint,
     })
     return next => action => {
       if (typeof action === 'function') {
