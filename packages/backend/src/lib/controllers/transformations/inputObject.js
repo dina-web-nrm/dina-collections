@@ -1,3 +1,24 @@
+const extractForeignKeyRelationships = ({ input, relations = {} }) => {
+  return Object.keys(relations).reduce((obj, key) => {
+    const relation = relations[key]
+    const { storeInDocument, format } = relation
+    const relationId =
+      input.relationships &&
+      input.relationships[key] &&
+      input.relationships[key].data &&
+      input.relationships[key].data.id
+    if (!storeInDocument && relationId !== undefined && format === 'object') {
+      const foreignKeyName = `${key}VersionId`
+      return {
+        ...obj,
+        [foreignKeyName]: relationId,
+      }
+    }
+
+    return obj
+  }, {})
+}
+
 const extractRelationships = ({
   input,
   relations = {},
@@ -39,12 +60,30 @@ module.exports = function transformInput({
     relations,
     storeEmptyRelationsInDocument,
   })
-  if (!Object.keys(relationshipData).length) {
-    return input.attributes
+
+  const foreignKeyObject = extractForeignKeyRelationships({
+    input,
+    relations,
+  })
+
+  let output = { doc: input.attributes }
+
+  if (Object.keys(relationshipData).length) {
+    output = {
+      ...output,
+      doc: {
+        ...output.doc,
+        relationships: relationshipData,
+      },
+    }
   }
 
-  return {
-    ...input.attributes,
-    relationships: relationshipData,
+  if (Object.keys(foreignKeyObject).length) {
+    output = {
+      ...output,
+      foreignKeyObject,
+    }
   }
+
+  return output
 }

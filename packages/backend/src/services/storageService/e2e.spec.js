@@ -16,7 +16,7 @@ const physicalObjectExample = {
 const storageLocationExample = {
   data: {
     attributes: {
-      locationText: 'some location',
+      name: 'some location',
     },
     type: 'storageLocation',
   },
@@ -192,6 +192,123 @@ apiDescribe('storage', () => {
           }).then(createRelationRes => {
             expect(createRelationRes).toBeTruthy()
             expect(createRelationRes.data).toBeTruthy()
+          })
+        })
+        .then(() => {
+          return makeTestCall({
+            authToken,
+            operationId: 'getPhysicalObject',
+            pathParams: {
+              id: physicalObjectId,
+            },
+            queryParams: {
+              relationships: ['all'],
+            },
+            validateOutput: true,
+          }).then(physicalObject => {
+            expect(physicalObject).toBeTruthy()
+            expect(physicalObject.data).toBeTruthy()
+            expect(physicalObject.data.relationships).toBeTruthy()
+            expect(
+              physicalObject.data.relationships.storageLocation
+            ).toBeTruthy()
+          })
+        })
+        .then(() => {
+          return makeTestCall({
+            authToken,
+            operationId: 'getStorageLocation',
+            pathParams: {
+              id: storageLocationId,
+            },
+            queryParams: {
+              relationships: ['all'],
+            },
+            validateOutput: true,
+          }).then(storageLocation => {
+            expect(storageLocation).toBeTruthy()
+            expect(
+              storageLocation.data.relationships.physicalObjects
+            ).toBeTruthy()
+            expect(
+              storageLocation.data.relationships.physicalObjects.data[0]
+            ).toBeTruthy()
+          })
+        })
+        .then(() => {
+          return makeTestCall({
+            authToken,
+            operationId: 'getPhysicalObjects',
+            queryParams: {
+              relationships: ['all'],
+            },
+            validateOutput: true,
+          }).then(physicalObjects => {
+            expect(physicalObjects).toBeTruthy()
+            const { data } = physicalObjects
+            expect(data[0].relationships.storageLocation.data.id).toBe(
+              storageLocationId
+            )
+          })
+        })
+        .then(() => {
+          return makeTestCall({
+            authToken,
+            operationId: 'getStorageLocations',
+            queryParams: {
+              relationships: ['all'],
+            },
+            validateOutput: true,
+          }).then(storageLocations => {
+            expect(storageLocations).toBeTruthy()
+            const { data } = storageLocations
+            expect(data[0].relationships.physicalObjects.data[0].id).toBe(
+              physicalObjectId
+            )
+          })
+        })
+    })
+    it('Succeed with relation example where relations added at create', () => {
+      let storageLocationId
+      let physicalObjectId
+      return makeTestCall({
+        authToken,
+        body: storageLocationExample,
+        operationId: 'createStorageLocation',
+        validateOutput: true,
+      })
+        .then(storageLocationRes => {
+          expect(storageLocationRes).toBeTruthy()
+          expect(storageLocationRes.data).toBeTruthy()
+          expect(storageLocationRes.data.type).toBe('storageLocation')
+          expect(storageLocationRes.data.attributes).toBeTruthy()
+          storageLocationId = storageLocationRes.data.id
+          return storageLocationId
+        })
+        .then(() => {
+          const physicalObjectWithRelationshipsExample = {
+            data: {
+              ...physicalObjectExample.data,
+              relationships: {
+                storageLocation: {
+                  data: {
+                    id: storageLocationId,
+                    type: 'storageLocation',
+                  },
+                },
+              },
+            },
+          }
+          return makeTestCall({
+            authToken,
+            body: physicalObjectWithRelationshipsExample,
+            operationId: 'createPhysicalObject',
+            validateOutput: true,
+          }).then(physicalObjectRes => {
+            expect(physicalObjectRes).toBeTruthy()
+            expect(physicalObjectRes.data).toBeTruthy()
+            expect(physicalObjectRes.data.type).toBe('physicalObject')
+            physicalObjectId = physicalObjectRes.data.id
           })
         })
         .then(() => {

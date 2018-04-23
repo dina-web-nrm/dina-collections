@@ -12,9 +12,11 @@ module.exports = function update({ operation, models, postUpdateHook }) {
     const { body: { data: input } } = request
     const { pathParams: { id } } = request
 
+    const { doc } = transformInput({ input, relations })
+
     return model
       .update({
-        doc: transformInput({ input, relations }),
+        doc,
         id,
       })
       .then(transformOutput)

@@ -10,17 +10,26 @@ module.exports = function createFactory(
   if (!Model) {
     throw new Error('Have to provide model')
   }
-  return function create(doc) {
+
+  return function create({ doc, foreignKeyObject }) {
     if (!doc) {
       return Promise.reject(new Error('doc not provided'))
     }
 
-    const data = {
+    let data = {
       document: doc,
       isCurrentVersion: true,
       schemaCompliant: validate ? !validate(doc) : undefined,
       schemaVersion: schemaVersion || undefined,
     }
+
+    if (foreignKeyObject) {
+      data = {
+        ...data,
+        ...foreignKeyObject,
+      }
+    }
+
     log.debug(`Creating instance for model ${Model.tableName}`)
 
     return Model.create(data).then(newModel => {
