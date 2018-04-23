@@ -1,6 +1,5 @@
 export const moduleOrder = [
   'curatedListService',
-  'placeService',
   'specimenService',
   'storageService',
   'taxonService',
