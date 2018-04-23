@@ -12,7 +12,7 @@ import {
 
 const createEnsureAllItemsFetched = ({
   resource,
-  relationships = ['parent'],
+  relationships = [],
 }) => ComposedComponent => {
   /* eslint-disable no-console */
   if (!resource) {

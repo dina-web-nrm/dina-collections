@@ -3,25 +3,26 @@ import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import placeServiceSelectors from 'dataModules/placeService/globalSelectors'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import {
-  createGetPlaceById,
-  ensureAllPlacesFetched,
-} from 'dataModules/placeService/higherOrderComponents'
+  createEnsureAllItemsFetched,
+  createGetItemById,
+} from 'coreModules/crud/higherOrderComponents'
+
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
 const mapStateToProps = (state, ownProps) => {
-  const { place } = ownProps
+  const { item: place } = ownProps
 
   const parent =
     place &&
     place.parent &&
-    placeServiceSelectors.getPlace(state, place.parent.id)
+    globalCrudSelectors.place.getOne(state, place.parent.id)
   const children =
     place &&
     place.children &&
     place.children.map(({ id }) => {
-      return placeServiceSelectors.getPlace(state, id)
+      return globalCrudSelectors.place.getOne(state, id)
     })
   return {
     children,
@@ -31,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const propTypes = {
-  allPlacesFetched: PropTypes.bool.isRequired,
+  allItemsFetched: PropTypes.bool.isRequired,
   children: PropTypes.array,
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.object,
@@ -47,14 +48,14 @@ const defaultProps = {
 export class Inspect extends Component {
   render() {
     const {
-      allPlacesFetched,
+      allItemsFetched,
       children,
       onInteraction: handleInteraction,
       place,
       parent,
     } = this.props
 
-    if (!place || !allPlacesFetched) {
+    if (!place || !allItemsFetched) {
       return null
     }
 
@@ -190,7 +191,13 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  ensureAllPlacesFetched(),
-  createGetPlaceById(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'place',
+  }),
+
+  createGetItemById({
+    resource: 'place',
+  }),
   connect(mapStateToProps)
 )(Inspect)

@@ -1,14 +1,14 @@
 import { createSelector } from 'reselect'
 
-import placeServiceSelectors from 'dataModules/placeService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from './constants'
 
-const { getPlaces, getPlacesArray } = placeServiceSelectors
+const { getItemsObject, getAll } = crudSelectors.place
 
-const getPlacesSortedArray = createSelector(getPlacesArray, placesArray => {
+const getPlacesSortedArray = createSelector(getAll, placesArray => {
   return placesArray.sort((a, b) => {
     if (a.name < b.name) return -1
     if (a.name > b.name) return 1
@@ -65,7 +65,7 @@ const getPlacesArrayByFilter = createSelector(
 )
 
 const getPlaceAncestorsById = createSelector(
-  getPlaces,
+  getItemsObject,
   getSecondArgument,
   (places, currentId) => {
     const ancestors = []
@@ -117,7 +117,7 @@ const getPrevPlaceIdFromFilter = createSelector(
 )
 
 const getPlaceOption = createSelector(
-  [getPlaces, getSecondArgument],
+  [getItemsObject, getSecondArgument],
   (places, id) => {
     const place = places[id]
     if (!place) {
@@ -133,7 +133,7 @@ const getPlaceOption = createSelector(
 
 const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
   return createSelector(
-    [getPlaces, getSecondArgument],
+    [getItemsObject, getSecondArgument],
     (places, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
       const mappedGroupLocalities = Object.values(places)

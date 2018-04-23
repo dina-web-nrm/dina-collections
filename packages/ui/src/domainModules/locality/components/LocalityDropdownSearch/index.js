@@ -5,13 +5,13 @@ import { compose } from 'redux'
 
 import config from 'config'
 import { DropdownSearch } from 'coreModules/form/components'
-import { ensureAllPlacesFetched } from 'dataModules/placeService/higherOrderComponents'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../constants'
 import { actionCreators, globalSelectors } from '../../keyObjectModule'
 import localitySelectors from '../../globalSelectors'
 
 const propTypes = {
-  allPlacesFetched: PropTypes.bool.isRequired,
+  allItemsFetched: PropTypes.bool.isRequired,
   group: PropTypes.oneOf([ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE])
     .isRequired,
   updateSearchQuery: PropTypes.func.isRequired,
@@ -24,9 +24,9 @@ const mapDispatchToProps = {
 
 class LocalityDropdownSearch extends Component {
   render() {
-    const { allPlacesFetched, group, updateSearchQuery, ...rest } = this.props
+    const { allItemsFetched, group, updateSearchQuery, ...rest } = this.props
 
-    if (!allPlacesFetched && !config.isTest) {
+    if (!allItemsFetched && !config.isTest) {
       return null
     }
 
@@ -79,6 +79,9 @@ class LocalityDropdownSearch extends Component {
 LocalityDropdownSearch.propTypes = propTypes
 
 export default compose(
-  ensureAllPlacesFetched(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'place',
+  }),
   connect(null, mapDispatchToProps)
 )(LocalityDropdownSearch)

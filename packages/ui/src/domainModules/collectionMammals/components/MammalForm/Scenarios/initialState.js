@@ -49,24 +49,32 @@ export default {
       },
     },
   },
-  placeService: {
+  crud: {
+    keyObject: {
+      place: {
+        allItemsFetched: true,
+      },
+    },
     resources: {
-      places: {
-        '1': {
-          name: 'africa',
-          group: 'continent',
-          id: '1',
-          type: 'place',
-        },
-        '12': {
-          name: 'algeria',
-          group: 'country',
-          id: '12',
-          type: 'place',
+      place: {
+        items: {
+          '1': {
+            name: 'africa',
+            group: 'continent',
+            id: '1',
+            type: 'place',
+          },
+          '12': {
+            name: 'algeria',
+            group: 'country',
+            id: '12',
+            type: 'place',
+          },
         },
       },
     },
   },
+
   storageService: {
     resources: {
       physicalObjects: {

@@ -5,7 +5,8 @@ import { Button, Icon } from 'semantic-ui-react'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 
 import { createSortAlphabeticallyByProperty } from 'common/es5/sortMethods'
-import { getPlaces as getPlacesAc } from 'dataModules/placeService/actionCreators'
+
+import crudActionCreators from 'coreModules/crud/actionCreators'
 import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/crudBlocks/keyObjectModule'
 import {
   SET_ITEM_EDIT,
@@ -24,7 +25,7 @@ const mapStateToProps = (state, { name }) => {
 }
 
 const mapDispatchToProps = {
-  getPlacesAc,
+  getPlacesAc: crudActionCreators.place.getMany,
 }
 
 const propTypes = {

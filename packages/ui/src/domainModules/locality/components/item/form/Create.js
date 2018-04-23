@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
 
-import { createPlace as createPlaceAc } from 'dataModules/placeService/actionCreators'
+import crudActionCreators from 'coreModules/crud/actionCreators'
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
@@ -13,7 +13,7 @@ import {
 import BaseForm, { FORM_NAME } from './Base'
 
 const mapDispatchToProps = {
-  createPlace: createPlaceAc,
+  createPlace: crudActionCreators.place.create,
   destroy,
 }
 
@@ -52,7 +52,7 @@ export class Create extends PureComponent {
         onSubmit={data => {
           this.props
             .createPlace({
-              place: data,
+              item: data,
             })
             .then(result => {
               onInteraction(FORM_CREATE_SUCCESS, {

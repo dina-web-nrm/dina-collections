@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updatePlace as updatePlaceAc } from 'dataModules/placeService/actionCreators'
-import { createGetPlaceById } from 'dataModules/placeService/higherOrderComponents'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -11,23 +12,23 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  updatePlace: updatePlaceAc,
+  updatePlace: crudActionCreators.place.update,
 }
 
 const propTypes = {
+  item: PropTypes.object,
   itemId: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
-  place: PropTypes.object,
   updatePlace: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  place: undefined,
+  item: undefined,
 }
 
 export class Edit extends PureComponent {
   render() {
-    const { place, onInteraction, itemId } = this.props
+    const { item: place, onInteraction, itemId } = this.props
     const initialValues = place && {
       group: place.group,
       name: place.name,
@@ -55,7 +56,7 @@ export class Edit extends PureComponent {
         onSubmit={data => {
           this.props
             .updatePlace({
-              place: {
+              item: {
                 id: itemId,
                 ...data,
               },
@@ -74,6 +75,7 @@ export class Edit extends PureComponent {
 Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
-export default compose(createGetPlaceById(), connect(null, mapDispatchToProps))(
-  Edit
-)
+export default compose(
+  createGetItemById({ resource: 'place' }),
+  connect(null, mapDispatchToProps)
+)(Edit)

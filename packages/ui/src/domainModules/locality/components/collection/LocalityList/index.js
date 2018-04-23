@@ -9,8 +9,8 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/crudBlocks/keyObjectModule'
-import { ensureAllPlacesFetched } from 'dataModules/placeService/higherOrderComponents'
-import placeServiceSelectors from 'dataModules/placeService/globalSelectors'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import placeSelectors from '../../../globalSelectors'
 import { CONTINENT } from '../../../constants'
 import ListItem from './ListItem'
@@ -19,7 +19,7 @@ const mapStateToProps = (state, { name }) => {
   const filter = keyObjectGlobalSelectors.get[':name.filter'](state, { name })
   const filterParentId = (filter && filter.parentId) || undefined
   const filterParent =
-    filterParentId && placeServiceSelectors.getPlace(state, filterParentId)
+    filterParentId && globalCrudSelectors.place.getOne(state, filterParentId)
 
   const places = placeSelectors.getPlacesArrayByFilter(state, filter)
 
@@ -245,6 +245,9 @@ LocalityList.propTypes = propTypes
 LocalityList.defaultProps = defaultProps
 
 export default compose(
-  ensureAllPlacesFetched(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'place',
+  }),
   connect(mapStateToProps, mapDispatchToProps)
 )(LocalityList)
