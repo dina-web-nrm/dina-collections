@@ -1,3 +1,2 @@
-import capitalizeFirstLetter from './capitalizeFirstLetter'
-
-export { capitalizeFirstLetter }
+exports.camelCaseToUpperSnakeCase = require('./camelCaseToUpperSnakeCase')
+exports.capitalizeFirstLetter = require('./capitalizeFirstLetter')
