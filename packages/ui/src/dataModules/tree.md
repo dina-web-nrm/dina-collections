@@ -51,48 +51,6 @@
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── index.js
-├── placeService
-│   ├── actionCreators
-│   │   ├── createPlace
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getPlace
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── getPlaces
-│   │   │   ├── index.js
-│   │   │   └── index.test.js
-│   │   ├── index.js
-│   │   ├── index.test.js
-│   │   └── updatePlace
-│   │       ├── index.js
-│   │       └── index.test.js
-│   ├── actionTypes.js
-│   ├── actionTypes.test.js
-│   ├── constants.js
-│   ├── constants.test.js
-│   ├── endpoints.js
-│   ├── endpoints.test.js
-│   ├── globalSelectors.js
-│   ├── globalSelectors.test.js
-│   ├── higherOrderComponents
-│   │   ├── createGetPlaceById.js
-│   │   ├── ensureAllPlacesFetched.js
-│   │   └── index.js
-│   ├── index.js
-│   ├── index.test.js
-│   ├── keyObjectModule.js
-│   ├── mockData.js
-│   ├── mockData.test.js
-│   ├── reducer
-│   │   ├── index.js
-│   │   ├── index.test.js
-│   │   └── resources
-│   │       ├── index.js
-│   │       ├── index.test.js
-│   │       └── places
-│   ├── selectors.js
-│   └── selectors.test.js
 ├── specimenService
 │   ├── actionCreators
 │   │   ├── createSpecimen

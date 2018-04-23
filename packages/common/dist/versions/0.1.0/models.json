@@ -6293,13 +6293,13 @@
                 "collectingInformation": [
                   "44ab19bf-4328-42d3-9f8e-c88854847234"
                 ],
-                "requestHistoryEvents": [
+                "recordHistoryEvents": [
                   "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
                 ],
                 "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
               }
             ],
-            "requestHistoryEvents": [
+            "recordHistoryEvents": [
               {
                 "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
               }
@@ -6476,13 +6476,13 @@
               "collectingInformation": [
                 "44ab19bf-4328-42d3-9f8e-c88854847234"
               ],
-              "requestHistoryEvents": [
+              "recordHistoryEvents": [
                 "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
               ],
               "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
             }
           ],
-          "requestHistoryEvents": [
+          "recordHistoryEvents": [
             {
               "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
             }
@@ -7060,7 +7060,7 @@
         "data": {
           "type": "storageLocation",
           "attributes": {
-            "locationText": "string"
+            "name": "string"
           }
         }
       }
@@ -7069,7 +7069,7 @@
       "data": {
         "type": "storageLocation",
         "attributes": {
-          "locationText": "string"
+          "name": "string"
         }
       }
     },

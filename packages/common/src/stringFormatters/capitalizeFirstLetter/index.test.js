@@ -1,4 +1,4 @@
-import capitalizeFirstLetter from './index'
+const capitalizeFirstLetter = require('./index')
 
 describe('stringFormatting/capitalizeFirstLetter', () => {
   it('returns string with capital first letter', () => {

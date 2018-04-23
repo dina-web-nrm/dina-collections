@@ -19,6 +19,7 @@
 │   │   ├── DefaultLoader.js
 │   │   ├── DefaultLoader.stories.js
 │   │   ├── DefaultLoader.test.js
+│   │   ├── DefaultLoadingError.js
 │   │   ├── DefaultWrapper.js
 │   │   ├── DefaultWrapper.stories.js
 │   │   ├── DefaultWrapper.test.js
@@ -59,41 +60,56 @@
 │       ├── unregisterModuleProperty.js
 │       └── updateModuleState.js
 ├── commonUi
-│   ├── actionCreators
-│   │   ├── closeLeftSidebar.js
-│   │   ├── index.js
-│   │   ├── openLeftSidebar.js
-│   │   └── toggleLeftSidebar.js
-│   ├── actionTypes.js
 │   ├── components
 │   │   ├── Accordion
 │   │   │   └── index.js
 │   │   ├── Footer.js
 │   │   ├── Footer.stories.js
-│   │   ├── InformationSidebar
-│   │   │   └── index.js
-│   │   ├── NavigationSidebar
-│   │   │   ├── SidebarNavItem.js
-│   │   │   ├── SidebarNavItemGroup.js
-│   │   │   └── index.js
-│   │   ├── NavigationSidebar.stories.js
 │   │   ├── PageTemplate.js
 │   │   ├── PageTemplate.stories.js
 │   │   ├── ThreeColumnGrid
 │   │   │   └── index.js
 │   │   ├── TranslatedLabel.js
 │   │   ├── TranslatedLabel.stories.js
-│   │   ├── ViewWrap.js
-│   │   ├── ViewWrap.stories.js
 │   │   └── index.js
 │   ├── constants.js
-│   ├── globalSelectors.js
 │   ├── index.js
-│   ├── middleware.js
-│   ├── reducer.js
 │   ├── sample.md
-│   ├── selectors.js
 │   └── translations.json
+├── crud
+│   ├── actionCreators.js
+│   ├── actionTypes.js
+│   ├── config.js
+│   ├── config.test.js
+│   ├── constants.js
+│   ├── constants.test.js
+│   ├── createCrudModule
+│   │   ├── factories
+│   │   │   ├── actionCreators
+│   │   │   ├── actionHandlers
+│   │   │   ├── actionTypes
+│   │   │   ├── coreReducer
+│   │   │   ├── dux
+│   │   │   ├── globalSelectors
+│   │   │   ├── resourceReducer
+│   │   │   ├── selectors
+│   │   │   └── specification
+│   │   ├── index.js
+│   │   ├── index.test.js
+│   │   ├── inputConfigSchema.js
+│   │   └── utilities
+│   │       ├── validateConfig.js
+│   │       └── validateConfig.test.js
+│   ├── crudModule.js
+│   ├── globalSelectors.js
+│   ├── higherOrderComponents
+│   │   ├── createEnsureAllItemsFetched.js
+│   │   ├── createGetItemById.js
+│   │   └── index.js
+│   ├── index.js
+│   ├── keyObjectModule.js
+│   ├── reducer.js
+│   └── selectors.js
 ├── crudBlocks
 │   ├── components
 │   │   ├── CrudBlocksWrapper
@@ -126,6 +142,7 @@
 │       ├── createLinkFromRef.js
 │       ├── createModelLink.js
 │       ├── createParameterLink.js
+│       ├── extractModelFromSpecification.js
 │       ├── getAnyOfLinksFromProperty.js
 │       ├── getArrayLinkFromProperty.js
 │       ├── getAvailableSchemaVersions.js
@@ -133,7 +150,8 @@
 │       ├── getModelLinkFromProperty.js
 │       ├── getPropertyIsAnyOf.js
 │       ├── getPropertyIsArray.js
-│       └── getPropertyIsModel.js
+│       ├── getPropertyIsModel.js
+│       └── getPropertySummary.js
 ├── error
 │   ├── components
 │   │   ├── ConnectedFormSchemaError.js
@@ -255,11 +273,21 @@
 │   │   │   ├── Content
 │   │   │   ├── Header
 │   │   │   └── index.js
+│   │   ├── InformationSidebar
+│   │   │   └── index.js
 │   │   ├── Layout
 │   │   │   ├── index.js
 │   │   │   └── views
+│   │   ├── NavigationSidebar
+│   │   │   ├── SidebarNavItem.js
+│   │   │   ├── SidebarNavItemGroup.js
+│   │   │   └── index.js
+│   │   ├── NavigationSidebar.stories.js
+│   │   ├── ViewWrap.js
+│   │   ├── ViewWrap.stories.js
 │   │   └── index.js
 │   ├── constants.js
+│   ├── globalSelectors.js
 │   ├── higherOrderComponents
 │   │   ├── index.js
 │   │   └── withLayout.js

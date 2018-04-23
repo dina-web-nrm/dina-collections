@@ -1,18 +1,13 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { Header, Grid, Segment } from 'semantic-ui-react'
 
-import config from 'config'
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import {
-  actionCreators as localityActionCreators,
-  globalSelectors as placeSelectors,
-} from 'dataModules/placeService'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
@@ -21,39 +16,22 @@ const log = createLog(
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
-const mapStateToProps = state => {
-  return {
-    hasPlaces: placeSelectors.getHasPlaces(state),
-  }
-}
-const mapDispatchToProps = {
-  getPlaces: localityActionCreators.getPlaces,
-}
-
 const propTypes = {
+  allItemsFetched: PropTypes.bool.isRequired,
   getPath: PropTypes.func.isRequired,
-  getPlaces: PropTypes.func.isRequired,
-  hasPlaces: PropTypes.bool.isRequired,
 }
 
 class SegmentCollectingInformation extends PureComponent {
-  componentDidMount() {
-    if (!config.isTest) {
-      this.props.getPlaces()
-    }
-  }
-
   render() {
-    const { getPath, hasPlaces } = this.props
-
+    const { getPath, allItemsFetched } = this.props
     log.render()
     return (
-      <Segment color="green" loading={!hasPlaces}>
+      <Segment color="green" loading={!allItemsFetched}>
         <Header size="medium">
           <ModuleTranslate textKey="collectingInformation.collectingInformation" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
-          {hasPlaces && <LocationInformationFields />}
+          {allItemsFetched && <LocationInformationFields />}
 
           <Grid.Column computer={10} mobile={16}>
             <Field
@@ -125,6 +103,9 @@ class SegmentCollectingInformation extends PureComponent {
 SegmentCollectingInformation.propTypes = propTypes
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'place',
+  }),
   pathBuilder({ name: 'collectingInformation.0' })
 )(SegmentCollectingInformation)

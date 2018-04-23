@@ -96,6 +96,8 @@
 │       ├── customFormValidator.js
 │       ├── dbValidator.js
 │       └── formValidator.js
+├── jsonApiClient
+│   └── index.js
 ├── jsonSchema
 │   ├── createMockDataFromSchema.js
 │   ├── createMockGenerator.js
@@ -147,7 +149,8 @@
 │   │   └── utilities
 │   │       ├── createModel.js
 │   │       ├── interpolate.js
-│   │       └── normalizeModel.js
+│   │       ├── normalizeModel.js
+│   │       └── splitDescription.js
 │   ├── buildTests
 │   │   ├── openApi
 │   │   │   └── index.test.js
@@ -180,12 +183,23 @@
 │       └── index.js
 ├── scripts
 │   └── buildFileStructureTrees.js
+├── sortMethods
+│   ├── createSortAlphabeticallyByProperty
+│   │   ├── index.js
+│   │   └── index.test.js
+│   ├── index.js
+│   └── index.test.js
 ├── stringFormatters
+│   ├── camelCaseToUpperSnakeCase
+│   │   ├── index.js
+│   │   └── index.test.js
 │   ├── capitalizeFirstLetter
 │   │   ├── index.js
 │   │   └── index.test.js
 │   ├── index.js
 │   └── index.test.js
+├── testUtilities
+│   └── expectNoValidationError.js
 └── tree.md
 
 ```

@@ -21,11 +21,14 @@
 │   ├── chainPromises
 │   ├── endpointFactory
 │   ├── error
+│   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── normalize
 │   ├── schemaBuilder
 │   ├── scripts
+│   ├── sortMethods
 │   ├── stringFormatters
+│   ├── testUtilities
 │   └── tree.md
 ├── package.json
 ├── src
@@ -35,11 +38,14 @@
 │   ├── chainPromises
 │   ├── endpointFactory
 │   ├── error
+│   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── normalize
 │   ├── schemaBuilder
 │   ├── scripts
+│   ├── sortMethods
 │   ├── stringFormatters
+│   ├── testUtilities
 │   └── tree.md
 ├── tree.md
 └── yarn.lock

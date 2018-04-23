@@ -1,4 +1,4 @@
-export default function capitalizeFirstLetter(string) {
+module.exports = function capitalizeFirstLetter(string) {
   if (!string) {
     return string
   }
