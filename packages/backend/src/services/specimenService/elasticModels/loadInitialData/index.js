@@ -21,7 +21,7 @@ module.exports = function loadInitialData({ sequelizeModels, models }) {
     }
 
     const numberOfEntries = count
-    const numberOfEntriesEachBatch = 500
+    const numberOfEntriesEachBatch = 1000
     return batchExecute({
       createBatch,
       execute: items => {

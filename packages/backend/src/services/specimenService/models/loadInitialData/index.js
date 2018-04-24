@@ -2,11 +2,19 @@ const batchExecute = require('../../../../utilities/test/batchExecute')
 const readInitialData = require('../../../../utilities/readInitialData')
 const mapSpecimen = require('./mapSpecimen')
 
-module.exports = function loadInitialData({ models }) {
+module.exports = function loadInitialData({ config, models }) {
+  const {
+    initialData: { numberOfSpecimens: numberOfSpecimensInput } = {},
+  } = config
+
   const specimenTemplate = readInitialData('specimens')
   if (!specimenTemplate) {
     return Promise.resolve()
   }
+  const numberOfSpecimens = Math.min(
+    numberOfSpecimensInput,
+    specimenTemplate.length
+  )
 
   const createEntry = index => {
     return specimenTemplate[index % specimenTemplate.length]
@@ -31,7 +39,7 @@ module.exports = function loadInitialData({ models }) {
         return models.specimen.bulkCreate(tmp)
       })
     },
-    numberOfEntries: 100,
-    numberOfEntriesEachBatch: 10,
+    numberOfEntries: numberOfSpecimens,
+    numberOfEntriesEachBatch: 1000,
   })
 }

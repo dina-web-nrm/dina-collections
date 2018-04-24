@@ -61,6 +61,7 @@ module.exports = function loadInitialData({ config, services, models }) {
           log.scope().debug(`${serviceName}`)
           return Promise.resolve(
             loadInitialDataFunction({
+              config,
               models,
             })
           )
