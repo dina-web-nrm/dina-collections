@@ -7,6 +7,10 @@ var specimen = {
   collectionItem: {
     column: 'collectionItems'
   },
+
+  deathInformation: {
+    column: 'deathInformation'
+  },
   determination: {
     column: 'determinations'
   },
@@ -21,6 +25,9 @@ var specimen = {
   },
   individual: {
     column: 'individual'
+  },
+  originInformation: {
+    column: 'originInformation'
   },
   recordHistoryEvent: {
     column: 'recordHistoryEvents'

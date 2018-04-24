@@ -120,9 +120,9 @@
         ]
       }
     },
-    "/api/curatedList/v01/preparationTypes": {
+    "/api/curatedList/v01/causeOfDeathTypes": {
       "post": {
-        "operationId": "createPreparationType",
+        "operationId": "createCauseOfDeathType",
         "parameters": [
           {
             "in": "query",
@@ -147,7 +147,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/createPreparationTypeRequest"
+                "$ref": "#/components/schemas/createCauseOfDeathTypeRequest"
               }
             }
           },
@@ -158,7 +158,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createPreparationTypeResponse"
+                  "$ref": "#/components/schemas/createCauseOfDeathTypeResponse"
                 }
               }
             },
@@ -168,7 +168,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createPreparationType-400"
+                  "$ref": "#/components/schemas/createCauseOfDeathType-400"
                 }
               }
             },
@@ -178,7 +178,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/createPreparationType-500"
+                  "$ref": "#/components/schemas/createCauseOfDeathType-500"
                 }
               }
             },
@@ -190,13 +190,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create preparationType",
+        "summary": "Create causeOfDeathType",
         "tags": [
           "curatedListService"
         ]
       },
       "get": {
-        "operationId": "getPreparationTypes",
+        "operationId": "getCauseOfDeathTypes",
         "parameters": [
           {
             "in": "query",
@@ -240,7 +240,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationTypesResponse"
+                  "$ref": "#/components/schemas/getCauseOfDeathTypesResponse"
                 }
               }
             },
@@ -250,7 +250,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationTypes-400"
+                  "$ref": "#/components/schemas/getCauseOfDeathTypes-400"
                 }
               }
             },
@@ -260,7 +260,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationTypes-500"
+                  "$ref": "#/components/schemas/getCauseOfDeathTypes-500"
                 }
               }
             },
@@ -272,20 +272,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find preparationTypes",
+        "summary": "Find causeOfDeathTypes",
         "tags": [
           "curatedListService"
         ]
       }
     },
-    "/api/curatedList/v01/preparationTypes/{id}": {
+    "/api/curatedList/v01/causeOfDeathTypes/{id}": {
       "patch": {
-        "operationId": "updatePreparationType",
+        "operationId": "updateCauseOfDeathType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "preparationType id",
+            "description": "causeOfDeathType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -315,7 +315,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/updatePreparationTypeRequest"
+                "$ref": "#/components/schemas/updateCauseOfDeathTypeRequest"
               }
             }
           },
@@ -326,7 +326,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePreparationTypeResponse"
+                  "$ref": "#/components/schemas/updateCauseOfDeathTypeResponse"
                 }
               }
             },
@@ -336,7 +336,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePreparationType-400"
+                  "$ref": "#/components/schemas/updateCauseOfDeathType-400"
                 }
               }
             },
@@ -346,7 +346,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePreparationType-404"
+                  "$ref": "#/components/schemas/updateCauseOfDeathType-404"
                 }
               }
             },
@@ -356,7 +356,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/updatePreparationType-500"
+                  "$ref": "#/components/schemas/updateCauseOfDeathType-500"
                 }
               }
             },
@@ -368,18 +368,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates preparationType",
+        "summary": "Updates causeOfDeathType",
         "tags": [
           "curatedListService"
         ]
       },
       "get": {
-        "operationId": "getPreparationType",
+        "operationId": "getCauseOfDeathType",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "preparationType id",
+            "description": "causeOfDeathType id",
             "example": "1",
             "required": true,
             "schema": {
@@ -410,7 +410,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationTypeResponse"
+                  "$ref": "#/components/schemas/getCauseOfDeathTypeResponse"
                 }
               }
             },
@@ -420,7 +420,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationType-400"
+                  "$ref": "#/components/schemas/getCauseOfDeathType-400"
                 }
               }
             },
@@ -430,7 +430,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationType-404"
+                  "$ref": "#/components/schemas/getCauseOfDeathType-404"
                 }
               }
             },
@@ -440,7 +440,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/getPreparationType-500"
+                  "$ref": "#/components/schemas/getCauseOfDeathType-500"
                 }
               }
             },
@@ -452,7 +452,345 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find preparationType by id",
+        "summary": "Find causeOfDeathType by id",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/establishmentMeansTypes": {
+      "post": {
+        "operationId": "createEstablishmentMeansType",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/createEstablishmentMeansTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createEstablishmentMeansTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createEstablishmentMeansType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createEstablishmentMeansType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create establishmentMeansType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getEstablishmentMeansTypes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansTypesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansTypes-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansTypes-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find establishmentMeansTypes",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/establishmentMeansTypes/{id}": {
+      "patch": {
+        "operationId": "updateEstablishmentMeansType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "establishmentMeansType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateEstablishmentMeansTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateEstablishmentMeansTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateEstablishmentMeansType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateEstablishmentMeansType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updateEstablishmentMeansType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates establishmentMeansType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getEstablishmentMeansType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "establishmentMeansType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getEstablishmentMeansType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find establishmentMeansType by id",
         "tags": [
           "curatedListService"
         ]
@@ -791,6 +1129,344 @@
           }
         ],
         "summary": "Find featureType by id",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/preparationTypes": {
+      "post": {
+        "operationId": "createPreparationType",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/createPreparationTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createPreparationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createPreparationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/createPreparationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create preparationType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getPreparationTypes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationTypesResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationTypes-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationTypes-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find preparationTypes",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/preparationTypes/{id}": {
+      "patch": {
+        "operationId": "updatePreparationType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "preparationType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/updatePreparationTypeRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePreparationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePreparationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePreparationType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/updatePreparationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates preparationType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "getPreparationType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "preparationType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationTypeResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationType-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationType-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/getPreparationType-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find preparationType by id",
         "tags": [
           "curatedListService"
         ]
@@ -4576,6 +5252,31 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "causeOfDeathType": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
+          },
+          "id": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "type": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "curatedListService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
       "curatedList": {
         "additionalProperties": false,
         "properties": {
@@ -4616,6 +5317,31 @@
                 "$ref": "#/components/schemas/preparationType"
               }
             ],
+            "x-summary": ""
+          }
+        },
+        "x-category": "curatedListService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "establishmentMeansType": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
+          },
+          "id": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "type": {
+            "type": "string",
             "x-summary": ""
           }
         },
@@ -4889,10 +5615,19 @@
             "type": "string",
             "x-summary": ""
           },
+          "establishmentMeansType": {
+            "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
+          },
           "collectorsText": {
             "type": "string",
             "example": "Bergström, U",
             "description": "Name of the collector",
+            "x-summary": ""
+          },
+          "isDeathDate": {
+            "type": "boolean",
+            "description": "This is a temporary parameter",
             "x-summary": ""
           },
           "event": {
@@ -5006,14 +5741,16 @@
       "deathInformation": {
         "additionalProperties": false,
         "properties": {
-          "id": {
+          "lid": {
             "type": "string",
             "x-summary": ""
           },
-          "collectorsText": {
+          "causeOfDeathType": {
+            "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
+          },
+          "remarks": {
             "type": "string",
-            "example": "Bergström, U",
-            "description": "Name of the collector",
             "x-summary": ""
           },
           "event": {
@@ -5205,6 +5942,20 @@
             "$ref": "#/components/schemas/lid",
             "x-summary": ""
           },
+          "deathInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/lid"
+            },
+            "x-summary": ""
+          },
+          "originInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/lid"
+            },
+            "x-summary": ""
+          },
           "collectingInformation": {
             "type": "array",
             "items": {
@@ -5348,14 +6099,24 @@
       "originInformation": {
         "additionalProperties": false,
         "properties": {
-          "id": {
+          "lid": {
             "type": "string",
             "x-summary": ""
           },
-          "collectorsText": {
+          "originLocality": {
             "type": "string",
-            "example": "Bergström, U",
-            "description": "Name of the collector",
+            "x-summary": ""
+          },
+          "remarks": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "isAffectedByManagement": {
+            "type": "boolean",
+            "x-summary": ""
+          },
+          "isResultOfSelectiveBreeding": {
+            "type": "boolean",
             "x-summary": ""
           },
           "event": {
@@ -5413,6 +6174,13 @@
           },
           "id": {
             "type": "string",
+            "x-summary": ""
+          },
+          "deathInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/deathInformation"
+            },
             "x-summary": ""
           },
           "collectingInformation": {
@@ -5738,7 +6506,7 @@
         "title": "REQUEST_ERROR",
         "type": "string"
       },
-      "createPreparationType-400": {
+      "createCauseOfDeathType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5777,7 +6545,7 @@
         "title": "INTERNAL_SERVER_ERROR",
         "type": "string"
       },
-      "createPreparationType-500": {
+      "createCauseOfDeathType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5804,7 +6572,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "updatePreparationType-400": {
+      "updateCauseOfDeathType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5837,7 +6605,7 @@
         "title": "RESOURCE_NOT_FOUND_ERROR",
         "type": "string"
       },
-      "updatePreparationType-404": {
+      "updateCauseOfDeathType-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5861,7 +6629,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "updatePreparationType-500": {
+      "updateCauseOfDeathType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5888,7 +6656,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPreparationType-400": {
+      "getCauseOfDeathType-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5912,7 +6680,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPreparationType-404": {
+      "getCauseOfDeathType-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5936,7 +6704,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "getPreparationType-500": {
+      "getCauseOfDeathType-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5963,7 +6731,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "getPreparationTypes-400": {
+      "getCauseOfDeathTypes-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -5987,7 +6755,265 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "getPreparationTypes-500": {
+      "getCauseOfDeathTypes-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createEstablishmentMeansType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createEstablishmentMeansType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updateEstablishmentMeansType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updateEstablishmentMeansType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updateEstablishmentMeansType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getEstablishmentMeansType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getEstablishmentMeansType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getEstablishmentMeansType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getEstablishmentMeansTypes-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getEstablishmentMeansTypes-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -6246,6 +7272,264 @@
         "type": "object"
       },
       "getFeatureTypes-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "createPreparationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "createPreparationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "updatePreparationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "updatePreparationType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "updatePreparationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPreparationType-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPreparationType-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "getPreparationType-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "getPreparationTypes-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "getPreparationTypes-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -8841,7 +10125,7 @@
         "x-summary": "",
         "description": ""
       },
-      "createPreparationTypeRequest": {
+      "createCauseOfDeathTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -8857,14 +10141,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "preparationType",
+                "default": "causeOfDeathType",
                 "enum": [
-                  "preparationType"
+                  "causeOfDeathType"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/preparationType"
+                "$ref": "#/components/schemas/causeOfDeathType"
               }
             },
             "x-summary": ""
@@ -8873,27 +10157,35 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "preparationType",
+              "id": "1234",
+              "type": "causeOfDeathType",
               "attributes": {
-                "category": "skin",
-                "name": "preparation name"
+                "key": "put-to-death",
+                "name": {
+                  "en": "put to death",
+                  "sv": "avlivad"
+                }
               }
             }
           }
         },
         "example": {
           "data": {
-            "type": "preparationType",
+            "id": "1234",
+            "type": "causeOfDeathType",
             "attributes": {
-              "category": "skin",
-              "name": "preparation name"
+              "key": "put-to-death",
+              "name": {
+                "en": "put to death",
+                "sv": "avlivad"
+              }
             }
           }
         },
         "x-summary": "",
         "description": ""
       },
-      "updatePreparationTypeRequest": {
+      "updateCauseOfDeathTypeRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -8909,14 +10201,104 @@
                 "example": "1234"
               },
               "type": {
-                "default": "preparationType",
+                "default": "causeOfDeathType",
                 "enum": [
-                  "preparationType"
+                  "causeOfDeathType"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "#/components/schemas/preparationType"
+                "$ref": "#/components/schemas/causeOfDeathType"
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "createEstablishmentMeansTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "establishmentMeansType",
+                "enum": [
+                  "establishmentMeansType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/establishmentMeansType"
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "id": "1234",
+              "type": "establishmentMeansType",
+              "attributes": {
+                "key": "spontaneous-native-or-introduced",
+                "name": {
+                  "en": "spontaneous: native or introduced"
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "id": "1234",
+            "type": "establishmentMeansType",
+            "attributes": {
+              "key": "spontaneous-native-or-introduced",
+              "name": {
+                "en": "spontaneous: native or introduced"
+              }
+            }
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "updateEstablishmentMeansTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "establishmentMeansType",
+                "enum": [
+                  "establishmentMeansType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/establishmentMeansType"
               }
             },
             "x-summary": ""
@@ -9007,6 +10389,90 @@
               },
               "attributes": {
                 "$ref": "#/components/schemas/featureType"
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "createPreparationTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "preparationType",
+                "enum": [
+                  "preparationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/preparationType"
+              }
+            },
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "type": "preparationType",
+              "attributes": {
+                "category": "skin",
+                "name": "preparation name"
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "type": "preparationType",
+            "attributes": {
+              "category": "skin",
+              "name": "preparation name"
+            }
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "updatePreparationTypeRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "preparationType",
+                "enum": [
+                  "preparationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "#/components/schemas/preparationType"
               }
             },
             "x-summary": ""
@@ -10923,21 +12389,21 @@
         "x-summary": "",
         "description": ""
       },
-      "createPreparationTypeResponse": {
+      "createCauseOfDeathTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/preparationType"
+                "$ref": "#/components/schemas/causeOfDeathType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "preparationType",
+                "default": "causeOfDeathType",
                 "type": "string"
               }
             },
@@ -10951,7 +12417,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/preparationTypes",
+                "example": "https://domain/api/curatedList/v01/causeOfDeathTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -10970,21 +12436,21 @@
         "x-summary": "",
         "description": ""
       },
-      "updatePreparationTypeResponse": {
+      "updateCauseOfDeathTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/preparationType"
+                "$ref": "#/components/schemas/causeOfDeathType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "preparationType",
+                "default": "causeOfDeathType",
                 "type": "string"
               }
             },
@@ -10998,7 +12464,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -11017,21 +12483,21 @@
         "x-summary": "",
         "description": ""
       },
-      "getPreparationTypeResponse": {
+      "getCauseOfDeathTypeResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "#/components/schemas/preparationType"
+                "$ref": "#/components/schemas/causeOfDeathType"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "preparationType",
+                "default": "causeOfDeathType",
                 "type": "string"
               }
             },
@@ -11045,7 +12511,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+                "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -11064,7 +12530,7 @@
         "x-summary": "",
         "description": ""
       },
-      "getPreparationTypesResponse": {
+      "getCauseOfDeathTypesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -11073,14 +12539,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/preparationType"
+                  "$ref": "#/components/schemas/causeOfDeathType"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "preparationType",
+                  "default": "causeOfDeathType",
                   "type": "string"
                 }
               },
@@ -11096,7 +12562,199 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/curatedList/v01/preparationTypes",
+                "example": "https://domain/api/curatedList/v01/causeOfDeathTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "createEstablishmentMeansTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/establishmentMeansType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "establishmentMeansType",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/establishmentMeansTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "updateEstablishmentMeansTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/establishmentMeansType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "establishmentMeansType",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/establishmentMeansTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "getEstablishmentMeansTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/establishmentMeansType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "establishmentMeansType",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/establishmentMeansTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "getEstablishmentMeansTypesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/establishmentMeansType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "establishmentMeansType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/establishmentMeansTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -11289,6 +12947,198 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/curatedList/v01/featureTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "createPreparationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/preparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "preparationType",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/preparationTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "updatePreparationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/preparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "preparationType",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "getPreparationTypeResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/preparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "preparationType",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "getPreparationTypesResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/preparationType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "preparationType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/preparationTypes",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

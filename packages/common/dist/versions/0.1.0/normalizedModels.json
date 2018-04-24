@@ -188,6 +188,32 @@
     "x-summary": "",
     "id": "verticalPosition"
   },
+  "causeOfDeathType": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "name": {
+        "$ref": "translatedString",
+        "x-summary": ""
+      },
+      "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "type": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "curatedListService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "causeOfDeathType"
+  },
   "curatedList": {
     "additionalProperties": false,
     "properties": {
@@ -237,6 +263,32 @@
     "x-summary": "",
     "description": "",
     "id": "curatedListType"
+  },
+  "establishmentMeansType": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "name": {
+        "$ref": "translatedString",
+        "x-summary": ""
+      },
+      "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "type": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "curatedListService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "establishmentMeansType"
   },
   "featureType": {
     "additionalProperties": false,
@@ -509,10 +561,19 @@
         "type": "string",
         "x-summary": ""
       },
+      "establishmentMeansType": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
       "collectorsText": {
         "type": "string",
         "example": "Bergström, U",
         "description": "Name of the collector",
+        "x-summary": ""
+      },
+      "isDeathDate": {
+        "type": "boolean",
+        "description": "This is a temporary parameter",
         "x-summary": ""
       },
       "event": {
@@ -629,14 +690,16 @@
   "deathInformation": {
     "additionalProperties": false,
     "properties": {
-      "id": {
+      "lid": {
         "type": "string",
         "x-summary": ""
       },
-      "collectorsText": {
+      "causeOfDeathType": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
+      "remarks": {
         "type": "string",
-        "example": "Bergström, U",
-        "description": "Name of the collector",
         "x-summary": ""
       },
       "event": {
@@ -833,6 +896,20 @@
         "$ref": "lid",
         "x-summary": ""
       },
+      "deathInformation": {
+        "type": "array",
+        "items": {
+          "$ref": "lid"
+        },
+        "x-summary": ""
+      },
+      "originInformation": {
+        "type": "array",
+        "items": {
+          "$ref": "lid"
+        },
+        "x-summary": ""
+      },
       "collectingInformation": {
         "type": "array",
         "items": {
@@ -979,14 +1056,24 @@
   "originInformation": {
     "additionalProperties": false,
     "properties": {
-      "id": {
+      "lid": {
         "type": "string",
         "x-summary": ""
       },
-      "collectorsText": {
+      "originLocality": {
         "type": "string",
-        "example": "Bergström, U",
-        "description": "Name of the collector",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "isAffectedByManagement": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "isResultOfSelectiveBreeding": {
+        "type": "boolean",
         "x-summary": ""
       },
       "event": {
@@ -1036,6 +1123,28 @@
       "relationships": {
         "type": "object",
         "properties": {
+          "establishmentMeansTypes": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
+          "causeOfDeathTypes": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
           "physicalObjects": {
             "type": "object",
             "properties": {
@@ -1096,6 +1205,13 @@
       },
       "id": {
         "type": "string",
+        "x-summary": ""
+      },
+      "deathInformation": {
+        "type": "array",
+        "items": {
+          "$ref": "deathInformation"
+        },
         "x-summary": ""
       },
       "collectingInformation": {
@@ -1470,21 +1586,21 @@
     "x-summary": "",
     "description": ""
   },
-  "createPreparationTypeResponse": {
+  "createCauseOfDeathTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "preparationType"
+            "$ref": "causeOfDeathType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "preparationType",
+            "default": "causeOfDeathType",
             "type": "string"
           }
         },
@@ -1498,7 +1614,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/preparationTypes",
+            "example": "https://domain/api/curatedList/v01/causeOfDeathTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1517,21 +1633,21 @@
     "x-summary": "",
     "description": ""
   },
-  "updatePreparationTypeResponse": {
+  "updateCauseOfDeathTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "preparationType"
+            "$ref": "causeOfDeathType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "preparationType",
+            "default": "causeOfDeathType",
             "type": "string"
           }
         },
@@ -1545,7 +1661,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+            "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1564,21 +1680,21 @@
     "x-summary": "",
     "description": ""
   },
-  "getPreparationTypeResponse": {
+  "getCauseOfDeathTypeResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
         "additionalProperties": false,
         "properties": {
           "attributes": {
-            "$ref": "preparationType"
+            "$ref": "causeOfDeathType"
           },
           "id": {
             "example": "1234",
             "type": "string"
           },
           "type": {
-            "default": "preparationType",
+            "default": "causeOfDeathType",
             "type": "string"
           }
         },
@@ -1592,7 +1708,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+            "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1611,7 +1727,7 @@
     "x-summary": "",
     "description": ""
   },
-  "getPreparationTypesResponse": {
+  "getCauseOfDeathTypesResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -1620,14 +1736,14 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "preparationType"
+              "$ref": "causeOfDeathType"
             },
             "id": {
               "example": "1234",
               "type": "string"
             },
             "type": {
-              "default": "preparationType",
+              "default": "causeOfDeathType",
               "type": "string"
             }
           },
@@ -1643,7 +1759,199 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/curatedList/v01/preparationTypes",
+            "example": "https://domain/api/curatedList/v01/causeOfDeathTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "createEstablishmentMeansTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "establishmentMeansType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "establishmentMeansType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/establishmentMeansTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "updateEstablishmentMeansTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "establishmentMeansType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "establishmentMeansType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/establishmentMeansTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getEstablishmentMeansTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "establishmentMeansType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "establishmentMeansType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/establishmentMeansTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getEstablishmentMeansTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "establishmentMeansType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "establishmentMeansType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/establishmentMeansTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -1836,6 +2144,198 @@
         "properties": {
           "self": {
             "example": "https://domain/api/curatedList/v01/featureTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "createPreparationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "preparationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "preparationType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/preparationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "updatePreparationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "preparationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "preparationType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getPreparationTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "preparationType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "preparationType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/preparationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getPreparationTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "preparationType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "preparationType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/preparationTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -5534,7 +6034,7 @@
     "x-summary": "",
     "description": ""
   },
-  "createPreparationTypeRequest": {
+  "createCauseOfDeathTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -5550,14 +6050,14 @@
             "example": "1234"
           },
           "type": {
-            "default": "preparationType",
+            "default": "causeOfDeathType",
             "enum": [
-              "preparationType"
+              "causeOfDeathType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "preparationType"
+            "$ref": "causeOfDeathType"
           }
         },
         "x-summary": ""
@@ -5566,27 +6066,35 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "preparationType",
+          "id": "1234",
+          "type": "causeOfDeathType",
           "attributes": {
-            "category": "skin",
-            "name": "preparation name"
+            "key": "put-to-death",
+            "name": {
+              "en": "put to death",
+              "sv": "avlivad"
+            }
           }
         }
       }
     },
     "example": {
       "data": {
-        "type": "preparationType",
+        "id": "1234",
+        "type": "causeOfDeathType",
         "attributes": {
-          "category": "skin",
-          "name": "preparation name"
+          "key": "put-to-death",
+          "name": {
+            "en": "put to death",
+            "sv": "avlivad"
+          }
         }
       }
     },
     "x-summary": "",
     "description": ""
   },
-  "updatePreparationTypeRequest": {
+  "updateCauseOfDeathTypeRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -5602,14 +6110,104 @@
             "example": "1234"
           },
           "type": {
-            "default": "preparationType",
+            "default": "causeOfDeathType",
             "enum": [
-              "preparationType"
+              "causeOfDeathType"
             ],
             "type": "string"
           },
           "attributes": {
-            "$ref": "preparationType"
+            "$ref": "causeOfDeathType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "createEstablishmentMeansTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "establishmentMeansType",
+            "enum": [
+              "establishmentMeansType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "establishmentMeansType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "establishmentMeansType",
+          "attributes": {
+            "key": "spontaneous-native-or-introduced",
+            "name": {
+              "en": "spontaneous: native or introduced"
+            }
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "establishmentMeansType",
+        "attributes": {
+          "key": "spontaneous-native-or-introduced",
+          "name": {
+            "en": "spontaneous: native or introduced"
+          }
+        }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "updateEstablishmentMeansTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "establishmentMeansType",
+            "enum": [
+              "establishmentMeansType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "establishmentMeansType"
           }
         },
         "x-summary": ""
@@ -5700,6 +6298,90 @@
           },
           "attributes": {
             "$ref": "featureType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "createPreparationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "preparationType",
+            "enum": [
+              "preparationType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "preparationType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "preparationType",
+          "attributes": {
+            "category": "skin",
+            "name": "preparation name"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "preparationType",
+        "attributes": {
+          "category": "skin",
+          "name": "preparation name"
+        }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "updatePreparationTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "preparationType",
+            "enum": [
+              "preparationType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "preparationType"
           }
         },
         "x-summary": ""
