@@ -22,8 +22,8 @@
 │   │   ├── MammalForm
 │   │   │   ├── FormActions.js
 │   │   │   ├── Scenarios
-│   │   │   ├── SegmentCollectingInformation
 │   │   │   ├── SegmentCollectionItems
+│   │   │   ├── SegmentEvents
 │   │   │   ├── SegmentFeatureObservations
 │   │   │   ├── SegmentIdentifiers
 │   │   │   ├── SegmentOther

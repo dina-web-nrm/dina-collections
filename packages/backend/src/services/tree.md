@@ -46,6 +46,12 @@
 │   │   └── loadInitialData
 │   │       └── index.js
 │   └── resources
+│       ├── causeOfDeathType
+│       │   ├── index.js
+│       │   └── operations
+│       ├── establishmentMeansType
+│       │   ├── index.js
+│       │   └── operations
 │       ├── featureType
 │       │   ├── index.js
 │       │   └── operations
