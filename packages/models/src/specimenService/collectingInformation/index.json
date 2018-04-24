@@ -16,6 +16,10 @@
       "example": "Bergström, U",
       "description": "Name of the collector"
     },
+    "isDeathDate": {
+      "type": "boolean",
+      "description": "This is a temporary parameter"
+    },
     "event": {
       "$ref": "__ROOT__event",
       "x-reference-type": "internal"

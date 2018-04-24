@@ -61,6 +61,8 @@ const mutations = [
   },
 ]
 const expectedOutput = {
+  causeOfDeathTypes: [],
+  establishmentMeansTypes: [],
   featureTypes: [
     {
       id: '22',
@@ -86,6 +88,7 @@ const expectedOutput = {
           },
         },
       ],
+      deathInformation: [],
       determinations: [
         {
           determinedByAgentText: 'John, Doe',
