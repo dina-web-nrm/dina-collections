@@ -28,4 +28,15 @@ exports.preparationType = function preparationType({ sequelize }) {
   })
 }
 
+exports.establishmentMeansType = function establishmentMeansType({
+  sequelize,
+}) {
+  return createModel({
+    name: 'EstablishmentMeansType',
+    schemaModelName: 'establishmentMeansType',
+    schemaVersion: '1.0.1',
+    sequelize,
+  })
+}
+
 exports.loadInitialData = loadInitialData
