@@ -12,7 +12,7 @@ import {
 
 const createEnsureAllItemsFetched = ({
   resource,
-  relationships = [],
+  relationships,
 }) => ComposedComponent => {
   /* eslint-disable no-console */
   if (!resource) {
@@ -67,9 +67,11 @@ const createEnsureAllItemsFetched = ({
         this.props.setFetchingAllItems(true, {
           resource,
         })
+        const queryParams = relationships ? { relationships } : {}
+
         this.props
           .getMany({
-            queryParams: { relationships },
+            queryParams,
           })
           .then(() => {
             this.props.setAllItemsFetched(true, {
