@@ -16,6 +16,20 @@
       "$ref": "__ROOT__taxonInformation",
       "x-reference-type": "internal"
     },
+    "deathInformation": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__deathInformation",
+        "x-reference-type": "internal"
+      }
+    },
+    "originInformation": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__originInformation",
+        "x-reference-type": "internal"
+      }
+    },
     "collectingInformation": {
       "type": "array",
       "items": {

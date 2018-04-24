@@ -1,13 +1,20 @@
 {
   "additionalProperties": false,
   "properties": {
-    "id": {
+    "lid": {
       "type": "string"
     },
-    "collectorsText": {
-      "type": "string",
-      "example": "Bergström, U",
-      "description": "Name of the collector"
+    "originLocality": {
+      "type": "string"
+    },
+    "remarks": {
+      "type": "string"
+    },
+    "isAffectedByManagement": {
+      "type": "boolean"
+    },
+    "isResultOfSelectiveBreeding": {
+      "type": "boolean"
     },
     "event": {
       "$ref": "__ROOT__event",

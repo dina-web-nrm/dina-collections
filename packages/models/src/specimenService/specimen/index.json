@@ -5,6 +5,30 @@
     "relationships": {
       "type": "object",
       "properties": {
+        "establishmentMeansTypes": {
+"type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__establishmentMeansType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "causeOfDeathTypes": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__causeOfDeathType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "physicalObjects": {
           "type": "object",
           "properties": {
@@ -66,6 +90,12 @@
     },
     "id": {
       "type": "string"
+    },
+    "deathInformation": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__deathInformation"
+      }
     },
     "collectingInformation": {
       "type": "array",

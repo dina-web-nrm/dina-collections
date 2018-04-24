@@ -1,13 +1,15 @@
 {
   "additionalProperties": false,
   "properties": {
-    "id": {
+    "lid": {
       "type": "string"
     },
-    "collectorsText": {
-      "type": "string",
-      "example": "Bergström, U",
-      "description": "Name of the collector"
+    "causeOfDeathType": {
+      "$ref": "__ROOT__causeOfDeathType",
+      "x-reference-type": "external"
+    },
+    "remarks": {
+      "type": "string"
     },
     "event": {
       "$ref": "__ROOT__event",

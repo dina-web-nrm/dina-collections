@@ -7,6 +7,10 @@
     "id": {
       "type": "string"
     },
+    "establishmentMeansType": {
+      "$ref": "__ROOT__establishmentMeansType",
+      "x-reference-type": "external"
+    },
     "collectorsText": {
       "type": "string",
       "example": "Bergström, U",
