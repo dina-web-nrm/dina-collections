@@ -63,6 +63,27 @@ const config = {
         },
       ],
     },
+    typeSpecimenType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'name',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
+      operations: [
+        {
+          operationId: 'getTypeSpecimenType',
+          type: 'getOne',
+        },
+        {
+          operationId: 'getTypeSpecimenTypes',
+          type: 'getMany',
+        },
+      ],
+    },
   },
 }
 
