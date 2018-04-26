@@ -43,6 +43,27 @@ const config = {
         },
       ],
     },
+    identifierType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'name',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
+      operations: [
+        {
+          operationId: 'getIdentifierType',
+          type: 'getOne',
+        },
+        {
+          operationId: 'getIdentifierTypes',
+          type: 'getMany',
+        },
+      ],
+    },
     place: {
       operations: [
         {
