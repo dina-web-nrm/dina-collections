@@ -7,6 +7,7 @@ import transformFeatureObservations from './transformFeatureObservations'
 import transformIdentifiers from './transformIdentifiers'
 import transformRecordHistoryEvents from './transformRecordHistoryEvents'
 import transformTaxonInformation from './transformTaxonInformation'
+import transformTypeStatus from './transformTypeStatus'
 
 export default function transformOutput(formData, normalize = true) {
   // TODO: set in backend instead
@@ -51,6 +52,8 @@ export default function transformOutput(formData, normalize = true) {
     formData.recordHistoryEvents
   )
 
+  const typeStatus = transformTypeStatus(formData.typeStatus)
+
   const individual = {
     ...formData,
     collectingInformation,
@@ -61,6 +64,7 @@ export default function transformOutput(formData, normalize = true) {
     identifiers,
     recordHistoryEvents,
     taxonInformation,
+    typeStatus,
   }
 
   const specimen = normalize

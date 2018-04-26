@@ -27,8 +27,8 @@ const segmentIdentifiersMutations = [
     value: 'V0100/98',
   },
   {
-    name: 'typeStatus.hidden',
-    value: 'paratype',
+    name: 'typeStatus.id.hidden',
+    value: '1',
   },
 ]
 
@@ -436,7 +436,10 @@ const expectedOutput = {
         curatorialName: 'curatorialName',
         taxonRemarks: 'taxonRemarks',
       },
-      typeStatus: 'paratype',
+      typeStatus: {
+        id: '1',
+        type: 'typeSpecimenType',
+      },
     },
   },
 

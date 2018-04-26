@@ -93,6 +93,15 @@ export default {
           },
         },
       },
+      typeSpecimenType: {
+        items: {
+          '1': {
+            id: '1',
+            name: 'subtype',
+            type: 'typeSpecimenType',
+          },
+        },
+      },
     },
   },
 

@@ -8,6 +8,9 @@ import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { Checkbox, DropdownSearch, Field } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+
 import CatalogNumberInput from './CatalogNumberInput'
 import IdentifiersTable from './IdentifiersTable'
 
@@ -17,25 +20,12 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
   scope: 'identifiers',
 })
 
-const TYPE_SPECIMEN_OPTIONS = [
-  'holotype',
-  'lectotype',
-  'neotype',
-  'paralectotype',
-  'paratype',
-  'syntype',
-  'type',
-].map(value => {
-  return {
-    key: value,
-    text: value,
-    value,
-  }
-})
-
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
     identifiers: formValueSelector(state, 'identifiers'),
+    typeSpecimenTypeOptions: globalCrudSelectors.typeSpecimenType.getAllAsOptions(
+      state
+    ),
   }
 }
 
@@ -46,6 +36,7 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
   identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
+  typeSpecimenTypeOptions: PropTypes.array.isRequired,
 }
 
 class SegmentIdentifiers extends PureComponent {
@@ -57,6 +48,7 @@ class SegmentIdentifiers extends PureComponent {
       getPath,
       identifiers,
       removeArrayFieldByIndex,
+      typeSpecimenTypeOptions,
     } = this.props
 
     log.render()
@@ -88,16 +80,18 @@ class SegmentIdentifiers extends PureComponent {
               />
             </Grid.Column>
             <Grid.Column computer={8} mobile={16} tablet={8}>
-              <Field
-                autoComplete="off"
-                className="transparent"
-                component={DropdownSearch}
-                label={<ModuleTranslate textKey="typeStatus" />}
-                module="collectionMammals"
-                name="typeStatus"
-                options={TYPE_SPECIMEN_OPTIONS}
-                type="dropdown-search-local"
-              />
+              <Grid.Column computer={4} mobile={16}>
+                <Field
+                  autoComplete="off"
+                  className="transparent"
+                  component={DropdownSearch}
+                  label={<ModuleTranslate textKey="typeStatus" />}
+                  module="collectionMammals"
+                  name="typeStatus.id"
+                  options={typeSpecimenTypeOptions}
+                  type="dropdown-search-local"
+                />
+              </Grid.Column>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -133,5 +127,6 @@ SegmentIdentifiers.propTypes = propTypes
 
 export default compose(
   connect(mapStateToProps),
+  createEnsureAllItemsFetched({ resource: 'typeSpecimenType' }),
   pathBuilder({ name: 'identifiers' })
 )(SegmentIdentifiers)
