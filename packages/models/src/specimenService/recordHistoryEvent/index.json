@@ -8,13 +8,13 @@
       "type": "string"
     },
     "date": {
-      "$ref": "__ROOT__dateWrapper"
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
     },
     "system": {
-      "type": "string",
-      "enum": [
-        "catalogCard"
-      ]
+      "type": "string"
     }
   }
 }
