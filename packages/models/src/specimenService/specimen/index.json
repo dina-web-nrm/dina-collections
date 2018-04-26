@@ -5,6 +5,18 @@
     "relationships": {
       "type": "object",
       "properties": {
+        "identifierTypes": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__identifierType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "typeSpecimenTypes": {
           "type": "object",
           "properties": {

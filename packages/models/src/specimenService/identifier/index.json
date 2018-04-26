@@ -7,8 +7,8 @@
     "publishRecord": { "type": "boolean" },
     "remarks": { "type": "string", "example": "Some remarks" },
     "identifierType": {
-      "type": "string",
-      "example": "catalogNumber"
+      "$ref": "__ROOT__identifierType",
+      "x-reference-type": "external"
     },
     "value": {
       "type": "string",
