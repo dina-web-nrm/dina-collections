@@ -24,7 +24,6 @@ const propTypes = {
   formValueSelector: PropTypes.func.isRequired,
   readOnly: PropTypes.object,
   recordHistoryEvents: PropTypes.array,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -84,7 +83,6 @@ class SegmentOther extends PureComponent {
             <Grid.Column width={16}>
               <RecordHistoryEvents
                 formValueSelector={this.props.formValueSelector}
-                removeArrayFieldByIndex={this.props.removeArrayFieldByIndex}
               />
             </Grid.Column>
           </Grid.Row>

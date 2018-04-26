@@ -8,16 +8,10 @@ import RecordHistoryEventsRow from './RecordHistoryEventsRow'
 const TABLE_COLUMNS = ['system', 'agent', 'date', 'description']
 
 const propTypes = {
-  changeFieldValue: PropTypes.func.isRequired,
   recordHistoryEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 
-function RecordHistoryEventsTable({
-  changeFieldValue,
-  recordHistoryEvents,
-  removeArrayFieldByIndex,
-}) {
+function RecordHistoryEventsTable({ recordHistoryEvents }) {
   if (!recordHistoryEvents.length) {
     return null
   }
@@ -40,11 +34,9 @@ function RecordHistoryEventsTable({
             .map((recordHistoryEvent, index) => {
               return (
                 <RecordHistoryEventsRow
-                  changeFieldValue={changeFieldValue}
                   index={index}
                   key={index} // eslint-disable-line react/no-array-index-key
                   recordHistoryEvent={recordHistoryEvent}
-                  removeArrayFieldByIndex={removeArrayFieldByIndex}
                 />
               )
             })
