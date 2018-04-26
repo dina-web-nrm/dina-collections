@@ -48,4 +48,13 @@ exports.typeSpecimenType = function typeSpecimenType({ sequelize }) {
   })
 }
 
+exports.identifierType = function identifierType({ sequelize }) {
+  return createModel({
+    name: 'IdentifierType',
+    schemaModelName: 'identifierType',
+    schemaVersion: '1.0.1',
+    sequelize,
+  })
+}
+
 exports.loadInitialData = loadInitialData

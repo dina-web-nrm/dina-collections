@@ -1,5 +1,20 @@
 const readInitialData = require('../../../../utilities/readInitialData')
 
+const loadType = ({ initialDataName, modelName, models }) => {
+  const types = readInitialData(initialDataName)
+  if (!types) {
+    return Promise.resolve()
+  }
+  const items = types.map((type, index) => {
+    return {
+      doc: type,
+      id: index + 1,
+    }
+  })
+
+  return models[modelName].bulkCreate(items)
+}
+
 module.exports = function loadInitialData({ models }) {
   const typeSpecimenTypes = readInitialData('typeSpecimenTypes')
   const establishmentMeansTypes = readInitialData('establishmentMeansTypes')
@@ -74,6 +89,11 @@ module.exports = function loadInitialData({ models }) {
     : Promise.resolve()
 
   return Promise.all([
+    loadType({
+      initialDataName: 'identifierTypes',
+      modelName: 'identifierType',
+      models,
+    }),
     causeOfDeathTypeItemsPromise,
     establishmentMeansTypeItemsPromises,
     featureTypeItemsPromise,
