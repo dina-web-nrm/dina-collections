@@ -5,16 +5,15 @@ export default function transformRecordHistoryEvents(recordHistoryEvents) {
     return []
   }
 
-  const transformedRecordHistoryEvents = recordHistoryEvents.map(item => {
-    if (item.system) {
-      return item
-    }
+  const transformedRecordHistoryEvents = recordHistoryEvents
+    .map(item => {
+      if (item.system === CATALOG_CARD && !(item.agent || item.date)) {
+        return null
+      }
 
-    return {
-      ...item,
-      system: CATALOG_CARD,
-    }
-  })
+      return item
+    })
+    .filter(item => !!item)
 
   return transformedRecordHistoryEvents
 }
