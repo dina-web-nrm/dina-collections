@@ -1,10 +1,20 @@
 const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function loadInitialData({ models }) {
+  const typeSpecimenTypes = readInitialData('typeSpecimenTypes')
   const establishmentMeansTypes = readInitialData('establishmentMeansTypes')
   const causeOfDeathTypes = readInitialData('causeOfDeathTypes')
   const preparationTypes = readInitialData('preparationTypes')
   const featureTypes = readInitialData('featureTypes', { isJson: false })
+
+  const typeSpecimenTypesItems = !typeSpecimenTypes
+    ? null
+    : typeSpecimenTypes.map((typeSpecimenType, index) => {
+        return {
+          doc: typeSpecimenType,
+          id: index + 1,
+        }
+      })
 
   const establishmentMeansTypeItems = !establishmentMeansTypes
     ? null
@@ -43,6 +53,10 @@ module.exports = function loadInitialData({ models }) {
         }
       })
 
+  const typeSpecimenTypesItemsPromises = typeSpecimenTypesItems
+    ? models.typeSpecimenType.bulkCreate(typeSpecimenTypesItems)
+    : Promise.resolve()
+
   const establishmentMeansTypeItemsPromises = establishmentMeansTypeItems
     ? models.establishmentMeansType.bulkCreate(establishmentMeansTypeItems)
     : Promise.resolve()
@@ -60,9 +74,10 @@ module.exports = function loadInitialData({ models }) {
     : Promise.resolve()
 
   return Promise.all([
-    establishmentMeansTypeItemsPromises,
     causeOfDeathTypeItemsPromise,
+    establishmentMeansTypeItemsPromises,
     featureTypeItemsPromise,
     preparationTypeItemsPromise,
+    typeSpecimenTypesItemsPromises,
   ])
 }

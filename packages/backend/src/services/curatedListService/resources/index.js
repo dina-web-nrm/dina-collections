@@ -1,4 +1,5 @@
 exports.causeOfDeathType = require('./causeOfDeathType')
 exports.establishmentMeansType = require('./establishmentMeansType')
 exports.featureType = require('./featureType')
+exports.typeSpecimenType = require('./typeSpecimenType')
 exports.preparationType = require('./preparationType')

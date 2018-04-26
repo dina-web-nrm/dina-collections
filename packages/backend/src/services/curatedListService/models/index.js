@@ -39,4 +39,13 @@ exports.establishmentMeansType = function establishmentMeansType({
   })
 }
 
+exports.typeSpecimenType = function typeSpecimenType({ sequelize }) {
+  return createModel({
+    name: 'TypeSpecimenType',
+    schemaModelName: 'typeSpecimenType',
+    schemaVersion: '1.0.1',
+    sequelize,
+  })
+}
+
 exports.loadInitialData = loadInitialData
