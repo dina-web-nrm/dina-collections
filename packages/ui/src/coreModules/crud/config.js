@@ -43,6 +43,27 @@ const config = {
         },
       ],
     },
+    identifierType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'name',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
+      operations: [
+        {
+          operationId: 'getIdentifierType',
+          type: 'getOne',
+        },
+        {
+          operationId: 'getIdentifierTypes',
+          type: 'getMany',
+        },
+      ],
+    },
     place: {
       operations: [
         {
@@ -60,6 +81,27 @@ const config = {
         {
           operationId: 'updatePlace',
           type: 'update',
+        },
+      ],
+    },
+    typeSpecimenType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'name',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
+      operations: [
+        {
+          operationId: 'getTypeSpecimenType',
+          type: 'getOne',
+        },
+        {
+          operationId: 'getTypeSpecimenTypes',
+          type: 'getMany',
         },
       ],
     },

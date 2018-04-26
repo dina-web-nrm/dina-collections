@@ -11,7 +11,6 @@ const propTypes = {
   ...fieldTemplatePropTypes,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.string,
   }).isRequired,
   type: PropTypes.string.isRequired,
 }

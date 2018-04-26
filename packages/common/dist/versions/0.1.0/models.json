@@ -345,6 +345,32 @@
     "x-summary": "",
     "id": "featureType"
   },
+  "identifierType": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "type": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "key": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "curatedListService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "identifierType"
+  },
   "preparationType": {
     "additionalProperties": false,
     "properties": {
@@ -450,6 +476,28 @@
     "x-summary": "",
     "description": "",
     "id": "selectableValue"
+  },
+  "typeSpecimenType": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "type": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "curatedListService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "typeSpecimenType"
   },
   "place": {
     "additionalProperties": false,
@@ -850,8 +898,7 @@
         "x-summary": ""
       },
       "identifierType": {
-        "type": "string",
-        "example": "catalogNumber",
+        "$ref": "identifierType",
         "description": "# identifierType\n\n### Identifier type description\n\nThis is some other text\n\nwith many lines [individual.lid](/docs/0.1.0/models/individual/lid)",
         "x-summary": "This is a short description of 60 characters"
       },
@@ -954,7 +1001,7 @@
         "x-summary": ""
       },
       "typeStatus": {
-        "type": "string",
+        "$ref": "typeSpecimenType",
         "x-summary": ""
       },
       "version": {
@@ -1124,6 +1171,28 @@
       "relationships": {
         "type": "object",
         "properties": {
+          "identifierTypes": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "identifierType"
+                }
+              }
+            }
+          },
+          "typeSpecimenTypes": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "typeSpecimenType"
+                }
+              }
+            }
+          },
           "establishmentMeansTypes": {
             "type": "object",
             "properties": {
@@ -2163,6 +2232,198 @@
     "x-summary": "",
     "description": ""
   },
+  "createIdentifierTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "identifierType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "identifierType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/identifierTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "updateIdentifierTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "identifierType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "identifierType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/identifierTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getIdentifierTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "identifierType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "identifierType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/identifierTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getIdentifierTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "identifierType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "identifierType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/identifierTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
   "createPreparationTypeResponse": {
     "additionalProperties": false,
     "properties": {
@@ -2337,6 +2598,198 @@
         "properties": {
           "self": {
             "example": "https://domain/api/curatedList/v01/preparationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "createTypeSpecimenTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "typeSpecimenType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "typeSpecimenType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/typeSpecimenTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "updateTypeSpecimenTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "typeSpecimenType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "typeSpecimenType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/typeSpecimenTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getTypeSpecimenTypeResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "typeSpecimenType"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "typeSpecimenType",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/typeSpecimenTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "getTypeSpecimenTypesResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "typeSpecimenType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "typeSpecimenType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/typeSpecimenTypes",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -6307,6 +6760,90 @@
     "x-summary": "",
     "description": ""
   },
+  "createIdentifierTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "identifierType",
+            "enum": [
+              "identifierType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "identifierType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "preparationType",
+          "attributes": {
+            "category": "skin",
+            "name": "preparation name"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "preparationType",
+        "attributes": {
+          "category": "skin",
+          "name": "preparation name"
+        }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "updateIdentifierTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "identifierType",
+            "enum": [
+              "identifierType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "identifierType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
   "createPreparationTypeRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -6383,6 +6920,88 @@
           },
           "attributes": {
             "$ref": "preparationType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "createTypeSpecimenTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "typeSpecimenType",
+            "enum": [
+              "typeSpecimenType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "typeSpecimenType"
+          }
+        },
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "typeSpecimenType",
+          "attributes": {
+            "name": "lectotype"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "typeSpecimenType",
+        "attributes": {
+          "name": "lectotype"
+        }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "updateTypeSpecimenTypeRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "typeSpecimenType",
+            "enum": [
+              "typeSpecimenType"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "$ref": "typeSpecimenType"
           }
         },
         "x-summary": ""

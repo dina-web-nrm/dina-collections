@@ -12,22 +12,17 @@ const mapStateToProps = (state, { formValueSelector }) => {
 
 const propTypes = {
   recordHistoryEvents: PropTypes.array,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  readOnly: undefined,
   recordHistoryEvents: undefined,
 }
 
 class RecordHistoryEvents extends PureComponent {
   render() {
-    const { recordHistoryEvents, removeArrayFieldByIndex } = this.props
+    const { recordHistoryEvents } = this.props
     return (
-      <RecordHistoryEventsTable
-        recordHistoryEvents={recordHistoryEvents}
-        removeArrayFieldByIndex={removeArrayFieldByIndex}
-      />
+      <RecordHistoryEventsTable recordHistoryEvents={recordHistoryEvents} />
     )
   }
 }

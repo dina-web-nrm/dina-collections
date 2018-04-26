@@ -1,7 +1,9 @@
 const INITIAL_VALUES = {
   identifiers: [
     {
-      identifierType: 'catalogNumber',
+      identifierType: {
+        id: '1',
+      },
       nameSpace: '',
       publishRecord: false,
       remarks: '',
