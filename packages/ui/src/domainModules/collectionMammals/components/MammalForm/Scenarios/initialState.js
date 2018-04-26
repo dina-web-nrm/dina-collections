@@ -102,6 +102,22 @@ export default {
           },
         },
       },
+      identifierType: {
+        items: {
+          '1': {
+            id: '1',
+            name: 'catalog number',
+            key: 'catalogNumber',
+            type: 'identifierType',
+          },
+          '2': {
+            id: '2',
+            name: 'SVA number',
+            key: 'sva-number',
+            type: 'identifierType',
+          },
+        },
+      },
     },
   },
 

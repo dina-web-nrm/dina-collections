@@ -22,7 +22,7 @@ const propTypes = {
   getTranslationPath: PropTypes.func.isRequired,
   identifier: PropTypes.shape({
     id: PropTypes.string,
-    identifierType: PropTypes.string,
+    identifierType: PropTypes.object,
     remarks: PropTypes.string,
     value: PropTypes.string,
   }).isRequired,
@@ -61,7 +61,7 @@ class IdentifiersTableRow extends PureComponent {
             className="transparent"
             component={DropdownSearch}
             module="collectionMammals"
-            name={getPath('identifierType')}
+            name={getPath('identifierType.id')}
             options={identifierTypeOptions}
             type="dropdown-search-local"
           />

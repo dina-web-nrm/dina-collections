@@ -1,17 +1,33 @@
 export function createFillCatalogNumber(newCatalogNumber) {
-  return function fillCatalogNumber(identifier) {
+  return function fillCatalogNumber(identifier = {}) {
+    let updatedIdentifier = {
+      ...identifier,
+    }
     if (
-      identifier &&
-      identifier.identifierType === 'catalogNumber' &&
-      !identifier.value
+      updatedIdentifier.identifierType &&
+      updatedIdentifier.identifierType.id
+    ) {
+      updatedIdentifier = {
+        ...updatedIdentifier,
+        identifierType: {
+          ...updatedIdentifier.identifierType,
+          type: 'identifierType',
+        },
+      }
+    }
+
+    if (
+      updatedIdentifier &&
+      updatedIdentifier.identifierType.id === '1' &&
+      !updatedIdentifier.value
     ) {
       return {
-        ...identifier,
+        ...updatedIdentifier,
         value: newCatalogNumber,
       }
     }
 
-    return identifier
+    return updatedIdentifier
   }
 }
 

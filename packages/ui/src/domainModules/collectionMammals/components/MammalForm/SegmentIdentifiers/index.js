@@ -23,6 +23,11 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
     identifiers: formValueSelector(state, 'identifiers'),
+    identifierTypeOptions: globalCrudSelectors.identifierType
+      .getAllAsOptions(state)
+      .filter(option => {
+        return option.text !== 'Catalog number'
+      }),
     typeSpecimenTypeOptions: globalCrudSelectors.typeSpecimenType.getAllAsOptions(
       state
     ),
@@ -35,6 +40,7 @@ const propTypes = {
   formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  identifierTypeOptions: PropTypes.array.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   typeSpecimenTypeOptions: PropTypes.array.isRequired,
 }
@@ -47,6 +53,7 @@ class SegmentIdentifiers extends PureComponent {
       formValueSelector,
       getPath,
       identifiers,
+      identifierTypeOptions,
       removeArrayFieldByIndex,
       typeSpecimenTypeOptions,
     } = this.props
@@ -101,6 +108,7 @@ class SegmentIdentifiers extends PureComponent {
                   <IdentifiersTable
                     changeFieldValue={changeFieldValue}
                     identifiers={identifiers}
+                    identifierTypeOptions={identifierTypeOptions}
                     removeArrayFieldByIndex={removeArrayFieldByIndex}
                   />
                 </Grid.Column>
@@ -128,5 +136,6 @@ SegmentIdentifiers.propTypes = propTypes
 export default compose(
   connect(mapStateToProps),
   createEnsureAllItemsFetched({ resource: 'typeSpecimenType' }),
+  createEnsureAllItemsFetched({ resource: 'identifierType' }),
   pathBuilder({ name: 'identifiers' })
 )(SegmentIdentifiers)

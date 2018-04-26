@@ -15,8 +15,8 @@ const segmentIdentifiersMutations = [
     interaction: 'click',
   },
   {
-    name: 'identifiers.1.identifierType.hidden',
-    value: 'SVA nr',
+    name: 'identifiers.1.identifierType.id.hidden',
+    value: '2',
   },
   {
     name: 'identifiers.1.remarks',
@@ -404,14 +404,20 @@ const expectedOutput = {
 
       identifiers: [
         {
-          identifierType: 'catalogNumber',
+          identifierType: {
+            id: '1',
+            type: 'identifierType',
+          },
           nameSpace: '',
           publishRecord: true,
           remarks: '',
           value: '123456',
         },
         {
-          identifierType: 'SVA nr',
+          identifierType: {
+            id: '2',
+            type: 'identifierType',
+          },
           remarks: 'remarks',
           value: 'V0100/98',
         },

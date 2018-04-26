@@ -15,28 +15,18 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 })
 
 const TABLE_COLUMNS = ['identifierType', 'value', 'remarks']
-const IDENTIFIER_TYPE_OPTIONS = [
-  'Old skeleton nr',
-  'Old skin nr',
-  'Other institution nr',
-  'SVA nr',
-].map(value => {
-  return {
-    key: value,
-    text: value,
-    value,
-  }
-})
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  identifierTypeOptions: PropTypes.array.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 
 function IdentifiersTable({
   changeFieldValue,
   identifiers,
+  identifierTypeOptions,
   removeArrayFieldByIndex,
 }) {
   if (!identifiers.length) {
@@ -65,13 +55,14 @@ function IdentifiersTable({
         </Table.Header>
         <Table.Body>
           {identifiers
+            // TODO fix this and check for the value. Cant trust the order
             .slice(1) // skip first as that is the catalog number
             .map((identifier, index) => {
               return (
                 <IdentifiersTableRow
                   changeFieldValue={changeFieldValue}
                   identifier={identifier}
-                  identifierTypeOptions={IDENTIFIER_TYPE_OPTIONS}
+                  identifierTypeOptions={identifierTypeOptions}
                   index={index + 1}
                   key={index + 1} // eslint-disable-line react/no-array-index-key
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
