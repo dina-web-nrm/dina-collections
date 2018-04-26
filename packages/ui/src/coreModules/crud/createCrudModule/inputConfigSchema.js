@@ -6,6 +6,19 @@ module.exports = {
         '^[a-zA-Z]+$': {
           additionalProperties: false,
           properties: {
+            customSelectors: {
+              items: {
+                additionalProperties: true,
+                properties: {
+                  type: {
+                    type: 'string',
+                  },
+                },
+                required: ['type'],
+                type: 'object',
+              },
+              type: 'array',
+            },
             operations: {
               items: {
                 additionalProperties: false,
@@ -17,6 +30,7 @@ module.exports = {
                     type: 'string',
                   },
                 },
+                required: ['operationId', 'type'],
                 type: 'object',
               },
               type: 'array',

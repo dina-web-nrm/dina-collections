@@ -351,11 +351,11 @@
       "sv": ""
     },
     "startDate": {
-      "en": "Start date (free text)",
+      "en": "Start",
       "sv": ""
     },
     "endDate": {
-      "en": "End date (free text)",
+      "en": "End",
       "sv": ""
     },
     "collectorsText": {

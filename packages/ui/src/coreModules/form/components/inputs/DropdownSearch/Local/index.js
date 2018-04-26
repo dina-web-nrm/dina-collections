@@ -58,6 +58,7 @@ class DropdownSearchLocalInput extends Component {
     const hasOptionsNext = nextProps.options && nextProps.options.length
     if (noOptionsNow && hasOptionsNext) {
       this.setState({ filteredOptions: nextProps.options })
+      this.optionSelector = createSelectedOptionSelector(nextProps.options)
     }
   }
 
@@ -87,7 +88,7 @@ class DropdownSearchLocalInput extends Component {
 
   getSelectedOption() {
     const { input } = this.props
-    if (!input.value) {
+    if (input.value === undefined) {
       return null
     }
     const res = this.optionSelector(input.value)

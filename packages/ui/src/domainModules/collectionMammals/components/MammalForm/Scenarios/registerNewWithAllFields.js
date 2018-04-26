@@ -1,88 +1,6 @@
 import initialState from './initialState'
 
-const mutations = [
-  { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
-  { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
-  { name: 'determinations.0.date', value: 'date' },
-  {
-    name: 'determinations.0.determinationVerbatim',
-    value: 'determinationVerbatim',
-  },
-  {
-    name: 'determinations.0.determinedByAgentText',
-    value: 'determinedByAgentText',
-  },
-  { name: 'determinations.0.remarks', value: 'remarks' },
-
-  {
-    name: 'determinations.0.taxon.id.hidden',
-    value: '2367',
-  },
-  {
-    name: 'featureObservations.1.date',
-    value: 'date',
-  },
-  {
-    name: 'featureObservations.1.featureObservationAgent',
-    value: 'featureObservationAgent',
-  },
-  {
-    name: 'featureObservations.1.featureObservationText.hidden',
-    value: 'juvenile',
-  },
-  {
-    name: 'featureObservations.1.methodText.hidden',
-    value: 'known-age',
-  },
-  {
-    name: 'featureObservations.1.remarks',
-    value: 'remarks',
-  },
-  {
-    id: 'new-skeleton',
-    ignore: true,
-    interaction: 'click',
-  },
-  {
-    name: 'collectionItems.0.preparationType.id.hidden',
-    value: '2',
-  },
-  {
-    name: 'collectionItems.0.description',
-    value: 'description',
-  },
-  {
-    name: 'collectionItems.0.physicalObject.storageLocation.id.hidden',
-    value: '1',
-  },
-  {
-    name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
-    value: 'storedUnderTaxonName',
-  },
-  {
-    name: 'collectionItems.0.curatorialAssessments.0.agent',
-    value: 'agent',
-  },
-  {
-    name: 'collectionItems.0.curatorialAssessments.0.condition',
-    value: 'condition',
-  },
-  {
-    name: 'collectionItems.0.curatorialAssessments.0.conditionRemarks',
-    value: 'conditionRemarks',
-  },
-  {
-    name: 'collectionItems.0.curatorialAssessments.0.date',
-    value: 'date',
-  },
-  {
-    name: 'collectionItems.0.curatorialAssessments.0.isInStorage',
-    value: true,
-  },
-  {
-    name: 'collectionItems.0.curatorialAssessments.0.inventoryStatusRemarks',
-    value: 'inventoryStatusRemarks',
-  },
+const segmentIdentifiersMutations = [
   {
     name: 'identifiers.0.publishRecord',
     value: true,
@@ -109,9 +27,44 @@ const mutations = [
     value: 'V0100/98',
   },
   {
+    name: 'typeStatus.hidden',
+    value: 'paratype',
+  },
+]
+
+const segmentTaxonMutations = [
+  { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
+  { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
+  { name: 'determinations.0.date', value: 'date' },
+]
+
+const segmentDeterminationsMutations = [
+  {
+    name: 'determinations.0.determinationVerbatim',
+    value: 'determinationVerbatim',
+  },
+  {
+    name: 'determinations.0.determinedByAgentText',
+    value: 'determinedByAgentText',
+  },
+  { name: 'determinations.0.remarks', value: 'remarks' },
+
+  {
+    name: 'determinations.0.taxon.id.hidden',
+    value: '2367',
+  },
+]
+
+const segmentCollectingInformationMutations = [
+  {
     name: 'collectingInformation.0.collectorsText',
     value: 'collectorsText',
   },
+  {
+    name: 'collectingInformation.0.establishmentMeansType.id.hidden',
+    value: '1',
+  },
+
   {
     name: 'collectingInformation.0.event.endDate',
     value: 'endDate',
@@ -184,9 +137,103 @@ const mutations = [
     value: 'startDate',
   },
   {
-    name: 'typeStatus.hidden',
-    value: 'paratype',
+    name: 'collectingInformation.0.isDeathDate',
+    value: true,
   },
+  {
+    name: 'deathInformation.0.causeOfDeathType.id.hidden',
+    value: '1',
+  },
+  {
+    name: 'deathInformation.0.remarks',
+    value: 'Some remarks',
+  },
+  {
+    name: 'originInformation.0.originLocality',
+    value: 'Ronneby',
+  },
+  {
+    name: 'originInformation.0.remarks',
+    value: 'Some remarks',
+  },
+  {
+    name: 'originInformation.0.isAffectedByManagement',
+    value: true,
+  },
+  {
+    name: 'originInformation.0.isResultOfSelectiveBreeding',
+    value: true,
+  },
+]
+
+const segmentFeatureObservationsMutations = [
+  {
+    name: 'featureObservations.1.date',
+    value: 'date',
+  },
+  {
+    name: 'featureObservations.1.featureObservationAgent',
+    value: 'featureObservationAgent',
+  },
+  {
+    name: 'featureObservations.1.featureObservationText.hidden',
+    value: 'juvenile',
+  },
+  {
+    name: 'featureObservations.1.methodText.hidden',
+    value: 'known-age',
+  },
+  {
+    name: 'featureObservations.1.remarks',
+    value: 'remarks',
+  },
+]
+
+const segmentCollectionItemsMutations = [
+  {
+    id: 'new-skeleton',
+    ignore: true,
+    interaction: 'click',
+  },
+  {
+    name: 'collectionItems.0.preparationType.id.hidden',
+    value: '2',
+  },
+  {
+    name: 'collectionItems.0.description',
+    value: 'description',
+  },
+  {
+    name: 'collectionItems.0.physicalObject.storageLocation.id.hidden',
+    value: '1',
+  },
+  {
+    name: 'collectionItems.0.curatorialAssessments.0.agent',
+    value: 'agent',
+  },
+  {
+    name: 'collectionItems.0.curatorialAssessments.0.condition',
+    value: 'condition',
+  },
+  {
+    name: 'collectionItems.0.curatorialAssessments.0.conditionRemarks',
+    value: 'conditionRemarks',
+  },
+  {
+    name: 'collectionItems.0.curatorialAssessments.0.date',
+    value: 'date',
+  },
+  {
+    name: 'collectionItems.0.curatorialAssessments.0.isInStorage',
+    value: true,
+  },
+  {
+    name: 'collectionItems.0.curatorialAssessments.0.inventoryStatusRemarks',
+    value: 'inventoryStatusRemarks',
+  },
+]
+
+const segmentOtherMutations = [
   {
     name: 'recordHistoryEvents.0.agent',
     value: 'agent',
@@ -195,9 +242,35 @@ const mutations = [
     name: 'recordHistoryEvents.0.date.dateText',
     value: 'dateText',
   },
+  {
+    name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
+    value: 'storedUnderTaxonName',
+  },
+]
+
+const mutations = [
+  ...segmentIdentifiersMutations,
+  ...segmentTaxonMutations,
+  ...segmentDeterminationsMutations,
+  ...segmentCollectingInformationMutations,
+  ...segmentFeatureObservationsMutations,
+  ...segmentCollectionItemsMutations,
+  ...segmentOtherMutations,
 ]
 
 const expectedOutput = {
+  causeOfDeathTypes: [
+    {
+      id: '1',
+      type: 'causeOfDeathType',
+    },
+  ],
+  establishmentMeansTypes: [
+    {
+      id: '1',
+      type: 'establishmentMeansType',
+    },
+  ],
   featureTypes: [
     {
       id: '1',
@@ -226,9 +299,14 @@ const expectedOutput = {
       collectingInformation: [
         {
           collectorsText: 'collectorsText',
+          establishmentMeansType: {
+            id: '1',
+            type: 'establishmentMeansType',
+          },
           event: {
             endDate: 'endDate',
             expeditionText: 'expeditionText',
+
             locationInformation: {
               localityName: 'localityName',
               localityVerbatim: 'localityVerbatim',
@@ -251,6 +329,7 @@ const expectedOutput = {
             },
             startDate: 'startDate',
           },
+          isDeathDate: true,
         },
       ],
       collectionItems: [
@@ -279,6 +358,15 @@ const expectedOutput = {
           },
         },
       ],
+      deathInformation: [
+        {
+          causeOfDeathType: {
+            id: '1',
+            type: 'causeOfDeathType',
+          },
+          remarks: 'Some remarks',
+        },
+      ],
       determinations: [
         {
           date: 'date',
@@ -291,6 +379,7 @@ const expectedOutput = {
           },
         },
       ],
+
       featureObservations: [
         {
           date: 'date',
@@ -317,6 +406,14 @@ const expectedOutput = {
           identifierType: 'SVA nr',
           remarks: 'remarks',
           value: 'V0100/98',
+        },
+      ],
+      originInformation: [
+        {
+          isAffectedByManagement: true,
+          isResultOfSelectiveBreeding: true,
+          originLocality: 'Ronneby',
+          remarks: 'Some remarks',
         },
       ],
       recordHistoryEvents: [

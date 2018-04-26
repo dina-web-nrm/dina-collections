@@ -1,6 +1,7 @@
 import normalizeSpecimen from 'common/es5/normalize/normalizeSpecimen'
 import transformCollectingInformation from './transformCollectingInformation'
 import transformCollectionItems from './transformCollectionItems'
+import transformDeathInformation from './transformDeathInformation'
 import transformDeterminations from './transformDeterminations'
 import transformFeatureObservations from './transformFeatureObservations'
 import transformIdentifiers from './transformIdentifiers'
@@ -36,8 +37,14 @@ export default function transformOutput(formData, normalize = true) {
     storageLocations,
   } = transformCollectionItems(formData.collectionItems)
 
-  const { places, collectingInformation } = transformCollectingInformation(
-    formData.collectingInformation
+  const {
+    collectingInformation,
+    establishmentMeansTypes,
+    places,
+  } = transformCollectingInformation(formData.collectingInformation)
+
+  const { causeOfDeathTypes, deathInformation } = transformDeathInformation(
+    formData.deathInformation
   )
 
   const recordHistoryEvents = transformRecordHistoryEvents(
@@ -48,6 +55,7 @@ export default function transformOutput(formData, normalize = true) {
     ...formData,
     collectingInformation,
     collectionItems,
+    deathInformation,
     determinations,
     featureObservations,
     identifiers,
@@ -64,6 +72,8 @@ export default function transformOutput(formData, normalize = true) {
       }
 
   return {
+    causeOfDeathTypes,
+    establishmentMeansTypes,
     featureTypes,
     physicalObjects,
     places,

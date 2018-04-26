@@ -48,7 +48,6 @@
 │   └── utilities
 ├── test
 │   └── __mocks__
-├── todo
 ├── tree.md
 └── yarn.lock
 

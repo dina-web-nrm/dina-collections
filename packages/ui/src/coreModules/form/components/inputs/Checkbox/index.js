@@ -4,14 +4,20 @@ import { Checkbox } from 'semantic-ui-react'
 
 const propTypes = {
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  label: PropTypes.any,
 }
 
-const CheckboxInput = ({ input }) => {
+const defaultProps = {
+  label: undefined,
+}
+
+const CheckboxInput = ({ input, label }) => {
   const { value, onChange: reduxFormOnChange, ...inputRest } = input
   const checked = !!value
   return (
     <Checkbox
       checked={checked}
+      label={label}
       onChange={(event, data) => {
         reduxFormOnChange(data.checked)
       }}
@@ -22,5 +28,6 @@ const CheckboxInput = ({ input }) => {
 }
 
 CheckboxInput.propTypes = propTypes
+CheckboxInput.defaultProps = defaultProps
 
 export default CheckboxInput

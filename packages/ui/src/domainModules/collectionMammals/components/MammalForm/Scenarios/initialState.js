@@ -56,6 +56,27 @@ export default {
       },
     },
     resources: {
+      establishmentMeansType: {
+        items: {
+          '1': {
+            name: { en: 'managed' },
+            key: 'managed',
+            id: '1',
+            type: 'establishmentMeansType',
+          },
+        },
+      },
+
+      causeOfDeathType: {
+        items: {
+          '1': {
+            name: { en: 'shot', sv: 'skjuten' },
+            key: 'shot',
+            id: '1',
+            type: 'causeOfDeathType',
+          },
+        },
+      },
       place: {
         items: {
           '1': {

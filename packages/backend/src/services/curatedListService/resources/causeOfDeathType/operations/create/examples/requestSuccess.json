@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": "1234",
+    "type": "causeOfDeathType",
+    "attributes": {
+      "key": "put-to-death",
+      "name": {
+        "en": "put to death",
+        "sv": "avlivad"
+      }
+    }
+  }
+}

@@ -19,7 +19,7 @@ import { mammalFormModels } from '../../schemas'
 import SegmentIdentifiers from './SegmentIdentifiers'
 import SegmentTaxon from './SegmentTaxon'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
-import SegmentCollectingInformation from './SegmentCollectingInformation/index'
+import SegmentEvents from './SegmentEvents/index'
 import SegmentCollectionItems from './SegmentCollectionItems'
 import SegmentOther from './SegmentOther'
 import FormActions from './FormActions'
@@ -147,9 +147,7 @@ class RawMammalForm extends Component {
               removeArrayFieldByIndex={this.removeArrayFieldByIndex}
               specimenId={specimenId}
             />
-            <SegmentCollectingInformation
-              formValueSelector={formValueSelector}
-            />
+            <SegmentEvents formValueSelector={formValueSelector} />
             <SegmentFeatureObservations
               changeFieldValue={this.changeFieldValue}
               mode={mode}

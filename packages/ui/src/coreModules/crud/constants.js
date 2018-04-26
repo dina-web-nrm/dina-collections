@@ -18,6 +18,10 @@ export const API_ACTION_TYPE_FAIL = 'fail'
 export const API_ACTION_TYPE_REQUEST = 'request'
 export const API_ACTION_TYPE_SUCCESS = 'success'
 
+export const SELECTOR_TYPE_GET_ALL_AS_OPTIONS = 'getAllAsOptions'
+
+export const ALL_CUSTOM_SELECTOR_TYPES = [SELECTOR_TYPE_GET_ALL_AS_OPTIONS]
+
 export const apiActionTypes = {
   API_ACTION_TYPE_FAIL,
   API_ACTION_TYPE_REQUEST,

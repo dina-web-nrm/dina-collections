@@ -1,4 +1,4 @@
-import createSelectors from './index'
+import createSelectors, { dep } from './index'
 
 describe('coreModules/crud/createCrudModule/factories/selectors', () => {
   it('is a function', () => {
@@ -170,6 +170,62 @@ describe('coreModules/crud/createCrudModule/factories/selectors', () => {
         }
         expect(selectors.getOne(localState, '17')).toEqual(null)
       })
+    })
+  })
+  describe('with dependor - customSelectors', () => {
+    let createCustomSelectorsMock
+    beforeEach(() => {
+      createCustomSelectorsMock = jest.fn()
+      dep.freeze()
+      dep.mock({
+        createCustomSelectors: input => {
+          createCustomSelectorsMock(input)
+          return {
+            customSelector: () => {
+              return 2
+            },
+          }
+        },
+      })
+    })
+    afterAll(() => {
+      dep.reset()
+    })
+    it('call createCustomSelectors and return result as a part of output', () => {
+      expect.assertions(4)
+      const input = {
+        resourceSpecification: {
+          customSelectors: [
+            {
+              text: {
+                parameter: 'name',
+                translated: true,
+              },
+              type: 'getAllAsOptions',
+            },
+          ],
+          resource: 'physicalObject',
+        },
+      }
+      const expectedSelectorKeys = [
+        'getItemsObject',
+        'getLocalResourceState',
+        'getLocalState',
+        'getAll',
+        'getOne',
+        'customSelector',
+      ]
+
+      const res = createSelectors(input)
+      expect(res).toBeTruthy()
+
+      expect(createCustomSelectorsMock.mock.calls.length).toEqual(1)
+      expect(Object.keys(createCustomSelectorsMock.mock.calls[0][0])).toEqual([
+        'customSelectorsInput',
+        'resourceSelectors',
+      ])
+
+      expect(Object.keys(res).sort()).toEqual(expectedSelectorKeys.sort())
     })
   })
 })

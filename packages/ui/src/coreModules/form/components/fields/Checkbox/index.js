@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FieldTemplate from '../../FieldTemplate'
 import CheckboxInput from '../../inputs/Checkbox'
+import FieldLabel from '../../FieldTemplate/FieldLabel'
 
 const propTypes = {
   errorScope: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  inline: PropTypes.bool,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   meta: PropTypes.shape({
@@ -20,6 +22,7 @@ const defaultProps = {
   errorScope: undefined,
   helpNotificationProps: undefined,
   helpText: undefined,
+  inline: false,
   label: undefined,
   required: false,
 }
@@ -33,19 +36,32 @@ const CheckboxField = ({
   required,
   helpText,
   helpNotificationProps,
+  inline,
 }) => {
+  const fieldLabel =
+    inline && label ? (
+      <FieldLabel
+        helpNotificationProps={helpNotificationProps}
+        helpText={helpText}
+        htmlFor={input.name}
+        label={label}
+      />
+    ) : (
+      undefined
+    )
+
   return (
     <FieldTemplate
       errorScope={errorScope}
-      helpNotificationProps={helpNotificationProps}
+      helpNotificationProps={fieldLabel ? undefined : helpNotificationProps}
       helpText={helpText}
-      label={label}
+      label={fieldLabel ? undefined : label}
       meta={meta}
       module={module}
       name={input.name}
       required={required}
     >
-      <CheckboxInput input={input} />
+      <CheckboxInput input={input} label={fieldLabel} />
     </FieldTemplate>
   )
 }
