@@ -1,8 +1,12 @@
 const batchExecute = require('../../../../utilities/test/batchExecute')
 const readInitialData = require('../../../../utilities/readInitialData')
-const mapSpecimen = require('./mapSpecimen')
+
+const migrateSpecimen = require('./migrations/migrateSpecimen')
+const createReporter = require('./migrations/reporterFactory')
 
 module.exports = function loadInitialData({ config, models }) {
+  const reporter = createReporter()
+  reporter.start()
   const {
     initialData: { numberOfSpecimens: numberOfSpecimensInput } = {},
   } = config
@@ -26,7 +30,12 @@ module.exports = function loadInitialData({ config, models }) {
     execute: items => {
       return Promise.all(
         items.map(rawSpecimen => {
-          return mapSpecimen(rawSpecimen)
+          const migratedSpecimen = migrateSpecimen({
+            reporter,
+            specimen: rawSpecimen,
+          })
+
+          return migratedSpecimen
         })
       ).then(mappedSpecimens => {
         const tmp = mappedSpecimens.map(mappedSpecimen => {
@@ -36,10 +45,14 @@ module.exports = function loadInitialData({ config, models }) {
             id,
           }
         })
+
         return models.specimen.bulkCreate(tmp)
       })
     },
     numberOfEntries: numberOfSpecimens,
     numberOfEntriesEachBatch: 1000,
+  }).then(result => {
+    reporter.done()
+    return result
   })
 }
