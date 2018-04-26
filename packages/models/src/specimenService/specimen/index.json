@@ -5,8 +5,20 @@
     "relationships": {
       "type": "object",
       "properties": {
+        "typeSpecimenTypes": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__typeSpecimenType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "establishmentMeansTypes": {
-"type": "object",
+          "type": "object",
           "properties": {
             "data": {
               "type": "array",

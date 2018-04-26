@@ -71,7 +71,8 @@
       "$ref": "__ROOT__readOnly"
     },
     "typeStatus": {
-      "type": "string"
+      "$ref": "__ROOT__typeSpecimenType",
+      "x-reference-type": "external"
     },
     "version": {
       "type": "integer"
