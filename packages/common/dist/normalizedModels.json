@@ -1099,14 +1099,15 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "dateWrapper",
+        "type": "string",
+        "x-summary": ""
+      },
+      "description": {
+        "type": "string",
         "x-summary": ""
       },
       "system": {
         "type": "string",
-        "enum": [
-          "catalogCard"
-        ],
         "x-summary": ""
       }
     },
