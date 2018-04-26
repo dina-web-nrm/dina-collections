@@ -1483,7 +1483,7 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
             >
               <input
                 autoComplete="off"
-                disabled={undefined}
+                disabled={false}
                 name="username"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -1515,7 +1515,7 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
             >
               <input
                 autoComplete="off"
-                disabled={undefined}
+                disabled={false}
                 name="password"
                 onBlur={[Function]}
                 onChange={[Function]}

@@ -12657,7 +12657,7 @@ img.ui.bordered.image {
 .ui.disabled.input input,
 .ui.form .ui.disabled.input input,
 .ui.input:not(.disabled) input[disabled] {
-  background-color: grey;
+  opacity: 1;
 }
 /*!
  * # Semantic UI 2.2.13 - Label

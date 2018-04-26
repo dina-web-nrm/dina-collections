@@ -5,6 +5,7 @@ import transformFeatureObservations from './transformFeatureObservations'
 import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
 import transformCollectingInformation from './transformCollectingInformation'
+import transformRecordHistoryEvents from './transformRecordHistoryEvents'
 
 export default function transformInput({
   denormalize = true,
@@ -40,6 +41,10 @@ export default function transformInput({
     attributes.collectingInformation
   )
 
+  const recordHistoryEvents = transformRecordHistoryEvents(
+    attributes.recordHistoryEvents
+  )
+
   return {
     ...attributes,
     collectingInformation,
@@ -47,6 +52,7 @@ export default function transformInput({
     determinations,
     featureObservations,
     identifiers,
+    recordHistoryEvents,
     taxonInformation,
   }
 }

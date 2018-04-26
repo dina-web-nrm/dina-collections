@@ -1,12 +1,24 @@
 const batchExecute = require('../../../../utilities/test/batchExecute')
 const readInitialData = require('../../../../utilities/readInitialData')
-const mapSpecimen = require('./mapSpecimen')
 
-module.exports = function loadInitialData({ models }) {
+const migrateSpecimen = require('./migrations/migrateSpecimen')
+const createReporter = require('./migrations/reporterFactory')
+
+module.exports = function loadInitialData({ config, models }) {
+  const reporter = createReporter()
+  reporter.start()
+  const {
+    initialData: { numberOfSpecimens: numberOfSpecimensInput } = {},
+  } = config
+
   const specimenTemplate = readInitialData('specimens')
   if (!specimenTemplate) {
     return Promise.resolve()
   }
+  const numberOfSpecimens = Math.min(
+    numberOfSpecimensInput,
+    specimenTemplate.length
+  )
 
   const createEntry = index => {
     return specimenTemplate[index % specimenTemplate.length]
@@ -18,7 +30,12 @@ module.exports = function loadInitialData({ models }) {
     execute: items => {
       return Promise.all(
         items.map(rawSpecimen => {
-          return mapSpecimen(rawSpecimen)
+          const migratedSpecimen = migrateSpecimen({
+            reporter,
+            specimen: rawSpecimen,
+          })
+
+          return migratedSpecimen
         })
       ).then(mappedSpecimens => {
         const tmp = mappedSpecimens.map(mappedSpecimen => {
@@ -28,10 +45,14 @@ module.exports = function loadInitialData({ models }) {
             id,
           }
         })
+
         return models.specimen.bulkCreate(tmp)
       })
     },
-    numberOfEntries: 100,
-    numberOfEntriesEachBatch: 10,
+    numberOfEntries: numberOfSpecimens,
+    numberOfEntriesEachBatch: 1000,
+  }).then(result => {
+    reporter.done()
+    return result
   })
 }

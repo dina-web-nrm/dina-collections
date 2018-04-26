@@ -6,7 +6,7 @@ module.exports = function dbDescribe(testName, ...rest) {
   }
 
   return describe(testName, () => {
-    it('Does not run when API_TESTS not set to true', () => {
+    it('Does not run when DB_TESTS not set to true', () => {
       expect(1).toBe(1)
     })
   })

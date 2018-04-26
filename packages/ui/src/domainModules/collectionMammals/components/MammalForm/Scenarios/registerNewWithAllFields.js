@@ -239,8 +239,16 @@ const segmentOtherMutations = [
     value: 'agent',
   },
   {
-    name: 'recordHistoryEvents.0.date.dateText',
-    value: 'dateText',
+    name: 'recordHistoryEvents.0.date',
+    value: 'date',
+  },
+  {
+    name: 'recordHistoryEvents.0.description',
+    value: 'Creation of catalog card',
+  },
+  {
+    name: 'recordHistoryEvents.0.system',
+    value: 'catalogCard',
   },
   {
     name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
@@ -419,7 +427,8 @@ const expectedOutput = {
       recordHistoryEvents: [
         {
           agent: 'agent',
-          date: { dateText: 'dateText' },
+          date: 'date',
+          description: 'Creation of catalog card',
           system: 'catalogCard',
         },
       ],

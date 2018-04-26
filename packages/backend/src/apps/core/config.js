@@ -23,6 +23,10 @@ const api = {
   validateOutput: true,
 }
 
+const initialData = {
+  numberOfSpecimens: process.env.INITIAL_DATA_NUMBER_OF_SPECIMENS || 100,
+}
+
 const db = {
   database: process.env.DB_DATABASE || 'postgres',
   flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
@@ -80,6 +84,7 @@ module.exports = {
   db,
   elasticsearch,
   env,
+  initialData,
   log,
   services,
   test,

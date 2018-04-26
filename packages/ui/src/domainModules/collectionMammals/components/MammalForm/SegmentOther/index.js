@@ -8,7 +8,7 @@ import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { CustomData, Field, Input } from 'coreModules/form/components'
 import { CATALOG_CARD } from '../../../constants'
-import RecordHistoryEvent from './RecordHistoryEvent'
+import RecordHistoryEvents from './RecordHistoryEvents'
 
 const log = createLog('modules:collectionMammals:MammalForm:SegmentOther')
 
@@ -21,8 +21,10 @@ const mapStateToProps = (state, { formValueSelector }) => {
 }
 
 const propTypes = {
+  formValueSelector: PropTypes.func.isRequired,
   readOnly: PropTypes.object,
   recordHistoryEvents: PropTypes.array,
+  removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -55,7 +57,6 @@ class SegmentOther extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                disabled
                 label={
                   <ModuleTranslate
                     scope="collectionItems"
@@ -70,7 +71,6 @@ class SegmentOther extends PureComponent {
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <CustomData
                 autoComplete="off"
-                disabled
                 input={{ name: 'readOnly', value: readOnly }}
                 label={<ModuleTranslate scope="other" textKey="readOnly" />}
                 meta={{}}
@@ -80,11 +80,14 @@ class SegmentOther extends PureComponent {
               />
             </Grid.Column>
           </Grid.Row>
-          <RecordHistoryEvent
-            index={
-              hasCatalogCardHistory ? catalogCardEventIndex : fallbackIndex
-            }
-          />
+          <Grid.Row>
+            <Grid.Column width={16}>
+              <RecordHistoryEvents
+                formValueSelector={this.props.formValueSelector}
+                removeArrayFieldByIndex={this.props.removeArrayFieldByIndex}
+              />
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       </Segment>
     )

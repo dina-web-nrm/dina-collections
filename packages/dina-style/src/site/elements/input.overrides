@@ -5,5 +5,5 @@
 .ui.disabled.input input,
 .ui.form .ui.disabled.input input,
 .ui.input:not(.disabled) input[disabled] {
-  background-color: @disabledInputBackgroundColor
+  opacity: 1
 }

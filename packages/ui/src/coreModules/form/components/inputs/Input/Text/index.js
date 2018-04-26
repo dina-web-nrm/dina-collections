@@ -4,6 +4,7 @@ import { Input } from 'semantic-ui-react'
 
 const propTypes = {
   autoComplete: PropTypes.string,
+  disabled: PropTypes.bool,
   icon: PropTypes.string,
   iconPosition: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
@@ -14,6 +15,7 @@ const propTypes = {
 }
 const defaultProps = {
   autoComplete: undefined,
+  disabled: false,
   icon: undefined,
   iconPosition: 'left',
   placeholder: undefined,
@@ -24,17 +26,19 @@ const defaultProps = {
 
 const TextInput = ({
   autoComplete,
+  disabled,
   icon,
   iconPosition,
   input,
   placeholder,
-  type,
   size,
   style,
+  type,
 }) => {
   return (
     <Input
       autoComplete={autoComplete}
+      disabled={disabled}
       icon={icon}
       iconPosition={icon && iconPosition}
       placeholder={placeholder}

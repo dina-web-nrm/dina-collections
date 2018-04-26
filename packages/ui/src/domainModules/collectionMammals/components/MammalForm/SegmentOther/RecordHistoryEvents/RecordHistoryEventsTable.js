@@ -1,0 +1,62 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Header, Table } from 'semantic-ui-react'
+import { compose } from 'redux'
+import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import RecordHistoryEventsRow from './RecordHistoryEventsRow'
+
+const TABLE_COLUMNS = ['system', 'agent', 'date', 'description']
+
+const propTypes = {
+  changeFieldValue: PropTypes.func.isRequired,
+  recordHistoryEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
+  removeArrayFieldByIndex: PropTypes.func.isRequired,
+}
+
+function RecordHistoryEventsTable({
+  changeFieldValue,
+  recordHistoryEvents,
+  removeArrayFieldByIndex,
+}) {
+  if (!recordHistoryEvents.length) {
+    return null
+  }
+  return (
+    <React.Fragment>
+      <Header size="small">RecordHistory</Header>
+      <Table celled compact striped style={{ marginBottom: '1em' }}>
+        <Table.Header>
+          <Table.Row>
+            {TABLE_COLUMNS.map(textKey => {
+              return (
+                <Table.HeaderCell key={textKey}>{textKey}</Table.HeaderCell>
+              )
+            })}
+            <Table.HeaderCell />
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {recordHistoryEvents
+            .map((recordHistoryEvent, index) => {
+              return (
+                <RecordHistoryEventsRow
+                  changeFieldValue={changeFieldValue}
+                  index={index}
+                  key={index} // eslint-disable-line react/no-array-index-key
+                  recordHistoryEvent={recordHistoryEvent}
+                  removeArrayFieldByIndex={removeArrayFieldByIndex}
+                />
+              )
+            })
+            .filter(item => !!item)}
+        </Table.Body>
+      </Table>
+    </React.Fragment>
+  )
+}
+
+RecordHistoryEventsTable.propTypes = propTypes
+
+export default compose(pathBuilder({ name: 'recordHistoryEvents' }))(
+  RecordHistoryEventsTable
+)
