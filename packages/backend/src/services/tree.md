@@ -104,9 +104,7 @@
 │   │   ├── index.js
 │   │   └── loadInitialData
 │   │       ├── index.js
-│   │       ├── mapFunctions
-│   │       ├── mapSpecimen.js
-│   │       └── utilities
+│   │       └── migrations
 │   ├── resources
 │   │   ├── index.js
 │   │   └── specimen
