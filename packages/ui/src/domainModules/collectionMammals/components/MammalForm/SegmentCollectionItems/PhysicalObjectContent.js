@@ -102,6 +102,16 @@ function PhysicalObjectContent({
             showParentName
           />
         </Grid.Column>
+        <Grid.Column computer={8} mobile={8} tablet={8}>
+          <Field
+            autoComplete="off"
+            component={Input}
+            label="Storage location text"
+            module="collectionMammals"
+            name={getPath('physicalObject.storageLocationText')}
+            type="input-text"
+          />
+        </Grid.Column>
       </Grid.Row>
       <Grid.Row>
         <Grid.Column width={16}>

@@ -56,17 +56,13 @@ class SegmentOther extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label={
-                  <ModuleTranslate
-                    scope="collectionItems"
-                    textKey="storedUnderTaxonName"
-                  />
-                }
+                label="Remarks"
                 module="collectionMammals"
-                name="collectionItems.0.physicalObject.storedUnderTaxonName"
+                name="remarks"
                 type="text"
               />
             </Grid.Column>
+
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <CustomData
                 autoComplete="off"

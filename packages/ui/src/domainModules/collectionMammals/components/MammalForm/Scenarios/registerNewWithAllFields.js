@@ -42,6 +42,10 @@ const segmentIdentifiersMutations = [
     name: 'acquisition.handedInByAgentText',
     value: 'handedInByAgentText',
   },
+  {
+    name: 'collectionItemText',
+    value: 'collectionItemText',
+  },
 ]
 
 const segmentTaxonMutations = [
@@ -144,6 +148,7 @@ const segmentCollectingInformationMutations = [
       'collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
     value: 20,
   },
+
   {
     name: 'collectingInformation.0.event.startDate',
     value: 'startDate',
@@ -220,6 +225,11 @@ const segmentCollectionItemsMutations = [
     value: '1',
   },
   {
+    name: 'collectionItems.0.physicalObject.storageLocationText',
+    value: 'storageLocationText',
+  },
+
+  {
     name: 'collectionItems.0.curatorialAssessments.0.agent',
     value: 'agent',
   },
@@ -263,8 +273,8 @@ const segmentOtherMutations = [
     value: 'catalogCard',
   },
   {
-    name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
-    value: 'storedUnderTaxonName',
+    name: 'remarks',
+    value: 'remarks',
   },
 ]
 
@@ -304,7 +314,7 @@ const expectedOutput = {
         id: '1',
         type: 'storageLocation',
       },
-      storedUnderTaxonName: 'storedUnderTaxonName',
+      storageLocationText: 'storageLocationText',
     },
   ],
   places: [{ id: 'Africa', type: 'place' }, { id: 'Algeria', type: 'place' }],
@@ -375,7 +385,7 @@ const expectedOutput = {
               id: '1',
               type: 'storageLocation',
             },
-            storedUnderTaxonName: 'storedUnderTaxonName',
+            storageLocationText: 'storageLocationText',
           },
           preparationType: {
             id: '2',
@@ -383,6 +393,8 @@ const expectedOutput = {
           },
         },
       ],
+      collectionItemText: 'collectionItemText',
+
       deathInformation: [
         {
           causeOfDeathType: {
@@ -455,6 +467,7 @@ const expectedOutput = {
           system: 'catalogCard',
         },
       ],
+      remarks: 'remarks',
       taxonInformation: {
         curatorialName: 'curatorialName',
         taxonRemarks: 'taxonRemarks',
@@ -493,6 +506,9 @@ const postSubmitTest = ({ submitResult }) => {
         // filter out unused featureTypes, also done in transform output
         if (key.indexOf('featureObservations.') === 0) {
           return key.indexOf('featureObservations.1.') === 0
+        }
+        if (key.indexOf('readOnly') > -1) {
+          return false
         }
 
         return true

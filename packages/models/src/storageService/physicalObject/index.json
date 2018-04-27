@@ -14,14 +14,12 @@
       "description": "Will be moved to storageLocation",
       "type": "string"
     },
-    "storedUnderTaxonName": {
-      "description": "Will be moved to storageLocation",
-      "type": "string",
-      "example": "Sorex minutus"
-    },
     "storageLocation": {
       "$ref": "__ROOT__storageLocation",
       "x-reference-type": "external"
+    },
+    "storageLocationText": {
+      "type": "string"
     },
     "type": {
       "type": "string"
