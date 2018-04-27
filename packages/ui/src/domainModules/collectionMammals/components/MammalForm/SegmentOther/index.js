@@ -68,6 +68,17 @@ class SegmentOther extends PureComponent {
               />
             </Grid.Column>
             <Grid.Column computer={6} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                component={Input}
+                label="Remarks"
+                module="collectionMammals"
+                name="remarks"
+                type="text"
+              />
+            </Grid.Column>
+
+            <Grid.Column computer={6} mobile={16} tablet={8}>
               <CustomData
                 autoComplete="off"
                 input={{ name: 'readOnly', value: readOnly }}
