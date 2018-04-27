@@ -23,9 +23,6 @@
       "$ref": "__ROOT__storageLocation",
       "x-reference-type": "external"
     },
-    "acquisition": {
-      "$ref": "__ROOT__acquisition"
-    },
     "type": {
       "type": "string"
     }

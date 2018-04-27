@@ -5,6 +5,9 @@
     "lid": {
       "type": "string"
     },
+    "acquisition": {
+      "$ref": "__ROOT__acquisition"
+    },
     "determinations": {
       "type": "array",
       "items": {
