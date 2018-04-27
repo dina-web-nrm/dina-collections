@@ -5,6 +5,9 @@
     "collectionItemText": {
       "type": "string"
     },
+    "remarks": {
+      "type": "string"
+    },
     "lid": {
       "type": "string"
     },
