@@ -1,4 +1,3 @@
-const buildWhere = require('./operations/getMany/buildWhere.js')
 const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -20,29 +19,25 @@ module.exports = {
     },
     {
       connect: true,
+      relationKey: 'acceptedTaxonName',
+      type: 'updateRelationHasOne',
+    },
+    {
+      connect: true,
       includeRelations: true,
-      operationId: 'getTaxonById',
       type: 'getOne',
     },
     {
-      buildWhere,
       connect: true,
       includeRelations: true,
-      operationId: 'getTaxaByName',
-      queryParams: {
-        'filter[name]': {
-          description:
-            'Taxon name - accepted scientific, synonym or vernacular name',
-          required: false,
-          schema: {
-            type: 'string',
-          },
-        },
-      },
       type: 'getMany',
     },
   ],
   relations: {
+    acceptedTaxonName: {
+      format: 'object',
+      resource: 'taxonName',
+    },
     children: {
       format: 'array',
       resource: 'taxon',
@@ -51,7 +46,15 @@ module.exports = {
       format: 'object',
       resource: 'taxon',
     },
+    synonyms: {
+      format: 'array',
+      resource: 'taxonName',
+    },
+    vernacularNames: {
+      format: 'array',
+      resource: 'taxonName',
+    },
   },
   resource: 'taxon',
-  resourcePlural: 'taxon',
+  resourcePlural: 'taxa',
 }

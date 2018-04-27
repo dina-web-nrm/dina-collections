@@ -2,32 +2,7 @@
   "data": {
     "type": "taxon",
     "attributes": {
-      "rubinNumber": "123456",
-      "higherTaxa": {
-        "order": "Parent order",
-        "suborder": "Parent suborder",
-        "infraorder": "Parent infraorder",
-        "superfamily": "Parent superfamily",
-        "family": "Parent family",
-        "subfamily": "Parent subfamily",
-        "tribe": "Parent tribe",
-        "genus": "Parent genus",
-        "subgenus": "Parent subgenus"
-      },
-      "rank": "Taxon rank",
-      "scientificName": "Sorex minutus",
-      "author": "John Doe",
-      "authorDate": "John Doe 2018",
-      "validName": true,
-      "vernacularNames": {
-        "en": [
-          "mouse"
-        ],
-        "sv": [
-          "mus"
-        ]
-      },
-      "synonyms": "synonyms"
+      "parentVersionId": "1"
     }
   }
 }
