@@ -1,4 +1,7 @@
 const config = {
+  auth: {
+    active: process.env.REACT_APP_DISABLE_AUTH !== 'true',
+  },
   enableServiceWorker: process.env.REACT_APP_ENABLE_SERVICE_WORKER === 'true',
   env: process.env.NODE_ENV || 'development',
   isDevelopment: process.env.NODE_ENV === 'development',

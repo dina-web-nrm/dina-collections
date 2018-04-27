@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { push } from 'react-router-redux'
+import config from 'config'
 import globalSelectors from '../globalSelectors'
 
 export default function requireLoggedInUser(ComposedComponent) {
@@ -31,13 +32,13 @@ export default function requireLoggedInUser(ComposedComponent) {
       this.checkAuth(nextProps.loggedIn, nextProps.userLoading)
     }
     checkAuth(loggedIn, userLoading) {
-      if (!userLoading && !loggedIn) {
+      if (config.auth.active && !userLoading && !loggedIn) {
         this.props.push('/login')
       }
     }
 
     render() {
-      if (this.props.loggedIn) {
+      if (this.props.loggedIn || !config.auth.active) {
         return <ComposedComponent {...this.props} />
       }
       return null
