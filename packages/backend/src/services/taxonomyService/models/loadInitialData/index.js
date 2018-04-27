@@ -1,48 +1,71 @@
 const readInitialData = require('../../../../utilities/readInitialData')
+const deleteNullProperties = require('common/src/deleteNullProperties')
 
 module.exports = function loadInitialData({ models }) {
-  const mammalTaxa = readInitialData('mammalTaxa')
+  const taxa = readInitialData('taxa')
+  const taxonNames = readInitialData('taxonNames')
 
-  if (!mammalTaxa) {
-    return Promise.resolve()
-  }
+  const taxonItems = !taxa
+    ? null
+    : taxa.map(taxon => {
+        const { id, parentId, ...rest } = taxon
 
-  const items = mammalTaxa.map(
-    ({
-      id,
-      parentId,
-      scientificName,
-      vernacularNames: vernacularNamesInput,
-      ...rest
-    }) => {
-      const enVernacularNames = vernacularNamesInput && vernacularNamesInput.en
-      const svVernacularNames = vernacularNamesInput && vernacularNamesInput.sv
+        const resource = {
+          doc: deleteNullProperties(rest),
+          id,
+          versionId: id,
+        }
 
-      let vernacularNames
-      if (enVernacularNames || svVernacularNames) {
-        vernacularNames = {}
-      }
+        if (parentId) {
+          resource.parentVersionId = parentId
+        }
 
-      if (enVernacularNames) {
-        vernacularNames.en = [enVernacularNames]
-      }
+        return resource
+      })
 
-      if (svVernacularNames) {
-        vernacularNames.sv = [svVernacularNames]
-      }
+  const taxonNameItems = !taxonNames
+    ? null
+    : taxonNames.map(taxonName => {
+        const {
+          id,
+          acceptedToTaxonId,
+          synonymToTaxonId,
+          vernacularToTaxonId,
+          type: taxonNameType,
+          ...rest
+        } = taxonName
 
-      const doc = {
-        ...rest,
-        scientificName,
-        vernacularNames,
-      }
+        const doc = {
+          ...rest,
+          taxonNameType,
+        }
 
-      return {
-        doc,
-        id,
-        parentVersionId: parentId,
-      }
-    }
-  )
-  return models.taxon.bulkCreate(items)
+        const resource = {
+          doc: deleteNullProperties(doc),
+          id,
+          versionId: id,
+        }
+
+        if (acceptedToTaxonId) {
+          resource.acceptedToTaxonVersionId = acceptedToTaxonId
+        }
+        if (synonymToTaxonId) {
+          resource.synonymToTaxonVersionId = synonymToTaxonId
+        }
+        if (vernacularToTaxonId) {
+          resource.vernacularToTaxonVersionId = vernacularToTaxonId
+        }
+
+        return resource
+      })
+
+  const taxonItemsPromise = taxonItems
+    ? models.taxon.bulkCreate(taxonItems)
+    : Promise.resolve()
+
+  const taxonNameItemsPromise = taxonNameItems
+    ? models.taxonName.bulkCreate(taxonNameItems)
+    : Promise.resolve()
+
+  return Promise.all([taxonItemsPromise, taxonNameItemsPromise])
 }
