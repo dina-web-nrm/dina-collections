@@ -79,6 +79,42 @@ function PhysicalObjectContent({
             type="dropdown-search-local"
           />
         </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column computer={4} mobile={16} tablet={8}>
+          <Field
+            autoComplete="off"
+            component={Input}
+            label="Acquistion type"
+            module="collectionMammals"
+            name={getPath('physicalObject.acquisition.acquisitionTypeText')}
+            type="input-text"
+          />
+        </Grid.Column>
+
+        <Grid.Column computer={2} mobile={16} tablet={8}>
+          <Field
+            autoComplete="off"
+            component={Input}
+            label="Acquistion date"
+            module="collectionMammals"
+            name={getPath('physicalObject.acquisition.date')}
+            type="input-text"
+          />
+        </Grid.Column>
+
+        <Grid.Column computer={4} mobile={16} tablet={8}>
+          <Field
+            autoComplete="off"
+            component={Input}
+            label="Handed in by"
+            module="collectionMammals"
+            name={getPath('physicalObject.acquisition.handedInByAgentText')}
+            type="input-text"
+          />
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
         <Grid.Column computer={8} mobile={8} tablet={8}>
           <Field
             autoComplete="off"
