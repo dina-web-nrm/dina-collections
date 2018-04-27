@@ -6326,6 +6326,35 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "acquisition": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "type": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "handedInByAgentText": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "acquisitionTypeText": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "date": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
       "collectingInformation": {
         "additionalProperties": false,
         "properties": {
@@ -6650,6 +6679,10 @@
         "properties": {
           "lid": {
             "type": "string",
+            "x-summary": ""
+          },
+          "acquisition": {
+            "$ref": "#/components/schemas/acquisition",
             "x-summary": ""
           },
           "determinations": {

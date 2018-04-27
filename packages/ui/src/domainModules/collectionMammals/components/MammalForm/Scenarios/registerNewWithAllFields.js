@@ -30,6 +30,18 @@ const segmentIdentifiersMutations = [
     name: 'typeStatus.id.hidden',
     value: '1',
   },
+  {
+    name: 'acquisition.acquisitionTypeText',
+    value: 'acquisitionTypeText',
+  },
+  {
+    name: 'acquisition.date',
+    value: 'date',
+  },
+  {
+    name: 'acquisition.handedInByAgentText',
+    value: 'handedInByAgentText',
+  },
 ]
 
 const segmentTaxonMutations = [
@@ -304,6 +316,11 @@ const expectedOutput = {
   ],
   specimen: {
     individual: {
+      acquisition: {
+        acquisitionTypeText: 'acquisitionTypeText',
+        date: 'date',
+        handedInByAgentText: 'handedInByAgentText',
+      },
       collectingInformation: [
         {
           collectorsText: 'collectorsText',

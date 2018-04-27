@@ -6,7 +6,12 @@ import { Button, Grid, Segment } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { Checkbox, DropdownSearch, Field } from 'coreModules/form/components'
+import {
+  Checkbox,
+  DropdownSearch,
+  Input,
+  Field,
+} from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
@@ -99,6 +104,40 @@ class SegmentIdentifiers extends PureComponent {
                   type="dropdown-search-local"
                 />
               </Grid.Column>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column computer={4} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                component={Input}
+                label="Acquistion type"
+                module="collectionMammals"
+                name="acquisition.acquisitionTypeText"
+                type="input-text"
+              />
+            </Grid.Column>
+
+            <Grid.Column computer={2} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                component={Input}
+                label="Acquistion date"
+                module="collectionMammals"
+                name="acquisition.date"
+                type="input-text"
+              />
+            </Grid.Column>
+
+            <Grid.Column computer={4} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                component={Input}
+                label="Handed in by"
+                module="collectionMammals"
+                name="acquisition.handedInByAgentText"
+                type="input-text"
+              />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

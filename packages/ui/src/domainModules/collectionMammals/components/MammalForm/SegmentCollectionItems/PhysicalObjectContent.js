@@ -79,6 +79,8 @@ function PhysicalObjectContent({
             type="dropdown-search-local"
           />
         </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
         <Grid.Column computer={8} mobile={8} tablet={8}>
           <Field
             autoComplete="off"

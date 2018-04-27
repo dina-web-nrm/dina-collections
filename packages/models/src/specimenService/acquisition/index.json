@@ -1,0 +1,21 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "handedInByAgentText": {
+      "type": "string"
+    },
+    "acquisitionTypeText": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    }
+
+  }
+}
