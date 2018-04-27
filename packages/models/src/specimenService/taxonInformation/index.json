@@ -9,6 +9,9 @@
     },
     "taxonRemarks": {
       "type": "string"
+    },
+    "readOnly": {
+      "$ref": "__ROOT__readOnly"
     }
   }
 }
