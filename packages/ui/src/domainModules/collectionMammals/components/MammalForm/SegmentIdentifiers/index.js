@@ -92,18 +92,28 @@ class SegmentIdentifiers extends PureComponent {
               />
             </Grid.Column>
             <Grid.Column computer={8} mobile={16} tablet={8}>
-              <Grid.Column computer={4} mobile={16}>
-                <Field
-                  autoComplete="off"
-                  className="transparent"
-                  component={DropdownSearch}
-                  label={<ModuleTranslate textKey="typeStatus" />}
-                  module="collectionMammals"
-                  name="typeStatus.id"
-                  options={typeSpecimenTypeOptions}
-                  type="dropdown-search-local"
-                />
-              </Grid.Column>
+              <Field
+                autoComplete="off"
+                className="transparent"
+                component={DropdownSearch}
+                label={<ModuleTranslate textKey="typeStatus" />}
+                module="collectionMammals"
+                name="typeStatus.id"
+                options={typeSpecimenTypeOptions}
+                type="dropdown-search-local"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                component={Input}
+                label="Collection item Text"
+                module="collectionMammals"
+                name="collectionItemText"
+                type="text"
+              />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
