@@ -42,6 +42,10 @@ const segmentIdentifiersMutations = [
     name: 'acquisition.handedInByAgentText',
     value: 'handedInByAgentText',
   },
+  {
+    name: 'collectionItemText',
+    value: 'collectionItemText',
+  },
 ]
 
 const segmentTaxonMutations = [
@@ -144,6 +148,7 @@ const segmentCollectingInformationMutations = [
       'collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
     value: 20,
   },
+
   {
     name: 'collectingInformation.0.event.startDate',
     value: 'startDate',
@@ -266,6 +271,10 @@ const segmentOtherMutations = [
     name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
     value: 'storedUnderTaxonName',
   },
+  {
+    name: 'remarks',
+    value: 'remarks',
+  },
 ]
 
 const mutations = [
@@ -383,6 +392,8 @@ const expectedOutput = {
           },
         },
       ],
+      collectionItemText: 'collectionItemText',
+
       deathInformation: [
         {
           causeOfDeathType: {
@@ -455,6 +466,7 @@ const expectedOutput = {
           system: 'catalogCard',
         },
       ],
+      remarks: 'remarks',
       taxonInformation: {
         curatorialName: 'curatorialName',
         taxonRemarks: 'taxonRemarks',
@@ -493,6 +505,9 @@ const postSubmitTest = ({ submitResult }) => {
         // filter out unused featureTypes, also done in transform output
         if (key.indexOf('featureObservations.') === 0) {
           return key.indexOf('featureObservations.1.') === 0
+        }
+        if (key.indexOf('readOnly') > -1) {
+          return false
         }
 
         return true
