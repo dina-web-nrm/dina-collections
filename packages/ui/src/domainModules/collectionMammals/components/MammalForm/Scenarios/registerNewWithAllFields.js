@@ -30,6 +30,18 @@ const segmentIdentifiersMutations = [
     name: 'typeStatus.id.hidden',
     value: '1',
   },
+  {
+    name: 'acquisition.acquisitionTypeText',
+    value: 'acquisitionTypeText',
+  },
+  {
+    name: 'acquisition.date',
+    value: 'date',
+  },
+  {
+    name: 'acquisition.handedInByAgentText',
+    value: 'handedInByAgentText',
+  },
 ]
 
 const segmentTaxonMutations = [
@@ -208,18 +220,6 @@ const segmentCollectionItemsMutations = [
     value: '1',
   },
   {
-    name: 'collectionItems.0.physicalObject.acquisition.acquisitionTypeText',
-    value: 'acquisitionTypeText',
-  },
-  {
-    name: 'collectionItems.0.physicalObject.acquisition.date',
-    value: 'date',
-  },
-  {
-    name: 'collectionItems.0.physicalObject.acquisition.handedInByAgentText',
-    value: 'handedInByAgentText',
-  },
-  {
     name: 'collectionItems.0.curatorialAssessments.0.agent',
     value: 'agent',
   },
@@ -300,11 +300,6 @@ const expectedOutput = {
 
   physicalObjects: [
     {
-      acquisition: {
-        acquisitionTypeText: 'acquisitionTypeText',
-        date: 'date',
-        handedInByAgentText: 'handedInByAgentText',
-      },
       storageLocation: {
         id: '1',
         type: 'storageLocation',
@@ -321,6 +316,11 @@ const expectedOutput = {
   ],
   specimen: {
     individual: {
+      acquisition: {
+        acquisitionTypeText: 'acquisitionTypeText',
+        date: 'date',
+        handedInByAgentText: 'handedInByAgentText',
+      },
       collectingInformation: [
         {
           collectorsText: 'collectorsText',
@@ -371,11 +371,6 @@ const expectedOutput = {
           ],
           description: 'description',
           physicalObject: {
-            acquisition: {
-              acquisitionTypeText: 'acquisitionTypeText',
-              date: 'date',
-              handedInByAgentText: 'handedInByAgentText',
-            },
             storageLocation: {
               id: '1',
               type: 'storageLocation',
