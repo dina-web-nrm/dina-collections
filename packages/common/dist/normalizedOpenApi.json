@@ -6839,29 +6839,6 @@
         "x-modelType": "model",
         "x-summary": ""
       },
-      "observationInformation": {
-        "additionalProperties": false,
-        "properties": {
-          "id": {
-            "type": "string",
-            "x-summary": ""
-          },
-          "collectorsText": {
-            "type": "string",
-            "example": "Bergström, U",
-            "description": "Name of the collector",
-            "x-summary": ""
-          },
-          "event": {
-            "$ref": "#/components/schemas/lid",
-            "x-summary": ""
-          }
-        },
-        "description": "### Definition\n\nInformation about an observation of an individual or group of individuals.\n\n### Note(s)\n",
-        "x-category": "specimenService",
-        "x-modelType": "model",
-        "x-summary": ""
-      },
       "originInformation": {
         "additionalProperties": false,
         "properties": {
@@ -7056,14 +7033,12 @@
             "type": "string",
             "x-summary": ""
           },
-          "storedUnderTaxonName": {
-            "description": "Will be moved to storageLocation",
-            "type": "string",
-            "example": "Sorex minutus",
-            "x-summary": ""
-          },
           "storageLocation": {
             "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
+          },
+          "storageLocationText": {
+            "type": "string",
             "x-summary": ""
           },
           "type": {
