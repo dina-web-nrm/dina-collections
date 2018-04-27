@@ -225,6 +225,11 @@ const segmentCollectionItemsMutations = [
     value: '1',
   },
   {
+    name: 'collectionItems.0.physicalObject.storageLocationText',
+    value: 'storageLocationText',
+  },
+
+  {
     name: 'collectionItems.0.curatorialAssessments.0.agent',
     value: 'agent',
   },
@@ -268,10 +273,6 @@ const segmentOtherMutations = [
     value: 'catalogCard',
   },
   {
-    name: 'collectionItems.0.physicalObject.storedUnderTaxonName',
-    value: 'storedUnderTaxonName',
-  },
-  {
     name: 'remarks',
     value: 'remarks',
   },
@@ -313,7 +314,7 @@ const expectedOutput = {
         id: '1',
         type: 'storageLocation',
       },
-      storedUnderTaxonName: 'storedUnderTaxonName',
+      storageLocationText: 'storageLocationText',
     },
   ],
   places: [{ id: 'Africa', type: 'place' }, { id: 'Algeria', type: 'place' }],
@@ -384,7 +385,7 @@ const expectedOutput = {
               id: '1',
               type: 'storageLocation',
             },
-            storedUnderTaxonName: 'storedUnderTaxonName',
+            storageLocationText: 'storageLocationText',
           },
           preparationType: {
             id: '2',
