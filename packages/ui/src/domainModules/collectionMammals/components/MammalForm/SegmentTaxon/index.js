@@ -12,7 +12,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import specimenSelectors from 'dataModules/specimenService/globalSelectors'
-import { Field, Input } from 'coreModules/form/components'
+import { CustomData, Field, Input } from 'coreModules/form/components'
 import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
 
@@ -140,6 +140,18 @@ const SegmentDeterminations = ({
             <ModuleTranslate scope="determination" textKey="addDetermination" />
           </Button>
         </Grid.Column>
+        <Grid.Row>
+          <Grid.Column computer={6} mobile={16} tablet={8}>
+            <Field
+              autoComplete="off"
+              component={CustomData}
+              label="Read only"
+              module="collectionMammals"
+              name="readOnly"
+              type="read-only"
+            />
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </Segment>
   )
