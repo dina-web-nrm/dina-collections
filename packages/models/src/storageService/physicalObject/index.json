@@ -18,6 +18,9 @@
       "$ref": "__ROOT__storageLocation",
       "x-reference-type": "external"
     },
+    "storageLocationText": {
+      "type": "string"
+    },
     "type": {
       "type": "string"
     }
