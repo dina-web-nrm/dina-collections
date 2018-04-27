@@ -6988,6 +6988,35 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "acquisition": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "type": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "handedInByAgentText": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "acquisitionTypeText": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "date": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "storageService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
       "physicalObject": {
         "additionalProperties": false,
         "properties": {
@@ -7015,6 +7044,10 @@
           },
           "storageLocation": {
             "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
+          },
+          "acquisition": {
+            "$ref": "#/components/schemas/acquisition",
             "x-summary": ""
           },
           "type": {
