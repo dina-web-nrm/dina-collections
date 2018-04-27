@@ -7,98 +7,11 @@
     "type": {
       "type": "string"
     },
-    "rubinNumber": {
-      "type": "string",
-      "description": "Rubin storage number for the taxon"
+    "versionId": {
+      "type": "string"
     },
-    "higherTaxa": {
-      "type": "object",
-      "properties": {
-        "order": {
-          "type": "string",
-          "description": "Parent order"
-        },
-        "suborder": {
-          "type": "string",
-          "description": "Parent suborder"
-        },
-        "infraorder": {
-          "type": "string",
-          "description": "Parent infraorder"
-        },
-        "superfamily": {
-          "type": "string",
-          "description": "Parent superfamily"
-        },
-        "family": {
-          "type": "string",
-          "description": "Parent family"
-        },
-        "subfamily": {
-          "type": "string",
-          "description": "Parent subfamily"
-        },
-        "tribe": {
-          "type": "string",
-          "description": "Parent tribe"
-        },
-        "genus": {
-          "type": "string",
-          "description": "Parent genus"
-        },
-        "subgenus": {
-          "type": "string",
-          "description": "Parent subgenus"
-        }
-      }
-    },
-    "rank": {
-      "type": "string",
-      "description": "Taxon rank"
-    },
-    "scientificName": {
-      "type": "string",
-      "description": "Taxon scientific name, binomial if species"
-    },
-    "author": {
-      "type": "string",
-      "description": "Taxon author without the year"
-    },
-    "authorDate": {
-      "type": "string",
-      "description": "Taxon author year"
-    },
-    "validName": {
-      "type": "boolean",
-      "description": "Is the name taxonomically valid",
-      "default": false
-    },
-    "vernacularNames": {
-      "type": "object",
-      "properties": {
-        "en": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Vernacular (common) English names for the taxon"
-          }
-        },
-        "sv": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "description": "Vernacular (common) Swedish names for the taxon"
-          }
-        }
-      }
-    },
-    "synonyms": {
-      "type": "string",
-      "description": "List of synonyms as free-form text"
-    },
-    "sortOrder": {
-      "type": "string",
-      "description": "Taxonomical sort order code from Mammal Species of the World list"
+    "parentVersionId": {
+      "type": "string"
     }
   }
 }
