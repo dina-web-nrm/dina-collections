@@ -958,6 +958,14 @@
     "additionalProperties": false,
     "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
     "properties": {
+      "collectionItemText": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "x-summary": ""
+      },
       "lid": {
         "type": "string",
         "x-summary": ""
@@ -1101,6 +1109,10 @@
       "localityVerbatim": {
         "type": "string",
         "description": "Verbatim locality names and description, as in the original source, typos and all.",
+        "x-summary": ""
+      },
+      "readOnly": {
+        "$ref": "readOnly",
         "x-summary": ""
       }
     },
@@ -1394,6 +1406,10 @@
       },
       "taxonRemarks": {
         "type": "string",
+        "x-summary": ""
+      },
+      "readOnly": {
+        "$ref": "readOnly",
         "x-summary": ""
       }
     },
