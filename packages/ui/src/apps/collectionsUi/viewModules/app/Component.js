@@ -18,6 +18,7 @@ import RegisterMammal from '../registerMammal/Async'
 import Settings from '../settings/Async'
 import ManageLocalities from '../manageLocalities/Async'
 import ManageStorageLocations from '../manageStorageLocations/Async'
+import ManageTaxonomy from '../manageTaxonomy/Async'
 
 const NAVIGATION_SIDEBAR_ITEMS = [
   {
@@ -49,6 +50,12 @@ const NAVIGATION_SIDEBAR_ITEMS = [
     icon: 'building',
     name: 'manageStorageLocations',
     path: '/app/storageLocations',
+  },
+  {
+    exact: false,
+    icon: 'tags',
+    name: 'manageTaxonomy',
+    path: '/app/taxa',
   },
   {
     exact: true,
@@ -131,6 +138,48 @@ class App extends Component {
             <Route
               component={ManageStorageLocations}
               path={`${match.url}/storageLocations/:storageLocationId/inspect`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              exact
+              path={`${match.url}/taxa`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxa/create`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxa/:taxonId/createChild`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxa/:taxonId/edit`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxa/:taxonId/inspect`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              exact
+              path={`${match.url}/taxonNames`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxonNames/create`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxonNames/:taxonNameId/createChild`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxonNames/:taxonNameId/edit`}
+            />
+            <Route
+              component={ManageTaxonomy}
+              path={`${match.url}/taxonNames/:taxonNameId/inspect`}
             />
             <Route component={Settings} exact path={`${match.url}/settings`} />
             <Route component={PageNotFound} />
