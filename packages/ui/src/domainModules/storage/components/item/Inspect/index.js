@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
@@ -8,6 +8,7 @@ import {
   createGetStorageLocationById,
   ensureAllStorageLocationsFetched,
 } from 'dataModules/storageService/higherOrderComponents'
+import { ParentChildTables } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,12 +46,23 @@ const defaultProps = {
   storageLocation: undefined,
 }
 
-export class Inspect extends Component {
+export class Inspect extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.handleRowClick = this.handleRowClick.bind(this)
+  }
+
+  handleRowClick(event, itemId) {
+    event.preventDefault()
+    this.props.onInteraction(SET_ITEM_INSPECT, {
+      itemId,
+    })
+  }
+
   render() {
     const {
       allStorageLocationsFetched,
       children,
-      onInteraction: handleInteraction,
       parent,
       storageLocation,
     } = this.props
@@ -85,67 +97,12 @@ export class Inspect extends Component {
             </Table.Body>
           )}
         </Table>
-        <h2>Belongs to</h2>
-        <Table celled selectable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>id</Table.HeaderCell>
-              <Table.HeaderCell>name</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          {parent && (
-            <Table.Body>
-              <Table.Row
-                onClick={event => {
-                  event.preventDefault()
-                  handleInteraction(SET_ITEM_INSPECT, {
-                    itemId: parent.id,
-                  })
-                }}
-              >
-                <Table.Cell>
-                  <a>{parent.id}</a>
-                </Table.Cell>
-                <Table.Cell>
-                  <a>{parent.name}</a>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          )}
-        </Table>
 
-        <h2>Contains</h2>
-        <Table celled selectable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>id</Table.HeaderCell>
-              <Table.HeaderCell>name</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {children &&
-              children.map(child => {
-                return (
-                  <Table.Row
-                    key={child.id}
-                    onClick={event => {
-                      event.preventDefault()
-                      handleInteraction(SET_ITEM_INSPECT, {
-                        itemId: child.id,
-                      })
-                    }}
-                  >
-                    <Table.Cell>
-                      <a>{child.id}</a>
-                    </Table.Cell>
-                    <Table.Cell>
-                      <a>{child.name}</a>
-                    </Table.Cell>
-                  </Table.Row>
-                )
-              })}
-          </Table.Body>
-        </Table>
+        <ParentChildTables
+          childrenItems={children}
+          onRowClick={this.handleRowClick}
+          parentItem={parent}
+        />
       </React.Fragment>
     )
   }
