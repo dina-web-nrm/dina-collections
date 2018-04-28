@@ -4,9 +4,17 @@ const tryImport = () => {
 
 const expectedActionCreators = [
   'createTaxon',
-  'getTaxaByName',
+  'createTaxonName',
+  'getTaxa',
   'getTaxon',
+  'getTaxonName',
+  'getTaxonNames',
   'updateTaxon',
+  'updateTaxonName',
+  'updateTaxonNameAcceptedToTaxon',
+  'updateTaxonNameSynonymToTaxon',
+  'updateTaxonNameVernacularToTaxon',
+  'updateTaxonParent',
 ]
 
 describe('dataModules/taxonService/actionCreators', () => {

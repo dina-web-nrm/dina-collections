@@ -3,10 +3,10 @@ import deepFreeze from 'deep-freeze'
 import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
 
 import {
-  TAXON_SERVICE_CREATE_TAXON_SUCCESS,
-  TAXON_SERVICE_GET_TAXON_SUCCESS,
-  TAXON_SERVICE_GET_TAXA_SUCCESS,
-  TAXON_SERVICE_UPDATE_TAXON_SUCCESS,
+  TAXON_SERVICE_CREATE_TAXON_NAME_SUCCESS,
+  TAXON_SERVICE_GET_TAXON_NAME_SUCCESS,
+  TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
+  TAXON_SERVICE_UPDATE_TAXON_NAME_SUCCESS,
 } from '../../../actionTypes'
 
 import reducer, { getInitialState } from './index'
@@ -23,7 +23,7 @@ const getPayload = () => {
   }
 }
 
-describe('dataModules/taxonService/reducer/resources/taxa', () => {
+describe('dataModules/taxonService/reducer/resources/taxonNames', () => {
   describe('getInitialState', () => {
     it('returns empty object', () => {
       const testValue = getInitialState()
@@ -54,8 +54,8 @@ describe('dataModules/taxonService/reducer/resources/taxa', () => {
     })
 
     const createAndGetOneSuccesses = [
-      TAXON_SERVICE_CREATE_TAXON_SUCCESS,
-      TAXON_SERVICE_GET_TAXON_SUCCESS,
+      TAXON_SERVICE_CREATE_TAXON_NAME_SUCCESS,
+      TAXON_SERVICE_GET_TAXON_NAME_SUCCESS,
     ]
 
     createAndGetOneSuccesses.forEach(actionType => {
@@ -115,7 +115,7 @@ describe('dataModules/taxonService/reducer/resources/taxa', () => {
     })
 
     it(`merges previous state with new data on ${
-      TAXON_SERVICE_GET_TAXA_SUCCESS
+      TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS
     }`, () => {
       const state = {
         1: {
@@ -139,7 +139,7 @@ describe('dataModules/taxonService/reducer/resources/taxa', () => {
             type: 'type',
           },
         ],
-        type: TAXON_SERVICE_GET_TAXA_SUCCESS,
+        type: TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
       }
 
       const testValue = reducer(state, action)
@@ -165,7 +165,7 @@ describe('dataModules/taxonService/reducer/resources/taxa', () => {
     })
 
     it(`updates existing resource when keeping other resources on ${
-      TAXON_SERVICE_UPDATE_TAXON_SUCCESS
+      TAXON_SERVICE_UPDATE_TAXON_NAME_SUCCESS
     }`, () => {
       const state = {
         appl: {
@@ -188,7 +188,7 @@ describe('dataModules/taxonService/reducer/resources/taxa', () => {
           name: 'Alphabet Inc.',
           type: 'type',
         },
-        type: TAXON_SERVICE_UPDATE_TAXON_SUCCESS,
+        type: TAXON_SERVICE_UPDATE_TAXON_NAME_SUCCESS,
       }
       const { id, ...rest } = action.payload
 

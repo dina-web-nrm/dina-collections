@@ -1,4 +1,10 @@
-import { getLocalState, getResources, getTaxa, getTaxon } from './selectors'
+import {
+  getLocalState,
+  getResources,
+  getTaxa,
+  getTaxaArray,
+  getTaxon,
+} from './selectors'
 
 describe('dataModules/taxonService/selectors', () => {
   let state
@@ -57,6 +63,30 @@ describe('dataModules/taxonService/selectors', () => {
         id: 'a',
         scientificName: 'taxon a',
       })
+    })
+    it('returns taxa in array', () => {
+      expect(getTaxaArray(state)).toEqual([
+        {
+          id: 'a',
+          scientificName: 'taxon a',
+        },
+        {
+          id: 'b',
+          scientificName: 'taxon b',
+        },
+        {
+          id: 'c',
+          scientificName: 'taxon c',
+        },
+        {
+          id: 'd',
+          scientificName: 'taxon d',
+        },
+        {
+          id: 'e',
+          scientificName: 'taxon e',
+        },
+      ])
     })
   })
 })

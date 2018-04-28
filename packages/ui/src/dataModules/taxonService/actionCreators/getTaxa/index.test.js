@@ -1,9 +1,9 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getTaxaByName from './index'
+import getTaxa from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
+describe('dataModules/taxonService/actionCreators/getTaxa', () => {
   let store
   let apiClient
 
@@ -18,12 +18,12 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
     apiClient.reset()
   })
 
-  it(`dispatches ${actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST}`, () => {
-    const testAction = getTaxaByName()
+  it(`dispatches ${actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST}`, () => {
+    const testAction = getTaxa()
 
     const expectedAction = {
       meta: { queryParams: {} },
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -32,13 +32,13 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST
+    actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST
   } with isLookup true`, () => {
-    const testAction = getTaxaByName({ isLookup: true })
+    const testAction = getTaxa({ isLookup: true })
 
     const expectedAction = {
       meta: { isLookup: true, queryParams: {} },
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -46,8 +46,8 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getTaxaByName`, () => {
-    const operationId = 'getTaxaByName'
+  it(`calls getTaxa`, () => {
+    const operationId = 'getTaxa'
 
     const callSpy = jest.fn()
 
@@ -65,7 +65,7 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
       limit: 10,
     }
 
-    const testAction = getTaxaByName({ queryParams })
+    const testAction = getTaxa({ queryParams })
 
     const expectedCallParams = {
       queryParams,
@@ -81,9 +81,9 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS
+    actionTypes.TAXON_SERVICE_GET_TAXA_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getTaxaByName'
+    const operationId = 'getTaxa'
     const mockResponse = {
       data: [
         {
@@ -122,16 +122,16 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
       },
     })
 
-    const testAction = getTaxaByName({ queryParams })
+    const testAction = getTaxa({ queryParams })
 
     const expectedFirstAction = {
       meta: { queryParams },
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST,
     }
     const expectedSecondAction = {
       meta: { queryParams },
       payload: transformedResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_SUCCESS,
     }
 
     expect.assertions(2)
@@ -146,9 +146,9 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL
+    actionTypes.TAXON_SERVICE_GET_TAXA_FAIL
   } without throwing error`, () => {
-    const operationId = 'getTaxaByName'
+    const operationId = 'getTaxa'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -157,17 +157,17 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
       },
     })
 
-    const testAction = getTaxaByName()
+    const testAction = getTaxa()
 
     const expectedFirstAction = {
       meta: { queryParams: {} },
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
       meta: { queryParams: {} },
       payload: mockResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_FAIL,
     }
 
     expect.assertions(2)
@@ -182,9 +182,9 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL
+    actionTypes.TAXON_SERVICE_GET_TAXA_FAIL
   } and throws error`, () => {
-    const operationId = 'getTaxaByName'
+    const operationId = 'getTaxa'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -193,17 +193,17 @@ describe('dataModules/taxonService/actionCreators/getTaxaByName', () => {
       },
     })
 
-    const testAction = getTaxaByName({ throwError: true })
+    const testAction = getTaxa({ throwError: true })
 
     const expectedFirstAction = {
       meta: { queryParams: {} },
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
       meta: { queryParams: {} },
       payload: mockResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
+      type: actionTypes.TAXON_SERVICE_GET_TAXA_FAIL,
     }
 
     expect.assertions(2)

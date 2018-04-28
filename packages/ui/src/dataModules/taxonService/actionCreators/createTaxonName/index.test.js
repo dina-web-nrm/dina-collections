@@ -1,9 +1,10 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getTaxon from './index'
+import createTaxonName from './index'
 import * as actionTypes from '../../actionTypes'
+import { TAXON_NAME } from '../../constants'
 
-describe('dataModules/taxonService/actionCreators/getTaxon', () => {
+describe('dataModules/taxonService/actionCreators/createTaxonName', () => {
   let store
   let apiClient
 
@@ -18,14 +19,15 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
     apiClient.reset()
   })
 
-  it(`dispatches ${actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST}`, () => {
-    const id = '123'
-
-    const testAction = getTaxon({ id })
+  it(`dispatches ${
+    actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_REQUEST
+  }`, () => {
+    const taxonName = {}
+    const testAction = createTaxonName({ taxonName })
 
     const expectedAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { taxonName },
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -33,10 +35,12 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getTaxon`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
-
+  it(`calls createTaxonName with correct body`, () => {
+    const operationId = 'createTaxonName'
+    const taxonName = {
+      normalStorageLocationText: 'string',
+      storedUnderTaxonName: 'Sorex minutus',
+    }
     const callSpy = jest.fn()
 
     apiClient.mock({
@@ -48,11 +52,13 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
       },
     })
 
-    const testAction = getTaxon({ id })
+    const testAction = createTaxonName({ taxonName })
     const expectedCallParams = {
-      pathParams: { id },
-      queryParams: {
-        relationships: ['all'],
+      body: {
+        data: {
+          attributes: { ...taxonName },
+          type: TAXON_NAME,
+        },
       },
     }
 
@@ -66,21 +72,25 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXON_SUCCESS
+    actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
+    const operationId = 'createTaxonName'
+    const taxonName = {
+      normalStorageLocationText: 'string',
+      storedUnderTaxonName: 'Sorex minutus',
+    }
+
     const mockResponse = {
       data: {
         attributes: {
           name: 'Alan',
         },
-        id,
+        id: '123',
         type: 'type',
       },
     }
     const transformedResponse = {
-      id,
+      id: '123',
       name: 'Alan',
       type: 'type',
     }
@@ -91,16 +101,15 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
       },
     })
 
-    const testAction = getTaxon({ id })
+    const testAction = createTaxonName({ taxonName })
 
     const expectedFirstAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { taxonName },
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_REQUEST,
     }
     const expectedSecondAction = {
-      meta: { id },
       payload: transformedResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_SUCCESS,
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_SUCCESS,
     }
 
     expect.assertions(2)
@@ -115,29 +124,32 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXON_FAIL
+    actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_FAIL
   } without throwing error`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
-    const mockResponse = { status: 404 }
+    const operationId = 'createTaxonName'
+    const taxonName = {
+      normalStorageLocationText: 'string',
+      storedUnderTaxonName: 'Sorex minutus',
+    }
+    const mockError = { status: 500 }
 
     apiClient.mock({
       errors: {
-        [operationId]: mockResponse,
+        [operationId]: mockError,
       },
     })
 
-    const testAction = getTaxon({ id })
+    const testAction = createTaxonName({ taxonName })
 
     const expectedFirstAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { taxonName },
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { id },
-      payload: mockResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_FAIL,
+      meta: { taxonName },
+      payload: mockError,
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_FAIL,
     }
 
     expect.assertions(2)
@@ -152,29 +164,35 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXON_FAIL
+    actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_FAIL
   } and throws error`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
-    const mockResponse = { status: 404 }
+    const operationId = 'createTaxonName'
+    const taxonName = {
+      normalStorageLocationText: 'string',
+      storedUnderTaxonName: 'Sorex minutus',
+    }
+    const mockError = { status: 500 }
 
     apiClient.mock({
       errors: {
-        [operationId]: mockResponse,
+        [operationId]: mockError,
       },
     })
 
-    const testAction = getTaxon({ id, throwError: true })
+    const testAction = createTaxonName({
+      taxonName,
+      throwError: true,
+    })
 
     const expectedFirstAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { taxonName },
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { id },
-      payload: mockResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_FAIL,
+      meta: { taxonName },
+      payload: mockError,
+      type: actionTypes.TAXON_SERVICE_CREATE_TAXON_NAME_FAIL,
     }
 
     expect.assertions(2)
@@ -184,7 +202,7 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
         expectedFirstAction,
         expectedSecondAction,
       ])
-      expect(err).toEqual(mockResponse)
+      expect(err).toEqual(mockError)
     })
   })
 })

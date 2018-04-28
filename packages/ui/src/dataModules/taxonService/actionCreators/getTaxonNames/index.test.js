@@ -1,9 +1,9 @@
 import setupMockStoreWithApiClient from 'utilities/test/setupMockStoreWithApiClient'
 
-import getTaxon from './index'
+import getTaxonNames from './index'
 import * as actionTypes from '../../actionTypes'
 
-describe('dataModules/taxonService/actionCreators/getTaxon', () => {
+describe('dataModules/taxonService/actionCreators/getTaxonNames', () => {
   let store
   let apiClient
 
@@ -18,14 +18,12 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
     apiClient.reset()
   })
 
-  it(`dispatches ${actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST}`, () => {
-    const id = '123'
-
-    const testAction = getTaxon({ id })
+  it(`dispatches ${actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST}`, () => {
+    const testAction = getTaxonNames()
 
     const expectedAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { queryParams: {} },
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -33,27 +31,44 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
     expect(store.getActions()).toEqual([expectedAction])
   })
 
-  it(`calls getTaxon`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
+  it(`dispatches ${
+    actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST
+  } with isLookup true`, () => {
+    const testAction = getTaxonNames({ isLookup: true })
+
+    const expectedAction = {
+      meta: { isLookup: true, queryParams: {} },
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
+    }
+
+    store.dispatch(testAction)
+
+    expect(store.getActions()).toEqual([expectedAction])
+  })
+
+  it(`calls getTaxonNames`, () => {
+    const operationId = 'getTaxonNames'
 
     const callSpy = jest.fn()
 
     apiClient.mock({
       responses: {
-        [operationId]: { data: {} },
+        [operationId]: { data: [] },
       },
       spies: {
         [operationId]: callSpy,
       },
     })
 
-    const testAction = getTaxon({ id })
+    const queryParams = {
+      filter: { name: 'sorex' },
+      limit: 10,
+    }
+
+    const testAction = getTaxonNames({ queryParams })
+
     const expectedCallParams = {
-      pathParams: { id },
-      queryParams: {
-        relationships: ['all'],
-      },
+      queryParams,
     }
 
     expect.assertions(3)
@@ -66,24 +81,40 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXON_SUCCESS
+    actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
+    const operationId = 'getTaxonNames'
     const mockResponse = {
-      data: {
-        attributes: {
-          name: 'Alan',
+      data: [
+        {
+          attributes: {
+            name: 'Ada',
+          },
+          id: '123',
+          type: 'type',
         },
-        id,
+        {
+          attributes: {
+            name: 'Alan',
+          },
+          id: '456',
+          type: 'type',
+        },
+      ],
+    }
+    const queryParams = { name: 'a' }
+    const transformedResponse = [
+      {
+        id: '123',
+        name: 'Ada',
         type: 'type',
       },
-    }
-    const transformedResponse = {
-      id,
-      name: 'Alan',
-      type: 'type',
-    }
+      {
+        id: '456',
+        name: 'Alan',
+        type: 'type',
+      },
+    ]
 
     apiClient.mock({
       responses: {
@@ -91,16 +122,16 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
       },
     })
 
-    const testAction = getTaxon({ id })
+    const testAction = getTaxonNames({ queryParams })
 
     const expectedFirstAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { queryParams },
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
     }
     const expectedSecondAction = {
-      meta: { id },
+      meta: { queryParams },
       payload: transformedResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_SUCCESS,
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
     }
 
     expect.assertions(2)
@@ -115,10 +146,9 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXON_FAIL
+    actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_FAIL
   } without throwing error`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
+    const operationId = 'getTaxonNames'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -127,17 +157,17 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
       },
     })
 
-    const testAction = getTaxon({ id })
+    const testAction = getTaxonNames()
 
     const expectedFirstAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { queryParams: {} },
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { id },
+      meta: { queryParams: {} },
       payload: mockResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_FAIL,
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
     }
 
     expect.assertions(2)
@@ -152,10 +182,9 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
   })
 
   it(`dispatches ${
-    actionTypes.TAXON_SERVICE_GET_TAXON_FAIL
+    actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_FAIL
   } and throws error`, () => {
-    const operationId = 'getTaxon'
-    const id = '123'
+    const operationId = 'getTaxonNames'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -164,17 +193,17 @@ describe('dataModules/taxonService/actionCreators/getTaxon', () => {
       },
     })
 
-    const testAction = getTaxon({ id, throwError: true })
+    const testAction = getTaxonNames({ throwError: true })
 
     const expectedFirstAction = {
-      meta: { id },
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_REQUEST,
+      meta: { queryParams: {} },
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
-      meta: { id },
+      meta: { queryParams: {} },
       payload: mockResponse,
-      type: actionTypes.TAXON_SERVICE_GET_TAXON_FAIL,
+      type: actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
     }
 
     expect.assertions(2)
