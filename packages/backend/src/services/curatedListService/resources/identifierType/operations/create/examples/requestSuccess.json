@@ -1,9 +1,8 @@
 {
   "data": {
-    "type": "preparationType",
+    "type": "identifierType",
     "attributes": {
-      "category": "skin",
-      "name": "preparation name"
+      "name": "catalogNumber"
     }
   }
 }
