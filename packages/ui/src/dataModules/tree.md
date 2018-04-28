@@ -51,6 +51,9 @@
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── index.js
+├── placeService
+│   └── reducer
+│       └── resources
 ├── specimenService
 │   ├── actionCreators
 │   │   ├── createSpecimen
@@ -146,17 +149,33 @@
 │   │   ├── createTaxon
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
-│   │   ├── getTaxaByName
+│   │   ├── createTaxonName
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getTaxa
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── getTaxon
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
+│   │   ├── getTaxonName
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── getTaxonNames
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
 │   │   ├── index.js
 │   │   ├── index.test.js
-│   │   └── updateTaxon
-│   │       ├── index.js
-│   │       └── index.test.js
+│   │   ├── updateTaxon
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── updateTaxonName
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── updateTaxonNameAcceptedToTaxon.js
+│   │   ├── updateTaxonNameSynonymToTaxon.js
+│   │   ├── updateTaxonNameVernacularToTaxon.js
+│   │   └── updateTaxonParent.js
 │   ├── actionTypes.js
 │   ├── actionTypes.test.js
 │   ├── constants.js
@@ -167,9 +186,13 @@
 │   ├── globalSelectors.test.js
 │   ├── higherOrderComponents
 │   │   ├── createGetTaxonById.js
+│   │   ├── createGetTaxonNameById.js
+│   │   ├── ensureAllTaxaFetched.js
+│   │   ├── ensureAllTaxonNamesFetched.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── index.test.js
+│   ├── keyObjectModule.js
 │   ├── mockData.js
 │   ├── mockData.test.js
 │   ├── reducer
@@ -178,7 +201,8 @@
 │   │   └── resources
 │   │       ├── index.js
 │   │       ├── index.test.js
-│   │       └── taxa
+│   │       ├── taxa
+│   │       └── taxonNames
 │   ├── selectors.js
 │   └── selectors.test.js
 └── tree.md

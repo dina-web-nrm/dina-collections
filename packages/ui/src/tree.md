@@ -32,6 +32,7 @@
 │   ├── allModules.js
 │   ├── curatedListService
 │   ├── index.js
+│   ├── placeService
 │   ├── specimenService
 │   ├── storageService
 │   ├── taxonService
@@ -66,7 +67,6 @@
 │   ├── import-named-export.js
 │   ├── import-namespace.js
 │   ├── print-to-console.js
-│   ├── private
 │   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js

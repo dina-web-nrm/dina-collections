@@ -19,6 +19,7 @@
 │   ├── apiClient
 │   ├── buildFileTrees
 │   ├── chainPromises
+│   ├── deleteNullProperties
 │   ├── endpointFactory
 │   ├── error
 │   ├── jsonApiClient
@@ -36,6 +37,7 @@
 │   ├── apiClient
 │   ├── buildFileTrees
 │   ├── chainPromises
+│   ├── deleteNullProperties
 │   ├── endpointFactory
 │   ├── error
 │   ├── jsonApiClient

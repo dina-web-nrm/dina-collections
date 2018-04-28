@@ -99,18 +99,28 @@
 ├── taxon
 │   ├── actionCreators
 │   │   ├── index.js
-│   │   └── updateTaxonSearchQuery
+│   │   └── updateTaxonNameSearchQuery
 │   │       ├── index.js
 │   │       └── index.test.js
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── TaxonNameSearchInputWithResults
 │   │   │   └── index.js
-│   │   └── index.js
+│   │   ├── TaxonomyManager
+│   │   │   └── index.js
+│   │   ├── collection
+│   │   │   ├── TaxonList
+│   │   │   ├── TaxonNameList
+│   │   │   └── TaxonTree
+│   │   ├── index.js
+│   │   └── item
+│   │       ├── taxon
+│   │       └── taxonName
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── index.js
+│   ├── keyObjectModule.js
 │   ├── middleware.js
 │   ├── reducer
 │   │   ├── index.js
@@ -119,6 +129,7 @@
 │   │       └── index.test.js
 │   ├── selectors.js
 │   ├── selectors.test.js
+│   ├── translations.json
 │   ├── utilities.js
 │   └── utilities.test.js
 └── tree.md

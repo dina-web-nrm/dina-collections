@@ -55,8 +55,14 @@
 │       ├── featureType
 │       │   ├── index.js
 │       │   └── operations
+│       ├── identifierType
+│       │   ├── index.js
+│       │   └── operations
 │       ├── index.js
-│       └── preparationType
+│       ├── preparationType
+│       │   ├── index.js
+│       │   └── operations
+│       └── typeSpecimenType
 │           ├── index.js
 │           └── operations
 ├── externalEventService
@@ -150,7 +156,10 @@
 │   │       └── index.js
 │   └── resources
 │       ├── index.js
-│       └── taxon
+│       ├── taxon
+│       │   ├── index.js
+│       │   └── operations
+│       └── taxonName
 │           ├── index.js
 │           └── operations
 └── tree.md

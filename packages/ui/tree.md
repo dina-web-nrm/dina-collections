@@ -11,11 +11,6 @@
 │   ├── manifest.json
 │   ├── service-worker.js
 │   └── static
-├── build-storybook
-│   ├── favicon.ico
-│   ├── iframe.html
-│   ├── index.html
-│   └── static
 ├── config.scripts.js
 ├── coverage
 │   ├── clover.xml
@@ -28,7 +23,6 @@
 │   ├── favicon.ico
 │   ├── index.html
 │   └── manifest.json
-├── sample.config.scripts.js
 ├── src
 │   ├── apps
 │   ├── config
@@ -46,6 +40,11 @@
 │   ├── test
 │   ├── tree.md
 │   └── utilities
+├── storybook-static
+│   ├── favicon.ico
+│   ├── iframe.html
+│   ├── index.html
+│   └── static
 ├── test
 │   └── __mocks__
 ├── tree.md
