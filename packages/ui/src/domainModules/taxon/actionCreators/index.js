@@ -1,3 +1,3 @@
-import updateTaxonSearchQuery from './updateTaxonSearchQuery'
+import updateTaxonNameSearchQuery from './updateTaxonNameSearchQuery'
 
-export { updateTaxonSearchQuery }
+export { updateTaxonNameSearchQuery }

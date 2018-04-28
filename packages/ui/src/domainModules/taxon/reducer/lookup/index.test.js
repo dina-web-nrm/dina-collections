@@ -2,9 +2,9 @@ import deepFreeze from 'deep-freeze'
 
 import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
 import {
-  TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
-  TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
-  TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+  TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
+  TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
+  TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
 } from 'dataModules/taxonService/actionTypes'
 import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from '../../actionTypes'
 
@@ -49,7 +49,7 @@ describe('domainModules/taxon/reducer/lookup', () => {
       expect(testValue).toEqual(expectedResult)
     })
 
-    describe(TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL, () => {
+    describe(TAXON_SERVICE_GET_TAXON_NAMES_FAIL, () => {
       it('sets loading false and clears result', () => {
         const state = {
           error: null,
@@ -61,7 +61,7 @@ describe('domainModules/taxon/reducer/lookup', () => {
           error: true,
           meta: { isLookup: true },
           payload: { status: 404 },
-          type: TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
+          type: TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
         }
         const expectedState = {
           error: { status: 404 },
@@ -72,7 +72,7 @@ describe('domainModules/taxon/reducer/lookup', () => {
         expect(reducer(state, action)).toEqual(expectedState)
       })
     })
-    describe(TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST, () => {
+    describe(TAXON_SERVICE_GET_TAXON_NAMES_REQUEST, () => {
       it('sets loading true', () => {
         const state = {
           loading: false,
@@ -80,7 +80,7 @@ describe('domainModules/taxon/reducer/lookup', () => {
         deepFreeze(state)
         const action = {
           meta: { isLookup: true },
-          type: TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
+          type: TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
         }
         const expectedState = {
           loading: true,
@@ -89,7 +89,7 @@ describe('domainModules/taxon/reducer/lookup', () => {
         expect(reducer(state, action)).toEqual(expectedState)
       })
     })
-    describe(TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS, () => {
+    describe(TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS, () => {
       it('sets loading false and sets result and clears error', () => {
         const state = {
           error: { status: 404 },
@@ -100,7 +100,7 @@ describe('domainModules/taxon/reducer/lookup', () => {
         const action = {
           meta: { isLookup: true },
           payload: [{ some: 'result' }],
-          type: TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+          type: TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
         }
         const expectedState = {
           error: null,

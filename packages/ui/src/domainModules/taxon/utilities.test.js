@@ -1,16 +1,16 @@
-import { mapTaxonToOption } from './utilities'
+import { mapTaxonNameToOption } from './utilities'
 
 describe('domainModules/taxonService/utilities', () => {
   it('returns option', () => {
-    const taxon = {
+    const taxonName = {
       id: 'abc',
-      scientificName: 'Sorex minutus',
+      name: 'Sorex minutus',
     }
     const option = {
       key: 'abc',
       text: 'Sorex minutus',
       value: 'abc',
     }
-    expect(mapTaxonToOption(taxon)).toEqual(option)
+    expect(mapTaxonNameToOption(taxonName)).toEqual(option)
   })
 })

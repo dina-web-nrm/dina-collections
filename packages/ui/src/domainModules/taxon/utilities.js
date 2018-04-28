@@ -1,7 +1,7 @@
-export const mapTaxonToOption = taxon => {
+export const mapTaxonNameToOption = ({ id, name }) => {
   return {
-    key: taxon.id,
-    text: taxon.scientificName,
-    value: taxon.id,
+    key: id,
+    text: name,
+    value: id,
   }
 }
