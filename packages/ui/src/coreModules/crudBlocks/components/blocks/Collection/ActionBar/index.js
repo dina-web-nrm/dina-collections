@@ -44,7 +44,9 @@ const propTypes = {
     }).isRequired
   ).isRequired,
   filterGroup: PropTypes.string,
-  getAncestorsByParentId: PropTypes.func.isRequired,
+  getAncestorsByParentId: PropTypes.func,
+  hasList: PropTypes.bool.isRequired,
+  hasTree: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
   searchQuery: PropTypes.string,
@@ -54,6 +56,7 @@ const propTypes = {
 
 const defaultProps = {
   filterGroup: '',
+  getAncestorsByParentId: undefined,
   searchQuery: '',
 }
 
@@ -65,6 +68,8 @@ class ActionBar extends Component {
       dropdownFilterOptions,
       filterGroup,
       getAncestorsByParentId,
+      hasList,
+      hasTree,
       name,
       onInteraction,
     } = this.props
@@ -74,22 +79,26 @@ class ActionBar extends Component {
           <Grid.Row>
             <Grid.Column width={16}>
               <Button.Group floated="left">
-                <Button
-                  active={collectionBlockType === LIST}
-                  content="List"
-                  onClick={event => {
-                    event.preventDefault()
-                    onInteraction(SET_COLLECTION_LIST)
-                  }}
-                />
-                <Button
-                  active={collectionBlockType === TREE}
-                  content="Tree"
-                  onClick={event => {
-                    event.preventDefault()
-                    onInteraction(SET_COLLECTION_TREE)
-                  }}
-                />
+                {hasList && (
+                  <Button
+                    active={collectionBlockType === LIST}
+                    content="List"
+                    onClick={event => {
+                      event.preventDefault()
+                      onInteraction(SET_COLLECTION_LIST)
+                    }}
+                  />
+                )}
+                {hasTree && (
+                  <Button
+                    active={collectionBlockType === TREE}
+                    content="Tree"
+                    onClick={event => {
+                      event.preventDefault()
+                      onInteraction(SET_COLLECTION_TREE)
+                    }}
+                  />
+                )}
               </Button.Group>
               <InputText
                 icon="search"
@@ -129,12 +138,14 @@ class ActionBar extends Component {
                 </Button>
               )}
             </Grid.Column>
-            <Grid.Column verticalAlign="bottom" width={14}>
-              <AncestorTag
-                getAncestorsByParentId={getAncestorsByParentId}
-                name={name}
-              />
-            </Grid.Column>
+            {getAncestorsByParentId && (
+              <Grid.Column verticalAlign="bottom" width={14}>
+                <AncestorTag
+                  getAncestorsByParentId={getAncestorsByParentId}
+                  name={name}
+                />
+              </Grid.Column>
+            )}
           </Grid.Row>
         </Grid>
       </Form>

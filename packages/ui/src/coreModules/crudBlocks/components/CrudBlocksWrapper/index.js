@@ -73,7 +73,7 @@ const propTypes = {
   collectionBlockType: PropTypes.string,
   disableEdit: PropTypes.bool,
   dropdownFilterOptions: PropTypes.array.isRequired,
-  getAncestorsByParentId: PropTypes.func.isRequired,
+  getAncestorsByParentId: PropTypes.func,
   itemIdParamName: PropTypes.string.isRequired,
   layoutMode: PropTypes.string,
   match: PropTypes.object.isRequired,
@@ -95,6 +95,7 @@ const propTypes = {
 const defaultProps = {
   collectionBlockType: LIST,
   disableEdit: false,
+  getAncestorsByParentId: undefined,
   layoutMode: SINGLE,
   onInteraction: undefined,
   renderList: undefined,

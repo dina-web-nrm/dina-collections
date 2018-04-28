@@ -11,7 +11,7 @@ const propTypes = {
   disableEdit: PropTypes.bool.isRequired,
   displayNavigationButtons: PropTypes.bool,
   dropdownFilterOptions: PropTypes.array.isRequired,
-  getAncestorsByParentId: PropTypes.func.isRequired,
+  getAncestorsByParentId: PropTypes.func,
   layoutMode: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onInteraction: PropTypes.func.isRequired,
@@ -21,6 +21,7 @@ const propTypes = {
 
 const defaultProps = {
   displayNavigationButtons: true,
+  getAncestorsByParentId: undefined,
   renderList: undefined,
   renderTree: undefined,
 }
@@ -72,6 +73,8 @@ const CollectionBlock = ({
             displayNavigationButtons={displayNavigationButtons}
             dropdownFilterOptions={dropdownFilterOptions}
             getAncestorsByParentId={getAncestorsByParentId}
+            hasList={!!renderList}
+            hasTree={!!renderTree}
             name={name}
             onInteraction={onInteraction}
           />
