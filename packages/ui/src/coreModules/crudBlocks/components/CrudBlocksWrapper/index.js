@@ -115,7 +115,7 @@ class CrudBlocksWrapper extends Component {
 
   handleInteraction(type, data = {}) {
     const {
-      onInteraction: handleInteraction,
+      onInteraction,
       name,
       routerPush,
       setCollectionBlockType,
@@ -202,12 +202,12 @@ class CrudBlocksWrapper extends Component {
       }
 
       default: {
-        throw new Error(`Unknown interaction of type ${type}`)
+        break
       }
     }
 
-    if (handleInteraction) {
-      handleInteraction(type, data)
+    if (onInteraction) {
+      onInteraction(type, data)
     }
   }
 
