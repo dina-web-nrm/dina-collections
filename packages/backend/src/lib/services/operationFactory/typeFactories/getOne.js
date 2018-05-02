@@ -10,7 +10,7 @@ module.exports = function getOne({
   queryParams: queryParamsInput,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const queryParams = addRelationsToQueryParams({
@@ -32,7 +32,7 @@ module.exports = function getOne({
     method: 'get',
     operationId: operationId || `get${capitalizeFirstLetter(resource)}`,
     operationType: 'getOne',
-    path: `${basePath}/${resourcePlural}/{id}`,
+    path: `${basePath}/${resourcePath}/{id}`,
     pathParams: ['id'],
     queryParams,
     relations,

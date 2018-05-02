@@ -12,7 +12,7 @@ module.exports = function getMany({
   queryParams: queryParamsInput,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   let queryParams = addRelationsToQueryParams({
@@ -39,9 +39,9 @@ module.exports = function getMany({
     errors,
     includeRelations,
     method: 'get',
-    operationId: operationId || `get${capitalizeFirstLetter(resourcePlural)}`,
+    operationId: operationId || `get${capitalizeFirstLetter(resourcePath)}`,
     operationType: 'getMany',
-    path: `${basePath}/${resourcePlural}`,
+    path: `${basePath}/${resourcePath}`,
     queryParams,
     relations,
     resource,
@@ -50,6 +50,6 @@ module.exports = function getMany({
       format: 'array',
       relations,
     },
-    summary: `Find ${resourcePlural}`,
+    summary: `Find ${resourcePath}`,
   }
 }

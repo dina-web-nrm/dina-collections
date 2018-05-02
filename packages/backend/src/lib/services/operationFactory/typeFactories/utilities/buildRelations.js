@@ -1,6 +1,6 @@
 module.exports = function buildRelations({
   basePath,
-  resourcePlural,
+  resourcePath,
   relations,
 }) {
   if (!relations || !Object.keys(relations).length) {
@@ -9,9 +9,7 @@ module.exports = function buildRelations({
 
   return Object.keys(relations).map(relationKey => {
     const relation = relations[relationKey]
-    const link = `${basePath}/${resourcePlural}/{id}/relationships/${
-      relationKey
-    }`
+    const link = `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`
     return {
       ...relation,
       key: relationKey,

@@ -9,7 +9,7 @@ module.exports = function create({
   queryParams,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -24,7 +24,7 @@ module.exports = function create({
     method: 'post',
     operationId: operationId || `create${capitalizeFirstLetter(resource)}`,
     operationType: 'create',
-    path: `${basePath}/${resourcePlural}`,
+    path: `${basePath}/${resourcePath}`,
     queryParams,
     relations,
     request: {

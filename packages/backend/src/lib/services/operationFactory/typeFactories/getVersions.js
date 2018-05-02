@@ -7,7 +7,7 @@ module.exports = function getVersions({
   queryParams,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -22,7 +22,7 @@ module.exports = function getVersions({
     method: 'get',
     operationId,
     operationType: 'getVersions',
-    path: `${basePath}/${resourcePlural}/{id}/versions`,
+    path: `${basePath}/${resourcePath}/{id}/versions`,
     pathParams: ['id'],
     queryParams,
     resource,
@@ -31,6 +31,6 @@ module.exports = function getVersions({
       format: 'array',
       relations,
     },
-    summary: `Find ${resourcePlural} versions`,
+    summary: `Find ${resourcePath} versions`,
   }
 }

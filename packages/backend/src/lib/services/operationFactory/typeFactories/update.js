@@ -8,7 +8,7 @@ module.exports = function update({
   queryParams,
   resource,
   relations,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -24,7 +24,7 @@ module.exports = function update({
     method: 'patch',
     operationId,
     operationType: 'update',
-    path: `${basePath}/${resourcePlural}/{id}`,
+    path: `${basePath}/${resourcePath}/{id}`,
     pathParams: ['id'],
     queryParams,
     relations,

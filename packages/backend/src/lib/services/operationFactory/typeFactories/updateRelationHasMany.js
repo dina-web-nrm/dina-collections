@@ -9,7 +9,7 @@ module.exports = function updateRelation({
   relationKey,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -31,7 +31,7 @@ module.exports = function updateRelation({
     method: 'patch',
     operationId,
     operationType: 'updateRelationHasMany',
-    path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
+    path: `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
     relation: {

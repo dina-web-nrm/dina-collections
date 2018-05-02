@@ -8,7 +8,7 @@ module.exports = function getRelationHasOne({
   relationKey,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -30,7 +30,7 @@ module.exports = function getRelationHasOne({
     method: 'get',
     operationId,
     operationType: 'getRelationHasOne',
-    path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
+    path: `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
     relation: {
