@@ -6878,10 +6878,10 @@
             "x-summary": ""
           }
         },
+        "description": "# identifierType\n\nThe kind of [identifier](/docs/0.1.0/models/identifier/), for example \"catalog number\".\n\n\n### Definition\n\nThe kind of identifier.\n\n\n### Examples\n\n* \"catalog number\"\n* \"old skeleton number\"\n\n\n### Notes\n\nSome kinds of identifiers, like \"catalog number\", are predefined for the whole system whereas other are custom types defined for the collection (e.g. \"old skeleton number\").\n\n\n### See also\n\n[identifier](/docs/0.1.0/models/identifier/)",
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
+        "x-summary": "The kind of identifier."
       },
       "preparationType": {
         "additionalProperties": false,
@@ -6905,10 +6905,10 @@
             "x-summary": ""
           }
         },
+        "description": "# preparationType\n\nThe kind of [physicalObject](/docs/0.1.0/models/physicalObject/) or [collectionItem](/docs/0.1.0/models/collectionItem/), for example \"study skin\", \"dried plant\", or \"microscope slide\".\n\n\n### Definition\n\nThe kind of [physicalObject](/docs/0.1.0/models/physicalObject/) or [collectionItem](/docs/0.1.0/models/collectionItem/).\n\n\n### Examples\n\n* Herbarium sheet (for a [physicalObject](/docs/0.1.0/models/physicalObject/))\n* A herbarium sheet with two [collectionItems](/docs/0.1.0/models/collectionItem/), a plant and an microscope slide attached to the sheet: preparationTypes are \"microscope slide\" and \"dried plant\"\n\n\n### Notes\n\nThe preparationType is defined within the context of the collection. In future we may want to tag preparation types with different properties, so that they can be understood outside the collection.",
         "x-category": "curatedListService",
         "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
+        "x-summary": "The kind of physicalUnit or collectionItem."
       },
       "selectableMethod": {
         "additionalProperties": false,
@@ -7099,10 +7099,10 @@
           "description",
           "group"
         ],
-        "description": "### Definition\n\nA defined location with known extension in space.\n",
+        "description": "# place\n\nA defined place that has a name and is reusable, for example a country or a lake.\n\n\n### Definition\n\nA defined location with known, fixed extension in space.\n\n\n### Examples\n\n* A named location for a Malaise trap within an insect inventory project.\n\n\n### Notes\n\nPlaces can have relations to other places.\n\nNew name suggestion: \"location\" (motivation: \"place\" is usually understood as something less defined, or perhaps more informal).\n\n\n### See also\n\n[locationInformation](/docs/0.1.0/models/locationInformation/)",
         "x-category": "placeService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "A defined location with known, fixed extension in space."
       },
       "acquisition": {
         "additionalProperties": false,
@@ -7164,10 +7164,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nThe context under which some specific material was collected.\n\n### Note(s)\n\nThis includes collecting information of various kinds, for example collector(s) and collecting method.\n",
+        "description": "# collectingInformation\n\nInformation about the collecting activity, like for example the name of a collector or the collecting method.\n\n\n### Definition\n\nInformation pertaining to the activity of collecting of some material.\n\n\n### Examples\n\nThe collecting method (e.g., the kind of trap) used for collecting some material.\n\n\n### Notes\n\nThe purpose of this term is to keep information that is specific for the collecting activity, for example collectors, collecting method, field number etc. The general description of the death event, like its time and location, should be recorded under [event](/docs/0.1.0/models/event/).\n\n\n### See also\n\n[event](/docs/0.1.0/models/event/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "Information about a collecting activity."
       },
       "collectionItem": {
         "additionalProperties": false,
@@ -7221,10 +7221,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nThe smallest recognized ”thing” in the collection. This may be a physical object or part of a physical object.\n\n### Example(s)\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark may be recognized as two identifiable units.\n\n",
+        "description": "# collectionItem\n\nThe smallest recognized \"thing\" in the collection. This is usually a physical object but could also be a part of a physical object. For example, a moss and a lichen growing on the same piece of bark may be considered as two collection items.\n\n\n### Definition\n\nThe smallest recognized \"thing\" in the collection. This may be a physical object or part of a physical object.\n\n\n### Examples\n\n* A skin prepared from a squirrel.\n* One fish in a jar with five fishes.\n* All fishes in a jar with five fishes.\n* A moss and a lichen attached to the same piece of bark recognized as two collection items.\n\n\n### Notes\n\nThis term represents a fundamental unit in the management of the collection. The term is permissive on what to include in a collection item, just to make the model able to fit different use cases.\n\n\n### See also\n\n[physicalObject](/docs/0.1.0/models/physicalObject/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "The smallest recognized \"thing\" in the collection."
       },
       "curatorialAssessment": {
         "additionalProperties": false,
@@ -7287,10 +7287,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nInformation about the death of an individual or group of individuals.\n\n### Note(s)\n",
+        "description": "# deathInformation\n\nInformation about the death of an [individual](/docs/0.1.0/models/individual/). Typical information involves the cause of death.\n\n\n### Definition\nInformation pertaining to the death circumstances of an [individual](/docs/0.1.0/models/individual/).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the death of one or more individuals, for example a cause of the death. The general description of the death event, like its time and location, should be recorded under [event](/docs/0.1.0/models/event/).\n\n\n### See also\n\n[event](/docs/0.1.0/models/event/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "Information about the death of an individual."
       },
       "determination": {
         "additionalProperties": false,
@@ -7328,10 +7328,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nA statement about a specimen's taxon name and/or type status, which is not itself a type status designation.\n\n### Note(s)\n\nA type status designation is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is made in a publication and is strictly regulated by a nomenclatural code. A taxonomic identification on the other hand is usually written on a label attached to a specimen, but could also be found in e.g. a publication or in a notebook stored at a different location.",
+        "description": "# determination\n\nA determination is a statement about an [individual's](/docs/0.1.0/models/individual/) taxon and/or type status, made by a person at a certain date. The outcome of a determination is usually a taxon name.\n\n\n### Definition\n\nThe act of making a statement about an [individual's](/docs/0.1.0/models/individual/) taxon and/or type status, which is not itself a type status designation.\n\n\n### Examples\n\n\"Phoca hispida, det. by NN, 1957\"\n\n\n### Notes\n\nA *type status designation* is understood here as an explicit or implicit designation of a new type status for a specimen with respect to a taxon name. A type status designation is a nomenclatural act made through a publication and strictly regulated by a nomenclatural code. The type status designation is the primary source of a specimen's type status and should not be recorded as a determination. This is sometimes called \"verified type status\".\n\nA *type status identification* on the other hand is a secondary source for the type status, and is typically written on a label that is attached to a specimen. For a type status identification (as opposed to type status designation) it is fine to record any type status, even ones that are not sanctioned by the nomenclatural codes (e.g. \"topotype\" or \"allotype\"). Because of the similarities between type status identifications and taxonomic identifications, both are here been treated as determinations. In fact, if a taxon name is included in the type status identification, it may also be considered as an implicit taxonomic identification.\n\nThe outcome of the determination is in most cases a *taxon name* (that may be either scientific or vernacular). What *taxon* (i.e. taxon concept) the person intended with the determination is often difficult or even impossible to know, and has little relevance for collection management. It is usually sufficient to match the taxon name from the latest determination to the taxon concepts in the local classification currently used for the collection.\n\n\n### See also\n\n[taxonInformation](/docs/0.1.0/models/taxonInformation/), [individual.typeStatus](/docs/0.1.0/models/individual/typeStatus)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": "A statement about a specimen's taxon name and/or type status, which is not itself a type status designation."
+        "x-summary": "A statement about an individual's taxon and/or type status."
       },
       "event": {
         "additionalProperties": false,
@@ -7358,10 +7358,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nAn activity or occurrence at a particular time and location.\n\n### Note(s)\n\n\n",
+        "description": "# Event\n\nAn activity or occurrence at a time and location, for example the collecting of some material.\n\n\n### Definition\n\nAn activity or occurrence at a particular time and location.\n\n\n### Examples\n\nAn event involving the collecting of some material.\n\n\n### Notes\n\nIf it is uncertain whether two specimens were collected at the same event (e.g., if there are different information sources), the information should be recorded as two separate events.\n\nAn event may have both collecting- and death information.\n\n\n### See also\n\n[collectingInformation](/docs/0.1.0/models/collectingInformation/), [deathInformation](/docs/0.1.0/models/deathInformation/), [originInformation](/docs/0.1.0/models/originInformation/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "An activity or occurrence at a time and location."
       },
       "featureObservation": {
         "additionalProperties": false,
@@ -7404,10 +7404,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine) during a single event.\n\n### Example(s)\n\nWhen a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n\n### Note(s)\n\nThe kinds of data for the observation is determined by its FeatureType.\n",
+        "description": "# featureObservation\n\nAn observation of some property, for example a measurement by a person or a machine at a particular time.\n\n\n### Definition\n\nThe data measured, collected, perceived or noticed for some property by an agent (e.g. a person or a machine).\n\n\n### Examples\n\n* When a curator measures the wingspan and the weight of a bird, this counts as two separate observations.\n* A curator observes the color of a specimen.\n\n\n### Notes\n\nThis term is currently used for features for an [individual](/docs/0.1.0/models/individual/) other than [taxonomical determinations](/docs/0.1.0/models/determination/) and is not used for [curatorialAssessments](/docs/0.1.0/models/curatorialAssessment/) that apply to [collectionItems](/docs/0.1.0/models/collectionItem/).\n\n\n### See also\n\n[featureType](/docs/0.1.0/models/featureType/), [curatorialAssessment](/docs/0.1.0/models/curatorialAssessment/), [determination](/docs/0.1.0/models/determination/)\n\n\n### Relation to other standards\n\n* DarwinCore: not assessed\n* ABCD:  not assessed",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "The data measured or noticed for some property by an agent."
       },
       "identifier": {
         "additionalProperties": false,
@@ -7427,8 +7427,7 @@
           },
           "identifierType": {
             "$ref": "#/components/schemas/identifierType",
-            "description": "# identifierType\n\n### Identifier type description\n\nThis is some other text\n\nwith many lines [individual.lid](/docs/0.1.0/models/individual/lid)",
-            "x-summary": "This is a short description of 60 characters"
+            "x-summary": ""
           },
           "value": {
             "type": "string",
@@ -7446,14 +7445,14 @@
             "x-summary": ""
           }
         },
+        "description": "# identifier\n\nA string or number that identifies something, for example a [physicaObject](/docs/0.1.0/models/physicalObject/), an [individual](/docs/0.1.0/models/individual/) or an [event](/docs/0.1.0/models/event/). The catalog number is an example of an identifier for a specimen.\n\n\n### Definition\n\nA name that identifies (that is, labels the identity of) something.\n\n\n### Examples\n\n* The catalog number \"12345\"\n* Taxon name id \"9488-1\" (http://www.ipni.org/ipni/idPlantNameSearch.do?id=9488-1)\n* Part of a [physicaObject](/docs/0.1.0/models/physicalObject/) (i.e. a [collectionItem](/docs/0.1.0/models/collectionItem/)) labeled \"a\"\n\n\n### Notes\n\nIdentifiers are used for different purposes, for example for connecting information with an [individual](/docs/0.1.0/models/individual/) or for identifying a specimen. This term is used both for keeping record of official identifiers (like catalog numbers) and unofficial ones (like those for example found on handwritten labels attached to a specimen, or sometimes even written directly on the object).\n\n\n### See also\n\n[identifierType](/docs/0.1.0/models/identifierType/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
+        "x-summary": "A string or number that identifies something."
       },
       "individual": {
         "additionalProperties": false,
-        "description": "### Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n### Example(s)\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon may be treated as a single group of individuals.\n\n### Note(s)\n\nIndividual is understod in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis should perhaps be renamed \"individualOrGroup\" or just \"individual\".\n",
+        "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should create new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should create two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you should probably create more individuals.\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n* ABCD: not assessed\n",
         "properties": {
           "collectionItemText": {
             "type": "string",
@@ -7612,10 +7611,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nInformation pertaining to a specific location.\n\n### Note(s)\n\nIncludes for example verbatim information about a location.\n",
+        "description": "# locationInformation\n\nInformation about the place of an event.\n\n\n### Definition\n\nInformation pertaining to a specific location.\n\n\n### Examples\n\nInformation about the collecting locality for a specimen, for example a transcribed text like \"Frescati, Stockholm, Uppland, Sweden\".\n\n\n### Notes\n\nThis term is for keeping general information about a location, for example geographic coordinates or verbatim information about the location.\n\nMore specifically, the purpose of the term is:\n\n1. to keep information about a location that is specific for an event (e.g., transcribed information about the location),\n2. to keep information regarding the uncertainty about a location,\n3. to describe how a location relates to some other place (\"3 km NW of\"), and\n4. to document the source for some information (so that interpretations can be traced).",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "Information about the place of an event."
       },
       "originInformation": {
         "additionalProperties": false,
@@ -7645,10 +7644,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nInformation about the origin of an individual or group of individuals.\n\n### Note(s)\n\nThis can for example involve the genetic origin or a specific event when an individual moved from an place to another.\n",
+        "description": "# originInformation\n\nInformation about the physical or genetic origin of an [individual](/docs/0.1.0/models/individual/). This could for example be information on where an individual previously lived. The information may be associated with an [event](/docs/0.1.0/models/event/).\n\n\n### Defintion\nInformation pertaining to the origin of an [individual](/docs/0.1.0/models/individual/).\n\n\n### Example\n\nAn [individual](/docs/0.1.0/models/individual/) may have more than one [event](/docs/0.1.0/models/event/) connected with origin information. For example: a lion first lived in Africa (origin event 1), then was placed in a Zoo in Europe (origin event 2), and finally escaped into the wild (origin event 3) where it was later killed and collected (death and collecting event).\n\n\n### Notes\n\nThe purpose of this term is to keep information that has to do with the origin of [individuals](/docs/0.1.0/models/individual/). This could involve both the genetic and the physical origin. This term concerns the origin of individuals, not the provenance of specimens. The general description of the death event, like its time and location, should be recorded under [event](/docs/0.1.0/models/event/).\n\n\n### See also\n\n[event](/docs/0.1.0/models/event/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "Information about the origin of an individual."
       },
       "recordHistoryEvent": {
         "additionalProperties": false,
@@ -7787,10 +7786,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nThe taxon to which an individual is currently assigned according to a local classification.\n",
+        "description": "# taxonInformation\n\nInformation about an [individual's](/docs/0.1.0/models/individual/) taxon, for example its accepted name according to the local classification. This term can also hold other taxon names which are not part of a [determination](/docs/0.1.0/models/determination/).\n\n\n### Definition\n\nInformation about the taxon to which an [individual](/docs/0.1.0/models/individual/) is currently assigned according to the local classification, or other names that has been associated with the individual that do not qualify as [determinations](/docs/0.1.0/models/determination/).\n\n\n### Examples\n\n\"Pusa hispida\" is the accepted name for a taxon in the local classification, and “Phoca hispida” one of its synonyms. Consequently, \"Pusa hispida\" should be the locally accepted name (curatorial name) for a specimen that has been determined as \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this concept is:\n\n1. to keep information of the currently accepted name for an individual, and\n2. to accommodate taxon-related legacy data that do not fit into taxon in the taxonomy API or into determination.\n\nThe data model is flexible, and it is possible to treat a locally accepted name for a specimen as a determination. One might then ask if there are cases when this should not be done? In principle, you should not use determination *if you cannot assume that the taxon name properly represents an original determination, and if it is impossible to assess whether that is the case*.\n\nImagine for example that the text on a determination label reads \"not taxon x\", while the name \"taxon x\" has been recorded as the name for the specimen in the database (this could happen with legacy data for collections where taxonomy is tightly connected to storage and it is important to just record some name). Without other information, it would be impossible to know that \"taxon x\" was derived from the text \"not taxon x\". Since you cannot be sure of where the information comes from, there would be no way to correct the erroneous determination record.\n\nAnother case is when a name at a different rank, let say a family, has been recorded from a determination to a subfamily written on the label, without saying anything about how the transformation was done. There can also be undocumented taxonomic interpretations at the same level, like when an original determination to \"Phoca hispida\" is recorded as just \"Pusa hispida\".\n\n\n### See also\n\n[determination](/docs/0.1.0/models/determination/), [taxon](/docs/0.1.0/models/taxon/)",
         "x-category": "specimenService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "Information about the taxon to which an individual is assigned."
       },
       "physicalObject": {
         "additionalProperties": false,
@@ -7824,10 +7823,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nThe smallest recognized physical “thing” in the collection. A set of identifiable units. One or more.\n\n### Example(s)\n\nEx.1. A herbarium sheet with multiple leafs (many identifiable units)\nEx.2. A device where a skin is mounted at (one identifiable unit)\nEx.3. A device where a stone with a moss is mounted (two identifiable unit)\n",
+        "description": "# physicalObject\n\nThe smallest recognized physical \"thing\" in the collection. Typical examples are a skin preparation and a herbarium sheet. A physical object represents one or more [collectionItems](/docs/0.1.0/models/collectionItem/).\n\n\n### Definition\n\nThe smallest recognized physical \"thing\" in the collection.\n\n\n### Examples\n\n* A herbarium sheet with three plants mounted on it (possibly three collection items)\n* A mounted skin of a squirrel (one [collectionItem](/docs/0.1.0/models/collectionItem/))\n* A jar with two fishes (possibly two [collectionItems](/docs/0.1.0/models/collectionItem/))\n* A tree branch with two birds mounted on it (possibly two [collectionItems](/docs/0.1.0/models/collectionItem/))\n\n\n### Notes\n\nThe physical object is the physical thing that you do something with when you manage your collection. This could for example be the thing stored on the shelf, sent on loan or received from a donator. Physical objects change over time. Imagine for example a jar of 5 fishes first treated as one physical object \"A\". In response to a loan request, a new physical object \"B\" is created with one of the fishes and sent to the borrower. When the loan is returned, the fish is put back into the original container (\"A\"), thereby ending the existence of object \"B\".\n\n\n### See also\n\n[collectionItem](/docs/0.1.0/models/collectionItem/)",
         "x-category": "storageService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "The smallest recognized physical \"thing\" in the collection."
       },
       "storageLocation": {
         "additionalProperties": false,
@@ -7861,10 +7860,10 @@
             "x-summary": ""
           }
         },
-        "description": "### Definition\n\nA delimited space in the collection where one ore more physical units can be placed.\n",
+        "description": "# storageLocation\n\nA space for storing [physicalObjects](/docs/0.1.0/models/physicalObject/) in a collection.\n\n\n### Definition\n\nA dedicated space, at any level in a hierarchy, for storing one or more [physicalObjects](/docs/0.1.0/models/physicalObject/) in a collection.\n\n\n### Examples\n\n* \"room 123\"\n* \"Swedish Coleoptera\"\n* \"the bone room\"\n\n\n### Notes\n\nA storage location is usually a fixed space (like a room, shelf or cabinet) but could also be a \"floating location\". This latter kind is especially common when objects are sorted by taxonomy. Instead of having a fixed physical position are floating storage locations placed in relation to other storage locations nearby. For example, the objects representing the genus *Phoca* may be placed after those of *Pagophilus*, but before those of *Pusa*. Storage locations may be arranged in a hierarchy, irrespective of whether they have fixed positions or not.\n\n\n### See also\n\n[physicalObject](/docs/0.1.0/models/physicalObject/)",
         "x-category": "storageService",
         "x-modelType": "model",
-        "x-summary": ""
+        "x-summary": "A dedicated space for storing physical objects."
       },
       "taxon": {
         "additionalProperties": false,
@@ -7886,10 +7885,10 @@
             "x-summary": ""
           }
         },
+        "description": "# taxon\n\nA taxonomic group of any rank, such as a species or family, or class used to keep information about a locally used taxon concept.\n\n\n### Definition\n\nA taxonomic group of any rank, such as a species, family, or class.\n\n\n### Examples\n\nThe species that includes the type specimen for the name \"Pusa hispida\", which may also be referred to by the synonym \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this term is to keep information about locally used taxon concepts. These concepts do not have to be used elsewhere. The local classification is the combination of all the names and their relations. In the local classification, each taxon has an accepted taxon name at same rank as the taxon (more precisely, the taxon gets its rank from the accepted name). The accepted name may have synonyms at any rank.\n\n\n### See also\n\n[determination](/docs/0.1.0/models/determination/), [taxonInformation](/docs/0.1.0/models/taxonInformation/)",
         "x-category": "taxonomyService",
         "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
+        "x-summary": "A taxonomic group of any rank, such as a species or family."
       },
       "taxonName": {
         "additionalProperties": false,
@@ -12994,20 +12993,18 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "preparationType",
+              "type": "identifierType",
               "attributes": {
-                "category": "skin",
-                "name": "preparation name"
+                "name": "catalogNumber"
               }
             }
           }
         },
         "example": {
           "data": {
-            "type": "preparationType",
+            "type": "identifierType",
             "attributes": {
-              "category": "skin",
-              "name": "preparation name"
+              "name": "catalogNumber"
             }
           }
         },
@@ -14316,7 +14313,7 @@
               "type": "physicalObject",
               "attributes": {
                 "normalStorageLocationText": "string",
-                "storedUnderTaxonName": "Sorex minutus"
+                "storageLocationText": "Sorex minutus"
               }
             }
           }
@@ -14326,7 +14323,7 @@
             "type": "physicalObject",
             "attributes": {
               "normalStorageLocationText": "string",
-              "storedUnderTaxonName": "Sorex minutus"
+              "storageLocationText": "Sorex minutus"
             }
           }
         },
