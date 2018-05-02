@@ -1,7 +1,7 @@
 const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
 
 module.exports = function getMany({
   basePath,

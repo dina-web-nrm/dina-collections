@@ -1,5 +1,5 @@
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
 
 module.exports = function getOne({
   basePath,
