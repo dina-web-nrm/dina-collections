@@ -3,8 +3,6 @@ import {
   updatePhysicalObject,
 } from 'dataModules/storageService/actionCreators'
 
-import { flattenObjectResponse } from 'utilities/transformations'
-
 import { getSpecimen } from '../../actionCreators'
 import {
   SPECIMEN_SERVICE_UPDATE_SPECIMEN_FAIL,
@@ -79,13 +77,12 @@ export default function updateSpecimen(
         })
         .then(
           response => {
-            const transformedResponse = flattenObjectResponse(response.data)
             dispatch({
-              payload: transformedResponse,
+              payload: response.data,
               type: SPECIMEN_SERVICE_UPDATE_SPECIMEN_SUCCESS,
             })
             dispatch(getSpecimen({ id }))
-            return transformedResponse
+            return response.data
           },
           error => {
             dispatch({

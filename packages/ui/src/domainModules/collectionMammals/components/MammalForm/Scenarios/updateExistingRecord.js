@@ -132,7 +132,7 @@ const scenario = {
   input: {
     featureTypes,
     physicalObjects,
-    specimen: { individual },
+    specimen: { attributes: { individual } },
     taxa,
   },
   mutations,

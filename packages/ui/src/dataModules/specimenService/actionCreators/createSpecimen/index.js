@@ -1,7 +1,4 @@
 import { createPhysicalObject } from 'dataModules/storageService/actionCreators'
-
-import { flattenObjectResponse } from 'utilities/transformations'
-
 import {
   SPECIMEN_SERVICE_CREATE_SPECIMEN_FAIL,
   SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST,
@@ -63,12 +60,11 @@ export default function createSpecimen(
 
       return apiClient.call(CREATE_SPECIMEN, { body }).then(
         response => {
-          const transformedResponse = flattenObjectResponse(response.data)
           dispatch({
-            payload: transformedResponse,
+            payload: response.data,
             type: SPECIMEN_SERVICE_CREATE_SPECIMEN_SUCCESS,
           })
-          return transformedResponse
+          return response.data
         },
         error => {
           dispatch({

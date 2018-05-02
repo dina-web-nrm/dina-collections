@@ -104,7 +104,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
       },
     }
     const transformedResponse = {
-      ...attributes,
+      attributes,
       id,
       type: 'type',
     }

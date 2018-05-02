@@ -1,5 +1,3 @@
-import { flattenArrayResponse } from 'utilities/transformations'
-
 import {
   SPECIMEN_SERVICE_GET_SPECIMENS_FAIL,
   SPECIMEN_SERVICE_GET_SPECIMENS_REQUEST,
@@ -18,13 +16,12 @@ export default function getSpecimens(
     })
     return apiClient.call(GET_SPECIMENS, { queryParams }).then(
       response => {
-        const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           meta,
-          payload: transformedResponse,
+          payload: response.data,
           type: SPECIMEN_SERVICE_GET_SPECIMENS_SUCCESS,
         })
-        return transformedResponse
+        return response.data
       },
       error => {
         dispatch({

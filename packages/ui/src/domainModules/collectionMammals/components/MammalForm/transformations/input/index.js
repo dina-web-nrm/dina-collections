@@ -1,3 +1,4 @@
+import { flattenJsonApiData } from 'utilities/transformations'
 import denormalizeSpecimen from 'common/es5/normalize/denormalizeSpecimen'
 import transformTaxonInformation from './transformTaxonInformation'
 import transformDeterminations from './transformDeterminations'
@@ -15,7 +16,7 @@ export default function transformInput({
   specimen = {},
   storageLocations = {},
 }) {
-  const { id, type, ...rawSpeciment } = specimen
+  const { id, type, ...rawSpeciment } = flattenJsonApiData(specimen)
   const attributes = denormalize
     ? denormalizeSpecimen(rawSpeciment).individual
     : rawSpeciment.individual || {}

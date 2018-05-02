@@ -1,6 +1,4 @@
 import { getPhysicalObject } from 'dataModules/storageService/actionCreators'
-import { flattenObjectResponse } from 'utilities/transformations'
-
 import {
   SPECIMEN_SERVICE_GET_SPECIMEN_FAIL,
   SPECIMEN_SERVICE_GET_SPECIMEN_REQUEST,
@@ -26,7 +24,6 @@ export default function getSpecimen({ id, throwError = false } = {}) {
       })
       .then(
         response => {
-          const transformedResponse = flattenObjectResponse(response.data)
           if (response.data && response.data.relationships) {
             const { physicalObjects } = response.data.relationships
             return Promise.all([
@@ -42,7 +39,7 @@ export default function getSpecimen({ id, throwError = false } = {}) {
               .then(() => {
                 dispatch({
                   meta,
-                  payload: transformedResponse,
+                  payload: response.data,
                   type: SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS,
                 })
                 return response
@@ -63,10 +60,10 @@ export default function getSpecimen({ id, throwError = false } = {}) {
 
           dispatch({
             meta,
-            payload: transformedResponse,
+            payload: response.data,
             type: SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS,
           })
-          return transformedResponse
+          return response.data
         },
         error => {
           dispatch({

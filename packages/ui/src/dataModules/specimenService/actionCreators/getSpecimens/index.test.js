@@ -83,13 +83,17 @@ describe('dataModules/specimenService/actionCreators/getSpecimens', () => {
     }
     const transformedResponse = [
       {
+        attributes: {
+          name: 'Ada',
+        },
         id: '123',
-        name: 'Ada',
         type: 'type',
       },
       {
+        attributes: {
+          name: 'Alan',
+        },
         id: '456',
-        name: 'Alan',
         type: 'type',
       },
     ]
