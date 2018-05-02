@@ -41,7 +41,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
 
   describe('create', () => {
     it('Creates and returns a simple record', () => {
-      const data = {
+      const doc = {
         projects: [
           {
             id: '1234',
@@ -53,9 +53,9 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         },
       }
 
-      return model.create(data).then(res => {
+      return model.create({ doc }).then(res => {
         expect(res).toBeTruthy()
-        expect(res.document).toEqual(data)
+        expect(res.document).toEqual(doc)
         expect(res.id).toBeTruthy()
         expect(res.versionId).toBeTruthy()
         expect(res.id).toBe(res.versionId)
@@ -64,7 +64,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
   })
   describe('getById', () => {
-    const firstData = {
+    const firstDoc = {
       projects: [
         {
           id: '1234',
@@ -75,7 +75,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Anton',
       },
     }
-    const secondData = {
+    const secondDoc = {
       projects: [
         {
           id: '1235',
@@ -86,7 +86,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Per',
       },
     }
-    const thirdData = {
+    const thirdDoc = {
       projects: [
         {
           id: '1236',
@@ -109,20 +109,20 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
       return setup().then(createdModel => {
         model = createdModel
         return model
-          .create(firstData)
+          .create({ doc: firstDoc })
           .then(res => {
             firstId = res.id
             firstVersionId = res.versionId
           })
           .then(() => {
-            return model.create(secondData)
+            return model.create({ doc: secondDoc })
           })
           .then(res => {
             secondId = res.id
             secondVersionId = res.versionId
           })
           .then(() => {
-            return model.update({ doc: thirdData, id: secondId })
+            return model.update({ doc: thirdDoc, id: secondId })
           })
           .then(res => {
             thirdUpdatedVersionId = res.versionId
@@ -137,7 +137,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
 
       it('Returns record when only one version exists', () => {
         return model.getById({ id: firstId }).then(res => {
-          expect(res.document).toEqual(firstData)
+          expect(res.document).toEqual(firstDoc)
         })
       })
       it('Returns null when record dont exist', () => {
@@ -147,7 +147,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
       })
       it('Returns latest when multiple versions exist', () => {
         return model.getById({ id: secondId }).then(res => {
-          expect(res.document).toEqual(thirdData)
+          expect(res.document).toEqual(thirdDoc)
         })
       })
     })
@@ -157,7 +157,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         return model
           .getById({ id: firstId, versionId: firstVersionId })
           .then(res => {
-            expect(res.document).toEqual(firstData)
+            expect(res.document).toEqual(firstDoc)
           })
       })
       it('Returns null when id record dont exist', () => {
@@ -174,20 +174,20 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         return model
           .getById({ id: secondId, versionId: thirdUpdatedVersionId })
           .then(res => {
-            expect(res.document).toEqual(thirdData)
+            expect(res.document).toEqual(thirdDoc)
           })
       })
       it('Returns non latest when multiple versions exist and old versionId provided', () => {
         return model
           .getById({ id: secondId, versionId: secondVersionId })
           .then(res => {
-            expect(res.document).toEqual(secondData)
+            expect(res.document).toEqual(secondDoc)
           })
       })
     })
   })
   describe('getOneWhere', () => {
-    const firstData = {
+    const firstDoc = {
       projects: [
         {
           id: '1234',
@@ -198,7 +198,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Anton',
       },
     }
-    const secondData = {
+    const secondDoc = {
       projects: [
         {
           id: '1235',
@@ -209,7 +209,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Per',
       },
     }
-    const thirdData = {
+    const thirdDoc = {
       projects: [
         {
           id: '1236',
@@ -225,18 +225,18 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
 
     beforeAll(() => {
       return model
-        .create(firstData)
+        .create({ doc: firstDoc })
         .then(res => {
           firstId = res.id
         })
         .then(() => {
-          return model.create(secondData)
+          return model.create({ doc: secondDoc })
         })
         .then(res => {
           secondId = res.id
         })
         .then(() => {
-          return model.update({ doc: thirdData, id: secondId })
+          return model.update({ doc: thirdDoc, id: secondId })
         })
     })
 
@@ -253,12 +253,12 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
     it('Returns record when matching by id', () => {
       return model.getOneWhere({ where: { id: firstId } }).then(res => {
-        expect(res.document).toEqual(firstData)
+        expect(res.document).toEqual(firstDoc)
       })
     })
     it('Returns latest record when matching by id and multiple versions exist', () => {
       return model.getOneWhere({ where: { id: secondId } }).then(res => {
-        expect(res.document).toEqual(thirdData)
+        expect(res.document).toEqual(thirdDoc)
       })
     })
     it('Returns record when matching by object property', () => {
@@ -269,7 +269,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
           },
         })
         .then(res => {
-          expect(res.document).toEqual(firstData)
+          expect(res.document).toEqual(firstDoc)
         })
     })
     it('Returns null when matching by object property fail', () => {
@@ -283,7 +283,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
   })
   describe('update', () => {
-    const firstData = {
+    const firstDoc = {
       projects: [
         {
           id: '1234',
@@ -294,7 +294,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Anton',
       },
     }
-    const secondData = {
+    const secondDoc = {
       projects: [
         {
           id: '1235',
@@ -305,7 +305,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Per',
       },
     }
-    const thirdData = {
+    const thirdDoc = {
       projects: [
         {
           id: '1236',
@@ -323,19 +323,19 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
 
     beforeEach(() => {
       return model
-        .create(firstData)
+        .create({ doc: firstDoc })
         .then(res => {
           firstId = res.id
           firstVersionId = res.versionId
         })
         .then(() => {
-          return model.create(secondData)
+          return model.create({ doc: secondDoc })
         })
         .then(res => {
           secondId = res.id
         })
         .then(() => {
-          return model.update({ doc: thirdData, id: secondId })
+          return model.update({ doc: thirdDoc, id: secondId })
         })
     })
     it('Throw error when id not provided', () => {
@@ -371,7 +371,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
   })
   describe('getWhere', () => {
-    const firstData = {
+    const firstDoc = {
       projects: [
         {
           id: '1234',
@@ -382,7 +382,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Anton',
       },
     }
-    const secondData = {
+    const secondDoc = {
       projects: [
         {
           id: '1235',
@@ -393,7 +393,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
         name: 'Per',
       },
     }
-    const thirdData = {
+    const thirdDoc = {
       projects: [
         {
           id: '1236',
@@ -409,18 +409,18 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
 
     beforeAll(() => {
       return model
-        .create(firstData)
+        .create({ doc: firstDoc })
         .then(res => {
           firstId = res.id
         })
         .then(() => {
-          return model.create(secondData)
+          return model.create({ doc: secondDoc })
         })
         .then(res => {
           secondId = res.id
         })
         .then(() => {
-          return model.update({ doc: thirdData, id: secondId })
+          return model.update({ doc: thirdDoc, id: secondId })
         })
     })
 
@@ -437,12 +437,12 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
     it('Returns record when matching by id', () => {
       return model.getWhere({ where: { id: firstId } }).then(res => {
-        expect(res[0].document).toEqual(firstData)
+        expect(res[0].document).toEqual(firstDoc)
       })
     })
     it('Returns latest record when matching by id and multiple versions exist', () => {
       return model.getWhere({ where: { id: secondId } }).then(res => {
-        expect(res[0].document).toEqual(thirdData)
+        expect(res[0].document).toEqual(thirdDoc)
       })
     })
     it('Returns record when matching by object property', () => {
@@ -453,7 +453,7 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
           },
         })
         .then(res => {
-          expect(res[0].document).toEqual(thirdData)
+          expect(res[0].document).toEqual(thirdDoc)
         })
     })
     it('Returns empty array when matching by object property fail', () => {
