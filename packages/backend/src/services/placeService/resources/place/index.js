@@ -95,5 +95,4 @@ module.exports = {
     },
   },
   resource: 'place',
-  resourcePlural: 'places',
 }
