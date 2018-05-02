@@ -1,0 +1,11 @@
+{
+  "data": {
+    "type": "taxonName",
+    "attributes": {
+      "name": "Addax nasomaculatus",
+      "rank": "species",
+      "rubinNumber": "7904803",
+      "taxonNameType": "scientific"
+    }
+  }
+}

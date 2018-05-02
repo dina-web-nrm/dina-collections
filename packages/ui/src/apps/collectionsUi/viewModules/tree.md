@@ -64,6 +64,12 @@
 │   ├── constants.js
 │   ├── index.js
 │   └── translations.json
+├── manageTaxonomy
+│   ├── Async.js
+│   ├── Component.js
+│   ├── constants.js
+│   ├── index.js
+│   └── translations.json
 ├── pageNotFound
 │   ├── Async.js
 │   ├── Component.js

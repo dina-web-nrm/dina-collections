@@ -1,0 +1,37 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "versionId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "taxonNameType": {
+      "type": "string",
+      "enum": [
+        "scientific",
+        "vernacular"
+      ]
+    },
+    "rank": {
+      "type": "string",
+      "description": "Taxon rank"
+    },
+    "rubinNumber": {
+      "type": "string"
+    },
+    "acceptedToTaxonVersionId": {
+      "type": "string"
+    },
+    "synonymToTaxonVersionId": {
+      "type": "string"
+    },
+    "vernacularToTaxonVersionId": {
+      "type": "string"
+    }
+  }
+}

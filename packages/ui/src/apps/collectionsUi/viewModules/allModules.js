@@ -6,6 +6,7 @@ import * as login from './login'
 import * as lookupMammals from './lookupMammals'
 import * as manageLocalities from './manageLocalities'
 import * as manageStorageLocations from './manageStorageLocations'
+import * as manageTaxonomy from './manageTaxonomy'
 import * as pageNotFound from './pageNotFound'
 import * as publicModule from './public'
 import * as registerMammal from './registerMammal'
@@ -22,6 +23,7 @@ const modules = [
   registerMammal,
   manageLocalities,
   manageStorageLocations,
+  manageTaxonomy,
   login,
   settings,
   docs,

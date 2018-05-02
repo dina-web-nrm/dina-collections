@@ -25392,6 +25392,11 @@ Floated Menu / Item
 .ui.selectable.table tr {
   cursor: pointer;
 }
+
+.ui.table tbody tr td.selectable {
+  cursor: pointer;
+  padding: 0.75em 0.75em;
+}
 /*!
  * # Semantic UI 2.2.13 - Ad
  * http://github.com/semantic-org/semantic-ui/

@@ -7,7 +7,7 @@ const physicalObjectExample = {
   data: {
     attributes: {
       normalStorageLocationText: 'string',
-      storedUnderTaxonName: 'Sorex minutus',
+      storageLocationText: 'Sorex minutus',
     },
     type: 'physicalObject',
   },

@@ -73,7 +73,7 @@ const propTypes = {
   collectionBlockType: PropTypes.string,
   disableEdit: PropTypes.bool,
   dropdownFilterOptions: PropTypes.array.isRequired,
-  getAncestorsByParentId: PropTypes.func.isRequired,
+  getAncestorsByParentId: PropTypes.func,
   itemIdParamName: PropTypes.string.isRequired,
   layoutMode: PropTypes.string,
   match: PropTypes.object.isRequired,
@@ -95,6 +95,7 @@ const propTypes = {
 const defaultProps = {
   collectionBlockType: LIST,
   disableEdit: false,
+  getAncestorsByParentId: undefined,
   layoutMode: SINGLE,
   onInteraction: undefined,
   renderList: undefined,
@@ -115,7 +116,7 @@ class CrudBlocksWrapper extends Component {
 
   handleInteraction(type, data = {}) {
     const {
-      onInteraction: handleInteraction,
+      onInteraction,
       name,
       routerPush,
       setCollectionBlockType,
@@ -202,12 +203,12 @@ class CrudBlocksWrapper extends Component {
       }
 
       default: {
-        throw new Error(`Unknown interaction of type ${type}`)
+        break
       }
     }
 
-    if (handleInteraction) {
-      handleInteraction(type, data)
+    if (onInteraction) {
+      onInteraction(type, data)
     }
   }
 

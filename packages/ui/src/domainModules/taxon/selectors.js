@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 
 import getSecondArgument from 'utilities/getSecondArgument'
 import { MODULE_NAME } from './constants'
-import { mapTaxonToOption } from './utilities'
+import { mapTaxonNameToOption } from './utilities'
 
 export const getLocalState = state => {
   return state[MODULE_NAME]
@@ -26,7 +26,7 @@ export const getLookupResult = createSelector(getLookup, lookup => {
 export const getLookupDropdownOptions = createSelector(
   getLookupResult,
   lookupResult => {
-    return lookupResult.map(mapTaxonToOption)
+    return lookupResult.map(mapTaxonNameToOption)
   }
 )
 

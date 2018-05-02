@@ -1,9 +1,13 @@
 import * as endpoints from './endpoints'
 
 const expectedKeys = [
+  'CREATE_TAXON_NAME',
   'CREATE_TAXON',
-  'GET_TAXA_BY_NAME',
+  'GET_TAXA',
+  'GET_TAXON_NAME',
+  'GET_TAXON_NAMES',
   'GET_TAXON',
+  'UPDATE_TAXON_NAME',
   'UPDATE_TAXON',
 ]
 

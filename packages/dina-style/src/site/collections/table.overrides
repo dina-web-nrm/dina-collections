@@ -4,3 +4,8 @@
 .ui.selectable.table tr {
   cursor: pointer;
 }
+
+.ui.table tbody tr td.selectable {
+  cursor: pointer;
+  padding: @cellVerticalPadding @cellHorizontalPadding;
+}

@@ -8,6 +8,7 @@ export const moduleOrder = [
   'registerMammal',
   'manageLocalities',
   'manageStorageLocations',
+  'manageTaxonomy',
   'login',
   'settings',
   'docs',

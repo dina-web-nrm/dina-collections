@@ -53,6 +53,10 @@
     "manageStorageLocations": {
       "en": "Storage locations",
       "sv": "Förvarings-platser"
+    },
+    "manageTaxonomy": {
+      "en": "Taxonomy",
+      "sv": "Taxonomi"
     }
   }
 }

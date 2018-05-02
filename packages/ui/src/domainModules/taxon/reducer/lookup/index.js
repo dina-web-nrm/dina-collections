@@ -1,9 +1,9 @@
 import { createSetter } from 'utilities/stateHelper'
 
 import {
-  TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL,
-  TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST,
-  TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS,
+  TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
+  TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
+  TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
 } from 'dataModules/taxonService/actionTypes'
 
 import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from '../../actionTypes'
@@ -23,7 +23,7 @@ export const getInitialState = () => {
 
 export default function reducer(state = getInitialState(), action) {
   switch (action.type) {
-    case TAXON_SERVICE_GET_TAXA_BY_NAME_REQUEST: {
+    case TAXON_SERVICE_GET_TAXON_NAMES_REQUEST: {
       if (action.meta.isLookup) {
         return setLookupLoading(state, true)
       }
@@ -31,7 +31,7 @@ export default function reducer(state = getInitialState(), action) {
       return state
     }
 
-    case TAXON_SERVICE_GET_TAXA_BY_NAME_FAIL: {
+    case TAXON_SERVICE_GET_TAXON_NAMES_FAIL: {
       if (action.meta.isLookup) {
         const emptyResultState = setLookupResult(
           setLookupLoading(state, false),
@@ -43,7 +43,7 @@ export default function reducer(state = getInitialState(), action) {
       return state
     }
 
-    case TAXON_SERVICE_GET_TAXA_BY_NAME_SUCCESS: {
+    case TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS: {
       if (action.meta.isLookup) {
         const emptyErrorState = setLookupError(
           setLookupLoading(state, false),

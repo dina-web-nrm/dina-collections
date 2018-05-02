@@ -38,7 +38,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   it(`calls createStorageLocation with correct body`, () => {
     const operationId = 'createStorageLocation'
     const storageLocation = {
-      locationText: 'string',
+      name: 'string',
     }
     const callSpy = jest.fn()
 
@@ -75,7 +75,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   } and returns transformed response`, () => {
     const operationId = 'createStorageLocation'
     const storageLocation = {
-      locationText: 'string',
+      name: 'string',
     }
 
     const mockResponse = {
@@ -127,7 +127,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   } without throwing error`, () => {
     const operationId = 'createStorageLocation'
     const storageLocation = {
-      locationText: 'string',
+      name: 'string',
     }
     const mockError = { status: 500 }
 
@@ -166,7 +166,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   } and throws error`, () => {
     const operationId = 'createStorageLocation'
     const storageLocation = {
-      locationText: 'string',
+      name: 'string',
     }
     const mockError = { status: 500 }
 

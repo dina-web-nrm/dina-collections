@@ -36,9 +36,14 @@ const getStorageLocationsArrayByFilter = createSelector(
     let filteredStorageLocations = storageLocationsArray
 
     if (parentIdFilter) {
-      filteredStorageLocations = filteredStorageLocations.filter(locality => {
-        return (locality.parent && locality.parent.id) === parentIdFilter
-      })
+      filteredStorageLocations = filteredStorageLocations.filter(
+        storageLocation => {
+          return (
+            (storageLocation.parent && storageLocation.parent.id) ===
+            parentIdFilter
+          )
+        }
+      )
     }
 
     if (searchQueryFilter) {
