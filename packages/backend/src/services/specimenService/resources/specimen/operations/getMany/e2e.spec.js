@@ -19,13 +19,13 @@ apiDescribe('specimen', () => {
     beforeEach(() => {
       return makeTestCall({
         body: fullFormExample,
-        operationId: 'createSpecimen',
+        operationId: 'specimenCreate',
       })
     })
     describe('by catalogNumber', () => {
       it('Succeed with valid catalogNumber', () => {
         return makeTestCall({
-          operationId: 'getSpecimens',
+          operationId: 'specimenGetMany',
           queryParams: { 'filter[catalogNumber]': validCatalogNumber },
         }).then(response => {
           expectMultipleResourcesResponse({
@@ -37,7 +37,7 @@ apiDescribe('specimen', () => {
       })
       it('Succeed with valid catalogNumber', () => {
         return makeTestCall({
-          operationId: 'getSpecimens',
+          operationId: 'specimenGetMany',
           queryParams: {
             'filter[catalogNumber]': validCatalogNumber,
           },
@@ -51,7 +51,7 @@ apiDescribe('specimen', () => {
       })
       it('Return empty array when non existing catalogNumber', () => {
         return makeTestCall({
-          operationId: 'getSpecimens',
+          operationId: 'specimenGetMany',
           queryParams: {
             'filter[catalogNumber]': 'xxx111',
           },
@@ -74,7 +74,7 @@ apiDescribe('specimen', () => {
 
         return makeTestCall({
           body: modifiedSimpleDataRelations,
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         })
       })
       it('Succeed with simpleDataPhysicalObjectRelations', () => {
@@ -82,7 +82,7 @@ apiDescribe('specimen', () => {
           'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
-          operationId: 'getSpecimens',
+          operationId: 'specimenGetMany',
           queryParams: {
             'filter[catalogNumber]': '555112',
             limit: 1,

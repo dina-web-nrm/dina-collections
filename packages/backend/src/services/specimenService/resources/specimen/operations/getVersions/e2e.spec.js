@@ -22,7 +22,7 @@ apiDescribe('specimen', () => {
       beforeAll(() => {
         return makeTestCall({
           body: getTestData('simpleDataNoRelations'),
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         }).then(response => {
           const updatedSimpleDataNoRelations = getTestData(
             'simpleDataNoRelations'
@@ -33,7 +33,7 @@ apiDescribe('specimen', () => {
           existingId = response.data.id
           return makeTestCall({
             body: updatedSimpleDataNoRelations,
-            operationId: 'updateSpecimen',
+            operationId: 'specimenUpdate',
             pathParams: { id: existingId },
           })
         })
@@ -41,7 +41,7 @@ apiDescribe('specimen', () => {
 
       it('Fetches 2 versions', () => {
         return makeTestCall({
-          operationId: 'getSpecimenVersions',
+          operationId: 'specimenGetVersions',
           pathParams: { id: existingId },
         }).then(response => {
           expectMultipleResourcesResponse({
@@ -58,7 +58,7 @@ apiDescribe('specimen', () => {
       })
       it('First version fetched by id', () => {
         return makeTestCall({
-          operationId: 'getSpecimenVersion',
+          operationId: 'specimenGetVersion',
           pathParams: { id: existingId, versionId: firstFetchedId },
         }).then(response => {
           expectSingleResourceResponse({
@@ -70,7 +70,7 @@ apiDescribe('specimen', () => {
       })
       it('Second version fetched by id', () => {
         return makeTestCall({
-          operationId: 'getSpecimenVersion',
+          operationId: 'specimenGetVersion',
           pathParams: { id: existingId, versionId: secondFetchedId },
         }).then(response => {
           expectSingleResourceResponse({
@@ -83,7 +83,7 @@ apiDescribe('specimen', () => {
       it('getSpecimenVersions for non existing speciment result in 404', () => {
         return expectError404(
           makeTestCall({
-            operationId: 'getSpecimenVersions',
+            operationId: 'specimenGetVersions',
             pathParams: { id: '99999' },
           })
         )
@@ -91,7 +91,7 @@ apiDescribe('specimen', () => {
       it('getSpecimenVersion for non existing speciment result in 404', () => {
         return expectError404(
           makeTestCall({
-            operationId: 'getSpecimenVersion',
+            operationId: 'specimenGetVersion',
             pathParams: { id: '99999', versionId: secondFetchedId },
           })
         )
@@ -99,7 +99,7 @@ apiDescribe('specimen', () => {
       it('getSpecimenVersion for existing speciment but non existing version result in 404', () => {
         return expectError404(
           makeTestCall({
-            operationId: 'getSpecimenVersion',
+            operationId: 'specimenGetVersion',
             pathParams: { id: existingId, versionId: '99999' },
           })
         )

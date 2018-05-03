@@ -21,7 +21,7 @@ apiDescribe('specimen', () => {
       beforeEach(() => {
         return makeTestCall({
           body: getTestData('simpleDataPhysicalObjectRelations'),
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         }).then(response => {
           simpleDataPhysicalObjectRelationsId = response.data.id
         })
@@ -33,12 +33,12 @@ apiDescribe('specimen', () => {
         }
         return makeTestCall({
           body: emptyRelationships,
-          operationId: 'updateSpecimenPhysicalObjects',
+          operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
           pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
           .then(() => {
             return makeTestCall({
-              operationId: 'getSpecimen',
+              operationId: 'specimenGetOne',
               pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
                 relationships: ['all'],
@@ -71,7 +71,7 @@ apiDescribe('specimen', () => {
         return expectError404(
           makeTestCall({
             body: emptyRelationships,
-            operationId: 'updateSpecimenPhysicalObjects',
+            operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
             pathParams: { id: '4433441' },
           })
         )
@@ -83,7 +83,7 @@ apiDescribe('specimen', () => {
         }
         return makeTestCall({
           body: newRelationships,
-          operationId: 'updateSpecimenPhysicalObjects',
+          operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
           pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
           .then(response => {
@@ -96,7 +96,7 @@ apiDescribe('specimen', () => {
             ])
 
             return makeTestCall({
-              operationId: 'getSpecimen',
+              operationId: 'specimenGetOne',
               pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
                 relationships: ['all'],
@@ -118,7 +118,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: newRelationships,
-            operationId: 'updateSpecimenPhysicalObjects',
+            operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
             pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
         )
@@ -130,7 +130,7 @@ apiDescribe('specimen', () => {
     beforeEach(() => {
       return makeTestCall({
         body: getTestData('simpleDataNoRelations'),
-        operationId: 'createSpecimen',
+        operationId: 'specimenCreate',
       }).then(response => {
         simpleDataNoRelationsId = response.data.id
       })
@@ -141,12 +141,12 @@ apiDescribe('specimen', () => {
       }
       return makeTestCall({
         body: newRelationships,
-        operationId: 'updateSpecimenPhysicalObjects',
+        operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
         pathParams: { id: simpleDataNoRelationsId },
       })
         .then(() => {
           return makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
             pathParams: { id: simpleDataNoRelationsId },
             queryParams: {
               relationships: ['all'],

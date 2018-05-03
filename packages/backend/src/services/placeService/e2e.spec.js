@@ -61,7 +61,7 @@ apiDescribe('place', () => {
       return makeTestCall({
         authToken,
         body: simplePlace,
-        operationId: 'createPlace',
+        operationId: 'placeCreate',
       }).then(res => {
         expect(res).toBeTruthy()
       })
@@ -73,7 +73,7 @@ apiDescribe('place', () => {
       return makeTestCall({
         authToken,
         body: simplePlace,
-        operationId: 'createPlace',
+        operationId: 'placeCreate',
       }).then(res => {
         expect(res).toBeTruthy()
         id = res.data.id // eslint-disable-line prefer-destructuring
@@ -82,7 +82,7 @@ apiDescribe('place', () => {
     it('Works with simple get', () => {
       return makeTestCall({
         authToken,
-        operationId: 'getPlace',
+        operationId: 'placeGetOne',
         pathParams: {
           id,
         },
@@ -97,7 +97,7 @@ apiDescribe('place', () => {
       return makeTestCall({
         authToken,
         body: simplePlace,
-        operationId: 'createPlace',
+        operationId: 'placeCreate',
       }).then(res => {
         expect(res).toBeTruthy()
         id = res.data.id // eslint-disable-line prefer-destructuring
@@ -107,7 +107,7 @@ apiDescribe('place', () => {
       return makeTestCall({
         authToken,
         body: simplePlaceUpdate,
-        operationId: 'updatePlace',
+        operationId: 'placeUpdate',
         pathParams: {
           id,
         },
@@ -116,7 +116,7 @@ apiDescribe('place', () => {
         return makeTestCall({
           authToken,
           body: simplePlaceUpdate,
-          operationId: 'updatePlace',
+          operationId: 'placeUpdate',
           pathParams: {
             id,
           },
@@ -134,7 +134,7 @@ apiDescribe('place', () => {
       return makeTestCall({
         authToken,
         body: simplePlaceParent,
-        operationId: 'createPlace',
+        operationId: 'placeCreate',
       })
         .then(res => {
           expect(res).toBeTruthy()
@@ -144,7 +144,7 @@ apiDescribe('place', () => {
           return makeTestCall({
             authToken,
             body: simplePlace,
-            operationId: 'createPlace',
+            operationId: 'placeCreate',
           }).then(res => {
             childId = res.data.id // eslint-disable-line prefer-destructuring
           })
@@ -153,7 +153,7 @@ apiDescribe('place', () => {
           return makeTestCall({
             authToken,
             body: simplePlaceChild,
-            operationId: 'createPlace',
+            operationId: 'placeCreate',
           }).then(res => {
             grandchildId = res.data.id // eslint-disable-line prefer-destructuring
           })
@@ -167,7 +167,7 @@ apiDescribe('place', () => {
                 type: 'place',
               },
             },
-            operationId: 'updatePlaceParent',
+            operationId: 'placeUpdateRelationHasOneParent',
             pathParams: {
               id: childId,
             },
@@ -184,7 +184,7 @@ apiDescribe('place', () => {
                 type: 'place',
               },
             },
-            operationId: 'updatePlaceParent',
+            operationId: 'placeUpdateRelationHasOneParent',
             pathParams: {
               id: grandchildId,
             },
@@ -195,7 +195,7 @@ apiDescribe('place', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPlace',
+            operationId: 'placeGetOne',
             pathParams: {
               id: childId,
             },

@@ -40,7 +40,7 @@ apiDescribe('storage', () => {
       return makeTestCall({
         authToken,
         body: physicalObjectExample,
-        operationId: 'createPhysicalObject',
+        operationId: 'physicalObjectCreate',
         validateOutput: true,
       }).then(response => {
         expectSingleResourceResponse({
@@ -55,7 +55,7 @@ apiDescribe('storage', () => {
       return makeTestCall({
         authToken,
         body: storageLocationExample,
-        operationId: 'createStorageLocation',
+        operationId: 'storageLocationCreate',
         validateOutput: true,
       }).then(res => {
         expect(res).toBeTruthy()
@@ -72,7 +72,7 @@ apiDescribe('storage', () => {
       return makeTestCall({
         authToken,
         body: storageLocationExample,
-        operationId: 'createStorageLocation',
+        operationId: 'storageLocationCreate',
         validateOutput: true,
       })
         .then(storageLocationRes => {
@@ -87,7 +87,7 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             body: physicalObjectExample,
-            operationId: 'createPhysicalObject',
+            operationId: 'physicalObjectCreate',
             validateOutput: true,
           }).then(physicalObjectRes => {
             expect(physicalObjectRes).toBeTruthy()
@@ -105,7 +105,7 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId: 'updatePhysicalObjectStorageLocation',
+            operationId: 'physicalObjectUpdateRelationHasOneStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
@@ -118,7 +118,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalObjectStorageLocation',
+            operationId: 'physicalObjectGetRelationHasOneStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
@@ -131,7 +131,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getStorageLocationPhysicalObjects',
+            operationId: 'storageLocationGetRelationHasManyPhysicalObjects',
             pathParams: {
               id: storageLocationId,
             },
@@ -151,7 +151,7 @@ apiDescribe('storage', () => {
       return makeTestCall({
         authToken,
         body: storageLocationExample,
-        operationId: 'createStorageLocation',
+        operationId: 'storageLocationCreate',
         validateOutput: true,
       })
         .then(storageLocationRes => {
@@ -166,7 +166,7 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             body: physicalObjectExample,
-            operationId: 'createPhysicalObject',
+            operationId: 'physicalObjectCreate',
             validateOutput: true,
           }).then(physicalObjectRes => {
             expect(physicalObjectRes).toBeTruthy()
@@ -184,7 +184,7 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId: 'updatePhysicalObjectStorageLocation',
+            operationId: 'physicalObjectUpdateRelationHasOneStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
@@ -197,7 +197,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalObject',
+            operationId: 'physicalObjectGetOne',
             pathParams: {
               id: physicalObjectId,
             },
@@ -217,7 +217,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getStorageLocation',
+            operationId: 'storageLocationGetOne',
             pathParams: {
               id: storageLocationId,
             },
@@ -238,7 +238,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalObjects',
+            operationId: 'physicalObjectGetMany',
             queryParams: {
               relationships: ['all'],
             },
@@ -254,7 +254,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getStorageLocations',
+            operationId: 'storageLocationGetMany',
             queryParams: {
               relationships: ['all'],
             },
@@ -274,7 +274,7 @@ apiDescribe('storage', () => {
       return makeTestCall({
         authToken,
         body: storageLocationExample,
-        operationId: 'createStorageLocation',
+        operationId: 'storageLocationCreate',
         validateOutput: true,
       })
         .then(storageLocationRes => {
@@ -302,7 +302,7 @@ apiDescribe('storage', () => {
           return makeTestCall({
             authToken,
             body: physicalObjectWithRelationshipsExample,
-            operationId: 'createPhysicalObject',
+            operationId: 'physicalObjectCreate',
             validateOutput: true,
           }).then(physicalObjectRes => {
             expect(physicalObjectRes).toBeTruthy()
@@ -314,7 +314,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalObject',
+            operationId: 'physicalObjectGetOne',
             pathParams: {
               id: physicalObjectId,
             },
@@ -334,7 +334,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getStorageLocation',
+            operationId: 'storageLocationGetOne',
             pathParams: {
               id: storageLocationId,
             },
@@ -355,7 +355,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getPhysicalObjects',
+            operationId: 'physicalObjectGetMany',
             queryParams: {
               relationships: ['all'],
             },
@@ -371,7 +371,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'getStorageLocations',
+            operationId: 'storageLocationGetMany',
             queryParams: {
               relationships: ['all'],
             },
