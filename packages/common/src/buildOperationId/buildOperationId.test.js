@@ -1,4 +1,4 @@
-const buildOperationId = require('./buildOperationId')
+const buildOperationId = require('./index')
 
 describe('lib/services/operationFactory/typeFactories/utilities/buildOperationId', () => {
   it('returns operationId from resource and operationType', () => {

@@ -1,4 +1,4 @@
-const buildOperationId = require('./utilities/buildOperationId')
+const buildOperationId = require('common/src/buildOperationId')
 
 module.exports = function getRelationHasOne({
   basePath,

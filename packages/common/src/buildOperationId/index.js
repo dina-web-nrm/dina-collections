@@ -1,4 +1,4 @@
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
+const capitalizeFirstLetter = require('../stringFormatters/capitalizeFirstLetter')
 
 module.exports = function buildOperationId({
   operationType,
