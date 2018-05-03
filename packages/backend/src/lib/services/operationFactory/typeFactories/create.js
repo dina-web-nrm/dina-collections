@@ -1,4 +1,4 @@
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function create({
   basePath,
@@ -9,7 +9,7 @@ module.exports = function create({
   queryParams,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -18,13 +18,15 @@ module.exports = function create({
     ...errorsInput,
   }
 
+  const operationType = 'create'
+
   return {
     ...rest,
     errors,
     method: 'post',
-    operationId: operationId || `create${capitalizeFirstLetter(resource)}`,
-    operationType: 'create',
-    path: `${basePath}/${resourcePlural}`,
+    operationId: operationId || buildOperationId({ operationType, resource }),
+    operationType,
+    path: `${basePath}/${resourcePath}`,
     queryParams,
     relations,
     request: {

@@ -1,4 +1,4 @@
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function getRelationHasMany({
   basePath,
@@ -8,7 +8,7 @@ module.exports = function getRelationHasMany({
   relationKey,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -20,17 +20,15 @@ module.exports = function getRelationHasMany({
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
 
-  const operationId = `get${capitalizeFirstLetter(
-    resource
-  )}${capitalizeFirstLetter(relationKey)}`
+  const operationType = 'getRelationHasMany'
 
   return {
     ...rest,
     errors,
     method: 'get',
-    operationId,
-    operationType: 'getRelationHasMany',
-    path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
+    operationId: buildOperationId({ operationType, relationKey, resource }),
+    operationType,
+    path: `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
     relation: {

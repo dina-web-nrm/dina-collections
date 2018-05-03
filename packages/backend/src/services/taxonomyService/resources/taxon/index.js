@@ -56,5 +56,5 @@ module.exports = {
     },
   },
   resource: 'taxon',
-  resourcePlural: 'taxa',
+  resourcePath: 'taxa',
 }

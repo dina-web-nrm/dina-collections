@@ -1,11 +1,11 @@
 import { flattenObjectResponse } from 'utilities/transformations'
 
 import {
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_FAIL,
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_REQUEST,
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_SUCCESS,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_FAIL,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_REQUEST,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_SUCCESS,
 } from '../../actionTypes'
-import { GET_DISTINGUISHED_UNIT_TYPE } from '../../endpoints'
+import { GET_PREPARATION_TYPE } from '../../endpoints'
 
 export default function getPreparationType({ id, throwError = false } = {}) {
   const pathParams = { id }
@@ -13,10 +13,10 @@ export default function getPreparationType({ id, throwError = false } = {}) {
   return (dispatch, getState, { apiClient }) => {
     dispatch({
       meta: { id },
-      type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_REQUEST,
+      type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_REQUEST,
     })
     return apiClient
-      .call(GET_DISTINGUISHED_UNIT_TYPE, {
+      .call(GET_PREPARATION_TYPE, {
         pathParams,
       })
       .then(
@@ -25,7 +25,7 @@ export default function getPreparationType({ id, throwError = false } = {}) {
           dispatch({
             meta: { id },
             payload: transformedResponse,
-            type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_SUCCESS,
+            type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_SUCCESS,
           })
           return transformedResponse
         },
@@ -34,7 +34,7 @@ export default function getPreparationType({ id, throwError = false } = {}) {
             error: true,
             meta: { id },
             payload: error,
-            type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_FAIL,
+            type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_FAIL,
           })
 
           if (throwError) {

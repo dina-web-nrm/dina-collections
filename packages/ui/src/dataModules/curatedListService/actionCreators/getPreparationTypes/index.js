@@ -1,23 +1,23 @@
 import { flattenArrayResponse } from 'utilities/transformations'
 
 import {
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_FAIL,
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_FAIL,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS,
 } from '../../actionTypes'
-import { GET_DISTINGUISHED_UNIT_TYPES } from '../../endpoints'
+import { GET_PREPARATION_TYPES } from '../../endpoints'
 
 export default function getPreparationTypes({ throwError = false } = {}) {
   return (dispatch, getState, { apiClient }) => {
     dispatch({
-      type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,
+      type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST,
     })
-    return apiClient.call(GET_DISTINGUISHED_UNIT_TYPES).then(
+    return apiClient.call(GET_PREPARATION_TYPES).then(
       response => {
         const transformedResponse = flattenArrayResponse(response.data)
         dispatch({
           payload: transformedResponse,
-          type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS,
+          type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS,
         })
         return transformedResponse
       },
@@ -25,7 +25,7 @@ export default function getPreparationTypes({ throwError = false } = {}) {
         dispatch({
           error: true,
           payload: error,
-          type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_FAIL,
+          type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_FAIL,
         })
 
         if (throwError) {

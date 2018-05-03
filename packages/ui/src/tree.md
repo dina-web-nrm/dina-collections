@@ -32,7 +32,6 @@
 │   ├── allModules.js
 │   ├── curatedListService
 │   ├── index.js
-│   ├── placeService
 │   ├── specimenService
 │   ├── storageService
 │   ├── taxonService

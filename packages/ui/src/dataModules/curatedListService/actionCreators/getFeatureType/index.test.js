@@ -37,7 +37,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureType', () => {
   })
 
   it(`calls getFeatureType`, () => {
-    const operationId = 'getFeatureType'
+    const operationId = 'featureTypeGetOne'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -68,7 +68,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureType', () => {
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getFeatureType'
+    const operationId = 'featureTypeGetOne'
     const id = '123'
     const mockResponse = {
       data: {
@@ -119,7 +119,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureType', () => {
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL
   } without throwing error`, () => {
-    const operationId = 'getFeatureType'
+    const operationId = 'featureTypeGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -157,7 +157,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureType', () => {
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPE_FAIL
   } and throws error`, () => {
-    const operationId = 'getFeatureType'
+    const operationId = 'featureTypeGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 

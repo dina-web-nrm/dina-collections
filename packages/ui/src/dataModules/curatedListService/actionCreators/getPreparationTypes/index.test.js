@@ -19,15 +19,14 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST
+    actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST
   }`, () => {
     const id = '123'
 
     const testAction = getPreparationTypes({ id })
 
     const expectedAction = {
-      type:
-        actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST,
     }
 
     store.dispatch(testAction)
@@ -36,7 +35,7 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
   })
 
   it(`calls getPreparationTypes`, () => {
-    const operationId = 'getPreparationTypes'
+    const operationId = 'preparationTypeGetMany'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -61,9 +60,9 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS
+    actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getPreparationTypes'
+    const operationId = 'preparationTypeGetMany'
     const id = '123'
     const mockResponse = {
       data: [
@@ -105,13 +104,11 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
     const testAction = getPreparationTypes({ id })
 
     const expectedFirstAction = {
-      type:
-        actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST,
     }
     const expectedSecondAction = {
       payload: transformedResponse,
-      type:
-        actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS,
     }
 
     expect.assertions(2)
@@ -126,9 +123,9 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_FAIL
+    actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_FAIL
   } without throwing error`, () => {
-    const operationId = 'getPreparationTypes'
+    const operationId = 'preparationTypeGetMany'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -141,13 +138,12 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
     const testAction = getPreparationTypes({ id })
 
     const expectedFirstAction = {
-      type:
-        actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
       payload: mockResponse,
-      type: actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_FAIL,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_FAIL,
     }
 
     expect.assertions(2)
@@ -162,9 +158,9 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
   })
 
   it(`dispatches ${
-    actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_FAIL
+    actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_FAIL
   } and throws error`, () => {
-    const operationId = 'getPreparationTypes'
+    const operationId = 'preparationTypeGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -176,13 +172,12 @@ describe('dataModules/curatedListService/actionCreators/getPreparationTypes', ()
     const testAction = getPreparationTypes({ throwError: true })
 
     const expectedFirstAction = {
-      type:
-        actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_REQUEST,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_REQUEST,
     }
     const expectedSecondAction = {
       error: true,
       payload: mockResponse,
-      type: actionTypes.CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_FAIL,
+      type: actionTypes.CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_FAIL,
     }
 
     expect.assertions(2)

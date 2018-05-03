@@ -36,7 +36,7 @@ describe('dataModules/storageService/actionCreators/getPhysicalObject', () => {
   })
 
   it(`calls getPhysicalObject`, () => {
-    const operationId = 'getPhysicalObject'
+    const operationId = 'physicalObjectGetOne'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -70,7 +70,7 @@ describe('dataModules/storageService/actionCreators/getPhysicalObject', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getPhysicalObject'
+    const operationId = 'physicalObjectGetOne'
     const id = '123'
     const mockResponse = {
       data: {
@@ -119,7 +119,7 @@ describe('dataModules/storageService/actionCreators/getPhysicalObject', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL
   } without throwing error`, () => {
-    const operationId = 'getPhysicalObject'
+    const operationId = 'physicalObjectGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -156,7 +156,7 @@ describe('dataModules/storageService/actionCreators/getPhysicalObject', () => {
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_GET_PHYSICAL_UNIT_FAIL
   } and throws error`, () => {
-    const operationId = 'getPhysicalObject'
+    const operationId = 'physicalObjectGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 

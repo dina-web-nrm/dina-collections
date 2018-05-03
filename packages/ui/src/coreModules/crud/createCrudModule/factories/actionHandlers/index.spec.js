@@ -50,11 +50,11 @@ describe('coreModules/crud/createCrudModule/factories/actionHandlers', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'slice',
             },
           ],
@@ -72,7 +72,7 @@ describe('coreModules/crud/createCrudModule/factories/actionHandlers', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
           ],
@@ -107,15 +107,15 @@ describe('coreModules/crud/createCrudModule/factories/actionHandlers', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
             {
-              operationId: 'getPhysicalObjects',
+              operationId: 'physicalObjectGetMany',
               type: 'getMany',
             },
           ],
@@ -140,7 +140,7 @@ describe('coreModules/crud/createCrudModule/factories/actionHandlers', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
           ],
@@ -186,15 +186,15 @@ describe('coreModules/crud/createCrudModule/factories/actionHandlers', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
             {
-              operationId: 'getPhysicalObjects',
+              operationId: 'physicalObjectGetMany',
               type: 'getMany',
             },
           ],

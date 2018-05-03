@@ -36,7 +36,7 @@ describe('dataModules/storageService/actionCreators/updatePhysicalObject', () =>
   })
 
   it(`calls updatePhysicalObject with correct body`, () => {
-    const operationId = 'updatePhysicalObject'
+    const operationId = 'physicalObjectUpdate'
     const physicalObject = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -79,7 +79,7 @@ describe('dataModules/storageService/actionCreators/updatePhysicalObject', () =>
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'updatePhysicalObject'
+    const operationId = 'physicalObjectUpdate'
     const attributes = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -134,7 +134,7 @@ describe('dataModules/storageService/actionCreators/updatePhysicalObject', () =>
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_FAIL
   } without throwing error`, () => {
-    const operationId = 'updatePhysicalObject'
+    const operationId = 'physicalObjectUpdate'
     const physicalObject = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -175,7 +175,7 @@ describe('dataModules/storageService/actionCreators/updatePhysicalObject', () =>
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_UPDATE_PHYSICAL_UNIT_FAIL
   } and throws error`, () => {
-    const operationId = 'updatePhysicalObject'
+    const operationId = 'physicalObjectUpdate'
     const physicalObject = {
       id: '123',
       normalStorageLocationText: 'string',

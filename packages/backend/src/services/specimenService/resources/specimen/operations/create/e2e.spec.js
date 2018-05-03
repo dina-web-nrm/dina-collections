@@ -19,7 +19,7 @@ apiDescribe('specimen', () => {
       it('Succeed with full form example', () => {
         return makeTestCall({
           body: fullFormExample,
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         }).then(response => {
           expectSingleResourceResponse({
             expectedType: 'specimen',
@@ -31,7 +31,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: getTestData('badRequestMissingCatalogNumber'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           })
         )
       })
@@ -40,10 +40,10 @@ apiDescribe('specimen', () => {
       it('Succeed with simpleDataNoRelations and responseource are created with default relationships', () => {
         return makeTestCall({
           body: getTestData('simpleDataNoRelations'),
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         }).then(createdSpecimen => {
           return makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
             pathParams: { id: createdSpecimen.data.id },
             queryParams: {
               relationships: ['all'],
@@ -75,7 +75,7 @@ apiDescribe('specimen', () => {
         )
         return makeTestCall({
           body: simpleDataPhysicalObjectRelations,
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         })
           .then(response => {
             expectSingleResourceResponse({
@@ -87,7 +87,7 @@ apiDescribe('specimen', () => {
           })
           .then(createdSpecimen => {
             return makeTestCall({
-              operationId: 'getSpecimen',
+              operationId: 'specimenGetOne',
               pathParams: { id: createdSpecimen.data.id },
               queryParams: {
                 relationships: ['all'],
@@ -116,7 +116,7 @@ apiDescribe('specimen', () => {
         )
         return makeTestCall({
           body: simpleDataMultipleRelations,
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         })
           .then(response => {
             expectSingleResourceResponse({
@@ -129,7 +129,7 @@ apiDescribe('specimen', () => {
           })
           .then(createdSpecimen => {
             return makeTestCall({
-              operationId: 'getSpecimen',
+              operationId: 'specimenGetOne',
               pathParams: { id: createdSpecimen.data.id },
               queryParams: {
                 relationships: ['all'],
@@ -148,7 +148,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: getTestData('simpleDataInvalidRelations'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           })
         )
       })
@@ -156,7 +156,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: getTestData('simpleDataInvalidRelationsFormat'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           })
         )
       })

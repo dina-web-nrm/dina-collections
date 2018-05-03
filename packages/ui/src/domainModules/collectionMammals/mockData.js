@@ -1,7 +1,7 @@
 import models from 'common/dist/models.json'
 import immutable from 'object-path-immutable'
 
-const { fullFormExample } = models.createSpecimenRequest['x-examples']
+const { fullFormExample } = models.specimenCreateRequest['x-examples']
 
 let mockId = 0
 

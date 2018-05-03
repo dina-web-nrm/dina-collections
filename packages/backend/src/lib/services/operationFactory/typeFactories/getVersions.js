@@ -1,13 +1,14 @@
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function getVersions({
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
+  operationId,
   queryParams,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -15,14 +16,16 @@ module.exports = function getVersions({
     '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
     ...errorsInput,
   }
-  const operationId = `get${capitalizeFirstLetter(resource)}Versions`
+
+  const operationType = 'getVersions'
+
   return {
     ...rest,
     errors,
     method: 'get',
-    operationId,
-    operationType: 'getVersions',
-    path: `${basePath}/${resourcePlural}/{id}/versions`,
+    operationId: operationId || buildOperationId({ operationType, resource }),
+    operationType,
+    path: `${basePath}/${resourcePath}/{id}/versions`,
     pathParams: ['id'],
     queryParams,
     resource,
@@ -31,6 +34,6 @@ module.exports = function getVersions({
       format: 'array',
       relations,
     },
-    summary: `Find ${resourcePlural} versions`,
+    summary: `Find ${resourcePath} versions`,
   }
 }

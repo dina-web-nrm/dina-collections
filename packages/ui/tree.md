@@ -41,9 +41,6 @@
 │   ├── tree.md
 │   └── utilities
 ├── storybook-static
-│   ├── favicon.ico
-│   ├── iframe.html
-│   ├── index.html
 │   └── static
 ├── test
 │   └── __mocks__

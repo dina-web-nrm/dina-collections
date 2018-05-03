@@ -36,7 +36,7 @@ describe('dataModules/storageService/actionCreators/updateStorageLocation', () =
   })
 
   it(`calls updateStorageLocation with correct body`, () => {
-    const operationId = 'updateStorageLocation'
+    const operationId = 'storageLocationUpdate'
     const storageLocation = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -79,7 +79,7 @@ describe('dataModules/storageService/actionCreators/updateStorageLocation', () =
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'updateStorageLocation'
+    const operationId = 'storageLocationUpdate'
     const attributes = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -134,7 +134,7 @@ describe('dataModules/storageService/actionCreators/updateStorageLocation', () =
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_FAIL
   } without throwing error`, () => {
-    const operationId = 'updateStorageLocation'
+    const operationId = 'storageLocationUpdate'
     const storageLocation = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -175,7 +175,7 @@ describe('dataModules/storageService/actionCreators/updateStorageLocation', () =
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_UPDATE_STORAGE_LOCATION_FAIL
   } and throws error`, () => {
-    const operationId = 'updateStorageLocation'
+    const operationId = 'storageLocationUpdate'
     const storageLocation = {
       id: '123',
       normalStorageLocationText: 'string',

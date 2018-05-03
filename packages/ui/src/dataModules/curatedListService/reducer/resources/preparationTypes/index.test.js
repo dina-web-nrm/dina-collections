@@ -3,10 +3,10 @@ import deepFreeze from 'deep-freeze'
 import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
 
 import {
-  CURATED_LIST_SERVICE_CREATE_DISTINGUISHED_UNIT_TYPE_SUCCESS,
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_SUCCESS,
-  CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS,
-  CURATED_LIST_SERVICE_UPDATE_DISTINGUISHED_UNIT_TYPE_SUCCESS,
+  CURATED_LIST_SERVICE_CREATE_PREPARATION_TYPE_SUCCESS,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_SUCCESS,
+  CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS,
+  CURATED_LIST_SERVICE_UPDATE_PREPARATION_TYPE_SUCCESS,
 } from '../../../actionTypes'
 
 import reducer, { getInitialState } from './index'
@@ -54,8 +54,8 @@ describe('dataModules/curatedListService/reducer/resources/featureTypes', () => 
     })
 
     const createAndGetOneSuccesses = [
-      CURATED_LIST_SERVICE_CREATE_DISTINGUISHED_UNIT_TYPE_SUCCESS,
-      CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPE_SUCCESS,
+      CURATED_LIST_SERVICE_CREATE_PREPARATION_TYPE_SUCCESS,
+      CURATED_LIST_SERVICE_GET_PREPARATION_TYPE_SUCCESS,
     ]
 
     createAndGetOneSuccesses.forEach(actionType => {
@@ -115,7 +115,7 @@ describe('dataModules/curatedListService/reducer/resources/featureTypes', () => 
     })
 
     it(`merges previous state with new data on ${
-      CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS
+      CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS
     }`, () => {
       const state = {
         1: {
@@ -139,7 +139,7 @@ describe('dataModules/curatedListService/reducer/resources/featureTypes', () => 
             type: 'type',
           },
         ],
-        type: CURATED_LIST_SERVICE_GET_DISTINGUISHED_UNIT_TYPES_SUCCESS,
+        type: CURATED_LIST_SERVICE_GET_PREPARATION_TYPES_SUCCESS,
       }
 
       const testValue = reducer(state, action)
@@ -165,7 +165,7 @@ describe('dataModules/curatedListService/reducer/resources/featureTypes', () => 
     })
 
     it(`updates existing resource when keeping other resources on ${
-      CURATED_LIST_SERVICE_UPDATE_DISTINGUISHED_UNIT_TYPE_SUCCESS
+      CURATED_LIST_SERVICE_UPDATE_PREPARATION_TYPE_SUCCESS
     }`, () => {
       const state = {
         appl: {
@@ -188,7 +188,7 @@ describe('dataModules/curatedListService/reducer/resources/featureTypes', () => 
           name: 'Alphabet Inc.',
           type: 'type',
         },
-        type: CURATED_LIST_SERVICE_UPDATE_DISTINGUISHED_UNIT_TYPE_SUCCESS,
+        type: CURATED_LIST_SERVICE_UPDATE_PREPARATION_TYPE_SUCCESS,
       }
       const { id, ...rest } = action.payload
 

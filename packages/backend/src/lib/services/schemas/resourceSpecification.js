@@ -13,7 +13,7 @@ module.exports = {
     resource: {
       type: 'string',
     },
-    resourcePlural: {
+    resourcePath: {
       type: 'string',
     },
   },

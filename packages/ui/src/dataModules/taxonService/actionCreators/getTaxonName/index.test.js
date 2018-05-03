@@ -34,7 +34,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonName', () => {
   })
 
   it(`calls getTaxonName`, () => {
-    const operationId = 'getTaxonName'
+    const operationId = 'taxonNameGetOne'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -68,7 +68,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonName', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXON_NAME_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getTaxonName'
+    const operationId = 'taxonNameGetOne'
     const id = '123'
     const mockResponse = {
       data: {
@@ -117,7 +117,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonName', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXON_NAME_FAIL
   } without throwing error`, () => {
-    const operationId = 'getTaxonName'
+    const operationId = 'taxonNameGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -154,7 +154,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonName', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXON_NAME_FAIL
   } and throws error`, () => {
-    const operationId = 'getTaxonName'
+    const operationId = 'taxonNameGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 

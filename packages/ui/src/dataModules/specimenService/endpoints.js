@@ -1,17 +1,17 @@
 import createEndpoint from 'utilities/endpointFactory/client'
 
 export const CREATE_SPECIMEN = createEndpoint({
-  operationId: 'createSpecimen',
+  operationId: 'specimenCreate',
 })
 
 export const GET_SPECIMEN = createEndpoint({
-  operationId: 'getSpecimen',
+  operationId: 'specimenGetOne',
 })
 
 export const GET_SPECIMENS = createEndpoint({
-  operationId: 'getSpecimens',
+  operationId: 'specimenGetMany',
 })
 
 export const UPDATE_SPECIMEN = createEndpoint({
-  operationId: 'updateSpecimen',
+  operationId: 'specimenUpdate',
 })

@@ -36,7 +36,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   })
 
   it(`calls createStorageLocation with correct body`, () => {
-    const operationId = 'createStorageLocation'
+    const operationId = 'storageLocationCreate'
     const storageLocation = {
       name: 'string',
     }
@@ -73,7 +73,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_STORAGE_LOCATION_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createStorageLocation'
+    const operationId = 'storageLocationCreate'
     const storageLocation = {
       name: 'string',
     }
@@ -125,7 +125,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_STORAGE_LOCATION_FAIL
   } without throwing error`, () => {
-    const operationId = 'createStorageLocation'
+    const operationId = 'storageLocationCreate'
     const storageLocation = {
       name: 'string',
     }
@@ -164,7 +164,7 @@ describe('dataModules/storageService/actionCreators/createStorageLocation', () =
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_STORAGE_LOCATION_FAIL
   } and throws error`, () => {
-    const operationId = 'createStorageLocation'
+    const operationId = 'storageLocationCreate'
     const storageLocation = {
       name: 'string',
     }

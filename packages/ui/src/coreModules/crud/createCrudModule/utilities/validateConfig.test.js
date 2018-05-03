@@ -13,7 +13,7 @@ describe('coreModules/crud/CrudManager/utilities/validateConfig', () => {
         physicalObject: {
           operations: [
             {
-              operationId: 'getPhysicalUnit',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
           ],

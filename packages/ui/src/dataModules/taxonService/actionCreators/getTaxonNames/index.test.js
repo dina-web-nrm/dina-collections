@@ -47,7 +47,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonNames', () => {
   })
 
   it(`calls getTaxonNames`, () => {
-    const operationId = 'getTaxonNames'
+    const operationId = 'taxonNameGetMany'
 
     const callSpy = jest.fn()
 
@@ -83,7 +83,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonNames', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getTaxonNames'
+    const operationId = 'taxonNameGetMany'
     const mockResponse = {
       data: [
         {
@@ -148,7 +148,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonNames', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_FAIL
   } without throwing error`, () => {
-    const operationId = 'getTaxonNames'
+    const operationId = 'taxonNameGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -184,7 +184,7 @@ describe('dataModules/taxonService/actionCreators/getTaxonNames', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXON_NAMES_FAIL
   } and throws error`, () => {
-    const operationId = 'getTaxonNames'
+    const operationId = 'taxonNameGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({

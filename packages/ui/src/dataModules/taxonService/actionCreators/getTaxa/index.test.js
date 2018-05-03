@@ -47,7 +47,7 @@ describe('dataModules/taxonService/actionCreators/getTaxa', () => {
   })
 
   it(`calls getTaxa`, () => {
-    const operationId = 'getTaxa'
+    const operationId = 'taxonGetMany'
 
     const callSpy = jest.fn()
 
@@ -83,7 +83,7 @@ describe('dataModules/taxonService/actionCreators/getTaxa', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXA_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getTaxa'
+    const operationId = 'taxonGetMany'
     const mockResponse = {
       data: [
         {
@@ -148,7 +148,7 @@ describe('dataModules/taxonService/actionCreators/getTaxa', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXA_FAIL
   } without throwing error`, () => {
-    const operationId = 'getTaxa'
+    const operationId = 'taxonGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -184,7 +184,7 @@ describe('dataModules/taxonService/actionCreators/getTaxa', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_GET_TAXA_FAIL
   } and throws error`, () => {
-    const operationId = 'getTaxa'
+    const operationId = 'taxonGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({

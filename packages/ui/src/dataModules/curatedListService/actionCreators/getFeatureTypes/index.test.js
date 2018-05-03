@@ -36,7 +36,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureTypes', () => 
   })
 
   it(`calls getFeatureTypes`, () => {
-    const operationId = 'getFeatureTypes'
+    const operationId = 'featureTypeGetMany'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -63,7 +63,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureTypes', () => 
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getFeatureTypes'
+    const operationId = 'featureTypeGetMany'
     const id = '123'
     const mockResponse = {
       data: [
@@ -128,7 +128,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureTypes', () => 
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_FAIL
   } without throwing error`, () => {
-    const operationId = 'getFeatureTypes'
+    const operationId = 'featureTypeGetMany'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -164,7 +164,7 @@ describe('dataModules/curatedListService/actionCreators/getFeatureTypes', () => 
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_GET_FEATURE_OBSERVATION_TYPES_FAIL
   } and throws error`, () => {
-    const operationId = 'getFeatureTypes'
+    const operationId = 'featureTypeGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({

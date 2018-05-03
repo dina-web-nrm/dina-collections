@@ -54,8 +54,10 @@
     "test:batch": "BATCH_TESTS=true jest --env=node --watch",
     "test:db": "DB_TESTS=true jest --env=node --watch",
     "test:depcheck": "depcheck . --ignores=pg",
-    "test:performance": "DEBUG='DINA:*:performance*' node src/performance/index.js",
-    "test:slow": "DB_TESTS=true jest --env=node && API_TESTS=true jest --env=node",
+    "test:integration":
+      "API_TESTS=true jest --env=node && DB_TESTS=true jest --env=node",
+    "test:performance":
+      "DEBUG='DINA:*:performance*' node src/performance/index.js",
     "test:unit": "jest --env=node",
     "test:unit:watch": "jest --env=node --watch"
   },

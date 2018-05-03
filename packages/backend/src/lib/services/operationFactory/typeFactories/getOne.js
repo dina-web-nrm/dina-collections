@@ -1,5 +1,5 @@
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function getOne({
   basePath,
@@ -10,7 +10,7 @@ module.exports = function getOne({
   queryParams: queryParamsInput,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const queryParams = addRelationsToQueryParams({
@@ -25,14 +25,16 @@ module.exports = function getOne({
     ...errorsInput,
   }
 
+  const operationType = 'getOne'
+
   return {
     ...rest,
     errors,
     includeRelations,
     method: 'get',
-    operationId: operationId || `get${capitalizeFirstLetter(resource)}`,
-    operationType: 'getOne',
-    path: `${basePath}/${resourcePlural}/{id}`,
+    operationId: operationId || buildOperationId({ operationType, resource }),
+    operationType,
+    path: `${basePath}/${resourcePath}/{id}`,
     pathParams: ['id'],
     queryParams,
     relations,

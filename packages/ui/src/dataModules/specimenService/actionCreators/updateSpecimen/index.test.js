@@ -38,7 +38,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
   })
 
   it(`calls updateSpecimen with correct body`, () => {
-    const operationId = 'updateSpecimen'
+    const operationId = 'specimenUpdate'
     const id = '123'
     const taxon = { id: '2367', type: 'taxon' }
     const attributes = {
@@ -83,7 +83,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_UPDATE_SPECIMEN_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'updateSpecimen'
+    const operationId = 'specimenUpdate'
     const attributes = {
       individual: {
         collectionItems: [],
@@ -134,7 +134,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_UPDATE_SPECIMEN_FAIL
   } without throwing error`, () => {
-    const operationId = 'updateSpecimen'
+    const operationId = 'specimenUpdate'
     const specimen = {
       id: '123',
       individual: {
@@ -167,7 +167,7 @@ describe('dataModules/specimenService/actionCreators/updateSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_UPDATE_SPECIMEN_FAIL
   } and throws error`, () => {
-    const operationId = 'updateSpecimen'
+    const operationId = 'specimenUpdate'
     const specimen = {
       id: '123',
       individual: {

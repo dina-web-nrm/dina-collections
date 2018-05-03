@@ -1,25 +1,25 @@
 import createEndpoint from 'utilities/endpointFactory/client'
 
-export const GET_DISTINGUISHED_UNIT_TYPE = createEndpoint({
-  operationId: 'getPreparationType',
+export const GET_PREPARATION_TYPE = createEndpoint({
+  operationId: 'preparationTypeGetOne',
 })
 
-export const GET_DISTINGUISHED_UNIT_TYPES = createEndpoint({
-  operationId: 'getPreparationTypes',
+export const GET_PREPARATION_TYPES = createEndpoint({
+  operationId: 'preparationTypeGetMany',
 })
 
 export const CREATE_FEATURE_OBSERVATION_TYPE = createEndpoint({
-  operationId: 'createFeatureType',
+  operationId: 'featureTypeCreate',
 })
 
 export const GET_FEATURE_OBSERVATION_TYPE = createEndpoint({
-  operationId: 'getFeatureType',
+  operationId: 'featureTypeGetOne',
 })
 
 export const GET_FEATURE_OBSERVATION_TYPES = createEndpoint({
-  operationId: 'getFeatureTypes',
+  operationId: 'featureTypeGetMany',
 })
 
 export const UPDATE_FEATURE_OBSERVATION_TYPE = createEndpoint({
-  operationId: 'updateFeatureType',
+  operationId: 'featureTypeUpdate',
 })

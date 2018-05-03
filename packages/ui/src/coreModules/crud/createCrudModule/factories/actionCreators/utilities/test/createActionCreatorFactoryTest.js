@@ -48,7 +48,7 @@ export default function createActionCreatorFactoryTest({
     it('calls getActionActionTypes', () => {
       expect.assertions(1)
       actionCreatorFactory({
-        operationId: 'createPhysicalObject',
+        operationId: 'physicalObjectCreate',
         resource: 'physicalObject',
       })
       expect(getActionActionTypesMock.mock.calls.length).toEqual(1)

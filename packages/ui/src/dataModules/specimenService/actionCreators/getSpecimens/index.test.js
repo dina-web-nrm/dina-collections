@@ -29,7 +29,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimens', () => {
   })
 
   it(`calls getSpecimens with queryParams`, () => {
-    const operationId = 'getSpecimens'
+    const operationId = 'specimenGetMany'
     const queryParams = { 'filter[catalogNumber]': '123' }
     const callSpy = jest.fn()
 
@@ -62,7 +62,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimens', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_GET_SPECIMENS_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getSpecimens'
+    const operationId = 'specimenGetMany'
     const mockResponse = {
       data: [
         {
@@ -119,7 +119,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimens', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_GET_SPECIMENS_FAIL
   } without throwing error`, () => {
-    const operationId = 'getSpecimens'
+    const operationId = 'specimenGetMany'
     const mockError = { status: 500 }
 
     apiClient.mock({
@@ -145,7 +145,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimens', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_GET_SPECIMENS_FAIL
   } and throws error`, () => {
-    const operationId = 'getSpecimens'
+    const operationId = 'specimenGetMany'
     const mockError = { status: 500 }
 
     apiClient.mock({

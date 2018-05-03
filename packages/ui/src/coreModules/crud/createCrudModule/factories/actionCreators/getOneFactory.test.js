@@ -8,7 +8,7 @@ import getOneFactory, { dep } from './getOneFactory'
 describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFactory', () => {
   describe('factory', () => {
     const actionCreatorFactoryInput = {
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
       operationType: 'getOne',
       resource: 'physicalObject',
       resourceActionTypes: {
@@ -48,7 +48,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
   describe('actionCreator', () => {
     describe('request action', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'getPhysicalObject',
+        operationId: 'physicalObjectGetOne',
         operationType: 'getOne',
         resource: 'physicalObject',
         resourceActionTypes: {
@@ -86,7 +86,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
 
     describe('success action', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'getPhysicalObject',
+        operationId: 'physicalObjectGetOne',
         operationType: 'getOne',
         resource: 'physicalObject',
         resourceActionTypes: {
@@ -134,7 +134,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
   })
   describe('fail action', () => {
     const actionCreatorFactoryInput = {
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
       operationType: 'getOne',
       resource: 'physicalObject',
       resourceActionTypes: {
@@ -174,7 +174,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
   })
   describe('api client', () => {
     const actionCreatorFactoryInput = {
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
       operationType: 'getOne',
       resource: 'physicalObject',
       resourceActionTypes: {

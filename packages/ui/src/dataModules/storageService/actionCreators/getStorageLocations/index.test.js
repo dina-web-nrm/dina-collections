@@ -33,7 +33,7 @@ describe('dataModules/storageService/actionCreators/getStorageLocations', () => 
   })
 
   it(`calls getStorageLocations`, () => {
-    const operationId = 'getStorageLocations'
+    const operationId = 'storageLocationGetMany'
 
     const callSpy = jest.fn()
 
@@ -59,7 +59,7 @@ describe('dataModules/storageService/actionCreators/getStorageLocations', () => 
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_GET_STORAGE_LOCATIONS_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getStorageLocations'
+    const operationId = 'storageLocationGetMany'
     const mockResponse = {
       data: [
         {
@@ -121,7 +121,7 @@ describe('dataModules/storageService/actionCreators/getStorageLocations', () => 
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_GET_STORAGE_LOCATIONS_FAIL
   } without throwing error`, () => {
-    const operationId = 'getStorageLocations'
+    const operationId = 'storageLocationGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({
@@ -155,7 +155,7 @@ describe('dataModules/storageService/actionCreators/getStorageLocations', () => 
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_GET_STORAGE_LOCATIONS_FAIL
   } and throws error`, () => {
-    const operationId = 'getStorageLocations'
+    const operationId = 'storageLocationGetMany'
     const mockResponse = { status: 404 }
 
     apiClient.mock({

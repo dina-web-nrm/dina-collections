@@ -1,4 +1,4 @@
-const capitalizeFirstLetter = require('./utilities/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function updateRelation({
   basePath,
@@ -9,7 +9,7 @@ module.exports = function updateRelation({
   relationKey,
   relations,
   resource,
-  resourcePlural,
+  resourcePath,
   ...rest
 }) {
   const errors = {
@@ -21,17 +21,15 @@ module.exports = function updateRelation({
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
 
-  const operationId = `update${capitalizeFirstLetter(
-    resource
-  )}${capitalizeFirstLetter(relationKey)}`
+  const operationType = 'updateRelationHasOne'
 
   return {
     ...rest,
     errors,
     method: 'patch',
-    operationId,
-    operationType: 'updateRelationHasOne',
-    path: `${basePath}/${resourcePlural}/{id}/relationships/${relationKey}`,
+    operationId: buildOperationId({ operationType, relationKey, resource }),
+    operationType,
+    path: `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,
     relation: {

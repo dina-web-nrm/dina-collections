@@ -5,7 +5,7 @@ export const config = {
     physicalObject: {
       operations: [
         {
-          operationId: 'getPhysicalUnit',
+          operationId: 'physicalObjectGetOne',
           type: 'getOne',
         },
       ],

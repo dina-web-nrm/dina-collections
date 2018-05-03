@@ -13,11 +13,11 @@ const config = {
       ],
       operations: [
         {
-          operationId: 'getCauseOfDeathType',
+          operationId: 'causeOfDeathTypeGetOne',
           type: 'getOne',
         },
         {
-          operationId: 'getCauseOfDeathTypes',
+          operationId: 'causeOfDeathTypeGetMany',
           type: 'getMany',
         },
       ],
@@ -34,11 +34,11 @@ const config = {
       ],
       operations: [
         {
-          operationId: 'getEstablishmentMeansType',
+          operationId: 'establishmentMeansTypeGetOne',
           type: 'getOne',
         },
         {
-          operationId: 'getEstablishmentMeansTypes',
+          operationId: 'establishmentMeansTypeGetMany',
           type: 'getMany',
         },
       ],
@@ -55,11 +55,11 @@ const config = {
       ],
       operations: [
         {
-          operationId: 'getIdentifierType',
+          operationId: 'identifierTypeGetOne',
           type: 'getOne',
         },
         {
-          operationId: 'getIdentifierTypes',
+          operationId: 'identifierTypeGetMany',
           type: 'getMany',
         },
       ],
@@ -67,19 +67,19 @@ const config = {
     place: {
       operations: [
         {
-          operationId: 'getPlace',
+          operationId: 'placeGetOne',
           type: 'getOne',
         },
         {
-          operationId: 'createPlace',
+          operationId: 'placeCreate',
           type: 'create',
         },
         {
-          operationId: 'getPlaces',
+          operationId: 'placeGetMany',
           type: 'getMany',
         },
         {
-          operationId: 'updatePlace',
+          operationId: 'placeUpdate',
           type: 'update',
         },
       ],
@@ -96,11 +96,11 @@ const config = {
       ],
       operations: [
         {
-          operationId: 'getTypeSpecimenType',
+          operationId: 'typeSpecimenTypeGetOne',
           type: 'getOne',
         },
         {
-          operationId: 'getTypeSpecimenTypes',
+          operationId: 'typeSpecimenTypeGetMany',
           type: 'getMany',
         },
       ],

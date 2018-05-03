@@ -9,7 +9,7 @@ describe('coreModules/crud/createCrudModule/factories/specification/createOperat
   it('it throws if type is not provided', () => {
     expect.assertions(1)
     const operationConfig = {
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
     }
     expect(() => createOperationSpecification({ operationConfig })).toThrow()
   })
@@ -30,21 +30,21 @@ describe('coreModules/crud/createCrudModule/factories/specification/createOperat
   it('create operation specification for getOne', () => {
     expect.assertions(1)
     const operationConfig = {
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
       type: 'getOne',
     }
     const operationSpecification = createOperationSpecification({
       operationConfig,
     })
     expect(operationSpecification).toEqual({
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
       type: 'getOne',
     })
   })
   it('create operation specification for all available types', () => {
     expect.assertions(ALL_OPERATION_TYPES.length)
     const operationConfig = {
-      operationId: 'getPhysicalObject',
+      operationId: 'physicalObjectGetOne',
       type: 'getOne',
     }
 
@@ -57,7 +57,7 @@ describe('coreModules/crud/createCrudModule/factories/specification/createOperat
       })
 
       expect(operationSpecification).toEqual({
-        operationId: 'getPhysicalObject',
+        operationId: 'physicalObjectGetOne',
         type,
       })
     })

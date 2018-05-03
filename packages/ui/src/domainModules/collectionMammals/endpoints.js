@@ -31,29 +31,29 @@ export const GET_INDIVIDUAL_GROUP_BY_CATALOG_NUMBER = createEndpoint({
   mock: ({ request: { queryParams } }) => {
     return { data: [getSpecimen({ queryParams })] }
   },
-  operationId: 'getSpecimens',
+  operationId: 'specimenGetMany',
 })
 
 export const GET_SPECIMEN = createEndpoint({
   mock: ({ request: { pathParams, queryParams } }) => {
     return { data: getSpecimen({ pathParams, queryParams }) }
   },
-  operationId: 'getSpecimen',
+  operationId: 'specimenGetOne',
 })
 
 export const LOOKUP_MAMMALS = createEndpoint({
   mock: createLookupMammalsResponse,
-  operationId: 'getSpecimens',
+  operationId: 'specimenGetMany',
 })
 
 export const REGISTER_MAMMAL = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: () => ({ data: getSpecimen() }),
-  operationId: 'createSpecimen',
+  operationId: 'specimenCreate',
 })
 
 export const UPDATE_SPECIMEN = createEndpoint({
   mapResponse: result => flattenDataAttributes(extractData(result)),
   mock: () => ({ data: getSpecimen() }),
-  operationId: 'updateSpecimen',
+  operationId: 'specimenUpdate',
 })

@@ -37,7 +37,7 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureType', () =
   })
 
   it(`calls updateFeatureType with correct body`, () => {
-    const operationId = 'updateFeatureType'
+    const operationId = 'featureTypeUpdate'
     const featureType = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -80,7 +80,7 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureType', () =
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'updateFeatureType'
+    const operationId = 'featureTypeUpdate'
     const attributes = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -137,7 +137,7 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureType', () =
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL
   } without throwing error`, () => {
-    const operationId = 'updateFeatureType'
+    const operationId = 'featureTypeUpdate'
     const featureType = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -180,7 +180,7 @@ describe('dataModules/curatedListService/actionCreators/updateFeatureType', () =
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_UPDATE_FEATURE_OBSERVATION_TYPE_FAIL
   } and throws error`, () => {
-    const operationId = 'updateFeatureType'
+    const operationId = 'featureTypeUpdate'
     const featureType = {
       id: '123',
       normalStorageLocationText: 'string',

@@ -8,7 +8,7 @@ import updateFactory, { dep } from './updateFactory'
 describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFactory', () => {
   describe('factory', () => {
     const actionCreatorFactoryInput = {
-      operationId: 'updatePhysicalObject',
+      operationId: 'physicalObjectUpdate',
       operationType: 'update',
       resource: 'physicalObject',
       resourceActionTypes: {
@@ -48,7 +48,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
   describe('actionCreator', () => {
     describe('request action', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'updatePhysicalObject',
+        operationId: 'physicalObjectUpdate',
         operationType: 'update',
         resource: 'physicalObject',
         resourceActionTypes: {
@@ -92,7 +92,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
 
     describe('success action', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'updatePhysicalObject',
+        operationId: 'physicalObjectUpdate',
         operationType: 'update',
         resource: 'physicalObject',
         resourceActionTypes: {
@@ -146,7 +146,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
 
     describe('fail action', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'updatePhysicalObject',
+        operationId: 'physicalObjectUpdate',
         operationType: 'update',
         resource: 'physicalObject',
         resourceActionTypes: {
@@ -192,7 +192,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
     })
     describe('api client', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'updatePhysicalObject',
+        operationId: 'physicalObjectUpdate',
         operationType: 'update',
         resource: 'physicalObject',
         resourceActionTypes: {

@@ -19,14 +19,14 @@ apiDescribe('specimen', () => {
       beforeAll(() => {
         return makeTestCall({
           body: getTestData('simpleDataNoRelations'),
-          operationId: 'createSpecimen',
+          operationId: 'specimenCreate',
         }).then(response => {
           simpleDataNoRelationsId = response.data.id
         })
       })
       it('Succeed fetch simpleDataNoRelations', () => {
         return makeTestCall({
-          operationId: 'getSpecimen',
+          operationId: 'specimenGetOne',
           pathParams: {
             id: simpleDataNoRelationsId,
           },
@@ -41,7 +41,7 @@ apiDescribe('specimen', () => {
       it('Fail fetch with 404 when non existing id provided', () => {
         return expectError404(
           makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
             pathParams: {
               id: '17171717',
             },
@@ -58,14 +58,14 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           }).then(response => {
             simpleDataPhysicalObjectRelationsId = response.data.id
           })
         })
         it('Fetch resource with physical unit relationships', () => {
           return makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
             pathParams: {
               id: simpleDataPhysicalObjectRelationsId,
             },
@@ -96,14 +96,14 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           }).then(response => {
             simpleDataPhysicalObjectRelationsId = response.data.id
           })
         })
         it('Fetch resource with physical unit relationships', () => {
           return makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
             pathParams: {
               id: simpleDataPhysicalObjectRelationsId,
             },
@@ -122,14 +122,14 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           }).then(response => {
             simpleDataPhysicalObjectRelationsId = response.data.id
           })
         })
         it('Fetch resource with physical unit relationships', () => {
           return makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
             pathParams: {
               id: simpleDataPhysicalObjectRelationsId,
             },
@@ -156,14 +156,14 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataNoRelations'),
-            operationId: 'createSpecimen',
+            operationId: 'specimenCreate',
           }).then(response => {
             simpleDataNoRelationsId = response.data.id
           })
         })
         it('Fetch resource with default relationships', () => {
           return makeTestCall({
-            operationId: 'getSpecimen',
+            operationId: 'specimenGetOne',
 
             pathParams: {
               id: simpleDataNoRelationsId,
