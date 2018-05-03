@@ -1,10 +1,11 @@
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function update({
   basePath,
   errors: errorsInput = {},
   exampleRequests = {},
   exampleResponses = {},
+  operationId,
   queryParams,
   resource,
   relations,
@@ -17,13 +18,15 @@ module.exports = function update({
     '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
     ...errorsInput,
   }
-  const operationId = `update${capitalizeFirstLetter(resource)}`
+
+  const operationType = 'update'
+
   return {
     ...rest,
     errors,
     method: 'patch',
-    operationId,
-    operationType: 'update',
+    operationId: operationId || buildOperationId({ operationType, resource }),
+    operationType,
     path: `${basePath}/${resourcePath}/{id}`,
     pathParams: ['id'],
     queryParams,

@@ -1,4 +1,4 @@
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function getRelationHasOne({
   basePath,
@@ -20,16 +20,14 @@ module.exports = function getRelationHasOne({
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
 
-  const operationId = `get${capitalizeFirstLetter(
-    resource
-  )}${capitalizeFirstLetter(relationKey)}`
+  const operationType = 'getRelationHasOne'
 
   return {
     ...rest,
     errors,
     method: 'get',
-    operationId,
-    operationType: 'getRelationHasOne',
+    operationId: buildOperationId({ operationType, relationKey, resource }),
+    operationType,
     path: `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`,
     pathParams: ['id'],
     queryParams,

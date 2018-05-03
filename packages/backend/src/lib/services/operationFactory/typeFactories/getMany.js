@@ -1,7 +1,7 @@
 const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
+const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function getMany({
   basePath,
@@ -34,13 +34,16 @@ module.exports = function getMany({
     '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
     ...errorsInput,
   }
+
+  const operationType = 'getMany'
+
   return {
     ...rest,
     errors,
     includeRelations,
     method: 'get',
-    operationId: operationId || `get${capitalizeFirstLetter(resourcePath)}`,
-    operationType: 'getMany',
+    operationId: operationId || buildOperationId({ operationType, resource }),
+    operationType,
     path: `${basePath}/${resourcePath}`,
     queryParams,
     relations,
