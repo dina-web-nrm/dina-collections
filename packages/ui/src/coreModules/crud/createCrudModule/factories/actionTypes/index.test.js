@@ -43,15 +43,15 @@ describe('coreModules/crud/createCrudModule/factories/actionTypes/createActionTy
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalUnit',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalUnit',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
             {
-              operationId: 'getManyPhysicalUnit',
+              operationId: 'physicalObjectGetMany',
               type: 'getMany',
             },
           ],
@@ -68,7 +68,7 @@ describe('coreModules/crud/createCrudModule/factories/actionTypes/createActionTy
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalUnit',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
           ],
@@ -108,7 +108,7 @@ describe('coreModules/crud/createCrudModule/factories/actionTypes/createActionTy
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalUnit',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
           ],

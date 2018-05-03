@@ -6,7 +6,7 @@ import createApiClientTest from './utilities/test/createApiClientTest'
 import getManyFactory, { dep } from './getManyFactory'
 
 const actionCreatorFactoryInput = {
-  operationId: 'getPhysicalObjects',
+  operationId: 'physicalObjectGetMany',
   operationType: 'getMany',
   resource: 'physicalObject',
   resourceActionTypes: {

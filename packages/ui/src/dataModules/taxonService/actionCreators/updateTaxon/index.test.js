@@ -34,7 +34,7 @@ describe('dataModules/taxonService/actionCreators/updateTaxon', () => {
   })
 
   it(`calls updateTaxon with correct body`, () => {
-    const operationId = 'updateTaxon'
+    const operationId = 'taxonUpdate'
     const taxon = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -77,7 +77,7 @@ describe('dataModules/taxonService/actionCreators/updateTaxon', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_UPDATE_TAXON_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'updateTaxon'
+    const operationId = 'taxonUpdate'
     const attributes = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -132,7 +132,7 @@ describe('dataModules/taxonService/actionCreators/updateTaxon', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_UPDATE_TAXON_FAIL
   } without throwing error`, () => {
-    const operationId = 'updateTaxon'
+    const operationId = 'taxonUpdate'
     const taxon = {
       id: '123',
       normalStorageLocationText: 'string',
@@ -173,7 +173,7 @@ describe('dataModules/taxonService/actionCreators/updateTaxon', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_UPDATE_TAXON_FAIL
   } and throws error`, () => {
-    const operationId = 'updateTaxon'
+    const operationId = 'taxonUpdate'
     const taxon = {
       id: '123',
       normalStorageLocationText: 'string',

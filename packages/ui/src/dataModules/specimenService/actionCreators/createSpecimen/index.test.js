@@ -53,7 +53,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   })
 
   it(`calls createSpecimen with correct body`, () => {
-    const operationId = 'createSpecimen'
+    const operationId = 'specimenCreate'
     const taxon = { id: '2367', type: 'taxon' }
     const specimen = {
       individual: {
@@ -92,7 +92,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createSpecimen'
+    const operationId = 'specimenCreate'
     const specimen = {
       individual: {
         collectionItems: [],
@@ -140,7 +140,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_FAIL
   } without throwing error`, () => {
-    const operationId = 'createSpecimen'
+    const operationId = 'specimenCreate'
     const specimen = {
       individual: {
         collectionItems: [],
@@ -172,7 +172,7 @@ describe('dataModules/specimenService/actionCreators/createSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_CREATE_SPECIMEN_FAIL
   } and throws error`, () => {
-    const operationId = 'createSpecimen'
+    const operationId = 'specimenCreate'
     const specimen = {
       individual: {
         collectionItems: [],

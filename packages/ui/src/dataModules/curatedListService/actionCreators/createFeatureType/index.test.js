@@ -37,7 +37,7 @@ describe('dataModules/curatedListService/actionCreators/createFeatureType', () =
   })
 
   it(`calls createFeatureType with correct body`, () => {
-    const operationId = 'createFeatureType'
+    const operationId = 'featureTypeCreate'
     const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -75,7 +75,7 @@ describe('dataModules/curatedListService/actionCreators/createFeatureType', () =
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createFeatureType'
+    const operationId = 'featureTypeCreate'
     const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -129,7 +129,7 @@ describe('dataModules/curatedListService/actionCreators/createFeatureType', () =
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL
   } without throwing error`, () => {
-    const operationId = 'createFeatureType'
+    const operationId = 'featureTypeCreate'
     const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -171,7 +171,7 @@ describe('dataModules/curatedListService/actionCreators/createFeatureType', () =
   it(`dispatches ${
     actionTypes.CURATED_LIST_SERVICE_CREATE_FEATURE_OBSERVATION_TYPE_FAIL
   } and throws error`, () => {
-    const operationId = 'createFeatureType'
+    const operationId = 'featureTypeCreate'
     const featureType = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',

@@ -6,7 +6,7 @@ import createApiClientTest from './utilities/test/createApiClientTest'
 import createFactory, { dep } from './createFactory'
 
 const inputCreatePhysicalObject = {
-  operationId: 'createPhysicalObject',
+  operationId: 'physicalObjectCreate',
   operationType: 'create',
   resource: 'physicalObject',
   resourceActionTypes: {
@@ -21,7 +21,7 @@ const inputCreatePhysicalObject = {
 describe('coreModules/crud/createCrudModule/factories/actionCreators/createFactory', () => {
   describe('factory', () => {
     const actionCreatorFactoryInput = {
-      operationId: 'createPhysicalObject',
+      operationId: 'physicalObjectCreate',
       operationType: 'create',
       resource: 'physicalObject',
       resourceActionTypes: {
@@ -58,7 +58,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
   describe('actionCreator', () => {
     describe('request action', () => {
       const actionCreatorFactoryInput = {
-        operationId: 'createPhysicalObject',
+        operationId: 'physicalObjectCreate',
         operationType: 'create',
         resource: 'physicalObject',
         resourceActionTypes: {

@@ -34,7 +34,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimen', () => {
   })
 
   it(`calls getSpecimen`, () => {
-    const operationId = 'getSpecimen'
+    const operationId = 'specimenGetOne'
     const id = '123'
 
     const callSpy = jest.fn()
@@ -68,7 +68,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_GET_SPECIMEN_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'getSpecimen'
+    const operationId = 'specimenGetOne'
     const id = '123'
     const mockResponse = {
       data: {
@@ -117,7 +117,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_GET_SPECIMEN_FAIL
   } without throwing error`, () => {
-    const operationId = 'getSpecimen'
+    const operationId = 'specimenGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 
@@ -154,7 +154,7 @@ describe('dataModules/specimenService/actionCreators/getSpecimen', () => {
   it(`dispatches ${
     actionTypes.SPECIMEN_SERVICE_GET_SPECIMEN_FAIL
   } and throws error`, () => {
-    const operationId = 'getSpecimen'
+    const operationId = 'specimenGetOne'
     const id = '123'
     const mockResponse = { status: 404 }
 

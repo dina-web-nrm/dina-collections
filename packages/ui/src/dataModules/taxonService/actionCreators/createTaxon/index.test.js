@@ -34,7 +34,7 @@ describe('dataModules/taxonService/actionCreators/createTaxon', () => {
   })
 
   it(`calls createTaxon with correct body`, () => {
-    const operationId = 'createTaxon'
+    const operationId = 'taxonCreate'
     const taxon = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -72,7 +72,7 @@ describe('dataModules/taxonService/actionCreators/createTaxon', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_CREATE_TAXON_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createTaxon'
+    const operationId = 'taxonCreate'
     const taxon = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -124,7 +124,7 @@ describe('dataModules/taxonService/actionCreators/createTaxon', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_CREATE_TAXON_FAIL
   } without throwing error`, () => {
-    const operationId = 'createTaxon'
+    const operationId = 'taxonCreate'
     const taxon = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -164,7 +164,7 @@ describe('dataModules/taxonService/actionCreators/createTaxon', () => {
   it(`dispatches ${
     actionTypes.TAXON_SERVICE_CREATE_TAXON_FAIL
   } and throws error`, () => {
-    const operationId = 'createTaxon'
+    const operationId = 'taxonCreate'
     const taxon = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',

@@ -49,11 +49,11 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'slice',
             },
           ],
@@ -71,11 +71,11 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
           ],
@@ -99,11 +99,11 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
           ],
@@ -112,7 +112,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators', () => {
       }
       createActionCreators(input)
       expect(createFactoryMock.mock.calls[0][0]).toEqual({
-        operationId: 'createPhysicalObject',
+        operationId: 'physicalObjectCreate',
         operationType: 'create',
         resource: 'physicalObject',
         resourceActionTypes: {
@@ -138,11 +138,11 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators', () => {
         resourceSpecification: {
           operations: [
             {
-              operationId: 'getPhysicalObject',
+              operationId: 'physicalObjectGetOne',
               type: 'getOne',
             },
             {
-              operationId: 'createPhysicalObject',
+              operationId: 'physicalObjectCreate',
               type: 'create',
             },
           ],

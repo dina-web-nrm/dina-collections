@@ -36,7 +36,7 @@ describe('dataModules/storageService/actionCreators/createPhysicalObject', () =>
   })
 
   it(`calls createPhysicalObject with correct body`, () => {
-    const operationId = 'createPhysicalObject'
+    const operationId = 'physicalObjectCreate'
     const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -74,7 +74,7 @@ describe('dataModules/storageService/actionCreators/createPhysicalObject', () =>
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_SUCCESS
   } and returns transformed response`, () => {
-    const operationId = 'createPhysicalObject'
+    const operationId = 'physicalObjectCreate'
     const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -126,7 +126,7 @@ describe('dataModules/storageService/actionCreators/createPhysicalObject', () =>
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL
   } without throwing error`, () => {
-    const operationId = 'createPhysicalObject'
+    const operationId = 'physicalObjectCreate'
     const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
@@ -166,7 +166,7 @@ describe('dataModules/storageService/actionCreators/createPhysicalObject', () =>
   it(`dispatches ${
     actionTypes.STORAGE_SERVICE_CREATE_PHYSICAL_UNIT_FAIL
   } and throws error`, () => {
-    const operationId = 'createPhysicalObject'
+    const operationId = 'physicalObjectCreate'
     const physicalObject = {
       normalStorageLocationText: 'string',
       storedUnderTaxonName: 'Sorex minutus',
