@@ -45,6 +45,9 @@
 │   └── index.js
 ├── chainPromises
 │   └── index.js
+├── deleteNullProperties
+│   ├── index.js
+│   └── index.test.js
 ├── endpointFactory
 │   ├── client.js
 │   ├── createEndpointFactory.js

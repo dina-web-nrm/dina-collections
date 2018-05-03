@@ -51,9 +51,6 @@
 │   ├── selectors.js
 │   └── selectors.test.js
 ├── index.js
-├── placeService
-│   └── reducer
-│       └── resources
 ├── specimenService
 │   ├── actionCreators
 │   │   ├── createSpecimen
