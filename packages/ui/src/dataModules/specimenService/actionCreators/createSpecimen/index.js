@@ -52,7 +52,7 @@ export default function createSpecimen(
         storageLocations,
         taxa,
       })
-
+      console.log('body', body)
       dispatch({
         meta,
         type: SPECIMEN_SERVICE_CREATE_SPECIMEN_REQUEST,

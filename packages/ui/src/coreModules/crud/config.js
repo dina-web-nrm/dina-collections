@@ -84,6 +84,26 @@ const config = {
         },
       ],
     },
+    specimen: {
+      operations: [
+        {
+          operationId: 'specimenUpdate',
+          type: 'update',
+        },
+        {
+          operationId: 'specimenCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'specimenGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'specimenGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
     typeSpecimenType: {
       customSelectors: [
         {

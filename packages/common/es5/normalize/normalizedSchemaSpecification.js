@@ -29,6 +29,9 @@ var specimen = {
   originInformation: {
     column: 'originInformation'
   },
+  physicalObject: {
+    column: 'physicalObjects'
+  },
   recordHistoryEvent: {
     column: 'recordHistoryEvents'
   },

@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
-import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
+// import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+// import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
 import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
@@ -17,7 +18,7 @@ const mapStateToProps = state => {
   }
 }
 const mapDispatchToProps = {
-  createSpecimen: specimenActionCreators.createSpecimen,
+  createSpecimen: crudActionCreators.specimen.create,
 }
 
 const propTypes = {
@@ -35,7 +36,7 @@ class RegisterMammal extends Component {
       <PageTemplate>
         <MammalForm
           handleFormSubmit={formOutput => {
-            return createSpecimen(transformOutput(formOutput))
+            return createSpecimen({ item: formOutput })
           }}
           initialValues={initialValues}
           mode="register"

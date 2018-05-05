@@ -2,7 +2,7 @@ const normalizeSpecimen = require('./index')
 
 const denormalizedSpecimen = require('../testData/denormalizedSpecimen')
 const denormalizedSpecimenWithLids = require('../testData/denormalizedSpecimenWithLids')
-const normalizedSpecimen = require('../testData/normalizedSpecimen')
+const normalizedSpecimenWithRelationships = require('../testData/normalizedSpecimenWithRelationships')
 
 describe('normalize/normalizeSpecimen', () => {
   it('is a function', () => {
@@ -16,7 +16,7 @@ describe('normalize/normalizeSpecimen', () => {
   })
   it('does a correct normalization when ids exist', () => {
     expect(normalizeSpecimen(denormalizedSpecimenWithLids)).toEqual(
-      normalizedSpecimen
+      normalizedSpecimenWithRelationships
     )
   })
 })

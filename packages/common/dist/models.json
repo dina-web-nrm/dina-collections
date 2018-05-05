@@ -1188,6 +1188,8 @@
   "specimen": {
     "additionalProperties": false,
     "description": "This is a description",
+    "x-format": true,
+    "x-normalize": true,
     "properties": {
       "relationships": {
         "type": "object",
@@ -1238,6 +1240,7 @@
           },
           "physicalObjects": {
             "type": "object",
+            "x-path": "individual.collectionItems.*.physicalObject",
             "properties": {
               "data": {
                 "type": "array",
@@ -1287,11 +1290,20 @@
         "$ref": "individual",
         "x-summary": ""
       },
+      "individuals": {
+        "type": "array",
+        "items": {
+          "$ref": "individual"
+        },
+        "x-column": "individuals",
+        "x-summary": ""
+      },
       "collectionItems": {
         "type": "array",
         "items": {
           "$ref": "collectionItem"
         },
+        "x-column": "collectionItems",
         "x-summary": ""
       },
       "id": {
@@ -1303,6 +1315,7 @@
         "items": {
           "$ref": "deathInformation"
         },
+        "x-column": "deathInformation",
         "x-summary": ""
       },
       "collectingInformation": {
@@ -1310,6 +1323,7 @@
         "items": {
           "$ref": "collectingInformation"
         },
+        "x-column": "collectingInformation",
         "x-summary": ""
       },
       "determinations": {
@@ -1317,6 +1331,7 @@
         "items": {
           "$ref": "determination"
         },
+        "x-column": "determinations",
         "x-summary": ""
       },
       "identifiers": {
@@ -1324,6 +1339,7 @@
         "items": {
           "$ref": "identifier"
         },
+        "x-column": "identifiers",
         "x-summary": ""
       },
       "taxonInformation": {
@@ -1331,6 +1347,7 @@
         "items": {
           "$ref": "taxonInformation"
         },
+        "x-column": "taxonInformation",
         "x-summary": ""
       },
       "featureObservations": {
@@ -1338,6 +1355,7 @@
         "items": {
           "$ref": "featureObservation"
         },
+        "x-column": "featureObservations",
         "x-summary": ""
       },
       "events": {
@@ -1345,6 +1363,7 @@
         "items": {
           "$ref": "event"
         },
+        "x-column": "events",
         "x-summary": ""
       },
       "recordHistoryEvents": {
@@ -1352,6 +1371,7 @@
         "items": {
           "$ref": "recordHistoryEvent"
         },
+        "x-column": "recordHistoryEvents",
         "x-summary": ""
       },
       "version": {

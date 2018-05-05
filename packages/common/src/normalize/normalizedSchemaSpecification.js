@@ -1,3 +1,5 @@
+/* eslint-disable sort-keys */
+
 const specimen = {
   collectingInformation: {
     column: 'collectingInformation',
@@ -30,12 +32,39 @@ const specimen = {
   recordHistoryEvent: {
     column: 'recordHistoryEvents',
   },
+  taxonInformation: {
+    column: 'taxonInformation',
+  },
   relationships: {
     column: 'relationships',
     normalize: false,
-  },
-  taxonInformation: {
-    column: 'taxonInformation',
+    entities: {
+      physicalObjects: {
+        resourceType: 'physicalObject',
+        relationshipType: 'array',
+        path: 'individual.collectionItems.*.physicalObject',
+      },
+
+      identifierTypes: {
+        resourceType: 'identifierType',
+        relationshipType: 'array',
+        path: 'individual.identifiers.*.identifierType',
+      },
+
+      typeSpecimenType: {
+        resourceType: 'typeSpecimenType',
+        relationshipType: 'object',
+      },
+
+      places: {
+        resourceType: 'place',
+        relationshipType: 'array',
+        path:
+          'individual.collectingInformation.*.event.locationInformation.places',
+        column: 'places',
+        isExternalRelation: true,
+      },
+    },
   },
 }
 

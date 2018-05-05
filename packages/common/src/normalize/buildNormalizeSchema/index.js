@@ -4,6 +4,8 @@ const getTypeAndRef = require('./getTypeAndRef')
 const processStrategy = require('./processStrategy')
 const models = require('../../../dist/models.json')
 
+console.log('models', models.specimen)
+
 const options = {
   idAttribute: getIdAttribute,
   processStrategy,
@@ -32,7 +34,7 @@ module.exports = function buildNormalizeSchema({
         return obj
       }
 
-      if (!schemas[column] && !visited[column]) {
+      if (!schemas[column] && !visited[ref]) {
         schemas[column] = buildSchemas(ref)
       }
 

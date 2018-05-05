@@ -39,6 +39,7 @@ var columnNames = (0, _keys2.default)(normalizedSchemaSpecification.specimen).ma
 });
 
 module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
+  console.log('denormalizedSpecimenInput', denormalizedSpecimenInput);
   var denormalizedSpecimen = JSON.parse((0, _stringify2.default)(denormalizedSpecimenInput));
   var _denormalizedSpecimen = denormalizedSpecimen.individual,
       individual = _denormalizedSpecimen === undefined ? {} : _denormalizedSpecimen,

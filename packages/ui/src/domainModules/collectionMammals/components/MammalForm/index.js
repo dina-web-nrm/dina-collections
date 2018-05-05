@@ -12,6 +12,7 @@ import {
   reduxForm,
   SubmissionError,
 } from 'redux-form'
+import normalizeSpecimen from 'common/es5/normalize/normalizeSpecimen'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import createLog from 'utilities/log'
 import { MAMMAL_FORM_NAME } from '../../constants'
@@ -77,13 +78,16 @@ class RawMammalForm extends Component {
       push: pushRoute,
       redirectOnSuccess,
     } = this.props
+    // const patchedOutput = {
+    //   id: match && match.params && match.params.specimenId,
+    //   ...formData,
+    // }
 
-    const patchedOutput = {
-      id: match && match.params && match.params.specimenId,
-      ...formData,
-    }
+    const normalizedSpecimen = normalizeSpecimen({
+      individual: formData,
+    })
 
-    return handleFormSubmit(patchedOutput)
+    return handleFormSubmit(normalizedSpecimen)
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {
           pushRoute(`/app/mammals/${specimenId}/edit`)

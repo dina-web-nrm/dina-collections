@@ -12,7 +12,7 @@ module.exports = function createJsonApiClient({
   })
 
   const call = (...args) => {
-    openApiClient.call(...args)
+    return openApiClient.call(...args)
   }
 
   const getOneOfResourceType = (resourceType, userOptions) => {

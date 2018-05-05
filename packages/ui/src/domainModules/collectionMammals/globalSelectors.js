@@ -15,7 +15,7 @@ import {
 } from 'dataModules/storageService/selectors'
 
 import wrapSelectors from 'utilities/wrapSelectors'
-import transformInput from './components/MammalForm/transformations/input'
+// import transformInput from './components/MammalForm/transformations/input'
 import * as selectors from './selectors'
 
 const getFeatureTypesGlobal = state => {
@@ -46,12 +46,27 @@ const getMammalFormInitialValues = createSelector(
     getSpecimenReadOnlyGlobalSelector,
   ],
   (featureTypes, specimen, physicalObjects, readOnly) => {
-    return transformInput({
-      featureTypes,
-      physicalObjects,
-      readOnly,
-      specimen,
-    })
+    return {
+      determinations: [{}],
+      identifiers: [
+        {
+          identifierType: {
+            id: '1',
+          },
+          nameSpace: '',
+          publishRecord: false,
+          remarks: '',
+          value: '',
+        },
+      ],
+      recordHistoryEvents: [],
+    }
+    // return transformInput({
+    //   featureTypes,
+    //   physicalObjects,
+    //   readOnly,
+    //   specimen,
+    // })
   }
 )
 
