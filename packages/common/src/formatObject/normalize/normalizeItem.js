@@ -1,8 +1,12 @@
 const { normalize } = require('normalizr')
 const columnObjectToArray = require('./columnObjectToArray')
 
-module.exports = function normalizeItem({ item, normalizeSchemas, type }) {
-  const schema = normalizeSchemas[type]
+module.exports = function normalizeItem({
+  item,
+  normalizeSpecification,
+  type,
+}) {
+  const schema = normalizeSpecification
   const columnNames = Object.keys(schema)
   const normalizedData = normalize(item, schema[type])
   const { entities } = normalizedData

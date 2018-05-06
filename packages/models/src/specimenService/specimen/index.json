@@ -9,6 +9,7 @@
       "properties": {
         "identifierTypes": {
           "type": "object",
+          "x-path": "individual.identifiers.*.identifierType",
           "properties": {
             "data": {
               "type": "array",
@@ -21,18 +22,18 @@
         },
         "typeSpecimenTypes": {
           "type": "object",
+          "x-path": "individual.typeSpecimenType",
           "properties": {
             "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__typeSpecimenType",
-                "x-reference-type": "external"
-              }
+              "type": "object",
+              "$ref": "__ROOT__typeSpecimenType",
+              "x-reference-type": "external"
             }
           }
         },
         "establishmentMeansTypes": {
           "type": "object",
+          "x-path": "individual.collectingInformation.*.establishmentMeansType",
           "properties": {
             "data": {
               "type": "array",
@@ -45,6 +46,7 @@
         },
         "causeOfDeathTypes": {
           "type": "object",
+          "x-path": "individual.deathInformation.*.establishmentMeansType",
           "properties": {
             "data": {
               "type": "array",
@@ -70,6 +72,7 @@
         },
         "featureTypes": {
           "type": "object",
+          "x-path": "individual.featureObservations.*.featureType",
           "properties": {
             "data": {
               "type": "array",
@@ -82,6 +85,7 @@
         },
         "places": {
           "type": "object",
+          "x-path": "individual.collectingInformation.*.event.locationInformation.places.*.",
           "properties": {
             "data": {
               "type": "array",
@@ -94,6 +98,7 @@
         },
         "taxa": {
           "type": "object",
+          "x-path": "individual.determinations.*.taxon",
           "properties": {
             "data": {
               "type": "array",

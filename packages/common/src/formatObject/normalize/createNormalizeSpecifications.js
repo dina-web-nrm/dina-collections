@@ -1,11 +1,11 @@
-const createNormalizeSchema = require('./createNormalizeSchema')
+const createNormalizeSpecification = require('./createNormalizeSpecification')
 
-module.exports = function createNormalizeSchemas({ models }) {
+module.exports = function createNormalizeSpecifications({ models }) {
   return Object.keys(models).reduce((schemas, modelKey) => {
     if (models[modelKey]['x-normalize']) {
       return {
         ...schemas,
-        [modelKey]: createNormalizeSchema({
+        [modelKey]: createNormalizeSpecification({
           modelKey,
           models,
         }),

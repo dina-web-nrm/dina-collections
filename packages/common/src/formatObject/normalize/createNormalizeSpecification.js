@@ -8,7 +8,7 @@ const options = {
   processStrategy,
 }
 
-module.exports = function createNormalizeSchema({ modelKey, models }) {
+module.exports = function createNormalizeSpecification({ modelKey, models }) {
   const baseModel = models[modelKey]
 
   const keyColumnMap = Object.keys(baseModel.properties).reduce(

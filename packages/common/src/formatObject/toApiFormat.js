@@ -1,26 +1,41 @@
 const cloneObject = require('./utilities/cloneObject')
-const getFormatSpecification = require('./getFormatSpecification')
-const formatRelationshipsToApiFormat = require('./formatRelationshipsToApiFormat')
-const normalizeItem = require('./normalizeItem')
+const {
+  getNormalizeSpecification,
+  getRelationshipSpecification,
+} = require('./specifications')
 
-module.exports = function toApiFormat({ type, rawItem }) {
-  const formatSpecification = getFormatSpecification({ type })
-  if (!formatSpecification) {
-    throw new Error(
-      `No formatSpecification available for item with type: ${type}`
-    )
-  }
+const normalizeItem = require('./normalize/normalizeItem')
+const extractItemRelationships = require('./relationships/extractItemRelationships')
+
+module.exports = function toApiFormat({
+  extractRelationships = true,
+  formatRelationships = true,
+  item: rawItem,
+  normalize = true,
+  type,
+}) {
   let item = cloneObject(rawItem)
+  const normalizeSpecification = getNormalizeSpecification(type)
+  const relationshipSpecification = getRelationshipSpecification(type)
 
-  item = formatRelationshipsToApiFormat({
-    formatSpecification,
-    item,
-  })
+  if (extractRelationships && relationshipSpecification) {
+    item = extractItemRelationships({
+      item,
+      relationshipSpecification,
+      toApiFormat: formatRelationships ? toApiFormat : null,
+    })
+  }
 
-  item = normalizeItem({
-    formatSpecification,
-    item,
-  })
+  if (normalize && normalizeSpecification) {
+    item = normalizeItem({ item, normalizeSpecification, type })
+  }
 
-  return item
+  const { id, relationships, ...attributes } = item
+
+  return {
+    attributes,
+    id,
+    relationships,
+    type,
+  }
 }
