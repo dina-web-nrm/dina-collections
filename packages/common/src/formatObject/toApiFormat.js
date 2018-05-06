@@ -12,11 +12,11 @@ module.exports = function toApiFormat({
   formatRelationships = true,
   item: rawItem,
   normalize = true,
-  type,
+  type: resourceType,
 }) {
   let item = cloneObject(rawItem)
-  const normalizeSpecification = getNormalizeSpecification(type)
-  const relationshipSpecification = getRelationshipSpecification(type)
+  const normalizeSpecification = getNormalizeSpecification(resourceType)
+  const relationshipSpecification = getRelationshipSpecification(resourceType)
 
   if (extractRelationships && relationshipSpecification) {
     item = extractItemRelationships({
@@ -27,7 +27,7 @@ module.exports = function toApiFormat({
   }
 
   if (normalize && normalizeSpecification) {
-    item = normalizeItem({ item, normalizeSpecification, type })
+    item = normalizeItem({ item, normalizeSpecification, resourceType })
   }
 
   const { id, relationships, ...attributes } = item
@@ -36,6 +36,6 @@ module.exports = function toApiFormat({
     attributes,
     id,
     relationships,
-    type,
+    type: resourceType,
   }
 }

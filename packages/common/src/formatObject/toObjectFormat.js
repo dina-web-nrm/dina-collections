@@ -16,19 +16,18 @@ module.exports = function toObjectFormat({
 }) {
   let item = cloneObject(rawItem)
   const { id, relationships, attributes } = item
-  console.log('attributes', attributes)
   item = {
     ...attributes,
     id,
   }
 
   const normalizeSpecification = getNormalizeSpecification(type)
-  const relationshipSpecification = getRelationshipSpecification(type)
 
   if (denormalize && normalizeSpecification) {
     item = denormalizeItem({ item, normalizeSpecification, type })
   }
 
+  const relationshipSpecification = getRelationshipSpecification(type)
   if (resolveRelationships && relationshipSpecification) {
     item = resolveItemRelationships({
       getItemByTypeId,

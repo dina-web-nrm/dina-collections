@@ -7,14 +7,19 @@ module.exports = function extractItemRelationships({
 }) {
   let updatedItem = item
   Object.keys(relationshipSpecification).forEach(relationshipKey => {
-    const { path, type } = relationshipSpecification[relationshipKey]
+    const {
+      format: relationshipFormat,
+      path,
+      type: relationshipType,
+    } = relationshipSpecification[relationshipKey]
 
     updatedItem = extractItemRelationship({
       item,
       path,
+      relationshipFormat,
       relationshipKey,
+      relationshipType,
       toApiFormat,
-      type,
     })
   })
 

@@ -1,5 +1,5 @@
 const { denormalize } = require('normalizr')
-const columnArrayToObject = require('./columnArrayToObject')
+const columnArrayToObject = require('../utilities/columnArrayToObject')
 
 module.exports = function denormalizeItem({
   item,

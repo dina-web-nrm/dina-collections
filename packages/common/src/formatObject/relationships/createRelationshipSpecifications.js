@@ -1,3 +1,5 @@
+const createRelationshipSpecification = require('./createRelationshipSpecification')
+
 module.exports = function createRelationshipSpecifications(
   { models = {} } = {}
 ) {
@@ -8,22 +10,9 @@ module.exports = function createRelationshipSpecifications(
       return specifications
     }
 
-    const relationshipSpecification = Object.keys(
-      relationships.properties || {}
-    ).reduce((modelRelationships, relationshipKey) => {
-      const modelRelationship = relationships.properties[relationshipKey]
-
-      if (modelRelationship['x-path']) {
-        return {
-          ...modelRelationships,
-          [relationshipKey]: {
-            path: modelRelationship['x-path'],
-            type: modelRelationship.properties.data.type,
-          },
-        }
-      }
-      return modelRelationships
-    }, {})
+    const relationshipSpecification = createRelationshipSpecification({
+      relationships,
+    })
 
     if (
       relationshipSpecification &&

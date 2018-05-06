@@ -1,33 +1,21 @@
 const { schema } = require('normalizr')
-const getIdAttribute = require('./getIdAttribute')
-const getTypeAndRef = require('./getTypeAndRef')
-const processStrategy = require('./processStrategy')
+const normalizrGetIdAttribute = require('../utilities/normalizrGetIdAttribute')
+const normalizrProcessStrategy = require('../utilities/normalizrProcessStrategy')
+
+const createKeyColumnMap = require('../utilities/createKeyColumnMap')
+const getModelIsColumn = require('../utilities/getModelIsColumn')
+const getModelFormat = require('../utilities/getModelFormat')
+const getModelType = require('../utilities/getModelType')
 
 const options = {
-  idAttribute: getIdAttribute,
-  processStrategy,
+  idAttribute: normalizrGetIdAttribute,
+  processStrategy: normalizrProcessStrategy,
 }
 
 module.exports = function createNormalizeSpecification({ modelKey, models }) {
   const baseModel = models[modelKey]
 
-  const keyColumnMap = Object.keys(baseModel.properties).reduce(
-    (map, propertyKey) => {
-      const property = baseModel.properties[propertyKey]
-
-      if (!property['x-column']) {
-        return map
-      }
-
-      const { ref } = getTypeAndRef(property)
-
-      return {
-        ...map,
-        [ref]: property['x-column'],
-      }
-    },
-    {}
-  )
+  const keyColumnMap = createKeyColumnMap(baseModel)
 
   const schemas = {}
   const visited = {}
@@ -41,20 +29,22 @@ module.exports = function createNormalizeSpecification({ modelKey, models }) {
     const { properties } = model
     const relations = Object.keys(properties).reduce((obj, key) => {
       const property = properties[key]
-      const { ref, type, isColumn } = getTypeAndRef(property)
+      const type = getModelType(property)
+      const format = getModelFormat(property)
+      const isColumn = getModelIsColumn(property)
 
-      const column = keyColumnMap[ref]
+      const column = keyColumnMap[type]
       if (!column) {
         return obj
       }
 
-      if (!schemas[column] && !visited[ref] && !isColumn) {
-        schemas[column] = buildSchemas(ref)
+      if (!schemas[column] && !visited[type] && !isColumn) {
+        schemas[column] = buildSchemas(type)
       }
 
       return {
         ...obj,
-        [key]: type === 'object' ? schemas[column] : [schemas[column]],
+        [key]: format === 'object' ? schemas[column] : [schemas[column]],
       }
     }, {})
 

@@ -1,18 +1,18 @@
 const { normalize } = require('normalizr')
-const columnObjectToArray = require('./columnObjectToArray')
+const columnObjectToArray = require('../utilities/columnObjectToArray')
 
 module.exports = function normalizeItem({
   item,
   normalizeSpecification,
-  type,
+  resourceType,
 }) {
   const schema = normalizeSpecification
   const columnNames = Object.keys(schema)
-  const normalizedData = normalize(item, schema[type])
+  const normalizedData = normalize(item, schema[resourceType])
   const { entities } = normalizedData
   const data = Object.keys(entities).reduce(
     (obj, columnName) => {
-      if (columnName === type) {
+      if (columnName === resourceType) {
         const entry = entities[columnName]
         const id = Object.keys(entry)[0]
         return {

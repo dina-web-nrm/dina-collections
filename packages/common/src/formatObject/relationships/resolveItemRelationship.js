@@ -1,20 +1,6 @@
 const objectPath = require('object-path')
-const walk = require('./walkObject')
-
-const createRelationshipIdMap = ({ relationship, type }) => {
-  if (type === 'object') {
-    const id = relationship && relationship.data && relationship.data.id
-    return {
-      [id]: true,
-    }
-  }
-  return ((relationship && relationship.data) || []).reduce((map, item) => {
-    return {
-      ...map,
-      [item.id]: true,
-    }
-  }, {})
-}
+const walk = require('../utilities/walkObject')
+const createRelationshipIdMap = require('../utilities/createRelationshipIdMap')
 
 module.exports = function resolveItemRelationship({
   getItemByTypeId,

@@ -1,11 +1,12 @@
 const objectPath = require('object-path')
-const walk = require('./walkObject')
+const walk = require('../utilities/walkObject')
 
 module.exports = function extractItemRelationship({
   item,
   path,
+  relationshipFormat,
   relationshipKey,
-  type,
+  relationshipType,
   toApiFormat,
 }) {
   const segments = path.split('.*.')
@@ -21,7 +22,7 @@ module.exports = function extractItemRelationship({
         ? toApiFormat({
             item: relationship,
             normalize: true,
-            type,
+            type: relationshipType,
           })
         : relationship
 
@@ -34,7 +35,7 @@ module.exports = function extractItemRelationship({
   objectPath.set(
     item,
     `relationships.${relationshipKey}.data`,
-    type === 'object' ? relationships[0] : relationships
+    relationshipFormat === 'object' ? relationships[0] : relationships
   )
 
   return item
