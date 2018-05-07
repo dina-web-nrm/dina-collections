@@ -7,6 +7,7 @@ import transformOutput from 'domainModules/collectionMammals/components/MammalFo
 import createLog from 'utilities/log'
 import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
 import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
+import crudActionCreators from 'coreModules/crud/actionCreators'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const log = createLog('modules:editMammal:Component')
@@ -20,8 +21,8 @@ const mapStateToProps = (state, { match }) => {
   }
 }
 const mapDispatchToProps = {
-  getSpecimen: specimenActionCreators.getSpecimen,
-  updateSpecimen: specimenActionCreators.updateSpecimen,
+  getSpecimen: crudActionCreators.specimen.getOne,
+  updateSpecimen: crudActionCreators.specimen.update,
 }
 
 const propTypes = {
@@ -54,8 +55,10 @@ class EditMammal extends Component {
         <MammalForm
           handleFormSubmit={formOutput => {
             return updateSpecimen({
-              id: specimenId,
-              ...transformOutput(formOutput),
+              item: {
+                id: specimenId,
+                ...formOutput,
+              },
             })
           }}
           initialValues={initialValues}

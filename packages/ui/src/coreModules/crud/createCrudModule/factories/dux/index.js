@@ -43,12 +43,12 @@ export default function dux(specification) {
         resourceActionHandlers,
         resourceSpecification,
       })
-
-      globalSelectors[resource] = resourceGlobalSelectors
-      actionTypes[resource] = resourceActionTypes
-      actionHandlers[resource] = resourceActionHandlers
       actionCreators[resource] = resourceActionCreators
+      actionHandlers[resource] = resourceActionHandlers
+      actionTypes[resource] = resourceActionTypes
+      globalSelectors[resource] = resourceGlobalSelectors
       resourceReducers[resource] = resourceReducer
+      selectors[resource] = resourceSelectors
     }
   )
 

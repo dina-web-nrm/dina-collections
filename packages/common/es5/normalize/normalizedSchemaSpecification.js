@@ -26,21 +26,47 @@ var specimen = {
   individual: {
     column: 'individual'
   },
+  individuals: {
+    column: 'individuals'
+  },
   originInformation: {
     column: 'originInformation'
-  },
-  physicalObject: {
-    column: 'physicalObjects'
   },
   recordHistoryEvent: {
     column: 'recordHistoryEvents'
   },
-  relationships: {
-    column: 'relationships',
-    normalize: false
-  },
   taxonInformation: {
     column: 'taxonInformation'
+  },
+  relationships: {
+    column: 'relationships',
+    normalize: false,
+    entities: {
+      physicalObjects: {
+        resourceType: 'physicalObject',
+        relationshipType: 'array',
+        path: 'individual.collectionItems.*.physicalObject'
+      },
+
+      identifierTypes: {
+        resourceType: 'identifierType',
+        relationshipType: 'array',
+        path: 'individual.identifiers.*.identifierType'
+      },
+
+      typeSpecimenType: {
+        resourceType: 'typeSpecimenType',
+        relationshipType: 'object'
+      },
+
+      places: {
+        resourceType: 'place',
+        relationshipType: 'array',
+        path: 'individual.collectingInformation.*.event.locationInformation.places',
+        column: 'places',
+        isExternalRelation: true
+      }
+    }
   }
 };
 

@@ -7,7 +7,7 @@ const {
 const normalizeItem = require('./normalize/normalizeItem')
 const extractItemRelationships = require('./relationships/extractItemRelationships')
 
-module.exports = function toApiFormat({
+module.exports = function toCoreFormat({
   extractRelationships = true,
   formatRelationships = true,
   item: rawItem,
@@ -22,7 +22,7 @@ module.exports = function toApiFormat({
     item = extractItemRelationships({
       item,
       relationshipSpecification,
-      toApiFormat: formatRelationships ? toApiFormat : null,
+      toCoreFormat: formatRelationships ? toCoreFormat : null,
     })
   }
 
@@ -32,10 +32,30 @@ module.exports = function toApiFormat({
 
   const { id, relationships, ...attributes } = item
 
-  return {
-    attributes,
-    id,
-    relationships,
+  let coreItem = {
     type: resourceType,
   }
+
+  if (id !== undefined) {
+    coreItem = {
+      ...coreItem,
+      id,
+    }
+  }
+
+  if (relationships) {
+    coreItem = {
+      ...coreItem,
+      relationships,
+    }
+  }
+
+  if (attributes && Object.keys(attributes).length) {
+    coreItem = {
+      ...coreItem,
+      attributes,
+    }
+  }
+
+  return coreItem
 }

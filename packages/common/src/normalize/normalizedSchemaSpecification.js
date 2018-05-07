@@ -26,6 +26,9 @@ const specimen = {
   individual: {
     column: 'individual',
   },
+  individuals: {
+    column: 'individuals',
+  },
   originInformation: {
     column: 'originInformation',
   },

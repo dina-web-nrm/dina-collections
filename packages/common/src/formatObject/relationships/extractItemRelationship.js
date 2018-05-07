@@ -7,7 +7,7 @@ module.exports = function extractItemRelationship({
   relationshipFormat,
   relationshipKey,
   relationshipType,
-  toApiFormat,
+  toCoreFormat,
 }) {
   const segments = path.split('.*.')
   const relationships = []
@@ -18,8 +18,8 @@ module.exports = function extractItemRelationship({
         id: relationship.id,
       })
 
-      const formattedRelationship = toApiFormat
-        ? toApiFormat({
+      const formattedRelationship = toCoreFormat
+        ? toCoreFormat({
             item: relationship,
             normalize: true,
             type: relationshipType,
@@ -32,11 +32,17 @@ module.exports = function extractItemRelationship({
     segments,
   })
 
-  objectPath.set(
-    item,
-    `relationships.${relationshipKey}.data`,
-    relationshipFormat === 'object' ? relationships[0] : relationships
-  )
+  relationships.filter(relationship => {
+    return !!relationship
+  })
+
+  if (relationships.length) {
+    objectPath.set(
+      item,
+      `relationships.${relationshipKey}.data`,
+      relationshipFormat === 'object' ? relationships[0] : relationships
+    )
+  }
 
   return item
 }

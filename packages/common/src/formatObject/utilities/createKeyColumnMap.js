@@ -3,17 +3,27 @@ const getModelType = require('./getModelType')
 const getModelColumn = require('./getModelColumn')
 
 module.exports = function createKeyColumnMap(model) {
-  return Object.keys(model.properties).reduce((map, propertyKey) => {
-    const property = model.properties[propertyKey]
+  const normalizedNamespaceProperties =
+    (model &&
+      model.properties &&
+      model.properties.normalized &&
+      model.properties.normalized.properties) ||
+    {}
 
-    if (!getModelIsColumn(property)) {
-      return map
-    }
-    const type = getModelType(property)
+  return Object.keys(normalizedNamespaceProperties).reduce(
+    (map, propertyKey) => {
+      const property = normalizedNamespaceProperties[propertyKey]
 
-    return {
-      ...map,
-      [type]: getModelColumn(property),
-    }
-  }, {})
+      if (!getModelIsColumn(property)) {
+        return map
+      }
+      const type = getModelType(property)
+
+      return {
+        ...map,
+        [type]: getModelColumn(property),
+      }
+    },
+    {}
+  )
 }

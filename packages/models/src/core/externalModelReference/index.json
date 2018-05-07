@@ -5,5 +5,5 @@
     "id": { "type": "string" },
     "type": { "type": "string" }
   },
-  "required": ["id", "type"]
+  "required": ["id"]
 }

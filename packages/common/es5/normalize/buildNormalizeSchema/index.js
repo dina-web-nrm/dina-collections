@@ -22,6 +22,8 @@ var getTypeAndRef = require('./getTypeAndRef');
 var processStrategy = require('./processStrategy');
 var models = require('../../../dist/models.json');
 
+console.log('models', models.specimen);
+
 var options = {
   idAttribute: getIdAttribute,
   processStrategy: processStrategy

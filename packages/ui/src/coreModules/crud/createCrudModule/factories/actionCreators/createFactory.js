@@ -1,10 +1,8 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
-import { flattenObjectResponse } from 'utilities/transformations'
 import getActionActionTypes from './utilities/getActionActionTypes'
 
 export const dep = new Dependor({
-  flattenObjectResponse,
   getActionActionTypes,
 })
 
@@ -35,7 +33,7 @@ export default function createAcFactory(
       }
       const body = {
         data: {
-          attributes: { ...item },
+          ...item,
           type: resource,
         },
       }
@@ -51,13 +49,12 @@ export default function createAcFactory(
 
       return apiClient.call(operationId, callParams).then(
         response => {
-          const transformedResponse = dep.flattenObjectResponse(response.data)
           dispatch({
             meta: callParams,
-            payload: transformedResponse,
+            payload: response.data,
             type: actionTypes.success,
           })
-          return transformedResponse
+          return response.data
         },
         error => {
           dispatch({

@@ -5,7 +5,7 @@ const config = {
         {
           text: {
             defaultLanguage: 'en',
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: true,
           },
           type: 'getAllAsOptions',
@@ -26,7 +26,7 @@ const config = {
       customSelectors: [
         {
           text: {
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: true,
           },
           type: 'getAllAsOptions',
@@ -47,7 +47,7 @@ const config = {
       customSelectors: [
         {
           text: {
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: false,
           },
           type: 'getAllAsOptions',
@@ -108,7 +108,7 @@ const config = {
       customSelectors: [
         {
           text: {
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: false,
           },
           type: 'getAllAsOptions',

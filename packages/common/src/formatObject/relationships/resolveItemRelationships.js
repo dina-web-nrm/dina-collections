@@ -3,7 +3,7 @@ const resolveItemRelationship = require('./resolveItemRelationship')
 module.exports = function resolveItemRelationships({
   getItemByTypeId,
   item,
-  relationships,
+  relationships = {},
   relationshipSpecification,
 }) {
   let updatedItem = item

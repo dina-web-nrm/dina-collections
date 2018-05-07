@@ -1,23 +1,23 @@
-const toApiFormat = require('./toApiFormat')
-const toObjectFormat = require('./toObjectFormat')
+const toCoreFormat = require('./toCoreFormat')
+const toNestedFormat = require('./toNestedFormat')
 const denormalizedSpecimen = require('../normalize/testData/denormalizedSpecimen')
 // const denormalizedSpecimenWithLids = require('../normalize/testData/denormalizedSpecimenWithLids')
 // const normalizedSpecimenWithRelationships = require('../normalize/testData/normalizedSpecimenWithRelationships')
 
-describe('formatObject/toApiFormat', () => {
+describe('formatObject/toCoreFormat', () => {
   it('is a function', () => {
-    expect(typeof toApiFormat).toBe('function')
+    expect(typeof toCoreFormat).toBe('function')
   })
 
   it('dont throw in base case', () => {
     expect(() => {
-      const apiFormatItem = toApiFormat({
+      const apiFormatItem = toCoreFormat({
         extractRelationships: true,
         item: denormalizedSpecimen,
         normalize: true,
         type: 'specimen',
       })
-      // console.log('apiFormat', JSON.stringify(apiFormatItem, null, 2))
+      console.log('apiFormat', JSON.stringify(apiFormatItem, null, 2))
 
       const getItemByTypeId = (type, id) => {
         return {
@@ -26,7 +26,7 @@ describe('formatObject/toApiFormat', () => {
         }
       }
 
-      const objectFormat = toObjectFormat({
+      const objectFormat = toNestedFormat({
         denormalize: true,
         getItemByTypeId,
         item: apiFormatItem,
@@ -34,7 +34,7 @@ describe('formatObject/toApiFormat', () => {
         type: 'specimen',
       })
 
-      console.log('objectFormat', JSON.stringify(objectFormat, null, 2))
+      // console.log('objectFormat', JSON.stringify(objectFormat, null, 2))
     }).not.toThrow()
   })
   // it('does a correct normalization when ids exist', () => {

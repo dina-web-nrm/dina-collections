@@ -2,7 +2,6 @@
 
 module.exports = {
   id: '1234',
-  type: 'specimen',
   individual: {
     determinations: [{
       determinationVerbatim: 'determinationVerbatim',

@@ -1,14 +1,18 @@
 module.exports = function extractNormalizedColumns({
-  doc,
+  doc = {},
   normalizedColumnNames,
 }) {
+  const { normalized, ...rest } = doc
+
   return normalizedColumnNames.reduce(
     (normalizedColumns, normalizedColumnName) => {
       return {
         ...normalizedColumns,
-        [normalizedColumnName]: doc[normalizedColumnName],
+        [normalizedColumnName]: normalized[normalizedColumnName],
       }
     },
-    {}
+    {
+      nonNormalized: rest,
+    }
   )
 }

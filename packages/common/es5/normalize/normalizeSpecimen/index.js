@@ -39,8 +39,8 @@ var columnNames = (0, _keys2.default)(normalizedSchemaSpecification.specimen).ma
 });
 
 module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
-  console.log('denormalizedSpecimenInput', denormalizedSpecimenInput);
   var denormalizedSpecimen = JSON.parse((0, _stringify2.default)(denormalizedSpecimenInput));
+
   var _denormalizedSpecimen = denormalizedSpecimen.individual,
       individual = _denormalizedSpecimen === undefined ? {} : _denormalizedSpecimen,
       rest = (0, _objectWithoutProperties3.default)(denormalizedSpecimen, ['individual']);
@@ -54,6 +54,7 @@ module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
     if (!columnNames.includes(columnName)) {
       return (0, _extends6.default)({}, obj, (0, _defineProperty3.default)({}, columnName, entities[columnName]));
     }
+
     if (columnName === 'individual') {
       return (0, _extends6.default)({}, obj, (0, _defineProperty3.default)({}, columnName, columnObjectToArray(entities[columnName])[0]));
     }

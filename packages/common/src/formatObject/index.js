@@ -1,5 +1,5 @@
-const toApiFormat = require('./toApiFormat')
-const toObjectFormat = require('./toObjectFormat')
+const toCoreFormat = require('./toCoreFormat')
+const toNestedFormat = require('./toNestedFormat')
 
-exports.toApiFormat = toApiFormat
-exports.toObjectFormat = toObjectFormat
+exports.toCoreFormat = toCoreFormat
+exports.toNestedFormat = toNestedFormat

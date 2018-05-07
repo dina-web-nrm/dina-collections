@@ -1,4 +1,6 @@
 import { createSelector } from 'reselect'
+import crudSelectors from 'coreModules/crud/globalSelectors'
+import toNestedFormat from 'common/es5/formatObject/toNestedFormat'
 
 import {
   getLocalState as getCuratedListState,
@@ -18,6 +20,8 @@ import wrapSelectors from 'utilities/wrapSelectors'
 // import transformInput from './components/MammalForm/transformations/input'
 import * as selectors from './selectors'
 
+const { getOne } = crudSelectors.specimen
+
 const getFeatureTypesGlobal = state => {
   return getFeatureTypes(getCuratedListState(state))
 }
@@ -26,8 +30,7 @@ const getInitialSpecimen = (state, specimenId) => {
   if (!specimenId) {
     return undefined
   }
-
-  return getSpecimen(getSpecimenState(state), specimenId)
+  return getOne(state, specimenId)
 }
 
 const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
@@ -46,27 +49,30 @@ const getMammalFormInitialValues = createSelector(
     getSpecimenReadOnlyGlobalSelector,
   ],
   (featureTypes, specimen, physicalObjects, readOnly) => {
-    return {
-      determinations: [{}],
-      identifiers: [
-        {
-          identifierType: {
-            id: '1',
+    if (!specimen) {
+      return {
+        determinations: [{}],
+        identifiers: [
+          {
+            identifierType: {
+              id: '1',
+            },
+            nameSpace: '',
+            publishRecord: false,
+            remarks: '',
+            value: '',
           },
-          nameSpace: '',
-          publishRecord: false,
-          remarks: '',
-          value: '',
-        },
-      ],
-      recordHistoryEvents: [],
+        ],
+        recordHistoryEvents: [],
+      }
     }
-    // return transformInput({
-    //   featureTypes,
-    //   physicalObjects,
-    //   readOnly,
-    //   specimen,
-    // })
+
+    const nestedFormatSpecimen = toNestedFormat({
+      item: specimen,
+      type: 'specimen',
+    })
+
+    return nestedFormatSpecimen.individual
   }
 )
 

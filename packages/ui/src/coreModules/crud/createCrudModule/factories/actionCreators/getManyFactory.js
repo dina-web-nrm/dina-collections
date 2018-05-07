@@ -1,10 +1,8 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
-import { flattenArrayResponse } from 'utilities/transformations'
 import getActionActionTypes from './utilities/getActionActionTypes'
 
 export const dep = new Dependor({
-  flattenArrayResponse,
   getActionActionTypes,
 })
 
@@ -52,13 +50,12 @@ export default function getManyAcFactory(
       })
       return apiClient.call(operationId, callParams).then(
         response => {
-          const transformedResponse = dep.flattenArrayResponse(response.data)
           dispatch({
             meta: callParams,
-            payload: transformedResponse,
+            payload: response.data,
             type: actionTypes.success,
           })
-          return transformedResponse
+          return response.data
         },
         error => {
           dispatch({

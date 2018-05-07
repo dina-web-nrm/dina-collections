@@ -10,7 +10,7 @@ var normalizeSpecimen = require('./index');
 
 var denormalizedSpecimen = require('../testData/denormalizedSpecimen');
 var denormalizedSpecimenWithLids = require('../testData/denormalizedSpecimenWithLids');
-var normalizedSpecimen = require('../testData/normalizedSpecimen');
+var normalizedSpecimenWithRelationships = require('../testData/normalizedSpecimenWithRelationships');
 
 describe('normalize/normalizeSpecimen', function () {
   it('is a function', function () {
@@ -23,6 +23,6 @@ describe('normalize/normalizeSpecimen', function () {
     }).not.toThrow();
   });
   it('does a correct normalization when ids exist', function () {
-    expect(normalizeSpecimen(denormalizedSpecimenWithLids)).toEqual(normalizedSpecimen);
+    expect(normalizeSpecimen(denormalizedSpecimenWithLids)).toEqual(normalizedSpecimenWithRelationships);
   });
 });

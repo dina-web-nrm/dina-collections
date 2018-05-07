@@ -140,10 +140,10 @@ const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
         .filter(
           ({ group }) => (groupFilter === 'all' ? true : group === groupFilter)
         )
-        .map(({ id, name }) => {
+        .map(({ id, attributes }) => {
           return {
             key: id,
-            text: capitalizeFirstLetter(name),
+            text: capitalizeFirstLetter(attributes.name),
             value: id,
           }
         })
