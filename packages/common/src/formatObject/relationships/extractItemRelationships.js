@@ -2,8 +2,8 @@ const extractItemRelationship = require('./extractItemRelationship')
 
 module.exports = function extractItemRelationships({
   item,
-  relationshipSpecification,
   nestedToCore,
+  relationshipSpecification,
 }) {
   let updatedItem = item
   Object.keys(relationshipSpecification).forEach(relationshipKey => {
@@ -15,11 +15,11 @@ module.exports = function extractItemRelationships({
 
     updatedItem = extractItemRelationship({
       item,
+      nestedToCore,
       path,
       relationshipFormat,
       relationshipKey,
       relationshipType,
-      nestedToCore,
     })
   })
 

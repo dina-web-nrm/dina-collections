@@ -4,8 +4,6 @@ const getTypeAndRef = require('./getTypeAndRef')
 const processStrategy = require('./processStrategy')
 const models = require('../../../dist/models.json')
 
-console.log('models', models.specimen)
-
 const options = {
   idAttribute: getIdAttribute,
   processStrategy,
