@@ -7,7 +7,7 @@ module.exports = function extractItemRelationship({
   relationshipFormat,
   relationshipKey,
   relationshipType,
-  toCoreFormat,
+  nestedToCore,
 }) {
   const segments = path.split('.*.')
   const relationships = []
@@ -18,8 +18,8 @@ module.exports = function extractItemRelationship({
         id: relationship.id,
       })
 
-      const formattedRelationship = toCoreFormat
-        ? toCoreFormat({
+      const formattedRelationship = nestedToCore
+        ? nestedToCore({
             item: relationship,
             normalize: true,
             type: relationshipType,

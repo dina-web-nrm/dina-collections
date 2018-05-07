@@ -3,7 +3,7 @@ const extractItemRelationship = require('./extractItemRelationship')
 module.exports = function extractItemRelationships({
   item,
   relationshipSpecification,
-  toCoreFormat,
+  nestedToCore,
 }) {
   let updatedItem = item
   Object.keys(relationshipSpecification).forEach(relationshipKey => {
@@ -19,7 +19,7 @@ module.exports = function extractItemRelationships({
       relationshipFormat,
       relationshipKey,
       relationshipType,
-      toCoreFormat,
+      nestedToCore,
     })
   })
 

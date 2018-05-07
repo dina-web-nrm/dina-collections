@@ -1,21 +1,35 @@
+DONE
 * Merge with mammal form
 * Make sure saving in db is working in first version
+* Ensure relationships are working in first version
+* move test data
 
-* Go through desired behavior for attributes. getOne getOneNestedFormat?
+
+TODO
+* Make test pass
+** COMMON
+** BACKEND
+** UI
+
+
+
 
 
 
 
 
 * Implement selector that fetches resource by id
-* Use same common functions in backend
-
-
 * fix bug spreading string
 * is x-column needed?
+* Go through desired behavior for attributes. getOne getOneNestedFormat?
+
+
+
+
+LATER
 * Merge normalized names specifications
-* move test data 
-* remove normalize
+* Use same common functions in backend
+* remove normalize (build stuff backend need based on schema)
 * Check normalized and nonNormalized models if they need to be adjusted
 
 
@@ -27,98 +41,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// displayFormat, formFormat, nestedFormat, expandedFormat, collapsed. storageFormat, uiFormat
-
-
-// nestedFormat
-
-{
-  id: 123,
-  readOnly: {
-
-  },
-  individual: {
-    collectionObjects: [
-      physicalUnit: {
-        id: 125
-        title: "A physical unit"
-        storageLocation: {
-          id: 126
-          storageTitle: 'drawer'
-        }
-      }
-    ]
-  }
-}
-
-
-// coreFormat
-{
-  id: 123,
-  readOnly: 123
-  normalized: {
-    collectionObjects: [{
-      {
-        lid: '22hf1hffj',
-        physicalUnit: {
-          id: '123',
-        }
-      }
-    }],
-    individuals: [
-      {
-        lid: '12hf1hffj',
-        collectionObjects: [
-          '22hf1hffj',
-        ],
-      }
-    ]
-
-  }
-  individual: '12hf1hffj',
-  relationships: {
-    physicalUnits: {
-      data: [
-        {
-          attributes: {
-            title: 'A physical unit"
-          },
-          id: 123,
-          relationships: {
-            storageLocation: {
-              data: {
-                attributes: {
-                  storageTitle: 'drawer'
-                },
-                id: 126,
-                type: storageLocation,
-              }
-            }
-          },
-          type: physicalUnit
-        }
-      ],
-    }
-  },
-  type: 'specimen'
-}
 
 
 
