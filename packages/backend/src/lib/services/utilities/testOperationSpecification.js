@@ -1,6 +1,7 @@
 const create = require('../operationFactory/typeFactories/schemas/create')
 const getMany = require('../operationFactory/typeFactories/schemas/getMany')
 const getOne = require('../operationFactory/typeFactories/schemas/getOne')
+const getRelationBelongsToOne = require('../operationFactory/typeFactories/schemas/getRelationBelongsToOne')
 const getRelationHasMany = require('../operationFactory/typeFactories/schemas/getRelationHasMany')
 const getRelationHasOne = require('../operationFactory/typeFactories/schemas/getRelationHasOne')
 const getVersion = require('../operationFactory/typeFactories/schemas/getVersion')
@@ -39,6 +40,12 @@ module.exports = function testOperationSpecification(operationSpecification) {
           expectNoValidationError(validate(getOne, operationSpecification))
           break
         }
+        case 'getRelationBelongsToOne': {
+          expectNoValidationError(
+            validate(getRelationBelongsToOne, operationSpecification)
+          )
+          break
+        }
         case 'getRelationHasMany': {
           expectNoValidationError(
             validate(getRelationHasMany, operationSpecification)
@@ -67,6 +74,13 @@ module.exports = function testOperationSpecification(operationSpecification) {
           break
         }
 
+        case 'updateRelationBelongsToOne': {
+          expectNoValidationError(
+            validate(updateRelationBelongsToOne, operationSpecification)
+          )
+          break
+        }
+
         case 'updateRelationHasMany': {
           expectNoValidationError(
             validate(updateRelationHasMany, operationSpecification)
@@ -77,13 +91,6 @@ module.exports = function testOperationSpecification(operationSpecification) {
         case 'updateRelationHasOne': {
           expectNoValidationError(
             validate(updateRelationHasOne, operationSpecification)
-          )
-          break
-        }
-
-        case 'updateRelationBelongsToOne': {
-          expectNoValidationError(
-            validate(updateRelationBelongsToOne, operationSpecification)
           )
           break
         }

@@ -22,8 +22,28 @@ module.exports = function updateRelationHasOne({ operation, models }) {
   const foreignKeyName = `${relationKey}Id`
 
   return ({ request }) => {
-    const { body: { data: { id: targetModelId, type } } } = request
+    const { body: { data } } = request
     const { pathParams: { id: coreModelId } } = request
+
+    if (!data) {
+      return model
+        .update({
+          foreignKeyName,
+          foreignKeyValue: null,
+          id: coreModelId,
+        })
+        .then(transformOutput)
+        .then(output => {
+          return createObjectResponse({
+            data: output,
+            id: output.id,
+            type: resource,
+          })
+        })
+    }
+
+    const { id: targetModelId, type } = data
+
     if (!type || type !== relationResource) {
       backendError400({
         code: 'REQUEST_ERROR',

@@ -15,11 +15,11 @@ module.exports = {
     },
     {
       relationKey: 'storageLocation',
-      type: 'updateRelationHasOne',
+      type: 'updateRelationBelongsToOne',
     },
     {
       relationKey: 'storageLocation',
-      type: 'getRelationHasOne',
+      type: 'getRelationBelongsToOne',
     },
     {
       includeRelations: true,
