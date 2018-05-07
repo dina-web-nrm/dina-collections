@@ -33,5 +33,5 @@ export const UPDATE_STORAGE_LOCATION = createEndpoint({
 })
 
 export const UPDATE_PHYSICAL_UNIT_STORAGE_LOCATION = createEndpoint({
-  operationId: 'physicalObjectUpdateRelationHasOneStorageLocation',
+  operationId: 'physicalObjectUpdateRelationBelongsToOneStorageLocation',
 })
