@@ -154,7 +154,7 @@ export class Edit extends PureComponent {
 
     const initialValues = taxon &&
       taxon.parent && {
-        parentVersionId: taxon.parent.id,
+        parentId: taxon.parent.id,
       }
 
     return (
@@ -168,10 +168,10 @@ export class Edit extends PureComponent {
             onInteraction(FORM_CANCEL)
           }}
           onInteraction={onInteraction}
-          onSubmit={({ parentVersionId }) => {
+          onSubmit={({ parentId }) => {
             this.props
               .updateTaxonParent({
-                parentVersionId,
+                parentId,
                 taxonId: itemId,
               })
               .then(result => {

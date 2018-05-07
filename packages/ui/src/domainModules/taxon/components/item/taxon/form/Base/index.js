@@ -91,7 +91,7 @@ export class BaseForm extends Component {
                 component={DropdownSearch}
                 label="Parent"
                 module="taxon"
-                name="parentVersionId"
+                name="parentId"
                 options={taxaOptions}
                 type="dropdown-search-local"
               />

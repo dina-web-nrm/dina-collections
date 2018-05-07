@@ -8,12 +8,12 @@ import {
 import { TAXON } from '../constants'
 
 export default function updateTaxonParent(
-  { taxonId, parentVersionId, throwError = false } = {}
+  { taxonId, parentId, throwError = false } = {}
 ) {
   const callParams = {
     body: {
       data: {
-        id: parentVersionId,
+        id: parentId,
         type: TAXON,
       },
     },
