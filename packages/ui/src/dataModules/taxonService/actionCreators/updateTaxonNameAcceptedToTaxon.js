@@ -13,7 +13,7 @@ export default function updateTaxonNameAcceptedToTaxon(
   const callParams = {
     body: {
       data: {
-        id: taxonId,
+        id: taxonId || undefined,
         type: TAXON,
       },
     },
@@ -27,28 +27,30 @@ export default function updateTaxonNameAcceptedToTaxon(
       type: TAXON_SERVICE_UPDATE_TAXON_NAME_ACCEPTED_TO_TAXON_REQUEST,
     })
 
-    return apiClient.call('updateTaxonNameAcceptedToTaxon', callParams).then(
-      response => {
-        const transformedResponse = flattenObjectResponse(response.data)
-        dispatch({
-          meta,
-          payload: transformedResponse,
-          type: TAXON_SERVICE_UPDATE_TAXON_NAME_ACCEPTED_TO_TAXON_SUCCESS,
-        })
-        return transformedResponse
-      },
-      error => {
-        dispatch({
-          error: true,
-          meta,
-          payload: error,
-          type: TAXON_SERVICE_UPDATE_TAXON_NAME_ACCEPTED_TO_TAXON_FAIL,
-        })
+    return apiClient
+      .call('taxonNameUpdateRelationBelongsToOneAcceptedToTaxon', callParams)
+      .then(
+        response => {
+          const transformedResponse = flattenObjectResponse(response.data)
+          dispatch({
+            meta,
+            payload: transformedResponse,
+            type: TAXON_SERVICE_UPDATE_TAXON_NAME_ACCEPTED_TO_TAXON_SUCCESS,
+          })
+          return transformedResponse
+        },
+        error => {
+          dispatch({
+            error: true,
+            meta,
+            payload: error,
+            type: TAXON_SERVICE_UPDATE_TAXON_NAME_ACCEPTED_TO_TAXON_FAIL,
+          })
 
-        if (throwError) {
-          throw error
+          if (throwError) {
+            throw error
+          }
         }
-      }
-    )
+      )
   }
 }

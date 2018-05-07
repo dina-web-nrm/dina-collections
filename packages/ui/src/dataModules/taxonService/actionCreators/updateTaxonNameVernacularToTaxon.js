@@ -27,28 +27,30 @@ export default function updateTaxonNameVernacularToTaxon(
       type: TAXON_SERVICE_UPDATE_TAXON_NAME_VERNACULAR_TO_TAXON_REQUEST,
     })
 
-    return apiClient.call('updateTaxonNameVernacularToTaxon', callParams).then(
-      response => {
-        const transformedResponse = flattenObjectResponse(response.data)
-        dispatch({
-          meta,
-          payload: transformedResponse,
-          type: TAXON_SERVICE_UPDATE_TAXON_NAME_VERNACULAR_TO_TAXON_SUCCESS,
-        })
-        return transformedResponse
-      },
-      error => {
-        dispatch({
-          error: true,
-          meta,
-          payload: error,
-          type: TAXON_SERVICE_UPDATE_TAXON_NAME_VERNACULAR_TO_TAXON_FAIL,
-        })
+    return apiClient
+      .call('taxonNameUpdateRelationBelongsToOneVernacularToTaxon', callParams)
+      .then(
+        response => {
+          const transformedResponse = flattenObjectResponse(response.data)
+          dispatch({
+            meta,
+            payload: transformedResponse,
+            type: TAXON_SERVICE_UPDATE_TAXON_NAME_VERNACULAR_TO_TAXON_SUCCESS,
+          })
+          return transformedResponse
+        },
+        error => {
+          dispatch({
+            error: true,
+            meta,
+            payload: error,
+            type: TAXON_SERVICE_UPDATE_TAXON_NAME_VERNACULAR_TO_TAXON_FAIL,
+          })
 
-        if (throwError) {
-          throw error
+          if (throwError) {
+            throw error
+          }
         }
-      }
-    )
+      )
   }
 }

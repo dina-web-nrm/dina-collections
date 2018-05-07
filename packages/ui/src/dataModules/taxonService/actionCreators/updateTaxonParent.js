@@ -27,7 +27,7 @@ export default function updateTaxonParent(
       type: TAXON_SERVICE_UPDATE_TAXON_PARENT_REQUEST,
     })
 
-    return apiClient.call('updateTaxonParent', callParams).then(
+    return apiClient.call('taxonUpdateRelationHasOneParent', callParams).then(
       response => {
         const transformedResponse = flattenObjectResponse(response.data)
         dispatch({
