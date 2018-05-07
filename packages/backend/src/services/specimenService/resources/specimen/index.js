@@ -1,6 +1,9 @@
 const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
+const { resourceRelationsMap } = require('../../models/relations')
+
+const resource = 'specimen'
 
 module.exports = {
   basePath: '/api/specimen/v01',
@@ -73,27 +76,6 @@ module.exports = {
       type: 'getVersions',
     },
   ],
-  relations: {
-    featureTypes: {
-      format: 'array',
-      resource: 'featureType',
-      storeInDocument: true,
-    },
-    physicalObjects: {
-      format: 'array',
-      resource: 'physicalObject',
-      storeInDocument: true,
-    },
-    places: {
-      format: 'array',
-      resource: 'place',
-      storeInDocument: true,
-    },
-    taxa: {
-      format: 'array',
-      resource: 'taxon',
-      storeInDocument: true,
-    },
-  },
-  resource: 'specimen',
+  relations: resourceRelationsMap[resource],
+  resource,
 }

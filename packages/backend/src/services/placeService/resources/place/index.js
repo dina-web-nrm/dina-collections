@@ -1,5 +1,8 @@
 const createRequestSuccess = require('./create/examples/requestSuccess.json')
 const buildWhere = require('./getMany/buildWhere')
+const { resourceRelationsMap } = require('../../models/relations')
+
+const resource = 'place'
 
 module.exports = {
   basePath: '/api/locality/v01',
@@ -84,15 +87,6 @@ module.exports = {
       type: 'getMany',
     },
   ],
-  relations: {
-    children: {
-      format: 'array',
-      resource: 'place',
-    },
-    parent: {
-      format: 'object',
-      resource: 'place',
-    },
-  },
-  resource: 'place',
+  relations: resourceRelationsMap[resource],
+  resource,
 }
