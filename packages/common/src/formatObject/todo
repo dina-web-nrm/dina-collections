@@ -4,16 +4,26 @@ DONE
 * Ensure relationships are working in first version
 * move test data
 
-
-TODO
 * Make test pass
 ** COMMON
 ** BACKEND
+
+TODO
+* Make test pass
 ** UI
+
+* Migrate curatedListDataService
+
+* remove specimen data module. Search?
+* remove other not used files
 
 * Implement simple golden flow tests
 * Verify next step functionality for new api client
 
+
+FIX
+* fix weird redirect when no catalogNumber
+* fix create catalogNumber
 
 
 

@@ -5,8 +5,8 @@ import { compose } from 'redux'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import { Icon, Label } from 'semantic-ui-react'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { createGetPreparationTypeById } from 'dataModules/curatedListService/higherOrderComponents'
 import { createGetStorageLocationById } from 'dataModules/storageService/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import createLog from 'utilities/log'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
@@ -101,6 +101,9 @@ PhysicalObjectTitle.propTypes = propTypes
 PhysicalObjectTitle.defaultProps = defaultProps
 
 export default compose(
-  createGetPreparationTypeById('preparationTypeId'),
+  createGetItemById({
+    idPath: 'preparationTypeId',
+    resource: 'preparationType',
+  }),
   createGetStorageLocationById('physicalObject.storageLocation.id')
 )(PhysicalObjectTitle)

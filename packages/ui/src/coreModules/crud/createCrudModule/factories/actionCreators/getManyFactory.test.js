@@ -135,7 +135,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {},
           },
-          payload: [{ id: '123', name: 'Anton', type: 'type' }],
+          payload: [{ attributes: { name: 'Anton' }, id: '123', type: 'type' }],
           type: 'GET_MANY_PHYSICAL_OBJECT_SUCCESS',
         }
 
@@ -173,7 +173,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
               relationships: ['parent'],
             },
           },
-          payload: [{ id: '123', name: 'Anton', type: 'type' }],
+          payload: [{ attributes: { name: 'Anton' }, id: '123', type: 'type' }],
           type: 'GET_MANY_PHYSICAL_OBJECT_SUCCESS',
         }
 

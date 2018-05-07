@@ -9,7 +9,7 @@ import { Accordion } from 'coreModules/commonUi/components'
 import { FIRST_EXPANDED, ALL_COLLAPSED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
-import { ensureAllPreparationTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { getStorageLocations } from 'dataModules/storageService/actionCreators'
 import {
@@ -155,7 +155,7 @@ SegmentCollectionItems.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  ensureAllPreparationTypesFetched(),
+  createEnsureAllItemsFetched({ resource: 'preparationType' }),
   ensureAllStorageLocationsFetched(),
   pathBuilder({
     name: 'collectionItems',

@@ -43,6 +43,20 @@ const config = {
         },
       ],
     },
+
+    featureType: {
+      operations: [
+        {
+          operationId: 'featureTypeGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'featureTypeGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
+
     identifierType: {
       customSelectors: [
         {
@@ -81,6 +95,18 @@ const config = {
         {
           operationId: 'placeUpdate',
           type: 'update',
+        },
+      ],
+    },
+    preparationType: {
+      operations: [
+        {
+          operationId: 'preparationTypeGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'preparationTypeGetMany',
+          type: 'getMany',
         },
       ],
     },

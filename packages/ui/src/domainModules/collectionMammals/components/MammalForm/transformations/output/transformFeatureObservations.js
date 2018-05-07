@@ -1,5 +1,3 @@
-import { FEATURE_OBSERVATION_TYPE } from 'dataModules/curatedListService/constants'
-
 export default function transformFeatureObservations(featureObservations = {}) {
   let featureTypes = []
 
@@ -19,7 +17,7 @@ export default function transformFeatureObservations(featureObservations = {}) {
 
       const transformedFeatureType = {
         id: featureType.id,
-        type: FEATURE_OBSERVATION_TYPE,
+        type: 'featureObservation',
       }
 
       featureTypes = [...featureTypes, transformedFeatureType]

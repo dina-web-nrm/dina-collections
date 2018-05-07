@@ -1,18 +1,24 @@
 import { createSelector } from 'reselect'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import curatedListServiceSelectors from 'dataModules/curatedListService/globalSelectors'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
 import { SKELETON, SKIN, WET_PREPARATION } from './constants'
 
-const { getPreparationTypes, getFeatureTypes } = curatedListServiceSelectors
+const {
+  preparationType: { getAll: getPreparationTypes },
+  featureType: {
+    getAll: getFeatureTypes,
+    getItemsObject: getFeatureTypesObject,
+  },
+} = globalCrudSelectors
 
 const createDropdownSelector = (categoryFilter, numberOfResults) => {
   return createSelector(
     [getPreparationTypes, getSecondArgument],
     (preparationTypes, searchQuery = '') => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
-      const mappedPreparationTypes = Object.values(preparationTypes)
+      const mappedPreparationTypes = preparationTypes
         .filter(
           ({ category }) =>
             categoryFilter === 'all' ? true : category === categoryFilter
@@ -85,32 +91,29 @@ const getPreparationTypeOptions = (state, category) => {
 const getGroupedFeatureTypeIds = createSelector(
   getFeatureTypes,
   featureTypes => {
-    return Object.values(featureTypes).reduce(
-      (groupToIdsMap, { id, group }) => {
-        return {
-          ...groupToIdsMap,
-          [group]: groupToIdsMap[group] ? [...groupToIdsMap[group], id] : [id],
-        }
-      },
-      {}
-    )
+    return featureTypes.reduce((groupToIdsMap, { id, group }) => {
+      return {
+        ...groupToIdsMap,
+        [group]: groupToIdsMap[group] ? [...groupToIdsMap[group], id] : [id],
+      }
+    }, {})
   }
 )
 
 const getFeatureTypesInGroups = createSelector(
   [
-    getFeatureTypes,
+    getFeatureTypesObject,
     getGroupedFeatureTypeIds,
     (_, groups) => (groups ? groups.join() : ''),
   ],
-  (featureTypes, groupToIdsMap, groupsString) => {
+  (featureTypesObject, groupToIdsMap, groupsString) => {
     return groupsString.split(',').reduce((arr, group) => {
       const featureTypeIds = groupToIdsMap[group]
 
       const groupFeatureTypes =
         featureTypeIds &&
         featureTypeIds.map(id => {
-          return featureTypes[id]
+          return featureTypesObject[id]
         })
 
       return groupFeatureTypes ? [...arr, ...groupFeatureTypes] : arr

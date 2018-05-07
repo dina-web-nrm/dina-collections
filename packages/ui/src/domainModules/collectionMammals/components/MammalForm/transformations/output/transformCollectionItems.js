@@ -1,4 +1,3 @@
-import { DISTINGUISHED_UNIT_TYPE } from 'dataModules/curatedListService/constants'
 import {
   PHYSICAL_UNIT,
   STORAGE_LOCATION,
@@ -19,7 +18,7 @@ export default function transformCollectionItems(collectionItems = []) {
       if (preparationType.id) {
         const mappedPreparationType = {
           id: preparationType.id,
-          type: DISTINGUISHED_UNIT_TYPE,
+          type: 'preparationType',
         }
         preparationTypes.push(mappedPreparationType)
         mappedCollectionItem.preparationType = mappedPreparationType

@@ -1,30 +1,29 @@
 import { createSelector } from 'reselect'
 import crudSelectors from 'coreModules/crud/globalSelectors'
-import toNestedFormat from 'common/es5/formatObject/toNestedFormat'
+import coreToNested from 'common/es5/formatObject/coreToNested'
 
-import {
-  getLocalState as getCuratedListState,
-  getFeatureTypes,
-} from 'dataModules/curatedListService/selectors'
-import {
-  getLocalState as getSpecimenState,
-  getSpecimen,
-  getSpecimenReadOnly,
-} from 'dataModules/specimenService/selectors'
-import {
-  getLocalState as getStorageState,
-  getPhysicalObjects,
-} from 'dataModules/storageService/selectors'
+// import {
+//   getLocalState as getCuratedListState,
+//   getFeatureTypes,
+// } from 'dataModules/curatedListService/selectors'
+// import {
+//   getLocalState as getSpecimenState,
+//   getSpecimenReadOnly,
+// } from 'dataModules/specimenService/selectors'
+// import {
+//   getLocalState as getStorageState,
+//   getPhysicalObjects,
+// } from 'dataModules/storageService/selectors'
 
 import wrapSelectors from 'utilities/wrapSelectors'
-// import transformInput from './components/MammalForm/transformations/input'
+import setDefaultValues from './components/MammalForm/transformations/input'
 import * as selectors from './selectors'
 
 const { getOne } = crudSelectors.specimen
 
-const getFeatureTypesGlobal = state => {
-  return getFeatureTypes(getCuratedListState(state))
-}
+// const getFeatureTypesGlobal = state => {
+//   return getFeatureTypes(getCuratedListState(state))
+// }
 
 const getInitialSpecimen = (state, specimenId) => {
   if (!specimenId) {
@@ -33,46 +32,25 @@ const getInitialSpecimen = (state, specimenId) => {
   return getOne(state, specimenId)
 }
 
-const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
-  return getSpecimenReadOnly(getSpecimenState(state), specimenId)
-}
+// const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
+//   return getSpecimenReadOnly(getSpecimenState(state), specimenId)
+// }
 
-const getPhysicalObjectsGlobal = state => {
-  return getPhysicalObjects(getStorageState(state))
-}
+// const getPhysicalObjectsGlobal = state => {
+//   return getPhysicalObjects(getStorageState(state))
+// }
 
 const getMammalFormInitialValues = createSelector(
-  [
-    getFeatureTypesGlobal,
-    getInitialSpecimen,
-    getPhysicalObjectsGlobal,
-    getSpecimenReadOnlyGlobalSelector,
-  ],
-  (featureTypes, specimen, physicalObjects, readOnly) => {
-    if (!specimen) {
-      return {
-        determinations: [{}],
-        identifiers: [
-          {
-            identifierType: {
-              id: '1',
-            },
-            nameSpace: '',
-            publishRecord: false,
-            remarks: '',
-            value: '',
-          },
-        ],
-        recordHistoryEvents: [],
-      }
-    }
+  [getInitialSpecimen],
+  specimen => {
+    const nestedFormatSpecimen = !specimen
+      ? {}
+      : coreToNested({
+          item: specimen,
+          type: 'specimen',
+        })
 
-    const nestedFormatSpecimen = toNestedFormat({
-      item: specimen,
-      type: 'specimen',
-    })
-
-    return nestedFormatSpecimen.individual
+    return setDefaultValues(nestedFormatSpecimen).individual
   }
 )
 

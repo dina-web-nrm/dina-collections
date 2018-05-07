@@ -118,7 +118,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
             relationships: ['all'],
           },
         },
-        payload: { id: '123', name: 'Anton', type: 'type' },
+        payload: { attributes: { name: 'Anton' }, id: '123', type: 'type' },
         type: 'GET_ONE_PHYSICAL_OBJECT_SUCCESS',
       }
 

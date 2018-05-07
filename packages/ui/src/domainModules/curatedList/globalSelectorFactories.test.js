@@ -5,56 +5,58 @@ describe('domainModules/curatedList/globalSelectorFactories', () => {
 
   beforeEach(() => {
     state = {
-      curatedListService: {
+      crud: {
         resources: {
-          featureTypes: {
-            a: {
-              group: 'age',
-              id: 'a',
-              selectableMethods: [
-                {
-                  key: 'known-age',
-                  name: {
-                    en: 'known age',
+          featureType: {
+            items: {
+              a: {
+                group: 'age',
+                id: 'a',
+                selectableMethods: [
+                  {
+                    key: 'known-age',
+                    name: {
+                      en: 'known age',
+                    },
                   },
-                },
-                {
-                  key: 'sectioned-teeth',
-                  name: {
-                    en: 'sectioned teeth',
+                  {
+                    key: 'sectioned-teeth',
+                    name: {
+                      en: 'sectioned teeth',
+                    },
                   },
-                },
-                {
-                  key: 'other',
-                  name: {
-                    en: 'other',
+                  {
+                    key: 'other',
+                    name: {
+                      en: 'other',
+                    },
                   },
-                },
-              ],
-            },
-            b: {
-              group: 'sex',
-              id: 'b',
-              selectableValues: [
-                {
-                  key: 'female',
-                  name: {
-                    en: 'female',
-                    sv: 'hona',
+                ],
+              },
+              b: {
+                group: 'sex',
+                id: 'b',
+                selectableValues: [
+                  {
+                    key: 'female',
+                    name: {
+                      en: 'female',
+                      sv: 'hona',
+                    },
                   },
-                },
-                {
-                  key: 'male',
-                  name: {
-                    en: 'male',
-                    sv: 'hane',
+                  {
+                    key: 'male',
+                    name: {
+                      en: 'male',
+                      sv: 'hane',
+                    },
                   },
-                },
-              ],
-            },
-            c: {
-              group: 'age-stage',
-              id: 'c',
+                ],
+              },
+              c: {
+                group: 'age-stage',
+                id: 'c',
+              },
             },
           },
         },
@@ -66,10 +68,9 @@ describe('domainModules/curatedList/globalSelectorFactories', () => {
     it('returns featureTypes in provided groups', () => {
       const getFeatureTypesInGroups = makeGetFeatureTypesInGroups()
       const expectedResult = [
-        state.curatedListService.resources.featureTypes.a,
-        state.curatedListService.resources.featureTypes.c,
+        state.crud.resources.featureType.items.a,
+        state.crud.resources.featureType.items.c,
       ]
-
       expect(getFeatureTypesInGroups(state, ['age', 'age-stage'])).toEqual(
         expectedResult
       )

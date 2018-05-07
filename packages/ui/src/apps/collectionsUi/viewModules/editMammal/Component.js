@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
-
+import nestedToCore from 'common/es5/formatObject/nestedToCore'
 import createLog from 'utilities/log'
 import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
-import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
@@ -42,11 +40,7 @@ class EditMammal extends Component {
   }
 
   render() {
-    const {
-      initialValues,
-      match: { params: { specimenId } },
-      updateSpecimen,
-    } = this.props
+    const { initialValues, updateSpecimen } = this.props
 
     log.render()
     log.debug('initialValues', initialValues)
@@ -54,11 +48,12 @@ class EditMammal extends Component {
       <PageTemplate>
         <MammalForm
           handleFormSubmit={formOutput => {
+            const item = nestedToCore({
+              item: formOutput,
+              type: 'specimen',
+            })
             return updateSpecimen({
-              item: {
-                id: specimenId,
-                ...formOutput,
-              },
+              item,
             })
           }}
           initialValues={initialValues}

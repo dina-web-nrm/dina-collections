@@ -1,15 +1,17 @@
 import { createSelector } from 'reselect'
 
-import curatedListServiceSelectors from 'dataModules/curatedListService/globalSelectors'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import globalSelectors from './globalSelectors'
 
-const { getFeatureTypes } = curatedListServiceSelectors
+const {
+  featureType: { getItemsObject: getFeatureTypesObject },
+} = globalCrudSelectors
 const { getGroupedFeatureTypeIds } = globalSelectors
 
 export const makeGetFeatureTypesInGroups = () => {
   return createSelector(
     [
-      getFeatureTypes,
+      getFeatureTypesObject,
       getGroupedFeatureTypeIds,
       (_, groups) => (groups ? groups.join() : ''),
     ],
