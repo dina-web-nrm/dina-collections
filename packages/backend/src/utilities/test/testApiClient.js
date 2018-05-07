@@ -69,10 +69,28 @@ const createTestClient = ({
   })
 }
 
+let lastCallPromise = null
+
+const awaitLastPromise = () => {
+  if (!lastCallPromise) {
+    return Promise.resolve(true)
+  }
+  return lastCallPromise
+}
+
+let resolveLastCallPromise = null
+
+const createLastCallPromise = () => {
+  lastCallPromise = new Promise(resolve => {
+    resolveLastCallPromise = resolve
+  })
+}
+
 exports.makeTestCall = ({
   authToken,
   body,
   operationId,
+  parallel = false,
   pathParams,
   queryParams,
   validateInput = false,
@@ -84,10 +102,28 @@ exports.makeTestCall = ({
     validateInput,
     validateOutput,
   })
-  return testClient.call(
-    createEndpoint({
-      operationId,
-    }),
-    { body, pathParams, queryParams }
-  )
+  return awaitLastPromise().then(() => {
+    if (!parallel) {
+      createLastCallPromise()
+    }
+
+    return testClient
+      .call(
+        createEndpoint({
+          operationId,
+        }),
+        { body, pathParams, queryParams }
+      )
+      .then(res => {
+        resolveLastCallPromise()
+        return res
+      })
+      .catch(err => {
+        if (!parallel) {
+          resolveLastCallPromise()
+        }
+
+        throw err
+      })
+  })
 }

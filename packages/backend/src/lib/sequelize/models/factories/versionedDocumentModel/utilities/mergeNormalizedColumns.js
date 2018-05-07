@@ -9,6 +9,12 @@ module.exports = function extractNormalizedColumns({
   return Object.keys(dataValues).reduce(
     (normalizedValues, key) => {
       if (normalizedColumnNames.includes(key)) {
+        if (key === 'relationships') {
+          return {
+            ...normalizedValues,
+            [key]: dataValues[key],
+          }
+        }
         if (!dataValues[key]) {
           return normalizedValues
         }

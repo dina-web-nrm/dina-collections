@@ -14,7 +14,7 @@ module.exports = function create({ operation = {}, models, postCreateHook }) {
       validateBody(body)
     }
     const { data: input } = body
-    console.log('input', input)
+
     return model
       .create(
         transformInput({

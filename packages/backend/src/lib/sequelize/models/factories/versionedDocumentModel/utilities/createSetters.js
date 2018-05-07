@@ -6,10 +6,14 @@ module.exports = function createSetters(normalizedColumnNames) {
   }
   return {
     document(doc) {
+      console.log('doc', doc)
+      console.log('normalizedColumnNames', normalizedColumnNames)
       const normalizedColumns = extractNormalizedColumns({
         doc,
         normalizedColumnNames,
       })
+
+      console.log('normalizedColumns', normalizedColumns)
       Object.keys(normalizedColumns).forEach(key => {
         this.setDataValue(key, normalizedColumns[key])
       })

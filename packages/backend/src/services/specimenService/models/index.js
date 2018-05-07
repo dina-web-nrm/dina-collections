@@ -9,7 +9,7 @@ const normalizedColumnNames = Object.keys(
 ).map(key => {
   return normalizedSchemaSpecification.specimen[key].column
 })
-console.log('normalizedColumnNames', normalizedColumnNames)
+
 const specimenFactory = function specimen({ sequelize }) {
   return createModel({
     name: 'Specimen',
