@@ -8,6 +8,7 @@ const getVersions = require('../operationFactory/typeFactories/schemas/getVersio
 const update = require('../operationFactory/typeFactories/schemas/update')
 const updateRelationHasMany = require('../operationFactory/typeFactories/schemas/updateRelationHasMany')
 const updateRelationHasOne = require('../operationFactory/typeFactories/schemas/updateRelationHasOne')
+const updateRelationBelongsToOne = require('../operationFactory/typeFactories/schemas/updateRelationBelongsToOne')
 const raw = require('../operationFactory/typeFactories/schemas/raw')
 
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
@@ -76,6 +77,13 @@ module.exports = function testOperationSpecification(operationSpecification) {
         case 'updateRelationHasOne': {
           expectNoValidationError(
             validate(updateRelationHasOne, operationSpecification)
+          )
+          break
+        }
+
+        case 'updateRelationBelongsToOne': {
+          expectNoValidationError(
+            validate(updateRelationBelongsToOne, operationSpecification)
           )
           break
         }
