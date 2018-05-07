@@ -1480,14 +1480,6 @@
       "type": {
         "type": "string",
         "x-summary": ""
-      },
-      "versionId": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "parentVersionId": {
-        "type": "string",
-        "x-summary": ""
       }
     },
     "description": "# taxon\n\nA taxonomic group of any rank, such as a species or family, or class used to keep information about a locally used taxon concept.\n\n\n### Definition\n\nA taxonomic group of any rank, such as a species, family, or class.\n\n\n### Examples\n\nThe species that includes the type specimen for the name \"Pusa hispida\", which may also be referred to by the synonym \"Phoca hispida\".\n\n\n### Notes\n\nThe purpose of this term is to keep information about locally used taxon concepts. These concepts do not have to be used elsewhere. The local classification is the combination of all the names and their relations. In the local classification, each taxon has an accepted taxon name at same rank as the taxon (more precisely, the taxon gets its rank from the accepted name). The accepted name may have synonyms at any rank.\n\n\n### See also\n\n[determination](/docs/0.1.0/models/determination/), [taxonInformation](/docs/0.1.0/models/taxonInformation/)",
@@ -1525,18 +1517,6 @@
         "x-summary": ""
       },
       "rubinNumber": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "acceptedToTaxonVersionId": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "synonymToTaxonVersionId": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "vernacularToTaxonVersionId": {
         "type": "string",
         "x-summary": ""
       }
@@ -2802,32 +2782,6 @@
           },
           "relationships": {
             "properties": {
-              "children": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "place"
-                          ],
-                          "example": "place",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
               "parent": {
                 "oneOf": [
                   {
@@ -2863,6 +2817,32 @@
                     "type": "object"
                   }
                 ],
+                "type": "object"
+              },
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "place"
+                          ],
+                          "example": "place",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
                 "type": "object"
               }
             },
@@ -2917,32 +2897,6 @@
           },
           "relationships": {
             "properties": {
-              "children": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "place"
-                          ],
-                          "example": "place",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
               "parent": {
                 "oneOf": [
                   {
@@ -2978,6 +2932,32 @@
                     "type": "object"
                   }
                 ],
+                "type": "object"
+              },
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "place"
+                          ],
+                          "example": "place",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
                 "type": "object"
               }
             },
@@ -3079,32 +3059,6 @@
           },
           "relationships": {
             "properties": {
-              "children": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "place"
-                          ],
-                          "example": "place",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
               "parent": {
                 "oneOf": [
                   {
@@ -3140,6 +3094,32 @@
                     "type": "object"
                   }
                 ],
+                "type": "object"
+              },
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "place"
+                          ],
+                          "example": "place",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
                 "type": "object"
               }
             },
@@ -3196,32 +3176,6 @@
             },
             "relationships": {
               "properties": {
-                "children": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "place"
-                            ],
-                            "example": "place",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                },
                 "parent": {
                   "oneOf": [
                     {
@@ -3257,6 +3211,32 @@
                       "type": "object"
                     }
                   ],
+                  "type": "object"
+                },
+                "children": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "place"
+                            ],
+                            "example": "place",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
                   "type": "object"
                 }
               },
@@ -4283,322 +4263,6 @@
     "x-summary": "",
     "description": ""
   },
-  "specimenGetVersionResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "specimen"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {
-              "featureTypes": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "featureType"
-                          ],
-                          "example": "featureType",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "physicalObjects": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "physicalObject"
-                          ],
-                          "example": "physicalObject",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "places": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "place"
-                          ],
-                          "example": "place",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "taxa": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "taxon"
-                          ],
-                          "example": "taxon",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              }
-            },
-            "type": "object"
-          },
-          "type": {
-            "default": "specimen",
-            "type": "string"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/specimens/{id}/versions/{versionId}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "specimenGetVersionsResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "specimen"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "relationships": {
-              "properties": {
-                "featureTypes": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "featureType"
-                            ],
-                            "example": "featureType",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                },
-                "physicalObjects": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "physicalObject"
-                            ],
-                            "example": "physicalObject",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                },
-                "places": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "place"
-                            ],
-                            "example": "place",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                },
-                "taxa": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "taxon"
-                            ],
-                            "example": "taxon",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                }
-              },
-              "type": "object"
-            },
-            "type": {
-              "default": "specimen",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/specimens/{id}/versions",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "getStatusResponse": {
     "type": "object",
     "additionalProperties": false,
@@ -4670,6 +4334,32 @@
                     "type": "object"
                   }
                 ],
+                "type": "object"
+              },
+              "specimens": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "specimen"
+                          ],
+                          "example": "specimen",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
                 "type": "object"
               }
             },
@@ -4760,6 +4450,32 @@
                   }
                 ],
                 "type": "object"
+              },
+              "specimens": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "specimen"
+                          ],
+                          "example": "specimen",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -4798,7 +4514,7 @@
     "x-summary": "",
     "description": ""
   },
-  "physicalObjectUpdateRelationHasOneStorageLocationResponse": {
+  "physicalObjectUpdateRelationBelongsToOneStorageLocationResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -4943,6 +4659,32 @@
                   }
                 ],
                 "type": "object"
+              },
+              "specimens": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "specimen"
+                          ],
+                          "example": "specimen",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -5034,6 +4776,32 @@
                     }
                   ],
                   "type": "object"
+                },
+                "specimens": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "specimen"
+                            ],
+                            "example": "specimen",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
                 }
               },
               "type": "object"
@@ -5074,188 +4842,6 @@
     "x-summary": "",
     "description": ""
   },
-  "physicalObjectGetVersionResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "properties": {
-          "attributes": {
-            "$ref": "physicalObject"
-          },
-          "id": {
-            "example": "1234",
-            "type": "string"
-          },
-          "relationships": {
-            "properties": {
-              "storageLocation": {
-                "oneOf": [
-                  {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "storageLocation"
-                            ],
-                            "example": "storageLocation",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "type": "null"
-                      }
-                    },
-                    "type": "object"
-                  }
-                ],
-                "type": "object"
-              }
-            },
-            "type": "object"
-          },
-          "type": {
-            "default": "physicalObject",
-            "type": "string"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/storage/v01/physicalObjects/{id}/versions/{versionId}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "physicalObjectGetVersionsResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "physicalObject"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "relationships": {
-              "properties": {
-                "storageLocation": {
-                  "oneOf": [
-                    {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "storageLocation"
-                              ],
-                              "example": "storageLocation",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "type": "null"
-                        }
-                      },
-                      "type": "object"
-                    }
-                  ],
-                  "type": "object"
-                }
-              },
-              "type": "object"
-            },
-            "type": {
-              "default": "physicalObject",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/storage/v01/physicalObjects/{id}/versions",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "storageLocationCreateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -5271,7 +4857,7 @@
           },
           "relationships": {
             "properties": {
-              "children": {
+              "physicalObjects": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5284,9 +4870,9 @@
                         },
                         "type": {
                           "enum": [
-                            "storageLocation"
+                            "physicalObject"
                           ],
-                          "example": "storageLocation",
+                          "example": "physicalObject",
                           "type": "string"
                         }
                       },
@@ -5334,7 +4920,7 @@
                 ],
                 "type": "object"
               },
-              "physicalObjects": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5347,9 +4933,9 @@
                         },
                         "type": {
                           "enum": [
-                            "physicalObject"
+                            "storageLocation"
                           ],
-                          "example": "physicalObject",
+                          "example": "storageLocation",
                           "type": "string"
                         }
                       },
@@ -5412,7 +4998,7 @@
           },
           "relationships": {
             "properties": {
-              "children": {
+              "physicalObjects": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5425,9 +5011,9 @@
                         },
                         "type": {
                           "enum": [
-                            "storageLocation"
+                            "physicalObject"
                           ],
-                          "example": "storageLocation",
+                          "example": "physicalObject",
                           "type": "string"
                         }
                       },
@@ -5475,7 +5061,7 @@
                 ],
                 "type": "object"
               },
-              "physicalObjects": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5488,9 +5074,9 @@
                         },
                         "type": {
                           "enum": [
-                            "physicalObject"
+                            "storageLocation"
                           ],
-                          "example": "physicalObject",
+                          "example": "storageLocation",
                           "type": "string"
                         }
                       },
@@ -5651,7 +5237,7 @@
           },
           "relationships": {
             "properties": {
-              "children": {
+              "physicalObjects": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5664,9 +5250,9 @@
                         },
                         "type": {
                           "enum": [
-                            "storageLocation"
+                            "physicalObject"
                           ],
-                          "example": "storageLocation",
+                          "example": "physicalObject",
                           "type": "string"
                         }
                       },
@@ -5714,7 +5300,7 @@
                 ],
                 "type": "object"
               },
-              "physicalObjects": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5727,9 +5313,9 @@
                         },
                         "type": {
                           "enum": [
-                            "physicalObject"
+                            "storageLocation"
                           ],
-                          "example": "physicalObject",
+                          "example": "storageLocation",
                           "type": "string"
                         }
                       },
@@ -5794,7 +5380,7 @@
             },
             "relationships": {
               "properties": {
-                "children": {
+                "physicalObjects": {
                   "additionalProperties": false,
                   "properties": {
                     "data": {
@@ -5807,9 +5393,9 @@
                           },
                           "type": {
                             "enum": [
-                              "storageLocation"
+                              "physicalObject"
                             ],
-                            "example": "storageLocation",
+                            "example": "physicalObject",
                             "type": "string"
                           }
                         },
@@ -5857,7 +5443,7 @@
                   ],
                   "type": "object"
                 },
-                "physicalObjects": {
+                "children": {
                   "additionalProperties": false,
                   "properties": {
                     "data": {
@@ -5870,9 +5456,9 @@
                           },
                           "type": {
                             "enum": [
-                              "physicalObject"
+                              "storageLocation"
                             ],
-                            "example": "physicalObject",
+                            "example": "storageLocation",
                             "type": "string"
                           }
                         },
@@ -5974,7 +5560,7 @@
                 ],
                 "type": "object"
               },
-              "children": {
+              "synonyms": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -5987,9 +5573,35 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "vernacularNames": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxonName"
+                          ],
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -6037,7 +5649,7 @@
                 ],
                 "type": "object"
               },
-              "synonyms": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -6050,35 +5662,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxonName"
+                            "taxon"
                           ],
-                          "example": "taxonName",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "vernacularNames": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "taxonName"
-                          ],
-                          "example": "taxonName",
+                          "example": "taxon",
                           "type": "string"
                         }
                       },
@@ -6178,7 +5764,7 @@
                 ],
                 "type": "object"
               },
-              "children": {
+              "synonyms": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -6191,9 +5777,35 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "vernacularNames": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxonName"
+                          ],
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -6241,7 +5853,7 @@
                 ],
                 "type": "object"
               },
-              "synonyms": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -6254,35 +5866,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxonName"
+                            "taxon"
                           ],
-                          "example": "taxonName",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "vernacularNames": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "taxonName"
-                          ],
-                          "example": "taxonName",
+                          "example": "taxon",
                           "type": "string"
                         }
                       },
@@ -6476,7 +6062,7 @@
                 ],
                 "type": "object"
               },
-              "children": {
+              "synonyms": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -6489,9 +6075,35 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "vernacularNames": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxonName"
+                          ],
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -6539,7 +6151,7 @@
                 ],
                 "type": "object"
               },
-              "synonyms": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -6552,35 +6164,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxonName"
+                            "taxon"
                           ],
-                          "example": "taxonName",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "vernacularNames": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "taxonName"
-                          ],
-                          "example": "taxonName",
+                          "example": "taxon",
                           "type": "string"
                         }
                       },
@@ -6682,7 +6268,7 @@
                   ],
                   "type": "object"
                 },
-                "children": {
+                "synonyms": {
                   "additionalProperties": false,
                   "properties": {
                     "data": {
@@ -6695,9 +6281,35 @@
                           },
                           "type": {
                             "enum": [
-                              "taxon"
+                              "taxonName"
                             ],
-                            "example": "taxon",
+                            "example": "taxonName",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "vernacularNames": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxonName"
+                            ],
+                            "example": "taxonName",
                             "type": "string"
                           }
                         },
@@ -6745,7 +6357,7 @@
                   ],
                   "type": "object"
                 },
-                "synonyms": {
+                "children": {
                   "additionalProperties": false,
                   "properties": {
                     "data": {
@@ -6758,35 +6370,9 @@
                           },
                           "type": {
                             "enum": [
-                              "taxonName"
+                              "taxon"
                             ],
-                            "example": "taxonName",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                },
-                "vernacularNames": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "taxonName"
-                            ],
-                            "example": "taxonName",
+                            "example": "taxon",
                             "type": "string"
                           }
                         },
@@ -7162,7 +6748,7 @@
     "x-summary": "",
     "description": ""
   },
-  "taxonNameUpdateRelationHasOneAcceptedToTaxonResponse": {
+  "taxonNameUpdateRelationBelongsToOneAcceptedToTaxonResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -7209,7 +6795,7 @@
     "x-summary": "",
     "description": ""
   },
-  "taxonNameUpdateRelationHasOneSynonymToTaxonResponse": {
+  "taxonNameUpdateRelationBelongsToOneSynonymToTaxonResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -7256,7 +6842,7 @@
     "x-summary": "",
     "description": ""
   },
-  "taxonNameUpdateRelationHasOneVernacularToTaxonResponse": {
+  "taxonNameUpdateRelationBelongsToOneVernacularToTaxonResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -8214,32 +7800,6 @@
           },
           "relationships": {
             "properties": {
-              "children": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "place"
-                          ],
-                          "example": "place",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
               "parent": {
                 "oneOf": [
                   {
@@ -8276,6 +7836,32 @@
                   }
                 ],
                 "type": "object"
+              },
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "place"
+                          ],
+                          "example": "place",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -8290,7 +7876,7 @@
           "type": "place",
           "attributes": {
             "name": "string",
-            "versionId": "string",
+            "id": "string",
             "createdAt": "string",
             "createdBy": "string",
             "updatedBy": "string",
@@ -8317,7 +7903,7 @@
         "type": "place",
         "attributes": {
           "name": "string",
-          "versionId": "string",
+          "id": "string",
           "createdAt": "string",
           "createdBy": "string",
           "updatedBy": "string",
@@ -8368,32 +7954,6 @@
           },
           "relationships": {
             "properties": {
-              "children": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "place"
-                          ],
-                          "example": "place",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
               "parent": {
                 "oneOf": [
                   {
@@ -8429,6 +7989,32 @@
                     "type": "object"
                   }
                 ],
+                "type": "object"
+              },
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "place"
+                          ],
+                          "example": "place",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
                 "type": "object"
               }
             },
@@ -9277,6 +8863,32 @@
                   }
                 ],
                 "type": "object"
+              },
+              "specimens": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "specimen"
+                          ],
+                          "example": "specimen",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -9371,6 +8983,32 @@
                   }
                 ],
                 "type": "object"
+              },
+              "specimens": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "specimen"
+                          ],
+                          "example": "specimen",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -9382,7 +9020,7 @@
     "x-summary": "",
     "description": ""
   },
-  "physicalObjectUpdateRelationHasOneStorageLocationRequest": {
+  "physicalObjectUpdateRelationBelongsToOneStorageLocationRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -9438,7 +9076,7 @@
           },
           "relationships": {
             "properties": {
-              "children": {
+              "physicalObjects": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -9451,9 +9089,9 @@
                         },
                         "type": {
                           "enum": [
-                            "storageLocation"
+                            "physicalObject"
                           ],
-                          "example": "storageLocation",
+                          "example": "physicalObject",
                           "type": "string"
                         }
                       },
@@ -9501,7 +9139,7 @@
                 ],
                 "type": "object"
               },
-              "physicalObjects": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -9514,9 +9152,9 @@
                         },
                         "type": {
                           "enum": [
-                            "physicalObject"
+                            "storageLocation"
                           ],
-                          "example": "physicalObject",
+                          "example": "storageLocation",
                           "type": "string"
                         }
                       },
@@ -9582,7 +9220,7 @@
           },
           "relationships": {
             "properties": {
-              "children": {
+              "physicalObjects": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -9595,9 +9233,9 @@
                         },
                         "type": {
                           "enum": [
-                            "storageLocation"
+                            "physicalObject"
                           ],
-                          "example": "storageLocation",
+                          "example": "physicalObject",
                           "type": "string"
                         }
                       },
@@ -9645,7 +9283,7 @@
                 ],
                 "type": "object"
               },
-              "physicalObjects": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -9658,9 +9296,9 @@
                         },
                         "type": {
                           "enum": [
-                            "physicalObject"
+                            "storageLocation"
                           ],
-                          "example": "physicalObject",
+                          "example": "storageLocation",
                           "type": "string"
                         }
                       },
@@ -9774,69 +9412,6 @@
                 ],
                 "type": "object"
               },
-              "children": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "taxon"
-                          ],
-                          "example": "taxon",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "parent": {
-                "oneOf": [
-                  {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "taxon"
-                            ],
-                            "example": "taxon",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "type": "null"
-                      }
-                    },
-                    "type": "object"
-                  }
-                ],
-                "type": "object"
-              },
               "synonyms": {
                 "additionalProperties": false,
                 "properties": {
@@ -9888,6 +9463,69 @@
                   }
                 },
                 "type": "object"
+              },
+              "parent": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxon"
+                            ],
+                            "example": "taxon",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              },
+              "children": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxon"
+                          ],
+                          "example": "taxon",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
               }
             },
             "type": "object"
@@ -9899,19 +9537,15 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "taxon",
-          "attributes": {
-            "parentVersionId": "1"
-          }
+          "attributes": {},
+          "type": "taxon"
         }
       }
     },
     "example": {
       "data": {
-        "type": "taxon",
-        "attributes": {
-          "parentVersionId": "1"
-        }
+        "attributes": {},
+        "type": "taxon"
       }
     },
     "x-summary": "",
@@ -9981,7 +9615,7 @@
                 ],
                 "type": "object"
               },
-              "children": {
+              "synonyms": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -9994,9 +9628,35 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
+              "vernacularNames": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "taxonName"
+                          ],
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -10044,7 +9704,7 @@
                 ],
                 "type": "object"
               },
-              "synonyms": {
+              "children": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -10057,35 +9717,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxonName"
+                            "taxon"
                           ],
-                          "example": "taxonName",
-                          "type": "string"
-                        }
-                      },
-                      "type": "object"
-                    },
-                    "type": "array"
-                  }
-                },
-                "type": "object"
-              },
-              "vernacularNames": {
-                "additionalProperties": false,
-                "properties": {
-                  "data": {
-                    "items": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "id": {
-                          "example": "1234",
-                          "type": "string"
-                        },
-                        "type": {
-                          "enum": [
-                            "taxonName"
-                          ],
-                          "example": "taxonName",
+                          "example": "taxon",
                           "type": "string"
                         }
                       },
@@ -10484,7 +10118,7 @@
     "x-summary": "",
     "description": ""
   },
-  "taxonNameUpdateRelationHasOneAcceptedToTaxonRequest": {
+  "taxonNameUpdateRelationBelongsToOneAcceptedToTaxonRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -10513,7 +10147,7 @@
     "x-summary": "",
     "description": ""
   },
-  "taxonNameUpdateRelationHasOneSynonymToTaxonRequest": {
+  "taxonNameUpdateRelationBelongsToOneSynonymToTaxonRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -10542,7 +10176,7 @@
     "x-summary": "",
     "description": ""
   },
-  "taxonNameUpdateRelationHasOneVernacularToTaxonRequest": {
+  "taxonNameUpdateRelationBelongsToOneVernacularToTaxonRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
