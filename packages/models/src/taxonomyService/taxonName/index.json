@@ -12,25 +12,13 @@
     },
     "taxonNameType": {
       "type": "string",
-      "enum": [
-        "scientific",
-        "vernacular"
-      ]
+      "enum": ["scientific", "vernacular"]
     },
     "rank": {
       "type": "string",
       "description": "Taxon rank"
     },
     "rubinNumber": {
-      "type": "string"
-    },
-    "acceptedToTaxonVersionId": {
-      "type": "string"
-    },
-    "synonymToTaxonVersionId": {
-      "type": "string"
-    },
-    "vernacularToTaxonVersionId": {
       "type": "string"
     }
   }

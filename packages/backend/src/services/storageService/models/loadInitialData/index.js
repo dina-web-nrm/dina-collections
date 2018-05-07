@@ -16,7 +16,7 @@ module.exports = function loadInitialData({ models }) {
     return {
       doc,
       id,
-      parentVersionId: parentId,
+      parentId,
     }
   })
 

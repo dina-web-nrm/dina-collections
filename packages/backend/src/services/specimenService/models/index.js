@@ -1,7 +1,7 @@
 const normalizedSchemaSpecification = require('common/src/normalize/normalizedSchemaSpecification')
 
 const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
+const createModel = require('../../../lib/sequelize/models/factories/documentModel')
 const { setupRelations } = require('./relations')
 
 const normalizedColumnNames = Object.keys(

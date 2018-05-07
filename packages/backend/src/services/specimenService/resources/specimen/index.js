@@ -69,12 +69,6 @@ module.exports = {
       },
       type: 'getMany',
     },
-    {
-      type: 'getVersion',
-    },
-    {
-      type: 'getVersions',
-    },
   ],
   relations: resourceRelationsMap[resource],
   resource,

@@ -8,7 +8,7 @@ const relationships = [
     type: 'hasOne',
     targetResource: 'taxonName',
     targetAs: 'acceptedTaxonName',
-    foreignKey: 'acceptedToTaxonVersionId',
+    foreignKey: 'acceptedToTaxonId',
     allowNull: true,
   },
   {
@@ -16,7 +16,7 @@ const relationships = [
     type: 'belongsToOne',
     targetResource: 'taxon',
     targetAs: 'acceptedToTaxon',
-    foreignKey: 'acceptedToTaxonVersionId',
+    foreignKey: 'acceptedToTaxonId',
     allowNull: true,
   },
   {
@@ -24,7 +24,7 @@ const relationships = [
     type: 'hasMany',
     targetResource: 'taxonName',
     targetAs: 'synonyms',
-    foreignKey: 'synonymToTaxonVersionId',
+    foreignKey: 'synonymToTaxonId',
     allowNull: true,
   },
   {
@@ -32,7 +32,7 @@ const relationships = [
     type: 'belongsToOne',
     targetResource: 'taxon',
     targetAs: 'synonymToTaxon',
-    foreignKey: 'synonymToTaxonVersionId',
+    foreignKey: 'synonymToTaxonId',
     allowNull: true,
   },
   {
@@ -40,7 +40,7 @@ const relationships = [
     type: 'hasMany',
     targetResource: 'taxonName',
     targetAs: 'vernacularNames',
-    foreignKey: 'vernacularToTaxonVersionId',
+    foreignKey: 'vernacularToTaxonId',
     allowNull: true,
   },
   {
@@ -48,7 +48,7 @@ const relationships = [
     type: 'belongsToOne',
     targetResource: 'taxon',
     targetAs: 'vernacularToTaxon',
-    foreignKey: 'vernacularToTaxonVersionId',
+    foreignKey: 'vernacularToTaxonId',
     allowNull: true,
   },
   {

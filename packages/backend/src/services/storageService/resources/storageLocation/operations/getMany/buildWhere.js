@@ -1,7 +1,6 @@
-const backendError404 = require('common/src/error/errorFactories/backendError404')
 const { Op } = require('sequelize')
 
-module.exports = function buildWhereFactory({ request, model }) {
+module.exports = function buildWhereFactory({ request }) {
   const { queryParams: { filter: { group, parentId, search } = {} } } = request
 
   const where = {}
@@ -16,31 +15,9 @@ module.exports = function buildWhereFactory({ request, model }) {
     }
   }
 
-  if (parentId === undefined) {
-    return Promise.resolve(where)
+  if (parentId !== undefined) {
+    where.id = parentId
   }
 
-  return model
-    .getWhere({
-      forceCurrentVersion: false,
-      where: {
-        id: parentId,
-      },
-    })
-    .then(versions => {
-      if (versions.length === 0) {
-        backendError404({
-          code: 'RESOURCE_NOT_FOUND_ERROR',
-          detail: `parent with id: ${parentId} not found`,
-        })
-      }
-
-      const versionIds = versions.map(version => {
-        return version.versionId
-      })
-      where.parentVersionId = {
-        [Op.in]: versionIds,
-      }
-      return where
-    })
+  return Promise.resolve(where)
 }

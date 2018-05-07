@@ -23,7 +23,7 @@ module.exports = function setupAssociation(
 
   switch (type) {
     case 'belongsToOne': {
-      const foreignKeyName = foreignKey || `${targetResource}VersionId`
+      const foreignKeyName = foreignKey || `${targetResource}Id`
       sourceModel.Model.belongsTo(targetModel.Model, {
         as: asKey,
         foreignKey: allowNull
@@ -32,13 +32,13 @@ module.exports = function setupAssociation(
               name: foreignKeyName,
             }
           : foreignKeyName,
-        targetKey: targetKey || 'versionId',
+        targetKey: targetKey || 'id',
       })
       break
     }
 
     case 'hasMany': {
-      const foreignKeyName = foreignKey || `${sourceResource}VersionId`
+      const foreignKeyName = foreignKey || `${sourceResource}Id`
       sourceModel.Model.hasMany(targetModel.Model, {
         as: asKey,
         foreignKey: allowNull
@@ -52,7 +52,7 @@ module.exports = function setupAssociation(
     }
 
     case 'hasOne': {
-      const foreignKeyName = foreignKey || `${sourceResource}VersionId`
+      const foreignKeyName = foreignKey || `${sourceResource}Id`
       sourceModel.Model.hasOne(targetModel.Model, {
         as: asKey,
         foreignKey: allowNull
@@ -66,7 +66,7 @@ module.exports = function setupAssociation(
     }
 
     case 'parent': {
-      const foreignKeyName = foreignKey || 'parentVersionId'
+      const foreignKeyName = foreignKey || 'parentId'
       sourceModel.Model.belongsTo(sourceModel.Model, {
         as: asKey,
         foreignKey: allowNull
@@ -75,13 +75,13 @@ module.exports = function setupAssociation(
               name: foreignKeyName,
             }
           : foreignKeyName,
-        targetKey: targetKey || 'versionId',
+        targetKey: targetKey || 'id',
       })
       break
     }
 
     case 'children': {
-      const foreignKeyName = foreignKey || 'parentVersionId'
+      const foreignKeyName = foreignKey || 'parentId'
       sourceModel.Model.hasMany(sourceModel.Model, {
         as: asKey,
         foreignKey: allowNull

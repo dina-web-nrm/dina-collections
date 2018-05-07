@@ -29,12 +29,6 @@ module.exports = {
       includeRelations: true,
       type: 'getMany',
     },
-    {
-      type: 'getVersion',
-    },
-    {
-      type: 'getVersions',
-    },
   ],
   relations: resourceRelationsMap[resource],
   resource,

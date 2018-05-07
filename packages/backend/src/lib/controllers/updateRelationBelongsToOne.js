@@ -19,7 +19,7 @@ module.exports = function updateRelationHasOne({ operation, models }) {
     throw new Error(`Relation model not provided for ${relationResource}`)
   }
 
-  const foreignKeyName = `${relationKey}VersionId`
+  const foreignKeyName = `${relationKey}Id`
 
   return ({ request }) => {
     const { body: { data } } = request
@@ -60,11 +60,11 @@ module.exports = function updateRelationHasOne({ operation, models }) {
             detail: `Cant find relation resource with id ${targetModelId}`,
           })
         }
-        const { versionId: targetVersionId } = fetchedRelationResource
+
         return model
           .update({
             foreignKeyName,
-            foreignKeyValue: targetVersionId,
+            foreignKeyValue: targetModelId,
             id: coreModelId,
           })
           .then(transformOutput)
