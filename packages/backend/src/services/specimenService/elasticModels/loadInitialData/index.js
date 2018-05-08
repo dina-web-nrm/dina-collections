@@ -11,7 +11,7 @@ module.exports = function loadInitialData({ sequelizeModels, models }) {
         where: {},
       })
       .then(items => {
-        return items.map(transformOutput)
+        return items.map(item => transformOutput(item))
       })
   }
 
