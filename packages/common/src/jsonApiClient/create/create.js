@@ -1,20 +1,35 @@
-const { Dependor } = require('../../Dependor')
-const { createWithRelationships } = require('./createWithRelationships')
+const updateRelatedRelationshipResources = require('./updateRelatedRelationshipResources')
+const createWithoutRelationships = require('./createWithoutRelationships')
+const updateResourceRelationships = require('./updateResourceRelationships')
 
-const dep = new Dependor({
-  createWithRelationships,
-})
-
-function create({ openApiClient, resourceType, userOptions } = {}) {
+module.exports = function create(
+  { openApiClient, resourceType, userOptions } = {}
+) {
   const { body = {} } = userOptions
-  return dep.createWithRelationships({
-    item: body.data,
-    openApiClient,
-    resourceType,
-  })
-}
+  const item = body.data
+  const { id, attributes, relationships, type } = item
+  if (resourceType !== type) {
+    throw new Error(`Wrong type: ${type} for resourceType: ${resourceType}`)
+  }
 
-module.exports = {
-  create,
-  dep,
+  return updateRelatedRelationshipResources({
+    openApiClient,
+    relationships,
+  }).then(updatedRelationships => {
+    const itemWithoutRelationships = {
+      attributes,
+      id,
+      type,
+    }
+
+    return createWithoutRelationships({
+      item: itemWithoutRelationships,
+      openApiClient,
+    }).then(createdResource => {
+      return updateResourceRelationships({
+        relationships: updatedRelationships,
+        resource: createdResource,
+      })
+    })
+  })
 }

@@ -1,13 +1,9 @@
-const createLog = require('../../log')
-const updateRelationship = require('./updateRelationship')
+const updateRelatedRelationshipResource = require('./updateRelatedRelationshipResource')
 
-const log = createLog('common:jsonApiClient', 2)
-module.exports = function updateRelationships({
-  createWithRelationships,
+module.exports = function updateRelatedRelationshipResources({
   openApiClient,
   relationships,
 }) {
-  log.debug('updateRelationship relationships: ', relationships)
   if (!relationships) {
     return Promise.resolve(relationships)
   }
@@ -16,13 +12,8 @@ module.exports = function updateRelationships({
 
   Object.keys(relationships).forEach(relationshipKey => {
     const relationship = relationships[relationshipKey]
-    log.debug(
-      `updateRelationship relationship with key: ${relationshipKey}: `,
-      relationship
-    )
     promises.push(
-      updateRelationship({
-        createWithRelationships,
+      updateRelatedRelationshipResource({
         openApiClient,
         relationship,
       }).then(updatedRelationship => {
