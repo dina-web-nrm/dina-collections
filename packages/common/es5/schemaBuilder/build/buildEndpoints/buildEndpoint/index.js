@@ -10,14 +10,16 @@ var _extends4 = _interopRequireDefault(_extends3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var buildDescription = require('./buildDescription');
 var buildResponse = require('./buildResponse');
 var buildRequest = require('./buildRequest');
 
 module.exports = function buildEndpoint(_ref) {
   var _ref$auth = _ref.auth,
       auth = _ref$auth === undefined ? true : _ref$auth,
-      description = _ref.description,
+      descriptionInput = _ref.description,
       errors = _ref.errors,
+      inverseOperationId = _ref.inverseOperationId,
       method = _ref.method,
       operationId = _ref.operationId,
       path = _ref.path,
@@ -30,6 +32,11 @@ module.exports = function buildEndpoint(_ref) {
       responseInput = _ref$response === undefined ? {} : _ref$response,
       summary = _ref.summary,
       tags = _ref.tags;
+
+  var description = buildDescription({
+    description: descriptionInput,
+    inverseOperationId: inverseOperationId
+  });
 
   var pathParams = rawPathParams.reduce(function (obj, key) {
     return (0, _extends4.default)({}, obj, (0, _defineProperty3.default)({}, key, {
@@ -59,6 +66,7 @@ module.exports = function buildEndpoint(_ref) {
   return {
     description: description,
     errors: errors,
+    inverseOperationId: inverseOperationId,
     method: method,
     operationId: operationId,
     path: path,
