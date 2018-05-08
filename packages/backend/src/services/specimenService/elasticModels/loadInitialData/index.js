@@ -2,9 +2,9 @@ const transformOutput = require('../../../../lib/controllers/transformations/out
 const batchExecute = require('../../../../utilities/test/batchExecute')
 
 module.exports = function loadInitialData({ sequelizeModels, models }) {
-  const { specimen: sequalizeSpecimenModel } = sequelizeModels
+  const { specimen: sequelizeSpecimenModel } = sequelizeModels
   const createBatch = ({ numberOfBatchEntries, startCount }) => {
-    return sequalizeSpecimenModel
+    return sequelizeSpecimenModel
       .getWhere({
         limit: numberOfBatchEntries,
         offset: startCount,
@@ -15,7 +15,7 @@ module.exports = function loadInitialData({ sequelizeModels, models }) {
       })
   }
 
-  return sequalizeSpecimenModel.getCount().then(count => {
+  return sequelizeSpecimenModel.getCount().then(count => {
     if (count === 0) {
       return null
     }
