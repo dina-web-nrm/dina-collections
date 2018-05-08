@@ -10,51 +10,57 @@ describe('domainModules/curatedList/globalSelectorFactories', () => {
           featureType: {
             items: {
               a: {
-                group: 'age',
+                attributes: {
+                  group: 'age',
+                  selectableMethods: [
+                    {
+                      key: 'known-age',
+                      name: {
+                        en: 'known age',
+                      },
+                    },
+                    {
+                      key: 'sectioned-teeth',
+                      name: {
+                        en: 'sectioned teeth',
+                      },
+                    },
+                    {
+                      key: 'other',
+                      name: {
+                        en: 'other',
+                      },
+                    },
+                  ],
+                },
                 id: 'a',
-                selectableMethods: [
-                  {
-                    key: 'known-age',
-                    name: {
-                      en: 'known age',
-                    },
-                  },
-                  {
-                    key: 'sectioned-teeth',
-                    name: {
-                      en: 'sectioned teeth',
-                    },
-                  },
-                  {
-                    key: 'other',
-                    name: {
-                      en: 'other',
-                    },
-                  },
-                ],
               },
               b: {
-                group: 'sex',
+                attributes: {
+                  group: 'sex',
+                  selectableValues: [
+                    {
+                      key: 'female',
+                      name: {
+                        en: 'female',
+                        sv: 'hona',
+                      },
+                    },
+                    {
+                      key: 'male',
+                      name: {
+                        en: 'male',
+                        sv: 'hane',
+                      },
+                    },
+                  ],
+                },
                 id: 'b',
-                selectableValues: [
-                  {
-                    key: 'female',
-                    name: {
-                      en: 'female',
-                      sv: 'hona',
-                    },
-                  },
-                  {
-                    key: 'male',
-                    name: {
-                      en: 'male',
-                      sv: 'hane',
-                    },
-                  },
-                ],
               },
               c: {
-                group: 'age-stage',
+                attributes: {
+                  group: 'age-stage',
+                },
                 id: 'c',
               },
             },

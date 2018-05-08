@@ -459,7 +459,7 @@ const postSubmitTest = ({ submitResult }) => {
 
 const scenario = {
   description: 'Register new mammal form with all fields',
-  expectedOutput: expectedOutput,
+  expectedOutput,
   initialState,
   input: {},
   mutations,

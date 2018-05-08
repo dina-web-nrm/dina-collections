@@ -18,17 +18,8 @@ const scenarios = [
 const featureTypes = [
   {
     attributes: {
-      key: 'age-stage',
       group: 'age-stage',
-      selectableValues: [
-        {
-          key: 'juvenile',
-          name: {
-            en: 'juvenile ',
-            sv: 'juvenil',
-          },
-        },
-      ],
+      key: 'age-stage',
       selectableMethods: [
         {
           key: 'known-age',
@@ -49,6 +40,15 @@ const featureTypes = [
           },
         },
       ],
+      selectableValues: [
+        {
+          key: 'juvenile',
+          name: {
+            en: 'juvenile ',
+            sv: 'juvenil',
+          },
+        },
+      ],
     },
     id: '1',
     type: 'featureType',
@@ -63,7 +63,6 @@ const transformInputWithFeatureTypes = input => {
 }
 
 const scopedTransformOutput = formData => {
-  console.log('formData', formData)
   return transformOutput({
     specimen: {
       individual: formData,

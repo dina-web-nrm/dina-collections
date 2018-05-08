@@ -16,7 +16,6 @@ const defaultProps = {
 }
 
 const RelationTable = ({ onRowClick: handleRowClick, rowItems }) => {
-  console.log('rowItems', rowItems)
   return (
     <Table celled selectable>
       <Table.Header>
