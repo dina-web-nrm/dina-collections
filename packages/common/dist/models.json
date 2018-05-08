@@ -42,14 +42,15 @@
         "type": "string",
         "x-summary": ""
       },
+      "lid": {
+        "type": "string",
+        "x-summary": ""
+      },
       "type": {
         "type": "string",
         "x-summary": ""
       }
     },
-    "required": [
-      "id"
-    ],
     "x-category": "core",
     "x-modelType": "model",
     "x-summary": "",

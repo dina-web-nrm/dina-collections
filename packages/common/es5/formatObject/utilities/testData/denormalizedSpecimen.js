@@ -37,7 +37,7 @@ module.exports = {
       physicalObjectText: 'physicalObjectText'
     }],
     identifiers: [{
-      identifierType: 'catalogNumber',
+      identifierType: { id: 1 },
       nameSpace: '',
       value: '123456',
       publishRecord: true,

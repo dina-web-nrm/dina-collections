@@ -3,17 +3,17 @@ import uiDescribe from 'utilities/test/uiDescribe'
 import MammalForm from 'domainModules/collectionMammals/components/MammalForm'
 import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
-import registerNewWithAllFields from './registerNewWithAllFields'
-// import registerWithNoCatalogNumberProvided from './registerWithNoCatalogNumberProvided'
-// import registerWithCatalogNumberProvided from './registerWithCatalogNumberProvided'
-// import updateExistingRecord from './updateExistingRecord'
+// import registerNewWithAllFields from './registerNewWithAllFields'
+import registerWithNoCatalogNumberProvided from './registerWithNoCatalogNumberProvided'
+import registerWithCatalogNumberProvided from './registerWithCatalogNumberProvided'
+import updateExistingRecord from './updateExistingRecord'
 
 // TODO ACTIVATE OTHER CASES
 const scenarios = [
-  registerNewWithAllFields,
-  // registerWithCatalogNumberProvided,
-  // registerWithNoCatalogNumberProvided,
-  // updateExistingRecord,
+  // registerNewWithAllFields,
+  registerWithCatalogNumberProvided,
+  registerWithNoCatalogNumberProvided,
+  updateExistingRecord,
 ]
 const featureTypes = [
   {

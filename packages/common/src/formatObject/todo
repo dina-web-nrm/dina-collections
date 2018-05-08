@@ -7,30 +7,20 @@ DONE
 * Make test pass
 ** COMMON
 ** BACKEND
-
-TODO
-* Make test pass
 ** UI
 
-* Migrate curatedListDataService
-
+TODO
 * remove specimen data module. Search?
 * remove other not used files
 
 * Implement simple golden flow tests
 * Verify next step functionality for new api client
-
+* create external/internal relation for relationship (with lid) or use one of? potentially resolve with id at create?
 
 FIX
 * fix weird redirect when no catalogNumber
-* fix create catalogNumber
-
-
-
-
-
 * Implement selector that fetches resource by id
-* fix bug spreading string
+* fix bug spreading string?
 * is x-column needed?
 * Go through desired behavior for attributes. getOne getOneNestedFormat?
 

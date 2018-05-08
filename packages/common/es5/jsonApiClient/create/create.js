@@ -16,11 +16,12 @@ function create() {
       resourceType = _ref.resourceType,
       userOptions = _ref.userOptions;
 
-  var body = userOptions.body;
+  var _userOptions$body = userOptions.body,
+      body = _userOptions$body === undefined ? {} : _userOptions$body;
 
   return dep.createWithRelationships({
     openApiClient: openApiClient,
-    resource: body,
+    resource: body.data,
     resourceType: resourceType
   });
 }

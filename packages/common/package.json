@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "ajv": "^5.2.3",
+    "debug": "^3.1.0",
     "json-schema-faker": "^0.4.4",
     "lodash": "^4.17.5",
     "normalizr": "^3.2.4",

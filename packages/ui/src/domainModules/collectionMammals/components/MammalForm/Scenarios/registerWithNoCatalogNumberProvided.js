@@ -1,7 +1,5 @@
 const postTransformOutputTest = ({ transformedOutput }) => {
-  expect(
-    transformedOutput.specimen.individual.identifiers[0].value
-  ).toBeTruthy()
+  expect(transformedOutput.individual.identifiers[0].value).toBeTruthy()
 }
 
 const scenario = {

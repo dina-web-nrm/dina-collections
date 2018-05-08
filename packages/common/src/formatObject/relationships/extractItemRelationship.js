@@ -1,5 +1,6 @@
 const objectPath = require('object-path')
 const walk = require('../utilities/walkObject')
+const createLid = require('../utilities/createLid')
 
 module.exports = function extractItemRelationship({
   item,
@@ -14,9 +15,20 @@ module.exports = function extractItemRelationship({
   walk({
     func: pth => {
       const relationship = objectPath.get(item, pth)
-      objectPath.set(item, pth, {
-        id: relationship.id,
-      })
+      if (relationship.id === undefined) {
+        relationship.lid = createLid()
+      }
+
+      const referense =
+        relationship.id !== undefined
+          ? {
+              id: relationship.id,
+            }
+          : {
+              lid: relationship.lid,
+            }
+
+      objectPath.set(item, pth, referense)
 
       const formattedRelationship = nestedToCore
         ? nestedToCore({

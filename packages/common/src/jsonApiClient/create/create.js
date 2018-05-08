@@ -6,10 +6,10 @@ const dep = new Dependor({
 })
 
 function create({ openApiClient, resourceType, userOptions } = {}) {
-  const { body } = userOptions
+  const { body = {} } = userOptions
   return dep.createWithRelationships({
+    item: body.data,
     openApiClient,
-    resource: body,
     resourceType,
   })
 }

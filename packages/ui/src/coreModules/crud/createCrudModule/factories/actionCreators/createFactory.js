@@ -47,7 +47,7 @@ export default function createAcFactory(
         type: actionTypes.request,
       })
 
-      return apiClient.call(operationId, callParams).then(
+      return apiClient.create(resource, callParams).then(
         response => {
           dispatch({
             meta: callParams,

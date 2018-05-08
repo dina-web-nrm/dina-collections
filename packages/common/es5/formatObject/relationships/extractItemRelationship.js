@@ -2,6 +2,7 @@
 
 var objectPath = require('object-path');
 var walk = require('../utilities/walkObject');
+var createLid = require('../utilities/createLid');
 
 module.exports = function extractItemRelationship(_ref) {
   var item = _ref.item,
@@ -16,9 +17,17 @@ module.exports = function extractItemRelationship(_ref) {
   walk({
     func: function func(pth) {
       var relationship = objectPath.get(item, pth);
-      objectPath.set(item, pth, {
+      if (relationship.id === undefined) {
+        relationship.lid = createLid();
+      }
+
+      var referense = relationship.id !== undefined ? {
         id: relationship.id
-      });
+      } : {
+        lid: relationship.lid
+      };
+
+      objectPath.set(item, pth, referense);
 
       var formattedRelationship = nestedToCore ? nestedToCore({
         item: relationship,

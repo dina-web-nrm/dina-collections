@@ -1,8 +1,13 @@
 'use strict';
 
+var createLog = require('../log');
 var createOpenApiClient = require('../openApiClient');
 var jsonApiGetMany = require('./get/getMany');
 var jsonApiGetOne = require('./get/getOne');
+var jsonApiCreate = require('./create/create').create;
+var jsonApiUpdate = require('./create/update');
+
+var log = createLog('common:jsonApiClient');
 
 module.exports = function createJsonApiClient(_ref) {
   var apiConfigInput = _ref.apiConfigInput,
@@ -14,10 +19,30 @@ module.exports = function createJsonApiClient(_ref) {
   });
 
   var call = function call() {
+    log.debug('call called forward to openApiClient');
     return openApiClient.call.apply(openApiClient, arguments);
   };
 
-  var getOneOfResourceType = function getOneOfResourceType(resourceType, userOptions) {
+  var update = function update(resourceType, userOptions) {
+    log.debug('update ' + resourceType, userOptions);
+    return jsonApiUpdate({
+      openApiClient: openApiClient,
+      resourceType: resourceType,
+      userOptions: userOptions
+    });
+  };
+
+  var create = function create(resourceType, userOptions) {
+    log.debug('create ' + resourceType, userOptions);
+    return jsonApiCreate({
+      openApiClient: openApiClient,
+      resourceType: resourceType,
+      userOptions: userOptions
+    });
+  };
+
+  var getOne = function getOne(resourceType, userOptions) {
+    log.debug('getOne ' + resourceType, userOptions);
     return jsonApiGetOne({
       openApiClient: openApiClient,
       resourceType: resourceType,
@@ -25,7 +50,8 @@ module.exports = function createJsonApiClient(_ref) {
     });
   };
 
-  var getManyOfResourceType = function getManyOfResourceType(resourceType, userOptions) {
+  var getMany = function getMany(resourceType, userOptions) {
+    log.debug('getMany ' + resourceType, userOptions);
     return jsonApiGetMany({
       openApiClient: openApiClient,
       resourceType: resourceType,
@@ -35,7 +61,9 @@ module.exports = function createJsonApiClient(_ref) {
 
   return {
     call: call,
-    getManyOfResourceType: getManyOfResourceType,
-    getOneOfResourceType: getOneOfResourceType
+    create: create,
+    getMany: getMany,
+    getOne: getOne,
+    update: update
   };
 };

@@ -1,11 +1,11 @@
 'use strict';
 
-var uuidv1 = require('uuid/v4');
+var createLid = require('./createLid');
 
 module.exports = function processStrategy(node) {
   if (node.id || node.lid) {
     return node;
   }
-  node.lid = uuidv1();
+  node.lid = createLid();
   return node;
 };
