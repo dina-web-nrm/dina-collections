@@ -4,10 +4,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Form, Grid } from 'semantic-ui-react'
 import { reduxForm } from 'redux-form'
-import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
+import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { DropdownSearch, Field } from 'coreModules/form/components'
+import { taxonFormModels } from '../../../../../schemas'
 import globalSelectors from '../../../../../globalSelectors'
 import FormActions from './FormActions'
 
@@ -124,7 +125,10 @@ export default compose(
     destroyOnUnmount: false, // to keep values when switching layout
     enableReinitialize: true,
     form: FORM_NAME,
-    validate: formValidator({ model: 'taxon' }),
+    validate: customFormValidator({
+      model: 'taxon',
+      models: taxonFormModels,
+    }),
   }),
   connect(mapStateToProps)
 )(BaseForm)
