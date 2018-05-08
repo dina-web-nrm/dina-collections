@@ -288,198 +288,149 @@ const mutations = [
   ...segmentOtherMutations,
 ]
 
+// TODO remove stuff not needed
 const expectedOutput = {
-  causeOfDeathTypes: [
-    {
-      id: '1',
-      type: 'causeOfDeathType',
+  individual: {
+    acquisition: {
+      acquisitionTypeText: 'acquisitionTypeText',
+      date: 'date',
+      handedInByAgentText: 'handedInByAgentText',
     },
-  ],
-  establishmentMeansTypes: [
-    {
-      id: '1',
-      type: 'establishmentMeansType',
-    },
-  ],
-  featureTypes: [
-    {
-      id: '1',
-      type: 'featureType',
-    },
-  ],
+    collectingInformation: [
+      {
+        collectorsText: 'collectorsText',
+        establishmentMeansType: {
+          id: '1',
+        },
+        event: {
+          endDate: 'endDate',
+          expeditionText: 'expeditionText',
 
-  physicalObjects: [
-    {
-      storageLocation: {
-        id: '1',
-        type: 'storageLocation',
+          locationInformation: {
+            localityName: 'localityName',
+            localityVerbatim: 'localityVerbatim',
+            places: [{ id: 'Africa' }, { id: 'Algeria' }],
+            position: {
+              latitude: 'latitude-string',
+              longitude: 'longitude-string',
+              referenceSystem: 'referenceSystem',
+            },
+            remarks: 'remarks',
+            verticalPosition: {
+              maximumDepthInMeters: 100,
+              maximumElevationInMeters: 100,
+              minimumDepthInMeters: 20,
+              minimumElevationInMeters: 20,
+            },
+          },
+          startDate: 'startDate',
+        },
+        isDeathDate: true,
       },
-      storageLocationText: 'storageLocationText',
-    },
-  ],
-  places: [{ id: 'Africa', type: 'place' }, { id: 'Algeria', type: 'place' }],
-  preparationTypes: [
-    {
-      id: '2',
-      type: 'preparationType',
-    },
-  ],
-  specimen: {
-    individual: {
-      acquisition: {
-        acquisitionTypeText: 'acquisitionTypeText',
+    ],
+    collectionItems: [
+      {
+        curatorialAssessments: [
+          {
+            agent: 'agent',
+            condition: 'condition',
+            conditionRemarks: 'conditionRemarks',
+            date: 'date',
+            inventoryStatusRemarks: 'inventoryStatusRemarks',
+            isInStorage: true, // is set as default in form
+          },
+        ],
+        description: 'description',
+        physicalObject: {
+          storageLocation: {
+            id: '1',
+          },
+          storageLocationText: 'storageLocationText',
+        },
+        preparationType: {
+          category: 'skeleton',
+          id: '2',
+        },
+      },
+    ],
+    collectionItemText: 'collectionItemText',
+
+    deathInformation: [
+      {
+        causeOfDeathType: {
+          id: '1',
+        },
+        remarks: 'Some remarks',
+      },
+    ],
+    determinations: [
+      {
         date: 'date',
-        handedInByAgentText: 'handedInByAgentText',
+        determinationVerbatim: 'determinationVerbatim',
+        determinedByAgentText: 'determinedByAgentText',
+        remarks: 'remarks',
+        taxon: {
+          id: '2367',
+        },
       },
-      collectingInformation: [
-        {
-          collectorsText: 'collectorsText',
-          establishmentMeansType: {
-            id: '1',
-          },
-          event: {
-            endDate: 'endDate',
-            expeditionText: 'expeditionText',
+    ],
 
-            locationInformation: {
-              localityName: 'localityName',
-              localityVerbatim: 'localityVerbatim',
-              places: [{ id: 'Africa' }, { id: 'Algeria' }],
-              position: {
-                latitude: 'latitude-string',
-                longitude: 'longitude-string',
-                referenceSystem: 'referenceSystem',
-              },
-              remarks: 'remarks',
-              verticalPosition: {
-                maximumDepthInMeters: 100,
-                maximumElevationInMeters: 100,
-                minimumDepthInMeters: 20,
-                minimumElevationInMeters: 20,
-              },
-            },
-            startDate: 'startDate',
-          },
-          isDeathDate: true,
+    featureObservations: [
+      {
+        date: 'date',
+        featureObservationAgent: 'featureObservationAgent',
+        featureObservationText: 'juvenile',
+        featureType: {
+          id: '1',
         },
-      ],
-      collectionItems: [
-        {
-          curatorialAssessments: [
-            {
-              agent: 'agent',
-              condition: 'condition',
-              conditionRemarks: 'conditionRemarks',
-              date: 'date',
-              inventoryStatusRemarks: 'inventoryStatusRemarks',
-              isInStorage: true, // is set as default in form
-            },
-          ],
-          description: 'description',
-          physicalObject: {
-            storageLocation: {
-              id: '1',
-            },
-            storageLocationText: 'storageLocationText',
-          },
-          preparationType: {
-            category: 'skeleton',
-            id: '2',
-          },
-        },
-      ],
-      collectionItemText: 'collectionItemText',
-
-      deathInformation: [
-        {
-          causeOfDeathType: {
-            id: '1',
-          },
-          remarks: 'Some remarks',
-        },
-      ],
-      determinations: [
-        {
-          date: 'date',
-          determinationVerbatim: 'determinationVerbatim',
-          determinedByAgentText: 'determinedByAgentText',
-          remarks: 'remarks',
-          taxon: {
-            id: '2367',
-          },
-        },
-      ],
-
-      featureObservations: [
-        {
-          date: 'date',
-          featureObservationAgent: 'featureObservationAgent',
-          featureObservationText: 'juvenile',
-          featureType: {
-            id: '1',
-          },
-          methodText: 'known-age',
-          remarks: 'remarks',
-        },
-      ],
-
-      identifiers: [
-        {
-          identifierType: {
-            id: '1',
-          },
-          nameSpace: '',
-          publishRecord: true,
-          remarks: '',
-          value: '123456',
-        },
-        {
-          identifierType: {
-            id: '2',
-          },
-          remarks: 'remarks',
-          value: 'V0100/98',
-        },
-      ],
-      originInformation: [
-        {
-          isAffectedByManagement: true,
-          isResultOfSelectiveBreeding: true,
-          originLocality: 'Ronneby',
-          remarks: 'Some remarks',
-        },
-      ],
-      recordHistoryEvents: [
-        {
-          agent: 'agent',
-          date: 'date',
-          description: 'Creation of catalog card',
-          system: 'catalogCard',
-        },
-      ],
-      remarks: 'remarks',
-      taxonInformation: {
-        curatorialName: 'curatorialName',
-        taxonRemarks: 'taxonRemarks',
+        methodText: 'known-age',
+        remarks: 'remarks',
       },
-      typeStatus: {
-        id: '1',
+    ],
+
+    identifiers: [
+      {
+        identifierType: {
+          id: '1',
+        },
+        nameSpace: '',
+        publishRecord: true,
+        remarks: '',
+        value: '123456',
       },
+      {
+        identifierType: {
+          id: '2',
+        },
+        remarks: 'remarks',
+        value: 'V0100/98',
+      },
+    ],
+    originInformation: [
+      {
+        isAffectedByManagement: true,
+        isResultOfSelectiveBreeding: true,
+        originLocality: 'Ronneby',
+        remarks: 'Some remarks',
+      },
+    ],
+    recordHistoryEvents: [
+      {
+        agent: 'agent',
+        date: 'date',
+        description: 'Creation of catalog card',
+        system: 'catalogCard',
+      },
+    ],
+    remarks: 'remarks',
+    taxonInformation: {
+      curatorialName: 'curatorialName',
+      taxonRemarks: 'taxonRemarks',
+    },
+    typeStatus: {
+      id: '1',
     },
   },
-
-  storageLocations: [
-    {
-      id: '1',
-      type: 'storageLocation',
-    },
-  ],
-  taxa: [
-    {
-      id: '2367',
-      type: 'taxon',
-    },
-  ],
 }
 
 const postSubmitTest = ({ submitResult }) => {
@@ -508,7 +459,7 @@ const postSubmitTest = ({ submitResult }) => {
 
 const scenario = {
   description: 'Register new mammal form with all fields',
-  expectedOutput: expectedOutput.specimen.individual,
+  expectedOutput: expectedOutput,
   initialState,
   input: {},
   mutations,

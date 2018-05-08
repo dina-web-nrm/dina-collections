@@ -84,7 +84,6 @@ class RawMammalForm extends Component {
       id: match && match.params && match.params.specimenId,
       individual: formData,
     }
-
     return handleFormSubmit(filterOutput({ specimen }))
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {

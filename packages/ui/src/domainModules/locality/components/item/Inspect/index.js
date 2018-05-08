@@ -4,6 +4,8 @@ import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
+
 import {
   createEnsureAllItemsFetched,
   createGetItemById,
@@ -13,17 +15,11 @@ import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
 const mapStateToProps = (state, ownProps) => {
   const { item: place } = ownProps
-
-  const parent =
-    place &&
-    place.parent &&
-    globalCrudSelectors.place.getOne(state, place.parent.id)
-  const children =
-    place &&
-    place.children &&
-    place.children.map(({ id }) => {
-      return globalCrudSelectors.place.getOne(state, id)
-    })
+  const parentId = getParentId(place)
+  const parent = parentId && globalCrudSelectors.place.getOne(state, parentId)
+  const children = getChildrenIds(place).map(id => {
+    return globalCrudSelectors.place.getOne(state, id)
+  })
 
   return {
     children,
@@ -66,6 +62,7 @@ export class Inspect extends PureComponent {
       return null
     }
 
+    const { attributes } = place
     return (
       <React.Fragment>
         <Table celled>
@@ -75,11 +72,11 @@ export class Inspect extends PureComponent {
               <Table.HeaderCell>Value</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          {place && (
+          {attributes && (
             <Table.Body>
               <Table.Row>
                 <Table.Cell>Name</Table.Cell>
-                <Table.Cell>{place.name}</Table.Cell>
+                <Table.Cell>{attributes.name}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>id</Table.Cell>
@@ -88,42 +85,42 @@ export class Inspect extends PureComponent {
               <Table.Row>
                 <Table.Cell>MaximumElevationInMeters</Table.Cell>
                 <Table.Cell>
-                  {place.verticalPosition &&
-                    place.verticalPosition.maximummElevationInMeters}
+                  {attributes.verticalPosition &&
+                    attributes.verticalPosition.maximummElevationInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MinimumElevationInMeters</Table.Cell>
                 <Table.Cell>
-                  {place.verticalPosition &&
-                    place.verticalPosition.minimumElevationInMeters}
+                  {attributes.verticalPosition &&
+                    attributes.verticalPosition.minimumElevationInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MaximumDepthInMeters</Table.Cell>
                 <Table.Cell>
-                  {place.verticalPosition &&
-                    place.verticalPosition.maximumDepthInMeters}
+                  {attributes.verticalPosition &&
+                    attributes.verticalPosition.maximumDepthInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>MinimumDepthInMeters</Table.Cell>
                 <Table.Cell>
-                  {place.verticalPosition &&
-                    place.verticalPosition.minimumDepthInMeters}
+                  {attributes.verticalPosition &&
+                    attributes.verticalPosition.minimumDepthInMeters}
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Latitude</Table.Cell>
-                <Table.Cell>{place.latitude}</Table.Cell>
+                <Table.Cell>{attributes.latitude}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Longitude</Table.Cell>
-                <Table.Cell>{place.longitude}</Table.Cell>
+                <Table.Cell>{attributes.longitude}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>UncertaintyInMeters</Table.Cell>
-                <Table.Cell>{place.uncertaintyInMeters}</Table.Cell>
+                <Table.Cell>{attributes.uncertaintyInMeters}</Table.Cell>
               </Table.Row>
             </Table.Body>
           )}

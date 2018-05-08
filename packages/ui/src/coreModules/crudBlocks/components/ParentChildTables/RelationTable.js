@@ -16,6 +16,7 @@ const defaultProps = {
 }
 
 const RelationTable = ({ onRowClick: handleRowClick, rowItems }) => {
+  console.log('rowItems', rowItems)
   return (
     <Table celled selectable>
       <Table.Header>
@@ -26,14 +27,14 @@ const RelationTable = ({ onRowClick: handleRowClick, rowItems }) => {
       </Table.Header>
       <Table.Body>
         {rowItems.length > 0 &&
-          rowItems.map(({ id, name }) => {
+          rowItems.map(({ id, attributes = {} }) => {
             return (
               <Table.Row key={id} onClick={event => handleRowClick(event, id)}>
                 <Table.Cell>
                   <a>{id}</a>
                 </Table.Cell>
                 <Table.Cell>
-                  <a>{name}</a>
+                  <a>{attributes.name}</a>
                 </Table.Cell>
               </Table.Row>
             )

@@ -11,7 +11,6 @@ export function createFillCatalogNumber(newCatalogNumber) {
         ...updatedIdentifier,
         identifierType: {
           ...updatedIdentifier.identifierType,
-          type: 'identifierType',
         },
       }
     }

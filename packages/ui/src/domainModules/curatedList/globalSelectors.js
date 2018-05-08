@@ -59,7 +59,6 @@ const getDropdownWetPreparationOptions = createDropdownSelector(WET_PREPARATION)
 const getPreparationTypeOptions = (state, category) => {
   switch (category) {
     case SKELETON: {
-      console.log('IN SKELETON CASE')
       return getDropdownSkeletonOptions(state)
     }
     case SKIN: {

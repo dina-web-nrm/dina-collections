@@ -2,7 +2,7 @@ import transformFeatureObservations from './transformFeatureObservations'
 import transformRecordHistoryEvents from './transformRecordHistoryEvents'
 
 export default function transformInput({ featureTypes = [], specimen = {} }) {
-  const transformedSpecimen = { ...specimen }
+  const transformedSpecimen = JSON.parse(JSON.stringify(specimen))
   if (!transformedSpecimen.individual) {
     transformedSpecimen.individual = {}
   }

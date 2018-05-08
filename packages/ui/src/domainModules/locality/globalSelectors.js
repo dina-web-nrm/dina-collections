@@ -3,6 +3,7 @@ import { createSelector } from 'reselect'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import getSecondArgument from 'utilities/getSecondArgument'
+import { getParentId } from 'coreModules/crud/utilities'
 
 import { ALL, CONTINENT, COUNTRY, DISTRICT, PROVINCE } from './constants'
 
@@ -31,18 +32,24 @@ const getPlacesArrayByFilter = createSelector(
 
     if (parentIdFilter) {
       filteredPlaces = filteredPlaces.filter(locality => {
-        return (locality.parent && locality.parent.id) === parentIdFilter
+        return getParentId(locality) === parentIdFilter
       })
     }
 
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
-      const firstLetterMatches = filteredPlaces.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      const firstLetterMatches = filteredPlaces.filter(({ attributes }) => {
+        return (
+          attributes.name &&
+          attributes.name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+        )
       })
 
-      const otherMatches = filteredPlaces.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+      const otherMatches = filteredPlaces.filter(({ attributes }) => {
+        return (
+          attributes.name &&
+          attributes.name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+        )
       })
 
       filteredPlaces = [...firstLetterMatches, ...otherMatches]
@@ -50,7 +57,7 @@ const getPlacesArrayByFilter = createSelector(
 
     if (groupFilter) {
       filteredPlaces = filteredPlaces.filter(
-        ({ group }) => group === groupFilter
+        ({ attributes }) => attributes.group === groupFilter
       )
     }
 
@@ -71,7 +78,7 @@ const getPlaceAncestorsById = createSelector(
     const ancestors = []
     const walkUp = item => {
       ancestors.push(item)
-      const parentId = item.parent && item.parent.id
+      const parentId = getParentId(item)
       if (parentId) {
         const next = places[parentId]
         if (next) {
@@ -108,11 +115,11 @@ const getPrevPlaceIdFromFilter = createSelector(
   getPlacesArrayByFilter,
   getSecondArgument,
   (placesArray, currentId) => {
-    const currentIdex = placesArray.findIndex(element => {
+    const currentIndex = placesArray.findIndex(element => {
       return element.id === currentId
     })
 
-    return placesArray[Number(currentIdex) - 1].id
+    return placesArray[Number(currentIndex) - 1].id
   }
 )
 

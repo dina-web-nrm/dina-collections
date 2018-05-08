@@ -25,8 +25,6 @@ const log = createLog(
 
 const mapStateToProps = (state, { preparationType, category }) => {
   // TODO use selector for preparationType options
-  console.log('preparationType', preparationType)
-  console.log('category', category)
   return {
     preparationTypeOptions: curatedListSelectors.getPreparationTypeOptions(
       state,
@@ -63,7 +61,6 @@ function PhysicalObjectContent({
   i18n: { moduleTranslate },
   removeArrayFieldByIndex,
 }) {
-  console.log('preparationTypeOptions', preparationTypeOptions)
   log.render()
   return (
     <Grid textAlign="left" verticalAlign="top">
