@@ -8,6 +8,7 @@ module.exports = function buildPath(endpoint) {
   var description = endpoint.description,
       errors = endpoint.errors,
       headers = endpoint.headers,
+      inverseOperationId = endpoint.inverseOperationId,
       operationId = endpoint.operationId,
       pathParams = endpoint.pathParams,
       queryParams = endpoint.queryParams,
@@ -17,6 +18,7 @@ module.exports = function buildPath(endpoint) {
       summary = endpoint.summary,
       tags = endpoint.tags;
 
+
   var responses = buildResponses({ errors: errors, operationId: operationId, response: response });
   var requestBody = buildRequest({ operationId: operationId, request: request });
   var parameters = buildParameters({
@@ -24,7 +26,8 @@ module.exports = function buildPath(endpoint) {
     pathParams: pathParams,
     queryParams: queryParams
   });
-  return {
+
+  var pathSpec = {
     description: description,
     operationId: operationId,
     parameters: parameters,
@@ -34,4 +37,10 @@ module.exports = function buildPath(endpoint) {
     summary: summary,
     tags: tags
   };
+
+  if (inverseOperationId) {
+    pathSpec['x-inverseOperationId'] = inverseOperationId;
+  }
+
+  return pathSpec;
 };

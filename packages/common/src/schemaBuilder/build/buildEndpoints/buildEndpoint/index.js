@@ -1,10 +1,12 @@
+const buildDescription = require('./buildDescription')
 const buildResponse = require('./buildResponse')
 const buildRequest = require('./buildRequest')
 
 module.exports = function buildEndpoint({
   auth = true,
-  description,
+  description: descriptionInput,
   errors,
+  inverseOperationId,
   method,
   operationId,
   path,
@@ -16,6 +18,11 @@ module.exports = function buildEndpoint({
   summary,
   tags,
 }) {
+  const description = buildDescription({
+    description: descriptionInput,
+    inverseOperationId,
+  })
+
   const pathParams = rawPathParams.reduce((obj, key) => {
     return {
       ...obj,
@@ -50,6 +57,7 @@ module.exports = function buildEndpoint({
   return {
     description,
     errors,
+    inverseOperationId,
     method,
     operationId,
     path,

@@ -1,3 +1,4 @@
+const buildOperationId = require('../../../../lib/services/operationFactory/typeFactories/utilities/buildOperationId')
 const createPhysicalObjectRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const { resourceRelationsMap } = require('../../models/relations')
 
@@ -12,6 +13,26 @@ module.exports = {
     },
     {
       type: 'update',
+    },
+    {
+      connect: false,
+      inverseOperationId: buildOperationId({
+        operationType: 'getRelationBelongsToOne',
+        relationKey: 'physicalObject',
+        resource: 'specimen',
+      }),
+      relationKey: 'specimens',
+      type: 'getRelationHasMany',
+    },
+    {
+      connect: false,
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationBelongsToOne',
+        relationKey: 'physicalObject',
+        resource: 'specimen',
+      }),
+      relationKey: 'specimens',
+      type: 'updateRelationHasMany',
     },
     {
       relationKey: 'storageLocation',
