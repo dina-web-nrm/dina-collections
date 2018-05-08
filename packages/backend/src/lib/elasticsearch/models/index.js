@@ -16,7 +16,7 @@ module.exports = function setupModels({
   return Promise.resolve().then(() => {
     return createModels({ config, elasticsearch, services }).then(
       ({ modelArray, modelObject: models }) => {
-        log.info('Setup relations:')
+        log.info('Sync models:')
         return syncModels({
           config,
           modelArray,

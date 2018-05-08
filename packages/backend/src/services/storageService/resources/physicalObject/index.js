@@ -1,4 +1,7 @@
 const createPhysicalObjectRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const { resourceRelationsMap } = require('../../models/relations')
+
+const resource = 'physicalObject'
 
 module.exports = {
   basePath: '/api/storage/v01',
@@ -12,11 +15,11 @@ module.exports = {
     },
     {
       relationKey: 'storageLocation',
-      type: 'updateRelationHasOne',
+      type: 'updateRelationBelongsToOne',
     },
     {
       relationKey: 'storageLocation',
-      type: 'getRelationHasOne',
+      type: 'getRelationBelongsToOne',
     },
     {
       includeRelations: true,
@@ -26,19 +29,7 @@ module.exports = {
       includeRelations: true,
       type: 'getMany',
     },
-    {
-      type: 'getVersion',
-    },
-    {
-      type: 'getVersions',
-    },
   ],
-  relations: {
-    storageLocation: {
-      format: 'object',
-      resource: 'storageLocation',
-      type: 'hasOne',
-    },
-  },
-  resource: 'physicalObject',
+  relations: resourceRelationsMap[resource],
+  resource,
 }

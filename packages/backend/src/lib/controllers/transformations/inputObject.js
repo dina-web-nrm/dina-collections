@@ -8,7 +8,7 @@ const extractForeignKeyRelationships = ({ input, relations = {} }) => {
       input.relationships[key].data &&
       input.relationships[key].data.id
     if (!storeInDocument && relationId !== undefined && format === 'object') {
-      const foreignKeyName = `${key}VersionId`
+      const foreignKeyName = `${key}Id`
       return {
         ...obj,
         [foreignKeyName]: relationId,

@@ -42,7 +42,7 @@ export class Create extends PureComponent {
       return null
     }
 
-    const initialValues = itemId && { parentVersionId: itemId }
+    const initialValues = itemId && { parentId: itemId }
 
     return (
       <BaseForm

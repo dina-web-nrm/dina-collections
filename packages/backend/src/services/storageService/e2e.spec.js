@@ -105,7 +105,8 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId: 'physicalObjectUpdateRelationHasOneStorageLocation',
+            operationId:
+              'physicalObjectUpdateRelationBelongsToOneStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
@@ -184,7 +185,8 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId: 'physicalObjectUpdateRelationHasOneStorageLocation',
+            operationId:
+              'physicalObjectUpdateRelationBelongsToOneStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },

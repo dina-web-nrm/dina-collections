@@ -1,4 +1,7 @@
 const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const { resourceRelationsMap } = require('../../models/relations')
+
+const resource = 'taxon'
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -33,28 +36,7 @@ module.exports = {
       type: 'getMany',
     },
   ],
-  relations: {
-    acceptedTaxonName: {
-      format: 'object',
-      resource: 'taxonName',
-    },
-    children: {
-      format: 'array',
-      resource: 'taxon',
-    },
-    parent: {
-      format: 'object',
-      resource: 'taxon',
-    },
-    synonyms: {
-      format: 'array',
-      resource: 'taxonName',
-    },
-    vernacularNames: {
-      format: 'array',
-      resource: 'taxonName',
-    },
-  },
-  resource: 'taxon',
+  relations: resourceRelationsMap[resource],
+  resource,
   resourcePath: 'taxa',
 }

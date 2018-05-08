@@ -1,8 +1,6 @@
 {
   "data": {
-    "type": "taxon",
-    "attributes": {
-      "parentVersionId": "1"
-    }
+    "attributes": {},
+    "type": "taxon"
   }
 }

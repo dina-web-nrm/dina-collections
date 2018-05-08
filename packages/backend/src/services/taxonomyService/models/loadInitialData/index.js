@@ -13,11 +13,10 @@ module.exports = function loadInitialData({ models }) {
         const resource = {
           doc: deleteNullProperties(rest),
           id,
-          versionId: id,
         }
 
         if (parentId) {
-          resource.parentVersionId = parentId
+          resource.parentId = parentId
         }
 
         return resource
@@ -43,17 +42,16 @@ module.exports = function loadInitialData({ models }) {
         const resource = {
           doc: deleteNullProperties(doc),
           id,
-          versionId: id,
         }
 
         if (acceptedToTaxonId) {
-          resource.acceptedToTaxonVersionId = acceptedToTaxonId
+          resource.acceptedToTaxonId = acceptedToTaxonId
         }
         if (synonymToTaxonId) {
-          resource.synonymToTaxonVersionId = synonymToTaxonId
+          resource.synonymToTaxonId = synonymToTaxonId
         }
         if (vernacularToTaxonId) {
-          resource.vernacularToTaxonVersionId = vernacularToTaxonId
+          resource.vernacularToTaxonId = vernacularToTaxonId
         }
 
         return resource

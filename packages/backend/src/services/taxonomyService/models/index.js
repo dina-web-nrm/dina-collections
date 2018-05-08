@@ -1,5 +1,7 @@
 const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../lib/sequelize/models/factories/versionedDocumentModel')
+const createModel = require('../../../lib/sequelize/models/factories/documentModel')
+
+const { setupRelations } = require('./relations')
 
 const taxonFactory = function taxon({ sequelize }) {
   return createModel({
@@ -16,46 +18,6 @@ const taxonNameFactory = function taxonName({ sequelize }) {
     schemaModelName: 'taxonName',
     schemaVersion: '1.0.1',
     sequelize,
-  })
-}
-
-const setupRelations = function setupRelations({ models }) {
-  const { taxon, taxonName } = models
-  taxon.Model.hasMany(taxon.Model, {
-    as: 'children',
-    foreignKey: 'parentVersionId',
-  })
-  taxon.Model.belongsTo(taxon.Model, {
-    as: 'parent',
-    foreignKey: 'parentVersionId',
-    targetKey: 'versionId',
-  })
-  taxon.Model.hasOne(taxonName.Model, {
-    as: 'acceptedTaxonName',
-    foreignKey: 'acceptedToTaxonVersionId',
-  })
-  taxonName.Model.belongsTo(taxon.Model, {
-    as: 'acceptedToTaxon',
-    foreignKey: 'acceptedToTaxonVersionId',
-    targetKey: 'versionId',
-  })
-  taxon.Model.hasMany(taxonName.Model, {
-    as: 'synonyms',
-    foreignKey: 'synonymToTaxonVersionId',
-  })
-  taxonName.Model.belongsTo(taxon.Model, {
-    as: 'synonymToTaxon',
-    foreignKey: 'synonymToTaxonVersionId',
-    targetKey: 'versionId',
-  })
-  taxon.Model.hasMany(taxonName.Model, {
-    as: 'vernacularNames',
-    foreignKey: 'vernacularToTaxonVersionId',
-  })
-  taxonName.Model.belongsTo(taxon.Model, {
-    as: 'vernacularToTaxon',
-    foreignKey: 'vernacularToTaxonVersionId',
-    targetKey: 'versionId',
   })
 }
 

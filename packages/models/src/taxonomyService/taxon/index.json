@@ -6,12 +6,6 @@
     },
     "type": {
       "type": "string"
-    },
-    "versionId": {
-      "type": "string"
-    },
-    "parentVersionId": {
-      "type": "string"
     }
   }
 }

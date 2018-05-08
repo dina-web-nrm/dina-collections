@@ -8,14 +8,16 @@ import {
 import { TAXON } from '../constants'
 
 export default function updateTaxonParent(
-  { taxonId, parentVersionId, throwError = false } = {}
+  { taxonId, parentId, throwError = false } = {}
 ) {
   const callParams = {
     body: {
-      data: {
-        id: parentVersionId,
-        type: TAXON,
-      },
+      data: parentId
+        ? {
+            id: taxonId,
+            type: TAXON,
+          }
+        : null,
     },
     pathParams: { id: taxonId },
   }
@@ -27,7 +29,7 @@ export default function updateTaxonParent(
       type: TAXON_SERVICE_UPDATE_TAXON_PARENT_REQUEST,
     })
 
-    return apiClient.call('updateTaxonParent', callParams).then(
+    return apiClient.call('taxonUpdateRelationHasOneParent', callParams).then(
       response => {
         const transformedResponse = flattenObjectResponse(response.data)
         dispatch({

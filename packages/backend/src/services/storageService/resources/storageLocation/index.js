@@ -1,6 +1,10 @@
 const createStorageLocationRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const buildWhere = require('./operations/getMany/buildWhere')
 
+const { resourceRelationsMap } = require('../../models/relations')
+
+const resource = 'storageLocation'
+
 module.exports = {
   basePath: '/api/storage/v01',
   operations: [
@@ -92,19 +96,6 @@ module.exports = {
       type: 'getMany',
     },
   ],
-  relations: {
-    children: {
-      format: 'array',
-      resource: 'storageLocation',
-    },
-    parent: {
-      format: 'object',
-      resource: 'storageLocation',
-    },
-    physicalObjects: {
-      format: 'array',
-      resource: 'physicalObject',
-    },
-  },
-  resource: 'storageLocation',
+  relations: resourceRelationsMap[resource],
+  resource,
 }

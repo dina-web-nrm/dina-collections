@@ -19,14 +19,14 @@
 WITH    RECURSIVE
         q AS
         (
-        SELECT  "id", "parentVersionId","isCurrentVersion","versionId", "schemaVersion", "document"
+        SELECT  "id", "parentId","isCurrentVersion","versionId", "schemaVersion", "document"
         FROM    "Places" h
         WHERE   "versionId" = 32
         UNION ALL
-        SELECT  hc."id", hc."parentVersionId", hc."isCurrentVersion",hc."versionId", hc."schemaVersion", hc."document"
+        SELECT  hc."id", hc."parentId", hc."isCurrentVersion",hc."versionId", hc."schemaVersion", hc."document"
         FROM    q
         JOIN    "Places" hc
-        ON      hc."parentVersionId" = q."versionId"
+        ON      hc."parentId" = q."versionId"
         )
 SELECT  *
 FROM    q;
@@ -42,7 +42,7 @@ WITH    RECURSIVE
         SELECT  hc.*
         FROM    q
         JOIN    "Places" hc
-        ON      hc."parentVersionId" = q."versionId"
+        ON      hc."parentId" = q."versionId"
         )
 SELECT  *
 FROM    q;
