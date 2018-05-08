@@ -1,3 +1,4 @@
+const buildOperationId = require('../../../../lib/services/operationFactory/typeFactories/utilities/buildOperationId')
 const createStorageLocationRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const buildWhere = require('./operations/getMany/buildWhere')
 
@@ -15,10 +16,6 @@ module.exports = {
     {
       type: 'update',
     },
-    // {
-    //   relationKey: 'physicalObjects',
-    //   type: 'updateRelationHasMany',
-    // },
     {
       relationKey: 'parent',
       type: 'updateRelationHasOne',
@@ -26,6 +23,16 @@ module.exports = {
     {
       relationKey: 'physicalObjects',
       type: 'getRelationHasMany',
+    },
+    {
+      connect: false,
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationBelongsToOne',
+        relationKey: 'storageLocation',
+        resource: 'physicalObject',
+      }),
+      relationKey: 'physicalObjects',
+      type: 'updateRelationHasMany',
     },
     {
       includeRelations: true,
