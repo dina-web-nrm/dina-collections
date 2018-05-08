@@ -5,6 +5,7 @@ module.exports = function buildEndpoint({
   auth = true,
   description,
   errors,
+  inverseOperationId,
   method,
   operationId,
   path,
@@ -50,6 +51,7 @@ module.exports = function buildEndpoint({
   return {
     description,
     errors,
+    inverseOperationId,
     method,
     operationId,
     path,

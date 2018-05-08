@@ -7,6 +7,7 @@ module.exports = function buildPath(endpoint) {
     description,
     errors,
     headers,
+    inverseOperationId,
     operationId,
     pathParams,
     queryParams,
@@ -16,6 +17,7 @@ module.exports = function buildPath(endpoint) {
     summary,
     tags,
   } = endpoint
+
   const responses = buildResponses({ errors, operationId, response })
   const requestBody = buildRequest({ operationId, request })
   const parameters = buildParameters({
@@ -23,7 +25,8 @@ module.exports = function buildPath(endpoint) {
     pathParams,
     queryParams,
   })
-  return {
+
+  const pathSpec = {
     description,
     operationId,
     parameters,
@@ -33,4 +36,10 @@ module.exports = function buildPath(endpoint) {
     summary,
     tags,
   }
+
+  if (inverseOperationId) {
+    pathSpec['x-inverseOperationId'] = inverseOperationId
+  }
+
+  return pathSpec
 }
