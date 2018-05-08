@@ -1,6 +1,6 @@
 const buildPath = require('./buildPath')
 
-module.exports = function creteOpenApiPaths(endpoints) {
+module.exports = function createOpenApiPaths(endpoints) {
   return Object.keys(endpoints).reduce((paths, endpointName) => {
     const endpoint = endpoints[endpointName]
     let updatedPaths = { ...paths }
