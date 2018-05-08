@@ -8,37 +8,30 @@ module.exports = {
   basePath: '/api/taxonomy/v01',
   operations: [
     {
-      connect: true,
       exampleRequests: { primary: createTaxonNameRequestSuccess },
       type: 'create',
     },
     {
-      connect: true,
       type: 'update',
     },
     {
-      connect: true,
       relationKey: 'acceptedToTaxon',
       type: 'updateRelationBelongsToOne',
     },
     {
-      connect: true,
       relationKey: 'synonymToTaxon',
       type: 'updateRelationBelongsToOne',
     },
     {
-      connect: true,
       relationKey: 'vernacularToTaxon',
       type: 'updateRelationBelongsToOne',
     },
     {
-      connect: true,
       includeRelations: true,
       type: 'getOne',
     },
     {
       buildWhere,
-      connect: true,
       includeRelations: true,
       queryParams: {
         'filter[name]': {
