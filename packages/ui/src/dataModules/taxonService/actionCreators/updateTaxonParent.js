@@ -12,10 +12,12 @@ export default function updateTaxonParent(
 ) {
   const callParams = {
     body: {
-      data: {
-        id: parentId,
-        type: TAXON,
-      },
+      data: parentId
+        ? {
+            id: taxonId,
+            type: TAXON,
+          }
+        : null,
     },
     pathParams: { id: taxonId },
   }

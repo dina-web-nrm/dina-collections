@@ -12,10 +12,12 @@ export default function updateTaxonNameAcceptedToTaxon(
 ) {
   const callParams = {
     body: {
-      data: {
-        id: taxonId || undefined,
-        type: TAXON,
-      },
+      data: taxonId
+        ? {
+            id: taxonId,
+            type: TAXON,
+          }
+        : null,
     },
     pathParams: { id: taxonNameId },
   }

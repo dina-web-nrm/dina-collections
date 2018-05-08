@@ -12,10 +12,12 @@ export default function updateTaxonNameVernacularToTaxon(
 ) {
   const callParams = {
     body: {
-      data: {
-        id: taxonId,
-        type: TAXON,
-      },
+      data: taxonId
+        ? {
+            id: taxonId,
+            type: TAXON,
+          }
+        : null,
     },
     pathParams: { id: taxonNameId },
   }
