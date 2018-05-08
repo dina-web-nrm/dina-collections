@@ -16,14 +16,21 @@ module.exports = function createModel({
 
   const dataColumns =
     normalizedColumnNames && normalizedColumnNames.length
-      ? normalizedColumnNames.reduce((obj, columnName) => {
-          return {
-            ...obj,
-            [columnName]: {
+      ? normalizedColumnNames.reduce(
+          (obj, columnName) => {
+            return {
+              ...obj,
+              [columnName]: {
+                type: Sequelize.JSONB,
+              },
+            }
+          },
+          {
+            nonNormalized: {
               type: Sequelize.JSONB,
             },
           }
-        }, {})
+        )
       : {
           document: {
             type: Sequelize.JSONB,

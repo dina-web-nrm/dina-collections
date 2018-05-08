@@ -12,6 +12,7 @@ DONE
 TODO
 * remove specimen data module. Search?
 * remove other not used files
+* List array with relationships to update
 
 * Implement simple golden flow tests
 * Verify next step functionality for new api client

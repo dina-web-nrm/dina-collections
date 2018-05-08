@@ -7,7 +7,7 @@ const setDependencies = dependencies => {
   /* eslint-enable prefer-destructuring */
 }
 
-function updateRelatedRelationshipResource({ openApiClient, relationship }) {
+function modifyRelatedResource({ openApiClient, relationship }) {
   const isArray = Array.isArray(relationship.data)
   if (isArray) {
     const relationshipItems = relationship.data
@@ -62,6 +62,6 @@ function updateRelatedRelationshipResource({ openApiClient, relationship }) {
   })
 }
 module.exports = {
-  updateRelatedRelationshipResource,
+  modifyRelatedResource,
   setDependencies,
 }

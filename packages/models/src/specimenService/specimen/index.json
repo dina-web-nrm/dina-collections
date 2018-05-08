@@ -36,9 +36,11 @@
           "x-path": "individual.collectionItems.*.preparationType",
           "properties": {
             "data": {
-              "type": "object",
-              "$ref": "__ROOT__preparationType",
-              "x-reference-type": "external"
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__preparationType",
+                "x-reference-type": "external"
+              }
             }
           }
         },

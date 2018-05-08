@@ -4,9 +4,9 @@ module.exports = function createIncludeJobs({ parentItems = [] }) {
   parentItems.forEach(parentItem => {
     const { path: parentPath = '.', relationships = {} } = parentItem
 
-    Object.keys(relationships).forEach(relationshipKey => {
-      const path = `${parentPath}.${relationshipKey}`
-      const relationship = relationships[relationshipKey]
+    Object.keys(relationships).forEach(relationKey => {
+      const path = `${parentPath}.${relationKey}`
+      const relationship = relationships[relationKey]
 
       const relationshipItems = Array.isArray(relationship.data)
         ? relationship.data

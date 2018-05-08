@@ -2,10 +2,13 @@ const createLog = require('../log')
 const createOpenApiClient = require('../openApiClient')
 const jsonApiGetMany = require('./get/getMany')
 const jsonApiGetOne = require('./get/getOne')
-const jsonApiCreate = require('./create/create').create
-const jsonApiUpdate = require('./create/update')
+const jsonApiCreate = require('./modify/recursiveCreate').recursiveCreate
+const jsonApiUpdate = require('./modify/recursiveUpdate').recursiveUpdate
+const setDependencies = require('./modify/setDependencies').setDependencies
 
 const log = createLog('common:jsonApiClient')
+
+setDependencies()
 
 module.exports = function createJsonApiClient({
   apiConfigInput,
@@ -23,19 +26,23 @@ module.exports = function createJsonApiClient({
 
   const update = (resourceType, userOptions) => {
     log.debug(`update ${resourceType}`, userOptions)
+    const { body = {} } = userOptions
+    const item = body.data
     return jsonApiUpdate({
+      item,
       openApiClient,
       resourceType,
-      userOptions,
     })
   }
 
   const create = (resourceType, userOptions) => {
     log.debug(`create ${resourceType}`, userOptions)
+    const { body = {} } = userOptions
+    const item = body.data
     return jsonApiCreate({
+      item,
       openApiClient,
       resourceType,
-      userOptions,
     })
   }
 

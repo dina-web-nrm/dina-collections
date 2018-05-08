@@ -14,16 +14,24 @@ var _promise2 = _interopRequireDefault(_promise);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createLog = require('../../log');
-var updateRelationship = require('./updateRelationship');
+var _require = require('../../Dependor'),
+    Dependor = _require.Dependor;
 
-var log = createLog('common:jsonApiClient', 2);
-module.exports = function updateRelationships(_ref) {
-  var createWithRelationships = _ref.createWithRelationships,
-      openApiClient = _ref.openApiClient,
+var _require2 = require('./modifyRelatedResourceArray'),
+    modifyRelatedResourceArray = _require2.modifyRelatedResourceArray;
+
+var _require3 = require('./modifyRelatedResourceObject'),
+    modifyRelatedResourceObject = _require3.modifyRelatedResourceObject;
+
+var dep = new Dependor({
+  modifyRelatedResourceArray: modifyRelatedResourceArray,
+  modifyRelatedResourceObject: modifyRelatedResourceObject
+});
+
+function modifyRelatedResources(_ref) {
+  var openApiClient = _ref.openApiClient,
       relationships = _ref.relationships;
 
-  log.debug('updateRelationship relationships: ', relationships);
   if (!relationships) {
     return _promise2.default.resolve(relationships);
   }
@@ -32,9 +40,10 @@ module.exports = function updateRelationships(_ref) {
 
   (0, _keys2.default)(relationships).forEach(function (relationshipKey) {
     var relationship = relationships[relationshipKey];
-    log.debug('updateRelationship relationship with key: ' + relationshipKey + ': ', relationship);
-    promises.push(updateRelationship({
-      createWithRelationships: createWithRelationships,
+    var isArray = Array.isArray(relationship.data);
+    var method = isArray ? dep.modifyRelatedResourceArray : dep.modifyRelatedResourceObject;
+
+    promises.push(method({
       openApiClient: openApiClient,
       relationship: relationship
     }).then(function (updatedRelationship) {
@@ -45,4 +54,9 @@ module.exports = function updateRelationships(_ref) {
   return _promise2.default.all(promises).then(function () {
     return updatedRelationships;
   });
+}
+
+module.exports = {
+  dep: dep,
+  modifyRelatedResources: modifyRelatedResources
 };

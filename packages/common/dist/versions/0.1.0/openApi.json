@@ -7954,6 +7954,10 @@
             "type": "string",
             "x-summary": ""
           },
+          "lid": {
+            "type": "string",
+            "x-summary": ""
+          },
           "collectionItems": {
             "type": "array",
             "items": {

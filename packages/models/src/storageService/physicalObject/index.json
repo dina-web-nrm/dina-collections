@@ -4,6 +4,9 @@
     "id": {
       "type": "string"
     },
+    "lid": {
+      "type": "string"
+    },
     "collectionItems": {
       "type": "array",
       "items": {

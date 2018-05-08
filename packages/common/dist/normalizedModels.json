@@ -1221,8 +1221,10 @@
             "x-path": "individual.collectionItems.*.preparationType",
             "properties": {
               "data": {
-                "type": "object",
-                "$ref": "externalModelReference"
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
               }
             }
           },
@@ -1432,6 +1434,10 @@
     "additionalProperties": false,
     "properties": {
       "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "lid": {
         "type": "string",
         "x-summary": ""
       },
