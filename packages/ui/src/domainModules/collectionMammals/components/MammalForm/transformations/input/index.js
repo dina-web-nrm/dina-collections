@@ -1,4 +1,5 @@
 import transformFeatureObservations from './transformFeatureObservations'
+import transformRecordHistoryEvents from './transformRecordHistoryEvents'
 
 export default function transformInput({ featureTypes = [], specimen = {} }) {
   const transformedSpecimen = { ...specimen }
@@ -32,6 +33,10 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
       featureObservations: transformedSpecimen.individual.featureObservations,
       featureTypes,
     }
+  )
+
+  transformedSpecimen.individual.recordHistoryEvents = transformRecordHistoryEvents(
+    transformedSpecimen.individual.recordHistoryEvents
   )
 
   return transformedSpecimen.individual

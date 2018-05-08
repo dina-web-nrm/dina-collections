@@ -42,9 +42,11 @@ export default function getOneAcFactory(
       }
 
       const pathParams = { id }
-      const queryParams = {
-        relationships,
-      }
+      const queryParams = relationships
+        ? {
+            relationships,
+          }
+        : {}
       const callParams = {
         pathParams,
         queryParams,

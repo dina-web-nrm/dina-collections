@@ -85,7 +85,7 @@ class RawMammalForm extends Component {
       individual: formData,
     }
 
-    return handleFormSubmit(filterOutput(specimen))
+    return handleFormSubmit(filterOutput({ specimen }))
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {
           pushRoute(`/app/mammals/${specimenId}/edit`)

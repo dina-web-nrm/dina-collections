@@ -50,7 +50,7 @@ const getMammalFormInitialValues = createSelector(
           type: 'specimen',
         })
 
-    return setDefaultValues(nestedFormatSpecimen).individual
+    return setDefaultValues({ specimen: nestedFormatSpecimen })
   }
 )
 

@@ -1,4 +1,7 @@
+import transformFeatureObservations from './transformFeatureObservations'
+
 export default function transformOutput({ specimen = {} }) {
+  console.log('IN OUTPUT', specimen)
   const transformedSpecimen = { ...specimen }
   if (!transformedSpecimen.individual) {
     transformedSpecimen.individual = {}
@@ -13,10 +16,8 @@ export default function transformOutput({ specimen = {} }) {
   }
 
   if (transformedSpecimen.individual.featureObservations) {
-    transformedSpecimen.individual.featureObservations = transformedSpecimen.individual.featureObservations.filter(
-      item => {
-        return !!item
-      }
+    transformedSpecimen.individual.featureObservations = transformFeatureObservations(
+      transformedSpecimen.individual.featureObservations
     )
   }
 

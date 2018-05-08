@@ -125,7 +125,7 @@ const getPlaceOption = createSelector(
     }
     return {
       key: place.id,
-      text: capitalizeFirstLetter(place.name),
+      text: capitalizeFirstLetter(place.attributes.name),
       value: place.id,
     }
   }
@@ -138,7 +138,8 @@ const createDropdownSelector = (groupFilter, numberOfResults = 6) => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
       const mappedGroupLocalities = Object.values(places)
         .filter(
-          ({ group }) => (groupFilter === 'all' ? true : group === groupFilter)
+          ({ attributes }) =>
+            groupFilter === 'all' ? true : attributes.group === groupFilter
         )
         .map(({ id, attributes }) => {
           return {

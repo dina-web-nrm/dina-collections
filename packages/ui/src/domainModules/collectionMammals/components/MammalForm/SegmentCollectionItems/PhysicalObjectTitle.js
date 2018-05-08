@@ -103,6 +103,7 @@ PhysicalObjectTitle.defaultProps = defaultProps
 export default compose(
   createGetItemById({
     idPath: 'preparationTypeId',
+    relationships: null,
     resource: 'preparationType',
   }),
   createGetStorageLocationById('physicalObject.storageLocation.id')

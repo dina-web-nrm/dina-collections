@@ -18,13 +18,11 @@ export const makeGetFeatureTypesInGroups = () => {
     (featureTypes, groupToIdsMap, groupsString) => {
       return groupsString.split(',').reduce((arr, group) => {
         const featureTypeIds = groupToIdsMap[group]
-
         const groupFeatureTypes =
           featureTypeIds &&
           featureTypeIds.map(id => {
             return featureTypes[id]
           })
-
         return groupFeatureTypes ? [...arr, ...groupFeatureTypes] : arr
       }, [])
     }

@@ -20,13 +20,15 @@ const createDropdownSelector = (categoryFilter, numberOfResults) => {
       const lowerCaseSearchQuery = searchQuery.toLowerCase()
       const mappedPreparationTypes = preparationTypes
         .filter(
-          ({ category }) =>
-            categoryFilter === 'all' ? true : category === categoryFilter
+          ({ attributes }) =>
+            categoryFilter === 'all'
+              ? true
+              : attributes.category === categoryFilter
         )
-        .map(({ id, name }) => {
+        .map(({ id, attributes }) => {
           return {
             key: id,
-            text: capitalizeFirstLetter(name),
+            text: capitalizeFirstLetter(attributes.name),
             value: id,
           }
         })
@@ -57,6 +59,7 @@ const getDropdownWetPreparationOptions = createDropdownSelector(WET_PREPARATION)
 const getPreparationTypeOptions = (state, category) => {
   switch (category) {
     case SKELETON: {
+      console.log('IN SKELETON CASE')
       return getDropdownSkeletonOptions(state)
     }
     case SKIN: {
@@ -91,7 +94,8 @@ const getPreparationTypeOptions = (state, category) => {
 const getGroupedFeatureTypeIds = createSelector(
   getFeatureTypes,
   featureTypes => {
-    return featureTypes.reduce((groupToIdsMap, { id, group }) => {
+    return featureTypes.reduce((groupToIdsMap, { id, attributes }) => {
+      const { group } = attributes
       return {
         ...groupToIdsMap,
         [group]: groupToIdsMap[group] ? [...groupToIdsMap[group], id] : [id],

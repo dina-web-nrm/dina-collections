@@ -1,58 +1,5 @@
 /* eslint-disable sort-keys */
 export default {
-  curatedListService: {
-    resources: {
-      featureTypes: {
-        '1': {
-          attributes: {
-            key: 'age-stage',
-            group: 'age-stage',
-            selectableValues: [
-              {
-                key: 'juvenile',
-                name: {
-                  en: 'juvenile ',
-                  sv: 'juvenil',
-                },
-              },
-            ],
-            selectableMethods: [
-              {
-                key: 'known-age',
-                name: {
-                  en: 'known age',
-                },
-              },
-              {
-                key: 'sectioned-teeth',
-                name: {
-                  en: 'sectioned teeth',
-                },
-              },
-              {
-                key: 'other',
-                name: {
-                  en: 'other',
-                },
-              },
-            ],
-          },
-          id: '1',
-          type: 'featureType',
-        },
-      },
-      preparationTypes: {
-        '2': {
-          attributes: {
-            category: 'skeleton',
-            name: 'complete, mounted skeleton',
-          },
-          id: '2',
-          type: 'preparationType',
-        },
-      },
-    },
-  },
   crud: {
     keyObject: {
       place: {
@@ -60,6 +7,60 @@ export default {
       },
     },
     resources: {
+      featureType: {
+        items: {
+          '1': {
+            attributes: {
+              key: 'age-stage',
+              group: 'age-stage',
+              selectableValues: [
+                {
+                  key: 'juvenile',
+                  name: {
+                    en: 'juvenile ',
+                    sv: 'juvenil',
+                  },
+                },
+              ],
+              selectableMethods: [
+                {
+                  key: 'known-age',
+                  name: {
+                    en: 'known age',
+                  },
+                },
+                {
+                  key: 'sectioned-teeth',
+                  name: {
+                    en: 'sectioned teeth',
+                  },
+                },
+                {
+                  key: 'other',
+                  name: {
+                    en: 'other',
+                  },
+                },
+              ],
+            },
+            id: '1',
+            type: 'featureType',
+          },
+        },
+      },
+      preparationType: {
+        items: {
+          '2': {
+            attributes: {
+              category: 'skeleton',
+              name: 'complete, mounted skeleton',
+            },
+            id: '2',
+            type: 'preparationType',
+          },
+        },
+      },
+
       establishmentMeansType: {
         items: {
           '1': {

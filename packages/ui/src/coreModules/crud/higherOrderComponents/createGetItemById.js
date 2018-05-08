@@ -11,6 +11,7 @@ import actionCreators from '../actionCreators'
 
 const createGetItemById = ({
   idPath = 'itemId',
+  relationships = ['all'],
   resource,
 }) => ComposedComponent => {
   /* eslint-disable no-console */
@@ -60,7 +61,7 @@ const createGetItemById = ({
     componentDidMount() {
       const { itemId } = this.props
       if (itemId && !config.isTest) {
-        this.props.getOne({ id: itemId })
+        this.props.getOne({ id: itemId, relationships })
       }
     }
 
@@ -70,7 +71,7 @@ const createGetItemById = ({
         nextProps.itemId !== this.props.itemId &&
         !config.isTest
       ) {
-        this.props.getOne({ id: nextProps.itemId })
+        this.props.getOne({ id: nextProps.itemId, relationships })
       }
     }
 

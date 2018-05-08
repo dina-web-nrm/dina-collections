@@ -36,7 +36,7 @@ const mapStateToProps = (state, { formValueSelector }) => {
 const mapDispatchToProps = { getStorageLocations }
 
 const propTypes = {
-  allPreparationTypesFetched: PropTypes.bool.isRequired,
+  allItemsFetched: PropTypes.bool.isRequired,
   allStorageLocationsFetched: PropTypes.bool.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   collectionItems: PropTypes.array,
@@ -51,7 +51,7 @@ const defaultProps = {
 class SegmentCollectionItems extends PureComponent {
   render() {
     const {
-      allPreparationTypesFetched,
+      allItemsFetched: allPreparationTypesFetched,
       allStorageLocationsFetched,
       changeFieldValue,
       collectionItems,

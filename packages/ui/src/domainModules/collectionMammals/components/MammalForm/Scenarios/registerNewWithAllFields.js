@@ -336,7 +336,6 @@ const expectedOutput = {
           collectorsText: 'collectorsText',
           establishmentMeansType: {
             id: '1',
-            type: 'establishmentMeansType',
           },
           event: {
             endDate: 'endDate',
@@ -345,10 +344,7 @@ const expectedOutput = {
             locationInformation: {
               localityName: 'localityName',
               localityVerbatim: 'localityVerbatim',
-              places: [
-                { id: 'Africa', type: 'place' },
-                { id: 'Algeria', type: 'place' },
-              ],
+              places: [{ id: 'Africa' }, { id: 'Algeria' }],
               position: {
                 latitude: 'latitude-string',
                 longitude: 'longitude-string',
@@ -383,13 +379,12 @@ const expectedOutput = {
           physicalObject: {
             storageLocation: {
               id: '1',
-              type: 'storageLocation',
             },
             storageLocationText: 'storageLocationText',
           },
           preparationType: {
+            category: 'skeleton',
             id: '2',
-            type: 'preparationType',
           },
         },
       ],
@@ -399,7 +394,6 @@ const expectedOutput = {
         {
           causeOfDeathType: {
             id: '1',
-            type: 'causeOfDeathType',
           },
           remarks: 'Some remarks',
         },
@@ -412,7 +406,6 @@ const expectedOutput = {
           remarks: 'remarks',
           taxon: {
             id: '2367',
-            type: 'taxon',
           },
         },
       ],
@@ -424,7 +417,6 @@ const expectedOutput = {
           featureObservationText: 'juvenile',
           featureType: {
             id: '1',
-            type: 'featureType',
           },
           methodText: 'known-age',
           remarks: 'remarks',
@@ -435,7 +427,6 @@ const expectedOutput = {
         {
           identifierType: {
             id: '1',
-            type: 'identifierType',
           },
           nameSpace: '',
           publishRecord: true,
@@ -445,7 +436,6 @@ const expectedOutput = {
         {
           identifierType: {
             id: '2',
-            type: 'identifierType',
           },
           remarks: 'remarks',
           value: 'V0100/98',
@@ -474,7 +464,6 @@ const expectedOutput = {
       },
       typeStatus: {
         id: '1',
-        type: 'typeSpecimenType',
       },
     },
   },
@@ -519,7 +508,7 @@ const postSubmitTest = ({ submitResult }) => {
 
 const scenario = {
   description: 'Register new mammal form with all fields',
-  expectedOutput,
+  expectedOutput: expectedOutput.specimen.individual,
   initialState,
   input: {},
   mutations,
