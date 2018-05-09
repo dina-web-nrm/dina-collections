@@ -9,7 +9,9 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:update')
 
-function update({ openApiClient, item, log = defaultLog } = {}) {
+function update(
+  { openApiClient, item, log = defaultLog, resourcesToModify } = {}
+) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
       throw new Error('provide openApiClient')
@@ -31,7 +33,20 @@ function update({ openApiClient, item, log = defaultLog } = {}) {
       throw new Error('attributes are required')
     }
 
+    if (!resourcesToModify) {
+      throw new Error('resourcesToModify is required')
+    }
+
+    if (!resourcesToModify.includes(item.type)) {
+      throw new Error(
+        `resource: ${item.type} is not included in [${resourcesToModify.join(
+          ', '
+        )}]`
+      )
+    }
+
     const { id, type } = item
+
     const operationId = dep.buildOperationId({
       operationType: 'update',
       resource: type,

@@ -14,7 +14,13 @@ const dep = new Dependor({
 const defaultLog = createLog('common:jsonApiClient:recursiveCreate')
 
 function recursiveCreate(
-  { openApiClient, resourceType, item, log = defaultLog } = {}
+  {
+    item,
+    log = defaultLog,
+    openApiClient,
+    resourcesToModify,
+    resourceType,
+  } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
@@ -45,28 +51,35 @@ function recursiveCreate(
       )
     }
 
-    log.debug(`recursiveCreate resource: ${resourceType}. item:`, item)
+    log.debug(`start recursiveCreate resource: ${resourceType}. item:`, item)
 
     return dep
       .modifyRelationshipResources({
         log: log.scope(),
         openApiClient,
         relationships,
+        resourcesToModify,
       })
       .then(updatedRelationships => {
         const itemWithoutRelationships = {
           attributes,
           type,
         }
+        log.debug(
+          `modifyRelationshipResources done. itemWithoutRelationships:`,
+          itemWithoutRelationships
+        )
 
         return dep
           .create({
             item: itemWithoutRelationships,
             log: log.scope(),
             openApiClient,
+            resourcesToModify,
           })
           .then(response => {
             const createdItem = response.data
+            log.debug(`create done. createdItem:`, createdItem)
             return dep
               .updateRelationships({
                 item: createdItem,
@@ -75,6 +88,7 @@ function recursiveCreate(
                 relationships: updatedRelationships,
               })
               .then(() => {
+                log.debug(`updateRelationships done. returning:`, createdItem)
                 return createdItem
               })
           })

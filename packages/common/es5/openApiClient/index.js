@@ -3,8 +3,6 @@
 var _require = require('../apiClient'),
     createApiClient = _require.createApiClient;
 
-var createOperationId = require('./createOperationId');
-
 module.exports = function createJsonApiClient(_ref) {
   var apiConfigInput = _ref.apiConfigInput,
       createEndpoint = _ref.createEndpoint;
@@ -35,13 +33,7 @@ module.exports = function createJsonApiClient(_ref) {
     return apiClient.call(endpointConfig, userInput);
   };
 
-  var typeCall = function typeCall(resourceType, operationType, userInput) {
-    var operationId = createOperationId(resourceType, operationType);
-    return call(operationId, userInput);
-  };
-
   return {
-    call: call,
-    typeCall: typeCall
+    call: call
   };
 };

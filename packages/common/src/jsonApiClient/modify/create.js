@@ -8,7 +8,15 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:create')
 
-function create({ openApiClient, item, log = defaultLog } = {}) {
+function create(
+  {
+    item,
+    log = defaultLog,
+    openApiClient,
+    relationshipsToIncludeInBody,
+    resourcesToModify,
+  } = {}
+) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
       throw new Error('provide openApiClient')
@@ -26,7 +34,20 @@ function create({ openApiClient, item, log = defaultLog } = {}) {
       throw new Error('not allowed to create with id')
     }
 
+    if (!resourcesToModify) {
+      throw new Error('resourcesToModify is required')
+    }
+
+    if (!resourcesToModify.includes(item.type)) {
+      throw new Error(
+        `resource: ${item.type} is not included in [${resourcesToModify.join(
+          ', '
+        )}]`
+      )
+    }
+
     const { type } = item
+
     const operationId = dep.buildOperationId({
       operationType: 'create',
       resource: type,
@@ -34,6 +55,7 @@ function create({ openApiClient, item, log = defaultLog } = {}) {
     const input = {
       body: { data: item },
     }
+
     log.debug(
       `Create resource ${type} with operationId: ${operationId} input:`,
       input

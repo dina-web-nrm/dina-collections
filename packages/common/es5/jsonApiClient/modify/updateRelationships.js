@@ -25,7 +25,6 @@ function updateRelationships(_ref) {
       relationships = _ref.relationships,
       item = _ref.item;
 
-  console.log('in updateRelationships');
   var promises = (0, _keys2.default)(relationships).map(function (relationKey) {
     var relationship = relationships[relationKey];
     return updateRelationship({

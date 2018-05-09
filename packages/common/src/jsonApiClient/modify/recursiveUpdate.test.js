@@ -100,9 +100,6 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         type: 'user',
       }
       depSpies = dep.createSpies({
-        update: () => {
-          return Promise.resolve({ data: updatedItem })
-        },
         modifyRelationshipResources: ({ relationships }) => {
           if (!relationships) {
             return Promise.resolve({})
@@ -118,6 +115,9 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
             },
           }
           return Promise.resolve(updatedRelationships)
+        },
+        update: () => {
+          return Promise.resolve({ data: updatedItem })
         },
         updateRelationships: () => {
           return Promise.resolve({})

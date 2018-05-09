@@ -16,6 +16,7 @@ describe('jsonApiClient/modify/create', () => {
         item: {
           type: 'user',
         },
+        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('provide openApiClient')
   })
@@ -25,6 +26,7 @@ describe('jsonApiClient/modify/create', () => {
     return expect(
       create({
         openApiClient: {},
+        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('item required')
   })
@@ -35,6 +37,7 @@ describe('jsonApiClient/modify/create', () => {
       create({
         item: {},
         openApiClient: {},
+        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('type is required')
   })
@@ -48,9 +51,36 @@ describe('jsonApiClient/modify/create', () => {
           type: 'user',
         },
         openApiClient: {},
+        resourcesToModify: ['user'],
       })
     ).rejects.toThrow('not allowed to create with id')
   })
+
+  it('rejects if resourcesToModify not provided', () => {
+    expect.assertions(1)
+    return expect(
+      create({
+        item: {
+          type: 'user',
+        },
+        openApiClient: {},
+      })
+    ).rejects.toThrow('resourcesToModify is required')
+  })
+
+  it('rejects if item.type not in resourcesToModify', () => {
+    expect.assertions(1)
+    return expect(
+      create({
+        item: {
+          type: 'user',
+        },
+        openApiClient: {},
+        resourcesToModify: ['project'],
+      })
+    ).rejects.toThrow('resource: user is not included in [project]')
+  })
+
   describe('with dependor', () => {
     let depSpies
     let openApiClient
@@ -78,6 +108,7 @@ describe('jsonApiClient/modify/create', () => {
       return create({
         item,
         openApiClient,
+        resourcesToModify: ['user'],
       }).then(res => {
         expect(depSpies.buildOperationId.mock.calls.length).toEqual(1)
         expect(depSpies.buildOperationId.mock.calls[0][0]).toEqual({

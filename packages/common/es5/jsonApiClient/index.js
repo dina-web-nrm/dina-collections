@@ -29,12 +29,15 @@ module.exports = function createJsonApiClient(_ref) {
   var update = function update(resourceType, userOptions) {
     log.debug('update ' + resourceType, userOptions);
     var _userOptions$body = userOptions.body,
-        body = _userOptions$body === undefined ? {} : _userOptions$body;
+        body = _userOptions$body === undefined ? {} : _userOptions$body,
+        _userOptions$resource = userOptions.resourcesToModify,
+        resourcesToModify = _userOptions$resource === undefined ? [resourceType] : _userOptions$resource;
 
     var item = body.data;
     return jsonApiUpdate({
       item: item,
       openApiClient: openApiClient,
+      resourcesToModify: resourcesToModify,
       resourceType: resourceType
     });
   };
@@ -42,12 +45,15 @@ module.exports = function createJsonApiClient(_ref) {
   var create = function create(resourceType, userOptions) {
     log.debug('create ' + resourceType, userOptions);
     var _userOptions$body2 = userOptions.body,
-        body = _userOptions$body2 === undefined ? {} : _userOptions$body2;
+        body = _userOptions$body2 === undefined ? {} : _userOptions$body2,
+        _userOptions$resource2 = userOptions.resourcesToModify,
+        resourcesToModify = _userOptions$resource2 === undefined ? [resourceType] : _userOptions$resource2;
 
     var item = body.data;
     return jsonApiCreate({
       item: item,
       openApiClient: openApiClient,
+      resourcesToModify: resourcesToModify,
       resourceType: resourceType
     });
   };

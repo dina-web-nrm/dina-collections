@@ -11,10 +11,16 @@ const dep = new Dependor({
   updateRelationships,
 })
 
-const defaultLog = createLog('common:jsonApiClient:recursiveCreate')
+const defaultLog = createLog('common:jsonApiClient:recursiveUpdate')
 
 function recursiveUpdate(
-  { openApiClient, resourceType, item, log = defaultLog } = {}
+  {
+    item,
+    log = defaultLog,
+    openApiClient,
+    resourcesToModify,
+    resourceType,
+  } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
@@ -52,6 +58,7 @@ function recursiveUpdate(
         log: log.scope(),
         openApiClient,
         relationships,
+        resourcesToModify,
       })
       .then(updatedRelationships => {
         const itemWithoutRelationships = {
@@ -65,6 +72,7 @@ function recursiveUpdate(
             item: itemWithoutRelationships,
             log: log.scope(),
             openApiClient,
+            resourcesToModify,
           })
           .then(response => {
             const updatedItem = response.data

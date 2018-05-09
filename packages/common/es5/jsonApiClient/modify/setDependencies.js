@@ -9,25 +9,17 @@ var _require2 = require('./recursiveUpdate'),
 var _require3 = require('./recursiveCreate'),
     recursiveCreate = _require3.recursiveCreate;
 
-var _require4 = require('./modifyRelatedResourceArray'),
-    setModifyRelatedResourceArrayDependencies = _require4.setDependencies;
-
-var _require5 = require('./modifyRelatedResourceObject'),
-    setModifyRelatedResourceObjectDependencies = _require5.setDependencies;
+var _require4 = require('./modifyRelationshipResources/modifyRelatedResourceItem'),
+    setModifyRelatedResourceItemDependencies = _require4.setDependencies;
 
 var dep = new Dependor({
   recursiveCreate: recursiveCreate,
   recursiveUpdate: recursiveUpdate,
-  setModifyRelatedResourceArrayDependencies: setModifyRelatedResourceArrayDependencies,
-  setModifyRelatedResourceObjectDependencies: setModifyRelatedResourceObjectDependencies
+  setModifyRelatedResourceItemDependencies: setModifyRelatedResourceItemDependencies
 });
 
 function setDependencies() {
-  dep.setModifyRelatedResourceArrayDependencies({
-    recursiveCreate: dep.recursiveCreate,
-    recursiveUpdate: dep.recursiveUpdate
-  });
-  dep.setModifyRelatedResourceObjectDependencies({
+  dep.setModifyRelatedResourceItemDependencies({
     recursiveCreate: dep.recursiveCreate,
     recursiveUpdate: dep.recursiveUpdate
   });

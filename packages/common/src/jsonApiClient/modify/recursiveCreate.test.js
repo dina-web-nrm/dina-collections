@@ -193,7 +193,7 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         )
       })
       it('call log', () => {
-        expect(testLog.debug.mock.calls.length).toEqual(1)
+        expect(testLog.debug.mock.calls.length).toEqual(4)
       })
       it('return created item', () => {
         expect(result).toEqual(createdItem)
@@ -260,7 +260,7 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         )
       })
       it('call log', () => {
-        expect(testLog.debug.mock.calls.length).toEqual(1)
+        expect(testLog.debug.mock.calls.length).toEqual(4)
       })
       it('return created item', () => {
         expect(result).toEqual(createdItem)

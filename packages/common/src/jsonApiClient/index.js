@@ -26,22 +26,24 @@ module.exports = function createJsonApiClient({
 
   const update = (resourceType, userOptions) => {
     log.debug(`update ${resourceType}`, userOptions)
-    const { body = {} } = userOptions
+    const { body = {}, resourcesToModify = [resourceType] } = userOptions
     const item = body.data
     return jsonApiUpdate({
       item,
       openApiClient,
+      resourcesToModify,
       resourceType,
     })
   }
 
   const create = (resourceType, userOptions) => {
     log.debug(`create ${resourceType}`, userOptions)
-    const { body = {} } = userOptions
+    const { body = {}, resourcesToModify = [resourceType] } = userOptions
     const item = body.data
     return jsonApiCreate({
       item,
       openApiClient,
+      resourcesToModify,
       resourceType,
     })
   }
