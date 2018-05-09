@@ -5,13 +5,14 @@ const dep = new Dependor({
   updateRelationship,
 })
 
-function updateRelationships({ relationships, resource }) {
+function updateRelationships({ openApiClient, relationships, item }) {
   const promises = Object.keys(relationships).map(relationKey => {
     const relationship = relationships[relationKey]
     return updateRelationship({
-      relationship,
+      item,
+      openApiClient,
       relationKey,
-      resource,
+      relationship,
     })
   })
   return Promise.all(promises)

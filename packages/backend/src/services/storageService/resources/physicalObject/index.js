@@ -1,4 +1,4 @@
-const buildOperationId = require('../../../../lib/services/operationFactory/typeFactories/utilities/buildOperationId')
+const buildOperationId = require('common/src/buildOperationId')
 const createPhysicalObjectRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const { resourceRelationsMap } = require('../../models/relations')
 

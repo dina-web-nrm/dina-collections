@@ -1,5 +1,4 @@
 const { createApiClient } = require('../apiClient')
-const createOperationId = require('./createOperationId')
 
 module.exports = function createJsonApiClient({
   apiConfigInput,
@@ -33,13 +32,7 @@ module.exports = function createJsonApiClient({
     return apiClient.call(endpointConfig, userInput)
   }
 
-  const typeCall = (resourceType, operationType, userInput) => {
-    const operationId = createOperationId(resourceType, operationType)
-    return call(operationId, userInput)
-  }
-
   return {
     call,
-    typeCall,
   }
 }

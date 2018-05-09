@@ -24,16 +24,14 @@ function modifyRelatedResourceArray(_ref) {
   var openApiClient = _ref.openApiClient,
       relationship = _ref.relationship;
 
-  console.log('modifyRelatedResourceArray', relationship);
   var relationshipItems = relationship.data;
   var promises = relationshipItems.map(function (item) {
-    console.log('item', item);
+    if (item.type === 'preparationType') {
+      return _promise2.default.resolve(item);
+    }
     var method = item.id ? recursiveUpdate : recursiveCreate;
     return method({ item: item, openApiClient: openApiClient, resourceType: item.type }).then(function (_ref2) {
       var data = _ref2.data;
-
-      console.log('item', item);
-      console.log('data', data);
       var id = data.id,
           type = data.type;
 

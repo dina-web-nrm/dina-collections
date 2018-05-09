@@ -8,7 +8,7 @@ const dep = new Dependor({
   modifyRelatedResourceObject,
 })
 
-function modifyRelatedResources({ openApiClient, relationships }) {
+function modifyRelationshipResources({ openApiClient, relationships }) {
   if (!relationships) {
     return Promise.resolve(relationships)
   }
@@ -39,5 +39,5 @@ function modifyRelatedResources({ openApiClient, relationships }) {
 
 module.exports = {
   dep,
-  modifyRelatedResources,
+  modifyRelationshipResources,
 }

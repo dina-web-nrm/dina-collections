@@ -6,11 +6,11 @@ var _require = require('../../Dependor'),
 var _require2 = require('./modifyRelatedResources'),
     modifyRelatedResources = _require2.modifyRelatedResources;
 
-var _require3 = require('./create'),
-    create = _require3.create;
+var _require3 = require('./updateRelationships'),
+    updateRelationships = _require3.updateRelationships;
 
-var _require4 = require('./updateRelationships'),
-    updateRelationships = _require4.updateRelationships;
+var _require4 = require('./create'),
+    create = _require4.create;
 
 var dep = new Dependor({
   create: create,
@@ -49,8 +49,9 @@ function recursiveCreate() {
     }).then(function (createdResource) {
       console.log('createdResource', createdResource);
       return dep.updateRelationships({
-        relationships: updatedRelationships,
-        item: createdResource.data
+        item: createdResource.data,
+        openApiClient: openApiClient,
+        relationships: updatedRelationships
       }).then(function () {
         console.log('returning');
         return createdResource;

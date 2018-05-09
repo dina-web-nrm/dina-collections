@@ -5002,7 +5002,6 @@
     },
     "/api/storage/v01/storageLocations/{id}/relationships/physicalObjects": {
       "get": {
-        "description": "NOTE: Use endpoint with operationId \"physicalObjectGetRelationBelongsToOneStorageLocation\" instead. This endpoint is not active.",
         "operationId": "storageLocationGetRelationHasManyPhysicalObjects",
         "parameters": [
           {
@@ -5084,8 +5083,7 @@
         "summary": "Find storageLocation -> physicalObjects",
         "tags": [
           "storageService"
-        ],
-        "x-inverseOperationId": "physicalObjectGetRelationBelongsToOneStorageLocation"
+        ]
       },
       "patch": {
         "description": "NOTE: Use endpoint with operationId \"physicalObjectUpdateRelationBelongsToOneStorageLocation\" instead. This endpoint is not active.",

@@ -23,9 +23,9 @@ module.exports = function createIncludeJobs(_ref) {
         relationships = _parentItem$relations === undefined ? {} : _parentItem$relations;
 
 
-    (0, _keys2.default)(relationships).forEach(function (relationshipKey) {
-      var path = parentPath + '.' + relationshipKey;
-      var relationship = relationships[relationshipKey];
+    (0, _keys2.default)(relationships).forEach(function (relationKey) {
+      var path = parentPath + '.' + relationKey;
+      var relationship = relationships[relationKey];
 
       var relationshipItems = Array.isArray(relationship.data) ? relationship.data : [relationship.data];
 

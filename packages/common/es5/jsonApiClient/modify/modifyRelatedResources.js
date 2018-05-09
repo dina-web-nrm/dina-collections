@@ -38,8 +38,8 @@ function modifyRelatedResources(_ref) {
   var updatedRelationships = (0, _extends3.default)({}, relationships);
   var promises = [];
 
-  (0, _keys2.default)(relationships).forEach(function (relationshipKey) {
-    var relationship = relationships[relationshipKey];
+  (0, _keys2.default)(relationships).forEach(function (relationKey) {
+    var relationship = relationships[relationKey];
     var isArray = Array.isArray(relationship.data);
     var method = isArray ? dep.modifyRelatedResourceArray : dep.modifyRelatedResourceObject;
 
@@ -47,7 +47,7 @@ function modifyRelatedResources(_ref) {
       openApiClient: openApiClient,
       relationship: relationship
     }).then(function (updatedRelationship) {
-      updatedRelationships[relationshipKey] = updatedRelationship;
+      updatedRelationships[relationKey] = updatedRelationship;
     }));
   });
 

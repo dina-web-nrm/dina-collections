@@ -49,6 +49,7 @@ function recursiveUpdate() {
     }).then(function (updatedResource) {
       return dep.updateRelationships({
         item: updatedResource.data,
+        openApiClient: openApiClient,
         relationships: updatedRelationships
       }).then(function () {
         return updatedResource;

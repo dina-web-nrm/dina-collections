@@ -1,49 +1,86 @@
+const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 
-const { modifyRelatedResources } = require('./modifyRelatedResources')
+const { modifyRelationshipResources } = require('./modifyRelationshipResources')
 const { update } = require('./update')
 const { updateRelationships } = require('./updateRelationships')
 
 const dep = new Dependor({
-  modifyRelatedResources,
+  modifyRelationshipResources,
   update,
   updateRelationships,
 })
 
-function recursiveUpdate({ openApiClient, resourceType, item } = {}) {
-  const { id, attributes, relationships, type } = item
-  if (resourceType !== type) {
-    throw new Error(`Wrong type: ${type} for resourceType: ${resourceType}`)
-  }
+const defaultLog = createLog('common:jsonApiClient:recursiveCreate')
 
-  return dep
-    .modifyRelatedResources({
-      openApiClient,
-      relationships,
-    })
-    .then(updatedRelationships => {
-      const itemWithoutRelationships = {
-        attributes,
-        id,
-        type,
-      }
+function recursiveUpdate(
+  { openApiClient, resourceType, item, log = defaultLog } = {}
+) {
+  return Promise.resolve().then(() => {
+    if (!openApiClient) {
+      throw new Error('provide openApiClient')
+    }
 
-      return dep
-        .update({
-          item: itemWithoutRelationships,
-          openApiClient,
-        })
-        .then(updatedResource => {
-          return dep
-            .updateRelationships({
-              item: updatedResource.data,
-              relationships: updatedRelationships,
-            })
-            .then(() => {
-              return updatedResource
-            })
-        })
-    })
+    if (!item) {
+      throw new Error('item is required')
+    }
+
+    const { attributes, id, relationships, type } = item
+
+    if (!type) {
+      throw new Error('item type is required')
+    }
+
+    if (!id) {
+      throw new Error('id is required')
+    }
+
+    if (!resourceType) {
+      throw new Error('resourceType is required')
+    }
+
+    if (resourceType !== type) {
+      throw new Error(
+        `wrong item type: ${type} for resourceType: ${resourceType}`
+      )
+    }
+
+    log.debug(`recursiveUpdate resource: ${resourceType}. item:`, item)
+
+    return dep
+      .modifyRelationshipResources({
+        log: log.scope(),
+        openApiClient,
+        relationships,
+      })
+      .then(updatedRelationships => {
+        const itemWithoutRelationships = {
+          attributes,
+          id,
+          type,
+        }
+
+        return dep
+          .update({
+            item: itemWithoutRelationships,
+            log: log.scope(),
+            openApiClient,
+          })
+          .then(response => {
+            const updatedItem = response.data
+            return dep
+              .updateRelationships({
+                item: updatedItem,
+                log: log.scope(),
+                openApiClient,
+                relationships: updatedRelationships,
+              })
+              .then(() => {
+                return updatedItem
+              })
+          })
+      })
+  })
 }
 
 module.exports = {

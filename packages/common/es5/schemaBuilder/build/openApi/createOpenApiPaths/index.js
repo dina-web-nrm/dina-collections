@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var buildPath = require('./buildPath');
 
-module.exports = function creteOpenApiPaths(endpoints) {
+module.exports = function createOpenApiPaths(endpoints) {
   return (0, _keys2.default)(endpoints).reduce(function (paths, endpointName) {
     var endpoint = endpoints[endpointName];
     var updatedPaths = (0, _extends6.default)({}, paths);

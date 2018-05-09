@@ -26,8 +26,6 @@ function modifyRelatedResourceObject(_ref) {
     resourceType: item.type
   }).then(function (_ref2) {
     var data = _ref2.data;
-
-    console.log('data', data);
     var id = data.id,
         type = data.type;
 

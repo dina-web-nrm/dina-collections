@@ -13,9 +13,12 @@ const dep = new Dependor({
   setDependencies,
 })
 
-function modifyRelatedResourceArray({ openApiClient, relationship }) {
+function modifyRelatedResourceArray({ openApiClient, relationship } = {}) {
   const relationshipItems = relationship.data
   const promises = relationshipItems.map(item => {
+    if (item.type === 'preparationType') {
+      return Promise.resolve(item)
+    }
     const method = item.id ? recursiveUpdate : recursiveCreate
     return method({ item, openApiClient, resourceType: item.type }).then(
       ({ data }) => {
