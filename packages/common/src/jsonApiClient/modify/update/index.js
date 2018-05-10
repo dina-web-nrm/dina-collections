@@ -1,7 +1,7 @@
-const createLog = require('../../log')
-const { Dependor } = require('../../Dependor')
+const createLog = require('../../../log')
+const { Dependor } = require('../../../Dependor')
 
-const buildOperationId = require('../../buildOperationId')
+const buildOperationId = require('../../../buildOperationId')
 
 const dep = new Dependor({
   buildOperationId,
@@ -39,7 +39,9 @@ function update(
 
     if (!resourcesToModify.includes(item.type)) {
       throw new Error(
-        `resource: ${item.type} is not included in [${resourcesToModify.join(
+        `resource: ${
+          item.type
+        } is not included in resourcesToModify: [${resourcesToModify.join(
           ', '
         )}]`
       )

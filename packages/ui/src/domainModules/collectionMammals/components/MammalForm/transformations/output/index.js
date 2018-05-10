@@ -1,3 +1,4 @@
+import transformCollectionItems from './transformCollectionItems'
 import transformIdentifiers from './transformIdentifiers'
 import transformFeatureObservations from './transformFeatureObservations'
 
@@ -12,6 +13,11 @@ export default function transformOutput({ specimen = {} }) {
   if (!transformedSpecimen.individual) {
     transformedSpecimen.individual = {}
   }
+
+  transformedSpecimen.individual.collectionItems = transformCollectionItems(
+    transformedSpecimen.individual.collectionItems,
+    newCatalogNumber
+  )
 
   transformedSpecimen.individual.identifiers = transformIdentifiers(
     transformedSpecimen.individual.identifiers,

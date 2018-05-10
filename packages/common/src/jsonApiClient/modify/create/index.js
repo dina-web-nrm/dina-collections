@@ -1,21 +1,18 @@
-const createLog = require('../../log')
-const { Dependor } = require('../../Dependor')
-const buildOperationId = require('../../buildOperationId')
+const createLog = require('../../../log')
+const { Dependor } = require('../../../Dependor')
+const buildOperationId = require('../../../buildOperationId')
+
+const { updateRelationships } = require('../updateRelationships')
 
 const dep = new Dependor({
   buildOperationId,
+  updateRelationships,
 })
 
 const defaultLog = createLog('common:jsonApiClient:create')
 
 function create(
-  {
-    item,
-    log = defaultLog,
-    openApiClient,
-    relationshipsToIncludeInBody,
-    resourcesToModify,
-  } = {}
+  { item, log = defaultLog, openApiClient, resourcesToModify } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!openApiClient) {
@@ -40,7 +37,9 @@ function create(
 
     if (!resourcesToModify.includes(item.type)) {
       throw new Error(
-        `resource: ${item.type} is not included in [${resourcesToModify.join(
+        `resource: ${
+          item.type
+        } is not included in resourcesToModify: [${resourcesToModify.join(
           ', '
         )}]`
       )
@@ -53,7 +52,9 @@ function create(
       resource: type,
     })
     const input = {
-      body: { data: item },
+      body: {
+        data: item,
+      },
     }
 
     log.debug(

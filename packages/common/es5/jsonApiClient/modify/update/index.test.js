@@ -6,9 +6,9 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createOpenApiMockClient = require('../../openApiClient/utilities/createOpenApiMockClient');
+var createOpenApiMockClient = require('../../../openApiClient/utilities/createOpenApiMockClient');
 
-var _require = require('./update'),
+var _require = require('./index'),
     update = _require.update,
     dep = _require.dep;
 
@@ -104,7 +104,7 @@ describe('jsonApiClient/modify/update', function () {
       },
       openApiClient: {},
       resourcesToModify: ['project']
-    })).rejects.toThrow('resource: user is not included in [project]');
+    })).rejects.toThrow('resource: user is not included in resourcesToModify: [project]');
   });
 
   describe('with dependor', function () {

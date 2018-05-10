@@ -1,5 +1,9 @@
 'use strict';
 
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
 var _promise = require('babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
@@ -14,16 +18,16 @@ var _require = require('../../Dependor'),
 var _require2 = require('./modifyRelationshipResources'),
     modifyRelationshipResources = _require2.modifyRelationshipResources;
 
-var _require3 = require('./update'),
-    update = _require3.update;
+var _require3 = require('./updateWithRelationships'),
+    updateWithRelationships = _require3.updateWithRelationships;
 
 var _require4 = require('./updateRelationships'),
     updateRelationships = _require4.updateRelationships;
 
 var dep = new Dependor({
   modifyRelationshipResources: modifyRelationshipResources,
-  update: update,
-  updateRelationships: updateRelationships
+  updateRelationships: updateRelationships,
+  updateWithRelationships: updateWithRelationships
 });
 
 var defaultLog = createLog('common:jsonApiClient:recursiveUpdate');
@@ -34,6 +38,7 @@ function recursiveUpdate() {
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
       openApiClient = _ref.openApiClient,
+      relationshipKeysToIncludeInBody = _ref.relationshipKeysToIncludeInBody,
       resourcesToModify = _ref.resourcesToModify,
       resourceType = _ref.resourceType;
 
@@ -46,8 +51,7 @@ function recursiveUpdate() {
       throw new Error('item is required');
     }
 
-    var attributes = item.attributes,
-        id = item.id,
+    var id = item.id,
         relationships = item.relationships,
         type = item.type;
 
@@ -76,27 +80,16 @@ function recursiveUpdate() {
       relationships: relationships,
       resourcesToModify: resourcesToModify
     }).then(function (updatedRelationships) {
-      var itemWithoutRelationships = {
-        attributes: attributes,
-        id: id,
-        type: type
-      };
+      var itemWithUpdatedRelationships = (0, _extends3.default)({}, item, {
+        relationships: updatedRelationships
+      });
 
-      return dep.update({
-        item: itemWithoutRelationships,
+      return dep.updateWithRelationships({
+        item: itemWithUpdatedRelationships,
         log: log.scope(),
         openApiClient: openApiClient,
+        relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
         resourcesToModify: resourcesToModify
-      }).then(function (response) {
-        var updatedItem = response.data;
-        return dep.updateRelationships({
-          item: updatedItem,
-          log: log.scope(),
-          openApiClient: openApiClient,
-          relationships: updatedRelationships
-        }).then(function () {
-          return updatedItem;
-        });
       });
     });
   });

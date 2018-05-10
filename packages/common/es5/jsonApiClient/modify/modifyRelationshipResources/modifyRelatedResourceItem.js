@@ -65,6 +65,7 @@ function modifyRelatedResourceItem(_ref2) {
       log.debug('Recursive updating relation: ' + relationKey + ', id:' + item.id, item);
       return recursiveUpdate({
         item: item,
+        log: log.scope(),
         openApiClient: openApiClient,
         resourcesToModify: resourcesToModify,
         resourceType: item.type
@@ -84,6 +85,7 @@ function modifyRelatedResourceItem(_ref2) {
 
     return recursiveCreate({
       item: item,
+      log: log.scope(),
       openApiClient: openApiClient,
       resourcesToModify: resourcesToModify,
       resourceType: item.type

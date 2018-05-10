@@ -121,7 +121,7 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
         }));
       });
       it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(1);
+        expect(testLog.debug.mock.calls.length).toEqual(2);
       });
       it('return updated relationships', function () {
         expect(result).toEqual({
@@ -192,7 +192,7 @@ describe('jsonApiClient/modify/modifyRelationshipResources', function () {
         }));
       });
       it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(1);
+        expect(testLog.debug.mock.calls.length).toEqual(2);
       });
       it('return updated relationships', function () {
         expect(result).toEqual({

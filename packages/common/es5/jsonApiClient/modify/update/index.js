@@ -10,12 +10,12 @@ var _promise2 = _interopRequireDefault(_promise);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createLog = require('../../log');
+var createLog = require('../../../log');
 
-var _require = require('../../Dependor'),
+var _require = require('../../../Dependor'),
     Dependor = _require.Dependor;
 
-var buildOperationId = require('../../buildOperationId');
+var buildOperationId = require('../../../buildOperationId');
 
 var dep = new Dependor({
   buildOperationId: buildOperationId
@@ -57,7 +57,7 @@ function update() {
     }
 
     if (!resourcesToModify.includes(item.type)) {
-      throw new Error('resource: ' + item.type + ' is not included in [' + resourcesToModify.join(', ') + ']');
+      throw new Error('resource: ' + item.type + ' is not included in resourcesToModify: [' + resourcesToModify.join(', ') + ']');
     }
 
     var id = item.id,

@@ -1,5 +1,5 @@
-const createOpenApiMockClient = require('../../openApiClient/utilities/createOpenApiMockClient')
-const { update, dep } = require('./update')
+const createOpenApiMockClient = require('../../../openApiClient/utilities/createOpenApiMockClient')
+const { update, dep } = require('./index')
 
 describe('jsonApiClient/modify/update', () => {
   it('exports function update', () => {
@@ -107,7 +107,9 @@ describe('jsonApiClient/modify/update', () => {
         openApiClient: {},
         resourcesToModify: ['project'],
       })
-    ).rejects.toThrow('resource: user is not included in [project]')
+    ).rejects.toThrow(
+      'resource: user is not included in resourcesToModify: [project]'
+    )
   })
 
   describe('with dependor', () => {

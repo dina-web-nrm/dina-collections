@@ -118,6 +118,19 @@ const config = {
         },
         {
           operationId: 'specimenCreate',
+          options: {
+            relationshipKeysToIncludeInBody: [
+              'causeOfDeathTypes',
+              'establishmentMeansTypes',
+              'featureTypes',
+              'identifierTypes',
+              'places',
+              'preparationTypes',
+              'taxa',
+              'typeSpecimenTypes',
+            ],
+            resourcesToModify: ['specimen', 'physicalObject'],
+          },
           type: 'create',
         },
         {

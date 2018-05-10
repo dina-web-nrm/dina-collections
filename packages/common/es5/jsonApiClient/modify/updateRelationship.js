@@ -14,8 +14,6 @@ function updateRelationship(_ref) {
       relationship = _ref.relationship,
       relationKey = _ref.relationKey,
       item = _ref.item;
-
-  console.log('updateRelationship - item', item);
   var id = item.id,
       type = item.type;
   var data = relationship.data;

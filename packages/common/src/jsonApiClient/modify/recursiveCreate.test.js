@@ -97,7 +97,7 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         type: 'user',
       }
       depSpies = dep.createSpies({
-        create: () => {
+        createWithRelationships: () => {
           return Promise.resolve({ data: createdItem })
         },
         modifyRelationshipResources: ({ relationships }) => {
@@ -115,9 +115,6 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
             },
           }
           return Promise.resolve(updatedRelationships)
-        },
-        updateRelationships: () => {
-          return Promise.resolve({})
         },
       })
       openApiClient = {}
@@ -167,12 +164,17 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         )
       })
 
-      it('call create', () => {
-        expect(depSpies.create.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.create.mock.calls[0][0])).toEqual(
+      it('call createWithRelationships', () => {
+        expect(depSpies.createWithRelationships.mock.calls.length).toEqual(1)
+        expect(
+          clone(depSpies.createWithRelationships.mock.calls[0][0])
+        ).toEqual(
           clone({
             item: {
               attributes: item.attributes,
+              relationships: {
+                projects: { data: [{ id: 1, type: 'project' }] },
+              },
               type: item.type,
             },
             log: testLog.scope(),
@@ -181,22 +183,11 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         )
       })
 
-      it('call updateRelationships', () => {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(
-          clone({
-            item: createdItem,
-            log: testLog.scope(),
-            openApiClient,
-            relationships: updatedRelationships,
-          })
-        )
-      })
       it('call log', () => {
-        expect(testLog.debug.mock.calls.length).toEqual(4)
+        expect(testLog.debug.mock.calls.length).toEqual(2)
       })
       it('return created item', () => {
-        expect(result).toEqual(createdItem)
+        expect(result).toEqual({ data: createdItem })
       })
     })
 
@@ -234,12 +225,15 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         )
       })
 
-      it('call create', () => {
-        expect(depSpies.create.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.create.mock.calls[0][0])).toEqual(
+      it('call createWithRelationships', () => {
+        expect(depSpies.createWithRelationships.mock.calls.length).toEqual(1)
+        expect(
+          clone(depSpies.createWithRelationships.mock.calls[0][0])
+        ).toEqual(
           clone({
             item: {
               attributes: item.attributes,
+              relationships: {},
               type: item.type,
             },
             log: testLog.scope(),
@@ -248,22 +242,11 @@ describe('jsonApiClient/modify/recursiveCreate', () => {
         )
       })
 
-      it('call updateRelationships', () => {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(
-          clone({
-            item: createdItem,
-            log: testLog.scope(),
-            openApiClient,
-            relationships: {},
-          })
-        )
-      })
       it('call log', () => {
-        expect(testLog.debug.mock.calls.length).toEqual(4)
+        expect(testLog.debug.mock.calls.length).toEqual(2)
       })
       it('return created item', () => {
-        expect(result).toEqual(createdItem)
+        expect(result).toEqual({ data: createdItem })
       })
     })
   })

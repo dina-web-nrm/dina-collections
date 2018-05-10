@@ -9,7 +9,13 @@ export const dep = new Dependor({
 const log = createLog('coreModules:crud:actionCreators:create')
 
 export default function createAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
+  {
+    operationId,
+    operationType,
+    options = {},
+    resource,
+    resourceActionTypes,
+  } = {}
 ) {
   const actionTypes = dep.getActionActionTypes({
     operationType,
@@ -39,6 +45,7 @@ export default function createAcFactory(
       }
 
       const callParams = {
+        ...options,
         body,
       }
 

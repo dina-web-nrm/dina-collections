@@ -120,11 +120,8 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
           };
           return _promise2.default.resolve(updatedRelationships);
         },
-        update: function update() {
+        updateWithRelationships: function updateWithRelationships() {
           return _promise2.default.resolve({ data: updatedItem });
-        },
-        updateRelationships: function updateRelationships() {
-          return _promise2.default.resolve({});
         }
       });
       openApiClient = {};
@@ -167,12 +164,15 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
         }));
       });
 
-      it('call update', function () {
-        expect(depSpies.update.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.update.mock.calls[0][0])).toEqual(clone({
+      it('call updateWithRelationships', function () {
+        expect(depSpies.updateWithRelationships.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.updateWithRelationships.mock.calls[0][0])).toEqual(clone({
           item: {
             attributes: item.attributes,
             id: item.id,
+            relationships: {
+              projects: { data: [{ id: 1, type: 'project' }] }
+            },
             type: item.type
           },
           log: testLog.scope(),
@@ -180,20 +180,11 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
         }));
       });
 
-      it('call updateRelationships', function () {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(clone({
-          item: updatedItem,
-          log: testLog.scope(),
-          openApiClient: openApiClient,
-          relationships: updatedRelationships
-        }));
-      });
       it('call log', function () {
         expect(testLog.debug.mock.calls.length).toEqual(1);
       });
       it('return created item', function () {
-        expect(result).toEqual(updatedItem);
+        expect(result).toEqual({ data: updatedItem });
       });
     });
 
@@ -226,12 +217,13 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
         }));
       });
 
-      it('call update', function () {
-        expect(depSpies.update.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.update.mock.calls[0][0])).toEqual(clone({
+      it('call updateWithRelationships', function () {
+        expect(depSpies.updateWithRelationships.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.updateWithRelationships.mock.calls[0][0])).toEqual(clone({
           item: {
             attributes: item.attributes,
             id: item.id,
+            relationships: {},
             type: item.type
           },
           log: testLog.scope(),
@@ -239,20 +231,11 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
         }));
       });
 
-      it('call updateRelationships', function () {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(clone({
-          item: updatedItem,
-          log: testLog.scope(),
-          openApiClient: openApiClient,
-          relationships: {}
-        }));
-      });
       it('call log', function () {
         expect(testLog.debug.mock.calls.length).toEqual(1);
       });
       it('return created item', function () {
-        expect(result).toEqual(updatedItem);
+        expect(result).toEqual({ data: updatedItem });
       });
     });
   });

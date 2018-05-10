@@ -116,11 +116,8 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
           }
           return Promise.resolve(updatedRelationships)
         },
-        update: () => {
+        updateWithRelationships: () => {
           return Promise.resolve({ data: updatedItem })
-        },
-        updateRelationships: () => {
-          return Promise.resolve({})
         },
       })
       openApiClient = {}
@@ -171,13 +168,18 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         )
       })
 
-      it('call update', () => {
-        expect(depSpies.update.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.update.mock.calls[0][0])).toEqual(
+      it('call updateWithRelationships', () => {
+        expect(depSpies.updateWithRelationships.mock.calls.length).toEqual(1)
+        expect(
+          clone(depSpies.updateWithRelationships.mock.calls[0][0])
+        ).toEqual(
           clone({
             item: {
               attributes: item.attributes,
               id: item.id,
+              relationships: {
+                projects: { data: [{ id: 1, type: 'project' }] },
+              },
               type: item.type,
             },
             log: testLog.scope(),
@@ -186,22 +188,11 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         )
       })
 
-      it('call updateRelationships', () => {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(
-          clone({
-            item: updatedItem,
-            log: testLog.scope(),
-            openApiClient,
-            relationships: updatedRelationships,
-          })
-        )
-      })
       it('call log', () => {
         expect(testLog.debug.mock.calls.length).toEqual(1)
       })
       it('return created item', () => {
-        expect(result).toEqual(updatedItem)
+        expect(result).toEqual({ data: updatedItem })
       })
     })
 
@@ -240,13 +231,16 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         )
       })
 
-      it('call update', () => {
-        expect(depSpies.update.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.update.mock.calls[0][0])).toEqual(
+      it('call updateWithRelationships', () => {
+        expect(depSpies.updateWithRelationships.mock.calls.length).toEqual(1)
+        expect(
+          clone(depSpies.updateWithRelationships.mock.calls[0][0])
+        ).toEqual(
           clone({
             item: {
               attributes: item.attributes,
               id: item.id,
+              relationships: {},
               type: item.type,
             },
             log: testLog.scope(),
@@ -255,22 +249,11 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         )
       })
 
-      it('call updateRelationships', () => {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1)
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(
-          clone({
-            item: updatedItem,
-            log: testLog.scope(),
-            openApiClient,
-            relationships: {},
-          })
-        )
-      })
       it('call log', () => {
         expect(testLog.debug.mock.calls.length).toEqual(1)
       })
       it('return created item', () => {
-        expect(result).toEqual(updatedItem)
+        expect(result).toEqual({ data: updatedItem })
       })
     })
   })

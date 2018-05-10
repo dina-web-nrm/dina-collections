@@ -11,7 +11,6 @@ function updateRelationship({
   relationKey,
   item,
 }) {
-  console.log('updateRelationship - item', item)
   const { id, type } = item
   const { data } = relationship
   const isArray = Array.isArray(data)
@@ -41,8 +40,6 @@ function updateRelationship({
       id,
     },
   })
-
-  // return Object.keys(relationships).map(relationKey => {})
 }
 
 module.exports = {

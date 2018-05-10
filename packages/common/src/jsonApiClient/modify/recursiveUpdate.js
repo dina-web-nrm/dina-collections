@@ -2,13 +2,13 @@ const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 
 const { modifyRelationshipResources } = require('./modifyRelationshipResources')
-const { update } = require('./update')
+const { updateWithRelationships } = require('./updateWithRelationships')
 const { updateRelationships } = require('./updateRelationships')
 
 const dep = new Dependor({
   modifyRelationshipResources,
-  update,
   updateRelationships,
+  updateWithRelationships,
 })
 
 const defaultLog = createLog('common:jsonApiClient:recursiveUpdate')
@@ -18,6 +18,7 @@ function recursiveUpdate(
     item,
     log = defaultLog,
     openApiClient,
+    relationshipKeysToIncludeInBody,
     resourcesToModify,
     resourceType,
   } = {}
@@ -31,7 +32,7 @@ function recursiveUpdate(
       throw new Error('item is required')
     }
 
-    const { attributes, id, relationships, type } = item
+    const { id, relationships, type } = item
 
     if (!type) {
       throw new Error('item type is required')
@@ -61,32 +62,18 @@ function recursiveUpdate(
         resourcesToModify,
       })
       .then(updatedRelationships => {
-        const itemWithoutRelationships = {
-          attributes,
-          id,
-          type,
+        const itemWithUpdatedRelationships = {
+          ...item,
+          relationships: updatedRelationships,
         }
 
-        return dep
-          .update({
-            item: itemWithoutRelationships,
-            log: log.scope(),
-            openApiClient,
-            resourcesToModify,
-          })
-          .then(response => {
-            const updatedItem = response.data
-            return dep
-              .updateRelationships({
-                item: updatedItem,
-                log: log.scope(),
-                openApiClient,
-                relationships: updatedRelationships,
-              })
-              .then(() => {
-                return updatedItem
-              })
-          })
+        return dep.updateWithRelationships({
+          item: itemWithUpdatedRelationships,
+          log: log.scope(),
+          openApiClient,
+          relationshipKeysToIncludeInBody,
+          resourcesToModify,
+        })
       })
   })
 }

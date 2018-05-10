@@ -101,7 +101,7 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         type: 'user'
       };
       depSpies = dep.createSpies({
-        create: function create() {
+        createWithRelationships: function createWithRelationships() {
           return _promise2.default.resolve({ data: createdItem });
         },
         modifyRelationshipResources: function modifyRelationshipResources(_ref) {
@@ -119,9 +119,6 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
             }
           };
           return _promise2.default.resolve(updatedRelationships);
-        },
-        updateRelationships: function updateRelationships() {
-          return _promise2.default.resolve({});
         }
       });
       openApiClient = {};
@@ -163,11 +160,14 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         }));
       });
 
-      it('call create', function () {
-        expect(depSpies.create.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.create.mock.calls[0][0])).toEqual(clone({
+      it('call createWithRelationships', function () {
+        expect(depSpies.createWithRelationships.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.createWithRelationships.mock.calls[0][0])).toEqual(clone({
           item: {
             attributes: item.attributes,
+            relationships: {
+              projects: { data: [{ id: 1, type: 'project' }] }
+            },
             type: item.type
           },
           log: testLog.scope(),
@@ -175,20 +175,11 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         }));
       });
 
-      it('call updateRelationships', function () {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(clone({
-          item: createdItem,
-          log: testLog.scope(),
-          openApiClient: openApiClient,
-          relationships: updatedRelationships
-        }));
-      });
       it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(4);
+        expect(testLog.debug.mock.calls.length).toEqual(2);
       });
       it('return created item', function () {
-        expect(result).toEqual(createdItem);
+        expect(result).toEqual({ data: createdItem });
       });
     });
 
@@ -220,11 +211,12 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         }));
       });
 
-      it('call create', function () {
-        expect(depSpies.create.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.create.mock.calls[0][0])).toEqual(clone({
+      it('call createWithRelationships', function () {
+        expect(depSpies.createWithRelationships.mock.calls.length).toEqual(1);
+        expect(clone(depSpies.createWithRelationships.mock.calls[0][0])).toEqual(clone({
           item: {
             attributes: item.attributes,
+            relationships: {},
             type: item.type
           },
           log: testLog.scope(),
@@ -232,20 +224,11 @@ describe('jsonApiClient/modify/recursiveCreate', function () {
         }));
       });
 
-      it('call updateRelationships', function () {
-        expect(depSpies.updateRelationships.mock.calls.length).toEqual(1);
-        expect(clone(depSpies.updateRelationships.mock.calls[0][0])).toEqual(clone({
-          item: createdItem,
-          log: testLog.scope(),
-          openApiClient: openApiClient,
-          relationships: {}
-        }));
-      });
       it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(4);
+        expect(testLog.debug.mock.calls.length).toEqual(2);
       });
       it('return created item', function () {
-        expect(result).toEqual(createdItem);
+        expect(result).toEqual({ data: createdItem });
       });
     });
   });

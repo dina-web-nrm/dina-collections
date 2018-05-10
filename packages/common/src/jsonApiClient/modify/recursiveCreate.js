@@ -2,13 +2,11 @@ const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 
 const { modifyRelationshipResources } = require('./modifyRelationshipResources')
-const { updateRelationships } = require('./updateRelationships')
-const { create } = require('./create')
+const { createWithRelationships } = require('./createWithRelationships')
 
 const dep = new Dependor({
-  create,
+  createWithRelationships,
   modifyRelationshipResources,
-  updateRelationships,
 })
 
 const defaultLog = createLog('common:jsonApiClient:recursiveCreate')
@@ -18,6 +16,7 @@ function recursiveCreate(
     item,
     log = defaultLog,
     openApiClient,
+    relationshipKeysToIncludeInBody,
     resourcesToModify,
     resourceType,
   } = {}
@@ -31,7 +30,7 @@ function recursiveCreate(
       throw new Error('item is required')
     }
 
-    const { attributes, id, relationships, type } = item
+    const { id, relationships, type } = item
 
     if (!type) {
       throw new Error('item type is required')
@@ -61,37 +60,21 @@ function recursiveCreate(
         resourcesToModify,
       })
       .then(updatedRelationships => {
-        const itemWithoutRelationships = {
-          attributes,
-          type,
+        const itemWithUpdatedRelationships = {
+          ...item,
+          relationships: updatedRelationships,
         }
         log.debug(
-          `modifyRelationshipResources done. itemWithoutRelationships:`,
-          itemWithoutRelationships
+          'relationship resources updated. Item with updated relationships:',
+          updatedRelationships
         )
-
-        return dep
-          .create({
-            item: itemWithoutRelationships,
-            log: log.scope(),
-            openApiClient,
-            resourcesToModify,
-          })
-          .then(response => {
-            const createdItem = response.data
-            log.debug(`create done. createdItem:`, createdItem)
-            return dep
-              .updateRelationships({
-                item: createdItem,
-                log: log.scope(),
-                openApiClient,
-                relationships: updatedRelationships,
-              })
-              .then(() => {
-                log.debug(`updateRelationships done. returning:`, createdItem)
-                return createdItem
-              })
-          })
+        return dep.createWithRelationships({
+          item: itemWithUpdatedRelationships,
+          log: log.scope(),
+          openApiClient,
+          relationshipKeysToIncludeInBody,
+          resourcesToModify,
+        })
       })
   })
 }

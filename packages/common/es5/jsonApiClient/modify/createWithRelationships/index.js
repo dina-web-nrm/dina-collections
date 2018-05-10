@@ -1,0 +1,84 @@
+'use strict';
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var createLog = require('../../../log');
+
+var _require = require('../../../Dependor'),
+    Dependor = _require.Dependor;
+
+var _require2 = require('../create'),
+    create = _require2.create;
+
+var _require3 = require('../updateRelationships'),
+    updateRelationships = _require3.updateRelationships;
+
+var _require4 = require('../../utilities/splitRelationships'),
+    splitRelationships = _require4.splitRelationships;
+
+var dep = new Dependor({
+  create: create,
+  splitRelationships: splitRelationships,
+  updateRelationships: updateRelationships
+});
+
+var defaultLog = createLog('common:jsonApiClient:createWithRelationships');
+
+function createWithRelationships() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      item = _ref.item,
+      _ref$log = _ref.log,
+      log = _ref$log === undefined ? defaultLog : _ref$log,
+      openApiClient = _ref.openApiClient,
+      relationshipKeysToIncludeInBody = _ref.relationshipKeysToIncludeInBody,
+      resourcesToModify = _ref.resourcesToModify;
+
+  return _promise2.default.resolve().then(function () {
+    if (!item) {
+      throw new Error('item required');
+    }
+
+    var relationships = item.relationships;
+
+    var _dep$splitRelationshi = dep.splitRelationships({
+      itemResourceType: item.type,
+      relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
+      relationships: relationships
+    }),
+        relationshipsToIncludeInRequest = _dep$splitRelationshi.relationshipsToIncludeInRequest,
+        relationshipsToAssociateSeparatly = _dep$splitRelationshi.relationshipsToAssociateSeparatly;
+
+    log.debug('create with relationships');
+    log.debug('relationships included in request: ', relationshipsToIncludeInRequest);
+    log.debug('relationships not included in request: ', relationshipsToAssociateSeparatly);
+    return dep.create({
+      item: (0, _extends3.default)({}, item, {
+        relationships: relationshipsToIncludeInRequest
+      }),
+      log: log.scope(),
+      openApiClient: openApiClient,
+      resourcesToModify: resourcesToModify
+    }).then(function (response) {
+      return dep.updateRelationships({
+        item: response.data,
+        openApiClient: openApiClient,
+        relationships: relationshipsToAssociateSeparatly
+      }).then(function () {
+        return response;
+      });
+    });
+  });
+}
+
+module.exports = {
+  createWithRelationships: createWithRelationships,
+  dep: dep
+};

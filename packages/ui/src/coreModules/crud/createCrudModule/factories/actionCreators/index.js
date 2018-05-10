@@ -40,7 +40,7 @@ export default function createActionCreators(
   }
 
   return operations.reduce((actionCreators, operation) => {
-    const { type: operationType, operationId } = operation
+    const { options, type: operationType, operationId } = operation
     if (!operationType) {
       return actionCreators
     }
@@ -49,10 +49,11 @@ export default function createActionCreators(
     if (!actionCreatorFactory) {
       throw new Error(`Unknown operation type: ${operationType}`)
     }
-
+    console.log('options', options)
     const actionCreator = actionCreatorFactory({
       operationId,
       operationType,
+      options,
       resource,
       resourceActionTypes,
     })
