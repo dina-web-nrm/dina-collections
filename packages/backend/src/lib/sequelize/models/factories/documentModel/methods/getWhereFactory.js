@@ -7,7 +7,12 @@ module.exports = function getWhereFactory({ Model }) {
     const options = {
       include,
       order: [['id', 'DESC']],
-      where,
+      where: where.deactivatedAt
+        ? where
+        : {
+            ...where,
+            deactivatedAt: null,
+          },
     }
 
     if (limit) {

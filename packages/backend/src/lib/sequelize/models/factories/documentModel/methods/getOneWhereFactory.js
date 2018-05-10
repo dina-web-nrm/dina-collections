@@ -6,7 +6,12 @@ module.exports = function getOneWhereFactory({ Model }) {
 
     return Model.findOne({
       include,
-      where,
+      where: where.deactivatedAt
+        ? where
+        : {
+            ...where,
+            deactivatedAt: null,
+          },
     })
   }
 }
