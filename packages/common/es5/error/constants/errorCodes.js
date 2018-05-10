@@ -19,6 +19,10 @@ var errorCodes = {
     description: 'Something is wrong with configuration. See details',
     title: 'Config error'
   },
+  FORBIDDEN_ERROR: {
+    description: 'See details',
+    title: 'Forbidden error'
+  },
   INTERNAL_SERVER_ERROR: {
     description: 'Error occurred on server',
     title: 'Internal server error'
