@@ -62,7 +62,6 @@ const mutations = [
 ]
 const expectedOutput = {
   individual: {
-    collectingInformation: [],
     collectionItems: [
       {
         physicalObject: {
@@ -71,7 +70,6 @@ const expectedOutput = {
         },
       },
     ],
-    deathInformation: [],
     determinations: [
       {
         determinedByAgentText: 'John, Doe',
@@ -86,7 +84,6 @@ const expectedOutput = {
         featureObservationText: 'female',
         featureType: {
           id: '22',
-          type: 'featureType',
         },
       },
     ],
@@ -96,7 +93,12 @@ const expectedOutput = {
         value: '444444',
       },
     ],
-    recordHistoryEvents: [],
+    recordHistoryEvents: [
+      {
+        description: 'Creation of catalog card',
+        system: 'catalogCard',
+      },
+    ],
     taxonInformation: {},
   },
 }
@@ -107,7 +109,7 @@ const scenario = {
   input: {
     featureTypes,
     physicalObjects,
-    specimen: { attributes: { individual } },
+    specimen: { individual },
     taxa,
   },
   mutations,

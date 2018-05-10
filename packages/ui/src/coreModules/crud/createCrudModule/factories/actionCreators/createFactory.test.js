@@ -125,6 +125,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
         expectedAction,
         expectedActionType,
         mockResponse,
+        resource: 'physicalObject',
       })
     })
 

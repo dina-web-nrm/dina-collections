@@ -17,7 +17,7 @@ export default function dispatchIncludedActions({
     const items = typeMap[type]
     const actionType = actionTypes[type] && actionTypes[type].setIncluded
     if (!actionType) {
-      console.warn(`included type: ${type} not defined in crud module`)
+      console.warn(`included type: ${type} not defined in crud module`) // eslint-disable-line no-console
     } else {
       dispatch({
         payload: items,

@@ -14,7 +14,7 @@ export default function createApiClientTest({
     expect(expectedApiClientCallParams).toBeTruthy()
     expect(mockResponse).toBeTruthy()
   })
-  const { operationId } = actionCreatorFactoryInput
+  const { resource, operationType } = actionCreatorFactoryInput
   let callSpy
   let actionCreator
   let store
@@ -29,10 +29,14 @@ export default function createApiClientTest({
     callSpy = jest.fn()
     apiClient.mock({
       responses: {
-        [operationId]: mockResponse,
+        [resource]: {
+          [operationType]: mockResponse,
+        },
       },
       spies: {
-        [operationId]: callSpy,
+        [resource]: {
+          [operationType]: callSpy,
+        },
       },
     })
     actionCreator = actionCreatorFactory(actionCreatorFactoryInput)
@@ -48,7 +52,7 @@ export default function createApiClientTest({
 
     return store.dispatch(testAction).then(() => {
       expect(callSpy.mock.calls.length).toEqual(1)
-      expect(callSpy.mock.calls[0][0]).toEqual(operationId)
+      expect(callSpy.mock.calls[0][0]).toEqual(resource)
       expect(callSpy.mock.calls[0][1]).toEqual(expectedApiClientCallParams)
     })
   })

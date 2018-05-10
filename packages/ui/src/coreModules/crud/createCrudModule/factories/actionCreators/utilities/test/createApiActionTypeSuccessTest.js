@@ -16,7 +16,7 @@ export default function createActionTypeRequestSuccess({
     expect(expectedActionType).toBeTruthy()
     expect(mockResponse).toBeTruthy()
   })
-  const { operationId } = actionCreatorFactoryInput
+  const { resource, operationType } = actionCreatorFactoryInput
   let actionCreator
   let store
   let apiClient
@@ -30,7 +30,9 @@ export default function createActionTypeRequestSuccess({
 
     apiClient.mock({
       responses: {
-        [operationId]: mockResponse,
+        [resource]: {
+          [operationType]: mockResponse,
+        },
       },
     })
   })

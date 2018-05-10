@@ -1,6 +1,7 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
 import getActionActionTypes from './utilities/getActionActionTypes'
+import dispatchIncludedActions from './dispatchIncludedActions'
 
 export const dep = new Dependor({
   getActionActionTypes,
@@ -48,8 +49,15 @@ export default function getManyAcFactory(
         meta: callParams,
         type: actionTypes.request,
       })
-      return apiClient.call(operationId, callParams).then(
+      return apiClient.getMany(resource, callParams).then(
         response => {
+          if (response.included) {
+            dispatchIncludedActions({
+              actionTypes,
+              dispatch,
+              included: response.included,
+            })
+          }
           dispatch({
             meta: callParams,
             payload: response.data,

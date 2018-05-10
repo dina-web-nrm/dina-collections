@@ -53,7 +53,7 @@ export default function updateAcFactory(
         meta: callParams,
         type: actionTypes.request,
       })
-      return apiClient.call(operationId, callParams).then(
+      return apiClient.update(resource, callParams).then(
         response => {
           dispatch({
             meta: callParams,

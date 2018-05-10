@@ -34,7 +34,7 @@ export default function getOneAcFactory(
 
   return function getOneAc({
     id,
-    include = [],
+    include,
     relationships = ['all'],
     throwError = false,
   }) {

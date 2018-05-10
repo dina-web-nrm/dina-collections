@@ -29,15 +29,18 @@ export default function createActionHandlers({
     throw new Error('resource is required')
   }
 
-  const includedActionHandles = {
-    [resourceActionTypes.setIncluded]: dep.updateStateWithManyFactory({
-      resource,
-      resourceActionTypes,
-    }),
+  let includedActionHandles = {}
+  if (resourceActionTypes && resourceActionTypes.setIncluded) {
+    includedActionHandles = {
+      [resourceActionTypes.setIncluded]: dep.updateStateWithManyFactory({
+        resource,
+        resourceActionTypes,
+      }),
+    }
   }
 
   if (!(operations && operations.length)) {
-    return {}
+    return includedActionHandles
   }
 
   const operationsActionHandlers = operations.reduce(

@@ -126,7 +126,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
                 name: 'Anton',
               },
               id: '123',
-              type: 'type',
+              type: 'physicalObject',
             },
           ],
         }
@@ -135,7 +135,13 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {},
           },
-          payload: [{ attributes: { name: 'Anton' }, id: '123', type: 'type' }],
+          payload: [
+            {
+              attributes: { name: 'Anton' },
+              id: '123',
+              type: 'physicalObject',
+            },
+          ],
           type: 'GET_MANY_PHYSICAL_OBJECT_SUCCESS',
         }
 
@@ -161,7 +167,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
                 name: 'Anton',
               },
               id: '123',
-              type: 'type',
+              type: 'physicalObject',
             },
           ],
         }
@@ -173,7 +179,13 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
               relationships: ['parent'],
             },
           },
-          payload: [{ attributes: { name: 'Anton' }, id: '123', type: 'type' }],
+          payload: [
+            {
+              attributes: { name: 'Anton' },
+              id: '123',
+              type: 'physicalObject',
+            },
+          ],
           type: 'GET_MANY_PHYSICAL_OBJECT_SUCCESS',
         }
 
