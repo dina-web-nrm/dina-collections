@@ -18,9 +18,32 @@ module.exports = {
       validateBody,
     },
     {
+      includeRelations: true,
+      type: 'getOne',
+    },
+    {
+      controller: 'getManySpecimens',
+      includeRelations: true,
+      queryParams: {
+        'filter[catalogNumber]': {
+          description: 'catalog number used to filter specimens',
+          example: '123456',
+          required: false,
+          schema: {
+            type: 'string',
+          },
+        },
+      },
+      type: 'getMany',
+    },
+    {
       controller: 'updateSpecimen',
       exampleRequests: { primary: updateRequestSuccess },
       type: 'update',
+    },
+    {
+      controller: 'delSpecimen',
+      type: 'del',
     },
     {
       relationKey: 'physicalObjects',
@@ -49,25 +72,6 @@ module.exports = {
     {
       relationKey: 'taxa',
       type: 'getRelationHasMany',
-    },
-    {
-      includeRelations: true,
-      type: 'getOne',
-    },
-    {
-      controller: 'getManySpecimens',
-      includeRelations: true,
-      queryParams: {
-        'filter[catalogNumber]': {
-          description: 'catalog number used to filter specimens',
-          example: '123456',
-          required: false,
-          schema: {
-            type: 'string',
-          },
-        },
-      },
-      type: 'getMany',
     },
   ],
   relations: resourceRelationsMap[resource],
