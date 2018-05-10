@@ -90,6 +90,41 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
       })
     })
 
+    describe('deactivate', () => {
+      const firstDoc = {
+        a: 1,
+      }
+      let firstId
+
+      beforeAll(() => {
+        return model.create({ doc: firstDoc }).then(res => {
+          firstId = res.id
+        })
+      })
+
+      it('Throw error when id not provided', () => {
+        return expect(model.update({})).rejects.toThrow()
+      })
+
+      it('Deactivates firstDoc', () => {
+        return model
+          .deactivate({
+            id: firstId,
+          })
+          .then(res => {
+            expect(res.deactivatedAt).toBeTruthy()
+          })
+      })
+
+      it('Throws error if already deactivated', () => {
+        return expect(
+          model.deactivate({
+            id: firstId,
+          })
+        ).rejects.toThrow()
+      })
+    })
+
     describe('getById', () => {
       const firstDoc = {
         a: 1,
