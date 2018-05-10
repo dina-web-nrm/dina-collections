@@ -11,8 +11,9 @@ import {
 } from '../keyObjectModule'
 
 const createEnsureAllItemsFetched = ({
-  resource,
+  allFetchedKey,
   relationships,
+  resource,
 }) => ComposedComponent => {
   /* eslint-disable no-console */
   if (!resource) {
@@ -36,10 +37,20 @@ const createEnsureAllItemsFetched = ({
   }
   /* eslint-enable no-console */
 
-  const mapStateToProps = state => ({
-    allItemsFetched: allItemsFetchedSelector(state, { resource }),
-    fetchingAllItems: fetchingAllItemsSelector(state, { resource }),
-  })
+  const mapStateToProps = state => {
+    const allItemsFetched = allItemsFetchedSelector(state, { resource })
+    if (allFetchedKey) {
+      return {
+        [allFetchedKey]: allItemsFetched || false,
+        allItemsFetched,
+        fetchingAllItems: fetchingAllItemsSelector(state, { resource }),
+      }
+    }
+    return {
+      allItemsFetched,
+      fetchingAllItems: fetchingAllItemsSelector(state, { resource }),
+    }
+  }
 
   const mapDispathToProps = {
     getMany: getManyActionCreator,
@@ -85,6 +96,7 @@ const createEnsureAllItemsFetched = ({
     }
     render() {
       const { allItemsFetched, fetchingAllItems } = this.props
+
       return (
         <ComposedComponent
           allItemsFetched={allItemsFetched}

@@ -3,26 +3,25 @@ import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
+
 import {
-  createGetStorageLocationById,
-  ensureAllStorageLocationsFetched,
-} from 'dataModules/storageService/higherOrderComponents'
+  createEnsureAllItemsFetched,
+  createGetItemById,
+} from 'coreModules/crud/higherOrderComponents'
+
 import { ParentChildTables } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
 const mapStateToProps = (state, ownProps) => {
-  const { storageLocation } = ownProps
-  const parent =
-    storageLocation &&
-    storageLocation.parent &&
-    storageServiceSelectors.getStorageLocation(state, storageLocation.parent.id)
-  const children =
-    storageLocation &&
-    storageLocation.children &&
-    storageLocation.children.map(({ id }) => {
-      return storageServiceSelectors.getStorageLocation(state, id)
-    })
+  const { item: storageLocation } = ownProps
+  const parentId = getParentId(storageLocation)
+
+  const parent = parentId && globalCrudSelectors.place.getOne(state, parentId)
+  const children = getChildrenIds(storageLocation).map(id => {
+    return globalCrudSelectors.storageLocation.getOne(state, id)
+  })
 
   return {
     children,
@@ -112,7 +111,10 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
-  createGetStorageLocationById(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'storageLocation',
+  }),
+  createGetItemById({ resource: 'storageLocation' }),
   connect(mapStateToProps)
 )(Inspect)

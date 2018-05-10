@@ -4,8 +4,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
 
-import { createStorageLocation as createStorageLocationAc } from 'dataModules/storageService/actionCreators'
-import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
@@ -14,7 +14,7 @@ import {
 import BaseForm, { FORM_NAME } from './Base'
 
 const mapDispatchToProps = {
-  createStorageLocation: createStorageLocationAc,
+  createStorageLocation: crudActionCreators.storageLocation.create,
   destroy,
 }
 
@@ -82,6 +82,9 @@ Create.propTypes = propTypes
 Create.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'storageLocation',
+  }),
   connect(null, mapDispatchToProps)
 )(Create)

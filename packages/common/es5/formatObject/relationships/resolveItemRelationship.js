@@ -2,14 +2,16 @@
 
 var objectPath = require('object-path');
 var walk = require('../utilities/walkObject');
-var createRelationshipIdMap = require('../utilities/createRelationshipIdMap');
+var cloneObject = require('../utilities/cloneObject');
+
 
 module.exports = function resolveItemRelationship(_ref) {
-  var getItemByTypeId = _ref.getItemByTypeId,
+  var coreToNested = _ref.coreToNested,
+      getItemByTypeId = _ref.getItemByTypeId,
       item = _ref.item,
-      relationships = _ref.relationships,
       path = _ref.path,
       relationshipKey = _ref.relationshipKey,
+      relationships = _ref.relationships,
       type = _ref.type;
 
   var segments = path.split('.*.');
@@ -18,19 +20,19 @@ module.exports = function resolveItemRelationship(_ref) {
     return item;
   }
 
-  var relationshipIdMap = createRelationshipIdMap({
-    relationship: relationship,
-    type: type
-  });
-
   walk({
     func: function func(pth) {
-      var relationshipIdInObject = objectPath.get(item, pth).id;
-      var relationshipIdInObjectExistInRelationships = relationshipIdInObject && relationshipIdMap[relationshipIdInObject];
+      var relationshipObject = objectPath.get(item, pth);
+      var id = relationshipObject && (relationshipObject.id || relationshipObject.lid);
 
-      var resolvedRelationshipItem = relationshipIdInObjectExistInRelationships && getItemByTypeId && getItemByTypeId(type, relationshipIdInObject);
+      var resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
+
       if (resolvedRelationshipItem) {
-        objectPath.set(item, pth, resolvedRelationshipItem);
+        objectPath.set(item, pth, coreToNested({
+          getItemByTypeId: getItemByTypeId,
+          item: resolvedRelationshipItem,
+          type: resolvedRelationshipItem.type
+        }));
       }
     },
     obj: item,

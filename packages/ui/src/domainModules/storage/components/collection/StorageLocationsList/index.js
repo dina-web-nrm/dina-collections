@@ -9,8 +9,10 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/crudBlocks/keyObjectModule'
-import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
-import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
+
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+
 import storageSelectors from '../../../globalSelectors'
 import { GROUP_2 } from '../../../constants'
 import ListItem from './ListItem'
@@ -20,7 +22,7 @@ const mapStateToProps = (state, { name }) => {
   const filterParentId = (filter && filter.parentId) || undefined
   const filterParent =
     filterParentId &&
-    storageServiceSelectors.getStorageLocation(state, filterParentId)
+    globalCrudSelectors.storageLocation.getOne(state, filterParentId)
 
   const storageLocations = storageSelectors.getStorageLocationsArrayByFilter(
     state,
@@ -257,6 +259,9 @@ StorageLocationsList.propTypes = propTypes
 StorageLocationsList.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'storageLocation',
+  }),
   connect(mapStateToProps, mapDispatchToProps)
 )(StorageLocationsList)

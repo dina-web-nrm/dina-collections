@@ -11,6 +11,7 @@ import actionCreators from '../actionCreators'
 
 const createGetItemById = ({
   idPath = 'itemId',
+  itemKey,
   relationships = ['all'],
   resource,
 }) => ComposedComponent => {
@@ -36,8 +37,18 @@ const createGetItemById = ({
   const mapStateToProps = (state, ownProps) => {
     const itemId = objectPath.get(ownProps, idPath)
 
+    const item = !(itemId && getOneSelector)
+      ? null
+      : getOneSelector(state, itemId)
+    if (itemKey) {
+      return {
+        item,
+        itemId,
+        [itemKey]: item,
+      }
+    }
     return {
-      item: !(itemId && getOneSelector) ? null : getOneSelector(state, itemId),
+      item,
       itemId,
     }
   }

@@ -19,15 +19,16 @@ module.exports = function getMany(_ref) {
 
   var relationSpecification = createRelationSpecification(queryParams);
 
+  var mappedQueryParams = createOperationSpecificQueryParams({
+    path: '.',
+    queryParams: queryParams,
+    relationSpecification: relationSpecification
+  });
   return openApiClient.call(buildOperationId({
     operationType: 'getMany',
     resource: resourceType
   }), {
-    queryParams: createOperationSpecificQueryParams({
-      path: '.',
-      queryParams: queryParams,
-      relationSpecification: relationSpecification
-    })
+    queryParams: mappedQueryParams
   }).then(function (response) {
     return fetchIncluded(response.data).then(function (included) {
       return (0, _extends3.default)({}, response, {

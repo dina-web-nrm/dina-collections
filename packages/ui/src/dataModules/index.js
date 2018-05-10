@@ -1,3 +1,3 @@
-export const moduleOrder = ['storageService', 'taxonService']
+export const moduleOrder = ['taxonService']
 
 export const type = 'module'

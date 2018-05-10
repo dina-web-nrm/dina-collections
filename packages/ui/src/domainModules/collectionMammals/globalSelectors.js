@@ -40,16 +40,51 @@ const getInitialSpecimen = (state, specimenId) => {
 //   return getPhysicalObjects(getStorageState(state))
 // }
 
+// let cachedFunc
+// const getResolveFunction = state => {
+//   if (!cachedFunc) {
+//     cachedFunc = (type, id) => {
+//       const getOneSelector = crudSelectors[type] && crudSelectors[type].getOne
+//       const getOneByLidSelector =
+//         crudSelectors[type] && crudSelectors[type].getOneByLid
+//       console.log('state', state)
+//       return (
+//         (getOneSelector && getOneSelector(state, id)) ||
+//         (getOneByLidSelector && getOneByLidSelector(state, id)) ||
+//         null
+//       )
+//     }
+//   }
+
+//   return cachedFunc
+// }
+
+const getState = state => {
+  return state
+}
+
 const getMammalFormInitialValues = createSelector(
-  [getInitialSpecimen],
-  specimen => {
+  [getInitialSpecimen, getState],
+  (specimen, state) => {
+    const getItemByTypeId = (type, id) => {
+      const getOneSelector = crudSelectors[type] && crudSelectors[type].getOne
+      const getOneByLidSelector =
+        crudSelectors[type] && crudSelectors[type].getOneByLid
+      return (
+        (getOneSelector && getOneSelector(state, id)) ||
+        (getOneByLidSelector && getOneByLidSelector(state, id)) ||
+        null
+      )
+    }
+
     const nestedFormatSpecimen = !specimen
       ? {}
       : coreToNested({
+          getItemByTypeId,
           item: specimen,
           type: 'specimen',
         })
-
+    console.log('nestedFormatSpecimen', nestedFormatSpecimen)
     return setDefaultValues({ specimen: nestedFormatSpecimen })
   }
 )

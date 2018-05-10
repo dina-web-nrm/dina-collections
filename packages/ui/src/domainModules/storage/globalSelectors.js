@@ -1,15 +1,15 @@
 import { createSelector } from 'reselect'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
 
 import { ALL, GROUP_1, GROUP_2, GROUP_3, GROUP_4 } from './constants'
 
 const {
-  getStorageLocations,
-  getStorageLocationsArray,
-} = storageServiceSelectors
+  getItemsObject: getStorageLocations,
+  getAll: getStorageLocationsArray,
+} = crudSelectors.place
 
 const getStorageLocationsSortedArray = createSelector(
   getStorageLocationsArray,

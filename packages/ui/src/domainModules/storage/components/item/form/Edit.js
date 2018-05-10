@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updateStorageLocation as updateStorageLocationAc } from 'dataModules/storageService/actionCreators'
+
+import crudActionCreators from 'coreModules/crud/actionCreators'
 import {
-  createGetStorageLocationById,
-  ensureAllStorageLocationsFetched,
-} from 'dataModules/storageService/higherOrderComponents'
+  createEnsureAllItemsFetched,
+  createGetItemById,
+} from 'coreModules/crud/higherOrderComponents'
+
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -14,7 +16,7 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  updateStorageLocation: updateStorageLocationAc,
+  updateStorageLocation: crudActionCreators.storageLocation.update,
 }
 
 const propTypes = {
@@ -82,7 +84,10 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
-  createGetStorageLocationById(),
+  createEnsureAllItemsFetched({
+    relationships: ['parent'],
+    resource: 'storageLocation',
+  }),
+  createGetItemById({ resource: 'storageLocation' }),
   connect(null, mapDispatchToProps)
 )(Edit)

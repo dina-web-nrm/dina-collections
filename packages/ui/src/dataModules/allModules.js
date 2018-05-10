@@ -1,6 +1,5 @@
-import * as storageService from './storageService'
 import * as taxonService from './taxonService'
 
-const modules = [storageService, taxonService]
+const modules = [taxonService]
 
 export default modules

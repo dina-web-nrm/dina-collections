@@ -18,7 +18,6 @@ const fetchIncluded = ({
     includeJobs,
     openApiClient,
   }).then(fetchedItems => {
-    console.log('fetchedItems', fetchedItems)
     return fetchIncluded({
       items: fetchedItems,
       openApiClient,

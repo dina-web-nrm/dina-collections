@@ -11,6 +11,11 @@ module.exports = function getMany({
   const { queryParams } = userOptions
   const relationSpecification = createRelationSpecification(queryParams)
 
+  const mappedQueryParams = createOperationSpecificQueryParams({
+    path: '.',
+    queryParams,
+    relationSpecification,
+  })
   return openApiClient
     .call(
       buildOperationId({
@@ -18,11 +23,7 @@ module.exports = function getMany({
         resource: resourceType,
       }),
       {
-        queryParams: createOperationSpecificQueryParams({
-          path: '.',
-          queryParams,
-          relationSpecification,
-        }),
+        queryParams: mappedQueryParams,
       }
     )
     .then(response => {

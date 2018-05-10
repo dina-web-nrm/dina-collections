@@ -24,8 +24,8 @@ module.exports = function getRelativeRelationSpecification(_ref) {
 
   return (0, _keys2.default)(relativeRelationSpecification).reduce(function (relationships, key) {
     if (relativeRelationSpecification[key] !== undefined) {
-      return [].concat((0, _toConsumableArray3.default)(relationships), [key]);
+      return [].concat((0, _toConsumableArray3.default)(relationships || []), [key]);
     }
     return relationships;
-  }, []);
+  }, undefined);
 };

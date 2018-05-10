@@ -1,13 +1,13 @@
 const objectPath = require('object-path')
 const walk = require('../utilities/walkObject')
-const createRelationshipIdMap = require('../utilities/createRelationshipIdMap')
 
 module.exports = function resolveItemRelationship({
+  coreToNested,
   getItemByTypeId,
   item,
-  relationships,
   path,
   relationshipKey,
+  relationships,
   type,
 }) {
   const segments = path.split('.*.')
@@ -16,24 +16,25 @@ module.exports = function resolveItemRelationship({
     return item
   }
 
-  const relationshipIdMap = createRelationshipIdMap({
-    relationship,
-    type,
-  })
-
   walk({
     func: pth => {
-      const relationshipIdInObject = objectPath.get(item, pth).id
-      const relationshipIdInObjectExistInRelationships =
-        relationshipIdInObject && relationshipIdMap[relationshipIdInObject]
+      const relationshipObject = objectPath.get(item, pth)
+      const id =
+        relationshipObject && (relationshipObject.id || relationshipObject.lid)
 
       const resolvedRelationshipItem =
-        relationshipIdInObjectExistInRelationships &&
-        getItemByTypeId &&
-        getItemByTypeId(type, relationshipIdInObject)
+        id && getItemByTypeId && getItemByTypeId(type, id)
+
       if (resolvedRelationshipItem) {
-        // potentially remove type
-        objectPath.set(item, pth, resolvedRelationshipItem)
+        objectPath.set(
+          item,
+          pth,
+          coreToNested({
+            getItemByTypeId,
+            item: resolvedRelationshipItem,
+            type: resolvedRelationshipItem.type,
+          })
+        )
       }
     },
     obj: item,

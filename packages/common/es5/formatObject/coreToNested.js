@@ -43,6 +43,7 @@ module.exports = function coreToNested(_ref) {
   var relationshipSpecification = getRelationshipSpecification(type);
   if (resolveRelationships && relationshipSpecification) {
     item = resolveItemRelationships({
+      coreToNested: coreToNested,
       getItemByTypeId: getItemByTypeId,
       item: item,
       relationships: relationships,

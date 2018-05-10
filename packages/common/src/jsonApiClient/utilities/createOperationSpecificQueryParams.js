@@ -16,7 +16,6 @@ module.exports = function createOperationSpecificQueryParams({
     relationSpecification,
   })
 
-  console.log('operationSpecificQueryParams', operationSpecificQueryParams)
   if (relativeRelationships) {
     return {
       ...operationSpecificQueryParams,

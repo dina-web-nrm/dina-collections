@@ -16,10 +16,10 @@ module.exports = function getRelativeRelationSpecification({
   return Object.keys(relativeRelationSpecification).reduce(
     (relationships, key) => {
       if (relativeRelationSpecification[key] !== undefined) {
-        return [...relationships, key]
+        return [...(relationships || []), key]
       }
       return relationships
     },
-    []
+    undefined
   )
 }

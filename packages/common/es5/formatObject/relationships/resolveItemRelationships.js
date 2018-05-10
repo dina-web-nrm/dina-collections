@@ -9,7 +9,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var resolveItemRelationship = require('./resolveItemRelationship');
 
 module.exports = function resolveItemRelationships(_ref) {
-  var getItemByTypeId = _ref.getItemByTypeId,
+  var coreToNested = _ref.coreToNested,
+      getItemByTypeId = _ref.getItemByTypeId,
       item = _ref.item,
       _ref$relationships = _ref.relationships,
       relationships = _ref$relationships === undefined ? {} : _ref$relationships,
@@ -23,6 +24,7 @@ module.exports = function resolveItemRelationships(_ref) {
 
 
     updatedItem = resolveItemRelationship({
+      coreToNested: coreToNested,
       getItemByTypeId: getItemByTypeId,
       item: item,
       path: path,

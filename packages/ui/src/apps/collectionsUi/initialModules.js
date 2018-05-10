@@ -13,7 +13,6 @@ import * as localStorage from 'coreModules/localStorage'
 import * as logger from 'coreModules/logger'
 import * as routing from 'coreModules/routing'
 
-import * as storageService from 'dataModules/storageService'
 import * as taxonService from 'dataModules/taxonService'
 
 const modules = [
@@ -32,7 +31,6 @@ const modules = [
   logger,
   routing,
 
-  storageService,
   taxonService,
 ]
 

@@ -22,7 +22,6 @@ module.exports = function createOperationSpecificQueryParams(_ref) {
     relationSpecification: relationSpecification
   });
 
-  console.log('operationSpecificQueryParams', operationSpecificQueryParams);
   if (relativeRelationships) {
     return (0, _extends3.default)({}, operationSpecificQueryParams, {
       relationships: relativeRelationships });

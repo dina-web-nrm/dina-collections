@@ -78,6 +78,26 @@ const config = {
         },
       ],
     },
+    physicalObject: {
+      operations: [
+        {
+          operationId: 'physicalObjectGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'physicalObjectCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'physicalObjectGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'physicalObjectUpdate',
+          type: 'update',
+        },
+      ],
+    },
     place: {
       operations: [
         {
@@ -98,6 +118,7 @@ const config = {
         },
       ],
     },
+
     preparationType: {
       operations: [
         {
@@ -140,6 +161,26 @@ const config = {
         {
           operationId: 'specimenGetMany',
           type: 'getMany',
+        },
+      ],
+    },
+    storageLocation: {
+      operations: [
+        {
+          operationId: 'storageLocationGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'storageLocationCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'storageLocationGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'storageLocationUpdate',
+          type: 'update',
         },
       ],
     },
