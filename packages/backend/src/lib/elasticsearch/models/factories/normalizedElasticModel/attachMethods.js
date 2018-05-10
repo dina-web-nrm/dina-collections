@@ -1,5 +1,6 @@
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
+const delFactory = require('./methods/delFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
 const syncFactory = require('./methods/syncFactory')
 const updateFactory = require('./methods/updateFactory')
@@ -12,6 +13,11 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
   })
 
   const sync = syncFactory({
+    elasticsearch,
+    Model,
+  })
+
+  const del = delFactory({
     elasticsearch,
     Model,
   })
@@ -29,6 +35,7 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
   const coreMethods = {
     bulkCreate,
     create,
+    del,
     getWhere,
     sync,
     update,

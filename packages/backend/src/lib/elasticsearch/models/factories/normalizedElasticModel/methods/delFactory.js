@@ -2,23 +2,18 @@ const config = require('../../../../../../apps/core/config')
 const createLog = require('../../../../../../utilities/log')
 
 const log = createLog(
-  'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/updateFactory'
+  'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/delFactory'
 )
 
-module.exports = function updateFactory({ Model, elasticsearch } = {}) {
+module.exports = function delFactory({ Model, elasticsearch } = {}) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
-  return function update({ doc, id }) {
-    if (!doc) {
-      return Promise.reject(new Error('doc not provided'))
-    }
-
-    log.debug(`Updating instance for model ${Model.name}`)
+  return function del({ id }) {
+    log.debug(`Deactivating instance for model ${Model.name}`)
 
     return elasticsearch
-      .update({
-        body: { doc },
+      .delete({
         id,
         index: Model.name,
         refresh: !config.env.isProduction,
@@ -26,9 +21,9 @@ module.exports = function updateFactory({ Model, elasticsearch } = {}) {
       })
       .then(res => {
         log.debug(
-          `Update instance for model ${Model.name}. id: ${res.id}, versionId: ${
-            res.versionId
-          }`
+          `Deleted instance for model ${Model.name}. id: ${
+            res.id
+          }, versionId: ${res.versionId}`
         )
       })
       .catch(err => {
