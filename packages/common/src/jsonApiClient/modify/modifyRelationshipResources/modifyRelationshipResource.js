@@ -27,15 +27,11 @@ function modifyRelationshipResource({
       throw new Error('provide relationship.data')
     }
     const isArray = Array.isArray(relationship.data)
-    log.debug(
-      `${relationKey} (${isArray ? 'array' : 'object'})`,
-      relationship.data
-    )
     if (isArray) {
       return dep
         .modifyRelatedResourceItems({
           items: relationship.data,
-          log: log.scope(),
+          log,
           openApiClient,
           relationKey,
           resourcesToModify,
@@ -49,7 +45,7 @@ function modifyRelationshipResource({
     return dep
       .modifyRelatedResourceItem({
         item: relationship.data,
-        log: log.scope(),
+        log,
         openApiClient,
         relationKey,
         resourcesToModify,

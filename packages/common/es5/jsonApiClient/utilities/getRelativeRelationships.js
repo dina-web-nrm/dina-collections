@@ -16,7 +16,8 @@ module.exports = function getRelativeRelationSpecification(_ref) {
   var relationSpecification = _ref.relationSpecification,
       path = _ref.path;
 
-  var relativeRelationSpecification = objectPath.get(relationSpecification, path);
+  var relativeRelationSpecification = path === '.' ? relationSpecification : objectPath.get(relationSpecification, path);
+
   if (!relativeRelationSpecification) {
     return undefined;
   }

@@ -1,3 +1,4 @@
+const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 const buildOperationId = require('../../buildOperationId')
 
@@ -5,11 +6,14 @@ const dep = new Dependor({
   buildOperationId,
 })
 
+const defaultLog = createLog('common:jsonApiClient:updateRelationship')
+
 function updateRelationship({
-  openApiClient,
-  relationship,
-  relationKey,
   item,
+  log = defaultLog,
+  openApiClient,
+  relationKey,
+  relationship,
 }) {
   const { id, type } = item
   const { data } = relationship
@@ -20,7 +24,12 @@ function updateRelationship({
       relationKey,
       resource: type,
     })
-
+    log.debug(
+      `updateRelationship (hasMany) for ${item.type} -> ${item.id} @ key: ${
+        relationKey
+      }. relationships: `,
+      data
+    )
     return openApiClient.call(operationId, {
       body: { data },
       pathParams: {
@@ -33,6 +42,13 @@ function updateRelationship({
     relationKey,
     resource: type,
   })
+
+  log.debug(
+    `updateRelationship (hasOne) for ${item.type} -> ${item.id} @ key: ${
+      relationKey
+    }. relationships: `,
+    data
+  )
 
   return openApiClient.call(operationId, {
     body: { data },

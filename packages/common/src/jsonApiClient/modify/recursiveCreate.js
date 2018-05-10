@@ -50,7 +50,7 @@ function recursiveCreate(
       )
     }
 
-    log.debug(`start recursiveCreate resource: ${resourceType}. item:`, item)
+    log.debug('recursiveCreate: start', item)
 
     return dep
       .modifyRelationshipResources({
@@ -66,15 +66,20 @@ function recursiveCreate(
         }
         log.debug(
           'relationship resources updated. Item with updated relationships:',
-          updatedRelationships
+          itemWithUpdatedRelationships
         )
-        return dep.createWithRelationships({
-          item: itemWithUpdatedRelationships,
-          log: log.scope(),
-          openApiClient,
-          relationshipKeysToIncludeInBody,
-          resourcesToModify,
-        })
+        return dep
+          .createWithRelationships({
+            item: itemWithUpdatedRelationships,
+            log: log.scope(),
+            openApiClient,
+            relationshipKeysToIncludeInBody,
+            resourcesToModify,
+          })
+          .then(result => {
+            log.debug('recursiveCreate: done', result)
+            return result
+          })
       })
   })
 }

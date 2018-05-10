@@ -2,6 +2,7 @@ import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
 import { apiActionTypes } from '../../../constants'
 import createActionType from './createActionType'
+import createSetIncludedActionType from './createSetIncludedActionType'
 
 export const dep = new Dependor({
   createActionType,
@@ -12,11 +13,15 @@ const log = createLog('coreModules:crud:actionTypes')
 export default function createActionTypes({ resourceSpecification = {} } = {}) {
   const { resource, operations } = resourceSpecification
 
-  if (!(operations && operations.length)) {
-    return {}
+  const includedActionTypes = {
+    setIncluded: createSetIncludedActionType({ resource }),
   }
 
-  return operations.reduce((actionTypes, operation) => {
+  if (!(operations && operations.length)) {
+    return includedActionTypes
+  }
+
+  const operationsActionTypes = operations.reduce((actionTypes, operation) => {
     const { type: operationType } = operation
     if (!operationType) {
       return actionTypes
@@ -46,4 +51,8 @@ export default function createActionTypes({ resourceSpecification = {} } = {}) {
       [operationType]: operationActionTypes,
     }
   }, {})
+  return {
+    ...includedActionTypes,
+    ...operationsActionTypes,
+  }
 }

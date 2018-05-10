@@ -33,7 +33,7 @@ function modifyRelatedResourceItems() {
   return _promise2.default.all(items.map(function (item) {
     return dep.modifyRelatedResourceItem({
       item: item,
-      log: log.scope(),
+      log: log,
       openApiClient: openApiClient,
       relationKey: relationKey,
       resourcesToModify: resourcesToModify

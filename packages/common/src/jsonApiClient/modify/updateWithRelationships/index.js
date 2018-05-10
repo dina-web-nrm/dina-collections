@@ -36,7 +36,10 @@ function updateWithRelationships(
       relationshipKeysToIncludeInBody,
       relationships,
     })
-
+    log.debug('updateWithRelationships', {
+      relationshipsToAssociateSeparatly,
+      relationshipsToIncludeInRequest,
+    })
     return dep
       .update({
         item: {
@@ -51,6 +54,7 @@ function updateWithRelationships(
         return dep
           .updateRelationships({
             item: response.data,
+            log: log.scope(),
             openApiClient,
             relationships: relationshipsToAssociateSeparatly,
           })
@@ -62,6 +66,6 @@ function updateWithRelationships(
 }
 
 module.exports = {
-  updateWithRelationships,
   dep,
+  updateWithRelationships,
 }

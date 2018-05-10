@@ -21,7 +21,7 @@ function modifyRelationshipResources(
     }
     const updatedRelationships = { ...relationships }
 
-    log.debug('Modify relationship resources:')
+    log.debug('modifyRelationshipResources: start')
     const promises = Object.keys(relationships).map(relationKey => {
       const relationship = relationships[relationKey]
       return dep
@@ -37,7 +37,7 @@ function modifyRelationshipResources(
         })
     })
     return Promise.all(promises).then(() => {
-      log.debug('Modify relationship resources done')
+      log.debug('modifyRelationshipResources: done')
       return updatedRelationships
     })
   })

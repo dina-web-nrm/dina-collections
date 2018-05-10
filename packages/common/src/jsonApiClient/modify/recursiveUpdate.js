@@ -52,7 +52,7 @@ function recursiveUpdate(
       )
     }
 
-    log.debug(`recursiveUpdate resource: ${resourceType}. item:`, item)
+    log.debug(`recursiveUpdate: start. id: ${item.id}`, item)
 
     return dep
       .modifyRelationshipResources({
@@ -66,14 +66,22 @@ function recursiveUpdate(
           ...item,
           relationships: updatedRelationships,
         }
-
-        return dep.updateWithRelationships({
-          item: itemWithUpdatedRelationships,
-          log: log.scope(),
-          openApiClient,
-          relationshipKeysToIncludeInBody,
-          resourcesToModify,
-        })
+        log.debug(
+          'relationship resources updated. Item with updated relationships:',
+          itemWithUpdatedRelationships
+        )
+        return dep
+          .updateWithRelationships({
+            item: itemWithUpdatedRelationships,
+            log: log.scope(),
+            openApiClient,
+            relationshipKeysToIncludeInBody,
+            resourcesToModify,
+          })
+          .then(result => {
+            log.debug('recursiveUpdate: done', result)
+            return result
+          })
       })
   })
 }

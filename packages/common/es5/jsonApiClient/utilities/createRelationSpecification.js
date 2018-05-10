@@ -17,12 +17,10 @@ module.exports = function createRelationSpecification(queryParams) {
 
   include.forEach(function (includePath) {
     var node = objectPath.get(specification, includePath);
-    if (node === undefined) {
+    if (node === undefined && !relationships.includes('all')) {
       throw new Error('Cant include resource not specificed in relationships');
     }
-    if (node === false) {
-      specification = immutable.set(specification, includePath, true);
-    }
+    specification = immutable.set(specification, includePath, true);
   });
   return specification;
 };

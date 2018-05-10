@@ -15,16 +15,18 @@ module.exports = function createOperationSpecificQueryParams(_ref) {
 
   var operationSpecificQueryParams = (0, _extends3.default)({}, queryParams);
   delete operationSpecificQueryParams.relationships;
-  delete operationSpecificQueryParams.includes;
+  delete operationSpecificQueryParams.include;
 
   var relativeRelationships = getRelativeRelationships({
     path: path,
     relationSpecification: relationSpecification
   });
 
+  console.log('operationSpecificQueryParams', operationSpecificQueryParams);
   if (relativeRelationships) {
     return (0, _extends3.default)({}, operationSpecificQueryParams, {
       relationships: relativeRelationships });
   }
+
   return operationSpecificQueryParams;
 };

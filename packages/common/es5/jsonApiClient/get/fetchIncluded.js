@@ -30,6 +30,7 @@ var fetchIncluded = function fetchIncluded(_ref) {
     includeJobs: includeJobs,
     openApiClient: openApiClient
   }).then(function (fetchedItems) {
+    console.log('fetchedItems', fetchedItems);
     return fetchIncluded({
       items: fetchedItems,
       openApiClient: openApiClient,

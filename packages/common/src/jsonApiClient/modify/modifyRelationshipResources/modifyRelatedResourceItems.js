@@ -21,7 +21,7 @@ function modifyRelatedResourceItems(
     items.map(item => {
       return dep.modifyRelatedResourceItem({
         item,
-        log: log.scope(),
+        log,
         openApiClient,
         relationKey,
         resourcesToModify,

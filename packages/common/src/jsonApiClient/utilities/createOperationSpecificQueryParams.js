@@ -9,18 +9,20 @@ module.exports = function createOperationSpecificQueryParams({
     ...queryParams,
   }
   delete operationSpecificQueryParams.relationships
-  delete operationSpecificQueryParams.includes
+  delete operationSpecificQueryParams.include
 
   const relativeRelationships = getRelativeRelationships({
     path,
     relationSpecification,
   })
 
+  console.log('operationSpecificQueryParams', operationSpecificQueryParams)
   if (relativeRelationships) {
     return {
       ...operationSpecificQueryParams,
       relationships: relativeRelationships, // TODO check for false
     }
   }
+
   return operationSpecificQueryParams
 }

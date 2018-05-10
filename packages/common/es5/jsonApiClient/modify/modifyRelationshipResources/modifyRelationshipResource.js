@@ -41,11 +41,10 @@ function modifyRelationshipResource(_ref) {
       throw new Error('provide relationship.data');
     }
     var isArray = Array.isArray(relationship.data);
-    log.debug(relationKey + ' (' + (isArray ? 'array' : 'object') + ')', relationship.data);
     if (isArray) {
       return dep.modifyRelatedResourceItems({
         items: relationship.data,
-        log: log.scope(),
+        log: log,
         openApiClient: openApiClient,
         relationKey: relationKey,
         resourcesToModify: resourcesToModify
@@ -57,7 +56,7 @@ function modifyRelationshipResource(_ref) {
     }
     return dep.modifyRelatedResourceItem({
       item: relationship.data,
-      log: log.scope(),
+      log: log,
       openApiClient: openApiClient,
       relationKey: relationKey,
       resourcesToModify: resourcesToModify

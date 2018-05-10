@@ -4,10 +4,11 @@ module.exports = function getRelativeRelationSpecification({
   relationSpecification,
   path,
 }) {
-  const relativeRelationSpecification = objectPath.get(
-    relationSpecification,
-    path
-  )
+  const relativeRelationSpecification =
+    path === '.'
+      ? relationSpecification
+      : objectPath.get(relationSpecification, path)
+
   if (!relativeRelationSpecification) {
     return undefined
   }

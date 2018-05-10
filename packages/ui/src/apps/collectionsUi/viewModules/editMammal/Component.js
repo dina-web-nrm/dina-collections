@@ -36,7 +36,11 @@ const propTypes = {
 
 class EditMammal extends Component {
   componentWillMount() {
-    this.props.getSpecimen({ id: this.props.match.params.specimenId })
+    this.props.getSpecimen({
+      id: this.props.match.params.specimenId,
+      include: ['featureTypes', 'physicalObjects', 'places', 'taxa'],
+      relationships: ['all'],
+    })
   }
 
   render() {

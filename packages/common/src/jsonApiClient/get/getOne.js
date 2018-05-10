@@ -1,11 +1,26 @@
+const createLog = require('../../log')
 const buildOperationId = require('../../buildOperationId')
 const createOperationSpecificQueryParams = require('../utilities/createOperationSpecificQueryParams')
 const createRelationSpecification = require('../utilities/createRelationSpecification')
 const fetchIncluded = require('./fetchIncluded')
 
-module.exports = function getOne({ openApiClient, resourceType, userOptions }) {
+const defaultLog = createLog('common:jsonApiClient:getOne')
+module.exports = function getOne({
+  openApiClient,
+  resourceType,
+  userOptions,
+  log = defaultLog,
+}) {
   const { queryParams, pathParams } = userOptions
+
+  log.debug(`getOne: start. id: ${pathParams.id} queryParams:`, queryParams)
+
   const relationSpecification = createRelationSpecification(queryParams)
+  const mappedQueryParams = createOperationSpecificQueryParams({
+    path: '.',
+    queryParams,
+    relationSpecification,
+  })
 
   return openApiClient
     .call(
@@ -15,11 +30,7 @@ module.exports = function getOne({ openApiClient, resourceType, userOptions }) {
       }),
       {
         pathParams,
-        queryParams: createOperationSpecificQueryParams({
-          path: '.',
-          queryParams,
-          relationSpecification,
-        }),
+        queryParams: mappedQueryParams,
       }
     )
     .then(response => {
@@ -30,7 +41,10 @@ module.exports = function getOne({ openApiClient, resourceType, userOptions }) {
       }).then(included => {
         return {
           ...response,
-          included,
+          included: included.map(item => {
+            delete item.path // eslint-disable-line
+            return item
+          }),
         }
       })
     })

@@ -180,9 +180,6 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
         }));
       });
 
-      it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(1);
-      });
       it('return created item', function () {
         expect(result).toEqual({ data: updatedItem });
       });
@@ -231,9 +228,6 @@ describe('jsonApiClient/modify/recursiveUpdate', function () {
         }));
       });
 
-      it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(1);
-      });
       it('return created item', function () {
         expect(result).toEqual({ data: updatedItem });
       });

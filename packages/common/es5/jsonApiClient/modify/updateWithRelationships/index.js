@@ -56,6 +56,10 @@ function updateWithRelationships() {
         relationshipsToIncludeInRequest = _dep$splitRelationshi.relationshipsToIncludeInRequest,
         relationshipsToAssociateSeparatly = _dep$splitRelationshi.relationshipsToAssociateSeparatly;
 
+    log.debug('updateWithRelationships', {
+      relationshipsToAssociateSeparatly: relationshipsToAssociateSeparatly,
+      relationshipsToIncludeInRequest: relationshipsToIncludeInRequest
+    });
     return dep.update({
       item: (0, _extends3.default)({}, item, {
         relationships: relationshipsToIncludeInRequest
@@ -66,6 +70,7 @@ function updateWithRelationships() {
     }).then(function (response) {
       return dep.updateRelationships({
         item: response.data,
+        log: log.scope(),
         openApiClient: openApiClient,
         relationships: relationshipsToAssociateSeparatly
       }).then(function () {
@@ -76,6 +81,6 @@ function updateWithRelationships() {
 }
 
 module.exports = {
-  updateWithRelationships: updateWithRelationships,
-  dep: dep
+  dep: dep,
+  updateWithRelationships: updateWithRelationships
 };

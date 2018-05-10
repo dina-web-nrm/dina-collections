@@ -56,9 +56,10 @@ function createWithRelationships() {
         relationshipsToIncludeInRequest = _dep$splitRelationshi.relationshipsToIncludeInRequest,
         relationshipsToAssociateSeparatly = _dep$splitRelationshi.relationshipsToAssociateSeparatly;
 
-    log.debug('create with relationships');
-    log.debug('relationships included in request: ', relationshipsToIncludeInRequest);
-    log.debug('relationships not included in request: ', relationshipsToAssociateSeparatly);
+    log.debug('createWithRelationships', {
+      relationshipsToAssociateSeparatly: relationshipsToAssociateSeparatly,
+      relationshipsToIncludeInRequest: relationshipsToIncludeInRequest
+    });
     return dep.create({
       item: (0, _extends3.default)({}, item, {
         relationships: relationshipsToIncludeInRequest
@@ -69,6 +70,7 @@ function createWithRelationships() {
     }).then(function (response) {
       return dep.updateRelationships({
         item: response.data,
+        log: log.scope(),
         openApiClient: openApiClient,
         relationships: relationshipsToAssociateSeparatly
       }).then(function () {

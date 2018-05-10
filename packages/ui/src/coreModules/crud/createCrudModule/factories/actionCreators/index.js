@@ -27,7 +27,7 @@ export const dep = new Dependor({
 const log = createLog('coreModules:crud:actionCreators')
 
 export default function createActionCreators(
-  { resourceActionTypes, resourceSpecification = {} } = {}
+  { actionTypes, resourceActionTypes, resourceSpecification = {} } = {}
 ) {
   const { resource, operations } = resourceSpecification
 
@@ -49,8 +49,9 @@ export default function createActionCreators(
     if (!actionCreatorFactory) {
       throw new Error(`Unknown operation type: ${operationType}`)
     }
-    console.log('options', options)
+
     const actionCreator = actionCreatorFactory({
+      actionTypes,
       operationId,
       operationType,
       options,

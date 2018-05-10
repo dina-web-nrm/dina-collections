@@ -45,7 +45,7 @@ function modifyRelationshipResources() {
     }
     var updatedRelationships = (0, _extends3.default)({}, relationships);
 
-    log.debug('Modify relationship resources:');
+    log.debug('modifyRelationshipResources: start');
     var promises = (0, _keys2.default)(relationships).map(function (relationKey) {
       var relationship = relationships[relationKey];
       return dep.modifyRelationshipResource({
@@ -59,7 +59,7 @@ function modifyRelationshipResources() {
       });
     });
     return _promise2.default.all(promises).then(function () {
-      log.debug('Modify relationship resources done');
+      log.debug('modifyRelationshipResources: done');
       return updatedRelationships;
     });
   });

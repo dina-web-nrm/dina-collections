@@ -1,4 +1,4 @@
-const createOperationId = require('../utilities/createOperationId')
+const buildOperationId = require('../../buildOperationId')
 const createOperationSpecificQueryParams = require('../utilities/createOperationSpecificQueryParams')
 
 module.exports = function runIncludeJobs({
@@ -9,19 +9,25 @@ module.exports = function runIncludeJobs({
   const promises = includeJobs.map(includeJob => {
     const { path, ids, type } = includeJob
 
+    const mappedQueryParams = createOperationSpecificQueryParams({
+      path,
+      queryParams: {
+        filter: {
+          ids,
+        },
+      },
+      relationSpecification,
+    })
     return openApiClient
-      .call({
-        operationId: createOperationId('getMany', type),
-        queryParams: createOperationSpecificQueryParams({
-          path,
-          queryParams: {
-            filter: {
-              ids,
-            },
-          },
-          relationSpecification,
+      .call(
+        buildOperationId({
+          operationType: 'getMany',
+          resource: type,
         }),
-      })
+        {
+          queryParams: mappedQueryParams,
+        }
+      )
       .then(response => {
         const items = response.data
         return items.map(item => {
@@ -33,7 +39,9 @@ module.exports = function runIncludeJobs({
       })
   })
 
-  return Promise.all(promises).then(includes => {
-    return [...includes]
+  return Promise.all(promises).then(resolvedIncludeJobs => {
+    return resolvedIncludeJobs.reduce((includeArray, resolvedItems) => {
+      return [...includeArray, ...resolvedItems]
+    }, [])
   })
 }

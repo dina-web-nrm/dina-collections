@@ -218,6 +218,17 @@
           },
           {
             "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -552,6 +563,17 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -894,6 +916,17 @@
           },
           {
             "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -1228,6 +1261,17 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -1570,6 +1614,17 @@
           },
           {
             "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -1904,6 +1959,17 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {
@@ -2286,6 +2352,17 @@
                   "parent",
                   "children"
                 ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
                 "type": "string"
               },
               "type": "array"
@@ -2802,6 +2879,17 @@
                   "places",
                   "taxa"
                 ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
                 "type": "string"
               },
               "type": "array"
@@ -3843,6 +3931,17 @@
           },
           {
             "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -4614,6 +4713,17 @@
           },
           {
             "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -5299,6 +5409,17 @@
                   "parent",
                   "children"
                 ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
                 "type": "string"
               },
               "type": "array"
@@ -6084,6 +6205,17 @@
                   "synonymToTaxon",
                   "vernacularToTaxon"
                 ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
                 "type": "string"
               },
               "type": "array"

@@ -72,7 +72,7 @@ function recursiveUpdate() {
       throw new Error('wrong item type: ' + type + ' for resourceType: ' + resourceType);
     }
 
-    log.debug('recursiveUpdate resource: ' + resourceType + '. item:', item);
+    log.debug('recursiveUpdate: start. id: ' + item.id, item);
 
     return dep.modifyRelationshipResources({
       log: log.scope(),
@@ -83,13 +83,16 @@ function recursiveUpdate() {
       var itemWithUpdatedRelationships = (0, _extends3.default)({}, item, {
         relationships: updatedRelationships
       });
-
+      log.debug('relationship resources updated. Item with updated relationships:', itemWithUpdatedRelationships);
       return dep.updateWithRelationships({
         item: itemWithUpdatedRelationships,
         log: log.scope(),
         openApiClient: openApiClient,
         relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
         resourcesToModify: resourcesToModify
+      }).then(function (result) {
+        log.debug('recursiveUpdate: done', result);
+        return result;
       });
     });
   });

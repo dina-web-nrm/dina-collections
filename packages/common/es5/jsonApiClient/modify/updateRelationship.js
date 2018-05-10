@@ -1,5 +1,7 @@
 'use strict';
 
+var createLog = require('../../log');
+
 var _require = require('../../Dependor'),
     Dependor = _require.Dependor;
 
@@ -9,11 +11,15 @@ var dep = new Dependor({
   buildOperationId: buildOperationId
 });
 
+var defaultLog = createLog('common:jsonApiClient:updateRelationship');
+
 function updateRelationship(_ref) {
-  var openApiClient = _ref.openApiClient,
-      relationship = _ref.relationship,
+  var item = _ref.item,
+      _ref$log = _ref.log,
+      log = _ref$log === undefined ? defaultLog : _ref$log,
+      openApiClient = _ref.openApiClient,
       relationKey = _ref.relationKey,
-      item = _ref.item;
+      relationship = _ref.relationship;
   var id = item.id,
       type = item.type;
   var data = relationship.data;
@@ -25,7 +31,7 @@ function updateRelationship(_ref) {
       relationKey: relationKey,
       resource: type
     });
-
+    log.debug('updateRelationship (hasMany) for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
     return openApiClient.call(_operationId, {
       body: { data: data },
       pathParams: {
@@ -38,6 +44,8 @@ function updateRelationship(_ref) {
     relationKey: relationKey,
     resource: type
   });
+
+  log.debug('updateRelationship (hasOne) for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
 
   return openApiClient.call(operationId, {
     body: { data: data },

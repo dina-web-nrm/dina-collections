@@ -1,3 +1,4 @@
+const createLog = require('../../log')
 const { Dependor } = require('../../Dependor')
 const { updateRelationship } = require('./updateRelationship')
 
@@ -5,17 +6,29 @@ const dep = new Dependor({
   updateRelationship,
 })
 
-function updateRelationships({ openApiClient, relationships, item }) {
+const defaultLog = createLog('common:jsonApiClient:updateRelationships')
+
+function updateRelationships({
+  openApiClient,
+  relationships,
+  item,
+  log = defaultLog,
+}) {
+  log.debug('updateRelationships: start', relationships)
   const promises = Object.keys(relationships).map(relationKey => {
     const relationship = relationships[relationKey]
     return updateRelationship({
       item,
+      log: log.scope(),
       openApiClient,
       relationKey,
       relationship,
     })
   })
-  return Promise.all(promises)
+  return Promise.all(promises).then(result => {
+    log.debug('updateRelationships: done')
+    return result
+  })
 
   // return Object.keys(relationships).map(relationKey => {})
 }

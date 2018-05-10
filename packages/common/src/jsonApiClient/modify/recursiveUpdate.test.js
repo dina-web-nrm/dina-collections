@@ -188,9 +188,6 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         )
       })
 
-      it('call log', () => {
-        expect(testLog.debug.mock.calls.length).toEqual(1)
-      })
       it('return created item', () => {
         expect(result).toEqual({ data: updatedItem })
       })
@@ -249,9 +246,6 @@ describe('jsonApiClient/modify/recursiveUpdate', () => {
         )
       })
 
-      it('call log', () => {
-        expect(testLog.debug.mock.calls.length).toEqual(1)
-      })
       it('return created item', () => {
         expect(result).toEqual({ data: updatedItem })
       })

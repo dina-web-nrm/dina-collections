@@ -1,6 +1,7 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
 import getActionActionTypes from './utilities/getActionActionTypes'
+import dispatchIncludedActions from './dispatchIncludedActions'
 
 export const dep = new Dependor({
   getActionActionTypes,
@@ -9,9 +10,15 @@ export const dep = new Dependor({
 const log = createLog('coreModules:crud:actionCreators:getOne')
 
 export default function getOneAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
+  {
+    actionTypes,
+    operationId,
+    operationType,
+    resource,
+    resourceActionTypes,
+  } = {}
 ) {
-  const actionTypes = dep.getActionActionTypes({
+  const operationActionTypes = dep.getActionActionTypes({
     operationType,
     resource,
     resourceActionTypes,
@@ -27,6 +34,7 @@ export default function getOneAcFactory(
 
   return function getOneAc({
     id,
+    include = [],
     relationships = ['all'],
     throwError = false,
   }) {
@@ -42,11 +50,22 @@ export default function getOneAcFactory(
       }
 
       const pathParams = { id }
-      const queryParams = relationships
-        ? {
-            relationships,
-          }
-        : {}
+      let queryParams = {}
+
+      if (relationships) {
+        queryParams = {
+          ...queryParams,
+          relationships,
+        }
+      }
+
+      if (include) {
+        queryParams = {
+          ...queryParams,
+          include,
+        }
+      }
+
       const callParams = {
         pathParams,
         queryParams,
@@ -54,14 +73,22 @@ export default function getOneAcFactory(
 
       dispatch({
         meta: callParams,
-        type: actionTypes.request,
+        type: operationActionTypes.request,
       })
-      return apiClient.call(operationId, callParams).then(
+
+      return apiClient.getOne(resource, callParams).then(
         response => {
+          if (response.included) {
+            dispatchIncludedActions({
+              actionTypes,
+              dispatch,
+              included: response.included,
+            })
+          }
           dispatch({
             meta: callParams,
             payload: response.data,
-            type: actionTypes.success,
+            type: operationActionTypes.success,
           })
           return response.data
         },
@@ -70,7 +97,7 @@ export default function getOneAcFactory(
             error: true,
             meta: callParams,
             payload: error,
-            type: actionTypes.fail,
+            type: operationActionTypes.fail,
           })
 
           if (throwError) {

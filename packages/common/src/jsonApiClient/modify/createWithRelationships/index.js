@@ -36,15 +36,10 @@ function createWithRelationships(
       relationshipKeysToIncludeInBody,
       relationships,
     })
-    log.debug('create with relationships')
-    log.debug(
-      'relationships included in request: ',
-      relationshipsToIncludeInRequest
-    )
-    log.debug(
-      'relationships not included in request: ',
-      relationshipsToAssociateSeparatly
-    )
+    log.debug('createWithRelationships', {
+      relationshipsToAssociateSeparatly,
+      relationshipsToIncludeInRequest,
+    })
     return dep
       .create({
         item: {
@@ -59,6 +54,7 @@ function createWithRelationships(
         return dep
           .updateRelationships({
             item: response.data,
+            log: log.scope(),
             openApiClient,
             relationships: relationshipsToAssociateSeparatly,
           })
