@@ -1,4 +1,5 @@
 exports.create = require('./create')
+exports.del = require('./del')
 exports.getMany = require('./getMany')
 exports.getOne = require('./getOne')
 exports.getRelationHasMany = require('./getRelationHasMany')
