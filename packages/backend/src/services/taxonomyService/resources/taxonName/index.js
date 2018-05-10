@@ -12,21 +12,6 @@ module.exports = {
       type: 'create',
     },
     {
-      type: 'update',
-    },
-    {
-      relationKey: 'acceptedToTaxon',
-      type: 'updateRelationBelongsToOne',
-    },
-    {
-      relationKey: 'synonymToTaxon',
-      type: 'updateRelationBelongsToOne',
-    },
-    {
-      relationKey: 'vernacularToTaxon',
-      type: 'updateRelationBelongsToOne',
-    },
-    {
       includeRelations: true,
       type: 'getOne',
     },
@@ -44,6 +29,24 @@ module.exports = {
         },
       },
       type: 'getMany',
+    },
+    {
+      type: 'update',
+    },
+    {
+      type: 'del',
+    },
+    {
+      relationKey: 'acceptedToTaxon',
+      type: 'updateRelationBelongsToOne',
+    },
+    {
+      relationKey: 'synonymToTaxon',
+      type: 'updateRelationBelongsToOne',
+    },
+    {
+      relationKey: 'vernacularToTaxon',
+      type: 'updateRelationBelongsToOne',
     },
   ],
   relations: resourceRelationsMap[resource],

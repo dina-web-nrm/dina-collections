@@ -10,13 +10,16 @@ module.exports = {
       type: 'create',
     },
     {
-      type: 'update',
-    },
-    {
       type: 'getOne',
     },
     {
       type: 'getMany',
+    },
+    {
+      type: 'update',
+    },
+    {
+      type: 'del',
     },
   ],
 

@@ -12,7 +12,18 @@ module.exports = {
       type: 'create',
     },
     {
+      includeRelations: true,
+      type: 'getOne',
+    },
+    {
+      includeRelations: true,
+      type: 'getMany',
+    },
+    {
       type: 'update',
+    },
+    {
+      type: 'del',
     },
     {
       connect: false,
@@ -41,14 +52,6 @@ module.exports = {
     {
       relationKey: 'storageLocation',
       type: 'getRelationBelongsToOne',
-    },
-    {
-      includeRelations: true,
-      type: 'getOne',
-    },
-    {
-      includeRelations: true,
-      type: 'getMany',
     },
   ],
   relations: resourceRelationsMap[resource],
