@@ -1,49 +1,21 @@
-DONE
-* Merge with mammal form
-* Make sure saving in db is working in first version
-* Ensure relationships are working in first version
-* move test data
-
-* Make test pass
-** COMMON
-** BACKEND
-** UI
-
 TODO
-* remove specimen data module. Search?
-* remove other not used files
-* List array with relationships to update
+* Fix broken stuff
+  * make sure tests are passing
+  * repair storage locations (attributes)
+  * repair localities (edit / create) - attributes
+  * repair search (incl initial data)
+  * make sure tests are passing
+  * go through mammal form and remove all not need ensure stuff is fetched
 
-* Implement simple golden flow tests
-* Verify next step functionality for new api client
-* create external/internal relation for relationship (with lid) or use one of? potentially resolve with id at create?
+* Cleanup
+  * fix performance in load specimen
 
-FIX
-* fix weird redirect when no catalogNumber
-* Implement selector that fetches resource by id
-* fix bug spreading string?
-* is x-column needed?
-* Go through desired behavior for attributes. getOne getOneNestedFormat?
-
-
-
-
-LATER
+* Next step
+  * migrate taxonomy to crud module
+  * remove not used files
 * Merge normalized names specifications
 * Use same common functions in backend
 * remove normalize (build stuff backend need based on schema)
-* Check normalized and nonNormalized models if they need to be adjusted
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+FIX
+* is x-column needed?

@@ -82,16 +82,14 @@ describe('jsonApiClient/modify/modifyRelationshipResource', function () {
             },
             type: 'role'
           },
-          log: testLog.scope(),
+          log: testLog,
           openApiClient: openApiClient
         }));
       });
       it('dont call modifyRelatedResourceItems', function () {
         expect(depSpies.modifyRelatedResourceItems.mock.calls.length).toEqual(0);
       });
-      it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(1);
-      });
+
       it('return updated relationship', function () {
         expect(result).toEqual({ data: { id: 1, type: 'role' } });
       });
@@ -138,12 +136,9 @@ describe('jsonApiClient/modify/modifyRelationshipResource', function () {
             },
             type: 'project'
           }],
-          log: testLog.scope(),
+          log: testLog,
           openApiClient: openApiClient
         }));
-      });
-      it('call log', function () {
-        expect(testLog.debug.mock.calls.length).toEqual(1);
       });
       it('return updated relationship', function () {
         expect(result).toEqual({

@@ -2,8 +2,6 @@
 
 var objectPath = require('object-path');
 var walk = require('../utilities/walkObject');
-var cloneObject = require('../utilities/cloneObject');
-
 
 module.exports = function resolveItemRelationship(_ref) {
   var coreToNested = _ref.coreToNested,

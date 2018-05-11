@@ -43,8 +43,6 @@ export default function createResourceSelectors(
     const res = items.find(({ attributes }) => {
       return attributes && attributes.lid === lid
     })
-    console.log('items', items)
-    console.log('res', res)
     return res || null
   }
 

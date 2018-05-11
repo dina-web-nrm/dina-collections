@@ -1,9 +1,5 @@
-const createLog = require('../../log')
-
-const defaultLog = createLog('common:jsonApiClient:splitRelationships')
-
 function splitRelationships(
-  { log = defaultLog, relationshipKeysToIncludeInBody = [], relationships } = {}
+  { relationshipKeysToIncludeInBody = [], relationships } = {}
 ) {
   const res = {
     relationshipsToAssociateSeparatly: {},

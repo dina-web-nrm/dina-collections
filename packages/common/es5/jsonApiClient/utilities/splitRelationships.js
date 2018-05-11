@@ -1,19 +1,13 @@
-'use strict';
+"use strict";
 
-var _keys = require('babel-runtime/core-js/object/keys');
+var _keys = require("babel-runtime/core-js/object/keys");
 
 var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createLog = require('../../log');
-
-var defaultLog = createLog('common:jsonApiClient:splitRelationships');
-
 function splitRelationships() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      _ref$log = _ref.log,
-      log = _ref$log === undefined ? defaultLog : _ref$log,
       _ref$relationshipKeys = _ref.relationshipKeysToIncludeInBody,
       relationshipKeysToIncludeInBody = _ref$relationshipKeys === undefined ? [] : _ref$relationshipKeys,
       relationships = _ref.relationships;

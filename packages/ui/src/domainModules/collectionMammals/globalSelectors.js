@@ -21,43 +21,12 @@ import * as selectors from './selectors'
 
 const { getOne } = crudSelectors.specimen
 
-// const getFeatureTypesGlobal = state => {
-//   return getFeatureTypes(getCuratedListState(state))
-// }
-
 const getInitialSpecimen = (state, specimenId) => {
   if (!specimenId) {
     return undefined
   }
   return getOne(state, specimenId)
 }
-
-// const getSpecimenReadOnlyGlobalSelector = (state, specimenId) => {
-//   return getSpecimenReadOnly(getSpecimenState(state), specimenId)
-// }
-
-// const getPhysicalObjectsGlobal = state => {
-//   return getPhysicalObjects(getStorageState(state))
-// }
-
-// let cachedFunc
-// const getResolveFunction = state => {
-//   if (!cachedFunc) {
-//     cachedFunc = (type, id) => {
-//       const getOneSelector = crudSelectors[type] && crudSelectors[type].getOne
-//       const getOneByLidSelector =
-//         crudSelectors[type] && crudSelectors[type].getOneByLid
-//       console.log('state', state)
-//       return (
-//         (getOneSelector && getOneSelector(state, id)) ||
-//         (getOneByLidSelector && getOneByLidSelector(state, id)) ||
-//         null
-//       )
-//     }
-//   }
-
-//   return cachedFunc
-// }
 
 const getState = state => {
   return state
@@ -84,7 +53,6 @@ const getMammalFormInitialValues = createSelector(
           item: specimen,
           type: 'specimen',
         })
-    console.log('nestedFormatSpecimen', nestedFormatSpecimen)
     return setDefaultValues({ specimen: nestedFormatSpecimen })
   }
 )
