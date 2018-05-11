@@ -502,6 +502,32 @@
   "place": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "externalModelReference"
+              }
+            }
+          },
+          "children": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "name": {
         "type": "string",
         "description": "Name of the locality",
@@ -565,7 +591,13 @@
       },
       "parent": {
         "type": "object",
-        "description": "A polygon describing the edges",
+        "description": "Parent place",
+        "$ref": "place",
+        "x-summary": ""
+      },
+      "children": {
+        "type": "object",
+        "description": "Parent place",
         "$ref": "place",
         "x-summary": ""
       },

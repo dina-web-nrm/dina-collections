@@ -9,10 +9,8 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/crudBlocks/keyObjectModule'
-
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-
 import storageSelectors from '../../../globalSelectors'
 import { GROUP_2 } from '../../../constants'
 import ListItem from './ListItem'
@@ -28,7 +26,6 @@ const mapStateToProps = (state, { name }) => {
     state,
     filter
   )
-
   return {
     filter,
     filterParent,

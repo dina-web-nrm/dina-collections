@@ -14,13 +14,12 @@ module.exports = function resolveItemRelationships({
     updatedItem = resolveItemRelationship({
       coreToNested,
       getItemByTypeId,
-      item,
+      item: updatedItem,
       path,
       relationshipKey,
       relationships,
       type,
     })
   })
-
   return updatedItem
 }

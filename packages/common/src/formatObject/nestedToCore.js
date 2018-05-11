@@ -14,6 +14,9 @@ module.exports = function nestedToCore({
   normalize = true,
   type: resourceType,
 }) {
+  if (!rawItem) {
+    return rawItem
+  }
   let item = cloneObject(rawItem)
   const normalizeSpecification = getNormalizeSpecification(resourceType)
   const relationshipSpecification = getRelationshipSpecification(resourceType)

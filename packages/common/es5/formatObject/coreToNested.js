@@ -24,6 +24,9 @@ module.exports = function coreToNested(_ref) {
       resolveRelationships = _ref$resolveRelations === undefined ? true : _ref$resolveRelations,
       type = _ref.type;
 
+  if (!rawItem) {
+    return rawItem;
+  }
   var item = cloneObject(rawItem);
   var _item = item,
       id = _item.id,
@@ -41,6 +44,7 @@ module.exports = function coreToNested(_ref) {
   }
 
   var relationshipSpecification = getRelationshipSpecification(type);
+
   if (resolveRelationships && relationshipSpecification) {
     item = resolveItemRelationships({
       coreToNested: coreToNested,

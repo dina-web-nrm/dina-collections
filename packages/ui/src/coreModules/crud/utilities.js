@@ -64,3 +64,47 @@ export const getChildrenIds = item => {
     relationKey: 'children',
   })
 }
+
+export const getItemWithSpecificedRelationships = ({
+  item,
+  relationshipKeys = [],
+}) => {
+  if (!item) {
+    return item
+  }
+
+  if (!item.relationships) {
+    return item
+  }
+
+  return {
+    ...item,
+    relationships: Object.keys(item.relationships).reduce(
+      (relationships, relationshipKey) => {
+        if (
+          relationshipKeys.includes(relationshipKey) ||
+          relationshipKeys.includes('all')
+        ) {
+          return {
+            ...relationships,
+            [relationshipKey]: item.relationships[relationshipKey],
+          }
+        }
+        return relationships
+      },
+      {}
+    ),
+  }
+}
+
+export const getItemsWithSpecificedRelationships = ({
+  items = [],
+  relationshipKeys,
+}) => {
+  return items.map(item => {
+    return getItemWithSpecificedRelationships({
+      item,
+      relationshipKeys,
+    })
+  })
+}

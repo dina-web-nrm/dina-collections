@@ -7340,7 +7340,13 @@
           },
           "parent": {
             "type": "object",
-            "description": "A polygon describing the edges",
+            "description": "Parent place",
+            "$ref": "#/components/schemas/place",
+            "x-summary": ""
+          },
+          "children": {
+            "type": "object",
+            "description": "Parent place",
             "$ref": "#/components/schemas/place",
             "x-summary": ""
           },

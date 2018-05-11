@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
-
 import crudActionCreators from 'coreModules/crud/actionCreators'
-import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
@@ -19,15 +17,12 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  allStorageLocationsFetched: PropTypes.bool,
   createStorageLocation: PropTypes.func.isRequired,
   destroy: PropTypes.func.isRequired,
-
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
 }
 const defaultProps = {
-  allStorageLocationsFetched: undefined,
   itemId: undefined,
 }
 
@@ -39,18 +34,8 @@ export class Create extends PureComponent {
   }
 
   render() {
-    const {
-      allStorageLocationsFetched,
-      itemId,
-      onInteraction,
-      ...rest
-    } = this.props
-
-    if (!allStorageLocationsFetched) {
-      return null
-    }
-
-    const initialValues = itemId && { parentId: itemId }
+    const { itemId, onInteraction, ...rest } = this.props
+    const initialValues = itemId ? { parent: { id: itemId } } : {}
 
     return (
       <BaseForm
@@ -65,7 +50,8 @@ export class Create extends PureComponent {
         onSubmit={data => {
           this.props
             .createStorageLocation({
-              storageLocation: data,
+              item: data,
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_CREATE_SUCCESS, {
@@ -81,10 +67,4 @@ export class Create extends PureComponent {
 Create.propTypes = propTypes
 Create.defaultProps = defaultProps
 
-export default compose(
-  createEnsureAllItemsFetched({
-    relationships: ['parent'],
-    resource: 'storageLocation',
-  }),
-  connect(null, mapDispatchToProps)
-)(Create)
+export default compose(connect(null, mapDispatchToProps))(Create)

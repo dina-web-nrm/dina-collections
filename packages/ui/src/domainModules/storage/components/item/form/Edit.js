@@ -2,13 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-
 import crudActionCreators from 'coreModules/crud/actionCreators'
-import {
-  createEnsureAllItemsFetched,
-  createGetItemById,
-} from 'coreModules/crud/higherOrderComponents'
-
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -20,34 +15,20 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  allStorageLocationsFetched: PropTypes.bool,
   itemId: PropTypes.string.isRequired,
+  nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
-  storageLocation: PropTypes.object,
   updateStorageLocation: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  allStorageLocationsFetched: undefined,
-  storageLocation: undefined,
+  nestedItem: undefined,
 }
 
 export class Edit extends PureComponent {
   render() {
-    const {
-      allStorageLocationsFetched,
-      storageLocation,
-      onInteraction,
-      itemId,
-    } = this.props
-
-    const initialValues = storageLocation && {
-      group: storageLocation.group,
-      name: storageLocation.name,
-      parentId: storageLocation.parent && storageLocation.parent.id,
-    }
-
-    if (!initialValues || !allStorageLocationsFetched) {
+    const { nestedItem: initialValues, onInteraction, itemId } = this.props
+    if (!initialValues) {
       return null
     }
 
@@ -61,13 +42,14 @@ export class Edit extends PureComponent {
           onInteraction(FORM_CANCEL)
         }}
         onInteraction={onInteraction}
-        onSubmit={data => {
+        onSubmit={formOutput => {
           this.props
             .updateStorageLocation({
-              storageLocation: {
+              item: {
                 id: itemId,
-                ...data,
+                ...formOutput,
               },
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_EDIT_SUCCESS, {
@@ -84,10 +66,10 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  createEnsureAllItemsFetched({
+  createGetNestedItemById({
+    include: ['parent'],
     relationships: ['parent'],
     resource: 'storageLocation',
   }),
-  createGetItemById({ resource: 'storageLocation' }),
   connect(null, mapDispatchToProps)
 )(Edit)

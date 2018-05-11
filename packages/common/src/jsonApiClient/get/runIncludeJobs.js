@@ -8,7 +8,6 @@ module.exports = function runIncludeJobs({
 }) {
   const promises = includeJobs.map(includeJob => {
     const { path, ids, type } = includeJob
-
     const mappedQueryParams = createOperationSpecificQueryParams({
       path,
       queryParams: {

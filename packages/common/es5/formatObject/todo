@@ -1,15 +1,17 @@
+DONE
+* repair localities (edit / create) - attributes
+* make sure tests are passing
+* fix performance in load specimen
+
 TODO
 * Fix broken stuff
-  * make sure tests are passing
   * repair storage locations (attributes)
-  * repair localities (edit / create) - attributes
   * repair search (incl initial data)
   * make sure tests are passing
   * go through mammal form and remove all not need ensure stuff is fetched
 
 * Cleanup
-  * fix performance in load specimen
-
+  * improve resolveItemRelationship
 * Next step
   * migrate taxonomy to crud module
   * remove not used files

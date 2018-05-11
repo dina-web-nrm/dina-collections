@@ -27,13 +27,10 @@ module.exports = function createRelationshipSpecification() {
     var modelRelationship = relationships.properties[relationshipKey];
     var path = getModelRelationshipPath(modelRelationship);
 
-    if (path) {
-      return (0, _extends4.default)({}, modelRelationships, (0, _defineProperty3.default)({}, relationshipKey, {
-        format: getModelFormat(modelRelationship.properties.data),
-        path: path,
-        type: getModelType(modelRelationship.properties.data)
-      }));
-    }
-    return modelRelationships;
+    return (0, _extends4.default)({}, modelRelationships, (0, _defineProperty3.default)({}, relationshipKey, {
+      format: getModelFormat(modelRelationship.properties.data),
+      path: path,
+      type: getModelType(modelRelationship.properties.data)
+    }));
   }, {});
 };

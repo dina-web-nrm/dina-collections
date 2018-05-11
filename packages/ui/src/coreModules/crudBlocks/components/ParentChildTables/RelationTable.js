@@ -26,7 +26,9 @@ const RelationTable = ({ onRowClick: handleRowClick, rowItems }) => {
       </Table.Header>
       <Table.Body>
         {rowItems.length > 0 &&
-          rowItems.map(({ id, attributes = {} }) => {
+          rowItems.map(item => {
+            const { id, attributes = {} } = item || {}
+
             return (
               <Table.Row key={id} onClick={event => handleRowClick(event, id)}>
                 <Table.Cell>

@@ -4,7 +4,6 @@ const runIncludeJobs = require('./runIncludeJobs')
 const fetchIncluded = ({
   items: parentItems,
   openApiClient,
-  path,
   relationSpecification,
 }) => {
   const includeJobs = createIncludeJobs({
@@ -17,11 +16,11 @@ const fetchIncluded = ({
   return runIncludeJobs({
     includeJobs,
     openApiClient,
+    relationSpecification,
   }).then(fetchedItems => {
     return fetchIncluded({
       items: fetchedItems,
       openApiClient,
-      path,
       relationSpecification,
     }).then(fetchedItemIncludes => {
       return [...fetchedItems, ...fetchedItemIncludes]

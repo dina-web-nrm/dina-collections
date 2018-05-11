@@ -14,6 +14,9 @@ module.exports = function coreToNested({
   resolveRelationships = true,
   type,
 }) {
+  if (!rawItem) {
+    return rawItem
+  }
   let item = cloneObject(rawItem)
   const { id, relationships, attributes } = item
   item = {
@@ -28,6 +31,7 @@ module.exports = function coreToNested({
   }
 
   const relationshipSpecification = getRelationshipSpecification(type)
+
   if (resolveRelationships && relationshipSpecification) {
     item = resolveItemRelationships({
       coreToNested,

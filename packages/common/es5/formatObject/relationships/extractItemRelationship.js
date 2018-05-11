@@ -12,41 +12,62 @@ module.exports = function extractItemRelationship(_ref) {
       relationshipType = _ref.relationshipType,
       nestedToCore = _ref.nestedToCore;
 
-  var segments = path.split('.*.');
-  var relationships = [];
-  walk({
-    func: function func(pth) {
-      var relationship = objectPath.get(item, pth);
-      if (relationship.id === undefined) {
-        relationship.lid = createLid();
-      }
+  var relationshipObject = null;
+  var relationshipArray = [];
+  if (path) {
+    var segments = path.split('.*.');
 
-      var referense = relationship.id !== undefined ? {
-        id: relationship.id
-      } : {
-        lid: relationship.lid
-      };
+    walk({
+      func: function func(pth) {
+        var relationship = objectPath.get(item, pth);
+        if (relationship.id === undefined) {
+          relationship.lid = createLid();
+        }
 
-      objectPath.set(item, pth, referense);
+        var referense = relationship.id !== undefined ? {
+          id: relationship.id
+        } : {
+          lid: relationship.lid
+        };
 
-      var formattedRelationship = nestedToCore ? nestedToCore({
-        item: relationship,
-        normalize: true,
-        type: relationshipType
-      }) : relationship;
+        objectPath.set(item, pth, referense);
 
-      relationships.push(formattedRelationship);
-    },
-    obj: item,
-    segments: segments
-  });
+        var formattedRelationship = nestedToCore ? nestedToCore({
+          item: relationship,
+          normalize: true,
+          type: relationshipType
+        }) : relationship;
 
-  relationships.filter(function (relationship) {
-    return !!relationship;
-  });
+        if (relationshipFormat === 'object') {
+          relationshipObject = formattedRelationship;
+        } else {
+          relationshipArray.push(formattedRelationship);
+        }
+      },
+      obj: item,
+      segments: segments
+    });
+  } else {
+    if (relationshipFormat === 'object') {
+      relationshipObject = item[relationshipKey];
+    } else {
+      relationshipArray = item[relationshipKey];
+    }
+    delete item[relationshipKey];
+  }
 
-  if (relationships.length) {
-    objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipFormat === 'object' ? relationships[0] : relationships);
+  if (relationshipArray && relationshipArray.length) {
+    relationshipArray = relationshipArray.filter(function (relationship) {
+      return !!relationship;
+    });
+  }
+
+  if (relationshipFormat === 'object' && relationshipObject) {
+    objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipObject);
+  }
+
+  if (relationshipFormat === 'array' && relationshipArray) {
+    objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipArray);
   }
 
   return item;

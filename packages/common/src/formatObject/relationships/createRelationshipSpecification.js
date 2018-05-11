@@ -10,17 +10,14 @@ module.exports = function createRelationshipSpecification(
       const modelRelationship = relationships.properties[relationshipKey]
       const path = getModelRelationshipPath(modelRelationship)
 
-      if (path) {
-        return {
-          ...modelRelationships,
-          [relationshipKey]: {
-            format: getModelFormat(modelRelationship.properties.data),
-            path,
-            type: getModelType(modelRelationship.properties.data),
-          },
-        }
+      return {
+        ...modelRelationships,
+        [relationshipKey]: {
+          format: getModelFormat(modelRelationship.properties.data),
+          path,
+          type: getModelType(modelRelationship.properties.data),
+        },
       }
-      return modelRelationships
     },
     {}
   )

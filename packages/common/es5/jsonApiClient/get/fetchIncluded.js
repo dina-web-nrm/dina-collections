@@ -16,7 +16,6 @@ var runIncludeJobs = require('./runIncludeJobs');
 var fetchIncluded = function fetchIncluded(_ref) {
   var parentItems = _ref.items,
       openApiClient = _ref.openApiClient,
-      path = _ref.path,
       relationSpecification = _ref.relationSpecification;
 
   var includeJobs = createIncludeJobs({
@@ -28,12 +27,12 @@ var fetchIncluded = function fetchIncluded(_ref) {
   }
   return runIncludeJobs({
     includeJobs: includeJobs,
-    openApiClient: openApiClient
+    openApiClient: openApiClient,
+    relationSpecification: relationSpecification
   }).then(function (fetchedItems) {
     return fetchIncluded({
       items: fetchedItems,
       openApiClient: openApiClient,
-      path: path,
       relationSpecification: relationSpecification
     }).then(function (fetchedItemIncludes) {
       return [].concat((0, _toConsumableArray3.default)(fetchedItems), (0, _toConsumableArray3.default)(fetchedItemIncludes));

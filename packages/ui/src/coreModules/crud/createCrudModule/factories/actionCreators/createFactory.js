@@ -1,5 +1,6 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
+import nestedToCore from 'common/es5/formatObject/nestedToCore'
 import getActionActionTypes from './utilities/getActionActionTypes'
 
 export const dep = new Dependor({
@@ -31,8 +32,20 @@ export default function createAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function createAc({ item, throwError = false }) {
-    log.debug(`${resource}.create called`, { item, throwError })
+  return function createAc({
+    item: rawItem,
+    nested = false,
+    throwError = false,
+  }) {
+    log.debug(`${resource}.create called`, { item: rawItem, throwError })
+
+    const item = nested
+      ? nestedToCore({
+          item: rawItem,
+          type: resource,
+        })
+      : rawItem
+
     return (dispatch, getState, { apiClient }) => {
       if (!item) {
         throw new Error('Item is required')

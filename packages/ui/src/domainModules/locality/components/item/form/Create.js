@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
-
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import {
   FORM_CANCEL,
@@ -36,7 +35,6 @@ export class Create extends PureComponent {
 
   render() {
     const { itemId, onInteraction, ...rest } = this.props
-
     const initialValues = itemId ? { parent: { id: itemId } } : {}
 
     return (
@@ -53,6 +51,7 @@ export class Create extends PureComponent {
           this.props
             .createPlace({
               item: data,
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_CREATE_SUCCESS, {

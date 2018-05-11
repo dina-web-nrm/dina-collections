@@ -26,13 +26,12 @@ module.exports = function resolveItemRelationships(_ref) {
     updatedItem = resolveItemRelationship({
       coreToNested: coreToNested,
       getItemByTypeId: getItemByTypeId,
-      item: item,
+      item: updatedItem,
       path: path,
       relationshipKey: relationshipKey,
       relationships: relationships,
       type: type
     });
   });
-
   return updatedItem;
 };

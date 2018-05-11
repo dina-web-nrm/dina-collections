@@ -10,36 +10,84 @@ module.exports = function resolveItemRelationship({
   relationships,
   type,
 }) {
-  const segments = path.split('.*.')
   const relationship = relationships[relationshipKey]
-  if (!relationship) {
+  if (!(relationship && relationship.data)) {
     return item
   }
 
-  walk({
-    func: pth => {
-      const relationshipObject = objectPath.get(item, pth)
-      const id =
-        relationshipObject && (relationshipObject.id || relationshipObject.lid)
+  if (path) {
+    const segments = path.split('.*.')
 
-      const resolvedRelationshipItem =
-        id && getItemByTypeId && getItemByTypeId(type, id)
+    walk({
+      func: pth => {
+        const relationshipObject = objectPath.get(item, pth)
+        const id =
+          relationshipObject &&
+          (relationshipObject.id || relationshipObject.lid)
+        // check that it exist in relationships
+        const resolvedRelationshipItem =
+          id && getItemByTypeId && getItemByTypeId(type, id)
 
-      if (resolvedRelationshipItem) {
-        objectPath.set(
-          item,
-          pth,
-          coreToNested({
+        if (resolvedRelationshipItem) {
+          objectPath.set(
+            item,
+            pth,
+            coreToNested({
+              getItemByTypeId,
+              item: resolvedRelationshipItem,
+              type: resolvedRelationshipItem.type,
+            })
+          )
+        }
+      },
+      obj: item,
+      segments,
+    })
+
+    return item
+  }
+
+  if (Array.isArray(relationship.data)) {
+    return {
+      ...item,
+      [relationshipKey]: relationship.data.map(({ id }) => {
+        const resolvedRelationshipItem =
+          id && getItemByTypeId && getItemByTypeId(type, id)
+        if (resolvedRelationshipItem) {
+          return coreToNested({
             getItemByTypeId,
             item: resolvedRelationshipItem,
-            type: resolvedRelationshipItem.type,
+            type,
           })
-        )
-      }
-    },
-    obj: item,
-    segments,
-  })
+        }
+        return {
+          id,
+        }
+      }),
+    }
+  }
 
-  return item
+  let relationshipItem
+
+  const resolvedRelationshipItem =
+    relationship.data.id &&
+    getItemByTypeId &&
+    getItemByTypeId(type, relationship.data.id)
+
+  if (resolvedRelationshipItem) {
+    relationshipItem = coreToNested({
+      getItemByTypeId,
+      item: resolvedRelationshipItem,
+      type,
+    })
+  } else {
+    relationshipItem = {
+      id: relationship.data.id,
+    }
+  }
+
+  return {
+    ...item,
+    [relationshipKey]: relationshipItem,
+  }
 }

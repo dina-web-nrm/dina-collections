@@ -10,49 +10,74 @@ module.exports = function extractItemRelationship({
   relationshipType,
   nestedToCore,
 }) {
-  const segments = path.split('.*.')
-  const relationships = []
-  walk({
-    func: pth => {
-      const relationship = objectPath.get(item, pth)
-      if (relationship.id === undefined) {
-        relationship.lid = createLid()
-      }
+  let relationshipObject = null
+  let relationshipArray = []
+  if (path) {
+    const segments = path.split('.*.')
 
-      const referense =
-        relationship.id !== undefined
-          ? {
-              id: relationship.id,
-            }
-          : {
-              lid: relationship.lid,
-            }
+    walk({
+      func: pth => {
+        const relationship = objectPath.get(item, pth)
+        if (relationship.id === undefined) {
+          relationship.lid = createLid()
+        }
 
-      objectPath.set(item, pth, referense)
+        const referense =
+          relationship.id !== undefined
+            ? {
+                id: relationship.id,
+              }
+            : {
+                lid: relationship.lid,
+              }
 
-      const formattedRelationship = nestedToCore
-        ? nestedToCore({
-            item: relationship,
-            normalize: true,
-            type: relationshipType,
-          })
-        : relationship
+        objectPath.set(item, pth, referense)
 
-      relationships.push(formattedRelationship)
-    },
-    obj: item,
-    segments,
-  })
+        const formattedRelationship = nestedToCore
+          ? nestedToCore({
+              item: relationship,
+              normalize: true,
+              type: relationshipType,
+            })
+          : relationship
 
-  relationships.filter(relationship => {
-    return !!relationship
-  })
+        if (relationshipFormat === 'object') {
+          relationshipObject = formattedRelationship
+        } else {
+          relationshipArray.push(formattedRelationship)
+        }
+      },
+      obj: item,
+      segments,
+    })
+  } else {
+    if (relationshipFormat === 'object') {
+      relationshipObject = item[relationshipKey]
+    } else {
+      relationshipArray = item[relationshipKey]
+    }
+    delete item[relationshipKey] // eslint-disable-line
+  }
 
-  if (relationships.length) {
+  if (relationshipArray && relationshipArray.length) {
+    relationshipArray = relationshipArray.filter(relationship => {
+      return !!relationship
+    })
+  }
+
+  if (relationshipFormat === 'object' && relationshipObject) {
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,
-      relationshipFormat === 'object' ? relationships[0] : relationships
+      relationshipObject
+    )
+  }
+
+  if (relationshipFormat === 'array' && relationshipArray) {
+    objectPath.set(
+      item,
+      `relationships.${relationshipKey}.data`,
+      relationshipArray
     )
   }
 

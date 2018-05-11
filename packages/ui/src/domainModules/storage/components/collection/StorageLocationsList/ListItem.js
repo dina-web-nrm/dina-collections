@@ -47,6 +47,7 @@ class ListItem extends Component {
         }
       : {}
 
+    const attributes = storageLocation.attributes || {}
     return (
       <List.Item
         active={activeStorageLocationId === storageLocation.id}
@@ -61,10 +62,10 @@ class ListItem extends Component {
       >
         <List.Content floated="right">
           <Label
-            color={groupColorMap[storageLocation.group]}
+            color={groupColorMap[attributes.group]}
             style={{ marginRight: 20 }}
           >
-            {storageLocation.group}
+            {attributes.group}
           </Label>
           {displayNavigationButtons &&
             !disableEdit && (
@@ -116,7 +117,7 @@ class ListItem extends Component {
         </List.Content>
 
         <List.Content>
-          <h3>{storageLocation.name}</h3>
+          <h3>{attributes.name}</h3>
         </List.Content>
       </List.Item>
     )

@@ -6,10 +6,7 @@ import { connect } from 'react-redux'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
 
-import {
-  createEnsureAllItemsFetched,
-  createGetItemById,
-} from 'coreModules/crud/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { ParentChildTables } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
@@ -18,7 +15,11 @@ const mapStateToProps = (state, ownProps) => {
   const parentId = getParentId(place)
   const parent = parentId && globalCrudSelectors.place.getOne(state, parentId)
   const children = getChildrenIds(place).map(id => {
-    return globalCrudSelectors.place.getOne(state, id)
+    return (
+      globalCrudSelectors.place.getOne(state, id) || {
+        id,
+      }
+    )
   })
 
   return {
@@ -29,7 +30,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const propTypes = {
-  allItemsFetched: PropTypes.bool.isRequired,
   children: PropTypes.array,
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.object,
@@ -56,9 +56,8 @@ export class Inspect extends PureComponent {
   }
 
   render() {
-    const { allItemsFetched, children, place, parent } = this.props
-
-    if (!place || !allItemsFetched) {
+    const { children, place, parent } = this.props
+    if (!place) {
       return null
     }
 
@@ -140,12 +139,9 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  createEnsureAllItemsFetched({
-    relationships: ['parent'],
-    resource: 'place',
-  }),
-
   createGetItemById({
+    include: ['parent', 'children'],
+    relationships: ['all'],
     resource: 'place',
   }),
   connect(mapStateToProps)
