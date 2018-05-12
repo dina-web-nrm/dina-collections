@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 import { Icon } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-
-import taxonSelectors from 'dataModules/taxonService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
@@ -15,10 +14,13 @@ const log = createLog(
 
 const mapStateToProps = (state, { taxon }) => {
   const taxonResource =
-    taxon && taxon.id && taxonSelectors.getTaxon(state, taxon.id)
+    taxon && taxon.id && crudSelectors.taxon.getOne(state, taxon.id)
 
   return {
-    taxonName: taxonResource && taxonResource.scientificName,
+    taxonName:
+      taxonResource &&
+      taxonResource.attributes &&
+      taxonResource.attributes.scientificName,
   }
 }
 

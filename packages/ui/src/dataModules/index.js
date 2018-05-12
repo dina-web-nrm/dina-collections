@@ -1,3 +1,3 @@
-export const moduleOrder = ['taxonService']
+export const moduleOrder = []
 
 export const type = 'module'

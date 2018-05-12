@@ -1,5 +1,3 @@
-import * as taxonService from './taxonService'
-
-const modules = [taxonService]
+const modules = []
 
 export default modules

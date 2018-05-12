@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon, Label, List } from 'semantic-ui-react'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 
 import {
   ITEM_CLICK,
@@ -18,20 +19,19 @@ import {
 } from '../../../constants'
 
 const propTypes = {
-  acceptedName: PropTypes.string.isRequired,
+  acceptedTaxonName: PropTypes.object,
   activeTaxonId: PropTypes.string,
   cursorFocus: PropTypes.bool,
   disableEdit: PropTypes.bool.isRequired,
   displayNavigationButtons: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func.isRequired,
-  rank: PropTypes.string,
   taxon: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
+  acceptedTaxonName: {},
   activeTaxonId: '',
   cursorFocus: false,
-  rank: 'missing rank',
 }
 
 /* eslint-disable sort-keys */
@@ -48,15 +48,19 @@ const groupColorMap = {
 class ListItem extends Component {
   render() {
     const {
-      acceptedName,
+      acceptedTaxonName,
       activeTaxonId,
       cursorFocus,
       disableEdit,
       displayNavigationButtons,
       onInteraction,
-      rank,
       taxon,
     } = this.props
+
+    const acceptedTaxonNameAttributes =
+      (acceptedTaxonName && acceptedTaxonName.attributes) || {}
+
+    const rank = acceptedTaxonNameAttributes.rank || 'missing rank'
 
     const style = cursorFocus
       ? {
@@ -130,7 +134,7 @@ class ListItem extends Component {
         </List.Content>
 
         <List.Content>
-          <h3>{`${taxon.id}: ${acceptedName}`}</h3>
+          <h3>{`${taxon.id}: ${acceptedTaxonNameAttributes.name}`}</h3>
         </List.Content>
       </List.Item>
     )
@@ -140,4 +144,9 @@ class ListItem extends Component {
 ListItem.propTypes = propTypes
 ListItem.defaultProps = defaultProps
 
-export default ListItem
+export default createGetItemById({
+  idPath: 'taxon.relationships.acceptedTaxonName.data.id',
+  itemKey: 'acceptedTaxonName',
+  relationships: [],
+  resource: 'taxonName',
+})(ListItem)

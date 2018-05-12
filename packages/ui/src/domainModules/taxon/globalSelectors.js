@@ -1,9 +1,10 @@
 import { createSelector } from 'reselect'
 
-import taxonServiceSelectors from 'dataModules/taxonService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
 import wrapSelectors from 'utilities/wrapSelectors'
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
+import { getParentId, getRelationshipItemId } from 'coreModules/crud/utilities'
 import { mapTaxonNameToOption } from './utilities'
 import * as selectors from './selectors'
 
@@ -18,18 +19,18 @@ import {
 } from './constants'
 
 const {
-  getTaxa,
-  getTaxaArray,
-  getTaxon,
-  getTaxonName,
-  getTaxonNames,
-  getTaxonNamesArray,
-} = taxonServiceSelectors
+  taxon: { getItemsObject: getTaxa, getAll: getTaxaArray, getOne: getTaxon },
+  taxonName: {
+    getItemsObject: getTaxonNames,
+    getAll: getTaxonNamesArray,
+    getOne: getTaxonName,
+  },
+} = crudSelectors
 
 const getTaxonNamesSortedArray = createSelector(
   getTaxonNamesArray,
   taxaArray => {
-    return taxaArray.sort((a, b) => {
+    return taxaArray.sort(({ attributes: a = {} }, { attributes: b = {} }) => {
       if (a.name < b.name) return -1
       if (a.name > b.name) return 1
       return 0
@@ -51,21 +52,27 @@ const getTaxonNamesArrayByFilter = createSelector(
 
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
-      const firstLetterMatches = filteredTaxonNames.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
-      })
+      const firstLetterMatches = filteredTaxonNames.filter(
+        ({ attributes: { name } = {} }) => {
+          return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+        }
+      )
 
-      const otherMatches = filteredTaxonNames.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
-      })
+      const otherMatches = filteredTaxonNames.filter(
+        ({ attributes: { name } = {} }) => {
+          return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+        }
+      )
 
       filteredTaxonNames = [...firstLetterMatches, ...otherMatches]
     }
 
     if (groupFilter) {
-      filteredTaxonNames = filteredTaxonNames.filter(({ rank }) => {
-        return rank ? rank === groupFilter : groupFilter === MISSING_RANK
-      })
+      filteredTaxonNames = filteredTaxonNames.filter(
+        ({ attributes: { rank } = {} }) => {
+          return rank ? rank === groupFilter : groupFilter === MISSING_RANK
+        }
+      )
     }
 
     if (limitFilter) {
@@ -80,7 +87,8 @@ const getTaxonNameOptions = createSelector(
   [getTaxonNamesSortedArray],
   taxonNames => {
     return taxonNames
-      .map(({ id, name }) => {
+      .map(({ id, attributes = {} }) => {
+        const { name } = attributes
         if (!name) {
           return null
         }
@@ -98,7 +106,9 @@ const getTaxonNameOptions = createSelector(
 const getTaxonNamesWithAcceptedToTaxon = createSelector(
   getTaxonNamesSortedArray,
   taxonNames => {
-    return taxonNames.filter(({ acceptedToTaxon }) => !!acceptedToTaxon)
+    return taxonNames.filter(
+      ({ attributes: { acceptedToTaxon } = {} }) => !!acceptedToTaxon
+    )
   }
 )
 
@@ -107,7 +117,7 @@ const getTaxonNameOption = createSelector(getTaxonName, taxonName => {
 })
 
 const getTaxaSortedArray = createSelector(getTaxaArray, taxaArray => {
-  return taxaArray.sort((a, b) => {
+  return taxaArray.sort(({ attributes: a = {} }, { attributes: b = {} }) => {
     if (a.name < b.name) return -1
     if (a.name > b.name) return 1
     return 0
@@ -138,11 +148,11 @@ const getTaxaArrayByFilter = createSelector(
 
     if (parentIdFilter) {
       filteredTaxa = filteredTaxa.filter(taxon => {
-        return (taxon.parent && taxon.parent.id) === parentIdFilter
+        return getParentId(taxon) === parentIdFilter
       })
     }
 
-    if (searchQueryFilter) {
+    if (searchQueryFilter && false) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
       const firstLetterMatches = filteredTaxa.filter(
         ({ acceptedTaxonName }) => {
@@ -173,7 +183,7 @@ const getTaxaArrayByFilter = createSelector(
       filteredTaxa = [...firstLetterMatches, ...otherMatches]
     }
 
-    if (groupFilter) {
+    if (groupFilter && false) {
       filteredTaxa = filteredTaxa.filter(({ acceptedTaxonName }) => {
         const taxonName = getTaxonNameResourceFromRelation(
           taxonNames,
@@ -200,11 +210,14 @@ const getTaxonAncestorsAcceptedTaxonNameById = createSelector(
   (taxa, taxonNames, currentId) => {
     const ancestors = []
     const walkUp = taxon => {
-      if (taxonNames && taxon.acceptedTaxonName && taxon.acceptedTaxonName.id) {
-        ancestors.push(taxonNames[taxon.acceptedTaxonName.id])
+      const acceptedTaxonNameId = getRelationshipItemId({
+        item: taxon,
+        relationKey: 'acceptedTaxonName',
+      })
+      if (taxonNames && acceptedTaxonNameId) {
+        ancestors.push(taxonNames[acceptedTaxonNameId])
       }
-
-      const parentId = taxon.parent && taxon.parent.id
+      const parentId = getParentId(taxon)
       if (parentId) {
         const next = taxa[parentId]
         if (next) {
@@ -246,69 +259,6 @@ const getPrevTaxonIdFromFilter = createSelector(
     })
 
     return taxaArray[Number(currentIdex) - 1].id
-  }
-)
-
-const getParentAndChildrenWithNamesForTaxon = createSelector(
-  getTaxon,
-  getTaxa,
-  getTaxonNames,
-  (taxon, taxa, taxonNames) => {
-    const { children: childrenRelation, parent: parentRelation } = taxon || {}
-    const parentTaxon = parentRelation && taxa[parentRelation.id]
-    const parentTaxonWithAcceptedName = parentTaxon &&
-      parentTaxon.acceptedTaxonName &&
-      taxonNames[parentTaxon.acceptedTaxonName.id] && {
-        ...parentTaxon,
-        name: taxonNames[parentTaxon.acceptedTaxonName.id].name,
-      }
-
-    const childrenTaxa =
-      childrenRelation && childrenRelation.map(({ id }) => taxa[id])
-    const childrenTaxaWithAcceptedName =
-      childrenTaxa &&
-      childrenTaxa.map(
-        childTaxon =>
-          childTaxon &&
-          childTaxon.acceptedTaxonName &&
-          taxonNames[childTaxon.acceptedTaxonName.id] && {
-            ...childTaxon,
-            name: taxonNames[childTaxon.acceptedTaxonName.id].name,
-          }
-      )
-
-    return {
-      children: childrenTaxaWithAcceptedName,
-      parent: parentTaxonWithAcceptedName,
-    }
-  }
-)
-
-const getPopulatedTaxonNamesForTaxon = createSelector(
-  getTaxon,
-  getTaxonNames,
-  (taxon, taxonNames) => {
-    const {
-      acceptedTaxonName: acceptedRelation,
-      synonyms: synonymRelation,
-      vernacularNames: vernacularRelation,
-    } =
-      taxon || {}
-
-    const acceptedTaxonName =
-      acceptedRelation && taxonNames[acceptedRelation.id]
-
-    const synonyms =
-      synonymRelation && synonymRelation.map(({ id }) => taxonNames[id])
-
-    const vernacularNames =
-      vernacularRelation && vernacularRelation.map(({ id }) => taxonNames[id])
-
-    return {
-      acceptedTaxonName,
-      synonyms,
-      vernacularNames,
-    }
   }
 )
 
@@ -363,8 +313,6 @@ export default wrapSelectors(selectors, {
   getDropdownSpeciesOptions,
   getDropdownSubspeciesOptions,
   getNextTaxonIdFromFilter,
-  getParentAndChildrenWithNamesForTaxon,
-  getPopulatedTaxonNamesForTaxon,
   getPrevTaxonIdFromFilter,
   getTaxaArrayByFilter,
   getTaxaSortedArray,

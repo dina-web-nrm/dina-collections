@@ -5,8 +5,9 @@ import { Button, Icon } from 'semantic-ui-react'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 
 import { createSortAlphabeticallyByProperty } from 'common/es5/sortMethods'
+import { getParentId } from 'coreModules/crud/utilities'
 import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/crudBlocks/keyObjectModule'
-import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+import crudActionCreators from 'coreModules/crud/actionCreators'
 
 import {
   SET_ITEM_EDIT,
@@ -25,7 +26,7 @@ const mapStateToProps = (state, { name }) => {
 }
 
 const mapDispatchToProps = {
-  getStorageLocationsAc: globalCrudSelectors.storageLocation.getMany,
+  getStorageLocationsAc: crudActionCreators.storageLocation.getMany,
 }
 
 const propTypes = {
@@ -59,9 +60,8 @@ class StorageLocationsTree extends Component {
           .map(storageLocation => {
             return {
               id: storageLocation.id,
-              parentId:
-                (storageLocation.parent && storageLocation.parent.id) || '0',
-              title: storageLocation.name,
+              parentId: getParentId(storageLocation) || '0',
+              title: storageLocation.attributes.name,
             }
           })
           .sort(sortAlphabetically)

@@ -184,6 +184,46 @@ const config = {
         },
       ],
     },
+    taxon: {
+      operations: [
+        {
+          operationId: 'taxonGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'taxonCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'taxonGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'taxonUpdate',
+          type: 'update',
+        },
+      ],
+    },
+    taxonName: {
+      operations: [
+        {
+          operationId: 'taxonNameGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'taxonNameCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'taxonNameGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'taxonNameUpdate',
+          type: 'update',
+        },
+      ],
+    },
     typeSpecimenType: {
       customSelectors: [
         {

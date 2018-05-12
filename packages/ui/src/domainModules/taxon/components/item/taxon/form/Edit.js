@@ -7,10 +7,12 @@ import { Button } from 'semantic-ui-react'
 import { BlockLoader } from 'coreModules/crudBlocks/components'
 import DropdownSearchLocalInput from 'coreModules/form/components/inputs/DropdownSearch/Local'
 import * as actionCreators from 'dataModules/taxonService/actionCreators'
+
 import {
-  createGetTaxonById,
-  ensureAllTaxonNamesFetched,
-} from 'dataModules/taxonService/higherOrderComponents'
+  createGetItemById,
+  createEnsureAllItemsFetched,
+} from 'coreModules/crud/higherOrderComponents'
+
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -214,7 +216,13 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxonNamesFetched(),
-  createGetTaxonById(),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
+  createGetItemById({
+    itemKey: 'taxon',
+    resource: 'taxon',
+  }),
   connect(mapStateToProps, mapDispatchToProps)
 )(Edit)

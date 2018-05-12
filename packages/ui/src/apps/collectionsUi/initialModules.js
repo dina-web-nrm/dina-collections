@@ -13,8 +13,6 @@ import * as localStorage from 'coreModules/localStorage'
 import * as logger from 'coreModules/logger'
 import * as routing from 'coreModules/routing'
 
-import * as taxonService from 'dataModules/taxonService'
-
 const modules = [
   api,
   bootstrap,
@@ -30,8 +28,6 @@ const modules = [
   localStorage,
   logger,
   routing,
-
-  taxonService,
 ]
 
 export default modules
