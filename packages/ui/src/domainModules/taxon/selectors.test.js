@@ -42,7 +42,7 @@ describe('domainModules/taxon/selectors', () => {
     })
     it('returns lookupResult', () => {
       expect(getLookupResult(state)).toEqual([
-        { id: '123', name: 'Sorex minutus' },
+        { attributes: { name: 'Sorex minutus' }, id: '123' },
       ])
     })
     it('returns lookup dropdown options', () => {
