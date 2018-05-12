@@ -7,8 +7,6 @@ module.exports = function filterWhereFactory(filterPathMap) {
     const { queryParams: { filter = {} } } = request
 
     const where = {}
-    console.log('filterPathMap', filterPathMap)
-    console.log('filter', filter)
     Object.keys(filter).forEach(filterKey => {
       const filterValue = filter[filterKey]
       const path = filterPathMap[filterKey]

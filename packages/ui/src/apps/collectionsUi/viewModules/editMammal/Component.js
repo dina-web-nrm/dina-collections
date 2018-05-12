@@ -7,30 +7,43 @@ import setDefaultValues from 'domainModules/collectionMammals/components/MammalF
 import nestedToCore from 'common/es5/formatObject/nestedToCore'
 import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 
 const log = createLog('modules:editMammal:Component')
+
+const mapStateToProps = state => {
+  return {
+    featureTypes: crudGlobalSelectors.featureType.getAll(state),
+  }
+}
 
 const mapDispatchToProps = {
   updateSpecimen: crudActionCreators.specimen.update,
 }
 
 const propTypes = {
-  // match: PropTypes.shape({
-  //   params: PropTypes.shape({
-  //     specimenId: PropTypes.string.isRequired,
-  //   }).isRequired,
-  // }).isRequired,
+  featureTypes: PropTypes.array.isRequired,
+  /* eslint-disable react/no-unused-prop-types */
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      specimenId: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  /* eslint-enable react/no-unused-prop-types */
   nestedItem: PropTypes.object.isRequired,
   updateSpecimen: PropTypes.func.isRequired,
 }
 
 class EditMammal extends Component {
   render() {
-    const { nestedItem, updateSpecimen } = this.props
+    const { nestedItem, updateSpecimen, featureTypes } = this.props
 
-    const initialValues = setDefaultValues({ specimen: nestedItem || {} })
+    const initialValues = setDefaultValues({
+      featureTypes,
+      specimen: nestedItem || {},
+    })
     log.render()
     log.debug('initialValues', initialValues)
     return (
@@ -63,5 +76,5 @@ export default compose(
     resolveRelationships: ['physicalObject'],
     resource: 'specimen',
   }),
-  connect(null, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(EditMammal)

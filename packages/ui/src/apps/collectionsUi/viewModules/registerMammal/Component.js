@@ -7,9 +7,16 @@ import nestedToCore from 'common/es5/formatObject/nestedToCore'
 import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const log = createLog('modules:editMammal:Component')
+
+const mapStateToProps = state => {
+  return {
+    featureTypes: crudGlobalSelectors.featureType.getAll(state),
+  }
+}
 
 const mapDispatchToProps = {
   createSpecimen: crudActionCreators.specimen.create,
@@ -47,4 +54,4 @@ class RegisterMammal extends Component {
 
 RegisterMammal.propTypes = propTypes
 
-export default connect(null, mapDispatchToProps)(RegisterMammal)
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterMammal)
