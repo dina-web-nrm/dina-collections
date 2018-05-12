@@ -4,30 +4,25 @@ import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
 import nestedToCore from 'common/es5/formatObject/nestedToCore'
+import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import crudActionCreators from 'coreModules/crud/actionCreators'
-import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const log = createLog('modules:editMammal:Component')
 
-const mapStateToProps = state => {
-  return {
-    initialValues: mammalSelectors.getMammalFormInitialValues(state),
-  }
-}
 const mapDispatchToProps = {
   createSpecimen: crudActionCreators.specimen.create,
 }
 
 const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
-  initialValues: PropTypes.object.isRequired,
 }
 
 class RegisterMammal extends Component {
   render() {
-    const { createSpecimen, initialValues } = this.props
+    const { createSpecimen } = this.props
+    const initialValues = setDefaultValues({ specimen: {} })
 
     log.render()
     log.debug('initialValues', initialValues)
@@ -52,4 +47,4 @@ class RegisterMammal extends Component {
 
 RegisterMammal.propTypes = propTypes
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterMammal)
+export default connect(null, mapDispatchToProps)(RegisterMammal)

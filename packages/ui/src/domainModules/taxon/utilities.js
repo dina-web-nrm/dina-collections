@@ -1,7 +1,7 @@
-export const mapTaxonNameToOption = ({ id, name }) => {
+export const mapTaxonNameToOption = ({ id, attributes }) => {
   return {
     key: id,
-    text: name,
+    text: attributes.name,
     value: id,
   }
 }

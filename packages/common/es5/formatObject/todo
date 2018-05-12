@@ -2,13 +2,16 @@ DONE
 * repair localities (edit / create) - attributes
 * make sure tests are passing
 * fix performance in load specimen
+* repair storage locations (attributes)
 
 TODO
-* Fix broken stuff
-  * repair storage locations (attributes)
-  * repair search (incl initial data)
-  * make sure tests are passing
-  * go through mammal form and remove all not need ensure stuff is fetched
+
+* fix load initial data
+* make sure tests are passing
+* go through mammal form and remove all not need ensure stuff is fetched
+* getItemByTypeId -> pass relationship key
+
+
 
 * Cleanup
   * improve resolveItemRelationship

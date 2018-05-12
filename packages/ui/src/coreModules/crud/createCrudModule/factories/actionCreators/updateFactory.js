@@ -10,7 +10,13 @@ export const dep = new Dependor({
 const log = createLog('coreModules:crud:actionCreators:update')
 
 export default function updateAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
+  {
+    operationId,
+    operationType,
+    options = {},
+    resource,
+    resourceActionTypes,
+  } = {}
 ) {
   const actionTypes = dep.getActionActionTypes({
     operationType,
@@ -53,6 +59,7 @@ export default function updateAcFactory(
       }
 
       const callParams = {
+        ...options,
         body: {
           data: {
             ...item,

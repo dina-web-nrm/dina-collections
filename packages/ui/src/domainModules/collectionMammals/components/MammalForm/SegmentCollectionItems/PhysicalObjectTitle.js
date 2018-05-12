@@ -24,7 +24,7 @@ const propTypes = {
     category: PropTypes.string,
     name: PropTypes.string,
   }),
-  storageLocation: PropTypes.shape({ name: PropTypes.string.isRequired }),
+  storageLocation: PropTypes.object,
 }
 const defaultProps = {
   category: undefined,
@@ -53,8 +53,11 @@ function PhysicalObjectTitle({
   return (
     <ThreeColumnGrid
       center={
-        storageLocation && (
-          <span style={{ fontWeight: 'normal' }}>{storageLocation.name}</span>
+        storageLocation &&
+        storageLocation.attributes && (
+          <span style={{ fontWeight: 'normal' }}>
+            {storageLocation.attributes.name}
+          </span>
         )
       }
       left={
@@ -63,16 +66,23 @@ function PhysicalObjectTitle({
             <Icon name="dropdown" />
             <ModuleTranslate
               fallback={
-                (preparationType && preparationType.category) || category
+                (preparationType &&
+                  preparationType.attributes &&
+                  preparationType.attributes.category) ||
+                category
               }
               textKey={
-                (preparationType && preparationType.category) || category
+                (preparationType &&
+                  preparationType.attributes &&
+                  preparationType.attributes.category) ||
+                category
               }
             />
             {preparationType &&
-              preparationType.name && (
+              preparationType.attributes &&
+              preparationType.attributes.name && (
                 <span style={{ fontWeight: 'normal' }}>
-                  {` (${preparationType.name})`}
+                  {` (${preparationType.attributes.name})`}
                 </span>
               )}
           </React.Fragment>

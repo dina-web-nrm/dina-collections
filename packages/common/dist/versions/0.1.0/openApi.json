@@ -8028,6 +8028,13 @@
                 },
                 "x-column": "featureObservations"
               },
+              "originInformation": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/originInformation"
+                },
+                "x-column": "originInformation"
+              },
               "events": {
                 "type": "array",
                 "items": {

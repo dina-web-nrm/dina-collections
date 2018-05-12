@@ -135,6 +135,19 @@ const config = {
       operations: [
         {
           operationId: 'specimenUpdate',
+          options: {
+            relationshipKeysToIncludeInBody: [
+              'causeOfDeathTypes',
+              'establishmentMeansTypes',
+              'featureTypes',
+              'identifierTypes',
+              'places',
+              'preparationTypes',
+              'taxa',
+              'typeSpecimenTypes',
+            ],
+            resourcesToModify: ['specimen', 'physicalObject'],
+          },
           type: 'update',
         },
         {

@@ -80,12 +80,12 @@ class DeterminationContent extends Component {
               fluid={!isSmallScreen}
               label={moduleTranslate({ textKey: 'copyToVerbatim' })}
               newValueSelector={state => {
-                const taxon = crudSelectors.taxon.getOne(
+                const taxonName = crudSelectors.taxonName.getOne(
                   state,
                   formValueSelector(state, taxonIdFieldKey)
                 )
                 return (
-                  taxon && taxon.attributes && taxon.attributes.scientificName
+                  taxonName && taxonName.attributes && taxonName.attributes.name
                 )
               }}
               pasteField={getPath('determinationVerbatim')}

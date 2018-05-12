@@ -27,6 +27,7 @@ export default function getManyAcFactory(
   }
 
   return function getManyAc({
+    isLookup, // TODO - remove this
     queryParams: queryParamsInput = {},
     relationships,
     throwError = false,
@@ -41,6 +42,7 @@ export default function getManyAcFactory(
       : queryParamsInput
 
     const callParams = {
+      isLookup,
       queryParams,
     }
 
