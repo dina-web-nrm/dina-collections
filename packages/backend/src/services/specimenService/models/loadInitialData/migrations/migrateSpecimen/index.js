@@ -1,3 +1,4 @@
+const nestedToCore = require('common/src/formatObject/nestedToCore')
 const createMigrator = require('../migratorFactory')
 const createLookupFactory = require('../lookupFactory')
 const createIdentifiers = require('./identifiers')
@@ -7,7 +8,6 @@ const createCollectingInformation = require('./collectingInformation')
 const createRecordHistoryEvents = require('./recordHistoryEvents')
 const validateIndividual = require('../utilities/test/validateIndividual')
 const validateSpecimen = require('../utilities/test/validateSpecimen')
-const createSpecimenFromIndividual = require('./createSpecimenFromIndividual')
 
 module.exports = function migrateSpecimen({ reporter, specimen }) {
   const lookup = createLookupFactory({ reporter })
@@ -37,10 +37,11 @@ module.exports = function migrateSpecimen({ reporter, specimen }) {
       path: 'migrations.numberOfValidSpecimens',
     })
   }
+  const normalizedSpecimen = nestedToCore({
+    item: migratedSpecimen,
+    type: 'specimen',
+  }).attributes
 
-  const normalizedSpecimen = createSpecimenFromIndividual(
-    migratedSpecimen.individual
-  )
   validateSpecimen(normalizedSpecimen)
 
   return normalizedSpecimen

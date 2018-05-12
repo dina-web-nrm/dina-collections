@@ -17,7 +17,7 @@ describe('domainModules/taxon/selectors', () => {
       lookup: {
         error: null,
         loading: false,
-        result: [{ id: '123', name: 'Sorex minutus' }],
+        result: [{ attributes: { name: 'Sorex minutus' }, id: '123' }],
         searchQueries: {
           'taxon.1': 'bat',
         },
