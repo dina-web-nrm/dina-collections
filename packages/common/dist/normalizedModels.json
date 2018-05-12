@@ -1545,6 +1545,63 @@
   "taxon": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "acceptedTaxonName": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "externalModelReference"
+              }
+            }
+          },
+          "children": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
+          "parent": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "externalModelReference"
+              }
+            }
+          },
+          "synonyms": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
+          "vernacularNames": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "id": {
         "type": "string",
         "x-summary": ""

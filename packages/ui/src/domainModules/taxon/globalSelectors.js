@@ -19,7 +19,7 @@ import {
 } from './constants'
 
 const {
-  taxon: { getItemsObject: getTaxa, getAll: getTaxaArray, getOne: getTaxon },
+  taxon: { getItemsObject: getTaxa, getAll: getTaxaArray },
   taxonName: {
     getItemsObject: getTaxonNames,
     getAll: getTaxonNamesArray,
@@ -152,7 +152,7 @@ const getTaxaArrayByFilter = createSelector(
       })
     }
 
-    if (searchQueryFilter && false) {
+    if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
       const firstLetterMatches = filteredTaxa.filter(
         ({ acceptedTaxonName }) => {
@@ -162,8 +162,11 @@ const getTaxaArrayByFilter = createSelector(
           )
           return (
             taxonName &&
-            taxonName.name &&
-            taxonName.name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+            taxonName.attributes &&
+            taxonName.attributes.name &&
+            taxonName.attributes.name
+              .toLowerCase()
+              .indexOf(lowerCaseSearchQuery) === 0
           )
         }
       )
@@ -175,22 +178,27 @@ const getTaxaArrayByFilter = createSelector(
         )
         return (
           taxonName &&
-          taxonName.name &&
-          taxonName.name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+          taxonName.attributes &&
+          taxonName.attributes.name &&
+          taxonName.attributes.name
+            .toLowerCase()
+            .indexOf(lowerCaseSearchQuery) > 0
         )
       })
 
       filteredTaxa = [...firstLetterMatches, ...otherMatches]
     }
 
-    if (groupFilter && false) {
+    if (groupFilter) {
       filteredTaxa = filteredTaxa.filter(({ acceptedTaxonName }) => {
         const taxonName = getTaxonNameResourceFromRelation(
           taxonNames,
           acceptedTaxonName
         )
-        return taxonName && taxonName.rank
-          ? taxonName.rank === groupFilter
+        return taxonName &&
+          taxonName.attributes.rank &&
+          taxonName.attributes.rank
+          ? taxonName.attributes.rank === groupFilter
           : groupFilter === MISSING_RANK
       })
     }

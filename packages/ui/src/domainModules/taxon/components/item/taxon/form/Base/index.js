@@ -3,24 +3,29 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Form, Grid } from 'semantic-ui-react'
-import { reduxForm } from 'redux-form'
+import {
+  reduxForm,
+  formValueSelector as formValueSelectorFactory,
+} from 'redux-form'
 
 import createLog from 'utilities/log'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { DropdownSearch, Field } from 'coreModules/form/components'
 import { taxonFormModels } from '../../../../../schemas'
-import globalSelectors from '../../../../../globalSelectors'
 import FormActions from './FormActions'
 
 export const FORM_NAME = 'taxon'
 
 const log = createLog('modules:taxon:taxon:BaseForm')
 
+const formValueSelector = formValueSelectorFactory(FORM_NAME)
+
 const mapStateToProps = state => {
+  const synonyms = formValueSelector(state, 'synonyms')
+  const vernacularNames = formValueSelector(state, 'vernacularNames')
   return {
-    taxonNamesWithAcceptedTaxon: globalSelectors.getTaxonNamesWithAcceptedToTaxon(
-      state
-    ),
+    synonyms,
+    vernacularNames,
   }
 }
 
@@ -69,9 +74,8 @@ export class BaseForm extends Component {
       submitFailed,
       submitSucceeded,
       submitting,
-      taxonNamesWithAcceptedTaxon,
+      taxonNamesWithAcceptedTaxon = [],
     } = this.props
-
     const taxaOptions = taxonNamesWithAcceptedTaxon.map(
       ({ name, acceptedToTaxon }) => {
         return {

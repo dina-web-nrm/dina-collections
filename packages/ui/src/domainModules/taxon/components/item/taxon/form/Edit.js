@@ -6,10 +6,8 @@ import { Button } from 'semantic-ui-react'
 
 import { BlockLoader } from 'coreModules/crudBlocks/components'
 import DropdownSearchLocalInput from 'coreModules/form/components/inputs/DropdownSearch/Local'
-import * as actionCreators from 'dataModules/taxonService/actionCreators'
-
 import {
-  createGetItemById,
+  createGetNestedItemById,
   createEnsureAllItemsFetched,
 } from 'coreModules/crud/higherOrderComponents'
 
@@ -26,14 +24,6 @@ const mapStateToProps = state => {
   return {
     taxonNameOptions: globalSelectors.getTaxonNameOptions(state),
   }
-}
-
-const mapDispatchToProps = {
-  updateTaxonNameAcceptedToTaxon: actionCreators.updateTaxonNameAcceptedToTaxon,
-  updateTaxonNameSynonymToTaxon: actionCreators.updateTaxonNameSynonymToTaxon,
-  updateTaxonNameVernacularToTaxon:
-    actionCreators.updateTaxonNameVernacularToTaxon,
-  updateTaxonParent: actionCreators.updateTaxonParent,
 }
 
 const propTypes = {
@@ -149,16 +139,11 @@ export class Edit extends PureComponent {
       taxon,
       taxonNameOptions,
     } = this.props
-
     if (!taxon || !allTaxonNamesFetched) {
       return <BlockLoader />
     }
 
-    const initialValues = taxon &&
-      taxon.parent && {
-        parentId: taxon.parent.id,
-      }
-
+    const initialValues = taxon
     return (
       <React.Fragment>
         <BaseForm
@@ -220,9 +205,17 @@ export default compose(
     allFetchedKey: 'allTaxonNamesFetched',
     resource: 'taxonName',
   }),
-  createGetItemById({
-    itemKey: 'taxon',
+  createGetNestedItemById({
+    include: [
+      'acceptedTaxonName',
+      'children',
+      'parent',
+      'synonyms',
+      'vernacularNames',
+    ],
+    nestedItemKey: 'taxon',
+    relationships: ['all'],
     resource: 'taxon',
   }),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps)
 )(Edit)

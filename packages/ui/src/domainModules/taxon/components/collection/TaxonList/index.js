@@ -66,7 +66,6 @@ const defaultProps = {
   filter: {},
   filterParent: undefined,
   taxa: [],
-  taxonNames: {},
 }
 
 class TaxaList extends Component {

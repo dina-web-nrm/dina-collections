@@ -1,12 +1,17 @@
 import { createSetter } from 'utilities/stateHelper'
 
-import {
-  TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
-  TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
-  TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
-} from 'dataModules/taxonService/actionTypes'
-
+import actionTypes from 'coreModules/crud/actionTypes'
 import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from '../../actionTypes'
+
+const {
+  taxonName: {
+    getMany: {
+      fail: failActionType,
+      request: requestActionType,
+      success: successActionType,
+    },
+  },
+} = actionTypes
 
 const setLookupError = createSetter(['error'])
 const setLookupLoading = createSetter(['loading'])
@@ -23,7 +28,7 @@ export const getInitialState = () => {
 
 export default function reducer(state = getInitialState(), action) {
   switch (action.type) {
-    case TAXON_SERVICE_GET_TAXON_NAMES_REQUEST: {
+    case requestActionType: {
       if (action.meta.isLookup) {
         return setLookupLoading(state, true)
       }
@@ -31,7 +36,7 @@ export default function reducer(state = getInitialState(), action) {
       return state
     }
 
-    case TAXON_SERVICE_GET_TAXON_NAMES_FAIL: {
+    case failActionType: {
       if (action.meta.isLookup) {
         const emptyResultState = setLookupResult(
           setLookupLoading(state, false),
@@ -43,7 +48,7 @@ export default function reducer(state = getInitialState(), action) {
       return state
     }
 
-    case TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS: {
+    case successActionType: {
       if (action.meta.isLookup) {
         const emptyErrorState = setLookupError(
           setLookupLoading(state, false),

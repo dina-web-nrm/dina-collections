@@ -4,14 +4,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
 
-import { createTaxon as createTaxonAc } from 'dataModules/taxonService/actionCreators'
-import { ensureAllTaxonNamesFetched } from 'dataModules/taxonService/higherOrderComponents'
 import { FORM_CANCEL, SET_ITEM_EDIT } from 'coreModules/crudBlocks/constants'
 
 import BaseForm, { FORM_NAME } from './Base'
 
 const mapDispatchToProps = {
-  createTaxon: createTaxonAc,
   destroy,
 }
 
@@ -73,7 +70,4 @@ export class Create extends PureComponent {
 Create.propTypes = propTypes
 Create.defaultProps = defaultProps
 
-export default compose(
-  ensureAllTaxonNamesFetched(),
-  connect(null, mapDispatchToProps)
-)(Create)
+export default compose(connect(null, mapDispatchToProps))(Create)
