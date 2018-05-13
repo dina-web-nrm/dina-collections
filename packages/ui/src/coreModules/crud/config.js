@@ -5,7 +5,7 @@ const config = {
         {
           text: {
             defaultLanguage: 'en',
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: true,
           },
           type: 'getAllAsOptions',
@@ -26,7 +26,7 @@ const config = {
       customSelectors: [
         {
           text: {
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: true,
           },
           type: 'getAllAsOptions',
@@ -43,11 +43,25 @@ const config = {
         },
       ],
     },
+
+    featureType: {
+      operations: [
+        {
+          operationId: 'featureTypeGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'featureTypeGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
+
     identifierType: {
       customSelectors: [
         {
           text: {
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: false,
           },
           type: 'getAllAsOptions',
@@ -61,6 +75,26 @@ const config = {
         {
           operationId: 'identifierTypeGetMany',
           type: 'getMany',
+        },
+      ],
+    },
+    physicalObject: {
+      operations: [
+        {
+          operationId: 'physicalObjectGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'physicalObjectCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'physicalObjectGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'physicalObjectUpdate',
+          type: 'update',
         },
       ],
     },
@@ -84,11 +118,147 @@ const config = {
         },
       ],
     },
+
+    preparationType: {
+      operations: [
+        {
+          operationId: 'preparationTypeGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'preparationTypeGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
+
+    specimen: {
+      operations: [
+        {
+          operationId: 'specimenUpdate',
+          options: {
+            relationshipKeysToIncludeInBody: [
+              'causeOfDeathTypes',
+              'establishmentMeansTypes',
+              'featureTypes',
+              'identifierTypes',
+              'places',
+              'preparationTypes',
+              'taxa',
+              'typeSpecimenTypes',
+            ],
+            resourcesToModify: ['specimen', 'physicalObject'],
+          },
+          type: 'update',
+        },
+        {
+          operationId: 'specimenCreate',
+          options: {
+            relationshipKeysToIncludeInBody: [
+              'causeOfDeathTypes',
+              'establishmentMeansTypes',
+              'featureTypes',
+              'identifierTypes',
+              'places',
+              'preparationTypes',
+              'taxa',
+              'typeSpecimenTypes',
+            ],
+            resourcesToModify: ['specimen', 'physicalObject'],
+          },
+          type: 'create',
+        },
+        {
+          operationId: 'specimenGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'specimenGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
+    storageLocation: {
+      operations: [
+        {
+          operationId: 'storageLocationGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'storageLocationCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'storageLocationGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'storageLocationUpdate',
+          type: 'update',
+        },
+      ],
+    },
+    taxon: {
+      operations: [
+        {
+          operationId: 'taxonGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'taxonCreate',
+          // options: {
+          //   relationshipKeysToIncludeInBody: [
+          //     'acceptedTaxonName',
+          //     'parent',
+          //     'synonyms',
+          //     'vernacularNames',
+          //   ],
+          // },
+          type: 'create',
+        },
+        {
+          operationId: 'taxonGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'taxonUpdate',
+          // options: {
+          //   relationshipKeysToIncludeInBody: [
+          //     'acceptedTaxonName',
+          //     'parent',
+          //     'synonyms',
+          //     'vernacularNames',
+          //   ],
+          // },
+          type: 'update',
+        },
+      ],
+    },
+    taxonName: {
+      operations: [
+        {
+          operationId: 'taxonNameGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'taxonNameCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'taxonNameGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'taxonNameUpdate',
+          type: 'update',
+        },
+      ],
+    },
     typeSpecimenType: {
       customSelectors: [
         {
           text: {
-            parameter: 'name',
+            parameter: 'attributes.name',
             translated: false,
           },
           type: 'getAllAsOptions',

@@ -26,6 +26,9 @@ module.exports = {
                   operationId: {
                     type: 'string',
                   },
+                  options: {
+                    type: 'object',
+                  },
                   type: {
                     type: 'string',
                   },

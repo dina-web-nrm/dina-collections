@@ -205,6 +205,75 @@ describe('coreModules/crud/createCrudModule/factories/actionHandlers/updateState
 
         expect(testValue).toEqual(expectedResult)
       })
+
+      it('does shallow merge of relationships', () => {
+        const state = {
+          items: {
+            1: {
+              firstName: 'Hal', // this is a pre-existing property
+              id: '1',
+              lastName: '2000',
+              relationships: {
+                project: {
+                  data: {
+                    id: 123,
+                    type: 'project',
+                  },
+                },
+              },
+            },
+          },
+        }
+        deepFreeze(state)
+
+        const action = {
+          payload: [
+            {
+              id: '1',
+              relationships: {
+                hobbies: {
+                  data: [
+                    {
+                      id: 123,
+                      type: 'hobby',
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+          type: 'someType',
+        }
+
+        const testValue = updateStateWithMany(state, action)
+        const expectedResult = {
+          items: {
+            1: {
+              firstName: 'Hal',
+              id: '1',
+              lastName: '2000',
+              relationships: {
+                hobbies: {
+                  data: [
+                    {
+                      id: 123,
+                      type: 'hobby',
+                    },
+                  ],
+                },
+                project: {
+                  data: {
+                    id: 123,
+                    type: 'project',
+                  },
+                },
+              },
+            },
+          },
+        }
+
+        expect(testValue).toEqual(expectedResult)
+      })
     })
   })
 })

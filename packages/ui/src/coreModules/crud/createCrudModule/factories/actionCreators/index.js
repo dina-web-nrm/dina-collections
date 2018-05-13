@@ -27,7 +27,7 @@ export const dep = new Dependor({
 const log = createLog('coreModules:crud:actionCreators')
 
 export default function createActionCreators(
-  { resourceActionTypes, resourceSpecification = {} } = {}
+  { actionTypes, resourceActionTypes, resourceSpecification = {} } = {}
 ) {
   const { resource, operations } = resourceSpecification
 
@@ -40,7 +40,7 @@ export default function createActionCreators(
   }
 
   return operations.reduce((actionCreators, operation) => {
-    const { type: operationType, operationId } = operation
+    const { options, type: operationType, operationId } = operation
     if (!operationType) {
       return actionCreators
     }
@@ -51,8 +51,10 @@ export default function createActionCreators(
     }
 
     const actionCreator = actionCreatorFactory({
+      actionTypes,
       operationId,
       operationType,
+      options,
       resource,
       resourceActionTypes,
     })
