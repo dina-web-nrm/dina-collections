@@ -8,7 +8,7 @@ import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { StorageLocationDropdownSearch } from 'domainModules/storage/components'
-import { createGetPreparationTypeById } from 'dataModules/curatedListService/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
 import {
   SKELETON,
@@ -24,6 +24,7 @@ const log = createLog(
 )
 
 const mapStateToProps = (state, { preparationType, category }) => {
+  // TODO use selector for preparationType options
   return {
     preparationTypeOptions: curatedListSelectors.getPreparationTypeOptions(
       state,
@@ -130,7 +131,11 @@ PhysicalObjectContent.propTypes = propTypes
 PhysicalObjectContent.defaultProps = defaultProps
 
 export default compose(
-  createGetPreparationTypeById('preparationTypeId'),
+  createGetItemById({
+    idPath: 'preparationTypeId',
+    relationships: null,
+    resource: 'preparationType',
+  }),
   connect(mapStateToProps),
   withI18n({
     module: 'collectionMammals',

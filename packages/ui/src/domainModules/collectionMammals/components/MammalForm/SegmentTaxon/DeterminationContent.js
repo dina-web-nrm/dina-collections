@@ -8,7 +8,7 @@ import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { ButtonCopyPasteField, Field, Input } from 'coreModules/form/components'
 
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
-import taxonSelectors from 'dataModules/taxonService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 
 const log = createLog(
@@ -80,11 +80,13 @@ class DeterminationContent extends Component {
               fluid={!isSmallScreen}
               label={moduleTranslate({ textKey: 'copyToVerbatim' })}
               newValueSelector={state => {
-                const taxon = taxonSelectors.getTaxon(
+                const taxonName = crudSelectors.taxonName.getOne(
                   state,
                   formValueSelector(state, taxonIdFieldKey)
                 )
-                return taxon && taxon.scientificName
+                return (
+                  taxonName && taxonName.attributes && taxonName.attributes.name
+                )
               }}
               pasteField={getPath('determinationVerbatim')}
             />

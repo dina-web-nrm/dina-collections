@@ -11,7 +11,7 @@ import { FIRST_EXPANDED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import specimenSelectors from 'dataModules/specimenService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import { CustomData, Field, Input } from 'coreModules/form/components'
 import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
@@ -26,7 +26,7 @@ const mapStateToProps = (state, { formValueSelector, specimenId }) => {
   return {
     determinations: formValueSelector(state, 'determinations'),
     hasSpecimen: !!(
-      specimenId && specimenSelectors.getSpecimen(state, specimenId)
+      specimenId && crudSelectors.specimen.getOne(state, specimenId)
     ),
     isSmallScreen: sizeSelectors.getIsSmall(state),
     taxonInformation: formValueSelector(state, 'taxonInformation'),

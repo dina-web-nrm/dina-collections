@@ -12,7 +12,7 @@ const propTypes = {
 }
 
 function RecordHistoryEventsTable({ recordHistoryEvents }) {
-  if (!recordHistoryEvents.length) {
+  if (!(recordHistoryEvents && recordHistoryEvents.length)) {
     return null
   }
   return (

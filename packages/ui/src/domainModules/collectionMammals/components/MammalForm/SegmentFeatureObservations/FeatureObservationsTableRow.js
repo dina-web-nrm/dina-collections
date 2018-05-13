@@ -30,10 +30,7 @@ class FeatureObservationTableRow extends PureComponent {
     const { featureType, getPath, index } = this.props
 
     const {
-      key,
-      selectableMethods,
-      selectableUnits,
-      selectableValues,
+      attributes: { key, selectableMethods, selectableUnits, selectableValues },
     } = featureType
 
     const hasSelectableMethods = !!selectableMethods

@@ -85,6 +85,7 @@ class LookupMammals extends Component {
 
   render() {
     const { result, searchParameters } = this.props
+
     log.render()
     return (
       <div>
@@ -132,7 +133,7 @@ class LookupMammals extends Component {
           </Table.Header>
           {result.length ? (
             <Table.Body>
-              {result.map(({ id, identifiers } = {}) => {
+              {result.map(({ id, identifiers = [] } = {}) => {
                 const catalogNumberIdentifier =
                   identifiers.find(
                     ({ identifierType }) => identifierType === 'catalogNumber'

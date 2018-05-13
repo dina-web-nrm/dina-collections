@@ -61,69 +61,46 @@ const mutations = [
   },
 ]
 const expectedOutput = {
-  causeOfDeathTypes: [],
-  establishmentMeansTypes: [],
-  featureTypes: [
-    {
-      id: '22',
-      type: 'featureType',
-    },
-  ],
-  physicalObjects: [
-    {
-      id: '1',
-      type: 'physicalObject',
-    },
-  ],
-  places: [],
-  preparationTypes: [],
-  specimen: {
-    individual: {
-      collectingInformation: [],
-      collectionItems: [
-        {
-          physicalObject: {
-            id: '1',
-            type: 'physicalObject',
-          },
+  individual: {
+    collectionItems: [
+      {
+        physicalObject: {
+          id: '1',
+          type: 'physicalObject',
         },
-      ],
-      deathInformation: [],
-      determinations: [
-        {
-          determinedByAgentText: 'John, Doe',
-          taxon: {
-            id: '1078',
-            type: 'taxon',
-          },
+      },
+    ],
+    determinations: [
+      {
+        determinedByAgentText: 'John, Doe',
+        taxon: {
+          id: '1078',
+          type: 'taxon',
         },
-      ],
-      featureObservations: [
-        {
-          featureObservationText: 'female',
-          featureType: {
-            id: '22',
-            type: 'featureType',
-          },
+      },
+    ],
+    featureObservations: [
+      {
+        featureObservationText: 'female',
+        featureType: {
+          id: '22',
         },
-      ],
-      identifiers: [
-        {
-          identifierType: 'catalogNumber',
-          value: '444444',
-        },
-      ],
-      recordHistoryEvents: [],
-      taxonInformation: {},
-    },
+      },
+    ],
+    identifiers: [
+      {
+        identifierType: 'catalogNumber',
+        value: '444444',
+      },
+    ],
+    recordHistoryEvents: [
+      {
+        description: 'Creation of catalog card',
+        system: 'catalogCard',
+      },
+    ],
+    taxonInformation: {},
   },
-  storageLocations: [],
-  taxa: [
-    {
-      id: '1078',
-      type: 'taxon',
-    },
-  ],
 }
 
 const scenario = {
@@ -132,7 +109,7 @@ const scenario = {
   input: {
     featureTypes,
     physicalObjects,
-    specimen: { attributes: { individual } },
+    specimen: { individual },
     taxa,
   },
   mutations,

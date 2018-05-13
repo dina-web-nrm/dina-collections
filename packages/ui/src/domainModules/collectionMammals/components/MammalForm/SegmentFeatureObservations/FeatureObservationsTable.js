@@ -14,7 +14,7 @@ const log = createLog(
 )
 
 const getTableColumns = features => {
-  const { selectableMethods, selectableUnits } = features[0]
+  const { selectableMethods, selectableUnits } = features[0].attributes
   const columns = ['value']
 
   if (selectableUnits) {
@@ -29,7 +29,6 @@ const getTableColumns = features => {
 
 const makeMapStateToProps = () => {
   const getFeatureTypesInGroups = makeGetFeatureTypesInGroups()
-
   return (state, { groups }) => {
     return {
       featureTypes: getFeatureTypesInGroups(state, groups),
@@ -46,7 +45,6 @@ function FeatureObservationTable({ changeFieldValue, featureTypes }) {
   if (!featureTypes.length) {
     return null
   }
-
   const tableColumns = getTableColumns(featureTypes)
 
   log.render()
@@ -75,7 +73,7 @@ function FeatureObservationTable({ changeFieldValue, featureTypes }) {
               changeFieldValue={changeFieldValue}
               featureType={featureType}
               index={featureType.id}
-              key={featureType.key}
+              key={featureType.attributes.key}
             />
           )
         })}
