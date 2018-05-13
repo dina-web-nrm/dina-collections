@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updateTaxonName as updateTaxonNameAc } from 'dataModules/taxonService/actionCreators'
 import {
-  createGetTaxonNameById,
-  ensureAllTaxonNamesFetched,
-} from 'dataModules/taxonService/higherOrderComponents'
+  createGetItemById,
+  createEnsureAllItemsFetched,
+} from 'coreModules/crud/higherOrderComponents'
+
+import crudActionCreators from 'coreModules/crud/actionCreators'
+
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -14,7 +16,7 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  updateTaxonName: updateTaxonNameAc,
+  updateTaxonName: crudActionCreators.taxonName.update,
 }
 
 const propTypes = {
@@ -82,7 +84,13 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxonNamesFetched(),
-  createGetTaxonNameById(),
+  createGetItemById({
+    itemKey: 'taxonName',
+    resource: 'taxonName',
+  }),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
   connect(null, mapDispatchToProps)
 )(Edit)

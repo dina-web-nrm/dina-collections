@@ -3,26 +3,28 @@ import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import {
   BlockLoader,
   ParentChildTables,
 } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
-import {
-  createGetTaxonById,
-  ensureAllTaxaFetched,
-  ensureAllTaxonNamesFetched,
-} from 'dataModules/taxonService/higherOrderComponents'
-import taxonSelectors from '../../../../globalSelectors'
+
 import RelatedTaxonNamesTable from '../RelatedTaxonNamesTable'
 
-const mapStateToProps = (state, { taxon }) => {
-  const { parent, children } =
-    (taxon &&
-      taxon.id &&
-      taxonSelectors.getParentAndChildrenWithNamesForTaxon(state, taxon.id)) ||
-    {}
+const mapStateToProps = (state, ownProps) => {
+  const { item: taxon } = ownProps
+  const parentId = getParentId(taxon)
+  const parent = parentId && globalCrudSelectors.taxon.getOne(state, parentId)
+  const children = getChildrenIds(taxon).map(id => {
+    return (
+      globalCrudSelectors.taxon.getOne(state, id) || {
+        id,
+      }
+    )
+  })
 
   return {
     children,
@@ -32,8 +34,6 @@ const mapStateToProps = (state, { taxon }) => {
 }
 
 const propTypes = {
-  allTaxaFetched: PropTypes.bool.isRequired,
-  allTaxonNamesFetched: PropTypes.bool.isRequired,
   children: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -68,16 +68,8 @@ export class Inspect extends PureComponent {
   }
 
   render() {
-    const {
-      allTaxaFetched,
-      allTaxonNamesFetched,
-      children,
-      onInteraction,
-      parent,
-      taxon,
-    } = this.props
-
-    if (!taxon || !allTaxaFetched || !allTaxonNamesFetched) {
+    const { children, onInteraction, parent, taxon } = this.props
+    if (!taxon) {
       return <BlockLoader />
     }
 
@@ -116,8 +108,16 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxaFetched(),
-  ensureAllTaxonNamesFetched(),
-  createGetTaxonById(),
+  createGetItemById({
+    include: [
+      'acceptedTaxonName',
+      'children',
+      'parent',
+      'synonyms',
+      'vernacularNames',
+    ],
+    relationships: ['all'],
+    resource: 'taxon',
+  }),
   connect(mapStateToProps)
 )(Inspect)

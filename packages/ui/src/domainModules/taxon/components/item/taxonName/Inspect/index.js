@@ -4,7 +4,8 @@ import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { BlockLoader } from 'coreModules/crudBlocks/components'
-import { createGetTaxonNameById } from 'dataModules/taxonService/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+
 import { SET_TAXON_INSPECT } from '../../../../constants'
 import TaxonNameLabel from '../Label'
 
@@ -53,13 +54,12 @@ export class Inspect extends PureComponent {
 
     const {
       id,
-      name,
-      taxonNameType,
-      rank,
-      rubinNumber,
-      acceptedToTaxon,
-      synonymToTaxon,
-      vernacularToTaxon,
+      attributes: { name, taxonNameType, rank, rubinNumber },
+      relationships: {
+        acceptedToTaxon,
+        synonymToTaxon,
+        vernacularToTaxon,
+      } = {},
     } = taxonName
 
     return (
@@ -123,4 +123,10 @@ export class Inspect extends PureComponent {
 Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
-export default compose(createGetTaxonNameById())(Inspect)
+export default compose(
+  createGetItemById({
+    itemKey: 'taxonName',
+    relationships: ['all'],
+    resource: 'taxonName',
+  })
+)(Inspect)
