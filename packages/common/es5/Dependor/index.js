@@ -20,9 +20,9 @@ var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
-var _extends3 = require('babel-runtime/helpers/extends');
+var _extends4 = require('babel-runtime/helpers/extends');
 
-var _extends4 = _interopRequireDefault(_extends3);
+var _extends5 = _interopRequireDefault(_extends4);
 
 var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
 
@@ -42,6 +42,14 @@ var getKey = function getKey(key) {
 
 var testing = process.env.NODE_ENV === 'test';
 
+var defaultMockHandler = function defaultMockHandler() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return args;
+};
+
 var Dependor = function () {
   function Dependor() {
     var _this = this;
@@ -50,7 +58,7 @@ var Dependor = function () {
     (0, _classCallCheck3.default)(this, Dependor);
 
     var originalDependenciesKey = getKey('dependencies');
-    this[originalDependenciesKey] = (0, _extends4.default)({}, dependencies);
+    this[originalDependenciesKey] = (0, _extends5.default)({}, dependencies);
 
     (0, _keys2.default)(dependencies).forEach(function (key) {
       if (_this[key]) {
@@ -66,11 +74,15 @@ var Dependor = function () {
       var _this2 = this;
 
       (0, _keys2.default)(dependencies).forEach(function (key) {
-        if (_this2[key]) {
-          throw new Error('Cant add dependency ' + key + '. Already exists');
-        }
         _this2[key] = dependencies[key];
       });
+      var originalDependenciesKey = getKey('dependencies');
+      this[originalDependenciesKey] = (0, _extends5.default)({}, this[originalDependenciesKey], dependencies);
+    }
+  }, {
+    key: 'createSpies',
+    value: function createSpies() {
+      console.error('not allowed to call autoMock outside test');
     }
   }, {
     key: 'mock',
@@ -115,30 +127,48 @@ var TestDependor = function (_Dependor) {
       var keysToFreeze = keys || (0, _keys2.default)(originalDependencies);
       this.mock(keysToFreeze.reduce(function (obj, key) {
         if (_this4[key] === originalDependencies[key]) {
-          return (0, _extends4.default)({}, obj, (0, _defineProperty3.default)({}, key, createFreezeFunction(key)));
+          return (0, _extends5.default)({}, obj, (0, _defineProperty3.default)({}, key, createFreezeFunction(key)));
         }
         return obj;
       }, {}));
     }
   }, {
+    key: 'createSpies',
+    value: function createSpies(handlers) {
+      var _this5 = this;
+
+      var originalDependenciesKey = getKey('dependencies');
+      var originalDependencies = this[originalDependenciesKey];
+      return (0, _keys2.default)(originalDependencies).reduce(function (spies, dependency) {
+        var spy = jest.fn();
+        var func = function func() {
+          spy.apply(undefined, arguments);
+          var handler = handlers && handlers[dependency] || defaultMockHandler;
+          return handler.apply(undefined, arguments);
+        };
+        _this5.mock((0, _defineProperty3.default)({}, dependency, func));
+        return (0, _extends5.default)({}, spies, (0, _defineProperty3.default)({}, dependency, spy));
+      }, {});
+    }
+  }, {
     key: 'mock',
     value: function mock(dependencies) {
-      var _this5 = this;
+      var _this6 = this;
 
       if (!testing) {
         throw new Error('Dependor _mock should only be used in testing');
       }
       (0, _keys2.default)(dependencies).forEach(function (key) {
-        if (!_this5[key]) {
+        if (!_this6[key]) {
           throw new Error('Cant mock dependency ' + key + '. Dont exists');
         }
-        _this5[key] = dependencies[key];
+        _this6[key] = dependencies[key];
       });
     }
   }, {
     key: 'reset',
     value: function reset(keys) {
-      var _this6 = this;
+      var _this7 = this;
 
       if (!testing) {
         throw new Error('Dependor _reset should only be used in testing');
@@ -147,16 +177,16 @@ var TestDependor = function (_Dependor) {
       var originalDependencies = this[originalDependenciesKey];
       if (!keys) {
         return (0, _keys2.default)(originalDependencies).forEach(function (key) {
-          _this6[key] = originalDependencies[key];
+          _this7[key] = originalDependencies[key];
         });
       }
 
       if (Array.isArray(keys)) {
         return keys.forEach(function (key) {
-          if (!_this6[key]) {
+          if (!_this7[key]) {
             throw new Error('Cant reset dependency ' + key + '. Dont exists');
           }
-          _this6[key] = originalDependencies[key];
+          _this7[key] = originalDependencies[key];
         });
       }
 
