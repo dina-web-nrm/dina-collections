@@ -1,6 +1,41 @@
 {
   "additionalProperties": false,
   "properties": {
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "acceptedToTaxon": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "synonymToTaxon": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "vernacularToTaxon": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
     "id": {
       "type": "string"
     },
