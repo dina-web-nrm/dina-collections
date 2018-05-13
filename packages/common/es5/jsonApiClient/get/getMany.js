@@ -30,9 +30,16 @@ module.exports = function getMany(_ref) {
   }), {
     queryParams: mappedQueryParams
   }).then(function (response) {
-    return fetchIncluded(response.data).then(function (included) {
+    return fetchIncluded({
+      items: response.data,
+      openApiClient: openApiClient,
+      relationSpecification: relationSpecification
+    }).then(function (included) {
       return (0, _extends3.default)({}, response, {
-        included: included
+        included: included.map(function (item) {
+          delete item.path;
+          return item;
+        })
       });
     });
   });

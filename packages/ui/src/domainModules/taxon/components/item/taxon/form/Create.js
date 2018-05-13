@@ -33,13 +33,9 @@ export class Create extends PureComponent {
   }
 
   render() {
-    const { allTaxonNamesFetched, itemId, onInteraction, ...rest } = this.props
+    const { itemId, onInteraction, ...rest } = this.props
 
-    if (!allTaxonNamesFetched) {
-      return null
-    }
-
-    const initialValues = itemId && { parentId: itemId }
+    const initialValues = itemId && { parent: { id: itemId } }
 
     return (
       <BaseForm

@@ -5,22 +5,18 @@ DONE
 * repair storage locations (attributes)
 
 TODO
-
-* fix load initial data
-* make sure tests are passing
+* migrate taxonomy to crud module
+* Add relationships to model if no x-path and normalize === false
 * go through mammal form and remove all not need ensure stuff is fetched
-* getItemByTypeId -> pass relationship key
 
-
-
-* Cleanup
+CLEANUP
   * improve resolveItemRelationship
-* Next step
-  * migrate taxonomy to crud module
+  * getItemByTypeId -> pass relationship key
   * remove not used files
-* Merge normalized names specifications
-* Use same common functions in backend
-* remove normalize (build stuff backend need based on schema)
 
-FIX
-* is x-column needed?
+LATER
+  * Merge normalized names specifications
+  * Use same common functions in backend
+  * remove normalize (build stuff backend need based on schema)
+  * is x-column needed?
+  * write tests

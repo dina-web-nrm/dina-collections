@@ -49,9 +49,13 @@ module.exports = function extractItemRelationship(_ref) {
     });
   } else {
     if (relationshipFormat === 'object') {
-      relationshipObject = item[relationshipKey];
-    } else {
-      relationshipArray = item[relationshipKey];
+      relationshipObject = item[relationshipKey] && item[relationshipKey].id ? { id: item[relationshipKey].id, type: relationshipType } : null;
+    } else if (item[relationshipKey]) {
+      relationshipArray = item[relationshipKey].map(function (arrayItem) {
+        return arrayItem && arrayItem.id ? { id: arrayItem.id, type: relationshipType } : null;
+      }).filter(function (arrayItem) {
+        return !!arrayItem;
+      });
     }
     delete item[relationshipKey];
   }
@@ -66,7 +70,7 @@ module.exports = function extractItemRelationship(_ref) {
     objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipObject);
   }
 
-  if (relationshipFormat === 'array' && relationshipArray) {
+  if (relationshipFormat === 'array' && relationshipArray && relationshipArray.length) {
     objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipArray);
   }
 

@@ -48,8 +48,10 @@ function update() {
       throw new Error('id is required');
     }
 
-    if (!(item.attributes && (0, _keys2.default)(item.attributes).length)) {
-      throw new Error('attributes are required');
+    if (!(item.attributes && (0, _keys2.default)(item.attributes).length) && !(item.relationships && (0, _keys2.default)(item.relationships).length)) {
+      return {
+        data: item
+      };
     }
 
     if (!resourcesToModify) {

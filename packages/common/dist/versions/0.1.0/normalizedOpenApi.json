@@ -8171,6 +8171,62 @@
       "taxon": {
         "additionalProperties": false,
         "properties": {
+          "acceptedTaxonName": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "#/components/schemas/externalModelReference"
+              }
+            },
+            "x-summary": ""
+          },
+          "children": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/externalModelReference"
+                }
+              }
+            },
+            "x-summary": ""
+          },
+          "parent": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "#/components/schemas/externalModelReference"
+              }
+            },
+            "x-summary": ""
+          },
+          "synonyms": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/externalModelReference"
+                }
+              }
+            },
+            "x-summary": ""
+          },
+          "vernacularNames": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/externalModelReference"
+                }
+              }
+            },
+            "x-summary": ""
+          },
           "id": {
             "type": "string",
             "x-summary": ""

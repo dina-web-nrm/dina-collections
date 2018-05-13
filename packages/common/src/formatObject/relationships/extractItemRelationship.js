@@ -52,9 +52,18 @@ module.exports = function extractItemRelationship({
     })
   } else {
     if (relationshipFormat === 'object') {
-      relationshipObject = item[relationshipKey]
-    } else {
+      relationshipObject =
+        item[relationshipKey] && item[relationshipKey].id
+          ? { id: item[relationshipKey].id, type: relationshipType }
+          : null
+    } else if (item[relationshipKey]) {
       relationshipArray = item[relationshipKey]
+        .map(arrayItem => {
+          return arrayItem && arrayItem.id
+            ? { id: arrayItem.id, type: relationshipType }
+            : null
+        })
+        .filter(arrayItem => !!arrayItem)
     }
     delete item[relationshipKey] // eslint-disable-line
   }
@@ -73,7 +82,11 @@ module.exports = function extractItemRelationship({
     )
   }
 
-  if (relationshipFormat === 'array' && relationshipArray) {
+  if (
+    relationshipFormat === 'array' &&
+    relationshipArray &&
+    relationshipArray.length
+  ) {
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,

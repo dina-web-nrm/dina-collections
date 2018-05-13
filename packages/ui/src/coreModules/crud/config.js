@@ -131,6 +131,7 @@ const config = {
         },
       ],
     },
+
     specimen: {
       operations: [
         {
@@ -205,6 +206,14 @@ const config = {
         },
         {
           operationId: 'taxonCreate',
+          // options: {
+          //   relationshipKeysToIncludeInBody: [
+          //     'acceptedTaxonName',
+          //     'parent',
+          //     'synonyms',
+          //     'vernacularNames',
+          //   ],
+          // },
           type: 'create',
         },
         {
@@ -213,6 +222,14 @@ const config = {
         },
         {
           operationId: 'taxonUpdate',
+          // options: {
+          //   relationshipKeysToIncludeInBody: [
+          //     'acceptedTaxonName',
+          //     'parent',
+          //     'synonyms',
+          //     'vernacularNames',
+          //   ],
+          // },
           type: 'update',
         },
       ],

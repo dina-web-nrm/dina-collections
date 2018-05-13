@@ -180,7 +180,7 @@ class TaxonNameList extends Component {
         {taxonNames
           .map((taxonName, index) => {
             const cursorFocus = index === cursorIndex
-            const { name, id, rank } = taxonName
+            const { attributes: { name, rank }, id } = taxonName
 
             return (
               <ListItem

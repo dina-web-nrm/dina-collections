@@ -54,13 +54,12 @@ export class Inspect extends PureComponent {
 
     const {
       id,
-      name,
-      taxonNameType,
-      rank,
-      rubinNumber,
-      acceptedToTaxon,
-      synonymToTaxon,
-      vernacularToTaxon,
+      attributes: { name, taxonNameType, rank, rubinNumber },
+      relationships: {
+        acceptedToTaxon,
+        synonymToTaxon,
+        vernacularToTaxon,
+      } = {},
     } = taxonName
 
     return (
@@ -127,6 +126,7 @@ Inspect.defaultProps = defaultProps
 export default compose(
   createGetItemById({
     itemKey: 'taxonName',
+    relationships: ['all'],
     resource: 'taxonName',
   })
 )(Inspect)

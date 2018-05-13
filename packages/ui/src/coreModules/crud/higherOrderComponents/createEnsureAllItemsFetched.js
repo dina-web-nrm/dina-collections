@@ -12,6 +12,7 @@ import {
 
 const createEnsureAllItemsFetched = ({
   allFetchedKey,
+  include = [],
   relationships,
   resource,
 }) => ComposedComponent => {
@@ -78,11 +79,11 @@ const createEnsureAllItemsFetched = ({
         this.props.setFetchingAllItems(true, {
           resource,
         })
-        const queryParams = relationships ? { relationships } : {}
 
         this.props
           .getMany({
-            queryParams,
+            include,
+            relationships,
           })
           .then(() => {
             this.props.setAllItemsFetched(true, {

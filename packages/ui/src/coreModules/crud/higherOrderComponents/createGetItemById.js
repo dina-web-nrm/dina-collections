@@ -13,6 +13,7 @@ const createGetItemById = ({
   idPath = 'itemId',
   include = [],
   itemKey,
+  refresh = true,
   relationships = ['all'],
   resource,
 }) => ComposedComponent => {
@@ -71,9 +72,11 @@ const createGetItemById = ({
 
   class GetItemById extends Component {
     componentDidMount() {
-      const { itemId } = this.props
+      const { item, itemId } = this.props
       if (itemId && !config.isTest) {
-        this.props.getOne({ id: itemId, include, relationships })
+        if (refresh || !item) {
+          this.props.getOne({ id: itemId, include, relationships })
+        }
       }
     }
 
@@ -83,7 +86,9 @@ const createGetItemById = ({
         nextProps.itemId !== this.props.itemId &&
         !config.isTest
       ) {
-        this.props.getOne({ id: nextProps.itemId, include, relationships })
+        if (refresh || !nextProps.item) {
+          this.props.getOne({ id: nextProps.itemId, include, relationships })
+        }
       }
     }
 

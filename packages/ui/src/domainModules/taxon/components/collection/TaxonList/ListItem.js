@@ -147,6 +147,7 @@ ListItem.defaultProps = defaultProps
 export default createGetItemById({
   idPath: 'taxon.relationships.acceptedTaxonName.data.id',
   itemKey: 'acceptedTaxonName',
+  refresh: false,
   relationships: [],
   resource: 'taxonName',
 })(ListItem)

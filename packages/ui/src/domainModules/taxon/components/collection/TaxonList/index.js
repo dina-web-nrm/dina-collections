@@ -257,6 +257,7 @@ TaxaList.defaultProps = defaultProps
 export default compose(
   createEnsureAllItemsFetched({
     allFetchedKey: 'allTaxaFetched',
+    include: ['acceptedTaxonName'],
     relationships: ['parent', 'acceptedTaxonName'],
     resource: 'taxon',
   }),

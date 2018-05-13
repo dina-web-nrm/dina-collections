@@ -66,17 +66,6 @@ describe('jsonApiClient/modify/update', function () {
       resourcesToModify: ['user']
     })).rejects.toThrow('id is required');
   });
-  it('rejects if attributes not provided', function () {
-    expect.assertions(1);
-    return expect(update({
-      item: {
-        id: 1,
-        type: 'user'
-      },
-      openApiClient: {},
-      resourcesToModify: ['user']
-    })).rejects.toThrow('attributes are required');
-  });
 
   it('rejects if resourcesToModify not provided', function () {
     expect.assertions(1);

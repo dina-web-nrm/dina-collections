@@ -29,8 +29,13 @@ function update(
       throw new Error('id is required')
     }
 
-    if (!(item.attributes && Object.keys(item.attributes).length)) {
-      throw new Error('attributes are required')
+    if (
+      !(item.attributes && Object.keys(item.attributes).length) &&
+      !(item.relationships && Object.keys(item.relationships).length)
+    ) {
+      return {
+        data: item,
+      }
     }
 
     if (!resourcesToModify) {

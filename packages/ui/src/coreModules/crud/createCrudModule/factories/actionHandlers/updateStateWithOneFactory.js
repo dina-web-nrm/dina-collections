@@ -38,6 +38,18 @@ export default function updateStateWithOneFactory(
       id,
     })
 
+    const currentItem = state.items && state.items[id]
+
+    if (currentItem && currentItem.relationships) {
+      return dep.assign(state, updatePath, {
+        ...action.payload,
+        relationships: {
+          ...currentItem.relationships,
+          ...(action.payload.relationships || {}),
+        },
+      })
+    }
+
     return dep.assign(state, updatePath, action.payload)
   }
 }

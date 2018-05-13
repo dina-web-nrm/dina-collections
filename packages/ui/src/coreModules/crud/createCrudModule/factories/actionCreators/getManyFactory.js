@@ -10,14 +10,19 @@ export const dep = new Dependor({
 const log = createLog('coreModules:crud:actionCreators:getMany')
 
 export default function getManyAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
+  {
+    actionTypes,
+    operationId,
+    operationType,
+    resource,
+    resourceActionTypes,
+  } = {}
 ) {
-  const actionTypes = dep.getActionActionTypes({
+  const operationActionTypes = dep.getActionActionTypes({
     operationType,
     resource,
     resourceActionTypes,
   })
-
   if (!resource) {
     throw new Error('resource is required')
   }
@@ -30,6 +35,7 @@ export default function getManyAcFactory(
     isLookup, // TODO - remove this
     queryParams: queryParamsInput = {},
     relationships,
+    include,
     throwError = false,
   }) {
     log.debug(`${resource}.getMany called`, {
@@ -37,10 +43,23 @@ export default function getManyAcFactory(
       relationships,
       throwError,
     })
-    const queryParams = relationships
-      ? { ...queryParamsInput, relationships }
-      : queryParamsInput
 
+    let queryParams = {
+      ...queryParamsInput,
+    }
+    if (relationships) {
+      queryParams = {
+        ...queryParams,
+        relationships,
+      }
+    }
+
+    if (include) {
+      queryParams = {
+        ...queryParams,
+        include,
+      }
+    }
     const callParams = {
       isLookup,
       queryParams,
@@ -49,7 +68,7 @@ export default function getManyAcFactory(
     return (dispatch, getState, { apiClient }) => {
       dispatch({
         meta: callParams,
-        type: actionTypes.request,
+        type: operationActionTypes.request,
       })
       return apiClient.getMany(resource, callParams).then(
         response => {
@@ -63,7 +82,7 @@ export default function getManyAcFactory(
           dispatch({
             meta: callParams,
             payload: response.data,
-            type: actionTypes.success,
+            type: operationActionTypes.success,
           })
           return response.data
         },
@@ -72,7 +91,7 @@ export default function getManyAcFactory(
             error: true,
             meta: callParams,
             payload: error,
-            type: actionTypes.fail,
+            type: operationActionTypes.fail,
           })
 
           if (throwError) {

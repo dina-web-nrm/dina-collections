@@ -27,10 +27,17 @@ module.exports = function getMany({
       }
     )
     .then(response => {
-      return fetchIncluded(response.data).then(included => {
+      return fetchIncluded({
+        items: response.data,
+        openApiClient,
+        relationSpecification,
+      }).then(included => {
         return {
           ...response,
-          included,
+          included: included.map(item => {
+            delete item.path // eslint-disable-line
+            return item
+          }),
         }
       })
     })

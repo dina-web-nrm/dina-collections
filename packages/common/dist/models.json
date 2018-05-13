@@ -1609,6 +1609,62 @@
         },
         "x-summary": ""
       },
+      "acceptedTaxonName": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "$ref": "taxonName"
+          }
+        },
+        "x-summary": ""
+      },
+      "children": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "taxon"
+            }
+          }
+        },
+        "x-summary": ""
+      },
+      "parent": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "$ref": "taxon"
+          }
+        },
+        "x-summary": ""
+      },
+      "synonyms": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "taxonName"
+            }
+          }
+        },
+        "x-summary": ""
+      },
+      "vernacularNames": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "taxonName"
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "id": {
         "type": "string",
         "x-summary": ""
@@ -1627,6 +1683,39 @@
   "taxonName": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "acceptedToTaxon": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          },
+          "synonymToTaxon": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          },
+          "vernacularToTaxon": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "id": {
         "type": "string",
         "x-summary": ""
