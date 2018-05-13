@@ -17,56 +17,65 @@ describe('domainModules/curatedList/globalSelectors', () => {
 
   beforeEach(() => {
     state = {
-      curatedListService: {
+      crud: {
         resources: {
-          featureTypes: {
-            a: {
-              group: 'age',
-              id: 'a',
-              selectableMethods: [
-                {
-                  key: 'known-age',
-                  name: {
-                    en: 'known age',
-                  },
+          featureType: {
+            items: {
+              a: {
+                attributes: {
+                  group: 'age',
+                  selectableMethods: [
+                    {
+                      key: 'known-age',
+                      name: {
+                        en: 'known age',
+                      },
+                    },
+                    {
+                      key: 'sectioned-teeth',
+                      name: {
+                        en: 'sectioned teeth',
+                      },
+                    },
+                    {
+                      key: 'other',
+                      name: {
+                        en: 'other',
+                      },
+                    },
+                  ],
                 },
-                {
-                  key: 'sectioned-teeth',
-                  name: {
-                    en: 'sectioned teeth',
-                  },
+                id: 'a',
+              },
+              b: {
+                attributes: {
+                  group: 'sex',
+
+                  selectableValues: [
+                    {
+                      key: 'female',
+                      name: {
+                        en: 'female',
+                        sv: 'hona',
+                      },
+                    },
+                    {
+                      key: 'male',
+                      name: {
+                        en: 'male',
+                        sv: 'hane',
+                      },
+                    },
+                  ],
                 },
-                {
-                  key: 'other',
-                  name: {
-                    en: 'other',
-                  },
+                id: 'b',
+              },
+              c: {
+                attributes: {
+                  group: 'age-stage',
                 },
-              ],
-            },
-            b: {
-              group: 'sex',
-              id: 'b',
-              selectableValues: [
-                {
-                  key: 'female',
-                  name: {
-                    en: 'female',
-                    sv: 'hona',
-                  },
-                },
-                {
-                  key: 'male',
-                  name: {
-                    en: 'male',
-                    sv: 'hane',
-                  },
-                },
-              ],
-            },
-            c: {
-              group: 'age-stage',
-              id: 'c',
+                id: 'c',
+              },
             },
           },
         },
@@ -95,31 +104,37 @@ describe('domainModules/curatedList/globalSelectors', () => {
       const groups = ['age', 'age-stage']
       const expectedResult = [
         {
-          group: 'age',
+          attributes: {
+            group: 'age',
+
+            selectableMethods: [
+              {
+                key: 'known-age',
+                name: {
+                  en: 'known age',
+                },
+              },
+              {
+                key: 'sectioned-teeth',
+                name: {
+                  en: 'sectioned teeth',
+                },
+              },
+              {
+                key: 'other',
+                name: {
+                  en: 'other',
+                },
+              },
+            ],
+          },
           id: 'a',
-          selectableMethods: [
-            {
-              key: 'known-age',
-              name: {
-                en: 'known age',
-              },
-            },
-            {
-              key: 'sectioned-teeth',
-              name: {
-                en: 'sectioned teeth',
-              },
-            },
-            {
-              key: 'other',
-              name: {
-                en: 'other',
-              },
-            },
-          ],
         },
         {
-          group: 'age-stage',
+          attributes: {
+            group: 'age-stage',
+          },
+
           id: 'c',
         },
       ]

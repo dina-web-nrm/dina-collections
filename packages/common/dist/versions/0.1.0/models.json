@@ -42,15 +42,15 @@
         "type": "string",
         "x-summary": ""
       },
+      "lid": {
+        "type": "string",
+        "x-summary": ""
+      },
       "type": {
         "type": "string",
         "x-summary": ""
       }
     },
-    "required": [
-      "id",
-      "type"
-    ],
     "x-category": "core",
     "x-modelType": "model",
     "x-summary": "",
@@ -502,6 +502,32 @@
   "place": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "parent": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "place"
+              }
+            }
+          },
+          "children": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "place"
+                }
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "name": {
         "type": "string",
         "description": "Name of the locality",
@@ -565,7 +591,13 @@
       },
       "parent": {
         "type": "object",
-        "description": "A polygon describing the edges",
+        "description": "Parent place",
+        "$ref": "place",
+        "x-summary": ""
+      },
+      "children": {
+        "type": "object",
+        "description": "Parent place",
         "$ref": "place",
         "x-summary": ""
       },
@@ -1188,12 +1220,15 @@
   "specimen": {
     "additionalProperties": false,
     "description": "This is a description",
+    "x-format": true,
+    "x-normalize": true,
     "properties": {
       "relationships": {
         "type": "object",
         "properties": {
           "identifierTypes": {
             "type": "object",
+            "x-path": "individual.identifiers.*.identifierType",
             "properties": {
               "data": {
                 "type": "array",
@@ -1205,17 +1240,29 @@
           },
           "typeSpecimenTypes": {
             "type": "object",
+            "x-path": "individual.typeSpecimenType",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "typeSpecimenType"
+              }
+            }
+          },
+          "preparationTypes": {
+            "type": "object",
+            "x-path": "individual.collectionItems.*.preparationType",
             "properties": {
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "typeSpecimenType"
+                  "$ref": "preparationType"
                 }
               }
             }
           },
           "establishmentMeansTypes": {
             "type": "object",
+            "x-path": "individual.collectingInformation.*.establishmentMeansType",
             "properties": {
               "data": {
                 "type": "array",
@@ -1227,6 +1274,7 @@
           },
           "causeOfDeathTypes": {
             "type": "object",
+            "x-path": "individual.deathInformation.*.establishmentMeansType",
             "properties": {
               "data": {
                 "type": "array",
@@ -1238,6 +1286,7 @@
           },
           "physicalObjects": {
             "type": "object",
+            "x-path": "individual.collectionItems.*.physicalObject",
             "properties": {
               "data": {
                 "type": "array",
@@ -1249,6 +1298,7 @@
           },
           "featureTypes": {
             "type": "object",
+            "x-path": "individual.featureObservations.*.featureType",
             "properties": {
               "data": {
                 "type": "array",
@@ -1260,6 +1310,7 @@
           },
           "places": {
             "type": "object",
+            "x-path": "individual.collectingInformation.*.event.locationInformation.places.*.",
             "properties": {
               "data": {
                 "type": "array",
@@ -1271,6 +1322,7 @@
           },
           "taxa": {
             "type": "object",
+            "x-path": "individual.determinations.*.taxon",
             "properties": {
               "data": {
                 "type": "array",
@@ -1287,70 +1339,93 @@
         "$ref": "individual",
         "x-summary": ""
       },
-      "collectionItems": {
-        "type": "array",
-        "items": {
-          "$ref": "collectionItem"
-        },
-        "x-summary": ""
-      },
-      "id": {
+      "lid": {
         "type": "string",
         "x-summary": ""
       },
-      "deathInformation": {
-        "type": "array",
-        "items": {
-          "$ref": "deathInformation"
-        },
-        "x-summary": ""
-      },
-      "collectingInformation": {
-        "type": "array",
-        "items": {
-          "$ref": "collectingInformation"
-        },
-        "x-summary": ""
-      },
-      "determinations": {
-        "type": "array",
-        "items": {
-          "$ref": "determination"
-        },
-        "x-summary": ""
-      },
-      "identifiers": {
-        "type": "array",
-        "items": {
-          "$ref": "identifier"
-        },
-        "x-summary": ""
-      },
-      "taxonInformation": {
-        "type": "array",
-        "items": {
-          "$ref": "taxonInformation"
-        },
-        "x-summary": ""
-      },
-      "featureObservations": {
-        "type": "array",
-        "items": {
-          "$ref": "featureObservation"
-        },
-        "x-summary": ""
-      },
-      "events": {
-        "type": "array",
-        "items": {
-          "$ref": "event"
-        },
-        "x-summary": ""
-      },
-      "recordHistoryEvents": {
-        "type": "array",
-        "items": {
-          "$ref": "recordHistoryEvent"
+      "normalized": {
+        "type": "object",
+        "properties": {
+          "individuals": {
+            "type": "array",
+            "items": {
+              "$ref": "individual"
+            },
+            "x-column": "individuals"
+          },
+          "collectionItems": {
+            "type": "array",
+            "items": {
+              "$ref": "collectionItem"
+            },
+            "x-column": "collectionItems"
+          },
+          "id": {
+            "type": "string"
+          },
+          "deathInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "deathInformation"
+            },
+            "x-column": "deathInformation"
+          },
+          "collectingInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "collectingInformation"
+            },
+            "x-column": "collectingInformation"
+          },
+          "determinations": {
+            "type": "array",
+            "items": {
+              "$ref": "determination"
+            },
+            "x-column": "determinations"
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "identifier"
+            },
+            "x-column": "identifiers"
+          },
+          "taxonInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "taxonInformation"
+            },
+            "x-column": "taxonInformation"
+          },
+          "featureObservations": {
+            "type": "array",
+            "items": {
+              "$ref": "featureObservation"
+            },
+            "x-column": "featureObservations"
+          },
+          "originInformation": {
+            "type": "array",
+            "items": {
+              "$ref": "originInformation"
+            },
+            "x-column": "originInformation"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "event"
+            },
+            "x-column": "events"
+          },
+          "recordHistoryEvents": {
+            "type": "array",
+            "items": {
+              "$ref": "recordHistoryEvent"
+            },
+            "x-column": "recordHistoryEvents"
+          }
         },
         "x-summary": ""
       },
@@ -1398,6 +1473,10 @@
     "additionalProperties": false,
     "properties": {
       "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "lid": {
         "type": "string",
         "x-summary": ""
       },
@@ -1473,6 +1552,119 @@
   "taxon": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "acceptedTaxonName": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxonName"
+              }
+            }
+          },
+          "children": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "taxon"
+                }
+              }
+            }
+          },
+          "parent": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          },
+          "synonyms": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "taxonName"
+                }
+              }
+            }
+          },
+          "vernacularNames": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "taxonName"
+                }
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
+      "acceptedTaxonName": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "$ref": "taxonName"
+          }
+        },
+        "x-summary": ""
+      },
+      "children": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "taxon"
+            }
+          }
+        },
+        "x-summary": ""
+      },
+      "parent": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "$ref": "taxon"
+          }
+        },
+        "x-summary": ""
+      },
+      "synonyms": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "taxonName"
+            }
+          }
+        },
+        "x-summary": ""
+      },
+      "vernacularNames": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "taxonName"
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "id": {
         "type": "string",
         "x-summary": ""
@@ -1491,6 +1683,39 @@
   "taxonName": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "acceptedToTaxon": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          },
+          "synonymToTaxon": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          },
+          "vernacularToTaxon": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "taxon"
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "id": {
         "type": "string",
         "x-summary": ""
@@ -8496,6 +8721,194 @@
             }
           },
           "attributes": {
+            "individual": "836625c3-a049-4323-8b52-4bc425f5be04",
+            "normalized": {
+              "determinations": [
+                {
+                  "determinationVerbatim": "determinationVerbatim",
+                  "determinedByAgentText": "determinedByAgentText",
+                  "remarks": "remarks",
+                  "taxon": {
+                    "id": "2367",
+                    "type": "taxon"
+                  },
+                  "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
+                }
+              ],
+              "collectionItems": [
+                {
+                  "alternateIdentifiersText": "alternateIdentifiersText",
+                  "physicalObject": {
+                    "id": "2234",
+                    "type": "physicalObject"
+                  },
+                  "physicalObjectText": "physicalObjectText",
+                  "lid": "af80e78b-c61e-485f-80a8-06d237400583"
+                }
+              ],
+              "events": [
+                {
+                  "endDate": "endDate",
+                  "expeditionText": "expeditionText",
+                  "locationInformation": {
+                    "coordinatesVerbatim": "coordinatesVerbatim",
+                    "places": [
+                      {
+                        "id": "1",
+                        "type": "place"
+                      },
+                      {
+                        "id": "2",
+                        "type": "place"
+                      },
+                      {
+                        "id": "3",
+                        "type": "place"
+                      },
+                      {
+                        "id": "4",
+                        "type": "place"
+                      },
+                      {
+                        "id": "5",
+                        "type": "place"
+                      }
+                    ],
+                    "georeferenceSourcesText": "georeferenceSourcesText",
+                    "localityVerbatim": "localityVerbatim",
+                    "position": {
+                      "geodeticDatum": "geodeticDatum text",
+                      "latitude": "latitude-string",
+                      "longitude": "longitude-string",
+                      "uncertaintyInMeters": 10
+                    },
+                    "remarks": "remarks",
+                    "verticalPosition": {
+                      "maximumDepthInMeters": 100,
+                      "maximumElevationInMeters": 100,
+                      "minimumDepthInMeters": 20,
+                      "minimumElevationInMeters": 20
+                    }
+                  },
+                  "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+                }
+              ],
+              "featureObservations": [
+                {
+                  "featureObservationAgent": "featureObservationAgent",
+                  "featureObservationText": "21",
+                  "featureType": {
+                    "id": "1",
+                    "type": "featureType"
+                  },
+                  "methodText": "methodText",
+                  "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+                }
+              ],
+              "identifiers": [
+                {
+                  "identifierType": "catalogNumber",
+                  "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+                  "nameSpace": "",
+                  "publishRecord": true,
+                  "remarks": "",
+                  "value": "123456"
+                }
+              ],
+              "collectingInformation": [
+                {
+                  "collectorsText": "collectorsText",
+                  "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
+                  "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
+                }
+              ],
+              "individuals": [
+                {
+                  "determinations": [
+                    "a70d054c-ec04-45bc-860b-d522f8f48328"
+                  ],
+                  "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
+                  "featureObservations": [
+                    "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+                  ],
+                  "collectionItems": [
+                    "af80e78b-c61e-485f-80a8-06d237400583"
+                  ],
+                  "identifiers": [
+                    "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
+                  ],
+                  "collectingInformation": [
+                    "44ab19bf-4328-42d3-9f8e-c88854847234"
+                  ],
+                  "recordHistoryEvents": [
+                    "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
+                  ],
+                  "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
+                }
+              ],
+              "recordHistoryEvents": [
+                {
+                  "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
+                }
+              ],
+              "taxonInformation": [
+                {
+                  "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "specimen",
+        "relationships": {
+          "places": {
+            "data": [
+              {
+                "id": "1",
+                "type": "place"
+              },
+              {
+                "id": "2",
+                "type": "place"
+              },
+              {
+                "id": "3",
+                "type": "place"
+              },
+              {
+                "id": "4",
+                "type": "place"
+              },
+              {
+                "id": "5",
+                "type": "place"
+              }
+            ]
+          },
+          "featureTypes": {
+            "data": [
+              {
+                "id": "2",
+                "type": "featureType"
+              }
+            ]
+          },
+          "physicalObjects": {
+            "data": [
+              {
+                "id": "2234",
+                "type": "physicalObject"
+              }
+            ]
+          }
+        },
+        "attributes": {
+          "individual": "836625c3-a049-4323-8b52-4bc425f5be04",
+          "normalized": {
             "determinations": [
               {
                 "determinationVerbatim": "determinationVerbatim",
@@ -8595,7 +9008,7 @@
                 "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
               }
             ],
-            "individual": [
+            "individuals": [
               {
                 "determinations": [
                   "a70d054c-ec04-45bc-860b-d522f8f48328"
@@ -8630,188 +9043,6 @@
               }
             ]
           }
-        }
-      }
-    },
-    "example": {
-      "data": {
-        "type": "specimen",
-        "relationships": {
-          "places": {
-            "data": [
-              {
-                "id": "1",
-                "type": "place"
-              },
-              {
-                "id": "2",
-                "type": "place"
-              },
-              {
-                "id": "3",
-                "type": "place"
-              },
-              {
-                "id": "4",
-                "type": "place"
-              },
-              {
-                "id": "5",
-                "type": "place"
-              }
-            ]
-          },
-          "featureTypes": {
-            "data": [
-              {
-                "id": "2",
-                "type": "featureType"
-              }
-            ]
-          },
-          "physicalObjects": {
-            "data": [
-              {
-                "id": "2234",
-                "type": "physicalObject"
-              }
-            ]
-          }
-        },
-        "attributes": {
-          "determinations": [
-            {
-              "determinationVerbatim": "determinationVerbatim",
-              "determinedByAgentText": "determinedByAgentText",
-              "remarks": "remarks",
-              "taxon": {
-                "id": "2367",
-                "type": "taxon"
-              },
-              "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
-            }
-          ],
-          "collectionItems": [
-            {
-              "alternateIdentifiersText": "alternateIdentifiersText",
-              "physicalObject": {
-                "id": "2234",
-                "type": "physicalObject"
-              },
-              "physicalObjectText": "physicalObjectText",
-              "lid": "af80e78b-c61e-485f-80a8-06d237400583"
-            }
-          ],
-          "events": [
-            {
-              "endDate": "endDate",
-              "expeditionText": "expeditionText",
-              "locationInformation": {
-                "coordinatesVerbatim": "coordinatesVerbatim",
-                "places": [
-                  {
-                    "id": "1",
-                    "type": "place"
-                  },
-                  {
-                    "id": "2",
-                    "type": "place"
-                  },
-                  {
-                    "id": "3",
-                    "type": "place"
-                  },
-                  {
-                    "id": "4",
-                    "type": "place"
-                  },
-                  {
-                    "id": "5",
-                    "type": "place"
-                  }
-                ],
-                "georeferenceSourcesText": "georeferenceSourcesText",
-                "localityVerbatim": "localityVerbatim",
-                "position": {
-                  "geodeticDatum": "geodeticDatum text",
-                  "latitude": "latitude-string",
-                  "longitude": "longitude-string",
-                  "uncertaintyInMeters": 10
-                },
-                "remarks": "remarks",
-                "verticalPosition": {
-                  "maximumDepthInMeters": 100,
-                  "maximumElevationInMeters": 100,
-                  "minimumDepthInMeters": 20,
-                  "minimumElevationInMeters": 20
-                }
-              },
-              "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
-            }
-          ],
-          "featureObservations": [
-            {
-              "featureObservationAgent": "featureObservationAgent",
-              "featureObservationText": "21",
-              "featureType": {
-                "id": "1",
-                "type": "featureType"
-              },
-              "methodText": "methodText",
-              "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
-            }
-          ],
-          "identifiers": [
-            {
-              "identifierType": "catalogNumber",
-              "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-              "nameSpace": "",
-              "publishRecord": true,
-              "remarks": "",
-              "value": "123456"
-            }
-          ],
-          "collectingInformation": [
-            {
-              "collectorsText": "collectorsText",
-              "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
-              "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
-            }
-          ],
-          "individual": [
-            {
-              "determinations": [
-                "a70d054c-ec04-45bc-860b-d522f8f48328"
-              ],
-              "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
-              "featureObservations": [
-                "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
-              ],
-              "collectionItems": [
-                "af80e78b-c61e-485f-80a8-06d237400583"
-              ],
-              "identifiers": [
-                "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
-              ],
-              "collectingInformation": [
-                "44ab19bf-4328-42d3-9f8e-c88854847234"
-              ],
-              "recordHistoryEvents": [
-                "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
-              ],
-              "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
-            }
-          ],
-          "recordHistoryEvents": [
-            {
-              "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
-            }
-          ],
-          "taxonInformation": [
-            {
-              "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
-            }
-          ]
         }
       }
     },

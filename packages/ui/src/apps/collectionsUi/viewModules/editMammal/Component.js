@@ -1,61 +1,61 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
-
+import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
+import nestedToCore from 'common/es5/formatObject/nestedToCore'
 import createLog from 'utilities/log'
-import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
-import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 
 const log = createLog('modules:editMammal:Component')
 
-const mapStateToProps = (state, { match }) => {
+const mapStateToProps = state => {
   return {
-    initialValues: mammalSelectors.getMammalFormInitialValues(
-      state,
-      match.params.specimenId
-    ),
+    featureTypes: crudGlobalSelectors.featureType.getAll(state),
   }
 }
+
 const mapDispatchToProps = {
-  getSpecimen: specimenActionCreators.getSpecimen,
-  updateSpecimen: specimenActionCreators.updateSpecimen,
+  updateSpecimen: crudActionCreators.specimen.update,
 }
 
 const propTypes = {
-  getSpecimen: PropTypes.func.isRequired,
-  initialValues: PropTypes.object.isRequired,
+  featureTypes: PropTypes.array.isRequired,
+  /* eslint-disable react/no-unused-prop-types */
   match: PropTypes.shape({
     params: PropTypes.shape({
       specimenId: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  /* eslint-enable react/no-unused-prop-types */
+  nestedItem: PropTypes.object.isRequired,
   updateSpecimen: PropTypes.func.isRequired,
 }
 
 class EditMammal extends Component {
-  componentWillMount() {
-    this.props.getSpecimen({ id: this.props.match.params.specimenId })
-  }
-
   render() {
-    const {
-      initialValues,
-      match: { params: { specimenId } },
-      updateSpecimen,
-    } = this.props
+    const { nestedItem, updateSpecimen, featureTypes } = this.props
 
+    const initialValues = setDefaultValues({
+      featureTypes,
+      specimen: nestedItem || {},
+    })
     log.render()
     log.debug('initialValues', initialValues)
     return (
       <PageTemplate>
         <MammalForm
           handleFormSubmit={formOutput => {
+            const item = nestedToCore({
+              item: formOutput,
+              type: 'specimen',
+            })
             return updateSpecimen({
-              id: specimenId,
-              ...transformOutput(formOutput),
+              item,
             })
           }}
           initialValues={initialValues}
@@ -68,4 +68,13 @@ class EditMammal extends Component {
 
 EditMammal.propTypes = propTypes
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditMammal)
+export default compose(
+  createGetNestedItemById({
+    idPath: 'match.params.specimenId',
+    include: ['featureTypes', 'physicalObjects', 'places', 'taxa'],
+    relationships: ['all'],
+    resolveRelationships: ['physicalObject'],
+    resource: 'specimen',
+  }),
+  connect(mapStateToProps, mapDispatchToProps)
+)(EditMammal)

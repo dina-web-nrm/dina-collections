@@ -1,12 +1,15 @@
 {
   "additionalProperties": false,
   "description": "This is a description",
+  "x-format": true,
+  "x-normalize": true,
   "properties": {
     "relationships": {
       "type": "object",
       "properties": {
         "identifierTypes": {
           "type": "object",
+          "x-path": "individual.identifiers.*.identifierType",
           "properties": {
             "data": {
               "type": "array",
@@ -19,11 +22,23 @@
         },
         "typeSpecimenTypes": {
           "type": "object",
+          "x-path": "individual.typeSpecimenType",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__typeSpecimenType",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "preparationTypes": {
+          "type": "object",
+          "x-path": "individual.collectionItems.*.preparationType",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__typeSpecimenType",
+                "$ref": "__ROOT__preparationType",
                 "x-reference-type": "external"
               }
             }
@@ -31,6 +46,7 @@
         },
         "establishmentMeansTypes": {
           "type": "object",
+          "x-path": "individual.collectingInformation.*.establishmentMeansType",
           "properties": {
             "data": {
               "type": "array",
@@ -43,6 +59,7 @@
         },
         "causeOfDeathTypes": {
           "type": "object",
+          "x-path": "individual.deathInformation.*.establishmentMeansType",
           "properties": {
             "data": {
               "type": "array",
@@ -55,6 +72,7 @@
         },
         "physicalObjects": {
           "type": "object",
+          "x-path": "individual.collectionItems.*.physicalObject",
           "properties": {
             "data": {
               "type": "array",
@@ -67,6 +85,7 @@
         },
         "featureTypes": {
           "type": "object",
+          "x-path": "individual.featureObservations.*.featureType",
           "properties": {
             "data": {
               "type": "array",
@@ -79,6 +98,8 @@
         },
         "places": {
           "type": "object",
+          "x-path":
+            "individual.collectingInformation.*.event.locationInformation.places.*.",
           "properties": {
             "data": {
               "type": "array",
@@ -91,6 +112,7 @@
         },
         "taxa": {
           "type": "object",
+          "x-path": "individual.determinations.*.taxon",
           "properties": {
             "data": {
               "type": "array",
@@ -106,63 +128,95 @@
     "individual": {
       "$ref": "__ROOT__individual"
     },
-    "collectionItems": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__collectionItem"
-      }
-    },
-    "id": {
+    "lid": {
       "type": "string"
     },
-    "deathInformation": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__deathInformation"
+    "normalized": {
+      "type": "object",
+      "properties": {
+        "individuals": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__individual"
+          },
+          "x-column": "individuals"
+        },
+        "collectionItems": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__collectionItem"
+          },
+          "x-column": "collectionItems"
+        },
+        "id": {
+          "type": "string"
+        },
+        "deathInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__deathInformation"
+          },
+          "x-column": "deathInformation"
+        },
+        "collectingInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__collectingInformation"
+          },
+          "x-column": "collectingInformation"
+        },
+        "determinations": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__determination"
+          },
+          "x-column": "determinations"
+        },
+        "identifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__identifier"
+          },
+          "x-column": "identifiers"
+        },
+        "taxonInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__taxonInformation"
+          },
+          "x-column": "taxonInformation"
+        },
+        "featureObservations": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__featureObservation"
+          },
+          "x-column": "featureObservations"
+        },
+        "originInformation": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__originInformation"
+          },
+          "x-column": "originInformation"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__event"
+          },
+          "x-column": "events"
+        },
+        "recordHistoryEvents": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__recordHistoryEvent"
+          },
+          "x-column": "recordHistoryEvents"
+        }
       }
     },
-    "collectingInformation": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__collectingInformation"
-      }
-    },
-    "determinations": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__determination"
-      }
-    },
-    "identifiers": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__identifier"
-      }
-    },
-    "taxonInformation": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__taxonInformation"
-      }
-    },
-    "featureObservations": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__featureObservation"
-      }
-    },
-    "events": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__event"
-      }
-    },
-    "recordHistoryEvents": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__recordHistoryEvent"
-      }
-    },
+
     "version": {
       "type": "integer"
     },

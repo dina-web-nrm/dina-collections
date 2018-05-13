@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { Search } from 'coreModules/form/components'
-import { createGetTaxonNameById } from 'dataModules/taxonService/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import updateTaxonNameSearchQueryAC from '../../actionCreators/updateTaxonNameSearchQuery'
 import globalSelectors from '../../globalSelectors'
 
@@ -41,6 +41,9 @@ class TaxonNameSearchInputWithResults extends Component {
 TaxonNameSearchInputWithResults.propTypes = propTypes
 
 export default compose(
-  createGetTaxonNameById('input.value'),
+  createGetItemById({
+    itemKey: 'input.value',
+    resource: 'taxonName',
+  }),
   connect(undefined, mapDispatchToProps)
 )(TaxonNameSearchInputWithResults)

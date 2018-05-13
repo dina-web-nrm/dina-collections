@@ -1,19 +1,24 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
-import { flattenObjectResponse } from 'utilities/transformations'
 import getActionActionTypes from './utilities/getActionActionTypes'
+import dispatchIncludedActions from './dispatchIncludedActions'
 
 export const dep = new Dependor({
-  flattenObjectResponse,
   getActionActionTypes,
 })
 
 const log = createLog('coreModules:crud:actionCreators:getOne')
 
 export default function getOneAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
+  {
+    actionTypes,
+    operationId,
+    operationType,
+    resource,
+    resourceActionTypes,
+  } = {}
 ) {
-  const actionTypes = dep.getActionActionTypes({
+  const operationActionTypes = dep.getActionActionTypes({
     operationType,
     resource,
     resourceActionTypes,
@@ -29,6 +34,7 @@ export default function getOneAcFactory(
 
   return function getOneAc({
     id,
+    include,
     relationships = ['all'],
     throwError = false,
   }) {
@@ -44,9 +50,22 @@ export default function getOneAcFactory(
       }
 
       const pathParams = { id }
-      const queryParams = {
-        relationships,
+      let queryParams = {}
+
+      if (relationships) {
+        queryParams = {
+          ...queryParams,
+          relationships,
+        }
       }
+
+      if (include) {
+        queryParams = {
+          ...queryParams,
+          include,
+        }
+      }
+
       const callParams = {
         pathParams,
         queryParams,
@@ -54,24 +73,31 @@ export default function getOneAcFactory(
 
       dispatch({
         meta: callParams,
-        type: actionTypes.request,
+        type: operationActionTypes.request,
       })
-      return apiClient.call(operationId, callParams).then(
+
+      return apiClient.getOne(resource, callParams).then(
         response => {
-          const transformedResponse = dep.flattenObjectResponse(response.data)
+          if (response.included) {
+            dispatchIncludedActions({
+              actionTypes,
+              dispatch,
+              included: response.included,
+            })
+          }
           dispatch({
             meta: callParams,
-            payload: transformedResponse,
-            type: actionTypes.success,
+            payload: response.data,
+            type: operationActionTypes.success,
           })
-          return transformedResponse
+          return response.data
         },
         error => {
           dispatch({
             error: true,
             meta: callParams,
             payload: error,
-            type: actionTypes.fail,
+            type: operationActionTypes.fail,
           })
 
           if (throwError) {

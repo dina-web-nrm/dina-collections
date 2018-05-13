@@ -57,7 +57,7 @@ module.exports = function buildNormalizeSchema(_ref) {
         return obj;
       }
 
-      if (!schemas[column] && !visited[column]) {
+      if (!schemas[column] && !visited[ref]) {
         schemas[column] = buildSchemas(ref);
       }
 

@@ -32,7 +32,7 @@ module.exports = function buildNormalizeSchema({
         return obj
       }
 
-      if (!schemas[column] && !visited[column]) {
+      if (!schemas[column] && !visited[ref]) {
         schemas[column] = buildSchemas(ref)
       }
 

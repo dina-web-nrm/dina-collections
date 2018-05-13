@@ -9,7 +9,7 @@ import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { ensureAllFeatureTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import FeatureObservationsTable from './FeatureObservationsTable'
 import FeatureObservationsTitle from './FeatureObservationsTitle'
 
@@ -31,16 +31,18 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 })
 
 const propTypes = {
-  allFeatureTypesFetched: PropTypes.bool.isRequired,
+  allItemsFetched: PropTypes.bool.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
-  getFeatureTypes: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   mode: PropTypes.oneOf(['edit', 'register']).isRequired,
 }
 
 class SegmentFeatureObservations extends PureComponent {
   render() {
-    const { changeFieldValue, allFeatureTypesFetched } = this.props
+    const {
+      allItemsFetched: allFeatureTypesFetched,
+      changeFieldValue,
+    } = this.props
 
     log.render()
     return (
@@ -72,6 +74,6 @@ SegmentFeatureObservations.propTypes = propTypes
 
 export default compose(
   withRouter,
-  ensureAllFeatureTypesFetched(),
+  createEnsureAllItemsFetched({ resource: 'featureType' }),
   pathBuilder({ name: 'featureObservations' })
 )(SegmentFeatureObservations)

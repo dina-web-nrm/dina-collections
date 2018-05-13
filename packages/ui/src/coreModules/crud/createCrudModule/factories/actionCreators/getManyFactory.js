@@ -1,24 +1,28 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
-import { flattenArrayResponse } from 'utilities/transformations'
 import getActionActionTypes from './utilities/getActionActionTypes'
+import dispatchIncludedActions from './dispatchIncludedActions'
 
 export const dep = new Dependor({
-  flattenArrayResponse,
   getActionActionTypes,
 })
 
 const log = createLog('coreModules:crud:actionCreators:getMany')
 
 export default function getManyAcFactory(
-  { operationId, operationType, resource, resourceActionTypes } = {}
+  {
+    actionTypes,
+    operationId,
+    operationType,
+    resource,
+    resourceActionTypes,
+  } = {}
 ) {
-  const actionTypes = dep.getActionActionTypes({
+  const operationActionTypes = dep.getActionActionTypes({
     operationType,
     resource,
     resourceActionTypes,
   })
-
   if (!resource) {
     throw new Error('resource is required')
   }
@@ -28,8 +32,10 @@ export default function getManyAcFactory(
   }
 
   return function getManyAc({
+    isLookup, // TODO - remove this
     queryParams: queryParamsInput = {},
     relationships,
+    include,
     throwError = false,
   }) {
     log.debug(`${resource}.getMany called`, {
@@ -37,35 +43,55 @@ export default function getManyAcFactory(
       relationships,
       throwError,
     })
-    const queryParams = relationships
-      ? { ...queryParamsInput, relationships }
-      : queryParamsInput
 
+    let queryParams = {
+      ...queryParamsInput,
+    }
+    if (relationships) {
+      queryParams = {
+        ...queryParams,
+        relationships,
+      }
+    }
+
+    if (include) {
+      queryParams = {
+        ...queryParams,
+        include,
+      }
+    }
     const callParams = {
+      isLookup,
       queryParams,
     }
 
     return (dispatch, getState, { apiClient }) => {
       dispatch({
         meta: callParams,
-        type: actionTypes.request,
+        type: operationActionTypes.request,
       })
-      return apiClient.call(operationId, callParams).then(
+      return apiClient.getMany(resource, callParams).then(
         response => {
-          const transformedResponse = dep.flattenArrayResponse(response.data)
+          if (response.included) {
+            dispatchIncludedActions({
+              actionTypes,
+              dispatch,
+              included: response.included,
+            })
+          }
           dispatch({
             meta: callParams,
-            payload: transformedResponse,
-            type: actionTypes.success,
+            payload: response.data,
+            type: operationActionTypes.success,
           })
-          return transformedResponse
+          return response.data
         },
         error => {
           dispatch({
             error: true,
             meta: callParams,
             payload: error,
-            type: actionTypes.fail,
+            type: operationActionTypes.fail,
           })
 
           if (throwError) {

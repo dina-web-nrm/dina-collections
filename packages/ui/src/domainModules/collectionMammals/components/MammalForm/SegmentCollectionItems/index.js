@@ -8,10 +8,10 @@ import createLog from 'utilities/log'
 import { Accordion } from 'coreModules/commonUi/components'
 import { FIRST_EXPANDED, ALL_COLLAPSED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
-import { ensureAllPreparationTypesFetched } from 'dataModules/curatedListService/higherOrderComponents'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { getStorageLocations } from 'dataModules/storageService/actionCreators'
 import {
   SKELETON,
   SKIN,
@@ -33,7 +33,9 @@ const mapStateToProps = (state, { formValueSelector }) => {
     collectionItems: formValueSelector(state, 'collectionItems'),
   }
 }
-const mapDispatchToProps = { getStorageLocations }
+const mapDispatchToProps = {
+  getStorageLocations: crudActionCreators.storageLocation.getMany,
+}
 
 const propTypes = {
   allPreparationTypesFetched: PropTypes.bool.isRequired,
@@ -155,8 +157,14 @@ SegmentCollectionItems.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  ensureAllPreparationTypesFetched(),
-  ensureAllStorageLocationsFetched(),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allStorageLocationsFetched',
+    resource: 'storageLocation',
+  }),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allPreparationTypesFetched',
+    resource: 'preparationType',
+  }),
   pathBuilder({
     name: 'collectionItems',
   })

@@ -6,8 +6,9 @@ import { Button, Icon } from 'semantic-ui-react'
 import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 
 import { createSortAlphabeticallyByProperty } from 'common/es5/sortMethods'
-import { getTaxa, getTaxonNames } from 'dataModules/taxonService/actionCreators'
-import taxonServiceSelectors from 'dataModules/taxonService/globalSelectors'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
+
 import { BlockLoader } from 'coreModules/crudBlocks/components'
 import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/crudBlocks/keyObjectModule'
 import {
@@ -23,14 +24,14 @@ const mapStateToProps = (state, { name }) => {
       state,
       { name }
     ),
-    taxa: taxonServiceSelectors.getTaxaArray(state),
-    taxonNames: taxonServiceSelectors.getTaxonNames(state),
+    taxa: crudGlobalSelectors.taxon.getAll(state),
+    taxonNames: crudGlobalSelectors.taxonName.getAll(state),
   }
 }
 
 const mapDispatchToProps = {
-  getTaxa,
-  getTaxonNames,
+  getTaxa: crudActionCreators.taxon.getMany,
+  getTaxonNames: crudActionCreators.taxonName.getMany,
 }
 
 const propTypes = {

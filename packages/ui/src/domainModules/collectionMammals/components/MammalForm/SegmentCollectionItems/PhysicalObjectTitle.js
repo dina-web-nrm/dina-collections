@@ -5,8 +5,7 @@ import { compose } from 'redux'
 import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import { Icon, Label } from 'semantic-ui-react'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { createGetPreparationTypeById } from 'dataModules/curatedListService/higherOrderComponents'
-import { createGetStorageLocationById } from 'dataModules/storageService/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import createLog from 'utilities/log'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals', {
@@ -25,7 +24,7 @@ const propTypes = {
     category: PropTypes.string,
     name: PropTypes.string,
   }),
-  storageLocation: PropTypes.shape({ name: PropTypes.string.isRequired }),
+  storageLocation: PropTypes.object,
 }
 const defaultProps = {
   category: undefined,
@@ -54,8 +53,11 @@ function PhysicalObjectTitle({
   return (
     <ThreeColumnGrid
       center={
-        storageLocation && (
-          <span style={{ fontWeight: 'normal' }}>{storageLocation.name}</span>
+        storageLocation &&
+        storageLocation.attributes && (
+          <span style={{ fontWeight: 'normal' }}>
+            {storageLocation.attributes.name}
+          </span>
         )
       }
       left={
@@ -64,16 +66,23 @@ function PhysicalObjectTitle({
             <Icon name="dropdown" />
             <ModuleTranslate
               fallback={
-                (preparationType && preparationType.category) || category
+                (preparationType &&
+                  preparationType.attributes &&
+                  preparationType.attributes.category) ||
+                category
               }
               textKey={
-                (preparationType && preparationType.category) || category
+                (preparationType &&
+                  preparationType.attributes &&
+                  preparationType.attributes.category) ||
+                category
               }
             />
             {preparationType &&
-              preparationType.name && (
+              preparationType.attributes &&
+              preparationType.attributes.name && (
                 <span style={{ fontWeight: 'normal' }}>
-                  {` (${preparationType.name})`}
+                  {` (${preparationType.attributes.name})`}
                 </span>
               )}
           </React.Fragment>
@@ -101,6 +110,16 @@ PhysicalObjectTitle.propTypes = propTypes
 PhysicalObjectTitle.defaultProps = defaultProps
 
 export default compose(
-  createGetPreparationTypeById('preparationTypeId'),
-  createGetStorageLocationById('physicalObject.storageLocation.id')
+  createGetItemById({
+    idPath: 'preparationTypeId',
+    itemKey: 'preparationType',
+    relationships: null,
+    resource: 'preparationType',
+  }),
+  createGetItemById({
+    idPath: 'physicalObject.storageLocation.id',
+    itemKey: 'storageLocation',
+    relationships: null,
+    resource: 'storageLocation',
+  })
 )(PhysicalObjectTitle)

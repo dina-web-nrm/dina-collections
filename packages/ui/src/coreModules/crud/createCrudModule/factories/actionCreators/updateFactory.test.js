@@ -60,7 +60,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
         },
       }
 
-      const actionCreatorInput = { item: { id: 123, name: 2 } }
+      const actionCreatorInput = { item: { attributes: { name: 2 }, id: 123 } }
       const expectedActionType =
         actionCreatorFactoryInput.resourceActionTypes.update.request
       const expectedAction = {
@@ -103,7 +103,9 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
           },
         },
       }
-      const actionCreatorInput = { item: { id: '123', name: 'Anton' } }
+      const actionCreatorInput = {
+        item: { attributes: { name: 'Anton' }, id: '123' },
+      }
       const expectedActionType =
         actionCreatorFactoryInput.resourceActionTypes.update.success
       const mockResponse = {
@@ -130,7 +132,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
             id: '123',
           },
         },
-        payload: { id: '123', name: 'Anton', type: 'type' },
+        payload: { attributes: { name: 'Anton' }, id: '123', type: 'type' },
         type: 'UPDATE_PHYSICAL_OBJECT_SUCCESS',
       }
 
@@ -157,7 +159,9 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
           },
         },
       }
-      const actionCreatorInput = { item: { id: '123', name: 'Anton' } }
+      const actionCreatorInput = {
+        item: { attributes: { name: 'Anton' }, id: '123' },
+      }
       const expectedActionType =
         actionCreatorFactoryInput.resourceActionTypes.update.fail
 
@@ -203,7 +207,9 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/updateFacto
           },
         },
       }
-      const actionCreatorInput = { item: { id: '123', name: 'Anton' } }
+      const actionCreatorInput = {
+        item: { attributes: { name: 'Anton' }, id: '123' },
+      }
       const expectedApiClientCallParams = {
         body: {
           data: {

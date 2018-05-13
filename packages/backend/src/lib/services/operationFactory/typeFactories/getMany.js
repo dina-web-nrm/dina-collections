@@ -1,7 +1,8 @@
-const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
+const addGetByIdsToQueryParams = require('./utilities/addGetByIdsToQueryParams')
 const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
+const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const buildOperationId = require('./utilities/buildOperationId')
+const buildOperationId = require('common/src/buildOperationId')
 
 module.exports = function getMany({
   basePath,
@@ -19,6 +20,10 @@ module.exports = function getMany({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
+  })
+
+  queryParams = addGetByIdsToQueryParams({
+    queryParams,
   })
 
   queryParams = addLimitToQueryParams({

@@ -16,11 +16,21 @@ export default function dux(specification) {
   const actionHandlers = {}
   const actionCreators = {}
   const resourceReducers = {}
+
+  Object.values((specification && specification.resources) || {}).forEach(
+    resourceSpecification => {
+      const { resource } = resourceSpecification
+      log.info(`Setting up resource: ${resource} actionTypes`)
+      const resourceActionTypes = createActionTypes({ resourceSpecification })
+      actionTypes[resource] = resourceActionTypes
+    }
+  )
+
   Object.values((specification && specification.resources) || {}).forEach(
     resourceSpecification => {
       const { resource } = resourceSpecification
       log.info(`Setting up resource: ${resource}`)
-      const resourceActionTypes = createActionTypes({ resourceSpecification })
+      const resourceActionTypes = actionTypes[resource]
 
       const resourceActionHandlers = createActionHandlers({
         resourceActionTypes,
@@ -28,6 +38,7 @@ export default function dux(specification) {
       })
 
       const resourceActionCreators = createActionCreators({
+        actionTypes,
         resourceActionTypes,
         resourceSpecification,
       })
@@ -43,12 +54,11 @@ export default function dux(specification) {
         resourceActionHandlers,
         resourceSpecification,
       })
-
-      globalSelectors[resource] = resourceGlobalSelectors
-      actionTypes[resource] = resourceActionTypes
-      actionHandlers[resource] = resourceActionHandlers
       actionCreators[resource] = resourceActionCreators
+      actionHandlers[resource] = resourceActionHandlers
+      globalSelectors[resource] = resourceGlobalSelectors
       resourceReducers[resource] = resourceReducer
+      selectors[resource] = resourceSelectors
     }
   )
 

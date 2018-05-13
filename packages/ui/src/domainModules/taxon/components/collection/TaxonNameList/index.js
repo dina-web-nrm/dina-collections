@@ -11,7 +11,8 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/crudBlocks/keyObjectModule'
-import { ensureAllTaxonNamesFetched } from 'dataModules/taxonService/higherOrderComponents'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+
 import taxonSelectors from '../../../globalSelectors'
 import ListItem from './ListItem'
 
@@ -179,7 +180,7 @@ class TaxonNameList extends Component {
         {taxonNames
           .map((taxonName, index) => {
             const cursorFocus = index === cursorIndex
-            const { name, id, rank } = taxonName
+            const { attributes: { name, rank }, id } = taxonName
 
             return (
               <ListItem
@@ -205,6 +206,9 @@ TaxonNameList.propTypes = propTypes
 TaxonNameList.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxonNamesFetched(),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
   connect(mapStateToProps, mapDispatchToProps)
 )(TaxonNameList)

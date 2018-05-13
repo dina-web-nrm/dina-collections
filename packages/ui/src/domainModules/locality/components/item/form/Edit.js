@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import crudActionCreators from 'coreModules/crud/actionCreators'
-import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
-
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -16,29 +15,19 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  item: PropTypes.object,
   itemId: PropTypes.string.isRequired,
+  nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
   updatePlace: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  item: undefined,
+  nestedItem: undefined,
 }
 
 export class Edit extends PureComponent {
   render() {
-    const { item: place, onInteraction, itemId } = this.props
-    const initialValues = place && {
-      group: place.group,
-      name: place.name,
-      parent: place.parent
-        ? {
-            id: place.parent.id,
-          }
-        : {},
-    }
-
+    const { nestedItem: initialValues, onInteraction, itemId } = this.props
     if (!initialValues) {
       return null
     }
@@ -53,13 +42,14 @@ export class Edit extends PureComponent {
           onInteraction(FORM_CANCEL)
         }}
         onInteraction={onInteraction}
-        onSubmit={data => {
+        onSubmit={formOutput => {
           this.props
             .updatePlace({
               item: {
                 id: itemId,
-                ...data,
+                ...formOutput,
               },
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_EDIT_SUCCESS, {
@@ -76,6 +66,10 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  createGetItemById({ resource: 'place' }),
+  createGetNestedItemById({
+    include: ['parent'],
+    relationships: ['parent'],
+    resource: 'place',
+  }),
   connect(null, mapDispatchToProps)
 )(Edit)

@@ -18,6 +18,7 @@ module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
   const denormalizedSpecimen = JSON.parse(
     JSON.stringify(denormalizedSpecimenInput)
   )
+
   const { individual = {}, ...rest } = denormalizedSpecimen
 
   const normalizedData = normalize(individual, normalizeSchema.individual)
@@ -30,6 +31,7 @@ module.exports = function normalizeSpecimen(denormalizedSpecimenInput) {
         [columnName]: entities[columnName],
       }
     }
+
     if (columnName === 'individual') {
       return {
         ...obj,

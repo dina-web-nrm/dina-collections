@@ -14,6 +14,8 @@ export const ALL_OPERATION_TYPES = [
   OPERATION_TYPE_UPDATE,
 ]
 
+export const ACTION_KEY_SET_INCLUDED = 'setIncluded'
+
 export const API_ACTION_TYPE_FAIL = 'fail'
 export const API_ACTION_TYPE_REQUEST = 'request'
 export const API_ACTION_TYPE_SUCCESS = 'success'

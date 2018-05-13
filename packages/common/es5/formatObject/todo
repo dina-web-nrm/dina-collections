@@ -1,0 +1,22 @@
+DONE
+* repair localities (edit / create) - attributes
+* make sure tests are passing
+* fix performance in load specimen
+* repair storage locations (attributes)
+
+TODO
+* migrate taxonomy to crud module
+* Add relationships to model if no x-path and normalize === false
+* go through mammal form and remove all not need ensure stuff is fetched
+
+CLEANUP
+  * improve resolveItemRelationship
+  * getItemByTypeId -> pass relationship key
+  * remove not used files
+
+LATER
+  * Merge normalized names specifications
+  * Use same common functions in backend
+  * remove normalize (build stuff backend need based on schema)
+  * is x-column needed?
+  * write tests

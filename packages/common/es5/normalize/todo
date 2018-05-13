@@ -1,0 +1,3 @@
+1. create normalizedSchemaSpecification from model (add x-normalize)
+2. add relationships specification (add x-paths)
+3. implement generalized normalizat

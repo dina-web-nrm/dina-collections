@@ -61,8 +61,11 @@ class ListItem extends Component {
         style={style}
       >
         <List.Content floated="right">
-          <Label color={groupColorMap[place.group]} style={{ marginRight: 20 }}>
-            {place.group}
+          <Label
+            color={groupColorMap[place.attributes.group]}
+            style={{ marginRight: 20 }}
+          >
+            {place.attributes.group}
           </Label>
           {displayNavigationButtons &&
             !disableEdit && (
@@ -114,7 +117,7 @@ class ListItem extends Component {
         </List.Content>
 
         <List.Content>
-          <h3>{place.name}</h3>
+          <h3>{place.attributes.name}</h3>
         </List.Content>
       </List.Item>
     )

@@ -7,6 +7,7 @@ import SortableTree, { getTreeFromFlatData } from 'react-sortable-tree'
 import { createSortAlphabeticallyByProperty } from 'common/es5/sortMethods'
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import { getParentId } from 'coreModules/crud/utilities'
 import { globalSelectors as keyObjectGlobalSelectors } from 'coreModules/crudBlocks/keyObjectModule'
 import {
   SET_ITEM_EDIT,
@@ -56,11 +57,12 @@ class Localities extends Component {
       })
       .then(places => {
         const flatData = places
-          .map(locality => {
+          .map(place => {
+            const { id, attributes = {} } = place
             return {
-              id: locality.id,
-              parentId: (locality.parent && locality.parent.id) || '0',
-              title: locality.name,
+              id,
+              parentId: getParentId(place) || '0',
+              title: attributes.name,
             }
           })
           .sort(sortAlphabetically)

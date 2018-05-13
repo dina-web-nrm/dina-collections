@@ -12,6 +12,7 @@ import {
   reduxForm,
   SubmissionError,
 } from 'redux-form'
+
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import createLog from 'utilities/log'
 import { MAMMAL_FORM_NAME } from '../../constants'
@@ -19,6 +20,7 @@ import { mammalFormModels } from '../../schemas'
 import SegmentIdentifiers from './SegmentIdentifiers'
 import SegmentTaxon from './SegmentTaxon'
 import SegmentFeatureObservations from './SegmentFeatureObservations/index'
+import filterOutput from './transformations/output'
 import SegmentEvents from './SegmentEvents/index'
 import SegmentCollectionItems from './SegmentCollectionItems'
 import SegmentOther from './SegmentOther'
@@ -77,13 +79,12 @@ class RawMammalForm extends Component {
       push: pushRoute,
       redirectOnSuccess,
     } = this.props
-
-    const patchedOutput = {
+    // Look at id on actual specimen and not path
+    const specimen = {
       id: match && match.params && match.params.specimenId,
-      ...formData,
+      individual: formData,
     }
-
-    return handleFormSubmit(patchedOutput)
+    return handleFormSubmit(filterOutput({ specimen }))
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {
           pushRoute(`/app/mammals/${specimenId}/edit`)

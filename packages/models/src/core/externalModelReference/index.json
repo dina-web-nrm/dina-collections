@@ -3,7 +3,7 @@
   "description": "A reference to a model owned by another service",
   "properties": {
     "id": { "type": "string" },
+    "lid": { "type": "string" },
     "type": { "type": "string" }
-  },
-  "required": ["id", "type"]
+  }
 }

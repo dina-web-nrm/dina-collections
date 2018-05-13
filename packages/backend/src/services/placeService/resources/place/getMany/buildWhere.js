@@ -1,9 +1,17 @@
 const { Op } = require('sequelize')
 
 module.exports = function buildWhereFactory({ request }) {
-  const { queryParams: { filter: { group, parentId, search } = {} } } = request
+  const {
+    queryParams: { filter: { group, parentId, search, ids } = {} },
+  } = request
 
   const where = {}
+
+  if (ids !== undefined) {
+    where.id = {
+      [Op.in]: ids,
+    }
+  }
 
   if (group !== undefined) {
     where['document.group'] = group

@@ -11,6 +11,10 @@ import actionCreators from '../actionCreators'
 
 const createGetItemById = ({
   idPath = 'itemId',
+  include = [],
+  itemKey,
+  refresh = true,
+  relationships = ['all'],
   resource,
 }) => ComposedComponent => {
   /* eslint-disable no-console */
@@ -35,8 +39,18 @@ const createGetItemById = ({
   const mapStateToProps = (state, ownProps) => {
     const itemId = objectPath.get(ownProps, idPath)
 
+    const item = !(itemId && getOneSelector)
+      ? null
+      : getOneSelector(state, itemId)
+    if (itemKey) {
+      return {
+        item,
+        itemId,
+        [itemKey]: item,
+      }
+    }
     return {
-      item: !(itemId && getOneSelector) ? null : getOneSelector(state, itemId),
+      item,
       itemId,
     }
   }
@@ -58,9 +72,11 @@ const createGetItemById = ({
 
   class GetItemById extends Component {
     componentDidMount() {
-      const { itemId } = this.props
+      const { item, itemId } = this.props
       if (itemId && !config.isTest) {
-        this.props.getOne({ id: itemId })
+        if (refresh || !item) {
+          this.props.getOne({ id: itemId, include, relationships })
+        }
       }
     }
 
@@ -70,7 +86,9 @@ const createGetItemById = ({
         nextProps.itemId !== this.props.itemId &&
         !config.isTest
       ) {
-        this.props.getOne({ id: nextProps.itemId })
+        if (refresh || !nextProps.item) {
+          this.props.getOne({ id: nextProps.itemId, include, relationships })
+        }
       }
     }
 

@@ -19,7 +19,7 @@ module.exports = function getMany({ operation, elasticModels }) {
     if (filter && filter.catalogNumber) {
       body = bodybuilder()
         // TODO - verify type
-        .filter('match', 'identifiers.value', filter.catalogNumber)
+        .filter('match', 'normalized.identifiers.value', filter.catalogNumber)
         .size(limit)
         .from(offset)
         .build()

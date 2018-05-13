@@ -1,51 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Table } from 'semantic-ui-react'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+import { compose } from 'redux'
 import { SET_TAXON_NAME_INSPECT } from '../../../../constants'
 import TaxonNameLabel from '../../taxonName/Label'
 
 const propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  item: PropTypes.object,
+  itemId: PropTypes.string.isRequired,
   nameType: PropTypes.string.isRequired,
   onChangeFromAcceptedToSynonym: PropTypes.func,
   onChangeFromSynonymToAccepted: PropTypes.func,
   onDisconnect: PropTypes.func,
   onInteraction: PropTypes.func.isRequired,
-  rank: PropTypes.string,
-  rubinNumber: PropTypes.string,
   tableHasActions: PropTypes.bool.isRequired,
   taxonId: PropTypes.string,
 }
 const defaultProps = {
+  item: undefined,
   onChangeFromAcceptedToSynonym: undefined,
   onChangeFromSynonymToAccepted: undefined,
   onDisconnect: undefined,
-  rank: undefined,
-  rubinNumber: undefined,
   taxonId: undefined,
 }
 
 const TaxonNameRow = ({
-  id,
-  name,
+  itemId,
   nameType,
   onChangeFromAcceptedToSynonym: handleChangeFromAcceptedToSynonym,
   onChangeFromSynonymToAccepted: handleChangeFromSynonymToAccepted,
   onDisconnect: handleDisconnect,
   onInteraction: handleInteraction,
-  rank,
-  rubinNumber,
   tableHasActions,
   taxonId,
+  item,
 }) => {
+  const { attributes: { name, rank, rubinNumber } = {} } = item || {}
+
   return (
     <Table.Row>
       <Table.Cell
         onClick={event => {
           event.preventDefault()
           handleInteraction(SET_TAXON_NAME_INSPECT, {
-            itemId: id,
+            itemId,
           })
         }}
         selectable
@@ -62,7 +61,7 @@ const TaxonNameRow = ({
           {handleDisconnect && (
             <Button
               onClick={event =>
-                handleDisconnect(event, { nameType, taxonNameId: id })
+                handleDisconnect(event, { nameType, taxonNameId: itemId })
               }
             >
               Disconnect
@@ -73,7 +72,7 @@ const TaxonNameRow = ({
               onClick={event =>
                 handleChangeFromAcceptedToSynonym(event, {
                   taxonId,
-                  taxonNameId: id,
+                  taxonNameId: itemId,
                 })
               }
             >
@@ -85,7 +84,7 @@ const TaxonNameRow = ({
               onClick={event =>
                 handleChangeFromSynonymToAccepted(event, {
                   taxonId,
-                  taxonNameId: id,
+                  taxonNameId: itemId,
                 })
               }
             >
@@ -101,4 +100,8 @@ const TaxonNameRow = ({
 TaxonNameRow.propTypes = propTypes
 TaxonNameRow.defaultProps = defaultProps
 
-export default TaxonNameRow
+export default compose(
+  createGetItemById({
+    resource: 'taxonName',
+  })
+)(TaxonNameRow)

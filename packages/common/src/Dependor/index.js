@@ -7,6 +7,10 @@ const getKey = key => {
 
 const testing = process.env.NODE_ENV === 'test'
 
+const defaultMockHandler = (...args) => {
+  return args
+}
+
 const Dependor = class Dependor {
   constructor(dependencies = {}) {
     const originalDependenciesKey = getKey('dependencies')
@@ -29,6 +33,9 @@ const Dependor = class Dependor {
       }
       this[key] = dependencies[key]
     })
+  }
+  createSpies() {
+    console.error('not allowed to call autoMock outside test')
   }
   mock() {
     console.error('not allowed to call reset outside test')
@@ -66,6 +73,24 @@ const TestDependor = class TestDependor extends Dependor {
       }, {})
     )
   }
+  createSpies(handlers) {
+    const originalDependenciesKey = getKey('dependencies')
+    const originalDependencies = this[originalDependenciesKey]
+    return Object.keys(originalDependencies).reduce((spies, dependency) => {
+      const spy = jest.fn()
+      const func = (...args) => {
+        spy(...args)
+        const handler = (handlers && handlers[dependency]) || defaultMockHandler
+        return handler(...args)
+      }
+      this.mock({ [dependency]: func })
+      return {
+        ...spies,
+        [dependency]: spy,
+      }
+    }, {})
+  }
+
   mock(dependencies) {
     if (!testing) {
       throw new Error('Dependor _mock should only be used in testing')
