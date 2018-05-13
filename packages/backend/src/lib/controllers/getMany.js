@@ -1,4 +1,4 @@
-const defaultWhereFactory = require('./queryUtilities/defaultWhereFactory')
+const filterWhereFactory = require('./queryUtilities/filterWhereFactory')
 const createArrayResponse = require('./transformations/createArrayResponse')
 const transformOutput = require('./transformations/outputObject')
 const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
@@ -6,7 +6,9 @@ const extractRelationships = require('./relationshipsUtilities/extractRelationsh
 
 module.exports = function getMany({ operation, models }) {
   const {
-    buildWhere = defaultWhereFactory(),
+    buildWhere = filterWhereFactory({
+      ids: 'id',
+    }),
     includeRelations,
     relations,
     resource,

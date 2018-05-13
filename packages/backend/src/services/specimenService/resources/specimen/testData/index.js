@@ -5,10 +5,12 @@ const testData = {}
 testData.badRequestMissingCatalogNumber = {
   data: {
     attributes: {
-      individual: {
-        collectionItems: [],
-        featureObservations: [],
-        identifiers: [],
+      normalized: {
+        individual: {
+          collectionItems: [],
+          featureObservations: [],
+          identifiers: [],
+        },
       },
     },
     type: 'specimen',
@@ -18,20 +20,22 @@ testData.badRequestMissingCatalogNumber = {
 testData.simpleDataNoRelations = {
   data: {
     attributes: {
-      identifiers: [
-        {
-          identifierType: 'catalogNumber',
-          lid: '4444-33333',
-          nameSpace: '',
-          publishRecord: true,
-          remarks: '',
-          value: '123457',
+      normalized: {
+        identifiers: [
+          {
+            identifierType: 'catalogNumber',
+            lid: '4444-33333',
+            nameSpace: '',
+            publishRecord: true,
+            remarks: '',
+            value: '123457',
+          },
+        ],
+        individual: {
+          collectionItems: [],
+          featureObservations: [],
+          identifiers: ['4444-33333'],
         },
-      ],
-      individual: {
-        collectionItems: [],
-        featureObservations: [],
-        identifiers: ['4444-33333'],
       },
     },
     type: 'specimen',
@@ -41,20 +45,22 @@ testData.simpleDataNoRelations = {
 testData.simpleDataPhysicalObjectRelations = {
   data: {
     attributes: {
-      identifiers: [
-        {
-          identifierType: 'catalogNumber',
-          lid: '4444-33333',
-          nameSpace: '',
-          publishRecord: true,
-          remarks: '',
-          value: '123458',
+      normalized: {
+        identifiers: [
+          {
+            identifierType: 'catalogNumber',
+            lid: '4444-33333',
+            nameSpace: '',
+            publishRecord: true,
+            remarks: '',
+            value: '123458',
+          },
+        ],
+        individual: {
+          collectionItems: [],
+          featureObservations: [],
+          identifiers: ['4444-33333'],
         },
-      ],
-      individual: {
-        collectionItems: [],
-        featureObservations: [],
-        identifiers: ['4444-33333'],
       },
     },
     relationships: {
@@ -74,20 +80,22 @@ testData.simpleDataPhysicalObjectRelations = {
 testData.simpleDataMultipleRelations = {
   data: {
     attributes: {
-      identifiers: [
-        {
-          identifierType: 'catalogNumber',
-          lid: '4444-33333',
-          nameSpace: '',
-          publishRecord: true,
-          remarks: '',
-          value: '123458',
+      normalized: {
+        identifiers: [
+          {
+            identifierType: 'catalogNumber',
+            lid: '4444-33333',
+            nameSpace: '',
+            publishRecord: true,
+            remarks: '',
+            value: '123458',
+          },
+        ],
+        individual: {
+          collectionItems: [],
+          featureObservations: [],
+          identifiers: ['4444-33333'],
         },
-      ],
-      individual: {
-        collectionItems: [],
-        featureObservations: [],
-        identifiers: ['4444-33333'],
       },
     },
     relationships: {
@@ -121,20 +129,22 @@ testData.simpleDataMultipleRelations = {
 testData.simpleDataInvalidRelationsFormat = {
   data: {
     attributes: {
-      identifiers: [
-        {
-          identifierType: 'catalogNumber',
-          lid: '4444-33333',
-          nameSpace: '',
-          publishRecord: true,
-          remarks: '',
-          value: '123458',
+      normalized: {
+        identifiers: [
+          {
+            identifierType: 'catalogNumber',
+            lid: '4444-33333',
+            nameSpace: '',
+            publishRecord: true,
+            remarks: '',
+            value: '123458',
+          },
+        ],
+        individual: {
+          collectionItems: [],
+          featureObservations: [],
+          identifiers: ['4444-33333'],
         },
-      ],
-      individual: {
-        collectionItems: [],
-        featureObservations: [],
-        identifiers: ['4444-33333'],
       },
     },
     relationships: {
@@ -150,20 +160,22 @@ testData.simpleDataInvalidRelationsFormat = {
 testData.simpleDataInvalidRelations = {
   data: {
     attributes: {
-      identifiers: [
-        {
-          identifierType: 'catalogNumber',
-          lid: '4444-33333',
-          nameSpace: '',
-          publishRecord: true,
-          remarks: '',
-          value: '123458',
+      normalized: {
+        identifiers: [
+          {
+            identifierType: 'catalogNumber',
+            lid: '4444-33333',
+            nameSpace: '',
+            publishRecord: true,
+            remarks: '',
+            value: '123458',
+          },
+        ],
+        individual: {
+          collectionItems: [],
+          featureObservations: [],
+          identifiers: ['4444-33333'],
         },
-      ],
-      individual: {
-        collectionItems: [],
-        featureObservations: [],
-        identifiers: ['4444-33333'],
       },
     },
     relationships: {
