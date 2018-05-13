@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 
 import config from 'config'
 import { DropdownSearch } from 'coreModules/form/components'
-import { ensureAllStorageLocationsFetched } from 'dataModules/storageService/higherOrderComponents'
+
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { ALL, GROUP_1, GROUP_2, GROUP_3, GROUP_4 } from '../../constants'
 import {
   actionCreators,
@@ -18,7 +19,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  allStorageLocationsFetched: PropTypes.bool.isRequired,
+  allItemsFetched: PropTypes.bool.isRequired,
   group: PropTypes.oneOf([ALL, GROUP_1, GROUP_2, GROUP_3, GROUP_4]).isRequired,
   showParentName: PropTypes.bool,
   updateStorageSearchQuery: PropTypes.func.isRequired,
@@ -30,7 +31,7 @@ const defaultProps = {
 class StorageLocationDropdownSearch extends Component {
   render() {
     const {
-      allStorageLocationsFetched,
+      allItemsFetched: allStorageLocationsFetched,
       group,
       showParentName,
       updateStorageSearchQuery,
@@ -97,6 +98,8 @@ StorageLocationDropdownSearch.propTypes = propTypes
 StorageLocationDropdownSearch.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
+  createEnsureAllItemsFetched({
+    resource: 'storageLocation',
+  }),
   connect(undefined, mapDispatchToProps)
 )(StorageLocationDropdownSearch)

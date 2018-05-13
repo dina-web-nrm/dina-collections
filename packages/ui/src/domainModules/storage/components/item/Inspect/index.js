@@ -3,26 +3,22 @@ import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
-import {
-  createGetStorageLocationById,
-  ensureAllStorageLocationsFetched,
-} from 'dataModules/storageService/higherOrderComponents'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
+
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
+
 import { ParentChildTables } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 
 const mapStateToProps = (state, ownProps) => {
-  const { storageLocation } = ownProps
+  const { item: storageLocation } = ownProps
+  const parentId = getParentId(storageLocation)
   const parent =
-    storageLocation &&
-    storageLocation.parent &&
-    storageServiceSelectors.getStorageLocation(state, storageLocation.parent.id)
-  const children =
-    storageLocation &&
-    storageLocation.children &&
-    storageLocation.children.map(({ id }) => {
-      return storageServiceSelectors.getStorageLocation(state, id)
-    })
+    parentId && globalCrudSelectors.storageLocation.getOne(state, parentId)
+  const children = getChildrenIds(storageLocation).map(id => {
+    return globalCrudSelectors.storageLocation.getOne(state, id) || { id }
+  })
 
   return {
     children,
@@ -32,7 +28,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const propTypes = {
-  allStorageLocationsFetched: PropTypes.bool,
   children: PropTypes.array,
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.object,
@@ -40,7 +35,6 @@ const propTypes = {
 }
 
 const defaultProps = {
-  allStorageLocationsFetched: undefined,
   children: [],
   parent: null,
   storageLocation: undefined,
@@ -60,17 +54,12 @@ export class Inspect extends PureComponent {
   }
 
   render() {
-    const {
-      allStorageLocationsFetched,
-      children,
-      parent,
-      storageLocation,
-    } = this.props
-
-    if (!storageLocation || !allStorageLocationsFetched) {
+    const { children, parent, storageLocation } = this.props
+    if (!storageLocation) {
       return null
     }
 
+    const { attributes = {} } = storageLocation
     return (
       <React.Fragment>
         <Table celled>
@@ -84,7 +73,7 @@ export class Inspect extends PureComponent {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>Name</Table.Cell>
-                <Table.Cell>{storageLocation.name}</Table.Cell>
+                <Table.Cell>{attributes.name}</Table.Cell>
               </Table.Row>
               <Table.Row>
                 <Table.Cell>id</Table.Cell>
@@ -92,7 +81,7 @@ export class Inspect extends PureComponent {
               </Table.Row>
               <Table.Row>
                 <Table.Cell>Description</Table.Cell>
-                <Table.Cell>{storageLocation.description}</Table.Cell>
+                <Table.Cell>{attributes.description}</Table.Cell>
               </Table.Row>
             </Table.Body>
           )}
@@ -112,7 +101,10 @@ Inspect.propTypes = propTypes
 Inspect.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
-  createGetStorageLocationById(),
+  createGetItemById({
+    include: ['parent', 'children'],
+    relationships: ['all'],
+    resource: 'storageLocation',
+  }),
   connect(mapStateToProps)
 )(Inspect)

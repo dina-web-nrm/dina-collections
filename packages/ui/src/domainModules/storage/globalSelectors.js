@@ -1,24 +1,26 @@
 import { createSelector } from 'reselect'
 
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
-import storageServiceSelectors from 'dataModules/storageService/globalSelectors'
+import crudSelectors from 'coreModules/crud/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
-
+import { getParentId } from 'coreModules/crud/utilities'
 import { ALL, GROUP_1, GROUP_2, GROUP_3, GROUP_4 } from './constants'
 
 const {
-  getStorageLocations,
-  getStorageLocationsArray,
-} = storageServiceSelectors
+  getItemsObject: getStorageLocations,
+  getAll: getStorageLocationsArray,
+} = crudSelectors.storageLocation
 
 const getStorageLocationsSortedArray = createSelector(
   getStorageLocationsArray,
   storageLocationsArray => {
-    return storageLocationsArray.sort((a, b) => {
-      if (a.name < b.name) return -1
-      if (a.name > b.name) return 1
-      return 0
-    })
+    return storageLocationsArray.sort(
+      ({ attributes: a = {} }, { attributes: b = {} }) => {
+        if (a.name < b.name) return -1
+        if (a.name > b.name) return 1
+        return 0
+      }
+    )
   }
 )
 
@@ -34,34 +36,34 @@ const getStorageLocationsArrayByFilter = createSelector(
       searchQuery: searchQueryFilter,
     } = filter
     let filteredStorageLocations = storageLocationsArray
-
     if (parentIdFilter) {
       filteredStorageLocations = filteredStorageLocations.filter(
         storageLocation => {
-          return (
-            (storageLocation.parent && storageLocation.parent.id) ===
-            parentIdFilter
-          )
+          return getParentId(storageLocation) === parentIdFilter
         }
       )
     }
 
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
-      const firstLetterMatches = filteredStorageLocations.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
-      })
+      const firstLetterMatches = filteredStorageLocations.filter(
+        ({ attributes: { name } = {} }) => {
+          return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+        }
+      )
 
-      const otherMatches = filteredStorageLocations.filter(({ name }) => {
-        return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
-      })
+      const otherMatches = filteredStorageLocations.filter(
+        ({ attributes: { name } = {} }) => {
+          return name && name.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+        }
+      )
 
       filteredStorageLocations = [...firstLetterMatches, ...otherMatches]
     }
 
     if (groupFilter) {
       filteredStorageLocations = filteredStorageLocations.filter(
-        ({ group }) => group === groupFilter
+        ({ attributes: { group } = {} }) => group === groupFilter
       )
     }
 
@@ -85,7 +87,7 @@ const getStorageLocationAncestorsById = createSelector(
     const ancestors = []
     const walkUp = item => {
       ancestors.push(item)
-      const parentId = item.parent && item.parent.id
+      const parentId = getParentId(item)
       if (parentId) {
         const next = storageLocations[parentId]
         if (next) {
@@ -141,15 +143,19 @@ const createDropdownSelector = (
 
       const mappedGroupStorageLocations = Object.values(storageLocations)
         .filter(
-          ({ group }) => (groupFilter === ALL ? true : group === groupFilter)
+          ({ attributes: { group } = {} }) =>
+            groupFilter === ALL ? true : group === groupFilter
         )
-        .map(({ id, name, parent }) => {
+        .map(storageLocation => {
+          const parentId = getParentId(storageLocation)
+          const parent = storageLocations[parentId]
+          const { id, attributes: { name } = {} } = storageLocation
+
           const parentName =
             showParentName &&
             parent &&
-            parent.id &&
-            storageLocations[parent.id] &&
-            storageLocations[parent.id].name
+            parent.attributes &&
+            parent.attributes.name
 
           const text = parentName
             ? `${capitalizeFirstLetter(name)} (in ${capitalizeFirstLetter(
