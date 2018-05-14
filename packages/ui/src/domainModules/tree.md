@@ -106,6 +106,8 @@
 │   ├── components
 │   │   ├── TaxonNameSearchInputWithResults
 │   │   │   └── index.js
+│   │   ├── TaxonSearchInputWithResults
+│   │   │   └── index.js
 │   │   ├── TaxonomyManager
 │   │   │   └── index.js
 │   │   ├── collection
@@ -127,6 +129,7 @@
 │   │   └── lookup
 │   │       ├── index.js
 │   │       └── index.test.js
+│   ├── schemas.js
 │   ├── selectors.js
 │   ├── selectors.test.js
 │   ├── translations.json
@@ -141,5 +144,4 @@
 [src](../tree.md)
 [apps](../apps/tree.md)
 [coreModules](../coreModules/tree.md)
-[dataModules](../dataModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

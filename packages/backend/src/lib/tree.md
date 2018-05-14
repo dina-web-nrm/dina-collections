@@ -24,6 +24,7 @@
 │   ├── create.js
 │   ├── getMany.js
 │   ├── getOne.js
+│   ├── getRelationBelongsToOne.js
 │   ├── getRelationHasMany.js
 │   ├── getRelationHasOne.js
 │   ├── getVersion.js
@@ -51,6 +52,7 @@
 │   │   ├── outputArray.js
 │   │   └── outputObject.js
 │   ├── update.js
+│   ├── updateRelationBelongsToOne.js
 │   ├── updateRelationHasMany.js
 │   └── updateRelationHasOne.js
 ├── elasticsearch
@@ -74,12 +76,14 @@
 │       ├── createModels.js
 │       ├── createRelations.js
 │       ├── factories
+│       │   ├── documentModel
 │       │   └── versionedDocumentModel
 │       ├── index.js
 │       ├── loadInitialData.js
 │       ├── syncModels.js
 │       └── utilities
-│           └── extractModelFunctionsFromServices.js
+│           ├── extractModelFunctionsFromServices.js
+│           └── setupAssociation.js
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
@@ -104,6 +108,7 @@
 │   │       ├── create.js
 │   │       ├── getMany.js
 │   │       ├── getOne.js
+│   │       ├── getRelationBelongsToOne.js
 │   │       ├── getRelationHasMany.js
 │   │       ├── getRelationHasOne.js
 │   │       ├── getVersion.js
@@ -111,9 +116,15 @@
 │   │       ├── index.js
 │   │       ├── schemas
 │   │       ├── update.js
+│   │       ├── updateRelationBelongsToOne.js
 │   │       ├── updateRelationHasMany.js
 │   │       ├── updateRelationHasOne.js
 │   │       └── utilities
+│   ├── relations
+│   │   ├── buildResourceRelationsMap.js
+│   │   ├── createSetupRelations.js
+│   │   ├── getFormat.js
+│   │   └── getRelationKey.js
 │   ├── resourceFactory
 │   │   ├── createOperationMap.js
 │   │   ├── createResourceSpecification.js

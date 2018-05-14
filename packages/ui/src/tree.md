@@ -28,14 +28,6 @@
 │   ├── size
 │   ├── tree.md
 │   └── user
-├── dataModules
-│   ├── allModules.js
-│   ├── curatedListService
-│   ├── index.js
-│   ├── specimenService
-│   ├── storageService
-│   ├── taxonService
-│   └── tree.md
 ├── domainModules
 │   ├── allModules.js
 │   ├── collectionMammals
@@ -66,6 +58,7 @@
 │   ├── import-named-export.js
 │   ├── import-namespace.js
 │   ├── print-to-console.js
+│   ├── private
 │   └── test-setup-test-reducer.js
 ├── store
 │   └── index.js
@@ -95,6 +88,5 @@
 [root](../tree.md)
 [apps](apps/tree.md)
 [coreModules](coreModules/tree.md)
-[dataModules](dataModules/tree.md)
 [domainModules](domainModules/tree.md)
 [collectionsUi viewModules](apps/collectionsUi/viewModules/tree.md)

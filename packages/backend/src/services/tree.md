@@ -86,8 +86,9 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   ├── loadInitialData
+│   │   │   └── index.js
+│   │   └── relations.js
 │   ├── resources
 │   │   ├── index.js
 │   │   └── place
@@ -108,9 +109,10 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   └── loadInitialData
-│   │       ├── index.js
-│   │       └── migrations
+│   │   ├── loadInitialData
+│   │   │   ├── index.js
+│   │   │   └── migrations
+│   │   └── relations.js
 │   ├── resources
 │   │   ├── index.js
 │   │   └── specimen
@@ -135,8 +137,9 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   ├── loadInitialData
+│   │   │   └── index.js
+│   │   └── relations.js
 │   └── resources
 │       ├── index.js
 │       ├── physicalObject
@@ -152,8 +155,9 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   ├── loadInitialData
+│   │   │   └── index.js
+│   │   └── relations.js
 │   └── resources
 │       ├── index.js
 │       ├── taxon
