@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import {
-  createGetItemById,
+  createGetNestedItemById,
   createEnsureAllItemsFetched,
 } from 'coreModules/crud/higherOrderComponents'
 
@@ -41,12 +41,7 @@ export class Edit extends PureComponent {
       itemId,
     } = this.props
 
-    const initialValues = taxonName && {
-      name: taxonName.name,
-      rank: taxonName.rank,
-      rubinNumber: taxonName.rubinNumber,
-    }
-
+    const initialValues = taxonName
     if (!initialValues || !allTaxonNamesFetched) {
       return null
     }
@@ -64,10 +59,11 @@ export class Edit extends PureComponent {
         onSubmit={data => {
           this.props
             .updateTaxonName({
-              taxonName: {
+              item: {
                 id: itemId,
                 ...data,
               },
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_EDIT_SUCCESS, {
@@ -84,8 +80,8 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  createGetItemById({
-    itemKey: 'taxonName',
+  createGetNestedItemById({
+    nestedItemKey: 'taxonName',
     resource: 'taxonName',
   }),
   createEnsureAllItemsFetched({

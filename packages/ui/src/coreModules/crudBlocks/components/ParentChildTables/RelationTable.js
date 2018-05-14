@@ -6,8 +6,8 @@ const propTypes = {
   onRowClick: PropTypes.func.isRequired,
   rowItems: PropTypes.arrayOf(
     PropTypes.shape({
+      attributes: PropTypes.object,
       id: PropTypes.string.isRequired,
-      name: PropTypes.string,
     }).isRequired
   ),
 }

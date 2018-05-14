@@ -105,12 +105,21 @@ export class Inspect extends PureComponent {
           </Table.Header>
           <Table.Body>
             {acceptedToTaxon &&
-              this.renderRow({ id: acceptedToTaxon.id, nameType: 'accepted' })}
-            {synonymToTaxon &&
-              this.renderRow({ id: synonymToTaxon.id, nameType: 'synonym' })}
-            {vernacularToTaxon &&
+              acceptedToTaxon.data &&
               this.renderRow({
-                id: vernacularToTaxon.id,
+                id: acceptedToTaxon.data.id,
+                nameType: 'accepted',
+              })}
+            {synonymToTaxon &&
+              synonymToTaxon.data &&
+              this.renderRow({
+                id: synonymToTaxon.data.id,
+                nameType: 'synonym',
+              })}
+            {vernacularToTaxon &&
+              vernacularToTaxon.data &&
+              this.renderRow({
+                id: vernacularToTaxon.data.id,
                 nameType: 'vernacular',
               })}
           </Table.Body>

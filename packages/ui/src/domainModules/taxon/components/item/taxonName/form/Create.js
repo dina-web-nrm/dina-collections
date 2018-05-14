@@ -58,7 +58,8 @@ export class Create extends PureComponent {
         onSubmit={data => {
           this.props
             .createTaxonName({
-              taxonName: data,
+              item: data,
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_CREATE_SUCCESS, {

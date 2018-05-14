@@ -36,14 +36,14 @@ const mapStateToProps = (state, ownProps) => {
 const propTypes = {
   children: PropTypes.arrayOf(
     PropTypes.shape({
+      attributes: PropTypes.object.isRequired,
       id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
     })
   ),
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.shape({
+    attributes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
   }),
   taxon: PropTypes.object,
 }

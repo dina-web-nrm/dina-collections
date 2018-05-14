@@ -145,14 +145,14 @@ export class BaseForm extends Component {
   }
 
   setTaxonNameAsAccepted({ itemId, nameType, stateIndex } = {}) {
-    if (nameType === SYNONYM) {
-      this.disconnectTaxonName({
-        itemId,
-        nameType,
-        stateIndex,
-      })
-    }
     const currentAcceptedName = this.props.acceptedTaxonName
+
+    this.disconnectTaxonName({
+      itemId,
+      nameType,
+      stateIndex,
+    })
+
     if (currentAcceptedName && currentAcceptedName.id) {
       this.setTaxonNameAsSynonyme({
         itemId: currentAcceptedName.id,
@@ -165,14 +165,7 @@ export class BaseForm extends Component {
     })
   }
 
-  setTaxonNameAsSynonyme({ itemId, nameType, stateIndex } = {}) {
-    if (nameType === ACCEPTED) {
-      this.disconnectTaxonName({
-        itemId,
-        nameType,
-        stateIndex,
-      })
-    }
+  setTaxonNameAsSynonyme({ itemId, nameType } = {}) {
     this.addSynonym({
       itemId,
       unshift: nameType === ACCEPTED,
@@ -181,6 +174,9 @@ export class BaseForm extends Component {
   }
 
   addSynonym({ itemId, unshift = false } = {}) {
+    this.disconnectTaxonName({
+      itemId,
+    })
     if (unshift) {
       return this.props.arrayUnshift(FORM_NAME, 'synonyms', {
         id: itemId,
@@ -193,12 +189,26 @@ export class BaseForm extends Component {
   }
 
   addVernacularName({ itemId } = {}) {
+    this.disconnectTaxonName({
+      itemId,
+    })
     return this.props.arrayPush(FORM_NAME, 'vernacularNames', {
       id: itemId,
     })
   }
 
-  disconnectTaxonName({ nameType, stateIndex } = {}) {
+  disconnectTaxonName({ itemId } = {}) {
+    const existinTaxonNameListItem = this.props.sortedNameList.find(
+      ({ id }) => {
+        return id === itemId
+      }
+    )
+    if (!existinTaxonNameListItem) {
+      return null
+    }
+
+    const { nameType, stateIndex } = existinTaxonNameListItem
+
     if (nameType === SYNONYM) {
       this.props.arrayRemove(FORM_NAME, 'synonyms', stateIndex)
     }
@@ -208,6 +218,7 @@ export class BaseForm extends Component {
     if (nameType === ACCEPTED) {
       this.props.change(FORM_NAME, 'acceptedTaxonName', null)
     }
+    return null
   }
   handleTaxonNameInteraction(
     { interactionType, itemId, nameType, stateIndex } = {}
@@ -244,7 +255,7 @@ export class BaseForm extends Component {
       })
     }
 
-    return null
+    throw new Error(`Unknown interaction type: ${interactionType}`)
   }
   render() {
     log.render()
