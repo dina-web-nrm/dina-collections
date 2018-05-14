@@ -1,11 +1,12 @@
 import Dependor from 'utilities/Dependor'
 import createLog from 'utilities/log'
 import { createSelector } from 'reselect'
-import { MODULE_NAME, RESOURCES_NAMESPACE } from '../../../constants'
 import createCustomSelectors from './createCustomSelectors'
+import getLocalState from './getLocalState'
 
 export const dep = new Dependor({
   createCustomSelectors,
+  getLocalState,
 })
 
 const log = createLog('coreModules:crud:selectors')
@@ -18,10 +19,6 @@ export default function createResourceSelectors(
   }
 
   const { customSelectors: customSelectorsInput } = resourceSpecification
-
-  const getLocalState = state => {
-    return state[MODULE_NAME] && state[MODULE_NAME][RESOURCES_NAMESPACE]
-  }
 
   const getLocalResourceState = localState => {
     return localState[resource]
@@ -37,16 +34,25 @@ export default function createResourceSelectors(
   })
 
   const getOne = (localState, id) => {
-    const items = getItemsObject(localState)
-    return items[id] || null
+    const itemsObject = getItemsObject(localState)
+    return itemsObject[id] || null
+  }
+
+  const getOneByLid = (localState, lid) => {
+    const items = getAll(localState) || []
+    const res = items.find(({ attributes }) => {
+      return attributes && attributes.lid === lid
+    })
+    return res || null
   }
 
   let resourceSelectors = {
     getAll,
     getItemsObject,
     getLocalResourceState,
-    getLocalState,
+    getLocalState: dep.getLocalState,
     getOne,
+    getOneByLid,
   }
 
   if (customSelectorsInput) {

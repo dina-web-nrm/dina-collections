@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updateTaxonName as updateTaxonNameAc } from 'dataModules/taxonService/actionCreators'
 import {
-  createGetTaxonNameById,
-  ensureAllTaxonNamesFetched,
-} from 'dataModules/taxonService/higherOrderComponents'
+  createGetNestedItemById,
+  createEnsureAllItemsFetched,
+} from 'coreModules/crud/higherOrderComponents'
+
+import crudActionCreators from 'coreModules/crud/actionCreators'
+
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -14,7 +16,7 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  updateTaxonName: updateTaxonNameAc,
+  updateTaxonName: crudActionCreators.taxonName.update,
 }
 
 const propTypes = {
@@ -39,12 +41,7 @@ export class Edit extends PureComponent {
       itemId,
     } = this.props
 
-    const initialValues = taxonName && {
-      name: taxonName.name,
-      rank: taxonName.rank,
-      rubinNumber: taxonName.rubinNumber,
-    }
-
+    const initialValues = taxonName
     if (!initialValues || !allTaxonNamesFetched) {
       return null
     }
@@ -62,10 +59,11 @@ export class Edit extends PureComponent {
         onSubmit={data => {
           this.props
             .updateTaxonName({
-              taxonName: {
+              item: {
                 id: itemId,
                 ...data,
               },
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_EDIT_SUCCESS, {
@@ -82,7 +80,13 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxonNamesFetched(),
-  createGetTaxonNameById(),
+  createGetNestedItemById({
+    nestedItemKey: 'taxonName',
+    resource: 'taxonName',
+  }),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
   connect(null, mapDispatchToProps)
 )(Edit)

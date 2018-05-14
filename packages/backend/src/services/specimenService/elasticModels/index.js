@@ -1,13 +1,11 @@
-const normalizedSchemaSpecification = require('common/src/normalize/normalizedSchemaSpecification')
+const {
+  getNormalizedColumnNames,
+} = require('common/src/formatObject/specifications')
+
 const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/elasticsearch/models/factories/normalizedElasticModel')
 
-const normalizedColumnNames = Object.keys(
-  normalizedSchemaSpecification.specimen
-).map(key => {
-  return normalizedSchemaSpecification.specimen[key].column
-})
-
+const normalizedColumnNames = getNormalizedColumnNames('specimen')
 const specimenFactory = function specimen({ elasticsearch }) {
   return createModel({
     elasticsearch,

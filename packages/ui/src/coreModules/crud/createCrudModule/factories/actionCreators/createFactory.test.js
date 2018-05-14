@@ -74,7 +74,6 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
         meta: {
           body: {
             data: {
-              attributes: {},
               type: 'physicalObject',
             },
           },
@@ -111,9 +110,11 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
       }
       const expectedAction = {
         meta: {
-          body: { data: { attributes: {}, type: 'physicalObject' } },
+          body: {
+            data: { type: 'physicalObject' },
+          },
         },
-        payload: { id: '123', name: 'Alan', type: 'type' },
+        payload: { attributes: { name: 'Alan' }, id: '123', type: 'type' },
         type: 'CREATE_PHYSICAL_OBJECT_SUCCESS',
       }
 
@@ -124,6 +125,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
         expectedAction,
         expectedActionType,
         mockResponse,
+        resource: 'physicalObject',
       })
     })
 
@@ -137,7 +139,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
       const mockError = { status: 500 }
       const expectedAction = {
         error: true,
-        meta: { body: { data: { attributes: {}, type: 'physicalObject' } } },
+        meta: { body: { data: { type: 'physicalObject' } } },
         payload: mockError,
         type: inputCreatePhysicalObject.resourceActionTypes.create.fail,
       }
@@ -158,7 +160,6 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/createFacto
       const expectedApiClientCallParams = {
         body: {
           data: {
-            attributes: {},
             type: 'physicalObject',
           },
         },

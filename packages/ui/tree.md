@@ -11,6 +11,11 @@
 │   ├── manifest.json
 │   ├── service-worker.js
 │   └── static
+├── build-storybook
+│   ├── favicon.ico
+│   ├── iframe.html
+│   ├── index.html
+│   └── static
 ├── config.scripts.js
 ├── coverage
 │   ├── clover.xml
@@ -23,11 +28,11 @@
 │   ├── favicon.ico
 │   ├── index.html
 │   └── manifest.json
+├── sample.config.scripts.js
 ├── src
 │   ├── apps
 │   ├── config
 │   ├── coreModules
-│   ├── dataModules
 │   ├── domainModules
 │   ├── index.js
 │   ├── mock
@@ -40,10 +45,9 @@
 │   ├── test
 │   ├── tree.md
 │   └── utilities
-├── storybook-static
-│   └── static
 ├── test
 │   └── __mocks__
+├── todo
 ├── tree.md
 └── yarn.lock
 
@@ -53,6 +57,5 @@
 [src](src/tree.md)
 [apps](src/apps/tree.md)
 [coreModules](src/coreModules/tree.md)
-[dataModules](src/dataModules/tree.md)
 [domainModules](src/domainModules/tree.md)
 [collectionsUi viewModules](src/apps/collectionsUi/viewModules/tree.md)

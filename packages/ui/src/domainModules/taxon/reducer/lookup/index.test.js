@@ -1,14 +1,21 @@
 import deepFreeze from 'deep-freeze'
 
 import UNKNOWN_ACTION from 'utilities/test/unknownActionType'
-import {
-  TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
-  TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
-  TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
-} from 'dataModules/taxonService/actionTypes'
+import actionTypes from 'coreModules/crud/actionTypes'
+
 import { TAXON_SERVICE_UPDATE_SEARCH_QUERY } from '../../actionTypes'
 
 import reducer, { getInitialState } from './index'
+
+const {
+  taxonName: {
+    getMany: {
+      fail: TAXON_SERVICE_GET_TAXON_NAMES_FAIL,
+      request: TAXON_SERVICE_GET_TAXON_NAMES_REQUEST,
+      success: TAXON_SERVICE_GET_TAXON_NAMES_SUCCESS,
+    },
+  },
+} = actionTypes
 
 const tryImport = () => {
   return import('./index')

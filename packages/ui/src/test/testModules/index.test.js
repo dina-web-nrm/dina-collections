@@ -10,7 +10,6 @@ import moduleSchema from './moduleSchema.json'
 
 const moduleFolderNamePath = {
   coreModules: path.join(__dirname, '../../coreModules'),
-  dataModules: path.join(__dirname, '../../dataModules'),
   domainModules: path.join(__dirname, '../../domainModules'),
   viewModules: path.join(__dirname, '../../apps/collectionsUi/viewModules'),
 }
@@ -198,5 +197,4 @@ const testModuleFolder = folderName => {
 }
 
 testModuleFolder('coreModules')
-testModuleFolder('dataModules')
 testModuleFolder('viewModules')

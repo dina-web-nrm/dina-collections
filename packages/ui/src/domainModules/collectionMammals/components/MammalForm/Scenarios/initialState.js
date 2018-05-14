@@ -1,54 +1,5 @@
 /* eslint-disable sort-keys */
 export default {
-  curatedListService: {
-    resources: {
-      featureTypes: {
-        '1': {
-          key: 'age-stage',
-          group: 'age-stage',
-          selectableValues: [
-            {
-              key: 'juvenile',
-              name: {
-                en: 'juvenile ',
-                sv: 'juvenil',
-              },
-            },
-          ],
-          selectableMethods: [
-            {
-              key: 'known-age',
-              name: {
-                en: 'known age',
-              },
-            },
-            {
-              key: 'sectioned-teeth',
-              name: {
-                en: 'sectioned teeth',
-              },
-            },
-            {
-              key: 'other',
-              name: {
-                en: 'other',
-              },
-            },
-          ],
-          id: '1',
-          type: 'featureType',
-        },
-      },
-      preparationTypes: {
-        '2': {
-          category: 'skeleton',
-          id: '2',
-          name: 'complete, mounted skeleton',
-          type: 'preparationType',
-        },
-      },
-    },
-  },
   crud: {
     keyObject: {
       place: {
@@ -56,11 +7,68 @@ export default {
       },
     },
     resources: {
+      featureType: {
+        items: {
+          '1': {
+            attributes: {
+              key: 'age-stage',
+              group: 'age-stage',
+              selectableValues: [
+                {
+                  key: 'juvenile',
+                  name: {
+                    en: 'juvenile ',
+                    sv: 'juvenil',
+                  },
+                },
+              ],
+              selectableMethods: [
+                {
+                  key: 'known-age',
+                  name: {
+                    en: 'known age',
+                  },
+                },
+                {
+                  key: 'sectioned-teeth',
+                  name: {
+                    en: 'sectioned teeth',
+                  },
+                },
+                {
+                  key: 'other',
+                  name: {
+                    en: 'other',
+                  },
+                },
+              ],
+            },
+            id: '1',
+            type: 'featureType',
+          },
+        },
+      },
+      preparationType: {
+        items: {
+          '2': {
+            attributes: {
+              category: 'skeleton',
+              name: 'complete, mounted skeleton',
+            },
+            id: '2',
+            type: 'preparationType',
+          },
+        },
+      },
+
       establishmentMeansType: {
         items: {
           '1': {
-            name: { en: 'managed' },
-            key: 'managed',
+            attributes: {
+              name: { en: 'managed' },
+              key: 'managed',
+            },
+
             id: '1',
             type: 'establishmentMeansType',
           },
@@ -70,8 +78,11 @@ export default {
       causeOfDeathType: {
         items: {
           '1': {
-            name: { en: 'shot', sv: 'skjuten' },
-            key: 'shot',
+            attributes: {
+              name: { en: 'shot', sv: 'skjuten' },
+              key: 'shot',
+            },
+
             id: '1',
             type: 'causeOfDeathType',
           },
@@ -80,14 +91,20 @@ export default {
       place: {
         items: {
           '1': {
-            name: 'africa',
-            group: 'continent',
+            attributes: {
+              name: 'africa',
+              group: 'continent',
+            },
+
             id: '1',
             type: 'place',
           },
           '12': {
-            name: 'algeria',
-            group: 'country',
+            attributes: {
+              name: 'algeria',
+              group: 'country',
+            },
+
             id: '12',
             type: 'place',
           },
@@ -96,8 +113,11 @@ export default {
       typeSpecimenType: {
         items: {
           '1': {
+            attributes: {
+              name: 'subtype',
+            },
             id: '1',
-            name: 'subtype',
+
             type: 'typeSpecimenType',
           },
         },
@@ -105,15 +125,21 @@ export default {
       identifierType: {
         items: {
           '1': {
+            attributes: {
+              name: 'catalog number',
+              key: 'catalogNumber',
+            },
             id: '1',
-            name: 'catalog number',
-            key: 'catalogNumber',
+
             type: 'identifierType',
           },
           '2': {
+            attributes: {
+              name: 'SVA number',
+              key: 'sva-number',
+            },
             id: '2',
-            name: 'SVA number',
-            key: 'sva-number',
+
             type: 'identifierType',
           },
         },
@@ -126,9 +152,13 @@ export default {
       physicalObjects: {
         '1': {
           id: '1',
-          storageLocation: {
-            id: '1',
-            type: 'storageLocation',
+          relationships: {
+            storageLocation: {
+              data: {
+                id: '1',
+                type: 'storageLocation',
+              },
+            },
           },
           type: 'physicalObject',
         },
@@ -136,8 +166,17 @@ export default {
       storageLocations: {
         '1': {
           id: '1',
-          name: 'Bone room',
-          parentId: '',
+          attributes: {
+            name: 'Bone room',
+          },
+          relationships: {
+            parent: {
+              data: {
+                id: '',
+              },
+            },
+          },
+
           type: 'storageLocation',
         },
       },
@@ -147,8 +186,10 @@ export default {
     resources: {
       taxa: {
         '2367': {
+          attributes: {
+            scientificName: 'Sorex minutus',
+          },
           id: '2367',
-          scientificName: 'Sorex minutus',
         },
       },
     },

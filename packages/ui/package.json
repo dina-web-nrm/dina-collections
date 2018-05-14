@@ -35,7 +35,7 @@
     "markdown-it": "^8.4.0",
     "moment": "^2.22.0",
     "object-path": "^0.11.4",
-    "object-path-immutable": "^0.5.2",
+    "object-path-immutable": "^1.0.1",
     "prettier": "1.8.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",

@@ -9,7 +9,7 @@ export default function createOperationSpecification({
   operationConfig,
   resourceName,
 }) {
-  const { type, operationId } = operationConfig
+  const { type, operationId, options } = operationConfig
   if (!operationId) {
     throw new Error(
       `Operation for resource: ${resourceName} with type: ${
@@ -25,6 +25,7 @@ export default function createOperationSpecification({
     case OPERATION_TYPE_GET_ONE: {
       return {
         operationId, // create operation id
+        options,
         type,
       }
     }

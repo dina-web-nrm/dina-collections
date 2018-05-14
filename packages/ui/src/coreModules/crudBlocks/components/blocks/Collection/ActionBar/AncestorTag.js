@@ -56,7 +56,7 @@ class AncestorTag extends Component {
                     setParentId(ancestor.id, { name })
                   }}
                 >
-                  {ancestor.name}
+                  {ancestor.attributes && ancestor.attributes.name}
                 </Breadcrumb.Section>
               </React.Fragment>
             )

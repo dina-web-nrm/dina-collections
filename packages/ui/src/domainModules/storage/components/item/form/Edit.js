@@ -2,11 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { updateStorageLocation as updateStorageLocationAc } from 'dataModules/storageService/actionCreators'
-import {
-  createGetStorageLocationById,
-  ensureAllStorageLocationsFetched,
-} from 'dataModules/storageService/higherOrderComponents'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import {
   FORM_CANCEL,
   FORM_EDIT_SUCCESS,
@@ -14,38 +11,24 @@ import {
 import BaseForm from './Base'
 
 const mapDispatchToProps = {
-  updateStorageLocation: updateStorageLocationAc,
+  updateStorageLocation: crudActionCreators.storageLocation.update,
 }
 
 const propTypes = {
-  allStorageLocationsFetched: PropTypes.bool,
   itemId: PropTypes.string.isRequired,
+  nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
-  storageLocation: PropTypes.object,
   updateStorageLocation: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
-  allStorageLocationsFetched: undefined,
-  storageLocation: undefined,
+  nestedItem: undefined,
 }
 
 export class Edit extends PureComponent {
   render() {
-    const {
-      allStorageLocationsFetched,
-      storageLocation,
-      onInteraction,
-      itemId,
-    } = this.props
-
-    const initialValues = storageLocation && {
-      group: storageLocation.group,
-      name: storageLocation.name,
-      parentId: storageLocation.parent && storageLocation.parent.id,
-    }
-
-    if (!initialValues || !allStorageLocationsFetched) {
+    const { nestedItem: initialValues, onInteraction, itemId } = this.props
+    if (!initialValues) {
       return null
     }
 
@@ -59,13 +42,14 @@ export class Edit extends PureComponent {
           onInteraction(FORM_CANCEL)
         }}
         onInteraction={onInteraction}
-        onSubmit={data => {
+        onSubmit={formOutput => {
           this.props
             .updateStorageLocation({
-              storageLocation: {
+              item: {
                 id: itemId,
-                ...data,
+                ...formOutput,
               },
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_EDIT_SUCCESS, {
@@ -82,7 +66,10 @@ Edit.propTypes = propTypes
 Edit.defaultProps = defaultProps
 
 export default compose(
-  ensureAllStorageLocationsFetched(),
-  createGetStorageLocationById(),
+  createGetNestedItemById({
+    include: ['parent'],
+    relationships: ['parent'],
+    resource: 'storageLocation',
+  }),
   connect(null, mapDispatchToProps)
 )(Edit)

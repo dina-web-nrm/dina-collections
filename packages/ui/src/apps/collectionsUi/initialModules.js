@@ -13,11 +13,6 @@ import * as localStorage from 'coreModules/localStorage'
 import * as logger from 'coreModules/logger'
 import * as routing from 'coreModules/routing'
 
-import * as curatedListService from 'dataModules/curatedListService'
-import * as specimenService from 'dataModules/specimenService'
-import * as storageService from 'dataModules/storageService'
-import * as taxonService from 'dataModules/taxonService'
-
 const modules = [
   api,
   bootstrap,
@@ -33,11 +28,6 @@ const modules = [
   localStorage,
   logger,
   routing,
-
-  curatedListService,
-  specimenService,
-  storageService,
-  taxonService,
 ]
 
 export default modules

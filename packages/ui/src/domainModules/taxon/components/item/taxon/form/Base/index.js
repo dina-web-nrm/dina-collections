@@ -3,28 +3,115 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Form, Grid } from 'semantic-ui-react'
-import { reduxForm } from 'redux-form'
+import {
+  arrayPush,
+  arrayUnshift,
+  arrayRemove,
+  change,
+  formValueSelector as formValueSelectorFactory,
+  reduxForm,
+} from 'redux-form'
 
 import createLog from 'utilities/log'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
-import { DropdownSearch, Field } from 'coreModules/form/components'
+import { Field } from 'coreModules/form/components'
+import TaxonSearchInputWithResults from 'domainModules/taxon/components/TaxonSearchInputWithResults'
 import { taxonFormModels } from '../../../../../schemas'
-import globalSelectors from '../../../../../globalSelectors'
+import { ACCEPTED, SYNONYM, VERNACULAR } from '../../../../../constants'
 import FormActions from './FormActions'
+import TaxonNameTable from './TaxonNameTable'
 
 export const FORM_NAME = 'taxon'
 
 const log = createLog('modules:taxon:taxon:BaseForm')
 
-const mapStateToProps = state => {
+const formValueSelector = formValueSelectorFactory(FORM_NAME)
+
+const createListItem = ({ taxonName, nameType, stateIndex, stateType }) => {
+  if (!(taxonName && taxonName.id)) {
+    return null
+  }
+
+  if (stateType === 'object') {
+    return {
+      ...taxonName,
+      nameType,
+      stateType,
+    }
+  }
+
   return {
-    taxonNamesWithAcceptedTaxon: globalSelectors.getTaxonNamesWithAcceptedToTaxon(
-      state
-    ),
+    ...taxonName,
+    nameType,
+    stateIndex,
+    stateType,
   }
 }
 
+const createListArray = ({ taxonNames = [], nameType, stateType }) => {
+  return taxonNames.map((taxonName, index) => {
+    return createListItem({
+      nameType,
+      stateIndex: index,
+      stateType,
+      taxonName,
+    })
+  })
+}
+
+const createSortedNameList = ({
+  acceptedTaxonName,
+  synonyms,
+  vernacularNames,
+}) => {
+  const nameList = [
+    createListItem({
+      nameType: ACCEPTED,
+      stateType: 'object',
+      taxonName: acceptedTaxonName,
+    }),
+    ...createListArray({
+      nameType: SYNONYM,
+      stateType: 'array',
+      taxonNames: synonyms,
+    }),
+    ...createListArray({
+      nameType: VERNACULAR,
+      stateType: 'array',
+      taxonNames: vernacularNames,
+    }),
+  ]
+  return nameList.filter(taxonName => !!taxonName)
+}
+
+const mapStateToProps = state => {
+  const acceptedTaxonName = formValueSelector(state, 'acceptedTaxonName')
+  const synonyms = formValueSelector(state, 'synonyms')
+  const vernacularNames = formValueSelector(state, 'vernacularNames')
+  const sortedNameList = createSortedNameList({
+    acceptedTaxonName,
+    synonyms,
+    vernacularNames,
+  })
+  return {
+    acceptedTaxonName,
+    sortedNameList,
+  }
+}
+
+const mapDispatchToProps = {
+  arrayPush,
+  arrayRemove,
+  arrayUnshift,
+  change,
+}
+
 const propTypes = {
+  acceptedTaxonName: PropTypes.object,
+  arrayPush: PropTypes.func.isRequired,
+  arrayRemove: PropTypes.func.isRequired,
+  arrayUnshift: PropTypes.func.isRequired,
+  change: PropTypes.func.isRequired,
   displayBackButton: PropTypes.bool,
   displayResetButton: PropTypes.bool,
   error: PropTypes.string,
@@ -34,27 +121,142 @@ const propTypes = {
   onSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
+  sortedNameList: PropTypes.array.isRequired,
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
-  taxonNamesWithAcceptedTaxon: PropTypes.arrayOf(
-    PropTypes.shape({
-      acceptedToTaxon: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-      }).isRequired,
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 }
 
 const defaultProps = {
+  acceptedTaxonName: null,
   displayBackButton: false,
   displayResetButton: false,
   error: '',
 }
 
 export class BaseForm extends Component {
+  constructor(props) {
+    super(props)
+    this.handleTaxonNameInteraction = this.handleTaxonNameInteraction.bind(this)
+    this.setTaxonNameAsAccepted = this.setTaxonNameAsAccepted.bind(this)
+    this.disconnectTaxonName = this.disconnectTaxonName.bind(this)
+    this.addSynonym = this.addSynonym.bind(this)
+    this.addVernacularName = this.addVernacularName.bind(this)
+  }
+
+  setTaxonNameAsAccepted({ itemId, nameType, stateIndex } = {}) {
+    const currentAcceptedName = this.props.acceptedTaxonName
+
+    this.disconnectTaxonName({
+      itemId,
+      nameType,
+      stateIndex,
+    })
+
+    if (currentAcceptedName && currentAcceptedName.id) {
+      this.setTaxonNameAsSynonyme({
+        itemId: currentAcceptedName.id,
+        nameType: ACCEPTED,
+      })
+    }
+
+    return this.props.change(FORM_NAME, 'acceptedTaxonName', {
+      id: itemId,
+    })
+  }
+
+  setTaxonNameAsSynonyme({ itemId, nameType } = {}) {
+    this.addSynonym({
+      itemId,
+      unshift: nameType === ACCEPTED,
+    })
+    return null
+  }
+
+  addSynonym({ itemId, unshift = false } = {}) {
+    this.disconnectTaxonName({
+      itemId,
+    })
+    if (unshift) {
+      return this.props.arrayUnshift(FORM_NAME, 'synonyms', {
+        id: itemId,
+      })
+    }
+
+    return this.props.arrayPush(FORM_NAME, 'synonyms', {
+      id: itemId,
+    })
+  }
+
+  addVernacularName({ itemId } = {}) {
+    this.disconnectTaxonName({
+      itemId,
+    })
+    return this.props.arrayPush(FORM_NAME, 'vernacularNames', {
+      id: itemId,
+    })
+  }
+
+  disconnectTaxonName({ itemId } = {}) {
+    const existinTaxonNameListItem = this.props.sortedNameList.find(
+      ({ id }) => {
+        return id === itemId
+      }
+    )
+    if (!existinTaxonNameListItem) {
+      return null
+    }
+
+    const { nameType, stateIndex } = existinTaxonNameListItem
+
+    if (nameType === SYNONYM) {
+      this.props.arrayRemove(FORM_NAME, 'synonyms', stateIndex)
+    }
+    if (nameType === VERNACULAR) {
+      this.props.arrayRemove(FORM_NAME, 'vernacularNames', stateIndex)
+    }
+    if (nameType === ACCEPTED) {
+      this.props.change(FORM_NAME, 'acceptedTaxonName', null)
+    }
+    return null
+  }
+  handleTaxonNameInteraction(
+    { interactionType, itemId, nameType, stateIndex } = {}
+  ) {
+    if (interactionType === 'addSynonym') {
+      return this.addSynonym({
+        itemId,
+      })
+    }
+    if (interactionType === 'addVernacularName') {
+      return this.addVernacularName({
+        itemId,
+      })
+    }
+    if (interactionType === 'disconnect') {
+      return this.disconnectTaxonName({
+        itemId,
+        nameType,
+        stateIndex,
+      })
+    }
+    if (interactionType === 'setAsAccepted') {
+      return this.setTaxonNameAsAccepted({
+        itemId,
+        nameType,
+        stateIndex,
+      })
+    }
+    if (interactionType === 'setAsSynonym') {
+      return this.setTaxonNameAsSynonyme({
+        itemId,
+        nameType,
+        stateIndex,
+      })
+    }
+
+    throw new Error(`Unknown interaction type: ${interactionType}`)
+  }
   render() {
     log.render()
     const {
@@ -66,21 +268,11 @@ export class BaseForm extends Component {
       onClose,
       pristine,
       reset,
+      sortedNameList,
       submitFailed,
       submitSucceeded,
       submitting,
-      taxonNamesWithAcceptedTaxon,
     } = this.props
-
-    const taxaOptions = taxonNamesWithAcceptedTaxon.map(
-      ({ name, acceptedToTaxon }) => {
-        return {
-          key: acceptedToTaxon.id,
-          text: name,
-          value: acceptedToTaxon.id,
-        }
-      }
-    )
 
     return (
       <Form error={!!error} onSubmit={handleSubmit(this.props.onSubmit)}>
@@ -89,12 +281,16 @@ export class BaseForm extends Component {
             <Grid.Column>
               <Field
                 autoComplete="off"
-                component={DropdownSearch}
+                component={TaxonSearchInputWithResults}
                 label="Parent"
                 module="taxon"
-                name="parentId"
-                options={taxaOptions}
-                type="dropdown-search-local"
+                name="parent.id"
+              />
+            </Grid.Column>
+            <Grid.Column width={16}>
+              <TaxonNameTable
+                onTaxonNameInteraction={this.handleTaxonNameInteraction}
+                sortedNameList={sortedNameList}
               />
             </Grid.Column>
           </Grid.Row>
@@ -130,5 +326,5 @@ export default compose(
       models: taxonFormModels,
     }),
   }),
-  connect(mapStateToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(BaseForm)

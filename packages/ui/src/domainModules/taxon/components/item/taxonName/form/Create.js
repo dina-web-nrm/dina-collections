@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 
-import { createTaxonName as createTaxonNameAc } from 'dataModules/taxonService/actionCreators'
-import { ensureAllTaxonNamesFetched } from 'dataModules/taxonService/higherOrderComponents'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+
 import {
   FORM_CANCEL,
   FORM_CREATE_SUCCESS,
@@ -14,7 +15,7 @@ import {
 import BaseForm, { FORM_NAME } from './Base'
 
 const mapDispatchToProps = {
-  createTaxonName: createTaxonNameAc,
+  createTaxonName: crudActionCreators.taxonName.create,
   destroy,
 }
 
@@ -57,7 +58,8 @@ export class Create extends PureComponent {
         onSubmit={data => {
           this.props
             .createTaxonName({
-              taxonName: data,
+              item: data,
+              nested: true,
             })
             .then(result => {
               onInteraction(FORM_CREATE_SUCCESS, {
@@ -74,6 +76,9 @@ Create.propTypes = propTypes
 Create.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxonNamesFetched(),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
   connect(null, mapDispatchToProps)
 )(Create)

@@ -32,7 +32,6 @@ export default function updateStateWithManyFactory(
       }. Updating state from action: `,
       action
     )
-
     return action.payload.reduce((newState, item) => {
       const { id } = item
       const updatePath = dep.createItemUpdatePath({
@@ -41,6 +40,18 @@ export default function updateStateWithManyFactory(
 
       if (!updatePath) {
         return newState
+      }
+
+      const currentItem = newState.items && newState.items[id]
+
+      if (currentItem && currentItem.relationships) {
+        return dep.assign(newState, updatePath, {
+          ...item,
+          relationships: {
+            ...currentItem.relationships,
+            ...(item.relationships || {}),
+          },
+        })
       }
 
       return dep.assign(newState, updatePath, item)

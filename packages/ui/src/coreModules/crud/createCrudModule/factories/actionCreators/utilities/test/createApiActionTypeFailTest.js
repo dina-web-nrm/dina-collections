@@ -16,7 +16,7 @@ export default function createApiActionTypeFailTest({
     expect(expectedActionType).toBeTruthy()
     expect(mockError).toBeTruthy()
   })
-  const { operationId } = actionCreatorFactoryInput
+  const { resource, operationType } = actionCreatorFactoryInput
   let actionCreator
   let store
   let apiClient
@@ -30,7 +30,9 @@ export default function createApiActionTypeFailTest({
 
     apiClient.mock({
       errors: {
-        [operationId]: mockError,
+        [resource]: {
+          [operationType]: mockError,
+        },
       },
     })
   })

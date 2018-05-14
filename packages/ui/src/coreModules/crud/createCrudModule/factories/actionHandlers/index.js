@@ -29,58 +29,76 @@ export default function createActionHandlers({
     throw new Error('resource is required')
   }
 
-  if (!(operations && operations.length)) {
-    return {}
+  let includedActionHandles = {}
+  if (resourceActionTypes && resourceActionTypes.setIncluded) {
+    includedActionHandles = {
+      [resourceActionTypes.setIncluded]: dep.updateStateWithManyFactory({
+        resource,
+        resourceActionTypes,
+      }),
+    }
   }
 
-  return operations.reduce((actionHandlers, operation) => {
-    const { type: operationType } = operation
-    if (!operationType) {
-      return actionHandlers
-    }
-    const actionType =
-      resourceActionTypes &&
-      resourceActionTypes[operationType] &&
-      resourceActionTypes[operationType][API_ACTION_TYPE_SUCCESS]
-    if (!actionType) {
-      throw new Error(
-        `actionType not found in resourceActionTypes for resource: ${
-          resource
-        } and operationType: ${operationType}`
+  if (!(operations && operations.length)) {
+    return includedActionHandles
+  }
+
+  const operationsActionHandlers = operations.reduce(
+    (actionHandlers, operation) => {
+      const { type: operationType } = operation
+      if (!operationType) {
+        return actionHandlers
+      }
+      const actionType =
+        resourceActionTypes &&
+        resourceActionTypes[operationType] &&
+        resourceActionTypes[operationType][API_ACTION_TYPE_SUCCESS]
+      if (!actionType) {
+        throw new Error(
+          `actionType not found in resourceActionTypes for resource: ${
+            resource
+          } and operationType: ${operationType}`
+        )
+      }
+      let actionHandler
+      switch (operationType) {
+        case OPERATION_TYPE_CREATE:
+        case OPERATION_TYPE_GET_ONE:
+        case OPERATION_TYPE_UPDATE: {
+          actionHandler = dep.updateStateWithOneFactory({
+            operationType,
+            resource,
+            resourceActionTypes,
+          })
+          break
+        }
+        case OPERATION_TYPE_GET_MANY: {
+          actionHandler = dep.updateStateWithManyFactory({
+            operationType,
+            resource,
+            resourceActionTypes,
+          })
+          break
+        }
+        default: {
+          throw new Error(`Unknown operationType: ${operationType}`)
+        }
+      }
+      log.info(
+        `Adding actionHandler: ${resource}.${operationType} for actionType: ${
+          actionType
+        }`
       )
-    }
-    let actionHandler
-    switch (operationType) {
-      case OPERATION_TYPE_CREATE:
-      case OPERATION_TYPE_GET_ONE:
-      case OPERATION_TYPE_UPDATE: {
-        actionHandler = dep.updateStateWithOneFactory({
-          operationType,
-          resource,
-          resourceActionTypes,
-        })
-        break
+      return {
+        ...actionHandlers,
+        [actionType]: actionHandler,
       }
-      case OPERATION_TYPE_GET_MANY: {
-        actionHandler = dep.updateStateWithManyFactory({
-          operationType,
-          resource,
-          resourceActionTypes,
-        })
-        break
-      }
-      default: {
-        throw new Error(`Unknown operationType: ${operationType}`)
-      }
-    }
-    log.info(
-      `Adding actionHandler: ${resource}.${operationType} for actionType: ${
-        actionType
-      }`
-    )
-    return {
-      ...actionHandlers,
-      [actionType]: actionHandler,
-    }
-  }, {})
+    },
+    {}
+  )
+
+  return {
+    ...includedActionHandles,
+    ...operationsActionHandlers,
+  }
 }

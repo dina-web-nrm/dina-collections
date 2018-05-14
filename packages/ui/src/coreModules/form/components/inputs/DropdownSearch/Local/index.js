@@ -12,6 +12,7 @@ const propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string,
   }).isRequired,
+  limit: PropTypes.number,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
@@ -25,6 +26,7 @@ const propTypes = {
 const defaultProps = {
   filterOptions: undefined,
   initialText: undefined,
+  limit: 10,
   parse: undefined,
 }
 
@@ -45,7 +47,7 @@ class DropdownSearchLocalInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      filteredOptions: props.options,
+      filteredOptions: this.getFilteredOptions(),
       searchQuery: '',
     }
     this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -57,33 +59,45 @@ class DropdownSearchLocalInput extends Component {
     const noOptionsNow = !this.props.options || !this.props.options.length
     const hasOptionsNext = nextProps.options && nextProps.options.length
     if (noOptionsNow && hasOptionsNext) {
-      this.setState({ filteredOptions: nextProps.options })
+      this.setState({
+        filteredOptions: this.getFilteredOptions({
+          nextOptions: nextProps.options,
+        }),
+      })
       this.optionSelector = createSelectedOptionSelector(nextProps.options)
     }
   }
 
-  getFilteredOptions(searchQuery) {
-    const { filterOptions, options } = this.props
+  getFilteredOptions({ searchQuery, nextOptions } = {}) {
+    const { filterOptions, options: currentOptions, limit } = this.props
+
+    const options = nextOptions || currentOptions
+
+    let filteredOptions = [...options]
 
     if (filterOptions) {
       return filterOptions({ options, searchQuery })
     }
 
-    if (!searchQuery) {
-      return options
+    if (searchQuery) {
+      const lowerCaseSearchQuery = searchQuery.toLowerCase()
+
+      const firstLetterMatches = options.filter(({ text }) => {
+        return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
+      })
+
+      const otherMatches = options.filter(({ text }) => {
+        return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
+      })
+
+      filteredOptions = [...firstLetterMatches, ...otherMatches]
     }
 
-    const lowerCaseSearchQuery = searchQuery.toLowerCase()
+    if (limit) {
+      return filteredOptions.splice(0, limit)
+    }
 
-    const firstLetterMatches = options.filter(({ text }) => {
-      return text.toLowerCase().indexOf(lowerCaseSearchQuery) === 0
-    })
-
-    const otherMatches = options.filter(({ text }) => {
-      return text.toLowerCase().indexOf(lowerCaseSearchQuery) > 0
-    })
-
-    return [...firstLetterMatches, ...otherMatches]
+    return filteredOptions
   }
 
   getSelectedOption() {
@@ -97,14 +111,13 @@ class DropdownSearchLocalInput extends Component {
 
   handleSearchChange({ searchQuery }) {
     this.setState({
-      filteredOptions: this.getFilteredOptions(searchQuery),
+      filteredOptions: this.getFilteredOptions({ searchQuery }),
       searchQuery,
     })
   }
 
   render() {
     const { initialText, input, parse } = this.props
-
     const { filteredOptions, searchQuery } = this.state
     return (
       <DropdownSearchBaseInput

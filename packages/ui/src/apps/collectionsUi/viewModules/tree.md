@@ -111,5 +111,4 @@
 [src](../../../tree.md)
 [apps](../../tree.md)
 [coreModules](../../../coreModules/tree.md)
-[dataModules](../../../dataModules/tree.md)
 [domainModules](../../../domainModules/tree.md)

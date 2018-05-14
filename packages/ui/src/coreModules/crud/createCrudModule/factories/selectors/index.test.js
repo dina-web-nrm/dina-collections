@@ -34,6 +34,7 @@ describe('coreModules/crud/createCrudModule/factories/selectors', () => {
       'getLocalState',
       'getAll',
       'getOne',
+      'getOneByLid',
     ]
     expect(Object.keys(createSelectors(input)).sort()).toEqual(
       expectedSelectorKeys.sort()
@@ -214,6 +215,7 @@ describe('coreModules/crud/createCrudModule/factories/selectors', () => {
         'getAll',
         'getOne',
         'customSelector',
+        'getOneByLid',
       ]
 
       const res = createSelectors(input)

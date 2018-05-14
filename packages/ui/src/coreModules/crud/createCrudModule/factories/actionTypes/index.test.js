@@ -11,11 +11,6 @@ describe('coreModules/crud/createCrudModule/factories/actionTypes/createActionTy
     expect(createActionTypes()).toEqual({})
   })
 
-  it('return empty object if no operations provided', () => {
-    expect.assertions(1)
-    expect(createActionTypes({})).toEqual({})
-  })
-
   it('return empty object if empty operations array provided', () => {
     expect.assertions(1)
     expect(createActionTypes({ operations: [] })).toEqual({})
@@ -135,6 +130,7 @@ describe('coreModules/crud/createCrudModule/factories/actionTypes/createActionTy
             resource: 'physicalObject',
           },
         },
+        setIncluded: 'SET_INCLUDED_PHYSICAL_OBJECT',
       })
     })
   })

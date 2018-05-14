@@ -105,11 +105,13 @@
 │   ├── higherOrderComponents
 │   │   ├── createEnsureAllItemsFetched.js
 │   │   ├── createGetItemById.js
+│   │   ├── createGetNestedItemById.js
 │   │   └── index.js
 │   ├── index.js
 │   ├── keyObjectModule.js
 │   ├── reducer.js
-│   └── selectors.js
+│   ├── selectors.js
+│   └── utilities.js
 ├── crudBlocks
 │   ├── components
 │   │   ├── BlockLoader
@@ -382,6 +384,5 @@
 [root](../../tree.md)
 [src](../tree.md)
 [apps](../apps/tree.md)
-[dataModules](../dataModules/tree.md)
 [domainModules](../domainModules/tree.md)
 [collectionsUi viewModules](../apps/collectionsUi/viewModules/tree.md)

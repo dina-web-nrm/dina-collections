@@ -1,5 +1,5 @@
+const buildOperationId = require('common/src/buildOperationId')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const buildOperationId = require('./utilities/buildOperationId')
 
 module.exports = function getOne({
   basePath,

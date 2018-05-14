@@ -43,6 +43,9 @@
 │       └── validateMethodConfig.js
 ├── buildFileTrees
 │   └── index.js
+├── buildOperationId
+│   ├── buildOperationId.test.js
+│   └── index.js
 ├── chainPromises
 │   └── index.js
 ├── deleteNullProperties
@@ -99,8 +102,88 @@
 │       ├── customFormValidator.js
 │       ├── dbValidator.js
 │       └── formValidator.js
+├── formatObject
+│   ├── coreToNested.js
+│   ├── db
+│   │   └── createDbSpecifications.js
+│   ├── nestedToCore.js
+│   ├── nestedToCore.test.js
+│   ├── normalize
+│   │   ├── createNormalizeSpecification.js
+│   │   ├── createNormalizeSpecifications.js
+│   │   ├── denormalizeItem.js
+│   │   └── normalizeItem.js
+│   ├── relationships
+│   │   ├── createRelationshipSpecification.js
+│   │   ├── createRelationshipSpecifications.js
+│   │   ├── extractItemRelationship.js
+│   │   ├── extractItemRelationships.js
+│   │   ├── resolveItemRelationship.js
+│   │   └── resolveItemRelationships.js
+│   ├── specifications.js
+│   ├── todo
+│   └── utilities
+│       ├── cloneObject.js
+│       ├── columnArrayToObject.js
+│       ├── columnObjectToArray.js
+│       ├── createKeyColumnMap.js
+│       ├── createLid.js
+│       ├── createRelationshipIdMap.js
+│       ├── getModelColumn.js
+│       ├── getModelFormat.js
+│       ├── getModelIsColumn.js
+│       ├── getModelRelationshipPath.js
+│       ├── getModelType.js
+│       ├── normalizrGetIdAttribute.js
+│       ├── normalizrProcessStrategy.js
+│       ├── testData
+│       │   ├── denormalizedSpecimen.js
+│       │   ├── denormalizedSpecimenWithLids.js
+│       │   ├── normalizedSpecimen.js
+│       │   └── normalizedSpecimenWithRelationships.js
+│       └── walkObject.js
 ├── jsonApiClient
-│   └── index.js
+│   ├── get
+│   │   ├── createIncludeJobs.js
+│   │   ├── fetchIncluded.js
+│   │   ├── getMany.js
+│   │   ├── getOne.js
+│   │   └── runIncludeJobs.js
+│   ├── index.js
+│   ├── modify
+│   │   ├── create
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── createWithRelationships
+│   │   │   └── index.js
+│   │   ├── modifyRelationshipResources
+│   │   │   ├── index.js
+│   │   │   ├── index.test.js
+│   │   │   ├── modifyRelatedResourceItem.js
+│   │   │   ├── modifyRelatedResourceItem.test.js
+│   │   │   ├── modifyRelatedResourceItems.js
+│   │   │   ├── modifyRelatedResourceItems.test.js
+│   │   │   ├── modifyRelationshipResource.js
+│   │   │   └── modifyRelationshipResource.test.js
+│   │   ├── recursiveCreate.js
+│   │   ├── recursiveCreate.test.js
+│   │   ├── recursiveUpdate.js
+│   │   ├── recursiveUpdate.test.js
+│   │   ├── setDependencies.js
+│   │   ├── update
+│   │   │   ├── index.js
+│   │   │   └── index.test.js
+│   │   ├── updateRelationship.js
+│   │   ├── updateRelationships.js
+│   │   └── updateWithRelationships
+│   │       └── index.js
+│   └── utilities
+│       ├── clone.js
+│       ├── createOperationId.js
+│       ├── createOperationSpecificQueryParams.js
+│       ├── createRelationSpecification.js
+│       ├── getRelativeRelationships.js
+│       └── splitRelationships.js
 ├── jsonSchema
 │   ├── createMockDataFromSchema.js
 │   ├── createMockGenerator.js
@@ -111,28 +194,14 @@
 │   ├── index.js
 │   ├── validateAgainstModel.js
 │   └── validateAgainstSchema.js
-├── normalize
-│   ├── buildNormalizeSchema
-│   │   ├── getIdAttribute.js
-│   │   ├── getTypeAndRef.js
-│   │   ├── index.js
-│   │   └── processStrategy.js
-│   ├── denormalizeSpecimen
-│   │   ├── columnArrayToObject.js
-│   │   ├── denormalizeSpecimen.spec.js
-│   │   └── index.js
-│   ├── normalizeSpecimen
-│   │   ├── columnObjectToArray.js
-│   │   ├── index.js
-│   │   └── normalizeSpecimen.spec.js
-│   ├── normalizedSchemaSpecification.js
-│   ├── testData
-│   │   ├── denormalizedSpecimen.js
-│   │   ├── denormalizedSpecimenWithLids.js
-│   │   └── normalizedSpecimen.js
-│   └── verifySpecimenNormalization
-│       ├── index.js
-│       └── verifySpecimenNormalization.spec.js
+├── log
+│   ├── createLogMock.js
+│   ├── index.js
+│   └── priorityMap.js
+├── openApiClient
+│   ├── index.js
+│   └── utilities
+│       └── createOpenApiMockClient.js
 ├── schemaBuilder
 │   ├── build
 │   │   ├── buildEndpoints

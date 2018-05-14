@@ -1,4 +1,4 @@
-const buildOperationId = require('../../../../lib/services/operationFactory/typeFactories/utilities/buildOperationId')
+const buildOperationId = require('common/src/buildOperationId')
 const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const { resourceRelationsMap } = require('../../models/relations')
 
@@ -39,6 +39,10 @@ module.exports = {
       type: 'updateRelationHasMany',
     },
     {
+      relationKey: 'synonyms',
+      type: 'getRelationHasMany',
+    },
+    {
       connect: false,
       inverseOperationId: buildOperationId({
         operationType: 'updateRelationBelongsToOne',
@@ -47,6 +51,10 @@ module.exports = {
       }),
       relationKey: 'vernacularNames',
       type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'vernacularNames',
+      type: 'getRelationHasMany',
     },
     {
       includeRelations: true,

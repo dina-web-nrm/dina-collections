@@ -10,11 +10,8 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
 } from 'coreModules/crudBlocks/keyObjectModule'
-import {
-  ensureAllTaxaFetched,
-  ensureAllTaxonNamesFetched,
-} from 'dataModules/taxonService/higherOrderComponents'
-import taxonServiceSelectors from 'dataModules/taxonService/globalSelectors'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import taxonSelectors from '../../../globalSelectors'
 import { ORDER } from '../../../constants'
 import ListItem from './ListItem'
@@ -23,10 +20,10 @@ const mapStateToProps = (state, { name }) => {
   const filter = keyObjectGlobalSelectors.get[':name.filter'](state, { name })
   const filterParentId = (filter && filter.parentId) || undefined
   const filterParent =
-    filterParentId && taxonServiceSelectors.getTaxon(state, filterParentId)
+    filterParentId && globalCrudSelectors.taxon.getOne(state, filterParentId)
 
   const taxa = taxonSelectors.getTaxaArrayByFilter(state, filter)
-  const taxonNames = taxonServiceSelectors.getTaxonNames(state)
+  const taxonNames = globalCrudSelectors.taxonName.getItemsObject(state)
 
   return {
     filter,
@@ -49,7 +46,6 @@ const mapDispatchToProps = {
 const propTypes = {
   activeTaxonId: PropTypes.string,
   allTaxaFetched: PropTypes.bool.isRequired,
-  allTaxonNamesFetched: PropTypes.bool.isRequired,
   disableEdit: PropTypes.bool.isRequired,
   displayNavigationButtons: PropTypes.bool.isRequired,
   filter: PropTypes.object,
@@ -63,7 +59,6 @@ const propTypes = {
   setFilterSearchGroup: PropTypes.func.isRequired,
   setFilterSearchSearchQuery: PropTypes.func.isRequired,
   taxa: PropTypes.array,
-  taxonNames: PropTypes.object,
 }
 
 const defaultProps = {
@@ -71,7 +66,6 @@ const defaultProps = {
   filter: {},
   filterParent: undefined,
   taxa: [],
-  taxonNames: {},
 }
 
 class TaxaList extends Component {
@@ -226,40 +220,27 @@ class TaxaList extends Component {
     const {
       activeTaxonId,
       allTaxaFetched,
-      allTaxonNamesFetched,
       disableEdit,
       displayNavigationButtons,
       onInteraction,
       taxa,
-      taxonNames,
     } = this.props
-
-    if (!(allTaxaFetched && allTaxonNamesFetched)) {
+    if (!allTaxaFetched) {
       return <BlockLoader />
     }
-
     return (
       <List divided selection size="small" verticalAlign="middle">
         {taxa
           .map((taxon, index) => {
             const cursorFocus = index === cursorIndex
-            const acceptedTaxonNameResource =
-              taxon.acceptedTaxonName && taxonNames[taxon.acceptedTaxonName.id]
-
-            if (!acceptedTaxonNameResource) {
-              return null
-            }
-
             return (
               <ListItem
-                acceptedName={acceptedTaxonNameResource.name}
                 activeTaxonId={activeTaxonId}
                 cursorFocus={cursorFocus}
                 disableEdit={disableEdit}
                 displayNavigationButtons={displayNavigationButtons}
                 key={taxon.id}
                 onInteraction={onInteraction}
-                rank={acceptedTaxonNameResource.rank}
                 taxon={taxon}
               />
             )
@@ -274,7 +255,12 @@ TaxaList.propTypes = propTypes
 TaxaList.defaultProps = defaultProps
 
 export default compose(
-  ensureAllTaxaFetched(),
-  ensureAllTaxonNamesFetched(),
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxaFetched',
+    include: ['acceptedTaxonName'],
+    relationships: ['parent', 'acceptedTaxonName'],
+    resource: 'taxon',
+  }),
+
   connect(mapStateToProps, mapDispatchToProps)
 )(TaxaList)

@@ -3,8 +3,10 @@ import { mapTaxonNameToOption } from './utilities'
 describe('domainModules/taxonService/utilities', () => {
   it('returns option', () => {
     const taxonName = {
+      attributes: {
+        name: 'Sorex minutus',
+      },
       id: 'abc',
-      name: 'Sorex minutus',
     }
     const option = {
       key: 'abc',

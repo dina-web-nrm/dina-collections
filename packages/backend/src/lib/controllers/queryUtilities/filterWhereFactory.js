@@ -1,3 +1,7 @@
+const Sequelize = require('sequelize')
+
+const { Op } = Sequelize
+
 module.exports = function filterWhereFactory(filterPathMap) {
   return function filterWhereFunction({ request }) {
     const { queryParams: { filter = {} } } = request
@@ -7,7 +11,13 @@ module.exports = function filterWhereFactory(filterPathMap) {
       const filterValue = filter[filterKey]
       const path = filterPathMap[filterKey]
       if (path) {
-        where[path] = filterValue
+        if (path === 'ids') {
+          where[path] = {
+            [Op.in]: filterValue,
+          }
+        } else {
+          where[path] = filterValue
+        }
       }
     })
 

@@ -3,31 +3,33 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
-import { actionCreators as specimenActionCreators } from 'dataModules/specimenService'
+import nestedToCore from 'common/es5/formatObject/nestedToCore'
+import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import { MammalForm } from 'domainModules/collectionMammals/components'
-import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
-import { globalSelectors as mammalSelectors } from 'domainModules/collectionMammals'
+import crudActionCreators from 'coreModules/crud/actionCreators'
+import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 
 const log = createLog('modules:editMammal:Component')
 
 const mapStateToProps = state => {
   return {
-    initialValues: mammalSelectors.getMammalFormInitialValues(state),
+    featureTypes: crudGlobalSelectors.featureType.getAll(state),
   }
 }
+
 const mapDispatchToProps = {
-  createSpecimen: specimenActionCreators.createSpecimen,
+  createSpecimen: crudActionCreators.specimen.create,
 }
 
 const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
-  initialValues: PropTypes.object.isRequired,
 }
 
 class RegisterMammal extends Component {
   render() {
-    const { createSpecimen, initialValues } = this.props
+    const { createSpecimen } = this.props
+    const initialValues = setDefaultValues({ specimen: {} })
 
     log.render()
     log.debug('initialValues', initialValues)
@@ -35,7 +37,11 @@ class RegisterMammal extends Component {
       <PageTemplate>
         <MammalForm
           handleFormSubmit={formOutput => {
-            return createSpecimen(transformOutput(formOutput))
+            const item = nestedToCore({
+              item: formOutput,
+              type: 'specimen',
+            })
+            return createSpecimen({ item })
           }}
           initialValues={initialValues}
           mode="register"
