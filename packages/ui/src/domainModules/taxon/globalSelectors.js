@@ -40,7 +40,6 @@ const getTaxonNamesArrayByFilter = createSelector(
       searchQuery: searchQueryFilter,
     } = filter
     let filteredTaxonNames = [...taxaArray]
-
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
       const firstLetterMatches = filteredTaxonNames.filter(
@@ -146,14 +145,6 @@ const getTaxonOptions = createSelector(
   }
 )
 
-const getTaxonNameResourceFromRelation = (
-  taxonNameResources,
-  taxonNameRelationResource
-) => {
-  const taxonNameId = taxonNameRelationResource && taxonNameRelationResource.id
-  return taxonNameId && taxonNameResources && taxonNameResources[taxonNameId]
-}
-
 const getTaxaArrayByFilter = createSelector(
   getTaxaSortedArray,
   getTaxonNames,
@@ -176,28 +167,31 @@ const getTaxaArrayByFilter = createSelector(
 
     if (searchQueryFilter) {
       const lowerCaseSearchQuery = searchQueryFilter.toLowerCase()
-      const firstLetterMatches = filteredTaxa.filter(
-        ({ acceptedTaxonName }) => {
-          const taxonName = getTaxonNameResourceFromRelation(
-            taxonNames,
-            acceptedTaxonName
-          )
-          return (
-            taxonName &&
-            taxonName.attributes &&
-            taxonName.attributes.name &&
-            taxonName.attributes.name
-              .toLowerCase()
-              .indexOf(lowerCaseSearchQuery) === 0
-          )
-        }
-      )
+      const firstLetterMatches = filteredTaxa.filter(taxon => {
+        const acceptedTaxonNameId = getRelationshipItemId({
+          item: taxon,
+          relationKey: 'acceptedTaxonName',
+        })
 
-      const otherMatches = filteredTaxa.filter(({ acceptedTaxonName }) => {
-        const taxonName = getTaxonNameResourceFromRelation(
-          taxonNames,
-          acceptedTaxonName
+        const taxonName = taxonNames[acceptedTaxonNameId]
+        return (
+          taxonName &&
+          taxonName.attributes &&
+          taxonName.attributes.name &&
+          taxonName.attributes.name
+            .toLowerCase()
+            .indexOf(lowerCaseSearchQuery) === 0
         )
+      })
+
+      const otherMatches = filteredTaxa.filter(taxon => {
+        const acceptedTaxonNameId = getRelationshipItemId({
+          item: taxon,
+          relationKey: 'acceptedTaxonName',
+        })
+
+        const taxonName = taxonNames[acceptedTaxonNameId]
+
         return (
           taxonName &&
           taxonName.attributes &&
