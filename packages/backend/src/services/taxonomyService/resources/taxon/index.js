@@ -39,6 +39,10 @@ module.exports = {
       type: 'updateRelationHasMany',
     },
     {
+      relationKey: 'synonyms',
+      type: 'getRelationHasMany',
+    },
+    {
       connect: false,
       inverseOperationId: buildOperationId({
         operationType: 'updateRelationBelongsToOne',
@@ -47,6 +51,10 @@ module.exports = {
       }),
       relationKey: 'vernacularNames',
       type: 'updateRelationHasMany',
+    },
+    {
+      relationKey: 'vernacularNames',
+      type: 'getRelationHasMany',
     },
     {
       includeRelations: true,
