@@ -20,6 +20,54 @@ Object.keys(openApiSpec.paths).forEach(path => {
   })
 }, {})
 
+const deleteNotIncludedRelationships = ({
+  item,
+  log,
+  openApiClient,
+  relationItemsToUpdate,
+  relationKey,
+  type,
+  // reverseOperationId,
+}) => {
+  const operationId = buildOperationId({
+    operationType: 'getRelationHasMany',
+    relationKey,
+    resource: type,
+  })
+
+  return openApiClient
+    .call(operationId, {
+      pathParams: {
+        id: item.id,
+      },
+    })
+    .then(result => {
+      const { data: existingRelations } = result
+      const relationsToRemove = existingRelations.filter(existingRelation => {
+        return !!relationItemsToUpdate.find(({ id }) => {
+          return existingRelation.id === id
+        })
+      })
+      log.debug(
+        'The following relationships should be removed: ',
+        relationsToRemove
+      )
+      return true
+      // TODO need backend support for this
+      // const promises = relationsToRemove.map(relationToRemove => {
+      //   return openApiClient.call(reverseOperationId, {
+      //     body: {
+      //       data: null,
+      //     },
+      //     pathParams: {
+      //       id: relationToRemove.id,
+      //     },
+      //   })
+      // })
+      // return Promise.all(promises)
+    })
+}
+
 function updateRelationship({
   item,
   log = defaultLog,
@@ -44,20 +92,31 @@ function updateRelationship({
         } -> ${item.id} @ key: ${relationKey}. relationships: `,
         data
       )
-      const promises = data.map(relationshipItem => {
-        return openApiClient.call(reverseOperationId, {
-          body: {
-            data: {
-              id,
-              type,
+
+      return deleteNotIncludedRelationships({
+        item,
+        log,
+        openApiClient,
+        relationItemsToUpdate: data,
+        relationKey,
+        reverseOperationId,
+        type,
+      }).then(() => {
+        const promises = data.map(relationshipItem => {
+          return openApiClient.call(reverseOperationId, {
+            body: {
+              data: {
+                id,
+                type,
+              },
             },
-          },
-          pathParams: {
-            id: relationshipItem.id,
-          },
+            pathParams: {
+              id: relationshipItem.id,
+            },
+          })
         })
+        return Promise.all(promises)
       })
-      return Promise.all(promises)
     }
 
     log.debug(
