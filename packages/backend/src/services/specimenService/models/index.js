@@ -1,14 +1,12 @@
-const normalizedSchemaSpecification = require('common/src/normalize/normalizedSchemaSpecification')
+const {
+  getNormalizedColumnNames,
+} = require('common/src/formatObject/specifications')
 
 const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/documentModel')
 const { setupRelations } = require('./relations')
 
-const normalizedColumnNames = Object.keys(
-  normalizedSchemaSpecification.specimen
-).map(key => {
-  return normalizedSchemaSpecification.specimen[key].column
-})
+const normalizedColumnNames = getNormalizedColumnNames('specimen')
 
 const specimenFactory = function specimen({ sequelize }) {
   return createModel({
