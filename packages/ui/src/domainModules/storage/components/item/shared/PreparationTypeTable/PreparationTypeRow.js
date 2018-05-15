@@ -21,12 +21,8 @@ const TaxonNameRow = ({ edit, item, itemId, onInteraction }) => {
 
   return (
     <Table.Row>
-      <Table.Cell>
-        <a className="ui link">{id}</a>
-      </Table.Cell>
-      <Table.Cell>
-        <a className="ui link">{name}</a>
-      </Table.Cell>
+      <Table.Cell>{id}</Table.Cell>
+      <Table.Cell>{name}</Table.Cell>
       <Table.Cell>{category}</Table.Cell>
       {edit && (
         <Table.Cell>
