@@ -15,6 +15,7 @@ const createGetItemById = ({
   itemKey,
   refresh = true,
   relationships = ['all'],
+  injectRelationships = [],
   resource,
 }) => ComposedComponent => {
   /* eslint-disable no-console */
@@ -23,6 +24,10 @@ const createGetItemById = ({
   }
   const getOneSelector =
     globalSelectors[resource] && globalSelectors[resource].getOne
+
+  const getRelationshipItemOrItems =
+    globalSelectors[resource] &&
+    globalSelectors[resource].getRelationshipItemOrItems
 
   const getOneActionCreator =
     actionCreators[resource] && actionCreators[resource].getOne
@@ -49,7 +54,27 @@ const createGetItemById = ({
         [itemKey]: item,
       }
     }
+
+    const relationshipsToInject = injectRelationships.reduce(
+      (obj, relationKey) => {
+        const relationshipObjectOrArray = getRelationshipItemOrItems(state, {
+          itemId,
+          relationKey,
+        })
+
+        if (relationshipObjectOrArray !== undefined) {
+          return {
+            ...obj,
+            [relationKey]: relationshipObjectOrArray,
+          }
+        }
+        return obj
+      },
+      {}
+    )
+
     return {
+      ...relationshipsToInject,
       item,
       itemId,
     }

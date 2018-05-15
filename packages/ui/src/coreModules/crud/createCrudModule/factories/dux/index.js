@@ -17,6 +17,10 @@ export default function dux(specification) {
   const actionCreators = {}
   const resourceReducers = {}
 
+  const getGlobalSelectors = () => {
+    return globalSelectors
+  }
+
   Object.values((specification && specification.resources) || {}).forEach(
     resourceSpecification => {
       const { resource } = resourceSpecification
@@ -48,6 +52,7 @@ export default function dux(specification) {
       })
 
       const resourceGlobalSelectors = createGlobalSelectors({
+        getGlobalSelectors,
         resourceSelectors,
       })
       const resourceReducer = createResourceReducer({

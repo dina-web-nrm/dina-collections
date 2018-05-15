@@ -186,6 +186,9 @@ const config = {
         },
         {
           operationId: 'storageLocationCreate',
+          options: {
+            relationshipKeysToIncludeInBody: ['acceptedTaxonNames'],
+          },
           type: 'create',
         },
         {
@@ -194,6 +197,9 @@ const config = {
         },
         {
           operationId: 'storageLocationUpdate',
+          options: {
+            relationshipKeysToIncludeInBody: ['acceptedTaxonNames'],
+          },
           type: 'update',
         },
       ],
@@ -206,14 +212,6 @@ const config = {
         },
         {
           operationId: 'taxonCreate',
-          // options: {
-          //   relationshipKeysToIncludeInBody: [
-          //     'acceptedTaxonName',
-          //     'parent',
-          //     'synonyms',
-          //     'vernacularNames',
-          //   ],
-          // },
           type: 'create',
         },
         {
@@ -222,14 +220,6 @@ const config = {
         },
         {
           operationId: 'taxonUpdate',
-          // options: {
-          //   relationshipKeysToIncludeInBody: [
-          //     'acceptedTaxonName',
-          //     'parent',
-          //     'synonyms',
-          //     'vernacularNames',
-          //   ],
-          // },
           type: 'update',
         },
       ],
