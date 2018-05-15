@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import TaxonNameRow from './TaxonNameRow'
-import NewTaxonName from './NewTaxonName'
+import NewTaxonNameRowWrapper from './NewTaxonNameRowWrapper'
 
 const propTypes = {
   edit: PropTypes.bool.isRequired,
@@ -38,7 +38,7 @@ const RelatedTaxonNamesTable = ({ edit, onInteraction, sortedNameList }) => {
             />
           )
         })}
-        {edit && <NewTaxonName onInteraction={onInteraction} />}
+        {edit && <NewTaxonNameRowWrapper onInteraction={onInteraction} />}
       </Table.Body>
     </Table>
   )

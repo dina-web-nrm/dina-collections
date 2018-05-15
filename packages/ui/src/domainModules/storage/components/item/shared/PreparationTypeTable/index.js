@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 import PreparationTypeRow from './PreparationTypeRow'
-import NewPreparationType from './NewPreparationType'
+import NewPreparationTypeRowWrapper from './NewPreparationTypeRowWrapper'
 
 const propTypes = {
   edit: PropTypes.bool.isRequired,
@@ -44,7 +44,9 @@ export class PreparationTypeTable extends Component {
               )
             })}
             {edit && (
-              <NewPreparationType onInteraction={this.props.onInteraction} />
+              <NewPreparationTypeRowWrapper
+                onInteraction={this.props.onInteraction}
+              />
             )}
           </Table.Body>
         </Table>

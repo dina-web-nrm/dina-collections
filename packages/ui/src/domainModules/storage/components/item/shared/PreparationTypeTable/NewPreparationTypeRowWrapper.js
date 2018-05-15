@@ -5,7 +5,7 @@ import NewPreparationTypeRow from './NewPreparationTypeRow'
 const propTypes = {
   onInteraction: PropTypes.func.isRequired,
 }
-export class NewPreparationType extends Component {
+export class NewPreparationTypeRowWrapper extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -40,5 +40,5 @@ export class NewPreparationType extends Component {
   }
 }
 
-NewPreparationType.propTypes = propTypes
-export default NewPreparationType
+NewPreparationTypeRowWrapper.propTypes = propTypes
+export default NewPreparationTypeRowWrapper

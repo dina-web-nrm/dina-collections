@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table } from 'semantic-ui-react'
 import TaxonNameRow from './TaxonNameRow'
-import NewTaxonName from './NewTaxonName'
+import NewTaxonNameRowWrapper from './NewTaxonNameRowWrapper'
 
 const propTypes = {
   acceptedTaxonNames: PropTypes.array,
@@ -44,7 +44,11 @@ export class TaxonNameTable extends Component {
                 />
               )
             })}
-            {edit && <NewTaxonName onInteraction={this.props.onInteraction} />}
+            {edit && (
+              <NewTaxonNameRowWrapper
+                onInteraction={this.props.onInteraction}
+              />
+            )}
           </Table.Body>
         </Table>
       </React.Fragment>

@@ -5,19 +5,19 @@ import NewTaxonNameRow from './NewTaxonNameRow'
 const propTypes = {
   onInteraction: PropTypes.func.isRequired,
 }
-export class NewTaxonName extends Component {
+export class NewTaxonNameRowWrapper extends Component {
   constructor(props) {
     super(props)
     this.state = {
       newTaxonNameId: '',
     }
     this.handleSetNewTaxonNameId = this.handleSetNewTaxonNameId.bind(this)
-    this.handleOnInteraction = this.handleOnInteraction.bind(this)
+    this.handleInteraction = this.handleInteraction.bind(this)
   }
 
-  handleOnInteraction(interactionType, args) {
+  handleInteraction(type, args) {
     this.handleSetNewTaxonNameId('')
-    this.props.onInteraction(interactionType, args)
+    this.props.onInteraction(type, args)
   }
 
   handleSetNewTaxonNameId(newTaxonNameId) {
@@ -31,12 +31,12 @@ export class NewTaxonName extends Component {
     return (
       <NewTaxonNameRow
         itemId={itemId}
-        onInteraction={this.handleOnInteraction}
+        onInteraction={this.handleInteraction}
         onSetNewTaxonNameId={this.handleSetNewTaxonNameId}
       />
     )
   }
 }
 
-NewTaxonName.propTypes = propTypes
-export default NewTaxonName
+NewTaxonNameRowWrapper.propTypes = propTypes
+export default NewTaxonNameRowWrapper
