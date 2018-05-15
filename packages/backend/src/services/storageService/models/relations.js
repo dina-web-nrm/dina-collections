@@ -34,6 +34,13 @@ const relationships = [
     targetResource: 'taxonName',
     type: 'belongsToMany',
   },
+  {
+    external: true,
+    sourceResource: 'storageLocation',
+    targetAs: 'preparationTypes',
+    targetResource: 'preparationType',
+    type: 'belongsToMany',
+  },
 ]
 
 exports.resourceRelationsMap = buildResourceRelationsMap(relationships)
