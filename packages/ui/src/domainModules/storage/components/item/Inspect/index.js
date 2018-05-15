@@ -2,42 +2,24 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
-
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
-
 import { ParentChildTables } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
-
-const mapStateToProps = (state, ownProps) => {
-  const { item: storageLocation } = ownProps
-  const parentId = getParentId(storageLocation)
-  const parent =
-    parentId && globalCrudSelectors.storageLocation.getOne(state, parentId)
-  const children = getChildrenIds(storageLocation).map(id => {
-    return globalCrudSelectors.storageLocation.getOne(state, id) || { id }
-  })
-
-  return {
-    children,
-    parent,
-    storageLocation,
-  }
-}
+import TaxonNameTable from '../shared/TaxonNameTable'
 
 const propTypes = {
+  acceptedTaxonNames: PropTypes.array,
   children: PropTypes.array,
+  item: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.object,
-  storageLocation: PropTypes.object,
 }
 
 const defaultProps = {
+  acceptedTaxonNames: [],
   children: [],
+  item: undefined,
   parent: null,
-  storageLocation: undefined,
 }
 
 export class Inspect extends PureComponent {
@@ -54,7 +36,12 @@ export class Inspect extends PureComponent {
   }
 
   render() {
-    const { children, parent, storageLocation } = this.props
+    const {
+      acceptedTaxonNames,
+      children,
+      item: storageLocation,
+      parent,
+    } = this.props
     if (!storageLocation) {
       return null
     }
@@ -87,6 +74,12 @@ export class Inspect extends PureComponent {
           )}
         </Table>
 
+        <TaxonNameTable
+          acceptedTaxonNames={acceptedTaxonNames}
+          onTaxonNameInteraction={this.handleTaxonNameInteraction}
+          width={16}
+        />
+
         <ParentChildTables
           childrenItems={children}
           onRowClick={this.handleRowClick}
@@ -102,9 +95,9 @@ Inspect.defaultProps = defaultProps
 
 export default compose(
   createGetItemById({
-    include: ['parent', 'children'],
+    include: ['parent', 'children', 'acceptedTaxonNames'],
+    injectRelationships: ['acceptedTaxonNames', 'parent', 'children'],
     relationships: ['all'],
     resource: 'storageLocation',
-  }),
-  connect(mapStateToProps)
+  })
 )(Inspect)

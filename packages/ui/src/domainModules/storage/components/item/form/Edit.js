@@ -67,8 +67,8 @@ Edit.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    include: ['parent'],
-    relationships: ['parent'],
+    include: ['parent', 'acceptedTaxonNames'],
+    relationships: ['parent', 'acceptedTaxonNames'],
     resource: 'storageLocation',
   }),
   connect(null, mapDispatchToProps)
