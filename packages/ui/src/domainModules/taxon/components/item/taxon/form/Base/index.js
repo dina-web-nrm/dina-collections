@@ -17,72 +17,25 @@ import customFormValidator from 'common/es5/error/validators/customFormValidator
 import { Field } from 'coreModules/form/components'
 import TaxonSearchInputWithResults from 'domainModules/taxon/components/TaxonSearchInputWithResults'
 import { taxonFormModels } from '../../../../../schemas'
-import { ACCEPTED, SYNONYM, VERNACULAR } from '../../../../../constants'
+import {
+  ACCEPTED,
+  ADD_SYNONYM,
+  ADD_VERNACULAR_NAME,
+  DISCONNECT_TAXON_NAME,
+  SET_TAXON_NAME_AS_ACCEPTED,
+  SET_TAXON_NAME_AS_SYNONYM,
+  SYNONYM,
+  VERNACULAR,
+} from '../../../../../constants'
+import { createSortedNameList } from '../../../../../utilities'
 import FormActions from './FormActions'
-import TaxonNameTable from './TaxonNameTable'
+import TaxonNameTable from '../../shared/TaxonNameTable'
 
 export const FORM_NAME = 'taxon'
 
 const log = createLog('modules:taxon:taxon:BaseForm')
 
 const formValueSelector = formValueSelectorFactory(FORM_NAME)
-
-const createListItem = ({ taxonName, nameType, stateIndex, stateType }) => {
-  if (!(taxonName && taxonName.id)) {
-    return null
-  }
-
-  if (stateType === 'object') {
-    return {
-      ...taxonName,
-      nameType,
-      stateType,
-    }
-  }
-
-  return {
-    ...taxonName,
-    nameType,
-    stateIndex,
-    stateType,
-  }
-}
-
-const createListArray = ({ taxonNames = [], nameType, stateType }) => {
-  return taxonNames.map((taxonName, index) => {
-    return createListItem({
-      nameType,
-      stateIndex: index,
-      stateType,
-      taxonName,
-    })
-  })
-}
-
-const createSortedNameList = ({
-  acceptedTaxonName,
-  synonyms,
-  vernacularNames,
-}) => {
-  const nameList = [
-    createListItem({
-      nameType: ACCEPTED,
-      stateType: 'object',
-      taxonName: acceptedTaxonName,
-    }),
-    ...createListArray({
-      nameType: SYNONYM,
-      stateType: 'array',
-      taxonNames: synonyms,
-    }),
-    ...createListArray({
-      nameType: VERNACULAR,
-      stateType: 'array',
-      taxonNames: vernacularNames,
-    }),
-  ]
-  return nameList.filter(taxonName => !!taxonName)
-}
 
 const mapStateToProps = state => {
   const acceptedTaxonName = formValueSelector(state, 'acceptedTaxonName')
@@ -118,6 +71,7 @@ const propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  onInteraction: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
@@ -137,7 +91,7 @@ const defaultProps = {
 export class BaseForm extends Component {
   constructor(props) {
     super(props)
-    this.handleTaxonNameInteraction = this.handleTaxonNameInteraction.bind(this)
+    this.handleInteraction = this.handleInteraction.bind(this)
     this.setTaxonNameAsAccepted = this.setTaxonNameAsAccepted.bind(this)
     this.disconnectTaxonName = this.disconnectTaxonName.bind(this)
     this.addSynonym = this.addSynonym.bind(this)
@@ -220,42 +174,44 @@ export class BaseForm extends Component {
     }
     return null
   }
-  handleTaxonNameInteraction(
-    { interactionType, itemId, nameType, stateIndex } = {}
-  ) {
-    if (interactionType === 'addSynonym') {
+
+  handleInteraction(interactionType, { itemId, nameType, stateIndex } = {}) {
+    if (interactionType === ADD_SYNONYM) {
       return this.addSynonym({
         itemId,
       })
     }
-    if (interactionType === 'addVernacularName') {
+    if (interactionType === ADD_VERNACULAR_NAME) {
       return this.addVernacularName({
         itemId,
       })
     }
-    if (interactionType === 'disconnect') {
+    if (interactionType === DISCONNECT_TAXON_NAME) {
       return this.disconnectTaxonName({
         itemId,
         nameType,
         stateIndex,
       })
     }
-    if (interactionType === 'setAsAccepted') {
+    if (interactionType === SET_TAXON_NAME_AS_ACCEPTED) {
       return this.setTaxonNameAsAccepted({
         itemId,
         nameType,
         stateIndex,
       })
     }
-    if (interactionType === 'setAsSynonym') {
+    if (interactionType === SET_TAXON_NAME_AS_SYNONYM) {
       return this.setTaxonNameAsSynonyme({
         itemId,
         nameType,
         stateIndex,
       })
     }
-
-    throw new Error(`Unknown interaction type: ${interactionType}`)
+    return this.props.onInteraction(interactionType, {
+      itemId,
+      nameType,
+      stateIndex,
+    })
   }
   render() {
     log.render()
@@ -289,7 +245,8 @@ export class BaseForm extends Component {
             </Grid.Column>
             <Grid.Column width={16}>
               <TaxonNameTable
-                onTaxonNameInteraction={this.handleTaxonNameInteraction}
+                edit
+                onInteraction={this.handleInteraction}
                 sortedNameList={sortedNameList}
               />
             </Grid.Column>

@@ -3,33 +3,24 @@ import PropTypes from 'prop-types'
 import { Table } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import {
   BlockLoader,
   ParentChildTables,
 } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
-
-import RelatedTaxonNamesTable from '../RelatedTaxonNamesTable'
+import { createSortedNameList } from '../../../../utilities'
+import TaxonNameTable from '../shared/TaxonNameTable'
 
 const mapStateToProps = (state, ownProps) => {
-  const { item: taxon } = ownProps
-  const parentId = getParentId(taxon)
-  const parent = parentId && globalCrudSelectors.taxon.getOne(state, parentId)
-  const children = getChildrenIds(taxon).map(id => {
-    return (
-      globalCrudSelectors.taxon.getOne(state, id) || {
-        id,
-      }
-    )
+  const { acceptedTaxonName, synonyms, vernacularNames } = ownProps
+  const sortedNameList = createSortedNameList({
+    acceptedTaxonName,
+    synonyms,
+    vernacularNames,
   })
-
   return {
-    children,
-    parent,
-    taxon,
+    sortedNameList,
   }
 }
 
@@ -40,18 +31,20 @@ const propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
+  item: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.shape({
     attributes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
   }),
-  taxon: PropTypes.object,
+  sortedNameList: PropTypes.array,
 }
 
 const defaultProps = {
   children: [],
-  parent: undefined,
-  taxon: null,
+  item: null,
+  parent: null,
+  sortedNameList: [],
 }
 
 export class Inspect extends PureComponent {
@@ -68,7 +61,13 @@ export class Inspect extends PureComponent {
   }
 
   render() {
-    const { children, onInteraction, parent, taxon } = this.props
+    const {
+      children,
+      onInteraction,
+      parent,
+      sortedNameList,
+      item: taxon,
+    } = this.props
     if (!taxon) {
       return <BlockLoader />
     }
@@ -91,9 +90,11 @@ export class Inspect extends PureComponent {
           </Table.Body>
         </Table>
 
-        <h2>Taxon names</h2>
-        <RelatedTaxonNamesTable onInteraction={onInteraction} taxon={taxon} />
-
+        <TaxonNameTable
+          edit={false}
+          onInteraction={onInteraction}
+          sortedNameList={sortedNameList}
+        />
         <ParentChildTables
           childrenItems={children}
           onRowClick={this.handleRowClick}
@@ -113,6 +114,13 @@ export default compose(
       'acceptedTaxonName',
       'children',
       'parent',
+      'synonyms',
+      'vernacularNames',
+    ],
+    injectRelationships: [
+      'acceptedTaxonName',
+      'parent',
+      'children',
       'synonyms',
       'vernacularNames',
     ],

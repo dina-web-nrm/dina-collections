@@ -59,13 +59,3 @@ export default compose(
   }),
   connect(mapStateToProps, mapDispatchToProps)
 )(TaxonSearchInputWithResults)
-
-// const taxaOptions = taxonNamesWithAcceptedTaxon.map(
-//   ({ name, acceptedToTaxon }) => {
-//     return {
-//       key: acceptedToTaxon.id,
-//       text: name,
-//       value: acceptedToTaxon.id,
-//     }
-//   }
-// )

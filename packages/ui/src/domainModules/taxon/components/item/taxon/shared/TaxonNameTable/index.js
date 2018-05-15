@@ -5,13 +5,14 @@ import TaxonNameRow from './TaxonNameRow'
 import NewTaxonName from './NewTaxonName'
 
 const propTypes = {
-  onTaxonNameInteraction: PropTypes.func.isRequired,
+  edit: PropTypes.bool.isRequired,
+  onInteraction: PropTypes.func.isRequired,
   sortedNameList: PropTypes.array.isRequired,
 }
 
 const defaultProps = {}
 
-const RelatedTaxonNamesTable = ({ onTaxonNameInteraction, sortedNameList }) => {
+const RelatedTaxonNamesTable = ({ edit, onInteraction, sortedNameList }) => {
   return (
     <Table celled>
       <Table.Header>
@@ -21,22 +22,23 @@ const RelatedTaxonNamesTable = ({ onTaxonNameInteraction, sortedNameList }) => {
           <Table.HeaderCell>Rank</Table.HeaderCell>
           <Table.HeaderCell>Rubin</Table.HeaderCell>
           <Table.HeaderCell>Type</Table.HeaderCell>
-          <Table.HeaderCell>Actions</Table.HeaderCell>
+          {edit && <Table.HeaderCell>Actions</Table.HeaderCell>}
         </Table.Row>
       </Table.Header>
       <Table.Body>
         {sortedNameList.map(taxonItem => {
           return (
             <TaxonNameRow
+              edit={edit}
               itemId={taxonItem.id}
               key={taxonItem.id}
               nameType={taxonItem.nameType}
-              onTaxonNameInteraction={onTaxonNameInteraction}
+              onInteraction={onInteraction}
               stateIndex={taxonItem.stateIndex}
             />
           )
         })}
-        <NewTaxonName onTaxonNameInteraction={onTaxonNameInteraction} />
+        {edit && <NewTaxonName onInteraction={onInteraction} />}
       </Table.Body>
     </Table>
   )
