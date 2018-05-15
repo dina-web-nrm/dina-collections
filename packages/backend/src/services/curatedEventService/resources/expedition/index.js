@@ -11,10 +11,13 @@ module.exports = {
       type: 'getOne',
     },
     {
+      type: 'getMany',
+    },
+    {
       type: 'update',
     },
     {
-      type: 'getMany',
+      type: 'del',
     },
   ],
   resource: 'expedition',

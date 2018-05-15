@@ -14,27 +14,6 @@ module.exports = {
       type: 'create',
     },
     {
-      type: 'update',
-    },
-    {
-      relationKey: 'parent',
-      type: 'updateRelationHasOne',
-    },
-    {
-      relationKey: 'physicalObjects',
-      type: 'getRelationHasMany',
-    },
-    {
-      connect: false,
-      inverseOperationId: buildOperationId({
-        operationType: 'updateRelationBelongsToOne',
-        relationKey: 'storageLocation',
-        resource: 'physicalObject',
-      }),
-      relationKey: 'physicalObjects',
-      type: 'updateRelationHasMany',
-    },
-    {
       includeRelations: true,
       queryParams: {
         'filter[descendantLevels]': {
@@ -101,6 +80,30 @@ module.exports = {
         },
       },
       type: 'getMany',
+    },
+    {
+      type: 'update',
+    },
+    {
+      type: 'del',
+    },
+    {
+      relationKey: 'parent',
+      type: 'updateRelationHasOne',
+    },
+    {
+      relationKey: 'physicalObjects',
+      type: 'getRelationHasMany',
+    },
+    {
+      connect: false,
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationBelongsToOne',
+        relationKey: 'storageLocation',
+        resource: 'physicalObject',
+      }),
+      relationKey: 'physicalObjects',
+      type: 'updateRelationHasMany',
     },
   ],
   relations: resourceRelationsMap[resource],

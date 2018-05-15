@@ -1,4 +1,5 @@
 const create = require('../operationFactory/typeFactories/schemas/create')
+const del = require('../operationFactory/typeFactories/schemas/del')
 const getMany = require('../operationFactory/typeFactories/schemas/getMany')
 const getOne = require('../operationFactory/typeFactories/schemas/getOne')
 const getRelationBelongsToOne = require('../operationFactory/typeFactories/schemas/getRelationBelongsToOne')
@@ -92,6 +93,11 @@ module.exports = function testOperationSpecification(operationSpecification) {
           expectNoValidationError(
             validate(updateRelationHasOne, operationSpecification)
           )
+          break
+        }
+
+        case 'del': {
+          expectNoValidationError(validate(del, operationSpecification))
           break
         }
 

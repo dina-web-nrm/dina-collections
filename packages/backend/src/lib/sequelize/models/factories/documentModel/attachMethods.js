@@ -1,5 +1,6 @@
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
+const deactivateFactory = require('./methods/deactivateFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
 const getCountFactory = require('./methods/getCountFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
@@ -38,6 +39,11 @@ module.exports = function attachMethods({
     validate,
   })
 
+  const deactivate = deactivateFactory({
+    getById,
+    Model,
+  })
+
   const update = updateFactory({
     getById,
     Model,
@@ -62,6 +68,7 @@ module.exports = function attachMethods({
   const coreMethods = {
     bulkCreate,
     create,
+    deactivate,
     getById,
     getCount,
     getOneWhere,

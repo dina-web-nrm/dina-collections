@@ -12,13 +12,6 @@ module.exports = {
       type: 'create',
     },
     {
-      type: 'update',
-    },
-    {
-      relationKey: 'parent',
-      type: 'updateRelationHasOne',
-    },
-    {
       includeRelations: true,
       queryParams: {
         'filter[descendantLevels]': {
@@ -85,6 +78,16 @@ module.exports = {
         },
       },
       type: 'getMany',
+    },
+    {
+      type: 'update',
+    },
+    {
+      type: 'del',
+    },
+    {
+      relationKey: 'parent',
+      type: 'updateRelationHasOne',
     },
   ],
   relations: resourceRelationsMap[resource],

@@ -12,7 +12,18 @@ module.exports = {
       type: 'create',
     },
     {
+      includeRelations: true,
+      type: 'getOne',
+    },
+    {
+      includeRelations: true,
+      type: 'getMany',
+    },
+    {
       type: 'update',
+    },
+    {
+      type: 'del',
     },
     {
       relationKey: 'parent',
@@ -55,14 +66,6 @@ module.exports = {
     {
       relationKey: 'vernacularNames',
       type: 'getRelationHasMany',
-    },
-    {
-      includeRelations: true,
-      type: 'getOne',
-    },
-    {
-      includeRelations: true,
-      type: 'getMany',
     },
   ],
   relations: resourceRelationsMap[resource],

@@ -1,7 +1,7 @@
-const updateLog = require('../../../../../../utilities/log')
+const createLog = require('../../../../../../utilities/log')
 const updateFactory = require('../../../../../../lib/controllers/update')
 
-const log = updateLog('services/specimen/controller/update')
+const log = createLog('services/specimen/controller/update')
 
 module.exports = function update({ models, operation, elasticModels }) {
   const postUpdateHook = updatedResource => {

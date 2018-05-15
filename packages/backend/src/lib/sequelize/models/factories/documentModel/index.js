@@ -40,6 +40,9 @@ module.exports = function createModel({
   const Model = sequelize.define(
     name,
     {
+      deactivatedAt: {
+        type: Sequelize.DATE,
+      },
       diff: {
         type: Sequelize.JSONB,
       },
