@@ -27,6 +27,13 @@ const relationships = [
     sourceResource: 'storageLocation',
     type: 'children',
   },
+  {
+    external: true,
+    sourceResource: 'storageLocation',
+    targetAs: 'acceptedTaxonNames',
+    targetResource: 'taxonName',
+    type: 'belongsToMany',
+  },
 ]
 
 exports.resourceRelationsMap = buildResourceRelationsMap(relationships)
