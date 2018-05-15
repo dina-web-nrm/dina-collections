@@ -27,7 +27,7 @@ const deleteNotIncludedRelationships = ({
   relationItemsToUpdate,
   relationKey,
   type,
-  // reverseOperationId,
+  reverseOperationId,
 }) => {
   const operationId = buildOperationId({
     operationType: 'getRelationHasMany',
@@ -43,8 +43,9 @@ const deleteNotIncludedRelationships = ({
     })
     .then(result => {
       const { data: existingRelations } = result
+
       const relationsToRemove = existingRelations.filter(existingRelation => {
-        return !!relationItemsToUpdate.find(({ id }) => {
+        return !relationItemsToUpdate.find(({ id }) => {
           return existingRelation.id === id
         })
       })
@@ -52,19 +53,18 @@ const deleteNotIncludedRelationships = ({
         'The following relationships should be removed: ',
         relationsToRemove
       )
-      return true
-      // TODO need backend support for this
-      // const promises = relationsToRemove.map(relationToRemove => {
-      //   return openApiClient.call(reverseOperationId, {
-      //     body: {
-      //       data: null,
-      //     },
-      //     pathParams: {
-      //       id: relationToRemove.id,
-      //     },
-      //   })
-      // })
-      // return Promise.all(promises)
+
+      const promises = relationsToRemove.map(relationToRemove => {
+        return openApiClient.call(reverseOperationId, {
+          body: {
+            data: null,
+          },
+          pathParams: {
+            id: relationToRemove.id,
+          },
+        })
+      })
+      return Promise.all(promises)
     })
 }
 
