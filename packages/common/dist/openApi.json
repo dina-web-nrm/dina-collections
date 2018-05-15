@@ -5542,7 +5542,9 @@
             "example": [
               "physicalObjects",
               "parent",
-              "children"
+              "children",
+              "acceptedTaxonNames",
+              "preparationTypes"
             ],
             "schema": {
               "items": {
@@ -5550,7 +5552,9 @@
                   "all",
                   "physicalObjects",
                   "parent",
-                  "children"
+                  "children",
+                  "acceptedTaxonNames",
+                  "preparationTypes"
                 ],
                 "type": "string"
               },
@@ -5679,7 +5683,9 @@
             "example": [
               "physicalObjects",
               "parent",
-              "children"
+              "children",
+              "acceptedTaxonNames",
+              "preparationTypes"
             ],
             "schema": {
               "items": {
@@ -5687,7 +5693,9 @@
                   "all",
                   "physicalObjects",
                   "parent",
-                  "children"
+                  "children",
+                  "acceptedTaxonNames",
+                  "preparationTypes"
                 ],
                 "type": "string"
               },
@@ -9436,6 +9444,30 @@
       "storageLocation": {
         "additionalProperties": false,
         "properties": {
+          "acceptedTaxonNames": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/taxonName"
+                }
+              }
+            },
+            "x-summary": ""
+          },
+          "preparationTypes": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/preparationType"
+                }
+              }
+            },
+            "x-summary": ""
+          },
           "id": {
             "type": "string",
             "x-summary": ""
@@ -17939,6 +17971,58 @@
                           }
                         },
                         "type": "object"
+                      },
+                      "acceptedTaxonNames": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxonName"
+                                  ],
+                                  "example": "taxonName",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "preparationTypes": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "preparationType"
+                                  ],
+                                  "example": "preparationType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
                       }
                     },
                     "type": "object"
@@ -18081,6 +18165,58 @@
                                     "storageLocation"
                                   ],
                                   "example": "storageLocation",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "acceptedTaxonNames": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "taxonName"
+                                  ],
+                                  "example": "taxonName",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "preparationTypes": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "preparationType"
+                                  ],
+                                  "example": "preparationType",
                                   "type": "string"
                                 }
                               },
@@ -23343,6 +23479,58 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "acceptedTaxonNames": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxonName"
+                              ],
+                              "example": "taxonName",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "preparationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "preparationType"
+                              ],
+                              "example": "preparationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -23475,6 +23663,58 @@
                                 "storageLocation"
                               ],
                               "example": "storageLocation",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "acceptedTaxonNames": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxonName"
+                              ],
+                              "example": "taxonName",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "preparationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "preparationType"
+                              ],
+                              "example": "preparationType",
                               "type": "string"
                             }
                           },
@@ -23627,6 +23867,58 @@
                         }
                       },
                       "type": "object"
+                    },
+                    "acceptedTaxonNames": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "taxonName"
+                                ],
+                                "example": "taxonName",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "preparationTypes": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "preparationType"
+                                ],
+                                "example": "preparationType",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
                     }
                   },
                   "type": "object"
@@ -23770,6 +24062,58 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "acceptedTaxonNames": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxonName"
+                              ],
+                              "example": "taxonName",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "preparationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "preparationType"
+                              ],
+                              "example": "preparationType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   }
                 },
                 "type": "object"
@@ -23902,6 +24246,58 @@
                                 "storageLocation"
                               ],
                               "example": "storageLocation",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "acceptedTaxonNames": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "taxonName"
+                              ],
+                              "example": "taxonName",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "preparationTypes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "preparationType"
+                              ],
+                              "example": "preparationType",
                               "type": "string"
                             }
                           },
