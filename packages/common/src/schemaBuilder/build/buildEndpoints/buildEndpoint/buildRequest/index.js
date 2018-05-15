@@ -76,25 +76,32 @@ module.exports = function createRequest({
         required: ['data'],
         properties: {
           data: {
-            type: 'object',
-            additionalProperties: false,
-            properties: {
-              id: {
-                type: 'string',
-                example: '1234',
+            oneOf: [
+              {
+                type: 'null',
               },
-              type: {
-                default: resource,
-                enum: [resource],
-                type: 'string',
-              },
-              attributes: modelReference
-                ? undefined
-                : {
-                    $ref: `__ROOT__${resource}`,
+              {
+                type: 'object',
+                additionalProperties: false,
+                properties: {
+                  id: {
+                    type: 'string',
+                    example: '1234',
                   },
-              relationships,
-            },
+                  type: {
+                    default: resource,
+                    enum: [resource],
+                    type: 'string',
+                  },
+                  attributes: modelReference
+                    ? undefined
+                    : {
+                        $ref: `__ROOT__${resource}`,
+                      },
+                  relationships,
+                },
+              },
+            ],
           },
         },
       },
