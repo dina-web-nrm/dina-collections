@@ -120,6 +120,15 @@ const config = {
     },
 
     preparationType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'attributes.name',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
       operations: [
         {
           operationId: 'preparationTypeGetOne',
@@ -187,7 +196,10 @@ const config = {
         {
           operationId: 'storageLocationCreate',
           options: {
-            relationshipKeysToIncludeInBody: ['acceptedTaxonNames'],
+            relationshipKeysToIncludeInBody: [
+              'acceptedTaxonNames',
+              'preparationTypes',
+            ],
           },
           type: 'create',
         },
@@ -198,7 +210,10 @@ const config = {
         {
           operationId: 'storageLocationUpdate',
           options: {
-            relationshipKeysToIncludeInBody: ['acceptedTaxonNames'],
+            relationshipKeysToIncludeInBody: [
+              'acceptedTaxonNames',
+              'preparationTypes',
+            ],
           },
           type: 'update',
         },

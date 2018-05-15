@@ -1,42 +1,41 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Table } from 'semantic-ui-react'
-import TaxonNameRow from './TaxonNameRow'
-import NewTaxonName from './NewTaxonName'
+import PreparationTypeRow from './PreparationTypeRow'
+import NewPreparationType from './NewPreparationType'
 
 const propTypes = {
-  acceptedTaxonNames: PropTypes.array,
   edit: PropTypes.bool.isRequired,
   onInteraction: PropTypes.func,
+  preparationTypes: PropTypes.array,
 }
 
 const defaultProps = {
-  acceptedTaxonNames: [],
   onInteraction: undefined,
+  preparationTypes: [],
 }
 
-export class TaxonNameTable extends Component {
+export class PreparationTypeTable extends Component {
   render() {
-    const { acceptedTaxonNames, edit } = this.props
+    const { edit, preparationTypes } = this.props
     return (
       <React.Fragment>
-        <h2>Taxon names</h2>
+        <h2>Preparation types</h2>
         <Table celled>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Id</Table.HeaderCell>
               <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Rank</Table.HeaderCell>
-              <Table.HeaderCell>Rubin</Table.HeaderCell>
+              <Table.HeaderCell>Category</Table.HeaderCell>
               {edit && <Table.HeaderCell>Actions</Table.HeaderCell>}
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            {acceptedTaxonNames.map(taxonName => {
-              const { id } = taxonName
+            {preparationTypes.map(preparationType => {
+              const { id } = preparationType
 
               return (
-                <TaxonNameRow
+                <PreparationTypeRow
                   edit={edit}
                   itemId={id}
                   key={id}
@@ -44,7 +43,9 @@ export class TaxonNameTable extends Component {
                 />
               )
             })}
-            {edit && <NewTaxonName onInteraction={this.props.onInteraction} />}
+            {edit && (
+              <NewPreparationType onInteraction={this.props.onInteraction} />
+            )}
           </Table.Body>
         </Table>
       </React.Fragment>
@@ -52,7 +53,7 @@ export class TaxonNameTable extends Component {
   }
 }
 
-TaxonNameTable.propTypes = propTypes
-TaxonNameTable.defaultProps = defaultProps
+PreparationTypeTable.propTypes = propTypes
+PreparationTypeTable.defaultProps = defaultProps
 
-export default TaxonNameTable
+export default PreparationTypeTable

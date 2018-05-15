@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Button, Table } from 'semantic-ui-react'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { compose } from 'redux'
-import { DISCONNECT_TAXON_NAME } from '../../../../constants'
+import { DISCONNECT_PREPARATION_TYPE } from '../../../../constants'
 
 const propTypes = {
   edit: PropTypes.bool.isRequired,
@@ -17,7 +17,7 @@ const defaultProps = {
 }
 
 const TaxonNameRow = ({ edit, item, itemId, onInteraction }) => {
-  const { id, attributes: { name, rank, rubinNumber } = {} } = item || {}
+  const { id, attributes: { category, name } = {} } = item || {}
 
   return (
     <Table.Row>
@@ -27,14 +27,13 @@ const TaxonNameRow = ({ edit, item, itemId, onInteraction }) => {
       <Table.Cell>
         <a className="ui link">{name}</a>
       </Table.Cell>
-      <Table.Cell>{rank}</Table.Cell>
-      <Table.Cell>{rubinNumber}</Table.Cell>
+      <Table.Cell>{category}</Table.Cell>
       {edit && (
         <Table.Cell>
           <Button
             onClick={event => {
               event.preventDefault()
-              onInteraction(DISCONNECT_TAXON_NAME, {
+              onInteraction(DISCONNECT_PREPARATION_TYPE, {
                 itemId,
               })
             }}
@@ -53,6 +52,6 @@ TaxonNameRow.defaultProps = defaultProps
 export default compose(
   createGetItemById({
     refresh: false,
-    resource: 'taxonName',
+    resource: 'preparationType',
   })
 )(TaxonNameRow)

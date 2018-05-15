@@ -6,6 +6,7 @@ import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { ParentChildTables } from 'coreModules/crudBlocks/components'
 import { SET_ITEM_INSPECT } from 'coreModules/crudBlocks/constants'
 import TaxonNameTable from '../shared/TaxonNameTable'
+import PreparationTypeTable from '../shared/PreparationTypeTable'
 
 const propTypes = {
   acceptedTaxonNames: PropTypes.array,
@@ -13,6 +14,7 @@ const propTypes = {
   item: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
   parent: PropTypes.object,
+  preparationTypes: PropTypes.array,
 }
 
 const defaultProps = {
@@ -20,6 +22,7 @@ const defaultProps = {
   children: [],
   item: undefined,
   parent: null,
+  preparationTypes: [],
 }
 
 export class Inspect extends PureComponent {
@@ -41,11 +44,11 @@ export class Inspect extends PureComponent {
       children,
       item: storageLocation,
       parent,
+      preparationTypes,
     } = this.props
     if (!storageLocation) {
       return null
     }
-
     const { attributes = {} } = storageLocation
     return (
       <React.Fragment>
@@ -76,7 +79,13 @@ export class Inspect extends PureComponent {
 
         <TaxonNameTable
           acceptedTaxonNames={acceptedTaxonNames}
-          onTaxonNameInteraction={this.handleTaxonNameInteraction}
+          edit={false}
+          width={16}
+        />
+
+        <PreparationTypeTable
+          edit={false}
+          preparationTypes={preparationTypes}
           width={16}
         />
 
@@ -95,8 +104,13 @@ Inspect.defaultProps = defaultProps
 
 export default compose(
   createGetItemById({
-    include: ['parent', 'children', 'acceptedTaxonNames'],
-    injectRelationships: ['acceptedTaxonNames', 'parent', 'children'],
+    include: ['parent', 'children', 'acceptedTaxonNames', 'preparationTypes'],
+    injectRelationships: [
+      'acceptedTaxonNames',
+      'parent',
+      'children',
+      'preparationTypes',
+    ],
     relationships: ['all'],
     resource: 'storageLocation',
   })
