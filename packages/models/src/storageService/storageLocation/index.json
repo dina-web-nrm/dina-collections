@@ -1,6 +1,35 @@
 {
   "additionalProperties": false,
   "properties": {
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "acceptedTaxonNames": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__taxonName",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        }
+      }
+    },
+    "acceptedTaxonNames": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "__ROOT__taxonName",
+            "x-reference-type": "external"
+          }
+        }
+      }
+    },
     "id": {
       "type": "string"
     },
