@@ -7,6 +7,10 @@
     "curatorialTaxonNameText": {
       "type": "string"
     },
+    "curatorialTaxonName": {
+      "$ref": "__ROOT__taxonName"
+    },
+
     "taxonRemarks": {
       "type": "string"
     },
