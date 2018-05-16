@@ -54,9 +54,6 @@
         }
       }
     },
-    "id": {
-      "type": "string"
-    },
     "versionId": {
       "type": "string"
     },
@@ -72,8 +69,11 @@
     "parentId": {
       "type": "string"
     },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
     "type": {
-      "type": "string"
+      "$ref": "__ROOT__type"
     }
   }
 }

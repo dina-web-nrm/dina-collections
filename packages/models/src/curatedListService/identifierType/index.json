@@ -4,14 +4,14 @@
     "name": {
       "type": "string"
     },
-    "id": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string"
-    },
     "key": {
       "type": "string"
+    },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
     }
   }
 }

@@ -1,9 +1,6 @@
 {
   "additionalProperties": false,
   "properties": {
-    "id": {
-      "type": "string"
-    },
     "lid": {
       "type": "string"
     },
@@ -24,8 +21,11 @@
     "storageLocationText": {
       "type": "string"
     },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
     "type": {
-      "type": "string"
+      "$ref": "__ROOT__type"
     }
   }
 }

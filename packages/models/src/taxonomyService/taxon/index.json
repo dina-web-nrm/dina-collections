@@ -119,12 +119,11 @@
         }
       }
     },
-
     "id": {
-      "type": "string"
+      "$ref": "__ROOT__id"
     },
     "type": {
-      "type": "string"
+      "$ref": "__ROOT__type"
     }
   }
 }

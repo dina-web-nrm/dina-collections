@@ -9,7 +9,7 @@
       "type": "string"
     },
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "acquisition": {
       "$ref": "__ROOT__acquisition"
@@ -52,9 +52,6 @@
         "$ref": "__ROOT__featureObservation",
         "x-reference-type": "internal"
       }
-    },
-    "id": {
-      "type": "string"
     },
     "identifiers": {
       "type": "array",

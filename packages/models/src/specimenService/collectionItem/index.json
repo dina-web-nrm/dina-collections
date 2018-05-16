@@ -2,7 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "alternateIdentifiersText": {
       "type": "string",
@@ -31,9 +31,6 @@
     "preparationType": {
       "$ref": "__ROOT__preparationType",
       "x-reference-type": "external"
-    },
-    "id": {
-      "type": "string"
     },
     "physicalObjectText": {
       "type": "string",

@@ -2,7 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "publishRecord": { "type": "boolean" },
     "remarks": { "type": "string", "example": "Some remarks" },
