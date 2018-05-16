@@ -6,23 +6,16 @@ import { reduxForm } from 'redux-form'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import createLog from 'utilities/log'
 import { Field, Input } from 'coreModules/form/components'
+import {
+  formatBooleanRadio,
+  parseBooleanRadio,
+} from 'coreModules/form/utilities'
 import { mammalFormModels } from '../../../../schemas'
 import FormActions from './FormActions'
 
 const log = createLog('modules:collectionMammals:CuratorialAssessmentForm:Base')
 
 const FORM_NAME = 'curatorialAssessmentForm'
-
-export const formatIsInStorageRadio = value => {
-  if (value === true) return 'true'
-  if (value === false) return 'false'
-  return undefined
-}
-export const parseIsInStorageRadio = value => {
-  if (value === 'true') return true
-  if (value === 'false') return false
-  return undefined
-}
 
 const propTypes = {
   displayBackButton: PropTypes.bool,
@@ -75,10 +68,10 @@ export class BaseForm extends PureComponent {
               <label htmlFor="isInStorage true">
                 <Field
                   component="input"
-                  format={formatIsInStorageRadio}
+                  format={formatBooleanRadio}
                   label="Is in storage"
                   name="isInStorage"
-                  parse={parseIsInStorageRadio}
+                  parse={parseBooleanRadio}
                   type="radio"
                   value="true"
                 />{' '}
@@ -89,10 +82,10 @@ export class BaseForm extends PureComponent {
               <label htmlFor="isInStorage false">
                 <Field
                   component="input"
-                  format={formatIsInStorageRadio}
+                  format={formatBooleanRadio}
                   label="Not found"
                   name="isInStorage"
-                  parse={parseIsInStorageRadio}
+                  parse={parseBooleanRadio}
                   type="radio"
                   value="false"
                 />{' '}
