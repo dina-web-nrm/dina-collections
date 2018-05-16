@@ -1,0 +1,16 @@
+{
+  "additionalProperties": false,
+  "description": "A date range",
+  "properties": {
+    "dateText": {
+      "type": "string",
+      "example": "Before 1800"
+    },
+    "startDate": {
+      "$ref": "__ROOT__singleDate"
+    },
+    "endDate": {
+      "$ref": "__ROOT__singleDate"
+    }
+  }
+}
