@@ -4,6 +4,7 @@ import * as editMammal from './editMammal'
 import * as home from './home'
 import * as login from './login'
 import * as lookupMammals from './lookupMammals'
+import * as manageAgents from './manageAgents'
 import * as manageLocalities from './manageLocalities'
 import * as manageStorageLocations from './manageStorageLocations'
 import * as manageTaxonomy from './manageTaxonomy'
@@ -21,6 +22,7 @@ const modules = [
   home,
   lookupMammals,
   registerMammal,
+  manageAgents,
   manageLocalities,
   manageStorageLocations,
   manageTaxonomy,
