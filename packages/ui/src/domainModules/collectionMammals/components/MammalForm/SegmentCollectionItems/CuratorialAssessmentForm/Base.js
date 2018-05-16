@@ -141,7 +141,7 @@ export class BaseForm extends PureComponent {
                 component={Input}
                 label="Date"
                 module="collectionMammals"
-                name="date"
+                name="date.dateText"
                 type="input-text"
               />
             </Grid.Column>

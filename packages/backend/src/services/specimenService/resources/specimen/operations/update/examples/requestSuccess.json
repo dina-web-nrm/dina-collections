@@ -44,6 +44,7 @@
       }
     },
     "attributes": {
+      "publishRecord": true,
       "normalized": {
         "determinations": [
           {
@@ -70,7 +71,11 @@
         ],
         "events": [
           {
-            "endDate": "endDate",
+            "dateRange": {
+              "endDate": {
+                "dateText": "endDate"
+              }
+            },
             "expeditionText": "expeditionText",
             "locationInformation": {
               "coordinatesVerbatim": "coordinatesVerbatim",
@@ -132,7 +137,6 @@
             "identifierType": "catalogNumber",
             "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
             "nameSpace": "",
-            "publishRecord": true,
             "remarks": "",
             "value": "123456"
           }

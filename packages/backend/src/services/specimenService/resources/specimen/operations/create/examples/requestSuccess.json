@@ -44,6 +44,7 @@
       }
     },
     "attributes": {
+      "publishRecord": true,
       "individual": {
         "taxonInformation": {},
         "recordHistoryEvents": [],
@@ -52,20 +53,15 @@
             "id": "string",
             "collectorsText": "Bergström, U",
             "event": {
-              "startDate": {
-                "isoDate": "string",
-                "dateText": "Before 1800",
-                "day": 25,
-                "month": 12,
-                "year": 1981
+              "dateRange": {
+                "startDate": {
+                  "dateText": "Before 1800"
+                },
+                "endDate": {
+                  "dateText": "Before 1800"
+                }
               },
-              "endDate": {
-                "isoDate": "string",
-                "dateText": "Before 1800",
-                "day": 25,
-                "month": 12,
-                "year": 1981
-              },
+
               "expeditionText": "Vega Expedition",
               "locationInformation": {
                 "places": [
@@ -97,9 +93,7 @@
                   "uncertaintyInMeters": 0
                 },
                 "polygon": {
-                  "vertices": [
-                    null
-                  ]
+                  "vertices": [null]
                 },
                 "verticalPosition": {
                   "maximumDepthInMeters": 0,
@@ -138,7 +132,6 @@
           {
             "identifierType": "catalogNumber",
             "nameSpace": "",
-            "publishRecord": true,
             "remarks": "Some remarks",
             "value": "123456"
           }
@@ -148,7 +141,6 @@
             "alternateIdentifiersText": "Skin complete, prepared",
             "identifiers": [
               {
-                "publishRecord": true,
                 "remarks": "Some remarks"
               }
             ],
@@ -179,9 +171,7 @@
                     "uncertaintyInMeters": 0
                   },
                   "polygon": {
-                    "vertices": [
-                      null
-                    ]
+                    "vertices": [null]
                   },
                   "verticalPosition": {
                     "maximumDepthInMeters": 0,

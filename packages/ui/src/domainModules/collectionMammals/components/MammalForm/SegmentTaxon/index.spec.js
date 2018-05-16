@@ -7,11 +7,16 @@ import transformInput from '../transformations/input'
 import transformOutput from '../transformations/output'
 
 const hasOneEmptyDetermination = store => {
-  expect(store.getState().form.mammalForm.values.determinations).toBeTruthy()
-  expect(store.getState().form.mammalForm.values.determinations.length).toBe(1)
   expect(
-    Object.keys(store.getState().form.mammalForm.values.determinations[0])
-      .length
+    store.getState().form.mammalForm.values.individual.determinations
+  ).toBeTruthy()
+  expect(
+    store.getState().form.mammalForm.values.individual.determinations.length
+  ).toBe(1)
+  expect(
+    Object.keys(
+      store.getState().form.mammalForm.values.individual.determinations[0]
+    ).length
   ).toBe(0)
 }
 
@@ -48,9 +53,9 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
       fullExport: true,
     })
 
-    expect(store.getState().form.mammalForm.values.determinations.length).toBe(
-      1
-    )
+    expect(
+      store.getState().form.mammalForm.values.individual.determinations.length
+    ).toBe(1)
 
     const addDeterminationButton = rootComponent
       .find('Segment')
@@ -62,8 +67,8 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     addDeterminationButton.simulate('click')
     addDeterminationButton.simulate('click')
 
-    expect(store.getState().form.mammalForm.values.determinations.length).toBe(
-      4
-    )
+    expect(
+      store.getState().form.mammalForm.values.individual.determinations.length
+    ).toBe(4)
   })
 })

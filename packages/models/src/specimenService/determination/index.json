@@ -21,7 +21,7 @@
       "example": "Doe, J."
     },
     "date": {
-      "type": "string"
+      "$ref": "__ROOT__singleDate"
     },
     "taxon": {
       "$ref": "__ROOT__taxon",

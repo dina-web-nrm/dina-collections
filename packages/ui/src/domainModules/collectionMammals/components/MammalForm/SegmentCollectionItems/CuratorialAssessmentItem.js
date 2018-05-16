@@ -79,7 +79,7 @@ class CuratorialAssessmentItem extends PureComponent {
                 >
                   <Grid.Row>
                     <Grid.Column computer={2} mobile={4} tablet={4}>
-                      {date}
+                      {date && date.dateText}
                     </Grid.Column>
                     <Grid.Column computer={3} mobile={12} tablet={6}>
                       {agent}

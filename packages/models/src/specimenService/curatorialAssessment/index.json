@@ -9,7 +9,7 @@
       "example": "Doe, J."
     },
     "date": {
-      "type": "string"
+      "$ref": "__ROOT__singleDate"
     },
     "condition": {
       "type": "string",

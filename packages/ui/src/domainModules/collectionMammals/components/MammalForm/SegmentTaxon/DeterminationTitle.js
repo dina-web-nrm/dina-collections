@@ -26,13 +26,13 @@ const mapStateToProps = (state, { taxon }) => {
 
 const propTypes = {
   active: PropTypes.bool.isRequired,
-  date: PropTypes.string,
+  date: PropTypes.object,
   determinedByAgentText: PropTypes.string,
   remarks: PropTypes.string,
   taxonName: PropTypes.string,
 }
 const defaultProps = {
-  date: undefined,
+  date: null,
   determinedByAgentText: undefined,
   remarks: undefined,
   taxonName: undefined,
@@ -45,7 +45,12 @@ function DeterminationContent({
   remarks,
   taxonName,
 }) {
-  const headline = [taxonName, determinedByAgentText, date, remarks]
+  const headline = [
+    taxonName,
+    determinedByAgentText,
+    date && date.dateText,
+    remarks,
+  ]
     .filter(str => !!str)
     .join(', ')
 

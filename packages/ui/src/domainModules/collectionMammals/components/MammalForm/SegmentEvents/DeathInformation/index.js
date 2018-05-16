@@ -67,6 +67,6 @@ DeathInformation.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({ resource: 'causeOfDeathType' }),
-  pathBuilder({ name: 'deathInformation.0' }),
+  pathBuilder({ name: 'individual.deathInformation.0' }),
   connect(mapStateToProps)
 )(DeathInformation)

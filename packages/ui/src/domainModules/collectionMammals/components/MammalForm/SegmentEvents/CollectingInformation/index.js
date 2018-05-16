@@ -112,7 +112,7 @@ class SegmentCollectingInformation extends PureComponent {
                   />
                 }
                 module="collectionMammals"
-                name={getPath('event.startDate')}
+                name={getPath('event.dateRange.startDate.dateText')}
                 type="text"
               />
             </Grid.Column>
@@ -127,7 +127,7 @@ class SegmentCollectingInformation extends PureComponent {
                   />
                 }
                 module="collectionMammals"
-                name={getPath('event.endDate')}
+                name={getPath('event.dateRange.endDate.dateText')}
                 type="text"
               />
             </Grid.Column>
@@ -153,6 +153,6 @@ SegmentCollectingInformation.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({ resource: 'establishmentMeansType' }),
-  pathBuilder({ name: 'collectingInformation.0' }),
+  pathBuilder({ name: 'individual.collectingInformation.0' }),
   connect(mapStateToProps)
 )(SegmentCollectingInformation)

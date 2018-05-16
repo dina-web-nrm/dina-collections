@@ -2,11 +2,11 @@ import initialState from './initialState'
 
 const segmentIdentifiersMutations = [
   {
-    name: 'identifiers.0.publishRecord',
+    name: 'publishRecord',
     value: true,
   },
   {
-    name: 'identifiers.0.value',
+    name: 'individual.identifiers.0.value',
     value: '123456',
   },
   {
@@ -15,196 +15,201 @@ const segmentIdentifiersMutations = [
     interaction: 'click',
   },
   {
-    name: 'identifiers.1.identifierType.id.hidden',
+    name: 'individual.identifiers.1.identifierType.id.hidden',
     value: '2',
   },
   {
-    name: 'identifiers.1.remarks',
+    name: 'individual.identifiers.1.remarks',
     value: 'remarks',
   },
   {
-    name: 'identifiers.1.value',
+    name: 'individual.identifiers.1.value',
     value: 'V0100/98',
   },
   {
-    name: 'typeStatus.id.hidden',
+    name: 'individual.typeStatus.id.hidden',
     value: '1',
   },
   {
-    name: 'acquisition.acquisitionTypeText',
+    name: 'individual.acquisition.acquisitionTypeText',
     value: 'acquisitionTypeText',
   },
   {
-    name: 'acquisition.date',
+    name: 'individual.acquisition.date.dateText',
     value: 'date',
   },
   {
-    name: 'acquisition.handedInByAgentText',
+    name: 'individual.acquisition.handedInByAgentText',
     value: 'handedInByAgentText',
   },
   {
-    name: 'collectionItemText',
+    name: 'individual.collectionItemText',
     value: 'collectionItemText',
   },
 ]
 
 const segmentTaxonMutations = [
   {
-    name: 'taxonInformation.curatorialTaxonNameText',
+    name: 'individual.taxonInformation.curatorialTaxonNameText',
     value: 'curatorialTaxonNameText',
   },
-  { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
-  { name: 'determinations.0.date', value: 'date' },
+  { name: 'individual.taxonInformation.taxonRemarks', value: 'taxonRemarks' },
+  { name: 'individual.determinations.0.date.dateText', value: 'date' },
 ]
 
 const segmentDeterminationsMutations = [
   {
-    name: 'determinations.0.determinationVerbatim',
+    name: 'individual.determinations.0.determinationVerbatim',
     value: 'determinationVerbatim',
   },
   {
-    name: 'determinations.0.determinedByAgentText',
+    name: 'individual.determinations.0.determinedByAgentText',
     value: 'determinedByAgentText',
   },
-  { name: 'determinations.0.remarks', value: 'remarks' },
+  { name: 'individual.determinations.0.remarks', value: 'remarks' },
 
   {
-    name: 'determinations.0.taxon.id.hidden',
+    name: 'individual.determinations.0.taxon.id.hidden',
     value: '2367',
   },
 ]
 
 const segmentCollectingInformationMutations = [
   {
-    name: 'collectingInformation.0.collectorsText',
+    name: 'individual.collectingInformation.0.collectorsText',
     value: 'collectorsText',
   },
   {
-    name: 'collectingInformation.0.establishmentMeansType.id.hidden',
+    name: 'individual.collectingInformation.0.establishmentMeansType.id.hidden',
     value: '1',
   },
 
   {
-    name: 'collectingInformation.0.event.endDate',
+    name: 'individual.collectingInformation.0.event.dateRange.endDate.dateText',
     value: 'endDate',
   },
   {
-    name: 'collectingInformation.0.event.expeditionText',
+    name: 'individual.collectingInformation.0.event.expeditionText',
     value: 'expeditionText',
   },
 
   {
     name:
-      'collectingInformation.0.event.locationInformation.places.0.id.hidden',
+      'individual.collectingInformation.0.event.locationInformation.places.0.id.hidden',
     value: 'Africa',
   },
 
   {
     name:
-      'collectingInformation.0.event.locationInformation.places.1.id.hidden',
+      'individual.collectingInformation.0.event.locationInformation.places.1.id.hidden',
     value: 'Algeria',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.localityT',
+    name:
+      'individual.collectingInformation.0.event.locationInformation.localityT',
     value: 'localityT',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.localityN',
+    name:
+      'individual.collectingInformation.0.event.locationInformation.localityN',
     value: 'localityN',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.remarks',
+    name:
+      'individual.collectingInformation.0.event.locationInformation.remarks',
     value: 'remarks',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.position.latitude',
+    name:
+      'individual.collectingInformation.0.event.locationInformation.position.latitude',
     value: 'latitude-string',
   },
   {
     name:
-      'collectingInformation.0.event.locationInformation.position.longitude',
+      'individual.collectingInformation.0.event.locationInformation.position.longitude',
     value: 'longitude-string',
   },
   {
     name:
-      'collectingInformation.0.event.locationInformation.position.referenceSystem',
+      'individual.collectingInformation.0.event.locationInformation.position.referenceSystem',
     value: 'referenceSystem',
   },
 
   {
     name:
-      'collectingInformation.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
+      'individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
     value: 100,
   },
   {
     name:
-      'collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
+      'individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
     value: 100,
   },
   {
     name:
-      'collectingInformation.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
+      'individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
     value: 20,
   },
   {
     name:
-      'collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
+      'individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
     value: 20,
   },
 
   {
-    name: 'collectingInformation.0.event.startDate',
+    name:
+      'individual.collectingInformation.0.event.dateRange.startDate.dateText',
     value: 'startDate',
   },
   {
-    name: 'collectingInformation.0.isDeathDate',
+    name: 'individual.collectingInformation.0.isDeathDate',
     value: true,
   },
   {
-    name: 'deathInformation.0.causeOfDeathType.id.hidden',
+    name: 'individual.deathInformation.0.causeOfDeathType.id.hidden',
     value: '1',
   },
   {
-    name: 'deathInformation.0.remarks',
+    name: 'individual.deathInformation.0.remarks',
     value: 'Some remarks',
   },
   {
-    name: 'originInformation.0.originLocality',
+    name: 'individual.originInformation.0.originLocality',
     value: 'Ronneby',
   },
   {
-    name: 'originInformation.0.remarks',
+    name: 'individual.originInformation.0.remarks',
     value: 'Some remarks',
   },
   {
-    name: 'originInformation.0.isAffectedByManagement',
+    name: 'individual.originInformation.0.isAffectedByManagement',
     value: true,
   },
   {
-    name: 'originInformation.0.isResultOfSelectiveBreeding',
+    name: 'individual.originInformation.0.isResultOfSelectiveBreeding',
     value: true,
   },
 ]
 
 const segmentFeatureObservationsMutations = [
   {
-    name: 'featureObservations.1.date',
+    name: 'individual.featureObservations.1.date.dateText',
     value: 'date',
   },
   {
-    name: 'featureObservations.1.featureObservationAgent',
+    name: 'individual.featureObservations.1.featureObservationAgent',
     value: 'featureObservationAgent',
   },
   {
-    name: 'featureObservations.1.featureObservationText.hidden',
+    name: 'individual.featureObservations.1.featureObservationText.hidden',
     value: 'juvenile',
   },
   {
-    name: 'featureObservations.1.methodText.hidden',
+    name: 'individual.featureObservations.1.methodText.hidden',
     value: 'known-age',
   },
   {
-    name: 'featureObservations.1.remarks',
+    name: 'individual.featureObservations.1.remarks',
     value: 'remarks',
   },
 ]
@@ -216,67 +221,70 @@ const segmentCollectionItemsMutations = [
     interaction: 'click',
   },
   {
-    name: 'collectionItems.0.preparationType.id.hidden',
+    name: 'individual.collectionItems.0.preparationType.id.hidden',
     value: '2',
   },
   {
-    name: 'collectionItems.0.description',
+    name: 'individual.collectionItems.0.description',
     value: 'description',
   },
   {
-    name: 'collectionItems.0.physicalObject.storageLocation.id.hidden',
+    name:
+      'individual.collectionItems.0.physicalObject.storageLocation.id.hidden',
     value: '1',
   },
   {
-    name: 'collectionItems.0.physicalObject.storageLocationText',
+    name: 'individual.collectionItems.0.physicalObject.storageLocationText',
     value: 'storageLocationText',
   },
 
   {
-    name: 'collectionItems.0.curatorialAssessments.0.agent',
+    name: 'individual.collectionItems.0.curatorialAssessments.0.agent',
     value: 'agent',
   },
   {
-    name: 'collectionItems.0.curatorialAssessments.0.condition',
+    name: 'individual.collectionItems.0.curatorialAssessments.0.condition',
     value: 'condition',
   },
   {
-    name: 'collectionItems.0.curatorialAssessments.0.conditionRemarks',
+    name:
+      'individual.collectionItems.0.curatorialAssessments.0.conditionRemarks',
     value: 'conditionRemarks',
   },
   {
-    name: 'collectionItems.0.curatorialAssessments.0.date',
+    name: 'individual.collectionItems.0.curatorialAssessments.0.date.dateText',
     value: 'date',
   },
   {
-    name: 'collectionItems.0.curatorialAssessments.0.isInStorage',
+    name: 'individual.collectionItems.0.curatorialAssessments.0.isInStorage',
     value: true,
   },
   {
-    name: 'collectionItems.0.curatorialAssessments.0.inventoryStatusRemarks',
+    name:
+      'individual.collectionItems.0.curatorialAssessments.0.inventoryStatusRemarks',
     value: 'inventoryStatusRemarks',
   },
 ]
 
 const segmentOtherMutations = [
   {
-    name: 'recordHistoryEvents.0.agent',
+    name: 'individual.recordHistoryEvents.0.agent',
     value: 'agent',
   },
   {
-    name: 'recordHistoryEvents.0.date',
+    name: 'individual.recordHistoryEvents.0.date.dateText',
     value: 'date',
   },
   {
-    name: 'recordHistoryEvents.0.description',
+    name: 'individual.recordHistoryEvents.0.description',
     value: 'Creation of catalog card',
   },
   {
-    name: 'recordHistoryEvents.0.system',
+    name: 'individual.recordHistoryEvents.0.system',
     value: 'catalogCard',
   },
   {
-    name: 'remarks',
+    name: 'individual.remarks',
     value: 'remarks',
   },
 ]
@@ -296,7 +304,7 @@ const expectedOutput = {
   individual: {
     acquisition: {
       acquisitionTypeText: 'acquisitionTypeText',
-      date: 'date',
+      date: { dateText: 'date' },
       handedInByAgentText: 'handedInByAgentText',
     },
     collectingInformation: [
@@ -306,7 +314,14 @@ const expectedOutput = {
           id: '1',
         },
         event: {
-          endDate: 'endDate',
+          dateRange: {
+            endDate: {
+              dateText: 'endDate',
+            },
+            startDate: {
+              dateText: 'startDate',
+            },
+          },
           expeditionText: 'expeditionText',
 
           locationInformation: {
@@ -326,7 +341,6 @@ const expectedOutput = {
               minimumElevationInMeters: 20,
             },
           },
-          startDate: 'startDate',
         },
         isDeathDate: true,
       },
@@ -338,7 +352,7 @@ const expectedOutput = {
             agent: 'agent',
             condition: 'condition',
             conditionRemarks: 'conditionRemarks',
-            date: 'date',
+            date: { dateText: 'date' },
             inventoryStatusRemarks: 'inventoryStatusRemarks',
             isInStorage: true, // is set as default in form
           },
@@ -351,7 +365,6 @@ const expectedOutput = {
           storageLocationText: 'storageLocationText',
         },
         preparationType: {
-          category: 'skeleton',
           id: '2',
         },
       },
@@ -368,7 +381,7 @@ const expectedOutput = {
     ],
     determinations: [
       {
-        date: 'date',
+        date: { dateText: 'date' },
         determinationVerbatim: 'determinationVerbatim',
         determinedByAgentText: 'determinedByAgentText',
         remarks: 'remarks',
@@ -380,7 +393,7 @@ const expectedOutput = {
 
     featureObservations: [
       {
-        date: 'date',
+        date: { dateText: 'date' },
         featureObservationAgent: 'featureObservationAgent',
         featureObservationText: 'juvenile',
         featureType: {
@@ -397,7 +410,6 @@ const expectedOutput = {
           id: '1',
         },
         nameSpace: '',
-        publishRecord: true,
         remarks: '',
         value: '123456',
       },
@@ -420,7 +432,7 @@ const expectedOutput = {
     recordHistoryEvents: [
       {
         agent: 'agent',
-        date: 'date',
+        date: { dateText: 'date' },
         description: 'Creation of catalog card',
         system: 'catalogCard',
       },
@@ -434,6 +446,7 @@ const expectedOutput = {
       id: '1',
     },
   },
+  publishRecord: true,
 }
 
 const postSubmitTest = ({ submitResult }) => {
@@ -447,8 +460,8 @@ const postSubmitTest = ({ submitResult }) => {
     Object.keys(registeredFields)
       .filter(key => {
         // filter out unused featureTypes, also done in transform output
-        if (key.indexOf('featureObservations.') === 0) {
-          return key.indexOf('featureObservations.1.') === 0
+        if (key.indexOf('individual.featureObservations.') === 0) {
+          return key.indexOf('individual.featureObservations.1.') === 0
         }
         if (key.indexOf('readOnly') > -1) {
           return false

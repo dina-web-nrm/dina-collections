@@ -1,38 +1,26 @@
 {
-  "dateWrapper": {
+  "dateRange": {
     "additionalProperties": false,
+    "description": "A date range",
     "properties": {
-      "isoDate": {
-        "type": "string",
-        "description": "A date in standard format. TBA",
-        "x-summary": ""
-      },
       "dateText": {
         "type": "string",
         "example": "Before 1800",
         "x-summary": ""
       },
-      "day": {
-        "type": "integer",
-        "example": 25,
+      "startDate": {
+        "$ref": "singleDate",
         "x-summary": ""
       },
-      "month": {
-        "type": "integer",
-        "example": 12,
-        "x-summary": ""
-      },
-      "year": {
-        "type": "integer",
-        "example": 1981,
+      "endDate": {
+        "$ref": "singleDate",
         "x-summary": ""
       }
     },
-    "description": "### Definition\n\nInformation pertaining to a specific date or a date range.\n\n### Note(s)\n\nIncludes for example verbatim information about when something happened.\n",
     "x-category": "core",
     "x-modelType": "model",
     "x-summary": "",
-    "id": "dateWrapper"
+    "id": "dateRange"
   },
   "externalModelReference": {
     "additionalProperties": false,
@@ -143,6 +131,41 @@
     "x-summary": "",
     "description": "",
     "id": "readOnly"
+  },
+  "singleDate": {
+    "additionalProperties": false,
+    "description": "A single date",
+    "properties": {
+      "isoDate": {
+        "type": "string",
+        "description": "A date in standard format. TBA",
+        "x-summary": ""
+      },
+      "dateText": {
+        "type": "string",
+        "example": "Before 1800",
+        "x-summary": ""
+      },
+      "day": {
+        "type": "integer",
+        "example": 25,
+        "x-summary": ""
+      },
+      "month": {
+        "type": "integer",
+        "example": 12,
+        "x-summary": ""
+      },
+      "year": {
+        "type": "integer",
+        "example": 1981,
+        "x-summary": ""
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "singleDate"
   },
   "translatedString": {
     "additionalProperties": false,
@@ -609,7 +632,7 @@
         "x-summary": ""
       },
       "date": {
-        "type": "string",
+        "$ref": "singleDate",
         "x-summary": ""
       }
     },
@@ -723,7 +746,7 @@
         "x-summary": ""
       },
       "date": {
-        "type": "string",
+        "$ref": "singleDate",
         "x-summary": ""
       },
       "condition": {
@@ -806,7 +829,7 @@
         "x-summary": ""
       },
       "date": {
-        "type": "string",
+        "$ref": "singleDate",
         "x-summary": ""
       },
       "taxon": {
@@ -827,12 +850,8 @@
         "$ref": "lid",
         "x-summary": ""
       },
-      "startDate": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "endDate": {
-        "type": "string",
+      "dateRange": {
+        "$ref": "dateRange",
         "x-summary": ""
       },
       "expeditionText": {
@@ -864,7 +883,7 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "dateWrapper",
+        "$ref": "singleDate",
         "x-summary": ""
       },
       "featureObservationText": {
@@ -903,10 +922,6 @@
     "properties": {
       "lid": {
         "$ref": "lid",
-        "x-summary": ""
-      },
-      "publishRecord": {
-        "type": "boolean",
         "x-summary": ""
       },
       "remarks": {
@@ -1150,7 +1165,7 @@
         "x-summary": ""
       },
       "date": {
-        "type": "string",
+        "$ref": "singleDate",
         "x-summary": ""
       },
       "description": {
@@ -1386,6 +1401,10 @@
       },
       "type": {
         "$ref": "type",
+        "x-summary": ""
+      },
+      "publishRecord": {
+        "type": "boolean",
         "x-summary": ""
       },
       "version": {
@@ -10350,6 +10369,7 @@
             }
           },
           "attributes": {
+            "publishRecord": true,
             "individual": "836625c3-a049-4323-8b52-4bc425f5be04",
             "normalized": {
               "determinations": [
@@ -10442,7 +10462,6 @@
                   },
                   "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
                   "nameSpace": "",
-                  "publishRecord": true,
                   "remarks": "",
                   "value": "123456"
                 }
@@ -10539,6 +10558,7 @@
           }
         },
         "attributes": {
+          "publishRecord": true,
           "individual": "836625c3-a049-4323-8b52-4bc425f5be04",
           "normalized": {
             "determinations": [
@@ -10631,7 +10651,6 @@
                 },
                 "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
                 "nameSpace": "",
-                "publishRecord": true,
                 "remarks": "",
                 "value": "123456"
               }

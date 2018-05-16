@@ -14,8 +14,8 @@ module.exports = function createCollectingInformation({ lookup, migrator }) {
   ].join('-')
 
   migrator.setValue({
-    path: 'target.individual.collectingInformation.0.event.startDate',
-    value: date,
+    path: 'target.individual.collectingInformation.0.event.dateRange.startDate',
+    value: { dateText: date },
   })
 
   /* event.locationInformation */

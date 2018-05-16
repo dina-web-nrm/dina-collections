@@ -6,7 +6,10 @@ import RecordHistoryEventsTable from './RecordHistoryEventsTable'
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    recordHistoryEvents: formValueSelector(state, 'recordHistoryEvents'),
+    recordHistoryEvents: formValueSelector(
+      state,
+      'individual.recordHistoryEvents'
+    ),
   }
 }
 
