@@ -52,7 +52,7 @@ const createData = catalogNumber => {
               coordinatesVerbatim: 'coord-string',
               georeferenceSourcesText: 'georeferenceSourcesText text',
               localityRemarks: 'localityRemarks text',
-              localityVerbatim: 'Some localityVerbatim text',
+              localityT: 'Some localityT text',
               places: [
                 {
                   id: '123',

@@ -98,7 +98,7 @@
                 }
               ],
               "georeferenceSourcesText": "georeferenceSourcesText",
-              "localityVerbatim": "localityVerbatim",
+              "localityT": "localityT",
               "position": {
                 "geodeticDatum": "geodeticDatum text",
                 "latitude": "latitude-string",
