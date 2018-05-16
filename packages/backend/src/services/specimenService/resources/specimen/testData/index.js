@@ -23,7 +23,7 @@ testData.simpleDataNoRelations = {
       normalized: {
         identifiers: [
           {
-            identifierType: 'catalogNumber',
+            identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
             nameSpace: '',
             publishRecord: true,
@@ -48,7 +48,7 @@ testData.simpleDataPhysicalObjectRelations = {
       normalized: {
         identifiers: [
           {
-            identifierType: 'catalogNumber',
+            identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
             nameSpace: '',
             publishRecord: true,
@@ -83,7 +83,7 @@ testData.simpleDataMultipleRelations = {
       normalized: {
         identifiers: [
           {
-            identifierType: 'catalogNumber',
+            identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
             nameSpace: '',
             publishRecord: true,
@@ -132,7 +132,7 @@ testData.simpleDataInvalidRelationsFormat = {
       normalized: {
         identifiers: [
           {
-            identifierType: 'catalogNumber',
+            identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
             nameSpace: '',
             publishRecord: true,
@@ -163,7 +163,7 @@ testData.simpleDataInvalidRelations = {
       normalized: {
         identifiers: [
           {
-            identifierType: 'catalogNumber',
+            identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
             nameSpace: '',
             publishRecord: true,
