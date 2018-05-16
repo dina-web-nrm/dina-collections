@@ -56,6 +56,16 @@
     "x-summary": "",
     "id": "externalModelReference"
   },
+  "id": {
+    "additionalProperties": false,
+    "description": "A identifier id",
+    "type": "string",
+    "properties": {},
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "id"
+  },
   "lid": {
     "additionalProperties": false,
     "description": "A local identifier lid (local id). Should be a uuid",
@@ -152,6 +162,16 @@
     "description": "",
     "id": "translatedString"
   },
+  "type": {
+    "additionalProperties": false,
+    "description": "Resource type",
+    "type": "string",
+    "properties": {},
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "type"
+  },
   "verticalPosition": {
     "additionalProperties": false,
     "description": "### Definition\n\nTBA\n\n### Example(s)\n\nTBA\n\n\n\n",
@@ -200,11 +220,11 @@
         "x-summary": ""
       },
       "id": {
-        "type": "string",
+        "$ref": "id",
         "x-summary": ""
       },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -213,56 +233,6 @@
     "x-summary": "",
     "description": "",
     "id": "causeOfDeathType"
-  },
-  "curatedList": {
-    "additionalProperties": false,
-    "properties": {
-      "description": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "type": {
-        "type": "string",
-        "enum": [
-          "featureType",
-          "preparationType"
-        ],
-        "x-summary": ""
-      },
-      "items": {
-        "type": "array",
-        "items": {
-          "$ref": "curatedListType"
-        },
-        "x-summary": ""
-      }
-    },
-    "x-category": "curatedListService",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "curatedList"
-  },
-  "curatedListType": {
-    "additionalProperties": false,
-    "properties": {
-      "item": {
-        "anyOf": [
-          {
-            "$ref": "featureType"
-          },
-          {
-            "$ref": "preparationType"
-          }
-        ],
-        "x-summary": ""
-      }
-    },
-    "x-category": "curatedListService",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "curatedListType"
   },
   "establishmentMeansType": {
     "additionalProperties": false,
@@ -276,11 +246,11 @@
         "x-summary": ""
       },
       "id": {
-        "type": "string",
+        "$ref": "id",
         "x-summary": ""
       },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -330,12 +300,12 @@
         "type": "string",
         "x-summary": ""
       },
-      "type": {
-        "type": "string",
+      "id": {
+        "$ref": "id",
         "x-summary": ""
       },
-      "id": {
-        "type": "string",
+      "type": {
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -352,16 +322,16 @@
         "type": "string",
         "x-summary": ""
       },
-      "id": {
+      "key": {
         "type": "string",
+        "x-summary": ""
+      },
+      "id": {
+        "$ref": "id",
         "x-summary": ""
       },
       "type": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "key": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -375,11 +345,11 @@
     "additionalProperties": false,
     "properties": {
       "id": {
-        "type": "string",
+        "$ref": "id",
         "x-summary": ""
       },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       },
       "category": {
@@ -485,11 +455,11 @@
         "x-summary": ""
       },
       "id": {
-        "type": "string",
+        "$ref": "id",
         "x-summary": ""
       },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -558,11 +528,6 @@
         "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt",
         "x-summary": ""
       },
-      "id": {
-        "type": "string",
-        "description": "Unique identifier that is consistent over time",
-        "x-summary": ""
-      },
       "description": {
         "type": "string",
         "description": "Description of the locality",
@@ -613,17 +578,15 @@
         "$ref": "verticalPosition",
         "x-summary": ""
       },
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
-    "x-required": [
-      "name",
-      "id",
-      "description",
-      "group"
-    ],
     "description": "# place\n\nA defined place that has a name and is reusable, for example a country or a lake.\n\n\n### Definition\n\nA defined location with known, fixed extension in space.\n\n\n### Examples\n\n* A named location for a Malaise trap within an insect inventory project.\n\n\n### Notes\n\nPlaces can have relations to other places.\n\nNew name suggestion: \"location\" (motivation: \"place\" is usually understood as something less defined, or perhaps more informal).\n\n\n### See also\n\n[locationInformation](/docs/0.1.0/models/locationInformation/)",
     "x-category": "placeService",
     "x-modelType": "model",
@@ -633,12 +596,8 @@
   "acquisition": {
     "additionalProperties": false,
     "properties": {
-      "id": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "type": {
-        "type": "string",
+      "lid": {
+        "$ref": "lid",
         "x-summary": ""
       },
       "handedInByAgentText": {
@@ -664,15 +623,15 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
-        "x-summary": ""
-      },
-      "id": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "establishmentMeansType": {
         "$ref": "establishmentMeansType",
+        "x-summary": ""
+      },
+      "establishmentMeansN": {
+        "type": "string",
         "x-summary": ""
       },
       "collectorsText": {
@@ -701,7 +660,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "alternateIdentifiersText": {
@@ -735,10 +694,6 @@
         "$ref": "preparationType",
         "x-summary": ""
       },
-      "id": {
-        "type": "string",
-        "x-summary": ""
-      },
       "physicalObjectText": {
         "type": "string",
         "example": "Skin complete, prepared",
@@ -759,7 +714,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "agent": {
@@ -801,7 +756,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "causeOfDeathType": {
@@ -827,7 +782,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "remarks": {
@@ -869,7 +824,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "startDate": {
@@ -900,7 +855,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "featureObservationAgent": {
@@ -947,7 +902,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "publishRecord": {
@@ -998,7 +953,7 @@
         "x-summary": ""
       },
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "acquisition": {
@@ -1044,10 +999,6 @@
         },
         "x-summary": ""
       },
-      "id": {
-        "type": "string",
-        "x-summary": ""
-      },
       "identifiers": {
         "type": "array",
         "items": {
@@ -1091,7 +1042,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "places": {
@@ -1127,7 +1078,7 @@
         "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
         "x-summary": ""
       },
-      "localityName": {
+      "localityN": {
         "type": "string",
         "description": "TBA",
         "x-summary": ""
@@ -1137,7 +1088,7 @@
         "description": "Notes on the locality",
         "x-summary": ""
       },
-      "localityVerbatim": {
+      "localityT": {
         "type": "string",
         "description": "Verbatim locality names and description, as in the original source, typos and all.",
         "x-summary": ""
@@ -1157,7 +1108,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "originLocality": {
@@ -1191,7 +1142,7 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "agent": {
@@ -1340,7 +1291,7 @@
         "x-summary": ""
       },
       "lid": {
-        "type": "string",
+        "$ref": "lid",
         "x-summary": ""
       },
       "normalized": {
@@ -1429,6 +1380,14 @@
         },
         "x-summary": ""
       },
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
+      "type": {
+        "$ref": "type",
+        "x-summary": ""
+      },
       "version": {
         "type": "integer",
         "x-summary": ""
@@ -1447,11 +1406,15 @@
     "additionalProperties": false,
     "properties": {
       "lid": {
+        "$ref": "lid",
+        "x-summary": ""
+      },
+      "curatorialTaxonNameText": {
         "type": "string",
         "x-summary": ""
       },
-      "curatorialName": {
-        "type": "string",
+      "curatorialTaxonName": {
+        "$ref": "taxonName",
         "x-summary": ""
       },
       "taxonRemarks": {
@@ -1472,10 +1435,6 @@
   "physicalObject": {
     "additionalProperties": false,
     "properties": {
-      "id": {
-        "type": "string",
-        "x-summary": ""
-      },
       "lid": {
         "type": "string",
         "x-summary": ""
@@ -1487,11 +1446,6 @@
         },
         "x-summary": ""
       },
-      "normalStorageLocationText": {
-        "description": "Will be moved to storageLocation",
-        "type": "string",
-        "x-summary": ""
-      },
       "storageLocation": {
         "$ref": "storageLocation",
         "x-summary": ""
@@ -1500,8 +1454,12 @@
         "type": "string",
         "x-summary": ""
       },
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -1543,31 +1501,17 @@
         "x-summary": ""
       },
       "acceptedTaxonNames": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "taxonName"
-            }
-          }
+        "type": "array",
+        "items": {
+          "$ref": "taxonName"
         },
         "x-summary": ""
       },
       "preparationTypes": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "preparationType"
-            }
-          }
+        "type": "array",
+        "items": {
+          "$ref": "preparationType"
         },
-        "x-summary": ""
-      },
-      "id": {
-        "type": "string",
         "x-summary": ""
       },
       "versionId": {
@@ -1590,8 +1534,12 @@
         "type": "string",
         "x-summary": ""
       },
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -1663,66 +1611,41 @@
       },
       "acceptedTaxonName": {
         "type": "object",
-        "properties": {
-          "data": {
-            "type": "object",
-            "$ref": "taxonName"
-          }
-        },
+        "$ref": "taxonName",
         "x-summary": ""
       },
       "children": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "taxon"
-            }
-          }
+        "type": "array",
+        "items": {
+          "$ref": "taxon"
         },
         "x-summary": ""
       },
       "parent": {
         "type": "object",
-        "properties": {
-          "data": {
-            "type": "object",
-            "$ref": "taxon"
-          }
-        },
+        "$ref": "taxon",
         "x-summary": ""
       },
       "synonyms": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "taxonName"
-            }
-          }
+        "type": "array",
+        "items": {
+          "$ref": "taxonName"
         },
         "x-summary": ""
       },
       "vernacularNames": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "taxonName"
-            }
-          }
+        "type": "array",
+        "items": {
+          "$ref": "taxonName"
         },
         "x-summary": ""
       },
       "id": {
-        "type": "string",
+        "$ref": "id",
         "x-summary": ""
       },
       "type": {
-        "type": "string",
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -1768,10 +1691,6 @@
         },
         "x-summary": ""
       },
-      "id": {
-        "type": "string",
-        "x-summary": ""
-      },
       "versionId": {
         "type": "string",
         "x-summary": ""
@@ -1795,6 +1714,14 @@
       },
       "rubinNumber": {
         "type": "string",
+        "x-summary": ""
+      },
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
+      "type": {
+        "$ref": "type",
         "x-summary": ""
       }
     },
@@ -10477,7 +10404,7 @@
                       }
                     ],
                     "georeferenceSourcesText": "georeferenceSourcesText",
-                    "localityVerbatim": "localityVerbatim",
+                    "localityT": "localityT",
                     "position": {
                       "geodeticDatum": "geodeticDatum text",
                       "latitude": "latitude-string",
@@ -10509,7 +10436,10 @@
               ],
               "identifiers": [
                 {
-                  "identifierType": "catalogNumber",
+                  "identifierType": {
+                    "id": "1",
+                    "type": "identifierType"
+                  },
                   "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
                   "nameSpace": "",
                   "publishRecord": true,
@@ -10663,7 +10593,7 @@
                     }
                   ],
                   "georeferenceSourcesText": "georeferenceSourcesText",
-                  "localityVerbatim": "localityVerbatim",
+                  "localityT": "localityT",
                   "position": {
                     "geodeticDatum": "geodeticDatum text",
                     "latitude": "latitude-string",
@@ -10695,7 +10625,10 @@
             ],
             "identifiers": [
               {
-                "identifierType": "catalogNumber",
+                "identifierType": {
+                  "id": "1",
+                  "type": "identifierType"
+                },
                 "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
                 "nameSpace": "",
                 "publishRecord": true,
@@ -11104,7 +11037,6 @@
         "data": {
           "type": "physicalObject",
           "attributes": {
-            "normalStorageLocationText": "string",
             "storageLocationText": "Sorex minutus"
           }
         }
@@ -11114,7 +11046,6 @@
       "data": {
         "type": "physicalObject",
         "attributes": {
-          "normalStorageLocationText": "string",
           "storageLocationText": "Sorex minutus"
         }
       }
