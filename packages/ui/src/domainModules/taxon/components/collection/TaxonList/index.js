@@ -46,6 +46,7 @@ const mapDispatchToProps = {
 const propTypes = {
   activeTaxonId: PropTypes.string,
   allTaxaFetched: PropTypes.bool.isRequired,
+  allTaxonNamesFetched: PropTypes.bool.isRequired,
   disableEdit: PropTypes.bool.isRequired,
   displayNavigationButtons: PropTypes.bool.isRequired,
   filter: PropTypes.object,
@@ -220,12 +221,13 @@ class TaxaList extends Component {
     const {
       activeTaxonId,
       allTaxaFetched,
+      allTaxonNamesFetched,
       disableEdit,
       displayNavigationButtons,
       onInteraction,
       taxa,
     } = this.props
-    if (!allTaxaFetched) {
+    if (!allTaxaFetched || !allTaxonNamesFetched) {
       return <BlockLoader />
     }
     return (
@@ -256,11 +258,13 @@ TaxaList.defaultProps = defaultProps
 
 export default compose(
   createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
+  createEnsureAllItemsFetched({
     allFetchedKey: 'allTaxaFetched',
-    include: ['acceptedTaxonName'],
     relationships: ['parent', 'acceptedTaxonName'],
     resource: 'taxon',
   }),
-
   connect(mapStateToProps, mapDispatchToProps)
 )(TaxaList)
