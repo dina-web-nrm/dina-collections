@@ -1,0 +1,38 @@
+{
+  "name": {
+    "en": "Role name",
+    "sv": "Rollnamn"
+  },
+  "fromDate": {
+    "en": "From date",
+    "sv": "Från datum"
+  },
+  "toDate": {
+    "en": "To date",
+    "sv": "Till datum"
+  },
+  "affiliation": {
+    "en": "Affiliation",
+    "sv": ""
+  },
+  "save": {
+    "en": "Save",
+    "sv": "Spara"
+  },
+  "back": {
+    "en": "Back",
+    "sv": "Tillbaka"
+  },
+  "reset": {
+    "en": "Reset",
+    "sv": "Återställ"
+  },
+  "remove": {
+    "en": "Remove",
+    "sv": "Ta bort"
+  },
+  "roles": {
+    "en": "Roles",
+    "sv": "Roller"
+  }
+}
