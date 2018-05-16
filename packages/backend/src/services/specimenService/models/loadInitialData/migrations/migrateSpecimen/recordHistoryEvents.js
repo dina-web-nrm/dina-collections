@@ -13,7 +13,7 @@ module.exports = function createRecordHistoryEvents({ migrator }) {
   if (objectsLastModifiedBy || objectsLastModifiedDate) {
     recordHistoryEvents.push({
       agent: objectsLastModifiedBy,
-      date: objectsLastModifiedDate,
+      date: { dateText: objectsLastModifiedDate },
       description: 'Last modification of the objects',
       system: SYSTEM_NAME,
     })
@@ -29,7 +29,7 @@ module.exports = function createRecordHistoryEvents({ migrator }) {
   if (registeredBy || registeredDate) {
     recordHistoryEvents.push({
       agent: registeredBy,
-      date: registeredDate,
+      date: { dateText: registeredDate },
       description: 'Registration of the specimen',
       system: SYSTEM_NAME,
     })
@@ -45,7 +45,7 @@ module.exports = function createRecordHistoryEvents({ migrator }) {
   if (localityLastModifiedBy || localityLastModifiedAt) {
     recordHistoryEvents.push({
       agent: localityLastModifiedBy,
-      date: localityLastModifiedAt,
+      date: { dateText: localityLastModifiedAt },
       description: 'Last modification of locality information',
       system: SYSTEM_NAME,
     })

@@ -72,7 +72,11 @@
         ],
         "events": [
           {
-            "endDate": "endDate",
+            "dateRange": {
+              "endDate": {
+                "dateText": "endDate"
+              }
+            },
             "expeditionText": "expeditionText",
             "locationInformation": {
               "coordinatesVerbatim": "coordinatesVerbatim",
