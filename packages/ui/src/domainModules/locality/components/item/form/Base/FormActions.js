@@ -66,7 +66,7 @@ export class FormActions extends Component {
             </Button>
           )}
 
-          <ConnectedFormSchemaError form="EditLocalities" />
+          <ConnectedFormSchemaError form="place" />
           {invalid &&
             !error &&
             submitFailed && (
