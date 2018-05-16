@@ -37,7 +37,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   determinations: PropTypes.arrayOf(
     PropTypes.shape({
-      date: PropTypes.string,
+      date: PropTypes.object,
       determinedByAgentText: PropTypes.string,
       remarks: PropTypes.string,
       taxonNameStandardized: PropTypes.string,

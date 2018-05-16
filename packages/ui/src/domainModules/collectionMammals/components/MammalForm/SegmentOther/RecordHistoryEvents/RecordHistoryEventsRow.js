@@ -52,7 +52,7 @@ class RecordHistoryEventsRow extends PureComponent {
             component={Input}
             disabled={!isCatalogCardSystem}
             module="collectionMammals"
-            name={getPath('date')}
+            name={getPath('date.dateText')}
             type="text"
           />
         </Table.Cell>

@@ -118,7 +118,7 @@ class DeterminationContent extends Component {
             component={Input}
             label={moduleTranslate({ textKey: 'date' })}
             module="collectionMammals"
-            name={getPath('date')}
+            name={getPath('date.dateText')}
             type="input-text"
           />
         </Grid.Column>

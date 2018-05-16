@@ -112,7 +112,7 @@ class SegmentCollectingInformation extends PureComponent {
                   />
                 }
                 module="collectionMammals"
-                name={getPath('event.startDate')}
+                name={getPath('event.dateRange.startDate.dateText')}
                 type="text"
               />
             </Grid.Column>
@@ -127,7 +127,7 @@ class SegmentCollectingInformation extends PureComponent {
                   />
                 }
                 module="collectionMammals"
-                name={getPath('event.endDate')}
+                name={getPath('event.dateRange.endDate.dateText')}
                 type="text"
               />
             </Grid.Column>

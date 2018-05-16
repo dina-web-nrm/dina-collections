@@ -134,7 +134,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={Input}
                 label="Acquistion date"
                 module="collectionMammals"
-                name="individual.acquisition.date"
+                name="individual.acquisition.date.dateText"
                 type="input-text"
               />
             </Grid.Column>

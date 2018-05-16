@@ -49,7 +49,7 @@ const FieldsForTest = ({ getPath, index }) => {
         component={Input}
         label="Date"
         module="collectionMammals"
-        name={getPath(`${index}.date`)}
+        name={getPath(`${index}.date.dateText`)}
         type="input-text"
       />
       <Field

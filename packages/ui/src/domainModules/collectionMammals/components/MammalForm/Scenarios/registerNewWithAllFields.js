@@ -35,7 +35,7 @@ const segmentIdentifiersMutations = [
     value: 'acquisitionTypeText',
   },
   {
-    name: 'individual.acquisition.date',
+    name: 'individual.acquisition.date.dateText',
     value: 'date',
   },
   {
@@ -54,7 +54,7 @@ const segmentTaxonMutations = [
     value: 'curatorialTaxonNameText',
   },
   { name: 'individual.taxonInformation.taxonRemarks', value: 'taxonRemarks' },
-  { name: 'individual.determinations.0.date', value: 'date' },
+  { name: 'individual.determinations.0.date.dateText', value: 'date' },
 ]
 
 const segmentDeterminationsMutations = [
@@ -85,7 +85,7 @@ const segmentCollectingInformationMutations = [
   },
 
   {
-    name: 'individual.collectingInformation.0.event.endDate',
+    name: 'individual.collectingInformation.0.event.dateRange.endDate.dateText',
     value: 'endDate',
   },
   {
@@ -157,7 +157,8 @@ const segmentCollectingInformationMutations = [
   },
 
   {
-    name: 'individual.collectingInformation.0.event.startDate',
+    name:
+      'individual.collectingInformation.0.event.dateRange.startDate.dateText',
     value: 'startDate',
   },
   {
@@ -192,7 +193,7 @@ const segmentCollectingInformationMutations = [
 
 const segmentFeatureObservationsMutations = [
   {
-    name: 'individual.featureObservations.1.date',
+    name: 'individual.featureObservations.1.date.dateText',
     value: 'date',
   },
   {
@@ -251,7 +252,7 @@ const segmentCollectionItemsMutations = [
     value: 'conditionRemarks',
   },
   {
-    name: 'individual.collectionItems.0.curatorialAssessments.0.date',
+    name: 'individual.collectionItems.0.curatorialAssessments.0.date.dateText',
     value: 'date',
   },
   {
@@ -271,7 +272,7 @@ const segmentOtherMutations = [
     value: 'agent',
   },
   {
-    name: 'individual.recordHistoryEvents.0.date',
+    name: 'individual.recordHistoryEvents.0.date.dateText',
     value: 'date',
   },
   {
@@ -300,11 +301,10 @@ const mutations = [
 
 // TODO remove stuff not needed
 const expectedOutput = {
-  publishRecord: true,
   individual: {
     acquisition: {
       acquisitionTypeText: 'acquisitionTypeText',
-      date: 'date',
+      date: { dateText: 'date' },
       handedInByAgentText: 'handedInByAgentText',
     },
     collectingInformation: [
@@ -314,7 +314,14 @@ const expectedOutput = {
           id: '1',
         },
         event: {
-          endDate: 'endDate',
+          dateRange: {
+            endDate: {
+              dateText: 'endDate',
+            },
+            startDate: {
+              dateText: 'startDate',
+            },
+          },
           expeditionText: 'expeditionText',
 
           locationInformation: {
@@ -334,7 +341,6 @@ const expectedOutput = {
               minimumElevationInMeters: 20,
             },
           },
-          startDate: 'startDate',
         },
         isDeathDate: true,
       },
@@ -346,7 +352,7 @@ const expectedOutput = {
             agent: 'agent',
             condition: 'condition',
             conditionRemarks: 'conditionRemarks',
-            date: 'date',
+            date: { dateText: 'date' },
             inventoryStatusRemarks: 'inventoryStatusRemarks',
             isInStorage: true, // is set as default in form
           },
@@ -375,7 +381,7 @@ const expectedOutput = {
     ],
     determinations: [
       {
-        date: 'date',
+        date: { dateText: 'date' },
         determinationVerbatim: 'determinationVerbatim',
         determinedByAgentText: 'determinedByAgentText',
         remarks: 'remarks',
@@ -387,7 +393,7 @@ const expectedOutput = {
 
     featureObservations: [
       {
-        date: 'date',
+        date: { dateText: 'date' },
         featureObservationAgent: 'featureObservationAgent',
         featureObservationText: 'juvenile',
         featureType: {
@@ -426,7 +432,7 @@ const expectedOutput = {
     recordHistoryEvents: [
       {
         agent: 'agent',
-        date: 'date',
+        date: { dateText: 'date' },
         description: 'Creation of catalog card',
         system: 'catalogCard',
       },
@@ -440,6 +446,7 @@ const expectedOutput = {
       id: '1',
     },
   },
+  publishRecord: true,
 }
 
 const postSubmitTest = ({ submitResult }) => {

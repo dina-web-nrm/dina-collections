@@ -106,7 +106,7 @@ class FeatureObservationTableRow extends PureComponent {
             className="transparent"
             component={Input}
             module="collectionMammals"
-            name={getPath('date')}
+            name={getPath('date.dateText')}
             type="text"
           />
         </Table.Cell>
