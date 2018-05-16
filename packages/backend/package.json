@@ -47,7 +47,7 @@
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
     "lint:js": "eslint 'src/**/*.js'",
     "lint:js:fix": "eslint 'src/**/*.js' --fix",
-    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
+    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "start": "DEBUG='DINA*' nodemon src/apps/core/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
     "test:api": "API_TESTS=true jest --env=node --watch",

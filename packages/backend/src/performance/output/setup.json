@@ -1,17 +1,6 @@
 {
   "bulkCreate": {
-    "versionedDocumentModel": [
-      428,
-      426,
-      382,
-      456,
-      448,
-      473,
-      356,
-      565,
-      472,
-      461
-    ]
+    "versionedDocumentModel": [428, 426, 382, 456, 448, 473, 356, 565, 472, 461]
   },
   "createSampleData": [
     2669,
