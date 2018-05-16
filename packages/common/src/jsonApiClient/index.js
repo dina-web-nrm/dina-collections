@@ -4,7 +4,7 @@ const jsonApiGetMany = require('./get/getMany')
 const jsonApiGetOne = require('./get/getOne')
 const jsonApiCreate = require('./modify/recursiveCreate').recursiveCreate
 const jsonApiUpdate = require('./modify/recursiveUpdate').recursiveUpdate
-const setDependencies = require('./modify/setDependencies').setDependencies
+const { setDependencies } = require('./modify/setDependencies')
 
 const log = createLog('common:jsonApiClient')
 

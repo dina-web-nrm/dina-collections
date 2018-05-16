@@ -120,6 +120,15 @@ const config = {
     },
 
     preparationType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'attributes.name',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
       operations: [
         {
           operationId: 'preparationTypeGetOne',
@@ -186,6 +195,12 @@ const config = {
         },
         {
           operationId: 'storageLocationCreate',
+          options: {
+            relationshipKeysToIncludeInBody: [
+              'acceptedTaxonNames',
+              'preparationTypes',
+            ],
+          },
           type: 'create',
         },
         {
@@ -194,6 +209,12 @@ const config = {
         },
         {
           operationId: 'storageLocationUpdate',
+          options: {
+            relationshipKeysToIncludeInBody: [
+              'acceptedTaxonNames',
+              'preparationTypes',
+            ],
+          },
           type: 'update',
         },
       ],
@@ -206,14 +227,6 @@ const config = {
         },
         {
           operationId: 'taxonCreate',
-          // options: {
-          //   relationshipKeysToIncludeInBody: [
-          //     'acceptedTaxonName',
-          //     'parent',
-          //     'synonyms',
-          //     'vernacularNames',
-          //   ],
-          // },
           type: 'create',
         },
         {
@@ -222,14 +235,6 @@ const config = {
         },
         {
           operationId: 'taxonUpdate',
-          // options: {
-          //   relationshipKeysToIncludeInBody: [
-          //     'acceptedTaxonName',
-          //     'parent',
-          //     'synonyms',
-          //     'vernacularNames',
-          //   ],
-          // },
           type: 'update',
         },
       ],

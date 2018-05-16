@@ -1,3 +1,20 @@
+export const getRelationshipFormat = ({ item, relationKey }) => {
+  const data =
+    item &&
+    item.relationships &&
+    item.relationships[relationKey] &&
+    item.relationships[relationKey].data
+  if (data === undefined) {
+    return undefined
+  }
+
+  if (Array.isArray(data)) {
+    return 'array'
+  }
+
+  return 'object'
+}
+
 export const getRelationshipItem = ({ item, relationKey }) => {
   return (
     (item &&

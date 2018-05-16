@@ -3,6 +3,8 @@ TODO
 * go through mammal form and remove all not need ensure stuff is fetched
 
 CLEANUP
+  * rename relationKey -> relationshipKey? or the opposite
+  * complete crud with missing tests
   * improve resolveItemRelationship
   * getItemByTypeId -> pass relationship key
   * remove not used files

@@ -5,11 +5,17 @@ import { Button, Table } from 'semantic-ui-react'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import TaxonNameSearchInputWithResults from 'domainModules/taxon/components/TaxonNameSearchInputWithResults'
 
+import {
+  ADD_SYNONYM,
+  SET_TAXON_NAME_AS_ACCEPTED,
+  ADD_VERNACULAR_NAME,
+} from '../../../../../constants'
+
 const propTypes = {
   item: PropTypes.object,
   itemId: PropTypes.string,
+  onInteraction: PropTypes.func.isRequired,
   onSetNewTaxonNameId: PropTypes.func.isRequired,
-  onTaxonNameInteraction: PropTypes.func.isRequired,
 }
 const defaultProps = {
   item: undefined,
@@ -18,12 +24,7 @@ const defaultProps = {
 
 export class NewTaxonNameRow extends Component {
   render() {
-    const {
-      onTaxonNameInteraction,
-      item,
-      itemId,
-      onSetNewTaxonNameId,
-    } = this.props
+    const { onInteraction, item, itemId, onSetNewTaxonNameId } = this.props
     const { attributes: { rank, rubinNumber } = {} } = item || {}
 
     return (
@@ -50,8 +51,7 @@ export class NewTaxonNameRow extends Component {
             disabled={!item}
             onClick={event => {
               event.preventDefault()
-              onTaxonNameInteraction({
-                interactionType: 'addSynonym',
+              onInteraction(ADD_SYNONYM, {
                 itemId,
               })
             }}
@@ -62,8 +62,7 @@ export class NewTaxonNameRow extends Component {
             disabled={!item}
             onClick={event => {
               event.preventDefault()
-              onTaxonNameInteraction({
-                interactionType: 'setAsAccepted',
+              onInteraction(SET_TAXON_NAME_AS_ACCEPTED, {
                 itemId,
               })
             }}
@@ -74,8 +73,7 @@ export class NewTaxonNameRow extends Component {
             disabled={!item}
             onClick={event => {
               event.preventDefault()
-              onTaxonNameInteraction({
-                interactionType: 'addVernacularName',
+              onInteraction(ADD_VERNACULAR_NAME, {
                 itemId,
               })
             }}

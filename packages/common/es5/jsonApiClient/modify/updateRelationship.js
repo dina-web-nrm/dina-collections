@@ -40,7 +40,8 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
       openApiClient = _ref.openApiClient,
       relationItemsToUpdate = _ref.relationItemsToUpdate,
       relationKey = _ref.relationKey,
-      type = _ref.type;
+      type = _ref.type,
+      reverseOperationId = _ref.reverseOperationId;
 
   var operationId = buildOperationId({
     operationType: 'getRelationHasMany',
@@ -55,15 +56,27 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
   }).then(function (result) {
     var existingRelations = result.data;
 
+
     var relationsToRemove = existingRelations.filter(function (existingRelation) {
-      return !!relationItemsToUpdate.find(function (_ref2) {
+      return !relationItemsToUpdate.find(function (_ref2) {
         var id = _ref2.id;
 
         return existingRelation.id === id;
       });
     });
     log.debug('The following relationships should be removed: ', relationsToRemove);
-    return true;
+
+    var promises = relationsToRemove.map(function (relationToRemove) {
+      return openApiClient.call(reverseOperationId, {
+        body: {
+          data: null
+        },
+        pathParams: {
+          id: relationToRemove.id
+        }
+      });
+    });
+    return _promise2.default.all(promises);
   });
 };
 
