@@ -21,4 +21,3 @@
   },
   "x-required": ["name", "id", "description", "type"]
 }
-
