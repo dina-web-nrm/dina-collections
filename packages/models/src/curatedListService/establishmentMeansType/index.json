@@ -8,10 +8,10 @@
       "$ref": "__ROOT__translatedString"
     },
     "id": {
-      "type": "string"
+      "$ref": "__ROOT__id"
     },
     "type": {
-      "type": "string"
+      "$ref": "__ROOT__type"
     }
   }
 }

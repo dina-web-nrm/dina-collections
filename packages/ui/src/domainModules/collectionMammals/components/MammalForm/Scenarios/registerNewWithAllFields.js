@@ -49,7 +49,10 @@ const segmentIdentifiersMutations = [
 ]
 
 const segmentTaxonMutations = [
-  { name: 'taxonInformation.curatorialName', value: 'curatorialName' },
+  {
+    name: 'taxonInformation.curatorialTaxonNameText',
+    value: 'curatorialTaxonNameText',
+  },
   { name: 'taxonInformation.taxonRemarks', value: 'taxonRemarks' },
   { name: 'determinations.0.date', value: 'date' },
 ]
@@ -102,12 +105,12 @@ const segmentCollectingInformationMutations = [
     value: 'Algeria',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.localityVerbatim',
-    value: 'localityVerbatim',
+    name: 'collectingInformation.0.event.locationInformation.localityT',
+    value: 'localityT',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.localityName',
-    value: 'localityName',
+    name: 'collectingInformation.0.event.locationInformation.localityN',
+    value: 'localityN',
   },
   {
     name: 'collectingInformation.0.event.locationInformation.remarks',
@@ -307,8 +310,8 @@ const expectedOutput = {
           expeditionText: 'expeditionText',
 
           locationInformation: {
-            localityName: 'localityName',
-            localityVerbatim: 'localityVerbatim',
+            localityN: 'localityN',
+            localityT: 'localityT',
             places: [{ id: 'Africa' }, { id: 'Algeria' }],
             position: {
               latitude: 'latitude-string',
@@ -424,7 +427,7 @@ const expectedOutput = {
     ],
     remarks: 'remarks',
     taxonInformation: {
-      curatorialName: 'curatorialName',
+      curatorialTaxonNameText: 'curatorialTaxonNameText',
       taxonRemarks: 'taxonRemarks',
     },
     typeStatus: {

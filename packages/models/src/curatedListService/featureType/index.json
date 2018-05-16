@@ -31,11 +31,11 @@
     "description": {
       "type": "string"
     },
-    "type": {
-      "type": "string"
-    },
     "id": {
-      "type": "string"
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
     }
   }
 }

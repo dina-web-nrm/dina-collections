@@ -26,18 +26,18 @@ module.exports = function createCollectingInformation({ lookup, migrator }) {
       'target.individual.collectingInformation.0.event.locationInformation.remarks',
   })
 
-  // localityVerbatim
+  // localityT
   migrator.migrateValue({
     fromPath: 'src.objects.StatedLocality',
     toPath:
-      'target.individual.collectingInformation.0.event.locationInformation.localityVerbatim',
+      'target.individual.collectingInformation.0.event.locationInformation.localityT',
   })
 
-  // localityName
+  // localityN
   migrator.migrateValue({
     fromPath: 'src.objects.FieldNo_related.Locality',
     toPath:
-      'target.individual.collectingInformation.0.event.locationInformation.localityName',
+      'target.individual.collectingInformation.0.event.locationInformation.localityN',
   })
 
   /* event.locationInformation.position */

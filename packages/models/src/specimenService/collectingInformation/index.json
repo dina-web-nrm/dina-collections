@@ -2,14 +2,14 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "type": "string"
-    },
-    "id": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "establishmentMeansType": {
       "$ref": "__ROOT__establishmentMeansType",
       "x-reference-type": "external"
+    },
+    "establishmentMeansN": {
+      "type": "string"
     },
     "collectorsText": {
       "type": "string",

@@ -52,10 +52,6 @@
       "type": "string",
       "description": "Timestamp corresponding to when updated. Could be called versionCreatedAt"
     },
-    "id": {
-      "type": "string",
-      "description": "Unique identifier that is consistent over time"
-    },
     "description": {
       "type": "string",
       "description": "Description of the locality"
@@ -99,14 +95,11 @@
       "type": "object",
       "$ref": "__ROOT__verticalPosition"
     },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
     "type": {
-      "type": "string"
+      "$ref": "__ROOT__type"
     }
-  },
-  "x-required": [
-    "name",
-    "id",
-    "description",
-    "group"
-  ]
+  }
 }

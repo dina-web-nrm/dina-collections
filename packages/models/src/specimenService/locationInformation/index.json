@@ -2,7 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "places": {
       "description": "An array with curated localities",
@@ -31,7 +31,7 @@
       "description":
         "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
     },
-    "localityName": {
+    "localityN": {
       "type": "string",
       "description": "TBA"
     },
@@ -39,7 +39,7 @@
       "type": "string",
       "description": "Notes on the locality"
     },
-    "localityVerbatim": {
+    "localityT": {
       "type": "string",
       "description":
         "Verbatim locality names and description, as in the original source, typos and all."

@@ -2,11 +2,15 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
+      "$ref": "__ROOT__lid"
+    },
+    "curatorialTaxonNameText": {
       "type": "string"
     },
-    "curatorialName": {
-      "type": "string"
+    "curatorialTaxonName": {
+      "$ref": "__ROOT__taxonName"
     },
+
     "taxonRemarks": {
       "type": "string"
     },

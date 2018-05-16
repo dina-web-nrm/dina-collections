@@ -2,7 +2,7 @@
   "additionalProperties": false,
   "properties": {
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "remarks": {
       "type": "string",

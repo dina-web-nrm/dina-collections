@@ -36,9 +36,6 @@
         }
       }
     },
-    "id": {
-      "type": "string"
-    },
     "versionId": {
       "type": "string"
     },
@@ -55,6 +52,12 @@
     },
     "rubinNumber": {
       "type": "string"
+    },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
     }
   }
 }

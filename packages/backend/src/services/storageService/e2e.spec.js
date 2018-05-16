@@ -6,7 +6,6 @@ const expectSingleResourceResponse = require('../../utilities/test/expectSingleR
 const physicalObjectExample = {
   data: {
     attributes: {
-      normalStorageLocationText: 'string',
       storageLocationText: 'Sorex minutus',
     },
     type: 'physicalObject',

@@ -52,7 +52,7 @@ const createData = catalogNumber => {
               coordinatesVerbatim: 'coord-string',
               georeferenceSourcesText: 'georeferenceSourcesText text',
               localityRemarks: 'localityRemarks text',
-              localityVerbatim: 'Some localityVerbatim text',
+              localityT: 'Some localityT text',
               places: [
                 {
                   id: '123',
@@ -89,8 +89,8 @@ const createData = catalogNumber => {
               publishRecord: true,
               storedUnderTaxonName: 'Sorex minutus',
             },
-            normalStorageLocationText: 'normalStorageLocationText',
             physicalObjectText: 'physicalObjectText',
+            storageLocationText: 'storageLocationText',
           },
         ],
       },

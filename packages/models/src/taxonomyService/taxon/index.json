@@ -65,66 +65,40 @@
 
     "acceptedTaxonName": {
       "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "$ref": "__ROOT__taxonName",
-          "x-reference-type": "external"
-        }
-      }
+      "$ref": "__ROOT__taxonName",
+      "x-reference-type": "external"
     },
     "children": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__taxon",
-            "x-reference-type": "external"
-          }
-        }
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxon",
+        "x-reference-type": "external"
       }
     },
     "parent": {
       "type": "object",
-      "properties": {
-        "data": {
-          "type": "object",
-          "$ref": "__ROOT__taxon",
-          "x-reference-type": "external"
-        }
-      }
+      "$ref": "__ROOT__taxon",
+      "x-reference-type": "external"
     },
     "synonyms": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__taxonName",
-            "x-reference-type": "external"
-          }
-        }
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxonName",
+        "x-reference-type": "external"
       }
     },
     "vernacularNames": {
-      "type": "object",
-      "properties": {
-        "data": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__taxonName",
-            "x-reference-type": "external"
-          }
-        }
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxonName",
+        "x-reference-type": "external"
       }
     },
-
     "id": {
-      "type": "string"
+      "$ref": "__ROOT__id"
     },
     "type": {
-      "type": "string"
+      "$ref": "__ROOT__type"
     }
   }
 }

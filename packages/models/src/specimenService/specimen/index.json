@@ -129,7 +129,7 @@
       "$ref": "__ROOT__individual"
     },
     "lid": {
-      "type": "string"
+      "$ref": "__ROOT__lid"
     },
     "normalized": {
       "type": "object",
@@ -216,7 +216,12 @@
         }
       }
     },
-
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
+    },
     "version": {
       "type": "integer"
     },
