@@ -87,7 +87,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={Checkbox}
                 label={<ModuleTranslate textKey="isPublic" />}
                 module="collectionMammals"
-                name={getPath('0.publishRecord')}
+                name="publishRecord"
                 type="checkbox"
               />
             </Grid.Column>

@@ -222,6 +222,7 @@
     "type": {
       "$ref": "__ROOT__type"
     },
+    "publishRecord": { "type": "boolean" },
     "version": {
       "type": "integer"
     },

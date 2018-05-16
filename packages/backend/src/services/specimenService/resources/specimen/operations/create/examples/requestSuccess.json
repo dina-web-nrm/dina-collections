@@ -44,6 +44,7 @@
       }
     },
     "attributes": {
+      "publishRecord": true,
       "individual": {
         "taxonInformation": {},
         "recordHistoryEvents": [],
@@ -138,7 +139,6 @@
           {
             "identifierType": "catalogNumber",
             "nameSpace": "",
-            "publishRecord": true,
             "remarks": "Some remarks",
             "value": "123456"
           }
@@ -148,7 +148,6 @@
             "alternateIdentifiersText": "Skin complete, prepared",
             "identifiers": [
               {
-                "publishRecord": true,
                 "remarks": "Some remarks"
               }
             ],

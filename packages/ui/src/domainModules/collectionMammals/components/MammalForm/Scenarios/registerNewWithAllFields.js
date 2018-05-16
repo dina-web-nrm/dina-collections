@@ -2,7 +2,7 @@ import initialState from './initialState'
 
 const segmentIdentifiersMutations = [
   {
-    name: 'individual.identifiers.0.publishRecord',
+    name: 'publishRecord',
     value: true,
   },
   {
@@ -300,6 +300,7 @@ const mutations = [
 
 // TODO remove stuff not needed
 const expectedOutput = {
+  publishRecord: true,
   individual: {
     acquisition: {
       acquisitionTypeText: 'acquisitionTypeText',
@@ -403,7 +404,6 @@ const expectedOutput = {
           id: '1',
         },
         nameSpace: '',
-        publishRecord: true,
         remarks: '',
         value: '123456',
       },
