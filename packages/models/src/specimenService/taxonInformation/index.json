@@ -4,7 +4,7 @@
     "lid": {
       "$ref": "__ROOT__lid"
     },
-    "curatorialName": {
+    "curatorialTaxonNameText": {
       "type": "string"
     },
     "taxonRemarks": {

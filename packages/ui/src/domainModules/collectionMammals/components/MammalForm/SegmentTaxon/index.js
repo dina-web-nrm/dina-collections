@@ -50,7 +50,7 @@ const propTypes = {
   isSmallScreen: PropTypes.bool.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   taxonInformation: PropTypes.shape({
-    curatorialName: PropTypes.string,
+    curatorialTaxonNameText: PropTypes.string,
   }),
 }
 const defaultProps = {
@@ -82,7 +82,7 @@ const SegmentDeterminations = ({
               component={Input}
               label="Curatorial name"
               module="collectionMammals"
-              name={getPath('taxonInformation.curatorialName')}
+              name={getPath('taxonInformation.curatorialTaxonNameText')}
               type="text"
             />
           </Grid.Column>
