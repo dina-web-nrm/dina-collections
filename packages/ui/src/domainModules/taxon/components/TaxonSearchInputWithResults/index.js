@@ -20,6 +20,7 @@ const mapDispatchToProps = {
 
 const propTypes = {
   allTaxaFetched: PropTypes.bool.isRequired,
+  allTaxonNamesFetched: PropTypes.bool.isRequired,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
@@ -33,14 +34,19 @@ const defaultProps = {
 
 class TaxonSearchInputWithResults extends Component {
   render() {
-    const { allTaxaFetched, taxonOptions, ...rest } = this.props
-    if (!allTaxaFetched) {
-      return null
-    }
+    const {
+      allTaxaFetched,
+      allTaxonNamesFetched,
+      taxonOptions,
+      ...rest
+    } = this.props
+    const isLoading = !allTaxaFetched || !allTaxonNamesFetched
+
     return (
       <DropdownSearch
         {...rest}
-        options={taxonOptions}
+        isLoading={isLoading}
+        options={isLoading ? [] : taxonOptions}
         type="dropdown-search-local"
       />
     )
@@ -52,8 +58,11 @@ TaxonSearchInputWithResults.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({
+    allFetchedKey: 'allTaxonNamesFetched',
+    resource: 'taxonName',
+  }),
+  createEnsureAllItemsFetched({
     allFetchedKey: 'allTaxaFetched',
-    include: ['acceptedTaxonName'],
     relationships: ['parent', 'acceptedTaxonName'],
     resource: 'taxon',
   }),
