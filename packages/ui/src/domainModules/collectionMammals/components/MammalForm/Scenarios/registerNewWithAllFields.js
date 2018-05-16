@@ -102,8 +102,8 @@ const segmentCollectingInformationMutations = [
     value: 'Algeria',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.localityVerbatim',
-    value: 'localityVerbatim',
+    name: 'collectingInformation.0.event.locationInformation.localityT',
+    value: 'localityT',
   },
   {
     name: 'collectingInformation.0.event.locationInformation.localityName',
@@ -308,7 +308,7 @@ const expectedOutput = {
 
           locationInformation: {
             localityName: 'localityName',
-            localityVerbatim: 'localityVerbatim',
+            localityT: 'localityT',
             places: [{ id: 'Africa' }, { id: 'Algeria' }],
             position: {
               latitude: 'latitude-string',

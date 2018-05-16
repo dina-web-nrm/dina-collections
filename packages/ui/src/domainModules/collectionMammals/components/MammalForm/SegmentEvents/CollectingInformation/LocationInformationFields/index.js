@@ -31,12 +31,12 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
             autoComplete="off"
             component={Input}
             helpNotificationProps={{
-              descriptionHeaderKey: buildModuleTextKey('localityVerbatim'),
-              descriptionKey: buildModuleTextKey('helpTexts.localityVerbatim'),
+              descriptionHeaderKey: buildModuleTextKey('localityT'),
+              descriptionKey: buildModuleTextKey('helpTexts.localityT'),
             }}
-            label={moduleTranslate({ textKey: 'localityVerbatim' })}
+            label={moduleTranslate({ textKey: 'localityT' })}
             module="collectionMammals"
-            name={getPath('localityVerbatim')}
+            name={getPath('localityT')}
             type="text"
           />
         </Grid.Column>
