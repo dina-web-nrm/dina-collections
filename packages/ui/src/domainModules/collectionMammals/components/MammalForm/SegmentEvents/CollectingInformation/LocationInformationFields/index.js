@@ -48,7 +48,7 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
             component={Input}
             label="Locality name (normalized)"
             module="collectionMammals"
-            name={getPath('localityName')}
+            name={getPath('localityN')}
             type="text"
           />
         </Grid.Column>

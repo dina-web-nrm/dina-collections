@@ -106,8 +106,8 @@ const segmentCollectingInformationMutations = [
     value: 'localityT',
   },
   {
-    name: 'collectingInformation.0.event.locationInformation.localityName',
-    value: 'localityName',
+    name: 'collectingInformation.0.event.locationInformation.localityN',
+    value: 'localityN',
   },
   {
     name: 'collectingInformation.0.event.locationInformation.remarks',
@@ -307,7 +307,7 @@ const expectedOutput = {
           expeditionText: 'expeditionText',
 
           locationInformation: {
-            localityName: 'localityName',
+            localityN: 'localityN',
             localityT: 'localityT',
             places: [{ id: 'Africa' }, { id: 'Algeria' }],
             position: {

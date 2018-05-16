@@ -31,7 +31,7 @@
       "description":
         "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)"
     },
-    "localityName": {
+    "localityN": {
       "type": "string",
       "description": "TBA"
     },
