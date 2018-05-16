@@ -2,7 +2,11 @@
   "data": {
     "type": "agent",
     "attributes": {
-      "name": "orvar"
+      "givenName": "Carl",
+      "familyName": "Linnaeus",
+      "abbreviation": "CL",
+      "email": "carl@linnaeus.com",
+      "agentType": "person"
     }
   }
 }

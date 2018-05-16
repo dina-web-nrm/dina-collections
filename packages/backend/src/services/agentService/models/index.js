@@ -1,6 +1,7 @@
+const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/documentModel')
 
-exports.agent = function agent({ sequelize }) {
+const agentFactory = function agent({ sequelize }) {
   return createModel({
     name: 'Agent',
     schemaModelName: 'agent',
@@ -8,3 +9,14 @@ exports.agent = function agent({ sequelize }) {
     sequelize,
   })
 }
+
+module.exports = [
+  {
+    factory: agentFactory,
+    name: 'agent',
+  },
+  {
+    factory: loadInitialData,
+    name: 'loadInitialData',
+  },
+]
