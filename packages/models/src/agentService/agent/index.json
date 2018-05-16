@@ -1,0 +1,54 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "givenName": {
+      "type": "string"
+    },
+    "familyName": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "additionalName": {
+      "type": "string"
+    },
+    "abbreviation": {
+      "type": "string"
+    },
+    "alsoKnownAs": {
+      "type": "string"
+    },
+    "disambiguatingDescription": {
+      "type": "string"
+    },
+    "remarks": {
+      "type": "string"
+    },
+    "postalAddress": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "agentType": {
+      "type": "string",
+      "enum": ["person", "organization"]
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__role"
+      }
+    },
+    "readOnly": {
+      "$ref": "__ROOT__readOnly"
+    }
+  }
+}

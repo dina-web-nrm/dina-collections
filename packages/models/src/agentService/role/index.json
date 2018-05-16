@@ -1,0 +1,14 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "dateRange": {
+      "$ref": "__ROOT__dateRange"
+    },
+    "affiliation": {
+      "$ref": "__ROOT__affiliation"
+    }
+  }
+}
