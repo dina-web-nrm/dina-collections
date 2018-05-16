@@ -39,7 +39,7 @@
       "type": "string",
       "description": "Notes on the locality"
     },
-    "localityVerbatim": {
+    "localityT": {
       "type": "string",
       "description":
         "Verbatim locality names and description, as in the original source, typos and all."
