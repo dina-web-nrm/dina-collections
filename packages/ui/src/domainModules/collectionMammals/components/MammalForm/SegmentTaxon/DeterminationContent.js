@@ -209,6 +209,6 @@ export default compose(
     scope: 'determination',
   }),
   pathBuilder({
-    name: 'determinations',
+    name: 'individual.determinations',
   })
 )(DeterminationContent)

@@ -24,12 +24,12 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector, specimenId }) => {
   return {
-    determinations: formValueSelector(state, 'determinations'),
+    determinations: formValueSelector(state, 'individual.determinations'),
     hasSpecimen: !!(
       specimenId && crudSelectors.specimen.getOne(state, specimenId)
     ),
     isSmallScreen: sizeSelectors.getIsSmall(state),
-    taxonInformation: formValueSelector(state, 'taxonInformation'),
+    taxonInformation: formValueSelector(state, 'individual.taxonInformation'),
   }
 }
 
@@ -82,7 +82,9 @@ const SegmentDeterminations = ({
               component={Input}
               label="Curatorial name"
               module="collectionMammals"
-              name={getPath('taxonInformation.curatorialTaxonNameText')}
+              name={getPath(
+                'individual.taxonInformation.curatorialTaxonNameText'
+              )}
               type="text"
             />
           </Grid.Column>
@@ -94,7 +96,7 @@ const SegmentDeterminations = ({
               component={Input}
               label="Taxon remarks"
               module="collectionMammals"
-              name={getPath('taxonInformation.taxonRemarks')}
+              name={getPath('individual.taxonInformation.taxonRemarks')}
               type="text"
             />
           </Grid.Column>
@@ -134,7 +136,10 @@ const SegmentDeterminations = ({
           <Button
             onClick={event => {
               event.preventDefault()
-              changeFieldValue(`determinations.${determinations.length}`, {})
+              changeFieldValue(
+                `individual.determinations.${determinations.length}`,
+                {}
+              )
             }}
           >
             <ModuleTranslate scope="determination" textKey="addDetermination" />

@@ -79,6 +79,6 @@ class OriginInformation extends PureComponent {
 
 OriginInformation.propTypes = propTypes
 
-export default compose(pathBuilder({ name: 'originInformation.0' }))(
+export default compose(pathBuilder({ name: 'individual.originInformation.0' }))(
   OriginInformation
 )

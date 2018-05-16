@@ -82,7 +82,7 @@ class RawMammalForm extends Component {
     // Look at id on actual specimen and not path
     const specimen = {
       id: match && match.params && match.params.specimenId,
-      individual: formData,
+      ...formData,
     }
     return handleFormSubmit(filterOutput({ specimen }))
       .then(({ id: specimenId }) => {
@@ -189,7 +189,7 @@ export const MammalForm = reduxForm({
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
   validate: customFormValidator({
-    model: 'individual',
+    model: 'specimen',
     models: mammalFormModels,
   }),
 })(RawMammalForm)

@@ -75,5 +75,5 @@ SegmentFeatureObservations.propTypes = propTypes
 export default compose(
   withRouter,
   createEnsureAllItemsFetched({ resource: 'featureType' }),
-  pathBuilder({ name: 'featureObservations' })
+  pathBuilder({ name: 'individual.featureObservations' })
 )(SegmentFeatureObservations)

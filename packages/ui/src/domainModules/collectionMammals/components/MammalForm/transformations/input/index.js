@@ -39,5 +39,5 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
     transformedSpecimen.individual.recordHistoryEvents
   )
 
-  return transformedSpecimen.individual
+  return transformedSpecimen
 }

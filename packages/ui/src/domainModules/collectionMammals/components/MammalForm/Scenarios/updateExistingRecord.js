@@ -56,7 +56,7 @@ const taxa = {
 }
 const mutations = [
   {
-    name: 'determinations.0.determinedByAgentText',
+    name: 'individual.determinations.0.determinedByAgentText',
     value: 'John, Doe',
   },
 ]

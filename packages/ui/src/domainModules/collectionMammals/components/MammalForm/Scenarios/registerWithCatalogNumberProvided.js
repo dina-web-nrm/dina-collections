@@ -1,6 +1,6 @@
 const mutations = [
   {
-    name: 'identifiers.0.value',
+    name: 'individual.identifiers.0.value',
     value: '123456',
   },
 ]

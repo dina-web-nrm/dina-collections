@@ -49,6 +49,6 @@ function RecordHistoryEventsTable({ recordHistoryEvents }) {
 
 RecordHistoryEventsTable.propTypes = propTypes
 
-export default compose(pathBuilder({ name: 'recordHistoryEvents' }))(
+export default compose(pathBuilder({ name: 'individual.recordHistoryEvents' }))(
   RecordHistoryEventsTable
 )

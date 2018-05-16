@@ -27,7 +27,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    identifiers: formValueSelector(state, 'identifiers'),
+    identifiers: formValueSelector(state, 'individual.identifiers'),
     identifierTypeOptions: globalCrudSelectors.identifierType
       .getAllAsOptions(state)
       .filter(option => {
@@ -98,7 +98,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={DropdownSearch}
                 label={<ModuleTranslate textKey="typeStatus" />}
                 module="collectionMammals"
-                name="typeStatus.id"
+                name="individual.typeStatus.id"
                 options={typeSpecimenTypeOptions}
                 type="dropdown-search-local"
               />
@@ -111,7 +111,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={Input}
                 label="Collection item Text"
                 module="collectionMammals"
-                name="collectionItemText"
+                name="individual.collectionItemText"
                 type="text"
               />
             </Grid.Column>
@@ -123,7 +123,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={Input}
                 label="Acquistion type"
                 module="collectionMammals"
-                name="acquisition.acquisitionTypeText"
+                name="individual.acquisition.acquisitionTypeText"
                 type="input-text"
               />
             </Grid.Column>
@@ -134,7 +134,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={Input}
                 label="Acquistion date"
                 module="collectionMammals"
-                name="acquisition.date"
+                name="individual.acquisition.date"
                 type="input-text"
               />
             </Grid.Column>
@@ -145,7 +145,7 @@ class SegmentIdentifiers extends PureComponent {
                 component={Input}
                 label="Handed in by"
                 module="collectionMammals"
-                name="acquisition.handedInByAgentText"
+                name="individual.acquisition.handedInByAgentText"
                 type="input-text"
               />
             </Grid.Column>
@@ -186,5 +186,5 @@ export default compose(
   connect(mapStateToProps),
   createEnsureAllItemsFetched({ resource: 'typeSpecimenType' }),
   createEnsureAllItemsFetched({ resource: 'identifierType' }),
-  pathBuilder({ name: 'identifiers' })
+  pathBuilder({ name: 'individual.identifiers' })
 )(SegmentIdentifiers)

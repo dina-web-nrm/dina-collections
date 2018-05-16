@@ -3,14 +3,14 @@ import uiDescribe from 'utilities/test/uiDescribe'
 import MammalForm from 'domainModules/collectionMammals/components/MammalForm'
 import transformInput from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import transformOutput from 'domainModules/collectionMammals/components/MammalForm/transformations/output'
-// import registerNewWithAllFields from './registerNewWithAllFields'
+import registerNewWithAllFields from './registerNewWithAllFields'
 import registerWithNoCatalogNumberProvided from './registerWithNoCatalogNumberProvided'
 import registerWithCatalogNumberProvided from './registerWithCatalogNumberProvided'
 import updateExistingRecord from './updateExistingRecord'
 
 // TODO ACTIVATE OTHER CASES
 const scenarios = [
-  // registerNewWithAllFields,
+  registerNewWithAllFields,
   registerWithCatalogNumberProvided,
   registerWithNoCatalogNumberProvided,
   updateExistingRecord,
@@ -64,9 +64,7 @@ const transformInputWithFeatureTypes = input => {
 
 const scopedTransformOutput = formData => {
   return transformOutput({
-    specimen: {
-      individual: formData,
-    },
+    specimen: formData,
   })
 }
 

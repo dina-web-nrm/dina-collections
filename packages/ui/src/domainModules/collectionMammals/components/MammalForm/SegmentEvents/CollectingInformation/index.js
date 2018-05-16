@@ -153,6 +153,6 @@ SegmentCollectingInformation.propTypes = propTypes
 
 export default compose(
   createEnsureAllItemsFetched({ resource: 'establishmentMeansType' }),
-  pathBuilder({ name: 'collectingInformation.0' }),
+  pathBuilder({ name: 'individual.collectingInformation.0' }),
   connect(mapStateToProps)
 )(SegmentCollectingInformation)

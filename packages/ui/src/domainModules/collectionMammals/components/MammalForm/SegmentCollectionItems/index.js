@@ -30,7 +30,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    collectionItems: formValueSelector(state, 'collectionItems'),
+    collectionItems: formValueSelector(state, 'individual.collectionItems'),
   }
 }
 const mapDispatchToProps = {
@@ -113,7 +113,7 @@ class SegmentCollectionItems extends PureComponent {
                 onClick={event => {
                   event.preventDefault()
                   changeFieldValue(
-                    `collectionItems.${collectionItems.length}`,
+                    `individual.collectionItems.${collectionItems.length}`,
                     { preparationType: { category: SKELETON } }
                   )
                 }}
@@ -125,7 +125,7 @@ class SegmentCollectionItems extends PureComponent {
                 onClick={event => {
                   event.preventDefault()
                   changeFieldValue(
-                    `collectionItems.${collectionItems.length}`,
+                    `individual.collectionItems.${collectionItems.length}`,
                     { preparationType: { category: SKIN } }
                   )
                 }}
@@ -137,7 +137,7 @@ class SegmentCollectionItems extends PureComponent {
                 onClick={event => {
                   event.preventDefault()
                   changeFieldValue(
-                    `collectionItems.${collectionItems.length}`,
+                    `individual.collectionItems.${collectionItems.length}`,
                     { preparationType: { category: WET_PREPARATION } }
                   )
                 }}
@@ -166,6 +166,6 @@ export default compose(
     resource: 'preparationType',
   }),
   pathBuilder({
-    name: 'collectionItems',
+    name: 'individual.collectionItems',
   })
 )(SegmentCollectionItems)

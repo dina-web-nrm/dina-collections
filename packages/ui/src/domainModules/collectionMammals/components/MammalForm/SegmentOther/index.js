@@ -16,7 +16,10 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
-    recordHistoryEvents: formValueSelector(state, 'recordHistoryEvents'),
+    recordHistoryEvents: formValueSelector(
+      state,
+      'individual.recordHistoryEvents'
+    ),
   }
 }
 
@@ -58,7 +61,7 @@ class SegmentOther extends PureComponent {
                 component={Input}
                 label="Remarks"
                 module="collectionMammals"
-                name="remarks"
+                name="individual.remarks"
                 type="text"
               />
             </Grid.Column>
@@ -70,7 +73,7 @@ class SegmentOther extends PureComponent {
                 label={<ModuleTranslate scope="other" textKey="readOnly" />}
                 meta={{}}
                 module="collectionMammals"
-                name="readOnly"
+                name="individual.readOnly"
                 type="read-only"
               />
             </Grid.Column>
