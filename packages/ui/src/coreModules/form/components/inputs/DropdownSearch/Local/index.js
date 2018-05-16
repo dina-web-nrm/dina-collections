@@ -12,6 +12,7 @@ const propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string,
   }).isRequired,
+  isLoading: PropTypes.bool,
   limit: PropTypes.number,
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -26,6 +27,7 @@ const propTypes = {
 const defaultProps = {
   filterOptions: undefined,
   initialText: undefined,
+  isLoading: undefined,
   limit: 10,
   parse: undefined,
 }
@@ -117,12 +119,13 @@ class DropdownSearchLocalInput extends Component {
   }
 
   render() {
-    const { initialText, input, parse } = this.props
+    const { initialText, input, isLoading, parse } = this.props
     const { filteredOptions, searchQuery } = this.state
     return (
       <DropdownSearchBaseInput
         initialText={initialText}
         input={input}
+        isLoading={isLoading}
         onSearchChange={this.handleSearchChange}
         options={filteredOptions}
         parse={parse}

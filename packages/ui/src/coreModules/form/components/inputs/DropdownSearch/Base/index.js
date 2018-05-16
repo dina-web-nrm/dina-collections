@@ -8,6 +8,7 @@ const propTypes = {
   displayAsButton: PropTypes.bool,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  isLoading: PropTypes.bool,
   mountHidden: PropTypes.bool,
   onSearchChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
@@ -30,6 +31,7 @@ const defaultProps = {
   autoComplete: undefined,
   displayAsButton: false,
   initialText: '',
+  isLoading: false,
   mountHidden: config.isTest,
   searchQuery: '',
   selectedOption: undefined,
@@ -68,6 +70,7 @@ class DropdownSearchInput extends Component {
       displayAsButton,
       initialText,
       input,
+      isLoading,
       mountHidden,
       options,
       searchQuery,
@@ -84,6 +87,7 @@ class DropdownSearchInput extends Component {
         <Dropdown
           autoComplete={autoComplete}
           button={displayAsButton}
+          loading={isLoading}
           onSearchChange={this.handleSearchChange}
           options={options}
           search
