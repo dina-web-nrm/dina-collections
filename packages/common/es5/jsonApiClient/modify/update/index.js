@@ -63,6 +63,7 @@ function update() {
     }
 
     var id = item.id,
+        relationships = item.relationships,
         type = item.type;
 
 
@@ -77,6 +78,11 @@ function update() {
         id: id
       }
     };
+
+    if (!relationships || !(0, _keys2.default)(relationships).length) {
+      delete input.body.data.relationships;
+    }
+
     log.debug('Create resource ' + type + ' with operationId: ' + operationId + ' input:', input);
 
     return openApiClient.call(operationId, input);

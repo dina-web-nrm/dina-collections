@@ -1,4 +1,117 @@
 {
+  "affiliation": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "agentService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "affiliation"
+  },
+  "agent": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "givenName": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "familyName": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "fullName": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "additionalName": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "abbreviation": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "alsoKnownAs": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "disambiguatingDescription": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "postalAddress": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "telephone": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "email": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "agentType": {
+        "type": "string",
+        "enum": [
+          "person",
+          "organization"
+        ],
+        "x-summary": ""
+      },
+      "roles": {
+        "type": "array",
+        "items": {
+          "$ref": "role"
+        },
+        "x-summary": ""
+      },
+      "readOnly": {
+        "$ref": "readOnly",
+        "x-summary": ""
+      }
+    },
+    "x-category": "agentService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "agent"
+  },
+  "role": {
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "dateRange": {
+        "$ref": "dateRange",
+        "x-summary": ""
+      },
+      "affiliation": {
+        "$ref": "affiliation",
+        "x-summary": ""
+      }
+    },
+    "x-category": "agentService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "role"
+  },
   "dateRange": {
     "additionalProperties": false,
     "description": "A date range",
@@ -623,6 +736,10 @@
         "$ref": "lid",
         "x-summary": ""
       },
+      "handedInByAgent": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
       "handedInByAgentText": {
         "type": "string",
         "x-summary": ""
@@ -661,6 +778,10 @@
         "type": "string",
         "example": "Bergström, U",
         "description": "Name of the collector",
+        "x-summary": ""
+      },
+      "collectedByAgent": {
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "isDeathDate": {
@@ -741,8 +862,11 @@
         "x-summary": ""
       },
       "agent": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
+      "agentText": {
         "type": "string",
-        "example": "Doe, J.",
         "x-summary": ""
       },
       "date": {
@@ -823,6 +947,10 @@
         "description": "In exactly the same words as were used originally",
         "x-summary": ""
       },
+      "determinedByAgent": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
       "determinedByAgentText": {
         "type": "string",
         "example": "Doe, J.",
@@ -877,9 +1005,13 @@
         "$ref": "lid",
         "x-summary": ""
       },
-      "featureObservationAgent": {
+      "featureObservationAgentText": {
         "type": "string",
         "example": "Doe, J.",
+        "x-summary": ""
+      },
+      "featureObservationAgent": {
+        "$ref": "externalModelReference",
         "x-summary": ""
       },
       "date": {
@@ -1161,6 +1293,10 @@
         "x-summary": ""
       },
       "agent": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
+      "agentText": {
         "type": "string",
         "x-summary": ""
       },
@@ -1192,6 +1328,25 @@
       "relationships": {
         "type": "object",
         "properties": {
+          "agents": {
+            "type": "object",
+            "x-path": [
+              "individual.acquisition.handedInByAgent",
+              "individual.collectingInformation.*.collectedByAgent",
+              "individual.collectionItems.*.curatorialAssessments.*.agent",
+              "individual.determinations.*.determinedByAgent",
+              "individual.featureObservations.*.featureObservationAgent",
+              "individual.recordHistoryEvents.*.agent"
+            ],
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "externalModelReference"
+                }
+              }
+            }
+          },
           "identifierTypes": {
             "type": "object",
             "x-path": "individual.identifiers.*.identifierType",
@@ -1752,6 +1907,245 @@
     "x-summary": "",
     "description": "",
     "id": "taxonName"
+  },
+  "agentCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "agent"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent/v01/agents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "agentGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "agent"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent/v01/agents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "agentGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "agent"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "agent",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent/v01/agents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "agentUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "agent"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent/v01/agents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "agentDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "agent"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "agent",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent/v01/agents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
   },
   "getUserResponse": {
     "type": "object",
@@ -3916,6 +4310,32 @@
           },
           "relationships": {
             "properties": {
+              "agents": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "agent"
+                          ],
+                          "example": "agent",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -4072,6 +4492,32 @@
           },
           "relationships": {
             "properties": {
+              "agents": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "agent"
+                          ],
+                          "example": "agent",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -4230,6 +4676,32 @@
             },
             "relationships": {
               "properties": {
+                "agents": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "agent"
+                            ],
+                            "example": "agent",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
                 "featureTypes": {
                   "additionalProperties": false,
                   "properties": {
@@ -4388,6 +4860,32 @@
           },
           "relationships": {
             "properties": {
+              "agents": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "agent"
+                          ],
+                          "example": "agent",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -4544,6 +5042,32 @@
           },
           "relationships": {
             "properties": {
+              "agents": {
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": {
+                          "example": "1234",
+                          "type": "string"
+                        },
+                        "type": {
+                          "enum": [
+                            "agent"
+                          ],
+                          "example": "agent",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              },
               "featureTypes": {
                 "additionalProperties": false,
                 "properties": {
@@ -9238,6 +9762,110 @@
     "x-summary": "",
     "description": ""
   },
+  "agentCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "agent",
+                "enum": [
+                  "agent"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "agent"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "type": "agent",
+          "attributes": {
+            "givenName": "Carl",
+            "familyName": "Linnaeus",
+            "abbreviation": "CL",
+            "email": "carl@linnaeus.com",
+            "agentType": "person"
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "type": "agent",
+        "attributes": {
+          "givenName": "Carl",
+          "familyName": "Linnaeus",
+          "abbreviation": "CL",
+          "email": "carl@linnaeus.com",
+          "agentType": "person"
+        }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "agentUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "agent",
+                "enum": [
+                  "agent"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "agent"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
   "loginUserRequest": {
     "type": "object",
     "additionalProperties": false,
@@ -10212,6 +10840,32 @@
               },
               "relationships": {
                 "properties": {
+                  "agents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "agent"
+                              ],
+                              "example": "agent",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -10746,6 +11400,32 @@
               },
               "relationships": {
                 "properties": {
+                  "agents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "agent"
+                              ],
+                              "example": "agent",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
                   "featureTypes": {
                     "additionalProperties": false,
                     "properties": {
