@@ -12,6 +12,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import crudSelectors from 'coreModules/crud/globalSelectors'
+import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import { CustomData, Field, Input } from 'coreModules/form/components'
 import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
@@ -76,11 +77,23 @@ const SegmentDeterminations = ({
 
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Row>
+          <Grid.Column computer={6} mobile={16} tablet={5}>
+            <Field
+              autoComplete="off"
+              component={TaxonNameSearchInputWithResults}
+              label="Curatorial name"
+              module="collectionMammals"
+              name="individual.taxonInformation.curatorialTaxonName.id"
+              type="text"
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
           <Grid.Column computer={4} mobile={16} tablet={8}>
             <Field
               autoComplete="off"
               component={Input}
-              label="Curatorial name"
+              label="Curatorial name text"
               module="collectionMammals"
               name={getPath(
                 'individual.taxonInformation.curatorialTaxonNameText'

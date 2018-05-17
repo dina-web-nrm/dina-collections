@@ -53,6 +53,11 @@ const segmentTaxonMutations = [
     name: 'individual.taxonInformation.curatorialTaxonNameText',
     value: 'curatorialTaxonNameText',
   },
+  {
+    name: 'individual.taxonInformation.curatorialTaxonName.id.hidden',
+    value: '1',
+  },
+
   { name: 'individual.taxonInformation.taxonRemarks', value: 'taxonRemarks' },
   { name: 'individual.determinations.0.date.dateText', value: 'date' },
 ]
@@ -69,7 +74,7 @@ const segmentDeterminationsMutations = [
   { name: 'individual.determinations.0.remarks', value: 'remarks' },
 
   {
-    name: 'individual.determinations.0.taxon.id.hidden',
+    name: 'individual.determinations.0.taxonName.id.hidden',
     value: '2367',
   },
 ]
@@ -390,7 +395,7 @@ const expectedOutput = {
         determinationVerbatim: 'determinationVerbatim',
         determinedByAgentText: 'determinedByAgentText',
         remarks: 'remarks',
-        taxon: {
+        taxonName: {
           id: '2367',
         },
       },
@@ -444,6 +449,9 @@ const expectedOutput = {
     ],
     remarks: 'remarks',
     taxonInformation: {
+      curatorialTaxonName: {
+        id: '1',
+      },
       curatorialTaxonNameText: 'curatorialTaxonNameText',
       taxonRemarks: 'taxonRemarks',
     },

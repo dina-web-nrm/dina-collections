@@ -56,7 +56,7 @@ class DeterminationContent extends Component {
       skipRemoveDeterminationConfirmation,
     } = this.props
 
-    const taxonIdFieldKey = getPath('taxon.id')
+    const taxonIdFieldKey = getPath('taxonName.id')
 
     log.render()
     return (

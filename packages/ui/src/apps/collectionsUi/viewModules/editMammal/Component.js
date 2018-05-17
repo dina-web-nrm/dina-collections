@@ -32,8 +32,12 @@ const propTypes = {
     }).isRequired,
   }).isRequired,
   /* eslint-enable react/no-unused-prop-types */
-  nestedItem: PropTypes.object.isRequired,
+  nestedItem: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
+}
+
+const defaultProps = {
+  nestedItem: null,
 }
 
 class EditMammal extends Component {
@@ -67,11 +71,12 @@ class EditMammal extends Component {
 }
 
 EditMammal.propTypes = propTypes
+EditMammal.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
     idPath: 'match.params.specimenId',
-    include: ['featureTypes', 'physicalObjects', 'places', 'taxa'],
+    include: ['featureTypes', 'physicalObjects', 'places', 'taxonNames'],
     relationships: ['all'],
     resolveRelationships: ['physicalObject'],
     resource: 'specimen',

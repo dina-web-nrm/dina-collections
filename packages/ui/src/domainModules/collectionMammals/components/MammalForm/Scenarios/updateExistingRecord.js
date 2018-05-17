@@ -9,9 +9,9 @@ const individual = {
   ],
   determinations: [
     {
-      taxon: {
+      taxonName: {
         id: '1078',
-        type: 'taxon',
+        type: 'taxonName',
       },
     },
   ],
@@ -73,9 +73,9 @@ const expectedOutput = {
     determinations: [
       {
         determinedByAgentText: 'John, Doe',
-        taxon: {
+        taxonName: {
           id: '1078',
-          type: 'taxon',
+          type: 'taxonName',
         },
       },
     ],
