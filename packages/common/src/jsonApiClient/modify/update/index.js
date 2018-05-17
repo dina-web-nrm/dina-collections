@@ -52,7 +52,7 @@ function update(
       )
     }
 
-    const { id, type } = item
+    const { id, relationships, type } = item
 
     const operationId = dep.buildOperationId({
       operationType: 'update',
@@ -65,6 +65,11 @@ function update(
         id,
       },
     }
+
+    if (!relationships || !Object.keys(relationships).length) {
+      delete input.body.data.relationships
+    }
+
     log.debug(
       `Create resource ${type} with operationId: ${operationId} input:`,
       input
