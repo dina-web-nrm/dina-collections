@@ -1,10 +1,6 @@
 {
   "type": "object",
-  "required": [
-    "openapi",
-    "info",
-    "paths"
-  ],
+  "required": ["openapi", "info", "paths"],
   "properties": {
     "openapi": {
       "type": "string",
@@ -42,16 +38,13 @@
     }
   },
   "patternProperties": {
-    "^x-": {
-    }
+    "^x-": {}
   },
   "additionalProperties": false,
   "definitions": {
     "Reference": {
       "type": "object",
-      "required": [
-        "$ref"
-      ],
+      "required": ["$ref"],
       "properties": {
         "$ref": {
           "type": "string"
@@ -60,10 +53,7 @@
     },
     "Info": {
       "type": "object",
-      "required": [
-        "title",
-        "version"
-      ],
+      "required": ["title", "version"],
       "properties": {
         "title": {
           "type": "string"
@@ -85,8 +75,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -105,16 +94,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "License": {
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "type": "string"
@@ -124,16 +110,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "Server": {
       "type": "object",
-      "required": [
-        "url"
-      ],
+      "required": ["url"],
       "properties": {
         "url": {
           "type": "string"
@@ -149,16 +132,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ServerVariable": {
       "type": "object",
-      "required": [
-        "default"
-      ],
+      "required": ["default"],
       "properties": {
         "enum": {
           "type": "array",
@@ -174,8 +154,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -313,8 +292,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -387,8 +365,7 @@
         },
         "enum": {
           "type": "array",
-          "items": {
-          },
+          "items": {},
           "minItems": 1,
           "uniqueItems": true
         },
@@ -496,8 +473,7 @@
         "format": {
           "type": "string"
         },
-        "default": {
-        },
+        "default": {},
         "nullable": {
           "type": "boolean",
           "default": false
@@ -513,8 +489,7 @@
           "type": "boolean",
           "default": false
         },
-        "example": {
-        },
+        "example": {},
         "externalDocs": {
           "$ref": "#/definitions/ExternalDocumentation"
         },
@@ -527,16 +502,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "Discriminator": {
       "type": "object",
-      "required": [
-        "propertyName"
-      ],
+      "required": ["propertyName"],
       "properties": {
         "propertyName": {
           "type": "string"
@@ -572,16 +544,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "Response": {
       "type": "object",
-      "required": [
-        "description"
-      ],
+      "required": ["description"],
       "properties": {
         "description": {
           "type": "string"
@@ -619,8 +588,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -647,8 +615,7 @@
             }
           ]
         },
-        "example": {
-        },
+        "example": {},
         "encoding": {
           "type": "object",
           "additionalProperties": {
@@ -657,16 +624,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "MediaTypeWithExamples": {
       "type": "object",
-      "required": [
-        "examples"
-      ],
+      "required": ["examples"],
       "properties": {
         "schema": {
           "oneOf": [
@@ -699,8 +663,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -713,15 +676,13 @@
         "description": {
           "type": "string"
         },
-        "value": {
-        },
+        "value": {},
         "externalValue": {
           "type": "string"
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -747,9 +708,7 @@
     },
     "HeaderWithSchemaWithExample": {
       "type": "object",
-      "required": [
-        "schema"
-      ],
+      "required": ["schema"],
       "properties": {
         "description": {
           "type": "string"
@@ -768,9 +727,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "simple"
-          ],
+          "enum": ["simple"],
           "default": "simple"
         },
         "explode": {
@@ -790,21 +747,16 @@
             }
           ]
         },
-        "example": {
-        }
+        "example": {}
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "HeaderWithSchemaWithExamples": {
       "type": "object",
-      "required": [
-        "schema",
-        "examples"
-      ],
+      "required": ["schema", "examples"],
       "properties": {
         "description": {
           "type": "string"
@@ -823,9 +775,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "simple"
-          ],
+          "enum": ["simple"],
           "default": "simple"
         },
         "explode": {
@@ -860,16 +810,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "HeaderWithContent": {
       "type": "object",
-      "required": [
-        "content"
-      ],
+      "required": ["content"],
       "properties": {
         "description": {
           "type": "string"
@@ -896,8 +843,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -907,8 +853,7 @@
         "^\\/": {
           "$ref": "#/definitions/PathItem"
         },
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -969,16 +914,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "Operation": {
       "type": "object",
-      "required": [
-        "responses"
-      ],
+      "required": ["responses"],
       "properties": {
         "tags": {
           "type": "array",
@@ -1055,8 +997,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -1085,16 +1026,14 @@
             }
           ]
         },
-        "^x-": {
-        }
+        "^x-": {}
       },
       "minProperties": 1,
       "additionalProperties": false,
       "not": {
         "type": "object",
         "patternProperties": {
-          "^x-": {
-          }
+          "^x-": {}
         },
         "additionalProperties": false
       }
@@ -1110,9 +1049,7 @@
     },
     "Tag": {
       "type": "object",
-      "required": [
-        "name"
-      ],
+      "required": ["name"],
       "properties": {
         "name": {
           "type": "string"
@@ -1125,16 +1062,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ExternalDocumentation": {
       "type": "object",
-      "required": [
-        "url"
-      ],
+      "required": ["url"],
       "properties": {
         "description": {
           "type": "string"
@@ -1144,8 +1078,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -1187,30 +1120,21 @@
     },
     "ParameterWithSchemaWithExampleInPath": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema",
-        "required"
-      ],
+      "required": ["name", "in", "schema", "required"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "path"
-          ]
+          "enum": ["path"]
         },
         "description": {
           "type": "string"
         },
         "required": {
           "type": "boolean",
-          "enum": [
-            true
-          ]
+          "enum": [true]
         },
         "deprecated": {
           "type": "boolean",
@@ -1222,11 +1146,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "matrix",
-            "label",
-            "simple"
-          ],
+          "enum": ["matrix", "label", "simple"],
           "default": "simple"
         },
         "explode": {
@@ -1246,31 +1166,23 @@
             }
           ]
         },
-        "example": {
-        }
+        "example": {}
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithSchemaWithExampleInQuery": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema"
-      ],
+      "required": ["name", "in", "schema"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "query"
-          ]
+          "enum": ["query"]
         },
         "description": {
           "type": "string"
@@ -1289,12 +1201,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "form",
-            "spaceDelimited",
-            "pipeDelimited",
-            "deepObject"
-          ],
+          "enum": ["form", "spaceDelimited", "pipeDelimited", "deepObject"],
           "default": "form"
         },
         "explode": {
@@ -1314,31 +1221,23 @@
             }
           ]
         },
-        "example": {
-        }
+        "example": {}
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithSchemaWithExampleInHeader": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema"
-      ],
+      "required": ["name", "in", "schema"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "header"
-          ]
+          "enum": ["header"]
         },
         "description": {
           "type": "string"
@@ -1357,9 +1256,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "simple"
-          ],
+          "enum": ["simple"],
           "default": "simple"
         },
         "explode": {
@@ -1379,31 +1276,23 @@
             }
           ]
         },
-        "example": {
-        }
+        "example": {}
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithSchemaWithExampleInCookie": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema"
-      ],
+      "required": ["name", "in", "schema"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "cookie"
-          ]
+          "enum": ["cookie"]
         },
         "description": {
           "type": "string"
@@ -1422,9 +1311,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "form"
-          ],
+          "enum": ["form"],
           "default": "form"
         },
         "explode": {
@@ -1444,12 +1331,10 @@
             }
           ]
         },
-        "example": {
-        }
+        "example": {}
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -1471,31 +1356,21 @@
     },
     "ParameterWithSchemaWithExamplesInPath": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema",
-        "required",
-        "examples"
-      ],
+      "required": ["name", "in", "schema", "required", "examples"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "path"
-          ]
+          "enum": ["path"]
         },
         "description": {
           "type": "string"
         },
         "required": {
           "type": "boolean",
-          "enum": [
-            true
-          ]
+          "enum": [true]
         },
         "deprecated": {
           "type": "boolean",
@@ -1507,11 +1382,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "matrix",
-            "label",
-            "simple"
-          ],
+          "enum": ["matrix", "label", "simple"],
           "default": "simple"
         },
         "explode": {
@@ -1546,28 +1417,20 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithSchemaWithExamplesInQuery": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema",
-        "examples"
-      ],
+      "required": ["name", "in", "schema", "examples"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "query"
-          ]
+          "enum": ["query"]
         },
         "description": {
           "type": "string"
@@ -1586,12 +1449,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "form",
-            "spaceDelimited",
-            "pipeDelimited",
-            "deepObject"
-          ],
+          "enum": ["form", "spaceDelimited", "pipeDelimited", "deepObject"],
           "default": "form"
         },
         "explode": {
@@ -1626,28 +1484,20 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithSchemaWithExamplesInHeader": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema",
-        "examples"
-      ],
+      "required": ["name", "in", "schema", "examples"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "header"
-          ]
+          "enum": ["header"]
         },
         "description": {
           "type": "string"
@@ -1666,9 +1516,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "simple"
-          ],
+          "enum": ["simple"],
           "default": "simple"
         },
         "explode": {
@@ -1703,28 +1551,20 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithSchemaWithExamplesInCookie": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "schema",
-        "examples"
-      ],
+      "required": ["name", "in", "schema", "examples"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "cookie"
-          ]
+          "enum": ["cookie"]
         },
         "description": {
           "type": "string"
@@ -1743,9 +1583,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "form"
-          ],
+          "enum": ["form"],
           "default": "form"
         },
         "explode": {
@@ -1780,8 +1618,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -1797,29 +1634,21 @@
     },
     "ParameterWithContentInPath": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "content"
-      ],
+      "required": ["name", "in", "content"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "path"
-          ]
+          "enum": ["path"]
         },
         "description": {
           "type": "string"
         },
         "required": {
           "type": "boolean",
-          "enum": [
-            true
-          ]
+          "enum": [true]
         },
         "deprecated": {
           "type": "boolean",
@@ -1839,29 +1668,20 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ParameterWithContentNotInPath": {
       "type": "object",
-      "required": [
-        "name",
-        "in",
-        "content"
-      ],
+      "required": ["name", "in", "content"],
       "properties": {
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "query",
-            "header",
-            "cookie"
-          ]
+          "enum": ["query", "header", "cookie"]
         },
         "description": {
           "type": "string"
@@ -1888,16 +1708,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "RequestBody": {
       "type": "object",
-      "required": [
-        "content"
-      ],
+      "required": ["content"],
       "properties": {
         "description": {
           "type": "string"
@@ -1914,8 +1731,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -1937,36 +1753,25 @@
     },
     "APIKeySecurityScheme": {
       "type": "object",
-      "required": [
-        "type",
-        "name",
-        "in"
-      ],
+      "required": ["type", "name", "in"],
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "apiKey"
-          ]
+          "enum": ["apiKey"]
         },
         "name": {
           "type": "string"
         },
         "in": {
           "type": "string",
-          "enum": [
-            "header",
-            "query",
-            "cookie"
-          ]
+          "enum": ["header", "query", "cookie"]
         },
         "description": {
           "type": "string"
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -1986,17 +1791,12 @@
         "properties": {
           "scheme": {
             "type": "string",
-            "enum": [
-              "bearer"
-            ]
+            "enum": ["bearer"]
           }
         }
       },
       "type": "object",
-      "required": [
-        "scheme",
-        "type"
-      ],
+      "required": ["scheme", "type"],
       "properties": {
         "scheme": {
           "type": "string"
@@ -2006,61 +1806,45 @@
         },
         "type": {
           "type": "string",
-          "enum": [
-            "http"
-          ]
+          "enum": ["http"]
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "BearerHTTPSecurityScheme": {
       "type": "object",
-      "required": [
-        "type",
-        "scheme"
-      ],
+      "required": ["type", "scheme"],
       "properties": {
         "scheme": {
           "type": "string",
-          "enum": [
-            "bearer"
-          ]
+          "enum": ["bearer"]
         },
         "bearerFormat": {
           "type": "string"
         },
         "type": {
           "type": "string",
-          "enum": [
-            "http"
-          ]
+          "enum": ["http"]
         },
         "description": {
           "type": "string"
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "OAuth2SecurityScheme": {
       "type": "object",
-      "required": [
-        "type",
-        "flows"
-      ],
+      "required": ["type", "flows"],
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "oauth2"
-          ]
+          "enum": ["oauth2"]
         },
         "flows": {
           "$ref": "#/definitions/OAuthFlows"
@@ -2070,23 +1854,17 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "OpenIdConnectSecurityScheme": {
       "type": "object",
-      "required": [
-        "type",
-        "openIdConnectUrl"
-      ],
+      "required": ["type", "openIdConnectUrl"],
       "properties": {
         "type": {
           "type": "string",
-          "enum": [
-            "openIdConnect"
-          ]
+          "enum": ["openIdConnect"]
         },
         "openIdConnectUrl": {
           "type": "string",
@@ -2097,8 +1875,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -2119,17 +1896,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ImplicitOAuthFlow": {
       "type": "object",
-      "required": [
-        "authorizationUrl",
-        "scopes"
-      ],
+      "required": ["authorizationUrl", "scopes"],
       "properties": {
         "authorizationUrl": {
           "type": "string"
@@ -2145,16 +1918,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "PasswordOAuthFlow": {
       "type": "object",
-      "required": [
-        "tokenUrl"
-      ],
+      "required": ["tokenUrl"],
       "properties": {
         "tokenUrl": {
           "type": "string"
@@ -2170,16 +1940,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "ClientCredentialsFlow": {
       "type": "object",
-      "required": [
-        "tokenUrl"
-      ],
+      "required": ["tokenUrl"],
       "properties": {
         "tokenUrl": {
           "type": "string"
@@ -2195,17 +1962,13 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
     "AuthorizationCodeOAuthFlow": {
       "type": "object",
-      "required": [
-        "authorizationUrl",
-        "tokenUrl"
-      ],
+      "required": ["authorizationUrl", "tokenUrl"],
       "properties": {
         "authorizationUrl": {
           "type": "string"
@@ -2224,8 +1987,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -2247,11 +2009,9 @@
         },
         "parameters": {
           "type": "object",
-          "additionalProperties": {
-          }
+          "additionalProperties": {}
         },
-        "requestBody": {
-        },
+        "requestBody": {},
         "description": {
           "type": "string"
         },
@@ -2260,8 +2020,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -2273,11 +2032,9 @@
         },
         "parameters": {
           "type": "object",
-          "additionalProperties": {
-          }
+          "additionalProperties": {}
         },
-        "requestBody": {
-        },
+        "requestBody": {},
         "description": {
           "type": "string"
         },
@@ -2286,8 +2043,7 @@
         }
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       },
       "additionalProperties": false
     },
@@ -2297,8 +2053,7 @@
         "$ref": "#/definitions/PathItem"
       },
       "patternProperties": {
-        "^x-": {
-        }
+        "^x-": {}
       }
     },
     "Encoding": {
@@ -2315,12 +2070,7 @@
         },
         "style": {
           "type": "string",
-          "enum": [
-            "form",
-            "spaceDelimited",
-            "pipeDelimited",
-            "deepObject"
-          ]
+          "enum": ["form", "spaceDelimited", "pipeDelimited", "deepObject"]
         },
         "explode": {
           "type": "boolean"

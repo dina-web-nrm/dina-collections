@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint:js": "eslint 'src/**/*.js'",
+    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "npm run lint:js",
     "test:unit": "jest"

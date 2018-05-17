@@ -1,8 +1,10 @@
 {
   "schemaErrors": {
     "ADDITIONAL_PROPERTIES": {
-      "en": "Form contains unknown properties: {{fullPath}}: {{additionalProperty}}",
-      "sv": "Formuläret innehåller okända fält: {{fullPath}}: {{additionalProperty}}"
+      "en":
+        "Form contains unknown properties: {{fullPath}}: {{additionalProperty}}",
+      "sv":
+        "Formuläret innehåller okända fält: {{fullPath}}: {{additionalProperty}}"
     },
     "REQUIRED": {
       "en": "Required: {{fullPath}}",

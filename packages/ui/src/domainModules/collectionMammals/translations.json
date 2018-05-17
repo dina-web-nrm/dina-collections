@@ -133,8 +133,10 @@
       "sv": "Verbatim taxonnamn"
     },
     "warningChangedDetermination": {
-      "en": "Warning: Another determination \"{{taxonName}}\" was already marked as current.",
-      "sv": "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
+      "en":
+        "Warning: Another determination \"{{taxonName}}\" was already marked as current.",
+      "sv":
+        "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
     }
   },
   "individual": {
@@ -257,7 +259,8 @@
           "sv": "Namn på en kontinent"
         },
         "coordinatesVerbatim": {
-          "en": "Verbatim coordinates (or corresponding information, e.g. map number) from the original source",
+          "en":
+            "Verbatim coordinates (or corresponding information, e.g. map number) from the original source",
           "sv": ""
         },
         "countryStandardized": {
@@ -269,15 +272,18 @@
           "sv": ""
         },
         "geodeticDatum": {
-          "en": "Datum (coordinate system), e.g. “wgs84” or “sweref99”. Leave empty if unknown.",
+          "en":
+            "Datum (coordinate system), e.g. “wgs84” or “sweref99”. Leave empty if unknown.",
           "sv": ""
         },
         "georeferenceSourcesText": {
-          "en": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
+          "en":
+            "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
           "sv": ""
         },
         "latitude": {
-          "en": "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
+          "en":
+            "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
           "sv": ""
         },
         "localityRemarks": {
@@ -285,27 +291,33 @@
           "sv": ""
         },
         "localityStandardized": {
-          "en": "Locality name(s) which don’t fit to other fields. E.g. detailed place or water body (e.g. “Frescati” or “Baltic sea”)",
+          "en":
+            "Locality name(s) which don’t fit to other fields. E.g. detailed place or water body (e.g. “Frescati” or “Baltic sea”)",
           "sv": ""
         },
         "longitude": {
-          "en": "Longitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
+          "en":
+            "Longitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
           "sv": ""
         },
         "maximumDepthInMeters": {
-          "en": "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+          "en":
+            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
           "sv": ""
         },
         "maximumElevationInMeters": {
-          "en": "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+          "en":
+            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
           "sv": ""
         },
         "minimumDepthInMeters": {
-          "en": "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+          "en":
+            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
           "sv": ""
         },
         "minimumElevationInMeters": {
-          "en": "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+          "en":
+            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
           "sv": ""
         },
         "provinceStandardized": {

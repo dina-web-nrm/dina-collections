@@ -73,7 +73,7 @@
     "markdown:watch": "node src/scripts/markdown/watchMarkdownFiles.js",
     "mount:admin": "MOUNT_APP=admin node ./src/scripts/app/mountApp.js",
     "mount:collectionsUi": "MOUNT_APP=collectionsUi node ./src/scripts/app/mountApp.js",
-    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx}'",
+    "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "start": "NODE_PATH=./src/ npm-run-all -p watch-css markdown:watch start-js",
     "start-js": "react-scripts start",
     "start:mock": "REACT_APP_ENABLE_MOCK=true yarn start",
