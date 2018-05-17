@@ -45,7 +45,7 @@ export class FormActions extends Component {
     return (
       <Grid.Row>
         <Grid.Column mobile={16}>
-          <Button disabled={submitting} size="large" type="submit">
+          <Button disabled={pristine || submitting} size="large" type="submit">
             <ModuleTranslate textKey="save" />
           </Button>
           {displayResetButton && (
