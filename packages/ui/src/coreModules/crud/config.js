@@ -1,5 +1,25 @@
 const config = {
   resources: {
+    agent: {
+      operations: [
+        {
+          operationId: 'agentGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'agentCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'agentGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'agentUpdate',
+          type: 'update',
+        },
+      ],
+    },
     causeOfDeathType: {
       customSelectors: [
         {
