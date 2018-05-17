@@ -13,42 +13,54 @@ module.exports = function extractItemRelationship({
   let relationshipObject = null
   let relationshipArray = []
   if (path) {
-    const segments = path.split('.*.')
+    let arrayPath = path
+    if (!Array.isArray(path)) {
+      arrayPath = [path]
+    }
 
-    walk({
-      func: pth => {
-        const relationship = objectPath.get(item, pth)
-        if (relationship.id === undefined) {
-          relationship.lid = createLid()
-        }
+    arrayPath.forEach(pathItem => {
+      const segments = pathItem.split('.*.')
 
-        const referense =
-          relationship.id !== undefined
-            ? {
-                id: relationship.id,
-              }
-            : {
-                lid: relationship.lid,
-              }
+      walk({
+        func: pth => {
+          const relationship = objectPath.get(item, pth)
+          if (relationship.id === undefined) {
+            relationship.lid = createLid()
+          }
 
-        objectPath.set(item, pth, referense)
+          const referense =
+            relationship.id !== undefined
+              ? {
+                  id: relationship.id,
+                }
+              : {
+                  lid: relationship.lid,
+                }
 
-        const formattedRelationship = nestedToCore
-          ? nestedToCore({
-              item: relationship,
-              normalize: true,
-              type: relationshipType,
+          objectPath.set(item, pth, referense)
+
+          const formattedRelationship = nestedToCore
+            ? nestedToCore({
+                item: relationship,
+                normalize: true,
+                type: relationshipType,
+              })
+            : relationship
+
+          if (relationshipFormat === 'object') {
+            relationshipObject = formattedRelationship
+          } else {
+            const exists = relationshipArray.find(({ id }) => {
+              return id === formattedRelationship.id
             })
-          : relationship
-
-        if (relationshipFormat === 'object') {
-          relationshipObject = formattedRelationship
-        } else {
-          relationshipArray.push(formattedRelationship)
-        }
-      },
-      obj: item,
-      segments,
+            if (!exists) {
+              relationshipArray.push(formattedRelationship)
+            }
+          }
+        },
+        obj: item,
+        segments,
+      })
     })
   } else {
     if (relationshipFormat === 'object') {

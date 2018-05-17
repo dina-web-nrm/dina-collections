@@ -15,37 +15,51 @@ module.exports = function extractItemRelationship(_ref) {
   var relationshipObject = null;
   var relationshipArray = [];
   if (path) {
-    var segments = path.split('.*.');
+    var arrayPath = path;
+    if (!Array.isArray(path)) {
+      arrayPath = [path];
+    }
 
-    walk({
-      func: function func(pth) {
-        var relationship = objectPath.get(item, pth);
-        if (relationship.id === undefined) {
-          relationship.lid = createLid();
-        }
+    arrayPath.forEach(function (pathItem) {
+      var segments = pathItem.split('.*.');
 
-        var referense = relationship.id !== undefined ? {
-          id: relationship.id
-        } : {
-          lid: relationship.lid
-        };
+      walk({
+        func: function func(pth) {
+          var relationship = objectPath.get(item, pth);
+          if (relationship.id === undefined) {
+            relationship.lid = createLid();
+          }
 
-        objectPath.set(item, pth, referense);
+          var referense = relationship.id !== undefined ? {
+            id: relationship.id
+          } : {
+            lid: relationship.lid
+          };
 
-        var formattedRelationship = nestedToCore ? nestedToCore({
-          item: relationship,
-          normalize: true,
-          type: relationshipType
-        }) : relationship;
+          objectPath.set(item, pth, referense);
 
-        if (relationshipFormat === 'object') {
-          relationshipObject = formattedRelationship;
-        } else {
-          relationshipArray.push(formattedRelationship);
-        }
-      },
-      obj: item,
-      segments: segments
+          var formattedRelationship = nestedToCore ? nestedToCore({
+            item: relationship,
+            normalize: true,
+            type: relationshipType
+          }) : relationship;
+
+          if (relationshipFormat === 'object') {
+            relationshipObject = formattedRelationship;
+          } else {
+            var exists = relationshipArray.find(function (_ref2) {
+              var id = _ref2.id;
+
+              return id === formattedRelationship.id;
+            });
+            if (!exists) {
+              relationshipArray.push(formattedRelationship);
+            }
+          }
+        },
+        obj: item,
+        segments: segments
+      });
     });
   } else {
     if (relationshipFormat === 'object') {

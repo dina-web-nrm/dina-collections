@@ -86,6 +86,7 @@ class SegmentCollectingInformation extends PureComponent {
               type="text"
             />
           </Grid.Column>
+
           <Grid.Column computer={4} mobile={16} tablet={4}>
             <Field
               autoComplete="off"
@@ -97,6 +98,18 @@ class SegmentCollectingInformation extends PureComponent {
               type="dropdown-search-local"
             />
           </Grid.Column>
+
+          <Grid.Column computer={6} mobile={16}>
+            <Field
+              autoComplete="off"
+              component={Input}
+              label="Established means text"
+              module="collectionMammals"
+              name={getPath('establishmentMeansN')}
+              type="text"
+            />
+          </Grid.Column>
+
           <Grid.Row>
             <Grid.Column mobile={16}>
               <Header size="small">Collecting date</Header>

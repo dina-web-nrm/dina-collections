@@ -24,8 +24,8 @@ const relationships = [
   {
     sourceResource: 'specimen',
     type: 'belongsToMany',
-    targetAs: 'taxa',
-    targetResource: 'taxon',
+    targetAs: 'taxonNames',
+    targetResource: 'taxonName',
     external: true,
   },
 ]

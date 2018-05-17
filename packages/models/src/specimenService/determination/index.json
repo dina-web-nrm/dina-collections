@@ -23,8 +23,8 @@
     "date": {
       "$ref": "__ROOT__singleDate"
     },
-    "taxon": {
-      "$ref": "__ROOT__taxon",
+    "taxonName": {
+      "$ref": "__ROOT__taxonName",
       "x-reference-type": "external"
     }
   }

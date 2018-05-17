@@ -70,7 +70,7 @@ module.exports = {
       type: 'getRelationHasMany',
     },
     {
-      relationKey: 'taxa',
+      relationKey: 'taxonNames',
       type: 'getRelationHasMany',
     },
   ],

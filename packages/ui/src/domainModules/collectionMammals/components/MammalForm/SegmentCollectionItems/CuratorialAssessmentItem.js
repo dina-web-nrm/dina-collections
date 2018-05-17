@@ -15,7 +15,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   condition: PropTypes.string,
   conditionRemarks: PropTypes.string,
-  date: PropTypes.string,
+  date: PropTypes.object,
   getPath: PropTypes.func.isRequired,
   inventoryStatusRemarks: PropTypes.string,
   isInStorage: PropTypes.bool,

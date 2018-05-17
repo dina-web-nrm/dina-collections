@@ -16,32 +16,39 @@ module.exports = function resolveItemRelationship({
   }
 
   if (path) {
-    const segments = path.split('.*.')
+    let arrayPath = path
+    if (!Array.isArray(path)) {
+      arrayPath = [path]
+    }
 
-    walk({
-      func: pth => {
-        const relationshipObject = objectPath.get(item, pth)
-        const id =
-          relationshipObject &&
-          (relationshipObject.id || relationshipObject.lid)
-        // check that it exist in relationships
-        const resolvedRelationshipItem =
-          id && getItemByTypeId && getItemByTypeId(type, id)
+    arrayPath.forEach(pathItem => {
+      const segments = pathItem.split('.*.')
 
-        if (resolvedRelationshipItem) {
-          objectPath.set(
-            item,
-            pth,
-            coreToNested({
-              getItemByTypeId,
-              item: resolvedRelationshipItem,
-              type: resolvedRelationshipItem.type,
-            })
-          )
-        }
-      },
-      obj: item,
-      segments,
+      walk({
+        func: pth => {
+          const relationshipObject = objectPath.get(item, pth)
+          const id =
+            relationshipObject &&
+            (relationshipObject.id || relationshipObject.lid)
+          // check that it exist in relationships
+          const resolvedRelationshipItem =
+            id && getItemByTypeId && getItemByTypeId(type, id)
+
+          if (resolvedRelationshipItem) {
+            objectPath.set(
+              item,
+              pth,
+              coreToNested({
+                getItemByTypeId,
+                item: resolvedRelationshipItem,
+                type: resolvedRelationshipItem.type,
+              })
+            )
+          }
+        },
+        obj: item,
+        segments,
+      })
     })
 
     return item

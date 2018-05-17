@@ -3526,7 +3526,7 @@
               "featureTypes",
               "physicalObjects",
               "places",
-              "taxa"
+              "taxonNames"
             ],
             "schema": {
               "items": {
@@ -3535,7 +3535,7 @@
                   "featureTypes",
                   "physicalObjects",
                   "places",
-                  "taxa"
+                  "taxonNames"
                 ],
                 "type": "string"
               },
@@ -3655,7 +3655,7 @@
               "featureTypes",
               "physicalObjects",
               "places",
-              "taxa"
+              "taxonNames"
             ],
             "schema": {
               "items": {
@@ -3664,7 +3664,7 @@
                   "featureTypes",
                   "physicalObjects",
                   "places",
-                  "taxa"
+                  "taxonNames"
                 ],
                 "type": "string"
               },
@@ -4453,9 +4453,9 @@
         ]
       }
     },
-    "/api/specimen/v01/specimens/{id}/relationships/taxa": {
+    "/api/specimen/v01/specimens/{id}/relationships/taxonNames": {
       "get": {
-        "operationId": "specimenGetRelationHasManyTaxa",
+        "operationId": "specimenGetRelationHasManyTaxonNames",
         "parameters": [
           {
             "in": "path",
@@ -4491,7 +4491,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxaResponse"
+                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxonNamesResponse"
                 }
               }
             },
@@ -4501,7 +4501,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxa-400"
+                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxonNames-400"
                 }
               }
             },
@@ -4511,7 +4511,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxa-404"
+                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxonNames-404"
                 }
               }
             },
@@ -4521,7 +4521,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxa-500"
+                  "$ref": "#/components/schemas/specimenGetRelationHasManyTaxonNames-500"
                 }
               }
             },
@@ -4533,7 +4533,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find specimen -> taxa",
+        "summary": "Find specimen -> taxonNames",
         "tags": [
           "specimenService"
         ]
@@ -8884,7 +8884,7 @@
             "$ref": "#/components/schemas/singleDate",
             "x-summary": ""
           },
-          "taxon": {
+          "taxonName": {
             "$ref": "#/components/schemas/externalModelReference",
             "x-summary": ""
           }
@@ -13040,7 +13040,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "specimenGetRelationHasManyTaxa-400": {
+      "specimenGetRelationHasManyTaxonNames-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -13064,7 +13064,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "specimenGetRelationHasManyTaxa-404": {
+      "specimenGetRelationHasManyTaxonNames-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -13088,7 +13088,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "specimenGetRelationHasManyTaxa-500": {
+      "specimenGetRelationHasManyTaxonNames-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -16840,7 +16840,7 @@
                         },
                         "type": "object"
                       },
-                      "taxa": {
+                      "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
                           "data": {
@@ -16853,9 +16853,9 @@
                                 },
                                 "type": {
                                   "enum": [
-                                    "taxon"
+                                    "taxonName"
                                   ],
-                                  "example": "taxon",
+                                  "example": "taxonName",
                                   "type": "string"
                                 }
                               },
@@ -16950,7 +16950,11 @@
                   ],
                   "events": [
                     {
-                      "endDate": "endDate",
+                      "dateRange": {
+                        "endDate": {
+                          "dateText": "endDate"
+                        }
+                      },
                       "expeditionText": "expeditionText",
                       "locationInformation": {
                         "coordinatesVerbatim": "coordinatesVerbatim",
@@ -17139,7 +17143,11 @@
                 ],
                 "events": [
                   {
-                    "endDate": "endDate",
+                    "dateRange": {
+                      "endDate": {
+                        "dateText": "endDate"
+                      }
+                    },
                     "expeditionText": "expeditionText",
                     "locationInformation": {
                       "coordinatesVerbatim": "coordinatesVerbatim",
@@ -17366,7 +17374,7 @@
                         },
                         "type": "object"
                       },
-                      "taxa": {
+                      "taxonNames": {
                         "additionalProperties": false,
                         "properties": {
                           "data": {
@@ -17379,9 +17387,9 @@
                                 },
                                 "type": {
                                   "enum": [
-                                    "taxon"
+                                    "taxonName"
                                   ],
-                                  "example": "taxon",
+                                  "example": "taxonName",
                                   "type": "string"
                                 }
                               },
@@ -21481,7 +21489,7 @@
                     },
                     "type": "object"
                   },
-                  "taxa": {
+                  "taxonNames": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -21494,9 +21502,9 @@
                             },
                             "type": {
                               "enum": [
-                                "taxon"
+                                "taxonName"
                               ],
-                              "example": "taxon",
+                              "example": "taxonName",
                               "type": "string"
                             }
                           },
@@ -21637,7 +21645,7 @@
                     },
                     "type": "object"
                   },
-                  "taxa": {
+                  "taxonNames": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -21650,9 +21658,9 @@
                             },
                             "type": {
                               "enum": [
-                                "taxon"
+                                "taxonName"
                               ],
-                              "example": "taxon",
+                              "example": "taxonName",
                               "type": "string"
                             }
                           },
@@ -21795,7 +21803,7 @@
                       },
                       "type": "object"
                     },
-                    "taxa": {
+                    "taxonNames": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {
@@ -21808,9 +21816,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "taxon"
+                                  "taxonName"
                                 ],
-                                "example": "taxon",
+                                "example": "taxonName",
                                 "type": "string"
                               }
                             },
@@ -21953,7 +21961,7 @@
                     },
                     "type": "object"
                   },
-                  "taxa": {
+                  "taxonNames": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -21966,9 +21974,9 @@
                             },
                             "type": {
                               "enum": [
-                                "taxon"
+                                "taxonName"
                               ],
-                              "example": "taxon",
+                              "example": "taxonName",
                               "type": "string"
                             }
                           },
@@ -22109,7 +22117,7 @@
                     },
                     "type": "object"
                   },
-                  "taxa": {
+                  "taxonNames": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -22122,9 +22130,9 @@
                             },
                             "type": {
                               "enum": [
-                                "taxon"
+                                "taxonName"
                               ],
-                              "example": "taxon",
+                              "example": "taxonName",
                               "type": "string"
                             }
                           },
@@ -22478,7 +22486,7 @@
         "x-summary": "",
         "description": ""
       },
-      "specimenGetRelationHasManyTaxaResponse": {
+      "specimenGetRelationHasManyTaxonNamesResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -22487,14 +22495,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/taxon"
+                  "$ref": "#/components/schemas/taxonName"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "taxon",
+                  "default": "taxonName",
                   "type": "string"
                 }
               },
@@ -22510,7 +22518,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/taxa",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/taxonNames",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

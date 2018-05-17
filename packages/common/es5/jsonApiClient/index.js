@@ -6,7 +6,9 @@ var jsonApiGetMany = require('./get/getMany');
 var jsonApiGetOne = require('./get/getOne');
 var jsonApiCreate = require('./modify/recursiveCreate').recursiveCreate;
 var jsonApiUpdate = require('./modify/recursiveUpdate').recursiveUpdate;
-var setDependencies = require('./modify/setDependencies').setDependencies;
+
+var _require = require('./modify/setDependencies'),
+    setDependencies = _require.setDependencies;
 
 var log = createLog('common:jsonApiClient');
 

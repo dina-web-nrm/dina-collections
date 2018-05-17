@@ -110,14 +110,17 @@
             }
           }
         },
-        "taxa": {
+        "taxonNames": {
           "type": "object",
-          "x-path": "individual.determinations.*.taxon",
+          "x-path": [
+            "individual.determinations.*.taxonName",
+            "individual.taxonInformation.curatorialTaxonName"
+          ],
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__taxon",
+                "$ref": "__ROOT__taxonName",
                 "x-reference-type": "external"
               }
             }
