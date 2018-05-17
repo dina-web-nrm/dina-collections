@@ -832,7 +832,7 @@
         "$ref": "singleDate",
         "x-summary": ""
       },
-      "taxon": {
+      "taxonName": {
         "$ref": "externalModelReference",
         "x-summary": ""
       }
@@ -1286,9 +1286,12 @@
               }
             }
           },
-          "taxa": {
+          "taxonNames": {
             "type": "object",
-            "x-path": "individual.determinations.*.taxon",
+            "x-path": [
+              "individual.determinations.*.taxonName",
+              "individual.taxonInformation.curatorialTaxonName"
+            ],
             "properties": {
               "data": {
                 "type": "array",
@@ -3991,7 +3994,7 @@
                 },
                 "type": "object"
               },
-              "taxa": {
+              "taxonNames": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -4004,9 +4007,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -4147,7 +4150,7 @@
                 },
                 "type": "object"
               },
-              "taxa": {
+              "taxonNames": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -4160,9 +4163,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -4305,7 +4308,7 @@
                   },
                   "type": "object"
                 },
-                "taxa": {
+                "taxonNames": {
                   "additionalProperties": false,
                   "properties": {
                     "data": {
@@ -4318,9 +4321,9 @@
                           },
                           "type": {
                             "enum": [
-                              "taxon"
+                              "taxonName"
                             ],
-                            "example": "taxon",
+                            "example": "taxonName",
                             "type": "string"
                           }
                         },
@@ -4463,7 +4466,7 @@
                 },
                 "type": "object"
               },
-              "taxa": {
+              "taxonNames": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -4476,9 +4479,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -4619,7 +4622,7 @@
                 },
                 "type": "object"
               },
-              "taxa": {
+              "taxonNames": {
                 "additionalProperties": false,
                 "properties": {
                   "data": {
@@ -4632,9 +4635,9 @@
                         },
                         "type": {
                           "enum": [
-                            "taxon"
+                            "taxonName"
                           ],
-                          "example": "taxon",
+                          "example": "taxonName",
                           "type": "string"
                         }
                       },
@@ -4988,7 +4991,7 @@
     "x-summary": "",
     "description": ""
   },
-  "specimenGetRelationHasManyTaxaResponse": {
+  "specimenGetRelationHasManyTaxonNamesResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -4997,14 +5000,14 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "taxon"
+              "$ref": "taxonName"
             },
             "id": {
               "example": "1234",
               "type": "string"
             },
             "type": {
-              "default": "taxon",
+              "default": "taxonName",
               "type": "string"
             }
           },
@@ -5020,7 +5023,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/taxa",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/taxonNames",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -10287,7 +10290,7 @@
                     },
                     "type": "object"
                   },
-                  "taxa": {
+                  "taxonNames": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -10300,9 +10303,9 @@
                             },
                             "type": {
                               "enum": [
-                                "taxon"
+                                "taxonName"
                               ],
-                              "example": "taxon",
+                              "example": "taxonName",
                               "type": "string"
                             }
                           },
@@ -10397,7 +10400,11 @@
               ],
               "events": [
                 {
-                  "endDate": "endDate",
+                  "dateRange": {
+                    "endDate": {
+                      "dateText": "endDate"
+                    }
+                  },
                   "expeditionText": "expeditionText",
                   "locationInformation": {
                     "coordinatesVerbatim": "coordinatesVerbatim",
@@ -10586,7 +10593,11 @@
             ],
             "events": [
               {
-                "endDate": "endDate",
+                "dateRange": {
+                  "endDate": {
+                    "dateText": "endDate"
+                  }
+                },
                 "expeditionText": "expeditionText",
                 "locationInformation": {
                   "coordinatesVerbatim": "coordinatesVerbatim",
@@ -10813,7 +10824,7 @@
                     },
                     "type": "object"
                   },
-                  "taxa": {
+                  "taxonNames": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -10826,9 +10837,9 @@
                             },
                             "type": {
                               "enum": [
-                                "taxon"
+                                "taxonName"
                               ],
-                              "example": "taxon",
+                              "example": "taxonName",
                               "type": "string"
                             }
                           },

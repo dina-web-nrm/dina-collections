@@ -28,25 +28,32 @@ module.exports = function resolveItemRelationship(_ref) {
   }
 
   if (path) {
-    var segments = path.split('.*.');
+    var arrayPath = path;
+    if (!Array.isArray(path)) {
+      arrayPath = [path];
+    }
 
-    walk({
-      func: function func(pth) {
-        var relationshipObject = objectPath.get(item, pth);
-        var id = relationshipObject && (relationshipObject.id || relationshipObject.lid);
+    arrayPath.forEach(function (pathItem) {
+      var segments = pathItem.split('.*.');
 
-        var resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
+      walk({
+        func: function func(pth) {
+          var relationshipObject = objectPath.get(item, pth);
+          var id = relationshipObject && (relationshipObject.id || relationshipObject.lid);
 
-        if (resolvedRelationshipItem) {
-          objectPath.set(item, pth, coreToNested({
-            getItemByTypeId: getItemByTypeId,
-            item: resolvedRelationshipItem,
-            type: resolvedRelationshipItem.type
-          }));
-        }
-      },
-      obj: item,
-      segments: segments
+          var resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
+
+          if (resolvedRelationshipItem) {
+            objectPath.set(item, pth, coreToNested({
+              getItemByTypeId: getItemByTypeId,
+              item: resolvedRelationshipItem,
+              type: resolvedRelationshipItem.type
+            }));
+          }
+        },
+        obj: item,
+        segments: segments
+      });
     });
 
     return item;
