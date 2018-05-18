@@ -7,6 +7,26 @@
     "relationships": {
       "type": "object",
       "properties": {
+        "agents": {
+          "type": "object",
+          "x-path": [
+            "individual.acquisition.handedInByAgent",
+            "individual.collectingInformation.*.collectedByAgent",
+            "individual.collectionItems.*.curatorialAssessments.*.agent",
+            "individual.determinations.*.determinedByAgent",
+            "individual.featureObservations.*.featureObservationAgent",
+            "individual.recordHistoryEvents.*.agent"
+          ],
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__agent",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
         "identifierTypes": {
           "type": "object",
           "x-path": "individual.identifiers.*.identifierType",

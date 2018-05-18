@@ -16,6 +16,10 @@
       "type": "string",
       "description": "In exactly the same words as were used originally"
     },
+    "determinedByAgent": {
+      "$ref": "__ROOT__agent",
+      "x-reference-type": "external"
+    },
     "determinedByAgentText": {
       "type": "string",
       "example": "Doe, J."
