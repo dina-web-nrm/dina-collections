@@ -99,12 +99,15 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  agents: {
+                    data: [],
+                  },
                   featureTypes: {
                     data: [],
                   },
                   places: { data: [] },
                   ...simpleDataPhysicalObjectRelations.data.relationships,
-                  taxa: {
+                  taxonNames: {
                     data: [],
                   },
                 },
@@ -140,15 +143,17 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  agents: {
+                    data: [],
+                  },
                   featureTypes: {
                     data: [],
                   },
-
                   physicalObjects: {
                     data: [],
                   },
                   places: { data: [] },
-                  taxa: {
+                  taxonNames: {
                     data: [],
                   },
                 },
@@ -187,6 +192,9 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  agents: {
+                    data: [],
+                  },
                   featureTypes: {
                     data: [],
                   },
@@ -195,7 +203,7 @@ apiDescribe('specimen', () => {
                     data: [{ id: '1234', type: 'physicalObject' }],
                   },
                   places: { data: [] },
-                  taxa: {
+                  taxonNames: {
                     data: [],
                   },
                 },
@@ -238,6 +246,9 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
+                  agents: {
+                    data: [],
+                  },
                   featureTypes: {
                     data: [
                       {
@@ -246,12 +257,11 @@ apiDescribe('specimen', () => {
                       },
                     ],
                   },
-
                   physicalObjects:
                     simpleDataPhysicalObjectRelations.data.relationships
                       .physicalObjects,
                   places: { data: [] },
-                  taxa: {
+                  taxonNames: {
                     data: [],
                   },
                 },
@@ -294,15 +304,17 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
+                agents: {
+                  data: [],
+                },
                 featureTypes: {
                   data: [],
                 },
-
                 physicalObjects: {
                   data: [],
                 },
                 places: { data: [] },
-                taxa: {
+                taxonNames: {
                   data: [],
                 },
               },
@@ -338,15 +350,17 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
+                agents: {
+                  data: [],
+                },
                 featureTypes: {
                   data: [],
                 },
-
                 physicalObjects: {
                   data: [{ id: '1234', type: 'physicalObject' }],
                 },
                 places: { data: [] },
-                taxa: {
+                taxonNames: {
                   data: [],
                 },
               },

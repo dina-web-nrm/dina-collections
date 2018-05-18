@@ -96,6 +96,9 @@ testData.simpleDataMultipleRelations = {
       },
     },
     relationships: {
+      agents: {
+        data: [],
+      },
       featureTypes: {
         data: [
           {
@@ -115,7 +118,7 @@ testData.simpleDataMultipleRelations = {
       places: {
         data: [{ id: '1', type: 'place' }],
       },
-      taxa: {
+      taxonNames: {
         data: [],
       },
     },

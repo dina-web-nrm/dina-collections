@@ -77,12 +77,15 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataPhysicalObjectRelationsId,
               expectedType: 'specimen',
               relationships: {
+                agents: {
+                  data: [],
+                },
                 featureTypes: {
                   data: [],
                 },
                 places: { data: [] },
                 ...simpleDataPhysicalObjectRelations.data.relationships,
-                taxa: {
+                taxonNames: {
                   data: [],
                 },
               },
@@ -176,6 +179,9 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataNoRelationsId,
               expectedType: 'specimen',
               relationships: {
+                agents: {
+                  data: [],
+                },
                 featureTypes: {
                   data: [],
                 },
@@ -183,7 +189,7 @@ apiDescribe('specimen', () => {
                   data: [],
                 },
                 places: { data: [] },
-                taxa: {
+                taxonNames: {
                   data: [],
                 },
               },
