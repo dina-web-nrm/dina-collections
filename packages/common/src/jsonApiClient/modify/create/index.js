@@ -45,7 +45,7 @@ function create(
       )
     }
 
-    const { type } = item
+    const { relationships, type } = item
 
     const operationId = dep.buildOperationId({
       operationType: 'create',
@@ -55,6 +55,10 @@ function create(
       body: {
         data: item,
       },
+    }
+
+    if (!relationships || !Object.keys(relationships).length) {
+      delete input.body.data.relationships
     }
 
     log.debug(

@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const services = {
+  agentService: true,
   curatedEventService: true,
   curatedListService: true,
   placeService: true,

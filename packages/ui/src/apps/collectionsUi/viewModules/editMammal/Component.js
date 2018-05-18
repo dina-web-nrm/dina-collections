@@ -76,7 +76,13 @@ EditMammal.defaultProps = defaultProps
 export default compose(
   createGetNestedItemById({
     idPath: 'match.params.specimenId',
-    include: ['featureTypes', 'physicalObjects', 'places', 'taxonNames'],
+    include: [
+      'agents',
+      'featureTypes',
+      'physicalObjects',
+      'places',
+      'taxonNames',
+    ],
     relationships: ['all'],
     resolveRelationships: ['physicalObject'],
     resource: 'specimen',

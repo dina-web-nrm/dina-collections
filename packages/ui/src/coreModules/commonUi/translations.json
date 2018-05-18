@@ -46,6 +46,10 @@
       "en": "models",
       "sv": "modeller"
     },
+    "manageAgents": {
+      "en": "Agents",
+      "sv": "Agenter"
+    },
     "manageLocalities": {
       "en": "Localities",
       "sv": "Platser"

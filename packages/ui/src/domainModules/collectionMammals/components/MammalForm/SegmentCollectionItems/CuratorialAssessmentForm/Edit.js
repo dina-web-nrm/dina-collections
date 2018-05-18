@@ -12,7 +12,8 @@ const mapStateToProps = state => {
 }
 
 const propTypes = {
-  agent: PropTypes.string,
+  agent: PropTypes.object,
+  agentText: PropTypes.string,
   changeFieldValue: PropTypes.func.isRequired,
   condition: PropTypes.string,
   conditionRemarks: PropTypes.string,
@@ -26,6 +27,7 @@ const propTypes = {
 }
 const defaultProps = {
   agent: undefined,
+  agentText: undefined,
   condition: undefined,
   conditionRemarks: undefined,
   date: undefined,
@@ -38,6 +40,7 @@ export class EditCuratorialAssessment extends PureComponent {
   render() {
     const {
       agent,
+      agentText,
       changeFieldValue,
       condition,
       conditionRemarks,
@@ -57,6 +60,7 @@ export class EditCuratorialAssessment extends PureComponent {
         displayResetButton
         initialValues={{
           agent,
+          agentText,
           condition,
           conditionRemarks,
           date,

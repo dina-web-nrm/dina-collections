@@ -6,6 +6,7 @@ export default createAsyncView({
     return [
       import('coreModules/crudBlocks'),
       import('coreModules/form'),
+      import('domainModules/agent'),
       import('domainModules/locality'),
       import('domainModules/storage'),
       import('domainModules/taxon'),

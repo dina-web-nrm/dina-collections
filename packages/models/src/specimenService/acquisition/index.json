@@ -4,6 +4,10 @@
     "lid": {
       "$ref": "__ROOT__lid"
     },
+    "handedInByAgent": {
+      "$ref": "__ROOT__agent",
+      "x-reference-type": "external"
+    },
     "handedInByAgentText": {
       "type": "string"
     },

@@ -68,7 +68,7 @@ module.exports = function nestedToCore(_ref) {
     });
   }
 
-  if (relationships) {
+  if (relationships && (0, _keys2.default)(relationships).length) {
     coreItem = (0, _extends3.default)({}, coreItem, {
       relationships: relationships
     });

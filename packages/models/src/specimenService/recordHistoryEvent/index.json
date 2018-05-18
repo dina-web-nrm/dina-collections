@@ -5,6 +5,10 @@
       "$ref": "__ROOT__lid"
     },
     "agent": {
+      "$ref": "__ROOT__agent",
+      "x-reference-type": "external"
+    },
+    "agentText": {
       "type": "string"
     },
     "date": {

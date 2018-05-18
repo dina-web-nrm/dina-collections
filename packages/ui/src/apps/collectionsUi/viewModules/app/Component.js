@@ -16,6 +16,7 @@ import LookupMammals from '../lookupMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
 import RegisterMammal from '../registerMammal/Async'
 import Settings from '../settings/Async'
+import ManageAgents from '../manageAgents/Async'
 import ManageLocalities from '../manageLocalities/Async'
 import ManageStorageLocations from '../manageStorageLocations/Async'
 import ManageTaxonomy from '../manageTaxonomy/Async'
@@ -38,6 +39,12 @@ const NAVIGATION_SIDEBAR_ITEMS = [
     icon: 'search',
     name: 'lookupMammals',
     path: '/app/mammals/lookup',
+  },
+  {
+    exact: false,
+    icon: 'users',
+    name: 'manageAgents',
+    path: '/app/agents',
   },
   {
     exact: false,
@@ -94,6 +101,23 @@ class App extends Component {
             <Route
               component={EditMammal}
               path={`${match.url}/mammals/:specimenId/edit`}
+            />
+            <Route
+              component={ManageAgents}
+              exact
+              path={`${match.url}/agents`}
+            />
+            <Route
+              component={ManageAgents}
+              path={`${match.url}/agents/create`}
+            />
+            <Route
+              component={ManageAgents}
+              path={`${match.url}/agents/:agentId/edit`}
+            />
+            <Route
+              component={ManageAgents}
+              path={`${match.url}/agents/:agentId/inspect`}
             />
             <Route
               component={ManageLocalities}

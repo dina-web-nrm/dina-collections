@@ -7,12 +7,12 @@ const {
   globalSelectors,
   reducer,
 } = keyObjectModuleFactory({
-  actionPrefix: 'TAXON',
+  actionPrefix: 'AGENT',
   initialValues: {
-    localityDropdown: {},
+    agentDropdown: {},
   },
-  keys: ['localityDropdown.:identifier.searchQuery'],
-  name: 'taxon',
+  keys: ['agentDropdown.:identifier.searchQuery'],
+  name: 'agent',
 })
 
 export { actionCreators, actionTypes, constants, globalSelectors, reducer }

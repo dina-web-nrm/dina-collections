@@ -1,1 +1,1 @@
-## Api managing agents.
+## Service managing agents.

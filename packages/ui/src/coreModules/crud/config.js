@@ -1,5 +1,25 @@
 const config = {
   resources: {
+    agent: {
+      operations: [
+        {
+          operationId: 'agentGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'agentCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'agentGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'agentUpdate',
+          type: 'update',
+        },
+      ],
+    },
     causeOfDeathType: {
       customSelectors: [
         {
@@ -147,6 +167,7 @@ const config = {
           operationId: 'specimenUpdate',
           options: {
             relationshipKeysToIncludeInBody: [
+              'agents',
               'causeOfDeathTypes',
               'establishmentMeansTypes',
               'featureTypes',
@@ -164,6 +185,7 @@ const config = {
           operationId: 'specimenCreate',
           options: {
             relationshipKeysToIncludeInBody: [
+              'agents',
               'causeOfDeathTypes',
               'establishmentMeansTypes',
               'featureTypes',

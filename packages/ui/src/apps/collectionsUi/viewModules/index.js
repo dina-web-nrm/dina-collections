@@ -6,6 +6,7 @@ export const moduleOrder = [
   'home',
   'lookupMammals',
   'registerMammal',
+  'manageAgents',
   'manageLocalities',
   'manageStorageLocations',
   'manageTaxonomy',

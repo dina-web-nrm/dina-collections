@@ -147,6 +147,7 @@ const SegmentDeterminations = ({
         </Grid.Column>
         <Grid.Column mobile={16}>
           <Button
+            id="add-determination"
             onClick={event => {
               event.preventDefault()
               changeFieldValue(

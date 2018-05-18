@@ -37,7 +37,7 @@ export class CreateCuratorialAssessment extends PureComponent {
         displayBackButton
         displayResetButton
         initialValues={{
-          agent: userName,
+          agentText: userName,
           date: {
             dateText: moment().format('YYYY-MM-DD'),
           },

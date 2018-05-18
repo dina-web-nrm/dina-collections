@@ -1,5 +1,4 @@
 const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const getResponseSuccess = require('./operations/getOne/examples/responseSuccess.json')
 
 module.exports = {
   basePath: '/api/agent/v01',
@@ -9,7 +8,6 @@ module.exports = {
       type: 'create',
     },
     {
-      exampleResponses: { primary: getResponseSuccess },
       type: 'getOne',
     },
     {

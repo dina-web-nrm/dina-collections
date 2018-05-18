@@ -4,9 +4,13 @@
     "lid": {
       "$ref": "__ROOT__lid"
     },
-    "featureObservationAgent": {
+    "featureObservationAgentText": {
       "type": "string",
       "example": "Doe, J."
+    },
+    "featureObservationAgent": {
+      "$ref": "__ROOT__agent",
+      "x-reference-type": "external"
     },
     "date": {
       "$ref": "__ROOT__singleDate"

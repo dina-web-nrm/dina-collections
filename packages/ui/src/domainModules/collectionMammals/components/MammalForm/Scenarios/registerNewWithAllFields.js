@@ -43,6 +43,10 @@ const segmentIdentifiersMutations = [
     value: 'handedInByAgentText',
   },
   {
+    name: 'individual.acquisition.handedInByAgent.id.hidden',
+    value: '1',
+  },
+  {
     name: 'individual.collectionItemText',
     value: 'collectionItemText',
   },
@@ -71,6 +75,10 @@ const segmentDeterminationsMutations = [
     name: 'individual.determinations.0.determinedByAgentText',
     value: 'determinedByAgentText',
   },
+  {
+    name: 'individual.determinations.0.determinedByAgent.id.hidden',
+    value: '1',
+  },
   { name: 'individual.determinations.0.remarks', value: 'remarks' },
 
   {
@@ -80,6 +88,10 @@ const segmentDeterminationsMutations = [
 ]
 
 const segmentCollectingInformationMutations = [
+  {
+    name: 'individual.collectingInformation.0.collectedByAgent.id.hidden',
+    value: '1',
+  },
   {
     name: 'individual.collectingInformation.0.collectorsText',
     value: 'collectorsText',
@@ -206,8 +218,8 @@ const segmentFeatureObservationsMutations = [
     value: 'date',
   },
   {
-    name: 'individual.featureObservations.1.featureObservationAgent',
-    value: 'featureObservationAgent',
+    name: 'individual.featureObservations.1.featureObservationAgent.id.hidden',
+    value: '1',
   },
   {
     name: 'individual.featureObservations.1.featureObservationText.hidden',
@@ -248,8 +260,12 @@ const segmentCollectionItemsMutations = [
   },
 
   {
-    name: 'individual.collectionItems.0.curatorialAssessments.0.agent',
-    value: 'agent',
+    name: 'individual.collectionItems.0.curatorialAssessments.0.agentText',
+    value: 'agentText',
+  },
+  {
+    name: 'individual.collectionItems.0.curatorialAssessments.0.agent.id',
+    value: '1',
   },
   {
     name: 'individual.collectionItems.0.curatorialAssessments.0.condition',
@@ -277,8 +293,12 @@ const segmentCollectionItemsMutations = [
 
 const segmentOtherMutations = [
   {
-    name: 'individual.recordHistoryEvents.0.agent',
-    value: 'agent',
+    name: 'individual.recordHistoryEvents.0.agentText',
+    value: 'agentText',
+  },
+  {
+    name: 'individual.recordHistoryEvents.0.agent.id.hidden',
+    value: '1',
   },
   {
     name: 'individual.recordHistoryEvents.0.date.dateText',
@@ -314,10 +334,12 @@ const expectedOutput = {
     acquisition: {
       acquisitionTypeText: 'acquisitionTypeText',
       date: { dateText: 'date' },
+      handedInByAgent: { id: '1' },
       handedInByAgentText: 'handedInByAgentText',
     },
     collectingInformation: [
       {
+        collectedByAgent: { id: '1' },
         collectorsText: 'collectorsText',
         establishmentMeansN: 'establishmentMeansN',
         establishmentMeansType: {
@@ -359,7 +381,8 @@ const expectedOutput = {
       {
         curatorialAssessments: [
           {
-            agent: 'agent',
+            agent: { id: '1' },
+            agentText: 'agentText',
             condition: 'condition',
             conditionRemarks: 'conditionRemarks',
             date: { dateText: 'date' },
@@ -393,6 +416,7 @@ const expectedOutput = {
       {
         date: { dateText: 'date' },
         determinationVerbatim: 'determinationVerbatim',
+        determinedByAgent: { id: '1' },
         determinedByAgentText: 'determinedByAgentText',
         remarks: 'remarks',
         taxonName: {
@@ -404,7 +428,7 @@ const expectedOutput = {
     featureObservations: [
       {
         date: { dateText: 'date' },
-        featureObservationAgent: 'featureObservationAgent',
+        featureObservationAgent: { id: '1' },
         featureObservationText: 'juvenile',
         featureType: {
           id: '1',
@@ -441,7 +465,8 @@ const expectedOutput = {
     ],
     recordHistoryEvents: [
       {
-        agent: 'agent',
+        agent: { id: '1' },
+        agentText: 'agentText',
         date: { dateText: 'date' },
         description: 'Creation of catalog card',
         system: 'catalogCard',

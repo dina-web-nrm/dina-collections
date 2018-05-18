@@ -51,7 +51,7 @@
             "determinationVerbatim": "determinationVerbatim",
             "determinedByAgentText": "determinedByAgentText",
             "remarks": "remarks",
-            "taxon": {
+            "taxonName": {
               "id": "2367",
               "type": "taxon"
             },

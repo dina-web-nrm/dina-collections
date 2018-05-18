@@ -1,5 +1,9 @@
 'use strict';
 
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _promise = require('babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
@@ -56,7 +60,8 @@ function create() {
       throw new Error('resource: ' + item.type + ' is not included in resourcesToModify: [' + resourcesToModify.join(', ') + ']');
     }
 
-    var type = item.type;
+    var relationships = item.relationships,
+        type = item.type;
 
 
     var operationId = dep.buildOperationId({
@@ -68,6 +73,10 @@ function create() {
         data: item
       }
     };
+
+    if (!relationships || !(0, _keys2.default)(relationships).length) {
+      delete input.body.data.relationships;
+    }
 
     log.debug('Create resource ' + type + ' with operationId: ' + operationId + ' input:', input);
 

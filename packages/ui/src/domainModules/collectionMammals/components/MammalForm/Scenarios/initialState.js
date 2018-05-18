@@ -7,6 +7,15 @@ export default {
       },
     },
     resources: {
+      agent: {
+        items: {
+          '1': {
+            attributes: { fullName: 'John Doe' },
+            id: '1',
+            type: 'agent',
+          },
+        },
+      },
       featureType: {
         items: {
           '1': {

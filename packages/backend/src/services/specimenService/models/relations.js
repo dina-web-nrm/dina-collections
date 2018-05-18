@@ -6,6 +6,12 @@ const relationships = [
   {
     sourceResource: 'specimen',
     type: 'belongsToMany',
+    targetResource: 'agent',
+    external: true,
+  },
+  {
+    sourceResource: 'specimen',
+    type: 'belongsToMany',
     targetResource: 'featureType',
     external: true,
   },

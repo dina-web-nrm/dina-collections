@@ -52,6 +52,9 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
+                agents: {
+                  data: [],
+                },
                 featureTypes: {
                   data: [],
                 },
@@ -60,7 +63,7 @@ apiDescribe('specimen', () => {
                   data: [],
                 },
                 places: { data: [] },
-                taxa: {
+                taxonNames: {
                   data: [],
                 },
               },
@@ -97,11 +100,14 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   ...simpleDataPhysicalObjectRelations.data.relationships,
+                  agents: {
+                    data: [],
+                  },
                   featureTypes: {
                     data: [],
                   },
                   places: { data: [] },
-                  taxa: {
+                  taxonNames: {
                     data: [],
                   },
                 },

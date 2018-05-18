@@ -46,7 +46,7 @@ module.exports = function nestedToCore({
     }
   }
 
-  if (relationships) {
+  if (relationships && Object.keys(relationships).length) {
     coreItem = {
       ...coreItem,
       relationships,

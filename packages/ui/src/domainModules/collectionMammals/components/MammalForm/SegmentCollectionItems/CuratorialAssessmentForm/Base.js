@@ -6,23 +6,19 @@ import { reduxForm } from 'redux-form'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import createLog from 'utilities/log'
 import { Field, Input } from 'coreModules/form/components'
+import {
+  formatBooleanRadio,
+  parseBooleanRadio,
+} from 'coreModules/form/utilities'
+import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { ALL } from 'domainModules/agent/constants'
+import { MAMMAL_FORM_NAME } from '../../../../constants'
 import { mammalFormModels } from '../../../../schemas'
 import FormActions from './FormActions'
 
 const log = createLog('modules:collectionMammals:CuratorialAssessmentForm:Base')
 
 const FORM_NAME = 'curatorialAssessmentForm'
-
-export const formatIsInStorageRadio = value => {
-  if (value === true) return 'true'
-  if (value === false) return 'false'
-  return undefined
-}
-export const parseIsInStorageRadio = value => {
-  if (value === 'true') return true
-  if (value === 'false') return false
-  return undefined
-}
 
 const propTypes = {
   displayBackButton: PropTypes.bool,
@@ -75,10 +71,10 @@ export class BaseForm extends PureComponent {
               <label htmlFor="isInStorage true">
                 <Field
                   component="input"
-                  format={formatIsInStorageRadio}
+                  format={formatBooleanRadio}
                   label="Is in storage"
                   name="isInStorage"
-                  parse={parseIsInStorageRadio}
+                  parse={parseBooleanRadio}
                   type="radio"
                   value="true"
                 />{' '}
@@ -89,10 +85,10 @@ export class BaseForm extends PureComponent {
               <label htmlFor="isInStorage false">
                 <Field
                   component="input"
-                  format={formatIsInStorageRadio}
+                  format={formatBooleanRadio}
                   label="Not found"
                   name="isInStorage"
-                  parse={parseIsInStorageRadio}
+                  parse={parseBooleanRadio}
                   type="radio"
                   value="false"
                 />{' '}
@@ -135,7 +131,7 @@ export class BaseForm extends PureComponent {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column computer={4} mobile={16} tablet={6}>
+            <Grid.Column computer={2} mobile={16} tablet={6}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -148,10 +144,22 @@ export class BaseForm extends PureComponent {
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
-                component={Input}
+                component={AdvancedAgentDropdownSearch}
+                formName={MAMMAL_FORM_NAME}
+                group={ALL}
+                initialText="Choose"
                 label="Agent"
+                module="agent"
+                name="agent.id"
+              />
+            </Grid.Column>
+            <Grid.Column computer={4} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
+                component={Input}
+                label="Agent text"
                 module="collectionMammals"
-                name="agent"
+                name="agentText"
                 type="input-text"
               />
             </Grid.Column>
