@@ -5,16 +5,18 @@ import { Table } from 'semantic-ui-react'
 
 import { Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { ALL } from 'domainModules/agent/constants'
 
-import { CATALOG_CARD } from '../../../../constants'
+import { CATALOG_CARD, MAMMAL_FORM_NAME } from '../../../../constants'
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
 
   index: PropTypes.number.isRequired,
   recordHistoryEvent: PropTypes.shape({
-    agent: PropTypes.string,
-    date: PropTypes.string,
+    agent: PropTypes.shape({ id: PropTypes.string }),
+    date: PropTypes.shape({ dateText: PropTypes.string }),
     description: PropTypes.string,
     id: PropTypes.string,
     system: PropTypes.string,
@@ -40,10 +42,21 @@ class RecordHistoryEventsRow extends PureComponent {
         </Table.Cell>
         <Table.Cell width={3}>
           <Field
+            autoComplete="off"
+            component={AdvancedAgentDropdownSearch}
+            formName={MAMMAL_FORM_NAME}
+            group={ALL}
+            initialText="Choose"
+            module="agent"
+            name={getPath('agent.id')}
+          />
+        </Table.Cell>
+        <Table.Cell width={3}>
+          <Field
             component={Input}
             disabled={!isCatalogCardSystem}
-            module="collectionMammals"
-            name={getPath('agent')}
+            module="agent"
+            name={getPath('agentText')}
             type="text"
           />
         </Table.Cell>
@@ -56,7 +69,7 @@ class RecordHistoryEventsRow extends PureComponent {
             type="text"
           />
         </Table.Cell>
-        <Table.Cell width={7}>
+        <Table.Cell width={4}>
           <Field
             component={Input}
             disabled

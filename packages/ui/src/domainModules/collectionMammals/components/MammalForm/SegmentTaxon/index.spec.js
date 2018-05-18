@@ -58,10 +58,8 @@ uiDescribe('domainModules/collectionMammals/components/MammalForm', () => {
     ).toBe(1)
 
     const addDeterminationButton = rootComponent
-      .find('Segment')
+      .find('#add-determination')
       .at(1)
-      .find('Button')
-      .at(3)
 
     addDeterminationButton.simulate('click')
     addDeterminationButton.simulate('click')

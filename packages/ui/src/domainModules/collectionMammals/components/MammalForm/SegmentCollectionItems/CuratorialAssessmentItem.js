@@ -11,7 +11,10 @@ const ModuleTranslate = createModuleTranslate('collectionMammals', {
 })
 
 const propTypes = {
-  agent: PropTypes.string,
+  agent: PropTypes.shape({
+    fullName: PropTypes.string,
+  }),
+  agentText: PropTypes.string,
   changeFieldValue: PropTypes.func.isRequired,
   condition: PropTypes.string,
   conditionRemarks: PropTypes.string,
@@ -23,6 +26,7 @@ const propTypes = {
 }
 const defaultProps = {
   agent: undefined,
+  agentText: undefined,
   condition: undefined,
   conditionRemarks: undefined,
   date: undefined,
@@ -52,6 +56,7 @@ class CuratorialAssessmentItem extends PureComponent {
   render() {
     const {
       agent,
+      agentText,
       date,
       condition,
       conditionRemarks,
@@ -81,8 +86,11 @@ class CuratorialAssessmentItem extends PureComponent {
                     <Grid.Column computer={2} mobile={4} tablet={4}>
                       {date && date.dateText}
                     </Grid.Column>
-                    <Grid.Column computer={3} mobile={12} tablet={6}>
-                      {agent}
+                    <Grid.Column computer={3} mobile={6} tablet={6}>
+                      {agent && agent.fullName}
+                    </Grid.Column>
+                    <Grid.Column computer={3} mobile={6} tablet={6}>
+                      {agentText}
                     </Grid.Column>
                     <Grid.Column computer={5} mobile={16} tablet={8}>
                       {isInStorage !== undefined &&

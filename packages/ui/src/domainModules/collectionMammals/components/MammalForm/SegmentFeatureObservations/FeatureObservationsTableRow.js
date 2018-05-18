@@ -8,6 +8,9 @@ import { Field, Input } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
+import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { ALL } from 'domainModules/agent/constants'
+import { MAMMAL_FORM_NAME } from '../../../constants'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
@@ -113,11 +116,12 @@ class FeatureObservationTableRow extends PureComponent {
         <Table.Cell key={getPath('featureObservationAgent')}>
           <Field
             autoComplete="off"
-            className="transparent"
-            component={Input}
-            module="collectionMammals"
-            name={getPath('featureObservationAgent')}
-            type="text"
+            component={AdvancedAgentDropdownSearch}
+            formName={MAMMAL_FORM_NAME}
+            group={ALL}
+            initialText="Choose"
+            module="agent"
+            name={getPath('featureObservationAgent.id')}
           />
         </Table.Cell>
         <Table.Cell key={getPath('remarks')}>

@@ -10,6 +10,9 @@ import { ButtonCopyPasteField, Field, Input } from 'coreModules/form/components'
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { ALL } from 'domainModules/agent/constants'
+import { MAMMAL_FORM_NAME } from '../../../constants'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentDeterminations:DeterminationContent'
@@ -102,16 +105,6 @@ class DeterminationContent extends Component {
             />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Column computer={5} mobile={16} tablet={5}>
-          <Field
-            autoComplete="off"
-            component={Input}
-            label={moduleTranslate({ textKey: 'determinedBy' })}
-            module="collectionMammals"
-            name={getPath('determinedByAgentText')}
-            type="input-text"
-          />
-        </Grid.Column>
         <Grid.Column computer={3} mobile={8} tablet={3}>
           <Field
             autoComplete="off"
@@ -119,6 +112,28 @@ class DeterminationContent extends Component {
             label={moduleTranslate({ textKey: 'date' })}
             module="collectionMammals"
             name={getPath('date.dateText')}
+            type="input-text"
+          />
+        </Grid.Column>
+        <Grid.Column computer={5} mobile={16} tablet={7}>
+          <Field
+            autoComplete="off"
+            component={AdvancedAgentDropdownSearch}
+            formName={MAMMAL_FORM_NAME}
+            group={ALL}
+            initialText="Choose"
+            label="Determined by agent"
+            module="agent"
+            name={getPath('determinedByAgent.id')}
+          />
+        </Grid.Column>
+        <Grid.Column computer={5} mobile={16} tablet={5}>
+          <Field
+            autoComplete="off"
+            component={Input}
+            label="Determined by text"
+            module="collectionMammals"
+            name={getPath('determinedByAgentText')}
             type="input-text"
           />
         </Grid.Column>

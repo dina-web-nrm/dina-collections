@@ -388,6 +388,10 @@
       "en": "Agent",
       "sv": "Agent"
     },
+    "agentText": {
+      "en": "Agent text",
+      "sv": "Agenttext"
+    },
     "age-stage": {
       "en": "Age stage",
       "sv": "Åldersstadium"

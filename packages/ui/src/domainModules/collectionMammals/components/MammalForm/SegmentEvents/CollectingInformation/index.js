@@ -15,6 +15,9 @@ import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
+import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { ALL } from 'domainModules/agent/constants'
+import { MAMMAL_FORM_NAME } from '../../../../constants'
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
@@ -55,7 +58,19 @@ class SegmentCollectingInformation extends PureComponent {
         <Grid textAlign="left" verticalAlign="top">
           {allPlacesFetched && <LocationInformationFields />}
 
-          <Grid.Column computer={10} mobile={16}>
+          <Grid.Column computer={6} mobile={16}>
+            <Field
+              autoComplete="off"
+              component={AdvancedAgentDropdownSearch}
+              formName={MAMMAL_FORM_NAME}
+              group={ALL}
+              initialText="Choose"
+              label="Collected by agent"
+              module="agent"
+              name={getPath('collectedByAgent.id')}
+            />
+          </Grid.Column>
+          <Grid.Column computer={6} mobile={16}>
             <Field
               autoComplete="off"
               component={Input}
@@ -71,7 +86,7 @@ class SegmentCollectingInformation extends PureComponent {
             />
           </Grid.Column>
 
-          <Grid.Column computer={6} mobile={16}>
+          <Grid.Column computer={4} mobile={16}>
             <Field
               autoComplete="off"
               component={Input}

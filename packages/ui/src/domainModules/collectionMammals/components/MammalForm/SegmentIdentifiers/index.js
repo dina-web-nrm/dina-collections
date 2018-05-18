@@ -15,7 +15,9 @@ import {
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-
+import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { ALL } from 'domainModules/agent/constants'
+import { MAMMAL_FORM_NAME } from '../../../constants'
 import CatalogNumberInput from './CatalogNumberInput'
 import IdentifiersTable from './IdentifiersTable'
 
@@ -142,8 +144,20 @@ class SegmentIdentifiers extends PureComponent {
             <Grid.Column computer={4} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
+                component={AdvancedAgentDropdownSearch}
+                formName={MAMMAL_FORM_NAME}
+                group={ALL}
+                initialText="Choose"
+                label="Handed in by agent"
+                module="agent"
+                name="individual.acquisition.handedInByAgent.id"
+              />
+            </Grid.Column>
+            <Grid.Column computer={4} mobile={16} tablet={8}>
+              <Field
+                autoComplete="off"
                 component={Input}
-                label="Handed in by"
+                label="Handed in by text"
                 module="collectionMammals"
                 name="individual.acquisition.handedInByAgentText"
                 type="input-text"
