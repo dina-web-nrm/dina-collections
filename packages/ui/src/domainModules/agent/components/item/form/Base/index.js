@@ -12,7 +12,7 @@ import {
 import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
-import { Field, Input } from 'coreModules/form/components'
+import { Field, Input, TextArea } from 'coreModules/form/components'
 import RolesTable from '../../../shared/RolesTable'
 import FormActions from './FormActions'
 
@@ -259,7 +259,7 @@ export class BaseForm extends PureComponent {
             <Grid.Column mobile={16}>
               <Field
                 autoComplete="off"
-                component={Input}
+                component={TextArea}
                 helpNotificationProps={{
                   descriptionHeaderKey: 'postalAddress',
                   descriptionKey: 'postalAddressDescription',
