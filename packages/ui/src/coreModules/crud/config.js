@@ -167,6 +167,7 @@ const config = {
           operationId: 'specimenUpdate',
           options: {
             relationshipKeysToIncludeInBody: [
+              'agents',
               'causeOfDeathTypes',
               'establishmentMeansTypes',
               'featureTypes',
@@ -184,6 +185,7 @@ const config = {
           operationId: 'specimenCreate',
           options: {
             relationshipKeysToIncludeInBody: [
+              'agents',
               'causeOfDeathTypes',
               'establishmentMeansTypes',
               'featureTypes',
