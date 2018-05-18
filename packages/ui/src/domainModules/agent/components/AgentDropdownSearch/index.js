@@ -13,6 +13,7 @@ import agentSelectors from '../../globalSelectors'
 const propTypes = {
   allItemsFetched: PropTypes.bool.isRequired,
   group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]).isRequired,
+  input: PropTypes.object.isRequired,
   updateSearchQuery: PropTypes.func.isRequired,
 }
 
@@ -23,7 +24,15 @@ const mapDispatchToProps = {
 
 class AgentDropdownSearch extends Component {
   render() {
-    const { allItemsFetched, group, updateSearchQuery, ...rest } = this.props
+    const {
+      allItemsFetched,
+      group,
+      updateSearchQuery,
+      input,
+      ...rest
+    } = this.props
+
+    const identifier = (input && input.name) || group
 
     if (!allItemsFetched && !config.isTest) {
       return null
@@ -55,12 +64,13 @@ class AgentDropdownSearch extends Component {
         getSearchQuery={state => {
           return globalSelectors.get['agentDropdown.:identifier.searchQuery'](
             state,
-            { identifier: group }
+            { identifier }
           )
         }}
         getSelectedOption={agentSelectors.getAgentOption}
+        input={input}
         onSearchChange={({ searchQuery }) => {
-          updateSearchQuery(searchQuery, { identifier: group })
+          updateSearchQuery(searchQuery, { identifier })
         }}
         type="dropdown-search-connect"
       />
