@@ -12,6 +12,7 @@ const createInputObjectMock = (overrides = {}) => {
 }
 
 export default function createInputTest({
+  elementToSelect = 'input',
   getValue = props => props.value,
   initialValue = 'initialValue',
   InputComponent,
@@ -40,7 +41,7 @@ export default function createInputTest({
       wrap: false,
     })
 
-    const props = wrapper.find('input').props()
+    const props = wrapper.find(elementToSelect).props()
     expect(props).toBeTruthy()
     expect(getValue(props)).toBe(initialValue)
   })
@@ -54,7 +55,7 @@ export default function createInputTest({
       wrap: false,
     })
 
-    wrapper.find('input').simulate('change', e)
+    wrapper.find(elementToSelect).simulate('change', e)
 
     expect(inputObject.onChange.mock.calls.length).toEqual(1)
     expect(inputObject.onChange.mock.calls[0]).toMatchObject([e, { value }])
@@ -69,7 +70,7 @@ export default function createInputTest({
       wrap: false,
     })
 
-    const props = wrapper.find('input').props()
+    const props = wrapper.find(elementToSelect).props()
     expect(props).toBeTruthy()
     expect(getValue(props)).toBe(initialValue)
 
@@ -77,7 +78,7 @@ export default function createInputTest({
     inputObject.value = newValue
     wrapper.setProps({ input: inputObject })
 
-    const updatedProps = wrapper.find('input').props()
+    const updatedProps = wrapper.find(elementToSelect).props()
     expect(updatedProps).toBeTruthy()
     expect(getValue(updatedProps)).toBe(newValue)
   })
@@ -90,7 +91,7 @@ export default function createInputTest({
       wrap: false,
     })
 
-    wrapper.find('input').simulate('focus', e)
+    wrapper.find(elementToSelect).simulate('focus', e)
 
     expect(inputObject.onFocus.mock.calls.length).toEqual(1)
     expect(inputObject.onFocus.mock.calls[0]).toMatchObject([e])
@@ -104,7 +105,7 @@ export default function createInputTest({
       wrap: false,
     })
 
-    wrapper.find('input').simulate('blur', e)
+    wrapper.find(elementToSelect).simulate('blur', e)
     expect(inputObject.onBlur.mock.calls.length).toEqual(1)
     expect(inputObject.onBlur.mock.calls[0]).toMatchObject([e])
   })
