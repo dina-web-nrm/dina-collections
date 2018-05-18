@@ -15,7 +15,7 @@ module.exports = {
     ],
     recordHistoryEvents: [
       {
-        agent: 'agent',
+        agent: { id: '1' },
         date: {
           dateText: '2018',
         },
@@ -24,7 +24,7 @@ module.exports = {
     taxonInformation: {},
     featureObservations: [
       {
-        featureObservationAgent: 'featureObservationAgent',
+        featureObservationAgentText: 'featureObservationAgentText',
         featureObservationText: '21',
         featureType: {
           id: '1',
