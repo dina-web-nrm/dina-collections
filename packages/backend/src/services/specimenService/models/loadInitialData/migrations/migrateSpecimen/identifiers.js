@@ -12,6 +12,8 @@ module.exports = function createIdentifiers({ migrator }) {
       path: 'target.individual.identifiers.0.value',
     }),
     path: 'target.individual.identifiers.0.identifierType',
-    value: 'catalogNumber',
+    value: {
+      id: '1',
+    },
   })
 }
