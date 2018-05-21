@@ -1,20 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Translate } from 'coreModules/i18n/components'
 import { FormFieldHelpIcon } from 'coreModules/notifications/components'
+import injectHelpNotificationProps from '../../higherOrderComponents/injectHelpNotificationProps'
+import injectLabelKey from '../../higherOrderComponents/injectLabelKey'
 
 const propTypes = {
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   htmlFor: PropTypes.string.isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  labelKey: PropTypes.string,
 }
 const defaultProps = {
   helpNotificationProps: undefined,
   helpText: undefined,
   label: undefined,
+  labelKey: undefined,
 }
-const FieldLabel = ({ label, htmlFor, helpNotificationProps, helpText }) => {
+const FieldLabel = ({
+  helpNotificationProps,
+  helpText,
+  htmlFor,
+  label: translatedLabel,
+  labelKey,
+}) => {
+  const label = translatedLabel || <Translate capitalize textKey={labelKey} />
   return (
     <label htmlFor={htmlFor}>
       {label}
@@ -36,4 +48,4 @@ const FieldLabel = ({ label, htmlFor, helpNotificationProps, helpText }) => {
 FieldLabel.propTypes = propTypes
 FieldLabel.defaultProps = defaultProps
 
-export default FieldLabel
+export default injectLabelKey(injectHelpNotificationProps(FieldLabel))

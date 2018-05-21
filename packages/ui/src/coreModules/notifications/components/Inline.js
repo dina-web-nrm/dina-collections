@@ -40,13 +40,13 @@ const Inline = ({
     <div style={{ height: '100%', padding: '10px' }}>
       {descriptionHeaderKey && (
         <Header>
-          <Translate textKey={descriptionHeaderKey} />
+          <Translate capitalize textKey={descriptionHeaderKey} />
         </Header>
       )}
       {description && description}
       {descriptionKey && (
         <p>
-          <Translate textKey={descriptionKey} />
+          <Translate fallback="" textKey={descriptionKey} />
         </p>
       )}
       {linkTextKey &&

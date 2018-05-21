@@ -37,13 +37,14 @@ export const FormFieldHelpIcon = ({
       color="blue"
       link
       name="help circle outline"
-      onClick={() =>
+      onClick={event => {
+        event.preventDefault()
         createNotification({
           componentProps: helpNotificationProps,
           displayType: isLarge ? 'inline' : 'fixed',
           type: 'HELP_TEXT',
         })
-      }
+      }}
     />
   )
 }

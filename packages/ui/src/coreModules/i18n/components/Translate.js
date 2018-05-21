@@ -71,7 +71,10 @@ const Translate = (
     }
   }
 
-  if (outputIsATextKey({ output, textKey, textKeys }) && fallback) {
+  if (
+    outputIsATextKey({ output, textKey, textKeys }) &&
+    fallback !== undefined
+  ) {
     return <span>{fallback}</span>
   }
 
