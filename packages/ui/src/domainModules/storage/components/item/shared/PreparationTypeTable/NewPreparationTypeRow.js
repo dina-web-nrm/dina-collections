@@ -33,6 +33,7 @@ export class NewPreparationTypeRow extends Component {
         <Table.Cell>New</Table.Cell>
         <Table.Cell>
           <PreparationTypeDropdownSearch
+            enableHelpNotifications={false}
             input={{
               name: 'newPreparationTypeId',
               onBlur: onSetNewPreparationTypeId,

@@ -28,6 +28,7 @@ export class NewTaxonNameRow extends Component {
         <Table.Cell>New</Table.Cell>
         <Table.Cell>
           <TaxonNameSearchInputWithResults
+            enableHelpNotifications={false}
             input={{
               name: 'newTaxonName',
               onBlur: onSetNewTaxonNameId,

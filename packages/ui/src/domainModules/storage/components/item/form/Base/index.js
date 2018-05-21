@@ -183,11 +183,7 @@ export class BaseForm extends Component {
               <FieldWrapper
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'name',
-                  descriptionKey: 'nameDescription',
-                }}
-                label="Name"
+                model="storageLocation"
                 module="storage"
                 name="name"
                 type="text"
@@ -197,7 +193,7 @@ export class BaseForm extends Component {
               <FieldWrapper
                 autoComplete="off"
                 component={DropdownSearch}
-                label="Group"
+                model="storageLocation"
                 module="storage"
                 name="group"
                 options={dropdownOptions}
@@ -211,7 +207,7 @@ export class BaseForm extends Component {
                 autoComplete="off"
                 component={StorageLocationDropdownSearch}
                 group={ALL}
-                label="Parent"
+                model="storageLocation"
                 module="storage"
                 name="parentId"
               />
@@ -222,7 +218,7 @@ export class BaseForm extends Component {
               <FieldWrapper
                 autoComplete="off"
                 component={Input}
-                label="Description"
+                model="storageLocation"
                 module="storage"
                 name="description"
                 type="text"
