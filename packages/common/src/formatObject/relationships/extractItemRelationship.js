@@ -51,7 +51,7 @@ module.exports = function extractItemRelationship({
             relationshipObject = formattedRelationship
           } else {
             const exists = relationshipArray.find(({ id }) => {
-              return id === formattedRelationship.id
+              return id !== undefined && id === formattedRelationship.id
             })
             if (!exists) {
               relationshipArray.push(formattedRelationship)
