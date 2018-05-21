@@ -13,7 +13,7 @@ storiesOf('coreModules/form/Fields/Checkbox', module)
     withInfo()(() => {
       return (
         <Checkbox
-          input={{}}
+          input={{ name: 'test' }}
           meta={{ touched: false }}
           module="no-module"
           scope="some-scope"

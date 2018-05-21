@@ -702,6 +702,19 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
           }
         }
       >
+        <label
+          htmlFor="test"
+        >
+          <span>
+            Modules.no-module.fieldLabels.test
+          </span>
+           
+          <i
+            aria-hidden="true"
+            className="blue help circle outline link icon"
+            onClick={[Function]}
+          />
+        </label>
         <div
           className="ui fitted checkbox"
           onChange={[Function]}
@@ -712,7 +725,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
             checked={false}
             className="hidden"
             id={undefined}
-            name={undefined}
+            name="test"
             onClick={[Function]}
             readOnly={true}
             tabIndex={0}
