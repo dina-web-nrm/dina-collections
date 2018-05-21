@@ -1,37 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import extractProps from 'utilities/extractProps'
 import ConnectSearchInput from '../../inputs/Search/Connect'
-
-import FieldTemplate, {
-  defaultProps as fieldTemplateDefaultProps,
-  propTypes as fieldTemplatePropTypes,
-} from '../../FieldTemplate'
+import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 
 const propTypes = {
-  ...fieldTemplatePropTypes,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.string,
   }).isRequired,
   type: PropTypes.string.isRequired,
 }
-const defaultProps = {
-  ...fieldTemplateDefaultProps,
-}
 
-function Search({
-  errorScope,
-  helpNotificationProps,
-  helpText,
-  input,
-  label,
-  meta,
-  module,
-  required,
-  type,
-  ...rest
-}) {
+function Search(props) {
   let Component
+  const { input, type } = props
 
   switch (type) {
     case 'search-connect': {
@@ -43,24 +26,18 @@ function Search({
     }
   }
 
-  const { name } = input
+  const { extractedProps: fieldTemplateProps, rest } = extractProps({
+    keys: fieldTemplatePropKeys,
+    props,
+  })
+
   return (
-    <FieldTemplate
-      errorScope={errorScope}
-      helpNotificationProps={helpNotificationProps}
-      helpText={helpText}
-      label={label}
-      meta={meta}
-      module={module}
-      name={name}
-      required={required}
-    >
-      <Component {...rest} input={input} />
+    <FieldTemplate {...fieldTemplateProps} name={input.name}>
+      <Component {...rest} />
     </FieldTemplate>
   )
 }
 
 Search.propTypes = propTypes
-Search.defaultProps = defaultProps
 
 export default Search

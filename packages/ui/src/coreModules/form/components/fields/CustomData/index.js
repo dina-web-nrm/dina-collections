@@ -1,36 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import extractProps from 'utilities/extractProps'
 import ReadOnly from '../../inputs/CustomData/ReadOnly'
-
-import FieldTemplate, {
-  defaultProps as fieldTemplateDefaultProps,
-  propTypes as fieldTemplatePropTypes,
-} from '../../FieldTemplate'
+import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 
 const propTypes = {
-  ...fieldTemplatePropTypes,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
   type: PropTypes.string.isRequired,
 }
-const defaultProps = {
-  ...fieldTemplateDefaultProps,
-}
 
-function CustomData({
-  errorScope,
-  helpNotificationProps,
-  helpText,
-  input,
-  label,
-  meta,
-  module,
-  required,
-  type,
-  ...rest
-}) {
+function CustomData(props) {
   let Component
+  const { input, type } = props
 
   switch (type) {
     case 'read-only': {
@@ -42,24 +25,18 @@ function CustomData({
     }
   }
 
-  const { name } = input
+  const { extractedProps: fieldTemplateProps, rest } = extractProps({
+    keys: fieldTemplatePropKeys,
+    props,
+  })
+
   return (
-    <FieldTemplate
-      errorScope={errorScope}
-      helpNotificationProps={helpNotificationProps}
-      helpText={helpText}
-      label={label}
-      meta={meta}
-      module={module}
-      name={name}
-      required={required}
-    >
-      <Component {...rest} input={input} />
+    <FieldTemplate {...fieldTemplateProps} name={input.name}>
+      <Component {...rest} />
     </FieldTemplate>
   )
 }
 
 CustomData.propTypes = propTypes
-CustomData.defaultProps = defaultProps
 
 export default CustomData
