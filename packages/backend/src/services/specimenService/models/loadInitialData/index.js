@@ -24,7 +24,8 @@ module.exports = function loadInitialData({ config, models }) {
     return specimenTemplate[index % specimenTemplate.length]
   }
 
-  let id = 0
+  let physicalObjectId = 0
+  let specimenId = 0
   return batchExecute({
     createEntry,
     execute: items => {
@@ -38,17 +39,60 @@ module.exports = function loadInitialData({ config, models }) {
           return migratedCoreSpecimen
         })
       )
-        })
         .then(coreSpecimens => {
-          const tmp = coreSpecimens.map(({ attributes }) => {
-            id += 1
-            return {
-              doc: attributes,
-              id,
+          // to be used in later then() when creating specimens
+          const specimensWithPhysicalObjects = [...coreSpecimens]
+
+          const mappedPhysicalObjects = []
+
+          coreSpecimens.forEach(({ relationships }, specimenIndex) => {
+            if (
+              relationships &&
+              relationships.physicalObjects &&
+              relationships.physicalObjects.data &&
+              relationships.physicalObjects.data.length
+            ) {
+              relationships.physicalObjects.data.forEach(
+                (corePhysicalObject, physicalObjectIndex) => {
+                  physicalObjectId += 1
+
+                  // replace core format with JSON API format for specimens to be created
+                  specimensWithPhysicalObjects[
+                    specimenIndex
+                  ].relationships.physicalObjects.data[physicalObjectIndex] = {
+                    id: `${physicalObjectId}`,
+                    type: 'physicalObject',
+                  }
+
+                  // TODO: change to sql key storageLocationId instead of having
+                  // storageLocation in doc
+                  return mappedPhysicalObjects.push({
+                    doc: corePhysicalObject.attributes,
+                    id: physicalObjectId,
+                  })
+                }
+              )
             }
           })
 
-          return models.specimen.bulkCreate(tmp)
+          return models.physicalObject
+            .bulkCreate(mappedPhysicalObjects)
+            .then(() => {
+              return specimensWithPhysicalObjects
+            })
+        })
+        .then(mappedSpecimens => {
+          const specimens = mappedSpecimens.map(
+            ({ attributes, relationships }) => {
+              specimenId += 1
+              return {
+                doc: { ...attributes, relationships },
+                id: specimenId,
+              }
+            }
+          )
+
+          return models.specimen.bulkCreate(specimens)
         })
     },
     numberOfEntries: numberOfSpecimens,
