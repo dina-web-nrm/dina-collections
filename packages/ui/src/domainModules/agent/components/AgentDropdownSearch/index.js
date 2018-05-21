@@ -15,7 +15,6 @@ const propTypes = {
   group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]).isRequired,
   input: PropTypes.object.isRequired,
   updateSearchQuery: PropTypes.func.isRequired,
-  input: PropTypes.object.isRequired,
 }
 
 const mapDispatchToProps = {

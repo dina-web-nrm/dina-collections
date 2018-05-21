@@ -116,6 +116,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="fullName"
                 type="text"
@@ -125,6 +126,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="disambiguatingDescription"
                 type="text"
@@ -134,6 +136,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="givenName"
                 type="text"
@@ -143,6 +146,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="familyName"
                 type="text"
@@ -152,6 +156,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="additionalName"
                 type="text"
@@ -161,6 +166,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="abbreviation"
                 type="text"
@@ -170,6 +176,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="alsoKnownAs"
                 type="text"
@@ -181,6 +188,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="remarks"
                 type="text"
@@ -190,6 +198,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="telephone"
                 type="text"
@@ -199,6 +208,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
+                model="agent"
                 module="agent"
                 name="email"
                 type="text"
@@ -208,6 +218,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={TextArea}
+                model="agent"
                 module="agent"
                 name="postalAddress"
                 type="text"
