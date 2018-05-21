@@ -30,24 +30,26 @@ module.exports = function loadInitialData({ config, models }) {
     execute: items => {
       return Promise.all(
         items.map(rawSpecimen => {
-          const migratedSpecimen = migrateSpecimen({
+          const migratedCoreSpecimen = migrateSpecimen({
             reporter,
             specimen: rawSpecimen,
           })
 
-          return migratedSpecimen
+          return migratedCoreSpecimen
         })
-      ).then(mappedSpecimens => {
-        const tmp = mappedSpecimens.map(mappedSpecimen => {
-          id += 1
-          return {
-            doc: mappedSpecimen,
-            id,
-          }
+      )
         })
+        .then(coreSpecimens => {
+          const tmp = coreSpecimens.map(({ attributes }) => {
+            id += 1
+            return {
+              doc: attributes,
+              id,
+            }
+          })
 
-        return models.specimen.bulkCreate(tmp)
-      })
+          return models.specimen.bulkCreate(tmp)
+        })
     },
     numberOfEntries: numberOfSpecimens,
     numberOfEntriesEachBatch: 1000,

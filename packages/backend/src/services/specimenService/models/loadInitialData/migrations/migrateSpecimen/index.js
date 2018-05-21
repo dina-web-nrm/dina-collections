@@ -37,12 +37,13 @@ module.exports = function migrateSpecimen({ reporter, specimen }) {
       path: 'migrations.numberOfValidSpecimens',
     })
   }
-  const normalizedSpecimen = nestedToCore({
+
+  const coreSpecimen = nestedToCore({
     item: migratedSpecimen,
     type: 'specimen',
-  }).attributes
+  })
 
-  validateSpecimen(normalizedSpecimen)
+  validateSpecimen(coreSpecimen.attributes)
 
-  return normalizedSpecimen
+  return coreSpecimen
 }
