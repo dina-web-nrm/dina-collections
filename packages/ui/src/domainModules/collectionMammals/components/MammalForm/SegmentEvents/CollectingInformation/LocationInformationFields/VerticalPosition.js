@@ -4,20 +4,13 @@ import { Grid, Header } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { Field, Input } from 'coreModules/form/components'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-
-const buildModuleTextKey = textKey =>
-  `modules.collectionMammals.occurrences.locationInformation.${textKey}`
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
 }
 
-function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
+function VerticalPosition({ getPath }) {
   return (
     <React.Fragment>
       <Grid.Row>
@@ -31,17 +24,6 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  helpNotificationProps={{
-                    descriptionHeaderKey: buildModuleTextKey(
-                      'minimumElevationInMeters'
-                    ),
-                    descriptionKey: buildModuleTextKey(
-                      'helpTexts.minimumElevationInMeters'
-                    ),
-                  }}
-                  label={moduleTranslate({
-                    textKey: 'minimumElevationInMeters',
-                  })}
                   module="collectionMammals"
                   name={getPath('minimumElevationInMeters')}
                   type="number"
@@ -51,17 +33,6 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  helpNotificationProps={{
-                    descriptionHeaderKey: buildModuleTextKey(
-                      'maximumElevationInMeters'
-                    ),
-                    descriptionKey: buildModuleTextKey(
-                      'helpTexts.maximumElevationInMeters'
-                    ),
-                  }}
-                  label={moduleTranslate({
-                    textKey: 'maximumElevationInMeters',
-                  })}
                   module="collectionMammals"
                   name={getPath('maximumElevationInMeters')}
                   type="number"
@@ -80,15 +51,6 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  helpNotificationProps={{
-                    descriptionHeaderKey: buildModuleTextKey(
-                      'minimumDepthInMeters'
-                    ),
-                    descriptionKey: buildModuleTextKey(
-                      'helpTexts.minimumDepthInMeters'
-                    ),
-                  }}
-                  label={moduleTranslate({ textKey: 'minimumDepthInMeters' })}
                   module="collectionMammals"
                   name={getPath('minimumDepthInMeters')}
                   type="number"
@@ -98,15 +60,6 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
                 <Field
                   autoComplete="off"
                   component={Input}
-                  helpNotificationProps={{
-                    descriptionHeaderKey: buildModuleTextKey(
-                      'maximumDepthInMeters'
-                    ),
-                    descriptionKey: buildModuleTextKey(
-                      'helpTexts.maximumDepthInMeters'
-                    ),
-                  }}
-                  label={moduleTranslate({ textKey: 'maximumDepthInMeters' })}
                   module="collectionMammals"
                   name={getPath('maximumDepthInMeters')}
                   type="number"
@@ -122,10 +75,6 @@ function VerticalPosition({ getPath, i18n: { moduleTranslate } }) {
 
 VerticalPosition.propTypes = propTypes
 
-export default compose(
-  withI18n({
-    module: 'collectionMammals',
-    scope: 'collectingInformation.locationInformation.verticalPosition',
-  }),
-  pathBuilder({ name: 'verticalPosition' })
-)(VerticalPosition)
+export default compose(pathBuilder({ name: 'verticalPosition' }))(
+  VerticalPosition
+)

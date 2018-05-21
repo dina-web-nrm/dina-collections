@@ -27,10 +27,10 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
             component={AdvancedLocalityDropdownSearch}
             formName={formName}
             group={ALL}
-            initialText={moduleTranslate({ textKey: 'choose' })}
-            label="Higher geography"
+            initialText={moduleTranslate({ textKey: 'other.choose' })}
             module="collectionMammals"
             name={getPath('0.id')}
+            parameterKey="places.higherGeography"
           />
         </Grid.Column>
       </Grid.Row>
@@ -41,10 +41,10 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
             component={AdvancedLocalityDropdownSearch}
             formName={formName}
             group={CONTINENT}
-            initialText={moduleTranslate({ textKey: 'choose' })}
-            label="Swedish map"
+            initialText={moduleTranslate({ textKey: 'other.choose' })}
             module="collectionMammals"
             name={getPath('1.id')}
+            parameterKey="places.swedishMap"
           />
         </Grid.Column>
       </Grid.Row>
@@ -57,7 +57,6 @@ LocationInformationFields.propTypes = propTypes
 export default compose(
   withI18n({
     module: 'collectionMammals',
-    scope: 'collectingInformation.locationInformation.places',
   }),
   pathBuilder({ name: 'places' })
 )(LocationInformationFields)

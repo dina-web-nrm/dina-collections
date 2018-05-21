@@ -26,9 +26,7 @@ const GROUPS_AND_HEADLINES = [
   { groups: ['condition'], headlineKey: 'condition' },
 ]
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'featureObservations',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   allItemsFetched: PropTypes.bool.isRequired,
@@ -48,7 +46,7 @@ class SegmentFeatureObservations extends PureComponent {
     return (
       <Segment color="green" loading={!allFeatureTypesFetched}>
         <Header size="medium">
-          <ModuleTranslate textKey="features" />
+          <ModuleTranslate textKey="headers.features" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
           <Grid.Column mobile={16}>

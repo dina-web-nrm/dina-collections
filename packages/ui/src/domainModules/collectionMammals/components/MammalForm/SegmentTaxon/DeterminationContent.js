@@ -69,7 +69,6 @@ class DeterminationContent extends Component {
             <Field
               autoComplete="off"
               component={TaxonNameSearchInputWithResults}
-              label={moduleTranslate({ textKey: 'taxonName' })}
               module="collectionMammals"
               name={taxonIdFieldKey}
               type="text"
@@ -81,7 +80,7 @@ class DeterminationContent extends Component {
               changeFieldValue={changeFieldValue}
               copyField={taxonIdFieldKey}
               fluid={!isSmallScreen}
-              label={moduleTranslate({ textKey: 'copyToVerbatim' })}
+              label={moduleTranslate({ textKey: 'other.copyToVerbatim' })}
               newValueSelector={state => {
                 const taxonName = crudSelectors.taxonName.getOne(
                   state,
@@ -98,7 +97,6 @@ class DeterminationContent extends Component {
             <Field
               autoComplete="off"
               component={Input}
-              label={moduleTranslate({ textKey: 'verbatimTaxonName' })}
               module="collectionMammals"
               name={getPath('determinationVerbatim')}
               type="input-text"
@@ -109,9 +107,9 @@ class DeterminationContent extends Component {
           <Field
             autoComplete="off"
             component={Input}
-            label={moduleTranslate({ textKey: 'date' })}
             module="collectionMammals"
             name={getPath('date.dateText')}
+            parameterKey="determinations.date"
             type="input-text"
           />
         </Grid.Column>
@@ -122,8 +120,7 @@ class DeterminationContent extends Component {
             formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"
-            label="Determined by agent"
-            module="agent"
+            module="collectionMammals"
             name={getPath('determinedByAgent.id')}
           />
         </Grid.Column>
@@ -131,7 +128,6 @@ class DeterminationContent extends Component {
           <Field
             autoComplete="off"
             component={Input}
-            label="Determined by text"
             module="collectionMammals"
             name={getPath('determinedByAgentText')}
             type="input-text"
@@ -141,7 +137,6 @@ class DeterminationContent extends Component {
           <Field
             autoComplete="off"
             component={Input}
-            label={moduleTranslate({ textKey: 'remarks' })}
             module="collectionMammals"
             name={getPath('remarks')}
             type="input-text"
@@ -164,7 +159,7 @@ class DeterminationContent extends Component {
                 removeArrayFieldByIndex('determinations', index)
               }}
             >
-              {moduleTranslate({ textKey: 'remove' })}
+              {moduleTranslate({ textKey: 'other.remove' })}
             </Button>
           )}
           {!skipRemoveDeterminationConfirmation && (
@@ -180,12 +175,12 @@ class DeterminationContent extends Component {
                     event.preventDefault()
                   }}
                 >
-                  {moduleTranslate({ textKey: 'remove' })}
+                  {moduleTranslate({ textKey: 'other.remove' })}
                 </Button>
               }
             >
               <Popup.Header>
-                {moduleTranslate({ textKey: 'removeThisDetermination' })}
+                {moduleTranslate({ textKey: 'other.removeThisDetermination' })}
               </Popup.Header>
               <Popup.Content>
                 <Button
@@ -196,7 +191,7 @@ class DeterminationContent extends Component {
                     removeArrayFieldByIndex('determinations', index)
                   }}
                 >
-                  {moduleTranslate({ textKey: 'remove' })}
+                  {moduleTranslate({ textKey: 'other.remove' })}
                 </Button>
                 <Button
                   basic
@@ -205,7 +200,7 @@ class DeterminationContent extends Component {
                     this.handleCloseRemovePopup()
                   }}
                 >
-                  {moduleTranslate({ textKey: 'cancel' })}
+                  {moduleTranslate({ textKey: 'other.cancel' })}
                 </Button>
               </Popup.Content>
             </Popup>

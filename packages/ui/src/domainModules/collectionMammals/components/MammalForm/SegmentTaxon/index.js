@@ -73,7 +73,9 @@ const SegmentDeterminations = ({
   log.render()
   return (
     <Segment color="green" loading={!renderAccordion}>
-      <Header size="medium">Taxon</Header>
+      <Header size="medium">
+        <ModuleTranslate capitalize textKey="headers.taxon" />
+      </Header>
 
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Row>
@@ -81,7 +83,6 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={TaxonNameSearchInputWithResults}
-              label="Curatorial name"
               module="collectionMammals"
               name="individual.taxonInformation.curatorialTaxonName.id"
               type="text"
@@ -93,7 +94,6 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={Input}
-              label="Curatorial name text"
               module="collectionMammals"
               name={getPath(
                 'individual.taxonInformation.curatorialTaxonNameText'
@@ -107,7 +107,6 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={Input}
-              label="Taxon remarks"
               module="collectionMammals"
               name={getPath('individual.taxonInformation.taxonRemarks')}
               type="text"
@@ -116,7 +115,9 @@ const SegmentDeterminations = ({
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16}>
-            <Header size="medium">Determinations</Header>
+            <Header size="medium">
+              <ModuleTranslate capitalize textKey="headers.determinations" />
+            </Header>
           </Grid.Column>
         </Grid.Row>
 
@@ -156,7 +157,10 @@ const SegmentDeterminations = ({
               )
             }}
           >
-            <ModuleTranslate scope="determination" textKey="addDetermination" />
+            <ModuleTranslate
+              scope="determination"
+              textKey="other.addDetermination"
+            />
           </Button>
         </Grid.Column>
         <Grid.Row>
@@ -164,9 +168,8 @@ const SegmentDeterminations = ({
             <Field
               autoComplete="off"
               component={CustomData}
-              label="Read only"
               module="collectionMammals"
-              name="readOnly"
+              name={getPath('individual.taxonInformation.readOnly')}
               type="read-only"
             />
           </Grid.Column>

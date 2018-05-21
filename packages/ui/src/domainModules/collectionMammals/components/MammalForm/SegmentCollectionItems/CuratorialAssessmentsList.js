@@ -10,9 +10,7 @@ import CuratorialAssessmentItem from './CuratorialAssessmentItem'
 import CreateCuratorialAssessment from './CuratorialAssessmentForm/Create'
 import FieldsForTest from './CuratorialAssessmentForm/Test'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'collectionItems',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
@@ -55,7 +53,7 @@ class CuratorialAssessmentsList extends Component {
     return (
       <React.Fragment>
         <Header size="small">
-          <ModuleTranslate textKey="curatorialAssessments" />
+          <ModuleTranslate textKey="headers.curatorialAssessments" />
         </Header>
         {curatorialAssessments.length > 0 && (
           <List divided>
@@ -87,14 +85,14 @@ class CuratorialAssessmentsList extends Component {
                   this.handleOpen()
                 }}
               >
-                <ModuleTranslate textKey="newAssessment" />
+                <ModuleTranslate textKey="other.newAssessment" />
               </Button>
             )
             /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
           }
         >
           <Modal.Header>
-            <ModuleTranslate textKey="newCuratorialAssessment" />
+            <ModuleTranslate textKey="other.newCuratorialAssessment" />
           </Modal.Header>
           <Modal.Content>
             <Modal.Description>

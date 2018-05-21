@@ -95,14 +95,16 @@ class LookupMammals extends Component {
               <Grid.Column computer={8} mobile={16} tablet={12}>
                 <Input
                   action={{
-                    children: <ModuleTranslate textKey="search" />,
+                    children: <ModuleTranslate textKey="other.search" />,
                     color: 'green',
                     onClick: this.handleLookup,
                   }}
                   fluid
                   label={
                     <TranslatedLabel
-                      textKey={`modules.collectionMammals.${parameterName}`}
+                      textKey={`modules.collectionMammals.other.${
+                        parameterName
+                      }`}
                     />
                   }
                   onChange={event => {
@@ -116,7 +118,7 @@ class LookupMammals extends Component {
           <Grid.Row>
             <Grid.Column computer={8} mobile={16} tablet={12}>
               <Button basic onClick={this.handleClearAll}>
-                <ModuleTranslate textKey="clearSearchParameters" />
+                <ModuleTranslate textKey="other.clearSearchParameters" />
               </Button>
             </Grid.Column>
           </Grid.Row>
@@ -126,7 +128,7 @@ class LookupMammals extends Component {
             <Table.Row>
               {TABLE_COLUMNS.map(columnName => (
                 <Table.HeaderCell key={columnName}>
-                  <ModuleTranslate textKey={columnName} />
+                  <ModuleTranslate textKey={`other.${columnName}`} />
                 </Table.HeaderCell>
               ))}
             </Table.Row>
@@ -160,7 +162,7 @@ class LookupMammals extends Component {
             <Table.Body>
               <Table.Row>
                 <Table.Cell>
-                  <ModuleTranslate textKey="noRecordsFound" />
+                  <ModuleTranslate textKey="other.noRecordsFound" />
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

@@ -36,7 +36,7 @@ export class FormActions extends Component {
       <Segment>
         <div>
           <Button disabled={submitting} size="large" type="submit">
-            <ModuleTranslate textKey="save" />
+            <ModuleTranslate textKey="other.save" />
           </Button>
           <Button
             basic
@@ -44,7 +44,7 @@ export class FormActions extends Component {
             onClick={reset}
             size="large"
           >
-            <ModuleTranslate textKey="cancel" />
+            <ModuleTranslate textKey="other.cancel" />
           </Button>
           <ConnectedFormSchemaError form={FORM_NAME} />
           {invalid &&
@@ -52,7 +52,7 @@ export class FormActions extends Component {
             submitFailed && (
               <Message
                 error
-                header={<ModuleTranslate textKey="formContainsErrors" />}
+                header={<ModuleTranslate textKey="other.formContainsErrors" />}
               />
             )}
           {submitFailed &&
@@ -60,11 +60,14 @@ export class FormActions extends Component {
               <Message
                 content={error}
                 error
-                header={<ModuleTranslate textKey="submitFailed" />}
+                header={<ModuleTranslate textKey="other.submitFailed" />}
               />
             )}
           {submitSucceeded && (
-            <Message header={<ModuleTranslate textKey="saved" />} success />
+            <Message
+              header={<ModuleTranslate textKey="other.saved" />}
+              success
+            />
           )}
         </div>
       </Segment>

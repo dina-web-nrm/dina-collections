@@ -48,7 +48,7 @@ class FeatureObservationTableRow extends PureComponent {
             fallback={key}
             module="collectionMammals"
             scope="featureObservations"
-            textKey={key}
+            textKey={`other.${key}`}
           />
         </Table.Cell>
         {hasSelectableValues ? (
@@ -57,6 +57,7 @@ class FeatureObservationTableRow extends PureComponent {
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
+              displayLabel={false}
               module="collectionMammals"
               name={getPath('featureObservationText')}
               rawOptions={selectableValues}
@@ -69,6 +70,7 @@ class FeatureObservationTableRow extends PureComponent {
               autoComplete="off"
               className="transparent"
               component={Input}
+              displayLabel={false}
               module="collectionMammals"
               name={getPath('featureObservationText')}
               type="text"
@@ -82,6 +84,7 @@ class FeatureObservationTableRow extends PureComponent {
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
+              displayLabel={false}
               module="collectionMammals"
               name={getPath('featureObservationUnit')}
               rawOptions={selectableUnits}
@@ -95,6 +98,7 @@ class FeatureObservationTableRow extends PureComponent {
               autoComplete="off"
               className="transparent"
               component={FeatureObservationDropdownSearch}
+              displayLabel={false}
               module="collectionMammals"
               name={getPath('methodText')}
               rawOptions={selectableMethods}
@@ -108,6 +112,7 @@ class FeatureObservationTableRow extends PureComponent {
             autoComplete="off"
             className="transparent"
             component={Input}
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('date.dateText')}
             type="text"
@@ -117,10 +122,11 @@ class FeatureObservationTableRow extends PureComponent {
           <Field
             autoComplete="off"
             component={AdvancedAgentDropdownSearch}
+            displayLabel={false}
             formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"
-            module="agent"
+            module="collectionMammals"
             name={getPath('featureObservationAgent.id')}
           />
         </Table.Cell>
@@ -129,6 +135,7 @@ class FeatureObservationTableRow extends PureComponent {
             autoComplete="off"
             className="transparent"
             component={Input}
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('remarks')}
             type="text"

@@ -6,9 +6,7 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'collectionItems',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   agent: PropTypes.shape({
@@ -110,7 +108,7 @@ class CuratorialAssessmentItem extends PureComponent {
             }
           >
             <Modal.Header>
-              <ModuleTranslate textKey="editCuratorialAssessment" />
+              <ModuleTranslate textKey="headers.editCuratorialAssessment" />
             </Modal.Header>
             <Modal.Content>
               <Modal.Description>

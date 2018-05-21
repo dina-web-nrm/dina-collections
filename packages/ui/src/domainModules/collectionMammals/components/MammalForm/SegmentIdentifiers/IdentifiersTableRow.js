@@ -12,9 +12,7 @@ const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTableRow'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'identifiers',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
@@ -60,6 +58,7 @@ class IdentifiersTableRow extends PureComponent {
             autoComplete="off"
             className="transparent"
             component={DropdownSearch}
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('identifierType.id')}
             options={identifierTypeOptions}
@@ -71,6 +70,7 @@ class IdentifiersTableRow extends PureComponent {
             autoComplete="off"
             className="transparent"
             component={Input}
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('value')}
             type="text"
@@ -81,6 +81,7 @@ class IdentifiersTableRow extends PureComponent {
             autoComplete="off"
             className="transparent"
             component={Input}
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('remarks')}
             type="text"

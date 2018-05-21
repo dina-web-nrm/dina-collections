@@ -19,9 +19,8 @@ function FeatureObservationsTitle({ headlineKey }) {
     <React.Fragment>
       <Icon name="dropdown" />
       <ModuleTranslate
-        fallback={headlineKey}
         module="collectionMammals"
-        scope="featureObservations"
+        scope="enums.featureObservations"
         textKey={headlineKey}
       />
     </React.Fragment>

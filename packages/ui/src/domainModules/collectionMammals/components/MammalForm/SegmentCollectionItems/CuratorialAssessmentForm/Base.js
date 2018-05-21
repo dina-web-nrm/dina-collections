@@ -72,8 +72,8 @@ export class BaseForm extends PureComponent {
                 <Field
                   component="input"
                   format={formatBooleanRadio}
-                  label="Is in storage"
                   name="isInStorage"
+                  parameterKey="curatorialAssessment.isInStorage"
                   parse={parseBooleanRadio}
                   type="radio"
                   value="true"
@@ -86,8 +86,8 @@ export class BaseForm extends PureComponent {
                 <Field
                   component="input"
                   format={formatBooleanRadio}
-                  label="Not found"
                   name="isInStorage"
+                  parameterKey="curatorialAssessment.isNotInStorage"
                   parse={parseBooleanRadio}
                   type="radio"
                   value="false"
@@ -101,9 +101,9 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Remarks"
                 module="collectionMammals"
                 name="inventoryStatusRemarks"
+                parameterKey="curatorialAssessment.inventoryStatusRemarks"
                 type="input-text"
               />
             </Grid.Column>
@@ -113,9 +113,9 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Condition"
                 module="collectionMammals"
                 name="condition"
+                parameterKey="curatorialAssessment.condition"
                 type="input-text"
               />
             </Grid.Column>
@@ -123,9 +123,9 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Condition remarks"
                 module="collectionMammals"
                 name="conditionRemarks"
+                parameterKey="curatorialAssessment.conditionRemarks"
                 type="input-text"
               />
             </Grid.Column>
@@ -135,9 +135,9 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Date"
                 module="collectionMammals"
                 name="date.dateText"
+                parameterKey="curatorialAssessment.date"
                 type="input-text"
               />
             </Grid.Column>
@@ -148,18 +148,18 @@ export class BaseForm extends PureComponent {
                 formName={MAMMAL_FORM_NAME}
                 group={ALL}
                 initialText="Choose"
-                label="Agent"
-                module="agent"
+                module="collectionMammals"
                 name="agent.id"
+                parameterKey="curatorialAssessment.agent"
               />
             </Grid.Column>
             <Grid.Column computer={4} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Agent text"
                 module="collectionMammals"
                 name="agentText"
+                parameterKey="curatorialAssessment.agentText"
                 type="input-text"
               />
             </Grid.Column>
