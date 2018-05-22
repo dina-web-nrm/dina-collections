@@ -24,7 +24,7 @@ module.exports = function createCollectionItems({ migrator, lookup }) {
   })
 
   /* Skin */
-
+  // setPreparationType
   migrator.setValue({
     path: 'target.individual.collectionItems.1.preparationType.id',
     value: lookup.getPreparationType({
@@ -35,10 +35,7 @@ module.exports = function createCollectionItems({ migrator, lookup }) {
     }),
   })
 
-  migrator.filterArray({
-    path: 'target.individual.collectionItems',
-  })
-
+  // setStorageLocation
   migrator.setValue({
     path:
       'target.individual.collectionItems.1.physicalObject.storageLocation.id',
@@ -48,5 +45,10 @@ module.exports = function createCollectionItems({ migrator, lookup }) {
         path: 'src.collection.SkinCollection_related.Location_Eng',
       }),
     }),
+  })
+
+  /* filter collectionItems */
+  migrator.filterArray({
+    path: 'target.individual.collectionItems',
   })
 }
