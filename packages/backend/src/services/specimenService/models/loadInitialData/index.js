@@ -24,30 +24,76 @@ module.exports = function loadInitialData({ config, models }) {
     return specimenTemplate[index % specimenTemplate.length]
   }
 
-  let id = 0
+  let physicalObjectId = 0
+  let specimenId = 0
   return batchExecute({
     createEntry,
     execute: items => {
       return Promise.all(
         items.map(rawSpecimen => {
-          const migratedSpecimen = migrateSpecimen({
+          const migratedCoreSpecimen = migrateSpecimen({
             reporter,
             specimen: rawSpecimen,
           })
 
-          return migratedSpecimen
+          return migratedCoreSpecimen
         })
-      ).then(mappedSpecimens => {
-        const tmp = mappedSpecimens.map(mappedSpecimen => {
-          id += 1
-          return {
-            doc: mappedSpecimen,
-            id,
-          }
-        })
+      )
+        .then(coreSpecimens => {
+          // to be used in later then() when creating specimens
+          const specimensWithPhysicalObjects = [...coreSpecimens]
 
-        return models.specimen.bulkCreate(tmp)
-      })
+          const mappedPhysicalObjects = []
+
+          coreSpecimens.forEach(({ relationships }, specimenIndex) => {
+            if (
+              relationships &&
+              relationships.physicalObjects &&
+              relationships.physicalObjects.data &&
+              relationships.physicalObjects.data.length
+            ) {
+              relationships.physicalObjects.data.forEach(
+                (corePhysicalObject, physicalObjectIndex) => {
+                  physicalObjectId += 1
+
+                  // replace core format with JSON API format for specimens to be created
+                  specimensWithPhysicalObjects[
+                    specimenIndex
+                  ].relationships.physicalObjects.data[physicalObjectIndex] = {
+                    id: `${physicalObjectId}`,
+                    type: 'physicalObject',
+                  }
+
+                  // TODO: change to sql key storageLocationId instead of having
+                  // storageLocation in doc
+                  return mappedPhysicalObjects.push({
+                    doc: corePhysicalObject.attributes,
+                    id: physicalObjectId,
+                  })
+                }
+              )
+            }
+          })
+
+          return models.physicalObject
+            .bulkCreate(mappedPhysicalObjects)
+            .then(() => {
+              return specimensWithPhysicalObjects
+            })
+        })
+        .then(mappedSpecimens => {
+          const specimens = mappedSpecimens.map(
+            ({ attributes, relationships }) => {
+              specimenId += 1
+              return {
+                doc: { ...attributes, relationships },
+                id: specimenId,
+              }
+            }
+          )
+
+          return models.specimen.bulkCreate(specimens)
+        })
     },
     numberOfEntries: numberOfSpecimens,
     numberOfEntriesEachBatch: 1000,

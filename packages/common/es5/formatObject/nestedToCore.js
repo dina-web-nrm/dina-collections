@@ -33,9 +33,14 @@ module.exports = function nestedToCore(_ref) {
       normalize = _ref$normalize === undefined ? true : _ref$normalize,
       resourceType = _ref.type;
 
+  if (typeof rawItem === 'string') {
+    throw new Error('item must not be a string');
+  }
+
   if (!rawItem) {
     return rawItem;
   }
+
   var item = cloneObject(rawItem);
   var normalizeSpecification = getNormalizeSpecification(resourceType);
   var relationshipSpecification = getRelationshipSpecification(resourceType);

@@ -50,7 +50,7 @@ module.exports = function extractItemRelationship(_ref) {
             var exists = relationshipArray.find(function (_ref2) {
               var id = _ref2.id;
 
-              return id === formattedRelationship.id;
+              return id !== undefined && id === formattedRelationship.id;
             });
             if (!exists) {
               relationshipArray.push(formattedRelationship);
