@@ -26,7 +26,7 @@ const FieldLabel = ({
   label: translatedLabel,
   labelKey,
 }) => {
-  const label = <Translate capitalize textKey={labelKey} />
+  const label = translatedLabel || <Translate capitalize textKey={labelKey} />
   return (
     <label htmlFor={htmlFor}>
       {label}
