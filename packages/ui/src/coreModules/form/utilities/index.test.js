@@ -39,10 +39,6 @@ describe('coreModules/form/utilities', () => {
       expect(createParameterKey({ name: 'value' })).toEqual('value')
     })
 
-    it('return value from name: "value"', () => {
-      expect(createParameterKey({ name: 'value' })).toEqual('value')
-    })
-
     it('return storageLocation.locationText from name: "locationText" model: storageLocation', () => {
       expect(
         createParameterKey({ model: 'storageLocation', name: 'locationText' })

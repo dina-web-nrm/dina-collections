@@ -27,11 +27,7 @@ export default function injectParameterKey(ComposedComponent) {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (
-        !nextProps.parameterKey &&
-        this.props.name !== nextProps.name &&
-        !nextProps.parameterKey
-      ) {
+      if (!nextProps.parameterKey && this.props.name !== nextProps.name) {
         this.setState({
           parameterKey: createParameterKey({
             model: nextProps.model,

@@ -39,30 +39,30 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
     })
   })
 
-  // describe('create', () => {
-  //   it('Creates and returns a simple record', () => {
-  //     const doc = {
-  //       normalized: {
-  //         projects: [
-  //           {
-  //             id: '1234',
-  //             name: 'coding',
-  //           },
-  //         ],
-  //         user: {
-  //           name: 'Anton',
-  //         },
-  //       },
-  //     }
+  describe('create', () => {
+    it('Creates and returns a simple record', () => {
+      const doc = {
+        normalized: {
+          projects: [
+            {
+              id: '1234',
+              name: 'coding',
+            },
+          ],
+          user: {
+            name: 'Anton',
+          },
+        },
+      }
 
-  //     return model.create({ doc }).then(res => {
-  //       expect(res).toBeTruthy()
-  //       expect(res.document).toEqual(doc)
-  //       expect(res.id).toBeTruthy()
-  //       expect(res.dataValues.document).toEqual(undefined)
-  //     })
-  //   })
-  // })
+      return model.create({ doc }).then(res => {
+        expect(res).toBeTruthy()
+        expect(res.document).toEqual(doc)
+        expect(res.id).toBeTruthy()
+        expect(res.dataValues.document).toEqual(undefined)
+      })
+    })
+  })
 
   describe('update', () => {
     const firstDoc = {
