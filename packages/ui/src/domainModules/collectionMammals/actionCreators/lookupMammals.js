@@ -8,7 +8,7 @@ import {
 import { LOOKUP_MAMMALS } from '../endpoints'
 
 export default function lookupMammals(filterParams = {}) {
-  const queryParams = { filter: filterParams, relationships: ['taxa'] }
+  const queryParams = { filter: filterParams, relationships: ['taxonNames'] }
 
   return (dispatch, getState, { apiClient }) => {
     dispatch({
