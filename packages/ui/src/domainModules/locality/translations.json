@@ -1,4 +1,22 @@
 {
+  "fieldLabels": {
+    "place": {
+      "name": { "en": "name" },
+      "group": { "en": "group" },
+      "parent": { "en": "parent" }
+    },
+    "verticalPosition": {
+      "minimumElevationInMeters": { "en": "min" },
+      "maximumElevationInMeters": { "en": "max" },
+      "maximumDepthInMeters": { "en": "max" },
+      "minimumDepthInMeters": { "en": "min" }
+    },
+    "centralPosition": {
+      "latitude": { "en": "latitude" },
+      "longitude": { "en": "longitude" },
+      "uncertaintyInMeters": { "en": "uncertainty" }
+    }
+  },
   "save": {
     "en": "Save",
     "sv": "Spara"
