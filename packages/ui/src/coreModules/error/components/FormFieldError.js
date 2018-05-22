@@ -9,10 +9,12 @@ const propTypes = {
   }).isRequired,
   module: PropTypes.string,
   scope: PropTypes.string.isRequired,
+  textKeys: PropTypes.array,
 }
 
 const defaultProps = {
   module: '',
+  textKeys: [],
 }
 
 const errorStyle = {
@@ -25,7 +27,15 @@ const errorStyle = {
   zIndex: 20,
 }
 
-const FormFieldError = ({ scope, error, module }) => {
+const FormFieldError = ({ scope, error, module, textKeys }) => {
+  if (textKeys.length) {
+    return (
+      <span className="ui red tiny label" style={errorStyle}>
+        <ModuleTranslate capitalize params={error.params} textKeys={textKeys} />
+      </span>
+    )
+  }
+
   return (
     <span className="ui red tiny label" style={errorStyle}>
       {module ? (

@@ -1,23 +1,387 @@
 {
-  "add": {
-    "en": "Add",
-    "sv": "Lägg till"
+  "enums": {
+    "featureObservations": {
+      "age": {
+        "en": "Age",
+        "sv": "Ålder"
+      },
+      "ageDeterminationMethod": {
+        "en": "Age determination method",
+        "sv": "Åldersbestämningsmetod"
+      },
+      "age-stage": {
+        "en": "Age stage",
+        "sv": "Åldersstadium"
+      },
+      "ageStage": {
+        "en": "Age stage",
+        "sv": "Åldersstadium"
+      },
+      "bone-count": {
+        "en": "Bone counts",
+        "sv": "Benantal"
+      },
+      "condition": {
+        "en": "Condition",
+        "sv": "Tillstånd"
+      },
+      "conditionAtCollecting": {
+        "en": "Condition at collecting",
+        "sv": "Tillstånd vid insamling"
+      },
+      "length": {
+        "en": "Lengths",
+        "sv": "Längder"
+      },
+      "sex": {
+        "en": "Sex",
+        "sv": "Kön"
+      },
+      "stage-and-age": {
+        "en": "Stage and age",
+        "sv": "Stadium och ålder"
+      },
+      "weight": {
+        "en": "Weights",
+        "sv": "Vikter"
+      }
+    }
   },
-  "catalogCard": {
-    "en": "Catalog card",
-    "sv": "Katalogkort"
+  "fieldLabels": {
+    "acquisition": {
+      "acquisitionTypeText": {
+        "en": "Acquistion type"
+      },
+      "date": {
+        "en": "Acquistion date"
+      },
+      "handedInByAgent": {
+        "en": "Handed in by agent"
+      },
+      "handedInByAgentText": {
+        "en": "Handed in by text"
+      }
+    },
+    "collectingInformation": {
+      "collectedByAgent": {
+        "en": "Collected by agent"
+      },
+      "collectorsText": {
+        "en": "Collectors text"
+      },
+
+      "establishmentMeansN": {
+        "en": "Established means text"
+      },
+      "establishmentMeansType": {
+        "en": "Establishment means"
+      },
+      "isDeathDate": {
+        "en": "Is death date",
+        "sv": ""
+      }
+    },
+    "collectionItems": {
+      "description": {
+        "en": "Description",
+        "sv": "Beskrivning"
+      },
+      "preparationType": {
+        "en": "Preparation type"
+      }
+    },
+    "curatorialAssessment": {
+      "agent": {
+        "en": "agent"
+      },
+      "agentText": {
+        "en": "Agent text"
+      },
+      "condition": {
+        "en": "condition"
+      },
+      "conditionRemarks": {
+        "en": "condition remarks"
+      },
+      "date": {
+        "en": "date"
+      },
+      "isInStorage": {
+        "en": "is in storage"
+      },
+      "isNotInStorage": {
+        "en": "not found"
+      },
+      "inventoryStatusRemarks": {
+        "en": "remarks"
+      }
+    },
+    "deathInformation": {
+      "causeOfDeathType": {
+        "en": "Cause of death"
+      },
+      "remarks": {
+        "en": "Remarks"
+      }
+    },
+    "determinations": {
+      "taxonName": {
+        "en": "Taxon name"
+      },
+      "date": {
+        "en": "Determination date"
+      },
+      "determinationVerbatim": {
+        "en": "Verbatim taxon name"
+      },
+      "determinedByAgent": {
+        "en": "Determined by agent"
+      },
+      "determinedByAgentText": {
+        "en": "Determined by text"
+      },
+      "remarks": {
+        "en": "Remarks"
+      }
+    },
+    "event": {
+      "expeditionText": {
+        "en": "Expedition description"
+      },
+      "startDate": {
+        "en": "Start",
+        "sv": ""
+      },
+      "endDate": {
+        "en": "End",
+        "sv": ""
+      },
+      "remarks": {
+        "en": "Remarks"
+      },
+      "readOnly": {
+        "en": "Read only"
+      }
+    },
+    "individual": {
+      "causeOfDeathStandardized": {
+        "en": "Cause of death",
+        "sv": ""
+      },
+      "causeOfDeathText": {
+        "en": "Death remark",
+        "sv": ""
+      },
+      "originStandardized": {
+        "en": "Origin",
+        "sv": ""
+      },
+      "typeStatus": {
+        "en": "Type status",
+        "sv": "Typstatus"
+      },
+      "collectionItemText": {
+        "en": "Collection item Text"
+      },
+      "remarks": {
+        "en": "Remarks"
+      },
+      "readOnly": {
+        "en": "Read only"
+      }
+    },
+    "locationInformation": {
+      "localityT": {
+        "en": "Stated (verbatim) locality",
+        "sv": "Angiven (verbatim) lokalitet"
+      },
+      "localityN": { "en": "Locality name (normalized)" },
+      "localityRemarks": {
+        "en": "Locality remarks",
+        "sv": "Lokalitetsnoteringar"
+      },
+      "remarks": {
+        "en": "Remarks"
+      },
+      "readOnly": {
+        "en": "Read only"
+      }
+    },
+    "originInformation": {
+      "isResultOfSelectiveBreeding": {
+        "en": "Result of selective breeding"
+      },
+      "isAffectedByManagement": {
+        "en": "Affected by management"
+      },
+      "originLocality": {
+        "en": "Origin locality",
+        "sv": ""
+      },
+      "remarks": {
+        "en": "Remarks",
+        "sv": ""
+      }
+    },
+    "physicalObject": {
+      "storageLocation": {
+        "en": "Normal storage location",
+        "sv": "Reguljär lagringsplats"
+      },
+      "storageLocationText": {
+        "en": "Storage location text"
+      }
+    },
+    "places": {
+      "choose": {
+        "en": "Choose...",
+        "sv": "Välj..."
+      },
+      "higherGeography": {
+        "en": "Higher geography"
+      },
+      "swedishMap": {
+        "en": "Swedish map"
+      }
+    },
+    "position": {
+      "uncertaintyInMeters": {
+        "en": "Coordinate uncertainty in meters",
+        "sv": ""
+      },
+      "geodeticDatum": {
+        "en": "Geodetic datum",
+        "sv": "Geodetiskt datum"
+      },
+      "latitude": {
+        "en": "Latitude (N)",
+        "sv": "Latitud (N)"
+      },
+      "longitude": {
+        "en": "Longitude (E)",
+        "sv": "Longitud (E)"
+      },
+      "referenceSystem": {
+        "en": "Ref. syst"
+      }
+    },
+    "specimen": {
+      "publishRecord": {
+        "en": "Public",
+        "sv": "Publikt"
+      }
+    },
+    "taxonInformation": {
+      "curatorialTaxonName": {
+        "en": "Curatorial name"
+      },
+      "curatorialTaxonNameText": {
+        "en": "Curatorial name text"
+      },
+      "readOnly": {
+        "en": "Read only"
+      },
+      "taxonRemarks": {
+        "en": "Taxon remarks"
+      }
+    },
+    "verticalPosition": {
+      "maximumDepthInMeters": {
+        "en": "Max",
+        "sv": "Max"
+      },
+      "maximumElevationInMeters": {
+        "en": "Max",
+        "sv": "Max"
+      },
+      "minimumDepthInMeters": {
+        "en": "Min",
+        "sv": "Min"
+      },
+      "minimumElevationInMeters": {
+        "en": "Min",
+        "sv": "Min"
+      }
+    }
   },
-  "createdBy": {
-    "en": "Created by",
-    "sv": "Skapat av"
+
+  "headers": {
+    "collectingInformation": {
+      "en": "collecting information"
+    },
+    "curatorialAssessments": {
+      "en": "Curatorial assessments",
+      "sv": ""
+    },
+    "determinations": {
+      "en": "determinations"
+    },
+    "editCuratorialAssessment": {
+      "en": "Edit curatorial assessment",
+      "sv": ""
+    },
+    "features": {
+      "en": "Feature observations"
+    },
+    "newSpecimen": {
+      "en": "New specimen",
+      "sv": "Nytt exemplar"
+    },
+    "physicalObjects": {
+      "en": "physical objects"
+    },
+    "taxon": {
+      "en": "taxon"
+    }
   },
-  "date": {
-    "en": "Date",
-    "sv": "Datum"
+  "helpTexts": {
+    "locationInformation": {
+      "localityN": {
+        "en":
+          "Locality name(s) which don’t fit to other fields. E.g. detailed place or water body (e.g. “Frescati” or “Baltic sea”)",
+        "sv": ""
+      },
+      "remarks": {
+        "en": "Notes on the locality",
+        "sv": ""
+      }
+    },
+    "position": {
+      "latitude": {
+        "en":
+          "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
+        "sv": ""
+      },
+      "longitude": {
+        "en":
+          "Longitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
+        "sv": ""
+      }
+    },
+    "verticalPosition": {
+      "maximumDepthInMeters": {
+        "en":
+          "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+        "sv": ""
+      },
+      "maximumElevationInMeters": {
+        "en":
+          "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+        "sv": ""
+      },
+      "minimumDepthInMeters": {
+        "en":
+          "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+        "sv": ""
+      },
+      "minimumElevationInMeters": {
+        "en":
+          "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
+        "sv": ""
+      }
+    }
   },
-  "catalogNumber": {
-    "en": "Catalog number",
-    "sv": "Katalognummer",
+  "other": {
     "add": {
       "en": "Add",
       "sv": "Lägg till"
@@ -26,71 +390,32 @@
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
     },
-    "cancel": {
-      "en": "Cancel",
-      "sv": "Ångra"
-    },
-    "edit": {
-      "en": "Edit",
-      "sv": "Redigera"
-    },
-    "editCatalogNumber": {
-      "en": "Edit catalog number",
-      "sv": "Redigera katalognummer"
-    },
-    "newSpecimen": {
-      "en": "New specimen",
-      "sv": "Nytt exemplar"
-    },
-    "saveChanges": {
-      "en": "Save changes",
-      "sv": "Spara ändringar"
-    },
-    "sixOrEightDigits": {
-      "en": "6 or 8 digits",
-      "sv": "6 eller 8 siffror"
-    }
-  },
-  "identifiers": {
-    "en": "Identifiers",
-    "sv": "Identifierare",
-    "addIdentifier": {
-      "en": "Add identifier",
-      "sv": "Lägg till identifierare"
-    },
-    "identifierType": {
-      "en": "Source/type",
-      "sv": "Källa/typ"
-    },
-    "value": {
-      "en": "Value",
-      "sv": "Värde"
-    },
-    "remarks": {
-      "en": "Remarks",
-      "sv": "Noteringar"
-    },
-    "remove": {
-      "en": "Remove",
-      "sv": "Ta bort"
-    },
-    "isPublic": {
-      "en": "Public",
-      "sv": "Publikt"
-    },
-    "typeStatus": {
-      "en": "Type status",
-      "sv": "Typstatus"
-    }
-  },
-  "determination": {
     "addDetermination": {
       "en": "Add determination",
       "sv": "Lägg till bestämning"
     },
+    "addIdentifier": {
+      "en": "Add identifier",
+      "sv": "Lägg till identifierare"
+    },
+    "agent": {
+      "en": "agent"
+    },
+    "catalogCard": {
+      "en": "Catalog card",
+      "sv": "Katalogkort"
+    },
+    "catalogNumber": {
+      "en": "Catalog number",
+      "sv": "Katalognummer"
+    },
     "cancel": {
       "en": "Cancel",
       "sv": "Avbryt"
+    },
+    "clearSearchParameters": {
+      "en": "Clear search parameters",
+      "sv": "Rensa sökparametrar"
     },
     "copy": {
       "en": "Copy",
@@ -100,383 +425,40 @@
       "en": "Copy to verbatim",
       "sv": "Kopiera till verbatim"
     },
-    "date": {
-      "en": "Date",
-      "sv": "Datum"
+    "choose": {
+      "en": "Choose...",
+      "sv": "Välj..."
     },
-    "determination": {
-      "en": "Determination",
-      "sv": "Bestämning"
-    },
-    "determinedBy": {
-      "en": "Determined by",
-      "sv": "Bestämd av"
-    },
-    "identificationText": {
-      "en": "Taxon name, determiner, determination date, etc.",
-      "sv": "Taxonnamn, bestämmare, bestämningsdatum, etc."
-    },
-    "nowThisDeterminationCurrent": {
-      "en": "Now only this determination is marked as current.",
-      "sv": "Nu är endast denna bestämning markerad som aktuell."
-    },
-    "remove": {
-      "en": "Remove",
-      "sv": "Ta bort"
-    },
-    "removeThisDetermination": {
-      "en": "Remove this determination?",
-      "sv": "Ta bort denna bestämning?"
-    },
-    "verbatimTaxonName": {
-      "en": "Verbatim taxon name",
-      "sv": "Verbatim taxonnamn"
-    },
-    "warningChangedDetermination": {
-      "en":
-        "Warning: Another determination \"{{taxonName}}\" was already marked as current.",
-      "sv":
-        "Varning: En annan bestämning \"{{taxonName}}\" var redan markerad som aktuell."
-    }
-  },
-  "individual": {
-    "causeOfDeathStandardized": {
-      "en": "Cause of death",
-      "sv": ""
-    },
-    "causeOfDeathText": {
-      "en": "Death remark",
-      "sv": ""
-    },
-    "originStandardized": {
-      "en": "Origin",
-      "sv": ""
-    }
-  },
-  "collectingInformation": {
-    "collectingInformation": {
-      "en": "Collecting information",
-      "sv": "Insamlingsinformation"
-    },
-    "establishmentMeansStandardized": {
-      "en": "Establishment means",
-      "sv": ""
-    },
-    "expeditionText": {
-      "en": "Expedition description",
-      "sv": ""
-    },
-    "isDeathEvent": {
-      "en": "Is death event",
-      "sv": ""
-    },
-    "locationInformation": {
-      "places": {
-        "choose": {
-          "en": "Choose...",
-          "sv": "Välj..."
-        },
-        "continentStandardized": {
-          "en": "Continent",
-          "sv": "Kontinent"
-        },
-        "districtStandardized": {
-          "en": "District",
-          "sv": "Distrikt"
-        },
-        "provinceStandardized": {
-          "en": "Province",
-          "sv": "Provins"
-        },
-        "localityStandardized": {
-          "en": "Interpreted locality",
-          "sv": "Tolkad lokalitet"
-        },
-        "countryStandardized": {
-          "en": "Country",
-          "sv": "Land"
-        }
-      },
-      "coordinatesVerbatim": {
-        "en": "Coordinates (verbatim)",
-        "sv": "Koordinater (verbatim)"
-      },
-      "uncertaintyInMeters": {
-        "en": "Coord. uncertainty (m)",
-        "sv": "Koordinatosäkerhet (m)"
-      },
-      "georeferenceSourcesText": {
-        "en": "Georeference sources",
-        "sv": "Georeferenskälla"
-      },
-      "localityRemarks": {
-        "en": "Locality remarks",
-        "sv": "Lokalitetsnoteringar"
-      },
-      "localityT": {
-        "en": "Stated (verbatim) locality",
-        "sv": "Angiven (verbatim) lokalitet"
-      },
-      "position": {
-        "uncertaintyInMeters": {
-          "en": "Coordinate uncertainty in meters",
-          "sv": ""
-        },
-        "geodeticDatum": {
-          "en": "Geodetic datum",
-          "sv": "Geodetiskt datum"
-        },
-        "latitude": {
-          "en": "Latitude (N)",
-          "sv": "Latitud (N)"
-        },
-        "longitude": {
-          "en": "Longitude (E)",
-          "sv": "Longitud (E)"
-        }
-      },
-      "verticalPosition": {
-        "maximumDepthInMeters": {
-          "en": "Max",
-          "sv": "Max"
-        },
-        "maximumElevationInMeters": {
-          "en": "Max",
-          "sv": "Max"
-        },
-        "minimumDepthInMeters": {
-          "en": "Min",
-          "sv": "Min"
-        },
-        "minimumElevationInMeters": {
-          "en": "Min",
-          "sv": "Min"
-        }
-      },
-      "helpTexts": {
-        "continentStandardized": {
-          "en": "Name of a continent",
-          "sv": "Namn på en kontinent"
-        },
-        "coordinatesVerbatim": {
-          "en":
-            "Verbatim coordinates (or corresponding information, e.g. map number) from the original source",
-          "sv": ""
-        },
-        "countryStandardized": {
-          "en": "Name of a country",
-          "sv": ""
-        },
-        "districtStandardized": {
-          "en": "Name os a municipality, county or such (e.g. kommun)",
-          "sv": ""
-        },
-        "geodeticDatum": {
-          "en":
-            "Datum (coordinate system), e.g. “wgs84” or “sweref99”. Leave empty if unknown.",
-          "sv": ""
-        },
-        "georeferenceSourcesText": {
-          "en":
-            "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
-          "sv": ""
-        },
-        "latitude": {
-          "en":
-            "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
-          "sv": ""
-        },
-        "localityRemarks": {
-          "en": "Notes on the locality",
-          "sv": ""
-        },
-        "localityStandardized": {
-          "en":
-            "Locality name(s) which don’t fit to other fields. E.g. detailed place or water body (e.g. “Frescati” or “Baltic sea”)",
-          "sv": ""
-        },
-        "longitude": {
-          "en":
-            "Longitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
-          "sv": ""
-        },
-        "maximumDepthInMeters": {
-          "en":
-            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
-          "sv": ""
-        },
-        "maximumElevationInMeters": {
-          "en":
-            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
-          "sv": ""
-        },
-        "minimumDepthInMeters": {
-          "en":
-            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
-          "sv": ""
-        },
-        "minimumElevationInMeters": {
-          "en":
-            "If you fill in one, you have to fill in the other also. Use “?” for unknown data",
-          "sv": ""
-        },
-        "provinceStandardized": {
-          "en": "Name of a province (e.g. län)",
-          "sv": ""
-        }
-      }
-    },
-    "originLocalityText": {
-      "en": "Origin locality",
-      "sv": ""
-    },
-    "startTime": {
-      "en": "Time",
-      "sv": ""
-    },
-    "yearStart": {
-      "en": "Year",
-      "sv": ""
-    },
-    "monthStart": {
-      "en": "Month",
-      "sv": ""
-    },
-    "dayStart": {
-      "en": "Day",
-      "sv": ""
-    },
-    "endTime": {
-      "en": "End time",
-      "sv": ""
-    },
-    "yearEnd": {
-      "en": "Year",
-      "sv": ""
-    },
-    "monthEnd": {
-      "en": "Month",
-      "sv": ""
-    },
-    "dayEnd": {
-      "en": "Day",
-      "sv": ""
-    },
-    "startDate": {
-      "en": "Start",
-      "sv": ""
-    },
-    "endDate": {
-      "en": "End",
-      "sv": ""
-    },
-    "collectorsText": {
-      "en": "Collectors text",
-      "sv": ""
-    }
-  },
-  "featureObservations": {
-    "age": {
-      "en": "Age",
-      "sv": "Ålder"
-    },
-    "ageDeterminationMethod": {
-      "en": "Age determination method",
-      "sv": "Åldersbestämningsmetod"
-    },
-    "agent": {
-      "en": "Agent",
-      "sv": "Agent"
-    },
-    "agentText": {
-      "en": "Agent text",
-      "sv": "Agenttext"
-    },
-    "age-stage": {
-      "en": "Age stage",
-      "sv": "Åldersstadium"
-    },
-    "ageStage": {
-      "en": "Age stage",
-      "sv": "Åldersstadium"
-    },
-    "bone-count": {
-      "en": "Bone counts",
-      "sv": "Benantal"
-    },
-    "condition": {
-      "en": "Condition",
-      "sv": "Tillstånd"
-    },
-    "conditionAtCollecting": {
-      "en": "Condition at collecting",
-      "sv": "Tillstånd vid insamling"
+    "createdBy": {
+      "en": "Created by",
+      "sv": "Skapat av"
     },
     "date": {
-      "en": "Date",
-      "sv": "Datum"
+      "en": "Date"
     },
-    "feature": {
-      "en": "Feature",
-      "sv": "Egenskap"
+    "edit": {
+      "en": "Edit",
+      "sv": "Redigera"
     },
-    "features": {
-      "en": "Features",
-      "sv": "Egenskaper"
+    "editCatalogNumber": {
+      "en": "Edit catalog number",
+      "sv": "Redigera katalognummer"
     },
-    "featureType": {
-      "en": "Feature type",
-      "sv": "Egenskapstyp"
-    },
-    "length": {
-      "en": "Lengths",
-      "sv": "Längder"
-    },
-    "method": {
-      "en": "Method",
-      "sv": "Metod"
-    },
-    "sex": {
-      "en": "Sex",
-      "sv": "Kön"
-    },
-    "stage-and-age": {
-      "en": "Stage and age",
-      "sv": "Stadium och ålder"
-    },
-    "unit": {
-      "en": "Unit",
-      "sv": "Enhet"
-    },
-    "value": {
-      "en": "Value",
-      "sv": "Värde"
-    },
-    "weight": {
-      "en": "Weights",
-      "sv": "Vikter"
-    }
-  },
-  "collectionItems": {
-    "alternateIdentifiersText": {
-      "en": "Alternate identifier(s)",
-      "sv": "Alternativa identifierare"
-    },
-    "curatorialAssessments": {
-      "en": "Curatorial assessments",
-      "sv": ""
-    },
+
     "editCuratorialAssessment": {
       "en": "Edit curatorial assessment",
       "sv": ""
     },
-    "newAssessment": {
-      "en": "New assessment",
-      "sv": ""
+    "formContainsErrors": {
+      "en": "Form contains errors",
+      "sv": "Formuläret innehåller fel"
     },
-    "newCuratorialAssessment": {
-      "en": "New curatorial assessment",
-      "sv": ""
+    "id": {
+      "en": "id"
+    },
+    "method": {
+      "en": "Method",
+      "sv": "Metod"
     },
     "newSkeleton": {
       "en": "New skeleton",
@@ -490,157 +472,65 @@
       "en": "New wet preparation",
       "sv": ""
     },
-    "normalStorageLocation": {
-      "en": "Normal storage location",
-      "sv": "Reguljär lagringsplats"
-    },
-    "physicalObjectText": {
-      "en": "Description",
-      "sv": "Beskrivning"
-    },
-    "preparationType": {
-      "skin": {
-        "en": "Skin preparation types",
-        "sv": ""
-      },
-      "skeleton": {
-        "en": "Skeleton preparation types",
-        "sv": ""
-      },
-      "undefined": {
-        "en": "Preparation type",
-        "sv": ""
-      },
-      "wet-preparation": {
-        "en": "Wet preparation types",
-        "sv": ""
-      }
-    },
-    "skeleton": {
-      "en": "Skeleton",
-      "sv": "Skelett"
-    },
-    "skin": {
-      "en": "Skin",
-      "sv": "Skinn"
-    },
-    "wet-preparation": {
-      "en": "Wet preparation",
+    "newAssessment": {
+      "en": "New assessment",
       "sv": ""
-    }
-  },
-  "cancel": {
-    "en": "Cancel",
-    "sv": "Avbryt"
-  },
-  "formContainsErrors": {
-    "en": "Form contains errors",
-    "sv": "Formuläret innehåller fel"
-  },
-  "clearSearchParameters": {
-    "en": "Clear search parameters",
-    "sv": "Rensa sökparametrar"
-  },
-  "collectingDate": {
-    "en": "Collecting date",
-    "sv": "Insamlingsdatum"
-  },
-  "collectors": {
-    "en": "Collector(s)",
-    "sv": "Insamlare"
-  },
-  "day": {
-    "en": "Day",
-    "sv": "Dag"
-  },
-  "description": {
-    "en": "Description",
-    "sv": "Beskrivning"
-  },
-  "features": {
-    "en": "Features",
-    "sv": "Egenskaper"
-  },
-  "id": {
-    "en": "Id",
-    "sv": "Id"
-  },
-  "loading": {
-    "en": "Loading...",
-    "sv": "Laddar..."
-  },
-  "locality": {
-    "en": "Locality",
-    "sv": "Lokalitet"
-  },
-  "month": {
-    "en": "Month",
-    "sv": "Månad"
-  },
-  "noRecordsFound": {
-    "en": "No matching records found",
-    "sv": "Inga matchande utdrag funna"
-  },
-  "physicalObjects": {
-    "en": "Physical objects",
-    "sv": "Fysiska objekt"
-  },
-  "remarks": {
-    "en": "Remarks",
-    "sv": "Noteringar"
-  },
-  "remove": {
-    "en": "Remove",
-    "sv": "Ta bort"
-  },
-  "reset": {
-    "en": "Reset",
-    "sv": "Återställ"
-  },
-  "save": {
-    "en": "Save",
-    "sv": "Spara"
-  },
-  "saved": {
-    "en": "Saved",
-    "sv": "Sparat"
-  },
-  "search": {
-    "en": "Search",
-    "sv": "Sök"
-  },
-  "seeDataModelDocs": {
-    "en": "See data model docs",
-    "sv": "Se datamodellsdokumentationen"
-  },
-  "sex": {
-    "en": "Sex",
-    "sv": "Kön"
-  },
-  "sixOrEightDigits": {
-    "en": "6 or 8 digits",
-    "sv": "6 eller 8 siffror"
-  },
-  "submitFailed": {
-    "en": "Could not save",
-    "sv": "Kunde inte spara"
-  },
-  "taxonName": {
-    "en": "Taxon name",
-    "sv": "Taxonnamn"
-  },
-  "taxonNameStandardized": {
-    "en": "Taxon name",
-    "sv": "Taxonnamn"
-  },
-  "year": {
-    "en": "Year",
-    "sv": "År"
-  },
-  "other": {
-    "readOnly": {
-      "en": "Read only",
-      "sv": "Enbart läsa"
+    },
+    "newCuratorialAssessment": {
+      "en": "New curatorial assessment",
+      "sv": ""
+    },
+    "noRecordsFound": {
+      "en": "No matching records found",
+      "sv": "Inga matchande utdrag funna"
+    },
+    "remarks": {
+      "en": "Remarks"
+    },
+    "remove": {
+      "en": "Remove",
+      "sv": "Ta bort"
+    },
+    "reset": {
+      "en": "Reset",
+      "sv": "Återställ"
+    },
+    "saveChanges": {
+      "en": "Save changes",
+      "sv": "Spara ändringar"
+    },
+    "save": {
+      "en": "Save",
+      "sv": "Spara"
+    },
+    "saved": {
+      "en": "Saved",
+      "sv": "Sparat"
+    },
+    "search": {
+      "en": "Search",
+      "sv": "Sök"
+    },
+    "sixOrEightDigits": {
+      "en": "6 or 8 digits",
+      "sv": "6 eller 8 siffror"
+    },
+    "submitFailed": {
+      "en": "Could not save",
+      "sv": "Kunde inte spara"
+    },
+
+    "unit": {
+      "en": "Unit",
+      "sv": "Enhet"
+    },
+    "value": {
+      "en": "Value",
+      "sv": "Värde"
+    },
+    "weight": {
+      "en": "Weights",
+      "sv": "Vikter"
     }
   }
 }

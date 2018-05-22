@@ -4,7 +4,6 @@ import { Grid } from 'semantic-ui-react'
 import { compose } from 'redux'
 
 import { CustomData, Field, Input } from 'coreModules/form/components'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 
@@ -12,17 +11,11 @@ import Places from './Places'
 import Position from './Position'
 import VerticalPosition from './VerticalPosition'
 
-const buildModuleTextKey = textKey =>
-  `modules.collectionMammals.occurrences.locationInformation.${textKey}`
-
 const propTypes = {
   getPath: PropTypes.func.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
 }
 
-function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
+function LocationInformationFields({ getPath }) {
   return (
     <Grid textAlign="left" verticalAlign="top">
       <Grid.Row>
@@ -30,11 +23,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
           <FieldWrapper
             autoComplete="off"
             component={Input}
-            helpNotificationProps={{
-              descriptionHeaderKey: buildModuleTextKey('localityT'),
-              descriptionKey: buildModuleTextKey('helpTexts.localityT'),
-            }}
-            label={moduleTranslate({ textKey: 'localityT' })}
             module="collectionMammals"
             name={getPath('localityT')}
             type="text"
@@ -46,7 +34,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
           <Field
             autoComplete="off"
             component={Input}
-            label="Locality name (normalized)"
             module="collectionMammals"
             name={getPath('localityN')}
             type="text"
@@ -60,11 +47,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
         <Field
           autoComplete="off"
           component={Input}
-          helpNotificationProps={{
-            descriptionHeaderKey: buildModuleTextKey('localityRemarks'),
-            descriptionKey: buildModuleTextKey('helpTexts.localityRemarks'),
-          }}
-          label={moduleTranslate({ textKey: 'localityRemarks' })}
           module="collectionMammals"
           name={getPath('remarks')}
           type="text"
@@ -75,7 +57,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
           <Field
             autoComplete="off"
             component={CustomData}
-            label="Read only"
             module="collectionMammals"
             name={getPath('readOnly')}
             type="read-only"
@@ -89,10 +70,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
 
 LocationInformationFields.propTypes = propTypes
 
-export default compose(
-  withI18n({
-    module: 'collectionMammals',
-    scope: 'collectingInformation.locationInformation',
-  }),
-  pathBuilder({ name: 'event.locationInformation' })
-)(LocationInformationFields)
+export default compose(pathBuilder({ name: 'event.locationInformation' }))(
+  LocationInformationFields
+)

@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'semantic-ui-react'
-import { FormFieldError } from '../../../error/components'
+import FieldError from './FieldError'
 import FieldLabel from './FieldLabel'
+import injectParameterKey from '../../higherOrderComponents/injectParameterKey'
 
 export const propTypes = {
   children: PropTypes.node,
-  errorScope: PropTypes.string,
+  displayLabel: PropTypes.bool,
+  enableHelpNotifications: PropTypes.bool,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -14,55 +16,62 @@ export const propTypes = {
     error: PropTypes.object,
     touched: PropTypes.bool,
   }).isRequired,
+  model: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
   module: PropTypes.string.isRequired,
   name: PropTypes.string,
+  parameterKey: PropTypes.string,
   required: PropTypes.bool,
 }
 export const defaultProps = {
   children: undefined,
-  errorScope: undefined,
+  displayLabel: true,
+  enableHelpNotifications: true,
   helpNotificationProps: undefined,
   helpText: undefined,
   label: undefined,
+  model: undefined,
   name: undefined,
+  parameterKey: undefined,
   required: false,
 }
 
+export const fieldTemplatePropKeys = Object.keys(propTypes)
+
 const FieldTemplate = ({
   children,
-  errorScope,
+  displayLabel,
+  enableHelpNotifications,
   helpNotificationProps,
   helpText,
   label,
   meta: { error, touched },
   module,
   name,
+  parameterKey,
   required,
 }) => {
   const displayError = touched && !!error
-
   return (
     <Form.Field
       error={displayError}
       required={required}
       style={{ position: 'relative' }}
     >
-      {(label || helpNotificationProps) && (
+      {displayLabel && (
         <FieldLabel
+          enableHelpNotifications={enableHelpNotifications}
           helpNotificationProps={helpNotificationProps}
           helpText={helpText}
           htmlFor={name}
           label={label}
+          module={module}
+          parameterKey={parameterKey}
         />
       )}
       {helpText && <p>{helpText}</p>}
       {children}
       {displayError && (
-        <FormFieldError
-          error={error}
-          module={module}
-          scope={errorScope || name}
-        />
+        <FieldError error={error} module={module} parameterKey={parameterKey} />
       )}
     </Form.Field>
   )
@@ -71,4 +80,4 @@ const FieldTemplate = ({
 FieldTemplate.propTypes = propTypes
 FieldTemplate.defaultProps = defaultProps
 
-export default FieldTemplate
+export default injectParameterKey(FieldTemplate)

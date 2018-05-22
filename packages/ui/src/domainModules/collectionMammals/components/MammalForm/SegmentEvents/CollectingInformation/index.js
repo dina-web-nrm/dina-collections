@@ -53,7 +53,7 @@ class SegmentCollectingInformation extends PureComponent {
     return (
       <React.Fragment>
         <Header size="medium">
-          <ModuleTranslate textKey="collectingInformation.collectingInformation" />
+          <ModuleTranslate capitalize textKey="headers.collectingInformation" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
           {allPlacesFetched && <LocationInformationFields />}
@@ -65,8 +65,7 @@ class SegmentCollectingInformation extends PureComponent {
               formName={MAMMAL_FORM_NAME}
               group={ALL}
               initialText="Choose"
-              label="Collected by agent"
-              module="agent"
+              module="collectionMammals"
               name={getPath('collectedByAgent.id')}
             />
           </Grid.Column>
@@ -74,12 +73,6 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Input}
-              label={
-                <ModuleTranslate
-                  scope="collectingInformation"
-                  textKey="collectorsText"
-                />
-              }
               module="collectionMammals"
               name={getPath('collectorsText')}
               type="text"
@@ -90,12 +83,6 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Input}
-              label={
-                <ModuleTranslate
-                  scope="collectingInformation"
-                  textKey="expeditionText"
-                />
-              }
               module="collectionMammals"
               name={getPath('event.expeditionText')}
               type="text"
@@ -106,7 +93,6 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={DropdownSearch}
-              label="Establishment means"
               module="collectionMammals"
               name={getPath('establishmentMeansType.id')}
               options={establishmentMeansTypeOptions}
@@ -118,7 +104,6 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Input}
-              label="Established means text"
               module="collectionMammals"
               name={getPath('establishmentMeansN')}
               type="text"
@@ -133,14 +118,9 @@ class SegmentCollectingInformation extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label={
-                  <ModuleTranslate
-                    scope="collectingInformation"
-                    textKey="startDate"
-                  />
-                }
                 module="collectionMammals"
                 name={getPath('event.dateRange.startDate.dateText')}
+                parameterKey="event.startDate"
                 type="text"
               />
             </Grid.Column>
@@ -148,14 +128,9 @@ class SegmentCollectingInformation extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label={
-                  <ModuleTranslate
-                    scope="collectingInformation"
-                    textKey="endDate"
-                  />
-                }
                 module="collectionMammals"
                 name={getPath('event.dateRange.endDate.dateText')}
+                parameterKey="event.endDate"
                 type="text"
               />
             </Grid.Column>
@@ -164,7 +139,6 @@ class SegmentCollectingInformation extends PureComponent {
                 autoComplete="off"
                 component={Checkbox}
                 inline
-                label="is death date"
                 module="collectionMammals"
                 name={getPath('isDeathDate')}
                 type="checkbox"

@@ -1,0 +1,10 @@
+{
+  "helpTexts": {
+    "storageLocation": {
+      "name": {
+        "en": "<p>Help text for name</p>\n",
+        "sv": "<p>Hjälptext för namn</p>\n"
+      }
+    }
+  }
+}

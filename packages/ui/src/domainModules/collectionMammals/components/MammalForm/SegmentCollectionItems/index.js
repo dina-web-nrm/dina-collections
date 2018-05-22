@@ -24,9 +24,7 @@ const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentCollectionItems'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'collectionItems',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
@@ -67,7 +65,7 @@ class SegmentCollectionItems extends PureComponent {
         loading={!(allStorageLocationsFetched && allPreparationTypesFetched)}
       >
         <Header size="medium">
-          <ModuleTranslate textKey="physicalObjects" />
+          <ModuleTranslate capitalize textKey="headers.physicalObjects" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
           {collectionItems &&
@@ -118,7 +116,7 @@ class SegmentCollectionItems extends PureComponent {
                   )
                 }}
               >
-                <ModuleTranslate textKey="newSkeleton" />
+                <ModuleTranslate textKey="other.newSkeleton" />
               </Button>
               <Button
                 id="new-skin"
@@ -130,7 +128,7 @@ class SegmentCollectionItems extends PureComponent {
                   )
                 }}
               >
-                <ModuleTranslate textKey="newSkin" />
+                <ModuleTranslate textKey="other.newSkin" />
               </Button>
               <Button
                 id="new-wet-preparation"
@@ -142,7 +140,7 @@ class SegmentCollectionItems extends PureComponent {
                   )
                 }}
               >
-                <ModuleTranslate textKey="newWetPreparation" />
+                <ModuleTranslate textKey="other.newWetPreparation" />
               </Button>
             </Button.Group>
           </Grid.Column>

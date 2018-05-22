@@ -35,7 +35,6 @@ const defaultProps = {
 const FieldWrapper = ({ format, parse, type, ...rest }) => {
   const parseAsNumber = !parse && PARSE_AS_NUMBER_TYPES.includes(type)
   const formatAsString = !format && FORMAT_AS_STRING_TYPES.includes(type)
-
   return (
     <Field
       format={formatAsString ? formatToString : format}

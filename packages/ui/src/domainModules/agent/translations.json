@@ -1,4 +1,19 @@
 {
+  "fieldLabels": {
+    "agent": {
+      "fullName": { "en": "Full name" },
+      "disambiguatingDescription": { "en": "Disambiguating description" },
+      "givenName": { "en": "Given name" },
+      "familyName": { "en": "Family name" },
+      "additionalName": { "en": "Additional name" },
+      "abbreviation": { "en": "Abbreviation" },
+      "alsoKnownAs": { "en": "Also known as" },
+      "remarks": { "en": "Remarks" },
+      "telephone": { "en": "Telephone" },
+      "email": { "en": "Email" },
+      "postalAddress": { "en": "Postal address" }
+    }
+  },
   "name": {
     "en": "Role name",
     "sv": "Rollnamn"

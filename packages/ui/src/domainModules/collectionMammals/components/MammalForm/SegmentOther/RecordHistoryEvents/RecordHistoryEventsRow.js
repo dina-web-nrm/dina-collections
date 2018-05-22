@@ -35,6 +35,7 @@ class RecordHistoryEventsRow extends PureComponent {
           <Field
             component={Input}
             disabled
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('system')}
             type="text"
@@ -44,10 +45,12 @@ class RecordHistoryEventsRow extends PureComponent {
           <Field
             autoComplete="off"
             component={AdvancedAgentDropdownSearch}
+            disabled={!isCatalogCardSystem}
+            displayLabel={false}
             formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"
-            module="agent"
+            module="collectionMammals"
             name={getPath('agent.id')}
           />
         </Table.Cell>
@@ -55,7 +58,8 @@ class RecordHistoryEventsRow extends PureComponent {
           <Field
             component={Input}
             disabled={!isCatalogCardSystem}
-            module="agent"
+            displayLabel={false}
+            module="collectionMammals"
             name={getPath('agentText')}
             type="text"
           />
@@ -64,6 +68,7 @@ class RecordHistoryEventsRow extends PureComponent {
           <Field
             component={Input}
             disabled={!isCatalogCardSystem}
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('date.dateText')}
             type="text"
@@ -73,6 +78,7 @@ class RecordHistoryEventsRow extends PureComponent {
           <Field
             component={Input}
             disabled
+            displayLabel={false}
             module="collectionMammals"
             name={getPath('description')}
             type="text"

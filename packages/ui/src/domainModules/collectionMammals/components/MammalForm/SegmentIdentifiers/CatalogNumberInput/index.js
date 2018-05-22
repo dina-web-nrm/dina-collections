@@ -7,9 +7,7 @@ import FieldLabel from 'coreModules/form/components/FieldTemplate/FieldLabel'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'catalogNumber',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   autoComplete: PropTypes.string,
@@ -21,6 +19,7 @@ const propTypes = {
   iconPosition: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  labelKey: PropTypes.string,
   match: PropTypes.shape({
     params: PropTypes.shape({
       catalogNumber: PropTypes.string,
@@ -44,6 +43,7 @@ const defaultProps = {
   icon: undefined,
   iconPosition: 'left',
   label: undefined,
+  labelKey: undefined,
   placeholder: undefined,
   required: false,
   scope: undefined,
@@ -87,26 +87,28 @@ class CatalogNumberInput extends Component {
       autoComplete,
       editMode,
       errorScope,
-      label,
+      helpNotificationProps,
+      helpText,
       icon,
       iconPosition,
       input,
+      label,
+      labelKey,
       meta: { touched, error },
       module,
       placeholder,
       required,
-      helpText,
-      helpNotificationProps,
       scope,
       type,
     } = this.props
     const { open } = this.state
     const displayError = touched && !!error
     const initializedWithValue = !!this.state.catalogNumber
-
     return (
       <Header as="h1">
-        {this.state.catalogNumber || <ModuleTranslate textKey="newSpecimen" />}{' '}
+        {this.state.catalogNumber || (
+          <ModuleTranslate textKey="headers.newSpecimen" />
+        )}{' '}
         {!open && (
           // since the tests cannot select the input in the modal we add this
           // hidden input
@@ -127,9 +129,9 @@ class CatalogNumberInput extends Component {
                 <a className="side-link" onClick={this.handleOpen}>
                   {' '}
                   {initializedWithValue ? (
-                    <ModuleTranslate textKey="edit" />
+                    <ModuleTranslate textKey="other.edit" />
                   ) : (
-                    <ModuleTranslate textKey="addCatalogNumber" />
+                    <ModuleTranslate textKey="other.addCatalogNumber" />
                   )}
                 </a>
               )
@@ -138,9 +140,9 @@ class CatalogNumberInput extends Component {
           >
             <Modal.Header>
               {initializedWithValue ? (
-                <ModuleTranslate textKey="editCatalogNumber" />
+                <ModuleTranslate textKey="other.editCatalogNumber" />
               ) : (
-                <ModuleTranslate textKey="addCatalogNumber" />
+                <ModuleTranslate textKey="other.addCatalogNumber" />
               )}
             </Modal.Header>
             <Modal.Content>
@@ -150,14 +152,14 @@ class CatalogNumberInput extends Component {
                   required={required}
                   style={{ position: 'relative' }}
                 >
-                  <ModuleTranslate textKey="addCatalogNumberModal" />
+                  <ModuleTranslate textKey="other.addCatalogNumberModal" />
                   <br />
-                  {(label || helpNotificationProps) && (
+                  {(label || helpNotificationProps || labelKey) && (
                     <FieldLabel
                       helpNotificationProps={helpNotificationProps}
                       helpText={helpText}
                       htmlFor={input.name}
-                      label={label}
+                      labelKey={labelKey}
                     />
                   )}
                   <br />
@@ -182,7 +184,7 @@ class CatalogNumberInput extends Component {
             </Modal.Content>
             <Modal.Actions>
               <Button onClick={this.handleClose}>
-                <ModuleTranslate textKey="cancel" />
+                <ModuleTranslate textKey="other.cancel" />
               </Button>
               <Button
                 disabled={displayError}
@@ -190,9 +192,9 @@ class CatalogNumberInput extends Component {
                 positive
               >
                 {initializedWithValue ? (
-                  <ModuleTranslate textKey="saveChanges" />
+                  <ModuleTranslate textKey="other.saveChanges" />
                 ) : (
-                  <ModuleTranslate textKey="add" />
+                  <ModuleTranslate textKey="other.add" />
                 )}
               </Button>
             </Modal.Actions>

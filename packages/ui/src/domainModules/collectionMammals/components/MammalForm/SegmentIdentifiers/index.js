@@ -23,9 +23,7 @@ import IdentifiersTable from './IdentifiersTable'
 
 const log = createLog('modules:collectionMammals:MammalForm:SegmentIdentifiers')
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'identifiers',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
@@ -76,8 +74,8 @@ class SegmentIdentifiers extends PureComponent {
                 component={CatalogNumberInput}
                 editMode={editMode}
                 formValueSelector={formValueSelector}
-                helpText={<ModuleTranslate textKey="sixOrEightDigits" />}
-                label={<ModuleTranslate textKey="catalogNumber" />}
+                helpText={<ModuleTranslate textKey="other.sixOrEightDigits" />}
+                labelKey="modules.collectionMammals.other.catalogNumber"
                 module="collectionMammals"
                 name={getPath('0.value')}
                 type="text"
@@ -87,7 +85,7 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Checkbox}
-                label={<ModuleTranslate textKey="isPublic" />}
+                model="specimen"
                 module="collectionMammals"
                 name="publishRecord"
                 type="checkbox"
@@ -98,7 +96,6 @@ class SegmentIdentifiers extends PureComponent {
                 autoComplete="off"
                 className="transparent"
                 component={DropdownSearch}
-                label={<ModuleTranslate textKey="typeStatus" />}
                 module="collectionMammals"
                 name="individual.typeStatus.id"
                 options={typeSpecimenTypeOptions}
@@ -111,7 +108,6 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Collection item Text"
                 module="collectionMammals"
                 name="individual.collectionItemText"
                 type="text"
@@ -123,7 +119,6 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Acquistion type"
                 module="collectionMammals"
                 name="individual.acquisition.acquisitionTypeText"
                 type="input-text"
@@ -134,9 +129,9 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Acquistion date"
                 module="collectionMammals"
                 name="individual.acquisition.date.dateText"
+                parameterKey="acquisition.date"
                 type="input-text"
               />
             </Grid.Column>
@@ -148,8 +143,7 @@ class SegmentIdentifiers extends PureComponent {
                 formName={MAMMAL_FORM_NAME}
                 group={ALL}
                 initialText="Choose"
-                label="Handed in by agent"
-                module="agent"
+                module="collectionMammals"
                 name="individual.acquisition.handedInByAgent.id"
               />
             </Grid.Column>
@@ -157,7 +151,6 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Handed in by text"
                 module="collectionMammals"
                 name="individual.acquisition.handedInByAgentText"
                 type="input-text"
@@ -184,7 +177,7 @@ class SegmentIdentifiers extends PureComponent {
                   changeFieldValue(getPath(identifiers.length), {})
                 }}
               >
-                <ModuleTranslate textKey="addIdentifier" />
+                <ModuleTranslate capitalize textKey="other.addIdentifier" />
               </Button>
             </Grid.Column>
           </Grid.Row>

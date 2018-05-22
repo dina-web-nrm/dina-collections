@@ -92,7 +92,6 @@ export class BaseForm extends PureComponent {
               <label htmlFor="agentType person">
                 <Field
                   component="input"
-                  label="Is in storage"
                   name="agentType"
                   type="radio"
                   value="person"
@@ -104,7 +103,6 @@ export class BaseForm extends PureComponent {
               <label htmlFor="agentType organization">
                 <Field
                   component="input"
-                  label="Not found"
                   name="agentType"
                   type="radio"
                   value="organization"
@@ -118,11 +116,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'fullName',
-                  descriptionKey: 'fullNameDescription',
-                }}
-                label="Full name"
+                model="agent"
                 module="agent"
                 name="fullName"
                 type="text"
@@ -132,11 +126,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'disambiguatingDescription',
-                  descriptionKey: 'disambiguatingDescriptionDescription',
-                }}
-                label="Disambiguating description"
+                model="agent"
                 module="agent"
                 name="disambiguatingDescription"
                 type="text"
@@ -146,11 +136,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'givenName',
-                  descriptionKey: 'givenNameDescription',
-                }}
-                label="Given name"
+                model="agent"
                 module="agent"
                 name="givenName"
                 type="text"
@@ -160,11 +146,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'familyName',
-                  descriptionKey: 'familyNameDescription',
-                }}
-                label="Family name"
+                model="agent"
                 module="agent"
                 name="familyName"
                 type="text"
@@ -174,11 +156,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'additionalName',
-                  descriptionKey: 'additionalNameDescription',
-                }}
-                label="Additional name"
+                model="agent"
                 module="agent"
                 name="additionalName"
                 type="text"
@@ -188,11 +166,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'abbreviation',
-                  descriptionKey: 'abbreviationDescription',
-                }}
-                label="Abbreviation"
+                model="agent"
                 module="agent"
                 name="abbreviation"
                 type="text"
@@ -202,11 +176,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'alsoKnownAs',
-                  descriptionKey: 'alsoKnownAsDescription',
-                }}
-                label="Also known as"
+                model="agent"
                 module="agent"
                 name="alsoKnownAs"
                 type="text"
@@ -218,11 +188,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'remarks',
-                  descriptionKey: 'remarksDescription',
-                }}
-                label="Remarks"
+                model="agent"
                 module="agent"
                 name="remarks"
                 type="text"
@@ -232,11 +198,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'telephone',
-                  descriptionKey: 'telephoneDescription',
-                }}
-                label="Telephone"
+                model="agent"
                 module="agent"
                 name="telephone"
                 type="text"
@@ -246,11 +208,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'email',
-                  descriptionKey: 'emailDescription',
-                }}
-                label="Email"
+                model="agent"
                 module="agent"
                 name="email"
                 type="text"
@@ -260,11 +218,7 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={TextArea}
-                helpNotificationProps={{
-                  descriptionHeaderKey: 'postalAddress',
-                  descriptionKey: 'postalAddressDescription',
-                }}
-                label="Postal address"
+                model="agent"
                 module="agent"
                 name="postalAddress"
                 type="text"

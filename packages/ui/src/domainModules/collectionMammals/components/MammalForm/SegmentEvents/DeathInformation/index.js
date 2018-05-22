@@ -39,7 +39,6 @@ class DeathInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={DropdownSearch}
-              label="Cause of death"
               module="collectionMammals"
               name={getPath('causeOfDeathType.id')}
               options={causeOfDeathTypeOptions}
@@ -51,7 +50,6 @@ class DeathInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={Input}
-              label="Remarks"
               module="collectionMammals"
               name={getPath('remarks')}
               type="text"

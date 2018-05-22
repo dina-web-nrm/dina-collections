@@ -78,7 +78,7 @@ export class FormActions extends PureComponent {
       <Grid.Row>
         <Grid.Column mobile={16}>
           <Button disabled={submitting} size="large" type="submit">
-            <ModuleTranslate textKey="save" />
+            <ModuleTranslate textKey="other.save" />
           </Button>
           {displayResetButton && (
             <Button
@@ -88,19 +88,19 @@ export class FormActions extends PureComponent {
               size="large"
               type="button"
             >
-              <ModuleTranslate textKey="reset" />
+              <ModuleTranslate textKey="other.reset" />
             </Button>
           )}
           {displayBackButton && (
             <Button basic onClick={handleClose} size="large" type="button">
-              <ModuleTranslate textKey="cancel" />
+              <ModuleTranslate textKey="other.cancel" />
             </Button>
           )}
           {displayRemoveButton &&
             skipRemoveConfirmation &&
             handleRemove && (
               <Button onClick={handleRemove}>
-                <ModuleTranslate textKey="remove" />
+                <ModuleTranslate textKey="other.remove" />
               </Button>
             )}
           {displayRemoveButton &&
@@ -118,7 +118,7 @@ export class FormActions extends PureComponent {
                       event.preventDefault()
                     }}
                   >
-                    <ModuleTranslate textKey="remove" />
+                    <ModuleTranslate textKey="other.remove" />
                   </Button>
                 }
               >
@@ -133,7 +133,7 @@ export class FormActions extends PureComponent {
                       handleRemove()
                     }}
                   >
-                    <ModuleTranslate textKey="remove" />
+                    <ModuleTranslate textKey="other.remove" />
                   </Button>
                   <Button
                     basic
@@ -142,7 +142,7 @@ export class FormActions extends PureComponent {
                       this.handleClosePopup()
                     }}
                   >
-                    <ModuleTranslate textKey="cancel" />
+                    <ModuleTranslate textKey="other.cancel" />
                   </Button>
                 </Popup.Content>
               </Popup>
@@ -153,7 +153,7 @@ export class FormActions extends PureComponent {
             submitFailed && (
               <Message
                 error
-                header={<ModuleTranslate textKey="formContainsErrors" />}
+                header={<ModuleTranslate textKey="other.formContainsErrors" />}
               />
             )}
           {submitFailed &&
@@ -161,11 +161,14 @@ export class FormActions extends PureComponent {
               <Message
                 content={error}
                 error
-                header={<ModuleTranslate textKey="submitFailed" />}
+                header={<ModuleTranslate textKey="other.submitFailed" />}
               />
             )}
           {submitSucceeded && (
-            <Message header={<ModuleTranslate textKey="saved" />} success />
+            <Message
+              header={<ModuleTranslate textKey="other.saved" />}
+              success
+            />
           )}
         </Grid.Column>
       </Grid.Row>

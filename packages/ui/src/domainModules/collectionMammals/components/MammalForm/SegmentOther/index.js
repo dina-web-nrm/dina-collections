@@ -5,14 +5,11 @@ import { connect } from 'react-redux'
 import { Grid, Segment } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import { createModuleTranslate } from 'coreModules/i18n/components'
 import { CustomData, Field, Input } from 'coreModules/form/components'
 import { CATALOG_CARD } from '../../../constants'
 import RecordHistoryEvents from './RecordHistoryEvents'
 
 const log = createLog('modules:collectionMammals:MammalForm:SegmentOther')
-
-const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const mapStateToProps = (state, { formValueSelector }) => {
   return {
@@ -69,8 +66,7 @@ class SegmentOther extends PureComponent {
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <CustomData
                 autoComplete="off"
-                input={{ name: 'readOnly', value: readOnly }}
-                label={<ModuleTranslate scope="other" textKey="readOnly" />}
+                input={{ name: 'individual.readOnly', value: readOnly }}
                 meta={{}}
                 module="collectionMammals"
                 name="individual.readOnly"

@@ -6,15 +6,9 @@ import { Grid } from 'semantic-ui-react'
 
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { StorageLocationDropdownSearch } from 'domainModules/storage/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import curatedListSelectors from 'domainModules/curatedList/globalSelectors'
-import {
-  SKELETON,
-  SKIN,
-  WET_PREPARATION,
-} from 'domainModules/curatedList/constants'
 import { ALL } from 'domainModules/storage/constants'
 import createLog from 'utilities/log'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
@@ -37,28 +31,19 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.array,
   getPath: PropTypes.func.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
-  preparationType: PropTypes.shape({
-    category: PropTypes.oneOf([SKELETON, SKIN, WET_PREPARATION]),
-  }),
   preparationTypeOptions: PropTypes.array,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
   curatorialAssessments: undefined,
-  preparationType: undefined,
   preparationTypeOptions: [],
 }
 
 function PhysicalObjectContent({
-  preparationType,
   changeFieldValue,
   curatorialAssessments,
   preparationTypeOptions,
   getPath,
-  i18n: { moduleTranslate },
   removeArrayFieldByIndex,
 }) {
   log.render()
@@ -69,11 +54,6 @@ function PhysicalObjectContent({
           <Field
             autoComplete="off"
             component={DropdownSearch}
-            label={moduleTranslate({
-              textKey: `preparationType.${(preparationType &&
-                preparationType.category) ||
-                'undefined'}`,
-            })}
             module="collectionMammals"
             name={getPath('preparationType.id')}
             options={preparationTypeOptions}
@@ -86,7 +66,6 @@ function PhysicalObjectContent({
           <Field
             autoComplete="off"
             component={Input}
-            label={moduleTranslate({ textKey: 'description' })}
             module="collectionMammals"
             name={getPath('description')}
             type="input-text"
@@ -97,7 +76,6 @@ function PhysicalObjectContent({
             autoComplete="off"
             component={StorageLocationDropdownSearch}
             group={ALL}
-            label={moduleTranslate({ textKey: 'normalStorageLocation' })}
             module="collectionMammals"
             name={getPath('physicalObject.storageLocation.id')}
             showParentName
@@ -107,7 +85,6 @@ function PhysicalObjectContent({
           <Field
             autoComplete="off"
             component={Input}
-            label="Storage location text"
             module="collectionMammals"
             name={getPath('physicalObject.storageLocationText')}
             type="input-text"
@@ -137,9 +114,5 @@ export default compose(
     resource: 'preparationType',
   }),
   connect(mapStateToProps),
-  withI18n({
-    module: 'collectionMammals',
-    scope: 'collectionItems',
-  }),
   pathBuilder()
 )(PhysicalObjectContent)

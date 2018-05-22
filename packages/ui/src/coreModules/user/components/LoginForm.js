@@ -51,6 +51,7 @@ export class RawLoginForm extends Component {
           <Field
             autoComplete="off"
             component={Input}
+            displayLabel={false}
             icon="user"
             module="user"
             name="username"
@@ -60,6 +61,7 @@ export class RawLoginForm extends Component {
           <Field
             autoComplete="off"
             component={Input}
+            displayLabel={false}
             icon="lock"
             module="user"
             name="password"

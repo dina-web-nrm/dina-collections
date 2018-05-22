@@ -10,9 +10,7 @@ const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTable'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals', {
-  scope: 'identifiers',
-})
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const TABLE_COLUMNS = ['identifierType', 'value', 'remarks']
 

@@ -1,41 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
+import extractProps from 'utilities/extractProps'
 import DropdownSearchConnectInput from '../../inputs/DropdownSearch/Connect'
 import DropdownSearchLocalInput from '../../inputs/DropdownSearch/Local'
 
-import FieldTemplate, {
-  defaultProps as fieldTemplateDefaultProps,
-  propTypes as fieldTemplatePropTypes,
-} from '../../FieldTemplate'
+import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 
 const propTypes = {
-  ...fieldTemplatePropTypes,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     value: PropTypes.string,
   }).isRequired,
+  leftButton: PropTypes.node,
+  rightButton: PropTypes.node,
   type: PropTypes.string.isRequired,
 }
+
 const defaultProps = {
-  ...fieldTemplateDefaultProps,
+  leftButton: undefined,
+  rightButton: undefined,
 }
 
-function Select({
-  errorScope,
-  helpNotificationProps,
-  helpText,
-  input,
-  label,
-  meta,
-  module,
-  required,
-  type,
-  leftButton,
-  rightButton,
-  ...rest
-}) {
+function Select(props) {
   let Component
+  const { type, leftButton, rightButton, input } = props
 
   switch (type) {
     case 'dropdown-search-connect': {
@@ -51,19 +40,14 @@ function Select({
     }
   }
 
-  const { name } = input
+  const { extractedProps: fieldTemplateProps, rest } = extractProps({
+    keys: fieldTemplatePropKeys,
+    props,
+  })
+
   const displayAsButton = !!(leftButton || rightButton)
   return (
-    <FieldTemplate
-      errorScope={errorScope}
-      helpNotificationProps={helpNotificationProps}
-      helpText={helpText}
-      label={label}
-      meta={meta}
-      module={module}
-      name={name}
-      required={required}
-    >
+    <FieldTemplate {...fieldTemplateProps} name={input.name}>
       {displayAsButton ? (
         <Button.Group>
           {leftButton}
