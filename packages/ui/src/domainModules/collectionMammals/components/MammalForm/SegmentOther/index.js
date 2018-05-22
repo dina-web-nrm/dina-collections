@@ -66,10 +66,10 @@ class SegmentOther extends PureComponent {
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <CustomData
                 autoComplete="off"
-                input={{ name: 'individual.readOnly', value: readOnly }}
+                input={{ name: 'readOnly', value: readOnly }}
                 meta={{}}
                 module="collectionMammals"
-                name="individual.readOnly"
+                name="readOnly"
                 type="read-only"
               />
             </Grid.Column>
