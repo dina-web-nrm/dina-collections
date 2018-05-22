@@ -4,10 +4,10 @@ module.exports = {
   operations: [
     {
       method: 'get',
-      operationId: 'getUser',
+      operationId: 'userInfoGetOne',
       path: '/auth/realms/dina/protocol/openid-connect/userInfo',
       raw: true,
-      resource: 'user',
+      resource: 'userInfo',
       response: {
         raw: {
           schema: {
@@ -28,7 +28,7 @@ module.exports = {
           },
         },
       },
-      summary: 'Gets user object',
+      summary: 'Gets userInfo object',
       type: 'raw',
     },
   ],
