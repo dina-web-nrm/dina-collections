@@ -2,7 +2,7 @@ module.exports = function extractNormalizedColumns({
   doc = {},
   normalizedColumnNames,
 }) {
-  const { normalized, relationships, ...rest } = doc
+  const { normalized = {}, relationships, ...rest } = doc
 
   let base = {
     nonNormalized: rest,

@@ -42,14 +42,16 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
   describe('create', () => {
     it('Creates and returns a simple record', () => {
       const doc = {
-        projects: [
-          {
-            id: '1234',
-            name: 'coding',
+        normalized: {
+          projects: [
+            {
+              id: '1234',
+              name: 'coding',
+            },
+          ],
+          user: {
+            name: 'Anton',
           },
-        ],
-        user: {
-          name: 'Anton',
         },
       }
 
@@ -65,36 +67,42 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
   })
   describe('getById', () => {
     const firstDoc = {
-      projects: [
-        {
-          id: '1234',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1234',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Anton',
         },
-      ],
-      user: {
-        name: 'Anton',
       },
     }
     const secondDoc = {
-      projects: [
-        {
-          id: '1235',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1235',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Per',
         },
-      ],
-      user: {
-        name: 'Per',
       },
     }
     const thirdDoc = {
-      projects: [
-        {
-          id: '1236',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1236',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Johan',
         },
-      ],
-      user: {
-        name: 'Johan',
       },
     }
     let firstId
@@ -188,36 +196,42 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
   })
   describe('getOneWhere', () => {
     const firstDoc = {
-      projects: [
-        {
-          id: '1234',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1234',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Anton',
         },
-      ],
-      user: {
-        name: 'Anton',
       },
     }
     const secondDoc = {
-      projects: [
-        {
-          id: '1235',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1235',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Per',
         },
-      ],
-      user: {
-        name: 'Per',
       },
     }
     const thirdDoc = {
-      projects: [
-        {
-          id: '1236',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1236',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Johan',
         },
-      ],
-      user: {
-        name: 'Johan',
       },
     }
     let firstId
@@ -284,36 +298,42 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
   })
   describe('update', () => {
     const firstDoc = {
-      projects: [
-        {
-          id: '1234',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1234',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Anton',
         },
-      ],
-      user: {
-        name: 'Anton',
       },
     }
     const secondDoc = {
-      projects: [
-        {
-          id: '1235',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1235',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Per',
         },
-      ],
-      user: {
-        name: 'Per',
       },
     }
     const thirdDoc = {
-      projects: [
-        {
-          id: '1236',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1236',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Johan',
         },
-      ],
-      user: {
-        name: 'Johan',
       },
     }
     let firstId
@@ -343,7 +363,10 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
     it('Increments created new version id when updating', () => {
       return model
-        .update({ doc: { user: { name: 'something' } }, id: firstId })
+        .update({
+          doc: { normalized: { user: { name: 'something' } } },
+          id: firstId,
+        })
         .then(res => {
           expect(res.versionId).toBeGreaterThan(firstVersionId)
           expect(res.projects).toBe(null)
@@ -352,19 +375,22 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
     })
     it('Creates a diff when updating', () => {
       return model
-        .update({ doc: { user: { name: 'something' } }, id: firstId })
+        .update({
+          doc: { normalized: { user: { name: 'something' } } },
+          id: firstId,
+        })
         .then(res => {
           expect(res.diff).toEqual([
             {
               kind: 'E',
               lhs: 'Anton',
-              path: ['user', 'name'],
+              path: ['normalized', 'user', 'name'],
               rhs: 'something',
             },
             {
               kind: 'D',
               lhs: [{ id: '1234', name: 'coding' }],
-              path: ['projects'],
+              path: ['normalized', 'projects'],
             },
           ])
         })
@@ -372,36 +398,42 @@ dbDescribe('lib/sequelize/models/normalizeVersionedDocumentModel', () => {
   })
   describe('getWhere', () => {
     const firstDoc = {
-      projects: [
-        {
-          id: '1234',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1234',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Anton',
         },
-      ],
-      user: {
-        name: 'Anton',
       },
     }
     const secondDoc = {
-      projects: [
-        {
-          id: '1235',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1235',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Per',
         },
-      ],
-      user: {
-        name: 'Per',
       },
     }
     const thirdDoc = {
-      projects: [
-        {
-          id: '1236',
-          name: 'coding',
+      normalized: {
+        projects: [
+          {
+            id: '1236',
+            name: 'coding',
+          },
+        ],
+        user: {
+          name: 'Johan',
         },
-      ],
-      user: {
-        name: 'Johan',
       },
     }
     let firstId
