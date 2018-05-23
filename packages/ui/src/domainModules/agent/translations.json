@@ -11,7 +11,9 @@
       "remarks": { "en": "Remarks" },
       "telephone": { "en": "Telephone" },
       "email": { "en": "Email" },
-      "postalAddress": { "en": "Postal address" }
+      "postalAddress": { "en": "Postal address" },
+      "readOnly": { "en": "Read only" },
+      "user": { "en": "User" }
     }
   },
   "name": {
