@@ -16,6 +16,21 @@
   "agent": {
     "additionalProperties": false,
     "properties": {
+      "relationships": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "$ref": "externalModelReference"
+              }
+            }
+          }
+        },
+        "x-summary": ""
+      },
       "id": {
         "type": "string",
         "x-summary": ""
@@ -82,6 +97,11 @@
       "readOnly": {
         "$ref": "readOnly",
         "x-summary": ""
+      },
+      "user": {
+        "type": "object",
+        "$ref": "externalModelReference",
+        "x-summary": ""
       }
     },
     "x-category": "agentService",
@@ -111,6 +131,28 @@
     "x-summary": "",
     "description": "",
     "id": "role"
+  },
+  "user": {
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "email": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "username": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "authService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "user"
   },
   "dateRange": {
     "additionalProperties": false,
@@ -1921,6 +1963,48 @@
             "example": "1234",
             "type": "string"
           },
+          "relationships": {
+            "properties": {
+              "user": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "user"
+                            ],
+                            "example": "user",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
           "type": {
             "default": "agent",
             "type": "string"
@@ -1967,6 +2051,48 @@
           "id": {
             "example": "1234",
             "type": "string"
+          },
+          "relationships": {
+            "properties": {
+              "user": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "user"
+                            ],
+                            "example": "user",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
           },
           "type": {
             "default": "agent",
@@ -2017,6 +2143,48 @@
               "example": "1234",
               "type": "string"
             },
+            "relationships": {
+              "properties": {
+                "user": {
+                  "oneOf": [
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "user"
+                              ],
+                              "example": "user",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "type": "null"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ],
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
             "type": {
               "default": "agent",
               "type": "string"
@@ -2066,6 +2234,48 @@
             "example": "1234",
             "type": "string"
           },
+          "relationships": {
+            "properties": {
+              "user": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "user"
+                            ],
+                            "example": "user",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
           "type": {
             "default": "agent",
             "type": "string"
@@ -2113,6 +2323,48 @@
             "example": "1234",
             "type": "string"
           },
+          "relationships": {
+            "properties": {
+              "user": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "user"
+                            ],
+                            "example": "user",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "type": "null"
+                      }
+                    },
+                    "type": "object"
+                  }
+                ],
+                "type": "object"
+              }
+            },
+            "type": "object"
+          },
           "type": {
             "default": "agent",
             "type": "string"
@@ -2144,48 +2396,6 @@
     },
     "type": "object",
     "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "getUserResponse": {
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-      "email": {
-        "type": "string",
-        "example": "john.doe@example.com",
-        "x-summary": ""
-      },
-      "family_name": {
-        "type": "string",
-        "example": "Doe",
-        "x-summary": ""
-      },
-      "given_name": {
-        "type": "string",
-        "example": "John",
-        "x-summary": ""
-      },
-      "name": {
-        "type": "string",
-        "example": "John Doe",
-        "x-summary": ""
-      },
-      "preferred_username": {
-        "type": "string",
-        "example": "john doe",
-        "x-summary": ""
-      },
-      "sub": {
-        "type": "string",
-        "example": "xxxx",
-        "x-summary": ""
-      }
-    },
-    "required": [
-      "email",
-      "preferred_username"
-    ],
     "x-summary": "",
     "description": ""
   },
@@ -2231,6 +2441,146 @@
     },
     "required": [
       "access_token"
+    ],
+    "x-summary": "",
+    "description": ""
+  },
+  "userGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "user"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "user",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/auth/v01/users/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "userGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "user"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "user",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/auth/v01/users",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "userInfoGetOneResponse": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "email": {
+        "type": "string",
+        "example": "john.doe@example.com",
+        "x-summary": ""
+      },
+      "family_name": {
+        "type": "string",
+        "example": "Doe",
+        "x-summary": ""
+      },
+      "given_name": {
+        "type": "string",
+        "example": "John",
+        "x-summary": ""
+      },
+      "name": {
+        "type": "string",
+        "example": "John Doe",
+        "x-summary": ""
+      },
+      "preferred_username": {
+        "type": "string",
+        "example": "john doe",
+        "x-summary": ""
+      },
+      "sub": {
+        "type": "string",
+        "example": "xxxx",
+        "x-summary": ""
+      }
+    },
+    "required": [
+      "email",
+      "preferred_username"
     ],
     "x-summary": "",
     "description": ""
@@ -6315,7 +6665,7 @@
     "x-summary": "",
     "description": ""
   },
-  "physicalObjectGetRelationHasOneStorageLocationResponse": {
+  "physicalObjectGetRelationBelongsToOneStorageLocationResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -9791,6 +10141,48 @@
               },
               "attributes": {
                 "$ref": "agent"
+              },
+              "relationships": {
+                "properties": {
+                  "user": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "user"
+                                ],
+                                "example": "user",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               }
             }
           }
@@ -9856,6 +10248,48 @@
               },
               "attributes": {
                 "$ref": "agent"
+              },
+              "relationships": {
+                "properties": {
+                  "user": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "user"
+                                ],
+                                "example": "user",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               }
             }
           }
