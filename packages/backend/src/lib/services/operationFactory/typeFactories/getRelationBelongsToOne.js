@@ -20,7 +20,7 @@ module.exports = function getRelationHasOne({
   const relation = relations[relationKey]
   const { format: relationFormat, resource: relationResource } = relation
 
-  const operationType = 'getRelationHasOne'
+  const operationType = 'getRelationBelongsToOne'
 
   return {
     ...rest,
