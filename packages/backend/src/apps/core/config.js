@@ -4,6 +4,7 @@ dotenv.config()
 
 const services = {
   agentService: true,
+  authService: true,
   curatedEventService: true,
   curatedListService: true,
   placeService: true,

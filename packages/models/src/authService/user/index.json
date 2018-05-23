@@ -1,0 +1,14 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    }
+  }
+}
