@@ -302,6 +302,28 @@ const config = {
         },
       ],
     },
+    user: {
+      customSelectors: [
+        {
+          text: {
+            doNotCapitalize: true,
+            parameter: 'attributes.username',
+            translated: false,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
+      operations: [
+        {
+          operationId: 'userGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'userGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
   },
 }
 
