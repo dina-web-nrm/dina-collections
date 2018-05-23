@@ -7,13 +7,13 @@
     "Fredrik Olovsson <fogithub@gmail.com>"
   ],
   "proxy": {
-    "/auth": {
-      "target": "https://alpha-cm.dina-web.net",
+    "/api": {
+      "target": "http://127.0.0.1:4444",
       "xfwd": true,
       "changeOrigin": true
     },
-    "/api": {
-      "target": "http://127.0.0.1:4444",
+    "/auth": {
+      "target": "https://alpha-cm.dina-web.net",
       "xfwd": true,
       "changeOrigin": true
     }
