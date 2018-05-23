@@ -1,6 +1,21 @@
 {
   "additionalProperties": false,
   "properties": {
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__user",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
     "id": {
       "type": "string"
     },
@@ -49,6 +64,11 @@
     },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
+    },
+    "user": {
+      "type": "object",
+      "$ref": "__ROOT__user",
+      "x-reference-type": "external"
     }
   }
 }
