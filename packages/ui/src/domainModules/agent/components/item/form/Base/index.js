@@ -12,7 +12,14 @@ import {
 import formValidator from 'common/es5/error/validators/formValidator'
 
 import createLog from 'utilities/log'
-import { Field, Input, TextArea } from 'coreModules/form/components'
+import globalCrudSelectors from 'coreModules/crud/globalSelectors'
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import {
+  Field,
+  DropdownSearch,
+  Input,
+  TextArea,
+} from 'coreModules/form/components'
 import RolesTable from '../../../shared/RolesTable'
 import FormActions from './FormActions'
 
@@ -24,6 +31,7 @@ const formValueSelector = createFormValueSelector(FORM_NAME)
 const mapStateToProps = state => {
   return {
     roles: formValueSelector(state, 'roles'),
+    userOptions: globalCrudSelectors.user.getAllAsOptions(state),
   }
 }
 const mapDispatchToProps = {
@@ -47,6 +55,7 @@ const propTypes = {
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
+  userOptions: PropTypes.array.isRequired,
 }
 
 const defaultProps = {
@@ -80,7 +89,9 @@ export class BaseForm extends PureComponent {
       submitFailed,
       submitSucceeded,
       submitting,
+      userOptions,
     } = this.props
+
     return (
       <Form error={!!error} onSubmit={handleSubmit(this.props.onSubmit)}>
         <Grid textAlign="left" verticalAlign="top">
@@ -226,6 +237,20 @@ export class BaseForm extends PureComponent {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
+            <Grid.Column mobile={16}>
+              <Field
+                autoComplete="off"
+                className="transparent"
+                component={DropdownSearch}
+                model="agent"
+                module="agent"
+                name="user.id"
+                options={userOptions}
+                type="dropdown-search-local"
+              />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
             {roles &&
               roles.length > 0 && (
                 <Grid.Column width={16}>
@@ -273,6 +298,10 @@ BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
 export default compose(
+  createEnsureAllItemsFetched({
+    allFetchedKey: 'allUsersFetched',
+    resource: 'user',
+  }),
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({
     destroyOnUnmount: false, // to keep values when switching layout

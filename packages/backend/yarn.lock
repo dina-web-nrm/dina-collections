@@ -882,10 +882,12 @@ commander@^2.11.0:
   version "0.1.0"
   dependencies:
     ajv "^5.2.3"
+    debug "^3.1.0"
     json-schema-faker "^0.4.4"
     lodash "^4.17.5"
     normalizr "^3.2.4"
     object-path "^0.11.4"
+    object-path-immutable "^1.0.1"
     redux "^3.7.2"
     uuid "^3.2.1"
 
@@ -3085,11 +3087,22 @@ jwk-to-pem@^1.2.6:
     elliptic "^6.2.3"
     safe-buffer "^5.0.1"
 
+keycloak-admin-client@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/keycloak-admin-client/-/keycloak-admin-client-0.12.0.tgz#e17c47a7cc42252832c2d5da79baa74d22c81986"
+  dependencies:
+    keycloak-request-token "^0.1.0"
+    request "^2.69.0"
+
 keycloak-connect@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/keycloak-connect/-/keycloak-connect-3.4.3.tgz#6775b599125d24d524f6e64a5e512fda00692c4e"
   dependencies:
     jwk-to-pem "^1.2.6"
+
+keycloak-request-token@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/keycloak-request-token/-/keycloak-request-token-0.1.0.tgz#919d1ac46237db568d4d45322a213cee2636e2a8"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
@@ -4198,6 +4211,31 @@ request@2.81.0:
     tough-cookie "~2.3.0"
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
+
+request@^2.69.0:
+  version "2.87.0"
+  resolved "https://registry.yarnpkg.com/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
+  dependencies:
+    aws-sign2 "~0.7.0"
+    aws4 "^1.6.0"
+    caseless "~0.12.0"
+    combined-stream "~1.0.5"
+    extend "~3.0.1"
+    forever-agent "~0.6.1"
+    form-data "~2.3.1"
+    har-validator "~5.0.3"
+    http-signature "~1.2.0"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.17"
+    oauth-sign "~0.8.2"
+    performance-now "^2.1.0"
+    qs "~6.5.1"
+    safe-buffer "^5.1.1"
+    tough-cookie "~2.3.3"
+    tunnel-agent "^0.6.0"
+    uuid "^3.1.0"
 
 request@^2.83.0:
   version "2.83.0"

@@ -4,6 +4,7 @@ dotenv.config()
 
 const services = {
   agentService: true,
+  authService: true,
   curatedEventService: true,
   curatedListService: true,
   placeService: true,
@@ -11,6 +12,18 @@ const services = {
   statusService: true,
   storageService: true,
   taxonomyService: true,
+}
+
+const integrations = {
+  keycloakAdmin: {
+    active: process.env.KEYCLOAK_ADMIN_ACTIVE === 'true' || false,
+    baseUrl:
+      process.env.KEYCLOAK_AUTH_BASE_URL ||
+      'https://alpha-keycloak.dina-web.net/auth',
+    password: process.env.KEYCLOAK_ADMIN_PASSWORD || 'admin',
+    realmName: process.env.KEYCLOAK_REALM_NAME || 'dina',
+    username: process.env.KEYCLOAK_ADMIN_USERNAME || 'admin',
+  },
 }
 
 const api = {
@@ -93,6 +106,7 @@ module.exports = {
   elasticsearch,
   env,
   initialData,
+  integrations,
   log,
   services,
   test,

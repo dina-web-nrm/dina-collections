@@ -19,6 +19,6 @@ export const GET_USER = createEndpoint({
       oldPath: 'preferred_username',
     })
   },
-  operationId: 'getUser',
+  operationId: 'userInfoGetOne',
   pathname: '/auth/realms/dina/protocol/openid-connect/userinfo',
 })

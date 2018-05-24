@@ -14,7 +14,12 @@ const createGetAllAsOptionsSelector = ({
 }) => {
   const {
     numberOfResults = 10,
-    text: { defaultLanguage, parameter: parameterPath, translated },
+    text: {
+      doNotCapitalize,
+      defaultLanguage,
+      parameter: parameterPath,
+      translated,
+    },
   } = customSelectorInput
 
   return createSelector(
@@ -30,7 +35,7 @@ const createGetAllAsOptionsSelector = ({
 
         return {
           key: id,
-          text: capitalizeFirstLetter(text),
+          text: doNotCapitalize ? text : capitalizeFirstLetter(text),
           value: id,
         }
       })

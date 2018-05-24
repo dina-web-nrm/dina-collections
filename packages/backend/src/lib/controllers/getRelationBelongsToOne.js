@@ -2,7 +2,7 @@ const backendError404 = require('common/src/error/errorFactories/backendError404
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function getRelationsHasOne({ operation, models }) {
+module.exports = function getRelationsBelongsToOne({ operation, models }) {
   const {
     resource,
     relation: { key: relationKey, resource: relationResource },

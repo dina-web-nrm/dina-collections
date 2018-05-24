@@ -9,6 +9,7 @@ module.exports = function createConnector({
   apiConfig,
   customControllerFactories,
   elasticModels,
+  integrations,
   models,
   operation,
   operationId,
@@ -41,6 +42,7 @@ module.exports = function createConnector({
     controllerFactory &&
     controllerFactory({
       elasticModels,
+      integrations,
       models,
       operation,
     })

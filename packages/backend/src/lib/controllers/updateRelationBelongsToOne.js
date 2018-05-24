@@ -3,7 +3,7 @@ const backendError400 = require('common/src/error/errorFactories/backendError400
 const createObjectResponse = require('./transformations/createObjectResponse')
 const transformOutput = require('./transformations/outputObject')
 
-module.exports = function updateRelationHasOne({ operation, models }) {
+module.exports = function updateRelationBelongsToOne({ operation, models }) {
   const {
     relation: { key: relationKey, resource: relationResource },
     resource,

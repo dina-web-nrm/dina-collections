@@ -163,6 +163,24 @@
           },
           {
             "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "user"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  "user"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -264,6 +282,24 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "relationships",
+            "description": "Relationships to add to the response. Add 0 or many",
+            "example": [
+              "user"
+            ],
+            "schema": {
+              "items": {
+                "enum": [
+                  "all",
+                  "user"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           }
         ],
@@ -508,33 +544,6 @@
         ]
       }
     },
-    "/auth/realms/dina/protocol/openid-connect/userInfo": {
-      "get": {
-        "operationId": "getUser",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/getUserResponse"
-                }
-              }
-            },
-            "description": "successful operation"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Gets user object",
-        "tags": [
-          "authService"
-        ]
-      }
-    },
     "/auth/realms/dina/protocol/openid-connect/token": {
       "post": {
         "operationId": "loginUser",
@@ -562,6 +571,214 @@
           }
         },
         "summary": "Gets user token",
+        "tags": [
+          "authService"
+        ]
+      }
+    },
+    "/api/auth/v01/users/{id}": {
+      "get": {
+        "operationId": "userGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "user id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetOneResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find user by id",
+        "tags": [
+          "authService"
+        ]
+      }
+    },
+    "/api/auth/v01/users": {
+      "get": {
+        "operationId": "userGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetManyResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find users",
+        "tags": [
+          "authService"
+        ]
+      }
+    },
+    "/auth/realms/dina/protocol/openid-connect/userInfo": {
+      "get": {
+        "operationId": "userInfoGetOne",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/userInfoGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Gets userInfo object",
         "tags": [
           "authService"
         ]
@@ -5779,7 +5996,7 @@
         ]
       },
       "get": {
-        "operationId": "physicalObjectGetRelationHasOneStorageLocation",
+        "operationId": "physicalObjectGetRelationBelongsToOneStorageLocation",
         "parameters": [
           {
             "in": "path",
@@ -5815,7 +6032,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/physicalObjectGetRelationHasOneStorageLocationResponse"
+                  "$ref": "#/components/schemas/physicalObjectGetRelationBelongsToOneStorageLocationResponse"
                 }
               }
             },
@@ -5825,7 +6042,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/physicalObjectGetRelationHasOneStorageLocation-400"
+                  "$ref": "#/components/schemas/physicalObjectGetRelationBelongsToOneStorageLocation-400"
                 }
               }
             },
@@ -5835,7 +6052,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/physicalObjectGetRelationHasOneStorageLocation-404"
+                  "$ref": "#/components/schemas/physicalObjectGetRelationBelongsToOneStorageLocation-404"
                 }
               }
             },
@@ -5845,7 +6062,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/physicalObjectGetRelationHasOneStorageLocation-500"
+                  "$ref": "#/components/schemas/physicalObjectGetRelationBelongsToOneStorageLocation-500"
                 }
               }
             },
@@ -8637,6 +8854,11 @@
           "readOnly": {
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
+          },
+          "user": {
+            "type": "object",
+            "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
           }
         },
         "x-category": "agentService",
@@ -8661,6 +8883,27 @@
           }
         },
         "x-category": "agentService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "user": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "email": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "username": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "authService",
         "x-modelType": "model",
         "x-summary": "",
         "description": ""
@@ -10544,6 +10787,132 @@
         "type": "object"
       },
       "agentDel-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "userGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "userGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "userGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "userGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "userGetMany-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -14650,7 +15019,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "physicalObjectGetRelationHasOneStorageLocation-400": {
+      "physicalObjectGetRelationBelongsToOneStorageLocation-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -14674,7 +15043,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "physicalObjectGetRelationHasOneStorageLocation-404": {
+      "physicalObjectGetRelationBelongsToOneStorageLocation-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -14698,7 +15067,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "physicalObjectGetRelationHasOneStorageLocation-500": {
+      "physicalObjectGetRelationBelongsToOneStorageLocation-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -16761,6 +17130,48 @@
                   },
                   "attributes": {
                     "$ref": "#/components/schemas/agent"
+                  },
+                  "relationships": {
+                    "properties": {
+                      "user": {
+                        "oneOf": [
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "data": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "example": "1234",
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "enum": [
+                                      "user"
+                                    ],
+                                    "example": "user",
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "data": {
+                                "type": "null"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
                   }
                 }
               }
@@ -16826,6 +17237,48 @@
                   },
                   "attributes": {
                     "$ref": "#/components/schemas/agent"
+                  },
+                  "relationships": {
+                    "properties": {
+                      "user": {
+                        "oneOf": [
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "data": {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "id": {
+                                    "example": "1234",
+                                    "type": "string"
+                                  },
+                                  "type": {
+                                    "enum": [
+                                      "user"
+                                    ],
+                                    "example": "user",
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          {
+                            "additionalProperties": false,
+                            "properties": {
+                              "data": {
+                                "type": "null"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
                   }
                 }
               }
@@ -20361,6 +20814,48 @@
                 "example": "1234",
                 "type": "string"
               },
+              "relationships": {
+                "properties": {
+                  "user": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "user"
+                                ],
+                                "example": "user",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
               "type": {
                 "default": "agent",
                 "type": "string"
@@ -20407,6 +20902,48 @@
               "id": {
                 "example": "1234",
                 "type": "string"
+              },
+              "relationships": {
+                "properties": {
+                  "user": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "user"
+                                ],
+                                "example": "user",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
               },
               "type": {
                 "default": "agent",
@@ -20457,6 +20994,48 @@
                   "example": "1234",
                   "type": "string"
                 },
+                "relationships": {
+                  "properties": {
+                    "user": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "user"
+                                  ],
+                                  "example": "user",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "type": "null"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                },
                 "type": {
                   "default": "agent",
                   "type": "string"
@@ -20506,6 +21085,48 @@
                 "example": "1234",
                 "type": "string"
               },
+              "relationships": {
+                "properties": {
+                  "user": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "user"
+                                ],
+                                "example": "user",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
               "type": {
                 "default": "agent",
                 "type": "string"
@@ -20553,6 +21174,48 @@
                 "example": "1234",
                 "type": "string"
               },
+              "relationships": {
+                "properties": {
+                  "user": {
+                    "oneOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "user"
+                                ],
+                                "example": "user",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "type": "null"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    ],
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              },
               "type": {
                 "default": "agent",
                 "type": "string"
@@ -20584,48 +21247,6 @@
         },
         "type": "object",
         "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "getUserResponse": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "email": {
-            "type": "string",
-            "example": "john.doe@example.com",
-            "x-summary": ""
-          },
-          "family_name": {
-            "type": "string",
-            "example": "Doe",
-            "x-summary": ""
-          },
-          "given_name": {
-            "type": "string",
-            "example": "John",
-            "x-summary": ""
-          },
-          "name": {
-            "type": "string",
-            "example": "John Doe",
-            "x-summary": ""
-          },
-          "preferred_username": {
-            "type": "string",
-            "example": "john doe",
-            "x-summary": ""
-          },
-          "sub": {
-            "type": "string",
-            "example": "xxxx",
-            "x-summary": ""
-          }
-        },
-        "required": [
-          "email",
-          "preferred_username"
-        ],
         "x-summary": "",
         "description": ""
       },
@@ -20671,6 +21292,146 @@
         },
         "required": [
           "access_token"
+        ],
+        "x-summary": "",
+        "description": ""
+      },
+      "userGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/user"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "user",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/auth/v01/users/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "userGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/user"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "user",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/auth/v01/users",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "userInfoGetOneResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "john.doe@example.com",
+            "x-summary": ""
+          },
+          "family_name": {
+            "type": "string",
+            "example": "Doe",
+            "x-summary": ""
+          },
+          "given_name": {
+            "type": "string",
+            "example": "John",
+            "x-summary": ""
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe",
+            "x-summary": ""
+          },
+          "preferred_username": {
+            "type": "string",
+            "example": "john doe",
+            "x-summary": ""
+          },
+          "sub": {
+            "type": "string",
+            "example": "xxxx",
+            "x-summary": ""
+          }
+        },
+        "required": [
+          "email",
+          "preferred_username"
         ],
         "x-summary": "",
         "description": ""
@@ -24755,7 +25516,7 @@
         "x-summary": "",
         "description": ""
       },
-      "physicalObjectGetRelationHasOneStorageLocationResponse": {
+      "physicalObjectGetRelationBelongsToOneStorageLocationResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {

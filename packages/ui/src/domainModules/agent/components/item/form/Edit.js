@@ -67,7 +67,7 @@ Edit.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    relationships: [],
+    relationships: ['user'],
     resource: 'agent',
   }),
   connect(null, mapDispatchToProps)
