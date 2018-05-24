@@ -68,6 +68,7 @@ class SegmentOther extends PureComponent {
                 autoComplete="off"
                 input={{ name: 'readOnly', value: readOnly }}
                 meta={{}}
+                model="specimen"
                 module="collectionMammals"
                 name="readOnly"
                 type="read-only"
