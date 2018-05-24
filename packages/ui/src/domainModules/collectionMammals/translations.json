@@ -185,9 +185,6 @@
       },
       "remarks": {
         "en": "Remarks"
-      },
-      "readOnly": {
-        "en": "Read only"
       }
     },
     "locationInformation": {
@@ -269,6 +266,9 @@
       "publishRecord": {
         "en": "Public",
         "sv": "Publikt"
+      },
+      "readOnly": {
+        "en": "Read only"
       }
     },
     "taxonInformation": {
