@@ -123,7 +123,7 @@ export class BaseForm extends PureComponent {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -133,7 +133,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -143,7 +143,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -153,7 +153,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -163,7 +163,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -173,7 +173,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -183,7 +183,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -205,7 +205,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -215,7 +215,7 @@ export class BaseForm extends PureComponent {
                 type="text"
               />
             </Grid.Column>
-            <Grid.Column mobile={8}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 component={Input}
@@ -237,7 +237,7 @@ export class BaseForm extends PureComponent {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column mobile={16}>
+            <Grid.Column computer={8} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
                 className="transparent"
