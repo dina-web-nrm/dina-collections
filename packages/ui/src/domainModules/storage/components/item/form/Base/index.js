@@ -117,7 +117,7 @@ export class BaseForm extends Component {
     }
 
     if (interactionType === DISCONNECT_PREPARATION_TYPE) {
-      return this.disconnectPreparationTYpe({
+      return this.disconnectPreparationType({
         itemId,
       })
     }
