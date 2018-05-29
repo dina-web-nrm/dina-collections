@@ -13,7 +13,6 @@ const createGetAllAsOptionsSelector = ({
   resourceSelectors,
 }) => {
   const {
-    numberOfResults = 10,
     text: {
       doNotCapitalize,
       defaultLanguage,
@@ -40,7 +39,7 @@ const createGetAllAsOptionsSelector = ({
         }
       })
 
-      return [...mappedItems].slice(0, numberOfResults)
+      return mappedItems
     }
   )
 }
