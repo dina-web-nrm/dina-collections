@@ -48,6 +48,12 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
+│       ├── manageAgents
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   ├── index.js
+│       │   └── translations.json
 │       ├── manageLocalities
 │       │   ├── Async.js
 │       │   ├── Component.js

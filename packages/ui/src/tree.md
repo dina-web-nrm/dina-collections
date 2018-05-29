@@ -29,6 +29,7 @@
 │   ├── tree.md
 │   └── user
 ├── domainModules
+│   ├── agent
 │   ├── allModules.js
 │   ├── collectionMammals
 │   ├── curatedList
@@ -72,6 +73,7 @@
     ├── Dependor
     ├── chainPromises
     ├── endpointFactory
+    ├── extractProps
     ├── getSecondArgument
     ├── getThirdArgument
     ├── keyObjectModuleFactory
