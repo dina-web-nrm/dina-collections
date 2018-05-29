@@ -9037,7 +9037,12 @@
         "additionalProperties": false,
         "description": "A single date",
         "properties": {
-          "isoDate": {
+          "timestamp": {
+            "type": "string",
+            "description": "A date in standard format. TBA",
+            "x-summary": ""
+          },
+          "interpretedTimestamp": {
             "type": "string",
             "description": "A date in standard format. TBA",
             "x-summary": ""
@@ -9049,17 +9054,14 @@
           },
           "day": {
             "type": "integer",
-            "example": 25,
             "x-summary": ""
           },
           "month": {
             "type": "integer",
-            "example": 12,
             "x-summary": ""
           },
           "year": {
             "type": "integer",
-            "example": 1981,
             "x-summary": ""
           }
         },
