@@ -22,6 +22,7 @@
 │   └── index.js
 ├── controllers
 │   ├── create.js
+│   ├── del.js
 │   ├── getMany.js
 │   ├── getOne.js
 │   ├── getRelationBelongsToOne.js
@@ -68,6 +69,13 @@
 │       ├── syncModels.js
 │       └── utilities
 │           └── extractModelFunctionsFromServices.js
+├── integrations
+│   ├── factories
+│   │   ├── index.js
+│   │   └── keycloakAdmin
+│   │       ├── index.js
+│   │       └── utilities
+│   └── index.js
 ├── sequelize
 │   ├── db
 │   │   └── index.js
@@ -79,7 +87,9 @@
 │       │   ├── documentModel
 │       │   └── versionedDocumentModel
 │       ├── index.js
-│       ├── loadInitialData.js
+│       ├── loadInitialData
+│       │   ├── index.js
+│       │   └── utilities
 │       ├── syncModels.js
 │       └── utilities
 │           ├── extractModelFunctionsFromServices.js
@@ -106,6 +116,7 @@
 │   │   ├── index.js
 │   │   └── typeFactories
 │   │       ├── create.js
+│   │       ├── del.js
 │   │       ├── getMany.js
 │   │       ├── getOne.js
 │   │       ├── getRelationBelongsToOne.js

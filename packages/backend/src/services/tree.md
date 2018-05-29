@@ -7,13 +7,18 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   └── index.js
+│   │   ├── index.js
+│   │   ├── loadInitialData
+│   │   │   └── index.js
+│   │   └── relations.js
 │   └── resources
 │       ├── agent
 │       │   ├── index.js
 │       │   └── operations
 │       └── index.js
 ├── authService
+│   ├── controllers
+│   │   └── index.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
@@ -22,7 +27,10 @@
 │       ├── accessToken
 │       │   └── index.js
 │       ├── index.js
-│       └── user
+│       ├── user
+│       │   ├── index.js
+│       │   └── operations
+│       └── userInfo
 │           └── index.js
 ├── curatedEventService
 │   ├── index.js
