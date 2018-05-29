@@ -2,7 +2,11 @@
   "additionalProperties": false,
   "description": "A single date",
   "properties": {
-    "isoDate": {
+    "timestamp": {
+      "type": "string",
+      "description": "A date in standard format. TBA"
+    },
+    "interpretedTimestamp": {
       "type": "string",
       "description": "A date in standard format. TBA"
     },
@@ -11,16 +15,13 @@
       "example": "Before 1800"
     },
     "day": {
-      "type": "integer",
-      "example": 25
+      "type": "integer"
     },
     "month": {
-      "type": "integer",
-      "example": 12
+      "type": "integer"
     },
     "year": {
-      "type": "integer",
-      "example": 1981
+      "type": "integer"
     }
   }
 }
