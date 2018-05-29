@@ -35,8 +35,8 @@ const segmentIdentifiersMutations = [
     value: 'acquisitionTypeText',
   },
   {
-    name: 'individual.acquisition.date.dateText',
-    value: 'date',
+    name: 'individual.acquisition.date.hidden',
+    value: { dateText: 'date' },
   },
   {
     name: 'individual.acquisition.handedInByAgentText',
@@ -63,7 +63,10 @@ const segmentTaxonMutations = [
   },
 
   { name: 'individual.taxonInformation.taxonRemarks', value: 'taxonRemarks' },
-  { name: 'individual.determinations.0.date.dateText', value: 'date' },
+  {
+    name: 'individual.determinations.0.date.hidden',
+    value: { dateText: 'date' },
+  },
 ]
 
 const segmentDeterminationsMutations = [
@@ -106,8 +109,11 @@ const segmentCollectingInformationMutations = [
   },
 
   {
-    name: 'individual.collectingInformation.0.event.dateRange.endDate.dateText',
-    value: 'endDate',
+    name: 'individual.collectingInformation.0.event.dateRange.hidden',
+    value: {
+      endDate: { dateText: 'endDate' },
+      startDate: { dateText: 'startDate' },
+    },
   },
   {
     name: 'individual.collectingInformation.0.event.expeditionText',
@@ -178,11 +184,6 @@ const segmentCollectingInformationMutations = [
   },
 
   {
-    name:
-      'individual.collectingInformation.0.event.dateRange.startDate.dateText',
-    value: 'startDate',
-  },
-  {
     name: 'individual.collectingInformation.0.isDeathDate',
     value: true,
   },
@@ -214,8 +215,8 @@ const segmentCollectingInformationMutations = [
 
 const segmentFeatureObservationsMutations = [
   {
-    name: 'individual.featureObservations.1.date.dateText',
-    value: 'date',
+    name: 'individual.featureObservations.1.date.hidden',
+    value: { dateText: 'date' },
   },
   {
     name: 'individual.featureObservations.1.featureObservationAgent.id.hidden',
@@ -301,8 +302,8 @@ const segmentOtherMutations = [
     value: '1',
   },
   {
-    name: 'individual.recordHistoryEvents.0.date.dateText',
-    value: 'date',
+    name: 'individual.recordHistoryEvents.0.date.hidden',
+    value: { dateText: 'date' },
   },
   {
     name: 'individual.recordHistoryEvents.0.description',

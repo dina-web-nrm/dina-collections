@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Table } from 'semantic-ui-react'
 
-import { Field, Input } from 'coreModules/form/components'
+import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
@@ -65,13 +65,16 @@ class RecordHistoryEventsRow extends PureComponent {
           />
         </Table.Cell>
         <Table.Cell width={3}>
-          <Field
-            component={Input}
+          <SingleDate
             disabled={!isCatalogCardSystem}
+            displayExact={false}
+            displayFlexible
             displayLabel={false}
+            displaySubLabels={false}
+            displayText={false}
             module="collectionMammals"
-            name={getPath('date.dateText')}
-            type="text"
+            name={getPath('date')}
+            stack={false}
           />
         </Table.Cell>
         <Table.Cell width={4}>

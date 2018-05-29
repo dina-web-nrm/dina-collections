@@ -5,7 +5,12 @@ import { Button, Grid, Popup } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-import { ButtonCopyPasteField, Field, Input } from 'coreModules/form/components'
+import {
+  ButtonCopyPasteField,
+  Field,
+  Input,
+  SingleDate,
+} from 'coreModules/form/components'
 
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
@@ -103,16 +108,23 @@ class DeterminationContent extends Component {
             />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Column computer={3} mobile={8} tablet={3}>
-          <Field
+
+        <Grid.Column computer={6} mobile={16} tablet={8}>
+          <SingleDate
             autoComplete="off"
-            component={Input}
+            displayExact={false}
+            displayFlexible
+            displaySubLabels={false}
+            displayText={false}
+            displayTodayButton
             module="collectionMammals"
-            name={getPath('date.dateText')}
+            name={getPath('date')}
             parameterKey="determinations.date"
-            type="input-text"
+            past
+            stack={false}
           />
         </Grid.Column>
+
         <Grid.Column computer={5} mobile={16} tablet={7}>
           <Field
             autoComplete="off"
