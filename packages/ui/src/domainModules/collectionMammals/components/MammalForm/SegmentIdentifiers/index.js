@@ -9,8 +9,9 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import {
   Checkbox,
   DropdownSearch,
-  Input,
   Field,
+  Input,
+  SingleDate,
 } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
@@ -124,18 +125,25 @@ class SegmentIdentifiers extends PureComponent {
                 type="input-text"
               />
             </Grid.Column>
-
-            <Grid.Column computer={2} mobile={16} tablet={8}>
-              <Field
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column computer={6} mobile={16} tablet={8}>
+              <SingleDate
                 autoComplete="off"
-                component={Input}
+                displayExact={false}
+                displayFlexible
+                displayText={false}
+                displayTodayButton
+                formName="mammalForm"
                 module="collectionMammals"
-                name="individual.acquisition.date.dateText"
+                name="individual.acquisition.date"
                 parameterKey="acquisition.date"
-                type="input-text"
+                past
+                stack={false}
               />
             </Grid.Column>
-
+          </Grid.Row>
+          <Grid.Row>
             <Grid.Column computer={4} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"

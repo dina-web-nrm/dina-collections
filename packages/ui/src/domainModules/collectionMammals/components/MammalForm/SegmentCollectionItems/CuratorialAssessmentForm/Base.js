@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form'
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import createLog from 'utilities/log'
-import { Field, Input } from 'coreModules/form/components'
+import { Field, Input, SingleDate } from 'coreModules/form/components'
 import {
   formatBooleanRadio,
   parseBooleanRadio,
@@ -131,14 +131,19 @@ export class BaseForm extends PureComponent {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column computer={2} mobile={16} tablet={6}>
-              <Field
+            <Grid.Column computer={8} mobile={16} tablet={6}>
+              <SingleDate
                 autoComplete="off"
-                component={Input}
+                displayExact={false}
+                displayFlexible
+                displaySubLabels={false}
+                displayText={false}
+                displayTodayButton
                 module="collectionMammals"
-                name="date.dateText"
+                name="date"
                 parameterKey="curatorialAssessment.date"
-                type="input-text"
+                past
+                stack={false}
               />
             </Grid.Column>
             <Grid.Column computer={6} mobile={16} tablet={8}>
