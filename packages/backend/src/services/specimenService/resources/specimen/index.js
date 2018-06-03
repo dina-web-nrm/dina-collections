@@ -9,7 +9,6 @@ module.exports = {
   basePath: '/api/specimen/v01',
   operations: [
     {
-      controller: 'createSpecimen',
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
@@ -22,7 +21,6 @@ module.exports = {
       type: 'getOne',
     },
     {
-      controller: 'getManySpecimens',
       includeRelations: true,
       queryParams: {
         'filter[catalogNumber]': {
@@ -37,12 +35,10 @@ module.exports = {
       type: 'getMany',
     },
     {
-      controller: 'updateSpecimen',
       exampleRequests: { primary: updateRequestSuccess },
       type: 'update',
     },
     {
-      controller: 'delSpecimen',
       type: 'del',
     },
     {
