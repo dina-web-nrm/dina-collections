@@ -8,6 +8,7 @@ module.exports = function getMany({ operation, models }) {
   const {
     buildWhere = filterWhereFactory({
       ids: 'id',
+      updatedAfter: 'updatedAt',
     }),
     includeRelations,
     relations,

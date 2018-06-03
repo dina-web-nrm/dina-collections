@@ -15,6 +15,10 @@ module.exports = function filterWhereFactory(filterPathMap) {
           where[path] = {
             [Op.in]: filterValue,
           }
+        } else if (path === 'updatedAt') {
+          where[path] = {
+            [Op.gt]: filterValue,
+          }
         } else {
           where[path] = filterValue
         }
