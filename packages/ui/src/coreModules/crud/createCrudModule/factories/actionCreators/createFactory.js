@@ -32,11 +32,9 @@ export default function createAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function createAc({
-    item: rawItem,
-    nested = false,
-    throwError = false,
-  }) {
+  return function createAc(
+    { item: rawItem, nested = false, throwError = false } = {}
+  ) {
     log.debug(`${resource}.create called`, { item: rawItem, throwError })
 
     const item = nested

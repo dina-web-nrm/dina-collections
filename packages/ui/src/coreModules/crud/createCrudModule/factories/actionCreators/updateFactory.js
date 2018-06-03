@@ -32,11 +32,9 @@ export default function updateAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function updateAc({
-    item: rawItem,
-    nested = false,
-    throwError = false,
-  }) {
+  return function updateAc(
+    { item: rawItem, nested = false, throwError = false } = {}
+  ) {
     log.debug(`${resource}.update called`, {
       item: rawItem,
       throwError,

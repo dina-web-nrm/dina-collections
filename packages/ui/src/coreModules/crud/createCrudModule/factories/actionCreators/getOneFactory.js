@@ -32,12 +32,9 @@ export default function getOneAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function getOneAc({
-    id,
-    include,
-    relationships = ['all'],
-    throwError = false,
-  }) {
+  return function getOneAc(
+    { id, include, relationships = ['all'], throwError = false } = {}
+  ) {
     log.debug(`${resource}.getOne called`, {
       id,
       relationships,

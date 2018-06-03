@@ -31,13 +31,16 @@ export default function getManyAcFactory(
     throw new Error('operationId is required')
   }
 
-  return function getManyAc({
-    isLookup, // TODO - remove this
-    queryParams: queryParamsInput = {},
-    relationships,
-    include,
-    throwError = false,
-  }) {
+  return function getManyAc(
+    {
+      ids,
+      include,
+      isLookup, // TODO - remove this
+      queryParams: queryParamsInput = {},
+      relationships,
+      throwError = false,
+    } = {}
+  ) {
     log.debug(`${resource}.getMany called`, {
       queryParamsInput,
       relationships,
@@ -60,6 +63,16 @@ export default function getManyAcFactory(
         include,
       }
     }
+
+    if (ids) {
+      queryParams = {
+        ...queryParams,
+        filter: {
+          ids,
+        },
+      }
+    }
+
     const callParams = {
       isLookup,
       queryParams,
