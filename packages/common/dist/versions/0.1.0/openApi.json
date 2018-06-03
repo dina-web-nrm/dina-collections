@@ -49,6 +49,10 @@
       "name": "placeService"
     },
     {
+      "description": "search",
+      "name": "searchService"
+    },
+    {
       "description": "Specimens api\n",
       "name": "specimenService"
     },
@@ -177,6 +181,14 @@
                 "type": "string"
               },
               "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -686,6 +698,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -878,6 +898,14 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -1325,6 +1353,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -1764,6 +1800,14 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -2211,6 +2255,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -2654,6 +2706,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -3093,6 +3153,14 @@
             "schema": {
               "default": false,
               "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -3587,6 +3655,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -4076,6 +4152,195 @@
         ]
       }
     },
+    "/api/specimen/v01/searchSpecimens/{id}": {
+      "get": {
+        "operationId": "searchSpecimenGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "searchSpecimen id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetOneResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchSpecimen by id",
+        "tags": [
+          "searchService"
+        ]
+      }
+    },
+    "/api/specimen/v01/searchSpecimens": {
+      "get": {
+        "operationId": "searchSpecimenGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetManyResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find searchSpecimens",
+        "tags": [
+          "searchService"
+        ]
+      }
+    },
     "/api/specimen/v01/specimens": {
       "post": {
         "operationId": "specimenCreate",
@@ -4206,6 +4471,14 @@
                 "type": "string"
               },
               "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -5351,6 +5624,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -6231,6 +6512,14 @@
           },
           {
             "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "schema": {
@@ -7028,6 +7317,14 @@
                 "type": "string"
               },
               "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -8086,6 +8383,14 @@
                 "type": "string"
               },
               "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -9478,6 +9783,22 @@
         "x-category": "placeService",
         "x-modelType": "model",
         "x-summary": "A defined location with known, fixed extension in space."
+      },
+      "searchSpecimen": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "searchService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "stageSpecimen": {
+        "additionalProperties": true,
+        "properties": {},
+        "x-category": "searchService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
       },
       "acquisition": {
         "additionalProperties": false,
@@ -13513,6 +13834,132 @@
         "type": "object"
       },
       "placeUpdateRelationHasOneParent-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "searchSpecimenGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "searchSpecimenGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "searchSpecimenGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "searchSpecimenGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "searchSpecimenGetMany-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -23480,6 +23927,104 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/locality/v01/places/{id}/relationships/parent",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchSpecimenGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "#/components/schemas/searchSpecimen"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "searchSpecimen",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/searchSpecimens/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchSpecimenGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/searchSpecimen"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "searchSpecimen",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/searchSpecimens",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

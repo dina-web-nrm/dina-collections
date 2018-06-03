@@ -28,6 +28,7 @@ module.exports = function createValidatorFactory(models) {
     (0, _keys2.default)(models).forEach(function (key) {
       ajv.addSchema(models[key], key);
     });
+
     return ajv;
   };
 

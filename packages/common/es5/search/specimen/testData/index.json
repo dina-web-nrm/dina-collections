@@ -1,0 +1,240 @@
+[
+  {
+    "lid": "a968459d-2c5c-4acc-8a8e-4351b21e2b54",
+    "readOnly": {
+      "objects": {
+        "Genus": "Dasypus",
+        "LopId": 22516,
+        "Order": "Cingulata",
+        "Family": "Dasypodidae",
+        "Det_Day": 1,
+        "FieldNo": 1409,
+        "RubinNo": 1252103,
+        "Species": "hybridus",
+        "CardDate": "1999-10-12 00:00:00",
+        "Det_Year": 2016,
+        "Det_Month": 4,
+        "CardAuthor": "Stanczak, Adam",
+        "CommonName": "Southern Long-nosed Armadillo",
+        "AccessionNo": 995208,
+        "Publish_Coord": "Y",
+        "Publish_Record": "Y",
+        "Scientific_Name": "Dasypus hybridus",
+        "DeterminedBy(DET)": "Feijó, Anderson",
+        "OldScientificName": "Dasypus novemcinctus"
+      },
+      "analysis": {
+        "Sex": "Unknown",
+        "AccessionNo": 995208
+      },
+      "collection": {
+        "Manus": "2",
+        "Pedis": "2",
+        "SkinStatus": "1",
+        "AccessionNo": 995208,
+        "SkeletonStatus": "9",
+        "SkinCollection": 3,
+        "Skin_Skel_Remarks": "Manis & Pedis i skinnet",
+        "SkeletonCollection": 3,
+        "SkinStatus_related": {
+          "ID": "1",
+          "Skinn": "Helt skinn finns (skinnlagt)"
+        },
+        "SkeletonStatus_related": {
+          "ID": "9",
+          "Skelett": "Övrigt, enstaka ben t.ex enbart underkäke"
+        },
+        "SkinCollection_related": {
+          "ID": 3,
+          "Type": "Both",
+          "NRM_Location": "Plåtskåpsrum"
+        },
+        "SkeletonCollection_related": {
+          "ID": 3,
+          "Type": "Both",
+          "NRM_Location": "Plåtskåpsrum"
+        }
+      }
+    },
+    "individual": {
+      "lid": "bedb7f26-c9ee-4ed2-84a9-6523a2136c7d",
+      "identifiers": [
+        {
+          "lid": "82cd09e9-2a2c-4627-ab4f-46c81fadd09f",
+          "value": "995208",
+          "identifierType": {
+            "key": "catalog-number",
+            "name": "catalog number",
+            "id": "1"
+          }
+        }
+      ],
+      "recordHistoryEvents": [
+        {
+          "lid": "098f504d-980c-4d93-8199-cfcfe620b66b",
+          "date": {
+            "dateText": "2016-04-06"
+          },
+          "system": "MAM2006",
+          "agentText": "DCK",
+          "description": "Last modification of the objects"
+        },
+        {
+          "lid": "36a9c6d8-58d5-4192-a870-63cb9e02844b",
+          "date": {
+            "dateText": "2006-10-12"
+          },
+          "system": "MAM2006",
+          "agentText": "MJD",
+          "description": "Registration of the specimen"
+        }
+      ],
+      "collectingInformation": [
+        {
+          "lid": "a470812f-d4ba-42da-b097-3ec8cb7a549a",
+          "event": {
+            "lid": "631ea9c6-5c08-4f8e-b3f4-9e78af07effa",
+            "dateRange": {
+              "startDate": {
+                "dateText": "--"
+              }
+            },
+            "locationInformation": {
+              "places": [
+                {
+                  "name": "South America",
+                  "group": "continent",
+                  "id": "724"
+                }
+              ],
+              "localityN": "South America",
+              "localityT": "Sydamerika"
+            }
+          },
+          "collectorsText":
+            "Manis & Pedis i skinnet.; \"Från paleozoologiutställningen\". Delade tidigare acc.nr med Canis familiaris (nu 620498)."
+        }
+      ]
+    },
+    "id": "31914"
+  },
+  {
+    "lid": "a968459d-2c5c-4acc-8a8e-4351b21e2b54",
+    "readOnly": {
+      "objects": {
+        "Genus": "Dasypus",
+        "LopId": 22516,
+        "Order": "Cingulata",
+        "Family": "Dasypodidae",
+        "Det_Day": 1,
+        "FieldNo": 1409,
+        "RubinNo": 1252103,
+        "Species": "hybridus",
+        "CardDate": "1999-10-12 00:00:00",
+        "Det_Year": 2016,
+        "Det_Month": 4,
+        "CardAuthor": "Stanczak, Adam",
+        "CommonName": "Southern Long-nosed Armadillo",
+        "AccessionNo": 995208,
+        "Publish_Coord": "Y",
+        "Publish_Record": "Y",
+        "Scientific_Name": "Dasypus hybridus",
+        "DeterminedBy(DET)": "Feijó, Anderson",
+        "OldScientificName": "Dasypus novemcinctus"
+      },
+      "analysis": {
+        "Sex": "Unknown",
+        "AccessionNo": 995208
+      },
+      "collection": {
+        "Manus": "2",
+        "Pedis": "2",
+        "SkinStatus": "1",
+        "AccessionNo": 995208,
+        "SkeletonStatus": "9",
+        "SkinCollection": 3,
+        "Skin_Skel_Remarks": "Manis & Pedis i skinnet",
+        "SkeletonCollection": 3,
+        "SkinStatus_related": {
+          "ID": "1",
+          "Skinn": "Helt skinn finns (skinnlagt)"
+        },
+        "SkeletonStatus_related": {
+          "ID": "9",
+          "Skelett": "Övrigt, enstaka ben t.ex enbart underkäke"
+        },
+        "SkinCollection_related": {
+          "ID": 3,
+          "Type": "Both",
+          "NRM_Location": "Plåtskåpsrum"
+        },
+        "SkeletonCollection_related": {
+          "ID": 3,
+          "Type": "Both",
+          "NRM_Location": "Plåtskåpsrum"
+        }
+      }
+    },
+    "individual": {
+      "lid": "bedb7f26-c9ee-4ed2-84a9-6523a2136c7d",
+      "identifiers": [
+        {
+          "lid": "82cd09e9-2a2c-4627-ab4f-46c81fadd09f",
+          "value": "995208",
+          "identifierType": {
+            "key": "catalog-number",
+            "name": "catalog number",
+            "id": "1"
+          }
+        }
+      ],
+      "recordHistoryEvents": [
+        {
+          "lid": "098f504d-980c-4d93-8199-cfcfe620b66b",
+          "date": {
+            "dateText": "2016-04-06"
+          },
+          "system": "MAM2006",
+          "agentText": "DCK",
+          "description": "Last modification of the objects"
+        },
+        {
+          "lid": "36a9c6d8-58d5-4192-a870-63cb9e02844b",
+          "date": {
+            "dateText": "2006-10-12"
+          },
+          "system": "MAM2006",
+          "agentText": "MJD",
+          "description": "Registration of the specimen"
+        }
+      ],
+      "collectingInformation": [
+        {
+          "lid": "a470812f-d4ba-42da-b097-3ec8cb7a549a",
+          "event": {
+            "lid": "631ea9c6-5c08-4f8e-b3f4-9e78af07effa",
+            "dateRange": {
+              "startDate": {
+                "dateText": "--"
+              }
+            },
+            "locationInformation": {
+              "places": [
+                {
+                  "name": "South America",
+                  "group": "continent",
+                  "id": "724"
+                }
+              ],
+              "localityN": "South America",
+              "localityT": "Sydamerika"
+            }
+          },
+          "collectorsText":
+            "Manis & Pedis i skinnet.; \"Från paleozoologiutställningen\". Delade tidigare acc.nr med Canis familiaris (nu 620498)."
+        }
+      ]
+    },
+    "id": "31914"
+  }
+]
