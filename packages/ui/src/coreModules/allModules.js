@@ -14,6 +14,7 @@ import * as localStorage from './localStorage'
 import * as logger from './logger'
 import * as notifications from './notifications'
 import * as routing from './routing'
+import * as search from './search'
 import * as size from './size'
 import * as user from './user'
 
@@ -21,6 +22,7 @@ const modules = [
   api,
   bootstrap,
   crud,
+  search,
   commonUi,
   layout,
   devToolsExtension,
