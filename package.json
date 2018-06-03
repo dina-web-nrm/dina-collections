@@ -27,6 +27,7 @@
     "setup:links": "yarn setup:links:shared && yarn setup:links:backend && yarn setup:links:ui",
     "setup": "yarn setup:env && yarn install && yarn setup:links && yarn test",
     "start:backend": "yarn start:postgres && yarn start:elasticsearch && cd ./packages/backend && yarn start",
+    "start:searchEngine": "yarn start:postgres && yarn start:elasticsearch && cd ./packages/backend && yarn start:searchEngine",
     "start:elasticsearch": "docker-compose -f docker-compose.dev.yaml up -d elasticsearch",
     "start:postgres": "docker-compose -f docker-compose.dev.yaml up -d postgres",
     "start:ui:mock": "cd ./packages/ui && yarn start",

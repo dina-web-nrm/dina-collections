@@ -6,9 +6,11 @@ dotenv.config()
 
 module.exports = {
   ...baseConfig,
-  db: {
-    ...baseConfig.db,
-    flushOnRestart: false,
+  api: {
+    active: false,
+  },
+  searchIndexBuilder: {
+    active: true,
   },
   services: {
     agentService: true,
