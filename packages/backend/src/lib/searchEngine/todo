@@ -1,0 +1,15 @@
+* Move data interface to be separate thing
+* clean up and commit
+
+Next
+* Move batch execute
+* Create map lib in common
+* Use map lib to map specimens in setup initial data
+
+
+* use new map lib and data interface when mapping specimen
+* Add possibilito to create custom index in memory for creating specimens
+* Use same index with some kind of setting to build it to the dataInterface cache
+* create new concept like sequalize that is in memory index. Might make sense to treat cache the same way
+
+
