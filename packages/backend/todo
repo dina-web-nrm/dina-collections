@@ -1,0 +1,32 @@
+(initially no increment update?)
+
+1. Create common search functions
+{
+  dataMapper,
+  name: 
+  filterFn: 
+}
+
+2. Create aggregator functions
+{
+  dataMapper,
+  name: 
+  aggregatorFn: 
+}
+
+3. Create search data
+* document,
+* updatedAt,
+* resource,
+* relationships? (keep information about all dependencies)
+
+4. add index for updated at
+
+
+5. add filter to fetch based on updated at
+
+
+6. add FE search module
+
+
+
