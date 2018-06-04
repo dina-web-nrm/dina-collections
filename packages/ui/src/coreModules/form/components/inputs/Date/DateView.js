@@ -35,7 +35,7 @@ class DateView extends Component {
     const baseStyle = {
       float: 'left',
       maxWidth: 190,
-      width: `${100 / components.length}%`,
+      width: `${100 / nComponents}%`,
     }
 
     const firstItemStyle =

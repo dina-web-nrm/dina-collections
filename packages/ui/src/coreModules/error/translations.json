@@ -37,7 +37,7 @@
     "en": "Invalid date"
   },
   "DATE_RANGE_START_DATE_BEFORE_END_DATE": {
-    "en": "Start date before end date"
+    "en": "End date before start date"
   },
   "DATE_RANGE_NOT_PARSABLE": {
     "en": "Invalid date"

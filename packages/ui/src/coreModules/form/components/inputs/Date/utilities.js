@@ -61,9 +61,9 @@ export const extractExactFieldValue = ({ value = {} }) => {
     const timestamp = moment(timestampString)
     if (timestamp.isValid()) {
       return {
-        day: timestamp.date() || undefined,
-        month: timestamp.month() ? timestamp.month() + 1 : undefined,
-        year: timestamp.year() || undefined,
+        day: timestamp.date(),
+        month: timestamp.month() + 1,
+        year: timestamp.year(),
       }
     }
   }
@@ -72,9 +72,9 @@ export const extractExactFieldValue = ({ value = {} }) => {
     const timestamp = moment(interpretedTimeString)
     if (timestamp.isValid()) {
       return {
-        day: timestamp.date() || undefined,
-        month: timestamp.month() ? timestamp.month() + 1 : undefined,
-        year: timestamp.year() || undefined,
+        day: timestamp.date(),
+        month: timestamp.month() + 1,
+        year: timestamp.year(),
       }
     }
   }
@@ -87,7 +87,7 @@ export const extractExactFieldValue = ({ value = {} }) => {
 }
 
 export const createExactDateUpdatedValue = ({
-  currentValue,
+  currentValue = {},
   newValue,
   field,
 }) => {
@@ -105,7 +105,7 @@ export const createExactDateUpdatedValue = ({
   }
 
   return {
-    ...(currentValue || {}),
+    ...currentValue,
     [field]: Number(newValue),
   }
 }
