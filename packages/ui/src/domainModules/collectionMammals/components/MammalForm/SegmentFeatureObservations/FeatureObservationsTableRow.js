@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { Table } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import { Field, Input } from 'coreModules/form/components'
+import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
@@ -107,15 +107,19 @@ class FeatureObservationTableRow extends PureComponent {
           </Table.Cell>
         )}
 
-        <Table.Cell key={getPath('date')} width={1}>
-          <Field
+        <Table.Cell key={getPath('date')} width={2}>
+          <SingleDate
             autoComplete="off"
-            className="transparent"
-            component={Input}
+            displayExact={false}
+            displayFlexible
             displayLabel={false}
+            displaySubLabels={false}
+            displayText={false}
             module="collectionMammals"
-            name={getPath('date.dateText')}
-            type="text"
+            name={getPath('date')}
+            parameterKey="date"
+            past
+            stack={false}
           />
         </Table.Cell>
         <Table.Cell key={getPath('featureObservationAgent')}>

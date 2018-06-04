@@ -26,5 +26,20 @@
   "REQUIRED": {
     "en": "Required",
     "sv": "Obligatorisk"
+  },
+  "DATE_PAST": {
+    "en": "Only past dates allowed"
+  },
+  "DATE_FUTURE": {
+    "en": "Only future dates allowed"
+  },
+  "DATE_TEXT_NOT_PARSABLE": {
+    "en": "Invalid date"
+  },
+  "DATE_RANGE_START_DATE_BEFORE_END_DATE": {
+    "en": "Start date before end date"
+  },
+  "DATE_RANGE_NOT_PARSABLE": {
+    "en": "Invalid date"
   }
 }

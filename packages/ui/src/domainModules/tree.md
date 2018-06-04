@@ -1,15 +1,44 @@
 # Tree for domainModules
 ## Tree
 ```bash
+├── agent
+│   ├── actionCreators
+│   │   ├── index.js
+│   │   ├── redirectToNext.js
+│   │   └── redirectToPrev.js
+│   ├── components
+│   │   ├── AdvancedAgentDropdownSearch
+│   │   │   └── index.js
+│   │   ├── AgentDropdownSearch
+│   │   │   └── index.js
+│   │   ├── AgentManager
+│   │   │   └── index.js
+│   │   ├── collection
+│   │   │   └── AgentList
+│   │   ├── index.js
+│   │   ├── item
+│   │   │   ├── Inspect
+│   │   │   └── form
+│   │   └── shared
+│   │       ├── RolesTable.js
+│   │       └── RolesTableRow.js
+│   ├── constants.js
+│   ├── globalSelectors.js
+│   ├── globalSelectors.test.js
+│   ├── index.js
+│   ├── keyObjectModule.js
+│   └── translations.json
 ├── allModules.js
 ├── collectionMammals
 │   ├── __markdown__
-│   │   ├── catalogNumber
-│   │   │   ├── addCatalogNumberModal.en.md
-│   │   │   └── addCatalogNumberModal.sv.md
+│   │   ├── helpTexts
+│   │   │   └── individual
 │   │   ├── index.json
-│   │   └── occurrences
-│   │       └── locationInformation
+│   │   ├── occurrences
+│   │   │   └── locationInformation
+│   │   └── other
+│   │       ├── addCatalogNumberModal.en.md
+│   │       └── addCatalogNumberModal.sv.md
 │   ├── actionCreators
 │   │   ├── clearSearchParameters.js
 │   │   ├── index.js
@@ -36,6 +65,7 @@
 │   ├── globalSelectors.js
 │   ├── index.js
 │   ├── mockData.js
+│   ├── old-translations.json
 │   ├── reducer.js
 │   ├── schemas.js
 │   ├── selectors.js
@@ -44,6 +74,8 @@
 ├── curatedList
 │   ├── components
 │   │   ├── FeatureObservationDropdownSearch
+│   │   │   └── index.js
+│   │   ├── PreparationTypeDropdownSearch
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
@@ -79,6 +111,10 @@
 │   ├── keyObjectModule.js
 │   └── translations.json
 ├── storage
+│   ├── __markdown__
+│   │   ├── helpTexts
+│   │   │   └── storageLocation
+│   │   └── index.json
 │   ├── components
 │   │   ├── StorageLocationDropdownSearch
 │   │   │   └── index.js
@@ -90,7 +126,8 @@
 │   │   ├── index.js
 │   │   └── item
 │   │       ├── Inspect
-│   │       └── form
+│   │       ├── form
+│   │       └── shared
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── index.js
@@ -122,7 +159,6 @@
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js
 │   ├── index.js
-│   ├── keyObjectModule.js
 │   ├── middleware.js
 │   ├── reducer
 │   │   ├── index.js

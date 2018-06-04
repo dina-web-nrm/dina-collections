@@ -10,11 +10,13 @@ const propTypes = {
   module: PropTypes.string,
   scope: PropTypes.string.isRequired,
   textKeys: PropTypes.array,
+  warning: PropTypes.bool,
 }
 
 const defaultProps = {
   module: '',
   textKeys: [],
+  warning: false,
 }
 
 const errorStyle = {
@@ -23,11 +25,10 @@ const errorStyle = {
   position: 'absolute',
   textAlign: 'left',
   transform: 'translateY(100%)',
-  width: '100%',
   zIndex: 20,
 }
 
-const FormFieldError = ({ scope, error, module, textKeys }) => {
+const FormFieldError = ({ scope, error, module, textKeys, warning }) => {
   if (textKeys.length) {
     return (
       <span className="ui red tiny label" style={errorStyle}>
@@ -36,8 +37,10 @@ const FormFieldError = ({ scope, error, module, textKeys }) => {
     )
   }
 
+  const classNames = warning ? 'ui orange tiny label' : 'ui red tiny label'
+
   return (
-    <span className="ui red tiny label" style={errorStyle}>
+    <span className={classNames} style={errorStyle}>
       {module ? (
         <ModuleTranslate
           capitalize
