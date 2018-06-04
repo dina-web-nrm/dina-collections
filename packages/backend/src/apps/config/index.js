@@ -29,12 +29,12 @@ const api = {
 }
 
 const initialData = {
-  numberOfSpecimens: 1000000,
+  numberOfSpecimens: process.env.INITIAL_DATA_NUMBER_OF_SPECIMENS || 100,
 }
 
 const db = {
   database: process.env.DB_DATABASE || 'postgres',
-  flushOnRestart: false,
+  flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
   loadInitialData: process.env.LOAD_INITIAL_DATA === 'true' || false,
   loadInitialDataServiceOrder: [
     'agentService',
