@@ -61,11 +61,6 @@ module.exports = function createModel({
     },
     {
       getterMethods: getters,
-      indexes: [
-        {
-          fields: ['id'],
-        },
-      ],
       setterMethods: setters,
     }
   )

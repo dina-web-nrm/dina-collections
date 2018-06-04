@@ -291,7 +291,12 @@
     "additionalProperties": false,
     "description": "A single date",
     "properties": {
-      "isoDate": {
+      "timestamp": {
+        "type": "string",
+        "description": "A date in standard format. TBA",
+        "x-summary": ""
+      },
+      "interpretedTimestamp": {
         "type": "string",
         "description": "A date in standard format. TBA",
         "x-summary": ""
@@ -303,17 +308,14 @@
       },
       "day": {
         "type": "integer",
-        "example": 25,
         "x-summary": ""
       },
       "month": {
         "type": "integer",
-        "example": 12,
         "x-summary": ""
       },
       "year": {
         "type": "integer",
-        "example": 1981,
         "x-summary": ""
       }
     },
@@ -770,6 +772,24 @@
     "x-modelType": "model",
     "x-summary": "A defined location with known, fixed extension in space.",
     "id": "place"
+  },
+  "searchSpecimen": {
+    "additionalProperties": true,
+    "properties": {},
+    "x-category": "searchService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "searchSpecimen"
+  },
+  "stageSpecimen": {
+    "additionalProperties": true,
+    "properties": {},
+    "x-category": "searchService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "stageSpecimen"
   },
   "acquisition": {
     "additionalProperties": false,
@@ -4627,6 +4647,104 @@
         "properties": {
           "self": {
             "example": "https://domain/api/locality/v01/places/{id}/relationships/parent",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "attributes": {
+            "$ref": "searchSpecimen"
+          },
+          "id": {
+            "example": "1234",
+            "type": "string"
+          },
+          "type": {
+            "default": "searchSpecimen",
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/searchSpecimens/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "searchSpecimen"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "searchSpecimen",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/searchSpecimens",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"

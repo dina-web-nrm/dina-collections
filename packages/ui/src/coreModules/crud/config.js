@@ -160,7 +160,18 @@ const config = {
         },
       ],
     },
-
+    searchSpecimen: {
+      operations: [
+        {
+          operationId: 'searchSpecimenGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'searchSpecimenGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
     specimen: {
       operations: [
         {

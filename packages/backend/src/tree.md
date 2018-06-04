@@ -15,6 +15,7 @@
 │   ├── connectors
 │   ├── controllers
 │   ├── elasticsearch
+│   ├── integrations
 │   ├── sequelize
 │   ├── serviceRouter
 │   ├── services

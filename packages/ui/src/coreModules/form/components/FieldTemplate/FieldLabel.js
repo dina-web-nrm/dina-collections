@@ -12,12 +12,14 @@ const propTypes = {
   htmlFor: PropTypes.string.isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   labelKey: PropTypes.string,
+  subLabel: PropTypes.bool,
 }
 const defaultProps = {
   helpNotificationProps: undefined,
   helpText: undefined,
   label: undefined,
   labelKey: undefined,
+  subLabel: false,
 }
 const FieldLabel = ({
   helpNotificationProps,
@@ -25,10 +27,18 @@ const FieldLabel = ({
   htmlFor,
   label: translatedLabel,
   labelKey,
+  subLabel,
 }) => {
+  const style = subLabel
+    ? {
+        fontSize: '0.9em',
+        margin: 0,
+      }
+    : {}
+
   const label = translatedLabel || <Translate capitalize textKey={labelKey} />
   return (
-    <label htmlFor={htmlFor}>
+    <label htmlFor={htmlFor} style={style}>
       {label}
       {
         // this ugly stuff is required since currently translations can only

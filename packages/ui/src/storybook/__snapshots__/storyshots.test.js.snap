@@ -632,7 +632,6 @@ exports[`storyshots Storyshots coreModules/error/FormFieldError Default 1`] = `
               "position": "absolute",
               "textAlign": "left",
               "transform": "translateY(100%)",
-              "width": "100%",
               "zIndex": 20,
             }
           }
@@ -698,12 +697,15 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
         className="field"
         style={
           Object {
+            "float": undefined,
             "position": "relative",
+            "width": undefined,
           }
         }
       >
         <label
           htmlFor="test"
+          style={Object {}}
         >
           <span>
             Modules.no-module.fieldLabels.test
@@ -1486,7 +1488,9 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
             className="field"
             style={
               Object {
+                "float": undefined,
                 "position": "relative",
+                "width": undefined,
               }
             }
           >
@@ -1518,7 +1522,9 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
             className="field"
             style={
               Object {
+                "float": undefined,
                 "position": "relative",
+                "width": undefined,
               }
             }
           >

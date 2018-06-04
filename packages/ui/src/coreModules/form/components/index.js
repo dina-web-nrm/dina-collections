@@ -1,6 +1,8 @@
 import ButtonCopyPasteField from './migrate/ButtonCopyPasteField'
 import Checkbox from './fields/Checkbox'
 import CustomData from './fields/CustomData'
+import DateRange from './fields/Date/DateRange'
+import SingleDate from './fields/Date/SingleDate'
 import DisplaySearchResult from './migrate/DisplaySearchResult'
 import DropdownSearch from './fields/DropdownSearch'
 import Field from './FieldWrapper'
@@ -18,6 +20,7 @@ export {
   ButtonCopyPasteField,
   Checkbox,
   CustomData,
+  DateRange,
   DisplaySearchResult,
   DropdownSearch,
   Field,
@@ -28,6 +31,7 @@ export {
   InputDatePart,
   InputText,
   Search,
+  SingleDate,
   TextArea,
   TextAreaInput,
 }

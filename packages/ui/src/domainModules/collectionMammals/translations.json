@@ -148,14 +148,11 @@
       "expeditionText": {
         "en": "Expedition description"
       },
-      "startDate": {
-        "en": "Start",
+      "dateRange": {
+        "en": "date",
         "sv": ""
       },
-      "endDate": {
-        "en": "End",
-        "sv": ""
-      },
+
       "remarks": {
         "en": "Remarks"
       },

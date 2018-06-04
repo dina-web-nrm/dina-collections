@@ -7,6 +7,7 @@ import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import {
   Checkbox,
+  DateRange,
   DropdownSearch,
   Field,
   Input,
@@ -114,26 +115,20 @@ class SegmentCollectingInformation extends PureComponent {
             <Grid.Column mobile={16}>
               <Header size="small">Collecting date</Header>
             </Grid.Column>
-            <Grid.Column computer={4} mobile={16}>
-              <Field
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column computer={16} mobile={16} tablet={8}>
+              <DateRange
                 autoComplete="off"
-                component={Input}
+                displayText
+                formName="mammalForm"
                 module="collectionMammals"
-                name={getPath('event.dateRange.startDate.dateText')}
-                parameterKey="event.startDate"
-                type="text"
+                name={getPath('event.dateRange')}
+                stack={false}
               />
             </Grid.Column>
-            <Grid.Column computer={4} mobile={16}>
-              <Field
-                autoComplete="off"
-                component={Input}
-                module="collectionMammals"
-                name={getPath('event.dateRange.endDate.dateText')}
-                parameterKey="event.endDate"
-                type="text"
-              />
-            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
             <Grid.Column computer={4} mobile={16} tablet={4}>
               <Field
                 autoComplete="off"

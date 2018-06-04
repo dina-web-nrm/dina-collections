@@ -1,14 +1,5 @@
 import createLog from 'utilities/log'
 
-import immutable from 'object-path-immutable'
-import Dependor from 'utilities/Dependor'
-import createItemUpdatePath from './createItemUpdatePath'
-
-export const dep = new Dependor({
-  assign: immutable.assign,
-  createItemUpdatePath,
-})
-
 const log = createLog(
   'coreModules:crud:actionHandlers:updateStateWithManyFactory'
 )
@@ -32,29 +23,31 @@ export default function updateStateWithManyFactory(
       }. Updating state from action: `,
       action
     )
-    return action.payload.reduce((newState, item) => {
+
+    const newItems = {}
+    action.payload.forEach(item => {
       const { id } = item
-      const updatePath = dep.createItemUpdatePath({
-        id,
-      })
-
-      if (!updatePath) {
-        return newState
+      if (id) {
+        const currentItem = state.items[id]
+        if (currentItem && currentItem.relationships) {
+          newItems[id] = {
+            ...item,
+            relationships: {
+              ...currentItem.relationships,
+              ...(item.relationships || {}),
+            },
+          }
+        } else {
+          newItems[id] = item
+        }
       }
-
-      const currentItem = newState.items && newState.items[id]
-
-      if (currentItem && currentItem.relationships) {
-        return dep.assign(newState, updatePath, {
-          ...item,
-          relationships: {
-            ...currentItem.relationships,
-            ...(item.relationships || {}),
-          },
-        })
-      }
-
-      return dep.assign(newState, updatePath, item)
-    }, state)
+    })
+    return {
+      ...state,
+      items: {
+        ...state.items,
+        ...newItems,
+      },
+    }
   }
 }

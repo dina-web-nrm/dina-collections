@@ -67,7 +67,5 @@ module.exports = function batchExecute({
     execute,
     numberOfEntries,
     numberOfEntriesEachBatch,
-  }).catch(err => {
-    console.error('Batch failed', err)
   })
 }

@@ -22,11 +22,6 @@ module.exports = function resolveItemRelationship(_ref) {
       relationships = _ref.relationships,
       type = _ref.type;
 
-  var relationship = relationships[relationshipKey];
-  if (!(relationship && relationship.data)) {
-    return item;
-  }
-
   if (path) {
     var arrayPath = path;
     if (!Array.isArray(path)) {
@@ -39,9 +34,33 @@ module.exports = function resolveItemRelationship(_ref) {
       walk({
         func: function func(pth) {
           var relationshipObject = objectPath.get(item, pth);
-          var id = relationshipObject && (relationshipObject.id || relationshipObject.lid);
 
-          var resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
+          var id = relationshipObject && relationshipObject.id;
+          var lid = relationshipObject && relationshipObject.lid;
+
+          var resolvedRelationshipItem = void 0;
+          if (getItemByTypeId) {
+            if (id === undefined && lid !== undefined) {
+              var relationshipData = relationships[relationshipKey] && relationships[relationshipKey].data;
+              var relationshipArray = Array.isArray(relationshipData) ? relationshipData : [relationshipData];
+
+              resolvedRelationshipItem = relationshipArray.reduce(function (matching, _ref2) {
+                var relationshipId = _ref2.id;
+
+                if (matching) {
+                  return matching;
+                }
+                var tmp = getItemByTypeId(type, relationshipId);
+                if (tmp && tmp.attributes && tmp.attributes.lid === lid) {
+                  return tmp;
+                }
+
+                return undefined;
+              }, undefined);
+            } else {
+              resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
+            }
+          }
 
           if (resolvedRelationshipItem) {
             objectPath.set(item, pth, coreToNested({
@@ -59,9 +78,14 @@ module.exports = function resolveItemRelationship(_ref) {
     return item;
   }
 
+  var relationship = relationships[relationshipKey];
+  if (!(relationship && relationship.data)) {
+    return item;
+  }
+
   if (Array.isArray(relationship.data)) {
-    return (0, _extends5.default)({}, item, (0, _defineProperty3.default)({}, relationshipKey, relationship.data.map(function (_ref2) {
-      var id = _ref2.id;
+    return (0, _extends5.default)({}, item, (0, _defineProperty3.default)({}, relationshipKey, relationship.data.map(function (_ref3) {
+      var id = _ref3.id;
 
       var resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
       if (resolvedRelationshipItem) {

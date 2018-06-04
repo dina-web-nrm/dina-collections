@@ -27,7 +27,6 @@
 │   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── log
-│   ├── normalize
 │   ├── openApiClient
 │   ├── schemaBuilder
 │   ├── scripts

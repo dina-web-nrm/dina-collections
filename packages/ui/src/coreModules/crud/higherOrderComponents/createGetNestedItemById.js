@@ -70,7 +70,7 @@ const createGetNestedItemById = ({
         if (!resolveRelationships.includes(type)) {
           return null
         }
-        if (!this.context && this.context.store) {
+        if (!(this.context && this.context.store)) {
           return null
         }
 

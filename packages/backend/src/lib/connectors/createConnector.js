@@ -63,6 +63,7 @@ module.exports = function createConnector({
   })
 
   return {
+    controller,
     method,
     path,
     requestHandler,

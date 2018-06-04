@@ -1,6 +1,3 @@
-1. normalize specimen
-2. migrate dataModules to coreModule
-  * As a part move custom stuff to serviceModules (if needed)
-  * Create specification for jsonApiClient
-3. implement jsonApiClient
-4. Make form form on specimen not individual (also move read only data)
+* scope resources in common search
+* improve performance of merging state
+* return search result array and not object

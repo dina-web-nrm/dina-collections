@@ -3,7 +3,10 @@ import { MODULE_NAME } from './constants'
 
 export default createAsyncView({
   modules: () => {
-    return [import('domainModules/collectionMammals')]
+    return [
+      import('domainModules/collectionMammals'),
+      import('coreModules/search'),
+    ]
   },
   name: MODULE_NAME,
   view: () => {

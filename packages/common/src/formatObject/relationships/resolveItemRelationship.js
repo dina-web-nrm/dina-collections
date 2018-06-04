@@ -10,11 +10,6 @@ module.exports = function resolveItemRelationship({
   relationships,
   type,
 }) {
-  const relationship = relationships[relationshipKey]
-  if (!(relationship && relationship.data)) {
-    return item
-  }
-
   if (path) {
     let arrayPath = path
     if (!Array.isArray(path)) {
@@ -27,12 +22,41 @@ module.exports = function resolveItemRelationship({
       walk({
         func: pth => {
           const relationshipObject = objectPath.get(item, pth)
-          const id =
-            relationshipObject &&
-            (relationshipObject.id || relationshipObject.lid)
+
+          const id = relationshipObject && relationshipObject.id
+          const lid = relationshipObject && relationshipObject.lid
+
+          let resolvedRelationshipItem
+          if (getItemByTypeId) {
+            if (id === undefined && lid !== undefined) {
+              const relationshipData =
+                relationships[relationshipKey] &&
+                relationships[relationshipKey].data
+              const relationshipArray = Array.isArray(relationshipData)
+                ? relationshipData
+                : [relationshipData]
+
+              resolvedRelationshipItem = relationshipArray.reduce(
+                (matching, { id: relationshipId }) => {
+                  if (matching) {
+                    return matching
+                  }
+                  const tmp = getItemByTypeId(type, relationshipId)
+                  if (tmp && tmp.attributes && tmp.attributes.lid === lid) {
+                    return tmp
+                  }
+
+                  return undefined
+                },
+                undefined
+              )
+            } else {
+              resolvedRelationshipItem =
+                id && getItemByTypeId && getItemByTypeId(type, id)
+            }
+          }
+
           // check that it exist in relationships
-          const resolvedRelationshipItem =
-            id && getItemByTypeId && getItemByTypeId(type, id)
 
           if (resolvedRelationshipItem) {
             objectPath.set(
@@ -51,6 +75,11 @@ module.exports = function resolveItemRelationship({
       })
     })
 
+    return item
+  }
+
+  const relationship = relationships[relationshipKey]
+  if (!(relationship && relationship.data)) {
     return item
   }
 
