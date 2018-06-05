@@ -1,10 +1,9 @@
-const createLog = require('../../../utilities/log')
 const createResource = require('../resourceFactory')
 const createServiceSpecification = require('./createServiceSpecification')
 
-const log = createLog('lib/services', 1)
-
 module.exports = function createService({
+  log,
+  resourceRelationshipParamsMap,
   serviceDefinition: serviceSpecificationInput,
 }) {
   log.info(`Create service ${serviceSpecificationInput.name}`)
@@ -15,12 +14,15 @@ module.exports = function createService({
 
   log.info('Create resources')
   const resources = Object.keys(resourceInputs).reduce((obj, resourceName) => {
-    const resourceInput = resourceInputs[resourceName]
+    const resourceInput = {
+      ...resourceInputs[resourceName],
+      relations: resourceRelationshipParamsMap[resourceName] || {},
+    }
+
     return {
       ...obj,
       [resourceName]: createResource({
         resourceInput,
-        resourceName,
       }),
     }
   }, {})
