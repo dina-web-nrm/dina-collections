@@ -1,101 +1,139 @@
+const createLog = require('../../../../utilities/log')
+const getForeignKeyName = require('./getForeignKeyName')
+
+const log = createLog('lib/sequelize', 2)
+
+const getAssociationType = ({
+  keyStoredInModelName,
+  oneOrMany,
+  sourceModelName,
+  targetAs,
+  targetModelName,
+}) => {
+  if (targetAs === 'parent') {
+    return 'belongsTo'
+  }
+
+  if (targetAs === 'children') {
+    return 'hasMany'
+  }
+
+  if (keyStoredInModelName === sourceModelName) {
+    return 'belongsTo'
+  }
+
+  if (keyStoredInModelName === targetModelName) {
+    if (oneOrMany === 'one') {
+      return 'hasOne'
+    }
+
+    if (oneOrMany === 'many') {
+      return 'hasMany'
+    }
+  }
+
+  throw new Error(
+    `Invalid association configuration for sourceModelName ${
+      sourceModelName
+    }, targetModelName ${targetModelName}, keyStoredInModelName ${
+      keyStoredInModelName
+    } and oneOrMany ${oneOrMany}`
+  )
+}
+
+const getAssociationOptions = ({
+  allowNull,
+  associationType,
+  keyName,
+  keyStoredInModelName,
+  sourceModelName,
+  targetAs,
+  targetKey,
+  targetModelName,
+}) => {
+  if (associationType === 'belongsTo') {
+    const foreignKeyName = getForeignKeyName({
+      keyName,
+      keyStoredInModelName,
+      sourceModelName,
+      targetAs,
+      targetModelName,
+    })
+
+    return {
+      as: targetAs,
+      foreignKey: allowNull
+        ? {
+            allowNull: true,
+            name: foreignKeyName,
+          }
+        : foreignKeyName,
+      targetKey: targetKey || 'id',
+    }
+  }
+
+  const foreignKeyName = getForeignKeyName({
+    keyName,
+    targetAs,
+  })
+
+  return {
+    as: targetAs,
+    foreignKey: allowNull
+      ? {
+          allowNull: true,
+          name: foreignKeyName,
+        }
+      : foreignKeyName,
+  }
+}
+
 module.exports = function setupAssociation(
   {
     allowNull,
-    asKey,
-    foreignKey,
-    sourceResource,
-    targetKey,
-    targetResource,
-    type,
+    keyName,
+    keyStoredInModel: keyStoredInModelName,
     models = {},
+    oneOrMany,
+    sourceResource: sourceModelName,
+    targetAs,
+    targetKey,
+    targetResource: targetModelName,
   } = {}
 ) {
-  const sourceModel = models[sourceResource]
-  const targetModel = models[targetResource || sourceResource]
+  const sourceModel = models[sourceModelName]
+  const targetModel = models[targetModelName || sourceModelName]
 
   if (!sourceModel) {
-    throw new Error(`Missing model ${sourceResource}`)
+    throw new Error(`Missing model ${sourceModelName}`)
   }
 
   if (!targetModel) {
-    throw new Error(`Missing model ${targetResource}`)
+    throw new Error(`Missing model ${targetModelName}`)
   }
 
-  switch (type) {
-    case 'belongsToOne': {
-      const foreignKeyName = foreignKey || `${targetResource}Id`
-      sourceModel.Model.belongsTo(targetModel.Model, {
-        as: asKey,
-        foreignKey: allowNull
-          ? {
-              allowNull: true,
-              name: foreignKeyName,
-            }
-          : foreignKeyName,
-        targetKey: targetKey || 'id',
-      })
-      break
-    }
+  const associationType = getAssociationType({
+    keyStoredInModelName,
+    oneOrMany,
+    sourceModelName,
+    targetAs,
+    targetModelName,
+  })
 
-    case 'hasMany': {
-      const foreignKeyName = foreignKey || `${sourceResource}Id`
-      sourceModel.Model.hasMany(targetModel.Model, {
-        as: asKey,
-        foreignKey: allowNull
-          ? {
-              allowNull: true,
-              name: foreignKeyName,
-            }
-          : foreignKeyName,
-      })
-      break
-    }
+  const associationOptions = getAssociationOptions({
+    allowNull,
+    associationType,
+    keyName,
+    keyStoredInModelName,
+    sourceModelName,
+    targetAs,
+    targetKey,
+    targetModelName,
+  })
 
-    case 'hasOne': {
-      const foreignKeyName = foreignKey || `${sourceResource}Id`
-      sourceModel.Model.hasOne(targetModel.Model, {
-        as: asKey,
-        foreignKey: allowNull
-          ? {
-              allowNull: true,
-              name: foreignKeyName,
-            }
-          : foreignKeyName,
-      })
-      break
-    }
-
-    case 'parent': {
-      const foreignKeyName = foreignKey || 'parentId'
-      sourceModel.Model.belongsTo(sourceModel.Model, {
-        as: asKey,
-        foreignKey: allowNull
-          ? {
-              allowNull: true,
-              name: foreignKeyName,
-            }
-          : foreignKeyName,
-        targetKey: targetKey || 'id',
-      })
-      break
-    }
-
-    case 'children': {
-      const foreignKeyName = foreignKey || 'parentId'
-      sourceModel.Model.hasMany(sourceModel.Model, {
-        as: asKey,
-        foreignKey: allowNull
-          ? {
-              allowNull: true,
-              name: foreignKeyName,
-            }
-          : foreignKeyName,
-      })
-      break
-    }
-
-    default: {
-      throw new Error(`Unknown association type ${type}`)
-    }
-  }
+  log.debug(`${sourceModelName} ${associationType} ${targetAs}`)
+  return sourceModel.Model[associationType](
+    targetModel.Model,
+    associationOptions
+  )
 }
