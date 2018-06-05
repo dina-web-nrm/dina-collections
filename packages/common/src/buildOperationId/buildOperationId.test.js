@@ -11,12 +11,12 @@ describe('lib/services/operationFactory/typeFactories/utilities/buildOperationId
   })
 
   it('returns operationId from resource, operationType and relationKey', () => {
-    const operationType = 'getRelationHasMany'
+    const operationType = 'getRelationship'
     const relationKey = 'physicalObjects'
     const resource = 'storageLocation'
 
     const testValue = buildOperationId({ operationType, relationKey, resource })
-    const expectedResult = 'storageLocationGetRelationHasManyPhysicalObjects'
+    const expectedResult = 'storageLocationGetRelationshipPhysicalObjects'
 
     expect(testValue).toEqual(expectedResult)
   })

@@ -71,7 +71,7 @@ function update(
     }
 
     log.debug(
-      `Create resource ${type} with operationId: ${operationId} input:`,
+      `Update resource ${type} with operationId: ${operationId} input:`,
       input
     )
 
