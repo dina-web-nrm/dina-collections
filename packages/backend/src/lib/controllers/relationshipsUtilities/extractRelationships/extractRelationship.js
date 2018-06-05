@@ -12,7 +12,7 @@ module.exports = function extractRelationship({
   }
   const {
     format: relationFormat,
-    resource: relationResource,
+    targetResource: relationResource,
     storeInDocument,
   } = relation
 
