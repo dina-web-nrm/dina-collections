@@ -1,16 +1,23 @@
-function splitRelationships(
-  { relationshipKeysToIncludeInBody = [], relationships } = {}
-) {
+const {
+  getResourceRelationshipKeysToIncludeInBodyMap,
+} = require('../../schemaInterface/client')
+
+const resourceRelationshipKeysToIncludeInBodyMap = getResourceRelationshipKeysToIncludeInBodyMap()
+
+function splitRelationships({ itemResourceType, relationships } = {}) {
   const res = {
-    relationshipsToAssociateSeparatly: {},
+    relationshipsToAssociateSeparately: {},
     relationshipsToIncludeInRequest: {},
   }
+
+  const relationshipKeysToIncludeInBody =
+    resourceRelationshipKeysToIncludeInBodyMap[itemResourceType] || []
 
   Object.keys(relationships).forEach(key => {
     if (relationshipKeysToIncludeInBody.includes(key)) {
       res.relationshipsToIncludeInRequest[key] = relationships[key]
     } else {
-      res.relationshipsToAssociateSeparatly[key] = relationships[key]
+      res.relationshipsToAssociateSeparately[key] = relationships[key]
     }
   })
   return res

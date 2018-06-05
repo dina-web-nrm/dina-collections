@@ -16,7 +16,6 @@ function recursiveCreate(
     item,
     log = defaultLog,
     openApiClient,
-    relationshipKeysToIncludeInBody,
     resourcesToModify,
     resourceType,
   } = {}
@@ -73,7 +72,6 @@ function recursiveCreate(
             item: itemWithUpdatedRelationships,
             log: log.scope(),
             openApiClient,
-            relationshipKeysToIncludeInBody,
             resourcesToModify,
           })
           .then(result => {

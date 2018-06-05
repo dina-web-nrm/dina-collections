@@ -26,16 +26,11 @@ module.exports = function createJsonApiClient({
 
   const update = (resourceType, userOptions) => {
     log.debug(`update ${resourceType}`, userOptions)
-    const {
-      body = {},
-      relationshipKeysToIncludeInBody,
-      resourcesToModify = [resourceType],
-    } = userOptions
+    const { body = {}, resourcesToModify = [resourceType] } = userOptions
     const item = body.data
     return jsonApiUpdate({
       item,
       openApiClient,
-      relationshipKeysToIncludeInBody,
       resourcesToModify,
       resourceType,
     })
@@ -43,16 +38,11 @@ module.exports = function createJsonApiClient({
 
   const create = (resourceType, userOptions) => {
     log.debug(`create ${resourceType}`, userOptions)
-    const {
-      body = {},
-      relationshipKeysToIncludeInBody,
-      resourcesToModify = [resourceType],
-    } = userOptions
+    const { body = {}, resourcesToModify = [resourceType] } = userOptions
     const item = body.data
     return jsonApiCreate({
       item,
       openApiClient,
-      relationshipKeysToIncludeInBody,
       resourcesToModify,
       resourceType,
     })
