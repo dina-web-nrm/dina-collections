@@ -1,13 +1,18 @@
 const path = require('path')
 const read = require('./read')
 const write = require('./write')
-const build = require('./build')
+const createOpenApi = require('./build/openApi')
+const buildEndpoints = require('./build/buildEndpoints')
 
-function main({ modelBasePath, apiBasePath, normalize }) {
-  const version = '0.1.0'
+function buildOpenApi({
+  modelBasePath,
+  apiBasePath,
+  normalize,
+  version = '0.1.0',
+}) {
   const {
     apis,
-    endpoints,
+    endpoints: endpointsInput,
     errors,
     info,
     models,
@@ -18,7 +23,10 @@ function main({ modelBasePath, apiBasePath, normalize }) {
     apiBasePath,
     modelBasePath,
   })
-  const { cleanModels, openApi } = build({
+
+  const endpoints = buildEndpoints(endpointsInput)
+
+  const openApi = createOpenApi({
     apis,
     endpoints,
     errors,
@@ -32,7 +40,6 @@ function main({ modelBasePath, apiBasePath, normalize }) {
   })
 
   write({
-    models: cleanModels,
     normalize,
     openApi,
     setCurrent: true,
@@ -40,19 +47,18 @@ function main({ modelBasePath, apiBasePath, normalize }) {
   })
 
   write({
-    models: cleanModels,
     normalize,
     openApi,
   })
 }
 
-main({
+buildOpenApi({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
   normalize: false,
 })
 
-main({
+buildOpenApi({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
   normalize: true,
