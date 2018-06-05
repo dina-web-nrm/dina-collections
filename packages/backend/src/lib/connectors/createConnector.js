@@ -13,6 +13,7 @@ module.exports = function createConnector({
   models,
   operation,
   operationId,
+  serviceName,
 }) {
   log.info(operationId)
   const {
@@ -67,5 +68,6 @@ module.exports = function createConnector({
     method,
     path,
     requestHandler,
+    serviceName,
   }
 }
