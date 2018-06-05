@@ -1,37 +1,17 @@
-import ButtonCopyPasteField from './migrate/ButtonCopyPasteField'
-import Checkbox from './fields/Checkbox'
-import CustomData from './fields/CustomData'
-import DateRange from './fields/Date/DateRange'
-import SingleDate from './fields/Date/SingleDate'
-import DisplaySearchResult from './migrate/DisplaySearchResult'
-import DropdownSearch from './fields/DropdownSearch'
-import Field from './FieldWrapper'
-import FieldLabel from './FieldTemplate/FieldLabel'
-import FormTable from './migrate/FormTable'
-import HelpTextNotification from './migrate/HelpTextNotification'
-import Input from './fields/Input'
-import InputDatePart from './migrate/InputDatePart'
-import InputText from './inputs/Input/Text'
-import Search from './fields/Search'
-import TextArea from './fields/TextArea'
-import TextAreaInput from './inputs/TextArea'
-
-export {
-  ButtonCopyPasteField,
-  Checkbox,
-  CustomData,
-  DateRange,
-  DisplaySearchResult,
-  DropdownSearch,
-  Field,
-  FieldLabel,
-  FormTable,
-  HelpTextNotification,
-  Input,
-  InputDatePart,
-  InputText,
-  Search,
-  SingleDate,
-  TextArea,
-  TextAreaInput,
-}
+export { default as ButtonCopyPasteField } from './migrate/ButtonCopyPasteField'
+export { default as Checkbox } from './fields/Checkbox'
+export { default as CustomData } from './fields/CustomData'
+export { default as DateRange } from './fields/Date/DateRange'
+export { default as DisplaySearchResult } from './migrate/DisplaySearchResult'
+export { default as DropdownSearch } from './fields/DropdownSearch'
+export { default as Field } from './FieldWrapper'
+export { default as FieldLabel } from './FieldTemplate/FieldLabel'
+export { default as FormTable } from './migrate/FormTable'
+export { default as HelpTextNotification } from './migrate/HelpTextNotification'
+export { default as Input } from './fields/Input'
+export { default as InputDatePart } from './migrate/InputDatePart'
+export { default as InputText } from './inputs/Input/Text'
+export { default as Search } from './fields/Search'
+export { default as SingleDate } from './fields/Date/SingleDate'
+export { default as TextArea } from './fields/TextArea'
+export { default as TextAreaInput } from './inputs/TextArea'
