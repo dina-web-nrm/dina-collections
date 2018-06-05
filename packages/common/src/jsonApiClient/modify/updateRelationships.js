@@ -9,10 +9,10 @@ const dep = new Dependor({
 const defaultLog = createLog('common:jsonApiClient:updateRelationships')
 
 function updateRelationships({
-  openApiClient,
-  relationships,
   item,
   log = defaultLog,
+  openApiClient,
+  relationships,
 }) {
   log.debug('updateRelationships: start', relationships)
   const promises = Object.keys(relationships).map(relationKey => {
