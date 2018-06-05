@@ -1,11 +1,21 @@
 {
   "additionalProperties": false,
   "properties": {
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
+    },
     "relationships": {
       "type": "object",
       "properties": {
         "acceptedTaxonName": {
           "type": "object",
+          "x-key-allow-null": true,
+          "x-key-name": "acceptedToTaxonId",
+          "x-key-stored-in-model": "taxonName",
+          "x-key-type": "sql",
           "properties": {
             "data": {
               "type": "object",
@@ -16,6 +26,9 @@
         },
         "children": {
           "type": "object",
+          "x-key-allow-null": true,
+          "x-key-stored-in-model": "taxon",
+          "x-key-type": "sql",
           "properties": {
             "data": {
               "type": "array",
@@ -28,6 +41,9 @@
         },
         "parent": {
           "type": "object",
+          "x-key-allow-null": true,
+          "x-key-stored-in-model": "taxon",
+          "x-key-type": "sql",
           "properties": {
             "data": {
               "type": "object",
@@ -38,6 +54,10 @@
         },
         "synonyms": {
           "type": "object",
+          "x-key-allow-null": true,
+          "x-key-name": "synonymToTaxonId",
+          "x-key-stored-in-model": "taxonName",
+          "x-key-type": "sql",
           "properties": {
             "data": {
               "type": "array",
@@ -50,6 +70,10 @@
         },
         "vernacularNames": {
           "type": "object",
+          "x-key-allow-null": true,
+          "x-key-name": "vernacularToTaxonId",
+          "x-key-stored-in-model": "taxonName",
+          "x-key-type": "sql",
           "properties": {
             "data": {
               "type": "array",
@@ -62,9 +86,7 @@
         }
       }
     },
-
     "acceptedTaxonName": {
-      "type": "object",
       "$ref": "__ROOT__taxonName",
       "x-reference-type": "external"
     },
@@ -76,7 +98,6 @@
       }
     },
     "parent": {
-      "type": "object",
       "$ref": "__ROOT__taxon",
       "x-reference-type": "external"
     },
@@ -93,12 +114,6 @@
         "$ref": "__ROOT__taxonName",
         "x-reference-type": "external"
       }
-    },
-    "id": {
-      "$ref": "__ROOT__id"
-    },
-    "type": {
-      "$ref": "__ROOT__type"
     }
   }
 }

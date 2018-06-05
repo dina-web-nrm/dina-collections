@@ -1,21 +1,6 @@
 {
   "additionalProperties": false,
   "properties": {
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__user",
-              "x-reference-type": "external"
-            }
-          }
-        }
-      }
-    },
     "id": {
       "type": "string"
     },
@@ -65,8 +50,24 @@
     "readOnly": {
       "$ref": "__ROOT__readOnly"
     },
-    "user": {
+    "relationships": {
       "type": "object",
+      "properties": {
+        "user": {
+          "type": "object",
+          "x-key-stored-in-model": "agent",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__user",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
+    "user": {
       "$ref": "__ROOT__user",
       "x-reference-type": "external"
     }

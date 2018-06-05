@@ -4,150 +4,6 @@
   "x-format": true,
   "x-normalize": true,
   "properties": {
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "agents": {
-          "type": "object",
-          "x-path": [
-            "individual.acquisition.handedInByAgent",
-            "individual.collectingInformation.*.collectedByAgent",
-            "individual.collectionItems.*.curatorialAssessments.*.agent",
-            "individual.determinations.*.determinedByAgent",
-            "individual.featureObservations.*.featureObservationAgent",
-            "individual.recordHistoryEvents.*.agent"
-          ],
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__agent",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "identifierTypes": {
-          "type": "object",
-          "x-path": "individual.identifiers.*.identifierType",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__identifierType",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "typeSpecimenTypes": {
-          "type": "object",
-          "x-path": "individual.typeSpecimenType",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__typeSpecimenType",
-              "x-reference-type": "external"
-            }
-          }
-        },
-        "preparationTypes": {
-          "type": "object",
-          "x-path": "individual.collectionItems.*.preparationType",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__preparationType",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "establishmentMeansTypes": {
-          "type": "object",
-          "x-path": "individual.collectingInformation.*.establishmentMeansType",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__establishmentMeansType",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "causeOfDeathTypes": {
-          "type": "object",
-          "x-path": "individual.deathInformation.*.establishmentMeansType",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__causeOfDeathType",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "physicalObjects": {
-          "type": "object",
-          "x-path": "individual.collectionItems.*.physicalObject",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__physicalObject",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "featureTypes": {
-          "type": "object",
-          "x-path": "individual.featureObservations.*.featureType",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__featureType",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "places": {
-          "type": "object",
-          "x-path":
-            "individual.collectingInformation.*.event.locationInformation.places.*.",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__place",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "taxonNames": {
-          "type": "object",
-          "x-path": [
-            "individual.determinations.*.taxonName",
-            "individual.taxonInformation.curatorialTaxonName"
-          ],
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__taxonName",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        }
-      }
-    },
     "individual": {
       "$ref": "__ROOT__individual"
     },
@@ -251,6 +107,237 @@
     },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": [
+            "individual.acquisition.handedInByAgent",
+            "individual.collectingInformation.*.collectedByAgent",
+            "individual.collectionItems.*.curatorialAssessments.*.agent",
+            "individual.determinations.*.determinedByAgent",
+            "individual.featureObservations.*.featureObservationAgent",
+            "individual.recordHistoryEvents.*.agent"
+          ],
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__agent",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "causeOfDeathTypes": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.deathInformation.*.establishmentMeansType",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__causeOfDeathType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "establishmentMeansTypes": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.collectingInformation.*.establishmentMeansType",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__establishmentMeansType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "featureTypes": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.featureObservations.*.featureType",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__featureType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "identifierTypes": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.identifiers.*.identifierType",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__identifierType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "physicalObjects": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.collectionItems.*.physicalObject",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__physicalObject",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "places": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path":
+            "individual.collectingInformation.*.event.locationInformation.places.*.",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__place",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "preparationTypes": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.collectionItems.*.preparationType",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__preparationType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "taxonNames": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": [
+            "individual.determinations.*.taxonName",
+            "individual.taxonInformation.curatorialTaxonName"
+          ],
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__taxonName",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "typeSpecimenType": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": "individual.typeStatus",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__typeSpecimenType",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__agent",
+        "x-reference-type": "external"
+      }
+    },
+    "causeOfDeathTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__causeOfDeathType",
+        "x-reference-type": "external"
+      }
+    },
+    "establishmentMeansTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__establishmentMeansType",
+        "x-reference-type": "external"
+      }
+    },
+    "featureTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__featureType",
+        "x-reference-type": "external"
+      }
+    },
+    "identifierTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__identifierType",
+        "x-reference-type": "external"
+      }
+    },
+    "physicalObjects": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__physicalObject",
+        "x-reference-type": "external"
+      }
+    },
+    "places": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__place",
+        "x-reference-type": "external"
+      }
+    },
+    "preparationTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__preparationType",
+        "x-reference-type": "external"
+      }
+    },
+    "taxonNames": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxonName",
+        "x-reference-type": "external"
+      }
+    },
+    "typeSpecimenType": {
+      "$ref": "__ROOT__typeSpecimenType",
+      "x-reference-type": "external"
     }
   }
 }

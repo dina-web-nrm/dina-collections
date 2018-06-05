@@ -1,6 +1,32 @@
 {
   "additionalProperties": false,
   "properties": {
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "agent": {
+          "type": "object",
+          "x-key-stored-in-model": "agent",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__agent",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__agent",
+        "x-reference-type": "external"
+      }
+    },
     "id": {
       "type": "string"
     },
