@@ -9,6 +9,9 @@ module.exports = {
     {
       type: 'getMany',
     },
+    {
+      type: 'rebuildView',
+    },
   ],
   resource,
 }
