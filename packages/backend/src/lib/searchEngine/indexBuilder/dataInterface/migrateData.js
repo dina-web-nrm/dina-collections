@@ -2,7 +2,7 @@ const bulkCreate = require('./bulkCreate')
 const getCount = require('./getCount')
 const truncate = require('./truncate')
 
-const batchExecute = require('../../../../utilities/test/batchExecute')
+const { execute: batchExecute } = require('common/src/batch')
 
 module.exports = function migrateData({
   fromType,

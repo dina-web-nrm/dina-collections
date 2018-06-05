@@ -1,5 +1,5 @@
+const { execute: batchExecute } = require('common/src/batch')
 const transformOutput = require('../../../../lib/controllers/transformations/outputObject')
-const batchExecute = require('../../../../utilities/test/batchExecute')
 
 module.exports = function loadInitialData({ sequelizeModels, models }) {
   const { specimen: sequelizeSpecimenModel } = sequelizeModels

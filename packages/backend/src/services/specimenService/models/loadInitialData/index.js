@@ -1,4 +1,4 @@
-const batchExecute = require('../../../../utilities/test/batchExecute')
+const { execute: batchExecute } = require('common/src/batch')
 const readInitialData = require('../../../../utilities/readInitialData')
 
 const migrateSpecimen = require('./migrations/migrateSpecimen')

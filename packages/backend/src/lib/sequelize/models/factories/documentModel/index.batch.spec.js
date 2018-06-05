@@ -1,10 +1,10 @@
+const { execute: batchExecute } = require('common/src/batch')
 const createDb = require('../../../db')
 const createModel = require('./index')
 const syncModels = require('../../syncModels')
 const config = require('../../../../../apps/core/config')
 
 const batchDescribe = require('../../../../../utilities/test/batchDescribe')
-const batchExecute = require('../../../../../utilities/test/batchExecute')
 
 const createData = catalogNumber => {
   return {
