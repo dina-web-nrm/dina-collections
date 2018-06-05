@@ -41,6 +41,8 @@ module.exports = function buildBase({
     return base
   }
 
-  base.schema.content.properties.data = item
+  base.schema.content.properties.data = {
+    oneOf: [item, { type: 'null' }],
+  }
   return base
 }
