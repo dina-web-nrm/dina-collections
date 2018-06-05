@@ -1,3 +1,3 @@
 const logFactory = require('./logFactory')
 
-module.exports = logFactory()
+module.exports = logFactory('TEST:DINA')
