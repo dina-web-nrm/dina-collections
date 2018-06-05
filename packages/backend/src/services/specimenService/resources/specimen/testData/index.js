@@ -17,6 +17,19 @@ testData.badRequestMissingCatalogNumber = {
   },
 }
 
+testData.initialRelationships = {
+  agents: { data: [] },
+  causeOfDeathTypes: { data: [] },
+  establishmentMeansTypes: { data: [] },
+  featureTypes: { data: [] },
+  identifierTypes: { data: [] },
+  physicalObjects: { data: [] },
+  places: { data: [] },
+  preparationTypes: { data: [] },
+  taxonNames: { data: [] },
+  typeSpecimenType: { data: null },
+}
+
 testData.simpleDataNoRelations = {
   data: {
     attributes: {

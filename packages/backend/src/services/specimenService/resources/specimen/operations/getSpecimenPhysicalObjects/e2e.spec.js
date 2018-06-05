@@ -29,7 +29,7 @@ apiDescribe('specimen', () => {
           'simpleDataPhysicalObjectRelations'
         )
         return makeTestCall({
-          operationId: 'specimenGetRelationHasManyPhysicalObjects',
+          operationId: 'specimenGetRelationshipPhysicalObjects',
           pathParams: {
             id: simpleDataPhysicalObjectRelationsId,
           },
@@ -39,19 +39,17 @@ apiDescribe('specimen', () => {
             expectLength: true,
             response,
           })
-
           expect(response.data[0].id).toBe(
             simpleDataPhysicalObjectRelations.data.relationships.physicalObjects
               .data[0].id
           )
           expect(response.data[0].type).toBe('physicalObject')
-          expect(response.data[0].attributes).toBeTruthy()
         })
       })
       it('Fail fetch with 404 when non existing id provided', () => {
         return expectError404(
           makeTestCall({
-            operationId: 'specimenGetRelationHasManyPhysicalObjects',
+            operationId: 'specimenGetRelationshipPhysicalObjects',
             pathParams: {
               id: '17171717',
             },
@@ -72,7 +70,7 @@ apiDescribe('specimen', () => {
       })
       it('Return empty array when no physicalObjects exist', () => {
         return makeTestCall({
-          operationId: 'specimenGetRelationHasManyPhysicalObjects',
+          operationId: 'specimenGetRelationshipPhysicalObjects',
           pathParams: {
             id: simpleDataNoRelationsId,
           },

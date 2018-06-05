@@ -91,7 +91,7 @@ apiDescribe('specimen', () => {
                   id: simpleDataPhysicalObjectRelationsId,
                 },
                 queryParams: {
-                  relationships: ['all'],
+                  relationships: ['physicalObjects'],
                 },
               })
             })
@@ -99,16 +99,9 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  agents: {
-                    data: [],
-                  },
-                  featureTypes: {
-                    data: [],
-                  },
-                  places: { data: [] },
-                  ...simpleDataPhysicalObjectRelations.data.relationships,
-                  taxonNames: {
-                    data: [],
+                  physicalObjects: {
+                    ...simpleDataPhysicalObjectRelations.data.relationships
+                      .physicalObjects,
                   },
                 },
                 response,
@@ -143,19 +136,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  agents: {
-                    data: [],
-                  },
-                  featureTypes: {
-                    data: [],
-                  },
-                  physicalObjects: {
-                    data: [],
-                  },
-                  places: { data: [] },
-                  taxonNames: {
-                    data: [],
-                  },
+                  ...getTestData('initialRelationships'),
                 },
                 response,
               })
@@ -192,19 +173,9 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  agents: {
-                    data: [],
-                  },
-                  featureTypes: {
-                    data: [],
-                  },
-
+                  ...getTestData('initialRelationships'),
                   physicalObjects: {
                     data: [{ id: '1234', type: 'physicalObject' }],
-                  },
-                  places: { data: [] },
-                  taxonNames: {
-                    data: [],
                   },
                 },
                 response,
@@ -246,9 +217,7 @@ apiDescribe('specimen', () => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
                 relationships: {
-                  agents: {
-                    data: [],
-                  },
+                  ...getTestData('initialRelationships'),
                   featureTypes: {
                     data: [
                       {
@@ -260,10 +229,6 @@ apiDescribe('specimen', () => {
                   physicalObjects:
                     simpleDataPhysicalObjectRelations.data.relationships
                       .physicalObjects,
-                  places: { data: [] },
-                  taxonNames: {
-                    data: [],
-                  },
                 },
                 response,
               })
@@ -304,25 +269,13 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                agents: {
-                  data: [],
-                },
-                featureTypes: {
-                  data: [],
-                },
-                physicalObjects: {
-                  data: [],
-                },
-                places: { data: [] },
-                taxonNames: {
-                  data: [],
-                },
+                ...getTestData('initialRelationships'),
               },
               response,
             })
           })
       })
-      it('Return update relationships if provided', () => {
+      fit('Return update relationships if provided', () => {
         const simpleDataNoRelationsWithEmptyRelations = getTestData(
           'simpleDataNoRelations'
         )
@@ -350,18 +303,9 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                agents: {
-                  data: [],
-                },
-                featureTypes: {
-                  data: [],
-                },
+                ...getTestData('initialRelationships'),
                 physicalObjects: {
                   data: [{ id: '1234', type: 'physicalObject' }],
-                },
-                places: { data: [] },
-                taxonNames: {
-                  data: [],
                 },
               },
               response,

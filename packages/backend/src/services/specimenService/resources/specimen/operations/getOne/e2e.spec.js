@@ -63,30 +63,23 @@ apiDescribe('specimen', () => {
             simpleDataPhysicalObjectRelationsId = response.data.id
           })
         })
-        it('Fetch resource with physical unit relationships', () => {
+        it('Fetch resource with physical object relationships', () => {
           return makeTestCall({
             operationId: 'specimenGetOne',
             pathParams: {
               id: simpleDataPhysicalObjectRelationsId,
             },
             queryParams: {
-              relationships: ['all'],
+              relationships: ['physicalObjects'],
             },
           }).then(response => {
             expectSingleResourceResponse({
               expectedId: simpleDataPhysicalObjectRelationsId,
               expectedType: 'specimen',
               relationships: {
-                agents: {
-                  data: [],
-                },
-                featureTypes: {
-                  data: [],
-                },
-                places: { data: [] },
-                ...simpleDataPhysicalObjectRelations.data.relationships,
-                taxonNames: {
-                  data: [],
+                physicalObjects: {
+                  ...simpleDataPhysicalObjectRelations.data.relationships
+                    .physicalObjects,
                 },
               },
               response,
@@ -179,19 +172,7 @@ apiDescribe('specimen', () => {
               expectedId: simpleDataNoRelationsId,
               expectedType: 'specimen',
               relationships: {
-                agents: {
-                  data: [],
-                },
-                featureTypes: {
-                  data: [],
-                },
-                physicalObjects: {
-                  data: [],
-                },
-                places: { data: [] },
-                taxonNames: {
-                  data: [],
-                },
+                ...getTestData('initialRelationships'),
               },
               response,
             })

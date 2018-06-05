@@ -104,8 +104,7 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId:
-              'physicalObjectUpdateRelationBelongsToOneStorageLocation',
+            operationId: 'physicalObjectUpdateRelationshipStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
@@ -118,7 +117,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'physicalObjectGetRelationHasOneStorageLocation',
+            operationId: 'physicalObjectGetRelationshipStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
@@ -131,7 +130,7 @@ apiDescribe('storage', () => {
         .then(() => {
           return makeTestCall({
             authToken,
-            operationId: 'storageLocationGetRelationHasManyPhysicalObjects',
+            operationId: 'storageLocationGetRelationshipPhysicalObjects',
             pathParams: {
               id: storageLocationId,
             },
@@ -184,8 +183,7 @@ apiDescribe('storage', () => {
                 type: 'storageLocation',
               },
             },
-            operationId:
-              'physicalObjectUpdateRelationBelongsToOneStorageLocation',
+            operationId: 'physicalObjectUpdateRelationshipStorageLocation',
             pathParams: {
               id: physicalObjectId,
             },
