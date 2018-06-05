@@ -12,8 +12,8 @@ module.exports = function extractItemRelationship(_ref) {
       relationshipType = _ref.relationshipType,
       nestedToCore = _ref.nestedToCore;
 
-  var relationshipObject = null;
-  var relationshipArray = [];
+  var relationshipObject = void 0;
+  var relationshipArray = void 0;
   if (path) {
     var arrayPath = path;
     if (!Array.isArray(path)) {
@@ -30,13 +30,13 @@ module.exports = function extractItemRelationship(_ref) {
             relationship.lid = createLid();
           }
 
-          var referense = relationship.id !== undefined ? {
+          var reference = relationship.id !== undefined ? {
             id: relationship.id
           } : {
             lid: relationship.lid
           };
 
-          objectPath.set(item, pth, referense);
+          objectPath.set(item, pth, reference);
 
           var formattedRelationship = nestedToCore ? nestedToCore({
             item: relationship,
@@ -47,13 +47,17 @@ module.exports = function extractItemRelationship(_ref) {
           if (relationshipFormat === 'object') {
             relationshipObject = formattedRelationship;
           } else {
-            var exists = relationshipArray.find(function (_ref2) {
+            var exists = (relationshipArray || []).find(function (_ref2) {
               var id = _ref2.id;
 
               return id !== undefined && id === formattedRelationship.id;
             });
             if (!exists) {
-              relationshipArray.push(formattedRelationship);
+              if (!relationshipArray) {
+                relationshipArray = [formattedRelationship];
+              } else {
+                relationshipArray.push(formattedRelationship);
+              }
             }
           }
         },
@@ -63,7 +67,11 @@ module.exports = function extractItemRelationship(_ref) {
     });
   } else {
     if (relationshipFormat === 'object') {
-      relationshipObject = item[relationshipKey] && item[relationshipKey].id ? { id: item[relationshipKey].id, type: relationshipType } : null;
+      if (item[relationshipKey] === null) {
+        relationshipObject = null;
+      } else {
+        relationshipObject = item[relationshipKey] && item[relationshipKey].id ? { id: item[relationshipKey].id, type: relationshipType } : undefined;
+      }
     } else if (item[relationshipKey]) {
       relationshipArray = item[relationshipKey].map(function (arrayItem) {
         return arrayItem && arrayItem.id ? { id: arrayItem.id, type: relationshipType } : null;
@@ -80,11 +88,11 @@ module.exports = function extractItemRelationship(_ref) {
     });
   }
 
-  if (relationshipFormat === 'object' && relationshipObject) {
+  if (relationshipFormat === 'object' && relationshipObject !== undefined) {
     objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipObject);
   }
 
-  if (relationshipFormat === 'array' && relationshipArray && relationshipArray.length) {
+  if (relationshipFormat === 'array' && relationshipArray !== undefined) {
     objectPath.set(item, 'relationships.' + relationshipKey + '.data', relationshipArray);
   }
 

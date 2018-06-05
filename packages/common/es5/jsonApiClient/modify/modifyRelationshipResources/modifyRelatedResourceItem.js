@@ -44,8 +44,13 @@ function modifyRelatedResourceItem() {
       resourcesToModify = _ref2.resourcesToModify;
 
   return _promise2.default.resolve().then(function () {
+    if (item === null) {
+      log.debug('Not updating relation: ' + relationKey + ', it is null');
+      return null;
+    }
+
     if (!item) {
-      throw new Error('item is required');
+      throw new Error('missing item and it is not null');
     }
 
     if (item.id) {

@@ -6,6 +6,7 @@ var _extends3 = _interopRequireDefault(_extends2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var logError = require('../utilities/logError');
 var errorCodes = require('../constants/errorCodes');
 var errorStatus = require('../constants/errorStatus');
 
@@ -41,6 +42,7 @@ module.exports = function frontendError(_ref) {
   });
 
   if (throwError) {
+    logError(error);
     throw error;
   }
   return error;

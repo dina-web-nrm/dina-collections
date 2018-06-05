@@ -32,7 +32,6 @@ module.exports = function createJsonApiClient(_ref) {
     log.debug('update ' + resourceType, userOptions);
     var _userOptions$body = userOptions.body,
         body = _userOptions$body === undefined ? {} : _userOptions$body,
-        relationshipKeysToIncludeInBody = userOptions.relationshipKeysToIncludeInBody,
         _userOptions$resource = userOptions.resourcesToModify,
         resourcesToModify = _userOptions$resource === undefined ? [resourceType] : _userOptions$resource;
 
@@ -40,7 +39,6 @@ module.exports = function createJsonApiClient(_ref) {
     return jsonApiUpdate({
       item: item,
       openApiClient: openApiClient,
-      relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
       resourcesToModify: resourcesToModify,
       resourceType: resourceType
     });
@@ -50,7 +48,6 @@ module.exports = function createJsonApiClient(_ref) {
     log.debug('create ' + resourceType, userOptions);
     var _userOptions$body2 = userOptions.body,
         body = _userOptions$body2 === undefined ? {} : _userOptions$body2,
-        relationshipKeysToIncludeInBody = userOptions.relationshipKeysToIncludeInBody,
         _userOptions$resource2 = userOptions.resourcesToModify,
         resourcesToModify = _userOptions$resource2 === undefined ? [resourceType] : _userOptions$resource2;
 
@@ -58,7 +55,6 @@ module.exports = function createJsonApiClient(_ref) {
     return jsonApiCreate({
       item: item,
       openApiClient: openApiClient,
-      relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
       resourcesToModify: resourcesToModify,
       resourceType: resourceType
     });

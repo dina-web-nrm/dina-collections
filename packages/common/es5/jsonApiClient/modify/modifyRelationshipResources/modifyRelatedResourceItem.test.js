@@ -31,7 +31,12 @@ describe('jsonApiClient/modify/modifyRelatedResourceItem', function () {
 
   it('rejects if item not provided', function () {
     expect.assertions(1);
-    return expect(modifyRelatedResourceItem({})).rejects.toThrow('item is required');
+    return expect(modifyRelatedResourceItem({})).rejects.toThrow('missing item and it is not null');
+  });
+  it('accepts if item is null', function () {
+    expect(function () {
+      return modifyRelatedResourceItem({ item: null });
+    }).not.toThrow();
   });
 
   describe('with dependor', function () {

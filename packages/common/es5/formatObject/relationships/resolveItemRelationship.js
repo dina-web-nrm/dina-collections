@@ -44,7 +44,9 @@ module.exports = function resolveItemRelationship(_ref) {
               var relationshipData = relationships[relationshipKey] && relationships[relationshipKey].data;
               var relationshipArray = Array.isArray(relationshipData) ? relationshipData : [relationshipData];
 
-              resolvedRelationshipItem = relationshipArray.reduce(function (matching, _ref2) {
+              resolvedRelationshipItem = relationshipArray.filter(function (relationshipDataItem) {
+                return !!relationshipDataItem;
+              }).reduce(function (matching, _ref2) {
                 var relationshipId = _ref2.id;
 
                 if (matching) {

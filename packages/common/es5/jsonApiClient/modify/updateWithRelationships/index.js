@@ -38,7 +38,6 @@ function updateWithRelationships() {
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
       openApiClient = _ref.openApiClient,
-      relationshipKeysToIncludeInBody = _ref.relationshipKeysToIncludeInBody,
       resourcesToModify = _ref.resourcesToModify;
 
   return _promise2.default.resolve().then(function () {
@@ -50,14 +49,13 @@ function updateWithRelationships() {
 
     var _dep$splitRelationshi = dep.splitRelationships({
       itemResourceType: item.type,
-      relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
       relationships: relationships
     }),
         relationshipsToIncludeInRequest = _dep$splitRelationshi.relationshipsToIncludeInRequest,
-        relationshipsToAssociateSeparatly = _dep$splitRelationshi.relationshipsToAssociateSeparatly;
+        relationshipsToAssociateSeparately = _dep$splitRelationshi.relationshipsToAssociateSeparately;
 
     log.debug('updateWithRelationships', {
-      relationshipsToAssociateSeparatly: relationshipsToAssociateSeparatly,
+      relationshipsToAssociateSeparately: relationshipsToAssociateSeparately,
       relationshipsToIncludeInRequest: relationshipsToIncludeInRequest
     });
     return dep.update({
@@ -72,7 +70,7 @@ function updateWithRelationships() {
         item: response.data,
         log: log.scope(),
         openApiClient: openApiClient,
-        relationships: relationshipsToAssociateSeparatly
+        relationships: relationshipsToAssociateSeparately
       }).then(function () {
         return response;
       });

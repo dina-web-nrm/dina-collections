@@ -25,11 +25,11 @@ var dep = new Dependor({
 var defaultLog = createLog('common:jsonApiClient:updateRelationships');
 
 function updateRelationships(_ref) {
-  var openApiClient = _ref.openApiClient,
-      relationships = _ref.relationships,
-      item = _ref.item,
+  var item = _ref.item,
       _ref$log = _ref.log,
-      log = _ref$log === undefined ? defaultLog : _ref$log;
+      log = _ref$log === undefined ? defaultLog : _ref$log,
+      openApiClient = _ref.openApiClient,
+      relationships = _ref.relationships;
 
   log.debug('updateRelationships: start', relationships);
   var promises = (0, _keys2.default)(relationships).map(function (relationKey) {
