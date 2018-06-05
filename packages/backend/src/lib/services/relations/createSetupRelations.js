@@ -1,6 +1,6 @@
 const {
   getRelationshipParamsForModelNames,
-} = require('common/src/schemaInterface/server')
+} = require('common/src/schemaInterface')
 const setupAssociation = require('../../sequelize/models/utilities/setupAssociation')
 const createLog = require('../../../utilities/log')
 

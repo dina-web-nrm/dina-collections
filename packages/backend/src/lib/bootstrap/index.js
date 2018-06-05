@@ -4,7 +4,7 @@ const startTime = now()
 const openApiSpec = require('common/dist/openApi.json')
 const {
   getResourceRelationshipParamsMap,
-} = require('common/src/schemaInterface/server')
+} = require('common/src/schemaInterface')
 const createLog = require('../../utilities/log')
 const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')

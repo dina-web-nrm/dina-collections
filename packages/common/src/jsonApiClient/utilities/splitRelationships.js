@@ -1,6 +1,6 @@
 const {
   getResourceRelationshipKeysToIncludeInBodyMap,
-} = require('../../schemaInterface/client')
+} = require('../../schemaInterface')
 
 const resourceRelationshipKeysToIncludeInBodyMap = getResourceRelationshipKeysToIncludeInBodyMap()
 
