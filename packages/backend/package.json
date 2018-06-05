@@ -17,7 +17,6 @@
     "elasticsearch": "^14.2.2",
     "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
-    "json-schema-faker": "^0.5.0-rc13",
     "keycloak-admin-client": "^0.12.0",
     "keycloak-connect": "^3.4.3",
     "object-path": "^0.11.4",
