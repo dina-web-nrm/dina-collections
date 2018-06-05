@@ -5,10 +5,12 @@ import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
 
 import { FORM_CANCEL, SET_ITEM_EDIT } from 'coreModules/crudBlocks/constants'
+import crudActionCreators from 'coreModules/crud/actionCreators'
 
 import BaseForm, { FORM_NAME } from './Base'
 
 const mapDispatchToProps = {
+  createTaxon: crudActionCreators.taxon.create,
   destroy,
 }
 
@@ -47,10 +49,11 @@ export class Create extends PureComponent {
           event.preventDefault()
           onInteraction(FORM_CANCEL)
         }}
-        onSubmit={data => {
+        onSubmit={formOutput => {
           this.props
             .createTaxon({
-              taxon: data,
+              item: formOutput,
+              nested: true,
             })
             .then(result => {
               onInteraction(SET_ITEM_EDIT, {
