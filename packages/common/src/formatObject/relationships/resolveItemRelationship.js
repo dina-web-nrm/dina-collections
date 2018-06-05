@@ -36,8 +36,9 @@ module.exports = function resolveItemRelationship({
                 ? relationshipData
                 : [relationshipData]
 
-              resolvedRelationshipItem = relationshipArray.reduce(
-                (matching, { id: relationshipId }) => {
+              resolvedRelationshipItem = relationshipArray
+                .filter(relationshipDataItem => !!relationshipDataItem)
+                .reduce((matching, { id: relationshipId }) => {
                   if (matching) {
                     return matching
                   }
@@ -47,16 +48,12 @@ module.exports = function resolveItemRelationship({
                   }
 
                   return undefined
-                },
-                undefined
-              )
+                }, undefined)
             } else {
               resolvedRelationshipItem =
                 id && getItemByTypeId && getItemByTypeId(type, id)
             }
           }
-
-          // check that it exist in relationships
 
           if (resolvedRelationshipItem) {
             objectPath.set(
