@@ -1,8 +1,9 @@
 const buildOperationId = require('common/src/buildOperationId')
 
-module.exports = function getRelationHasMany({
+module.exports = function updateRelationship({
   basePath,
   errors: errorsInput = {},
+  exampleRequests = {},
   exampleResponses = {},
   queryParams,
   relationKey,
@@ -12,20 +13,22 @@ module.exports = function getRelationHasMany({
   ...rest
 }) {
   const errors = {
-    '400': ['REQUEST_ERROR'],
+    '400': ['REQUEST_BODY_VALIDATION_ERROR', 'REQUEST_ERROR'],
     '404': ['RESOURCE_NOT_FOUND_ERROR'],
     '500': ['RESPONSE_VALIDATION_ERROR', 'INTERNAL_SERVER_ERROR'],
     ...errorsInput,
   }
   const relation = relations[relationKey]
-  const { format: relationFormat, resource: relationResource } = relation
 
-  const operationType = 'getRelationHasMany'
+  const { format: relationFormat, targetResource: relationResource } =
+    relation || {}
+
+  const operationType = 'updateRelationship'
 
   return {
     ...rest,
     errors,
-    method: 'get',
+    method: 'patch',
     operationId: buildOperationId({ operationType, relationKey, resource }),
     operationType,
     path: `${basePath}/${resourcePath}/{id}/relationships/${relationKey}`,
@@ -35,14 +38,18 @@ module.exports = function getRelationHasMany({
       ...relation,
       key: relationKey,
     },
-    relationKey,
+    request: {
+      exampleRequests,
+      format: relationFormat,
+      modelReference: true,
+      resource: relationResource,
+    },
     resource,
     response: {
       examples: exampleResponses,
       format: relationFormat,
-      resource: relationResource,
+      resource,
     },
-    rootResource: resource,
-    summary: `Find ${resource} -> ${relationKey}`,
+    summary: `Update ${resource} -> ${relationKey}`,
   }
 }
