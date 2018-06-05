@@ -1,6 +1,6 @@
 const createModel = require('../../../lib/sequelize/models/factories/documentModel')
 const loadInitialData = require('./loadInitialData')
-const { setupRelations } = require('./relations')
+const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
 
 const physicalObjectModelFactory = function physicalObject({ sequelize }) {
   return createModel({
@@ -30,7 +30,7 @@ module.exports = [
     name: 'physicalObject',
   },
   {
-    factory: setupRelations,
+    factory: createSetupRelations(['physicalObject', 'storageLocation']),
     name: 'setupRelations',
   },
   {
