@@ -248,7 +248,7 @@ const getStorageLocationOption = createSelector(
     }
     return {
       key: storageLocation.id,
-      text: capitalizeFirstLetter(storageLocation.name),
+      text: capitalizeFirstLetter(storageLocation.attributes.name),
       value: storageLocation.id,
     }
   }
