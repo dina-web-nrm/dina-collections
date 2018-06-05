@@ -7,21 +7,29 @@ const readServers = require('./readServers')
 const readModels = require('./readModels')
 const readApis = require('./readApis')
 const readSecurity = require('./readSecurity')
+const createSchemaInterface = require('../../schemaInterface/createSchemaInterface')
 
 module.exports = function read({ modelBasePath, apiBasePath }) {
   const servicesPath = path.join(apiBasePath, 'services')
   const buildServicesPath = path.join(apiBasePath, 'lib', 'services')
 
-  const serviceDefinitions = require(servicesPath)
-  const buildServices = require(buildServicesPath)
-
-  const services = buildServices({ serviceDefinitions })
   const infoPath = apiBasePath
 
-  const endpoints = readEndpoints(services)
   const errors = readErrors()
   const info = readInfo(infoPath)
   const models = readModels(modelBasePath)
+
+  const schemaInterface = createSchemaInterface({ models })
+  const resourceRelationshipParamsMap = schemaInterface.getResourceRelationshipParamsMap()
+
+  const serviceDefinitions = require(servicesPath)
+  const buildServices = require(buildServicesPath)
+  const services = buildServices({
+    resourceRelationshipParamsMap,
+    serviceDefinitions,
+  })
+
+  const endpoints = readEndpoints(services)
   const apis = readApis(services)
   const servers = readServers(path.join(apiBasePath, 'info', 'servers'))
 
