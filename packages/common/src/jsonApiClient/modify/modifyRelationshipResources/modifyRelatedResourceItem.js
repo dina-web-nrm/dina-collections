@@ -29,8 +29,13 @@ function modifyRelatedResourceItem(
   { item, log = defaultLog, openApiClient, relationKey, resourcesToModify } = {}
 ) {
   return Promise.resolve().then(() => {
+    if (item === null) {
+      log.debug(`Not updating relation: ${relationKey}, it is null`)
+      return null
+    }
+
     if (!item) {
-      throw new Error('item is required')
+      throw new Error('missing item and it is not null')
     }
 
     if (item.id) {
