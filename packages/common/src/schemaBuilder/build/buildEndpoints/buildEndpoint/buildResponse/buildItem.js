@@ -1,12 +1,12 @@
 module.exports = function buildItem({
-  modelReferens,
+  modelReference,
   relationships,
   resource,
 }) {
   return {
     additionalProperties: false,
     properties: {
-      attributes: modelReferens
+      attributes: modelReference
         ? undefined
         : {
             $ref: `__ROOT__${resource}`,
