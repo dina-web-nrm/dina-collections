@@ -2,10 +2,6 @@ const buildOperationId = require('common/src/buildOperationId')
 const createStorageLocationRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const buildWhere = require('./operations/getMany/buildWhere')
 
-const { resourceRelationsMap } = require('../../models/relations')
-
-const resource = 'storageLocation'
-
 module.exports = {
   basePath: '/api/storage/v01',
   operations: [
@@ -88,24 +84,40 @@ module.exports = {
       type: 'del',
     },
     {
+      relationKey: 'children',
+      type: 'getRelationship',
+    },
+    {
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationship',
+        relationKey: 'parent',
+        resource: 'storageLocation',
+      }),
+      relationKey: 'children',
+      type: 'updateRelationship',
+    },
+    {
       relationKey: 'parent',
-      type: 'updateRelationHasOne',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'parent',
+      type: 'updateRelationship',
     },
     {
       relationKey: 'physicalObjects',
-      type: 'getRelationHasMany',
+      type: 'getRelationship',
     },
     {
       connect: false,
       inverseOperationId: buildOperationId({
-        operationType: 'updateRelationBelongsToOne',
+        operationType: 'updateRelationship',
         relationKey: 'storageLocation',
         resource: 'physicalObject',
       }),
       relationKey: 'physicalObjects',
-      type: 'updateRelationHasMany',
+      type: 'updateRelationship',
     },
   ],
-  relations: resourceRelationsMap[resource],
-  resource,
+  resource: 'storageLocation',
 }

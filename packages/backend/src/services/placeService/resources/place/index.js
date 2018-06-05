@@ -1,8 +1,6 @@
+const buildOperationId = require('common/src/buildOperationId')
 const createRequestSuccess = require('./create/examples/requestSuccess.json')
 const buildWhere = require('./getMany/buildWhere')
-const { resourceRelationsMap } = require('../../models/relations')
-
-const resource = 'place'
 
 module.exports = {
   basePath: '/api/locality/v01',
@@ -86,10 +84,26 @@ module.exports = {
       type: 'del',
     },
     {
+      relationKey: 'children',
+      type: 'getRelationship',
+    },
+    {
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationship',
+        relationKey: 'parent',
+        resource: 'taxonName',
+      }),
+      relationKey: 'children',
+      type: 'updateRelationship',
+    },
+    {
       relationKey: 'parent',
-      type: 'updateRelationHasOne',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'parent',
+      type: 'updateRelationship',
     },
   ],
-  relations: resourceRelationsMap[resource],
-  resource,
+  resource: 'place',
 }
