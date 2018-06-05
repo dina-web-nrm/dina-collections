@@ -9,6 +9,7 @@ const createLog = require('../../utilities/log')
 const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
 const initializeSequelize = require('../sequelize')
+const createServiceInteractor = require('../serviceInteractor')
 const { createIndexBuilder } = require('../searchEngine')
 const createModels = require('../sequelize/models')
 const createConnectors = require('../connectors')
@@ -30,6 +31,7 @@ module.exports = function bootstrap({ config, serviceDefinitions }) {
 
   const bootstrapStartTime = now()
   const auth = createAuth({ config })
+  const serviceInteractor = createServiceInteractor({ config })
 
   initializeSequelize({
     config,
@@ -53,6 +55,7 @@ module.exports = function bootstrap({ config, serviceDefinitions }) {
               config,
               integrations,
               models,
+              serviceInteractor,
               services,
             })
           })
@@ -60,6 +63,9 @@ module.exports = function bootstrap({ config, serviceDefinitions }) {
             log.info(
               `Connectors created after: ${now() - startTime} milliseconds`
             )
+
+            serviceInteractor.addConnectors(connectors)
+
             return createIndexBuilder({
               config,
               connectors,
