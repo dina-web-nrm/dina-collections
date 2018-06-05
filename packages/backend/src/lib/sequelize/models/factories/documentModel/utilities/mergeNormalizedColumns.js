@@ -1,4 +1,4 @@
-module.exports = function extractNormalizedColumns({
+module.exports = function mergeNormalizedColumns({
   dataValues,
   normalizedColumnNames,
 }) {
