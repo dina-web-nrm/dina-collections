@@ -41,7 +41,7 @@ module.exports = function updateFactory({
   schemaVersion,
   validate,
 }) {
-  return function update({ doc, id, foreignKeyName, foreignKeyValue } = {}) {
+  return function update({ doc, id, foreignKeyObject } = {}) {
     if (id === undefined) {
       return Promise.reject(new Error('id not provided'))
     }
@@ -78,10 +78,10 @@ module.exports = function updateFactory({
         }
       }
 
-      if (foreignKeyName) {
+      if (foreignKeyObject) {
         newModel = {
           ...newModel,
-          [foreignKeyName]: foreignKeyValue,
+          ...foreignKeyObject,
         }
       }
 
