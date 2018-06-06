@@ -1,27 +1,10 @@
 const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../core/models/sequelize/documentModel')
-const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
-
-const agentFactory = function agent({ sequelize }) {
-  return createModel({
-    name: 'Agent',
-    schemaModelName: 'agent',
-    schemaVersion: '1.0.1',
-    sequelize,
-  })
-}
 
 module.exports = [
   {
-    factory: agentFactory,
+    loadInitialData,
+    modelFactory: 'documentModel',
     name: 'agent',
-  },
-  {
-    factory: createSetupRelations(['agent']),
-    name: 'setupRelations',
-  },
-  {
-    factory: loadInitialData,
-    name: 'loadInitialData',
+    relations: ['agent'],
   },
 ]
