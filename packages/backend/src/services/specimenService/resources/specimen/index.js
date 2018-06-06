@@ -1,6 +1,7 @@
 const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
+const getManyfilters = require('./operations/getMany/filters')
 
 module.exports = {
   basePath: '/api/specimen/v01',
@@ -18,17 +19,8 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filters: getManyfilters,
       includeRelations: true,
-      queryParams: {
-        'filter[catalogNumber]': {
-          description: 'catalog number used to filter specimens',
-          example: '123456',
-          required: false,
-          schema: {
-            type: 'string',
-          },
-        },
-      },
       type: 'getMany',
     },
     {
