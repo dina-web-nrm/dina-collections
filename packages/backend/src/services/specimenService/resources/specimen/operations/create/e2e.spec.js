@@ -99,12 +99,30 @@ apiDescribe('specimen', () => {
                   agents: {
                     data: [],
                   },
+                  causeOfDeathTypes: {
+                    data: [],
+                  },
+
+                  establishmentMeansTypes: {
+                    data: [],
+                  },
                   featureTypes: {
                     data: [],
                   },
+                  identifierTypes: {
+                    data: [],
+                  },
+
                   places: { data: [] },
+                  preparationTypes: {
+                    data: [],
+                  },
                   taxonNames: {
                     data: [],
+                  },
+
+                  typeSpecimenType: {
+                    data: null,
                   },
                 },
                 response,
@@ -139,7 +157,32 @@ apiDescribe('specimen', () => {
             }).then(response => {
               expectSingleResourceResponse({
                 expectedType: 'specimen',
-                relationships: simpleDataMultipleRelations.data.relationships,
+                relationships: {
+                  ...simpleDataMultipleRelations.data.relationships,
+                  agents: {
+                    data: [],
+                  },
+                  causeOfDeathTypes: {
+                    data: [],
+                  },
+
+                  establishmentMeansTypes: {
+                    data: [],
+                  },
+                  identifierTypes: {
+                    data: [],
+                  },
+                  preparationTypes: {
+                    data: [],
+                  },
+                  taxonNames: {
+                    data: [],
+                  },
+
+                  typeSpecimenType: {
+                    data: null,
+                  },
+                },
                 response,
               })
             })
