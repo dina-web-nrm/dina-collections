@@ -11,7 +11,7 @@ const createApp = require('../app')
 const initializeSequelize = require('../sequelize')
 const createServiceInteractor = require('../serviceInteractor')
 const { createIndexBuilder } = require('../searchEngine')
-const createModels = require('../sequelize/models')
+const setupModels = require('../models')
 const createConnectors = require('../connectors')
 const createServices = require('../services')
 const setupIntegrations = require('../integrations')
@@ -22,7 +22,11 @@ log.info(`Dependencies required after: ${now() - startTime} milliseconds`)
 
 const resourceRelationshipParamsMap = getResourceRelationshipParamsMap()
 
-module.exports = function bootstrap({ config, serviceDefinitions }) {
+module.exports = function bootstrap({
+  config,
+  serviceDefinitions,
+  serviceOrder,
+}) {
   const services = createServices({
     config,
     resourceRelationshipParamsMap,
@@ -36,15 +40,17 @@ module.exports = function bootstrap({ config, serviceDefinitions }) {
   initializeSequelize({
     config,
   }).then(({ sequelize }) => {
-    return createModels({
+    return setupModels({
       config,
       sequelize,
+      serviceOrder,
       services,
     })
       .then(({ models }) => {
         log.info(
           `Sequelize initialized after: ${now() - startTime} milliseconds`
         )
+
         return setupIntegrations({ config })
           .then(integrations => {
             log.info(

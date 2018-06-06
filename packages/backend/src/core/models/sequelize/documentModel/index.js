@@ -5,12 +5,15 @@ const createSetters = require('./utilities/createSetters')
 
 module.exports = function createModel({
   customMethodFactories,
+  loadInitialData,
   name,
-  schemaModelName,
-  schemaVersion,
-  sequelize,
   normalizedColumnNames = [],
+  relations,
+  schemaModelName: schemaModelNameInput,
+  schemaVersion = '1.0.1',
+  sequelize,
 }) {
+  const schemaModelName = schemaModelNameInput || name
   const getters = createGetters(normalizedColumnNames)
   const setters = createSetters(normalizedColumnNames)
 
@@ -70,7 +73,9 @@ module.exports = function createModel({
 
   return attachMethods({
     customMethodFactories,
+    loadInitialData,
     Model,
+    relations,
     schemaModelName,
     schemaVersion,
     sequelize,

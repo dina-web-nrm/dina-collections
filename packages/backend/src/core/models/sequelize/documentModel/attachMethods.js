@@ -1,21 +1,25 @@
 const buildWhereFilterFactory = require('./methods/buildWhereFilterFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
+const dbValidator = require('common/src/error/validators/dbValidator')
 const deactivateFactory = require('./methods/deactivateFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
 const getCountFactory = require('./methods/getCountFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
+const setupRelationsFactory = require('./methods/setupRelationsFactory')
+const syncFactory = require('./methods/syncFactory')
 const updateFactory = require('./methods/updateFactory')
 const updatePrimaryKeyFactory = require('./methods/updatePrimaryKeyFactory')
-const dbValidator = require('common/src/error/validators/dbValidator')
 
 module.exports = function attachMethods({
-  sequelize,
+  customMethodFactories,
+  loadInitialData,
+  Model,
+  relations,
   schemaModelName,
   schemaVersion,
-  customMethodFactories,
-  Model,
+  sequelize,
 }) {
   let validate = () => {
     return null
@@ -31,6 +35,8 @@ module.exports = function attachMethods({
   const getById = getByIdFactory({
     Model,
   })
+
+  const sync = syncFactory({ Model })
 
   const getCount = getCountFactory({ Model })
   const getOneWhere = getOneWhereFactory({ Model })
@@ -67,6 +73,8 @@ module.exports = function attachMethods({
     validate,
   })
 
+  const setupRelations = relations ? setupRelationsFactory({ relations }) : null
+
   const coreMethods = {
     buildWhereFilter,
     bulkCreate,
@@ -77,6 +85,8 @@ module.exports = function attachMethods({
     getOneWhere,
     getWhere,
     Model,
+    setupRelations,
+    sync,
     update,
   }
 
@@ -98,6 +108,7 @@ module.exports = function attachMethods({
   return {
     ...coreMethods,
     ...customMethods,
+    loadInitialData,
     Model,
   }
 }

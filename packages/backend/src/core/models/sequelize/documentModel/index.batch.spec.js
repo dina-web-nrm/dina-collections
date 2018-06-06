@@ -1,7 +1,6 @@
 const { execute: batchExecute } = require('common/src/batch')
 const createDb = require('../../../../lib/sequelize/db')
 const createModel = require('./index')
-const syncModels = require('../../../../lib/sequelize/models/syncModels')
 const config = require('../../../../apps/core/config')
 
 const batchDescribe = require('../../../../utilities/test/batchDescribe')
@@ -106,15 +105,8 @@ const setup = () => {
       schemaVersion: '0',
       sequelize,
     })
-    return syncModels({
-      config,
-      modelArray: [
-        {
-          model,
-          name: 'test',
-        },
-      ],
-    }).then(() => {
+
+    return model.sync({ force: true }).then(() => {
       return model
     })
   })
