@@ -1,33 +1,49 @@
-const backendError404 = require('common/src/error/errorFactories/backendError404')
 const transformOutputObject = require('../../transformations/outputObject')
 const transformOutputArray = require('../../transformations/outputArray')
 const getFormatOutput = require('../getFormatOutput')
 const getGetterName = require('./getGetterName')
+const getInclude = require('./getInclude')
 const getQueryModels = require('./getQueryModels')
 const getSelectedResult = require('./getSelectedResult')
 const getWhereParams = require('./getWhereParams')
-const createLog = require('../../../../utilities/log')
+const getForeignKeyName = require('../../../../../lib/sequelize/models/utilities/getForeignKeyName')
+const createLog = require('../../../../../utilities/log')
 
-const log = createLog('lib/controllers/getJsonRelationship')
+const log = createLog('lib/controllers/getSqlRelationship')
 
 module.exports = ({ models, operation }) => {
   const {
     operationId,
-    relation: { format, keyStoredInModel, oneOrMany, targetAs, targetResource },
+    relation: {
+      format,
+      keyName,
+      keyStoredInModel,
+      oneOrMany,
+      sourceResource,
+      targetAs,
+      targetResource,
+    },
   } = operation
 
-  const { model } = getQueryModels({
+  const { idIsForeignKey, model, relationshipModel } = getQueryModels({
     keyStoredInModel,
     models,
+    sourceResource,
+    targetResource,
   })
 
   if (!model) {
     throw new Error(`Model not found for operationId ${operationId}`)
   }
 
-  const getterName = getGetterName({
-    format,
-    oneOrMany,
+  const getterName = getGetterName({ oneOrMany, targetAs })
+  const include = getInclude({ relationshipModel, targetAs })
+  const foreignKeyName = getForeignKeyName({
+    keyName,
+    keyStoredInModelName: keyStoredInModel,
+    sourceModelName: sourceResource,
+    targetAs,
+    targetModelName: targetResource,
   })
   const transformOutput =
     format === 'object' ? transformOutputObject : transformOutputArray
@@ -41,29 +57,31 @@ module.exports = ({ models, operation }) => {
 
     const { pathParams: { id } } = request
 
-    const where = getWhereParams({ id })
+    const where = getWhereParams({
+      foreignKeyName,
+      id,
+      idIsForeignKey,
+    })
 
     log.scope().debug('model', model)
+    log.scope().debug('include', include)
     log.scope().debug('where', where)
+
     return model[getterName]({
+      include,
       raw: false,
       where,
     })
       .then(result => {
-        if (!result) {
-          backendError404({
-            code: 'RESOURCE_NOT_FOUND_ERROR',
-            detail: `${keyStoredInModel} with id: ${id} not found`,
-          })
-        }
-
-        log.scope().debug('getterName', getterName, 'targetAs', targetAs)
+        log
+          .scope()
+          .debug('idIsForeignKey', idIsForeignKey, 'targetAs', targetAs)
         const selectedResult = getSelectedResult({
-          getterName,
+          idIsForeignKey,
           result,
           targetAs,
         })
-        log.scope().debug('selectedResult', selectedResult)
+        log.scope().debug(selectedResult)
         return selectedResult
       })
       .then(transformOutput)

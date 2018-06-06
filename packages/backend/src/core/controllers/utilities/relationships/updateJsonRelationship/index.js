@@ -3,7 +3,7 @@ const transformOutputObject = require('../../transformations/outputObject')
 const transformOutputArray = require('../../transformations/outputArray')
 const extractRelationship = require('../extractRelationships/extractRelationship')
 const getFormatOutput = require('../getFormatOutput')
-const createLog = require('../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/controllers/updateJsonRelationship')
 

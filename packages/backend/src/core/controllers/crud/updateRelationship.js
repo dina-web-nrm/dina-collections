@@ -1,5 +1,5 @@
-const updateJsonRelationship = require('./relationshipsUtilities/updateJsonRelationship')
-const updateSqlRelationship = require('./relationshipsUtilities/updateSqlRelationship')
+const updateJsonRelationship = require('../utilities/relationships/updateJsonRelationship')
+const updateSqlRelationship = require('../utilities/relationships/updateSqlRelationship')
 
 module.exports = function updateRelationship({ models, operation }) {
   const { operationId, relation: { keyType } } = operation

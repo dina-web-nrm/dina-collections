@@ -1,6 +1,6 @@
 const addEmptyRelationships = require('./addEmptyRelationships')
 
-describe('lib/controllers/relationshipsUtilities/extractRelationships/extractRelationships', () => {
+describe('lib/controllers/utilities/relationships/extractRelationships/extractRelationships', () => {
   it('is a function', () => {
     expect(typeof addEmptyRelationships).toBe('function')
   })

@@ -1,5 +1,5 @@
-const createObjectResponse = require('../../../../../../lib/controllers/transformations/createObjectResponse')
-const transformOutput = require('../../../../../../lib/controllers/transformations/outputObject')
+const createObjectResponse = require('../../../../../../core/controllers/utilities/transformations/createObjectResponse')
+const transformOutput = require('../../../../../../core/controllers/utilities/transformations/outputObject')
 
 module.exports = function getMany({ operation, integrations }) {
   const { resource } = operation

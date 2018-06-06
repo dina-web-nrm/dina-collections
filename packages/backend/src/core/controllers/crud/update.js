@@ -1,6 +1,6 @@
-const createObjectResponse = require('./transformations/createObjectResponse')
-const transformInput = require('./transformations/inputObject')
-const transformOutput = require('./transformations/outputObject')
+const createObjectResponse = require('../utilities/transformations/createObjectResponse')
+const transformInput = require('../utilities/transformations/inputObject')
+const transformOutput = require('../utilities/transformations/outputObject')
 
 module.exports = function update({ operation, models, postUpdateHook }) {
   const { resource, relations } = operation

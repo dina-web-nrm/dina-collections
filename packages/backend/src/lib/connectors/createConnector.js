@@ -1,6 +1,6 @@
 const createRequestHandler = require('common/src/apiClient/createRequestHandler')
 const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
-const controllerFactories = require('../controllers')
+const controllerFactories = require('../../core/controllers')
 const createLog = require('../../utilities/log')
 
 const log = createLog('lib/connectors', 1)

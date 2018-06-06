@@ -1,6 +1,6 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
-const createArrayResponse = require('./transformations/createArrayResponse')
-const transformOutput = require('./transformations/outputArray')
+const createArrayResponse = require('../utilities/transformations/createArrayResponse')
+const transformOutput = require('../utilities/transformations/outputArray')
 
 module.exports = function getVersionsById({ operation, models }) {
   const { resource } = operation

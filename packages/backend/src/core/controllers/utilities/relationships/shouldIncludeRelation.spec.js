@@ -1,6 +1,6 @@
 const shouldIncludeRelation = require('./shouldIncludeRelation')
 
-describe('lib/controllers/relationshipsUtilities/shouldIncludeRelation', () => {
+describe('lib/controllers/utilities/relationships/shouldIncludeRelation', () => {
   it('is a function', () => {
     expect(typeof shouldIncludeRelation).toBe('function')
   })

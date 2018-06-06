@@ -1,5 +1,5 @@
-const getJsonRelationship = require('./relationshipsUtilities/getJsonRelationship')
-const getSqlRelationship = require('./relationshipsUtilities/getSqlRelationship')
+const getJsonRelationship = require('../utilities/relationships/getJsonRelationship')
+const getSqlRelationship = require('../utilities/relationships/getSqlRelationship')
 
 module.exports = function getRelationship({ models, operation }) {
   const { operationId, relation: { keyType } } = operation

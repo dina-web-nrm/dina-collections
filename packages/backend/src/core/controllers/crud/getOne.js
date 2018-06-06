@@ -1,8 +1,8 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
-const createObjectResponse = require('./transformations/createObjectResponse')
-const transformOutput = require('./transformations/outputObject')
-const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
-const extractRelationships = require('./relationshipsUtilities/extractRelationships')
+const createObjectResponse = require('../utilities/transformations/createObjectResponse')
+const transformOutput = require('../utilities/transformations/outputObject')
+const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
+const extractRelationships = require('../utilities/relationships/extractRelationships')
 
 module.exports = function getOne({ operation, models }) {
   const { includeRelations, relations, resource } = operation

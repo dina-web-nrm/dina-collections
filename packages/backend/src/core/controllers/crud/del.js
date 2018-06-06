@@ -1,5 +1,5 @@
-const createObjectResponse = require('./transformations/createObjectResponse')
-const transformOutput = require('./transformations/outputObject')
+const createObjectResponse = require('../utilities/transformations/createObjectResponse')
+const transformOutput = require('../utilities/transformations/outputObject')
 
 module.exports = function del({ operation, models, postDeleteHook }) {
   const { resource } = operation

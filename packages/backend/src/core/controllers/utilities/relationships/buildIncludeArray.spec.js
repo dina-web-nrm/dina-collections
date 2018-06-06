@@ -1,6 +1,6 @@
 const buildIncludeArray = require('./buildIncludeArray')
 
-describe('lib/controllers/relationshipsUtilities/buildIncludeArray', () => {
+describe('lib/controllers/utilities/relationships/buildIncludeArray', () => {
   it('is a function', () => {
     expect(typeof buildIncludeArray).toBe('function')
   })

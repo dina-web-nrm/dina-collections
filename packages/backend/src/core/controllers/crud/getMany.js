@@ -1,7 +1,7 @@
-const createArrayResponse = require('./transformations/createArrayResponse')
-const transformOutput = require('./transformations/outputObject')
-const buildIncludeArray = require('./relationshipsUtilities/buildIncludeArray')
-const extractRelationships = require('./relationshipsUtilities/extractRelationships')
+const createArrayResponse = require('../utilities/transformations/createArrayResponse')
+const transformOutput = require('../utilities/transformations/outputObject')
+const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
+const extractRelationships = require('../utilities/relationships/extractRelationships')
 
 module.exports = function getMany({ operation, models }) {
   const { includeRelations, relations, resource, filters } = operation
