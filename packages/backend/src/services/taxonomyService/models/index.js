@@ -1,5 +1,5 @@
 const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../lib/sequelize/models/factories/documentModel')
+const createModel = require('../../../core/models/sequelize/documentModel')
 const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
 
 const taxonFactory = function taxon({ sequelize }) {

@@ -1,4 +1,4 @@
-const createModel = require('../../../lib/sequelize/models/factories/documentModel')
+const createModel = require('../../../core/models/sequelize/documentModel')
 const loadInitialData = require('./loadInitialData')
 const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
 

@@ -1,4 +1,4 @@
-const createModel = require('../../../lib/sequelize/models/factories/documentModel')
+const createModel = require('../../../core/models/sequelize/documentModel')
 
 exports.expedition = function expedition({ sequelize }) {
   return createModel({

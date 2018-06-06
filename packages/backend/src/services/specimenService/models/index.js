@@ -3,7 +3,7 @@ const {
 } = require('common/src/formatObject/specifications')
 
 const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../lib/sequelize/models/factories/documentModel')
+const createModel = require('../../../core/models/sequelize/documentModel')
 const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
 
 const normalizedColumnNames = getNormalizedColumnNames('specimen')

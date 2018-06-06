@@ -1,7 +1,7 @@
-const createLog = require('../../../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 
 const log = createLog(
-  'lib/modelFactories/versionedDocumentModel/methods/bulkCreateFactory'
+  'lib/modelFactories/documentModel/methods/bulkCreateFactory'
 )
 
 module.exports = function bulkCreateFactory(
@@ -24,13 +24,14 @@ module.exports = function bulkCreateFactory(
           }
         }
 
+        const { relationships, ...attributes } = doc
+
         return {
-          document: doc,
+          document: attributes,
           id,
-          isCurrentVersion: true,
+          relationships,
           schemaCompliant: true,
           schemaVersion: schemaVersion || undefined,
-          versionId: id,
           ...rest,
         }
       })

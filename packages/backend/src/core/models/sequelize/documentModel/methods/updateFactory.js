@@ -1,7 +1,7 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 const { diff } = require('deep-diff')
 
-const createLog = require('../../../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/modelFactories/documentModel/methods/updateFactory')
 

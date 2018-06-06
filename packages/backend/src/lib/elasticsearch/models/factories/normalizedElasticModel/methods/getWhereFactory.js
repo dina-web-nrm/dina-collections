@@ -1,4 +1,4 @@
-const mergeNormalizedColumns = require('../../../../../sequelize/models/factories/versionedDocumentModel/utilities/mergeNormalizedColumns')
+const mergeNormalizedColumns = require('../../../../../../core/models/sequelize/versionedDocumentModel/utilities/mergeNormalizedColumns')
 
 module.exports = function getWhereFactory({ Model, elasticsearch }) {
   const { normalizedColumnNames } = Model

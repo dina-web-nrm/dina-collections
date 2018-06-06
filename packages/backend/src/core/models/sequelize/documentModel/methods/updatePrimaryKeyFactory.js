@@ -1,7 +1,7 @@
-const createLog = require('../../../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 
 const log = createLog(
-  'lib/modelFactories/versionedDocumentModel/methods/bulkCreateFactory'
+  'lib/modelFactories/documentModel/methods/bulkCreateFactory'
 )
 
 module.exports = function updatePrimaryKeyFactory({ Model, sequelize } = {}) {
@@ -14,7 +14,7 @@ module.exports = function updatePrimaryKeyFactory({ Model, sequelize } = {}) {
     log.debug(`Updating primary key sequenze for ${Model.tableName}`)
     const query = `ALTER SEQUENCE "${
       Model.tableName
-    }_versionId_seq" RESTART WITH :index`
+    }_id_seq" RESTART WITH :index`
 
     return sequelize.query(query, { replacements: { index } }).then(() => {
       log.debug('Successfully altered sequence')

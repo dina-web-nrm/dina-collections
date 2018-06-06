@@ -1,5 +1,5 @@
 const loadInitialData = require('./loadInitialData')
-const createModel = require('../../../lib/sequelize/models/factories/documentModel')
+const createModel = require('../../../core/models/sequelize/documentModel')
 
 exports.causeOfDeathType = function causeOfDeathType({ sequelize }) {
   return createModel({

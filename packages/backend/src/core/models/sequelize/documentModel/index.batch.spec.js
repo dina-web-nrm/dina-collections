@@ -1,10 +1,10 @@
 const { execute: batchExecute } = require('common/src/batch')
-const createDb = require('../../../db')
+const createDb = require('../../../../lib/sequelize/db')
 const createModel = require('./index')
-const syncModels = require('../../syncModels')
-const config = require('../../../../../apps/core/config')
+const syncModels = require('../../../../lib/sequelize/models/syncModels')
+const config = require('../../../../apps/core/config')
 
-const batchDescribe = require('../../../../../utilities/test/batchDescribe')
+const batchDescribe = require('../../../../utilities/test/batchDescribe')
 
 const createData = catalogNumber => {
   return {

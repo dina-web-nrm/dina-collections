@@ -1,4 +1,4 @@
-const createLog = require('../../../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/modelFactories/documentModel/methods/createFactory')
 
