@@ -6,7 +6,7 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _require = require('../../schemaInterface/client'),
+var _require = require('../../schemaInterface'),
     getResourceRelationshipKeysToIncludeInBodyMap = _require.getResourceRelationshipKeysToIncludeInBodyMap;
 
 var resourceRelationshipKeysToIncludeInBodyMap = getResourceRelationshipKeysToIncludeInBodyMap();

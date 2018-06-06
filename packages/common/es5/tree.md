@@ -94,6 +94,7 @@
 │   ├── utilities
 │   │   ├── createErrorId.js
 │   │   ├── isDinaError.js
+│   │   ├── logError.js
 │   │   └── transformToReduxFormError.js
 │   └── validators
 │       ├── createBackendApiClientValidator.js
@@ -198,7 +199,9 @@
 ├── log
 │   ├── createLogMock.js
 │   ├── index.js
-│   └── priorityMap.js
+│   ├── logFactory.js
+│   ├── priorityMap.js
+│   └── testLog.js
 ├── openApiClient
 │   ├── index.js
 │   └── utilities
@@ -208,7 +211,6 @@
 │   │   ├── buildEndpoints
 │   │   │   ├── buildEndpoint
 │   │   │   └── index.js
-│   │   ├── index.js
 │   │   ├── models
 │   │   │   └── index.js
 │   │   ├── openApi
@@ -224,6 +226,8 @@
 │   │       ├── interpolate.js
 │   │       ├── normalizeModel.js
 │   │       └── splitDescription.js
+│   ├── buildModels.js
+│   ├── buildOpenApi.js
 │   ├── buildTests
 │   │   ├── openApi
 │   │   │   └── index.test.js
@@ -232,7 +236,6 @@
 │   │   │   └── swagger.json
 │   │   └── testImports.test.js
 │   ├── e2e.spec.js
-│   ├── index.js
 │   ├── read
 │   │   ├── index.js
 │   │   ├── readApis.js
@@ -254,8 +257,48 @@
 │   ├── todo
 │   └── write
 │       └── index.js
+├── schemaInterface
+│   ├── createSchemaInterface
+│   │   ├── index.js
+│   │   └── index.test.js
+│   ├── index.js
+│   └── relationships
+│       ├── index.js
+│       ├── index.test.js
+│       ├── modelsSelectors.js
+│       ├── modelsSelectors.test.js
+│       ├── relationshipsSchemaSelectors.js
+│       └── relationshipsSchemaSelectors.test.js
 ├── scripts
 │   └── buildFileStructureTrees.js
+├── search
+│   ├── filter
+│   │   ├── async
+│   │   │   └── index.js
+│   │   ├── includeItem
+│   │   │   └── index.js
+│   │   └── sync
+│   │       └── index.js
+│   ├── map
+│   │   └── sync
+│   │       └── index.js
+│   └── specimen
+│       ├── filterFunctions
+│       │   ├── catalogNumber.js
+│       │   ├── collectingLocation.js
+│       │   ├── id.js
+│       │   ├── identifier.js
+│       │   └── index.js
+│       ├── index.js
+│       ├── mapFunctions
+│       │   ├── catalogNumber.js
+│       │   ├── collectingLocation.js
+│       │   ├── collectingLocation.test.js
+│       │   ├── id.js
+│       │   ├── identifier.js
+│       │   └── index.js
+│       └── testData
+│           └── index.json
 ├── sortMethods
 │   ├── createSortAlphabeticallyByProperty
 │   │   ├── index.js

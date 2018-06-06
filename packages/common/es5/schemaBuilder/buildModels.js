@@ -3,65 +3,52 @@
 var path = require('path');
 var read = require('./read');
 var write = require('./write');
-var build = require('./build');
+var createModels = require('./build/models');
+var buildEndpoints = require('./build/buildEndpoints');
 
-function main(_ref) {
+function buildModels(_ref) {
   var modelBasePath = _ref.modelBasePath,
       apiBasePath = _ref.apiBasePath,
-      normalize = _ref.normalize;
-
-  var version = '0.1.0';
+      normalize = _ref.normalize,
+      _ref$version = _ref.version,
+      version = _ref$version === undefined ? '0.1.0' : _ref$version;
 
   var _read = read({
     apiBasePath: apiBasePath,
     modelBasePath: modelBasePath
   }),
-      apis = _read.apis,
-      endpoints = _read.endpoints,
-      errors = _read.errors,
-      info = _read.info,
-      models = _read.models,
-      parameters = _read.parameters,
-      security = _read.security,
-      servers = _read.servers;
+      endpointsInput = _read.endpoints,
+      models = _read.models;
 
-  var _build = build({
-    apis: apis,
+  var endpoints = buildEndpoints(endpointsInput);
+
+  var cleanModels = createModels({
     endpoints: endpoints,
-    errors: errors,
-    info: info,
     models: models,
     normalize: normalize,
-    parameters: parameters,
-    security: security,
-    servers: servers,
     version: version
-  }),
-      cleanModels = _build.cleanModels,
-      openApi = _build.openApi;
+  });
 
   write({
     models: cleanModels,
     normalize: normalize,
-    openApi: openApi,
     setCurrent: true,
     version: version
   });
 
   write({
     models: cleanModels,
-    normalize: normalize,
-    openApi: openApi
+    normalize: normalize
   });
 }
 
-main({
+buildModels({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
   normalize: false
 });
 
-main({
+buildModels({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
   normalize: true

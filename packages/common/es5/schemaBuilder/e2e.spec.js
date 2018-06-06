@@ -5,14 +5,15 @@ var openApiSchema = require('./schemas/openApi.json');
 
 var path = require('path');
 var read = require('./read');
-var build = require('./build');
+var buildOpenApi = require('./build/openApi');
+var buildEndpoints = require('./build/buildEndpoints');
 
 var _read = read({
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src')
 }),
     apis = _read.apis,
-    endpoints = _read.endpoints,
+    endpointsInput = _read.endpoints,
     errors = _read.errors,
     info = _read.info,
     models = _read.models,
@@ -20,7 +21,8 @@ var _read = read({
     security = _read.security,
     servers = _read.servers;
 
-var _build = build({
+var endpoints = buildEndpoints(endpointsInput);
+var openApi = buildOpenApi({
   apis: apis,
   endpoints: endpoints,
   errors: errors,
@@ -29,8 +31,7 @@ var _build = build({
   parameters: parameters,
   security: security,
   servers: servers
-}),
-    openApi = _build.openApi;
+});
 
 describe('factories/index', function () {
   describe('openApi', function () {

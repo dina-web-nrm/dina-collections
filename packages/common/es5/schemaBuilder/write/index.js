@@ -84,9 +84,13 @@ module.exports = function write() {
   ensureDirectoryExistence(versionsBaseDirectory);
   ensureDirectoryExistence(baseDirectory);
 
-  fs.writeFileSync(path.join(baseDirectory, getOpenApiFileName(normalize)), (0, _stringify2.default)(openApi, null, 2));
+  if (openApi) {
+    fs.writeFileSync(path.join(baseDirectory, getOpenApiFileName(normalize)), (0, _stringify2.default)(openApi, null, 2));
+  }
 
-  fs.writeFileSync(path.join(baseDirectory, getModelsFileName(normalize)), (0, _stringify2.default)(models, null, 2));
+  if (models) {
+    fs.writeFileSync(path.join(baseDirectory, getModelsFileName(normalize)), (0, _stringify2.default)(models, null, 2));
+  }
 
   if (version) {
     updateVersionsIndex({
