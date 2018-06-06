@@ -4,7 +4,7 @@ module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    buildWhere: {
+    filters: {
       not: {
         type: 'string',
       },

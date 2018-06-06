@@ -1,3 +1,4 @@
+const buildWhereFilterFactory = require('./methods/buildWhereFilterFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const deactivateFactory = require('./methods/deactivateFactory')
@@ -26,6 +27,7 @@ module.exports = function attachMethods({
     })
   }
 
+  const buildWhereFilter = buildWhereFilterFactory()
   const getById = getByIdFactory({
     Model,
   })
@@ -66,6 +68,7 @@ module.exports = function attachMethods({
   })
 
   const coreMethods = {
+    buildWhereFilter,
     bulkCreate,
     create,
     deactivate,
