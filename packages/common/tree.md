@@ -29,7 +29,9 @@
 │   ├── log
 │   ├── openApiClient
 │   ├── schemaBuilder
+│   ├── schemaInterface
 │   ├── scripts
+│   ├── search
 │   ├── sortMethods
 │   ├── stringFormatters
 │   ├── testUtilities
@@ -50,7 +52,9 @@
 │   ├── log
 │   ├── openApiClient
 │   ├── schemaBuilder
+│   ├── schemaInterface
 │   ├── scripts
+│   ├── search
 │   ├── sortMethods
 │   ├── stringFormatters
 │   ├── testUtilities

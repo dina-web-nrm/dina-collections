@@ -13,12 +13,12 @@ describe('lib/services/operationFactory/typeFactories/utilities/buildOperationId
   });
 
   it('returns operationId from resource, operationType and relationKey', function () {
-    var operationType = 'getRelationHasMany';
+    var operationType = 'getRelationship';
     var relationKey = 'physicalObjects';
     var resource = 'storageLocation';
 
     var testValue = buildOperationId({ operationType: operationType, relationKey: relationKey, resource: resource });
-    var expectedResult = 'storageLocationGetRelationHasManyPhysicalObjects';
+    var expectedResult = 'storageLocationGetRelationshipPhysicalObjects';
 
     expect(testValue).toEqual(expectedResult);
   });

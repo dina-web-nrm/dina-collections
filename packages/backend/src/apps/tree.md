@@ -1,7 +1,12 @@
 # Tree for apps
 ## Tree
 ```bash
+├── config
+│   └── index.js
 ├── core
+│   ├── config.js
+│   └── index.js
+├── searchEngine
 │   ├── config.js
 │   └── index.js
 └── tree.md

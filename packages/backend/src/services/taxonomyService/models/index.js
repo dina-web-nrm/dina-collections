@@ -1,7 +1,6 @@
 const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/documentModel')
-
-const { setupRelations } = require('./relations')
+const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
 
 const taxonFactory = function taxon({ sequelize }) {
   return createModel({
@@ -31,7 +30,7 @@ module.exports = [
     name: 'taxonName',
   },
   {
-    factory: setupRelations,
+    factory: createSetupRelations(['taxon', 'taxonName']),
     name: 'setupRelations',
   },
   {

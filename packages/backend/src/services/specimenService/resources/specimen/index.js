@@ -1,9 +1,6 @@
 const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
-const { resourceRelationsMap } = require('../../models/relations')
-
-const resource = 'specimen'
 
 module.exports = {
   basePath: '/api/specimen/v01',
@@ -42,34 +39,85 @@ module.exports = {
       type: 'del',
     },
     {
-      relationKey: 'physicalObjects',
-      type: 'updateRelationHasMany',
+      relationKey: 'agents',
+      type: 'getRelationship',
     },
     {
-      relationKey: 'physicalObjects',
-      type: 'getRelationHasMany',
+      relationKey: 'agents',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'causeOfDeathTypes',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'causeOfDeathTypes',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'establishmentMeansTypes',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'establishmentMeansTypes',
+      type: 'updateRelationship',
     },
     {
       relationKey: 'featureTypes',
-      type: 'updateRelationHasMany',
+      type: 'getRelationship',
     },
     {
       relationKey: 'featureTypes',
-      type: 'getRelationHasMany',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'identifierTypes',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'identifierTypes',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'physicalObjects',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'physicalObjects',
+      type: 'updateRelationship',
     },
     {
       relationKey: 'places',
-      type: 'updateRelationHasMany',
+      type: 'getRelationship',
     },
     {
       relationKey: 'places',
-      type: 'getRelationHasMany',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'preparationTypes',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'preparationTypes',
+      type: 'updateRelationship',
     },
     {
       relationKey: 'taxonNames',
-      type: 'getRelationHasMany',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'taxonNames',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'typeSpecimenType',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'typeSpecimenType',
+      type: 'updateRelationship',
     },
   ],
-  relations: resourceRelationsMap[resource],
-  resource,
+  resource: 'specimen',
 }

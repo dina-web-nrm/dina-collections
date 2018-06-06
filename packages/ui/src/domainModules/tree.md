@@ -47,6 +47,9 @@
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── LookupMammals
+│   │   │   ├── Filter.js
+│   │   │   ├── Result.js
+│   │   │   ├── Row.js
 │   │   │   └── index.js
 │   │   ├── MammalForm
 │   │   │   ├── FormActions.js

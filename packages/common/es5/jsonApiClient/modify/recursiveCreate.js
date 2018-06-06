@@ -34,7 +34,6 @@ function recursiveCreate() {
       _ref$log = _ref.log,
       log = _ref$log === undefined ? defaultLog : _ref$log,
       openApiClient = _ref.openApiClient,
-      relationshipKeysToIncludeInBody = _ref.relationshipKeysToIncludeInBody,
       resourcesToModify = _ref.resourcesToModify,
       resourceType = _ref.resourceType;
 
@@ -84,7 +83,6 @@ function recursiveCreate() {
         item: itemWithUpdatedRelationships,
         log: log.scope(),
         openApiClient: openApiClient,
-        relationshipKeysToIncludeInBody: relationshipKeysToIncludeInBody,
         resourcesToModify: resourcesToModify
       }).then(function (result) {
         log.debug('recursiveCreate: done', result);

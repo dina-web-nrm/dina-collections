@@ -1,8 +1,5 @@
 const buildOperationId = require('common/src/buildOperationId')
 const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const { resourceRelationsMap } = require('../../models/relations')
-
-const resource = 'taxon'
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -27,48 +24,69 @@ module.exports = {
     },
     {
       relationKey: 'parent',
-      type: 'updateRelationHasOne',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'parent',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'children',
+      type: 'getRelationship',
     },
     {
       connect: false,
       inverseOperationId: buildOperationId({
-        operationType: 'updateRelationBelongsToOne',
+        operationType: 'updateRelationship',
+        relationKey: 'parent',
+        resource: 'taxon',
+      }),
+      relationKey: 'children',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'acceptedTaxonName',
+      type: 'getRelationship',
+    },
+    {
+      connect: false,
+      inverseOperationId: buildOperationId({
+        operationType: 'updateRelationship',
         relationKey: 'acceptedToTaxon',
         resource: 'taxonName',
       }),
       relationKey: 'acceptedTaxonName',
-      type: 'updateRelationHasOne',
+      type: 'updateRelationship',
+    },
+    {
+      relationKey: 'synonyms',
+      type: 'getRelationship',
     },
     {
       connect: false,
       inverseOperationId: buildOperationId({
-        operationType: 'updateRelationBelongsToOne',
+        operationType: 'updateRelationship',
         relationKey: 'synonymToTaxon',
         resource: 'taxonName',
       }),
       relationKey: 'synonyms',
-      type: 'updateRelationHasMany',
+      type: 'updateRelationship',
     },
     {
-      relationKey: 'synonyms',
-      type: 'getRelationHasMany',
+      relationKey: 'vernacularNames',
+      type: 'getRelationship',
     },
     {
       connect: false,
       inverseOperationId: buildOperationId({
-        operationType: 'updateRelationBelongsToOne',
+        operationType: 'updateRelationship',
         relationKey: 'vernacularToTaxon',
         resource: 'taxonName',
       }),
       relationKey: 'vernacularNames',
-      type: 'updateRelationHasMany',
-    },
-    {
-      relationKey: 'vernacularNames',
-      type: 'getRelationHasMany',
+      type: 'updateRelationship',
     },
   ],
-  relations: resourceRelationsMap[resource],
-  resource,
+  resource: 'taxon',
   resourcePath: 'taxa',
 }

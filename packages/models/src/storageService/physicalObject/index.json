@@ -10,10 +10,6 @@
         "$ref": "__ROOT__collectionItem"
       }
     },
-    "storageLocation": {
-      "$ref": "__ROOT__storageLocation",
-      "x-reference-type": "external"
-    },
     "storageLocationText": {
       "type": "string"
     },
@@ -22,6 +18,28 @@
     },
     "type": {
       "$ref": "__ROOT__type"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "storageLocation": {
+          "type": "object",
+          "x-key-allow-null": true,
+          "x-key-stored-in-model": "physicalObject",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__storageLocation",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
+    "storageLocation": {
+      "$ref": "__ROOT__storageLocation",
+      "x-reference-type": "external"
     }
   }
 }

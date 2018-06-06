@@ -24,9 +24,12 @@ module.exports = function bulkCreateFactory(
           }
         }
 
+        const { relationships, ...attributes } = doc
+
         return {
-          document: doc,
+          document: attributes,
           id,
+          relationships,
           schemaCompliant: true,
           schemaVersion: schemaVersion || undefined,
           ...rest,

@@ -78,15 +78,19 @@ module.exports = function write(
   ensureDirectoryExistence(versionsBaseDirectory)
   ensureDirectoryExistence(baseDirectory)
 
-  fs.writeFileSync(
-    path.join(baseDirectory, getOpenApiFileName(normalize)),
-    JSON.stringify(openApi, null, 2)
-  )
+  if (openApi) {
+    fs.writeFileSync(
+      path.join(baseDirectory, getOpenApiFileName(normalize)),
+      JSON.stringify(openApi, null, 2)
+    )
+  }
 
-  fs.writeFileSync(
-    path.join(baseDirectory, getModelsFileName(normalize)),
-    JSON.stringify(models, null, 2)
-  )
+  if (models) {
+    fs.writeFileSync(
+      path.join(baseDirectory, getModelsFileName(normalize)),
+      JSON.stringify(models, null, 2)
+    )
+  }
 
   if (version) {
     updateVersionsIndex({

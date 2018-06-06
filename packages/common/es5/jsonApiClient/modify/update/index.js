@@ -83,7 +83,7 @@ function update() {
       delete input.body.data.relationships;
     }
 
-    log.debug('Create resource ' + type + ' with operationId: ' + operationId + ' input:', input);
+    log.debug('Update resource ' + type + ' with operationId: ' + operationId + ' input:', input);
 
     return openApiClient.call(operationId, input);
   });

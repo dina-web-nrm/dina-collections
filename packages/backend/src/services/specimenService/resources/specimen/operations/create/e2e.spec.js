@@ -52,20 +52,16 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                agents: {
-                  data: [],
-                },
-                featureTypes: {
-                  data: [],
-                },
-
-                physicalObjects: {
-                  data: [],
-                },
+                agents: { data: [] },
+                causeOfDeathTypes: { data: [] },
+                establishmentMeansTypes: { data: [] },
+                featureTypes: { data: [] },
+                identifierTypes: { data: [] },
+                physicalObjects: { data: [] },
                 places: { data: [] },
-                taxonNames: {
-                  data: [],
-                },
+                preparationTypes: { data: [] },
+                taxonNames: { data: [] },
+                typeSpecimenType: { data: null },
               },
               response,
             })

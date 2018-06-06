@@ -1,17 +1,26 @@
-const extractForeignKeyRelationships = ({ input, relations = {} }) => {
+const extractForeignKeyRelationships = ({
+  input,
+  relations = {},
+  sourceResource,
+}) => {
   return Object.keys(relations).reduce((obj, key) => {
     const relation = relations[key]
-    const { storeInDocument, format } = relation
-    const relationId =
-      input.relationships &&
-      input.relationships[key] &&
-      input.relationships[key].data &&
-      input.relationships[key].data.id
-    if (!storeInDocument && relationId !== undefined && format === 'object') {
-      const foreignKeyName = `${key}Id`
-      return {
-        ...obj,
-        [foreignKeyName]: relationId,
+    const { keyName, keyType, keyStoredInModel, targetResource } = relation
+
+    if (keyStoredInModel === sourceResource && keyType === 'sql') {
+      const relationId =
+        input.relationships &&
+        input.relationships[key] &&
+        input.relationships[key].data &&
+        input.relationships[key].data.id
+
+      if (relationId !== undefined) {
+        const foreignKeyName = keyName || `${targetResource}Id`
+
+        return {
+          ...obj,
+          [foreignKeyName]: relationId,
+        }
       }
     }
 
@@ -53,6 +62,7 @@ const extractRelationships = ({
 module.exports = function transformInput({
   input,
   relations,
+  sourceResource,
   storeEmptyRelationsInDocument,
 }) {
   const relationshipData = extractRelationships({
@@ -64,6 +74,7 @@ module.exports = function transformInput({
   const foreignKeyObject = extractForeignKeyRelationships({
     input,
     relations,
+    sourceResource,
   })
 
   let output = { doc: input.attributes }

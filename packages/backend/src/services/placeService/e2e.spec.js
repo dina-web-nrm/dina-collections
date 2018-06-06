@@ -167,7 +167,7 @@ apiDescribe('place', () => {
                 type: 'place',
               },
             },
-            operationId: 'placeUpdateRelationHasOneParent',
+            operationId: 'placeUpdateRelationshipParent',
             pathParams: {
               id: childId,
             },
@@ -184,7 +184,7 @@ apiDescribe('place', () => {
                 type: 'place',
               },
             },
-            operationId: 'placeUpdateRelationHasOneParent',
+            operationId: 'placeUpdateRelationshipParent',
             pathParams: {
               id: grandchildId,
             },

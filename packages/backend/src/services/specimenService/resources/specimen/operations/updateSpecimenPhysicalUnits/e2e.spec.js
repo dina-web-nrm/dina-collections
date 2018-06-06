@@ -33,7 +33,7 @@ apiDescribe('specimen', () => {
         }
         return makeTestCall({
           body: emptyRelationships,
-          operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
+          operationId: 'specimenUpdateRelationshipPhysicalObjects',
           pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
           .then(() => {
@@ -41,7 +41,13 @@ apiDescribe('specimen', () => {
               operationId: 'specimenGetOne',
               pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
-                relationships: ['all'],
+                relationships: [
+                  'agents',
+                  'featureTypes',
+                  'physicalObjects',
+                  'places',
+                  'taxonNames',
+                ],
               },
             })
           })
@@ -74,7 +80,7 @@ apiDescribe('specimen', () => {
         return expectError404(
           makeTestCall({
             body: emptyRelationships,
-            operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
+            operationId: 'specimenUpdateRelationshipPhysicalObjects',
             pathParams: { id: '4433441' },
           })
         )
@@ -86,7 +92,7 @@ apiDescribe('specimen', () => {
         }
         return makeTestCall({
           body: newRelationships,
-          operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
+          operationId: 'specimenUpdateRelationshipPhysicalObjects',
           pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
           .then(response => {
@@ -95,14 +101,20 @@ apiDescribe('specimen', () => {
               response,
             })
             expect(response.data).toEqual([
-              { attributes: {}, id: '1337', type: 'physicalObject' },
+              { id: '1337', type: 'physicalObject' },
             ])
 
             return makeTestCall({
               operationId: 'specimenGetOne',
               pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
-                relationships: ['all'],
+                relationships: [
+                  'agents',
+                  'featureTypes',
+                  'physicalObjects',
+                  'places',
+                  'taxonNames',
+                ],
               },
             })
           })
@@ -121,7 +133,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: newRelationships,
-            operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
+            operationId: 'specimenUpdateRelationshipPhysicalObjects',
             pathParams: { id: simpleDataPhysicalObjectRelationsId },
           })
         )
@@ -144,7 +156,7 @@ apiDescribe('specimen', () => {
       }
       return makeTestCall({
         body: newRelationships,
-        operationId: 'specimenUpdateRelationHasManyPhysicalObjects',
+        operationId: 'specimenUpdateRelationshipPhysicalObjects',
         pathParams: { id: simpleDataNoRelationsId },
       })
         .then(() => {
@@ -152,7 +164,13 @@ apiDescribe('specimen', () => {
             operationId: 'specimenGetOne',
             pathParams: { id: simpleDataNoRelationsId },
             queryParams: {
-              relationships: ['all'],
+              relationships: [
+                'agents',
+                'featureTypes',
+                'physicalObjects',
+                'places',
+                'taxonNames',
+              ],
             },
           })
         })

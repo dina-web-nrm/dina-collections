@@ -3,7 +3,11 @@ const createService = require('./serviceFactory')
 
 const log = createLog('lib/services')
 
-module.exports = function createServices({ config = {}, serviceDefinitions }) {
+module.exports = function createServices({
+  config = {},
+  resourceRelationshipParamsMap = {},
+  serviceDefinitions,
+}) {
   log.info('Create services')
   return Object.keys(serviceDefinitions).reduce((services, serviceName) => {
     if (config && config.services && !config.services[serviceName]) {
@@ -12,6 +16,7 @@ module.exports = function createServices({ config = {}, serviceDefinitions }) {
 
     const service = createService({
       log: log.scope(),
+      resourceRelationshipParamsMap,
       serviceDefinition: serviceDefinitions[serviceName],
     })
 

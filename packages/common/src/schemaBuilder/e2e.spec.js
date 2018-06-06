@@ -3,11 +3,12 @@ const openApiSchema = require('./schemas/openApi.json')
 
 const path = require('path')
 const read = require('./read')
-const build = require('./build')
+const buildOpenApi = require('./build/openApi')
+const buildEndpoints = require('./build/buildEndpoints')
 
 const {
   apis,
-  endpoints,
+  endpoints: endpointsInput,
   errors,
   info,
   models,
@@ -18,7 +19,9 @@ const {
   apiBasePath: path.join(__dirname, '../../../backend/src'),
   modelBasePath: path.join(__dirname, '../../../models/src'),
 })
-const { openApi } = build({
+
+const endpoints = buildEndpoints(endpointsInput)
+const openApi = buildOpenApi({
   apis,
   endpoints,
   errors,

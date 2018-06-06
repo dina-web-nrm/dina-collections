@@ -24,12 +24,12 @@ var dep = new Dependor({
 
 var defaultLog = createLog('common:jsonApiClient:updateRelationship');
 
-var reverseOperationIdMap = {};
+var inverseOperationIdMap = {};
 (0, _keys2.default)(openApiSpec.paths).forEach(function (path) {
   (0, _keys2.default)(openApiSpec.paths[path] || {}).forEach(function (verb) {
     var operation = openApiSpec.paths[path][verb];
     if (operation['x-inverseOperationId']) {
-      reverseOperationIdMap[operation.operationId] = operation['x-inverseOperationId'];
+      inverseOperationIdMap[operation.operationId] = operation['x-inverseOperationId'];
     }
   });
 }, {});
@@ -41,15 +41,16 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
       relationItemsToUpdate = _ref.relationItemsToUpdate,
       relationKey = _ref.relationKey,
       type = _ref.type,
-      reverseOperationId = _ref.reverseOperationId;
+      inverseOperationId = _ref.inverseOperationId;
 
-  var operationId = buildOperationId({
-    operationType: 'getRelationHasMany',
+  var getRelationshipOperationId = buildOperationId({
+    operationType: 'getRelationship',
     relationKey: relationKey,
     resource: type
   });
+  var inverseGetOperationId = inverseOperationIdMap[getRelationshipOperationId];
 
-  return openApiClient.call(operationId, {
+  return openApiClient.call(inverseGetOperationId || getRelationshipOperationId, {
     pathParams: {
       id: item.id
     }
@@ -57,62 +58,89 @@ var deleteNotIncludedRelationships = function deleteNotIncludedRelationships(_re
     var existingRelations = result.data;
 
 
-    var relationsToRemove = existingRelations.filter(function (existingRelation) {
-      return !relationItemsToUpdate.find(function (_ref2) {
-        var id = _ref2.id;
+    if (existingRelations) {
+      var existingRelationsArray = Array.isArray(existingRelations) ? existingRelations : [existingRelations];
 
-        return existingRelation.id === id;
-      });
-    });
-    log.debug('The following relationships should be removed: ', relationsToRemove);
+      var relationItemsToUpdateArray = Array.isArray(relationItemsToUpdate) ? relationItemsToUpdate : [relationItemsToUpdate];
 
-    var promises = relationsToRemove.map(function (relationToRemove) {
-      return openApiClient.call(reverseOperationId, {
-        body: {
-          data: null
-        },
-        pathParams: {
-          id: relationToRemove.id
-        }
+      var relationsToRemove = existingRelationsArray.filter(function (_ref2) {
+        var existingId = _ref2.id;
+
+        var isPreexisting = relationItemsToUpdateArray.find(function (_ref3) {
+          var id = _ref3.id;
+
+          return id === existingId;
+        });
+
+        return !isPreexisting;
       });
-    });
-    return _promise2.default.all(promises);
+
+      if (relationsToRemove.length) {
+        log.debug('The following ' + relationKey + ' should be removed:', relationsToRemove);
+
+        var updateRelationshipOperationId = buildOperationId({
+          operationType: 'updateRelationship',
+          relationKey: relationKey,
+          resource: type
+        });
+
+        var promises = relationsToRemove.map(function (relationToRemove) {
+          return openApiClient.call(inverseOperationId || updateRelationshipOperationId, {
+            body: {
+              data: null
+            },
+            pathParams: {
+              id: relationToRemove.id || item.id
+            }
+          });
+        });
+        return _promise2.default.all(promises);
+      }
+
+      log.debug('Nothing to remove for ' + relationKey);
+      return _promise2.default.resolve();
+    }
+
+    log.debug('No existing relations for ' + relationKey);
+    return _promise2.default.resolve({ data: null });
   });
 };
 
-function updateRelationship(_ref3) {
-  var item = _ref3.item,
-      _ref3$log = _ref3.log,
-      log = _ref3$log === undefined ? defaultLog : _ref3$log,
-      openApiClient = _ref3.openApiClient,
-      relationKey = _ref3.relationKey,
-      relationship = _ref3.relationship;
+function updateRelationship(_ref4) {
+  var item = _ref4.item,
+      _ref4$log = _ref4.log,
+      log = _ref4$log === undefined ? defaultLog : _ref4$log,
+      openApiClient = _ref4.openApiClient,
+      relationKey = _ref4.relationKey,
+      relationship = _ref4.relationship;
   var id = item.id,
       type = item.type;
   var data = relationship.data;
 
   var isArray = Array.isArray(data);
-  if (isArray) {
-    var _operationId = buildOperationId({
-      operationType: 'updateRelationHasMany',
-      relationKey: relationKey,
-      resource: type
-    });
-    var _reverseOperationId = reverseOperationIdMap[_operationId];
-    if (_reverseOperationId) {
-      log.debug('reverse updateRelationship (hasMany) with ' + _reverseOperationId + ' for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
+  var operationId = buildOperationId({
+    operationType: 'updateRelationship',
+    relationKey: relationKey,
+    resource: type
+  });
+  var inverseOperationId = inverseOperationIdMap[operationId];
+  if (inverseOperationId) {
+    log.debug('inverse updateRelationship with ' + inverseOperationId + ' for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
 
-      return deleteNotIncludedRelationships({
-        item: item,
-        log: log,
-        openApiClient: openApiClient,
-        relationItemsToUpdate: data,
-        relationKey: relationKey,
-        reverseOperationId: _reverseOperationId,
-        type: type
-      }).then(function () {
+    return deleteNotIncludedRelationships({
+      inverseOperationId: inverseOperationId,
+      isArray: isArray,
+      item: item,
+      log: log,
+      openApiClient: openApiClient,
+      relationItemsToUpdate: data,
+      relationKey: relationKey,
+      type: type
+    }).then(function (removedRelationships) {
+      log.debug('inverse updateRelationship for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
+      if (isArray) {
         var promises = data.map(function (relationshipItem) {
-          return openApiClient.call(_reverseOperationId, {
+          return openApiClient.call(inverseOperationId, {
             body: {
               data: {
                 id: id,
@@ -125,47 +153,43 @@ function updateRelationship(_ref3) {
           });
         });
         return _promise2.default.all(promises);
-      });
-    }
+      }
 
-    log.debug('updateRelationship (hasMany) for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
-    return openApiClient.call(_operationId, {
+      if (data && data.id) {
+        return openApiClient.call(inverseOperationId, {
+          body: {
+            data: {
+              id: id,
+              type: type
+            }
+          },
+          pathParams: {
+            id: data.id
+          }
+        });
+      }
+
+      return removedRelationships;
+    });
+  }
+
+  return deleteNotIncludedRelationships({
+    inverseOperationId: inverseOperationId,
+    isArray: isArray,
+    item: item,
+    log: log,
+    openApiClient: openApiClient,
+    relationItemsToUpdate: data,
+    relationKey: relationKey,
+    type: type
+  }).then(function () {
+    log.debug('updateRelationship for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
+    return openApiClient.call(operationId, {
       body: { data: data },
       pathParams: {
         id: id
       }
     });
-  }
-  var operationId = buildOperationId({
-    operationType: 'updateRelationHasOne',
-    relationKey: relationKey,
-    resource: type
-  });
-
-  var reverseOperationId = reverseOperationIdMap[operationId];
-  if (reverseOperationId) {
-    log.debug('reverse updateRelationship (hasOne) for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
-
-    return openApiClient.call(reverseOperationId, {
-      body: {
-        data: {
-          id: id,
-          type: type
-        }
-      },
-      pathParams: {
-        id: data.id
-      }
-    });
-  }
-
-  log.debug('updateRelationship (hasOne) for ' + item.type + ' -> ' + item.id + ' @ key: ' + relationKey + '. relationships: ', data);
-
-  return openApiClient.call(operationId, {
-    body: { data: data },
-    pathParams: {
-      id: id
-    }
   });
 }
 

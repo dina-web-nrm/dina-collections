@@ -8,9 +8,8 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── loadInitialData
-│   │   │   └── index.js
-│   │   └── relations.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   └── resources
 │       ├── agent
 │       │   ├── index.js
@@ -94,9 +93,8 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── loadInitialData
-│   │   │   └── index.js
-│   │   └── relations.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   ├── resources
 │   │   ├── index.js
 │   │   └── place
@@ -104,6 +102,16 @@
 │   │       ├── getMany
 │   │       └── index.js
 │   └── todo
+├── searchService
+│   ├── index.js
+│   ├── info
+│   │   └── index.js
+│   ├── models
+│   │   └── index.js
+│   └── resources
+│       ├── index.js
+│       └── searchSpecimen
+│           └── index.js
 ├── specimenService
 │   ├── controllers
 │   │   └── index.js
@@ -117,10 +125,9 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── loadInitialData
-│   │   │   ├── index.js
-│   │   │   └── migrations
-│   │   └── relations.js
+│   │   └── loadInitialData
+│   │       ├── index.js
+│   │       └── migrations
 │   ├── resources
 │   │   ├── index.js
 │   │   └── specimen
@@ -145,9 +152,8 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── loadInitialData
-│   │   │   └── index.js
-│   │   └── relations.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── physicalObject
@@ -163,9 +169,8 @@
 │   │   └── index.js
 │   ├── models
 │   │   ├── index.js
-│   │   ├── loadInitialData
-│   │   │   └── index.js
-│   │   └── relations.js
+│   │   └── loadInitialData
+│   │       └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── taxon

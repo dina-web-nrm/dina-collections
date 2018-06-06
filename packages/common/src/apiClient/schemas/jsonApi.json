@@ -227,6 +227,9 @@
                 },
                 {
                   "$ref": "#/definitions/relationshipToMany"
+                },
+                {
+                  "type": "null"
                 }
               ]
             },

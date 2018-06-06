@@ -14,13 +14,7 @@ const dep = new Dependor({
 const defaultLog = createLog('common:jsonApiClient:createWithRelationships')
 
 function createWithRelationships(
-  {
-    item,
-    log = defaultLog,
-    openApiClient,
-    relationshipKeysToIncludeInBody,
-    resourcesToModify,
-  } = {}
+  { item, log = defaultLog, openApiClient, resourcesToModify } = {}
 ) {
   return Promise.resolve().then(() => {
     if (!item) {
@@ -30,14 +24,13 @@ function createWithRelationships(
     const { relationships } = item
     const {
       relationshipsToIncludeInRequest,
-      relationshipsToAssociateSeparatly,
+      relationshipsToAssociateSeparately,
     } = dep.splitRelationships({
       itemResourceType: item.type,
-      relationshipKeysToIncludeInBody,
       relationships,
     })
     log.debug('createWithRelationships', {
-      relationshipsToAssociateSeparatly,
+      relationshipsToAssociateSeparately,
       relationshipsToIncludeInRequest,
     })
     return dep
@@ -56,7 +49,7 @@ function createWithRelationships(
             item: response.data,
             log: log.scope(),
             openApiClient,
-            relationships: relationshipsToAssociateSeparatly,
+            relationships: relationshipsToAssociateSeparately,
           })
           .then(() => {
             return response

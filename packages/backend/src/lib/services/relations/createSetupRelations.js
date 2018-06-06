@@ -1,15 +1,36 @@
+const {
+  getRelationshipParamsForModelNames,
+} = require('common/src/schemaInterface')
 const setupAssociation = require('../../sequelize/models/utilities/setupAssociation')
-const getRelationKey = require('./getRelationKey')
+const createLog = require('../../../utilities/log')
 
-module.exports = function createSetupRelations(relations = []) {
+const log = createLog('lib/sequelize', 1)
+
+module.exports = function createSetupRelations(modelNames = []) {
+  const relationshipsParamsArray = getRelationshipParamsForModelNames(
+    modelNames
+  )
+
   return function setupRelations({ models } = {}) {
-    relations.forEach(relationSpecification => {
-      if (relationSpecification.external) {
+    log.debug(modelNames.join(', '))
+    relationshipsParamsArray.forEach(relationshipsParamsItem => {
+      // TODO: replace this first check with validation through a schema
+      if (!relationshipsParamsItem.sourceResource) {
+        log.scope().debug('No sourceResource for:', relationshipsParamsItem)
         return
       }
 
-      const asKey = getRelationKey(relationSpecification)
-      setupAssociation({ ...relationSpecification, asKey, models })
+      if (relationshipsParamsItem.keyType === 'json') {
+        log
+          .scope()
+          .debug(
+            'Skipping, json key for:',
+            relationshipsParamsItem.sourceResource
+          )
+        return
+      }
+
+      setupAssociation({ ...relationshipsParamsItem, models })
     })
   }
 }

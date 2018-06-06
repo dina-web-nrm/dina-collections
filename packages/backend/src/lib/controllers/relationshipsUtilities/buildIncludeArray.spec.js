@@ -15,10 +15,12 @@ describe('lib/controllers/relationshipsUtilities/buildIncludeArray', () => {
       children: {
         format: 'array',
         resource: 'place',
+        targetResource: 'place',
       },
       parent: {
         format: 'object',
         resource: 'place',
+        targetResource: 'place',
       },
     }
     const models = {

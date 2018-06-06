@@ -10,8 +10,8 @@ module.exports = function extractItemRelationship({
   relationshipType,
   nestedToCore,
 }) {
-  let relationshipObject = null
-  let relationshipArray = []
+  let relationshipObject
+  let relationshipArray
   if (path) {
     let arrayPath = path
     if (!Array.isArray(path)) {
@@ -28,7 +28,7 @@ module.exports = function extractItemRelationship({
             relationship.lid = createLid()
           }
 
-          const referense =
+          const reference =
             relationship.id !== undefined
               ? {
                   id: relationship.id,
@@ -37,7 +37,7 @@ module.exports = function extractItemRelationship({
                   lid: relationship.lid,
                 }
 
-          objectPath.set(item, pth, referense)
+          objectPath.set(item, pth, reference)
 
           const formattedRelationship = nestedToCore
             ? nestedToCore({
@@ -50,11 +50,15 @@ module.exports = function extractItemRelationship({
           if (relationshipFormat === 'object') {
             relationshipObject = formattedRelationship
           } else {
-            const exists = relationshipArray.find(({ id }) => {
+            const exists = (relationshipArray || []).find(({ id }) => {
               return id !== undefined && id === formattedRelationship.id
             })
             if (!exists) {
-              relationshipArray.push(formattedRelationship)
+              if (!relationshipArray) {
+                relationshipArray = [formattedRelationship]
+              } else {
+                relationshipArray.push(formattedRelationship)
+              }
             }
           }
         },
@@ -64,10 +68,14 @@ module.exports = function extractItemRelationship({
     })
   } else {
     if (relationshipFormat === 'object') {
-      relationshipObject =
-        item[relationshipKey] && item[relationshipKey].id
-          ? { id: item[relationshipKey].id, type: relationshipType }
-          : null
+      if (item[relationshipKey] === null) {
+        relationshipObject = null
+      } else {
+        relationshipObject =
+          item[relationshipKey] && item[relationshipKey].id
+            ? { id: item[relationshipKey].id, type: relationshipType }
+            : undefined
+      }
     } else if (item[relationshipKey]) {
       relationshipArray = item[relationshipKey]
         .map(arrayItem => {
@@ -86,7 +94,7 @@ module.exports = function extractItemRelationship({
     })
   }
 
-  if (relationshipFormat === 'object' && relationshipObject) {
+  if (relationshipFormat === 'object' && relationshipObject !== undefined) {
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,
@@ -94,11 +102,7 @@ module.exports = function extractItemRelationship({
     )
   }
 
-  if (
-    relationshipFormat === 'array' &&
-    relationshipArray &&
-    relationshipArray.length
-  ) {
+  if (relationshipFormat === 'array' && relationshipArray !== undefined) {
     objectPath.set(
       item,
       `relationships.${relationshipKey}.data`,

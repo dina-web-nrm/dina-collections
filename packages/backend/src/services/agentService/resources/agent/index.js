@@ -1,7 +1,4 @@
 const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const { resourceRelationsMap } = require('../../models/relations')
-
-const resource = 'agent'
 
 module.exports = {
   basePath: '/api/agent/v01',
@@ -24,15 +21,14 @@ module.exports = {
     {
       type: 'del',
     },
-    // {
-    //   relationKey: 'user',
-    //   type: 'getRelationBelongsToOne',
-    // },
-    // {
-    //   relationKey: 'user',
-    //   type: 'updateRelationBelongsToOne',
-    // },
+    {
+      relationKey: 'user',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'user',
+      type: 'updateRelationship',
+    },
   ],
-  relations: resourceRelationsMap[resource],
-  resource,
+  resource: 'agent',
 }

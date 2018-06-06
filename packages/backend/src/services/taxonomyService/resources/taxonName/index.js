@@ -1,8 +1,5 @@
 const buildWhere = require('./operations/getMany/buildWhere.js')
 const createTaxonNameRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const { resourceRelationsMap } = require('../../models/relations')
-
-const resource = 'taxonName'
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -38,17 +35,28 @@ module.exports = {
     },
     {
       relationKey: 'acceptedToTaxon',
-      type: 'updateRelationBelongsToOne',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'acceptedToTaxon',
+      type: 'updateRelationship',
     },
     {
       relationKey: 'synonymToTaxon',
-      type: 'updateRelationBelongsToOne',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'synonymToTaxon',
+      type: 'updateRelationship',
     },
     {
       relationKey: 'vernacularToTaxon',
-      type: 'updateRelationBelongsToOne',
+      type: 'getRelationship',
+    },
+    {
+      relationKey: 'vernacularToTaxon',
+      type: 'updateRelationship',
     },
   ],
-  relations: resourceRelationsMap[resource],
-  resource,
+  resource: 'taxonName',
 }

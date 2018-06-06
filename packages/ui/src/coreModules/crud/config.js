@@ -177,17 +177,6 @@ const config = {
         {
           operationId: 'specimenUpdate',
           options: {
-            relationshipKeysToIncludeInBody: [
-              'agents',
-              'causeOfDeathTypes',
-              'establishmentMeansTypes',
-              'featureTypes',
-              'identifierTypes',
-              'places',
-              'preparationTypes',
-              'taxonNames',
-              'typeSpecimenTypes',
-            ],
             resourcesToModify: ['specimen', 'physicalObject'],
           },
           type: 'update',
@@ -195,17 +184,6 @@ const config = {
         {
           operationId: 'specimenCreate',
           options: {
-            relationshipKeysToIncludeInBody: [
-              'agents',
-              'causeOfDeathTypes',
-              'establishmentMeansTypes',
-              'featureTypes',
-              'identifierTypes',
-              'places',
-              'preparationTypes',
-              'taxonNames',
-              'typeSpecimenTypes',
-            ],
             resourcesToModify: ['specimen', 'physicalObject'],
           },
           type: 'create',
@@ -228,12 +206,6 @@ const config = {
         },
         {
           operationId: 'storageLocationCreate',
-          options: {
-            relationshipKeysToIncludeInBody: [
-              'acceptedTaxonNames',
-              'preparationTypes',
-            ],
-          },
           type: 'create',
         },
         {
@@ -242,12 +214,6 @@ const config = {
         },
         {
           operationId: 'storageLocationUpdate',
-          options: {
-            relationshipKeysToIncludeInBody: [
-              'acceptedTaxonNames',
-              'preparationTypes',
-            ],
-          },
           type: 'update',
         },
       ],

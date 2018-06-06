@@ -2,15 +2,11 @@ const create = require('../operationFactory/typeFactories/schemas/create')
 const del = require('../operationFactory/typeFactories/schemas/del')
 const getMany = require('../operationFactory/typeFactories/schemas/getMany')
 const getOne = require('../operationFactory/typeFactories/schemas/getOne')
-const getRelationBelongsToOne = require('../operationFactory/typeFactories/schemas/getRelationBelongsToOne')
-const getRelationHasMany = require('../operationFactory/typeFactories/schemas/getRelationHasMany')
-const getRelationHasOne = require('../operationFactory/typeFactories/schemas/getRelationHasOne')
+const getRelationship = require('../operationFactory/typeFactories/schemas/getRelationship')
 const getVersion = require('../operationFactory/typeFactories/schemas/getVersion')
 const getVersions = require('../operationFactory/typeFactories/schemas/getVersions')
 const update = require('../operationFactory/typeFactories/schemas/update')
-const updateRelationHasMany = require('../operationFactory/typeFactories/schemas/updateRelationHasMany')
-const updateRelationHasOne = require('../operationFactory/typeFactories/schemas/updateRelationHasOne')
-const updateRelationBelongsToOne = require('../operationFactory/typeFactories/schemas/updateRelationBelongsToOne')
+const updateRelationship = require('../operationFactory/typeFactories/schemas/updateRelationship')
 const raw = require('../operationFactory/typeFactories/schemas/raw')
 
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')
@@ -41,21 +37,9 @@ module.exports = function testOperationSpecification(operationSpecification) {
           expectNoValidationError(validate(getOne, operationSpecification))
           break
         }
-        case 'getRelationBelongsToOne': {
+        case 'getRelationship': {
           expectNoValidationError(
-            validate(getRelationBelongsToOne, operationSpecification)
-          )
-          break
-        }
-        case 'getRelationHasMany': {
-          expectNoValidationError(
-            validate(getRelationHasMany, operationSpecification)
-          )
-          break
-        }
-        case 'getRelationHasOne': {
-          expectNoValidationError(
-            validate(getRelationHasOne, operationSpecification)
+            validate(getRelationship, operationSpecification)
           )
           break
         }
@@ -75,23 +59,9 @@ module.exports = function testOperationSpecification(operationSpecification) {
           break
         }
 
-        case 'updateRelationBelongsToOne': {
+        case 'updateRelationship': {
           expectNoValidationError(
-            validate(updateRelationBelongsToOne, operationSpecification)
-          )
-          break
-        }
-
-        case 'updateRelationHasMany': {
-          expectNoValidationError(
-            validate(updateRelationHasMany, operationSpecification)
-          )
-          break
-        }
-
-        case 'updateRelationHasOne': {
-          expectNoValidationError(
-            validate(updateRelationHasOne, operationSpecification)
+            validate(updateRelationship, operationSpecification)
           )
           break
         }

@@ -9,12 +9,12 @@ const dep = new Dependor({
 
 const defaultLog = createLog('common:jsonApiClient:updateRelationship')
 
-const reverseOperationIdMap = {}
+const inverseOperationIdMap = {}
 Object.keys(openApiSpec.paths).forEach(path => {
   Object.keys(openApiSpec.paths[path] || {}).forEach(verb => {
     const operation = openApiSpec.paths[path][verb]
     if (operation['x-inverseOperationId']) {
-      reverseOperationIdMap[operation.operationId] =
+      inverseOperationIdMap[operation.operationId] =
         operation['x-inverseOperationId']
     }
   })
@@ -27,16 +27,18 @@ const deleteNotIncludedRelationships = ({
   relationItemsToUpdate,
   relationKey,
   type,
-  reverseOperationId,
+  inverseOperationId,
 }) => {
-  const operationId = buildOperationId({
-    operationType: 'getRelationHasMany',
+  const getRelationshipOperationId = buildOperationId({
+    operationType: 'getRelationship',
     relationKey,
     resource: type,
   })
+  const inverseGetOperationId =
+    inverseOperationIdMap[getRelationshipOperationId]
 
   return openApiClient
-    .call(operationId, {
+    .call(inverseGetOperationId || getRelationshipOperationId, {
       pathParams: {
         id: item.id,
       },
@@ -44,27 +46,59 @@ const deleteNotIncludedRelationships = ({
     .then(result => {
       const { data: existingRelations } = result
 
-      const relationsToRemove = existingRelations.filter(existingRelation => {
-        return !relationItemsToUpdate.find(({ id }) => {
-          return existingRelation.id === id
-        })
-      })
-      log.debug(
-        'The following relationships should be removed: ',
-        relationsToRemove
-      )
+      if (existingRelations) {
+        const existingRelationsArray = Array.isArray(existingRelations)
+          ? existingRelations
+          : [existingRelations]
 
-      const promises = relationsToRemove.map(relationToRemove => {
-        return openApiClient.call(reverseOperationId, {
-          body: {
-            data: null,
-          },
-          pathParams: {
-            id: relationToRemove.id,
-          },
-        })
-      })
-      return Promise.all(promises)
+        const relationItemsToUpdateArray = Array.isArray(relationItemsToUpdate)
+          ? relationItemsToUpdate
+          : [relationItemsToUpdate]
+
+        const relationsToRemove = existingRelationsArray.filter(
+          ({ id: existingId }) => {
+            const isPreexisting = relationItemsToUpdateArray.find(({ id }) => {
+              return id === existingId
+            })
+
+            return !isPreexisting
+          }
+        )
+
+        if (relationsToRemove.length) {
+          log.debug(
+            `The following ${relationKey} should be removed:`,
+            relationsToRemove
+          )
+
+          const updateRelationshipOperationId = buildOperationId({
+            operationType: 'updateRelationship',
+            relationKey,
+            resource: type,
+          })
+
+          const promises = relationsToRemove.map(relationToRemove => {
+            return openApiClient.call(
+              inverseOperationId || updateRelationshipOperationId,
+              {
+                body: {
+                  data: null,
+                },
+                pathParams: {
+                  id: relationToRemove.id || item.id,
+                },
+              }
+            )
+          })
+          return Promise.all(promises)
+        }
+
+        log.debug(`Nothing to remove for ${relationKey}`)
+        return Promise.resolve()
+      }
+
+      log.debug(`No existing relations for ${relationKey}`)
+      return Promise.resolve({ data: null })
     })
 }
 
@@ -78,32 +112,39 @@ function updateRelationship({
   const { id, type } = item
   const { data } = relationship
   const isArray = Array.isArray(data)
-  if (isArray) {
-    const operationId = buildOperationId({
-      operationType: 'updateRelationHasMany',
+  const operationId = buildOperationId({
+    operationType: 'updateRelationship',
+    relationKey,
+    resource: type,
+  })
+  const inverseOperationId = inverseOperationIdMap[operationId]
+  if (inverseOperationId) {
+    log.debug(
+      `inverse updateRelationship with ${inverseOperationId} for ${
+        item.type
+      } -> ${item.id} @ key: ${relationKey}. relationships: `,
+      data
+    )
+
+    return deleteNotIncludedRelationships({
+      inverseOperationId,
+      isArray,
+      item,
+      log,
+      openApiClient,
+      relationItemsToUpdate: data,
       relationKey,
-      resource: type,
-    })
-    const reverseOperationId = reverseOperationIdMap[operationId]
-    if (reverseOperationId) {
+      type,
+    }).then(removedRelationships => {
       log.debug(
-        `reverse updateRelationship (hasMany) with ${reverseOperationId} for ${
-          item.type
-        } -> ${item.id} @ key: ${relationKey}. relationships: `,
+        `inverse updateRelationship for ${item.type} -> ${item.id} @ key: ${
+          relationKey
+        }. relationships: `,
         data
       )
-
-      return deleteNotIncludedRelationships({
-        item,
-        log,
-        openApiClient,
-        relationItemsToUpdate: data,
-        relationKey,
-        reverseOperationId,
-        type,
-      }).then(() => {
+      if (isArray) {
         const promises = data.map(relationshipItem => {
-          return openApiClient.call(reverseOperationId, {
+          return openApiClient.call(inverseOperationId, {
             body: {
               data: {
                 id,
@@ -116,11 +157,38 @@ function updateRelationship({
           })
         })
         return Promise.all(promises)
-      })
-    }
+      }
 
+      if (data && data.id) {
+        return openApiClient.call(inverseOperationId, {
+          body: {
+            data: {
+              id,
+              type,
+            },
+          },
+          pathParams: {
+            id: data.id,
+          },
+        })
+      }
+
+      return removedRelationships
+    })
+  }
+
+  return deleteNotIncludedRelationships({
+    inverseOperationId,
+    isArray,
+    item,
+    log,
+    openApiClient,
+    relationItemsToUpdate: data,
+    relationKey,
+    type,
+  }).then(() => {
     log.debug(
-      `updateRelationship (hasMany) for ${item.type} -> ${item.id} @ key: ${
+      `updateRelationship for ${item.type} -> ${item.id} @ key: ${
         relationKey
       }. relationships: `,
       data
@@ -131,47 +199,6 @@ function updateRelationship({
         id,
       },
     })
-  }
-  const operationId = buildOperationId({
-    operationType: 'updateRelationHasOne',
-    relationKey,
-    resource: type,
-  })
-
-  const reverseOperationId = reverseOperationIdMap[operationId]
-  if (reverseOperationId) {
-    log.debug(
-      `reverse updateRelationship (hasOne) for ${item.type} -> ${
-        item.id
-      } @ key: ${relationKey}. relationships: `,
-      data
-    )
-
-    return openApiClient.call(reverseOperationId, {
-      body: {
-        data: {
-          id,
-          type,
-        },
-      },
-      pathParams: {
-        id: data.id,
-      },
-    })
-  }
-
-  log.debug(
-    `updateRelationship (hasOne) for ${item.type} -> ${item.id} @ key: ${
-      relationKey
-    }. relationships: `,
-    data
-  )
-
-  return openApiClient.call(operationId, {
-    body: { data },
-    pathParams: {
-      id,
-    },
   })
 }
 

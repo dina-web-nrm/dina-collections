@@ -1,11 +1,12 @@
 'use strict';
 
-module.exports = function buildRelationships(_ref) {
-  var _ref$format = _ref.format,
+module.exports = function buildRelationship() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      _ref$format = _ref.format,
       relationFormat = _ref$format === undefined ? 'object' : _ref$format,
       key = _ref.key,
       link = _ref.link,
-      resourceInput = _ref.resource;
+      resourceInput = _ref.targetResource;
 
   var resource = resourceInput || key;
   var existingResourceData = {
@@ -37,23 +38,15 @@ module.exports = function buildRelationships(_ref) {
 
   if (relationFormat === 'object') {
     return {
-      oneOf: [{
-        additionalProperties: false,
-        properties: {
-          data: existingResourceData,
-          links: links
-        },
-        type: 'object'
-      }, {
-        additionalProperties: false,
-        properties: {
-          data: {
+      additionalProperties: false,
+      properties: {
+        data: {
+          oneOf: [existingResourceData, {
             type: 'null'
-          },
-          links: links
+          }]
         },
-        type: 'object'
-      }],
+        links: links
+      },
       type: 'object'
     };
   }

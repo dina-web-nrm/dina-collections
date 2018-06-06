@@ -79,7 +79,7 @@ export default compose(
     include: [
       'agents',
       'featureTypes',
-      'physicalObjects',
+      'physicalObjects.storageLocation',
       'places',
       'taxonNames',
     ],

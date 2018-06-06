@@ -2,6 +2,9 @@ const now = require('performance-now')
 
 const startTime = now()
 const openApiSpec = require('common/dist/openApi.json')
+const {
+  getResourceRelationshipParamsMap,
+} = require('common/src/schemaInterface')
 const createLog = require('../../utilities/log')
 const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
@@ -9,7 +12,6 @@ const initializeSequelize = require('../sequelize')
 const { createIndexBuilder } = require('../searchEngine')
 const createModels = require('../sequelize/models')
 const createConnectors = require('../connectors')
-
 const createServices = require('../services')
 const setupIntegrations = require('../integrations')
 const createAuth = require('../auth')
@@ -17,8 +19,14 @@ const createAuth = require('../auth')
 const log = createLog('server')
 log.info(`Dependencies required after: ${now() - startTime} milliseconds`)
 
+const resourceRelationshipParamsMap = getResourceRelationshipParamsMap()
+
 module.exports = function bootstrap({ config, serviceDefinitions }) {
-  const services = createServices({ config, serviceDefinitions })
+  const services = createServices({
+    config,
+    resourceRelationshipParamsMap,
+    serviceDefinitions,
+  })
 
   const bootstrapStartTime = now()
   const auth = createAuth({ config })

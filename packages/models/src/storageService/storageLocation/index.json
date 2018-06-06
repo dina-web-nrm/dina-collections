@@ -1,49 +1,6 @@
 {
   "additionalProperties": false,
   "properties": {
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "acceptedTaxonNames": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__taxonName",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
-        "preparationTypes": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__preparationType",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        }
-      }
-    },
-    "acceptedTaxonNames": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__taxonName",
-        "x-reference-type": "external"
-      }
-    },
-    "preparationTypes": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__preparationType",
-        "x-reference-type": "external"
-      }
-    },
     "versionId": {
       "type": "string"
     },
@@ -64,6 +21,111 @@
     },
     "type": {
       "$ref": "__ROOT__type"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "acceptedTaxonNames": {
+          "type": "object",
+          "x-key-stored-in-model": "storageLocation",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__taxonName",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "children": {
+          "type": "object",
+          "x-key-allow-null": true,
+          "x-key-stored-in-model": "storageLocation",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__storageLocation"
+              }
+            }
+          }
+        },
+        "parent": {
+          "type": "object",
+          "x-key-allow-null": true,
+          "x-key-stored-in-model": "storageLocation",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__storageLocation"
+            }
+          }
+        },
+        "physicalObjects": {
+          "type": "object",
+          "x-key-stored-in-model": "physicalObject",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__physicalObject",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "preparationTypes": {
+          "type": "object",
+          "x-key-stored-in-model": "storageLocation",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__preparationType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        }
+      }
+    },
+    "acceptedTaxonNames": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__taxonName",
+        "x-reference-type": "external"
+      }
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__storageLocation",
+        "x-reference-type": "external"
+      }
+    },
+    "parent": {
+      "$ref": "__ROOT__storageLocation",
+      "x-reference-type": "external"
+    },
+    "physicalObjects": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__physicalObject",
+        "x-reference-type": "external"
+      }
+    },
+    "preparationTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__preparationType",
+        "x-reference-type": "external"
+      }
     }
   }
 }

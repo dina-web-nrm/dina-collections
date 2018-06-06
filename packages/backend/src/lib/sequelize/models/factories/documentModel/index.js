@@ -51,6 +51,9 @@ module.exports = function createModel({
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      relationships: {
+        type: Sequelize.JSONB,
+      },
       schemaCompliant: {
         type: Sequelize.BOOLEAN,
       },

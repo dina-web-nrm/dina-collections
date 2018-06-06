@@ -14,6 +14,8 @@
 │       └── pingRoute.js
 ├── auth
 │   └── index.js
+├── bootstrap
+│   └── index.js
 ├── connectors
 │   ├── createConnector.js
 │   ├── extractCustomControllersFromServices.js
@@ -25,9 +27,7 @@
 │   ├── del.js
 │   ├── getMany.js
 │   ├── getOne.js
-│   ├── getRelationBelongsToOne.js
-│   ├── getRelationHasMany.js
-│   ├── getRelationHasOne.js
+│   ├── getRelationship.js
 │   ├── getVersion.js
 │   ├── getVersions.js
 │   ├── index.js
@@ -44,18 +44,37 @@
 │   │   │   ├── buildEmptyRelationship.spec.js
 │   │   │   ├── extractRelationship.js
 │   │   │   └── index.js
+│   │   ├── getFormatOutput.js
+│   │   ├── getJsonRelationship
+│   │   │   ├── getGetterName.js
+│   │   │   ├── getQueryModels.js
+│   │   │   ├── getSelectedResult.js
+│   │   │   ├── getWhereParams.js
+│   │   │   └── index.js
+│   │   ├── getSqlRelationship
+│   │   │   ├── getGetterName.js
+│   │   │   ├── getInclude.js
+│   │   │   ├── getQueryModels.js
+│   │   │   ├── getSelectedResult.js
+│   │   │   ├── getWhereParams.js
+│   │   │   └── index.js
 │   │   ├── shouldIncludeRelation.js
-│   │   └── shouldIncludeRelation.spec.js
+│   │   ├── shouldIncludeRelation.spec.js
+│   │   ├── updateJsonRelationship
+│   │   │   └── index.js
+│   │   └── updateSqlRelationship
+│   │       ├── getUpdateValues.js
+│   │       └── index.js
 │   ├── transformations
 │   │   ├── createArrayResponse.js
 │   │   ├── createObjectResponse.js
+│   │   ├── createRelationshipsArrayResponse.js
+│   │   ├── createRelationshipsObjectResponse.js
 │   │   ├── inputObject.js
 │   │   ├── outputArray.js
 │   │   └── outputObject.js
 │   ├── update.js
-│   ├── updateRelationBelongsToOne.js
-│   ├── updateRelationHasMany.js
-│   └── updateRelationHasOne.js
+│   └── updateRelationship.js
 ├── elasticsearch
 │   ├── db
 │   │   └── index.js
@@ -76,6 +95,24 @@
 │   │       ├── index.js
 │   │       └── utilities
 │   └── index.js
+├── searchEngine
+│   ├── index.js
+│   ├── indexBuilder
+│   │   ├── buildIndex
+│   │   │   ├── createBatch.js
+│   │   │   ├── index.js
+│   │   │   └── rebuild.js
+│   │   ├── dataInterface
+│   │   │   ├── bulkCreate.js
+│   │   │   ├── cache
+│   │   │   ├── getCount.js
+│   │   │   ├── getItemByTypeId.js
+│   │   │   ├── getItems.js
+│   │   │   ├── index.js
+│   │   │   ├── migrateData.js
+│   │   │   └── truncate.js
+│   │   └── index.js
+│   └── todo
 ├── sequelize
 │   ├── db
 │   │   └── index.js
@@ -93,6 +130,7 @@
 │       ├── syncModels.js
 │       └── utilities
 │           ├── extractModelFunctionsFromServices.js
+│           ├── getForeignKeyName.js
 │           └── setupAssociation.js
 ├── serviceRouter
 │   ├── index.js
@@ -119,23 +157,16 @@
 │   │       ├── del.js
 │   │       ├── getMany.js
 │   │       ├── getOne.js
-│   │       ├── getRelationBelongsToOne.js
-│   │       ├── getRelationHasMany.js
-│   │       ├── getRelationHasOne.js
+│   │       ├── getRelationship.js
 │   │       ├── getVersion.js
 │   │       ├── getVersions.js
 │   │       ├── index.js
 │   │       ├── schemas
 │   │       ├── update.js
-│   │       ├── updateRelationBelongsToOne.js
-│   │       ├── updateRelationHasMany.js
-│   │       ├── updateRelationHasOne.js
+│   │       ├── updateRelationship.js
 │   │       └── utilities
 │   ├── relations
-│   │   ├── buildResourceRelationsMap.js
-│   │   ├── createSetupRelations.js
-│   │   ├── getFormat.js
-│   │   └── getRelationKey.js
+│   │   └── createSetupRelations.js
 │   ├── resourceFactory
 │   │   ├── createOperationMap.js
 │   │   ├── createResourceSpecification.js

@@ -1,41 +1,6 @@
 {
   "additionalProperties": false,
   "properties": {
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "acceptedToTaxon": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__taxon",
-              "x-reference-type": "external"
-            }
-          }
-        },
-        "synonymToTaxon": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__taxon",
-              "x-reference-type": "external"
-            }
-          }
-        },
-        "vernacularToTaxon": {
-          "type": "object",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__taxon",
-              "x-reference-type": "external"
-            }
-          }
-        }
-      }
-    },
     "versionId": {
       "type": "string"
     },
@@ -58,6 +23,65 @@
     },
     "type": {
       "$ref": "__ROOT__type"
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "acceptedToTaxon": {
+          "type": "object",
+          "x-key-allow-null": true,
+          "x-key-name": "acceptedToTaxonId",
+          "x-key-stored-in-model": "taxonName",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "synonymToTaxon": {
+          "type": "object",
+          "x-key-allow-null": true,
+          "x-key-name": "synonymToTaxonId",
+          "x-key-stored-in-model": "taxonName",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        },
+        "vernacularToTaxon": {
+          "type": "object",
+          "x-key-allow-null": true,
+          "x-key-name": "vernacularToTaxonId",
+          "x-key-stored-in-model": "taxonName",
+          "x-key-type": "sql",
+          "properties": {
+            "data": {
+              "type": "object",
+              "$ref": "__ROOT__taxon",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    },
+    "acceptedToTaxon": {
+      "$ref": "__ROOT__taxon",
+      "x-reference-type": "external"
+    },
+    "synonymToTaxon": {
+      "$ref": "__ROOT__taxon",
+      "x-reference-type": "external"
+    },
+    "vernacularToTaxon": {
+      "$ref": "__ROOT__taxon",
+      "x-reference-type": "external"
     }
   }
 }

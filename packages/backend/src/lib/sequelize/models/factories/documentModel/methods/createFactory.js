@@ -9,13 +9,12 @@ module.exports = function createFactory(
     throw new Error('Have to provide model')
   }
 
-  return function create({ doc, foreignKeyObject }) {
-    if (!doc) {
-      return Promise.reject(new Error('doc not provided'))
-    }
+  return function create({ doc = {}, foreignKeyObject }) {
+    const { relationships, ...attributes } = doc
 
     let data = {
-      document: doc,
+      document: attributes,
+      relationships,
       schemaCompliant: validate ? !validate(doc) : undefined,
       schemaVersion: schemaVersion || undefined,
     }

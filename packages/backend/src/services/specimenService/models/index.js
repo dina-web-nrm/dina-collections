@@ -4,7 +4,7 @@ const {
 
 const loadInitialData = require('./loadInitialData')
 const createModel = require('../../../lib/sequelize/models/factories/documentModel')
-const { setupRelations } = require('./relations')
+const createSetupRelations = require('../../../lib/services/relations/createSetupRelations')
 
 const normalizedColumnNames = getNormalizedColumnNames('specimen')
 
@@ -24,7 +24,7 @@ module.exports = [
     name: 'specimen',
   },
   {
-    factory: setupRelations,
+    factory: createSetupRelations(['specimen']),
     name: 'setupRelations',
   },
   {

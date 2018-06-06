@@ -20,6 +20,7 @@ module.exports = function create({ operation = {}, models, postCreateHook }) {
         transformInput({
           input,
           relations,
+          sourceResource: resource,
         })
       )
       .then(transformOutput)

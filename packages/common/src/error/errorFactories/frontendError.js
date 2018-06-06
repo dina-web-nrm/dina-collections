@@ -1,3 +1,4 @@
+const logError = require('../utilities/logError')
 const errorCodes = require('../constants/errorCodes')
 const errorStatus = require('../constants/errorStatus')
 
@@ -31,6 +32,7 @@ module.exports = function frontendError({
   }
 
   if (throwError) {
+    logError(error)
     throw error
   }
   return error

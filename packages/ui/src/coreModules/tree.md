@@ -103,6 +103,7 @@
 │   ├── crudModule.js
 │   ├── globalSelectors.js
 │   ├── higherOrderComponents
+│   │   ├── createBatchFetchItems.js
 │   │   ├── createEnsureAllItemsFetched.js
 │   │   ├── createGetItemById.js
 │   │   ├── createGetNestedItemById.js
@@ -350,6 +351,19 @@
 │       └── testNotificationSpecification.js
 ├── routing
 │   └── index.js
+├── search
+│   ├── actionCreators
+│   │   ├── index.js
+│   │   ├── search.js
+│   │   └── syncSearch.js
+│   ├── actionTypes.js
+│   ├── constants.js
+│   ├── higherOrderComponents
+│   │   ├── createInjectSearchResult.js
+│   │   ├── createSearch.js
+│   │   └── index.js
+│   ├── index.js
+│   └── keyObjectModule.js
 ├── size
 │   ├── actionCreators
 │   │   ├── index.js

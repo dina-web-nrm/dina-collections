@@ -2,7 +2,9 @@
 ## Tree
 ```bash
 ├── apps
+│   ├── config
 │   ├── core
+│   ├── searchEngine
 │   └── tree.md
 ├── info
 │   ├── description.md
@@ -12,10 +14,12 @@
 ├── lib
 │   ├── app
 │   ├── auth
+│   ├── bootstrap
 │   ├── connectors
 │   ├── controllers
 │   ├── elasticsearch
 │   ├── integrations
+│   ├── searchEngine
 │   ├── sequelize
 │   ├── serviceRouter
 │   ├── services
@@ -36,6 +40,7 @@
 │   ├── index.js
 │   ├── organizationService
 │   ├── placeService
+│   ├── searchService
 │   ├── specimenService
 │   ├── statusService
 │   ├── storageService
