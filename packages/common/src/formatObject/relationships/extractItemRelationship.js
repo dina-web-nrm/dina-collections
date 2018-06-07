@@ -1,6 +1,6 @@
 const objectPath = require('object-path')
+const createLid = require('../../createLid')
 const walk = require('../utilities/walkObject')
-const createLid = require('../utilities/createLid')
 
 module.exports = function extractItemRelationship({
   item,
