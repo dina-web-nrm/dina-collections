@@ -2,11 +2,19 @@ const createDocumentModel = require('../documentModel')
 const attachMethods = require('./attachMethods')
 
 module.exports = function createViewDocumentModel({
+  name,
   sequelize,
-  stageName,
+  stageName: stageNameInput,
   validate = false,
-  viewName,
+  viewName: viewNameInput,
 }) {
+  if (!name) {
+    throw new Error('Name is required')
+  }
+
+  const viewName = viewNameInput || name
+  const stageName = stageNameInput || `${name}Stage`
+
   const ViewModel = createDocumentModel({
     name: viewName,
     sequelize,
