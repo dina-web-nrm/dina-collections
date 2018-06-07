@@ -1,5 +1,5 @@
 const createLog = require('../../utilities/log')
-const syncModels = require('./syncModels')
+const synchronizeModels = require('./synchronizeModels')
 const loadInitialData = require('./loadInitialData')
 const createModels = require('./createModels')
 const createRelations = require('./createRelations')
@@ -20,7 +20,7 @@ module.exports = function setupModels({
         log.info('Setup relations:')
         return createRelations({ modelArray, models })
           .then(() => {
-            return syncModels({
+            return synchronizeModels({
               config,
               modelArray,
             })

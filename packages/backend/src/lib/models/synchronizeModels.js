@@ -3,7 +3,7 @@ const chainPromises = require('common/src/chainPromises')
 
 const log = createLog('lib/models', 0)
 
-module.exports = function syncModels({ config, modelArray }) {
+module.exports = function synchronizeModels({ config, modelArray }) {
   if (!config.db.flushOnRestart) {
     log.debug(
       `Dont syncing models: flushOnRestart = ${config.db.flushOnRestart}`
@@ -15,7 +15,7 @@ module.exports = function syncModels({ config, modelArray }) {
     modelArray.map(({ model, name }) => {
       return () => {
         log.scope().debug(`${name}`)
-        return model.sync({ force: config.db.flushOnRestart })
+        return model.synchronize({ force: config.db.flushOnRestart })
       }
     })
   )

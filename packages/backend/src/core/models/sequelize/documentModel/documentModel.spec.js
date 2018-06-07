@@ -12,7 +12,7 @@ const setup = () => {
       sequelize,
       validate: false,
     })
-    return model.sync({ force: true }).then(() => {
+    return model.synchronize({ force: true }).then(() => {
       return model
     })
   })

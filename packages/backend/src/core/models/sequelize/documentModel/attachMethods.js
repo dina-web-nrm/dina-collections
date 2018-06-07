@@ -8,7 +8,7 @@ const getCountFactory = require('./methods/getCountFactory')
 const getOneWhereFactory = require('./methods/getOneWhereFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
 const setupRelationsFactory = require('./methods/setupRelationsFactory')
-const syncFactory = require('./methods/syncFactory')
+const synchronizeFactory = require('./methods/synchronizeFactory')
 const updateFactory = require('./methods/updateFactory')
 const updatePrimaryKeyFactory = require('./methods/updatePrimaryKeyFactory')
 
@@ -37,7 +37,7 @@ module.exports = function attachMethods({
     Model,
   })
 
-  const sync = syncFactory({ Model })
+  const synchronize = synchronizeFactory({ Model })
 
   const getCount = getCountFactory({ Model })
   const getOneWhere = getOneWhereFactory({ Model })
@@ -87,7 +87,7 @@ module.exports = function attachMethods({
     getWhere,
     Model,
     setupRelations,
-    sync,
+    synchronize,
     update,
   }
 
