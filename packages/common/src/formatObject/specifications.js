@@ -1,9 +1,9 @@
 const models = require('../../dist/models.json')
+const { getResourceRelationshipParamsMap } = require('../schemaInterface')
 const createNormalizeSpecifications = require('./normalize/createNormalizeSpecifications')
-const createRelationshipSpecifications = require('./relationships/createRelationshipSpecifications')
 const createDbSpecifications = require('./db/createDbSpecifications')
 
-const relationshipSpecifications = createRelationshipSpecifications({ models })
+const relationshipSpecifications = getResourceRelationshipParamsMap()
 const normalizeSpecifications = createNormalizeSpecifications({ models })
 const dbSpecifications = createDbSpecifications({ models })
 

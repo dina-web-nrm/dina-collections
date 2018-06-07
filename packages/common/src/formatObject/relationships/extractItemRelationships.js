@@ -10,7 +10,7 @@ module.exports = function extractItemRelationships({
     const {
       format: relationshipFormat,
       path,
-      type: relationshipType,
+      targetResource: relationshipType,
     } = relationshipSpecification[relationshipKey]
 
     updatedItem = extractItemRelationship({

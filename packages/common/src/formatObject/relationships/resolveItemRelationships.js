@@ -9,7 +9,9 @@ module.exports = function resolveItemRelationships({
 }) {
   let updatedItem = item
   Object.keys(relationshipSpecification).forEach(relationshipKey => {
-    const { path, type } = relationshipSpecification[relationshipKey]
+    const { path, targetResource: type } = relationshipSpecification[
+      relationshipKey
+    ]
 
     updatedItem = resolveItemRelationship({
       coreToNested,
