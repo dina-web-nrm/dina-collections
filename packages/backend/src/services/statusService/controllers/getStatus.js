@@ -1,4 +1,4 @@
-const createObjectResponse = require('../../../core/controllers/utilities/transformations/createObjectResponse')
+const createObjectResponse = require('../../../lib/controllers/utilities/transformations/createObjectResponse')
 
 module.exports = function getStatus() {
   return () => {
