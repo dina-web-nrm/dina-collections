@@ -13,8 +13,8 @@ module.exports = function getMany({ operation, models }) {
     const {
       queryParams: {
         filter: filterInput,
-        limit,
-        offset,
+        limit = 10,
+        offset = 0,
         relationships: queryParamRelationships = '',
       },
     } = request
