@@ -9,6 +9,7 @@ const createLog = require('../../utilities/log')
 const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
 const initializeSequelize = require('../sequelize')
+const initializeDataStores = require('../dataStores')
 const createServiceInteractor = require('../serviceInteractor')
 const { createIndexBuilder } = require('../searchEngine')
 const setupModels = require('../models')
@@ -37,11 +38,12 @@ module.exports = function bootstrap({
   const auth = createAuth({ config })
   const serviceInteractor = createServiceInteractor({ config })
 
-  initializeSequelize({
+  initializeDataStores({
     config,
-  }).then(({ sequelize }) => {
+  }).then(({ inMemoryDb, sequelize }) => {
     return setupModels({
       config,
+      inMemoryDb,
       sequelize,
       serviceOrder,
       services,

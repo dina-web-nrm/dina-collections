@@ -1,1 +1,1 @@
-exports.documentModel = require('./sequelize/documentModel')
+exports.sequelizeDocumentModel = require('./sequelize/documentModel')

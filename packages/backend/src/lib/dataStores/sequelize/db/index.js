@@ -1,4 +1,4 @@
-const createLog = require('../../../utilities/log')
+const createLog = require('../../../../utilities/log')
 const Sequelize = require('sequelize')
 
 const log = createLog('lib/sequelize')

@@ -1,10 +1,10 @@
 module.exports = [
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'stageSpecimen',
   },
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'searchSpecimen',
   },
 ]

@@ -1,5 +1,5 @@
 const { execute: batchExecute } = require('common/src/batch')
-const createDb = require('../../../../sequelize/db')
+const createDb = require('../../../../dataStores/sequelize/db')
 const createModel = require('./index')
 const config = require('../../../../../apps/core/config')
 

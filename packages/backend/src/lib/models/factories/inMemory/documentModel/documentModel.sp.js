@@ -1,24 +1,16 @@
-const createDb = require('../../../../dataStores/sequelize/db')
 const createModel = require('./index')
-const config = require('../../../../../apps/core/config')
-
-const dbDescribe = require('../../../../../utilities/test/dbDescribe')
 
 const setup = () => {
-  return createDb({ config }).then(sequelize => {
-    const model = createModel({
+  Promise.resolve().then(() => {
+    return createModel({
       name: 'test',
       schemaModelName: null,
-      sequelize,
       validate: false,
-    })
-    return model.synchronize({ force: true }).then(() => {
-      return model
     })
   })
 }
 
-dbDescribe('lib/sequelize/models/documentModel', () => {
+describe('lib/sequelize/models/documentModel', () => {
   let model
   describe('createModel', () => {
     beforeAll(() => {

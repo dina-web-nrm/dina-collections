@@ -2,28 +2,28 @@ const loadInitialData = require('./loadInitialData')
 
 module.exports = [
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'causeOfDeathType',
   },
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'featureType',
   },
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'preparationType',
   },
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'establishmentMeansType',
   },
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'typeSpecimenType',
   },
   {
     loadInitialData,
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'identifierType',
   },
 ]
