@@ -8,8 +8,10 @@ module.exports = {
   ...baseConfig,
   db: {
     ...baseConfig.db,
-    flushOnRestart: false,
-    loadInitialData: false,
+    flushOnRestart:
+      (baseConfig.env.isDevelopment && baseConfig.db.flushOnRestart) || false,
+    loadInitialData:
+      (baseConfig.env.isDevelopment && baseConfig.db.loadInitialData) || false,
   },
   services: {
     agentService: true,
