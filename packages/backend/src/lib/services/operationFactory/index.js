@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 const createOperationSpecification = require('./createOperationSpecification')
-const operationFactories = require('../../../core/operations')
+const operationFactories = require('../../operations')
 
 const log = createLog('lib/services', 3)
 

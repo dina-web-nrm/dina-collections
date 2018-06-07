@@ -1,4 +1,4 @@
-const sharedFilters = require('../../../../core/operations/filters')
+const sharedFilters = require('../../../operations/filters')
 
 module.exports = function createGetManyFilters(
   { include = ['ids', 'updatedAfter'], custom = [] } = {}

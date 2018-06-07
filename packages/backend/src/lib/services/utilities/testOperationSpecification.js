@@ -1,5 +1,5 @@
-const crudOperationSchemas = require('../../../core/operations/crudOperations/schemas')
-const viewOperationSchemas = require('../../../core/operations/viewOperations/schemas')
+const crudOperationSchemas = require('../../operations/crudOperations/schemas')
+const viewOperationSchemas = require('../../operations/viewOperations/schemas')
 
 const operationSchemas = {
   ...crudOperationSchemas,
