@@ -1,7 +1,7 @@
 const resolveItemRelationship = require('./resolveItemRelationship')
 
 module.exports = function resolveItemRelationships({
-  coreToNested,
+  coreToNestedSync,
   getItemByTypeId,
   item,
   relationships = {},
@@ -14,7 +14,7 @@ module.exports = function resolveItemRelationships({
     ]
 
     updatedItem = resolveItemRelationship({
-      coreToNested,
+      coreToNestedSync,
       getItemByTypeId,
       item: updatedItem,
       path,

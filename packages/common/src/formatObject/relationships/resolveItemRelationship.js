@@ -2,7 +2,7 @@ const objectPath = require('object-path')
 const walk = require('../utilities/walkObject')
 
 module.exports = function resolveItemRelationship({
-  coreToNested,
+  coreToNestedSync,
   getItemByTypeId,
   item,
   path,
@@ -59,7 +59,7 @@ module.exports = function resolveItemRelationship({
             objectPath.set(
               item,
               pth,
-              coreToNested({
+              coreToNestedSync({
                 getItemByTypeId,
                 item: resolvedRelationshipItem,
                 type: resolvedRelationshipItem.type,
@@ -87,7 +87,7 @@ module.exports = function resolveItemRelationship({
         const resolvedRelationshipItem =
           id && getItemByTypeId && getItemByTypeId(type, id)
         if (resolvedRelationshipItem) {
-          return coreToNested({
+          return coreToNestedSync({
             getItemByTypeId,
             item: resolvedRelationshipItem,
             type,
@@ -108,7 +108,7 @@ module.exports = function resolveItemRelationship({
     getItemByTypeId(type, relationship.data.id)
 
   if (resolvedRelationshipItem) {
-    relationshipItem = coreToNested({
+    relationshipItem = coreToNestedSync({
       getItemByTypeId,
       item: resolvedRelationshipItem,
       type,

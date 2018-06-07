@@ -8,7 +8,7 @@ module.exports = function extractItemRelationship({
   relationshipFormat,
   relationshipKey,
   relationshipType,
-  nestedToCore,
+  nestedToCoreSync,
 }) {
   let relationshipObject
   let relationshipArray
@@ -39,8 +39,8 @@ module.exports = function extractItemRelationship({
 
           objectPath.set(item, pth, reference)
 
-          const formattedRelationship = nestedToCore
-            ? nestedToCore({
+          const formattedRelationship = nestedToCoreSync
+            ? nestedToCoreSync({
                 item: relationship,
                 normalize: true,
                 type: relationshipType,

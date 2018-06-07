@@ -7,7 +7,7 @@ const {
 const denormalizeItem = require('./normalize/denormalizeItem')
 const resolveItemRelationships = require('./relationships/resolveItemRelationships')
 
-module.exports = function coreToNested({
+module.exports = function coreToNestedSync({
   denormalize = true,
   getItemByTypeId,
   item: rawItem,
@@ -34,7 +34,7 @@ module.exports = function coreToNested({
 
   if (resolveRelationships && relationshipSpecification) {
     item = resolveItemRelationships({
-      coreToNested,
+      coreToNestedSync,
       getItemByTypeId,
       item,
       relationships,

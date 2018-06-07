@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
-import nestedToCore from 'common/es5/formatObject/nestedToCore'
+import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
@@ -54,7 +54,7 @@ class EditMammal extends Component {
       <PageTemplate>
         <MammalForm
           handleFormSubmit={formOutput => {
-            const item = nestedToCore({
+            const item = nestedToCoreSync({
               item: formOutput,
               type: 'specimen',
             })

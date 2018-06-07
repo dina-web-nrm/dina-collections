@@ -105,11 +105,11 @@
 │       ├── dbValidator.js
 │       └── formValidator.js
 ├── formatObject
-│   ├── coreToNested.js
+│   ├── coreToNestedSync.js
 │   ├── db
 │   │   └── createDbSpecifications.js
-│   ├── nestedToCore.js
-│   ├── nestedToCore.test.js
+│   ├── nestedToCoreSync.js
+│   ├── nestedToCoreSync.test.js
 │   ├── normalize
 │   │   ├── createNormalizeSpecification.js
 │   │   ├── createNormalizeSpecifications.js

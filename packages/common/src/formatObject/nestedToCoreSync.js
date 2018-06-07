@@ -7,7 +7,7 @@ const {
 const normalizeItem = require('./normalize/normalizeItem')
 const extractItemRelationships = require('./relationships/extractItemRelationships')
 
-module.exports = function nestedToCore({
+module.exports = function nestedToCoreSync({
   extractRelationships = true,
   formatRelationships = true,
   item: rawItem,
@@ -29,7 +29,7 @@ module.exports = function nestedToCore({
   if (extractRelationships && relationshipSpecification) {
     item = extractItemRelationships({
       item,
-      nestedToCore: formatRelationships ? nestedToCore : null,
+      nestedToCoreSync: formatRelationships ? nestedToCoreSync : null,
       relationshipSpecification,
     })
   }
