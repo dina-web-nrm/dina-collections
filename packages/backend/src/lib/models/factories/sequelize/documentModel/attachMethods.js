@@ -106,9 +106,15 @@ module.exports = function attachMethods({
         }
       }, {})
 
+  const availableMethods = [
+    ...Object.keys(coreMethods),
+    ...Object.keys(customMethods),
+  ]
+
   return {
     ...coreMethods,
     ...customMethods,
+    availableMethods,
     loadInitialData,
     Model,
   }
