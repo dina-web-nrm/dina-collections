@@ -36,22 +36,9 @@ const db = {
   database: process.env.DB_DATABASE || 'postgres',
   flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
   loadInitialData: process.env.LOAD_INITIAL_DATA === 'true' || false,
-  loadInitialDataServiceOrder: [
-    'agentService',
-    'curatedListService',
-    'placeService',
-    'storageService',
-    'taxonomyService',
-  ],
   password: process.env.DB_PASSWORD || 'mysecretpassword',
   url: process.env.DB_URL || '127.0.0.1:5432',
   username: process.env.DB_USERNAME || 'postgres',
-}
-
-const elasticsearch = {
-  flushOnRestart: false,
-  loadInitialData: process.env.LOAD_INITIAL_DATA === 'true' || false,
-  url: process.env.ELASTICSEARCH_URL || '127.0.0.1:9200',
 }
 
 const disableAuth = process.env.DISABLE_AUTH === 'true'
@@ -98,7 +85,6 @@ module.exports = {
   api,
   auth,
   db,
-  elasticsearch,
   env,
   initialData,
   integrations,

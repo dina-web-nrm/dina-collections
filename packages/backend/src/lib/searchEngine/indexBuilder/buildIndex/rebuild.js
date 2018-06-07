@@ -1,5 +1,5 @@
 const createLog = require('../../../../utilities/log')
-const batchExecute = require('../../../../utilities/test/batchExecute')
+const { execute: batchExecute } = require('common/src/batch')
 const createBatch = require('./createBatch')
 
 const defaultLog = createLog('lib/searchEngine/indexBuilder/indexes/rebuild')

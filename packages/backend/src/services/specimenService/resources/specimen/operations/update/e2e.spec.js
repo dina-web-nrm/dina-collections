@@ -275,7 +275,7 @@ apiDescribe('specimen', () => {
             })
           })
       })
-      fit('Return update relationships if provided', () => {
+      it('Return update relationships if provided', () => {
         const simpleDataNoRelationsWithEmptyRelations = getTestData(
           'simpleDataNoRelations'
         )

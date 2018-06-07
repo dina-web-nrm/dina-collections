@@ -1,4 +1,4 @@
-const extractResourcesFromServices = require('./extractResourcesFromServices')
+const extractResourcesFromService = require('./extractResourcesFromService')
 const extractOperationsFromResources = require('./extractOperationsFromResources')
 const extractCustomControllersFromServices = require('./extractCustomControllersFromServices')
 const createSystemBackendValidator = require('common/src/error/validators/createSystemBackendValidator')
@@ -18,36 +18,38 @@ const systemValidate = (obj, schema) => {
 
 module.exports = function createConnectors({
   config,
-  elasticModels,
   integrations,
   models,
+  serviceInteractor,
   services,
 }) {
   log.info('Create connectors')
 
   const apiConfig = { ...config.api, log: config.log, systemValidate }
-  const resources = extractResourcesFromServices(services)
-  const operations = extractOperationsFromResources(resources)
-  const customControllerFactories = extractCustomControllersFromServices(
-    services
-  )
 
-  const connectors = Object.keys(operations).reduce((obj, operationId) => {
-    const operation = operations[operationId]
-    const connector = createConnector({
-      apiConfig,
-      customControllerFactories,
-      elasticModels,
-      integrations,
-      models,
-      operation,
-      operationId,
+  const connectors = {}
+  Object.keys(services).forEach(serviceName => {
+    const service = services[serviceName]
+    const resources = extractResourcesFromService(service)
+    const operations = extractOperationsFromResources(resources)
+    const customControllerFactories = extractCustomControllersFromServices(
+      services
+    )
+    Object.keys(operations).forEach(operationId => {
+      const operation = operations[operationId]
+      const connector = createConnector({
+        apiConfig,
+        customControllerFactories,
+        integrations,
+        models,
+        operation,
+        operationId,
+        serviceInteractor,
+        serviceName,
+      })
+      connectors[operationId] = connector
     })
-    return {
-      ...obj,
-      [operationId]: connector,
-    }
-  }, {})
+  })
 
   return Promise.resolve({
     connectors,

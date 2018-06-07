@@ -50,7 +50,6 @@ services:
     command: pm2-runtime start /etc/api/src/apps/core/index.js
     depends_on:
       - postgres
-      - elasticsearch
     volumes:
       - ./data:/data
 
@@ -62,21 +61,8 @@ services:
     command: pm2-runtime start /etc/api/src/apps/searchEngine/index.js
     depends_on:
       - postgres
-      - elasticsearch
     volumes:
       - ./data:/data
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
-    container_name: elasticsearch
-    volumes:
-      - es_data:/usr/share/elasticsearch/data
-    env_file:
-      - ./env/.elasticsearch
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
 
   postgres:
     image: postgres
