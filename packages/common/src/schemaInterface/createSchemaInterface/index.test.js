@@ -1,6 +1,8 @@
 const createSchemaInterface = require('./index')
 
 const expectedFunctions = [
+  'getModelKeyColumnMap',
+  'getNormalizeSpecifications',
   'getRelationshipParamsForModelNames',
   'getResourceRelationshipKeysToIncludeInBodyMap',
   'getResourceRelationshipParamsMap',

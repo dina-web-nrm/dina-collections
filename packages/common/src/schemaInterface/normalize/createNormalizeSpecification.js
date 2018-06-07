@@ -1,11 +1,10 @@
 const { schema } = require('normalizr')
-const normalizrGetIdAttribute = require('../utilities/normalizrGetIdAttribute')
-const normalizrProcessStrategy = require('../utilities/normalizrProcessStrategy')
-
-const createKeyColumnMap = require('../utilities/createKeyColumnMap')
-const getModelIsColumn = require('../utilities/getModelIsColumn')
-const getModelFormat = require('../utilities/getModelFormat')
-const getModelType = require('../utilities/getModelType')
+const createKeyColumnMap = require('./createKeyColumnMap')
+const normalizrGetIdAttribute = require('./utilities/normalizrGetIdAttribute')
+const normalizrProcessStrategy = require('./utilities/normalizrProcessStrategy')
+const getModelIsColumn = require('./utilities/getModelIsColumn')
+const getModelFormat = require('./utilities/getModelFormat')
+const getModelType = require('./utilities/getModelType')
 
 const options = {
   idAttribute: normalizrGetIdAttribute,

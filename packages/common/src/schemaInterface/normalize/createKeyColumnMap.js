@@ -1,6 +1,6 @@
-const getModelIsColumn = require('./getModelIsColumn')
-const getModelType = require('./getModelType')
-const getModelColumn = require('./getModelColumn')
+const getModelIsColumn = require('./utilities/getModelIsColumn')
+const getModelType = require('./utilities/getModelType')
+const getModelColumn = require('./utilities/getModelColumn')
 
 module.exports = function createKeyColumnMap(model) {
   const normalizedNamespaceProperties =

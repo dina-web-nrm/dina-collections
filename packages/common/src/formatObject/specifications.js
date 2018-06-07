@@ -1,11 +1,12 @@
-const models = require('../../dist/models.json')
-const { getResourceRelationshipParamsMap } = require('../schemaInterface')
-const createNormalizeSpecifications = require('./normalize/createNormalizeSpecifications')
-const createDbSpecifications = require('./db/createDbSpecifications')
+const {
+  getModelKeyColumnMap,
+  getNormalizeSpecifications,
+  getResourceRelationshipParamsMap,
+} = require('../schemaInterface')
 
 const relationshipSpecifications = getResourceRelationshipParamsMap()
-const normalizeSpecifications = createNormalizeSpecifications({ models })
-const dbSpecifications = createDbSpecifications({ models })
+const normalizeSpecifications = getNormalizeSpecifications()
+const dbSpecifications = getModelKeyColumnMap()
 
 exports.getNormalizeSpecification = function getNormalizeSpecification(type) {
   return normalizeSpecifications[type]

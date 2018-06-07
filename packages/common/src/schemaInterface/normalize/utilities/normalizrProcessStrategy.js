@@ -1,4 +1,4 @@
-const createLid = require('./createLid')
+const createLid = require('../../../createLid')
 
 module.exports = function processStrategy(node) {
   if (node.id || node.lid) {
