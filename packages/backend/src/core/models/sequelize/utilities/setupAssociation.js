@@ -74,6 +74,7 @@ const getAssociationOptions = ({
 
   const foreignKeyName = getForeignKeyName({
     keyName,
+    sourceModelName,
     targetAs,
   })
 
@@ -132,6 +133,7 @@ module.exports = function setupAssociation(
   })
 
   log.debug(`${sourceModelName} ${associationType} ${targetAs}`)
+
   return sourceModel.Model[associationType](
     targetModel.Model,
     associationOptions
