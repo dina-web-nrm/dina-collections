@@ -5,6 +5,6 @@ module.exports = function bulkCreate({ items, models, type }) {
       throw new Error(`No model found for type: ${type}`)
     }
 
-    return model.bulkCreate(items)
+    return model.bulkCreate({ items })
   })
 }

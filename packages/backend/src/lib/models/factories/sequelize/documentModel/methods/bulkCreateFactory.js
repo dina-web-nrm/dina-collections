@@ -12,7 +12,7 @@ module.exports = function bulkCreateFactory(
   }
 
   // This should only be used to create test initialData
-  return function bulkCreate(items = [], { validate = true } = {}) {
+  return function bulkCreate({ items = [], validate = true } = {}) {
     log.debug(`Start create ${items.length} items for: ${Model.tableName}`)
 
     return Model.bulkCreate(

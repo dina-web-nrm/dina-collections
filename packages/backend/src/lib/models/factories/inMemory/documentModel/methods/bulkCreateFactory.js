@@ -1,5 +1,5 @@
 module.exports = function bulkCreateFactory({ Model }) {
-  return function bulkCreate(items = []) {
+  return function bulkCreate({ items = [] }) {
     return Promise.resolve().then(() => {
       const model = Model.get()
       const newItems = {}

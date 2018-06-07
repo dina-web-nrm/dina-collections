@@ -32,7 +32,7 @@ module.exports = function rebuild({
           })
         },
         execute: items => {
-          return model.bulkCreate(items).then(() => {
+          return model.bulkCreate({ items }).then(() => {
             return items
           })
         },

@@ -134,7 +134,7 @@ batchDescribe('lib/sequelize/models', () => {
           }
 
           const execute = batchData => {
-            return model.Model.bulkCreate(batchData).then(res => {
+            return model.Model.bulkCreate({ items: batchData }).then(res => {
               return res
             })
           }
