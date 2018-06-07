@@ -1,7 +1,7 @@
 const backendError403 = require('common/src/error/errorFactories/backendError403')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 
-const createLog = require('../../../../../utilities/log')
+const createLog = require('../../../../../../utilities/log')
 
 const log = createLog(
   'lib/modelFactories/documentModel/methods/deactivateFactory'

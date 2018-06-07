@@ -1,6 +1,6 @@
 const createLog = require('../../utilities/log')
 const extractModelSpecificationsFromServices = require('./utilities/extractModelSpecificationsFromServices')
-const modelFactories = require('../../core/models')
+const modelFactories = require('./factories')
 
 const log = createLog('lib/models', 1)
 

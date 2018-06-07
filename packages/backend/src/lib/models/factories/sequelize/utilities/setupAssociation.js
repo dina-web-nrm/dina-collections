@@ -1,4 +1,4 @@
-const createLog = require('../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 const getForeignKeyName = require('./getForeignKeyName')
 
 const log = createLog('lib/sequelize', 2)

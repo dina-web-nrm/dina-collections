@@ -1,8 +1,8 @@
-const createDb = require('../../../../lib/sequelize/db')
+const createDb = require('../../../../sequelize/db')
 const createModel = require('./index')
-const config = require('../../../../apps/core/config')
+const config = require('../../../../../apps/core/config')
 
-const dbDescribe = require('../../../../utilities/test/dbDescribe')
+const dbDescribe = require('../../../../../utilities/test/dbDescribe')
 
 const setup = () => {
   return createDb({ config }).then(sequelize => {

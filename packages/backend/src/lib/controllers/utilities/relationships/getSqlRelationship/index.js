@@ -6,7 +6,7 @@ const getInclude = require('./getInclude')
 const getQueryModels = require('./getQueryModels')
 const getSelectedResult = require('./getSelectedResult')
 const getWhereParams = require('./getWhereParams')
-const getForeignKeyName = require('../../../../../core/models/sequelize/utilities/getForeignKeyName')
+const getForeignKeyName = require('../../../../models/factories/sequelize/utilities/getForeignKeyName')
 const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/controllers/getSqlRelationship')

@@ -2,7 +2,7 @@ const {
   getRelationshipParamsForModelNames,
 } = require('common/src/schemaInterface')
 const setupAssociation = require('./setupAssociation')
-const createLog = require('../../../../utilities/log')
+const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/sequelize', 1)
 

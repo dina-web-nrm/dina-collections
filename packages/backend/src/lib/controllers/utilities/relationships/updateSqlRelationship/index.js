@@ -2,7 +2,7 @@ const transformOutputObject = require('../../transformations/outputObject')
 const transformOutputArray = require('../../transformations/outputArray')
 const getFormatOutput = require('../getFormatOutput')
 const getUpdateValues = require('./getUpdateValues')
-const getForeignKeyName = require('../../../../../core/models/sequelize/utilities/getForeignKeyName')
+const getForeignKeyName = require('../../../../models/factories/sequelize/utilities/getForeignKeyName')
 const createLog = require('../../../../../utilities/log')
 
 const log = createLog('lib/controllers/updateSqlRelationship')
