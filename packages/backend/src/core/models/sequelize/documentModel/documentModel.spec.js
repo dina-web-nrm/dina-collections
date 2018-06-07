@@ -9,8 +9,8 @@ const setup = () => {
     const model = createModel({
       name: 'test',
       schemaModelName: null,
-      schemaVersion: '0',
       sequelize,
+      validate: false,
     })
     return model.sync({ force: true }).then(() => {
       return model

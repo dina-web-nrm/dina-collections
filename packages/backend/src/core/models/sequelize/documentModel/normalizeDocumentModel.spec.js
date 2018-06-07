@@ -9,11 +9,12 @@ const setup = () => {
     const model = createModel({
       name: 'testNormalizeDocumentModel',
       normalizedColumnNames,
-      schemaModelName: null,
       schemaVersion: '0',
       sequelize,
+      validate: false,
     })
     return model.sync({ force: true }).then(() => {
+      console.log('post sync')
       return model
     })
   })
@@ -21,11 +22,10 @@ const setup = () => {
 
 dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
   let model
-  describe('createModel', () => {
-    beforeAll(() => {
-      return setup().then(createdModel => {
-        model = createdModel
-      })
+
+  beforeAll(() => {
+    return setup().then(createdModel => {
+      model = createdModel
     })
   })
 

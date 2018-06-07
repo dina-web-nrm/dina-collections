@@ -12,6 +12,7 @@ module.exports = function createModel({
   schemaModelName: schemaModelNameInput,
   schemaVersion = '1.0.1',
   sequelize,
+  validate = true,
 }) {
   const schemaModelName = schemaModelNameInput || name
   const getters = createGetters(normalizedColumnNames)
@@ -79,5 +80,6 @@ module.exports = function createModel({
     schemaModelName,
     schemaVersion,
     sequelize,
+    validate,
   })
 }

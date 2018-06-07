@@ -20,11 +20,12 @@ module.exports = function attachMethods({
   schemaModelName,
   schemaVersion,
   sequelize,
+  validate: performValidation,
 }) {
   let validate = () => {
     return null
   }
-  if (schemaModelName) {
+  if (performValidation) {
     validate = dbValidator({
       model: schemaModelName,
       throwOnError: false,
