@@ -1,27 +1,31 @@
+const { createSelector } = require('reselect')
+
 module.exports = function createDb() {
   let data = {}
 
   const initializeCollection = key => {
-    data[key] = {}
+    data[key] = {
+      items: {},
+    }
   }
 
-  const setCollection = (key, value) => {
+  const setCollectionItems = (key, items) => {
     if (!data[key]) {
       throw new Error(`Collection with key: ${key} dont exist. Is it synced?`)
     }
-    data[key] = value
+    data[key].items = items
   }
 
-  const getCollection = key => {
+  const getCollectionItems = key => {
     const collection = data[key]
     if (!collection) {
       throw new Error(`Collection with key: ${key} dont exist. Is it synced?`)
     }
-    return data[key]
+    return data[key].items
   }
 
   const destroyCollection = key => {
-    delete data[key]
+    initializeCollection(key)
   }
 
   const destroyAllCollections = () => {
@@ -29,16 +33,53 @@ module.exports = function createDb() {
   }
 
   const createModel = key => {
+    initializeCollection(key)
+
+    const selectorCache = items => {
+      return items
+    }
+
+    const getArraySelector = createSelector(selectorCache, items => {
+      return Object.keys(items)
+        .sort((a, b) => {
+          if (Number(a) < Number(b)) {
+            return -1
+          }
+
+          if (Number(b) < Number(a)) {
+            return 1
+          }
+
+          return 0
+        })
+        .map(id => {
+          return items[id]
+        })
+    })
+
+    const get = () => {
+      return getCollectionItems(key)
+    }
+
+    const set = items => {
+      return setCollectionItems(key, items)
+    }
+
+    const getArray = () => {
+      return getArraySelector(get())
+    }
+
+    const sync = () => {
+      initializeCollection(key)
+      getArray() // To empty selector cache
+      return true
+    }
+
     return {
-      get: () => {
-        return getCollection(key)
-      },
-      set: value => {
-        return setCollection(key, value)
-      },
-      sync: () => {
-        return initializeCollection(key)
-      },
+      get,
+      getArray,
+      set,
+      sync,
     }
   }
 
@@ -46,7 +87,7 @@ module.exports = function createDb() {
     createModel,
     destroyAllCollections,
     destroyCollection,
-    getCollection,
-    setCollection,
+    getCollectionItems,
+    setCollectionItems,
   }
 }
