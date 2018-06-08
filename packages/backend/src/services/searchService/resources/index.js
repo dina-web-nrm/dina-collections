@@ -37,6 +37,9 @@ cacheResources.forEach(({ name, srcResource }) => {
         type: 'getMany',
       },
       {
+        type: 'emptyView',
+      },
+      {
         type: 'update',
       },
       {

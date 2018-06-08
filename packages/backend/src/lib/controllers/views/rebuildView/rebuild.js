@@ -1,7 +1,8 @@
 const createLog = require('../../../../utilities/log')
 const { execute: batchExecute } = require('common/src/batch')
 const createBatch = require('./createBatch')
-const warm = require('./warm')
+const rebuildCacheViews = require('./rebuildCacheViews')
+const emptyCacheViews = require('./emptyCacheViews')
 
 const defaultLog = createLog('lib/controllers/views/rebuildView/rebuild')
 
@@ -24,7 +25,7 @@ module.exports = function rebuild({
     // serviceInteractor.resetCache()
 
     log.scope().info('warming views')
-    return warm({
+    return rebuildCacheViews({
       serviceInteractor,
       views: warmViews,
     }).then(() => {
@@ -49,9 +50,14 @@ module.exports = function rebuild({
       }).then(() => {
         log.scope().info(`build stageResource done`)
         log.scope().info('migrate data')
-        return {
-          data: {},
-        }
+        return emptyCacheViews({
+          serviceInteractor,
+          views: warmViews,
+        }).then(() => {
+          return {
+            data: {},
+          }
+        })
       })
     })
   })

@@ -8,6 +8,7 @@ module.exports = function createServiceInteractor() {
     'batchCreate',
     'create',
     'del',
+    'emptyView',
     'getMany',
     'getOne',
     'getOneSync',

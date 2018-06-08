@@ -2,11 +2,7 @@ const cacheResources = require('../cacheResources')
 
 module.exports = [
   {
-    modelFactory: 'sequelizeDocumentModel',
-    name: 'stageSpecimen',
-  },
-  {
-    modelFactory: 'sequelizeDocumentModel',
+    modelFactory: 'sequelizeViewDocumentModel',
     name: 'searchSpecimen',
   },
 

@@ -67,6 +67,9 @@ module.exports = {
       type: 'getMany',
     },
     {
+      type: 'emptyView',
+    },
+    {
       mapFunction,
       srcResource: 'specimen',
       type: 'rebuildView',

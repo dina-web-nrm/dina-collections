@@ -1,4 +1,5 @@
 const synchronizeFactory = require('./methods/synchronizeFactory')
+const emptyFactory = require('./methods/emptyFactory')
 
 module.exports = function attachMethods({ StageModel, ViewModel }) {
   const {
@@ -14,12 +15,14 @@ module.exports = function attachMethods({ StageModel, ViewModel }) {
   } = ViewModel
 
   const synchronize = synchronizeFactory({ StageModel, ViewModel })
+  const empty = emptyFactory({ synchronize })
 
   const coreMethods = {
     buildWhereFilter,
     bulkCreate,
     create,
     deactivate,
+    empty,
     getById,
     getCount,
     getOneWhere,

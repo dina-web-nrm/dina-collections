@@ -3,6 +3,7 @@ const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
 const deleteFactory = require('./methods/deleteFactory')
+const emptyFactory = require('./methods/emptyFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
 const getByIdSyncFactory = require('./methods/getByIdSyncFactory')
 const getCountFactory = require('./methods/getCountFactory')
@@ -31,7 +32,9 @@ module.exports = function attachMethods({
   const getById = getByIdFactory({
     Model,
   })
-
+  const empty = emptyFactory({
+    Model,
+  })
   const getByIdSync = getByIdSyncFactory({
     Model,
   })
@@ -68,6 +71,7 @@ module.exports = function attachMethods({
     bulkCreate,
     create,
     del,
+    empty,
     getById,
     getByIdSync,
     getCount,

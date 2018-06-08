@@ -1,4 +1,4 @@
-module.exports = function warm({ views = [], serviceInteractor }) {
+module.exports = function rebuildCacheViews({ views = [], serviceInteractor }) {
   const promises = views.map(viewName => {
     return serviceInteractor.rebuildView({
       resource: viewName,
