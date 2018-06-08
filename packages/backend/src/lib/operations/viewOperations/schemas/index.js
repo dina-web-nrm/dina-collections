@@ -21,5 +21,6 @@ exports.rebuildView = {
   required: [...base.required],
 }
 exports.requestRebuildView = base
+exports.emptyView = base
 exports.requestUpdateView = base
 exports.updateView = base
