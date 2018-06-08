@@ -1,10 +1,6 @@
 const synchronizeFactory = require('./methods/synchronizeFactory')
 
-module.exports = function attachMethods({
-  loadInitialData,
-  StageModel,
-  ViewModel,
-}) {
+module.exports = function attachMethods({ StageModel, ViewModel }) {
   const {
     buildWhereFilter,
     getById,
@@ -37,7 +33,6 @@ module.exports = function attachMethods({
   return {
     ...coreMethods,
     availableMethods,
-    loadInitialData,
     StageModel,
     ViewModel,
   }

@@ -7,9 +7,8 @@ const dbDescribe = require('../../../../../utilities/test/dbDescribe')
 const setup = () => {
   return createDb({ config }).then(sequelize => {
     const model = createModel({
+      name: 'testView',
       sequelize,
-      stageName: 'testStageName',
-      viewName: 'testViewName',
     })
     return model.synchronize({ force: true }).then(() => {
       return model
