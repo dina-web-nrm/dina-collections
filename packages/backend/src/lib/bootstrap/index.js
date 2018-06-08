@@ -10,7 +10,6 @@ const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
 const initializeDataStores = require('../dataStores')
 const createServiceInteractor = require('../serviceInteractor')
-const { createIndexBuilder } = require('../searchEngine')
 const setupModels = require('../models')
 const createConnectors = require('../connectors')
 const createServices = require('../services')
@@ -73,38 +72,31 @@ module.exports = function bootstrap({
 
             serviceInteractor.addConnectors(connectors)
 
-            return createIndexBuilder({
-              config,
-              connectors,
-              models,
-              sequelize,
-            }).then(() => {
-              if (config.api.active) {
-                const serviceRouter = createServiceRouter({
-                  auth,
-                  config,
-                  connectors,
-                })
-                const app = createApp({
-                  auth,
-                  config,
-                  openApiSpec,
-                  routers: [serviceRouter],
-                })
+            if (config.api.active) {
+              const serviceRouter = createServiceRouter({
+                auth,
+                config,
+                connectors,
+              })
+              const app = createApp({
+                auth,
+                config,
+                openApiSpec,
+                routers: [serviceRouter],
+              })
+              log.info(
+                `App configured after: ${now() - startTime} milliseconds`
+              )
+              return app.listen(config.api.port, () => {
                 log.info(
-                  `App configured after: ${now() - startTime} milliseconds`
+                  `Server started after: ${now() -
+                    startTime} milliseconds. Bootstrap time: ${now() -
+                    bootstrapStartTime}`
                 )
-                return app.listen(config.api.port, () => {
-                  log.info(
-                    `Server started after: ${now() -
-                      startTime} milliseconds. Bootstrap time: ${now() -
-                      bootstrapStartTime}`
-                  )
-                  log.info(`Api listening to port ${config.api.port}`)
-                })
-              }
-              return null
-            })
+                log.info(`Api listening to port ${config.api.port}`)
+              })
+            }
+            return null
           })
       })
       .catch(err => {
