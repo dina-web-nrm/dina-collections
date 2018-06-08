@@ -1,6 +1,6 @@
 module.exports = [
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'expedition',
   },
 ]

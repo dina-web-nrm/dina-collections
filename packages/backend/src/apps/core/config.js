@@ -9,6 +9,7 @@ module.exports = {
   db: {
     ...baseConfig.db,
     flushOnRestart: false,
+    loadInitialData: false,
   },
   services: {
     agentService: true,

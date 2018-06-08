@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 
 module.exports = function getCountFactory({ Model }) {
-  return function getCount(where = {}) {
+  return function getCount({ where = {} } = {}) {
     const options = {
       attributes: [[Sequelize.fn('COUNT', Sequelize.col('id')), 'count']],
       where: where.deactivatedAt

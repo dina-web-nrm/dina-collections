@@ -1,4 +1,4 @@
-const applyFilter = ({ filter, filterFunctions, item }) => {
+const applyFilter = ({ attributesPath, filter, filterFunctions, item }) => {
   const { filterFunction: filterFunctionName, input } = filter
 
   const filterFunction = filterFunctions[filterFunctionName]
@@ -7,15 +7,17 @@ const applyFilter = ({ filter, filterFunctions, item }) => {
   }
 
   return filterFunction({
+    attributesPath,
     input,
     item,
   })
 }
 
 /* eslint-disable no-use-before-define */
-const applyAnd = ({ and, filterFunctions, item }) => {
+const applyAnd = ({ attributesPath, and, filterFunctions, item }) => {
   return and.every(query => {
     return includeItem({
+      attributesPath,
       filterFunctions,
       item,
       query,
@@ -23,9 +25,10 @@ const applyAnd = ({ and, filterFunctions, item }) => {
   })
 }
 
-const applyOr = ({ filterFunctions, item, or }) => {
+const applyOr = ({ attributesPath, filterFunctions, item, or }) => {
   return or.some(query => {
     return includeItem({
+      attributesPath,
       filterFunctions,
       item,
       query,
@@ -34,11 +37,12 @@ const applyOr = ({ filterFunctions, item, or }) => {
 }
 /* eslint-enable no-use-before-define */
 
-const includeItem = ({ item, query, filterFunctions }) => {
+const includeItem = ({ attributesPath, item, query = {}, filterFunctions }) => {
   const { and, or, filter } = query
 
   if (filter) {
     return applyFilter({
+      attributesPath,
       filter,
       filterFunctions,
       item,
@@ -49,6 +53,7 @@ const includeItem = ({ item, query, filterFunctions }) => {
   if (and) {
     return applyAnd({
       and,
+      attributesPath,
       filterFunctions,
       item,
     })
@@ -56,6 +61,7 @@ const includeItem = ({ item, query, filterFunctions }) => {
 
   if (or) {
     return applyOr({
+      attributesPath,
       filterFunctions,
       item,
       or,

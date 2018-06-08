@@ -20,5 +20,5 @@ module.exports = function loadInitialData({ models }) {
     }
   })
 
-  return models.storageLocation.bulkCreate(items)
+  return models.storageLocation.bulkCreate({ items })
 }

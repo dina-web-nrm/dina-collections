@@ -2,6 +2,8 @@ const objectPath = require('object-path')
 const Ajv = require('ajv')
 
 module.exports = function createValidatorFactory(models) {
+  const rawModels = JSON.parse(JSON.stringify(models))
+
   const defaultOptions = {
     // errorDataPath: 'property',
     allErrors: true,
@@ -14,7 +16,6 @@ module.exports = function createValidatorFactory(models) {
 
   const createAjv = options => {
     const ajv = new Ajv({ ...options, format: 'full' })
-
     Object.keys(models).forEach(key => {
       ajv.addSchema(models[key], key)
     })
@@ -34,7 +35,6 @@ module.exports = function createValidatorFactory(models) {
     options,
   }) {
     const ajv = options ? createAjv(options) : defaultAjv
-
     if (model && !models[model]) {
       throw new Error(`Unknown model: ${model}`)
     }
@@ -45,7 +45,7 @@ module.exports = function createValidatorFactory(models) {
       )
     }
 
-    const schema = models[model] || customSchema
+    const schema = rawModels[model] || customSchema
     return obj => {
       const objToTest = dataPath && obj ? objectPath.get(obj, dataPath) : obj
       const validate = ajv.compile(schema)

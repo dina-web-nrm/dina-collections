@@ -1,21 +1,14 @@
 'use strict';
 
-var specimenFilterFunctions = require('../../specimen/filterFunctions');
-
-var filterFunctionsMap = {
-  searchSpecimen: specimenFilterFunctions
-};
-
 var includeItem = require('../includeItem');
 
 module.exports = function filterSync(_ref) {
   var items = _ref.items,
       query = _ref.query,
-      resource = _ref.resource;
+      filterFunctions = _ref.filterFunctions;
 
-  var filterFunctions = filterFunctionsMap[resource];
   if (!filterFunctions) {
-    throw new Error('No filter functions found for resource: ' + resource);
+    throw new Error('No filter functions provided');
   }
 
   return items.filter(function (item) {

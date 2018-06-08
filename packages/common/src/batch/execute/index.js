@@ -1,5 +1,14 @@
 /* eslint-disable no-console */
 
+const nextTickPromise = deattach => {
+  if (!deattach) {
+    return Promise.resolve()
+  }
+  return new Promise(resolve => {
+    setTimeout(resolve(), 0)
+  })
+}
+
 const internalCreateBatch = ({
   count,
   createBatch,
@@ -22,33 +31,49 @@ const runBatch = ({
   count = 0,
   createBatch,
   createEntry,
+  deattach,
   execute,
+  maxCount,
+  nItemsLastBatch,
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) => {
-  if (count >= numberOfEntries) {
-    return Promise.resolve()
+  if (count >= maxCount) {
+    return Promise.reject(new Error('Max count reached'))
   }
 
-  const numberOfBatchEntries = Math.min(
-    numberOfEntries - count,
-    numberOfEntriesEachBatch
-  )
+  if (numberOfEntries !== undefined) {
+    if (count >= numberOfEntries) {
+      return Promise.resolve()
+    }
+  }
 
+  if (nItemsLastBatch !== undefined) {
+    if (nItemsLastBatch !== numberOfEntriesEachBatch) {
+      return Promise.resolve()
+    }
+  }
+
+  const numberOfBatchEntries = numberOfEntriesEachBatch
   return internalCreateBatch({
     count,
     createBatch,
     createEntry,
     numberOfBatchEntries,
   }).then(batchData => {
+    const nItemsInBatch = batchData !== undefined ? batchData.length : undefined
     return execute(batchData).then(() => {
-      return runBatch({
-        count: count + numberOfBatchEntries,
-        createBatch,
-        createEntry,
-        execute,
-        numberOfEntries,
-        numberOfEntriesEachBatch,
+      return nextTickPromise(deattach).then(() => {
+        return runBatch({
+          count: count + numberOfBatchEntries,
+          createBatch,
+          createEntry,
+          deattach,
+          execute,
+          nItemsLastBatch: nItemsInBatch,
+          numberOfEntries,
+          numberOfEntriesEachBatch,
+        })
       })
     })
   })
@@ -57,14 +82,18 @@ const runBatch = ({
 module.exports = function batchExecute({
   createBatch,
   createEntry,
+  deattach = true,
   execute,
+  maxCount = 1000000,
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) {
   return runBatch({
     createBatch,
     createEntry,
+    deattach,
     execute,
+    maxCount,
     numberOfEntries,
     numberOfEntriesEachBatch,
   })

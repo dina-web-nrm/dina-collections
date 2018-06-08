@@ -58,11 +58,11 @@ module.exports = function loadInitialData({ models }) {
       })
 
   const taxonItemsPromise = taxonItems
-    ? models.taxon.bulkCreate(taxonItems)
+    ? models.taxon.bulkCreate({ items: taxonItems })
     : Promise.resolve()
 
   const taxonNameItemsPromise = taxonNameItems
-    ? models.taxonName.bulkCreate(taxonNameItems)
+    ? models.taxonName.bulkCreate({ items: taxonNameItems })
     : Promise.resolve()
 
   return Promise.all([taxonItemsPromise, taxonNameItemsPromise])

@@ -16,7 +16,7 @@ module.exports = function getMany({ operation, models }) {
         limit = 10,
         offset = 0,
         relationships: queryParamRelationships = '',
-      },
+      } = {},
     } = request
 
     let include

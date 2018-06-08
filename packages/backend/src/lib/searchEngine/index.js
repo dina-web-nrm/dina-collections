@@ -1,1 +1,0 @@
-exports.createIndexBuilder = require('./indexBuilder')

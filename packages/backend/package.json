@@ -21,6 +21,7 @@
     "object-path-immutable": "^1.0.1",
     "performance-now": "^2.1.0",
     "pg": "^7.4.1",
+    "reselect": "^3.0.1",
     "response-time": "^2.3.2",
     "sequelize": "^4.31.2",
     "swagger-ui-dist": "^3.9.3",

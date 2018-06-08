@@ -3,7 +3,7 @@ const loadInitialData = require('./loadInitialData')
 module.exports = [
   {
     loadInitialData,
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'agent',
     relations: ['agent'],
   },

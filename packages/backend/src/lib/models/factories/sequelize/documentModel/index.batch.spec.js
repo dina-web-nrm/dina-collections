@@ -1,5 +1,5 @@
 const { execute: batchExecute } = require('common/src/batch')
-const createDb = require('../../../../sequelize/db')
+const createDb = require('../../../../dataStores/sequelize/db')
 const createModel = require('./index')
 const config = require('../../../../../apps/core/config')
 
@@ -134,7 +134,7 @@ batchDescribe('lib/sequelize/models', () => {
           }
 
           const execute = batchData => {
-            return model.Model.bulkCreate(batchData).then(res => {
+            return model.Model.bulkCreate({ items: batchData }).then(res => {
               return res
             })
           }

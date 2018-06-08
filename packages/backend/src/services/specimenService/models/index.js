@@ -8,7 +8,7 @@ const normalizedColumnNames = getNormalizedColumnNames('specimen')
 module.exports = [
   {
     loadInitialData,
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'specimen',
     normalizedColumnNames,
   },

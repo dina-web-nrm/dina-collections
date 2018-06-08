@@ -8,6 +8,7 @@ const log = createLog('lib/models')
 
 module.exports = function setupModels({
   config,
+  inMemoryDb,
   sequelize,
   serviceOrder,
   services,
@@ -15,27 +16,31 @@ module.exports = function setupModels({
   log.info('Setup models')
   return Promise.resolve().then(() => {
     log.info('Create Models:')
-    return createModels({ config, sequelize, serviceOrder, services }).then(
-      ({ modelArray, modelObject: models }) => {
-        log.info('Setup relations:')
-        return createRelations({ modelArray, models })
-          .then(() => {
-            return synchronizeModels({
-              config,
-              modelArray,
-            })
+    return createModels({
+      config,
+      inMemoryDb,
+      sequelize,
+      serviceOrder,
+      services,
+    }).then(({ modelArray, modelObject: models }) => {
+      log.info('Setup relations:')
+      return createRelations({ modelArray, models })
+        .then(() => {
+          return synchronizeModels({
+            config,
+            modelArray,
           })
-          .then(() => {
-            log.info('Load initial data:')
-            return loadInitialData({
-              config,
-              modelArray,
-              models,
-            }).then(() => {
-              return { models }
-            })
+        })
+        .then(() => {
+          log.info('Load initial data:')
+          return loadInitialData({
+            config,
+            modelArray,
+            models,
+          }).then(() => {
+            return { models }
           })
-      }
-    )
+        })
+    })
   })
 }

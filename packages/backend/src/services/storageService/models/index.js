@@ -2,13 +2,13 @@ const loadInitialData = require('./loadInitialData')
 
 module.exports = [
   {
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'storageLocation',
     relations: ['physicalObject'],
   },
   {
     loadInitialData,
-    modelFactory: 'documentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'physicalObject',
     relations: ['storageLocation'],
   },

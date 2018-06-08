@@ -12,7 +12,7 @@ const loadType = ({ initialDataName, modelName, models, isJson = true }) => {
     }
   })
 
-  return models[modelName].bulkCreate(items)
+  return models[modelName].bulkCreate({ items })
 }
 
 module.exports = function loadInitialData({ models }) {
