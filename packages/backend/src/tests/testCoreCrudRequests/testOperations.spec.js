@@ -80,7 +80,7 @@ const testCrudFlow = ({
                   }).then(fetchedResources => {
                     expect(fetchedResources).toBeTruthy()
                     expect(fetchedResources.data).toBeTruthy()
-                    expect(fetchedResources.data.length > 1).toBeTruthy()
+                    expect(fetchedResources.data.length > 0).toBeTruthy()
                     if (!getVersionsOperationId) {
                       return null
                     }
