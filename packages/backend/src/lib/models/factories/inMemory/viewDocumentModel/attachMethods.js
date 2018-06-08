@@ -1,0 +1,41 @@
+const synchronizeFactory = require('./methods/synchronizeFactory')
+
+module.exports = function attachMethods({ StageModel, ViewModel }) {
+  const {
+    buildWhereFilter,
+    bulkCreate,
+    create,
+    del,
+    getById,
+    getByIdSync,
+    getCount,
+    getOneWhere,
+    getWhere,
+    update,
+  } = ViewModel
+
+  const synchronize = synchronizeFactory({ StageModel, ViewModel })
+
+  const coreMethods = {
+    buildWhereFilter,
+    bulkCreate,
+    create,
+    del,
+    getById,
+    getByIdSync,
+    getCount,
+    getOneWhere,
+    getWhere,
+    synchronize,
+    update,
+  }
+
+  const availableMethods = [...Object.keys(coreMethods)]
+
+  return {
+    ...coreMethods,
+    availableMethods,
+    StageModel,
+    ViewModel,
+  }
+}
