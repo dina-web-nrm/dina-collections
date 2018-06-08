@@ -1,14 +1,11 @@
-* Unify batch create
-* Unify inMemoryModel with documentModel
-
+* change name model in inMemory model
+* Implement dataManager as app and lib
+* 
 
 * Flush inMemory
 * Implement where
-* change name model in inMemory model
-* Implement dataManager as app and lib
 * Implement serverside in memory filtering
 * clean up stuff
-* Ensure that batch create work on doc
 * Create test for service order + export
 
 
