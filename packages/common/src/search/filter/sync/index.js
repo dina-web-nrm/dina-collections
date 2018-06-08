@@ -1,15 +1,8 @@
-const specimenFilterFunctions = require('../../specimen/filterFunctions')
-
-const filterFunctionsMap = {
-  searchSpecimen: specimenFilterFunctions,
-}
-
 const includeItem = require('../includeItem')
 
-module.exports = function filterSync({ items, query, resource }) {
-  const filterFunctions = filterFunctionsMap[resource]
+module.exports = function filterSync({ items, query, filterFunctions }) {
   if (!filterFunctions) {
-    throw new Error(`No filter functions found for resource: ${resource}`)
+    throw new Error('No filter functions provided')
   }
 
   return items
