@@ -14,7 +14,6 @@ var applyMapFunctions = function applyMapFunctions(_ref) {
 
 module.exports = function map(_ref2) {
   var items = _ref2.items,
-      resource = _ref2.resource,
       mapFunctions = _ref2.mapFunctions;
 
   if (!mapFunctions) {
