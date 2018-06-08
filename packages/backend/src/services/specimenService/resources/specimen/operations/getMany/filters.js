@@ -3,7 +3,7 @@ const createGetManyFilters = require('../../../../../../lib/services/operationFa
 module.exports = createGetManyFilters({
   custom: [
     {
-      js: () => {},
+      jsFilterFunction: () => {},
       key: 'catalogNumber',
       queryParams: {
         description: 'catalog number used to filter specimens',

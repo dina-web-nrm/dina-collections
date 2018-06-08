@@ -1,5 +1,6 @@
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import asyncFilter from 'common/es5/search/filter/async'
+import specimenFilterFunctions from 'common/es5/search/resources/specimen/filterFunctions'
 import { actionCreators } from '../keyObjectModule'
 
 const updateSearchResult = actionCreators.set.searchState
@@ -22,6 +23,7 @@ export default function search({ query, resource = 'searchSpecimen' } = {}) {
     const state = getState()
     const searchSpecimens = getSearchItems(state)
     return asyncFilter({
+      filterFunctions: specimenFilterFunctions,
       items: searchSpecimens,
       query,
       resource,

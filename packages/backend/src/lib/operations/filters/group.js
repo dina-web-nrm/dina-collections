@@ -1,5 +1,7 @@
+const groupFilterFunction = require('common/src/search/resources/shared/filterFunctions/group')
+
 module.exports = {
-  js: () => {},
+  jsFilterFunction: groupFilterFunction,
   key: 'group',
   queryParams: {
     description: 'Filter by group',

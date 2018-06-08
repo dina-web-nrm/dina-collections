@@ -1,6 +1,11 @@
 const cacheResources = require('../../cacheResources')
 const coreToNested = require('common/src/formatObject/coreToNested')
 const mapSync = require('common/src/search/map/sync')
+const searchSpecimenMapFunctions = require('common/src/search/resources/specimen/mapFunctions')
+
+const mapFunctions = Object.keys(searchSpecimenMapFunctions).map(key => {
+  return searchSpecimenMapFunctions[key]
+})
 
 const resourceCacheMap = cacheResources.reduce((obj, { name, srcResource }) => {
   return {
@@ -45,7 +50,7 @@ const mapFunction = ({ items, serviceInteractor }) => {
 
   const mappedItems = mapSync({
     items: nestedItems,
-    resource: 'searchSpecimen',
+    mapFunctions,
   })
   return mappedItems.map(item => {
     return { doc: item, id: item.id }
