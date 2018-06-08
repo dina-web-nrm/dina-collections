@@ -7,7 +7,7 @@ const applyMapFunctions = ({ item, mapFunctions }) => {
   return target
 }
 
-module.exports = function map({ items, resource, mapFunctions }) {
+module.exports = function map({ items, mapFunctions }) {
   if (!mapFunctions) {
     throw new Error('No map functions provided')
   }
