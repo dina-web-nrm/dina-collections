@@ -1,3 +1,5 @@
+const cacheResources = require('../cacheResources')
+
 module.exports = [
   {
     modelFactory: 'sequelizeDocumentModel',
@@ -7,4 +9,11 @@ module.exports = [
     modelFactory: 'sequelizeDocumentModel',
     name: 'searchSpecimen',
   },
+
+  ...cacheResources.map(({ name }) => {
+    return {
+      modelFactory: 'inMemoryViewDocumentModel',
+      name,
+    }
+  }),
 ]
