@@ -7,14 +7,6 @@ module.exports = function buildIncludeArray(
     throw new Error('Provide model object')
   }
 
-  Object.keys(models).forEach(modelKey => {
-    if (!models[modelKey].Model) {
-      throw new Error(
-        `Model with key: ${modelKey} dont have sequalize Model instance`
-      )
-    }
-  })
-
   return Object.keys(relations)
     .map(relationKey => {
       const { targetResource: relationResource, storeInDocument } = relations[
@@ -26,6 +18,14 @@ module.exports = function buildIncludeArray(
 
       if (!shouldIncludeRelation({ queryParamRelationships, relationKey })) {
         return null
+      }
+
+      if (!models[relationResource].Model) {
+        throw new Error(
+          `Model with key: ${
+            relationResource
+          } dont have sequalize Model instance`
+        )
       }
 
       const relationModel = models[relationResource]
