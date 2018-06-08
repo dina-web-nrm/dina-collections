@@ -1,10 +1,19 @@
-"use strict";
+'use strict';
 
-var _promise = require("babel-runtime/core-js/promise");
+var _promise = require('babel-runtime/core-js/promise');
 
 var _promise2 = _interopRequireDefault(_promise);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var nextTickPromise = function nextTickPromise(deattach) {
+  if (!deattach) {
+    return _promise2.default.resolve();
+  }
+  return new _promise2.default(function (resolve) {
+    setTimeout(resolve(), 0);
+  });
+};
 
 var internalCreateBatch = function internalCreateBatch(_ref) {
   var count = _ref.count,
@@ -27,30 +36,49 @@ var runBatch = function runBatch(_ref2) {
       count = _ref2$count === undefined ? 0 : _ref2$count,
       createBatch = _ref2.createBatch,
       createEntry = _ref2.createEntry,
+      deattach = _ref2.deattach,
       execute = _ref2.execute,
+      maxCount = _ref2.maxCount,
+      nItemsLastBatch = _ref2.nItemsLastBatch,
       numberOfEntries = _ref2.numberOfEntries,
       numberOfEntriesEachBatch = _ref2.numberOfEntriesEachBatch;
 
-  if (count >= numberOfEntries) {
-    return _promise2.default.resolve();
+  if (count >= maxCount) {
+    return _promise2.default.reject(new Error('Max count reached'));
   }
 
-  var numberOfBatchEntries = Math.min(numberOfEntries - count, numberOfEntriesEachBatch);
+  if (numberOfEntries !== undefined) {
+    if (count >= numberOfEntries) {
+      return _promise2.default.resolve();
+    }
+  }
 
+  if (nItemsLastBatch !== undefined) {
+    if (nItemsLastBatch !== numberOfEntriesEachBatch) {
+      return _promise2.default.resolve();
+    }
+  }
+
+  var numberOfBatchEntries = numberOfEntriesEachBatch;
   return internalCreateBatch({
     count: count,
     createBatch: createBatch,
     createEntry: createEntry,
     numberOfBatchEntries: numberOfBatchEntries
   }).then(function (batchData) {
+    var nItemsInBatch = batchData !== undefined ? batchData.length : undefined;
     return execute(batchData).then(function () {
-      return runBatch({
-        count: count + numberOfBatchEntries,
-        createBatch: createBatch,
-        createEntry: createEntry,
-        execute: execute,
-        numberOfEntries: numberOfEntries,
-        numberOfEntriesEachBatch: numberOfEntriesEachBatch
+      return nextTickPromise(deattach).then(function () {
+        return runBatch({
+          count: count + numberOfBatchEntries,
+          createBatch: createBatch,
+          createEntry: createEntry,
+          deattach: deattach,
+          execute: execute,
+          nItemsLastBatch: nItemsInBatch,
+          numberOfEntries: numberOfEntries,
+          numberOfEntriesEachBatch: numberOfEntriesEachBatch
+        });
       });
     });
   });
@@ -59,14 +87,20 @@ var runBatch = function runBatch(_ref2) {
 module.exports = function batchExecute(_ref3) {
   var createBatch = _ref3.createBatch,
       createEntry = _ref3.createEntry,
+      _ref3$deattach = _ref3.deattach,
+      deattach = _ref3$deattach === undefined ? true : _ref3$deattach,
       execute = _ref3.execute,
+      _ref3$maxCount = _ref3.maxCount,
+      maxCount = _ref3$maxCount === undefined ? 1000000 : _ref3$maxCount,
       numberOfEntries = _ref3.numberOfEntries,
       numberOfEntriesEachBatch = _ref3.numberOfEntriesEachBatch;
 
   return runBatch({
     createBatch: createBatch,
     createEntry: createEntry,
+    deattach: deattach,
     execute: execute,
+    maxCount: maxCount,
     numberOfEntries: numberOfEntries,
     numberOfEntriesEachBatch: numberOfEntriesEachBatch
   });

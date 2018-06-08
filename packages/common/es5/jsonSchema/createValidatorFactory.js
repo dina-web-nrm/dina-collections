@@ -8,12 +8,18 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var objectPath = require('object-path');
 var Ajv = require('ajv');
 
 module.exports = function createValidatorFactory(models) {
+  var rawModels = JSON.parse((0, _stringify2.default)(models));
+
   var defaultOptions = {
     allErrors: true,
     format: 'full',
@@ -24,7 +30,6 @@ module.exports = function createValidatorFactory(models) {
 
   var createAjv = function createAjv(options) {
     var ajv = new Ajv((0, _extends3.default)({}, options, { format: 'full' }));
-
     (0, _keys2.default)(models).forEach(function (key) {
       ajv.addSchema(models[key], key);
     });
@@ -43,7 +48,6 @@ module.exports = function createValidatorFactory(models) {
         options = _ref.options;
 
     var ajv = options ? createAjv(options) : defaultAjv;
-
     if (model && !models[model]) {
       throw new Error('Unknown model: ' + model);
     }
@@ -52,7 +56,7 @@ module.exports = function createValidatorFactory(models) {
       throw new Error('If model not provided have to provide customSchema (key schema)');
     }
 
-    var schema = models[model] || customSchema;
+    var schema = rawModels[model] || customSchema;
     return function (obj) {
       var objToTest = dataPath && obj ? objectPath.get(obj, dataPath) : obj;
       var validate = ajv.compile(schema);
