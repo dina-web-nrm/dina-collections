@@ -1,4 +1,5 @@
 const rebuild = require('./rebuild')
+const defaultMapFunction = require('./defaultMapFunction')
 
 module.exports = function rebuildView({
   operation,
@@ -6,11 +7,10 @@ module.exports = function rebuildView({
   serviceInteractor,
 }) {
   const {
-    mapFunction,
+    mapFunction = defaultMapFunction,
     resource,
-    // resourceCacheMap,
     srcResource,
-    // warmCache,
+    warmViews,
   } = operation
   const model = models[resource]
   if (!model) {
@@ -21,6 +21,10 @@ module.exports = function rebuildView({
     throw new Error(`Map function not provided for ${resource}`)
   }
 
+  if (!srcResource) {
+    throw new Error(`srcResource not provided for ${srcResource}`)
+  }
+
   return () => {
     return rebuild({
       mapFunction,
@@ -28,6 +32,7 @@ module.exports = function rebuildView({
       nItemsEachBatch: 1000,
       serviceInteractor,
       srcResource,
+      warmViews,
     })
   }
 }

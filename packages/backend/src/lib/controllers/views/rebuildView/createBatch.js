@@ -23,12 +23,4 @@ module.exports = function createBatch({
         return mapFunction({ items, serviceInteractor })
       })
     })
-    .then(searchItems => {
-      return searchItems.map(item => {
-        return {
-          doc: item,
-          id: item.id,
-        }
-      })
-    })
 }

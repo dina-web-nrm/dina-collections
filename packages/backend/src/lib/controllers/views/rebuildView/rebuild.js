@@ -1,6 +1,7 @@
 const createLog = require('../../../../utilities/log')
 const { execute: batchExecute } = require('common/src/batch')
 const createBatch = require('./createBatch')
+const warm = require('./warm')
 
 const defaultLog = createLog('lib/controllers/views/rebuildView/rebuild')
 
@@ -11,16 +12,24 @@ module.exports = function rebuild({
   nItemsEachBatch = 1000,
   serviceInteractor,
   srcResource,
+  warmViews = [],
 }) {
   log.info(`rebuild start for src: ${srcResource}`)
 
   log.scope().info('truncate stageResource')
   // replace with flush or truncate or whatever
-  return model.synchronize().then(() => {
+  return model.synchronize({ force: true }).then(() => {
     log.scope().info('truncate done')
     log.scope().info('reset cache')
     // serviceInteractor.resetCache()
-    return Promise.resolve().then(() => {
+
+    log.scope().info('warming views')
+    return warm({
+      serviceInteractor,
+      views: warmViews,
+    }).then(() => {
+      log.scope().info('warming views done')
+
       log.scope().info('reset cache done')
       return batchExecute({
         createBatch: ({ ...args }) => {
