@@ -36,6 +36,7 @@ module.exports = {
           type: 'physicalObject',
           id: '2234',
           attributes: {
+            lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
             type: 'physicalObject',
           },
         },
@@ -176,7 +177,7 @@ module.exports = {
         {
           alternateIdentifiersText: 'alternateIdentifiersText',
           physicalObject: {
-            id: '2234',
+            lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
           },
           physicalObjectText: 'physicalObjectText',
           lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
