@@ -44,11 +44,7 @@ const runBatch = ({
     }
   }
 
-  const numberOfBatchEntries = Math.min(
-    numberOfEntries - count,
-    numberOfEntriesEachBatch
-  )
-
+  const numberOfBatchEntries = numberOfEntriesEachBatch
   return internalCreateBatch({
     count,
     createBatch,
