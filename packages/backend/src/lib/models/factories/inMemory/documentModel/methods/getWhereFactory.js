@@ -6,9 +6,6 @@ module.exports = function getWhereFactory({ Model }) {
     return Promise.resolve().then(() => {
       const { query, filterFunctions } = where
       const itemArray = Model.getArray()
-      if (!(query && query.and && query.and.length)) {
-        return itemArray
-      }
       return asyncFilter({
         attributesPath: 'document',
         filterFunctions,
