@@ -1,7 +1,7 @@
 module.exports = function bulkCreateFactory({ Model }) {
   return function bulkCreate({ items = [] }) {
     return Promise.resolve().then(() => {
-      const model = Model.get()
+      const currentItems = Model.get()
       const newItems = {}
       items.forEach(({ doc, id } = {}) => {
         if (id === undefined) {
@@ -11,11 +11,11 @@ module.exports = function bulkCreateFactory({ Model }) {
         newItems[id] = { document: doc, id }
       })
 
-      const updatedModel = {
-        ...model,
+      const updateItems = {
+        ...currentItems,
         ...newItems,
       }
-      Model.set(updatedModel)
+      Model.set(updateItems)
     })
   }
 }

@@ -4,8 +4,8 @@ module.exports = function getByIdFactory({ Model }) {
       if (id === undefined) {
         throw new Error('Id required for getById')
       }
-      const model = Model.get()
-      const item = model[id]
+      const currentItems = Model.get()
+      const item = currentItems[id]
       return item || null
     })
   }

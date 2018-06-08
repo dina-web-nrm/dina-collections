@@ -5,16 +5,16 @@ module.exports = function createFactory({ Model }) {
       if (id === undefined) {
         throw new Error('Id required for create')
       }
-      const model = Model.get()
+      const currentItems = Model.get()
       const newItems = {}
       const item = { document: doc, id }
       newItems[id] = item
 
-      const updatedModel = {
-        ...model,
+      const updatedItems = {
+        ...currentItems,
         ...newItems,
       }
-      Model.set(updatedModel)
+      Model.set(updatedItems)
       return item
     })
   }

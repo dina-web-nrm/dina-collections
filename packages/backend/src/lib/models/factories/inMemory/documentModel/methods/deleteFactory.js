@@ -4,15 +4,15 @@ module.exports = function deleteFactory({ Model }) {
       if (id === undefined) {
         throw new Error('Id required for deactivate')
       }
-      const model = Model.get()
-      const updatedModel = {
-        ...model,
+      const currentItems = Model.get()
+      const updatedItems = {
+        ...currentItems,
       }
-      const item = model[id]
+      const item = currentItems[id]
 
-      delete updatedModel[id]
+      delete updatedItems[id]
 
-      Model.set(updatedModel)
+      Model.set(updatedItems)
       return item
     })
   }

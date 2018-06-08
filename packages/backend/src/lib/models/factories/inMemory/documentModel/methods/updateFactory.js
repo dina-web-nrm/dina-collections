@@ -7,9 +7,9 @@ module.exports = function updateFactory({ Model }) {
         throw new Error('Id required for update')
       }
 
-      const model = Model.get()
+      const currentItems = Model.get()
 
-      if (!model[id]) {
+      if (!currentItems[id]) {
         backendError404({
           code: 'RESOURCE_NOT_FOUND_ERROR',
           detail: `Not found for id ${id}`,
@@ -20,11 +20,11 @@ module.exports = function updateFactory({ Model }) {
 
       newItems[id] = newItem
 
-      const updatedModel = {
-        ...model,
+      const updatedItems = {
+        ...currentItems,
         ...newItems,
       }
-      Model.set(updatedModel)
+      Model.set(updatedItems)
       return newItem
     })
   }
