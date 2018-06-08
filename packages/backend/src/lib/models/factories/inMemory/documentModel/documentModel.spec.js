@@ -26,7 +26,7 @@ describe('lib/sequelize/models/documentModel', () => {
 
     describe('create', () => {
       it('Creates and returns a simple record', () => {
-        const doc = { a: 2, id: 123 }
+        const doc = { doc: { a: 2 }, id: 123 }
 
         return model.create({ doc }).then(res => {
           expect(res).toBeTruthy()
@@ -39,7 +39,9 @@ describe('lib/sequelize/models/documentModel', () => {
 
     describe('update', () => {
       const firstDoc = {
-        a: 1,
+        doc: {
+          a: 1,
+        },
         id: 123,
       }
       let firstId

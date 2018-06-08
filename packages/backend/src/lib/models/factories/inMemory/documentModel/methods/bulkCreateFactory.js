@@ -3,11 +3,12 @@ module.exports = function bulkCreateFactory({ Model }) {
     return Promise.resolve().then(() => {
       const model = Model.get()
       const newItems = {}
-      items.forEach(item => {
-        if (!item || item.id === undefined) {
+      items.forEach(({ doc, id } = {}) => {
+        if (id === undefined) {
           throw new Error('Id required for bulk create')
         }
-        newItems[item.id] = item
+
+        newItems[id] = { document: doc, id }
       })
 
       const updatedModel = {

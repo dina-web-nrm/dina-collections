@@ -1,8 +1,7 @@
-const formatItemResponse = require('../utilities/formatItemResponse')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 
 module.exports = function updateFactory({ Model }) {
-  return function update({ doc: item = {}, id } = {}) {
+  return function update({ doc, id } = {}) {
     return Promise.resolve().then(() => {
       if (id === undefined) {
         throw new Error('Id required for update')
@@ -17,15 +16,16 @@ module.exports = function updateFactory({ Model }) {
         })
       }
       const newItems = {}
+      const newItem = { document: doc, id }
 
-      newItems[id] = item
+      newItems[id] = newItem
 
       const updatedModel = {
         ...model,
         ...newItems,
       }
       Model.set(updatedModel)
-      return formatItemResponse(item)
+      return newItem
     })
   }
 }

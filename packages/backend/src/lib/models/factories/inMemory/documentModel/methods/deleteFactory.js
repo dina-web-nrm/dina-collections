@@ -1,5 +1,3 @@
-const formatItemResponse = require('../utilities/formatItemResponse')
-
 module.exports = function deleteFactory({ Model }) {
   return function del({ id } = {}) {
     return Promise.resolve().then(() => {
@@ -15,7 +13,7 @@ module.exports = function deleteFactory({ Model }) {
       delete updatedModel[id]
 
       Model.set(updatedModel)
-      return formatItemResponse(item)
+      return item
     })
   }
 }

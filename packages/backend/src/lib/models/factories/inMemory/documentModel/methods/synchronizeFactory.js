@@ -6,7 +6,6 @@ module.exports = function synchronizeFactory({ Model } = {}) {
   return function synchronize() {
     return Promise.resolve().then(() => {
       Model.sync()
-      Model
     })
   }
 }

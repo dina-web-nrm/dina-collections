@@ -1,5 +1,3 @@
-const formatItemResponse = require('../utilities/formatItemResponse')
-
 module.exports = function getByIdFactory({ Model }) {
   return function getById({ id } = {}) {
     return Promise.resolve().then(() => {
@@ -8,7 +6,7 @@ module.exports = function getByIdFactory({ Model }) {
       }
       const model = Model.get()
       const item = model[id]
-      return item ? formatItemResponse(item) : null
+      return item || null
     })
   }
 }

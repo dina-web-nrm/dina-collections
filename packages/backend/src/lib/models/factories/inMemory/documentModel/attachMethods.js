@@ -1,9 +1,12 @@
+const buildWhereFilterFactory = require('./methods/buildWhereFilterFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
 const deleteFactory = require('./methods/deleteFactory')
 const getByIdFactory = require('./methods/getByIdFactory')
+const getByIdSyncFactory = require('./methods/getByIdSyncFactory')
 const getCountFactory = require('./methods/getCountFactory')
+const getWhereFactory = require('./methods/getWhereFactory')
 const synchronizeFactory = require('./methods/synchronizeFactory')
 const updateFactory = require('./methods/updateFactory')
 
@@ -23,9 +26,13 @@ module.exports = function attachMethods({
       throwOnError: false,
     })
   }
-
+  const buildWhereFilter = buildWhereFilterFactory()
   const synchronize = synchronizeFactory({ Model })
   const getById = getByIdFactory({
+    Model,
+  })
+
+  const getByIdSync = getByIdSyncFactory({
     Model,
   })
 
@@ -35,6 +42,8 @@ module.exports = function attachMethods({
     schemaVersion,
     validate,
   })
+
+  const getWhere = getWhereFactory({ Model })
 
   const del = deleteFactory({
     getById,
@@ -55,11 +64,14 @@ module.exports = function attachMethods({
   })
 
   const coreMethods = {
+    buildWhereFilter,
     bulkCreate,
     create,
     del,
     getById,
+    getByIdSync,
     getCount,
+    getWhere,
     Model,
     synchronize,
     update,

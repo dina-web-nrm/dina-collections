@@ -1,22 +1,21 @@
-const formatItemResponse = require('../utilities/formatItemResponse')
-
 module.exports = function createFactory({ Model }) {
-  return function create({ doc: item = {} } = {}) {
+  return function create({ doc } = {}) {
     return Promise.resolve().then(() => {
-      if (!item || item.id === undefined) {
+      const { id } = doc
+      if (id === undefined) {
         throw new Error('Id required for create')
       }
       const model = Model.get()
       const newItems = {}
-
-      newItems[item.id] = item
+      const item = { document: doc, id }
+      newItems[id] = item
 
       const updatedModel = {
         ...model,
         ...newItems,
       }
       Model.set(updatedModel)
-      return formatItemResponse(item)
+      return item
     })
   }
 }
