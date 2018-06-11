@@ -5,12 +5,7 @@ const log = createLog(
   'lib/models/factories/sequelize/simpleSqlModel/methods/updateFactory'
 )
 
-module.exports = function updateFactory({
-  getById,
-  Model,
-  schemaVersion,
-  validate,
-}) {
+module.exports = function updateFactory({ getById, Model }) {
   return function update({ doc, id } = {}) {
     if (id === undefined) {
       return Promise.reject(new Error('id not provided'))
@@ -26,21 +21,14 @@ module.exports = function updateFactory({
       const storedData = existingModel.get()
 
       let newModel = {
-        diff: null,
         id: storedData.id,
-        isCurrentVersion: true,
-        schemaCompliant: storedData.schemaCompliant,
-        version: storedData.version,
-        versionId: storedData.versionId,
       }
 
       if (doc !== undefined) {
         const { ...newAttributes } = doc
         newModel = {
-          diff: (storedData.diff || []).concat(diff(storedData.document, doc)),
-          document: newAttributes,
-          schemaCompliant: !validate(doc),
-          schemaVersion,
+          ...storedData,
+          ...newAttributes,
         }
       }
 

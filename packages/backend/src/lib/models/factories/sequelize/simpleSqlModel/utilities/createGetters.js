@@ -5,6 +5,13 @@ module.exports = function createGetters() {
     document() {
       const { dataValues } = this
       const res = Object.keys(dataValues).reduce((obj, key) => {
+        if (key === 'diff') {
+          return obj
+        }
+        if (key === 'schemaCompliant') {
+          return obj
+        }
+
         const value = dataValues[key]
 
         if (value !== null) {
