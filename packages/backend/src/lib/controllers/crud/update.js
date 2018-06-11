@@ -9,7 +9,7 @@ module.exports = function update({ operation, models, postUpdateHook }) {
     throw new Error(`Model not provided for ${resource}`)
   }
   return ({ request }) => {
-    const { body: { data: input } } = request
+    const { body: { data: input = {} } = {} } = request
     const { pathParams: { id } } = request
 
     return model

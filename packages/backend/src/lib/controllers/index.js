@@ -1,15 +1,9 @@
-exports.create = require('./crud/create')
-exports.del = require('./crud/del')
-exports.emptyView = require('./views/emptyView')
-exports.getMany = require('./crud/getMany')
-exports.getOne = require('./crud/getOne')
-exports.getOneSync = require('./crud/getOneSync')
-exports.getRelationship = require('./crud/getRelationship')
-exports.getVersion = require('./crud/getVersion')
-exports.getVersions = require('./crud/getVersions')
-exports.rebuildView = require('./views/rebuildView')
-exports.requestRebuildView = require('./views/requestRebuildView')
-exports.requestUpdateView = require('./views/requestUpdateView')
-exports.update = require('./crud/update')
-exports.updateRelationship = require('./crud/updateRelationship')
-exports.updateView = require('./views/updateView')
+const crud = require('./crud')
+const views = require('./views')
+const jobs = require('./jobs')
+
+module.exports = {
+  ...crud,
+  ...views,
+  ...jobs,
+}
