@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
-import { createSearch } from 'coreModules/search/higherOrderComponents'
+import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 
 const propTypes = {
   search: PropTypes.func.isRequired,
@@ -82,4 +82,4 @@ class Filter extends Component {
 
 Filter.propTypes = propTypes
 
-export default createSearch({})(Filter)
+export default createInjectSearch({})(Filter)

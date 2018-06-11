@@ -5,17 +5,10 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { search, syncSearch } from '../actionCreators'
 
-const createSearch = (
+const createInjectSearch = (
   { resource = 'searchSpecimen' } = {}
 ) => ComposedComponent => {
-  /* eslint-disable no-console */
-  if (!resource) {
-    console.error(`Missing resource`)
-  }
-
-  /* eslint-enable no-console */
-
-  const mapDispathToProps = {
+  const mapDispatchToProps = {
     search,
     syncSearch,
   }
@@ -49,7 +42,7 @@ const createSearch = (
   Search.propTypes = propTypes
   Search.defaultProps = defaultProps
 
-  return compose(connect(null, mapDispathToProps))(Search)
+  return compose(connect(null, mapDispatchToProps))(Search)
 }
 
-export default createSearch
+export default createInjectSearch
