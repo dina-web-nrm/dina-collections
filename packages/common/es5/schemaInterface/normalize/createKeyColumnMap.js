@@ -14,9 +14,9 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var getModelIsColumn = require('./getModelIsColumn');
-var getModelType = require('./getModelType');
-var getModelColumn = require('./getModelColumn');
+var getModelIsColumn = require('./utilities/getModelIsColumn');
+var getModelType = require('./utilities/getModelType');
+var getModelColumn = require('./utilities/getModelColumn');
 
 module.exports = function createKeyColumnMap(model) {
   var normalizedNamespaceProperties = model && model.properties && model.properties.normalized && model.properties.normalized.properties || {};

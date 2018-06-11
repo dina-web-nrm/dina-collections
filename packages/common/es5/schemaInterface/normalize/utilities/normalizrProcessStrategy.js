@@ -1,6 +1,6 @@
 'use strict';
 
-var createLid = require('./createLid');
+var createLid = require('../../../createLid');
 
 module.exports = function processStrategy(node) {
   if (node.id || node.lid) {

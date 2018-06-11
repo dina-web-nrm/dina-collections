@@ -14,13 +14,15 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var createKeyColumnMap = require('../utilities/createKeyColumnMap');
+var _require = require('reselect'),
+    createSelector = _require.createSelector;
 
-module.exports = function createDbSpecifications() {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      _ref$models = _ref.models,
-      models = _ref$models === undefined ? {} : _ref$models;
+var createKeyColumnMap = require('./createKeyColumnMap');
 
+module.exports = createSelector(function (_ref) {
+  var models = _ref.models;
+  return models;
+}, function (models) {
   return (0, _keys2.default)(models).reduce(function (specifications, modelKey) {
     var keyColumnMap = createKeyColumnMap(models[modelKey]);
 
@@ -30,4 +32,4 @@ module.exports = function createDbSpecifications() {
 
     return specifications;
   }, {});
-};
+});

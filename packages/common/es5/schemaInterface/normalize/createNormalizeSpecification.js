@@ -17,13 +17,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _require = require('normalizr'),
     schema = _require.schema;
 
-var normalizrGetIdAttribute = require('../utilities/normalizrGetIdAttribute');
-var normalizrProcessStrategy = require('../utilities/normalizrProcessStrategy');
-
-var createKeyColumnMap = require('../utilities/createKeyColumnMap');
-var getModelIsColumn = require('../utilities/getModelIsColumn');
-var getModelFormat = require('../utilities/getModelFormat');
-var getModelType = require('../utilities/getModelType');
+var createKeyColumnMap = require('./createKeyColumnMap');
+var normalizrGetIdAttribute = require('./utilities/normalizrGetIdAttribute');
+var normalizrProcessStrategy = require('./utilities/normalizrProcessStrategy');
+var getModelIsColumn = require('./utilities/getModelIsColumn');
+var getModelFormat = require('./utilities/getModelFormat');
+var getModelType = require('./utilities/getModelType');
 
 var options = {
   idAttribute: normalizrGetIdAttribute,

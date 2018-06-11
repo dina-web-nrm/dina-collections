@@ -1,17 +1,22 @@
 'use strict';
 
-var _defineProperty2 = require('babel-runtime/helpers/defineProperty');
+var _promise = require('babel-runtime/core-js/promise');
 
-var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-var _extends4 = require('babel-runtime/helpers/extends');
-
-var _extends5 = _interopRequireDefault(_extends4);
+var _promise2 = _interopRequireDefault(_promise);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var objectPath = require('object-path');
-var walk = require('../utilities/walkObject');
+var _require = require('./utilities/getRelationshipItems'),
+    getRelationshipItems = _require.getRelationshipItems;
+
+var _require2 = require('./utilities/resolveByPath'),
+    resolveByPath = _require2.resolveByPath;
+
+var _require3 = require('./utilities/resolveRelationshipDataArray'),
+    resolveRelationshipDataArray = _require3.resolveRelationshipDataArray;
+
+var _require4 = require('./utilities/resolveRelationshipDataObject'),
+    resolveRelationshipDataObject = _require4.resolveRelationshipDataObject;
 
 module.exports = function resolveItemRelationship(_ref) {
   var coreToNested = _ref.coreToNested,
@@ -22,102 +27,48 @@ module.exports = function resolveItemRelationship(_ref) {
       relationships = _ref.relationships,
       type = _ref.type;
 
-  if (path) {
-    var arrayPath = path;
-    if (!Array.isArray(path)) {
-      arrayPath = [path];
-    }
-
-    arrayPath.forEach(function (pathItem) {
-      var segments = pathItem.split('.*.');
-
-      walk({
-        func: function func(pth) {
-          var relationshipObject = objectPath.get(item, pth);
-
-          var id = relationshipObject && relationshipObject.id;
-          var lid = relationshipObject && relationshipObject.lid;
-
-          var resolvedRelationshipItem = void 0;
-          if (getItemByTypeId) {
-            if (id === undefined && lid !== undefined) {
-              var relationshipData = relationships[relationshipKey] && relationships[relationshipKey].data;
-              var relationshipArray = Array.isArray(relationshipData) ? relationshipData : [relationshipData];
-
-              resolvedRelationshipItem = relationshipArray.filter(function (relationshipDataItem) {
-                return !!relationshipDataItem;
-              }).reduce(function (matching, _ref2) {
-                var relationshipId = _ref2.id;
-
-                if (matching) {
-                  return matching;
-                }
-                var tmp = getItemByTypeId(type, relationshipId);
-                if (tmp && tmp.attributes && tmp.attributes.lid === lid) {
-                  return tmp;
-                }
-
-                return undefined;
-              }, undefined);
-            } else {
-              resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
-            }
-          }
-
-          if (resolvedRelationshipItem) {
-            objectPath.set(item, pth, coreToNested({
-              getItemByTypeId: getItemByTypeId,
-              item: resolvedRelationshipItem,
-              type: resolvedRelationshipItem.type
-            }));
-          }
-        },
-        obj: item,
-        segments: segments
-      });
-    });
-
-    return item;
-  }
-
   var relationship = relationships[relationshipKey];
+
   if (!(relationship && relationship.data)) {
     return item;
   }
 
-  if (Array.isArray(relationship.data)) {
-    return (0, _extends5.default)({}, item, (0, _defineProperty3.default)({}, relationshipKey, relationship.data.map(function (_ref3) {
-      var id = _ref3.id;
-
-      var resolvedRelationshipItem = id && getItemByTypeId && getItemByTypeId(type, id);
-      if (resolvedRelationshipItem) {
-        return coreToNested({
-          getItemByTypeId: getItemByTypeId,
-          item: resolvedRelationshipItem,
-          type: type
+  return getRelationshipItems({
+    getItemByTypeId: getItemByTypeId,
+    relationshipKey: relationshipKey,
+    relationships: relationships,
+    type: type
+  }).then(function (relationshipItems) {
+    return _promise2.default.all(relationshipItems.map(function (relationshipItem) {
+      return coreToNested({
+        getItemByTypeId: getItemByTypeId,
+        item: relationshipItem,
+        type: relationshipItem.type
+      });
+    })).then(function (formattedRelationshipItems) {
+      if (path) {
+        return resolveByPath({
+          formattedRelationshipItems: formattedRelationshipItems,
+          item: item,
+          path: path
         });
       }
-      return {
-        id: id
-      };
-    })));
-  }
 
-  var relationshipItem = void 0;
+      if (Array.isArray(relationship.data)) {
+        return resolveRelationshipDataArray({
+          formattedRelationshipItems: formattedRelationshipItems,
+          item: item,
+          relationship: relationship,
+          relationshipKey: relationshipKey
+        });
+      }
 
-  var resolvedRelationshipItem = relationship.data.id && getItemByTypeId && getItemByTypeId(type, relationship.data.id);
-
-  if (resolvedRelationshipItem) {
-    relationshipItem = coreToNested({
-      getItemByTypeId: getItemByTypeId,
-      item: resolvedRelationshipItem,
-      type: type
+      return resolveRelationshipDataObject({
+        formattedRelationshipItems: formattedRelationshipItems,
+        item: item,
+        relationship: relationship,
+        relationshipKey: relationshipKey
+      });
     });
-  } else {
-    relationshipItem = {
-      id: relationship.data.id
-    };
-  }
-
-  return (0, _extends5.default)({}, item, (0, _defineProperty3.default)({}, relationshipKey, relationshipItem));
+  });
 };
