@@ -1,0 +1,67 @@
+{
+  "additionalProperties": false,
+  "description": "A job model that should be further specified",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "$ref": "__ROOT__translatedString"
+    },
+    "startedAt": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "failedAt": {
+      "type": "string"
+    },
+    "succeededAt": {
+      "type": "string"
+    },
+    "error": {
+      "type": "string"
+    },
+    "successMessage": {
+      "type": "string"
+    },
+    "isStarted": {
+      "type": "boolean"
+    },
+    "isCompleted": {
+      "type": "boolean"
+    },
+    "isFailed": {
+      "type": "boolean"
+    },
+    "isSucceeded": {
+      "type": "boolean"
+    },
+    "operationId": {
+      "type": "string"
+    },
+    "operationRequest": {
+      "type": "object"
+    },
+    "startedBy": {
+      "type": "boolean"
+    },
+    "initiatedBy": {
+      "type": "boolean"
+    },
+    "schemaVersion": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
+    }
+  }
+}
