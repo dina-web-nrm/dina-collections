@@ -14,33 +14,36 @@ module.exports = function coreToNested({
   resolveRelationships = true,
   type,
 }) {
-  if (!rawItem) {
-    return rawItem
-  }
-  let item = cloneObject(rawItem)
-  const { id, relationships, attributes } = item
-  item = {
-    ...attributes,
-    id,
-  }
+  return Promise.resolve().then(() => {
+    if (!rawItem) {
+      return rawItem
+    }
 
-  const normalizeSpecification = getNormalizeSpecification(type)
+    let item = cloneObject(rawItem)
+    const { id, relationships, attributes } = item
+    item = {
+      ...attributes,
+      id,
+    }
 
-  if (denormalize && normalizeSpecification) {
-    item = denormalizeItem({ item, normalizeSpecification, type })
-  }
+    const normalizeSpecification = getNormalizeSpecification(type)
 
-  const relationshipSpecification = getRelationshipSpecification(type)
+    if (denormalize && normalizeSpecification) {
+      item = denormalizeItem({ item, normalizeSpecification, type })
+    }
 
-  if (resolveRelationships && relationshipSpecification) {
-    item = resolveItemRelationships({
-      coreToNested,
-      getItemByTypeId,
-      item,
-      relationships,
-      relationshipSpecification,
-    })
-  }
+    const relationshipSpecification = getRelationshipSpecification(type)
 
-  return item
+    if (resolveRelationships && relationshipSpecification) {
+      item = resolveItemRelationships({
+        coreToNested,
+        getItemByTypeId,
+        item,
+        relationships,
+        relationshipSpecification,
+      })
+    }
+
+    return item
+  })
 }

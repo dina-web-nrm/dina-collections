@@ -1,5 +1,8 @@
 const nestedToCoreSync = require('./nestedToCoreSync')
 const denormalizedSpecimen = require('./utilities/testData/denormalizedSpecimen')
+const apiFormatPhysicalObject = require('./utilities/testData/apiFormatPhysicalObject')
+const nestedPhysicalObjectWithRelationships = require('./utilities/testData/nestedPhysicalObjectWithRelationships')
+const normalizedSpecimenWithNewPhysicalObject = require('./utilities/testData/normalizedSpecimenWithNewPhysicalObject')
 
 /* eslint-disable sort-keys */
 describe('formatObject/nestedToCoreSync', () => {
@@ -7,7 +10,19 @@ describe('formatObject/nestedToCoreSync', () => {
     expect(typeof nestedToCoreSync).toBe('function')
   })
 
-  test('returns item with core (api format) keys', () => {
+  test('returns non-normalized item with core (api format) keys', () => {
+    const testValue = nestedToCoreSync({
+      extractRelationships: true,
+      item: nestedPhysicalObjectWithRelationships,
+      normalize: false,
+      type: 'physicalObject',
+    })
+    const expectedResult = apiFormatPhysicalObject
+
+    expect(testValue).toEqual(expectedResult)
+  })
+
+  test('normalizes and transforms item and returns core (api format) keys', () => {
     const coreItem = nestedToCoreSync({
       extractRelationships: true,
       item: denormalizedSpecimen,
@@ -16,6 +31,54 @@ describe('formatObject/nestedToCoreSync', () => {
     })
     const coreKeys = Object.keys(coreItem).sort()
     expect(coreKeys).toEqual(['attributes', 'id', 'relationships', 'type'])
+  })
+
+  test('transforms item and returns core (api format) keys', () => {
+    const testValue = nestedToCoreSync({
+      extractRelationships: true,
+      item: normalizedSpecimenWithNewPhysicalObject,
+      normalize: true,
+      type: 'specimen',
+    })
+    const expectedResult = {
+      type: 'specimen',
+      id: '1234',
+      attributes: {
+        normalized: {
+          individuals: [
+            {
+              determinations: [],
+              taxonInformation: null,
+              featureObservations: [],
+              collectionItems: ['69d0e98a-b038-4f4d-9770-cb8c8aaa68a5'],
+              identifiers: [],
+              collectingInformation: [],
+              recordHistoryEvents: [],
+              lid: '15413ab7-4c2f-4072-b2ae-3192f2887808',
+            },
+          ],
+        },
+        type: 'specimen',
+        determinations: [],
+        recordHistoryEvents: [],
+        taxonInformation: [],
+        events: [],
+        collectingInformation: [],
+        featureObservations: [],
+        identifiers: [],
+        collectionItems: [
+          {
+            physicalObject: {
+              lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4',
+            },
+            lid: '69d0e98a-b038-4f4d-9770-cb8c8aaa68a5',
+          },
+        ],
+        individual: '15413ab7-4c2f-4072-b2ae-3192f2887808',
+      },
+    }
+
+    expect(testValue).toEqual(expectedResult)
   })
 
   describe('deeper check of core item format', () => {
@@ -75,6 +138,7 @@ describe('formatObject/nestedToCoreSync', () => {
               type: 'physicalObject',
               id: '2234',
               attributes: {
+                lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
                 type: 'physicalObject',
               },
             },

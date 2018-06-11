@@ -5,7 +5,7 @@ const {
 } = require('./specifications')
 
 const denormalizeItem = require('./normalize/denormalizeItem')
-const resolveItemRelationships = require('./relationships/resolveItemRelationships')
+const resolveItemRelationshipsSync = require('./relationships/resolveItemRelationshipsSync')
 
 module.exports = function coreToNestedSync({
   denormalize = true,
@@ -17,6 +17,7 @@ module.exports = function coreToNestedSync({
   if (!rawItem) {
     return rawItem
   }
+
   let item = cloneObject(rawItem)
   const { id, relationships, attributes } = item
   item = {
@@ -33,7 +34,7 @@ module.exports = function coreToNestedSync({
   const relationshipSpecification = getRelationshipSpecification(type)
 
   if (resolveRelationships && relationshipSpecification) {
-    item = resolveItemRelationships({
+    item = resolveItemRelationshipsSync({
       coreToNestedSync,
       getItemByTypeId,
       item,

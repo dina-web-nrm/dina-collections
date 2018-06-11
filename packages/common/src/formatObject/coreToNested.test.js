@@ -1,99 +1,75 @@
-const coreToNestedSync = require('./coreToNestedSync')
-const apiFormatPhysicalObject = require('./utilities/testData/apiFormatPhysicalObject')
+const coreToNested = require('./coreToNested')
 const apiFormatSpecimen = require('./utilities/testData/apiFormatSpecimen')
-const nestedPhysicalObjectWithRelationships = require('./utilities/testData/nestedPhysicalObjectWithRelationships')
 
 /* eslint-disable sort-keys */
-describe('formatObject/coreToNestedSync', () => {
+describe('formatObject/coreToNested', () => {
   it('is a function', () => {
-    expect(typeof coreToNestedSync).toBe('function')
-  })
-  it('returns falsy item', () => {
-    const item = null
-    expect(
-      coreToNestedSync({
-        denormalize: true,
-        extractRelationships: true,
-        item,
-        type: 'specimen',
-      })
-    ).toEqual(null)
+    expect(typeof coreToNested).toBe('function')
   })
 
-  it('returns denormalized item with nested item keys', () => {
-    const getItemByTypeId = (type, id) => {
-      return {
-        id,
-        resolved: true,
-      }
-    }
-
-    const nestedItem = coreToNestedSync({
-      denormalize: true,
-      extractRelationships: true,
-      getItemByTypeId,
-      item: apiFormatSpecimen,
-      type: 'specimen',
-    })
-    const nestedItemKeys = Object.keys(nestedItem).sort()
-    expect(nestedItemKeys).toEqual(['id', 'individual'])
-  })
-
-  it('returns non-denormalized item with expected content', () => {
-    const getItemByTypeId = (type, id) => {
-      return {
-        id,
-        resolved: true,
-      }
-    }
-
-    const testValue = coreToNestedSync({
-      denormalize: false,
-      extractRelationships: true,
-      getItemByTypeId,
-      item: apiFormatPhysicalObject,
-      type: 'physicalObject',
-    })
-
-    const expectedResult = nestedPhysicalObjectWithRelationships
-
-    expect(testValue).toEqual(expectedResult)
-  })
-
-  describe('deeper check of denormalized nested item format', () => {
-    let nestedItem
-    let individual
-    beforeEach(() => {
-      const getItemByTypeId = (type, id) => {
-        return {
+  let getItemByTypeId
+  beforeEach(() => {
+    getItemByTypeId = (type, id) => {
+      return new Promise(resolve => {
+        resolve({
           id,
           resolved: true,
           type,
-        }
-      }
+        })
+      })
+    }
+  })
 
-      nestedItem = coreToNestedSync({
+  it('returns a promise, i.e. an object with a then() method', () => {
+    expect(
+      typeof coreToNested({
         denormalize: true,
         extractRelationships: true,
         getItemByTypeId,
         item: apiFormatSpecimen,
         type: 'specimen',
+      }).then
+    ).toBe('function')
+  })
+  it('resolves falsy item', () => {
+    const item = null
+    expect.assertions(1)
+    return coreToNested({
+      denormalize: true,
+      extractRelationships: true,
+      getItemByTypeId,
+      item,
+      type: 'specimen',
+    }).then(res => {
+      expect(res).toBe(null)
+    })
+  })
+
+  describe('deeper check of denormalized nested item format', () => {
+    let individual
+    beforeEach(() => {
+      return coreToNested({
+        denormalize: true,
+        extractRelationships: true,
+        getItemByTypeId,
+        item: apiFormatSpecimen,
+        type: 'specimen',
+      }).then(nestedItem => {
+        individual = nestedItem.individual // eslint-disable-line prefer-destructuring
       })
-      individual = nestedItem.individual // eslint-disable-line prefer-destructuring
     })
 
-    it('has expected individual keys', () => {
-      const individualKeys = Object.keys(individual).sort()
-      expect(individualKeys).toEqual([
-        'collectingInformation',
-        'collectionItems',
-        'determinations',
-        'featureObservations',
-        'identifiers',
-        'lid',
-        'recordHistoryEvents',
-        'taxonInformation',
-      ])
+    it('resolves with an item with nested keys', () => {
+      expect.assertions(1)
+      return coreToNested({
+        denormalize: true,
+        extractRelationships: true,
+        getItemByTypeId,
+        item: apiFormatSpecimen,
+        type: 'specimen',
+      }).then(item => {
+        expect(Object.keys(item).sort()).toEqual(['id', 'individual'])
+      })
     })
     it('has collectingInformation', () => {
       const attribute = individual.collectingInformation
@@ -146,45 +122,48 @@ describe('formatObject/coreToNestedSync', () => {
       expect(attribute).toEqual(expectedFormat)
     })
     it('has collectionItems', () => {
-      const getItemByTypeId = (type, id) => {
-        if (type === 'physicalObject') {
-          return {
-            attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
+      const customGetItemByTypeId = (type, id) => {
+        return new Promise(resolve => {
+          if (type === 'physicalObject') {
+            resolve({
+              attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
+              id,
+              resolved: true,
+              type,
+            })
+          }
+
+          resolve({
             id,
             resolved: true,
             type,
-          }
-        }
-
-        return {
-          id,
-          resolved: true,
-          type,
-        }
+          })
+        })
       }
 
-      const nestedSpecimen = coreToNestedSync({
+      expect.assertions(1)
+      return coreToNested({
         denormalize: true,
         extractRelationships: true,
-        getItemByTypeId,
+        getItemByTypeId: customGetItemByTypeId,
         item: apiFormatSpecimen,
         type: 'specimen',
-      })
+      }).then(nestedSpecimen => {
+        const attribute = nestedSpecimen.individual.collectionItems
 
-      const attribute = nestedSpecimen.individual.collectionItems
-
-      const expectedFormat = [
-        {
-          alternateIdentifiersText: 'alternateIdentifiersText',
-          physicalObject: {
-            id: '2234',
-            lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
+        const expectedFormat = [
+          {
+            alternateIdentifiersText: 'alternateIdentifiersText',
+            physicalObject: {
+              id: '2234',
+              lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
+            },
+            physicalObjectText: 'physicalObjectText',
+            lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
           },
-          physicalObjectText: 'physicalObjectText',
-          lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
-        },
-      ]
-      expect(attribute).toEqual(expectedFormat)
+        ]
+        expect(attribute).toEqual(expectedFormat)
+      })
     })
     it('has determinations', () => {
       const attribute = individual.determinations
