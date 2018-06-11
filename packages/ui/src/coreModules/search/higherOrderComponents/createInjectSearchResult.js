@@ -8,16 +8,11 @@ import { globalSelectors } from '../keyObjectModule'
 const createInjectSearchResult = (
   { resource = 'searchSpecimen' } = {}
 ) => ComposedComponent => {
-  /* eslint-disable no-console */
-  if (!resource) {
-    console.error(`Missing resource`)
-  }
-
-  /* eslint-enable no-console */
-
   const mapStateToProps = state => {
     return {
-      searchResult: globalSelectors.get.searchState(state),
+      searchResult: globalSelectors.get[':resource.searchState'](state, {
+        resource,
+      }),
     }
   }
 
