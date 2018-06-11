@@ -9,14 +9,16 @@ module.exports = {
   api: {
     active: false,
   },
-  searchIndexBuilder: {
-    active: true,
+  jobs: {
+    schedulerActive: true,
+    workerActive: true,
   },
   services: {
     agentService: true,
     authService: true,
     curatedEventService: true,
     curatedListService: true,
+    jobService: true,
     placeService: true,
     searchService: true,
     specimenService: true,

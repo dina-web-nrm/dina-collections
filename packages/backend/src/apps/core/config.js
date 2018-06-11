@@ -13,11 +13,16 @@ module.exports = {
     loadInitialData:
       (baseConfig.env.isDevelopment && baseConfig.db.loadInitialData) || false,
   },
+  jobs: {
+    schedulerActive: true,
+    workerActive: true,
+  },
   services: {
     agentService: true,
     authService: true,
     curatedEventService: true,
     curatedListService: true,
+    jobService: true,
     placeService: true,
     searchService: true,
     specimenService: true,
