@@ -1,27 +1,33 @@
 const resolveItemRelationship = require('./resolveItemRelationship')
 
 module.exports = function resolveItemRelationships({
-  coreToNestedSync,
+  coreToNested,
   getItemByTypeId,
   item,
   relationships = {},
   relationshipSpecification,
 }) {
-  let updatedItem = item
-  Object.keys(relationshipSpecification).forEach(relationshipKey => {
-    const { path, targetResource: type } = relationshipSpecification[
-      relationshipKey
-    ]
+  return Promise.resolve().then(() => {
+    return Promise.all(
+      Object.keys(relationshipSpecification).map(relationshipKey => {
+        const { path, targetResource: type } = relationshipSpecification[
+          relationshipKey
+        ]
 
-    updatedItem = resolveItemRelationship({
-      coreToNestedSync,
-      getItemByTypeId,
-      item: updatedItem,
-      path,
-      relationshipKey,
-      relationships,
-      type,
+        return Promise.resolve(
+          resolveItemRelationship({
+            coreToNested,
+            getItemByTypeId,
+            item,
+            path,
+            relationshipKey,
+            relationships,
+            type,
+          })
+        )
+      })
+    ).then(() => {
+      return item
     })
   })
-  return updatedItem
 }
