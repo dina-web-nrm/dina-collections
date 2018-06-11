@@ -33,6 +33,7 @@ const createInjectSearchResult = (
         <ComposedComponent
           {...this.props}
           searchResult={this.props.searchResult}
+          searchResultResourceType={resource}
         />
       )
     }
