@@ -14,7 +14,7 @@ module.exports = function getOne({ operation, models }) {
   return ({ request }) => {
     const {
       pathParams: { id },
-      queryParams: { relationships: queryParamRelationships = '' },
+      queryParams: { relationships: queryParamRelationships = '' } = {},
     } = request
 
     let include

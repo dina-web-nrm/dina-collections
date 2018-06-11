@@ -24,36 +24,40 @@ const mapFunction = ({ items, serviceInteractor }) => {
   const getItemByTypeId = (type, id) => {
     const cacheResource = resourceCacheMap[type]
     if (resourceCacheMap[type]) {
-      const res = serviceInteractor.getOneSync({
-        request: {
-          pathParams: {
-            id,
+      return serviceInteractor
+        .getOne({
+          request: {
+            pathParams: {
+              id,
+            },
           },
-        },
-        resource: cacheResource,
-        sync: true,
-      })
-      // console.log('res', res)
-      return res
+          resource: cacheResource,
+          sync: true,
+        })
+        .then(res => {
+          return (res && res.data) || null
+        })
     }
 
     return null
   }
 
-  const nestedItems = items.map(item => {
-    return coreToNested({
-      getItemByTypeId,
-      item,
-      type: 'specimen',
+  return Promise.all(
+    items.map(item => {
+      return coreToNested({
+        getItemByTypeId,
+        item,
+        type: 'specimen',
+      })
     })
-  })
-
-  const mappedItems = mapSync({
-    items: nestedItems,
-    mapFunctions,
-  })
-  return mappedItems.map(item => {
-    return { doc: item, id: item.id }
+  ).then(nestedItems => {
+    const mappedItems = mapSync({
+      items: nestedItems,
+      mapFunctions,
+    })
+    return mappedItems.map(item => {
+      return { doc: item, id: item.id }
+    })
   })
 }
 
