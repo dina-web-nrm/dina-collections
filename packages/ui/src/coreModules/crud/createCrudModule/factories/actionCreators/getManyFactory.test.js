@@ -55,7 +55,9 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
 
         const expectedAction = {
           meta: {
-            queryParams: {},
+            queryParams: {
+              limit: 10000,
+            },
           },
           type: expectedActionType,
         }
@@ -75,7 +77,8 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
 
         const expectedAction = {
           meta: {
-            queryParams: { filter: { label: 'a-label' } },
+            isLookup: undefined,
+            queryParams: { filter: { label: 'a-label' }, limit: 10000 },
           },
           type: expectedActionType,
         }
@@ -98,6 +101,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {
               filter: { label: 'a-label' },
+              limit: 10000,
               relationships: ['parent'],
             },
           },
@@ -133,7 +137,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
 
         const expectedAction = {
           meta: {
-            queryParams: {},
+            queryParams: { limit: 10000 },
           },
           payload: [
             {
@@ -176,6 +180,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {
               filter: { label: 'a-label' },
+              limit: 10000,
               relationships: ['parent'],
             },
           },
@@ -209,7 +214,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
         const expectedAction = {
           error: true,
           meta: {
-            queryParams: {},
+            queryParams: { limit: 10000 },
           },
           payload: mockError,
           type: 'GET_MANY_PHYSICAL_OBJECT_FAIL',
@@ -237,6 +242,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {
               filter: { label: 'a-label' },
+              limit: 10000,
               relationships: ['parent'],
             },
           },
@@ -264,6 +270,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
     const expectedApiClientCallParams = {
       queryParams: {
         filter: { label: 'a-label' },
+        limit: 10000,
         relationships: ['parent'],
       },
     }

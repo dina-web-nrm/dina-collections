@@ -4,6 +4,10 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var cloneObject = require('./utilities/cloneObject');
@@ -24,36 +28,39 @@ module.exports = function coreToNested(_ref) {
       resolveRelationships = _ref$resolveRelations === undefined ? true : _ref$resolveRelations,
       type = _ref.type;
 
-  if (!rawItem) {
-    return rawItem;
-  }
-  var item = cloneObject(rawItem);
-  var _item = item,
-      id = _item.id,
-      relationships = _item.relationships,
-      attributes = _item.attributes;
+  return _promise2.default.resolve().then(function () {
+    if (!rawItem) {
+      return rawItem;
+    }
 
-  item = (0, _extends3.default)({}, attributes, {
-    id: id
-  });
+    var item = cloneObject(rawItem);
+    var _item = item,
+        id = _item.id,
+        relationships = _item.relationships,
+        attributes = _item.attributes;
 
-  var normalizeSpecification = getNormalizeSpecification(type);
-
-  if (denormalize && normalizeSpecification) {
-    item = denormalizeItem({ item: item, normalizeSpecification: normalizeSpecification, type: type });
-  }
-
-  var relationshipSpecification = getRelationshipSpecification(type);
-
-  if (resolveRelationships && relationshipSpecification) {
-    item = resolveItemRelationships({
-      coreToNested: coreToNested,
-      getItemByTypeId: getItemByTypeId,
-      item: item,
-      relationships: relationships,
-      relationshipSpecification: relationshipSpecification
+    item = (0, _extends3.default)({}, attributes, {
+      id: id
     });
-  }
 
-  return item;
+    var normalizeSpecification = getNormalizeSpecification(type);
+
+    if (denormalize && normalizeSpecification) {
+      item = denormalizeItem({ item: item, normalizeSpecification: normalizeSpecification, type: type });
+    }
+
+    var relationshipSpecification = getRelationshipSpecification(type);
+
+    if (resolveRelationships && relationshipSpecification) {
+      item = resolveItemRelationships({
+        coreToNested: coreToNested,
+        getItemByTypeId: getItemByTypeId,
+        item: item,
+        relationships: relationships,
+        relationshipSpecification: relationshipSpecification
+      });
+    }
+
+    return item;
+  });
 };

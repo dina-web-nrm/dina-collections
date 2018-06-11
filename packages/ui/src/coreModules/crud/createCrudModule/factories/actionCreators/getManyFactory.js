@@ -48,6 +48,7 @@ export default function getManyAcFactory(
     })
 
     let queryParams = {
+      limit: 10000,
       ...queryParamsInput,
     }
     if (relationships) {

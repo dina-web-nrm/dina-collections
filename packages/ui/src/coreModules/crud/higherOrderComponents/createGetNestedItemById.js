@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import config from 'config'
-import coreToNested from 'common/es5/formatObject/coreToNested'
+import coreToNestedSync from 'common/es5/formatObject/coreToNestedSync'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { getItemWithSpecificedRelationships } from 'coreModules/crud/utilities'
 import createGetItemById from './createGetItemById'
@@ -85,7 +85,7 @@ const createGetNestedItemById = ({
         )
       }
 
-      return coreToNested({
+      return coreToNestedSync({
         getItemByTypeId,
         item: getItemWithSpecificedRelationships({
           item,

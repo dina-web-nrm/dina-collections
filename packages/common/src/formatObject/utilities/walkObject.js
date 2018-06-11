@@ -1,28 +1,35 @@
 const objectPath = require('object-path')
+const getNextWalkPath = require('./getNextWalkPath')
 
-module.exports = function walk({ obj, path = '', segments, func }) {
+module.exports = function walkObject({ obj, path = '', segments = [], func }) {
+  if (!obj) {
+    throw new Error('must provide object')
+  }
+
+  if (!func) {
+    throw new Error('must provide func')
+  }
+
   if (!segments.length) {
-    return func(path)
+    func(path)
+  } else {
+    const nextPath = getNextWalkPath({ path, segments })
+    const valueAtNextPath = objectPath.get(obj, nextPath)
+
+    if (valueAtNextPath) {
+      if (Array.isArray(valueAtNextPath)) {
+        valueAtNextPath.forEach((_, index) => {
+          const elementPath = `${nextPath}.${index}`
+          walkObject({
+            func,
+            obj,
+            path: elementPath,
+            segments: segments.slice(1),
+          })
+        })
+      } else {
+        func(nextPath)
+      }
+    }
   }
-
-  const currentSegment = segments[0]
-  const arrayPath = [path, currentSegment]
-    .filter(segment => !!segment)
-    .join('.')
-
-  const array = objectPath.get(obj, arrayPath) || []
-
-  if (!Array.isArray(array)) {
-    return func(arrayPath)
-  }
-
-  return array.forEach((_, index) => {
-    const itemPath = `${arrayPath}.${index}`
-    walk({
-      func,
-      obj,
-      path: itemPath,
-      segments: segments.slice(1),
-    })
-  })
 }

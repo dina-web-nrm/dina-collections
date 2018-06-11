@@ -7,7 +7,7 @@
     "Fredrik Olovsson <fogithub@gmail.com>"
   ],
   "scripts": {
-    "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/index.js && yarn test:unit",
+    "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/buildModels.js && node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",
     "build:schema": "node ./src/schemaBuilder/buildModels.js && node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",

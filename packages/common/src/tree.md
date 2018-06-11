@@ -41,6 +41,17 @@
 │       ├── validateApiConfig.js
 │       ├── validateEndpointConfig.js
 │       └── validateMethodConfig.js
+├── asyncReduce
+│   └── index.js
+├── batch
+│   ├── execute
+│   │   └── index.js
+│   ├── index.js
+│   ├── map
+│   │   ├── index.js
+│   │   └── index.test.js
+│   └── reduce
+│       └── index.js
 ├── buildFileTrees
 │   └── index.js
 ├── buildOperationId
@@ -48,6 +59,9 @@
 │   └── index.js
 ├── chainPromises
 │   └── index.js
+├── createLid
+│   ├── index.js
+│   └── index.test.js
 ├── deleteNullProperties
 │   ├── index.js
 │   └── index.test.js
@@ -106,44 +120,61 @@
 │       └── formValidator.js
 ├── formatObject
 │   ├── coreToNested.js
-│   ├── db
-│   │   └── createDbSpecifications.js
+│   ├── coreToNested.test.js
+│   ├── coreToNestedSync.js
+│   ├── coreToNestedSync.test.js
+│   ├── index.js
 │   ├── nestedToCore.js
 │   ├── nestedToCore.test.js
+│   ├── nestedToCoreSync.js
+│   ├── nestedToCoreSync.test.js
 │   ├── normalize
-│   │   ├── createNormalizeSpecification.js
-│   │   ├── createNormalizeSpecifications.js
 │   │   ├── denormalizeItem.js
 │   │   └── normalizeItem.js
 │   ├── relationships
-│   │   ├── createRelationshipSpecification.js
-│   │   ├── createRelationshipSpecifications.js
 │   │   ├── extractItemRelationship.js
 │   │   ├── extractItemRelationships.js
 │   │   ├── resolveItemRelationship.js
-│   │   └── resolveItemRelationships.js
+│   │   ├── resolveItemRelationshipSync.js
+│   │   ├── resolveItemRelationships.js
+│   │   ├── resolveItemRelationshipsSync.js
+│   │   └── utilities
+│   │       ├── extractArrayRelationship.js
+│   │       ├── extractByPath.js
+│   │       ├── extractObjectRelationship.js
+│   │       ├── getItemByLid.js
+│   │       ├── getItemByLid.test.js
+│   │       ├── getRelationshipItems.js
+│   │       ├── getRelationshipItems.test.js
+│   │       ├── getRelationshipItemsSync.js
+│   │       ├── getRelationshipItemsSync.test.js
+│   │       ├── resolveById.js
+│   │       ├── resolveById.test.js
+│   │       ├── resolveByPath.js
+│   │       ├── resolveByPath.test.js
+│   │       ├── resolveRelationshipDataArray.js
+│   │       ├── resolveRelationshipDataObject.js
+│   │       ├── setExtractedRelationshipData.js
+│   │       └── updatePathRelationshipData.js
 │   ├── specifications.js
 │   ├── todo
 │   └── utilities
 │       ├── cloneObject.js
 │       ├── columnArrayToObject.js
 │       ├── columnObjectToArray.js
-│       ├── createKeyColumnMap.js
-│       ├── createLid.js
 │       ├── createRelationshipIdMap.js
-│       ├── getModelColumn.js
-│       ├── getModelFormat.js
-│       ├── getModelIsColumn.js
 │       ├── getModelRelationshipPath.js
-│       ├── getModelType.js
-│       ├── normalizrGetIdAttribute.js
-│       ├── normalizrProcessStrategy.js
+│       ├── getNextWalkPath.js
+│       ├── getNextWalkPath.test.js
 │       ├── testData
+│       │   ├── apiFormatPhysicalObject.js
+│       │   ├── apiFormatSpecimen.js
 │       │   ├── denormalizedSpecimen.js
 │       │   ├── denormalizedSpecimenWithLids.js
-│       │   ├── normalizedSpecimen.js
-│       │   └── normalizedSpecimenWithRelationships.js
-│       └── walkObject.js
+│       │   ├── nestedPhysicalObjectWithRelationships.js
+│       │   └── normalizedSpecimenWithNewPhysicalObject.js
+│       ├── walkObject.js
+│       └── walkObject.test.js
 ├── jsonApiClient
 │   ├── get
 │   │   ├── createIncludeJobs.js
@@ -262,6 +293,19 @@
 │   │   ├── index.js
 │   │   └── index.test.js
 │   ├── index.js
+│   ├── normalize
+│   │   ├── createKeyColumnMap.js
+│   │   ├── createModelKeyColumnMap.js
+│   │   ├── createNormalizeSpecification.js
+│   │   ├── createNormalizeSpecifications.js
+│   │   ├── index.js
+│   │   └── utilities
+│   │       ├── getModelColumn.js
+│   │       ├── getModelFormat.js
+│   │       ├── getModelIsColumn.js
+│   │       ├── getModelType.js
+│   │       ├── normalizrGetIdAttribute.js
+│   │       └── normalizrProcessStrategy.js
 │   └── relationships
 │       ├── index.js
 │       ├── index.test.js
@@ -282,23 +326,14 @@
 │   ├── map
 │   │   └── sync
 │   │       └── index.js
-│   └── specimen
-│       ├── filterFunctions
-│       │   ├── catalogNumber.js
-│       │   ├── collectingLocation.js
-│       │   ├── id.js
-│       │   ├── identifier.js
-│       │   └── index.js
-│       ├── index.js
-│       ├── mapFunctions
-│       │   ├── catalogNumber.js
-│       │   ├── collectingLocation.js
-│       │   ├── collectingLocation.test.js
-│       │   ├── id.js
-│       │   ├── identifier.js
-│       │   └── index.js
-│       └── testData
-│           └── index.json
+│   └── resources
+│       ├── shared
+│       │   └── filterFunctions
+│       └── specimen
+│           ├── filterFunctions
+│           ├── index.js
+│           ├── mapFunctions
+│           └── testData
 ├── sortMethods
 │   ├── createSortAlphabeticallyByProperty
 │   │   ├── index.js
