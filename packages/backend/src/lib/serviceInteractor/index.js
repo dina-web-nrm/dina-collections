@@ -24,6 +24,17 @@ module.exports = function createServiceInteractor() {
     connectors = connectorsInput
   }
 
+  const call = ({ operationId, request }) => {
+    return Promise.resolve().then(() => {
+      return callController({
+        connectors,
+        log,
+        operationId,
+        request,
+      })
+    })
+  }
+
   const serviceInteractions = operationTypes.reduce(
     (methods, operationType) => {
       log.info(`Creating service interaction for operation: ${operationType}`)
@@ -52,7 +63,7 @@ module.exports = function createServiceInteractor() {
         },
       }
     },
-    {}
+    { call }
   )
 
   return { ...serviceInteractions, addConnectors }
