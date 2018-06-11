@@ -10,12 +10,33 @@ describe('formatObject/coreToNested', () => {
   let getItemByTypeId
   beforeEach(() => {
     getItemByTypeId = (type, id) => {
-      return new Promise(resolve => {
-        resolve({
+      return Promise.resolve().then(() => {
+        if (type === 'identifierType') {
+          return {
+            attributes: {
+              key: 'catalog-number',
+              name: 'catalog number',
+            },
+            id,
+
+            type,
+          }
+        }
+
+        if (type === 'physicalObject') {
+          return {
+            attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
+            id,
+
+            type,
+          }
+        }
+
+        return {
+          attributes: {},
           id,
-          resolved: true,
           type,
-        })
+        }
       })
     }
   })
@@ -122,48 +143,20 @@ describe('formatObject/coreToNested', () => {
       expect(attribute).toEqual(expectedFormat)
     })
     it('has collectionItems', () => {
-      const customGetItemByTypeId = (type, id) => {
-        return new Promise(resolve => {
-          if (type === 'physicalObject') {
-            resolve({
-              attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
-              id,
-              resolved: true,
-              type,
-            })
-          }
+      const attribute = individual.collectionItems
 
-          resolve({
-            id,
-            resolved: true,
-            type,
-          })
-        })
-      }
-
-      expect.assertions(1)
-      return coreToNested({
-        denormalize: true,
-        extractRelationships: true,
-        getItemByTypeId: customGetItemByTypeId,
-        item: apiFormatSpecimen,
-        type: 'specimen',
-      }).then(nestedSpecimen => {
-        const attribute = nestedSpecimen.individual.collectionItems
-
-        const expectedFormat = [
-          {
-            alternateIdentifiersText: 'alternateIdentifiersText',
-            physicalObject: {
-              id: '2234',
-              lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
-            },
-            physicalObjectText: 'physicalObjectText',
-            lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
+      const expectedFormat = [
+        {
+          alternateIdentifiersText: 'alternateIdentifiersText',
+          physicalObject: {
+            id: '2234',
+            lid: '24bf4bb4-f865-4182-a010-34aa898d845d',
           },
-        ]
-        expect(attribute).toEqual(expectedFormat)
-      })
+          physicalObjectText: 'physicalObjectText',
+          lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd',
+        },
+      ]
+      expect(attribute).toEqual(expectedFormat)
     })
     it('has determinations', () => {
       const attribute = individual.determinations
@@ -202,6 +195,8 @@ describe('formatObject/coreToNested', () => {
         {
           identifierType: {
             id: 1,
+            key: 'catalog-number',
+            name: 'catalog number',
           },
           nameSpace: '',
           value: '123456',
