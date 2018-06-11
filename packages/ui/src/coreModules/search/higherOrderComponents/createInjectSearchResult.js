@@ -17,10 +17,12 @@ const createInjectSearchResult = (
   }
 
   const propTypes = {
-    searchResult: PropTypes.object.isRequired,
+    searchResult: PropTypes.object,
   }
 
-  const defaultProps = {}
+  const defaultProps = {
+    searchResult: undefined,
+  }
 
   class SearchResultInjector extends Component {
     render() {

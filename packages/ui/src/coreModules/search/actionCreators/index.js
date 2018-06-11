@@ -1,4 +1,2 @@
-import search from './search'
-import syncSearch from './syncSearch'
-
-export { search, syncSearch }
+export { default as search } from './search'
+export { default as syncSearch } from './syncSearch'
