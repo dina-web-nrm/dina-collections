@@ -16,14 +16,15 @@ var nextTickPromise = function nextTickPromise(deattach) {
 };
 
 var internalCreateBatch = function internalCreateBatch(_ref) {
-  var count = _ref.count,
+  var batchNumber = _ref.batchNumber,
+      count = _ref.count,
       createBatch = _ref.createBatch,
       createEntry = _ref.createEntry,
       numberOfBatchEntries = _ref.numberOfBatchEntries;
 
   var batchData = [];
   if (createBatch) {
-    return _promise2.default.resolve(createBatch({ numberOfBatchEntries: numberOfBatchEntries, startCount: count }));
+    return _promise2.default.resolve(createBatch({ batchNumber: batchNumber, numberOfBatchEntries: numberOfBatchEntries, startCount: count }));
   }
   for (var index = 0; index < numberOfBatchEntries; index += 1) {
     batchData[index] = createEntry(count + index);
@@ -32,19 +33,26 @@ var internalCreateBatch = function internalCreateBatch(_ref) {
 };
 
 var runBatch = function runBatch(_ref2) {
-  var _ref2$count = _ref2.count,
+  var _ref2$batchNumber = _ref2.batchNumber,
+      batchNumber = _ref2$batchNumber === undefined ? 0 : _ref2$batchNumber,
+      _ref2$count = _ref2.count,
       count = _ref2$count === undefined ? 0 : _ref2$count,
       createBatch = _ref2.createBatch,
       createEntry = _ref2.createEntry,
       deattach = _ref2.deattach,
       execute = _ref2.execute,
       maxCount = _ref2.maxCount,
+      maxNumberOfBatches = _ref2.maxNumberOfBatches,
       nItemsLastBatch = _ref2.nItemsLastBatch,
       numberOfEntries = _ref2.numberOfEntries,
       numberOfEntriesEachBatch = _ref2.numberOfEntriesEachBatch;
 
   if (count >= maxCount) {
     return _promise2.default.reject(new Error('Max count reached'));
+  }
+
+  if (batchNumber >= maxNumberOfBatches) {
+    return _promise2.default.reject(new Error('Max number of batches reached'));
   }
 
   if (numberOfEntries !== undefined) {
@@ -59,22 +67,33 @@ var runBatch = function runBatch(_ref2) {
     }
   }
 
-  var numberOfBatchEntries = numberOfEntriesEachBatch;
+  var numberOfBatchEntries = void 0;
+  if (numberOfEntries === undefined) {
+    numberOfBatchEntries = numberOfEntriesEachBatch;
+  } else {
+    numberOfBatchEntries = Math.min(numberOfEntriesEachBatch, numberOfEntries - count);
+  }
+
   return internalCreateBatch({
+    batchNumber: batchNumber,
     count: count,
     createBatch: createBatch,
     createEntry: createEntry,
     numberOfBatchEntries: numberOfBatchEntries
   }).then(function (batchData) {
     var nItemsInBatch = batchData !== undefined ? batchData.length : undefined;
-    return execute(batchData).then(function () {
+    return _promise2.default.resolve().then(function () {
+      return execute(batchData);
+    }).then(function () {
       return nextTickPromise(deattach).then(function () {
         return runBatch({
+          batchNumber: batchNumber + 1,
           count: count + numberOfBatchEntries,
           createBatch: createBatch,
           createEntry: createEntry,
           deattach: deattach,
           execute: execute,
+          maxNumberOfBatches: maxNumberOfBatches,
           nItemsLastBatch: nItemsInBatch,
           numberOfEntries: numberOfEntries,
           numberOfEntriesEachBatch: numberOfEntriesEachBatch
@@ -92,8 +111,18 @@ module.exports = function batchExecute(_ref3) {
       execute = _ref3.execute,
       _ref3$maxCount = _ref3.maxCount,
       maxCount = _ref3$maxCount === undefined ? 1000000 : _ref3$maxCount,
+      _ref3$maxNumberOfBatc = _ref3.maxNumberOfBatches,
+      maxNumberOfBatches = _ref3$maxNumberOfBatc === undefined ? 1000 : _ref3$maxNumberOfBatc,
       numberOfEntries = _ref3.numberOfEntries,
       numberOfEntriesEachBatch = _ref3.numberOfEntriesEachBatch;
+
+  if (!(createBatch || createEntry)) {
+    throw new Error('createBatch or createEntry is required');
+  }
+
+  if (!execute) {
+    throw new Error('execute is required');
+  }
 
   return runBatch({
     createBatch: createBatch,
@@ -101,6 +130,7 @@ module.exports = function batchExecute(_ref3) {
     deattach: deattach,
     execute: execute,
     maxCount: maxCount,
+    maxNumberOfBatches: maxNumberOfBatches,
     numberOfEntries: numberOfEntries,
     numberOfEntriesEachBatch: numberOfEntriesEachBatch
   });

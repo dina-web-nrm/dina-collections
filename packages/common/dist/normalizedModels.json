@@ -329,13 +329,15 @@
     "description": "A single date",
     "properties": {
       "timestamp": {
-        "type": "string",
         "description": "A date in standard format. TBA",
+        "format": "date-time",
+        "type": "string",
         "x-summary": ""
       },
       "interpretedTimestamp": {
-        "type": "string",
         "description": "A date in standard format. TBA",
+        "format": "date-time",
+        "type": "string",
         "x-summary": ""
       },
       "dateText": {
@@ -685,6 +687,98 @@
     "x-summary": "",
     "description": "",
     "id": "typeSpecimenType"
+  },
+  "job": {
+    "additionalProperties": false,
+    "description": "A job model that should be further specified",
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
+      "name": {
+        "$ref": "translatedString",
+        "x-summary": ""
+      },
+      "startedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "createdAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "updatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "failedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "succeededAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "error": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "successMessage": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "isStarted": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "isCompleted": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "isFailed": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "isSucceeded": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "operationId": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "operationRequest": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "startedBy": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "initiatedBy": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "schemaVersion": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "type": {
+        "$ref": "type",
+        "x-summary": ""
+      }
+    },
+    "x-category": "jobService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "job"
   },
   "place": {
     "additionalProperties": false,
@@ -4736,6 +4830,435 @@
     "x-summary": "",
     "description": ""
   },
+  "jobCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "job"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "job",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobStartJobResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs/actions/{id}/startJob",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobSetJobFailedResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs/actions/{id}/setJobFailed",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobSetJobSuccessResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "job"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "job",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/jobs/v01/jobs/actions/{id}/setJobSuccess",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
   "placeCreateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -5515,217 +6038,6 @@
     },
     "type": "object",
     "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "searchSpecimenGetOneResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "searchSpecimen"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "searchSpecimen",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "searchSpecimenGetManyResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "searchSpecimen"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "type": {
-              "default": "searchSpecimen",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "searchSpecimenEmptyViewResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "customObject",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/actions/emptyView",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-summary": "",
-    "description": ""
-  },
-  "searchSpecimenRebuildViewResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "customObject",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/searchSpecimens/actions/rebuildView",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -10836,6 +11148,430 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheTaxonNames/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "searchSpecimen"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "searchSpecimen",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "searchSpecimen"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "searchSpecimen",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "searchSpecimen"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "searchSpecimen",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenUpdateViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/actions/updateView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenRequestRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/actions/requestRebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenRequestUpdateViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/search/v01/searchSpecimens/actions/requestUpdateView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -18754,6 +19490,218 @@
     "x-summary": "",
     "description": ""
   },
+  "jobCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "job",
+                "enum": [
+                  "job"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "job"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {},
+          "type": "job"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {},
+        "type": "job"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "jobUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "job",
+                "enum": [
+                  "job"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "job"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "jobStartJobRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobSetJobFailedRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "jobSetJobSuccessRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
   "placeCreateRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -20242,6 +21190,84 @@
               },
               "attributes": {
                 "$ref": "cacheTaxonName"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenUpdateViewRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "searchSpecimenRequestUpdateViewRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
               }
             }
           }
