@@ -2,9 +2,12 @@ const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
 const addQueryParamsFromFilter = require('./utilities/addQueryParamsFromFilter')
+const addMockToQueryParams = require('./utilities/addMockToQueryParams')
+const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
 const buildOperationId = require('common/src/buildOperationId')
 
 module.exports = function getMany({
+  availableExamples,
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
@@ -33,6 +36,15 @@ module.exports = function getMany({
   })
 
   queryParams = addOffsetToQueryParams({
+    queryParams,
+  })
+
+  queryParams = addMockToQueryParams({
+    queryParams,
+  })
+
+  queryParams = addExampleToQueryParams({
+    availableExamples,
     queryParams,
   })
 

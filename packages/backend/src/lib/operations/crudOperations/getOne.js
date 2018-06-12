@@ -1,7 +1,10 @@
 const buildOperationId = require('common/src/buildOperationId')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
+const addMockToQueryParams = require('./utilities/addMockToQueryParams')
+const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
 
 module.exports = function getOne({
+  availableExamples,
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
@@ -13,11 +16,23 @@ module.exports = function getOne({
   resourcePath,
   ...rest
 }) {
-  const queryParams = addRelationsToQueryParams({
+  let queryParams = addRelationsToQueryParams({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
   })
+
+  queryParams = addMockToQueryParams({
+    includeRelations,
+    queryParams,
+    relations,
+  })
+
+  queryParams = addExampleToQueryParams({
+    availableExamples,
+    queryParams,
+  })
+
   const errors = {
     '400': ['REQUEST_ERROR'],
     '404': ['RESOURCE_NOT_FOUND_ERROR'],
