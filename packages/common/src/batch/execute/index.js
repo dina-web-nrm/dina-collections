@@ -54,7 +54,16 @@ const runBatch = ({
     }
   }
 
-  const numberOfBatchEntries = numberOfEntriesEachBatch
+  let numberOfBatchEntries
+  if (numberOfEntries === undefined) {
+    numberOfBatchEntries = numberOfEntriesEachBatch
+  } else {
+    numberOfBatchEntries = Math.min(
+      numberOfEntriesEachBatch,
+      numberOfEntries - count
+    )
+  }
+
   return internalCreateBatch({
     count,
     createBatch,
@@ -88,6 +97,14 @@ module.exports = function batchExecute({
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) {
+  if (!(createBatch || createEntry)) {
+    throw new Error('createBatch or createEntry is required')
+  }
+
+  if (!execute) {
+    throw new Error('execute is required')
+  }
+
   return runBatch({
     createBatch,
     createEntry,
