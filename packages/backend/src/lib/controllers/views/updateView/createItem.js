@@ -9,6 +9,8 @@ module.exports = function createItem({
       request: {
         pathParams: {
           id,
+        },
+        queryParams: {
           relationships: ['all'],
         },
       },

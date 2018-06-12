@@ -20,7 +20,43 @@ const warmViews = cacheResources.map(({ name }) => {
 
 const resource = 'searchSpecimen'
 
-const mapFunction = ({ items, serviceInteractor }) => {
+const updateViewMapFunction = ({ items, serviceInteractor }) => {
+  const getItemByTypeId = (type, id) => {
+    return serviceInteractor
+      .getOne({
+        request: {
+          pathParams: {
+            id,
+          },
+        },
+        resource: type,
+        sync: true,
+      })
+      .then(res => {
+        return (res && res.data) || null
+      })
+  }
+
+  return Promise.all(
+    items.map(item => {
+      return coreToNested({
+        getItemByTypeId,
+        item,
+        type: 'specimen',
+      })
+    })
+  ).then(nestedItems => {
+    const mappedItems = mapSync({
+      items: nestedItems,
+      mapFunctions,
+    })
+    return mappedItems.map(item => {
+      return { doc: item, id: item.id }
+    })
+  })
+}
+
+const rebuildViewMapFunction = ({ items, serviceInteractor }) => {
   const getItemByTypeId = (type, id) => {
     const cacheResource = resourceCacheMap[type]
     if (resourceCacheMap[type]) {
@@ -74,12 +110,12 @@ module.exports = {
       type: 'emptyView',
     },
     {
-      mapFunction,
+      mapFunction: updateViewMapFunction,
       srcResource: 'specimen',
       type: 'updateView',
     },
     {
-      mapFunction,
+      mapFunction: rebuildViewMapFunction,
       srcResource: 'specimen',
       type: 'rebuildView',
       warmViews,
