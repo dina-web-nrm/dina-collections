@@ -3,12 +3,14 @@
   "description": "A single date",
   "properties": {
     "timestamp": {
-      "type": "string",
-      "description": "A date in standard format. TBA"
+      "description": "A date in standard format. TBA",
+      "format": "date-time",
+      "type": "string"
     },
     "interpretedTimestamp": {
-      "type": "string",
-      "description": "A date in standard format. TBA"
+      "description": "A date in standard format. TBA",
+      "format": "date-time",
+      "type": "string"
     },
     "dateText": {
       "type": "string",

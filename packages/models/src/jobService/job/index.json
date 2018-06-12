@@ -10,18 +10,23 @@
       "$ref": "__ROOT__translatedString"
     },
     "startedAt": {
+      "format": "date-time",
       "type": "string"
     },
     "createdAt": {
+      "format": "date-time",
       "type": "string"
     },
     "updatedAt": {
+      "format": "date-time",
       "type": "string"
     },
     "failedAt": {
+      "format": "date-time",
       "type": "string"
     },
     "succeededAt": {
+      "format": "date-time",
       "type": "string"
     },
     "error": {
