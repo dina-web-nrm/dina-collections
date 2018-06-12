@@ -2,7 +2,7 @@ const createLog = require('../../../utilities/log')
 const execute = require('./execute')
 const findNext = require('./findNext')
 
-const log = createLog('lib/jobs/scheduler')
+const log = createLog('lib/jobs/worker')
 
 module.exports = function createWorker({
   idleDelay = 1000,

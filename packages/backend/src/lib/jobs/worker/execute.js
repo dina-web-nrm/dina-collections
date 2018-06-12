@@ -1,10 +1,12 @@
 const createLog = require('../../../utilities/log')
 
-const log = createLog('lib/jobs/scheduler')
+const log = createLog('lib/jobs/worker/execute')
 
 module.exports = function execute({ job, serviceInteractor }) {
   return Promise.resolve().then(() => {
     const operationId = job && job.attributes && job.attributes.operationId
+    const operationRequest =
+      job && job.attributes && job.attributes.operationRequest
     if (!operationId) {
       throw new Error('Operation id is missing')
     }
@@ -22,8 +24,10 @@ module.exports = function execute({ job, serviceInteractor }) {
         },
       })
       .then(() => {
+        const request = operationRequest || undefined
+
         return serviceInteractor
-          .call({ operationId })
+          .call({ operationId, request })
           .then(() => {
             log.info(
               `Job with id: :${job.id} and operationId: ${
