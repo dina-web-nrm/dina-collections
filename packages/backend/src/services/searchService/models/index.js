@@ -1,4 +1,4 @@
-const cacheResources = require('../cacheResources')
+const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
 module.exports = [
   {
@@ -6,7 +6,7 @@ module.exports = [
     name: 'searchSpecimen',
   },
 
-  ...cacheResources.map(({ name }) => {
+  ...cacheResourcesSpecifications.map(({ name }) => {
     return {
       modelFactory: 'inMemoryViewDocumentModel',
       name,
