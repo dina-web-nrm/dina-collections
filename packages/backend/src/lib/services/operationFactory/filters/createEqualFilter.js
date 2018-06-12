@@ -18,10 +18,8 @@ module.exports = function createEqualFilter({
         return null
       }
 
-      const parsedValue = value === 'null' ? null : value
-
       return {
-        [path]: parsedValue,
+        [path]: value,
       }
     },
   }

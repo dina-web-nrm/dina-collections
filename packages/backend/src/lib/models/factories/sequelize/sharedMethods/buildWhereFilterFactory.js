@@ -1,5 +1,6 @@
 const asyncReduce = require('common/src/asyncReduce')
 const Sequelize = require('sequelize')
+const parseFilterValue = require('../../../utilities/parseFilterValue')
 
 const { Op } = Sequelize
 
@@ -19,7 +20,7 @@ module.exports = function buildWhereFilterFactory() {
             return sequelizeFilterFunction({
               filterInput,
               Op,
-              value: filterInput[key],
+              value: parseFilterValue(filterInput[key]),
             })
           })
           .then(filterFunctionWhere => {
