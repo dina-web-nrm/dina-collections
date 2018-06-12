@@ -10,9 +10,11 @@ import { createInjectSearchResult } from 'coreModules/search/higherOrderComponen
 import { push } from 'react-router-redux'
 import Row from './Row'
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { searchResultResourceType: resource }) => {
   return {
-    searchResult: globalSelectors.get.searchState(state),
+    searchResult: globalSelectors.get[':resource.searchState'](state, {
+      resource,
+    }),
   }
 }
 
@@ -25,7 +27,10 @@ const mapDispatchToProps = {
 const propTypes = {
   fetchItemById: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
-  searchResult: PropTypes.object.isRequired,
+  searchResult: PropTypes.object,
+}
+const defaultProps = {
+  searchResult: undefined,
 }
 
 const itemsRenderer = (items, ref) => {
@@ -72,9 +77,9 @@ class Result extends Component {
 }
 
 Result.propTypes = propTypes
+Result.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
   createInjectSearchResult({
     resource: 'searchSpecimen',
   }),
@@ -88,5 +93,6 @@ export default compose(
     ],
     relationships: ['all'],
     resource: 'specimen',
-  })
+  }),
+  connect(mapStateToProps, mapDispatchToProps)
 )(Result)
