@@ -76,8 +76,21 @@ module.exports = {
     {
       mapFunction,
       srcResource: 'specimen',
+      type: 'updateView',
+    },
+    {
+      mapFunction,
+      srcResource: 'specimen',
       type: 'rebuildView',
       warmViews,
+    },
+    {
+      srcResource: 'specimen',
+      type: 'requestRebuildView',
+    },
+    {
+      srcResource: 'specimen',
+      type: 'requestUpdateView',
     },
   ],
   resource,
