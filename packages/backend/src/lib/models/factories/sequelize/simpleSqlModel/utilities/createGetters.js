@@ -1,4 +1,4 @@
-const moment = require('moment')
+const formatAsTimestamp = require('common/src/date/formatAsTimestamp')
 
 module.exports = function createGetters() {
   return {
@@ -17,7 +17,7 @@ module.exports = function createGetters() {
         if (value !== null) {
           const isDate = value instanceof Date
           if (isDate) {
-            obj[key] = moment(value).format() // eslint-disable-line no-param-reassign
+            obj[key] = formatAsTimestamp(value) // eslint-disable-line no-param-reassign
           } else {
             obj[key] = value // eslint-disable-line no-param-reassign
           }

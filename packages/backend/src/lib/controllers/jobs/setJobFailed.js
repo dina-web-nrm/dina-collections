@@ -1,4 +1,4 @@
-const moment = require('moment')
+const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const update = require('../crud/update')
 
 module.exports = function setJobFailed({ operation = {}, models }) {
@@ -11,7 +11,7 @@ module.exports = function setJobFailed({ operation = {}, models }) {
       ...input,
       attributes: {
         ...(input.attributes || {}),
-        failedAt: moment.utc(),
+        failedAt: getCurrentUTCTimestamp(),
       },
     }
 

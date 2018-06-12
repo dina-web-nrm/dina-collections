@@ -1,3 +1,4 @@
+const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const backendError403 = require('common/src/error/errorFactories/backendError403')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 
@@ -34,7 +35,7 @@ module.exports = function deactivateFactory({ getById, Model }) {
 
       const newModel = {
         ...storedData,
-        deactivatedAt: new Date(),
+        deactivatedAt: getCurrentUTCTimestamp(),
       }
 
       return existingModel.update(newModel).then(savedModel => {
