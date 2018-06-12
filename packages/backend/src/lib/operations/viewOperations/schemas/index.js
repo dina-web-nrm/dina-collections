@@ -1,6 +1,5 @@
 const base = require('./base')
 
-exports.rebuildView = base
 exports.rebuildView = {
   additionalProperties: false,
   properties: {
@@ -20,7 +19,40 @@ exports.rebuildView = {
   },
   required: [...base.required],
 }
-exports.requestRebuildView = base
+exports.requestRebuildView = {
+  additionalProperties: false,
+  properties: {
+    ...base.properties,
+    srcResource: {
+      type: 'string',
+    },
+  },
+  required: [...base.required],
+}
 exports.emptyView = base
-exports.requestUpdateView = base
-exports.updateView = base
+exports.requestUpdateView = {
+  additionalProperties: false,
+  properties: {
+    ...base.properties,
+    srcResource: {
+      type: 'string',
+    },
+  },
+  required: [...base.required],
+}
+exports.updateView = {
+  additionalProperties: false,
+  properties: {
+    ...base.properties,
+
+    mapFunction: {
+      not: {
+        type: 'string',
+      },
+    },
+    srcResource: {
+      type: 'string',
+    },
+  },
+  required: [...base.required],
+}

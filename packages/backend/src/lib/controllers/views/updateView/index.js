@@ -1,11 +1,7 @@
-const rebuild = require('./rebuild')
+const update = require('./update')
 const defaultMapFunction = require('../utilities/defaultMapFunction')
 
-module.exports = function rebuildView({
-  operation,
-  models,
-  serviceInteractor,
-}) {
+module.exports = function updateView({ operation, models, serviceInteractor }) {
   const {
     mapFunction = defaultMapFunction,
     resource,
@@ -25,11 +21,17 @@ module.exports = function rebuildView({
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
-  return () => {
-    return rebuild({
+  return ({ request = {} }) => {
+    const { body } = request
+    const { data: { attributes: { ids } = {} } = {} } = body
+    if (!ids && ids.length) {
+      throw new Error('Ids required')
+    }
+
+    return update({
+      ids,
       mapFunction,
       model,
-      nItemsEachBatch: 1000,
       serviceInteractor,
       srcResource,
       warmViews,
