@@ -6,10 +6,10 @@
 ├── core
 │   ├── config.js
 │   └── index.js
-├── searchEngine
-│   ├── config.js
-│   └── index.js
-└── tree.md
+├── tree.md
+└── worker
+    ├── config.js
+    └── index.js
 
 ```
 

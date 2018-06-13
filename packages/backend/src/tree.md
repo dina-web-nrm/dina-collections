@@ -4,8 +4,8 @@
 ├── apps
 │   ├── config
 │   ├── core
-│   ├── searchEngine
-│   └── tree.md
+│   ├── tree.md
+│   └── worker
 ├── info
 │   ├── description.md
 │   ├── index.json
@@ -17,18 +17,15 @@
 │   ├── bootstrap
 │   ├── connectors
 │   ├── controllers
-│   ├── elasticsearch
+│   ├── dataStores
 │   ├── integrations
-│   ├── searchEngine
-│   ├── sequelize
+│   ├── jobs
+│   ├── models
+│   ├── operations
+│   ├── serviceInteractor
 │   ├── serviceRouter
 │   ├── services
 │   └── tree.md
-├── performance
-│   ├── index.js
-│   ├── output
-│   ├── setup
-│   └── utilities
 ├── scripts
 │   └── buildFileStructureTrees.js
 ├── services
@@ -38,9 +35,11 @@
 │   ├── curatedListService
 │   ├── externalEventService
 │   ├── index.js
+│   ├── jobService
 │   ├── organizationService
 │   ├── placeService
 │   ├── searchService
+│   ├── serviceOrder.js
 │   ├── specimenService
 │   ├── statusService
 │   ├── storageService

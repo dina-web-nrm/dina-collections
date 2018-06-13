@@ -28,6 +28,7 @@
 │   ├── favicon.ico
 │   ├── index.html
 │   └── manifest.json
+├── sample.config.scripts.js
 ├── src
 │   ├── apps
 │   ├── config
@@ -44,8 +45,6 @@
 │   ├── test
 │   ├── tree.md
 │   └── utilities
-├── storybook-static
-│   └── static
 ├── test
 │   └── __mocks__
 ├── todo

@@ -78,6 +78,17 @@
 │       ├── description.md
 │       └── index.js
 ├── index.js
+├── jobService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
+│   │   └── index.js
+│   ├── models
+│   │   └── index.js
+│   └── resources
+│       ├── index.js
+│       └── operations
+│           └── getMany
 ├── organizationService
 │   ├── index.js
 │   ├── info
@@ -95,30 +106,27 @@
 │   │   ├── index.js
 │   │   └── loadInitialData
 │   │       └── index.js
-│   ├── resources
-│   │   ├── index.js
-│   │   └── place
-│   │       ├── create
-│   │       ├── getMany
-│   │       └── index.js
-│   └── todo
+│   └── resources
+│       ├── index.js
+│       └── place
+│           ├── create
+│           ├── getMany
+│           └── index.js
 ├── searchService
+│   ├── cacheResourcesSpecifications.js
 │   ├── index.js
 │   ├── info
 │   │   └── index.js
 │   ├── models
 │   │   └── index.js
 │   └── resources
+│       ├── cacheResources.js
 │       ├── index.js
 │       └── searchSpecimen
-│           └── index.js
+│           ├── index.js
+│           └── mapFunctions.js
+├── serviceOrder.js
 ├── specimenService
-│   ├── controllers
-│   │   └── index.js
-│   ├── elasticModels
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
