@@ -5,7 +5,8 @@ const findNext = require('./findNext')
 const log = createLog('lib/jobs/worker')
 
 module.exports = function createWorker({
-  idleDelay = 1000,
+  idleDelay = 200,
+  pollDelay = 1000,
   serviceInteractor,
 }) {
   log.info('Start worker')
@@ -19,18 +20,25 @@ module.exports = function createWorker({
       .then(job => {
         if (!job) {
           log.info('No jobs found')
-          return null
+          return false
         }
         log.info(`Job with id :${job.id} found`)
         return execute({
           job,
           serviceInteractor,
+        }).then(() => {
+          return true
         })
       })
-      .then(() => {
+      .then(jobExecuted => {
+        if (jobExecuted) {
+          return setTimeout(() => {
+            run()
+          }, idleDelay)
+        }
         return setTimeout(() => {
           run()
-        }, idleDelay)
+        }, pollDelay)
       })
       .catch(err => {
         log.err('Error in run', err)

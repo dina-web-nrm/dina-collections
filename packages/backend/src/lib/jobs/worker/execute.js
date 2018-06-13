@@ -7,9 +7,6 @@ module.exports = function execute({ job, serviceInteractor }) {
     const operationId = job && job.attributes && job.attributes.operationId
     const operationRequest =
       job && job.attributes && job.attributes.operationRequest
-    if (!operationId) {
-      throw new Error('Operation id is missing')
-    }
     log.info(
       `Started execute job with id: :${job.id} and operationId: ${operationId}`
     )
@@ -25,7 +22,9 @@ module.exports = function execute({ job, serviceInteractor }) {
       })
       .then(() => {
         const request = operationRequest || undefined
-
+        if (!operationId) {
+          throw new Error('Operation id is missing')
+        }
         return serviceInteractor
           .call({ operationId, request })
           .then(() => {
