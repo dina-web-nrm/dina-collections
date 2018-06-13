@@ -3,6 +3,8 @@ const {
   rebuildViewMapFunction,
 } = require('./mapFunctions')
 
+const createGetManyFilters = require('../../../../lib/services/operationFactory/filters/createGetManyFilters')
+
 const cacheResourcesSpecifications = require('../../cacheResourcesSpecifications')
 
 const warmViews = cacheResourcesSpecifications.map(({ name }) => {
@@ -18,6 +20,12 @@ module.exports = {
       type: 'getOne',
     },
     {
+      type: 'del',
+    },
+    {
+      filters: createGetManyFilters({
+        include: ['ids', 'updatedAfter', 'deactivated'],
+      }),
       type: 'getMany',
     },
     {
