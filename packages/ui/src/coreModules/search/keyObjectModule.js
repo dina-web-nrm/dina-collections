@@ -9,7 +9,11 @@ const {
   selectors,
   reducer,
 } = keyObjectModuleFactory({
-  keys: [':resource.searchState', ':resource.filterState'],
+  keys: [
+    ':resource.filterState',
+    ':resource.lastUpdatedAt',
+    ':resource.searchState',
+  ],
   name,
 })
 export {
