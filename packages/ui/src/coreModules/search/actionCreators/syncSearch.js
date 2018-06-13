@@ -28,11 +28,14 @@ export default function syncSearch({ resource = 'searchSpecimen' }) {
 
     const nextLastUpdatedAt = getCurrentUTCTimestamp()
 
-    let updateQueryParams = {}
+    let updateQueryParams = {
+      limit: 100000,
+    }
     let resourcesToRemoveQueryParams = {
       filter: {
         deactivated: true,
       },
+      limit: 100000,
     }
 
     if (lastUpdatedAt) {
