@@ -9,7 +9,7 @@ module.exports = function createFactory(
     throw new Error('Have to provide model')
   }
 
-  return function create({ doc = {}, foreignKeyObject }) {
+  return function create({ allowId = false, doc = {}, foreignKeyObject }) {
     const { relationships, ...attributes } = doc
 
     let data = {
@@ -23,6 +23,13 @@ module.exports = function createFactory(
       data = {
         ...data,
         ...foreignKeyObject,
+      }
+    }
+
+    if (doc.id !== undefined && allowId) {
+      data = {
+        ...data,
+        id: doc.id,
       }
     }
 
