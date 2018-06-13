@@ -1,4 +1,5 @@
 const createLog = require('../../../../utilities/log')
+
 const log = createLog('lib/controllers/views/updateView/getRequiredAction')
 
 const getSrcItem = ({ serviceInteractor, id, srcResource }) => {
