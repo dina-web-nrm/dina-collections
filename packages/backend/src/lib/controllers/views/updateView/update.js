@@ -31,12 +31,10 @@ module.exports = function update({
         bailed.push(id)
         return null
       }
-
       if (action === 'deactivate') {
         deleted.push(id)
-        throw new Error('Deactivate not implemented')
+        return model.deactivate({ id })
       }
-
       return createItem({
         id,
         mapFunction,

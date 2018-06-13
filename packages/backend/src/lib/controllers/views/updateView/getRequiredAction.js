@@ -1,3 +1,6 @@
+const createLog = require('../../../../utilities/log')
+const log = createLog('lib/controllers/views/updateView/getRequiredAction')
+
 const getSrcItem = ({ serviceInteractor, id, srcResource }) => {
   return serviceInteractor
     .getOne({
@@ -46,17 +49,22 @@ module.exports = function getRequiredAction({
   serviceInteractor,
   srcResource,
 }) {
+  log.debug(`Getting src item ${srcResource} -> ${id}`)
   return getSrcItem({
     id,
     serviceInteractor,
     srcResource,
   }).then(srcItem => {
+    log.debug(`Getting targetItem with id -> ${id}`)
     return getTargetItem({
       id,
       model,
     }).then(targetItem => {
       const srcStatus = srcItem ? 'exist' : 'dont-exist'
       const targetStatus = targetItem ? 'exist' : 'dont-exist'
+
+      log.debug(`srcStatus: ${srcStatus}`)
+      log.debug(`targetStatus: ${targetStatus}`)
 
       if (srcStatus === 'exist' && targetStatus === 'dont-exist') {
         return 'create'
