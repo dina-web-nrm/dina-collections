@@ -1,3 +1,4 @@
+import { execute as batchExecute } from 'common/es5/batch'
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
 import getActionActionTypes from './utilities/getActionActionTypes'
@@ -36,6 +37,7 @@ export default function getManyAcFactory(
       ids,
       include,
       isLookup, // TODO - remove this
+      numberOfEntriesEachBatch = 5000,
       queryParams: queryParamsInput = {},
       relationships,
       throwError = false,
@@ -48,7 +50,7 @@ export default function getManyAcFactory(
     })
 
     let queryParams = {
-      limit: 10000,
+      limit: 1000,
       ...queryParamsInput,
     }
     if (relationships) {
@@ -84,21 +86,50 @@ export default function getManyAcFactory(
         meta: callParams,
         type: operationActionTypes.request,
       })
-      return apiClient.getMany(resource, callParams).then(
-        response => {
-          if (response.included) {
+      let lastBatchIncluded
+      let lastBatchItems
+      let lastBatchCallParams
+      let isLastBatch = false
+      return batchExecute({
+        createBatch: ({ batchNumber, numberOfBatchEntries, startCount }) => {
+          lastBatchCallParams = {
+            ...callParams,
+            batchNumber,
+            queryParams: {
+              ...callParams.queryParams,
+              limit: numberOfBatchEntries,
+              offset: startCount,
+            },
+          }
+          return apiClient
+            .getMany(resource, lastBatchCallParams)
+            .then(response => {
+              lastBatchIncluded = response.included
+              lastBatchItems = response.data
+              isLastBatch =
+                lastBatchItems && lastBatchItems.length !== numberOfBatchEntries
+              return lastBatchItems
+            })
+        },
+        execute: items => {
+          if (lastBatchIncluded) {
             dispatchIncludedActions({
               actionTypes,
               dispatch,
-              included: response.included,
+              included: lastBatchIncluded,
             })
           }
           dispatch({
-            meta: callParams,
-            payload: response.data,
+            meta: { ...lastBatchCallParams, isLastBatch },
+            payload: items,
             type: operationActionTypes.success,
           })
-          return response.data
+          return items
+        },
+        numberOfEntriesEachBatch,
+      }).then(
+        () => {
+          return lastBatchItems
         },
         error => {
           dispatch({
