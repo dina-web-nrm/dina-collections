@@ -1,7 +1,6 @@
-import Accordion from './Accordion'
-import Footer from './Footer'
-import PageTemplate from './PageTemplate'
-import TranslatedLabel from './TranslatedLabel'
-import ThreeColumnGrid from './ThreeColumnGrid'
-
-export { Accordion, Footer, PageTemplate, ThreeColumnGrid, TranslatedLabel }
+export { default as Accordion } from './Accordion'
+export { default as DateString } from './DateString'
+export { default as Footer } from './Footer'
+export { default as PageTemplate } from './PageTemplate'
+export { default as TranslatedLabel } from './TranslatedLabel'
+export { default as ThreeColumnGrid } from './ThreeColumnGrid'
