@@ -1,16 +1,22 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
 import { Grid, List, Modal } from 'semantic-ui-react'
 
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import { DateString } from 'coreModules/commonUi/components'
 import EditCuratorialAssessment from './CuratorialAssessmentForm/Edit'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   agent: PropTypes.shape({
-    fullName: PropTypes.string,
+    attributes: PropTypes.shape({
+      fullName: PropTypes.string,
+    }),
+    id: PropTypes.string.isRequired,
   }),
   agentText: PropTypes.string,
   changeFieldValue: PropTypes.func.isRequired,
@@ -66,6 +72,7 @@ class CuratorialAssessmentItem extends PureComponent {
     } = this.props
 
     const { open } = this.state
+
     return (
       <List.Item>
         <List.Content style={{ padding: '0.5em' }} verticalAlign="bottom">
@@ -82,10 +89,10 @@ class CuratorialAssessmentItem extends PureComponent {
                 >
                   <Grid.Row>
                     <Grid.Column computer={2} mobile={4} tablet={4}>
-                      {date && `${date.year} - ${date.month} - ${date.day}`}
+                      {date && <DateString {...date} />}
                     </Grid.Column>
                     <Grid.Column computer={3} mobile={6} tablet={6}>
-                      {agent && agent.fullName}
+                      {agent && agent.attributes && agent.attributes.fullName}
                     </Grid.Column>
                     <Grid.Column computer={3} mobile={6} tablet={6}>
                       {agentText}
@@ -136,4 +143,11 @@ class CuratorialAssessmentItem extends PureComponent {
 CuratorialAssessmentItem.propTypes = propTypes
 CuratorialAssessmentItem.defaultProps = defaultProps
 
-export default pathBuilder()(CuratorialAssessmentItem)
+export default compose(
+  createGetItemById({
+    idPath: 'agent.id',
+    itemKey: 'agent',
+    resource: 'agent',
+  }),
+  pathBuilder()
+)(CuratorialAssessmentItem)
