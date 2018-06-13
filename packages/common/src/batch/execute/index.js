@@ -29,19 +29,24 @@ const internalCreateBatch = ({
 }
 
 const runBatch = ({
-  count = 0,
   batchNumber = 0,
+  count = 0,
   createBatch,
   createEntry,
   deattach,
   execute,
   maxCount,
+  maxNumberOfBatches,
   nItemsLastBatch,
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) => {
   if (count >= maxCount) {
     return Promise.reject(new Error('Max count reached'))
+  }
+
+  if (batchNumber >= maxNumberOfBatches) {
+    return Promise.reject(new Error('Max number of batches reached'))
   }
 
   if (numberOfEntries !== undefined) {
@@ -87,6 +92,7 @@ const runBatch = ({
             createEntry,
             deattach,
             execute,
+            maxNumberOfBatches,
             nItemsLastBatch: nItemsInBatch,
             numberOfEntries,
             numberOfEntriesEachBatch,
@@ -102,6 +108,7 @@ module.exports = function batchExecute({
   deattach = true,
   execute,
   maxCount = 1000000,
+  maxNumberOfBatches = 1000,
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) {
@@ -119,6 +126,7 @@ module.exports = function batchExecute({
     deattach,
     execute,
     maxCount,
+    maxNumberOfBatches,
     numberOfEntries,
     numberOfEntriesEachBatch,
   })
