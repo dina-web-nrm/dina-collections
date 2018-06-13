@@ -15,7 +15,9 @@ module.exports = function createServiceInteractor() {
     'getVersion',
     'getVersions',
     'rebuildView',
+    'requestUpdateView',
     'update',
+    'updateView',
   ]
 
   let connectors = null

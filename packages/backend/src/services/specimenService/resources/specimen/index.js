@@ -3,6 +3,25 @@ const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
 const getManyfilters = require('./operations/getMany/filters')
 
+const postEditHook = ({ res, serviceInteractor }) => {
+  return Promise.resolve().then(() => {
+    const id = res && res.id
+    const request = {
+      body: {
+        data: {
+          attributes: {
+            ids: [id],
+          },
+        },
+      },
+    }
+    return serviceInteractor.requestUpdateView({
+      request,
+      resource: 'searchSpecimen',
+    })
+  })
+}
+
 module.exports = {
   basePath: '/api/specimen/v01',
   operations: [
@@ -11,6 +30,7 @@ module.exports = {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
       exampleRequests: { primary: normalizedRequestSuccess },
+      postCreateHook: postEditHook,
       type: 'create',
       validateBody,
     },
@@ -25,9 +45,11 @@ module.exports = {
     },
     {
       exampleRequests: { primary: updateRequestSuccess },
+      postUpdateHook: postEditHook,
       type: 'update',
     },
     {
+      postDeleteHook: postEditHook,
       type: 'del',
     },
     {

@@ -2,8 +2,8 @@ const createObjectResponse = require('../utilities/transformations/createObjectR
 const transformInput = require('../utilities/transformations/inputObject')
 const transformOutput = require('../utilities/transformations/outputObject')
 
-module.exports = function update({ operation, models, postUpdateHook }) {
-  const { resource, relations } = operation
+module.exports = function update({ operation, models, serviceInteractor }) {
+  const { resource, relations, postUpdateHook } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -20,8 +20,11 @@ module.exports = function update({ operation, models, postUpdateHook }) {
       .then(transformOutput)
       .then(res => {
         if (postUpdateHook) {
-          return postUpdateHook(res)
+          return postUpdateHook({ res, serviceInteractor }).then(() => {
+            return res
+          })
         }
+
         return res
       })
       .then(output => {
