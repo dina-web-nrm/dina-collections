@@ -38,13 +38,13 @@ export default function syncSearch({ resource = 'searchSpecimen' }) {
     if (lastUpdatedAt) {
       updateQueryParams = {
         filter: {
-          lastUpdatedAfter: lastUpdatedAt,
+          updatedAfter: lastUpdatedAt,
         },
       }
       resourcesToRemoveQueryParams = {
         filter: {
           ...resourcesToRemoveQueryParams.filter,
-          lastUpdatedAfter: lastUpdatedAt,
+          updatedAfter: lastUpdatedAt,
         },
       }
     }
