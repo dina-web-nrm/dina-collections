@@ -40,9 +40,17 @@ export default function getManyAcFactory(
       numberOfEntriesEachBatch = 5000,
       queryParams: queryParamsInput = {},
       relationships,
+      removeFromState = false,
       throwError = false,
     } = {}
   ) {
+    if (removeFromState) {
+      if (include || relationships) {
+        throw new Error(
+          'Not supported to remove from state with includes or relationship'
+        )
+      }
+    }
     log.debug(`${resource}.getMany called`, {
       queryParamsInput,
       relationships,
@@ -81,6 +89,7 @@ export default function getManyAcFactory(
       queryParams,
     }
 
+    const maxNumberOfBatches = 100
     return (dispatch, getState, { apiClient }) => {
       dispatch({
         meta: callParams,
@@ -120,12 +129,14 @@ export default function getManyAcFactory(
             })
           }
           dispatch({
-            meta: { ...lastBatchCallParams, isLastBatch },
+            meta: { ...lastBatchCallParams, isLastBatch, removeFromState },
             payload: items,
             type: operationActionTypes.success,
           })
           return items
         },
+        maxNumberOfBatches,
+        numberOfEntries: queryParams.limit,
         numberOfEntriesEachBatch,
       }).then(
         () => {

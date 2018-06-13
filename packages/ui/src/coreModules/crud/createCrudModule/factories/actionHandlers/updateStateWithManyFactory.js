@@ -24,6 +24,24 @@ export default function updateStateWithManyFactory(
       action
     )
 
+    const { removeFromState } = action.meta || {}
+
+    if (removeFromState) {
+      const updatedItems = {
+        ...state.items,
+      }
+      action.payload.forEach(item => {
+        const { id } = item
+        if (id) {
+          delete updatedItems[id]
+        }
+      })
+      return {
+        ...state,
+        items: updatedItems,
+      }
+    }
+
     const newItems = {}
     action.payload.forEach(item => {
       const { id } = item
