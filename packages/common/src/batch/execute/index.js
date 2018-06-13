@@ -10,6 +10,7 @@ const nextTickPromise = deattach => {
 }
 
 const internalCreateBatch = ({
+  batchNumber,
   count,
   createBatch,
   createEntry,
@@ -18,7 +19,7 @@ const internalCreateBatch = ({
   const batchData = []
   if (createBatch) {
     return Promise.resolve(
-      createBatch({ numberOfBatchEntries, startCount: count })
+      createBatch({ batchNumber, numberOfBatchEntries, startCount: count })
     )
   }
   for (let index = 0; index < numberOfBatchEntries; index += 1) {
@@ -29,6 +30,7 @@ const internalCreateBatch = ({
 
 const runBatch = ({
   count = 0,
+  batchNumber = 0,
   createBatch,
   createEntry,
   deattach,
@@ -65,26 +67,32 @@ const runBatch = ({
   }
 
   return internalCreateBatch({
+    batchNumber,
     count,
     createBatch,
     createEntry,
     numberOfBatchEntries,
   }).then(batchData => {
     const nItemsInBatch = batchData !== undefined ? batchData.length : undefined
-    return execute(batchData).then(() => {
-      return nextTickPromise(deattach).then(() => {
-        return runBatch({
-          count: count + numberOfBatchEntries,
-          createBatch,
-          createEntry,
-          deattach,
-          execute,
-          nItemsLastBatch: nItemsInBatch,
-          numberOfEntries,
-          numberOfEntriesEachBatch,
+    return Promise.resolve()
+      .then(() => {
+        return execute(batchData)
+      })
+      .then(() => {
+        return nextTickPromise(deattach).then(() => {
+          return runBatch({
+            batchNumber: batchNumber + 1,
+            count: count + numberOfBatchEntries,
+            createBatch,
+            createEntry,
+            deattach,
+            execute,
+            nItemsLastBatch: nItemsInBatch,
+            numberOfEntries,
+            numberOfEntriesEachBatch,
+          })
         })
       })
-    })
   })
 }
 
