@@ -183,6 +183,7 @@
 │   │   ├── getOne.js
 │   │   └── runIncludeJobs.js
 │   ├── index.js
+│   ├── index.test.js
 │   ├── modify
 │   │   ├── create
 │   │   │   ├── index.js
@@ -212,11 +213,13 @@
 │   │       └── index.js
 │   └── utilities
 │       ├── clone.js
-│       ├── createOperationId.js
 │       ├── createOperationSpecificQueryParams.js
 │       ├── createRelationSpecification.js
+│       ├── createRelationSpecification.test.js
 │       ├── getRelativeRelationships.js
-│       └── splitRelationships.js
+│       ├── getRelativeRelationships.test.js
+│       ├── splitRelationships.js
+│       └── splitRelationships.test.js
 ├── jsonSchema
 │   ├── createMockDataFromSchema.js
 │   ├── createMockGenerator.js
