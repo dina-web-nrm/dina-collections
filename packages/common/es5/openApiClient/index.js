@@ -3,7 +3,7 @@
 var _require = require('../apiClient'),
     createApiClient = _require.createApiClient;
 
-module.exports = function createJsonApiClient(_ref) {
+module.exports = function createOpenApiClient(_ref) {
   var apiConfigInput = _ref.apiConfigInput,
       createEndpoint = _ref.createEndpoint;
 
