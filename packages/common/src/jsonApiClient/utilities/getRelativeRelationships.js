@@ -1,9 +1,6 @@
 const objectPath = require('object-path')
 
-module.exports = function getRelativeRelationSpecification({
-  relationSpecification,
-  path,
-}) {
+const getRelativeRelationships = ({ relationSpecification, path }) => {
   const relativeRelationSpecification =
     path === '.'
       ? relationSpecification
@@ -22,4 +19,8 @@ module.exports = function getRelativeRelationSpecification({
     },
     undefined
   )
+}
+
+module.exports = {
+  getRelativeRelationships,
 }
