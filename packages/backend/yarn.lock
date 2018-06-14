@@ -857,6 +857,7 @@ commander@^2.11.0:
     debug "^3.1.0"
     json-schema-faker "^0.4.4"
     lodash "^4.17.5"
+    moment "^2.22.2"
     normalizr "^3.2.4"
     object-path "^0.11.4"
     object-path-immutable "^1.0.1"
@@ -3245,6 +3246,10 @@ moment-timezone@^0.5.4:
 "moment@>= 2.9.0", moment@^2.13.0:
   version "2.20.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
+
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 ms@2.0.0:
   version "2.0.0"

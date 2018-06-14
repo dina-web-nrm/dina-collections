@@ -4,6 +4,7 @@ module.exports = {
   queryParams: {
     description: 'Filter by updatedAt after specificed timestamp',
     schema: {
+      format: 'date-time',
       type: 'string',
     },
   },

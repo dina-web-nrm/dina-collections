@@ -134,24 +134,14 @@
 │   ├── relationships
 │   │   ├── extractItemRelationship.js
 │   │   ├── extractItemRelationships.js
-│   │   ├── old
-│   │   │   ├── extractItemRelationship.js
-│   │   │   ├── extractItemRelationships.js
-│   │   │   ├── resolveByIdSync.js
-│   │   │   ├── resolveByPath.clean.js
-│   │   │   ├── resolveByPath.withlogs.js
-│   │   │   ├── resolveByPathSync.js
-│   │   │   ├── resolveByPathSync.test.js
-│   │   │   ├── resolveByPathSyncOld
-│   │   │   ├── resolveItemRelationship.js
-│   │   │   ├── resolveItemRelationships.js
-│   │   │   ├── resolveRelationshipDataArraySync.js
-│   │   │   └── resolveRelationshipDataObjectSync.js
 │   │   ├── resolveItemRelationship.js
 │   │   ├── resolveItemRelationshipSync.js
 │   │   ├── resolveItemRelationships.js
 │   │   ├── resolveItemRelationshipsSync.js
 │   │   └── utilities
+│   │       ├── extractArrayRelationship.js
+│   │       ├── extractByPath.js
+│   │       ├── extractObjectRelationship.js
 │   │       ├── getItemByLid.js
 │   │       ├── getItemByLid.test.js
 │   │       ├── getRelationshipItems.js
@@ -163,7 +153,9 @@
 │   │       ├── resolveByPath.js
 │   │       ├── resolveByPath.test.js
 │   │       ├── resolveRelationshipDataArray.js
-│   │       └── resolveRelationshipDataObject.js
+│   │       ├── resolveRelationshipDataObject.js
+│   │       ├── setExtractedRelationshipData.js
+│   │       └── updatePathRelationshipData.js
 │   ├── specifications.js
 │   ├── todo
 │   └── utilities

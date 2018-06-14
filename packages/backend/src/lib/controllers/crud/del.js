@@ -1,8 +1,8 @@
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 const transformOutput = require('../utilities/transformations/outputObject')
 
-module.exports = function del({ operation, models, postDeleteHook }) {
-  const { resource } = operation
+module.exports = function del({ operation, models, serviceInteractor }) {
+  const { resource, postDeleteHook } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -15,8 +15,11 @@ module.exports = function del({ operation, models, postDeleteHook }) {
       .then(transformOutput)
       .then(res => {
         if (postDeleteHook) {
-          return postDeleteHook(res)
+          return postDeleteHook({ res, serviceInteractor }).then(() => {
+            return res
+          })
         }
+
         return res
       })
       .then(output => {

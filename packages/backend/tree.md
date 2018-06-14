@@ -13,7 +13,6 @@
 │   ├── apps
 │   ├── info
 │   ├── lib
-│   ├── performance
 │   ├── scripts
 │   ├── services
 │   ├── tests

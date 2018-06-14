@@ -56,7 +56,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
         const expectedAction = {
           meta: {
             queryParams: {
-              limit: 10000,
+              limit: 1000,
             },
           },
           type: expectedActionType,
@@ -78,7 +78,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
         const expectedAction = {
           meta: {
             isLookup: undefined,
-            queryParams: { filter: { label: 'a-label' }, limit: 10000 },
+            queryParams: { filter: { label: 'a-label' }, limit: 1000 },
           },
           type: expectedActionType,
         }
@@ -101,7 +101,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {
               filter: { label: 'a-label' },
-              limit: 10000,
+              limit: 1000,
               relationships: ['parent'],
             },
           },
@@ -137,7 +137,14 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
 
         const expectedAction = {
           meta: {
-            queryParams: { limit: 10000 },
+            batchNumber: 0,
+            isLastBatch: true,
+            isLookup: undefined,
+            queryParams: {
+              limit: 1000,
+              offset: 0,
+            },
+            removeFromState: false,
           },
           payload: [
             {
@@ -178,11 +185,16 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
 
         const expectedAction = {
           meta: {
+            batchNumber: 0,
+            isLastBatch: true,
+            isLookup: undefined,
             queryParams: {
               filter: { label: 'a-label' },
-              limit: 10000,
+              limit: 1000,
+              offset: 0,
               relationships: ['parent'],
             },
+            removeFromState: false,
           },
           payload: [
             {
@@ -214,7 +226,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
         const expectedAction = {
           error: true,
           meta: {
-            queryParams: { limit: 10000 },
+            queryParams: { limit: 1000 },
           },
           payload: mockError,
           type: 'GET_MANY_PHYSICAL_OBJECT_FAIL',
@@ -242,7 +254,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
           meta: {
             queryParams: {
               filter: { label: 'a-label' },
-              limit: 10000,
+              limit: 1000,
               relationships: ['parent'],
             },
           },
@@ -268,9 +280,12 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
     }
 
     const expectedApiClientCallParams = {
+      batchNumber: 0,
+      isLookup: undefined,
       queryParams: {
         filter: { label: 'a-label' },
-        limit: 10000,
+        limit: 1000,
+        offset: 0,
         relationships: ['parent'],
       },
     }

@@ -1,14 +1,12 @@
-const backendError403 = require('common/src/error/errorFactories/backendError403')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
-
 const createLog = require('../../../../../../utilities/log')
 
 const log = createLog(
-  'lib/modelFactories/documentModel/methods/deactivateFactory'
+  'lib/models/factories/sequelize/simpleSqlModel/methods/updateFactory'
 )
 
-module.exports = function deactivateFactory({ getById, Model }) {
-  return function deactivate({ id } = {}) {
+module.exports = function updateFactory({ getById, Model }) {
+  return function update({ doc, id } = {}) {
     if (id === undefined) {
       return Promise.reject(new Error('id not provided'))
     }
@@ -20,26 +18,23 @@ module.exports = function deactivateFactory({ getById, Model }) {
           detail: `Not found for id ${id}`,
         })
       }
-
       const storedData = existingModel.get()
 
-      if (storedData.deactivatedAt) {
-        backendError403({
-          code: 'FORBIDDEN_ERROR',
-          detail: `model ${Model.tableName} with id: ${
-            storedData.id
-          } has already been deactivated at ${storedData.deactivatedAt}`,
-        })
+      let newModel = {
+        id: storedData.id,
       }
 
-      const newModel = {
-        ...storedData,
-        deactivatedAt: new Date(),
+      if (doc !== undefined) {
+        const { ...newAttributes } = doc
+        newModel = {
+          ...storedData,
+          ...newAttributes,
+        }
       }
 
       return existingModel.update(newModel).then(savedModel => {
         log.debug(
-          `Deactivated instance for model ${Model.tableName}. id: ${
+          `Updated instance for model ${Model.tableName}. id: ${
             savedModel.dataValues.id
           }`
         )

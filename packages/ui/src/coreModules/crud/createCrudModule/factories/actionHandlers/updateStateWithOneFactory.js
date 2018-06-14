@@ -34,6 +34,21 @@ export default function updateStateWithOneFactory(
     )
 
     const { id } = action.payload
+
+    const { removeFromState } = action.meta || {}
+
+    if (removeFromState) {
+      const updatedItems = {
+        ...state.items,
+      }
+
+      delete updatedItems[id]
+      return {
+        ...state,
+        items: updatedItems,
+      }
+    }
+
     const updatePath = dep.createItemUpdatePath({
       id,
     })

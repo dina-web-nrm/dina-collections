@@ -77,8 +77,9 @@ const env = {
   isTest: process.env.NODE_ENV === 'test',
 }
 
-const searchIndexBuilder = {
-  active: false,
+const jobs = {
+  schedulerActive: false,
+  workerActive: false,
 }
 
 module.exports = {
@@ -88,8 +89,8 @@ module.exports = {
   env,
   initialData,
   integrations,
+  jobs,
   log,
-  searchIndexBuilder,
   services,
   test,
 }

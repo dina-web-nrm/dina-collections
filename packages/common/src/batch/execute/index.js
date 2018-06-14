@@ -10,6 +10,7 @@ const nextTickPromise = deattach => {
 }
 
 const internalCreateBatch = ({
+  batchNumber,
   count,
   createBatch,
   createEntry,
@@ -18,7 +19,7 @@ const internalCreateBatch = ({
   const batchData = []
   if (createBatch) {
     return Promise.resolve(
-      createBatch({ numberOfBatchEntries, startCount: count })
+      createBatch({ batchNumber, numberOfBatchEntries, startCount: count })
     )
   }
   for (let index = 0; index < numberOfBatchEntries; index += 1) {
@@ -28,18 +29,24 @@ const internalCreateBatch = ({
 }
 
 const runBatch = ({
+  batchNumber = 0,
   count = 0,
   createBatch,
   createEntry,
   deattach,
   execute,
   maxCount,
+  maxNumberOfBatches,
   nItemsLastBatch,
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) => {
   if (count >= maxCount) {
     return Promise.reject(new Error('Max count reached'))
+  }
+
+  if (batchNumber >= maxNumberOfBatches) {
+    return Promise.reject(new Error('Max number of batches reached'))
   }
 
   if (numberOfEntries !== undefined) {
@@ -54,28 +61,44 @@ const runBatch = ({
     }
   }
 
-  const numberOfBatchEntries = numberOfEntriesEachBatch
+  let numberOfBatchEntries
+  if (numberOfEntries === undefined) {
+    numberOfBatchEntries = numberOfEntriesEachBatch
+  } else {
+    numberOfBatchEntries = Math.min(
+      numberOfEntriesEachBatch,
+      numberOfEntries - count
+    )
+  }
+
   return internalCreateBatch({
+    batchNumber,
     count,
     createBatch,
     createEntry,
     numberOfBatchEntries,
   }).then(batchData => {
     const nItemsInBatch = batchData !== undefined ? batchData.length : undefined
-    return execute(batchData).then(() => {
-      return nextTickPromise(deattach).then(() => {
-        return runBatch({
-          count: count + numberOfBatchEntries,
-          createBatch,
-          createEntry,
-          deattach,
-          execute,
-          nItemsLastBatch: nItemsInBatch,
-          numberOfEntries,
-          numberOfEntriesEachBatch,
+    return Promise.resolve()
+      .then(() => {
+        return execute(batchData)
+      })
+      .then(() => {
+        return nextTickPromise(deattach).then(() => {
+          return runBatch({
+            batchNumber: batchNumber + 1,
+            count: count + numberOfBatchEntries,
+            createBatch,
+            createEntry,
+            deattach,
+            execute,
+            maxNumberOfBatches,
+            nItemsLastBatch: nItemsInBatch,
+            numberOfEntries,
+            numberOfEntriesEachBatch,
+          })
         })
       })
-    })
   })
 }
 
@@ -85,15 +108,25 @@ module.exports = function batchExecute({
   deattach = true,
   execute,
   maxCount = 1000000,
+  maxNumberOfBatches = 1000,
   numberOfEntries,
   numberOfEntriesEachBatch,
 }) {
+  if (!(createBatch || createEntry)) {
+    throw new Error('createBatch or createEntry is required')
+  }
+
+  if (!execute) {
+    throw new Error('execute is required')
+  }
+
   return runBatch({
     createBatch,
     createEntry,
     deattach,
     execute,
     maxCount,
+    maxNumberOfBatches,
     numberOfEntries,
     numberOfEntriesEachBatch,
   })

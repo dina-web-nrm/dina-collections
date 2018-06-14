@@ -1,3 +1,4 @@
+exports.deactivated = require('./deactivated')
 exports.group = require('./group')
 exports.ids = require('./ids')
 exports.nameSearch = require('./nameSearch')

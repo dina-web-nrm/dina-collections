@@ -1,7 +1,9 @@
 const execute = require('./execute')
-const map = require('./map')
+const { batchMap } = require('./map')
+const { batchReduce } = require('./reduce')
 
 module.exports = {
   execute,
-  map,
+  map: batchMap,
+  reduce: batchReduce,
 }

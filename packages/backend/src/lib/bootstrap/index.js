@@ -14,6 +14,8 @@ const setupModels = require('../models')
 const createConnectors = require('../connectors')
 const createServices = require('../services')
 const setupIntegrations = require('../integrations')
+const createWorker = require('../jobs/worker')
+const createScheduler = require('../jobs/scheduler')
 const createAuth = require('../auth')
 
 const log = createLog('server')
@@ -87,6 +89,17 @@ module.exports = function bootstrap({
               log.info(
                 `App configured after: ${now() - startTime} milliseconds`
               )
+              if (config.jobs.workerActive) {
+                createWorker({
+                  serviceInteractor,
+                })
+              }
+              if (config.jobs.schedulerActive) {
+                createScheduler({
+                  serviceInteractor,
+                })
+              }
+
               return app.listen(config.api.port, () => {
                 log.info(
                   `Server started after: ${now() -

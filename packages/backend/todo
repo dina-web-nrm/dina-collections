@@ -1,0 +1,30 @@
+Done
+* Repair batch create (write tests)
+* Make sure all tests are passing
+* Fix incremental update of searchViews
+* Check to format of date. How do we create date in the backend? Which format.
+  How to map to json schema?
+* Fix example and mock query options
+* fix parsing of filter values (null) (add to buildWhereFilter factory)
+* Clean up searchSpecimen service
+* Fix batch fetch many from frontend client
+* Fix incremental delete of searchViews
+* Implement polling frontend for updated search results
+
+Now
+
+Later:
+* Fix correct object format for new endpoints
+* Use deactivated at even in memory tables
+* write tests for batchFetch from FE
+* Benchmark time in backend for large limit request
+* Add get id bigger then instead of limit?
+* Move input validation to controller and use resource schema. Remove input and
+  output schemas \** Make sure validation is working when doing interServices
+  calls
+* Use schema interface in frontend and everywhere
+* Check where document transformation is done. In controller vs in model. Might make sense to keep in in controller but then make sure view models are going through controller and not model
+* fix error when invalid json body
+
+
+* Go through and add proper error handling and logging everywhere

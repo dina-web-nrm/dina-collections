@@ -25,6 +25,10 @@ module.exports = function updateView({
     operationType,
     path: `${basePath}/${resourcePath}/actions/updateView`,
     relations,
+    request: {
+      format: 'object',
+      resource: 'customObject',
+    },
     resource,
     response: {
       format: 'object',

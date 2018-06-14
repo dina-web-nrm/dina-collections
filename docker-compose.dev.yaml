@@ -54,12 +54,12 @@ services:
     volumes:
       - ./data:/data
 
-  searchEngine:
+  worker:
     image: dina/dina-collections-api
-    container_name: dina-search-engine
+    container_name: dina-worker
     env_file:
       - ./env/.api
-    command: pm2-runtime start /etc/api/src/apps/searchEngine/index.js
+    command: pm2-runtime start /etc/api/src/apps/worker/index.js
     depends_on:
       - postgres
     volumes:

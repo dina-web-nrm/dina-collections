@@ -1,9 +1,15 @@
 'use strict';
 
 var execute = require('./execute');
-var map = require('./map');
+
+var _require = require('./map'),
+    batchMap = _require.batchMap;
+
+var _require2 = require('./reduce'),
+    batchReduce = _require2.batchReduce;
 
 module.exports = {
   execute: execute,
-  map: map
+  map: batchMap,
+  reduce: batchReduce
 };

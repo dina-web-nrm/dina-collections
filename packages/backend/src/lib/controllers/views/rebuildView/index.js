@@ -1,5 +1,5 @@
 const rebuild = require('./rebuild')
-const defaultMapFunction = require('./defaultMapFunction')
+const defaultMapFunction = require('../utilities/defaultMapFunction')
 
 module.exports = function rebuildView({
   operation,

@@ -7,6 +7,11 @@ module.exports = {
     exampleRequests: {
       type: 'object',
     },
+    postUpdateHook: {
+      not: {
+        type: 'string',
+      },
+    },
   },
   required: [...base.required],
 }
