@@ -1,4 +1,4 @@
-const batchExecute = require('../../../../utilities/test/batchExecute')
+const { execute: batchExecute } = require('common/src/batch')
 const readInitialData = require('../../../../utilities/readInitialData')
 
 const migrateSpecimen = require('./migrations/migrateSpecimen')
@@ -76,7 +76,7 @@ module.exports = function loadInitialData({ config, models }) {
           })
 
           return models.physicalObject
-            .bulkCreate(mappedPhysicalObjects)
+            .bulkCreate({ items: mappedPhysicalObjects })
             .then(() => {
               return specimensWithPhysicalObjects
             })
@@ -92,7 +92,7 @@ module.exports = function loadInitialData({ config, models }) {
             }
           )
 
-          return models.specimen.bulkCreate(specimens)
+          return models.specimen.bulkCreate({ items: specimens })
         })
     },
     numberOfEntries: numberOfSpecimens,

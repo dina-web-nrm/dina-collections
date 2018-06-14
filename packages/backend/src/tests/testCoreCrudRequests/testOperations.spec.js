@@ -80,7 +80,7 @@ const testCrudFlow = ({
                   }).then(fetchedResources => {
                     expect(fetchedResources).toBeTruthy()
                     expect(fetchedResources.data).toBeTruthy()
-                    expect(fetchedResources.data.length > 1).toBeTruthy()
+                    expect(fetchedResources.data.length > 0).toBeTruthy()
                     if (!getVersionsOperationId) {
                       return null
                     }
@@ -135,8 +135,9 @@ const testMockGetMany = operationId => {
         validateOutput: false,
       }).then(createdResource => {
         expect(createdResource).toBeTruthy()
-        expect(createdResource.data).toBeTruthy()
-        expect(createdResource.data.length).toBeTruthy()
+        if (createdResource.data) {
+          expect(createdResource.data.length).toBeTruthy()
+        }
       })
     })
   })
@@ -156,7 +157,6 @@ const testMockGetOne = operationId => {
         validateOutput: false,
       }).then(createdResource => {
         expect(createdResource).toBeTruthy()
-        expect(createdResource.data).toBeTruthy()
       })
     })
   })
@@ -180,7 +180,6 @@ const testCreate = ({ createOperationId, operations }) => {
           validateOutput: true,
         }).then(createdResource => {
           expect(createdResource).toBeTruthy()
-          expect(createdResource.data).toBeTruthy()
           expect(createdResource.meta.internals.status).toBe(201)
         })
       })

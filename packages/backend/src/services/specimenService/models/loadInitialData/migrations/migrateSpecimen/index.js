@@ -1,4 +1,4 @@
-const nestedToCore = require('common/src/formatObject/nestedToCore')
+const nestedToCoreSync = require('common/src/formatObject/nestedToCoreSync')
 const createMigrator = require('../migratorFactory')
 const createLookupFactory = require('../lookupFactory')
 const createIdentifiers = require('./identifiers')
@@ -38,7 +38,7 @@ module.exports = function migrateSpecimen({ reporter, specimen }) {
     })
   }
 
-  const coreSpecimen = nestedToCore({
+  const coreSpecimen = nestedToCoreSync({
     item: migratedSpecimen,
     type: 'specimen',
   })

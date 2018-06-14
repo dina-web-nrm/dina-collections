@@ -8,24 +8,21 @@ import { globalSelectors } from '../keyObjectModule'
 const createInjectSearchResult = (
   { resource = 'searchSpecimen' } = {}
 ) => ComposedComponent => {
-  /* eslint-disable no-console */
-  if (!resource) {
-    console.error(`Missing resource`)
-  }
-
-  /* eslint-enable no-console */
-
   const mapStateToProps = state => {
     return {
-      searchResult: globalSelectors.get.searchState(state),
+      searchResult: globalSelectors.get[':resource.searchState'](state, {
+        resource,
+      }),
     }
   }
 
   const propTypes = {
-    searchResult: PropTypes.object.isRequired,
+    searchResult: PropTypes.object,
   }
 
-  const defaultProps = {}
+  const defaultProps = {
+    searchResult: undefined,
+  }
 
   class SearchResultInjector extends Component {
     render() {
@@ -33,6 +30,7 @@ const createInjectSearchResult = (
         <ComposedComponent
           {...this.props}
           searchResult={this.props.searchResult}
+          searchResultResourceType={resource}
         />
       )
     }

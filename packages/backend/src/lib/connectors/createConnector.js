@@ -1,6 +1,6 @@
 const createRequestHandler = require('common/src/apiClient/createRequestHandler')
 const commonCreateEndpointConfig = require('common/src/endpointFactory/server')
-const controllerFactories = require('../controllers')
+const controllerFactories = require('../../lib/controllers')
 const createLog = require('../../utilities/log')
 
 const log = createLog('lib/connectors', 1)
@@ -8,11 +8,12 @@ const log = createLog('lib/connectors', 1)
 module.exports = function createConnector({
   apiConfig,
   customControllerFactories,
-  elasticModels,
   integrations,
   models,
   operation,
   operationId,
+  serviceName,
+  serviceInteractor,
 }) {
   log.info(operationId)
   const {
@@ -41,10 +42,10 @@ module.exports = function createConnector({
   const controller =
     controllerFactory &&
     controllerFactory({
-      elasticModels,
       integrations,
       models,
       operation,
+      serviceInteractor,
     })
   const endpointConfig = commonCreateEndpointConfig({
     operationId,
@@ -67,5 +68,6 @@ module.exports = function createConnector({
     method,
     path,
     requestHandler,
+    serviceName,
   }
 }

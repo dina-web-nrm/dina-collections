@@ -1,6 +1,6 @@
 import createLog from 'utilities/log'
 import Dependor from 'utilities/Dependor'
-import nestedToCore from 'common/es5/formatObject/nestedToCore'
+import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import getActionActionTypes from './utilities/getActionActionTypes'
 
 export const dep = new Dependor({
@@ -38,7 +38,7 @@ export default function createAcFactory(
     log.debug(`${resource}.create called`, { item: rawItem, throwError })
 
     const item = nested
-      ? nestedToCore({
+      ? nestedToCoreSync({
           item: rawItem,
           type: resource,
         })

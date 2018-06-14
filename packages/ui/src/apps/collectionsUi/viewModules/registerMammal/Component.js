@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import createLog from 'utilities/log'
-import nestedToCore from 'common/es5/formatObject/nestedToCore'
+import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import crudActionCreators from 'coreModules/crud/actionCreators'
@@ -37,7 +37,7 @@ class RegisterMammal extends Component {
       <PageTemplate>
         <MammalForm
           handleFormSubmit={formOutput => {
-            const item = nestedToCore({
+            const item = nestedToCoreSync({
               item: formOutput,
               type: 'specimen',
             })

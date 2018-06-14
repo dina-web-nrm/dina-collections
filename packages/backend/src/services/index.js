@@ -1,6 +1,7 @@
 exports.agentService = require('./agentService')
 exports.authService = require('./authService')
 exports.curatedListService = require('./curatedListService')
+exports.jobService = require('./jobService')
 exports.placeService = require('./placeService')
 exports.searchService = require('./searchService')
 exports.specimenService = require('./specimenService')

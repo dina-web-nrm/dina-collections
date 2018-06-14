@@ -1,9 +1,9 @@
-exports.create = require('./create')
-exports.del = require('./del')
-exports.getMany = require('./getMany')
-exports.getOne = require('./getOne')
-exports.getRelationship = require('./getRelationship')
-exports.getVersion = require('./getVersion')
-exports.getVersions = require('./getVersions')
-exports.update = require('./update')
-exports.updateRelationship = require('./updateRelationship')
+const crud = require('./crud')
+const views = require('./views')
+const jobs = require('./jobs')
+
+module.exports = {
+  ...crud,
+  ...views,
+  ...jobs,
+}

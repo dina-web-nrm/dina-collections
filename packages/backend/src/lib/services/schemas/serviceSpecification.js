@@ -4,14 +4,6 @@ module.exports = {
     controllers: {
       type: 'object',
     },
-    elasticModels: {
-      oneOf: [
-        {
-          type: 'object',
-        },
-        { type: 'array' },
-      ],
-    },
     info: {
       type: 'object',
     },

@@ -6,6 +6,7 @@ const decorateLocalsUserInputMiddlewareFactory = require('./middlewares/decorate
 const requestHandlerMiddlewareFactory = require('./middlewares/requestHandler')
 const ensureMediaTypeMiddlewareFactory = require('./middlewares/ensureMediaType')
 const expressifyPath = require('./utilities/expressifyPath')
+const shouldMountOperation = require('./utilities/shouldMountOperation')
 
 const log = createLog('lib/serviceRouter')
 
@@ -26,20 +27,31 @@ module.exports = function serviceRouterFactory({ auth, config, connectors }) {
   log.info('Registering service routes')
   const scopedLog = log.scope()
   Object.keys(connectors).forEach(operationId => {
-    const { method, path, requestHandler } = connectors[operationId]
-    const requestHandlerMiddleware = requestHandlerMiddlewareFactory({
+    const { serviceName } = connectors[operationId]
+    const mountOperation = shouldMountOperation({
       config,
       operationId,
-      requestHandler,
+      serviceName,
     })
+    if (mountOperation) {
+      const { method, path, requestHandler } = connectors[operationId]
 
-    const expressifiedPath = expressifyPath(path)
+      const requestHandlerMiddleware = requestHandlerMiddlewareFactory({
+        config,
+        operationId,
+        requestHandler,
+      })
 
-    scopedLog.info(
-      `${method.toUpperCase()} - ${expressifiedPath} as ${operationId}`
-    )
-    serviceRouter.use(expressifiedPath, decorateLocalsUserInputMiddleware)
-    serviceRouter[method](expressifiedPath, requestHandlerMiddleware)
+      const expressifiedPath = expressifyPath(path)
+
+      scopedLog.info(
+        `${method.toUpperCase()} - ${expressifiedPath} as ${operationId}`
+      )
+      serviceRouter.use(expressifiedPath, decorateLocalsUserInputMiddleware)
+      serviceRouter[method](expressifiedPath, requestHandlerMiddleware)
+    } else {
+      scopedLog.info(`Not mounting operation: ${operationId}`)
+    }
   })
   log.info('Mounting service done')
 

@@ -1,6 +1,6 @@
 const createLog = require('../../../utilities/log')
 const createOperationSpecification = require('./createOperationSpecification')
-const typeFactories = require('./typeFactories')
+const operationFactories = require('../../operations')
 
 const log = createLog('lib/services', 3)
 
@@ -20,7 +20,7 @@ module.exports = function createOperationObject({
 
   log.info(`${type}`)
 
-  const typeFactory = factory || typeFactories[type]
+  const typeFactory = factory || operationFactories[type]
 
   if (!typeFactory) {
     throw new Error(`Type: ${type} unknown for...`)

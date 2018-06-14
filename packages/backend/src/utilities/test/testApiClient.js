@@ -63,7 +63,13 @@ const createTestClient = ({
     validateInput,
     validateOutput,
     validateResponse: json => {
-      jsonApiValidator(json)
+      try {
+        jsonApiValidator(json)
+      } catch (err) {
+        console.log('INPUT:', json) // eslint-disable-line no-console
+        throw err
+      }
+
       return json
     },
   })

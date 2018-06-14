@@ -7,19 +7,27 @@ module.exports = function resolveItemRelationships({
   relationships = {},
   relationshipSpecification,
 }) {
-  let updatedItem = item
-  Object.keys(relationshipSpecification).forEach(relationshipKey => {
-    const { path, type } = relationshipSpecification[relationshipKey]
+  return Promise.resolve().then(() => {
+    return Promise.all(
+      Object.keys(relationshipSpecification).map(relationshipKey => {
+        const { path, targetResource: type } = relationshipSpecification[
+          relationshipKey
+        ]
 
-    updatedItem = resolveItemRelationship({
-      coreToNested,
-      getItemByTypeId,
-      item: updatedItem,
-      path,
-      relationshipKey,
-      relationships,
-      type,
+        return Promise.resolve(
+          resolveItemRelationship({
+            coreToNested,
+            getItemByTypeId,
+            item,
+            path,
+            relationshipKey,
+            relationships,
+            type,
+          })
+        )
+      })
+    ).then(() => {
+      return item
     })
   })
-  return updatedItem
 }

@@ -1,6 +1,26 @@
 const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
+const getManyfilters = require('./operations/getMany/filters')
+
+const postEditHook = ({ res, serviceInteractor }) => {
+  return Promise.resolve().then(() => {
+    const id = res && res.id
+    const request = {
+      body: {
+        data: {
+          attributes: {
+            ids: [id],
+          },
+        },
+      },
+    }
+    return serviceInteractor.requestUpdateView({
+      request,
+      resource: 'searchSpecimen',
+    })
+  })
+}
 
 module.exports = {
   basePath: '/api/specimen/v01',
@@ -10,6 +30,7 @@ module.exports = {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
       exampleRequests: { primary: normalizedRequestSuccess },
+      postCreateHook: postEditHook,
       type: 'create',
       validateBody,
     },
@@ -18,24 +39,17 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filters: getManyfilters,
       includeRelations: true,
-      queryParams: {
-        'filter[catalogNumber]': {
-          description: 'catalog number used to filter specimens',
-          example: '123456',
-          required: false,
-          schema: {
-            type: 'string',
-          },
-        },
-      },
       type: 'getMany',
     },
     {
       exampleRequests: { primary: updateRequestSuccess },
+      postUpdateHook: postEditHook,
       type: 'update',
     },
     {
+      postDeleteHook: postEditHook,
       type: 'del',
     },
     {

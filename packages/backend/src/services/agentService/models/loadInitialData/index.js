@@ -16,7 +16,7 @@ module.exports = function loadInitialData({ models }) {
       })
 
   const agentItemsPromise = agentItems
-    ? models.agent.bulkCreate(agentItems)
+    ? models.agent.bulkCreate({ items: agentItems })
     : Promise.resolve()
 
   return Promise.all([agentItemsPromise])

@@ -1,4 +1,8 @@
 const {
+  createModelKeyColumnMap,
+  createNormalizeSpecifications,
+} = require('../normalize')
+const {
   getRelationshipParamsForModelNames,
   getResourceRelationshipParamsMap,
   getResourceRelationshipKeysToIncludeInBodyMap,
@@ -6,6 +10,8 @@ const {
 
 module.exports = ({ models }) => {
   return {
+    getModelKeyColumnMap: () => createModelKeyColumnMap({ models }),
+    getNormalizeSpecifications: () => createNormalizeSpecifications({ models }),
     getRelationshipParamsForModelNames: modelNames =>
       getRelationshipParamsForModelNames(models, modelNames),
     getResourceRelationshipKeysToIncludeInBodyMap: () =>

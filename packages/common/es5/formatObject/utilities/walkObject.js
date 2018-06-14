@@ -1,36 +1,44 @@
 'use strict';
 
 var objectPath = require('object-path');
+var getNextWalkPath = require('./getNextWalkPath');
 
-module.exports = function walk(_ref) {
+module.exports = function walkObject(_ref) {
   var obj = _ref.obj,
       _ref$path = _ref.path,
       path = _ref$path === undefined ? '' : _ref$path,
-      segments = _ref.segments,
+      _ref$segments = _ref.segments,
+      segments = _ref$segments === undefined ? [] : _ref$segments,
       func = _ref.func;
 
+  if (!obj) {
+    throw new Error('must provide object');
+  }
+
+  if (!func) {
+    throw new Error('must provide func');
+  }
+
   if (!segments.length) {
-    return func(path);
+    func(path);
+  } else {
+    var nextPath = getNextWalkPath({ path: path, segments: segments });
+    var valueAtNextPath = objectPath.get(obj, nextPath);
+
+    if (valueAtNextPath) {
+      if (Array.isArray(valueAtNextPath)) {
+        valueAtNextPath.forEach(function (_, index) {
+          var elementPath = nextPath + '.' + index;
+          walkObject({
+            func: func,
+            obj: obj,
+            path: elementPath,
+            segments: segments.slice(1)
+          });
+        });
+      } else {
+        func(nextPath);
+      }
+    }
   }
-
-  var currentSegment = segments[0];
-  var arrayPath = [path, currentSegment].filter(function (segment) {
-    return !!segment;
-  }).join('.');
-
-  var array = objectPath.get(obj, arrayPath) || [];
-
-  if (!Array.isArray(array)) {
-    return func(arrayPath);
-  }
-
-  return array.forEach(function (_, index) {
-    var itemPath = arrayPath + '.' + index;
-    walk({
-      func: func,
-      obj: obj,
-      path: itemPath,
-      segments: segments.slice(1)
-    });
-  });
 };

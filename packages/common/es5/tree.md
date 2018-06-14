@@ -41,6 +41,17 @@
 │       ├── validateApiConfig.js
 │       ├── validateEndpointConfig.js
 │       └── validateMethodConfig.js
+├── asyncReduce
+│   └── index.js
+├── batch
+│   ├── execute
+│   │   └── index.js
+│   ├── index.js
+│   ├── map
+│   │   ├── index.js
+│   │   └── index.test.js
+│   └── reduce
+│       └── index.js
 ├── buildFileTrees
 │   └── index.js
 ├── buildOperationId
@@ -48,6 +59,9 @@
 │   └── index.js
 ├── chainPromises
 │   └── index.js
+├── createLid
+│   ├── index.js
+│   └── index.test.js
 ├── deleteNullProperties
 │   ├── index.js
 │   └── index.test.js
@@ -94,6 +108,7 @@
 │   ├── utilities
 │   │   ├── createErrorId.js
 │   │   ├── isDinaError.js
+│   │   ├── logError.js
 │   │   └── transformToReduxFormError.js
 │   └── validators
 │       ├── createBackendApiClientValidator.js
@@ -105,44 +120,61 @@
 │       └── formValidator.js
 ├── formatObject
 │   ├── coreToNested.js
-│   ├── db
-│   │   └── createDbSpecifications.js
+│   ├── coreToNested.test.js
+│   ├── coreToNestedSync.js
+│   ├── coreToNestedSync.test.js
+│   ├── index.js
 │   ├── nestedToCore.js
 │   ├── nestedToCore.test.js
+│   ├── nestedToCoreSync.js
+│   ├── nestedToCoreSync.test.js
 │   ├── normalize
-│   │   ├── createNormalizeSpecification.js
-│   │   ├── createNormalizeSpecifications.js
 │   │   ├── denormalizeItem.js
 │   │   └── normalizeItem.js
 │   ├── relationships
-│   │   ├── createRelationshipSpecification.js
-│   │   ├── createRelationshipSpecifications.js
 │   │   ├── extractItemRelationship.js
 │   │   ├── extractItemRelationships.js
 │   │   ├── resolveItemRelationship.js
-│   │   └── resolveItemRelationships.js
+│   │   ├── resolveItemRelationshipSync.js
+│   │   ├── resolveItemRelationships.js
+│   │   ├── resolveItemRelationshipsSync.js
+│   │   └── utilities
+│   │       ├── extractArrayRelationship.js
+│   │       ├── extractByPath.js
+│   │       ├── extractObjectRelationship.js
+│   │       ├── getItemByLid.js
+│   │       ├── getItemByLid.test.js
+│   │       ├── getRelationshipItems.js
+│   │       ├── getRelationshipItems.test.js
+│   │       ├── getRelationshipItemsSync.js
+│   │       ├── getRelationshipItemsSync.test.js
+│   │       ├── resolveById.js
+│   │       ├── resolveById.test.js
+│   │       ├── resolveByPath.js
+│   │       ├── resolveByPath.test.js
+│   │       ├── resolveRelationshipDataArray.js
+│   │       ├── resolveRelationshipDataObject.js
+│   │       ├── setExtractedRelationshipData.js
+│   │       └── updatePathRelationshipData.js
 │   ├── specifications.js
 │   ├── todo
 │   └── utilities
 │       ├── cloneObject.js
 │       ├── columnArrayToObject.js
 │       ├── columnObjectToArray.js
-│       ├── createKeyColumnMap.js
-│       ├── createLid.js
 │       ├── createRelationshipIdMap.js
-│       ├── getModelColumn.js
-│       ├── getModelFormat.js
-│       ├── getModelIsColumn.js
 │       ├── getModelRelationshipPath.js
-│       ├── getModelType.js
-│       ├── normalizrGetIdAttribute.js
-│       ├── normalizrProcessStrategy.js
+│       ├── getNextWalkPath.js
+│       ├── getNextWalkPath.test.js
 │       ├── testData
+│       │   ├── apiFormatPhysicalObject.js
+│       │   ├── apiFormatSpecimen.js
 │       │   ├── denormalizedSpecimen.js
 │       │   ├── denormalizedSpecimenWithLids.js
-│       │   ├── normalizedSpecimen.js
-│       │   └── normalizedSpecimenWithRelationships.js
-│       └── walkObject.js
+│       │   ├── nestedPhysicalObjectWithRelationships.js
+│       │   └── normalizedSpecimenWithNewPhysicalObject.js
+│       ├── walkObject.js
+│       └── walkObject.test.js
 ├── jsonApiClient
 │   ├── get
 │   │   ├── createIncludeJobs.js
@@ -198,7 +230,9 @@
 ├── log
 │   ├── createLogMock.js
 │   ├── index.js
-│   └── priorityMap.js
+│   ├── logFactory.js
+│   ├── priorityMap.js
+│   └── testLog.js
 ├── openApiClient
 │   ├── index.js
 │   └── utilities
@@ -208,7 +242,6 @@
 │   │   ├── buildEndpoints
 │   │   │   ├── buildEndpoint
 │   │   │   └── index.js
-│   │   ├── index.js
 │   │   ├── models
 │   │   │   └── index.js
 │   │   ├── openApi
@@ -224,6 +257,8 @@
 │   │       ├── interpolate.js
 │   │       ├── normalizeModel.js
 │   │       └── splitDescription.js
+│   ├── buildModels.js
+│   ├── buildOpenApi.js
 │   ├── buildTests
 │   │   ├── openApi
 │   │   │   └── index.test.js
@@ -232,7 +267,6 @@
 │   │   │   └── swagger.json
 │   │   └── testImports.test.js
 │   ├── e2e.spec.js
-│   ├── index.js
 │   ├── read
 │   │   ├── index.js
 │   │   ├── readApis.js
@@ -254,8 +288,52 @@
 │   ├── todo
 │   └── write
 │       └── index.js
+├── schemaInterface
+│   ├── createSchemaInterface
+│   │   ├── index.js
+│   │   └── index.test.js
+│   ├── index.js
+│   ├── normalize
+│   │   ├── createKeyColumnMap.js
+│   │   ├── createModelKeyColumnMap.js
+│   │   ├── createNormalizeSpecification.js
+│   │   ├── createNormalizeSpecifications.js
+│   │   ├── index.js
+│   │   └── utilities
+│   │       ├── getModelColumn.js
+│   │       ├── getModelFormat.js
+│   │       ├── getModelIsColumn.js
+│   │       ├── getModelType.js
+│   │       ├── normalizrGetIdAttribute.js
+│   │       └── normalizrProcessStrategy.js
+│   └── relationships
+│       ├── index.js
+│       ├── index.test.js
+│       ├── modelsSelectors.js
+│       ├── modelsSelectors.test.js
+│       ├── relationshipsSchemaSelectors.js
+│       └── relationshipsSchemaSelectors.test.js
 ├── scripts
 │   └── buildFileStructureTrees.js
+├── search
+│   ├── filter
+│   │   ├── async
+│   │   │   └── index.js
+│   │   ├── includeItem
+│   │   │   └── index.js
+│   │   └── sync
+│   │       └── index.js
+│   ├── map
+│   │   └── sync
+│   │       └── index.js
+│   └── resources
+│       ├── shared
+│       │   └── filterFunctions
+│       └── specimen
+│           ├── filterFunctions
+│           ├── index.js
+│           ├── mapFunctions
+│           └── testData
 ├── sortMethods
 │   ├── createSortAlphabeticallyByProperty
 │   │   ├── index.js

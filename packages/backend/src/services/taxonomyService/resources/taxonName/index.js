@@ -1,5 +1,5 @@
-const buildWhere = require('./operations/getMany/buildWhere.js')
 const createTaxonNameRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const getManyfilters = require('./operations/getMany/filters')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -13,18 +13,8 @@ module.exports = {
       type: 'getOne',
     },
     {
-      buildWhere,
+      filters: getManyfilters,
       includeRelations: true,
-      queryParams: {
-        'filter[name]': {
-          description:
-            'Taxon name - accepted scientific, synonym or vernacular name',
-          required: false,
-          schema: {
-            type: 'string',
-          },
-        },
-      },
       type: 'getMany',
     },
     {

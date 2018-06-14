@@ -17,9 +17,13 @@
 ├── es5
 │   ├── Dependor
 │   ├── apiClient
+│   ├── asyncReduce
+│   ├── batch
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── createLid
+│   ├── date
 │   ├── deleteNullProperties
 │   ├── endpointFactory
 │   ├── error
@@ -40,9 +44,13 @@
 ├── src
 │   ├── Dependor
 │   ├── apiClient
+│   ├── asyncReduce
+│   ├── batch
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── createLid
+│   ├── date
 │   ├── deleteNullProperties
 │   ├── endpointFactory
 │   ├── error

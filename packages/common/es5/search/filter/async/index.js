@@ -1,68 +1,56 @@
 'use strict';
 
-var _promise = require('babel-runtime/core-js/promise');
-
-var _promise2 = _interopRequireDefault(_promise);
-
-var _keys = require('babel-runtime/core-js/object/keys');
-
-var _keys2 = _interopRequireDefault(_keys);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var specimenFilterFunctions = require('../../specimen/filterFunctions');
-
-var filterFunctionsMap = {
-  searchSpecimen: specimenFilterFunctions
-};
+var _require = require('../../../batch/reduce'),
+    batchReduce = _require.batchReduce;
 
 var includeItem = require('../includeItem');
 
 module.exports = function filterAsync(_ref) {
-  var _ref$batchSize = _ref.batchSize,
-      batchSize = _ref$batchSize === undefined ? 1000 : _ref$batchSize,
-      resource = _ref.resource,
-      items = _ref.items,
-      query = _ref.query;
+  var _ref$attributesPath = _ref.attributesPath,
+      attributesPath = _ref$attributesPath === undefined ? 'attributes' : _ref$attributesPath,
+      _ref$batchSize = _ref.batchSize,
+      batchSize = _ref$batchSize === undefined ? 100 : _ref$batchSize,
+      filterFunctions = _ref.filterFunctions,
+      _ref$items = _ref.items,
+      items = _ref$items === undefined ? [] : _ref$items,
+      limit = _ref.limit,
+      offset = _ref.offset,
+      query = _ref.query,
+      _ref$returnItems = _ref.returnItems,
+      returnItems = _ref$returnItems === undefined ? false : _ref$returnItems;
 
-  var filterFunctions = filterFunctionsMap[resource];
-  if (!filterFunctions) {
-    throw new Error('No filter functions found for resource: ' + resource);
-  }
-  var nItems = items.length;
-  var endIndex = nItems - 1;
-  var currentIndex = 0;
+  var hasLimit = limit !== undefined;
+  var hasOffset = offset !== undefined;
+
   var result = [];
-  if (!query || !(0, _keys2.default)(query).length) {
-    return _promise2.default.resolve(items.map(function (item) {
-      return item.id;
-    }));
-  }
+  var reduceFunction = function reduceFunction(_ref2) {
+    var item = _ref2.item;
 
-  return new _promise2.default(function (resolve, reject) {
-    var runBatch = function runBatch() {
-      try {
-        var batchEndIndex = currentIndex + batchSize;
-        while (currentIndex < batchEndIndex) {
-          if (currentIndex === endIndex) {
-            return resolve(result);
-          }
-
-          var item = items[currentIndex];
-          if (includeItem({ filterFunctions: filterFunctions, item: item, query: query })) {
-            result.push(item.id);
-          }
-          currentIndex += 1;
-        }
-      } catch (err) {
-        return reject(err);
+    if (includeItem({ attributesPath: attributesPath, filterFunctions: filterFunctions, item: item, query: query })) {
+      if (returnItems) {
+        result.push(item);
+      } else {
+        result.push(item.id);
       }
-      setTimeout(function () {
-        runBatch();
-      }, 0);
-      return null;
-    };
+    }
+  };
 
-    runBatch();
+  return batchReduce({
+    items: items,
+    numberOfEntriesEachBatch: batchSize,
+    reduceFunction: reduceFunction
+  }).then(function () {
+    if (hasLimit && hasOffset) {
+      return result.slice(offset, limit);
+    }
+    if (hasLimit) {
+      return result.slice(0, limit);
+    }
+
+    if (hasOffset) {
+      return result.slice(offset);
+    }
+
+    return result;
   });
 };

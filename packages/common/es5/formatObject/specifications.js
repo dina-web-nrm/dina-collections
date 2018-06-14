@@ -10,14 +10,14 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var models = require('../../dist/models.json');
-var createNormalizeSpecifications = require('./normalize/createNormalizeSpecifications');
-var createRelationshipSpecifications = require('./relationships/createRelationshipSpecifications');
-var createDbSpecifications = require('./db/createDbSpecifications');
+var _require = require('../schemaInterface'),
+    getModelKeyColumnMap = _require.getModelKeyColumnMap,
+    getNormalizeSpecifications = _require.getNormalizeSpecifications,
+    getResourceRelationshipParamsMap = _require.getResourceRelationshipParamsMap;
 
-var relationshipSpecifications = createRelationshipSpecifications({ models: models });
-var normalizeSpecifications = createNormalizeSpecifications({ models: models });
-var dbSpecifications = createDbSpecifications({ models: models });
+var relationshipSpecifications = getResourceRelationshipParamsMap();
+var normalizeSpecifications = getNormalizeSpecifications();
+var dbSpecifications = getModelKeyColumnMap();
 
 exports.getNormalizeSpecification = function getNormalizeSpecification(type) {
   return normalizeSpecifications[type];

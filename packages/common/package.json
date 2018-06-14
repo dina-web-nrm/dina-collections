@@ -7,7 +7,7 @@
     "Fredrik Olovsson <fogithub@gmail.com>"
   ],
   "scripts": {
-    "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/index.js && yarn test:unit",
+    "build": "rm -rf es5 && babel ./src -d es5 --copy-files && node ./src/schemaBuilder/buildModels.js && node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:js": "rm -rf es5 && babel ./src -d es5 --copy-files && yarn test:unit",
     "build:schema": "node ./src/schemaBuilder/buildModels.js && node ./src/schemaBuilder/buildOpenApi.js && yarn test:unit",
     "build:trees": "node ./src/scripts/buildFileStructureTrees.js",
@@ -24,6 +24,7 @@
     "debug": "^3.1.0",
     "json-schema-faker": "^0.4.4",
     "lodash": "^4.17.5",
+    "moment": "^2.22.2",
     "normalizr": "^3.2.4",
     "object-path": "^0.11.4",
     "object-path-immutable": "^1.0.1",

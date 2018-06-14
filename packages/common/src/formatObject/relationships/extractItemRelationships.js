@@ -2,7 +2,7 @@ const extractItemRelationship = require('./extractItemRelationship')
 
 module.exports = function extractItemRelationships({
   item,
-  nestedToCore,
+  nestedToCoreSync,
   relationshipSpecification,
 }) {
   let updatedItem = item
@@ -10,12 +10,12 @@ module.exports = function extractItemRelationships({
     const {
       format: relationshipFormat,
       path,
-      type: relationshipType,
+      targetResource: relationshipType,
     } = relationshipSpecification[relationshipKey]
 
     updatedItem = extractItemRelationship({
       item,
-      nestedToCore,
+      nestedToCoreSync,
       path,
       relationshipFormat,
       relationshipKey,

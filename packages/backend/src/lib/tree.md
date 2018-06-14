@@ -20,74 +20,77 @@
 │   ├── createConnector.js
 │   ├── extractCustomControllersFromServices.js
 │   ├── extractOperationsFromResources.js
-│   ├── extractResourcesFromServices.js
+│   ├── extractResourcesFromService.js
 │   └── index.js
 ├── controllers
-│   ├── create.js
-│   ├── del.js
-│   ├── getMany.js
-│   ├── getOne.js
-│   ├── getRelationship.js
-│   ├── getVersion.js
-│   ├── getVersions.js
+│   ├── crud
+│   │   ├── create.js
+│   │   ├── del.js
+│   │   ├── getMany.js
+│   │   ├── getOne.js
+│   │   ├── getOneSync.js
+│   │   ├── getRelationship.js
+│   │   ├── getVersion.js
+│   │   ├── getVersions.js
+│   │   ├── index.js
+│   │   ├── update.js
+│   │   └── updateRelationship.js
 │   ├── index.js
-│   ├── queryUtilities
-│   │   ├── defaultWhereFactory.js
-│   │   └── filterWhereFactory.js
-│   ├── relationshipsUtilities
-│   │   ├── buildIncludeArray.js
-│   │   ├── buildIncludeArray.spec.js
-│   │   ├── extractRelationships
-│   │   │   ├── addEmptyRelationships.js
-│   │   │   ├── addEmptyRelationships.spec.js
-│   │   │   ├── buildEmptyRelationship.js
-│   │   │   ├── buildEmptyRelationship.spec.js
-│   │   │   ├── extractRelationship.js
+│   ├── jobs
+│   │   ├── createJob.js
+│   │   ├── index.js
+│   │   ├── setJobFailed.js
+│   │   ├── setJobSuccess.js
+│   │   └── startJob.js
+│   ├── utilities
+│   │   ├── relationships
+│   │   │   ├── buildIncludeArray.js
+│   │   │   ├── buildIncludeArray.spec.js
+│   │   │   ├── extractRelationships
+│   │   │   ├── getFormatOutput.js
+│   │   │   ├── getJsonRelationship
+│   │   │   ├── getSqlRelationship
+│   │   │   ├── shouldIncludeRelation.js
+│   │   │   ├── shouldIncludeRelation.spec.js
+│   │   │   ├── updateJsonRelationship
+│   │   │   └── updateSqlRelationship
+│   │   └── transformations
+│   │       ├── createArrayResponse.js
+│   │       ├── createObjectResponse.js
+│   │       ├── createRelationshipsArrayResponse.js
+│   │       ├── createRelationshipsObjectResponse.js
+│   │       ├── inputObject.js
+│   │       ├── outputArray.js
+│   │       └── outputObject.js
+│   └── views
+│       ├── emptyView.js
+│       ├── index.js
+│       ├── rebuildView
+│       │   ├── createBatch.js
+│       │   ├── emptyCacheViews.js
+│       │   ├── index.js
+│       │   ├── rebuild.js
+│       │   └── rebuildCacheViews.js
+│       ├── requestRebuildView.js
+│       ├── requestUpdateView.js
+│       ├── updateView
+│       │   ├── createItem.js
+│       │   ├── getRequiredAction.js
+│       │   ├── index.js
+│       │   └── update.js
+│       └── utilities
+│           └── defaultMapFunction.js
+├── dataStores
+│   ├── inMemory
+│   │   ├── db
+│   │   │   ├── createDb.js
 │   │   │   └── index.js
-│   │   ├── getFormatOutput.js
-│   │   ├── getJsonRelationship
-│   │   │   ├── getGetterName.js
-│   │   │   ├── getQueryModels.js
-│   │   │   ├── getSelectedResult.js
-│   │   │   ├── getWhereParams.js
-│   │   │   └── index.js
-│   │   ├── getSqlRelationship
-│   │   │   ├── getGetterName.js
-│   │   │   ├── getInclude.js
-│   │   │   ├── getQueryModels.js
-│   │   │   ├── getSelectedResult.js
-│   │   │   ├── getWhereParams.js
-│   │   │   └── index.js
-│   │   ├── shouldIncludeRelation.js
-│   │   ├── shouldIncludeRelation.spec.js
-│   │   ├── updateJsonRelationship
-│   │   │   └── index.js
-│   │   └── updateSqlRelationship
-│   │       ├── getUpdateValues.js
-│   │       └── index.js
-│   ├── transformations
-│   │   ├── createArrayResponse.js
-│   │   ├── createObjectResponse.js
-│   │   ├── createRelationshipsArrayResponse.js
-│   │   ├── createRelationshipsObjectResponse.js
-│   │   ├── inputObject.js
-│   │   ├── outputArray.js
-│   │   └── outputObject.js
-│   ├── update.js
-│   └── updateRelationship.js
-├── elasticsearch
-│   ├── db
 │   │   └── index.js
 │   ├── index.js
-│   └── models
-│       ├── createModels.js
-│       ├── factories
-│       │   └── normalizedElasticModel
-│       ├── index.js
-│       ├── loadInitialData.js
-│       ├── syncModels.js
-│       └── utilities
-│           └── extractModelFunctionsFromServices.js
+│   └── sequelize
+│       ├── db
+│       │   └── index.js
+│       └── index.js
 ├── integrations
 │   ├── factories
 │   │   ├── index.js
@@ -95,43 +98,100 @@
 │   │       ├── index.js
 │   │       └── utilities
 │   └── index.js
-├── searchEngine
-│   ├── index.js
-│   ├── indexBuilder
-│   │   ├── buildIndex
-│   │   │   ├── createBatch.js
-│   │   │   ├── index.js
-│   │   │   └── rebuild.js
-│   │   ├── dataInterface
-│   │   │   ├── bulkCreate.js
-│   │   │   ├── cache
-│   │   │   ├── getCount.js
-│   │   │   ├── getItemByTypeId.js
-│   │   │   ├── getItems.js
-│   │   │   ├── index.js
-│   │   │   ├── migrateData.js
-│   │   │   └── truncate.js
+├── jobs
+│   ├── scheduler
 │   │   └── index.js
-│   └── todo
-├── sequelize
-│   ├── db
-│   │   └── index.js
+│   └── worker
+│       ├── execute.js
+│       ├── findNext.js
+│       └── index.js
+├── models
+│   ├── createModels.js
+│   ├── createRelations.js
+│   ├── factories
+│   │   ├── inMemory
+│   │   │   ├── documentModel
+│   │   │   └── viewDocumentModel
+│   │   ├── index.js
+│   │   └── sequelize
+│   │       ├── documentModel
+│   │       ├── sharedMethods
+│   │       ├── simpleSqlModel
+│   │       ├── utilities
+│   │       └── viewDocumentModel
 │   ├── index.js
-│   └── models
-│       ├── createModels.js
-│       ├── createRelations.js
-│       ├── factories
-│       │   ├── documentModel
-│       │   └── versionedDocumentModel
+│   ├── loadInitialData.js
+│   ├── setupModels.js
+│   ├── synchronizeModels.js
+│   └── utilities
+│       ├── extractModelSpecificationsFromServices.js
+│       └── parseFilterValue.js
+├── operations
+│   ├── crudOperations
+│   │   ├── create.js
+│   │   ├── del.js
+│   │   ├── getMany.js
+│   │   ├── getOne.js
+│   │   ├── getOneSync.js
+│   │   ├── getRelationship.js
+│   │   ├── getVersion.js
+│   │   ├── getVersions.js
+│   │   ├── index.js
+│   │   ├── schemas
+│   │   │   ├── base.js
+│   │   │   ├── create.js
+│   │   │   ├── del.js
+│   │   │   ├── getMany.js
+│   │   │   ├── getOne.js
+│   │   │   ├── getOneSync.js
+│   │   │   ├── getRelationship.js
+│   │   │   ├── getVersion.js
+│   │   │   ├── getVersions.js
+│   │   │   ├── index.js
+│   │   │   ├── raw.js
+│   │   │   ├── update.js
+│   │   │   └── updateRelationship.js
+│   │   ├── update.js
+│   │   ├── updateRelationship.js
+│   │   └── utilities
+│   │       ├── addExampleToQueryParams.js
+│   │       ├── addLimitToQueryParams.js
+│   │       ├── addMockToQueryParams.js
+│   │       ├── addOffsetToQueryParams.js
+│   │       ├── addQueryParamsFromFilter.js
+│   │       ├── addRelationsToQueryParams.js
+│   │       └── buildRelations.js
+│   ├── filters
+│   │   ├── deactivated.js
+│   │   ├── group.js
+│   │   ├── ids.js
+│   │   ├── index.js
+│   │   ├── nameSearch.js
+│   │   ├── parentId.js
+│   │   └── updatedAfter.js
+│   ├── index.js
+│   ├── jobOperations
+│   │   ├── createJob.js
+│   │   ├── index.js
+│   │   ├── schemas
+│   │   │   ├── base.js
+│   │   │   └── index.js
+│   │   ├── setJobFailed.js
+│   │   ├── setJobSuccess.js
+│   │   └── startJob.js
+│   └── viewOperations
+│       ├── emptyView.js
 │       ├── index.js
-│       ├── loadInitialData
-│       │   ├── index.js
-│       │   └── utilities
-│       ├── syncModels.js
-│       └── utilities
-│           ├── extractModelFunctionsFromServices.js
-│           ├── getForeignKeyName.js
-│           └── setupAssociation.js
+│       ├── rebuildView.js
+│       ├── requestRebuildView.js
+│       ├── requestUpdateView.js
+│       ├── schemas
+│       │   ├── base.js
+│       │   └── index.js
+│       └── updateView.js
+├── serviceInteractor
+│   ├── callController.js
+│   └── index.js
 ├── serviceRouter
 │   ├── index.js
 │   ├── middlewares
@@ -146,27 +206,16 @@
 │   │   ├── error.js
 │   │   └── requestHandler.js
 │   └── utilities
-│       └── expressifyPath.js
+│       ├── expressifyPath.js
+│       └── shouldMountOperation.js
 ├── services
 │   ├── index.js
 │   ├── operationFactory
 │   │   ├── createOperationSpecification.js
-│   │   ├── index.js
-│   │   └── typeFactories
-│   │       ├── create.js
-│   │       ├── del.js
-│   │       ├── getMany.js
-│   │       ├── getOne.js
-│   │       ├── getRelationship.js
-│   │       ├── getVersion.js
-│   │       ├── getVersions.js
-│   │       ├── index.js
-│   │       ├── schemas
-│   │       ├── update.js
-│   │       ├── updateRelationship.js
-│   │       └── utilities
-│   ├── relations
-│   │   └── createSetupRelations.js
+│   │   ├── filters
+│   │   │   ├── createEqualFilter.js
+│   │   │   └── createGetManyFilters.js
+│   │   └── index.js
 │   ├── resourceFactory
 │   │   ├── createOperationMap.js
 │   │   ├── createResourceSpecification.js

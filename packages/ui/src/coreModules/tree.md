@@ -356,11 +356,10 @@
 │   │   ├── index.js
 │   │   ├── search.js
 │   │   └── syncSearch.js
-│   ├── actionTypes.js
 │   ├── constants.js
 │   ├── higherOrderComponents
+│   │   ├── createInjectSearch.js
 │   │   ├── createInjectSearchResult.js
-│   │   ├── createSearch.js
 │   │   └── index.js
 │   ├── index.js
 │   └── keyObjectModule.js
