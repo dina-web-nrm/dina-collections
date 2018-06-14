@@ -1,8 +1,13 @@
+const { Dependor } = require('../../Dependor')
 const {
   getResourceRelationshipKeysToIncludeInBodyMap,
 } = require('../../schemaInterface')
 
 const resourceRelationshipKeysToIncludeInBodyMap = getResourceRelationshipKeysToIncludeInBodyMap()
+
+const dep = new Dependor({
+  resourceRelationshipKeysToIncludeInBodyMap,
+})
 
 function splitRelationships({ itemResourceType, relationships } = {}) {
   const res = {
@@ -11,7 +16,7 @@ function splitRelationships({ itemResourceType, relationships } = {}) {
   }
 
   const relationshipKeysToIncludeInBody =
-    resourceRelationshipKeysToIncludeInBodyMap[itemResourceType] || []
+    dep.resourceRelationshipKeysToIncludeInBodyMap[itemResourceType] || []
 
   Object.keys(relationships).forEach(key => {
     if (relationshipKeysToIncludeInBody.includes(key)) {
@@ -24,5 +29,6 @@ function splitRelationships({ itemResourceType, relationships } = {}) {
 }
 
 module.exports = {
+  dep,
   splitRelationships,
 }
