@@ -25,12 +25,33 @@ describe('formatObject/coreToNested', function () {
   var getItemByTypeId = void 0;
   beforeEach(function () {
     getItemByTypeId = function getItemByTypeId(type, id) {
-      return new _promise2.default(function (resolve) {
-        resolve({
+      return _promise2.default.resolve().then(function () {
+        if (type === 'identifierType') {
+          return {
+            attributes: {
+              key: 'catalog-number',
+              name: 'catalog number'
+            },
+            id: id,
+
+            type: type
+          };
+        }
+
+        if (type === 'physicalObject') {
+          return {
+            attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
+            id: id,
+
+            type: type
+          };
+        }
+
+        return {
+          attributes: {},
           id: id,
-          resolved: true,
           type: type
-        });
+        };
       });
     };
   });
@@ -127,46 +148,18 @@ describe('formatObject/coreToNested', function () {
       expect(attribute).toEqual(expectedFormat);
     });
     it('has collectionItems', function () {
-      var customGetItemByTypeId = function customGetItemByTypeId(type, id) {
-        return new _promise2.default(function (resolve) {
-          if (type === 'physicalObject') {
-            resolve({
-              attributes: { lid: '24bf4bb4-f865-4182-a010-34aa898d845d' },
-              id: id,
-              resolved: true,
-              type: type
-            });
-          }
+      var attribute = individual.collectionItems;
 
-          resolve({
-            id: id,
-            resolved: true,
-            type: type
-          });
-        });
-      };
-
-      expect.assertions(1);
-      return coreToNested({
-        denormalize: true,
-        extractRelationships: true,
-        getItemByTypeId: customGetItemByTypeId,
-        item: apiFormatSpecimen,
-        type: 'specimen'
-      }).then(function (nestedSpecimen) {
-        var attribute = nestedSpecimen.individual.collectionItems;
-
-        var expectedFormat = [{
-          alternateIdentifiersText: 'alternateIdentifiersText',
-          physicalObject: {
-            id: '2234',
-            lid: '24bf4bb4-f865-4182-a010-34aa898d845d'
-          },
-          physicalObjectText: 'physicalObjectText',
-          lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd'
-        }];
-        expect(attribute).toEqual(expectedFormat);
-      });
+      var expectedFormat = [{
+        alternateIdentifiersText: 'alternateIdentifiersText',
+        physicalObject: {
+          id: '2234',
+          lid: '24bf4bb4-f865-4182-a010-34aa898d845d'
+        },
+        physicalObjectText: 'physicalObjectText',
+        lid: 'f1479610-6618-49e7-b148-8fbaeaacbcdd'
+      }];
+      expect(attribute).toEqual(expectedFormat);
     });
     it('has determinations', function () {
       var attribute = individual.determinations;
@@ -199,7 +192,9 @@ describe('formatObject/coreToNested', function () {
       var attribute = individual.identifiers;
       var expectedFormat = [{
         identifierType: {
-          id: 1
+          id: 1,
+          key: 'catalog-number',
+          name: 'catalog number'
         },
         nameSpace: '',
         value: '123456',
