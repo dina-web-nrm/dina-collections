@@ -74,6 +74,17 @@ module.exports = function bootstrap({
 
             serviceInteractor.addConnectors(connectors)
 
+            if (config.jobs.workerActive) {
+              createWorker({
+                serviceInteractor,
+              })
+            }
+            if (config.jobs.schedulerActive) {
+              createScheduler({
+                serviceInteractor,
+              })
+            }
+
             if (config.api.active) {
               const serviceRouter = createServiceRouter({
                 auth,
@@ -89,16 +100,6 @@ module.exports = function bootstrap({
               log.info(
                 `App configured after: ${now() - startTime} milliseconds`
               )
-              if (config.jobs.workerActive) {
-                createWorker({
-                  serviceInteractor,
-                })
-              }
-              if (config.jobs.schedulerActive) {
-                createScheduler({
-                  serviceInteractor,
-                })
-              }
 
               return app.listen(config.api.port, () => {
                 log.info(
