@@ -14,8 +14,8 @@ module.exports = {
       (baseConfig.env.isDevelopment && baseConfig.db.loadInitialData) || false,
   },
   jobs: {
-    schedulerActive: true,
-    workerActive: true,
+    schedulerActive: baseConfig.env.isDevelopment,
+    workerActive: baseConfig.env.isDevelopment,
   },
   services: {
     agentService: true,
