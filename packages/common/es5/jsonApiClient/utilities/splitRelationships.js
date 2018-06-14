@@ -6,10 +6,17 @@ var _keys2 = _interopRequireDefault(_keys);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var _require = require('../../schemaInterface'),
-    getResourceRelationshipKeysToIncludeInBodyMap = _require.getResourceRelationshipKeysToIncludeInBodyMap;
+var _require = require('../../Dependor'),
+    Dependor = _require.Dependor;
+
+var _require2 = require('../../schemaInterface'),
+    getResourceRelationshipKeysToIncludeInBodyMap = _require2.getResourceRelationshipKeysToIncludeInBodyMap;
 
 var resourceRelationshipKeysToIncludeInBodyMap = getResourceRelationshipKeysToIncludeInBodyMap();
+
+var dep = new Dependor({
+  resourceRelationshipKeysToIncludeInBodyMap: resourceRelationshipKeysToIncludeInBodyMap
+});
 
 function splitRelationships() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
@@ -21,7 +28,7 @@ function splitRelationships() {
     relationshipsToIncludeInRequest: {}
   };
 
-  var relationshipKeysToIncludeInBody = resourceRelationshipKeysToIncludeInBodyMap[itemResourceType] || [];
+  var relationshipKeysToIncludeInBody = dep.resourceRelationshipKeysToIncludeInBodyMap[itemResourceType] || [];
 
   (0, _keys2.default)(relationships).forEach(function (key) {
     if (relationshipKeysToIncludeInBody.includes(key)) {
@@ -34,5 +41,6 @@ function splitRelationships() {
 }
 
 module.exports = {
+  dep: dep,
   splitRelationships: splitRelationships
 };

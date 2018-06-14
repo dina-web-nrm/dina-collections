@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var objectPath = require('object-path');
 
-module.exports = function getRelativeRelationSpecification(_ref) {
+var getRelativeRelationships = function getRelativeRelationships(_ref) {
   var relationSpecification = _ref.relationSpecification,
       path = _ref.path;
 
@@ -28,4 +28,8 @@ module.exports = function getRelativeRelationSpecification(_ref) {
     }
     return relationships;
   }, undefined);
+};
+
+module.exports = {
+  getRelativeRelationships: getRelativeRelationships
 };

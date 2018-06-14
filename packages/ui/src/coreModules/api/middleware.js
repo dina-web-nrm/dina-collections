@@ -1,6 +1,6 @@
 import globalUserSelectors from 'coreModules/user/globalSelectors'
 import createSystemFrontendValidator from 'common/es5/error/validators/createSystemFrontendValidator'
-import createApiClient from 'common/es5/jsonApiClient'
+import { createJsonApiClient } from 'common/es5/jsonApiClient'
 import createEndpoint from 'utilities/endpointFactory/client'
 
 export const buildAuthHeaders = state => {
@@ -31,7 +31,7 @@ export default function createApiMiddleware(apiClientOptions) {
       systemValidate,
     }
 
-    const apiClient = createApiClient({
+    const apiClient = createJsonApiClient({
       apiConfigInput,
       createEndpoint,
     })
