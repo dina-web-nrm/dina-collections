@@ -1,6 +1,6 @@
 const { createApiClient } = require('../apiClient')
 
-module.exports = function createJsonApiClient({
+module.exports = function createOpenApiClient({
   apiConfigInput,
   createEndpoint,
 }) {
