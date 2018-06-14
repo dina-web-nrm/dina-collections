@@ -32,14 +32,18 @@ export class CreateCuratorialAssessment extends PureComponent {
       ...rest
     } = this.props
 
+    const now = moment()
+
     return (
       <BaseForm
         displayBackButton
         displayResetButton
         initialValues={{
-          agentText: userName,
+          agentText: userName || undefined,
           date: {
-            dateText: moment().format('YYYY-MM-DD'),
+            day: now.date(),
+            month: now.month(),
+            year: now.year(),
           },
           isInStorage: true,
         }}

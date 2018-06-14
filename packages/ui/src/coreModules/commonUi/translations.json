@@ -1,4 +1,22 @@
 {
+  "Date": {
+    "after": {
+      "en": "after",
+      "sv": "efter"
+    },
+    "and": {
+      "en": "and",
+      "sv": "och"
+    },
+    "between": {
+      "en": "between",
+      "sv": "mellan"
+    },
+    "before": {
+      "en": "before",
+      "sv": "före"
+    }
+  },
   "Navbar": {
     "logout": {
       "en": "logout",

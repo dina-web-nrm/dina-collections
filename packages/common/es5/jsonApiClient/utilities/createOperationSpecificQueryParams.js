@@ -6,7 +6,8 @@ var _extends3 = _interopRequireDefault(_extends2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var getRelativeRelationships = require('./getRelativeRelationships');
+var _require = require('./getRelativeRelationships'),
+    getRelativeRelationships = _require.getRelativeRelationships;
 
 module.exports = function createOperationSpecificQueryParams(_ref) {
   var path = _ref.path,

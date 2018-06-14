@@ -1,4 +1,4 @@
-const getRelativeRelationships = require('./getRelativeRelationships')
+const { getRelativeRelationships } = require('./getRelativeRelationships')
 
 module.exports = function createOperationSpecificQueryParams({
   path,

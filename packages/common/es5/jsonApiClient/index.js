@@ -1,5 +1,8 @@
 'use strict';
 
+var _require = require('../Dependor'),
+    Dependor = _require.Dependor;
+
 var createLog = require('../log');
 var createOpenApiClient = require('../openApiClient');
 var jsonApiGetMany = require('./get/getMany');
@@ -7,18 +10,26 @@ var jsonApiGetOne = require('./get/getOne');
 var jsonApiCreate = require('./modify/recursiveCreate').recursiveCreate;
 var jsonApiUpdate = require('./modify/recursiveUpdate').recursiveUpdate;
 
-var _require = require('./modify/setDependencies'),
-    setDependencies = _require.setDependencies;
+var _require2 = require('./modify/setDependencies'),
+    setDependencies = _require2.setDependencies;
 
 var log = createLog('common:jsonApiClient');
 
+var dep = new Dependor({
+  createOpenApiClient: createOpenApiClient,
+  jsonApiCreate: jsonApiCreate,
+  jsonApiGetMany: jsonApiGetMany,
+  jsonApiGetOne: jsonApiGetOne,
+  jsonApiUpdate: jsonApiUpdate
+});
+
 setDependencies();
 
-module.exports = function createJsonApiClient(_ref) {
+var createJsonApiClient = function createJsonApiClient(_ref) {
   var apiConfigInput = _ref.apiConfigInput,
       createEndpoint = _ref.createEndpoint;
 
-  var openApiClient = createOpenApiClient({
+  var openApiClient = dep.createOpenApiClient({
     apiConfigInput: apiConfigInput,
     createEndpoint: createEndpoint
   });
@@ -36,7 +47,7 @@ module.exports = function createJsonApiClient(_ref) {
         resourcesToModify = _userOptions$resource === undefined ? [resourceType] : _userOptions$resource;
 
     var item = body.data;
-    return jsonApiUpdate({
+    return dep.jsonApiUpdate({
       item: item,
       openApiClient: openApiClient,
       resourcesToModify: resourcesToModify,
@@ -52,7 +63,7 @@ module.exports = function createJsonApiClient(_ref) {
         resourcesToModify = _userOptions$resource2 === undefined ? [resourceType] : _userOptions$resource2;
 
     var item = body.data;
-    return jsonApiCreate({
+    return dep.jsonApiCreate({
       item: item,
       openApiClient: openApiClient,
       resourcesToModify: resourcesToModify,
@@ -62,7 +73,7 @@ module.exports = function createJsonApiClient(_ref) {
 
   var getOne = function getOne(resourceType, userOptions) {
     log.debug('getOne ' + resourceType, userOptions);
-    return jsonApiGetOne({
+    return dep.jsonApiGetOne({
       openApiClient: openApiClient,
       resourceType: resourceType,
       userOptions: userOptions
@@ -71,7 +82,7 @@ module.exports = function createJsonApiClient(_ref) {
 
   var getMany = function getMany(resourceType, userOptions) {
     log.debug('getMany ' + resourceType, userOptions);
-    return jsonApiGetMany({
+    return dep.jsonApiGetMany({
       openApiClient: openApiClient,
       resourceType: resourceType,
       userOptions: userOptions
@@ -85,4 +96,9 @@ module.exports = function createJsonApiClient(_ref) {
     getOne: getOne,
     update: update
   };
+};
+
+module.exports = {
+  createJsonApiClient: createJsonApiClient,
+  dep: dep
 };

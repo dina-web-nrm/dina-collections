@@ -1,3 +1,4 @@
+const { Dependor } = require('../Dependor')
 const createLog = require('../log')
 const createOpenApiClient = require('../openApiClient')
 const jsonApiGetMany = require('./get/getMany')
@@ -8,13 +9,18 @@ const { setDependencies } = require('./modify/setDependencies')
 
 const log = createLog('common:jsonApiClient')
 
+const dep = new Dependor({
+  createOpenApiClient,
+  jsonApiCreate,
+  jsonApiGetMany,
+  jsonApiGetOne,
+  jsonApiUpdate,
+})
+
 setDependencies()
 
-module.exports = function createJsonApiClient({
-  apiConfigInput,
-  createEndpoint,
-}) {
-  const openApiClient = createOpenApiClient({
+const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
+  const openApiClient = dep.createOpenApiClient({
     apiConfigInput,
     createEndpoint,
   })
@@ -28,7 +34,7 @@ module.exports = function createJsonApiClient({
     log.debug(`update ${resourceType}`, userOptions)
     const { body = {}, resourcesToModify = [resourceType] } = userOptions
     const item = body.data
-    return jsonApiUpdate({
+    return dep.jsonApiUpdate({
       item,
       openApiClient,
       resourcesToModify,
@@ -40,7 +46,7 @@ module.exports = function createJsonApiClient({
     log.debug(`create ${resourceType}`, userOptions)
     const { body = {}, resourcesToModify = [resourceType] } = userOptions
     const item = body.data
-    return jsonApiCreate({
+    return dep.jsonApiCreate({
       item,
       openApiClient,
       resourcesToModify,
@@ -50,7 +56,7 @@ module.exports = function createJsonApiClient({
 
   const getOne = (resourceType, userOptions) => {
     log.debug(`getOne ${resourceType}`, userOptions)
-    return jsonApiGetOne({
+    return dep.jsonApiGetOne({
       openApiClient,
       resourceType,
       userOptions,
@@ -59,7 +65,7 @@ module.exports = function createJsonApiClient({
 
   const getMany = (resourceType, userOptions) => {
     log.debug(`getMany ${resourceType}`, userOptions)
-    return jsonApiGetMany({
+    return dep.jsonApiGetMany({
       openApiClient,
       resourceType,
       userOptions,
@@ -73,4 +79,9 @@ module.exports = function createJsonApiClient({
     getOne,
     update,
   }
+}
+
+module.exports = {
+  createJsonApiClient,
+  dep,
 }
