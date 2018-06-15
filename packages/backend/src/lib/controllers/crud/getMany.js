@@ -53,6 +53,9 @@ module.exports = function getMany({ operation, models }) {
                     queryParamRelationships,
                     relations,
                   })
+                if (!relationships) {
+                  return transformedItem
+                }
 
                 return {
                   ...transformedItem,
