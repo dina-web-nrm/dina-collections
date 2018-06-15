@@ -1,3 +1,9 @@
+const createLog = require('../../../../../../utilities/log')
+
+const log = createLog(
+  'lib/models/factories/inMemory/documentModel/methods/bulkCreateFactory'
+)
+
 module.exports = function bulkCreateFactory({ Model }) {
   return function bulkCreate({ items = [] }) {
     return Promise.resolve().then(() => {
@@ -15,7 +21,9 @@ module.exports = function bulkCreateFactory({ Model }) {
         ...currentItems,
         ...newItems,
       }
-      Model.set(updateItems)
+      const res = Model.set(updateItems)
+      log.debug(`Successfully created ${items.length} items`)
+      return res
     })
   }
 }
