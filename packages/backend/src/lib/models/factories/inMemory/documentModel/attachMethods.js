@@ -1,4 +1,5 @@
 const buildWhereFilterFactory = require('./methods/buildWhereFilterFactory')
+const buildWhereQueryFactory = require('./methods/buildWhereQueryFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
@@ -28,6 +29,8 @@ module.exports = function attachMethods({
     })
   }
   const buildWhereFilter = buildWhereFilterFactory()
+  const buildWhereQuery = buildWhereQueryFactory()
+
   const synchronize = synchronizeFactory({ Model })
   const getById = getByIdFactory({
     Model,
@@ -68,6 +71,7 @@ module.exports = function attachMethods({
 
   const coreMethods = {
     buildWhereFilter,
+    buildWhereQuery,
     bulkCreate,
     create,
     del,
