@@ -49,7 +49,7 @@
     "pretty": "prettier --single-quote --write 'src/**/*.{js,jsx,json}'",
     "start": "DEBUG='DINA*' nodemon src/apps/core/index.js",
     "start:dev": "NODE_ENV=development DEBUG='DINA*' nodemon src/apps/core/index.js",
-    "start:searchEngine": "DEBUG='DINA*' nodemon src/apps/searchEngine/index.js",
+    "start:worker": "DEBUG='DINA*' nodemon src/apps/worker/index.js",
     "test": "yarn test:unit && yarn lint:js && yarn test:depcheck",
     "test:api": "DEBUG='TEST:DINA*' API_TESTS=true jest --env=node --watch",
     "test:batch": "DEBUG='TEST:DINA*' BATCH_TESTS=true jest --env=node --watch",

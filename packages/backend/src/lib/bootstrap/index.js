@@ -75,17 +75,27 @@ module.exports = function bootstrap({
             serviceInteractor.addConnectors(connectors)
 
             if (config.jobs.workerActive) {
+              log.info('Starting worker')
               createWorker({
                 serviceInteractor,
               })
+            } else {
+              log.info('Dont starting worker')
             }
             if (config.jobs.schedulerActive) {
+              log.info('Starting scheduler')
               createScheduler({
                 serviceInteractor,
               })
+            } else {
+              log.info('Dont starting scheduler')
+            }
+            if (!config.api.active) {
+              log.info('Dont starting api')
             }
 
             if (config.api.active) {
+              log.info('Starting api')
               const serviceRouter = createServiceRouter({
                 auth,
                 config,
