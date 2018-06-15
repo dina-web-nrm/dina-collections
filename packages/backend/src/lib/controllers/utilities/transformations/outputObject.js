@@ -4,8 +4,17 @@ module.exports = function tranformOutput(output, useVersionId) {
   if (!output) {
     return null
   }
+
+  const id = useVersionId ? output.versionId : output.id
+
+  if (output.document) {
+    return {
+      ...output.document,
+      id,
+    }
+  }
+
   return {
-    ...output.document,
     id: useVersionId ? output.versionId : output.id,
   }
 }
