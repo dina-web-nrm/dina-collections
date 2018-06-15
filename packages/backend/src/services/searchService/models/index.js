@@ -2,7 +2,7 @@ const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
 module.exports = [
   {
-    modelFactory: 'sequelizeViewDocumentModel',
+    modelFactory: 'inMemoryViewDocumentModel',
     name: 'searchSpecimen',
   },
 
