@@ -1,3 +1,4 @@
+exports.id = require('./id')
 exports.deactivated = require('./deactivated')
 exports.group = require('./group')
 exports.ids = require('./ids')
