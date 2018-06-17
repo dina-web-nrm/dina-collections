@@ -11,6 +11,9 @@ export { default as HelpTextNotification } from './migrate/HelpTextNotification'
 export { default as Input } from './fields/Input'
 export { default as InputDatePart } from './migrate/InputDatePart'
 export { default as InputText } from './inputs/Input/Text'
+export {
+  default as MultipleSearchSelectionDropdown,
+} from './fields/MultipleSearchSelectionDropdown'
 export { default as Search } from './fields/Search'
 export { default as SingleDate } from './fields/Date/SingleDate'
 export { default as TextArea } from './fields/TextArea'
