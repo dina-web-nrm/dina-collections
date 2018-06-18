@@ -1,9 +1,9 @@
-const mappings = require('./mappings')
+const mappingSpecification = require('../resources/searchSpecimen/data/mappings')
 const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
 module.exports = [
   {
-    mappings,
+    mappingSpecification,
     modelFactory: 'elasticsearchDocumentModel',
     name: 'searchSpecimen',
   },
