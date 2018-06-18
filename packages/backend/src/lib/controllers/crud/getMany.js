@@ -8,7 +8,7 @@ module.exports = function getMany({ operation, models }) {
     includeRelations,
     relations,
     resource,
-    filterSpecifications,
+    filterSpecificationMap,
   } = operation
   const model = models[resource]
   if (!model) {
@@ -36,7 +36,7 @@ module.exports = function getMany({ operation, models }) {
     return model
       .buildWhereFilter({
         filterInput,
-        filterSpecifications,
+        filterSpecificationMap,
       })
       .then(where => {
         return model

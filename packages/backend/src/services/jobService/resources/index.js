@@ -1,4 +1,4 @@
-const getManyfilters = require('./operations/getMany/filters')
+const getManyfilterSpecificationMap = require('./operations/getMany/filters')
 
 exports.job = {
   basePath: '/api/jobs/v01',
@@ -18,7 +18,7 @@ exports.job = {
       type: 'getOne',
     },
     {
-      filterSpecifications: getManyfilters,
+      filterSpecificationMap: getManyfilterSpecificationMap,
       type: 'getMany',
     },
     {

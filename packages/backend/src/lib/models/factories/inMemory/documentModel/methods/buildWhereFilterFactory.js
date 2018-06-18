@@ -2,11 +2,11 @@ const parseFilterValue = require('../../../../utilities/parseFilterValue')
 
 module.exports = function buildWhereFilterFactory() {
   return function buildWhereFilter(
-    { filterSpecifications = {}, filterInput = {} } = {}
+    { filterSpecificationMap = {}, filterInput = {} } = {}
   ) {
-    const filterSpecificationArray = Object.keys(filterSpecifications).map(
+    const filterSpecificationArray = Object.keys(filterSpecificationMap).map(
       key => {
-        return filterSpecifications[key]
+        return filterSpecificationMap[key]
       }
     )
 

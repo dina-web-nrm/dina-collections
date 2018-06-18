@@ -2,7 +2,7 @@ const createArrayResponse = require('../utilities/transformations/createArrayRes
 const transformOutput = require('../utilities/transformations/outputObject')
 
 module.exports = function queryController({ operation, models }) {
-  const { resource, filterSpecifications } = operation
+  const { resource, filterSpecificationMap } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -20,7 +20,7 @@ module.exports = function queryController({ operation, models }) {
       .buildWhereQuery({
         aggregations,
         filters,
-        filterSpecifications,
+        filterSpecificationMap,
       })
       .then(where => {
         return model

@@ -1,6 +1,6 @@
 const buildOperationId = require('common/src/buildOperationId')
 const createRequestSuccess = require('./create/examples/requestSuccess.json')
-const getManyFilters = require('./getMany/filters')
+const getManyFilterSpecificationMap = require('./getMany/filters')
 
 module.exports = {
   basePath: '/api/locality/v01',
@@ -27,7 +27,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecifications: getManyFilters,
+      filterSpecificationMap: getManyFilterSpecificationMap,
       includeRelations: true,
       type: 'getMany',
     },
