@@ -4,10 +4,11 @@
       "aggregations": [
         {
           "key": "collectingLocations",
-          "aggregationFunction": "aggregateCollectingLocations"
+          "aggregationFunction": "identifiers",
+          "options": { "contains": "Stockholm", "limit": 1 }
         }
       ],
-      "filters": {
+      "query": {
         "and": [
           {
             "filter": {
