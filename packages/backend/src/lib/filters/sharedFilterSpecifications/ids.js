@@ -1,5 +1,4 @@
 module.exports = {
-  js: () => {},
   key: 'ids',
   queryParams: {
     description: 'Filter by ids',

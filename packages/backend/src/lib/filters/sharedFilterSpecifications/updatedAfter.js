@@ -1,5 +1,4 @@
 module.exports = {
-  js: () => {},
   key: 'updatedAfter',
   queryParams: {
     description: 'Filter by updatedAt after specificed timestamp',

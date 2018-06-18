@@ -1,5 +1,4 @@
 module.exports = {
-  js: () => {},
   key: 'search',
   queryParams: {
     description: 'Filter by string search, example swe',
