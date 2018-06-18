@@ -4,7 +4,11 @@ import {
 } from 'coreModules/bootstrap/utilities'
 
 import { BOOTSTRAP_REGISTER_MODULES } from 'coreModules/bootstrap/actionTypes'
-import { SIZE_SET_BREAKPOINT, SIZE_SET_WIDTH } from './actionTypes'
+import {
+  SIZE_SET_BREAKPOINT,
+  SIZE_SET_HEIGHT,
+  SIZE_SET_WIDTH,
+} from './actionTypes'
 
 import { MODULE_NAME } from './constants'
 
@@ -32,6 +36,13 @@ export default function reducer(state = initState, action) {
       return {
         ...state,
         currentBreakpoint: action.payload,
+      }
+    }
+
+    case SIZE_SET_HEIGHT: {
+      return {
+        ...state,
+        height: action.payload,
       }
     }
 
