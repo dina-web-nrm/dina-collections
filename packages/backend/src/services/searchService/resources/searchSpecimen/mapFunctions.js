@@ -1,7 +1,7 @@
 const cacheResourcesSpecifications = require('../../cacheResourcesSpecifications')
 const coreToNested = require('common/src/formatObject/coreToNested')
 const mapSync = require('common/src/search/map/sync')
-const searchSpecimenMapFunctions = require('common/src/search/resources/specimen/mapFunctions')
+const searchSpecimenMapFunctions = require('./transformationFunctions')
 
 const mapFunctions = Object.keys(searchSpecimenMapFunctions).map(key => {
   return searchSpecimenMapFunctions[key]

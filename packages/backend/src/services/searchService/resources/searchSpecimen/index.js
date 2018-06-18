@@ -20,10 +20,16 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filterSpecifications: createGetManyFilters({
+        include: ['id'],
+      }),
+      type: 'query',
+    },
+    {
       type: 'del',
     },
     {
-      filters: createGetManyFilters({
+      filterSpecifications: createGetManyFilters({
         include: ['ids', 'updatedAfter', 'deactivated'],
       }),
       type: 'getMany',
