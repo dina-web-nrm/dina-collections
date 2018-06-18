@@ -1,5 +1,9 @@
-* Rename filters from operations to filterFunctions. No filterSpecifications
-* Make filterFunctions object and not array
+
+
+
+
+* rename mapFunction to mapFunction in rebuildView and stuff
+* Add check that model have required method in controller
 * Rename aggregationFunction and filterFunction to [...]Name
 * Make sure meta is passed on in sane way
 
