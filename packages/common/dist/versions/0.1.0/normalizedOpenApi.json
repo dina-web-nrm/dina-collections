@@ -3184,6 +3184,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -3195,6 +3196,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3841,6 +3843,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -3852,6 +3855,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -4573,6 +4577,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -5110,6 +5123,15 @@
       "get": {
         "operationId": "cacheCauseOfDeathTypeGetMany",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "limit",
@@ -5651,6 +5673,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -6188,6 +6219,15 @@
       "get": {
         "operationId": "cachePreparationTypeGetMany",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "limit",
@@ -6729,6 +6769,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -7266,6 +7315,15 @@
       "get": {
         "operationId": "cacheTypeSpecimenTypeGetMany",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "limit",
@@ -7807,6 +7865,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -8344,6 +8411,15 @@
       "get": {
         "operationId": "cachePlaceGetMany",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "limit",
@@ -8885,6 +8961,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -9422,6 +9507,15 @@
       "get": {
         "operationId": "cachePhysicalObjectGetMany",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "limit",
@@ -9963,6 +10057,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -10500,6 +10603,15 @@
       "get": {
         "operationId": "cacheTaxonNameGetMany",
         "parameters": [
+          {
+            "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "in": "query",
             "name": "limit",
@@ -11205,8 +11317,18 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -11216,20 +11338,20 @@
           },
           {
             "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
+            "name": "filter[matchCollectingLocation]",
+            "description": "Match collecting information",
+            "required": false,
             "schema": {
-              "format": "date-time",
               "type": "string"
             }
           },
           {
             "in": "query",
-            "name": "filter[deactivated]",
-            "description": "Get deactivated",
+            "name": "filter[matchIdentifier]",
+            "description": "Match identifiers",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": "string"
             }
           },
           {
@@ -11666,6 +11788,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -11677,6 +11800,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -11686,7 +11810,6 @@
             "in": "query",
             "name": "filter[catalogNumber]",
             "description": "catalog number used to filter specimens",
-            "example": "123456",
             "required": false,
             "schema": {
               "type": "string"
@@ -14158,6 +14281,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -14169,6 +14293,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -16223,6 +16348,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -16234,6 +16360,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
