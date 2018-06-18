@@ -1260,6 +1260,154 @@ exports[`storyshots Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay De
 </div>
 `;
 
+exports[`storyshots Storyshots coreModules/layout/ColumnLayout One full-width column 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns with total width decreased by rightSidebarOpen 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, two fixed width and one scrollable filling the rest 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "50px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with fixed widths 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with relative widths 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height column 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one scrollable filling the rest 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed width and one scrollable filling the rest (width of container 100px) 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "overflow": "hidden",
+        "width": "100px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed widths 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative widths 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+  />
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
 <div>
   <div
@@ -1303,8 +1451,16 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
               }
             }
           >
-            <div>
-              View wrap content
+            <div
+              style={
+                Object {
+                  "marginTop": "40px",
+                }
+              }
+            >
+              <div>
+                View wrap content
+              </div>
             </div>
           </div>
         </div>
