@@ -1,9 +1,12 @@
 const {
-  updateViewMapFunction,
-  rebuildViewMapFunction,
-} = require('./mapFunctions')
+  updateView: updateViewTransformationFunction,
+  rebuildView: rebuildViewTransformationFunction,
+} = require('./data/transformations')
 
-const createGetManyFilterSpecifications = require('../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
+const {
+  getMany: getManyFilterSpecifications,
+  query: queryFilterSpecifications,
+} = require('./data/filters')
 
 const cacheResourcesSpecifications = require('../../cacheResourcesSpecifications')
 
@@ -20,30 +23,26 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecificationMap: createGetManyFilterSpecifications({
-        include: ['id'],
-      }),
+      filterSpecificationMap: queryFilterSpecifications,
       type: 'query',
     },
     {
       type: 'del',
     },
     {
-      filterSpecificationMap: createGetManyFilterSpecifications({
-        include: ['ids', 'updatedAfter', 'deactivated'],
-      }),
+      filterSpecificationMap: getManyFilterSpecifications,
       type: 'getMany',
     },
     {
       type: 'emptyView',
     },
     {
-      mapFunction: updateViewMapFunction,
+      mapFunction: updateViewTransformationFunction,
       srcResource: 'specimen',
       type: 'updateView',
     },
     {
-      mapFunction: rebuildViewMapFunction,
+      mapFunction: rebuildViewTransformationFunction,
       srcResource: 'specimen',
       type: 'rebuildView',
       warmViews,
