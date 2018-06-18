@@ -20,7 +20,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecifications: createGetManyFilterSpecifications({
+      filterSpecificationMap: createGetManyFilterSpecifications({
         include: ['id'],
       }),
       type: 'query',
@@ -29,7 +29,7 @@ module.exports = {
       type: 'del',
     },
     {
-      filterSpecifications: createGetManyFilterSpecifications({
+      filterSpecificationMap: createGetManyFilterSpecifications({
         include: ['ids', 'updatedAfter', 'deactivated'],
       }),
       type: 'getMany',
