@@ -40,9 +40,10 @@ module.exports = function bootstrap({
 
   initializeDataStores({
     config,
-  }).then(({ inMemoryDb, sequelize }) => {
+  }).then(({ elasticsearch, inMemoryDb, sequelize }) => {
     return setupModels({
       config,
+      elasticsearch,
       inMemoryDb,
       sequelize,
       serviceOrder,
