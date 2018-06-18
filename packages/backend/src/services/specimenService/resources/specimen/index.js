@@ -1,7 +1,7 @@
 const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
-const getManyfilterSpecificationMap = require('./operations/getMany/filters')
+const getManyfilterSpecification = require('./operations/getMany/filters')
 
 const postEditHook = ({ res, serviceInteractor }) => {
   return Promise.resolve().then(() => {
@@ -39,7 +39,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecificationMap: getManyfilterSpecificationMap,
+      filterSpecification: getManyfilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },

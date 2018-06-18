@@ -3,13 +3,13 @@ const attachMethods = require('./attachMethods')
 
 module.exports = function createModel({
   elasticsearch,
-  mappingSpecificationMap,
+  mappingSpecification,
   name,
   schemaModelName,
   schemaVersion,
 }) {
   const mappings = createMappingsFromSpecification({
-    mappingSpecificationMap,
+    mappingSpecification,
     name,
   })
 

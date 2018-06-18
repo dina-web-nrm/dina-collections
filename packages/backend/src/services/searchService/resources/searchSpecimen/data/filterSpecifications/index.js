@@ -1,8 +1,13 @@
+const filters = require('./filters')
+
 const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
 exports.getMany = createGetManyFilterSpecifications({
-  include: ['ids', 'updatedAfter', 'deactivated'],
+  custom: filters,
+  include: ['id', 'ids'],
 })
+
 exports.query = createGetManyFilterSpecifications({
-  include: ['id'],
+  custom: filters,
+  include: ['id', 'raw'],
 })

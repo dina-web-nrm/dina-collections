@@ -1,7 +1,7 @@
 const createGetManyFilterSpecifications = require('../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
-const filterSpecificationMap = createGetManyFilterSpecifications({
+const filterSpecification = createGetManyFilterSpecifications({
   include: ['group'],
 })
 
@@ -31,7 +31,7 @@ module.exports = cacheResourcesSpecifications.reduce(
           type: 'getOneSync',
         },
         {
-          filterSpecificationMap,
+          filterSpecification,
           type: 'getMany',
         },
         {
@@ -44,7 +44,9 @@ module.exports = cacheResourcesSpecifications.reduce(
           type: 'del',
         },
         {
-          srcResource,
+          transformationSpecification: {
+            srcResource,
+          },
           type: 'rebuildView',
         },
       ],

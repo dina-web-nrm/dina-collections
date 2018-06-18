@@ -1,12 +1,12 @@
 module.exports = function buildQueryFilterFactory() {
   return function buildQueryFilter(
-    { filterSpecificationMap = [], query = {} } = {}
+    { filterSpecification = {}, query = {} } = {}
   ) {
-    const filterSpecificationArray = Object.keys(filterSpecificationMap).map(
-      key => {
-        return filterSpecificationMap[key]
-      }
-    )
+    const filterSpecificationArray = Object.keys(
+      filterSpecification.filters
+    ).map(key => {
+      return filterSpecification.filters[key]
+    })
 
     return Promise.resolve().then(() => {
       const filterFunctions = filterSpecificationArray.reduce(

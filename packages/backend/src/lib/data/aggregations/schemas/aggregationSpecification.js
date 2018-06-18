@@ -1,11 +1,11 @@
-const filter = require('./filter')
+const aggregation = require('./aggregation')
 
 module.exports = {
   additionalProperties: false,
   properties: {
-    filters: {
+    aggregations: {
       patternProperties: {
-        '.*': filter,
+        '.*': aggregation,
       },
     },
   },

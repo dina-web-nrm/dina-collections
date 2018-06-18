@@ -1,4 +1,5 @@
 const buildWhereQueryFactory = require('./methods/buildWhereQueryFactory')
+const buildWhereFilterFactory = require('./methods/buildWhereFilterFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const delFactory = require('./methods/delFactory')
@@ -14,6 +15,11 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
     Model,
   })
   const buildWhereQuery = buildWhereQueryFactory({
+    elasticsearch,
+    Model,
+  })
+
+  const buildWhereFilter = buildWhereFilterFactory({
     elasticsearch,
     Model,
   })
@@ -43,6 +49,7 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
   })
 
   const coreMethods = {
+    buildWhereFilter,
     buildWhereQuery,
     bulkCreate,
     create,

@@ -39,6 +39,11 @@ module.exports = function applyTransformationFunctions({
   serviceInteractor,
   transformationFunctions,
 }) {
+  const transformationFunctionsArray = Object.keys(transformationFunctions).map(
+    key => {
+      return transformationFunctions[key]
+    }
+  )
   return Promise.all(
     items.map(item => {
       return coreToNested({
@@ -57,7 +62,7 @@ module.exports = function applyTransformationFunctions({
   ).then(nestedItems => {
     const mappedItems = mapSync({
       items: nestedItems,
-      mapFunctions: transformationFunctions,
+      mapFunctions: transformationFunctionsArray,
     })
     return mappedItems.map(item => {
       return { doc: item, id: item.id }

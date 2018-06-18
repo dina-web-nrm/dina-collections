@@ -1,4 +1,4 @@
-const sharedFilters = require('../sharedFilterSpecifications')
+const sharedFilters = require('../sharedFilters')
 
 module.exports = function createGetManyFilterSpecifications(
   { include = ['ids', 'updatedAfter'], custom = {} } = {}
@@ -14,5 +14,7 @@ module.exports = function createGetManyFilterSpecifications(
     }
   }, {})
 
-  return { ...filters, ...custom }
+  return {
+    filters: { ...filters, ...custom },
+  }
 }

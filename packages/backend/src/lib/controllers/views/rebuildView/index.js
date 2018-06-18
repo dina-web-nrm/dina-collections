@@ -1,3 +1,4 @@
+const applyTransformationFunctions = require('../../../data/transformations/utilities/applyTransformationFunctions')
 const rebuild = require('./rebuild')
 const defaultMapFunction = require('../utilities/defaultMapFunction')
 
@@ -7,15 +8,29 @@ module.exports = function rebuildView({
   serviceInteractor,
 }) {
   const {
-    mapFunction = defaultMapFunction,
+    transformationSpecification: {
+      srcResource,
+      warmViews,
+      resourceCacheMap,
+      transformationFunctions,
+    } = {},
     resource,
-    srcResource,
-    warmViews,
   } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+
+  const mapFunction = !transformationFunctions
+    ? defaultMapFunction
+    : ({ items }) => {
+        return applyTransformationFunctions({
+          items,
+          resourceCacheMap,
+          serviceInteractor,
+          transformationFunctions,
+        })
+      }
 
   if (!mapFunction) {
     throw new Error(`Map function not provided for ${resource}`)

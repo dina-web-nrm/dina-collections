@@ -1,5 +1,12 @@
 module.exports = {
   description: 'Filter by ids',
+  elasticsearch: ({ value }) => {
+    return {
+      terms: {
+        id: value,
+      },
+    }
+  },
   inputSchema: {
     items: {
       type: 'string',
