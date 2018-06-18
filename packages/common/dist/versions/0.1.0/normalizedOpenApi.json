@@ -152,26 +152,6 @@
           },
           {
             "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -774,26 +754,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -958,26 +918,6 @@
       "get": {
         "operationId": "causeOfDeathTypeGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -1357,26 +1297,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -1752,26 +1672,6 @@
       "get": {
         "operationId": "featureTypeGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -2151,26 +2051,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -2548,26 +2428,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -2943,26 +2803,6 @@
       "get": {
         "operationId": "typeSpecimenTypeGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -4019,7 +3859,7 @@
           },
           {
             "in": "query",
-            "name": "filter[search]",
+            "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
@@ -4733,15 +4573,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -5279,15 +5110,6 @@
       "get": {
         "operationId": "cacheCauseOfDeathTypeGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -5829,15 +5651,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -6375,15 +6188,6 @@
       "get": {
         "operationId": "cachePreparationTypeGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -6925,15 +6729,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -7471,15 +7266,6 @@
       "get": {
         "operationId": "cacheTypeSpecimenTypeGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -8021,15 +7807,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -8567,15 +8344,6 @@
       "get": {
         "operationId": "cachePlaceGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -9117,15 +8885,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -9663,15 +9422,6 @@
       "get": {
         "operationId": "cachePhysicalObjectGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -10213,15 +9963,6 @@
         "parameters": [
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -10759,15 +10500,6 @@
       "get": {
         "operationId": "cacheTaxonNameGetMany",
         "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "in": "query",
             "name": "limit",
@@ -11405,6 +11137,63 @@
           }
         ],
         "summary": "Deletes searchSpecimen",
+        "tags": [
+          "searchService"
+        ]
+      }
+    },
+    "/api/search/v01/searchSpecimens/actions/query": {
+      "post": {
+        "operationId": "searchSpecimenQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchSpecimenQueryRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenQueryResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenQuery-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenQuery-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchSpecimen",
         "tags": [
           "searchService"
         ]
@@ -13802,26 +13591,6 @@
           },
           {
             "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "limit",
             "description": "Limit the result",
             "schema": {
@@ -14407,7 +14176,7 @@
           },
           {
             "in": "query",
-            "name": "filter[search]",
+            "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
@@ -15295,26 +15064,6 @@
                 "type": "string"
               },
               "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "schema": {
-              "format": "date-time",
-              "type": "string"
             }
           },
           {
@@ -16492,7 +16241,7 @@
           },
           {
             "in": "query",
-            "name": "filter[search]",
+            "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
@@ -29732,6 +29481,60 @@
         "title": "Internal Server Error",
         "type": "object"
       },
+      "searchSpecimenQuery-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "searchSpecimenQuery-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
       "searchSpecimenDel-400": {
         "allOf": [
           {
@@ -37843,6 +37646,46 @@
             "x-summary": ""
           }
         },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchSpecimenQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {},
         "x-summary": "",
         "description": ""
       },
@@ -49650,6 +49493,57 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/search/v01/searchSpecimens/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchSpecimenQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/search/v01/searchSpecimens/actions/query",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
