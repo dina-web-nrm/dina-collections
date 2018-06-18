@@ -1,21 +1,11 @@
+const transformationSpecification = require('../../../data/transformations/schemas/transformationSpecification')
 const base = require('./base')
 
 exports.rebuildView = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-
-    mapFunction: {
-      not: {
-        type: 'string',
-      },
-    },
-    srcResource: {
-      type: 'string',
-    },
-    warmViews: {
-      type: 'array',
-    },
+    transformationSpecification,
   },
   required: [...base.required],
 }
@@ -23,9 +13,7 @@ exports.requestRebuildView = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    srcResource: {
-      type: 'string',
-    },
+    transformationSpecification,
   },
   required: [...base.required],
 }
@@ -34,9 +22,7 @@ exports.requestUpdateView = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    srcResource: {
-      type: 'string',
-    },
+    transformationSpecification,
   },
   required: [...base.required],
 }
@@ -44,15 +30,7 @@ exports.updateView = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-
-    mapFunction: {
-      not: {
-        type: 'string',
-      },
-    },
-    srcResource: {
-      type: 'string',
-    },
+    transformationSpecification,
   },
   required: [...base.required],
 }

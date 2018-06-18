@@ -1,14 +1,14 @@
 module.exports = function addQueryParamsFromFilter({
   queryParams,
-  filterSpecificationMap = [],
+  filterSpecification = {},
 }) {
-  const newQueryParams = Object.keys(filterSpecificationMap).reduce(
+  const newQueryParams = Object.keys(filterSpecification.filters || {}).reduce(
     (params, filterKey) => {
-      const filter = filterSpecificationMap[filterKey]
+      const filter = filterSpecification.filters[filterKey]
       const filterQueryParams = {
         description: filter.description,
         required: false,
-        schema: filter.valueSchema,
+        schema: filter.inputSchema,
       }
       if (!filterQueryParams) {
         return params

@@ -6,18 +6,18 @@ const { Op } = Sequelize
 
 module.exports = function buildWhereFilterFactory() {
   return function buildWhereFilter(
-    { filterSpecificationMap = {}, filterInput = {} } = {}
+    { filterSpecification = {}, filterInput = {} } = {}
   ) {
-    const filterSpecificationArray = Object.keys(filterSpecificationMap).map(
-      key => {
-        return filterSpecificationMap[key]
-      }
-    )
+    const filterSpecificationArray = Object.keys(
+      filterSpecification.filters || {}
+    ).map(key => {
+      return filterSpecification.filters[key]
+    })
     return asyncReduce({
       initialValue: [],
       items: filterSpecificationArray,
-      reduceFunction: ({ item: filterSpecification, value: whereArray }) => {
-        const { key, sequelizeFilterFunction } = filterSpecification
+      reduceFunction: ({ item: filter, value: whereArray }) => {
+        const { key, sequelizeFilterFunction } = filter
         if (!sequelizeFilterFunction) {
           return whereArray
         }

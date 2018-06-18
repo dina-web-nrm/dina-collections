@@ -2,13 +2,13 @@ const parseFilterValue = require('../../../../utilities/parseFilterValue')
 
 module.exports = function buildWhereFilterFactory() {
   return function buildWhereFilter(
-    { filterSpecificationMap = {}, filterInput = {} } = {}
+    { filterSpecification = {}, filterInput = {} } = {}
   ) {
-    const filterSpecificationArray = Object.keys(filterSpecificationMap).map(
-      key => {
-        return filterSpecificationMap[key]
-      }
-    )
+    const filterSpecificationArray = Object.keys(
+      filterSpecification.filters
+    ).map(key => {
+      return filterSpecification.filters[key]
+    })
 
     return Promise.resolve().then(() => {
       const query = {

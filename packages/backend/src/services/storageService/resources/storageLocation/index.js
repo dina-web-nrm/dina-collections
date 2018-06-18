@@ -27,7 +27,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecificationMap: getManyFilterSpecificationMap,
+      filterSpecification: getManyFilterSpecificationMap,
       includeRelations: true,
       type: 'getMany',
     },

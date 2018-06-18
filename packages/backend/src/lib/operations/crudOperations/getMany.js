@@ -16,7 +16,7 @@ module.exports = function getMany({
   queryParams: queryParamsInput,
   relations,
   resource,
-  filterSpecificationMap,
+  filterSpecification,
   resourcePath,
   ...rest
 }) {
@@ -27,7 +27,7 @@ module.exports = function getMany({
   })
 
   queryParams = addQueryParamsFromFilterSpecifications({
-    filterSpecificationMap,
+    filterSpecification,
     queryParams,
   })
 
@@ -59,7 +59,7 @@ module.exports = function getMany({
   return {
     ...rest,
     errors,
-    filterSpecificationMap,
+    filterSpecification,
     includeRelations,
     method: 'get',
     operationId: operationId || buildOperationId({ operationType, resource }),
