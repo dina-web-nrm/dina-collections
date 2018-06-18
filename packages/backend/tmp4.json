@@ -1,0 +1,14 @@
+{
+  "data": {
+    "attributes": {
+      "filters": {
+        "filter": {
+          "filterFunction": "raw",
+          "value": {
+            "match_all": {}
+          }
+        }
+      }
+    }
+  }
+}

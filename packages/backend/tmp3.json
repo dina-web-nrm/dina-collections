@@ -1,0 +1,29 @@
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        },
+        {
+          "match_phrase": {
+            "collectingLocations": {
+              "query": "Stockholm"
+            }
+          }
+        }
+      ],
+      "filter": [],
+      "should": [],
+      "must_not": []
+    }
+  },
+  "aggregations": {
+    "bairro_count": {
+      "terms": {
+        "field": "collectingLocations.raw"
+      }
+    }
+  }
+}

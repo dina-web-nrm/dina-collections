@@ -1,0 +1,52 @@
+{
+  "data": {
+    "attributes": {
+      "query": {
+        "version": true,
+        "size": 500,
+        "sort": [
+          {
+            "_score": {
+              "order": "desc"
+            }
+          }
+        ],
+        "_source": {
+          "excludes": []
+        },
+        "stored_fields": ["*"],
+        "script_fields": {},
+        "docvalue_fields": [
+          "doc.rest.individual.recordHistoryEvents.date.dateText"
+        ],
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "match_all": {}
+              },
+              {
+                "match_phrase": {
+                  "id": {
+                    "query": "2"
+                  }
+                }
+              }
+            ],
+            "filter": [],
+            "should": [],
+            "must_not": []
+          }
+        },
+        "highlight": {
+          "pre_tags": ["@kibana-highlighted-field@"],
+          "post_tags": ["@/kibana-highlighted-field@"],
+          "fields": {
+            "*": {}
+          },
+          "fragment_size": 2147483647
+        }
+      }
+    }
+  }
+}
