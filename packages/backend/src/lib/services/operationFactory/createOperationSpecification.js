@@ -1,4 +1,4 @@
-const createGetManyFilters = require('./filters/createGetManyFilters')
+const createGetManyFilters = require('../../filters/utilities/createGetManyFilters')
 
 module.exports = function createOperationObjectSpecification({
   operationSpecificationInput,

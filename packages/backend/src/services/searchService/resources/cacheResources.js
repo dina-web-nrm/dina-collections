@@ -1,4 +1,4 @@
-const createGetManyFilters = require('../../../lib/services/operationFactory/filters/createGetManyFilters')
+const createGetManyFilters = require('../../../lib/filters/utilities/createGetManyFilters')
 const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
 const filterSpecifications = createGetManyFilters({
