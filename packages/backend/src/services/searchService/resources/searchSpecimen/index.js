@@ -3,7 +3,7 @@ const {
   rebuildViewMapFunction,
 } = require('./mapFunctions')
 
-const createGetManyFilters = require('../../../../lib/services/operationFactory/filters/createGetManyFilters')
+const createGetManyFilters = require('../../../../lib/filters/utilities/createGetManyFilters')
 
 const cacheResourcesSpecifications = require('../../cacheResourcesSpecifications')
 

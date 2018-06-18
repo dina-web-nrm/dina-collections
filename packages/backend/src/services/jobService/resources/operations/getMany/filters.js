@@ -1,5 +1,5 @@
-const createGetManyFilters = require('../../../../../lib/services/operationFactory/filters/createGetManyFilters')
-const createEqualFilter = require('../../../../../lib/services/operationFactory/filters/createEqualFilter')
+const createGetManyFilters = require('../../../../../lib/filters/utilities/createGetManyFilters')
+const createEqualFilter = require('../../../../../lib/filters/utilities/createEqualFilter')
 
 const equalFilterParameters = [
   'deactivatedAt',
