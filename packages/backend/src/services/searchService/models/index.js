@@ -1,8 +1,10 @@
+const mappings = require('./mappings')
 const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
 module.exports = [
   {
-    modelFactory: 'inMemoryViewDocumentModel',
+    mappings,
+    modelFactory: 'elasticsearchDocumentModel',
     name: 'searchSpecimen',
   },
 
