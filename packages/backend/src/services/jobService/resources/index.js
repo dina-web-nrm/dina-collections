@@ -18,7 +18,7 @@ exports.job = {
       type: 'getOne',
     },
     {
-      filters: getManyfilters,
+      filterSpecifications: getManyfilters,
       type: 'getMany',
     },
     {

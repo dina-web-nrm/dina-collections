@@ -1,15 +1,18 @@
 const sharedFilters = require('../../../operations/filters')
 
 module.exports = function createGetManyFilters(
-  { include = ['ids', 'updatedAfter'], custom = [] } = {}
+  { include = ['ids', 'updatedAfter'], custom = {} } = {}
 ) {
-  const filters = include.map(key => {
+  const filters = include.reduce((obj, key) => {
     const filter = sharedFilters[key]
     if (!filter) {
       throw new Error(`Unknown filter with key: ${key}`)
     }
-    return sharedFilters[key]
-  })
+    return {
+      ...obj,
+      [key]: filter,
+    }
+  }, {})
 
-  return [...filters, ...custom]
+  return { ...filters, ...custom }
 }

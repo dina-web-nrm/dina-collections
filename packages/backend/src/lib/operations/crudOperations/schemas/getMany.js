@@ -4,7 +4,7 @@ module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    filters: {
+    filterSpecifications: {
       not: {
         type: 'string',
       },

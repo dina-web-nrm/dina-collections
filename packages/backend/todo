@@ -1,19 +1,79 @@
-Done
-* Repair batch create (write tests)
-* Make sure all tests are passing
-* Fix incremental update of searchViews
-* Check to format of date. How do we create date in the backend? Which format.
-  How to map to json schema?
-* Fix example and mock query options
-* fix parsing of filter values (null) (add to buildWhereFilter factory)
-* Clean up searchSpecimen service
-* Fix batch fetch many from frontend client
-* Fix incremental delete of searchViews
-* Implement polling frontend for updated search results
+* Rename filters from operations to filterFunctions. No filterSpecifications
+* Make filterFunctions object and not array
+* Rename aggregationFunction and filterFunction to [...]Name
+* Make sure meta is passed on in sane way
 
-Now
+
+
+
+
+
+
+
+- Create all new functions in the service
+* Remove all not needed data (keep identifiers and locations)
+
+* create possibility to pass elastic mapping functions to the model (or through controller)
+* use mapping functions when flushing index
+* create elastic mappings for identifiers and locations
+* test making some aggregations requests
+* create filter functions for elastic search to filter for identifiers and locations
+* create the build queryWhere (should change name)
+* experiment with adding type at the end of the data stored in elastic
+
+
+
+
+
+
+
+Filter
+* mapperFunction
+* jsFilterfunction
+* elasticFilterFunction ?
+* elasticMappingBuilder
+* elasticAggregationFunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Add elastic
+** Add create db
+** Add models
+** Add config
+
+
+
+
+
+* readd elastic search
+** implement filter + query
+** Make sure create search specimen works
+
+* create new searchSpecimen filter in common
+** Add mapping function as a part of the filters or at least specify depends on mapping func?
+** Add functions for sql, js and elastic
+** Add aggregation here too? Then add aggregation function for elastic
+
+
+
+
+* implement query in fe crud.
+
 
 Later:
+* Add check in all controllers that the models have the needed methods
 * Fix correct object format for new endpoints
 * Use deactivated at even in memory tables
 * write tests for batchFetch from FE
