@@ -1,18 +1,16 @@
-module.exports = function createEqualFilter({
+module.exports = function createEqualFilterSpecification({
   filterParameter,
   filterParameterType = 'string',
   path,
 }) {
   return {
+    description: `Filter by ${filterParameter}`,
+    inputSchema: {
+      type: filterParameterType,
+    },
     jsFilterFunction: () => {},
     key: filterParameter,
-    queryParams: {
-      description: `Filter by ${filterParameter}`,
-      required: false,
-      schema: {
-        type: filterParameterType,
-      },
-    },
+
     sequelizeFilterFunction: ({ value }) => {
       if (value === undefined) {
         return null

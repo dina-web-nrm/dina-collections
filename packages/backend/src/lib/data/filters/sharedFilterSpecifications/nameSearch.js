@@ -1,12 +1,9 @@
 module.exports = {
-  key: 'search',
-  queryParams: {
-    description: 'Filter by string search, example swe',
-    required: false,
-    schema: {
-      type: 'string',
-    },
+  description: 'Filter by string search, example swe',
+  inputSchema: {
+    type: 'string',
   },
+  key: 'search',
   sequelizeFilterFunction: ({ value, Op }) => {
     if (value === undefined) {
       return null

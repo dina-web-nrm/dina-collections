@@ -1,12 +1,9 @@
 module.exports = {
-  key: 'deactivated',
-  queryParams: {
-    description: 'Get deactivated',
-    required: false,
-    schema: {
-      type: 'boolean',
-    },
+  description: 'Get deactivated',
+  inputSchema: {
+    type: 'boolean',
   },
+  key: 'deactivated',
   sequelizeFilterFunction: ({ value, Op }) => {
     if (value !== true) {
       return null

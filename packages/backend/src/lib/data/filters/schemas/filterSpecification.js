@@ -1,6 +1,12 @@
 module.exports = {
   additionalProperties: false,
   properties: {
+    description: {
+      type: 'string',
+    },
+    inputSchema: {
+      type: 'object',
+    },
     jsFilterFunction: {
       not: {
         type: 'string',
@@ -12,9 +18,7 @@ module.exports = {
     operationId: {
       type: 'string',
     },
-    queryParams: {
-      type: 'object',
-    },
+
     sequelizeFilterFunction: {
       not: {
         type: 'string',
@@ -24,5 +28,5 @@ module.exports = {
       type: 'string',
     },
   },
-  required: ['key', 'queryParams'],
+  required: ['inputSchema', 'description', 'key'],
 }
