@@ -1273,19 +1273,6 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout One full-width co
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns with total width decreased by rightSidebarOpen 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
-    }
-  />
-</div>
-`;
-
 exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, two fixed width and one scrollable filling the rest 1`] = `
 <div>
   <div
@@ -1346,7 +1333,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height colu
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one scrollable filling the rest 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one filling the rest 1`] = `
 <div>
   <div
     style={
@@ -1359,7 +1346,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed width and one scrollable filling the rest (width of container 100px) 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one scrollable filling the rest (width of container 100px) 1`] = `
 <div>
   <div
     style={
@@ -1382,7 +1369,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed widths 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed heights 1`] = `
 <div>
   <div
     style={
@@ -1395,7 +1382,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative widths 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative heights 1`] = `
 <div>
   <div
     style={
