@@ -41,3 +41,7 @@ export const getIsMedium = state => {
 export const getIsLarge = state => {
   return getSize(state) === SIZE_LARGE
 }
+
+export const getWidth = state => {
+  return state && state.width
+}

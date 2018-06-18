@@ -1,5 +1,5 @@
 import throttle from 'lodash.throttle'
-import { setBreakpoint } from './actionCreators'
+import { setBreakpoint, setWidth } from './actionCreators'
 import globalSelectors from './globalSelectors'
 
 export const getClientWidth = () => {
@@ -11,8 +11,12 @@ export const updateBreakpoint = ({ dispatch, getState }) => {
   const width = getClientWidth()
   const fittingBreakpoint = globalSelectors.getBreakpointByWidth(state, width)
   const currentBreakpoint = globalSelectors.getCurrentBreakpoint(state)
+  const widthInState = globalSelectors.getWidth(state)
   if (fittingBreakpoint !== currentBreakpoint) {
     dispatch(setBreakpoint(fittingBreakpoint))
+  }
+  if (width !== widthInState) {
+    dispatch(setWidth(width))
   }
 }
 

@@ -1,3 +1,2 @@
-import setBreakpoint from './setBreakpoint'
-
-export { setBreakpoint }
+export { default as setBreakpoint } from './setBreakpoint'
+export { default as setWidth } from './setWidth'
