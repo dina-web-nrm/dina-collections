@@ -1,5 +1,4 @@
 module.exports = {
-  js: () => {},
   key: 'parentId',
   queryParams: {
     description: 'Filter by parentId, example 123',
