@@ -7,7 +7,7 @@ module.exports = {
     exampleRequests: {
       type: 'object',
     },
-    filters: {
+    filterSpecifications: {
       not: {
         type: 'string',
       },

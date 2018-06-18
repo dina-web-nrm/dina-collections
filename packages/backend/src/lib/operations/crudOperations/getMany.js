@@ -1,7 +1,7 @@
 const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const addQueryParamsFromFilter = require('./utilities/addQueryParamsFromFilter')
+const addQueryParamsFromFilterSpecifications = require('./utilities/addQueryParamsFromFilterSpecifications')
 const addMockToQueryParams = require('./utilities/addMockToQueryParams')
 const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
 const buildOperationId = require('common/src/buildOperationId')
@@ -16,7 +16,7 @@ module.exports = function getMany({
   queryParams: queryParamsInput,
   relations,
   resource,
-  filters,
+  filterSpecifications,
   resourcePath,
   ...rest
 }) {
@@ -26,8 +26,8 @@ module.exports = function getMany({
     relations,
   })
 
-  queryParams = addQueryParamsFromFilter({
-    filters,
+  queryParams = addQueryParamsFromFilterSpecifications({
+    filterSpecifications,
     queryParams,
   })
 
@@ -59,7 +59,7 @@ module.exports = function getMany({
   return {
     ...rest,
     errors,
-    filters,
+    filterSpecifications,
     includeRelations,
     method: 'get',
     operationId: operationId || buildOperationId({ operationType, resource }),

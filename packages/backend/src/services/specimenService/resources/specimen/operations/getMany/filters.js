@@ -1,8 +1,8 @@
 const createGetManyFilters = require('../../../../../../lib/services/operationFactory/filters/createGetManyFilters')
 
 module.exports = createGetManyFilters({
-  custom: [
-    {
+  custom: {
+    catalogNumber: {
       jsFilterFunction: () => {},
       key: 'catalogNumber',
       queryParams: {
@@ -30,5 +30,5 @@ module.exports = createGetManyFilters({
         }
       },
     },
-  ],
+  },
 })

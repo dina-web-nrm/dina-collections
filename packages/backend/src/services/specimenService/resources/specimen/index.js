@@ -39,7 +39,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filters: getManyfilters,
+      filterSpecifications: getManyfilters,
       includeRelations: true,
       type: 'getMany',
     },

@@ -5,10 +5,17 @@ const parseFilterValue = require('../../../utilities/parseFilterValue')
 const { Op } = Sequelize
 
 module.exports = function buildWhereFilterFactory() {
-  return function buildWhereFilter({ filters = [], filterInput = {} } = {}) {
+  return function buildWhereFilter(
+    { filterSpecifications = {}, filterInput = {} } = {}
+  ) {
+    const filterSpecificationArray = Object.keys(filterSpecifications).map(
+      key => {
+        return filterSpecifications[key]
+      }
+    )
     return asyncReduce({
       initialValue: [],
-      items: filters,
+      items: filterSpecificationArray,
       reduceFunction: ({ item: filterSpecification, value: whereArray }) => {
         const { key, sequelizeFilterFunction } = filterSpecification
         if (!sequelizeFilterFunction) {

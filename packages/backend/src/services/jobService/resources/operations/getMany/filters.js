@@ -9,10 +9,17 @@ const equalFilterParameters = [
 ]
 
 module.exports = createGetManyFilters({
-  custom: equalFilterParameters.map(filterParameter => {
-    return createEqualFilter({
-      filterParameter,
-      path: filterParameter,
-    })
-  }),
+  custom: equalFilterParameters.reduce((obj, filterParameter) => {
+    const filter = createEqualFilter(
+      {
+        filterParameter,
+        path: filterParameter,
+      },
+      {}
+    )
+    return {
+      ...obj,
+      [filterParameter]: filter,
+    }
+  }, {}),
 })
