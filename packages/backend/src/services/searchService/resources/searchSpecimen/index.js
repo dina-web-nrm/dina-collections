@@ -3,7 +3,7 @@ const {
   rebuildViewMapFunction,
 } = require('./mapFunctions')
 
-const createGetManyFilters = require('../../../../lib/filters/utilities/createGetManyFilters')
+const createGetManyFilterSpecifications = require('../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
 const cacheResourcesSpecifications = require('../../cacheResourcesSpecifications')
 
@@ -20,7 +20,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecifications: createGetManyFilters({
+      filterSpecifications: createGetManyFilterSpecifications({
         include: ['id'],
       }),
       type: 'query',
@@ -29,7 +29,7 @@ module.exports = {
       type: 'del',
     },
     {
-      filterSpecifications: createGetManyFilters({
+      filterSpecifications: createGetManyFilterSpecifications({
         include: ['ids', 'updatedAfter', 'deactivated'],
       }),
       type: 'getMany',

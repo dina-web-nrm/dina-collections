@@ -1,7 +1,7 @@
-const createGetManyFilters = require('../../../lib/filters/utilities/createGetManyFilters')
+const createGetManyFilterSpecifications = require('../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
-const filterSpecifications = createGetManyFilters({
+const filterSpecifications = createGetManyFilterSpecifications({
   include: ['group'],
 })
 

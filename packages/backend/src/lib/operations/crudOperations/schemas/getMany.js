@@ -1,5 +1,5 @@
 const base = require('./base')
-const filterSpecifications = require('../../../filters/schemas/filterSpecifications')
+const filterSpecifications = require('../../../data/filters/schemas/filterSpecifications')
 
 module.exports = {
   additionalProperties: false,

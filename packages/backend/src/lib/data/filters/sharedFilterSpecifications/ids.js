@@ -1,14 +1,12 @@
 module.exports = {
-  key: 'ids',
-  queryParams: {
-    description: 'Filter by ids',
-    schema: {
-      items: {
-        type: 'string',
-      },
-      type: 'array',
+  description: 'Filter by ids',
+  inputSchema: {
+    items: {
+      type: 'string',
     },
+    type: 'array',
   },
+  key: 'ids',
   sequelizeFilterFunction: ({ value, Op }) => {
     if (!value) {
       return null

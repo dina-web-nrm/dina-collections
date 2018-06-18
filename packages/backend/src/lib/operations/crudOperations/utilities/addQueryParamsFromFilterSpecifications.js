@@ -5,7 +5,11 @@ module.exports = function addQueryParamsFromFilter({
   const newQueryParams = Object.keys(filterSpecifications).reduce(
     (params, filterKey) => {
       const filter = filterSpecifications[filterKey]
-      const filterQueryParams = filter.queryParams || {}
+      const filterQueryParams = {
+        description: filter.description,
+        required: false,
+        schema: filter.valueSchema,
+      }
       if (!filterQueryParams) {
         return params
       }

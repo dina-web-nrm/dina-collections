@@ -1,18 +1,15 @@
-const createGetManyFilters = require('../../../../../../lib/filters/utilities/createGetManyFilters')
+const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
-module.exports = createGetManyFilters({
+module.exports = createGetManyFilterSpecifications({
   custom: {
     catalogNumber: {
+      description: 'catalog number used to filter specimens',
+      inputSchema: {
+        type: 'string',
+      },
       jsFilterFunction: () => {},
       key: 'catalogNumber',
-      queryParams: {
-        description: 'catalog number used to filter specimens',
-        example: '123456',
-        required: false,
-        schema: {
-          type: 'string',
-        },
-      },
+
       sequelizeFilterFunction: ({ value, Op }) => {
         if (!value) {
           return null
