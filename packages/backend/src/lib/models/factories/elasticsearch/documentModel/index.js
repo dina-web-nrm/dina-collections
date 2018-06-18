@@ -2,7 +2,7 @@ const attachMethods = require('./attachMethods')
 
 module.exports = function createModel({
   elasticsearch,
-  mappings,
+  mappingSpecification: mappings,
   name,
   schemaModelName,
   schemaVersion,
