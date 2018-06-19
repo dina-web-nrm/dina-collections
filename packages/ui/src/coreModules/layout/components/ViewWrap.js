@@ -1,8 +1,10 @@
 import React from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Dimmer, Icon, Menu } from 'semantic-ui-react'
 import sizeSelectors from 'coreModules/size/globalSelectors'
+import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
@@ -66,7 +68,6 @@ const mapStateToProps = state => {
       state
     ),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
-    windowHeight: sizeSelectors.getHeight(state),
   }
 }
 
@@ -153,4 +154,7 @@ const ViewWrap = ({
 ViewWrap.propTypes = propTypes
 ViewWrap.defaultProps = defaultProps
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewWrap)
+export default compose(
+  injectWindowHeight,
+  connect(mapStateToProps, mapDispatchToProps)
+)(ViewWrap)
