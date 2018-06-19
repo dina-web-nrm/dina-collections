@@ -18,7 +18,8 @@ storiesOf('coreModules/bootstrap/DefaultWrapper', module)
           <div>
             <DefaultWrapper>
               <Segment>
-                Wrapped content (DefaultWrapper ensure full height )
+                Wrapped content (DefaultWrapper does nothing but render
+                children)
               </Segment>
             </DefaultWrapper>
             <p>After DefaultWrapper</p>

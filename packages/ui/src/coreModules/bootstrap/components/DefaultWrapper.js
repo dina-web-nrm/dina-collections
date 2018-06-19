@@ -5,7 +5,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
 }
 const DefaultWrapper = ({ children }) => {
-  return <div style={{ minHeight: '100vh' }}>{children}</div>
+  return <React.Fragment>{children}</React.Fragment>
 }
 
 DefaultWrapper.propTypes = propTypes

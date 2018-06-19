@@ -84,7 +84,7 @@ class App extends Component {
     const { match } = this.props
 
     return (
-      <div>
+      <React.Fragment>
         <ViewWrap leftSidebarEnabled leftSidebarTogglable>
           <Switch>
             <Route component={Home} exact path={match.url} />
@@ -212,7 +212,7 @@ class App extends Component {
         <NavigationSidebar navItems={NAVIGATION_SIDEBAR_ITEMS} />
         <InformationSidebar />
         <ShortcutsDisplay />
-      </div>
+      </React.Fragment>
     )
   }
 }

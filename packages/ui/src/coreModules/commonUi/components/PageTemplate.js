@@ -18,7 +18,6 @@ const PageTemplate = ({ hasFixedMenu, children, container }) => {
     return (
       <Container
         style={{
-          minHeight: '100vh',
           paddingBottom: 30,
           paddingTop: hasFixedMenu ? 61.5 : 30,
         }}
@@ -30,7 +29,6 @@ const PageTemplate = ({ hasFixedMenu, children, container }) => {
   return (
     <div
       style={{
-        minHeight: '100vh',
         padding: 20,
         paddingTop: hasFixedMenu ? 61.5 : 20,
       }}
