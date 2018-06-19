@@ -1,3 +1,4 @@
+const extractMetaFromResult = require('../../utilities/extractMetaFromResult')
 const extractItemsFromResult = require('../../utilities/extractItemsFromResult')
 const extractItemsFromAggregations = require('../../utilities/extractItemsFromAggregations')
 
@@ -20,6 +21,7 @@ module.exports = function getWhereFactory({ Model, elasticsearch }) {
         type: Model.name,
       })
       .then(res => {
+        const meta = extractMetaFromResult({ result: res })
         let items = []
         if (aggregations && Object.keys(aggregations).length) {
           items = extractItemsFromAggregations({
@@ -33,7 +35,7 @@ module.exports = function getWhereFactory({ Model, elasticsearch }) {
           })
         }
 
-        return { items }
+        return { items, meta }
       })
   }
 }

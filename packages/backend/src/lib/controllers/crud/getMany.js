@@ -47,7 +47,7 @@ module.exports = function getMany({ operation, models }) {
             raw: false,
             where,
           })
-          .then(({ items } = {}) => {
+          .then(({ items, meta } = {}) => {
             return createArrayResponse({
               items: items.map(item => {
                 const transformedItem = transformOutput(item)
@@ -67,6 +67,7 @@ module.exports = function getMany({ operation, models }) {
                   relationships,
                 }
               }),
+              meta,
               type: resource,
             })
           })
