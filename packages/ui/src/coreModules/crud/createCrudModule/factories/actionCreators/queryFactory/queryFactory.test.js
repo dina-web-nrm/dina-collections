@@ -1,9 +1,9 @@
-import createActionCreatorFactoryTest from './utilities/test/createActionCreatorFactoryTest'
-import createApiActionTypeFailTest from './utilities/test/createApiActionTypeFailTest'
-import createApiActionTypeRequestTest from './utilities/test/createApiActionTypeRequestTest'
-import createApiActionTypeSuccessTest from './utilities/test/createApiActionTypeSuccessTest'
-import createApiClientTest from './utilities/test/createApiClientTest'
-import queryFactory, { dep } from './queryFactory'
+import createActionCreatorFactoryTest from '../utilities/test/createActionCreatorFactoryTest'
+import createApiActionTypeFailTest from '../utilities/test/createApiActionTypeFailTest'
+import createApiActionTypeRequestTest from '../utilities/test/createApiActionTypeRequestTest'
+import createApiActionTypeSuccessTest from '../utilities/test/createApiActionTypeSuccessTest'
+import createApiClientTest from '../utilities/test/createApiClientTest'
+import queryFactory, { dep } from './index'
 
 const inputCreateSearchSpecimen = {
   operationId: 'searchSpecimenQuery',
@@ -28,6 +28,9 @@ const testBody = {
           options: { contains: 'Stockholm', limit: 1 },
         },
       ],
+      idsOnly: undefined,
+      limit: 1000,
+      offset: 0,
       query: {
         and: [
           {
@@ -38,6 +41,8 @@ const testBody = {
           },
         ],
       },
+      scroll: false,
+      scrollId: undefined,
     },
   },
 }
@@ -101,7 +106,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/queryFactor
         type: inputCreateSearchSpecimen.resourceActionTypes.query.request,
       }
 
-      const actionCreatorInput = { body: testBody }
+      const actionCreatorInput = { ...testBody.data.attributes }
 
       createApiActionTypeRequestTest({
         actionCreatorFactory: queryFactory,
@@ -114,7 +119,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/queryFactor
     })
 
     describe('success action', () => {
-      const actionCreatorInput = { body: testBody }
+      const actionCreatorInput = { ...testBody.data.attributes }
       const expectedActionType =
         inputCreateSearchSpecimen.resourceActionTypes.query.success
       const mockResponse = {
@@ -146,7 +151,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/queryFactor
     })
 
     describe('fail action', () => {
-      const actionCreatorInput = { body: testBody }
+      const actionCreatorInput = { ...testBody.data.attributes }
       const expectedActionType =
         inputCreateSearchSpecimen.resourceActionTypes.query.fail
 
@@ -168,7 +173,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/queryFactor
     })
 
     describe('api client', () => {
-      const actionCreatorInput = { body: testBody }
+      const actionCreatorInput = { ...testBody.data.attributes }
       const expectedApiClientCallParams = {
         body: testBody,
       }

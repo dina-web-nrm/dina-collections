@@ -16,17 +16,11 @@ export default function search({ query, resource, idsOnly = true } = {}) {
   }
 
   return dispatch => {
-    const body = {
-      data: {
-        attributes: {
-          idsOnly,
-          query,
-        },
-      },
-    }
     return dispatch(
       queryAc({
-        body,
+        idsOnly,
+        limit: 100000,
+        query,
         throwError: true,
       })
     ).then(res => {
