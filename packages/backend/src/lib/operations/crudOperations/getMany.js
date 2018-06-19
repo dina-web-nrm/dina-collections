@@ -1,3 +1,4 @@
+const createGetManyFilterSpecifications = require('../../data/filters/utilities/createGetManyFilterSpecifications')
 const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
@@ -16,10 +17,13 @@ module.exports = function getMany({
   queryParams: queryParamsInput,
   relations,
   resource,
-  filterSpecification,
+  filterSpecification: filterSpecificationInput,
   resourcePath,
   ...rest
 }) {
+  const filterSpecification =
+    filterSpecificationInput || createGetManyFilterSpecifications()
+
   let queryParams = addRelationsToQueryParams({
     includeRelations,
     queryParams: queryParamsInput,
