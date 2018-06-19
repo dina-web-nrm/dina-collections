@@ -1,0 +1,29 @@
+{
+  "data": {
+    "attributes": {
+      "query": {
+        "version": true,
+        "size": 500,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "match_all": {}
+              },
+              {
+                "match_phrase": {
+                  "collectingLocation.locationN": {
+                    "query": "Carolin Islands"
+                  }
+                }
+              }
+            ],
+            "filter": [],
+            "should": [],
+            "must_not": []
+          }
+        }
+      }
+    }
+  }
+}

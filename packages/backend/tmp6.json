@@ -1,0 +1,23 @@
+{
+  "data": {
+    "attributes": {
+      "aggregations": [
+        {
+          "key": "collectingLocations",
+          "aggregationFunction": "identifiers",
+          "options": { "contains": "Stockholm", "limit": 1 }
+        }
+      ],
+      "query": {
+        "and": [
+          {
+            "filter": {
+              "filterFunction": "matchCollectingLocation",
+              "value": "Stockholm"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

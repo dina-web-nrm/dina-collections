@@ -1,8 +1,10 @@
+const mappingSpecification = require('../resources/searchSpecimen/data/mappingSpecification')
 const cacheResourcesSpecifications = require('../cacheResourcesSpecifications')
 
 module.exports = [
   {
-    modelFactory: 'sequelizeViewDocumentModel',
+    mappingSpecification,
+    modelFactory: 'elasticsearchDocumentModel',
     name: 'searchSpecimen',
   },
 

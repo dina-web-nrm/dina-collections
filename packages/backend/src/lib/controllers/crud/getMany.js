@@ -4,7 +4,12 @@ const buildIncludeArray = require('../utilities/relationships/buildIncludeArray'
 const extractRelationships = require('../utilities/relationships/extractRelationships')
 
 module.exports = function getMany({ operation, models }) {
-  const { includeRelations, relations, resource, filters } = operation
+  const {
+    includeRelations,
+    relations,
+    resource,
+    filterSpecification,
+  } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -31,7 +36,7 @@ module.exports = function getMany({ operation, models }) {
     return model
       .buildWhereFilter({
         filterInput,
-        filters,
+        filterSpecification,
       })
       .then(where => {
         return model
@@ -53,6 +58,9 @@ module.exports = function getMany({ operation, models }) {
                     queryParamRelationships,
                     relations,
                   })
+                if (!relationships) {
+                  return transformedItem
+                }
 
                 return {
                   ...transformedItem,

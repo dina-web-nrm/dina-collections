@@ -1,21 +1,33 @@
+const applyTransformationFunctions = require('../../../data/transformations/utilities/applyTransformationFunctions')
 const update = require('./update')
 const defaultMapFunction = require('../utilities/defaultMapFunction')
 
 module.exports = function updateView({ operation, models, serviceInteractor }) {
   const {
-    mapFunction = defaultMapFunction,
+    transformationSpecification: {
+      srcResource,
+      warmViews,
+      resourceCacheMap,
+      transformationFunctions,
+    } = {},
     resource,
-    srcResource,
-    warmViews,
   } = operation
+
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
 
-  if (!mapFunction) {
-    throw new Error(`Map function not provided for ${resource}`)
-  }
+  const mapFunction = !transformationFunctions
+    ? defaultMapFunction
+    : ({ items }) => {
+        return applyTransformationFunctions({
+          items,
+          resourceCacheMap,
+          serviceInteractor,
+          transformationFunctions,
+        })
+      }
 
   if (!srcResource) {
     throw new Error(`srcResource not provided for ${srcResource}`)

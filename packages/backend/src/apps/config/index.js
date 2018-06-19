@@ -29,7 +29,7 @@ const api = {
 }
 
 const initialData = {
-  numberOfSpecimens: process.env.INITIAL_DATA_NUMBER_OF_SPECIMENS || 100,
+  numberOfSpecimens: process.env.INITIAL_DATA_NUMBER_OF_SPECIMENS || 100000,
 }
 
 const db = {
@@ -82,10 +82,16 @@ const jobs = {
   workerActive: false,
 }
 
+const elasticsearch = {
+  flushOnRestart: process.env.FLUSH_ON_RESTART === 'true' || false,
+  url: process.env.ELASTICSEARCH_URL || '127.0.0.1:9200',
+}
+
 module.exports = {
   api,
   auth,
   db,
+  elasticsearch,
   env,
   initialData,
   integrations,

@@ -3,6 +3,7 @@ const synchronizeFactory = require('./methods/synchronizeFactory')
 module.exports = function attachMethods({ StageModel, ViewModel }) {
   const {
     buildWhereFilter,
+    buildWhereQuery,
     bulkCreate,
     create,
     del,
@@ -19,6 +20,7 @@ module.exports = function attachMethods({ StageModel, ViewModel }) {
 
   const coreMethods = {
     buildWhereFilter,
+    buildWhereQuery,
     bulkCreate,
     create,
     del,

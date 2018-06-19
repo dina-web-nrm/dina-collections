@@ -1,5 +1,5 @@
 const createTaxonNameRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const getManyfilters = require('./operations/getMany/filters')
+const getManyfilterSpecification = require('./operations/getMany/filters')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -13,7 +13,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filters: getManyfilters,
+      filterSpecification: getManyfilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },

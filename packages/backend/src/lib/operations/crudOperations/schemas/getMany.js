@@ -1,14 +1,11 @@
 const base = require('./base')
+const filterSpecification = require('../../../data/filters/schemas/filterSpecification')
 
 module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    filters: {
-      not: {
-        type: 'string',
-      },
-    },
+    filterSpecification,
     includeRelations: {
       type: 'boolean',
     },

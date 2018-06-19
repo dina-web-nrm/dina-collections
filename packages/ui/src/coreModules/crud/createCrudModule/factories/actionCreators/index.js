@@ -5,18 +5,21 @@ import {
   OPERATION_TYPE_CREATE,
   OPERATION_TYPE_GET_MANY,
   OPERATION_TYPE_GET_ONE,
+  OPERATION_TYPE_QUERY,
   OPERATION_TYPE_UPDATE,
 } from '../../../constants'
 
 import createFactory from './createFactory'
 import getManyFactory from './getManyFactory'
 import getOneFactory from './getOneFactory'
+import queryFactory from './queryFactory'
 import updateFactory from './updateFactory'
 
 const factoryMap = {
   [OPERATION_TYPE_CREATE]: createFactory,
   [OPERATION_TYPE_GET_MANY]: getManyFactory,
   [OPERATION_TYPE_GET_ONE]: getOneFactory,
+  [OPERATION_TYPE_QUERY]: queryFactory,
   [OPERATION_TYPE_UPDATE]: updateFactory,
 }
 

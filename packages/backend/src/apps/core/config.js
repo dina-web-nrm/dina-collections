@@ -8,14 +8,16 @@ module.exports = {
   ...baseConfig,
   db: {
     ...baseConfig.db,
-    flushOnRestart:
-      (baseConfig.env.isDevelopment && baseConfig.db.flushOnRestart) || false,
-    loadInitialData:
-      (baseConfig.env.isDevelopment && baseConfig.db.loadInitialData) || false,
+    flushOnRestart: false,
+    loadInitialData: false,
+  },
+  elasticsearch: {
+    ...baseConfig.elasticsearch,
+    flushOnRestart: false,
   },
   jobs: {
-    schedulerActive: baseConfig.env.isDevelopment,
-    workerActive: baseConfig.env.isDevelopment,
+    schedulerActive: false, // baseConfig.env.isDevelopment,
+    workerActive: false, // baseConfig.env.isDevelopment,
   },
   services: {
     agentService: true,

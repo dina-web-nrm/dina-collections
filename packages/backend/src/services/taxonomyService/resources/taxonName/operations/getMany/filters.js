@@ -1,5 +1,5 @@
-const createGetManyFilters = require('../../../../../../lib/services/operationFactory/filters/createGetManyFilters')
+const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
-module.exports = createGetManyFilters({
+module.exports = createGetManyFilterSpecifications({
   include: ['ids', 'updatedAfter', 'nameSearch'],
 })

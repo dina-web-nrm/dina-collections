@@ -1,6 +1,6 @@
 const buildOperationId = require('common/src/buildOperationId')
 const createStorageLocationRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const getManyFilters = require('./operations/getMany/filters')
+const getManyFilterSpecificationMap = require('./operations/getMany/filters')
 
 module.exports = {
   basePath: '/api/storage/v01',
@@ -27,7 +27,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filters: getManyFilters,
+      filterSpecification: getManyFilterSpecificationMap,
       includeRelations: true,
       type: 'getMany',
     },

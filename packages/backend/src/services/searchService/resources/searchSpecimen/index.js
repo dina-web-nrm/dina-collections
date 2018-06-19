@@ -1,15 +1,14 @@
 const {
-  updateViewMapFunction,
-  rebuildViewMapFunction,
-} = require('./mapFunctions')
+  updateView: updateViewTransformationSpecification,
+  rebuildView: rebuildViewTransformationSpecification,
+} = require('./data/transformationSpecifications')
 
-const createGetManyFilters = require('../../../../lib/services/operationFactory/filters/createGetManyFilters')
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
-const cacheResourcesSpecifications = require('../../cacheResourcesSpecifications')
-
-const warmViews = cacheResourcesSpecifications.map(({ name }) => {
-  return name
-})
+const aggregationSpecification = require('./data/aggregationSpecification')
 
 const resource = 'searchSpecimen'
 
@@ -20,34 +19,32 @@ module.exports = {
       type: 'getOne',
     },
     {
+      aggregationSpecification,
+      filterSpecification: queryFilterSpecification,
+      type: 'query',
+    },
+    {
       type: 'del',
     },
     {
-      filters: createGetManyFilters({
-        include: ['ids', 'updatedAfter', 'deactivated'],
-      }),
+      filterSpecification: getManyFilterSpecification,
       type: 'getMany',
     },
     {
       type: 'emptyView',
     },
     {
-      mapFunction: updateViewMapFunction,
-      srcResource: 'specimen',
+      transformationSpecification: updateViewTransformationSpecification,
       type: 'updateView',
     },
     {
-      mapFunction: rebuildViewMapFunction,
-      srcResource: 'specimen',
+      transformationSpecification: rebuildViewTransformationSpecification,
       type: 'rebuildView',
-      warmViews,
     },
     {
-      srcResource: 'specimen',
       type: 'requestRebuildView',
     },
     {
-      srcResource: 'specimen',
       type: 'requestUpdateView',
     },
   ],

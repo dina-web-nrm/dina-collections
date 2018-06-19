@@ -1,5 +1,3 @@
-const createGetManyFilters = require('./filters/createGetManyFilters')
-
 module.exports = function createOperationObjectSpecification({
   operationSpecificationInput,
   resourceSpecification,
@@ -8,10 +6,7 @@ module.exports = function createOperationObjectSpecification({
     connect = true,
     exampleResponses,
     queryParams,
-    filters: filtersInput,
   } = operationSpecificationInput
-
-  const filters = filtersInput || createGetManyFilters()
 
   const availableExamples = Object.keys(exampleResponses || {})
 
@@ -21,7 +16,6 @@ module.exports = function createOperationObjectSpecification({
     ...resourceSpecification,
     availableExamples,
     connect,
-    filters,
     queryParams,
   }
 }
