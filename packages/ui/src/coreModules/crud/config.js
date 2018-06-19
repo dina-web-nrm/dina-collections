@@ -170,6 +170,10 @@ const config = {
           operationId: 'searchSpecimenGetMany',
           type: 'getMany',
         },
+        {
+          operationId: 'searchSpecimenQuery',
+          type: 'query',
+        },
       ],
     },
     specimen: {
