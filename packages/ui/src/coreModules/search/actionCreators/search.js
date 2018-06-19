@@ -1,7 +1,7 @@
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { actionCreators } from '../keyObjectModule'
 
-export default function search({ query, resource } = {}) {
+export default function search({ query, resource, idsOnly = true } = {}) {
   const updateSearchResult = actionCreators.set[':resource.searchState']
   const queryAc = crudActionCreators[resource].query
 
@@ -19,7 +19,7 @@ export default function search({ query, resource } = {}) {
     const body = {
       data: {
         attributes: {
-          idsOnly: true,
+          idsOnly,
           query,
         },
       },
@@ -30,12 +30,16 @@ export default function search({ query, resource } = {}) {
         throwError: true,
       })
     ).then(res => {
+      const items = idsOnly
+        ? res.map(({ id }) => {
+            return id
+          })
+        : res
+
       dispatch(
         updateSearchResult(
           {
-            items: res.map(({ id }) => {
-              return id
-            }),
+            items,
           },
           { resource }
         )
