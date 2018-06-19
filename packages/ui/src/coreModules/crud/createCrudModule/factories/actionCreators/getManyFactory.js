@@ -37,6 +37,7 @@ export default function getManyAcFactory(
       ids,
       include,
       isLookup, // TODO - remove this
+      limit,
       numberOfEntriesEachBatch = 5000,
       queryParams: queryParamsInput = {},
       relationships,
@@ -58,7 +59,7 @@ export default function getManyAcFactory(
     })
 
     let queryParams = {
-      limit: 1000,
+      limit: limit || 1000,
       ...queryParamsInput,
     }
     if (relationships) {
