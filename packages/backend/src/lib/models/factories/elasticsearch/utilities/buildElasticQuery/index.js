@@ -14,7 +14,7 @@ function buildAnd({ and = [], filters }) {
 }
 
 function buildFilter({ filter, filters }) {
-  const { filterFunction: filterFunctionName, value } = filter
+  const { filterFunction: filterFunctionName, input } = filter
 
   const filterFunction =
     filters[filterFunctionName] && filters[filterFunctionName].elasticsearch
@@ -22,9 +22,7 @@ function buildFilter({ filter, filters }) {
     throw new Error(`Filter function not found for ${filterFunctionName}`)
   }
 
-  return filterFunction({
-    value,
-  })
+  return filterFunction(input)
 }
 
 function buildOr({ or, filters }) {
