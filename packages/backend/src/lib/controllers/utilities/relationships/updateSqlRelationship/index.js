@@ -60,7 +60,7 @@ module.exports = ({ models, operation }) => {
 
     return model
       .update(updateValues)
-      .then(result => {
+      .then(({ item: result }) => {
         log.scope().debug('result[foreignKeyName]', result[foreignKeyName])
         return result[foreignKeyName]
           ? {

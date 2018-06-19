@@ -18,7 +18,7 @@ const setup = () => {
   })
 }
 
-dbDescribe('lib/sequelize/models/documentModel', () => {
+dbDescribe('lib/models/factories/sequelize/documentModel', () => {
   let model
   describe('createModel', () => {
     beforeAll(() => {
@@ -31,7 +31,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
       it('Creates and returns a simple record', () => {
         const doc = { a: 2 }
 
-        return model.create({ doc }).then(res => {
+        return model.create({ doc }).then(({ item: res }) => {
           expect(res).toBeTruthy()
           expect(res).toBeTruthy()
           expect(res.document).toEqual(doc)
@@ -47,7 +47,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
       let firstId
 
       beforeAll(() => {
-        return model.create({ doc: firstDoc }).then(res => {
+        return model.create({ doc: firstDoc }).then(({ item: res }) => {
           firstId = res.id
         })
       })
@@ -62,7 +62,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
             },
             id: firstId,
           })
-          .then(res => {
+          .then(({ item: res }) => {
             expect(res.document).toEqual({
               a: 2,
             })
@@ -72,12 +72,14 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
           })
       })
       it('Keeps previous diffs and appends new diff when updating again', () => {
-        return model.update({ doc: { a: 3 }, id: firstId }).then(res => {
-          expect(res.diff).toEqual([
-            { kind: 'E', lhs: 1, path: ['a'], rhs: 2 },
-            { kind: 'E', lhs: 2, path: ['a'], rhs: 3 },
-          ])
-        })
+        return model
+          .update({ doc: { a: 3 }, id: firstId })
+          .then(({ item: res }) => {
+            expect(res.diff).toEqual([
+              { kind: 'E', lhs: 1, path: ['a'], rhs: 2 },
+              { kind: 'E', lhs: 2, path: ['a'], rhs: 3 },
+            ])
+          })
       })
     })
 
@@ -88,7 +90,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
       let firstId
 
       beforeAll(() => {
-        return model.create({ doc: firstDoc }).then(res => {
+        return model.create({ doc: firstDoc }).then(({ item: res }) => {
           firstId = res.id
         })
       })
@@ -102,7 +104,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
           .deactivate({
             id: firstId,
           })
-          .then(res => {
+          .then(({ item: res }) => {
             expect(res.deactivatedAt).toBeTruthy()
           })
       })
@@ -131,13 +133,13 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
           model = createdModel
           return model
             .create({ doc: firstDoc })
-            .then(res => {
+            .then(({ item: res }) => {
               firstId = res.id
             })
             .then(() => {
               return model.create({ doc: secondDoc })
             })
-            .then(res => {
+            .then(({ item: res }) => {
               secondId = res.id
             })
         })
@@ -147,17 +149,17 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
         expect(model.getById()).rejects.toThrow()
       })
       it('returns firstDoc', () => {
-        return model.getById({ id: firstId }).then(res => {
+        return model.getById({ id: firstId }).then(({ item: res }) => {
           expect(res.document).toEqual(firstDoc)
         })
       })
       it('returns secondDoc', () => {
-        return model.getById({ id: secondId }).then(res => {
+        return model.getById({ id: secondId }).then(({ item: res }) => {
           expect(res.document).toEqual(secondDoc)
         })
       })
       it('returns null when model does not exist', () => {
-        return model.getById({ id: 1111 }).then(res => {
+        return model.getById({ id: 1111 }).then(({ item: res }) => {
           expect(res).toEqual(null)
         })
       })
@@ -182,13 +184,13 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
       beforeAll(() => {
         return model
           .create({ doc: firstDoc })
-          .then(res => {
+          .then(({ item: res }) => {
             firstId = res.id
           })
           .then(() => {
             return model.create({ doc: secondDoc })
           })
-          .then(res => {
+          .then(({ item: res }) => {
             secondId = res.id
           })
           .then(() => {
@@ -205,19 +207,25 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
         ).rejects.toThrow()
       })
       it('Returns null when where not matching', () => {
-        return model.getOneWhere({ where: { id: 1111 } }).then(res => {
-          expect(res).toEqual(null)
-        })
+        return model
+          .getOneWhere({ where: { id: 1111 } })
+          .then(({ item: res }) => {
+            expect(res).toEqual(null)
+          })
       })
       it('Returns record when matching by id', () => {
-        return model.getOneWhere({ where: { id: firstId } }).then(res => {
-          expect(res.document).toEqual(firstDoc)
-        })
+        return model
+          .getOneWhere({ where: { id: firstId } })
+          .then(({ item: res }) => {
+            expect(res.document).toEqual(firstDoc)
+          })
       })
       it('Returns record when matching by id and it has been updated', () => {
-        return model.getOneWhere({ where: { id: secondId } }).then(res => {
-          expect(res.document).toEqual(thirdDoc)
-        })
+        return model
+          .getOneWhere({ where: { id: secondId } })
+          .then(({ item: res }) => {
+            expect(res.document).toEqual(thirdDoc)
+          })
       })
       it('Returns record when matching by object property', () => {
         return model
@@ -226,7 +234,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
               'document.nested.inside': 'value',
             },
           })
-          .then(res => {
+          .then(({ item: res }) => {
             expect(res.document).toEqual(thirdDoc)
           })
       })
@@ -235,7 +243,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
           .getOneWhere({
             where: { 'document.nested.inside': 'non-existing-value' },
           })
-          .then(res => {
+          .then(({ item: res }) => {
             expect(res).toEqual(null)
           })
       })
@@ -260,13 +268,13 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
       beforeAll(() => {
         return model
           .create({ doc: firstDoc })
-          .then(res => {
+          .then(({ item: res }) => {
             firstId = res.id
           })
           .then(() => {
             return model.create({ doc: secondDoc })
           })
-          .then(res => {
+          .then(({ item: res }) => {
             secondId = res.id
           })
           .then(() => {
@@ -281,19 +289,25 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
         expect(model.getWhere({ where: { nonExisting: 3 } })).rejects.toThrow()
       })
       it('Returns empty array when where not matching', () => {
-        return model.getWhere({ where: { id: 1111 } }).then(res => {
-          expect(res).toEqual([])
-        })
+        return model
+          .getWhere({ where: { id: 1111 } })
+          .then(({ items: res }) => {
+            expect(res).toEqual([])
+          })
       })
       it('Returns record when matching by id', () => {
-        return model.getWhere({ where: { id: firstId } }).then(res => {
-          expect(res[0].document).toEqual(firstDoc)
-        })
+        return model
+          .getWhere({ where: { id: firstId } })
+          .then(({ items: res }) => {
+            expect(res[0].document).toEqual(firstDoc)
+          })
       })
       it('Returns record when matching by id and it has been updated', () => {
-        return model.getWhere({ where: { id: secondId } }).then(res => {
-          expect(res[0].document).toEqual(thirdDoc)
-        })
+        return model
+          .getWhere({ where: { id: secondId } })
+          .then(({ items: res }) => {
+            expect(res[0].document).toEqual(thirdDoc)
+          })
       })
       it('Returns record when matching by object property', () => {
         return model
@@ -302,7 +316,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
               'document.nested.inside': 'value',
             },
           })
-          .then(res => {
+          .then(({ items: res }) => {
             expect(res[0].document).toEqual(thirdDoc)
           })
       })
@@ -311,7 +325,7 @@ dbDescribe('lib/sequelize/models/documentModel', () => {
           .getWhere({
             where: { 'document.nested.inside': 'non-existing-value' },
           })
-          .then(res => {
+          .then(({ items: res }) => {
             expect(res.length).toEqual(0)
           })
       })

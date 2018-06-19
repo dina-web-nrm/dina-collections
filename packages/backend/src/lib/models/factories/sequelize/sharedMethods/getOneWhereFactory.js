@@ -12,6 +12,10 @@ module.exports = function getOneWhereFactory({ Model }) {
             ...where,
             deactivatedAt: null,
           },
+    }).then(item => {
+      return {
+        item,
+      }
     })
   }
 }

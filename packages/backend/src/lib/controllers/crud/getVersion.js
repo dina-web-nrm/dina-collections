@@ -17,7 +17,7 @@ module.exports = function getVersion({ operation, models }) {
         id,
         versionId,
       })
-      .then(res => {
+      .then(({ item: res } = {}) => {
         if (!res) {
           backendError404({
             code: 'RESOURCE_NOT_FOUND_ERROR',

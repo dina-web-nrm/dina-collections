@@ -50,7 +50,7 @@ describe('lib/modelFactories/documentModel/methods/createFactory', () => {
       const sampleDoc = {
         email: 'anton@example.com',
       }
-      return create({ doc: sampleDoc }).then(res => {
+      return create({ doc: sampleDoc }).then(({ item: res }) => {
         expect(res).toBeTruthy()
         expect(res.dataValues).toEqual({
           document: {
@@ -80,7 +80,7 @@ describe('lib/modelFactories/documentModel/methods/createFactory', () => {
       const sampleDoc = {
         email: 'anton@example.com',
       }
-      return create({ doc: sampleDoc }).then(res => {
+      return create({ doc: sampleDoc }).then(({ item: res }) => {
         expect(res).toBeTruthy()
         expect(res.dataValues).toEqual({
           document: {
@@ -112,7 +112,7 @@ describe('lib/modelFactories/documentModel/methods/createFactory', () => {
       const sampleDoc = {
         email: 'anton@example.com',
       }
-      return create({ doc: sampleDoc }).then(res => {
+      return create({ doc: sampleDoc }).then(({ item: res }) => {
         expect(res).toBeTruthy()
         expect(res.dataValues).toEqual({
           document: {

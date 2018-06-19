@@ -27,7 +27,7 @@ dbDescribe(
       const migrateSpecimen = require('./index')
 
       const reporter = createReporter()
-      const rawSpecimens = readInitialData('specimens')
+      const rawSpecimens = readInitialData('specimens').slice(0, 1000)
 
       expect(() => {
         rawSpecimens.forEach(specimen => {

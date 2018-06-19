@@ -15,7 +15,7 @@ module.exports = function createFactory({ Model }) {
         ...newItems,
       }
       Model.set(updatedItems)
-      return item
+      return { item }
     })
   }
 }

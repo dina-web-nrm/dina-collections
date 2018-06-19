@@ -36,7 +36,7 @@ module.exports = function queryController({ operation, models }) {
             raw: false,
             where,
           })
-          .then(items => {
+          .then(({ items }) => {
             return createArrayResponse({
               items: items.map(item => {
                 return transformOutput(item)

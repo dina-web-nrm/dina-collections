@@ -15,6 +15,10 @@ module.exports = function getByIdFactory({ Model }) {
             deactivatedAt: null,
             id,
           },
+    }).then(item => {
+      return {
+        item,
+      }
     })
   }
 }

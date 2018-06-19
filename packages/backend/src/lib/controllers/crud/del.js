@@ -12,8 +12,8 @@ module.exports = function del({ operation, models, serviceInteractor }) {
 
     return model
       .deactivate({ id })
-      .then(transformOutput)
-      .then(res => {
+      .then(({ item } = {}) => {
+        const res = transformOutput(item)
         if (postDeleteHook) {
           return postDeleteHook({ res, serviceInteractor }).then(() => {
             return res

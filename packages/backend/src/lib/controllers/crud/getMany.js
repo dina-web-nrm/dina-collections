@@ -47,7 +47,7 @@ module.exports = function getMany({ operation, models }) {
             raw: false,
             where,
           })
-          .then(items => {
+          .then(({ items } = {}) => {
             return createArrayResponse({
               items: items.map(item => {
                 const transformedItem = transformOutput(item)

@@ -26,28 +26,30 @@ module.exports = function getOne({ operation, models }) {
       })
     }
 
-    return model.getById({ id, include, raw: false }).then(fetchedResource => {
-      if (!fetchedResource) {
-        backendError404({
-          code: 'RESOURCE_NOT_FOUND_ERROR',
-          detail: `${resource} with id: ${id} not found`,
-        })
-      }
-      const relationships =
-        includeRelations &&
-        extractRelationships({
-          fetchedResource,
-          queryParamRelationships,
-          relations,
-        })
+    return model
+      .getById({ id, include, raw: false })
+      .then(({ item: fetchedResource } = {}) => {
+        if (!fetchedResource) {
+          backendError404({
+            code: 'RESOURCE_NOT_FOUND_ERROR',
+            detail: `${resource} with id: ${id} not found`,
+          })
+        }
+        const relationships =
+          includeRelations &&
+          extractRelationships({
+            fetchedResource,
+            queryParamRelationships,
+            relations,
+          })
 
-      const output = transformOutput(fetchedResource)
-      return createObjectResponse({
-        data: output,
-        id: output.id,
-        relationships,
-        type: resource,
+        const output = transformOutput(fetchedResource)
+        return createObjectResponse({
+          data: output,
+          id: output.id,
+          relationships,
+          type: resource,
+        })
       })
-    })
   }
 }

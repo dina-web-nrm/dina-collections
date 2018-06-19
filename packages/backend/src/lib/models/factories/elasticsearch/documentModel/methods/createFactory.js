@@ -23,12 +23,15 @@ module.exports = function createFactory({ Model, elasticsearch } = {}) {
         // refresh: false
         type: Model.name,
       })
-      .then(res => {
+      .then(item => {
         log.debug(
           `Created instance for model ${Model.name}. id: ${
-            res.id
-          }, versionId: ${res.versionId}`
+            item.id
+          }, versionId: ${item.versionId}`
         )
+        return {
+          item,
+        }
       })
   }
 }

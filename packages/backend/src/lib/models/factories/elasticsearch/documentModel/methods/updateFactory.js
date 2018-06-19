@@ -23,12 +23,15 @@ module.exports = function updateFactory({ Model, elasticsearch } = {}) {
         refresh: false,
         type: Model.name,
       })
-      .then(res => {
+      .then(item => {
         log.debug(
-          `Update instance for model ${Model.name}. id: ${res.id}, versionId: ${
-            res.versionId
-          }`
+          `Update instance for model ${Model.name}. id: ${
+            item.id
+          }, versionId: ${item.versionId}`
         )
+        return {
+          item,
+        }
       })
       .catch(err => {
         log.err(`Error updating instance for model ${Model.name}`, err)

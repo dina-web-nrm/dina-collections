@@ -15,7 +15,7 @@ const setup = () => {
   })
 }
 
-describe('lib/sequelize/models/viewDocumentModel', () => {
+describe('lib/models/factories/inMemory/viewDocumentModel', () => {
   let model
   describe('createModel', () => {
     beforeAll(() => {
@@ -28,7 +28,7 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
       it('Creates and returns a simple record', () => {
         const doc = { doc: { a: 2 }, id: 123 }
 
-        return model.create({ doc }).then(res => {
+        return model.create({ doc }).then(({ item: res }) => {
           expect(res).toBeTruthy()
           expect(res).toBeTruthy()
           expect(res.document).toEqual(doc)
@@ -47,7 +47,7 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
       let firstId
 
       beforeAll(() => {
-        return model.create({ doc: firstDoc }).then(res => {
+        return model.create({ doc: firstDoc }).then(({ item: res }) => {
           firstId = res.id
         })
       })
@@ -62,7 +62,7 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
             },
             id: firstId,
           })
-          .then(res => {
+          .then(({ item: res }) => {
             expect(res.document).toEqual({
               a: 2,
             })
@@ -78,7 +78,7 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
       let firstId
 
       beforeAll(() => {
-        return model.create({ doc: firstDoc }).then(res => {
+        return model.create({ doc: firstDoc }).then(({ item: res }) => {
           firstId = res.id
         })
       })
@@ -88,14 +88,14 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
           .del({
             id: firstId,
           })
-          .then(res => {
+          .then(({ item: res }) => {
             expect(res).toBeTruthy()
 
             return model
               .getById({
                 id: firstId,
               })
-              .then(nonExisting => {
+              .then(({ item: nonExisting }) => {
                 expect(nonExisting).toBeFalsy()
               })
           })
@@ -119,13 +119,13 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
           model = createdModel
           return model
             .create({ doc: firstDoc })
-            .then(res => {
+            .then(({ item: res }) => {
               firstId = res.id
             })
             .then(() => {
               return model.create({ doc: secondDoc })
             })
-            .then(res => {
+            .then(({ item: res }) => {
               secondId = res.id
             })
         })
@@ -135,17 +135,17 @@ describe('lib/sequelize/models/viewDocumentModel', () => {
         expect(model.getById()).rejects.toThrow()
       })
       it('returns firstDoc', () => {
-        return model.getById({ id: firstId }).then(res => {
+        return model.getById({ id: firstId }).then(({ item: res }) => {
           expect(res.document).toEqual(firstDoc)
         })
       })
       it('returns secondDoc', () => {
-        return model.getById({ id: secondId }).then(res => {
+        return model.getById({ id: secondId }).then(({ item: res }) => {
           expect(res.document).toEqual(secondDoc)
         })
       })
       it('returns null when model does not exist', () => {
-        return model.getById({ id: 1111 }).then(res => {
+        return model.getById({ id: 1111 }).then(({ item: res }) => {
           expect(res).toEqual(null)
         })
       })

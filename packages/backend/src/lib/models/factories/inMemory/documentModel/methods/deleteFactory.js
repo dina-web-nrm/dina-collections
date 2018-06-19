@@ -13,7 +13,7 @@ module.exports = function deleteFactory({ Model }) {
       delete updatedItems[id]
 
       Model.set(updatedItems)
-      return item
+      return { item }
     })
   }
 }

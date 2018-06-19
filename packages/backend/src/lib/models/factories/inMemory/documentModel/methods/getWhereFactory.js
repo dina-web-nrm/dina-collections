@@ -14,6 +14,10 @@ module.exports = function getWhereFactory({ Model }) {
         offset,
         query,
         returnItems: true,
+      }).then(items => {
+        return {
+          items,
+        }
       })
     })
   }

@@ -49,7 +49,9 @@ module.exports = ({ models, operation }) => {
       raw: false,
       where,
     })
-      .then(result => {
+      .then(({ item, items } = {}) => {
+        const result = item || items
+
         if (!result) {
           backendError404({
             code: 'RESOURCE_NOT_FOUND_ERROR',

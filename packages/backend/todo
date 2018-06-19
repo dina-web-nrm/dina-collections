@@ -1,10 +1,14 @@
-FEATURES
+DONE
 * Implement FE query in crud module
 * Adapt search to query
+
+FEATURES
+* Add meta to elastic response
 * Integrate fredrik new component
 * Implement scroll to handle large result sets (use frontend to request scroll results)
 
 CLEANUP
+* Look at createObjectResponse performance
 * Move utilities in lib/data to root
 * Att schema and tests for models (and with that for mappings)
 * Add check that model have required method in controller
@@ -14,6 +18,8 @@ CLEANUP
 * Mimic searchSpecimen structure in other services
 * Add more schemas
 * Force examples to be added to crud or else through error
+* Potentially pass other stuff into crud query
+* Fix model abstractions. Abstract away document on model level
 
 TESTING
 * Test all old crud from FE

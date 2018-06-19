@@ -43,6 +43,10 @@ module.exports = function getWhereFactory({ Model }) {
       options.offset = offset
     }
 
-    return Model.findAll(options)
+    return Model.findAll(options).then(items => {
+      return {
+        items,
+      }
+    })
   }
 }

@@ -20,17 +20,20 @@ module.exports = function getWhereFactory({ Model, elasticsearch }) {
         type: Model.name,
       })
       .then(res => {
+        let items = []
         if (aggregations && Object.keys(aggregations).length) {
-          return extractItemsFromAggregations({
+          items = extractItemsFromAggregations({
             aggregations,
             aggregationSpecification,
             result: res,
           })
+        } else {
+          items = extractItemsFromResult({
+            result: res,
+          })
         }
 
-        return extractItemsFromResult({
-          result: res,
-        })
+        return { items }
       })
   }
 }

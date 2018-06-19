@@ -33,7 +33,7 @@ module.exports = ({ models, operation }) => {
     log.scope().debug('model', model)
     log.scope().debug('data', data)
 
-    return model.getById({ id }).then(fetchedResource => {
+    return model.getById({ id }).then(({ item: fetchedResource } = {}) => {
       if (!fetchedResource) {
         backendError404({
           code: 'RESOURCE_NOT_FOUND_ERROR',
@@ -53,7 +53,7 @@ module.exports = ({ models, operation }) => {
           doc: newDocument,
           id,
         })
-        .then(updatedResource => {
+        .then(({ item: updatedResource = {} }) => {
           const relationship = extractRelationship({
             dataValues: updatedResource,
             fetchedResource: updatedResource,

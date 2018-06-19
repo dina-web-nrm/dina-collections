@@ -27,8 +27,9 @@ module.exports = function create({
           sourceResource: resource,
         })
       )
-      .then(transformOutput)
-      .then(res => {
+      .then(({ item } = {}) => {
+        const res = transformOutput(item)
+
         if (postCreateHook) {
           return postCreateHook({ res, serviceInteractor }).then(() => {
             return res
