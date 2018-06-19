@@ -28,6 +28,7 @@ const propTypes = {
   isLarge: PropTypes.bool.isRequired,
   leftSidebarEnabled: PropTypes.bool,
   leftSidebarIsOpen: PropTypes.bool.isRequired,
+  leftSidebarTogglable: PropTypes.bool,
   leftSidebarWidth: PropTypes.number,
   rightSidebarIsOpen: PropTypes.bool.isRequired,
   rightSidebarWidth: PropTypes.number,
@@ -36,6 +37,7 @@ const propTypes = {
 
 const defaultProps = {
   leftSidebarEnabled: false,
+  leftSidebarTogglable: false,
   leftSidebarWidth: 100,
   rightSidebarWidth: 300,
 }
@@ -95,6 +97,7 @@ const ViewWrap = ({
   isLarge,
   leftSidebarEnabled,
   leftSidebarIsOpen,
+  leftSidebarTogglable,
   leftSidebarWidth,
   rightSidebarIsOpen,
   rightSidebarWidth,
@@ -103,7 +106,6 @@ const ViewWrap = ({
   const rightSidebarEnabled = true
 
   const leftSidebarAlwaysVisible = isLarge && leftSidebarEnabled
-  const leftSidebarTogglable = !isLarge && leftSidebarEnabled
 
   const viewWrapStyle = getViewWrapStyle({
     leftSidebarAlwaysVisible,
@@ -122,7 +124,7 @@ const ViewWrap = ({
     <div style={viewWrapStyle}>
       <Dimmer.Dimmable dimmed={dimmerActive}>
         {leftSidebarTogglable && (
-          <Menu inverted style={{ margin: 0 }}>
+          <Menu className="fixed" inverted>
             <Menu.Item onClick={toggleLeftSidebar}>
               <Icon name="sidebar" size="large" />
             </Menu.Item>
@@ -133,7 +135,11 @@ const ViewWrap = ({
           className="ui fluid dina background"
           style={{ overflow: 'hidden' }}
         >
-          {children}
+          {/*
+            added div with marginTop, because if margin is applied on the parent
+            div there are serious artifacts when the leftsidebar & dimmer closes
+          */}
+          <div style={{ marginTop: '40px' }}>{children}</div>
         </div>
       </Dimmer.Dimmable>
     </div>
