@@ -60,7 +60,7 @@ class Filter extends Component {
         <Input
           onChange={event => {
             this.handleFilterChange({
-              filterFunctionName: 'collectingLocation',
+              filterFunctionName: 'matchCollectingLocation',
               value: event.target.value,
             })
           }}
@@ -69,11 +69,11 @@ class Filter extends Component {
         <Input
           onChange={event => {
             this.handleFilterChange({
-              filterFunctionName: 'catalogNumber',
+              filterFunctionName: 'matchIdentifier',
               value: event.target.value,
             })
           }}
-          placeholder="catalogNumber"
+          placeholder="identifier"
         />
       </div>
     )
