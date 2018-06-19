@@ -11,13 +11,6 @@ module.exports = function buildWhereQueryFactory() {
     } = {}
   ) {
     return Promise.resolve().then(() => {
-      // const {
-      //   filters,
-      //   // aggregations,
-      //   // limit,
-      //   // offset
-      // } = query
-
       const elasticQuery = buildElasticQuery({
         filterSpecification,
         query,
