@@ -9,39 +9,6 @@ import {
 } from '../keyObjectModule'
 import layoutSelectors from '../globalSelectors'
 
-const mapStateToProps = state => {
-  return {
-    isLarge: sizeSelectors.getIsLarge(state),
-    leftSidebarIsOpen: keyObjectGlobalSelectors.get['leftSidebar.isOpen'](
-      state
-    ),
-    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
-  }
-}
-
-const mapDispatchToProps = {
-  setLeftSidebarIsOpen: keyObjectActionCreators.set['leftSidebar.isOpen'],
-}
-
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  isLarge: PropTypes.bool.isRequired,
-  leftSidebarEnabled: PropTypes.bool,
-  leftSidebarIsOpen: PropTypes.bool.isRequired,
-  leftSidebarTogglable: PropTypes.bool,
-  leftSidebarWidth: PropTypes.number,
-  rightSidebarIsOpen: PropTypes.bool.isRequired,
-  rightSidebarWidth: PropTypes.number,
-  setLeftSidebarIsOpen: PropTypes.func.isRequired,
-}
-
-const defaultProps = {
-  leftSidebarEnabled: false,
-  leftSidebarTogglable: false,
-  leftSidebarWidth: 100,
-  rightSidebarWidth: 300,
-}
-
 export const getViewWrapStyle = ({
   leftSidebarAlwaysVisible,
   leftSidebarIsOpen,
@@ -90,6 +57,41 @@ export const getViewWrapStyle = ({
     ...leftSidebarStyle,
     ...rightSidebarStyle,
   }
+}
+
+const mapStateToProps = state => {
+  return {
+    isLarge: sizeSelectors.getIsLarge(state),
+    leftSidebarIsOpen: keyObjectGlobalSelectors.get['leftSidebar.isOpen'](
+      state
+    ),
+    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
+    windowHeight: sizeSelectors.getHeight(state),
+  }
+}
+
+const mapDispatchToProps = {
+  setLeftSidebarIsOpen: keyObjectActionCreators.set['leftSidebar.isOpen'],
+}
+
+const propTypes = {
+  children: PropTypes.node.isRequired,
+  isLarge: PropTypes.bool.isRequired,
+  leftSidebarEnabled: PropTypes.bool,
+  leftSidebarIsOpen: PropTypes.bool.isRequired,
+  leftSidebarTogglable: PropTypes.bool,
+  leftSidebarWidth: PropTypes.number,
+  rightSidebarIsOpen: PropTypes.bool.isRequired,
+  rightSidebarWidth: PropTypes.number,
+  setLeftSidebarIsOpen: PropTypes.func.isRequired,
+  windowHeight: PropTypes.number.isRequired,
+}
+
+const defaultProps = {
+  leftSidebarEnabled: false,
+  leftSidebarTogglable: false,
+  leftSidebarWidth: 100,
+  rightSidebarWidth: 300,
 }
 
 const ViewWrap = ({
