@@ -9,6 +9,7 @@ module.exports = function createErrorMiddleware({ config }) {
     /* eslint-enable no-unused-vars */
     const err = sanitizeBackendError({
       error: incomingError,
+      isDevelopment: config.env.isDevelopment,
       log,
     })
 
