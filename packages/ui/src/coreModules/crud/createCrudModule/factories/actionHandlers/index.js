@@ -6,6 +6,7 @@ import {
   OPERATION_TYPE_CREATE,
   OPERATION_TYPE_GET_MANY,
   OPERATION_TYPE_GET_ONE,
+  OPERATION_TYPE_QUERY,
   OPERATION_TYPE_UPDATE,
 } from '../../../constants'
 
@@ -78,6 +79,9 @@ export default function createActionHandlers({
             resource,
             resourceActionTypes,
           })
+          break
+        }
+        case OPERATION_TYPE_QUERY: {
           break
         }
         default: {
