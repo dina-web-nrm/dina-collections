@@ -18,7 +18,6 @@ export default () => {
     } else {
       operationId = endpointConfig.operationId // eslint-disable-line prefer-destructuring
     }
-
     if (dep.spies[operationId]) {
       dep.spies[operationId](endpointConfig, ...rest)
     }
