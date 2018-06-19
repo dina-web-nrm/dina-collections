@@ -15,14 +15,23 @@ const propTypes = {
   size: PropTypes.shape({
     height: PropTypes.number.isRequired,
   }).isRequired,
+  wrapperClassNames: PropTypes.string,
+  wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
   rows: undefined,
+  wrapperClassNames: undefined,
+  wrapperStyle: undefined,
 }
 
 class RowLayout extends PureComponent {
   render() {
-    const { rows, size: { height } } = this.props
+    const {
+      rows,
+      size: { height },
+      wrapperClassNames,
+      wrapperStyle,
+    } = this.props
 
     if (!rows || !rows.length) {
       return null
@@ -32,15 +41,26 @@ class RowLayout extends PureComponent {
       availableHeight: height,
       rows,
     })
+
     return (
-      <div style={{ height: '100vh', overflow: 'hidden', width: '100%' }}>
+      <div
+        className={wrapperClassNames}
+        style={{
+          height: '100vh',
+          overflow: 'hidden',
+          width: '100%',
+          ...(wrapperStyle || {}),
+        }}
+      >
         {rows.map((rowProps, index) => {
           return (
             <div
+              className={rowProps.classNames}
               style={{
                 float: 'left',
                 height: calculatedHeights[index],
                 width: '100%',
+                ...(rowProps.style || {}),
               }}
             >
               {rowProps.renderRow({ ...this.props, ...rowProps })}

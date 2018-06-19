@@ -15,14 +15,23 @@ const propTypes = {
   size: PropTypes.shape({
     width: PropTypes.number.isRequired,
   }).isRequired,
+  wrapperClassNames: PropTypes.string,
+  wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
   columns: undefined,
+  wrapperClassNames: undefined,
+  wrapperStyle: undefined,
 }
 
 class ColumnLayout extends PureComponent {
   render() {
-    const { columns, size: { width } } = this.props
+    const {
+      columns,
+      size: { width },
+      wrapperClassNames,
+      wrapperStyle,
+    } = this.props
 
     if (!columns || !columns.length) {
       return null
@@ -32,14 +41,20 @@ class ColumnLayout extends PureComponent {
       availableWidth: width,
       columns,
     })
+
     return (
-      <div style={{ height: '100%', width: '100%' }}>
+      <div
+        className={wrapperClassNames}
+        style={{ height: '100%', width: '100%', ...(wrapperStyle || {}) }}
+      >
         {columns.map((columnProps, index) => {
           return (
             <div
+              className={columnProps.classNames}
               style={{
                 float: 'left',
                 width: calculatedWidths[index],
+                ...(columnProps.style || {}),
               }}
             >
               {columnProps.renderColumn({ ...this.props, ...columnProps })}
