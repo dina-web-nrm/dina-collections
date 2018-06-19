@@ -14,7 +14,7 @@ function buildAnd({ and = [], filters }) {
 }
 
 function buildFilter({ filter, filters }) {
-  const { filterFunction: filterFunctionName, input } = filter
+  const { filterFunction: filterFunctionName, input = {} } = filter
 
   const filterFunction =
     filters[filterFunctionName] && filters[filterFunctionName].elasticsearch

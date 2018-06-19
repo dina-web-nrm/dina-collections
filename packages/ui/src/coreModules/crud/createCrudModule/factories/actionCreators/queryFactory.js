@@ -8,6 +8,63 @@ export const dep = new Dependor({
 
 const log = createLog('coreModules:crud:actionCreators:query')
 
+const createCallParams = ({ body, options, scroll, scrollId, limit }) => {
+  const attributes = body && body.data && body.data.attributes
+
+  return {
+    ...options,
+    body: {
+      data: {
+        attributes: {
+          ...attributes,
+          limit,
+          scroll,
+          scrollId,
+        },
+      },
+    },
+  }
+}
+
+const scrollQuery = ({ apiClient, operationId, body, options }) => {
+  let lastScrollId
+  let lastBatchCallParams
+  let nFetchedItems = 0
+
+  const data = []
+  const scroll = () => {
+    lastBatchCallParams = createCallParams({
+      body,
+      limit: 3000,
+      options,
+      scroll: true,
+      scrollId: lastScrollId,
+    })
+    return apiClient.call(operationId, lastBatchCallParams).then(response => {
+      const { scrollId, nResponseItems = 0, nTotalItems = 0 } =
+        (response && response.meta) || {}
+      lastScrollId = scrollId
+
+      nFetchedItems += nResponseItems
+      data.push(...response.data)
+      if (
+        !lastScrollId ||
+        nFetchedItems === 0 ||
+        nFetchedItems >= nTotalItems
+      ) {
+        return {
+          ...response,
+          data,
+        }
+      }
+
+      return scroll()
+    })
+  }
+
+  return scroll()
+}
+
 export default function queryAcFactory(
   {
     operationId,
@@ -43,17 +100,23 @@ export default function queryAcFactory(
         throw new Error('body.data is required')
       }
 
-      const callParams = {
-        ...options,
+      const callParams = createCallParams({
         body,
-      }
-
+        limit: 1000,
+        options,
+        scroll: true,
+        scrollId: undefined,
+      })
       dispatch({
         meta: callParams,
         type: actionTypes.request,
       })
-
-      return apiClient.call(operationId, callParams).then(
+      return scrollQuery({
+        apiClient,
+        body,
+        operationId,
+        options,
+      }).then(
         response => {
           dispatch({
             meta: callParams,

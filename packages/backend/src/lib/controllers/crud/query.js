@@ -14,7 +14,17 @@ module.exports = function queryController({ operation, models }) {
   return ({ request }) => {
     const {
       body: {
-        data: { attributes: { aggregations, idsOnly, limit, offset, query } },
+        data: {
+          attributes: {
+            aggregations,
+            idsOnly,
+            limit,
+            offset,
+            query,
+            scroll,
+            scrollId,
+          },
+        },
       },
     } = request
 
@@ -34,6 +44,8 @@ module.exports = function queryController({ operation, models }) {
             limit,
             offset,
             raw: false,
+            scroll,
+            scrollId,
             where,
           })
           .then(({ items, meta }) => {
