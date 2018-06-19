@@ -8,8 +8,8 @@ import calculateRowHeights from '../../utilities/calculateRowHeights'
 const propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.shape({
-      height: PropTypes.string.isRequired,
-      renderRow: PropTypes.node.isRequired,
+      height: PropTypes.string,
+      renderRow: PropTypes.func.isRequired,
     }).isRequired
   ),
   size: PropTypes.shape({
@@ -56,6 +56,7 @@ class RowLayout extends PureComponent {
           return (
             <div
               className={rowProps.classNames}
+              key={rowProps.key || index}
               style={{
                 float: 'left',
                 height: calculatedHeights[index],

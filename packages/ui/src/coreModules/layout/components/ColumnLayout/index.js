@@ -8,8 +8,8 @@ import calculateColumnWidths from '../../utilities/calculateColumnWidths'
 const propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
-      renderColumn: PropTypes.node.isRequired,
-      width: PropTypes.string.isRequired,
+      renderColumn: PropTypes.func.isRequired,
+      width: PropTypes.string,
     }).isRequired
   ),
   size: PropTypes.shape({
@@ -51,6 +51,7 @@ class ColumnLayout extends PureComponent {
           return (
             <div
               className={columnProps.classNames}
+              key={columnProps.key || index}
               style={{
                 float: 'left',
                 width: calculatedWidths[index],
