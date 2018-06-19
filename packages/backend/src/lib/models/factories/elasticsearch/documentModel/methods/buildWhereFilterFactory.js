@@ -25,28 +25,12 @@ module.exports = function buildWhereFilterFactory() {
       const query = buildQueryFromFilters({
         filterInput,
       })
-      // const {
-      //   filters,
-      //   // aggregations,
-      //   // limit,
-      //   // offset
-      // } = query
 
-      const elasticQuery = !query
-        ? {}
-        : buildElasticQuery({
-            filterSpecification,
-            query,
-          })
-      // const elasticAggregations = buildElasticAggregations({
-      //   aggregations,
-      //   aggregationSpecification,
-      // })
+      const elasticQuery = buildElasticQuery({
+        filterSpecification,
+        query,
+      })
 
-      // const elaticBody = {
-      //   aggregations: elasticAggregations,
-      //   query: elasticQuery,
-      // }
       return {
         query: elasticQuery,
       }

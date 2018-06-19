@@ -67,6 +67,12 @@ function buildElasticNode({ query, filters }) {
 }
 
 module.exports = function buildElasticQuery({ filterSpecification, query }) {
+  if (!(query && Object.keys(query).length)) {
+    return {
+      match_all: {},
+    }
+  }
+
   const { filters } = filterSpecification
   return buildElasticNode({
     filters,
