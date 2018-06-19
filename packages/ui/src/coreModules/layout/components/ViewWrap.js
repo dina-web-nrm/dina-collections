@@ -52,10 +52,10 @@ export const getViewWrapStyle = ({
   rightSidebarWidth,
 }) => {
   const viewWrapBaseStyle = {
-    bottom: '100%',
+    height: '100vh',
     left: 0,
-    minHeight: '100%',
     minWidth: '100%',
+    overflow: 'hidden',
     position: 'relative',
     top: 0,
     transition: 'transform 0.2s',
@@ -102,7 +102,12 @@ const ViewWrap = ({
   rightSidebarIsOpen,
   rightSidebarWidth,
   setLeftSidebarIsOpen,
+  windowHeight,
 }) => {
+  if (!windowHeight) {
+    return null
+  }
+
   const rightSidebarEnabled = true
 
   const leftSidebarAlwaysVisible = isLarge && leftSidebarEnabled
@@ -124,7 +129,7 @@ const ViewWrap = ({
     <div style={viewWrapStyle}>
       <Dimmer.Dimmable dimmed={dimmerActive}>
         {leftSidebarTogglable && (
-          <Menu className="fixed" inverted>
+          <Menu inverted style={{ borderRadius: 0, margin: 0 }}>
             <Menu.Item onClick={toggleLeftSidebar}>
               <Icon name="sidebar" size="large" />
             </Menu.Item>
@@ -133,13 +138,10 @@ const ViewWrap = ({
         <Dimmer active={dimmerActive} onClickOutside={toggleLeftSidebar} />
         <div
           className="ui fluid dina background"
-          style={{ overflow: 'hidden' }}
+          // deducting the menu height from this div
+          style={{ height: `${windowHeight - 40}px`, overflow: 'auto' }}
         >
-          {/*
-            added div with marginTop, because if margin is applied on the parent
-            div there are serious artifacts when the leftsidebar & dimmer closes
-          */}
-          <div style={{ marginTop: '40px' }}>{children}</div>
+          {children}
         </div>
       </Dimmer.Dimmable>
     </div>
