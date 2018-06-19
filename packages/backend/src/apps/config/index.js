@@ -29,7 +29,7 @@ const api = {
 }
 
 const initialData = {
-  numberOfSpecimens: process.env.INITIAL_DATA_NUMBER_OF_SPECIMENS || 100,
+  numberOfSpecimens: process.env.INITIAL_DATA_NUMBER_OF_SPECIMENS || 100000,
 }
 
 const db = {

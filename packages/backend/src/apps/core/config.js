@@ -13,11 +13,11 @@ module.exports = {
   },
   elasticsearch: {
     ...baseConfig.elasticsearch,
-    flushOnRestart: true,
+    flushOnRestart: false,
   },
   jobs: {
-    schedulerActive: baseConfig.env.isDevelopment,
-    workerActive: baseConfig.env.isDevelopment,
+    schedulerActive: false, // baseConfig.env.isDevelopment,
+    workerActive: false, // baseConfig.env.isDevelopment,
   },
   services: {
     agentService: true,
