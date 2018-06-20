@@ -1,9 +1,9 @@
 module.exports = {
-  description: 'Match collecting information',
+  description: 'Match identifiers',
   elasticsearch: ({ value }) => {
     return {
-      match: {
-        'collectingLocations.raw': {
+      match_phrase_prefix: {
+        identifiers: {
           query: value,
         },
       },
@@ -12,5 +12,5 @@ module.exports = {
   inputSchema: {
     type: 'string',
   },
-  key: 'matchCollectingLocation',
+  key: 'searchIdentifier',
 }

@@ -2,8 +2,8 @@ module.exports = {
   description: 'Match identifiers',
   elasticsearch: ({ value }) => {
     return {
-      match_phrase: {
-        identifiers: {
+      match: {
+        'identifiers.raw': {
           query: value,
         },
       },
