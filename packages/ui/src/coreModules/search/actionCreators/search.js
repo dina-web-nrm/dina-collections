@@ -1,7 +1,15 @@
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import { actionCreators } from '../keyObjectModule'
 
-export default function search({ query, resource, idsOnly = true } = {}) {
+export default function search(
+  {
+    aggregations,
+    query,
+    resource,
+    idsOnly = true,
+    storeSearchResult = false,
+  } = {}
+) {
   const updateSearchResult = actionCreators.set[':resource.searchState']
   const queryAc = crudActionCreators[resource].query
 
@@ -18,7 +26,8 @@ export default function search({ query, resource, idsOnly = true } = {}) {
   return dispatch => {
     return dispatch(
       queryAc({
-        idsOnly,
+        aggregations,
+        idsOnly: false,
         limit: 100000,
         query,
         throwError: true,
@@ -30,14 +39,18 @@ export default function search({ query, resource, idsOnly = true } = {}) {
           })
         : res
 
-      dispatch(
-        updateSearchResult(
-          {
-            items,
-          },
-          { resource }
+      if (storeSearchResult) {
+        dispatch(
+          updateSearchResult(
+            {
+              items,
+            },
+            { resource }
+          )
         )
-      )
+      }
+
+      return items
     })
   }
 }

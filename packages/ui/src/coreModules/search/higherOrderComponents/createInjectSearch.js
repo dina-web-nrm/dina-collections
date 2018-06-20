@@ -6,7 +6,11 @@ import { compose } from 'redux'
 import { search } from '../actionCreators'
 
 const createInjectSearch = (
-  { searchOnMount = true, resource = 'searchSpecimen' } = {}
+  {
+    resource = 'searchSpecimen',
+    searchOnMount = true,
+    storeSearchResult = true,
+  } = {}
 ) => ComposedComponent => {
   const mapDispatchToProps = {
     search,
@@ -25,12 +29,17 @@ const createInjectSearch = (
     }
     componentDidMount() {
       if (searchOnMount) {
-        this.props.search({ query: {}, resource })
+        this.search({ query: {} })
       }
     }
 
-    search(query) {
-      this.props.search({ query, resource })
+    search({ aggregations, query }) {
+      return this.props.search({
+        aggregations,
+        query,
+        resource,
+        storeSearchResult,
+      })
     }
 
     render() {

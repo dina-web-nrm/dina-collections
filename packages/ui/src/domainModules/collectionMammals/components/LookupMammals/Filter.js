@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import CollectingLocationMultipleSearch from './CollectingLocationMultipleSearch'
 
 const propTypes = {
   search: PropTypes.func.isRequired,
@@ -27,6 +28,21 @@ class Filter extends Component {
           if (!newState[key]) {
             return null
           }
+
+          if (key === 'searchCollectingLocationMultiSearch') {
+            return {
+              or: newState[key].map(item => {
+                return {
+                  filter: {
+                    filterFunction: 'matchCollectingLocation',
+                    input: {
+                      value: item,
+                    },
+                  },
+                }
+              }),
+            }
+          }
           return {
             filter: {
               filterFunction: key,
@@ -41,13 +57,23 @@ class Filter extends Component {
         }),
     }
 
-    this.props.search(query)
+    this.props.search({ query })
   }
 
   render() {
     return (
       <div>
         <h2>Filter</h2>
+
+        <CollectingLocationMultipleSearch
+          onChange={value => {
+            this.handleFilterChange({
+              filterFunctionName: 'searchCollectingLocationMultiSearch',
+              value,
+            })
+          }}
+        />
+        <h3>Id - (filterFunction: id)</h3>
         <Input
           onChange={event => {
             this.handleFilterChange({
@@ -57,6 +83,20 @@ class Filter extends Component {
           }}
           placeholder="id"
         />
+
+        <h3>
+          Collecting location - (filterFunction: searchCollectingLocation)
+        </h3>
+        <Input
+          onChange={event => {
+            this.handleFilterChange({
+              filterFunctionName: 'searchCollectingLocation',
+              value: event.target.value,
+            })
+          }}
+          placeholder="collectingLocation"
+        />
+        <h3>Collecting location - (filterFunction: matchCollectingLocation)</h3>
         <Input
           onChange={event => {
             this.handleFilterChange({
@@ -66,10 +106,22 @@ class Filter extends Component {
           }}
           placeholder="collectingLocation"
         />
+
+        <h3>Identifier - (filterFunction: matchIdentifier)</h3>
         <Input
           onChange={event => {
             this.handleFilterChange({
               filterFunctionName: 'matchIdentifier',
+              value: event.target.value,
+            })
+          }}
+          placeholder="identifier"
+        />
+        <h3>Identifier - (filterFunction: searchIdentifier)</h3>
+        <Input
+          onChange={event => {
+            this.handleFilterChange({
+              filterFunctionName: 'searchIdentifier',
               value: event.target.value,
             })
           }}
