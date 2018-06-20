@@ -3,17 +3,17 @@ DONE
 * Adapt search to query
 * Add meta to elastic response
 * Implement scroll to handle large result sets (use frontend to request scroll results)
+* Clean up query crud and search (also call it not with body but aggregations and query and stuff)
 
 TODO
-* Clean up query crud and search (also call it not with body but aggregations and query and stuff)
 * Integrate fredrik new component for localities with aggregations
 * Add new mapping for idInteger (and make sure sort is working with it)
 
 
 CLEANUP
-
 * Look at createObjectResponse performance
 * Move utilities in lib/data to root
+* Make scripts to start backend in different modes incl script (app) to load all data
 * Att schema and tests for models (and with that for mappings)
 * Add check that model have required method in controller
 * Rename aggregationFunction and filterFunction to [...]Name
