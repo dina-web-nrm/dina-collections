@@ -3,9 +3,12 @@ services:
   loadData:
     image: dina/dina-collections-api
     container_name: load-data
+    environment:
+      - LOAD_INITIAL_DATA=true
+      - INITIAL_DATA_NUMBER_OF_SPECIMENS=100
     env_file:
-      - ./env/.api
-    command: LOAD_INITIAL_DATA=true INITIAL_DATA_NUMBER_OF_SPECIMENS=100000 node /etc/api/src/apps/production/data/index.js
+      - ./env/.backend
+    command: node /etc/api/src/apps/production/data/index.js
     volumes:
       - ./data:/data
 
@@ -17,5 +20,4 @@ networks:
 volumes:
   postgres_data:
   es_data:
-
 
