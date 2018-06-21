@@ -1,4 +1,5 @@
 DONE
+* Make scripts to start backend in different modes incl script (app) to load all data
 * Implement FE query in crud module
 * Adapt search to query
 * Add meta to elastic response
@@ -7,16 +8,20 @@ DONE
 * Integrate fredrik new component for localities with aggregations
 
 TODO
-* Add elasticsearch to readme
-* Verify docker is working locally (inkl reload data)
-* Deploy
 * Add new mapping for idInteger (and make sure sort is working with it)
 
+
+Import
+* Create import data operation and controller
+* Implement for all but specimen
+* Create async migration for specimen with views as lookup
+* Move models to resources
+* Use migrator lib used by data app
 
 CLEANUP
 * Look at createObjectResponse performance
 * Move utilities in lib/data to root
-* Make scripts to start backend in different modes incl script (app) to load all data
+
 * Att schema and tests for models (and with that for mappings)
 * Add check that model have required method in controller
 * Rename aggregationFunction and filterFunction to [...]Name

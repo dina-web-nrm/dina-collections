@@ -33,7 +33,7 @@ module.exports = function getWhereFactory({ Model, elasticsearch }) {
         from: offset,
         index: Model.index,
         size: limit,
-        sort: ['id.raw'],
+        sort: ['idNumeric'],
         type: Model.name,
       }
     }
