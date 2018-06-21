@@ -2,7 +2,8 @@ import React from 'react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Dimmer, Icon, Menu } from 'semantic-ui-react'
+import { Dimmer, Grid, Header, Icon, Menu } from 'semantic-ui-react'
+
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import {
@@ -76,6 +77,8 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  activeLocation: PropTypes.node,
+  activeLocationContext: PropTypes.node,
   children: PropTypes.node.isRequired,
   isLarge: PropTypes.bool.isRequired,
   leftSidebarEnabled: PropTypes.bool,
@@ -89,6 +92,8 @@ const propTypes = {
 }
 
 const defaultProps = {
+  activeLocation: undefined,
+  activeLocationContext: undefined,
   leftSidebarEnabled: false,
   leftSidebarTogglable: false,
   leftSidebarWidth: 100,
@@ -96,6 +101,8 @@ const defaultProps = {
 }
 
 const ViewWrap = ({
+  activeLocation,
+  activeLocationContext,
   children,
   isLarge,
   leftSidebarEnabled,
@@ -136,6 +143,17 @@ const ViewWrap = ({
             <Menu.Item onClick={toggleLeftSidebar}>
               <Icon name="sidebar" size="large" />
             </Menu.Item>
+            {activeLocation && (
+              <Grid padded textAlign="center" verticalAlign="middle">
+                <Grid.Column>
+                  <Header inverted>
+                    {activeLocation}
+                    {activeLocationContext && ' '}
+                    {activeLocationContext && activeLocationContext}
+                  </Header>
+                </Grid.Column>
+              </Grid>
+            )}
           </Menu>
         )}
         <Dimmer active={dimmerActive} onClickOutside={toggleLeftSidebar} />
