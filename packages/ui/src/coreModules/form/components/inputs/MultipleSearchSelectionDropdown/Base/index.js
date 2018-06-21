@@ -72,10 +72,13 @@ class MultipleSearchSelectionDropdownInput extends Component {
       input,
       isLoading,
       mountHidden,
-      options,
+      options: optionsInput = [],
       searchQuery,
-      selectedOptions,
+      selectedOptions = [],
     } = this.props
+
+    const options = [...optionsInput, ...selectedOptions]
+
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
 

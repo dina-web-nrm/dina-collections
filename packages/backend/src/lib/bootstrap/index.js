@@ -40,9 +40,10 @@ module.exports = function bootstrap({
 
   initializeDataStores({
     config,
-  }).then(({ inMemoryDb, sequelize }) => {
+  }).then(({ elasticsearch, inMemoryDb, sequelize }) => {
     return setupModels({
       config,
+      elasticsearch,
       inMemoryDb,
       sequelize,
       serviceOrder,
@@ -71,7 +72,6 @@ module.exports = function bootstrap({
             log.info(
               `Connectors created after: ${now() - startTime} milliseconds`
             )
-
             serviceInteractor.addConnectors(connectors)
 
             if (config.jobs.workerActive) {
@@ -85,6 +85,7 @@ module.exports = function bootstrap({
             if (config.jobs.schedulerActive) {
               log.info('Starting scheduler')
               createScheduler({
+                config,
                 serviceInteractor,
               })
             } else {

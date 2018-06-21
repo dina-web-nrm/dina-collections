@@ -123,8 +123,8 @@
 │       ├── cacheResources.js
 │       ├── index.js
 │       └── searchSpecimen
-│           ├── index.js
-│           └── mapFunctions.js
+│           ├── data
+│           └── index.js
 ├── serviceOrder.js
 ├── specimenService
 │   ├── index.js

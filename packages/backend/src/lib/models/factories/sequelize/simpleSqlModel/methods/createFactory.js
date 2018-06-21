@@ -14,13 +14,13 @@ module.exports = function createFactory({ Model, schemaVersion } = {}) {
 
     log.debug(`Creating instance for model ${Model.tableName}`)
 
-    return Model.create(data).then(res => {
+    return Model.create(data).then(item => {
       log.debug(
         `Created instance for model ${Model.tableName}. id: ${
-          res.dataValues.id
+          item.dataValues.id
         }`
       )
-      return res
+      return { item }
     })
   }
 }

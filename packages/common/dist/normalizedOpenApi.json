@@ -154,6 +154,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -165,6 +166,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -776,6 +778,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -787,6 +790,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -962,6 +966,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -973,6 +978,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1359,6 +1365,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -1370,6 +1377,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -1756,6 +1764,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -1767,6 +1776,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2153,6 +2163,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -2164,6 +2175,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2550,6 +2562,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -2561,6 +2574,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -2947,6 +2961,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -2958,6 +2973,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -3344,6 +3360,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -3355,6 +3372,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -4001,6 +4019,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -4012,6 +4031,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -4019,7 +4039,7 @@
           },
           {
             "in": "query",
-            "name": "filter[search]",
+            "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
@@ -11410,14 +11430,81 @@
         ]
       }
     },
+    "/api/search/v01/searchSpecimens/actions/query": {
+      "post": {
+        "operationId": "searchSpecimenQuery",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/searchSpecimenQueryRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenQueryResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenQuery-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/searchSpecimenQuery-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query searchSpecimen",
+        "tags": [
+          "searchService"
+        ]
+      }
+    },
     "/api/search/v01/searchSpecimens": {
       "get": {
         "operationId": "searchSpecimenGetMany",
         "parameters": [
           {
             "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -11427,20 +11514,20 @@
           },
           {
             "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
+            "name": "filter[matchCollectingLocation]",
+            "description": "Match collecting information",
+            "required": false,
             "schema": {
-              "format": "date-time",
               "type": "string"
             }
           },
           {
             "in": "query",
-            "name": "filter[deactivated]",
-            "description": "Get deactivated",
+            "name": "filter[matchIdentifier]",
+            "description": "Match identifiers",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": "string"
             }
           },
           {
@@ -11877,6 +11964,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -11888,6 +11976,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -11897,7 +11986,6 @@
             "in": "query",
             "name": "filter[catalogNumber]",
             "description": "catalog number used to filter specimens",
-            "example": "123456",
             "required": false,
             "schema": {
               "type": "string"
@@ -13804,6 +13892,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -13815,6 +13904,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -14389,6 +14479,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -14400,6 +14491,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -14407,7 +14499,7 @@
           },
           {
             "in": "query",
-            "name": "filter[search]",
+            "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
@@ -15301,6 +15393,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -15312,6 +15405,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -16474,6 +16568,7 @@
             "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
+            "required": false,
             "schema": {
               "items": {
                 "type": "string"
@@ -16485,6 +16580,7 @@
             "in": "query",
             "name": "filter[updatedAfter]",
             "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
             "schema": {
               "format": "date-time",
               "type": "string"
@@ -16492,7 +16588,7 @@
           },
           {
             "in": "query",
-            "name": "filter[search]",
+            "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
@@ -29732,6 +29828,60 @@
         "title": "Internal Server Error",
         "type": "object"
       },
+      "searchSpecimenQuery-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "searchSpecimenQuery-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
       "searchSpecimenDel-400": {
         "allOf": [
           {
@@ -37843,6 +37993,46 @@
             "x-summary": ""
           }
         },
+        "x-summary": "",
+        "description": ""
+      },
+      "searchSpecimenQueryRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {},
         "x-summary": "",
         "description": ""
       },
@@ -49650,6 +49840,57 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/search/v01/searchSpecimens/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "searchSpecimenQueryResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customObject"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customObject",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/search/v01/searchSpecimens/actions/query",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

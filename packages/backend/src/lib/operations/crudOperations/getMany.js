@@ -1,7 +1,8 @@
+const createGetManyFilterSpecifications = require('../../data/filters/utilities/createGetManyFilterSpecifications')
 const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
 const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const addQueryParamsFromFilter = require('./utilities/addQueryParamsFromFilter')
+const addQueryParamsFromFilterSpecifications = require('./utilities/addQueryParamsFromFilterSpecifications')
 const addMockToQueryParams = require('./utilities/addMockToQueryParams')
 const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
 const buildOperationId = require('common/src/buildOperationId')
@@ -16,18 +17,21 @@ module.exports = function getMany({
   queryParams: queryParamsInput,
   relations,
   resource,
-  filters,
+  filterSpecification: filterSpecificationInput,
   resourcePath,
   ...rest
 }) {
+  const filterSpecification =
+    filterSpecificationInput || createGetManyFilterSpecifications()
+
   let queryParams = addRelationsToQueryParams({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
   })
 
-  queryParams = addQueryParamsFromFilter({
-    filters,
+  queryParams = addQueryParamsFromFilterSpecifications({
+    filterSpecification,
     queryParams,
   })
 
@@ -59,7 +63,7 @@ module.exports = function getMany({
   return {
     ...rest,
     errors,
-    filters,
+    filterSpecification,
     includeRelations,
     method: 'get',
     operationId: operationId || buildOperationId({ operationType, resource }),

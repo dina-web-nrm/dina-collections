@@ -3,19 +3,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { search, syncSearch } from '../actionCreators'
+import { search } from '../actionCreators'
 
 const createInjectSearch = (
-  { autoSync = true, resource = 'searchSpecimen', syncInterval = 5000 } = {}
+  {
+    resource = 'searchSpecimen',
+    searchOnMount = true,
+    storeSearchResult = true,
+  } = {}
 ) => ComposedComponent => {
   const mapDispatchToProps = {
     search,
-    syncSearch,
   }
 
   const propTypes = {
     search: PropTypes.func.isRequired,
-    syncSearch: PropTypes.func.isRequired,
   }
 
   const defaultProps = {}
@@ -24,37 +26,20 @@ const createInjectSearch = (
     constructor(props) {
       super(props)
       this.search = this.search.bind(this)
-      this.syncSearch = this.syncSearch.bind(this)
     }
     componentDidMount() {
-      this.syncLoop({ reSearch: true })
-    }
-    componentWillUnmount() {
-      if (this.timeout) {
-        clearTimeout(this.timeout)
-        delete this.timeout
+      if (searchOnMount) {
+        this.search({ query: {} })
       }
     }
 
-    syncLoop({ reSearch = true } = {}) {
-      if (autoSync) {
-        this.syncSearch({ reSearch }).then(() => {
-          this.timeout = setTimeout(() => {
-            this.syncLoop()
-          }, syncInterval)
-        })
-      }
-    }
-
-    syncSearch({ reSearch = true } = {}) {
-      return this.props.syncSearch({ resource }).then(() => {
-        if (reSearch) {
-          this.search()
-        }
+    search({ aggregations, query }) {
+      return this.props.search({
+        aggregations,
+        query,
+        resource,
+        storeSearchResult,
       })
-    }
-    search(query) {
-      this.props.search({ query, resource })
     }
 
     render() {

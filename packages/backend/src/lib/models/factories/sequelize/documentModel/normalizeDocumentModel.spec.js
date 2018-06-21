@@ -1,6 +1,6 @@
 const createDb = require('../../../../dataStores/sequelize/db')
 const createModel = require('./index')
-const config = require('../../../../../apps/core/config')
+const config = require('../../../../../apps/test/config')
 const dbDescribe = require('../../../../../utilities/test/dbDescribe')
 
 const setup = () => {
@@ -19,7 +19,7 @@ const setup = () => {
   })
 }
 
-dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
+dbDescribe('lib/models/factories/sequelize/normalizeDocumentModel', () => {
   let model
 
   beforeAll(() => {
@@ -44,7 +44,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
         },
       }
 
-      return model.create({ doc }).then(res => {
+      return model.create({ doc }).then(({ item: res }) => {
         expect(res).toBeTruthy()
         expect(res.document).toEqual(doc)
         expect(res.id).toBeTruthy()
@@ -70,7 +70,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
     let firstId
 
     beforeEach(() => {
-      return model.create({ doc: firstDoc }).then(res => {
+      return model.create({ doc: firstDoc }).then(({ item: res }) => {
         firstId = res.id
       })
     })
@@ -83,7 +83,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
           doc: { normalized: { user: { name: 'something' } } },
           id: firstId,
         })
-        .then(res => {
+        .then(({ item: res }) => {
           expect(res.projects).toBe(undefined)
           expect(res.user).toEqual({ name: 'something' })
           expect(res.id).toEqual(firstId)
@@ -95,7 +95,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
           doc: { normalized: { user: { name: 'something' } } },
           id: firstId,
         })
-        .then(res => {
+        .then(({ item: res }) => {
           expect(res.diff).toEqual([
             {
               kind: 'E',
@@ -161,13 +161,13 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
         model = createdModel
         return model
           .create({ doc: firstDoc })
-          .then(res => {
+          .then(({ item: res }) => {
             firstId = res.id
           })
           .then(() => {
             return model.create({ doc: secondDoc })
           })
-          .then(res => {
+          .then(({ item: res }) => {
             secondId = res.id
           })
           .then(() => {
@@ -181,17 +181,17 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
     })
 
     it('Returns record', () => {
-      return model.getById({ id: firstId }).then(res => {
+      return model.getById({ id: firstId }).then(({ item: res }) => {
         expect(res.document).toEqual(firstDoc)
       })
     })
     it('Returns null when record does not exist', () => {
-      return model.getById({ id: 1111 }).then(res => {
+      return model.getById({ id: 1111 }).then(({ item: res }) => {
         expect(res).toEqual(null)
       })
     })
     it('Returns updated record', () => {
-      return model.getById({ id: secondId }).then(res => {
+      return model.getById({ id: secondId }).then(({ item: res }) => {
         expect(res.document).toEqual(thirdDoc)
       })
     })
@@ -242,13 +242,13 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
     beforeAll(() => {
       return model
         .create({ doc: firstDoc })
-        .then(res => {
+        .then(({ item: res }) => {
           firstId = res.id
         })
         .then(() => {
           return model.create({ doc: secondDoc })
         })
-        .then(res => {
+        .then(({ item: res }) => {
           secondId = res.id
         })
         .then(() => {
@@ -263,19 +263,25 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
       expect(model.getOneWhere({ where: { nonExisting: 3 } })).rejects.toThrow()
     })
     it('Returns null when where not matching', () => {
-      return model.getOneWhere({ where: { id: 1111 } }).then(res => {
-        expect(res).toEqual(null)
-      })
+      return model
+        .getOneWhere({ where: { id: 1111 } })
+        .then(({ item: res }) => {
+          expect(res).toEqual(null)
+        })
     })
     it('Returns record when matching by id', () => {
-      return model.getOneWhere({ where: { id: firstId } }).then(res => {
-        expect(res.document).toEqual(firstDoc)
-      })
+      return model
+        .getOneWhere({ where: { id: firstId } })
+        .then(({ item: res }) => {
+          expect(res.document).toEqual(firstDoc)
+        })
     })
     it('Returns latest record when matching by id', () => {
-      return model.getOneWhere({ where: { id: secondId } }).then(res => {
-        expect(res.document).toEqual(thirdDoc)
-      })
+      return model
+        .getOneWhere({ where: { id: secondId } })
+        .then(({ item: res }) => {
+          expect(res.document).toEqual(thirdDoc)
+        })
     })
     it('Returns record when matching by object property', () => {
       return model
@@ -284,7 +290,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
             'projects.0.id': '1234',
           },
         })
-        .then(res => {
+        .then(({ item: res }) => {
           expect(res.document).toEqual(firstDoc)
         })
     })
@@ -293,7 +299,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
         .getOneWhere({
           where: { 'projects.0.id': 'non-existing-value' },
         })
-        .then(res => {
+        .then(({ item: res }) => {
           expect(res).toEqual(null)
         })
     })
@@ -345,13 +351,13 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
     beforeAll(() => {
       return model
         .create({ doc: firstDoc })
-        .then(res => {
+        .then(({ item: res }) => {
           firstId = res.id
         })
         .then(() => {
           return model.create({ doc: secondDoc })
         })
-        .then(res => {
+        .then(({ item: res }) => {
           secondId = res.id
         })
         .then(() => {
@@ -366,19 +372,23 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
       expect(model.getWhere({ where: { nonExisting: 3 } })).rejects.toThrow()
     })
     it('Returns empty array when where not matching', () => {
-      return model.getWhere({ where: { id: 1111 } }).then(res => {
+      return model.getWhere({ where: { id: 1111 } }).then(({ items: res }) => {
         expect(res).toEqual([])
       })
     })
     it('Returns record when matching by id', () => {
-      return model.getWhere({ where: { id: firstId } }).then(res => {
-        expect(res[0].document).toEqual(firstDoc)
-      })
+      return model
+        .getWhere({ where: { id: firstId } })
+        .then(({ items: res }) => {
+          expect(res[0].document).toEqual(firstDoc)
+        })
     })
     it('Returns latest record when matching by id', () => {
-      return model.getWhere({ where: { id: secondId } }).then(res => {
-        expect(res[0].document).toEqual(thirdDoc)
-      })
+      return model
+        .getWhere({ where: { id: secondId } })
+        .then(({ items: res }) => {
+          expect(res[0].document).toEqual(thirdDoc)
+        })
     })
     it('Returns record when matching by object property', () => {
       return model
@@ -387,7 +397,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
             'projects.0.id': '1236',
           },
         })
-        .then(res => {
+        .then(({ items: res }) => {
           expect(res[0].document).toEqual(thirdDoc)
         })
     })
@@ -396,7 +406,7 @@ dbDescribe('lib/sequelize/models/normalizeDocumentModel', () => {
         .getWhere({
           where: { 'projects.0.id': 'non-existing-value' },
         })
-        .then(res => {
+        .then(({ items: res }) => {
           expect(res.length).toEqual(0)
         })
     })

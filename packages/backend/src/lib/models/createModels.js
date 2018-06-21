@@ -6,6 +6,7 @@ const log = createLog('lib/models', 1)
 
 module.exports = function createModels({
   config,
+  elasticsearch,
   inMemoryDb,
   sequelize,
   serviceOrder,
@@ -27,6 +28,7 @@ module.exports = function createModels({
 
         const model = modelFactory({
           config,
+          elasticsearch,
           inMemoryDb,
           name,
           sequelize,

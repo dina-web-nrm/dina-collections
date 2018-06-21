@@ -5,8 +5,8 @@ module.exports = function getByIdFactory({ Model }) {
         throw new Error('Id required for getById')
       }
       const currentItems = Model.get()
-      const item = currentItems[id]
-      return item || null
+      const item = currentItems[id] || null
+      return { item }
     })
   }
 }

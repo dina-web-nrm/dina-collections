@@ -5,6 +5,7 @@ var isDinaError = require('../utilities/isDinaError');
 
 module.exports = function sanitizeBackendError(_ref) {
   var errorInput = _ref.error,
+      isDevelopment = _ref.isDevelopment,
       log = _ref.log;
 
   var error = errorInput;
@@ -13,7 +14,9 @@ module.exports = function sanitizeBackendError(_ref) {
       log.err('Unknown error', error);
     }
     error = backendError500({
-      source: 'sanitizeBackendError'
+      detail: isDevelopment ? error.message : 'Not mapped',
+      source: 'sanitizeBackendError',
+      throwError: false
     });
   }
 

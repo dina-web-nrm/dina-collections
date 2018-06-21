@@ -14,7 +14,7 @@ module.exports = function deactivateFactory({ getById, Model }) {
       return Promise.reject(new Error('id not provided'))
     }
 
-    return getById({ id, raw: false }).then(existingModel => {
+    return getById({ id, raw: false }).then(({ item: existingModel }) => {
       if (!existingModel) {
         backendError404({
           code: 'RESOURCE_NOT_FOUND_ERROR',
@@ -38,13 +38,13 @@ module.exports = function deactivateFactory({ getById, Model }) {
         deactivatedAt: getCurrentUTCTimestamp(),
       }
 
-      return existingModel.update(newModel).then(savedModel => {
+      return existingModel.update(newModel).then(item => {
         log.debug(
           `Deactivated instance for model ${Model.tableName}. id: ${
-            savedModel.dataValues.id
+            item.dataValues.id
           }`
         )
-        return savedModel
+        return { item }
       })
     })
   }

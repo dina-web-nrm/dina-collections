@@ -5,7 +5,7 @@ const createSystemBackendValidator = require('common/src/error/validators/create
 const createEndpoint = require('common/src/endpointFactory/server')
 const { createApiClient } = require('common/src/apiClient')
 
-const config = require('../../apps/core/config')
+const config = require('../../apps/test/config')
 
 const { testApiUrl, testAuthUrl, testUsername, testPassword } = config.test
 

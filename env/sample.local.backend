@@ -1,0 +1,15 @@
+API_PORT=4444
+AUTH_BASE_URL=https://alpha-cm.dina-web.net/auth
+DB_DATABASE=postgres
+DB_PASSWORD=mysecretpassword
+DB_URL=127.0.0.1:5432
+DB_USERNAME=postgres
+ELASTICSEARCH_URL=127.0.0.1:9200
+VIRTUAL_HOST=local-api.dina-web.net
+DISABLE_AUTH=true
+KEYCLOAK_ADMIN_ACTIVE=true
+KEYCLOAK_ADMIN_PASSWORD=passw0rd12&
+KEYCLOAK_ADMIN_USERNAME=admin
+KEYCLOAK_AUTH_BASE_URL=https://alpha-keycloak.dina-web.net/auth
+KEYCLOAK_REALM_NAME=dina
+TEST_API_URL=http://localhost:4444

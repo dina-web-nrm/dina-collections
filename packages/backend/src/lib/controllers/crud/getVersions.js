@@ -12,7 +12,7 @@ module.exports = function getVersionsById({ operation, models }) {
     const { pathParams: { id } } = request
     return model
       .getWhere({ forceCurrentVersion: false, where: { id } })
-      .then(res => {
+      .then(({ items: res } = {}) => {
         if (!(res && res.length)) {
           backendError404({
             code: 'RESOURCE_NOT_FOUND_ERROR',

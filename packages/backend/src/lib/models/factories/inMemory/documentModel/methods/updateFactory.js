@@ -25,7 +25,7 @@ module.exports = function updateFactory({ Model }) {
         ...newItems,
       }
       Model.set(updatedItems)
-      return newItem
+      return { item: newItem }
     })
   }
 }

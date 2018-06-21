@@ -23,7 +23,7 @@ const debounceTaxonSearch = debounce(
           isLookup: true,
           queryParams: {
             filter: {
-              name: searchQuery,
+              nameSearch: searchQuery,
             },
             limit: 10,
           },

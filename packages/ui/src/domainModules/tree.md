@@ -47,6 +47,7 @@
 │   ├── actionTypes.js
 │   ├── components
 │   │   ├── LookupMammals
+│   │   │   ├── CollectingLocationMultipleSearch.js
 │   │   │   ├── Filter.js
 │   │   │   ├── Result.js
 │   │   │   ├── Row.js

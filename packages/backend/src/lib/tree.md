@@ -16,6 +16,12 @@
 │   └── index.js
 ├── bootstrap
 │   └── index.js
+├── config
+│   └── env
+│       ├── envVariables.js
+│       ├── index.js
+│       ├── parameterMap.js
+│       └── resolveEnvVariables.js
 ├── connectors
 │   ├── createConnector.js
 │   ├── extractCustomControllersFromServices.js
@@ -33,6 +39,7 @@
 │   │   ├── getVersion.js
 │   │   ├── getVersions.js
 │   │   ├── index.js
+│   │   ├── query.js
 │   │   ├── update.js
 │   │   └── updateRelationship.js
 │   ├── index.js
@@ -42,7 +49,6 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
-│   ├── relationshipsUtilities
 │   ├── utilities
 │   │   ├── relationships
 │   │   │   ├── buildIncludeArray.js
@@ -81,7 +87,41 @@
 │       │   └── update.js
 │       └── utilities
 │           └── defaultMapFunction.js
+├── data
+│   ├── aggregations
+│   │   └── schemas
+│   │       ├── aggregation.js
+│   │       └── aggregationSpecification.js
+│   ├── filters
+│   │   ├── schemas
+│   │   │   ├── filter.js
+│   │   │   └── filterSpecification.js
+│   │   ├── sharedFilters
+│   │   │   ├── deactivated.js
+│   │   │   ├── group.js
+│   │   │   ├── id.js
+│   │   │   ├── ids.js
+│   │   │   ├── index.js
+│   │   │   ├── nameSearch.js
+│   │   │   ├── parentId.js
+│   │   │   ├── raw.js
+│   │   │   └── updatedAfter.js
+│   │   └── utilities
+│   │       ├── createEqualFilterSpecification.js
+│   │       └── createGetManyFilterSpecifications.js
+│   ├── mappings
+│   │   ├── index.js
+│   │   └── sharedMappingSpecifications
+│   └── transformations
+│       ├── schemas
+│       │   └── transformationSpecification.js
+│       └── utilities
+│           └── applyTransformationFunctions.js
 ├── dataStores
+│   ├── elasticsearch
+│   │   ├── db
+│   │   │   └── index.js
+│   │   └── index.js
 │   ├── inMemory
 │   │   ├── db
 │   │   │   ├── createDb.js
@@ -110,6 +150,9 @@
 │   ├── createModels.js
 │   ├── createRelations.js
 │   ├── factories
+│   │   ├── elasticsearch
+│   │   │   ├── documentModel
+│   │   │   └── utilities
 │   │   ├── inMemory
 │   │   │   ├── documentModel
 │   │   │   └── viewDocumentModel
@@ -138,6 +181,7 @@
 │   │   ├── getVersion.js
 │   │   ├── getVersions.js
 │   │   ├── index.js
+│   │   ├── query.js
 │   │   ├── schemas
 │   │   │   ├── base.js
 │   │   │   ├── create.js
@@ -149,6 +193,7 @@
 │   │   │   ├── getVersion.js
 │   │   │   ├── getVersions.js
 │   │   │   ├── index.js
+│   │   │   ├── query.js
 │   │   │   ├── raw.js
 │   │   │   ├── update.js
 │   │   │   └── updateRelationship.js
@@ -159,17 +204,9 @@
 │   │       ├── addLimitToQueryParams.js
 │   │       ├── addMockToQueryParams.js
 │   │       ├── addOffsetToQueryParams.js
-│   │       ├── addQueryParamsFromFilter.js
+│   │       ├── addQueryParamsFromFilterSpecifications.js
 │   │       ├── addRelationsToQueryParams.js
 │   │       └── buildRelations.js
-│   ├── filters
-│   │   ├── deactivated.js
-│   │   ├── group.js
-│   │   ├── ids.js
-│   │   ├── index.js
-│   │   ├── nameSearch.js
-│   │   ├── parentId.js
-│   │   └── updatedAfter.js
 │   ├── index.js
 │   ├── jobOperations
 │   │   ├── createJob.js
@@ -213,9 +250,6 @@
 │   ├── index.js
 │   ├── operationFactory
 │   │   ├── createOperationSpecification.js
-│   │   ├── filters
-│   │   │   ├── createEqualFilter.js
-│   │   │   └── createGetManyFilters.js
 │   │   └── index.js
 │   ├── resourceFactory
 │   │   ├── createOperationMap.js

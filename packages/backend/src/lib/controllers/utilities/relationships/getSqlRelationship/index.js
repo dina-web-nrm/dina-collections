@@ -72,7 +72,8 @@ module.exports = ({ models, operation }) => {
       raw: false,
       where,
     })
-      .then(result => {
+      .then(({ item, items } = {}) => {
+        const result = item || items
         log
           .scope()
           .debug('idIsForeignKey', idIsForeignKey, 'targetAs', targetAs)

@@ -17,8 +17,8 @@ module.exports = function update({ operation, models, serviceInteractor }) {
         id,
         ...transformInput({ input, relations, sourceResource: resource }),
       })
-      .then(transformOutput)
-      .then(res => {
+      .then(({ item } = {}) => {
+        const res = transformOutput(item)
         if (postUpdateHook) {
           return postUpdateHook({ res, serviceInteractor }).then(() => {
             return res

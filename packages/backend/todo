@@ -1,30 +1,35 @@
-Done
-* Repair batch create (write tests)
-* Make sure all tests are passing
-* Fix incremental update of searchViews
-* Check to format of date. How do we create date in the backend? Which format.
-  How to map to json schema?
-* Fix example and mock query options
-* fix parsing of filter values (null) (add to buildWhereFilter factory)
-* Clean up searchSpecimen service
-* Fix batch fetch many from frontend client
-* Fix incremental delete of searchViews
-* Implement polling frontend for updated search results
+DONE
+* Implement FE query in crud module
+* Adapt search to query
+* Add meta to elastic response
+* Implement scroll to handle large result sets (use frontend to request scroll results)
+* Clean up query crud and search (also call it not with body but aggregations and query and stuff)
+* Integrate fredrik new component for localities with aggregations
 
-Now
-
-Later:
-* Fix correct object format for new endpoints
-* Use deactivated at even in memory tables
-* write tests for batchFetch from FE
-* Benchmark time in backend for large limit request
-* Add get id bigger then instead of limit?
-* Move input validation to controller and use resource schema. Remove input and
-  output schemas \** Make sure validation is working when doing interServices
-  calls
-* Use schema interface in frontend and everywhere
-* Check where document transformation is done. In controller vs in model. Might make sense to keep in in controller but then make sure view models are going through controller and not model
-* fix error when invalid json body
+TODO
+* Add elasticsearch to readme
+* Verify docker is working locally (inkl reload data)
+* Deploy
+* Add new mapping for idInteger (and make sure sort is working with it)
 
 
-* Go through and add proper error handling and logging everywhere
+CLEANUP
+* Look at createObjectResponse performance
+* Move utilities in lib/data to root
+* Make scripts to start backend in different modes incl script (app) to load all data
+* Att schema and tests for models (and with that for mappings)
+* Add check that model have required method in controller
+* Rename aggregationFunction and filterFunction to [...]Name
+* Remove search from common
+* Mimic searchSpecimen structure in other services
+* Add more schemas
+* Force examples to be added to crud or else through error
+* Potentially pass other stuff into crud query
+* Fix model abstractions. Abstract away document on model level
+
+TESTING
+* Test all old crud from FE
+
+
+
+

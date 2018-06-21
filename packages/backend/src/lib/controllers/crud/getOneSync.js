@@ -11,7 +11,7 @@ module.exports = function getOneSync({ operation, models }) {
   return ({ request }) => {
     const { pathParams: { id } } = request
 
-    const fetchedResource = model.getByIdSync({ id })
+    const { item: fetchedResource } = model.getByIdSync({ id }) || {}
     if (!fetchedResource) {
       return null
     }

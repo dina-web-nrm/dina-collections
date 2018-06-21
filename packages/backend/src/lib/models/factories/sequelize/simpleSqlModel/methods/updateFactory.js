@@ -11,7 +11,7 @@ module.exports = function updateFactory({ getById, Model }) {
       return Promise.reject(new Error('id not provided'))
     }
 
-    return getById({ id, raw: false }).then(existingModel => {
+    return getById({ id, raw: false }).then(({ item: existingModel }) => {
       if (!existingModel) {
         backendError404({
           code: 'RESOURCE_NOT_FOUND_ERROR',
@@ -38,7 +38,7 @@ module.exports = function updateFactory({ getById, Model }) {
             savedModel.dataValues.id
           }`
         )
-        return savedModel
+        return { item: savedModel }
       })
     })
   }

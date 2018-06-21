@@ -1,7 +1,15 @@
 const parseFilterValue = require('../../../../utilities/parseFilterValue')
 
 module.exports = function buildWhereFilterFactory() {
-  return function buildWhereFilter({ filters = [], filterInput = {} } = {}) {
+  return function buildWhereFilter(
+    { filterSpecification = {}, filterInput = {} } = {}
+  ) {
+    const filterSpecificationArray = Object.keys(
+      filterSpecification.filters
+    ).map(key => {
+      return filterSpecification.filters[key]
+    })
+
     return Promise.resolve().then(() => {
       const query = {
         and: [],
@@ -9,7 +17,7 @@ module.exports = function buildWhereFilterFactory() {
 
       const filterFunctions = {}
 
-      filters.forEach(({ key, jsFilterFunction }) => {
+      filterSpecificationArray.forEach(({ key, jsFilterFunction }) => {
         const filterValue = filterInput[key]
         if (filterValue !== undefined && jsFilterFunction) {
           query.and.push({
