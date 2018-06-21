@@ -1,6 +1,0 @@
-VIRTUAL_HOST=local-cm-mock.dina-web.net
-NGINX_AUTH_BASE_URL=https://alpha-keycloak.dina-web.net
-NGINX_TAXONOMY_API_BASE_URL=https://alpha-slimtaxonomy.dina-web.net
-NGINX_API_BASE_URL=http://api
-NGINX_HOST=local-cm-mock.dina-web.net
-NGINX_PORT=80

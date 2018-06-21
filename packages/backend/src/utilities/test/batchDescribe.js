@@ -1,4 +1,4 @@
-const config = require('../../apps/core/config')
+const config = require('../../apps/test/config')
 
 module.exports = function batchDescribe(testName, ...rest) {
   if (config.test.runBatchTests) {

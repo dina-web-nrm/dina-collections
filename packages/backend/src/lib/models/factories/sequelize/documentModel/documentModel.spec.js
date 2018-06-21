@@ -1,6 +1,6 @@
 const createDb = require('../../../../dataStores/sequelize/db')
 const createModel = require('./index')
-const config = require('../../../../../apps/core/config')
+const config = require('../../../../../apps/test/config')
 
 const dbDescribe = require('../../../../../utilities/test/dbDescribe')
 

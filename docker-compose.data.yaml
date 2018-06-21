@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  loadData:
+    image: dina/dina-collections-api
+    container_name: load-data
+    env_file:
+      - ./env/.api
+    command: LOAD_INITIAL_DATA=true INITIAL_DATA_NUMBER_OF_SPECIMENS=100000 node /etc/api/src/apps/production/data/index.js
+    volumes:
+      - ./data:/data
+
+networks:
+  default:
+    external:
+      name: dwproxy_default
+
+volumes:
+  postgres_data:
+  es_data:
+
+

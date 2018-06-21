@@ -4,9 +4,12 @@ DONE
 * Add meta to elastic response
 * Implement scroll to handle large result sets (use frontend to request scroll results)
 * Clean up query crud and search (also call it not with body but aggregations and query and stuff)
+* Integrate fredrik new component for localities with aggregations
 
 TODO
-* Integrate fredrik new component for localities with aggregations
+* Add elasticsearch to readme
+* Verify docker is working locally (inkl reload data)
+* Deploy
 * Add new mapping for idInteger (and make sure sort is working with it)
 
 
