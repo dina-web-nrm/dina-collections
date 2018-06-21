@@ -1,9 +1,10 @@
-const buildWhereQueryFactory = require('./methods/buildWhereQueryFactory')
 const buildWhereFilterFactory = require('./methods/buildWhereFilterFactory')
+const buildWhereQueryFactory = require('./methods/buildWhereQueryFactory')
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const delFactory = require('./methods/delFactory')
 const emptyFactory = require('./methods/emptyFactory')
+const getByIdFactory = require('./methods/getByIdFactory')
 const getWhereFactory = require('./methods/getWhereFactory')
 const synchronizeFactory = require('./methods/synchronizeFactory')
 const updateFactory = require('./methods/updateFactory')
@@ -25,6 +26,11 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
   })
 
   const synchronize = synchronizeFactory({
+    elasticsearch,
+    Model,
+  })
+
+  const getById = getByIdFactory({
     elasticsearch,
     Model,
   })
@@ -55,6 +61,7 @@ module.exports = function attachMethods({ elasticsearch, Model }) {
     create,
     del,
     empty,
+    getById,
     getWhere,
     synchronize,
     update,
