@@ -12,6 +12,10 @@ module.exports = function create({
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+  if (!model.create) {
+    throw new Error(`Model missing required method: create for ${resource}`)
+  }
+
   return ({ request }) => {
     const { body } = request
     if (validateBody) {

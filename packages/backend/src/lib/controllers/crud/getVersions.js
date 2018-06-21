@@ -8,6 +8,11 @@ module.exports = function getVersionsById({ operation, models }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+
+  if (!model.getWhere) {
+    throw new Error(`Model missing required method: getWhere for ${resource}`)
+  }
+
   return ({ request }) => {
     const { pathParams: { id } } = request
     return model

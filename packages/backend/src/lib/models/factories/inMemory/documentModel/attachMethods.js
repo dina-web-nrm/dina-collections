@@ -74,6 +74,7 @@ module.exports = function attachMethods({
     buildWhereQuery,
     bulkCreate,
     create,
+    deactivate: del,
     del,
     empty,
     getById,

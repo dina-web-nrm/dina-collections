@@ -14,6 +14,15 @@ module.exports = function getMany({ operation, models }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+  if (!model.buildWhereFilter) {
+    throw new Error(
+      `Model missing required method: buildWhereFilter for ${resource}`
+    )
+  }
+  if (!model.getWhere) {
+    throw new Error(`Model missing required method: getWhere for ${resource}`)
+  }
+
   return ({ request }) => {
     const {
       queryParams: {

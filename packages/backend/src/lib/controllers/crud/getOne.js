@@ -11,6 +11,11 @@ module.exports = function getOne({ operation, models }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+
+  if (!model.getById) {
+    throw new Error(`Model missing required method: getById for ${resource}`)
+  }
+
   return ({ request }) => {
     const {
       pathParams: { id },

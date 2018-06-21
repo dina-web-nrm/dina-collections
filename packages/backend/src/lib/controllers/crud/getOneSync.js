@@ -8,6 +8,13 @@ module.exports = function getOneSync({ operation, models }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+
+  if (!model.getByIdSync) {
+    throw new Error(
+      `Model missing required method: getByIdSync for ${resource}`
+    )
+  }
+
   return ({ request }) => {
     const { pathParams: { id } } = request
 

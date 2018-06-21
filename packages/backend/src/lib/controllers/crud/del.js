@@ -7,6 +7,9 @@ module.exports = function del({ operation, models, serviceInteractor }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+  if (!model.deactivate) {
+    throw new Error(`Model missing required method: deactivate for ${resource}`)
+  }
   return ({ request }) => {
     const { pathParams: { id } } = request
 

@@ -21,7 +21,6 @@ Import
 CLEANUP
 * Look at createObjectResponse performance
 * Move utilities in lib/data to root
-
 * Att schema and tests for models (and with that for mappings)
 * Add check that model have required method in controller
 * Rename aggregationFunction and filterFunction to [...]Name

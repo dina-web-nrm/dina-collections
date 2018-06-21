@@ -11,6 +11,10 @@ module.exports = function queryController({ operation, models }) {
     throw new Error(`Model for ${resource} dont support query`)
   }
 
+  if (!model.getWhere) {
+    throw new Error(`Model missing required method: getWhere for ${resource}`)
+  }
+
   return ({ request }) => {
     const {
       body: {

@@ -8,6 +8,11 @@ module.exports = function update({ operation, models, serviceInteractor }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
+
+  if (!model.update) {
+    throw new Error(`Model missing required method: update for ${resource}`)
+  }
+
   return ({ request }) => {
     const { body: { data: input = {} } = {} } = request
     const { pathParams: { id } } = request
