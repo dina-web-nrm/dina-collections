@@ -1,15 +1,29 @@
 # Tree for apps
 ## Tree
 ```bash
-├── config
+├── baseConfig
 │   └── index.js
-├── core
-│   ├── config.js
-│   └── index.js
-├── tree.md
-└── worker
-    ├── config.js
-    └── index.js
+├── development
+│   ├── api
+│   │   ├── config.js
+│   │   └── index.js
+│   └── data
+│       ├── config.js
+│       └── index.js
+├── production
+│   ├── api
+│   │   ├── config.js
+│   │   └── index.js
+│   ├── data
+│   │   ├── config.js
+│   │   └── index.js
+│   └── worker
+│       ├── config.js
+│       └── index.js
+├── test
+│   └── config
+│       └── index.js
+└── tree.md
 
 ```
 

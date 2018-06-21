@@ -2,10 +2,11 @@
 ## Tree
 ```bash
 ├── apps
-│   ├── config
-│   ├── core
-│   ├── tree.md
-│   └── worker
+│   ├── baseConfig
+│   ├── development
+│   ├── production
+│   ├── test
+│   └── tree.md
 ├── info
 │   ├── description.md
 │   ├── index.json
@@ -15,8 +16,10 @@
 │   ├── app
 │   ├── auth
 │   ├── bootstrap
+│   ├── config
 │   ├── connectors
 │   ├── controllers
+│   ├── data
 │   ├── dataStores
 │   ├── integrations
 │   ├── jobs

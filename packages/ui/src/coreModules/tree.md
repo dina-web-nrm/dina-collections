@@ -189,6 +189,7 @@
 │   │   │   ├── Date
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
+│   │   │   ├── MultipleSearchSelectionDropdown
 │   │   │   ├── Search
 │   │   │   └── TextArea
 │   │   ├── index.js
@@ -198,6 +199,7 @@
 │   │   │   ├── Date
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
+│   │   │   ├── MultipleSearchSelectionDropdown
 │   │   │   ├── Search
 │   │   │   └── TextArea
 │   │   └── migrate
@@ -298,6 +300,9 @@
 │   │   │   ├── Content
 │   │   │   ├── Header
 │   │   │   └── index.js
+│   │   ├── ColumnLayout
+│   │   │   ├── index.js
+│   │   │   └── index.stories.js
 │   │   ├── InformationSidebar
 │   │   │   └── index.js
 │   │   ├── Layout
@@ -308,6 +313,9 @@
 │   │   │   ├── SidebarNavItemGroup.js
 │   │   │   └── index.js
 │   │   ├── NavigationSidebar.stories.js
+│   │   ├── RowLayout
+│   │   │   ├── index.js
+│   │   │   └── index.stories.js
 │   │   ├── ViewWrap.js
 │   │   ├── ViewWrap.stories.js
 │   │   └── index.js
@@ -318,7 +326,12 @@
 │   │   └── withLayout.js
 │   ├── index.js
 │   ├── keyObjectModule.js
-│   └── middleware.js
+│   ├── middleware.js
+│   └── utilities
+│       ├── calculateColumnWidths.js
+│       ├── calculateColumnWidths.test.js
+│       ├── calculateRowHeights.js
+│       └── calculateRowHeights.test.js
 ├── localStorage
 │   └── index.js
 ├── logger
@@ -356,6 +369,7 @@
 ├── search
 │   ├── actionCreators
 │   │   ├── index.js
+│   │   ├── localSearch.js
 │   │   ├── search.js
 │   │   └── syncSearch.js
 │   ├── constants.js
@@ -368,7 +382,9 @@
 ├── size
 │   ├── actionCreators
 │   │   ├── index.js
-│   │   └── setBreakpoint.js
+│   │   ├── setBreakpoint.js
+│   │   ├── setHeight.js
+│   │   └── setWidth.js
 │   ├── actionTypes.js
 │   ├── constants.js
 │   ├── globalSelectors.js
