@@ -7,9 +7,13 @@ module.exports = {
     resourceCacheMap: {
       type: 'object',
     },
+    srcFileName: {
+      type: 'string',
+    },
     srcResource: {
       type: 'string',
     },
+
     transformationFunctions: {
       type: 'object',
     },
