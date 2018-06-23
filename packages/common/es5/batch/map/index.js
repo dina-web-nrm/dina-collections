@@ -14,6 +14,7 @@ var _require = require('../../Dependor'),
     Dependor = _require.Dependor;
 
 var batchExecute = require('../execute');
+var migrator = require('../../migrator');
 
 var dep = new Dependor({
   batchExecute: batchExecute
@@ -36,17 +37,24 @@ exports.batchMap = function batchMap() {
   var nItems = items.length;
   var newItems = [];
 
+  var batchStartCount = void 0;
   var createBatch = function createBatch(_ref2) {
     var numberOfBatchEntries = _ref2.numberOfBatchEntries,
         startCount = _ref2.startCount;
 
+    batchStartCount = startCount;
     return items.slice(startCount, startCount + numberOfBatchEntries);
   };
 
   var execute = function execute(batchItems) {
-    var promises = batchItems.map(function (item) {
+    var promises = batchItems.map(function (item, index) {
       return _promise2.default.resolve().then(function () {
-        return mapFunction(item);
+        return mapFunction({
+          batchStartIndex: batchStartCount,
+          index: index,
+          item: item,
+          migrator: migrator
+        });
       });
     });
     return _promise2.default.all(promises).then(function (mappedBatchItems) {

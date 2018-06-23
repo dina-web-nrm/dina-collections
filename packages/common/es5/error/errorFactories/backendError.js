@@ -7,7 +7,6 @@ var _extends3 = _interopRequireDefault(_extends2);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createErrorId = require('../utilities/createErrorId');
-var logError = require('../utilities/logError');
 
 var errorCodes = require('../constants/errorCodes');
 var errorStatus = require('../constants/errorStatus');
@@ -22,16 +21,13 @@ module.exports = function backendError(_ref) {
       _ref$throwError = _ref.throwError,
       throwError = _ref$throwError === undefined ? true : _ref$throwError;
 
-  var _ref2 = new Error('backendError'),
-      stack = _ref2.stack;
-
   var baseError = errorCodes[inputCode];
   if (!baseError) {
     baseError = errorCodes.INTERNAL_SERVER_ERROR_INVALID_ERROR_CODE;
   }
 
-  var _ref3 = errorStatus[inputStatus] || {},
-      status = _ref3.status;
+  var _ref2 = errorStatus[inputStatus] || {},
+      status = _ref2.status;
 
   if (!status) {
     baseError = errorCodes.INTERNAL_SERVER_ERROR_INVALID_STATUS_CODE;
@@ -48,12 +44,11 @@ module.exports = function backendError(_ref) {
     parameterErrors: parameterErrors,
     path: path,
     source: source,
-    stack: stack,
+    stack: message,
     status: Number(status)
   });
 
   if (throwError) {
-    logError(error);
     throw error;
   }
   return error;

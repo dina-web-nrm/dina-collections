@@ -20,11 +20,17 @@ var internalCreateBatch = function internalCreateBatch(_ref) {
       count = _ref.count,
       createBatch = _ref.createBatch,
       createEntry = _ref.createEntry,
-      numberOfBatchEntries = _ref.numberOfBatchEntries;
+      numberOfBatchEntries = _ref.numberOfBatchEntries,
+      reporter = _ref.reporter;
 
   var batchData = [];
   if (createBatch) {
-    return _promise2.default.resolve(createBatch({ batchNumber: batchNumber, numberOfBatchEntries: numberOfBatchEntries, startCount: count }));
+    return _promise2.default.resolve(createBatch({
+      batchNumber: batchNumber,
+      numberOfBatchEntries: numberOfBatchEntries,
+      reporter: reporter,
+      startCount: count
+    }));
   }
   for (var index = 0; index < numberOfBatchEntries; index += 1) {
     batchData[index] = createEntry(count + index);
@@ -45,7 +51,8 @@ var runBatch = function runBatch(_ref2) {
       maxNumberOfBatches = _ref2.maxNumberOfBatches,
       nItemsLastBatch = _ref2.nItemsLastBatch,
       numberOfEntries = _ref2.numberOfEntries,
-      numberOfEntriesEachBatch = _ref2.numberOfEntriesEachBatch;
+      numberOfEntriesEachBatch = _ref2.numberOfEntriesEachBatch,
+      reporter = _ref2.reporter;
 
   if (count >= maxCount) {
     return _promise2.default.reject(new Error('Max count reached'));
@@ -79,7 +86,8 @@ var runBatch = function runBatch(_ref2) {
     count: count,
     createBatch: createBatch,
     createEntry: createEntry,
-    numberOfBatchEntries: numberOfBatchEntries
+    numberOfBatchEntries: numberOfBatchEntries,
+    reporter: reporter
   }).then(function (batchData) {
     var nItemsInBatch = batchData !== undefined ? batchData.length : undefined;
     return _promise2.default.resolve().then(function () {
@@ -96,7 +104,8 @@ var runBatch = function runBatch(_ref2) {
           maxNumberOfBatches: maxNumberOfBatches,
           nItemsLastBatch: nItemsInBatch,
           numberOfEntries: numberOfEntries,
-          numberOfEntriesEachBatch: numberOfEntriesEachBatch
+          numberOfEntriesEachBatch: numberOfEntriesEachBatch,
+          reporter: reporter
         });
       });
     });
@@ -114,7 +123,8 @@ module.exports = function batchExecute(_ref3) {
       _ref3$maxNumberOfBatc = _ref3.maxNumberOfBatches,
       maxNumberOfBatches = _ref3$maxNumberOfBatc === undefined ? 1000 : _ref3$maxNumberOfBatc,
       numberOfEntries = _ref3.numberOfEntries,
-      numberOfEntriesEachBatch = _ref3.numberOfEntriesEachBatch;
+      numberOfEntriesEachBatch = _ref3.numberOfEntriesEachBatch,
+      reporter = _ref3.reporter;
 
   if (!(createBatch || createEntry)) {
     throw new Error('createBatch or createEntry is required');
@@ -132,6 +142,7 @@ module.exports = function batchExecute(_ref3) {
     maxCount: maxCount,
     maxNumberOfBatches: maxNumberOfBatches,
     numberOfEntries: numberOfEntries,
-    numberOfEntriesEachBatch: numberOfEntriesEachBatch
+    numberOfEntriesEachBatch: numberOfEntriesEachBatch,
+    reporter: reporter
   });
 };

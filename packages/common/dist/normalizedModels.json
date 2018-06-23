@@ -914,6 +914,7 @@
   },
   "cacheAgent": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -923,6 +924,7 @@
   },
   "cacheCauseOfDeathType": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -932,6 +934,7 @@
   },
   "cacheEstablishmentMeansType": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -941,6 +944,7 @@
   },
   "cacheFeatureType": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -950,6 +954,7 @@
   },
   "cacheIdentifierType": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -959,6 +964,7 @@
   },
   "cachePhysicalObject": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -968,6 +974,7 @@
   },
   "cachePlace": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -977,6 +984,7 @@
   },
   "cachePreparationType": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -986,6 +994,7 @@
   },
   "cacheStorageLocation": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -995,6 +1004,7 @@
   },
   "cacheTaxon": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -1004,6 +1014,7 @@
   },
   "cacheTaxonName": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -1013,6 +1024,7 @@
   },
   "cacheTypeSpecimenType": {
     "additionalProperties": true,
+    "x-internal": true,
     "properties": {},
     "x-category": "searchService",
     "x-modelType": "model",
@@ -1096,6 +1108,10 @@
       "isDeathDate": {
         "type": "boolean",
         "description": "This is a temporary parameter",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
         "x-summary": ""
       },
       "event": {
@@ -1559,6 +1575,56 @@
     "x-modelType": "model",
     "x-summary": "Information about the place of an event.",
     "id": "locationInformation"
+  },
+  "lookupAgent": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "lookupAgent"
+  },
+  "lookupFeatureType": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "lookupFeatureType"
+  },
+  "lookupPlace": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "lookupPlace"
+  },
+  "lookupPreparationType": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "lookupPreparationType"
+  },
+  "lookupStorageLocation": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "lookupStorageLocation"
   },
   "originInformation": {
     "additionalProperties": false,
@@ -2776,6 +2842,59 @@
     "x-summary": "",
     "description": ""
   },
+  "agentImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/agent/v01/agents/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "agentDelResponse": {
     "additionalProperties": false,
     "properties": {
@@ -3387,6 +3506,59 @@
     "x-summary": "",
     "description": ""
   },
+  "causeOfDeathTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "causeOfDeathTypeUpdateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -3651,6 +3823,59 @@
     },
     "type": "object",
     "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "establishmentMeansTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/establishmentMeansTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -3921,6 +4146,59 @@
     "x-summary": "",
     "description": ""
   },
+  "featureTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/featureTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "featureTypeUpdateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -4185,6 +4463,59 @@
     },
     "type": "object",
     "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "identifierTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/identifierTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -4455,6 +4786,59 @@
     "x-summary": "",
     "description": ""
   },
+  "preparationTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/preparationTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "preparationTypeUpdateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -4719,6 +5103,59 @@
     },
     "type": "object",
     "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "typeSpecimenTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/typeSpecimenTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -5831,6 +6268,59 @@
     "x-summary": "",
     "description": ""
   },
+  "placeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/locality/v01/places/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "placeGetRelationshipChildrenResponse": {
     "additionalProperties": false,
     "properties": {
@@ -6131,60 +6621,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheAgents/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "cacheAgentGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheAgent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheAgent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheAgents/{id}/sync",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -6576,60 +7012,6 @@
     "x-summary": "",
     "description": ""
   },
-  "cacheCauseOfDeathTypeGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheCauseOfDeathType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheCauseOfDeathType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheCauseOfDeathTypes/{id}/sync",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "cacheCauseOfDeathTypeGetManyResponse": {
     "additionalProperties": false,
     "properties": {
@@ -6985,60 +7367,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheFeatureTypes/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "cacheFeatureTypeGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheFeatureType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheFeatureType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheFeatureTypes/{id}/sync",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -7430,60 +7758,6 @@
     "x-summary": "",
     "description": ""
   },
-  "cachePreparationTypeGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cachePreparationType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cachePreparationType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cachePreparationTypes/{id}/sync",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "cachePreparationTypeGetManyResponse": {
     "additionalProperties": false,
     "properties": {
@@ -7839,60 +8113,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheEstablishmentMeansTypes/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "cacheEstablishmentMeansTypeGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheEstablishmentMeansType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheEstablishmentMeansType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheEstablishmentMeansTypes/{id}/sync",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -8284,60 +8504,6 @@
     "x-summary": "",
     "description": ""
   },
-  "cacheTypeSpecimenTypeGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheTypeSpecimenType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheTypeSpecimenType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheTypeSpecimenTypes/{id}/sync",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "cacheTypeSpecimenTypeGetManyResponse": {
     "additionalProperties": false,
     "properties": {
@@ -8693,60 +8859,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheIdentifierTypes/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "cacheIdentifierTypeGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheIdentifierType"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheIdentifierType",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheIdentifierTypes/{id}/sync",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -9138,60 +9250,6 @@
     "x-summary": "",
     "description": ""
   },
-  "cachePlaceGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cachePlace"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cachePlace",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cachePlaces/{id}/sync",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "cachePlaceGetManyResponse": {
     "additionalProperties": false,
     "properties": {
@@ -9547,60 +9605,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheStorageLocations/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "cacheStorageLocationGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheStorageLocation"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheStorageLocation",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheStorageLocations/{id}/sync",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -9992,60 +9996,6 @@
     "x-summary": "",
     "description": ""
   },
-  "cachePhysicalObjectGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cachePhysicalObject"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cachePhysicalObject",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cachePhysicalObjects/{id}/sync",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "cachePhysicalObjectGetManyResponse": {
     "additionalProperties": false,
     "properties": {
@@ -10419,60 +10369,6 @@
     "x-summary": "",
     "description": ""
   },
-  "cacheTaxonGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheTaxon"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheTaxon",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheTaxons/{id}/sync",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
   "cacheTaxonGetManyResponse": {
     "additionalProperties": false,
     "properties": {
@@ -10828,60 +10724,6 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/cacheTaxonNames/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "cacheTaxonNameGetOneSyncResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "cacheTaxonName"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "cacheTaxonName",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/search/v01/cacheTaxonNames/{id}/sync",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -11623,6 +11465,1871 @@
         "properties": {
           "self": {
             "example": "https://domain/api/search/v01/searchSpecimens/actions/requestUpdateView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "lookupAgent"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "lookupAgent",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupAgents/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupFeatureType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupFeatureType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupFeatureType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupFeatureType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "lookupFeatureType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "lookupFeatureType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupFeatureType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupFeatureType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupFeatureType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupFeatureType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupFeatureTypes/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPreparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPreparationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPreparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPreparationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "lookupPreparationType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "lookupPreparationType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPreparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPreparationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPreparationType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPreparationType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPreparationTypes/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPlace"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPlace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPlace"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPlace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "lookupPlace"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "lookupPlace",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPlace"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPlace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupPlace"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupPlace",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupPlaces/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupStorageLocation"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupStorageLocation",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupStorageLocation"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupStorageLocation",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "lookupStorageLocation"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "lookupStorageLocation",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupStorageLocation"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupStorageLocation",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupStorageLocation"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupStorageLocation",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupStorageLocations/actions/rebuildView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -13249,6 +14956,59 @@
     },
     "type": "object",
     "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "specimenImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -15811,6 +17571,59 @@
     "x-summary": "",
     "description": ""
   },
+  "storageLocationImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/storage/v01/storageLocations/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "storageLocationGetRelationshipChildrenResponse": {
     "additionalProperties": false,
     "properties": {
@@ -17213,6 +19026,59 @@
     "x-summary": "",
     "description": ""
   },
+  "taxonImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/taxonomy/v01/taxa/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
   "taxonGetRelationshipChildrenResponse": {
     "additionalProperties": false,
     "properties": {
@@ -18420,6 +20286,59 @@
     },
     "type": "object",
     "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "taxonNameImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/taxonomy/v01/taxonNames/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
     "x-summary": "",
     "description": ""
   },
@@ -19856,7 +21775,6 @@
           "type": "place",
           "attributes": {
             "name": "string",
-            "id": "string",
             "createdAt": "string",
             "createdBy": "string",
             "updatedBy": "string",
@@ -19883,7 +21801,6 @@
         "type": "place",
         "attributes": {
           "name": "string",
-          "id": "string",
           "createdAt": "string",
           "createdBy": "string",
           "updatedBy": "string",
@@ -20115,7 +22032,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheAgent"
@@ -20125,7 +22041,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheAgent"
@@ -20213,7 +22128,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheCauseOfDeathType"
@@ -20223,7 +22137,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheCauseOfDeathType"
@@ -20311,7 +22224,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheFeatureType"
@@ -20321,7 +22233,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheFeatureType"
@@ -20409,7 +22320,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cachePreparationType"
@@ -20419,7 +22329,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cachePreparationType"
@@ -20507,7 +22416,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheEstablishmentMeansType"
@@ -20517,7 +22425,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheEstablishmentMeansType"
@@ -20605,7 +22512,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheTypeSpecimenType"
@@ -20615,7 +22521,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheTypeSpecimenType"
@@ -20703,7 +22608,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheIdentifierType"
@@ -20713,7 +22617,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheIdentifierType"
@@ -20801,7 +22704,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cachePlace"
@@ -20811,7 +22713,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cachePlace"
@@ -20899,7 +22800,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheStorageLocation"
@@ -20909,7 +22809,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheStorageLocation"
@@ -20997,7 +22896,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cachePhysicalObject"
@@ -21007,7 +22905,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cachePhysicalObject"
@@ -21095,7 +22992,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheTaxon"
@@ -21105,7 +23001,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheTaxon"
@@ -21193,7 +23088,6 @@
       "primary": {
         "data": {
           "attributes": {
-            "id": "123",
             "info": "123"
           },
           "type": "cacheTaxonName"
@@ -21203,7 +23097,6 @@
     "example": {
       "data": {
         "attributes": {
-          "id": "123",
           "info": "123"
         },
         "type": "cacheTaxonName"
@@ -21359,6 +23252,486 @@
               },
               "attributes": {
                 "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupAgent",
+                "enum": [
+                  "lookupAgent"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupAgent"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {
+            "info": "123"
+          },
+          "type": "lookupAgent"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {
+          "info": "123"
+        },
+        "type": "lookupAgent"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupAgentUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupAgent",
+                "enum": [
+                  "lookupAgent"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupAgent"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupFeatureType",
+                "enum": [
+                  "lookupFeatureType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupFeatureType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {
+            "info": "123"
+          },
+          "type": "lookupFeatureType"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {
+          "info": "123"
+        },
+        "type": "lookupFeatureType"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupFeatureTypeUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupFeatureType",
+                "enum": [
+                  "lookupFeatureType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupFeatureType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupPreparationType",
+                "enum": [
+                  "lookupPreparationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupPreparationType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {
+            "info": "123"
+          },
+          "type": "lookupPreparationType"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {
+          "info": "123"
+        },
+        "type": "lookupPreparationType"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPreparationTypeUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupPreparationType",
+                "enum": [
+                  "lookupPreparationType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupPreparationType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupPlace",
+                "enum": [
+                  "lookupPlace"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupPlace"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {
+            "info": "123"
+          },
+          "type": "lookupPlace"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {
+          "info": "123"
+        },
+        "type": "lookupPlace"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupPlaceUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupPlace",
+                "enum": [
+                  "lookupPlace"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupPlace"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupStorageLocation",
+                "enum": [
+                  "lookupStorageLocation"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupStorageLocation"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {
+            "info": "123"
+          },
+          "type": "lookupStorageLocation"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {
+          "info": "123"
+        },
+        "type": "lookupStorageLocation"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupStorageLocationUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupStorageLocation",
+                "enum": [
+                  "lookupStorageLocation"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupStorageLocation"
               }
             }
           }
