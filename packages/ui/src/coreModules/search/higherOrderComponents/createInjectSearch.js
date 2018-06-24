@@ -33,9 +33,10 @@ const createInjectSearch = (
       }
     }
 
-    search({ aggregations, query }) {
+    search({ aggregations, idsOnly, query }) {
       return this.props.search({
         aggregations,
+        idsOnly,
         query,
         resource,
         storeSearchResult,
