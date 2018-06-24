@@ -20,7 +20,7 @@ module.exports = function update({
   const created = []
   const deleted = []
 
-  const handleIds = id => {
+  const handleIds = ({ item: id }) => {
     return getRequiredAction({
       id,
       model,
@@ -41,13 +41,19 @@ module.exports = function update({
         serviceInteractor,
         srcResource,
       }).then(newItem => {
+        const { id: createdId, ...rest } = newItem
+        const dbItem = {
+          doc: rest,
+          id,
+        }
+
         if (action === 'create') {
           created.push(id)
-          return model.create(newItem)
+          return model.create(dbItem)
         }
         if (action === 'update') {
           updated.push(id)
-          return model.update(newItem)
+          return model.update(dbItem)
         }
         return null
       })

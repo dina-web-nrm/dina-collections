@@ -4,6 +4,9 @@ module.exports = {
     description: {
       type: 'string',
     },
+    resolveRelations: {
+      type: 'boolean',
+    },
     resourceCacheMap: {
       type: 'object',
     },

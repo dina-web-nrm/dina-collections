@@ -1,14 +1,16 @@
+const createReporter = require('common/src/reporter')
 const applyTransformationFunctions = require('../../../data/transformations/utilities/applyTransformationFunctions')
 const update = require('./update')
-const defaultMapFunction = require('../utilities/defaultMapFunction')
+const defaultTransformationFunctions = require('../utilities/defaultTransformationFunctions')
 
 module.exports = function updateView({ operation, models, serviceInteractor }) {
   const {
     transformationSpecification: {
-      srcResource,
-      warmViews,
+      resolveRelations,
       resourceCacheMap,
-      transformationFunctions,
+      srcResource,
+      transformationFunctions = defaultTransformationFunctions,
+      warmViews,
     } = {},
     resource,
   } = operation
@@ -17,17 +19,6 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
   }
-
-  const mapFunction = !transformationFunctions
-    ? defaultMapFunction
-    : ({ items }) => {
-        return applyTransformationFunctions({
-          items,
-          resourceCacheMap,
-          serviceInteractor,
-          transformationFunctions,
-        })
-      }
 
   if (!srcResource) {
     throw new Error(`srcResource not provided for ${srcResource}`)
@@ -39,6 +30,21 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
     if (!ids && ids.length) {
       throw new Error('Ids required')
     }
+    const reporter = createReporter()
+    const mapFunction = ({ startCount, items }) => {
+      return applyTransformationFunctions({
+        items,
+        reporter,
+        resolveRelations,
+        resourceCacheMap,
+        serviceInteractor,
+        srcResource,
+        startCount,
+        transformationFunctions,
+      })
+    }
+
+    reporter.start()
 
     return update({
       ids,
@@ -47,6 +53,13 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
       serviceInteractor,
       srcResource,
       warmViews,
+    }).then(() => {
+      reporter.done()
+      return {
+        data: {
+          attributes: reporter.getReport(),
+        },
+      }
     })
   }
 }

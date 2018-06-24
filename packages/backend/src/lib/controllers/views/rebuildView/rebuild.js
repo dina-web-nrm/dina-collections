@@ -1,21 +1,22 @@
 const createLog = require('../../../../utilities/log')
 const { execute: batchExecute } = require('common/src/batch')
-const createBatch = require('./createBatch')
 const rebuildCacheViews = require('./rebuildCacheViews')
 const emptyCacheViews = require('./emptyCacheViews')
 
 const defaultLog = createLog('lib/controllers/views/rebuildView/rebuild')
 
 module.exports = function rebuild({
+  createBatch,
   log = defaultLog,
   mapFunction,
+  srcFileName,
   model,
   nItemsEachBatch = 1000,
   serviceInteractor,
   srcResource,
   warmViews = [],
 }) {
-  log.info(`rebuild start for src: ${srcResource}`)
+  log.info(`rebuild start for src: ${srcResource || srcFileName}`)
 
   log.scope().info('truncate stageResource')
   // replace with flush or truncate or whatever
@@ -38,12 +39,26 @@ module.exports = function rebuild({
             ...args,
             mapFunction,
             serviceInteractor,
+            srcFileName,
             srcResource,
+          }).then(batchItems => {
+            return batchItems
           })
         },
         execute: items => {
-          return model.bulkCreate({ items }).then(() => {
-            return items
+          const dbItems = items.map(item => {
+            // TODO Dont to this transformation here.
+            if (item.doc) {
+              return item
+            }
+            const { id, ...rest } = item
+            return {
+              doc: rest,
+              id,
+            }
+          })
+          return model.bulkCreate({ items: dbItems }).then(() => {
+            return dbItems
           })
         },
         numberOfEntriesEachBatch: nItemsEachBatch,

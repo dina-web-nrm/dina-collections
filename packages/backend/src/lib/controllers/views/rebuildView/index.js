@@ -1,18 +1,23 @@
+const createReporter = require('common/src/reporter')
 const applyTransformationFunctions = require('../../../data/transformations/utilities/applyTransformationFunctions')
 const rebuild = require('./rebuild')
-const defaultMapFunction = require('../utilities/defaultMapFunction')
+const defaultCreateBatch = require('./createBatch')
+const defaultTransformationFunctions = require('../utilities/defaultTransformationFunctions')
 
 module.exports = function rebuildView({
-  operation,
+  createBatch = defaultCreateBatch,
   models,
+  operation,
   serviceInteractor,
 }) {
   const {
     transformationSpecification: {
-      srcResource,
-      warmViews,
+      resolveRelations,
       resourceCacheMap,
-      transformationFunctions,
+      srcFileName,
+      srcResource,
+      transformationFunctions = defaultTransformationFunctions,
+      warmViews,
     } = {},
     resource,
   } = operation
@@ -21,33 +26,43 @@ module.exports = function rebuildView({
     throw new Error(`Model not provided for ${resource}`)
   }
 
-  const mapFunction = !transformationFunctions
-    ? defaultMapFunction
-    : ({ items }) => {
-        return applyTransformationFunctions({
-          items,
-          resourceCacheMap,
-          serviceInteractor,
-          transformationFunctions,
-        })
-      }
-
-  if (!mapFunction) {
-    throw new Error(`Map function not provided for ${resource}`)
-  }
-
-  if (!srcResource) {
+  if (!srcResource && !srcFileName) {
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
   return () => {
+    const reporter = createReporter()
+    const mapFunction = ({ startCount, items }) => {
+      return applyTransformationFunctions({
+        items,
+        reporter,
+        resolveRelations,
+        resourceCacheMap,
+        serviceInteractor,
+        srcResource,
+        startCount,
+        transformationFunctions,
+      })
+    }
+
+    reporter.start()
+
     return rebuild({
+      createBatch,
       mapFunction,
       model,
       nItemsEachBatch: 1000,
       serviceInteractor,
+      srcFileName,
       srcResource,
       warmViews,
+    }).then(() => {
+      reporter.done()
+      return {
+        data: {
+          attributes: reporter.getReport(),
+        },
+      }
     })
   }
 }
