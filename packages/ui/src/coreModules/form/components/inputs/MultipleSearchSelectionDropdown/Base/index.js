@@ -6,10 +6,12 @@ import config from 'config'
 const propTypes = {
   autoComplete: PropTypes.string,
   displayAsButton: PropTypes.bool,
+  icon: PropTypes.string,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   isLoading: PropTypes.bool,
   mountHidden: PropTypes.bool,
+  noResultsMessage: PropTypes.string,
   onSearchChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -35,9 +37,11 @@ const propTypes = {
 const defaultProps = {
   autoComplete: undefined,
   displayAsButton: false,
+  icon: 'dropdown',
   initialText: '',
   isLoading: false,
   mountHidden: config.isTest,
+  noResultsMessage: 'No results found.',
   searchQuery: '',
   selectedOptions: [],
   text: undefined,
@@ -68,10 +72,12 @@ class MultipleSearchSelectionDropdownInput extends Component {
     const {
       autoComplete,
       displayAsButton,
+      icon,
       initialText,
       input,
       isLoading,
       mountHidden,
+      noResultsMessage,
       options: optionsInput = [],
       searchQuery,
       selectedOptions = [],
@@ -90,8 +96,10 @@ class MultipleSearchSelectionDropdownInput extends Component {
         <Dropdown
           autoComplete={autoComplete}
           button={displayAsButton}
+          icon={icon}
           loading={isLoading}
           multiple
+          noResultsMessage={noResultsMessage}
           onSearchChange={this.handleSearchChange}
           options={options}
           placeholder={initialText}
