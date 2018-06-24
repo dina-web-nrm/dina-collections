@@ -1,3 +1,7 @@
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
+
 const createTaxonNameRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const getManyfilterSpecification = require('./operations/getMany/filters')
 
@@ -26,6 +30,10 @@ module.exports = {
     {
       relationKey: 'acceptedToTaxon',
       type: 'getRelationship',
+    },
+    {
+      transformationSpecification: importDataFromFileTransformationSpecification,
+      type: 'importDataFromFile',
     },
     {
       relationKey: 'acceptedToTaxon',

@@ -1,3 +1,4 @@
+const allFromObjectWithComputedId = require('../../../../lib/data/transformations/sharedTransformations/allFromObjectWithComputedId')
 const requestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -12,6 +13,16 @@ module.exports = {
     },
     {
       type: 'getMany',
+    },
+    {
+      transformationSpecification: {
+        description: 'Importing causeOfDeathTypes from file',
+        srcFileName: 'causeOfDeathTypes',
+        transformationFunctions: {
+          allFromObjectWithComputedId,
+        },
+      },
+      type: 'importDataFromFile',
     },
     {
       type: 'update',

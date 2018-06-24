@@ -1,3 +1,4 @@
+const allFromObjectWithComputedId = require('../../../../lib/data/transformations/sharedTransformations/allFromObjectWithComputedId')
 const createTypeSpecimenTypeRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -14,6 +15,16 @@ module.exports = {
     },
     {
       type: 'getMany',
+    },
+    {
+      transformationSpecification: {
+        description: 'Importing typeSpecimenTypes from file',
+        srcFileName: 'typeSpecimenTypes',
+        transformationFunctions: {
+          allFromObjectWithComputedId,
+        },
+      },
+      type: 'importDataFromFile',
     },
     {
       type: 'update',

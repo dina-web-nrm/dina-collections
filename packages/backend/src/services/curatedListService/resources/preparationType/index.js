@@ -1,3 +1,4 @@
+const allFromObjectWithComputedId = require('../../../../lib/data/transformations/sharedTransformations/allFromObjectWithComputedId')
 const createPreparationTypeRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -14,6 +15,16 @@ module.exports = {
     },
     {
       type: 'getMany',
+    },
+    {
+      transformationSpecification: {
+        description: 'Importing preparationTypes from file',
+        srcFileName: 'preparationTypes',
+        transformationFunctions: {
+          allFromObjectWithComputedId,
+        },
+      },
+      type: 'importDataFromFile',
     },
     {
       type: 'update',

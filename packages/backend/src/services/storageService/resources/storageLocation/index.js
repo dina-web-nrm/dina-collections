@@ -1,3 +1,7 @@
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
+
 const buildOperationId = require('common/src/buildOperationId')
 const createStorageLocationRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 const getManyFilterSpecificationMap = require('./operations/getMany/filters')
@@ -36,6 +40,10 @@ module.exports = {
     },
     {
       type: 'del',
+    },
+    {
+      transformationSpecification: importDataFromFileTransformationSpecification,
+      type: 'importDataFromFile',
     },
     {
       relationKey: 'children',
