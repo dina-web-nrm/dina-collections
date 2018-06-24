@@ -1863,6 +1863,127 @@ exports[`storyshots Storyshots coreModules/notifications/NotificationDisplay Def
 
 exports[`storyshots Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
 
+exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect MultipleSearchTagsSelect 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "float": undefined,
+            "position": "relative",
+            "width": undefined,
+          }
+        }
+      >
+        <label
+          htmlFor="MultipleSearchTagsSelect"
+          style={Object {}}
+        >
+          <span>
+            
+          </span>
+        </label>
+        <div
+          className="ui buttons"
+        >
+          <div
+            aria-busy={false}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            autoComplete={undefined}
+            className="ui button multiple search selection dropdown"
+            name="MultipleSearchTagsSelect"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="combobox"
+            style={
+              Object {
+                "background": "white",
+                "borderRadius": 0,
+                "fontWeight": "normal",
+              }
+            }
+            tabIndex={undefined}
+          >
+            <input
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="search"
+              onChange={[Function]}
+              style={
+                Object {
+                  "width": undefined,
+                }
+              }
+              tabIndex={0}
+              type="text"
+              value=""
+            />
+            <span
+              className="sizer"
+            />
+            <div
+              aria-live="polite"
+              className="text"
+              role="alert"
+            >
+              
+            </div>
+            <i
+              aria-hidden="true"
+              className="search icon"
+              onClick={[Function]}
+            />
+            <div
+              aria-multiselectable={true}
+              className="menu transition"
+              role="listbox"
+            >
+              <div
+                className="message"
+              >
+                Type query and press Enter
+              </div>
+            </div>
+          </div>
+          <input
+            className="hidden"
+            name="MultipleSearchTagsSelect.hidden"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="hidden"
+            value={Array []}
+          />
+          <button
+            className="ui button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            0/0
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
 <div>
   <div
