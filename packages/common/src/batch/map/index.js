@@ -1,5 +1,6 @@
 const { Dependor } = require('../../Dependor')
 const batchExecute = require('../execute')
+const migrator = require('../../migrator')
 
 const dep = new Dependor({
   batchExecute,
@@ -26,7 +27,12 @@ exports.batchMap = function batchMap(
   const execute = batchItems => {
     const promises = batchItems.map((item, index) => {
       return Promise.resolve().then(() => {
-        return mapFunction({ batchStartIndex: batchStartCount, index, item })
+        return mapFunction({
+          batchStartIndex: batchStartCount,
+          index,
+          item,
+          migrator,
+        })
       })
     })
     return Promise.all(promises).then(mappedBatchItems => {
