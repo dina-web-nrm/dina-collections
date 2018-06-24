@@ -31382,6 +31382,12 @@ select.ui.dropdown {
 /*******************************
         User Overrides
 *******************************/
+
+.ui.selection.dropdown > .search.icon,
+.ui.selection.dropdown > .delete.icon,
+.ui.selection.dropdown > .dropdown.icon {
+  margin: -0.91666667em !important;
+}
 /*!
  * # Semantic UI 2.2.13 - Video
  * http://github.com/semantic-org/semantic-ui/
