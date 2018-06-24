@@ -1,4 +1,39 @@
+Done
+* Commit new operation and new controller
+* Add use migrator (with possibility of injecting a reporter)
+* Make batchMap take more args then item {item, index, ...rest}
+* Make nesting items optional in applyTransform funcs
+* Move reporter and migrator to transformations.
+* Use applyTransformationFunctions even for the default mapping function
+* Create transformation func for agents - use migrator.
+
+Todo
+* Add support for input and output validation functions (use same structure as transformationFunctions)
+* The doc transformation likely need to be specific to handle stuff like parentId. Force transformationFunctions to be array. Do together with valdation functions
+* also add custom execute method to be able to handle physical objects
+
+* move buildIncludeArray to model
+* move extractRelationships to model
+* implement extractRelationships for inMemory
+
+* Make transformation functions work on something sane like attributes (NO SHOULD BE ITEM IN nested oformat)
+
+
+Fix v1 speciment
+* Make migration of specimen work without related resources
+* Use new migrator
+* Create in memory views for specimen lookups. Use shared idFactories for the ids.
+* Make migration of specimen work
+
+
+** 
+
+
+
+
 DONE
+* Potentially pass other stuff into crud query
+* Add check that model have required method in controller
 * Make scripts to start backend in different modes incl script (app) to load all data
 * Implement FE query in crud module
 * Adapt search to query
@@ -6,8 +41,6 @@ DONE
 * Implement scroll to handle large result sets (use frontend to request scroll results)
 * Clean up query crud and search (also call it not with body but aggregations and query and stuff)
 * Integrate fredrik new component for localities with aggregations
-
-TODO
 * Add new mapping for idInteger (and make sure sort is working with it)
 
 
@@ -20,16 +53,14 @@ Import
 
 CLEANUP
 * Look at createObjectResponse performance
-* Move utilities in lib/data to root
 * Att schema and tests for models (and with that for mappings)
-* Add check that model have required method in controller
-* Rename aggregationFunction and filterFunction to [...]Name
+
 * Remove search from common
 * Mimic searchSpecimen structure in other services
 * Add more schemas
 * Force examples to be added to crud or else through error
-* Potentially pass other stuff into crud query
 * Fix model abstractions. Abstract away document on model level
+* Rename aggregationFunction and filterFunction to [...]Name
 
 TESTING
 * Test all old crud from FE
