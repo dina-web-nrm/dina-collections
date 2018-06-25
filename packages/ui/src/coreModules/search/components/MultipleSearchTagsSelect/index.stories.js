@@ -14,7 +14,7 @@ storiesOf('coreModules/search/MultipleSearchTagsSelect', module)
     })
   )
   .add(
-    'MultipleSearchTagsSelect',
+    'Default',
     withInfo({ propTables: [MultipleSearchTagsSelect] })(() => {
       return (
         <MultipleSearchTagsSelect
