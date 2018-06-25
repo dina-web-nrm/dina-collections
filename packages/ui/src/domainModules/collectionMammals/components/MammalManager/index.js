@@ -111,8 +111,15 @@ class MammalManager extends Component {
   }
 
   handleSetCurrentRecordNumber(event, newRecordNumber) {
-    event.preventDefault()
-    this.props.setCurrentRecordNumber(newRecordNumber)
+    if (event) {
+      event.preventDefault()
+    }
+
+    const parsedInteger = Number(newRecordNumber)
+
+    if (Number.isInteger(parsedInteger)) {
+      this.props.setCurrentRecordNumber(parsedInteger)
+    }
   }
 
   handleToggleFilters(event) {
@@ -149,21 +156,30 @@ class MammalManager extends Component {
 
     const lastRecordNumber = totalNumberOfRecords // TODO: check first selectedNumberOfRecords
     const isNewRecordView = mainColumnViewKey === 'newRecord'
-    const showSelectNextRecord =
+    const showSelectNextRecordButton =
       !isNewRecordView && currentRecordNumber !== lastRecordNumber
-    const showSelectPreviousRecord =
+    const showSelectPreviousRecordButton =
       !isNewRecordView && currentRecordNumber !== 1
+    const showAllRecordsButton = !isNewRecordView // TODO: add condition that no filters are applied
 
     return (
       <ColumnLayout
         columns={this.getColumns()}
+        currentRecordNumber={currentRecordNumber}
         mainColumnViewKey={mainColumnViewKey}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
-        onSelectNextRecord={showSelectNextRecord && this.handleSelectNextRecord}
-        onSelectPreviousRecord={
-          showSelectPreviousRecord && this.handleSelectPreviousRecord
+        onSelectNextRecord={
+          showSelectNextRecordButton && this.handleSelectNextRecord
         }
+        onSelectPreviousRecord={
+          showSelectPreviousRecordButton && this.handleSelectPreviousRecord
+        }
+        onSetCurrentRecordNumber={
+          !isNewRecordView && this.handleSetCurrentRecordNumber
+        }
+        onShowAllRecords={showAllRecordsButton && this.handleShowAllRecords}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}
+        totalRecords={totalNumberOfRecords}
       />
     )
   }

@@ -5,6 +5,7 @@ import { compose } from 'redux'
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
+import RecordNavigationBar from './RecordNavigationBar'
 
 /* eslint-disable */
 const main = {
@@ -26,7 +27,7 @@ const main = {
 const recordNavigation = {
   height: '80px',
   key: 'recordNavigation',
-  renderRow: props => <div>recordNavigation</div>,
+  renderRow: props => <RecordNavigationBar {...props} />,
   style: { border: '1px solid' },
 }
 
@@ -46,13 +47,14 @@ const propTypes = {
 
 class MainColumn extends PureComponent {
   render() {
-    const { mainColumnViewKey, windowHeight } = this.props
+    const { mainColumnViewKey, windowHeight, ...rest } = this.props
 
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
         mainColumnViewKey={mainColumnViewKey}
         rows={rows}
+        {...rest}
       />
     )
   }
