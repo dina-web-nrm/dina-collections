@@ -43,6 +43,7 @@
     "react-infinite": "^0.13.0",
     "react-json-inspector": "^7.1.1",
     "react-list": "^0.8.8",
+    "react-rangeslider": "^2.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "next",
