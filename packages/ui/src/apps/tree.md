@@ -93,6 +93,11 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   └── translations.json
+│       ├── specimensMammals
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   └── index.js
 │       ├── start
 │       │   ├── Async.js
 │       │   ├── Component.js

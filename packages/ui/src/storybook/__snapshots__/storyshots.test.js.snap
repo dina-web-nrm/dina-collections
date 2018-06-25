@@ -99,17 +99,9 @@ exports[`storyshots Storyshots coreModules/bootstrap/DefaultWrapper Default 1`] 
     >
       <div>
         <div
-          style={
-            Object {
-              "minHeight": "100vh",
-            }
-          }
+          className="ui segment"
         >
-          <div
-            className="ui segment"
-          >
-            Wrapped content (DefaultWrapper ensure full height )
-          </div>
+          Wrapped content (DefaultWrapper does nothing but render children)
         </div>
         <p>
           After DefaultWrapper
@@ -441,14 +433,18 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       className="item"
       href="/app"
       onClick={[Function]}
-      style={undefined}
+      style={
+        Object {
+          "textAlign": "left",
+        }
+      }
     >
       <i
         aria-hidden="true"
         className="home large icon"
       />
       <span>
-        Start
+        Modules.commonUi.routes.home
       </span>
     </a>
     <a
@@ -456,7 +452,11 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       className="item"
       href="/app/mammals/register"
       onClick={[Function]}
-      style={undefined}
+      style={
+        Object {
+          "textAlign": "left",
+        }
+      }
     >
       <i
         aria-hidden="true"
@@ -471,7 +471,11 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       className="item"
       href="/app/mammals/lookup"
       onClick={[Function]}
-      style={undefined}
+      style={
+        Object {
+          "textAlign": "left",
+        }
+      }
     >
       <i
         aria-hidden="true"
@@ -486,7 +490,11 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
       className="item push bottom"
       href="/app/settings"
       onClick={[Function]}
-      style={undefined}
+      style={
+        Object {
+          "textAlign": "left",
+        }
+      }
     >
       <i
         aria-hidden="true"
@@ -529,7 +537,6 @@ exports[`storyshots Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] 
         className="ui container"
         style={
           Object {
-            "minHeight": "100vh",
             "paddingBottom": 30,
             "paddingTop": 61.5,
           }
@@ -561,7 +568,6 @@ exports[`storyshots Storyshots coreModules/commonUi/PageTemplate No fixed menu 1
         className="ui container"
         style={
           Object {
-            "minHeight": "100vh",
             "paddingBottom": 30,
             "paddingTop": 30,
           }
@@ -1323,26 +1329,120 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with 
 exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height column 1`] = `
 <div>
   <div
+    className={undefined}
     style={
       Object {
         "height": "100%",
+        "overflow": "hidden",
         "width": "100%",
       }
     }
-  />
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        100%
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one filling the rest 1`] = `
 <div>
   <div
+    className={undefined}
     style={
       Object {
         "height": "100%",
+        "overflow": "hidden",
         "width": "100%",
       }
     }
-  />
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "100px",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        100px
+      </div>
+    </div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": undefined,
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "red",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        filling up rest of height
+      </div>
+    </div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "30%",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "green",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        30%
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -1358,13 +1458,83 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
     }
   >
     <div
+      className={undefined}
       style={
         Object {
           "height": "100%",
+          "overflow": "hidden",
           "width": "100%",
         }
       }
-    />
+    >
+      <div
+        className={undefined}
+        style={
+          Object {
+            "float": "left",
+            "height": "100px",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "background": "gray",
+              "height": "100%",
+              "width": "100%",
+            }
+          }
+        >
+          100px
+        </div>
+      </div>
+      <div
+        className={undefined}
+        style={
+          Object {
+            "float": "left",
+            "height": undefined,
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "background": "red",
+              "height": "100%",
+              "overflow": "scroll",
+              "width": "100%",
+            }
+          }
+        >
+          filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable
+        </div>
+      </div>
+      <div
+        className={undefined}
+        style={
+          Object {
+            "float": "left",
+            "height": "30%",
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "background": "green",
+              "height": "100%",
+              "width": "100%",
+            }
+          }
+        >
+          30%
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1372,26 +1542,120 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed heights 1`] = `
 <div>
   <div
+    className={undefined}
     style={
       Object {
         "height": "100%",
+        "overflow": "hidden",
         "width": "100%",
       }
     }
-  />
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "300px",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        300px
+      </div>
+    </div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "150px",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "green",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        150px
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative heights 1`] = `
 <div>
   <div
+    className={undefined}
     style={
       Object {
         "height": "100%",
+        "overflow": "hidden",
         "width": "100%",
       }
     }
-  />
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "30%",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        30%
+      </div>
+    </div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "float": "left",
+          "height": "70%",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "green",
+            "height": "100%",
+            "width": "100%",
+          }
+        }
+      >
+        70%
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -1411,10 +1675,10 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
       <div
         style={
           Object {
-            "bottom": "100%",
+            "height": "100vh",
             "left": 0,
-            "minHeight": "100%",
             "minWidth": "100%",
+            "overflow": "hidden",
             "paddingLeft": 0,
             "position": "relative",
             "top": 0,
@@ -1434,20 +1698,13 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
             className="ui fluid dina background"
             style={
               Object {
-                "overflow": "hidden",
+                "height": "728px",
+                "overflow": "auto",
               }
             }
           >
-            <div
-              style={
-                Object {
-                  "marginTop": "40px",
-                }
-              }
-            >
-              <div>
-                View wrap content
-              </div>
+            <div>
+              View wrap content
             </div>
           </div>
         </div>
@@ -1605,6 +1862,127 @@ exports[`storyshots Storyshots coreModules/notifications/FormFieldHelpIcon Defau
 exports[`storyshots Storyshots coreModules/notifications/NotificationDisplay Default 1`] = `<div />`;
 
 exports[`storyshots Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
+
+exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect MultipleSearchTagsSelect 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "float": undefined,
+            "position": "relative",
+            "width": undefined,
+          }
+        }
+      >
+        <label
+          htmlFor="MultipleSearchTagsSelect"
+          style={Object {}}
+        >
+          <span>
+            
+          </span>
+        </label>
+        <div
+          className="ui buttons"
+        >
+          <div
+            aria-busy={false}
+            aria-disabled={undefined}
+            aria-expanded={false}
+            autoComplete={undefined}
+            className="ui button multiple search selection dropdown"
+            name="MultipleSearchTagsSelect"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseDown={[Function]}
+            role="combobox"
+            style={
+              Object {
+                "background": "white",
+                "borderRadius": 0,
+                "fontWeight": "normal",
+              }
+            }
+            tabIndex={undefined}
+          >
+            <input
+              aria-autocomplete="list"
+              autoComplete="off"
+              className="search"
+              onChange={[Function]}
+              style={
+                Object {
+                  "width": undefined,
+                }
+              }
+              tabIndex={0}
+              type="text"
+              value=""
+            />
+            <span
+              className="sizer"
+            />
+            <div
+              aria-live="polite"
+              className="text"
+              role="alert"
+            >
+              
+            </div>
+            <i
+              aria-hidden="true"
+              className="search icon"
+              onClick={[Function]}
+            />
+            <div
+              aria-multiselectable={true}
+              className="menu transition"
+              role="listbox"
+            >
+              <div
+                className="message"
+              >
+                Type query and press Enter
+              </div>
+            </div>
+          </div>
+          <input
+            className="hidden"
+            name="MultipleSearchTagsSelect.hidden"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="hidden"
+            value={Array []}
+          />
+          <button
+            className="ui button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            0/0
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
 exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
 <div>

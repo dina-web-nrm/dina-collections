@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
+import { MultipleSearchTagsSelect } from 'coreModules/search/components'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import CollectingLocationMultipleSearch from './CollectingLocationMultipleSearch'
 
@@ -64,13 +65,21 @@ class Filter extends Component {
     return (
       <div>
         <h2>Filter</h2>
-
+        <h3>Search collecting locations</h3>
         <CollectingLocationMultipleSearch
           onChange={value => {
             this.handleFilterChange({
               filterFunctionName: 'searchCollectingLocationMultiSearch',
               value,
             })
+          }}
+        />
+        <h3>MultipleSearchTagsSelect</h3>
+        <MultipleSearchTagsSelect
+          aggregationFunctionName="identifiers"
+          filterFunctionName="searchCollectingLocation"
+          onChange={value => {
+            console.log(value) // eslint-disable-line
           }}
         />
         <h3>Id - (filterFunction: id)</h3>

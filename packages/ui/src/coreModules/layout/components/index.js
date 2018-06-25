@@ -1,7 +1,7 @@
-import Block from './Block'
-import InformationSidebar from './InformationSidebar'
-import Layout from './Layout'
-import NavigationSidebar from './NavigationSidebar'
-import ViewWrap from './ViewWrap'
-
-export { Block, InformationSidebar, Layout, NavigationSidebar, ViewWrap }
+export { default as Block } from './Block'
+export { default as ColumnLayout } from './ColumnLayout'
+export { default as InformationSidebar } from './InformationSidebar'
+export { default as Layout } from './Layout'
+export { default as NavigationSidebar } from './NavigationSidebar'
+export { default as RowLayout } from './RowLayout'
+export { default as ViewWrap } from './ViewWrap'

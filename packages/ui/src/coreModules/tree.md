@@ -388,6 +388,10 @@
 │   ├── actionTypes.js
 │   ├── constants.js
 │   ├── globalSelectors.js
+│   ├── higherOrderComponents
+│   │   ├── index.js
+│   │   ├── injectWindowHeight.js
+│   │   └── injectWindowWidth.js
 │   ├── index.js
 │   ├── listener.js
 │   ├── reducer.js

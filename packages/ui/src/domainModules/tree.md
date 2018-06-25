@@ -46,6 +46,8 @@
 │   │   └── updateSearchParameter.js
 │   ├── actionTypes.js
 │   ├── components
+│   │   ├── CreateSpecimen
+│   │   │   └── index.js
 │   │   ├── LookupMammals
 │   │   │   ├── CollectingLocationMultipleSearch.js
 │   │   │   ├── Filter.js
@@ -63,16 +65,19 @@
 │   │   │   ├── SegmentTaxon
 │   │   │   ├── index.js
 │   │   │   └── transformations
+│   │   ├── MammalManager
+│   │   │   ├── FilterColumn
+│   │   │   ├── MainColumn
+│   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── endpoints.js
 │   ├── globalSelectors.js
 │   ├── index.js
+│   ├── keyObjectModule.js
 │   ├── mockData.js
 │   ├── old-translations.json
-│   ├── reducer.js
 │   ├── schemas.js
-│   ├── selectors.js
 │   ├── translations.json
 │   └── utilities.js
 ├── curatedList

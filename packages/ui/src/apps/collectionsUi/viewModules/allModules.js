@@ -1,5 +1,6 @@
 import * as app from './app'
 import * as docs from './docs'
+import * as specimensMammals from './specimensMammals'
 import * as editMammal from './editMammal'
 import * as home from './home'
 import * as login from './login'
@@ -18,6 +19,7 @@ const modules = [
   publicModule,
   start,
   app,
+  specimensMammals,
   editMammal,
   home,
   lookupMammals,

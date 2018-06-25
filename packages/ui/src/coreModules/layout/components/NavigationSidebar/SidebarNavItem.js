@@ -25,6 +25,7 @@ const SidebarNavItem = ({ navItem }) => {
       className={push ? 'item push bottom' : 'item'}
       exact={exact}
       key={path}
+      style={{ textAlign: 'left' }}
       to={path}
     >
       {icon && <Icon name={icon} size="large" />}

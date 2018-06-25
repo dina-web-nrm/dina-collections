@@ -24,13 +24,17 @@
     }
   },
   "routes": {
-    "home": {
+    "start": {
       "en": "start",
       "sv": "start"
     },
     "about": {
       "en": "about",
       "sv": "om"
+    },
+    "specimens": {
+      "en": "specimens",
+      "sv": ""
     },
     "editMammal": {
       "en": "Edit mammal",
@@ -52,6 +56,10 @@
       "en": "dynamic",
       "sv": "dynamisk"
     },
+    "mammals": {
+      "en": "mammals",
+      "sv": "däggdjur"
+    },
     "overview": {
       "en": "overview",
       "sv": "översikt"
@@ -64,21 +72,25 @@
       "en": "models",
       "sv": "modeller"
     },
-    "manageAgents": {
-      "en": "Agents",
-      "sv": "Agenter"
+    "agents": {
+      "en": "agents",
+      "sv": "agenter"
     },
-    "manageLocalities": {
-      "en": "Localities",
-      "sv": "Platser"
+    "localities": {
+      "en": "localities",
+      "sv": "platser"
     },
-    "manageStorageLocations": {
-      "en": "Storage locations",
-      "sv": "Förvarings-platser"
+    "storage": {
+      "en": "storage",
+      "sv": "förvaring"
     },
-    "manageTaxonomy": {
-      "en": "Taxonomy",
-      "sv": "Taxonomi"
+    "taxon": {
+      "en": "taxon",
+      "sv": ""
+    },
+    "scientificNames": {
+      "en": "scientific names",
+      "sv": ""
     }
   }
 }

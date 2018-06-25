@@ -1,20 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
-import sizeMe from 'react-sizeme'
 
 import calculateRowHeights from '../../utilities/calculateRowHeights'
 
 const propTypes = {
+  availableHeight: PropTypes.number.isRequired,
   rows: PropTypes.arrayOf(
     PropTypes.shape({
-      height: PropTypes.string.isRequired,
-      renderRow: PropTypes.node.isRequired,
+      height: PropTypes.string,
+      renderRow: PropTypes.func.isRequired,
     }).isRequired
   ),
-  size: PropTypes.shape({
-    height: PropTypes.number.isRequired,
-  }).isRequired,
   wrapperClassNames: PropTypes.string,
   wrapperStyle: PropTypes.object,
 }
@@ -27,8 +23,8 @@ const defaultProps = {
 class RowLayout extends PureComponent {
   render() {
     const {
+      availableHeight,
       rows,
-      size: { height },
       wrapperClassNames,
       wrapperStyle,
     } = this.props
@@ -38,7 +34,7 @@ class RowLayout extends PureComponent {
     }
 
     const calculatedHeights = calculateRowHeights({
-      availableHeight: height,
+      availableHeight,
       rows,
     })
 
@@ -46,7 +42,7 @@ class RowLayout extends PureComponent {
       <div
         className={wrapperClassNames}
         style={{
-          height: '100vh',
+          height: '100%',
           overflow: 'hidden',
           width: '100%',
           ...(wrapperStyle || {}),
@@ -56,6 +52,7 @@ class RowLayout extends PureComponent {
           return (
             <div
               className={rowProps.classNames}
+              key={rowProps.key || index}
               style={{
                 float: 'left',
                 height: calculatedHeights[index],
@@ -75,4 +72,4 @@ class RowLayout extends PureComponent {
 RowLayout.propTypes = propTypes
 RowLayout.defaultProps = defaultProps
 
-export default compose(sizeMe({ monitorHeight: true }))(RowLayout)
+export default RowLayout

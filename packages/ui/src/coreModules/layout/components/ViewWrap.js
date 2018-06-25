@@ -1,46 +1,16 @@
 import React from 'react'
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Dimmer, Icon, Menu } from 'semantic-ui-react'
+import { Dimmer, Grid, Header, Icon, Menu } from 'semantic-ui-react'
+
 import sizeSelectors from 'coreModules/size/globalSelectors'
+import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
 } from '../keyObjectModule'
 import layoutSelectors from '../globalSelectors'
-
-const mapStateToProps = state => {
-  return {
-    isLarge: sizeSelectors.getIsLarge(state),
-    leftSidebarIsOpen: keyObjectGlobalSelectors.get['leftSidebar.isOpen'](
-      state
-    ),
-    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
-  }
-}
-
-const mapDispatchToProps = {
-  setLeftSidebarIsOpen: keyObjectActionCreators.set['leftSidebar.isOpen'],
-}
-
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  isLarge: PropTypes.bool.isRequired,
-  leftSidebarEnabled: PropTypes.bool,
-  leftSidebarIsOpen: PropTypes.bool.isRequired,
-  leftSidebarTogglable: PropTypes.bool,
-  leftSidebarWidth: PropTypes.number,
-  rightSidebarIsOpen: PropTypes.bool.isRequired,
-  rightSidebarWidth: PropTypes.number,
-  setLeftSidebarIsOpen: PropTypes.func.isRequired,
-}
-
-const defaultProps = {
-  leftSidebarEnabled: false,
-  leftSidebarTogglable: false,
-  leftSidebarWidth: 100,
-  rightSidebarWidth: 300,
-}
 
 export const getViewWrapStyle = ({
   leftSidebarAlwaysVisible,
@@ -52,10 +22,10 @@ export const getViewWrapStyle = ({
   rightSidebarWidth,
 }) => {
   const viewWrapBaseStyle = {
-    bottom: '100%',
+    height: '100vh',
     left: 0,
-    minHeight: '100%',
     minWidth: '100%',
+    overflow: 'hidden',
     position: 'relative',
     top: 0,
     transition: 'transform 0.2s',
@@ -92,7 +62,47 @@ export const getViewWrapStyle = ({
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isLarge: sizeSelectors.getIsLarge(state),
+    leftSidebarIsOpen: keyObjectGlobalSelectors.get['leftSidebar.isOpen'](
+      state
+    ),
+    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state), // import/no-named-as-default-member
+  }
+}
+
+const mapDispatchToProps = {
+  setLeftSidebarIsOpen: keyObjectActionCreators.set['leftSidebar.isOpen'],
+}
+
+const propTypes = {
+  activeLocation: PropTypes.node,
+  activeLocationContext: PropTypes.node,
+  children: PropTypes.node.isRequired,
+  isLarge: PropTypes.bool.isRequired,
+  leftSidebarEnabled: PropTypes.bool,
+  leftSidebarIsOpen: PropTypes.bool.isRequired,
+  leftSidebarTogglable: PropTypes.bool,
+  leftSidebarWidth: PropTypes.number,
+  rightSidebarIsOpen: PropTypes.bool.isRequired,
+  rightSidebarWidth: PropTypes.number,
+  setLeftSidebarIsOpen: PropTypes.func.isRequired,
+  windowHeight: PropTypes.number.isRequired,
+}
+
+const defaultProps = {
+  activeLocation: undefined,
+  activeLocationContext: undefined,
+  leftSidebarEnabled: false,
+  leftSidebarTogglable: false,
+  leftSidebarWidth: 100,
+  rightSidebarWidth: 300,
+}
+
 const ViewWrap = ({
+  activeLocation,
+  activeLocationContext,
   children,
   isLarge,
   leftSidebarEnabled,
@@ -102,7 +112,12 @@ const ViewWrap = ({
   rightSidebarIsOpen,
   rightSidebarWidth,
   setLeftSidebarIsOpen,
+  windowHeight,
 }) => {
+  if (!windowHeight) {
+    return null
+  }
+
   const rightSidebarEnabled = true
 
   const leftSidebarAlwaysVisible = isLarge && leftSidebarEnabled
@@ -124,22 +139,30 @@ const ViewWrap = ({
     <div style={viewWrapStyle}>
       <Dimmer.Dimmable dimmed={dimmerActive}>
         {leftSidebarTogglable && (
-          <Menu className="fixed" inverted>
+          <Menu inverted style={{ borderRadius: 0, margin: 0 }}>
             <Menu.Item onClick={toggleLeftSidebar}>
               <Icon name="sidebar" size="large" />
             </Menu.Item>
+            {activeLocation && (
+              <Grid padded textAlign="center" verticalAlign="middle">
+                <Grid.Column>
+                  <Header inverted>
+                    {activeLocation}
+                    {activeLocationContext && ' '}
+                    {activeLocationContext && activeLocationContext}
+                  </Header>
+                </Grid.Column>
+              </Grid>
+            )}
           </Menu>
         )}
         <Dimmer active={dimmerActive} onClickOutside={toggleLeftSidebar} />
         <div
           className="ui fluid dina background"
-          style={{ overflow: 'hidden' }}
+          // deducting the menu height from this div
+          style={{ height: `${windowHeight - 40}px`, overflow: 'auto' }}
         >
-          {/*
-            added div with marginTop, because if margin is applied on the parent
-            div there are serious artifacts when the leftsidebar & dimmer closes
-          */}
-          <div style={{ marginTop: '40px' }}>{children}</div>
+          {children}
         </div>
       </Dimmer.Dimmable>
     </div>
@@ -149,4 +172,7 @@ const ViewWrap = ({
 ViewWrap.propTypes = propTypes
 ViewWrap.defaultProps = defaultProps
 
-export default connect(mapStateToProps, mapDispatchToProps)(ViewWrap)
+export default compose(
+  injectWindowHeight,
+  connect(mapStateToProps, mapDispatchToProps)
+)(ViewWrap)

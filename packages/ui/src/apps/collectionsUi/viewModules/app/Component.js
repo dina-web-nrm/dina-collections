@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Route, Switch } from 'react-router-dom'
+import { compose } from 'redux'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import {
   InformationSidebar,
@@ -9,9 +10,11 @@ import {
 } from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
 import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
+import { createModuleTranslate } from 'coreModules/i18n/components'
 
 import EditMammal from '../editMammal/Async'
 import Home from '../home/Async'
+import SpecimensMammals from '../specimensMammals/Async'
 import LookupMammals from '../lookupMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
 import RegisterMammal from '../registerMammal/Async'
@@ -21,48 +24,53 @@ import ManageLocalities from '../manageLocalities/Async'
 import ManageStorageLocations from '../manageStorageLocations/Async'
 import ManageTaxonomy from '../manageTaxonomy/Async'
 
+const ModuleTranslate = createModuleTranslate('commonUi', { scope: 'routes' })
+
 const NAVIGATION_SIDEBAR_ITEMS = [
   {
     exact: true,
-    icon: 'home',
-    name: 'home',
+    name: 'start',
     path: '/app',
   },
   {
     exact: true,
-    icon: 'plus',
+    name: 'specimens',
+    path: '/app/specimens/mammals',
+  },
+  {
+    exact: false,
+    name: 'agents',
+    path: '/app/agents',
+  },
+  {
+    exact: false,
+    name: 'localities',
+    path: '/app/localities',
+  },
+  {
+    exact: false,
+    name: 'storage',
+    path: '/app/storageLocations',
+  },
+  {
+    exact: false,
+    name: 'taxon',
+    path: '/app/taxa',
+  },
+  {
+    exact: false,
+    name: 'scientificNames',
+    path: '/app/taxonNames',
+  },
+  {
+    exact: true,
     name: 'registerMammal',
     path: '/app/mammals/register',
   },
   {
     exact: true,
-    icon: 'search',
     name: 'lookupMammals',
     path: '/app/mammals/lookup',
-  },
-  {
-    exact: false,
-    icon: 'users',
-    name: 'manageAgents',
-    path: '/app/agents',
-  },
-  {
-    exact: false,
-    icon: 'location arrow',
-    name: 'manageLocalities',
-    path: '/app/localities',
-  },
-  {
-    exact: false,
-    icon: 'building',
-    name: 'manageStorageLocations',
-    path: '/app/storageLocations',
-  },
-  {
-    exact: false,
-    icon: 'tags',
-    name: 'manageTaxonomy',
-    path: '/app/taxa',
   },
   {
     exact: true,
@@ -73,7 +81,34 @@ const NAVIGATION_SIDEBAR_ITEMS = [
   },
 ]
 
+const getActiveLocation = (path = '') => {
+  const exactMatch = NAVIGATION_SIDEBAR_ITEMS.find(item => {
+    return path === item.path
+  })
+
+  if (exactMatch) {
+    return exactMatch.name
+  }
+
+  return NAVIGATION_SIDEBAR_ITEMS.reduce((bestMatch, item) => {
+    if (path.startsWith(item.path)) {
+      return item.name
+    }
+    return bestMatch
+  }, undefined)
+}
+
+const getActiveLocationContext = (path = '') => {
+  if (path.includes('/specimens/mammals')) {
+    return 'mammals'
+  }
+  return undefined
+}
+
 const propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
   match: PropTypes.shape({
     url: PropTypes.string.isRequired,
   }).isRequired,
@@ -81,13 +116,44 @@ const propTypes = {
 
 class App extends Component {
   render() {
-    const { match } = this.props
+    const { location, match } = this.props
+
+    const activeLocationTextKey = getActiveLocation(location.pathname)
+    const activeLocationContextTextKey = getActiveLocationContext(
+      location.pathname
+    )
 
     return (
-      <div>
-        <ViewWrap leftSidebarEnabled leftSidebarTogglable>
+      <React.Fragment>
+        <ViewWrap
+          activeLocation={
+            activeLocationTextKey && (
+              <ModuleTranslate
+                capitalize
+                fallback={activeLocationTextKey}
+                textKey={activeLocationTextKey}
+              />
+            )
+          }
+          activeLocationContext={
+            activeLocationContextTextKey && (
+              <ModuleTranslate
+                capitalize
+                fallback={activeLocationContextTextKey}
+                textKey={activeLocationContextTextKey}
+              />
+            )
+          }
+          leftSidebarEnabled
+          leftSidebarTogglable
+        >
           <Switch>
             <Route component={Home} exact path={match.url} />
+            <Route
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals`}
+            />
             <Route
               component={LookupMammals}
               exact
@@ -212,11 +278,11 @@ class App extends Component {
         <NavigationSidebar navItems={NAVIGATION_SIDEBAR_ITEMS} />
         <InformationSidebar />
         <ShortcutsDisplay />
-      </div>
+      </React.Fragment>
     )
   }
 }
 
 App.propTypes = propTypes
 
-export default requireLoggedIn(App)
+export default compose(withRouter, requireLoggedIn)(App)

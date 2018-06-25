@@ -1,4 +1,3 @@
-import wrapSelectors from 'utilities/wrapSelectors'
-import * as selectors from './selectors'
+import { globalSelectors } from './keyObjectModule'
 
-export default wrapSelectors(selectors)
+export default globalSelectors
