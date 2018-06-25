@@ -18,9 +18,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing featureTypes from file',
         srcFileName: 'featureTypes',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

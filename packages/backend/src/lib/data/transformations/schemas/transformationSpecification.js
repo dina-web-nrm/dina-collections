@@ -18,7 +18,7 @@ module.exports = {
     },
 
     transformationFunctions: {
-      type: 'object',
+      type: 'array',
     },
     warmViews: {
       type: 'array',

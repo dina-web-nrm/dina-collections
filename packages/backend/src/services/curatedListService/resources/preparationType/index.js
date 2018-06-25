@@ -20,9 +20,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing preparationTypes from file',
         srcFileName: 'preparationTypes',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

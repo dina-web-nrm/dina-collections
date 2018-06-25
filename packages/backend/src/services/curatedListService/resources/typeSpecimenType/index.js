@@ -20,9 +20,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing typeSpecimenTypes from file',
         srcFileName: 'typeSpecimenTypes',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

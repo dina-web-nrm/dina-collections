@@ -20,9 +20,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing identifierTypes from file',
         srcFileName: 'identifierTypes',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

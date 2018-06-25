@@ -24,9 +24,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing agents from file',
         srcFileName: 'agents',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

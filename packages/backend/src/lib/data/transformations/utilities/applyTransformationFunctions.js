@@ -18,7 +18,6 @@ const getItemByTypeId = ({
           },
         },
         resource: cacheResource,
-        sync: true,
       })
       .then(res => {
         if (reporter) {
@@ -54,7 +53,6 @@ const getItemByTypeId = ({
         },
       },
       resource: type,
-      sync: true,
     })
     .then(res => {
       if (reporter) {

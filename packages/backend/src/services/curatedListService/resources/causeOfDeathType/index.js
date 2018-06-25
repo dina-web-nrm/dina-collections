@@ -18,9 +18,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing causeOfDeathTypes from file',
         srcFileName: 'causeOfDeathTypes',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

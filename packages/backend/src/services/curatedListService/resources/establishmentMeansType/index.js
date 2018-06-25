@@ -18,9 +18,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing establishmentMeansTypes from file',
         srcFileName: 'establishmentMeansTypes',
-        transformationFunctions: {
-          allFromObjectWithComputedId,
-        },
+        transformationFunctions: [allFromObjectWithComputedId],
       },
       type: 'importDataFromFile',
     },

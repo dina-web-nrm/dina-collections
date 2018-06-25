@@ -1,6 +1,9 @@
 /* eslint-disable no-param-reassign */
 
-exports.transformPlace = function transformPlace({ src, target }) {
+exports.transformStorageLocation = function transformStorageLocation({
+  src,
+  target,
+}) {
   const { name, level, id, parentId } = src
 
   target.doc = {
