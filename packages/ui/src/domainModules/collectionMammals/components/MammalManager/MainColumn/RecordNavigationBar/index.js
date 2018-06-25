@@ -7,20 +7,16 @@ import 'react-rangeslider/lib/index.css'
 
 const propTypes = {
   currentRecordNumber: PropTypes.number.isRequired,
-  onCurrentRecordNumberChange: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.bool,
-  ]).isRequired,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onSelectCurrentRecordNumber: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.bool,
-  ]).isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
+  onSetCurrentRecordNumber: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.bool,
+  ]).isRequired,
   onShowAllRecords: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -32,9 +28,8 @@ export class RecordNavigationBar extends Component {
   render() {
     const {
       currentRecordNumber,
-      onCurrentRecordNumberChange: handleCurrentRecordNumberChange,
       onOpenNewRecordForm: handleOpenNewRecordForm,
-      onSelectCurrentRecordNumber: handleSelectCurrentRecordNumberChange,
+      onSetCurrentRecordNumber: handleSetCurrentRecordNumber,
       onSelectNextRecord: handleSelectNextRecord,
       onSelectPreviousRecord: handleSelectPreviousRecord,
       onShowAllRecords: handleShowAllRecords,
@@ -44,28 +39,30 @@ export class RecordNavigationBar extends Component {
 
     return (
       <Grid textAlign="center" verticalAlign="middle">
-        <Grid.Column computer={2} mobile={16} tablet={5}>
+        <Grid.Column computer={2} mobile={4} tablet={4}>
           <Button.Group>
             <Button
               disabled={!handleSelectPreviousRecord}
               icon
-              onClick={() => handleSelectPreviousRecord() || undefined}
+              onClick={event => handleSelectPreviousRecord(event)}
             >
               <Icon name="chevron left" />
             </Button>
             <Button
               disabled={!handleSelectNextRecord}
               icon
-              onClick={() => handleSelectNextRecord() || undefined}
+              onClick={event => handleSelectNextRecord(event)}
             >
               <Icon name="chevron right" />
             </Button>
           </Button.Group>
         </Grid.Column>
-        <Grid.Column computer={2} mobile={8} tablet={6}>
+        <Grid.Column computer={3} mobile={8} tablet={8}>
           <Input
-            disabled={!handleCurrentRecordNumberChange}
-            onChange={() => handleCurrentRecordNumberChange() || undefined}
+            disabled={!handleSetCurrentRecordNumber}
+            onChange={event =>
+              handleSetCurrentRecordNumber(event, event.target.value)
+            }
             size="mini"
             style={{ width: '80px' }}
             type="number"
@@ -74,51 +71,50 @@ export class RecordNavigationBar extends Component {
           <Slider
             max={totalRecords}
             min={1}
-            onChange={() =>
-              handleSelectCurrentRecordNumberChange() || undefined
-            }
+            onChange={newRecordNumber => {
+              handleSetCurrentRecordNumber(null, newRecordNumber)
+            }}
             step={1}
             value={currentRecordNumber}
           />
         </Grid.Column>
-        <Grid.Column computer={2} mobile={8} tablet={5}>
+        <Grid.Column computer={2} mobile={4} tablet={4}>
           {totalRecords}
           <br />Total records
           {!handleOpenNewRecordForm && <br />}
           {!handleOpenNewRecordForm && <i>*Adding new*</i>}
         </Grid.Column>
-        <Grid.Column computer={1} mobile={4} tablet={2}>
+        <Grid.Column computer={1} only="computer">
           <Button
             disabled={!handleShowAllRecords}
             icon
-            onClick={() => handleShowAllRecords() || undefined}
+            onClick={event => handleShowAllRecords(event)}
           >
             <Icon name="book" />
             Show All
           </Button>
         </Grid.Column>
-        <Grid.Column computer={1} mobile={4} tablet={1}>
+        <Grid.Column computer={1} only="computer">
           <Button
             disabled={!handleOpenNewRecordForm}
             icon
-            onClick={() => handleOpenNewRecordForm() || undefined}
+            onClick={event => handleOpenNewRecordForm(event)}
           >
             <Icon name="plus" />
             New record
           </Button>
         </Grid.Column>
-        <Grid.Column computer={5} mobile={4} tablet={11} />
-        <Grid.Column computer={1} mobile={4} tablet={1}>
+        <Grid.Column computer={5} only="computer" />
+        <Grid.Column computer={2} only="computer">
           <Button
             disabled={!handleToggleFilters}
             icon
-            onClick={() => handleToggleFilters() || undefined}
+            onClick={event => handleToggleFilters(event)}
           >
             <Icon name="search" />
             Find
           </Button>
         </Grid.Column>
-        <Grid.Column computer={1} />
       </Grid>
     )
   }
