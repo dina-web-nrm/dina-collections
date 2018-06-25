@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Route, Switch } from 'react-router-dom'
 
-import {
-  InformationSidebar,
-  NavigationSidebar,
-  ViewWrap,
-} from 'coreModules/layout/components'
+import { NavigationSidebar, ViewWrap } from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
 import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
 
@@ -165,7 +161,6 @@ class App extends Component {
           </Switch>
         </ViewWrap>
         <NavigationSidebar />
-        <InformationSidebar />
         <ShortcutsDisplay />
       </React.Fragment>
     )
