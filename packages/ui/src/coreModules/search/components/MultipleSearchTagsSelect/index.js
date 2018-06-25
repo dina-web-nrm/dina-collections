@@ -277,6 +277,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           onSearchChange={this.handleSearchChange}
           rightButton={
             <Button
+              disabled={!searchQueryResultsMap}
               onClick={
                 refineOpen ? this.handleCloseRefine : this.handleOpenRefine
               }
