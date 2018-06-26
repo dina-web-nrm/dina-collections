@@ -1,1809 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`storyshots Storyshots RecordNavigationBar addingNewRecordComplete 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon disabled button"
-              disabled={true}
-              onClick={[Function]}
-              role="button"
-              tabIndex={-1}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={50001}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50001}
-            aria-valuemin={1}
-            aria-valuenow={50001}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50001
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar changeRecordNumber 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={30000}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={30000}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar default 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={30000}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={30000}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar firstRecord 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon disabled button"
-              disabled={true}
-              onClick={[Function]}
-              role="button"
-              tabIndex={-1}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={1}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={1}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar lastRecord 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon disabled button"
-              disabled={true}
-              onClick={[Function]}
-              role="button"
-              tabIndex={-1}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={50000}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={50000}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar nextRecord 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={30001}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={30001}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar openFilter 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={30000}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={30000}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar openNewRecordForm 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon disabled button"
-              disabled={true}
-              onClick={[Function]}
-              role="button"
-              tabIndex={-1}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon disabled button"
-              disabled={true}
-              onClick={[Function]}
-              role="button"
-              tabIndex={-1}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini disabled input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={true}
-              onChange={[Function]}
-              tabIndex={-1}
-              type="number"
-              value={50000}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={50000}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-          <br />
-          <i>
-            *Adding new*
-          </i>
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon disabled button"
-            disabled={true}
-            onClick={[Function]}
-            role="button"
-            tabIndex={-1}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar previousRecord 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={29999}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={29999}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots RecordNavigationBar showAllRecords 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui center aligned middle aligned grid"
-      >
-        <div
-          className="two wide computer sixteen wide mobile five wide tablet column"
-        >
-          <div
-            className="ui buttons"
-          >
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron left icon"
-              />
-            </button>
-            <button
-              className="ui icon button"
-              disabled={undefined}
-              onClick={[Function]}
-              role="button"
-              tabIndex={undefined}
-            >
-              <i
-                aria-hidden="true"
-                className="chevron right icon"
-              />
-            </button>
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile six wide tablet column"
-        >
-          <div
-            className="ui mini input"
-            style={
-              Object {
-                "width": "80px",
-              }
-            }
-          >
-            <input
-              disabled={false}
-              onChange={[Function]}
-              tabIndex={undefined}
-              type="number"
-              value={30000}
-            />
-          </div>
-          <div
-            aria-orientation="horizontal"
-            aria-valuemax={50000}
-            aria-valuemin={1}
-            aria-valuenow={30000}
-            className="rangeslider rangeslider-horizontal"
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            onTouchEnd={[Function]}
-            onTouchStart={[Function]}
-          >
-            <div
-              className="rangeslider__fill"
-              style={
-                Object {
-                  "width": "0px",
-                }
-              }
-            />
-            <div
-              className="rangeslider__handle"
-              onKeyDown={[Function]}
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              style={
-                Object {
-                  "left": "0px",
-                }
-              }
-              tabIndex={0}
-            >
-              <div
-                className="rangeslider__handle-label"
-              >
-                
-              </div>
-            </div>
-            <ul
-              className="rangeslider__labels"
-            />
-          </div>
-        </div>
-        <div
-          className="two wide computer eight wide mobile five wide tablet column"
-        >
-          50000
-          <br />
-          Total records
-        </div>
-        <div
-          className="one wide computer four wide mobile two wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="book icon"
-            />
-            Show All
-          </button>
-        </div>
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="plus icon"
-            />
-            New record
-          </button>
-        </div>
-        <div
-          className="five wide computer four wide mobile eleven wide tablet column"
-        />
-        <div
-          className="one wide computer four wide mobile one wide tablet column"
-        >
-          <button
-            className="ui icon button"
-            disabled={undefined}
-            onClick={[Function]}
-            role="button"
-            tabIndex={undefined}
-          >
-            <i
-              aria-hidden="true"
-              className="search icon"
-            />
-            Find
-          </button>
-        </div>
-        <div
-          className="one wide computer column"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`storyshots Storyshots coreModules/bootstrap/DefaultLoader Loading 1`] = `
 <div>
   <div
@@ -3495,6 +1691,25 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
           className="dimmable"
         >
           <div
+            className="ui inverted menu"
+            style={
+              Object {
+                "borderRadius": 0,
+                "margin": 0,
+              }
+            }
+          >
+            <div
+              className="item"
+              onClick={[Function]}
+            >
+              <i
+                aria-hidden="true"
+                className="sidebar large icon"
+              />
+            </div>
+          </div>
+          <div
             className="ui dimmer"
             onClick={[Function]}
           />
@@ -3667,7 +1882,7 @@ exports[`storyshots Storyshots coreModules/notifications/NotificationDisplay Def
 
 exports[`storyshots Storyshots coreModules/notifications/NotificationModal Default 1`] = `<div />`;
 
-exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect MultipleSearchTagsSelect 1`] = `
+exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -3773,11 +1988,11 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Multi
             value={Array []}
           />
           <button
-            className="ui button"
-            disabled={undefined}
+            className="ui disabled button"
+            disabled={true}
             onClick={[Function]}
             role="button"
-            tabIndex={undefined}
+            tabIndex={-1}
           >
             0/0
           </button>
@@ -3893,6 +2108,1780 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
           
         </div>
       </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar addingNewRecordComplete 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon disabled button"
+              disabled={true}
+              onClick={[Function]}
+              role="button"
+              tabIndex={-1}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={50001}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50001}
+            aria-valuemin={1}
+            aria-valuenow={50001}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50001
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar changeRecordNumber 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={30000}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={30000}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={30000}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={30000}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar firstRecord 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon disabled button"
+              disabled={true}
+              onClick={[Function]}
+              role="button"
+              tabIndex={-1}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={1}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={1}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar lastRecord 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon disabled button"
+              disabled={true}
+              onClick={[Function]}
+              role="button"
+              tabIndex={-1}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={50000}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={50000}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar nextRecord 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={30001}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={30001}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar openFilter 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={30000}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={30000}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar openNewRecordForm 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon disabled button"
+              disabled={true}
+              onClick={[Function]}
+              role="button"
+              tabIndex={-1}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon disabled button"
+              disabled={true}
+              onClick={[Function]}
+              role="button"
+              tabIndex={-1}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={50000}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={50000}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+          <br />
+          <i>
+            *Adding new*
+          </i>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar previousRecord 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={29999}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={29999}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar showAllRecords 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          <div
+            className="ui buttons"
+          >
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron left icon"
+              />
+            </button>
+            <button
+              className="ui icon button"
+              disabled={undefined}
+              onClick={[Function]}
+              role="button"
+              tabIndex={undefined}
+            >
+              <i
+                aria-hidden="true"
+                className="chevron right icon"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="three wide computer eight wide mobile eight wide tablet column"
+        >
+          <div
+            className="ui mini disabled input"
+            style={
+              Object {
+                "width": "80px",
+              }
+            }
+          >
+            <input
+              disabled={true}
+              onChange={[Function]}
+              tabIndex={-1}
+              type="number"
+              value={30000}
+            />
+          </div>
+          <div
+            aria-orientation="horizontal"
+            aria-valuemax={50000}
+            aria-valuemin={1}
+            aria-valuenow={30000}
+            className="rangeslider rangeslider-horizontal"
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="rangeslider__fill"
+              style={
+                Object {
+                  "width": "0px",
+                }
+              }
+            />
+            <div
+              className="rangeslider__handle"
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              style={
+                Object {
+                  "left": "0px",
+                }
+              }
+              tabIndex={0}
+            >
+              <div
+                className="rangeslider__handle-label"
+              >
+                
+              </div>
+            </div>
+            <ul
+              className="rangeslider__labels"
+            />
+          </div>
+        </div>
+        <div
+          className="two wide computer four wide mobile four wide tablet column"
+        >
+          50000
+          <br />
+          Total records
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="book icon"
+            />
+            Show All
+          </button>
+        </div>
+        <div
+          className="computer only one wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="plus icon"
+            />
+            New record
+          </button>
+        </div>
+        <div
+          className="computer only five wide computer column"
+        />
+        <div
+          className="computer only two wide computer column"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="search icon"
+            />
+            Find
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
