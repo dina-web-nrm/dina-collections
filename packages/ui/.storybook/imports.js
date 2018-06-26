@@ -25,3 +25,4 @@ require('../src/coreModules/notifications/components/NotificationDisplay.stories
 require('../src/coreModules/search/components/MultipleSearchTagsSelect/index.stories.js')
 require('../src/coreModules/user/components/LoginForm.stories.js')
 require('../src/domainModules/collectionMammals/components/MammalManager/MainColumn/RecordNavigationBar/index.stories.js')
+require('../src/domainModules/collectionMammals/components/MammalManager/MainColumn/ResultOptionsBar/index.stories.js')
