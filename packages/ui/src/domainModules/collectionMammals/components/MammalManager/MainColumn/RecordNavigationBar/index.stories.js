@@ -31,7 +31,7 @@ storiesOf(
   'domainModules/collectionMammals/MammalManager/RecordNavigationBar',
   module
 )
-  .addDecorator(createStoryDecorator())
+  .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <RecordNavigationBar
       currentRecordNumber={currentRecordNumber}
