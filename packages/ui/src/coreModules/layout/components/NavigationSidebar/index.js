@@ -6,6 +6,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { Sidebar, Icon, Menu } from 'semantic-ui-react'
 import logoutActionCreator from 'coreModules/user/actionCreators/logout'
 import { createModuleTranslate } from 'coreModules/i18n/components'
+import { injectNavigationItems } from 'coreModules/routing/higherOrderComponents'
 
 import SidebarNavItem from './SidebarNavItem'
 import SidebarNavItemGroup from './SidebarNavItemGroup'
@@ -20,7 +21,7 @@ const propTypes = {
   displayHome: PropTypes.bool,
   displayLogout: PropTypes.bool,
   logout: PropTypes.func.isRequired,
-  navItems: PropTypes.arrayOf(
+  navigationItems: PropTypes.arrayOf(
     PropTypes.shape({
       exact: PropTypes.bool,
       icon: PropTypes.string,
@@ -36,7 +37,7 @@ const propTypes = {
 const defaultProps = {
   displayHome: false,
   displayLogout: true,
-  navItems: [],
+  navigationItems: [],
   nested: false,
   width: 100,
 }
@@ -46,7 +47,7 @@ export const NavigationSidebar = ({
   displayLogout,
   nested,
   logout,
-  navItems,
+  navigationItems,
   width,
 }) => {
   return (
@@ -62,7 +63,7 @@ export const NavigationSidebar = ({
       vertical
       visible
     >
-      {navItems.map(navItem => {
+      {navigationItems.map(navItem => {
         if (navItem.items) {
           return (
             <SidebarNavItemGroup key={navItem.name} navGroupItem={navItem} />
@@ -101,6 +102,8 @@ export const NavigationSidebar = ({
 NavigationSidebar.propTypes = propTypes
 NavigationSidebar.defaultProps = defaultProps
 
-export default compose(withRouter, connect(undefined, mapDispatchToProps))(
-  NavigationSidebar
-)
+export default compose(
+  injectNavigationItems,
+  withRouter,
+  connect(undefined, mapDispatchToProps)
+)(NavigationSidebar)

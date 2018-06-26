@@ -4,7 +4,8 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { createSelector } from 'reselect'
 
-import { ColumnLayout } from 'coreModules/layout/components'
+import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
+import layoutSelectors from 'coreModules/layout/globalSelectors'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import {
   actionCreators as keyObjectActionCreators,
@@ -19,31 +20,46 @@ const main = {
   width: undefined,
 }
 
-const filter = {
-  key: 'filter',
-  renderColumn: props => <FilterColumn {...props} />,
-  width: '300px',
+const createFilter = (width = '300px') => {
+  return {
+    key: 'filter',
+    renderColumn: props => <FilterColumn {...props} />,
+    width,
+  }
 }
 
-const filterMobile = {
-  key: 'filterMobile',
-  renderColumn: props => <FilterColumn {...props} />,
-  width: '100%',
+const createRightSidebar = width => {
+  return {
+    key: 'rightSidebar',
+    renderColumn: props => <InformationSidebar {...props} />,
+    width,
+  }
 }
 
 const getColumns = createSelector(
   ({ filterColumnIsOpen }) => filterColumnIsOpen,
   ({ isSmall }) => isSmall,
-  (filterColumnIsOpen, isSmall) => {
+  ({ rightSidebarIsOpen }) => rightSidebarIsOpen,
+  ({ rightSidebarWidth }) => rightSidebarWidth,
+  (filterColumnIsOpen, isSmall, rightSidebarIsOpen, rightSidebarWidth) => {
+    const columns = [main]
     if (filterColumnIsOpen) {
       if (isSmall) {
-        return [filterMobile]
+        return [createFilter('100%')]
       }
-
-      return [main, filter]
+      columns.push(createFilter())
     }
 
-    return [main]
+    if (rightSidebarIsOpen) {
+      if (isSmall) {
+        return [createRightSidebar('100%')]
+      }
+      columns.push(
+        createRightSidebar(rightSidebarWidth && `${rightSidebarWidth}px`)
+      )
+    }
+
+    return columns
   }
 )
 
@@ -55,6 +71,7 @@ const mapStateToProps = state => {
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
     isSmall: sizeSelectors.getIsSmall(state),
     mainColumnViewKey: keyObjectGlobalSelectors.get.mainColumnViewKey(state),
+    rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     totalNumberOfRecords: keyObjectGlobalSelectors.get.totalNumberOfRecords(
       state
     ),
@@ -71,8 +88,10 @@ const mapDispatchToProps = {
 const propTypes = {
   currentRecordNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
-  isSmall: PropTypes.bool.isRequired,
+  isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   mainColumnViewKey: PropTypes.string.isRequired,
+  rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+  rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   setCurrentRecordNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setMainColumnViewKey: PropTypes.func.isRequired,
@@ -81,6 +100,7 @@ const propTypes = {
 }
 const defaultProps = {
   currentRecordNumber: undefined,
+  rightSidebarWidth: 300,
   totalNumberOfRecords: undefined,
 }
 
@@ -101,8 +121,7 @@ class MammalManager extends Component {
   }
 
   getColumns() {
-    const { filterColumnIsOpen, isSmall } = this.props
-    return getColumns({ filterColumnIsOpen, isSmall })
+    return getColumns(this.props)
   }
 
   handleSetMainColumnViewKey(event, key) {
@@ -111,13 +130,20 @@ class MammalManager extends Component {
   }
 
   handleSetCurrentRecordNumber(event, newRecordNumber) {
-    event.preventDefault()
-    this.props.setCurrentRecordNumber(newRecordNumber)
+    if (event) {
+      event.preventDefault()
+    }
+
+    const parsedInteger = Number(newRecordNumber)
+
+    if (Number.isInteger(parsedInteger)) {
+      this.props.setCurrentRecordNumber(parsedInteger)
+    }
   }
 
   handleToggleFilters(event) {
     event.preventDefault()
-    this.props.setFilterColumnIsOpen(event, !this.props.filterColumnIsOpen)
+    this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
   handleOpenNewRecordForm(event) {
@@ -149,21 +175,30 @@ class MammalManager extends Component {
 
     const lastRecordNumber = totalNumberOfRecords // TODO: check first selectedNumberOfRecords
     const isNewRecordView = mainColumnViewKey === 'newRecord'
-    const showSelectNextRecord =
+    const showSelectNextRecordButton =
       !isNewRecordView && currentRecordNumber !== lastRecordNumber
-    const showSelectPreviousRecord =
+    const showSelectPreviousRecordButton =
       !isNewRecordView && currentRecordNumber !== 1
+    const showAllRecordsButton = !isNewRecordView // TODO: add condition that no filters are applied
 
     return (
       <ColumnLayout
         columns={this.getColumns()}
+        currentRecordNumber={currentRecordNumber}
         mainColumnViewKey={mainColumnViewKey}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
-        onSelectNextRecord={showSelectNextRecord && this.handleSelectNextRecord}
-        onSelectPreviousRecord={
-          showSelectPreviousRecord && this.handleSelectPreviousRecord
+        onSelectNextRecord={
+          showSelectNextRecordButton && this.handleSelectNextRecord
         }
+        onSelectPreviousRecord={
+          showSelectPreviousRecordButton && this.handleSelectPreviousRecord
+        }
+        onSetCurrentRecordNumber={
+          !isNewRecordView && this.handleSetCurrentRecordNumber
+        }
+        onShowAllRecords={showAllRecordsButton && this.handleShowAllRecords}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}
+        totalRecords={totalNumberOfRecords}
       />
     )
   }

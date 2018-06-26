@@ -46,7 +46,7 @@ storiesOf('coreModules/commonUi/NavigationSidebar', module)
       return (
         <NavigationSidebar
           logout={action('logout')}
-          navItems={NAVIGATION_SIDEBAR_ITEMS}
+          navigationItems={NAVIGATION_SIDEBAR_ITEMS}
         />
       )
     })

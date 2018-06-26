@@ -26,7 +26,10 @@ export const actions = {
   onToggleFilters: action('onToggleFilters'),
 }
 
-storiesOf('RecordNavigationBar', module)
+storiesOf(
+  'domainModules/collectionMammals/MammalManager/RecordNavigationBar',
+  module
+)
   .addDecorator(createStoryDecorator())
   .add('default', () => (
     <RecordNavigationBar
