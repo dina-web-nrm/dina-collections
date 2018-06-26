@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { Button, Icon, Grid, Input } from 'semantic-ui-react'
 import 'common/dist/semantic.css' // eslint-disable-line
 import Slider from 'react-rangeslider'
-import 'react-rangeslider/lib/index.css'
 
 const propTypes = {
   currentRecordNumber: PropTypes.number.isRequired,
