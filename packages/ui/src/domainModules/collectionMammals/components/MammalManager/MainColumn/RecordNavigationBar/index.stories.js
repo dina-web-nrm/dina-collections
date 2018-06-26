@@ -1,5 +1,6 @@
 import React from 'react'
 import 'common/dist/semantic.css' // eslint-disable-line
+import 'react-rangeslider/lib/index.css'
 import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import { action } from '@storybook/addon-actions' // eslint-disable-line
 import { storiesOf } from '@storybook/react' // eslint-disable-line
@@ -30,7 +31,7 @@ storiesOf(
   'domainModules/collectionMammals/MammalManager/RecordNavigationBar',
   module
 )
-  .addDecorator(createStoryDecorator())
+  .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <RecordNavigationBar
       currentRecordNumber={currentRecordNumber}
