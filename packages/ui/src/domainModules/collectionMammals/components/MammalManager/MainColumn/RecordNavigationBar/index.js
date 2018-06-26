@@ -37,7 +37,7 @@ export class RecordNavigationBar extends Component {
     } = this.props
 
     return (
-      <Grid textAlign="center" verticalAlign="middle">
+      <Grid padded textAlign="center" verticalAlign="middle">
         <Grid.Column computer={2} mobile={4} tablet={4}>
           <Button.Group>
             <Button

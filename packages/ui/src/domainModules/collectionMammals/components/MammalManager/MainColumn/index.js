@@ -25,7 +25,7 @@ const main = {
 }
 
 const recordNavigation = {
-  height: '80px',
+  height: '100px',
   key: 'recordNavigation',
   renderRow: props => <RecordNavigationBar {...props} />,
   style: { border: '1px solid' },
