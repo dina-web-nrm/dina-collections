@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Icon, Grid, Input } from 'semantic-ui-react'
-import 'common/dist/semantic.css' // eslint-disable-line
 import Slider from 'react-rangeslider'
 
 const propTypes = {
