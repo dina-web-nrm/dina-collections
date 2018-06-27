@@ -13,6 +13,9 @@ const propTypes = {
   aggregationFunctionName: PropTypes.string,
   aggregationKey: PropTypes.string,
   aggregationLimit: PropTypes.number,
+  drillDownQuery: PropTypes.shape({
+    and: PropTypes.array.isRequired,
+  }),
   filterFunctionName: PropTypes.string.isRequired,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
@@ -26,6 +29,7 @@ const defaultProps = {
   aggregationFunctionName: undefined,
   aggregationKey: undefined,
   aggregationLimit: 10000,
+  drillDownQuery: undefined,
   inlineRefine: false,
   input: {},
 }
@@ -64,6 +68,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       aggregationFunctionName,
       aggregationKey,
       aggregationLimit,
+      drillDownQuery,
       filterFunctionName,
     } = this.props
 
@@ -71,6 +76,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       idsOnly: false,
       query: {
         and: [
+          ...((drillDownQuery && drillDownQuery.and) || []),
           {
             filter: {
               filterFunction: filterFunctionName,
