@@ -3784,64 +3784,57 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
 
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultOptionsBar default 1`] = `
 <div>
-  <div>
-    <div
-      className="ui top attached tabular menu"
+  <div
+    className="ui top attached tabular menu"
+  >
+    <a
+      className="active item"
+      onClick={[Function]}
     >
-      <a
-        className="active item"
-        onClick={[Function]}
+      <i
+        aria-hidden="true"
+        className="wordpress forms large icon"
+      />
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="table large icon"
+      />
+    </a>
+    <div
+      className="right menu"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
       >
-        <i
-          aria-hidden="true"
-          className="wordpress forms large icon"
-        />
-      </a>
-      <a
+        <div
+          className="column"
+        >
+          <i
+            aria-hidden="true"
+            className="share large icon"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          />
+        </div>
+      </div>
+      <div
         className="item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="table large icon"
-        />
-      </a>
-      <div
-        className="right menu"
-      >
-        <div
-          className="ui center aligned middle aligned grid"
-        >
-          <div
-            className="column"
-          >
-            <i
-              aria-hidden="true"
-              className="share large icon"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            />
-          </div>
-        </div>
-        <div
-          className="item"
+          className="setting large icon"
           onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="setting large icon"
-            onClick={[Function]}
-          />
-        </div>
+        />
       </div>
-    </div>
-    <div
-      className="ui bottom attached segment"
-    >
-      Result form...
     </div>
   </div>
 </div>
@@ -3849,64 +3842,57 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
 
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultOptionsBar formView 1`] = `
 <div>
-  <div>
-    <div
-      className="ui top attached tabular menu"
+  <div
+    className="ui top attached tabular menu"
+  >
+    <a
+      className="active item"
+      onClick={[Function]}
     >
-      <a
-        className="active item"
-        onClick={[Function]}
+      <i
+        aria-hidden="true"
+        className="wordpress forms large icon"
+      />
+    </a>
+    <a
+      className="item"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="table large icon"
+      />
+    </a>
+    <div
+      className="right menu"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
       >
-        <i
-          aria-hidden="true"
-          className="wordpress forms large icon"
-        />
-      </a>
-      <a
+        <div
+          className="column"
+        >
+          <i
+            aria-hidden="true"
+            className="share large icon"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          />
+        </div>
+      </div>
+      <div
         className="item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="table large icon"
-        />
-      </a>
-      <div
-        className="right menu"
-      >
-        <div
-          className="ui center aligned middle aligned grid"
-        >
-          <div
-            className="column"
-          >
-            <i
-              aria-hidden="true"
-              className="share large icon"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            />
-          </div>
-        </div>
-        <div
-          className="item"
+          className="setting large icon"
           onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="setting large icon"
-            onClick={[Function]}
-          />
-        </div>
+        />
       </div>
-    </div>
-    <div
-      className="ui bottom attached segment"
-    >
-      Result form...
     </div>
   </div>
 </div>
@@ -3914,64 +3900,57 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
 
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultOptionsBar tableView 1`] = `
 <div>
-  <div>
-    <div
-      className="ui top attached tabular menu"
+  <div
+    className="ui top attached tabular menu"
+  >
+    <a
+      className="item"
+      onClick={[Function]}
     >
-      <a
+      <i
+        aria-hidden="true"
+        className="wordpress forms large icon"
+      />
+    </a>
+    <a
+      className="active item"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="table large icon"
+      />
+    </a>
+    <div
+      className="right menu"
+    >
+      <div
+        className="ui center aligned middle aligned grid"
+      >
+        <div
+          className="column"
+        >
+          <i
+            aria-hidden="true"
+            className="share large icon"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          />
+        </div>
+      </div>
+      <div
         className="item"
         onClick={[Function]}
       >
         <i
           aria-hidden="true"
-          className="wordpress forms large icon"
-        />
-      </a>
-      <a
-        className="active item"
-        onClick={[Function]}
-      >
-        <i
-          aria-hidden="true"
-          className="table large icon"
-        />
-      </a>
-      <div
-        className="right menu"
-      >
-        <div
-          className="ui center aligned middle aligned grid"
-        >
-          <div
-            className="column"
-          >
-            <i
-              aria-hidden="true"
-              className="share large icon"
-              onBlur={[Function]}
-              onClick={[Function]}
-              onFocus={[Function]}
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
-            />
-          </div>
-        </div>
-        <div
-          className="item"
+          className="setting large icon"
           onClick={[Function]}
-        >
-          <i
-            aria-hidden="true"
-            className="setting large icon"
-            onClick={[Function]}
-          />
-        </div>
+        />
       </div>
-    </div>
-    <div
-      className="ui bottom attached segment"
-    >
-      Result table...
     </div>
   </div>
 </div>
