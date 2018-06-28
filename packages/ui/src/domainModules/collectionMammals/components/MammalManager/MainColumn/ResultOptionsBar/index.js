@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Grid, Icon, Menu, Popup } from 'semantic-ui-react'
-import 'common/dist/semantic.css' // eslint-disable-line
-import 'react-rangeslider/lib/index.css'
 
 const propTypes = {
   mainColumnActiveTab: PropTypes.string.isRequired,
