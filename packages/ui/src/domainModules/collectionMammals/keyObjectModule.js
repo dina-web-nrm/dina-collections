@@ -11,7 +11,7 @@ const {
   initialValues: {
     currentRecordNumber: null,
     filterColumnIsOpen: false,
-    mainColumnActiveTab: 'newRecord',
+    mainColumnViewKey: 'table',
     totalNumberOfRecords: null,
   },
   keys: [
