@@ -1931,7 +1931,7 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
         }
       >
         <label
-          htmlFor="MultipleSearchTagsSelect"
+          htmlFor="searchCollectingLocation"
           style={Object {}}
         >
           <span>
@@ -1947,7 +1947,7 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
             aria-expanded={false}
             autoComplete={undefined}
             className="ui button multiple search selection dropdown"
-            name="MultipleSearchTagsSelect"
+            name="searchCollectingLocation"
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -1959,6 +1959,7 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
                 "background": "white",
                 "borderRadius": 0,
                 "fontWeight": "normal",
+                "maxWidth": "75%",
               }
             }
             tabIndex={undefined}
@@ -2006,7 +2007,7 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
           </div>
           <input
             className="hidden"
-            name="MultipleSearchTagsSelect.hidden"
+            name="searchCollectingLocation.hidden"
             onBlur={[Function]}
             onChange={[Function]}
             type="hidden"
