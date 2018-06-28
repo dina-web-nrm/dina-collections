@@ -9,20 +9,10 @@ import PageTemplate from './PageTemplate'
 storiesOf('coreModules/commonUi/PageTemplate', module)
   .addDecorator(createStoryDecorator())
   .add(
-    'No fixed menu',
+    'Default',
     withInfo()(() => {
       return (
-        <PageTemplate hasFixedMenu={false}>
-          <div>Page content</div>
-        </PageTemplate>
-      )
-    })
-  )
-  .add(
-    'Fixed menu',
-    withInfo()(() => {
-      return (
-        <PageTemplate hasFixedMenu>
+        <PageTemplate>
           <div>Page content</div>
         </PageTemplate>
       )

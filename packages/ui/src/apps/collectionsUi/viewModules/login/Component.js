@@ -7,7 +7,7 @@ import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 import logo from './logo.png'
 
 const Login = () => (
-  <PageTemplate hasFixedMenu>
+  <PageTemplate fullViewHeight>
     <div className="login-form">
       <Grid textAlign="center" verticalAlign="middle">
         <Grid.Column style={{ marginTop: 100, maxWidth: 450 }}>

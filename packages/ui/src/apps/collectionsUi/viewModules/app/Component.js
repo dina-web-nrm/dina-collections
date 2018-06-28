@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Route, Switch } from 'react-router-dom'
 
-import { NavigationSidebar, ViewWrap } from 'coreModules/layout/components'
+import { AppNavigationSidebar, ViewWrap } from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
 import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
 
@@ -31,7 +31,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <ViewWrap leftSidebarEnabled leftSidebarTogglable>
+        <ViewWrap leftSidebarEnabled leftSidebarTogglable topMenuEnabled>
           <Switch>
             <Route component={Home} exact path={match.url} />
             <Route
@@ -160,7 +160,7 @@ class App extends Component {
             <Route component={PageNotFound} />
           </Switch>
         </ViewWrap>
-        <NavigationSidebar />
+        <AppNavigationSidebar />
         <ShortcutsDisplay />
       </React.Fragment>
     )

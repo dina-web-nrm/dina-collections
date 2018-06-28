@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 export default () => {
   const size = 'large'
   return (
-    <Segment id="footer" inverted style={{ padding: '5em 0em' }} vertical>
+    <Segment id="footer" inverted style={{ padding: '5em' }} vertical>
       <Container>
         <Grid divided inverted stackable>
           <Grid.Row>

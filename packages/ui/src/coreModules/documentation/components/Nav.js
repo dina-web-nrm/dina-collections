@@ -98,7 +98,7 @@ class Nav extends Component {
       }
     })
 
-    const navItems = [
+    const navigationItems = [
       markdownNavItemsGroup,
       versionItemsGroup,
       ...modelItemGroups,
@@ -108,7 +108,7 @@ class Nav extends Component {
       <NavigationSidebar
         displayHome
         displayLogout={false}
-        navItems={navItems}
+        navigationItems={navigationItems}
         nested
         width={180}
       />

@@ -72,6 +72,7 @@ const propTypes = {
   leftSidebarTogglable: PropTypes.bool,
   leftSidebarWidth: PropTypes.number,
   setLeftSidebarIsOpen: PropTypes.func.isRequired,
+  topMenuEnabled: PropTypes.bool,
   windowHeight: PropTypes.number.isRequired,
 }
 
@@ -79,6 +80,7 @@ const defaultProps = {
   leftSidebarEnabled: false,
   leftSidebarTogglable: false,
   leftSidebarWidth: 100,
+  topMenuEnabled: false,
 }
 
 const ViewWrap = ({
@@ -89,6 +91,7 @@ const ViewWrap = ({
   leftSidebarTogglable,
   leftSidebarWidth,
   setLeftSidebarIsOpen,
+  topMenuEnabled,
   windowHeight,
 }) => {
   if (!windowHeight) {
@@ -110,14 +113,21 @@ const ViewWrap = ({
   return (
     <div style={viewWrapStyle}>
       <Dimmer.Dimmable dimmed={dimmerActive}>
-        <TopMenu
-          toggleLeftSidebar={leftSidebarTogglable && toggleLeftSidebar}
-        />
+        {topMenuEnabled && (
+          <TopMenu
+            toggleLeftSidebar={
+              leftSidebarEnabled && leftSidebarTogglable && toggleLeftSidebar
+            }
+          />
+        )}
         <Dimmer active={dimmerActive} onClickOutside={toggleLeftSidebar} />
         <div
           className="ui fluid dina background"
           // deducting the menu height from this div
-          style={{ height: `${windowHeight - 40}px`, overflow: 'auto' }}
+          style={{
+            height: `${topMenuEnabled ? windowHeight - 40 : windowHeight}px`,
+            overflow: 'auto',
+          }}
         >
           {children}
         </div>

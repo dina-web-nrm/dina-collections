@@ -6,7 +6,6 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { Sidebar, Icon, Menu } from 'semantic-ui-react'
 import logoutActionCreator from 'coreModules/user/actionCreators/logout'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { injectNavigationItems } from 'coreModules/routing/higherOrderComponents'
 
 import SidebarNavItem from './SidebarNavItem'
 import SidebarNavItemGroup from './SidebarNavItemGroup'
@@ -81,7 +80,7 @@ export const NavigationSidebar = ({
           to="/"
         >
           <Icon name="reply" />
-          <ModuleTranslate capitalize textKey="routes.home" />
+          <ModuleTranslate capitalize textKey="routes.start" />
         </NavLink>
       )}
       {displayLogout && (
@@ -102,8 +101,6 @@ export const NavigationSidebar = ({
 NavigationSidebar.propTypes = propTypes
 NavigationSidebar.defaultProps = defaultProps
 
-export default compose(
-  injectNavigationItems,
-  withRouter,
-  connect(undefined, mapDispatchToProps)
-)(NavigationSidebar)
+export default compose(withRouter, connect(undefined, mapDispatchToProps))(
+  NavigationSidebar
+)
