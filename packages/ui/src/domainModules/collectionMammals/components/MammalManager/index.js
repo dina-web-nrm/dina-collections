@@ -111,11 +111,15 @@ const defaultProps = {
 class MammalManager extends Component {
   constructor(props) {
     super(props)
+
     this.getColumns = this.getColumns.bind(this)
+    this.handleExportToCsv = this.handleExportToCsv.bind(this)
+    this.handleTabClick = this.handleTabClick.bind(this)
     this.handleSetMainColumnViewKey = this.handleSetMainColumnViewKey.bind(this)
     this.handleSetCurrentRecordNumber = this.handleSetCurrentRecordNumber.bind(
       this
     )
+    this.handleSettingClick = this.handleSettingClick.bind(this)
     this.handleToggleFilters = this.handleToggleFilters.bind(this)
     this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
     this.handleOpenTableView = this.handleOpenTableView.bind(this)
@@ -126,6 +130,19 @@ class MammalManager extends Component {
 
   getColumns() {
     return getColumns(this.props)
+  }
+
+  handleExportToCsv(event) {
+    this.handleSetMainColumnViewKey(event, 'exportToCsv')
+  }
+
+  handleSettingClick(event) {
+    this.handleSetMainColumnViewKey(event, 'settings')
+  }
+
+  handleTabClick(event, tab) {
+    event.preventDefault()
+    this.props.setActiveTab(tab)
   }
 
   handleSetMainColumnViewKey(event, key) {
@@ -192,6 +209,7 @@ class MammalManager extends Component {
         columns={this.getColumns()}
         currentRecordNumber={currentRecordNumber}
         mainColumnViewKey={mainColumnViewKey}
+        onExportCsv={this.handleExportToCsv}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
         onSelectNextRecord={
           showSelectNextRecordButton && this.handleSelectNextRecord
@@ -203,6 +221,8 @@ class MammalManager extends Component {
           !isNewRecordView && this.handleSetCurrentRecordNumber
         }
         onShowAllRecords={showAllRecordsButton && this.handleShowAllRecords}
+        onSettingClick={this.handleSettingClick}
+        onTabClick={this.handleTabClick}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}
         totalRecords={totalNumberOfRecords}
       />
