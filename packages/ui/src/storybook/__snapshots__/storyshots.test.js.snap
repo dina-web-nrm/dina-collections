@@ -2139,6 +2139,71 @@ exports[`storyshots Storyshots coreModules/user/LoginForm Default 1`] = `
 </div>
 `;
 
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Filters 400 px wide 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "width": "400px",
+      }
+    }
+  >
+    <div
+      className="accordion ui fluid styled"
+    >
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              identifier
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              taxonomy
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar addingNewRecordComplete 1`] = `
 <div>
   <div

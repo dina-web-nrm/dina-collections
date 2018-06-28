@@ -3,18 +3,19 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
 import { RowLayout } from 'coreModules/layout/components'
-import { injectWindowHeight } from '../../../../../coreModules/size/higherOrderComponents'
+import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
+import Filters from './Filters'
 
 const main = {
   height: undefined,
   key: 'main',
-  renderRow: () => <div>filter cards</div>,
+  renderRow: props => <Filters {...props} />,
 }
 
 const header = {
   height: '50px',
   key: 'header',
-  renderRow: () => <h2>Filters</h2>,
+  renderRow: () => <h2>Find records</h2>,
 }
 
 const rows = [header, main]
