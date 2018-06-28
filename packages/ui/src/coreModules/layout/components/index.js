@@ -1,3 +1,4 @@
+export { default as AppNavigationSidebar } from './AppNavigationSidebar'
 export { default as Block } from './Block'
 export { default as ColumnLayout } from './ColumnLayout'
 export { default as InformationSidebar } from './InformationSidebar'
