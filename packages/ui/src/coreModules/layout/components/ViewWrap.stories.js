@@ -18,3 +18,13 @@ storiesOf('coreModules/layout/ViewWrap', module)
       )
     })
   )
+  .add(
+    'With TopMenu',
+    withInfo()(() => {
+      return (
+        <ViewWrap topMenuEnabled>
+          <div>View wrap content</div>
+        </ViewWrap>
+      )
+    })
+  )
