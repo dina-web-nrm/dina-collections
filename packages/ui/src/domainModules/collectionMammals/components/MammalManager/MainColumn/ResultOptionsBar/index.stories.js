@@ -8,8 +8,9 @@ import ResultOptionsBar from './index'
 
 export const actions = {
   onExportCsv: action('onExportCsv'),
+  onFormTabClick: action('onFormTabClick'),
   onSettingClick: action('onSettingClick'),
-  onTabClick: action('onTabClick'),
+  onTableTabClick: action('onTableTabClick'),
 }
 
 storiesOf(
@@ -18,11 +19,23 @@ storiesOf(
 )
   .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
-    <ResultOptionsBar mainColumnActiveTab="newRecord" {...actions} />
+    <ResultOptionsBar
+      mainColumnActiveTab="newRecord"
+      {...actions}
+      onFormTabClick={false}
+    />
   ))
   .add('tableView', () => (
-    <ResultOptionsBar mainColumnActiveTab="table" {...actions} />
+    <ResultOptionsBar
+      mainColumnActiveTab="table"
+      {...actions}
+      onTableTabClick={false}
+    />
   ))
   .add('formView', () => (
-    <ResultOptionsBar mainColumnActiveTab="newRecord" {...actions} />
+    <ResultOptionsBar
+      mainColumnActiveTab="newRecord"
+      {...actions}
+      onFormTabClick={false}
+    />
   ))

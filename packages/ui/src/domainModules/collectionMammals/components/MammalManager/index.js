@@ -94,7 +94,6 @@ const propTypes = {
   mainColumnActiveTab: PropTypes.string.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
-  setActiveTab: PropTypes.func.isRequired,
   setCurrentRecordNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setMainColumnActiveTab: PropTypes.func.isRequired,
@@ -113,7 +112,6 @@ class MammalManager extends Component {
 
     this.getColumns = this.getColumns.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
-    this.handleTabClick = this.handleTabClick.bind(this)
     this.handleSetMainColumnActiveTab = this.handleSetMainColumnActiveTab.bind(
       this
     )
@@ -139,11 +137,6 @@ class MammalManager extends Component {
 
   handleSettingClick(event) {
     this.handleSetMainColumnActiveTab(event, 'settings')
-  }
-
-  handleTabClick(event, tab) {
-    event.preventDefault()
-    this.props.setMainColumnActiveTab(tab)
   }
 
   handleSetMainColumnActiveTab(event, key) {
@@ -210,6 +203,7 @@ class MammalManager extends Component {
         currentRecordNumber={currentRecordNumber}
         mainColumnActiveTab={mainColumnActiveTab}
         onExportCsv={this.handleExportToCsv}
+        onFormTabClick={!isNewRecordView && this.handleOpenNewRecordForm}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
         onSelectNextRecord={
           showSelectNextRecordButton && this.handleSelectNextRecord
@@ -220,9 +214,9 @@ class MammalManager extends Component {
         onSetCurrentRecordNumber={
           !isNewRecordView && this.handleSetCurrentRecordNumber
         }
-        onShowAllRecords={showAllRecordsButton && this.handleShowAllRecords}
         onSettingClick={this.handleSettingClick}
-        onTabClick={this.handleTabClick}
+        onShowAllRecords={showAllRecordsButton && this.handleShowAllRecords}
+        onTableTabClick={isNewRecordView && this.handleOpenTableView}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}
         totalRecords={totalNumberOfRecords}
       />
