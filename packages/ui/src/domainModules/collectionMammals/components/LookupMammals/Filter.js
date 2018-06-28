@@ -4,6 +4,7 @@ import { Input } from 'semantic-ui-react'
 import { MultipleSearchTagsSelect } from 'coreModules/search/components'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import CollectingLocationMultipleSearch from './CollectingLocationMultipleSearch'
+import CheckboxesForm from './CheckboxesForm'
 
 const getQuery = (state, excludeKey = '') => {
   return {
@@ -173,6 +174,12 @@ class Filter extends Component {
             })
           }}
           placeholder="identifier"
+        />
+        <h3>MultipleChoiceCheckboxes demo</h3>
+        <CheckboxesForm
+          getQuery={getQuery}
+          handleFilterChange={this.handleFilterChange}
+          state={this.state}
         />
       </div>
     )
