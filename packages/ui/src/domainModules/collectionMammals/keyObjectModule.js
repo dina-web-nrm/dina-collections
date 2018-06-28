@@ -11,13 +11,13 @@ const {
   initialValues: {
     currentRecordNumber: null,
     filterColumnIsOpen: false,
-    mainColumnViewKey: 'table',
+    mainColumnActiveTab: 'newRecord',
     totalNumberOfRecords: null,
   },
   keys: [
     'currentRecordNumber',
     'filterColumnIsOpen',
-    'mainColumnViewKey',
+    'mainColumnActiveTab',
     'totalNumberOfRecords',
   ],
   name: 'collectionMammals',

@@ -6,20 +6,21 @@ import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
 import RecordNavigationBar from './RecordNavigationBar'
+import ResultOptionsBar from './ResultOptionsBar'
 
 /* eslint-disable */
 const main = {
   height: undefined,
   key: 'main',
   renderRow: props => {
-    if (props.mainColumnViewKey === 'newRecord') {
+    if (props.mainColumnActiveTab === 'newRecord') {
       return (
         <div className="ui fluid dina background" style={{ padding: '20px' }}>
           <CreateSpecimen />
         </div>
       )
     }
-    return <div>{props.mainColumnViewKey}</div>
+    return <div>{props.mainColumnActiveTab}</div>
   },
   style: { border: '1px solid', overflow: 'auto' },
 }
@@ -32,27 +33,26 @@ const recordNavigation = {
 }
 
 const recordOptions = {
-  height: '50px',
+  height: '43px',
   key: 'recordOptions',
-  renderRow: props => <div>recordOptions</div>,
-  style: { border: '1px solid' },
+  renderRow: props => <ResultOptionsBar {...props} />,
 }
 
 const rows = [recordNavigation, recordOptions, main]
 
 const propTypes = {
-  mainColumnViewKey: PropTypes.string.isRequired,
+  mainColumnActiveTab: PropTypes.string.isRequired,
   windowHeight: PropTypes.number.isRequired,
 }
 
 class MainColumn extends PureComponent {
   render() {
-    const { mainColumnViewKey, windowHeight, ...rest } = this.props
+    const { mainColumnActiveTab, windowHeight, ...rest } = this.props
 
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
-        mainColumnViewKey={mainColumnViewKey}
+        mainColumnActiveTab={mainColumnActiveTab}
         rows={rows}
         {...rest}
       />
