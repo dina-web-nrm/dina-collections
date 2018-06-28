@@ -3788,7 +3788,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui top attached tabular menu"
   >
     <a
-      className="active item"
+      className="active disabled item"
       onClick={[Function]}
     >
       <i
@@ -3846,7 +3846,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui top attached tabular menu"
   >
     <a
-      className="active item"
+      className="active disabled item"
       onClick={[Function]}
     >
       <i
@@ -3913,7 +3913,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       />
     </a>
     <a
-      className="active item"
+      className="active disabled item"
       onClick={[Function]}
     >
       <i
