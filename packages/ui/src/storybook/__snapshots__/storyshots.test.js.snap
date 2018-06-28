@@ -119,7 +119,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
     id="footer"
     style={
       Object {
-        "padding": "5em 0em",
+        "padding": "5em",
       }
     }
   >
@@ -520,7 +520,7 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] = `
+exports[`storyshots Storyshots coreModules/commonUi/PageTemplate Default 1`] = `
 <div>
   <div
     className="ui container"
@@ -537,37 +537,7 @@ exports[`storyshots Storyshots coreModules/commonUi/PageTemplate Fixed menu 1`] 
         className="ui container"
         style={
           Object {
-            "paddingBottom": 30,
-            "paddingTop": 61.5,
-          }
-        }
-      >
-        <div>
-          Page content
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`storyshots Storyshots coreModules/commonUi/PageTemplate No fixed menu 1`] = `
-<div>
-  <div
-    className="ui container"
-    style={
-      Object {
-        "position": "relative",
-      }
-    }
-  >
-    <div
-      className="ui green segment"
-    >
-      <div
-        className="ui container"
-        style={
-          Object {
+            "minHeight": undefined,
             "paddingBottom": 30,
             "paddingTop": 30,
           }
@@ -1660,6 +1630,61 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
 `;
 
 exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <div
+        style={
+          Object {
+            "height": "100vh",
+            "left": 0,
+            "minWidth": "100%",
+            "overflow": "hidden",
+            "paddingLeft": 0,
+            "position": "relative",
+            "top": 0,
+            "transition": "transform 0.2s",
+            "zIndex": 1,
+          }
+        }
+      >
+        <div
+          className="dimmable"
+        >
+          <div
+            className="ui dimmer"
+            onClick={[Function]}
+          />
+          <div
+            className="ui fluid dina background"
+            style={
+              Object {
+                "height": "768px",
+                "overflow": "auto",
+              }
+            }
+          >
+            <div>
+              View wrap content
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ViewWrap With TopMenu 1`] = `
 <div>
   <div
     className="ui container"
