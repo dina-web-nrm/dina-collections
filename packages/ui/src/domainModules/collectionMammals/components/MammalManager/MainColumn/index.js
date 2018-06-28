@@ -6,6 +6,7 @@ import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
 import RecordNavigationBar from './RecordNavigationBar'
+import ResultOptionsBar from './ResultOptionsBar'
 
 /* eslint-disable */
 const main = {
@@ -32,10 +33,10 @@ const recordNavigation = {
 }
 
 const recordOptions = {
-  height: '50px',
+  height: '100px',
   key: 'recordOptions',
-  renderRow: props => <div>recordOptions</div>,
-  style: { border: '1px solid' },
+  renderRow: props => <ResultOptionsBar {...props} />,
+  style: { border: '1px solid', overflow: 'auto' },
 }
 
 const rows = [recordNavigation, recordOptions, main]
