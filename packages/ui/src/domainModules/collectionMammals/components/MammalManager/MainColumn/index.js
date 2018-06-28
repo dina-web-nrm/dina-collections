@@ -33,10 +33,9 @@ const recordNavigation = {
 }
 
 const recordOptions = {
-  height: '100px',
+  height: '43px',
   key: 'recordOptions',
   renderRow: props => <ResultOptionsBar {...props} />,
-  style: { border: '1px solid', overflow: 'auto' },
 }
 
 const rows = [recordNavigation, recordOptions, main]
