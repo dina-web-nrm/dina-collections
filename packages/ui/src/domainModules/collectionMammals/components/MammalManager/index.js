@@ -65,6 +65,7 @@ const getColumns = createSelector(
 
 const mapStateToProps = state => {
   return {
+    activeTab: keyObjectGlobalSelectors.get.activeTab(state),
     currentRecordNumber: keyObjectGlobalSelectors.get.currentRecordNumber(
       state
     ),
@@ -79,6 +80,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
+  setActiveTab: keyObjectActionCreators.set.activeTab,
   setCurrentRecordNumber: keyObjectActionCreators.set.currentRecordNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
   setMainColumnViewKey: keyObjectActionCreators.set.mainColumnViewKey,
@@ -86,12 +88,14 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  activeTab: PropTypes.string.isRequired,
   currentRecordNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   mainColumnViewKey: PropTypes.string.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  setActiveTab: PropTypes.func.isRequired,
   setCurrentRecordNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setMainColumnViewKey: PropTypes.func.isRequired,
@@ -168,6 +172,7 @@ class MammalManager extends Component {
 
   render() {
     const {
+      activeTab,
       currentRecordNumber,
       mainColumnViewKey,
       totalNumberOfRecords,
@@ -183,6 +188,7 @@ class MammalManager extends Component {
 
     return (
       <ColumnLayout
+        activeTab={activeTab}
         columns={this.getColumns()}
         currentRecordNumber={currentRecordNumber}
         mainColumnViewKey={mainColumnViewKey}
