@@ -9,17 +9,15 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'MAMMALS',
   initialValues: {
-    activeTab: 'form',
     currentRecordNumber: null,
     filterColumnIsOpen: false,
-    mainColumnViewKey: 'table',
+    mainColumnActiveTab: 'newRecord',
     totalNumberOfRecords: null,
   },
   keys: [
-    'activeTab',
     'currentRecordNumber',
     'filterColumnIsOpen',
-    'mainColumnViewKey',
+    'mainColumnActiveTab',
     'totalNumberOfRecords',
   ],
   name: 'collectionMammals',

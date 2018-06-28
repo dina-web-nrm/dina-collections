@@ -17,6 +17,12 @@ storiesOf(
   module
 )
   .addDecorator(createStoryDecorator({ wrap: false }))
-  .add('default', () => <ResultOptionsBar activeTab="form" {...actions} />)
-  .add('tableView', () => <ResultOptionsBar activeTab="table" {...actions} />)
-  .add('formView', () => <ResultOptionsBar activeTab="form" {...actions} />)
+  .add('default', () => (
+    <ResultOptionsBar mainColumnActiveTab="newRecord" {...actions} />
+  ))
+  .add('tableView', () => (
+    <ResultOptionsBar mainColumnActiveTab="table" {...actions} />
+  ))
+  .add('formView', () => (
+    <ResultOptionsBar mainColumnActiveTab="newRecord" {...actions} />
+  ))

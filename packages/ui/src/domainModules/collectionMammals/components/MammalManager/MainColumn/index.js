@@ -13,14 +13,14 @@ const main = {
   height: undefined,
   key: 'main',
   renderRow: props => {
-    if (props.mainColumnViewKey === 'newRecord') {
+    if (props.mainColumnActiveTab === 'newRecord') {
       return (
         <div className="ui fluid dina background" style={{ padding: '20px' }}>
           <CreateSpecimen />
         </div>
       )
     }
-    return <div>{props.mainColumnViewKey}</div>
+    return <div>{props.mainColumnActiveTab}</div>
   },
   style: { border: '1px solid', overflow: 'auto' },
 }
@@ -42,18 +42,18 @@ const recordOptions = {
 const rows = [recordNavigation, recordOptions, main]
 
 const propTypes = {
-  mainColumnViewKey: PropTypes.string.isRequired,
+  mainColumnActiveTab: PropTypes.string.isRequired,
   windowHeight: PropTypes.number.isRequired,
 }
 
 class MainColumn extends PureComponent {
   render() {
-    const { mainColumnViewKey, windowHeight, ...rest } = this.props
+    const { mainColumnActiveTab, windowHeight, ...rest } = this.props
 
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
-        mainColumnViewKey={mainColumnViewKey}
+        mainColumnActiveTab={mainColumnActiveTab}
         rows={rows}
         {...rest}
       />

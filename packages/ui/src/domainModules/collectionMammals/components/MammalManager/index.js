@@ -65,13 +65,14 @@ const getColumns = createSelector(
 
 const mapStateToProps = state => {
   return {
-    activeTab: keyObjectGlobalSelectors.get.activeTab(state),
     currentRecordNumber: keyObjectGlobalSelectors.get.currentRecordNumber(
       state
     ),
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
     isSmall: sizeSelectors.getIsSmall(state),
-    mainColumnViewKey: keyObjectGlobalSelectors.get.mainColumnViewKey(state),
+    mainColumnActiveTab: keyObjectGlobalSelectors.get.mainColumnActiveTab(
+      state
+    ),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     totalNumberOfRecords: keyObjectGlobalSelectors.get.totalNumberOfRecords(
       state
@@ -80,25 +81,23 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  setActiveTab: keyObjectActionCreators.set.activeTab,
   setCurrentRecordNumber: keyObjectActionCreators.set.currentRecordNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
-  setMainColumnViewKey: keyObjectActionCreators.set.mainColumnViewKey,
+  setMainColumnActiveTab: keyObjectActionCreators.set.mainColumnActiveTab,
   setTotalNumberOfRecords: keyObjectActionCreators.set.totalNumberOfRecords,
 }
 
 const propTypes = {
-  activeTab: PropTypes.string.isRequired,
   currentRecordNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
-  mainColumnViewKey: PropTypes.string.isRequired,
+  mainColumnActiveTab: PropTypes.string.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   setActiveTab: PropTypes.func.isRequired,
   setCurrentRecordNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
-  setMainColumnViewKey: PropTypes.func.isRequired,
+  setMainColumnActiveTab: PropTypes.func.isRequired,
   // setTotalNumberOfRecords: PropTypes.func.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
@@ -115,7 +114,9 @@ class MammalManager extends Component {
     this.getColumns = this.getColumns.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
     this.handleTabClick = this.handleTabClick.bind(this)
-    this.handleSetMainColumnViewKey = this.handleSetMainColumnViewKey.bind(this)
+    this.handleSetMainColumnActiveTab = this.handleSetMainColumnActiveTab.bind(
+      this
+    )
     this.handleSetCurrentRecordNumber = this.handleSetCurrentRecordNumber.bind(
       this
     )
@@ -133,21 +134,21 @@ class MammalManager extends Component {
   }
 
   handleExportToCsv(event) {
-    this.handleSetMainColumnViewKey(event, 'exportToCsv')
+    this.handleSetMainColumnActiveTab(event, 'exportToCsv')
   }
 
   handleSettingClick(event) {
-    this.handleSetMainColumnViewKey(event, 'settings')
+    this.handleSetMainColumnActiveTab(event, 'settings')
   }
 
   handleTabClick(event, tab) {
     event.preventDefault()
-    this.props.setActiveTab(tab)
+    this.props.setMainColumnActiveTab(tab)
   }
 
-  handleSetMainColumnViewKey(event, key) {
+  handleSetMainColumnActiveTab(event, key) {
     event.preventDefault()
-    this.props.setMainColumnViewKey(key)
+    this.props.setMainColumnActiveTab(key)
   }
 
   handleSetCurrentRecordNumber(event, newRecordNumber) {
@@ -168,15 +169,15 @@ class MammalManager extends Component {
   }
 
   handleOpenNewRecordForm(event) {
-    this.handleSetMainColumnViewKey(event, 'newRecord')
+    this.handleSetMainColumnActiveTab(event, 'newRecord')
   }
 
   handleOpenTableView(event) {
-    this.handleSetMainColumnViewKey(event, 'table')
+    this.handleSetMainColumnActiveTab(event, 'table')
   }
 
   handleOpenItemView(event) {
-    this.handleSetMainColumnViewKey(event, 'item')
+    this.handleSetMainColumnActiveTab(event, 'item')
   }
 
   handleSelectNextRecord(event) {
@@ -189,14 +190,14 @@ class MammalManager extends Component {
 
   render() {
     const {
-      activeTab,
       currentRecordNumber,
-      mainColumnViewKey,
+      mainColumnActiveTab,
       totalNumberOfRecords,
     } = this.props
 
     const lastRecordNumber = totalNumberOfRecords // TODO: check first selectedNumberOfRecords
-    const isNewRecordView = mainColumnViewKey === 'newRecord'
+
+    const isNewRecordView = mainColumnActiveTab === 'newRecord'
     const showSelectNextRecordButton =
       !isNewRecordView && currentRecordNumber !== lastRecordNumber
     const showSelectPreviousRecordButton =
@@ -205,10 +206,9 @@ class MammalManager extends Component {
 
     return (
       <ColumnLayout
-        activeTab={activeTab}
         columns={this.getColumns()}
         currentRecordNumber={currentRecordNumber}
-        mainColumnViewKey={mainColumnViewKey}
+        mainColumnActiveTab={mainColumnActiveTab}
         onExportCsv={this.handleExportToCsv}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
         onSelectNextRecord={

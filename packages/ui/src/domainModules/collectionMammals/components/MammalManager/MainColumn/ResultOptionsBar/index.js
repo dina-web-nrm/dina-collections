@@ -5,7 +5,7 @@ import 'common/dist/semantic.css' // eslint-disable-line
 import 'react-rangeslider/lib/index.css'
 
 const propTypes = {
-  activeTab: PropTypes.string.isRequired,
+  mainColumnActiveTab: PropTypes.string.isRequired,
   onExportCsv: PropTypes.func.isRequired,
   onSettingClick: PropTypes.func.isRequired,
   onTabClick: PropTypes.func.isRequired,
@@ -14,7 +14,7 @@ const propTypes = {
 export class ResultOptionsBar extends Component {
   render() {
     const {
-      activeTab: activeItem,
+      mainColumnActiveTab: activeItem,
       onExportCsv: handleExportToCsv,
       onTabClick: handleTabClick,
       onSettingClick: handleSettingClick,
@@ -23,9 +23,9 @@ export class ResultOptionsBar extends Component {
     return (
       <Menu attached="top" tabular>
         <Menu.Item
-          active={activeItem === 'form'}
+          active={activeItem === 'newRecord'}
           name="form"
-          onClick={event => handleTabClick(event, 'form')}
+          onClick={event => handleTabClick(event, 'newRecord')}
         >
           <Icon name="wordpress forms" size="large" />
         </Menu.Item>
