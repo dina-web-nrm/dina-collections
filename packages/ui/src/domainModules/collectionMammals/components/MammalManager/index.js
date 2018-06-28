@@ -20,21 +20,27 @@ const main = {
   width: undefined,
 }
 
-const createFilter = (width = '300px') => {
-  return {
-    key: 'filter',
-    renderColumn: props => <FilterColumn {...props} />,
-    width,
+const createFilter = createSelector(
+  (width = '400px') => width,
+  width => {
+    return {
+      key: 'filter',
+      renderColumn: props => <FilterColumn {...props} />,
+      width,
+    }
   }
-}
+)
 
-const createRightSidebar = width => {
-  return {
-    key: 'rightSidebar',
-    renderColumn: props => <InformationSidebar {...props} />,
-    width,
+const createRightSidebar = createSelector(
+  width => width,
+  width => {
+    return {
+      key: 'rightSidebar',
+      renderColumn: props => <InformationSidebar {...props} />,
+      width,
+    }
   }
-}
+)
 
 const getColumns = createSelector(
   ({ filterColumnIsOpen }) => filterColumnIsOpen,
