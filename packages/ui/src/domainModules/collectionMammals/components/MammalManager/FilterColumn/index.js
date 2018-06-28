@@ -9,14 +9,12 @@ const main = {
   height: undefined,
   key: 'main',
   renderRow: () => <div>filter cards</div>,
-  style: { border: '1px solid' },
 }
 
 const header = {
   height: '50px',
   key: 'header',
   renderRow: () => <h2>Filters</h2>,
-  style: { border: '1px solid' },
 }
 
 const rows = [header, main]
