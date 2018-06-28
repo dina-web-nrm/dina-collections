@@ -31,7 +31,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <ViewWrap leftSidebarEnabled leftSidebarTogglable>
+        <ViewWrap leftSidebarEnabled leftSidebarTogglable topMenuEnabled>
           <Switch>
             <Route component={Home} exact path={match.url} />
             <Route
