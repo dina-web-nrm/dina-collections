@@ -23,7 +23,6 @@ class Docs extends Component {
     return (
       <div>
         <ViewWrap leftSidebarEnabled leftSidebarWidth={180}>
-          <PageTemplate container={false} hasFixedMenu={false}>
             <Switch>
               <Redirect
                 exact
