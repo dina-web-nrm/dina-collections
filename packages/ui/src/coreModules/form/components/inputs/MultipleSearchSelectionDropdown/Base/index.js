@@ -89,7 +89,12 @@ class MultipleSearchSelectionDropdownInput extends Component {
     const hiddenInputName = `${input.name}.hidden`
 
     const style = displayAsButton
-      ? { background: 'white', borderRadius: 0, fontWeight: 'normal' }
+      ? {
+          background: 'white',
+          borderRadius: 0,
+          fontWeight: 'normal',
+          maxWidth: '75%',
+        }
       : undefined
     return (
       <React.Fragment>

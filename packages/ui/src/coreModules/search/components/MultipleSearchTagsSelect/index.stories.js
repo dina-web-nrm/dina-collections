@@ -21,7 +21,11 @@ storiesOf('coreModules/search/MultipleSearchTagsSelect', module)
           aggregationFunctionName="identifiers"
           filterFunctionName="searchCollectingLocation"
           inlineRefine
-          onChange={action('onchange')}
+          input={{
+            name: 'searchCollectingLocation',
+            onChange: action('onChange'),
+          }}
+          meta={{}}
           search={() => {
             return Promise.resolve([
               { attributes: { count: 1 }, id: `matchingResult1` },

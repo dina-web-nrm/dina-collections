@@ -4,6 +4,70 @@ import { Input } from 'semantic-ui-react'
 import { MultipleSearchTagsSelect } from 'coreModules/search/components'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import CollectingLocationMultipleSearch from './CollectingLocationMultipleSearch'
+import CheckboxesForm from './CheckboxesForm'
+
+const getQuery = (state, excludeKey = '') => {
+  return {
+    and: Object.keys(state)
+      .map(key => {
+        const filterState = state[key]
+        if (!filterState || key === excludeKey) {
+          return null
+        }
+
+        if (Array.isArray(filterState)) {
+          return {
+            or: filterState.map(item => {
+              return {
+                filter: {
+                  filterFunction: 'matchCollectingLocation',
+                  input: {
+                    value: item,
+                  },
+                },
+              }
+            }),
+          }
+        }
+
+        if (filterState && typeof filterState === 'object') {
+          return {
+            or: Object.values(filterState)
+              .reduce((acc, arr) => {
+                return acc.concat(arr)
+              }, [])
+              .map(item => {
+                if (!item.selected) {
+                  return null
+                }
+
+                return {
+                  filter: {
+                    filterFunction: 'matchCollectingLocation',
+                    input: {
+                      value: item.id,
+                    },
+                  },
+                }
+              })
+              .filter(filter => !!filter),
+          }
+        }
+
+        return {
+          filter: {
+            filterFunction: key,
+            input: {
+              value: filterState,
+            },
+          },
+        }
+      })
+      .filter(item => {
+        return !!item
+      }),
+  }
+}
 
 const propTypes = {
   search: PropTypes.func.isRequired,
@@ -21,44 +85,10 @@ class Filter extends Component {
       ...this.state,
       [filterFunctionName]: value,
     }
+
     this.setState(newState)
 
-    const query = {
-      and: Object.keys(newState)
-        .map(key => {
-          if (!newState[key]) {
-            return null
-          }
-
-          if (key === 'searchCollectingLocationMultiSearch') {
-            return {
-              or: newState[key].map(item => {
-                return {
-                  filter: {
-                    filterFunction: 'matchCollectingLocation',
-                    input: {
-                      value: item,
-                    },
-                  },
-                }
-              }),
-            }
-          }
-          return {
-            filter: {
-              filterFunction: key,
-              input: {
-                value: newState[key],
-              },
-            },
-          }
-        })
-        .filter(item => {
-          return !!item
-        }),
-    }
-
-    this.props.search({ query })
+    this.props.search({ query: getQuery(newState) })
   }
 
   render() {
@@ -77,10 +107,19 @@ class Filter extends Component {
         <h3>MultipleSearchTagsSelect</h3>
         <MultipleSearchTagsSelect
           aggregationFunctionName="identifiers"
+          drillDownQuery={getQuery(this.state, 'searchCollectingLocation')}
           filterFunctionName="searchCollectingLocation"
-          onChange={value => {
-            console.log(value) // eslint-disable-line
+          input={{
+            name: 'searchCollectingLocationTags',
+            onChange: value => {
+              this.handleFilterChange({
+                filterFunctionName: 'searchCollectingLocation',
+                value,
+              })
+            },
+            value: this.state.searchCollectingLocation,
           }}
+          meta={{}}
         />
         <h3>Id - (filterFunction: id)</h3>
         <Input
@@ -135,6 +174,12 @@ class Filter extends Component {
             })
           }}
           placeholder="identifier"
+        />
+        <h3>MultipleChoiceCheckboxes demo</h3>
+        <CheckboxesForm
+          getQuery={getQuery}
+          handleFilterChange={this.handleFilterChange}
+          state={this.state}
         />
       </div>
     )

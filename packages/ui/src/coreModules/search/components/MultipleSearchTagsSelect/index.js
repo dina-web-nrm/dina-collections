@@ -13,21 +13,33 @@ const propTypes = {
   aggregationFunctionName: PropTypes.string,
   aggregationKey: PropTypes.string,
   aggregationLimit: PropTypes.number,
+  drillDownQuery: PropTypes.shape({
+    and: PropTypes.array.isRequired,
+  }),
   filterFunctionName: PropTypes.string.isRequired,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
   inlineRefine: PropTypes.bool,
-  input: PropTypes.object,
-  onChange: PropTypes.func.isRequired,
+  input: PropTypes.shape({
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.objectOf(
+      PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          selected: PropTypes.bool.isRequire,
+        })
+      ).isRequired
+    ),
+  }).isRequired,
   search: PropTypes.func.isRequired,
 }
 const defaultProps = {
   aggregationFunctionName: undefined,
   aggregationKey: undefined,
   aggregationLimit: 10000,
+  drillDownQuery: undefined,
   inlineRefine: false,
-  input: {},
 }
 
 class RawMultipleSearchTagsSelect extends PureComponent {
@@ -41,7 +53,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     this.handleCloseRefine = this.handleCloseRefine.bind(this)
     this.handleOpenRefine = this.handleOpenRefine.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
-    this.handleSelectValue = this.handleSelectValue.bind(this)
+    this.handleSelectSearchQueries = this.handleSelectSearchQueries.bind(this)
     this.handleSelectAllForSearchQuery = this.handleSelectAllForSearchQuery.bind(
       this
     )
@@ -54,8 +66,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       options: [],
       refineOpen: false,
       searchQuery: '',
-      searchQueryResultsMap: undefined,
-      value: [],
     }
   }
 
@@ -64,6 +74,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       aggregationFunctionName,
       aggregationKey,
       aggregationLimit,
+      drillDownQuery,
       filterFunctionName,
     } = this.props
 
@@ -71,6 +82,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       idsOnly: false,
       query: {
         and: [
+          ...((drillDownQuery && drillDownQuery.and) || []),
           {
             filter: {
               filterFunction: filterFunctionName,
@@ -99,26 +111,20 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   }
 
   setSearchQueryResultsSelected(searchQuery, selected = true) {
+    const searchQueryResultsMap = this.props.input.value
     const searchQueryResults = objectPath.get(
-      this.state,
-      `searchQueryResultsMap.${searchQuery}`
+      searchQueryResultsMap,
+      searchQuery
     )
     if (searchQueryResults) {
-      this.setState(prevState => {
-        const newSearchQueryResultsMap = {
-          ...prevState.searchQueryResultsMap,
-          [searchQuery]: searchQueryResults.map(result => {
-            result.selected = selected // eslint-disable-line no-param-reassign
-            return result
-          }),
-        }
+      const newSearchQueryResultsMap = {
+        ...searchQueryResultsMap,
+        [searchQuery]: searchQueryResults.map(result => {
+          return { ...result, selected }
+        }),
+      }
 
-        this.props.onChange(newSearchQueryResultsMap)
-
-        return {
-          searchQueryResultsMap: newSearchQueryResultsMap,
-        }
-      })
+      this.props.input.onChange(newSearchQueryResultsMap)
     }
   }
 
@@ -154,52 +160,35 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     })
   }
 
-  handleSelectValue(value) {
-    if (!value.length) {
-      this.props.onChange(undefined)
-      return this.setState({
-        searchQueryResultsMap: undefined, // eslint-disable-line react/no-unused-state
-        value,
-      })
+  handleSelectSearchQueries(searchQueries) {
+    if (!searchQueries.length) {
+      this.props.input.onChange({})
     }
 
-    const { value: previousValue } = this.state
+    const { value: previousSearchQueryResultsMap } = this.props.input
 
-    if (value.length > previousValue.length) {
-      const searchQuery = value[value.length - 1]
+    if (
+      searchQueries.length >
+      Object.keys(previousSearchQueryResultsMap || {}).length
+    ) {
+      const searchQuery = searchQueries[searchQueries.length - 1]
       return this.getItemsForSearchQuery(searchQuery).then(items => {
-        this.setState(prevState => {
-          const newTags = {
-            ...prevState.searchQueryResultsMap,
-            [searchQuery]: items.map(item => ({ ...item, selected: true })),
-          }
-          this.props.onChange(newTags)
-
-          return {
-            ...prevState,
-            searchQueryResultsMap: newTags,
-            value,
-          }
-        })
+        const newTags = {
+          ...previousSearchQueryResultsMap,
+          [searchQuery]: items.map(item => ({ ...item, selected: true })),
+        }
+        return this.props.input.onChange(newTags)
       })
     }
 
-    return this.setState(prevState => {
-      const newTags =
-        prevState.searchQueryResultsMap &&
-        value.reduce((obj, searchQuery) => {
-          obj[searchQuery] = prevState.searchQueryResultsMap[searchQuery] // eslint-disable-line no-param-reassign
-          return obj
-        }, {})
+    const newTags =
+      previousSearchQueryResultsMap &&
+      searchQueries.reduce((obj, searchQuery) => {
+        obj[searchQuery] = previousSearchQueryResultsMap[searchQuery] // eslint-disable-line no-param-reassign
+        return obj
+      }, {})
 
-      this.props.onChange(newTags)
-
-      return {
-        ...prevState,
-        searchQueryResultsMap: newTags,
-        value,
-      }
-    })
+    return this.props.input.onChange(newTags)
   }
 
   handleSelectAllForSearchQuery(searchQuery) {
@@ -211,27 +200,28 @@ class RawMultipleSearchTagsSelect extends PureComponent {
   }
 
   handleToggleTagSelected({ searchQuery, id }) {
+    const searchQueryResultsMap = this.props.input.value
     const searchQueryResults = objectPath.get(
-      this.state,
-      `searchQueryResultsMap.${searchQuery}`
+      searchQueryResultsMap,
+      searchQuery
     )
+
     if (searchQueryResults) {
-      const resultItem = searchQueryResults.find(result => result.id === id)
-      if (resultItem) {
-        objectPath.set(resultItem, 'selected', !resultItem.selected)
-        this.setState(prevState => {
-          const newSearchQueryResultsMap = {
-            ...prevState.searchQueryResultsMap,
-            [searchQuery]: searchQueryResults,
+      const newSearchQueryResultsMap = {
+        ...searchQueryResultsMap,
+        [searchQuery]: searchQueryResults.map(resultItem => {
+          if (resultItem.id === id) {
+            return {
+              ...resultItem,
+              selected: !resultItem.selected,
+            }
           }
 
-          this.props.onChange(newSearchQueryResultsMap)
-
-          return {
-            searchQueryResultsMap: newSearchQueryResultsMap,
-          }
-        })
+          return resultItem
+        }),
       }
+
+      this.props.input.onChange(newSearchQueryResultsMap)
     }
   }
 
@@ -242,13 +232,14 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       input,
       ...rest
     } = this.props
-    const { value, refineOpen, options, searchQueryResultsMap } = this.state
+
+    const { refineOpen, options } = this.state
+    const { value: searchQueryResultsMap } = input
+
     const patchedInput = {
-      name: 'MultipleSearchTagsSelect',
       ...input,
-      onBlur: this.handleSelectValue,
-      onChange: () => {},
-      value,
+      onBlur: this.handleSelectSearchQueries,
+      value: Object.keys(searchQueryResultsMap || {}),
     }
 
     const numberOfSearchResults = selectors.getNumberOfSearchResults(
@@ -270,7 +261,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
           getSelectedOptions={selectors.getSelectedOptions}
           icon="search"
           input={patchedInput}
-          meta={{}}
           noResultsMessage={moduleTranslate({
             textKey: 'typeQueryAndPressEnter',
           })}
@@ -297,7 +287,7 @@ class RawMultipleSearchTagsSelect extends PureComponent {
             onSelectAllForSearchQuery={this.handleSelectAllForSearchQuery}
             onToggleTagSelected={this.handleToggleTagSelected}
             open
-            searchQueryResultsMap={searchQueryResultsMap}
+            searchQueryResultsMap={{ ...(searchQueryResultsMap || {}) }}
           />
         )}
       </React.Fragment>

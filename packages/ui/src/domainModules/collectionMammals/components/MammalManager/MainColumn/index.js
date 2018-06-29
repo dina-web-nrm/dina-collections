@@ -22,14 +22,13 @@ const main = {
     }
     return <div>{props.mainColumnActiveTab}</div>
   },
-  style: { border: '1px solid', overflow: 'auto' },
+  style: { overflow: 'auto' },
 }
 
 const recordNavigation = {
   height: '100px',
   key: 'recordNavigation',
   renderRow: props => <RecordNavigationBar {...props} />,
-  style: { border: '1px solid' },
 }
 
 const recordOptions = {
