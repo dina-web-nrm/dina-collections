@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import calculateRowHeights from '../../utilities/calculateRowHeights'
-
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   rows: PropTypes.arrayOf(
@@ -33,18 +31,14 @@ class RowLayout extends PureComponent {
       return null
     }
 
-    const calculatedHeights = calculateRowHeights({
-      availableHeight,
-      rows,
-    })
-
     return (
       <div
         className={wrapperClassNames}
         style={{
-          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          height: `${availableHeight}px`,
           overflow: 'hidden',
-          width: '100%',
           ...(wrapperStyle || {}),
         }}
       >
@@ -53,12 +47,21 @@ class RowLayout extends PureComponent {
             <div
               className={rowProps.classNames}
               key={rowProps.key || index}
-              style={{
-                float: 'left',
-                height: calculatedHeights[index],
-                width: '100%',
-                ...(rowProps.style || {}),
-              }}
+              style={
+                rowProps.height
+                  ? {
+                      flex: 'none',
+                      float: 'left',
+                      height: rowProps.height,
+                      ...(rowProps.style || {}),
+                    }
+                  : {
+                      flex: 'auto',
+                      float: 'left',
+                      minHeight: 0, // needed to fix flexbox issue, kind of like: https://css-tricks.com/flexbox-truncated-text/
+                      ...(rowProps.style || {}),
+                    }
+              }
             >
               {rowProps.renderRow({ ...this.props, ...rowProps })}
             </div>

@@ -10,7 +10,6 @@ import ResultOptionsBar from './ResultOptionsBar'
 
 /* eslint-disable */
 const main = {
-  height: undefined,
   key: 'main',
   renderRow: props => {
     if (props.mainColumnActiveTab === 'newRecord') {

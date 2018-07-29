@@ -17,7 +17,6 @@ import FilterColumn from './FilterColumn'
 const main = {
   key: 'main',
   renderColumn: props => <MainColumn {...props} />,
-  width: undefined,
 }
 
 const createFilter = createSelector(
