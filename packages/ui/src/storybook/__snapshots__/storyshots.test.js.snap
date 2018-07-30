@@ -1239,13 +1239,35 @@ exports[`storyshots Storyshots coreModules/keyboardShortcuts/ShortcutsDisplay De
 exports[`storyshots Storyshots coreModules/layout/ColumnLayout One full-width column 1`] = `
 <div>
   <div
+    className={undefined}
     style={
       Object {
-        "height": "100%",
-        "width": "100%",
+        "display": "flex",
       }
     }
-  />
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "flex": "none",
+          "float": "left",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "50px",
+          }
+        }
+      >
+        100%
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
@@ -1259,13 +1281,78 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
     }
   >
     <div
+      className={undefined}
       style={
         Object {
-          "height": "100%",
-          "width": "100%",
+          "display": "flex",
         }
       }
-    />
+    >
+      <div
+        className={undefined}
+        style={
+          Object {
+            "flex": "none",
+            "float": "left",
+            "width": "100px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "background": "gray",
+              "height": "50px",
+            }
+          }
+        >
+          100px
+        </div>
+      </div>
+      <div
+        className={undefined}
+        style={
+          Object {
+            "flex": "auto",
+            "float": "left",
+            "minWidth": 0,
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "background": "red",
+              "height": "50px",
+              "overflow": "scroll",
+            }
+          }
+        >
+          filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable filling up rest of width with enough text to be scrollable
+        </div>
+      </div>
+      <div
+        className={undefined}
+        style={
+          Object {
+            "flex": "none",
+            "float": "left",
+            "width": "30%",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "background": "green",
+              "height": "50px",
+            }
+          }
+        >
+          30%
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1273,38 +1360,10 @@ exports[`storyshots Storyshots coreModules/layout/ColumnLayout Three columns, tw
 exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with fixed widths 1`] = `
 <div>
   <div
-    style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
-    }
-  />
-</div>
-`;
-
-exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with relative widths 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "height": "100%",
-        "width": "100%",
-      }
-    }
-  />
-</div>
-`;
-
-exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height column 1`] = `
-<div>
-  <div
     className={undefined}
     style={
       Object {
-        "height": "100%",
-        "overflow": "hidden",
-        "width": "100%",
+        "display": "flex",
       }
     }
   >
@@ -1312,9 +1371,124 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height colu
       className={undefined}
       style={
         Object {
+          "flex": "none",
+          "float": "left",
+          "width": "300px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "50px",
+          }
+        }
+      >
+        300px
+      </div>
+    </div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "flex": "none",
+          "float": "left",
+          "width": "150px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "green",
+            "height": "50px",
+          }
+        }
+      >
+        150px
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/ColumnLayout Two columns with relative widths 1`] = `
+<div>
+  <div
+    className={undefined}
+    style={
+      Object {
+        "display": "flex",
+      }
+    }
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "flex": "none",
+          "float": "left",
+          "width": "30%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "gray",
+            "height": "50px",
+          }
+        }
+      >
+        30%
+      </div>
+    </div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "flex": "none",
+          "float": "left",
+          "width": "70%",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "background": "green",
+            "height": "50px",
+          }
+        }
+      >
+        70%
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height column (wrapper has height 600px) 1`] = `
+<div>
+  <div
+    className={undefined}
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "600px",
+        "overflow": "hidden",
+      }
+    }
+  >
+    <div
+      className={undefined}
+      style={
+        Object {
+          "flex": "none",
           "float": "left",
           "height": "100%",
-          "width": "100%",
         }
       }
     >
@@ -1334,15 +1508,16 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height colu
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one filling the rest 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one filling the rest (wrapper has height 600px) 1`] = `
 <div>
   <div
     className={undefined}
     style={
       Object {
-        "height": "100%",
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "600px",
         "overflow": "hidden",
-        "width": "100%",
       }
     }
   >
@@ -1350,9 +1525,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       className={undefined}
       style={
         Object {
+          "flex": "none",
           "float": "left",
           "height": "100px",
-          "width": "100%",
         }
       }
     >
@@ -1372,9 +1547,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       className={undefined}
       style={
         Object {
+          "flex": "auto",
           "float": "left",
-          "height": undefined,
-          "width": "100%",
+          "minHeight": 0,
         }
       }
     >
@@ -1394,9 +1569,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       className={undefined}
       style={
         Object {
+          "flex": "none",
           "float": "left",
           "height": "30%",
-          "width": "100%",
         }
       }
     >
@@ -1416,7 +1591,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one scrollable filling the rest (width of container 100px) 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixed height and one scrollable filling the rest (width of container 100px) (wrapper has height 600px) 1`] = `
 <div>
   <div
     style={
@@ -1431,9 +1606,10 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       className={undefined}
       style={
         Object {
-          "height": "100%",
+          "display": "flex",
+          "flexDirection": "column",
+          "height": "600px",
           "overflow": "hidden",
-          "width": "100%",
         }
       }
     >
@@ -1441,9 +1617,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
         className={undefined}
         style={
           Object {
+            "flex": "none",
             "float": "left",
             "height": "100px",
-            "width": "100%",
           }
         }
       >
@@ -1463,9 +1639,10 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
         className={undefined}
         style={
           Object {
+            "flex": "auto",
             "float": "left",
-            "height": undefined,
-            "width": "100%",
+            "minHeight": 0,
+            "overflow": "auto",
           }
         }
       >
@@ -1474,7 +1651,6 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
             Object {
               "background": "red",
               "height": "100%",
-              "overflow": "scroll",
               "width": "100%",
             }
           }
@@ -1486,9 +1662,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
         className={undefined}
         style={
           Object {
+            "flex": "none",
             "float": "left",
             "height": "30%",
-            "width": "100%",
           }
         }
       >
@@ -1509,15 +1685,16 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed heights 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed heights (wrapper has height 600px) 1`] = `
 <div>
   <div
     className={undefined}
     style={
       Object {
-        "height": "100%",
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "600px",
         "overflow": "hidden",
-        "width": "100%",
       }
     }
   >
@@ -1525,9 +1702,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
       className={undefined}
       style={
         Object {
+          "flex": "none",
           "float": "left",
           "height": "300px",
-          "width": "100%",
         }
       }
     >
@@ -1547,9 +1724,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
       className={undefined}
       style={
         Object {
+          "flex": "none",
           "float": "left",
           "height": "150px",
-          "width": "100%",
         }
       }
     >
@@ -1569,15 +1746,16 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative heights 1`] = `
+exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relative heights (wrapper has height 600px) 1`] = `
 <div>
   <div
     className={undefined}
     style={
       Object {
-        "height": "100%",
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "600px",
         "overflow": "hidden",
-        "width": "100%",
       }
     }
   >
@@ -1585,9 +1763,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
       className={undefined}
       style={
         Object {
+          "flex": "none",
           "float": "left",
           "height": "30%",
-          "width": "100%",
         }
       }
     >
@@ -1607,9 +1785,9 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
       className={undefined}
       style={
         Object {
+          "flex": "none",
           "float": "left",
           "height": "70%",
-          "width": "100%",
         }
       }
     >

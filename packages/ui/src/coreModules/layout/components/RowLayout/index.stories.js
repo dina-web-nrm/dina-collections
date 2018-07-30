@@ -26,34 +26,34 @@ storiesOf('coreModules/layout/RowLayout', module)
     })
   )
   .add(
-    'One full-height column',
+    'One full-height column (wrapper has height 600px)',
     withInfo({ propTables: [RowLayout] })(() => {
       const rows = [getRowSpecification('100%')]
-      return <RowLayout rows={rows} />
+      return <RowLayout availableHeight={600} rows={rows} />
     })
   )
   .add(
-    'Two rows with fixed heights',
+    'Two rows with fixed heights (wrapper has height 600px)',
     withInfo({ propTables: [RowLayout] })(() => {
       const rows = [
         getRowSpecification('300px'),
         getRowSpecification('150px', 'green'),
       ]
-      return <RowLayout rows={rows} />
+      return <RowLayout availableHeight={600} rows={rows} />
     })
   )
   .add(
-    'Two rows with relative heights',
+    'Two rows with relative heights (wrapper has height 600px)',
     withInfo({ propTables: [RowLayout] })(() => {
       const rows = [
         getRowSpecification('30%'),
         getRowSpecification('70%', 'green'),
       ]
-      return <RowLayout rows={rows} />
+      return <RowLayout availableHeight={600} rows={rows} />
     })
   )
   .add(
-    'Three rows, two fixed height and one filling the rest',
+    'Three rows, two fixed height and one filling the rest (wrapper has height 600px)',
     withInfo({ propTables: [RowLayout] })(() => {
       const rows = [
         getRowSpecification('100px'),
@@ -69,11 +69,11 @@ storiesOf('coreModules/layout/RowLayout', module)
         },
         getRowSpecification('30%', 'green'),
       ]
-      return <RowLayout rows={rows} />
+      return <RowLayout availableHeight={600} rows={rows} />
     })
   )
   .add(
-    'Three rows, two fixed height and one scrollable filling the rest (width of container 100px)',
+    'Three rows, two fixed height and one scrollable filling the rest (width of container 100px) (wrapper has height 600px)',
     withInfo({ propTables: [RowLayout] })(() => {
       const rows = [
         getRowSpecification('100px'),
@@ -84,7 +84,6 @@ storiesOf('coreModules/layout/RowLayout', module)
                 style={{
                   background: 'red',
                   height: '100%',
-                  overflow: 'scroll',
                   width: '100%',
                 }}
               >
@@ -105,13 +104,13 @@ storiesOf('coreModules/layout/RowLayout', module)
               </div>
             )
           },
-          width: undefined,
+          style: { overflow: 'auto' },
         },
         getRowSpecification('30%', 'green'),
       ]
       return (
         <div style={{ height: '100%', overflow: 'hidden', width: '100px' }}>
-          <RowLayout rows={rows} />
+          <RowLayout availableHeight={600} rows={rows} />
         </div>
       )
     })

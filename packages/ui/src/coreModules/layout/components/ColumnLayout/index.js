@@ -1,9 +1,5 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { compose } from 'redux'
-import sizeMe from 'react-sizeme'
-
-import calculateColumnWidths from '../../utilities/calculateColumnWidths'
 
 const propTypes = {
   columns: PropTypes.arrayOf(
@@ -12,9 +8,6 @@ const propTypes = {
       width: PropTypes.string,
     }).isRequired
   ),
-  size: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-  }).isRequired,
   wrapperClassNames: PropTypes.string,
   wrapperStyle: PropTypes.object,
 }
@@ -26,37 +19,40 @@ const defaultProps = {
 
 class ColumnLayout extends PureComponent {
   render() {
-    const {
-      columns,
-      size: { width },
-      wrapperClassNames,
-      wrapperStyle,
-    } = this.props
+    const { columns, wrapperClassNames, wrapperStyle } = this.props
 
     if (!columns || !columns.length) {
       return null
     }
 
-    const calculatedWidths = calculateColumnWidths({
-      availableWidth: width,
-      columns,
-    })
-
     return (
       <div
         className={wrapperClassNames}
-        style={{ height: '100%', width: '100%', ...(wrapperStyle || {}) }}
+        style={{
+          display: 'flex',
+          ...(wrapperStyle || {}),
+        }}
       >
         {columns.map((columnProps, index) => {
           return (
             <div
               className={columnProps.classNames}
               key={columnProps.key || index}
-              style={{
-                float: 'left',
-                width: calculatedWidths[index],
-                ...(columnProps.style || {}),
-              }}
+              style={
+                columnProps.width
+                  ? {
+                      flex: 'none',
+                      float: 'left',
+                      width: columnProps.width,
+                      ...(columnProps.style || {}),
+                    }
+                  : {
+                      flex: 'auto',
+                      float: 'left',
+                      minWidth: 0, // needed to fix flexbox issue, kind of like: https://css-tricks.com/flexbox-truncated-text/
+                      ...(columnProps.style || {}),
+                    }
+              }
             >
               {columnProps.renderColumn({ ...this.props, ...columnProps })}
             </div>
@@ -70,4 +66,4 @@ class ColumnLayout extends PureComponent {
 ColumnLayout.propTypes = propTypes
 ColumnLayout.defaultProps = defaultProps
 
-export default compose(sizeMe())(ColumnLayout)
+export default ColumnLayout

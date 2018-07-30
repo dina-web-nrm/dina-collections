@@ -7,7 +7,6 @@ import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import Filters from './Filters'
 
 const main = {
-  height: undefined,
   key: 'main',
   renderRow: props => <Filters {...props} />,
 }
