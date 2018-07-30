@@ -8,16 +8,20 @@ module.exports = function createReporter() {
     objectPath.set(report, path, value)
   }
 
+  const push = ({ path, value }) => {
+    objectPath.push(report, path, value)
+  }
+
   const get = ({ path }) => {
     return objectPath.get(report, path)
   }
 
-  const increment = ({ path }) => {
+  const increment = ({ path, count: incrementCount = 1 }) => {
     let count = get({ path })
     if (count === undefined || count === null) {
-      count = 1
+      count = incrementCount
     } else {
-      count += 1
+      count += incrementCount
     }
 
     set({ path, value: count })
@@ -58,6 +62,7 @@ module.exports = function createReporter() {
     done,
     getReport,
     increment,
+    push,
     start,
   }
 }

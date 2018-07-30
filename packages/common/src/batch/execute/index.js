@@ -15,11 +15,17 @@ const internalCreateBatch = ({
   createBatch,
   createEntry,
   numberOfBatchEntries,
+  reporter,
 }) => {
   const batchData = []
   if (createBatch) {
     return Promise.resolve(
-      createBatch({ batchNumber, numberOfBatchEntries, startCount: count })
+      createBatch({
+        batchNumber,
+        numberOfBatchEntries,
+        reporter,
+        startCount: count,
+      })
     )
   }
   for (let index = 0; index < numberOfBatchEntries; index += 1) {
@@ -40,6 +46,7 @@ const runBatch = ({
   nItemsLastBatch,
   numberOfEntries,
   numberOfEntriesEachBatch,
+  reporter,
 }) => {
   if (count >= maxCount) {
     return Promise.reject(new Error('Max count reached'))
@@ -77,6 +84,7 @@ const runBatch = ({
     createBatch,
     createEntry,
     numberOfBatchEntries,
+    reporter,
   }).then(batchData => {
     const nItemsInBatch = batchData !== undefined ? batchData.length : undefined
     return Promise.resolve()
@@ -96,6 +104,7 @@ const runBatch = ({
             nItemsLastBatch: nItemsInBatch,
             numberOfEntries,
             numberOfEntriesEachBatch,
+            reporter,
           })
         })
       })
@@ -111,6 +120,7 @@ module.exports = function batchExecute({
   maxNumberOfBatches = 1000,
   numberOfEntries,
   numberOfEntriesEachBatch,
+  reporter,
 }) {
   if (!(createBatch || createEntry)) {
     throw new Error('createBatch or createEntry is required')
@@ -129,5 +139,6 @@ module.exports = function batchExecute({
     maxNumberOfBatches,
     numberOfEntries,
     numberOfEntriesEachBatch,
+    reporter,
   })
 }

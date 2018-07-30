@@ -7,9 +7,18 @@ const typeOptionMap = {
     code: 'CONFIG_ERROR',
     status: 500,
   },
+  modelWrapperInput: {
+    code: 'MODEL_WRAPPER_INPUT_ERROR',
+    status: 500,
+  },
+  modelWrapperOutput: {
+    code: 'MODEL_WRAPPER_OUTPUT_ERROR',
+    status: 500,
+  },
 }
 
 module.exports = function createSystemFrontendValidator({
+  detail: detailInput,
   model,
   schema,
   throwError,
@@ -31,7 +40,8 @@ module.exports = function createSystemFrontendValidator({
     }
 
     const parameterErrors = createParameterErrorsFromAjv(ajvErrors)
-    const detail = JSON.stringify(parameterErrors || {})
+    const parameterErrorsString = JSON.stringify(parameterErrors || {})
+    const detail = `${detailInput}: ${parameterErrorsString}`
 
     return backendError({
       ...options,

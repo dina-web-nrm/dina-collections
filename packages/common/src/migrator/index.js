@@ -1,3 +1,4 @@
+const asyncReduce = require('../asyncReduce')
 const objectPath = require('object-path')
 
 const isPathValid = path => {
@@ -67,7 +68,7 @@ const pushValueToArray = ({ obj, condition, format, path, value }) => {
   return obj
 }
 
-const getValue = ({ obj, path, strip = true }) => {
+const getValue = ({ obj, path, strip = false }) => {
   if (!isPathValid(path)) {
     return undefined
   }
@@ -83,7 +84,7 @@ const migrateValue = ({
   format,
   fromPath,
   src,
-  strip = true,
+  strip = false,
   target,
   toPath,
 }) => {
@@ -157,8 +158,42 @@ const applyTransformationFunctions = ({
   return target
 }
 
+const applyTransformationFunctionsAsync = ({
+  item,
+  transformationFunctions,
+  ...rest
+}) => {
+  if (!transformationFunctions) {
+    throw new Error('No map functions provided')
+  }
+
+  const transformationFunctionsArray = Array.isArray(transformationFunctions)
+    ? transformationFunctions
+    : Object.keys(transformationFunctions).map(key => {
+        return transformationFunctions[key]
+      })
+
+  const target = {}
+  return asyncReduce({
+    initialValue: null,
+    items: transformationFunctionsArray,
+    reduceFunction: ({ item: transformationFunction }) => {
+      return Promise.resolve()
+        .then(() => {
+          return transformationFunction({ src: item, target, ...rest })
+        })
+        .then(() => {
+          return null
+        })
+    },
+  }).then(() => {
+    return target
+  })
+}
+
 module.exports = {
   applyTransformationFunctions,
+  applyTransformationFunctionsAsync,
   filterArray,
   getValue,
   migrateValue,

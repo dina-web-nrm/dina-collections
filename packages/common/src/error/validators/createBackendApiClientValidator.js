@@ -22,6 +22,7 @@ const typeOptionMap = {
 }
 
 module.exports = function createBackendApiClientValidator({
+  detail: detailInput,
   model,
   operationId,
   schema,
@@ -46,7 +47,8 @@ module.exports = function createBackendApiClientValidator({
     }
 
     const parameterErrors = createParameterErrorsFromAjv(ajvErrors)
-    const detail = JSON.stringify(parameterErrors || {})
+    const parameterErrorsString = JSON.stringify(parameterErrors || {})
+    const detail = `${detailInput}: ${parameterErrorsString}`
 
     return backendError({
       ...options,

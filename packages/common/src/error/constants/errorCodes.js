@@ -21,6 +21,14 @@ const errorCodes = {
       'Error occurred on server. Tried to throw an error with an invalid status code',
     title: 'Internal server error',
   },
+  MODEL_WRAPPER_INPUT_ERROR: {
+    description: 'Something went wrong in the model layer. See details',
+    title: 'Model error',
+  },
+  MODEL_WRAPPER_OUTPUT_ERROR: {
+    description: 'Something went wrong in the model layer. See details',
+    title: 'Model error',
+  },
   NOT_FOUND_ERROR: {
     description: 'See details',
     title: 'Not found error',
