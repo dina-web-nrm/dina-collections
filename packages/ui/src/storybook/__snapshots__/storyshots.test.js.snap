@@ -2423,7 +2423,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -2431,9 +2431,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={50001}
         />
@@ -2587,7 +2587,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -2595,9 +2595,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={30000}
         />
@@ -2751,7 +2751,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -2759,9 +2759,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={30000}
         />
@@ -2915,7 +2915,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -2923,9 +2923,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={1}
         />
@@ -3079,7 +3079,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -3087,9 +3087,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={50000}
         />
@@ -3243,7 +3243,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -3251,9 +3251,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={30001}
         />
@@ -3407,7 +3407,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -3415,9 +3415,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={30000}
         />
@@ -3739,7 +3739,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -3747,9 +3747,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={29999}
         />
@@ -3903,7 +3903,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       className="three wide computer eight wide mobile eight wide tablet column"
     >
       <div
-        className="ui mini disabled input"
+        className="ui mini input"
         style={
           Object {
             "width": "80px",
@@ -3911,9 +3911,9 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <input
-          disabled={true}
+          disabled={false}
           onChange={[Function]}
-          tabIndex={-1}
+          tabIndex={undefined}
           type="number"
           value={30000}
         />
