@@ -131,7 +131,6 @@ class MammalManager extends Component {
     this.handleOpenItemView = this.handleOpenItemView.bind(this)
     this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
     this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
-    this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
   }
 
   getColumns() {
@@ -166,10 +165,6 @@ class MammalManager extends Component {
   handleToggleFilters(event) {
     event.preventDefault()
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
-  }
-
-  handleShowAllRecords(event) {
-    this.handleSetMainColumnActiveTab(event, 'table')
   }
 
   handleOpenNewRecordForm(event) {
