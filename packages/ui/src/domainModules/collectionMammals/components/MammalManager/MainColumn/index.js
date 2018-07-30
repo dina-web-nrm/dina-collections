@@ -7,7 +7,6 @@ import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
 import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
-import ResultTableView from './ResultTableView'
 
 /* eslint-disable */
 const main = {
@@ -21,11 +20,7 @@ const main = {
         </div>
       )
     }
-    return (
-      <div className="ui fluid dina background" style={{ padding: '20px' }}>
-        <ResultTableView />
-      </div>
-    )
+    return <div>{props.mainColumnActiveTab}</div>
   },
   style: { overflow: 'auto' },
 }
