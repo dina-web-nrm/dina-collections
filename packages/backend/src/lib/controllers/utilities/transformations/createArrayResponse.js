@@ -12,11 +12,9 @@ module.exports = function createArrayResponse({
 
   return {
     data: items.map(item => {
-      const { id, relationships, type: itemType, ...rest } = item
+      const { id, relationships, type: itemType, attributes } = item
       const itemResponse = {
-        attributes: {
-          ...rest,
-        },
+        attributes,
         id: `${id}`,
         type: itemType || type,
       }

@@ -1,7 +1,7 @@
 const buildItemFromElasticsearch = ({ item, resource }) => {
   const { doc_count: count, key } = item
   return {
-    document: {
+    attributes: {
       count,
       key,
       type: resource,

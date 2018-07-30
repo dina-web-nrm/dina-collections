@@ -3,7 +3,7 @@ module.exports = function buildQueryFilterFactory() {
     { filterSpecification = {}, query = {} } = {}
   ) {
     const filterSpecificationArray = Object.keys(
-      filterSpecification.filters
+      filterSpecification.filters || {}
     ).map(key => {
       return filterSpecification.filters[key]
     })

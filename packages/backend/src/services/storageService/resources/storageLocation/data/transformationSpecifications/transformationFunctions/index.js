@@ -6,11 +6,13 @@ exports.transformStorageLocation = function transformStorageLocation({
 }) {
   const { name, level, id, parentId } = src
 
-  target.doc = {
+  target.attributes = {
     group: level === 'continentOcean' ? 'continent' : level,
     name,
   }
 
   target.id = id
-  target.parentId = parentId
+  target.internals = {
+    parentId,
+  }
 }

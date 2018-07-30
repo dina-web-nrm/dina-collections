@@ -7,7 +7,7 @@ const loadType = ({ initialDataName, modelName, models, isJson = true }) => {
   }
   const items = types.map((type, index) => {
     return {
-      doc: type,
+      attributes: type,
       id: index + 1,
     }
   })

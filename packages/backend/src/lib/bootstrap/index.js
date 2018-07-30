@@ -15,6 +15,7 @@ const createConnectors = require('../connectors')
 const createServices = require('../services')
 const setupIntegrations = require('../integrations')
 const createWorker = require('../jobs/worker')
+const importer = require('../importer')
 const createScheduler = require('../jobs/scheduler')
 const createAuth = require('../auth')
 
@@ -82,6 +83,14 @@ module.exports = function bootstrap({
             } else {
               log.info('Dont starting worker')
             }
+
+            if (config.db.loadInitialData) {
+              return importer({
+                config,
+                serviceInteractor,
+              })
+            }
+
             if (config.jobs.schedulerActive) {
               log.info('Starting scheduler')
               createScheduler({

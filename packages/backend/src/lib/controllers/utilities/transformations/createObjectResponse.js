@@ -4,18 +4,10 @@ module.exports = function createObjectResponse({
   relationships,
   status = 200,
 }) {
-  const modifiedData = {
-    ...data,
-  }
-  delete modifiedData.relationships
-
-  const { id, ...rest } = modifiedData
-
+  const { id, attributes } = data
   const response = {
     data: {
-      attributes: {
-        ...rest,
-      },
+      attributes,
       id: `${id}`,
       type,
     },

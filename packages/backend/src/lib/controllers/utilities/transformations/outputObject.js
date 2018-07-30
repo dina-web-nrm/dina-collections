@@ -1,20 +1,20 @@
 /* eslint-disable no-param-reassign */
 // might need to unpack with { dataValues }
-module.exports = function tranformOutput(output, useVersionId) {
+module.exports = function tranformOutput(output) {
   if (!output) {
     return null
   }
 
-  const id = useVersionId ? output.versionId : output.id
+  const { id } = output
 
-  if (output.document) {
+  if (output.attributes) {
     return {
-      ...output.document,
+      ...output.attributes,
       id,
     }
   }
 
   return {
-    id: useVersionId ? output.versionId : output.id,
+    id,
   }
 }

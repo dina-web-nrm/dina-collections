@@ -1,3 +1,5 @@
+const createWrapper = require('../../../wrappers/methods/create')
+const formatModelItemResponse = require('../../utilities/formatModelItemResponse')
 const createLog = require('../../../../../../utilities/log')
 
 const log = createLog(
@@ -9,18 +11,18 @@ module.exports = function createFactory({ Model, schemaVersion } = {}) {
     throw new Error('Have to provide model')
   }
 
-  return function create({ doc = {} }) {
-    const data = { ...doc, schemaVersion }
+  return createWrapper(({ item = {} }) => {
+    const data = { ...(item.attributes || {}), schemaVersion }
 
     log.debug(`Creating instance for model ${Model.tableName}`)
 
-    return Model.create(data).then(item => {
+    return Model.create(data).then(res => {
       log.debug(
         `Created instance for model ${Model.tableName}. id: ${
-          item.dataValues.id
+          res.dataValues.id
         }`
       )
-      return { item }
+      return formatModelItemResponse({ input: res })
     })
-  }
+  })
 }

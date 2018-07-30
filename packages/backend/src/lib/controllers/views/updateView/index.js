@@ -1,5 +1,5 @@
 const createReporter = require('common/src/reporter')
-const applyTransformationFunctions = require('../../../data/transformations/utilities/applyTransformationFunctions')
+const applyTransformations = require('../../../data/transformations/utilities/applyTransformations')
 const update = require('./update')
 const defaultTransformationFunctions = require('../utilities/defaultTransformationFunctions')
 
@@ -32,7 +32,7 @@ module.exports = function updateView({ operation, models, serviceInteractor }) {
     }
     const reporter = createReporter()
     const mapFunction = ({ startCount, items }) => {
-      return applyTransformationFunctions({
+      return applyTransformations({
         items,
         reporter,
         resolveRelations,

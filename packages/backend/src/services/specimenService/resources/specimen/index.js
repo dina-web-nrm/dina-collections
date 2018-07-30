@@ -1,11 +1,15 @@
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
+
 const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
 const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
 const getManyfilterSpecification = require('./operations/getMany/filters')
 
-const postEditHook = ({ res, serviceInteractor }) => {
+const postEditHook = ({ item, serviceInteractor }) => {
   return Promise.resolve().then(() => {
-    const id = res && res.id
+    const id = item && item.id
     const request = {
       body: {
         data: {
@@ -51,6 +55,10 @@ module.exports = {
     {
       postDeleteHook: postEditHook,
       type: 'del',
+    },
+    {
+      transformationSpecification: importDataFromFileTransformationSpecification,
+      type: 'importDataFromFile',
     },
     {
       relationKey: 'agents',

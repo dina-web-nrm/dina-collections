@@ -1,8 +1,7 @@
 const shouldIncludeRelation = require('../shouldIncludeRelation')
 
 module.exports = function extractRelationship({
-  dataValues,
-  fetchedResource,
+  item,
   queryParamRelationships,
   relationKey,
   relation,
@@ -17,16 +16,15 @@ module.exports = function extractRelationship({
   } = relation
 
   if (storeInDocument) {
-    return (
-      dataValues.document.relationships &&
-      dataValues.document.relationships[relationKey]
-    )
+    return item.relationships && item.relationships[relationKey]
   }
 
-  if (fetchedResource[relationKey]) {
+  const { internals = {} } = item
+
+  if (internals[relationKey]) {
     let relationshipData
     if (relationFormat === 'array') {
-      relationshipData = fetchedResource[relationKey].map(
+      relationshipData = internals[relationKey].map(
         ({ dataValues: resourceDataValues }) => {
           return {
             id: `${resourceDataValues.id}`,
@@ -36,7 +34,7 @@ module.exports = function extractRelationship({
       )
     } else {
       relationshipData = {
-        id: `${fetchedResource[relationKey].dataValues.id}`,
+        id: `${internals[relationKey].dataValues.id}`,
         type: relationResource,
       }
     }

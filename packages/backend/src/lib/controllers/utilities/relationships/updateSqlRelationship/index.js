@@ -60,11 +60,15 @@ module.exports = ({ models, operation }) => {
 
     return model
       .update(updateValues)
-      .then(({ item: result }) => {
-        log.scope().debug('result[foreignKeyName]', result[foreignKeyName])
-        return result[foreignKeyName]
+      .then(({ item }) => {
+        const internals = item.internals || {}
+
+        log
+          .scope()
+          .debug('internals[foreignKeyName]', internals[foreignKeyName])
+        return internals[foreignKeyName]
           ? {
-              id: result[foreignKeyName],
+              id: internals[foreignKeyName],
               type: targetResource,
             }
           : null

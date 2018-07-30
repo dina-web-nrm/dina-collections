@@ -1,37 +1,50 @@
+const createWrapper = require('../../../wrappers/methods/create')
+/* eslint-disable no-underscore-dangle */
+const uuidv1 = require('uuid/v4')
 const createLog = require('../../../../../../utilities/log')
 
 const log = createLog(
   'lib/elasticsearch/modelFactories/normalizedElasticModel/methods/createFactory'
 )
 
-module.exports = function createFactory({ Model, elasticsearch } = {}) {
+module.exports = function createFactory(
+  { Model, elasticsearch, forceRefresh } = {}
+) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
-  return function create(doc) {
-    if (!doc) {
-      return Promise.reject(new Error('doc not provided'))
+  return createWrapper(({ item }) => {
+    const { attributes, relationships, id: providedId, internals = {} } = item
+
+    if (!attributes) {
+      return Promise.reject(new Error('attributes not provided'))
     }
+    const id = providedId !== undefined ? providedId : uuidv1()
 
     log.debug(`Creating instance for model ${Model.name}`)
+    const newItem = {
+      attributes,
+      id,
+      internals,
+      relationships,
+    }
 
     return elasticsearch
-      .create({
-        body: doc,
-        id: doc.id,
+      .index({
+        body: newItem,
+        id,
         index: Model.index,
-        // refresh: false
+        refresh: forceRefresh,
         type: Model.name,
       })
-      .then(item => {
-        log.debug(
-          `Created instance for model ${Model.name}. id: ${
-            item.id
-          }, versionId: ${item.versionId}`
-        )
+      .then(res => {
+        log.debug(`Created instance for model ${Model.name}. id: ${res._id}`)
         return {
-          item,
+          item: {
+            ...newItem,
+            id: res._id,
+          },
         }
       })
-  }
+  })
 }

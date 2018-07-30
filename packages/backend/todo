@@ -1,35 +1,95 @@
-Done
-* Commit new operation and new controller
-* Add use migrator (with possibility of injecting a reporter)
-* Make batchMap take more args then item {item, index, ...rest}
-* Make nesting items optional in applyTransform funcs
-* Move reporter and migrator to transformations.
-* Use applyTransformationFunctions even for the default mapping function
-* Create transformation func for agents - use migrator.
+* Todo
+** Test api and db
+** Test locally
+** Clean up Todo
+** Commit and make deploy work
+
+
+
+
+
+
+
+
+
+* Migrate all data the new way
+[x] identifiers
+[x] collectionItems (not verified)
+  Skeleton
+    * preparationType
+    * storageLocation
+  Skin
+    * preparationType
+    * storageLocation
+
+[] collectingInformation
+[] recordHistoryEvents
+[] readOnly
+
+
+* Add utility helper to recursive fetch place parent in the transformationFunction
+** Make sure that relationships are fetched with the getItemById
+*
+
+
+
+TODO
+* Add mapping of params to collectionItems
+
+* Separate rebuildView and importDataFromFile
+
+
+* Fix config
+* Remove outputObject
+
+
+TODO
+* Repair migration functions
+* Create migration function for specimen
+* Rename importer to initialDataLoader
+* Remove all import data functionallity from models
+
+
+TODO
+* Try to make simpleSqlModel work with tests
+* Use internals for job when setting timeflags
+* Move relationships into controller inside folders
+(* Make the relationships functions work on all models)
+* Remove use of custom where
+* Move build include to model level
 
 Todo
-* Add support for input and output validation functions (use same structure as transformationFunctions)
-* The doc transformation likely need to be specific to handle stuff like parentId. Force transformationFunctions to be array. Do together with valdation functions
-* also add custom execute method to be able to handle physical objects
+Make it possible to save and fetch relations for inMemoryModel.
+** Rename doc and document to attributes in model and controller layer.
+** Force transformationFunctions to be array
+** Use postprocess in applyTransformationFunctions (use nestedToCore)
+** Make pre and postprocess optional and opt in? No input transformations should be needed for creating the cache views. Use terminology relatedto nestedToCore and coreToNested (transform to core / transform to tested)
 
-* move buildIncludeArray to model
-* move extractRelationships to model
-* implement extractRelationships for inMemory
+** Move build include and extract relations to model layer
+** Implement include and extract relationships in inMemoryModel.
+** Make sure save is working with relationships
+** Implement include and extract relationships in elasticsearch.
 
-* Make transformation functions work on something sane like attributes (NO SHOULD BE ITEM IN nested oformat)
 
 
-Fix v1 speciment
-* Make migration of specimen work without related resources
+Fix search speciment without external stuff
+* Make migration of specimen work without related resources and without writing physical object
 * Use new migrator
-* Create in memory views for specimen lookups. Use shared idFactories for the ids.
-* Make migration of specimen work
+
+Fix specimen with external stuff
+* Create in memory views for specimen lookups.
+* Implement fetching of ancestors
+* Also add custom execute method to be able to handle physical objects
 
 
-** 
+Improve quality
+* Add proper test for model. Test all model methods with common test suite. Inkl test interface ie required methods implemented
+* Add proper e2e test for model + controller + operation. Test all operations for all models
 
 
 
+
+* Add support for input and output validation functions (use same structure as transformationFunctions)
 
 DONE
 * Potentially pass other stuff into crud query

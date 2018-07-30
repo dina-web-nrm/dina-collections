@@ -1,4 +1,4 @@
-const allFromObjectWithComputedId = require('../../../../lib/data/transformations/sharedTransformations/allFromObjectWithComputedId')
+const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
 
 const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
@@ -24,7 +24,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing agents from file',
         srcFileName: 'agents',
-        transformationFunctions: [allFromObjectWithComputedId],
+        transformationFunctions: [allFromSrcWithIndexId],
       },
       type: 'importDataFromFile',
     },

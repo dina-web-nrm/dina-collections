@@ -67,7 +67,7 @@ module.exports = function loadInitialData({ config, models }) {
                   // TODO: change to sql key storageLocationId instead of having
                   // storageLocation in doc
                   return mappedPhysicalObjects.push({
-                    doc: corePhysicalObject.attributes,
+                    attributes: corePhysicalObject.attributes,
                     id: physicalObjectId,
                   })
                 }
@@ -86,7 +86,7 @@ module.exports = function loadInitialData({ config, models }) {
             ({ attributes, relationships }) => {
               specimenId += 1
               return {
-                doc: { ...attributes, relationships },
+                attributes: { ...attributes, relationships },
                 id: specimenId,
               }
             }

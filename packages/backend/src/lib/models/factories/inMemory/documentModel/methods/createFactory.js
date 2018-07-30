@@ -1,21 +1,27 @@
-module.exports = function createFactory({ Model }) {
-  return function create({ doc } = {}) {
-    return Promise.resolve().then(() => {
-      const { id } = doc
-      if (id === undefined) {
-        throw new Error('Id required for create')
-      }
-      const currentItems = Model.get()
-      const newItems = {}
-      const item = { document: doc, id }
-      newItems[id] = item
+const createWrapper = require('../../../wrappers/methods/create')
+const uuidv1 = require('uuid/v4')
 
-      const updatedItems = {
-        ...currentItems,
-        ...newItems,
-      }
-      Model.set(updatedItems)
-      return { item }
-    })
-  }
+module.exports = function createFactory({ Model }) {
+  return createWrapper(({ item }) => {
+    const { attributes, id: providedId, internals = {}, relationships } = item
+    const id = providedId !== undefined ? providedId : uuidv1()
+    const currentItems = Model.get()
+    if (providedId && currentItems[providedId]) {
+      throw new Error(`Id: ${providedId} already exist`)
+    }
+    const newItems = {}
+    const newItem = { attributes, id, internals }
+    if (relationships) {
+      newItem.relationships = relationships
+    }
+
+    newItems[id] = newItem
+
+    const updatedItems = {
+      ...currentItems,
+      ...newItems,
+    }
+    Model.set(updatedItems)
+    return { item: newItem }
+  })
 }

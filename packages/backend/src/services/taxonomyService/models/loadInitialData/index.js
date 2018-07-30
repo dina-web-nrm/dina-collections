@@ -10,16 +10,16 @@ module.exports = function loadInitialData({ models }) {
     : taxa.map(taxon => {
         const { id, parentId, ...rest } = taxon
 
-        const resource = {
-          doc: deleteNullProperties(rest),
+        const item = {
+          attributes: deleteNullProperties(rest),
           id,
         }
 
         if (parentId) {
-          resource.parentId = parentId
+          item.internals = { parentId }
         }
 
-        return resource
+        return item
       })
 
   const taxonNameItems = !taxonNames
@@ -34,27 +34,28 @@ module.exports = function loadInitialData({ models }) {
           ...rest
         } = taxonName
 
-        const doc = {
+        const attributes = {
           ...rest,
           taxonNameType,
         }
 
-        const resource = {
-          doc: deleteNullProperties(doc),
+        const item = {
+          attributes: deleteNullProperties(attributes),
           id,
+          internals: {},
         }
 
         if (acceptedToTaxonId) {
-          resource.acceptedToTaxonId = acceptedToTaxonId
+          item.internals.acceptedToTaxonId = acceptedToTaxonId
         }
         if (synonymToTaxonId) {
-          resource.synonymToTaxonId = synonymToTaxonId
+          item.internals.synonymToTaxonId = synonymToTaxonId
         }
         if (vernacularToTaxonId) {
-          resource.vernacularToTaxonId = vernacularToTaxonId
+          item.internals.vernacularToTaxonId = vernacularToTaxonId
         }
 
-        return resource
+        return item
       })
 
   const taxonItemsPromise = taxonItems

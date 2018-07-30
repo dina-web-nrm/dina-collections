@@ -15,7 +15,6 @@ module.exports = cacheResourcesSpecifications.reduce(
             primary: {
               data: {
                 attributes: {
-                  id: '123',
                   info: '123',
                 },
                 type: name,
@@ -26,9 +25,6 @@ module.exports = cacheResourcesSpecifications.reduce(
         },
         {
           type: 'getOne',
-        },
-        {
-          type: 'getOneSync',
         },
         {
           filterSpecification,

@@ -1,15 +1,14 @@
+const getByIdWrapper = require('../../../wrappers/methods/getById')
+
 module.exports = function getByIdFactory({ Model, elasticsearch }) {
   if (!Model) {
     throw new Error('Have to provide model')
   }
-  return function getById({ id } = {}) {
-    if (id === undefined) {
-      return Promise.reject(new Error('id not provided'))
-    }
 
+  return getByIdWrapper(({ id }) => {
     return elasticsearch
       .get({
-        id: 1,
+        id,
         index: Model.index,
         type: Model.name,
       })
@@ -19,5 +18,12 @@ module.exports = function getByIdFactory({ Model, elasticsearch }) {
           item,
         }
       })
-  }
+      .catch(err => {
+        if (err && err.status === 404) {
+          return { item: null }
+        }
+
+        throw err
+      })
+  })
 }

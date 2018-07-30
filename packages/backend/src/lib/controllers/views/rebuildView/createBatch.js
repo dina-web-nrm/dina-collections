@@ -1,12 +1,13 @@
 const readInitialData = require('../../../../utilities/readInitialData')
 
 module.exports = function createBatch({
-  mapFunction,
   numberOfBatchEntries,
+  reporter,
   serviceInteractor,
   srcFileName,
   srcResource,
   startCount,
+  transformationFunction,
 }) {
   if (srcFileName) {
     return Promise.resolve().then(() => {
@@ -19,7 +20,12 @@ module.exports = function createBatch({
         startCount + numberOfBatchEntries
       )
       return Promise.resolve().then(() => {
-        return mapFunction({ items: batchItems, serviceInteractor, startCount })
+        return transformationFunction({
+          items: batchItems,
+          reporter,
+          serviceInteractor,
+          startCount,
+        })
       })
     })
   }
@@ -39,8 +45,9 @@ module.exports = function createBatch({
     .then(response => {
       const items = response && response.data
       return Promise.resolve().then(() => {
-        return mapFunction({
+        return transformationFunction({
           items,
+          reporter,
           serviceInteractor,
           startCount,
         })

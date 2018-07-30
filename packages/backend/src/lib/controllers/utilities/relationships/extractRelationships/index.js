@@ -2,15 +2,13 @@ const extractRelationship = require('./extractRelationship')
 const addEmptyRelationships = require('./addEmptyRelationships')
 
 module.exports = function extractRelationships(
-  { fetchedResource, queryParamRelationships, relations = {} } = {}
+  { item, queryParamRelationships, relations = {} } = {}
 ) {
-  const dataValues = fetchedResource
   const relationshipsData = Object.keys(relations).reduce(
     (relationships, relationKey) => {
       const relation = relations[relationKey]
       const relationshipData = extractRelationship({
-        dataValues,
-        fetchedResource,
+        item,
         queryParamRelationships,
         relation,
         relationKey,

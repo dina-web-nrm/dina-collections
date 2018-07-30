@@ -10,11 +10,10 @@ module.exports = function loadInitialData({ models }) {
         const { id, ...rest } = agent
 
         return {
-          doc: deleteNullProperties(rest),
+          attributes: deleteNullProperties(rest),
           id: `${index + 1}`,
         }
       })
-
   const agentItemsPromise = agentItems
     ? models.agent.bulkCreate({ items: agentItems })
     : Promise.resolve()

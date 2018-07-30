@@ -24,7 +24,7 @@ module.exports = function importDataFromFile({
     serviceInteractor,
   })
 
-  return () => {
-    return rebuild()
+  return ({ request }) => {
+    return rebuild({ request })
   }
 }

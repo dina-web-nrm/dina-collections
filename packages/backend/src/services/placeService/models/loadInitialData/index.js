@@ -10,14 +10,16 @@ module.exports = function loadInitialData({ models }) {
   const items = localities.map(locality => {
     const { name, level, id, parentId } = locality
 
-    const doc = {
+    const attributes = {
       group: level === 'continentOcean' ? 'continent' : level,
       name,
     }
     return {
-      doc,
+      attributes,
       id,
-      parentId,
+      internals: {
+        parentId,
+      },
     }
   })
 

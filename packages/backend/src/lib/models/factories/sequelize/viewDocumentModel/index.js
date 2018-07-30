@@ -1,5 +1,5 @@
 const createDocumentModel = require('../documentModel')
-const attachMethods = require('./attachMethods')
+const setupMethods = require('./setupMethods')
 
 module.exports = function createViewDocumentModel({
   name,
@@ -27,9 +27,14 @@ module.exports = function createViewDocumentModel({
     validate,
   })
 
-  return attachMethods({
+  const methods = setupMethods({
     sequelize,
     StageModel,
     ViewModel,
   })
+  return {
+    modelType: 'sequelizeViewDocumentModel',
+    name,
+    ...methods,
+  }
 }

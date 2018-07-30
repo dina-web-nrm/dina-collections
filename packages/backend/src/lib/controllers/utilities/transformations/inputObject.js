@@ -71,30 +71,26 @@ module.exports = function transformInput({
     storeEmptyRelationsInDocument,
   })
 
-  const foreignKeyObject = extractForeignKeyRelationships({
+  const internals = extractForeignKeyRelationships({
     input,
     relations,
     sourceResource,
   })
 
-  let output = { doc: input.attributes }
+  let output = { attributes: input.attributes }
 
   if (Object.keys(relationshipData).length) {
     output = {
       ...output,
-      doc: {
-        ...output.doc,
-        relationships: relationshipData,
-      },
+      relationships: relationshipData,
     }
   }
 
-  if (Object.keys(foreignKeyObject).length) {
+  if (Object.keys(internals).length) {
     output = {
       ...output,
-      foreignKeyObject,
+      internals,
     }
   }
-
-  return output
+  return { item: output }
 }

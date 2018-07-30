@@ -1,4 +1,4 @@
-const idFilterFunction = require('common/src/search/resources/specimen/filterFunctions/id')
+const idFilterFunction = require('common/src/search/resources/shared/filterFunctions/id')
 
 module.exports = {
   description: 'Filter by id',
@@ -20,7 +20,7 @@ module.exports = {
     }
 
     return {
-      id: value,
+      id: Number(value),
     }
   },
 }

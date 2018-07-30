@@ -43,11 +43,11 @@ module.exports = function createDb() {
       return Object.keys(items)
         .sort((a, b) => {
           if (Number(a) < Number(b)) {
-            return -1
+            return 1
           }
 
           if (Number(b) < Number(a)) {
-            return 1
+            return -1
           }
 
           return 0

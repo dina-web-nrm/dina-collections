@@ -1,21 +1,32 @@
+const { execute: batchExecute } = require('common/src/batch')
+const rebuildCacheViews = require('./rebuildCacheViews')
+const emptyCacheViews = require('./emptyCacheViews')
+const createLog = require('../../../../utilities/log')
 const createReporter = require('common/src/reporter')
-const applyTransformationFunctions = require('../../../data/transformations/utilities/applyTransformationFunctions')
-const rebuild = require('./rebuild')
-const defaultCreateBatch = require('./createBatch')
+const applyTransformations = require('../../../data/transformations/utilities/applyTransformations')
+const defaultCreateBatchFunction = require('./createBatch')
+const defaultExecuteFunction = require('./execute')
 const defaultTransformationFunctions = require('../utilities/defaultTransformationFunctions')
+const defaultPreTransformationFunction = require('../../../data/transformations/utilities/preTransformationCoreToNested')
+const defaultPostTransformationFunction = require('../../../data/transformations/utilities/postTransformationRemoveNull')
 
+const log = createLog('lib/controllers/views/rebuildView/rebuild')
 module.exports = function rebuildView({
-  createBatch = defaultCreateBatch,
   models,
   operation,
   serviceInteractor,
 }) {
   const {
     transformationSpecification: {
+      createBatchFunction = defaultCreateBatchFunction,
+      executeFunction = defaultExecuteFunction,
+      postTransformationFunction = defaultPostTransformationFunction,
+      preTransformationFunction = defaultPreTransformationFunction,
       resolveRelations,
       resourceCacheMap,
       srcFileName,
       srcResource,
+      transformationFunction = applyTransformations,
       transformationFunctions = defaultTransformationFunctions,
       warmViews,
     } = {},
@@ -30,39 +41,68 @@ module.exports = function rebuildView({
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
-  return () => {
-    const reporter = createReporter()
-    const mapFunction = ({ startCount, items }) => {
-      return applyTransformationFunctions({
-        items,
-        reporter,
-        resolveRelations,
-        resourceCacheMap,
-        serviceInteractor,
-        srcResource,
-        startCount,
-        transformationFunctions,
-      })
-    }
+  const wrapperExecute = items => {
+    return executeFunction({ items, model, models })
+  }
 
-    reporter.start()
+  const wrapperTransformationFunction = ({ startCount, items, reporter }) => {
+    return transformationFunction({
+      items,
+      postTransformationFunction,
+      preTransformationFunction,
+      reporter,
+      resolveRelations,
+      resourceCacheMap,
+      serviceInteractor,
+      srcResource,
+      startCount,
+      transformationFunctions,
+    })
+  }
 
-    return rebuild({
-      createBatch,
-      mapFunction,
-      model,
-      nItemsEachBatch: 1000,
+  const wrappedBatchFunction = ({ ...args }) => {
+    return createBatchFunction({
+      ...args,
       serviceInteractor,
       srcFileName,
       srcResource,
-      warmViews,
-    }).then(() => {
-      reporter.done()
-      return {
-        data: {
-          attributes: reporter.getReport(),
-        },
-      }
+      transformationFunction: wrapperTransformationFunction,
+    })
+  }
+
+  return ({ request = {} } = {}) => {
+    const { queryParams: { limit = 10000 } = {} } = request
+    const reporter = createReporter()
+
+    reporter.start()
+
+    return model.synchronize({ force: true }).then(() => {
+      log.scope().info('warming views')
+      return rebuildCacheViews({
+        serviceInteractor,
+        views: warmViews,
+      }).then(() => {
+        return batchExecute({
+          createBatch: wrappedBatchFunction,
+          execute: wrapperExecute,
+          numberOfEntries: limit,
+          numberOfEntriesEachBatch: 1000,
+          reporter,
+        }).then(() => {
+          log.scope().info('migrate data')
+          return emptyCacheViews({
+            serviceInteractor,
+            views: warmViews,
+          }).then(() => {
+            reporter.done()
+            return {
+              data: {
+                attributes: reporter.getReport(),
+              },
+            }
+          })
+        })
+      })
     })
   }
 }

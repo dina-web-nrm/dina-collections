@@ -3,7 +3,6 @@
     "type": "place",
     "attributes": {
       "name": "string",
-      "id": "string",
       "createdAt": "string",
       "createdBy": "string",
       "updatedBy": "string",

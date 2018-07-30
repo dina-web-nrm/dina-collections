@@ -10,7 +10,6 @@ module.exports = {
   },
   elasticsearch: {
     ...baseConfig.elasticsearch,
-    flushOnRestart: true,
   },
   initialData: {
     numberOfSpecimens:

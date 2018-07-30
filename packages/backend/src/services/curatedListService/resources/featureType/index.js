@@ -1,4 +1,4 @@
-const allFromObjectWithComputedId = require('../../../../lib/data/transformations/sharedTransformations/allFromObjectWithComputedId')
+const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
 const createFeatureTypeRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing featureTypes from file',
         srcFileName: 'featureTypes',
-        transformationFunctions: [allFromObjectWithComputedId],
+        transformationFunctions: [allFromSrcWithIndexId],
       },
       type: 'importDataFromFile',
     },

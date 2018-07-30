@@ -6,7 +6,7 @@ module.exports = function extractItemsFromResult({ result }) {
     return hits.map(hit => {
       const id = hit._id
       return {
-        document: hit._source || undefined,
+        ...(hit._source || undefined),
         id,
       }
     })

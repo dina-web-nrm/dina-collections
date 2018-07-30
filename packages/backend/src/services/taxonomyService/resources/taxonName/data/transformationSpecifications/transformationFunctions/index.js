@@ -11,21 +11,22 @@ exports.transformTaxonName = function transformTaxonName({ src, target }) {
     ...rest
   } = src
 
-  const doc = {
+  const attributes = {
     ...rest,
     taxonNameType,
   }
 
-  target.doc = deleteNullProperties(doc)
+  target.attributes = deleteNullProperties(attributes)
   target.id = id
+  target.internals = {}
 
   if (acceptedToTaxonId) {
-    target.acceptedToTaxonId = acceptedToTaxonId
+    target.internals.acceptedToTaxonId = acceptedToTaxonId
   }
   if (synonymToTaxonId) {
-    target.synonymToTaxonId = synonymToTaxonId
+    target.internals.synonymToTaxonId = synonymToTaxonId
   }
   if (vernacularToTaxonId) {
-    target.vernacularToTaxonId = vernacularToTaxonId
+    target.internals.vernacularToTaxonId = vernacularToTaxonId
   }
 }

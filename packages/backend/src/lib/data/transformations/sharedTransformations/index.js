@@ -1,3 +1,3 @@
 exports.allFromAttributes = require('./allFromAttributes')
-exports.allFromObjectWithComputedId = require('./allFromObjectWithComputedId')
+exports.allFromSrcWithIndexId = require('./allFromSrcWithIndexId')
 exports.id = require('./id')

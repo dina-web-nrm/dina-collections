@@ -1,4 +1,4 @@
-const allFromObjectWithComputedId = require('../../../../lib/data/transformations/sharedTransformations/allFromObjectWithComputedId')
+const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
 const createSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
       transformationSpecification: {
         description: 'Importing identifierTypes from file',
         srcFileName: 'identifierTypes',
-        transformationFunctions: [allFromObjectWithComputedId],
+        transformationFunctions: [allFromSrcWithIndexId],
       },
       type: 'importDataFromFile',
     },

@@ -1,5 +1,4 @@
 const createArrayResponse = require('../utilities/transformations/createArrayResponse')
-const transformOutput = require('../utilities/transformations/outputObject')
 const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
 const extractRelationships = require('../utilities/relationships/extractRelationships')
 
@@ -43,43 +42,35 @@ module.exports = function getMany({ operation, models }) {
     }
 
     return model
-      .buildWhereFilter({
+      .getWhere({
         filterInput,
         filterSpecification,
+        include,
+        limit,
+        offset,
       })
-      .then(where => {
-        return model
-          .getWhere({
-            include,
-            limit,
-            offset,
-            raw: false,
-            where,
-          })
-          .then(({ items, meta } = {}) => {
-            return createArrayResponse({
-              items: items.map(item => {
-                const transformedItem = transformOutput(item)
-                const relationships =
-                  includeRelations &&
-                  extractRelationships({
-                    fetchedResource: item,
-                    queryParamRelationships,
-                    relations,
-                  })
-                if (!relationships) {
-                  return transformedItem
-                }
+      .then(({ items, meta } = {}) => {
+        return createArrayResponse({
+          items: items.map(item => {
+            const relationships =
+              includeRelations &&
+              extractRelationships({
+                item,
+                queryParamRelationships,
+                relations,
+              })
+            if (!relationships) {
+              return item
+            }
 
-                return {
-                  ...transformedItem,
-                  relationships,
-                }
-              }),
-              meta,
-              type: resource,
-            })
-          })
+            return {
+              ...item,
+              relationships,
+            }
+          }),
+          meta,
+          type: resource,
+        })
       })
   }
 }

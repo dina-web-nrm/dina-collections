@@ -1,0 +1,21 @@
+exports.bulkCreate = require('./bulkCreate')
+exports.create = require('./create')
+exports.deactivate = require('./deactivate')
+exports.getById = require('./getById')
+exports.getOneWhere = require('./getOneWhere')
+exports.getWhere = require('./getWhere')
+exports.update = require('./update')
+
+// exports.buildWhereFilter = create
+// exports.buildWhereQuery = create
+// exports.bulkCreate = create
+// exports.create = create
+// exports.deactivate = create
+// exports.del = create
+// exports.empty = create
+// exports.getById = create
+// exports.getCount = create
+// exports.getWhere = create
+// exports.Model = create
+// exports.synchronize = create
+// exports.update = create

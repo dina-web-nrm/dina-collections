@@ -10,13 +10,13 @@ module.exports = function loadInitialData({ models }) {
   const items = storageLocations.map(storageLocation => {
     const { id, parentId, ...rest } = storageLocation
 
-    const doc = {
+    const attributes = {
       ...rest,
     }
     return {
-      doc,
+      attributes,
       id,
-      parentId,
+      internals: { parentId },
     }
   })
 

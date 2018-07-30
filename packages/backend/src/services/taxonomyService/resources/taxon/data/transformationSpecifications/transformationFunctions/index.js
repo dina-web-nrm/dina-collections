@@ -4,12 +4,11 @@ const deleteNullProperties = require('common/src/deleteNullProperties')
 exports.transformTaxon = function transformTaxon({ src, target }) {
   const { id, parentId, ...rest } = src
 
-  target.doc = deleteNullProperties(rest)
+  target.attributes = deleteNullProperties(rest)
 
-  if (parentId) {
-    target.parentId = parentId
+  if (parentId !== undefined) {
+    target.internals = { parentId }
   }
 
   target.id = id
-  target.parentId = parentId
 }

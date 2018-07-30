@@ -1,5 +1,4 @@
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
-const transformOutput = require('../utilities/transformations/outputObject')
 
 module.exports = function del({ operation, models, serviceInteractor }) {
   const { resource, postDeleteHook } = operation
@@ -16,14 +15,13 @@ module.exports = function del({ operation, models, serviceInteractor }) {
     return model
       .deactivate({ id })
       .then(({ item } = {}) => {
-        const res = transformOutput(item)
         if (postDeleteHook) {
-          return postDeleteHook({ res, serviceInteractor }).then(() => {
-            return res
+          return postDeleteHook({ item, serviceInteractor }).then(() => {
+            return item
           })
         }
 
-        return res
+        return item
       })
       .then(output => {
         return createObjectResponse({
