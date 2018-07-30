@@ -23,6 +23,7 @@ export const actions = {
   onSelectCurrentRecordNumber: action('onSelectCurrentRecordNumber'),
   onSelectNextRecord: action('onSelectNextRecord'),
   onSelectPreviousRecord: action('onSelectPreviousRecord'),
+  onSetCurrentRecordNumber: action('onSetCurrentRecordNumber'),
   onShowAllRecords: action('onShowAllRecords'),
   onToggleFilters: action('onToggleFilters'),
 }
@@ -106,6 +107,7 @@ storiesOf(
       onSelectCurrentRecordNumber={false}
       onSelectNextRecord={false}
       onSelectPreviousRecord={false}
+      onSetCurrentRecordNumber={false}
       onShowAllRecords={false}
       onToggleFilters={false}
       totalRecords={totalRecords}
