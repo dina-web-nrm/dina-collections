@@ -48,10 +48,25 @@ module.exports = function applyTransformationFunctions({
           item,
           migrator,
           reporter,
+          serviceInteractor,
           transformationFunctions,
         })
         .then(mappedItem => {
           return mappedItem
+        })
+        .catch(err => {
+          reporter.increment({
+            path: 'transformations.errors',
+          })
+          reporter.push({
+            path: 'transformations.indexWithErrors',
+            value: globalIndex,
+          })
+          reporter.increment({
+            path: `transformations.errorMessages.${err.message}`,
+          })
+
+          return null
         })
     })
     return Promise.all(promises).then(transformedItems => {
