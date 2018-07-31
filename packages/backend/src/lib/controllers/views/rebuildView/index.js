@@ -8,7 +8,8 @@ const defaultCreateBatchFunction = require('./createBatch')
 const defaultExecuteFunction = require('./execute')
 const defaultTransformationFunctions = require('../utilities/defaultTransformationFunctions')
 const defaultPreTransformationFunction = require('../../../data/transformations/utilities/preTransformationCoreToNested')
-const defaultPostTransformationFunction = require('../../../data/transformations/utilities/postTransformationRemoveNull')
+const defaultPostTransformationFunction = require('../../../data/transformations/utilities/postTransformationNoop')
+const createServiceInteractorCache = require('../../../serviceInteractor/cache')
 
 const log = createLog('lib/controllers/views/rebuildView/rebuild')
 module.exports = function rebuildView({
@@ -24,6 +25,7 @@ module.exports = function rebuildView({
       preTransformationFunction = defaultPreTransformationFunction,
       resolveRelations,
       resourceCacheMap,
+      useServiceInteractorCache = false,
       srcFileName,
       srcResource,
       transformationFunction = applyTransformations,
@@ -32,6 +34,7 @@ module.exports = function rebuildView({
     } = {},
     resource,
   } = operation
+
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -45,37 +48,41 @@ module.exports = function rebuildView({
     return executeFunction({ items, model, models })
   }
 
-  const wrapperTransformationFunction = ({ startCount, items, reporter }) => {
-    return transformationFunction({
-      items,
-      postTransformationFunction,
-      preTransformationFunction,
-      reporter,
-      resolveRelations,
-      resourceCacheMap,
-      serviceInteractor,
-      srcResource,
-      startCount,
-      transformationFunctions,
-    })
-  }
-
-  const wrappedBatchFunction = ({ ...args }) => {
-    return createBatchFunction({
-      ...args,
-      serviceInteractor,
-      srcFileName,
-      srcResource,
-      transformationFunction: wrapperTransformationFunction,
-    })
-  }
-
   return ({ request = {} } = {}) => {
     const { queryParams: { limit = 10000 } = {} } = request
     const reporter = createReporter()
+    const serviceInteractorCache = useServiceInteractorCache
+      ? createServiceInteractorCache({
+          serviceInteractor,
+        })
+      : serviceInteractor
+
+    const wrapperTransformationFunction = ({ startCount, items }) => {
+      return transformationFunction({
+        items,
+        postTransformationFunction,
+        preTransformationFunction,
+        reporter,
+        resolveRelations,
+        resourceCacheMap,
+        serviceInteractor: serviceInteractorCache,
+        srcResource,
+        startCount,
+        transformationFunctions,
+      })
+    }
+
+    const wrappedBatchFunction = ({ ...args }) => {
+      return createBatchFunction({
+        ...args,
+        serviceInteractor: serviceInteractorCache,
+        srcFileName,
+        srcResource,
+        transformationFunction: wrapperTransformationFunction,
+      })
+    }
 
     reporter.start()
-
     return model.synchronize({ force: true }).then(() => {
       log.scope().info('warming views')
       return rebuildCacheViews({
@@ -95,6 +102,10 @@ module.exports = function rebuildView({
             views: warmViews,
           }).then(() => {
             reporter.done()
+            if (useServiceInteractorCache) {
+              serviceInteractorCache.emptyCache()
+            }
+
             return {
               data: {
                 attributes: reporter.getReport(),
