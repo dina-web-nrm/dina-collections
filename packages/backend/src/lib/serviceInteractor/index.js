@@ -41,16 +41,7 @@ module.exports = function createServiceInteractor() {
 
       return {
         ...methods,
-        [operationType]: ({ resource, request = {}, sync = false }) => {
-          if (sync) {
-            return callController({
-              connectors,
-              log,
-              operationType,
-              request,
-              resource,
-            })
-          }
+        [operationType]: ({ resource, request = {} }) => {
           return Promise.resolve().then(() => {
             return callController({
               connectors,
