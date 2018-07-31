@@ -47,7 +47,7 @@ module.exports = function getWhereFactory({
         const { query, filterFunctions } = where
         const itemArray = Model.getArray()
         return asyncFilter({
-          attributesPath: 'document',
+          attributesPath: 'attributes',
           filterFunctions,
           items: itemArray,
           limit,
