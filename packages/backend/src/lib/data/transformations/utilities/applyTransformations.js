@@ -20,13 +20,12 @@ module.exports = function applyTransformationFunctions({
     })
   }
 
-  const wrappedGetItemByTypeId = ({ id, type }) => {
+  const wrappedGetItemByTypeId = ({ ...args }) => {
     return getItemByTypeId({
-      id,
       reporter,
       resourceCacheMap,
       serviceInteractor,
-      type,
+      ...args,
     })
   }
 

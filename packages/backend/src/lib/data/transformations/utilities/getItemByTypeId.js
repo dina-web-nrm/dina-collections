@@ -1,5 +1,6 @@
 module.exports = function getItemByTypeId({
   id,
+  queryParams = {},
   reporter,
   resourceCacheMap,
   serviceInteractor,
@@ -13,6 +14,7 @@ module.exports = function getItemByTypeId({
           pathParams: {
             id,
           },
+          queryParams,
         },
         resource: cacheResource,
       })
@@ -51,6 +53,7 @@ module.exports = function getItemByTypeId({
         pathParams: {
           id,
         },
+        queryParams,
       },
       resource: type,
     })
