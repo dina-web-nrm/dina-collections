@@ -9,7 +9,7 @@ module.exports = function getSkinStorageLocation({
   })
 
   if (!lookupSrcStorageLocationId) {
-    return Promise.resolve(true)
+    return Promise.resolve(undefined)
   }
 
   return getItemByTypeId({

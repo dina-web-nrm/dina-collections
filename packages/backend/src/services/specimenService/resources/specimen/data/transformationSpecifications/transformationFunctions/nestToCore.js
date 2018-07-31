@@ -14,29 +14,53 @@ module.exports = function validateSpecimen(specimen) {
   return validate(specimen)
 }
 
-module.exports = function nestToCore({ target, reporter }) {
+module.exports = function nestToCore({ globalIndex, target, reporter }) {
   const { id, attributes } = target
-
   const coreSpecimen =
     nestedToCoreSync({
       item: attributes,
       type: 'specimen',
     }) || {}
 
+  // delete src.analysis.AccessionNo
+  // delete src.analysis.Meas_Comments
+  // delete src.analysis.TypeOfWeight
+  // delete src.analysis.TypeOfWeight_related
+  // delete src.analysis.Condition
+  // delete src.analysis.Condition_related
+
+  // delete src.collection.SkeletonCollection
+  // delete src.collection.SkeletonCollection_related
+
+  // delete src.collection.SkeletonStatus
+  // delete src.collection.SkeletonStatus_related
+
+  // delete src.collection.SkinCollection
+  // delete src.collection.SkinCollection_related
+
+  // delete src.collection.SkinStatus
+  // delete src.collection.SkinStatus_related
+
+  // delete src.collection.AccessionNo
+
+  // if (Object.keys(src.analysis).length > 0) {
+  //   console.log('JSON.stringify src', JSON.stringify(src.analysis, null, 2))
+  // }
+
+  // console.log('JSON.stringify src', JSON.stringify(src, null, 2))
+
   const errors = coreSpecimen.attributes && validate(coreSpecimen.attributes)
 
   if (errors || !coreSpecimen.attributes) {
-    reporter.increment({
-      path: 'transformations.errors',
+    reporter.rebuildViewValidationError({
+      id,
+      index: globalIndex,
     })
-    reporter.push({
-      path: 'transformations.idsWithErrors',
-      value: id,
-    })
-
+    target.id = null
     target.attributes = null
     return
   }
 
+  target.relationships = coreSpecimen.relationships
   target.attributes = coreSpecimen.attributes
 }

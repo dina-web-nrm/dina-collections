@@ -17,6 +17,7 @@ module.exports = [
     return {
       modelFactory: 'inMemoryViewDocumentModel',
       name,
+      validate: false,
     }
   }),
 ]

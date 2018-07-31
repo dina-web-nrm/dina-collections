@@ -1,7 +1,7 @@
 const specification = require('./specification')
 
 module.exports = specification.reduce(
-  (obj, { name, transformationSpecification }) => {
+  (obj, { getManyFilters, name, transformationSpecification }) => {
     const spec = {
       basePath: '/api/specimen/v01',
       operations: [
@@ -22,6 +22,7 @@ module.exports = specification.reduce(
           type: 'getOne',
         },
         {
+          filterSpecification: getManyFilters,
           type: 'getMany',
         },
         {
