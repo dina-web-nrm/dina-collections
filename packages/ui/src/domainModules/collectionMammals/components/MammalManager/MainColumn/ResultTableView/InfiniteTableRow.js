@@ -28,58 +28,50 @@ class InfiniteTableRow extends Component {
     const { item, style } = this.props
 
     if (!item) {
-      return <div>Loading....</div>
+      return <div style={{ height: 45, width: 1700 }}>Loading....</div>
     }
 
     return (
-      <Grid
-        fluid="true"
-        stackable
-        style={{ overflow: 'auto', width: 1700 }}
-        textAlign="center"
-        verticalAlign="middle"
+      <Grid.Row
+        onClick={event => {
+          event.preventDefault()
+          this.props.onClick(item.id)
+        }}
+        style={{ background: style, height: 45, width: 1700 }}
       >
-        <Grid.Row
-          onClick={event => {
-            event.preventDefault()
-            this.props.onClick(item.id)
-          }}
-          style={{ background: style }}
-        >
-          <Grid.Column style={{ width: 150 }}>
-            {item.attributes.normalized.identifiers &&
-              item.attributes.normalized.identifiers[0].value}
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            {item.attributes.readOnly.objects.Scientific_Name}
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            {item.attributes.readOnly.objects.Family}
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            {item.attributes.readOnly.objects.Genus}
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            {item.attributes.readOnly.objects.Species}
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            {item.attributes.normalized.events[0].dateRange.startDate.dateText}
-          </Grid.Column>
-          <Grid.Column style={{ width: 300 }}>
-            {item.attributes.normalized.events[0].locationInformation.localityT}
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            {item.attributes.readOnly.objects.WayOfDeath &&
-              item.attributes.readOnly.objects.WayOfDeath_related.DödsorsakEN}
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            {item.attributes.readOnly.analysis.Sex}
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            {item.attributes.readOnly.analysis.AgeStage}
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+        <Grid.Column style={{ width: 150 }}>
+          {item.attributes.normalized.identifiers &&
+            item.attributes.normalized.identifiers[0].value}
+        </Grid.Column>
+        <Grid.Column style={{ width: 200 }}>
+          {item.attributes.readOnly.objects.Scientific_Name}
+        </Grid.Column>
+        <Grid.Column style={{ width: 200 }}>
+          {item.attributes.readOnly.objects.Family}
+        </Grid.Column>
+        <Grid.Column style={{ width: 200 }}>
+          {item.attributes.readOnly.objects.Genus}
+        </Grid.Column>
+        <Grid.Column style={{ width: 200 }}>
+          {item.attributes.readOnly.objects.Species}
+        </Grid.Column>
+        <Grid.Column style={{ width: 100 }}>
+          {item.attributes.normalized.events[0].dateRange.startDate.dateText}
+        </Grid.Column>
+        <Grid.Column style={{ width: 300 }}>
+          {item.attributes.normalized.events[0].locationInformation.localityT}
+        </Grid.Column>
+        <Grid.Column style={{ width: 100 }}>
+          {item.attributes.readOnly.objects.WayOfDeath &&
+            item.attributes.readOnly.objects.WayOfDeath_related.DödsorsakEN}
+        </Grid.Column>
+        <Grid.Column style={{ width: 100 }}>
+          {item.attributes.readOnly.analysis.Sex}
+        </Grid.Column>
+        <Grid.Column style={{ width: 100 }}>
+          {item.attributes.readOnly.analysis.AgeStage}
+        </Grid.Column>
+      </Grid.Row>
     )
   }
 }
