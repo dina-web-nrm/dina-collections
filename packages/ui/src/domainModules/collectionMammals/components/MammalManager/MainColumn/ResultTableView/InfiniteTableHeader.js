@@ -13,7 +13,7 @@ export class InfiniteTableHeader extends Component {
           paddingTop: '10px',
           width: 1700,
         }}
-        textAlign="center"
+        textAlign="left"
         verticalAlign="middle"
       >
         <Grid.Column style={{ width: 150 }}>Catalog Number</Grid.Column>
