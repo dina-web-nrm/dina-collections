@@ -15,14 +15,22 @@ const main = {
   renderRow: props => {
     if (props.mainColumnActiveTab === 'newRecord') {
       return (
-        <div className="ui fluid dina background" style={{ padding: '20px' }}>
+        <div
+          className="ui fluid dina background"
+          style={{ padding: '20px' }}
+        >
           <CreateSpecimen />
         </div>
       )
     }
     return (
-      <div className="ui fluid dina background" style={{ padding: '20px' }}>
-        <ResultTableView />
+      <div
+        className="ui fluid dina background"
+        style={{ padding: '20px'  }}
+      >
+        <ResultTableView
+          availableHeight={props.availableHeight - 100 - 43 - 50}
+        />
       </div>
     )
   },
@@ -51,7 +59,6 @@ const propTypes = {
 class MainColumn extends PureComponent {
   render() {
     const { mainColumnActiveTab, windowHeight, ...rest } = this.props
-
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
