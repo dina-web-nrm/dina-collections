@@ -4,12 +4,11 @@ import { compose } from 'redux'
 import PropTypes from 'prop-types'
 import ReactList from 'react-list'
 import { push } from 'react-router-redux'
-import * as actionCreators from 'coreModules/search/actionCreators'
+// import * as actionCreators from 'coreModules/search/actionCreators'
 import { globalSelectors } from 'coreModules/search/keyObjectModule'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
 import InfiniteTableRow from './InfiniteTableRow'
-import InfiniteTableHeader from './InfiniteTableHeader'
 
 const mapStateToProps = (state, { searchResultResourceType: resource }) => {
   return {
@@ -21,8 +20,6 @@ const mapStateToProps = (state, { searchResultResourceType: resource }) => {
 
 const mapDispatchToProps = {
   push,
-  search: actionCreators.search,
-  syncSearch: actionCreators.syncSearch,
 }
 
 const propTypes = {
@@ -37,7 +34,7 @@ const defaultProps = {
 
 const itemsRenderer = (items, ref) => {
   return (
-    <div className="ui divided list" ref={ref}>
+    <div className="ui grid" ref={ref}>
       {items}
     </div>
   )
@@ -75,24 +72,21 @@ export class InfiniteTable extends Component {
     if (!(searchResult && searchResult.items)) {
       return <div>Loading</div>
     }
+
     return (
-      <div style={{ overflow: 'hidden', width: 1700 }}>
-        <InfiniteTableHeader />
-        <div
-          style={{
-            height: '100vh',
-            marginTop: '20px',
-            overflow: 'auto',
-            width: 1700,
-          }}
-        >
-          <ReactList
-            itemRenderer={this.renderItem}
-            itemsRenderer={itemsRenderer}
-            length={searchResult.items.length}
-            type="uniform"
-          />
-        </div>
+      <div
+        style={{
+          height: '100vh',
+          overflow: 'auto',
+          width: 1700,
+        }}
+      >
+        <ReactList
+          itemRenderer={this.renderItem}
+          itemsRenderer={itemsRenderer}
+          length={searchResult.items.length}
+          type="uniform"
+        />
       </div>
     )
   }
