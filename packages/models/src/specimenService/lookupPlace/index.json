@@ -1,38 +1,5 @@
 {
   "additionalProperties": true,
-  "properties": {
-    "relationships": {
-      "type": "object",
-      "properties": {
-        "parent": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-stored-in-model": "place",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "object",
-              "$ref": "__ROOT__place",
-              "x-reference-type": "external"
-            }
-          }
-        },
-        "children": {
-          "type": "object",
-          "x-key-allow-null": true,
-          "x-key-stored-in-model": "place",
-          "x-key-type": "sql",
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__place",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  "x-internal": true,
+  "properties": {}
 }
