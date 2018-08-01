@@ -16,6 +16,9 @@ const validateInput = ({ items } = {}) => {
 const inputSchema = {
   additionalProperties: false,
   properties: {
+    collidingIdPrefix: {
+      type: 'string',
+    },
     items: inputItems,
   },
   required: ['items'],

@@ -1,9 +1,13 @@
-module.exports = function rebuildCacheViews({ views = [], serviceInteractor }) {
-  const promises = views.map(viewName => {
-    return serviceInteractor.rebuildView({
-      resource: viewName,
-    })
-  })
+const { map: batchMap } = require('common/src/batch')
 
-  return Promise.all(promises)
+module.exports = function rebuildCacheViews({ views = [], serviceInteractor }) {
+  return batchMap({
+    items: views,
+    mapFunction: ({ item: viewName }) => {
+      return serviceInteractor.rebuildView({
+        resource: viewName,
+      })
+    },
+    numberOfEntriesEachBatch: 1,
+  })
 }

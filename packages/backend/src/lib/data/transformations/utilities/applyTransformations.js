@@ -71,12 +71,6 @@ module.exports = function applyTransformationFunctions({
     return Promise.all(promises).then(transformedItems => {
       return postTransformationFunction({ items: transformedItems }).then(
         ({ items: postProcessedItems }) => {
-          if (reporter) {
-            reporter.increment({
-              count: postProcessedItems.length,
-              path: 'transformations.nTargetItems',
-            })
-          }
           return postProcessedItems
         }
       )

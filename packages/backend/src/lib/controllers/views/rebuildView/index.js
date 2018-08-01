@@ -19,17 +19,18 @@ module.exports = function rebuildView({
 }) {
   const {
     transformationSpecification: {
+      collidingIdPrefix,
       createBatchFunction = defaultCreateBatchFunction,
       executeFunction = defaultExecuteFunction,
       postTransformationFunction = defaultPostTransformationFunction,
       preTransformationFunction = defaultPreTransformationFunction,
       resolveRelations,
       resourceCacheMap,
-      useServiceInteractorCache = false,
       srcFileName,
       srcResource,
       transformationFunction = applyTransformations,
       transformationFunctions = defaultTransformationFunctions,
+      useServiceInteractorCache = false,
       warmViews,
     } = {},
     resource,
@@ -44,10 +45,6 @@ module.exports = function rebuildView({
     throw new Error(`srcResource not provided for ${srcResource}`)
   }
 
-  const wrapperExecute = items => {
-    return executeFunction({ items, model, models })
-  }
-
   return ({ request = {} } = {}) => {
     const { queryParams: { limit = 10000 } = {} } = request
     const reporter = createReporter()
@@ -56,6 +53,16 @@ module.exports = function rebuildView({
           serviceInteractor,
         })
       : serviceInteractor
+
+    const wrapperExecute = items => {
+      return executeFunction({
+        collidingIdPrefix,
+        items,
+        model,
+        models,
+        reporter,
+      })
+    }
 
     const wrapperTransformationFunction = ({ startCount, items }) => {
       return transformationFunction({
@@ -84,11 +91,12 @@ module.exports = function rebuildView({
 
     reporter.start()
     return model.synchronize({ force: true }).then(() => {
-      log.scope().info('warming views')
+      log.scope().info(`warming views for ${resource}`)
       return rebuildCacheViews({
         serviceInteractor,
         views: warmViews,
       }).then(() => {
+        log.scope().info(`Start: migrate data for ${resource}`)
         return batchExecute({
           createBatch: wrappedBatchFunction,
           execute: wrapperExecute,
@@ -96,7 +104,7 @@ module.exports = function rebuildView({
           numberOfEntriesEachBatch: 1000,
           reporter,
         }).then(() => {
-          log.scope().info('migrate data')
+          log.scope().info(`Done: migrate data for ${resource}`)
           return emptyCacheViews({
             serviceInteractor,
             views: warmViews,
