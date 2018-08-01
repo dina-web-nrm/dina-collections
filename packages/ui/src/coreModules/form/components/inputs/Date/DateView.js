@@ -79,7 +79,14 @@ class DateView extends Component {
             }
           }
 
-          return <div style={style}>{component}</div>
+          return (
+            <div
+              key={index} // eslint-disable-line react/no-array-index-key
+              style={style}
+            >
+              {component}
+            </div>
+          )
         })}
       </React.Fragment>
     )

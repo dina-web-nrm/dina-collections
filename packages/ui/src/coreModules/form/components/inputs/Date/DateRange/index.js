@@ -14,7 +14,6 @@ const propTypes = {
   meta: PropTypes.object.isRequired,
   mountHidden: PropTypes.bool,
   stack: PropTypes.bool,
-  type: PropTypes.string.isRequired,
 }
 
 const defaultProps = {

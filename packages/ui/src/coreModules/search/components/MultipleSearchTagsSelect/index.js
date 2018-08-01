@@ -23,14 +23,17 @@ const propTypes = {
   inlineRefine: PropTypes.bool,
   input: PropTypes.shape({
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.objectOf(
-      PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          selected: PropTypes.bool.isRequire,
-        })
-      ).isRequired
-    ),
+    value: PropTypes.oneOfType([
+      PropTypes.objectOf(
+        PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            selected: PropTypes.bool.isRequired,
+          })
+        ).isRequired
+      ).isRequired,
+      PropTypes.string.isRequired,
+    ]).isRequired,
   }).isRequired,
   search: PropTypes.func.isRequired,
 }
