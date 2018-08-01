@@ -1,6 +1,7 @@
 module.exports = function getItemByTypeId({
   id,
   queryParams = {},
+  report = true,
   reporter,
   resourceCacheMap,
   serviceInteractor,
@@ -19,7 +20,7 @@ module.exports = function getItemByTypeId({
         resource: cacheResource,
       })
       .then(res => {
-        if (reporter) {
+        if (reporter && report) {
           if (res && res.data) {
             reporter.increment({
               path: `dependencies.${cacheResource}.nHits`,
@@ -58,7 +59,7 @@ module.exports = function getItemByTypeId({
       resource: type,
     })
     .then(res => {
-      if (reporter) {
+      if (reporter && report) {
         if (res && res.data) {
           reporter.increment({
             path: `dependencies.${type}.nHits`,
@@ -76,12 +77,14 @@ module.exports = function getItemByTypeId({
     })
     .catch(err => {
       if (err.status === 404) {
-        reporter.increment({
-          path: `dependencies.${type}.nMisses`,
-        })
-        reporter.increment({
-          path: `dependencies.${type}.missing.${id}`,
-        })
+        if (reporter && report) {
+          reporter.increment({
+            path: `dependencies.${type}.nMisses`,
+          })
+          reporter.increment({
+            path: `dependencies.${type}.missing.${id}`,
+          })
+        }
         return null
       }
 
