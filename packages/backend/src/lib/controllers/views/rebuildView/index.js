@@ -30,7 +30,7 @@ module.exports = function rebuildView({
       srcResource,
       transformationFunction = applyTransformations,
       transformationFunctions = defaultTransformationFunctions,
-      useServiceInteractorCache = false,
+      cacheRequestsToResources,
       warmViews,
     } = {},
     resource,
@@ -48,8 +48,9 @@ module.exports = function rebuildView({
   return ({ request = {} } = {}) => {
     const { queryParams: { limit = 10000 } = {} } = request
     const reporter = createReporter()
-    const serviceInteractorCache = useServiceInteractorCache
+    const serviceInteractorCache = cacheRequestsToResources
       ? createServiceInteractorCache({
+          cacheRequestsToResources,
           serviceInteractor,
         })
       : serviceInteractor
@@ -110,7 +111,7 @@ module.exports = function rebuildView({
             views: warmViews,
           }).then(() => {
             reporter.done()
-            if (useServiceInteractorCache) {
+            if (cacheRequestsToResources) {
               serviceInteractorCache.emptyCache()
             }
 

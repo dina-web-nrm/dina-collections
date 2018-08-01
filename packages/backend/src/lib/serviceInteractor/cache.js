@@ -6,7 +6,10 @@ const buildCacheKey = ({ operationType, resource, request = {} }) => {
   return `${resource}-${operationType}-${JSON.stringify(request)}`
 }
 
-module.exports = function createServiceInteractorCache({ serviceInteractor }) {
+module.exports = function createServiceInteractorCache({
+  serviceInteractor,
+  cacheRequestsToResources = [],
+}) {
   const operationTypes = ['getMany', 'getOne']
 
   const serviceInteractorMethods = Object.keys(serviceInteractor)
@@ -36,24 +39,30 @@ module.exports = function createServiceInteractorCache({ serviceInteractor }) {
       return {
         ...methods,
         [serviceInteractorMethod]: ({ resource, request = {} }) => {
-          const key = buildCacheKey({
-            operationType: serviceInteractorMethod,
-            request,
-            resource,
-          })
+          if (cacheRequestsToResources.includes(resource)) {
+            const key = buildCacheKey({
+              operationType: serviceInteractorMethod,
+              request,
+              resource,
+            })
 
-          if (cache[key]) {
-            return Promise.resolve(cache[key])
+            if (cache[key]) {
+              return Promise.resolve(cache[key])
+            }
+
+            return serviceInteractor[serviceInteractorMethod]({
+              request,
+              resource,
+            }).then(res => {
+              if (res) {
+                cache[key] = res
+              }
+              return res
+            })
           }
-
           return serviceInteractor[serviceInteractorMethod]({
             request,
             resource,
-          }).then(res => {
-            if (res) {
-              cache[key] = res
-            }
-            return res
           })
         },
       }
