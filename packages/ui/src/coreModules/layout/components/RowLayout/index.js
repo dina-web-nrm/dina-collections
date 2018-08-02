@@ -10,11 +10,13 @@ const propTypes = {
     }).isRequired
   ),
   wrapperClassNames: PropTypes.string,
+  wrapperId: PropTypes.string,
   wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
   rows: undefined,
   wrapperClassNames: undefined,
+  wrapperId: undefined,
   wrapperStyle: undefined,
 }
 
@@ -24,6 +26,7 @@ class RowLayout extends PureComponent {
       availableHeight,
       rows,
       wrapperClassNames,
+      wrapperId,
       wrapperStyle,
     } = this.props
 
@@ -34,12 +37,12 @@ class RowLayout extends PureComponent {
     return (
       <div
         className={wrapperClassNames}
+        id={wrapperId}
         style={{
           display: 'flex',
           flexDirection: 'column',
           height: `${availableHeight}px`,
-          overflowX: 'auto',
-          overflowY: 'hidden',
+          overflow: 'hidden',
           ...(wrapperStyle || {}),
         }}
       >
@@ -47,6 +50,7 @@ class RowLayout extends PureComponent {
           return (
             <div
               className={rowProps.classNames}
+              id={rowProps.id}
               key={rowProps.key || index}
               style={
                 rowProps.height
