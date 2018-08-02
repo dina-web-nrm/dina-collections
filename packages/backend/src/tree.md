@@ -21,6 +21,7 @@
 │   ├── controllers
 │   ├── data
 │   ├── dataStores
+│   ├── importer
 │   ├── integrations
 │   ├── jobs
 │   ├── models
@@ -34,12 +35,9 @@
 ├── services
 │   ├── agentService
 │   ├── authService
-│   ├── curatedEventService
 │   ├── curatedListService
-│   ├── externalEventService
 │   ├── index.js
 │   ├── jobService
-│   ├── organizationService
 │   ├── placeService
 │   ├── searchService
 │   ├── serviceOrder.js

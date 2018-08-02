@@ -49,6 +49,7 @@
 │   │   ├── CreateSpecimen
 │   │   │   └── index.js
 │   │   ├── LookupMammals
+│   │   │   ├── CheckboxesForm.js
 │   │   │   ├── CollectingLocationMultipleSearch.js
 │   │   │   ├── Filter.js
 │   │   │   ├── Result.js

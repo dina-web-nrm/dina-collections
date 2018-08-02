@@ -34,14 +34,15 @@
 │   │   ├── del.js
 │   │   ├── getMany.js
 │   │   ├── getOne.js
-│   │   ├── getOneSync.js
 │   │   ├── getRelationship.js
-│   │   ├── getVersion.js
-│   │   ├── getVersions.js
 │   │   ├── index.js
 │   │   ├── query.js
 │   │   ├── update.js
 │   │   └── updateRelationship.js
+│   ├── import
+│   │   ├── importDataFromFile
+│   │   │   └── index.js
+│   │   └── index.js
 │   ├── index.js
 │   ├── jobs
 │   │   ├── createJob.js
@@ -75,8 +76,8 @@
 │       ├── rebuildView
 │       │   ├── createBatch.js
 │       │   ├── emptyCacheViews.js
+│       │   ├── execute.js
 │       │   ├── index.js
-│       │   ├── rebuild.js
 │       │   └── rebuildCacheViews.js
 │       ├── requestRebuildView.js
 │       ├── requestUpdateView.js
@@ -86,7 +87,7 @@
 │       │   ├── index.js
 │       │   └── update.js
 │       └── utilities
-│           └── defaultMapFunction.js
+│           └── defaultTransformationFunctions.js
 ├── data
 │   ├── aggregations
 │   │   └── schemas
@@ -102,6 +103,7 @@
 │   │   │   ├── id.js
 │   │   │   ├── ids.js
 │   │   │   ├── index.js
+│   │   │   ├── name.js
 │   │   │   ├── nameSearch.js
 │   │   │   ├── parentId.js
 │   │   │   ├── raw.js
@@ -115,8 +117,17 @@
 │   └── transformations
 │       ├── schemas
 │       │   └── transformationSpecification.js
+│       ├── sharedTransformations
+│       │   ├── allFromAttributes.js
+│       │   ├── allFromSrcWithIndexId.js
+│       │   ├── id.js
+│       │   └── index.js
 │       └── utilities
-│           └── applyTransformationFunctions.js
+│           ├── applyTransformations.js
+│           ├── getItemByTypeId.js
+│           ├── postTransformationNoop.js
+│           ├── postTransformationRemoveNull.js
+│           └── preTransformationCoreToNested.js
 ├── dataStores
 │   ├── elasticsearch
 │   │   ├── db
@@ -132,6 +143,8 @@
 │       ├── db
 │       │   └── index.js
 │       └── index.js
+├── importer
+│   └── index.js
 ├── integrations
 │   ├── factories
 │   │   ├── index.js
@@ -157,14 +170,26 @@
 │   │   │   ├── documentModel
 │   │   │   └── viewDocumentModel
 │   │   ├── index.js
-│   │   └── sequelize
-│   │       ├── documentModel
-│   │       ├── sharedMethods
-│   │       ├── simpleSqlModel
-│   │       ├── utilities
-│   │       └── viewDocumentModel
+│   │   ├── sequelize
+│   │   │   ├── documentModel
+│   │   │   ├── normalizedDocumentModel
+│   │   │   ├── sharedMethods
+│   │   │   ├── simpleSqlModel
+│   │   │   ├── utilities
+│   │   │   └── viewDocumentModel
+│   │   ├── tests
+│   │   │   ├── createModelTests
+│   │   │   ├── methodTests
+│   │   │   ├── setupTestModels
+│   │   │   ├── testData
+│   │   │   └── testModels.test.js
+│   │   ├── utilities
+│   │   │   └── mergeRelationships.js
+│   │   └── wrappers
+│   │       ├── methods
+│   │       ├── sharedSchemas
+│   │       └── wrapperFactory.js
 │   ├── index.js
-│   ├── loadInitialData.js
 │   ├── setupModels.js
 │   ├── synchronizeModels.js
 │   └── utilities
@@ -176,10 +201,7 @@
 │   │   ├── del.js
 │   │   ├── getMany.js
 │   │   ├── getOne.js
-│   │   ├── getOneSync.js
 │   │   ├── getRelationship.js
-│   │   ├── getVersion.js
-│   │   ├── getVersions.js
 │   │   ├── index.js
 │   │   ├── query.js
 │   │   ├── schemas
@@ -207,6 +229,12 @@
 │   │       ├── addQueryParamsFromFilterSpecifications.js
 │   │       ├── addRelationsToQueryParams.js
 │   │       └── buildRelations.js
+│   ├── importOperations
+│   │   ├── importDataFromFile.js
+│   │   ├── index.js
+│   │   └── schemas
+│   │       ├── base.js
+│   │       └── index.js
 │   ├── index.js
 │   ├── jobOperations
 │   │   ├── createJob.js
@@ -228,6 +256,7 @@
 │       │   └── index.js
 │       └── updateView.js
 ├── serviceInteractor
+│   ├── cache.js
 │   ├── callController.js
 │   └── index.js
 ├── serviceRouter

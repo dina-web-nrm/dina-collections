@@ -240,10 +240,14 @@
 │   ├── logFactory.js
 │   ├── priorityMap.js
 │   └── testLog.js
+├── migrator
+│   └── index.js
 ├── openApiClient
 │   ├── index.js
 │   └── utilities
 │       └── createOpenApiMockClient.js
+├── reporter
+│   └── index.js
 ├── schemaBuilder
 │   ├── build
 │   │   ├── buildEndpoints

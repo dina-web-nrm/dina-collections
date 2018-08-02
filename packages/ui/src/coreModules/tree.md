@@ -296,6 +296,8 @@
 │   └── utilities.js
 ├── layout
 │   ├── components
+│   │   ├── AppNavigationSidebar
+│   │   │   └── index.js
 │   │   ├── Block
 │   │   │   ├── Content
 │   │   │   ├── Header
@@ -316,6 +318,8 @@
 │   │   ├── RowLayout
 │   │   │   ├── index.js
 │   │   │   └── index.stories.js
+│   │   ├── TopMenu
+│   │   │   └── index.js
 │   │   ├── ViewWrap.js
 │   │   ├── ViewWrap.stories.js
 │   │   └── index.js
@@ -329,9 +333,7 @@
 │   ├── middleware.js
 │   └── utilities
 │       ├── calculateColumnWidths.js
-│       ├── calculateColumnWidths.test.js
-│       ├── calculateRowHeights.js
-│       └── calculateRowHeights.test.js
+│       └── calculateColumnWidths.test.js
 ├── localStorage
 │   └── index.js
 ├── logger
@@ -365,6 +367,11 @@
 │       ├── index.js
 │       └── testNotificationSpecification.js
 ├── routing
+│   ├── constants.js
+│   ├── higherOrderComponents
+│   │   ├── index.js
+│   │   ├── injectActiveLocationDescription.js
+│   │   └── injectNavigationItems.js
 │   └── index.js
 ├── search
 │   ├── actionCreators
@@ -372,13 +379,24 @@
 │   │   ├── localSearch.js
 │   │   ├── search.js
 │   │   └── syncSearch.js
+│   ├── components
+│   │   ├── MultipleChoiceCheckboxes
+│   │   │   └── index.js
+│   │   ├── MultipleSearchTagsSelect
+│   │   │   ├── RefineTagSelection.js
+│   │   │   ├── TagGroup.js
+│   │   │   ├── index.js
+│   │   │   ├── index.stories.js
+│   │   │   └── selectors.js
+│   │   └── index.js
 │   ├── constants.js
 │   ├── higherOrderComponents
 │   │   ├── createInjectSearch.js
 │   │   ├── createInjectSearchResult.js
 │   │   └── index.js
 │   ├── index.js
-│   └── keyObjectModule.js
+│   ├── keyObjectModule.js
+│   └── translations.json
 ├── size
 │   ├── actionCreators
 │   │   ├── index.js

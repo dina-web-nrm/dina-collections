@@ -8,7 +8,6 @@
 │   └── terminology
 ├── index.js
 ├── package.json
-├── sample.env
 ├── src
 │   ├── apps
 │   ├── info
