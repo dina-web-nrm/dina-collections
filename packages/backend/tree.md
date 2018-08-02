@@ -19,7 +19,6 @@
 │   └── utilities
 ├── todo
 ├── tree.md
-├── yarn-error.log
 └── yarn.lock
 
 ```
