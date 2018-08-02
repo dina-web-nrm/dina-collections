@@ -44,11 +44,4 @@ export const NAVIGATION_ITEMS = [
     name: 'lookupMammals',
     path: '/app/mammals/lookup',
   },
-  {
-    exact: true,
-    icon: 'setting',
-    name: 'settings',
-    path: '/app/settings',
-    push: true,
-  },
 ]
