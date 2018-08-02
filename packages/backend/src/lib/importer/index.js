@@ -14,7 +14,6 @@ module.exports = function importer({ config, serviceInteractor }) {
     'identifierType',
     'preparationType',
     'typeSpecimenType',
-
     'place',
     'taxon',
     'taxonName',
@@ -46,31 +45,24 @@ module.exports = function importer({ config, serviceInteractor }) {
           }
         })
     },
-  }).then(res => {
-    /* eslint-disable no-console */
-    console.log('res', JSON.stringify(res, null, 2))
-    /* eslint-enable no-console */
-    process.exit(0)
+  }).then(importReport => {
+    log.info('Import done')
+    log.info('Start rebuilding searchSpecimen')
+    return serviceInteractor
+      .call({
+        operationId: 'searchSpecimenRebuildView',
+        request: { queryParams: { limit: 100000 } },
+      })
+      .then(rebuildSearchSpecimenReport => {
+        /* eslint-disable no-console */
+        console.log('importReport', JSON.stringify(importReport, null, 2))
+        console.log(
+          'rebuildSearchSpecimenReport',
+          JSON.stringify(rebuildSearchSpecimenReport, null, 2)
+        )
+        /* eslint-enable no-console */
+        log.info('Rebuilding searchSpecimen done')
+        process.exit(0)
+      })
   })
-
-  // if (config.jobs.schedulerIndexElastic) {
-  //   return serviceInteractor
-  //     .call({ operationId: 'searchSpecimenRebuildView', request: {} })
-  //     .then(() => {
-  //       log.info('Adding job success')
-  //       process.exit(0)
-  //     })
-  //     .catch(err => {
-  //       log.err('Adding job fail', err)
-  //     })
-  // }
-
-  // return serviceInteractor
-  //   .call({ operationId: 'searchSpecimenRequestRebuildView', request: {} })
-  //   .then(() => {
-  //     log.info('Adding job success')
-  //   })
-  //   .catch(err => {
-  //     log.err('Adding job fail', err)
-  //   })
 }
