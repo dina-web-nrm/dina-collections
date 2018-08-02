@@ -4,8 +4,8 @@ services:
     image: dina/dina-collections-api
     container_name: load-data
     environment:
-      - LOAD_INITIAL_DATA=true
-      - INITIAL_DATA_NUMBER_OF_SPECIMENS=100
+      - IMPORT_DATA=true
+      - IMPORT_DATA_NUMBER_OF_SPECIMENS=100
     env_file:
       - ./env/.backend
     command: node /etc/api/src/apps/production/data/index.js
