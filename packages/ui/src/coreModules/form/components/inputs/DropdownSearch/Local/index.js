@@ -119,7 +119,7 @@ class DropdownSearchLocalInput extends Component {
   }
 
   render() {
-    const { initialText, input, isLoading, parse } = this.props
+    const { initialText, input, isLoading, parse, ...rest } = this.props
     const { filteredOptions, searchQuery } = this.state
     return (
       <DropdownSearchBaseInput
@@ -131,6 +131,7 @@ class DropdownSearchLocalInput extends Component {
         parse={parse}
         searchQuery={searchQuery}
         selectedOption={this.getSelectedOption()}
+        {...rest}
       />
     )
   }
