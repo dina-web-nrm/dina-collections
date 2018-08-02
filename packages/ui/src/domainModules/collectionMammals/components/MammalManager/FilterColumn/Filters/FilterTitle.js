@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Grid, Icon } from 'semantic-ui-react'
 
 import { ModuleTranslate } from 'coreModules/i18n/components'
+import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 
 const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
@@ -22,7 +23,7 @@ const FilterTitle = ({ hasValues, titleTextKey }) => {
       <Grid.Column width={14}>
         {hasValues && <Icon name="check circle" />}
         <ModuleTranslate
-          fallback={titleTextKey}
+          fallback={capitalizeFirstLetter(titleTextKey)}
           module="collectionMammals"
           textKey={titleTextKey}
         />
