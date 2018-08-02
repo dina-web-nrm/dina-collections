@@ -96,7 +96,7 @@ module.exports = function rebuildView({
       return rebuildCacheViews({
         serviceInteractor,
         views: warmViews,
-      }).then(() => {
+      }).then(dependencyReport => {
         log.scope().info(`Start: migrate data for ${resource}`)
         return batchExecute({
           createBatch: wrappedBatchFunction,
@@ -114,6 +114,9 @@ module.exports = function rebuildView({
             if (cacheRequestsToResources) {
               serviceInteractorCache.emptyCache()
             }
+            reporter.rebuildViewDependencyReport({
+              dependencyReport,
+            })
 
             return {
               data: {

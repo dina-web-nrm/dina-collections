@@ -41,7 +41,7 @@ module.exports = function importer({ config, serviceInteractor }) {
         .then(migrationResult => {
           return {
             ...migrationResults,
-            [resource]: migrationResult,
+            [resource]: migrationResult.data.attributes,
           }
         })
     },

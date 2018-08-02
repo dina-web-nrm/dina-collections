@@ -14,9 +14,8 @@ module.exports = function applyTransformationFunctions({
   transformationFunctions,
 }) {
   if (reporter) {
-    reporter.increment({
-      count: items.length,
-      path: 'transformations.nSrcItems',
+    reporter.rebuildViewIncrementSrc({
+      items,
     })
   }
 
@@ -54,15 +53,9 @@ module.exports = function applyTransformationFunctions({
           return mappedItem
         })
         .catch(err => {
-          reporter.increment({
-            path: 'transformations.errors',
-          })
-          reporter.push({
-            path: 'transformations.indexWithErrors',
-            value: globalIndex,
-          })
-          reporter.increment({
-            path: `transformations.errorMessages.${err.message}`,
+          reporter.rebuildViewError({
+            err,
+            index: globalIndex,
           })
 
           return null

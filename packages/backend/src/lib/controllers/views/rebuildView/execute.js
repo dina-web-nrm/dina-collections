@@ -17,10 +17,7 @@ module.exports = function execute({
   })
 
   if (reporter) {
-    reporter.increment({
-      count: filteredItems.length,
-      path: 'transformations.nTargetItems',
-    })
+    reporter.rebuildViewIncrementTarget({ items: filteredItems })
   }
 
   return model

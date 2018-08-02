@@ -22,16 +22,9 @@ module.exports = function getItemByTypeId({
       .then(res => {
         if (reporter && report) {
           if (res && res.data) {
-            reporter.increment({
-              path: `dependencies.${cacheResource}.nHits`,
-            })
+            reporter.rebuildViewLookupHit({ resource: cacheResource })
           } else {
-            reporter.increment({
-              path: `dependencies.${cacheResource}.nMisses`,
-            })
-            reporter.increment({
-              path: `dependencies.${cacheResource}.missing.${id}`,
-            })
+            reporter.rebuildViewLookupMiss({ id, resource: cacheResource })
           }
         }
 
@@ -61,16 +54,9 @@ module.exports = function getItemByTypeId({
     .then(res => {
       if (reporter && report) {
         if (res && res.data) {
-          reporter.increment({
-            path: `dependencies.${type}.nHits`,
-          })
+          reporter.rebuildViewLookupHit({ resource: type })
         } else {
-          reporter.increment({
-            path: `dependencies.${type}.nMisses`,
-          })
-          reporter.increment({
-            path: `dependencies.${type}.missing.${id}`,
-          })
+          reporter.rebuildViewLookupMiss({ id, resource: type })
         }
       }
       return (res && res.data) || null
@@ -78,12 +64,7 @@ module.exports = function getItemByTypeId({
     .catch(err => {
       if (err.status === 404) {
         if (reporter && report) {
-          reporter.increment({
-            path: `dependencies.${type}.nMisses`,
-          })
-          reporter.increment({
-            path: `dependencies.${type}.missing.${id}`,
-          })
+          reporter.rebuildViewLookupMiss({ id, resource: type })
         }
         return null
       }
