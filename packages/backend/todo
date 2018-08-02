@@ -1,129 +1,40 @@
-* Todo
-** Test api and db
-** Test locally
-** Clean up Todo
-** Commit and make deploy work
+* Make sure physical objects are created when migrating specimens
+* Add date Remark
+
+  objects.
+    "DateRemark": "Collected: During 1881",
+
+* Rename config params related to initial data
 
 
-
-
-
-
-
-
-
-* Migrate all data the new way
-[x] identifiers
-[x] collectionItems (not verified)
-  Skeleton
-    * preparationType
-    * storageLocation
-  Skin
-    * preparationType
-    * storageLocation
-
-[] collectingInformation
-[] recordHistoryEvents
-[] readOnly
-
-
-* Add utility helper to recursive fetch place parent in the transformationFunction
-** Make sure that relationships are fetched with the getItemById
-*
-
+MERGE
 
 
 TODO
-* Add mapping of params to collectionItems
+* Migrate Taxonomy (wait)
+* Implement all needed search stuff
+* Would it be possible to extract lookup models from backend?
+* Refactor prepType and featureType to mimic identifier type
+* Verify incremental update of specimens
 
-* Separate rebuildView and importDataFromFile
-
-
-* Fix config
-* Remove outputObject
-
-
-TODO
-* Repair migration functions
-* Create migration function for specimen
+Potential TODOs
 * Rename importer to initialDataLoader
-* Remove all import data functionallity from models
-
-
-TODO
-* Try to make simpleSqlModel work with tests
+* Separate rebuildView and importDataFromFile
+* Go through jobs and verify
 * Use internals for job when setting timeflags
-* Move relationships into controller inside folders
-(* Make the relationships functions work on all models)
 * Remove use of custom where
 * Move build include to model level
+* Make it possible to inject cache into service interactor () and use original resources more then the cache views when its not nessecary
+* Later use json client from common in serviceInteractor to be able to do include fetching
 
-Todo
-Make it possible to save and fetch relations for inMemoryModel.
-** Rename doc and document to attributes in model and controller layer.
-** Force transformationFunctions to be array
-** Use postprocess in applyTransformationFunctions (use nestedToCore)
-** Make pre and postprocess optional and opt in? No input transformations should be needed for creating the cache views. Use terminology relatedto nestedToCore and coreToNested (transform to core / transform to tested)
-
-** Move build include and extract relations to model layer
-** Implement include and extract relationships in inMemoryModel.
-** Make sure save is working with relationships
-** Implement include and extract relationships in elasticsearch.
-
-
-
-Fix search speciment without external stuff
-* Make migration of specimen work without related resources and without writing physical object
-* Use new migrator
-
-Fix specimen with external stuff
-* Create in memory views for specimen lookups.
-* Implement fetching of ancestors
-* Also add custom execute method to be able to handle physical objects
-
-
-Improve quality
-* Add proper test for model. Test all model methods with common test suite. Inkl test interface ie required methods implemented
-* Add proper e2e test for model + controller + operation. Test all operations for all models
-
-
-
-
-* Add support for input and output validation functions (use same structure as transformationFunctions)
-
-DONE
-* Potentially pass other stuff into crud query
-* Add check that model have required method in controller
-* Make scripts to start backend in different modes incl script (app) to load all data
-* Implement FE query in crud module
-* Adapt search to query
-* Add meta to elastic response
-* Implement scroll to handle large result sets (use frontend to request scroll results)
-* Clean up query crud and search (also call it not with body but aggregations and query and stuff)
-* Integrate fredrik new component for localities with aggregations
-* Add new mapping for idInteger (and make sure sort is working with it)
-
-
-Import
-* Create import data operation and controller
-* Implement for all but specimen
-* Create async migration for specimen with views as lookup
-* Move models to resources
-* Use migrator lib used by data app
+TODO
 
 CLEANUP
 * Look at createObjectResponse performance
-* Att schema and tests for models (and with that for mappings)
-
 * Remove search from common
-* Mimic searchSpecimen structure in other services
-* Add more schemas
-* Force examples to be added to crud or else through error
-* Fix model abstractions. Abstract away document on model level
-* Rename aggregationFunction and filterFunction to [...]Name
 
-TESTING
-* Test all old crud from FE
+
+
 
 
 
