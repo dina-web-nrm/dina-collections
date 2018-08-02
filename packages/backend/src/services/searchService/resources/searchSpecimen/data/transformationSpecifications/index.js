@@ -18,12 +18,14 @@ const warmViews = cacheResourcesSpecifications.map(({ name }) => {
 
 exports.updateView = {
   description: 'Transforming data from specimen',
+  resolveRelations: true,
   srcResource: 'specimen',
   transformationFunctions,
 }
 
 exports.rebuildView = {
   description: 'Transforming data from specimen',
+  resolveRelations: true,
   resourceCacheMap,
   srcResource: 'specimen',
   transformationFunctions,

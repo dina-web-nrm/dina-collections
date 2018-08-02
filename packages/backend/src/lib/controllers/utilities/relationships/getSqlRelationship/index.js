@@ -69,11 +69,10 @@ module.exports = ({ models, operation }) => {
 
     return model[getterName]({
       include,
-      raw: false,
       where,
     })
-      .then(({ item, items } = {}) => {
-        const result = item || items
+      .then(({ items, item } = {}) => {
+        const result = items || item.internals
         log
           .scope()
           .debug('idIsForeignKey', idIsForeignKey, 'targetAs', targetAs)

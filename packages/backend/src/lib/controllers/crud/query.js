@@ -1,5 +1,4 @@
 const createArrayResponse = require('../utilities/transformations/createArrayResponse')
-const transformOutput = require('../utilities/transformations/outputObject')
 
 module.exports = function queryController({ operation, models }) {
   const { aggregationSpecification, resource, filterSpecification } = operation
@@ -9,6 +8,10 @@ module.exports = function queryController({ operation, models }) {
   }
   if (!model.buildWhereQuery) {
     throw new Error(`Model for ${resource} dont support query`)
+  }
+
+  if (!model.getWhere) {
+    throw new Error(`Model missing required method: getWhere for ${resource}`)
   }
 
   return ({ request }) => {
@@ -29,34 +32,23 @@ module.exports = function queryController({ operation, models }) {
     } = request
 
     return model
-      .buildWhereQuery({
+      .getWhere({
         aggregations,
         aggregationSpecification,
         filterSpecification,
+        idsOnly,
+        limit,
+        offset,
         query,
+        scroll,
+        scrollId,
       })
-      .then(where => {
-        return model
-          .getWhere({
-            aggregations,
-            aggregationSpecification,
-            idsOnly,
-            limit,
-            offset,
-            raw: false,
-            scroll,
-            scrollId,
-            where,
-          })
-          .then(({ items, meta }) => {
-            return createArrayResponse({
-              items: items.map(item => {
-                return transformOutput(item)
-              }),
-              meta,
-              type: resource,
-            })
-          })
+      .then(({ items, meta }) => {
+        return createArrayResponse({
+          items,
+          meta,
+          type: resource,
+        })
       })
   }
 }

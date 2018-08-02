@@ -41,8 +41,8 @@ module.exports = ({ models, operation }) => {
         })
       }
 
-      const newDocument = {
-        ...fetchedResource.document,
+      const newItem = {
+        ...fetchedResource.attributes,
         relationships: {
           [targetAs]: { data },
         },
@@ -50,13 +50,12 @@ module.exports = ({ models, operation }) => {
 
       return model
         .update({
-          doc: newDocument,
           id,
+          item: newItem,
         })
-        .then(({ item: updatedResource = {} }) => {
+        .then(({ item: updatedItem = {} }) => {
           const relationship = extractRelationship({
-            dataValues: updatedResource,
-            fetchedResource: updatedResource,
+            item: updatedItem,
             queryParamRelationships: [targetAs],
             relation: operation.relation,
             relationKey: targetAs,

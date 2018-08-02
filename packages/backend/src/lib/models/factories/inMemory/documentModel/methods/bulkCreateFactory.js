@@ -1,3 +1,4 @@
+const bulkCreateWrapper = require('../../../wrappers/methods/bulkCreate')
 const createLog = require('../../../../../../utilities/log')
 
 const log = createLog(
@@ -5,25 +6,44 @@ const log = createLog(
 )
 
 module.exports = function bulkCreateFactory({ Model }) {
-  return function bulkCreate({ items = [] }) {
+  return bulkCreateWrapper(({ items, collidingIdPrefix }) => {
     return Promise.resolve().then(() => {
       const currentItems = Model.get()
-      const newItems = {}
-      items.forEach(({ doc, id } = {}) => {
-        if (id === undefined) {
+      const updatedItems = {
+        ...currentItems,
+      }
+
+      const addItem = (
+        { attributes, id, internals = {}, relationships } = {}
+      ) => {
+        if (updatedItems[id] !== undefined) {
+          if (!collidingIdPrefix) {
+            throw new Error(`Id ${id} already exist`)
+          }
+          const updatedId = `${collidingIdPrefix}${id}`
+          log.warning(`Id ${id} already exist. Using: ${updatedId} instead`)
+          addItem({
+            attributes,
+            id: updatedId,
+            internals,
+            relationships,
+          })
+          //
+        } else {
+          updatedItems[id] = { attributes, id, internals, relationships }
+        }
+      }
+
+      items.forEach(item => {
+        if (item.id === undefined) {
           throw new Error('Id required for bulk create')
         }
-
-        newItems[id] = { document: doc, id }
+        addItem(item)
       })
 
-      const updateItems = {
-        ...currentItems,
-        ...newItems,
-      }
-      const res = Model.set(updateItems)
+      Model.set(updatedItems)
       log.debug(`Successfully created ${items.length} items`)
-      return res
+      return { meta: { count: items.length } }
     })
-  }
+  })
 }

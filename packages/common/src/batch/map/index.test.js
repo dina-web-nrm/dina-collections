@@ -12,7 +12,7 @@ describe('batch/map', () => {
 
   it('handle sync map function', () => {
     expect.assertions(1)
-    const mapFunction = item => {
+    const mapFunction = ({ item }) => {
       return item * 2
     }
     const items = [1, 2, 3]
@@ -25,7 +25,7 @@ describe('batch/map', () => {
   })
   it('handle async map function', () => {
     expect.assertions(1)
-    const mapFunction = item => {
+    const mapFunction = ({ item }) => {
       return Promise.resolve(item * 2)
     }
     const items = [1, 2, 3]

@@ -9,7 +9,7 @@ const buildQueryFromFilters = ({ filterInput }) => {
     return {
       filter: {
         filterFunction: key,
-        value: filterInput[key],
+        input: { value: filterInput[key] },
       },
     }
   })

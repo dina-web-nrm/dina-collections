@@ -1,10 +1,35 @@
+const readInitialData = require('../../../../utilities/readInitialData')
+
 module.exports = function createBatch({
-  serviceInteractor,
   numberOfBatchEntries,
+  reporter,
+  serviceInteractor,
+  srcFileName,
   srcResource,
   startCount,
-  mapFunction,
+  transformationFunction,
 }) {
+  if (srcFileName) {
+    return Promise.resolve().then(() => {
+      const items = readInitialData(srcFileName)
+      if (!items) {
+        return items
+      }
+      const batchItems = items.slice(
+        startCount,
+        startCount + numberOfBatchEntries
+      )
+      return Promise.resolve().then(() => {
+        return transformationFunction({
+          items: batchItems,
+          reporter,
+          serviceInteractor,
+          startCount,
+        })
+      })
+    })
+  }
+
   return serviceInteractor
     .getMany({
       request: {
@@ -20,7 +45,12 @@ module.exports = function createBatch({
     .then(response => {
       const items = response && response.data
       return Promise.resolve().then(() => {
-        return mapFunction({ items, serviceInteractor })
+        return transformationFunction({
+          items,
+          reporter,
+          serviceInteractor,
+          startCount,
+        })
       })
     })
 }

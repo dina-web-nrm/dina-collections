@@ -34,7 +34,8 @@ var typeOptionMap = {
 };
 
 module.exports = function createBackendApiClientValidator(_ref) {
-  var model = _ref.model,
+  var detailInput = _ref.detail,
+      model = _ref.model,
       operationId = _ref.operationId,
       schema = _ref.schema,
       throwError = _ref.throwError,
@@ -56,7 +57,8 @@ module.exports = function createBackendApiClientValidator(_ref) {
     }
 
     var parameterErrors = createParameterErrorsFromAjv(ajvErrors);
-    var detail = (0, _stringify2.default)(parameterErrors || {});
+    var parameterErrorsString = (0, _stringify2.default)(parameterErrors || {});
+    var detail = detailInput + ': ' + parameterErrorsString;
 
     return backendError((0, _extends3.default)({}, options, {
       detail: detail,

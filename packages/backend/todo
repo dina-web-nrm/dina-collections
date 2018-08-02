@@ -1,34 +1,40 @@
-DONE
-* Implement FE query in crud module
-* Adapt search to query
-* Add meta to elastic response
-* Implement scroll to handle large result sets (use frontend to request scroll results)
-* Clean up query crud and search (also call it not with body but aggregations and query and stuff)
-* Integrate fredrik new component for localities with aggregations
+* Make sure physical objects are created when migrating specimens
+* Add date Remark
+
+  objects.
+    "DateRemark": "Collected: During 1881",
+
+* Rename config params related to initial data
+
+
+MERGE
+
 
 TODO
-* Add elasticsearch to readme
-* Verify docker is working locally (inkl reload data)
-* Deploy
-* Add new mapping for idInteger (and make sure sort is working with it)
+* Migrate Taxonomy (wait)
+* Implement all needed search stuff
+* Would it be possible to extract lookup models from backend?
+* Refactor prepType and featureType to mimic identifier type
+* Verify incremental update of specimens
 
+Potential TODOs
+* Rename importer to initialDataLoader
+* Separate rebuildView and importDataFromFile
+* Go through jobs and verify
+* Use internals for job when setting timeflags
+* Remove use of custom where
+* Move build include to model level
+* Make it possible to inject cache into service interactor () and use original resources more then the cache views when its not nessecary
+* Later use json client from common in serviceInteractor to be able to do include fetching
+
+TODO
 
 CLEANUP
 * Look at createObjectResponse performance
-* Move utilities in lib/data to root
-* Make scripts to start backend in different modes incl script (app) to load all data
-* Att schema and tests for models (and with that for mappings)
-* Add check that model have required method in controller
-* Rename aggregationFunction and filterFunction to [...]Name
 * Remove search from common
-* Mimic searchSpecimen structure in other services
-* Add more schemas
-* Force examples to be added to crud or else through error
-* Potentially pass other stuff into crud query
-* Fix model abstractions. Abstract away document on model level
 
-TESTING
-* Test all old crud from FE
+
+
 
 
 

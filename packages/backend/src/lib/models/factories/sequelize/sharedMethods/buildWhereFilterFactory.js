@@ -6,13 +6,30 @@ const { Op } = Sequelize
 
 module.exports = function buildWhereFilterFactory() {
   return function buildWhereFilter(
-    { filterSpecification = {}, filterInput = {} } = {}
+    { filterSpecification = {}, filterInput = {}, where: customWhere } = {}
   ) {
+    if (customWhere) {
+      return Promise.resolve(customWhere)
+    }
     const filterSpecificationArray = Object.keys(
       filterSpecification.filters || {}
     ).map(key => {
       return filterSpecification.filters[key]
     })
+
+    Object.keys(filterInput).forEach(key => {
+      const filter =
+        filterSpecification &&
+        filterSpecification.filters &&
+        filterSpecification.filters[key]
+      if (!filter) {
+        throw new Error(`filter is missing for key: ${key}`)
+      }
+      if (!filter.sequelizeFilterFunction) {
+        throw new Error(`sequelizeFilterFunction is missing for key: ${key}`)
+      }
+    })
+
     return asyncReduce({
       initialValue: [],
       items: filterSpecificationArray,

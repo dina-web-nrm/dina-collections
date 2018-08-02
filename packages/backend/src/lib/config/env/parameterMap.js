@@ -9,7 +9,7 @@ const parameterMap = {
   db: {
     database: 'DB_DATABASE',
     flushOnRestart: 'FLUSH_ON_RESTART',
-    loadInitialData: 'LOAD_INITIAL_DATA',
+    importData: 'IMPORT_DATA',
     password: 'DB_PASSWORD',
     url: 'DB_URL',
     username: 'DB_USERNAME',
@@ -22,7 +22,7 @@ const parameterMap = {
     nodeEnv: 'NODE_ENV',
   },
   initialData: {
-    numberOfSpecimens: 'INITIAL_DATA_NUMBER_OF_SPECIMENS',
+    numberOfSpecimens: 'IMPORT_DATA_NUMBER_OF_SPECIMENS',
   },
   jobs: {
     schedulerActive: 'SCHEDULER_ACTIVE',

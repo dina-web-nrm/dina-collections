@@ -5,7 +5,7 @@ module.exports = function ids(_ref) {
       input = _ref.input;
   var _input$value = input.value,
       value = _input$value === undefined ? [] : _input$value;
+  var id = item.id;
 
-  var id = item;
   return value.indexOf(id) > -1;
 };

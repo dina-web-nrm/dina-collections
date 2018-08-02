@@ -1,4 +1,4 @@
-const attachMethods = require('./attachMethods')
+const setupMethods = require('./setupMethods')
 const Sequelize = require('sequelize')
 const createGetters = require('./utilities/createGetters')
 
@@ -39,11 +39,17 @@ module.exports = function createModel({
     }
   )
 
-  return attachMethods({
+  const methods = setupMethods({
     Model,
     schemaModelName,
     schemaVersion,
     sequelize,
     validate,
   })
+
+  return {
+    modelType: 'sequelizeSimpleSqlModel',
+    name,
+    ...methods,
+  }
 }

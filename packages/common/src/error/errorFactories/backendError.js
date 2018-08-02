@@ -1,5 +1,4 @@
 const createErrorId = require('../utilities/createErrorId')
-const logError = require('../utilities/logError')
 
 const errorCodes = require('../constants/errorCodes')
 const errorStatus = require('../constants/errorStatus')
@@ -13,8 +12,6 @@ module.exports = function backendError({
   status: inputStatus,
   throwError = true,
 }) {
-  const { stack } = new Error('backendError')
-
   let baseError = errorCodes[inputCode]
   if (!baseError) {
     baseError = errorCodes.INTERNAL_SERVER_ERROR_INVALID_ERROR_CODE
@@ -37,12 +34,11 @@ module.exports = function backendError({
     parameterErrors,
     path,
     source,
-    stack,
+    stack: message,
     status: Number(status),
   }
 
   if (throwError) {
-    logError(error)
     throw error
   }
   return error

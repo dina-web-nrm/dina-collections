@@ -1,11 +1,13 @@
 const crudOperationSchemas = require('../../operations/crudOperations/schemas')
-const viewOperationSchemas = require('../../operations/viewOperations/schemas')
+const importOperations = require('../../operations/importOperations/schemas')
 const jobOperationSchemas = require('../../operations/jobOperations/schemas')
+const viewOperationSchemas = require('../../operations/viewOperations/schemas')
 
 const operationSchemas = {
   ...crudOperationSchemas,
-  ...viewOperationSchemas,
+  ...importOperations,
   ...jobOperationSchemas,
+  ...viewOperationSchemas,
 }
 
 const expectNoValidationError = require('../../../utilities/test/expectNoValidationError')

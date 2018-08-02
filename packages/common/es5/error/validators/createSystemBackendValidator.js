@@ -18,11 +18,20 @@ var typeOptionMap = {
   config: {
     code: 'CONFIG_ERROR',
     status: 500
+  },
+  modelWrapperInput: {
+    code: 'MODEL_WRAPPER_INPUT_ERROR',
+    status: 500
+  },
+  modelWrapperOutput: {
+    code: 'MODEL_WRAPPER_OUTPUT_ERROR',
+    status: 500
   }
 };
 
 module.exports = function createSystemFrontendValidator(_ref) {
-  var model = _ref.model,
+  var detailInput = _ref.detail,
+      model = _ref.model,
       schema = _ref.schema,
       throwError = _ref.throwError,
       type = _ref.type;
@@ -43,7 +52,8 @@ module.exports = function createSystemFrontendValidator(_ref) {
     }
 
     var parameterErrors = createParameterErrorsFromAjv(ajvErrors);
-    var detail = (0, _stringify2.default)(parameterErrors || {});
+    var parameterErrorsString = (0, _stringify2.default)(parameterErrors || {});
+    var detail = detailInput + ': ' + parameterErrorsString;
 
     return backendError((0, _extends3.default)({}, options, {
       detail: detail,

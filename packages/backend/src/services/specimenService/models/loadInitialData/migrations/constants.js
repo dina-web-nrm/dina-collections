@@ -1,1 +1,0 @@
-exports.SYSTEM_NAME = 'MAM2006'

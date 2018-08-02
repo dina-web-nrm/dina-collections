@@ -1,4 +1,4 @@
-const attachMethods = require('./attachMethods')
+const setupMethods = require('./setupMethods')
 
 module.exports = function createModel({
   loadInitialData,
@@ -13,7 +13,7 @@ module.exports = function createModel({
 
   const schemaModelName = schemaModelNameInput || name
 
-  return attachMethods({
+  const methods = setupMethods({
     loadInitialData,
     Model,
     relations,
@@ -21,4 +21,6 @@ module.exports = function createModel({
     schemaVersion,
     validate,
   })
+
+  return { modelType: 'inMemoryDocumentModel', name, ...methods }
 }

@@ -24,6 +24,9 @@
       "type": "boolean",
       "description": "This is a temporary parameter"
     },
+    "remarks": {
+      "type": "string"
+    },
     "event": {
       "$ref": "__ROOT__event",
       "x-reference-type": "internal"

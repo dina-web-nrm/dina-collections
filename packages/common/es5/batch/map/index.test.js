@@ -25,7 +25,9 @@ describe('batch/map', function () {
 
   it('handle sync map function', function () {
     expect.assertions(1);
-    var mapFunction = function mapFunction(item) {
+    var mapFunction = function mapFunction(_ref) {
+      var item = _ref.item;
+
       return item * 2;
     };
     var items = [1, 2, 3];
@@ -38,7 +40,9 @@ describe('batch/map', function () {
   });
   it('handle async map function', function () {
     expect.assertions(1);
-    var mapFunction = function mapFunction(item) {
+    var mapFunction = function mapFunction(_ref2) {
+      var item = _ref2.item;
+
       return _promise2.default.resolve(item * 2);
     };
     var items = [1, 2, 3];

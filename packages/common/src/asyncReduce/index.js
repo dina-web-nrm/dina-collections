@@ -9,7 +9,6 @@ module.exports = function asyncReduce({
     return Promise.resolve(value)
   }
   let index = 0
-
   const internalReduce = () => {
     if (index === nItems) {
       return null

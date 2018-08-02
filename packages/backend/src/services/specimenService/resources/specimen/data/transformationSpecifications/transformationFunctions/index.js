@@ -1,0 +1,11 @@
+/* eslint-disable no-param-reassign */
+exports.collectingInformation = require('./collectingInformation')
+exports.collectionItems = require('./collectionItems')
+exports.deathInformation = require('./deathInformation')
+exports.featureTypes = require('./featureTypes')
+exports.id = require('./id')
+exports.identifiers = require('./identifiers')
+exports.nestToCore = require('./nestToCore')
+exports.publishRecord = require('./publishRecord')
+exports.readOnly = require('./readOnly')
+exports.recordHistoryEvents = require('./recordHistoryEvents')

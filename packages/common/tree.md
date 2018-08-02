@@ -31,7 +31,9 @@
 │   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── log
+│   ├── migrator
 │   ├── openApiClient
+│   ├── reporter
 │   ├── schemaBuilder
 │   ├── schemaInterface
 │   ├── scripts
@@ -58,7 +60,9 @@
 │   ├── jsonApiClient
 │   ├── jsonSchema
 │   ├── log
+│   ├── migrator
 │   ├── openApiClient
+│   ├── reporter
 │   ├── schemaBuilder
 │   ├── schemaInterface
 │   ├── scripts

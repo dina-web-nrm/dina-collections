@@ -1,5 +1,6 @@
+const collectingLocations = require('./collectingLocations')
 const id = require('./id')
 const identifiers = require('./identifiers')
-const collectingLocations = require('./collectingLocations')
+const idNumeric = require('./idNumeric')
 
-module.exports = { collectingLocations, id, identifiers }
+module.exports = [collectingLocations, id, identifiers, idNumeric]

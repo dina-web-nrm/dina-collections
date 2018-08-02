@@ -16,6 +16,6 @@ module.exports = {
   jobs: {
     ...baseConfig.jobs,
     schedulerActive: false,
-    workerActive: true,
+    workerActive: false,
   },
 }

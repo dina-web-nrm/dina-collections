@@ -4,30 +4,34 @@ module.exports = function buildWhereFilterFactory() {
   return function buildWhereFilter(
     { filterSpecification = {}, filterInput = {} } = {}
   ) {
-    const filterSpecificationArray = Object.keys(
-      filterSpecification.filters
-    ).map(key => {
-      return filterSpecification.filters[key]
-    })
-
     return Promise.resolve().then(() => {
       const query = {
         and: [],
       }
 
       const filterFunctions = {}
-
-      filterSpecificationArray.forEach(({ key, jsFilterFunction }) => {
-        const filterValue = filterInput[key]
-        if (filterValue !== undefined && jsFilterFunction) {
-          query.and.push({
-            filter: {
-              filterFunction: key,
-              input: { value: parseFilterValue(filterValue) },
-            },
-          })
-          filterFunctions[key] = jsFilterFunction
+      Object.keys(filterInput).forEach(filterKey => {
+        const filter =
+          filterSpecification.filters && filterSpecification.filters[filterKey]
+        if (!filter) {
+          throw new Error(`Filter is missing for key: ${filterKey}`)
         }
+
+        const { jsFilterFunction } = filter
+
+        if (!jsFilterFunction) {
+          throw new Error(`jsFilterFunction is missing for key: ${filterKey}`)
+        }
+
+        filterFunctions[filterKey] = jsFilterFunction
+        const filterValue = filterInput[filterKey]
+
+        query.and.push({
+          filter: {
+            filterFunction: filterKey,
+            input: { value: parseFilterValue(filterValue) },
+          },
+        })
       })
 
       return {

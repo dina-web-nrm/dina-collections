@@ -1,17 +1,21 @@
 module.exports = ({ data, foreignKeyName, id }) => {
   if (!data) {
     return {
-      foreignKeyObject: {
-        [foreignKeyName]: null,
-      },
       id,
+      item: {
+        internals: {
+          [foreignKeyName]: null,
+        },
+      },
     }
   }
 
   return {
-    foreignKeyObject: {
-      [foreignKeyName]: data.id,
-    },
     id,
+    item: {
+      internals: {
+        [foreignKeyName]: data.id,
+      },
+    },
   }
 }

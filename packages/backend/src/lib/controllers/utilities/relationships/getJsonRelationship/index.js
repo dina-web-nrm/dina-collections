@@ -1,3 +1,4 @@
+const createGetManyFilterSpecifications = require('../../../../data/filters/utilities/createGetManyFilterSpecifications')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 const transformOutputObject = require('../../transformations/outputObject')
 const transformOutputArray = require('../../transformations/outputArray')
@@ -36,6 +37,10 @@ module.exports = ({ models, operation }) => {
     targetResource,
   })
 
+  const filterSpecification = createGetManyFilterSpecifications({
+    include: ['id'],
+  })
+
   return ({ request }) => {
     log.debug('operation.relation', operation.relation)
 
@@ -45,12 +50,13 @@ module.exports = ({ models, operation }) => {
 
     log.scope().debug('model', model)
     log.scope().debug('where', where)
+
     return model[getterName]({
-      raw: false,
-      where,
+      filterInput: where,
+      filterSpecification,
     })
-      .then(({ item, items } = {}) => {
-        const result = item || items
+      .then(({ items, item } = {}) => {
+        const result = items || (item && item.internals)
 
         if (!result) {
           backendError404({

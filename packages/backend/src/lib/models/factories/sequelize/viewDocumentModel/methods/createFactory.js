@@ -4,6 +4,6 @@ module.exports = function createFactory({ ViewModel } = {}) {
   }
 
   return function create(input) {
-    return ViewModel.create({ ...input, allowId: true })
+    return ViewModel.create(input)
   }
 }

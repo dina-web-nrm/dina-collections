@@ -1,3 +1,4 @@
+const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
 const requestSuccess = require('./operations/create/examples/requestSuccess.json')
 
 module.exports = {
@@ -12,6 +13,14 @@ module.exports = {
     },
     {
       type: 'getMany',
+    },
+    {
+      transformationSpecification: {
+        description: 'Importing establishmentMeansTypes from file',
+        srcFileName: 'establishmentMeansTypes',
+        transformationFunctions: [allFromSrcWithIndexId],
+      },
+      type: 'importDataFromFile',
     },
     {
       type: 'update',

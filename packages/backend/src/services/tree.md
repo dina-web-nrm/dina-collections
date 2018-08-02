@@ -7,9 +7,7 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   └── index.js
 │   └── resources
 │       ├── agent
 │       │   ├── index.js
@@ -31,27 +29,13 @@
 │       │   └── operations
 │       └── userInfo
 │           └── index.js
-├── curatedEventService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   ├── models
-│   │   └── index.js
-│   └── resources
-│       ├── expedition
-│       │   ├── index.js
-│       │   └── operations
-│       └── index.js
 ├── curatedListService
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   └── index.js
 │   └── resources
 │       ├── causeOfDeathType
 │       │   ├── index.js
@@ -72,11 +56,6 @@
 │       └── typeSpecimenType
 │           ├── index.js
 │           └── operations
-├── externalEventService
-│   ├── index.js
-│   └── info
-│       ├── description.md
-│       └── index.js
 ├── index.js
 ├── jobService
 │   ├── index.js
@@ -89,13 +68,6 @@
 │       ├── index.js
 │       └── operations
 │           └── getMany
-├── organizationService
-│   ├── index.js
-│   ├── info
-│   │   ├── description.md
-│   │   └── index.js
-│   └── resources
-│       └── index.js
 ├── placeService
 │   ├── e2e.spec.js
 │   ├── index.js
@@ -103,13 +75,12 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   └── index.js
 │   └── resources
 │       ├── index.js
 │       └── place
 │           ├── create
+│           ├── data
 │           ├── getMany
 │           └── index.js
 ├── searchService
@@ -132,13 +103,15 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       ├── index.js
-│   │       └── migrations
+│   │   └── index.js
 │   ├── resources
 │   │   ├── index.js
+│   │   ├── lookupResources
+│   │   │   ├── data
+│   │   │   ├── index.js
+│   │   │   └── specification.js
 │   │   └── specimen
+│   │       ├── data
 │   │       ├── index.js
 │   │       ├── operations
 │   │       └── testData
@@ -159,15 +132,14 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── physicalObject
 │       │   ├── index.js
 │       │   └── operations
 │       └── storageLocation
+│           ├── data
 │           ├── index.js
 │           └── operations
 ├── taxonomyService
@@ -176,15 +148,15 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   ├── models
-│   │   ├── index.js
-│   │   └── loadInitialData
-│   │       └── index.js
+│   │   └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── taxon
+│       │   ├── data
 │       │   ├── index.js
 │       │   └── operations
 │       └── taxonName
+│           ├── data
 │           ├── index.js
 │           └── operations
 └── tree.md

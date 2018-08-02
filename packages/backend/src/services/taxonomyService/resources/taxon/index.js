@@ -1,3 +1,7 @@
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
+
 const buildOperationId = require('common/src/buildOperationId')
 const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
@@ -29,6 +33,10 @@ module.exports = {
     {
       relationKey: 'parent',
       type: 'updateRelationship',
+    },
+    {
+      transformationSpecification: importDataFromFileTransformationSpecification,
+      type: 'importDataFromFile',
     },
     {
       relationKey: 'children',

@@ -1,5 +1,3 @@
-const loadInitialData = require('./loadInitialData')
-
 module.exports = [
   {
     modelFactory: 'sequelizeDocumentModel',
@@ -7,7 +5,6 @@ module.exports = [
     relations: ['physicalObject'],
   },
   {
-    loadInitialData,
     modelFactory: 'sequelizeDocumentModel',
     name: 'physicalObject',
     relations: ['storageLocation'],

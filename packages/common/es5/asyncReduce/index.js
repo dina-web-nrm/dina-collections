@@ -18,7 +18,6 @@ module.exports = function asyncReduce(_ref) {
     return _promise2.default.resolve(value);
   }
   var index = 0;
-
   var internalReduce = function internalReduce() {
     if (index === nItems) {
       return null;

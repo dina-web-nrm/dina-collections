@@ -1,17 +1,21 @@
 const createMappingsFromSpecification = require('../utilities/createMappingsFromSpecification')
-const attachMethods = require('./attachMethods')
+const setupMethods = require('./setupMethods')
 
 module.exports = function createModel({
   elasticsearch,
+  forceRefresh = false,
   mappingSpecification,
   name,
   schemaModelName,
   schemaVersion,
 }) {
-  const mappings = createMappingsFromSpecification({
-    mappingSpecification,
-    name,
-  })
+  const mappings =
+    (mappingSpecification &&
+      createMappingsFromSpecification({
+        mappingSpecification,
+        name,
+      })) ||
+    undefined
 
   const Model = {
     index: name.toLowerCase(),
@@ -19,10 +23,13 @@ module.exports = function createModel({
     name,
   }
 
-  return attachMethods({
+  const methods = setupMethods({
     elasticsearch,
+    forceRefresh,
     Model,
     schemaModelName,
     schemaVersion,
   })
+
+  return { modelType: 'elasticsearchDocumentModel', name, ...methods }
 }

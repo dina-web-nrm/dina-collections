@@ -1,5 +1,3 @@
-const loadInitialData = require('./loadInitialData')
-
 module.exports = [
   {
     modelFactory: 'sequelizeDocumentModel',
@@ -22,7 +20,6 @@ module.exports = [
     name: 'typeSpecimenType',
   },
   {
-    loadInitialData,
     modelFactory: 'sequelizeDocumentModel',
     name: 'identifierType',
   },
