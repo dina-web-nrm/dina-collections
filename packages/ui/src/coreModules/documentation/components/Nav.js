@@ -21,7 +21,12 @@ const models = Object.keys(schemas)
       key,
     }
   })
-  .filter(model => model['x-modelType'] === 'model')
+  .filter(model => {
+    if (model['x-internal']) {
+      return false
+    }
+    return model['x-modelType'] === 'model'
+  })
 
 const mapStateToProps = state => {
   return {
