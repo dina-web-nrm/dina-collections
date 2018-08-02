@@ -9,45 +9,44 @@ import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
 import ResultTableView from './ResultTableView'
 
-/* eslint-disable */
+const recordNavigationHeight = 100
+const recordNavigation = {
+  height: `${recordNavigationHeight}px`,
+  key: 'recordNavigation',
+  renderRow: props => <RecordNavigationBar {...props} />,
+}
+
+const recordOptionsHeight = 43
+const recordOptions = {
+  height: `${recordOptionsHeight}px`,
+  key: 'recordOptions',
+  renderRow: props => <ResultOptionsBar {...props} />,
+}
+
+/* eslint-disable react/prop-types */
 const main = {
   key: 'main',
   renderRow: props => {
     if (props.mainColumnActiveTab === 'newRecord') {
       return (
-        <div
-          className="ui fluid dina background"
-          style={{ padding: '20px' }}
-        >
+        <div className="ui fluid dina background" style={{ padding: '20px' }}>
           <CreateSpecimen />
         </div>
       )
     }
     return (
-      <div
-        className="ui fluid dina background"
-        style={{ padding: '20px'  }}
-      >
+      <div className="ui fluid dina background" style={{ marginTop: '-1px' }}>
         <ResultTableView
-          availableHeight={props.availableHeight - 100 - 43 - 50}
+          availableHeight={
+            props.availableHeight - recordNavigationHeight - recordOptionsHeight
+          }
+          currentRecordNumber={props.currentRecordNumber}
         />
       </div>
     )
   },
-  style: { overflow: 'auto' },
 }
-
-const recordNavigation = {
-  height: '100px',
-  key: 'recordNavigation',
-  renderRow: props => <RecordNavigationBar {...props} />,
-}
-
-const recordOptions = {
-  height: '43px',
-  key: 'recordOptions',
-  renderRow: props => <ResultOptionsBar {...props} />,
-}
+/* eslint-enable react/prop-types */
 
 const rows = [recordNavigation, recordOptions, main]
 
