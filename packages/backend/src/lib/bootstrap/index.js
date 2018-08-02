@@ -84,7 +84,7 @@ module.exports = function bootstrap({
               log.info('Dont starting worker')
             }
 
-            if (config.db.loadInitialData) {
+            if (config.db.importData) {
               return importer({
                 config,
                 serviceInteractor,

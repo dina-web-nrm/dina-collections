@@ -6,7 +6,7 @@ module.exports = {
   db: {
     ...baseConfig.db,
     flushOnRestart: true,
-    loadInitialData: readBoolKey('LOAD_INITIAL_DATA'),
+    importData: readBoolKey('IMPORT_DATA'),
   },
   elasticsearch: {
     ...baseConfig.elasticsearch,
@@ -14,8 +14,7 @@ module.exports = {
   },
   initialData: {
     numberOfSpecimens:
-      readBoolKey('LOAD_INITIAL_DATA') &&
-      readKey('INITIAL_DATA_NUMBER_OF_SPECIMENS'),
+      readBoolKey('IMPORT_DATA') && readKey('IMPORT_DATA_NUMBER_OF_SPECIMENS'),
   },
   jobs: {
     ...baseConfig.jobs,
