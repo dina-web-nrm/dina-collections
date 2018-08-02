@@ -40,7 +40,6 @@ module.exports = function queryController({ operation, models }) {
         limit,
         offset,
         query,
-        raw: false,
         scroll,
         scrollId,
       })

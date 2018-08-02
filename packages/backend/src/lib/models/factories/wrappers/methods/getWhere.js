@@ -5,7 +5,7 @@ const inputSchema = {
   additionalProperties: false,
   properties: {
     aggregations: {
-      type: 'object',
+      type: 'array',
     },
     aggregationSpecification: {
       type: 'object',
@@ -28,7 +28,9 @@ const inputSchema = {
     offset: {
       type: 'number',
     },
-
+    query: {
+      type: 'object',
+    },
     scroll: {
       type: 'boolean',
     },

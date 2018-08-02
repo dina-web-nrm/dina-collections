@@ -87,7 +87,7 @@ module.exports = function getWhereFactory({
         return elasticsearch[methodName](options).then(res => {
           const meta = extractMetaFromResult({ result: res })
           let items = []
-          if (aggregations && Object.keys(aggregations).length) {
+          if (aggregations && aggregations.length) {
             items = extractItemsFromAggregations({
               aggregations,
               aggregationSpecification,
