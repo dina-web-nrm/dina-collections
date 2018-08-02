@@ -13,11 +13,11 @@ const propTypes = {
     and: PropTypes.array.isRequired,
   }),
   filterFunctionName: PropTypes.string.isRequired,
-  handleCheckboxChange: PropTypes.func.isRequired,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   }).isRequired,
+  onCheckboxChange: PropTypes.func,
   search: PropTypes.func.isRequired,
 }
 const defaultProps = {
@@ -25,6 +25,7 @@ const defaultProps = {
   aggregationKey: undefined,
   aggregationLimit: 10000,
   drillDownQuery: undefined,
+  onCheckboxChange: undefined,
 }
 
 class MultipleChoiceCheckboxes extends Component {
@@ -132,7 +133,9 @@ class MultipleChoiceCheckboxes extends Component {
       }, [])
 
       this.props.input.onChange(filterValues)
-      this.props.handleCheckboxChange(filterValues)
+      if (this.props.onCheckboxChange) {
+        this.props.onCheckboxChange(filterValues)
+      }
 
       return { values: newValues }
     })

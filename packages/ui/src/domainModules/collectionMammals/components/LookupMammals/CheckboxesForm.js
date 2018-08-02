@@ -13,13 +13,13 @@ const CheckboxesForm = ({ getQuery, handleFilterChange, state }) => {
       component={MultipleChoiceCheckboxes}
       drillDownQuery={getQuery(state, 'searchCollectingLocationCheckboxes')}
       filterFunctionName="searchCollectingLocation"
-      handleCheckboxChange={value => {
+      name="searchCollectingLocationCheckboxes"
+      onCheckboxChange={value => {
         handleFilterChange({
           filterFunctionName: 'searchCollectingLocationCheckboxes',
           value,
         })
       }}
-      name="searchCollectingLocationCheckboxes"
     />
   )
 }
