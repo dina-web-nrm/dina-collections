@@ -25,6 +25,7 @@ const createFilter = createSelector(
     return {
       key: 'filter',
       renderColumn: props => <FilterColumn {...props} />,
+      style: { zIndex: 100 },
       width,
     }
   }
@@ -36,6 +37,7 @@ const createRightSidebar = createSelector(
     return {
       key: 'rightSidebar',
       renderColumn: props => <InformationSidebar {...props} />,
+      style: { zIndex: 100 },
       width,
     }
   }
