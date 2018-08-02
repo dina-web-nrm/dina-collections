@@ -68,7 +68,7 @@ const pushValueToArray = ({ obj, condition, format, path, value }) => {
   return obj
 }
 
-const getValue = ({ obj, path, strip = false }) => {
+const getValue = ({ obj, path, strip = true }) => {
   if (!isPathValid(path)) {
     return undefined
   }
