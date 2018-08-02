@@ -1,3 +1,5 @@
+export { default as buildQuery } from './buildQuery'
+
 export const getCatalogNumberFromIdentifiers = (identifiers = []) => {
   const catalogNumberIdentifier = identifiers.find(({ identifierType }) => {
     return identifierType === 'catalogNumber'
