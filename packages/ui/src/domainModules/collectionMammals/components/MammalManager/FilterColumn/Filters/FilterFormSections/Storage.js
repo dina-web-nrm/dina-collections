@@ -6,13 +6,13 @@ import { Field } from 'coreModules/form/components'
 import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 
 const filterFunctionName = 'searchCollectingLocation'
-const name = `taxonomy.taxonName|searchTags-${filterFunctionName}`
+const name = `storage.storageLocationName|searchTags-${filterFunctionName}`
 
 const propTypes = {
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
-class IdentifierFilterForm extends PureComponent {
+class StorageFilterForm extends PureComponent {
   render() {
     const { getDrilldownQuery } = this.props
 
@@ -25,7 +25,7 @@ class IdentifierFilterForm extends PureComponent {
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(name)}
             filterFunctionName={filterFunctionName}
-            label="Taxon name"
+            label="Storage location name"
             name={name}
           />
         </Grid.Column>
@@ -34,6 +34,6 @@ class IdentifierFilterForm extends PureComponent {
   }
 }
 
-IdentifierFilterForm.propTypes = propTypes
+StorageFilterForm.propTypes = propTypes
 
-export default IdentifierFilterForm
+export default StorageFilterForm

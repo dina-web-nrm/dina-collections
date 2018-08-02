@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
 import * as FilterFormSections from './FilterFormSections'
 
 const propTypes = {
@@ -9,18 +10,13 @@ const propTypes = {
 
 const FilterContent = props => {
   const { name } = props
+  const Component = FilterFormSections[capitalizeFirstLetter(name)]
 
-  switch (name) {
-    case 'identifier': {
-      return <FilterFormSections.Identifier {...props} />
-    }
-    case 'taxonomy': {
-      return <FilterFormSections.Taxonomy {...props} />
-    }
-    default: {
-      return null
-    }
+  if (!Component) {
+    throw new Error(`No filter component found for name: ${name}`)
   }
+
+  return <Component {...props} />
 }
 
 FilterContent.propTypes = propTypes

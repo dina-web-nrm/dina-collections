@@ -3,30 +3,32 @@ import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelect } from 'coreModules/search/components'
+import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+
+const filterFunctionName = 'searchCollectingLocation'
+const name = `identifier.identifier|searchTags-${filterFunctionName}`
 
 const propTypes = {
-  name: PropTypes.string.isRequired,
+  getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class IdentifierFilterForm extends PureComponent {
   render() {
-    const { name } = this.props
+    const { getDrilldownQuery } = this.props
+
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Row>
-          <Grid.Column width={16}>
-            <Field
-              aggregationFunctionName="identifiers"
-              autoComplete="off"
-              component={MultipleSearchTagsSelect}
-              // drillDownQuery
-              filterFunctionName="searchCollectingLocation"
-              name={`${name}.identifier`}
-              parameterKey="identifier"
-            />
-          </Grid.Column>
-        </Grid.Row>
+        <Grid.Column width={16}>
+          <Field
+            aggregationFunctionName="identifiers"
+            autoComplete="off"
+            component={MultipleSearchTagsSelectField}
+            drillDownQuery={getDrilldownQuery(name)}
+            filterFunctionName={filterFunctionName}
+            label="Identifier name"
+            name={name}
+          />
+        </Grid.Column>
       </Grid>
     )
   }
