@@ -1,8 +1,19 @@
 module.exports = {
   additionalProperties: false,
   properties: {
+    cacheRequestsToResources: {
+      type: 'array',
+    },
+    collidingIdPrefix: {
+      type: 'string',
+    },
     description: {
       type: 'string',
+    },
+    executeFunction: {
+      not: {
+        type: 'string',
+      },
     },
     resolveRelations: {
       type: 'boolean',
