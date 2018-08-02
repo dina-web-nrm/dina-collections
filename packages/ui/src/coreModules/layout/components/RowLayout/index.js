@@ -38,7 +38,8 @@ class RowLayout extends PureComponent {
           display: 'flex',
           flexDirection: 'column',
           height: `${availableHeight}px`,
-          overflow: 'hidden',
+          overflowX: 'auto',
+          overflowY: 'hidden',
           ...(wrapperStyle || {}),
         }}
       >

@@ -7,6 +7,7 @@ import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
 import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
+import ResultTableView from './ResultTableView'
 
 /* eslint-disable */
 const main = {
@@ -14,12 +15,24 @@ const main = {
   renderRow: props => {
     if (props.mainColumnActiveTab === 'newRecord') {
       return (
-        <div className="ui fluid dina background" style={{ padding: '20px' }}>
+        <div
+          className="ui fluid dina background"
+          style={{ padding: '20px' }}
+        >
           <CreateSpecimen />
         </div>
       )
     }
-    return <div>{props.mainColumnActiveTab}</div>
+    return (
+      <div
+        className="ui fluid dina background"
+        style={{ padding: '20px'  }}
+      >
+        <ResultTableView
+          availableHeight={props.availableHeight - 100 - 43 - 50}
+        />
+      </div>
+    )
   },
   style: { overflow: 'auto' },
 }
@@ -46,7 +59,6 @@ const propTypes = {
 class MainColumn extends PureComponent {
   render() {
     const { mainColumnActiveTab, windowHeight, ...rest } = this.props
-
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
