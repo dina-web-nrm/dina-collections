@@ -35,6 +35,7 @@ module.exports = function collectingInformation({
     const collectorsText = migrator.getValue({
       obj: src,
       path: 'objects.Comments',
+      strip: true,
     })
 
     migrator.setValue({
@@ -48,14 +49,17 @@ module.exports = function collectingInformation({
     const collectingYear = migrator.getValue({
       obj: src,
       path: 'objects.Coll_Year',
+      strip: true,
     })
     const collectingMonth = migrator.getValue({
       obj: src,
       path: 'objects.Coll_Month',
+      strip: true,
     })
     const collectingDay = migrator.getValue({
       obj: src,
       path: 'objects.Coll_Day',
+      strip: true,
     })
 
     migrator.setValue({
@@ -74,6 +78,7 @@ module.exports = function collectingInformation({
     const localityRemarks = migrator.getValue({
       obj: src,
       path: 'objects.FieldNo_related.LocationRemarks',
+      strip: true,
     })
 
     migrator.setValue({
@@ -87,6 +92,7 @@ module.exports = function collectingInformation({
     const localityT = migrator.getValue({
       obj: src,
       path: 'objects.StatedLocality',
+      strip: true,
     })
 
     migrator.setValue({
@@ -100,6 +106,7 @@ module.exports = function collectingInformation({
     const localityN = migrator.getValue({
       obj: src,
       path: 'objects.FieldNo_related.Locality',
+      strip: true,
     })
 
     migrator.setValue({
@@ -114,6 +121,7 @@ module.exports = function collectingInformation({
     const latitude = migrator.getValue({
       obj: src,
       path: 'objects.FieldNo_related.Lat_DD',
+      strip: true,
     })
 
     migrator.setValue({
@@ -128,6 +136,7 @@ module.exports = function collectingInformation({
     const longitude = migrator.getValue({
       obj: src,
       path: 'objects.FieldNo_related.Long_DD',
+      strip: true,
     })
 
     migrator.setValue({

@@ -6,6 +6,7 @@ module.exports = function getSkinStorageLocation({
   const lookupSrcStorageLocationId = migrator.getValue({
     obj: src,
     path: 'collection.SkinCollection_related.Location_Eng',
+    strip: true,
   })
 
   if (!lookupSrcStorageLocationId) {

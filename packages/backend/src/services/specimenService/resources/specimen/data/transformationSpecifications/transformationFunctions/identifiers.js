@@ -33,6 +33,7 @@ module.exports = function migrateIdentifiers({
       const catalogNumber = migrator.getValue({
         obj: src,
         path: 'catalogNumber',
+        strip: true,
       })
 
       if (catalogNumber) {
@@ -63,6 +64,7 @@ module.exports = function migrateIdentifiers({
       const oldSkeletonNumber = migrator.getValue({
         obj: src,
         path: 'collection.OldSkeletonNo',
+        strip: true,
       })
 
       if (oldSkeletonNumber) {
@@ -93,6 +95,7 @@ module.exports = function migrateIdentifiers({
       const oldSkinNumber = migrator.getValue({
         obj: src,
         path: 'collection.OldSkinNo',
+        strip: true,
       })
 
       if (oldSkinNumber) {

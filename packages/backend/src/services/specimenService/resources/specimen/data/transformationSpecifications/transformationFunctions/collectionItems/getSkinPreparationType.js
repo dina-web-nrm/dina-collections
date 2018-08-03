@@ -19,6 +19,7 @@ module.exports = function getSkinPreparationType({
   const srcSkinPreparationType = migrator.getValue({
     obj: src,
     path: 'collection.SkinStatus_related.Skin_Eng',
+    strip: true,
   })
   const lookupPreparationTypeId = mapSkinName(srcSkinPreparationType)
 

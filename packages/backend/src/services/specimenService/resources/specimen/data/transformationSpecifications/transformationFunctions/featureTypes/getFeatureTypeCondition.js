@@ -19,6 +19,7 @@ module.exports = function getFeatureTypeAgeStage({
   const condition = migrator.getValue({
     obj: src,
     path: 'analysis.Condition_related.Kondition_english',
+    strip: true,
   })
 
   if (!condition) {

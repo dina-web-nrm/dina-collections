@@ -7,10 +7,12 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
   const objectsLastModifiedBy = migrator.getValue({
     obj: src,
     path: 'objects.LastModifiedBy',
+    strip: true,
   })
   const objectsLastModifiedDate = migrator.getValue({
     obj: src,
     path: 'objects.ModifiedDate',
+    strip: true,
   })
 
   if (objectsLastModifiedBy || objectsLastModifiedDate) {
@@ -25,10 +27,12 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
   const registeredBy = migrator.getValue({
     obj: src,
     path: 'objects.Signature',
+    strip: true,
   })
   const registeredDate = migrator.getValue({
     obj: src,
     path: 'objects.RegDate',
+    strip: true,
   })
 
   if (registeredBy || registeredDate) {
@@ -42,10 +46,12 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
   const localityLastModifiedBy = migrator.getValue({
     obj: src,
     path: 'objects.FieldNo_related.LastModifiedBy',
+    strip: true,
   })
   const localityLastModifiedAt = migrator.getValue({
     obj: src,
     path: 'objects.FieldNo_related.LastModifiedDate',
+    strip: true,
   })
 
   if (localityLastModifiedBy || localityLastModifiedAt) {

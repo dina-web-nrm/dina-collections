@@ -46,11 +46,13 @@ module.exports = function migrateDeathInformation({
       const wayOfDeath = migrator.getValue({
         obj: src,
         path: 'objects.WayOfDeath_related.DödsorsakEN',
+        strip: true,
       })
 
       const deathRemark = migrator.getValue({
         obj: src,
         path: 'objects.DeathRemark',
+        strip: true,
       })
 
       let causeOfDeathTypeId

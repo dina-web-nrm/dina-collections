@@ -32,11 +32,13 @@ module.exports = function getFeatureTypeAgeStage({
   const ageStage = migrator.getValue({
     obj: src,
     path: 'analysis.AgeStage',
+    strip: true,
   })
 
   const ageDetermination = migrator.getValue({
     obj: src,
     path: 'analysis.AgeDetermination',
+    strip: true,
   })
 
   if (!ageStage) {
