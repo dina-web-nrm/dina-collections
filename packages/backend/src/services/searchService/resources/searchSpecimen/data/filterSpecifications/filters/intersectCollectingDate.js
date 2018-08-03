@@ -1,7 +1,6 @@
 module.exports = {
   description: 'Match collecting date',
   elasticsearch: ({ value }) => {
-    console.log('value', value)
     if (!value) {
       return {}
     }
