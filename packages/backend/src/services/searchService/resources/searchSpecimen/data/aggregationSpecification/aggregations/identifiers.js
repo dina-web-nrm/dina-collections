@@ -8,7 +8,7 @@ module.exports = {
     if (contains) {
       return {
         terms: {
-          field: 'collectingLocations.raw',
+          field: 'attributes.identifiers.raw',
           include: `.*${contains}.*`,
           size: limit,
         },
@@ -16,7 +16,7 @@ module.exports = {
     }
     return {
       terms: {
-        field: 'collectingLocations.raw',
+        field: 'attributes.identifiers.raw',
         size: limit,
       },
     }

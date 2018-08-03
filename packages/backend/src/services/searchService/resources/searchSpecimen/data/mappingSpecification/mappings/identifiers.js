@@ -11,5 +11,5 @@ module.exports = {
       type: 'text',
     }
   },
-  key: 'identifiers',
+  fieldPath: 'attributes.identifiers',
 }
