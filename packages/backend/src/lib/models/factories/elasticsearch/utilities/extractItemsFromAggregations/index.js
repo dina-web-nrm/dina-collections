@@ -7,6 +7,7 @@ const buildItemFromElasticsearch = ({ item, resource }) => {
       type: resource,
     },
     id: key,
+    internals: {},
   }
 }
 
