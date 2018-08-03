@@ -11,5 +11,5 @@ module.exports = {
       type: 'text',
     }
   },
-  key: 'id',
+  fieldPath: 'id',
 }
