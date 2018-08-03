@@ -80,7 +80,10 @@
 │   ├── old-translations.json
 │   ├── schemas.js
 │   ├── translations.json
-│   └── utilities.js
+│   └── utilities
+│       ├── buildQuery.js
+│       ├── buildQuery.test.js
+│       └── index.js
 ├── curatedList
 │   ├── components
 │   │   ├── FeatureObservationDropdownSearch

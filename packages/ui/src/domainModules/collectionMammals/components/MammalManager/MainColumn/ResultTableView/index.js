@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
@@ -10,38 +10,35 @@ import InfiniteTable from './InfiniteTable'
 import InfiniteTableHeader from './InfiniteTableHeader'
 
 const infiniteTable = {
+  id: 'resultTableScrollContainer',
   key: 'infiniteTable',
   renderRow: props => <InfiniteTable {...props} />,
+  style: { overflow: 'auto' },
 }
 
 const infiniteTableHeader = {
-  height: '50px',
+  height: '43px',
   key: 'infiniteTableHeader',
-  renderRow: props => <InfiniteTableHeader {...props} />,
+  renderRow: props => (
+    <InfiniteTableHeader {...props} height={43} topOffset={183} />
+  ),
+  style: { borderBottom: '1px solid #b5b5b5' },
 }
 
 const rows = [infiniteTableHeader, infiniteTable]
 
 const propTypes = {
-  availableHeight: PropTypes.string.isRequired,
-  mainColumnActiveTab: PropTypes.string.isRequired,
-  windowHeight: PropTypes.number.isRequired,
+  availableHeight: PropTypes.number.isRequired,
 }
 
-class ResultTableView extends Component {
+class ResultTableView extends PureComponent {
   render() {
-    const {
-      availableHeight,
-      mainColumnActiveTab,
-      windowHeight,
-      ...rest
-    } = this.props
-
+    const { availableHeight, ...rest } = this.props
     return (
       <RowLayout
         availableHeight={availableHeight}
-        mainColumnActiveTab={mainColumnActiveTab}
         rows={rows}
+        width={1700}
         {...rest}
       />
     )

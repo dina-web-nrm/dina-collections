@@ -3,38 +3,37 @@ import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
 import { Field } from 'coreModules/form/components'
-import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { MultipleSearchTagsSelect } from 'coreModules/search/components'
+import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+
+const filterFunctionName = 'searchCollectingLocation'
+const name = `taxonomy.taxonName|searchTags-${filterFunctionName}`
 
 const propTypes = {
-  name: PropTypes.string.isRequired,
+  getDrilldownQuery: PropTypes.func.isRequired,
 }
 
-class TaxonomyFilterForm extends PureComponent {
+class IdentifierFilterForm extends PureComponent {
   render() {
-    const { name } = this.props
+    const { getDrilldownQuery } = this.props
+
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Row>
-          <Grid.Column width={16}>
-            <Field
-              aggregationFunctionName="identifiers"
-              autoComplete="off"
-              component={MultipleSearchTagsSelect}
-              // drillDownQuery
-              filterFunctionName="searchCollectingLocation"
-              name={`${name}.taxon`}
-              parameterKey="taxonomy"
-            />
-          </Grid.Column>
-        </Grid.Row>
+        <Grid.Column width={16}>
+          <Field
+            aggregationFunctionName="identifiers"
+            autoComplete="off"
+            component={MultipleSearchTagsSelectField}
+            drillDownQuery={getDrilldownQuery(name)}
+            filterFunctionName={filterFunctionName}
+            label="Taxon name"
+            name={name}
+          />
+        </Grid.Column>
       </Grid>
     )
   }
 }
 
-TaxonomyFilterForm.propTypes = propTypes
+IdentifierFilterForm.propTypes = propTypes
 
-export default pathBuilder({
-  name: 'taxonomy',
-})(TaxonomyFilterForm)
+export default IdentifierFilterForm

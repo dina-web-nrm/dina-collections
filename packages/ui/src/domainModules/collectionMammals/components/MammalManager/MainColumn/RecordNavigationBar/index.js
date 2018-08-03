@@ -19,7 +19,10 @@ const propTypes = {
     .isRequired,
   onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  totalRecords: PropTypes.number.isRequired,
+  totalNumberOfRecords: PropTypes.number,
+}
+const defaultProps = {
+  totalNumberOfRecords: undefined,
 }
 
 export class RecordNavigationBar extends Component {
@@ -32,8 +35,10 @@ export class RecordNavigationBar extends Component {
       onSelectPreviousRecord: handleSelectPreviousRecord,
       onShowAllRecords: handleShowAllRecords,
       onToggleFilters: handleToggleFilters,
-      totalRecords,
+      totalNumberOfRecords,
     } = this.props
+
+    const hasRecords = totalNumberOfRecords > 0
 
     return (
       <Grid padded textAlign="center" verticalAlign="middle">
@@ -56,28 +61,34 @@ export class RecordNavigationBar extends Component {
           </Button.Group>
         </Grid.Column>
         <Grid.Column computer={3} mobile={8} tablet={8}>
-          <Input
-            disabled={!handleSetCurrentRecordNumber}
-            onChange={event =>
-              handleSetCurrentRecordNumber(event, event.target.value)
-            }
-            size="mini"
-            style={{ width: '80px' }}
-            type="number"
-            value={currentRecordNumber}
-          />
-          <Slider
-            max={totalRecords}
-            min={1}
-            onChange={newRecordNumber => {
-              handleSetCurrentRecordNumber(null, newRecordNumber)
-            }}
-            step={1}
-            value={currentRecordNumber}
-          />
+          {hasRecords && (
+            <Input
+              disabled={!handleSetCurrentRecordNumber}
+              max={totalNumberOfRecords}
+              min={1}
+              onChange={event =>
+                handleSetCurrentRecordNumber(event, event.target.value)
+              }
+              size="mini"
+              style={{ width: '80px' }}
+              type="number"
+              value={currentRecordNumber}
+            />
+          )}
+          {hasRecords && (
+            <Slider
+              max={totalNumberOfRecords}
+              min={1}
+              onChange={newRecordNumber => {
+                handleSetCurrentRecordNumber(null, newRecordNumber)
+              }}
+              step={1}
+              value={currentRecordNumber}
+            />
+          )}
         </Grid.Column>
         <Grid.Column computer={2} mobile={4} tablet={4}>
-          {totalRecords}
+          {totalNumberOfRecords}
           <br />Total records
           {!handleOpenNewRecordForm && <br />}
           {!handleOpenNewRecordForm && <i>*Adding new*</i>}
@@ -119,5 +130,6 @@ export class RecordNavigationBar extends Component {
 }
 
 RecordNavigationBar.propTypes = propTypes
+RecordNavigationBar.defaultProps = defaultProps
 
 export default RecordNavigationBar

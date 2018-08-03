@@ -504,18 +504,6 @@ exports[`storyshots Storyshots coreModules/commonUi/NavigationSidebar Default 1`
         Settings
       </span>
     </a>
-    <a
-      className="item"
-      onClick={[Function]}
-    >
-      <i
-        aria-hidden="true"
-        className="sign out icon"
-      />
-      <span>
-        Logout
-      </span>
-    </a>
   </div>
 </div>
 `;
@@ -1473,18 +1461,19 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout One full-height colu
 <div>
   <div
     className={undefined}
+    id={undefined}
     style={
       Object {
         "display": "flex",
         "flexDirection": "column",
         "height": "600px",
-        "overflowX": "auto",
-        "overflowY": "hidden",
+        "overflow": "hidden",
       }
     }
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1513,18 +1502,19 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
 <div>
   <div
     className={undefined}
+    id={undefined}
     style={
       Object {
         "display": "flex",
         "flexDirection": "column",
         "height": "600px",
-        "overflowX": "auto",
-        "overflowY": "hidden",
+        "overflow": "hidden",
       }
     }
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1547,6 +1537,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
     </div>
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "auto",
@@ -1569,6 +1560,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
     </div>
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1606,18 +1598,19 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "display": "flex",
           "flexDirection": "column",
           "height": "600px",
-          "overflowX": "auto",
-          "overflowY": "hidden",
+          "overflow": "hidden",
         }
       }
     >
       <div
         className={undefined}
+        id={undefined}
         style={
           Object {
             "flex": "none",
@@ -1640,6 +1633,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       </div>
       <div
         className={undefined}
+        id={undefined}
         style={
           Object {
             "flex": "auto",
@@ -1663,6 +1657,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Three rows, two fixe
       </div>
       <div
         className={undefined}
+        id={undefined}
         style={
           Object {
             "flex": "none",
@@ -1692,18 +1687,19 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
 <div>
   <div
     className={undefined}
+    id={undefined}
     style={
       Object {
         "display": "flex",
         "flexDirection": "column",
         "height": "600px",
-        "overflowX": "auto",
-        "overflowY": "hidden",
+        "overflow": "hidden",
       }
     }
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1726,6 +1722,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with fixed 
     </div>
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1754,18 +1751,19 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
 <div>
   <div
     className={undefined}
+    id={undefined}
     style={
       Object {
         "display": "flex",
         "flexDirection": "column",
         "height": "600px",
-        "overflowX": "auto",
-        "overflowY": "hidden",
+        "overflow": "hidden",
       }
     }
   >
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1788,6 +1786,7 @@ exports[`storyshots Storyshots coreModules/layout/RowLayout Two rows with relati
     </div>
     <div
       className={undefined}
+      id={undefined}
       style={
         Object {
           "flex": "none",
@@ -1914,6 +1913,25 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap With TopMenu 1`] = `
               <i
                 aria-hidden="true"
                 className="sidebar large icon"
+              />
+            </div>
+            <div
+              className="right item"
+              onClick={[Function]}
+              style={
+                Object {
+                  "cursor": "pointer",
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="user large icon"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               />
             </div>
           </div>
@@ -2345,7 +2363,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              identifier
+              Identifier
             </span>
           </div>
           <div
@@ -2369,7 +2387,271 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              taxonomy
+              Taxonomy
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Locality
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              DatePeriod
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Agent
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              PhysicalObject
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Storage
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              AgeAndStage
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Sex
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Bones
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Weight
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              Length
+            </span>
+          </div>
+          <div
+            className="two wide column"
+          >
+            <i
+              aria-hidden="true"
+              className="dropdown icon"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="title"
+        onClick={[Function]}
+      >
+        <div
+          className="ui grid"
+        >
+          <div
+            className="fourteen wide column"
+          >
+            <span>
+              CollectingCondition
             </span>
           </div>
           <div
@@ -2437,6 +2719,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50001}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -2601,6 +2885,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -2765,6 +3051,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -2929,6 +3217,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -3093,6 +3383,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -3257,6 +3549,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -3421,6 +3715,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -3585,6 +3881,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={true}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={-1}
           type="number"
@@ -3753,6 +4051,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"
@@ -3917,6 +4217,8 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
       >
         <input
           disabled={false}
+          max={50000}
+          min={1}
           onChange={[Function]}
           tabIndex={undefined}
           type="number"

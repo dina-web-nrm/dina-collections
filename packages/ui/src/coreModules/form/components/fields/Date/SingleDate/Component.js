@@ -8,7 +8,7 @@ import FieldTemplate, { fieldTemplatePropKeys } from '../../../FieldTemplate'
 const propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.object,
+    value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   }).isRequired,
   meta: PropTypes.object.isRequired,
 }

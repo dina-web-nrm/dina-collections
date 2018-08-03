@@ -4,7 +4,8 @@ import { compose } from 'redux'
 import PropTypes from 'prop-types'
 import ReactList from 'react-list'
 import { push } from 'react-router-redux'
-// import * as actionCreators from 'coreModules/search/actionCreators'
+import { Grid } from 'semantic-ui-react'
+
 import { globalSelectors } from 'coreModules/search/keyObjectModule'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
@@ -23,9 +24,11 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  currentRecordNumber: PropTypes.number.isRequired,
   fetchItemById: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  width: PropTypes.number.isRequired,
 }
 
 const defaultProps = {
@@ -34,7 +37,7 @@ const defaultProps = {
 
 const itemsRenderer = (items, ref) => {
   return (
-    <div className="ui grid" ref={ref}>
+    <div className="ui padded grid" ref={ref}>
       {items}
     </div>
   )
@@ -52,35 +55,47 @@ export class InfiniteTable extends Component {
   }
 
   renderItem(index) {
-    const itemId = this.props.searchResult.items[index]
-    this.props.fetchItemById(itemId)
-    const style = index % 2 === 0 ? '#fff' : '#e5e7e9'
+    const {
+      currentRecordNumber,
+      fetchItemById,
+      searchResult,
+      width,
+    } = this.props
+
+    const itemId = searchResult.items[index]
+    fetchItemById(itemId)
+
+    const isFocused = index + 1 === currentRecordNumber
+    const background = isFocused // eslint-disable-line no-nested-ternary
+      ? '#b5b5b5'
+      : index % 2 === 0 ? '#e5e7e9' : '#fff'
 
     return (
       <InfiniteTableRow
+        background={background}
         itemId={itemId}
         key={itemId}
         onClick={this.handleRowClick}
-        style={style}
+        width={width}
       />
     )
   }
 
   render() {
-    const { searchResult } = this.props
+    const { searchResult, width } = this.props
 
     if (!(searchResult && searchResult.items)) {
-      return <div>Loading</div>
+      return (
+        <Grid padded>
+          <Grid.Row style={{ height: 43, width }}>
+            <Grid.Column>Loading...</Grid.Column>
+          </Grid.Row>
+        </Grid>
+      )
     }
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          overflow: 'auto',
-          width: 1700,
-        }}
-      >
+      <div style={{ width }}>
         <ReactList
           itemRenderer={this.renderItem}
           itemsRenderer={itemsRenderer}

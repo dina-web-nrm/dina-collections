@@ -2,15 +2,23 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { isDirty, reset } from 'redux-form'
 import { createSelector } from 'reselect'
 
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
+import {
+  createInjectSearch,
+  createInjectSearchResult,
+} from 'coreModules/search/higherOrderComponents'
+import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import sizeSelectors from 'coreModules/size/globalSelectors'
+import { SPECIMEN_FILTERS_FORM_NAME } from '../../constants'
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
 } from '../../keyObjectModule'
+import buildQuery from '../../utilities/buildQuery'
 import MainColumn from './MainColumn'
 import FilterColumn from './FilterColumn'
 
@@ -19,12 +27,15 @@ const main = {
   renderColumn: props => <MainColumn {...props} />,
 }
 
+const secondaryColumnStyle = { borderLeft: '1px solid #D4D4D5', zIndex: 100 }
+
 const createFilter = createSelector(
   (width = '400px') => width,
   width => {
     return {
       key: 'filter',
       renderColumn: props => <FilterColumn {...props} />,
+      style: secondaryColumnStyle,
       width,
     }
   }
@@ -36,6 +47,7 @@ const createRightSidebar = createSelector(
     return {
       key: 'rightSidebar',
       renderColumn: props => <InformationSidebar {...props} />,
+      style: secondaryColumnStyle,
       width,
     }
   }
@@ -68,45 +80,56 @@ const getColumns = createSelector(
   }
 )
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { searchResultResourceType: resource }) => {
+  const specimenSearchState = searchSelectors.get[':resource.searchState'](
+    state,
+    {
+      resource,
+    }
+  )
+
   return {
     currentRecordNumber: keyObjectGlobalSelectors.get.currentRecordNumber(
       state
     ),
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
+    filterFormIsDirty: isDirty(SPECIMEN_FILTERS_FORM_NAME)(state),
     isSmall: sizeSelectors.getIsSmall(state),
     mainColumnActiveTab: keyObjectGlobalSelectors.get.mainColumnActiveTab(
       state
     ),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
-    totalNumberOfRecords: keyObjectGlobalSelectors.get.totalNumberOfRecords(
-      state
-    ),
+    totalNumberOfRecords:
+      specimenSearchState &&
+      specimenSearchState.items &&
+      specimenSearchState.items.length,
   }
 }
 
 const mapDispatchToProps = {
+  reset,
   setCurrentRecordNumber: keyObjectActionCreators.set.currentRecordNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
   setMainColumnActiveTab: keyObjectActionCreators.set.mainColumnActiveTab,
-  setTotalNumberOfRecords: keyObjectActionCreators.set.totalNumberOfRecords,
 }
 
 const propTypes = {
   currentRecordNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
+  filterFormIsDirty: PropTypes.bool.isRequired,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   mainColumnActiveTab: PropTypes.string.isRequired,
+  reset: PropTypes.func.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  search: PropTypes.func.isRequired,
   setCurrentRecordNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setMainColumnActiveTab: PropTypes.func.isRequired,
-  // setTotalNumberOfRecords: PropTypes.func.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
-  currentRecordNumber: undefined,
+  currentRecordNumber: 1,
   rightSidebarWidth: 300,
   totalNumberOfRecords: undefined,
 }
@@ -131,6 +154,8 @@ class MammalManager extends Component {
     this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
     this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
     this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
+    this.handleResetFilters = this.handleResetFilters.bind(this)
+    this.handleSearchSpecimens = this.handleSearchSpecimens.bind(this)
   }
 
   getColumns() {
@@ -162,16 +187,34 @@ class MammalManager extends Component {
     }
   }
 
+  handleResetFilters(event) {
+    event.preventDefault()
+    this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
+  }
+
+  handleSearchSpecimens(event, filterValues = {}) {
+    event.preventDefault()
+
+    this.props.search({ query: buildQuery(filterValues) }).then(() => {
+      this.props.setCurrentRecordNumber(1)
+    })
+  }
+
+  handleShowAllRecords(event) {
+    event.preventDefault()
+    this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
+    this.props.search({ query: buildQuery({}) }).then(() => {
+      this.props.setCurrentRecordNumber(1)
+    })
+  }
+
   handleToggleFilters(event) {
     event.preventDefault()
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
-  handleShowAllRecords(event) {
-    this.handleSetMainColumnActiveTab(event, 'table')
-  }
-
   handleOpenNewRecordForm(event) {
+    this.props.setFilterColumnIsOpen(false)
     this.handleSetMainColumnActiveTab(event, 'newRecord')
   }
 
@@ -194,18 +237,16 @@ class MammalManager extends Component {
   render() {
     const {
       currentRecordNumber,
+      filterFormIsDirty,
       mainColumnActiveTab,
       totalNumberOfRecords,
     } = this.props
 
-    const lastRecordNumber = totalNumberOfRecords // TODO: check first selectedNumberOfRecords
-
     const isNewRecordView = mainColumnActiveTab === 'newRecord'
     const showSelectNextRecordButton =
-      !isNewRecordView && currentRecordNumber !== lastRecordNumber
+      !isNewRecordView && currentRecordNumber !== totalNumberOfRecords
     const showSelectPreviousRecordButton =
       !isNewRecordView && currentRecordNumber !== 1
-    const showAllRecordsButton = !isNewRecordView // TODO: add condition that no filters are applied
 
     return (
       <ColumnLayout
@@ -215,6 +256,8 @@ class MammalManager extends Component {
         onExportCsv={this.handleExportToCsv}
         onFormTabClick={!isNewRecordView && this.handleOpenNewRecordForm}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
+        onResetFilters={this.handleResetFilters}
+        onSearchSpecimens={this.handleSearchSpecimens}
         onSelectNextRecord={
           showSelectNextRecordButton && this.handleSelectNextRecord
         }
@@ -225,10 +268,10 @@ class MammalManager extends Component {
           !isNewRecordView && this.handleSetCurrentRecordNumber
         }
         onSettingClick={this.handleSettingClick}
-        onShowAllRecords={showAllRecordsButton && this.handleShowAllRecords}
+        onShowAllRecords={filterFormIsDirty && this.handleShowAllRecords}
         onTableTabClick={isNewRecordView && this.handleOpenTableView}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}
-        totalRecords={totalNumberOfRecords}
+        totalNumberOfRecords={totalNumberOfRecords}
       />
     )
   }
@@ -237,6 +280,10 @@ class MammalManager extends Component {
 MammalManager.propTypes = propTypes
 MammalManager.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(
-  MammalManager
-)
+export default compose(
+  createInjectSearch(),
+  createInjectSearchResult({
+    resource: 'searchSpecimen',
+  }),
+  connect(mapStateToProps, mapDispatchToProps)
+)(MammalManager)

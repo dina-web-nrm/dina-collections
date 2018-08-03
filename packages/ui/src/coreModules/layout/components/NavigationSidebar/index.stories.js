@@ -6,7 +6,7 @@ import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import { action } from '@storybook/addon-actions'
 import withInfo from 'utilities/test/customStorybookWithInfo'
 
-import { NavigationSidebar } from './NavigationSidebar'
+import NavigationSidebar from './index'
 
 const NAVIGATION_SIDEBAR_ITEMS = [
   {

@@ -216,7 +216,8 @@
 │   │   ├── injectLabelKey.js
 │   │   ├── injectParameterKey.js
 │   │   ├── pathBuilder.js
-│   │   └── pathBuilder.spec.js
+│   │   ├── pathBuilder.spec.js
+│   │   └── wrapInFieldTemplate.js
 │   ├── index.js
 │   ├── notifications
 │   │   └── index.js
@@ -313,12 +314,13 @@
 │   │   ├── NavigationSidebar
 │   │   │   ├── SidebarNavItem.js
 │   │   │   ├── SidebarNavItemGroup.js
-│   │   │   └── index.js
-│   │   ├── NavigationSidebar.stories.js
+│   │   │   ├── index.js
+│   │   │   └── index.stories.js
 │   │   ├── RowLayout
 │   │   │   ├── index.js
 │   │   │   └── index.stories.js
 │   │   ├── TopMenu
+│   │   │   ├── UserMenu.js
 │   │   │   └── index.js
 │   │   ├── ViewWrap.js
 │   │   ├── ViewWrap.stories.js
@@ -381,8 +383,10 @@
 │   │   └── syncSearch.js
 │   ├── components
 │   │   ├── MultipleChoiceCheckboxes
+│   │   │   ├── Field.js
 │   │   │   └── index.js
 │   │   ├── MultipleSearchTagsSelect
+│   │   │   ├── Field.js
 │   │   │   ├── RefineTagSelection.js
 │   │   │   ├── TagGroup.js
 │   │   │   ├── index.js
@@ -407,6 +411,7 @@
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── higherOrderComponents
+│   │   ├── createInjectScrollLeft.js
 │   │   ├── index.js
 │   │   ├── injectWindowHeight.js
 │   │   └── injectWindowWidth.js

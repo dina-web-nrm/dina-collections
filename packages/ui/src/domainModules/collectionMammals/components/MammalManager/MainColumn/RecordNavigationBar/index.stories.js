@@ -9,13 +9,13 @@ import RecordNavigationBar from './index'
 
 export const currentRecordNumber = 30000
 export const firstRecord = 1
-export const totalRecords = 50000
+export const totalNumberOfRecords = 50000
 
 export const previousRecordNumber = currentRecordNumber - 1
 export const nextRecordNumber = currentRecordNumber + 1
-export const lastRecord = totalRecords
+export const lastRecord = totalNumberOfRecords
 
-export const newTotalRecords = totalRecords + 1
+export const newTotalRecords = totalNumberOfRecords + 1
 
 export const actions = {
   onCurrentRecordNumberChange: action('onCurrentRecordNumberChange'),
@@ -37,20 +37,20 @@ storiesOf(
     <RecordNavigationBar
       currentRecordNumber={currentRecordNumber}
       {...actions}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
     />
   ))
   .add('nextRecord', () => (
     <RecordNavigationBar
       currentRecordNumber={nextRecordNumber}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('previousRecord', () => (
     <RecordNavigationBar
       currentRecordNumber={previousRecordNumber}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
@@ -59,7 +59,7 @@ storiesOf(
       currentRecordNumber={firstRecord}
       {...actions}
       onSelectPreviousRecord={false}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
     />
   ))
   .add('lastRecord', () => (
@@ -67,27 +67,27 @@ storiesOf(
       currentRecordNumber={lastRecord}
       {...actions}
       onSelectNextRecord={false}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
     />
   ))
   .add('showAllRecords', () => (
     <RecordNavigationBar
       currentRecordNumber={currentRecordNumber}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('openFilter', () => (
     <RecordNavigationBar
       currentRecordNumber={currentRecordNumber}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('changeRecordNumber', () => (
     <RecordNavigationBar
       currentRecordNumber={currentRecordNumber}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
@@ -96,12 +96,12 @@ storiesOf(
       currentRecordNumber={newTotalRecords}
       {...actions}
       onSelectNextRecord={false}
-      totalRecords={newTotalRecords}
+      totalNumberOfRecords={newTotalRecords}
     />
   ))
   .add('openNewRecordForm', () => (
     <RecordNavigationBar
-      currentRecordNumber={totalRecords}
+      currentRecordNumber={totalNumberOfRecords}
       onCurrentRecordNumberChange={false}
       onOpenNewRecordForm={false}
       onSelectCurrentRecordNumber={false}
@@ -110,6 +110,6 @@ storiesOf(
       onSetCurrentRecordNumber={false}
       onShowAllRecords={false}
       onToggleFilters={false}
-      totalRecords={totalRecords}
+      totalNumberOfRecords={totalNumberOfRecords}
     />
   ))

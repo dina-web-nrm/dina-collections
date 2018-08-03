@@ -48,6 +48,7 @@ class TextDate extends Component {
         float="left"
         label="Text"
         meta={this.getFieldMeta()}
+        name={input.name}
         parameterKey=""
       >
         <Input

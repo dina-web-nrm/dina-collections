@@ -8,7 +8,14 @@ const propTypes = {
   displayAsButton: PropTypes.bool,
   icon: PropTypes.string,
   initialText: PropTypes.string,
-  input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    ),
+  }).isRequired,
   isLoading: PropTypes.bool,
   mountHidden: PropTypes.bool,
   noResultsMessage: PropTypes.string,

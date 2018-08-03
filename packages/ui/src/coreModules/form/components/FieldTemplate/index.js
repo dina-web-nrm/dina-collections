@@ -10,14 +10,14 @@ export const propTypes = {
   displayError: PropTypes.bool,
   displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
-  float: PropTypes.bool,
+  float: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   meta: PropTypes.shape({
     error: PropTypes.object,
     touched: PropTypes.bool,
-  }).isRequired,
+  }),
   model: PropTypes.string, // eslint-disable-line react/no-unused-prop-types
   module: PropTypes.string,
   name: PropTypes.string,
@@ -34,6 +34,7 @@ export const defaultProps = {
   helpNotificationProps: undefined,
   helpText: undefined,
   label: undefined,
+  meta: {},
   model: undefined,
   module: undefined,
   name: undefined,
@@ -53,13 +54,14 @@ const FieldTemplate = ({
   helpNotificationProps,
   helpText,
   label,
-  meta: { error, touched, warning },
+  meta,
   module,
   name,
   parameterKey,
   required,
   subLabel,
 }) => {
+  const { error, touched, warning } = meta
   const displayError =
     displayErrorInput !== undefined ? displayErrorInput : touched && !!error
 

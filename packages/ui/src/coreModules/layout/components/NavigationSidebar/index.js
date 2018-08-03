@@ -35,7 +35,7 @@ const propTypes = {
 
 const defaultProps = {
   displayHome: false,
-  displayLogout: true,
+  displayLogout: false,
   navigationItems: [],
   nested: false,
   width: 100,

@@ -6,6 +6,7 @@ import config from 'config'
 const propTypes = {
   autoComplete: PropTypes.string,
   displayAsButton: PropTypes.bool,
+  fluid: PropTypes.bool,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   isLoading: PropTypes.bool,
@@ -30,6 +31,7 @@ const propTypes = {
 const defaultProps = {
   autoComplete: undefined,
   displayAsButton: false,
+  fluid: false,
   initialText: '',
   isLoading: false,
   mountHidden: config.isTest,
@@ -68,6 +70,7 @@ class DropdownSearchInput extends Component {
     const {
       autoComplete,
       displayAsButton,
+      fluid,
       initialText,
       input,
       isLoading,
@@ -87,6 +90,7 @@ class DropdownSearchInput extends Component {
         <Dropdown
           autoComplete={autoComplete}
           button={displayAsButton}
+          fluid={fluid}
           loading={isLoading}
           onSearchChange={this.handleSearchChange}
           options={options}

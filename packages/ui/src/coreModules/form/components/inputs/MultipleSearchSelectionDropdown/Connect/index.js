@@ -14,7 +14,7 @@ const mapStateToProps = (
     (input.value &&
       getSelectedOptions &&
       getSelectedOptions(state, input.value)) ||
-    null
+    undefined
 
   return {
     options: getOptions(state, searchQuery),
@@ -28,23 +28,27 @@ const propTypes = {
   getSearchQuery: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
   getSelectedOption: PropTypes.func, // eslint-disable-line react/no-unused-prop-types
   initialText: PropTypes.string,
-  input: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
-  }).isRequired,
   multiple: PropTypes.bool,
   onSearchChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    }).isRequired
+      type: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+    })
   ).isRequired,
   searchQuery: PropTypes.string,
-  selectedOptions: PropTypes.object,
+  selectedOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      type: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+        .isRequired,
+    })
+  ),
 }
 
 const defaultProps = {
@@ -52,14 +56,13 @@ const defaultProps = {
   initialText: undefined,
   multiple: false,
   searchQuery: '',
-  selectedOptions: null,
+  selectedOptions: undefined,
 }
 
 class MultipleSearchSelectionConnectInput extends Component {
   render() {
     const {
       initialText,
-      input,
       onSearchChange,
       options,
       searchQuery,
@@ -70,7 +73,6 @@ class MultipleSearchSelectionConnectInput extends Component {
     return (
       <MultipleSearchSelectionBase
         initialText={initialText}
-        input={input}
         onSearchChange={onSearchChange}
         options={options}
         searchQuery={searchQuery}
