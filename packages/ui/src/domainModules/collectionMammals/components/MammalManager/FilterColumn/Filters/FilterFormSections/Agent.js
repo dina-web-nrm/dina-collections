@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 
-const filterFunctionName = 'searchCollectingLocation'
+const filterFunctionName = 'searchAgent'
 const name = `agent.agentName|searchTags-${filterFunctionName}`
 
 const propTypes = {
@@ -20,7 +20,7 @@ class AgentFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="identifiers"
+            aggregationFunctionName="agents"
             autoComplete="off"
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(name)}
