@@ -27,10 +27,10 @@ module.exports = [
     name: 'cacheIdentifierType',
     srcResource: 'identifierType',
   },
-  {
-    name: 'cachePlace',
-    srcResource: 'place',
-  },
+  // {
+  //   name: 'cachePlace',
+  //   srcResource: 'place',
+  // },
   {
     name: 'cacheStorageLocation',
     srcResource: 'storageLocation',

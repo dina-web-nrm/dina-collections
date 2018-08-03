@@ -1,5 +1,5 @@
 module.exports = {
-  description: 'Create mapping for collectingLocations',
+  description: 'Create mapping for collectingPlaces',
   elasticsearch: () => {
     return {
       fields: {
@@ -11,5 +11,5 @@ module.exports = {
       type: 'text',
     }
   },
-  fieldPath: 'attributes.collectingLocations',
+  fieldPath: 'attributes.collectingPlaces',
 }
