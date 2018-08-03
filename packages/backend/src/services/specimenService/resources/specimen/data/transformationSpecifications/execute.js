@@ -68,8 +68,9 @@ module.exports = function execute({ models, items, reporter }) {
       const specimens = mappedSpecimens.map(
         ({ attributes, id, relationships }) => {
           return {
-            attributes: { ...attributes, relationships },
+            attributes: { ...attributes },
             id,
+            relationships,
           }
         }
       )
