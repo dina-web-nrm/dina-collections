@@ -6,11 +6,16 @@ import ReactList from 'react-list'
 import { push } from 'react-router-redux'
 import { Grid } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
 import InfiniteTableRow from './InfiniteTableRow'
+
+const log = createLog(
+  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTable'
+)
 
 const mapStateToProps = (state, { searchResultResourceType: resource }) => {
   return {
@@ -28,7 +33,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  currentRecordNumber: PropTypes.number.isRequired,
+  currentTableRowNumber: PropTypes.number.isRequired,
   fetchItemById: PropTypes.func.isRequired,
   language: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
@@ -62,7 +67,7 @@ export class InfiniteTable extends Component {
 
   renderItem(index) {
     const {
-      currentRecordNumber,
+      currentTableRowNumber,
       fetchItemById,
       language,
       searchResult,
@@ -73,7 +78,8 @@ export class InfiniteTable extends Component {
     const itemId = searchResult.items[index]
     fetchItemById(itemId)
 
-    const isFocused = index + 1 === currentRecordNumber
+    const rowNumber = index + 1
+    const isFocused = rowNumber === currentTableRowNumber
     const background = isFocused // eslint-disable-line no-nested-ternary
       ? '#b5b5b5'
       : index % 2 === 0 ? '#e5e7e9' : '#fff'
@@ -85,6 +91,7 @@ export class InfiniteTable extends Component {
         key={itemId}
         language={language}
         onClick={this.handleRowClick}
+        rowNumber={rowNumber}
         tableColumnsToShow={tableColumnsToShow}
         width={width}
       />
@@ -92,6 +99,7 @@ export class InfiniteTable extends Component {
   }
 
   render() {
+    log.render()
     const { searchResult, width } = this.props
 
     if (!(searchResult && searchResult.items)) {

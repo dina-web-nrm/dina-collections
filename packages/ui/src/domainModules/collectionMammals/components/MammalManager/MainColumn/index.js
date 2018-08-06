@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { createSelector } from 'reselect'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
+import EditSpecimen from '../../EditSpecimen'
+import ConfigureTable from './ConfigureTable'
 import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
 import ResultTableView from './ResultTableView'
@@ -24,31 +27,86 @@ const recordOptions = {
 }
 
 /* eslint-disable react/prop-types */
-const main = {
-  key: 'main',
+const newRecord = {
+  key: 'newRecord',
+  renderRow: () => {
+    return (
+      <div className="ui fluid dina background" style={{ padding: '20px' }}>
+        <CreateSpecimen />
+      </div>
+    )
+  },
+  style: { overflow: 'auto' },
+}
+const editRecord = {
+  key: 'editRecord',
+  renderRow: () => {
+    return (
+      <div className="ui fluid dina background" style={{ padding: '20px' }}>
+        <EditSpecimen />
+      </div>
+    )
+  },
+  style: { overflow: 'auto' },
+}
+const resultTable = {
+  key: 'resultTable',
   renderRow: props => {
-    if (props.mainColumnActiveTab === 'newRecord') {
-      return (
-        <div className="ui fluid dina background" style={{ padding: '20px' }}>
-          <CreateSpecimen />
-        </div>
-      )
-    }
     return (
       <div className="ui fluid dina background" style={{ marginTop: '-1px' }}>
         <ResultTableView
           availableHeight={
             props.availableHeight - recordNavigationHeight - recordOptionsHeight
           }
-          currentRecordNumber={props.currentRecordNumber}
+          currentTableRowNumber={props.currentTableRowNumber}
         />
       </div>
     )
   },
 }
+const configureTable = {
+  key: 'configureTable',
+  renderRow: props => {
+    return (
+      <div className="ui fluid dina background" style={{ padding: '20px' }}>
+        <ConfigureTable onTableTabClick={props.onTableTabClick} />
+      </div>
+    )
+  },
+  style: { overflow: 'auto' },
+}
 /* eslint-enable react/prop-types */
 
-const rows = [recordNavigation, recordOptions, main]
+const getRows = createSelector(
+  mainColumnActiveTab => mainColumnActiveTab,
+  mainColumnActiveTab => {
+    const rows = [recordNavigation, recordOptions]
+
+    switch (mainColumnActiveTab) {
+      case 'configureTable': {
+        rows.push(configureTable)
+        break
+      }
+      case 'editRecord': {
+        rows.push(editRecord)
+        break
+      }
+      case 'newRecord': {
+        rows.push(newRecord)
+        break
+      }
+      case 'resultTable': {
+        rows.push(resultTable)
+        break
+      }
+      default: {
+        break
+      }
+    }
+
+    return rows
+  }
+)
 
 const propTypes = {
   mainColumnActiveTab: PropTypes.string.isRequired,
@@ -58,11 +116,12 @@ const propTypes = {
 class MainColumn extends PureComponent {
   render() {
     const { mainColumnActiveTab, windowHeight, ...rest } = this.props
+
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
         mainColumnActiveTab={mainColumnActiveTab}
-        rows={rows}
+        rows={getRows(mainColumnActiveTab)}
         {...rest}
       />
     )

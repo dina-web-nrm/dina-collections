@@ -9,11 +9,11 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'MAMMALS',
   initialValues: {
-    filterColumnIsOpen: true,
-    mainColumnActiveTab: 'table',
+    filterColumnIsOpen: false,
+    mainColumnActiveTab: 'resultTable',
   },
   keys: [
-    'currentRecordNumber',
+    'currentTableRowNumber',
     'filterColumnIsOpen',
     'mainColumnActiveTab',
     'totalNumberOfRecords',

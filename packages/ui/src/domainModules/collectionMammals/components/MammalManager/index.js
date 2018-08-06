@@ -89,7 +89,7 @@ const mapStateToProps = (state, { searchResultResourceType: resource }) => {
   )
 
   return {
-    currentRecordNumber: keyObjectGlobalSelectors.get.currentRecordNumber(
+    currentTableRowNumber: keyObjectGlobalSelectors.get.currentTableRowNumber(
       state
     ),
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
@@ -108,13 +108,13 @@ const mapStateToProps = (state, { searchResultResourceType: resource }) => {
 
 const mapDispatchToProps = {
   reset,
-  setCurrentRecordNumber: keyObjectActionCreators.set.currentRecordNumber,
+  setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
   setMainColumnActiveTab: keyObjectActionCreators.set.mainColumnActiveTab,
 }
 
 const propTypes = {
-  currentRecordNumber: PropTypes.number,
+  currentTableRowNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   filterFormIsDirty: PropTypes.bool.isRequired,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
@@ -123,13 +123,13 @@ const propTypes = {
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   search: PropTypes.func.isRequired,
-  setCurrentRecordNumber: PropTypes.func.isRequired,
+  setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setMainColumnActiveTab: PropTypes.func.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
-  currentRecordNumber: 1,
+  currentTableRowNumber: 1,
   rightSidebarWidth: 300,
   totalNumberOfRecords: undefined,
 }
@@ -143,14 +143,14 @@ class MammalManager extends Component {
     this.handleSetMainColumnActiveTab = this.handleSetMainColumnActiveTab.bind(
       this
     )
-    this.handleSetCurrentRecordNumber = this.handleSetCurrentRecordNumber.bind(
+    this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
       this
     )
     this.handleSettingClick = this.handleSettingClick.bind(this)
     this.handleToggleFilters = this.handleToggleFilters.bind(this)
     this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
     this.handleOpenTableView = this.handleOpenTableView.bind(this)
-    this.handleOpenItemView = this.handleOpenItemView.bind(this)
+    this.handleOpenEditRecordView = this.handleOpenEditRecordView.bind(this)
     this.handleSelectNextRecord = this.handleSelectNextRecord.bind(this)
     this.handleSelectPreviousRecord = this.handleSelectPreviousRecord.bind(this)
     this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
@@ -171,19 +171,19 @@ class MammalManager extends Component {
   }
 
   handleSetMainColumnActiveTab(event, key) {
-    event.preventDefault()
+    if (event) event.preventDefault()
     this.props.setMainColumnActiveTab(key)
   }
 
-  handleSetCurrentRecordNumber(event, newRecordNumber) {
+  handleSetCurrentTableRowNumber(event, newTableRowNumber) {
     if (event) {
       event.preventDefault()
     }
 
-    const parsedInteger = Number(newRecordNumber)
+    const parsedInteger = Number(newTableRowNumber)
 
     if (Number.isInteger(parsedInteger)) {
-      this.props.setCurrentRecordNumber(parsedInteger)
+      this.props.setCurrentTableRowNumber(parsedInteger)
     }
   }
 
@@ -196,7 +196,7 @@ class MammalManager extends Component {
     event.preventDefault()
 
     this.props.search({ query: buildQuery(filterValues) }).then(() => {
-      this.props.setCurrentRecordNumber(1)
+      this.props.setCurrentTableRowNumber(1)
     })
   }
 
@@ -204,7 +204,7 @@ class MammalManager extends Component {
     event.preventDefault()
     this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
     this.props.search({ query: buildQuery({}) }).then(() => {
-      this.props.setCurrentRecordNumber(1)
+      this.props.setCurrentTableRowNumber(1)
     })
   }
 
@@ -219,42 +219,50 @@ class MammalManager extends Component {
   }
 
   handleOpenTableView(event) {
-    this.handleSetMainColumnActiveTab(event, 'table')
+    this.handleSetMainColumnActiveTab(event, 'resultTable')
   }
 
-  handleOpenItemView(event) {
-    this.handleSetMainColumnActiveTab(event, 'item')
+  handleOpenEditRecordView(event) {
+    this.handleSetMainColumnActiveTab(event, 'editRecord')
   }
 
   handleSelectNextRecord(event) {
-    this.handleSetCurrentRecordNumber(event, this.props.currentRecordNumber + 1)
+    this.handleSetCurrentTableRowNumber(
+      event,
+      this.props.currentTableRowNumber + 1
+    )
   }
 
   handleSelectPreviousRecord(event) {
-    this.handleSetCurrentRecordNumber(event, this.props.currentRecordNumber - 1)
+    this.handleSetCurrentTableRowNumber(
+      event,
+      this.props.currentTableRowNumber - 1
+    )
   }
 
   render() {
     const {
-      currentRecordNumber,
+      currentTableRowNumber,
       filterFormIsDirty,
       mainColumnActiveTab,
       totalNumberOfRecords,
     } = this.props
 
     const isNewRecordView = mainColumnActiveTab === 'newRecord'
+    const isTableView = mainColumnActiveTab === 'resultTable'
+
     const showSelectNextRecordButton =
-      !isNewRecordView && currentRecordNumber !== totalNumberOfRecords
+      !isNewRecordView && currentTableRowNumber !== totalNumberOfRecords
     const showSelectPreviousRecordButton =
-      !isNewRecordView && currentRecordNumber !== 1
+      !isNewRecordView && currentTableRowNumber !== 1
 
     return (
       <ColumnLayout
         columns={this.getColumns()}
-        currentRecordNumber={currentRecordNumber}
+        currentTableRowNumber={currentTableRowNumber}
         mainColumnActiveTab={mainColumnActiveTab}
-        onExportCsv={this.handleExportToCsv}
-        onFormTabClick={!isNewRecordView && this.handleOpenNewRecordForm}
+        onExportCsv={isTableView && this.handleExportToCsv}
+        onFormTabClick={isTableView && this.handleOpenEditRecordView}
         onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
         onResetFilters={this.handleResetFilters}
         onSearchSpecimens={this.handleSearchSpecimens}
@@ -264,12 +272,12 @@ class MammalManager extends Component {
         onSelectPreviousRecord={
           showSelectPreviousRecordButton && this.handleSelectPreviousRecord
         }
-        onSetCurrentRecordNumber={
-          !isNewRecordView && this.handleSetCurrentRecordNumber
+        onSetCurrentTableRowNumber={
+          !isNewRecordView && this.handleSetCurrentTableRowNumber
         }
         onSettingClick={isTableView && this.handleSettingClick}
         onShowAllRecords={filterFormIsDirty && this.handleShowAllRecords}
-        onTableTabClick={isNewRecordView && this.handleOpenTableView}
+        onTableTabClick={!isTableView && this.handleOpenTableView}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}
         totalNumberOfRecords={totalNumberOfRecords}
       />
