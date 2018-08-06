@@ -24,6 +24,9 @@ module.exports = {
     srcFileName: {
       type: 'string',
     },
+    srcRelationships: {
+      type: 'array',
+    },
     srcResource: {
       type: 'string',
     },

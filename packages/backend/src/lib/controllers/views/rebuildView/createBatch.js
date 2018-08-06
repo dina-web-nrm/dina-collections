@@ -5,6 +5,7 @@ module.exports = function createBatch({
   reporter,
   serviceInteractor,
   srcFileName,
+  srcRelationships,
   srcResource,
   startCount,
   transformationFunction,
@@ -36,7 +37,7 @@ module.exports = function createBatch({
         queryParams: {
           limit: numberOfBatchEntries,
           offset: startCount,
-          relationships: ['all'],
+          relationships: srcRelationships,
         },
       },
 
@@ -44,6 +45,7 @@ module.exports = function createBatch({
     })
     .then(response => {
       const items = response && response.data
+
       return Promise.resolve().then(() => {
         return transformationFunction({
           items,
