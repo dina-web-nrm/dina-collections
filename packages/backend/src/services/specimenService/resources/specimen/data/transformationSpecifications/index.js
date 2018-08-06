@@ -12,6 +12,7 @@ const {
   publishRecord,
   readOnly,
   recordHistoryEvents,
+  taxonInformation,
 } = require('./transformationFunctions')
 
 const warmViews = lookupSpecifications.map(({ name }) => {
@@ -25,6 +26,7 @@ exports.importDataFromFile = {
   srcFileName: 'specimens',
   transformationFunctions: [
     id,
+    taxonInformation,
     identifiers,
     collectionItems,
     collectingInformation,
