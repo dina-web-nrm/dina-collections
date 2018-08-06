@@ -16,7 +16,6 @@ module.exports = function fetchParents({
   if (parentId === undefined) {
     return Promise.resolve(parents)
   }
-
   if (
     ignoreParentIds &&
     ignoreParentIds.length &&
@@ -37,6 +36,12 @@ module.exports = function fetchParents({
     }
 
     parents.unshift(parent)
-    return fetchParents({ getItemByTypeId, item: parent, parents, resource })
+    return fetchParents({
+      getItemByTypeId,
+      ignoreParentIds,
+      item: parent,
+      parents,
+      resource,
+    })
   })
 }
