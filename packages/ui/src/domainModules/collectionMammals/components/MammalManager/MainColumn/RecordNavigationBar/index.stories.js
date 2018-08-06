@@ -7,23 +7,23 @@ import { storiesOf } from '@storybook/react' // eslint-disable-line
 
 import RecordNavigationBar from './index'
 
-export const currentRecordNumber = 30000
+export const currentTableRowNumber = 30000
 export const firstRecord = 1
 export const totalNumberOfRecords = 50000
 
-export const previousRecordNumber = currentRecordNumber - 1
-export const nextRecordNumber = currentRecordNumber + 1
+export const previousTableRowNumber = currentTableRowNumber - 1
+export const nextTableRowNumber = currentTableRowNumber + 1
 export const lastRecord = totalNumberOfRecords
 
 export const newTotalRecords = totalNumberOfRecords + 1
 
 export const actions = {
-  onCurrentRecordNumberChange: action('onCurrentRecordNumberChange'),
+  onCurrentTableRowNumberChange: action('onCurrentTableRowNumberChange'),
   onOpenNewRecordForm: action('onOpenNewRecordForm'),
-  onSelectCurrentRecordNumber: action('onSelectCurrentRecordNumber'),
+  onSelectCurrentTableRowNumber: action('onSelectCurrentTableRowNumber'),
   onSelectNextRecord: action('onSelectNextRecord'),
   onSelectPreviousRecord: action('onSelectPreviousRecord'),
-  onSetCurrentRecordNumber: action('onSetCurrentRecordNumber'),
+  onSetCurrentTableRowNumber: action('onSetCurrentTableRowNumber'),
   onShowAllRecords: action('onShowAllRecords'),
   onToggleFilters: action('onToggleFilters'),
 }
@@ -35,28 +35,28 @@ storiesOf(
   .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <RecordNavigationBar
-      currentRecordNumber={currentRecordNumber}
+      currentTableRowNumber={currentTableRowNumber}
       {...actions}
       totalNumberOfRecords={totalNumberOfRecords}
     />
   ))
   .add('nextRecord', () => (
     <RecordNavigationBar
-      currentRecordNumber={nextRecordNumber}
+      currentTableRowNumber={nextTableRowNumber}
       totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('previousRecord', () => (
     <RecordNavigationBar
-      currentRecordNumber={previousRecordNumber}
+      currentTableRowNumber={previousTableRowNumber}
       totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('firstRecord', () => (
     <RecordNavigationBar
-      currentRecordNumber={firstRecord}
+      currentTableRowNumber={firstRecord}
       {...actions}
       onSelectPreviousRecord={false}
       totalNumberOfRecords={totalNumberOfRecords}
@@ -64,7 +64,7 @@ storiesOf(
   ))
   .add('lastRecord', () => (
     <RecordNavigationBar
-      currentRecordNumber={lastRecord}
+      currentTableRowNumber={lastRecord}
       {...actions}
       onSelectNextRecord={false}
       totalNumberOfRecords={totalNumberOfRecords}
@@ -72,28 +72,28 @@ storiesOf(
   ))
   .add('showAllRecords', () => (
     <RecordNavigationBar
-      currentRecordNumber={currentRecordNumber}
+      currentTableRowNumber={currentTableRowNumber}
       totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('openFilter', () => (
     <RecordNavigationBar
-      currentRecordNumber={currentRecordNumber}
+      currentTableRowNumber={currentTableRowNumber}
       totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
-  .add('changeRecordNumber', () => (
+  .add('changeTableRowNumber', () => (
     <RecordNavigationBar
-      currentRecordNumber={currentRecordNumber}
+      currentTableRowNumber={currentTableRowNumber}
       totalNumberOfRecords={totalNumberOfRecords}
       {...actions}
     />
   ))
   .add('addingNewRecordComplete', () => (
     <RecordNavigationBar
-      currentRecordNumber={newTotalRecords}
+      currentTableRowNumber={newTotalRecords}
       {...actions}
       onSelectNextRecord={false}
       totalNumberOfRecords={newTotalRecords}
@@ -101,13 +101,13 @@ storiesOf(
   ))
   .add('openNewRecordForm', () => (
     <RecordNavigationBar
-      currentRecordNumber={totalNumberOfRecords}
-      onCurrentRecordNumberChange={false}
+      currentTableRowNumber={totalNumberOfRecords}
+      onCurrentTableRowNumberChange={false}
       onOpenNewRecordForm={false}
-      onSelectCurrentRecordNumber={false}
+      onSelectCurrentTableRowNumber={false}
       onSelectNextRecord={false}
       onSelectPreviousRecord={false}
-      onSetCurrentRecordNumber={false}
+      onSetCurrentTableRowNumber={false}
       onShowAllRecords={false}
       onToggleFilters={false}
       totalNumberOfRecords={totalNumberOfRecords}

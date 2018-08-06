@@ -2835,7 +2835,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
 </div>
 `;
 
-exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar changeRecordNumber 1`] = `
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar changeTableRowNumber 1`] = `
 <div>
   <div
     className="ui padded center aligned middle aligned grid"
@@ -4364,6 +4364,11 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       >
         <div
           className="column"
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         >
           <i
             aria-hidden="true"
@@ -4379,6 +4384,11 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       <div
         className="item"
         onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
       >
         <i
           aria-hidden="true"
@@ -4422,6 +4432,11 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       >
         <div
           className="column"
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         >
           <i
             aria-hidden="true"
@@ -4437,6 +4452,11 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       <div
         className="item"
         onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
       >
         <i
           aria-hidden="true"
@@ -4480,6 +4500,11 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       >
         <div
           className="column"
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         >
           <i
             aria-hidden="true"
@@ -4495,6 +4520,11 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       <div
         className="item"
         onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+          }
+        }
       >
         <i
           aria-hidden="true"

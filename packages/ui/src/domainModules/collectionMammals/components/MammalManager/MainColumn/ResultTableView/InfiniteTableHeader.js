@@ -1,12 +1,19 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Divider, Grid, Header } from 'semantic-ui-react'
 
+import createLog from 'utilities/log'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
+import tableColumnSpecifications from '../tableColumnSpecifications'
+
+const log = createLog(
+  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTableHeader'
+)
 
 const propTypes = {
   height: PropTypes.number.isRequired,
   scrollLeft: PropTypes.number,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   topOffset: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
 }
@@ -14,9 +21,16 @@ const defaultProps = {
   scrollLeft: 0,
 }
 
-class InfiniteTableHeader extends Component {
+class InfiniteTableHeader extends PureComponent {
   render() {
-    const { height, topOffset, scrollLeft, width } = this.props
+    log.render()
+    const {
+      height,
+      topOffset,
+      scrollLeft,
+      tableColumnsToShow,
+      width,
+    } = this.props
 
     return (
       <React.Fragment>
@@ -32,36 +46,20 @@ class InfiniteTableHeader extends Component {
           textAlign="left"
           verticalAlign="middle"
         >
-          <Grid.Column style={{ width: 150 }}>
-            <Header size="small">Catalog Number</Header>
+          <Grid.Column style={{ width: 80 }} textAlign="right">
+            <Header size="small">Row #</Header>
           </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            <Header size="small">Curatorial Name</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            <Header size="small">Family</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            <Header size="small">Genus</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 200 }}>
-            <Header size="small">Species</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            <Header size="small">Start Date</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 300 }}>
-            <Header size="small">Locality</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            <Header size="small">Death</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            <Header size="small">Sex</Header>
-          </Grid.Column>
-          <Grid.Column style={{ width: 100 }}>
-            <Header size="small">Age Stage</Header>
-          </Grid.Column>
+          {tableColumnSpecifications.map(({ name, width: columnWidth }) => {
+            if (tableColumnsToShow.includes(name)) {
+              return (
+                <Grid.Column key={name} style={{ width: columnWidth }}>
+                  <Header size="small">{name}</Header>
+                </Grid.Column>
+              )
+            }
+
+            return null
+          })}
         </Grid>
         <Divider fitted />
       </React.Fragment>

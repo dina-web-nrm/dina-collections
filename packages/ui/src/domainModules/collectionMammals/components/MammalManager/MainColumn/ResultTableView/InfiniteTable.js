@@ -6,14 +6,23 @@ import ReactList from 'react-list'
 import { push } from 'react-router-redux'
 import { Grid } from 'semantic-ui-react'
 
-import { globalSelectors } from 'coreModules/search/keyObjectModule'
+import createLog from 'utilities/log'
+import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
+import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
 import InfiniteTableRow from './InfiniteTableRow'
 
+const log = createLog(
+  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTable'
+)
+
 const mapStateToProps = (state, { searchResultResourceType: resource }) => {
   return {
-    searchResult: globalSelectors.get[':resource.searchState'](state, {
+    language:
+      i18nSelectors.getLanguage(state) ||
+      i18nSelectors.getDefaultLanguage(state),
+    searchResult: searchSelectors.get[':resource.searchState'](state, {
       resource,
     }),
   }
@@ -24,10 +33,12 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  currentRecordNumber: PropTypes.number.isRequired,
+  currentTableRowNumber: PropTypes.number.isRequired,
   fetchItemById: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
 }
 
@@ -56,16 +67,19 @@ export class InfiniteTable extends Component {
 
   renderItem(index) {
     const {
-      currentRecordNumber,
+      currentTableRowNumber,
       fetchItemById,
+      language,
       searchResult,
+      tableColumnsToShow,
       width,
     } = this.props
 
     const itemId = searchResult.items[index]
     fetchItemById(itemId)
 
-    const isFocused = index + 1 === currentRecordNumber
+    const rowNumber = index + 1
+    const isFocused = rowNumber === currentTableRowNumber
     const background = isFocused // eslint-disable-line no-nested-ternary
       ? '#b5b5b5'
       : index % 2 === 0 ? '#e5e7e9' : '#fff'
@@ -75,13 +89,17 @@ export class InfiniteTable extends Component {
         background={background}
         itemId={itemId}
         key={itemId}
+        language={language}
         onClick={this.handleRowClick}
+        rowNumber={rowNumber}
+        tableColumnsToShow={tableColumnsToShow}
         width={width}
       />
     )
   }
 
   render() {
+    log.render()
     const { searchResult, width } = this.props
 
     if (!(searchResult && searchResult.items)) {
@@ -117,10 +135,15 @@ export default compose(
   createBatchFetchItems({
     include: [
       'agents',
+      'causeOfDeathTypes',
+      'establishmentMeansTypes',
       'featureTypes',
-      'physicalObjects',
+      'identifierTypes',
+      'physicalObjects.storageLocation.parent',
       'places',
+      'preparationTypes',
       'taxonNames',
+      'typeSpecimenType',
     ],
     relationships: ['all'],
     resource: 'specimen',

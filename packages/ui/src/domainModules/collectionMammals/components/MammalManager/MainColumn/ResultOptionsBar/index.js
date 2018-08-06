@@ -3,10 +3,11 @@ import PropTypes from 'prop-types'
 import { Button, Grid, Icon, Menu, Popup } from 'semantic-ui-react'
 
 const propTypes = {
-  onExportCsv: PropTypes.func.isRequired,
+  onExportCsv: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]).isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onSettingClick: PropTypes.func.isRequired,
+  onSettingClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
   onTableTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
 }
@@ -39,28 +40,32 @@ export class ResultOptionsBar extends Component {
           <Icon name="table" size="large" />
         </Menu.Item>
         <Menu.Menu position="right">
-          <Grid textAlign="center" verticalAlign="middle">
-            <Grid.Column>
-              <Popup
-                content={
-                  <Button
-                    content="Export result to CSV"
-                    onClick={event => handleExportToCsv(event)}
-                  />
-                }
-                on="click"
-                trigger={<Icon name="share" size="large" />}
-              />
-            </Grid.Column>
-          </Grid>
+          {handleExportToCsv && (
+            <Grid textAlign="center" verticalAlign="middle">
+              <Grid.Column style={{ cursor: 'pointer' }}>
+                <Popup
+                  content={
+                    <Button
+                      content="Export result to CSV"
+                      onClick={event => handleExportToCsv(event)}
+                    />
+                  }
+                  on="click"
+                  trigger={<Icon name="share" size="large" />}
+                />
+              </Grid.Column>
+            </Grid>
+          )}
 
-          <Menu.Item>
-            <Icon
-              name="setting"
-              onClick={event => handleSettingClick(event)}
-              size="large"
-            />
-          </Menu.Item>
+          {handleSettingClick && (
+            <Menu.Item style={{ cursor: 'pointer' }}>
+              <Icon
+                name="setting"
+                onClick={event => handleSettingClick(event)}
+                size="large"
+              />
+            </Menu.Item>
+          )}
         </Menu.Menu>
       </Menu>
     )

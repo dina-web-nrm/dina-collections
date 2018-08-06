@@ -4,14 +4,14 @@ import { Button, Icon, Grid, Input } from 'semantic-ui-react'
 import Slider from 'react-rangeslider'
 
 const propTypes = {
-  currentRecordNumber: PropTypes.number.isRequired,
+  currentTableRowNumber: PropTypes.number.isRequired,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onSetCurrentRecordNumber: PropTypes.oneOfType([
+  onSetCurrentTableRowNumber: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.bool,
   ]).isRequired,
@@ -28,9 +28,9 @@ const defaultProps = {
 export class RecordNavigationBar extends Component {
   render() {
     const {
-      currentRecordNumber,
+      currentTableRowNumber,
       onOpenNewRecordForm: handleOpenNewRecordForm,
-      onSetCurrentRecordNumber: handleSetCurrentRecordNumber,
+      onSetCurrentTableRowNumber: handleSetCurrentTableRowNumber,
       onSelectNextRecord: handleSelectNextRecord,
       onSelectPreviousRecord: handleSelectPreviousRecord,
       onShowAllRecords: handleShowAllRecords,
@@ -63,27 +63,27 @@ export class RecordNavigationBar extends Component {
         <Grid.Column computer={3} mobile={8} tablet={8}>
           {hasRecords && (
             <Input
-              disabled={!handleSetCurrentRecordNumber}
+              disabled={!handleSetCurrentTableRowNumber}
               max={totalNumberOfRecords}
               min={1}
               onChange={event =>
-                handleSetCurrentRecordNumber(event, event.target.value)
+                handleSetCurrentTableRowNumber(event, event.target.value)
               }
               size="mini"
               style={{ width: '80px' }}
               type="number"
-              value={currentRecordNumber}
+              value={currentTableRowNumber}
             />
           )}
           {hasRecords && (
             <Slider
               max={totalNumberOfRecords}
               min={1}
-              onChange={newRecordNumber => {
-                handleSetCurrentRecordNumber(null, newRecordNumber)
+              onChange={newTableRowNumber => {
+                handleSetCurrentTableRowNumber(null, newTableRowNumber)
               }}
               step={1}
-              value={currentRecordNumber}
+              value={currentTableRowNumber}
             />
           )}
         </Grid.Column>
