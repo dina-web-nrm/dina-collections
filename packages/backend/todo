@@ -1,3 +1,18 @@
+Create todos for:
+* Migrations
+** Type status
+** Taxonomy (Do like places)
+
+* Displaying data
+** locality. can parent.parent.parent.parent be used?
+
+* Filters
+** Discuss query format for checkbox filter types
+
+
+
+
+
 TODO
 * Implement all needed search stuff
 ** Place
