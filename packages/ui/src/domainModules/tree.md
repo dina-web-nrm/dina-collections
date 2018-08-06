@@ -48,6 +48,8 @@
 │   ├── components
 │   │   ├── CreateSpecimen
 │   │   │   └── index.js
+│   │   ├── EditSpecimen
+│   │   │   └── index.js
 │   │   ├── LookupMammals
 │   │   │   ├── CheckboxesForm.js
 │   │   │   ├── CollectingLocationMultipleSearch.js
