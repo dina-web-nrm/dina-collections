@@ -3,7 +3,7 @@ module.exports = {
   elasticsearch: ({ value }) => {
     return {
       match: {
-        'identifiers.raw': {
+        'attributes.identifiers.raw': {
           query: value,
         },
       },

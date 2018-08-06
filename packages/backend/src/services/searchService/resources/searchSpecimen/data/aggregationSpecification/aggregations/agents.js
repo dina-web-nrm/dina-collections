@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 
 module.exports = {
-  description: 'Aggregate identifiers',
+  description: 'Aggregate agent',
   elasticsearch: ({ options = {} }) => {
     const { contains, limit = 10 } = options
 
     if (contains) {
       return {
         terms: {
-          field: 'attributes.identifiers.raw',
+          field: 'attributes.agents.raw',
           include: `.*${contains}.*`,
           size: limit,
         },
@@ -16,7 +16,7 @@ module.exports = {
     }
     return {
       terms: {
-        field: 'attributes.identifiers.raw',
+        field: 'attributes.agents.raw',
         size: limit,
       },
     }
@@ -24,6 +24,6 @@ module.exports = {
   inputSchema: {
     type: 'string',
   },
-  key: 'identifiers',
-  resource: 'specimenIdentifier',
+  key: 'agents',
+  resource: 'specimenAgents',
 }

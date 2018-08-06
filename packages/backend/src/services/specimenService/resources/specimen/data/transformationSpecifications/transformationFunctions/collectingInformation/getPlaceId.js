@@ -2,16 +2,19 @@ const getPlaceInformation = ({ src, migrator }) => {
   const continent = migrator.getValue({
     obj: src,
     path: 'objects.FieldNo_related.Continent_Ocean',
+    strip: true,
   })
 
   const nation = migrator.getValue({
     obj: src,
     path: 'objects.FieldNo_related.Nation',
+    strip: true,
   })
 
   const province = migrator.getValue({
     obj: src,
     path: 'objects.FieldNo_related.Province',
+    strip: true,
   })
 
   return {

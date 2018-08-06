@@ -9,6 +9,7 @@ module.exports = function getCollectorAgent({
   const collector = migrator.getValue({
     obj: src,
     path: 'objects.Collector(Leg)',
+    strip: true,
   })
 
   if (!collector) {

@@ -28,13 +28,13 @@ class LocalityFilterForm extends PureComponent {
             label="Higher geography"
             model="place"
             module="locality"
-            name="locality.higherGeography|singleMatch-matchCollectingLocation"
+            name="locality.higherGeography|singleMatch-matchCollectingPlace"
             type="text"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="identifiers"
+            aggregationFunctionName="collectingLocations"
             autoComplete="off"
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(locationFieldName)}

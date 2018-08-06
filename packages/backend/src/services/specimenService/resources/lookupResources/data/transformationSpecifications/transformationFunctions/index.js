@@ -1,3 +1,4 @@
+const fetchParents = require('../../../../../../../lib/data/transformations/utilities/fetchParents')
 /* eslint-disable no-param-reassign */
 
 exports.preparationType = ({ src, target }) => {
@@ -14,39 +15,11 @@ exports.storageLocation = ({ src, target }) => {
   target.attributes = { srcId, ...src.attributes }
 }
 
-// could be moved to central place
-const fetchParents = ({ parents = [], item, getItemByTypeId, resource }) => {
-  const parentId =
-    (item &&
-      item.relationships &&
-      item.relationships.parent &&
-      item.relationships.parent.data &&
-      item.relationships.parent.data.id) ||
-    undefined
-  if (parentId === undefined || parentId === '1') {
-    return Promise.resolve(parents)
-  }
-
-  return getItemByTypeId({
-    id: parentId,
-    queryParams: { relationships: ['parent'] },
-    type: resource,
-  }).then(parent => {
-    if (!parent) {
-      throw new Error(
-        `Non existing parent with type: ${resource} and id: ${parentId}`
-      )
-    }
-
-    parents.unshift(parent)
-    return fetchParents({ getItemByTypeId, item: parent, parents, resource })
-  })
-}
-
 exports.place = ({ getItemByTypeId, src, target }) => {
   const { id: srcId, attributes, relationships } = src
   return fetchParents({
     getItemByTypeId,
+    ignoreParentIds: ['1'],
     item: src,
     resource: 'place',
   }).then(parents => {

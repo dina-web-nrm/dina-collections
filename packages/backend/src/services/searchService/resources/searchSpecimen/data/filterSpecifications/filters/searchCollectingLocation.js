@@ -3,7 +3,7 @@ module.exports = {
   elasticsearch: ({ value }) => {
     return {
       match_phrase_prefix: {
-        collectingLocations: {
+        'attributes.collectingLocations': {
           query: value,
         },
       },

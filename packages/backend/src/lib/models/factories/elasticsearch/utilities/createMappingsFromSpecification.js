@@ -6,10 +6,11 @@ module.exports = function createMappingsFromSpecification({
     (obj, key) => {
       const {
         elasticsearch: elasticsearchFunction,
+        fieldPath,
       } = mappingSpecification.mappings[key]
       return {
         ...obj,
-        [key]: elasticsearchFunction(),
+        [fieldPath]: elasticsearchFunction(),
       }
     },
     {}

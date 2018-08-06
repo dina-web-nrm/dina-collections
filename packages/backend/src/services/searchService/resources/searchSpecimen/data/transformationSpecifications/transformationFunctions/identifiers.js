@@ -1,13 +1,16 @@
 /* eslint-disable no-param-reassign */
-const objectPath = require('object-path')
 
-module.exports = ({ src, target }) => {
-  const identifiers = objectPath.get(src, 'individual.identifiers')
+module.exports = ({ migrator, src, target }) => {
+  const identifiers = migrator.getValue({
+    obj: src,
+    path: 'individual.identifiers',
+  })
+
   if (!identifiers) {
     return null
   }
 
-  target.identifiers = identifiers
+  const transformedIdentifiers = identifiers
     .map(identifier => {
       const { value, identifierType: { key } = {} } = identifier
 
@@ -19,5 +22,12 @@ module.exports = ({ src, target }) => {
     .filter(identifier => {
       return !!identifier
     })
+
+  migrator.setValue({
+    obj: target,
+    path: 'attributes.identifiers',
+    value: transformedIdentifiers,
+  })
+
   return null
 }

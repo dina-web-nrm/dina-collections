@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 
 module.exports = {
-  description: 'Aggregate identifiers',
+  description: 'Aggregate collectingLocations',
   elasticsearch: ({ options = {} }) => {
     const { contains, limit = 10 } = options
 
     if (contains) {
       return {
         terms: {
-          field: 'attributes.identifiers.raw',
+          field: 'attributes.collectingLocations.raw',
           include: `.*${contains}.*`,
           size: limit,
         },
@@ -16,7 +16,7 @@ module.exports = {
     }
     return {
       terms: {
-        field: 'attributes.identifiers.raw',
+        field: 'attributes.collectingLocations.raw',
         size: limit,
       },
     }
@@ -24,6 +24,6 @@ module.exports = {
   inputSchema: {
     type: 'string',
   },
-  key: 'identifiers',
-  resource: 'specimenIdentifier',
+  key: 'collectingLocations',
+  resource: 'specimenCollectingLocation',
 }

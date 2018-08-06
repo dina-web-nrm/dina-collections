@@ -25,6 +25,7 @@ module.exports = function getSkeletonPreparationType({
   const srcSkeletonPreparationType = migrator.getValue({
     obj: src,
     path: 'collection.SkeletonStatus_related.Skel_Eng',
+    strip: true,
   })
   const lookupPreparationTypeId = mapSkeletonName(srcSkeletonPreparationType)
 

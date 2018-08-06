@@ -1,9 +1,9 @@
 module.exports = {
-  description: 'Match collecting information',
+  description: 'Match agent',
   elasticsearch: ({ value }) => {
     return {
       match: {
-        'attributes.collectingLocations.raw': {
+        'attributes.agents.raw': {
           query: value,
         },
       },
@@ -12,5 +12,5 @@ module.exports = {
   inputSchema: {
     type: 'string',
   },
-  key: 'matchCollectingLocation',
+  key: 'matchAgent',
 }

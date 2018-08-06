@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
-const objectPath = require('object-path')
 
-module.exports = ({ src, target }) => {
-  const collectingInformation = objectPath.get(
-    src,
-    'individual.collectingInformation'
-  )
+module.exports = ({ migrator, src, target }) => {
+  const collectingInformation = migrator.getValue({
+    obj: src,
+    path: 'individual.collectingInformation',
+  })
+
   if (!collectingInformation) {
     return null
   }
@@ -13,10 +13,11 @@ module.exports = ({ src, target }) => {
   const collectingLocations = []
 
   collectingInformation.forEach(singleCollectingInformation => {
-    const places = objectPath.get(
-      singleCollectingInformation,
-      'event.locationInformation.places'
-    )
+    const places = migrator.getValue({
+      obj: singleCollectingInformation,
+      path: 'event.locationInformation.places',
+    })
+
     if (places) {
       places.forEach(place => {
         if (place.name) {
@@ -25,10 +26,10 @@ module.exports = ({ src, target }) => {
       })
     }
 
-    const locationInformation = objectPath.get(
-      singleCollectingInformation,
-      'event.locationInformation'
-    )
+    const locationInformation = migrator.getValue({
+      obj: singleCollectingInformation,
+      path: 'event.locationInformation',
+    })
 
     if (locationInformation && locationInformation.localityN) {
       collectingLocations.push(`${locationInformation.localityN} (localityN)`)
@@ -40,7 +41,11 @@ module.exports = ({ src, target }) => {
     return null
   })
 
-  target.collectingLocations = collectingLocations
+  migrator.setValue({
+    obj: target,
+    path: 'attributes.collectingLocations',
+    value: collectingLocations,
+  })
 
   return null
 }

@@ -1,9 +1,9 @@
 module.exports = {
-  description: 'Match identifiers',
+  description: 'Search identifiers',
   elasticsearch: ({ value }) => {
     return {
       match_phrase_prefix: {
-        identifiers: {
+        'attributes.identifiers': {
           query: value,
         },
       },

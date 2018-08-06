@@ -28,11 +28,8 @@ module.exports = [
     srcResource: 'identifierType',
   },
   {
-    name: 'cachePlace',
-    srcResource: 'place',
-  },
-  {
     name: 'cacheStorageLocation',
+    srcRelationships: ['parent'],
     srcResource: 'storageLocation',
   },
   {

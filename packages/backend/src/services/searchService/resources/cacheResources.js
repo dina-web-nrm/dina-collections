@@ -6,7 +6,7 @@ const filterSpecification = createGetManyFilterSpecifications({
 })
 
 module.exports = cacheResourcesSpecifications.reduce(
-  (obj, { name, srcResource }) => {
+  (obj, { name, srcResource, srcRelationships }) => {
     const spec = {
       basePath: '/api/search/v01',
       operations: [
@@ -41,6 +41,7 @@ module.exports = cacheResourcesSpecifications.reduce(
         },
         {
           transformationSpecification: {
+            srcRelationships,
             srcResource,
           },
           type: 'rebuildView',

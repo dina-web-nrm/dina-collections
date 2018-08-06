@@ -1,6 +1,14 @@
 /* eslint-disable no-param-reassign */
 
-module.exports = ({ src, target }) => {
-  const { id } = src
-  target.id = id
+module.exports = ({ migrator, src, target }) => {
+  const id = migrator.getValue({
+    obj: src,
+    path: 'id',
+  })
+
+  migrator.setValue({
+    obj: target,
+    path: 'id',
+    value: id,
+  })
 }

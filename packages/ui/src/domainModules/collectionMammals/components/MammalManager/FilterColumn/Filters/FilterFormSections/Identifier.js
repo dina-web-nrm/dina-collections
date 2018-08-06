@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 
-const filterFunctionName = 'searchCollectingLocation'
+const filterFunctionName = 'searchIdentifier'
 const name = `identifier.identifier|searchTags-${filterFunctionName}`
 
 const propTypes = {

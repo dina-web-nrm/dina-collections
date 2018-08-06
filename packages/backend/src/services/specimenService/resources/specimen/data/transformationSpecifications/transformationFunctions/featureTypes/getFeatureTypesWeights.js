@@ -19,16 +19,19 @@ module.exports = function getFeatureTypesWeights({
   const completeBodyWeight = migrator.getValue({
     obj: src,
     path: 'analysis.CompleteBodyWeight',
+    strip: true,
   })
 
   const otherWeight = migrator.getValue({
     obj: src,
     path: 'analysis.OtherWeight',
+    strip: true,
   })
 
   const customWeightType = migrator.getValue({
     obj: src,
     path: 'analysis.TypeOfWeight_related.Vikt_english',
+    strip: true,
   })
 
   const weightValue = otherWeight || completeBodyWeight

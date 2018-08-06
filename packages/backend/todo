@@ -1,21 +1,17 @@
-* Make sure physical objects are created when migrating specimens
-* Add date Remark
-
-  objects.
-    "DateRemark": "Collected: During 1881",
-
-* Rename config params related to initial data
-
-
-MERGE
-
-
 TODO
-* Migrate Taxonomy (wait)
 * Implement all needed search stuff
+** Place
+** Date period
+** Agent
+** Physical object
+** Storage
+** Age and stage
+
+* Make sure error is thrown if no matching aggregations functions
 * Would it be possible to extract lookup models from backend?
 * Refactor prepType and featureType to mimic identifier type
 * Verify incremental update of specimens
+* Migrate Taxonomy (wait)
 
 Potential TODOs
 * Rename importer to initialDataLoader

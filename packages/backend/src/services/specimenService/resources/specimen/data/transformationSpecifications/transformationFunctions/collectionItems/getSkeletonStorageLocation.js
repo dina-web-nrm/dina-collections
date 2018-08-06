@@ -6,6 +6,7 @@ module.exports = function getSkeletonStorageLocation({
   const lookupSrcStorageLocationId = migrator.getValue({
     obj: src,
     path: 'collection.SkeletonCollection_related.Location_Eng',
+    strip: true,
   })
 
   if (!lookupSrcStorageLocationId) {

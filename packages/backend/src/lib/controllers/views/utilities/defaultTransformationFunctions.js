@@ -1,2 +1,1 @@
-exports.allFromAttributes = require('../../../data/transformations/sharedTransformations/allFromAttributes')
-exports.id = require('../../../data/transformations/sharedTransformations/id')
+exports.all = require('../../../data/transformations/sharedTransformations/all')

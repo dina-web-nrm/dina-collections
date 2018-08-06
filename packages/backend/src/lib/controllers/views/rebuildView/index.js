@@ -19,6 +19,7 @@ module.exports = function rebuildView({
 }) {
   const {
     transformationSpecification: {
+      cacheRequestsToResources,
       collidingIdPrefix,
       createBatchFunction = defaultCreateBatchFunction,
       executeFunction = defaultExecuteFunction,
@@ -27,10 +28,10 @@ module.exports = function rebuildView({
       resolveRelations,
       resourceCacheMap,
       srcFileName,
+      srcRelationships = ['all'],
       srcResource,
       transformationFunction = applyTransformations,
       transformationFunctions = defaultTransformationFunctions,
-      cacheRequestsToResources,
       warmViews,
     } = {},
     resource,
@@ -85,6 +86,7 @@ module.exports = function rebuildView({
         ...args,
         serviceInteractor: serviceInteractorCache,
         srcFileName,
+        srcRelationships,
         srcResource,
         transformationFunction: wrapperTransformationFunction,
       })

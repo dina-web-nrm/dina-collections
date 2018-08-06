@@ -26,6 +26,7 @@ module.exports = function getFeatureTypesLengths({
       const parameterValue = migrator.getValue({
         obj: src,
         path: `analysis.${parameterKey}`,
+        strip: true,
       })
 
       if (parameterValue) {

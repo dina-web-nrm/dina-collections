@@ -40,11 +40,23 @@ module.exports = function execute({ models, items, reporter }) {
             type: 'physicalObject',
           }
 
+          const internals = {}
+
+          const storageLocationId =
+            corePhysicalObject.relationships &&
+            corePhysicalObject.relationships.storageLocation &&
+            corePhysicalObject.relationships.storageLocation.data &&
+            corePhysicalObject.relationships.storageLocation.data.id
+          if (storageLocationId !== undefined) {
+            internals.storageLocationId = storageLocationId
+          }
+
           // TODO: change to sql key storageLocationId instead of having
           // storageLocation in doc
           return mappedPhysicalObjects.push({
             attributes: corePhysicalObject.attributes,
             id: physicalObjectId,
+            internals,
           })
         }
       )
@@ -68,8 +80,9 @@ module.exports = function execute({ models, items, reporter }) {
       const specimens = mappedSpecimens.map(
         ({ attributes, id, relationships }) => {
           return {
-            attributes: { ...attributes, relationships },
+            attributes: { ...attributes },
             id,
+            relationships,
           }
         }
       )

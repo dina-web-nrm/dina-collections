@@ -17,6 +17,7 @@ module.exports = function getFeatureTypeSex({
   const sex = migrator.getValue({
     obj: src,
     path: 'analysis.Sex',
+    strip: true,
   })
 
   if (!sex) {
