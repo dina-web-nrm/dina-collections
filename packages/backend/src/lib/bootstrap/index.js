@@ -130,6 +130,17 @@ module.exports = function bootstrap({
                 log.info(`Api listening to port ${config.api.port}`)
               })
             }
+
+            if (
+              !(
+                config.jobs.schedulerActive ||
+                config.api.active ||
+                config.db.importData
+              )
+            ) {
+              process.exit(0)
+            }
+
             return null
           })
       })
