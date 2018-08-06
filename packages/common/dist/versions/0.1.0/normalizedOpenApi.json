@@ -8437,486 +8437,6 @@
         ]
       }
     },
-    "/api/search/v01/cachePlaces": {
-      "post": {
-        "operationId": "cachePlaceCreate",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/cachePlaceCreateRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceCreateResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceCreate-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceCreate-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create cachePlace",
-        "tags": [
-          "searchService"
-        ]
-      },
-      "get": {
-        "operationId": "cachePlaceGetMany",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetManyResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetMany-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetMany-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find cachePlaces",
-        "tags": [
-          "searchService"
-        ]
-      }
-    },
-    "/api/search/v01/cachePlaces/{id}": {
-      "get": {
-        "operationId": "cachePlaceGetOne",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "cachePlace id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetOneResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetOne-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetOne-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceGetOne-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find cachePlace by id",
-        "tags": [
-          "searchService"
-        ]
-      },
-      "patch": {
-        "operationId": "cachePlaceUpdate",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "cachePlace id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/cachePlaceUpdateRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceUpdateResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceUpdate-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceUpdate-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceUpdate-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates cachePlace",
-        "tags": [
-          "searchService"
-        ]
-      },
-      "delete": {
-        "operationId": "cachePlaceDel",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "cachePlace id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceDelResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceDel-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceDel-403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceDel-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceDel-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Deletes cachePlace",
-        "tags": [
-          "searchService"
-        ]
-      }
-    },
-    "/api/search/v01/cachePlaces/actions/emptyView": {
-      "post": {
-        "operationId": "cachePlaceEmptyView",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceEmptyViewResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceEmptyView-403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceEmptyView-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Empty view for resource cachePlace",
-        "tags": [
-          "searchService"
-        ]
-      }
-    },
-    "/api/search/v01/cachePlaces/actions/rebuildView": {
-      "post": {
-        "operationId": "cachePlaceRebuildView",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceRebuildViewResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceRebuildView-403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/cachePlaceRebuildView-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Rebuild view for resource cachePlace",
-        "tags": [
-          "searchService"
-        ]
-      }
-    },
     "/api/search/v01/cacheStorageLocations": {
       "post": {
         "operationId": "cacheStorageLocationCreate",
@@ -11083,6 +10603,24 @@
           },
           {
             "in": "query",
+            "name": "filter[intersectCollectingDate]",
+            "description": "Match collecting date",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[matchAgent]",
+            "description": "Match agent",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[matchCollectingLocation]",
             "description": "Match collecting information",
             "required": false,
@@ -11092,8 +10630,26 @@
           },
           {
             "in": "query",
+            "name": "filter[matchCollectingPlace]",
+            "description": "Match collecting place",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[matchIdentifier]",
             "description": "Match identifiers",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchAgent]",
+            "description": "Search agents",
             "required": false,
             "schema": {
               "type": "string"
@@ -11111,7 +10667,7 @@
           {
             "in": "query",
             "name": "filter[searchIdentifier]",
-            "description": "Match identifiers",
+            "description": "Search identifiers",
             "required": false,
             "schema": {
               "type": "string"
@@ -13004,28 +12560,11 @@
           },
           {
             "in": "query",
-            "name": "filter[parentId]",
-            "description": "Filter by parentId, example 123",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
             "required": false,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[name]",
-            "description": "Filter by name match",
-            "required": false,
-            "schema": {
+              "format": "date-time",
               "type": "string"
             }
           },
@@ -13929,6 +13468,499 @@
           }
         ],
         "summary": "Rebuild view for resource lookupStorageLocation",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupTaxons": {
+      "post": {
+        "operationId": "lookupTaxonCreate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/lookupTaxonCreateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonCreateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonCreate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonCreate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create lookupTaxon",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "get": {
+        "operationId": "lookupTaxonGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetManyResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find lookupTaxons",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupTaxons/{id}": {
+      "get": {
+        "operationId": "lookupTaxonGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupTaxon id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetOneResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find lookupTaxon by id",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "patch": {
+        "operationId": "lookupTaxonUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupTaxon id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/lookupTaxonUpdateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonUpdateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonUpdate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonUpdate-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonUpdate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates lookupTaxon",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "delete": {
+        "operationId": "lookupTaxonDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupTaxon id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonDelResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonDel-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonDel-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonDel-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonDel-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes lookupTaxon",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupTaxons/actions/emptyView": {
+      "post": {
+        "operationId": "lookupTaxonEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonEmptyViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonEmptyView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonEmptyView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource lookupTaxon",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupTaxons/actions/rebuildView": {
+      "post": {
+        "operationId": "lookupTaxonRebuildView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonRebuildViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonRebuildView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupTaxonRebuildView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource lookupTaxon",
         "tags": [
           "specimenService"
         ]
@@ -21144,6 +21176,15 @@
         "description": ""
       },
       "lookupStorageLocation": {
+        "additionalProperties": true,
+        "x-internal": true,
+        "properties": {},
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxon": {
         "additionalProperties": true,
         "x-internal": true,
         "properties": {},
@@ -29275,462 +29316,6 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "cachePlaceCreate-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "cachePlaceCreate-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "cachePlaceGetOne-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "cachePlaceGetOne-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "cachePlaceGetOne-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "cachePlaceGetMany-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "cachePlaceGetMany-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "cachePlaceEmptyView-403": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/403"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Forbidden",
-        "type": "object"
-      },
-      "cachePlaceEmptyView-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "cachePlaceUpdate-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "cachePlaceUpdate-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "cachePlaceUpdate-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "cachePlaceDel-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "cachePlaceDel-403": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/403"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Forbidden",
-        "type": "object"
-      },
-      "cachePlaceDel-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "cachePlaceDel-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "cachePlaceRebuildView-403": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/403"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Forbidden",
-        "type": "object"
-      },
-      "cachePlaceRebuildView-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
       "cacheStorageLocationCreate-400": {
         "allOf": [
           {
@@ -34334,6 +33919,462 @@
         "type": "object"
       },
       "lookupStorageLocationRebuildView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonCreate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupTaxonCreate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupTaxonGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupTaxonGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupTaxonGetMany-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonEmptyView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupTaxonEmptyView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonUpdate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupTaxonUpdate-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupTaxonUpdate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonDel-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupTaxonDel-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupTaxonDel-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupTaxonDel-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupTaxonRebuildView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupTaxonRebuildView-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -41764,102 +41805,6 @@
         "x-summary": "",
         "description": ""
       },
-      "cachePlaceCreateRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "type": {
-                    "default": "cachePlace",
-                    "enum": [
-                      "cachePlace"
-                    ],
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "$ref": "#/components/schemas/cachePlace"
-                  }
-                }
-              }
-            ],
-            "x-summary": ""
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "attributes": {
-                "info": "123"
-              },
-              "type": "cachePlace"
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "attributes": {
-              "info": "123"
-            },
-            "type": "cachePlace"
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceUpdateRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "type": {
-                    "default": "cachePlace",
-                    "enum": [
-                      "cachePlace"
-                    ],
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "$ref": "#/components/schemas/cachePlace"
-                  }
-                }
-              }
-            ],
-            "x-summary": ""
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
       "cacheStorageLocationCreateRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -42832,6 +42777,102 @@
                   },
                   "attributes": {
                     "$ref": "#/components/schemas/lookupStorageLocation"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonCreateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "lookupTaxon",
+                    "enum": [
+                      "lookupTaxon"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupTaxon"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "attributes": {
+                "info": "123"
+              },
+              "type": "lookupTaxon"
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "attributes": {
+              "info": "123"
+            },
+            "type": "lookupTaxon"
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonUpdateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "lookupTaxon",
+                    "enum": [
+                      "lookupTaxon"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupTaxon"
                   }
                 }
               }
@@ -52443,379 +52484,6 @@
         "x-summary": "",
         "description": ""
       },
-      "cachePlaceCreateResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/cachePlace"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "cachePlace",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceGetOneResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/cachePlace"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "cachePlace",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceGetManyResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/cachePlace"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "cachePlace",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array",
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceEmptyViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces/actions/emptyView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceUpdateResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/cachePlace"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "cachePlace",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceDelResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/cachePlace"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "cachePlace",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "cachePlaceRebuildViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/search/v01/cachePlaces/actions/rebuildView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
       "cacheStorageLocationCreateResponse": {
         "additionalProperties": false,
         "properties": {
@@ -56631,6 +56299,379 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/specimen/v01/lookupStorageLocations/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonCreateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupTaxon"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupTaxon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupTaxon"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupTaxon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/lookupTaxon"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "lookupTaxon",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonUpdateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupTaxon"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupTaxon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupTaxon"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupTaxon",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupTaxonRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupTaxons/actions/rebuildView",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
