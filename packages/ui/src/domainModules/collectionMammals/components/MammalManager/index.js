@@ -167,7 +167,7 @@ class MammalManager extends Component {
   }
 
   handleSettingClick(event) {
-    this.handleSetMainColumnActiveTab(event, 'settings')
+    this.handleSetMainColumnActiveTab(event, 'configureTable')
   }
 
   handleSetMainColumnActiveTab(event, key) {
@@ -267,7 +267,7 @@ class MammalManager extends Component {
         onSetCurrentRecordNumber={
           !isNewRecordView && this.handleSetCurrentRecordNumber
         }
-        onSettingClick={this.handleSettingClick}
+        onSettingClick={isTableView && this.handleSettingClick}
         onShowAllRecords={filterFormIsDirty && this.handleShowAllRecords}
         onTableTabClick={isNewRecordView && this.handleOpenTableView}
         onToggleFilters={!isNewRecordView && this.handleToggleFilters}

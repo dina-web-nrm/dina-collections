@@ -6,7 +6,8 @@ const propTypes = {
   onExportCsv: PropTypes.func.isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onSettingClick: PropTypes.func.isRequired,
+  onSettingClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
   onTableTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
 }
@@ -54,13 +55,15 @@ export class ResultOptionsBar extends Component {
             </Grid.Column>
           </Grid>
 
-          <Menu.Item>
-            <Icon
-              name="setting"
-              onClick={event => handleSettingClick(event)}
-              size="large"
-            />
-          </Menu.Item>
+          {handleSettingClick && (
+            <Menu.Item style={{ cursor: 'pointer' }}>
+              <Icon
+                name="setting"
+                onClick={event => handleSettingClick(event)}
+                size="large"
+              />
+            </Menu.Item>
+          )}
         </Menu.Menu>
       </Menu>
     )
