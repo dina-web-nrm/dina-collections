@@ -1,22 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
 import { Grid } from 'semantic-ui-react'
-import crudSelectors from 'coreModules/crud/globalSelectors'
 
-const mapStateToProps = (state, { itemId }) => {
-  const getOneSelector = crudSelectors.specimen.getOne
-  const item = getOneSelector(state, itemId)
-  return {
-    item,
-  }
-}
+import createLog from 'utilities/log'
+import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import tableColumnSpecifications from '../tableColumnSpecifications'
+
+const log = createLog(
+  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTableRow'
+)
 
 const propTypes = {
   background: PropTypes.string.isRequired,
   item: PropTypes.object,
+  language: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  rowNumber: PropTypes.number.isRequired,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
 }
 
@@ -24,8 +24,18 @@ const defaultProps = {
   item: undefined,
 }
 
-const InfiniteTableRow = ({ background, item, onClick, width }) => {
-  if (!item) {
+const InfiniteTableRow = ({
+  background,
+  item,
+  language,
+  onClick,
+  rowNumber,
+  tableColumnsToShow,
+  width,
+}) => {
+  log.render()
+
+  if (true && !item) {
     return (
       <Grid.Row style={{ height: 43, width }}>
         <Grid.Column>Loading...</Grid.Column>
@@ -41,38 +51,30 @@ const InfiniteTableRow = ({ background, item, onClick, width }) => {
       }}
       style={{ background, height: 43, width }}
     >
-      <Grid.Column style={{ width: 150 }}>
-        {item.attributes.normalized.identifiers &&
-          item.attributes.normalized.identifiers[0].value}
+      <Grid.Column key="rowNumber" style={{ width: 80 }} textAlign="right">
+        {rowNumber}
       </Grid.Column>
-      <Grid.Column style={{ width: 200 }}>
-        {item.attributes.readOnly.objects.Scientific_Name}
-      </Grid.Column>
-      <Grid.Column style={{ width: 200 }}>
-        {item.attributes.readOnly.objects.Family}
-      </Grid.Column>
-      <Grid.Column style={{ width: 200 }}>
-        {item.attributes.readOnly.objects.Genus}
-      </Grid.Column>
-      <Grid.Column style={{ width: 200 }}>
-        {item.attributes.readOnly.objects.Species}
-      </Grid.Column>
-      <Grid.Column style={{ width: 100 }}>
-        {item.attributes.normalized.events[0].dateRange.startDate.dateText}
-      </Grid.Column>
-      <Grid.Column style={{ width: 300 }}>
-        {item.attributes.normalized.events[0].locationInformation.localityT}
-      </Grid.Column>
-      <Grid.Column style={{ width: 100 }}>
-        {item.attributes.readOnly.objects.WayOfDeath &&
-          item.attributes.readOnly.objects.WayOfDeath_related.DödsorsakEN}
-      </Grid.Column>
-      <Grid.Column style={{ width: 100 }}>
-        {item.attributes.readOnly.analysis.Sex}
-      </Grid.Column>
-      <Grid.Column style={{ width: 100 }}>
-        {item.attributes.readOnly.analysis.AgeStage}
-      </Grid.Column>
+      {tableColumnSpecifications.map(
+        ({ name, selector, width: columnWidth }) => {
+          if (tableColumnsToShow.includes(name)) {
+            return (
+              <Grid.Column
+                key={name}
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  width: columnWidth,
+                }}
+              >
+                {selector(item, language)}
+              </Grid.Column>
+            )
+          }
+
+          return null
+        }
+      )}
     </Grid.Row>
   )
 }
@@ -80,4 +82,33 @@ const InfiniteTableRow = ({ background, item, onClick, width }) => {
 InfiniteTableRow.propTypes = propTypes
 InfiniteTableRow.defaultProps = defaultProps
 
-export default compose(connect(mapStateToProps))(InfiniteTableRow)
+export default createGetNestedItemById({
+  include: [
+    'agents',
+    'causeOfDeathTypes',
+    'establishmentMeansTypes',
+    'featureTypes',
+    'identifierTypes',
+    'physicalObjects.storageLocation.parent',
+    'places',
+    'preparationTypes',
+    'taxonNames',
+    'typeSpecimenType',
+  ],
+  nestedItemKey: 'item',
+  relationships: ['all'],
+  resolveRelationships: [
+    'agent',
+    'causeOfDeathType',
+    'establishmentMeansType',
+    'featureType',
+    'identifierType',
+    'physicalObject',
+    'place',
+    'preparationType',
+    'storageLocation',
+    'taxonName',
+    'typeSpecimenType',
+  ],
+  resource: 'specimen',
+})(InfiniteTableRow)

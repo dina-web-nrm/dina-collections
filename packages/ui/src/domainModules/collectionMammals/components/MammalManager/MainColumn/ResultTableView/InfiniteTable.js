@@ -6,14 +6,18 @@ import ReactList from 'react-list'
 import { push } from 'react-router-redux'
 import { Grid } from 'semantic-ui-react'
 
-import { globalSelectors } from 'coreModules/search/keyObjectModule'
+import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
+import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
 import InfiniteTableRow from './InfiniteTableRow'
 
 const mapStateToProps = (state, { searchResultResourceType: resource }) => {
   return {
-    searchResult: globalSelectors.get[':resource.searchState'](state, {
+    language:
+      i18nSelectors.getLanguage(state) ||
+      i18nSelectors.getDefaultLanguage(state),
+    searchResult: searchSelectors.get[':resource.searchState'](state, {
       resource,
     }),
   }
@@ -26,8 +30,10 @@ const mapDispatchToProps = {
 const propTypes = {
   currentRecordNumber: PropTypes.number.isRequired,
   fetchItemById: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
 }
 
@@ -58,7 +64,9 @@ export class InfiniteTable extends Component {
     const {
       currentRecordNumber,
       fetchItemById,
+      language,
       searchResult,
+      tableColumnsToShow,
       width,
     } = this.props
 
@@ -75,7 +83,9 @@ export class InfiniteTable extends Component {
         background={background}
         itemId={itemId}
         key={itemId}
+        language={language}
         onClick={this.handleRowClick}
+        tableColumnsToShow={tableColumnsToShow}
         width={width}
       />
     )
@@ -117,10 +127,15 @@ export default compose(
   createBatchFetchItems({
     include: [
       'agents',
+      'causeOfDeathTypes',
+      'establishmentMeansTypes',
       'featureTypes',
-      'physicalObjects',
+      'identifierTypes',
+      'physicalObjects.storageLocation.parent',
       'places',
+      'preparationTypes',
       'taxonNames',
+      'typeSpecimenType',
     ],
     relationships: ['all'],
     resource: 'specimen',
