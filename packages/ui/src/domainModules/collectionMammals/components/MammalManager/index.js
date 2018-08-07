@@ -249,6 +249,7 @@ class MammalManager extends Component {
     } = this.props
 
     const isNewRecordView = mainColumnActiveTab === 'newRecord'
+    const isItemView = isNewRecordView || mainColumnActiveTab === 'editRecord'
     const isTableView = mainColumnActiveTab === 'resultTable'
 
     const showSelectNextRecordButton =
@@ -260,6 +261,8 @@ class MammalManager extends Component {
       <ColumnLayout
         columns={this.getColumns()}
         currentTableRowNumber={currentTableRowNumber}
+        isItemView={isItemView}
+        isTableView={isTableView}
         mainColumnActiveTab={mainColumnActiveTab}
         onExportCsv={isTableView && this.handleExportToCsv}
         onFormTabClick={isTableView && this.handleOpenEditRecordView}

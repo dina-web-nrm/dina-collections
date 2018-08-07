@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Button, Grid, Icon, Menu, Popup } from 'semantic-ui-react'
 
 const propTypes = {
+  isItemView: PropTypes.bool.isRequired,
+  isTableView: PropTypes.bool.isRequired,
   onExportCsv: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]).isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
@@ -15,6 +17,8 @@ const propTypes = {
 export class ResultOptionsBar extends Component {
   render() {
     const {
+      isItemView,
+      isTableView,
       onExportCsv: handleExportToCsv,
       onFormTabClick: handleFormTabClick,
       onSettingClick: handleSettingClick,
@@ -24,7 +28,7 @@ export class ResultOptionsBar extends Component {
     return (
       <Menu attached="top" tabular>
         <Menu.Item
-          active={!handleFormTabClick}
+          active={isItemView}
           disabled={!handleFormTabClick}
           name="form"
           onClick={event => handleFormTabClick(event)}
@@ -32,7 +36,7 @@ export class ResultOptionsBar extends Component {
           <Icon name="wordpress forms" size="large" />
         </Menu.Item>
         <Menu.Item
-          active={!handleTableTabClick}
+          active={isTableView}
           disabled={!handleTableTabClick}
           name="table"
           onClick={event => handleTableTabClick(event)}
