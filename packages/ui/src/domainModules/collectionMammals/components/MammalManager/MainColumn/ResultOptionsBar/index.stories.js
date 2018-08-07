@@ -20,21 +20,21 @@ storiesOf(
   .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <ResultOptionsBar
-      mainColumnActiveTab="newRecord"
+      mainColumnActiveTab="recordNew"
       {...actions}
       onFormTabClick={false}
     />
   ))
   .add('tableView', () => (
     <ResultOptionsBar
-      mainColumnActiveTab="table"
+      mainColumnActiveTab="resultTable"
       {...actions}
       onTableTabClick={false}
     />
   ))
   .add('formView', () => (
     <ResultOptionsBar
-      mainColumnActiveTab="newRecord"
+      mainColumnActiveTab="recordNew"
       {...actions}
       onFormTabClick={false}
     />

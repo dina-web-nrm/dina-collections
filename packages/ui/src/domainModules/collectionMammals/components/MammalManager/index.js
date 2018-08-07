@@ -167,7 +167,7 @@ class MammalManager extends Component {
   }
 
   handleSettingClick(event) {
-    this.handleSetMainColumnActiveTab(event, 'configureTable')
+    this.handleSetMainColumnActiveTab(event, 'resultTableSettings')
   }
 
   handleSetMainColumnActiveTab(event, key) {
@@ -215,7 +215,7 @@ class MammalManager extends Component {
 
   handleOpenNewRecordForm(event) {
     this.props.setFilterColumnIsOpen(false)
-    this.handleSetMainColumnActiveTab(event, 'newRecord')
+    this.handleSetMainColumnActiveTab(event, 'recordNew')
   }
 
   handleOpenTableView(event) {
@@ -223,7 +223,7 @@ class MammalManager extends Component {
   }
 
   handleOpenEditRecordView(event) {
-    this.handleSetMainColumnActiveTab(event, 'editRecord')
+    this.handleSetMainColumnActiveTab(event, 'recordEdit')
   }
 
   handleSelectNextRecord(event) {
@@ -248,9 +248,10 @@ class MammalManager extends Component {
       totalNumberOfRecords,
     } = this.props
 
-    const isNewRecordView = mainColumnActiveTab === 'newRecord'
-    const isItemView = isNewRecordView || mainColumnActiveTab === 'editRecord'
+    const isNewRecordView = mainColumnActiveTab === 'recordNew'
+    const isItemViewOrSettings = mainColumnActiveTab.startsWith('record')
     const isTableView = mainColumnActiveTab === 'resultTable'
+    const isTableViewOrSettings = mainColumnActiveTab.startsWith('resultTable')
 
     const showSelectNextRecordButton =
       !isNewRecordView && currentTableRowNumber !== totalNumberOfRecords
@@ -261,8 +262,8 @@ class MammalManager extends Component {
       <ColumnLayout
         columns={this.getColumns()}
         currentTableRowNumber={currentTableRowNumber}
-        isItemView={isItemView}
-        isTableView={isTableView}
+        isItemViewOrSettings={isItemViewOrSettings}
+        isTableViewOrSettings={isTableViewOrSettings}
         mainColumnActiveTab={mainColumnActiveTab}
         onExportCsv={isTableView && this.handleExportToCsv}
         onFormTabClick={isTableView && this.handleOpenEditRecordView}

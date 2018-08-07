@@ -1915,9 +1915,13 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap With TopMenu 1`] = `
                 className="sidebar large icon"
               />
             </div>
-            <div
+            <a
               className="right item"
+              onBlur={[Function]}
               onClick={[Function]}
+              onFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
               style={
                 Object {
                   "cursor": "pointer",
@@ -1927,13 +1931,8 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap With TopMenu 1`] = `
               <i
                 aria-hidden="true"
                 className="user large icon"
-                onBlur={[Function]}
-                onClick={[Function]}
-                onFocus={[Function]}
-                onMouseEnter={[Function]}
-                onMouseLeave={[Function]}
               />
-            </div>
+            </a>
           </div>
           <div
             className="ui dimmer"
@@ -4154,11 +4153,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       >
         <div
           className="column"
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
         >
           <i
             aria-hidden="true"
@@ -4168,22 +4162,27 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
           />
         </div>
       </div>
       <div
         className="item"
         onClick={[Function]}
-        style={
-          Object {
-            "cursor": "pointer",
-          }
-        }
       >
         <i
           aria-hidden="true"
           className="setting large icon"
           onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         />
       </div>
     </div>
@@ -4222,11 +4221,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       >
         <div
           className="column"
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
         >
           <i
             aria-hidden="true"
@@ -4236,22 +4230,27 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
           />
         </div>
       </div>
       <div
         className="item"
         onClick={[Function]}
-        style={
-          Object {
-            "cursor": "pointer",
-          }
-        }
       >
         <i
           aria-hidden="true"
           className="setting large icon"
           onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         />
       </div>
     </div>
@@ -4290,11 +4289,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       >
         <div
           className="column"
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
         >
           <i
             aria-hidden="true"
@@ -4304,22 +4298,27 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
             onFocus={[Function]}
             onMouseEnter={[Function]}
             onMouseLeave={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
           />
         </div>
       </div>
       <div
         className="item"
         onClick={[Function]}
-        style={
-          Object {
-            "cursor": "pointer",
-          }
-        }
       >
         <i
           aria-hidden="true"
           className="setting large icon"
           onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         />
       </div>
     </div>

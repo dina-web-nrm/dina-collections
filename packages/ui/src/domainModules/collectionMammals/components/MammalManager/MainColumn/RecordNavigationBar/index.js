@@ -109,6 +109,7 @@ export class RecordNavigationBar extends Component {
                 }}
                 onChangeComplete={() => {
                   handleSetCurrentTableRowNumber(null, sliderRowNumber)
+                  this.setState({ sliderRowNumber: undefined })
                 }}
                 step={1}
                 tooltip={false}
