@@ -2675,10 +2675,91 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50001}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={50001}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50001
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
         <button
           className="ui icon button"
@@ -2689,147 +2770,45 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <i
             aria-hidden="true"
-            className="chevron left icon"
+            className="book icon"
           />
+          Show All
         </button>
         <button
-          className="ui icon disabled button"
-          disabled={true}
+          className="ui icon button"
+          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={-1}
+          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
-            className="chevron right icon"
+            className="plus icon"
           />
+          New record
         </button>
       </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
       <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "right",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50001}
-          min={1}
-          onChange={[Function]}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
           tabIndex={undefined}
-          type="number"
-          value={50001}
-        />
-      </div>
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={50001}
-        aria-valuemin={1}
-        aria-valuenow={50001}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
-      >
-        <div
-          className="rangeslider__fill"
-          style={
-            Object {
-              "width": "0px",
-            }
-          }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
-        </div>
-        <ul
-          className="rangeslider__labels"
-        />
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50001
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
     </div>
   </div>
 </div>
@@ -2841,161 +2820,140 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="number"
-          value={30000}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={30000}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -3007,161 +2965,140 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="number"
-          value={30000}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={30000}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -3173,22 +3110,104 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={1}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
         <button
-          className="ui icon disabled button"
-          disabled={true}
+          className="ui icon button"
+          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={-1}
+          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
-            className="chevron left icon"
+            className="book icon"
           />
+          Show All
         </button>
         <button
           className="ui icon button"
@@ -3199,135 +3218,32 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <i
             aria-hidden="true"
-            className="chevron right icon"
+            className="plus icon"
           />
+          New record
         </button>
       </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
       <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "right",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
           tabIndex={undefined}
-          type="number"
-          value={1}
-        />
-      </div>
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={1}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
-      >
-        <div
-          className="rangeslider__fill"
-          style={
-            Object {
-              "width": "0px",
-            }
-          }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
-        </div>
-        <ul
-          className="rangeslider__labels"
-        />
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
     </div>
   </div>
 </div>
@@ -3339,10 +3255,91 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
+        style={
+          Object {
+            "float": "left",
+          }
+        }
+      >
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
+      >
+        <div
+          className="ui mini input"
+          style={
+            Object {
+              "width": "80px",
+            }
+          }
+        >
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={50000}
+          />
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
+      >
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
         <button
           className="ui icon button"
@@ -3353,147 +3350,45 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         >
           <i
             aria-hidden="true"
-            className="chevron left icon"
+            className="book icon"
           />
+          Show All
         </button>
         <button
-          className="ui icon disabled button"
-          disabled={true}
+          className="ui icon button"
+          disabled={undefined}
           onClick={[Function]}
           role="button"
-          tabIndex={-1}
+          tabIndex={undefined}
         >
           <i
             aria-hidden="true"
-            className="chevron right icon"
+            className="plus icon"
           />
+          New record
         </button>
       </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
       <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "right",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
           tabIndex={undefined}
-          type="number"
-          value={50000}
-        />
-      </div>
-      <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={50000}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
-      >
-        <div
-          className="rangeslider__fill"
-          style={
-            Object {
-              "width": "0px",
-            }
-          }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
-        </div>
-        <ul
-          className="rangeslider__labels"
-        />
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
-      >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
     </div>
   </div>
 </div>
@@ -3505,161 +3400,140 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="number"
-          value={30001}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={30001}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30001}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -3671,161 +3545,140 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="number"
-          value={30000}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={30000}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -3837,165 +3690,144 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon disabled button"
-          disabled={true}
-          onClick={[Function]}
-          role="button"
-          tabIndex={-1}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon disabled button"
-          disabled={true}
-          onClick={[Function]}
-          role="button"
-          tabIndex={-1}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini disabled input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={true}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={-1}
-          type="number"
-          value={50000}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon disabled button"
+            disabled={true}
+            onClick={[Function]}
+            role="button"
+            tabIndex={-1}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={50000}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini disabled input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={true}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={-1}
+            type="number"
+            value={50000}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-      <br />
-      <i>
-        *Adding new*
-      </i>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon disabled button"
-        disabled={true}
-        onClick={[Function]}
-        role="button"
-        tabIndex={-1}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": -3,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon disabled button"
-        disabled={true}
-        onClick={[Function]}
-        role="button"
-        tabIndex={-1}
+        50000
+         Total records
+        <br />
+        <i>
+          *Adding new*
+        </i>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon disabled button"
-        disabled={true}
-        onClick={[Function]}
-        role="button"
-        tabIndex={-1}
+        <button
+          className="ui icon disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon disabled button"
+          disabled={true}
+          onClick={[Function]}
+          role="button"
+          tabIndex={-1}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -4007,161 +3839,140 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="number"
-          value={29999}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={29999}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={29999}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -4173,161 +3984,140 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
     className="ui padded center aligned middle aligned grid"
   >
     <div
-      className="two wide computer four wide mobile four wide tablet column"
+      className="column"
     >
       <div
-        className="ui buttons"
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron left icon"
-          />
-        </button>
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="chevron right icon"
-          />
-        </button>
-      </div>
-    </div>
-    <div
-      className="three wide computer eight wide mobile eight wide tablet column"
-    >
-      <div
-        className="ui mini input"
         style={
           Object {
-            "width": "80px",
+            "float": "left",
           }
         }
       >
-        <input
-          disabled={false}
-          max={50000}
-          min={1}
-          onChange={[Function]}
-          tabIndex={undefined}
-          type="number"
-          value={30000}
-        />
+        <div
+          className="ui buttons"
+        >
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron left icon"
+            />
+          </button>
+          <button
+            className="ui icon button"
+            disabled={undefined}
+            onClick={[Function]}
+            role="button"
+            tabIndex={undefined}
+          >
+            <i
+              aria-hidden="true"
+              className="chevron right icon"
+            />
+          </button>
+        </div>
       </div>
       <div
-        aria-orientation="horizontal"
-        aria-valuemax={50000}
-        aria-valuemin={1}
-        aria-valuenow={30000}
-        className="rangeslider rangeslider-horizontal"
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        onTouchEnd={[Function]}
-        onTouchStart={[Function]}
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 1,
+          }
+        }
       >
         <div
-          className="rangeslider__fill"
+          className="ui mini input"
           style={
             Object {
-              "width": "0px",
+              "width": "80px",
             }
           }
-        />
-        <div
-          className="rangeslider__handle"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          style={
-            Object {
-              "left": "0px",
-            }
-          }
-          tabIndex={0}
         >
-          <div
-            className="rangeslider__handle-label"
-          >
-            
-          </div>
+          <input
+            disabled={false}
+            max={50000}
+            min={1}
+            onChange={[Function]}
+            tabIndex={undefined}
+            type="number"
+            value={30000}
+          />
         </div>
-        <ul
-          className="rangeslider__labels"
-        />
       </div>
-    </div>
-    <div
-      className="two wide computer four wide mobile four wide tablet column"
-    >
-      50000
-      <br />
-      Total records
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 15,
+            "marginTop": 5,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="book icon"
-        />
-        Show All
-      </button>
-    </div>
-    <div
-      className="computer only one wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        50000
+         Total records
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginLeft": 30,
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="plus icon"
-        />
-        New record
-      </button>
-    </div>
-    <div
-      className="computer only five wide computer column"
-    />
-    <div
-      className="computer only two wide computer column"
-    >
-      <button
-        className="ui icon button"
-        disabled={undefined}
-        onClick={[Function]}
-        role="button"
-        tabIndex={undefined}
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="book icon"
+          />
+          Show All
+        </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="plus icon"
+          />
+          New record
+        </button>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "right",
+          }
+        }
       >
-        <i
-          aria-hidden="true"
-          className="search icon"
-        />
-        Find
-      </button>
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="search icon"
+          />
+          Find
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -4339,7 +4129,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui top attached tabular menu"
   >
     <a
-      className="active disabled item"
+      className="disabled item"
       onClick={[Function]}
     >
       <i
@@ -4407,7 +4197,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui top attached tabular menu"
   >
     <a
-      className="active disabled item"
+      className="disabled item"
       onClick={[Function]}
     >
       <i
@@ -4484,7 +4274,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       />
     </a>
     <a
-      className="active disabled item"
+      className="disabled item"
       onClick={[Function]}
     >
       <i

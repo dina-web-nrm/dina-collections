@@ -378,6 +378,96 @@
       }
     }
   },
+  "tableColumns": {
+    "catalogNumber": {
+      "en": "catalog number",
+      "sv": ""
+    },
+    "curatorialName": {
+      "en": "curatorial name",
+      "sv": ""
+    },
+    "family": {
+      "en": "family",
+      "sv": ""
+    },
+    "genus": {
+      "en": "genus",
+      "sv": ""
+    },
+    "species": {
+      "en": "species",
+      "sv": ""
+    },
+    "collectors": {
+      "en": "collectors",
+      "sv": ""
+    },
+    "startDateCollecting": {
+      "en": "start date (collecting)",
+      "sv": ""
+    },
+    "endDateCollecting": {
+      "en": "end date (collecting)",
+      "sv": ""
+    },
+    "localityCollecting": {
+      "en": "locality (collecting)",
+      "sv": ""
+    },
+    "death": {
+      "en": "death",
+      "sv": ""
+    },
+    "skeleton": {
+      "en": "skeleton",
+      "sv": ""
+    },
+    "skin": {
+      "en": "skin",
+      "sv": ""
+    },
+    "wet": {
+      "en": "wet",
+      "sv": ""
+    },
+    "sex": {
+      "en": "sex",
+      "sv": ""
+    },
+    "ageStage": {
+      "en": "age stage",
+      "sv": ""
+    },
+    "age": {
+      "en": "age",
+      "sv": ""
+    },
+    "completeBodyWeight": {
+      "en": "complete body weight",
+      "sv": ""
+    },
+    "totalLength": {
+      "en": "total length",
+      "sv": ""
+    },
+    "bodyLength": {
+      "en": "body length",
+      "sv": ""
+    },
+    "condition": {
+      "en": "condition",
+      "sv": ""
+    },
+    "otherIdentifiers": {
+      "en": "other identifiers",
+      "sv": ""
+    },
+    "registered": {
+      "en": "registered",
+      "sv": ""
+    }
+  },
   "other": {
     "add": {
       "en": "Add",
@@ -516,7 +606,6 @@
       "en": "Could not save",
       "sv": "Kunde inte spara"
     },
-
     "unit": {
       "en": "Unit",
       "sv": "Enhet"

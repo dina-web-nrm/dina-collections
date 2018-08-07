@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Divider, Grid, Header } from 'semantic-ui-react'
-
+import { createModuleTranslate } from 'coreModules/i18n/components'
 import createLog from 'utilities/log'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 import tableColumnSpecifications from '../tableColumnSpecifications'
@@ -9,6 +9,8 @@ import tableColumnSpecifications from '../tableColumnSpecifications'
 const log = createLog(
   'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTableHeader'
 )
+
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   height: PropTypes.number.isRequired,
@@ -53,7 +55,12 @@ class InfiniteTableHeader extends PureComponent {
             if (tableColumnsToShow.includes(name)) {
               return (
                 <Grid.Column key={name} style={{ width: columnWidth }}>
-                  <Header size="small">{name}</Header>
+                  <Header size="small">
+                    <ModuleTranslate
+                      capitalize
+                      textKey={`tableColumns.${name}`}
+                    />
+                  </Header>
                 </Grid.Column>
               )
             }

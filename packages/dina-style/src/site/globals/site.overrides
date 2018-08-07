@@ -3,5 +3,37 @@
 *******************************/
 
 .dina.background {
-  background-color: @pageBackground
+  background-color: @pageBackground;
+}
+
+/*******************************
+         react-rangeslider
+*******************************/
+.slider-slim.slider-slim {
+  .rangeslider.rangeslider {
+    margin: 0;
+  }
+  .rangeslider-horizontal,
+  .rangeslider__fill,
+  .rangeslider__handle {
+    border-radius: 4px;
+  }
+  .rangeslider__handle-tooltip {
+    width: 60px;
+    left: 50%;
+    transform: translate3d(-50%, 150%, 0);
+  }
+  .rangeslider-horizontal {
+    height: 8px;
+  }
+  .rangeslider__fill {
+    background-color: @green;
+  }
+  .rangeslider__handle {
+    width: 10px;
+    height: 20px;
+    &:after {
+      display: none;
+    }
+  }
 }

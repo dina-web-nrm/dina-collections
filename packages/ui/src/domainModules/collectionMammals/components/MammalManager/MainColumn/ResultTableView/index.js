@@ -33,7 +33,7 @@ const infiniteTableHeader = {
   height: '43px',
   key: 'infiniteTableHeader',
   renderRow: props => (
-    <InfiniteTableHeader {...props} height={43} topOffset={183} />
+    <InfiniteTableHeader {...props} height={43} topOffset={141} />
   ),
   style: { borderBottom: '1px solid #b5b5b5' },
 }

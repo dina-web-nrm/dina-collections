@@ -228,7 +228,7 @@ const tableColumnSpecifications = [
     selector: createFeatureObservationSelector(
       FEATURE_TYPE_COMPLETE_BODY_WEIGHT
     ),
-    width: 200,
+    width: 150,
   },
   {
     name: 'totalLength',
