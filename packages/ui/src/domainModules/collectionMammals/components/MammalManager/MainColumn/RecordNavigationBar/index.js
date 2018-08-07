@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Button, Icon, Grid, Input } from 'semantic-ui-react'
 import Slider from 'react-rangeslider'
 
+import sizeSelectors from 'coreModules/size/globalSelectors'
+
+const mapStateToProps = state => {
+  return {
+    isLargeScreen: sizeSelectors.getIsLarge(state),
+  }
+}
+
 const propTypes = {
   currentTableRowNumber: PropTypes.number.isRequired,
+  isLargeScreen: PropTypes.bool.isRequired,
   onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -26,9 +36,15 @@ const defaultProps = {
 }
 
 export class RecordNavigationBar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { sliderRowNumber: undefined }
+  }
+
   render() {
     const {
       currentTableRowNumber,
+      isLargeScreen,
       onOpenNewRecordForm: handleOpenNewRecordForm,
       onSetCurrentTableRowNumber: handleSetCurrentTableRowNumber,
       onSelectNextRecord: handleSelectNextRecord,
@@ -38,30 +54,30 @@ export class RecordNavigationBar extends Component {
       totalNumberOfRecords,
     } = this.props
 
-    const hasRecords = totalNumberOfRecords > 0
+    const { sliderRowNumber } = this.state
 
     return (
       <Grid padded textAlign="center" verticalAlign="middle">
-        <Grid.Column computer={2} mobile={4} tablet={4}>
-          <Button.Group>
-            <Button
-              disabled={!handleSelectPreviousRecord}
-              icon
-              onClick={event => handleSelectPreviousRecord(event)}
-            >
-              <Icon name="chevron left" />
-            </Button>
-            <Button
-              disabled={!handleSelectNextRecord}
-              icon
-              onClick={event => handleSelectNextRecord(event)}
-            >
-              <Icon name="chevron right" />
-            </Button>
-          </Button.Group>
-        </Grid.Column>
-        <Grid.Column computer={3} mobile={8} tablet={8}>
-          {hasRecords && (
+        <Grid.Column>
+          <div style={{ float: 'left' }}>
+            <Button.Group>
+              <Button
+                disabled={!handleSelectPreviousRecord}
+                icon
+                onClick={event => handleSelectPreviousRecord(event)}
+              >
+                <Icon name="chevron left" />
+              </Button>
+              <Button
+                disabled={!handleSelectNextRecord}
+                icon
+                onClick={event => handleSelectNextRecord(event)}
+              >
+                <Icon name="chevron right" />
+              </Button>
+            </Button.Group>
+          </div>
+          <div style={{ float: 'left', marginLeft: 15, marginTop: 1 }}>
             <Input
               disabled={!handleSetCurrentTableRowNumber}
               max={totalNumberOfRecords}
@@ -72,57 +88,73 @@ export class RecordNavigationBar extends Component {
               size="mini"
               style={{ width: '80px' }}
               type="number"
-              value={currentTableRowNumber}
+              value={sliderRowNumber || currentTableRowNumber}
             />
-          )}
-          {hasRecords && (
-            <Slider
-              max={totalNumberOfRecords}
-              min={1}
-              onChange={newTableRowNumber => {
-                handleSetCurrentTableRowNumber(null, newTableRowNumber)
+          </div>
+          {isLargeScreen && (
+            <div
+              className="slider-slim"
+              style={{
+                float: 'left',
+                marginLeft: 15,
+                marginTop: 11,
+                width: 150,
               }}
-              step={1}
-              value={currentTableRowNumber}
-            />
+            >
+              <Slider
+                max={totalNumberOfRecords}
+                min={1}
+                onChange={newTableRowNumber => {
+                  this.setState({ sliderRowNumber: newTableRowNumber })
+                }}
+                onChangeComplete={() => {
+                  handleSetCurrentTableRowNumber(null, sliderRowNumber)
+                }}
+                step={1}
+                tooltip={false}
+                value={sliderRowNumber || currentTableRowNumber}
+              />
+            </div>
           )}
-        </Grid.Column>
-        <Grid.Column computer={2} mobile={4} tablet={4}>
-          {totalNumberOfRecords}
-          <br />Total records
-          {!handleOpenNewRecordForm && <br />}
-          {!handleOpenNewRecordForm && <i>*Adding new*</i>}
-        </Grid.Column>
-        <Grid.Column computer={1} only="computer">
-          <Button
-            disabled={!handleShowAllRecords}
-            icon
-            onClick={event => handleShowAllRecords(event)}
-          >
-            <Icon name="book" />
-            Show All
-          </Button>
-        </Grid.Column>
-        <Grid.Column computer={1} only="computer">
-          <Button
-            disabled={!handleOpenNewRecordForm}
-            icon
-            onClick={event => handleOpenNewRecordForm(event)}
-          >
-            <Icon name="plus" />
-            New record
-          </Button>
-        </Grid.Column>
-        <Grid.Column computer={5} only="computer" />
-        <Grid.Column computer={2} only="computer">
-          <Button
-            disabled={!handleToggleFilters}
-            icon
-            onClick={event => handleToggleFilters(event)}
-          >
-            <Icon name="search" />
-            Find
-          </Button>
+          {handleOpenNewRecordForm ? (
+            <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
+              {totalNumberOfRecords} Total records
+            </div>
+          ) : (
+            <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
+              {totalNumberOfRecords} Total records
+              <br />
+              <i>*Adding new*</i>
+            </div>
+          )}
+          <div style={{ float: 'left', marginLeft: 30 }}>
+            <Button
+              disabled={!handleShowAllRecords}
+              icon
+              onClick={event => handleShowAllRecords(event)}
+            >
+              <Icon name="book" />
+              Show All
+            </Button>
+            <Button
+              disabled={!handleOpenNewRecordForm}
+              icon
+              onClick={event => handleOpenNewRecordForm(event)}
+            >
+              <Icon name="plus" />
+              New record
+            </Button>
+          </div>
+          <div style={{ float: 'right' }}>
+            <Button
+              disabled={!handleToggleFilters}
+              icon
+              onClick={event => handleToggleFilters(event)}
+            >
+              <Icon name="search" />
+              Find
+            </Button>
+          </div>
         </Grid.Column>
       </Grid>
     )
@@ -132,4 +164,4 @@ export class RecordNavigationBar extends Component {
 RecordNavigationBar.propTypes = propTypes
 RecordNavigationBar.defaultProps = defaultProps
 
-export default RecordNavigationBar
+export default connect(mapStateToProps)(RecordNavigationBar)

@@ -12,7 +12,7 @@ import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
 import ResultTableView from './ResultTableView'
 
-const recordNavigationHeight = 100
+const recordNavigationHeight = 58
 const recordNavigation = {
   height: `${recordNavigationHeight}px`,
   key: 'recordNavigation',
