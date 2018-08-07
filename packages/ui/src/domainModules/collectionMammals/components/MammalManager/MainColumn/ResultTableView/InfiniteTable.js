@@ -57,8 +57,32 @@ const itemsRenderer = (items, ref) => {
 export class InfiniteTable extends Component {
   constructor(props) {
     super(props)
+    this.list = null
+    this.setListRef = element => {
+      this.list = element
+    }
+
     this.renderItem = this.renderItem.bind(this)
     this.handleRowClick = this.handleRowClick.bind(this)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      this.props.currentTableRowNumber &&
+      nextProps.currentTableRowNumber &&
+      this.props.currentTableRowNumber !== nextProps.currentTableRowNumber
+    ) {
+      const [firstVisibleRow] = this.list.getVisibleRange()
+
+      // this special case is to avoid that the focused row is hidden behind the
+      // table header, which is fixed positioned and therefore seen by
+      // react-list as the first row in terms of scroll position
+      if (nextProps.currentTableRowNumber <= firstVisibleRow + 1) {
+        this.list.scrollTo(nextProps.currentTableRowNumber - 1)
+      } else {
+        this.list.scrollAround(nextProps.currentTableRowNumber)
+      }
+    }
   }
 
   handleRowClick(specimenId) {
@@ -118,6 +142,7 @@ export class InfiniteTable extends Component {
           itemRenderer={this.renderItem}
           itemsRenderer={itemsRenderer}
           length={searchResult.items.length}
+          ref={this.setListRef}
           type="uniform"
         />
       </div>
