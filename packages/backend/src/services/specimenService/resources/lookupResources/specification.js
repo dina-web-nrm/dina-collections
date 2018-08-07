@@ -1,11 +1,10 @@
-const createGetManyFilterSpecifications = require('../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
-
 const {
   agent: agentTransformationSpecification,
   featureType: featureTypeTransformationSpecification,
   place: placeTransformationSpecification,
   preparationType: preparationTypeTransformationSpecification,
   storageLocation: storageLocationTransformationSpecification,
+  taxon: taxonTransformationSpecification,
 } = require('./data/transformationSpecifications')
 
 module.exports = [
@@ -38,9 +37,6 @@ module.exports = [
   //   srcResource: 'identifierType',
   // },
   {
-    getManyFilters: createGetManyFilterSpecifications({
-      include: ['ids', 'parentId', 'group', 'name'],
-    }),
     name: 'lookupPlace',
     transformationSpecification: placeTransformationSpecification,
   },
@@ -52,10 +48,10 @@ module.exports = [
   //   name: 'cachePhysicalObject',
   //   srcResource: 'physicalObject',
   // },
-  // {
-  //   name: 'cacheTaxon',
-  //   srcResource: 'taxon',
-  // },
+  {
+    name: 'lookupTaxon',
+    transformationSpecification: taxonTransformationSpecification,
+  },
   // {
   //   name: 'cacheTaxonName',
   //   srcResource: 'taxonName',

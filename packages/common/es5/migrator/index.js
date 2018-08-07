@@ -104,7 +104,7 @@ var getValue = function getValue(_ref3) {
   var obj = _ref3.obj,
       path = _ref3.path,
       _ref3$strip = _ref3.strip,
-      strip = _ref3$strip === undefined ? true : _ref3$strip;
+      strip = _ref3$strip === undefined ? false : _ref3$strip;
 
   if (!isPathValid(path)) {
     return undefined;

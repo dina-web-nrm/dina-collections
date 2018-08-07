@@ -3,6 +3,7 @@ module.exports = function fetchParents({
   ignoreParentIds = [],
   item,
   parents = [],
+  relationships = ['parent'],
   resource,
 }) {
   const parentId =
@@ -26,7 +27,7 @@ module.exports = function fetchParents({
 
   return getItemByTypeId({
     id: parentId,
-    queryParams: { relationships: ['parent'] },
+    queryParams: { relationships },
     type: resource,
   }).then(parent => {
     if (!parent) {
@@ -41,6 +42,7 @@ module.exports = function fetchParents({
       ignoreParentIds,
       item: parent,
       parents,
+      relationships,
       resource,
     })
   })

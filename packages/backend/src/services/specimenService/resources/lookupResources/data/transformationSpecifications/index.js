@@ -4,6 +4,7 @@ const {
   place,
   preparationType,
   storageLocation,
+  taxon,
 } = require('./transformationFunctions')
 
 exports.preparationType = {
@@ -36,4 +37,12 @@ exports.agent = {
   description: '',
   srcResource: 'agent',
   transformationFunctions: [agent],
+}
+
+exports.taxon = {
+  collidingIdPrefix: 'x',
+  description: '',
+  srcRelationships: ['parent', 'acceptedTaxonName'],
+  srcResource: 'taxon',
+  transformationFunctions: [taxon],
 }
