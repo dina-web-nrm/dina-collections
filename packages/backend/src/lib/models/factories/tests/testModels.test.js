@@ -1,6 +1,5 @@
 const config = require('../../../../apps/test/config')
 // const dbDescribe = require('../../../../utilities/test/dbDescribe')
-const setupTestDatastores = require('./setupTestDatastores')
 const setupTestModels = require('./setupTestModels')
 const createModelTests = require('./createModelTests')
 const methodTests = require('./methodTests')
@@ -57,27 +56,23 @@ describe('lib/models/factories/test/modelFactories', () => {
   // })
 
   const { runDbTests } = config.test
+  const modelsToTest = runDbTests
+    ? Object.keys(setupTestModels)
+    : ['inMemoryDocumentModel', 'inMemoryViewDocumentModel']
 
-  return setupTestDatastores({ config, runDbTests }).then(dataStores => {
-    const modelsToTest = runDbTests
-      ? Object.keys(setupTestModels)
-      : ['inMemoryDocumentModel', 'inMemoryViewDocumentModel']
+  const methodsToTest = availableMethods // ['getById']
 
-    const methodsToTest = availableMethods // ['getById']
-
-    modelsToTest.forEach(key => {
-      const setupFunction = setupTestModels[key]
-      createModelTests({
-        availableMethods,
-        availableTypes,
-        config,
-        coreMethods,
-        dataStores,
-        methodsToTest,
-        methodTests,
-        modelType: key,
-        setupModel: setupFunction,
-      })
+  modelsToTest.forEach(key => {
+    const setupFunction = setupTestModels[key]
+    createModelTests({
+      availableMethods,
+      availableTypes,
+      config,
+      coreMethods,
+      methodsToTest,
+      methodTests,
+      modelType: key,
+      setupModel: setupFunction,
     })
   })
 })
