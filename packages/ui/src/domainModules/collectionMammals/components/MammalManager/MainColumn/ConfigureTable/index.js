@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, SubmissionError } from 'redux-form'
-import { Button, Form, Grid, Header, Message } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Icon, Message } from 'semantic-ui-react'
 import { Checkbox, Field } from 'coreModules/form/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import { updateUserPreference } from 'coreModules/user/actionCreators'
@@ -47,7 +47,6 @@ const propTypes = {
   initialize: PropTypes.func.isRequired,
   onTableTabClick: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
-  reset: PropTypes.func.isRequired,
   savedValue: PropTypes.arrayOf(PropTypes.string.isRequired),
   submitting: PropTypes.bool.isRequired,
   updateUserPreference: PropTypes.func.isRequired,
@@ -60,9 +59,9 @@ const defaultProps = {
 class ConfigureTable extends Component {
   constructor(props) {
     super(props)
+    this.handleCancel = this.handleCancel.bind(this)
     this.handleSave = this.handleSave.bind(this)
     this.handleSetAll = this.handleSetAll.bind(this)
-    this.handleReset = this.handleReset.bind(this)
   }
 
   componentWillMount() {
@@ -84,14 +83,14 @@ class ConfigureTable extends Component {
     }
   }
 
+  handleCancel() {
+    this.props.onTableTabClick()
+  }
+
   handleSetAll(value) {
     tableColumnNames.forEach(name => {
       this.props.change(name, value)
     })
-  }
-
-  handleReset() {
-    this.props.reset()
   }
 
   handleSave(formValues = {}) {
@@ -115,8 +114,16 @@ class ConfigureTable extends Component {
       <Form error={!!error}>
         <Grid textAlign="left" verticalAlign="middle">
           <Grid.Row>
-            <Grid.Column width={16}>
+            <Grid.Column width={15}>
               <Header>Set visible table columns</Header>
+            </Grid.Column>
+            <Grid.Column textAlign="right" width={1}>
+              <Icon
+                name="close"
+                onClick={this.handleCancel}
+                size="large"
+                style={{ cursor: 'pointer' }}
+              />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -161,13 +168,8 @@ class ConfigureTable extends Component {
               >
                 Save
               </Button>
-              <Button
-                basic
-                disabled={pristine || submitting}
-                onClick={() => this.handleReset()}
-                size="large"
-              >
-                Reset
+              <Button basic onClick={this.handleCancel} size="large">
+                Cancel
               </Button>
             </Grid.Column>
           </Grid.Row>
