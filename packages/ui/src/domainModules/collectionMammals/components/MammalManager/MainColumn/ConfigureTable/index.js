@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { reduxForm, SubmissionError } from 'redux-form'
 import { Button, Form, Grid, Header, Message } from 'semantic-ui-react'
-
 import { Checkbox, Field } from 'coreModules/form/components'
+import { createModuleTranslate } from 'coreModules/i18n/components'
 import { updateUserPreference } from 'coreModules/user/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
 import { tableColumnNames } from '../tableColumnSpecifications'
+
+const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const transformColumnNamesToFormValues = columnNames => {
   return columnNames.reduce((obj, columnName) => {
@@ -136,7 +138,12 @@ class ConfigureTable extends Component {
                     component={Checkbox}
                     enableHelpNotifications={false}
                     inline
-                    label={name}
+                    label={
+                      <ModuleTranslate
+                        capitalize
+                        textKey={`tableColumns.${name}`}
+                      />
+                    }
                     module="collectionMammals"
                     name={name}
                     type="checkbox"
