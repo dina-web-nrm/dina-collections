@@ -54,18 +54,20 @@ class TopMenu extends PureComponent {
             </Grid.Column>
           </Grid>
         )}
-        <Menu.Item position="right" style={{ cursor: 'pointer' }}>
-          <Popup
-            basic
-            content={<UserMenu onClick={this.handleClose} />}
-            on="click"
-            onClose={this.handleClose}
-            onOpen={this.handleOpen}
-            open={this.state.isOpen}
-            position="bottom right"
-            trigger={<Icon name="user" size="large" />}
-          />
-        </Menu.Item>
+        <Popup
+          basic
+          content={<UserMenu onClick={this.handleClose} />}
+          on="click"
+          onClose={this.handleClose}
+          onOpen={this.handleOpen}
+          open={this.state.isOpen}
+          position="bottom right"
+          trigger={
+            <Menu.Item position="right" style={{ cursor: 'pointer' }}>
+              <Icon name="user" size="large" />
+            </Menu.Item>
+          }
+        />
       </Menu>
     )
   }

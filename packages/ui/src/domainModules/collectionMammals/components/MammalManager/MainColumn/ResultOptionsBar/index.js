@@ -46,7 +46,7 @@ export class ResultOptionsBar extends Component {
         <Menu.Menu position="right">
           {handleExportToCsv && (
             <Grid textAlign="center" verticalAlign="middle">
-              <Grid.Column style={{ cursor: 'pointer' }}>
+              <Grid.Column>
                 <Popup
                   content={
                     <Button
@@ -55,18 +55,26 @@ export class ResultOptionsBar extends Component {
                     />
                   }
                   on="click"
-                  trigger={<Icon name="share" size="large" />}
+                  position="bottom right"
+                  trigger={
+                    <Icon
+                      name="share"
+                      size="large"
+                      style={{ cursor: 'pointer' }}
+                    />
+                  }
                 />
               </Grid.Column>
             </Grid>
           )}
 
           {handleSettingClick && (
-            <Menu.Item style={{ cursor: 'pointer' }}>
+            <Menu.Item>
               <Icon
                 name="setting"
                 onClick={event => handleSettingClick(event)}
                 size="large"
+                style={{ cursor: 'pointer' }}
               />
             </Menu.Item>
           )}
