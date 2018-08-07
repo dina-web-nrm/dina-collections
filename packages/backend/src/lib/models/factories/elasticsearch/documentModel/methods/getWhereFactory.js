@@ -3,6 +3,7 @@ const extractMetaFromResult = require('../../utilities/extractMetaFromResult')
 const extractItemsFromResult = require('../../utilities/extractItemsFromResult')
 const extractItemsFromAggregations = require('../../utilities/extractItemsFromAggregations')
 const extractFieldsFromUserInput = require('../../../../../data/fields/utilities/extractFieldsFromUserInput')
+const extractSortObjectsFromUserInput = require('../../../../../data/sort/utilities/extractSortObjectsFromUserInput')
 
 const buildWhere = ({
   aggregations,
@@ -50,6 +51,8 @@ module.exports = function getWhereFactory({
       query,
       scroll,
       scrollId,
+      sortInput,
+      sortSpecification,
     }) => {
       return buildWhere({
         aggregations,
@@ -72,6 +75,18 @@ module.exports = function getWhereFactory({
             scrollId,
           }
         } else {
+          const sortObjects = extractSortObjectsFromUserInput({
+            sortInput,
+            sortSpecification,
+          })
+          let sort = '_id:desc'
+
+          if (sortObjects && sortObjects.length) {
+            sort = sortObjects.map(sortObject => {
+              return `${sortObject.path}:${sortObject.order}`
+            })
+          }
+
           const fields = extractFieldsFromUserInput({
             fieldsInput,
             fieldsSpecification,
@@ -85,7 +100,7 @@ module.exports = function getWhereFactory({
             from: offset,
             index: Model.index,
             size: limit,
-            sort: '_id:desc',
+            sort,
             type: Model.name,
           }
         }

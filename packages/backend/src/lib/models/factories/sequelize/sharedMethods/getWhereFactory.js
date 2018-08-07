@@ -1,3 +1,4 @@
+const backendError500 = require('common/src/error/errorFactories/backendError400')
 const extractFieldsFromItem = require('../../../../data/fields/utilities/extractFieldsFromItem')
 const extractFieldsFromUserInput = require('../../../../data/fields/utilities/extractFieldsFromUserInput')
 
@@ -31,8 +32,16 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
       include = [],
       limit,
       offset,
+      sortInput,
       where: customWhere,
     }) => {
+      if (sortInput && sortInput.length) {
+        backendError500({
+          code: 'INTERNAL_SERVER_ERROR',
+          detail: 'Sorting not implemented for sequelize model',
+        })
+      }
+
       return buildWhereFilter({
         filterInput,
         filterSpecification,

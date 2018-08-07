@@ -40,6 +40,12 @@ const inputSchema = {
     scrollId: {
       type: 'string',
     },
+    sortInput: {
+      type: 'array',
+    },
+    sortSpecification: {
+      type: 'object',
+    },
     where: {
       type: 'object',
     },

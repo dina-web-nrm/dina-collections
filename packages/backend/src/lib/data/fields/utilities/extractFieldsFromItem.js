@@ -12,6 +12,7 @@ module.exports = function extractFieldsFromItem({ item, fields } = {}) {
   })
 
   objectPath.set(returnItem, 'internals', objectPath.get(item, 'internals'))
+  objectPath.set(returnItem, 'id', objectPath.get(item, 'id'))
 
   return returnItem
 }

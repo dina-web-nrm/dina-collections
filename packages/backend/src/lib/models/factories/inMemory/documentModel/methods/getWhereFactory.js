@@ -1,3 +1,4 @@
+const backendError500 = require('common/src/error/errorFactories/backendError400')
 const extractFieldsFromItem = require('../../../../../data/fields/utilities/extractFieldsFromItem')
 const extractFieldsFromUserInput = require('../../../../../data/fields/utilities/extractFieldsFromUserInput')
 
@@ -34,6 +35,7 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
+      sortInput,
       fieldsInput = [],
       fieldsSpecification = {},
       filterInput = {},
@@ -42,6 +44,13 @@ module.exports = function getWhereFactory({
       offset = 0,
       query: queryInput,
     }) => {
+      if (sortInput && sortInput.length) {
+        backendError500({
+          code: 'INTERNAL_SERVER_ERROR',
+          detail: 'Sorting not implemented for inMemory model',
+        })
+      }
+
       return buildWhere({
         buildWhereFilter,
         buildWhereQuery,
