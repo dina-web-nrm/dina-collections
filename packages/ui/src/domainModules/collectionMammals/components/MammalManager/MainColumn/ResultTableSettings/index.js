@@ -56,7 +56,7 @@ const defaultProps = {
   savedValue: undefined,
 }
 
-class ConfigureTable extends Component {
+class ResultTableSettings extends Component {
   constructor(props) {
     super(props)
     this.handleCancel = this.handleCancel.bind(this)
@@ -180,11 +180,13 @@ class ConfigureTable extends Component {
   }
 }
 
-ConfigureTable.propTypes = propTypes
-ConfigureTable.defaultProps = defaultProps
+ResultTableSettings.propTypes = propTypes
+ResultTableSettings.defaultProps = defaultProps
 
-const ConfigureTableForm = reduxForm({
-  form: 'configureTable',
-})(ConfigureTable)
+const ResultTableSettingsForm = reduxForm({
+  form: 'resultTableSettingsForm',
+})(ResultTableSettings)
 
-export default connect(mapStateToProps, mapDispatchToProps)(ConfigureTableForm)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  ResultTableSettingsForm
+)

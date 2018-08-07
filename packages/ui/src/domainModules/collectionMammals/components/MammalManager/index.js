@@ -167,7 +167,7 @@ class MammalManager extends Component {
   }
 
   handleSettingClick(event) {
-    this.handleSetMainColumnActiveTab(event, 'configureTable')
+    this.handleSetMainColumnActiveTab(event, 'resultTableSettings')
   }
 
   handleSetMainColumnActiveTab(event, key) {
@@ -215,7 +215,7 @@ class MammalManager extends Component {
 
   handleOpenNewRecordForm(event) {
     this.props.setFilterColumnIsOpen(false)
-    this.handleSetMainColumnActiveTab(event, 'newRecord')
+    this.handleSetMainColumnActiveTab(event, 'recordNew')
   }
 
   handleOpenTableView(event) {
@@ -223,7 +223,7 @@ class MammalManager extends Component {
   }
 
   handleOpenEditRecordView(event) {
-    this.handleSetMainColumnActiveTab(event, 'editRecord')
+    this.handleSetMainColumnActiveTab(event, 'recordEdit')
   }
 
   handleSelectNextRecord(event) {
@@ -248,8 +248,8 @@ class MammalManager extends Component {
       totalNumberOfRecords,
     } = this.props
 
-    const isNewRecordView = mainColumnActiveTab === 'newRecord'
     const isItemView = isNewRecordView || mainColumnActiveTab === 'editRecord'
+    const isNewRecordView = mainColumnActiveTab === 'recordNew'
     const isTableView = mainColumnActiveTab === 'resultTable'
 
     const showSelectNextRecordButton =

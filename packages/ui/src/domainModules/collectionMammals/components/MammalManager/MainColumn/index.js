@@ -7,9 +7,9 @@ import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import CreateSpecimen from '../../CreateSpecimen'
 import EditSpecimen from '../../EditSpecimen'
-import ConfigureTable from './ConfigureTable'
 import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
+import ResultTableSettings from './ResultTableSettings'
 import ResultTableView from './ResultTableView'
 
 const recordNavigationHeight = 58
@@ -27,8 +27,8 @@ const recordOptions = {
 }
 
 /* eslint-disable react/prop-types */
-const newRecord = {
-  key: 'newRecord',
+const recordNew = {
+  key: 'recordNew',
   renderRow: () => {
     return (
       <div className="ui fluid dina background" style={{ padding: '20px' }}>
@@ -38,8 +38,8 @@ const newRecord = {
   },
   style: { overflow: 'auto' },
 }
-const editRecord = {
-  key: 'editRecord',
+const recordEdit = {
+  key: 'recordEdit',
   renderRow: () => {
     return (
       <div className="ui fluid dina background" style={{ padding: '20px' }}>
@@ -64,12 +64,12 @@ const resultTable = {
     )
   },
 }
-const configureTable = {
-  key: 'configureTable',
+const resultTableSettings = {
+  key: 'resultTableSettings',
   renderRow: props => {
     return (
       <div className="ui fluid dina background" style={{ padding: '20px' }}>
-        <ConfigureTable onTableTabClick={props.onTableTabClick} />
+        <ResultTableSettings onTableTabClick={props.onTableTabClick} />
       </div>
     )
   },
@@ -83,16 +83,16 @@ const getRows = createSelector(
     const rows = [recordNavigation, recordOptions]
 
     switch (mainColumnActiveTab) {
-      case 'configureTable': {
-        rows.push(configureTable)
+      case 'recordEdit': {
+        rows.push(recordEdit)
         break
       }
-      case 'editRecord': {
-        rows.push(editRecord)
+      case 'recordNew': {
+        rows.push(recordNew)
         break
       }
-      case 'newRecord': {
-        rows.push(newRecord)
+      case 'resultTableSettings': {
+        rows.push(resultTableSettings)
         break
       }
       case 'resultTable': {
