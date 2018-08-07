@@ -33,10 +33,20 @@ module.exports = ({ migrator, src, target }) => {
 
     if (locationInformation && locationInformation.localityN) {
       collectingLocations.push(`${locationInformation.localityN} (localityN)`)
+      migrator.setValue({
+        obj: target,
+        path: 'attributes.result.localityN',
+        value: locationInformation.localityN,
+      })
     }
 
     if (locationInformation && locationInformation.localityT) {
       collectingLocations.push(`${locationInformation.localityT} (localityT)`)
+      migrator.setValue({
+        obj: target,
+        path: 'attributes.result.localityT',
+        value: locationInformation.localityT,
+      })
     }
     return null
   })

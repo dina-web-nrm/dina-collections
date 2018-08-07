@@ -8,6 +8,14 @@ module.exports = ({ migrator, src, target }) => {
   })
 
   if (collectorFullName) {
+    migrator.setValue({
+      obj: target,
+      path: 'attributes.result.collector',
+      value: collectorFullName,
+    })
+  }
+
+  if (collectorFullName) {
     agents.push(`${collectorFullName} (Collector)`)
   }
 

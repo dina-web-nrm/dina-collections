@@ -2,5 +2,5 @@
 
 module.exports = ({ src, target }) => {
   const { id } = src
-  target.idNumeric = Number(id)
+  target.attributes.idNumeric = Number(id)
 }

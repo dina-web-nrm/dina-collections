@@ -43,21 +43,48 @@ module.exports = ({ getItemByTypeId, migrator, src, target }) => {
         item: place,
         resource: 'place',
       }).then(parents => {
-        return [
-          ...parents.map(parent => {
-            return parent.id
-          }),
-          id,
-        ]
+        return [...parents, place]
       })
     })
   })
 
-  return Promise.all(promises).then(parentIdArrays => {
+  return Promise.all(promises).then(parentArrays => {
     const placeIds = []
-    parentIdArrays.forEach(ids => {
-      ids.forEach(id => {
-        placeIds.push(id)
+    parentArrays.forEach(places => {
+      places.forEach(place => {
+        placeIds.push(place.id)
+        const { group } = place.attributes
+        if (group === 'country') {
+          migrator.setValue({
+            obj: target,
+            path: 'attributes.result.collectingCountry',
+            value: place.attributes.name,
+          })
+        }
+
+        if (group === 'district') {
+          migrator.setValue({
+            obj: target,
+            path: 'attributes.result.collectingDistrict',
+            value: place.attributes.name,
+          })
+        }
+
+        if (group === 'province') {
+          migrator.setValue({
+            obj: target,
+            path: 'attributes.result.collectingProvince',
+            value: place.attributes.name,
+          })
+        }
+
+        if (group === 'continent') {
+          migrator.setValue({
+            obj: target,
+            path: 'attributes.result.collectingContinent',
+            value: place.attributes.name,
+          })
+        }
       })
     })
 

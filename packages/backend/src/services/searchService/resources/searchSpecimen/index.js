@@ -17,7 +17,7 @@ const fieldsSpecification = {
 }
 
 const sortSpecification = {
-  fields: ['id', 'idNumeric', 'attributes.result.catalogNumber'],
+  fields: ['attributes.idNumeric', 'attributes.result.catalogNumber'],
 }
 
 module.exports = {
