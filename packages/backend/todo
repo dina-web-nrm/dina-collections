@@ -1,16 +1,41 @@
+
+name: 'collectors',
+name: 'startDateCollecting',
+name: 'endDateCollecting',
+
+name: 'localityCollecting',
+name: 'death',
+name: SKELETON,
+name: SKIN,
+name: WET,
+name: 'sex',
+name: 'ageStage',
+name: 'age',
+name: 'completeBodyWeight',
+name: 'totalLength',
+name: 'bodyLength',
+name: 'condition',
+name: 'otherIdentifiers',
+name: 'registered',
+
+// wait
+name: 'curatorialName',
+name: 'family',
+name: 'genus',
+name: 'species',
+
+
+
+
+
+
+
+
+
+
+
 Create todos for:
-* Migrations
-** Type status
-** Taxonomy (Do like places)
-
-* Displaying data
-** locality. can parent.parent.parent.parent be used?
-
-* Filters
-** Discuss query format for checkbox filter types
-
-
-
+* Create input schema for query
 
 
 TODO
@@ -26,6 +51,8 @@ TODO
 * Would it be possible to extract lookup models from backend?
 * Refactor prepType and featureType to mimic identifier type
 * Verify incremental update of specimens
+* Potentially refactor mappings to single object.
+* Potentially move search fields to internals and keep the result as attributes
 * Migrate Taxonomy (wait)
 
 Potential TODOs
