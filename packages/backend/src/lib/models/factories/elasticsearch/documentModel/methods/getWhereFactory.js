@@ -1,8 +1,8 @@
 const getWhereWrapper = require('../../../wrappers/methods/getWhere')
-
 const extractMetaFromResult = require('../../utilities/extractMetaFromResult')
 const extractItemsFromResult = require('../../utilities/extractItemsFromResult')
 const extractItemsFromAggregations = require('../../utilities/extractItemsFromAggregations')
+const extractFieldsFromUserInput = require('../../../../../data/fields/utilities/extractFieldsFromUserInput')
 
 const buildWhere = ({
   aggregations,
@@ -41,9 +41,10 @@ module.exports = function getWhereFactory({
     ({
       aggregations,
       aggregationSpecification,
+      fieldsInput,
+      fieldsSpecification,
       filterInput = {},
       filterSpecification = {},
-      idsOnly,
       limit = 10,
       offset = 0,
       query,
@@ -71,10 +72,15 @@ module.exports = function getWhereFactory({
             scrollId,
           }
         } else {
+          const fields = extractFieldsFromUserInput({
+            fieldsInput,
+            fieldsSpecification,
+          })
+
           methodName = 'search'
           options = {
             ...options,
-            _source: idsOnly ? ['id'] : undefined,
+            _source: fields && fields.length ? fields : undefined,
             body: where,
             from: offset,
             index: Model.index,

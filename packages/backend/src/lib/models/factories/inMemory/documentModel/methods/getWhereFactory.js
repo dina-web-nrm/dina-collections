@@ -1,3 +1,6 @@
+const extractFieldsFromItem = require('../../../../../data/fields/utilities/extractFieldsFromItem')
+const extractFieldsFromUserInput = require('../../../../../data/fields/utilities/extractFieldsFromUserInput')
+
 const getWhereWrapper = require('../../../wrappers/methods/getWhere')
 const asyncFilter = require('common/src/search/filter/async')
 
@@ -31,6 +34,8 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
+      fieldsInput = [],
+      fieldsSpecification = {},
       filterInput = {},
       filterSpecification = {},
       limit = 10,
@@ -55,6 +60,22 @@ module.exports = function getWhereFactory({
           query,
           returnItems: true,
         }).then(items => {
+          const fields = extractFieldsFromUserInput({
+            fieldsInput,
+            fieldsSpecification,
+          })
+
+          if (fields.length) {
+            return {
+              items: items.map(item => {
+                return extractFieldsFromItem({
+                  fields,
+                  item,
+                })
+              }),
+            }
+          }
+
           return {
             items,
           }

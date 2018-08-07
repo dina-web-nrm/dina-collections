@@ -1,3 +1,5 @@
+const extractFieldsFromItem = require('../../../../../data/fields/utilities/extractFieldsFromItem')
+const extractFieldsFromUserInput = require('../../../../../data/fields/utilities/extractFieldsFromUserInput')
 const getByIdWrapper = require('../../../wrappers/methods/getById')
 
 module.exports = function getByIdFactory({ Model, elasticsearch }) {
@@ -5,25 +7,42 @@ module.exports = function getByIdFactory({ Model, elasticsearch }) {
     throw new Error('Have to provide model')
   }
 
-  return getByIdWrapper(({ id }) => {
-    return elasticsearch
-      .get({
-        id,
-        index: Model.index,
-        type: Model.name,
-      })
-      .then(res => {
-        const item = res && res._source // eslint-disable-line no-underscore-dangle
-        return {
-          item,
-        }
-      })
-      .catch(err => {
-        if (err && err.status === 404) {
-          return { item: null }
-        }
+  return getByIdWrapper(
+    ({ fieldsInput = [], fieldsSpecification = {}, id }) => {
+      return elasticsearch
+        .get({
+          id,
+          index: Model.index,
+          type: Model.name,
+        })
+        .then(res => {
+          const item = res && res._source // eslint-disable-line no-underscore-dangle
 
-        throw err
-      })
-  })
+          const fields = extractFieldsFromUserInput({
+            fieldsInput,
+            fieldsSpecification,
+          })
+
+          if (fields.length) {
+            return {
+              item: extractFieldsFromItem({
+                fields,
+                item,
+              }),
+            }
+          }
+
+          return {
+            item,
+          }
+        })
+        .catch(err => {
+          if (err && err.status === 404) {
+            return { item: null }
+          }
+
+          throw err
+        })
+    }
+  )
 }

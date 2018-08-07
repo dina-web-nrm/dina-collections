@@ -5,9 +5,20 @@ module.exports = function getOneWhereFactory({ Model, getWhere }) {
     throw new Error('Have to provide model')
   }
 
-  return getOneWhereWrapper(({ filterInput, filterSpecification }) => {
-    return getWhere({ filterInput, filterSpecification, limit: 1 }).then(
-      ({ items }) => {
+  return getOneWhereWrapper(
+    ({
+      filterInput,
+      filterSpecification,
+      fieldsInput,
+      fieldsSpecification,
+    }) => {
+      return getWhere({
+        fieldsInput,
+        fieldsSpecification,
+        filterInput,
+        filterSpecification,
+        limit: 1,
+      }).then(({ items }) => {
         if (!items && items.length > 0) {
           return {
             item: null,
@@ -16,7 +27,7 @@ module.exports = function getOneWhereFactory({ Model, getWhere }) {
         return {
           item: items[0],
         }
-      }
-    )
-  })
+      })
+    }
+  )
 }

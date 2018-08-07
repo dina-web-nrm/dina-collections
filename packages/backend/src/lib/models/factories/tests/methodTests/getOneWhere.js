@@ -49,4 +49,37 @@ module.exports = function testGetOneWhere({ config, setupModel }) {
       })
     })
   })
+
+  describe('getOneWhere - Fields', () => {
+    let model
+
+    const firstItem = getTestData('itemPersonWithId', 0)
+    const secondItem = getTestData('itemPersonWithId', 1)
+    beforeAll(() => {
+      return setupModel({ config }).then(createdModel => {
+        model = createdModel
+        return model.create({ allowId: true, item: secondItem }).then(() => {
+          return model.create({ allowId: true, item: firstItem })
+        })
+      })
+    })
+
+    it('returns correct doc by id with specified fields', () => {
+      const fieldsSpecification = {
+        fields: ['id', 'attributes.firstName'],
+      }
+      return model
+        .getOneWhere({
+          fieldsInput: ['id', 'attributes.firstName'],
+          fieldsSpecification,
+        })
+        .then(({ item }) => {
+          expect(item.id).toEqual(firstItem.id)
+          expect(item.attributes.firstName).toEqual(
+            firstItem.attributes.firstName
+          )
+          expect(Object.keys(item.attributes).length).toEqual(1)
+        })
+    })
+  })
 }

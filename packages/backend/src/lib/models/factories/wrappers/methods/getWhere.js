@@ -10,14 +10,17 @@ const inputSchema = {
     aggregationSpecification: {
       type: 'object',
     },
+    fieldsInput: {
+      type: 'array',
+    },
+    fieldsSpecification: {
+      type: 'object',
+    },
     filterInput: {
       type: 'object',
     },
     filterSpecification: {
       type: 'object',
-    },
-    idsOnly: {
-      type: 'boolean',
     },
     include: {
       type: 'array',

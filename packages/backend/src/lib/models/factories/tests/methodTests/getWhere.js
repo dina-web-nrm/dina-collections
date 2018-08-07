@@ -55,6 +55,51 @@ module.exports = function testGetWhere({ config, setupModel }) {
     })
   })
 
+  describe('getWhere - Fields', () => {
+    let model
+
+    const firstItem = getTestData('itemPersonWithId', 0)
+    const secondItem = getTestData('itemPersonWithId', 1)
+    const thirdItem = getTestData('itemPersonWithId', 2)
+    beforeAll(() => {
+      return setupModel({ config }).then(createdModel => {
+        model = createdModel
+        return model.create({ allowId: true, item: firstItem }).then(() => {
+          return model.create({ allowId: true, item: secondItem }).then(() => {
+            return model.create({ allowId: true, item: thirdItem })
+          })
+        })
+      })
+    })
+
+    it('returns correct doc by id with specified fields', () => {
+      const filterSpecification = createGetManyFilterSpecifications({
+        include: ['id'],
+      })
+      const fieldsSpecification = {
+        fields: ['id', 'attributes.firstName'],
+      }
+      return model
+        .getWhere({
+          fieldsInput: ['id', 'attributes.firstName'],
+          fieldsSpecification,
+
+          filterInput: {
+            id: secondItem.id,
+          },
+          filterSpecification,
+        })
+        .then(({ items }) => {
+          expect(items.length).toEqual(1)
+          expect(items[0].id).toEqual(secondItem.id)
+          expect(items[0].attributes.firstName).toEqual(
+            secondItem.attributes.firstName
+          )
+          expect(Object.keys(items[0].attributes).length).toEqual(1)
+        })
+    })
+  })
+
   describe('getWhere - Filter', () => {
     let model
 

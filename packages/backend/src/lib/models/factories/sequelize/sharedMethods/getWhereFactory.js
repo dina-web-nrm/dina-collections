@@ -1,3 +1,6 @@
+const extractFieldsFromItem = require('../../../../data/fields/utilities/extractFieldsFromItem')
+const extractFieldsFromUserInput = require('../../../../data/fields/utilities/extractFieldsFromUserInput')
+
 const getWhereWrapper = require('../../wrappers/methods/getWhere')
 const formatModelItemsResponse = require('../utilities/formatModelItemsResponse')
 
@@ -21,6 +24,8 @@ const hasDeactivatedAtFilter = where => {
 module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
   return getWhereWrapper(
     ({
+      fieldsInput = [],
+      fieldsSpecification = {},
       filterInput,
       filterSpecification,
       include = [],
@@ -55,8 +60,25 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
         }
 
         return Model.findAll(options).then(res => {
+          const items = formatModelItemsResponse({ input: res })
+
+          const fields = extractFieldsFromUserInput({
+            fieldsInput,
+            fieldsSpecification,
+          })
+
+          if (fields.length) {
+            return {
+              items: items.map(item => {
+                return extractFieldsFromItem({
+                  fields,
+                  item,
+                })
+              }),
+            }
+          }
           return {
-            items: formatModelItemsResponse({ input: res }),
+            items,
           }
         })
       })
