@@ -9,7 +9,7 @@ const lengthTypeFilter = 'searchCollectingLocation'
 const multipleChoiceName = `length.lengthType|multipleChoice-${
   lengthTypeFilter
 }`
-const lengthFilter = 'searchCollectingLocation'
+const lengthFilter = 'matchLengthType'
 const fromLengthFieldName = `length.fromLength|gte-${lengthFilter}`
 const toLengthFieldName = `length.toLength|lte-${lengthFilter}`
 
@@ -22,12 +22,13 @@ const lengthUnitOptions = [
 ]
 
 const propTypes = {
+  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class LengthFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
+    const { formName, getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -69,11 +70,12 @@ class LengthFilterForm extends PureComponent {
         </Grid.Row>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="identifiers"
-            aggregationLimit={10}
+            aggregationFunctionName="lengthType"
             component={MultipleChoiceCheckboxesField}
+            displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={lengthTypeFilter}
+            formName={formName}
             label="Length type"
             name={multipleChoiceName}
           />

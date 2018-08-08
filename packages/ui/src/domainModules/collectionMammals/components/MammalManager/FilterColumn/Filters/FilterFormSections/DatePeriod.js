@@ -30,11 +30,12 @@ class DatePeriodFilterForm extends PureComponent {
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="identifiers"
-            aggregationLimit={10}
+            aggregationFunctionName="activity"
             component={MultipleChoiceCheckboxesField}
+            displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={filterFunctionName}
+            formName={formName}
             label="Activity"
             name={multipleChoiceName}
           />
