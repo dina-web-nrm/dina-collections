@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { isDirty, reset } from 'redux-form'
 import { createSelector } from 'reselect'
+import { push } from 'react-router-redux'
 
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
@@ -80,7 +82,24 @@ const getColumns = createSelector(
   }
 )
 
-const mapStateToProps = (state, { searchResultResourceType: resource }) => {
+const getMainColumnActiveTab = createSelector(
+  url => url,
+  url => {
+    if (url.includes('edit')) {
+      return 'recordEdit'
+    } else if (url.includes('create')) {
+      return 'recordNew'
+    } else if (url.includes('settings')) {
+      return 'resultTableSettings'
+    }
+    return 'resultTable'
+  }
+)
+
+const mapStateToProps = (
+  state,
+  { match: { url }, searchResultResourceType: resource }
+) => {
   const specimenSearchState = searchSelectors.get[':resource.searchState'](
     state,
     {
@@ -94,10 +113,9 @@ const mapStateToProps = (state, { searchResultResourceType: resource }) => {
     ),
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
     filterFormIsDirty: isDirty(SPECIMEN_FILTERS_FORM_NAME)(state),
+    focusedSpecimenId: keyObjectGlobalSelectors.get.focusedSpecimenId(state),
     isSmall: sizeSelectors.getIsSmall(state),
-    mainColumnActiveTab: keyObjectGlobalSelectors.get.mainColumnActiveTab(
-      state
-    ),
+    mainColumnActiveTab: getMainColumnActiveTab(url),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     totalNumberOfRecords:
       specimenSearchState &&
@@ -107,6 +125,7 @@ const mapStateToProps = (state, { searchResultResourceType: resource }) => {
 }
 
 const mapDispatchToProps = {
+  push,
   reset,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
@@ -117,8 +136,10 @@ const propTypes = {
   currentTableRowNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   filterFormIsDirty: PropTypes.bool.isRequired,
+  focusedSpecimenId: PropTypes.string,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   mainColumnActiveTab: PropTypes.string.isRequired,
+  push: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
@@ -160,10 +181,6 @@ class MammalManager extends Component {
 
   getColumns() {
     return getColumns(this.props)
-  }
-
-  handleExportToCsv(event) {
-    this.handleSetMainColumnActiveTab(event, 'exportToCsv')
   }
 
   handleSettingClick(event) {
@@ -213,16 +230,26 @@ class MammalManager extends Component {
   }
 
   handleOpenNewRecordForm(event) {
+    event.preventDefault()
     this.props.setFilterColumnIsOpen(false)
-    this.handleSetMainColumnActiveTab(event, 'recordNew')
+    // this.handleSetMainColumnActiveTab(event, 'recordNew')
+
+    this.props.push(`/app/specimens/mammals/create`)
   }
 
   handleOpenTableView(event) {
-    this.handleSetMainColumnActiveTab(event, 'resultTable')
+    if (event) event.preventDefault()
+    this.props.push(`/app/specimens/mammals/search`)
   }
 
   handleOpenEditRecordView(event) {
-    this.handleSetMainColumnActiveTab(event, 'recordEdit')
+    // this.handleSetMainColumnActiveTab(event, 'recordEdit')
+    if (event) event.preventDefault()
+    const specimenId = this.props.focusedSpecimenId
+
+    if (specimenId) {
+      this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+    }
   }
 
   handleSelectNextRecord(event) {
@@ -237,6 +264,10 @@ class MammalManager extends Component {
       event,
       this.props.currentTableRowNumber - 1
     )
+  }
+
+  handleExportToCsv(event) {
+    this.handleSetMainColumnActiveTab(event, 'exportToCsv')
   }
 
   render() {
@@ -292,6 +323,7 @@ MammalManager.propTypes = propTypes
 MammalManager.defaultProps = defaultProps
 
 export default compose(
+  withRouter,
   createInjectSearch(),
   createInjectSearchResult({
     resource: 'searchSpecimen',
