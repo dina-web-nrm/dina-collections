@@ -188,8 +188,7 @@ class MammalManager extends Component {
   }
 
   handleResetFilters(event) {
-    event.preventDefault()
-    this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
+    this.handleShowAllRecords(event)
   }
 
   handleSearchSpecimens(event, filterValues = {}) {
