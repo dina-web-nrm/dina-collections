@@ -5,29 +5,31 @@ import { Grid } from 'semantic-ui-react'
 import { Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const ageStageFilter = 'searchCollectingLocation'
+const ageStageFilter = 'matchAgeStage'
 const stageFieldName = `ageAndStage.ageStage|multipleChoice-${ageStageFilter}`
 const ageFilter = 'searchCollectingLocation'
 const fromAgeFieldName = `ageAndStage.fromAge|gte-${ageFilter}`
 const toAgeFieldName = `ageAndStage.toAge|lte-${ageFilter}`
 
 const propTypes = {
+  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class AgeStageFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
+    const { formName, getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="identifiers"
-            aggregationLimit={10}
+            aggregationFunctionName="ageStage"
             component={MultipleChoiceCheckboxesField}
+            displayCount
             drillDownQuery={getDrilldownQuery(stageFieldName)}
             filterFunctionName={ageStageFilter}
+            formName={formName}
             label="Age stage"
             name={stageFieldName}
           />
