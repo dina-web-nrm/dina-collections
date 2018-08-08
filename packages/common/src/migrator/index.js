@@ -174,13 +174,14 @@ const applyTransformationFunctionsAsync = ({
       })
 
   const target = {}
+  const locals = {}
   return asyncReduce({
     initialValue: null,
     items: transformationFunctionsArray,
     reduceFunction: ({ item: transformationFunction }) => {
       return Promise.resolve()
         .then(() => {
-          return transformationFunction({ src: item, target, ...rest })
+          return transformationFunction({ locals, src: item, target, ...rest })
         })
         .then(() => {
           return null
