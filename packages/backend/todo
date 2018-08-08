@@ -1,3 +1,10 @@
+1. * fields -> selectableFields
+2. * fields in userInput -> includeFields, excludeFields
+3. * sortSpecification -> sortableFields
+
+
+* Add validations for fieldSpecification
+
 
 name: 'collectors',
 name: 'startDateCollecting',
