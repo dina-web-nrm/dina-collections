@@ -7,12 +7,12 @@ const fieldAggregations = extractAggregations({
 })
 
 const ageStage = require('./ageStage')
-const agents = require('./agents')
+// const agents = require('./agents')
 const collectingLocations = require('./collectingLocations')
 const identifiers = require('./identifiers')
 
 module.exports = {
-  agents,
+  // agents,
   ageStage,
   collectingLocations,
   identifiers,

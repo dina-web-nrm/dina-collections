@@ -1,7 +1,7 @@
 const fieldsSpecification = require('../../fieldsSpecification')
 const extractTransformations = require('../../../../../../../lib/data/fields/utilities/extractTransformationFunctions')
 
-const agents = require('./agents')
+// const agents = require('./agents')
 const collectingDates = require('./collectingDates')
 const collectingLocations = require('./collectingLocations')
 const collectingPlaces = require('./collectingPlaces')
@@ -17,7 +17,7 @@ const fieldTransformations = extractTransformations({
 
 module.exports = [
   id,
-  agents,
+  // agents,
   collectingDates,
   collectingLocations,
   collectingPlaces,

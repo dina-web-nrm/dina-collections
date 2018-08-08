@@ -2,7 +2,7 @@ const fieldsSpecification = require('../../fieldsSpecification')
 const extractMappings = require('../../../../../../../lib/data/fields/utilities/extractMappings')
 
 const ageStage = require('./ageStage')
-const agents = require('./agents')
+// const agents = require('./agents')
 const collectingEndDate = require('./collectingEndDate')
 const collectingLocations = require('./collectingLocations')
 const collectingPlaces = require('./collectingPlaces')
@@ -19,7 +19,7 @@ const resultCollectingEndDate = require('./result/collectingEndDate')
 const fieldMappings = extractMappings({ fieldsSpecification, format: 'object' })
 
 module.exports = {
-  agents,
+  // agents,
   ageStage,
   collectingEndDate,
   collectingLocations,
