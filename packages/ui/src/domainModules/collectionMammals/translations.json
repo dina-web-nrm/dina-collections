@@ -379,92 +379,128 @@
     }
   },
   "tableColumns": {
-    "catalogNumber": {
+    "identifiersCatalogNumber": {
       "en": "catalog number",
       "sv": ""
     },
-    "curatorialName": {
+    "taxonomyCuratorialName": {
       "en": "curatorial name",
       "sv": ""
     },
-    "family": {
+    "taxonomyFamily": {
       "en": "family",
       "sv": ""
     },
-    "genus": {
+    "taxonomyGenus": {
       "en": "genus",
       "sv": ""
     },
-    "species": {
+    "taxonomySpecies": {
       "en": "species",
       "sv": ""
     },
-    "collectors": {
+    "taxonomySubspecies": {
+      "en": "subspecies",
+      "sv": ""
+    },
+    "collectingEventCollectors": {
       "en": "collectors",
       "sv": ""
     },
-    "startDateCollecting": {
+    "nomenclaturalTypeTypeStatus": {
+      "en": "type status",
+      "sv": ""
+    },
+    "collectingEventStartDate": {
       "en": "start date (collecting)",
       "sv": ""
     },
-    "endDateCollecting": {
+    "collectingEventEndDate": {
       "en": "end date (collecting)",
       "sv": ""
     },
-    "localityCollecting": {
+    "collectingEventLocality": {
       "en": "locality (collecting)",
       "sv": ""
     },
-    "death": {
+    "collectingEventCountry": {
+      "en": "country (collecting)",
+      "sv": ""
+    },
+    "collectingEventProvince": {
+      "en": "province (collecting)",
+      "sv": ""
+    },
+    "collectingEventDistrict": {
+      "en": "district (collecting)",
+      "sv": ""
+    },
+    "originInformationLocality": {
+      "en": "locality (origin)",
+      "sv": ""
+    },
+    "deathInformationDeath": {
       "en": "death",
       "sv": ""
     },
-    "skeleton": {
+    "physicalUnitSkeleton": {
       "en": "skeleton",
       "sv": ""
     },
-    "skin": {
+    "physicalUnitSkin": {
       "en": "skin",
       "sv": ""
     },
-    "wet": {
-      "en": "wet",
+    "physicalUnitWetPreparation": {
+      "en": "wet preparation",
       "sv": ""
     },
-    "sex": {
+    "physicalUnitOtherPreparation": {
+      "en": "other preparation",
+      "sv": ""
+    },
+    "featureSex": {
       "en": "sex",
       "sv": ""
     },
-    "ageStage": {
+    "featureAgeStage": {
       "en": "age stage",
       "sv": ""
     },
-    "age": {
+    "featureAge": {
       "en": "age",
       "sv": ""
     },
-    "completeBodyWeight": {
+    "featureCompleteBodyWeight": {
       "en": "complete body weight",
       "sv": ""
     },
-    "totalLength": {
+    "featureTotalLength": {
       "en": "total length",
       "sv": ""
     },
-    "bodyLength": {
+    "featureBodyLength": {
       "en": "body length",
       "sv": ""
     },
-    "condition": {
+    "featureCondition": {
       "en": "condition",
       "sv": ""
     },
-    "otherIdentifiers": {
+    "identifiersOtherIdentifiers": {
       "en": "other identifiers",
       "sv": ""
     },
-    "registered": {
+    "recordEventCataloged": {
+      "en": "cataloged",
+      "sv": ""
+    },
+    "recordEventRegistered": {
       "en": "registered",
+      "sv": ""
+    },
+    "recordEventLastModified": {
+      "en": "last modified",
       "sv": ""
     }
   },
