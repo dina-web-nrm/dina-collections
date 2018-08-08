@@ -15,6 +15,7 @@ const {
   keys: [
     'currentTableRowNumber',
     'filterColumnIsOpen',
+    'focusedSpecimenId',
     'mainColumnActiveTab',
     'totalNumberOfRecords',
   ],
