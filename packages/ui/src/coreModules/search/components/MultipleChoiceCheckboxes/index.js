@@ -81,7 +81,8 @@ class MultipleChoiceCheckboxes extends Component {
     const drillDownQuery = nextPropsDrillDownQuery || currentDrillDownQuery
 
     const searchQuery = {
-      idsOnly: false,
+      fields: ['id'],
+      query: {},
     }
 
     if (!getAll) {

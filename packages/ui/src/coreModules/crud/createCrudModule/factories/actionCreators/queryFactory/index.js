@@ -37,7 +37,7 @@ export default function queryAcFactory(
     {
       aggregations,
       batchLimit,
-      idsOnly,
+      fields,
       limit = 1000,
       offset = 0,
       query,
@@ -48,7 +48,7 @@ export default function queryAcFactory(
 
     log.debug(`${resource}.create called`, {
       aggregations,
-      idsOnly,
+      fields,
       limit,
       offset,
       query,
@@ -58,7 +58,7 @@ export default function queryAcFactory(
     return (dispatch, getState, { apiClient }) => {
       const callParams = createCallParams({
         aggregations,
-        idsOnly,
+        fields,
         limit,
         offset,
         options,

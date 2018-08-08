@@ -7,6 +7,7 @@ import { search } from '../actionCreators'
 
 const createInjectSearch = (
   {
+    fields: defaultFields,
     resource = 'searchSpecimen',
     searchOnMount = true,
     storeSearchResult = true,
@@ -33,10 +34,10 @@ const createInjectSearch = (
       }
     }
 
-    search({ aggregations, idsOnly, query }) {
+    search({ aggregations, fields, query }) {
       return this.props.search({
         aggregations,
-        idsOnly,
+        fields: fields || defaultFields,
         query,
         resource,
         storeSearchResult,
