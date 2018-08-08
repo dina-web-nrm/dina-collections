@@ -17,13 +17,15 @@ const log = createLog(
   'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTable'
 )
 
-const mapStateToProps = (state, { searchResultResourceType: resource }) => {
+const SEARCH_SPECIMEN = 'searchSpecimen'
+
+const mapStateToProps = state => {
   return {
     language:
       i18nSelectors.getLanguage(state) ||
       i18nSelectors.getDefaultLanguage(state),
     searchResult: searchSelectors.get[':resource.searchState'](state, {
-      resource,
+      resource: SEARCH_SPECIMEN,
     }),
   }
 }
@@ -99,7 +101,7 @@ export class InfiniteTable extends Component {
       width,
     } = this.props
 
-    const itemId = searchResult.items[index]
+    const itemId = searchResult.items[index].id
     fetchItemById(itemId)
 
     const rowNumber = index + 1
@@ -115,6 +117,7 @@ export class InfiniteTable extends Component {
         key={itemId}
         language={language}
         onClick={this.handleRowClick}
+        resource={SEARCH_SPECIMEN}
         rowNumber={rowNumber}
         tableColumnsToShow={tableColumnsToShow}
         width={width}
@@ -155,23 +158,11 @@ InfiniteTable.defaultProps = defaultProps
 
 export default compose(
   createInjectSearchResult({
-    resource: 'searchSpecimen',
+    resource: SEARCH_SPECIMEN,
   }),
   createBatchFetchItems({
-    include: [
-      'agents',
-      'causeOfDeathTypes',
-      'establishmentMeansTypes',
-      'featureTypes',
-      'identifierTypes',
-      'physicalObjects.storageLocation.parent',
-      'places',
-      'preparationTypes',
-      'taxonNames',
-      'typeSpecimenType',
-    ],
-    relationships: ['all'],
-    resource: 'specimen',
+    fields: ['id', 'attributes.result'],
+    resource: SEARCH_SPECIMEN,
   }),
   connect(mapStateToProps, mapDispatchToProps)
 )(InfiniteTable)
