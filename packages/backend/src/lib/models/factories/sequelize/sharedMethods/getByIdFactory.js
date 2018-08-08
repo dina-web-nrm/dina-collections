@@ -11,9 +11,9 @@ module.exports = function getByIdFactory({ Model }) {
   return getByIdWrapper(
     ({
       allowDeactivated = false,
-      fieldsInput = [],
       id,
       include = [],
+      includeFieldsInput = [],
       raw = true,
       selectableFields = [],
     }) => {
@@ -32,7 +32,7 @@ module.exports = function getByIdFactory({ Model }) {
 
         const { item } = formatModelItemResponse({ input: res })
         const fields = extractFieldsFromUserInput({
-          fieldsInput,
+          includeFieldsInput,
           selectableFields,
         })
 

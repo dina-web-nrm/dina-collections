@@ -42,9 +42,9 @@ module.exports = function getWhereFactory({
     ({
       aggregations,
       aggregationSpecification,
-      fieldsInput,
       filterInput = {},
       filterSpecification = {},
+      includeFieldsInput,
       limit = 10,
       offset = 0,
       query,
@@ -88,7 +88,7 @@ module.exports = function getWhereFactory({
           }
 
           const fields = extractFieldsFromUserInput({
-            fieldsInput,
+            includeFieldsInput,
             selectableFields,
           })
 

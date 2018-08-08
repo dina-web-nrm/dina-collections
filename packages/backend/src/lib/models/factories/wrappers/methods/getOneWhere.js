@@ -7,9 +7,6 @@ const inputSchema = {
     allowDeactivated: {
       type: 'boolean',
     },
-    fieldsInput: {
-      type: 'array',
-    },
     filterInput: {
       type: 'object',
     },
@@ -17,6 +14,9 @@ const inputSchema = {
       type: 'object',
     },
     include: {
+      type: 'array',
+    },
+    includeFieldsInput: {
       type: 'array',
     },
     selectableFields: {

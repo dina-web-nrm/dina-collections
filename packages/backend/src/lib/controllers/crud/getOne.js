@@ -19,7 +19,7 @@ module.exports = function getOne({ operation, models }) {
     const {
       pathParams: { id },
       queryParams: {
-        fields: fieldsInput,
+        includeFields: includeFieldsInput,
         relationships: queryParamRelationships = '',
       } = {},
     } = request
@@ -35,9 +35,9 @@ module.exports = function getOne({ operation, models }) {
 
     return model
       .getById({
-        fieldsInput,
         id,
         include,
+        includeFieldsInput,
         selectableFields,
       })
       .then(({ item } = {}) => {

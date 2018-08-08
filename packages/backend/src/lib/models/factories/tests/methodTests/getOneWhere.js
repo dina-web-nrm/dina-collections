@@ -69,7 +69,7 @@ module.exports = function testGetOneWhere({ config, setupModel }) {
 
       return model
         .getOneWhere({
-          fieldsInput: ['id', 'attributes.firstName'],
+          includeFieldsInput: ['id', 'attributes.firstName'],
           selectableFields,
         })
         .then(({ item }) => {

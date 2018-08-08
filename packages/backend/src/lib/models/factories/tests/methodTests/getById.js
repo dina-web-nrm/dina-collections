@@ -55,8 +55,8 @@ module.exports = function testGetById({ config, setupModel }) {
       const selectableFields = ['id', 'attributes.firstName']
       return model
         .getById({
-          fieldsInput: ['id', 'attributes.firstName'],
           id: secondItem.id,
+          includeFieldsInput: ['id', 'attributes.firstName'],
           selectableFields,
         })
         .then(({ item }) => {

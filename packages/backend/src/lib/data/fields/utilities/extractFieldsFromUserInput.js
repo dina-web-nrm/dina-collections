@@ -1,7 +1,7 @@
 module.exports = function extractFieldsFromUserInput(
-  { fieldsInput, selectableFields } = {}
+  { includeFieldsInput, selectableFields } = {}
 ) {
-  if (!(fieldsInput && fieldsInput.length)) {
+  if (!(includeFieldsInput && includeFieldsInput.length)) {
     return []
   }
 
@@ -10,7 +10,7 @@ module.exports = function extractFieldsFromUserInput(
     return obj
   }, {})
 
-  return fieldsInput.filter(fieldInput => {
+  return includeFieldsInput.filter(fieldInput => {
     return selectableFieldsMap[fieldInput]
   })
 }

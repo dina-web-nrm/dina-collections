@@ -3,11 +3,11 @@ const extractFieldsFromUserInput = require('../../../../../data/fields/utilities
 const getByIdWrapper = require('../../../wrappers/methods/getById')
 
 module.exports = function getByIdFactory({ Model }) {
-  return getByIdWrapper(({ fieldsInput, selectableFields, id }) => {
+  return getByIdWrapper(({ includeFieldsInput, selectableFields, id }) => {
     const currentItems = Model.get()
     const item = currentItems[id] || null
     const fields = extractFieldsFromUserInput({
-      fieldsInput,
+      includeFieldsInput,
       selectableFields,
     })
 

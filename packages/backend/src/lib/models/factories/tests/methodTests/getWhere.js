@@ -80,11 +80,11 @@ module.exports = function testGetWhere({ config, setupModel }) {
 
       return model
         .getWhere({
-          fieldsInput: ['id', 'attributes.firstName'],
           filterInput: {
             id: secondItem.id,
           },
           filterSpecification,
+          includeFieldsInput: ['id', 'attributes.firstName'],
           selectableFields,
         })
         .then(({ items }) => {

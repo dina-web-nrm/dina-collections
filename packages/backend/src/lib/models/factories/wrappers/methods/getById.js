@@ -7,13 +7,13 @@ const inputSchema = {
     allowDeactivated: {
       type: 'boolean',
     },
-    fieldsInput: {
-      type: 'array',
-    },
     id: {
       type: 'string',
     },
     include: {
+      type: 'array',
+    },
+    includeFieldsInput: {
       type: 'array',
     },
     raw: {

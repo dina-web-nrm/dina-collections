@@ -35,9 +35,9 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
-      fieldsInput = [],
       filterInput = {},
       filterSpecification = {},
+      includeFieldsInput = [],
       limit = 10,
       offset = 0,
       query: queryInput,
@@ -70,7 +70,7 @@ module.exports = function getWhereFactory({
           returnItems: true,
         }).then(items => {
           const fields = extractFieldsFromUserInput({
-            fieldsInput,
+            includeFieldsInput,
             selectableFields,
           })
 

@@ -10,9 +10,6 @@ const inputSchema = {
     aggregationSpecification: {
       type: 'object',
     },
-    fieldsInput: {
-      type: 'array',
-    },
     filterInput: {
       type: 'object',
     },
@@ -20,6 +17,9 @@ const inputSchema = {
       type: 'object',
     },
     include: {
+      type: 'array',
+    },
+    includeFieldsInput: {
       type: 'array',
     },
     limit: {

@@ -8,7 +8,7 @@ module.exports = function addFieldsFromQueryParams({
 
   return {
     ...queryParams,
-    fields: {
+    includeFields: {
       description:
         'When provided only specified fields will be returned in response',
       required: false,

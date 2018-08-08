@@ -26,7 +26,7 @@ module.exports = function queryController({ operation, models }) {
         data: {
           attributes: {
             aggregations,
-            fields: fieldsInput,
+            includeFields: includeFieldsInput,
             filter: filterInput,
             limit,
             offset,
@@ -42,9 +42,9 @@ module.exports = function queryController({ operation, models }) {
       .getWhere({
         aggregations,
         aggregationSpecification,
-        fieldsInput,
         filterInput,
         filterSpecification,
+        includeFieldsInput,
         limit,
         offset,
         query,
