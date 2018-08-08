@@ -52,8 +52,8 @@ module.exports = function getWhereFactory({
       scroll,
       scrollId,
       selectableFields,
+      sortableFields,
       sortInput,
-      sortSpecification,
     }) => {
       return buildWhere({
         aggregations,
@@ -77,8 +77,8 @@ module.exports = function getWhereFactory({
           }
         } else {
           const sortObjects = extractSortObjectsFromUserInput({
+            sortableFields,
             sortInput,
-            sortSpecification,
           })
           let sort = '_id:desc'
 

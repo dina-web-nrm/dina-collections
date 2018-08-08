@@ -1,11 +1,10 @@
 module.exports = function addSortingToQueryParams({
   queryParams,
-  sortSpecification = {},
+  sortableFields = [],
 }) {
-  const fields = sortSpecification.fields || []
   const sortEnum = []
 
-  fields.forEach(field => {
+  sortableFields.forEach(field => {
     sortEnum.push(`${field}:asc`)
     sortEnum.push(`${field}:desc`)
   })

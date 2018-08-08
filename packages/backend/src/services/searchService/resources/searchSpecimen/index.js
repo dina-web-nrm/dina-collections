@@ -14,9 +14,10 @@ const resource = 'searchSpecimen'
 
 const selectableFields = ['id', 'attributes.result']
 
-const sortSpecification = {
-  fields: ['attributes.idNumeric', 'attributes.result.catalogNumber'],
-}
+const sortableFields = [
+  'attributes.idNumeric',
+  'attributes.result.catalogNumber',
+]
 
 module.exports = {
   basePath: '/api/search/v01',
@@ -29,7 +30,7 @@ module.exports = {
       aggregationSpecification,
       filterSpecification: queryFilterSpecification,
       selectableFields,
-      sortSpecification,
+      sortableFields,
       type: 'query',
     },
     {
@@ -38,7 +39,7 @@ module.exports = {
     {
       filterSpecification: getManyFilterSpecification,
       selectableFields,
-      sortSpecification,
+      sortableFields,
       type: 'getMany',
     },
     {

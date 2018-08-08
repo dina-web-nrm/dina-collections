@@ -43,11 +43,11 @@ const inputSchema = {
     selectableFields: {
       type: 'array',
     },
+    sortableFields: {
+      type: 'object',
+    },
     sortInput: {
       type: 'array',
-    },
-    sortSpecification: {
-      type: 'object',
     },
     where: {
       type: 'object',

@@ -9,7 +9,7 @@ module.exports = function getMany({ operation, models }) {
     relations,
     resource,
     selectableFields,
-    sortSpecification,
+    sortableFields,
   } = operation
   const model = models[resource]
   if (!model) {
@@ -56,8 +56,8 @@ module.exports = function getMany({ operation, models }) {
         limit,
         offset,
         selectableFields,
+        sortableFields,
         sortInput,
-        sortSpecification,
       })
       .then(({ items, meta } = {}) => {
         return createArrayResponse({

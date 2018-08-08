@@ -1,7 +1,7 @@
 const base = require('./base')
 const filterSpecification = require('../../../data/filters/schemas/filterSpecification')
 const selectableFields = require('../../../data/fields/schemas/selectableFields')
-const sortSpecification = require('../../../data/sort/schemas/sortSpecification')
+const sortableFields = require('../../../data/sort/schemas/sortableFields')
 
 module.exports = {
   additionalProperties: false,
@@ -15,7 +15,7 @@ module.exports = {
       type: 'object',
     },
     selectableFields,
-    sortSpecification,
+    sortableFields,
   },
   required: [...base.required],
 }

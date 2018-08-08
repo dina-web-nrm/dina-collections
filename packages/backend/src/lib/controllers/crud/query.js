@@ -6,7 +6,7 @@ module.exports = function queryController({ operation, models }) {
     filterSpecification,
     resource,
     selectableFields,
-    sortSpecification,
+    sortableFields,
   } = operation
   const model = models[resource]
   if (!model) {
@@ -53,7 +53,7 @@ module.exports = function queryController({ operation, models }) {
         scroll,
         scrollId,
         selectableFields,
-        sortSpecification,
+        sortableFields,
       })
       .then(({ items, meta }) => {
         return createArrayResponse({

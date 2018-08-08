@@ -1,16 +1,13 @@
 const backendError400 = require('common/src/error/errorFactories/backendError400')
 
 module.exports = function extractSortObjectsFromUserInput(
-  { sortInput, sortSpecification } = {}
+  { sortInput, sortableFields = [] } = {}
 ) {
   if (!(sortInput && sortInput.length)) {
     return []
   }
 
-  const fieldsMap = (
-    (sortSpecification && sortSpecification.fields) ||
-    []
-  ).reduce((obj, key) => {
+  const fieldsMap = sortableFields.reduce((obj, key) => {
     obj[key] = true // eslint-disable-line no-param-reassign
     return obj
   }, {})

@@ -22,7 +22,7 @@ module.exports = function getMany({
   resource,
   resourcePath,
   selectableFields,
-  sortSpecification,
+  sortableFields,
   ...rest
 }) {
   const filterSpecification =
@@ -53,7 +53,7 @@ module.exports = function getMany({
   })
   queryParams = addSortingToQueryParams({
     queryParams,
-    sortSpecification,
+    sortableFields,
   })
 
   queryParams = addMockToQueryParams({
@@ -91,7 +91,7 @@ module.exports = function getMany({
       relations,
     },
     selectableFields,
-    sortSpecification,
+    sortableFields,
     summary: `Find ${resourcePath}`,
   }
 }
