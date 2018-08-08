@@ -40,6 +40,26 @@ class App extends Component {
               path={`${match.url}/specimens/mammals`}
             />
             <Route
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals/create`}
+            />
+            <Route
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals/:specimenId/edit`}
+            />
+            <Route
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals/search`}
+            />
+            <Route
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals/search/settings`}
+            />
+            <Route
               component={LookupMammals}
               exact
               path={`${match.url}/mammals/lookup`}
