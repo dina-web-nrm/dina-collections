@@ -43,7 +43,6 @@ module.exports = function getWhereFactory({
       aggregations,
       aggregationSpecification,
       fieldsInput,
-      fieldsSpecification,
       filterInput = {},
       filterSpecification = {},
       limit = 10,
@@ -51,6 +50,7 @@ module.exports = function getWhereFactory({
       query,
       scroll,
       scrollId,
+      selectableFields,
       sortInput,
       sortSpecification,
     }) => {
@@ -89,7 +89,7 @@ module.exports = function getWhereFactory({
 
           const fields = extractFieldsFromUserInput({
             fieldsInput,
-            fieldsSpecification,
+            selectableFields,
           })
 
           methodName = 'search'

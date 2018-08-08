@@ -65,13 +65,12 @@ module.exports = function testGetOneWhere({ config, setupModel }) {
     })
 
     it('returns correct doc by id with specified fields', () => {
-      const fieldsSpecification = {
-        fields: ['id', 'attributes.firstName'],
-      }
+      const selectableFields = ['id', 'attributes.firstName']
+
       return model
         .getOneWhere({
           fieldsInput: ['id', 'attributes.firstName'],
-          fieldsSpecification,
+          selectableFields,
         })
         .then(({ item }) => {
           expect(item.id).toEqual(firstItem.id)

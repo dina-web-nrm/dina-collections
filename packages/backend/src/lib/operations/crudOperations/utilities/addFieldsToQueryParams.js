@@ -1,10 +1,8 @@
 module.exports = function addFieldsFromQueryParams({
   queryParams,
-  fieldsSpecification = {},
+  selectableFields = [],
 }) {
-  const fields = fieldsSpecification.fields || []
-
-  if (!fields.length) {
+  if (!selectableFields.length) {
     return queryParams
   }
 
@@ -16,7 +14,7 @@ module.exports = function addFieldsFromQueryParams({
       required: false,
       schema: {
         items: {
-          enum: fields,
+          enum: selectableFields,
           type: 'string',
         },
         type: 'array',

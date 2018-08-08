@@ -7,7 +7,7 @@ module.exports = function extractSortObjectsFromUserInput(
     return []
   }
 
-  const fieldsSpecificationMap = (
+  const fieldsMap = (
     (sortSpecification && sortSpecification.fields) ||
     []
   ).reduce((obj, key) => {
@@ -29,7 +29,7 @@ module.exports = function extractSortObjectsFromUserInput(
       const path = sortSegments[0]
       const order = sortSegments[1]
 
-      if (!fieldsSpecificationMap[path]) {
+      if (!fieldsMap[path]) {
         return null
       }
 

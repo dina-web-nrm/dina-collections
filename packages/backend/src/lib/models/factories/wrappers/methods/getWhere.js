@@ -13,9 +13,6 @@ const inputSchema = {
     fieldsInput: {
       type: 'array',
     },
-    fieldsSpecification: {
-      type: 'object',
-    },
     filterInput: {
       type: 'object',
     },
@@ -39,6 +36,9 @@ const inputSchema = {
     },
     scrollId: {
       type: 'string',
+    },
+    selectableFields: {
+      type: 'array',
     },
     sortInput: {
       type: 'array',

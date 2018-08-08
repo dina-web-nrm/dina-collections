@@ -7,11 +7,11 @@ module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
   return getOneWhereWrapper(
     ({
       fieldsInput = [],
-      fieldsSpecification = {},
-      include = undefined,
-      raw = true,
       filterInput,
       filterSpecification,
+      include = undefined,
+      raw = true,
+      selectableFields = [],
     }) => {
       return buildWhereFilter({
         filterInput,
@@ -34,7 +34,7 @@ module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
           const { item } = formatModelItemResponse({ input: res })
           const fields = extractFieldsFromUserInput({
             fieldsInput,
-            fieldsSpecification,
+            selectableFields,
           })
 
           if (fields.length) {

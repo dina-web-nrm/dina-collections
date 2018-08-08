@@ -10,9 +10,6 @@ const inputSchema = {
     fieldsInput: {
       type: 'array',
     },
-    fieldsSpecification: {
-      type: 'object',
-    },
     filterInput: {
       type: 'object',
     },
@@ -20,6 +17,9 @@ const inputSchema = {
       type: 'object',
     },
     include: {
+      type: 'array',
+    },
+    selectableFields: {
       type: 'array',
     },
     where: {

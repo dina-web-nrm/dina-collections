@@ -52,14 +52,12 @@ module.exports = function testGetById({ config, setupModel }) {
     })
 
     it('returns correct doc by id with specified fields', () => {
-      const fieldsSpecification = {
-        fields: ['id', 'attributes.firstName'],
-      }
+      const selectableFields = ['id', 'attributes.firstName']
       return model
         .getById({
           fieldsInput: ['id', 'attributes.firstName'],
-          fieldsSpecification,
           id: secondItem.id,
+          selectableFields,
         })
         .then(({ item }) => {
           expect(item.id).toEqual(secondItem.id)

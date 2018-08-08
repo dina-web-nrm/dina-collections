@@ -9,7 +9,7 @@ module.exports = function getOne({
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
-  fieldsSpecification,
+  selectableFields,
   includeRelations,
   operationId,
   queryParams: queryParamsInput,
@@ -25,8 +25,8 @@ module.exports = function getOne({
   })
 
   queryParams = addFieldsToQueryParams({
-    fieldsSpecification,
     queryParams,
+    selectableFields,
   })
 
   queryParams = addMockToQueryParams({
@@ -52,7 +52,6 @@ module.exports = function getOne({
   return {
     ...rest,
     errors,
-    fieldsSpecification,
     includeRelations,
     method: 'get',
     operationId: operationId || buildOperationId({ operationType, resource }),
@@ -67,6 +66,7 @@ module.exports = function getOne({
       format: 'object',
       relations,
     },
+    selectableFields,
     summary: `Find ${resource} by id`,
   }
 }

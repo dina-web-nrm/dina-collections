@@ -26,12 +26,12 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
   return getWhereWrapper(
     ({
       fieldsInput = [],
-      fieldsSpecification = {},
       filterInput,
       filterSpecification,
       include = [],
       limit,
       offset,
+      selectableFields = [],
       sortInput,
       where: customWhere,
     }) => {
@@ -73,7 +73,7 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
 
           const fields = extractFieldsFromUserInput({
             fieldsInput,
-            fieldsSpecification,
+            selectableFields,
           })
 
           if (fields.length) {

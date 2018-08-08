@@ -76,18 +76,16 @@ module.exports = function testGetWhere({ config, setupModel }) {
       const filterSpecification = createGetManyFilterSpecifications({
         include: ['id'],
       })
-      const fieldsSpecification = {
-        fields: ['id', 'attributes.firstName'],
-      }
+      const selectableFields = ['id', 'attributes.firstName']
+
       return model
         .getWhere({
           fieldsInput: ['id', 'attributes.firstName'],
-          fieldsSpecification,
-
           filterInput: {
             id: secondItem.id,
           },
           filterSpecification,
+          selectableFields,
         })
         .then(({ items }) => {
           expect(items.length).toEqual(1)

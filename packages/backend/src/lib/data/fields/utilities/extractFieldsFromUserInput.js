@@ -1,19 +1,16 @@
 module.exports = function extractFieldsFromUserInput(
-  { fieldsInput, fieldsSpecification } = {}
+  { fieldsInput, selectableFields } = {}
 ) {
   if (!(fieldsInput && fieldsInput.length)) {
     return []
   }
 
-  const fieldsSpecificationMap = (
-    (fieldsSpecification && fieldsSpecification.fields) ||
-    []
-  ).reduce((obj, key) => {
+  const selectableFieldsMap = (selectableFields || []).reduce((obj, key) => {
     obj[key] = true // eslint-disable-line no-param-reassign
     return obj
   }, {})
 
   return fieldsInput.filter(fieldInput => {
-    return fieldsSpecificationMap[fieldInput]
+    return selectableFieldsMap[fieldInput]
   })
 }

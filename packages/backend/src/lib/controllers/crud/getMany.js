@@ -4,11 +4,11 @@ const extractRelationships = require('../utilities/relationships/extractRelation
 
 module.exports = function getMany({ operation, models }) {
   const {
-    fieldsSpecification,
     filterSpecification,
     includeRelations,
     relations,
     resource,
+    selectableFields,
     sortSpecification,
   } = operation
   const model = models[resource]
@@ -48,12 +48,12 @@ module.exports = function getMany({ operation, models }) {
     return model
       .getWhere({
         fieldsInput,
-        fieldsSpecification,
         filterInput,
         filterSpecification,
         include,
         limit,
         offset,
+        selectableFields,
         sortInput,
         sortSpecification,
       })

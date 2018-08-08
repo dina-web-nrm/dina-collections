@@ -10,9 +10,6 @@ const inputSchema = {
     fieldsInput: {
       type: 'array',
     },
-    fieldsSpecification: {
-      type: 'object',
-    },
     id: {
       type: 'string',
     },
@@ -21,6 +18,9 @@ const inputSchema = {
     },
     raw: {
       type: 'boolean',
+    },
+    selectableFields: {
+      type: 'array',
     },
   },
   required: ['id'],

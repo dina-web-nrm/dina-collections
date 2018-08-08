@@ -12,10 +12,10 @@ module.exports = function getByIdFactory({ Model }) {
     ({
       allowDeactivated = false,
       fieldsInput = [],
-      fieldsSpecification = {},
       id,
       include = [],
       raw = true,
+      selectableFields = [],
     }) => {
       return Model.findOne({
         include,
@@ -33,7 +33,7 @@ module.exports = function getByIdFactory({ Model }) {
         const { item } = formatModelItemResponse({ input: res })
         const fields = extractFieldsFromUserInput({
           fieldsInput,
-          fieldsSpecification,
+          selectableFields,
         })
 
         if (fields.length) {

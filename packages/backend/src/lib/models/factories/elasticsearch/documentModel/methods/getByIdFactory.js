@@ -7,42 +7,40 @@ module.exports = function getByIdFactory({ Model, elasticsearch }) {
     throw new Error('Have to provide model')
   }
 
-  return getByIdWrapper(
-    ({ fieldsInput = [], fieldsSpecification = {}, id }) => {
-      return elasticsearch
-        .get({
-          id,
-          index: Model.index,
-          type: Model.name,
+  return getByIdWrapper(({ fieldsInput = [], selectableFields = [], id }) => {
+    return elasticsearch
+      .get({
+        id,
+        index: Model.index,
+        type: Model.name,
+      })
+      .then(res => {
+        const item = res && res._source // eslint-disable-line no-underscore-dangle
+
+        const fields = extractFieldsFromUserInput({
+          fieldsInput,
+          selectableFields,
         })
-        .then(res => {
-          const item = res && res._source // eslint-disable-line no-underscore-dangle
 
-          const fields = extractFieldsFromUserInput({
-            fieldsInput,
-            fieldsSpecification,
-          })
-
-          if (fields.length) {
-            return {
-              item: extractFieldsFromItem({
-                fields,
-                item,
-              }),
-            }
-          }
-
+        if (fields.length) {
           return {
-            item,
+            item: extractFieldsFromItem({
+              fields,
+              item,
+            }),
           }
-        })
-        .catch(err => {
-          if (err && err.status === 404) {
-            return { item: null }
-          }
+        }
 
-          throw err
-        })
-    }
-  )
+        return {
+          item,
+        }
+      })
+      .catch(err => {
+        if (err && err.status === 404) {
+          return { item: null }
+        }
+
+        throw err
+      })
+  })
 }

@@ -3,9 +3,9 @@ const createArrayResponse = require('../utilities/transformations/createArrayRes
 module.exports = function queryController({ operation, models }) {
   const {
     aggregationSpecification,
-    resource,
-    fieldsSpecification,
     filterSpecification,
+    resource,
+    selectableFields,
     sortSpecification,
   } = operation
   const model = models[resource]
@@ -43,7 +43,6 @@ module.exports = function queryController({ operation, models }) {
         aggregations,
         aggregationSpecification,
         fieldsInput,
-        fieldsSpecification,
         filterInput,
         filterSpecification,
         limit,
@@ -51,6 +50,7 @@ module.exports = function queryController({ operation, models }) {
         query,
         scroll,
         scrollId,
+        selectableFields,
         sortSpecification,
       })
       .then(({ items, meta }) => {

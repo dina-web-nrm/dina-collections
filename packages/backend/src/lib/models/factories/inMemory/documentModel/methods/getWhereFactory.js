@@ -35,14 +35,14 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
-      sortInput,
       fieldsInput = [],
-      fieldsSpecification = {},
       filterInput = {},
       filterSpecification = {},
       limit = 10,
       offset = 0,
       query: queryInput,
+      selectableFields = [],
+      sortInput,
     }) => {
       if (sortInput && sortInput.length) {
         backendError500({
@@ -71,7 +71,7 @@ module.exports = function getWhereFactory({
         }).then(items => {
           const fields = extractFieldsFromUserInput({
             fieldsInput,
-            fieldsSpecification,
+            selectableFields,
           })
 
           if (fields.length) {
