@@ -44,7 +44,7 @@ const inputSchema = {
       type: 'array',
     },
     sortableFields: {
-      type: 'object',
+      type: 'array',
     },
     sortInput: {
       type: 'array',
