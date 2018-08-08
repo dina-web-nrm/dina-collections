@@ -12,22 +12,35 @@ const aggregationSpecification = require('./data/aggregationSpecification')
 
 const resource = 'searchSpecimen'
 
+const fieldsSpecification = {
+  fields: ['id', 'attributes.result'],
+}
+
+const sortSpecification = {
+  fields: ['attributes.idNumeric', 'attributes.result.catalogNumber'],
+}
+
 module.exports = {
   basePath: '/api/search/v01',
   operations: [
     {
+      fieldsSpecification,
       type: 'getOne',
     },
     {
       aggregationSpecification,
+      fieldsSpecification,
       filterSpecification: queryFilterSpecification,
+      sortSpecification,
       type: 'query',
     },
     {
       type: 'del',
     },
     {
+      fieldsSpecification,
       filterSpecification: getManyFilterSpecification,
+      sortSpecification,
       type: 'getMany',
     },
     {

@@ -1,3 +1,6 @@
+const extractFieldsFromItem = require('../../../../data/fields/utilities/extractFieldsFromItem')
+const extractFieldsFromUserInput = require('../../../../data/fields/utilities/extractFieldsFromUserInput')
+
 const getByIdWrapper = require('../../wrappers/methods/getById')
 const formatModelItemResponse = require('../utilities/formatModelItemResponse')
 
@@ -6,7 +9,14 @@ module.exports = function getByIdFactory({ Model }) {
     throw new Error('Have to provide model')
   }
   return getByIdWrapper(
-    ({ allowDeactivated = false, raw = true, id, include = [] }) => {
+    ({
+      allowDeactivated = false,
+      fieldsInput = [],
+      fieldsSpecification = {},
+      id,
+      include = [],
+      raw = true,
+    }) => {
       return Model.findOne({
         include,
         where: allowDeactivated
@@ -19,7 +29,25 @@ module.exports = function getByIdFactory({ Model }) {
         if (!raw) {
           return { item: res }
         }
-        return formatModelItemResponse({ input: res })
+
+        const { item } = formatModelItemResponse({ input: res })
+        const fields = extractFieldsFromUserInput({
+          fieldsInput,
+          fieldsSpecification,
+        })
+
+        if (fields.length) {
+          return {
+            item: extractFieldsFromItem({
+              fields,
+              item,
+            }),
+          }
+        }
+
+        return {
+          item,
+        }
       })
     }
   )

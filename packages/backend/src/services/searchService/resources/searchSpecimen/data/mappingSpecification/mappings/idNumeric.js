@@ -2,8 +2,8 @@ module.exports = {
   description: 'Create mapping for id in numeric format',
   elasticsearch: () => {
     return {
-      type: 'integer',
+      type: 'keyword',
     }
   },
-  key: 'idNumeric',
+  fieldPath: 'attributes.idNumeric',
 }

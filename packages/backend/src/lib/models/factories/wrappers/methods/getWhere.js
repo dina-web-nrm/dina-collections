@@ -10,14 +10,17 @@ const inputSchema = {
     aggregationSpecification: {
       type: 'object',
     },
+    fieldsInput: {
+      type: 'array',
+    },
+    fieldsSpecification: {
+      type: 'object',
+    },
     filterInput: {
       type: 'object',
     },
     filterSpecification: {
       type: 'object',
-    },
-    idsOnly: {
-      type: 'boolean',
     },
     include: {
       type: 'array',
@@ -36,6 +39,12 @@ const inputSchema = {
     },
     scrollId: {
       type: 'string',
+    },
+    sortInput: {
+      type: 'array',
+    },
+    sortSpecification: {
+      type: 'object',
     },
     where: {
       type: 'object',

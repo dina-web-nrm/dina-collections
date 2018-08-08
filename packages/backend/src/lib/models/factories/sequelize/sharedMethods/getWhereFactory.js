@@ -1,3 +1,7 @@
+const backendError500 = require('common/src/error/errorFactories/backendError400')
+const extractFieldsFromItem = require('../../../../data/fields/utilities/extractFieldsFromItem')
+const extractFieldsFromUserInput = require('../../../../data/fields/utilities/extractFieldsFromUserInput')
+
 const getWhereWrapper = require('../../wrappers/methods/getWhere')
 const formatModelItemsResponse = require('../utilities/formatModelItemsResponse')
 
@@ -21,13 +25,23 @@ const hasDeactivatedAtFilter = where => {
 module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
   return getWhereWrapper(
     ({
+      fieldsInput = [],
+      fieldsSpecification = {},
       filterInput,
       filterSpecification,
       include = [],
       limit,
       offset,
+      sortInput,
       where: customWhere,
     }) => {
+      if (sortInput && sortInput.length) {
+        backendError500({
+          code: 'INTERNAL_SERVER_ERROR',
+          detail: 'Sorting not implemented for sequelize model',
+        })
+      }
+
       return buildWhereFilter({
         filterInput,
         filterSpecification,
@@ -55,8 +69,25 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
         }
 
         return Model.findAll(options).then(res => {
+          const items = formatModelItemsResponse({ input: res })
+
+          const fields = extractFieldsFromUserInput({
+            fieldsInput,
+            fieldsSpecification,
+          })
+
+          if (fields.length) {
+            return {
+              items: items.map(item => {
+                return extractFieldsFromItem({
+                  fields,
+                  item,
+                })
+              }),
+            }
+          }
           return {
-            items: formatModelItemsResponse({ input: res }),
+            items,
           }
         })
       })

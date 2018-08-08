@@ -1,3 +1,7 @@
+const backendError500 = require('common/src/error/errorFactories/backendError400')
+const extractFieldsFromItem = require('../../../../../data/fields/utilities/extractFieldsFromItem')
+const extractFieldsFromUserInput = require('../../../../../data/fields/utilities/extractFieldsFromUserInput')
+
 const getWhereWrapper = require('../../../wrappers/methods/getWhere')
 const asyncFilter = require('common/src/search/filter/async')
 
@@ -31,12 +35,22 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
+      sortInput,
+      fieldsInput = [],
+      fieldsSpecification = {},
       filterInput = {},
       filterSpecification = {},
       limit = 10,
       offset = 0,
       query: queryInput,
     }) => {
+      if (sortInput && sortInput.length) {
+        backendError500({
+          code: 'INTERNAL_SERVER_ERROR',
+          detail: 'Sorting not implemented for inMemory model',
+        })
+      }
+
       return buildWhere({
         buildWhereFilter,
         buildWhereQuery,
@@ -55,6 +69,22 @@ module.exports = function getWhereFactory({
           query,
           returnItems: true,
         }).then(items => {
+          const fields = extractFieldsFromUserInput({
+            fieldsInput,
+            fieldsSpecification,
+          })
+
+          if (fields.length) {
+            return {
+              items: items.map(item => {
+                return extractFieldsFromItem({
+                  fields,
+                  item,
+                })
+              }),
+            }
+          }
+
           return {
             items,
           }

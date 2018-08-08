@@ -4,7 +4,12 @@ const buildIncludeArray = require('../utilities/relationships/buildIncludeArray'
 const extractRelationships = require('../utilities/relationships/extractRelationships')
 
 module.exports = function getOne({ operation, models }) {
-  const { includeRelations, relations, resource } = operation
+  const {
+    includeRelations,
+    relations,
+    resource,
+    fieldsSpecification,
+  } = operation
 
   const model = models[resource]
   if (!model) {
@@ -18,7 +23,10 @@ module.exports = function getOne({ operation, models }) {
   return ({ request }) => {
     const {
       pathParams: { id },
-      queryParams: { relationships: queryParamRelationships = '' } = {},
+      queryParams: {
+        fields: fieldsInput,
+        relationships: queryParamRelationships = '',
+      } = {},
     } = request
 
     let include
@@ -30,27 +38,34 @@ module.exports = function getOne({ operation, models }) {
       })
     }
 
-    return model.getById({ id, include }).then(({ item } = {}) => {
-      if (!item) {
-        backendError404({
-          code: 'RESOURCE_NOT_FOUND_ERROR',
-          detail: `${resource} with id: ${id} not found`,
-        })
-      }
-      const relationships =
-        includeRelations &&
-        extractRelationships({
-          item,
-          queryParamRelationships,
-          relations,
-        })
-
-      return createObjectResponse({
-        data: item,
-        id: item.id,
-        relationships,
-        type: resource,
+    return model
+      .getById({
+        fieldsInput,
+        fieldsSpecification,
+        id,
+        include,
       })
-    })
+      .then(({ item } = {}) => {
+        if (!item) {
+          backendError404({
+            code: 'RESOURCE_NOT_FOUND_ERROR',
+            detail: `${resource} with id: ${id} not found`,
+          })
+        }
+        const relationships =
+          includeRelations &&
+          extractRelationships({
+            item,
+            queryParamRelationships,
+            relations,
+          })
+
+        return createObjectResponse({
+          data: item,
+          id: item.id,
+          relationships,
+          type: resource,
+        })
+      })
   }
 }

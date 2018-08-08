@@ -6,19 +6,23 @@ const addQueryParamsFromFilterSpecifications = require('./utilities/addQueryPara
 const addMockToQueryParams = require('./utilities/addMockToQueryParams')
 const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
 const buildOperationId = require('common/src/buildOperationId')
+const addFieldsToQueryParams = require('./utilities/addFieldsToQueryParams')
+const addSortingToQueryParams = require('./utilities/addSortingToQueryParams')
 
 module.exports = function getMany({
   availableExamples,
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
+  fieldsSpecification,
+  filterSpecification: filterSpecificationInput,
   includeRelations,
   operationId,
   queryParams: queryParamsInput,
   relations,
   resource,
-  filterSpecification: filterSpecificationInput,
   resourcePath,
+  sortSpecification,
   ...rest
 }) {
   const filterSpecification =
@@ -43,6 +47,15 @@ module.exports = function getMany({
     queryParams,
   })
 
+  queryParams = addFieldsToQueryParams({
+    fieldsSpecification,
+    queryParams,
+  })
+  queryParams = addSortingToQueryParams({
+    queryParams,
+    sortSpecification,
+  })
+
   queryParams = addMockToQueryParams({
     queryParams,
   })
@@ -63,6 +76,7 @@ module.exports = function getMany({
   return {
     ...rest,
     errors,
+    fieldsSpecification,
     filterSpecification,
     includeRelations,
     method: 'get',
@@ -77,6 +91,7 @@ module.exports = function getMany({
       format: 'array',
       relations,
     },
+    sortSpecification,
     summary: `Find ${resourcePath}`,
   }
 }

@@ -8,6 +8,7 @@ module.exports = function extractItemsFromResult({ result }) {
       return {
         ...(hit._source || undefined),
         id,
+        internals: {},
       }
     })
   }

@@ -10373,6 +10373,22 @@
           },
           {
             "in": "query",
+            "name": "fields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.result"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "example": false,
@@ -10689,6 +10705,40 @@
             "schema": {
               "minimum": 0,
               "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id",
+                  "attributes.result"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.idNumeric:asc",
+                  "attributes.idNumeric:desc",
+                  "attributes.result.catalogNumber:asc",
+                  "attributes.result.catalogNumber:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
             }
           },
           {

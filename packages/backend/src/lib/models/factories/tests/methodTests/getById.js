@@ -36,4 +36,38 @@ module.exports = function testGetById({ config, setupModel }) {
       })
     })
   })
+
+  describe('getById - Fields', () => {
+    let model
+
+    const firstItem = getTestData('itemPersonWithId', 0)
+    const secondItem = getTestData('itemPersonWithId', 1)
+    beforeAll(() => {
+      return setupModel({ config }).then(createdModel => {
+        model = createdModel
+        return model.create({ allowId: true, item: firstItem }).then(() => {
+          return model.create({ allowId: true, item: secondItem })
+        })
+      })
+    })
+
+    it('returns correct doc by id with specified fields', () => {
+      const fieldsSpecification = {
+        fields: ['id', 'attributes.firstName'],
+      }
+      return model
+        .getById({
+          fieldsInput: ['id', 'attributes.firstName'],
+          fieldsSpecification,
+          id: secondItem.id,
+        })
+        .then(({ item }) => {
+          expect(item.id).toEqual(secondItem.id)
+          expect(item.attributes.firstName).toEqual(
+            secondItem.attributes.firstName
+          )
+          expect(Object.keys(item.attributes).length).toEqual(1)
+        })
+    })
+  })
 }

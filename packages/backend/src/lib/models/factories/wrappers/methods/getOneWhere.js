@@ -7,6 +7,12 @@ const inputSchema = {
     allowDeactivated: {
       type: 'boolean',
     },
+    fieldsInput: {
+      type: 'array',
+    },
+    fieldsSpecification: {
+      type: 'object',
+    },
     filterInput: {
       type: 'object',
     },

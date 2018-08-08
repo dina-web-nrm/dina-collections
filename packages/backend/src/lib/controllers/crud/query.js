@@ -1,7 +1,13 @@
 const createArrayResponse = require('../utilities/transformations/createArrayResponse')
 
 module.exports = function queryController({ operation, models }) {
-  const { aggregationSpecification, resource, filterSpecification } = operation
+  const {
+    aggregationSpecification,
+    resource,
+    fieldsSpecification,
+    filterSpecification,
+    sortSpecification,
+  } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -20,7 +26,8 @@ module.exports = function queryController({ operation, models }) {
         data: {
           attributes: {
             aggregations,
-            idsOnly,
+            fields: fieldsInput,
+            filter: filterInput,
             limit,
             offset,
             query,
@@ -35,13 +42,16 @@ module.exports = function queryController({ operation, models }) {
       .getWhere({
         aggregations,
         aggregationSpecification,
+        fieldsInput,
+        fieldsSpecification,
+        filterInput,
         filterSpecification,
-        idsOnly,
         limit,
         offset,
         query,
         scroll,
         scrollId,
+        sortSpecification,
       })
       .then(({ items, meta }) => {
         return createArrayResponse({

@@ -2,12 +2,14 @@ const buildOperationId = require('common/src/buildOperationId')
 const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
 const addMockToQueryParams = require('./utilities/addMockToQueryParams')
 const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
+const addFieldsToQueryParams = require('./utilities/addFieldsToQueryParams')
 
 module.exports = function getOne({
   availableExamples,
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
+  fieldsSpecification,
   includeRelations,
   operationId,
   queryParams: queryParamsInput,
@@ -20,6 +22,11 @@ module.exports = function getOne({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
+  })
+
+  queryParams = addFieldsToQueryParams({
+    fieldsSpecification,
+    queryParams,
   })
 
   queryParams = addMockToQueryParams({
@@ -45,6 +52,7 @@ module.exports = function getOne({
   return {
     ...rest,
     errors,
+    fieldsSpecification,
     includeRelations,
     method: 'get',
     operationId: operationId || buildOperationId({ operationType, resource }),
