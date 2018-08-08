@@ -19,6 +19,7 @@ module.exports = function getOne({ operation, models }) {
     const {
       pathParams: { id },
       queryParams: {
+        excludeFields: excludeFieldsInput,
         includeFields: includeFieldsInput,
         relationships: queryParamRelationships = '',
       } = {},
@@ -35,6 +36,7 @@ module.exports = function getOne({ operation, models }) {
 
     return model
       .getById({
+        excludeFieldsInput,
         id,
         include,
         includeFieldsInput,

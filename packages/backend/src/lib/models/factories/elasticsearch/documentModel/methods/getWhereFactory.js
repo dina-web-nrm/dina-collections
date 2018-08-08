@@ -42,6 +42,7 @@ module.exports = function getWhereFactory({
     ({
       aggregations,
       aggregationSpecification,
+      excludeFieldsInput = [],
       filterInput = {},
       filterSpecification = {},
       includeFieldsInput,
@@ -87,15 +88,23 @@ module.exports = function getWhereFactory({
             })
           }
 
-          const fields = extractFieldsFromUserInput({
-            includeFieldsInput,
-            selectableFields,
-          })
+          const fields =
+            extractFieldsFromUserInput({
+              includeFieldsInput,
+              selectableFields,
+            }) || []
+
+          const sourceOptions = {
+            _sourceExclude: excludeFieldsInput.length
+              ? excludeFieldsInput
+              : undefined,
+            _sourceInclude: fields.length ? fields : undefined,
+          }
 
           methodName = 'search'
           options = {
             ...options,
-            _source: fields && fields.length ? fields : undefined,
+            ...sourceOptions,
             body: where,
             from: offset,
             index: Model.index,

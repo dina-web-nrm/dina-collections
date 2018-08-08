@@ -27,8 +27,9 @@ module.exports = function getMany({ operation, models }) {
   return ({ request }) => {
     const {
       queryParams: {
-        includeFields: includeFieldsInput,
+        excludeFields: excludeFieldsInput,
         filter: filterInput,
+        includeFields: includeFieldsInput,
         limit = 10,
         offset = 0,
         relationships: queryParamRelationships = '',
@@ -47,6 +48,7 @@ module.exports = function getMany({ operation, models }) {
 
     return model
       .getWhere({
+        excludeFieldsInput,
         filterInput,
         filterSpecification,
         include,

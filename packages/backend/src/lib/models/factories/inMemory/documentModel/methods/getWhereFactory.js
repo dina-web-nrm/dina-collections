@@ -35,6 +35,7 @@ module.exports = function getWhereFactory({
 }) {
   return getWhereWrapper(
     ({
+      excludeFieldsInput = [],
       filterInput = {},
       filterSpecification = {},
       includeFieldsInput = [],
@@ -74,10 +75,11 @@ module.exports = function getWhereFactory({
             selectableFields,
           })
 
-          if (fields.length) {
+          if (fields.length || excludeFieldsInput.length) {
             return {
               items: items.map(item => {
                 return extractFieldsFromItem({
+                  excludeFieldsInput,
                   fields,
                   item,
                 })

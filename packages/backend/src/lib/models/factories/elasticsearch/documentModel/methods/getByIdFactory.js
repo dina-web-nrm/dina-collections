@@ -8,7 +8,12 @@ module.exports = function getByIdFactory({ Model, elasticsearch }) {
   }
 
   return getByIdWrapper(
-    ({ includeFieldsInput = [], selectableFields = [], id }) => {
+    ({
+      excludeFieldsInput = [],
+      includeFieldsInput = [],
+      selectableFields = [],
+      id,
+    }) => {
       return elasticsearch
         .get({
           id,
@@ -19,13 +24,15 @@ module.exports = function getByIdFactory({ Model, elasticsearch }) {
           const item = res && res._source // eslint-disable-line no-underscore-dangle
 
           const fields = extractFieldsFromUserInput({
+            excludeFieldsInput,
             includeFieldsInput,
             selectableFields,
           })
 
-          if (fields.length) {
+          if (fields.length || excludeFieldsInput.length) {
             return {
               item: extractFieldsFromItem({
+                excludeFieldsInput,
                 fields,
                 item,
               }),

@@ -25,6 +25,7 @@ const hasDeactivatedAtFilter = where => {
 module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
   return getWhereWrapper(
     ({
+      excludeFieldsInput = [],
       filterInput,
       filterSpecification,
       include = [],
@@ -76,10 +77,11 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
             selectableFields,
           })
 
-          if (fields.length) {
+          if (fields.length || excludeFieldsInput.length) {
             return {
               items: items.map(item => {
                 return extractFieldsFromItem({
+                  excludeFieldsInput,
                   fields,
                   item,
                 })

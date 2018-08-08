@@ -7,6 +7,9 @@ const inputSchema = {
     allowDeactivated: {
       type: 'boolean',
     },
+    excludeFieldsInput: {
+      type: 'array',
+    },
     filterInput: {
       type: 'object',
     },

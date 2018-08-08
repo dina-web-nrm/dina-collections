@@ -11,6 +11,7 @@ module.exports = function getByIdFactory({ Model }) {
   return getByIdWrapper(
     ({
       allowDeactivated = false,
+      excludeFieldsInput = [],
       id,
       include = [],
       includeFieldsInput = [],
@@ -36,9 +37,10 @@ module.exports = function getByIdFactory({ Model }) {
           selectableFields,
         })
 
-        if (fields.length) {
+        if (fields.length || excludeFieldsInput.length) {
           return {
             item: extractFieldsFromItem({
+              excludeFieldsInput,
               fields,
               item,
             }),
