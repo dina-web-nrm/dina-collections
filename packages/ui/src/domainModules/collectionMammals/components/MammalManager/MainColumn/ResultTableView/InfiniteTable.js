@@ -11,6 +11,7 @@ import { globalSelectors as searchSelectors } from 'coreModules/search/keyObject
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
+import { actionCreators as keyObjectActionCreators } from '../../../../keyObjectModule'
 import InfiniteTableRow from './InfiniteTableRow'
 
 const log = createLog(
@@ -32,6 +33,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   push,
+  setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
 }
 
 const propTypes = {
@@ -40,6 +42,7 @@ const propTypes = {
   language: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  setFocusedSpecimenId: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
 }
@@ -88,7 +91,8 @@ export class InfiniteTable extends Component {
   }
 
   handleRowClick(specimenId) {
-    this.props.push(`/app/mammals/${specimenId}/edit`)
+    this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+    this.props.setFocusedSpecimenId(specimenId)
   }
 
   renderItem(index) {
