@@ -1,4 +1,6 @@
-export { default as MultipleChoiceCheckboxes } from './MultipleChoiceCheckboxes'
+export {
+  default as MultipleChoiceCheckboxes,
+} from './MultipleChoiceCheckboxes/Local'
 export {
   default as MultipleChoiceCheckboxesField,
 } from './MultipleChoiceCheckboxes/Field'
