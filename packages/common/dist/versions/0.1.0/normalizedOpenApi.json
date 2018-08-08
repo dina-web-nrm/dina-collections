@@ -10373,14 +10373,28 @@
           },
           {
             "in": "query",
-            "name": "fields",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.agents"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
             "description": "When provided only specified fields will be returned in response",
             "required": false,
             "schema": {
               "items": {
                 "enum": [
-                  "id",
-                  "attributes.result"
+                  "attributes.agents"
                 ],
                 "type": "string"
               },
@@ -10629,7 +10643,16 @@
           {
             "in": "query",
             "name": "filter[matchAgent]",
-            "description": "Match agent",
+            "description": "Match for attributes.agents",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[matchAgeStage]",
+            "description": "",
             "required": false,
             "schema": {
               "type": "string"
@@ -10665,7 +10688,16 @@
           {
             "in": "query",
             "name": "filter[searchAgent]",
-            "description": "Search agents",
+            "description": "Search attributes.agents",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchAgeStage]",
+            "description": "",
             "required": false,
             "schema": {
               "type": "string"
@@ -10709,14 +10741,28 @@
           },
           {
             "in": "query",
-            "name": "fields",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "attributes.agents"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
             "description": "When provided only specified fields will be returned in response",
             "required": false,
             "schema": {
               "items": {
                 "enum": [
-                  "id",
-                  "attributes.result"
+                  "attributes.agents"
                 ],
                 "type": "string"
               },
@@ -10731,10 +10777,8 @@
             "schema": {
               "items": {
                 "enum": [
-                  "attributes.idNumeric:asc",
-                  "attributes.idNumeric:desc",
-                  "attributes.result.catalogNumber:asc",
-                  "attributes.result.catalogNumber:desc"
+                  "attributes.agents:asc",
+                  "attributes.agents:desc"
                 ],
                 "type": "string"
               },
