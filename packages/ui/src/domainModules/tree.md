@@ -50,13 +50,6 @@
 │   │   │   └── index.js
 │   │   ├── EditSpecimen
 │   │   │   └── index.js
-│   │   ├── LookupMammals
-│   │   │   ├── CheckboxesForm.js
-│   │   │   ├── CollectingLocationMultipleSearch.js
-│   │   │   ├── Filter.js
-│   │   │   ├── Result.js
-│   │   │   ├── Row.js
-│   │   │   └── index.js
 │   │   ├── MammalForm
 │   │   │   ├── FormActions.js
 │   │   │   ├── Scenarios

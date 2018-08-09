@@ -22,11 +22,6 @@
 │       │   ├── __markdown__
 │       │   ├── constants.js
 │       │   └── index.js
-│       ├── editMammal
-│       │   ├── Async.js
-│       │   ├── Component.js
-│       │   ├── constants.js
-│       │   └── index.js
 │       ├── home
 │       │   ├── Async.js
 │       │   ├── Component.js
@@ -41,12 +36,6 @@
 │       │   ├── constants.js
 │       │   ├── index.js
 │       │   ├── logo.png
-│       │   └── translations.json
-│       ├── lookupMammals
-│       │   ├── Async.js
-│       │   ├── Component.js
-│       │   ├── constants.js
-│       │   ├── index.js
 │       │   └── translations.json
 │       ├── manageAgents
 │       │   ├── Async.js
@@ -78,11 +67,6 @@
 │       │   ├── constants.js
 │       │   └── index.js
 │       ├── public
-│       │   ├── Async.js
-│       │   ├── Component.js
-│       │   ├── constants.js
-│       │   └── index.js
-│       ├── registerMammal
 │       │   ├── Async.js
 │       │   ├── Component.js
 │       │   ├── constants.js
