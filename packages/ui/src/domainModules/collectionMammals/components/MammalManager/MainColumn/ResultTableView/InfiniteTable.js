@@ -161,7 +161,7 @@ export class InfiniteTable extends Component {
 
   render() {
     log.render()
-    const { searchResult, width } = this.props
+    const { currentTableRowNumber, searchResult, width } = this.props
 
     if (!(searchResult && searchResult.items)) {
       return (
@@ -176,6 +176,7 @@ export class InfiniteTable extends Component {
     return (
       <div style={{ width }}>
         <ReactList
+          initialIndex={currentTableRowNumber - 1}
           itemRenderer={this.renderItem}
           itemsRenderer={itemsRenderer}
           length={searchResult.items.length}
