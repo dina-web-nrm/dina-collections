@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import { MammalForm } from 'domainModules/collectionMammals/components'
 import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
@@ -26,7 +27,6 @@ const mapDispatchToProps = {
 const propTypes = {
   featureTypes: PropTypes.array.isRequired,
   nestedItem: PropTypes.object,
-  specimenId: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
   updateSpecimen: PropTypes.func.isRequired,
 }
 
@@ -44,6 +44,7 @@ class EditSpecimen extends Component {
     })
     log.render()
     log.debug('initialValues', initialValues)
+
     return (
       <PageTemplate>
         <MammalForm
@@ -68,8 +69,9 @@ EditSpecimen.propTypes = propTypes
 EditSpecimen.defaultProps = defaultProps
 
 export default compose(
+  withRouter,
   createGetNestedItemById({
-    idPath: 'specimenId',
+    idPath: 'match.params.specimenId',
     include: [
       'agents',
       'featureTypes',
