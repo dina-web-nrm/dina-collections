@@ -15,6 +15,9 @@ module.exports = {
         type: 'string',
       },
     },
+    numberOfEntriesEachBatch: {
+      type: 'number',
+    },
     resolveRelations: {
       type: 'boolean',
     },

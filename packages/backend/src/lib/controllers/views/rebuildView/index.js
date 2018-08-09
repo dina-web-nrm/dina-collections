@@ -23,6 +23,7 @@ module.exports = function rebuildView({
       collidingIdPrefix,
       createBatchFunction = defaultCreateBatchFunction,
       executeFunction = defaultExecuteFunction,
+      numberOfEntriesEachBatch = 1000,
       postTransformationFunction = defaultPostTransformationFunction,
       preTransformationFunction = defaultPreTransformationFunction,
       resolveRelations,
@@ -104,7 +105,7 @@ module.exports = function rebuildView({
           createBatch: wrappedBatchFunction,
           execute: wrapperExecute,
           numberOfEntries: limit,
-          numberOfEntriesEachBatch: 1000,
+          numberOfEntriesEachBatch,
           reporter,
         }).then(() => {
           log.scope().info(`Done: migrate data for ${resource}`)
