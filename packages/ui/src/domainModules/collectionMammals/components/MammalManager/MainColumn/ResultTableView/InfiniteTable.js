@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import ReactList from 'react-list'
 import { push } from 'react-router-redux'
 import { Grid } from 'semantic-ui-react'
+import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
@@ -19,6 +20,15 @@ const log = createLog(
 )
 
 const SEARCH_SPECIMEN = 'searchSpecimen'
+
+const handleFirstSearchResult = props => {
+  const index = props.currentTableRowNumber - 1
+  const specimenId = objectPath.get(props, `searchResult.items.${index}.id`)
+
+  if (specimenId) {
+    props.setFocusedSpecimenId(specimenId)
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -73,6 +83,10 @@ export class InfiniteTable extends Component {
     this.handleRowClick = this.handleRowClick.bind(this)
   }
 
+  componentDidMount() {
+    handleFirstSearchResult(this.props)
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       nextProps.currentTableRowNumber &&
@@ -88,6 +102,19 @@ export class InfiniteTable extends Component {
       } else {
         this.list.scrollAround(nextProps.currentTableRowNumber)
       }
+    }
+
+    if (
+      !(
+        this.props.searchResult &&
+        this.props.searchResult.items &&
+        this.props.searchResult.items.length
+      ) &&
+      (nextProps.searchResult &&
+        nextProps.searchResult.items &&
+        nextProps.searchResult.items.length)
+    ) {
+      handleFirstSearchResult(nextProps)
     }
   }
 
