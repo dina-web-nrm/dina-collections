@@ -7,12 +7,9 @@ import { AppNavigationSidebar, ViewWrap } from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
 import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
 
-import EditMammal from '../editMammal/Async'
 import Home from '../home/Async'
 import SpecimensMammals from '../specimensMammals/Async'
-import LookupMammals from '../lookupMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
-import RegisterMammal from '../registerMammal/Async'
 import Settings from '../settings/Async'
 import ManageAgents from '../manageAgents/Async'
 import ManageLocalities from '../manageLocalities/Async'
@@ -40,18 +37,24 @@ class App extends Component {
               path={`${match.url}/specimens/mammals`}
             />
             <Route
-              component={LookupMammals}
+              component={SpecimensMammals}
               exact
-              path={`${match.url}/mammals/lookup`}
+              path={`${match.url}/specimens/mammals/create`}
             />
             <Route
-              component={RegisterMammal}
+              component={SpecimensMammals}
               exact
-              path={`${match.url}/mammals/register`}
+              path={`${match.url}/specimens/mammals/:specimenId/edit`}
             />
             <Route
-              component={EditMammal}
-              path={`${match.url}/mammals/:specimenId/edit`}
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals/search`}
+            />
+            <Route
+              component={SpecimensMammals}
+              exact
+              path={`${match.url}/specimens/mammals/search/settings`}
             />
             <Route
               component={ManageAgents}

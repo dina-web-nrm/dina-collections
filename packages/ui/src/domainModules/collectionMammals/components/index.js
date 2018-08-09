@@ -1,4 +1,6 @@
-import LookupMammals from './LookupMammals'
+import CreateSpecimen from './CreateSpecimen'
+import EditSpecimen from './EditSpecimen'
 import MammalForm from './MammalForm'
+import MammalManager from './MammalManager'
 
-export { LookupMammals, MammalForm }
+export { CreateSpecimen, EditSpecimen, MammalForm, MammalManager }

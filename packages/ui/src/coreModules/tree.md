@@ -384,7 +384,7 @@
 │   ├── components
 │   │   ├── MultipleChoiceCheckboxes
 │   │   │   ├── Field.js
-│   │   │   └── index.js
+│   │   │   └── Local.js
 │   │   ├── MultipleSearchTagsSelect
 │   │   │   ├── Field.js
 │   │   │   ├── RefineTagSelection.js

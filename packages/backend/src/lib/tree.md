@@ -94,6 +94,12 @@
 │   │   └── schemas
 │   │       ├── aggregation.js
 │   │       └── aggregationSpecification.js
+│   ├── fields
+│   │   ├── schemas
+│   │   │   └── fieldsSpecification.js
+│   │   └── utilities
+│   │       ├── extractFieldsFromItem.js
+│   │       └── extractFieldsFromUserInput.js
 │   ├── filters
 │   │   ├── schemas
 │   │   │   ├── filter.js
@@ -114,6 +120,11 @@
 │   │       └── createGetManyFilterSpecifications.js
 │   ├── mappings
 │   │   └── index.js
+│   ├── sort
+│   │   ├── schemas
+│   │   │   └── sortSpecification.js
+│   │   └── utilities
+│   │       └── extractSortObjectsFromUserInput.js
 │   └── transformations
 │       ├── schemas
 │       │   └── transformationSpecification.js
@@ -226,11 +237,13 @@
 │   │   ├── updateRelationship.js
 │   │   └── utilities
 │   │       ├── addExampleToQueryParams.js
+│   │       ├── addFieldsToQueryParams.js
 │   │       ├── addLimitToQueryParams.js
 │   │       ├── addMockToQueryParams.js
 │   │       ├── addOffsetToQueryParams.js
 │   │       ├── addQueryParamsFromFilterSpecifications.js
 │   │       ├── addRelationsToQueryParams.js
+│   │       ├── addSortingToQueryParams.js
 │   │       └── buildRelations.js
 │   ├── importOperations
 │   │   ├── importDataFromFile.js

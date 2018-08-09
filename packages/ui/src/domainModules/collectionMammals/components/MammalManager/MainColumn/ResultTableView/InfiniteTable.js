@@ -5,12 +5,14 @@ import PropTypes from 'prop-types'
 import ReactList from 'react-list'
 import { push } from 'react-router-redux'
 import { Grid } from 'semantic-ui-react'
+import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
 import { createInjectSearchResult } from 'coreModules/search/higherOrderComponents'
+import { actionCreators as keyObjectActionCreators } from '../../../../keyObjectModule'
 import InfiniteTableRow from './InfiniteTableRow'
 
 const log = createLog(
@@ -18,6 +20,15 @@ const log = createLog(
 )
 
 const SEARCH_SPECIMEN = 'searchSpecimen'
+
+const handleFirstSearchResult = props => {
+  const index = props.currentTableRowNumber - 1
+  const specimenId = objectPath.get(props, `searchResult.items.${index}.id`)
+
+  if (specimenId) {
+    props.setFocusedSpecimenId(specimenId)
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -32,6 +43,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   push,
+  setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
+  setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
 }
 
 const propTypes = {
@@ -40,6 +53,8 @@ const propTypes = {
   language: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  setCurrentTableRowNumber: PropTypes.func.isRequired,
+  setFocusedSpecimenId: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
 }
@@ -68,9 +83,12 @@ export class InfiniteTable extends Component {
     this.handleRowClick = this.handleRowClick.bind(this)
   }
 
+  componentDidMount() {
+    handleFirstSearchResult(this.props)
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
-      this.props.currentTableRowNumber &&
       nextProps.currentTableRowNumber &&
       this.props.currentTableRowNumber !== nextProps.currentTableRowNumber
     ) {
@@ -85,10 +103,25 @@ export class InfiniteTable extends Component {
         this.list.scrollAround(nextProps.currentTableRowNumber)
       }
     }
+
+    if (
+      !(
+        this.props.searchResult &&
+        this.props.searchResult.items &&
+        this.props.searchResult.items.length
+      ) &&
+      (nextProps.searchResult &&
+        nextProps.searchResult.items &&
+        nextProps.searchResult.items.length)
+    ) {
+      handleFirstSearchResult(nextProps)
+    }
   }
 
-  handleRowClick(specimenId) {
-    this.props.push(`/app/mammals/${specimenId}/edit`)
+  handleRowClick(rowNumber, specimenId) {
+    this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+    this.props.setFocusedSpecimenId(specimenId)
+    this.props.setCurrentTableRowNumber(rowNumber)
   }
 
   renderItem(index) {
@@ -106,6 +139,7 @@ export class InfiniteTable extends Component {
 
     const rowNumber = index + 1
     const isFocused = rowNumber === currentTableRowNumber
+
     const background = isFocused // eslint-disable-line no-nested-ternary
       ? '#b5b5b5'
       : index % 2 === 0 ? '#e5e7e9' : '#fff'
@@ -116,7 +150,7 @@ export class InfiniteTable extends Component {
         itemId={itemId}
         key={itemId}
         language={language}
-        onClick={this.handleRowClick}
+        onClick={() => this.handleRowClick(rowNumber, itemId)}
         resource={SEARCH_SPECIMEN}
         rowNumber={rowNumber}
         tableColumnsToShow={tableColumnsToShow}
@@ -127,7 +161,7 @@ export class InfiniteTable extends Component {
 
   render() {
     log.render()
-    const { searchResult, width } = this.props
+    const { currentTableRowNumber, searchResult, width } = this.props
 
     if (!(searchResult && searchResult.items)) {
       return (
@@ -142,6 +176,7 @@ export class InfiniteTable extends Component {
     return (
       <div style={{ width }}>
         <ReactList
+          initialIndex={currentTableRowNumber - 1}
           itemRenderer={this.renderItem}
           itemsRenderer={itemsRenderer}
           length={searchResult.items.length}
