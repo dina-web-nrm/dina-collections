@@ -128,7 +128,7 @@ export class RecordNavigationBar extends Component {
               <i>*Adding new*</i>
             </div>
           )}
-          <div style={{ float: 'left', marginLeft: 30 }}>
+          <div style={{ float: 'left', marginLeft: 15 }}>
             <Button
               disabled={!handleShowAllRecords}
               icon

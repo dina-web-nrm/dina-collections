@@ -1,6 +1,6 @@
 export default function createCallParams({
   aggregations,
-  idsOnly,
+  fields,
   limit,
   offset,
   options,
@@ -14,7 +14,7 @@ export default function createCallParams({
       data: {
         attributes: {
           aggregations,
-          idsOnly,
+          fields,
           limit,
           offset,
           query,

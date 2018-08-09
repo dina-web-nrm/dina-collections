@@ -2756,7 +2756,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -2901,7 +2901,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3046,7 +3046,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3191,7 +3191,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3336,7 +3336,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3481,7 +3481,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3626,7 +3626,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3775,7 +3775,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -3920,7 +3920,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >
@@ -4065,7 +4065,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         style={
           Object {
             "float": "left",
-            "marginLeft": 30,
+            "marginLeft": 15,
           }
         }
       >

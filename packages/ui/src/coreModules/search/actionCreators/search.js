@@ -4,9 +4,9 @@ import { actionCreators } from '../keyObjectModule'
 export default function search(
   {
     aggregations,
+    fields = ['id'],
     query,
     resource,
-    idsOnly = true,
     storeSearchResult = false,
   } = {}
 ) {
@@ -27,18 +27,12 @@ export default function search(
     return dispatch(
       queryAc({
         aggregations,
-        idsOnly: false,
+        fields,
         limit: 100000,
         query,
         throwError: true,
       })
-    ).then(res => {
-      const items = idsOnly
-        ? res.map(({ id }) => {
-            return id
-          })
-        : res
-
+    ).then(items => {
       if (storeSearchResult) {
         dispatch(
           updateSearchResult(

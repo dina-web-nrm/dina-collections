@@ -60,7 +60,7 @@ class BottomBar extends PureComponent {
             onClick={handleReset}
             style={{ float: 'right' }}
           >
-            Reset
+            Clear all filters
           </Button>
         </Grid.Column>
       </Grid>

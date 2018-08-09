@@ -68,6 +68,9 @@ ResultTableView.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps),
-  createInjectSearch({}),
+  createInjectSearch({
+    fields: ['id'],
+    resource: 'searchSpecimen',
+  }),
   injectWindowHeight
 )(ResultTableView)
