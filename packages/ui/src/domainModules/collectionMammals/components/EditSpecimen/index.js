@@ -9,7 +9,6 @@ import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
-import PageTemplate from 'coreModules/commonUi/components/PageTemplate'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 
 const log = createLog('modules:collectionMammals:components:EditSpecimen')
@@ -46,21 +45,19 @@ class EditSpecimen extends Component {
     log.debug('initialValues', initialValues)
 
     return (
-      <PageTemplate>
-        <MammalForm
-          handleFormSubmit={formOutput => {
-            const item = nestedToCoreSync({
-              item: formOutput,
-              type: 'specimen',
-            })
-            return updateSpecimen({
-              item,
-            })
-          }}
-          initialValues={initialValues}
-          mode="edit"
-        />
-      </PageTemplate>
+      <MammalForm
+        handleFormSubmit={formOutput => {
+          const item = nestedToCoreSync({
+            item: formOutput,
+            type: 'specimen',
+          })
+          return updateSpecimen({
+            item,
+          })
+        }}
+        initialValues={initialValues}
+        mode="edit"
+      />
     )
   }
 }
