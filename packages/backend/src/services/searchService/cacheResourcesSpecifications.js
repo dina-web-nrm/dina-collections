@@ -36,12 +36,4 @@ module.exports = [
     name: 'cachePhysicalObject',
     srcResource: 'physicalObject',
   },
-  {
-    name: 'cacheTaxon',
-    srcResource: 'taxon',
-  },
-  {
-    name: 'cacheTaxonName',
-    srcResource: 'taxonName',
-  },
 ]
