@@ -47,7 +47,7 @@ module.exports = {
   },
   key,
   mapping: createKeywordMapping({
-    fieldPath: 'attributes.agents',
+    fieldPath,
   }),
   selectable: true,
   sortable: true,
