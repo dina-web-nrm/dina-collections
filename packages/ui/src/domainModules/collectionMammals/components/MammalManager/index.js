@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { isDirty, reset } from 'redux-form'
 import { createSelector } from 'reselect'
 import { push } from 'react-router-redux'
+import objectPath from 'object-path'
 
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
@@ -184,11 +185,6 @@ class MammalManager extends Component {
     return getColumns(this.props)
   }
 
-  handleSettingClick(event) {
-    if (event) event.preventDefault()
-    this.props.push(`/app/specimens/mammals/search/settings`)
-  }
-
   handleSetCurrentTableRowNumber(event, newTableRowNumber) {
     if (event) {
       event.preventDefault()
@@ -225,8 +221,23 @@ class MammalManager extends Component {
     }
   }
 
-  handleResetFilters(event) {
-    this.handleShowAllRecords(event)
+  handleSelectNextRecord(event) {
+    this.handleSetCurrentTableRowNumber(
+      event,
+      this.props.currentTableRowNumber + 1
+    )
+  }
+
+  handleSelectPreviousRecord(event) {
+    this.handleSetCurrentTableRowNumber(
+      event,
+      this.props.currentTableRowNumber - 1
+    )
+  }
+
+  handleToggleFilters(event) {
+    event.preventDefault()
+    this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
   handleSearchSpecimens(event, filterValues = {}) {
@@ -245,9 +256,8 @@ class MammalManager extends Component {
     })
   }
 
-  handleToggleFilters(event) {
-    event.preventDefault()
-    this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
+  handleResetFilters(event) {
+    this.handleShowAllRecords(event)
   }
 
   handleOpenNewRecordForm(event) {
@@ -270,26 +280,17 @@ class MammalManager extends Component {
     }
   }
 
-  handleSelectNextRecord(event) {
-    this.handleSetCurrentTableRowNumber(
-      event,
-      this.props.currentTableRowNumber + 1
-    )
-  }
-
-  handleSelectPreviousRecord(event) {
-    this.handleSetCurrentTableRowNumber(
-      event,
-      this.props.currentTableRowNumber - 1
-    )
-  }
-
   /* eslint-disable class-methods-use-this, no-alert */
   handleExportToCsv(event) {
     event.preventDefault()
     window.alert('Not implemented')
   }
   /* eslint-enable class-methods-use-this, no-alert */
+
+  handleSettingClick(event) {
+    if (event) event.preventDefault()
+    this.props.push(`/app/specimens/mammals/search/settings`)
+  }
 
   render() {
     const {
