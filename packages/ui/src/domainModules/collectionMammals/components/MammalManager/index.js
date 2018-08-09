@@ -145,13 +145,17 @@ const propTypes = {
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   search: PropTypes.func.isRequired,
+  searchResult: PropTypes.object,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
+  setFocusedSpecimenId: PropTypes.func.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
   currentTableRowNumber: 1,
+  focusedSpecimenId: undefined,
   rightSidebarWidth: 300,
+  searchResult: undefined,
   totalNumberOfRecords: undefined,
 }
 
@@ -194,6 +198,30 @@ class MammalManager extends Component {
 
     if (Number.isInteger(parsedInteger)) {
       this.props.setCurrentTableRowNumber(parsedInteger)
+
+      if (
+        !(
+          this.props.searchResult &&
+          this.props.searchResult.items &&
+          this.props.searchResult.items.length
+        )
+      ) {
+        this.props.setFocusedSpecimenId(undefined)
+      }
+
+      const index = parsedInteger - 1
+      const specimenId = objectPath.get(
+        this.props,
+        `searchResult.items.${index}.id`
+      )
+
+      if (specimenId) {
+        this.props.setFocusedSpecimenId(specimenId)
+      }
+
+      if (this.props.mainColumnActiveTab === 'recordEdit') {
+        this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+      }
     }
   }
 
@@ -225,7 +253,6 @@ class MammalManager extends Component {
   handleOpenNewRecordForm(event) {
     event.preventDefault()
     this.props.setFilterColumnIsOpen(false)
-
     this.props.push(`/app/specimens/mammals/create`)
   }
 
