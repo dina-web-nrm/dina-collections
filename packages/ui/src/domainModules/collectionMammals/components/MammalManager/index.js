@@ -129,6 +129,7 @@ const mapDispatchToProps = {
   reset,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
+  setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
   setMainColumnActiveTab: keyObjectActionCreators.set.mainColumnActiveTab,
 }
 
@@ -181,6 +182,7 @@ class MammalManager extends Component {
 
   handleSettingClick(event) {
     if (event) event.preventDefault()
+    this.props.push(`/app/specimens/mammals/search/settings`)
   }
 
   handleSetCurrentTableRowNumber(event, newTableRowNumber) {
