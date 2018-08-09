@@ -33,6 +33,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   push,
+  setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
 }
 
@@ -42,6 +43,7 @@ const propTypes = {
   language: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFocusedSpecimenId: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   width: PropTypes.number.isRequired,
@@ -73,7 +75,6 @@ export class InfiniteTable extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (
-      this.props.currentTableRowNumber &&
       nextProps.currentTableRowNumber &&
       this.props.currentTableRowNumber !== nextProps.currentTableRowNumber
     ) {
@@ -90,9 +91,10 @@ export class InfiniteTable extends Component {
     }
   }
 
-  handleRowClick(specimenId) {
+  handleRowClick(rowNumber, specimenId) {
     this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
     this.props.setFocusedSpecimenId(specimenId)
+    this.props.setCurrentTableRowNumber(rowNumber)
   }
 
   renderItem(index) {
@@ -110,6 +112,7 @@ export class InfiniteTable extends Component {
 
     const rowNumber = index + 1
     const isFocused = rowNumber === currentTableRowNumber
+
     const background = isFocused // eslint-disable-line no-nested-ternary
       ? '#b5b5b5'
       : index % 2 === 0 ? '#e5e7e9' : '#fff'
@@ -120,7 +123,7 @@ export class InfiniteTable extends Component {
         itemId={itemId}
         key={itemId}
         language={language}
-        onClick={this.handleRowClick}
+        onClick={() => this.handleRowClick(rowNumber, itemId)}
         resource={SEARCH_SPECIMEN}
         rowNumber={rowNumber}
         tableColumnsToShow={tableColumnsToShow}
