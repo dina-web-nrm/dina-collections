@@ -2,28 +2,40 @@ module.exports = function extractTransformationFunctions({
   format = 'array',
   fieldsSpecification,
 }) {
-  const { fields } = fieldsSpecification
+  const { decorators = [], fields = [] } = fieldsSpecification
+
   if (format === 'array') {
-    return fields
-      .map(({ transformation }) => {
-        return transformation
-      })
-      .filter(transformation => {
-        return !!transformation
-      })
+    const transformations = []
+    decorators.forEach(({ transformation }) => {
+      if (transformation) {
+        transformations.push(transformation)
+      }
+    })
+
+    fields.forEach(({ transformation }) => {
+      if (transformation) {
+        transformations.push(transformation)
+      }
+    })
+    return transformations
   }
 
-  return fields
-    .reduce((obj, { key, transformation }) => {
+  if (format === 'object') {
+    const transformations = {}
+
+    fields.forEach(({ key, transformation }) => {
       if (transformation) {
-        return {
-          ...obj,
-          [key]: transformation,
-        }
+        transformations[key] = transformation
       }
-      return obj
-    }, {})
-    .filter(transformation => {
-      return !!transformation
     })
+
+    decorators.forEach(({ key, transformation }) => {
+      if (transformation) {
+        transformations[key] = transformation
+      }
+    })
+    return transformations
+  }
+
+  throw new Error(`Unknown format: ${format}`)
 }

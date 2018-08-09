@@ -13,11 +13,11 @@ module.exports = function extractMappings({
       })
   }
 
-  return fields.reduce((obj, { key, mapping }) => {
+  return fields.reduce((obj, { fieldPath, mapping }) => {
     if (mapping) {
       return {
         ...obj,
-        [key]: mapping,
+        [fieldPath]: mapping,
       }
     }
     return obj
