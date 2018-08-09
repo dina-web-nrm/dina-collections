@@ -257,7 +257,12 @@ class MammalManager extends Component {
     )
   }
 
-  handleExportToCsv(event) {}
+  /* eslint-disable class-methods-use-this, no-alert */
+  handleExportToCsv(event) {
+    event.preventDefault()
+    window.alert('Not implemented')
+  }
+  /* eslint-enable class-methods-use-this, no-alert */
 
   render() {
     const {
