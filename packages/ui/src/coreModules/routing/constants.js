@@ -34,14 +34,4 @@ export const NAVIGATION_ITEMS = [
     name: 'scientificNames',
     path: '/app/taxonNames',
   },
-  {
-    exact: true,
-    name: 'registerMammal',
-    path: '/app/mammals/register',
-  },
-  {
-    exact: true,
-    name: 'lookupMammals',
-    path: '/app/mammals/lookup',
-  },
 ]

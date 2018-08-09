@@ -7,12 +7,9 @@ import { AppNavigationSidebar, ViewWrap } from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
 import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
 
-import EditMammal from '../editMammal/Async'
 import Home from '../home/Async'
 import SpecimensMammals from '../specimensMammals/Async'
-import LookupMammals from '../lookupMammals/Async'
 import PageNotFound from '../pageNotFound/Async'
-import RegisterMammal from '../registerMammal/Async'
 import Settings from '../settings/Async'
 import ManageAgents from '../manageAgents/Async'
 import ManageLocalities from '../manageLocalities/Async'
@@ -58,20 +55,6 @@ class App extends Component {
               component={SpecimensMammals}
               exact
               path={`${match.url}/specimens/mammals/search/settings`}
-            />
-            <Route
-              component={LookupMammals}
-              exact
-              path={`${match.url}/mammals/lookup`}
-            />
-            <Route
-              component={RegisterMammal}
-              exact
-              path={`${match.url}/mammals/register`}
-            />
-            <Route
-              component={EditMammal}
-              path={`${match.url}/mammals/:specimenId/edit`}
             />
             <Route
               component={ManageAgents}
