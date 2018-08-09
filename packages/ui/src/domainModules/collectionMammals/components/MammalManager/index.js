@@ -146,7 +146,6 @@ const propTypes = {
   search: PropTypes.func.isRequired,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
-  setMainColumnActiveTab: PropTypes.func.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
@@ -161,9 +160,6 @@ class MammalManager extends Component {
 
     this.getColumns = this.getColumns.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
-    this.handleSetMainColumnActiveTab = this.handleSetMainColumnActiveTab.bind(
-      this
-    )
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
       this
     )
@@ -184,12 +180,7 @@ class MammalManager extends Component {
   }
 
   handleSettingClick(event) {
-    this.handleSetMainColumnActiveTab(event, 'resultTableSettings')
-  }
-
-  handleSetMainColumnActiveTab(event, key) {
     if (event) event.preventDefault()
-    this.props.setMainColumnActiveTab(key)
   }
 
   handleSetCurrentTableRowNumber(event, newTableRowNumber) {
@@ -232,7 +223,6 @@ class MammalManager extends Component {
   handleOpenNewRecordForm(event) {
     event.preventDefault()
     this.props.setFilterColumnIsOpen(false)
-    // this.handleSetMainColumnActiveTab(event, 'recordNew')
 
     this.props.push(`/app/specimens/mammals/create`)
   }
@@ -243,7 +233,6 @@ class MammalManager extends Component {
   }
 
   handleOpenEditRecordView(event) {
-    // this.handleSetMainColumnActiveTab(event, 'recordEdit')
     if (event) event.preventDefault()
     const specimenId = this.props.focusedSpecimenId
 
@@ -266,9 +255,7 @@ class MammalManager extends Component {
     )
   }
 
-  handleExportToCsv(event) {
-    this.handleSetMainColumnActiveTab(event, 'exportToCsv')
-  }
+  handleExportToCsv(event) {}
 
   render() {
     const {
