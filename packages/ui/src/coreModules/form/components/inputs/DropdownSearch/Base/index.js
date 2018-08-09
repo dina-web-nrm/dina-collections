@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Icon } from 'semantic-ui-react'
 import config from 'config'
+
+const iconStyle = {
+  bottom: 0,
+  fontSize: '1rem',
+  lineHeight: 1,
+  margin: 'auto',
+  position: 'absolute',
+  right: '2.5em',
+  top: 0,
+  zIndex: 1,
+}
+
+const containerStyle = {
+  display: 'inline-block',
+  position: 'relative',
+}
 
 const propTypes = {
   autoComplete: PropTypes.string,
@@ -43,11 +59,12 @@ const defaultProps = {
 class DropdownSearchInput extends Component {
   constructor(props) {
     super(props)
+    this.handleClear = this.handleClear.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
   }
 
-  handleSearchChange(event, { searchQuery }) {
+  handleSearchChange(_, { searchQuery }) {
     this.props.onSearchChange({
       inputName: this.props.input.name,
       searchQuery,
@@ -59,11 +76,15 @@ class DropdownSearchInput extends Component {
     }
   }
 
-  handleOnChange(event, data) {
+  handleOnChange(_, data) {
     const { value } = data
     this.handleSearchChange(null, { searchQuery: '' })
 
     this.props.input.onBlur(value)
+  }
+
+  handleClear() {
+    this.handleOnChange(undefined, { value: '' })
   }
 
   render() {
@@ -79,41 +100,53 @@ class DropdownSearchInput extends Component {
       searchQuery,
       selectedOption,
     } = this.props
+
     const { onChange } = input
     const hiddenInputName = `${input.name}.hidden`
     const text = (selectedOption && selectedOption.text) || initialText
     const style = displayAsButton
       ? { background: 'white', borderRadius: 0, fontWeight: 'normal' }
       : undefined
+    const value = selectedOption && selectedOption.value
+
     return (
       <React.Fragment>
-        <Dropdown
-          autoComplete={autoComplete}
-          button={displayAsButton}
-          fluid={fluid}
-          loading={isLoading}
-          onSearchChange={this.handleSearchChange}
-          options={options}
-          search
-          searchQuery={searchQuery}
-          selection
-          selectOnBlur={false}
-          selectOnNavigation={false}
-          text={searchQuery || text}
-          {...input}
-          onBlur={undefined}
-          onChange={this.handleOnChange}
-          style={style}
-          value={(selectedOption && selectedOption.value) || ''}
-        />
+        <div style={containerStyle}>
+          {value && (
+            <Icon
+              link
+              name="close"
+              onClick={this.handleClear}
+              style={iconStyle}
+            />
+          )}
+          <Dropdown
+            autoComplete={autoComplete}
+            button={displayAsButton}
+            fluid={fluid}
+            loading={isLoading}
+            onSearchChange={this.handleSearchChange}
+            options={options}
+            search
+            searchQuery={searchQuery}
+            selection
+            selectOnBlur={false}
+            selectOnNavigation={false}
+            text={searchQuery || text}
+            {...input}
+            onBlur={undefined}
+            onChange={this.handleOnChange}
+            style={style}
+            value={value || ''}
+          />
+        </div>
         {mountHidden && (
           <input
             className="hidden"
             {...input}
             name={hiddenInputName}
             onChange={event => {
-              const { value } = event.target
-              onChange(event, { value })
+              onChange(event, { value: event.target.value })
             }}
             type="hidden"
             value={input.value || ''}
