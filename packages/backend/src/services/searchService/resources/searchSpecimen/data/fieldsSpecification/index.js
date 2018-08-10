@@ -1,4 +1,3 @@
-// const collectionItems = require('./decorators/collectionItems')
 const taxonomy = require('./decorators/taxonomy')
 const locality = require('./decorators/locality')
 
@@ -10,6 +9,7 @@ const collectingEventEndDate = require('./fields/collectingEventEndDate')
 const collectingEventLocality = require('./fields/collectingEventLocality')
 const collectingEventProvince = require('./fields/collectingEventProvince')
 const collectingEventStartDate = require('./fields/collectingEventStartDate')
+const deathInformationDeath = require('./fields/deathInformationDeath')
 const featureAge = require('./fields/featureAge')
 const featureAgeStage = require('./fields/featureAgeStage')
 const featureBodyLength = require('./fields/featureBodyLength')
@@ -44,6 +44,7 @@ module.exports = {
     collectingEventLocality,
     collectingEventProvince,
     collectingEventStartDate,
+    deathInformationDeath,
     featureAge,
     featureAgeStage,
     featureBodyLength,
