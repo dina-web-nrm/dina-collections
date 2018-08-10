@@ -1,6 +1,8 @@
 const taxonomy = require('./decorators/taxonomy')
 const locality = require('./decorators/locality')
 
+const identifierTags = require('./tags/identifierTags')
+
 const agents = require('./fields/agents')
 const collectingEventCollectors = require('./fields/collectingEventCollectors')
 const collectingEventCountry = require('./fields/collectingEventCountry')
@@ -36,6 +38,8 @@ const taxonomySubspecies = require('./fields/taxonomySubspecies')
 module.exports = {
   decorators: [locality, taxonomy],
   fields: [
+    identifierTags,
+
     agents,
     collectingEventCollectors,
     collectingEventCountry,
