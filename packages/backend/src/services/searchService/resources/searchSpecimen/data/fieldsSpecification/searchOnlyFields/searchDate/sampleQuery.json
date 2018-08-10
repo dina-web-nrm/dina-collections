@@ -1,0 +1,24 @@
+{
+  "data": {
+    "attributes": {
+      "limit": 10,
+      "offset": 0,
+      "query": {
+        "and": [
+          {
+            "filter": {
+              "filterFunction": "searchDates",
+              "input": {
+                "value": {
+                  "dateType": "collectingEventStartDate",
+                  "start": "1999-01-01T00:00:00Z",
+                  "end": "2000-01-01T00:00:00Z"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

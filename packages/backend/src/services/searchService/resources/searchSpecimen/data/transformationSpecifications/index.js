@@ -1,4 +1,12 @@
-const transformationFunctions = require('./transformationFunctions')
+const fieldsSpecification = require('../fieldsSpecification')
+const extractTransformations = require('../../../../../../lib/data/fields/utilities/extractTransformationFunctions')
+
+const fieldTransformations = extractTransformations({
+  fieldsSpecification,
+  format: 'array',
+})
+
+const transformationFunctions = fieldTransformations
 
 const cacheResourcesSpecifications = require('../../../../cacheResourcesSpecifications')
 

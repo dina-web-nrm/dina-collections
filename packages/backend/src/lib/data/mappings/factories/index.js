@@ -1,3 +1,6 @@
 exports.createDateMapping = require('./createDateMapping')
+exports.createIntegerMapping = require('./createIntegerMapping')
 exports.createKeywordAndRawMapping = require('./createKeywordAndRawMapping')
 exports.createKeywordMapping = require('./createKeywordMapping')
+exports.createNestedMapping = require('./createNestedMapping')
+exports.createNumberMapping = require('./createNumberMapping')

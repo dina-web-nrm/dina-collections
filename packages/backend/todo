@@ -1,5 +1,5 @@
 * introduce format and parse terminology to date helpers. Discuss with Fredrik
-
+* Migrate dates as timestamp and ymd (use this in search)
 
 1. * fields -> selectableFields
 2. * fields in userInput -> includeFields, excludeFields
