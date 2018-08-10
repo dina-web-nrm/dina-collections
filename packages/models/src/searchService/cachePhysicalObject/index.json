@@ -1,5 +1,24 @@
 {
   "additionalProperties": true,
   "x-internal": true,
-  "properties": {}
+  "properties": {
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "storageLocation": {
+          "type": "object",
+          "x-key-stored-in-model": "cachePhysicalObject",
+          "x-key-type": "json",
+          "properties": {
+            "data": {
+              "$ref": "__ROOT__storageLocation",
+              "x-reference-type": "external"
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
+

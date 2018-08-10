@@ -7,17 +7,19 @@ module.exports = function getOneWhereFactory({ Model, getWhere }) {
 
   return getOneWhereWrapper(
     ({
+      excludeFieldsInput,
       filterInput,
       filterSpecification,
-      fieldsInput,
-      fieldsSpecification,
+      includeFieldsInput,
+      selectableFields,
     }) => {
       return getWhere({
-        fieldsInput,
-        fieldsSpecification,
+        excludeFieldsInput,
         filterInput,
         filterSpecification,
+        includeFieldsInput,
         limit: 1,
+        selectableFields,
       }).then(({ items }) => {
         if (!items && items.length > 0) {
           return {

@@ -10,11 +10,8 @@ const inputSchema = {
     aggregationSpecification: {
       type: 'object',
     },
-    fieldsInput: {
+    excludeFieldsInput: {
       type: 'array',
-    },
-    fieldsSpecification: {
-      type: 'object',
     },
     filterInput: {
       type: 'object',
@@ -23,6 +20,9 @@ const inputSchema = {
       type: 'object',
     },
     include: {
+      type: 'array',
+    },
+    includeFieldsInput: {
       type: 'array',
     },
     limit: {
@@ -40,11 +40,14 @@ const inputSchema = {
     scrollId: {
       type: 'string',
     },
-    sortInput: {
+    selectableFields: {
       type: 'array',
     },
-    sortSpecification: {
-      type: 'object',
+    sortableFields: {
+      type: 'array',
+    },
+    sortInput: {
+      type: 'array',
     },
     where: {
       type: 'object',

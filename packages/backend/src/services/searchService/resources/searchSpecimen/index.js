@@ -1,3 +1,7 @@
+const fieldsSpecification = require('./data/fieldsSpecification')
+const extractSortableFields = require('../../../../lib/data/fields/utilities/extractSortableFields')
+const extractSelectableFields = require('../../../../lib/data/fields/utilities/extractSelectableFields')
+
 const {
   updateView: updateViewTransformationSpecification,
   rebuildView: rebuildViewTransformationSpecification,
@@ -12,35 +16,30 @@ const aggregationSpecification = require('./data/aggregationSpecification')
 
 const resource = 'searchSpecimen'
 
-const fieldsSpecification = {
-  fields: ['id', 'attributes.result'],
-}
-
-const sortSpecification = {
-  fields: ['attributes.idNumeric', 'attributes.result.catalogNumber'],
-}
+const sortableFields = extractSortableFields({ fieldsSpecification })
+const selectableFields = extractSelectableFields({ fieldsSpecification })
 
 module.exports = {
   basePath: '/api/search/v01',
   operations: [
     {
-      fieldsSpecification,
+      selectableFields,
       type: 'getOne',
     },
     {
       aggregationSpecification,
-      fieldsSpecification,
       filterSpecification: queryFilterSpecification,
-      sortSpecification,
+      selectableFields,
+      sortableFields,
       type: 'query',
     },
     {
       type: 'del',
     },
     {
-      fieldsSpecification,
       filterSpecification: getManyFilterSpecification,
-      sortSpecification,
+      selectableFields,
+      sortableFields,
       type: 'getMany',
     },
     {

@@ -137,7 +137,7 @@
           "type": "object",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
-          "x-path": "individual.deathInformation.*.establishmentMeansType",
+          "x-path": "individual.deathInformation.*.causeOfDeathType",
           "properties": {
             "data": {
               "type": "array",

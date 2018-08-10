@@ -25,13 +25,14 @@ const hasDeactivatedAtFilter = where => {
 module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
   return getWhereWrapper(
     ({
-      fieldsInput = [],
-      fieldsSpecification = {},
+      excludeFieldsInput = [],
       filterInput,
       filterSpecification,
       include = [],
+      includeFieldsInput = [],
       limit,
       offset,
+      selectableFields = [],
       sortInput,
       where: customWhere,
     }) => {
@@ -72,14 +73,15 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
           const items = formatModelItemsResponse({ input: res })
 
           const fields = extractFieldsFromUserInput({
-            fieldsInput,
-            fieldsSpecification,
+            includeFieldsInput,
+            selectableFields,
           })
 
-          if (fields.length) {
+          if (fields.length || excludeFieldsInput.length) {
             return {
               items: items.map(item => {
                 return extractFieldsFromItem({
+                  excludeFieldsInput,
                   fields,
                   item,
                 })

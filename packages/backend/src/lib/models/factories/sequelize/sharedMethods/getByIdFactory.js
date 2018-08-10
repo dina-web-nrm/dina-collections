@@ -11,11 +11,12 @@ module.exports = function getByIdFactory({ Model }) {
   return getByIdWrapper(
     ({
       allowDeactivated = false,
-      fieldsInput = [],
-      fieldsSpecification = {},
+      excludeFieldsInput = [],
       id,
       include = [],
+      includeFieldsInput = [],
       raw = true,
+      selectableFields = [],
     }) => {
       return Model.findOne({
         include,
@@ -32,13 +33,14 @@ module.exports = function getByIdFactory({ Model }) {
 
         const { item } = formatModelItemResponse({ input: res })
         const fields = extractFieldsFromUserInput({
-          fieldsInput,
-          fieldsSpecification,
+          includeFieldsInput,
+          selectableFields,
         })
 
-        if (fields.length) {
+        if (fields.length || excludeFieldsInput.length) {
           return {
             item: extractFieldsFromItem({
+              excludeFieldsInput,
               fields,
               item,
             }),

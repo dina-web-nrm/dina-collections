@@ -1,3 +1,13 @@
+* introduce format and parse terminology to date helpers. Discuss with Fredrik
+
+
+1. * fields -> selectableFields
+2. * fields in userInput -> includeFields, excludeFields
+3. * sortSpecification -> sortableFields
+
+
+* Add validations for fieldSpecification
+
 
 name: 'collectors',
 name: 'startDateCollecting',
@@ -36,44 +46,11 @@ name: 'species',
 
 Create todos for:
 * Create input schema for query
-
-
-TODO
-* Implement all needed search stuff
-** Place
-** Date period
-** Agent
-** Physical object
-** Storage
-** Age and stage
-
-* Make sure error is thrown if no matching aggregations functions
-* Would it be possible to extract lookup models from backend?
-* Refactor prepType and featureType to mimic identifier type
+* Make creation of cache resources models sane and extract lookup models from backend
 * Verify incremental update of specimens
-* Potentially refactor mappings to single object.
-* Potentially move search fields to internals and keep the result as attributes
-* Migrate Taxonomy (wait)
-
-Potential TODOs
-* Rename importer to initialDataLoader
-* Separate rebuildView and importDataFromFile
-* Go through jobs and verify
-* Use internals for job when setting timeflags
-* Remove use of custom where
-* Move build include to model level
-* Make it possible to inject cache into service interactor () and use original resources more then the cache views when its not nessecary
-* Later use json client from common in serviceInteractor to be able to do include fetching
+* Verify jobs
+* Potentially
 
 TODO
-
-CLEANUP
-* Look at createObjectResponse performance
-* Remove search from common
-
-
-
-
-
-
-
+* Refactor prepType and featureType to mimic identifier type
+* Potentially refactor mappings to single object.

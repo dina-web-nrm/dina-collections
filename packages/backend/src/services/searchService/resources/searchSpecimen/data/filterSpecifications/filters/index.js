@@ -1,3 +1,6 @@
+const fieldsSpecification = require('../../fieldsSpecification')
+const extractFilters = require('../../../../../../../lib/data/fields/utilities/extractFilters')
+
 const intersectCollectingDate = require('./intersectCollectingDate')
 const matchAgent = require('./matchAgent')
 const matchAgeStage = require('./matchAgeStage')
@@ -8,6 +11,8 @@ const searchAgent = require('./searchAgent')
 const searchAgeStage = require('./searchAgeStage')
 const searchCollectingLocation = require('./searchCollectingLocation')
 const searchIdentifier = require('./searchIdentifier')
+
+const fieldFilters = extractFilters({ fieldsSpecification, format: 'object' })
 
 module.exports = {
   intersectCollectingDate,
@@ -20,4 +25,5 @@ module.exports = {
   searchAgeStage,
   searchCollectingLocation,
   searchIdentifier,
+  ...fieldFilters,
 }

@@ -16,6 +16,10 @@ var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProp
 
 var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
 
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var asyncReduce = require('../asyncReduce');
@@ -101,7 +105,9 @@ var pushValueToArray = function pushValueToArray(_ref2) {
 };
 
 var getValue = function getValue(_ref3) {
-  var obj = _ref3.obj,
+  var _ref3$clone = _ref3.clone,
+      clone = _ref3$clone === undefined ? false : _ref3$clone,
+      obj = _ref3.obj,
       path = _ref3.path,
       _ref3$strip = _ref3.strip,
       strip = _ref3$strip === undefined ? false : _ref3$strip;
@@ -112,6 +118,9 @@ var getValue = function getValue(_ref3) {
   var value = objectPath.get(obj, path);
   if (isValueDefined(value) && strip) {
     objectPath.del(obj, path);
+  }
+  if (value && clone) {
+    return JSON.parse((0, _stringify2.default)(value));
   }
   return value;
 };
@@ -214,6 +223,7 @@ var applyTransformationFunctionsAsync = function applyTransformationFunctionsAsy
   });
 
   var target = {};
+  var locals = {};
   return asyncReduce({
     initialValue: null,
     items: transformationFunctionsArray,
@@ -221,7 +231,7 @@ var applyTransformationFunctionsAsync = function applyTransformationFunctionsAsy
       var transformationFunction = _ref9.item;
 
       return _promise2.default.resolve().then(function () {
-        return transformationFunction((0, _extends3.default)({ src: item, target: target }, rest));
+        return transformationFunction((0, _extends3.default)({ locals: locals, src: item, target: target }, rest));
       }).then(function () {
         return null;
       });

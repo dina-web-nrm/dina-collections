@@ -72,28 +72,85 @@ module.exports = function testGetWhere({ config, setupModel }) {
       })
     })
 
-    it('returns correct doc by id with specified fields', () => {
+    it('returns correct doc by id with specified  include fields', () => {
       const filterSpecification = createGetManyFilterSpecifications({
         include: ['id'],
       })
-      const fieldsSpecification = {
-        fields: ['id', 'attributes.firstName'],
-      }
+      const selectableFields = ['id', 'attributes.firstName']
+
       return model
         .getWhere({
-          fieldsInput: ['id', 'attributes.firstName'],
-          fieldsSpecification,
-
           filterInput: {
             id: secondItem.id,
           },
           filterSpecification,
+          includeFieldsInput: ['id', 'attributes.firstName'],
+          selectableFields,
         })
         .then(({ items }) => {
           expect(items.length).toEqual(1)
           expect(items[0].id).toEqual(secondItem.id)
           expect(items[0].attributes.firstName).toEqual(
             secondItem.attributes.firstName
+          )
+          expect(Object.keys(items[0].attributes).length).toEqual(1)
+        })
+    })
+
+    it('returns correct doc by id with specified exclude fields', () => {
+      const filterSpecification = createGetManyFilterSpecifications({
+        include: ['id'],
+      })
+      const selectableFields = ['id', 'attributes.firstName']
+
+      return model
+        .getWhere({
+          excludeFieldsInput: ['attributes.firstName'],
+          filterInput: {
+            id: secondItem.id,
+          },
+          filterSpecification,
+
+          selectableFields,
+        })
+        .then(({ items }) => {
+          expect(items.length).toEqual(1)
+          expect(items[0].id).toEqual(secondItem.id)
+          expect(items[0].attributes.lastName).toEqual(
+            secondItem.attributes.lastName
+          )
+          expect(Object.keys(items[0].attributes).length).toEqual(1)
+        })
+    })
+    it('returns correct doc by id with specified include and exclude fields', () => {
+      const filterSpecification = createGetManyFilterSpecifications({
+        include: ['id'],
+      })
+      const selectableFields = [
+        'id',
+        'attributes.firstName',
+        'attributes.lastName',
+      ]
+
+      return model
+        .getWhere({
+          excludeFieldsInput: ['attributes.firstName'],
+          filterInput: {
+            id: secondItem.id,
+          },
+          filterSpecification,
+          includeFieldsInput: [
+            'id',
+            'attributes.firstName',
+            'attributes.lastName',
+          ],
+          selectableFields,
+        })
+        .then(({ items }) => {
+          expect(items.length).toEqual(1)
+          expect(items[0].id).toEqual(secondItem.id)
+          expect(items[0].attributes.lastName).toEqual(
+            secondItem.attributes.lastName
           )
           expect(Object.keys(items[0].attributes).length).toEqual(1)
         })

@@ -6,12 +6,13 @@ const formatModelItemResponse = require('../utilities/formatModelItemResponse')
 module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
   return getOneWhereWrapper(
     ({
-      fieldsInput = [],
-      fieldsSpecification = {},
-      include = undefined,
-      raw = true,
+      excludeFieldsInput = [],
       filterInput,
       filterSpecification,
+      include = undefined,
+      includeFieldsInput = [],
+      raw = true,
+      selectableFields = [],
     }) => {
       return buildWhereFilter({
         filterInput,
@@ -33,13 +34,14 @@ module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
 
           const { item } = formatModelItemResponse({ input: res })
           const fields = extractFieldsFromUserInput({
-            fieldsInput,
-            fieldsSpecification,
+            includeFieldsInput,
+            selectableFields,
           })
 
-          if (fields.length) {
+          if (fields.length || excludeFieldsInput.length) {
             return {
               item: extractFieldsFromItem({
+                excludeFieldsInput,
                 fields,
                 item,
               }),

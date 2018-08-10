@@ -15,8 +15,18 @@ module.exports = {
         type: 'string',
       },
     },
+    numberOfEntriesEachBatch: {
+      type: 'number',
+    },
     resolveRelations: {
-      type: 'boolean',
+      oneOf: [
+        {
+          type: 'boolean',
+        },
+        {
+          type: 'object',
+        },
+      ],
     },
     resourceCacheMap: {
       type: 'object',

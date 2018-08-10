@@ -4,12 +4,7 @@ const buildIncludeArray = require('../utilities/relationships/buildIncludeArray'
 const extractRelationships = require('../utilities/relationships/extractRelationships')
 
 module.exports = function getOne({ operation, models }) {
-  const {
-    includeRelations,
-    relations,
-    resource,
-    fieldsSpecification,
-  } = operation
+  const { includeRelations, relations, resource, selectableFields } = operation
 
   const model = models[resource]
   if (!model) {
@@ -24,7 +19,8 @@ module.exports = function getOne({ operation, models }) {
     const {
       pathParams: { id },
       queryParams: {
-        fields: fieldsInput,
+        excludeFields: excludeFieldsInput,
+        includeFields: includeFieldsInput,
         relationships: queryParamRelationships = '',
       } = {},
     } = request
@@ -40,10 +36,11 @@ module.exports = function getOne({ operation, models }) {
 
     return model
       .getById({
-        fieldsInput,
-        fieldsSpecification,
+        excludeFieldsInput,
         id,
         include,
+        includeFieldsInput,
+        selectableFields,
       })
       .then(({ item } = {}) => {
         if (!item) {

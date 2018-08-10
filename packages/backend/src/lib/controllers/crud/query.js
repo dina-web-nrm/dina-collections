@@ -3,10 +3,10 @@ const createArrayResponse = require('../utilities/transformations/createArrayRes
 module.exports = function queryController({ operation, models }) {
   const {
     aggregationSpecification,
-    resource,
-    fieldsSpecification,
     filterSpecification,
-    sortSpecification,
+    resource,
+    selectableFields,
+    sortableFields,
   } = operation
   const model = models[resource]
   if (!model) {
@@ -26,8 +26,9 @@ module.exports = function queryController({ operation, models }) {
         data: {
           attributes: {
             aggregations,
-            fields: fieldsInput,
+            excludeFields: excludeFieldsInput,
             filter: filterInput,
+            includeFields: includeFieldsInput,
             limit,
             offset,
             query,
@@ -42,16 +43,17 @@ module.exports = function queryController({ operation, models }) {
       .getWhere({
         aggregations,
         aggregationSpecification,
-        fieldsInput,
-        fieldsSpecification,
+        excludeFieldsInput,
         filterInput,
         filterSpecification,
+        includeFieldsInput,
         limit,
         offset,
         query,
         scroll,
         scrollId,
-        sortSpecification,
+        selectableFields,
+        sortableFields,
       })
       .then(({ items, meta }) => {
         return createArrayResponse({

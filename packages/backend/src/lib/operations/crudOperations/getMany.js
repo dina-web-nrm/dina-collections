@@ -14,7 +14,6 @@ module.exports = function getMany({
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
-  fieldsSpecification,
   filterSpecification: filterSpecificationInput,
   includeRelations,
   operationId,
@@ -22,7 +21,8 @@ module.exports = function getMany({
   relations,
   resource,
   resourcePath,
-  sortSpecification,
+  selectableFields,
+  sortableFields,
   ...rest
 }) {
   const filterSpecification =
@@ -48,12 +48,12 @@ module.exports = function getMany({
   })
 
   queryParams = addFieldsToQueryParams({
-    fieldsSpecification,
     queryParams,
+    selectableFields,
   })
   queryParams = addSortingToQueryParams({
     queryParams,
-    sortSpecification,
+    sortableFields,
   })
 
   queryParams = addMockToQueryParams({
@@ -76,7 +76,6 @@ module.exports = function getMany({
   return {
     ...rest,
     errors,
-    fieldsSpecification,
     filterSpecification,
     includeRelations,
     method: 'get',
@@ -91,7 +90,8 @@ module.exports = function getMany({
       format: 'array',
       relations,
     },
-    sortSpecification,
+    selectableFields,
+    sortableFields,
     summary: `Find ${resourcePath}`,
   }
 }

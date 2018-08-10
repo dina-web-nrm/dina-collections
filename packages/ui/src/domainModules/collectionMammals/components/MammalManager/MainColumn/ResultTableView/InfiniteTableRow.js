@@ -67,7 +67,7 @@ const InfiniteTableRow = ({
       </Grid.Column>
       {tableColumnSpecifications.map(({ name, width: columnWidth }) => {
         if (tableColumnsToShow.includes(name)) {
-          let value = objectPath.get(item, `attributes.result.${name}`)
+          let value = objectPath.get(item, `attributes.${name}`)
 
           if (Array.isArray(value)) {
             value = value.join('; ')

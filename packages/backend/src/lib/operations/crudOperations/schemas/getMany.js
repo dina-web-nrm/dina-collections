@@ -1,13 +1,12 @@
 const base = require('./base')
 const filterSpecification = require('../../../data/filters/schemas/filterSpecification')
-const fieldsSpecification = require('../../../data/fields/schemas/fieldsSpecification')
-const sortSpecification = require('../../../data/sort/schemas/sortSpecification')
+const selectableFields = require('../../../data/fields/schemas/selectableFields')
+const sortableFields = require('../../../data/sort/schemas/sortableFields')
 
 module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    fieldsSpecification,
     filterSpecification,
     includeRelations: {
       type: 'boolean',
@@ -15,7 +14,8 @@ module.exports = {
     queryParams: {
       type: 'object',
     },
-    sortSpecification,
+    selectableFields,
+    sortableFields,
   },
   required: [...base.required],
 }

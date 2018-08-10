@@ -68,13 +68,16 @@ const pushValueToArray = ({ obj, condition, format, path, value }) => {
   return obj
 }
 
-const getValue = ({ obj, path, strip = false }) => {
+const getValue = ({ clone = false, obj, path, strip = false }) => {
   if (!isPathValid(path)) {
     return undefined
   }
   const value = objectPath.get(obj, path)
   if (isValueDefined(value) && strip) {
     objectPath.del(obj, path)
+  }
+  if (value && clone) {
+    return JSON.parse(JSON.stringify(value))
   }
   return value
 }
@@ -174,13 +177,14 @@ const applyTransformationFunctionsAsync = ({
       })
 
   const target = {}
+  const locals = {}
   return asyncReduce({
     initialValue: null,
     items: transformationFunctionsArray,
     reduceFunction: ({ item: transformationFunction }) => {
       return Promise.resolve()
         .then(() => {
-          return transformationFunction({ src: item, target, ...rest })
+          return transformationFunction({ locals, src: item, target, ...rest })
         })
         .then(() => {
           return null

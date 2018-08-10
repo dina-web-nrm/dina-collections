@@ -2,6 +2,7 @@ module.exports = function fetchParents({
   getItemByTypeId,
   ignoreParentIds = [],
   item,
+  order = 'asc', // or desc
   parents = [],
   relationships = ['parent'],
   resource,
@@ -35,8 +36,12 @@ module.exports = function fetchParents({
         `Non existing parent with type: ${resource} and id: ${parentId}`
       )
     }
+    if (order === 'asc') {
+      parents.unshift(parent)
+    } else {
+      parents.push(parent)
+    }
 
-    parents.unshift(parent)
     return fetchParents({
       getItemByTypeId,
       ignoreParentIds,

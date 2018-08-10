@@ -4,12 +4,12 @@ const extractRelationships = require('../utilities/relationships/extractRelation
 
 module.exports = function getMany({ operation, models }) {
   const {
-    fieldsSpecification,
     filterSpecification,
     includeRelations,
     relations,
     resource,
-    sortSpecification,
+    selectableFields,
+    sortableFields,
   } = operation
   const model = models[resource]
   if (!model) {
@@ -27,8 +27,9 @@ module.exports = function getMany({ operation, models }) {
   return ({ request }) => {
     const {
       queryParams: {
-        fields: fieldsInput,
+        excludeFields: excludeFieldsInput,
         filter: filterInput,
+        includeFields: includeFieldsInput,
         limit = 10,
         offset = 0,
         relationships: queryParamRelationships = '',
@@ -47,15 +48,16 @@ module.exports = function getMany({ operation, models }) {
 
     return model
       .getWhere({
-        fieldsInput,
-        fieldsSpecification,
+        excludeFieldsInput,
         filterInput,
         filterSpecification,
         include,
+        includeFieldsInput,
         limit,
         offset,
+        selectableFields,
+        sortableFields,
         sortInput,
-        sortSpecification,
       })
       .then(({ items, meta } = {}) => {
         return createArrayResponse({

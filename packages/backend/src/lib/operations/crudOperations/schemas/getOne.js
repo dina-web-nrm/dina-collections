@@ -1,11 +1,10 @@
 const base = require('./base')
-const fieldsSpecification = require('../../../data/fields/schemas/fieldsSpecification')
+const selectableFields = require('../../../data/fields/schemas/selectableFields')
 
 module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    fieldsSpecification,
     filter: {
       not: {
         type: 'string',
@@ -17,6 +16,7 @@ module.exports = {
     queryParams: {
       type: 'object',
     },
+    selectableFields,
   },
   required: [...base.required],
 }

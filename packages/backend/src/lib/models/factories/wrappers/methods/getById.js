@@ -7,11 +7,8 @@ const inputSchema = {
     allowDeactivated: {
       type: 'boolean',
     },
-    fieldsInput: {
+    excludeFieldsInput: {
       type: 'array',
-    },
-    fieldsSpecification: {
-      type: 'object',
     },
     id: {
       type: 'string',
@@ -19,8 +16,14 @@ const inputSchema = {
     include: {
       type: 'array',
     },
+    includeFieldsInput: {
+      type: 'array',
+    },
     raw: {
       type: 'boolean',
+    },
+    selectableFields: {
+      type: 'array',
     },
   },
   required: ['id'],

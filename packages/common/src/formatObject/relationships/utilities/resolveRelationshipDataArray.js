@@ -1,3 +1,4 @@
+const objectPath = require('object-path')
 const { resolveById } = require('./resolveById')
 
 const resolveRelationshipDataArray = ({
@@ -6,15 +7,16 @@ const resolveRelationshipDataArray = ({
   relationship,
   relationshipKey,
 }) => {
-  return {
-    ...item,
-    [relationshipKey]: relationship.data.map(({ id }) => {
-      return resolveById({
-        formattedRelationshipItems,
-        id,
-      })
-    }),
-  }
+  const resolvedRelations = relationship.data.map(({ id }) => {
+    return resolveById({
+      formattedRelationshipItems,
+      id,
+    })
+  })
+
+  objectPath.set(item, relationshipKey, resolvedRelations)
+
+  return item
 }
 
 module.exports = { resolveRelationshipDataArray }

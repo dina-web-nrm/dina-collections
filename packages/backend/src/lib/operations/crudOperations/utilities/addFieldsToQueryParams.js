@@ -1,22 +1,32 @@
 module.exports = function addFieldsFromQueryParams({
   queryParams,
-  fieldsSpecification = {},
+  selectableFields = [],
 }) {
-  const fields = fieldsSpecification.fields || []
-
-  if (!fields.length) {
+  if (!selectableFields.length) {
     return queryParams
   }
 
   return {
     ...queryParams,
-    fields: {
+    excludeFields: {
+      description:
+        'When provided specified fields will be excluded (applied after include)',
+      required: false,
+      schema: {
+        items: {
+          enum: selectableFields,
+          type: 'string',
+        },
+        type: 'array',
+      },
+    },
+    includeFields: {
       description:
         'When provided only specified fields will be returned in response',
       required: false,
       schema: {
         items: {
-          enum: fields,
+          enum: selectableFields,
           type: 'string',
         },
         type: 'array',

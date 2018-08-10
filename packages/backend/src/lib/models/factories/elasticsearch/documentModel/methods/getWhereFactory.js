@@ -42,17 +42,18 @@ module.exports = function getWhereFactory({
     ({
       aggregations,
       aggregationSpecification,
-      fieldsInput,
-      fieldsSpecification,
+      excludeFieldsInput = [],
       filterInput = {},
       filterSpecification = {},
+      includeFieldsInput,
       limit = 10,
       offset = 0,
       query,
       scroll,
       scrollId,
+      selectableFields,
+      sortableFields,
       sortInput,
-      sortSpecification,
     }) => {
       return buildWhere({
         aggregations,
@@ -76,8 +77,8 @@ module.exports = function getWhereFactory({
           }
         } else {
           const sortObjects = extractSortObjectsFromUserInput({
+            sortableFields,
             sortInput,
-            sortSpecification,
           })
           let sort = '_id:desc'
 
@@ -87,15 +88,23 @@ module.exports = function getWhereFactory({
             })
           }
 
-          const fields = extractFieldsFromUserInput({
-            fieldsInput,
-            fieldsSpecification,
-          })
+          const fields =
+            extractFieldsFromUserInput({
+              includeFieldsInput,
+              selectableFields,
+            }) || []
+
+          const sourceOptions = {
+            _sourceExclude: excludeFieldsInput.length
+              ? excludeFieldsInput
+              : undefined,
+            _sourceInclude: fields.length ? fields : undefined,
+          }
 
           methodName = 'search'
           options = {
             ...options,
-            _source: fields && fields.length ? fields : undefined,
+            ...sourceOptions,
             body: where,
             from: offset,
             index: Model.index,
