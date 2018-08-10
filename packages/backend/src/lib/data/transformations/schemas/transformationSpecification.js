@@ -19,7 +19,14 @@ module.exports = {
       type: 'number',
     },
     resolveRelations: {
-      type: 'boolean',
+      oneOf: [
+        {
+          type: 'boolean',
+        },
+        {
+          type: 'object',
+        },
+      ],
     },
     resourceCacheMap: {
       type: 'object',
