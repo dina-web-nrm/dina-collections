@@ -68,13 +68,16 @@ const pushValueToArray = ({ obj, condition, format, path, value }) => {
   return obj
 }
 
-const getValue = ({ obj, path, strip = false }) => {
+const getValue = ({ clone = false, obj, path, strip = false }) => {
   if (!isPathValid(path)) {
     return undefined
   }
   const value = objectPath.get(obj, path)
   if (isValueDefined(value) && strip) {
     objectPath.del(obj, path)
+  }
+  if (value && clone) {
+    return JSON.parse(JSON.stringify(value))
   }
   return value
 }
