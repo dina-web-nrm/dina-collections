@@ -24,10 +24,13 @@ exports.updateView = {
 }
 
 exports.rebuildView = {
-  cacheRequestsToResources: ['place', 'taxonName', 'taxon'],
+  cacheRequestsToResources: ['place', 'taxonName', 'taxon', 'storageLocation'],
   description: 'Transforming data from specimen',
   numberOfEntriesEachBatch: 100,
-  resolveRelations: true,
+  resolveRelations: {
+    physicalObject: ['storageLocation'],
+    storageLocation: ['parent'],
+  },
   resourceCacheMap,
   srcResource: 'specimen',
   transformationFunctions,

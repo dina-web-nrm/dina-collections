@@ -1,3 +1,4 @@
+// const collectionItems = require('./decorators/collectionItems')
 const taxonomy = require('./decorators/taxonomy')
 const locality = require('./decorators/locality')
 
@@ -15,9 +16,13 @@ const taxonomyFamily = require('./fields/taxonomyFamily')
 const taxonomyGenus = require('./fields/taxonomyGenus')
 const taxonomySpecies = require('./fields/taxonomySpecies')
 const taxonomySubspecies = require('./fields/taxonomySubspecies')
+const physicalUnitSkeleton = require('./fields/physicalUnitSkeleton')
+const physicalUnitSkin = require('./fields/physicalUnitSkin')
+const physicalUnitWetPreparation = require('./fields/physicalUnitWetPreparation')
+const physicalUnitOtherPreparation = require('./fields/physicalUnitOtherPreparation')
 
 module.exports = {
-  decorators: [taxonomy, locality],
+  decorators: [locality, taxonomy],
   fields: [
     agents,
     collectingEventCollectors,
@@ -28,6 +33,10 @@ module.exports = {
     collectingEventStartDate,
     identifiersCatalogNumber,
     originInformationLocality,
+    physicalUnitOtherPreparation,
+    physicalUnitSkeleton,
+    physicalUnitSkin,
+    physicalUnitWetPreparation,
     taxonomyCuratorialName,
     taxonomyFamily,
     taxonomyGenus,

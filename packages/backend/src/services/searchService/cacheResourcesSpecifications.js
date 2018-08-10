@@ -27,13 +27,14 @@ module.exports = [
     name: 'cacheIdentifierType',
     srcResource: 'identifierType',
   },
-  {
-    name: 'cacheStorageLocation',
-    srcRelationships: ['parent'],
-    srcResource: 'storageLocation',
-  },
+  // {
+  //   name: 'cacheStorageLocation',
+  //   srcRelationships: ['parent'],
+  //   srcResource: 'storageLocation',
+  // },
   {
     name: 'cachePhysicalObject',
+    srcRelationships: ['storageLocation'],
     srcResource: 'physicalObject',
   },
 ]

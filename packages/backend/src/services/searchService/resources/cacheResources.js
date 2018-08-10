@@ -24,10 +24,12 @@ module.exports = cacheResourcesSpecifications.reduce(
           type: 'create',
         },
         {
+          includeRelations: true,
           type: 'getOne',
         },
         {
           filterSpecification,
+          includeRelations: true,
           type: 'getMany',
         },
         {

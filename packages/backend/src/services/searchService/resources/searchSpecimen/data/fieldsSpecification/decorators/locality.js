@@ -1,7 +1,7 @@
 const fetchParents = require('../../../../../../../lib/data/transformations/utilities/fetchParents')
 /* eslint-disable no-param-reassign */
 
-module.exports = ({ getItemByTypeId, migrator, src, locals }) => {
+const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
   const collectingInformation = migrator.getValue({
     obj: src,
     path: 'individual.collectingInformation',
@@ -103,4 +103,9 @@ module.exports = ({ getItemByTypeId, migrator, src, locals }) => {
 
     return null
   })
+}
+
+module.exports = {
+  key: 'decorateLocality',
+  transformation,
 }
