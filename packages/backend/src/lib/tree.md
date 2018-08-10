@@ -50,7 +50,6 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
-│   ├── relationshipsUtilities
 │   ├── utilities
 │   │   ├── relationships
 │   │   │   ├── buildIncludeArray.js
@@ -91,16 +90,30 @@
 │           └── defaultTransformationFunctions.js
 ├── data
 │   ├── aggregations
+│   │   ├── factories
+│   │   │   ├── createStringAggregation.js
+│   │   │   └── index.js
 │   │   └── schemas
 │   │       ├── aggregation.js
 │   │       └── aggregationSpecification.js
 │   ├── fields
 │   │   ├── schemas
-│   │   │   └── fieldsSpecification.js
+│   │   │   └── selectableFields.js
 │   │   └── utilities
+│   │       ├── extractAggregations.js
 │   │       ├── extractFieldsFromItem.js
-│   │       └── extractFieldsFromUserInput.js
+│   │       ├── extractFieldsFromUserInput.js
+│   │       ├── extractFilters.js
+│   │       ├── extractMappings.js
+│   │       ├── extractSelectableFields.js
+│   │       ├── extractSortableFields.js
+│   │       └── extractTransformationFunctions.js
 │   ├── filters
+│   │   ├── factories
+│   │   │   ├── createNumberRangeFilter.js
+│   │   │   ├── createStringMatchFilter.js
+│   │   │   ├── createStringSearchFilter.js
+│   │   │   └── index.js
 │   │   ├── schemas
 │   │   │   ├── filter.js
 │   │   │   └── filterSpecification.js
@@ -119,10 +132,18 @@
 │   │       ├── createEqualFilterSpecification.js
 │   │       └── createGetManyFilterSpecifications.js
 │   ├── mappings
-│   │   └── index.js
+│   │   ├── factories
+│   │   │   ├── createDateMapping.js
+│   │   │   ├── createKeywordAndRawMapping.js
+│   │   │   ├── createKeywordMapping.js
+│   │   │   ├── createNestedMapping.js
+│   │   │   ├── createNumberMapping.js
+│   │   │   └── index.js
+│   │   └── utilities
+│   │       └── extractMappingsFromFieldSpecification.js
 │   ├── sort
 │   │   ├── schemas
-│   │   │   └── sortSpecification.js
+│   │   │   └── sortableFields.js
 │   │   └── utilities
 │   │       └── extractSortObjectsFromUserInput.js
 │   └── transformations

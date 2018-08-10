@@ -66,7 +66,8 @@
 ├── date
 │   ├── formatAsTimestamp.js
 │   ├── getCurrentUTCTimestamp.js
-│   └── getTimestampFromYMD.js
+│   ├── getTimestampFromYMD.js
+│   └── getYYYYMMDDFromTimestamp.js
 ├── deleteNullProperties
 │   ├── index.js
 │   └── index.test.js
