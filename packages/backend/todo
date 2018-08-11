@@ -1,56 +1,36 @@
+Migrations
+* Go through and ensure all data is migrated
+
+Search
+* Go through and ensure all search functionality is in place
+
+Result
+* Go through and ensure all search results are ok
+
+Documentation
+* Create description and schema for query endpoint
+
+Verify functionality
+* Ensure request rebuild search is working
+* Ensure incremental indexing of search specimen is working with workers
+
+Connecticity
+* Ensure its possible to connect to server postgrest on local network
+
+Controllers
+* Write tests and add wrappers to controllers
+
+Authentification
+* Are roles needed?
+* Should routes like rebuild view be protected. Using system user?
+
+Infrastructure
+* Setup sane travis docker / deploy flow. Automatic deploys to stage.
+* Create endpoint to display 
+* Determine how to handle migrations of datamodel (might include centralized datamodel version) and automatic migrations
+
+Simplify models (the schema) for cache and lookup
+
+Cleanup date functions
 * introduce format and parse terminology to date helpers. Discuss with Fredrik
 * Migrate dates as timestamp and ymd (use this in search)
-
-1. * fields -> selectableFields
-2. * fields in userInput -> includeFields, excludeFields
-3. * sortSpecification -> sortableFields
-
-
-* Add validations for fieldSpecification
-
-
-name: 'collectors',
-name: 'startDateCollecting',
-name: 'endDateCollecting',
-
-name: 'localityCollecting',
-name: 'death',
-name: SKELETON,
-name: SKIN,
-name: WET,
-name: 'sex',
-name: 'ageStage',
-name: 'age',
-name: 'completeBodyWeight',
-name: 'totalLength',
-name: 'bodyLength',
-name: 'condition',
-name: 'otherIdentifiers',
-name: 'registered',
-
-// wait
-name: 'curatorialName',
-name: 'family',
-name: 'genus',
-name: 'species',
-
-
-
-
-
-
-
-
-
-
-
-Create todos for:
-* Create input schema for query
-* Make creation of cache resources models sane and extract lookup models from backend
-* Verify incremental update of specimens
-* Verify jobs
-* Potentially
-
-TODO
-* Refactor prepType and featureType to mimic identifier type
-* Potentially refactor mappings to single object.
