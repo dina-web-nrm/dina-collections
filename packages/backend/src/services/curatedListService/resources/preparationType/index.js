@@ -3,6 +3,10 @@ const createPreparationTypeRequestSuccess = require('./operations/create/example
 
 module.exports = {
   basePath: '/api/curatedList/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'preparationType',
+  },
   operations: [
     {
       exampleRequests: {

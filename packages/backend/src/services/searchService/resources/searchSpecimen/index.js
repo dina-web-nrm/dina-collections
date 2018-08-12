@@ -1,3 +1,4 @@
+const mappingSpecification = require('./data/mappingSpecification')
 const fieldsSpecification = require('./data/fieldsSpecification')
 const extractSortableFields = require('../../../../lib/data/fields/utilities/extractSortableFields')
 const extractSelectableFields = require('../../../../lib/data/fields/utilities/extractSelectableFields')
@@ -21,6 +22,11 @@ const selectableFields = extractSelectableFields({ fieldsSpecification })
 
 module.exports = {
   basePath: '/api/search/v01',
+  model: {
+    mappingSpecification,
+    modelFactory: 'elasticsearchDocumentModel',
+    name: 'searchSpecimen',
+  },
   operations: [
     {
       selectableFields,

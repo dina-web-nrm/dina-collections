@@ -9,6 +9,10 @@ module.exports = cacheResourcesSpecifications.reduce(
   (obj, { name, srcResource, srcRelationships }) => {
     const spec = {
       basePath: '/api/search/v01',
+      model: {
+        modelFactory: 'inMemoryViewDocumentModel',
+        name,
+      },
       operations: [
         {
           exampleRequests: {

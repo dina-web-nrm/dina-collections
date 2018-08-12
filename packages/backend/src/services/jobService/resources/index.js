@@ -1,7 +1,19 @@
+const Sequelize = require('sequelize')
 const getManyfilterSpecification = require('./operations/getMany/filters')
 
 exports.job = {
   basePath: '/api/jobs/v01',
+  model: {
+    columns: {
+      failedAt: { type: Sequelize.DATE },
+      operationId: { type: Sequelize.STRING },
+      operationRequest: { type: Sequelize.JSONB },
+      startedAt: { type: Sequelize.DATE },
+      succeededAt: { type: Sequelize.DATE },
+    },
+    modelFactory: 'sequelizeSimpleSqlModel',
+    name: 'job',
+  },
   operations: [
     {
       exampleRequests: {

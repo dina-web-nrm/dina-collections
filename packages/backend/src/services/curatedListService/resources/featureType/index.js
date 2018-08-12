@@ -3,6 +3,10 @@ const createFeatureTypeRequestSuccess = require('./operations/create/examples/re
 
 module.exports = {
   basePath: '/api/curatedList/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'featureType',
+  },
   operations: [
     {
       exampleRequests: { primary: createFeatureTypeRequestSuccess },

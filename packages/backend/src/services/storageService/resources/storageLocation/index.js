@@ -8,6 +8,11 @@ const getManyFilterSpecificationMap = require('./operations/getMany/filters')
 
 module.exports = {
   basePath: '/api/storage/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'storageLocation',
+    relations: ['physicalObject'],
+  },
   operations: [
     {
       exampleRequests: { primary: createStorageLocationRequestSuccess },

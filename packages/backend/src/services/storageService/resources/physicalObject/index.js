@@ -3,6 +3,11 @@ const createPhysicalObjectRequestSuccess = require('./operations/create/examples
 
 module.exports = {
   basePath: '/api/storage/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'physicalObject',
+    relations: ['storageLocation'],
+  },
   operations: [
     {
       exampleRequests: { primary: createPhysicalObjectRequestSuccess },
@@ -22,26 +27,7 @@ module.exports = {
     {
       type: 'del',
     },
-    // {
-    //   connect: false,
-    //   inverseOperationId: buildOperationId({
-    //     operationType: 'getRelationship',
-    //     relationKey: 'physicalObjects',
-    //     resource: 'specimen',
-    //   }),
-    //   relationKey: 'specimens',
-    //   type: 'getRelationship',
-    // },
-    // {
-    //   connect: false,
-    //   inverseOperationId: buildOperationId({
-    //     operationType: 'updateRelationship',
-    //     relationKey: 'physicalObjects',
-    //     resource: 'specimen',
-    //   }),
-    //   relationKey: 'specimens',
-    //   type: 'updateRelationship',
-    // },
+
     {
       relationKey: 'storageLocation',
       type: 'getRelationship',

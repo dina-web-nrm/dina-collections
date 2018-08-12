@@ -7,6 +7,11 @@ const getManyfilterSpecification = require('./operations/getMany/filters')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'taxonName',
+    relations: ['taxon'],
+  },
   operations: [
     {
       exampleRequests: { primary: createTaxonNameRequestSuccess },
