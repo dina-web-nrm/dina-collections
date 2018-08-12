@@ -31,14 +31,21 @@ module.exports = function createBatch({
     })
   }
 
+  let queryParams = {
+    limit: numberOfBatchEntries,
+    offset: startCount,
+  }
+  if (srcRelationships && srcRelationships.length) {
+    queryParams = {
+      ...queryParams,
+      relationships: srcRelationships,
+    }
+  }
+
   return serviceInteractor
     .getMany({
       request: {
-        queryParams: {
-          limit: numberOfBatchEntries,
-          offset: startCount,
-          relationships: srcRelationships,
-        },
+        queryParams,
       },
 
       resource: srcResource,

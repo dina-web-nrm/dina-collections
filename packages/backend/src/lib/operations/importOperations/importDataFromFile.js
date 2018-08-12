@@ -1,3 +1,5 @@
+const addRelationsToQueryParams = require('../crudOperations/utilities/addRelationsToQueryParams')
+const addLimitToQueryParams = require('../crudOperations/utilities/addLimitToQueryParams')
 const buildOperationId = require('common/src/buildOperationId')
 
 module.exports = function rebuildView({
@@ -6,6 +8,8 @@ module.exports = function rebuildView({
   operationId,
   resource,
   relations,
+  includeRelations,
+  queryParams: queryParamsInput,
   resourcePath,
   ...rest
 }) {
@@ -15,15 +19,27 @@ module.exports = function rebuildView({
     ...errorsInput,
   }
 
+  let queryParams = addRelationsToQueryParams({
+    includeRelations,
+    queryParams: queryParamsInput,
+    relations,
+  })
+
+  queryParams = addLimitToQueryParams({
+    queryParams,
+  })
+
   const operationType = 'importDataFromFile'
 
   return {
     ...rest,
     errors,
+    includeRelations,
     method: 'post',
     operationId: operationId || buildOperationId({ operationType, resource }),
     operationType,
     path: `${basePath}/${resourcePath}/actions/importDataFromFile`,
+    queryParams,
     relations,
     resource,
     response: {

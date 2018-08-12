@@ -32,7 +32,19 @@ exports.updateView = {
 }
 
 exports.rebuildView = {
-  cacheRequestsToResources: ['place', 'taxonName', 'taxon', 'storageLocation'],
+  cacheRequestsToResources: [
+    'agent',
+    'place',
+    'taxonName',
+    'taxon',
+    'storageLocation',
+    'preparationType',
+    'causeOfDeathType',
+    'featureType',
+    'establishmentMeansType',
+    'typeSpecimenType',
+    'identifierType',
+  ],
   description: 'Transforming data from specimen',
   numberOfEntriesEachBatch: 100,
   resolveRelations: {

@@ -57,6 +57,7 @@ module.exports = {
       type: 'del',
     },
     {
+      includeRelations: true,
       transformationSpecification: importDataFromFileTransformationSpecification,
       type: 'importDataFromFile',
     },

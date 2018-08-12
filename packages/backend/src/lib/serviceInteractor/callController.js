@@ -30,15 +30,15 @@ module.exports = function callController({
     )
   }
 
-  const { controller } = connector
-  if (!controller) {
+  const { requestHandler } = connector
+  if (!requestHandler) {
     throw new Error(
       `No controller found for operationId: ${operationId} resource: ${
         resource
       } and operationType: ${operationType}`
     )
   }
-  return controller({
-    request,
+  return requestHandler({
+    userInput: request,
   })
 }
