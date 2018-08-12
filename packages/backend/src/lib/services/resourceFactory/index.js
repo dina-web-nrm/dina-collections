@@ -10,6 +10,7 @@ module.exports = function createResource({ resourceInput }) {
   const {
     basePath,
     controllers,
+    model,
     operations: operationSpecifications = [],
     relations,
     resource,
@@ -28,6 +29,7 @@ module.exports = function createResource({ resourceInput }) {
   return {
     basePath,
     controllers,
+    model,
     operationIds,
     operations: operationMap,
     relations,
