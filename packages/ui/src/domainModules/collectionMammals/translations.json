@@ -378,6 +378,60 @@
       }
     }
   },
+  "filterTitles": {
+    "identifier": {
+      "en": "Identifier",
+      "sv": ""
+    },
+    "taxonomy": {
+      "en": "Taxonomy",
+      "sv": ""
+    },
+    "locality": {
+      "en": "Locality",
+      "sv": ""
+    },
+    "datePeriod": {
+      "en": "Date",
+      "sv": ""
+    },
+    "agent": {
+      "en": "Agent",
+      "sv": ""
+    },
+    "physicalObject": {
+      "en": "Physical object",
+      "sv": ""
+    },
+    "storage": {
+      "en": "Storage",
+      "sv": ""
+    },
+    "ageAndStage": {
+      "en": "Age and stage",
+      "sv": ""
+    },
+    "sex": {
+      "en": "Sex",
+      "sv": ""
+    },
+    "bones": {
+      "en": "Bones",
+      "sv": ""
+    },
+    "weight": {
+      "en": "Weight",
+      "sv": ""
+    },
+    "length": {
+      "en": "Length",
+      "sv": ""
+    },
+    "collectingCondition": {
+      "en": "Collecting condition",
+      "sv": ""
+    }
+  },
   "tableColumns": {
     "identifiersCatalogNumber": {
       "en": "catalog number",

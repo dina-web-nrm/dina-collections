@@ -14,18 +14,18 @@ const mapStateToProps = (state, { formValueSelector, name }) => {
 
 const propTypes = {
   hasValues: PropTypes.bool.isRequired,
-  titleTextKey: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 }
 
-const FilterTitle = ({ hasValues, titleTextKey }) => {
+const FilterTitle = ({ hasValues, name }) => {
   return (
     <Grid>
       <Grid.Column width={14}>
         {hasValues && <Icon name="check circle" />}
         <ModuleTranslate
-          fallback={capitalizeFirstLetter(titleTextKey)}
+          fallback={capitalizeFirstLetter(name)}
           module="collectionMammals"
-          textKey={titleTextKey}
+          textKey={`filterTitles.${name}`}
         />
       </Grid.Column>
       <Grid.Column width={2}>

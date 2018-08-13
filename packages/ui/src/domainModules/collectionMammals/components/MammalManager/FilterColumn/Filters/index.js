@@ -12,19 +12,19 @@ import FilterContent from './FilterContent'
 import FilterTitle from './FilterTitle'
 
 const items = [
-  { name: 'identifier', titleTextKey: 'identifier' },
-  { name: 'taxonomy', titleTextKey: 'taxonomy' },
-  { name: 'locality', titleTextKey: 'locality' },
-  { name: 'datePeriod', titleTextKey: 'datePeriod' },
-  { name: 'agent', titleTextKey: 'agent' },
-  { name: 'physicalObject', titleTextKey: 'physicalObject' },
-  { name: 'storage', titleTextKey: 'storage' },
-  { name: 'ageAndStage', titleTextKey: 'ageAndStage' },
-  { name: 'sex', titleTextKey: 'sex' },
-  { name: 'bones', titleTextKey: 'bones' },
-  { name: 'weight', titleTextKey: 'weight' },
-  { name: 'length', titleTextKey: 'length' },
-  { name: 'collectingCondition', titleTextKey: 'collectingCondition' },
+  { name: 'identifier' },
+  { name: 'taxonomy' },
+  { name: 'locality' },
+  { name: 'datePeriod' },
+  { name: 'agent' },
+  { name: 'physicalObject' },
+  { name: 'storage' },
+  { name: 'ageAndStage' },
+  { name: 'sex' },
+  { name: 'bones' },
+  { name: 'weight' },
+  { name: 'length' },
+  { name: 'collectingCondition' },
 ]
 
 const mapStateToProps = (state, { formName }) => {
