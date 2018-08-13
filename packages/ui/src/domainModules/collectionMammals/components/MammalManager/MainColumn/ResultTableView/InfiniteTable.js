@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import PropTypes from 'prop-types'
 import ReactList from 'react-list'
 import { push } from 'react-router-redux'
-import { Grid } from 'semantic-ui-react'
+import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
@@ -150,7 +150,7 @@ export class InfiniteTable extends Component {
         itemId={itemId}
         key={itemId}
         language={language}
-        onClick={() => this.handleRowClick(rowNumber, itemId)}
+        onClick={this.handleRowClick}
         resource={SEARCH_SPECIMEN}
         rowNumber={rowNumber}
         tableColumnsToShow={tableColumnsToShow}
@@ -167,7 +167,11 @@ export class InfiniteTable extends Component {
       return (
         <Grid padded>
           <Grid.Row style={{ height: 43, width }}>
-            <Grid.Column>Loading...</Grid.Column>
+            <Grid.Column style={{ paddingTop: 60, width: 150 }}>
+              <Dimmer active inverted>
+                <Loader content="Loading" inverted />
+              </Dimmer>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       )
