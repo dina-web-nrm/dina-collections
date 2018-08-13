@@ -150,7 +150,7 @@ export class InfiniteTable extends Component {
         itemId={itemId}
         key={itemId}
         language={language}
-        onClick={() => this.handleRowClick(rowNumber, itemId)}
+        onClick={this.handleRowClick}
         resource={SEARCH_SPECIMEN}
         rowNumber={rowNumber}
         tableColumnsToShow={tableColumnsToShow}
