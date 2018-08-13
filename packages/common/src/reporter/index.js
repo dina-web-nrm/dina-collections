@@ -148,6 +148,26 @@ module.exports = function createReporter() {
     })
   }
 
+  const rebuildViewIncrementNotMigratedPaths = ({ src, paths = [] }) => {
+    paths.forEach(path => {
+      if (path) {
+        increment({
+          path: `transformation.notMigrated.${path}`,
+        })
+      }
+    })
+    if (src) {
+      paths.forEach(path => {
+        if (path) {
+          set({
+            path: `transformation.notMigratedExample.${path}`,
+            value: objectPath.get(src, path),
+          })
+        }
+      })
+    }
+  }
+
   return {
     done,
     getReport,
@@ -156,6 +176,7 @@ module.exports = function createReporter() {
     rebuildViewDependencyReport,
     rebuildViewError,
     rebuildViewIncrementCustom,
+    rebuildViewIncrementNotMigratedPaths,
     rebuildViewIncrementSrc,
     rebuildViewIncrementTarget,
     rebuildViewLookupHit,
