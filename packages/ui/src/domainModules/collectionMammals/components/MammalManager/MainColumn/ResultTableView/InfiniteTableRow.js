@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
+import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
@@ -38,6 +38,7 @@ const defaultProps = {
 const InfiniteTableRow = ({
   background,
   item,
+  itemId,
   // language, // TODO implement translations
   onClick,
   rowNumber,
@@ -49,7 +50,14 @@ const InfiniteTableRow = ({
   if (!item) {
     return (
       <Grid.Row style={{ height: 43, width }}>
-        <Grid.Column>Loading...</Grid.Column>
+        <Grid.Column style={{ width: 80 }} textAlign="right">
+          {rowNumber}
+        </Grid.Column>
+        <Grid.Column style={{ width: 60 }}>
+          <Dimmer active inverted>
+            <Loader inverted size="mini" />
+          </Dimmer>
+        </Grid.Column>
       </Grid.Row>
     )
   }
@@ -58,7 +66,7 @@ const InfiniteTableRow = ({
     <Grid.Row
       onClick={event => {
         event.preventDefault()
-        onClick(item.id)
+        onClick(rowNumber, itemId)
       }}
       style={{ background, height: 43, width }}
     >
