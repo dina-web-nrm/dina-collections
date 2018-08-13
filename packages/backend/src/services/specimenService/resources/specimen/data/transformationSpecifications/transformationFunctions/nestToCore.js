@@ -10,11 +10,7 @@ const validate = obj => {
   })(obj)
 }
 
-module.exports = function validateSpecimen(specimen) {
-  return validate(specimen)
-}
-
-module.exports = function nestToCore({ globalIndex, target, reporter }) {
+module.exports = function nestToCore({ globalIndex, target, src, reporter }) {
   const { id, attributes } = target
   const coreSpecimen =
     nestedToCoreSync({
@@ -46,8 +42,6 @@ module.exports = function nestToCore({ globalIndex, target, reporter }) {
   // if (Object.keys(src.analysis).length > 0) {
   //   console.log('JSON.stringify src', JSON.stringify(src.analysis, null, 2))
   // }
-
-  // console.log('JSON.stringify src', JSON.stringify(src, null, 2))
 
   const errors = coreSpecimen.attributes && validate(coreSpecimen.attributes)
 
