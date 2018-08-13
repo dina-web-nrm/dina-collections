@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const bonesFilter = 'matchBones'
+const bonesFilter = 'matchBoneTags'
 const bonesFieldName = `bones.bones|multipleChoice-${bonesFilter}`
 
 const propTypes = {
@@ -21,7 +21,7 @@ class BonesFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="bones"
+            aggregationFunctionName="aggregateBoneTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(bonesFieldName)}

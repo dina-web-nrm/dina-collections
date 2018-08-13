@@ -5,11 +5,11 @@ import { Grid } from 'semantic-ui-react'
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const weightTypeFilter = 'matchWeightType'
+const weightTypeFilter = 'matchWeightTags'
 const multipleChoiceName = `weight.weightType|multipleChoice-${
   weightTypeFilter
 }`
-const weightFilter = 'searchCollectingLocation'
+const weightFilter = 'rangeWeight'
 const fromWeightFieldName = `weight.fromWeight|gte-${weightFilter}`
 const toWeightFieldName = `weight.toWeight|lte-${weightFilter}`
 
@@ -70,7 +70,7 @@ class WeightFilterForm extends PureComponent {
         </Grid.Row>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="weight"
+            aggregationFunctionName="aggregateWeightTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
