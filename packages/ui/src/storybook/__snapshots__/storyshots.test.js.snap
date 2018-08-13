@@ -2434,7 +2434,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              DatePeriod
+              Date
             </span>
           </div>
           <div
@@ -2482,7 +2482,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              PhysicalObject
+              Physical object
             </span>
           </div>
           <div
@@ -2530,7 +2530,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              AgeAndStage
+              Age and stage
             </span>
           </div>
           <div
@@ -2650,7 +2650,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              CollectingCondition
+              Collecting condition
             </span>
           </div>
           <div
