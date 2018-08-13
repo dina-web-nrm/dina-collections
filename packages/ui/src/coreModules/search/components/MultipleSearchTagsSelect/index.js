@@ -82,7 +82,6 @@ class RawMultipleSearchTagsSelect extends PureComponent {
     } = this.props
 
     const query = {
-      fields: false,
       query: {
         and: [
           ...((drillDownQuery && drillDownQuery.and) || []),

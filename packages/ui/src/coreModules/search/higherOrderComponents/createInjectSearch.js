@@ -7,7 +7,8 @@ import { search } from '../actionCreators'
 
 const createInjectSearch = (
   {
-    fields: defaultFields,
+    excludeFields: defaultExcludeFields,
+    includeFields: defaultIncludeFields,
     resource = 'searchSpecimen',
     searchOnMount = true,
     storeSearchResult = true,
@@ -34,10 +35,16 @@ const createInjectSearch = (
       }
     }
 
-    search({ aggregations, fields, query }) {
+    search({
+      aggregations,
+      excludeFields: excludeFieldsInput,
+      includeFields: includeFieldsInput,
+      query,
+    }) {
       return this.props.search({
         aggregations,
-        fields: fields || defaultFields,
+        excludeFields: excludeFieldsInput || defaultExcludeFields,
+        includeFields: includeFieldsInput || defaultIncludeFields,
         query,
         resource,
         storeSearchResult,

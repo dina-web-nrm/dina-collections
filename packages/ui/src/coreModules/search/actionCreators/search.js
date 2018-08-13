@@ -4,7 +4,8 @@ import { actionCreators } from '../keyObjectModule'
 export default function search(
   {
     aggregations,
-    fields = ['id'],
+    excludeFields,
+    includeFields,
     query,
     resource,
     storeSearchResult = false,
@@ -27,7 +28,8 @@ export default function search(
     return dispatch(
       queryAc({
         aggregations,
-        fields,
+        excludeFields,
+        includeFields,
         limit: 100000,
         query,
         throwError: true,

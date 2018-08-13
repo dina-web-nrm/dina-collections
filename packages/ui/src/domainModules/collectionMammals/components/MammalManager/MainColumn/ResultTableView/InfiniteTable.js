@@ -200,7 +200,7 @@ export default compose(
     resource: SEARCH_SPECIMEN,
   }),
   createBatchFetchItems({
-    fields: ['id', 'attributes.result'],
+    includeFields: ['id', 'attributes'],
     resource: SEARCH_SPECIMEN,
   }),
   connect(mapStateToProps, mapDispatchToProps)
