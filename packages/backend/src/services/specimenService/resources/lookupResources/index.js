@@ -4,6 +4,11 @@ module.exports = specification.reduce(
   (obj, { getManyFilters, name, transformationSpecification }) => {
     const spec = {
       basePath: '/api/specimen/v01',
+      model: {
+        modelFactory: 'inMemoryViewDocumentModel',
+        name,
+        validate: false,
+      },
       operations: [
         {
           exampleRequests: {

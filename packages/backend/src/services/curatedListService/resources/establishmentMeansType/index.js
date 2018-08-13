@@ -3,6 +3,10 @@ const requestSuccess = require('./operations/create/examples/requestSuccess.json
 
 module.exports = {
   basePath: '/api/curatedList/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'establishmentMeansType',
+  },
   operations: [
     {
       exampleRequests: { primary: requestSuccess },

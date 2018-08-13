@@ -46,6 +46,7 @@ module.exports = function fetchParents({
       getItemByTypeId,
       ignoreParentIds,
       item: parent,
+      order,
       parents,
       relationships,
       resource,

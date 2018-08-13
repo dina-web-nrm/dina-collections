@@ -13,6 +13,9 @@ module.exports = {
     exampleResponses: {
       type: 'object',
     },
+    includeRelations: {
+      type: 'boolean',
+    },
     operationId: {
       type: 'string',
     },

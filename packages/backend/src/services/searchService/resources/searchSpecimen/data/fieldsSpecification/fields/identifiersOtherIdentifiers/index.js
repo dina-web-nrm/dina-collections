@@ -16,19 +16,23 @@ const transformation = ({ migrator, src, target }) => {
     return null
   }
 
-  const otherIdentifiers = identifiers.filter(identifier => {
-    const { identifierType: { key } = {} } = identifier
-    if (key !== CATALOG_NUMBER_TYPE) {
-      return true
-    }
-    return false
-  })
+  const otherIdentifiers = identifiers
+    .map(identifier => {
+      const { identifierType: { key } = {}, value } = identifier
+      if (key !== CATALOG_NUMBER_TYPE) {
+        return value
+      }
+      return null
+    })
+    .filter(identifier => {
+      return !!identifier
+    })
 
   if (otherIdentifiers && otherIdentifiers.length) {
     migrator.setValue({
       obj: target,
       path: fieldPath,
-      value: otherIdentifiers.value,
+      value: otherIdentifiers,
     })
   }
   return null

@@ -4,6 +4,11 @@ const createRequestSuccess = require('./operations/create/examples/requestSucces
 
 module.exports = {
   basePath: '/api/agent/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'agent',
+    relations: ['agent'],
+  },
   operations: [
     {
       exampleRequests: { primary: createRequestSuccess },

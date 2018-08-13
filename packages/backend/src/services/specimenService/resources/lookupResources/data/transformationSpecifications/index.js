@@ -9,6 +9,7 @@ const {
 
 exports.preparationType = {
   description: '',
+  srcRelationships: [],
   srcResource: 'preparationType',
   transformationFunctions: [preparationType],
 }
@@ -28,6 +29,7 @@ exports.place = {
 
 exports.featureType = {
   description: '',
+  srcRelationships: [],
   srcResource: 'featureType',
   transformationFunctions: [featureType],
 }
@@ -35,6 +37,7 @@ exports.featureType = {
 exports.agent = {
   collidingIdPrefix: 'x',
   description: '',
+  srcRelationships: [],
   srcResource: 'agent',
   transformationFunctions: [agent],
 }

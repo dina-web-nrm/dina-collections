@@ -8,6 +8,11 @@ const getManyFilterSpecificationMap = require('./getMany/filters')
 
 module.exports = {
   basePath: '/api/locality/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'place',
+    relations: ['place'],
+  },
   operations: [
     {
       exampleRequests: { primary: createRequestSuccess },

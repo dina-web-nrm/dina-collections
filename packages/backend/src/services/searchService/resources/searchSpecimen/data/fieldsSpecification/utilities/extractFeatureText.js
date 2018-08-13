@@ -1,8 +1,10 @@
 module.exports = function extractFeatureText({
-  migrator,
-  src,
+  extractKey = false,
+  featureGroupKey,
   featureTypeKey,
   includeUnit = false,
+  migrator,
+  src,
 }) {
   const featureObservations = migrator.getValue({
     obj: src,
@@ -17,6 +19,11 @@ module.exports = function extractFeatureText({
     const { featureType } = featureObservation
     if (!featureType) {
       return
+    }
+    if (featureGroupKey && extractKey) {
+      if (featureGroupKey === featureType.group) {
+        featureValues.push(featureType.key)
+      }
     }
 
     if (

@@ -1,7 +1,25 @@
-const taxonomy = require('./decorators/taxonomy')
 const locality = require('./decorators/locality')
+const storage = require('./decorators/storage')
+const taxonomy = require('./decorators/taxonomy')
 
-const agents = require('./fields/agents')
+const searchDate = require('./searchOnlyFields/searchDate')
+const searchAge = require('./searchOnlyFields/searchAge')
+const searchWeight = require('./searchOnlyFields/searchWeight')
+
+const agentTags = require('./tags/agentTags')
+const ageStageTags = require('./tags/ageStageTags')
+const conditionTags = require('./tags/conditionTags')
+const dateTags = require('./tags/dateTags')
+const identifierTags = require('./tags/identifierTags')
+const locationTags = require('./tags/locationTags')
+const placeIdTags = require('./tags/placeIdTags')
+const sexTags = require('./tags/sexTags')
+const skeletonTags = require('./tags/skeletonTags')
+const skinTags = require('./tags/skinTags')
+const storageLocationTags = require('./tags/storageLocationTags')
+const taxonomyTags = require('./tags/taxonomyTags')
+const wetPreparationTags = require('./tags/wetPreparationTags')
+
 const collectingEventCollectors = require('./fields/collectingEventCollectors')
 const collectingEventCountry = require('./fields/collectingEventCountry')
 const collectingEventDistrict = require('./fields/collectingEventDistrict')
@@ -17,8 +35,10 @@ const featureCompleteBodyWeight = require('./fields/featureCompleteBodyWeight')
 const featureCondition = require('./fields/featureCondition')
 const featureSex = require('./fields/featureSex')
 const featureTotalLength = require('./fields/featureTotalLength')
+const id = require('./fields/id')
 const identifiersCatalogNumber = require('./fields/identifiersCatalogNumber')
 const identifiersOtherIdentifiers = require('./fields/identifiersOtherIdentifiers')
+const idNumeric = require('./fields/idNumeric')
 const originInformationLocality = require('./fields/originInformationLocality')
 const physicalUnitOtherPreparation = require('./fields/physicalUnitOtherPreparation')
 const physicalUnitSkeleton = require('./fields/physicalUnitSkeleton')
@@ -34,9 +54,26 @@ const taxonomySpecies = require('./fields/taxonomySpecies')
 const taxonomySubspecies = require('./fields/taxonomySubspecies')
 
 module.exports = {
-  decorators: [locality, taxonomy],
+  decorators: [locality, taxonomy, storage],
   fields: [
-    agents,
+    searchAge,
+    searchDate,
+    searchWeight,
+
+    agentTags,
+    ageStageTags,
+    conditionTags,
+    dateTags,
+    identifierTags,
+    locationTags,
+    placeIdTags,
+    sexTags,
+    skeletonTags,
+    skinTags,
+    storageLocationTags,
+    taxonomyTags,
+    wetPreparationTags,
+
     collectingEventCollectors,
     collectingEventCountry,
     collectingEventDistrict,
@@ -52,8 +89,10 @@ module.exports = {
     featureCondition,
     featureSex,
     featureTotalLength,
+    id,
     identifiersCatalogNumber,
     identifiersOtherIdentifiers,
+    idNumeric,
     originInformationLocality,
     physicalUnitOtherPreparation,
     physicalUnitSkeleton,

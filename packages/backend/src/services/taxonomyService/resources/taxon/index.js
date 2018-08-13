@@ -7,6 +7,11 @@ const createTaxonRequestSuccess = require('./operations/create/examples/requestS
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'taxon',
+    relations: ['taxonName'],
+  },
   operations: [
     {
       exampleRequests: { primary: createTaxonRequestSuccess },

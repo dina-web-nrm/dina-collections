@@ -3,6 +3,10 @@ const createTypeSpecimenTypeRequestSuccess = require('./operations/create/exampl
 
 module.exports = {
   basePath: '/api/curatedList/v01',
+  model: {
+    modelFactory: 'sequelizeDocumentModel',
+    name: 'typeSpecimenType',
+  },
   operations: [
     {
       exampleRequests: {

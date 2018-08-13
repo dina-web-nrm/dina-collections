@@ -1,4 +1,12 @@
-const transformationFunctions = require('./transformationFunctions')
+const fieldsSpecification = require('../fieldsSpecification')
+const extractTransformations = require('../../../../../../lib/data/fields/utilities/extractTransformationFunctions')
+
+const fieldTransformations = extractTransformations({
+  fieldsSpecification,
+  format: 'array',
+})
+
+const transformationFunctions = fieldTransformations
 
 const cacheResourcesSpecifications = require('../../../../cacheResourcesSpecifications')
 
@@ -24,7 +32,19 @@ exports.updateView = {
 }
 
 exports.rebuildView = {
-  cacheRequestsToResources: ['place', 'taxonName', 'taxon', 'storageLocation'],
+  cacheRequestsToResources: [
+    'agent',
+    'place',
+    'taxonName',
+    'taxon',
+    'storageLocation',
+    'preparationType',
+    'causeOfDeathType',
+    'featureType',
+    'establishmentMeansType',
+    'typeSpecimenType',
+    'identifierType',
+  ],
   description: 'Transforming data from specimen',
   numberOfEntriesEachBatch: 100,
   resolveRelations: {

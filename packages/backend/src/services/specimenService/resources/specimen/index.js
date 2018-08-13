@@ -1,4 +1,8 @@
 const {
+  getNormalizedColumnNames,
+} = require('common/src/formatObject/specifications')
+
+const {
   importDataFromFile: importDataFromFileTransformationSpecification,
 } = require('./data/transformationSpecifications')
 
@@ -26,8 +30,15 @@ const postEditHook = ({ item, serviceInteractor }) => {
   })
 }
 
+const normalizedColumnNames = getNormalizedColumnNames('specimen')
+
 module.exports = {
   basePath: '/api/specimen/v01',
+  model: {
+    modelFactory: 'sequelizeNormalizedDocumentModel',
+    name: 'specimen',
+    normalizedColumnNames,
+  },
   operations: [
     {
       errors: {
@@ -57,6 +68,7 @@ module.exports = {
       type: 'del',
     },
     {
+      includeRelations: true,
       transformationSpecification: importDataFromFileTransformationSpecification,
       type: 'importDataFromFile',
     },

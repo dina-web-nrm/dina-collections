@@ -2,6 +2,7 @@ module.exports = function extractPhysicalUnitString({
   migrator,
   src,
   includePreparationType,
+  includeStorageLocation = true,
 }) {
   const collectionItems = migrator.getValue({
     obj: src,
@@ -24,25 +25,28 @@ module.exports = function extractPhysicalUnitString({
       if (includePreparationType(preparationType)) {
         let str = preparationType.name
 
-        const storageLocationParent = migrator.getValue({
-          obj: collectionItem,
-          path: 'physicalObject.storageLocation.parent',
-        })
+        if (includeStorageLocation) {
+          const storageLocationParent = migrator.getValue({
+            obj: collectionItem,
+            path: 'physicalObject.storageLocation.parent',
+          })
 
-        if (storageLocationParent) {
-          str = `${str} ${storageLocationParent.name}`
+          if (storageLocationParent) {
+            str = `${str} ${storageLocationParent.name}`
+          }
+
+          str = `${str} / `
+
+          const storageLocation = migrator.getValue({
+            obj: collectionItem,
+            path: 'physicalObject.storageLocation',
+          })
+
+          if (storageLocation) {
+            str = `${str}${storageLocation.name}`
+          }
         }
 
-        str = `${str} / `
-
-        const storageLocation = migrator.getValue({
-          obj: collectionItem,
-          path: 'physicalObject.storageLocation',
-        })
-
-        if (storageLocation) {
-          str = `${str}${storageLocation.name}`
-        }
         strings.push(str)
       }
     }
