@@ -88,7 +88,7 @@ const buildQuery = createSelector(
 
                       return {
                         filter: {
-                          filterFunction: getFilterFunction(key),
+                          filterFunction: `match${getFilterFunction(key)}`,
                           input: {
                             value: item.id,
                           },
