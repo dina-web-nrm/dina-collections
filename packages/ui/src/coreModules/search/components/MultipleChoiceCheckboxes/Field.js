@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Loader } from 'semantic-ui-react'
 import { formValueSelector } from 'redux-form'
 
 import Checkbox from 'coreModules/form/components/inputs/Checkbox'
@@ -49,6 +49,7 @@ class MultipleChoiceCheckboxes extends Component {
     this.state = {
       allIds: [],
       drillDownOptionsMap: {},
+      loading: true,
     }
 
     this.buildQuery = this.buildQuery.bind(this)
@@ -59,7 +60,7 @@ class MultipleChoiceCheckboxes extends Component {
   }
 
   componentDidMount() {
-    this.props
+    return this.props
       .search(this.buildQuery(undefined, { getAll: true }))
       .then(allSearchResults => {
         const allIds = allSearchResults.map(({ id }) => id)
@@ -67,9 +68,14 @@ class MultipleChoiceCheckboxes extends Component {
           allIds,
         })
 
-        this.props
+        return this.props
           .search(this.buildQuery(allIds))
           .then(this.handleDrillDownSearchResult)
+      })
+      .then(() => {
+        this.setState({
+          loading: false,
+        })
       })
   }
 
@@ -100,7 +106,7 @@ class MultipleChoiceCheckboxes extends Component {
     const drillDownQuery = nextPropsDrillDownQuery || currentDrillDownQuery
 
     const searchQuery = {
-      fields: ['id'],
+      includeFields: ['id'],
       query: {},
     }
 
@@ -174,7 +180,17 @@ class MultipleChoiceCheckboxes extends Component {
 
   render() {
     const { checkedValues, displayCount, input } = this.props
-    const { allIds, drillDownOptionsMap } = this.state
+    const { allIds, drillDownOptionsMap, loading } = this.state
+
+    if (loading) {
+      return (
+        <Grid padded textAlign="left" verticalAlign="middle">
+          <Grid.Column>
+            <Loader active inline size="tiny" />
+          </Grid.Column>
+        </Grid>
+      )
+    }
 
     if (!allIds || !allIds.length) {
       return null

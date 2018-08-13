@@ -5,13 +5,13 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const skeletonFilter = 'matchSkeleton'
+const skeletonFilter = 'matchSkeletonTags'
 const skeletonFieldName = `physicalObject.skeleton|multipleChoice-${
   skeletonFilter
 }`
-const skinFilter = 'matchSkin'
+const skinFilter = 'matchSkinTags'
 const skinFieldName = `physicalObject.skin|multipleChoice-${skinFilter}`
-const wetPreparationFilter = 'matchWetPreparation'
+const wetPreparationFilter = 'matchWetPreparationTags'
 const wetPreparationFieldName = `physicalObject.wetPreparation|multipleChoice-${
   wetPreparationFilter
 }`
@@ -29,7 +29,7 @@ class PhysicalObjectFilterForm extends PureComponent {
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="skeleton"
+            aggregationFunctionName="aggregateSkeletonTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(skeletonFieldName)}
@@ -41,7 +41,7 @@ class PhysicalObjectFilterForm extends PureComponent {
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="skin"
+            aggregationFunctionName="aggregateSkinTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(skinFieldName)}
@@ -53,7 +53,7 @@ class PhysicalObjectFilterForm extends PureComponent {
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="wetPreparation"
+            aggregationFunctionName="aggregateWetPreparationTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(wetPreparationFieldName)}

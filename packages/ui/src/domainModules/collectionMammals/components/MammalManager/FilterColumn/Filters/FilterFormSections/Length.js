@@ -5,10 +5,8 @@ import { Grid } from 'semantic-ui-react'
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const lengthTypeFilter = 'searchCollectingLocation'
-const multipleChoiceName = `length.lengthType|multipleChoice-${
-  lengthTypeFilter
-}`
+const lengthTags = 'LengthTags'
+const multipleChoiceName = `length.lengthType|multipleChoice-${lengthTags}`
 const lengthFilter = 'matchLengthType'
 const fromLengthFieldName = `length.fromLength|gte-${lengthFilter}`
 const toLengthFieldName = `length.toLength|lte-${lengthFilter}`
@@ -70,11 +68,11 @@ class LengthFilterForm extends PureComponent {
         </Grid.Row>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="lengthType"
+            aggregationFunctionName="aggregateLengthTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
-            filterFunctionName={lengthTypeFilter}
+            filterFunctionName={`search${lengthTags}`}
             formName={formName}
             label="Length type"
             name={multipleChoiceName}

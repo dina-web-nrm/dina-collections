@@ -28,7 +28,7 @@ const testBody = {
           options: { contains: 'Stockholm', limit: 1 },
         },
       ],
-      fields: ['id'],
+      includeFields: ['id'],
       limit: 1000,
       offset: 0,
       query: {

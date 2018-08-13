@@ -7,8 +7,8 @@ import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
 import { ALL } from 'domainModules/locality/constants'
 
-const locationFilter = 'searchCollectingLocation'
-const locationFieldName = `locality.location|searchTags-${locationFilter}`
+const locationTags = 'LocationTags'
+const locationFieldName = `locality.location|searchTags-${locationTags}`
 
 const propTypes = {
   getDrilldownQuery: PropTypes.func.isRequired,
@@ -28,17 +28,17 @@ class LocalityFilterForm extends PureComponent {
             label="Higher geography"
             model="place"
             module="locality"
-            name="locality.higherGeography|singleMatch-matchCollectingPlace"
+            name="locality.higherGeography|singleMatch-matchPlaceIdTags"
             type="text"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="collectingLocations"
+            aggregationFunctionName="aggregateLocationTags"
             autoComplete="off"
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(locationFieldName)}
-            filterFunctionName={locationFilter}
+            filterFunctionName={`search${locationTags}`}
             label="Location"
             name={locationFieldName}
           />
