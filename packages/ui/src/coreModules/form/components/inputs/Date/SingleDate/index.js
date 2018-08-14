@@ -18,6 +18,7 @@ const propTypes = {
   displaySubLabels: PropTypes.bool,
   displayText: PropTypes.bool,
   displayTodayButton: PropTypes.bool,
+  fluid: PropTypes.bool,
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   mountHidden: PropTypes.bool,
@@ -30,6 +31,7 @@ const defaultProps = {
   displaySubLabels: false,
   displayText: false,
   displayTodayButton: false,
+  fluid: false,
   mountHidden: config.isTest,
   stack: false,
 }
@@ -106,6 +108,7 @@ class SingleDate extends Component {
       displaySubLabels,
       displayText,
       displayTodayButton,
+      fluid,
       input,
       meta,
       mountHidden,
@@ -155,6 +158,7 @@ class SingleDate extends Component {
       flexibleDate = (
         <FlexibleDate
           displaySubLabel={displaySubLabels}
+          fluid={fluid}
           input={this.getFieldInput('flexibleDate')}
           meta={meta}
         />
