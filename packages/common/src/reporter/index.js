@@ -1,6 +1,18 @@
 const now = require('performance-now')
 const objectPath = require('object-path')
 
+const cleanId = id => {
+  if (!id) {
+    return id
+  }
+
+  if (typeof id !== 'string') {
+    return id
+  }
+
+  return id.replace(/\./, ',')
+}
+
 module.exports = function createReporter() {
   const report = {}
 
@@ -72,7 +84,7 @@ module.exports = function createReporter() {
     })
     if (id !== undefined) {
       increment({
-        path: `lookups.details.${resource}.missing.${id}`,
+        path: `lookups.details.${resource}.missing.${cleanId(id)}`,
       })
     }
   }
@@ -83,7 +95,7 @@ module.exports = function createReporter() {
     })
     if (id !== undefined) {
       increment({
-        path: `lookups.details.${resource}.hits.${id}`,
+        path: `lookups.details.${resource}.hits.${cleanId(id)}`,
       })
     }
   }
