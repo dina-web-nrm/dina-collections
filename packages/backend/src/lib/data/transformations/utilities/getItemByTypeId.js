@@ -2,6 +2,7 @@ module.exports = function getItemByTypeId({
   id,
   queryParams = {},
   report = true,
+  reportHitId = false,
   reporter,
   resourceCacheMap,
   serviceInteractor,
@@ -22,7 +23,10 @@ module.exports = function getItemByTypeId({
       .then(res => {
         if (reporter && report) {
           if (res && res.data) {
-            reporter.rebuildViewLookupHit({ resource: cacheResource })
+            reporter.rebuildViewLookupHit({
+              id: reportHitId ? id : undefined,
+              resource: cacheResource,
+            })
           } else {
             reporter.rebuildViewLookupMiss({ id, resource: cacheResource })
           }
@@ -32,9 +36,7 @@ module.exports = function getItemByTypeId({
       })
       .catch(err => {
         if (err.status === 404) {
-          reporter.increment({
-            path: `dependencies.${cacheResource}.nMisses`,
-          })
+          reporter.rebuildViewLookupMiss({ resource: cacheResource })
           return null
         }
 
@@ -54,7 +56,10 @@ module.exports = function getItemByTypeId({
     .then(res => {
       if (reporter && report) {
         if (res && res.data) {
-          reporter.rebuildViewLookupHit({ resource: type })
+          reporter.rebuildViewLookupHit({
+            id: reportHitId ? id : undefined,
+            resource: type,
+          })
         } else {
           reporter.rebuildViewLookupMiss({ id, resource: type })
         }
