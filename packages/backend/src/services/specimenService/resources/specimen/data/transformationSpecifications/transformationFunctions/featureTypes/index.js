@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
-// const getSkeletonPreparationType = require('./getSkeletonPreparationType')
-// const getSkeletonStorageLocation = require('./getSkeletonStorageLocation')
-// const getSkinPreparationType = require('./getSkinPreparationType')
-// const getSkinStorageLocation = require('./getSkinStorageLocation')
+
+const getFeatureTypesBones = require('./getFeatureTypesBones')
 const getFeatureTypeAgeStage = require('./getFeatureTypeAgeStage')
 const getFeatureTypeSex = require('./getFeatureTypeSex')
 const getFeatureTypesLengths = require('./getFeatureTypesLengths')
@@ -134,6 +132,30 @@ module.exports = function featureTypes({
               featureObservationText: featureTypeLength.text,
               featureType: {
                 id: featureTypeLength.id,
+              },
+            })
+          })
+        }
+      })
+    })
+
+    .then(() => {
+      return getFeatureTypesBones({
+        getItemByTypeId,
+        migrator,
+        reporter,
+        src,
+        target,
+      }).then(featureTypeBones => {
+        if (featureTypeBones.length === 2) {
+          throw new Error('featureTypeBones')
+        }
+        if (featureTypeBones && featureTypeBones.length) {
+          featureTypeBones.forEach(featureTypeBone => {
+            featureObservations.push({
+              featureObservationText: featureTypeBone.text,
+              featureType: {
+                id: featureTypeBone.id,
               },
             })
           })

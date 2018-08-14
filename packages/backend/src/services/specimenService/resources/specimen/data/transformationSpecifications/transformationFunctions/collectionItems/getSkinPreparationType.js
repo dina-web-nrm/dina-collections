@@ -29,6 +29,7 @@ module.exports = function getSkinPreparationType({
 
   return getItemByTypeId({
     id: lookupPreparationTypeId,
+    reportHitId: true,
     type: 'lookupPreparationType',
   }).then(item => {
     const preparationTypeId = item && item.attributes && item.attributes.srcId

@@ -15,6 +15,7 @@ module.exports = function getSkeletonStorageLocation({
 
   return getItemByTypeId({
     id: lookupSrcStorageLocationId,
+    reportHitId: true,
     type: 'lookupStorageLocation',
   }).then(item => {
     const storageLocation = item && item.attributes && item.attributes.srcId

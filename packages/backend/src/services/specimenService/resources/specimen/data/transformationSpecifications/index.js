@@ -2,12 +2,14 @@ const execute = require('./execute')
 const lookupSpecifications = require('../../../lookupResources/specification')
 
 const {
+  acquisition,
   collectingInformation,
   collectionItems,
   deathInformation,
   featureTypes,
   id,
   identifiers,
+  individual,
   nestToCore,
   publishRecord,
   readOnly,
@@ -33,6 +35,8 @@ exports.importDataFromFile = {
     featureTypes,
     recordHistoryEvents,
     deathInformation,
+    individual,
+    acquisition,
     publishRecord,
     readOnly,
     nestToCore,
