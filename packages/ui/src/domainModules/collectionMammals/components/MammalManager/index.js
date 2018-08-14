@@ -243,7 +243,7 @@ class MammalManager extends Component {
   handleSearchSpecimens(event, filterValues = {}) {
     event.preventDefault()
 
-    this.props.search({ query: buildQuery(filterValues) }).then(() => {
+    return this.props.search({ query: buildQuery(filterValues) }).then(() => {
       this.props.setCurrentTableRowNumber(1)
     })
   }
