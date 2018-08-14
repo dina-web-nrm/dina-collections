@@ -182,6 +182,30 @@ module.exports = function createReporter() {
     });
   };
 
+  var rebuildViewIncrementNotMigratedPaths = function rebuildViewIncrementNotMigratedPaths(_ref13) {
+    var src = _ref13.src,
+        _ref13$paths = _ref13.paths,
+        paths = _ref13$paths === undefined ? [] : _ref13$paths;
+
+    paths.forEach(function (path) {
+      if (path) {
+        increment({
+          path: 'transformation.notMigrated.' + path
+        });
+      }
+    });
+    if (src) {
+      paths.forEach(function (path) {
+        if (path) {
+          set({
+            path: 'transformation.notMigratedExample.' + path,
+            value: objectPath.get(src, path)
+          });
+        }
+      });
+    }
+  };
+
   return {
     done: done,
     getReport: getReport,
@@ -190,6 +214,7 @@ module.exports = function createReporter() {
     rebuildViewDependencyReport: rebuildViewDependencyReport,
     rebuildViewError: rebuildViewError,
     rebuildViewIncrementCustom: rebuildViewIncrementCustom,
+    rebuildViewIncrementNotMigratedPaths: rebuildViewIncrementNotMigratedPaths,
     rebuildViewIncrementSrc: rebuildViewIncrementSrc,
     rebuildViewIncrementTarget: rebuildViewIncrementTarget,
     rebuildViewLookupHit: rebuildViewLookupHit,

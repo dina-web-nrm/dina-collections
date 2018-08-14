@@ -5710,9 +5710,11 @@
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
+                  "attributes.tags.boneTags",
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
                   "attributes.tags.sexTags",
@@ -5720,6 +5722,7 @@
                   "attributes.tags.skinTags",
                   "attributes.tags.storageLocationTags",
                   "attributes.tags.taxonomyTags",
+                  "attributes.tags.weightTags",
                   "attributes.tags.wetPreparationTags",
                   "attributes.collectingEventCollectors",
                   "attributes.collectingEventCountry",
@@ -5772,9 +5775,11 @@
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
+                  "attributes.tags.boneTags",
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
                   "attributes.tags.sexTags",
@@ -5782,6 +5787,7 @@
                   "attributes.tags.skinTags",
                   "attributes.tags.storageLocationTags",
                   "attributes.tags.taxonomyTags",
+                  "attributes.tags.weightTags",
                   "attributes.tags.wetPreparationTags",
                   "attributes.collectingEventCollectors",
                   "attributes.collectingEventCountry",
@@ -6116,6 +6122,24 @@
           },
           {
             "in": "query",
+            "name": "filter[matchBoneTags]",
+            "description": "Match for attributes.tags.boneTags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchBoneTags]",
+            "description": "Search attributes.tags.boneTags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[matchConditionTags]",
             "description": "Match for attributes.tags.conditionTags",
             "required": false,
@@ -6163,6 +6187,24 @@
             "in": "query",
             "name": "filter[searchIdentifierTags]",
             "description": "Search attributes.tags.identifierTags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[matchLengthTags]",
+            "description": "Match for attributes.tags.lengthTags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchLengthTags]",
+            "description": "Search attributes.tags.lengthTags",
             "required": false,
             "schema": {
               "type": "string"
@@ -6296,6 +6338,24 @@
           },
           {
             "in": "query",
+            "name": "filter[matchWeightTags]",
+            "description": "Match for attributes.tags.weightTags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchWeightTags]",
+            "description": "Search attributes.tags.weightTags",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[matchWetPreparationTags]",
             "description": "Match for attributes.tags.wetPreparationTags",
             "required": false,
@@ -6343,9 +6403,11 @@
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
+                  "attributes.tags.boneTags",
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
                   "attributes.tags.sexTags",
@@ -6353,6 +6415,7 @@
                   "attributes.tags.skinTags",
                   "attributes.tags.storageLocationTags",
                   "attributes.tags.taxonomyTags",
+                  "attributes.tags.weightTags",
                   "attributes.tags.wetPreparationTags",
                   "attributes.collectingEventCollectors",
                   "attributes.collectingEventCountry",
@@ -6405,9 +6468,11 @@
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
+                  "attributes.tags.boneTags",
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
                   "attributes.tags.sexTags",
@@ -6415,6 +6480,7 @@
                   "attributes.tags.skinTags",
                   "attributes.tags.storageLocationTags",
                   "attributes.tags.taxonomyTags",
+                  "attributes.tags.weightTags",
                   "attributes.tags.wetPreparationTags",
                   "attributes.collectingEventCollectors",
                   "attributes.collectingEventCountry",
@@ -9369,6 +9435,509 @@
           }
         ],
         "summary": "Rebuild view for resource lookupStorageLocation",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupEstablishmentMeansTypes": {
+      "post": {
+        "operationId": "lookupEstablishmentMeansTypeCreate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/lookupEstablishmentMeansTypeCreateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeCreateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeCreate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeCreate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create lookupEstablishmentMeansType",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "get": {
+        "operationId": "lookupEstablishmentMeansTypeGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetManyResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find lookupEstablishmentMeansTypes",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupEstablishmentMeansTypes/{id}": {
+      "get": {
+        "operationId": "lookupEstablishmentMeansTypeGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupEstablishmentMeansType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetOneResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find lookupEstablishmentMeansType by id",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "patch": {
+        "operationId": "lookupEstablishmentMeansTypeUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupEstablishmentMeansType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/lookupEstablishmentMeansTypeUpdateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeUpdateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeUpdate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeUpdate-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeUpdate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates lookupEstablishmentMeansType",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "delete": {
+        "operationId": "lookupEstablishmentMeansTypeDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupEstablishmentMeansType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeDelResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeDel-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeDel-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeDel-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeDel-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes lookupEstablishmentMeansType",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupEstablishmentMeansTypes/actions/emptyView": {
+      "post": {
+        "operationId": "lookupEstablishmentMeansTypeEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeEmptyViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeEmptyView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeEmptyView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource lookupEstablishmentMeansType",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupEstablishmentMeansTypes/actions/rebuildView": {
+      "post": {
+        "operationId": "lookupEstablishmentMeansTypeRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeRebuildViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeRebuildView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansTypeRebuildView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource lookupEstablishmentMeansType",
         "tags": [
           "specimenService"
         ]
@@ -17028,6 +17597,15 @@
         "x-summary": "Information about the place of an event."
       },
       "lookupAgent": {
+        "additionalProperties": true,
+        "x-internal": true,
+        "properties": {},
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansType": {
         "additionalProperties": true,
         "x-internal": true,
         "properties": {},
@@ -25270,6 +25848,462 @@
         "title": "Internal Server Error",
         "type": "object"
       },
+      "lookupEstablishmentMeansTypeCreate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeCreate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeGetMany-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeEmptyView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeEmptyView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeUpdate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeUpdate-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeUpdate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeDel-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeDel-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeDel-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeDel-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeRebuildView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupEstablishmentMeansTypeRebuildView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
       "lookupTaxonCreate-400": {
         "allOf": [
           {
@@ -33215,6 +34249,102 @@
                   },
                   "attributes": {
                     "$ref": "#/components/schemas/lookupStorageLocation"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeCreateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "lookupEstablishmentMeansType",
+                    "enum": [
+                      "lookupEstablishmentMeansType"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupEstablishmentMeansType"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "attributes": {
+                "info": "123"
+              },
+              "type": "lookupEstablishmentMeansType"
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "attributes": {
+              "info": "123"
+            },
+            "type": "lookupEstablishmentMeansType"
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeUpdateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "lookupEstablishmentMeansType",
+                    "enum": [
+                      "lookupEstablishmentMeansType"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupEstablishmentMeansType"
                   }
                 }
               }
@@ -43182,6 +44312,379 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/specimen/v01/lookupStorageLocations/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeCreateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupEstablishmentMeansType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupEstablishmentMeansType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupEstablishmentMeansType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupEstablishmentMeansType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/lookupEstablishmentMeansType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "lookupEstablishmentMeansType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeUpdateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupEstablishmentMeansType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupEstablishmentMeansType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupEstablishmentMeansType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupEstablishmentMeansType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupEstablishmentMeansTypeRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupEstablishmentMeansTypes/actions/rebuildView",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
