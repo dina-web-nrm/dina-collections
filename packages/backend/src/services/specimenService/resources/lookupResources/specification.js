@@ -1,5 +1,6 @@
 const {
   agent: agentTransformationSpecification,
+  establishmentMeansType: establishmentMeansTypeTransformationSpecification,
   featureType: featureTypeTransformationSpecification,
   place: placeTransformationSpecification,
   preparationType: preparationTypeTransformationSpecification,
@@ -27,6 +28,10 @@ module.exports = [
   {
     name: 'lookupStorageLocation',
     transformationSpecification: storageLocationTransformationSpecification,
+  },
+  {
+    name: 'lookupEstablishmentMeansType',
+    transformationSpecification: establishmentMeansTypeTransformationSpecification,
   },
   {
     name: 'lookupTaxon',

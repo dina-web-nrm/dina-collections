@@ -7,6 +7,20 @@ module.exports = function taxonInformation({
   src,
   target,
 }) {
+  const taxonRemarks = migrator.getValue({
+    obj: src,
+    path: 'objects.TaxonomicRemarks',
+    strip: true,
+  })
+
+  if (taxonRemarks) {
+    migrator.setValue({
+      obj: target,
+      path: 'attributes.individual.taxonInformation.taxonRemarks',
+      value: taxonRemarks,
+    })
+  }
+
   return getTaxonNameId({
     getItemByTypeId,
     migrator,

@@ -34,18 +34,26 @@ module.exports = function migrateReadOnly({ migrator, reporter, src, target }) {
     'collection.OtherMaterialCollection',
 
     'objects.LopId',
+    'objects.FieldNo',
+    'objects.FieldNo_related.FieldNo',
 
     'objects.WayOfDeath',
-    'objects.WayOfDeath_related.id',
+    'objects.WayOfDeath_related.ID',
     'objects.WayOfDeath_related.DödsorsakSW',
+    'analysis.Condition_related.ID',
+    'analysis.Condition_related.Kondition',
+    'analysis.Condition',
+    'analysis.TypeOfWeight',
+    'analysis.TypeOfWeight_related.Viktslag',
+    'analysis.TypeOfWeight_related.ID',
   ]
 
   const readOnlyPaths = [
     'analysis.Meas_Comments',
-    'collection.SkeletonCollection_related.NRM_Location', // ?
-    'collection.SkeletonCollection_related.Type', // ?
-    'collection.SkeletonStatus_related.Skelett', // ?
-    'collection.SkinStatus_related.Skinn', // ?
+    'collection.SkeletonCollection_related.NRM_Location', // can this be ignored?
+    'collection.SkeletonCollection_related.Type', // can this be ignored?
+    'collection.SkeletonStatus_related.Skelett', // can this be ignored?
+    'collection.SkinStatus_related.Skinn', // can this be ignored?
     'collection.Appearance_Comments',
     'collection.Old_Rubin_Bones',
     'objects.RubinID',
@@ -58,6 +66,7 @@ module.exports = function migrateReadOnly({ migrator, reporter, src, target }) {
     'objects.FieldNo_related.LongM',
     'objects.FieldNo_related.LongS',
     'objects.FieldNo_related.TillfID',
+    'objects.FieldNo_related.RubinID',
 
     'objects.RubinNo', // This is already in storage?
     'objects.OldScientificName', // This is already in storage?

@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 const getPlaceId = require('./getPlaceId')
+const getEstablishmentMeansType = require('./getEstablishmentMeansType')
 const getCollectorAgent = require('./getCollectorAgent')
 
 module.exports = function collectingInformation({
@@ -147,6 +148,71 @@ module.exports = function collectingInformation({
       value: longitude,
     })
 
+    const uncertaintyInMeters = migrator.getValue({
+      obj: src,
+      path: 'objects.FieldNo_related.Locational_Accuracy',
+      strip: true,
+    })
+
+    if (uncertaintyInMeters) {
+      migrator.setValue({
+        format: 'number',
+        obj: target,
+        path:
+          'attributes.individual.collectingInformation.0.event.locationInformation.position.uncertaintyInMeters',
+        value: Number(uncertaintyInMeters),
+      })
+    }
+
+    /* event.locationInformation.verticalPosition */
+
+    const minimumElevationInMeters = migrator.getValue({
+      obj: src,
+      path: 'objects.FieldNo_related.Min_Elevation',
+      strip: true,
+    })
+
+    if (minimumElevationInMeters) {
+      migrator.setValue({
+        format: 'number',
+        obj: target,
+        path:
+          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
+        value: Number(uncertaintyInMeters),
+      })
+    }
+
+    const maximumElevationInMeters = migrator.getValue({
+      obj: src,
+      path: 'objects.FieldNo_related.Max_Elevation',
+      strip: true,
+    })
+
+    if (maximumElevationInMeters) {
+      migrator.setValue({
+        format: 'number',
+        obj: target,
+        path:
+          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
+        value: Number(uncertaintyInMeters),
+      })
+    }
+
+    const expeditionText = migrator.getValue({
+      obj: src,
+      path: 'objects.Expedition',
+      strip: true,
+    })
+
+    if (expeditionText) {
+      migrator.setValue({
+        obj: target,
+        path:
+          'attributes.individual.collectingInformation.0.event.expeditionText',
+        value: expeditionText,
+      })
+    }
+
     return getPlaceId({
       getItemByTypeId,
       migrator,
@@ -160,6 +226,20 @@ module.exports = function collectingInformation({
           value: placeId,
         })
       }
+      return getEstablishmentMeansType({
+        getItemByTypeId,
+        migrator,
+        src,
+      }).then(establishmentMeansTypeId => {
+        if (establishmentMeansTypeId !== undefined) {
+          migrator.setValue({
+            obj: target,
+            path:
+              'attributes.individual.collectingInformation.0.establishmentMeansType.id',
+            value: establishmentMeansTypeId,
+          })
+        }
+      })
     })
   })
 }
