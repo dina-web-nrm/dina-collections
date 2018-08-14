@@ -1,3 +1,16 @@
+* Move reporter missing migrations to readOnly
+* Add ignore filter for paths and add to separate place in reporter
+
+
+
+
+
+
+Fixup search
+* Throw sane error when aggregation or filterFunction is missing
+
+
+
 Migrations
 * Go through and ensure all data is migrated
 
@@ -34,3 +47,7 @@ Simplify models (the schema) for cache and lookup
 Cleanup date functions
 * introduce format and parse terminology to date helpers. Discuss with Fredrik
 * Migrate dates as timestamp and ymd (use this in search)
+
+
+Logs
+* Navigate around logs
