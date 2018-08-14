@@ -9,16 +9,15 @@ module.exports = function buildElasticAggregations({
       elasticAggregations,
       { aggregationFunction: aggregationFunctionName, options }
     ) => {
-      const { elasticsearch: aggregationFunction, key } = aggregations[
-        aggregationFunctionName
-      ]
-      if (!key) {
-        throw new Error('Aggregation missing required key')
-      }
+      const { elasticsearch: aggregationFunction, key } =
+        aggregations[aggregationFunctionName] || {}
       if (!aggregationFunction) {
         throw new Error(
           `Aggregation function not found for ${aggregationFunctionName}`
         )
+      }
+      if (!key) {
+        throw new Error('Aggregation missing required key')
       }
       return {
         ...elasticAggregations,

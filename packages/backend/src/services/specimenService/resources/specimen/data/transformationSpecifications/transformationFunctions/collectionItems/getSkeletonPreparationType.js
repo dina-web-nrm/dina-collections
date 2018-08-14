@@ -35,6 +35,7 @@ module.exports = function getSkeletonPreparationType({
 
   return getItemByTypeId({
     id: lookupPreparationTypeId,
+    reportHitId: true,
     type: 'lookupPreparationType',
   }).then(item => {
     const preparationTypeId = item && item.attributes && item.attributes.srcId

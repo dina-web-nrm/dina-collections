@@ -1,11 +1,19 @@
 const {
   agent,
+  establishmentMeansType,
   featureType,
   place,
   preparationType,
   storageLocation,
   taxon,
 } = require('./transformationFunctions')
+
+exports.establishmentMeansType = {
+  description: '',
+  srcRelationships: [],
+  srcResource: 'establishmentMeansType',
+  transformationFunctions: [establishmentMeansType],
+}
 
 exports.preparationType = {
   description: '',

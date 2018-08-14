@@ -1,6 +1,13 @@
 const fetchParents = require('../../../../../../../lib/data/transformations/utilities/fetchParents')
 /* eslint-disable no-param-reassign */
 
+exports.establishmentMeansType = ({ src, target }) => {
+  const { id: srcId, attributes: { key } = {} } = src
+
+  target.id = key
+  target.attributes = { srcId, ...src.attributes }
+}
+
 exports.preparationType = ({ src, target }) => {
   const { id: srcId, attributes: { name } = {} } = src
 

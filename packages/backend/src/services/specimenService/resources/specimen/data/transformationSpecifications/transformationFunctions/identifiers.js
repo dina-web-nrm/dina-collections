@@ -122,6 +122,66 @@ module.exports = function migrateIdentifiers({
         }
       }
 
+      const loanNumber = migrator.getValue({
+        obj: src,
+        path: 'collection.LoanNo',
+        strip: true,
+      })
+
+      if (loanNumber) {
+        const id = getIdentifierTypeIdByKey({
+          identifierTypes,
+          key: 'loan-nr',
+        })
+
+        if (!id) {
+          reporter.increment({
+            path: `dependencies.identifierTypes.loanNumber.missing`,
+          })
+        } else {
+          reporter.increment({
+            path: `dependencies.identifierTypes.loanNumber.nHits`,
+          })
+
+          identifiers.push({
+            identifierType: {
+              id,
+            },
+            value: `${loanNumber}`,
+          })
+        }
+      }
+
+      const otherInstitutionNumber = migrator.getValue({
+        obj: src,
+        path: 'collection.OtherInstitutionNumber',
+        strip: true,
+      })
+
+      if (otherInstitutionNumber) {
+        const id = getIdentifierTypeIdByKey({
+          identifierTypes,
+          key: 'other-institution-nr',
+        })
+
+        if (!id) {
+          reporter.increment({
+            path: `dependencies.identifierTypes.otherInstitutionNumber.missing`,
+          })
+        } else {
+          reporter.increment({
+            path: `dependencies.identifierTypes.otherInstitutionNumber.nHits`,
+          })
+
+          identifiers.push({
+            identifierType: {
+              id,
+            },
+            value: `${otherInstitutionNumber}`,
+          })
+        }
+      }
+
       migrator.setValue({
         obj: target,
         path: 'attributes.individual.identifiers',

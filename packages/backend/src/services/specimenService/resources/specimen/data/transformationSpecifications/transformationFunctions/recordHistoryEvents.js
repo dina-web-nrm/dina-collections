@@ -4,6 +4,27 @@ const SYSTEM_NAME = 'MAM2006'
 module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
   const recordHistoryEvents = []
 
+  const cardDate = migrator.getValue({
+    obj: src,
+    path: 'objects.CardDate',
+    strip: true,
+  })
+
+  const cardAuthor = migrator.getValue({
+    obj: src,
+    path: 'objects.CardAuthor',
+    strip: true,
+  })
+
+  if (cardDate || cardAuthor) {
+    recordHistoryEvents.push({
+      agentText: cardAuthor,
+      date: { dateText: cardDate },
+      description: 'Card creation',
+      system: SYSTEM_NAME,
+    })
+  }
+
   const objectsLastModifiedBy = migrator.getValue({
     obj: src,
     path: 'objects.LastModifiedBy',
