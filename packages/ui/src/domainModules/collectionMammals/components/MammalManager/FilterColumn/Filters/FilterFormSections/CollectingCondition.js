@@ -5,9 +5,9 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const conditionTags = 'ConditionTags'
+const conditionFilter = 'matchConditionTags'
 const collectingConditionFieldName = `collectingCondition.collectingCondition|multipleChoice-${
-  conditionTags
+  conditionFilter
 }`
 
 const propTypes = {
@@ -27,7 +27,7 @@ class CollectingConditionFilterForm extends PureComponent {
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(collectingConditionFieldName)}
-            filterFunctionName={`search${conditionTags}`}
+            filterFunctionName={conditionFilter}
             formName={formName}
             label="Collecting condition"
             name={collectingConditionFieldName}
