@@ -8,9 +8,11 @@ const searchWeight = require('./searchOnlyFields/searchWeight')
 
 const agentTags = require('./tags/agentTags')
 const ageStageTags = require('./tags/ageStageTags')
+const boneTags = require('./tags/boneTags')
 const conditionTags = require('./tags/conditionTags')
 const dateTags = require('./tags/dateTags')
 const identifierTags = require('./tags/identifierTags')
+const lengthTags = require('./tags/lengthTags')
 const locationTags = require('./tags/locationTags')
 const placeIdTags = require('./tags/placeIdTags')
 const sexTags = require('./tags/sexTags')
@@ -63,9 +65,11 @@ module.exports = {
 
     agentTags,
     ageStageTags,
+    boneTags,
     conditionTags,
     dateTags,
     identifierTags,
+    lengthTags,
     locationTags,
     placeIdTags,
     sexTags,
