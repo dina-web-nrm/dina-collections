@@ -2,24 +2,23 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
-import { DropdownSearch, Field, Input } from 'coreModules/form/components'
+import { Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
 const weightTypeFilter = 'matchWeightTags'
 const multipleChoiceName = `weight.weightType|multipleChoice-${
   weightTypeFilter
 }`
-const weightFilter = 'rangeWeight'
-const fromWeightFieldName = `weight.fromWeight|gte-${weightFilter}`
-const toWeightFieldName = `weight.toWeight|lte-${weightFilter}`
+const fromWeightFieldName = `weight.min`
+const toWeightFieldName = `weight.max`
 
-const weightUnitOptions = [
-  {
-    key: 'any unit',
-    text: 'any unit',
-    value: '',
-  },
-]
+// const weightUnitOptions = [
+//   {
+//     key: 'any unit',
+//     text: 'any unit',
+//     value: '',
+//   },
+// ]
 
 const propTypes = {
   formName: PropTypes.string.isRequired,
@@ -55,7 +54,7 @@ class WeightFilterForm extends PureComponent {
               type="number"
             />
           </Grid.Column>
-          <Grid.Column width={6}>
+          {/* <Grid.Column width={6}>
             <Field
               autoComplete="off"
               component={DropdownSearch}
@@ -66,7 +65,7 @@ class WeightFilterForm extends PureComponent {
               options={weightUnitOptions}
               type="dropdown-search-local"
             />
-          </Grid.Column>
+          </Grid.Column> */}
         </Grid.Row>
         <Grid.Column width={16}>
           <Field

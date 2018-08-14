@@ -7,9 +7,8 @@ import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
 const ageStageFilter = 'matchAgeStageTags'
 const stageFieldName = `ageAndStage.ageStage|multipleChoice-${ageStageFilter}`
-const ageFilter = 'rangeAge'
-const fromAgeFieldName = `ageAndStage.fromAge|gte-${ageFilter}`
-const toAgeFieldName = `ageAndStage.toAge|lte-${ageFilter}`
+const fromAgeFieldName = `ageAndStage.min`
+const toAgeFieldName = `ageAndStage.max`
 
 const propTypes = {
   formName: PropTypes.string.isRequired,

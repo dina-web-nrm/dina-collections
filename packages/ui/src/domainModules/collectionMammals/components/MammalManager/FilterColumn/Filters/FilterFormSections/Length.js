@@ -2,22 +2,23 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
-import { DropdownSearch, Field, Input } from 'coreModules/form/components'
+import { Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const lengthTags = 'LengthTags'
-const multipleChoiceName = `length.lengthType|multipleChoice-${lengthTags}`
-const lengthFilter = 'matchLengthType'
-const fromLengthFieldName = `length.fromLength|gte-${lengthFilter}`
-const toLengthFieldName = `length.toLength|lte-${lengthFilter}`
+const lengthTypeFilter = 'matchLengthTags'
+const multipleChoiceName = `length.lengthType|multipleChoice-${
+  lengthTypeFilter
+}`
+const fromLengthFieldName = `length.min`
+const toLengthFieldName = `length.max`
 
-const lengthUnitOptions = [
-  {
-    key: 'any unit',
-    text: 'any unit',
-    value: '',
-  },
-]
+// const lengthUnitOptions = [
+//   {
+//     key: 'any unit',
+//     text: 'any unit',
+//     value: '',
+//   },
+// ]
 
 const propTypes = {
   formName: PropTypes.string.isRequired,
@@ -53,7 +54,7 @@ class LengthFilterForm extends PureComponent {
               type="number"
             />
           </Grid.Column>
-          <Grid.Column width={6}>
+          {/* <Grid.Column width={6}>
             <Field
               autoComplete="off"
               component={DropdownSearch}
@@ -64,7 +65,7 @@ class LengthFilterForm extends PureComponent {
               options={lengthUnitOptions}
               type="dropdown-search-local"
             />
-          </Grid.Column>
+          </Grid.Column> */}
         </Grid.Row>
         <Grid.Column width={16}>
           <Field
@@ -72,7 +73,7 @@ class LengthFilterForm extends PureComponent {
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
-            filterFunctionName={`search${lengthTags}`}
+            filterFunctionName={lengthTypeFilter}
             formName={formName}
             label="Length type"
             name={multipleChoiceName}
