@@ -18,6 +18,7 @@ const skeletonTags = require('./tags/skeletonTags')
 const skinTags = require('./tags/skinTags')
 const storageLocationTags = require('./tags/storageLocationTags')
 const taxonomyTags = require('./tags/taxonomyTags')
+const weightTags = require('./tags/weightTags')
 const wetPreparationTags = require('./tags/wetPreparationTags')
 
 const collectingEventCollectors = require('./fields/collectingEventCollectors')
@@ -72,6 +73,7 @@ module.exports = {
     skinTags,
     storageLocationTags,
     taxonomyTags,
+    weightTags,
     wetPreparationTags,
 
     collectingEventCollectors,
