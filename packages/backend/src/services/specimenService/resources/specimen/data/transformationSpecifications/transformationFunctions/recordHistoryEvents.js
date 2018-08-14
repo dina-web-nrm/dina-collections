@@ -1,5 +1,13 @@
 /* eslint-disable no-param-reassign */
-const SYSTEM_NAME = 'MAM2006'
+const CATALOG_CARD_SYSTEM_NAME = 'Catalog card'
+const MAM_2006_SYSTEM_NAME = 'mam2006'
+
+const CATALOG_CARD_CREATION_DESCRIPTION = 'Creation of catalog card'
+const SPECIMEN_CREATION_DESCRIPTION = 'Creation of specimen record'
+const LAST_MODIFICATION_OF_OBJECTS_DESCRIPTION =
+  'Last modification of the objects'
+const LAST_MODIFICATION_OF_LOCALITY_DESCRIPTION =
+  'Last modification of locality information'
 
 module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
   const recordHistoryEvents = []
@@ -20,8 +28,8 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
     recordHistoryEvents.push({
       agentText: cardAuthor,
       date: { dateText: cardDate },
-      description: 'Card creation',
-      system: SYSTEM_NAME,
+      description: CATALOG_CARD_CREATION_DESCRIPTION,
+      system: CATALOG_CARD_SYSTEM_NAME,
     })
   }
 
@@ -40,8 +48,8 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
     recordHistoryEvents.push({
       agentText: objectsLastModifiedBy,
       date: { dateText: objectsLastModifiedDate },
-      description: 'Last modification of the objects',
-      system: SYSTEM_NAME,
+      description: LAST_MODIFICATION_OF_OBJECTS_DESCRIPTION,
+      system: MAM_2006_SYSTEM_NAME,
     })
   }
 
@@ -60,8 +68,8 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
     recordHistoryEvents.push({
       agentText: registeredBy,
       date: { dateText: registeredDate },
-      description: 'Registration of the specimen',
-      system: SYSTEM_NAME,
+      description: SPECIMEN_CREATION_DESCRIPTION,
+      system: MAM_2006_SYSTEM_NAME,
     })
   }
   const localityLastModifiedBy = migrator.getValue({
@@ -79,8 +87,8 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
     recordHistoryEvents.push({
       agentText: localityLastModifiedBy,
       date: { dateText: localityLastModifiedAt },
-      description: 'Last modification of locality information',
-      system: SYSTEM_NAME,
+      description: LAST_MODIFICATION_OF_LOCALITY_DESCRIPTION,
+      system: MAM_2006_SYSTEM_NAME,
     })
   }
 

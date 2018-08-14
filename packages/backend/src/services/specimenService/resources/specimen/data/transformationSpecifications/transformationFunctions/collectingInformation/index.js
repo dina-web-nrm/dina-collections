@@ -33,18 +33,6 @@ module.exports = function collectingInformation({
       }
     }
 
-    const collectorsText = migrator.getValue({
-      obj: src,
-      path: 'objects.Comments',
-      strip: true,
-    })
-
-    migrator.setValue({
-      obj: target,
-      path: 'attributes.individual.collectingInformation.0.collectorsText',
-      value: collectorsText,
-    })
-
     /* event */
     // collectingDate
     const collectingYear = migrator.getValue({
@@ -178,7 +166,7 @@ module.exports = function collectingInformation({
         obj: target,
         path:
           'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumElevationInMeters',
-        value: Number(uncertaintyInMeters),
+        value: Number(minimumElevationInMeters),
       })
     }
 
@@ -194,7 +182,39 @@ module.exports = function collectingInformation({
         obj: target,
         path:
           'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumElevationInMeters',
-        value: Number(uncertaintyInMeters),
+        value: Number(maximumElevationInMeters),
+      })
+    }
+
+    const maximumDepthInMeters = migrator.getValue({
+      obj: src,
+      path: 'objects.FieldNo_related.Max_Depth',
+      strip: true,
+    })
+
+    if (maximumDepthInMeters) {
+      migrator.setValue({
+        format: 'number',
+        obj: target,
+        path:
+          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.maximumDepthInMeters',
+        value: Number(maximumDepthInMeters),
+      })
+    }
+
+    const minimumDepthInMeters = migrator.getValue({
+      obj: src,
+      path: 'objects.FieldNo_related.Min_Depth',
+      strip: true,
+    })
+
+    if (minimumDepthInMeters) {
+      migrator.setValue({
+        format: 'number',
+        obj: target,
+        path:
+          'attributes.individual.collectingInformation.0.event.locationInformation.verticalPosition.minimumDepthInMeters',
+        value: Number(minimumDepthInMeters),
       })
     }
 

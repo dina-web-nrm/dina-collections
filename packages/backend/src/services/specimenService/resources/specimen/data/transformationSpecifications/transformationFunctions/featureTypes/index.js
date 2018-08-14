@@ -147,9 +147,6 @@ module.exports = function featureTypes({
         src,
         target,
       }).then(featureTypeBones => {
-        if (featureTypeBones.length === 2) {
-          throw new Error('featureTypeBones')
-        }
         if (featureTypeBones && featureTypeBones.length) {
           featureTypeBones.forEach(featureTypeBone => {
             featureObservations.push({

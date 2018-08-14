@@ -34,8 +34,14 @@ module.exports = function getPlaceId({ getItemByTypeId, src, migrator }) {
     .filter(group => {
       return !!group
     })
+    .map(item => {
+      return item.trim()
+    })
     .join('->')
 
+  if (!key) {
+    return undefined
+  }
   return getItemByTypeId({
     id: key,
     type: 'lookupPlace',
