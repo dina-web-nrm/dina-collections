@@ -3,6 +3,18 @@
 var now = require('performance-now');
 var objectPath = require('object-path');
 
+var cleanId = function cleanId(id) {
+  if (!id) {
+    return id;
+  }
+
+  if (typeof id !== 'string') {
+    return id;
+  }
+
+  return id.replace(/\./, ',');
+};
+
 module.exports = function createReporter() {
   var report = {};
 
@@ -90,7 +102,7 @@ module.exports = function createReporter() {
     });
     if (id !== undefined) {
       increment({
-        path: 'lookups.details.' + resource + '.missing.' + id
+        path: 'lookups.details.' + resource + '.missing.' + cleanId(id)
       });
     }
   };
@@ -104,7 +116,7 @@ module.exports = function createReporter() {
     });
     if (id !== undefined) {
       increment({
-        path: 'lookups.details.' + resource + '.hits.' + id
+        path: 'lookups.details.' + resource + '.hits.' + cleanId(id)
       });
     }
   };
