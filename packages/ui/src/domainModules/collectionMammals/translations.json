@@ -1,6 +1,6 @@
 {
   "enums": {
-    "featureObservations": {
+    "featureObservations": { 
       "age": {
         "en": "Age",
         "sv": "Ålder"
@@ -10,7 +10,7 @@
         "sv": "Åldersbestämningsmetod"
       },
       "age-stage": {
-        "en": "Age stage",
+        "en": "life stage",
         "sv": "Åldersstadium"
       },
       "ageStage": {
@@ -22,7 +22,7 @@
         "sv": "Benantal"
       },
       "condition": {
-        "en": "Condition",
+        "en": "Carcass condition",
         "sv": "Tillstånd"
       },
       "conditionAtCollecting": {
@@ -50,24 +50,24 @@
   "fieldLabels": {
     "acquisition": {
       "acquisitionTypeText": {
-        "en": "Acquistion type"
+        "en": "Acquisition type"
       },
       "date": {
-        "en": "Acquistion date"
+        "en": "Acquisition date"
       },
       "handedInByAgent": {
-        "en": "Handed in by agent"
+        "en": "Handed in by (agent)"
       },
       "handedInByAgentText": {
-        "en": "Handed in by text"
+        "en": "Handed in by (stated)"
       }
     },
     "collectingInformation": {
       "collectedByAgent": {
-        "en": "Collected by agent"
+        "en": "Collected by (agent)"
       },
       "collectorsText": {
-        "en": "Collectors text"
+        "en": "Collected by (stated)"
       },
 
       "establishmentMeansN": {
@@ -77,7 +77,7 @@
         "en": "Establishment means"
       },
       "isDeathDate": {
-        "en": "Is death date",
+        "en": "Death date",
         "sv": ""
       }
     },
@@ -88,11 +88,17 @@
       },
       "preparationType": {
         "en": "Preparation type"
+      },
+      "remarks": {
+        "en": "Preparation remarks"
       }
     },
     "curatorialAssessment": {
       "agent": {
-        "en": "agent"
+        "en": "Assessed by (agent)"
+      },
+      "assessedByAgentT": {
+        "en": "Assessed by (interpreted)"
       },
       "agentText": {
         "en": "Agent text"
@@ -114,6 +120,9 @@
       },
       "inventoryStatusRemarks": {
         "en": "remarks"
+      },
+      "remarks": {
+        "en": "Assessment remarks"
       }
     },
     "deathInformation": {
@@ -122,31 +131,34 @@
       },
       "remarks": {
         "en": "Remarks"
+      },
+      "deathDetails": {
+        "en": "Death details"
       }
     },
     "determinations": {
       "taxonName": {
-        "en": "Taxon name"
+        "en": "Taxon name in determination"
       },
       "date": {
         "en": "Determination date"
       },
       "determinationVerbatim": {
-        "en": "Verbatim taxon name"
+        "en": "Determined as (stated)"
       },
       "determinedByAgent": {
-        "en": "Determined by agent"
+        "en": "Determined by (agent)"
       },
       "determinedByAgentText": {
-        "en": "Determined by text"
+        "en": "Determined by (stated)"
       },
       "remarks": {
-        "en": "Remarks"
+        "en": "Determination remarks"
       }
     },
     "event": {
       "expeditionText": {
-        "en": "Expedition description"
+        "en": "Expedition"
       },
       "dateRange": {
         "en": "date",
@@ -186,19 +198,22 @@
     },
     "locationInformation": {
       "localityT": {
-        "en": "Stated (verbatim) locality",
+        "en": "Locality (stated)",
         "sv": "Angiven (verbatim) lokalitet"
       },
-      "localityN": { "en": "Locality name (normalized)" },
+      "localityN": { "en": "Locality (interpreted)" },
       "localityRemarks": {
         "en": "Locality remarks",
         "sv": "Lokalitetsnoteringar"
       },
       "remarks": {
-        "en": "Remarks"
+        "en": "Locality remarks"
       },
       "readOnly": {
         "en": "Read only"
+      },
+      "georeferenceSourcesText": {
+        "en": "Georeference sources"
       }
     },
     "originInformation": {
@@ -219,11 +234,11 @@
     },
     "physicalObject": {
       "storageLocation": {
-        "en": "Normal storage location",
+        "en": "Normal storage location (tree)",
         "sv": "Reguljär lagringsplats"
       },
       "storageLocationText": {
-        "en": "Storage location text"
+        "en": "Normal storage location (text)"
       }
     },
     "places": {
@@ -240,7 +255,7 @@
     },
     "position": {
       "uncertaintyInMeters": {
-        "en": "Coordinate uncertainty in meters",
+        "en": "Uncertainty (m)",
         "sv": ""
       },
       "geodeticDatum": {
@@ -248,15 +263,15 @@
         "sv": "Geodetiskt datum"
       },
       "latitude": {
-        "en": "Latitude (N)",
+        "en": "Latitude",
         "sv": "Latitud (N)"
       },
       "longitude": {
-        "en": "Longitude (E)",
+        "en": "Longitude",
         "sv": "Longitud (E)"
       },
       "referenceSystem": {
-        "en": "Ref. syst"
+        "en": "Reference system"
       }
     },
     "specimen": {
@@ -270,38 +285,44 @@
     },
     "taxonInformation": {
       "curatorialTaxonName": {
-        "en": "Curatorial name"
+        "en": "Taxon (curatorial name)"
       },
       "curatorialTaxonNameText": {
-        "en": "Curatorial name text"
+        "en": "Taxon (curatorial name text)"
       },
       "readOnly": {
         "en": "Read only"
       },
       "taxonRemarks": {
         "en": "Taxon remarks"
+      },
+      "oldScientificName": {
+        "en": "Old scientific name"
+      },
+      "oldLocalName": {
+        "en": "Old local name"
       }
     },
     "verticalPosition": {
       "maximumDepthInMeters": {
-        "en": "Max",
+        "en": "Depth max (m)",
         "sv": "Max"
       },
       "maximumElevationInMeters": {
-        "en": "Max",
+        "en": "Elevation max (m)",
         "sv": "Max"
       },
       "minimumDepthInMeters": {
-        "en": "Min",
+        "en": "Depth min (m)",
         "sv": "Min"
       },
       "minimumElevationInMeters": {
-        "en": "Min",
+        "en": "Elevation min (m)",
         "sv": "Min"
       }
     }
   },
-
+ 
   "headers": {
     "collectingInformation": {
       "en": "collecting information"
@@ -353,6 +374,9 @@
         "en":
           "Longitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
         "sv": ""
+      },
+      "uncertaintyInMeters": {
+        "en": "Uncertainty (m)"
       }
     },
     "verticalPosition": {
@@ -438,7 +462,7 @@
       "sv": ""
     },
     "taxonomyCuratorialName": {
-      "en": "curatorial name",
+      "en": "Taxon (curatorial name)",
       "sv": ""
     },
     "taxonomyFamily": {
@@ -558,6 +582,79 @@
       "sv": ""
     }
   },
+
+  "identifiers": {
+    "en": "Identifiers" 
+  },
+  "identifierType": {
+    "en": "Identifier type"
+  },
+  "value": {
+    "en": "Value"
+  },
+  "remarks": {
+    "en": "Remarks"
+  },
+  "remove": {
+    "en": "Remove"
+  },
+  "skeleton": {
+    "en": "skeleton"
+  },
+
+  "featureObservations": {
+    "other": {
+      "age-stage": {
+        "en": "life stage"
+      },
+      "complete-body-weight": {
+        "en": "complete body weight"
+      },
+      "skinned-weight": {
+        "en": "skinned weight"
+      },
+      "gutted-weight": {
+        "en": "gutted weight"
+      },
+      "slaughtered-weight": {
+        "en": "slaughtered weight"
+      },
+      "unknown-weight-type": {
+        "en": "unknown weight type"
+      },
+      "total-length": {
+        "en": "total length"
+      },
+      "body-length": {
+        "en": "body length"
+      },
+      "tail-anus-length": {
+        "en": "tail-anus length"
+      },
+      "tail-pelvis-length": {
+        "en": "tail-pelvis length"
+      },
+      "ear-length": {
+        "en": "ear length"
+      },
+      "hind-foot-length": {
+        "en": "hind-foot length"
+      },
+      "condition": {
+        "en": "carcass condition"
+      }
+    }
+  },
+
+  "recordHistoryEvent": {
+    "recordedByAgentT": {
+      "en": "Recorded by (stated)"
+    },
+    "recordedByAgentN": {
+      "en": "Recorded by (interpreted)"
+    }
+  },
+
   "other": {
     "add": {
       "en": "Add",
@@ -576,7 +673,7 @@
       "sv": "Lägg till identifierare"
     },
     "agent": {
-      "en": "agent"
+      "en": "Observed by (agent)"
     },
     "catalogCard": {
       "en": "Catalog card",
@@ -599,7 +696,7 @@
       "sv": "Kopiera"
     },
     "copyToVerbatim": {
-      "en": "Copy to verbatim",
+      "en": "Copy to determined as",
       "sv": "Kopiera till verbatim"
     },
     "choose": {
@@ -638,15 +735,19 @@
       "sv": "Metod"
     },
     "newSkeleton": {
-      "en": "New skeleton",
+      "en": "Add skeleton",
       "sv": ""
     },
     "newSkin": {
-      "en": "New skin",
+      "en": "Add skin",
       "sv": ""
     },
     "newWetPreparation": {
-      "en": "New wet preparation",
+      "en": "Add wet preparation",
+      "sv": ""
+    },
+    "otherPreparation": {
+      "en": "Add other preparation",
       "sv": ""
     },
     "newAssessment": {

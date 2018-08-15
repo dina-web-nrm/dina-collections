@@ -56,7 +56,7 @@ class SegmentOther extends PureComponent {
               <Field
                 autoComplete="off"
                 component={Input}
-                label="Remarks"
+                label="Specimen remarks"
                 module="collectionMammals"
                 name="individual.remarks"
                 type="text"
