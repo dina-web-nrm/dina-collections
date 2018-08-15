@@ -193,7 +193,11 @@ class MultipleChoiceCheckboxes extends Component {
     }
 
     if (!allIds || !allIds.length) {
-      return null
+      return (
+        <Grid padded textAlign="left" verticalAlign="middle">
+          <Grid.Column>No options available</Grid.Column>
+        </Grid>
+      )
     }
 
     return (

@@ -7,11 +7,13 @@ import { createDateTextValueFromInput } from '../utilities'
 
 const propTypes = {
   displaySubLabel: PropTypes.bool,
+  fluid: PropTypes.bool,
   input: PropTypes.object.isRequired,
 }
 
 const defaultProps = {
   displaySubLabel: false,
+  fluid: false,
 }
 
 class FlexibleDate extends Component {
@@ -47,7 +49,7 @@ class FlexibleDate extends Component {
   }
 
   render() {
-    const { displaySubLabel, input } = this.props
+    const { displaySubLabel, fluid, input } = this.props
     const preview = createDateTextValueFromInput({ input, useDateText: false })
     const value = createDateTextValueFromInput({ input })
 
@@ -69,6 +71,7 @@ class FlexibleDate extends Component {
         parameterKey=""
       >
         <Input
+          fluid={fluid}
           name={input.name}
           onBlur={this.handleValueOnBlur}
           onChange={this.handleValueOnChange}

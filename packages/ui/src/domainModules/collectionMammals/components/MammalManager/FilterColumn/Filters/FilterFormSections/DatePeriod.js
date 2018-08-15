@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
-import { DateRange, Field } from 'coreModules/form/components'
+import { SingleDate, Field } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const filterFunctionName = 'searchCollectingLocation'
+const filterFunctionName = 'matchDateTags'
 const multipleChoiceName = `date.dateType|multipleChoice-${filterFunctionName}`
+const fromDateFieldName = 'date.start'
+const toDateFieldName = 'date.end'
 
 const propTypes = {
   formName: PropTypes.string.isRequired,
@@ -19,18 +21,35 @@ class DatePeriodFilterForm extends PureComponent {
 
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Column width={16}>
-          <DateRange
-            autoComplete="off"
-            formName={formName}
-            module="collectionMammals"
-            name="date.dateRange"
-            stack={false}
-          />
-        </Grid.Column>
+        <Grid.Row>
+          <Grid.Column width={8}>
+            <SingleDate
+              autoComplete="off"
+              displayExact={false}
+              displayFlexible
+              fluid
+              label="from"
+              module="collectionMammals"
+              name={fromDateFieldName}
+              past
+            />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <SingleDate
+              autoComplete="off"
+              displayExact={false}
+              displayFlexible
+              fluid
+              label="to"
+              module="collectionMammals"
+              name={toDateFieldName}
+              past
+            />
+          </Grid.Column>
+        </Grid.Row>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="activity"
+            aggregationFunctionName="aggregateDateTags"
             component={MultipleChoiceCheckboxesField}
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
