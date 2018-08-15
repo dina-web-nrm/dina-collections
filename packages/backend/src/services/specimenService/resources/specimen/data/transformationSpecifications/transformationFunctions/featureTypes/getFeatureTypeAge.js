@@ -1,5 +1,6 @@
 const ageDeterminationValueMap = {
   'known age': 'known-age',
+  'sectioned teeth': 'sectioned-teeth',
 }
 
 const mapAgeDetermination = ageDetermination => {

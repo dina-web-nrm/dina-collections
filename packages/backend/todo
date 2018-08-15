@@ -1,10 +1,6 @@
-* Move reporter missing migrations to readOnly
-* Add ignore filter for paths and add to separate place in reporter
-
-
-
-
-
+* Look through missing lookups and compile questions
+* find validation errors
+* Transform identifier to same format as everything else (with lookup). Possible to simplifyLookup?
 
 Fixup search
 * Throw sane error when aggregation or filterFunction is missing

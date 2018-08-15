@@ -182,6 +182,36 @@ module.exports = function migrateIdentifiers({
         }
       }
 
+      const svaNumber = migrator.getValue({
+        obj: src,
+        path: 'collection.SVAnumber',
+        strip: true,
+      })
+
+      if (svaNumber) {
+        const id = getIdentifierTypeIdByKey({
+          identifierTypes,
+          key: 'sva-nr',
+        })
+
+        if (!id) {
+          reporter.increment({
+            path: `dependencies.identifierTypes.svaNumber.missing`,
+          })
+        } else {
+          reporter.increment({
+            path: `dependencies.identifierTypes.svaNumber.nHits`,
+          })
+
+          identifiers.push({
+            identifierType: {
+              id,
+            },
+            value: `${svaNumber}`,
+          })
+        }
+      }
+
       migrator.setValue({
         obj: target,
         path: 'attributes.individual.identifiers',

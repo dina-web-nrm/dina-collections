@@ -1,6 +1,20 @@
 /* eslint-disable no-param-reassign */
 
-module.exports = function migratePublishRecord({ src, target, migrator }) {
+module.exports = function migrateSpecimen({
+  src,
+  target,
+  globalIndex,
+  migrator,
+}) {
+  const { id: idInput } = src
+  const id = idInput || `${globalIndex + 1}`
+
+  migrator.setValue({
+    obj: target,
+    path: 'id',
+    value: id,
+  })
+
   const publishCoord = migrator.getValue({
     obj: src,
     path: 'objects.Publish_Coord',

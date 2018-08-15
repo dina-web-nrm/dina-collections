@@ -6,6 +6,7 @@ const {
   preparationType: preparationTypeTransformationSpecification,
   storageLocation: storageLocationTransformationSpecification,
   taxon: taxonTransformationSpecification,
+  typeSpecimenType: typeSpecimenTypeTransformationSpecification,
 } = require('./data/transformationSpecifications')
 
 module.exports = [
@@ -36,5 +37,10 @@ module.exports = [
   {
     name: 'lookupTaxon',
     transformationSpecification: taxonTransformationSpecification,
+  },
+
+  {
+    name: 'lookupTypeSpecimenType',
+    transformationSpecification: typeSpecimenTypeTransformationSpecification,
   },
 ]

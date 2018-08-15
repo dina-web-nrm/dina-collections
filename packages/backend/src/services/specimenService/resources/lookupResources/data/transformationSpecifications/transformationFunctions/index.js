@@ -8,6 +8,13 @@ exports.establishmentMeansType = ({ src, target }) => {
   target.attributes = { srcId, ...src.attributes }
 }
 
+exports.typeSpecimenType = ({ src, target }) => {
+  const { id: srcId, attributes: { name } = {} } = src
+
+  target.id = name
+  target.attributes = { srcId, ...src.attributes }
+}
+
 exports.preparationType = ({ src, target }) => {
   const { id: srcId, attributes: { name } = {} } = src
 

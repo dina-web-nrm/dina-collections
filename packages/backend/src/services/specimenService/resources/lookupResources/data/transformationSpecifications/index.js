@@ -6,6 +6,7 @@ const {
   preparationType,
   storageLocation,
   taxon,
+  typeSpecimenType,
 } = require('./transformationFunctions')
 
 exports.establishmentMeansType = {
@@ -13,6 +14,13 @@ exports.establishmentMeansType = {
   srcRelationships: [],
   srcResource: 'establishmentMeansType',
   transformationFunctions: [establishmentMeansType],
+}
+
+exports.typeSpecimenType = {
+  description: '',
+  srcRelationships: [],
+  srcResource: 'typeSpecimenType',
+  transformationFunctions: [typeSpecimenType],
 }
 
 exports.preparationType = {
