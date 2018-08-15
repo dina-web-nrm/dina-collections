@@ -5,7 +5,13 @@ import { compose } from 'redux'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import RecordHistoryEventsRow from './RecordHistoryEventsRow'
 
-const TABLE_COLUMNS = ['System', 'Agent', 'Agent text', 'Date', 'Description']
+const TABLE_COLUMNS = [
+  'Context/system',
+  'Recorded by (agent)',
+  'Agent text',
+  'Date',
+  'Activity',
+]
 
 const propTypes = {
   recordHistoryEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -17,7 +23,7 @@ function RecordHistoryEventsTable({ recordHistoryEvents }) {
   }
   return (
     <React.Fragment>
-      <Header size="small">RecordHistory</Header>
+      <Header size="small">Record History</Header>
       <Table celled compact striped style={{ marginBottom: '1em' }}>
         <Table.Header>
           <Table.Row>
