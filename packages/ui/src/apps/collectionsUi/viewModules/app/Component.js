@@ -39,12 +39,14 @@ class App extends Component {
             <Route
               component={SpecimensMammals}
               exact
-              path={`${match.url}/specimens/mammals/create`}
+              path={`${match.url}/specimens/mammals/create/sections/:sectionId`}
             />
             <Route
               component={SpecimensMammals}
               exact
-              path={`${match.url}/specimens/mammals/:specimenId/edit`}
+              path={`${
+                match.url
+              }/specimens/mammals/:specimenId/edit/sections/:sectionId`}
             />
             <Route
               component={SpecimensMammals}
