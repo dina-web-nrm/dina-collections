@@ -68,7 +68,7 @@ const InfiniteTableRow = ({
         event.preventDefault()
         onClick(rowNumber, itemId)
       }}
-      style={{ background, height: 43, width }}
+      style={{ background, cursor: 'pointer', height: 43, width }}
     >
       <Grid.Column key="rowNumber" style={{ width: 80 }} textAlign="right">
         {rowNumber}
