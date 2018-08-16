@@ -128,10 +128,11 @@ const mapStateToProps = (
 const mapDispatchToProps = {
   push,
   reset,
+  setActiveFormSectionIndex: keyObjectActionCreators.set.activeFormSectionIndex,
   setCurrentTableRowNumber: keyObjectActionCreators.set.currentTableRowNumber,
   setFilterColumnIsOpen: keyObjectActionCreators.set.filterColumnIsOpen,
   setFocusedSpecimenId: keyObjectActionCreators.set.focusedSpecimenId,
-  setMainColumnActiveTab: keyObjectActionCreators.set.mainColumnActiveTab,
+  setShowAllFormSections: keyObjectActionCreators.set.showAllFormSections,
 }
 
 const propTypes = {
@@ -141,15 +142,21 @@ const propTypes = {
   focusedSpecimenId: PropTypes.string,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   mainColumnActiveTab: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.object.isRequired,
+    path: PropTypes.string.isRequired,
+  }).isRequired,
   push: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   search: PropTypes.func.isRequired,
   searchResult: PropTypes.object,
+  setActiveFormSectionIndex: PropTypes.func.isRequired,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setFocusedSpecimenId: PropTypes.func.isRequired,
+  setShowAllFormSections: PropTypes.func.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
@@ -165,6 +172,7 @@ class MammalManager extends Component {
     super(props)
 
     this.getColumns = this.getColumns.bind(this)
+    this.handleSectionIdUpdate = this.handleSectionIdUpdate.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
       this
@@ -181,8 +189,34 @@ class MammalManager extends Component {
     this.handleSearchSpecimens = this.handleSearchSpecimens.bind(this)
   }
 
+  componentWillMount() {
+    this.handleSectionIdUpdate()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      objectPath.get(this.props, 'match.params.sectionId') !==
+      objectPath.get(nextProps, 'match.params.sectionId')
+    ) {
+      this.handleSectionIdUpdate(nextProps)
+    }
+  }
+
   getColumns() {
     return getColumns(this.props)
+  }
+
+  handleSectionIdUpdate(props = this.props) {
+    const sectionId = objectPath.get(props, 'match.params.sectionId')
+    const sectionIndex = Number(sectionId)
+
+    if (Number.isInteger(sectionIndex)) {
+      this.props.setActiveFormSectionIndex(sectionIndex)
+      this.props.setShowAllFormSections(false)
+    } else if (sectionId === 'all') {
+      this.props.setActiveFormSectionIndex(null)
+      this.props.setShowAllFormSections(true)
+    }
   }
 
   handleSetCurrentTableRowNumber(event, newTableRowNumber) {
@@ -190,18 +224,14 @@ class MammalManager extends Component {
       event.preventDefault()
     }
 
+    const { match: { path, params }, searchResult } = this.props
+
     const parsedInteger = Number(newTableRowNumber)
 
     if (Number.isInteger(parsedInteger)) {
       this.props.setCurrentTableRowNumber(parsedInteger)
 
-      if (
-        !(
-          this.props.searchResult &&
-          this.props.searchResult.items &&
-          this.props.searchResult.items.length
-        )
-      ) {
+      if (!(searchResult && searchResult.items && searchResult.items.length)) {
         this.props.setFocusedSpecimenId(undefined)
       }
 
@@ -216,7 +246,11 @@ class MammalManager extends Component {
       }
 
       if (this.props.mainColumnActiveTab === 'recordEdit') {
-        this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+        this.props.push(
+          path
+            .replace(':specimenId', specimenId)
+            .replace(':sectionId', params.sectionId)
+        )
       }
     }
   }
@@ -263,7 +297,7 @@ class MammalManager extends Component {
   handleOpenNewRecordForm(event) {
     event.preventDefault()
     this.props.setFilterColumnIsOpen(false)
-    this.props.push(`/app/specimens/mammals/create`)
+    this.props.push(`/app/specimens/mammals/create/sections/0`)
   }
 
   handleOpenTableView(event) {
@@ -276,7 +310,7 @@ class MammalManager extends Component {
     const specimenId = this.props.focusedSpecimenId
 
     if (specimenId) {
-      this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+      this.props.push(`/app/specimens/mammals/${specimenId}/edit/sections/0`)
     }
   }
 
