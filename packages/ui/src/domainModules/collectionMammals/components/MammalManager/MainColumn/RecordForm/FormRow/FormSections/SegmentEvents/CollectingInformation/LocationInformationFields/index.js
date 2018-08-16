@@ -23,7 +23,6 @@ function LocationInformationFields({ getPath }) {
           <FieldWrapper
             autoComplete="off"
             component={Input}
-            focusOnMount
             module="collectionMammals"
             name={getPath('localityT')}
             type="text"
