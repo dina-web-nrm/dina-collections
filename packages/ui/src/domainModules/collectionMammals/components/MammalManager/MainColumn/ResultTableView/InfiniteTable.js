@@ -119,7 +119,7 @@ export class InfiniteTable extends Component {
   }
 
   handleRowClick(rowNumber, specimenId) {
-    this.props.push(`/app/specimens/mammals/${specimenId}/edit`)
+    this.props.push(`/app/specimens/mammals/${specimenId}/edit/sections/0`)
     this.props.setFocusedSpecimenId(specimenId)
     this.props.setCurrentTableRowNumber(rowNumber)
   }
