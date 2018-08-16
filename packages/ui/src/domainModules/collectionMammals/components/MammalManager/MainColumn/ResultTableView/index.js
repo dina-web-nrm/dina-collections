@@ -51,13 +51,14 @@ const defaultProps = {
 class ResultTableView extends PureComponent {
   render() {
     const { availableHeight, tableColumnsToShow, ...rest } = this.props
+
     return (
       <RowLayout
+        {...rest}
         availableHeight={availableHeight}
         rows={rows}
         tableColumnsToShow={tableColumnsToShow}
         width={getTableWidth(tableColumnsToShow)}
-        {...rest}
       />
     )
   }
