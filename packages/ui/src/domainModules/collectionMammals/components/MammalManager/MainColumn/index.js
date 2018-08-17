@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { withRouter } from 'react-router-dom'
 import { createSelector } from 'reselect'
 
 import { RowLayout } from 'coreModules/layout/components'
@@ -138,4 +139,4 @@ class MainColumn extends PureComponent {
 
 MainColumn.propTypes = propTypes
 
-export default compose(injectWindowHeight)(MainColumn)
+export default compose(withRouter, injectWindowHeight)(MainColumn)
