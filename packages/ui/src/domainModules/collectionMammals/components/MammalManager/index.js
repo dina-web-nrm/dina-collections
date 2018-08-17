@@ -108,20 +108,42 @@ const mapStateToProps = (
     }
   )
 
+  const mainColumnActiveTab = getMainColumnActiveTab(url)
+  const currentTableRowNumber = keyObjectGlobalSelectors.get.currentTableRowNumber(
+    state
+  )
+  const totalNumberOfRecords =
+    specimenSearchState &&
+    specimenSearchState.items &&
+    specimenSearchState.items.length
+
+  const isEditRecordView = mainColumnActiveTab === 'recordEdit'
+  const isNewRecordView = mainColumnActiveTab === 'recordNew'
+  const isItemViewOrSettings = mainColumnActiveTab.startsWith('record')
+  const isTableView = mainColumnActiveTab === 'resultTable'
+  const isTableViewOrSettings = mainColumnActiveTab.startsWith('resultTable')
+
+  const showSelectNextRecordButton =
+    !isNewRecordView && currentTableRowNumber !== totalNumberOfRecords
+  const showSelectPreviousRecordButton =
+    !isNewRecordView && currentTableRowNumber !== 1
+
   return {
-    currentTableRowNumber: keyObjectGlobalSelectors.get.currentTableRowNumber(
-      state
-    ),
+    currentTableRowNumber,
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
     filterFormIsDirty: isDirty(SPECIMEN_FILTERS_FORM_NAME)(state),
     focusedSpecimenId: keyObjectGlobalSelectors.get.focusedSpecimenId(state),
+    isEditRecordView,
+    isItemViewOrSettings,
+    isNewRecordView,
     isSmall: sizeSelectors.getIsSmall(state),
-    mainColumnActiveTab: getMainColumnActiveTab(url),
+    isTableView,
+    isTableViewOrSettings,
+    mainColumnActiveTab,
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
-    totalNumberOfRecords:
-      specimenSearchState &&
-      specimenSearchState.items &&
-      specimenSearchState.items.length,
+    showSelectNextRecordButton,
+    showSelectPreviousRecordButton,
+    totalNumberOfRecords,
   }
 }
 
@@ -140,7 +162,12 @@ const propTypes = {
   filterColumnIsOpen: PropTypes.bool.isRequired,
   filterFormIsDirty: PropTypes.bool.isRequired,
   focusedSpecimenId: PropTypes.string,
+  isEditRecordView: PropTypes.bool.isRequired,
+  isItemViewOrSettings: PropTypes.bool.isRequired,
+  isNewRecordView: PropTypes.bool.isRequired,
   isSmall: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+  isTableView: PropTypes.bool.isRequired,
+  isTableViewOrSettings: PropTypes.bool.isRequired,
   mainColumnActiveTab: PropTypes.string.isRequired,
   match: PropTypes.shape({
     params: PropTypes.object.isRequired,
@@ -151,12 +178,14 @@ const propTypes = {
   rightSidebarIsOpen: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   rightSidebarWidth: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
   search: PropTypes.func.isRequired,
-  searchResult: PropTypes.object,
+  searchResult: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
   setActiveFormSectionIndex: PropTypes.func.isRequired,
   setCurrentTableRowNumber: PropTypes.func.isRequired,
   setFilterColumnIsOpen: PropTypes.func.isRequired,
   setFocusedSpecimenId: PropTypes.func.isRequired,
   setShowAllFormSections: PropTypes.func.isRequired,
+  showSelectNextRecordButton: PropTypes.bool.isRequired,
+  showSelectPreviousRecordButton: PropTypes.bool.isRequired,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
@@ -330,19 +359,15 @@ class MammalManager extends Component {
     const {
       currentTableRowNumber,
       filterFormIsDirty,
+      isItemViewOrSettings,
+      isNewRecordView,
+      isTableView,
+      isTableViewOrSettings,
       mainColumnActiveTab,
+      showSelectNextRecordButton,
+      showSelectPreviousRecordButton,
       totalNumberOfRecords,
     } = this.props
-
-    const isNewRecordView = mainColumnActiveTab === 'recordNew'
-    const isItemViewOrSettings = mainColumnActiveTab.startsWith('record')
-    const isTableView = mainColumnActiveTab === 'resultTable'
-    const isTableViewOrSettings = mainColumnActiveTab.startsWith('resultTable')
-
-    const showSelectNextRecordButton =
-      !isNewRecordView && currentTableRowNumber !== totalNumberOfRecords
-    const showSelectPreviousRecordButton =
-      !isNewRecordView && currentTableRowNumber !== 1
 
     return (
       <ColumnLayout
