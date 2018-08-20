@@ -8,6 +8,7 @@ import { createSelector } from 'reselect'
 import { push } from 'react-router-redux'
 import objectPath from 'object-path'
 
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
 import {
@@ -202,6 +203,7 @@ class MammalManager extends Component {
 
     this.getColumns = this.getColumns.bind(this)
     this.handleSectionIdUpdate = this.handleSectionIdUpdate.bind(this)
+    this.handleSpecimenIdUpdate = this.handleSpecimenIdUpdate.bind(this)
     this.handleExportToCsv = this.handleExportToCsv.bind(this)
     this.handleSetCurrentTableRowNumber = this.handleSetCurrentTableRowNumber.bind(
       this
@@ -216,10 +218,39 @@ class MammalManager extends Component {
     this.handleShowAllRecords = this.handleShowAllRecords.bind(this)
     this.handleResetFilters = this.handleResetFilters.bind(this)
     this.handleSearchSpecimens = this.handleSearchSpecimens.bind(this)
+
+    this.shortcuts = [
+      {
+        command: 'down',
+        description: 'Move focus to next record',
+        onPress: this.handleSelectNextRecord,
+      },
+      {
+        command: 'up',
+        description: 'Move focus to previous record',
+        onPress: this.handleSelectPreviousRecord,
+      },
+      {
+        command: 'enter',
+        description: 'Open focused record',
+        onPress: this.handleOpenEditRecordView,
+      },
+      {
+        command: 'n n',
+        description: 'Open new record form',
+        onPress: this.handleOpenNewRecordForm,
+      },
+      {
+        command: 'n t',
+        description: 'Open table view',
+        onPress: this.handleOpenTableView,
+      },
+    ]
   }
 
   componentWillMount() {
     this.handleSectionIdUpdate()
+    this.handleSpecimenIdUpdate()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -228,6 +259,16 @@ class MammalManager extends Component {
       objectPath.get(nextProps, 'match.params.sectionId')
     ) {
       this.handleSectionIdUpdate(nextProps)
+    }
+
+    if (
+      nextProps.isEditRecordView &&
+      (objectPath.get(this.props, 'match.params.specimenId') !==
+        objectPath.get(nextProps, 'match.params.specimenId') ||
+        objectPath.get(this.props, 'searchResult.items') !==
+          objectPath.get(nextProps, 'searchResult.items'))
+    ) {
+      this.handleSpecimenIdUpdate(nextProps)
     }
   }
 
@@ -248,54 +289,72 @@ class MammalManager extends Component {
     }
   }
 
+  handleSpecimenIdUpdate(props = this.props) {
+    const specimenId = objectPath.get(props, 'match.params.specimenId')
+
+    if (specimenId) {
+      this.props.setFocusedSpecimenId(specimenId)
+
+      if (objectPath.get(props, 'searchResult.items')) {
+        const index = props.searchResult.items.findIndex(
+          ({ id }) => id === specimenId
+        )
+
+        if (index) {
+          this.props.setCurrentTableRowNumber(index + 1)
+        }
+      }
+    }
+  }
+
   handleSetCurrentTableRowNumber(event, newTableRowNumber) {
     if (event) {
       event.preventDefault()
     }
 
-    const { match: { path, params }, searchResult } = this.props
+    const { mainColumnActiveTab, match: { path, params } } = this.props
 
-    const parsedInteger = Number(newTableRowNumber)
+    this.props.setCurrentTableRowNumber(newTableRowNumber)
 
-    if (Number.isInteger(parsedInteger)) {
-      this.props.setCurrentTableRowNumber(parsedInteger)
+    const index = newTableRowNumber - 1
+    const specimenId = objectPath.get(
+      this.props,
+      `searchResult.items.${index}.id`
+    )
 
-      if (!(searchResult && searchResult.items && searchResult.items.length)) {
-        this.props.setFocusedSpecimenId(undefined)
-      }
-
-      const index = parsedInteger - 1
-      const specimenId = objectPath.get(
-        this.props,
-        `searchResult.items.${index}.id`
-      )
-
-      if (specimenId) {
-        this.props.setFocusedSpecimenId(specimenId)
-      }
-
-      if (this.props.mainColumnActiveTab === 'recordEdit') {
-        this.props.push(
+    if (specimenId) {
+      if (mainColumnActiveTab === 'recordEdit') {
+        return this.props.push(
           path
             .replace(':specimenId', specimenId)
             .replace(':sectionId', params.sectionId)
         )
       }
+
+      return this.props.setFocusedSpecimenId(specimenId)
     }
+
+    return this.props.setFocusedSpecimenId(undefined)
   }
 
   handleSelectNextRecord(event) {
-    this.handleSetCurrentTableRowNumber(
-      event,
-      this.props.currentTableRowNumber + 1
-    )
+    const {
+      currentTableRowNumber,
+      isNewRecordView,
+      totalNumberOfRecords,
+    } = this.props
+
+    if (!isNewRecordView && currentTableRowNumber < totalNumberOfRecords) {
+      this.handleSetCurrentTableRowNumber(event, currentTableRowNumber + 1)
+    }
   }
 
   handleSelectPreviousRecord(event) {
-    this.handleSetCurrentTableRowNumber(
-      event,
-      this.props.currentTableRowNumber - 1
-    )
+    const { currentTableRowNumber, isNewRecordView } = this.props
+
+    if (!isNewRecordView && currentTableRowNumber > 1) {
+      this.handleSetCurrentTableRowNumber(event, currentTableRowNumber - 1)
+    }
   }
 
   handleToggleFilters(event) {
@@ -306,16 +365,18 @@ class MammalManager extends Component {
   handleSearchSpecimens(event, filterValues = {}) {
     event.preventDefault()
 
-    return this.props.search({ query: buildQuery(filterValues) }).then(() => {
-      this.props.setCurrentTableRowNumber(1)
-    })
+    return this.props
+      .search({ query: buildQuery(filterValues) })
+      .then(items => {
+        this.props.setCurrentTableRowNumber(items.length && 1)
+      })
   }
 
   handleShowAllRecords(event) {
     event.preventDefault()
     this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
-    this.props.search({ query: buildQuery({}) }).then(() => {
-      this.props.setCurrentTableRowNumber(1)
+    this.props.search({ query: buildQuery({}) }).then(items => {
+      this.props.setCurrentTableRowNumber(items.length && 1)
     })
   }
 
@@ -370,32 +431,36 @@ class MammalManager extends Component {
     } = this.props
 
     return (
-      <ColumnLayout
-        columns={this.getColumns()}
-        currentTableRowNumber={currentTableRowNumber}
-        isItemViewOrSettings={isItemViewOrSettings}
-        isTableViewOrSettings={isTableViewOrSettings}
-        mainColumnActiveTab={mainColumnActiveTab}
-        onExportCsv={isTableView && this.handleExportToCsv}
-        onFormTabClick={isTableView && this.handleOpenEditRecordView}
-        onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
-        onResetFilters={this.handleResetFilters}
-        onSearchSpecimens={this.handleSearchSpecimens}
-        onSelectNextRecord={
-          showSelectNextRecordButton && this.handleSelectNextRecord
-        }
-        onSelectPreviousRecord={
-          showSelectPreviousRecordButton && this.handleSelectPreviousRecord
-        }
-        onSetCurrentTableRowNumber={
-          !isNewRecordView && this.handleSetCurrentTableRowNumber
-        }
-        onSettingClick={isTableView && this.handleSettingClick}
-        onShowAllRecords={filterFormIsDirty && this.handleShowAllRecords}
-        onTableTabClick={!isTableView && this.handleOpenTableView}
-        onToggleFilters={!isNewRecordView && this.handleToggleFilters}
-        totalNumberOfRecords={totalNumberOfRecords}
-      />
+      <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
+        <ColumnLayout
+          columns={this.getColumns()}
+          currentTableRowNumber={currentTableRowNumber}
+          isItemViewOrSettings={isItemViewOrSettings}
+          isNewRecordView={isNewRecordView}
+          isTableViewOrSettings={isTableViewOrSettings}
+          mainColumnActiveTab={mainColumnActiveTab}
+          onExportCsv={isTableView && this.handleExportToCsv}
+          onFormTabClick={isTableView && this.handleOpenEditRecordView}
+          onOpenNewRecordForm={!isNewRecordView && this.handleOpenNewRecordForm}
+          onResetFilters={this.handleResetFilters}
+          onSearchSpecimens={this.handleSearchSpecimens}
+          onSelectNextRecord={
+            showSelectNextRecordButton && this.handleSelectNextRecord
+          }
+          onSelectPreviousRecord={
+            showSelectPreviousRecordButton && this.handleSelectPreviousRecord
+          }
+          onSetCurrentTableRowNumber={
+            !isNewRecordView && this.handleSetCurrentTableRowNumber
+          }
+          onSettingClick={isTableView && this.handleSettingClick}
+          onShowAllRecords={filterFormIsDirty && this.handleShowAllRecords}
+          onTableTabClick={!isTableView && this.handleOpenTableView}
+          onToggleFilters={!isNewRecordView && this.handleToggleFilters}
+          totalNumberOfRecords={totalNumberOfRecords}
+        />
+      </React.Fragment>
     )
   }
 }

@@ -16,6 +16,7 @@ import {
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { RowLayout } from 'coreModules/layout/components'
 import filterOutput from './transformations/output'
 import RecordActionBar from './RecordActionBar'
@@ -90,6 +91,14 @@ class RecordForm extends Component {
     this.changeFieldValue = this.changeFieldValue.bind(this)
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
+
+    this.shortcuts = [
+      {
+        command: 'mod+shift+s',
+        description: 'Save specimen record',
+        onPress: this.props.handleSubmit(this.handleFormSubmit),
+      },
+    ]
   }
 
   handleFormSubmit(formData) {
@@ -99,15 +108,19 @@ class RecordForm extends Component {
       push: pushRoute,
       redirectOnSuccess,
     } = this.props
-    // Look at id on actual specimen and not path
+
     const specimen = {
       id: match && match.params && match.params.specimenId,
       ...formData,
     }
+
     return handleFormSubmit(filterOutput({ specimen }))
       .then(({ id: specimenId }) => {
         if (!match.params.specimenId && specimenId && redirectOnSuccess) {
-          pushRoute(`/app/specimens/mammals/${specimenId}/edit/sections/all`)
+          pushRoute(
+            `/app/specimens/mammals/${specimenId}/edit/sections/${match.params
+              .sectionId || '0'}`
+          )
         }
       })
       .catch(error => {
@@ -137,18 +150,21 @@ class RecordForm extends Component {
     const { availableHeight, handleSubmit, mode, ...rest } = this.props
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-        <RowLayout
-          {...rest}
-          availableHeight={availableHeight}
-          changeFieldValue={this.changeFieldValue}
-          editMode={mode === 'edit'}
-          formValueSelector={this.formValueSelector}
-          onUndoChanges={this.handleUndoChanges}
-          removeArrayFieldByIndex={this.removeArrayFieldByIndex}
-          rows={rows}
-        />
-      </form>
+      <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
+        <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+          <RowLayout
+            {...rest}
+            availableHeight={availableHeight}
+            changeFieldValue={this.changeFieldValue}
+            editMode={mode === 'edit'}
+            formValueSelector={this.formValueSelector}
+            onUndoChanges={this.handleUndoChanges}
+            removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+            rows={rows}
+          />
+        </form>
+      </React.Fragment>
     )
   }
 }

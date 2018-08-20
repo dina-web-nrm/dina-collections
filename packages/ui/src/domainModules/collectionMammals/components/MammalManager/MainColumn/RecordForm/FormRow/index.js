@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 
 import createLog from 'utilities/log'
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { globalSelectors as keyObjectSelectors } from 'domainModules/collectionMammals/keyObjectModule'
 import SegmentCollectionItems from './FormSections/SegmentCollectionItems'
@@ -95,6 +96,19 @@ class FormRow extends PureComponent {
     this.handleGoToNextSection = this.handleGoToNextSection.bind(this)
     this.handleGoToPreviousSection = this.handleGoToPreviousSection.bind(this)
     this.handleShowAllFormSections = this.handleShowAllFormSections.bind(this)
+
+    this.shortcuts = [
+      {
+        command: 'left',
+        description: 'Go to previous form section',
+        onPress: this.handleGoToPreviousSection,
+      },
+      {
+        command: 'right',
+        description: 'Go to next form section',
+        onPress: this.handleGoToNextSection,
+      },
+    ]
   }
 
   handleSetActiveFormSection(event, activeFormSectionIndex) {
@@ -139,19 +153,22 @@ class FormRow extends PureComponent {
     } = this.props
 
     return (
-      <ColumnLayout
-        {...rest}
-        activeFormSectionIndex={activeFormSectionIndex}
-        columns={columns}
-        formSections={formSections}
-        onGoToNextSection={this.handleGoToNextSection}
-        onGoToPreviousSection={this.handleGoToPreviousSection}
-        onRemoteSubmit={this.handleRemoteSubmit}
-        onSetActiveFormSection={this.handleSetActiveFormSection}
-        onShowAllFormSections={this.handleShowAllFormSections}
-        showAllFormSections={showAllFormSections}
-        specimenId={match.params.specimenId}
-      />
+      <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
+        <ColumnLayout
+          {...rest}
+          activeFormSectionIndex={activeFormSectionIndex}
+          columns={columns}
+          formSections={formSections}
+          onGoToNextSection={this.handleGoToNextSection}
+          onGoToPreviousSection={this.handleGoToPreviousSection}
+          onRemoteSubmit={this.handleRemoteSubmit}
+          onSetActiveFormSection={this.handleSetActiveFormSection}
+          onShowAllFormSections={this.handleShowAllFormSections}
+          showAllFormSections={showAllFormSections}
+          specimenId={match.params.specimenId}
+        />
+      </React.Fragment>
     )
   }
 }

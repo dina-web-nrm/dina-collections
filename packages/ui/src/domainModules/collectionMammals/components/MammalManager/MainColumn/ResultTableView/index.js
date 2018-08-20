@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
@@ -42,6 +43,7 @@ const rows = [infiniteTableHeader, infiniteTable]
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  onToggleFilters: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
 }
 const defaultProps = {
@@ -49,17 +51,31 @@ const defaultProps = {
 }
 
 class ResultTableView extends PureComponent {
+  constructor(props) {
+    super(props)
+    this.shortcuts = [
+      {
+        command: 'f',
+        description: 'Show/hide filters',
+        onPress: props.onToggleFilters,
+      },
+    ]
+  }
+
   render() {
     const { availableHeight, tableColumnsToShow, ...rest } = this.props
 
     return (
-      <RowLayout
-        {...rest}
-        availableHeight={availableHeight}
-        rows={rows}
-        tableColumnsToShow={tableColumnsToShow}
-        width={getTableWidth(tableColumnsToShow)}
-      />
+      <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
+        <RowLayout
+          {...rest}
+          availableHeight={availableHeight}
+          rows={rows}
+          tableColumnsToShow={tableColumnsToShow}
+          width={getTableWidth(tableColumnsToShow)}
+        />
+      </React.Fragment>
     )
   }
 }
