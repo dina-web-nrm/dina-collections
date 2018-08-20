@@ -11,13 +11,12 @@ const fromAgeFieldName = `ageAndStage.min`
 const toAgeFieldName = `ageAndStage.max`
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class AgeStageFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">

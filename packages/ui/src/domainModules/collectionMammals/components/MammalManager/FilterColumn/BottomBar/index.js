@@ -5,10 +5,10 @@ import { connect } from 'react-redux'
 import { getFormValues, isInvalid } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 
-const mapStateToProps = (state, { formName }) => {
+const mapStateToProps = (state, { form }) => {
   return {
-    invalid: isInvalid(formName)(state),
-    values: getFormValues(formName)(state),
+    invalid: isInvalid(form)(state),
+    values: getFormValues(form)(state),
   }
 }
 
