@@ -7,10 +7,7 @@ import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
-import {
-  CATALOG_CARD,
-  MAMMAL_FORM_NAME,
-} from 'domainModules/collectionMammals/constants'
+import { CATALOG_CARD } from 'domainModules/collectionMammals/constants'
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
@@ -49,7 +46,6 @@ class RecordHistoryEventsRow extends PureComponent {
             component={AdvancedAgentDropdownSearch}
             disabled={!isCatalogCardSystem}
             displayLabel={false}
-            formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"
             module="collectionMammals"

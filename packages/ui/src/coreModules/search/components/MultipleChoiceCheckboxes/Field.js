@@ -9,9 +9,9 @@ import Checkbox from 'coreModules/form/components/inputs/Checkbox'
 import wrapInFieldTemplate from 'coreModules/form/higherOrderComponents/wrapInFieldTemplate'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 
-const mapStateToProps = (state, { formName, input: { name } }) => {
+const mapStateToProps = (state, { meta: { form }, input: { name } }) => {
   return {
-    checkedValues: formValueSelector(formName)(state, name),
+    checkedValues: formValueSelector(form)(state, name),
   }
 }
 
@@ -25,7 +25,6 @@ const propTypes = {
     and: PropTypes.array.isRequired,
   }),
   filterFunctionName: PropTypes.string.isRequired,
-  formName: PropTypes.string.isRequired, // eslint-disable-line react/no-unused-prop-types
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,

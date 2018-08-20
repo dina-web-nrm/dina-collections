@@ -74,7 +74,6 @@ class WeightFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={weightTypeFilter}
-            formName={formName}
             label="Weight type"
             name={multipleChoiceName}
           />

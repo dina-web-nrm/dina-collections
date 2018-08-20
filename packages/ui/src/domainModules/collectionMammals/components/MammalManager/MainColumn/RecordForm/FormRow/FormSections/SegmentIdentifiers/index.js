@@ -18,7 +18,6 @@ import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderCompone
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
-import { MAMMAL_FORM_NAME } from 'domainModules/collectionMammals/constants'
 import CatalogNumberInput from './CatalogNumberInput'
 import IdentifiersTable from './IdentifiersTable'
 
@@ -148,7 +147,6 @@ class SegmentIdentifiers extends PureComponent {
               <Field
                 autoComplete="off"
                 component={AdvancedAgentDropdownSearch}
-                formName={MAMMAL_FORM_NAME}
                 group={ALL}
                 initialText="Choose"
                 module="collectionMammals"

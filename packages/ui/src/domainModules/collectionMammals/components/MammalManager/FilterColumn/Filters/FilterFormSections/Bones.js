@@ -26,7 +26,6 @@ class BonesFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(bonesFieldName)}
             filterFunctionName={bonesFilter}
-            formName={formName}
             label="Bones"
             name={bonesFieldName}
           />

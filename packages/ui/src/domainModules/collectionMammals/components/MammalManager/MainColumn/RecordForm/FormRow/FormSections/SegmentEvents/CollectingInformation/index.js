@@ -18,7 +18,6 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
-import { MAMMAL_FORM_NAME } from 'domainModules/collectionMammals/constants'
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
@@ -50,6 +49,7 @@ class SegmentCollectingInformation extends PureComponent {
       establishmentMeansTypeOptions,
       getPath,
     } = this.props
+
     log.render()
     return (
       <React.Fragment>
@@ -63,7 +63,6 @@ class SegmentCollectingInformation extends PureComponent {
             <Field
               autoComplete="off"
               component={AdvancedAgentDropdownSearch}
-              formName={MAMMAL_FORM_NAME}
               group={ALL}
               initialText="Choose"
               module="collectionMammals"

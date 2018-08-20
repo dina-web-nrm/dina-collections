@@ -31,8 +31,12 @@ const mapDispatchToProps = {
 
 const propTypes = {
   change: PropTypes.func.isRequired,
-  formName: PropTypes.string.isRequired,
-  input: PropTypes.object.isRequired,
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  meta: PropTypes.shape({
+    form: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export class AdvancedAgentDropdownSearch extends Component {
@@ -118,9 +122,9 @@ export class AdvancedAgentDropdownSearch extends Component {
   }
 
   handleInteraction(type, data = {}) {
-    const { formName, input: { name } } = this.props
+    const { meta: { form }, input: { name } } = this.props
     if (type === FORM_CREATE_SUCCESS || type === ITEM_CLICK) {
-      this.props.change(formName, name, data.itemId)
+      this.props.change(form, name, data.itemId)
     }
 
     if (type === SET_ITEM_CREATE) {
@@ -157,7 +161,7 @@ export class AdvancedAgentDropdownSearch extends Component {
       inspectItemId,
       pickerActive,
     } = this.state
-    const { ...rest } = this.props
+
     const picker = (
       <Button onClick={this.handlePickerButtonClick}>Picker</Button>
     )
@@ -201,7 +205,7 @@ export class AdvancedAgentDropdownSearch extends Component {
       )
     }
 
-    return <AgentDropdownSearch rightButton={picker} {...rest} />
+    return <AgentDropdownSearch rightButton={picker} {...this.props} />
   }
 }
 

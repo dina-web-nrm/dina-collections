@@ -26,7 +26,6 @@ class SexFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(sexFieldName)}
             filterFunctionName={sexFilter}
-            formName={formName}
             label="Sex"
             name={sexFieldName}
           />

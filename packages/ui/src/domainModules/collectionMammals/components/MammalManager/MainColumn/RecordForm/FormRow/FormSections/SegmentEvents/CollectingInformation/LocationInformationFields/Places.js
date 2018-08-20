@@ -8,8 +8,6 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { AdvancedLocalityDropdownSearch } from 'domainModules/locality/components'
 import { ALL, CONTINENT } from 'domainModules/locality/constants'
 
-import { MAMMAL_FORM_NAME as formName } from 'domainModules/collectionMammals/constants'
-
 const propTypes = {
   getPath: PropTypes.func.isRequired,
   i18n: PropTypes.shape({
@@ -25,7 +23,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
           <Field
             autoComplete="off"
             component={AdvancedLocalityDropdownSearch}
-            formName={formName}
             group={ALL}
             initialText={moduleTranslate({ textKey: 'other.choose' })}
             module="collectionMammals"
@@ -39,7 +36,6 @@ function LocationInformationFields({ getPath, i18n: { moduleTranslate } }) {
           <Field
             autoComplete="off"
             component={AdvancedLocalityDropdownSearch}
-            formName={formName}
             group={CONTINENT}
             initialText={moduleTranslate({ textKey: 'other.choose' })}
             module="collectionMammals"

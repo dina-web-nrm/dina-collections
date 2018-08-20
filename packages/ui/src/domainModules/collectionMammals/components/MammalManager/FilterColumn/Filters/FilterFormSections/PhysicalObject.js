@@ -34,7 +34,6 @@ class PhysicalObjectFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(skeletonFieldName)}
             filterFunctionName={skeletonFilter}
-            formName={formName}
             label="Skeleton"
             name={skeletonFieldName}
           />
@@ -46,7 +45,6 @@ class PhysicalObjectFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(skinFieldName)}
             filterFunctionName={skinFilter}
-            formName={formName}
             label="Skin"
             name={skinFieldName}
           />
@@ -58,7 +56,6 @@ class PhysicalObjectFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(wetPreparationFieldName)}
             filterFunctionName={wetPreparationFilter}
-            formName={formName}
             label="Wet preparation"
             name={wetPreparationFieldName}
           />

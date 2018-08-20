@@ -12,19 +12,17 @@ import {
 } from 'coreModules/form/utilities'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
-import { MAMMAL_FORM_NAME } from 'domainModules/collectionMammals/constants'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import FormActions from './FormActions'
 
 const log = createLog('modules:collectionMammals:CuratorialAssessmentForm:Base')
-
-const FORM_NAME = 'curatorialAssessmentForm'
 
 const propTypes = {
   displayBackButton: PropTypes.bool,
   displayRemoveButton: PropTypes.bool,
   displayResetButton: PropTypes.bool,
   error: PropTypes.string,
+  form: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -53,6 +51,7 @@ export class BaseForm extends PureComponent {
       displayRemoveButton,
       displayResetButton,
       error,
+      form,
       handleSubmit,
       invalid,
       onClose,
@@ -63,6 +62,7 @@ export class BaseForm extends PureComponent {
       submitSucceeded,
       submitting,
     } = this.props
+
     return (
       <Form error={!!error} onSubmit={handleSubmit(this.props.onSubmit)}>
         <Grid textAlign="left" verticalAlign="top">
@@ -150,7 +150,6 @@ export class BaseForm extends PureComponent {
               <Field
                 autoComplete="off"
                 component={AdvancedAgentDropdownSearch}
-                formName={MAMMAL_FORM_NAME}
                 group={ALL}
                 initialText="Choose"
                 module="collectionMammals"
@@ -174,7 +173,7 @@ export class BaseForm extends PureComponent {
             displayRemoveButton={displayRemoveButton}
             displayResetButton={displayResetButton}
             error={error}
-            form={FORM_NAME}
+            form={form}
             invalid={invalid}
             onClose={onClose}
             onRemove={onRemove}
@@ -196,7 +195,7 @@ BaseForm.defaultProps = defaultProps
 export default reduxForm({
   destroyOnUnmount: true,
   enableReinitialize: false,
-  form: FORM_NAME,
+  form: 'curatorialAssessmentForm',
   validate: customFormValidator({
     model: 'curatorialAssessment',
     models: mammalFormModels,

@@ -54,7 +54,6 @@ class DatePeriodFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={filterFunctionName}
-            formName={formName}
             label="Activity"
             name={multipleChoiceName}
           />

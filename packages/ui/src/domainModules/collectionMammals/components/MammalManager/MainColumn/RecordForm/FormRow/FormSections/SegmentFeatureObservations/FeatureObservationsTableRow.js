@@ -10,7 +10,6 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
-import { MAMMAL_FORM_NAME } from 'domainModules/collectionMammals/constants'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentFeatureObservations:FeatureObservationsTableRow'
@@ -127,7 +126,6 @@ class FeatureObservationTableRow extends PureComponent {
             autoComplete="off"
             component={AdvancedAgentDropdownSearch}
             displayLabel={false}
-            formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"
             module="collectionMammals"

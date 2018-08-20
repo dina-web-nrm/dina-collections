@@ -28,7 +28,6 @@ class AgeStageFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(stageFieldName)}
             filterFunctionName={ageStageFilter}
-            formName={formName}
             label="Age stage"
             name={stageFieldName}
           />

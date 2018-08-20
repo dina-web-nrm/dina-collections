@@ -74,7 +74,6 @@ class LengthFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={lengthTypeFilter}
-            formName={formName}
             label="Length type"
             name={multipleChoiceName}
           />

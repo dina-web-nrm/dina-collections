@@ -17,7 +17,6 @@ import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
-import { MAMMAL_FORM_NAME } from 'domainModules/collectionMammals/constants'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentDeterminations:DeterminationContent'
@@ -129,7 +128,6 @@ class DeterminationContent extends Component {
           <Field
             autoComplete="off"
             component={AdvancedAgentDropdownSearch}
-            formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"
             module="collectionMammals"

@@ -28,7 +28,6 @@ class CollectingConditionFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(collectingConditionFieldName)}
             filterFunctionName={conditionFilter}
-            formName={formName}
             label="Collecting condition"
             name={collectingConditionFieldName}
           />
