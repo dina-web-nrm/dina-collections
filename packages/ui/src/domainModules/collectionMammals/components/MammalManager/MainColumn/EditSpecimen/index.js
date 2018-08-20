@@ -60,6 +60,7 @@ class EditSpecimen extends Component {
           })
         }}
         initialValues={initialValues}
+        loading={!nestedItem}
         mode="edit"
         {...rest}
       />

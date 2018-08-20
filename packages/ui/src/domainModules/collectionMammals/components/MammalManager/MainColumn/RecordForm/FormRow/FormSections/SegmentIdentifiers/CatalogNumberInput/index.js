@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import { Button, Form, Header, Input, Modal } from 'semantic-ui-react'
+import { Button, Form, Header, Input, Loader, Modal } from 'semantic-ui-react'
 import { FormFieldError } from 'coreModules/error/components'
 import FieldLabel from 'coreModules/form/components/FieldTemplate/FieldLabel'
 
@@ -20,6 +20,7 @@ const propTypes = {
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   labelKey: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       catalogNumber: PropTypes.string,
@@ -94,6 +95,7 @@ class CatalogNumberInput extends Component {
       input,
       label,
       labelKey,
+      loading,
       meta: { touched, error },
       module,
       placeholder,
@@ -106,9 +108,11 @@ class CatalogNumberInput extends Component {
     const initializedWithValue = !!this.state.catalogNumber
     return (
       <Header as="h1">
-        {this.state.catalogNumber || (
-          <ModuleTranslate textKey="headers.newSpecimen" />
-        )}{' '}
+        {loading && <Loader active inline size="small" />}
+        {!loading &&
+          (this.state.catalogNumber || (
+            <ModuleTranslate textKey="headers.newSpecimen" />
+          ))}{' '}
         {!open && (
           // since the tests cannot select the input in the modal we add this
           // hidden input

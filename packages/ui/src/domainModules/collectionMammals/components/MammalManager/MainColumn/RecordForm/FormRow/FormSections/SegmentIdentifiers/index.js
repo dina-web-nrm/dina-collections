@@ -46,6 +46,7 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
   identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
   identifierTypeOptions: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   typeSpecimenTypeOptions: PropTypes.array.isRequired,
 }
@@ -59,6 +60,7 @@ class SegmentIdentifiers extends PureComponent {
       getPath,
       identifiers,
       identifierTypeOptions,
+      loading,
       removeArrayFieldByIndex,
       typeSpecimenTypeOptions,
     } = this.props
@@ -76,6 +78,7 @@ class SegmentIdentifiers extends PureComponent {
                 formValueSelector={formValueSelector}
                 helpText={<ModuleTranslate textKey="other.sixOrEightDigits" />}
                 labelKey="modules.collectionMammals.other.catalogNumber"
+                loading={loading}
                 module="collectionMammals"
                 name={getPath('0.value')}
                 type="text"

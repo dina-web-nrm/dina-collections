@@ -755,6 +755,10 @@
     "id": {
       "en": "id"
     },
+    "loading": {
+      "en": "loading",
+      "sv": "laddar"
+    },
     "method": {
       "en": "Method",
       "sv": "Metod"

@@ -58,6 +58,7 @@ const propTypes = {
   form: PropTypes.string.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
   mainColumnActiveTab: PropTypes.string.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -75,6 +76,7 @@ const propTypes = {
 }
 const defaultProps = {
   error: '',
+  loading: false,
   mode: 'register',
   redirectOnSuccess: false,
 }
