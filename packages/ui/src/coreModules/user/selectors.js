@@ -49,8 +49,3 @@ export const getUserPreferencesLanguage = state => {
   const preferences = getUserPreferences(state)
   return preferences && preferences.language
 }
-
-export const getUserPreferencesShortcutsActive = state => {
-  const preferences = getUserPreferences(state)
-  return preferences && preferences.shortcutsActive
-}

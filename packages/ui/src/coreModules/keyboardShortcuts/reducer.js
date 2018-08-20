@@ -1,16 +1,10 @@
-import {
-  registerModuleProperty,
-  unregisterModuleProperty,
-} from 'coreModules/bootstrap/utilities'
+import immutable from 'object-path-immutable'
 
 import {
-  BOOTSTRAP_UNREGISTER_MODULES,
-  BOOTSTRAP_REGISTER_MODULES,
-} from 'coreModules/bootstrap/actionTypes'
-
-import {
-  KEYBOARD_SHORTCUTS_SET_MODAL_VISIBLE,
+  KEYBOARD_SHORTCUTS_REGISTER,
   KEYBOARD_SHORTCUTS_SET_MODAL_HIDDEN,
+  KEYBOARD_SHORTCUTS_SET_MODAL_VISIBLE,
+  KEYBOARD_SHORTCUTS_UNREGISTER,
 } from './actionTypes'
 
 export const initialState = {
@@ -20,22 +14,16 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case BOOTSTRAP_REGISTER_MODULES: {
-      const nextState = registerModuleProperty({
-        action,
-        property: 'shortcuts',
+    case KEYBOARD_SHORTCUTS_REGISTER: {
+      return immutable.set(
         state,
-      })
-      return nextState
+        `shortcuts.${action.payload.command}`,
+        action.payload
+      )
     }
 
-    case BOOTSTRAP_UNREGISTER_MODULES: {
-      const nextState = unregisterModuleProperty({
-        action,
-        property: 'shortcuts',
-        state,
-      })
-      return nextState
+    case KEYBOARD_SHORTCUTS_UNREGISTER: {
+      return immutable.del(state, `shortcuts.${action.payload.command}`)
     }
 
     case KEYBOARD_SHORTCUTS_SET_MODAL_VISIBLE: {

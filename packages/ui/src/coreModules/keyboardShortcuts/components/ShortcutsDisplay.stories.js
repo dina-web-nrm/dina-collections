@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import config from 'config'
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import 'common/dist/semantic.css' // eslint-disable-line
@@ -18,11 +17,6 @@ storiesOf('coreModules/keyboardShortcuts/ShortcutsDisplay', module)
   .add(
     'Default',
     withInfo()(() => {
-      return (
-        <ShortcutsDisplay
-          open={!config.isTest} // open modal does not work when running tests
-          showShortcutInfo
-        />
-      )
+      return <ShortcutsDisplay showShortcutInfo />
     })
   )

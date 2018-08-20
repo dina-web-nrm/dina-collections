@@ -2196,6 +2196,7 @@ common-tags@^1.4.0:
     normalizr "^3.2.4"
     object-path "^0.11.4"
     object-path-immutable "^1.0.1"
+    performance-now "^2.1.0"
     redux "^3.7.2"
     reselect "^3.0.1"
     uuid "^3.2.1"
@@ -5692,6 +5693,10 @@ moment@^2.22.0:
 moment@^2.22.2:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+
+mousetrap@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/mousetrap/-/mousetrap-1.6.2.tgz#caadd9cf886db0986fb2fee59a82f6bd37527587"
 
 ms@2.0.0:
   version "2.0.0"

@@ -13,10 +13,6 @@
         "description": {
           "en": "Description",
           "sv": "Beskrivning"
-        },
-        "module": {
-          "en": "Module",
-          "sv": "Modul"
         }
       }
     }
