@@ -193,7 +193,7 @@ const defaultProps = {
   focusedSpecimenId: undefined,
   rightSidebarWidth: 300,
   searchResult: undefined,
-  totalNumberOfRecords: undefined,
+  totalNumberOfRecords: 0,
 }
 
 class MammalManager extends Component {
