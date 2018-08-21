@@ -5,7 +5,10 @@ import { Route, Switch } from 'react-router-dom'
 
 import { AppNavigationSidebar, ViewWrap } from 'coreModules/layout/components'
 import { requireLoggedIn } from 'coreModules/user/higherOrderComponents'
-import { ShortcutsDisplay } from 'coreModules/keyboardShortcuts/components'
+import {
+  KeyboardShortcuts,
+  ShortcutsDisplay,
+} from 'coreModules/keyboardShortcuts/components'
 
 import Home from '../home/Async'
 import SpecimensMammals from '../specimensMammals/Async'
@@ -23,11 +26,30 @@ const propTypes = {
 }
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.shortcuts = [
+      {
+        command: 'n h',
+        description: 'Navigate to home',
+        params: { path: '/app' },
+        type: 'push',
+      },
+      {
+        command: 'n s',
+        description: 'Navigate to specimens',
+        params: { path: '/app/specimens/mammals' },
+        type: 'push',
+      },
+    ]
+  }
+
   render() {
     const { match } = this.props
 
     return (
       <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
         <ViewWrap leftSidebarEnabled leftSidebarTogglable topMenuEnabled>
           <Switch>
             <Route component={Home} exact path={match.url} />
