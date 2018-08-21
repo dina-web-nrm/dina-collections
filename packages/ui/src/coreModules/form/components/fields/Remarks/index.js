@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formValueSelector } from 'redux-form'
+import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 import { Grid, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import { Field, Input } from 'coreModules/form/components'
 
-const mapStateToProps = (state, { name, formName }) => {
-  const selector = formValueSelector(formName)
+const mapStateToProps = (state, { formValueSelector, name, formName }) => {
+  if (formValueSelector) {
+    const value = formValueSelector(state, name)
+    return {
+      value,
+    }
+  }
+
+  const selector = formValueSelectorFactory(formName)
   const value = selector(state, name)
   return {
     value,
