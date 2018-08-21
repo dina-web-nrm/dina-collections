@@ -24,12 +24,13 @@ const propTypes = {
   enableHelpNotifications: PropTypes.bool,
   module: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  parameterKey: PropTypes.string.isRequired,
+  parameterKey: PropTypes.string,
   value: PropTypes.string,
 }
 
 const defaultProps = {
   enableHelpNotifications: true,
+  parameterKey: undefined,
   value: undefined,
 }
 
