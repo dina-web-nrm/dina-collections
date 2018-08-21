@@ -723,21 +723,22 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks addRemark 1`] = `
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="row"
             onClick={[Function]}
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "paddingTop": 6,
                 }
               }
             >
@@ -778,21 +779,22 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks default 1`] = `
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="row"
             onClick={[Function]}
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "paddingTop": 6,
                 }
               }
             >
@@ -833,21 +835,22 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks editRemark 1`] = 
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="row"
             onClick={[Function]}
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "paddingTop": 6,
                 }
               }
             >
@@ -888,21 +891,22 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks editRemark withou
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="row"
             onClick={[Function]}
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "paddingTop": 6,
                 }
               }
             >
@@ -943,21 +947,22 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemark 1`
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="row"
             onClick={[Function]}
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "paddingTop": 6,
                 }
               }
             >
@@ -998,21 +1003,22 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks noRemark 1`] = `
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="row"
             onClick={[Function]}
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "paddingTop": 6,
                 }
               }
             >
