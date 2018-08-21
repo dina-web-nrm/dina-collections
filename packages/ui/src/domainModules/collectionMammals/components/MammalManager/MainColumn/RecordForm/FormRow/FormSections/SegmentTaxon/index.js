@@ -11,6 +11,7 @@ import { FIRST_EXPANDED } from 'coreModules/commonUi/constants'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import Remarks from 'coreModules/form/components/fields/Remarks'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import { CustomData, Field, Input } from 'coreModules/form/components'
@@ -104,12 +105,10 @@ const SegmentDeterminations = ({
         </Grid.Row>
         <Grid.Row>
           <Grid.Column computer={5} mobile={16} tablet={8}>
-            <Field
-              autoComplete="off"
-              component={Input}
+            <Remarks
+              formValueSelector={formValueSelector}
               module="collectionMammals"
               name={getPath('individual.taxonInformation.taxonRemarks')}
-              type="text"
             />
           </Grid.Column>
         </Grid.Row>
