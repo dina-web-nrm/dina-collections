@@ -64,12 +64,9 @@ class Remarks extends Component {
     const { icon, isEdit, labelText } = this.state
 
     return (
-      <Grid padded style={{ height: 60 }} verticalAlign="middle">
-        <Grid.Row
-          onClick={!isEdit && this.handleAddOrEditRemark}
-          verticalAlign="middle"
-        >
-          <div style={{ paddingTop: 7 }}>
+      <Grid style={{ height: 50, paddingLeft: 11 }}>
+        <Grid.Row onClick={isEdit ? undefined : this.handleAddOrEditRemark}>
+          <div style={{ paddingTop: 6 }}>
             <Icon name={icon} size="large" />
           </div>
           {isEdit && (
