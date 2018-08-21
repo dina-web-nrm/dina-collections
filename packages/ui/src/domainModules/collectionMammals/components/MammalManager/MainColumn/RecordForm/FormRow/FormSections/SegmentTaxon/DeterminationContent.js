@@ -15,6 +15,7 @@ import {
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import Remarks from 'coreModules/form/components/fields/Remarks'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 
@@ -144,12 +145,10 @@ class DeterminationContent extends Component {
           />
         </Grid.Column>
         <Grid.Column computer={8} mobile={16} tablet={8}>
-          <Field
-            autoComplete="off"
-            component={Input}
+          <Remarks
+            formValueSelector={formValueSelector}
             module="collectionMammals"
             name={getPath('remarks')}
-            type="input-text"
           />
         </Grid.Column>
         <Grid.Column mobile={16}>
