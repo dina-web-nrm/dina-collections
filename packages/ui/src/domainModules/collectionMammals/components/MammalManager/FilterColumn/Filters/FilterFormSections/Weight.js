@@ -21,13 +21,12 @@ const toWeightFieldName = `weight.max`
 // ]
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class WeightFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -74,7 +73,6 @@ class WeightFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={weightTypeFilter}
-            formName={formName}
             label="Weight type"
             name={multipleChoiceName}
           />

@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
+import { withRouter } from 'react-router-dom'
 import { createSelector } from 'reselect'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
-import CreateSpecimen from '../../CreateSpecimen'
-import EditSpecimen from '../../EditSpecimen'
+
+import CreateSpecimen from './CreateSpecimen'
+import EditSpecimen from './EditSpecimen'
 import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
 import ResultTableSettings from './ResultTableSettings'
@@ -29,36 +31,43 @@ const recordOptions = {
 /* eslint-disable react/prop-types */
 const recordNew = {
   key: 'recordNew',
-  renderRow: () => {
+  renderRow: ({ availableHeight, ...rest }) => {
     return (
-      <div className="ui fluid dina background" style={{ padding: '20px' }}>
-        <CreateSpecimen />
-      </div>
+      <CreateSpecimen
+        {...rest}
+        availableHeight={
+          availableHeight - recordNavigationHeight - recordOptionsHeight
+        }
+      />
     )
   },
   style: { overflow: 'auto' },
 }
 const recordEdit = {
   key: 'recordEdit',
-  renderRow: () => {
+  renderRow: ({ availableHeight, ...rest }) => {
     return (
-      <div className="ui fluid dina background" style={{ padding: '20px' }}>
-        <EditSpecimen />
-      </div>
+      <EditSpecimen
+        {...rest}
+        availableHeight={
+          availableHeight - recordNavigationHeight - recordOptionsHeight
+        }
+      />
     )
   },
   style: { overflow: 'auto' },
 }
 const resultTable = {
   key: 'resultTable',
-  renderRow: props => {
+  renderRow: ({ availableHeight, currentTableRowNumber, ...rest }) => {
     return (
       <div className="ui fluid dina background" style={{ marginTop: '-1px' }}>
         <ResultTableView
+          {...rest}
           availableHeight={
-            props.availableHeight - recordNavigationHeight - recordOptionsHeight
+            availableHeight - recordNavigationHeight - recordOptionsHeight
           }
-          currentTableRowNumber={props.currentTableRowNumber}
+          currentTableRowNumber={currentTableRowNumber}
         />
       </div>
     )
@@ -66,10 +75,10 @@ const resultTable = {
 }
 const resultTableSettings = {
   key: 'resultTableSettings',
-  renderRow: props => {
+  renderRow: ({ onTableTabClick, ...rest }) => {
     return (
       <div className="ui fluid dina background" style={{ padding: '20px' }}>
-        <ResultTableSettings onTableTabClick={props.onTableTabClick} />
+        <ResultTableSettings {...rest} onTableTabClick={onTableTabClick} />
       </div>
     )
   },
@@ -119,10 +128,10 @@ class MainColumn extends PureComponent {
 
     return (
       <RowLayout
+        {...rest}
         availableHeight={windowHeight - 40}
         mainColumnActiveTab={mainColumnActiveTab}
         rows={getRows(mainColumnActiveTab)}
-        {...rest}
       />
     )
   }
@@ -130,4 +139,4 @@ class MainColumn extends PureComponent {
 
 MainColumn.propTypes = propTypes
 
-export default compose(injectWindowHeight)(MainColumn)
+export default compose(withRouter, injectWindowHeight)(MainColumn)

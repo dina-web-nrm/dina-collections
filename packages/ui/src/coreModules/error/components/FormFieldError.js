@@ -8,13 +8,14 @@ const propTypes = {
     params: PropTypes.object,
   }).isRequired,
   module: PropTypes.string,
-  scope: PropTypes.string.isRequired,
+  scope: PropTypes.string,
   textKeys: PropTypes.array,
   warning: PropTypes.bool,
 }
 
 const defaultProps = {
   module: '',
+  scope: undefined,
   textKeys: [],
   warning: false,
 }

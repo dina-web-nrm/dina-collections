@@ -9,13 +9,12 @@ const bonesFilter = 'matchBoneTags'
 const bonesFieldName = `bones.bones|multipleChoice-${bonesFilter}`
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class BonesFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -26,7 +25,6 @@ class BonesFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(bonesFieldName)}
             filterFunctionName={bonesFilter}
-            formName={formName}
             label="Bones"
             name={bonesFieldName}
           />

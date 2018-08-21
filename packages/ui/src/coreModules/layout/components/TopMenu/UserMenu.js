@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import { Button, Divider, Grid, Header, Icon } from 'semantic-ui-react'
 
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import { logout as logoutAC } from 'coreModules/user/actionCreators'
 import userSelectors from 'coreModules/user/globalSelectors'
 
 const ModuleTranslate = createModuleTranslate('commonUi')
@@ -16,15 +15,18 @@ const mapStateToProps = state => {
     userName: userSelectors.getUserName(state),
   }
 }
-const mapDispatchToProps = { logout: logoutAC }
 
 const propTypes = {
-  logout: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  onLogout: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired,
 }
 
-const UserMenu = ({ logout, onClick: handleClick, userName }) => {
+const UserMenu = ({
+  onLogout: handleLogout,
+  onClick: handleClick,
+  userName,
+}) => {
   return (
     <Grid padded textAlign="left" verticalAlign="middle">
       <Grid.Row>
@@ -37,7 +39,7 @@ const UserMenu = ({ logout, onClick: handleClick, userName }) => {
           labelPosition="left"
           onClick={event => {
             event.preventDefault()
-            logout()
+            handleLogout()
             handleClick()
           }}
           size="large"
@@ -60,4 +62,4 @@ const UserMenu = ({ logout, onClick: handleClick, userName }) => {
 
 UserMenu.propTypes = propTypes
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(UserMenu)
+export default compose(connect(mapStateToProps))(UserMenu)

@@ -4,11 +4,12 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { getFormValues, isInvalid } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
+import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
-const mapStateToProps = (state, { formName }) => {
+const mapStateToProps = (state, { form }) => {
   return {
-    invalid: isInvalid(formName)(state),
-    values: getFormValues(formName)(state),
+    invalid: isInvalid(form)(state),
+    values: getFormValues(form)(state),
   }
 }
 
@@ -27,6 +28,14 @@ class BottomBar extends PureComponent {
     super(props)
     this.handleSearch = this.handleSearch.bind(this)
     this.state = { loading: false }
+
+    this.shortcuts = [
+      {
+        command: 'mod+shift+enter',
+        description: 'Execute search',
+        onPress: this.handleSearch,
+      },
+    ]
   }
 
   handleSearch(event) {
@@ -40,21 +49,24 @@ class BottomBar extends PureComponent {
     const { invalid, onResetFilters: handleReset } = this.props
 
     return (
-      <Grid padded>
-        <Grid.Column>
-          <Button
-            disabled={invalid}
-            loading={this.state.loading}
-            onClick={this.handleSearch}
-            style={{ float: 'left' }}
-          >
-            Search
-          </Button>
-          <Button basic onClick={handleReset} style={{ float: 'right' }}>
-            Clear all filters
-          </Button>
-        </Grid.Column>
-      </Grid>
+      <React.Fragment>
+        <KeyboardShortcuts shortcuts={this.shortcuts} />
+        <Grid padded>
+          <Grid.Column>
+            <Button
+              disabled={invalid}
+              loading={this.state.loading}
+              onClick={this.handleSearch}
+              style={{ float: 'left' }}
+            >
+              Search
+            </Button>
+            <Button basic onClick={handleReset} style={{ float: 'right' }}>
+              Clear all filters
+            </Button>
+          </Grid.Column>
+        </Grid>
+      </React.Fragment>
     )
   }
 }

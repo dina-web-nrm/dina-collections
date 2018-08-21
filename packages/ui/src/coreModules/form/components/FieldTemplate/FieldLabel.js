@@ -32,6 +32,7 @@ const FieldLabel = ({
   const style = subLabel
     ? {
         fontSize: '0.9em',
+        fontWeight: 700,
         margin: 0,
       }
     : {}

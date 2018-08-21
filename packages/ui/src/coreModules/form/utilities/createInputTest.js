@@ -74,13 +74,11 @@ export default function createInputTest({
     expect(props).toBeTruthy()
     expect(getValue(props)).toBe(initialValue)
 
-    const newValue = updateValue
-    inputObject.value = newValue
-    wrapper.setProps({ input: inputObject })
+    wrapper.setProps({ input: { ...inputObject, value: updateValue } })
 
     const updatedProps = wrapper.find(elementToSelect).props()
     expect(updatedProps).toBeTruthy()
-    expect(getValue(updatedProps)).toBe(newValue)
+    expect(getValue(updatedProps)).toBe(updateValue)
   })
 
   it('onFocus is called when input is focused', () => {

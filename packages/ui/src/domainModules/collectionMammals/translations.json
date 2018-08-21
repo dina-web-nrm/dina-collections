@@ -1,6 +1,6 @@
 {
   "enums": {
-    "featureObservations": { 
+    "featureObservations": {
       "age": {
         "en": "Age",
         "sv": "Ålder"
@@ -322,7 +322,7 @@
       }
     }
   },
- 
+
   "headers": {
     "collectingInformation": {
       "en": "collecting information"
@@ -582,9 +582,34 @@
       "sv": ""
     }
   },
-
+  "formSectionTitles": {
+    "generalInformation": {
+      "en": "General information",
+      "sv": ""
+    },
+    "taxonomy": {
+      "en": "Taxonomy",
+      "sv": ""
+    },
+    "collectingInformation": {
+      "en": "Collecting information",
+      "sv": ""
+    },
+    "featureObservations": {
+      "en": "Feature observations",
+      "sv": ""
+    },
+    "physicalObjects": {
+      "en": "Physical objects",
+      "sv": ""
+    },
+    "other": {
+      "en": "Other",
+      "sv": ""
+    }
+  },
   "identifiers": {
-    "en": "Identifiers" 
+    "en": "Identifiers"
   },
   "identifierType": {
     "en": "Identifier type"
@@ -729,6 +754,10 @@
     },
     "id": {
       "en": "id"
+    },
+    "loading": {
+      "en": "loading",
+      "sv": "laddar"
     },
     "method": {
       "en": "Method",

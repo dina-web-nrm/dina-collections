@@ -11,13 +11,12 @@ const collectingConditionFieldName = `collectingCondition.collectingCondition|mu
 }`
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class CollectingConditionFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -28,7 +27,6 @@ class CollectingConditionFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(collectingConditionFieldName)}
             filterFunctionName={conditionFilter}
-            formName={formName}
             label="Collecting condition"
             name={collectingConditionFieldName}
           />

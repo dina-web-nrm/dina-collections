@@ -38,7 +38,7 @@ const defaultProps = {
 export class RecordNavigationBar extends Component {
   constructor(props) {
     super(props)
-    this.state = { sliderRowNumber: undefined }
+    this.state = { sliderRowNumber: null }
   }
 
   render() {
@@ -81,10 +81,10 @@ export class RecordNavigationBar extends Component {
             <Input
               disabled={!handleSetCurrentTableRowNumber}
               max={totalNumberOfRecords}
-              min={1}
-              onChange={event =>
-                handleSetCurrentTableRowNumber(event, event.target.value)
-              }
+              min={totalNumberOfRecords && 1}
+              onChange={event => {
+                handleSetCurrentTableRowNumber(null, event.target.value)
+              }}
               size="mini"
               style={{ width: '80px' }}
               type="number"
@@ -103,13 +103,21 @@ export class RecordNavigationBar extends Component {
             >
               <Slider
                 max={totalNumberOfRecords}
-                min={1}
+                min={totalNumberOfRecords && 1}
                 onChange={newTableRowNumber => {
-                  this.setState({ sliderRowNumber: newTableRowNumber })
+                  // those ifs are a needed hack to avoid double increment when
+                  // using hotkey directly after sliding
+                  if (newTableRowNumber === currentTableRowNumber + 1) {
+                    this.setState({ sliderRowNumber: newTableRowNumber - 1 })
+                  } else if (newTableRowNumber === currentTableRowNumber - 1) {
+                    this.setState({ sliderRowNumber: newTableRowNumber + 1 })
+                  } else {
+                    this.setState({ sliderRowNumber: newTableRowNumber })
+                  }
                 }}
                 onChangeComplete={() => {
                   handleSetCurrentTableRowNumber(null, sliderRowNumber)
-                  this.setState({ sliderRowNumber: undefined })
+                  this.setState({ sliderRowNumber: null })
                 }}
                 step={1}
                 tooltip={false}

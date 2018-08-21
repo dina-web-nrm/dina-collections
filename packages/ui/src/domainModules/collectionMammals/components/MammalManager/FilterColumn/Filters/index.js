@@ -6,7 +6,6 @@ import { getFormValues, reduxForm } from 'redux-form'
 
 import { Accordion } from 'coreModules/commonUi/components'
 import { MULTI } from 'coreModules/commonUi/constants'
-import { SPECIMEN_FILTERS_FORM_NAME } from '../../../../constants'
 import buildQuery from '../../../../utilities/buildQuery'
 import FilterContent from './FilterContent'
 import FilterTitle from './FilterTitle'
@@ -86,7 +85,6 @@ const EnhancedFilters = compose(connect(mapStateToProps))(RawFilters)
 
 export default reduxForm({
   enableReinitialize: true,
-  form: SPECIMEN_FILTERS_FORM_NAME,
   keepDirtyOnReinitialize: true,
   updateUnregisteredFields: true,
 })(EnhancedFilters)

@@ -43,7 +43,7 @@ class FilterColumn extends PureComponent {
     return (
       <RowLayout
         availableHeight={windowHeight - 40}
-        formName={SPECIMEN_FILTERS_FORM_NAME}
+        form={SPECIMEN_FILTERS_FORM_NAME}
         formValueSelector={formValueSelector}
         rows={rows}
         {...this.props}

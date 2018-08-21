@@ -11,13 +11,12 @@ const fromAgeFieldName = `ageAndStage.min`
 const toAgeFieldName = `ageAndStage.max`
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class AgeStageFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -28,7 +27,6 @@ class AgeStageFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(stageFieldName)}
             filterFunctionName={ageStageFilter}
-            formName={formName}
             label="Age stage"
             name={stageFieldName}
           />

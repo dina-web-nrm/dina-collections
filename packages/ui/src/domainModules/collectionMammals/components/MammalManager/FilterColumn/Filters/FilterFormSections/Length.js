@@ -21,13 +21,12 @@ const toLengthFieldName = `length.max`
 // ]
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class LengthFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -74,7 +73,6 @@ class LengthFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(multipleChoiceName)}
             filterFunctionName={lengthTypeFilter}
-            formName={formName}
             label="Length type"
             name={multipleChoiceName}
           />

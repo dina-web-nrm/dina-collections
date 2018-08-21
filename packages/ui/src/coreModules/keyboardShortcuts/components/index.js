@@ -1,3 +1,4 @@
+import KeyboardShortcuts from './KeyboardShortcuts'
 import ShortcutsDisplay from './ShortcutsDisplay'
 
-export { ShortcutsDisplay }
+export { KeyboardShortcuts, ShortcutsDisplay }

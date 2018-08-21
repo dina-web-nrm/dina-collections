@@ -17,13 +17,12 @@ const wetPreparationFieldName = `physicalObject.wetPreparation|multipleChoice-${
 }`
 
 const propTypes = {
-  formName: PropTypes.string.isRequired,
   getDrilldownQuery: PropTypes.func.isRequired,
 }
 
 class PhysicalObjectFilterForm extends PureComponent {
   render() {
-    const { formName, getDrilldownQuery } = this.props
+    const { getDrilldownQuery } = this.props
 
     return (
       <Grid textAlign="left" verticalAlign="top">
@@ -34,7 +33,6 @@ class PhysicalObjectFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(skeletonFieldName)}
             filterFunctionName={skeletonFilter}
-            formName={formName}
             label="Skeleton"
             name={skeletonFieldName}
           />
@@ -46,7 +44,6 @@ class PhysicalObjectFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(skinFieldName)}
             filterFunctionName={skinFilter}
-            formName={formName}
             label="Skin"
             name={skinFieldName}
           />
@@ -58,7 +55,6 @@ class PhysicalObjectFilterForm extends PureComponent {
             displayCount
             drillDownQuery={getDrilldownQuery(wetPreparationFieldName)}
             filterFunctionName={wetPreparationFilter}
-            formName={formName}
             label="Wet preparation"
             name={wetPreparationFieldName}
           />
