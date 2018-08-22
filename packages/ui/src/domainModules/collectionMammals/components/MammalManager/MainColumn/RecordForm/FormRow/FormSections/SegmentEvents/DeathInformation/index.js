@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import createLog from 'utilities/log'
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import Remarks from 'coreModules/form/components/fields/Remarks'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
@@ -24,12 +25,13 @@ const mapStateToProps = state => {
 
 const propTypes = {
   causeOfDeathTypeOptions: PropTypes.array.isRequired,
+  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
 }
 
 class DeathInformation extends PureComponent {
   render() {
-    const { causeOfDeathTypeOptions, getPath } = this.props
+    const { causeOfDeathTypeOptions, formValueSelector, getPath } = this.props
     log.render()
     return (
       <React.Fragment>
@@ -45,14 +47,11 @@ class DeathInformation extends PureComponent {
               type="dropdown-search-local"
             />
           </Grid.Column>
-
-          <Grid.Column computer={6} mobile={16}>
-            <Field
-              autoComplete="off"
-              component={Input}
+          <Grid.Column computer={8} mobile={16}>
+            <Remarks
+              formValueSelector={formValueSelector}
               module="collectionMammals"
               name={getPath('remarks')}
-              type="text"
             />
           </Grid.Column>
         </Grid>
