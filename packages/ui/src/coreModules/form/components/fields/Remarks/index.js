@@ -22,6 +22,7 @@ const mapStateToProps = (state, { formValueSelector, name, formName }) => {
 
 const propTypes = {
   enableHelpNotifications: PropTypes.bool,
+  label: PropTypes.string,
   module: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   parameterKey: PropTypes.string,
@@ -30,6 +31,7 @@ const propTypes = {
 
 const defaultProps = {
   enableHelpNotifications: true,
+  label: undefined,
   parameterKey: undefined,
   value: undefined,
 }
@@ -67,7 +69,13 @@ class Remarks extends Component {
   }
 
   render() {
-    const { enableHelpNotifications, module, name, parameterKey } = this.props
+    const {
+      enableHelpNotifications,
+      label,
+      module,
+      name,
+      parameterKey,
+    } = this.props
 
     const { icon, isEdit, labelText } = this.state
 
@@ -83,6 +91,7 @@ class Remarks extends Component {
               component={Input}
               enableHelpNotifications={enableHelpNotifications}
               focusOnMount
+              label={label}
               module={module}
               name={name}
               onBlur={this.handleOnBlur}

@@ -101,3 +101,14 @@ storiesOf('coreModules/form/Fields/Remarks', module)
       />
     </FormWrapper>
   ))
+  .add('remarks custom label', () => (
+    <FormWrapper>
+      <Remarks
+        enableHelpNotifications={false}
+        formName="remarksForm"
+        label="The label text"
+        module={moduleName}
+        name={fieldName}
+      />
+    </FormWrapper>
+  ))
