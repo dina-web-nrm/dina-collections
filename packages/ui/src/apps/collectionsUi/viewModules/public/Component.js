@@ -10,16 +10,14 @@ import Start from '../start/Async'
 class Public extends Component {
   render() {
     return (
-      <div>
-        <ViewWrap>
-          <Switch>
-            <Route component={Login} exact path="/login" />
-            <Route component={Start} exact path="/" />
-            <Route component={PageNotFound} />
-          </Switch>
-          <Footer />
-        </ViewWrap>
-      </div>
+      <ViewWrap>
+        <Switch>
+          <Route component={Login} exact path="/login" />
+          <Route component={Start} exact path="/" />
+          <Route component={PageNotFound} />
+        </Switch>
+        <Footer />
+      </ViewWrap>
     )
   }
 }

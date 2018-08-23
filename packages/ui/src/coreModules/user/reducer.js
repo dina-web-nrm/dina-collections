@@ -1,6 +1,7 @@
 import {
   USER_GET_USER_FAIL,
   USER_GET_USER_PREFERENCES_SUCCESS,
+  USER_GET_USER_REQUEST,
   USER_GET_USER_SUCCESS,
   USER_LOG_IN_FAIL,
   USER_LOG_OUT_SUCCESS,
@@ -9,13 +10,19 @@ import {
 
 const initState = {
   config: null,
-  loading: true,
+  loading: false,
   preferences: null,
   user: null,
 }
 
 export default function reducer(state = initState, action) {
   switch (action.type) {
+    case USER_GET_USER_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
     case USER_GET_USER_SUCCESS:
       return {
         ...state,

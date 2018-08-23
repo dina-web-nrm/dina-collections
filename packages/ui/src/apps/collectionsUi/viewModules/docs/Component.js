@@ -21,7 +21,7 @@ class Docs extends Component {
     const { match } = this.props
     const currentVersion = getCurrentSchemaVersion()
     return (
-      <div>
+      <React.Fragment>
         <ViewWrap leftSidebarEnabled leftSidebarWidth={180}>
           <PageTemplate container={false} fullViewHeight>
             <Switch>
@@ -58,7 +58,7 @@ class Docs extends Component {
           <Footer />
         </ViewWrap>
         <Route component={Nav} path={`${match.url}/:schemaVersion`} />
-      </div>
+      </React.Fragment>
     )
   }
 }
