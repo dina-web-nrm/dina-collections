@@ -26,6 +26,7 @@ const propTypes = {
   module: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   parameterKey: PropTypes.string,
+  type: PropTypes.string,
   value: PropTypes.string,
 }
 
@@ -33,6 +34,7 @@ const defaultProps = {
   enableHelpNotifications: true,
   label: undefined,
   parameterKey: undefined,
+  type: 'text',
   value: undefined,
 }
 
@@ -75,6 +77,7 @@ class Remarks extends Component {
       module,
       name,
       parameterKey,
+      type,
     } = this.props
 
     const { icon, isEdit, labelText } = this.state
@@ -96,7 +99,7 @@ class Remarks extends Component {
               name={name}
               onBlur={this.handleOnBlur}
               parameterKey={parameterKey}
-              type="text"
+              type={type}
             />
           )}
           <div style={{ paddingTop: 8 }}>{!isEdit && labelText}</div>
