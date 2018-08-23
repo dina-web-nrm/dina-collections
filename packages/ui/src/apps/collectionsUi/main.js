@@ -29,14 +29,14 @@ ReactDOM.render(
   <ReduxProvider store={store}>
     <ConnectedRouter history={config.routing}>
       <I18nProvider>
-        <div>
+        <React.Fragment>
           <Switch>
             <Route component={App} path="/app" />
             <Route component={Docs} path="/docs" />
             <Route component={Public} />
           </Switch>
           <NotificationDisplay displayType="fixed" />
-        </div>
+        </React.Fragment>
       </I18nProvider>
     </ConnectedRouter>
   </ReduxProvider>,
