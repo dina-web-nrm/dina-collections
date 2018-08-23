@@ -61,8 +61,6 @@ export default function userMiddleware() {
           const authToken = getAuthToken(getState())
           if (authToken) {
             dispatch(getUser())
-          } else {
-            dispatch(logout())
           }
         }
         break
