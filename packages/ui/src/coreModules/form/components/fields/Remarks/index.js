@@ -1,53 +1,38 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 import { Grid, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import { Field, Input } from 'coreModules/form/components'
-
-const mapStateToProps = (state, { formValueSelector, name, formName }) => {
-  if (formValueSelector) {
-    const value = formValueSelector(state, name)
-    return {
-      value,
-    }
-  }
-
-  const selector = formValueSelectorFactory(formName)
-  const value = selector(state, name)
-  return {
-    value,
-  }
-}
+import { Input } from 'coreModules/form/components'
 
 const propTypes = {
   enableHelpNotifications: PropTypes.bool,
+  input: PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string,
+  }),
   label: PropTypes.string,
   module: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   parameterKey: PropTypes.string,
   type: PropTypes.string,
-  value: PropTypes.string,
 }
 
 const defaultProps = {
   enableHelpNotifications: true,
+  input: undefined,
   label: undefined,
   parameterKey: undefined,
   type: 'text',
-  value: undefined,
 }
 
 class Remarks extends Component {
   constructor(props) {
     super(props)
 
-    const { value } = this.props
+    const { input } = props
 
     this.state = {
-      icon: value ? 'commenting outline' : 'comment outline',
+      icon: input.value ? 'commenting outline' : 'comment outline',
       isEdit: false,
-      labelText: value || 'Add remarks...',
+      labelText: input.value || 'Add remarks...',
     }
 
     this.handleAddOrEditRemark = this.handleAddOrEditRemark.bind(this)
@@ -73,9 +58,9 @@ class Remarks extends Component {
   render() {
     const {
       enableHelpNotifications,
+      input,
       label,
       module,
-      name,
       parameterKey,
       type,
     } = this.props
@@ -89,15 +74,11 @@ class Remarks extends Component {
             <Icon name={icon} size="large" />
           </div>
           {isEdit && (
-            <Field
-              autoComplete="off"
-              component={Input}
+            <Input
               enableHelpNotifications={enableHelpNotifications}
-              focusOnMount
+              input={input}
               label={label}
               module={module}
-              name={name}
-              onBlur={this.handleOnBlur}
               parameterKey={parameterKey}
               type={type}
             />
@@ -111,4 +92,4 @@ class Remarks extends Component {
 
 Remarks.propTypes = propTypes
 Remarks.defaultProps = defaultProps
-export default connect(mapStateToProps)(Remarks)
+export default Remarks

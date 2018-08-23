@@ -6,26 +6,20 @@ import { action } from '@storybook/addon-actions' // eslint-disable-line
 import { storiesOf } from '@storybook/react' // eslint-disable-line
 
 import { reduxForm } from 'redux-form'
+import { Field } from 'coreModules/form/components'
 import Remarks from './index'
 
 export const actions = {
   onRemarks: action('onClick', 'Add remarks'),
 }
 
-export const remarks = 'Some added remarks'
-export const moduleName = 'collectionMammals'
-export const parameterKey = 'collectionItems.remarks'
-export const fieldName = 'remarks'
-export const someField = 'someField'
+const parameterKey = 'collectionItems.remarks'
+const fieldName = 'remarks'
+const someField = 'someField'
 
-const initialState = {
-  form: {
-    remarksForm: {
-      values: {
-        remarks,
-      },
-    },
-  },
+const input = {
+  name: 'remarks',
+  value: 'Some added remarks',
 }
 
 const Parent = ({ children }) => {
@@ -39,12 +33,13 @@ Parent.propTypes = {
 const FormWrapper = reduxForm({ form: 'remarksForm' })(Parent)
 
 storiesOf('coreModules/form/Fields/Remarks', module)
-  .addDecorator(createStoryDecorator({ initialState }))
+  .addDecorator(createStoryDecorator({}))
   .add('default', () => (
     <FormWrapper>
-      <Remarks
-        formName="remarksForm"
-        module={moduleName}
+      <Field
+        autoComplete="off"
+        component={Remarks}
+        module="collectionMammals"
         name={someField}
         parameterKey={parameterKey}
       />
@@ -52,9 +47,11 @@ storiesOf('coreModules/form/Fields/Remarks', module)
   ))
   .add('existingRemark', () => (
     <FormWrapper>
-      <Remarks
-        formName="remarksForm"
-        module={moduleName}
+      <Field
+        autoComplete="off"
+        component={Remarks}
+        input={input}
+        module="collectionMammals"
         name={fieldName}
         parameterKey={parameterKey}
       />
@@ -62,9 +59,10 @@ storiesOf('coreModules/form/Fields/Remarks', module)
   ))
   .add('noRemark', () => (
     <FormWrapper>
-      <Remarks
-        formName="remarksForm"
-        module={moduleName}
+      <Field
+        autoComplete="off"
+        component={Remarks}
+        module="collectionMammals"
         name={someField}
         parameterKey={parameterKey}
       />
@@ -72,9 +70,10 @@ storiesOf('coreModules/form/Fields/Remarks', module)
   ))
   .add('addRemark', () => (
     <FormWrapper>
-      <Remarks
-        formName="remarksForm"
-        module={moduleName}
+      <Field
+        autoComplete="off"
+        component={Remarks}
+        module="collectionMammals"
         name={someField}
         parameterKey={parameterKey}
       />
@@ -82,9 +81,11 @@ storiesOf('coreModules/form/Fields/Remarks', module)
   ))
   .add('editRemark', () => (
     <FormWrapper>
-      <Remarks
-        formName="remarksForm"
-        module={moduleName}
+      <Field
+        autoComplete="off"
+        component={Remarks}
+        input={input}
+        module="collectionMammals"
         name={fieldName}
         parameterKey={parameterKey}
       />
@@ -92,10 +93,12 @@ storiesOf('coreModules/form/Fields/Remarks', module)
   ))
   .add('editRemark without help symbol', () => (
     <FormWrapper>
-      <Remarks
+      <Field
+        autoComplete="off"
+        component={Remarks}
         enableHelpNotifications={false}
-        formName="remarksForm"
-        module={moduleName}
+        input={input}
+        module="collectionMammals"
         name={fieldName}
         parameterKey={parameterKey}
       />
@@ -103,12 +106,15 @@ storiesOf('coreModules/form/Fields/Remarks', module)
   ))
   .add('remarks custom label', () => (
     <FormWrapper>
-      <Remarks
+      <Field
+        autoComplete="off"
+        component={Remarks}
         enableHelpNotifications={false}
-        formName="remarksForm"
+        input={input}
         label="The label text"
-        module={moduleName}
+        module="collectionMammals"
         name={fieldName}
+        parameterKey={parameterKey}
       />
     </FormWrapper>
   ))
