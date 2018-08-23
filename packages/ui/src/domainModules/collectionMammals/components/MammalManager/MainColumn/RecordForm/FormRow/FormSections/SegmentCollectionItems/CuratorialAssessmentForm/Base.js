@@ -10,6 +10,7 @@ import {
   formatBooleanRadio,
   parseBooleanRadio,
 } from 'coreModules/form/utilities'
+import Remarks from 'coreModules/form/components/fields/Remarks'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
@@ -100,9 +101,8 @@ export class BaseForm extends PureComponent {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column computer={16} mobile={16} tablet={8}>
-              <Field
-                autoComplete="off"
-                component={Input}
+              <Remarks
+                formValueSelector={formValueSelector}
                 module="collectionMammals"
                 name="inventoryStatusRemarks"
                 parameterKey="curatorialAssessment.inventoryStatusRemarks"
@@ -122,9 +122,8 @@ export class BaseForm extends PureComponent {
               />
             </Grid.Column>
             <Grid.Column computer={8} mobile={16} tablet={8}>
-              <Field
-                autoComplete="off"
-                component={Input}
+              <Remarks
+                formValueSelector={formValueSelector}
                 module="collectionMammals"
                 name="conditionRemarks"
                 parameterKey="curatorialAssessment.conditionRemarks"
