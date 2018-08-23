@@ -25,13 +25,12 @@ const mapStateToProps = state => {
 
 const propTypes = {
   causeOfDeathTypeOptions: PropTypes.array.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
 }
 
 class DeathInformation extends PureComponent {
   render() {
-    const { causeOfDeathTypeOptions, formValueSelector, getPath } = this.props
+    const { causeOfDeathTypeOptions, getPath } = this.props
     log.render()
     return (
       <React.Fragment>
@@ -49,7 +48,6 @@ class DeathInformation extends PureComponent {
           </Grid.Column>
           <Grid.Column computer={8} mobile={16}>
             <Remarks
-              formValueSelector={formValueSelector}
               module="collectionMammals"
               name={getPath('remarks')}
             />

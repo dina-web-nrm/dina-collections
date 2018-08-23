@@ -15,7 +15,6 @@ const mapStateToProps = state => {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   fieldName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   userName: PropTypes.string,
 }
@@ -28,7 +27,6 @@ export class CreateCuratorialAssessment extends PureComponent {
     const {
       changeFieldValue,
       fieldName,
-      formValueSelector,
       onClose: handleClose,
       userName,
       ...rest
@@ -40,7 +38,6 @@ export class CreateCuratorialAssessment extends PureComponent {
       <BaseForm
         displayBackButton
         displayResetButton
-        formValueSelector={formValueSelector}
         initialValues={{
           agentText: userName || undefined,
           date: {

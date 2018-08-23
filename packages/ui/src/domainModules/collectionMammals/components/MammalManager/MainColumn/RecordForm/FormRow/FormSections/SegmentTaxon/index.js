@@ -106,7 +106,6 @@ const SegmentDeterminations = ({
         <Grid.Row>
           <Grid.Column computer={5} mobile={16} tablet={8}>
             <Remarks
-              formValueSelector={formValueSelector}
               module="collectionMammals"
               name={getPath('individual.taxonInformation.taxonRemarks')}
             />

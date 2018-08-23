@@ -39,7 +39,6 @@ const mapStateToProps = state => {
 const propTypes = {
   allPlacesFetched: PropTypes.bool.isRequired,
   establishmentMeansTypeOptions: PropTypes.array.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
 }
 
@@ -48,7 +47,6 @@ class SegmentCollectingInformation extends PureComponent {
     const {
       allPlacesFetched,
       establishmentMeansTypeOptions,
-      formValueSelector,
       getPath,
     } = this.props
 
@@ -59,9 +57,7 @@ class SegmentCollectingInformation extends PureComponent {
           <ModuleTranslate capitalize textKey="headers.collectingInformation" />
         </Header>
         <Grid textAlign="left" verticalAlign="top">
-          {allPlacesFetched && (
-            <LocationInformationFields formValueSelector={formValueSelector} />
-          )}
+          {allPlacesFetched && <LocationInformationFields />}
 
           <Grid.Column computer={6} mobile={16}>
             <Field

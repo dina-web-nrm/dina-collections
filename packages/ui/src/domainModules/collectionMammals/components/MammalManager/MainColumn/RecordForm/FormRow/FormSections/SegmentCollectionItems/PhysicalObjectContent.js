@@ -30,7 +30,6 @@ const mapStateToProps = (state, { preparationType, category }) => {
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.array,
-  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   preparationTypeOptions: PropTypes.array,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -43,7 +42,6 @@ const defaultProps = {
 function PhysicalObjectContent({
   changeFieldValue,
   curatorialAssessments,
-  formValueSelector,
   preparationTypeOptions,
   getPath,
   removeArrayFieldByIndex,
@@ -98,7 +96,6 @@ function PhysicalObjectContent({
           <CuratorialAssessmentsList
             changeFieldValue={changeFieldValue}
             curatorialAssessments={curatorialAssessments}
-            formValueSelector={formValueSelector}
             removeArrayFieldByIndex={removeArrayFieldByIndex}
           />
         </Grid.Column>

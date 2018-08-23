@@ -146,7 +146,6 @@ class DeterminationContent extends Component {
         </Grid.Column>
         <Grid.Column computer={8} mobile={16} tablet={8}>
           <Remarks
-            formValueSelector={formValueSelector}
             module="collectionMammals"
             name={getPath('remarks')}
           />

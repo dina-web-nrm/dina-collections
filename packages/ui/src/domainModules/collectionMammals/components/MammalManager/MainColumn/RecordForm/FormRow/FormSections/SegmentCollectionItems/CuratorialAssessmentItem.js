@@ -23,7 +23,6 @@ const propTypes = {
   condition: PropTypes.string,
   conditionRemarks: PropTypes.string,
   date: PropTypes.object,
-  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   inventoryStatusRemarks: PropTypes.string,
   isInStorage: PropTypes.bool,
@@ -66,7 +65,6 @@ class CuratorialAssessmentItem extends PureComponent {
       condition,
       conditionRemarks,
       changeFieldValue,
-      formValueSelector,
       getPath,
       inventoryStatusRemarks,
       isInStorage,
@@ -128,7 +126,6 @@ class CuratorialAssessmentItem extends PureComponent {
                   conditionRemarks={conditionRemarks}
                   date={date}
                   fieldName={getPath()}
-                  formValueSelector={formValueSelector}
                   inventoryStatusRemarks={inventoryStatusRemarks}
                   isInStorage={isInStorage}
                   onClose={this.handleClose}

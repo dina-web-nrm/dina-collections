@@ -19,7 +19,6 @@ const propTypes = {
   conditionRemarks: PropTypes.string,
   date: PropTypes.object,
   fieldName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
   inventoryStatusRemarks: PropTypes.string,
   isInStorage: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
@@ -47,7 +46,6 @@ export class EditCuratorialAssessment extends PureComponent {
       conditionRemarks,
       date,
       fieldName,
-      formValueSelector,
       inventoryStatusRemarks,
       isInStorage,
       onClose: handleClose,
@@ -60,7 +58,6 @@ export class EditCuratorialAssessment extends PureComponent {
         displayBackButton
         displayRemoveButton
         displayResetButton
-        formValueSelector={formValueSelector}
         initialValues={{
           agent,
           agentText,

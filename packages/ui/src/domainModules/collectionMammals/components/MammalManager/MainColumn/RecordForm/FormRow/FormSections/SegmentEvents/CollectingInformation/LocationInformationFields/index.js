@@ -13,11 +13,10 @@ import Position from './Position'
 import VerticalPosition from './VerticalPosition'
 
 const propTypes = {
-  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
 }
 
-function LocationInformationFields({ getPath, formValueSelector }) {
+function LocationInformationFields({ getPath }) {
   return (
     <Grid textAlign="left" verticalAlign="top">
       <Grid.Row>
@@ -47,7 +46,6 @@ function LocationInformationFields({ getPath, formValueSelector }) {
 
       <Grid.Column computer={8} mobile={16}>
         <Remarks
-          formValueSelector={formValueSelector}
           module="collectionMammals"
           name={getPath('remarks')}
         />

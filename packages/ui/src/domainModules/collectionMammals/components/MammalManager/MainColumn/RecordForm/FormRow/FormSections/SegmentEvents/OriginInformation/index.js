@@ -11,13 +11,12 @@ import Remarks from 'coreModules/form/components/fields/Remarks'
 const log = createLog('modules:collectionMammals:MammalForm:OriginInformation')
 
 const propTypes = {
-  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
 }
 
 class OriginInformation extends PureComponent {
   render() {
-    const { formValueSelector, getPath } = this.props
+    const { getPath } = this.props
     log.render()
     return (
       <React.Fragment>
@@ -64,7 +63,6 @@ class OriginInformation extends PureComponent {
           <Grid.Row>
             <Grid.Column computer={8} mobile={16}>
               <Remarks
-                formValueSelector={formValueSelector}
                 label="Origin remarks"
                 module="collectionMammals"
                 name={getPath('remarks')}

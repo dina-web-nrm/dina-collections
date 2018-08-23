@@ -24,7 +24,6 @@ const propTypes = {
   displayResetButton: PropTypes.bool,
   error: PropTypes.string,
   form: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   invalid: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -54,7 +53,6 @@ export class BaseForm extends PureComponent {
       displayResetButton,
       error,
       form,
-      formValueSelector,
       handleSubmit,
       invalid,
       onClose,
@@ -102,7 +100,6 @@ export class BaseForm extends PureComponent {
           <Grid.Row>
             <Grid.Column computer={16} mobile={16} tablet={8}>
               <Remarks
-                formValueSelector={formValueSelector}
                 module="collectionMammals"
                 name="inventoryStatusRemarks"
                 parameterKey="curatorialAssessment.inventoryStatusRemarks"
@@ -123,7 +120,6 @@ export class BaseForm extends PureComponent {
             </Grid.Column>
             <Grid.Column computer={8} mobile={16} tablet={8}>
               <Remarks
-                formValueSelector={formValueSelector}
                 module="collectionMammals"
                 name="conditionRemarks"
                 parameterKey="curatorialAssessment.conditionRemarks"
