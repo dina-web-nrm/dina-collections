@@ -41,6 +41,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   collectionItems: PropTypes.array,
   editMode: PropTypes.bool.isRequired,
+  formValueSelector: PropTypes.func.isRequired,
   getStorageLocations: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
@@ -56,6 +57,7 @@ class SegmentCollectionItems extends PureComponent {
       changeFieldValue,
       collectionItems,
       editMode,
+      formValueSelector,
       removeArrayFieldByIndex,
     } = this.props
     log.render()
@@ -82,6 +84,7 @@ class SegmentCollectionItems extends PureComponent {
                           props.preparationType.category
                         }
                         changeFieldValue={changeFieldValue}
+                        formValueSelector={formValueSelector}
                         preparationTypeId={
                           props.preparationType && props.preparationType.id
                         }

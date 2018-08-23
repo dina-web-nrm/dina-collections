@@ -15,6 +15,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   curatorialAssessments: PropTypes.arrayOf(PropTypes.object),
+  formValueSelector: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
@@ -45,6 +46,7 @@ class CuratorialAssessmentsList extends Component {
     const {
       changeFieldValue,
       curatorialAssessments,
+      formValueSelector,
       getPath,
       removeArrayFieldByIndex,
     } = this.props
@@ -62,6 +64,7 @@ class CuratorialAssessmentsList extends Component {
                 return (
                   <CuratorialAssessmentItem
                     changeFieldValue={changeFieldValue}
+                    formValueSelector={formValueSelector}
                     index={index} // needed for pathBuilder
                     key={index} // eslint-disable-line react/no-array-index-key
                     removeArrayFieldByIndex={removeArrayFieldByIndex}
@@ -99,6 +102,7 @@ class CuratorialAssessmentsList extends Component {
               <CreateCuratorialAssessment
                 changeFieldValue={changeFieldValue}
                 fieldName={`${getPath()}.${curatorialAssessments.length}`}
+                formValueSelector={formValueSelector}
                 onClose={this.handleClose}
               />
             </Modal.Description>
