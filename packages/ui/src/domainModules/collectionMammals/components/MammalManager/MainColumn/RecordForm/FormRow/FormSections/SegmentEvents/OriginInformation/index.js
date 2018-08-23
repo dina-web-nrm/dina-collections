@@ -62,7 +62,9 @@ class OriginInformation extends PureComponent {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column computer={8} mobile={16}>
-              <Remarks
+              <Field
+                autoComplete="off"
+                component={Remarks}
                 label="Origin remarks"
                 module="collectionMammals"
                 name={getPath('remarks')}

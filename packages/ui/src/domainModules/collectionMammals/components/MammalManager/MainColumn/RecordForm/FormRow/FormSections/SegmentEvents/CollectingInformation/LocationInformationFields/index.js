@@ -45,7 +45,9 @@ function LocationInformationFields({ getPath }) {
       <Position />
 
       <Grid.Column computer={8} mobile={16}>
-        <Remarks
+        <Field
+          autoComplete="off"
+          component={Remarks}
           module="collectionMammals"
           name={getPath('remarks')}
         />

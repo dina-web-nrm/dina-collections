@@ -47,7 +47,9 @@ class DeathInformation extends PureComponent {
             />
           </Grid.Column>
           <Grid.Column computer={8} mobile={16}>
-            <Remarks
+            <Field
+              autoComplete="off"
+              component={Remarks}
               module="collectionMammals"
               name={getPath('remarks')}
             />

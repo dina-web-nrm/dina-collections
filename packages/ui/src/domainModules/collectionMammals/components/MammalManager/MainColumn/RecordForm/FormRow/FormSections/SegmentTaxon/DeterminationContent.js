@@ -145,7 +145,10 @@ class DeterminationContent extends Component {
           />
         </Grid.Column>
         <Grid.Column computer={8} mobile={16} tablet={8}>
-          <Remarks
+          <Field
+            autoComplete="off"
+            component={Remarks}
+            label="Origin remarks"
             module="collectionMammals"
             name={getPath('remarks')}
           />

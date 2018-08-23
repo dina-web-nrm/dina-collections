@@ -99,7 +99,9 @@ export class BaseForm extends PureComponent {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column computer={16} mobile={16} tablet={8}>
-              <Remarks
+              <Field
+                autoComplete="off"
+                component={Remarks}
                 module="collectionMammals"
                 name="inventoryStatusRemarks"
                 parameterKey="curatorialAssessment.inventoryStatusRemarks"
@@ -119,7 +121,9 @@ export class BaseForm extends PureComponent {
               />
             </Grid.Column>
             <Grid.Column computer={8} mobile={16} tablet={8}>
-              <Remarks
+              <Field
+                autoComplete="off"
+                component={Remarks}
                 module="collectionMammals"
                 name="conditionRemarks"
                 parameterKey="curatorialAssessment.conditionRemarks"
