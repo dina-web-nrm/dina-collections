@@ -4,9 +4,8 @@ import { compose } from 'redux'
 import { Header, Grid } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
-import { Checkbox, Field, Input } from 'coreModules/form/components'
+import { Checkbox, Field, Input, Remarks } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import Remarks from 'coreModules/form/components/fields/Remarks'
 
 const log = createLog('modules:collectionMammals:MammalForm:OriginInformation')
 

@@ -9,13 +9,13 @@ import {
   ButtonCopyPasteField,
   Field,
   Input,
+  Remarks,
   SingleDate,
 } from 'coreModules/form/components'
 
 import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import Remarks from 'coreModules/form/components/fields/Remarks'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 

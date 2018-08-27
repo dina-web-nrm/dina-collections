@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { compose } from 'redux'
 
-import { CustomData, Field, Input } from 'coreModules/form/components'
+import { CustomData, Field, Input, Remarks } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
-import Remarks from 'coreModules/form/components/fields/Remarks'
 
 import Places from './Places'
 import Position from './Position'

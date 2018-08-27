@@ -5,12 +5,11 @@ import { reduxForm } from 'redux-form'
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import createLog from 'utilities/log'
-import { Field, Input, SingleDate } from 'coreModules/form/components'
+import { Field, Input, Remarks, SingleDate } from 'coreModules/form/components'
 import {
   formatBooleanRadio,
   parseBooleanRadio,
 } from 'coreModules/form/utilities'
-import Remarks from 'coreModules/form/components/fields/Remarks'
 import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
