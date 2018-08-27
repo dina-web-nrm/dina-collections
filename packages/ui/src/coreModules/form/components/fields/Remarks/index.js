@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import { Grid, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import { Input } from 'coreModules/form/components'
+
+import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponents'
+import Input from '../Input'
 
 const propTypes = {
   displayLabel: PropTypes.bool,
@@ -10,9 +12,11 @@ const propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
   }),
+  isLatestActiveField: PropTypes.bool.isRequired,
   label: PropTypes.string,
   module: PropTypes.string.isRequired,
   parameterKey: PropTypes.string,
+  setAsLatestActiveField: PropTypes.func.isRequired,
   type: PropTypes.string,
 }
 
@@ -26,58 +30,39 @@ const defaultProps = {
 }
 
 class Remarks extends PureComponent {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      isEdit: false,
-    }
-
-    this.handleAddOrEditRemark = this.handleAddOrEditRemark.bind(this)
-    this.handleOnBlur = this.handleOnBlur.bind(this)
-  }
-
-  handleAddOrEditRemark(event) {
-    event.preventDefault()
-    this.setState({
-      isEdit: true,
-    })
-  }
-
-  handleOnBlur(event) {
-    event.preventDefault()
-    this.setState({
-      isEdit: false,
-    })
-  }
-
   render() {
     const {
       displayLabel,
       enableHelpNotifications,
       input,
+      isLatestActiveField,
       label,
       module,
       parameterKey,
+      setAsLatestActiveField,
       type,
     } = this.props
 
-    const { isEdit } = this.state
     const { value } = input
 
     return (
       <Grid style={{ height: 50, paddingLeft: 11 }}>
-        <Grid.Row onClick={isEdit ? undefined : this.handleAddOrEditRemark}>
-          <div style={{ paddingTop: 6 }}>
+        <Grid.Column
+          onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
+          style={{ padding: 0 }}
+        >
+          <div style={{ float: 'left', paddingTop: 6 }}>
             <Icon
               name={value ? 'commenting outline' : 'comment outline'}
               size="large"
             />
           </div>
-          {isEdit && (
+          {isLatestActiveField && (
             <Input
               displayLabel={displayLabel}
               enableHelpNotifications={enableHelpNotifications}
+              fluid
+              focusOnMount
               input={input}
               label={label}
               module={module}
@@ -85,10 +70,10 @@ class Remarks extends PureComponent {
               type={type}
             />
           )}
-          {!isEdit && (
+          {!isLatestActiveField && (
             <div style={{ paddingTop: 8 }}>{value || 'Add remarks...'}</div>
           )}
-        </Grid.Row>
+        </Grid.Column>
       </Grid>
     )
   }
@@ -96,4 +81,5 @@ class Remarks extends PureComponent {
 
 Remarks.propTypes = propTypes
 Remarks.defaultProps = defaultProps
-export default Remarks
+
+export default injectIsLatestActiveField(Remarks)
