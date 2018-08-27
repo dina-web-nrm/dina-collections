@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Input } from 'coreModules/form/components'
 
 const propTypes = {
+  displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
   input: PropTypes.shape({
     name: PropTypes.string,
@@ -16,7 +17,8 @@ const propTypes = {
 }
 
 const defaultProps = {
-  enableHelpNotifications: true,
+  displayLabel: false,
+  enableHelpNotifications: false,
   input: undefined,
   label: undefined,
   parameterKey: undefined,
@@ -57,6 +59,7 @@ class Remarks extends Component {
 
   render() {
     const {
+      displayLabel,
       enableHelpNotifications,
       input,
       label,
@@ -75,6 +78,7 @@ class Remarks extends Component {
           </div>
           {isEdit && (
             <Input
+              displayLabel={displayLabel}
               enableHelpNotifications={enableHelpNotifications}
               input={input}
               label={label}
