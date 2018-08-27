@@ -732,12 +732,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks addRemark 1`] = `
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
@@ -788,12 +794,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks default 1`] = `
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
@@ -844,12 +856,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks editRemark 1`] = 
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
@@ -900,12 +918,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks editRemark withou
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
@@ -956,12 +980,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemark 1`
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
@@ -1012,12 +1042,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks noRemark 1`] = `
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
@@ -1068,12 +1104,18 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks remarks custom la
           }
         >
           <div
-            className="row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
+                  "float": "left",
                   "paddingTop": 6,
                 }
               }
