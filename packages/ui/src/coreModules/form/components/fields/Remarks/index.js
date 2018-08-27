@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Grid, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import { Input } from 'coreModules/form/components'
@@ -25,16 +25,12 @@ const defaultProps = {
   type: 'text',
 }
 
-class Remarks extends Component {
+class Remarks extends PureComponent {
   constructor(props) {
     super(props)
 
-    const { input } = props
-
     this.state = {
-      icon: input.value ? 'commenting outline' : 'comment outline',
       isEdit: false,
-      labelText: input.value || 'Add remarks...',
     }
 
     this.handleAddOrEditRemark = this.handleAddOrEditRemark.bind(this)
@@ -48,12 +44,10 @@ class Remarks extends Component {
     })
   }
 
-  handleOnBlur(event, value) {
+  handleOnBlur(event) {
     event.preventDefault()
     this.setState({
-      icon: value ? 'commenting outline' : 'comment outline',
       isEdit: false,
-      labelText: value || 'Add remarks...',
     })
   }
 
@@ -68,13 +62,17 @@ class Remarks extends Component {
       type,
     } = this.props
 
-    const { icon, isEdit, labelText } = this.state
+    const { isEdit } = this.state
+    const { value } = input
 
     return (
       <Grid style={{ height: 50, paddingLeft: 11 }}>
         <Grid.Row onClick={isEdit ? undefined : this.handleAddOrEditRemark}>
           <div style={{ paddingTop: 6 }}>
-            <Icon name={icon} size="large" />
+            <Icon
+              name={value ? 'commenting outline' : 'comment outline'}
+              size="large"
+            />
           </div>
           {isEdit && (
             <Input
@@ -87,7 +85,9 @@ class Remarks extends Component {
               type={type}
             />
           )}
-          <div style={{ paddingTop: 8 }}>{!isEdit && labelText}</div>
+          {!isEdit && (
+            <div style={{ paddingTop: 8 }}>{value || 'Add remarks...'}</div>
+          )}
         </Grid.Row>
       </Grid>
     )
