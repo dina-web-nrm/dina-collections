@@ -6,7 +6,12 @@ import { connect } from 'react-redux'
 import formSelectors from '../globalSelectors'
 
 const getIsLatestActiveField = (props, isLatestActiveField) => {
-  const { currentActiveFormField, isActiveNow } = props
+  const { currentActiveFormField, isActiveNow, isSubmitting } = props
+
+  if (isSubmitting) {
+    return false
+  }
+
   return (
     isActiveNow || (isLatestActiveField && currentActiveFormField === undefined)
   )
@@ -20,12 +25,14 @@ const mapStateToProps = (state, { meta }) => {
   return {
     currentActiveFormField: formSelectors.getFormActive(state, meta.form),
     isActiveNow: meta.active,
+    isSubmitting: meta.submitting,
   }
 }
 
 const propTypes = {
   currentActiveFormField: PropTypes.string,
   isActiveNow: PropTypes.bool.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
 }
 
 const defaultProps = {
@@ -45,6 +52,7 @@ export default function injectIsLatestActiveField(ComposedComponent) {
     componentWillReceiveProps(nextProps) {
       if (
         this.props.isActiveNow !== nextProps.isActiveNow ||
+        this.props.isSubmitting !== nextProps.isSubmitting ||
         this.props.currentActiveFormField !== nextProps.currentActiveFormField
       ) {
         this.setState({
