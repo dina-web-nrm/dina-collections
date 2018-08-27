@@ -1,3 +1,7 @@
+import injectIsLatestActiveField from './injectIsLatestActiveField'
 import pathBuilder from './pathBuilder'
 
-export { pathBuilder }
+export {
+  injectIsLatestActiveField,
+  pathBuilder,
+}
