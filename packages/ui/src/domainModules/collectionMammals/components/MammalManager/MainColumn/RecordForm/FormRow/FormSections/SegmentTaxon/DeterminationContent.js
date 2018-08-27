@@ -9,6 +9,7 @@ import {
   ButtonCopyPasteField,
   Field,
   Input,
+  Remarks,
   SingleDate,
 } from 'coreModules/form/components'
 
@@ -146,10 +147,10 @@ class DeterminationContent extends Component {
         <Grid.Column computer={8} mobile={16} tablet={8}>
           <Field
             autoComplete="off"
-            component={Input}
+            component={Remarks}
+            label="Origin remarks"
             module="collectionMammals"
             name={getPath('remarks')}
-            type="input-text"
           />
         </Grid.Column>
         <Grid.Column mobile={16}>

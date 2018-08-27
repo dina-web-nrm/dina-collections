@@ -1,92 +1,79 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { formValueSelector } from 'redux-form'
+import React, { PureComponent } from 'react'
 import { Grid, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import { Field, Input } from 'coreModules/form/components'
 
-const mapStateToProps = (state, { name, formName }) => {
-  const selector = formValueSelector(formName)
-  const value = selector(state, name)
-  return {
-    value,
-  }
-}
+import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponents'
+import Input from '../Input'
 
 const propTypes = {
+  displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
+  input: PropTypes.shape({
+    name: PropTypes.string,
+    value: PropTypes.string,
+  }),
+  isLatestActiveField: PropTypes.bool.isRequired,
+  label: PropTypes.string,
   module: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  parameterKey: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  parameterKey: PropTypes.string,
+  setAsLatestActiveField: PropTypes.func.isRequired,
+  type: PropTypes.string,
 }
 
 const defaultProps = {
-  enableHelpNotifications: true,
-  value: undefined,
+  displayLabel: false,
+  enableHelpNotifications: false,
+  input: undefined,
+  label: undefined,
+  parameterKey: undefined,
+  type: 'text',
 }
 
-class Remarks extends Component {
-  constructor(props) {
-    super(props)
-
-    const { value } = this.props
-
-    this.state = {
-      icon: value ? 'commenting outline' : 'comment outline',
-      isEdit: false,
-      labelText: value || 'Add remarks...',
-    }
-
-    this.handleAddOrEditRemark = this.handleAddOrEditRemark.bind(this)
-    this.handleOnBlur = this.handleOnBlur.bind(this)
-  }
-
-  handleAddOrEditRemark(event) {
-    event.preventDefault()
-    this.setState({
-      isEdit: true,
-    })
-  }
-
-  handleOnBlur(event, value) {
-    event.preventDefault()
-    this.setState({
-      icon: value ? 'commenting outline' : 'comment outline',
-      isEdit: false,
-      labelText: value || 'Add remarks...',
-    })
-  }
-
+class Remarks extends PureComponent {
   render() {
-    const { enableHelpNotifications, module, name, parameterKey } = this.props
+    const {
+      displayLabel,
+      enableHelpNotifications,
+      input,
+      isLatestActiveField,
+      label,
+      module,
+      parameterKey,
+      setAsLatestActiveField,
+      type,
+    } = this.props
 
-    const { icon, isEdit, labelText } = this.state
+    const { value } = input
 
     return (
-      <Grid padded style={{ height: 60 }} verticalAlign="middle">
-        <Grid.Row
-          onClick={!isEdit && this.handleAddOrEditRemark}
-          verticalAlign="middle"
+      <Grid style={{ height: 50, paddingLeft: 11 }}>
+        <Grid.Column
+          onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
+          style={{ padding: 0 }}
         >
-          <div style={{ paddingTop: 7 }}>
-            <Icon name={icon} size="large" />
+          <div style={{ float: 'left', paddingTop: 6 }}>
+            <Icon
+              name={value ? 'commenting outline' : 'comment outline'}
+              size="large"
+            />
           </div>
-          {isEdit && (
-            <Field
-              autoComplete="off"
-              component={Input}
+          {isLatestActiveField && (
+            <Input
+              displayLabel={displayLabel}
               enableHelpNotifications={enableHelpNotifications}
+              fluid
               focusOnMount
+              input={input}
+              label={label}
               module={module}
-              name={name}
-              onBlur={this.handleOnBlur}
               parameterKey={parameterKey}
-              type="text"
+              type={type}
             />
           )}
-          <div style={{ paddingTop: 8 }}>{!isEdit && labelText}</div>
-        </Grid.Row>
+          {!isLatestActiveField && (
+            <div style={{ paddingTop: 8 }}>{value || 'Add remarks...'}</div>
+          )}
+        </Grid.Column>
       </Grid>
     )
   }
@@ -94,4 +81,5 @@ class Remarks extends Component {
 
 Remarks.propTypes = propTypes
 Remarks.defaultProps = defaultProps
-export default connect(mapStateToProps)(Remarks)
+
+export default injectIsLatestActiveField(Remarks)

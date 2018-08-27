@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 import { compose } from 'redux'
 
-import { CustomData, Field, Input } from 'coreModules/form/components'
+import { CustomData, Field, Input, Remarks } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 
@@ -46,12 +46,12 @@ function LocationInformationFields({ getPath }) {
       <Grid.Column computer={8} mobile={16}>
         <Field
           autoComplete="off"
-          component={Input}
+          component={Remarks}
           module="collectionMammals"
           name={getPath('remarks')}
-          type="text"
         />
       </Grid.Column>
+
       <Grid.Row>
         <Grid.Column computer={6} mobile={16} tablet={8}>
           <Field

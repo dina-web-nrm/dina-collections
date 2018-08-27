@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { Header, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import createLog from 'utilities/log'
-import { DropdownSearch, Field, Input } from 'coreModules/form/components'
+import { DropdownSearch, Field, Remarks } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
@@ -45,14 +45,12 @@ class DeathInformation extends PureComponent {
               type="dropdown-search-local"
             />
           </Grid.Column>
-
-          <Grid.Column computer={6} mobile={16}>
+          <Grid.Column computer={8} mobile={16}>
             <Field
               autoComplete="off"
-              component={Input}
+              component={Remarks}
               module="collectionMammals"
               name={getPath('remarks')}
-              type="text"
             />
           </Grid.Column>
         </Grid>

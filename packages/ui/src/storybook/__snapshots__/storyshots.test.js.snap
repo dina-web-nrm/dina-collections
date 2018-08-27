@@ -723,21 +723,28 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks addRemark 1`] = `
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "float": "left",
+                  "paddingTop": 6,
                 }
               }
             >
@@ -778,21 +785,28 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks default 1`] = `
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "float": "left",
+                  "paddingTop": 6,
                 }
               }
             >
@@ -833,21 +847,28 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks editRemark 1`] = 
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "float": "left",
+                  "paddingTop": 6,
                 }
               }
             >
@@ -888,21 +909,28 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks editRemark withou
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "float": "left",
+                  "paddingTop": 6,
                 }
               }
             >
@@ -943,21 +971,28 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemark 1`
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "float": "left",
+                  "paddingTop": 6,
                 }
               }
             >
@@ -998,21 +1033,28 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks noRemark 1`] = `
     >
       <form>
         <div
-          className="ui padded middle aligned grid"
+          className="ui grid"
           style={
             Object {
-              "height": 60,
+              "height": 50,
+              "paddingLeft": 11,
             }
           }
         >
           <div
-            className="middle aligned row"
+            className="column"
             onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
           >
             <div
               style={
                 Object {
-                  "paddingTop": 7,
+                  "float": "left",
+                  "paddingTop": 6,
                 }
               }
             >
@@ -1029,6 +1071,68 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks noRemark 1`] = `
               }
             >
               Add remarks...
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks remarks custom label 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui grid"
+          style={
+            Object {
+              "height": 50,
+              "paddingLeft": 11,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="commenting outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Some added remarks
             </div>
           </div>
         </div>
