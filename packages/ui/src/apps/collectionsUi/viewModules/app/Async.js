@@ -3,7 +3,7 @@ import { MODULE_NAME } from './constants'
 
 export default createAsyncView({
   modules: () => {
-    return [import('coreModules/crud')]
+    return [import('coreModules/crud'), import('coreModules/resourceManager')]
   },
   name: MODULE_NAME,
   view: () => {
