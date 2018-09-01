@@ -3,14 +3,15 @@ module.exports = {
   inputSchema: {
     type: 'string',
   },
-  key: 'search',
+  key: 'nameSearch',
   sequelizeFilterFunction: ({ value, Op }) => {
     if (value === undefined) {
       return null
     }
+
     return {
       'document.name': {
-        [Op.like]: `%${value.toLowerCase()}%`,
+        [Op.iLike]: `%${value.toLowerCase()}%`,
       },
     }
   },
