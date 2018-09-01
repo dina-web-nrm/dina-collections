@@ -1,6 +1,7 @@
 const now = require('performance-now')
 
 const startTime = now()
+const initializeStatistics = require('../statistics')
 const openApiSpec = require('common/dist/openApi.json')
 const {
   getResourceRelationshipParamsMap,
@@ -23,6 +24,8 @@ const log = createLog('server')
 log.info(`Dependencies required after: ${now() - startTime} milliseconds`)
 
 const resourceRelationshipParamsMap = getResourceRelationshipParamsMap()
+
+initializeStatistics()
 
 module.exports = function bootstrap({
   config,
