@@ -1,3 +1,32 @@
-* scope resources in common search
-* improve performance of merging state
-* return search result array and not object
+* Add picker context
+* When focusing on a child node
+** Move rebuilding tree to top level
+** set param. focusIdWhenExpanded
+** if id fetched when rebuilding tree. set to false and focus.
+
+
+1.
+2. implement get ancestors (controller)
+3. 
+
+
+
+
+Later
+* Make picker start with selected item
+* rewrite all uses of dispath with common actionCreators
+* Fix forms
+
+
+* Make tree display selected row when coming from list
+** when mounting tree
+*** if focusedItemId
+**** fetch item with ancestors (use parent.parent.parent.parent.parent.parent.parent :))
+**** set expanded to {}
+**** set all parents as expanded
+
+
+
+
+
+
