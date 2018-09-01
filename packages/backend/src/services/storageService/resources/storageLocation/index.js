@@ -41,6 +41,11 @@ module.exports = {
       type: 'getMany',
     },
     {
+      filterSpecification: getManyFilterSpecificationMap,
+      selectableFields: ['id', 'attributes.name', 'attributes.group'],
+      type: 'query',
+    },
+    {
       type: 'update',
     },
     {

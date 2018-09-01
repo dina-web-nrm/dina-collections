@@ -1,5 +1,14 @@
 const createGetManyFilterSpecifications = require('../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
 module.exports = createGetManyFilterSpecifications({
-  include: ['ids', 'updatedAfter', 'nameSearch', 'parentId', 'group', 'name'],
+  include: [
+    'ancestorsToId',
+    'group',
+    'id',
+    'ids',
+    'name',
+    'nameSearch',
+    'parentId',
+    'updatedAfter',
+  ],
 })

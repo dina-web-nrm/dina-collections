@@ -38,7 +38,13 @@ module.exports = {
     {
       filterSpecification: getManyFilterSpecificationMap,
       includeRelations: true,
+      selectableFields: ['id', 'attributes.name', 'attributes.group'],
       type: 'getMany',
+    },
+    {
+      filterSpecification: getManyFilterSpecificationMap,
+      selectableFields: ['id', 'attributes.name', 'attributes.group'],
+      type: 'query',
     },
     {
       type: 'update',

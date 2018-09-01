@@ -5,6 +5,11 @@ const {
 const buildOperationId = require('common/src/buildOperationId')
 const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
 
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
+
 module.exports = {
   basePath: '/api/taxonomy/v01',
   model: {
@@ -22,8 +27,14 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
+    },
+    {
+      filterSpecification: queryFilterSpecification,
+      selectableFields: ['id'],
+      type: 'query',
     },
     {
       type: 'update',
