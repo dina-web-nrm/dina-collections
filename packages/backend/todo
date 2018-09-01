@@ -5,6 +5,13 @@
 Fixup search
 * Throw sane error when aggregation or filterFunction is missing
 
+* Evaluate circular dependencies in tree data
+* Fix validation in controller level
+* Fix documentation for query
+* Implement sorting for query vs sql
+* Add validation for fieldnames in query
+* Add sorting for sql
+* Evaluate memory comsumptions doing request. can less spread be used
 
 
 Migrations
