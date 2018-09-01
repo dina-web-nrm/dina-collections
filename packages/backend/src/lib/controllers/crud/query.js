@@ -1,6 +1,10 @@
 const createArrayResponse = require('../utilities/transformations/createArrayResponse')
 
-module.exports = function queryController({ operation, models }) {
+module.exports = function queryController({
+  operation,
+  models,
+  serviceInteractor,
+}) {
   const {
     aggregationSpecification,
     filterSpecification,
@@ -53,6 +57,7 @@ module.exports = function queryController({ operation, models }) {
         scroll,
         scrollId,
         selectableFields,
+        serviceInteractor,
         sortableFields,
       })
       .then(({ items, meta }) => {
