@@ -18,6 +18,10 @@ const config = {
           operationId: 'agentUpdate',
           type: 'update',
         },
+        {
+          operationId: 'agentQuery',
+          type: 'query',
+        },
       ],
     },
     causeOfDeathType: {
@@ -136,6 +140,10 @@ const config = {
           operationId: 'placeUpdate',
           type: 'update',
         },
+        {
+          operationId: 'placeQuery',
+          type: 'query',
+        },
       ],
     },
 
@@ -220,6 +228,10 @@ const config = {
           operationId: 'storageLocationUpdate',
           type: 'update',
         },
+        {
+          operationId: 'storageLocationQuery',
+          type: 'query',
+        },
       ],
     },
     taxon: {
@@ -240,6 +252,10 @@ const config = {
           operationId: 'taxonUpdate',
           type: 'update',
         },
+        {
+          operationId: 'taxonQuery',
+          type: 'query',
+        },
       ],
     },
     taxonName: {
@@ -259,6 +275,10 @@ const config = {
         {
           operationId: 'taxonNameUpdate',
           type: 'update',
+        },
+        {
+          operationId: 'taxonNameQuery',
+          type: 'query',
         },
       ],
     },

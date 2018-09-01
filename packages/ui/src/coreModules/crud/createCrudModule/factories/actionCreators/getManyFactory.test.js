@@ -145,6 +145,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
               offset: 0,
             },
             removeFromState: false,
+            storeInState: true,
           },
           payload: [
             {
@@ -195,6 +196,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getManyFact
               relationships: ['parent'],
             },
             removeFromState: false,
+            storeInState: true,
           },
           payload: [
             {

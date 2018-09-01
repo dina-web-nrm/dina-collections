@@ -42,6 +42,7 @@ export default function getManyAcFactory(
       queryParams: queryParamsInput = {},
       relationships,
       removeFromState = false,
+      storeInState = true,
       throwError = false,
     } = {}
   ) {
@@ -130,7 +131,12 @@ export default function getManyAcFactory(
             })
           }
           dispatch({
-            meta: { ...lastBatchCallParams, isLastBatch, removeFromState },
+            meta: {
+              ...lastBatchCallParams,
+              isLastBatch,
+              removeFromState,
+              storeInState,
+            },
             payload: items,
             type: operationActionTypes.success,
           })

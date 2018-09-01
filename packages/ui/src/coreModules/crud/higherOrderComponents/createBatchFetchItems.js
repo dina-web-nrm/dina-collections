@@ -2,40 +2,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { compose } from 'redux'
+import extractProps from 'utilities/extractProps'
 import actionCreators from '../actionCreators'
 
-const createBatchFetchItems = ({
-  fetchInterval = 1000,
-  maxBatchSize = 200,
-  maxNumberOfBatches = 2,
-  include,
-  relationships,
-  resource,
-  refetch = false,
-}) => ComposedComponent => {
-  /* eslint-disable no-console */
-  if (!resource) {
-    console.error(`Missing resource`)
-  }
-
-  const getManyActionCreator =
-    actionCreators[resource] && actionCreators[resource].getMany
-
-  if (!getManyActionCreator) {
-    console.error(`Missing actionCreator getMany for resource ${resource}`)
-  }
-  /* eslint-enable no-console */
-
-  const mapDispathToProps = {
-    getMany: getManyActionCreator,
-  }
+const createBatchFetchItems = (hocInput = {}) => ComposedComponent => {
+  const {
+    fetchInterval = 1000,
+    maxBatchSize = 200,
+    maxNumberOfBatches = 2,
+    // include, Possible to inject
+    // relationships, Possible to inject
+    // resource, Possible to inject
+    refetch = false,
+  } = hocInput
 
   const propTypes = {
-    getMany: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    include: PropTypes.array,
+    relationships: PropTypes.array,
+    resource: PropTypes.string,
   }
 
-  const defaultProps = {}
+  const defaultProps = {
+    include: undefined,
+    relationships: undefined,
+    resource: undefined,
+  }
 
   class BatchFetchItems extends Component {
     constructor(props) {
@@ -53,16 +45,41 @@ const createBatchFetchItems = ({
     }
 
     componentDidMount() {
+      const { dispatch } = this.props
+
+      const {
+        extractedProps: { include, relationships, resource },
+      } = extractProps({
+        defaults: hocInput,
+        keys: ['include', 'relationships', 'resource'],
+        props: this.props,
+      })
+
+      /* eslint-disable no-console */
+      if (!resource) {
+        console.error(`Missing resource`)
+      }
+
+      const getManyActionCreator =
+        actionCreators[resource] && actionCreators[resource].getMany
+
+      if (!getManyActionCreator) {
+        console.error(`Missing getManyActionCreator for resource ${resource}`)
+      }
+      /* eslint-enable no-console */
+
       setInterval(() => {
         if (this.batches.length && this.batches[0].length) {
           const batchesToFetch = this.batches
           this.batches = [[]]
           const promises = batchesToFetch.map(batch => {
-            return this.props.getMany({
-              ids: batch,
-              include,
-              relationships,
-            })
+            return dispatch(
+              getManyActionCreator({
+                ids: batch,
+                include,
+                relationships,
+              })
+            )
           })
           Promise.all(promises).then(() => {
             // If taking central state into consideration then flush registeredIds
@@ -122,7 +139,7 @@ const createBatchFetchItems = ({
   BatchFetchItems.propTypes = propTypes
   BatchFetchItems.defaultProps = defaultProps
 
-  return compose(connect(null, mapDispathToProps))(BatchFetchItems)
+  return connect(null)(BatchFetchItems)
 }
 
 export default createBatchFetchItems

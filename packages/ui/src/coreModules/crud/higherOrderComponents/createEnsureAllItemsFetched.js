@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+
 import config from 'config'
 import actionCreators from '../actionCreators'
 import {
@@ -10,12 +11,9 @@ import {
   globalSelectors as keyObjectGlobalSelectors,
 } from '../keyObjectModule'
 
-const createEnsureAllItemsFetched = ({
-  allFetchedKey,
-  include = [],
-  relationships,
-  resource,
-}) => ComposedComponent => {
+const createEnsureAllItemsFetched = (hocInput = {}) => ComposedComponent => {
+  const { allFetchedKey, include = [], relationships, resource } = hocInput
+
   /* eslint-disable no-console */
   if (!resource) {
     console.error(`Missing resource`)

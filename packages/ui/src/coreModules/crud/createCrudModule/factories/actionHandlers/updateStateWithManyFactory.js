@@ -24,7 +24,10 @@ export default function updateStateWithManyFactory(
       action
     )
 
-    const { removeFromState } = action.meta || {}
+    const { removeFromState, storeInState = true } = action.meta || {}
+    if (!storeInState) {
+      return state
+    }
 
     if (removeFromState) {
       const updatedItems = {
