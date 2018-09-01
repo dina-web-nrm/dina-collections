@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import Header from './Header'
 import Content from './Content'
 
@@ -11,11 +11,7 @@ const propTypes = {
 const defaultProps = {}
 
 const Block = ({ children }) => {
-  return (
-    <Segment size="tiny" style={{ minHeight: 505 }}>
-      {children}
-    </Segment>
-  )
+  return <Grid>{children}</Grid>
 }
 
 Block.propTypes = propTypes

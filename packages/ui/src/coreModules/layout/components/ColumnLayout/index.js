@@ -4,22 +4,30 @@ import PropTypes from 'prop-types'
 const propTypes = {
   columns: PropTypes.arrayOf(
     PropTypes.shape({
-      renderColumn: PropTypes.func.isRequired,
+      key: PropTypes.string.isRequired,
+      renderColumn: PropTypes.func,
       width: PropTypes.string,
     }).isRequired
   ),
+  renderColumn: PropTypes.func,
   wrapperClassNames: PropTypes.string,
   wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
   columns: undefined,
+  renderColumn: undefined,
   wrapperClassNames: undefined,
   wrapperStyle: undefined,
 }
 
 class ColumnLayout extends PureComponent {
   render() {
-    const { columns, wrapperClassNames, wrapperStyle } = this.props
+    const {
+      columns,
+      renderColumn,
+      wrapperClassNames,
+      wrapperStyle,
+    } = this.props
 
     if (!columns || !columns.length) {
       return null
@@ -54,7 +62,14 @@ class ColumnLayout extends PureComponent {
                     }
               }
             >
-              {columnProps.renderColumn({ ...this.props, ...columnProps })}
+              {!columnProps.renderColumn &&
+                renderColumn &&
+                renderColumn(columnProps.key, {
+                  ...this.props,
+                  ...columnProps,
+                })}
+              {columnProps.renderColumn &&
+                columnProps.renderColumn({ ...this.props, ...columnProps })}
             </div>
           )
         })}
