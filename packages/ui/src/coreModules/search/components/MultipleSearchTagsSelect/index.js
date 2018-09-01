@@ -305,6 +305,5 @@ export const MultipleSearchTagsSelect = withI18n({ module: 'search' })(
 )
 
 export default createInjectSearch({
-  searchOnMount: false,
   storeSearchResult: false,
 })(MultipleSearchTagsSelect)

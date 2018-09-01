@@ -238,7 +238,6 @@ MultipleChoiceCheckboxes.defaultProps = defaultProps
 export default compose(
   wrapInFieldTemplate,
   createInjectSearch({
-    searchOnMount: false,
     storeSearchResult: false,
   }),
   connect(mapStateToProps)
