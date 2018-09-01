@@ -1,56 +1,80 @@
-* Look through missing lookups and compile questions
-* find validation errors
-* Transform identifier to same format as everything else (with lookup). Possible to simplifyLookup?
-
-Fixup search
-* Throw sane error when aggregation or filterFunction is missing
-
-* Evaluate circular dependencies in tree data
-* Fix validation in controller level
-* Fix documentation for query
-* Implement sorting for query vs sql
-* Add validation for fieldnames in query
-* Add sorting for sql
-* Evaluate memory comsumptions doing request. can less spread be used
+Order:
+  0. Configure stage server (ingimar?)
+  1. Verify functionality
+  2. Services
+  3. Delete resources
 
 
-Migrations
-* Go through and ensure all data is migrated
 
-Search
-* Go through and ensure all search functionality is in place
+FRONTEND
+* rewrite all uses of dispath with common actionCreators
+* Fix forms
+* Handle errors when requests made from components
 
-Result
-* Go through and ensure all search results are ok
-
-Documentation
-* Create description and schema for query endpoint
-
-Verify functionality
-* Ensure request rebuild search is working
-* Ensure incremental indexing of search specimen is working with workers
-
-Connecticity
-* Ensure its possible to connect to server postgrest on local network
-
-Controllers
-* Write tests and add wrappers to controllers
-
-Authentification
-* Are roles needed?
-* Should routes like rebuild view be protected. Using system user?
-
-Infrastructure
-* Setup sane travis docker / deploy flow. Automatic deploys to stage.
-* Create endpoint to display 
-* Determine how to handle migrations of datamodel (might include centralized datamodel version) and automatic migrations
-
-Simplify models (the schema) for cache and lookup
-
-Cleanup date functions
-* introduce format and parse terminology to date helpers. Discuss with Fredrik
-* Migrate dates as timestamp and ymd (use this in search)
+BACKEND
+  Features
+    Migrations
+      * Go through and ensure all data is migrated
+      * Look through missing lookups and compile questions
+      * find validation errors
+      * Transform identifier to same format as everything else (with lookup). Possible to simplifyLookup?
 
 
-Logs
-* Navigate around logs
+    Search
+      * Go through and ensure all search functionality is in place
+
+    Result
+      * Go through and ensure all search results are ok
+
+  Platform
+    General
+      * Evaluate circular dependencies in tree data
+
+    Services
+      * Ensure same format with data folders for all services
+
+    Verify functionality
+      * Ensure request rebuild search is working
+      * Ensure incremental indexing of search specimen is working with workers
+      * Ensure api tests are working
+
+    Controllers
+      * Create description and schema for query endpoint
+      * Write tests and potentially add wrappers to controllers
+      * Fix validation in controller level
+      * Add validation for fieldnames in query
+      * Throw sane error when aggregation or filterFunction is missing
+      * Ensure validation for interserver communication (opt out)
+
+    Models
+      * Implement sorting for query in sql
+      * Simplify models (the schema) for cache and lookup
+
+    Authentification
+      * Are roles needed?
+      * Should routes like rebuild view be protected. Using system user?
+
+    Migrations
+      * Determine how to handle migrations of datamodel (might include centralized datamodel version) and automatic migrations
+
+    Delete resources
+      * Implement sane flow for deleting resources
+
+    Schema
+      * Ensure system wide schema access only through interface
+      * Compile frontendversion with only stuff frontend need. Dont use frontend api client validation
+      * Separate relationships as separate model (for reuse)
+      * Dont create specific errors for each endpoint
+
+
+
+  Infrastructure
+    Configure stage server
+      * Ensure its possible to connect to server postgrest on local network
+
+    Performance
+      * Evaluate memory comsumptions doing request. can less spread be used?
+
+    Deploy
+      * Setup sane travis docker / deploy flow. Automatic deploys to stage.
+
