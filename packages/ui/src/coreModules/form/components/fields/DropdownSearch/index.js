@@ -4,6 +4,7 @@ import { Button } from 'semantic-ui-react'
 import extractProps from 'utilities/extractProps'
 import DropdownSearchConnectInput from '../../inputs/DropdownSearch/Connect'
 import DropdownSearchLocalInput from '../../inputs/DropdownSearch/Local'
+import DropdownSearchResource from '../../inputs/DropdownSearch/Resource'
 
 import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 
@@ -13,6 +14,7 @@ const propTypes = {
     value: PropTypes.string,
   }).isRequired,
   leftButton: PropTypes.node,
+  meta: PropTypes.object.isRequired,
   rightButton: PropTypes.node,
   type: PropTypes.string.isRequired,
 }
@@ -24,7 +26,7 @@ const defaultProps = {
 
 function Select(props) {
   let Component
-  const { type, leftButton, rightButton, input } = props
+  const { input, leftButton, meta, rightButton, type } = props
 
   switch (type) {
     case 'dropdown-search-connect': {
@@ -33,6 +35,11 @@ function Select(props) {
     }
     case 'dropdown-search-local': {
       Component = DropdownSearchLocalInput
+      break
+    }
+
+    case 'dropdown-search-resource': {
+      Component = DropdownSearchResource
       break
     }
     default: {
@@ -56,12 +63,13 @@ function Select(props) {
             displayAsButton={displayAsButton}
             {...rest}
             input={input}
+            meta={meta}
           />
 
           {rightButton}
         </Button.Group>
       ) : (
-        <Component {...rest} input={input} />
+        <Component {...rest} input={input} meta={meta} />
       )}
     </FieldTemplate>
   )
