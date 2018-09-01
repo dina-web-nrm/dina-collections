@@ -6,7 +6,12 @@ const { Op } = Sequelize
 
 module.exports = function buildWhereFilterFactory() {
   return function buildWhereFilter(
-    { filterSpecification = {}, filterInput = {}, where: customWhere } = {}
+    {
+      filterSpecification = {},
+      filterInput = {},
+      where: customWhere,
+      serviceInteractor,
+    } = {}
   ) {
     if (customWhere) {
       return Promise.resolve(customWhere)
@@ -44,6 +49,7 @@ module.exports = function buildWhereFilterFactory() {
             return sequelizeFilterFunction({
               filterInput,
               Op,
+              serviceInteractor,
               value: parseFilterValue(filterInput[key]),
             })
           })
