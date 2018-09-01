@@ -176,7 +176,6 @@ export class InfiniteTable extends Component {
         </Grid>
       )
     }
-
     return (
       <div style={{ width }}>
         <ReactList

@@ -16,7 +16,7 @@ import {
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import { MAMMAL_FORM_NAME } from '../../../constants'
 import CatalogNumberInput from './CatalogNumberInput'
@@ -147,7 +147,7 @@ class SegmentIdentifiers extends PureComponent {
             <Grid.Column computer={4} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
-                component={AdvancedAgentDropdownSearch}
+                component={AgentDropdownPickerSearch}
                 formName={MAMMAL_FORM_NAME}
                 group={ALL}
                 initialText="Choose"

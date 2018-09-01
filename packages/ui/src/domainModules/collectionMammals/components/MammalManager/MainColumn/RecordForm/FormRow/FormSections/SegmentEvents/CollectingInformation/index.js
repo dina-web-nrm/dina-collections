@@ -16,7 +16,7 @@ import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
-import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import LocationInformationFields from './LocationInformationFields'
 
@@ -62,7 +62,7 @@ class SegmentCollectingInformation extends PureComponent {
           <Grid.Column computer={6} mobile={16}>
             <Field
               autoComplete="off"
-              component={AdvancedAgentDropdownSearch}
+              component={AgentDropdownPickerSearch}
               group={ALL}
               initialText="Choose"
               module="collectionMammals"

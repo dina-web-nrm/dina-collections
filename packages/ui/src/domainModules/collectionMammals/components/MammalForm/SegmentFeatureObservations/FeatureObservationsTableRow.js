@@ -8,7 +8,7 @@ import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { FeatureObservationDropdownSearch } from 'domainModules/curatedList/components'
-import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import { MAMMAL_FORM_NAME } from '../../../constants'
 
@@ -125,7 +125,7 @@ class FeatureObservationTableRow extends PureComponent {
         <Table.Cell key={getPath('featureObservationAgent')}>
           <Field
             autoComplete="off"
-            component={AdvancedAgentDropdownSearch}
+            component={AgentDropdownPickerSearch}
             displayLabel={false}
             formName={MAMMAL_FORM_NAME}
             group={ALL}

@@ -44,6 +44,7 @@ const rows = [infiniteTableHeader, infiniteTable]
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   onToggleFilters: PropTypes.func.isRequired,
+  search: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
 }
 const defaultProps = {
@@ -61,10 +62,12 @@ class ResultTableView extends PureComponent {
       },
     ]
   }
+  componentDidMount() {
+    this.props.search({ query: {} })
+  }
 
   render() {
     const { availableHeight, tableColumnsToShow, ...rest } = this.props
-
     return (
       <React.Fragment>
         <KeyboardShortcuts shortcuts={this.shortcuts} />

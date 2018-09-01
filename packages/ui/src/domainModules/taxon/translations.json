@@ -1,4 +1,47 @@
 {
+  "fieldLabels": {
+    "taxon": {
+      "acceptedTaxonName": {
+        "name": {
+          "en": "Accepted name"
+        },
+        "rank": {
+          "en": "Accepted name rank"
+        }
+      },
+      "vernacularNames": {
+        "name": {
+          "en": "Vernacular names"
+        }
+      },
+      "synonyms": {
+        "name": {
+          "en": "Synonyms"
+        }
+      },
+      "parent": {
+        "acceptedTaxonName": {
+          "name": {
+            "en": "Parent accepted name"
+          }
+        }
+      }
+    },
+    "taxonName": {
+      "name": {
+        "en": "Name"
+      },
+      "taxonNameType": {
+        "en": "Name type"
+      },
+      "rank": {
+        "en": "Rank"
+      },
+      "rubinNumber": {
+        "en": "Rubin number"
+      }
+    }
+  },
   "save": {
     "en": "Save",
     "sv": "Spara"

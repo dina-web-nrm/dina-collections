@@ -1,55 +1,41 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-
-import config from 'config'
 import { DropdownSearch } from 'coreModules/form/components'
-import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { ALL, PERSON, ORGANIZATION } from '../../constants'
-import { actionCreators, globalSelectors } from '../../keyObjectModule'
-import agentSelectors from '../../globalSelectors'
 
 const propTypes = {
-  allItemsFetched: PropTypes.bool.isRequired,
-  group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]).isRequired,
-  input: PropTypes.object.isRequired,
-  updateSearchQuery: PropTypes.func.isRequired,
+  group: PropTypes.string,
 }
 
-const mapDispatchToProps = {
-  updateSearchQuery:
-    actionCreators.set['agentDropdown.:identifier.searchQuery'],
+const defaultProps = {
+  group: ALL,
+}
+
+const extractValue = item => {
+  return item && item.attributes && item.attributes.fullName
 }
 
 class AgentDropdownSearch extends Component {
   render() {
-    const {
-      allItemsFetched,
-      group,
-      updateSearchQuery,
-      input,
-      ...rest
-    } = this.props
+    const { group, ...rest } = this.props
 
-    const identifier = (input && input.name) || group
-
-    if (!allItemsFetched && !config.isTest) {
-      return null
-    }
-
-    let getDropdownOptions
+    let staticFilter
     switch (group) {
       case ALL: {
-        getDropdownOptions = agentSelectors.getDropdownAllOptions
         break
       }
       case PERSON: {
-        getDropdownOptions = agentSelectors.getDropdownPersonOptions
+        staticFilter = {
+          filterFunctionName: 'matchAgentType',
+          value: PERSON,
+        }
         break
       }
       case ORGANIZATION: {
-        getDropdownOptions = agentSelectors.getDropdownOrganisationOptions
+        staticFilter = {
+          filterFunctionName: 'matchAgentType',
+          value: ORGANIZATION,
+        }
         break
       }
       default: {
@@ -60,29 +46,18 @@ class AgentDropdownSearch extends Component {
     return (
       <DropdownSearch
         {...rest}
-        getOptions={getDropdownOptions}
-        getSearchQuery={state => {
-          return globalSelectors.get['agentDropdown.:identifier.searchQuery'](
-            state,
-            { identifier }
-          )
-        }}
-        getSelectedOption={agentSelectors.getAgentOption}
-        input={input}
-        onSearchChange={({ searchQuery }) => {
-          updateSearchQuery(searchQuery, { identifier })
-        }}
-        type="dropdown-search-connect"
+        extractValue={extractValue}
+        filterFunctionName="fullNameSearch"
+        includeFields={['id', 'attributes.fullName', 'attributes.agentType']}
+        resource="agent"
+        staticFilter={staticFilter}
+        type="dropdown-search-resource"
       />
     )
   }
 }
 
 AgentDropdownSearch.propTypes = propTypes
+AgentDropdownSearch.defaultProps = defaultProps
 
-export default compose(
-  createEnsureAllItemsFetched({
-    resource: 'agent',
-  }),
-  connect(null, mapDispatchToProps)
-)(AgentDropdownSearch)
+export default AgentDropdownSearch
