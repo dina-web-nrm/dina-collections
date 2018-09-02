@@ -123,14 +123,18 @@ class DropdownSearchResource extends Component {
   }
 
   buildOptionsFromResponse(response = []) {
-    const { extractValue } = this.props
-    return response.map(item => {
-      return {
-        key: item.id,
-        text: extractValue(item),
-        value: item.id,
-      }
-    })
+    if (Array.isArray(response)) {
+      const { extractValue } = this.props
+      return response.map(item => {
+        return {
+          key: item.id,
+          text: extractValue(item),
+          value: item.id,
+        }
+      })
+    }
+    // TODO handle response is error
+    return []
   }
 
   handleSearchQueryChange({ searchQuery }) {
