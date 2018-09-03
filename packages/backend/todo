@@ -26,6 +26,8 @@ BACKEND
     Result
       * Go through and ensure all search results are ok
 
+    Catalog number
+      * endpoint for generating catalogNumber
   Platform
     General
       * Evaluate circular dependencies in tree data
@@ -34,6 +36,7 @@ BACKEND
       * Ensure same format with data folders for all services
 
     Verify functionality
+      * 1. migrate
       * Ensure request rebuild search is working
       * Ensure incremental indexing of search specimen is working with workers
       * Ensure api tests are working
@@ -64,7 +67,7 @@ BACKEND
       * Ensure system wide schema access only through interface
       * Compile frontendversion with only stuff frontend need. Dont use frontend api client validation
       * Separate relationships as separate model (for reuse)
-      * Dont create specific errors for each endpoint
+      * Dont create specific errors for each endpoint. Drag in all error codes from constants
 
 
 
