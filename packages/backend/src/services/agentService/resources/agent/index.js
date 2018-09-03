@@ -1,26 +1,13 @@
-const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
 
-const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const createGetManyFilterSpecifications = require('../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
 const {
-  createStringMatchFilter,
-  createStringSearchFilter,
-} = require('../../../../lib/data/filters/factories')
-
-const getManyFilterSpecificationMap = createGetManyFilterSpecifications({
-  custom: {
-    fullNameSearch: createStringSearchFilter({
-      fieldPath: 'fullName',
-      key: 'fullNameSearch',
-    }),
-    matchAgentType: createStringMatchFilter({
-      fieldPath: 'agentType',
-      key: 'matchAgentType',
-    }),
-  },
-  include: ['id', 'ids', 'updatedAfter', 'parentId', 'group', 'name'],
-})
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
 module.exports = {
   basePath: '/api/agent/v01',
@@ -39,12 +26,12 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecification: getManyFilterSpecificationMap,
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },
     {
-      filterSpecification: getManyFilterSpecificationMap,
+      filterSpecification: queryFilterSpecification,
       selectableFields: ['id', 'attributes.agentType', 'attributes.fullName'],
       type: 'query',
     },
@@ -52,11 +39,7 @@ module.exports = {
       type: 'update',
     },
     {
-      transformationSpecification: {
-        description: 'Importing agents from file',
-        srcFileName: 'agents',
-        transformationFunctions: [allFromSrcWithIndexId],
-      },
+      transformationSpecification: importDataFromFileTransformationSpecification,
       type: 'importDataFromFile',
     },
 
