@@ -15,13 +15,16 @@ module.exports = function execute({ job, serviceInteractor }) {
       .call({
         operationId: 'jobStartJob',
         request: {
+          body: {
+            data: {},
+          },
           pathParams: {
             id: jobId,
           },
         },
       })
       .then(() => {
-        const request = operationRequest || undefined
+        const request = operationRequest || {}
         if (!operationId) {
           throw new Error('Operation id is missing')
         }
