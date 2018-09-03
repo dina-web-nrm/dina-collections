@@ -26,8 +26,8 @@ const items = [
   { name: 'collectingCondition' },
 ]
 
-const mapStateToProps = (state, { formName }) => {
-  const formValues = getFormValues(formName)(state)
+const mapStateToProps = (state, { form }) => {
+  const formValues = getFormValues(form)(state)
   return {
     formValues,
   }
