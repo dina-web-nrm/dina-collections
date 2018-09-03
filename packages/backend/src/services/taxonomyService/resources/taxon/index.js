@@ -3,7 +3,7 @@ const {
 } = require('./data/transformationSpecifications')
 
 const buildOperationId = require('common/src/buildOperationId')
-const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
 const {
   getMany: getManyFilterSpecification,
@@ -19,7 +19,7 @@ module.exports = {
   },
   operations: [
     {
-      exampleRequests: { primary: createTaxonRequestSuccess },
+      exampleRequests: { primary: createRequestSuccess },
       type: 'create',
     },
     {
