@@ -1,13 +1,13 @@
 module.exports = function createEqualFilterSpecification({
   filterParameter,
-  filterParameterType = 'string',
+  filterSchema = {
+    type: 'string',
+  },
   path,
 }) {
   return {
     description: `Filter by ${filterParameter}`,
-    inputSchema: {
-      type: filterParameterType,
-    },
+    inputSchema: filterSchema,
     jsFilterFunction: () => {},
     key: filterParameter,
 
