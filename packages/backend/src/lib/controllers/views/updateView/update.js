@@ -41,19 +41,13 @@ module.exports = function update({
         serviceInteractor,
         srcResource,
       }).then(newItem => {
-        const { id: createdId, ...rest } = newItem
-        const dbItem = {
-          doc: rest,
-          id,
-        }
-
         if (action === 'create') {
           created.push(id)
-          return model.create(dbItem)
+          return model.create({ allowId: true, item: newItem })
         }
         if (action === 'update') {
           updated.push(id)
-          return model.update(dbItem)
+          return model.update({ id, item: newItem })
         }
         return null
       })
