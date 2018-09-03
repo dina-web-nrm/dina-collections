@@ -3894,7 +3894,14 @@
             "description": "Filter by deactivatedAt",
             "required": false,
             "schema": {
-              "type": "string"
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           },
           {
@@ -3903,7 +3910,14 @@
             "description": "Filter by failedAt",
             "required": false,
             "schema": {
-              "type": "string"
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           },
           {
@@ -3912,7 +3926,14 @@
             "description": "Filter by startedAt",
             "required": false,
             "schema": {
-              "type": "string"
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           },
           {
@@ -3921,7 +3942,14 @@
             "description": "Filter by succeededAt",
             "required": false,
             "schema": {
-              "type": "string"
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           },
           {
