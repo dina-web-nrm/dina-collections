@@ -1,6 +1,6 @@
 const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
-module.exports = createGetManyFilterSpecifications({
+const filters = createGetManyFilterSpecifications({
   include: [
     'ancestorsToId',
     'id',
@@ -11,3 +11,6 @@ module.exports = createGetManyFilterSpecifications({
     'group',
   ],
 })
+
+exports.getMany = filters
+exports.query = filters

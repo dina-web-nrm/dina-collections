@@ -3,8 +3,12 @@ const {
 } = require('./data/transformationSpecifications')
 
 const buildOperationId = require('common/src/buildOperationId')
-const createStorageLocationRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const getManyFilterSpecificationMap = require('./operations/getMany/filters')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
 module.exports = {
   basePath: '/api/storage/v01',
@@ -15,33 +19,20 @@ module.exports = {
   },
   operations: [
     {
-      exampleRequests: { primary: createStorageLocationRequestSuccess },
+      exampleRequests: { primary: createRequestSuccess },
       type: 'create',
     },
     {
       includeRelations: true,
-      queryParams: {
-        relationships: {
-          description: 'Add relationships. example [descendants, children]',
-          required: false,
-          schema: {
-            items: {
-              enum: ['descendants', 'children'],
-              type: 'string',
-            },
-            type: 'array',
-          },
-        },
-      },
       type: 'getOne',
     },
     {
-      filterSpecification: getManyFilterSpecificationMap,
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },
     {
-      filterSpecification: getManyFilterSpecificationMap,
+      filterSpecification: queryFilterSpecification,
       selectableFields: ['id', 'attributes.name', 'attributes.group'],
       type: 'query',
     },
