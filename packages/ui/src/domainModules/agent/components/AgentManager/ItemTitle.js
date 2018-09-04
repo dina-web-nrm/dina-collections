@@ -12,12 +12,12 @@ const ItemTitle = ({ nestedItem }) => {
   }
 
   return (
-    <span>
+    <React.Fragment>
       <span style={{ fontWeight: 'bold', marginRight: '0.5em' }}>
         {fullName}
       </span>
-      <span>({agentType})</span>
-    </span>
+      ({agentType})
+    </React.Fragment>
   )
 }
 
