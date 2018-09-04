@@ -1,0 +1,28 @@
+module.exports = function createRegisterResourceActivityHook({
+  action,
+  service,
+}) {
+  return ({ item, requestId, resource, serviceInteractor, user }) => {
+    return Promise.resolve().then(() => {
+      const { id } = item
+      const request = {
+        body: {
+          data: {
+            attributes: {
+              action,
+              requestId,
+              resource,
+              resourceId: id,
+              service,
+              userId: user && user.id,
+            },
+          },
+        },
+      }
+      return serviceInteractor.create({
+        request,
+        resource: 'resourceActivity',
+      })
+    })
+  }
+}
