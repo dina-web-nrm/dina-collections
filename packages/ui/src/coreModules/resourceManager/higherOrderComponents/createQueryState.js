@@ -55,11 +55,11 @@ const createQueryNavigationState = () => ComposedComponent => {
 
     updateQueryParams(newQueryObject) {
       const queryObject = this.getQueryParams()
-      const updateQueryParamsdQueryObject = {
+      const updateQueryParamsQueryObject = {
         ...queryObject,
         ...newQueryObject,
       }
-      const search = queryString.stringify(updateQueryParamsdQueryObject)
+      const search = queryString.stringify(updateQueryParamsQueryObject)
       const { pathname } = this.props.location
       this.props.routerPush({ pathname, search })
     }
