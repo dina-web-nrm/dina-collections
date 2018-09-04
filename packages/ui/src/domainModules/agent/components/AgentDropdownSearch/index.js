@@ -19,20 +19,20 @@ class AgentDropdownSearch extends Component {
   render() {
     const { group, ...rest } = this.props
 
-    let staticFilter
+    let baseFilter
     switch (group) {
       case ALL: {
         break
       }
       case PERSON: {
-        staticFilter = {
+        baseFilter = {
           filterFunctionName: 'matchAgentType',
           value: PERSON,
         }
         break
       }
       case ORGANIZATION: {
-        staticFilter = {
+        baseFilter = {
           filterFunctionName: 'matchAgentType',
           value: ORGANIZATION,
         }
@@ -46,11 +46,11 @@ class AgentDropdownSearch extends Component {
     return (
       <DropdownSearch
         {...rest}
+        baseFilter={baseFilter}
         extractValue={extractValue}
         filterFunctionName="fullNameSearch"
         includeFields={['id', 'attributes.fullName', 'attributes.agentType']}
         resource="agent"
-        staticFilter={staticFilter}
         type="dropdown-search-resource"
       />
     )

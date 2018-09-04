@@ -16,6 +16,10 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  baseFilter: PropTypes.shape({
+    filterFunctionName: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
   createNestedItem: PropTypes.func.isRequired,
   extractValue: PropTypes.func,
   filterFunctionName: PropTypes.string,
@@ -36,13 +40,10 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchWithQuery: PropTypes.bool,
-  staticFilter: PropTypes.shape({
-    filterFunctionName: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  }),
 }
 
 const defaultProps = {
+  baseFilter: undefined,
   extractValue: defaultExtractValue,
   filterFunctionName: 'nameSearch',
   include: undefined,
@@ -53,7 +54,6 @@ const defaultProps = {
   relationships: undefined,
   resolveRelationships: undefined,
   searchWithQuery: false,
-  staticFilter: undefined,
 }
 
 class DropdownSearchResource extends Component {
@@ -138,7 +138,7 @@ class DropdownSearchResource extends Component {
   }
 
   handleSearchQueryChange({ searchQuery }) {
-    const { filterFunctionName, limit, staticFilter } = this.props
+    const { baseFilter, filterFunctionName, limit } = this.props
     this.setState({
       searchQuery,
     })
@@ -149,8 +149,8 @@ class DropdownSearchResource extends Component {
 
     const filters = [{ filterFunctionName, value: searchQuery }]
 
-    if (staticFilter) {
-      filters.push(staticFilter)
+    if (baseFilter) {
+      filters.push(baseFilter)
     }
 
     this.search({ filters, limit }).then(res => {
