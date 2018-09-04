@@ -17877,6 +17877,11 @@
             "example": "Before 1800",
             "x-summary": ""
           },
+          "remarks": {
+            "type": "string",
+            "example": "Some remarks",
+            "x-summary": ""
+          },
           "startDate": {
             "$ref": "#/components/schemas/singleDate",
             "x-summary": ""
