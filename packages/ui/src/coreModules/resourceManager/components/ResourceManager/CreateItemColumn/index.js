@@ -24,7 +24,7 @@ const rows = [
   },
   {
     height: '60px',
-    key: 'bottombar',
+    key: 'bottomBar',
   },
 ]
 
@@ -54,7 +54,7 @@ class CreateItemColumn extends Component {
         const { renderCreateForm } = this.props
         return renderCreateForm()
       }
-      case 'bottombar': {
+      case 'bottomBar': {
         const { extractedProps } = extractProps({
           keys: ['resource', 'onInteraction'],
           props: this.props,

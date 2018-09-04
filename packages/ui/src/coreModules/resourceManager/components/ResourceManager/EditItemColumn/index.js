@@ -28,7 +28,7 @@ const rows = [
   },
   {
     height: '60px',
-    key: 'bottombar',
+    key: 'bottomBar',
   },
 ]
 class EditItemColumn extends Component {
@@ -64,7 +64,7 @@ class EditItemColumn extends Component {
         const { itemId, renderEditForm } = this.props
         return renderEditForm({ itemId })
       }
-      case 'bottombar': {
+      case 'bottomBar': {
         const { extractedProps } = extractProps({
           keys: ['itemId', 'resource', 'onInteraction'],
           props: this.props,
