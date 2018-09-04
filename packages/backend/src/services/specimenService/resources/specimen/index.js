@@ -11,24 +11,11 @@ const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
 const getManyfilterSpecification = require('./operations/getMany/filters')
 
-const postHook = ({ item, serviceInteractor }) => {
-  return Promise.resolve().then(() => {
-    const id = item && item.id
-    const request = {
-      body: {
-        data: {
-          attributes: {
-            ids: [id],
-          },
-        },
-      },
-    }
-    return serviceInteractor.requestUpdateView({
-      request,
-      resource: 'searchSpecimen',
-    })
-  })
-}
+const {
+  create: createHooks,
+  del: delHooks,
+  update: updateHooks,
+} = require('./data/hooks')
 
 const normalizedColumnNames = getNormalizedColumnNames('specimen')
 
@@ -45,7 +32,7 @@ module.exports = {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
       exampleRequests: { primary: normalizedRequestSuccess },
-      postHooks: [postHook],
+      postHooks: createHooks,
       type: 'create',
       validateBody,
     },
@@ -60,11 +47,11 @@ module.exports = {
     },
     {
       exampleRequests: { primary: updateRequestSuccess },
-      postHooks: [postHook],
+      postHooks: updateHooks,
       type: 'update',
     },
     {
-      postHooks: [postHook],
+      postHooks: delHooks,
       type: 'del',
     },
     {
