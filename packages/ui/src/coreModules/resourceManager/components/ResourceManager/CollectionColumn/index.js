@@ -4,7 +4,6 @@ import { compose } from 'redux'
 import { RowLayout } from 'coreModules/layout/components'
 import memoize from 'memoize-one'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
-import RecordNavigationBar from 'domainModules/collectionMammals/components/MammalManager/MainColumn/RecordNavigationBar'
 import extractProps from 'utilities/extractProps'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
@@ -13,9 +12,10 @@ import {
   NAVIGATE_TREE,
 } from 'coreModules/resourceManager/constants'
 
+import RecordNavigationBar from './RecordNavigationBar'
 import TableView from './TableView'
 import TreeView from './TreeView'
-import ResultOptionBar from './ResultOptionBar'
+import ResultOptionsBar from './ResultOptionsBar'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
@@ -158,7 +158,7 @@ class CollectionColumn extends Component {
         })
 
         return (
-          <ResultOptionBar
+          <ResultOptionsBar
             {...extractedProps}
             onListTabClick={() => {
               this.props.onInteraction(NAVIGATE_LIST)

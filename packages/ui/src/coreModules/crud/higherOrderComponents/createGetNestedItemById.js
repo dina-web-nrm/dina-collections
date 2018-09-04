@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-// import config from 'config'
 import extractProps from 'utilities/extractProps'
 import createGetItemById from './createGetItemById'
 import createNestedItem from '../actionCreators/createNestedItem'
@@ -13,22 +12,22 @@ import { globalSelectors as keyObjectGlobalSelectors } from '../keyObjectModule'
 const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
   const {
     // resolveRelationships = [], inject
-    fetch,
     idPath = 'itemId',
     include,
     nestedItemKey,
     refresh,
     relationships: hocInputRelationships,
     resource: hocInputResource,
+    shouldFetch,
   } = hocInput
 
   const getItemById = createGetItemById({
-    fetch,
     idPath,
     include,
     refresh,
     relationships: hocInputRelationships,
     resource: hocInputResource,
+    shouldFetch,
   })
 
   const mapStateToProps = (state, ownProps) => {

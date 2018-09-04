@@ -138,7 +138,6 @@ const createResourceUrlState = () => ComposedComponent => {
         itemId,
       } = state
 
-      const rootActive = Object.keys(state).length === 0
       return (
         <ComposedComponent
           {...this.props}
@@ -150,7 +149,6 @@ const createResourceUrlState = () => ComposedComponent => {
           navigateEdit={this.navigateEdit}
           navigateRoot={this.navigateRoot}
           onNavigation={this.handleNavigation}
-          rootActive={rootActive}
           tableActive={collectionColumn === 'table'}
           treeActive={collectionColumn === 'tree'}
           treeEnabled={treeEnabled}

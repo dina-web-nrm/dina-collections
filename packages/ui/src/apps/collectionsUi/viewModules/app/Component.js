@@ -87,45 +87,9 @@ class App extends Component {
               path={`${match.url}/agents`}
             />
             <Route
-              component={ManageAgents}
-              path={`${match.url}/agents/create`}
-            />
-            <Route
-              component={ManageAgents}
-              path={`${match.url}/agents/:agentId/edit`}
-            />
-            <Route
-              component={ManageAgents}
-              path={`${match.url}/agents/:agentId/inspect`}
-            />
-            <Route
               component={ManageLocalities}
               exact
               path={`${match.url}/localities`}
-            />
-            <Route
-              component={ManageLocalities}
-              path={`${match.url}/localities/create`}
-            />
-            <Route
-              component={ManageLocalities}
-              path={`${match.url}/localities/:itemId/createChild`}
-            />
-            <Route
-              component={ManageLocalities}
-              path={`${match.url}/localities/:itemId/edit`}
-            />
-            <Route
-              component={ManageLocalities}
-              path={`${match.url}/localities/list`}
-            />
-            <Route
-              component={ManageLocalities}
-              path={`${match.url}/localities/tree`}
-            />
-            <Route
-              component={ManageLocalities}
-              path={`${match.url}/localities/:itemId/inspect`}
             />
             <Route
               component={ManageStorageLocations}
@@ -133,43 +97,9 @@ class App extends Component {
               path={`${match.url}/storageLocations`}
             />
             <Route
-              component={ManageStorageLocations}
-              path={`${match.url}/storageLocations/create`}
-            />
-            <Route
-              component={ManageStorageLocations}
-              path={`${
-                match.url
-              }/storageLocations/:storageLocationId/createChild`}
-            />
-            <Route
-              component={ManageStorageLocations}
-              path={`${match.url}/storageLocations/:storageLocationId/edit`}
-            />
-            <Route
-              component={ManageStorageLocations}
-              path={`${match.url}/storageLocations/:storageLocationId/inspect`}
-            />
-            <Route
               component={ManageTaxonomy}
               exact
               path={`${match.url}/taxa`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxa/create`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxa/:taxonId/createChild`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxa/:taxonId/edit`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxa/:taxonId/inspect`}
             />
             <Route
               component={ManageTaxonNames}

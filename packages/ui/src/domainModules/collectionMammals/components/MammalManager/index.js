@@ -34,7 +34,7 @@ const main = {
 const secondaryColumnStyle = { borderLeft: '1px solid #D4D4D5', zIndex: 100 }
 
 const createFilter = createSelector(
-  (width = '400px') => width,
+  (width = '300px') => width,
   width => {
     return {
       key: 'filter',

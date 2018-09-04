@@ -51,33 +51,31 @@ export class Edit extends PureComponent {
     }
 
     return (
-      <React.Fragment>
-        <BaseForm
-          displayBackButton
-          displayResetButton
-          initialValues={initialValues}
-          onClose={event => {
-            event.preventDefault()
-            onInteraction('FORM_CANCEL')
-          }}
-          onInteraction={onInteraction}
-          onSubmit={formOutput => {
-            this.props
-              .updatePlace({
-                item: {
-                  id: itemId,
-                  ...formOutput,
-                },
-                nested: true,
+      <BaseForm
+        displayBackButton
+        displayResetButton
+        initialValues={initialValues}
+        onClose={event => {
+          event.preventDefault()
+          onInteraction('FORM_CANCEL')
+        }}
+        onInteraction={onInteraction}
+        onSubmit={formOutput => {
+          this.props
+            .updatePlace({
+              item: {
+                id: itemId,
+                ...formOutput,
+              },
+              nested: true,
+            })
+            .then(result => {
+              onInteraction('FORM_EDIT_SUCCESS', {
+                itemId: result.id,
               })
-              .then(result => {
-                onInteraction('FORM_EDIT_SUCCESS', {
-                  itemId: result.id,
-                })
-              })
-          }}
-        />
-      </React.Fragment>
+            })
+        }}
+      />
     )
   }
 }

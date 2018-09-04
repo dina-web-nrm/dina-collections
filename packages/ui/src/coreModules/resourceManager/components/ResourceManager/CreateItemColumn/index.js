@@ -24,11 +24,11 @@ const rows = [
   },
   {
     height: '60px',
-    key: 'bottombar',
+    key: 'bottomBar',
   },
 ]
 
-class EditItemColumn extends Component {
+class CreateItemColumn extends Component {
   constructor(props) {
     super(props)
 
@@ -54,7 +54,7 @@ class EditItemColumn extends Component {
         const { renderCreateForm } = this.props
         return renderCreateForm()
       }
-      case 'bottombar': {
+      case 'bottomBar': {
         const { extractedProps } = extractProps({
           keys: ['resource', 'onInteraction'],
           props: this.props,
@@ -81,7 +81,7 @@ class EditItemColumn extends Component {
   }
 }
 
-EditItemColumn.defaultProps = defaultProps
-EditItemColumn.propTypes = propTypes
+CreateItemColumn.defaultProps = defaultProps
+CreateItemColumn.propTypes = propTypes
 
-export default EditItemColumn
+export default CreateItemColumn

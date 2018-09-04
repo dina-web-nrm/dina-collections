@@ -38,9 +38,9 @@ ItemHeader.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    fetch: false,
     nameSpace: 'title',
     refresh: false,
+    shouldFetch: false,
   }),
   createInjectItemTitle()
 )(ItemHeader)

@@ -27,7 +27,7 @@ const rows = [
   },
   {
     height: '60px',
-    key: 'bottombar',
+    key: 'bottomBar',
   },
 ]
 
@@ -58,7 +58,7 @@ class FilterColumn extends Component {
         const { filterValues: initialValues } = this.props
         return this.props.renderFilterForm({ initialValues })
       }
-      case 'bottombar': {
+      case 'bottomBar': {
         const { extractedProps } = extractProps({
           keys: [
             'buildFilterQuery',
