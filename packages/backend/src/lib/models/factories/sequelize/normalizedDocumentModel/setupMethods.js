@@ -1,4 +1,5 @@
 const buildWhereFilterFactory = require('../sharedMethods/buildWhereFilterFactory')
+const buildWhereQueryFactory = require('../sharedMethods/buildWhereQueryFactory')
 const bulkCreateFactory = require('../sharedMethods/bulkCreateFactory')
 const createFactory = require('../sharedMethods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
@@ -31,7 +32,7 @@ module.exports = function setupMethods({
       throwOnError: false,
     })
   }
-
+  const buildWhereQuery = buildWhereQueryFactory()
   const buildWhereFilter = buildWhereFilterFactory()
   const getById = getByIdFactory({
     Model,
@@ -40,7 +41,11 @@ module.exports = function setupMethods({
   const synchronize = synchronizeFactory({ Model })
 
   const getCount = getCountFactory({ Model })
-  const getOneWhere = getOneWhereFactory({ buildWhereFilter, Model })
+  const getOneWhere = getOneWhereFactory({
+    buildWhereFilter,
+    buildWhereQuery,
+    Model,
+  })
   const getWhere = getWhereFactory({ buildWhereFilter, Model })
   const create = createFactory({
     Model,
@@ -78,6 +83,7 @@ module.exports = function setupMethods({
 
   const coreMethods = {
     buildWhereFilter,
+    buildWhereQuery,
     bulkCreate,
     create,
     deactivate,

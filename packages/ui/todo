@@ -1,3 +1,0 @@
-* scope resources in common search
-* improve performance of merging state
-* return search result array and not object

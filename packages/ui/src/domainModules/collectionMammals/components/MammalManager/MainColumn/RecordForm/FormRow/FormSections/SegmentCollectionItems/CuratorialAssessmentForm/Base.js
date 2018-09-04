@@ -10,7 +10,7 @@ import {
   formatBooleanRadio,
   parseBooleanRadio,
 } from 'coreModules/form/utilities'
-import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import FormActions from './FormActions'
@@ -149,7 +149,7 @@ export class BaseForm extends PureComponent {
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
-                component={AdvancedAgentDropdownSearch}
+                component={AgentDropdownPickerSearch}
                 group={ALL}
                 initialText="Choose"
                 module="collectionMammals"

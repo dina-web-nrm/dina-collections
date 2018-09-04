@@ -5,7 +5,7 @@ import { Table } from 'semantic-ui-react'
 
 import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 
 import { CATALOG_CARD, MAMMAL_FORM_NAME } from '../../../../constants'
@@ -44,7 +44,7 @@ class RecordHistoryEventsRow extends PureComponent {
         <Table.Cell width={3}>
           <Field
             autoComplete="off"
-            component={AdvancedAgentDropdownSearch}
+            component={AgentDropdownPickerSearch}
             disabled={!isCatalogCardSystem}
             displayLabel={false}
             formName={MAMMAL_FORM_NAME}

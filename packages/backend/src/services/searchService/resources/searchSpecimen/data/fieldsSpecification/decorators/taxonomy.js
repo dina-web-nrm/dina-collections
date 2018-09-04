@@ -8,25 +8,25 @@ const getTaxonNameWithParentTaxonNames = ({ taxonNameId, getItemByTypeId }) => {
       relationships: ['acceptedToTaxon'],
     },
     type: 'taxonName',
-  })
-    .then(taxonName => {
-      const taxonId =
-        taxonName.relationships &&
-        taxonName.relationships.acceptedToTaxon &&
-        taxonName.relationships.acceptedToTaxon.data &&
-        taxonName.relationships.acceptedToTaxon.data.id
+  }).then(taxonName => {
+    const taxonId =
+      taxonName.relationships &&
+      taxonName.relationships.acceptedToTaxon &&
+      taxonName.relationships.acceptedToTaxon.data &&
+      taxonName.relationships.acceptedToTaxon.data.id
 
-      if (!taxonId) {
-        return []
-      }
+    if (!taxonId) {
+      return [taxonName]
+    }
 
-      return getItemByTypeId({
-        id: taxonId,
-        queryParams: {
-          relationships: ['parent', 'acceptedTaxonName'],
-        },
-        type: 'taxon',
-      }).then(taxon => {
+    return getItemByTypeId({
+      id: taxonId,
+      queryParams: {
+        relationships: ['parent', 'acceptedTaxonName'],
+      },
+      type: 'taxon',
+    })
+      .then(taxon => {
         if (!taxon) {
           return []
         }
@@ -40,31 +40,31 @@ const getTaxonNameWithParentTaxonNames = ({ taxonNameId, getItemByTypeId }) => {
           return [...parents, taxon]
         })
       })
-    })
-    .then(taxons => {
-      const promises = taxons.map(taxon => {
-        const taxonTaxonNameId =
-          taxon.relationships &&
-          taxon.relationships.acceptedTaxonName &&
-          taxon.relationships.acceptedTaxonName.data &&
-          taxon.relationships.acceptedTaxonName.data.id
-        if (!taxonTaxonNameId) {
-          return null
-        }
+      .then(taxons => {
+        const promises = taxons.map(taxon => {
+          const taxonTaxonNameId =
+            taxon.relationships &&
+            taxon.relationships.acceptedTaxonName &&
+            taxon.relationships.acceptedTaxonName.data &&
+            taxon.relationships.acceptedTaxonName.data.id
+          if (!taxonTaxonNameId) {
+            return null
+          }
 
-        return getItemByTypeId({
-          id: taxonTaxonNameId,
-          type: 'taxonName',
-        }).then(taxonName => {
-          return taxonName
+          return getItemByTypeId({
+            id: taxonTaxonNameId,
+            type: 'taxonName',
+          }).then(taxonTaxonName => {
+            return taxonTaxonName
+          })
+        })
+        return Promise.all(promises).then(taxonNames => {
+          return taxonNames.filter(item => {
+            return !!item
+          })
         })
       })
-      return Promise.all(promises).then(taxonNames => {
-        return taxonNames.filter(taxonName => {
-          return !!taxonName
-        })
-      })
-    })
+  })
 }
 
 const transformation = ({ getItemByTypeId, locals, migrator, src }) => {

@@ -2,103 +2,140 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import config from 'config'
-import coreToNestedSync from 'common/es5/formatObject/coreToNestedSync'
-import crudSelectors from 'coreModules/crud/globalSelectors'
-import { getItemWithSpecificedRelationships } from 'coreModules/crud/utilities'
+import { connect } from 'react-redux'
+// import config from 'config'
+import extractProps from 'utilities/extractProps'
 import createGetItemById from './createGetItemById'
+import createNestedItem from '../actionCreators/createNestedItem'
 
-const createGetNestedItemById = ({
-  idPath = 'itemId',
-  include,
-  nestedItemKey,
-  relationships,
-  resolveRelationships = [],
-  resource,
-}) => ComposedComponent => {
+import { globalSelectors as keyObjectGlobalSelectors } from '../keyObjectModule'
+
+const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
+  const {
+    // resolveRelationships = [], inject
+    fetch,
+    idPath = 'itemId',
+    include,
+    nestedItemKey,
+    refresh,
+    relationships: hocInputRelationships,
+    resource: hocInputResource,
+  } = hocInput
+
   const getItemById = createGetItemById({
+    fetch,
     idPath,
     include,
-    relationships,
-    resource,
+    refresh,
+    relationships: hocInputRelationships,
+    resource: hocInputResource,
   })
 
-  const contextTypes = {
-    store: PropTypes.object,
+  const mapStateToProps = (state, ownProps) => {
+    const { item } = ownProps
+
+    const {
+      extractedProps: { nameSpace: injectedNamspace, resource },
+    } = extractProps({
+      defaults: hocInput,
+      keys: ['nameSpace', 'resource'],
+      props: ownProps,
+    })
+
+    const nameSpace = injectedNamspace
+      ? `${resource}${injectedNamspace}NestedCache`
+      : `${resource}NestedCache`
+
+    const getNestedItem =
+      keyObjectGlobalSelectors.get['nestedCache.:nameSpace.items.:id']
+
+    const id = item && item.id
+    const nestedItem =
+      id !== undefined &&
+      id !== '' &&
+      id !== null &&
+      getNestedItem(state, {
+        id,
+        nameSpace,
+      })
+    return {
+      nameSpace,
+      nestedItem: nestedItem || undefined,
+    }
+  }
+  const mapDispatchToProps = {
+    createNestedItem,
   }
 
   const propTypes = {
-    getOne: PropTypes.func.isRequired,
+    createNestedItem: PropTypes.func.isRequired,
     item: PropTypes.object,
+    nameSpace: PropTypes.string,
+    nestedItem: PropTypes.object,
   }
 
   const defaultProps = {
     item: null,
+    nameSpace: undefined,
+    nestedItem: undefined,
   }
 
   class GetNestedItemById extends Component {
     constructor(props) {
       super(props)
-      const { item } = this.props
-      if (item) {
-        this.state = {
-          nestedItem: this.createNestedItem({ item }),
-        }
-      } else {
-        this.state = {
-          nestedItem: null,
-        }
-      }
-
-      this.createNestedItem = this.createNestedItem.bind(this)
+      this.createNestedItemIfNeeded = this.createNestedItemIfNeeded.bind(this)
+    }
+    componentDidMount() {
+      this.createNestedItemIfNeeded()
     }
 
     componentWillReceiveProps(nextProps) {
-      if (
-        nextProps.item &&
-        nextProps.item !== this.props.item &&
-        !config.isTest
-      ) {
-        this.setState({
-          nestedItem: this.createNestedItem({ item: nextProps.item }),
-        })
-      }
+      this.createNestedItemIfNeeded(nextProps)
     }
 
-    createNestedItem({ item }) {
-      const getItemByTypeId = (type, id) => {
-        if (!resolveRelationships.includes(type)) {
-          return null
-        }
-        if (!(this.context && this.context.store)) {
-          return null
-        }
+    createNestedItemIfNeeded(nextProps) {
+      const { item, nameSpace, nestedItem } = this.props
 
-        const state = this.context.store.getState()
-        const getOneSelector = crudSelectors[type] && crudSelectors[type].getOne
-        const getOneByLidSelector =
-          crudSelectors[type] && crudSelectors[type].getOneByLid
-        return (
-          (getOneSelector && getOneSelector(state, id)) ||
-          (getOneByLidSelector && getOneByLidSelector(state, id)) ||
-          null
-        )
+      const {
+        extractedProps: { resolveRelationships, relationships, resource },
+      } = extractProps({
+        defaults: hocInput,
+        keys: ['resolveRelationships', 'relationships', 'resource'],
+        props: this.props,
+      })
+
+      if (!nextProps) {
+        if (item && !nestedItem) {
+          setTimeout(() => {
+            return this.props.createNestedItem({
+              item,
+              nameSpace,
+              relationships,
+              resolveRelationships,
+              resource,
+            })
+          })
+        }
       }
 
-      return coreToNestedSync({
-        getItemByTypeId,
-        item: getItemWithSpecificedRelationships({
-          item,
-          relationshipKeys: relationships,
-        }),
-        type: resource,
-      })
+      if (nextProps && nextProps.item && nextProps.item !== item) {
+        setTimeout(() => {
+          return this.props.createNestedItem({
+            item: nextProps.item,
+            nameSpace,
+            relationships,
+            resolveRelationships,
+            resource,
+          })
+        })
+      }
+      return null
     }
 
     render() {
-      const { nestedItem } = this.state
-      let propsToForward = { ...this.props, nestedItem }
+      let propsToForward = { ...this.props }
       if (nestedItemKey) {
+        const { nestedItem } = this.props
         propsToForward = {
           ...propsToForward,
           [nestedItemKey]: nestedItem,
@@ -110,8 +147,9 @@ const createGetNestedItemById = ({
 
   GetNestedItemById.propTypes = propTypes
   GetNestedItemById.defaultProps = defaultProps
-  GetNestedItemById.contextTypes = contextTypes
-  return compose(getItemById)(GetNestedItemById)
+  return compose(getItemById, connect(mapStateToProps, mapDispatchToProps))(
+    GetNestedItemById
+  )
 }
 
 export default createGetNestedItemById

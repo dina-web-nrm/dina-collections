@@ -1,9 +1,5 @@
-import AdvancedLocalityDropdownSearch from './AdvancedLocalityDropdownSearch'
+import LocalityDropdownPickerSearch from './LocalityDropdownPickerSearch'
 import LocalityDropdownSearch from './LocalityDropdownSearch'
-import LocalityManager from './LocalityManager'
+import LocalityManager from './LocalityManager/Query'
 
-export {
-  AdvancedLocalityDropdownSearch,
-  LocalityDropdownSearch,
-  LocalityManager,
-}
+export { LocalityDropdownPickerSearch, LocalityDropdownSearch, LocalityManager }

@@ -13,6 +13,16 @@ module.exports = createGetManyFilterSpecifications({
     const filter = createEqualFilterSpecification(
       {
         filterParameter,
+        filterSchema: {
+          oneOf: [
+            {
+              type: 'string',
+            },
+            {
+              type: 'null',
+            },
+          ],
+        },
         path: filterParameter,
       },
       {}

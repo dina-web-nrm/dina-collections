@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import actionCreators from 'coreModules/crud/actionCreators'
 import { search } from '../actionCreators'
 
 const createInjectSearch = (
@@ -10,7 +11,6 @@ const createInjectSearch = (
     excludeFields: defaultExcludeFields,
     includeFields: defaultIncludeFields,
     resource = 'searchSpecimen',
-    searchOnMount = true,
     storeSearchResult = true,
   } = {}
 ) => ComposedComponent => {
@@ -19,34 +19,57 @@ const createInjectSearch = (
   }
 
   const propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    resource: PropTypes.string,
     search: PropTypes.func.isRequired,
   }
 
-  const defaultProps = {}
+  const defaultProps = {
+    resource,
+  }
 
   class Search extends Component {
     constructor(props) {
       super(props)
       this.search = this.search.bind(this)
-    }
-    componentDidMount() {
-      if (searchOnMount) {
-        this.search({ query: {} })
-      }
+      this.getManySearch = this.getManySearch.bind(this)
     }
 
-    search({
-      aggregations,
-      excludeFields: excludeFieldsInput,
-      includeFields: includeFieldsInput,
-      query,
-    }) {
+    getManySearch({ resource: resourceInput, queryParams } = {}) {
+      const { dispatch } = this.props
+      const { resource: propResource } = this.props
+      const usedResource = resourceInput || propResource || resource
+      const getManyActionCreator =
+        actionCreators[usedResource] && actionCreators[usedResource].getMany
+
+      if (!getManyActionCreator) {
+        throw new Error(`Missing getManyActionCreator for resource ${resource}`)
+      }
+      return dispatch(
+        getManyActionCreator({
+          queryParams,
+        })
+      )
+    }
+    search(
+      {
+        aggregations,
+        excludeFields: excludeFieldsInput,
+        includeFields: includeFieldsInput,
+        limit,
+        query,
+        resource: resourceInput,
+      } = {}
+    ) {
+      const { resource: propResource } = this.props
+
       return this.props.search({
         aggregations,
         excludeFields: excludeFieldsInput || defaultExcludeFields,
         includeFields: includeFieldsInput || defaultIncludeFields,
+        limit,
         query,
-        resource,
+        resource: resourceInput || propResource || resource,
         storeSearchResult,
       })
     }
@@ -55,8 +78,8 @@ const createInjectSearch = (
       return (
         <ComposedComponent
           {...this.props}
+          getManySearch={this.getManySearch}
           search={this.search}
-          syncSearch={this.syncSearch}
         />
       )
     }
@@ -65,7 +88,7 @@ const createInjectSearch = (
   Search.propTypes = propTypes
   Search.defaultProps = defaultProps
 
-  return compose(connect(null, mapDispatchToProps))(Search)
+  return compose(connect(null, mapDispatchToProps), connect())(Search)
 }
 
 export default createInjectSearch

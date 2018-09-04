@@ -12,10 +12,10 @@ import {
   SingleDate,
 } from 'coreModules/form/components'
 
-import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
+import { TaxonNameDropdownSearch } from 'domainModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { AdvancedAgentDropdownSearch } from 'domainModules/agent/components'
+import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { ALL } from 'domainModules/agent/constants'
 import { MAMMAL_FORM_NAME } from '../../../constants'
 
@@ -73,7 +73,7 @@ class DeterminationContent extends Component {
           <Grid.Column computer={6} mobile={16} tablet={5}>
             <Field
               autoComplete="off"
-              component={TaxonNameSearchInputWithResults}
+              component={TaxonNameDropdownSearch}
               module="collectionMammals"
               name={taxonIdFieldKey}
               type="text"
@@ -128,7 +128,7 @@ class DeterminationContent extends Component {
         <Grid.Column computer={5} mobile={16} tablet={7}>
           <Field
             autoComplete="off"
-            component={AdvancedAgentDropdownSearch}
+            component={AgentDropdownPickerSearch}
             formName={MAMMAL_FORM_NAME}
             group={ALL}
             initialText="Choose"

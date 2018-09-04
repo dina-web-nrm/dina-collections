@@ -7,7 +7,7 @@
 │   │   ├── redirectToNext.js
 │   │   └── redirectToPrev.js
 │   ├── components
-│   │   ├── AdvancedAgentDropdownSearch
+│   │   ├── AgentDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── AgentDropdownSearch
 │   │   │   └── index.js
@@ -99,7 +99,7 @@
 │   │   ├── redirectToNext.js
 │   │   └── redirectToPrev.js
 │   ├── components
-│   │   ├── AdvancedLocalityDropdownSearch
+│   │   ├── LocalityDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── LocalityDropdownSearch
 │   │   │   └── index.js

@@ -12,7 +12,7 @@ import { createModuleTranslate } from 'coreModules/i18n/components'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import crudSelectors from 'coreModules/crud/globalSelectors'
-import { TaxonNameSearchInputWithResults } from 'domainModules/taxon/components'
+import { TaxonNameDropdownSearch } from 'domainModules/taxon/components'
 import { CustomData, Field, Input } from 'coreModules/form/components'
 import DeterminationContent from './DeterminationContent'
 import DeterminationTitle from './DeterminationTitle'
@@ -82,7 +82,7 @@ const SegmentDeterminations = ({
           <Grid.Column computer={6} mobile={16} tablet={5}>
             <Field
               autoComplete="off"
-              component={TaxonNameSearchInputWithResults}
+              component={TaxonNameDropdownSearch}
               module="collectionMammals"
               name="individual.taxonInformation.curatorialTaxonName.id"
               type="text"

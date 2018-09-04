@@ -1,4 +1,8 @@
-module.exports = function createStringSearchFilter({ description, fieldPath }) {
+module.exports = function createStringSearchFilter({
+  description,
+  fieldPath,
+  key,
+}) {
   return {
     description: description || `Search ${fieldPath}`,
     elasticsearch: ({ value }) => {
@@ -12,6 +16,18 @@ module.exports = function createStringSearchFilter({ description, fieldPath }) {
     },
     inputSchema: {
       type: 'string',
+    },
+    key,
+    sequelizeFilterFunction: ({ Op, value }) => {
+      if (value === undefined) {
+        return null
+      }
+
+      return {
+        [`document.${fieldPath}`]: {
+          [Op.iLike]: `%${value.toLowerCase()}%`,
+        },
+      }
     },
   }
 }

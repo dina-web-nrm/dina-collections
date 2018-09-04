@@ -4,14 +4,9 @@ import { connect } from 'react-redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
-import createLog from 'utilities/log'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 
 import tableColumnSpecifications from '../tableColumnSpecifications'
-
-const log = createLog(
-  'modules:collectionMammals:MammalManager:ResultTableView:InfiniteTableRow'
-)
 
 const mapStateToProps = (state, { itemId, resource }) => {
   return {
@@ -45,8 +40,6 @@ const InfiniteTableRow = ({
   tableColumnsToShow,
   width,
 }) => {
-  log.render()
-
   if (!item) {
     return (
       <Grid.Row style={{ height: 43, width }}>

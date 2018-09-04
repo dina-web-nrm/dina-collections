@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  renderRow: PropTypes.func,
   rows: PropTypes.arrayOf(
     PropTypes.shape({
       height: PropTypes.string,
-      renderRow: PropTypes.func.isRequired,
+      key: PropTypes.string.isRequired,
+      renderRow: PropTypes.func,
     }).isRequired
   ),
   wrapperClassNames: PropTypes.string,
@@ -14,6 +16,7 @@ const propTypes = {
   wrapperStyle: PropTypes.object,
 }
 const defaultProps = {
+  renderRow: undefined,
   rows: undefined,
   wrapperClassNames: undefined,
   wrapperId: undefined,
@@ -24,6 +27,7 @@ class RowLayout extends PureComponent {
   render() {
     const {
       availableHeight,
+      renderRow,
       rows,
       wrapperClassNames,
       wrapperId,
@@ -68,7 +72,11 @@ class RowLayout extends PureComponent {
                     }
               }
             >
-              {rowProps.renderRow({ ...this.props, ...rowProps })}
+              {!rowProps.renderRow &&
+                renderRow &&
+                renderRow(rowProps.key, { ...this.props, ...rowProps })}
+              {rowProps.renderRow &&
+                rowProps.renderRow({ ...this.props, ...rowProps })}
             </div>
           )
         })}

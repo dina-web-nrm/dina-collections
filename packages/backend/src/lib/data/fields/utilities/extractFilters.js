@@ -9,7 +9,7 @@ module.exports = function extractFilters({
     if (filters) {
       Object.keys(filters).forEach(key => {
         const filter = filters[key]
-        extractedFilters[key] = { key, ...filter }
+        extractedFilters[key] = { ...filter, key }
       })
     }
   })

@@ -9,7 +9,13 @@ const {
   reducer,
 } = keyObjectModuleFactory({
   actionPrefix: 'CRUD',
-  keys: [':resource.allItemsFetched', ':resource.fetchingAllItems'],
+  keys: [
+    ':resource.allItemsFetched',
+    ':resource.fetchingAllItems',
+    'nestedCache',
+    'nestedCache.:nameSpace.items',
+    'nestedCache.:nameSpace.items.:id',
+  ],
   name: MODULE_NAME,
   reducerKey: KEY_OBJECT_NAMSPACE,
 })

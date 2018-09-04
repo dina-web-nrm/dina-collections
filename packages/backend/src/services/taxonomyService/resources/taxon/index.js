@@ -3,7 +3,12 @@ const {
 } = require('./data/transformationSpecifications')
 
 const buildOperationId = require('common/src/buildOperationId')
-const createTaxonRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -14,7 +19,7 @@ module.exports = {
   },
   operations: [
     {
-      exampleRequests: { primary: createTaxonRequestSuccess },
+      exampleRequests: { primary: createRequestSuccess },
       type: 'create',
     },
     {
@@ -22,8 +27,14 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
+    },
+    {
+      filterSpecification: queryFilterSpecification,
+      selectableFields: ['id'],
+      type: 'query',
     },
     {
       type: 'update',

@@ -179,6 +179,5 @@ MultipleChoiceCheckboxes.propTypes = propTypes
 MultipleChoiceCheckboxes.defaultProps = defaultProps
 
 export default createInjectSearch({
-  searchOnMount: false,
   storeSearchResult: false,
 })(MultipleChoiceCheckboxes)

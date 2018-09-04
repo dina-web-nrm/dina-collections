@@ -1,5 +1,8 @@
-const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
-const createSuccess = require('./operations/create/examples/requestSuccess.json')
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
+
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
 module.exports = {
   basePath: '/api/curatedList/v01',
@@ -10,7 +13,7 @@ module.exports = {
   operations: [
     {
       exampleRequests: {
-        primary: createSuccess,
+        primary: createRequestSuccess,
       },
       type: 'create',
     },
@@ -21,11 +24,7 @@ module.exports = {
       type: 'getMany',
     },
     {
-      transformationSpecification: {
-        description: 'Importing identifierTypes from file',
-        srcFileName: 'identifierTypes',
-        transformationFunctions: [allFromSrcWithIndexId],
-      },
+      transformationSpecification: importDataFromFileTransformationSpecification,
       type: 'importDataFromFile',
     },
     {

@@ -9,6 +9,33 @@ const Sequelize = require('sequelize')
 
 const { Op } = Sequelize
 
+const buildWhere = ({
+  buildWhereFilter,
+  buildWhereQuery,
+  filterInput,
+  filterSpecification,
+  query,
+  serviceInteractor,
+  where,
+}) => {
+  if (where) {
+    return Promise.resolve(where)
+  }
+  if (query) {
+    return buildWhereQuery({
+      filterSpecification,
+      query,
+      serviceInteractor,
+    })
+  }
+
+  return buildWhereFilter({
+    filterInput,
+    filterSpecification,
+    serviceInteractor,
+  })
+}
+
 const hasDeactivatedAtFilter = where => {
   if (where.deactivatedAt !== undefined) {
     return true
@@ -22,7 +49,11 @@ const hasDeactivatedAtFilter = where => {
   })
 }
 
-module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
+module.exports = function getWhereFactory({
+  buildWhereFilter,
+  buildWhereQuery,
+  Model,
+}) {
   return getWhereWrapper(
     ({
       excludeFieldsInput = [],
@@ -32,7 +63,9 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
       includeFieldsInput = [],
       limit,
       offset,
+      query,
       selectableFields = [],
+      serviceInteractor,
       sortInput,
       where: customWhere,
     }) => {
@@ -43,9 +76,13 @@ module.exports = function getWhereFactory({ buildWhereFilter, Model }) {
         })
       }
 
-      return buildWhereFilter({
+      return buildWhere({
+        buildWhereFilter,
+        buildWhereQuery,
         filterInput,
         filterSpecification,
+        query,
+        serviceInteractor,
         where: customWhere,
       }).then(whereInput => {
         // This is not great

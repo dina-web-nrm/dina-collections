@@ -1,4 +1,3 @@
-// const buildElasticAggregations = require('../../utilities/buildElasticAggregations')
 const buildElasticQuery = require('../../utilities/buildElasticQuery')
 
 const buildQueryFromFilters = ({ filterInput }) => {

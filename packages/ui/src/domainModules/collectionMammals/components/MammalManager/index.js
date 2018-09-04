@@ -192,7 +192,7 @@ const propTypes = {
 const defaultProps = {
   currentTableRowNumber: 1,
   focusedSpecimenId: undefined,
-  rightSidebarWidth: 300,
+  rightSidebarWidth: 800,
   searchResult: undefined,
   totalNumberOfRecords: 0,
 }
@@ -470,7 +470,9 @@ MammalManager.defaultProps = defaultProps
 
 export default compose(
   withRouter,
-  createInjectSearch(),
+  createInjectSearch({
+    includeFields: ['id'],
+  }),
   createInjectSearchResult({
     resource: 'searchSpecimen',
   }),

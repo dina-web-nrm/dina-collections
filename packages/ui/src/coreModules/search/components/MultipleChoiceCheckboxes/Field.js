@@ -29,6 +29,7 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   }).isRequired,
+  meta: PropTypes.object.isRequired,
   onCheckboxChange: PropTypes.func,
   search: PropTypes.func.isRequired,
 }
@@ -178,7 +179,7 @@ class MultipleChoiceCheckboxes extends Component {
   }
 
   render() {
-    const { checkedValues, displayCount, input } = this.props
+    const { checkedValues, displayCount, input, meta } = this.props
     const { allIds, drillDownOptionsMap, loading } = this.state
 
     if (loading) {
@@ -222,6 +223,7 @@ class MultipleChoiceCheckboxes extends Component {
                       ? `${id} (${drillDownOption.count})`
                       : id
                   }
+                  meta={meta}
                 />
               </Grid.Column>
             )
@@ -238,7 +240,6 @@ MultipleChoiceCheckboxes.defaultProps = defaultProps
 export default compose(
   wrapInFieldTemplate,
   createInjectSearch({
-    searchOnMount: false,
     storeSearchResult: false,
   }),
   connect(mapStateToProps)

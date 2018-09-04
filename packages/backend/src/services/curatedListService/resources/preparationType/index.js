@@ -1,5 +1,7 @@
-const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
-const createPreparationTypeRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
 module.exports = {
   basePath: '/api/curatedList/v01',
@@ -10,7 +12,7 @@ module.exports = {
   operations: [
     {
       exampleRequests: {
-        primary: createPreparationTypeRequestSuccess,
+        primary: createRequestSuccess,
       },
       type: 'create',
     },
@@ -21,11 +23,7 @@ module.exports = {
       type: 'getMany',
     },
     {
-      transformationSpecification: {
-        description: 'Importing preparationTypes from file',
-        srcFileName: 'preparationTypes',
-        transformationFunctions: [allFromSrcWithIndexId],
-      },
+      transformationSpecification: importDataFromFileTransformationSpecification,
       type: 'importDataFromFile',
     },
     {

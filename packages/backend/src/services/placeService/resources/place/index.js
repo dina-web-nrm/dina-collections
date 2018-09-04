@@ -3,8 +3,12 @@ const {
 } = require('./data/transformationSpecifications')
 
 const buildOperationId = require('common/src/buildOperationId')
-const createRequestSuccess = require('./create/examples/requestSuccess.json')
-const getManyFilterSpecificationMap = require('./getMany/filters')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
 module.exports = {
   basePath: '/api/locality/v01',
@@ -20,25 +24,18 @@ module.exports = {
     },
     {
       includeRelations: true,
-      queryParams: {
-        relationships: {
-          description: 'Add relationships. example [descendants, children]',
-          required: false,
-          schema: {
-            items: {
-              enum: ['descendants', 'children'],
-              type: 'string',
-            },
-            type: 'array',
-          },
-        },
-      },
       type: 'getOne',
     },
     {
-      filterSpecification: getManyFilterSpecificationMap,
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
+      selectableFields: ['id', 'attributes.name', 'attributes.group'],
       type: 'getMany',
+    },
+    {
+      filterSpecification: queryFilterSpecification,
+      selectableFields: ['id', 'attributes.name', 'attributes.group'],
+      type: 'query',
     },
     {
       type: 'update',

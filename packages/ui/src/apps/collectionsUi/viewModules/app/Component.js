@@ -18,6 +18,7 @@ import ManageAgents from '../manageAgents/Async'
 import ManageLocalities from '../manageLocalities/Async'
 import ManageStorageLocations from '../manageStorageLocations/Async'
 import ManageTaxonomy from '../manageTaxonomy/Async'
+import ManageTaxonNames from '../manageTaxonNames/Async'
 
 const propTypes = {
   match: PropTypes.shape({
@@ -108,15 +109,23 @@ class App extends Component {
             />
             <Route
               component={ManageLocalities}
-              path={`${match.url}/localities/:localityId/createChild`}
+              path={`${match.url}/localities/:itemId/createChild`}
             />
             <Route
               component={ManageLocalities}
-              path={`${match.url}/localities/:localityId/edit`}
+              path={`${match.url}/localities/:itemId/edit`}
             />
             <Route
               component={ManageLocalities}
-              path={`${match.url}/localities/:localityId/inspect`}
+              path={`${match.url}/localities/list`}
+            />
+            <Route
+              component={ManageLocalities}
+              path={`${match.url}/localities/tree`}
+            />
+            <Route
+              component={ManageLocalities}
+              path={`${match.url}/localities/:itemId/inspect`}
             />
             <Route
               component={ManageStorageLocations}
@@ -163,26 +172,11 @@ class App extends Component {
               path={`${match.url}/taxa/:taxonId/inspect`}
             />
             <Route
-              component={ManageTaxonomy}
+              component={ManageTaxonNames}
               exact
               path={`${match.url}/taxonNames`}
             />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxonNames/create`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxonNames/:taxonNameId/createChild`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxonNames/:taxonNameId/edit`}
-            />
-            <Route
-              component={ManageTaxonomy}
-              path={`${match.url}/taxonNames/:taxonNameId/inspect`}
-            />
+
             <Route component={Settings} exact path={`${match.url}/settings`} />
             <Route component={PageNotFound} />
           </Switch>

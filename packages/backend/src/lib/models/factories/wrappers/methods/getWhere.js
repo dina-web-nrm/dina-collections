@@ -43,6 +43,9 @@ const inputSchema = {
     selectableFields: {
       type: 'array',
     },
+    serviceInteractor: {
+      type: 'object',
+    },
     sortableFields: {
       type: 'array',
     },

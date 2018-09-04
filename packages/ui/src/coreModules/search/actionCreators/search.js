@@ -6,6 +6,7 @@ export default function search(
     aggregations,
     excludeFields,
     includeFields,
+    limit = 100000,
     query,
     resource,
     storeSearchResult = false,
@@ -30,7 +31,7 @@ export default function search(
         aggregations,
         excludeFields,
         includeFields,
-        limit: 100000,
+        limit,
         query,
         throwError: true,
       })

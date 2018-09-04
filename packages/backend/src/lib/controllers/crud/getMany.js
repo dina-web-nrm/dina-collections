@@ -1,8 +1,9 @@
 const createArrayResponse = require('../utilities/transformations/createArrayResponse')
 const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
 const extractRelationships = require('../utilities/relationships/extractRelationships')
+const getAncestors = require('../utilities/getAncestors')
 
-module.exports = function getMany({ operation, models }) {
+module.exports = function getMany({ operation, models, serviceInteractor }) {
   const {
     filterSpecification,
     includeRelations,
@@ -24,6 +25,10 @@ module.exports = function getMany({ operation, models }) {
     throw new Error(`Model missing required method: getWhere for ${resource}`)
   }
 
+  if (!model.getById) {
+    throw new Error(`Model missing required method: getById for ${resource}`)
+  }
+
   return ({ request }) => {
     const {
       queryParams: {
@@ -32,22 +37,41 @@ module.exports = function getMany({ operation, models }) {
         includeFields: includeFieldsInput,
         limit = 10,
         offset = 0,
-        relationships: queryParamRelationships = '',
+        relationships: queryParamRelationshipsInput = '',
         sort: sortInput,
       } = {},
     } = request
 
+    const fetchAncestors =
+      filterInput && filterInput.ancestorsToId !== undefined
+    const queryParamRelationships = fetchAncestors
+      ? 'parent'
+      : queryParamRelationshipsInput
+
     let include
-    if (relations && includeRelations && queryParamRelationships) {
+    if (
+      relations &&
+      includeRelations &&
+      (queryParamRelationships || fetchAncestors)
+    ) {
       include = buildIncludeArray({
         models,
         queryParamRelationships,
         relations,
       })
     }
-
-    return model
-      .getWhere({
+    let promise
+    if (fetchAncestors) {
+      promise = getAncestors({
+        id: filterInput.ancestorsToId,
+        include,
+        includeRelations,
+        model,
+        queryParamRelationships: 'parent',
+        relations,
+      })
+    } else {
+      promise = model.getWhere({
         excludeFieldsInput,
         filterInput,
         filterSpecification,
@@ -56,31 +80,33 @@ module.exports = function getMany({ operation, models }) {
         limit,
         offset,
         selectableFields,
+        serviceInteractor,
         sortableFields,
         sortInput,
       })
-      .then(({ items, meta } = {}) => {
-        return createArrayResponse({
-          items: items.map(item => {
-            const relationships =
-              includeRelations &&
-              extractRelationships({
-                item,
-                queryParamRelationships,
-                relations,
-              })
-            if (!relationships) {
-              return item
-            }
+    }
+    return promise.then(({ items, meta } = {}) => {
+      return createArrayResponse({
+        items: items.map(item => {
+          const relationships =
+            includeRelations &&
+            extractRelationships({
+              item,
+              queryParamRelationships,
+              relations,
+            })
+          if (!relationships || fetchAncestors) {
+            return item
+          }
 
-            return {
-              ...item,
-              relationships,
-            }
-          }),
-          meta,
-          type: resource,
-        })
+          return {
+            ...item,
+            relationships,
+          }
+        }),
+        meta,
+        type: resource,
       })
+    })
   }
 }

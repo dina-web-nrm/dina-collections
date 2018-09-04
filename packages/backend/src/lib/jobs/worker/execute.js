@@ -15,13 +15,16 @@ module.exports = function execute({ job, serviceInteractor }) {
       .call({
         operationId: 'jobStartJob',
         request: {
+          body: {
+            data: {},
+          },
           pathParams: {
             id: jobId,
           },
         },
       })
       .then(() => {
-        const request = operationRequest || undefined
+        const request = operationRequest || {}
         if (!operationId) {
           throw new Error('Operation id is missing')
         }
@@ -37,6 +40,9 @@ module.exports = function execute({ job, serviceInteractor }) {
               .call({
                 operationId: 'jobSetJobSuccess',
                 request: {
+                  body: {
+                    data: {},
+                  },
                   pathParams: {
                     id: jobId,
                   },
@@ -59,6 +65,9 @@ module.exports = function execute({ job, serviceInteractor }) {
               .call({
                 operationId: 'jobSetJobFailed',
                 request: {
+                  body: {
+                    data: {},
+                  },
                   pathParams: {
                     id: jobId,
                   },

@@ -3,7 +3,11 @@ const {
 } = require('./data/transformationSpecifications')
 
 const createTaxonNameRequestSuccess = require('./operations/create/examples/requestSuccess.json')
-const getManyfilterSpecification = require('./operations/getMany/filters')
+
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
 module.exports = {
   basePath: '/api/taxonomy/v01',
@@ -22,9 +26,14 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecification: getManyfilterSpecification,
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
+    },
+    {
+      filterSpecification: queryFilterSpecification,
+      selectableFields: ['id', 'attributes.name', 'attributes.rank'],
+      type: 'query',
     },
     {
       type: 'update',

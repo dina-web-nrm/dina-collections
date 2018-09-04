@@ -1,5 +1,5 @@
-import AdvancedAgentDropdownSearch from './AdvancedAgentDropdownSearch'
+import AgentDropdownPickerSearch from './AgentDropdownPickerSearch'
 import AgentDropdownSearch from './AgentDropdownSearch'
-import AgentManager from './AgentManager'
+import AgentManager from './AgentManager/Query'
 
-export { AdvancedAgentDropdownSearch, AgentDropdownSearch, AgentManager }
+export { AgentDropdownPickerSearch, AgentDropdownSearch, AgentManager }

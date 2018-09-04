@@ -8,6 +8,7 @@ export const moduleOrder = [
   'manageLocalities',
   'manageStorageLocations',
   'manageTaxonomy',
+  'manageTaxonNames',
   'login',
   'settings',
   'docs',

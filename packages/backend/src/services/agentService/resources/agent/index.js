@@ -1,6 +1,13 @@
-const allFromSrcWithIndexId = require('../../../../lib/data/transformations/sharedTransformations/allFromSrcWithIndexId')
+const {
+  importDataFromFile: importDataFromFileTransformationSpecification,
+} = require('./data/transformationSpecifications')
 
-const createRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+
+const {
+  getMany: getManyFilterSpecification,
+  query: queryFilterSpecification,
+} = require('./data/filterSpecifications')
 
 module.exports = {
   basePath: '/api/agent/v01',
@@ -19,18 +26,20 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
+    },
+    {
+      filterSpecification: queryFilterSpecification,
+      selectableFields: ['id', 'attributes.agentType', 'attributes.fullName'],
+      type: 'query',
     },
     {
       type: 'update',
     },
     {
-      transformationSpecification: {
-        description: 'Importing agents from file',
-        srcFileName: 'agents',
-        transformationFunctions: [allFromSrcWithIndexId],
-      },
+      transformationSpecification: importDataFromFileTransformationSpecification,
       type: 'importDataFromFile',
     },
 

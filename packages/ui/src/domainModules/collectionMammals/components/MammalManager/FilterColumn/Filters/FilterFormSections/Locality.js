@@ -5,7 +5,6 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
-import { ALL } from 'domainModules/locality/constants'
 
 const locationTags = 'LocationTags'
 const locationFieldName = `locality.location|searchTags-${locationTags}`
@@ -24,7 +23,6 @@ class LocalityFilterForm extends PureComponent {
           <Field
             autoComplete="off"
             component={LocalityDropdownSearch}
-            group={ALL}
             label="Higher geography"
             model="place"
             module="locality"

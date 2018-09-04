@@ -25,6 +25,9 @@ const inputSchema = {
     selectableFields: {
       type: 'array',
     },
+    serviceInteractor: {
+      type: 'object',
+    },
     where: {
       type: 'object',
     },
