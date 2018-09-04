@@ -15,7 +15,7 @@ import {
 
 import TableView from './TableView'
 import TreeView from './TreeView'
-import ResultOptionBar from './ResultOptionBar'
+import ResultOptionsBar from './ResultOptionsBar'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
@@ -158,7 +158,7 @@ class CollectionColumn extends Component {
         })
 
         return (
-          <ResultOptionBar
+          <ResultOptionsBar
             {...extractedProps}
             onListTabClick={() => {
               this.props.onInteraction(NAVIGATE_LIST)
