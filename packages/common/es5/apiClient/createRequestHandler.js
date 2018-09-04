@@ -29,7 +29,8 @@ module.exports = function createRequestHandler(_ref) {
   validateEndpointConfig(endpointConfig, apiConfig);
   return function routeFunction(_ref2) {
     var user = _ref2.user,
-        userInput = _ref2.userInput;
+        userInput = _ref2.userInput,
+        requestId = _ref2.requestId;
 
     return createRequest({
       apiConfig: apiConfig,
@@ -51,6 +52,7 @@ module.exports = function createRequestHandler(_ref) {
         }
         return handler({
           request: request,
+          requestId: requestId,
           user: user
         });
       }).then(function (responseData) {
