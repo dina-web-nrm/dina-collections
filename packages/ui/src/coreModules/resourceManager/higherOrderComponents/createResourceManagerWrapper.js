@@ -83,7 +83,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     baseTreeFilter: PropTypes.object,
     buildFilterQuery: PropTypes.func.isRequired,
     clearNestedCache: PropTypes.func.isRequired,
-    currentTableRowNumber: PropTypes.number,
+    currentTableRowNumber: PropTypes.number.isRequired,
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     expandedIds: PropTypes.object,
@@ -121,7 +121,6 @@ const createResourceManagerWrapper = () => ComposedComponent => {
   const defaultProps = {
     baseItems: [],
     baseTreeFilter: {},
-    currentTableRowNumber: 1,
     expandedIds: {},
     filterValues: undefined,
     focusedItemId: undefined,
