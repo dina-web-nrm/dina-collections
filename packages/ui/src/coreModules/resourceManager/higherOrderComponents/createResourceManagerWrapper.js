@@ -216,7 +216,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
       const {
         filterValues: prevFilterValues,
-        tableActive: prevListActive,
+        tableActive: prevTableActive,
         listItems: prevListItems,
         treeActive: prevTreeActive,
       } = prevProps
@@ -233,7 +233,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
         this.props.setCurrentTableRowNumber(totalNumberOfRecords, { resource })
       }
 
-      if (tableActive !== prevListActive) {
+      if (tableActive !== prevTableActive) {
         this.props.clearNestedCache()
         if (tableActive) {
           this.props.setExpandedIds({}, { resource })
