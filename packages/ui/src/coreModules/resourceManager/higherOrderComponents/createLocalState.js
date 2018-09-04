@@ -21,25 +21,25 @@ const createLocalState = () => ComposedComponent => {
     }
 
     updateLocalState(newPartialState = {}) {
-      const oldState = this.state
-      const updatedState = {
-        ...oldState,
-        ...newPartialState,
-      }
-
-      this.setState(updatedState)
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          ...newPartialState,
+        }
+      })
     }
 
     clearLocalState(params) {
       if (params) {
-        const prevState = this.state
-        const updatedState = {
-          ...prevState,
-        }
-        params.forEach(param => {
-          updatedState[param] = undefined
+        this.setState(prevState => {
+          const updatedState = {
+            ...prevState,
+          }
+          params.forEach(param => {
+            updatedState[param] = initialState[param]
+          })
+          return updatedState
         })
-        this.setState(updatedState)
       } else {
         this.setState(initialState)
       }
