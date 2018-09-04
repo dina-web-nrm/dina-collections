@@ -8,7 +8,7 @@ const equalFilterParameters = [
   'succeededAt',
 ]
 
-module.exports = createGetManyFilterSpecifications({
+const filters = createGetManyFilterSpecifications({
   custom: equalFilterParameters.reduce((obj, filterParameter) => {
     const filter = createEqualFilterSpecification(
       {
@@ -33,3 +33,6 @@ module.exports = createGetManyFilterSpecifications({
     }
   }, {}),
 })
+
+exports.getMany = filters
+exports.query = filters
