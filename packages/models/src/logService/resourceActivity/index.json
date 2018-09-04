@@ -1,0 +1,45 @@
+{
+  "additionalProperties": false,
+  "description": "Representing resourceActivity",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "createdAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "updatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "type": "string"
+    },
+    "service": {
+      "type": "string"
+    },
+    "resource": {
+      "type": "string"
+    },
+    "resourceId": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "requestId": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
+    }
+  }
+}
