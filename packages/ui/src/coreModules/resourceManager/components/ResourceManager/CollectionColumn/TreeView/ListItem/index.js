@@ -6,7 +6,7 @@ import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
 import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderComponents'
 
 const propTypes = {
-  indendention: PropTypes.number,
+  indentation: PropTypes.number,
   isExpandable: PropTypes.bool,
   isExpanded: PropTypes.bool.isRequired,
   isFocused: PropTypes.bool.isRequired,
@@ -19,7 +19,7 @@ const propTypes = {
 }
 
 const defaultProps = {
-  indendention: 50,
+  indentation: 50,
   isExpandable: false,
   itemId: '',
   itemTitle: undefined,
@@ -30,7 +30,7 @@ const defaultProps = {
 class ListItem extends Component {
   render() {
     const {
-      indendention,
+      indentation,
       isExpandable,
       isExpanded,
       isFocused,
@@ -53,7 +53,7 @@ class ListItem extends Component {
           <Grid.Column
             key="rowNumber"
             style={{
-              marginLeft: indendention * level,
+              marginLeft: indentation * level,
               paddingRight: 0,
               width: 60,
             }}
@@ -85,7 +85,7 @@ class ListItem extends Component {
             }
           }}
           style={{
-            marginLeft: indendention * level,
+            marginLeft: indentation * level,
             paddingRight: 0,
             width: 60,
           }}
