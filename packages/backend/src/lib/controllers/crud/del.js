@@ -1,7 +1,10 @@
+const createLog = require('../../../utilities/log')
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 
+const log = createLog('lib/controllers/crud/del')
+
 module.exports = function del({ operation, models, serviceInteractor }) {
-  const { resource, postDeleteHook } = operation
+  const { resource, postHooks = [] } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -9,19 +12,28 @@ module.exports = function del({ operation, models, serviceInteractor }) {
   if (!model.deactivate) {
     throw new Error(`Model missing required method: deactivate for ${resource}`)
   }
-  return ({ request }) => {
+  return ({ request, user, requestId }) => {
     const { pathParams: { id } } = request
 
     return model
       .deactivate({ id })
       .then(({ item } = {}) => {
-        if (postDeleteHook) {
-          return postDeleteHook({ item, serviceInteractor }).then(() => {
-            return item
+        const promises = postHooks.map(postHook => {
+          return postHook({
+            item,
+            requestId,
+            resource,
+            serviceInteractor,
+            user,
+          }).catch(err => {
+            log.info('Error in post hook')
+            log.err(err.stack)
           })
-        }
+        })
 
-        return item
+        return Promise.all(promises).then(() => {
+          return item
+        })
       })
       .then(output => {
         return createObjectResponse({

@@ -5,7 +5,9 @@ module.exports = function callController({
   operationId: operationIdInput,
   operationType,
   request,
+  requestId,
   resource,
+  user,
 }) {
   if (!resource && !operationIdInput) {
     throw new Error('Resource or operationId is required')
@@ -39,6 +41,8 @@ module.exports = function callController({
     )
   }
   return requestHandler({
+    requestId,
+    user,
     userInput: request,
   })
 }

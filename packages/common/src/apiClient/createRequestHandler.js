@@ -20,7 +20,7 @@ module.exports = function createRequestHandler({
 
   validateMethodConfig(methodConfigInput, apiConfig)
   validateEndpointConfig(endpointConfig, apiConfig)
-  return function routeFunction({ user, userInput }) {
+  return function routeFunction({ user, userInput, requestId }) {
     return createRequest({
       apiConfig,
       endpointConfig,
@@ -43,6 +43,7 @@ module.exports = function createRequestHandler({
             }
             return handler({
               request,
+              requestId,
               user,
             })
           })

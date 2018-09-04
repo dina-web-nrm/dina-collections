@@ -1,12 +1,15 @@
+const createLog = require('../../../utilities/log')
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 const transformInput = require('../utilities/transformations/inputObject')
+
+const log = createLog('lib/controllers/crud/create')
 
 module.exports = function create({
   operation = {},
   models,
   serviceInteractor,
 }) {
-  const { resource, validateBody, relations, postCreateHook } = operation
+  const { resource, validateBody, relations, postHooks = [] } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -15,7 +18,7 @@ module.exports = function create({
     throw new Error(`Model missing required method: create for ${resource}`)
   }
 
-  return ({ request }) => {
+  return ({ request, user, requestId }) => {
     const { body } = request
     if (validateBody) {
       validateBody(body)
@@ -30,12 +33,22 @@ module.exports = function create({
         })
       )
       .then(({ item } = {}) => {
-        if (postCreateHook) {
-          return postCreateHook({ item, serviceInteractor }).then(() => {
-            return item
+        const promises = postHooks.map(postHook => {
+          return postHook({
+            item,
+            requestId,
+            resource,
+            serviceInteractor,
+            user,
+          }).catch(err => {
+            log.info('Error in post hook')
+            log.err(err.stack)
           })
-        }
-        return item
+        })
+
+        return Promise.all(promises).then(() => {
+          return item
+        })
       })
       .then(output => {
         return createObjectResponse({

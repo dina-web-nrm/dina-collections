@@ -11,7 +11,7 @@ const validateBody = require('./operations/create/validators/validateBody')
 const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
 const getManyfilterSpecification = require('./operations/getMany/filters')
 
-const postEditHook = ({ item, serviceInteractor }) => {
+const postHook = ({ item, serviceInteractor }) => {
   return Promise.resolve().then(() => {
     const id = item && item.id
     const request = {
@@ -45,7 +45,7 @@ module.exports = {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
       exampleRequests: { primary: normalizedRequestSuccess },
-      postCreateHook: postEditHook,
+      postHooks: [postHook],
       type: 'create',
       validateBody,
     },
@@ -60,11 +60,11 @@ module.exports = {
     },
     {
       exampleRequests: { primary: updateRequestSuccess },
-      postUpdateHook: postEditHook,
+      postHooks: [postHook],
       type: 'update',
     },
     {
-      postDeleteHook: postEditHook,
+      postHooks: [postHook],
       type: 'del',
     },
     {

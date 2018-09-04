@@ -4,10 +4,8 @@ module.exports = {
   additionalProperties: false,
   properties: {
     ...base.properties,
-    postDeleteHook: {
-      not: {
-        type: 'string',
-      },
+    postHooks: {
+      type: 'array',
     },
   },
   required: [...base.required],
