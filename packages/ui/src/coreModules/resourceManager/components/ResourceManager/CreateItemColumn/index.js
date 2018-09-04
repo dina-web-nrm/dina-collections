@@ -28,7 +28,7 @@ const rows = [
   },
 ]
 
-class EditItemColumn extends Component {
+class CreateItemColumn extends Component {
   constructor(props) {
     super(props)
 
@@ -81,7 +81,7 @@ class EditItemColumn extends Component {
   }
 }
 
-EditItemColumn.defaultProps = defaultProps
-EditItemColumn.propTypes = propTypes
+CreateItemColumn.defaultProps = defaultProps
+CreateItemColumn.propTypes = propTypes
 
-export default EditItemColumn
+export default CreateItemColumn
