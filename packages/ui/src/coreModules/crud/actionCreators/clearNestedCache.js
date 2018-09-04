@@ -3,7 +3,7 @@ import { actionCreators as keyObjectActionCreators } from '../keyObjectModule'
 const delNestedObjectNamspace =
   keyObjectActionCreators.del['nestedCache.:nameSpace.items']
 
-const delNesteCache = keyObjectActionCreators.set.nestedCache
+const delNestedCache = keyObjectActionCreators.set.nestedCache
 
 export default function clearNestedCache({ nameSpace } = {}) {
   return dispatch => {
@@ -14,6 +14,6 @@ export default function clearNestedCache({ nameSpace } = {}) {
         })
       )
     }
-    return dispatch(delNesteCache({}))
+    return dispatch(delNestedCache({}))
   }
 }
