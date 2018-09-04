@@ -4,7 +4,6 @@ import { compose } from 'redux'
 import { RowLayout } from 'coreModules/layout/components'
 import memoize from 'memoize-one'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
-import RecordNavigationBar from 'domainModules/collectionMammals/components/MammalManager/MainColumn/RecordNavigationBar'
 import extractProps from 'utilities/extractProps'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
@@ -13,6 +12,7 @@ import {
   NAVIGATE_TREE,
 } from 'coreModules/resourceManager/constants'
 
+import RecordNavigationBar from './RecordNavigationBar'
 import TableView from './TableView'
 import TreeView from './TreeView'
 import ResultOptionsBar from './ResultOptionsBar'

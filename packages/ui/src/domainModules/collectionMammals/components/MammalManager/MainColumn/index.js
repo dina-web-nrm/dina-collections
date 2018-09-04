@@ -6,10 +6,10 @@ import { createSelector } from 'reselect'
 
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
+import { RecordNavigationBar } from 'coreModules/resourceManager/components'
 
 import CreateSpecimen from './CreateSpecimen'
 import EditSpecimen from './EditSpecimen'
-import RecordNavigationBar from './RecordNavigationBar'
 import ResultOptionsBar from './ResultOptionsBar'
 import ResultTableSettings from './ResultTableSettings'
 import ResultTableView from './ResultTableView'
