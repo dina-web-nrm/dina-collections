@@ -15,7 +15,7 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
     idPath = 'itemId',
     itemKey,
     refresh = true,
-    fetch = true,
+    shouldFetch = true,
     // include = [], injectable
     // relationships = ['all'],
     // injectRelationships, Injectable
@@ -91,7 +91,7 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
 
   class GetItemById extends Component {
     componentDidMount() {
-      if (fetch) {
+      if (shouldFetch) {
         const { dispatch, item, itemId } = this.props
         const {
           extractedProps: { include = [], relationships = ['all'], resource },
@@ -116,7 +116,7 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (fetch) {
+      if (shouldFetch) {
         if (
           nextProps.itemId &&
           nextProps.itemId !== this.props.itemId &&

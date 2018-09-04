@@ -13,22 +13,22 @@ import { globalSelectors as keyObjectGlobalSelectors } from '../keyObjectModule'
 const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
   const {
     // resolveRelationships = [], inject
-    fetch,
     idPath = 'itemId',
     include,
     nestedItemKey,
     refresh,
     relationships: hocInputRelationships,
     resource: hocInputResource,
+    shouldFetch,
   } = hocInput
 
   const getItemById = createGetItemById({
-    fetch,
     idPath,
     include,
     refresh,
     relationships: hocInputRelationships,
     resource: hocInputResource,
+    shouldFetch,
   })
 
   const mapStateToProps = (state, ownProps) => {

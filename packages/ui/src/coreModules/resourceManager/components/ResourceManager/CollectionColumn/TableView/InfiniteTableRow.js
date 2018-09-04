@@ -94,7 +94,7 @@ InfiniteTableRow.defaultProps = defaultProps
 
 export default compose(
   createGetNestedItemById({
-    fetch: false,
     refresh: false,
+    shouldFetch: false,
   })
 )(InfiniteTableRow)
