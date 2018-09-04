@@ -8,7 +8,7 @@ import { compose } from 'redux'
 import queryString from 'query-string'
 
 const createQueryNavigationState = () => ComposedComponent => {
-  const mapDispathToProps = {
+  const mapDispatchToProps = {
     routerPush: push,
   }
 
@@ -96,7 +96,7 @@ const createQueryNavigationState = () => ComposedComponent => {
   QueryNavigationState.propTypes = propTypes
   QueryNavigationState.defaultProps = defaultProps
 
-  return compose(connect(null, mapDispathToProps), withRouter)(
+  return compose(connect(null, mapDispatchToProps), withRouter)(
     QueryNavigationState
   )
 }
