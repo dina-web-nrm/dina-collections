@@ -1,12 +1,12 @@
 export default function getTableWidth({
-  inludeColumns = null,
+  includeColumns = null,
   tableColumnSpecifications,
 }) {
   return tableColumnSpecifications.reduce((totalWidth, { name, width }) => {
-    if (!inludeColumns || inludeColumns.includes(name)) {
+    if (!includeColumns || includeColumns.includes(name)) {
       return totalWidth + width
     }
 
     return totalWidth
-  }, 80) // "Row #"" is always visible with this width
+  }, 80)
 }
