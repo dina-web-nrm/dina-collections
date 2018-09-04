@@ -192,7 +192,7 @@ const propTypes = {
 const defaultProps = {
   currentTableRowNumber: 1,
   focusedSpecimenId: undefined,
-  rightSidebarWidth: 800,
+  rightSidebarWidth: 300,
   searchResult: undefined,
   totalNumberOfRecords: 0,
 }

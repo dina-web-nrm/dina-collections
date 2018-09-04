@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { RowLayout } from 'coreModules/layout/components'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
+import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import extractProps from 'utilities/extractProps'
-import Header from './Header'
 import BottomBar from './BottomBar'
 
 const propTypes = {
@@ -47,12 +47,7 @@ class FilterColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'header': {
-        const { extractedProps } = extractProps({
-          keys: ['resource'],
-          props: this.props,
-        })
-
-        return <Header {...extractedProps} onClose={this.handleClose} />
+        return <ColumnRowHeader onClose={this.handleClose} text="Filter" />
       }
       case 'filterForm': {
         const { filterValues: initialValues } = this.props

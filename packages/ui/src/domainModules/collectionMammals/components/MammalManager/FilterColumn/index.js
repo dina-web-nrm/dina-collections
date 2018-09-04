@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
+import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { SPECIMEN_FILTERS_FORM_NAME } from '../../../constants'
 import BottomBar from './BottomBar'
 import Filters from './Filters'
-import Header from './Header'
 
 const formValueSelector = formValueSelectorFactory(SPECIMEN_FILTERS_FORM_NAME)
 
@@ -21,7 +21,7 @@ const main = {
 const header = {
   height: '50px',
   key: 'header',
-  renderRow: props => <Header {...props} />,
+  renderRow: () => <ColumnRowHeader text="Find records" />,
 }
 
 const bottomBar = {
