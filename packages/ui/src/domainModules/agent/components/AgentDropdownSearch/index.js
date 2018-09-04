@@ -4,7 +4,7 @@ import { DropdownSearch } from 'coreModules/form/components'
 import { ALL, PERSON, ORGANIZATION } from '../../constants'
 
 const propTypes = {
-  group: PropTypes.string,
+  group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]),
 }
 
 const defaultProps = {
