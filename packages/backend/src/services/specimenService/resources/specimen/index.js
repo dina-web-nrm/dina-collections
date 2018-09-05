@@ -16,10 +16,10 @@ const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json'
 const { create: createPreHooks } = require('./data/preHooks')
 
 const {
-  create: createHooks,
-  del: delHooks,
-  update: updateHooks,
-} = require('./data/hooks')
+  create: createPostHooks,
+  del: delPostHooks,
+  update: updatePostHooks,
+} = require('./data/postHooks')
 
 const normalizedColumnNames = getNormalizedColumnNames('specimen')
 
@@ -36,7 +36,7 @@ module.exports = {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
       exampleRequests: { primary: createSuccess },
-      postHooks: createHooks,
+      postHooks: createPostHooks,
       preHooks: createPreHooks,
       type: 'create',
     },
@@ -51,11 +51,11 @@ module.exports = {
     },
     {
       exampleRequests: { primary: updateRequestSuccess },
-      postHooks: updateHooks,
+      postHooks: updatePostHooks,
       type: 'update',
     },
     {
-      postHooks: delHooks,
+      postHooks: delPostHooks,
       type: 'del',
     },
     {
