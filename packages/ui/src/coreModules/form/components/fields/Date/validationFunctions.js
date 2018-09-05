@@ -98,3 +98,29 @@ export const intervalParsable = value => {
     }
   )
 }
+
+export const isYYYYMMDD = value => {
+  if (
+    value &&
+    value.startDate &&
+    value.startDate.dateText &&
+    !value.startDate.dateText.match(/(\d{4})-(\d{2})-(\d{2})/)
+  ) {
+    return {
+      errorCode: 'DATE_RANGE_START_NOT_YYYY_MM_DD',
+    }
+  }
+
+  if (
+    value &&
+    value.endDate &&
+    value.endDate.dateText &&
+    !value.endDate.dateText.match(/(\d{4})-(\d{2})-(\d{2})/)
+  ) {
+    return {
+      errorCode: 'DATE_RANGE_END_NOT_YYYY_MM_DD',
+    }
+  }
+
+  return undefined
+}

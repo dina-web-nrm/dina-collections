@@ -44,5 +44,11 @@
   },
   "DATE_RANGE_NOT_PARSABLE": {
     "en": "Invalid date"
+  },
+  "DATE_RANGE_START_NOT_YYYY_MM_DD": {
+    "en": "Start date is not YYYY-MM-DD"
+  },
+  "DATE_RANGE_END_NOT_YYYY_MM_DD": {
+    "en": "End date is not YYYY-MM-DD"
   }
 }
