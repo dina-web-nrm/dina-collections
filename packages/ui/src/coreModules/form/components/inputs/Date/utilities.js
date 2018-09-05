@@ -1,5 +1,20 @@
 import moment from 'moment'
 
+const monthToDaysMap = {
+  1: 31,
+  2: 28,
+  3: 31,
+  4: 30,
+  5: 31,
+  6: 30,
+  7: 31,
+  8: 31,
+  9: 30,
+  10: 31,
+  11: 30,
+  12: 31,
+}
+
 export const dateRangeShouldDisplayText = ({ displayText }) => {
   return displayText
 }
@@ -225,4 +240,62 @@ export const createDateTextValueFromInput = ({ input, useDateText = true }) => {
   const paddedDay = day && `${day}`.length === 1 ? `0${day}` : day
 
   return `${year}-${paddedMonth}-${paddedDay}`
+}
+
+export const getDateSuggestion = ({ input, isEndDate }) => {
+  const { value: { year, month, day, dateText } = {} } = input
+
+  if (!year || !(dateText && dateText.length && dateText.length >= 4)) {
+    return undefined
+  }
+
+  if (
+    year &&
+    month &&
+    day &&
+    dateText &&
+    dateText.length &&
+    dateText.length >= 8
+  ) {
+    return createDateTextValueFromInput({
+      input: { value: { day, month, year } },
+      useDateText: false,
+    })
+  }
+
+  const isLeapYear = moment([year]).isLeapYear()
+
+  if (year && month && dateText && dateText.length && dateText.length >= 6) {
+    return isEndDate
+      ? createDateTextValueFromInput({
+          input: {
+            value: {
+              day: month === 2 && isLeapYear ? 29 : monthToDaysMap[month],
+              month,
+              year,
+            },
+          },
+          useDateText: false,
+        })
+      : createDateTextValueFromInput({
+          input: { value: { day: 1, month, year } },
+          useDateText: false,
+        })
+  }
+
+  return isEndDate
+    ? createDateTextValueFromInput({
+        input: {
+          value: {
+            day: 31,
+            month: 12,
+            year,
+          },
+        },
+        useDateText: false,
+      })
+    : createDateTextValueFromInput({
+        input: { value: { day: 1, month: 1, year } },
+        useDateText: false,
+      })
 }

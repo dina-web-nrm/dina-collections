@@ -125,6 +125,7 @@ class DateRange extends Component {
         displayText={false}
         enableHelpNotifications={false}
         input={this.getFieldInput('endDate')}
+        isEndDate
         label={displaySubLabels ? 'End date' : undefined}
         meta={getFieldMeta({
           field: 'endDate',

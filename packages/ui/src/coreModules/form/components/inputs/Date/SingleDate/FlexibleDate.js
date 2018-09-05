@@ -3,17 +3,19 @@ import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
 import FieldTemplate from '../../../FieldTemplate'
 
-import { createDateTextValueFromInput } from '../utilities'
+import { createDateTextValueFromInput, getDateSuggestion } from '../utilities'
 
 const propTypes = {
   displaySubLabel: PropTypes.bool,
   fluid: PropTypes.bool,
   input: PropTypes.object.isRequired,
+  isEndDate: PropTypes.bool,
 }
 
 const defaultProps = {
   displaySubLabel: false,
   fluid: false,
+  isEndDate: false,
 }
 
 class FlexibleDate extends Component {
@@ -49,8 +51,11 @@ class FlexibleDate extends Component {
   }
 
   render() {
-    const { displaySubLabel, fluid, input } = this.props
-    const preview = createDateTextValueFromInput({ input, useDateText: false })
+    const { displaySubLabel, fluid, input, isEndDate } = this.props
+    const preview = getDateSuggestion({
+      input,
+      isEndDate,
+    })
     const value = createDateTextValueFromInput({ input })
 
     const previewStyle = {
