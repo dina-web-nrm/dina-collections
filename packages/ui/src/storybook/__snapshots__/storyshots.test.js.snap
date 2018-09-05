@@ -669,7 +669,11 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
       >
         <label
           htmlFor="test"
-          style={Object {}}
+          style={
+            Object {
+              "display": "block",
+            }
+          }
         >
           <span>
             Modules.no-module.fieldLabels.test
@@ -2566,7 +2570,11 @@ exports[`storyshots Storyshots coreModules/search/MultipleSearchTagsSelect Defau
       >
         <label
           htmlFor="searchCollectingLocation"
-          style={Object {}}
+          style={
+            Object {
+              "display": "block",
+            }
+          }
         >
           <span>
             
