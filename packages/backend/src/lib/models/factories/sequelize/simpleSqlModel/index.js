@@ -4,6 +4,7 @@ const createGetters = require('./utilities/createGetters')
 
 module.exports = function createModel({
   columns,
+  indexes = [],
   name,
   schemaModelName: schemaModelNameInput,
   schemaVersion = '1.0.1',
@@ -36,6 +37,7 @@ module.exports = function createModel({
     },
     {
       getterMethods: createGetters(),
+      indexes,
     }
   )
 
