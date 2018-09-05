@@ -36,11 +36,7 @@ function DateRangeField(props) {
     validateText,
   } = props
 
-  let validate = [
-    ...validateInput,
-    bothStartAndEndDateRequiredIfOneProvided,
-    dateRangeStartDateNotAfterEndDate,
-  ]
+  let validate = [...validateInput]
 
   if (requireYYYYMMDD) {
     validate = [...validate, isYYYYMMDD]
@@ -57,6 +53,12 @@ function DateRangeField(props) {
   if (validateText) {
     validate = [...validate, intervalParsable]
   }
+
+  validate = [
+    ...validate,
+    bothStartAndEndDateRequiredIfOneProvided,
+    dateRangeStartDateNotAfterEndDate,
+  ]
 
   return (
     <FieldWrapper {...props} component={DateRangeComponent} warn={validate} />
