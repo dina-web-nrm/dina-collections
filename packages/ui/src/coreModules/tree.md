@@ -79,7 +79,10 @@
 │   ├── sample.md
 │   └── translations.json
 ├── crud
-│   ├── actionCreators.js
+│   ├── actionCreators
+│   │   ├── clearNestedCache.js
+│   │   ├── createNestedItem.js
+│   │   └── index.js
 │   ├── actionTypes.js
 │   ├── config.js
 │   ├── config.test.js
@@ -115,22 +118,6 @@
 │   ├── reducer.js
 │   ├── selectors.js
 │   └── utilities.js
-├── crudBlocks
-│   ├── components
-│   │   ├── BlockLoader
-│   │   │   └── index.js
-│   │   ├── CrudBlocksWrapper
-│   │   │   └── index.js
-│   │   ├── ParentChildTables
-│   │   │   ├── RelationTable.js
-│   │   │   └── index.js
-│   │   ├── blocks
-│   │   │   ├── Collection
-│   │   │   └── Item
-│   │   └── index.js
-│   ├── constants.js
-│   ├── index.js
-│   └── keyObjectModule.js
 ├── devToolsExtension
 │   └── index.js
 ├── documentation
@@ -190,6 +177,7 @@
 │   │   │   ├── DropdownSearch
 │   │   │   ├── Input
 │   │   │   ├── MultipleSearchSelectionDropdown
+│   │   │   ├── Remarks
 │   │   │   ├── Search
 │   │   │   └── TextArea
 │   │   ├── index.js
@@ -209,10 +197,12 @@
 │   │       ├── HelpTextNotification.js
 │   │       └── InputDatePart
 │   ├── constants.js
+│   ├── globalSelectors.js
 │   ├── higherOrderComponents
 │   │   ├── index.js
 │   │   ├── injectErrorKeys.js
 │   │   ├── injectHelpNotificationProps.js
+│   │   ├── injectIsLatestActiveField.js
 │   │   ├── injectLabelKey.js
 │   │   ├── injectParameterKey.js
 │   │   ├── pathBuilder.js
@@ -222,6 +212,7 @@
 │   ├── notifications
 │   │   └── index.js
 │   ├── reducer.js
+│   ├── selectors.js
 │   └── utilities
 │       ├── createErrorKeys.js
 │       ├── createHelpNotificationProps.js
@@ -273,28 +264,26 @@
 ├── keyboardShortcuts
 │   ├── actionCreators
 │   │   ├── index.js
+│   │   ├── registerKeyboardShortcut.js
 │   │   ├── setShortcutsModalHidden.js
 │   │   ├── setShortcutsModalVisible.js
 │   │   ├── toggleShortcutsModal.js
-│   │   └── triggerShortcut.js
+│   │   └── unregisterKeyboardShortcut.js
 │   ├── actionTypes.js
 │   ├── components
+│   │   ├── KeyboardShortcuts
+│   │   │   └── index.js
 │   │   ├── ShortcutsDisplay.js
 │   │   ├── ShortcutsDisplay.stories.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── index.js
-│   ├── listener.js
-│   ├── middleware.js
-│   ├── middleware.test.js
 │   ├── reducer.js
 │   ├── reducer.test.js
 │   ├── selectors.js
 │   ├── selectors.test.js
-│   ├── shortcuts.js
-│   ├── translations.json
-│   └── utilities.js
+│   └── translations.json
 ├── layout
 │   ├── components
 │   │   ├── AppNavigationSidebar
@@ -308,9 +297,6 @@
 │   │   │   └── index.stories.js
 │   │   ├── InformationSidebar
 │   │   │   └── index.js
-│   │   ├── Layout
-│   │   │   ├── index.js
-│   │   │   └── views
 │   │   ├── NavigationSidebar
 │   │   │   ├── SidebarNavItem.js
 │   │   │   ├── SidebarNavItemGroup.js
@@ -368,6 +354,33 @@
 │       ├── buildNotification.js
 │       ├── index.js
 │       └── testNotificationSpecification.js
+├── resourceManager
+│   ├── components
+│   │   ├── ResourceManager
+│   │   │   ├── CollectionColumn
+│   │   │   ├── CreateItemColumn
+│   │   │   ├── EditItemColumn
+│   │   │   ├── FilterColumn
+│   │   │   ├── index.js
+│   │   │   └── picker
+│   │   └── index.js
+│   ├── constants.js
+│   ├── higherOrderComponents
+│   │   ├── createInjectItemTitle
+│   │   │   ├── DefaultItemTitle.js
+│   │   │   └── index.js
+│   │   ├── createLocalState.js
+│   │   ├── createNavigationState.js
+│   │   ├── createPickerWrapper.js
+│   │   ├── createQueryState.js
+│   │   ├── createResourceManagerWrapper.js
+│   │   └── index.js
+│   ├── index.js
+│   ├── keyObjectModule.js
+│   └── utilities
+│       ├── buildList.js
+│       ├── getTableWidth.js
+│       └── index.js
 ├── routing
 │   ├── constants.js
 │   ├── higherOrderComponents

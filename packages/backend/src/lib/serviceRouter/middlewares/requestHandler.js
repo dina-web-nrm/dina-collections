@@ -18,6 +18,7 @@ module.exports = function createRequestHandlerMiddleware({
     const { locals: { userInput, user } } = res
     log.info(`${res.locals.id}: Call route function for ${operationId}`)
     return requestHandler({
+      requestId: res.locals.id,
       user,
       userInput,
     })

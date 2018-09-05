@@ -2,29 +2,21 @@
 ## Tree
 ```bash
 ├── agent
-│   ├── actionCreators
-│   │   ├── index.js
-│   │   ├── redirectToNext.js
-│   │   └── redirectToPrev.js
 │   ├── components
 │   │   ├── AgentDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── AgentDropdownSearch
 │   │   │   └── index.js
 │   │   ├── AgentManager
-│   │   │   └── index.js
-│   │   ├── collection
-│   │   │   └── AgentList
-│   │   ├── index.js
-│   │   ├── item
-│   │   │   ├── Inspect
-│   │   │   └── form
-│   │   └── shared
-│   │       ├── RolesTable.js
-│   │       └── RolesTableRow.js
+│   │   │   ├── Base.js
+│   │   │   ├── ItemTitle.js
+│   │   │   ├── Local.js
+│   │   │   ├── Query.js
+│   │   │   ├── filter
+│   │   │   ├── item
+│   │   │   └── tableColumnSpecifications.js
+│   │   └── index.js
 │   ├── constants.js
-│   ├── globalSelectors.js
-│   ├── globalSelectors.test.js
 │   ├── index.js
 │   ├── keyObjectModule.js
 │   └── translations.json
@@ -94,27 +86,20 @@
 │   └── index.js
 ├── index.js
 ├── locality
-│   ├── actionCreators
-│   │   ├── index.js
-│   │   ├── redirectToNext.js
-│   │   └── redirectToPrev.js
 │   ├── components
 │   │   ├── LocalityDropdownPickerSearch
 │   │   │   └── index.js
 │   │   ├── LocalityDropdownSearch
 │   │   │   └── index.js
 │   │   ├── LocalityManager
-│   │   │   └── index.js
-│   │   ├── collection
-│   │   │   ├── LocalityList
-│   │   │   └── LocalityTree
-│   │   ├── index.js
-│   │   └── item
-│   │       ├── Inspect
-│   │       └── form
+│   │   │   ├── Base.js
+│   │   │   ├── Local.js
+│   │   │   ├── Query.js
+│   │   │   ├── filter
+│   │   │   ├── item
+│   │   │   └── tableColumnSpecifications.js
+│   │   └── index.js
 │   ├── constants.js
-│   ├── globalSelectors.js
-│   ├── globalSelectors.test.js
 │   ├── index.js
 │   ├── keyObjectModule.js
 │   └── translations.json
@@ -124,20 +109,19 @@
 │   │   │   └── storageLocation
 │   │   └── index.json
 │   ├── components
+│   │   ├── StorageLocationDropdownPickerSearch
+│   │   │   └── index.js
 │   │   ├── StorageLocationDropdownSearch
 │   │   │   └── index.js
 │   │   ├── StorageLocationManager
-│   │   │   └── index.js
-│   │   ├── collection
-│   │   │   ├── StorageLocationsList
-│   │   │   └── StorageLocationsTree
-│   │   ├── index.js
-│   │   └── item
-│   │       ├── Inspect
-│   │       ├── form
-│   │       └── shared
+│   │   │   ├── Base.js
+│   │   │   ├── Local.js
+│   │   │   ├── Query.js
+│   │   │   ├── filter
+│   │   │   ├── item
+│   │   │   └── tableColumnSpecifications.js
+│   │   └── index.js
 │   ├── constants.js
-│   ├── globalSelectors.js
 │   ├── index.js
 │   ├── keyObjectModule.js
 │   └── translations.json
@@ -149,20 +133,32 @@
 │   │       └── index.test.js
 │   ├── actionTypes.js
 │   ├── components
-│   │   ├── TaxonNameSearchInputWithResults
+│   │   ├── AcceptedTaxonNameDropdownPickerSearch
 │   │   │   └── index.js
-│   │   ├── TaxonSearchInputWithResults
+│   │   ├── TaxonDropdownPickerSearch
 │   │   │   └── index.js
-│   │   ├── TaxonomyManager
+│   │   ├── TaxonDropdownSearch
 │   │   │   └── index.js
-│   │   ├── collection
-│   │   │   ├── TaxonList
-│   │   │   ├── TaxonNameList
-│   │   │   └── TaxonTree
-│   │   ├── index.js
-│   │   └── item
-│   │       ├── taxon
-│   │       └── taxonName
+│   │   ├── TaxonManager
+│   │   │   ├── Base.js
+│   │   │   ├── ItemTitle.js
+│   │   │   ├── Local.js
+│   │   │   ├── Query.js
+│   │   │   ├── filter
+│   │   │   ├── item
+│   │   │   └── tableColumnSpecifications.js
+│   │   ├── TaxonNameDropdownPickerSearch
+│   │   │   └── index.js
+│   │   ├── TaxonNameDropdownSearch
+│   │   │   └── index.js
+│   │   ├── TaxonNameManager
+│   │   │   ├── Base.js
+│   │   │   ├── Local.js
+│   │   │   ├── Query.js
+│   │   │   ├── filter
+│   │   │   ├── item
+│   │   │   └── tableColumnSpecifications.js
+│   │   └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── globalSelectors.test.js

@@ -6,12 +6,10 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
-│   │   └── index.js
 │   └── resources
 │       ├── agent
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       └── index.js
 ├── authService
 │   ├── controllers
@@ -34,61 +32,61 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
-│   │   └── index.js
 │   └── resources
 │       ├── causeOfDeathType
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       ├── establishmentMeansType
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       ├── featureType
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       ├── identifierType
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       ├── index.js
 │       ├── preparationType
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       └── typeSpecimenType
-│           ├── index.js
-│           └── operations
+│           ├── data
+│           └── index.js
 ├── index.js
 ├── jobService
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
+│   └── resources
+│       ├── data
+│       │   └── filterSpecifications
+│       └── index.js
+├── logService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
 │   │   └── index.js
 │   └── resources
 │       ├── index.js
-│       └── operations
-│           └── getMany
+│       └── resourceActivity
+│           ├── data
+│           └── index.js
 ├── placeService
 │   ├── e2e.spec.js
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
-│   │   └── index.js
 │   └── resources
 │       ├── index.js
 │       └── place
-│           ├── create
 │           ├── data
-│           ├── getMany
 │           └── index.js
 ├── searchService
 │   ├── cacheResourcesSpecifications.js
 │   ├── index.js
 │   ├── info
-│   │   └── index.js
-│   ├── models
 │   │   └── index.js
 │   └── resources
 │       ├── cacheResources.js
@@ -102,8 +100,6 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
-│   │   └── index.js
 │   ├── resources
 │   │   ├── index.js
 │   │   ├── lookupResources
@@ -112,9 +108,7 @@
 │   │   │   └── specification.js
 │   │   └── specimen
 │   │       ├── data
-│   │       ├── index.js
-│   │       ├── operations
-│   │       └── testData
+│   │       └── index.js
 │   └── todo.md
 ├── statusService
 │   ├── controllers
@@ -131,30 +125,24 @@
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
-│   │   └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── physicalObject
-│       │   ├── index.js
-│       │   └── operations
+│       │   ├── data
+│       │   └── index.js
 │       └── storageLocation
 │           ├── data
-│           ├── index.js
-│           └── operations
+│           └── index.js
 ├── taxonomyService
 │   ├── index.js
 │   ├── info
 │   │   ├── description.md
 │   │   └── index.js
-│   ├── models
-│   │   └── index.js
 │   └── resources
 │       ├── index.js
 │       ├── taxon
 │       │   ├── data
-│       │   ├── index.js
-│       │   └── operations
+│       │   └── index.js
 │       └── taxonName
 │           ├── data
 │           ├── index.js

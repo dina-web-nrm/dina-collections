@@ -6,6 +6,7 @@ const services = {
   curatedEventService: true,
   curatedListService: true,
   jobService: true,
+  logService: true,
   placeService: true,
   searchService: true,
   specimenService: true,

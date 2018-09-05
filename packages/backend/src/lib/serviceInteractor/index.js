@@ -24,13 +24,15 @@ module.exports = function createServiceInteractor() {
     connectors = connectorsInput
   }
 
-  const call = ({ operationId, request }) => {
+  const call = ({ operationId, request = {}, requestId, user }) => {
     return Promise.resolve().then(() => {
       return callController({
         connectors,
         log,
         operationId,
         request,
+        requestId,
+        user,
       })
     })
   }
@@ -41,14 +43,16 @@ module.exports = function createServiceInteractor() {
 
       return {
         ...methods,
-        [operationType]: ({ resource, request = {} }) => {
+        [operationType]: ({ request = {}, requestId, resource, user }) => {
           return Promise.resolve().then(() => {
             return callController({
               connectors,
               log,
               operationType,
               request,
+              requestId,
               resource,
+              user,
             })
           })
         },

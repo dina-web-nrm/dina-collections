@@ -6,29 +6,20 @@ const {
   importDataFromFile: importDataFromFileTransformationSpecification,
 } = require('./data/transformationSpecifications')
 
-const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
-const validateBody = require('./operations/create/validators/validateBody')
-const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
-const getManyfilterSpecification = require('./operations/getMany/filters')
+const {
+  getMany: getManyFilterSpecification,
+} = require('./data/filterSpecifications')
 
-const postEditHook = ({ item, serviceInteractor }) => {
-  return Promise.resolve().then(() => {
-    const id = item && item.id
-    const request = {
-      body: {
-        data: {
-          attributes: {
-            ids: [id],
-          },
-        },
-      },
-    }
-    return serviceInteractor.requestUpdateView({
-      request,
-      resource: 'searchSpecimen',
-    })
-  })
-}
+const createSuccess = require('./data/exampleRequests/createSuccess.json')
+const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json')
+
+const { create: createPreHooks } = require('./data/preHooks')
+
+const {
+  create: createPostHooks,
+  del: delPostHooks,
+  update: updatePostHooks,
+} = require('./data/postHooks')
 
 const normalizedColumnNames = getNormalizedColumnNames('specimen')
 
@@ -44,27 +35,27 @@ module.exports = {
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
-      exampleRequests: { primary: normalizedRequestSuccess },
-      postCreateHook: postEditHook,
+      exampleRequests: { primary: createSuccess },
+      postHooks: createPostHooks,
+      preHooks: createPreHooks,
       type: 'create',
-      validateBody,
     },
     {
       includeRelations: true,
       type: 'getOne',
     },
     {
-      filterSpecification: getManyfilterSpecification,
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },
     {
       exampleRequests: { primary: updateRequestSuccess },
-      postUpdateHook: postEditHook,
+      postHooks: updatePostHooks,
       type: 'update',
     },
     {
-      postDeleteHook: postEditHook,
+      postHooks: delPostHooks,
       type: 'del',
     },
     {

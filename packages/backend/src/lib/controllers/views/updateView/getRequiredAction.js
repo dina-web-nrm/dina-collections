@@ -32,7 +32,7 @@ const getTargetItem = ({ model, id }) => {
     .getById({ allowDeactivated: true, id })
     .then(response => {
       if (response) {
-        return !!response
+        return !!(response && response.item)
       }
       return null
     })

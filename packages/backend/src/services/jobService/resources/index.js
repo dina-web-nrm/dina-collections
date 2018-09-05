@@ -1,5 +1,7 @@
 const Sequelize = require('sequelize')
-const getManyfilterSpecification = require('./operations/getMany/filters')
+const {
+  getMany: getManyFilterSpecification,
+} = require('./data/filterSpecifications')
 
 exports.job = {
   basePath: '/api/jobs/v01',
@@ -30,7 +32,7 @@ exports.job = {
       type: 'getOne',
     },
     {
-      filterSpecification: getManyfilterSpecification,
+      filterSpecification: getManyFilterSpecification,
       type: 'getMany',
     },
     {

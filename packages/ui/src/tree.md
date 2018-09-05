@@ -12,7 +12,6 @@
 │   ├── bootstrap
 │   ├── commonUi
 │   ├── crud
-│   ├── crudBlocks
 │   ├── devToolsExtension
 │   ├── documentation
 │   ├── error
@@ -24,6 +23,7 @@
 │   ├── localStorage
 │   ├── logger
 │   ├── notifications
+│   ├── resourceManager
 │   ├── routing
 │   ├── search
 │   ├── size

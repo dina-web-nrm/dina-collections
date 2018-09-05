@@ -9,7 +9,7 @@ module.exports = {
     active: true,
   },
   auth: {
-    ...baseConfig,
+    ...baseConfig.auth,
     active: !disableAuth,
   },
 

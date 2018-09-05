@@ -7,10 +7,11 @@ module.exports = {
     exampleRequests: {
       type: 'object',
     },
-    postUpdateHook: {
-      not: {
-        type: 'string',
-      },
+    postHooks: {
+      type: 'array',
+    },
+    preHooks: {
+      type: 'array',
     },
   },
   required: [...base.required],

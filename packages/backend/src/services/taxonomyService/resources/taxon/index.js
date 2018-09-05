@@ -6,6 +6,12 @@ const buildOperationId = require('common/src/buildOperationId')
 const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
 const {
+  create: createPostHooks,
+  del: delPostHooks,
+  update: updatePostHooks,
+} = require('./data/postHooks')
+
+const {
   getMany: getManyFilterSpecification,
   query: queryFilterSpecification,
 } = require('./data/filterSpecifications')
@@ -20,6 +26,7 @@ module.exports = {
   operations: [
     {
       exampleRequests: { primary: createRequestSuccess },
+      postHooks: createPostHooks,
       type: 'create',
     },
     {
@@ -37,9 +44,11 @@ module.exports = {
       type: 'query',
     },
     {
+      postHooks: updatePostHooks,
       type: 'update',
     },
     {
+      postHooks: delPostHooks,
       type: 'del',
     },
     {

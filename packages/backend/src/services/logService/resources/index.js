@@ -1,0 +1,1 @@
+exports.resourceActivity = require('./resourceActivity')

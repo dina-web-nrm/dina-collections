@@ -1,8 +1,11 @@
+const createLog = require('../../../utilities/log')
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 const transformInput = require('../utilities/transformations/inputObject')
 
+const log = createLog('lib/controllers/crud/update')
+
 module.exports = function update({ operation, models, serviceInteractor }) {
-  const { resource, relations, postUpdateHook } = operation
+  const { resource, relations, postHooks = [], preHooks = [] } = operation
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -12,30 +15,51 @@ module.exports = function update({ operation, models, serviceInteractor }) {
     throw new Error(`Model missing required method: update for ${resource}`)
   }
 
-  return ({ request }) => {
-    const { body: { data: input = {} } = {} } = request
-    const { pathParams: { id } } = request
-
-    return model
-      .update({
-        id,
-        ...transformInput({ input, relations, sourceResource: resource }),
+  return ({ request, user, requestId }) => {
+    const preHookPromises = preHooks.map(preHook => {
+      return preHook({
+        request,
+        requestId,
+        resource,
+        serviceInteractor,
+        user,
       })
-      .then(({ item } = {}) => {
-        if (postUpdateHook) {
-          return postUpdateHook({ item, serviceInteractor }).then(() => {
+    })
+
+    return Promise.all(preHookPromises).then(() => {
+      const { body: { data: input = {} } = {} } = request
+      const { pathParams: { id } } = request
+
+      return model
+        .update({
+          id,
+          ...transformInput({ input, relations, sourceResource: resource }),
+        })
+        .then(({ item } = {}) => {
+          const promises = postHooks.map(postHook => {
+            return postHook({
+              item,
+              requestId,
+              resource,
+              serviceInteractor,
+              user,
+            }).catch(err => {
+              log.info('Error in post hook')
+              log.err(err.stack)
+            })
+          })
+
+          return Promise.all(promises).then(() => {
             return item
           })
-        }
-
-        return item
-      })
-      .then(output => {
-        return createObjectResponse({
-          data: output,
-          id: output.id,
-          type: resource,
         })
-      })
+        .then(output => {
+          return createObjectResponse({
+            data: output,
+            id: output.id,
+            type: resource,
+          })
+        })
+    })
   }
 }

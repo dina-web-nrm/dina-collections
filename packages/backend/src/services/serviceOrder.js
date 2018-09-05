@@ -13,4 +13,5 @@ module.exports = [
   'specimenService',
   'statusService',
   'jobService',
+  'logService',
 ]
