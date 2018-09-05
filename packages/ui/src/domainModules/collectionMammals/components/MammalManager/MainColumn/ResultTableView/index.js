@@ -43,6 +43,7 @@ const rows = [infiniteTableHeader, infiniteTable]
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  onFormTabClick: PropTypes.func.isRequired,
   onToggleFilters: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
@@ -55,6 +56,11 @@ class ResultTableView extends PureComponent {
   constructor(props) {
     super(props)
     this.shortcuts = [
+      {
+        command: 'o',
+        description: 'Open focused record',
+        onPress: props.onFormTabClick,
+      },
       {
         command: 'f',
         description: 'Show/hide filters',

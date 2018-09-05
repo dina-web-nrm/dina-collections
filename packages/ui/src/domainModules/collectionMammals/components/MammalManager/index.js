@@ -231,11 +231,6 @@ class MammalManager extends Component {
         onPress: this.handleSelectPreviousRecord,
       },
       {
-        command: 'enter',
-        description: 'Open focused record',
-        onPress: this.handleOpenEditRecordView,
-      },
-      {
         command: 'n n',
         description: 'Open new record form',
         onPress: this.handleOpenNewRecordForm,
