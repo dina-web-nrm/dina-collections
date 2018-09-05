@@ -119,7 +119,6 @@ class SegmentCollectingInformation extends PureComponent {
             <Grid.Column computer={16} mobile={16} tablet={8}>
               <DateRange
                 autoComplete="off"
-                displayText
                 formName="mammalForm"
                 module="collectionMammals"
                 name={getPath('event.dateRange')}
