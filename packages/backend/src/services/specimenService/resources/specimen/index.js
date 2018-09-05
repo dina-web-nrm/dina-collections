@@ -11,8 +11,9 @@ const {
 } = require('./data/filterSpecifications')
 
 const createSuccess = require('./data/exampleRequests/createSuccess.json')
-const validateBody = require('./data/preHooks')
 const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json')
+
+const { create: createPreHooks } = require('./data/preHooks')
 
 const {
   create: createHooks,
@@ -36,8 +37,8 @@ module.exports = {
       },
       exampleRequests: { primary: createSuccess },
       postHooks: createHooks,
+      preHooks: createPreHooks,
       type: 'create',
-      validateBody,
     },
     {
       includeRelations: true,
