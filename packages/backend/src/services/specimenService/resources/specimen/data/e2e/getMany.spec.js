@@ -5,8 +5,8 @@ const {
 const waitForApiRestart = require('../../../../../../utilities/test/waitForApiRestart')
 const expectMultipleResourcesResponse = require('../../../../../../utilities/test/expectMultipleResourcesResponse')
 
-const fullFormExample = require('../create/examples/normalizedRequestSuccess.json')
-const { getTestData } = require('../../testData')
+const fullFormExample = require('../exampleRequests/createSuccess')
+const { getTestData } = require('../testData')
 
 const validCatalogNumber = '123456'
 

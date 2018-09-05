@@ -8,7 +8,7 @@ const expectError400 = require('../../../../../../utilities/test/expectError400'
 const expectSingleResourceResponse = require('../../../../../../utilities/test/expectSingleResourceResponse')
 const expectMultipleResourcesResponse = require('../../../../../../utilities/test/expectMultipleResourcesResponse')
 
-const { getTestData } = require('../../testData')
+const { getTestData } = require('../testData')
 
 apiDescribe('specimen', () => {
   beforeAll(() => {

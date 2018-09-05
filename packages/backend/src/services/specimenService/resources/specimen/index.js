@@ -6,10 +6,13 @@ const {
   importDataFromFile: importDataFromFileTransformationSpecification,
 } = require('./data/transformationSpecifications')
 
-const normalizedRequestSuccess = require('./operations/create/examples/normalizedRequestSuccess.json')
-const validateBody = require('./operations/create/validators/validateBody')
-const updateRequestSuccess = require('./operations/update/examples/requestSuccess.json')
-const getManyfilterSpecification = require('./operations/getMany/filters')
+const {
+  getMany: getManyFilterSpecification,
+} = require('./data/filterSpecifications')
+
+const createSuccess = require('./data/exampleRequests/createSuccess.json')
+const validateBody = require('./data/preHooks')
+const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json')
 
 const {
   create: createHooks,
@@ -31,7 +34,7 @@ module.exports = {
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
-      exampleRequests: { primary: normalizedRequestSuccess },
+      exampleRequests: { primary: createSuccess },
       postHooks: createHooks,
       type: 'create',
       validateBody,
@@ -41,7 +44,7 @@ module.exports = {
       type: 'getOne',
     },
     {
-      filterSpecification: getManyfilterSpecification,
+      filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
     },

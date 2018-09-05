@@ -6,9 +6,9 @@ const waitForApiRestart = require('../../../../../../utilities/test/waitForApiRe
 const expectSingleResourceResponse = require('../../../../../../utilities/test/expectSingleResourceResponse')
 const expectError400 = require('../../../../../../utilities/test/expectError400')
 
-const { getTestData } = require('../../testData')
+const { getTestData } = require('../testData')
 
-const fullFormExample = require('./examples/normalizedRequestSuccess')
+const fullFormExample = require('../exampleRequests/createSuccess')
 
 apiDescribe('specimen', () => {
   beforeAll(() => {

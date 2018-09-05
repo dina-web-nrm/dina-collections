@@ -7,10 +7,10 @@ const expectError404 = require('../../../../../../utilities/test/expectError404'
 const expectError400 = require('../../../../../../utilities/test/expectError400')
 const expectSingleResourceResponse = require('../../../../../../utilities/test/expectSingleResourceResponse')
 
-const fullFormExample = require('../create/examples/normalizedRequestSuccess.json')
-const updateFullFormExample = require('./examples/requestSuccess.json')
+const fullFormExample = require('../exampleRequests/createSuccess')
+const updateFullFormExample = require('../exampleRequests/updateSuccess.json')
 
-const { getTestData } = require('../../testData')
+const { getTestData } = require('../testData')
 
 apiDescribe('specimen', () => {
   beforeAll(() => {

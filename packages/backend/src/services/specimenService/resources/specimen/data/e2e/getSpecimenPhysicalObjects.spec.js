@@ -6,7 +6,7 @@ const waitForApiRestart = require('../../../../../../utilities/test/waitForApiRe
 const expectError404 = require('../../../../../../utilities/test/expectError404')
 const expectMultipleResourcesResponse = require('../../../../../../utilities/test/expectMultipleResourcesResponse')
 
-const { getTestData } = require('../../testData')
+const { getTestData } = require('../testData')
 
 apiDescribe('specimen', () => {
   beforeAll(() => {

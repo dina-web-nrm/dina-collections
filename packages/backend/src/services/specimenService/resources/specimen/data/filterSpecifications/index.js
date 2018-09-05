@@ -1,6 +1,6 @@
 const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
 
-module.exports = createGetManyFilterSpecifications({
+const filters = createGetManyFilterSpecifications({
   custom: {
     catalogNumber: {
       description: 'catalog number used to filter specimens',
@@ -29,3 +29,5 @@ module.exports = createGetManyFilterSpecifications({
     },
   },
 })
+
+exports.getMany = filters
