@@ -4,6 +4,12 @@ const {
 
 const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
 
+const {
+  create: createPostHooks,
+  del: delPostHooks,
+  update: updatePostHooks,
+} = require('./data/postHooks')
+
 module.exports = {
   basePath: '/api/curatedList/v01',
   model: {
@@ -13,6 +19,7 @@ module.exports = {
   operations: [
     {
       exampleRequests: { primary: createRequestSuccess },
+      postHooks: createPostHooks,
       type: 'create',
     },
     {
@@ -26,9 +33,11 @@ module.exports = {
       type: 'importDataFromFile',
     },
     {
+      postHooks: updatePostHooks,
       type: 'update',
     },
     {
+      postHooks: delPostHooks,
       type: 'del',
     },
   ],
