@@ -4,7 +4,8 @@ const createObjectResponse = require('../utilities/transformations/createObjectR
 const log = createLog('lib/controllers/crud/del')
 
 module.exports = function del({ operation, models, serviceInteractor }) {
-  const { resource, postHooks = [] } = operation
+  const { resource, postHooks = [], preHooks = [] } = operation
+
   const model = models[resource]
   if (!model) {
     throw new Error(`Model not provided for ${resource}`)
@@ -13,34 +14,46 @@ module.exports = function del({ operation, models, serviceInteractor }) {
     throw new Error(`Model missing required method: deactivate for ${resource}`)
   }
   return ({ request, user, requestId }) => {
-    const { pathParams: { id } } = request
+    const preHookPromises = preHooks.map(preHook => {
+      return preHook({
+        request,
+        requestId,
+        resource,
+        serviceInteractor,
+        user,
+      })
+    })
 
-    return model
-      .deactivate({ id })
-      .then(({ item } = {}) => {
-        const promises = postHooks.map(postHook => {
-          return postHook({
-            item,
-            requestId,
-            resource,
-            serviceInteractor,
-            user,
-          }).catch(err => {
-            log.info('Error in post hook')
-            log.err(err.stack)
+    return Promise.all(preHookPromises).then(() => {
+      const { pathParams: { id } } = request
+
+      return model
+        .deactivate({ id })
+        .then(({ item } = {}) => {
+          const promises = postHooks.map(postHook => {
+            return postHook({
+              item,
+              requestId,
+              resource,
+              serviceInteractor,
+              user,
+            }).catch(err => {
+              log.info('Error in post hook')
+              log.err(err.stack)
+            })
+          })
+
+          return Promise.all(promises).then(() => {
+            return item
           })
         })
-
-        return Promise.all(promises).then(() => {
-          return item
+        .then(output => {
+          return createObjectResponse({
+            data: output,
+            id: output.id,
+            type: resource,
+          })
         })
-      })
-      .then(output => {
-        return createObjectResponse({
-          data: output,
-          id: output.id,
-          type: resource,
-        })
-      })
+    })
   }
 }

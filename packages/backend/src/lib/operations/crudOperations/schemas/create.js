@@ -10,6 +10,9 @@ module.exports = {
     postHooks: {
       type: 'array',
     },
+    preHooks: {
+      type: 'array',
+    },
     validateBody: {
       not: {
         type: 'string',

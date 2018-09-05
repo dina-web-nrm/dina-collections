@@ -7,6 +7,9 @@ module.exports = {
     postHooks: {
       type: 'array',
     },
+    preHooks: {
+      type: 'array',
+    },
   },
   required: [...base.required],
 }
