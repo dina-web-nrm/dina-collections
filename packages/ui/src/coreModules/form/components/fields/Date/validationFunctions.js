@@ -19,11 +19,13 @@ export const pastSingleDate = value => {
   }
 
   const parsedInterpretedTimestamp = moment(value.interpretedTimestamp)
-  return moment(parsedInterpretedTimestamp).isBefore(moment.utc())
-    ? undefined
-    : {
+
+  // today's date is allowed
+  return moment(parsedInterpretedTimestamp).isAfter(moment.utc())
+    ? {
         errorCode: 'DATE_PAST',
       }
+    : undefined
 }
 
 export const pastDateRange = value => {
