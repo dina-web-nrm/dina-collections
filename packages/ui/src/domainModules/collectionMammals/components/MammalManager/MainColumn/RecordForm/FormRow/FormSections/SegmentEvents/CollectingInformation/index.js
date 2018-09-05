@@ -123,6 +123,8 @@ class SegmentCollectingInformation extends PureComponent {
                 formName="mammalForm"
                 module="collectionMammals"
                 name={getPath('event.dateRange')}
+                past
+                requireYYYYMMDD
                 stack={false}
               />
             </Grid.Column>
