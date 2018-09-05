@@ -19,11 +19,13 @@ export const pastSingleDate = value => {
   }
 
   const parsedInterpretedTimestamp = moment(value.interpretedTimestamp)
-  return moment(parsedInterpretedTimestamp).isBefore(moment.utc())
-    ? undefined
-    : {
+
+  // today's date is allowed
+  return moment(parsedInterpretedTimestamp).isAfter(moment.utc())
+    ? {
         errorCode: 'DATE_PAST',
       }
+    : undefined
 }
 
 export const pastDateRange = value => {
@@ -40,7 +42,7 @@ export const futureDateRange = value => {
   )
 }
 
-export const dateRangeStartDateBeforeEndDate = value => {
+export const dateRangeStartDateNotAfterEndDate = value => {
   const startDateTimestamp =
     value && value.startDate && value.startDate.interpretedTimestamp
   const endDateTimestamp =
@@ -50,11 +52,33 @@ export const dateRangeStartDateBeforeEndDate = value => {
     return undefined
   }
 
-  return moment(startDateTimestamp).isBefore(endDateTimestamp)
-    ? undefined
-    : {
-        errorCode: 'DATE_RANGE_START_DATE_BEFORE_END_DATE',
+  return moment(startDateTimestamp).isAfter(endDateTimestamp)
+    ? {
+        errorCode: 'DATE_RANGE_START_DATE_NOT_AFTER_END_DATE',
       }
+    : undefined
+}
+
+export const bothStartAndEndDateRequiredIfOneProvided = value => {
+  if (!value || (!value.startDate && !value.endDate)) {
+    return undefined
+  }
+
+  if (
+    value &&
+    value.startDate &&
+    (value.startDate.dateText ||
+      (value.startDate.day && value.startDate.month && value.startDate.year)) &&
+    value.endDate &&
+    (value.endDate.dateText ||
+      (value.endDate.day && value.endDate.month && value.endDate.year))
+  ) {
+    return undefined
+  }
+
+  return {
+    errorCode: 'DATE_RANGE_BOTH_START_AND_END_REQUIRED',
+  }
 }
 
 export const textParsable = value => {
@@ -73,4 +97,30 @@ export const intervalParsable = value => {
       errorCode: 'DATE_RANGE_NOT_PARSABLE',
     }
   )
+}
+
+export const isYYYYMMDD = value => {
+  if (
+    value &&
+    value.startDate &&
+    value.startDate.dateText &&
+    !value.startDate.dateText.match(/(\d{4})-(\d{2})-(\d{2})/)
+  ) {
+    return {
+      errorCode: 'DATE_RANGE_START_NOT_YYYY_MM_DD',
+    }
+  }
+
+  if (
+    value &&
+    value.endDate &&
+    value.endDate.dateText &&
+    !value.endDate.dateText.match(/(\d{4})-(\d{2})-(\d{2})/)
+  ) {
+    return {
+      errorCode: 'DATE_RANGE_END_NOT_YYYY_MM_DD',
+    }
+  }
+
+  return undefined
 }

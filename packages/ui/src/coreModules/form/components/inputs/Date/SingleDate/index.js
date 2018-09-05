@@ -20,6 +20,7 @@ const propTypes = {
   displayTodayButton: PropTypes.bool,
   fluid: PropTypes.bool,
   input: PropTypes.object.isRequired,
+  isEndDate: PropTypes.bool,
   meta: PropTypes.object.isRequired,
   mountHidden: PropTypes.bool,
   stack: PropTypes.bool,
@@ -32,6 +33,7 @@ const defaultProps = {
   displayText: false,
   displayTodayButton: false,
   fluid: false,
+  isEndDate: false,
   mountHidden: config.isTest,
   stack: false,
 }
@@ -110,6 +112,7 @@ class SingleDate extends Component {
       displayTodayButton,
       fluid,
       input,
+      isEndDate,
       meta,
       mountHidden,
       stack,
@@ -160,6 +163,7 @@ class SingleDate extends Component {
           displaySubLabel={displaySubLabels}
           fluid={fluid}
           input={this.getFieldInput('flexibleDate')}
+          isEndDate={isEndDate}
           meta={meta}
         />
       )

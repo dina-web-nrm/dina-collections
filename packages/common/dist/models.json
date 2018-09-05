@@ -200,6 +200,11 @@
         "example": "Before 1800",
         "x-summary": ""
       },
+      "remarks": {
+        "type": "string",
+        "example": "Some remarks",
+        "x-summary": ""
+      },
       "startDate": {
         "$ref": "singleDate",
         "x-summary": ""

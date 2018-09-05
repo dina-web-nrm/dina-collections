@@ -3,15 +3,18 @@ import PropTypes from 'prop-types'
 import FieldWrapper from '../../../FieldWrapper'
 import DateRangeComponent from './Component'
 import {
-  dateRangeStartDateBeforeEndDate,
+  bothStartAndEndDateRequiredIfOneProvided,
+  dateRangeStartDateNotAfterEndDate,
   futureDateRange,
   pastDateRange,
   intervalParsable,
+  isYYYYMMDD,
 } from '../validationFunctions'
 
 const propTypes = {
   future: PropTypes.bool,
   past: PropTypes.bool,
+  requireYYYYMMDD: PropTypes.bool,
   validate: PropTypes.array,
   validateText: PropTypes.bool,
 }
@@ -19,28 +22,47 @@ const propTypes = {
 const defaultProps = {
   future: false,
   past: false,
+  requireYYYYMMDD: false,
   validate: [],
   validateText: true,
 }
 
 function DateRangeField(props) {
-  const { future, past, validate: validateInput, validateText } = props
+  const {
+    future,
+    past,
+    requireYYYYMMDD,
+    validate: validateErrorsInput,
+    validateText,
+  } = props
 
-  let validate = [...validateInput, dateRangeStartDateBeforeEndDate]
+  const validateErrors = [...validateErrorsInput]
+
+  if (requireYYYYMMDD) {
+    validateErrors.push(isYYYYMMDD)
+  }
+
   if (future) {
-    validate = [...validate, futureDateRange]
+    validateErrors.push(futureDateRange)
   }
 
   if (past) {
-    validate = [...validate, pastDateRange]
+    validateErrors.push(pastDateRange)
   }
 
   if (validateText) {
-    validate = [...validate, intervalParsable]
+    validateErrors.push(intervalParsable)
   }
 
+  validateErrors.push(bothStartAndEndDateRequiredIfOneProvided)
+  validateErrors.push(dateRangeStartDateNotAfterEndDate)
+
   return (
-    <FieldWrapper {...props} component={DateRangeComponent} warn={validate} />
+    <FieldWrapper
+      {...props}
+      component={DateRangeComponent}
+      validate={validateErrors}
+    />
   )
 }
 

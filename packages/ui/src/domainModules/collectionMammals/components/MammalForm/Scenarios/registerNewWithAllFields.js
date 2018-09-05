@@ -111,8 +111,14 @@ const segmentCollectingInformationMutations = [
   {
     name: 'individual.collectingInformation.0.event.dateRange.hidden',
     value: {
-      endDate: { dateText: 'endDate' },
-      startDate: { dateText: 'startDate' },
+      endDate: {
+        dateText: '2012-12-31',
+        interpretedTimestamp: '2012-12-31T00:00:00Z',
+      },
+      startDate: {
+        dateText: '1600-01-01',
+        interpretedTimestamp: '1600-01-01T00:00:00Z',
+      },
     },
   },
   {
@@ -349,10 +355,12 @@ const expectedOutput = {
         event: {
           dateRange: {
             endDate: {
-              dateText: 'endDate',
+              dateText: '2012-12-31',
+              interpretedTimestamp: '2012-12-31T00:00:00Z',
             },
             startDate: {
-              dateText: 'startDate',
+              dateText: '1600-01-01',
+              interpretedTimestamp: '1600-01-01T00:00:00Z',
             },
           },
           expeditionText: 'expeditionText',

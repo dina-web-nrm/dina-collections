@@ -6,6 +6,10 @@
       "type": "string",
       "example": "Before 1800"
     },
+    "remarks": {
+      "type": "string",
+      "example": "Some remarks"
+    },
     "startDate": {
       "$ref": "__ROOT__singleDate"
     },

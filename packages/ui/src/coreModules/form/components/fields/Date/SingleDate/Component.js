@@ -10,11 +10,15 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   }).isRequired,
+  isEndDate: PropTypes.bool,
   meta: PropTypes.object.isRequired,
+}
+const defaultProps = {
+  isEndDate: false,
 }
 
 function SingleDateComponent(props) {
-  const { meta, input } = props
+  const { meta, input, isEndDate } = props
 
   const { extractedProps: fieldTemplateProps, rest } = extractProps({
     keys: fieldTemplatePropKeys,
@@ -31,11 +35,12 @@ function SingleDateComponent(props) {
       float="left"
       name={input.name}
     >
-      <SingleDate {...rest} input={input} meta={meta} />
+      <SingleDate {...rest} input={input} isEndDate={isEndDate} meta={meta} />
     </FieldTemplate>
   )
 }
 
 SingleDateComponent.propTypes = propTypes
+SingleDateComponent.defaultProps = defaultProps
 
 export default SingleDateComponent

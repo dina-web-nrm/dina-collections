@@ -108,6 +108,7 @@ class DateRange extends Component {
         displaySubLabels={false}
         displayText={false}
         enableHelpNotifications={false}
+        fluid
         input={this.getFieldInput('startDate')}
         label={displaySubLabels ? 'Start date' : undefined}
         meta={getFieldMeta({
@@ -124,7 +125,9 @@ class DateRange extends Component {
         displaySubLabels={false}
         displayText={false}
         enableHelpNotifications={false}
+        fluid
         input={this.getFieldInput('endDate')}
+        isEndDate
         label={displaySubLabels ? 'End date' : undefined}
         meta={getFieldMeta({
           field: 'endDate',

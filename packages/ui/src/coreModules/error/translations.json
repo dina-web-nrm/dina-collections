@@ -36,10 +36,19 @@
   "DATE_TEXT_NOT_PARSABLE": {
     "en": "Invalid date"
   },
-  "DATE_RANGE_START_DATE_BEFORE_END_DATE": {
+  "DATE_RANGE_BOTH_START_AND_END_REQUIRED": {
+    "en": "Both start and end required"
+  },
+  "DATE_RANGE_START_DATE_NOT_AFTER_END_DATE": {
     "en": "End date before start date"
   },
   "DATE_RANGE_NOT_PARSABLE": {
     "en": "Invalid date"
+  },
+  "DATE_RANGE_START_NOT_YYYY_MM_DD": {
+    "en": "Start date is not YYYY-MM-DD"
+  },
+  "DATE_RANGE_END_NOT_YYYY_MM_DD": {
+    "en": "End date is not YYYY-MM-DD"
   }
 }
