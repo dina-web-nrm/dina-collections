@@ -7,7 +7,7 @@ import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import createNestedItem from 'coreModules/crud/actionCreators/createNestedItem'
 import DropdownSearchBase from '../Base'
 
-const defaultExtractValue = item => {
+const defaultExtractText = item => {
   return item && item.attributes && item.attributes.name
 }
 
@@ -21,7 +21,7 @@ const propTypes = {
     value: PropTypes.string.isRequired,
   }),
   createNestedItem: PropTypes.func.isRequired,
-  extractValue: PropTypes.func,
+  extractText: PropTypes.func,
   filterFunctionName: PropTypes.string,
   getManySearch: PropTypes.func.isRequired,
   include: PropTypes.array,
@@ -44,7 +44,7 @@ const propTypes = {
 
 const defaultProps = {
   baseFilter: undefined,
-  extractValue: defaultExtractValue,
+  extractText: defaultExtractText,
   filterFunctionName: 'nameSearch',
   include: undefined,
   includeFields: ['id', 'attributes.name'],
@@ -124,11 +124,11 @@ class DropdownSearchResource extends Component {
 
   buildOptionsFromResponse(response = []) {
     if (Array.isArray(response)) {
-      const { extractValue } = this.props
+      const { extractText } = this.props
       return response.map(item => {
         return {
           key: item.id,
-          text: extractValue(item),
+          text: extractText(item),
           value: item.id,
         }
       })

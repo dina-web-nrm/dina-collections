@@ -11,7 +11,7 @@ const defaultProps = {
   group: ALL,
 }
 
-const extractValue = item => {
+const extractText = item => {
   return item && item.attributes && item.attributes.fullName
 }
 
@@ -47,7 +47,7 @@ class AgentDropdownSearch extends Component {
       <DropdownSearch
         {...rest}
         baseFilter={baseFilter}
-        extractValue={extractValue}
+        extractText={extractText}
         filterFunctionName="fullNameSearch"
         includeFields={['id', 'attributes.fullName', 'attributes.agentType']}
         resource="normalizedAgent"
