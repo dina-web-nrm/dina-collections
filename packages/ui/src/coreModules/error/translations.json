@@ -36,6 +36,9 @@
   "DATE_TEXT_NOT_PARSABLE": {
     "en": "Invalid date"
   },
+  "DATE_RANGE_BOTH_START_AND_END_REQUIRED": {
+    "en": "Both start and end required"
+  },
   "DATE_RANGE_START_DATE_NOT_AFTER_END_DATE": {
     "en": "End date before start date"
   },

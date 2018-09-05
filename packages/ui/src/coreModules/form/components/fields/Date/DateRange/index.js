@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import FieldWrapper from '../../../FieldWrapper'
 import DateRangeComponent from './Component'
 import {
+  bothStartAndEndDateRequiredIfOneProvided,
   dateRangeStartDateNotAfterEndDate,
   futureDateRange,
   pastDateRange,
@@ -26,7 +27,12 @@ const defaultProps = {
 function DateRangeField(props) {
   const { future, past, validate: validateInput, validateText } = props
 
-  let validate = [...validateInput, dateRangeStartDateNotAfterEndDate]
+  let validate = [
+    ...validateInput,
+    bothStartAndEndDateRequiredIfOneProvided,
+    dateRangeStartDateNotAfterEndDate,
+  ]
+
   if (future) {
     validate = [...validate, futureDateRange]
   }

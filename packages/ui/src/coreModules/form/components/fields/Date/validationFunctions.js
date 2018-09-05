@@ -57,6 +57,28 @@ export const dateRangeStartDateNotAfterEndDate = value => {
     : undefined
 }
 
+export const bothStartAndEndDateRequiredIfOneProvided = value => {
+  if (!value || (!value.startDate && !value.endDate)) {
+    return undefined
+  }
+
+  if (
+    value &&
+    value.startDate &&
+    (value.startDate.dateText ||
+      (value.startDate.day && value.startDate.month && value.startDate.year)) &&
+    value.endDate &&
+    (value.endDate.dateText ||
+      (value.endDate.day && value.endDate.month && value.endDate.year))
+  ) {
+    return undefined
+  }
+
+  return {
+    errorCode: 'DATE_RANGE_BOTH_START_AND_END_REQUIRED',
+  }
+}
+
 export const textParsable = value => {
   if (value && value.dateText && !value.interpretedTimestamp) {
     return {
