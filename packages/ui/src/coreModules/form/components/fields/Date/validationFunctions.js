@@ -40,7 +40,7 @@ export const futureDateRange = value => {
   )
 }
 
-export const dateRangeStartDateBeforeEndDate = value => {
+export const dateRangeStartDateNotAfterEndDate = value => {
   const startDateTimestamp =
     value && value.startDate && value.startDate.interpretedTimestamp
   const endDateTimestamp =
@@ -50,11 +50,11 @@ export const dateRangeStartDateBeforeEndDate = value => {
     return undefined
   }
 
-  return moment(startDateTimestamp).isBefore(endDateTimestamp)
-    ? undefined
-    : {
-        errorCode: 'DATE_RANGE_START_DATE_BEFORE_END_DATE',
+  return moment(startDateTimestamp).isAfter(endDateTimestamp)
+    ? {
+        errorCode: 'DATE_RANGE_START_DATE_NOT_AFTER_END_DATE',
       }
+    : undefined
 }
 
 export const textParsable = value => {
