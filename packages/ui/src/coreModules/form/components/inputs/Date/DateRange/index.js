@@ -115,6 +115,7 @@ class DateRange extends Component {
           field: 'startDate',
           props: this.props,
         })}
+        subLabel
       />
     )
     const endDate = (
@@ -133,6 +134,7 @@ class DateRange extends Component {
           field: 'endDate',
           props: this.props,
         })}
+        subLabel
       />
     )
 

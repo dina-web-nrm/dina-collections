@@ -31,11 +31,15 @@ const FieldLabel = ({
 }) => {
   const style = subLabel
     ? {
+        display: 'block',
         fontSize: '0.9em',
-        fontWeight: 700,
+        fontStyle: 'italic',
+        fontWeight: 400,
         margin: 0,
       }
-    : {}
+    : {
+        display: 'block',
+      }
 
   const label = translatedLabel || <Translate capitalize textKey={labelKey} />
   return (
