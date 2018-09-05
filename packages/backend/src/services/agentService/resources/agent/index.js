@@ -9,6 +9,12 @@ const {
   query: queryFilterSpecification,
 } = require('./data/filterSpecifications')
 
+const {
+  create: createPostHooks,
+  del: delPostHooks,
+  update: updatePostHooks,
+} = require('./data/postHooks')
+
 module.exports = {
   basePath: '/api/agent/v01',
   model: {
@@ -19,6 +25,7 @@ module.exports = {
   operations: [
     {
       exampleRequests: { primary: createRequestSuccess },
+      postHooks: createPostHooks,
       type: 'create',
     },
     {
@@ -36,6 +43,7 @@ module.exports = {
       type: 'query',
     },
     {
+      postHooks: updatePostHooks,
       type: 'update',
     },
     {
@@ -44,6 +52,7 @@ module.exports = {
     },
 
     {
+      postHooks: delPostHooks,
       type: 'del',
     },
     {
