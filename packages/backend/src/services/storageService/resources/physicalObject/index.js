@@ -1,5 +1,10 @@
-// const buildOperationId = require('common/src/buildOperationId')
-const createPhysicalObjectRequestSuccess = require('./operations/create/examples/requestSuccess.json')
+const createRequestSuccess = require('./data/exampleRequests/createSuccess.json')
+
+const {
+  create: createPostHooks,
+  del: delPostHooks,
+  update: updatePostHooks,
+} = require('./data/postHooks')
 
 module.exports = {
   basePath: '/api/storage/v01',
@@ -10,7 +15,8 @@ module.exports = {
   },
   operations: [
     {
-      exampleRequests: { primary: createPhysicalObjectRequestSuccess },
+      exampleRequests: { primary: createRequestSuccess },
+      postHooks: createPostHooks,
       type: 'create',
     },
     {
@@ -22,9 +28,11 @@ module.exports = {
       type: 'getMany',
     },
     {
+      postHooks: updatePostHooks,
       type: 'update',
     },
     {
+      postHooks: delPostHooks,
       type: 'del',
     },
 
