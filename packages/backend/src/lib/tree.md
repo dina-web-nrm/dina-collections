@@ -51,6 +51,8 @@
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
 │   ├── utilities
+│   │   ├── getAncestors
+│   │   │   └── index.js
 │   │   ├── relationships
 │   │   │   ├── buildIncludeArray.js
 │   │   │   ├── buildIncludeArray.spec.js
@@ -118,6 +120,7 @@
 │   │   │   ├── filter.js
 │   │   │   └── filterSpecification.js
 │   │   ├── sharedFilters
+│   │   │   ├── ancestorsToId.js
 │   │   │   ├── deactivated.js
 │   │   │   ├── group.js
 │   │   │   ├── id.js
@@ -131,9 +134,13 @@
 │   │   └── utilities
 │   │       ├── createEqualFilterSpecification.js
 │   │       └── createGetManyFilterSpecifications.js
+│   ├── hooks
+│   │   └── factories
+│   │       └── createRegisterResourceActivityHook.js
 │   ├── mappings
 │   │   ├── factories
 │   │   │   ├── createDateMapping.js
+│   │   │   ├── createIntegerMapping.js
 │   │   │   ├── createKeywordAndRawMapping.js
 │   │   │   ├── createKeywordMapping.js
 │   │   │   ├── createNestedMapping.js
@@ -157,6 +164,7 @@
 │       │   └── index.js
 │       └── utilities
 │           ├── applyTransformations.js
+│           ├── extractFetchParents.js
 │           ├── fetchParents.js
 │           ├── getItemByTypeId.js
 │           ├── postTransformationNoop.js
@@ -334,6 +342,8 @@
 │       ├── testResourceSpecification.spec.js
 │       ├── testServiceSpecification.js
 │       └── testServiceSpecification.spec.js
+├── statistics
+│   └── index.js
 └── tree.md
 
 ```

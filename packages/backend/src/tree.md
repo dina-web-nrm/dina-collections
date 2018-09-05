@@ -29,6 +29,7 @@
 │   ├── serviceInteractor
 │   ├── serviceRouter
 │   ├── services
+│   ├── statistics
 │   └── tree.md
 ├── scripts
 │   └── buildFileStructureTrees.js
@@ -38,6 +39,7 @@
 │   ├── curatedListService
 │   ├── index.js
 │   ├── jobService
+│   ├── logService
 │   ├── placeService
 │   ├── searchService
 │   ├── serviceOrder.js

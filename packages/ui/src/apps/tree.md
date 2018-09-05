@@ -13,9 +13,7 @@
 │       │   ├── Async.js
 │       │   ├── Component.js
 │       │   ├── constants.js
-│       │   ├── index.js
-│       │   ├── middleware.js
-│       │   └── shortcuts.js
+│       │   └── index.js
 │       ├── docs
 │       │   ├── Async.js
 │       │   ├── Component.js
@@ -50,6 +48,12 @@
 │       │   ├── index.js
 │       │   └── translations.json
 │       ├── manageStorageLocations
+│       │   ├── Async.js
+│       │   ├── Component.js
+│       │   ├── constants.js
+│       │   ├── index.js
+│       │   └── translations.json
+│       ├── manageTaxonNames
 │       │   ├── Async.js
 │       │   ├── Component.js
 │       │   ├── constants.js
