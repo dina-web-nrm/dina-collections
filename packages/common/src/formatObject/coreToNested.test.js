@@ -96,7 +96,6 @@ describe('formatObject/coreToNested', () => {
       const attribute = individual.collectingInformation
       const expectedFormat = [
         {
-          collectorsText: 'collectorsText',
           collectedByAgent: { textI: 'collectorsText' },
           event: {
             endDate: 'endDate',

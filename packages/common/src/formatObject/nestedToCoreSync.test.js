@@ -216,7 +216,6 @@ describe('formatObject/nestedToCoreSync', () => {
       const { collectingInformation } = attributes.normalized
       const expectedFormat = [
         {
-          collectorsText: 'collectorsText',
           collectedByAgent: { textI: 'collectorsText' },
           event: expect.stringMatching(lidRegEx),
           lid: expect.stringMatching(lidRegEx),
