@@ -6,10 +6,7 @@
     },
     "handedInByAgent": {
       "$ref": "__ROOT__agent",
-      "x-reference-type": "external"
-    },
-    "handedInByAgentText": {
-      "type": "string"
+      "x-reference-type": "internal"
     },
     "acquisitionTypeText": {
       "type": "string"

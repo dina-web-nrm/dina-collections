@@ -55,7 +55,7 @@
       "properties": {
         "user": {
           "type": "object",
-          "x-key-stored-in-model": "agent",
+          "x-key-stored-in-model": "normalizedAgent",
           "x-key-type": "json",
           "properties": {
             "data": {

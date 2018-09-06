@@ -11,14 +11,14 @@
     "establishmentMeansN": {
       "type": "string"
     },
+    "collectedByAgent": {
+      "$ref": "__ROOT__agent",
+      "x-reference-type": "internal"
+    },
     "collectorsText": {
       "type": "string",
       "example": "Bergström, U",
       "description": "Name of the collector"
-    },
-    "collectedByAgent": {
-      "$ref": "__ROOT__agent",
-      "x-reference-type": "external"
     },
     "isDeathDate": {
       "type": "boolean",

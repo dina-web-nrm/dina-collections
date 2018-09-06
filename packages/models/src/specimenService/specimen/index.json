@@ -111,23 +111,23 @@
     "relationships": {
       "type": "object",
       "properties": {
-        "agents": {
+        "normalizedAgents": {
           "type": "object",
           "x-key-stored-in-model": "specimen",
           "x-key-type": "json",
           "x-path": [
-            "individual.acquisition.handedInByAgent",
-            "individual.collectingInformation.*.collectedByAgent",
-            "individual.collectionItems.*.curatorialAssessments.*.agent",
-            "individual.determinations.*.determinedByAgent",
-            "individual.featureObservations.*.featureObservationAgent",
-            "individual.recordHistoryEvents.*.agent"
+            "individual.acquisition.handedInByAgent.normalized",
+            "individual.collectingInformation.*.collectedByAgent.normalized",
+            "individual.collectionItems.*.curatorialAssessments.*.agent.normalized",
+            "individual.determinations.*.determinedByAgent.normalized",
+            "individual.featureObservations.*.featureObservationAgent.normalized",
+            "individual.recordHistoryEvents.*.agent.normalized"
           ],
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__agent",
+                "$ref": "__ROOT__normalizedAgent",
                 "x-reference-type": "external"
               }
             }
@@ -272,10 +272,10 @@
         }
       }
     },
-    "agents": {
+    "normalizedAgent": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__agent",
+        "$ref": "__ROOT__normalizedAgent",
         "x-reference-type": "external"
       }
     },

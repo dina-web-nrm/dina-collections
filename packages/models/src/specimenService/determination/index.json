@@ -18,11 +18,7 @@
     },
     "determinedByAgent": {
       "$ref": "__ROOT__agent",
-      "x-reference-type": "external"
-    },
-    "determinedByAgentText": {
-      "type": "string",
-      "example": "Doe, J."
+      "x-reference-type": "internal"
     },
     "date": {
       "$ref": "__ROOT__singleDate"

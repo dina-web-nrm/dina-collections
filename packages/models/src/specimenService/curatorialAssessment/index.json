@@ -6,10 +6,7 @@
     },
     "agent": {
       "$ref": "__ROOT__agent",
-      "x-reference-type": "external"
-    },
-    "agentText": {
-      "type": "string"
+      "x-reference-type": "internal"
     },
     "date": {
       "$ref": "__ROOT__singleDate"
