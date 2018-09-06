@@ -32,12 +32,12 @@ module.exports = ({ src, target }) => {
       'event.locationInformation'
     )
 
-    if (locationInformation && locationInformation.localityN) {
-      collectingLocationN = locationInformation.localityN
+    if (locationInformation && locationInformation.localityI) {
+      collectingLocationN = locationInformation.localityI
     }
 
-    if (locationInformation && locationInformation.localityT) {
-      collectingLocationT = locationInformation.localityT
+    if (locationInformation && locationInformation.localityV) {
+      collectingLocationT = locationInformation.localityV
     }
     return null
   })

@@ -10,12 +10,13 @@ import { getChildrenIds, getParentId } from 'coreModules/crud/utilities'
 import BaseForm from './BaseForm'
 
 const mapStateToProps = (state, ownProps) => {
-  const { item: agent } = ownProps
-  const parentId = getParentId(agent)
-  const parent = parentId && globalCrudSelectors.agent.getOne(state, parentId)
-  const children = getChildrenIds(agent).map(id => {
+  const { item: normalizedAgent } = ownProps
+  const parentId = getParentId(normalizedAgent)
+  const parent =
+    parentId && globalCrudSelectors.normalizedAgent.getOne(state, parentId)
+  const children = getChildrenIds(normalizedAgent).map(id => {
     return (
-      globalCrudSelectors.agent.getOne(state, id) || {
+      globalCrudSelectors.normalizedAgent.getOne(state, id) || {
         id,
       }
     )
@@ -28,10 +29,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = {
-  updatePlace: crudActionCreators.agent.update,
+  updatePlace: crudActionCreators.normalizedAgent.update,
 }
 
 const propTypes = {
+  form: PropTypes.string.isRequired,
   itemId: PropTypes.string.isRequired,
   nestedItem: PropTypes.object,
   onInteraction: PropTypes.func.isRequired,
@@ -44,7 +46,12 @@ const defaultProps = {
 
 export class Edit extends PureComponent {
   render() {
-    const { nestedItem: initialValues, onInteraction, itemId } = this.props
+    const {
+      form,
+      nestedItem: initialValues,
+      onInteraction,
+      itemId,
+    } = this.props
 
     if (!initialValues) {
       return null
@@ -54,6 +61,7 @@ export class Edit extends PureComponent {
       <BaseForm
         displayBackButton
         displayResetButton
+        form={form}
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()
@@ -86,7 +94,7 @@ Edit.defaultProps = defaultProps
 export default compose(
   createGetNestedItemById({
     relationships: ['all'],
-    resource: 'agent',
+    resource: 'normalizedAgent',
   }),
   connect(mapStateToProps, mapDispatchToProps)
 )(Edit)

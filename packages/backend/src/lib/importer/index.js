@@ -7,11 +7,11 @@ module.exports = function importer({ config, serviceInteractor }) {
   log.info('Start importer')
 
   const resources = [
-    'agent',
     'causeOfDeathType',
     'establishmentMeansType',
     'featureType',
     'identifierType',
+    'normalizedAgent',
     'preparationType',
     'typeSpecimenType',
     'place',

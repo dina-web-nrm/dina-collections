@@ -76,7 +76,7 @@ export default compose(
   createGetNestedItemById({
     idPath: 'match.params.specimenId',
     include: [
-      'agents',
+      'normalizedAgents',
       'featureTypes',
       'physicalObjects.storageLocation',
       'places',

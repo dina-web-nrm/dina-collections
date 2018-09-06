@@ -1,7 +1,7 @@
 const {
-  agent: agentTransformationSpecification,
   establishmentMeansType: establishmentMeansTypeTransformationSpecification,
   featureType: featureTypeTransformationSpecification,
+  normalizedAgent: normalizedAgentTransformationSpecification,
   place: placeTransformationSpecification,
   preparationType: preparationTypeTransformationSpecification,
   storageLocation: storageLocationTransformationSpecification,
@@ -11,12 +11,12 @@ const {
 
 module.exports = [
   {
-    name: 'lookupAgent',
-    transformationSpecification: agentTransformationSpecification,
-  },
-  {
     name: 'lookupFeatureType',
     transformationSpecification: featureTypeTransformationSpecification,
+  },
+  {
+    name: 'lookupNormalizedAgent',
+    transformationSpecification: normalizedAgentTransformationSpecification,
   },
   {
     name: 'lookupPreparationType',

@@ -158,9 +158,9 @@ describe('formatObject/relationships/utilities/resolveByPath/getRelationshipItem
 
       return getRelationshipItems({
         getItemByTypeId,
-        relationshipKey: 'agents',
+        relationshipKey: 'normalizedAgents',
         relationships: {
-          agents: {
+          normalizedAgents: {
             data: [{ id: '123' }, null, { id: '456' }],
           },
         },

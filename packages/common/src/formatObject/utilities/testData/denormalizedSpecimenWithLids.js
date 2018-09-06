@@ -8,7 +8,7 @@ module.exports = {
       {
         lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4',
         determinationVerbatim: 'determinationVerbatim',
-        determinedByAgentText: 'determinedByAgentText',
+        determinedByAgent: { textI: 'determinedByAgentText' },
         remarks: 'remarks',
         taxon: {
           id: '2367',
@@ -18,7 +18,7 @@ module.exports = {
     ],
     recordHistoryEvents: [
       {
-        agent: 'agent',
+        agent: { normalizedAgent: { id: '1' } },
         date: {
           dateText: '2018',
         },
@@ -64,7 +64,7 @@ module.exports = {
     collectingInformation: [
       {
         lid: 'e7253de8-6262-4fd6-8192-40dec5970f41',
-        collectorsText: 'collectorsText',
+        collectedByAgent: { textI: 'collectorsText' },
         event: {
           lid: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
           endDate: 'endDate',

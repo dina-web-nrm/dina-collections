@@ -42,8 +42,8 @@ apiDescribe('specimen', () => {
               pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
                 relationships: [
-                  'agents',
                   'featureTypes',
+                  'normalizedAgents',
                   'physicalObjects',
                   'places',
                   'taxonNames',
@@ -55,10 +55,10 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                agents: {
+                featureTypes: {
                   data: [],
                 },
-                featureTypes: {
+                normalizedAgents: {
                   data: [],
                 },
                 physicalObjects: {
@@ -109,8 +109,8 @@ apiDescribe('specimen', () => {
               pathParams: { id: simpleDataPhysicalObjectRelationsId },
               queryParams: {
                 relationships: [
-                  'agents',
                   'featureTypes',
+                  'normalizedAgents',
                   'physicalObjects',
                   'places',
                   'taxonNames',
@@ -165,8 +165,8 @@ apiDescribe('specimen', () => {
             pathParams: { id: simpleDataNoRelationsId },
             queryParams: {
               relationships: [
-                'agents',
                 'featureTypes',
+                'normalizedAgents',
                 'physicalObjects',
                 'places',
                 'taxonNames',
@@ -178,10 +178,10 @@ apiDescribe('specimen', () => {
           expectSingleResourceResponse({
             expectedType: 'specimen',
             relationships: {
-              agents: {
+              featureTypes: {
                 data: [],
               },
-              featureTypes: {
+              normalizedAgents: {
                 data: [],
               },
               physicalObjects: {

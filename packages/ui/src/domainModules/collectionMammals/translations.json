@@ -197,11 +197,11 @@
       }
     },
     "locationInformation": {
-      "localityT": {
+      "localityV": {
         "en": "Locality (stated)",
         "sv": "Angiven (verbatim) lokalitet"
       },
-      "localityN": { "en": "Locality (interpreted)" },
+      "localityI": { "en": "Locality (interpreted)" },
       "localityRemarks": {
         "en": "Locality remarks",
         "sv": "Lokalitetsnoteringar"
@@ -354,7 +354,7 @@
   },
   "helpTexts": {
     "locationInformation": {
-      "localityN": {
+      "localityI": {
         "en":
           "Locality name(s) which don’t fit to other fields. E.g. detailed place or water body (e.g. “Frescati” or “Baltic sea”)",
         "sv": ""

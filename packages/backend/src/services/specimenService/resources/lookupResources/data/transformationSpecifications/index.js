@@ -1,5 +1,5 @@
 const {
-  agent,
+  normalizedAgent,
   establishmentMeansType,
   featureType,
   place,
@@ -50,12 +50,12 @@ exports.featureType = {
   transformationFunctions: [featureType],
 }
 
-exports.agent = {
+exports.normalizedAgent = {
   collidingIdPrefix: 'x',
   description: '',
   srcRelationships: [],
-  srcResource: 'agent',
-  transformationFunctions: [agent],
+  srcResource: 'normalizedAgent',
+  transformationFunctions: [normalizedAgent],
 }
 
 exports.taxon = {

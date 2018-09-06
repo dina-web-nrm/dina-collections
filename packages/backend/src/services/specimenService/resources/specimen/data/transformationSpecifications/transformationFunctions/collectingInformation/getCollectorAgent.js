@@ -1,4 +1,4 @@
-// same as in transformationSpecifications for lookupAgent
+// same as in transformationSpecifications for lookupNormalizedAgent
 const COLLIDING_ID_PREFIX = 'x'
 
 module.exports = function getCollectorAgent({
@@ -18,7 +18,7 @@ module.exports = function getCollectorAgent({
 
   return getItemByTypeId({
     id: collector,
-    type: 'lookupAgent',
+    type: 'lookupNormalizedAgent',
   }).then(agent => {
     if (!agent) {
       return undefined
@@ -27,7 +27,7 @@ module.exports = function getCollectorAgent({
     return getItemByTypeId({
       id: `${COLLIDING_ID_PREFIX}${collector}`,
       report: false,
-      type: 'lookupAgent',
+      type: 'lookupNormalizedAgent',
     }).then(duplicate => {
       return {
         collector,

@@ -8,8 +8,6 @@ import createLog from 'utilities/log'
 import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input } from 'coreModules/form/components'
 
-export const FORM_NAME = 'agentFilter'
-
 const log = createLog('modules:locality:BaseForm')
 
 const propTypes = {
@@ -57,7 +55,6 @@ BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
   destroyOnUnmount: false,
-  enableReinitialize: false,
-  form: FORM_NAME,
-  validate: formValidator({ model: 'agent' }),
+  enableReinitialize: true,
+  validate: formValidator({ model: 'normalizedAgent' }),
 })(BaseForm)

@@ -20,7 +20,7 @@ module.exports = function collectingInformation({
       migrator.setValue({
         obj: target,
         path:
-          'attributes.individual.collectingInformation.0.collectedByAgent.id',
+          'attributes.individual.collectingInformation.0.collectedByAgent.normalized.id',
         value: agent.id,
       })
 
@@ -77,8 +77,8 @@ module.exports = function collectingInformation({
       value: localityRemarks,
     })
 
-    // localityT
-    const localityT = migrator.getValue({
+    // localityV
+    const localityV = migrator.getValue({
       obj: src,
       path: 'objects.StatedLocality',
       strip: true,
@@ -87,12 +87,12 @@ module.exports = function collectingInformation({
     migrator.setValue({
       obj: target,
       path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.localityT',
-      value: localityT,
+        'attributes.individual.collectingInformation.0.event.locationInformation.localityV',
+      value: localityV,
     })
 
-    // localityN
-    const localityN = migrator.getValue({
+    // localityI
+    const localityI = migrator.getValue({
       obj: src,
       path: 'objects.FieldNo_related.Locality',
       strip: true,
@@ -101,8 +101,8 @@ module.exports = function collectingInformation({
     migrator.setValue({
       obj: target,
       path:
-        'attributes.individual.collectingInformation.0.event.locationInformation.localityN',
-      value: localityN,
+        'attributes.individual.collectingInformation.0.event.locationInformation.localityI',
+      value: localityI,
     })
 
     /* event.locationInformation.position */

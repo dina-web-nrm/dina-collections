@@ -50,7 +50,7 @@ class AgentDropdownSearch extends Component {
         extractValue={extractValue}
         filterFunctionName="fullNameSearch"
         includeFields={['id', 'attributes.fullName', 'attributes.agentType']}
-        resource="agent"
+        resource="normalizedAgent"
         type="dropdown-search-resource"
       />
     )

@@ -26,7 +26,7 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
 
   if (cardDate || cardAuthor) {
     recordHistoryEvents.push({
-      agentText: cardAuthor,
+      agent: { textI: cardAuthor },
       date: { dateText: cardDate },
       description: CATALOG_CARD_CREATION_DESCRIPTION,
       system: CATALOG_CARD_SYSTEM_NAME,
@@ -46,7 +46,7 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
 
   if (objectsLastModifiedBy || objectsLastModifiedDate) {
     recordHistoryEvents.push({
-      agentText: objectsLastModifiedBy,
+      agent: { textI: objectsLastModifiedBy },
       date: { dateText: objectsLastModifiedDate },
       description: LAST_MODIFICATION_OF_OBJECTS_DESCRIPTION,
       system: MAM_2006_SYSTEM_NAME,
@@ -66,7 +66,7 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
 
   if (registeredBy || registeredDate) {
     recordHistoryEvents.push({
-      agentText: registeredBy,
+      agent: { textI: registeredBy },
       date: { dateText: registeredDate },
       description: SPECIMEN_CREATION_DESCRIPTION,
       system: MAM_2006_SYSTEM_NAME,
@@ -85,7 +85,7 @@ module.exports = function createRecordHistoryEvents({ src, target, migrator }) {
 
   if (localityLastModifiedBy || localityLastModifiedAt) {
     recordHistoryEvents.push({
-      agentText: localityLastModifiedBy,
+      agent: { textI: localityLastModifiedBy },
       date: { dateText: localityLastModifiedAt },
       description: LAST_MODIFICATION_OF_LOCALITY_DESCRIPTION,
       system: MAM_2006_SYSTEM_NAME,

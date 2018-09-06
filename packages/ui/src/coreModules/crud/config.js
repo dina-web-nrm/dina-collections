@@ -1,29 +1,5 @@
 const config = {
   resources: {
-    agent: {
-      operations: [
-        {
-          operationId: 'agentGetOne',
-          type: 'getOne',
-        },
-        {
-          operationId: 'agentCreate',
-          type: 'create',
-        },
-        {
-          operationId: 'agentGetMany',
-          type: 'getMany',
-        },
-        {
-          operationId: 'agentUpdate',
-          type: 'update',
-        },
-        {
-          operationId: 'agentQuery',
-          type: 'query',
-        },
-      ],
-    },
     causeOfDeathType: {
       customSelectors: [
         {
@@ -114,6 +90,30 @@ const config = {
         {
           operationId: 'identifierTypeGetMany',
           type: 'getMany',
+        },
+      ],
+    },
+    normalizedAgent: {
+      operations: [
+        {
+          operationId: 'normalizedAgentGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'normalizedAgentCreate',
+          type: 'create',
+        },
+        {
+          operationId: 'normalizedAgentGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'normalizedAgentUpdate',
+          type: 'update',
+        },
+        {
+          operationId: 'normalizedAgentQuery',
+          type: 'query',
         },
       ],
     },

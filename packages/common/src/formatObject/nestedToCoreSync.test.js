@@ -105,14 +105,6 @@ describe('formatObject/nestedToCoreSync', () => {
     test('relationships has expected items', () => {
       const { relationships } = coreItem
       expect(relationships).toEqual({
-        agents: {
-          data: [
-            {
-              type: 'agent',
-              id: '1',
-            },
-          ],
-        },
         featureTypes: {
           data: [
             {
@@ -129,6 +121,14 @@ describe('formatObject/nestedToCoreSync', () => {
             {
               type: 'identifierType',
               id: 1,
+            },
+          ],
+        },
+        normalizedAgents: {
+          data: [
+            {
+              type: 'normalizedAgent',
+              id: '1',
             },
           ],
         },
@@ -200,7 +200,7 @@ describe('formatObject/nestedToCoreSync', () => {
       const expectedFormat = [
         {
           determinationVerbatim: expect.stringMatching('determinationVerbatim'),
-          determinedByAgentText: 'determinedByAgentText',
+          determinedByAgent: { textI: 'determinedByAgentText' },
           remarks: 'remarks',
           taxon: {
             id: '2367',
@@ -217,6 +217,7 @@ describe('formatObject/nestedToCoreSync', () => {
       const expectedFormat = [
         {
           collectorsText: 'collectorsText',
+          collectedByAgent: { textI: 'collectorsText' },
           event: expect.stringMatching(lidRegEx),
           lid: expect.stringMatching(lidRegEx),
         },
@@ -244,7 +245,7 @@ describe('formatObject/nestedToCoreSync', () => {
       const expectedFormat = [
         {
           determinationVerbatim: expect.stringMatching('determinationVerbatim'),
-          determinedByAgentText: 'determinedByAgentText',
+          determinedByAgent: { textI: 'determinedByAgentText' },
           remarks: 'remarks',
           taxon: {
             id: '2367',
@@ -370,7 +371,9 @@ describe('formatObject/nestedToCoreSync', () => {
       const expectedFormat = [
         {
           agent: {
-            id: '1',
+            normalized: {
+              id: '1',
+            },
           },
           date: {
             dateText: '2018',

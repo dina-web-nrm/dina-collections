@@ -139,13 +139,13 @@ const segmentCollectingInformationMutations = [
   },
   {
     name:
-      'individual.collectingInformation.0.event.locationInformation.localityT',
-    value: 'localityT',
+      'individual.collectingInformation.0.event.locationInformation.localityV',
+    value: 'localityV',
   },
   {
     name:
-      'individual.collectingInformation.0.event.locationInformation.localityN',
-    value: 'localityN',
+      'individual.collectingInformation.0.event.locationInformation.localityI',
+    value: 'localityI',
   },
   {
     name:
@@ -366,8 +366,8 @@ const expectedOutput = {
           expeditionText: 'expeditionText',
 
           locationInformation: {
-            localityN: 'localityN',
-            localityT: 'localityT',
+            localityI: 'localityI',
+            localityV: 'localityV',
             places: [{ id: 'Africa' }, { id: 'Algeria' }],
             position: {
               latitude: 'latitude-string',

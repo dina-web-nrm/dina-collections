@@ -19,7 +19,7 @@ module.exports = function extractRecordEventText({
     }
 
     if (matchingDescription && matchingDescription.indexOf(description) > -1) {
-      const { agentText } = recordHistoryEvent
+      const { agent } = recordHistoryEvent
       const date = recordHistoryEvent.date && recordHistoryEvent.date.dateText
 
       let str
@@ -27,8 +27,8 @@ module.exports = function extractRecordEventText({
         str = `${date}`
       }
 
-      if (agentText) {
-        str = `${str} by ${agentText}`
+      if (agent && agent.textV) {
+        str = `${str} by ${agent.textV}`
       }
 
       strings.push(str)

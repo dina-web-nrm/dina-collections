@@ -19,8 +19,8 @@ module.exports = {
   basePath: '/api/agent/v01',
   model: {
     modelFactory: 'sequelizeDocumentModel',
-    name: 'agent',
-    relations: ['agent'],
+    name: 'normalizedAgent',
+    relations: ['normalizedAgent'],
   },
   operations: [
     {
@@ -64,5 +64,5 @@ module.exports = {
       type: 'updateRelationship',
     },
   ],
-  resource: 'agent',
+  resource: 'normalizedAgent',
 }

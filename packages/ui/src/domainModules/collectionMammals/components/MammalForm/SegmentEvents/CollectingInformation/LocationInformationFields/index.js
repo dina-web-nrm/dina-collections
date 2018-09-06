@@ -24,7 +24,7 @@ function LocationInformationFields({ getPath }) {
             autoComplete="off"
             component={Input}
             module="collectionMammals"
-            name={getPath('localityT')}
+            name={getPath('localityV')}
             type="text"
           />
         </Grid.Column>
@@ -35,7 +35,7 @@ function LocationInformationFields({ getPath }) {
             autoComplete="off"
             component={Input}
             module="collectionMammals"
-            name={getPath('localityN')}
+            name={getPath('localityI')}
             type="text"
           />
         </Grid.Column>

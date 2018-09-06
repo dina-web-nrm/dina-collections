@@ -49,7 +49,7 @@
         "determinations": [
           {
             "determinationVerbatim": "determinationVerbatim",
-            "determinedByAgentText": "determinedByAgentText",
+            "determinedByAgent": { "textV": "determinedByAgentText" },
             "remarks": "remarks",
             "taxonName": {
               "id": "2367",
@@ -102,7 +102,7 @@
                 }
               ],
               "georeferenceSourcesText": "georeferenceSourcesText",
-              "localityT": "localityT",
+              "localityV": "localityV",
               "position": {
                 "geodeticDatum": "geodeticDatum text",
                 "latitude": "latitude-string",

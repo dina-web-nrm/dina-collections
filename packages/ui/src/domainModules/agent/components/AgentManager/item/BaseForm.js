@@ -12,8 +12,6 @@ import {
   TextArea,
 } from 'coreModules/form/components'
 
-export const FORM_NAME = 'agentEdit'
-
 const log = createLog('modules:locality:BaseForm')
 
 const propTypes = {
@@ -190,6 +188,5 @@ BaseForm.defaultProps = defaultProps
 export default reduxForm({
   destroyOnUnmount: false, // to keep values when switching layout
   enableReinitialize: true,
-  form: FORM_NAME,
-  validate: formValidator({ model: 'agent' }),
+  validate: formValidator({ model: 'normalizedAgent' }),
 })(BaseForm)

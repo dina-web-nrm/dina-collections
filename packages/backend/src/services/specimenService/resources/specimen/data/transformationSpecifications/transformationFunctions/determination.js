@@ -48,7 +48,7 @@ module.exports = function migrateDetermination({ src, target, migrator }) {
   if (determinedByAgentText) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.determination.determinedByAgentText',
+      path: 'attributes.individual.determination.determinedByAgent.textI',
       value: determinedByAgentText,
     })
   }

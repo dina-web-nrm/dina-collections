@@ -12,8 +12,7 @@
       "type": "string"
     },
     "collectedByAgent": {
-      "$ref": "__ROOT__agent",
-      "x-reference-type": "internal"
+      "$ref": "__ROOT__agent"
     },
     "collectorsText": {
       "type": "string",

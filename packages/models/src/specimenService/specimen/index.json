@@ -111,28 +111,6 @@
     "relationships": {
       "type": "object",
       "properties": {
-        "normalizedAgents": {
-          "type": "object",
-          "x-key-stored-in-model": "specimen",
-          "x-key-type": "json",
-          "x-path": [
-            "individual.acquisition.handedInByAgent.normalized",
-            "individual.collectingInformation.*.collectedByAgent.normalized",
-            "individual.collectionItems.*.curatorialAssessments.*.agent.normalized",
-            "individual.determinations.*.determinedByAgent.normalized",
-            "individual.featureObservations.*.featureObservationAgent.normalized",
-            "individual.recordHistoryEvents.*.agent.normalized"
-          ],
-          "properties": {
-            "data": {
-              "type": "array",
-              "items": {
-                "$ref": "__ROOT__normalizedAgent",
-                "x-reference-type": "external"
-              }
-            }
-          }
-        },
         "causeOfDeathTypes": {
           "type": "object",
           "x-key-stored-in-model": "specimen",
@@ -188,6 +166,28 @@
               "type": "array",
               "items": {
                 "$ref": "__ROOT__identifierType",
+                "x-reference-type": "external"
+              }
+            }
+          }
+        },
+        "normalizedAgents": {
+          "type": "object",
+          "x-key-stored-in-model": "specimen",
+          "x-key-type": "json",
+          "x-path": [
+            "individual.acquisition.handedInByAgent.normalized",
+            "individual.collectingInformation.*.collectedByAgent.normalized",
+            "individual.collectionItems.*.curatorialAssessments.*.agent.normalized",
+            "individual.determinations.*.determinedByAgent.normalized",
+            "individual.featureObservations.*.featureObservationAgent.normalized",
+            "individual.recordHistoryEvents.*.agent.normalized"
+          ],
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "$ref": "__ROOT__normalizedAgent",
                 "x-reference-type": "external"
               }
             }
@@ -272,13 +272,6 @@
         }
       }
     },
-    "normalizedAgent": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__normalizedAgent",
-        "x-reference-type": "external"
-      }
-    },
     "causeOfDeathTypes": {
       "type": "array",
       "items": {
@@ -304,6 +297,13 @@
       "type": "array",
       "items": {
         "$ref": "__ROOT__identifierType",
+        "x-reference-type": "external"
+      }
+    },
+    "normalizedAgents": {
+      "type": "array",
+      "items": {
+        "$ref": "__ROOT__normalizedAgent",
         "x-reference-type": "external"
       }
     },

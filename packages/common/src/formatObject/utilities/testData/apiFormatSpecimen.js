@@ -3,14 +3,6 @@ module.exports = {
   type: 'specimen',
   id: '1234',
   relationships: {
-    agents: {
-      data: [
-        {
-          type: 'agent',
-          id: '1',
-        },
-      ],
-    },
     featureTypes: {
       data: [
         {
@@ -27,6 +19,14 @@ module.exports = {
         {
           type: 'identifierType',
           id: 1,
+        },
+      ],
+    },
+    normalizedAgents: {
+      data: [
+        {
+          type: 'normalizedAgent',
+          id: '1',
         },
       ],
     },
@@ -87,7 +87,7 @@ module.exports = {
       determinations: [
         {
           determinationVerbatim: 'determinationVerbatim',
-          determinedByAgentText: 'determinedByAgentText',
+          determinedByAgent: { textI: 'determinedByAgentText' },
           remarks: 'remarks',
           taxon: {
             id: '2367',
@@ -145,7 +145,7 @@ module.exports = {
       ],
       collectingInformation: [
         {
-          collectorsText: 'collectorsText',
+          collectedByAgent: { textI: 'collectorsText' },
           event: 'd61ec620-e5df-4141-8691-a0fe42ec0c5b',
           lid: '06c5b25b-13dd-4c27-8bc2-18723fb1beb3',
         },
@@ -186,7 +186,9 @@ module.exports = {
       recordHistoryEvents: [
         {
           agent: {
-            id: '1',
+            normalizedAgent: {
+              id: '1',
+            },
           },
           date: {
             dateText: '2018',

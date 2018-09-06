@@ -1,6 +1,6 @@
 {
   "data": {
-    "type": "agent",
+    "type": "normalizedAgent",
     "attributes": {
       "givenName": "Carl",
       "familyName": "Linnaeus",

@@ -109,9 +109,6 @@ testData.simpleDataMultipleRelations = {
       },
     },
     relationships: {
-      agents: {
-        data: [],
-      },
       featureTypes: {
         data: [
           {
@@ -119,6 +116,9 @@ testData.simpleDataMultipleRelations = {
             type: 'featureType',
           },
         ],
+      },
+      normalizedAgents: {
+        data: [],
       },
       physicalObjects: {
         data: [
