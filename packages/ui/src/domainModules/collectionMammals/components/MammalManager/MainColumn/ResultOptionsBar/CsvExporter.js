@@ -26,13 +26,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   createExportInfo: crudActionCreators.exportJob.create,
-  getManyExportInfo: crudActionCreators.exportJob.getMany,
+  getOneExportInfo: crudActionCreators.exportJob.getOne,
 }
 
 const propTypes = {
   columns: PropTypes.array.isRequired,
   createExportInfo: PropTypes.func.isRequired,
-  getManyExportInfo: PropTypes.func.isRequired,
+  getOneExportInfo: PropTypes.func.isRequired,
   i18n: PropTypes.object.isRequired,
   pollInterval: PropTypes.number,
   pollLimit: PropTypes.number,
@@ -68,25 +68,31 @@ export class CsvExporter extends Component {
       }
       count += 1
       return this.props
-        .getManyExportInfo({
+        .getOneExportInfo({
+          id,
           queryParams: {
-            filter: {
-              id,
-              succeededAt: true,
-            },
-            includeFields: ['id', 'attributes.filePath'],
+            includeFields: [
+              'id',
+              'attributes.filePath',
+              'attributes.succeededAt',
+              'attributes.failedAt',
+            ],
           },
           relationships: [],
           storeInState: false,
         })
-        .then(res => {
-          const item = res && res[0]
+        .then(item => {
           if (item) {
             const attributes = item && item.attributes
-            this.updateStatus('exportDone', {
-              exportJobId: item.id,
-              fileName: attributes.filePath,
-            })
+            if (attributes.succeededAt) {
+              this.updateStatus('exportDone', {
+                exportJobId: item.id,
+                fileName: attributes.filePath,
+              })
+            }
+            if (attributes.failedAt) {
+              this.updateStatus('failed')
+            }
           }
 
           if (count >= pollLimit) {

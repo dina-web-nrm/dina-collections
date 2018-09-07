@@ -70,6 +70,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
           queryParams: {
             relationships: ['all'],
           },
+          storeInState: true,
         },
         type: actionCreatorFactoryInput.resourceActionTypes.getOne.request,
       }
@@ -117,6 +118,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
           queryParams: {
             relationships: ['all'],
           },
+          storeInState: true,
         },
         payload: { attributes: { name: 'Anton' }, id: '123', type: 'type' },
         type: 'GET_ONE_PHYSICAL_OBJECT_SUCCESS',
@@ -159,6 +161,7 @@ describe('coreModules/crud/createCrudModule/factories/actionCreators/getOneFacto
         queryParams: {
           relationships: ['all'],
         },
+        storeInState: true,
       },
       payload: mockError,
       type: 'GET_ONE_PHYSICAL_OBJECT_FAIL',
