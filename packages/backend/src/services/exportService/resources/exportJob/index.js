@@ -18,6 +18,7 @@ module.exports = {
   basePath: '/api/export/v01',
   model: {
     columns: {
+      error: { type: Sequelize.STRING },
       exportFields: { type: Sequelize.JSONB },
       exportIds: { type: Sequelize.JSONB },
       failedAt: { type: Sequelize.DATE },
@@ -38,6 +39,12 @@ module.exports = {
   },
   operations: [
     {
+      selectableFields: [
+        'attributes.failedAt',
+        'attributes.filePath',
+        'attributes.succeededAt',
+        'id',
+      ],
       type: 'getOne',
     },
     {

@@ -33,7 +33,14 @@ export default function getOneAcFactory(
   }
 
   return function getOneAc(
-    { id, include, relationships = ['all'], throwError = false } = {}
+    {
+      id,
+      include,
+      relationships = ['all'],
+      throwError = false,
+      storeInState = true,
+      queryParams: queryParamInput = {},
+    } = {}
   ) {
     log.debug(`${resource}.getOne called`, {
       id,
@@ -47,7 +54,7 @@ export default function getOneAcFactory(
       }
 
       const pathParams = { id }
-      let queryParams = {}
+      let queryParams = queryParamInput
 
       if (relationships && relationships.length) {
         queryParams = {
@@ -68,8 +75,13 @@ export default function getOneAcFactory(
         queryParams,
       }
 
+      const meta = {
+        storeInState,
+        ...callParams,
+      }
+
       dispatch({
-        meta: callParams,
+        meta,
         type: operationActionTypes.request,
       })
 
@@ -83,7 +95,7 @@ export default function getOneAcFactory(
             })
           }
           dispatch({
-            meta: callParams,
+            meta,
             payload: response.data,
             type: operationActionTypes.success,
           })
@@ -92,7 +104,7 @@ export default function getOneAcFactory(
         error => {
           dispatch({
             error: true,
-            meta: callParams,
+            meta,
             payload: error,
             type: operationActionTypes.fail,
           })
