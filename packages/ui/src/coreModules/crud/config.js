@@ -67,7 +67,22 @@ const config = {
         },
       ],
     },
-
+    exportJob: {
+      operations: [
+        {
+          operationId: 'exportJobGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'exportJobGetMany',
+          type: 'getMany',
+        },
+        {
+          operationId: 'exportJobCreate',
+          type: 'create',
+        },
+      ],
+    },
     featureType: {
       operations: [
         {

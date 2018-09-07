@@ -49,7 +49,7 @@ export default function getOneAcFactory(
       const pathParams = { id }
       let queryParams = {}
 
-      if (relationships) {
+      if (relationships && relationships.length) {
         queryParams = {
           ...queryParams,
           relationships,
