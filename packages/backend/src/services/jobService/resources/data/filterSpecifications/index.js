@@ -1,5 +1,5 @@
 const createGetManyFilterSpecifications = require('../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
-const createEqualFilterSpecification = require('../../../../../lib/data/filters/utilities/createEqualFilterSpecification')
+const createEqualFilter = require('../../../../../lib/data/filters/factories/createEqualFilter')
 
 const equalFilterParameters = [
   'deactivatedAt',
@@ -10,20 +10,10 @@ const equalFilterParameters = [
 
 const filters = createGetManyFilterSpecifications({
   custom: equalFilterParameters.reduce((obj, filterParameter) => {
-    const filter = createEqualFilterSpecification(
+    const filter = createEqualFilter(
       {
+        fieldPath: filterParameter,
         filterParameter,
-        filterSchema: {
-          oneOf: [
-            {
-              type: 'string',
-            },
-            {
-              type: 'null',
-            },
-          ],
-        },
-        path: filterParameter,
       },
       {}
     )

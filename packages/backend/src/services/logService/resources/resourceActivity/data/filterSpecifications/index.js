@@ -1,5 +1,5 @@
 const createGetManyFilterSpecifications = require('../../../../../../lib/data/filters/utilities/createGetManyFilterSpecifications')
-const createEqualFilterSpecification = require('../../../../../../lib/data/filters/utilities/createEqualFilterSpecification')
+const createEqualFilter = require('../../../../../../lib/data/filters/factories/createEqualFilter')
 
 const equalFilterStringParameters = [
   'service',
@@ -12,10 +12,10 @@ const equalFilterStringParameters = [
 
 const customFilters = equalFilterStringParameters.reduce(
   (obj, filterParameter) => {
-    const filter = createEqualFilterSpecification(
+    const filter = createEqualFilter(
       {
+        fieldPath: filterParameter,
         filterParameter,
-        path: filterParameter,
       },
       {}
     )

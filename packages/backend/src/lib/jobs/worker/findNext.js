@@ -1,9 +1,9 @@
 module.exports = function getNext({ serviceInteractor }) {
   const filter = {
-    deactivatedAt: null,
-    failedAt: null,
-    startedAt: null,
-    succeededAt: null,
+    deactivatedAt: 'null',
+    failedAt: 'null',
+    startedAt: 'null',
+    succeededAt: 'null',
   }
   return serviceInteractor
     .getMany({
