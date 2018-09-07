@@ -83,11 +83,9 @@ export class CsvExporter extends Component {
           const item = res && res[0]
           if (item) {
             const attributes = item && item.attributes
-            const segments = attributes.filePath.split('/')
-            const fileName = segments[segments.length - 1]
             this.updateStatus('exportDone', {
               exportJobId: item.id,
-              fileName,
+              fileName: attributes.filePath,
             })
           }
 
