@@ -27,10 +27,10 @@ const tableColumnSpecifications = [
     name: 'collectingEventCollectors',
     width: 250,
   },
-  {
-    name: 'nomenclaturalTypeTypeStatus',
-    width: 150,
-  },
+  // {
+  //   name: 'nomenclaturalTypeTypeStatus',
+  //   width: 150,
+  // },
   {
     name: 'collectingEventStartDate',
     width: 150,
