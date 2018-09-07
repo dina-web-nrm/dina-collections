@@ -63,6 +63,8 @@
 │   ├── components
 │   │   ├── Accordion
 │   │   │   └── index.js
+│   │   ├── ColumnRowHeader
+│   │   │   └── index.js
 │   │   ├── DateString
 │   │   │   └── index.js
 │   │   ├── Footer.js
@@ -337,7 +339,9 @@
 │   │   ├── Flash.stories.js
 │   │   ├── FormFieldHelpIcon.js
 │   │   ├── FormFieldHelpIcon.stories.js
-│   │   ├── Inline.js
+│   │   ├── Inline
+│   │   │   ├── Body.js
+│   │   │   └── index.js
 │   │   ├── Modal.js
 │   │   ├── Modal.stories.js
 │   │   ├── NotificationDisplay.js
