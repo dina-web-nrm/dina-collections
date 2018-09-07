@@ -1,11 +1,6 @@
 const validateAccept = require('./validateAccept')
 
 describe('lib/serviceRouter/middlewares/validateAccept', () => {
-  it('Returns error if no accept header provided', () => {
-    const error = validateAccept()
-    expect(error).toBeTruthy()
-    expect(error.status).toBe(400)
-  })
   it('Returns null if a non json api header provided', () => {
     const error = validateAccept('application/json')
     expect(error).toBe(null)

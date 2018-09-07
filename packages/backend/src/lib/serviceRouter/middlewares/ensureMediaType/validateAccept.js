@@ -1,15 +1,10 @@
 const backendError = require('common/src/error/errorFactories/backendError')
-const backendError400 = require('common/src/error/errorFactories/backendError400')
 
 const JSON_API_HEADER = 'application/vnd.api+json'
 
 module.exports = function validateAccept(headerString) {
   if (!headerString) {
-    return backendError400({
-      code: 'REQUEST_ERROR',
-      detail: 'Provide accept header',
-      throwError: false,
-    })
+    return null
   }
   const headerArray = headerString.split(',')
 

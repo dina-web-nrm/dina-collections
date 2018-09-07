@@ -35,7 +35,7 @@ export default function updateStateWithOneFactory(
 
     const { id } = action.payload
 
-    const { removeFromState } = action.meta || {}
+    const { removeFromState, storeInState } = action.meta || {}
 
     if (removeFromState) {
       const updatedItems = {
@@ -47,6 +47,10 @@ export default function updateStateWithOneFactory(
         ...state,
         items: updatedItems,
       }
+    }
+
+    if (storeInState === false) {
+      return state
     }
 
     const updatePath = dep.createItemUpdatePath({

@@ -18,6 +18,7 @@ const systemValidate = (obj, schema) => {
 
 module.exports = function createConnectors({
   config,
+  fileInteractor,
   integrations,
   models,
   serviceInteractor,
@@ -40,6 +41,7 @@ module.exports = function createConnectors({
       const connector = createConnector({
         apiConfig,
         customControllerFactories,
+        fileInteractor,
         integrations,
         models,
         operation,

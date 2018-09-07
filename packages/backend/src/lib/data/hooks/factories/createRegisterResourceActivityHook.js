@@ -1,3 +1,9 @@
+const createLog = require('../../../../utilities/log')
+
+const log = createLog(
+  'lib/data/hooks/factories/createRegisterResourceActivityHook'
+)
+
 module.exports = function createRegisterResourceActivityHook({
   action,
   service,
@@ -19,10 +25,14 @@ module.exports = function createRegisterResourceActivityHook({
           },
         },
       }
-      return serviceInteractor.create({
-        request,
-        resource: 'resourceActivity',
-      })
+      return serviceInteractor
+        .create({
+          request,
+          resource: 'resourceActivity',
+        })
+        .catch(err => {
+          log.err(err.stack)
+        })
     })
   }
 }

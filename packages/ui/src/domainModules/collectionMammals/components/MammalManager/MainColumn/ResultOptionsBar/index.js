@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Grid, Icon, Menu, Popup } from 'semantic-ui-react'
+import { Icon, Menu } from 'semantic-ui-react'
+import CsvExporter from './CsvExporter'
 
 const propTypes = {
   isItemViewOrSettings: PropTypes.bool.isRequired,
@@ -44,29 +45,7 @@ export class ResultOptionsBar extends Component {
           <Icon name="table" size="large" />
         </Menu.Item>
         <Menu.Menu position="right">
-          {handleExportToCsv && (
-            <Grid textAlign="center" verticalAlign="middle">
-              <Grid.Column>
-                <Popup
-                  content={
-                    <Button
-                      content="Export result to CSV"
-                      onClick={event => handleExportToCsv(event)}
-                    />
-                  }
-                  on="click"
-                  position="bottom right"
-                  trigger={
-                    <Icon
-                      name="share"
-                      size="large"
-                      style={{ cursor: 'pointer' }}
-                    />
-                  }
-                />
-              </Grid.Column>
-            </Grid>
-          )}
+          {handleExportToCsv && <CsvExporter />}
 
           {handleSettingClick && (
             <Menu.Item>

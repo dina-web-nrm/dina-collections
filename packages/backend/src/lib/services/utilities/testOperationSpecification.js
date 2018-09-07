@@ -22,7 +22,10 @@ const validate = (schema, obj) => {
 }
 
 module.exports = function testOperationSpecification(operationSpecification) {
-  const { type } = operationSpecification
+  const { type, factory } = operationSpecification
+  if (factory) {
+    return
+  }
   describe(operationSpecification.type, () => {
     it('Passes schema validation', () => {
       if (!operationSchemas[type]) {

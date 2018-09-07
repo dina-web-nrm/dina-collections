@@ -1,8 +1,8 @@
 const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const update = require('../crud/update')
 
-module.exports = function setJobSuccess({ operation = {}, models }) {
-  const updateRequestHandler = update({ models, operation })
+module.exports = function setJobSuccess(options) {
+  const updateRequestHandler = update(options)
 
   return ({ request }) => {
     const { body: { data: input = {} } = {} } = request

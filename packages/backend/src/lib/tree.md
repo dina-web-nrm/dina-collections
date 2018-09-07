@@ -112,6 +112,7 @@
 │   │       └── extractTransformationFunctions.js
 │   ├── filters
 │   │   ├── factories
+│   │   │   ├── createEqualFilter.js
 │   │   │   ├── createNumberRangeFilter.js
 │   │   │   ├── createStringMatchFilter.js
 │   │   │   ├── createStringSearchFilter.js
@@ -132,7 +133,6 @@
 │   │   │   ├── raw.js
 │   │   │   └── updatedAfter.js
 │   │   └── utilities
-│   │       ├── createEqualFilterSpecification.js
 │   │       └── createGetManyFilterSpecifications.js
 │   ├── hooks
 │   │   └── factories
@@ -185,6 +185,10 @@
 │       ├── db
 │       │   └── index.js
 │       └── index.js
+├── fileInteractor
+│   ├── createFullPath.js
+│   ├── ensurePathIsRelative.js
+│   └── index.js
 ├── importer
 │   └── index.js
 ├── integrations

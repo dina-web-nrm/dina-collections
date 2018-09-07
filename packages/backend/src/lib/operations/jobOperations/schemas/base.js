@@ -16,6 +16,12 @@ module.exports = {
     operationId: {
       type: 'string',
     },
+    postHooks: {
+      type: 'array',
+    },
+    preHooks: {
+      type: 'array',
+    },
     type: {
       type: 'string',
     },

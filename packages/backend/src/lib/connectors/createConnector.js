@@ -8,12 +8,13 @@ const log = createLog('lib/connectors', 1)
 module.exports = function createConnector({
   apiConfig,
   customControllerFactories,
+  fileInteractor,
   integrations,
   models,
   operation,
   operationId,
-  serviceName,
   serviceInteractor,
+  serviceName,
 }) {
   log.info(operationId)
   const {
@@ -42,6 +43,7 @@ module.exports = function createConnector({
   const controller =
     controllerFactory &&
     controllerFactory({
+      fileInteractor,
       integrations,
       models,
       operation,

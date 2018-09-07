@@ -1,3 +1,4 @@
+const path = require('path')
 const { readKey, readBoolKey } = require('../../lib/config/env')
 
 const services = {
@@ -5,6 +6,7 @@ const services = {
   authService: true,
   curatedEventService: true,
   curatedListService: true,
+  exportService: true,
   jobService: true,
   logService: true,
   placeService: true,
@@ -94,12 +96,17 @@ const elasticsearch = {
   url: readKey('ELASTICSEARCH_URL'),
 }
 
+const fileInteractor = {
+  rootPath: path.join(__dirname, '../../../../../userFiles'),
+}
+
 module.exports = {
   api,
   auth,
   db,
   elasticsearch,
   env,
+  fileInteractor,
   initialData,
   integrations,
   jobs,
