@@ -1,12 +1,10 @@
-const createLog = require('../../../utilities/log')
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 const transformInput = require('../utilities/transformations/inputObject')
 
-const log = createLog('lib/controllers/crud/create')
-
 module.exports = function create({
-  operation = {},
+  fileInteractor,
   models,
+  operation = {},
   serviceInteractor,
 }) {
   const { postHooks = [], preHooks = [], relations, resource } = operation
@@ -21,6 +19,7 @@ module.exports = function create({
   return ({ request, user, requestId }) => {
     const preHookPromises = preHooks.map(preHook => {
       return preHook({
+        fileInteractor,
         request,
         requestId,
         resource,
@@ -43,14 +42,12 @@ module.exports = function create({
         .then(({ item } = {}) => {
           const postHookPromises = postHooks.map(postHook => {
             return postHook({
+              fileInteractor,
               item,
               requestId,
               resource,
               serviceInteractor,
               user,
-            }).catch(err => {
-              log.info('Error in post hook')
-              log.err(err.stack)
             })
           })
 

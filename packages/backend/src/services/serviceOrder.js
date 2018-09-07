@@ -14,4 +14,5 @@ module.exports = [
   'statusService',
   'jobService',
   'logService',
+  'exportService',
 ]

@@ -40,8 +40,20 @@ module.exports = function createRequestHandlerMiddleware({
           res.status(result.meta.internals.status)
         }
 
+        if (
+          result &&
+          result.meta &&
+          result.meta.isFile &&
+          result.meta.filePath
+        ) {
+          return res.sendFile(result.meta.filePath, {}, err => {
+            if (err) {
+              next(err)
+            }
+          })
+        }
         res.set('Content-Type', 'application/vnd.api+json')
-        res.send(result)
+        return res.send(result)
       })
       .catch(err => {
         next(err)

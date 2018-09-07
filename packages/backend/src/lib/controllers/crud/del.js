@@ -1,9 +1,11 @@
-const createLog = require('../../../utilities/log')
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 
-const log = createLog('lib/controllers/crud/del')
-
-module.exports = function del({ operation, models, serviceInteractor }) {
+module.exports = function del({
+  fileInteractor,
+  operation,
+  models,
+  serviceInteractor,
+}) {
   const { resource, postHooks = [], preHooks = [] } = operation
 
   const model = models[resource]
@@ -16,6 +18,7 @@ module.exports = function del({ operation, models, serviceInteractor }) {
   return ({ request, user, requestId }) => {
     const preHookPromises = preHooks.map(preHook => {
       return preHook({
+        fileInteractor,
         request,
         requestId,
         resource,
@@ -32,14 +35,12 @@ module.exports = function del({ operation, models, serviceInteractor }) {
         .then(({ item } = {}) => {
           const promises = postHooks.map(postHook => {
             return postHook({
+              fileInteractor,
               item,
               requestId,
               resource,
               serviceInteractor,
               user,
-            }).catch(err => {
-              log.info('Error in post hook')
-              log.err(err.stack)
             })
           })
 

@@ -10,6 +10,7 @@ yarn-error.log*
 
 env/.*
 data/.*
+userFiles/exports/*
 
 .DS_Store
 

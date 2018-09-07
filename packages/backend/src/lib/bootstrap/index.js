@@ -11,6 +11,7 @@ const createServiceRouter = require('../serviceRouter')
 const createApp = require('../app')
 const initializeDataStores = require('../dataStores')
 const createServiceInteractor = require('../serviceInteractor')
+const createFileInteractor = require('../fileInteractor')
 const setupModels = require('../models')
 const createConnectors = require('../connectors')
 const createServices = require('../services')
@@ -41,6 +42,7 @@ module.exports = function bootstrap({
   const bootstrapStartTime = now()
   const auth = createAuth({ config })
   const serviceInteractor = createServiceInteractor({ config })
+  const fileInteractor = createFileInteractor({ config })
 
   initializeDataStores({
     config,
@@ -66,6 +68,7 @@ module.exports = function bootstrap({
             )
             return createConnectors({
               config,
+              fileInteractor,
               integrations,
               models,
               serviceInteractor,
