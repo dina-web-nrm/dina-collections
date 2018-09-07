@@ -37,6 +37,28 @@ module.exports = function createServiceInteractor() {
     })
   }
 
+  const detachedCall = ({ operationId, request = {}, requestId, user }) => {
+    return Promise.resolve().then(() => {
+      return callController({
+        connectors,
+        log,
+        operationId: 'jobCreate',
+        request: {
+          body: {
+            data: {
+              attributes: {
+                operationId,
+                operationRequest: request,
+              },
+            },
+          },
+        },
+        requestId,
+        user,
+      })
+    })
+  }
+
   const serviceInteractions = operationTypes.reduce(
     (methods, operationType) => {
       log.info(`Creating service interaction for operation: ${operationType}`)
@@ -58,7 +80,7 @@ module.exports = function createServiceInteractor() {
         },
       }
     },
-    { call }
+    { call, detachedCall }
   )
 
   return { ...serviceInteractions, addConnectors }
