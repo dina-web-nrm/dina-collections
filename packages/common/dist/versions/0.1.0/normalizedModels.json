@@ -693,6 +693,82 @@
     "description": "",
     "id": "typeSpecimenType"
   },
+  "exportJob": {
+    "additionalProperties": false,
+    "description": "A model keeping track of exports",
+    "type": "object",
+    "properties": {
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
+      "startedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "createdAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "updatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "failedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "succeededAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "schemaVersion": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "error": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "resource": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "exportIds": {
+        "type": "array",
+        "x-summary": ""
+      },
+      "exportFields": {
+        "type": "array",
+        "x-summary": ""
+      },
+      "userId": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "requestId": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "filePath": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "type": {
+        "$ref": "type",
+        "x-summary": ""
+      }
+    },
+    "x-category": "exportService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "exportJob"
+  },
   "job": {
     "additionalProperties": false,
     "description": "A job model that should be further specified",
@@ -5334,6 +5410,435 @@
         "properties": {
           "self": {
             "example": "https://domain/api/curatedList/v01/typeSpecimenTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "exportJob"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "exportJob",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobStartJobResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs/actions/{id}/startJob",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobSetJobFailedResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs/actions/{id}/setJobFailed",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobSetJobSuccessResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs/actions/{id}/setJobSuccess",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobDownloadExportResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "exportJob"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "exportJob",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/export/v01/exportJobs/{id}/actions/downloadExport/{filePath}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -19720,6 +20225,166 @@
     "x-summary": "",
     "description": ""
   },
+  "exportJobCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "exportJob",
+                "enum": [
+                  "exportJob"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "exportJob"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobStartJobRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobSetJobFailedRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "exportJobSetJobSuccessRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customObject",
+                "enum": [
+                  "customObject"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customObject"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
   "jobCreateRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -23203,52 +23868,18 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "place",
+          "type": "storageLocation",
           "attributes": {
-            "name": "string",
-            "createdAt": "string",
-            "createdBy": "string",
-            "updatedBy": "string",
-            "updatedAt": "string",
-            "description": "string",
-            "centralPosition": {
-              "latitude": "string",
-              "longitude": "string",
-              "geodeticDatum": "string",
-              "uncertaintyInMeters": 0
-            },
-            "verticalPosition": {
-              "maximumDepthInMeters": 0,
-              "maximumElevationInMeters": 0,
-              "minimumDepthInMeters": 0,
-              "minimumElevationInMeters": 0
-            }
+            "name": "string"
           }
         }
       }
     },
     "example": {
       "data": {
-        "type": "place",
+        "type": "storageLocation",
         "attributes": {
-          "name": "string",
-          "createdAt": "string",
-          "createdBy": "string",
-          "updatedBy": "string",
-          "updatedAt": "string",
-          "description": "string",
-          "centralPosition": {
-            "latitude": "string",
-            "longitude": "string",
-            "geodeticDatum": "string",
-            "uncertaintyInMeters": 0
-          },
-          "verticalPosition": {
-            "maximumDepthInMeters": 0,
-            "maximumElevationInMeters": 0,
-            "minimumDepthInMeters": 0,
-            "minimumElevationInMeters": 0
-          }
+          "name": "string"
         }
       }
     },
