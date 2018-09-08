@@ -55,7 +55,7 @@ module.exports = {
       {
         lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7',
         identifierType: 'catalogNumber',
-        nameSpace: '',
+        namespace: '',
         value: '123456',
         publishRecord: true,
         remarks: '',

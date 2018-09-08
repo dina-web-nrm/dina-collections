@@ -224,7 +224,7 @@ describe('formatObject/coreToNestedSync', () => {
           identifierType: {
             id: 1,
           },
-          nameSpace: '',
+          namespace: '',
           value: '123456',
           publishRecord: true,
           remarks: '',

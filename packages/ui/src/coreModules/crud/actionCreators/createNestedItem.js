@@ -4,11 +4,11 @@ import { getItemWithSpecificedRelationships } from 'coreModules/crud/utilities'
 import { actionCreators as keyObjectActionCreators } from '../keyObjectModule'
 
 const setNestedItemActionCreator =
-  keyObjectActionCreators.set['nestedCache.:nameSpace.items.:id']
+  keyObjectActionCreators.set['nestedCache.:namespace.items.:id']
 
 export default function createNestedItem({
   item,
-  nameSpace,
+  namespace,
   relationships = [],
   resolveRelationships = [],
   resource,
@@ -57,7 +57,7 @@ export default function createNestedItem({
       dispatch(
         setNestedItemActionCreator(nested, {
           id: item.id,
-          nameSpace,
+          namespace,
         })
       )
     }

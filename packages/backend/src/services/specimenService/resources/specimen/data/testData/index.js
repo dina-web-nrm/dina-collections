@@ -38,7 +38,7 @@ testData.simpleDataNoRelations = {
           {
             identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
-            nameSpace: '',
+            namespace: '',
             remarks: '',
             value: '123457',
           },
@@ -62,7 +62,7 @@ testData.simpleDataPhysicalObjectRelations = {
           {
             identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
-            nameSpace: '',
+            namespace: '',
             remarks: '',
             value: '123458',
           },
@@ -96,7 +96,7 @@ testData.simpleDataMultipleRelations = {
           {
             identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
-            nameSpace: '',
+            namespace: '',
             remarks: '',
             value: '123458',
           },
@@ -147,7 +147,7 @@ testData.simpleDataInvalidRelationsFormat = {
           {
             identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
-            nameSpace: '',
+            namespace: '',
             remarks: '',
             value: '123458',
           },
@@ -177,7 +177,7 @@ testData.simpleDataInvalidRelations = {
           {
             identifierType: { id: '1', type: 'identifierType' },
             lid: '4444-33333',
-            nameSpace: '',
+            namespace: '',
             remarks: '',
             value: '123458',
           },

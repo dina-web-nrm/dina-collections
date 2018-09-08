@@ -198,7 +198,7 @@ describe('formatObject/coreToNested', () => {
             key: 'catalog-number',
             name: 'catalog number',
           },
-          nameSpace: '',
+          namespace: '',
           value: '123456',
           publishRecord: true,
           remarks: '',
