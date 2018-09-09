@@ -467,6 +467,7 @@ export default compose(
   withRouter,
   createInjectSearch({
     includeFields: ['id'],
+    resource: 'searchSpecimen',
   }),
   createInjectSearchResult({
     resource: 'searchSpecimen',

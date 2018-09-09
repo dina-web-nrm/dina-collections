@@ -10,7 +10,7 @@ const createInjectSearch = (
   {
     excludeFields: defaultExcludeFields,
     includeFields: defaultIncludeFields,
-    resource = 'searchSpecimen',
+    resource,
     storeSearchResult = true,
   } = {}
 ) => ComposedComponent => {
@@ -39,11 +39,14 @@ const createInjectSearch = (
       const { dispatch } = this.props
       const { resource: propResource } = this.props
       const usedResource = resourceInput || propResource || resource
+
       const getManyActionCreator =
         actionCreators[usedResource] && actionCreators[usedResource].getMany
 
       if (!getManyActionCreator) {
-        throw new Error(`Missing getManyActionCreator for resource ${resource}`)
+        throw new Error(
+          `Missing getManyActionCreator for resource ${usedResource}`
+        )
       }
       return dispatch(
         getManyActionCreator({
