@@ -40,7 +40,7 @@ module.exports = function getPlaceId({ getItemByTypeId, src, migrator }) {
     .join('->')
 
   if (!key) {
-    return undefined
+    return Promise.resolve(undefined)
   }
   return getItemByTypeId({
     id: key,
