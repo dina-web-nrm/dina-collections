@@ -6,6 +6,10 @@
   background-color: @pageBackground;
 }
 
+a {
+  cursor: pointer;
+}
+
 /*******************************
          react-rangeslider
 *******************************/
