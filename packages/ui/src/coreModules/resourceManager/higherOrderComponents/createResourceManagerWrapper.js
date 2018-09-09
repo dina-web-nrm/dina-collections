@@ -25,7 +25,9 @@ import {
 
 const log = createLog('resourceManager:resourceManagerWrapper')
 
-const createResourceManagerWrapper = () => ComposedComponent => {
+const createResourceManagerWrapper = (
+  { nestedCacheNamespaces = ['', 'title'] } = {}
+) => ComposedComponent => {
   const mapStateToProps = (state, { resource }) => {
     const { get } = keyObjectGlobalSelectors
     const baseItems = get[':resource.baseItems'](state, { resource })
@@ -97,6 +99,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     itemFetchOptions: PropTypes.object,
     itemId: PropTypes.string,
     listItems: PropTypes.array,
+    nestedCacheNamespaces: PropTypes.arrayOf(PropTypes.string),
     nextRowAvailable: PropTypes.bool.isRequired,
     onInteraction: PropTypes.func.isRequired,
     prevRowAvailable: PropTypes.bool.isRequired,
@@ -130,6 +133,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
     itemFetchOptions: { include: [], relationships: ['children', 'parent'] },
     itemId: undefined,
     listItems: [],
+    nestedCacheNamespaces: undefined,
     recordNavigationHeight: 58,
     recordOptionsHeight: 43,
     showAll: false,
@@ -143,6 +147,7 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       this.fetchTreeBase = this.fetchTreeBase.bind(this)
       this.findRowNumberById = this.findRowNumberById.bind(this)
       this.focusRowWithId = this.focusRowWithId.bind(this)
+      this.getNestedCacheNamespaces = this.getNestedCacheNamespaces.bind(this)
       this.handleClickRow = this.handleClickRow.bind(this)
       this.handleClosePicker = this.handleClosePicker.bind(this)
       this.handleInteraction = this.handleInteraction.bind(this)
@@ -197,7 +202,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       }
 
       document.addEventListener('keydown', this.handleKeyDown)
-      this.props.clearNestedCache()
+      this.props.clearNestedCache({
+        namespaces: this.getNestedCacheNamespaces(),
+      })
     }
 
     componentDidUpdate(prevProps) {
@@ -234,7 +241,9 @@ const createResourceManagerWrapper = () => ComposedComponent => {
       }
 
       if (tableActive !== prevTableActive) {
-        this.props.clearNestedCache()
+        this.props.clearNestedCache({
+          namespaces: this.getNestedCacheNamespaces(),
+        })
         if (tableActive) {
           this.props.setExpandedIds({}, { resource })
           this.tableSearch(filterValues)
@@ -261,11 +270,27 @@ const createResourceManagerWrapper = () => ComposedComponent => {
 
     componentWillUnmount() {
       const { resource } = this.props
-      this.props.clearNestedCache()
+      this.props.clearNestedCache({
+        namespaces: this.getNestedCacheNamespaces(),
+      })
       this.props.delFocusIdWhenLoaded({ resource })
       this.props.setExpandedIds({}, { resource })
       this.props.setFilterValues({}, { resource })
       document.removeEventListener('keydown', this.handleKeyDown)
+    }
+
+    getNestedCacheNamespaces() {
+      if (this.props.nestedCacheNamespaces) {
+        return this.props.nestedCacheNamespaces
+      }
+
+      if (nestedCacheNamespaces) {
+        return nestedCacheNamespaces.map(
+          namespace => `${this.props.resource}${namespace}`
+        )
+      }
+
+      return []
     }
 
     handleKeyDown({ key }) {
