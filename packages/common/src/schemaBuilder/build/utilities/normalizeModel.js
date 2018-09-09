@@ -1,4 +1,4 @@
-const normalizeProperty = ({ normalize, property, incjetedNormalizeModel }) => {
+const normalizeProperty = ({ normalize, property, injectedNormalizeModel }) => {
   if (!property) {
     return property
   }
@@ -8,7 +8,7 @@ const normalizeProperty = ({ normalize, property, incjetedNormalizeModel }) => {
   }
 
   if (property.type === 'object' && normalizedProperty.properties) {
-    return incjetedNormalizeModel({
+    return injectedNormalizeModel({
       model: property,
       normalize,
     })
@@ -18,7 +18,7 @@ const normalizeProperty = ({ normalize, property, incjetedNormalizeModel }) => {
     return {
       ...normalizedProperty,
       items: normalizeProperty({
-        incjetedNormalizeModel,
+        injectedNormalizeModel,
         normalize,
         property: normalizedProperty.items,
       }),
@@ -62,7 +62,7 @@ function normalizeModel({ model, normalize }) {
     return {
       ...obj,
       [key]: normalizeProperty({
-        incjetedNormalizeModel: normalizeModel,
+        injectedNormalizeModel: normalizeModel,
         normalize,
         property,
       }),
