@@ -189,6 +189,10 @@ const applyTransformationFunctionsAsync = ({
         .then(() => {
           return null
         })
+        .catch(err => {
+          err.scope = transformationFunction.name // eslint-disable-line no-param-reassign
+          throw err
+        })
     },
   }).then(() => {
     return target
