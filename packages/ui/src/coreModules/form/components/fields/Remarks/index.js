@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react'
-import { Grid, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
 import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponents'
+import { ModuleTranslate } from 'coreModules/i18n/components'
+import TogglableField from '../../TogglableField'
 import Input from '../Input'
+import RemarksWrapper from './RemarksWrapper'
 
 const propTypes = {
   displayLabel: PropTypes.bool,
@@ -11,9 +13,12 @@ const propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string,
     value: PropTypes.string,
-  }),
+  }).isRequired,
   isLatestActiveField: PropTypes.bool.isRequired,
   label: PropTypes.string,
+  meta: PropTypes.shape({
+    form: PropTypes.string.isRequired,
+  }).isRequired,
   module: PropTypes.string.isRequired,
   parameterKey: PropTypes.string,
   setAsLatestActiveField: PropTypes.func.isRequired,
@@ -23,14 +28,14 @@ const propTypes = {
 const defaultProps = {
   displayLabel: false,
   enableHelpNotifications: false,
-  input: undefined,
   label: undefined,
   parameterKey: undefined,
   type: 'text',
 }
 
-class Remarks extends PureComponent {
-  render() {
+class RemarksInput extends PureComponent {
+  /* eslint-disable class-methods-use-this */
+  renderInput(props) {
     const {
       displayLabel,
       enableHelpNotifications,
@@ -41,45 +46,83 @@ class Remarks extends PureComponent {
       parameterKey,
       setAsLatestActiveField,
       type,
-    } = this.props
-
-    const { value } = input
+    } = props
 
     return (
-      <Grid style={{ height: 50, paddingLeft: 11 }}>
-        <Grid.Column
-          onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
-          style={{ padding: 0 }}
-        >
-          <div style={{ float: 'left', paddingTop: 6 }}>
-            <Icon
-              name={value ? 'commenting outline' : 'comment outline'}
-              size="large"
-            />
-          </div>
-          {isLatestActiveField && (
-            <Input
-              displayLabel={displayLabel}
-              enableHelpNotifications={enableHelpNotifications}
-              fluid
-              focusOnMount
-              input={input}
-              label={label}
-              module={module}
-              parameterKey={parameterKey}
-              type={type}
-            />
+      <RemarksWrapper
+        input={input}
+        isLatestActiveField={isLatestActiveField}
+        setAsLatestActiveField={setAsLatestActiveField}
+      >
+        <Input
+          displayLabel={displayLabel}
+          enableHelpNotifications={enableHelpNotifications}
+          fluid
+          focusOnMount
+          input={input}
+          label={label}
+          module={module}
+          parameterKey={parameterKey}
+          type={type}
+        />
+      </RemarksWrapper>
+    )
+  }
+
+  renderEmptyOrResult(props) {
+    const { input, isLatestActiveField, setAsLatestActiveField } = props
+
+    return (
+      <RemarksWrapper
+        input={input}
+        isLatestActiveField={isLatestActiveField}
+        setAsLatestActiveField={setAsLatestActiveField}
+      >
+        <div style={{ paddingTop: 8 }}>
+          {input.value || (
+            <ModuleTranslate capitalize module="form" textKey="addRemarks" />
           )}
-          {!isLatestActiveField && (
-            <div style={{ paddingTop: 8 }}>{value || 'Add remarks...'}</div>
-          )}
-        </Grid.Column>
-      </Grid>
+        </div>
+      </RemarksWrapper>
+    )
+  }
+  /* eslint-enable class-methods-use-this */
+
+  render() {
+    const {
+      displayLabel,
+      enableHelpNotifications,
+      input,
+      isLatestActiveField,
+      label,
+      meta,
+      module,
+      parameterKey,
+      setAsLatestActiveField,
+      type,
+    } = this.props
+
+    return (
+      <TogglableField
+        displayLabel={displayLabel}
+        enableHelpNotifications={enableHelpNotifications}
+        input={input}
+        isLatestActiveField={isLatestActiveField}
+        label={label}
+        meta={meta}
+        module={module}
+        parameterKey={parameterKey}
+        renderEmptyState={this.renderEmptyOrResult}
+        renderInput={this.renderInput}
+        renderResult={this.renderEmptyOrResult}
+        setAsLatestActiveField={setAsLatestActiveField}
+        type={type}
+      />
     )
   }
 }
 
-Remarks.propTypes = propTypes
-Remarks.defaultProps = defaultProps
+RemarksInput.propTypes = propTypes
+RemarksInput.defaultProps = defaultProps
 
-export default injectIsLatestActiveField(Remarks)
+export default injectIsLatestActiveField(RemarksInput)
