@@ -20,4 +20,7 @@ export { default as Search } from './fields/Search'
 export { default as SingleDate } from './fields/Date/SingleDate'
 export { default as TextArea } from './fields/TextArea'
 export { default as TextAreaInput } from './inputs/TextArea'
+export {
+  default as TogglableDropdownSearch,
+} from './fields/DropdownSearch/TogglableDropdownSearch'
 export { default as TogglableField } from './TogglableField'
