@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Modal, Button } from 'semantic-ui-react'
-import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
+import objectPath from 'object-path'
 
+import { createPickerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 import AgentDropdownSearch from '../AgentDropdownSearch'
 import AgentManager from '../AgentManager/Local'
 
@@ -12,6 +13,8 @@ const propTypes = {
   onClose: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   onPickerButtonClick: PropTypes.func.isRequired,
+  pathToIdInValue: PropTypes.string.isRequired,
+  pathToTextInValue: PropTypes.string.isRequired,
   pickerActive: PropTypes.bool.isRequired,
 }
 
@@ -28,13 +31,16 @@ export class AgentDropdownPickerSearch extends Component {
       onClose,
       onInteraction,
       onPickerButtonClick,
+      pathToIdInValue,
+      pathToTextInValue,
       pickerActive,
       ...rest
     } = this.props
     if (pickerActive) {
       const initialFilterValues = fieldSearchQuery
         ? {
-            fullName: fieldSearchQuery,
+            fullName:
+              fieldSearchQuery || objectPath.get(fieldValue, pathToTextInValue),
           }
         : undefined
       return (
@@ -42,7 +48,7 @@ export class AgentDropdownPickerSearch extends Component {
           <Modal.Content>
             <AgentManager
               initialFilterValues={initialFilterValues}
-              initialItemId={fieldValue}
+              initialItemId={objectPath.get(fieldValue, pathToIdInValue)}
               isPicker
               onInteraction={onInteraction}
               pickerTitle="Pick Agent"
@@ -55,11 +61,21 @@ export class AgentDropdownPickerSearch extends Component {
 
     const picker = <Button onClick={onPickerButtonClick}>Picker</Button>
 
-    return <AgentDropdownSearch rightButton={picker} {...rest} />
+    return (
+      <AgentDropdownSearch
+        {...rest}
+        pathToIdInValue={pathToIdInValue}
+        pathToTextInValue={pathToTextInValue}
+        rightButton={picker}
+      />
+    )
   }
 }
 
 AgentDropdownPickerSearch.propTypes = propTypes
 AgentDropdownPickerSearch.defaultProps = defaultProps
 
-export default createPickerWrapper({})(AgentDropdownPickerSearch)
+export default createPickerWrapper({
+  pathToIdInValue: 'normalized.id',
+  pathToTextInValue: 'textI',
+})(AgentDropdownPickerSearch)
