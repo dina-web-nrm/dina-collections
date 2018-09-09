@@ -1,0 +1,14 @@
+{
+  "addRemarks": {
+    "en": "add remarks",
+    "sv": "lägg till kommentar"
+  },
+  "clickToAdd": {
+    "en": "click to add",
+    "sv": "klicka för att lägga till"
+  },
+  "plainText": {
+    "en": "plain text",
+    "sv": "fritext"
+  }
+}

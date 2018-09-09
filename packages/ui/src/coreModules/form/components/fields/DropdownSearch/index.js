@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 import extractProps from 'utilities/extractProps'
 import DropdownSearchConnectInput from '../../inputs/DropdownSearch/Connect'
+import DropdownSearchIdTextInput from '../../inputs/DropdownSearch/IdText'
 import DropdownSearchLocalInput from '../../inputs/DropdownSearch/Local'
 import DropdownSearchResource from '../../inputs/DropdownSearch/Resource'
 
@@ -31,6 +32,10 @@ function Select(props) {
   switch (type) {
     case 'dropdown-search-connect': {
       Component = DropdownSearchConnectInput
+      break
+    }
+    case 'dropdown-search-id-text': {
+      Component = DropdownSearchIdTextInput
       break
     }
     case 'dropdown-search-local': {

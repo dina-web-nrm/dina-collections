@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Dropdown, Icon } from 'semantic-ui-react'
 import config from 'config'
 
-const iconStyle = {
+const closeIconStyle = {
   bottom: 0,
   fontSize: '1rem',
   lineHeight: 1,
@@ -23,6 +23,7 @@ const propTypes = {
   autoComplete: PropTypes.string,
   displayAsButton: PropTypes.bool,
   fluid: PropTypes.bool,
+  icon: PropTypes.string,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   isLoading: PropTypes.bool,
@@ -40,7 +41,17 @@ const propTypes = {
   selectedOption: PropTypes.shape({
     key: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.shape({
+        normalized: PropTypes.shape({
+          id: PropTypes.string,
+        }),
+        textI: PropTypes.string,
+        textV: PropTypes.string,
+      }),
+    ]).isRequired,
   }),
   text: PropTypes.string,
 }
@@ -48,6 +59,7 @@ const defaultProps = {
   autoComplete: undefined,
   displayAsButton: false,
   fluid: false,
+  icon: undefined,
   initialText: '',
   isLoading: false,
   mountHidden: config.isTest,
@@ -92,6 +104,7 @@ class DropdownSearchInput extends Component {
       autoComplete,
       displayAsButton,
       fluid,
+      icon,
       initialText,
       input,
       isLoading,
@@ -117,13 +130,14 @@ class DropdownSearchInput extends Component {
               link
               name="close"
               onClick={this.handleClear}
-              style={iconStyle}
+              style={closeIconStyle}
             />
           )}
           <Dropdown
             autoComplete={autoComplete}
             button={displayAsButton}
             fluid={fluid}
+            icon={icon}
             loading={isLoading}
             onSearchChange={this.handleSearchChange}
             options={options}
