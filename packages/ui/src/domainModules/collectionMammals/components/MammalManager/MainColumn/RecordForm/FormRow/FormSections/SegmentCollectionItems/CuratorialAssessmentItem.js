@@ -13,12 +13,9 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   agent: PropTypes.shape({
-    attributes: PropTypes.shape({
-      fullName: PropTypes.string,
-    }),
-    id: PropTypes.string.isRequired,
+    normalized: { id: PropTypes.string },
+    textI: PropTypes.string,
   }),
-  agentText: PropTypes.string,
   changeFieldValue: PropTypes.func.isRequired,
   condition: PropTypes.string,
   conditionRemarks: PropTypes.string,
@@ -26,16 +23,22 @@ const propTypes = {
   getPath: PropTypes.func.isRequired,
   inventoryStatusRemarks: PropTypes.string,
   isInStorage: PropTypes.bool,
+  normalizedAgent: PropTypes.shape({
+    attributes: PropTypes.shape({
+      fullName: PropTypes.string,
+    }),
+    id: PropTypes.string.isRequired,
+  }),
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 const defaultProps = {
   agent: undefined,
-  agentText: undefined,
   condition: undefined,
   conditionRemarks: undefined,
   date: undefined,
   inventoryStatusRemarks: undefined,
   isInStorage: undefined,
+  normalizedAgent: undefined,
 }
 
 class CuratorialAssessmentItem extends PureComponent {
@@ -60,7 +63,6 @@ class CuratorialAssessmentItem extends PureComponent {
   render() {
     const {
       agent,
-      agentText,
       date,
       condition,
       conditionRemarks,
@@ -68,6 +70,7 @@ class CuratorialAssessmentItem extends PureComponent {
       getPath,
       inventoryStatusRemarks,
       isInStorage,
+      normalizedAgent,
       removeArrayFieldByIndex,
     } = this.props
 
@@ -92,10 +95,10 @@ class CuratorialAssessmentItem extends PureComponent {
                       {date && <DateString {...date} />}
                     </Grid.Column>
                     <Grid.Column computer={3} mobile={6} tablet={6}>
-                      {agent && agent.attributes && agent.attributes.fullName}
-                    </Grid.Column>
-                    <Grid.Column computer={3} mobile={6} tablet={6}>
-                      {agentText}
+                      {(normalizedAgent &&
+                        normalizedAgent.attributes &&
+                        normalizedAgent.attributes.fullName) ||
+                        (agent && agent.textI)}
                     </Grid.Column>
                     <Grid.Column computer={5} mobile={16} tablet={8}>
                       {isInStorage !== undefined &&
@@ -145,9 +148,9 @@ CuratorialAssessmentItem.defaultProps = defaultProps
 
 export default compose(
   createGetItemById({
-    idPath: 'agent.id',
-    itemKey: 'agent',
-    resource: 'agent',
+    idPath: 'agent.normalized.id',
+    itemKey: 'normalizedAgent',
+    resource: 'normalizedAgent',
   }),
   pathBuilder()
 )(CuratorialAssessmentItem)

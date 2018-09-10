@@ -10,8 +10,7 @@ import {
   formatBooleanRadio,
   parseBooleanRadio,
 } from 'coreModules/form/utilities'
-import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { ALL } from 'domainModules/agent/constants'
+import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import FormActions from './FormActions'
 
@@ -149,22 +148,10 @@ export class BaseForm extends PureComponent {
             <Grid.Column computer={6} mobile={16} tablet={8}>
               <Field
                 autoComplete="off"
-                component={AgentDropdownPickerSearch}
-                group={ALL}
-                initialText="Choose"
+                component={TogglableAgentDropdownPickerSearch}
                 module="collectionMammals"
-                name="agent.id"
+                name="agent"
                 parameterKey="curatorialAssessment.agent"
-              />
-            </Grid.Column>
-            <Grid.Column computer={4} mobile={16} tablet={8}>
-              <Field
-                autoComplete="off"
-                component={Input}
-                module="collectionMammals"
-                name="agentText"
-                parameterKey="curatorialAssessment.agentText"
-                type="input-text"
               />
             </Grid.Column>
           </Grid.Row>

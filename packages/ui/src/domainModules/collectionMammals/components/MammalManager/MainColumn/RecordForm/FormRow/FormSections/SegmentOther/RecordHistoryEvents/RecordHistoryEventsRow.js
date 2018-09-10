@@ -5,16 +5,19 @@ import { Table } from 'semantic-ui-react'
 
 import { Field, Input, SingleDate } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { ALL } from 'domainModules/agent/constants'
+import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { CATALOG_CARD } from 'domainModules/collectionMammals/constants'
 
 const propTypes = {
   getPath: PropTypes.func.isRequired,
-
   index: PropTypes.number.isRequired,
   recordHistoryEvent: PropTypes.shape({
-    agent: PropTypes.shape({ id: PropTypes.string }),
+    agent: PropTypes.shape({
+      normalized: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+      textI: PropTypes.string,
+    }),
     date: PropTypes.shape({ dateText: PropTypes.string }),
     description: PropTypes.string,
     id: PropTypes.string,
@@ -40,26 +43,13 @@ class RecordHistoryEventsRow extends PureComponent {
             type="text"
           />
         </Table.Cell>
-        <Table.Cell width={3}>
+        <Table.Cell style={{ minWidth: '150px' }} width={3}>
           <Field
             autoComplete="off"
-            component={AgentDropdownPickerSearch}
-            disabled={!isCatalogCardSystem}
-            displayLabel={false}
-            group={ALL}
-            initialText="Choose"
-            module="collectionMammals"
-            name={getPath('agent.id')}
-          />
-        </Table.Cell>
-        <Table.Cell width={3}>
-          <Field
-            component={Input}
-            disabled={!isCatalogCardSystem}
+            component={TogglableAgentDropdownPickerSearch}
             displayLabel={false}
             module="collectionMammals"
-            name={getPath('agentText')}
-            type="text"
+            name={getPath('agent')}
           />
         </Table.Cell>
         <Table.Cell width={3}>

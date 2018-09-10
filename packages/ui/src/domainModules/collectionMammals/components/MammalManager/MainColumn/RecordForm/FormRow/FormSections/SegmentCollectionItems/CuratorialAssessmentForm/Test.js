@@ -57,15 +57,7 @@ const FieldsForTest = ({ getPath, index }) => {
         component={Input}
         label="Agent"
         module="collectionMammals"
-        name={getPath(`${index}.agent.id`)}
-        type="input-text"
-      />
-      <Field
-        autoComplete="off"
-        component={Input}
-        label="Agent text"
-        module="collectionMammals"
-        name={getPath(`${index}.agentText`)}
+        name={getPath(`${index}.agent`)}
         type="input-text"
       />
     </React.Fragment>

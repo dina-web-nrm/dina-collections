@@ -16,8 +16,7 @@ import {
 import { TaxonNameDropdownSearch } from 'domainModules/taxon/components'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
-import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { ALL } from 'domainModules/agent/constants'
+import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentDeterminations:DeterminationContent'
@@ -125,23 +124,12 @@ class DeterminationContent extends Component {
           />
         </Grid.Column>
 
-        <Grid.Column computer={5} mobile={16} tablet={7}>
-          <Field
-            autoComplete="off"
-            component={AgentDropdownPickerSearch}
-            group={ALL}
-            initialText="Choose"
-            module="collectionMammals"
-            name={getPath('determinedByAgent.id')}
-          />
-        </Grid.Column>
         <Grid.Column computer={5} mobile={16} tablet={5}>
           <Field
             autoComplete="off"
-            component={Input}
+            component={TogglableAgentDropdownPickerSearch}
             module="collectionMammals"
-            name={getPath('determinedByAgentText')}
-            type="input-text"
+            name={getPath('determinedByAgent')}
           />
         </Grid.Column>
         <Grid.Column computer={8} mobile={16} tablet={8}>
