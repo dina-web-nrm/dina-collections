@@ -234,6 +234,9 @@ var applyTransformationFunctionsAsync = function applyTransformationFunctionsAsy
         return transformationFunction((0, _extends3.default)({ locals: locals, src: item, target: target }, rest));
       }).then(function () {
         return null;
+      }).catch(function (err) {
+        err.scope = transformationFunction.name;
+        throw err;
       });
     }
   }).then(function () {

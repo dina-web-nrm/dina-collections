@@ -76,7 +76,7 @@
             "dateText": "2016-04-06"
           },
           "system": "MAM2006",
-          "agentText": "DCK",
+          "agent": { "textV": "DCK" },
           "description": "Last modification of the objects"
         },
         {
@@ -85,7 +85,7 @@
             "dateText": "2006-10-12"
           },
           "system": "MAM2006",
-          "agentText": "MJD",
+          "agent": { "textV": "MJD" },
           "description": "Registration of the specimen"
         }
       ],
@@ -107,11 +107,11 @@
                   "id": "724"
                 }
               ],
-              "localityN": "South America",
-              "localityT": "Sydamerika"
+              "localityI": "South America",
+              "localityV": "Sydamerika"
             }
           },
-          "collectorsText":
+          "remarks":
             "Manis & Pedis i skinnet.; \"Från paleozoologiutställningen\". Delade tidigare acc.nr med Canis familiaris (nu 620498)."
         }
       ]
@@ -195,7 +195,7 @@
             "dateText": "2016-04-06"
           },
           "system": "MAM2006",
-          "agentText": "DCK",
+          "agent": { "textV": "DCK" },
           "description": "Last modification of the objects"
         },
         {
@@ -204,7 +204,7 @@
             "dateText": "2006-10-12"
           },
           "system": "MAM2006",
-          "agentText": "MJD",
+          "agent": { "textV": "MJD" },
           "description": "Registration of the specimen"
         }
       ],
@@ -226,11 +226,11 @@
                   "id": "724"
                 }
               ],
-              "localityN": "South America",
-              "localityT": "Sydamerika"
+              "localityI": "South America",
+              "localityV": "Sydamerika"
             }
           },
-          "collectorsText":
+          "remarks":
             "Manis & Pedis i skinnet.; \"Från paleozoologiutställningen\". Delade tidigare acc.nr med Canis familiaris (nu 620498)."
         }
       ]

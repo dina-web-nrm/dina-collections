@@ -13,7 +13,7 @@
     "description": "",
     "id": "affiliation"
   },
-  "agent": {
+  "normalizedAgent": {
     "additionalProperties": false,
     "properties": {
       "id": {
@@ -88,7 +88,7 @@
         "properties": {
           "user": {
             "type": "object",
-            "x-key-stored-in-model": "agent",
+            "x-key-stored-in-model": "normalizedAgent",
             "x-key-type": "json",
             "properties": {
               "data": {
@@ -109,7 +109,7 @@
     "x-modelType": "model",
     "x-summary": "",
     "description": "",
-    "id": "agent"
+    "id": "normalizedAgent"
   },
   "role": {
     "additionalProperties": false,
@@ -139,15 +139,15 @@
       "relationships": {
         "type": "object",
         "properties": {
-          "agent": {
+          "normalizedAgent": {
             "type": "object",
-            "x-key-stored-in-model": "agent",
+            "x-key-stored-in-model": "normalizedAgent",
             "x-key-type": "json",
             "properties": {
               "data": {
                 "type": "array",
                 "items": {
-                  "$ref": "agent"
+                  "$ref": "normalizedAgent"
                 }
               }
             }
@@ -155,10 +155,10 @@
         },
         "x-summary": ""
       },
-      "agents": {
+      "normalizedAgents": {
         "type": "array",
         "items": {
-          "$ref": "agent"
+          "$ref": "normalizedAgent"
         },
         "x-summary": ""
       },
@@ -180,6 +180,34 @@
     "x-summary": "",
     "description": "",
     "id": "user"
+  },
+  "agent": {
+    "additionalProperties": false,
+    "properties": {
+      "normalized": {
+        "$ref": "normalizedAgent",
+        "x-summary": ""
+      },
+      "textI": {
+        "description": "Interpreted text",
+        "type": "string",
+        "x-summary": ""
+      },
+      "textV": {
+        "description": "Verbatim text",
+        "type": "string",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "agent"
   },
   "customObject": {
     "additionalProperties": true,
@@ -1106,10 +1134,6 @@
         "$ref": "agent",
         "x-summary": ""
       },
-      "handedInByAgentText": {
-        "type": "string",
-        "x-summary": ""
-      },
       "acquisitionTypeText": {
         "type": "string",
         "x-summary": ""
@@ -1140,14 +1164,14 @@
         "type": "string",
         "x-summary": ""
       },
+      "collectedByAgent": {
+        "$ref": "agent",
+        "x-summary": ""
+      },
       "collectorsText": {
         "type": "string",
         "example": "Bergström, U",
         "description": "Name of the collector",
-        "x-summary": ""
-      },
-      "collectedByAgent": {
-        "$ref": "agent",
         "x-summary": ""
       },
       "isDeathDate": {
@@ -1235,10 +1259,6 @@
         "$ref": "agent",
         "x-summary": ""
       },
-      "agentText": {
-        "type": "string",
-        "x-summary": ""
-      },
       "date": {
         "$ref": "singleDate",
         "x-summary": ""
@@ -1321,11 +1341,6 @@
         "$ref": "agent",
         "x-summary": ""
       },
-      "determinedByAgentText": {
-        "type": "string",
-        "example": "Doe, J.",
-        "x-summary": ""
-      },
       "date": {
         "$ref": "singleDate",
         "x-summary": ""
@@ -1373,11 +1388,6 @@
     "properties": {
       "lid": {
         "$ref": "lid",
-        "x-summary": ""
-      },
-      "featureObservationAgentText": {
-        "type": "string",
-        "example": "Doe, J.",
         "x-summary": ""
       },
       "featureObservationAgent": {
@@ -1440,7 +1450,7 @@
         "example": "584028",
         "x-summary": ""
       },
-      "nameSpace": {
+      "namespace": {
         "type": "string",
         "example": "mammal",
         "x-summary": ""
@@ -1595,7 +1605,7 @@
         "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
         "x-summary": ""
       },
-      "localityN": {
+      "localityI": {
         "type": "string",
         "description": "TBA",
         "x-summary": ""
@@ -1605,7 +1615,7 @@
         "description": "Notes on the locality",
         "x-summary": ""
       },
-      "localityT": {
+      "localityV": {
         "type": "string",
         "description": "Verbatim locality names and description, as in the original source, typos and all.",
         "x-summary": ""
@@ -1620,16 +1630,6 @@
     "x-modelType": "model",
     "x-summary": "Information about the place of an event.",
     "id": "locationInformation"
-  },
-  "lookupAgent": {
-    "additionalProperties": true,
-    "x-internal": true,
-    "properties": {},
-    "x-category": "specimenService",
-    "x-modelType": "model",
-    "x-summary": "",
-    "description": "",
-    "id": "lookupAgent"
   },
   "lookupEstablishmentMeansType": {
     "additionalProperties": true,
@@ -1650,6 +1650,16 @@
     "x-summary": "",
     "description": "",
     "id": "lookupFeatureType"
+  },
+  "lookupNormalizedAgent": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "lookupNormalizedAgent"
   },
   "lookupPlace": {
     "additionalProperties": true,
@@ -1744,10 +1754,6 @@
       },
       "agent": {
         "$ref": "agent",
-        "x-summary": ""
-      },
-      "agentText": {
-        "type": "string",
         "x-summary": ""
       },
       "date": {
@@ -1892,27 +1898,6 @@
       "relationships": {
         "type": "object",
         "properties": {
-          "agents": {
-            "type": "object",
-            "x-key-stored-in-model": "specimen",
-            "x-key-type": "json",
-            "x-path": [
-              "individual.acquisition.handedInByAgent",
-              "individual.collectingInformation.*.collectedByAgent",
-              "individual.collectionItems.*.curatorialAssessments.*.agent",
-              "individual.determinations.*.determinedByAgent",
-              "individual.featureObservations.*.featureObservationAgent",
-              "individual.recordHistoryEvents.*.agent"
-            ],
-            "properties": {
-              "data": {
-                "type": "array",
-                "items": {
-                  "$ref": "agent"
-                }
-              }
-            }
-          },
           "causeOfDeathTypes": {
             "type": "object",
             "x-key-stored-in-model": "specimen",
@@ -1965,6 +1950,27 @@
                 "type": "array",
                 "items": {
                   "$ref": "identifierType"
+                }
+              }
+            }
+          },
+          "normalizedAgents": {
+            "type": "object",
+            "x-key-stored-in-model": "specimen",
+            "x-key-type": "json",
+            "x-path": [
+              "individual.acquisition.handedInByAgent.normalized",
+              "individual.collectingInformation.*.collectedByAgent.normalized",
+              "individual.collectionItems.*.curatorialAssessments.*.agent.normalized",
+              "individual.determinations.*.determinedByAgent.normalized",
+              "individual.featureObservations.*.featureObservationAgent.normalized",
+              "individual.recordHistoryEvents.*.agent.normalized"
+            ],
+            "properties": {
+              "data": {
+                "type": "array",
+                "items": {
+                  "$ref": "normalizedAgent"
                 }
               }
             }
@@ -2043,13 +2049,6 @@
         },
         "x-summary": ""
       },
-      "agents": {
-        "type": "array",
-        "items": {
-          "$ref": "agent"
-        },
-        "x-summary": ""
-      },
       "causeOfDeathTypes": {
         "type": "array",
         "items": {
@@ -2075,6 +2074,13 @@
         "type": "array",
         "items": {
           "$ref": "identifierType"
+        },
+        "x-summary": ""
+      },
+      "normalizedAgents": {
+        "type": "array",
+        "items": {
+          "$ref": "normalizedAgent"
         },
         "x-summary": ""
       },
@@ -2564,7 +2570,7 @@
     "description": "",
     "id": "taxonName"
   },
-  "agentCreateResponse": {
+  "normalizedAgentCreateResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -2573,7 +2579,7 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "id": {
                 "example": "1234",
@@ -2615,7 +2621,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "type": "string"
               }
             },
@@ -2634,7 +2640,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents",
+            "example": "https://domain/api/agent/v01/normalizedAgents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2653,7 +2659,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentGetOneResponse": {
+  "normalizedAgentGetOneResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -2662,7 +2668,7 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "id": {
                 "example": "1234",
@@ -2704,7 +2710,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "type": "string"
               }
             },
@@ -2723,7 +2729,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/normalizedAgents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2742,7 +2748,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentGetManyResponse": {
+  "normalizedAgentGetManyResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -2751,7 +2757,7 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "agent"
+              "$ref": "normalizedAgent"
             },
             "id": {
               "example": "1234",
@@ -2793,7 +2799,7 @@
               "type": "object"
             },
             "type": {
-              "default": "agent",
+              "default": "normalizedAgent",
               "type": "string"
             }
           },
@@ -2809,7 +2815,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents",
+            "example": "https://domain/api/agent/v01/normalizedAgents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2828,7 +2834,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentQueryResponse": {
+  "normalizedAgentQueryResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -2895,7 +2901,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/actions/query",
+            "example": "https://domain/api/agent/v01/normalizedAgents/actions/query",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -2914,7 +2920,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentUpdateResponse": {
+  "normalizedAgentUpdateResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -2923,7 +2929,7 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "id": {
                 "example": "1234",
@@ -2965,7 +2971,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "type": "string"
               }
             },
@@ -2984,7 +2990,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/normalizedAgents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3003,7 +3009,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentImportDataFromFileResponse": {
+  "normalizedAgentImportDataFromFileResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3038,7 +3044,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/actions/importDataFromFile",
+            "example": "https://domain/api/agent/v01/normalizedAgents/actions/importDataFromFile",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3056,7 +3062,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentDelResponse": {
+  "normalizedAgentDelResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3065,7 +3071,7 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "id": {
                 "example": "1234",
@@ -3107,7 +3113,7 @@
                 "type": "object"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "type": "string"
               }
             },
@@ -3126,7 +3132,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/{id}",
+            "example": "https://domain/api/agent/v01/normalizedAgents/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3145,7 +3151,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentGetRelationshipUserResponse": {
+  "normalizedAgentGetRelationshipUserResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3180,7 +3186,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/{id}/relationships/user",
+            "example": "https://domain/api/agent/v01/normalizedAgents/{id}/relationships/user",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3199,7 +3205,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentUpdateRelationshipUserResponse": {
+  "normalizedAgentUpdateRelationshipUserResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -3208,14 +3214,14 @@
             "additionalProperties": false,
             "properties": {
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "id": {
                 "example": "1234",
                 "type": "string"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "type": "string"
               }
             },
@@ -3234,7 +3240,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/agent/v01/agents/{id}/relationships/user",
+            "example": "https://domain/api/agent/v01/normalizedAgents/{id}/relationships/user",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -3316,7 +3322,7 @@
               },
               "relationships": {
                 "properties": {
-                  "agent": {
+                  "normalizedAgent": {
                     "additionalProperties": false,
                     "properties": {
                       "data": {
@@ -3329,9 +3335,9 @@
                             },
                             "type": {
                               "enum": [
-                                "agent"
+                                "normalizedAgent"
                               ],
-                              "example": "agent",
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -3401,7 +3407,7 @@
             },
             "relationships": {
               "properties": {
-                "agent": {
+                "normalizedAgent": {
                   "additionalProperties": false,
                   "properties": {
                     "data": {
@@ -3414,9 +3420,9 @@
                           },
                           "type": {
                             "enum": [
-                              "agent"
+                              "normalizedAgent"
                             ],
-                            "example": "agent",
+                            "example": "normalizedAgent",
                             "type": "string"
                           }
                         },
@@ -8523,379 +8529,6 @@
     "x-summary": "",
     "description": ""
   },
-  "lookupAgentCreateResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "lookupAgent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "lookupAgent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentGetOneResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "lookupAgent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "lookupAgent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentGetManyResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "additionalProperties": false,
-        "items": {
-          "additionalProperties": false,
-          "properties": {
-            "attributes": {
-              "$ref": "lookupAgent"
-            },
-            "id": {
-              "example": "1234",
-              "type": "string"
-            },
-            "type": {
-              "default": "lookupAgent",
-              "type": "string"
-            }
-          },
-          "type": "object"
-        },
-        "type": "array",
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentEmptyViewResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "customObject",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents/actions/emptyView",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentUpdateResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "lookupAgent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "lookupAgent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentDelResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "lookupAgent"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "lookupAgent",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-examples": {},
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentRebuildViewResponse": {
-    "additionalProperties": false,
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "additionalProperties": false,
-            "properties": {
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "id": {
-                "example": "1234",
-                "type": "string"
-              },
-              "type": {
-                "default": "customObject",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          {
-            "type": "null"
-          }
-        ],
-        "x-summary": ""
-      },
-      "jsonapi": {
-        "type": "object",
-        "x-summary": ""
-      },
-      "links": {
-        "properties": {
-          "self": {
-            "example": "https://domain/api/specimen/v01/lookupAgents/actions/rebuildView",
-            "format": "uri",
-            "type": "string",
-            "x-faker": "internet.url"
-          }
-        },
-        "type": "object",
-        "x-summary": ""
-      },
-      "meta": {
-        "type": "object",
-        "x-summary": ""
-      }
-    },
-    "type": "object",
-    "x-summary": "",
-    "description": ""
-  },
   "lookupFeatureTypeCreateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -9252,6 +8885,379 @@
         "properties": {
           "self": {
             "example": "https://domain/api/specimen/v01/lookupFeatureTypes/actions/rebuildView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupNormalizedAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupNormalizedAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupNormalizedAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupNormalizedAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "lookupNormalizedAgent"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "lookupNormalizedAgent",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentEmptyViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/actions/emptyView",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupNormalizedAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupNormalizedAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "lookupNormalizedAgent"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "lookupNormalizedAgent",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentRebuildViewResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/actions/rebuildView",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -11524,32 +11530,6 @@
               },
               "relationships": {
                 "properties": {
-                  "agents": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "agent"
-                              ],
-                              "example": "agent",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "causeOfDeathTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -11644,6 +11624,32 @@
                                 "identifierType"
                               ],
                               "example": "identifierType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "normalizedAgents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "normalizedAgent"
+                              ],
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -11847,32 +11853,6 @@
               },
               "relationships": {
                 "properties": {
-                  "agents": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "agent"
-                              ],
-                              "example": "agent",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "causeOfDeathTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -11967,6 +11947,32 @@
                                 "identifierType"
                               ],
                               "example": "identifierType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "normalizedAgents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "normalizedAgent"
+                              ],
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -12170,32 +12176,6 @@
             },
             "relationships": {
               "properties": {
-                "agents": {
-                  "additionalProperties": false,
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "id": {
-                            "example": "1234",
-                            "type": "string"
-                          },
-                          "type": {
-                            "enum": [
-                              "agent"
-                            ],
-                            "example": "agent",
-                            "type": "string"
-                          }
-                        },
-                        "type": "object"
-                      },
-                      "type": "array"
-                    }
-                  },
-                  "type": "object"
-                },
                 "causeOfDeathTypes": {
                   "additionalProperties": false,
                   "properties": {
@@ -12290,6 +12270,32 @@
                               "identifierType"
                             ],
                             "example": "identifierType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "normalizedAgents": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "normalizedAgent"
+                            ],
+                            "example": "normalizedAgent",
                             "type": "string"
                           }
                         },
@@ -12490,32 +12496,6 @@
               },
               "relationships": {
                 "properties": {
-                  "agents": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "agent"
-                              ],
-                              "example": "agent",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "causeOfDeathTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -12610,6 +12590,32 @@
                                 "identifierType"
                               ],
                               "example": "identifierType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "normalizedAgents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "normalizedAgent"
+                              ],
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -12813,32 +12819,6 @@
               },
               "relationships": {
                 "properties": {
-                  "agents": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "agent"
-                              ],
-                              "example": "agent",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "causeOfDeathTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -12933,6 +12913,32 @@
                                 "identifierType"
                               ],
                               "example": "identifierType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "normalizedAgents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "normalizedAgent"
+                              ],
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -13172,7 +13178,7 @@
     "x-summary": "",
     "description": ""
   },
-  "specimenGetRelationshipAgentsResponse": {
+  "specimenGetRelationshipNormalizedAgentsResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -13181,14 +13187,14 @@
           "additionalProperties": false,
           "properties": {
             "attributes": {
-              "$ref": "agent"
+              "$ref": "normalizedAgent"
             },
             "id": {
               "example": "1234",
               "type": "string"
             },
             "type": {
-              "default": "agent",
+              "default": "normalizedAgent",
               "type": "string"
             }
           },
@@ -13204,7 +13210,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/agents",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/normalizedAgents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -13223,7 +13229,7 @@
     "x-summary": "",
     "description": ""
   },
-  "specimenUpdateRelationshipAgentsResponse": {
+  "specimenUpdateRelationshipNormalizedAgentsResponse": {
     "additionalProperties": false,
     "properties": {
       "data": {
@@ -13255,7 +13261,7 @@
       "links": {
         "properties": {
           "self": {
-            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/agents",
+            "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/normalizedAgents",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -19302,7 +19308,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentCreateRequest": {
+  "normalizedAgentCreateRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -19323,14 +19329,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "enum": [
-                  "agent"
+                  "normalizedAgent"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "relationships": {
                 "properties": {
@@ -19376,7 +19382,7 @@
     "x-examples": {
       "primary": {
         "data": {
-          "type": "agent",
+          "type": "normalizedAgent",
           "attributes": {
             "givenName": "Carl",
             "familyName": "Linnaeus",
@@ -19389,7 +19395,7 @@
     },
     "example": {
       "data": {
-        "type": "agent",
+        "type": "normalizedAgent",
         "attributes": {
           "givenName": "Carl",
           "familyName": "Linnaeus",
@@ -19402,7 +19408,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentQueryRequest": {
+  "normalizedAgentQueryRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -19477,7 +19483,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentUpdateRequest": {
+  "normalizedAgentUpdateRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -19498,14 +19504,14 @@
                 "example": "1234"
               },
               "type": {
-                "default": "agent",
+                "default": "normalizedAgent",
                 "enum": [
-                  "agent"
+                  "normalizedAgent"
                 ],
                 "type": "string"
               },
               "attributes": {
-                "$ref": "agent"
+                "$ref": "normalizedAgent"
               },
               "relationships": {
                 "properties": {
@@ -19551,7 +19557,7 @@
     "x-summary": "",
     "description": ""
   },
-  "agentUpdateRelationshipUserRequest": {
+  "normalizedAgentUpdateRelationshipUserRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -21394,102 +21400,6 @@
     "x-summary": "",
     "description": ""
   },
-  "lookupAgentCreateRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "type": "null"
-          },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "lookupAgent",
-                "enum": [
-                  "lookupAgent"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "lookupAgent"
-              }
-            }
-          }
-        ],
-        "x-summary": ""
-      }
-    },
-    "x-examples": {
-      "primary": {
-        "data": {
-          "attributes": {
-            "info": "123"
-          },
-          "type": "lookupAgent"
-        }
-      }
-    },
-    "example": {
-      "data": {
-        "attributes": {
-          "info": "123"
-        },
-        "type": "lookupAgent"
-      }
-    },
-    "x-summary": "",
-    "description": ""
-  },
-  "lookupAgentUpdateRequest": {
-    "additionalProperties": false,
-    "type": "object",
-    "required": [
-      "data"
-    ],
-    "properties": {
-      "data": {
-        "oneOf": [
-          {
-            "type": "null"
-          },
-          {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "lookupAgent",
-                "enum": [
-                  "lookupAgent"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "lookupAgent"
-              }
-            }
-          }
-        ],
-        "x-summary": ""
-      }
-    },
-    "x-summary": "",
-    "description": ""
-  },
   "lookupFeatureTypeCreateRequest": {
     "additionalProperties": false,
     "type": "object",
@@ -21576,6 +21486,102 @@
               },
               "attributes": {
                 "$ref": "lookupFeatureType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupNormalizedAgent",
+                "enum": [
+                  "lookupNormalizedAgent"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupNormalizedAgent"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "attributes": {
+            "info": "123"
+          },
+          "type": "lookupNormalizedAgent"
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "attributes": {
+          "info": "123"
+        },
+        "type": "lookupNormalizedAgent"
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "lookupNormalizedAgentUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "lookupNormalizedAgent",
+                "enum": [
+                  "lookupNormalizedAgent"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "lookupNormalizedAgent"
               }
             }
           }
@@ -22194,32 +22200,6 @@
               },
               "relationships": {
                 "properties": {
-                  "agents": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "agent"
-                              ],
-                              "example": "agent",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "causeOfDeathTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -22314,6 +22294,32 @@
                                 "identifierType"
                               ],
                               "example": "identifierType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "normalizedAgents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "normalizedAgent"
+                              ],
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -22520,7 +22526,9 @@
               "determinations": [
                 {
                   "determinationVerbatim": "determinationVerbatim",
-                  "determinedByAgentText": "determinedByAgentText",
+                  "determinedByAgent": {
+                    "textV": "determinedByAgentText"
+                  },
                   "remarks": "remarks",
                   "taxonName": {
                     "id": "2367",
@@ -22573,7 +22581,7 @@
                       }
                     ],
                     "georeferenceSourcesText": "georeferenceSourcesText",
-                    "localityT": "localityT",
+                    "localityV": "localityV",
                     "position": {
                       "geodeticDatum": "geodeticDatum text",
                       "latitude": "latitude-string",
@@ -22610,7 +22618,7 @@
                     "type": "identifierType"
                   },
                   "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-                  "nameSpace": "",
+                  "namespace": "",
                   "remarks": "",
                   "value": "123456"
                 }
@@ -22713,7 +22721,9 @@
             "determinations": [
               {
                 "determinationVerbatim": "determinationVerbatim",
-                "determinedByAgentText": "determinedByAgentText",
+                "determinedByAgent": {
+                  "textV": "determinedByAgentText"
+                },
                 "remarks": "remarks",
                 "taxonName": {
                   "id": "2367",
@@ -22766,7 +22776,7 @@
                     }
                   ],
                   "georeferenceSourcesText": "georeferenceSourcesText",
-                  "localityT": "localityT",
+                  "localityV": "localityV",
                   "position": {
                     "geodeticDatum": "geodeticDatum text",
                     "latitude": "latitude-string",
@@ -22803,7 +22813,7 @@
                   "type": "identifierType"
                 },
                 "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-                "nameSpace": "",
+                "namespace": "",
                 "remarks": "",
                 "value": "123456"
               }
@@ -22888,32 +22898,6 @@
               },
               "relationships": {
                 "properties": {
-                  "agents": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "agent"
-                              ],
-                              "example": "agent",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
                   "causeOfDeathTypes": {
                     "additionalProperties": false,
                     "properties": {
@@ -23008,6 +22992,32 @@
                                 "identifierType"
                               ],
                               "example": "identifierType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "normalizedAgents": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "data": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "normalizedAgent"
+                              ],
+                              "example": "normalizedAgent",
                               "type": "string"
                             }
                           },
@@ -23164,7 +23174,7 @@
     "x-summary": "",
     "description": ""
   },
-  "specimenUpdateRelationshipAgentsRequest": {
+  "specimenUpdateRelationshipNormalizedAgentsRequest": {
     "additionalProperties": false,
     "type": "object",
     "required": [
@@ -23178,9 +23188,9 @@
           "type": "object",
           "properties": {
             "type": {
-              "default": "agent",
+              "default": "normalizedAgent",
               "enum": [
-                "agent"
+                "normalizedAgent"
               ],
               "type": "string"
             },

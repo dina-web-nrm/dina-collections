@@ -81,15 +81,15 @@
     }
   ],
   "paths": {
-    "/api/agent/v01/agents": {
+    "/api/agent/v01/normalizedAgents": {
       "post": {
-        "operationId": "agentCreate",
+        "operationId": "normalizedAgentCreate",
         "parameters": [],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/agentCreateRequest"
+                "$ref": "#/components/schemas/normalizedAgentCreateRequest"
               }
             }
           },
@@ -100,7 +100,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentCreateResponse"
+                  "$ref": "#/components/schemas/normalizedAgentCreateResponse"
                 }
               }
             },
@@ -110,7 +110,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentCreate-400"
+                  "$ref": "#/components/schemas/normalizedAgentCreate-400"
                 }
               }
             },
@@ -120,7 +120,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentCreate-500"
+                  "$ref": "#/components/schemas/normalizedAgentCreate-500"
                 }
               }
             },
@@ -132,13 +132,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Create agent",
+        "summary": "Create normalizedAgent",
         "tags": [
           "agentService"
         ]
       },
       "get": {
-        "operationId": "agentGetMany",
+        "operationId": "normalizedAgentGetMany",
         "parameters": [
           {
             "in": "query",
@@ -276,7 +276,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetManyResponse"
+                  "$ref": "#/components/schemas/normalizedAgentGetManyResponse"
                 }
               }
             },
@@ -286,7 +286,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetMany-400"
+                  "$ref": "#/components/schemas/normalizedAgentGetMany-400"
                 }
               }
             },
@@ -296,7 +296,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetMany-500"
+                  "$ref": "#/components/schemas/normalizedAgentGetMany-500"
                 }
               }
             },
@@ -308,20 +308,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find agents",
+        "summary": "Find normalizedAgents",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/agents/{id}": {
+    "/api/agent/v01/normalizedAgents/{id}": {
       "get": {
-        "operationId": "agentGetOne",
+        "operationId": "normalizedAgentGetOne",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "agent id",
+            "description": "normalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -370,7 +370,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetOneResponse"
+                  "$ref": "#/components/schemas/normalizedAgentGetOneResponse"
                 }
               }
             },
@@ -380,7 +380,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetOne-400"
+                  "$ref": "#/components/schemas/normalizedAgentGetOne-400"
                 }
               }
             },
@@ -390,7 +390,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetOne-404"
+                  "$ref": "#/components/schemas/normalizedAgentGetOne-404"
                 }
               }
             },
@@ -400,7 +400,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetOne-500"
+                  "$ref": "#/components/schemas/normalizedAgentGetOne-500"
                 }
               }
             },
@@ -412,18 +412,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find agent by id",
+        "summary": "Find normalizedAgent by id",
         "tags": [
           "agentService"
         ]
       },
       "patch": {
-        "operationId": "agentUpdate",
+        "operationId": "normalizedAgentUpdate",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "agent id",
+            "description": "normalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -435,7 +435,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/agentUpdateRequest"
+                "$ref": "#/components/schemas/normalizedAgentUpdateRequest"
               }
             }
           },
@@ -446,7 +446,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdateResponse"
+                  "$ref": "#/components/schemas/normalizedAgentUpdateResponse"
                 }
               }
             },
@@ -456,7 +456,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdate-400"
+                  "$ref": "#/components/schemas/normalizedAgentUpdate-400"
                 }
               }
             },
@@ -466,7 +466,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdate-404"
+                  "$ref": "#/components/schemas/normalizedAgentUpdate-404"
                 }
               }
             },
@@ -476,7 +476,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdate-500"
+                  "$ref": "#/components/schemas/normalizedAgentUpdate-500"
                 }
               }
             },
@@ -488,18 +488,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Updates agent",
+        "summary": "Updates normalizedAgent",
         "tags": [
           "agentService"
         ]
       },
       "delete": {
-        "operationId": "agentDel",
+        "operationId": "normalizedAgentDel",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "agent id",
+            "description": "normalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -512,7 +512,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentDelResponse"
+                  "$ref": "#/components/schemas/normalizedAgentDelResponse"
                 }
               }
             },
@@ -522,7 +522,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentDel-400"
+                  "$ref": "#/components/schemas/normalizedAgentDel-400"
                 }
               }
             },
@@ -532,7 +532,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentDel-403"
+                  "$ref": "#/components/schemas/normalizedAgentDel-403"
                 }
               }
             },
@@ -542,7 +542,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentDel-404"
+                  "$ref": "#/components/schemas/normalizedAgentDel-404"
                 }
               }
             },
@@ -552,7 +552,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentDel-500"
+                  "$ref": "#/components/schemas/normalizedAgentDel-500"
                 }
               }
             },
@@ -564,21 +564,21 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Deletes agent",
+        "summary": "Deletes normalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/agents/actions/query": {
+    "/api/agent/v01/normalizedAgents/actions/query": {
       "post": {
-        "operationId": "agentQuery",
+        "operationId": "normalizedAgentQuery",
         "parameters": [],
         "requestBody": {
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/agentQueryRequest"
+                "$ref": "#/components/schemas/normalizedAgentQueryRequest"
               }
             }
           },
@@ -589,7 +589,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentQueryResponse"
+                  "$ref": "#/components/schemas/normalizedAgentQueryResponse"
                 }
               }
             },
@@ -599,7 +599,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentQuery-400"
+                  "$ref": "#/components/schemas/normalizedAgentQuery-400"
                 }
               }
             },
@@ -609,7 +609,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentQuery-500"
+                  "$ref": "#/components/schemas/normalizedAgentQuery-500"
                 }
               }
             },
@@ -621,15 +621,15 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Query agent",
+        "summary": "Query normalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/agents/actions/importDataFromFile": {
+    "/api/agent/v01/normalizedAgents/actions/importDataFromFile": {
       "post": {
-        "operationId": "agentImportDataFromFile",
+        "operationId": "normalizedAgentImportDataFromFile",
         "parameters": [
           {
             "in": "query",
@@ -646,7 +646,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentImportDataFromFileResponse"
+                  "$ref": "#/components/schemas/normalizedAgentImportDataFromFileResponse"
                 }
               }
             },
@@ -656,7 +656,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentImportDataFromFile-403"
+                  "$ref": "#/components/schemas/normalizedAgentImportDataFromFile-403"
                 }
               }
             },
@@ -666,7 +666,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentImportDataFromFile-500"
+                  "$ref": "#/components/schemas/normalizedAgentImportDataFromFile-500"
                 }
               }
             },
@@ -678,20 +678,20 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Rebuild view for resource agent",
+        "summary": "Rebuild view for resource normalizedAgent",
         "tags": [
           "agentService"
         ]
       }
     },
-    "/api/agent/v01/agents/{id}/relationships/user": {
+    "/api/agent/v01/normalizedAgents/{id}/relationships/user": {
       "get": {
-        "operationId": "agentGetRelationshipUser",
+        "operationId": "normalizedAgentGetRelationshipUser",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "agent id",
+            "description": "normalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -704,7 +704,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetRelationshipUserResponse"
+                  "$ref": "#/components/schemas/normalizedAgentGetRelationshipUserResponse"
                 }
               }
             },
@@ -714,7 +714,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetRelationshipUser-400"
+                  "$ref": "#/components/schemas/normalizedAgentGetRelationshipUser-400"
                 }
               }
             },
@@ -724,7 +724,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetRelationshipUser-404"
+                  "$ref": "#/components/schemas/normalizedAgentGetRelationshipUser-404"
                 }
               }
             },
@@ -734,7 +734,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentGetRelationshipUser-500"
+                  "$ref": "#/components/schemas/normalizedAgentGetRelationshipUser-500"
                 }
               }
             },
@@ -746,18 +746,18 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find agent -> user",
+        "summary": "Find normalizedAgent -> user",
         "tags": [
           "agentService"
         ]
       },
       "patch": {
-        "operationId": "agentUpdateRelationshipUser",
+        "operationId": "normalizedAgentUpdateRelationshipUser",
         "parameters": [
           {
             "in": "path",
             "name": "id",
-            "description": "agent id",
+            "description": "normalizedAgent id",
             "example": "1",
             "required": true,
             "schema": {
@@ -769,7 +769,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/agentUpdateRelationshipUserRequest"
+                "$ref": "#/components/schemas/normalizedAgentUpdateRelationshipUserRequest"
               }
             }
           },
@@ -780,7 +780,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdateRelationshipUserResponse"
+                  "$ref": "#/components/schemas/normalizedAgentUpdateRelationshipUserResponse"
                 }
               }
             },
@@ -790,7 +790,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdateRelationshipUser-400"
+                  "$ref": "#/components/schemas/normalizedAgentUpdateRelationshipUser-400"
                 }
               }
             },
@@ -800,7 +800,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdateRelationshipUser-404"
+                  "$ref": "#/components/schemas/normalizedAgentUpdateRelationshipUser-404"
                 }
               }
             },
@@ -810,7 +810,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/agentUpdateRelationshipUser-500"
+                  "$ref": "#/components/schemas/normalizedAgentUpdateRelationshipUser-500"
                 }
               }
             },
@@ -822,7 +822,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update agent -> user",
+        "summary": "Update normalizedAgent -> user",
         "tags": [
           "agentService"
         ]
@@ -8386,509 +8386,6 @@
         ]
       }
     },
-    "/api/specimen/v01/lookupAgents": {
-      "post": {
-        "operationId": "lookupAgentCreate",
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/lookupAgentCreateRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "201": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentCreateResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentCreate-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentCreate-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Create lookupAgent",
-        "tags": [
-          "specimenService"
-        ]
-      },
-      "get": {
-        "operationId": "lookupAgentGetMany",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "filter[ids]",
-            "description": "Filter by ids",
-            "required": false,
-            "schema": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "offset",
-            "description": "Offset the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetManyResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetMany-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetMany-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find lookupAgents",
-        "tags": [
-          "specimenService"
-        ]
-      }
-    },
-    "/api/specimen/v01/lookupAgents/{id}": {
-      "get": {
-        "operationId": "lookupAgentGetOne",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "lookupAgent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "mock",
-            "description": "Will return mock data",
-            "example": false,
-            "schema": {
-              "default": false,
-              "type": "boolean"
-            }
-          },
-          {
-            "in": "query",
-            "name": "exampleId",
-            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetOneResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetOne-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetOne-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentGetOne-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Find lookupAgent by id",
-        "tags": [
-          "specimenService"
-        ]
-      },
-      "patch": {
-        "operationId": "lookupAgentUpdate",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "lookupAgent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/vnd.api+json": {
-              "schema": {
-                "$ref": "#/components/schemas/lookupAgentUpdateRequest"
-              }
-            }
-          },
-          "description": "successful operation"
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentUpdateResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentUpdate-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentUpdate-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentUpdate-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Updates lookupAgent",
-        "tags": [
-          "specimenService"
-        ]
-      },
-      "delete": {
-        "operationId": "lookupAgentDel",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "id",
-            "description": "lookupAgent id",
-            "example": "1",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentDelResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "400": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentDel-400"
-                }
-              }
-            },
-            "description": "Error: 400"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentDel-403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "404": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentDel-404"
-                }
-              }
-            },
-            "description": "Error: 404"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentDel-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Deletes lookupAgent",
-        "tags": [
-          "specimenService"
-        ]
-      }
-    },
-    "/api/specimen/v01/lookupAgents/actions/emptyView": {
-      "post": {
-        "operationId": "lookupAgentEmptyView",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentEmptyViewResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentEmptyView-403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentEmptyView-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Empty view for resource lookupAgent",
-        "tags": [
-          "specimenService"
-        ]
-      }
-    },
-    "/api/specimen/v01/lookupAgents/actions/rebuildView": {
-      "post": {
-        "operationId": "lookupAgentRebuildView",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "limit",
-            "description": "Limit the result",
-            "schema": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentRebuildViewResponse"
-                }
-              }
-            },
-            "description": "this is a desc"
-          },
-          "403": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentRebuildView-403"
-                }
-              }
-            },
-            "description": "Error: 403"
-          },
-          "500": {
-            "content": {
-              "application/vnd.api+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/lookupAgentRebuildView-500"
-                }
-              }
-            },
-            "description": "Error: 500"
-          }
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "summary": "Rebuild view for resource lookupAgent",
-        "tags": [
-          "specimenService"
-        ]
-      }
-    },
     "/api/specimen/v01/lookupFeatureTypes": {
       "post": {
         "operationId": "lookupFeatureTypeCreate",
@@ -9387,6 +8884,509 @@
           }
         ],
         "summary": "Rebuild view for resource lookupFeatureType",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupNormalizedAgents": {
+      "post": {
+        "operationId": "lookupNormalizedAgentCreate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/lookupNormalizedAgentCreateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentCreateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentCreate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentCreate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create lookupNormalizedAgent",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "get": {
+        "operationId": "lookupNormalizedAgentGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetManyResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find lookupNormalizedAgents",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupNormalizedAgents/{id}": {
+      "get": {
+        "operationId": "lookupNormalizedAgentGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupNormalizedAgent id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "example": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetOneResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find lookupNormalizedAgent by id",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "patch": {
+        "operationId": "lookupNormalizedAgentUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupNormalizedAgent id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/lookupNormalizedAgentUpdateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentUpdateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentUpdate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentUpdate-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentUpdate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates lookupNormalizedAgent",
+        "tags": [
+          "specimenService"
+        ]
+      },
+      "delete": {
+        "operationId": "lookupNormalizedAgentDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "lookupNormalizedAgent id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentDelResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentDel-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentDel-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentDel-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentDel-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes lookupNormalizedAgent",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupNormalizedAgents/actions/emptyView": {
+      "post": {
+        "operationId": "lookupNormalizedAgentEmptyView",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentEmptyViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentEmptyView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentEmptyView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Empty view for resource lookupNormalizedAgent",
+        "tags": [
+          "specimenService"
+        ]
+      }
+    },
+    "/api/specimen/v01/lookupNormalizedAgents/actions/rebuildView": {
+      "post": {
+        "operationId": "lookupNormalizedAgentRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentRebuildViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentRebuildView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgentRebuildView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource lookupNormalizedAgent",
         "tags": [
           "specimenService"
         ]
@@ -12474,11 +12474,11 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "agents",
               "causeOfDeathTypes",
               "establishmentMeansTypes",
               "featureTypes",
               "identifierTypes",
+              "normalizedAgents",
               "physicalObjects",
               "places",
               "preparationTypes",
@@ -12489,11 +12489,11 @@
               "items": {
                 "enum": [
                   "all",
-                  "agents",
                   "causeOfDeathTypes",
                   "establishmentMeansTypes",
                   "featureTypes",
                   "identifierTypes",
+                  "normalizedAgents",
                   "physicalObjects",
                   "places",
                   "preparationTypes",
@@ -12635,11 +12635,11 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "agents",
               "causeOfDeathTypes",
               "establishmentMeansTypes",
               "featureTypes",
               "identifierTypes",
+              "normalizedAgents",
               "physicalObjects",
               "places",
               "preparationTypes",
@@ -12650,11 +12650,11 @@
               "items": {
                 "enum": [
                   "all",
-                  "agents",
                   "causeOfDeathTypes",
                   "establishmentMeansTypes",
                   "featureTypes",
                   "identifierTypes",
+                  "normalizedAgents",
                   "physicalObjects",
                   "places",
                   "preparationTypes",
@@ -12899,11 +12899,11 @@
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
             "example": [
-              "agents",
               "causeOfDeathTypes",
               "establishmentMeansTypes",
               "featureTypes",
               "identifierTypes",
+              "normalizedAgents",
               "physicalObjects",
               "places",
               "preparationTypes",
@@ -12914,11 +12914,11 @@
               "items": {
                 "enum": [
                   "all",
-                  "agents",
                   "causeOfDeathTypes",
                   "establishmentMeansTypes",
                   "featureTypes",
                   "identifierTypes",
+                  "normalizedAgents",
                   "physicalObjects",
                   "places",
                   "preparationTypes",
@@ -12983,9 +12983,9 @@
         ]
       }
     },
-    "/api/specimen/v01/specimens/{id}/relationships/agents": {
+    "/api/specimen/v01/specimens/{id}/relationships/normalizedAgents": {
       "get": {
-        "operationId": "specimenGetRelationshipAgents",
+        "operationId": "specimenGetRelationshipNormalizedAgents",
         "parameters": [
           {
             "in": "path",
@@ -13003,7 +13003,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationshipAgentsResponse"
+                  "$ref": "#/components/schemas/specimenGetRelationshipNormalizedAgentsResponse"
                 }
               }
             },
@@ -13013,7 +13013,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationshipAgents-400"
+                  "$ref": "#/components/schemas/specimenGetRelationshipNormalizedAgents-400"
                 }
               }
             },
@@ -13023,7 +13023,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationshipAgents-404"
+                  "$ref": "#/components/schemas/specimenGetRelationshipNormalizedAgents-404"
                 }
               }
             },
@@ -13033,7 +13033,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenGetRelationshipAgents-500"
+                  "$ref": "#/components/schemas/specimenGetRelationshipNormalizedAgents-500"
                 }
               }
             },
@@ -13045,13 +13045,13 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Find specimen -> agents",
+        "summary": "Find specimen -> normalizedAgents",
         "tags": [
           "specimenService"
         ]
       },
       "patch": {
-        "operationId": "specimenUpdateRelationshipAgents",
+        "operationId": "specimenUpdateRelationshipNormalizedAgents",
         "parameters": [
           {
             "in": "path",
@@ -13068,7 +13068,7 @@
           "content": {
             "application/vnd.api+json": {
               "schema": {
-                "$ref": "#/components/schemas/specimenUpdateRelationshipAgentsRequest"
+                "$ref": "#/components/schemas/specimenUpdateRelationshipNormalizedAgentsRequest"
               }
             }
           },
@@ -13079,7 +13079,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenUpdateRelationshipAgentsResponse"
+                  "$ref": "#/components/schemas/specimenUpdateRelationshipNormalizedAgentsResponse"
                 }
               }
             },
@@ -13089,7 +13089,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenUpdateRelationshipAgents-400"
+                  "$ref": "#/components/schemas/specimenUpdateRelationshipNormalizedAgents-400"
                 }
               }
             },
@@ -13099,7 +13099,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenUpdateRelationshipAgents-404"
+                  "$ref": "#/components/schemas/specimenUpdateRelationshipNormalizedAgents-404"
                 }
               }
             },
@@ -13109,7 +13109,7 @@
             "content": {
               "application/vnd.api+json": {
                 "schema": {
-                  "$ref": "#/components/schemas/specimenUpdateRelationshipAgents-500"
+                  "$ref": "#/components/schemas/specimenUpdateRelationshipNormalizedAgents-500"
                 }
               }
             },
@@ -13121,7 +13121,7 @@
             "bearerAuth": []
           }
         ],
-        "summary": "Update specimen -> agents",
+        "summary": "Update specimen -> normalizedAgents",
         "tags": [
           "specimenService"
         ]
@@ -18477,7 +18477,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agent": {
+      "normalizedAgent": {
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -18581,10 +18581,10 @@
       "user": {
         "additionalProperties": false,
         "properties": {
-          "agents": {
+          "normalizedAgents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/agent"
+              "$ref": "#/components/schemas/normalizedAgent"
             },
             "x-summary": ""
           },
@@ -18602,6 +18602,33 @@
           }
         },
         "x-category": "authService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "agent": {
+        "additionalProperties": false,
+        "properties": {
+          "normalized": {
+            "$ref": "#/components/schemas/normalizedAgent",
+            "x-summary": ""
+          },
+          "textI": {
+            "description": "Interpreted text",
+            "type": "string",
+            "x-summary": ""
+          },
+          "textV": {
+            "description": "Verbatim text",
+            "type": "string",
+            "x-summary": ""
+          },
+          "remarks": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "core",
         "x-modelType": "model",
         "x-summary": "",
         "description": ""
@@ -19453,10 +19480,6 @@
             "$ref": "#/components/schemas/agent",
             "x-summary": ""
           },
-          "handedInByAgentText": {
-            "type": "string",
-            "x-summary": ""
-          },
           "acquisitionTypeText": {
             "type": "string",
             "x-summary": ""
@@ -19486,14 +19509,14 @@
             "type": "string",
             "x-summary": ""
           },
+          "collectedByAgent": {
+            "$ref": "#/components/schemas/agent",
+            "x-summary": ""
+          },
           "collectorsText": {
             "type": "string",
             "example": "Bergström, U",
             "description": "Name of the collector",
-            "x-summary": ""
-          },
-          "collectedByAgent": {
-            "$ref": "#/components/schemas/agent",
             "x-summary": ""
           },
           "isDeathDate": {
@@ -19579,10 +19602,6 @@
             "$ref": "#/components/schemas/agent",
             "x-summary": ""
           },
-          "agentText": {
-            "type": "string",
-            "x-summary": ""
-          },
           "date": {
             "$ref": "#/components/schemas/singleDate",
             "x-summary": ""
@@ -19663,11 +19682,6 @@
             "$ref": "#/components/schemas/agent",
             "x-summary": ""
           },
-          "determinedByAgentText": {
-            "type": "string",
-            "example": "Doe, J.",
-            "x-summary": ""
-          },
           "date": {
             "$ref": "#/components/schemas/singleDate",
             "x-summary": ""
@@ -19713,11 +19727,6 @@
         "properties": {
           "lid": {
             "$ref": "#/components/schemas/lid",
-            "x-summary": ""
-          },
-          "featureObservationAgentText": {
-            "type": "string",
-            "example": "Doe, J.",
             "x-summary": ""
           },
           "featureObservationAgent": {
@@ -19779,7 +19788,7 @@
             "example": "584028",
             "x-summary": ""
           },
-          "nameSpace": {
+          "namespace": {
             "type": "string",
             "example": "mammal",
             "x-summary": ""
@@ -19932,7 +19941,7 @@
             "description": "Describe how you got the georeferenced coordinates (data source(s), tools, maps ...)",
             "x-summary": ""
           },
-          "localityN": {
+          "localityI": {
             "type": "string",
             "description": "TBA",
             "x-summary": ""
@@ -19942,7 +19951,7 @@
             "description": "Notes on the locality",
             "x-summary": ""
           },
-          "localityT": {
+          "localityV": {
             "type": "string",
             "description": "Verbatim locality names and description, as in the original source, typos and all.",
             "x-summary": ""
@@ -19957,15 +19966,6 @@
         "x-modelType": "model",
         "x-summary": "Information about the place of an event."
       },
-      "lookupAgent": {
-        "additionalProperties": true,
-        "x-internal": true,
-        "properties": {},
-        "x-category": "specimenService",
-        "x-modelType": "model",
-        "x-summary": "",
-        "description": ""
-      },
       "lookupEstablishmentMeansType": {
         "additionalProperties": true,
         "x-internal": true,
@@ -19976,6 +19976,15 @@
         "description": ""
       },
       "lookupFeatureType": {
+        "additionalProperties": true,
+        "x-internal": true,
+        "properties": {},
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgent": {
         "additionalProperties": true,
         "x-internal": true,
         "properties": {},
@@ -20071,10 +20080,6 @@
           },
           "agent": {
             "$ref": "#/components/schemas/agent",
-            "x-summary": ""
-          },
-          "agentText": {
-            "type": "string",
             "x-summary": ""
           },
           "date": {
@@ -20215,13 +20220,6 @@
             "$ref": "#/components/schemas/readOnly",
             "x-summary": ""
           },
-          "agents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/agent"
-            },
-            "x-summary": ""
-          },
           "causeOfDeathTypes": {
             "type": "array",
             "items": {
@@ -20247,6 +20245,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/identifierType"
+            },
+            "x-summary": ""
+          },
+          "normalizedAgents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/normalizedAgent"
             },
             "x-summary": ""
           },
@@ -20565,7 +20570,7 @@
         "title": "REQUEST_ERROR",
         "type": "string"
       },
-      "agentCreate-400": {
+      "normalizedAgentCreate-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20604,7 +20609,7 @@
         "title": "INTERNAL_SERVER_ERROR",
         "type": "string"
       },
-      "agentCreate-500": {
+      "normalizedAgentCreate-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20631,7 +20636,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentGetOne-400": {
+      "normalizedAgentGetOne-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20661,7 +20666,7 @@
         "title": "RESOURCE_NOT_FOUND_ERROR",
         "type": "string"
       },
-      "agentGetOne-404": {
+      "normalizedAgentGetOne-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20685,7 +20690,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "agentGetOne-500": {
+      "normalizedAgentGetOne-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20712,7 +20717,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentGetMany-400": {
+      "normalizedAgentGetMany-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20736,7 +20741,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "agentGetMany-500": {
+      "normalizedAgentGetMany-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20763,7 +20768,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentQuery-400": {
+      "normalizedAgentQuery-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20790,7 +20795,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "agentQuery-500": {
+      "normalizedAgentQuery-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20817,7 +20822,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentUpdate-400": {
+      "normalizedAgentUpdate-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20844,7 +20849,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "agentUpdate-404": {
+      "normalizedAgentUpdate-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20868,7 +20873,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "agentUpdate-500": {
+      "normalizedAgentUpdate-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20901,7 +20906,7 @@
         "title": "FORBIDDEN_ERROR",
         "type": "string"
       },
-      "agentImportDataFromFile-403": {
+      "normalizedAgentImportDataFromFile-403": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20925,7 +20930,7 @@
         "title": "Forbidden",
         "type": "object"
       },
-      "agentImportDataFromFile-500": {
+      "normalizedAgentImportDataFromFile-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20949,7 +20954,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentDel-400": {
+      "normalizedAgentDel-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -20976,7 +20981,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "agentDel-403": {
+      "normalizedAgentDel-403": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21000,7 +21005,7 @@
         "title": "Forbidden",
         "type": "object"
       },
-      "agentDel-404": {
+      "normalizedAgentDel-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21024,7 +21029,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "agentDel-500": {
+      "normalizedAgentDel-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21051,7 +21056,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentGetRelationshipUser-400": {
+      "normalizedAgentGetRelationshipUser-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21075,7 +21080,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "agentGetRelationshipUser-404": {
+      "normalizedAgentGetRelationshipUser-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21099,7 +21104,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "agentGetRelationshipUser-500": {
+      "normalizedAgentGetRelationshipUser-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21126,7 +21131,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentUpdateRelationshipUser-400": {
+      "normalizedAgentUpdateRelationshipUser-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21153,7 +21158,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "agentUpdateRelationshipUser-404": {
+      "normalizedAgentUpdateRelationshipUser-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -21177,7 +21182,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "agentUpdateRelationshipUser-500": {
+      "normalizedAgentUpdateRelationshipUser-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -26904,462 +26909,6 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "lookupAgentCreate-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "lookupAgentCreate-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "lookupAgentGetOne-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "lookupAgentGetOne-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "lookupAgentGetOne-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "lookupAgentGetMany-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "lookupAgentGetMany-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "lookupAgentEmptyView-403": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/403"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Forbidden",
-        "type": "object"
-      },
-      "lookupAgentEmptyView-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "lookupAgentUpdate-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "lookupAgentUpdate-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "lookupAgentUpdate-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "lookupAgentDel-400": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/REQUEST_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/400"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Bad Request",
-        "type": "object"
-      },
-      "lookupAgentDel-403": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/403"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Forbidden",
-        "type": "object"
-      },
-      "lookupAgentDel-404": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/404"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Not Found",
-        "type": "object"
-      },
-      "lookupAgentDel-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
-                  },
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
-      "lookupAgentRebuildView-403": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/403"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Forbidden",
-        "type": "object"
-      },
-      "lookupAgentRebuildView-500": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/BaseError"
-          },
-          {
-            "properties": {
-              "code": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
-                  }
-                ]
-              },
-              "status": {
-                "$ref": "#/components/schemas/500"
-              }
-            },
-            "type": "object"
-          }
-        ],
-        "title": "Internal Server Error",
-        "type": "object"
-      },
       "lookupFeatureTypeCreate-400": {
         "allOf": [
           {
@@ -27793,6 +27342,462 @@
         "type": "object"
       },
       "lookupFeatureTypeRebuildView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentCreate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupNormalizedAgentCreate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupNormalizedAgentGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupNormalizedAgentGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupNormalizedAgentGetMany-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentEmptyView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupNormalizedAgentEmptyView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentUpdate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupNormalizedAgentUpdate-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupNormalizedAgentUpdate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentDel-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "lookupNormalizedAgentDel-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupNormalizedAgentDel-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "lookupNormalizedAgentDel-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "lookupNormalizedAgentRebuildView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "lookupNormalizedAgentRebuildView-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -30957,7 +30962,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "specimenGetRelationshipAgents-400": {
+      "specimenGetRelationshipNormalizedAgents-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -30981,7 +30986,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "specimenGetRelationshipAgents-404": {
+      "specimenGetRelationshipNormalizedAgents-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -31005,7 +31010,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "specimenGetRelationshipAgents-500": {
+      "specimenGetRelationshipNormalizedAgents-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -31032,7 +31037,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "specimenUpdateRelationshipAgents-400": {
+      "specimenUpdateRelationshipNormalizedAgents-400": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -31059,7 +31064,7 @@
         "title": "Bad Request",
         "type": "object"
       },
-      "specimenUpdateRelationshipAgents-404": {
+      "specimenUpdateRelationshipNormalizedAgents-404": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -31083,7 +31088,7 @@
         "title": "Not Found",
         "type": "object"
       },
-      "specimenUpdateRelationshipAgents-500": {
+      "specimenUpdateRelationshipNormalizedAgents-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -36069,7 +36074,7 @@
         "title": "Internal Server Error",
         "type": "object"
       },
-      "agentCreateRequest": {
+      "normalizedAgentCreateRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -36090,14 +36095,14 @@
                     "example": "1234"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "enum": [
-                      "agent"
+                      "normalizedAgent"
                     ],
                     "type": "string"
                   },
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "relationships": {
                     "properties": {
@@ -36143,7 +36148,7 @@
         "x-examples": {
           "primary": {
             "data": {
-              "type": "agent",
+              "type": "normalizedAgent",
               "attributes": {
                 "givenName": "Carl",
                 "familyName": "Linnaeus",
@@ -36156,7 +36161,7 @@
         },
         "example": {
           "data": {
-            "type": "agent",
+            "type": "normalizedAgent",
             "attributes": {
               "givenName": "Carl",
               "familyName": "Linnaeus",
@@ -36169,7 +36174,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentQueryRequest": {
+      "normalizedAgentQueryRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -36244,7 +36249,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentUpdateRequest": {
+      "normalizedAgentUpdateRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -36265,14 +36270,14 @@
                     "example": "1234"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "enum": [
-                      "agent"
+                      "normalizedAgent"
                     ],
                     "type": "string"
                   },
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "relationships": {
                     "properties": {
@@ -36318,7 +36323,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentUpdateRelationshipUserRequest": {
+      "normalizedAgentUpdateRelationshipUserRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -38161,102 +38166,6 @@
         "x-summary": "",
         "description": ""
       },
-      "lookupAgentCreateRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "type": {
-                    "default": "lookupAgent",
-                    "enum": [
-                      "lookupAgent"
-                    ],
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "$ref": "#/components/schemas/lookupAgent"
-                  }
-                }
-              }
-            ],
-            "x-summary": ""
-          }
-        },
-        "x-examples": {
-          "primary": {
-            "data": {
-              "attributes": {
-                "info": "123"
-              },
-              "type": "lookupAgent"
-            }
-          }
-        },
-        "example": {
-          "data": {
-            "attributes": {
-              "info": "123"
-            },
-            "type": "lookupAgent"
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentUpdateRequest": {
-        "additionalProperties": false,
-        "type": "object",
-        "required": [
-          "data"
-        ],
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "example": "1234"
-                  },
-                  "type": {
-                    "default": "lookupAgent",
-                    "enum": [
-                      "lookupAgent"
-                    ],
-                    "type": "string"
-                  },
-                  "attributes": {
-                    "$ref": "#/components/schemas/lookupAgent"
-                  }
-                }
-              }
-            ],
-            "x-summary": ""
-          }
-        },
-        "x-summary": "",
-        "description": ""
-      },
       "lookupFeatureTypeCreateRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -38343,6 +38252,102 @@
                   },
                   "attributes": {
                     "$ref": "#/components/schemas/lookupFeatureType"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentCreateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "lookupNormalizedAgent",
+                    "enum": [
+                      "lookupNormalizedAgent"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupNormalizedAgent"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "attributes": {
+                "info": "123"
+              },
+              "type": "lookupNormalizedAgent"
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "attributes": {
+              "info": "123"
+            },
+            "type": "lookupNormalizedAgent"
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentUpdateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "lookupNormalizedAgent",
+                    "enum": [
+                      "lookupNormalizedAgent"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupNormalizedAgent"
                   }
                 }
               }
@@ -38961,32 +38966,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agents": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "agent"
-                                  ],
-                                  "example": "agent",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "causeOfDeathTypes": {
                         "additionalProperties": false,
                         "properties": {
@@ -39081,6 +39060,32 @@
                                     "identifierType"
                                   ],
                                   "example": "identifierType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "normalizedAgents": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "normalizedAgent"
+                                  ],
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -39287,7 +39292,9 @@
                   "determinations": [
                     {
                       "determinationVerbatim": "determinationVerbatim",
-                      "determinedByAgentText": "determinedByAgentText",
+                      "determinedByAgent": {
+                        "textV": "determinedByAgentText"
+                      },
                       "remarks": "remarks",
                       "taxonName": {
                         "id": "2367",
@@ -39340,7 +39347,7 @@
                           }
                         ],
                         "georeferenceSourcesText": "georeferenceSourcesText",
-                        "localityT": "localityT",
+                        "localityV": "localityV",
                         "position": {
                           "geodeticDatum": "geodeticDatum text",
                           "latitude": "latitude-string",
@@ -39377,7 +39384,7 @@
                         "type": "identifierType"
                       },
                       "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-                      "nameSpace": "",
+                      "namespace": "",
                       "remarks": "",
                       "value": "123456"
                     }
@@ -39480,7 +39487,9 @@
                 "determinations": [
                   {
                     "determinationVerbatim": "determinationVerbatim",
-                    "determinedByAgentText": "determinedByAgentText",
+                    "determinedByAgent": {
+                      "textV": "determinedByAgentText"
+                    },
                     "remarks": "remarks",
                     "taxonName": {
                       "id": "2367",
@@ -39533,7 +39542,7 @@
                         }
                       ],
                       "georeferenceSourcesText": "georeferenceSourcesText",
-                      "localityT": "localityT",
+                      "localityV": "localityV",
                       "position": {
                         "geodeticDatum": "geodeticDatum text",
                         "latitude": "latitude-string",
@@ -39570,7 +39579,7 @@
                       "type": "identifierType"
                     },
                     "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-                    "nameSpace": "",
+                    "namespace": "",
                     "remarks": "",
                     "value": "123456"
                   }
@@ -39655,32 +39664,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agents": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "agent"
-                                  ],
-                                  "example": "agent",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "causeOfDeathTypes": {
                         "additionalProperties": false,
                         "properties": {
@@ -39775,6 +39758,32 @@
                                     "identifierType"
                                   ],
                                   "example": "identifierType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "normalizedAgents": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "normalizedAgent"
+                                  ],
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -39931,7 +39940,7 @@
         "x-summary": "",
         "description": ""
       },
-      "specimenUpdateRelationshipAgentsRequest": {
+      "specimenUpdateRelationshipNormalizedAgentsRequest": {
         "additionalProperties": false,
         "type": "object",
         "required": [
@@ -39945,9 +39954,9 @@
               "type": "object",
               "properties": {
                 "type": {
-                  "default": "agent",
+                  "default": "normalizedAgent",
                   "enum": [
-                    "agent"
+                    "normalizedAgent"
                   ],
                   "type": "string"
                 },
@@ -42374,7 +42383,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentCreateResponse": {
+      "normalizedAgentCreateResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42383,7 +42392,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "id": {
                     "example": "1234",
@@ -42425,7 +42434,7 @@
                     "type": "object"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "type": "string"
                   }
                 },
@@ -42444,7 +42453,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents",
+                "example": "https://domain/api/agent/v01/normalizedAgents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42463,7 +42472,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentGetOneResponse": {
+      "normalizedAgentGetOneResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42472,7 +42481,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "id": {
                     "example": "1234",
@@ -42514,7 +42523,7 @@
                     "type": "object"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "type": "string"
                   }
                 },
@@ -42533,7 +42542,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
+                "example": "https://domain/api/agent/v01/normalizedAgents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42552,7 +42561,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentGetManyResponse": {
+      "normalizedAgentGetManyResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42561,7 +42570,7 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/agent"
+                  "$ref": "#/components/schemas/normalizedAgent"
                 },
                 "id": {
                   "example": "1234",
@@ -42603,7 +42612,7 @@
                   "type": "object"
                 },
                 "type": {
-                  "default": "agent",
+                  "default": "normalizedAgent",
                   "type": "string"
                 }
               },
@@ -42619,7 +42628,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents",
+                "example": "https://domain/api/agent/v01/normalizedAgents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42638,7 +42647,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentQueryResponse": {
+      "normalizedAgentQueryResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42705,7 +42714,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/actions/query",
+                "example": "https://domain/api/agent/v01/normalizedAgents/actions/query",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42724,7 +42733,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentUpdateResponse": {
+      "normalizedAgentUpdateResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42733,7 +42742,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "id": {
                     "example": "1234",
@@ -42775,7 +42784,7 @@
                     "type": "object"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "type": "string"
                   }
                 },
@@ -42794,7 +42803,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
+                "example": "https://domain/api/agent/v01/normalizedAgents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42813,7 +42822,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentImportDataFromFileResponse": {
+      "normalizedAgentImportDataFromFileResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42848,7 +42857,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/actions/importDataFromFile",
+                "example": "https://domain/api/agent/v01/normalizedAgents/actions/importDataFromFile",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42866,7 +42875,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentDelResponse": {
+      "normalizedAgentDelResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42875,7 +42884,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "id": {
                     "example": "1234",
@@ -42917,7 +42926,7 @@
                     "type": "object"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "type": "string"
                   }
                 },
@@ -42936,7 +42945,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}",
+                "example": "https://domain/api/agent/v01/normalizedAgents/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -42955,7 +42964,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentGetRelationshipUserResponse": {
+      "normalizedAgentGetRelationshipUserResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -42990,7 +42999,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}/relationships/user",
+                "example": "https://domain/api/agent/v01/normalizedAgents/{id}/relationships/user",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -43009,7 +43018,7 @@
         "x-summary": "",
         "description": ""
       },
-      "agentUpdateRelationshipUserResponse": {
+      "normalizedAgentUpdateRelationshipUserResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -43018,14 +43027,14 @@
                 "additionalProperties": false,
                 "properties": {
                   "attributes": {
-                    "$ref": "#/components/schemas/agent"
+                    "$ref": "#/components/schemas/normalizedAgent"
                   },
                   "id": {
                     "example": "1234",
                     "type": "string"
                   },
                   "type": {
-                    "default": "agent",
+                    "default": "normalizedAgent",
                     "type": "string"
                   }
                 },
@@ -43044,7 +43053,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/agent/v01/agents/{id}/relationships/user",
+                "example": "https://domain/api/agent/v01/normalizedAgents/{id}/relationships/user",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -43126,7 +43135,7 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agent": {
+                      "normalizedAgent": {
                         "additionalProperties": false,
                         "properties": {
                           "data": {
@@ -43139,9 +43148,9 @@
                                 },
                                 "type": {
                                   "enum": [
-                                    "agent"
+                                    "normalizedAgent"
                                   ],
-                                  "example": "agent",
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -43211,7 +43220,7 @@
                 },
                 "relationships": {
                   "properties": {
-                    "agent": {
+                    "normalizedAgent": {
                       "additionalProperties": false,
                       "properties": {
                         "data": {
@@ -43224,9 +43233,9 @@
                               },
                               "type": {
                                 "enum": [
-                                  "agent"
+                                  "normalizedAgent"
                                 ],
-                                "example": "agent",
+                                "example": "normalizedAgent",
                                 "type": "string"
                               }
                             },
@@ -48333,379 +48342,6 @@
         "x-summary": "",
         "description": ""
       },
-      "lookupAgentCreateResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/lookupAgent"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "lookupAgent",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentGetOneResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/lookupAgent"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "lookupAgent",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentGetManyResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "additionalProperties": false,
-            "items": {
-              "additionalProperties": false,
-              "properties": {
-                "attributes": {
-                  "$ref": "#/components/schemas/lookupAgent"
-                },
-                "id": {
-                  "example": "1234",
-                  "type": "string"
-                },
-                "type": {
-                  "default": "lookupAgent",
-                  "type": "string"
-                }
-              },
-              "type": "object"
-            },
-            "type": "array",
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentEmptyViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents/actions/emptyView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentUpdateResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/lookupAgent"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "lookupAgent",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentDelResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/lookupAgent"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "lookupAgent",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents/{id}",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-examples": {},
-        "x-summary": "",
-        "description": ""
-      },
-      "lookupAgentRebuildViewResponse": {
-        "additionalProperties": false,
-        "properties": {
-          "data": {
-            "oneOf": [
-              {
-                "additionalProperties": false,
-                "properties": {
-                  "attributes": {
-                    "$ref": "#/components/schemas/customObject"
-                  },
-                  "id": {
-                    "example": "1234",
-                    "type": "string"
-                  },
-                  "type": {
-                    "default": "customObject",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "x-summary": ""
-          },
-          "jsonapi": {
-            "type": "object",
-            "x-summary": ""
-          },
-          "links": {
-            "properties": {
-              "self": {
-                "example": "https://domain/api/specimen/v01/lookupAgents/actions/rebuildView",
-                "format": "uri",
-                "type": "string",
-                "x-faker": "internet.url"
-              }
-            },
-            "type": "object",
-            "x-summary": ""
-          },
-          "meta": {
-            "type": "object",
-            "x-summary": ""
-          }
-        },
-        "type": "object",
-        "x-summary": "",
-        "description": ""
-      },
       "lookupFeatureTypeCreateResponse": {
         "additionalProperties": false,
         "properties": {
@@ -49062,6 +48698,379 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/specimen/v01/lookupFeatureTypes/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentCreateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupNormalizedAgent"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupNormalizedAgent",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupNormalizedAgent"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupNormalizedAgent",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/lookupNormalizedAgent"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "lookupNormalizedAgent",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentEmptyViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/actions/emptyView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentUpdateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupNormalizedAgent"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupNormalizedAgent",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/lookupNormalizedAgent"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "lookupNormalizedAgent",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "lookupNormalizedAgentRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/specimen/v01/lookupNormalizedAgents/actions/rebuildView",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -51334,32 +51343,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agents": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "agent"
-                                  ],
-                                  "example": "agent",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "causeOfDeathTypes": {
                         "additionalProperties": false,
                         "properties": {
@@ -51454,6 +51437,32 @@
                                     "identifierType"
                                   ],
                                   "example": "identifierType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "normalizedAgents": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "normalizedAgent"
+                                  ],
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -51657,32 +51666,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agents": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "agent"
-                                  ],
-                                  "example": "agent",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "causeOfDeathTypes": {
                         "additionalProperties": false,
                         "properties": {
@@ -51777,6 +51760,32 @@
                                     "identifierType"
                                   ],
                                   "example": "identifierType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "normalizedAgents": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "normalizedAgent"
+                                  ],
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -51980,32 +51989,6 @@
                 },
                 "relationships": {
                   "properties": {
-                    "agents": {
-                      "additionalProperties": false,
-                      "properties": {
-                        "data": {
-                          "items": {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "agent"
-                                ],
-                                "example": "agent",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "type": "object"
-                    },
                     "causeOfDeathTypes": {
                       "additionalProperties": false,
                       "properties": {
@@ -52100,6 +52083,32 @@
                                   "identifierType"
                                 ],
                                 "example": "identifierType",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "normalizedAgents": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "data": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "example": "1234",
+                                "type": "string"
+                              },
+                              "type": {
+                                "enum": [
+                                  "normalizedAgent"
+                                ],
+                                "example": "normalizedAgent",
                                 "type": "string"
                               }
                             },
@@ -52300,32 +52309,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agents": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "agent"
-                                  ],
-                                  "example": "agent",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "causeOfDeathTypes": {
                         "additionalProperties": false,
                         "properties": {
@@ -52420,6 +52403,32 @@
                                     "identifierType"
                                   ],
                                   "example": "identifierType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "normalizedAgents": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "normalizedAgent"
+                                  ],
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -52623,32 +52632,6 @@
                   },
                   "relationships": {
                     "properties": {
-                      "agents": {
-                        "additionalProperties": false,
-                        "properties": {
-                          "data": {
-                            "items": {
-                              "additionalProperties": false,
-                              "properties": {
-                                "id": {
-                                  "example": "1234",
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "enum": [
-                                    "agent"
-                                  ],
-                                  "example": "agent",
-                                  "type": "string"
-                                }
-                              },
-                              "type": "object"
-                            },
-                            "type": "array"
-                          }
-                        },
-                        "type": "object"
-                      },
                       "causeOfDeathTypes": {
                         "additionalProperties": false,
                         "properties": {
@@ -52743,6 +52726,32 @@
                                     "identifierType"
                                   ],
                                   "example": "identifierType",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "normalizedAgents": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "data": {
+                            "items": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "id": {
+                                  "example": "1234",
+                                  "type": "string"
+                                },
+                                "type": {
+                                  "enum": [
+                                    "normalizedAgent"
+                                  ],
+                                  "example": "normalizedAgent",
                                   "type": "string"
                                 }
                               },
@@ -52982,7 +52991,7 @@
         "x-summary": "",
         "description": ""
       },
-      "specimenGetRelationshipAgentsResponse": {
+      "specimenGetRelationshipNormalizedAgentsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -52991,14 +53000,14 @@
               "additionalProperties": false,
               "properties": {
                 "attributes": {
-                  "$ref": "#/components/schemas/agent"
+                  "$ref": "#/components/schemas/normalizedAgent"
                 },
                 "id": {
                   "example": "1234",
                   "type": "string"
                 },
                 "type": {
-                  "default": "agent",
+                  "default": "normalizedAgent",
                   "type": "string"
                 }
               },
@@ -53014,7 +53023,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/agents",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/normalizedAgents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
@@ -53033,7 +53042,7 @@
         "x-summary": "",
         "description": ""
       },
-      "specimenUpdateRelationshipAgentsResponse": {
+      "specimenUpdateRelationshipNormalizedAgentsResponse": {
         "additionalProperties": false,
         "properties": {
           "data": {
@@ -53065,7 +53074,7 @@
           "links": {
             "properties": {
               "self": {
-                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/agents",
+                "example": "https://domain/api/specimen/v01/specimens/{id}/relationships/normalizedAgents",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"

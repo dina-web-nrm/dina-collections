@@ -4,12 +4,6 @@ module.exports = {
   type: 'specimen',
   id: '1234',
   relationships: {
-    agents: {
-      data: [{
-        type: 'agent',
-        id: '1'
-      }]
-    },
     featureTypes: {
       data: [{
         type: 'featureType',
@@ -23,6 +17,12 @@ module.exports = {
       data: [{
         type: 'identifierType',
         id: 1
+      }]
+    },
+    normalizedAgents: {
+      data: [{
+        type: 'normalizedAgent',
+        id: '1'
       }]
     },
     physicalObjects: {
@@ -73,7 +73,7 @@ module.exports = {
     normalized: {
       determinations: [{
         determinationVerbatim: 'determinationVerbatim',
-        determinedByAgentText: 'determinedByAgentText',
+        determinedByAgent: { textI: 'determinedByAgentText' },
         remarks: 'remarks',
         taxon: {
           id: '2367',
@@ -119,7 +119,7 @@ module.exports = {
         lid: 'd61ec620-e5df-4141-8691-a0fe42ec0c5b'
       }],
       collectingInformation: [{
-        collectorsText: 'collectorsText',
+        collectedByAgent: { textI: 'collectorsText' },
         event: 'd61ec620-e5df-4141-8691-a0fe42ec0c5b',
         lid: '06c5b25b-13dd-4c27-8bc2-18723fb1beb3'
       }],
@@ -136,7 +136,7 @@ module.exports = {
         identifierType: {
           id: 1
         },
-        nameSpace: '',
+        namespace: '',
         value: '123456',
         publishRecord: true,
         remarks: '',
@@ -152,7 +152,9 @@ module.exports = {
       }],
       recordHistoryEvents: [{
         agent: {
-          id: '1'
+          normalizedAgent: {
+            id: '1'
+          }
         },
         date: {
           dateText: '2018'

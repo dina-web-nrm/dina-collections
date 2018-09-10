@@ -148,9 +148,9 @@ describe('formatObject/relationships/utilities/resolveByPath/getRelationshipItem
 
       var testValue = getRelationshipItemsSync({
         getItemByTypeId: getItemByTypeId,
-        relationshipKey: 'agents',
+        relationshipKey: 'normalizedAgents',
         relationships: {
-          agents: {
+          normalizedAgents: {
             data: [{ id: '123' }, null, { id: '456' }]
           }
         },

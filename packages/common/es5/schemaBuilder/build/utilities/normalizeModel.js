@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var normalizeProperty = function normalizeProperty(_ref) {
   var normalize = _ref.normalize,
       property = _ref.property,
-      incjetedNormalizeModel = _ref.incjetedNormalizeModel;
+      injectedNormalizeModel = _ref.injectedNormalizeModel;
 
   if (!property) {
     return property;
@@ -26,7 +26,7 @@ var normalizeProperty = function normalizeProperty(_ref) {
   var normalizedProperty = (0, _extends4.default)({}, property);
 
   if (property.type === 'object' && normalizedProperty.properties) {
-    return incjetedNormalizeModel({
+    return injectedNormalizeModel({
       model: property,
       normalize: normalize
     });
@@ -35,7 +35,7 @@ var normalizeProperty = function normalizeProperty(_ref) {
   if (property.type === 'array' && normalizedProperty.items) {
     return (0, _extends4.default)({}, normalizedProperty, {
       items: normalizeProperty({
-        incjetedNormalizeModel: incjetedNormalizeModel,
+        injectedNormalizeModel: injectedNormalizeModel,
         normalize: normalize,
         property: normalizedProperty.items
       })
@@ -70,7 +70,7 @@ function normalizeModel(_ref2) {
   var normalizedProperties = (0, _keys2.default)(properties).reduce(function (obj, key) {
     var property = properties[key];
     return (0, _extends4.default)({}, obj, (0, _defineProperty3.default)({}, key, normalizeProperty({
-      incjetedNormalizeModel: normalizeModel,
+      injectedNormalizeModel: normalizeModel,
       normalize: normalize,
       property: property
     })));

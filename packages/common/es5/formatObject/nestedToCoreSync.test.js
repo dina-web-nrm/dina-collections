@@ -114,12 +114,6 @@ describe('formatObject/nestedToCoreSync', function () {
           relationships = _coreItem.relationships;
 
       expect(relationships).toEqual({
-        agents: {
-          data: [{
-            type: 'agent',
-            id: '1'
-          }]
-        },
         featureTypes: {
           data: [{
             type: 'featureType',
@@ -133,6 +127,12 @@ describe('formatObject/nestedToCoreSync', function () {
           data: [{
             type: 'identifierType',
             id: 1
+          }]
+        },
+        normalizedAgents: {
+          data: [{
+            type: 'normalizedAgent',
+            id: '1'
           }]
         },
         physicalObjects: {
@@ -195,7 +195,7 @@ describe('formatObject/nestedToCoreSync', function () {
 
       var expectedFormat = [{
         determinationVerbatim: expect.stringMatching('determinationVerbatim'),
-        determinedByAgentText: 'determinedByAgentText',
+        determinedByAgent: { textI: 'determinedByAgentText' },
         remarks: 'remarks',
         taxon: {
           id: '2367',
@@ -210,7 +210,7 @@ describe('formatObject/nestedToCoreSync', function () {
       var collectingInformation = attributes.normalized.collectingInformation;
 
       var expectedFormat = [{
-        collectorsText: 'collectorsText',
+        collectedByAgent: { textI: 'collectorsText' },
         event: expect.stringMatching(lidRegEx),
         lid: expect.stringMatching(lidRegEx)
       }];
@@ -236,7 +236,7 @@ describe('formatObject/nestedToCoreSync', function () {
 
       var expectedFormat = [{
         determinationVerbatim: expect.stringMatching('determinationVerbatim'),
-        determinedByAgentText: 'determinedByAgentText',
+        determinedByAgent: { textI: 'determinedByAgentText' },
         remarks: 'remarks',
         taxon: {
           id: '2367',
@@ -309,7 +309,7 @@ describe('formatObject/nestedToCoreSync', function () {
         identifierType: {
           id: 1
         },
-        nameSpace: '',
+        namespace: '',
         value: '123456',
         publishRecord: true,
         remarks: '',
@@ -339,7 +339,9 @@ describe('formatObject/nestedToCoreSync', function () {
 
       var expectedFormat = [{
         agent: {
-          id: '1'
+          normalized: {
+            id: '1'
+          }
         },
         date: {
           dateText: '2018'
