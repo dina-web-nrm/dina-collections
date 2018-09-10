@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import objectPath from 'object-path'
 
+import config from 'config'
 import { injectSearchOptions } from 'coreModules/form/higherOrderComponents'
 import DropdownSearchBase from '../Base'
 
@@ -67,7 +68,7 @@ class DropdownSearchResource extends Component {
       this.props,
       pathToIdInValue ? `input.value.${pathToIdInValue}` : 'input.value'
     )
-    if (id) {
+    if (id && !config.isTest) {
       this.props.updateSelectedOption({ id })
     }
   }

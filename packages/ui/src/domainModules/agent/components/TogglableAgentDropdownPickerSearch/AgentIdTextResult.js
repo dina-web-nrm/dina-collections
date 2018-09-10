@@ -1,22 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
 import { Button, Icon } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
 import extractProps from 'utilities/extractProps'
-import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { FieldTemplate } from 'coreModules/form/components'
 import { propTypes as fieldTemplateProps } from 'coreModules/form/components/FieldTemplate'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
-
-const mapStateToProps = state => {
-  return {
-    normalizedAgents: globalCrudSelectors.normalizedAgent.getItemsObject(state),
-  }
-}
 
 const propTypes = {
   i18n: PropTypes.shape({
@@ -89,6 +81,5 @@ export default compose(
     idPath: 'input.value.normalized.id',
     itemKey: 'normalizedAgent',
     resource: 'normalizedAgent',
-  }),
-  connect(mapStateToProps)
+  })
 )(AgentIdTextResult)

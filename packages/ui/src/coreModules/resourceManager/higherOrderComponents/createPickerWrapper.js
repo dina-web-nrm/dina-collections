@@ -34,6 +34,7 @@ const createPickerWrapper = (
     extractPickedId = defaultExtractPickedId,
     pathToIdInValue = '',
     pathToTextInValue = '',
+    requireEitherIdOrValue = false,
   } = {}
 ) => ComposedComponent => {
   class PickerWrapper extends Component {
@@ -73,22 +74,26 @@ const createPickerWrapper = (
         input,
         meta,
         pathToIdInValue: pathToIdInValueOverride,
+        pathToTextInValue: pathToTextInValueOverride,
       } = this.props
+
       const formName = meta && meta.form
       const itemId = extractPickedId(data)
       // use nestedItem for custom id extraction
       if (itemId !== undefined) {
-        this.props.change(
-          formName,
-          input.name,
-          pathToIdInValue
-            ? immutable.set(
-                input.value,
-                pathToIdInValueOverride || pathToIdInValue,
-                itemId
-              )
-            : itemId
-        )
+        const idPath = pathToIdInValueOverride || pathToIdInValue
+        const textPath = pathToTextInValueOverride || pathToTextInValue
+        const isObjectValue = !!(idPath || textPath)
+
+        const baseValue = requireEitherIdOrValue
+          ? immutable.del(input.value, textPath)
+          : input.value
+
+        const value = isObjectValue
+          ? immutable.set(baseValue, idPath, itemId)
+          : itemId
+
+        this.props.change(formName, input.name, value)
       }
       this.handleOnClose()
     }

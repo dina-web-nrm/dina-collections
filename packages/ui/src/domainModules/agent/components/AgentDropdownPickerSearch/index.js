@@ -46,6 +46,7 @@ export class AgentDropdownPickerSearch extends Component {
       pickerActive,
       ...rest
     } = this.props
+
     if (pickerActive) {
       const initialFilterValues = fieldSearchQuery
         ? {
@@ -88,4 +89,5 @@ AgentDropdownPickerSearch.defaultProps = defaultProps
 export default createPickerWrapper({
   pathToIdInValue: 'normalized.id',
   pathToTextInValue: 'textI',
+  requireEitherIdOrValue: true,
 })(AgentDropdownPickerSearch)

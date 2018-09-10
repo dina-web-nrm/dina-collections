@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import objectPath from 'object-path'
 
+import config from 'config'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { injectSearchOptions } from 'coreModules/form/higherOrderComponents'
 import DropdownSearchBase from '../Base'
@@ -20,13 +21,10 @@ class DropdownSearchIdTextInput extends PureComponent {
   componentDidMount() {
     const { pathToIdInValue, pathToTextInValue } = this.props
     const id = objectPath.get(this.props, `input.value.${pathToIdInValue}`)
-    if (id) {
-      this.props.updateSelectedOption({ id })
-    }
-
     const text = objectPath.get(this.props, `input.value.${pathToTextInValue}`)
-    if (text) {
-      this.props.updateSelectedOption({ text })
+
+    if ((id || text) && !config.isTest) {
+      this.props.updateSelectedOption({ id, requireEitherOr: true, text })
     }
   }
 
@@ -47,7 +45,7 @@ class DropdownSearchIdTextInput extends PureComponent {
 
     if (selectedOptionId !== id || selectedOptionText !== text) {
       setTimeout(() => {
-        this.props.updateSelectedOption({ id, text })
+        this.props.updateSelectedOption({ id, requireEitherOr: true, text })
       })
     }
   }

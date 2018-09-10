@@ -10,7 +10,6 @@ import { ALL, PERSON, ORGANIZATION } from '../../constants'
 const includeFields = ['id', 'attributes.fullName', 'attributes.agentType']
 
 const propTypes = {
-  extractText: PropTypes.func.isRequired,
   group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]),
 }
 

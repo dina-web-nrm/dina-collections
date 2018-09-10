@@ -1,6 +1,7 @@
 import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
+import config from 'config'
 import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponents'
 import DefaultRenderEmptyState from './DefaultRenderEmptyState'
 import DefaultRenderResult from './DefaultRenderResult'
@@ -39,7 +40,7 @@ class TogglableField extends PureComponent {
       renderEmptyState,
     } = this.props
 
-    if (isLatestActiveField) {
+    if (isLatestActiveField || config.isTest) {
       return renderInput(this.props)
     }
 

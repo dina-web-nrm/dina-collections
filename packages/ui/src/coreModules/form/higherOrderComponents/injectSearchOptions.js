@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import objectPath from 'object-path'
+import immutable from 'object-path-immutable'
 
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
@@ -58,6 +59,7 @@ const propTypes = {
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchWithQuery: PropTypes.bool,
+  textAttributeName: PropTypes.string,
 }
 
 const defaultProps = {
@@ -76,6 +78,7 @@ const defaultProps = {
   relationships: undefined,
   resolveRelationships: undefined,
   searchWithQuery: false,
+  textAttributeName: undefined,
 }
 
 const injectSearchOptions = (
@@ -96,7 +99,10 @@ const injectSearchOptions = (
       const defaultMapItemToOption = item => {
         return {
           key: item.id,
-          text: props.extractText(item),
+          text:
+            (props.textAttributeName &&
+              objectPath.get(item, props.textAttributeName)) ||
+            props.extractText(item),
           value: item.id,
         }
       }
@@ -115,7 +121,7 @@ const injectSearchOptions = (
       this.mapTextToOption = props.mapTextToOption || defaultMapTextToOption
     }
 
-    updateSelectedOption({ id, text }) {
+    updateSelectedOption({ id, requireEitherOr, text } = {}) {
       if (!id && !text) {
         return this.setState(prevState => {
           if (prevState.selectedOption === undefined) {
@@ -128,22 +134,21 @@ const injectSearchOptions = (
         })
       }
 
-      if (text) {
-        return this.setState({
-          selectedOption: this.mapTextToOption(text),
-        })
-      }
-
-      const { options } = this.state
-
       if (id) {
+        const { options } = this.state
+
         const selectedOption = options.find(item => {
           return objectPath.get(item.value, this.props.pathToIdInValue) === id
         })
 
         if (selectedOption) {
+          const option = requireEitherOr
+            ? immutable.del(selectedOption, this.props.pathToTextInValue)
+            : selectedOption
+
           return this.setState({
-            selectedOption,
+            options: [option],
+            selectedOption: option,
           })
         }
 
@@ -154,16 +159,27 @@ const injectSearchOptions = (
           },
         ]
 
-        this.search({ filters, limit: 1 }).then(res => {
+        return this.search({ filters, limit: 1 }).then(res => {
           const selectedOptions =
             this.buildOptionsFromResponse(res, { skipPlainTextOption: true }) ||
             []
 
           if (selectedOptions.length) {
+            const option = selectedOptions[0]
             this.setState({
-              selectedOption: selectedOptions[0],
+              options: [option],
+              selectedOption: option,
             })
           }
+        })
+      }
+
+      if (text) {
+        const selectedOption = this.mapTextToOption(text)
+
+        return this.setState({
+          options: [selectedOption],
+          selectedOption,
         })
       }
 
