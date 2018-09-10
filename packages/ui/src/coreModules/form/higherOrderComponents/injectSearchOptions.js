@@ -34,7 +34,17 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.shape({
+        normalized: PropTypes.shape({
+          id: PropTypes.string,
+        }),
+        textI: PropTypes.string,
+        textV: PropTypes.string,
+      }),
+    ]),
   }).isRequired,
   limit: PropTypes.number,
   mapItemToOption: PropTypes.func,

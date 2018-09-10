@@ -7,7 +7,17 @@ import DefaultRenderResult from './DefaultRenderResult'
 
 const propTypes = {
   input: PropTypes.shape({
-    value: PropTypes.node,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.shape({
+        normalized: PropTypes.shape({
+          id: PropTypes.string,
+        }),
+        textI: PropTypes.string,
+        textV: PropTypes.string,
+      }),
+    ]),
   }).isRequired,
   isLatestActiveField: PropTypes.bool.isRequired,
   renderEmptyState: PropTypes.func,

@@ -33,8 +33,17 @@ const propTypes = {
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
-      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-        .isRequired,
+      value: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+        PropTypes.shape({
+          normalized: PropTypes.shape({
+            id: PropTypes.string,
+          }),
+          textI: PropTypes.string,
+          textV: PropTypes.string,
+        }),
+      ]).isRequired,
     }).isRequired
   ).isRequired,
   searchQuery: PropTypes.string,

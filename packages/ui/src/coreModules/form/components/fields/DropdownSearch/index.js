@@ -12,7 +12,17 @@ import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 const propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.shape({
+        normalized: PropTypes.shape({
+          id: PropTypes.string,
+        }),
+        textI: PropTypes.string,
+        textV: PropTypes.string,
+      }),
+    ]),
   }).isRequired,
   leftButton: PropTypes.node,
   meta: PropTypes.object.isRequired,

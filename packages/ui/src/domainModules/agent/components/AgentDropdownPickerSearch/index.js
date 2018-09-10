@@ -9,7 +9,17 @@ import AgentManager from '../AgentManager/Local'
 
 const propTypes = {
   fieldSearchQuery: PropTypes.string,
-  fieldValue: PropTypes.string,
+  fieldValue: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.shape({
+      normalized: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+      textI: PropTypes.string,
+      textV: PropTypes.string,
+    }),
+  ]),
   onClose: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   onPickerButtonClick: PropTypes.func.isRequired,

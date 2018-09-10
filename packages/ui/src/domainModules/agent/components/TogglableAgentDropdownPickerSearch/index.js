@@ -1,23 +1,8 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 
 import { TogglableField } from 'coreModules/form/components'
 import AgentDropdownPickerSearch from '../AgentDropdownPickerSearch'
 import AgentIdTextResult from './AgentIdTextResult'
-
-const propTypes = {
-  input: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.number,
-      PropTypes.object,
-      PropTypes.string,
-    ]).isRequired,
-  }).isRequired,
-  isLatestActiveField: PropTypes.bool.isRequired,
-  setAsLatestActiveField: PropTypes.func.isRequired,
-}
 
 class TogglableAgentDropdownPickerSearch extends PureComponent {
   constructor(props) {
@@ -46,7 +31,5 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
     )
   }
 }
-
-TogglableAgentDropdownPickerSearch.propTypes = propTypes
 
 export default TogglableAgentDropdownPickerSearch
