@@ -23,6 +23,7 @@ const propTypes = {
   autoComplete: PropTypes.string,
   displayAsButton: PropTypes.bool,
   fluid: PropTypes.bool,
+  focusOnMount: PropTypes.bool,
   icon: PropTypes.string,
   initialText: PropTypes.string,
   input: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
@@ -68,6 +69,7 @@ const defaultProps = {
   autoComplete: undefined,
   displayAsButton: false,
   fluid: false,
+  focusOnMount: false,
   icon: undefined,
   initialText: '',
   isLoading: false,
@@ -83,6 +85,12 @@ class DropdownSearchInput extends Component {
     this.handleClear = this.handleClear.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
+  }
+
+  componentDidMount() {
+    if (this.props.focusOnMount) {
+      this.input.handleFocus()
+    }
   }
 
   handleSearchChange(_, { searchQuery }) {
@@ -150,6 +158,9 @@ class DropdownSearchInput extends Component {
             loading={isLoading}
             onSearchChange={this.handleSearchChange}
             options={options}
+            ref={element => {
+              this.input = element
+            }}
             search
             searchQuery={searchQuery}
             selection

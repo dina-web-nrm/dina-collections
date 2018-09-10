@@ -13,7 +13,7 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
 
   /* eslint-disable class-methods-use-this */
   renderInput(props) {
-    return <AgentDropdownPickerSearch {...props} />
+    return <AgentDropdownPickerSearch {...props} focusOnMount />
   }
 
   renderResult(props) {
