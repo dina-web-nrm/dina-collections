@@ -5878,6 +5878,24 @@
           },
           {
             "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "id:asc",
+                  "id:desc",
+                  "attributes.name:asc",
+                  "attributes.name:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
             "name": "mock",
             "description": "Will return mock data",
             "example": false,
