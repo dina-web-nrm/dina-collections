@@ -26,13 +26,12 @@ log.info(`Dependencies required after: ${now() - startTime} milliseconds`)
 
 const resourceRelationshipParamsMap = getResourceRelationshipParamsMap()
 
-initializeStatistics()
-
 module.exports = function bootstrap({
   config,
   serviceDefinitions,
   serviceOrder,
 }) {
+  initializeStatistics({ config })
   const services = createServices({
     config,
     resourceRelationshipParamsMap,
