@@ -9,6 +9,7 @@ describe('apiClient', () => {
     const apiClient = createApiClient({})
     const expectedApiClientMethods = [
       'call',
+      'downloadFile',
       'formPost',
       'httpDelete',
       'httpGet',
@@ -23,8 +24,8 @@ describe('apiClient', () => {
   })
 
   const expectedCallMethods = [
-    'formPost',
     'delete',
+    'formPost',
     'get',
     'patch',
     'post',

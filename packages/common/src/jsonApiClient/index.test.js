@@ -13,8 +13,15 @@ describe('jsonApiClient', () => {
     expect(Object.keys(jsonApiClient).sort()).toEqual([
       'call',
       'create',
+      'downloadFile',
+      'formPost',
       'getMany',
       'getOne',
+      'httpDelete',
+      'httpGet',
+      'httpPatch',
+      'httpPost',
+      'httpPut',
       'update',
     ])
     Object.values(jsonApiClient).forEach(val => {

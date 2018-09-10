@@ -1,6 +1,7 @@
 const { Dependor } = require('../Dependor')
 const createApiMethod = require('./createApiMethod')
 const validateApiConfig = require('./validation/validateApiConfig')
+const createDownloadFile = require('./createDownloadFile')
 
 const dep = new Dependor(
   {
@@ -18,6 +19,8 @@ function createApiClient(apiConfigInput) {
   }
 
   dep.validateApiConfig(apiConfig)
+
+  const downloadFile = createDownloadFile(apiConfig)
 
   const formPost = dep.createApiMethod(apiConfig, {
     mapHeaders: userInputHeaders => {
@@ -83,6 +86,7 @@ function createApiClient(apiConfigInput) {
   })
 
   const methods = {
+    downloadFile,
     formPost,
     httpDelete,
     httpGet,

@@ -73,6 +73,7 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
   }
 
   return {
+    ...openApiClient,
     call,
     create,
     getMany,
