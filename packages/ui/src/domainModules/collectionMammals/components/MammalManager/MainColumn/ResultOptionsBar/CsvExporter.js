@@ -5,6 +5,7 @@ import { compose } from 'redux'
 import { Button, Grid, Icon, Modal, Popup } from 'semantic-ui-react'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import crudActionCreators from 'coreModules/crud/actionCreators'
+import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFile'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
@@ -26,12 +27,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   createExportInfo: crudActionCreators.exportJob.create,
+  downloadFile: downloadFileActionCreator,
   getOneExportInfo: crudActionCreators.exportJob.getOne,
 }
 
 const propTypes = {
   columns: PropTypes.array.isRequired,
   createExportInfo: PropTypes.func.isRequired,
+  downloadFile: PropTypes.func.isRequired,
   getOneExportInfo: PropTypes.func.isRequired,
   i18n: PropTypes.object.isRequired,
   pollInterval: PropTypes.number,
@@ -175,7 +178,7 @@ export class CsvExporter extends Component {
 
   render() {
     const { exportJobId, fileName, exportStatus } = this.state
-    const path = `/api/export/v01/exportJobs/${
+    const fileUrl = `/api/export/v01/exportJobs/${
       exportJobId
     }/actions/downloadExport/${fileName}`
 
@@ -191,12 +194,18 @@ export class CsvExporter extends Component {
 
     if (exportStatus === 'exportDone') {
       modalContent = (
-        <a download={fileName} href={path}>
-          <Button onClick={this.handleClose} type="button">
+        <div>
+          <Button
+            onClick={event => {
+              this.props.downloadFile({ fileName, fileUrl })
+              this.handleClose(event)
+            }}
+            type="button"
+          >
             Download
           </Button>
           <Button content="Close" onClick={this.handleClose} type="button" />
-        </a>
+        </div>
       )
     }
 
