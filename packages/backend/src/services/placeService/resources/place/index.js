@@ -37,6 +37,7 @@ module.exports = {
       filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       selectableFields: ['id', 'attributes.name', 'attributes.group'],
+      sortableFields: ['id', 'attributes.name'],
       type: 'getMany',
     },
     {
