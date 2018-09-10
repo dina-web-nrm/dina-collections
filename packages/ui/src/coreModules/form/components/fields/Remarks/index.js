@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponents'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 import TogglableField from '../../TogglableField'
 import Input from '../Input'
@@ -89,34 +88,12 @@ class RemarksInput extends PureComponent {
   /* eslint-enable class-methods-use-this */
 
   render() {
-    const {
-      displayLabel,
-      enableHelpNotifications,
-      input,
-      isLatestActiveField,
-      label,
-      meta,
-      module,
-      parameterKey,
-      setAsLatestActiveField,
-      type,
-    } = this.props
-
     return (
       <TogglableField
-        displayLabel={displayLabel}
-        enableHelpNotifications={enableHelpNotifications}
-        input={input}
-        isLatestActiveField={isLatestActiveField}
-        label={label}
-        meta={meta}
-        module={module}
-        parameterKey={parameterKey}
+        {...this.props}
         renderEmptyState={this.renderEmptyOrResult}
         renderInput={this.renderInput}
         renderResult={this.renderEmptyOrResult}
-        setAsLatestActiveField={setAsLatestActiveField}
-        type={type}
       />
     )
   }
@@ -125,4 +102,4 @@ class RemarksInput extends PureComponent {
 RemarksInput.propTypes = propTypes
 RemarksInput.defaultProps = defaultProps
 
-export default injectIsLatestActiveField(RemarksInput)
+export default RemarksInput
