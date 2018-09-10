@@ -1,3 +1,24 @@
+* Add memwatch to dev dependenciy and require only in development
+* Remove ui-mock
+
+
+
+
+PRE make performance measurement
+* Move validations to hooks.
+* Improve error messages
+* Ensure hooks are added to all controllers
+* remove FE VALIDATION
+* Dont compile validator schema on the fly
+* Remove mock and example
+* BONUS -> Create minimal export for frontend
+* BONUS -> Fix relationships and error duplications
+* BONUS -> Only use schema interface for accessing schema
+* BONUS -> Remove not needed spreads
+POST compare performance
+
+
+
 
 * Fix missing fieldKey
 
