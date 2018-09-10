@@ -1,7 +1,7 @@
 const backendError400 = require('common/src/error/errorFactories/backendError400')
 
 module.exports = function extractSortObjectsFromUserInput(
-  { sortInput, sortableFields = [] } = {}
+  { sortInput, sortableFields = [], replaceAttributesWithDocument = false } = {}
 ) {
   if (!(sortInput && sortInput.length)) {
     return []
@@ -32,7 +32,9 @@ module.exports = function extractSortObjectsFromUserInput(
 
       return {
         order,
-        path,
+        path: replaceAttributesWithDocument
+          ? path.replace('attributes', 'document')
+          : path,
       }
     })
     .filter(sortObject => {

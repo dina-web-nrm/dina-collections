@@ -11,6 +11,7 @@ services:
     command: node /etc/api/src/apps/production/data/index.js
     volumes:
       - ./data:/data
+      - ./userFiles:/userFiles
 
 networks:
   default:

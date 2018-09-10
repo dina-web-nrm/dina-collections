@@ -1,7 +1,6 @@
-const backendError500 = require('common/src/error/errorFactories/backendError400')
 const extractFieldsFromItem = require('../../../../data/fields/utilities/extractFieldsFromItem')
 const extractFieldsFromUserInput = require('../../../../data/fields/utilities/extractFieldsFromUserInput')
-
+const extractSortObjectsFromUserInput = require('../../../../data/sort/utilities/extractSortObjectsFromUserInput')
 const getWhereWrapper = require('../../wrappers/methods/getWhere')
 const formatModelItemsResponse = require('../utilities/formatModelItemsResponse')
 
@@ -66,16 +65,10 @@ module.exports = function getWhereFactory({
       query,
       selectableFields = [],
       serviceInteractor,
+      sortableFields,
       sortInput,
       where: customWhere,
     }) => {
-      if (sortInput && sortInput.length) {
-        backendError500({
-          code: 'INTERNAL_SERVER_ERROR',
-          detail: 'Sorting not implemented for sequelize model',
-        })
-      }
-
       return buildWhere({
         buildWhereFilter,
         buildWhereQuery,
@@ -93,9 +86,25 @@ module.exports = function getWhereFactory({
               deactivatedAt: null,
             }
 
+        const sortObjects = extractSortObjectsFromUserInput({
+          replaceAttributesWithDocument: true,
+          sortableFields,
+          sortInput,
+        })
+        let order = [['id', 'DESC']]
+
+        if (order && sortObjects.length) {
+          order = sortObjects.map(sortObject => {
+            if (sortObject.order === 'asc') {
+              return sortObject.path
+            }
+            return [sortObject.path, sortObject.order]
+          })
+        }
+
         const options = {
           include,
-          order: [['id', 'DESC']],
+          order,
           where,
         }
         if (limit) {
