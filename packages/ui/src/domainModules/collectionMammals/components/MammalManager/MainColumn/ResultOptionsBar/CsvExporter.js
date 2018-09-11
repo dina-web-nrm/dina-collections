@@ -9,6 +9,7 @@ import downloadFileActionCreator from 'coreModules/api/actionCreators/downloadFi
 import userSelectors from 'coreModules/user/globalSelectors'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
+import tableColumnSpecifications from '../tableColumnSpecifications'
 
 const SEARCH_SPECIMEN = 'searchSpecimen'
 
@@ -32,7 +33,7 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
-  columns: PropTypes.array.isRequired,
+  columns: PropTypes.array,
   createExportInfo: PropTypes.func.isRequired,
   downloadFile: PropTypes.func.isRequired,
   getOneExportInfo: PropTypes.func.isRequired,
@@ -43,6 +44,9 @@ const propTypes = {
 }
 
 const defaultProps = {
+  columns: tableColumnSpecifications.map(({ name }) => {
+    return name
+  }),
   pollInterval: 500,
   pollLimit: 50,
   searchResult: undefined,
