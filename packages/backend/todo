@@ -1,5 +1,5 @@
-* Add memwatch to dev dependenciy and require only in development
-* Remove ui-mock
+* Fix error message too large
+* Fix weird nomenclatureTyp
 
 
 
