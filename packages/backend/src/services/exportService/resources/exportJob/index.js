@@ -18,7 +18,7 @@ module.exports = {
   basePath: '/api/export/v01',
   model: {
     columns: {
-      error: { type: Sequelize.STRING },
+      error: { type: Sequelize.TEXT },
       exportFields: { type: Sequelize.JSONB },
       exportIds: { type: Sequelize.JSONB },
       failedAt: { type: Sequelize.DATE },
