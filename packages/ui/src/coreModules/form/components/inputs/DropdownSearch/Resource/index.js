@@ -1,18 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { connect } from 'react-redux'
-import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
+import objectPath from 'object-path'
 
-import createNestedItem from 'coreModules/crud/actionCreators/createNestedItem'
+import config from 'config'
+import { injectSearchOptions } from 'coreModules/form/higherOrderComponents'
 import DropdownSearchBase from '../Base'
 
 const defaultExtractValue = item => {
   return item && item.attributes && item.attributes.name
-}
-
-const mapDispatchToProps = {
-  createNestedItem,
 }
 
 const propTypes = {
@@ -35,11 +31,18 @@ const propTypes = {
   limit: PropTypes.number,
   nestItems: PropTypes.bool,
   onSearchQueryChange: PropTypes.func,
+  pathToIdInValue: PropTypes.string,
   relationships: PropTypes.array,
   resolveRelationships: PropTypes.array,
   resource: PropTypes.string.isRequired,
   search: PropTypes.func.isRequired,
   searchWithQuery: PropTypes.bool,
+  selectedOption: PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  }),
+  updateSelectedOption: PropTypes.func.isRequired,
 }
 
 const defaultProps = {
@@ -51,199 +54,52 @@ const defaultProps = {
   limit: 10,
   nestItems: false,
   onSearchQueryChange: undefined,
+  pathToIdInValue: '',
   relationships: undefined,
   resolveRelationships: undefined,
   searchWithQuery: false,
+  selectedOption: undefined,
 }
 
 class DropdownSearchResource extends Component {
-  constructor(props) {
-    super(props)
-
-    this.handleSearchQueryChange = this.handleSearchQueryChange.bind(this)
-    this.updateSelectedOption = this.updateSelectedOption.bind(this)
-    this.state = {
-      options: [],
-      searchQuery: '',
-      selectedOption: undefined,
-    }
-  }
-
   componentDidMount() {
-    const { input } = this.props
-    const id = input && input.value
-    if (id) {
-      this.updateSelectedOption(id)
+    const { pathToIdInValue } = this.props
+    const id = objectPath.get(
+      this.props,
+      pathToIdInValue ? `input.value.${pathToIdInValue}` : 'input.value'
+    )
+    if (id && !config.isTest) {
+      this.props.updateSelectedOption({ id })
     }
   }
 
   componentDidUpdate() {
-    const { selectedOption: { value: selectedOptionId = '' } = {} } = this.state
-    const id = this.props.input && this.props.input.value
+    const { pathToIdInValue } = this.props
+
+    const selectedOptionId = objectPath.get(
+      this.props,
+      pathToIdInValue
+        ? `selectedOption.value.${pathToIdInValue}`
+        : 'selectedOption.value'
+    )
+    const id = objectPath.get(
+      this.props,
+      pathToIdInValue ? `input.value.${pathToIdInValue}` : 'input.value'
+    )
+
     if (selectedOptionId !== id) {
       setTimeout(() => {
-        this.updateSelectedOption(id)
+        this.props.updateSelectedOption({ id })
       })
     }
-  }
-
-  updateSelectedOption(id) {
-    if (!id) {
-      return this.setState({
-        selectedOption: undefined,
-      })
-    }
-    const { options } = this.state
-    const selectedOption = options.find(item => {
-      return item.value === id
-    })
-
-    if (selectedOption) {
-      return this.setState({
-        selectedOption,
-      })
-    }
-
-    const filters = [
-      {
-        filterFunctionName: 'id',
-        value: id,
-      },
-    ]
-
-    this.search({ filters, limit: 1 }).then(res => {
-      const selectedOptions = this.buildOptionsFromResponse(res) || []
-      if (selectedOptions.length) {
-        this.setState({
-          selectedOption: selectedOptions[0],
-        })
-      }
-    })
-    return null
-  }
-
-  buildOptionsFromResponse(response = []) {
-    if (Array.isArray(response)) {
-      const { extractValue } = this.props
-      return response.map(item => {
-        return {
-          key: item.id,
-          text: extractValue(item),
-          value: item.id,
-        }
-      })
-    }
-    // TODO handle response is error
-    return []
-  }
-
-  handleSearchQueryChange({ searchQuery }) {
-    const { baseFilter, filterFunctionName, limit } = this.props
-    this.setState({
-      searchQuery,
-    })
-
-    if (this.props.onSearchQueryChange) {
-      this.props.onSearchQueryChange({ searchQuery })
-    }
-
-    const filters = [{ filterFunctionName, value: searchQuery }]
-
-    if (baseFilter) {
-      filters.push(baseFilter)
-    }
-
-    this.search({ filters, limit }).then(res => {
-      const options = this.buildOptionsFromResponse(res)
-      this.setState({
-        options,
-      })
-    })
-  }
-
-  search({ filters = [], limit }) {
-    const {
-      include,
-      includeFields,
-      nestItems = false,
-      relationships,
-      resolveRelationships,
-      resource,
-      searchWithQuery,
-    } = this.props
-    if (searchWithQuery) {
-      const query = {
-        and: filters.map(filter => {
-          return {
-            filter: {
-              filterFunction: filter.filterFunctionName,
-              input: {
-                value: filter.value,
-              },
-            },
-          }
-        }),
-      }
-
-      return this.props.search({ includeFields, limit, query })
-    }
-
-    const queryParamFilters = filters.reduce((obj, filter) => {
-      return {
-        ...obj,
-        [filter.filterFunctionName]: filter.value,
-      }
-    }, {})
-
-    const queryParams = {
-      filter: queryParamFilters,
-      include,
-      limit,
-      relationships,
-    }
-
-    return this.props.getManySearch({ queryParams }).then(res => {
-      if (!nestItems) {
-        return res
-      }
-      const promises = res.map(item => {
-        return this.props.createNestedItem({
-          item,
-          relationships,
-          resolveRelationships,
-          resource,
-          storeResult: false,
-        })
-      })
-
-      return Promise.all(promises).then(nestedItems => {
-        return nestedItems
-      })
-    })
   }
 
   render() {
-    const { options, searchQuery, selectedOption } = this.state
-
-    const { ...rest } = this.props
-    return (
-      <DropdownSearchBase
-        onSearchChange={this.handleSearchQueryChange}
-        options={options}
-        searchQuery={searchQuery}
-        selectedOption={selectedOption}
-        {...rest}
-      />
-    )
+    return <DropdownSearchBase {...this.props} />
   }
 }
 
 DropdownSearchResource.propTypes = propTypes
 DropdownSearchResource.defaultProps = defaultProps
 
-export default compose(
-  createInjectSearch({
-    storeSearchResult: false,
-  }),
-  connect(null, mapDispatchToProps)
-)(DropdownSearchResource)
+export default compose(injectSearchOptions())(DropdownSearchResource)

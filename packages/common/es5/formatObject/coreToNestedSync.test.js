@@ -98,7 +98,7 @@ describe('formatObject/coreToNestedSync', function () {
     it('has collectingInformation', function () {
       var attribute = individual.collectingInformation;
       var expectedFormat = [{
-        collectorsText: 'collectorsText',
+        collectedByAgent: { textI: 'collectorsText' },
         event: {
           endDate: 'endDate',
           expeditionText: 'expeditionText',
@@ -180,7 +180,7 @@ describe('formatObject/coreToNestedSync', function () {
       var attribute = individual.determinations;
       var expectedFormat = [{
         determinationVerbatim: 'determinationVerbatim',
-        determinedByAgentText: 'determinedByAgentText',
+        determinedByAgent: { textI: 'determinedByAgentText' },
         remarks: 'remarks',
         taxon: {
           id: '2367',
@@ -209,7 +209,7 @@ describe('formatObject/coreToNestedSync', function () {
         identifierType: {
           id: 1
         },
-        nameSpace: '',
+        namespace: '',
         value: '123456',
         publishRecord: true,
         remarks: '',
@@ -228,7 +228,9 @@ describe('formatObject/coreToNestedSync', function () {
       var attribute = individual.recordHistoryEvents;
       var expectedFormat = [{
         agent: {
-          id: '1'
+          normalizedAgent: {
+            id: '1'
+          }
         },
         date: {
           dateText: '2018'

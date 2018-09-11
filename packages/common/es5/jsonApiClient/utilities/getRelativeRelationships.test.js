@@ -37,9 +37,13 @@ describe('jsonApiClient/utilities/getRelativeRelationships', function () {
   test('returns array of relationSpecification keys with defined values', function () {
     var testValue = getRelativeRelationships({
       path: '.',
-      relationSpecification: { agents: [], notDefined: undefined, users: [] }
+      relationSpecification: {
+        normalizedAgents: [],
+        notDefined: undefined,
+        users: []
+      }
     });
-    var expectedResult = ['agents', 'users'];
+    var expectedResult = ['normalizedAgents', 'users'];
 
     expect(testValue).toEqual(expectedResult);
   });

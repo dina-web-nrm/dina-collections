@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "normalized": {
+      "$ref": "__ROOT__normalizedAgent",
+      "x-reference-type": "external"
+    },
+    "textI": {
+      "description": "Interpreted text",
+      "type": "string"
+    },
+    "textV": {
+      "description": "Verbatim text",
+      "type": "string"
+    },
+    "remarks": {
+      "type": "string"
+    }
+  }
+}

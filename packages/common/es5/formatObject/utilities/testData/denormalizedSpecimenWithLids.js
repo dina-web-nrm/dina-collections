@@ -8,7 +8,7 @@ module.exports = {
     determinations: [{
       lid: 'f2d775a3-ae22-4715-a83e-f2bd736ec2c4',
       determinationVerbatim: 'determinationVerbatim',
-      determinedByAgentText: 'determinedByAgentText',
+      determinedByAgent: { textI: 'determinedByAgentText' },
       remarks: 'remarks',
       taxon: {
         id: '2367',
@@ -16,7 +16,7 @@ module.exports = {
       }
     }],
     recordHistoryEvents: [{
-      agent: 'agent',
+      agent: { normalizedAgent: { id: '1' } },
       date: {
         dateText: '2018'
       },
@@ -47,14 +47,14 @@ module.exports = {
     identifiers: [{
       lid: '9c9b1543-5b24-44ac-8032-cea5d430bcb7',
       identifierType: 'catalogNumber',
-      nameSpace: '',
+      namespace: '',
       value: '123456',
       publishRecord: true,
       remarks: ''
     }],
     collectingInformation: [{
       lid: 'e7253de8-6262-4fd6-8192-40dec5970f41',
-      collectorsText: 'collectorsText',
+      collectedByAgent: { textI: 'collectorsText' },
       event: {
         lid: 'ff09480e-cf01-4806-9142-5776b58c5eb5',
         endDate: 'endDate',

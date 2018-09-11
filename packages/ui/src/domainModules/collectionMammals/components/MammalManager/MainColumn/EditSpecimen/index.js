@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 
-import setDefaultValues from 'domainModules/collectionMammals/components/MammalForm/transformations/input'
 import nestedToCoreSync from 'common/es5/formatObject/nestedToCoreSync'
 import createLog from 'utilities/log'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 import crudGlobalSelectors from 'coreModules/crud/globalSelectors'
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import setDefaultValues from '../RecordForm/transformations/input'
 import RecordForm from '../RecordForm'
 
 const log = createLog(
@@ -36,7 +36,7 @@ const defaultProps = {
   nestedItem: null,
 }
 
-class EditSpecimen extends Component {
+class EditSpecimen extends PureComponent {
   render() {
     const { nestedItem, updateSpecimen, featureTypes, ...rest } = this.props
 
@@ -76,8 +76,8 @@ export default compose(
   createGetNestedItemById({
     idPath: 'match.params.specimenId',
     include: [
-      'agents',
       'featureTypes',
+      'normalizedAgents',
       'physicalObjects.storageLocation',
       'places',
       'taxonNames',

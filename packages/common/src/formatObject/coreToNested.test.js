@@ -96,7 +96,7 @@ describe('formatObject/coreToNested', () => {
       const attribute = individual.collectingInformation
       const expectedFormat = [
         {
-          collectorsText: 'collectorsText',
+          collectedByAgent: { textI: 'collectorsText' },
           event: {
             endDate: 'endDate',
             expeditionText: 'expeditionText',
@@ -163,7 +163,7 @@ describe('formatObject/coreToNested', () => {
       const expectedFormat = [
         {
           determinationVerbatim: 'determinationVerbatim',
-          determinedByAgentText: 'determinedByAgentText',
+          determinedByAgent: { textI: 'determinedByAgentText' },
           remarks: 'remarks',
           taxon: {
             id: '2367',
@@ -198,7 +198,7 @@ describe('formatObject/coreToNested', () => {
             key: 'catalog-number',
             name: 'catalog number',
           },
-          nameSpace: '',
+          namespace: '',
           value: '123456',
           publishRecord: true,
           remarks: '',
@@ -219,7 +219,9 @@ describe('formatObject/coreToNested', () => {
       const expectedFormat = [
         {
           agent: {
-            id: '1',
+            normalizedAgent: {
+              id: '1',
+            },
           },
           date: {
             dateText: '2018',

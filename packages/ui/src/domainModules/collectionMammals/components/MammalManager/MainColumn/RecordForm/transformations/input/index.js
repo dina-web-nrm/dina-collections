@@ -17,7 +17,7 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
         identifierType: {
           id: '1',
         },
-        nameSpace: '',
+        namespace: '',
         remarks: '',
         value: '',
       },

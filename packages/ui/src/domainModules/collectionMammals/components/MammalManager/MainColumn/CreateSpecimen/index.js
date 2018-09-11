@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
@@ -20,7 +20,7 @@ const propTypes = {
   createSpecimen: PropTypes.func.isRequired,
 }
 
-class CreateSpecimen extends Component {
+class CreateSpecimen extends PureComponent {
   render() {
     const { createSpecimen, ...rest } = this.props
     const initialValues = setDefaultValues({ specimen: {} })

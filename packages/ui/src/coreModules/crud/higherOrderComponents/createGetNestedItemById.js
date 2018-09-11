@@ -34,19 +34,19 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
     const { item } = ownProps
 
     const {
-      extractedProps: { nameSpace: injectedNamspace, resource },
+      extractedProps: { namespace: injectedNamspace, resource },
     } = extractProps({
       defaults: hocInput,
-      keys: ['nameSpace', 'resource'],
+      keys: ['namespace', 'resource'],
       props: ownProps,
     })
 
-    const nameSpace = injectedNamspace
-      ? `${resource}${injectedNamspace}NestedCache`
-      : `${resource}NestedCache`
+    const namespace = injectedNamspace
+      ? `${resource}${injectedNamspace}`
+      : `${resource}`
 
     const getNestedItem =
-      keyObjectGlobalSelectors.get['nestedCache.:nameSpace.items.:id']
+      keyObjectGlobalSelectors.get['nestedCache.:namespace.items.:id']
 
     const id = item && item.id
     const nestedItem =
@@ -55,10 +55,10 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
       id !== null &&
       getNestedItem(state, {
         id,
-        nameSpace,
+        namespace,
       })
     return {
-      nameSpace,
+      namespace,
       nestedItem: nestedItem || undefined,
     }
   }
@@ -69,13 +69,13 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
   const propTypes = {
     createNestedItem: PropTypes.func.isRequired,
     item: PropTypes.object,
-    nameSpace: PropTypes.string,
+    namespace: PropTypes.string,
     nestedItem: PropTypes.object,
   }
 
   const defaultProps = {
     item: null,
-    nameSpace: undefined,
+    namespace: undefined,
     nestedItem: undefined,
   }
 
@@ -93,7 +93,7 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
     }
 
     createNestedItemIfNeeded(nextProps) {
-      const { item, nameSpace, nestedItem } = this.props
+      const { item, namespace, nestedItem } = this.props
 
       const {
         extractedProps: { resolveRelationships, relationships, resource },
@@ -108,7 +108,7 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
           setTimeout(() => {
             return this.props.createNestedItem({
               item,
-              nameSpace,
+              namespace,
               relationships,
               resolveRelationships,
               resource,
@@ -121,7 +121,7 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
         setTimeout(() => {
           return this.props.createNestedItem({
             item: nextProps.item,
-            nameSpace,
+            namespace,
             relationships,
             resolveRelationships,
             resource,

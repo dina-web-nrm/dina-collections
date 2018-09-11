@@ -13,7 +13,7 @@
       "type": "string",
       "example": "584028"
     },
-    "nameSpace": {
+    "namespace": {
       "type": "string",
       "example": "mammal"
     },

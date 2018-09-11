@@ -57,7 +57,7 @@ exports.featureType = ({ src, target }) => {
   target.attributes = { srcId, ...attributes }
 }
 
-exports.agent = ({ src, target }) => {
+exports.normalizedAgent = ({ src, target }) => {
   const { id: srcId, attributes } = src
   const id = attributes.fullName
   if (id) {

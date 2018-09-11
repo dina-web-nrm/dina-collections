@@ -137,7 +137,7 @@ module.exports = function createReporter() {
     }
     if (err !== undefined && err.message) {
       increment({
-        path: 'transformation.details.errorMessages.' + err.message
+        path: 'transformation.details.errorMessages.' + (err.scope ? err.scope + '.' : '') + err.message
       });
     }
   };

@@ -64,11 +64,11 @@ module.exports = {
       type: 'importDataFromFile',
     },
     {
-      relationKey: 'agents',
+      relationKey: 'normalizedAgents',
       type: 'getRelationship',
     },
     {
-      relationKey: 'agents',
+      relationKey: 'normalizedAgents',
       type: 'updateRelationship',
     },
     {

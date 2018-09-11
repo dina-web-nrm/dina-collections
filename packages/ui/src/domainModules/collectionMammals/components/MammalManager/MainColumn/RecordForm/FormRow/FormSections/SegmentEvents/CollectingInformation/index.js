@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
-import { Header, Grid } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+
 import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import {
@@ -16,8 +17,7 @@ import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
-import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
-import { ALL } from 'domainModules/agent/constants'
+import { TogglableAgentDropdownPickerSearch } from 'domainModules/agent/components'
 import LocationInformationFields from './LocationInformationFields'
 
 const log = createLog(
@@ -62,11 +62,9 @@ class SegmentCollectingInformation extends PureComponent {
           <Grid.Column computer={6} mobile={16}>
             <Field
               autoComplete="off"
-              component={AgentDropdownPickerSearch}
-              group={ALL}
-              initialText="Choose"
+              component={TogglableAgentDropdownPickerSearch}
               module="collectionMammals"
-              name={getPath('collectedByAgent.id')}
+              name={getPath('collectedByAgent')}
             />
           </Grid.Column>
           <Grid.Column computer={6} mobile={16}>

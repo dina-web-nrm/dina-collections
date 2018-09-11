@@ -5,7 +5,7 @@ module.exports = {
   individual: {
     determinations: [{
       determinationVerbatim: 'determinationVerbatim',
-      determinedByAgentText: 'determinedByAgentText',
+      determinedByAgent: { textI: 'determinedByAgentText' },
       remarks: 'remarks',
       taxon: {
         id: '2367',
@@ -13,7 +13,7 @@ module.exports = {
       }
     }],
     recordHistoryEvents: [{
-      agent: { id: '1' },
+      agent: { normalized: { id: '1' } },
       date: {
         dateText: '2018'
       }
@@ -39,13 +39,13 @@ module.exports = {
     }],
     identifiers: [{
       identifierType: { id: 1 },
-      nameSpace: '',
+      namespace: '',
       value: '123456',
       publishRecord: true,
       remarks: ''
     }],
     collectingInformation: [{
-      collectorsText: 'collectorsText',
+      collectedByAgent: { textI: 'collectorsText' },
       event: {
         endDate: 'endDate',
         expeditionText: 'expeditionText',

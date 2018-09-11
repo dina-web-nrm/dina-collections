@@ -24,7 +24,7 @@ const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
     if (locationInformation) {
       const normalizedLocality = migrator.getValue({
         obj: locationInformation,
-        path: 'localityN',
+        path: 'localityI',
       })
 
       if (normalizedLocality) {
@@ -33,7 +33,7 @@ const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
 
       const transcribedLocality = migrator.getValue({
         obj: locationInformation,
-        path: 'localityT',
+        path: 'localityV',
       })
 
       if (transcribedLocality) {

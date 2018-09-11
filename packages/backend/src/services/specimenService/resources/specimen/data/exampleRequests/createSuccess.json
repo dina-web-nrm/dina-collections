@@ -50,7 +50,7 @@
         "determinations": [
           {
             "determinationVerbatim": "determinationVerbatim",
-            "determinedByAgentText": "determinedByAgentText",
+            "determinedByAgent": { "textV": "determinedByAgentText" },
             "remarks": "remarks",
             "taxonName": {
               "id": "2367",
@@ -103,7 +103,7 @@
                 }
               ],
               "georeferenceSourcesText": "georeferenceSourcesText",
-              "localityT": "localityT",
+              "localityV": "localityV",
               "position": {
                 "geodeticDatum": "geodeticDatum text",
                 "latitude": "latitude-string",
@@ -137,7 +137,7 @@
           {
             "identifierType": { "id": "1", "type": "identifierType" },
             "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-            "nameSpace": "",
+            "namespace": "",
             "remarks": "",
             "value": "123456"
           }

@@ -17,7 +17,7 @@ export const createMammalFormInitialValues = individual => {
           identifierType: {
             id: '1',
           },
-          nameSpace: '',
+          namespace: '',
           publishRecord: false,
           remarks: '',
           value: '',

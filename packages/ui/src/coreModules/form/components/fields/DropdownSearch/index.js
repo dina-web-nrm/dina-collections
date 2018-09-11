@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
 import extractProps from 'utilities/extractProps'
 import DropdownSearchConnectInput from '../../inputs/DropdownSearch/Connect'
+import DropdownSearchIdTextInput from '../../inputs/DropdownSearch/IdText'
 import DropdownSearchLocalInput from '../../inputs/DropdownSearch/Local'
 import DropdownSearchResource from '../../inputs/DropdownSearch/Resource'
 
@@ -11,7 +12,17 @@ import FieldTemplate, { fieldTemplatePropKeys } from '../../FieldTemplate'
 const propTypes = {
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.number,
+      PropTypes.string,
+      PropTypes.shape({
+        normalized: PropTypes.shape({
+          id: PropTypes.string,
+        }),
+        textI: PropTypes.string,
+        textV: PropTypes.string,
+      }),
+    ]),
   }).isRequired,
   leftButton: PropTypes.node,
   meta: PropTypes.object.isRequired,
@@ -31,6 +42,10 @@ function Select(props) {
   switch (type) {
     case 'dropdown-search-connect': {
       Component = DropdownSearchConnectInput
+      break
+    }
+    case 'dropdown-search-id-text': {
+      Component = DropdownSearchIdTextInput
       break
     }
     case 'dropdown-search-local': {

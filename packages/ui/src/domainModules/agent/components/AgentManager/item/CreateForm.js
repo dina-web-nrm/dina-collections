@@ -5,16 +5,17 @@ import { connect } from 'react-redux'
 import { destroy } from 'redux-form'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 
-import BaseForm, { FORM_NAME } from './BaseForm'
+import BaseForm from './BaseForm'
 
 const mapDispatchToProps = {
-  createAgent: crudActionCreators.agent.create,
+  createAgent: crudActionCreators.normalizedAgent.create,
   destroy,
 }
 
 const propTypes = {
   createAgent: PropTypes.func.isRequired,
   destroy: PropTypes.func.isRequired,
+  form: PropTypes.string.isRequired,
   itemId: PropTypes.string,
   onInteraction: PropTypes.func.isRequired,
 }
@@ -26,11 +27,11 @@ export class Create extends PureComponent {
   componentWillMount() {
     // necessary to ensure form is emptied if coming from an edit form with
     // other pre-filled values
-    this.props.destroy([FORM_NAME])
+    this.props.destroy([this.props.form])
   }
 
   render() {
-    const { itemId, onInteraction, ...rest } = this.props
+    const { form, itemId, onInteraction, ...rest } = this.props
     const initialValues = itemId ? { parent: { id: itemId } } : {}
 
     return (
@@ -38,6 +39,7 @@ export class Create extends PureComponent {
         {...rest}
         displayBackButton
         displayResetButton
+        form={form}
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()

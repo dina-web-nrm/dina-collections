@@ -1,1 +1,1 @@
-exports.agent = require('./agent')
+exports.normalizedAgent = require('./normalizedAgent')

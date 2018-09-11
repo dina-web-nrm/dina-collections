@@ -7,7 +7,7 @@ const relationships = ['acceptedTaxonName']
 
 const resolveRelationships = ['taxonName']
 
-const extractValue = nestedItem => {
+const extractText = nestedItem => {
   const acceptedTaxonName = nestedItem && nestedItem.acceptedTaxonName
   if (!acceptedTaxonName) {
     return ''
@@ -22,7 +22,7 @@ class TaxonDropdownSearchDropdownSearch extends Component {
     return (
       <DropdownSearch
         {...rest}
-        extractValue={extractValue}
+        extractText={extractText}
         include={include}
         nestItems
         relationships={relationships}

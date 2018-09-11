@@ -10,7 +10,7 @@ module.exports = function migrateAcquisition({ src, target, migrator }) {
   if (handedInByAgentText) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.acquisition.handedInByAgentText',
+      path: 'attributes.individual.acquisition.handedInByAgent.textI',
       value: handedInByAgentText,
     })
   }

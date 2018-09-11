@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
+import immutable from 'object-path-immutable'
 
 import {
   PICKER_CLOSE,
@@ -16,6 +17,12 @@ const propTypes = {
   change: PropTypes.func.isRequired,
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
+  pathToIdInValue: PropTypes.string,
+  pathToTextInValue: PropTypes.string,
+}
+const defaultProps = {
+  pathToIdInValue: '',
+  pathToTextInValue: '',
 }
 
 const mapDispatchToProps = {
@@ -23,7 +30,12 @@ const mapDispatchToProps = {
 }
 
 const createPickerWrapper = (
-  { extractPickedId = defaultExtractPickedId } = {}
+  {
+    extractPickedId = defaultExtractPickedId,
+    pathToIdInValue = '',
+    pathToTextInValue = '',
+    requireEitherIdOrValue = false,
+  } = {}
 ) => ComposedComponent => {
   class PickerWrapper extends Component {
     constructor(props) {
@@ -58,12 +70,30 @@ const createPickerWrapper = (
     }
 
     pickItem(data) {
-      const { meta, input } = this.props
+      const {
+        input,
+        meta,
+        pathToIdInValue: pathToIdInValueOverride,
+        pathToTextInValue: pathToTextInValueOverride,
+      } = this.props
+
       const formName = meta && meta.form
       const itemId = extractPickedId(data)
       // use nestedItem for custom id extraction
       if (itemId !== undefined) {
-        this.props.change(formName, input.name, itemId)
+        const idPath = pathToIdInValueOverride || pathToIdInValue
+        const textPath = pathToTextInValueOverride || pathToTextInValue
+        const isObjectValue = !!(idPath || textPath)
+
+        const baseValue = requireEitherIdOrValue
+          ? immutable.del(input.value, textPath)
+          : input.value
+
+        const value = isObjectValue
+          ? immutable.set(baseValue, idPath, itemId)
+          : itemId
+
+        this.props.change(formName, input.name, value)
       }
       this.handleOnClose()
     }
@@ -97,10 +127,18 @@ const createPickerWrapper = (
         searchQuery,
         setPickerActive,
       } = this
-      const { input, meta } = this.props
+
+      const {
+        input,
+        meta,
+        pathToIdInValue: pathToIdInValueOverride,
+        pathToTextInValue: pathToTextInValueOverride,
+      } = this.props
+
       const { pickerActive } = this.state
       const formName = meta && meta.form
       const value = input && input.value
+
       return (
         <ComposedComponent
           {...this.props}
@@ -111,6 +149,8 @@ const createPickerWrapper = (
           onInteraction={handleInteraction}
           onPickerButtonClick={handlePickerButtonClick}
           onSearchQueryChange={handleSearchQueryChange}
+          pathToIdInValue={pathToIdInValueOverride || pathToIdInValue}
+          pathToTextInValue={pathToTextInValueOverride || pathToTextInValue}
           pickerActive={pickerActive}
           setPickerActive={setPickerActive}
         />
@@ -119,6 +159,7 @@ const createPickerWrapper = (
   }
 
   PickerWrapper.propTypes = propTypes
+  PickerWrapper.defaultProps = defaultProps
 
   return connect(null, mapDispatchToProps)(PickerWrapper)
 }

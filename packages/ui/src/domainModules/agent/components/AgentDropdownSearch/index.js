@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'redux'
+
 import { DropdownSearch } from 'coreModules/form/components'
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
+
 import { ALL, PERSON, ORGANIZATION } from '../../constants'
+
+const includeFields = ['id', 'attributes.fullName', 'attributes.agentType']
 
 const propTypes = {
   group: PropTypes.oneOf([ALL, PERSON, ORGANIZATION]),
@@ -11,8 +17,16 @@ const defaultProps = {
   group: ALL,
 }
 
-const extractValue = item => {
+const extractText = item => {
   return item && item.attributes && item.attributes.fullName
+}
+
+const mapItemToOption = item => {
+  return {
+    key: item.id,
+    text: extractText(item),
+    value: { normalized: { id: item.id } },
+  }
 }
 
 class AgentDropdownSearch extends Component {
@@ -45,13 +59,17 @@ class AgentDropdownSearch extends Component {
 
     return (
       <DropdownSearch
+        pathToIdInValue="normalized.id"
+        pathToTextInValue="textI"
         {...rest}
         baseFilter={baseFilter}
-        extractValue={extractValue}
+        extractText={extractText}
         filterFunctionName="fullNameSearch"
-        includeFields={['id', 'attributes.fullName', 'attributes.agentType']}
-        resource="agent"
-        type="dropdown-search-resource"
+        includeFields={includeFields}
+        mapItemToOption={mapItemToOption}
+        resource="normalizedAgent"
+        searchWithQuery
+        type="dropdown-search-id-text"
       />
     )
   }
@@ -60,4 +78,4 @@ class AgentDropdownSearch extends Component {
 AgentDropdownSearch.propTypes = propTypes
 AgentDropdownSearch.defaultProps = defaultProps
 
-export default AgentDropdownSearch
+export default compose(withI18n({ module: 'form' }))(AgentDropdownSearch)

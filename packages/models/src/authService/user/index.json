@@ -4,15 +4,15 @@
     "relationships": {
       "type": "object",
       "properties": {
-        "agent": {
+        "normalizedAgent": {
           "type": "object",
-          "x-key-stored-in-model": "agent",
+          "x-key-stored-in-model": "normalizedAgent",
           "x-key-type": "json",
           "properties": {
             "data": {
               "type": "array",
               "items": {
-                "$ref": "__ROOT__agent",
+                "$ref": "__ROOT__normalizedAgent",
                 "x-reference-type": "external"
               }
             }
@@ -20,10 +20,10 @@
         }
       }
     },
-    "agents": {
+    "normalizedAgents": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__agent",
+        "$ref": "__ROOT__normalizedAgent",
         "x-reference-type": "external"
       }
     },

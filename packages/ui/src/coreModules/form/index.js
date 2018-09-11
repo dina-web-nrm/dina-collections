@@ -5,6 +5,7 @@ import * as selectors from './selectors'
 import * as utilities from './utilities'
 import globalSelectors from './globalSelectors'
 import reducer from './reducer'
+import translations from './translations.json'
 import { MODULE_NAME as name } from './constants'
 
 export {
@@ -15,5 +16,6 @@ export {
   notifications,
   name,
   reducer,
+  translations,
   utilities,
 }

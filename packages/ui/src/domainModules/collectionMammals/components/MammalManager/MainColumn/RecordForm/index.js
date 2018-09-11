@@ -147,7 +147,7 @@ class RecordForm extends Component {
   }
 
   render() {
-    const { availableHeight, handleSubmit, mode, ...rest } = this.props
+    const { availableHeight, form, handleSubmit, mode, ...rest } = this.props
 
     return (
       <React.Fragment>
@@ -158,6 +158,7 @@ class RecordForm extends Component {
             availableHeight={availableHeight}
             changeFieldValue={this.changeFieldValue}
             editMode={mode === 'edit'}
+            form={form}
             formValueSelector={this.formValueSelector}
             onUndoChanges={this.handleUndoChanges}
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}

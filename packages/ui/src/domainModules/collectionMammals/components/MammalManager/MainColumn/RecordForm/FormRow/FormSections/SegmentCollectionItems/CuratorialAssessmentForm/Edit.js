@@ -40,7 +40,6 @@ export class EditCuratorialAssessment extends PureComponent {
   render() {
     const {
       agent,
-      agentText,
       changeFieldValue,
       condition,
       conditionRemarks,
@@ -60,7 +59,6 @@ export class EditCuratorialAssessment extends PureComponent {
         displayResetButton
         initialValues={{
           agent,
-          agentText,
           condition,
           conditionRemarks,
           date,
