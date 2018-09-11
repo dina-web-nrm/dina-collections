@@ -33,6 +33,7 @@ module.exports = function createOpenApiClient({
   }
 
   return {
+    ...apiClient,
     call,
   }
 }

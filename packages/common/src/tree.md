@@ -5,6 +5,7 @@
 │   └── index.js
 ├── apiClient
 │   ├── createApiMethod.js
+│   ├── createDownloadFile.js
 │   ├── createRequest
 │   │   ├── index.js
 │   │   ├── mapInput.js

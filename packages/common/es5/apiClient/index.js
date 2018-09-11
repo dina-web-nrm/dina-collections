@@ -11,6 +11,7 @@ var _require = require('../Dependor'),
 
 var createApiMethod = require('./createApiMethod');
 var validateApiConfig = require('./validation/validateApiConfig');
+var createDownloadFile = require('./createDownloadFile');
 
 var dep = new Dependor({
   createApiMethod: createApiMethod,
@@ -24,6 +25,8 @@ function createApiClient(apiConfigInput) {
   }, apiConfigInput);
 
   dep.validateApiConfig(apiConfig);
+
+  var downloadFile = createDownloadFile(apiConfig);
 
   var formPost = dep.createApiMethod(apiConfig, {
     mapHeaders: function mapHeaders(userInputHeaders) {
@@ -83,6 +86,7 @@ function createApiClient(apiConfigInput) {
   });
 
   var methods = {
+    downloadFile: downloadFile,
     formPost: formPost,
     httpDelete: httpDelete,
     httpGet: httpGet,

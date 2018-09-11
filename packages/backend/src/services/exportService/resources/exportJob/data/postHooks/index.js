@@ -32,7 +32,7 @@ const performExportHook = ({ fileInteractor, item, serviceInteractor }) => {
             body: {
               data: {
                 attributes: {
-                  error: err.stack,
+                  error: err.message,
                   exportIds: [],
                 },
               },

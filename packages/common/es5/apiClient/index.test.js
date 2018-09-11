@@ -33,12 +33,12 @@ describe('apiClient', function () {
 
   it('has expected methods', function () {
     var apiClient = createApiClient({});
-    var expectedApiClientMethods = ['call', 'formPost', 'httpDelete', 'httpGet', 'httpPatch', 'httpPost', 'httpPut'];
+    var expectedApiClientMethods = ['call', 'downloadFile', 'formPost', 'httpDelete', 'httpGet', 'httpPatch', 'httpPost', 'httpPut'];
 
     expect((0, _keys2.default)(apiClient).sort()).toEqual(expectedApiClientMethods.sort());
   });
 
-  var expectedCallMethods = ['formPost', 'delete', 'get', 'patch', 'post', 'put'];
+  var expectedCallMethods = ['delete', 'formPost', 'get', 'patch', 'post', 'put'];
 
   expectedCallMethods.forEach(function (methodName) {
     it('returns function when using call with methodName ' + methodName, function () {

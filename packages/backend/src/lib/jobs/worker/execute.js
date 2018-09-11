@@ -66,7 +66,11 @@ module.exports = function execute({ job, serviceInteractor }) {
                 operationId: 'jobSetJobFailed',
                 request: {
                   body: {
-                    data: {},
+                    data: {
+                      attributes: {
+                        error: err.message,
+                      },
+                    },
                   },
                   pathParams: {
                     id: jobId,
