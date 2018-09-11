@@ -7,6 +7,7 @@ exports.job = {
   basePath: '/api/jobs/v01',
   model: {
     columns: {
+      error: { type: Sequelize.TEXT },
       failedAt: { type: Sequelize.DATE },
       operationId: { type: Sequelize.STRING },
       operationRequest: { type: Sequelize.JSONB },
