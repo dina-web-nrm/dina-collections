@@ -3,6 +3,8 @@
 ```bash
 ├── allModules.js
 ├── api
+│   ├── actionCreators
+│   │   └── downloadFile.js
 │   ├── constants.js
 │   ├── index.js
 │   └── middleware.js
