@@ -13,6 +13,11 @@ module.exports = {
     inputSchema: {
       type: 'object',
     },
+    interceptor: {
+      not: {
+        type: 'string',
+      },
+    },
     jsFilterFunction: {
       not: {
         type: 'string',

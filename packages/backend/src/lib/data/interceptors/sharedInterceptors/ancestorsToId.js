@@ -1,13 +1,19 @@
-const extractRelationships = require('../relationships/extractRelationships')
+const extractRelationships = require('../../../controllers/utilities/relationships/extractRelationships')
+const buildIncludeArray = require('../../../controllers/utilities/relationships/buildIncludeArray')
 
-module.exports = function getAncestors({
-  id,
-  include,
-  includeRelations,
-  model,
-  queryParamRelationships,
-  relations,
-}) {
+module.exports = function ancestorsToId({ model, models, operation, request }) {
+  const { includeRelations, relations } = operation
+  const { queryParams: { filter: { ancestorsToId: id } } = {} } = request
+
+  let include
+  if (relations && includeRelations) {
+    include = buildIncludeArray({
+      models,
+      queryParamRelationships: 'parent',
+      relations,
+    })
+  }
+
   const fetchedIds = {}
 
   const ancestors = []
@@ -26,7 +32,7 @@ module.exports = function getAncestors({
           includeRelations &&
           extractRelationships({
             item,
-            queryParamRelationships,
+            queryParamRelationships: 'parent',
             relations,
           })
 
@@ -47,14 +53,24 @@ module.exports = function getAncestors({
 
   return fetchAncestors(id)
     .then(() => {
+      const updatedRequest = {
+        ...request,
+        queryParams: {
+          ...request.queryParams,
+          filter: {
+            ids: ancestors.map(ancestor => {
+              return ancestor.id
+            }),
+          },
+        },
+      }
       return {
-        items: ancestors,
-        meta: {},
+        request: updatedRequest,
       }
     })
     .catch(() => {
       return {
-        items: ancestors,
+        items: [],
         meta: {},
       }
     })
