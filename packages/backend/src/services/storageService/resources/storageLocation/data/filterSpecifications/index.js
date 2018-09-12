@@ -3,12 +3,13 @@ const createGetManyFilterSpecifications = require('../../../../../../lib/data/fi
 const filters = createGetManyFilterSpecifications({
   include: [
     'ancestorsToId',
+    'group',
     'id',
     'ids',
-    'updatedAfter',
     'nameSearch',
+    'nodesWithCircularDependencies',
     'parentId',
-    'group',
+    'updatedAfter',
   ],
 })
 

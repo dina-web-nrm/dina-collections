@@ -49,12 +49,13 @@ exports.getMany = createGetManyFilterSpecifications({
   },
   include: [
     'ancestorsToId',
+    'group',
     'id',
     'ids',
-    'updatedAfter',
-    'parentId',
-    'group',
     'name',
+    'nodesWithCircularDependencies',
+    'parentId',
+    'updatedAfter',
   ],
 })
 
