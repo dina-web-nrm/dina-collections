@@ -1,5 +1,9 @@
-* Fix error message too large
-* Fix weird nomenclatureTyp
+* Add intercept to query
+* Improve getNestedItem to make it possible to specify includes better.
+
+
+
+
 
 
 
