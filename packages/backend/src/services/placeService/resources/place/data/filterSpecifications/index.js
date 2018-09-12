@@ -6,6 +6,7 @@ const filters = createGetManyFilterSpecifications({
     'group',
     'id',
     'ids',
+    'nodesWithCircularDependencies',
     'name',
     'nameSearch',
     'parentId',

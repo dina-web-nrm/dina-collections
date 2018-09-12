@@ -3,7 +3,17 @@ const buildIncludeArray = require('../../../controllers/utilities/relationships/
 
 module.exports = function ancestorsToId({ model, models, operation, request }) {
   const { includeRelations, relations } = operation
-  const { queryParams: { filter: { ancestorsToId: id } } = {} } = request
+  const id =
+    request &&
+    request.queryParams &&
+    request.queryParams.filter &&
+    request.queryParams.filter.ancestorsToId
+
+  if (!id) {
+    return Promise.resolve({
+      request,
+    })
+  }
 
   let include
   if (relations && includeRelations) {
