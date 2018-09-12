@@ -7,7 +7,8 @@ export const createDelActionHandler = delKeySpecification => {
 
   return function delActionHandler(state, action) {
     const { parameters = undefined } = action.payload || {}
-    return deleter(state, parameters)
+    const newState = deleter(state, parameters)
+    return newState === undefined ? {} : newState
   }
 }
 
