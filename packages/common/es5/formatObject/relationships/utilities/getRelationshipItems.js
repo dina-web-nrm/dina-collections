@@ -11,6 +11,7 @@ var removeFalsyElements = function removeFalsyElements(element) {
 };
 var createGetItemFromRawItemId = function createGetItemFromRawItemId(_ref) {
   var getItemByTypeId = _ref.getItemByTypeId,
+      relationshipKey = _ref.relationshipKey,
       type = _ref.type;
 
   return function (rawItem) {
@@ -19,7 +20,7 @@ var createGetItemFromRawItemId = function createGetItemFromRawItemId(_ref) {
         return undefined;
       }
 
-      return getItemByTypeId(type, rawItem.id);
+      return getItemByTypeId(type, rawItem.id, { relationshipKey: relationshipKey });
     });
   };
 };
@@ -49,6 +50,7 @@ var getRelationshipItems = function getRelationshipItems(_ref2) {
 
     var getItemPromiseFromRawItem = createGetItemFromRawItemId({
       getItemByTypeId: getItemByTypeId,
+      relationshipKey: relationshipKey,
       type: type
     });
 
