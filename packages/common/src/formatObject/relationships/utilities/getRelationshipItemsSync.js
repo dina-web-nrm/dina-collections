@@ -1,11 +1,15 @@
 const removeFalsyElements = element => !!element
-const createGetItemFromRawItemId = ({ getItemByTypeId, type }) => {
+const createGetItemFromRawItemId = ({
+  getItemByTypeId,
+  relationshipKey,
+  type,
+}) => {
   return rawItem => {
     if (!rawItem || !rawItem.id) {
       return undefined
     }
 
-    return getItemByTypeId(type, rawItem.id)
+    return getItemByTypeId(type, rawItem.id, { relationshipKey })
   }
 }
 
@@ -36,6 +40,7 @@ const getRelationshipItemsSync = ({
 
   const getItemFromRawItem = createGetItemFromRawItemId({
     getItemByTypeId,
+    relationshipKey,
     type,
   })
 

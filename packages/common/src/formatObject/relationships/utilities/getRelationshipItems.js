@@ -1,12 +1,16 @@
 const removeFalsyElements = element => !!element
-const createGetItemFromRawItemId = ({ getItemByTypeId, type }) => {
+const createGetItemFromRawItemId = ({
+  getItemByTypeId,
+  relationshipKey,
+  type,
+}) => {
   return rawItem => {
     return Promise.resolve().then(() => {
       if (!rawItem || !rawItem.id) {
         return undefined
       }
 
-      return getItemByTypeId(type, rawItem.id)
+      return getItemByTypeId(type, rawItem.id, { relationshipKey })
     })
   }
 }
@@ -39,6 +43,7 @@ const getRelationshipItems = ({
 
     const getItemPromiseFromRawItem = createGetItemFromRawItemId({
       getItemByTypeId,
+      relationshipKey,
       type,
     })
 
