@@ -42,7 +42,7 @@ storiesOf(
   'domainModules/collectionMammals/MammalManager/ResultTableView/InfiniteTableHeader',
   module
 )
-  .addDecorator(createStoryDecorator())
+  .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <InfiniteTableHeader
       height={43}
