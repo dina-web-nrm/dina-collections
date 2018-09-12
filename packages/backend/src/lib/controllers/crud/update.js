@@ -1,5 +1,6 @@
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 const transformInput = require('../utilities/transformations/inputObject')
+const applyHooks = require('../utilities/applyHooks')
 
 module.exports = function update({
   fileInteractor,
@@ -18,18 +19,15 @@ module.exports = function update({
   }
 
   return ({ request, user, requestId }) => {
-    const preHookPromises = preHooks.map(preHook => {
-      return preHook({
-        fileInteractor,
-        request,
-        requestId,
-        resource,
-        serviceInteractor,
-        user,
-      })
-    })
-
-    return Promise.all(preHookPromises).then(() => {
+    return applyHooks({
+      fileInteractor,
+      hooks: preHooks,
+      request,
+      requestId,
+      resource,
+      serviceInteractor,
+      user,
+    }).then(() => {
       const { body: { data: input = {} } = {} } = request
       const { pathParams: { id } } = request
 
@@ -39,18 +37,15 @@ module.exports = function update({
           ...transformInput({ input, relations, sourceResource: resource }),
         })
         .then(({ item } = {}) => {
-          const promises = postHooks.map(postHook => {
-            return postHook({
-              fileInteractor,
-              item,
-              requestId,
-              resource,
-              serviceInteractor,
-              user,
-            })
-          })
-
-          return Promise.all(promises).then(() => {
+          return applyHooks({
+            fileInteractor,
+            hooks: postHooks,
+            item,
+            requestId,
+            resource,
+            serviceInteractor,
+            user,
+          }).then(() => {
             return item
           })
         })

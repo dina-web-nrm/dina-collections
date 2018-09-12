@@ -1,4 +1,5 @@
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
+const applyHooks = require('../utilities/applyHooks')
 
 module.exports = function del({
   fileInteractor,
@@ -16,35 +17,29 @@ module.exports = function del({
     throw new Error(`Model missing required method: deactivate for ${resource}`)
   }
   return ({ request, user, requestId }) => {
-    const preHookPromises = preHooks.map(preHook => {
-      return preHook({
-        fileInteractor,
-        request,
-        requestId,
-        resource,
-        serviceInteractor,
-        user,
-      })
-    })
-
-    return Promise.all(preHookPromises).then(() => {
+    return applyHooks({
+      fileInteractor,
+      hooks: preHooks,
+      request,
+      requestId,
+      resource,
+      serviceInteractor,
+      user,
+    }).then(() => {
       const { pathParams: { id } } = request
 
       return model
         .deactivate({ id })
         .then(({ item } = {}) => {
-          const promises = postHooks.map(postHook => {
-            return postHook({
-              fileInteractor,
-              item,
-              requestId,
-              resource,
-              serviceInteractor,
-              user,
-            })
-          })
-
-          return Promise.all(promises).then(() => {
+          return applyHooks({
+            fileInteractor,
+            hooks: postHooks,
+            item,
+            requestId,
+            resource,
+            serviceInteractor,
+            user,
+          }).then(() => {
             return item
           })
         })
