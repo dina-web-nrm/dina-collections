@@ -2,7 +2,8 @@ const createLog = require('../../utilities/log')
 
 const log = createLog('statistics')
 
-module.exports = function initializeStatistics({ config }) {
+module.exports = function initializeStatistics() {
+  /* eslint no-constant-condition: 0 */
   if (false) {
     const memwatch = require('memwatch-next') // eslint-disable-line
     memwatch.on('stats', stats => {
