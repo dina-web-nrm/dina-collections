@@ -5,14 +5,6 @@ import { action } from '@storybook/addon-actions' // eslint-disable-line
 import { storiesOf } from '@storybook/react' // eslint-disable-line
 
 import InfiniteTableHeader from './InfiniteTableHeader'
-// import tableColumnSpecifications from '../tableColumnSpecifications'
-
-// export const actions = {
-//   onExportCsv: action('onExportCsv'),
-//   onFormTabClick: action('onFormTabClick'),
-//   onSettingClick: action('onSettingClick'),
-//   onTableTabClick: action('onTableTabClick'),
-// }
 
 export const tableColumnsToShow = [
   'catalogNumber',
