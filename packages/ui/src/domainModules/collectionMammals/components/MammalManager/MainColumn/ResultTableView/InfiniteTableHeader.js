@@ -14,8 +14,10 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
   height: PropTypes.number.isRequired,
+  onSaveTableColumnsToSort: PropTypes.func.isRequired,
   scrollLeft: PropTypes.number,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  tableColumnsToSort: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   topOffset: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
 }
@@ -28,40 +30,69 @@ class InfiniteTableHeader extends PureComponent {
   constructor(props) {
     super(props)
 
-    this.state = {
-      sortingColumns: [],
-    }
-
-    this.handleSorting = this.handleSorting.bind(this)
+    this.handleClickSorting = this.handleClickSorting.bind(this)
   }
 
-  getColumnHeader(columnWidth, name) {
-    const { sortingColumns } = this.state
+  handleClickSorting(event, columnName, sortOrder) {
+    if (event) {
+      event.preventDefault()
+    }
 
-    const isColumnSorted = sortingColumns.find(column => column.name === name)
-
-    if (isColumnSorted) {
-      const sortOrder = isColumnSorted.sort
-      const iconName = sortOrder === 'asc' ? 'caret down' : 'caret up'
-      return (
-        <Grid.Column key={name} style={{ width: columnWidth }}>
-          <Header
-            onClick={event => this.handleSorting(event, name, sortOrder)}
-            size="small"
-          >
-            <Icon name={iconName} />
-            <Header.Content>
-              <ModuleTranslate capitalize textKey={`tableColumns.${name}`} />
-            </Header.Content>
-          </Header>
-        </Grid.Column>
+    // let columnsToSort
+    const { tableColumnsToSort } = this.props
+    if (tableColumnsToSort) {
+      const columnsToSort = [...tableColumnsToSort]
+      const index = columnsToSort.findIndex(
+        column => column.name === columnName
       )
+
+      if (index > -1) {
+        const sort = sortOrder === 'asc' ? 'dsc' : 'asc'
+        columnsToSort[index] = { name: columnName, sort }
+        return this.props.onSaveTableColumnsToSort(columnsToSort)
+      }
+
+      return this.props.onSaveTableColumnsToSort([
+        ...tableColumnsToSort,
+        { name: columnName, sort: sortOrder },
+      ])
+    }
+    return this.props.onSaveTableColumnsToSort([
+      { name: columnName, sort: sortOrder },
+    ])
+  }
+
+  renderColumnHeader(columnWidth, name) {
+    const { tableColumnsToSort } = this.props
+
+    if (tableColumnsToSort) {
+      const sortedColumn = tableColumnsToSort.find(
+        column => column.name === name
+      )
+
+      if (sortedColumn) {
+        const sortOrder = sortedColumn.sort
+        const iconName = sortOrder === 'asc' ? 'caret down' : 'caret up'
+        return (
+          <Grid.Column key={name} style={{ width: columnWidth }}>
+            <Header
+              onClick={event => this.handleClickSorting(event, name, sortOrder)}
+              size="small"
+            >
+              <Icon name={iconName} />
+              <Header.Content>
+                <ModuleTranslate capitalize textKey={`tableColumns.${name}`} />
+              </Header.Content>
+            </Header>
+          </Grid.Column>
+        )
+      }
     }
 
     return (
       <Grid.Column key={name} style={{ width: columnWidth }}>
         <Header
-          onClick={event => this.handleSorting(event, name, 'asc')}
+          onClick={event => this.handleClickSorting(event, name, 'asc')}
           size="small"
         >
           <Header.Content>
@@ -70,26 +101,6 @@ class InfiniteTableHeader extends PureComponent {
         </Header>
       </Grid.Column>
     )
-  }
-
-  handleSorting(event, columnName, sortOrder) {
-    if (event) {
-      event.preventDefault()
-    }
-
-    const elements = [...this.state.sortingColumns]
-    const index = elements.findIndex(column => column.name === columnName)
-
-    if (index >= 0) {
-      const sort = sortOrder === 'asc' ? 'dsc' : 'asc'
-      elements[index] = { name: columnName, sort }
-      this.setState({ sortingColumns: elements })
-    } else {
-      const newElement = { name: columnName, sort: sortOrder }
-      this.setState({
-        sortingColumns: [...this.state.sortingColumns, newElement],
-      })
-    }
   }
 
   render() {
@@ -121,7 +132,7 @@ class InfiniteTableHeader extends PureComponent {
           </Grid.Column>
           {tableColumnSpecifications.map(({ name, width: columnWidth }) => {
             if (tableColumnsToShow.includes(name)) {
-              return this.getColumnHeader(columnWidth, name)
+              return this.renderColumnHeader(columnWidth, name)
             }
             return null
           })}

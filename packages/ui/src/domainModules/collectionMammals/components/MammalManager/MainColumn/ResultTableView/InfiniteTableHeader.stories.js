@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react' // eslint-disable-line
 
 import InfiniteTableHeader from './InfiniteTableHeader'
 
-export const tableColumnsToShow = [
+const tableColumnsToShow = [
   'catalogNumber',
   'family',
   'genus',
@@ -30,6 +30,8 @@ export const tableColumnsToShow = [
   'taxonomySubspecies',
 ]
 
+const tableColumnsToSort = [{ name: 'identifiersCatalogNumber', sort: 'asc' }]
+
 storiesOf(
   'domainModules/collectionMammals/MammalManager/ResultTableView/InfiniteTableHeader',
   module
@@ -38,7 +40,9 @@ storiesOf(
   .add('default', () => (
     <InfiniteTableHeader
       height={43}
+      onSaveTableColumnsToSort={action('sort-dsc')}
       tableColumnsToShow={tableColumnsToShow}
+      tableColumnsToSort={tableColumnsToSort}
       topOffset={141}
       width={800}
     />

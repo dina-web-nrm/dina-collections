@@ -4374,6 +4374,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         className="ui small header"
         onClick={[Function]}
       >
+        <i
+          aria-hidden="true"
+          className="caret down icon"
+        />
         <div
           className="content"
         >

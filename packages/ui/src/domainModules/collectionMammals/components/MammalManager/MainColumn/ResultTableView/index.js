@@ -8,7 +8,11 @@ import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import userSelectors from 'coreModules/user/globalSelectors'
-import { SPECIMENS_MAMMALS_TABLE_COLUMNS } from '../../../../constants'
+import { updateUserPreference } from 'coreModules/user/actionCreators'
+import {
+  SPECIMENS_MAMMALS_TABLE_COLUMNS,
+  SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
+} from '../../../../constants'
 import { getTableWidth, tableColumnNames } from '../tableColumnSpecifications'
 import InfiniteTable from './InfiniteTable'
 import InfiniteTableHeader from './InfiniteTableHeader'
@@ -20,8 +24,14 @@ const mapStateToProps = state => {
     tableColumnsToShow:
       (userPreferences && userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS]) ||
       undefined,
+    tableColumnsToSort:
+      (userPreferences &&
+        userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING]) ||
+      undefined,
   }
 }
+
+const mapDispatchToProps = { updateUserPreference }
 
 const infiniteTable = {
   id: 'resultTableScrollContainer',
@@ -47,14 +57,22 @@ const propTypes = {
   onToggleFilters: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
+  tableColumnsToSort: PropTypes.arrayOf(PropTypes.object.isRequired),
+  updateUserPreference: PropTypes.func.isRequired,
 }
 const defaultProps = {
   tableColumnsToShow: tableColumnNames,
+  tableColumnsToSort: [],
 }
 
 class ResultTableView extends PureComponent {
   constructor(props) {
     super(props)
+
+    this.handleSaveTableColumnsToSort = this.handleSaveTableColumnsToSort.bind(
+      this
+    )
+
     this.shortcuts = [
       {
         command: 'o',
@@ -72,16 +90,31 @@ class ResultTableView extends PureComponent {
     this.props.search({ query: {} })
   }
 
+  handleSaveTableColumnsToSort(columnsToSort) {
+    return this.props.updateUserPreference(
+      SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
+      columnsToSort
+    )
+  }
+
   render() {
-    const { availableHeight, tableColumnsToShow, ...rest } = this.props
+    const {
+      availableHeight,
+      tableColumnsToShow,
+      tableColumnsToSort,
+      ...rest
+    } = this.props
+
     return (
       <React.Fragment>
         <KeyboardShortcuts shortcuts={this.shortcuts} />
         <RowLayout
           {...rest}
           availableHeight={availableHeight}
+          onSaveTableColumnsToSort={this.handleSaveTableColumnsToSort}
           rows={rows}
           tableColumnsToShow={tableColumnsToShow}
+          tableColumnsToSort={tableColumnsToSort}
           width={getTableWidth(tableColumnsToShow)}
         />
       </React.Fragment>
@@ -93,7 +126,7 @@ ResultTableView.propTypes = propTypes
 ResultTableView.defaultProps = defaultProps
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   createInjectSearch({
     includeFields: ['id'],
     resource: 'searchSpecimen',
