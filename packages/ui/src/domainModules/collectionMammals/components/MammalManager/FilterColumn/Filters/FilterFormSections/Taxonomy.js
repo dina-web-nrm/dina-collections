@@ -27,6 +27,7 @@ class IdentifierFilterForm extends PureComponent {
             filterFunctionName={`search${taxonomyTags}`}
             label="Taxon name"
             name={name}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

@@ -29,6 +29,7 @@ class CollectingConditionFilterForm extends PureComponent {
             filterFunctionName={conditionFilter}
             label="Collecting condition"
             name={collectingConditionFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

@@ -28,6 +28,7 @@ class AgentFilterForm extends PureComponent {
             label="Agent name"
             name={name}
             parameterKey="agentName"
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

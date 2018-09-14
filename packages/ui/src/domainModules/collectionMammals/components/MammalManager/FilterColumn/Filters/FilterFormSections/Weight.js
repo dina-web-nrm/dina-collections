@@ -75,6 +75,7 @@ class WeightFilterForm extends PureComponent {
             filterFunctionName={weightTypeFilter}
             label="Weight type"
             name={multipleChoiceName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

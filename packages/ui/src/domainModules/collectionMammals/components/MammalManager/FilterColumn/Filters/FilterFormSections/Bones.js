@@ -27,6 +27,7 @@ class BonesFilterForm extends PureComponent {
             filterFunctionName={bonesFilter}
             label="Bones"
             name={bonesFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>
