@@ -306,7 +306,10 @@ const getAndFiltersFromObjectFilters = objectFiltersMap => {
           const weightTypeFieldName =
             'weightType|multipleChoice-matchWeightTags'
           const weightTypeTags = values[weightTypeFieldName]
-          const buildRangeWeightFilter = createBuildRangeFilter('rangeWeight')
+          const buildRangeWeightFilter = createBuildRangeFilter({
+            filterFunction: 'rangeWeight',
+            typeKey: 'weightType',
+          })
 
           if (weightTypeTags && weightTypeTags.length) {
             if (max === undefined && min === undefined) {
