@@ -2,8 +2,9 @@ const locality = require('./decorators/locality')
 const storage = require('./decorators/storage')
 const taxonomy = require('./decorators/taxonomy')
 
-const searchDate = require('./searchOnlyFields/searchDate')
 const searchAge = require('./searchOnlyFields/searchAge')
+const searchDate = require('./searchOnlyFields/searchDate')
+const searchLength = require('./searchOnlyFields/searchLength')
 const searchWeight = require('./searchOnlyFields/searchWeight')
 
 const agentTags = require('./tags/agentTags')
@@ -61,6 +62,7 @@ module.exports = {
   fields: [
     searchAge,
     searchDate,
+    searchLength,
     searchWeight,
 
     agentTags,
