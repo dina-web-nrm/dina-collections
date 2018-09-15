@@ -39,6 +39,7 @@ class LocalityFilterForm extends PureComponent {
             filterFunctionName={`search${locationTags}`}
             label="Location"
             name={locationFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

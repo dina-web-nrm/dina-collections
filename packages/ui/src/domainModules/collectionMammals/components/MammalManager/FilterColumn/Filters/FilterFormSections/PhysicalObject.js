@@ -35,6 +35,7 @@ class PhysicalObjectFilterForm extends PureComponent {
             filterFunctionName={skeletonFilter}
             label="Skeleton"
             name={skeletonFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
@@ -46,6 +47,7 @@ class PhysicalObjectFilterForm extends PureComponent {
             filterFunctionName={skinFilter}
             label="Skin"
             name={skinFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Column width={16}>
@@ -57,6 +59,7 @@ class PhysicalObjectFilterForm extends PureComponent {
             filterFunctionName={wetPreparationFilter}
             label="Wet preparation"
             name={wetPreparationFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

@@ -27,6 +27,7 @@ class StorageFilterForm extends PureComponent {
             filterFunctionName={`search${storageLocationTags}`}
             label="Storage location name"
             name={name}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

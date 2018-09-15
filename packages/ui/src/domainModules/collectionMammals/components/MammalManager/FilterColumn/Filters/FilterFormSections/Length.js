@@ -75,6 +75,7 @@ class LengthFilterForm extends PureComponent {
             filterFunctionName={lengthTypeFilter}
             label="Length type"
             name={multipleChoiceName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

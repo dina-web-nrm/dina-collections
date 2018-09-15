@@ -7168,6 +7168,7 @@
                 "enum": [
                   "attributes.searchOnlyFields.searchAge",
                   "attributes.searchOnlyFields.searchDate",
+                  "attributes.searchOnlyFields.lengthObject",
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
@@ -7233,6 +7234,7 @@
                 "enum": [
                   "attributes.searchOnlyFields.searchAge",
                   "attributes.searchOnlyFields.searchDate",
+                  "attributes.searchOnlyFields.lengthObject",
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
@@ -7531,6 +7533,15 @@
             "in": "query",
             "name": "filter[searchDates]",
             "description": "Search data",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[rangeLength]",
+            "description": "Search length",
             "required": false,
             "schema": {
               "type": "object"
@@ -7861,6 +7872,7 @@
                 "enum": [
                   "attributes.searchOnlyFields.searchAge",
                   "attributes.searchOnlyFields.searchDate",
+                  "attributes.searchOnlyFields.lengthObject",
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",
@@ -7926,6 +7938,7 @@
                 "enum": [
                   "attributes.searchOnlyFields.searchAge",
                   "attributes.searchOnlyFields.searchDate",
+                  "attributes.searchOnlyFields.lengthObject",
                   "attributes.searchOnlyFields.weightObject",
                   "attributes.tags.agentTags",
                   "attributes.tags.ageStageTags",

@@ -27,6 +27,7 @@ class SexFilterForm extends PureComponent {
             filterFunctionName={sexFilter}
             label="Sex"
             name={sexFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>

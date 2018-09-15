@@ -29,6 +29,7 @@ class AgeStageFilterForm extends PureComponent {
             filterFunctionName={ageStageFilter}
             label="Age stage"
             name={stageFieldName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
         <Grid.Row>

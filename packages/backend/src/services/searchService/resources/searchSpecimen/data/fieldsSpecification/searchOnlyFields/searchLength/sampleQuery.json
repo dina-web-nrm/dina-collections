@@ -1,0 +1,24 @@
+{
+  "data": {
+    "attributes": {
+      "limit": 10,
+      "offset": 0,
+      "query": {
+        "and": [
+          {
+            "filter": {
+              "filterFunction": "rangeWeight",
+              "input": {
+                "value": {
+                  "min": 20,
+                  "max": 22,
+                  "weightType": "complete-body-weight"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -55,6 +55,7 @@ class DatePeriodFilterForm extends PureComponent {
             filterFunctionName={filterFunctionName}
             label="Activity"
             name={multipleChoiceName}
+            resource="searchSpecimen"
           />
         </Grid.Column>
       </Grid>
