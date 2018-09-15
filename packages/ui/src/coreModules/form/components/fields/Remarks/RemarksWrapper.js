@@ -22,7 +22,7 @@ class RemarksWrapper extends PureComponent {
     } = this.props
 
     return (
-      <Grid style={{ height: 50, paddingLeft: 11 }}>
+      <Grid padded style={{ height: 36 }}>
         <Grid.Column
           onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
           style={{ padding: 0 }}
