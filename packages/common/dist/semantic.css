@@ -4993,6 +4993,12 @@ a {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.basic.button.shadowless {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0) inset !important;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0) inset !important;
+  padding: 5px 10px;
+}
 /*!
  * # Semantic UI 2.2.13 - Container
  * http://github.com/semantic-org/semantic-ui/
