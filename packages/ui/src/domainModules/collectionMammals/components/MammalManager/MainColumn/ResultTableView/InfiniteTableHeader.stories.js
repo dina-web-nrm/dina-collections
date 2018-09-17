@@ -1,9 +1,11 @@
 import React from 'react'
 import 'common/dist/semantic.css' // eslint-disable-line
-import createStoryDecorator from 'utilities/test/createStoryDecorator'
+
+import { emToPixels } from 'coreModules/layout/utilities'
 import { action } from '@storybook/addon-actions' // eslint-disable-line
 import { storiesOf } from '@storybook/react' // eslint-disable-line
 
+import createStoryDecorator from 'utilities/test/createStoryDecorator'
 import InfiniteTableHeader from './InfiniteTableHeader'
 
 const tableColumnsToShow = [
@@ -39,11 +41,11 @@ storiesOf(
   .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <InfiniteTableHeader
-      height={43}
+      height={emToPixels(3.5)}
       onSaveTableColumnsToSort={action('sort-dsc')}
       tableColumnsToShow={tableColumnsToShow}
       tableColumnsToSort={tableColumnsToSort}
-      topOffset={141}
+      topOffset={emToPixels(11.1875)}
       width={800}
     />
   ))

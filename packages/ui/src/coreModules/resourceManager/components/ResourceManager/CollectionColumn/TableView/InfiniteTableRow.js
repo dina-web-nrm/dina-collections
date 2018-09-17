@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
+
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import { emToPixels } from 'coreModules/layout/utilities'
 
 const propTypes = {
   background: PropTypes.string.isRequired,
@@ -31,7 +33,7 @@ const InfiniteTableRow = ({
 }) => {
   if (!nestedItem) {
     return (
-      <Grid.Row style={{ height: 43, width }}>
+      <Grid.Row style={{ height: emToPixels(3.5), width }}>
         <Grid.Column style={{ width: 80 }} textAlign="right">
           {rowNumber}
         </Grid.Column>
@@ -50,7 +52,7 @@ const InfiniteTableRow = ({
         event.preventDefault()
         onClickRow(rowNumber, itemId)
       }}
-      style={{ background, height: 43, width }}
+      style={{ background, height: emToPixels(3.5), width }}
     >
       <Grid.Column key="rowNumber" style={{ width: 80 }} textAlign="right">
         {rowNumber}

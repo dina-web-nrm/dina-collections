@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Dimmer } from 'semantic-ui-react'
 
+import { emToPixels } from 'coreModules/layout/utilities'
 import sizeSelectors from 'coreModules/size/globalSelectors'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import {
@@ -125,7 +126,9 @@ const ViewWrap = ({
           className="ui fluid dina background"
           // deducting the menu height from this div
           style={{
-            height: `${topMenuEnabled ? windowHeight - 40 : windowHeight}px`,
+            height: topMenuEnabled
+              ? windowHeight - emToPixels(3.4375)
+              : windowHeight,
             overflow: 'auto',
           }}
         >

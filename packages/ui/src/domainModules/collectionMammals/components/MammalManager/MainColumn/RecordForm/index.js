@@ -18,11 +18,12 @@ import customFormValidator from 'common/es5/error/validators/customFormValidator
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
 import RecordActionBar from './RecordActionBar'
 import FormRow from './FormRow'
 
-const recordActionBarHeight = 64
+const recordActionBarHeight = emToPixels(4.625)
 const recordActionBar = {
   height: `${recordActionBarHeight}px`,
   key: 'recordActionBar',

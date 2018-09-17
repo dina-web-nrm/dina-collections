@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
+import { emToPixels } from 'coreModules/layout/utilities'
 import crudSelectors from 'coreModules/crud/globalSelectors'
 
 import tableColumnSpecifications from '../tableColumnSpecifications'
@@ -42,7 +43,7 @@ const InfiniteTableRow = ({
 }) => {
   if (!item) {
     return (
-      <Grid.Row style={{ height: 43, width }}>
+      <Grid.Row style={{ height: emToPixels(3.5), width }}>
         <Grid.Column style={{ width: 80 }} textAlign="right">
           {rowNumber}
         </Grid.Column>
@@ -61,7 +62,7 @@ const InfiniteTableRow = ({
         event.preventDefault()
         onClick(rowNumber, itemId)
       }}
-      style={{ background, cursor: 'pointer', height: 43, width }}
+      style={{ background, cursor: 'pointer', height: emToPixels(3.5), width }}
     >
       <Grid.Column key="rowNumber" style={{ width: 80 }} textAlign="right">
         {rowNumber}

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import extractProps from 'utilities/extractProps'
@@ -73,7 +74,7 @@ class InlineWrapper extends Component {
 
     return (
       <RowLayout
-        availableHeight={windowHeight - 40}
+        availableHeight={windowHeight - emToPixels(3.4375)}
         renderRow={this.renderRow}
         rows={rows}
       />

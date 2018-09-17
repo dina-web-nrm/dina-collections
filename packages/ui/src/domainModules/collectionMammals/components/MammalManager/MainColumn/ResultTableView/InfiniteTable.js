@@ -8,6 +8,7 @@ import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import i18nSelectors from 'coreModules/i18n/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
@@ -166,7 +167,7 @@ export class InfiniteTable extends Component {
     if (!(searchResult && searchResult.items)) {
       return (
         <Grid padded>
-          <Grid.Row style={{ height: 43, width }}>
+          <Grid.Row style={{ height: emToPixels(3.5), width }}>
             <Grid.Column style={{ paddingTop: 60, width: 150 }}>
               <Dimmer active inverted>
                 <Loader content="Loading" inverted />

@@ -11,6 +11,7 @@ import {
 } from 'coreModules/layout/components'
 import { createResourceManagerWrapper } from 'coreModules/resourceManager/higherOrderComponents'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
+import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
 
 import CollectionColumn from './CollectionColumn'
@@ -20,10 +21,10 @@ import FilterColumn from './FilterColumn'
 import PickerHeader from './picker/Header'
 import PickerActionBar from './picker/ActionBar'
 
-const TOP_NAVBAR_HEIGHT = 41
-const PICKER_MODAL_PADDING = 40
-const PICKER_HEADER_HEIGHT = 40
-const PICKER_ACTION_BAR_HEIGHT = 60
+const TOP_NAVBAR_HEIGHT = emToPixels(3.4375)
+const PICKER_MODAL_PADDING = emToPixels(3.5)
+const PICKER_HEADER_HEIGHT = emToPixels(3.5)
+const PICKER_ACTION_BAR_HEIGHT = emToPixels(5)
 
 const mapStateToProps = (state, { isPicker, windowHeight }) => {
   const availableHeight = isPicker
@@ -65,11 +66,11 @@ const propTypes = {
   windowHeight: PropTypes.number.isRequired,
 }
 const defaultProps = {
-  editItemColumnWidth: 500,
+  editItemColumnWidth: emToPixels(42),
   focusedItemId: undefined,
   isPicker: false,
   itemId: undefined,
-  rightSidebarWidth: 300,
+  rightSidebarWidth: emToPixels(25),
 }
 
 class ResourceManager extends Component {

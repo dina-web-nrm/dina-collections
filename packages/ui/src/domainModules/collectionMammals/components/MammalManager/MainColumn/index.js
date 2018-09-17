@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { createSelector } from 'reselect'
 
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { RecordNavigationBar } from 'coreModules/resourceManager/components'
 
@@ -14,14 +15,14 @@ import ResultOptionsBar from './ResultOptionsBar'
 import ResultTableSettings from './ResultTableSettings'
 import ResultTableView from './ResultTableView'
 
-const recordNavigationHeight = 58
+const recordNavigationHeight = emToPixels(4.25)
 const recordNavigation = {
   height: `${recordNavigationHeight}px`,
   key: 'recordNavigation',
   renderRow: props => <RecordNavigationBar {...props} />,
 }
 
-const recordOptionsHeight = 43
+const recordOptionsHeight = emToPixels(3.625)
 const recordOptions = {
   height: `${recordOptionsHeight}px`,
   key: 'recordOptions',
@@ -129,7 +130,7 @@ class MainColumn extends PureComponent {
     return (
       <RowLayout
         {...rest}
-        availableHeight={windowHeight - 40}
+        availableHeight={windowHeight - emToPixels(3.4375)}
         mainColumnActiveTab={mainColumnActiveTab}
         rows={getRows(mainColumnActiveTab)}
       />

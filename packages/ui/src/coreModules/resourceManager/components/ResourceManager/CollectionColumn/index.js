@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { RowLayout } from 'coreModules/layout/components'
 import memoize from 'memoize-one'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
+import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
 import { getTableWidth } from 'coreModules/resourceManager/utilities'
 
@@ -30,8 +31,8 @@ const propTypes = {
 }
 
 const defaultProps = {
-  recordNavigationHeight: 58,
-  recordOptionsHeight: 43,
+  recordNavigationHeight: emToPixels(4.25),
+  recordOptionsHeight: emToPixels(3.5625),
 }
 
 class CollectionColumn extends Component {

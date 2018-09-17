@@ -6,6 +6,7 @@ import { compose } from 'redux'
 import createLog from 'utilities/log'
 
 import actionCreators from 'coreModules/crud/actionCreators'
+import { emToPixels } from 'coreModules/layout/utilities'
 import {
   globalSelectors as keyObjectGlobalSelectors,
   actionCreators as keyObjectActionCreators,
@@ -134,8 +135,8 @@ const createResourceManagerWrapper = (
     itemId: undefined,
     listItems: [],
     nestedCacheNamespaces: undefined,
-    recordNavigationHeight: 58,
-    recordOptionsHeight: 43,
+    recordNavigationHeight: emToPixels(4.25),
+    recordOptionsHeight: emToPixels(3.5625),
     showAll: false,
   }
 
