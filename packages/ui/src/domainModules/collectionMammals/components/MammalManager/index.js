@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { isDirty, reset } from 'redux-form'
+import { isDirty, reset, getFormValues } from 'redux-form'
 import { createSelector } from 'reselect'
 import { push } from 'react-router-redux'
 import objectPath from 'object-path'
@@ -11,13 +11,19 @@ import objectPath from 'object-path'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
+import userSelectors from 'coreModules/user/globalSelectors'
 import {
   createInjectSearch,
   createInjectSearchResult,
 } from 'coreModules/search/higherOrderComponents'
 import { globalSelectors as searchSelectors } from 'coreModules/search/keyObjectModule'
 import sizeSelectors from 'coreModules/size/globalSelectors'
-import { SPECIMEN_FILTERS_FORM_NAME } from '../../constants'
+import {
+  SPECIMEN_FILTERS_FORM_NAME,
+  SPECIMENS_MAMMALS_TABLE_COLUMNS,
+  SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING,
+} from '../../constants'
+
 import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
@@ -102,6 +108,15 @@ const mapStateToProps = (
   state,
   { match: { url }, searchResultResourceType: resource }
 ) => {
+  const userPreferences = userSelectors.getUserPreferences(state)
+  const tableColumnsToShow =
+    (userPreferences && userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS]) ||
+    undefined
+  const tableColumnsToSort =
+    (userPreferences &&
+      userPreferences[SPECIMENS_MAMMALS_TABLE_COLUMNS_SORTING]) ||
+    undefined
+
   const specimenSearchState = searchSelectors.get[':resource.searchState'](
     state,
     {
@@ -133,6 +148,7 @@ const mapStateToProps = (
     currentTableRowNumber,
     filterColumnIsOpen: keyObjectGlobalSelectors.get.filterColumnIsOpen(state),
     filterFormIsDirty: isDirty(SPECIMEN_FILTERS_FORM_NAME)(state),
+    filterValues: getFormValues(SPECIMEN_FILTERS_FORM_NAME)(state),
     focusedSpecimenId: keyObjectGlobalSelectors.get.focusedSpecimenId(state),
     isEditRecordView,
     isItemViewOrSettings,
@@ -144,6 +160,8 @@ const mapStateToProps = (
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
     showSelectNextRecordButton,
     showSelectPreviousRecordButton,
+    tableColumnsToShow,
+    tableColumnsToSort,
     totalNumberOfRecords,
   }
 }
@@ -162,6 +180,7 @@ const propTypes = {
   currentTableRowNumber: PropTypes.number,
   filterColumnIsOpen: PropTypes.bool.isRequired,
   filterFormIsDirty: PropTypes.bool.isRequired,
+  filterValues: PropTypes.object, // eslint-disable-line react/no-unused-prop-types
   focusedSpecimenId: PropTypes.string,
   isEditRecordView: PropTypes.bool.isRequired,
   isItemViewOrSettings: PropTypes.bool.isRequired,
@@ -187,13 +206,16 @@ const propTypes = {
   setShowAllFormSections: PropTypes.func.isRequired,
   showSelectNextRecordButton: PropTypes.bool.isRequired,
   showSelectPreviousRecordButton: PropTypes.bool.isRequired,
+  tableColumnsToSort: PropTypes.array, // eslint-disable-line react/no-unused-prop-types
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
   currentTableRowNumber: 1,
+  filterValues: undefined,
   focusedSpecimenId: undefined,
   rightSidebarWidth: 300,
   searchResult: undefined,
+  tableColumnsToSort: undefined,
   totalNumberOfRecords: 0,
 }
 
@@ -254,6 +276,20 @@ class MammalManager extends Component {
       objectPath.get(nextProps, 'match.params.sectionId')
     ) {
       this.handleSectionIdUpdate(nextProps)
+    }
+
+    if (
+      objectPath.get(this.props, 'tableColumnsToSort') !==
+      objectPath.get(nextProps, 'tableColumnsToSort')
+    ) {
+      this.handleSearchSpecimens(nextProps)
+    }
+
+    if (
+      objectPath.get(this.props, 'tableColumnsToShow') !==
+      objectPath.get(nextProps, 'tableColumnsToShow')
+    ) {
+      this.handleSearchSpecimens(nextProps)
     }
 
     if (
@@ -357,13 +393,19 @@ class MammalManager extends Component {
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
-  handleSearchSpecimens(event, filterValues = {}) {
-    if (event) {
-      event.preventDefault()
-    }
+  handleSearchSpecimens(props = this.props, { omitFilters = false } = {}) {
+    const { filterValues, tableColumnsToSort } = props
 
+    const sort =
+      tableColumnsToSort &&
+      tableColumnsToSort.map(({ name, sort: order }) => {
+        return `attributes.${name}:${order}`
+      })
     return this.props
-      .search({ query: buildQuery(filterValues) })
+      .search({
+        query: buildQuery(omitFilters ? {} : filterValues),
+        sort,
+      })
       .then(items => {
         this.props.setCurrentTableRowNumber(items.length && 1)
       })
@@ -372,9 +414,7 @@ class MammalManager extends Component {
   handleShowAllRecords(event) {
     event.preventDefault()
     this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
-    this.props.search({ query: buildQuery({}) }).then(items => {
-      this.props.setCurrentTableRowNumber(items.length && 1)
-    })
+    return this.handleSearchSpecimens(this.props, { omitFilters: true })
   }
 
   handleResetFilters(event) {
