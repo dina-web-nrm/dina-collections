@@ -256,7 +256,7 @@
   font-weight: bold;
 }
 .ui.mobile.test.ad:after {
-  font-size: 0.83333333em;
+  font-size: 0.875em;
 }
 .ui.test.ad[data-text]:after {
   content: attr(data-text);
