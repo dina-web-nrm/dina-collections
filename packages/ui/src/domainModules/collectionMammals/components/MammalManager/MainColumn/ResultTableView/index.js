@@ -4,7 +4,6 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
-import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import { RowLayout } from 'coreModules/layout/components'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import userSelectors from 'coreModules/user/globalSelectors'
@@ -54,8 +53,8 @@ const rows = [infiniteTableHeader, infiniteTable]
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
+  onSearchSpecimens: PropTypes.func.isRequired,
   onToggleFilters: PropTypes.func.isRequired,
-  search: PropTypes.func.isRequired,
   tableColumnsToShow: PropTypes.arrayOf(PropTypes.string.isRequired),
   tableColumnsToSort: PropTypes.arrayOf(PropTypes.object.isRequired),
   updateUserPreference: PropTypes.func.isRequired,
@@ -87,7 +86,7 @@ class ResultTableView extends PureComponent {
     ]
   }
   componentDidMount() {
-    this.props.search({ query: {} })
+    this.props.onSearchSpecimens()
   }
 
   handleSaveTableColumnsToSort(columnsToSort) {
@@ -127,9 +126,5 @@ ResultTableView.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  createInjectSearch({
-    includeFields: ['id'],
-    resource: 'searchSpecimen',
-  }),
   injectWindowHeight
 )(ResultTableView)

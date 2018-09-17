@@ -358,7 +358,9 @@ class MammalManager extends Component {
   }
 
   handleSearchSpecimens(event, filterValues = {}) {
-    event.preventDefault()
+    if (event) {
+      event.preventDefault()
+    }
 
     return this.props
       .search({ query: buildQuery(filterValues) })
