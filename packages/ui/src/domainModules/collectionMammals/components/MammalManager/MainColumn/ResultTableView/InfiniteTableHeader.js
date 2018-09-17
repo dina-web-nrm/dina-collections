@@ -47,7 +47,7 @@ class InfiniteTableHeader extends PureComponent {
       )
 
       if (index > -1) {
-        const sort = sortOrder === 'asc' ? 'dsc' : 'asc'
+        const sort = sortOrder === 'asc' ? 'desc' : 'asc'
         columnsToSort[index] = { name: columnName, sort }
         return this.props.onSaveTableColumnsToSort(columnsToSort)
       }
