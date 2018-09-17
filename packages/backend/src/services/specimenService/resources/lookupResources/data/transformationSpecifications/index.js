@@ -31,6 +31,7 @@ exports.preparationType = {
 }
 
 exports.storageLocation = {
+  collidingIdPrefix: 'x',
   description: '',
   srcResource: 'storageLocation',
   transformationFunctions: [storageLocation],
