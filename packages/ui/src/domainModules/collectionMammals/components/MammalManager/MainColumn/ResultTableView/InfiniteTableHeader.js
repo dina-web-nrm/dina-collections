@@ -53,7 +53,7 @@ class InfiniteTableHeader extends PureComponent {
       }
 
       return this.props.onSaveTableColumnsToSort([
-        ...tableColumnsToSort,
+        // ...tableColumnsToSort,
         { name: columnName, sort: sortOrder },
       ])
     }
