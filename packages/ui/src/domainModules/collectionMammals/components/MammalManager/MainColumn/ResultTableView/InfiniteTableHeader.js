@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Divider, Grid, Header, Icon } from 'semantic-ui-react'
+import { Grid, Header, Icon } from 'semantic-ui-react'
+
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import createLog from 'utilities/log'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
@@ -137,7 +138,6 @@ class InfiniteTableHeader extends PureComponent {
             return null
           })}
         </Grid>
-        <Divider fitted />
       </React.Fragment>
     )
   }

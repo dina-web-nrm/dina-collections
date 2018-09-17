@@ -27,7 +27,6 @@ export class ResultOptionsBar extends Component {
         {treeEnabled && (
           <Menu.Item
             active={treeActive}
-            disabled={!handleTreeTabClick}
             name="form"
             onClick={event => handleTreeTabClick(event)}
           >
@@ -37,7 +36,6 @@ export class ResultOptionsBar extends Component {
 
         <Menu.Item
           active={tableActive}
-          disabled={!handleListTabClick}
           name="table"
           onClick={event => handleListTabClick(event)}
         >

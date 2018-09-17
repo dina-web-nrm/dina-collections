@@ -30,7 +30,6 @@ export class ResultOptionsBar extends Component {
       <Menu attached="top" tabular>
         <Menu.Item
           active={isItemViewOrSettings}
-          disabled={!handleFormTabClick}
           name="form"
           onClick={event => handleFormTabClick(event)}
         >
@@ -38,7 +37,6 @@ export class ResultOptionsBar extends Component {
         </Menu.Item>
         <Menu.Item
           active={isTableViewOrSettings}
-          disabled={!handleTableTabClick}
           name="table"
           onClick={event => handleTableTabClick(event)}
         >
