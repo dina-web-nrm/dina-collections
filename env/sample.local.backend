@@ -13,3 +13,4 @@ KEYCLOAK_ADMIN_USERNAME=admin
 KEYCLOAK_AUTH_BASE_URL=https://alpha-keycloak.dina-web.net/auth
 KEYCLOAK_REALM_NAME=dina
 TEST_API_URL=http://localhost:4444
+RUN_MEMWATCH=false

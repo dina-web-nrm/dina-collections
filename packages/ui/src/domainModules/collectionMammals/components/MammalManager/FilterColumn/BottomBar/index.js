@@ -2,14 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { getFormValues, isInvalid } from 'redux-form'
+import { isInvalid } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 
 const mapStateToProps = (state, { form }) => {
   return {
     invalid: isInvalid(form)(state),
-    values: getFormValues(form)(state),
   }
 }
 
@@ -17,11 +16,8 @@ const propTypes = {
   invalid: PropTypes.bool.isRequired,
   onResetFilters: PropTypes.func.isRequired,
   onSearchSpecimens: PropTypes.func.isRequired,
-  values: PropTypes.object,
 }
-const defaultProps = {
-  values: undefined,
-}
+const defaultProps = {}
 
 class BottomBar extends PureComponent {
   constructor(props) {
@@ -39,8 +35,9 @@ class BottomBar extends PureComponent {
   }
 
   handleSearch(event) {
+    event.preventDefault()
     this.setState({ loading: true })
-    return this.props.onSearchSpecimens(event, this.props.values).then(() => {
+    return this.props.onSearchSpecimens().then(() => {
       this.setState({ loading: false })
     })
   }

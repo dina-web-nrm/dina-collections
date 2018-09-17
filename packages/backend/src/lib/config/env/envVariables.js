@@ -16,7 +16,7 @@ const requiredEnvVariables = [
 
 const optionalEnvVariables = ['IMPORT_DATA_NUMBER_OF_SPECIMENS', 'IMPORT_DATA']
 
-const devVariables = ['DISABLE_AUTH']
+const devVariables = ['DISABLE_AUTH', 'RUN_MEMWATCH']
 
 const testVariables = [
   'API_TESTS',

@@ -4337,143 +4337,164 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/ResultTableView/InfiniteTableHeader default 1`] = `
 <div>
   <div
-    className="ui container"
+    className="ui padded left aligned middle aligned grid"
     style={
       Object {
-        "position": "relative",
+        "height": 43,
+        "left": -0,
+        "position": "absolute",
+        "top": 141,
+        "width": 800,
       }
     }
   >
     <div
-      className="ui green segment"
+      className="right aligned column"
+      style={
+        Object {
+          "width": 80,
+        }
+      }
     >
       <div
-        className="ui padded left aligned middle aligned grid"
-        style={
-          Object {
-            "height": 43,
-            "left": -0,
-            "position": "absolute",
-            "top": 141,
-            "width": 800,
-          }
-        }
+        className="ui small header"
       >
+        Row #
+      </div>
+    </div>
+    <div
+      className="column"
+      style={
+        Object {
+          "width": 180,
+        }
+      }
+    >
+      <div
+        className="ui small header"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="caret down icon"
+        />
         <div
-          className="right aligned column"
-          style={
-            Object {
-              "width": 80,
-            }
-          }
+          className="content"
         >
-          <div
-            className="ui small header"
-          >
-            Row #
-          </div>
-        </div>
-        <div
-          className="column"
-          style={
-            Object {
-              "width": 150,
-            }
-          }
-        >
-          <div
-            className="ui small header"
-          >
-            <span>
-              Catalog number
-            </span>
-          </div>
-        </div>
-        <div
-          className="column"
-          style={
-            Object {
-              "width": 250,
-            }
-          }
-        >
-          <div
-            className="ui small header"
-          >
-            <span>
-              Taxon (curatorial name)
-            </span>
-          </div>
-        </div>
-        <div
-          className="column"
-          style={
-            Object {
-              "width": 150,
-            }
-          }
-        >
-          <div
-            className="ui small header"
-          >
-            <span>
-              Family
-            </span>
-          </div>
-        </div>
-        <div
-          className="column"
-          style={
-            Object {
-              "width": 150,
-            }
-          }
-        >
-          <div
-            className="ui small header"
-          >
-            <span>
-              Genus
-            </span>
-          </div>
-        </div>
-        <div
-          className="column"
-          style={
-            Object {
-              "width": 150,
-            }
-          }
-        >
-          <div
-            className="ui small header"
-          >
-            <span>
-              Species
-            </span>
-          </div>
-        </div>
-        <div
-          className="column"
-          style={
-            Object {
-              "width": 150,
-            }
-          }
-        >
-          <div
-            className="ui small header"
-          >
-            <span>
-              Subspecies
-            </span>
-          </div>
+          <span>
+            Catalog number
+          </span>
         </div>
       </div>
+    </div>
+    <div
+      className="column"
+      style={
+        Object {
+          "width": 250,
+        }
+      }
+    >
       <div
-        className="ui fitted divider"
-      />
+        className="ui small header"
+        onClick={[Function]}
+      >
+        <div
+          className="content"
+        >
+          <span>
+            Taxon (curatorial name)
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="column"
+      style={
+        Object {
+          "width": 150,
+        }
+      }
+    >
+      <div
+        className="ui small header"
+        onClick={[Function]}
+      >
+        <div
+          className="content"
+        >
+          <span>
+            Family
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="column"
+      style={
+        Object {
+          "width": 150,
+        }
+      }
+    >
+      <div
+        className="ui small header"
+        onClick={[Function]}
+      >
+        <div
+          className="content"
+        >
+          <span>
+            Genus
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="column"
+      style={
+        Object {
+          "width": 150,
+        }
+      }
+    >
+      <div
+        className="ui small header"
+        onClick={[Function]}
+      >
+        <div
+          className="content"
+        >
+          <span>
+            Species
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="column"
+      style={
+        Object {
+          "width": 150,
+        }
+      }
+    >
+      <div
+        className="ui small header"
+        onClick={[Function]}
+      >
+        <div
+          className="content"
+        >
+          <span>
+            Subspecies
+          </span>
+        </div>
+      </div>
     </div>
   </div>
+  <div
+    className="ui fitted divider"
+  />
 </div>
 `;

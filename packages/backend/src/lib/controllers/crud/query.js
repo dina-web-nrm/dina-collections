@@ -38,6 +38,7 @@ module.exports = function queryController({
             query,
             scroll,
             scrollId,
+            sort: sortInput,
           },
         },
       },
@@ -59,6 +60,7 @@ module.exports = function queryController({
         selectableFields,
         serviceInteractor,
         sortableFields,
+        sortInput,
       })
       .then(({ items, meta }) => {
         return createArrayResponse({

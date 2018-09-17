@@ -73,6 +73,7 @@ const test = {
   runApiTests: false,
   runBatchTests: false,
   runDbTests: false,
+  runMemwatch: readBoolKey('RUN_MEMWATCH'),
   testApiUrl: '',
   testAuthUrl: '',
   testPassword: '',

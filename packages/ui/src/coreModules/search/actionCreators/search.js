@@ -9,6 +9,7 @@ export default function search(
     limit = 100000,
     query,
     resource,
+    sort,
     storeSearchResult = false,
   } = {}
 ) {
@@ -33,6 +34,7 @@ export default function search(
         includeFields,
         limit,
         query,
+        sort,
         throwError: true,
       })
     ).then(items => {

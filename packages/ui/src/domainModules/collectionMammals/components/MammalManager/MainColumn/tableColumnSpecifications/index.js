@@ -1,7 +1,7 @@
 const tableColumnSpecifications = [
   {
     name: 'identifiersCatalogNumber',
-    width: 150,
+    width: 180,
   },
   {
     name: 'taxonomyCuratorialName',

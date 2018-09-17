@@ -5,16 +5,8 @@ import { action } from '@storybook/addon-actions' // eslint-disable-line
 import { storiesOf } from '@storybook/react' // eslint-disable-line
 
 import InfiniteTableHeader from './InfiniteTableHeader'
-// import tableColumnSpecifications from '../tableColumnSpecifications'
 
-// export const actions = {
-//   onExportCsv: action('onExportCsv'),
-//   onFormTabClick: action('onFormTabClick'),
-//   onSettingClick: action('onSettingClick'),
-//   onTableTabClick: action('onTableTabClick'),
-// }
-
-export const tableColumnsToShow = [
+const tableColumnsToShow = [
   'catalogNumber',
   'family',
   'genus',
@@ -38,15 +30,19 @@ export const tableColumnsToShow = [
   'taxonomySubspecies',
 ]
 
+const tableColumnsToSort = [{ name: 'identifiersCatalogNumber', sort: 'asc' }]
+
 storiesOf(
   'domainModules/collectionMammals/MammalManager/ResultTableView/InfiniteTableHeader',
   module
 )
-  .addDecorator(createStoryDecorator())
+  .addDecorator(createStoryDecorator({ wrap: false }))
   .add('default', () => (
     <InfiniteTableHeader
       height={43}
+      onSaveTableColumnsToSort={action('sort-dsc')}
       tableColumnsToShow={tableColumnsToShow}
+      tableColumnsToSort={tableColumnsToSort}
       topOffset={141}
       width={800}
     />
