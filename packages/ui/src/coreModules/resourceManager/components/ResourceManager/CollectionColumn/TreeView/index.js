@@ -8,6 +8,7 @@ import { buildList } from 'coreModules/resourceManager/utilities'
 
 import crudSelectors from 'coreModules/crud/globalSelectors'
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
+import { emToPixels } from 'coreModules/layout/utilities'
 
 import ListItem from './ListItem'
 
@@ -120,7 +121,7 @@ class TreeView extends Component {
     if (!(listItems && listItems.length)) {
       return (
         <Grid padded>
-          <Grid.Row style={{ height: 43 }}>
+          <Grid.Row style={{ height: emToPixels(3.5) }}>
             <Grid.Column style={{ paddingTop: 60, width: 150 }}>
               <Dimmer active inverted>
                 <Loader content="Loading" inverted />

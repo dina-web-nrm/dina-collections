@@ -5,6 +5,7 @@ import ReactList from 'react-list'
 import { Dimmer, Grid, Loader } from 'semantic-ui-react'
 
 import { createBatchFetchItems } from 'coreModules/crud/higherOrderComponents'
+import { emToPixels } from 'coreModules/layout/utilities'
 import InfiniteTableRow from './InfiniteTableRow'
 
 const propTypes = {
@@ -98,7 +99,7 @@ export class InfiniteTable extends Component {
     if (!(listItems && listItems)) {
       return (
         <Grid padded>
-          <Grid.Row style={{ height: 43, width }}>
+          <Grid.Row style={{ height: emToPixels(3.5), width }}>
             <Grid.Column style={{ paddingTop: 60, width: 150 }}>
               <Dimmer active inverted>
                 <Loader content="Loading" inverted />

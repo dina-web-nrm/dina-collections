@@ -66,6 +66,7 @@ class BottomBar extends PureComponent {
             disabled={invalid}
             loading={this.state.loading}
             onClick={this.handleSubmit}
+            size="large"
             style={{ float: 'left' }}
           >
             Search
@@ -74,6 +75,7 @@ class BottomBar extends PureComponent {
             basic
             disabled={!isDirty}
             onClick={this.handleReset}
+            size="large"
             style={{ float: 'right' }}
           >
             Reset

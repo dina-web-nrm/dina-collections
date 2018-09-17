@@ -5,6 +5,7 @@ import { formValueSelector as formValueSelectorFactory } from 'redux-form'
 
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import { SPECIMEN_FILTERS_FORM_NAME } from '../../../constants'
 import BottomBar from './BottomBar'
@@ -19,13 +20,13 @@ const main = {
 }
 
 const header = {
-  height: '50px',
+  height: emToPixels(4.25),
   key: 'header',
   renderRow: () => <ColumnRowHeader text="Find records" />,
 }
 
 const bottomBar = {
-  height: '60px',
+  height: emToPixels(4.625),
   key: 'bottomBar',
   renderRow: props => <BottomBar {...props} />,
 }
@@ -42,7 +43,7 @@ class FilterColumn extends PureComponent {
 
     return (
       <RowLayout
-        availableHeight={windowHeight - 40}
+        availableHeight={windowHeight - emToPixels(3.4375)}
         form={SPECIMEN_FILTERS_FORM_NAME}
         formValueSelector={formValueSelector}
         rows={rows}

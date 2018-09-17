@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { injectWindowHeight } from 'coreModules/size/higherOrderComponents'
 import userSelectors from 'coreModules/user/globalSelectors'
 import { updateUserPreference } from 'coreModules/user/actionCreators'
@@ -40,10 +41,14 @@ const infiniteTable = {
 }
 
 const infiniteTableHeader = {
-  height: '43px',
+  height: emToPixels(3.5),
   key: 'infiniteTableHeader',
   renderRow: props => (
-    <InfiniteTableHeader {...props} height={43} topOffset={141} />
+    <InfiniteTableHeader
+      {...props}
+      height={emToPixels(3.5)}
+      topOffset={emToPixels(11.1875)}
+    />
   ),
   style: { borderBottom: '1px solid #b5b5b5' },
 }

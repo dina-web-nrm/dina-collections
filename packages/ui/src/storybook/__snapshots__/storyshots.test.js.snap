@@ -1854,7 +1854,7 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap Default 1`] = `
             className="ui fluid dina background"
             style={
               Object {
-                "height": "768px",
+                "height": 768,
                 "overflow": "auto",
               }
             }
@@ -1946,7 +1946,7 @@ exports[`storyshots Storyshots coreModules/layout/ViewWrap With TopMenu 1`] = `
             className="ui fluid dina background"
             style={
               Object {
-                "height": "728px",
+                "height": 713,
                 "overflow": "auto",
               }
             }
@@ -4136,7 +4136,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui top attached tabular menu"
   >
     <a
-      className="disabled item"
+      className="item"
       onClick={[Function]}
     >
       <i
@@ -4204,7 +4204,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui top attached tabular menu"
   >
     <a
-      className="disabled item"
+      className="item"
       onClick={[Function]}
     >
       <i
@@ -4281,7 +4281,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       />
     </a>
     <a
-      className="disabled item"
+      className="item"
       onClick={[Function]}
     >
       <i
@@ -4340,10 +4340,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
     className="ui padded left aligned middle aligned grid"
     style={
       Object {
-        "height": 43,
+        "height": 56,
         "left": -0,
         "position": "absolute",
-        "top": 141,
+        "top": 179,
         "width": 800,
       }
     }
@@ -4493,8 +4493,5 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
       </div>
     </div>
   </div>
-  <div
-    className="ui fitted divider"
-  />
 </div>
 `;

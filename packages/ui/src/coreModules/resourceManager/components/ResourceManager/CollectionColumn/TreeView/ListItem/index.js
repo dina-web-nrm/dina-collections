@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Dimmer, Grid, Icon, Loader } from 'semantic-ui-react'
+
 import { createGetNestedItemById } from 'coreModules/crud/higherOrderComponents'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderComponents'
 
 const propTypes = {
@@ -49,7 +51,7 @@ class ListItem extends Component {
 
     if (!itemLoaded) {
       return (
-        <Grid.Row style={{ height: 43 }}>
+        <Grid.Row style={{ height: emToPixels(3.5) }}>
           <Grid.Column
             key="rowNumber"
             style={{
@@ -73,7 +75,7 @@ class ListItem extends Component {
           event.preventDefault()
           onClickRow(null, itemId)
         }}
-        style={{ background, height: 43 }}
+        style={{ background, height: emToPixels(3.5) }}
       >
         <Grid.Column
           key="rowNumber"

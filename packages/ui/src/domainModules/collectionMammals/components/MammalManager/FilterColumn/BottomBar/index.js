@@ -54,11 +54,17 @@ class BottomBar extends PureComponent {
               disabled={invalid}
               loading={this.state.loading}
               onClick={this.handleSearch}
+              size="large"
               style={{ float: 'left' }}
             >
               Search
             </Button>
-            <Button basic onClick={handleReset} style={{ float: 'right' }}>
+            <Button
+              basic
+              onClick={handleReset}
+              size="large"
+              style={{ float: 'right' }}
+            >
               Clear all filters
             </Button>
           </Grid.Column>

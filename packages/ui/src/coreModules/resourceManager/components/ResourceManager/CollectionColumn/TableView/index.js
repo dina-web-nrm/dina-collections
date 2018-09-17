@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import InfiniteTableHeader from './InfiniteTableHeader'
 import InfiniteTable from './InfiniteTable'
 
@@ -16,7 +18,7 @@ const defaultProps = {
 }
 const rows = [
   {
-    height: '43px',
+    height: emToPixels(3.5),
     key: 'infiniteTableHeader',
     style: { borderBottom: '1px solid #b5b5b5' },
   },
@@ -39,7 +41,7 @@ class ResultTableView extends PureComponent {
       case 'infiniteTableHeader': {
         return (
           <InfiniteTableHeader
-            height={43}
+            height={emToPixels(3.5)}
             resource={resource}
             tableColumnSpecifications={tableColumnSpecifications}
             width={width}

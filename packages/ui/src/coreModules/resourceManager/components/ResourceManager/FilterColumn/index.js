@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 import { RowLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { CLOSE_ITEM_VIEW } from 'coreModules/resourceManager/constants'
 import { ColumnRowHeader } from 'coreModules/commonUi/components'
 import extractProps from 'utilities/extractProps'
@@ -19,14 +21,14 @@ const defaultProps = {
 }
 const rows = [
   {
-    height: '50px',
+    height: emToPixels(4.25),
     key: 'header',
   },
   {
     key: 'filterForm',
   },
   {
-    height: '60px',
+    height: emToPixels(4.625),
     key: 'bottomBar',
   },
 ]

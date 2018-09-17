@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Divider, Grid, Header } from 'semantic-ui-react'
+import { Grid, Header } from 'semantic-ui-react'
 import { Translate } from 'coreModules/i18n/components'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 
 const propTypes = {
-  height: PropTypes.number.isRequired,
+  height: PropTypes.string.isRequired,
   scrollLeft: PropTypes.number,
   tableColumnSpecifications: PropTypes.array.isRequired,
   width: PropTypes.number.isRequired,
@@ -44,7 +44,6 @@ class InfiniteTableHeader extends PureComponent {
             )
           })}
         </Grid>
-        <Divider fitted />
       </React.Fragment>
     )
   }

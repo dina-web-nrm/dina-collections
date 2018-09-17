@@ -10,6 +10,7 @@ import objectPath from 'object-path'
 
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout, InformationSidebar } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import layoutSelectors from 'coreModules/layout/globalSelectors'
 import userSelectors from 'coreModules/user/globalSelectors'
 import {
@@ -40,7 +41,7 @@ const main = {
 const secondaryColumnStyle = { borderLeft: '1px solid #D4D4D5', zIndex: 100 }
 
 const createFilter = createSelector(
-  (width = '300px') => width,
+  (width = emToPixels(25)) => width,
   width => {
     return {
       key: 'filter',
@@ -213,7 +214,7 @@ const defaultProps = {
   currentTableRowNumber: 1,
   filterValues: undefined,
   focusedSpecimenId: undefined,
-  rightSidebarWidth: 300,
+  rightSidebarWidth: emToPixels(25),
   searchResult: undefined,
   tableColumnsToSort: undefined,
   totalNumberOfRecords: 0,
