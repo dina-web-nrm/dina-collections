@@ -1,12 +1,14 @@
 const createArrayResponse = require('../utilities/transformations/createArrayResponse')
 const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
 const extractRelationships = require('../utilities/relationships/extractRelationships')
-const getAncestors = require('../utilities/getAncestors')
+const applyInterceptors = require('../utilities/applyInterceptors')
+const createInterceptors = require('../utilities/createInterceptors')
 
 module.exports = function getMany({ operation, models, serviceInteractor }) {
   const {
     filterSpecification,
     includeRelations,
+    interceptors: customInterceptors,
     relations,
     resource,
     selectableFields,
@@ -29,84 +31,103 @@ module.exports = function getMany({ operation, models, serviceInteractor }) {
     throw new Error(`Model missing required method: getById for ${resource}`)
   }
 
-  return ({ request }) => {
-    const {
-      queryParams: {
-        excludeFields: excludeFieldsInput,
-        filter: filterInput,
-        includeFields: includeFieldsInput,
-        limit = 10,
-        offset = 0,
-        relationships: queryParamRelationshipsInput = '',
-        sort: sortInput,
-      } = {},
-    } = request
+  const interceptors = createInterceptors({
+    customInterceptors,
+    filterSpecification,
+  })
 
-    const fetchAncestors =
-      filterInput && filterInput.ancestorsToId !== undefined
-    const queryParamRelationships = fetchAncestors
-      ? 'parent'
-      : queryParamRelationshipsInput
+  return ({ request: originalRequest }) => {
+    return applyInterceptors({
+      interceptors,
+      model,
+      models,
+      operation,
+      request: originalRequest,
+      serviceInteractor,
+    })
+      .then(
+        ({
+          request,
+          items: itemsFromInterceptors,
+          meta: metaFromInterceptors,
+        }) => {
+          if (itemsFromInterceptors) {
+            return Promise.resolve({
+              items: itemsFromInterceptors,
+              meta: metaFromInterceptors,
+              request,
+            })
+          }
+          const {
+            queryParams: {
+              excludeFields: excludeFieldsInput,
+              filter: filterInput,
+              includeFields: includeFieldsInput,
+              limit = 10,
+              offset = 0,
+              relationships: queryParamRelationships = '',
+              sort: sortInput,
+            } = {},
+          } = request
 
-    let include
-    if (
-      relations &&
-      includeRelations &&
-      (queryParamRelationships || fetchAncestors)
-    ) {
-      include = buildIncludeArray({
-        models,
-        queryParamRelationships,
-        relations,
-      })
-    }
-    let promise
-    if (fetchAncestors) {
-      promise = getAncestors({
-        id: filterInput.ancestorsToId,
-        include,
-        includeRelations,
-        model,
-        queryParamRelationships: 'parent',
-        relations,
-      })
-    } else {
-      promise = model.getWhere({
-        excludeFieldsInput,
-        filterInput,
-        filterSpecification,
-        include,
-        includeFieldsInput,
-        limit,
-        offset,
-        selectableFields,
-        serviceInteractor,
-        sortableFields,
-        sortInput,
-      })
-    }
-    return promise.then(({ items, meta } = {}) => {
-      return createArrayResponse({
-        items: items.map(item => {
-          const relationships =
-            includeRelations &&
-            extractRelationships({
-              item,
+          let include
+          if (relations && includeRelations) {
+            include = buildIncludeArray({
+              models,
               queryParamRelationships,
               relations,
             })
-          if (!relationships || fetchAncestors) {
-            return item
           }
 
-          return {
-            ...item,
-            relationships,
-          }
-        }),
-        meta,
-        type: resource,
+          return model
+            .getWhere({
+              excludeFieldsInput,
+              filterInput,
+              filterSpecification,
+              include,
+              includeFieldsInput,
+              limit,
+              offset,
+              selectableFields,
+              serviceInteractor,
+              sortableFields,
+              sortInput,
+            })
+            .then(({ items, meta } = {}) => {
+              return {
+                items,
+                meta,
+                request,
+              }
+            })
+        }
+      )
+      .then(({ items, meta, request }) => {
+        const {
+          queryParams: { relationships: queryParamRelationships = '' } = {},
+        } = request
+
+        return createArrayResponse({
+          items: items.map(item => {
+            const relationships =
+              includeRelations &&
+              extractRelationships({
+                item,
+                queryParamRelationships,
+                relations,
+              })
+            if (!relationships) {
+              return item
+            }
+
+            return {
+              ...item,
+              relationships,
+            }
+          }),
+          meta,
+          type: resource,
+        })
       })
-    })
   }
 }

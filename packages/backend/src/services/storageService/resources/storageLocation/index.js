@@ -16,6 +16,10 @@ const {
   update: updatePostHooks,
 } = require('./data/postHooks')
 
+const {
+  updateRelationshipParent: updateRelationshipParentPreHooks,
+} = require('./data/preHooks')
+
 module.exports = {
   basePath: '/api/storage/v01',
   model: {
@@ -73,6 +77,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      preHooks: updateRelationshipParentPreHooks,
       relationKey: 'parent',
       type: 'updateRelationship',
     },

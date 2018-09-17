@@ -55,7 +55,9 @@ describe('formatObject/relationships/utilities/resolveByPath/getRelationshipItem
       expect.assertions(3)
       return getItemPromiseFromRawItem({ id: '123' }).then(res => {
         expect(getItemByTypeId).toHaveBeenCalledTimes(1)
-        expect(getItemByTypeId).toHaveBeenCalledWith('agent', '123')
+        expect(getItemByTypeId).toHaveBeenCalledWith('agent', '123', {
+          relationshipKey: undefined,
+        })
         expect(res).toEqual('agent-123')
       })
     })

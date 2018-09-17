@@ -14,11 +14,37 @@ export default function createNestedItem({
   resource,
   storeResult = true,
 }) {
+  const parentRelationships = relationships.includes('all')
+    ? []
+    : relationships.filter(relationship => {
+        if (relationship === 'children') {
+          return false
+        }
+        return true
+      })
+
+  const childrenRelationships = relationships.includes('all')
+    ? []
+    : relationships.filter(relationship => {
+        if (relationship === 'parent') {
+          return false
+        }
+        return true
+      })
+
   return (dispatch, getState) => {
     const state = getState()
-    const getItemByTypeId = (type, id) => {
+    const getItemByTypeId = (type, id, { relationshipKey } = {}) => {
       if (!resolveRelationships.includes(type)) {
         return null
+      }
+
+      let getItemByTypeRelationships = relationships
+      if (relationshipKey === 'parent') {
+        getItemByTypeRelationships = parentRelationships
+      }
+      if (relationshipKey === 'children') {
+        getItemByTypeRelationships = childrenRelationships
       }
 
       const getOneSelector = crudSelectors[type] && crudSelectors[type].getOne
@@ -36,7 +62,7 @@ export default function createNestedItem({
 
       const itemWithRelationships = getItemWithSpecificedRelationships({
         item: dependencyItem,
-        relationshipKeys: relationships,
+        relationshipKeys: getItemByTypeRelationships,
       })
 
       if (!itemWithRelationships) {

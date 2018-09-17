@@ -7,6 +7,12 @@ module.exports = {
     inverseOperationId: {
       type: 'string',
     },
+    postHooks: {
+      type: 'array',
+    },
+    preHooks: {
+      type: 'array',
+    },
     relationKey: {
       type: 'string',
     },

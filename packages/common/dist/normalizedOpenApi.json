@@ -5789,6 +5789,15 @@
           },
           {
             "in": "query",
+            "name": "filter[nodesWithCircularDependencies]",
+            "description": "Find nodes with circularDependencies",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[name]",
             "description": "Filter by name match",
             "required": false,
@@ -6396,7 +6405,7 @@
         ]
       },
       "patch": {
-        "description": "NOTE: Use endpoint with operationId \"taxonNameUpdateRelationshipParent\" instead. This endpoint is not active.",
+        "description": "NOTE: Use endpoint with operationId \"placeUpdateRelationshipParent\" instead. This endpoint is not active.",
         "operationId": "placeUpdateRelationshipChildren",
         "parameters": [
           {
@@ -6471,7 +6480,7 @@
         "tags": [
           "placeService"
         ],
-        "x-inverseOperationId": "taxonNameUpdateRelationshipParent"
+        "x-inverseOperationId": "placeUpdateRelationshipParent"
       }
     },
     "/api/locality/v01/places/{id}/relationships/parent": {
@@ -15137,6 +15146,15 @@
           },
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[id]",
             "description": "Filter by id",
             "required": false,
@@ -15158,21 +15176,20 @@
           },
           {
             "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
-            "required": false,
-            "schema": {
-              "format": "date-time",
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
             "name": "filter[nameSearch]",
             "description": "Filter by string search, example swe",
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[nodesWithCircularDependencies]",
+            "description": "Find nodes with circularDependencies",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           },
           {
@@ -15186,10 +15203,11 @@
           },
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
             "required": false,
             "schema": {
+              "format": "date-time",
               "type": "string"
             }
           },
@@ -16183,6 +16201,15 @@
           },
           {
             "in": "query",
+            "name": "filter[group]",
+            "description": "Filter by group",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[id]",
             "description": "Filter by id",
             "required": false,
@@ -16204,12 +16231,20 @@
           },
           {
             "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
+            "name": "filter[name]",
+            "description": "Filter by name match",
             "required": false,
             "schema": {
-              "format": "date-time",
               "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[nodesWithCircularDependencies]",
+            "description": "Find nodes with circularDependencies",
+            "required": false,
+            "schema": {
+              "type": "boolean"
             }
           },
           {
@@ -16223,19 +16258,11 @@
           },
           {
             "in": "query",
-            "name": "filter[group]",
-            "description": "Filter by group",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
             "required": false,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "in": "query",
-            "name": "filter[name]",
-            "description": "Filter by name match",
-            "required": false,
-            "schema": {
+              "format": "date-time",
               "type": "string"
             }
           },

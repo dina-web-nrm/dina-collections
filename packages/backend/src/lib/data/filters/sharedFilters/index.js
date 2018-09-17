@@ -1,4 +1,5 @@
 exports.ancestorsToId = require('./ancestorsToId')
+exports.nodesWithCircularDependencies = require('./nodesWithCircularDependencies')
 exports.deactivated = require('./deactivated')
 exports.group = require('./group')
 exports.id = require('./id')

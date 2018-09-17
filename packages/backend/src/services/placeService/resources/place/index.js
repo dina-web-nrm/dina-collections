@@ -16,6 +16,10 @@ const {
   update: updatePostHooks,
 } = require('./data/postHooks')
 
+const {
+  updateRelationshipParent: updateRelationshipParentPreHooks,
+} = require('./data/preHooks')
+
 module.exports = {
   basePath: '/api/locality/v01',
   model: {
@@ -66,7 +70,7 @@ module.exports = {
       inverseOperationId: buildOperationId({
         operationType: 'updateRelationship',
         relationKey: 'parent',
-        resource: 'taxonName',
+        resource: 'place',
       }),
       relationKey: 'children',
       type: 'updateRelationship',
@@ -76,6 +80,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      preHooks: updateRelationshipParentPreHooks,
       relationKey: 'parent',
       type: 'updateRelationship',
     },

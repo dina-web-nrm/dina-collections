@@ -16,6 +16,10 @@ const {
   query: queryFilterSpecification,
 } = require('./data/filterSpecifications')
 
+const {
+  updateRelationshipParent: updateRelationshipParentPreHooks,
+} = require('./data/preHooks')
+
 module.exports = {
   basePath: '/api/taxonomy/v01',
   model: {
@@ -56,6 +60,7 @@ module.exports = {
       type: 'getRelationship',
     },
     {
+      preHooks: updateRelationshipParentPreHooks,
       relationKey: 'parent',
       type: 'updateRelationship',
     },

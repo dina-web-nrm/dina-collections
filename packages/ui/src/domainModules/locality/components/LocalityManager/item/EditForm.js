@@ -87,9 +87,12 @@ Edit.defaultProps = defaultProps
 export default compose(
   createGetNestedItemById({
     include: ['parent'],
-    relationships: ['all'],
-    resolveRelationships: ['parent'],
+    namespace: 'edit',
+    refresh: true,
+    relationships: ['parent'],
+    resolveRelationships: ['place'],
     resource: 'place',
+    shouldFetch: true,
   }),
   connect(mapStateToProps, mapDispatchToProps)
 )(Edit)
