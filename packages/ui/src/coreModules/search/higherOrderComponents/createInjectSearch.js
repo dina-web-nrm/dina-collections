@@ -62,6 +62,7 @@ const createInjectSearch = (
         limit,
         query,
         resource: resourceInput,
+        sort,
       } = {}
     ) {
       const { resource: propResource } = this.props
@@ -73,6 +74,7 @@ const createInjectSearch = (
         limit,
         query,
         resource: resourceInput || propResource || resource,
+        sort,
         storeSearchResult,
       })
     }

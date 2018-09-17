@@ -8,6 +8,7 @@ export default function createCallParams({
   query,
   scroll,
   scrollId,
+  sort,
 }) {
   return {
     ...options,
@@ -22,6 +23,7 @@ export default function createCallParams({
           query,
           scroll,
           scrollId,
+          sort,
         },
       },
     },

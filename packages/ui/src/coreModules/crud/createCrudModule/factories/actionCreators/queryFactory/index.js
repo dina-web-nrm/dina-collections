@@ -42,6 +42,7 @@ export default function queryAcFactory(
       limit = 1000,
       offset = 0,
       query,
+      sort,
       throwError = false,
     } = {}
   ) {
@@ -55,6 +56,7 @@ export default function queryAcFactory(
       offset,
       query,
       scroll,
+      sort,
     })
 
     return (dispatch, getState, { apiClient }) => {
@@ -67,6 +69,7 @@ export default function queryAcFactory(
         options,
         query,
         scroll,
+        sort,
       })
       dispatch({
         meta: callParams,
