@@ -1,0 +1,6 @@
+{
+  "additionalProperties": true,
+  "x-internal": true,
+  "properties": {},
+  "type": "object"
+}

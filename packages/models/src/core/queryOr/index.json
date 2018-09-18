@@ -1,0 +1,10 @@
+{
+  "additionalProperties": true,
+  "x-internal": true,
+  "properties": {
+    "items": {
+      "$ref": "__ROOT__queryNode"
+    }
+  },
+  "type": "array"
+}

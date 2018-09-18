@@ -12,7 +12,7 @@ module.exports = function buildRequest({ request }) {
         },
       },
     },
-    description: 'successful operation',
+    description: request.description || 'successful operation',
   }
   return interpolate(requestBody, '__ROOT__', '#/components/schemas/')
 }

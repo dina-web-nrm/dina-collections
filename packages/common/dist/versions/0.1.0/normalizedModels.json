@@ -348,6 +348,115 @@
     "x-summary": "",
     "id": "position"
   },
+  "queryAggregation": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "aggregationFunction": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "options": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryAggregation"
+  },
+  "queryAnd": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "items": {
+        "$ref": "queryNode",
+        "x-summary": ""
+      }
+    },
+    "type": "array",
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryAnd"
+  },
+  "queryFilter": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {},
+    "type": "object",
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryFilter"
+  },
+  "queryNode": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "and": {
+        "$ref": "queryAnd",
+        "x-summary": ""
+      },
+      "or": {
+        "$ref": "queryOr",
+        "x-summary": ""
+      },
+      "filter": {
+        "$ref": "queryFilter",
+        "x-summary": ""
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryNode"
+  },
+  "queryOr": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "items": {
+        "$ref": "queryNode",
+        "x-summary": ""
+      }
+    },
+    "type": "array",
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryOr"
+  },
+  "queryRoot": {
+    "additionalProperties": true,
+    "x-internal": true,
+    "properties": {
+      "and": {
+        "$ref": "queryAnd",
+        "x-summary": ""
+      },
+      "or": {
+        "$ref": "queryOr",
+        "x-summary": ""
+      },
+      "filter": {
+        "$ref": "queryFilter",
+        "x-summary": ""
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "queryRoot"
+  },
   "readOnly": {
     "additionalProperties": true,
     "properties": {},
@@ -19416,70 +19525,81 @@
     ],
     "properties": {
       "data": {
-        "oneOf": [
-          {
-            "type": "null"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
           },
-          {
-            "type": "object",
-            "additionalProperties": false,
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
             "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "customObject",
-                "enum": [
-                  "customObject"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "relationships": {
-                "properties": {
-                  "user": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "user"
-                                ],
-                                "example": "user",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  }
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
                 },
-                "type": "object"
+                "type": "array"
+              },
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.agentType",
+                    "attributes.fullName"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.agentType",
+                    "attributes.fullName"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
               }
             }
           }
-        ],
+        },
         "x-summary": ""
       }
     },
-    "x-examples": {},
     "x-summary": "",
     "description": ""
   },
@@ -20855,96 +20975,81 @@
     ],
     "properties": {
       "data": {
-        "oneOf": [
-          {
-            "type": "null"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
           },
-          {
-            "type": "object",
-            "additionalProperties": false,
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
             "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "customObject",
-                "enum": [
-                  "customObject"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "relationships": {
-                "properties": {
-                  "parent": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "place"
-                                ],
-                                "example": "place",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "children": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "place"
-                              ],
-                              "example": "place",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  }
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
                 },
-                "type": "object"
+                "type": "array"
+              },
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.name",
+                    "attributes.group"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.name",
+                    "attributes.group"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
               }
             }
           }
-        ],
+        },
         "x-summary": ""
       }
     },
-    "x-examples": {},
     "x-summary": "",
     "description": ""
   },
@@ -21290,35 +21395,252 @@
     ],
     "properties": {
       "data": {
-        "oneOf": [
-          {
-            "type": "null"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
           },
-          {
-            "type": "object",
-            "additionalProperties": false,
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
             "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
+                },
+                "type": "array"
               },
-              "type": {
-                "default": "customObject",
-                "enum": [
-                  "customObject"
-                ],
-                "type": "string"
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "attributes.searchOnlyFields.searchAge",
+                    "attributes.searchOnlyFields.searchDate",
+                    "attributes.searchOnlyFields.lengthObject",
+                    "attributes.searchOnlyFields.weightObject",
+                    "attributes.tags.agentTags",
+                    "attributes.tags.ageStageTags",
+                    "attributes.tags.boneTags",
+                    "attributes.tags.conditionTags",
+                    "attributes.tags.dateTags",
+                    "attributes.tags.identifierTags",
+                    "attributes.tags.lengthTags",
+                    "attributes.tags.locationTags",
+                    "attributes.tags.placeIdTags",
+                    "attributes.tags.sexTags",
+                    "attributes.tags.skeletonTags",
+                    "attributes.tags.skinTags",
+                    "attributes.tags.storageLocationTags",
+                    "attributes.tags.taxonomyTags",
+                    "attributes.tags.weightTags",
+                    "attributes.tags.wetPreparationTags",
+                    "attributes.collectingEventCollectors",
+                    "attributes.collectingEventCountry",
+                    "attributes.collectingEventDistrict",
+                    "attributes.collectingEventEndDate",
+                    "attributes.collectingEventLocality",
+                    "attributes.collectingEventProvince",
+                    "attributes.collectingEventStartDate",
+                    "attributes.deathInformationDeath",
+                    "attributes.featureAge",
+                    "attributes.featureAgeStage",
+                    "attributes.featureBodyLength",
+                    "attributes.featureCompleteBodyWeight",
+                    "attributes.featureCondition",
+                    "attributes.featureSex",
+                    "attributes.featureTotalLength",
+                    "id",
+                    "attributes.identifiersCatalogNumber",
+                    "attributes.identifiersOtherIdentifiers",
+                    "attributes.idNumeric",
+                    "attributes.originInformationLocality",
+                    "attributes.physicalUnitOtherPreparation",
+                    "attributes.physicalUnitSkeleton",
+                    "attributes.physicalUnitSkin",
+                    "attributes.physicalUnitWetPreparation",
+                    "attributes.recordEventCataloged",
+                    "attributes.recordEventLastModified",
+                    "attributes.recordEventRegistered",
+                    "attributes.taxonomyCuratorialName",
+                    "attributes.taxonomyFamily",
+                    "attributes.taxonomyGenus",
+                    "attributes.taxonomySpecies",
+                    "attributes.taxonomySubspecies"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
               },
-              "attributes": {
-                "$ref": "customObject"
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "attributes.searchOnlyFields.searchAge",
+                    "attributes.searchOnlyFields.searchDate",
+                    "attributes.searchOnlyFields.lengthObject",
+                    "attributes.searchOnlyFields.weightObject",
+                    "attributes.tags.agentTags",
+                    "attributes.tags.ageStageTags",
+                    "attributes.tags.boneTags",
+                    "attributes.tags.conditionTags",
+                    "attributes.tags.dateTags",
+                    "attributes.tags.identifierTags",
+                    "attributes.tags.lengthTags",
+                    "attributes.tags.locationTags",
+                    "attributes.tags.placeIdTags",
+                    "attributes.tags.sexTags",
+                    "attributes.tags.skeletonTags",
+                    "attributes.tags.skinTags",
+                    "attributes.tags.storageLocationTags",
+                    "attributes.tags.taxonomyTags",
+                    "attributes.tags.weightTags",
+                    "attributes.tags.wetPreparationTags",
+                    "attributes.collectingEventCollectors",
+                    "attributes.collectingEventCountry",
+                    "attributes.collectingEventDistrict",
+                    "attributes.collectingEventEndDate",
+                    "attributes.collectingEventLocality",
+                    "attributes.collectingEventProvince",
+                    "attributes.collectingEventStartDate",
+                    "attributes.deathInformationDeath",
+                    "attributes.featureAge",
+                    "attributes.featureAgeStage",
+                    "attributes.featureBodyLength",
+                    "attributes.featureCompleteBodyWeight",
+                    "attributes.featureCondition",
+                    "attributes.featureSex",
+                    "attributes.featureTotalLength",
+                    "id",
+                    "attributes.identifiersCatalogNumber",
+                    "attributes.identifiersOtherIdentifiers",
+                    "attributes.idNumeric",
+                    "attributes.originInformationLocality",
+                    "attributes.physicalUnitOtherPreparation",
+                    "attributes.physicalUnitSkeleton",
+                    "attributes.physicalUnitSkin",
+                    "attributes.physicalUnitWetPreparation",
+                    "attributes.recordEventCataloged",
+                    "attributes.recordEventLastModified",
+                    "attributes.recordEventRegistered",
+                    "attributes.taxonomyCuratorialName",
+                    "attributes.taxonomyFamily",
+                    "attributes.taxonomyGenus",
+                    "attributes.taxonomySpecies",
+                    "attributes.taxonomySubspecies"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
+              },
+              "sort": {
+                "description": "When provided response will be sorted",
+                "items": {
+                  "enum": [
+                    "attributes.collectingEventCollectors:asc",
+                    "attributes.collectingEventCollectors:desc",
+                    "attributes.collectingEventCountry:asc",
+                    "attributes.collectingEventCountry:desc",
+                    "attributes.collectingEventDistrict:asc",
+                    "attributes.collectingEventDistrict:desc",
+                    "attributes.collectingEventEndDate:asc",
+                    "attributes.collectingEventEndDate:desc",
+                    "attributes.collectingEventLocality:asc",
+                    "attributes.collectingEventLocality:desc",
+                    "attributes.collectingEventProvince:asc",
+                    "attributes.collectingEventProvince:desc",
+                    "attributes.collectingEventStartDate:asc",
+                    "attributes.collectingEventStartDate:desc",
+                    "attributes.deathInformationDeath:asc",
+                    "attributes.deathInformationDeath:desc",
+                    "attributes.featureAge:asc",
+                    "attributes.featureAge:desc",
+                    "attributes.featureAgeStage:asc",
+                    "attributes.featureAgeStage:desc",
+                    "attributes.featureBodyLength:asc",
+                    "attributes.featureBodyLength:desc",
+                    "attributes.featureCompleteBodyWeight:asc",
+                    "attributes.featureCompleteBodyWeight:desc",
+                    "attributes.featureCondition:asc",
+                    "attributes.featureCondition:desc",
+                    "attributes.featureSex:asc",
+                    "attributes.featureSex:desc",
+                    "attributes.featureTotalLength:asc",
+                    "attributes.featureTotalLength:desc",
+                    "id:asc",
+                    "id:desc",
+                    "attributes.identifiersCatalogNumber:asc",
+                    "attributes.identifiersCatalogNumber:desc",
+                    "attributes.identifiersOtherIdentifiers:asc",
+                    "attributes.identifiersOtherIdentifiers:desc",
+                    "attributes.idNumeric:asc",
+                    "attributes.idNumeric:desc",
+                    "attributes.originInformationLocality:asc",
+                    "attributes.originInformationLocality:desc",
+                    "attributes.physicalUnitOtherPreparation:asc",
+                    "attributes.physicalUnitOtherPreparation:desc",
+                    "attributes.physicalUnitSkeleton:asc",
+                    "attributes.physicalUnitSkeleton:desc",
+                    "attributes.physicalUnitSkin:asc",
+                    "attributes.physicalUnitSkin:desc",
+                    "attributes.physicalUnitWetPreparation:asc",
+                    "attributes.physicalUnitWetPreparation:desc",
+                    "attributes.recordEventCataloged:asc",
+                    "attributes.recordEventCataloged:desc",
+                    "attributes.recordEventLastModified:asc",
+                    "attributes.recordEventLastModified:desc",
+                    "attributes.recordEventRegistered:asc",
+                    "attributes.recordEventRegistered:desc",
+                    "attributes.taxonomyCuratorialName:asc",
+                    "attributes.taxonomyCuratorialName:desc",
+                    "attributes.taxonomyFamily:asc",
+                    "attributes.taxonomyFamily:desc",
+                    "attributes.taxonomyGenus:asc",
+                    "attributes.taxonomyGenus:desc",
+                    "attributes.taxonomySpecies:asc",
+                    "attributes.taxonomySpecies:desc",
+                    "attributes.taxonomySubspecies:asc",
+                    "attributes.taxonomySubspecies:desc"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
               }
             }
           }
-        ],
+        },
         "x-summary": ""
       }
     },
-    "x-examples": {},
     "x-summary": "",
     "description": ""
   },
@@ -23904,174 +24226,81 @@
     ],
     "properties": {
       "data": {
-        "oneOf": [
-          {
-            "type": "null"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
           },
-          {
-            "type": "object",
-            "additionalProperties": false,
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
             "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "customObject",
-                "enum": [
-                  "customObject"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "relationships": {
-                "properties": {
-                  "acceptedTaxonNames": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "taxonName"
-                              ],
-                              "example": "taxonName",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "children": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "storageLocation"
-                              ],
-                              "example": "storageLocation",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "parent": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "storageLocation"
-                                ],
-                                "example": "storageLocation",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "physicalObjects": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "physicalObject"
-                              ],
-                              "example": "physicalObject",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "preparationTypes": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "preparationType"
-                              ],
-                              "example": "preparationType",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  }
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
                 },
-                "type": "object"
+                "type": "array"
+              },
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.name",
+                    "attributes.group"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.name",
+                    "attributes.group"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
               }
             }
           }
-        ],
+        },
         "x-summary": ""
       }
     },
-    "x-examples": {},
     "x-summary": "",
     "description": ""
   },
@@ -24557,178 +24786,77 @@
     ],
     "properties": {
       "data": {
-        "oneOf": [
-          {
-            "type": "null"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
           },
-          {
-            "type": "object",
-            "additionalProperties": false,
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
             "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "customObject",
-                "enum": [
-                  "customObject"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "relationships": {
-                "properties": {
-                  "acceptedTaxonName": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxonName"
-                                ],
-                                "example": "taxonName",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "children": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "taxon"
-                              ],
-                              "example": "taxon",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "parent": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxon"
-                                ],
-                                "example": "taxon",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "synonyms": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "taxonName"
-                              ],
-                              "example": "taxonName",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "vernacularNames": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "items": {
-                          "additionalProperties": false,
-                          "properties": {
-                            "id": {
-                              "example": "1234",
-                              "type": "string"
-                            },
-                            "type": {
-                              "enum": [
-                                "taxonName"
-                              ],
-                              "example": "taxonName",
-                              "type": "string"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "type": "array"
-                      }
-                    },
-                    "type": "object"
-                  }
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
                 },
-                "type": "object"
+                "type": "array"
+              },
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "id"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "id"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
               }
             }
           }
-        ],
+        },
         "x-summary": ""
       }
     },
-    "x-examples": {},
     "x-summary": "",
     "description": ""
   },
@@ -25248,130 +25376,81 @@
     ],
     "properties": {
       "data": {
-        "oneOf": [
-          {
-            "type": "null"
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
           },
-          {
-            "type": "object",
-            "additionalProperties": false,
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
             "properties": {
-              "id": {
-                "type": "string",
-                "example": "1234"
-              },
-              "type": {
-                "default": "customObject",
-                "enum": [
-                  "customObject"
-                ],
-                "type": "string"
-              },
-              "attributes": {
-                "$ref": "customObject"
-              },
-              "relationships": {
-                "properties": {
-                  "acceptedToTaxon": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxon"
-                                ],
-                                "example": "taxon",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "synonymToTaxon": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxon"
-                                ],
-                                "example": "taxon",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "vernacularToTaxon": {
-                    "additionalProperties": false,
-                    "properties": {
-                      "data": {
-                        "oneOf": [
-                          {
-                            "additionalProperties": false,
-                            "properties": {
-                              "id": {
-                                "example": "1234",
-                                "type": "string"
-                              },
-                              "type": {
-                                "enum": [
-                                  "taxon"
-                                ],
-                                "example": "taxon",
-                                "type": "string"
-                              }
-                            },
-                            "type": "object"
-                          },
-                          {
-                            "type": "null"
-                          }
-                        ]
-                      }
-                    },
-                    "type": "object"
-                  }
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
                 },
-                "type": "object"
+                "type": "array"
+              },
+              "excludeFields": {
+                "description": "When provided specified fields will be excluded (applied after include)",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.name",
+                    "attributes.rank"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "includeFields": {
+                "description": "When provided only specified fields will be returned in response",
+                "items": {
+                  "enum": [
+                    "id",
+                    "attributes.name",
+                    "attributes.rank"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
               }
             }
           }
-        ],
+        },
         "x-summary": ""
       }
     },
-    "x-examples": {},
     "x-summary": "",
     "description": ""
   },
