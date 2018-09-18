@@ -8,6 +8,7 @@ module.exports = function importer({ config, serviceInteractor }) {
 
   const resources = [
     'causeOfDeathType',
+    'customTaxonNameType',
     'establishmentMeansType',
     'featureType',
     'identifierType',
