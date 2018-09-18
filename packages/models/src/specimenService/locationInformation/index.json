@@ -35,14 +35,18 @@
       "type": "string",
       "description": "TBA"
     },
-    "remarks": {
-      "type": "string",
-      "description": "Notes on the locality"
-    },
     "localityV": {
       "type": "string",
       "description":
         "Verbatim locality names and description, as in the original source, typos and all."
+    },
+    "swedishGrid5km": {
+      "type": "string",
+      "description": "RT90 Index 5"
+    },
+    "remarks": {
+      "type": "string",
+      "description": "Notes on the locality"
     },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
