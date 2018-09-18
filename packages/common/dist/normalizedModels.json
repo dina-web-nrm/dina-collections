@@ -319,12 +319,12 @@
     "properties": {
       "latitude": {
         "type": "string",
-        "description": "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
+        "description": "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere.",
         "x-summary": ""
       },
       "longitude": {
         "type": "string",
-        "description": "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
+        "description": "Longitude or easting. Prefixed with minus for coordinates on western hemisphere.",
         "x-summary": ""
       },
       "geodeticDatum": {
@@ -594,6 +594,32 @@
     "x-summary": "",
     "description": "",
     "id": "causeOfDeathType"
+  },
+  "customTaxonNameType": {
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "name": {
+        "$ref": "translatedString",
+        "x-summary": ""
+      },
+      "id": {
+        "$ref": "id",
+        "x-summary": ""
+      },
+      "type": {
+        "$ref": "type",
+        "x-summary": ""
+      }
+    },
+    "x-category": "curatedListService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "customTaxonNameType"
   },
   "establishmentMeansType": {
     "additionalProperties": false,
@@ -1269,10 +1295,6 @@
         "$ref": "externalModelReference",
         "x-summary": ""
       },
-      "establishmentMeansN": {
-        "type": "string",
-        "x-summary": ""
-      },
       "collectedByAgent": {
         "$ref": "agent",
         "x-summary": ""
@@ -1398,6 +1420,33 @@
     "x-summary": "",
     "id": "curatorialAssessment"
   },
+  "customTaxonName": {
+    "additionalProperties": false,
+    "properties": {
+      "lid": {
+        "$ref": "lid",
+        "x-summary": ""
+      },
+      "customTaxonNameType": {
+        "$ref": "externalModelReference",
+        "x-summary": ""
+      },
+      "language": {
+        "type": "string",
+        "example": "en",
+        "x-summary": ""
+      },
+      "value": {
+        "type": "string",
+        "x-summary": ""
+      }
+    },
+    "x-category": "specimenService",
+    "x-modelType": "model",
+    "x-summary": "",
+    "description": "",
+    "id": "customTaxonName"
+  },
   "deathInformation": {
     "additionalProperties": false,
     "properties": {
@@ -1436,14 +1485,14 @@
         "example": "Some remarks",
         "x-summary": ""
       },
-      "determinationText": {
+      "taxonNameV": {
         "type": "string",
-        "example": "Sorex minutus, by Doe, J. on 1982-01-01",
+        "description": "Verbatim taxon name, in exactly the same words as were used originally",
         "x-summary": ""
       },
-      "determinationVerbatim": {
+      "taxonNameI": {
         "type": "string",
-        "description": "In exactly the same words as were used originally",
+        "description": "Interpreted taxon name",
         "x-summary": ""
       },
       "determinedByAgent": {
@@ -1452,10 +1501,6 @@
       },
       "date": {
         "$ref": "singleDate",
-        "x-summary": ""
-      },
-      "taxonName": {
-        "$ref": "externalModelReference",
         "x-summary": ""
       }
     },
@@ -1580,10 +1625,6 @@
     "additionalProperties": false,
     "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should create new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should create two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you should probably create more individuals.\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n* ABCD: not assessed\n",
     "properties": {
-      "collectionItemText": {
-        "type": "string",
-        "x-summary": ""
-      },
       "remarks": {
         "type": "string",
         "x-summary": ""
@@ -1719,14 +1760,19 @@
         "description": "TBA",
         "x-summary": ""
       },
-      "remarks": {
-        "type": "string",
-        "description": "Notes on the locality",
-        "x-summary": ""
-      },
       "localityV": {
         "type": "string",
         "description": "Verbatim locality names and description, as in the original source, typos and all.",
+        "x-summary": ""
+      },
+      "swedishGrid5km": {
+        "type": "string",
+        "description": "RT90 Index 5",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
+        "description": "Notes on the locality",
         "x-summary": ""
       },
       "readOnly": {
@@ -1890,12 +1936,36 @@
     "x-format": true,
     "x-normalize": true,
     "properties": {
-      "individual": {
-        "$ref": "individual",
+      "id": {
+        "$ref": "id",
         "x-summary": ""
       },
       "lid": {
         "$ref": "lid",
+        "x-summary": ""
+      },
+      "type": {
+        "$ref": "type",
+        "x-summary": ""
+      },
+      "publishRecord": {
+        "type": "boolean",
+        "x-summary": ""
+      },
+      "version": {
+        "type": "integer",
+        "x-summary": ""
+      },
+      "collectionItemsRemarks": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "readOnly": {
+        "$ref": "readOnly",
+        "x-summary": ""
+      },
+      "individual": {
+        "$ref": "individual",
         "x-summary": ""
       },
       "normalized": {
@@ -1982,26 +2052,6 @@
             "x-column": "recordHistoryEvents"
           }
         },
-        "x-summary": ""
-      },
-      "id": {
-        "$ref": "id",
-        "x-summary": ""
-      },
-      "type": {
-        "$ref": "type",
-        "x-summary": ""
-      },
-      "publishRecord": {
-        "type": "boolean",
-        "x-summary": ""
-      },
-      "version": {
-        "type": "integer",
-        "x-summary": ""
-      },
-      "readOnly": {
-        "$ref": "readOnly",
         "x-summary": ""
       },
       "relationships": {
@@ -2246,7 +2296,18 @@
         "$ref": "taxonName",
         "x-summary": ""
       },
+      "customTaxonNames": {
+        "type": "array",
+        "items": {
+          "$ref": "lid"
+        },
+        "x-summary": ""
+      },
       "taxonRemarks": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "typifiedName": {
         "type": "string",
         "x-summary": ""
       },
@@ -3925,6 +3986,326 @@
         "properties": {
           "self": {
             "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeCreateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customTaxonNameType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customTaxonNameType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/customTaxonNameTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeGetOneResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customTaxonNameType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customTaxonNameType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeGetManyResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "customTaxonNameType"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "type": {
+              "default": "customTaxonNameType",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/customTaxonNameTypes",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeImportDataFromFileResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customObject"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customObject",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/actions/importDataFromFile",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeUpdateResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customTaxonNameType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customTaxonNameType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/{id}",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeDelResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "attributes": {
+                "$ref": "customTaxonNameType"
+              },
+              "id": {
+                "example": "1234",
+                "type": "string"
+              },
+              "type": {
+                "default": "customTaxonNameType",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/{id}",
             "format": "uri",
             "type": "string",
             "x-faker": "internet.url"
@@ -19843,6 +20224,110 @@
               },
               "attributes": {
                 "$ref": "causeOfDeathType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeCreateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customTaxonNameType",
+                "enum": [
+                  "customTaxonNameType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customTaxonNameType"
+              }
+            }
+          }
+        ],
+        "x-summary": ""
+      }
+    },
+    "x-examples": {
+      "primary": {
+        "data": {
+          "id": "1234",
+          "type": "customTaxonNameType",
+          "attributes": {
+            "key": "label-name",
+            "name": {
+              "en": "label name"
+            }
+          }
+        }
+      }
+    },
+    "example": {
+      "data": {
+        "id": "1234",
+        "type": "customTaxonNameType",
+        "attributes": {
+          "key": "label-name",
+          "name": {
+            "en": "label name"
+          }
+        }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "customTaxonNameTypeUpdateRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "oneOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1234"
+              },
+              "type": {
+                "default": "customTaxonNameType",
+                "enum": [
+                  "customTaxonNameType"
+                ],
+                "type": "string"
+              },
+              "attributes": {
+                "$ref": "customTaxonNameType"
               }
             }
           }
