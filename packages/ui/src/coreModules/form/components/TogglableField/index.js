@@ -1,12 +1,12 @@
 import { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import config from 'config'
 import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponents'
 import DefaultRenderEmptyState from './DefaultRenderEmptyState'
 import DefaultRenderResult from './DefaultRenderResult'
 
 const propTypes = {
+  forceRenderInput: PropTypes.bool,
   input: PropTypes.shape({
     value: PropTypes.oneOfType([
       PropTypes.number,
@@ -26,6 +26,7 @@ const propTypes = {
   renderResult: PropTypes.func,
 }
 const defaultProps = {
+  forceRenderInput: false,
   renderEmptyState: DefaultRenderEmptyState,
   renderResult: DefaultRenderResult,
 }
@@ -33,6 +34,7 @@ const defaultProps = {
 class TogglableField extends PureComponent {
   render() {
     const {
+      forceRenderInput,
       input,
       isLatestActiveField,
       renderInput,
@@ -40,7 +42,7 @@ class TogglableField extends PureComponent {
       renderEmptyState,
     } = this.props
 
-    if (isLatestActiveField || config.isTest) {
+    if (isLatestActiveField || forceRenderInput) {
       return renderInput(this.props)
     }
 
