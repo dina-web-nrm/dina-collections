@@ -92,10 +92,6 @@ const segmentCollectingInformationMutations = [
     value: 'collectorsText',
   },
   {
-    name: 'individual.collectingInformation.0.establishmentMeansN',
-    value: 'establishmentMeansN',
-  },
-  {
     name: 'individual.collectingInformation.0.establishmentMeansType.id.hidden',
     value: '1',
   },
@@ -330,7 +326,6 @@ const expectedOutput = {
       {
         collectedByAgent: { normalized: { id: '1' } },
         collectorsText: 'collectorsText',
-        establishmentMeansN: 'establishmentMeansN',
         establishmentMeansType: {
           id: '1',
         },
