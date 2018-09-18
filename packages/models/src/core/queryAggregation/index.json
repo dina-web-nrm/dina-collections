@@ -1,0 +1,13 @@
+{
+  "additionalProperties": true,
+  "x-internal": true,
+  "properties": {
+    "aggregationFunction": {
+      "type": "string"
+    },
+    "options": {
+      "type": "object"
+    }
+  },
+  "type": "object"
+}
