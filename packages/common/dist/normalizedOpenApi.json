@@ -1527,6 +1527,460 @@
         ]
       }
     },
+    "/api/curatedList/v01/customTaxonNameTypes": {
+      "post": {
+        "operationId": "customTaxonNameTypeCreate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/customTaxonNameTypeCreateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeCreateResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeCreate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeCreate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create customTaxonNameType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "get": {
+        "operationId": "customTaxonNameTypeGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[updatedAfter]",
+            "description": "Filter by updatedAt after specificed timestamp",
+            "required": false,
+            "schema": {
+              "format": "date-time",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetManyResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find customTaxonNameTypes",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/customTaxonNameTypes/{id}": {
+      "get": {
+        "operationId": "customTaxonNameTypeGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "customTaxonNameType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetOneResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find customTaxonNameType by id",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "patch": {
+        "operationId": "customTaxonNameTypeUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "customTaxonNameType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/customTaxonNameTypeUpdateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeUpdateResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeUpdate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeUpdate-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeUpdate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Updates customTaxonNameType",
+        "tags": [
+          "curatedListService"
+        ]
+      },
+      "delete": {
+        "operationId": "customTaxonNameTypeDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "customTaxonNameType id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeDelResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeDel-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeDel-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeDel-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeDel-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes customTaxonNameType",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
+    "/api/curatedList/v01/customTaxonNameTypes/actions/importDataFromFile": {
+      "post": {
+        "operationId": "customTaxonNameTypeImportDataFromFile",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeImportDataFromFileResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeImportDataFromFile-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/customTaxonNameTypeImportDataFromFile-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource customTaxonNameType",
+        "tags": [
+          "curatedListService"
+        ]
+      }
+    },
     "/api/curatedList/v01/establishmentMeansTypes": {
       "post": {
         "operationId": "establishmentMeansTypeCreate",
@@ -19276,6 +19730,44 @@
         "x-modelType": "model",
         "x-summary": ""
       },
+      "datePart": {
+        "additionalProperties": false,
+        "description": "A date part",
+        "properties": {
+          "timestamp": {
+            "description": "A date in standard format. TBA",
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "interpretedTimestamp": {
+            "description": "A date in standard format, derived from day, month year.",
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "dateText": {
+            "type": "string",
+            "example": "Before 1800",
+            "x-summary": ""
+          },
+          "day": {
+            "type": "integer",
+            "x-summary": ""
+          },
+          "month": {
+            "type": "integer",
+            "x-summary": ""
+          },
+          "year": {
+            "type": "integer",
+            "x-summary": ""
+          }
+        },
+        "x-category": "core",
+        "x-modelType": "model",
+        "x-summary": ""
+      },
       "dateRange": {
         "additionalProperties": false,
         "description": "A date range",
@@ -19285,17 +19777,26 @@
             "example": "Before 1800",
             "x-summary": ""
           },
+          "dateType": {
+            "type": "string",
+            "enum": [
+              "single",
+              "range",
+              "before"
+            ],
+            "x-summary": ""
+          },
           "remarks": {
             "type": "string",
             "example": "Some remarks",
             "x-summary": ""
           },
           "startDate": {
-            "$ref": "#/components/schemas/singleDate",
+            "$ref": "#/components/schemas/datePart",
             "x-summary": ""
           },
           "endDate": {
-            "$ref": "#/components/schemas/singleDate",
+            "$ref": "#/components/schemas/datePart",
             "x-summary": ""
           }
         },
@@ -19370,12 +19871,12 @@
         "properties": {
           "latitude": {
             "type": "string",
-            "description": "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere.",
+            "description": "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere.",
             "x-summary": ""
           },
           "longitude": {
             "type": "string",
-            "description": "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere.",
+            "description": "Longitude or easting. Prefixed with minus for coordinates on western hemisphere.",
             "x-summary": ""
           },
           "geodeticDatum": {
@@ -19509,44 +20010,6 @@
         "x-summary": "",
         "description": ""
       },
-      "singleDate": {
-        "additionalProperties": false,
-        "description": "A single date",
-        "properties": {
-          "timestamp": {
-            "description": "A date in standard format. TBA",
-            "format": "date-time",
-            "type": "string",
-            "x-summary": ""
-          },
-          "interpretedTimestamp": {
-            "description": "A date in standard format. TBA",
-            "format": "date-time",
-            "type": "string",
-            "x-summary": ""
-          },
-          "dateText": {
-            "type": "string",
-            "example": "Before 1800",
-            "x-summary": ""
-          },
-          "day": {
-            "type": "integer",
-            "x-summary": ""
-          },
-          "month": {
-            "type": "integer",
-            "x-summary": ""
-          },
-          "year": {
-            "type": "integer",
-            "x-summary": ""
-          }
-        },
-        "x-category": "core",
-        "x-modelType": "model",
-        "x-summary": ""
-      },
       "translatedString": {
         "additionalProperties": false,
         "properties": {
@@ -19609,6 +20072,31 @@
         "x-summary": ""
       },
       "causeOfDeathType": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "name": {
+            "$ref": "#/components/schemas/translatedString",
+            "x-summary": ""
+          },
+          "id": {
+            "$ref": "#/components/schemas/id",
+            "x-summary": ""
+          },
+          "type": {
+            "$ref": "#/components/schemas/type",
+            "x-summary": ""
+          }
+        },
+        "x-category": "curatedListService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameType": {
         "additionalProperties": false,
         "properties": {
           "key": {
@@ -20266,7 +20754,11 @@
             "x-summary": ""
           },
           "date": {
-            "$ref": "#/components/schemas/singleDate",
+            "$ref": "#/components/schemas/dateRange",
+            "x-summary": ""
+          },
+          "remarks": {
+            "type": "string",
             "x-summary": ""
           }
         },
@@ -20284,10 +20776,6 @@
           },
           "establishmentMeansType": {
             "$ref": "#/components/schemas/externalModelReference",
-            "x-summary": ""
-          },
-          "establishmentMeansN": {
-            "type": "string",
             "x-summary": ""
           },
           "collectedByAgent": {
@@ -20384,7 +20872,7 @@
             "x-summary": ""
           },
           "date": {
-            "$ref": "#/components/schemas/singleDate",
+            "$ref": "#/components/schemas/dateRange",
             "x-summary": ""
           },
           "condition": {
@@ -20411,6 +20899,32 @@
         "x-category": "specimenService",
         "x-modelType": "model",
         "x-summary": ""
+      },
+      "customTaxonName": {
+        "additionalProperties": false,
+        "properties": {
+          "lid": {
+            "$ref": "#/components/schemas/lid",
+            "x-summary": ""
+          },
+          "customTaxonNameType": {
+            "$ref": "#/components/schemas/externalModelReference",
+            "x-summary": ""
+          },
+          "language": {
+            "type": "string",
+            "example": "en",
+            "x-summary": ""
+          },
+          "value": {
+            "type": "string",
+            "x-summary": ""
+          }
+        },
+        "x-category": "specimenService",
+        "x-modelType": "model",
+        "x-summary": "",
+        "description": ""
       },
       "deathInformation": {
         "additionalProperties": false,
@@ -20449,14 +20963,14 @@
             "example": "Some remarks",
             "x-summary": ""
           },
-          "determinationText": {
+          "taxonNameV": {
             "type": "string",
-            "example": "Sorex minutus, by Doe, J. on 1982-01-01",
+            "description": "Verbatim taxon name, in exactly the same words as were used originally",
             "x-summary": ""
           },
-          "determinationVerbatim": {
+          "taxonNameI": {
             "type": "string",
-            "description": "In exactly the same words as were used originally",
+            "description": "Interpreted taxon name",
             "x-summary": ""
           },
           "determinedByAgent": {
@@ -20464,11 +20978,7 @@
             "x-summary": ""
           },
           "date": {
-            "$ref": "#/components/schemas/singleDate",
-            "x-summary": ""
-          },
-          "taxonName": {
-            "$ref": "#/components/schemas/externalModelReference",
+            "$ref": "#/components/schemas/dateRange",
             "x-summary": ""
           }
         },
@@ -20515,7 +21025,7 @@
             "x-summary": ""
           },
           "date": {
-            "$ref": "#/components/schemas/singleDate",
+            "$ref": "#/components/schemas/dateRange",
             "x-summary": ""
           },
           "featureObservationText": {
@@ -20589,10 +21099,6 @@
         "additionalProperties": false,
         "description": "# individual\n\nOne or more specimens sharing a common history and individual characteristics, for example an organism, a group of organisms or a piece of mineral.\n\n\n## Definition\n\nOne or more individuals with a single set of individual characteristics.\n\n\n### Examples\n\n* A specific squirrel represented by both a skin and a tissue sample in a collection.\n* Three fishes in a jar of alcohol, coming from the same collecting event and representing the same taxon. The group of fishes may be treated as the individual.\n* A cluster of ammonite fossils in the same piece of rock.\n* A piece of mineral.\n\n\n### Notes\n\nIndividual is understood in a broad sense and should be applied within its context. Thus, it should be possible to talk about individuals in for example a mineralogical collection.\n\nThis term has two purposes:\n\n1. To keep information about the coherent unit that has a life history (or similar depending on the context) even when the unit is separated into smaller parts (as in the case where one preparation is stored separately from another).\n2. To allow individual traits (color, taxon, age, sex, etc.) to be applied to a group of specimens that are treated as one unit.\n\nYou should create new individuals when you need to capture differences. A mix of females and males can be treated as a single individual as long as you don't need to distinguish the two sexes. When you need to distinguish the sexes, you should create two individuals, one for each sex. If you need to describe additional differences (e.g. color, size etc.), you should probably create more individuals.\n\n\n### Relation to other standards\n\n* DarwinCore: [Organism](http://rs.tdwg.org/dwc/terms/Organism)\n* ABCD: not assessed\n",
         "properties": {
-          "collectionItemText": {
-            "type": "string",
-            "x-summary": ""
-          },
           "remarks": {
             "type": "string",
             "x-summary": ""
@@ -20727,14 +21233,19 @@
             "description": "TBA",
             "x-summary": ""
           },
-          "remarks": {
-            "type": "string",
-            "description": "Notes on the locality",
-            "x-summary": ""
-          },
           "localityV": {
             "type": "string",
             "description": "Verbatim locality names and description, as in the original source, typos and all.",
+            "x-summary": ""
+          },
+          "swedishGrid5km": {
+            "type": "string",
+            "description": "RT90 Index 5",
+            "x-summary": ""
+          },
+          "remarks": {
+            "type": "string",
+            "description": "Notes on the locality",
             "x-summary": ""
           },
           "readOnly": {
@@ -20864,7 +21375,7 @@
             "x-summary": ""
           },
           "date": {
-            "$ref": "#/components/schemas/singleDate",
+            "$ref": "#/components/schemas/dateRange",
             "x-summary": ""
           },
           "description": {
@@ -20887,16 +21398,12 @@
         "x-format": true,
         "x-normalize": false,
         "properties": {
-          "individual": {
-            "$ref": "#/components/schemas/individual",
+          "id": {
+            "$ref": "#/components/schemas/id",
             "x-summary": ""
           },
           "lid": {
             "$ref": "#/components/schemas/lid",
-            "x-summary": ""
-          },
-          "id": {
-            "$ref": "#/components/schemas/id",
             "x-summary": ""
           },
           "type": {
@@ -20911,8 +21418,20 @@
             "type": "integer",
             "x-summary": ""
           },
+          "collectionItemsRemarks": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "remarks": {
+            "type": "string",
+            "x-summary": ""
+          },
           "readOnly": {
             "$ref": "#/components/schemas/readOnly",
+            "x-summary": ""
+          },
+          "individual": {
+            "$ref": "#/components/schemas/individual",
             "x-summary": ""
           },
           "causeOfDeathTypes": {
@@ -21002,7 +21521,18 @@
             "$ref": "#/components/schemas/taxonName",
             "x-summary": ""
           },
+          "customTaxonNames": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/lid"
+            },
+            "x-summary": ""
+          },
           "taxonRemarks": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "typifiedName": {
             "type": "string",
             "x-summary": ""
           },
@@ -22426,6 +22956,414 @@
         "type": "object"
       },
       "causeOfDeathTypeDel-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "customTaxonNameTypeCreate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "customTaxonNameTypeCreate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "customTaxonNameTypeGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "customTaxonNameTypeGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "customTaxonNameTypeGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "customTaxonNameTypeGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "customTaxonNameTypeGetMany-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "customTaxonNameTypeImportDataFromFile-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "customTaxonNameTypeImportDataFromFile-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "customTaxonNameTypeUpdate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "customTaxonNameTypeUpdate-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "customTaxonNameTypeUpdate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "customTaxonNameTypeDel-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "customTaxonNameTypeDel-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "customTaxonNameTypeDel-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "customTaxonNameTypeDel-500": {
         "allOf": [
           {
             "$ref": "#/components/schemas/BaseError"
@@ -37759,6 +38697,110 @@
         "x-summary": "",
         "description": ""
       },
+      "customTaxonNameTypeCreateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customTaxonNameType",
+                    "enum": [
+                      "customTaxonNameType"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customTaxonNameType"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {
+          "primary": {
+            "data": {
+              "id": "1234",
+              "type": "customTaxonNameType",
+              "attributes": {
+                "key": "label-name",
+                "name": {
+                  "en": "label name"
+                }
+              }
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "id": "1234",
+            "type": "customTaxonNameType",
+            "attributes": {
+              "key": "label-name",
+              "name": {
+                "en": "label name"
+              }
+            }
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeUpdateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customTaxonNameType",
+                    "enum": [
+                      "customTaxonNameType"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customTaxonNameType"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
       "establishmentMeansTypeCreateRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -45039,6 +46081,326 @@
             "properties": {
               "self": {
                 "example": "https://domain/api/curatedList/v01/causeOfDeathTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeCreateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customTaxonNameType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customTaxonNameType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/customTaxonNameTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customTaxonNameType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customTaxonNameType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/customTaxonNameType"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "customTaxonNameType",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/customTaxonNameTypes",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeImportDataFromFileResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/actions/importDataFromFile",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeUpdateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customTaxonNameType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customTaxonNameType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "customTaxonNameTypeDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customTaxonNameType"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customTaxonNameType",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/curatedList/v01/customTaxonNameTypes/{id}",
                 "format": "uri",
                 "type": "string",
                 "x-faker": "internet.url"
