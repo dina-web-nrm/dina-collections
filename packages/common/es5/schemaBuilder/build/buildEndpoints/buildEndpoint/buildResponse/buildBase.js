@@ -11,7 +11,7 @@ module.exports = function buildBase(_ref) {
       status = _ref.status;
 
   var base = {
-    description: description || 'this is a desc',
+    description: description || 'successful operation',
     examples: examples,
     name: name,
     schema: {

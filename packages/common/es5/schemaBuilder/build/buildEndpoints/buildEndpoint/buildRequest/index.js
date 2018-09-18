@@ -69,7 +69,7 @@ module.exports = function createRequest(_ref) {
     name: name,
     examples: examples,
     schema: {
-      description: description || 'this is a desc for request',
+      description: description || 'successful operation',
       body: {
         additionalProperties: false,
         type: 'object',
