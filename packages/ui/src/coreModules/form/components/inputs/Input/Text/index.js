@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
 
+import config from 'config'
+
 const propTypes = {
   autoComplete: PropTypes.string,
   disabled: PropTypes.bool,
@@ -30,7 +32,7 @@ const defaultProps = {
 
 class TextInput extends PureComponent {
   componentDidMount() {
-    if (this.props.focusOnMount) {
+    if (this.props.focusOnMount && !config.isTest) {
       this.input.focus()
     }
   }
