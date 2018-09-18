@@ -7,6 +7,8 @@ const history = createHistory()
 const config = {
   api: {
     enableEndpointMocks: rootConfig.mock,
+    validateInput: false,
+    validateOutput: false,
   },
   devToolsExtension:
     rootConfig.isDevelopment && typeof devToolsExtension === 'function',
