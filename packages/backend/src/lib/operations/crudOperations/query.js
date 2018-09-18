@@ -1,15 +1,19 @@
 const buildOperationId = require('common/src/buildOperationId')
+const buildQueryRequest = require('./utilities/buildQueryRequest')
 
 module.exports = function query({
+  aggregationSpecification,
   basePath,
   errors: errorsInput = {},
-  exampleRequests = {},
   exampleResponses = {},
+  filterSpecification,
   operationId,
   queryParams,
   relations,
   resource,
   resourcePath,
+  selectableFields,
+  sortableFields,
   ...rest
 }) {
   const errors = {
@@ -22,19 +26,27 @@ module.exports = function query({
 
   return {
     ...rest,
+    aggregationSpecification,
     errors,
+    filterSpecification,
     method: 'post',
     operationId: operationId || buildOperationId({ operationType, resource }),
     operationType,
     path: `${basePath}/${resourcePath}/actions/query`,
     queryParams,
     relations,
-    request: {
-      examples: exampleRequests,
-      format: 'object',
-      relations,
-      resource: 'customObject',
-    },
+    request: buildQueryRequest({
+      aggregationSpecification,
+      filterSpecification,
+      selectableFields,
+      sortableFields,
+    }),
+    // request: {
+    //   examples: exampleRequests,
+    //   format: 'object',
+    //   relations,
+    //   resource: 'customObject',
+    // },
     resource,
     response: {
       examples: exampleResponses,
@@ -43,6 +55,8 @@ module.exports = function query({
       resource: 'customObject',
       status: 200,
     },
+    selectableFields,
+    sortableFields,
     summary: `Query ${resource}`,
   }
 }
