@@ -1,3 +1,11 @@
 /*******************************
          Site Overrides
 *******************************/
+
+/*
+* Relaxed rows with more margin between columns (default is zero margin)
+*/
+.ui.grid > .row.relaxed > .column {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
