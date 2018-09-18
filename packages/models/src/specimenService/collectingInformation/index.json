@@ -8,9 +8,6 @@
       "$ref": "__ROOT__establishmentMeansType",
       "x-reference-type": "external"
     },
-    "establishmentMeansN": {
-      "type": "string"
-    },
     "collectedByAgent": {
       "$ref": "__ROOT__agent"
     },
