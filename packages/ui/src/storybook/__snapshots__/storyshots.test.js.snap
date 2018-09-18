@@ -712,6 +712,191 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
 </div>
 `;
 
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui padded grid"
+          style={
+            Object {
+              "height": 36,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="comment outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              <span>
+                Add remarks
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWithOutPrefixedText 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui padded grid"
+          style={
+            Object {
+              "height": 36,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="commenting outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Some added remarks
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWithPrefixedText 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui padded grid"
+          style={
+            Object {
+              "height": 36,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="commenting outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Taxon:  Some added remarks
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/i18n/I18nProvider Default 1`] = `
 <div>
   <div
