@@ -22,6 +22,9 @@
     "collectionItemsRemarks": {
       "type": "string"
     },
+    "remarks": {
+      "type": "string"
+    },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
     },

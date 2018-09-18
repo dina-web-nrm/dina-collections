@@ -12,6 +12,9 @@
     },
     "date": {
       "$ref": "__ROOT__singleDate"
+    },
+    "remarks": {
+      "type": "string"
     }
   }
 }
