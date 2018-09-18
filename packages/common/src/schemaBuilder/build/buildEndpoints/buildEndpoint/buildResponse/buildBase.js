@@ -9,7 +9,7 @@ module.exports = function buildBase({
   status,
 }) {
   const base = {
-    description: description || 'this is a desc',
+    description: description || 'successful operation',
     examples,
     name,
     schema: {
