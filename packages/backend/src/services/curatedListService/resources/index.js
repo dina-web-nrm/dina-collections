@@ -1,4 +1,5 @@
 exports.causeOfDeathType = require('./causeOfDeathType')
+exports.customTaxonNameType = require('./customTaxonNameType')
 exports.establishmentMeansType = require('./establishmentMeansType')
 exports.featureType = require('./featureType')
 exports.identifierType = require('./identifierType')
