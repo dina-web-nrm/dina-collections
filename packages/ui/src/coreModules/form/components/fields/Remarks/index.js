@@ -20,6 +20,7 @@ const propTypes = {
   }).isRequired,
   module: PropTypes.string.isRequired,
   parameterKey: PropTypes.string,
+  resultPrefix: PropTypes.string,
   setAsLatestActiveField: PropTypes.func.isRequired,
   type: PropTypes.string,
 }
@@ -29,6 +30,7 @@ const defaultProps = {
   enableHelpNotifications: false,
   label: undefined,
   parameterKey: undefined,
+  resultPrefix: undefined,
   type: 'text',
 }
 
@@ -68,7 +70,7 @@ class RemarksInput extends PureComponent {
     )
   }
 
-  renderEmptyOrResult(props) {
+  renderEmptyState(props) {
     const { input, isLatestActiveField, setAsLatestActiveField } = props
 
     return (
@@ -78,10 +80,31 @@ class RemarksInput extends PureComponent {
         setAsLatestActiveField={setAsLatestActiveField}
       >
         <div style={{ paddingTop: 8 }}>
-          {input.value || (
-            <ModuleTranslate capitalize module="form" textKey="addRemarks" />
-          )}
+          <ModuleTranslate capitalize module="form" textKey="addRemarks" />
         </div>
+      </RemarksWrapper>
+    )
+  }
+
+  renderResult(props) {
+    const {
+      input,
+      isLatestActiveField,
+      resultPrefix,
+      setAsLatestActiveField,
+    } = props
+
+    const remarks = resultPrefix
+      ? `${resultPrefix}:  ${input.value}`
+      : input.value
+
+    return (
+      <RemarksWrapper
+        input={input}
+        isLatestActiveField={isLatestActiveField}
+        setAsLatestActiveField={setAsLatestActiveField}
+      >
+        <div style={{ paddingTop: 8 }}>{remarks}</div>
       </RemarksWrapper>
     )
   }
@@ -91,9 +114,9 @@ class RemarksInput extends PureComponent {
     return (
       <TogglableField
         {...this.props}
-        renderEmptyState={this.renderEmptyOrResult}
+        renderEmptyState={this.renderEmptyState}
         renderInput={this.renderInput}
-        renderResult={this.renderEmptyOrResult}
+        renderResult={this.renderResult}
       />
     )
   }
