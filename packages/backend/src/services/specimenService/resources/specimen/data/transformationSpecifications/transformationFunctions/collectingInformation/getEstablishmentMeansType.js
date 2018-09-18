@@ -1,5 +1,8 @@
 const establishmentMeansValueMap = {
-  'known age': 'known-age',
+  // TODO: Update with real keys from data
+  captive: 'captive',
+  'wild and introduced': 'wild-and-introduced',
+  'wild and native': 'wild-and-native',
 }
 
 const mapEstablishmentMeansType = originStatus => {
