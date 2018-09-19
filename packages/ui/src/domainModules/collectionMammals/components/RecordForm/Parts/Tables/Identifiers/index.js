@@ -2,24 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { Button, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 import createLog from 'utilities/log'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
-import { createModuleTranslate } from 'coreModules/i18n/components'
 import IdentifiersTableRow from './Row'
+import AddButton from '../../StaticContent/AddButton'
 
 const log = createLog(
   'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTable'
 )
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
-
-const mapStateToProps = (state, { formValueSelector }) => {
+const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
-    identifiers: formValueSelector(state, 'individual.identifiers'),
+    identifiers: formValueSelector(state, name),
     identifierTypeOptions: globalCrudSelectors.identifierType
       .getAllAsOptions(state)
       .filter(option => {
@@ -58,7 +56,10 @@ function IdentifiersTable({
         .slice(1) // skip first as that is the catalog number
         .map((identifier, index) => {
           return (
-            <Grid.Column width={16}>
+            <Grid.Column
+              key={index} // eslint-disable-line react/no-array-index-key
+              width={16}
+            >
               <IdentifiersTableRow
                 changeFieldValue={changeFieldValue}
                 identifier={identifier}
@@ -71,20 +72,15 @@ function IdentifiersTable({
           )
         })
         .filter(item => !!item)}
-      <Grid.Column width={16}>
-        <Button
-          basic
-          className="shadowless"
-          color="blue"
-          id="add-identifier"
-          onClick={event => {
-            event.preventDefault()
-            changeFieldValue(getPath(identifiers.length), {})
-          }}
-        >
-          + <ModuleTranslate capitalize textKey="other.addIdentifier" />
-        </Button>
-      </Grid.Column>
+      <AddButton
+        id="add-identifier"
+        onClick={event => {
+          event.preventDefault()
+          changeFieldValue(getPath(identifiers.length), {})
+        }}
+        textKey="other.addIdentifier"
+        width={16}
+      />
     </React.Fragment>
   )
 }
@@ -94,5 +90,5 @@ IdentifiersTable.propTypes = propTypes
 export default compose(
   createEnsureAllItemsFetched({ resource: 'identifierType' }),
   connect(mapStateToProps),
-  pathBuilder({ name: 'individual.identifiers' })
+  pathBuilder()
 )(IdentifiersTable)

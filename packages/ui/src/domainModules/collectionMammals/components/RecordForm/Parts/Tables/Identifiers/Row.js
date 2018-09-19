@@ -49,8 +49,8 @@ class IdentifiersTableRow extends PureComponent {
 
     log.render()
     return (
-      <Grid key={index} textAlign="left" verticalAlign="middle">
-        <Grid.Column width={5}>
+      <Grid textAlign="left" verticalAlign="middle">
+        <Grid.Column width={6}>
           <Field
             autoComplete="off"
             className="transparent"
@@ -62,7 +62,7 @@ class IdentifiersTableRow extends PureComponent {
             type="dropdown-search-local"
           />
         </Grid.Column>
-        <Grid.Column width={5}>
+        <Grid.Column width={8}>
           <Field
             autoComplete="off"
             className="transparent"
@@ -74,9 +74,9 @@ class IdentifiersTableRow extends PureComponent {
             type="text"
           />
         </Grid.Column>
-        <Grid.Column width={1}>
+        <Grid.Column width={2}>
           <Icon
-            name="trash alternate"
+            name="trash"
             onClick={event => {
               event.preventDefault()
               removeArrayFieldByIndex(getTranslationPath(), index)
