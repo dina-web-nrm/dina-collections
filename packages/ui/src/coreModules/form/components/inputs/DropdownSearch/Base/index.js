@@ -64,6 +64,7 @@ const propTypes = {
     ]).isRequired,
   }),
   text: PropTypes.string,
+  type: PropTypes.string.isRequired,
 }
 const defaultProps = {
   autoComplete: undefined,
@@ -101,7 +102,15 @@ class DropdownSearchInput extends Component {
 
     if (this.props.input.value) {
       // empty form value, if search is renewed after a value was selected
-      this.props.input.onChange('')
+      if (this.props.type === 'dropdown-search-id-text') {
+        this.props.input.onChange({
+          ...this.props.input.value,
+          normalized: undefined,
+          textI: undefined,
+        })
+      } else {
+        this.props.input.onChange('')
+      }
     }
   }
 
@@ -109,11 +118,28 @@ class DropdownSearchInput extends Component {
     const { value } = data
     this.handleSearchChange(null, { searchQuery: '' })
 
-    this.props.input.onBlur(value)
+    if (this.props.type === 'dropdown-search-id-text') {
+      this.props.input.onBlur({
+        ...this.props.input.value,
+        ...value,
+      })
+    } else {
+      this.props.input.onBlur(value)
+    }
   }
 
   handleClear() {
-    this.handleOnChange(undefined, { value: '' })
+    if (this.props.type === 'dropdown-search-id-text') {
+      this.handleOnChange(undefined, {
+        value: {
+          ...this.props.input.value,
+          normalized: undefined,
+          textI: undefined,
+        },
+      })
+    } else {
+      this.handleOnChange(undefined, { value: '' })
+    }
   }
 
   render() {
