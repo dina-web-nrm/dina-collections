@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Button, Icon } from 'semantic-ui-react'
 import objectPath from 'object-path'
 
+import config from 'config'
 import extractProps from 'utilities/extractProps'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import { FieldTemplate } from 'coreModules/form/components'
@@ -11,6 +12,8 @@ import { propTypes as fieldTemplateProps } from 'coreModules/form/components/Fie
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 const propTypes = {
+  focusOnMount: PropTypes.bool,
+  forceRenderResult: PropTypes.bool,
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
@@ -29,54 +32,95 @@ const propTypes = {
       fullName: PropTypes.string,
     }),
   }),
+  removeForceRenderResult: PropTypes.func.isRequired,
   setAsLatestActiveField: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  focusOnMount: false,
+  forceRenderResult: false,
   normalizedAgent: undefined,
 }
 
-const AgentIdTextResult = props => {
-  const {
-    i18n: { moduleTranslate },
-    isLatestActiveField,
-    input: { name, value },
-    normalizedAgent,
-    setAsLatestActiveField,
-  } = props
+class AgentIdTextResult extends Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
+  }
 
-  const inputText = value && (value.textI || value.textT)
+  componentDidMount() {
+    if (this.props.focusOnMount && !config.isTest) {
+      this.button.focus()
+    }
+  }
 
-  const text =
-    inputText && `${inputText} (${moduleTranslate({ textKey: 'plainText' })})`
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.forceRenderResult &&
+      prevProps.isLatestActiveField !== this.props.isLatestActiveField &&
+      !this.props.isLatestActiveField
+    ) {
+      this.props.removeForceRenderResult()
+    }
+  }
 
-  const result = objectPath.get(normalizedAgent, 'attributes.fullName') || text
+  handleClick(event) {
+    event.preventDefault()
+    this.props.removeForceRenderResult()
+    this.props.setAsLatestActiveField()
+  }
 
-  const { extractedProps } = extractProps({
-    keys: Object.keys(fieldTemplateProps),
-    props,
-  })
+  render() {
+    const {
+      i18n: { moduleTranslate },
+      input: { name, value },
+      normalizedAgent,
+    } = this.props
 
-  return (
-    <FieldTemplate {...extractedProps} name={name}>
-      <div style={{ position: 'relative' }}>
-        <strong>{result}</strong>
-        <Button
-          icon
-          onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
-          style={{ marginLeft: '5px' }}
-        >
-          <Icon name="edit" />
-        </Button>
-      </div>
-    </FieldTemplate>
-  )
+    const inputText = value && (value.textI || value.textT)
+
+    const fullName = objectPath.get(normalizedAgent, 'attributes.fullName')
+
+    const agentName = fullName || inputText
+
+    const suffix =
+      (inputText &&
+        moduleTranslate({
+          module: 'form',
+          textKey: 'plainText',
+        })) ||
+      (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' }))
+
+    const { extractedProps } = extractProps({
+      keys: Object.keys(fieldTemplateProps),
+      props: this.props,
+    })
+
+    return (
+      <FieldTemplate {...extractedProps} name={name}>
+        <div style={{ position: 'relative' }}>
+          <strong>{agentName}</strong>
+          {` (${suffix})`}
+          <Button
+            icon
+            onClick={this.handleClick}
+            ref={element => {
+              this.button = element
+            }}
+            style={{ marginLeft: '5px' }}
+          >
+            <Icon name="edit" />
+          </Button>
+        </div>
+      </FieldTemplate>
+    )
+  }
 }
 
 AgentIdTextResult.propTypes = propTypes
 AgentIdTextResult.defaultProps = defaultProps
 
 export default compose(
-  withI18n({ module: 'form' }),
+  withI18n(),
   createGetItemById({
     idPath: 'input.value.normalized.id',
     itemKey: 'normalizedAgent',

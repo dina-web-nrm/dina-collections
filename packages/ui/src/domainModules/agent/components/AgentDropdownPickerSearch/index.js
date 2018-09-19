@@ -26,14 +26,24 @@ const propTypes = {
   pathToIdInValue: PropTypes.string.isRequired,
   pathToTextInValue: PropTypes.string.isRequired,
   pickerActive: PropTypes.bool.isRequired,
+  reportPickerActive: PropTypes.func,
 }
 
 const defaultProps = {
   fieldSearchQuery: undefined,
   fieldValue: undefined,
+  reportPickerActive: undefined,
 }
 
 export class AgentDropdownPickerSearch extends Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.reportPickerActive) {
+      if (prevProps.pickerActive !== this.props.pickerActive) {
+        this.props.reportPickerActive(this.props.pickerActive)
+      }
+    }
+  }
+
   render() {
     const {
       fieldSearchQuery,
@@ -54,6 +64,7 @@ export class AgentDropdownPickerSearch extends Component {
               fieldSearchQuery || objectPath.get(fieldValue, pathToTextInValue),
           }
         : undefined
+
       return (
         <Modal onClose={onClose} open size="fullscreen">
           <Modal.Content>
