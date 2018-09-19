@@ -1,3 +1,5 @@
+import basicInformation from './basicInformation'
+
 export default {
-  basicInformation: [{ name: 'identifiers' }],
+  basicInformation,
 }
