@@ -10,6 +10,7 @@ const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
+  formName: PropTypes.string.isRequired,
   formSections: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -36,6 +37,7 @@ class FormSectionView extends PureComponent {
     const {
       activeFormSectionIndex,
       changeFieldValue,
+      formName,
       formSections,
       formValueSelector,
       removeArrayFieldByIndex,
@@ -64,6 +66,7 @@ class FormSectionView extends PureComponent {
         <Section
           changeFieldValue={changeFieldValue}
           childSpecs={sectionSpecs[name]}
+          formName={formName}
           formValueSelector={formValueSelector}
           module="collectionMammals"
           name={name}
@@ -76,6 +79,7 @@ class FormSectionView extends PureComponent {
   renderAllSections() {
     const {
       changeFieldValue,
+      formName,
       formSections,
       formValueSelector,
       removeArrayFieldByIndex,
@@ -91,10 +95,11 @@ class FormSectionView extends PureComponent {
           }
 
           return (
-            <Grid.Column width={16}>
+            <Grid.Column key={name} width={16}>
               <Section
                 changeFieldValue={changeFieldValue}
                 childSpecs={sectionSpecs[name]}
+                formName={formName}
                 formValueSelector={formValueSelector}
                 module="collectionMammals"
                 name={name}

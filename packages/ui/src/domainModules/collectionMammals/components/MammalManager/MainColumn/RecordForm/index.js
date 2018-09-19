@@ -153,6 +153,7 @@ class RecordForm extends Component {
             changeFieldValue={this.changeFieldValue}
             editMode={mode === 'edit'}
             form={form}
+            formName={form}
             formValueSelector={this.formValueSelector}
             onUndoChanges={this.handleUndoChanges}
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}
