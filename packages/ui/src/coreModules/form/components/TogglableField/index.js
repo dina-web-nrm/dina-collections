@@ -5,8 +5,12 @@ import { injectIsLatestActiveField } from 'coreModules/form/higherOrderComponent
 import DefaultRenderEmptyState from './DefaultRenderEmptyState'
 import DefaultRenderResult from './DefaultRenderResult'
 
+const defaultGetHasValue = input => input && input.value
+
 const propTypes = {
   forceRenderInput: PropTypes.bool,
+  forceRenderResult: PropTypes.bool,
+  getHasValue: PropTypes.func,
   input: PropTypes.shape({
     value: PropTypes.oneOfType([
       PropTypes.number,
@@ -27,6 +31,8 @@ const propTypes = {
 }
 const defaultProps = {
   forceRenderInput: false,
+  forceRenderResult: false,
+  getHasValue: defaultGetHasValue,
   renderEmptyState: DefaultRenderEmptyState,
   renderResult: DefaultRenderResult,
 }
@@ -35,6 +41,8 @@ class TogglableField extends PureComponent {
   render() {
     const {
       forceRenderInput,
+      forceRenderResult,
+      getHasValue,
       input,
       isLatestActiveField,
       renderInput,
@@ -42,11 +50,11 @@ class TogglableField extends PureComponent {
       renderEmptyState,
     } = this.props
 
-    if (isLatestActiveField || forceRenderInput) {
+    if (forceRenderInput || (isLatestActiveField && !forceRenderResult)) {
       return renderInput(this.props)
     }
 
-    if (input && input.value) {
+    if ((isLatestActiveField && forceRenderResult) || getHasValue(input)) {
       return renderResult(this.props)
     }
 
