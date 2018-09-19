@@ -107,13 +107,16 @@ const injectSearchOptions = (
         }
       }
 
-      const defaultMapTextToOption = text => {
+      const defaultMapTextToOption = (text, value) => {
         return {
           key: text,
           text: `${text} (${props.i18n.moduleTranslate({
             textKey: 'plainText',
           })})`,
-          value: { [props.pathToTextInValue]: text },
+          value: {
+            ...value,
+            [props.pathToTextInValue]: text,
+          },
         }
       }
 
@@ -121,7 +124,7 @@ const injectSearchOptions = (
       this.mapTextToOption = props.mapTextToOption || defaultMapTextToOption
     }
 
-    updateSelectedOption({ id, requireEitherOr, text } = {}) {
+    updateSelectedOption({ id, requireEitherOr, text, value } = {}) {
       if (!id && !text) {
         return this.setState(prevState => {
           if (prevState.selectedOption === undefined) {
@@ -146,9 +149,17 @@ const injectSearchOptions = (
             ? immutable.del(selectedOption, this.props.pathToTextInValue)
             : selectedOption
 
+          const optionWithOtherValues = {
+            ...option,
+            value: {
+              ...option.value,
+              ...value,
+            },
+          }
+
           return this.setState({
-            options: [option],
-            selectedOption: option,
+            options: [optionWithOtherValues],
+            selectedOption: optionWithOtherValues,
           })
         }
 
@@ -161,8 +172,10 @@ const injectSearchOptions = (
 
         return this.search({ filters, limit: 1 }).then(res => {
           const selectedOptions =
-            this.buildOptionsFromResponse(res, { skipPlainTextOption: true }) ||
-            []
+            this.buildOptionsFromResponse(res, {
+              skipPlainTextOption: true,
+              value,
+            }) || []
 
           if (selectedOptions.length) {
             const option = selectedOptions[0]
@@ -175,7 +188,7 @@ const injectSearchOptions = (
       }
 
       if (text) {
-        const selectedOption = this.mapTextToOption(text)
+        const selectedOption = this.mapTextToOption(text, value)
 
         return this.setState({
           options: [selectedOption],
@@ -188,7 +201,7 @@ const injectSearchOptions = (
 
     buildOptionsFromResponse(
       response = [],
-      { skipPlainTextOption = false } = {}
+      { skipPlainTextOption = false, value } = {}
     ) {
       if (Array.isArray(response)) {
         const { searchQuery } = this.state
@@ -196,10 +209,12 @@ const injectSearchOptions = (
         const options = []
 
         if (enablePlainTextOption && searchQuery && !skipPlainTextOption) {
-          options.push(this.mapTextToOption(searchQuery))
+          options.push(this.mapTextToOption(searchQuery, value))
         }
 
-        return options.concat(response.map(this.mapItemToOption))
+        return options.concat(
+          response.map(item => this.mapItemToOption(item, value))
+        )
       }
       // TODO handle response is error
       return []

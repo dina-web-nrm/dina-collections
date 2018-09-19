@@ -22,9 +22,15 @@ class DropdownSearchIdTextInput extends PureComponent {
     const { pathToIdInValue, pathToTextInValue } = this.props
     const id = objectPath.get(this.props, `input.value.${pathToIdInValue}`)
     const text = objectPath.get(this.props, `input.value.${pathToTextInValue}`)
+    const value = objectPath.get(this.props, `input.value`)
 
     if ((id || text) && !config.isTest) {
-      this.props.updateSelectedOption({ id, requireEitherOr: true, text })
+      this.props.updateSelectedOption({
+        id,
+        requireEitherOr: true,
+        text,
+        value,
+      })
     }
   }
 
@@ -43,9 +49,16 @@ class DropdownSearchIdTextInput extends PureComponent {
     )
     const text = objectPath.get(this.props, `input.value.${pathToTextInValue}`)
 
+    const value = objectPath.get(this.props, `input.value`)
+
     if (selectedOptionId !== id || selectedOptionText !== text) {
       setTimeout(() => {
-        this.props.updateSelectedOption({ id, requireEitherOr: true, text })
+        this.props.updateSelectedOption({
+          id,
+          requireEitherOr: true,
+          text,
+          value,
+        })
       })
     }
   }
