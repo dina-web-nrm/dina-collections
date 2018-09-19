@@ -5,7 +5,7 @@ import { Translate } from 'coreModules/i18n/components'
 import { createInjectScrollLeft } from 'coreModules/size/higherOrderComponents'
 
 const propTypes = {
-  height: PropTypes.string.isRequired,
+  height: PropTypes.number.isRequired,
   scrollLeft: PropTypes.number,
   tableColumnSpecifications: PropTypes.array.isRequired,
   width: PropTypes.number.isRequired,
