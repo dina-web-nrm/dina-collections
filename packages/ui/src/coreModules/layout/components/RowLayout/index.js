@@ -6,7 +6,7 @@ const propTypes = {
   renderRow: PropTypes.func,
   rows: PropTypes.arrayOf(
     PropTypes.shape({
-      height: PropTypes.string,
+      height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
       key: PropTypes.string.isRequired,
       renderRow: PropTypes.func,
     }).isRequired
