@@ -12,11 +12,13 @@ const log = createLog(
 )
 
 const propTypes = {
-  childSpecs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-    }).isRequired
-  ),
+  childSpecs: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }).isRequired
+    ),
+  }),
   name: PropTypes.string,
   setChildDirty: PropTypes.func,
   setChildInvalid: PropTypes.func,
@@ -38,18 +40,24 @@ const injectFormPartStatus = ({ childSpecs, name } = {}) => {
         this.name = props.name || name
         this.childSpecs = props.childSpecs || childSpecs
 
-        if (!this.childSpecs) {
-          throw new Error(
-            'Must provide childSpecs when initializing HOC or as prop'
-          )
-        }
-
         if (!this.name) {
           throw new Error('Must provide name when initializing HOC or as prop')
         }
 
+        if (!this.childSpecs || !this.childSpecs.items) {
+          throw new Error(
+            `Must provide childSpecs.items when initializing HOC or as prop in form part ${
+              this.name
+            }`
+          )
+        }
+
         this.state = {
-          childStatuses: buildInitialFormPartStatus(this.childSpecs), // eslint-disable-line react/no-unused-state
+          // prettier-ignore
+          childStatuses: buildInitialFormPartStatus( // eslint-disable-line react/no-unused-state
+            this.childSpecs.items,
+            this.name
+          ),
           dirty: false,
           invalid: false,
         }

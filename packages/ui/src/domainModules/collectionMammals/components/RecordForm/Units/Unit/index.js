@@ -29,11 +29,13 @@ const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  childSpecs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-    }).isRequired
-  ).isRequired,
+  childSpecs: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }).isRequired
+    ),
+  }).isRequired,
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   hiddenFieldsHaveValue: PropTypes.bool,
