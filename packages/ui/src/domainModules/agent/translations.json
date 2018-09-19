@@ -16,6 +16,10 @@
       "user": { "en": "User" }
     }
   },
+  "agent": {
+    "en": "agent",
+    "sv": "agent"
+  },
   "name": {
     "en": "Role name",
     "sv": "Rollnamn"

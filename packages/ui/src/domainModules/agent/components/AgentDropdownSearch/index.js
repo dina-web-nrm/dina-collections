@@ -21,11 +21,14 @@ const extractText = item => {
   return item && item.attributes && item.attributes.fullName
 }
 
-const mapItemToOption = item => {
+const mapItemToOption = (item, value) => {
   return {
     key: item.id,
     text: extractText(item),
-    value: { normalized: { id: item.id } },
+    value: {
+      ...value,
+      normalized: { id: item.id },
+    },
   }
 }
 
