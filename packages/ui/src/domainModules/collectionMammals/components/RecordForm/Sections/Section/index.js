@@ -37,13 +37,14 @@ class Section extends PureComponent {
     return (
       <Segment color="green">
         <Grid textAlign="left" verticalAlign="bottom">
-          {childSpecs.map(({ name: unitName }) => {
+          {childSpecs.items.map(({ name: unitName }) => {
             return (
               <Unit
                 changeFieldValue={changeFieldValue}
                 childSpecs={unitSpecs[unitName]}
                 formName={formName}
                 formValueSelector={formValueSelector}
+                key={unitName}
                 name={unitName}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
                 setChildDirty={setChildDirty}
