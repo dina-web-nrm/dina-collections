@@ -45,13 +45,7 @@ export default function createParameterKey({ model: baseModel, name } = {}) {
     return undefined
   }
 
-  if (modelSegment && parameterSegment) {
-    return [modelSegment, parameterSegment].join('.')
-  }
-
-  if (!modelSegment && baseModel) {
-    return [baseModel, parameterSegment].join('.')
-  }
-
-  return parameterSegment
+  return [baseModel, modelSegment, parameterSegment]
+    .filter(str => !!str)
+    .join('.')
 }
