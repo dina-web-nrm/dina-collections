@@ -7,18 +7,28 @@ import { wrapInColumn } from 'coreModules/form/higherOrderComponents'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 
 const propTypes = {
+  as: PropTypes.string,
   module: PropTypes.string.isRequired,
   textKey: PropTypes.string.isRequired,
 }
+const defaultProps = {
+  as: 'h1',
+}
 
-const H1 = ({ module, textKey }) => {
+const TranslatedHeader = ({ as, module, textKey }) => {
   return (
-    <Header as="h1">
-      <ModuleTranslate module={module} textKey={textKey} />
+    <Header as={as}>
+      <ModuleTranslate
+        capitalize
+        fallback={textKey}
+        module={module}
+        textKey={textKey}
+      />
     </Header>
   )
 }
 
-H1.propTypes = propTypes
+TranslatedHeader.propTypes = propTypes
+TranslatedHeader.defaultProps = defaultProps
 
-export default compose(wrapInColumn)(H1)
+export default compose(wrapInColumn)(TranslatedHeader)
