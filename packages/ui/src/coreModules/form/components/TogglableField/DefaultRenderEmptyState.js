@@ -10,21 +10,30 @@ import FieldTemplate, {
 
 const propTypes = {
   buttonText: PropTypes.string,
+  buttonTextKey: PropTypes.string,
+  displayLabel: PropTypes.bool,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
   isLatestActiveField: PropTypes.bool.isRequired,
+  module: PropTypes.string,
   setAsLatestActiveField: PropTypes.func.isRequired,
 }
 const defaultProps = {
   buttonText: undefined,
+  buttonTextKey: undefined,
+  displayLabel: false,
+  module: undefined,
 }
 
 const DefaultRenderEmptyState = props => {
   const {
     buttonText,
+    buttonTextKey,
+    displayLabel,
     isLatestActiveField,
     input: { name },
+    module,
     setAsLatestActiveField,
   } = props
 
@@ -33,13 +42,27 @@ const DefaultRenderEmptyState = props => {
     props,
   })
 
+  const hasCustomText = buttonText || buttonTextKey
+
   return (
-    <FieldTemplate {...extractedProps} name={name}>
+    <FieldTemplate
+      {...extractedProps}
+      displayLabel={displayLabel || !hasCustomText}
+      name={name}
+    >
       <div style={{ position: 'relative' }}>
         <Button
           onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
         >
-          {buttonText || (
+          {hasCustomText &&
+            (buttonText || (
+              <ModuleTranslate
+                capitalize
+                module={module}
+                textKey={buttonTextKey}
+              />
+            ))}
+          {!hasCustomText && (
             <ModuleTranslate capitalize module="form" textKey="clickToAdd" />
           )}
         </Button>
