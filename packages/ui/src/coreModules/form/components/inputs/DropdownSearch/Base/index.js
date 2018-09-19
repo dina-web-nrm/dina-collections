@@ -11,7 +11,7 @@ const closeIconStyle = {
   position: 'absolute',
   right: '2.5em',
   top: 0,
-  zIndex: 1,
+  zIndex: 20,
 }
 
 const containerStyle = {
