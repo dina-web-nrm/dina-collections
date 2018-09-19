@@ -8,11 +8,13 @@ import Unit, { unitSpecs } from '../../Units'
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  childSpecs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+  childSpecs: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }).isRequired
+    ),
+  }).isRequired,
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
