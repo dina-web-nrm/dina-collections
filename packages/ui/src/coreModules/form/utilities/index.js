@@ -6,6 +6,7 @@ import createLabelKey from './createLabelKey'
 import createErrorKeys from './createErrorKeys'
 import createHelpNotificationProps from './createHelpNotificationProps'
 import createUpdateFormPartStatus from './createUpdateFormPartStatus'
+import getHiddenFieldsHaveValue from './getHiddenFieldsHaveValue'
 
 export {
   buildInitialFormPartStatus,
@@ -16,5 +17,6 @@ export {
   createParameterKey,
   createUpdateFormPartStatus,
   formatBooleanRadio,
+  getHiddenFieldsHaveValue,
   parseBooleanRadio,
 }
