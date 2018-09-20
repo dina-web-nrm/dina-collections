@@ -27,5 +27,6 @@ require('../src/coreModules/resourceManager/components/ResourceManager/Collectio
 require('../src/coreModules/search/components/MultipleSearchTagsSelect/index.stories.js')
 require('../src/coreModules/user/components/LoginForm.stories.js')
 require('../src/domainModules/collectionMammals/components/MammalManager/FilterColumn/Filters/index.stories.js')
+require('../src/domainModules/collectionMammals/components/MammalManager/MainColumn/RecordForm/FormRow/FormSectionNavigation/index.stories.js')
 require('../src/domainModules/collectionMammals/components/MammalManager/MainColumn/ResultOptionsBar/index.stories.js')
 require('../src/domainModules/collectionMammals/components/MammalManager/MainColumn/ResultTableView/InfiniteTableHeader.stories.js')
