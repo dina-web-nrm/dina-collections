@@ -12,7 +12,7 @@ const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   formSections: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.func.isRequired,
+      name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
   formValueSelector: PropTypes.func.isRequired,
