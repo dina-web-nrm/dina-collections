@@ -1,30 +1,25 @@
-const createArrayResponse = require('../utilities/transformations/createArrayResponse')
+const createControllerWrapper = require('../utilities/wrapper')
 
-module.exports = function queryController({
-  operation,
-  models,
-  serviceInteractor,
-}) {
+module.exports = function queryController(options) {
   const {
-    aggregationSpecification,
-    filterSpecification,
-    resource,
-    selectableFields,
-    sortableFields,
-  } = operation
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
-  if (!model.buildWhereQuery) {
-    throw new Error(`Model for ${resource} dont support query`)
-  }
+    operation: {
+      aggregationSpecification,
+      filterSpecification,
+      selectableFields,
+      sortableFields,
+    },
+    serviceInteractor,
+  } = options
 
-  if (!model.getWhere) {
-    throw new Error(`Model missing required method: getWhere for ${resource}`)
-  }
-
-  return ({ request }) => {
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: false,
+    enablePostHooks: false,
+    enablePreHooks: false,
+    requiredModelMethods: ['buildWhereQuery', 'getWhere'],
+    responseFormat: 'array',
+    responseSuccessStatus: 200,
+  })(({ model, request }) => {
     const {
       body: {
         data: {
@@ -44,30 +39,22 @@ module.exports = function queryController({
       },
     } = request
 
-    return model
-      .getWhere({
-        aggregations,
-        aggregationSpecification,
-        excludeFieldsInput,
-        filterInput,
-        filterSpecification,
-        includeFieldsInput,
-        limit,
-        offset,
-        query,
-        scroll,
-        scrollId,
-        selectableFields,
-        serviceInteractor,
-        sortableFields,
-        sortInput,
-      })
-      .then(({ items, meta }) => {
-        return createArrayResponse({
-          items,
-          meta,
-          type: resource,
-        })
-      })
-  }
+    return model.getWhere({
+      aggregations,
+      aggregationSpecification,
+      excludeFieldsInput,
+      filterInput,
+      filterSpecification,
+      includeFieldsInput,
+      limit,
+      offset,
+      query,
+      scroll,
+      scrollId,
+      selectableFields,
+      serviceInteractor,
+      sortableFields,
+      sortInput,
+    })
+  })
 }

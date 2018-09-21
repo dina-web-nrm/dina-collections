@@ -1,3 +1,4 @@
+const createLog = require('../../../../utilities/log')
 const createObjectResponse = require('../transformations/createObjectResponse')
 const extractRelationships = require('../relationships/extractRelationships')
 const createArrayResponse = require('../transformations/createArrayResponse')
@@ -6,25 +7,17 @@ const applyInterceptors = require('../applyInterceptors')
 const applyHooks = require('../applyHooks')
 
 module.exports = function createControllerWrapper({
+  requiredModelMethods = [],
+  enableInterceptors = false,
+  enablePostHooks = false,
+  enablePreHooks = false,
   fileInteractor,
-  model,
   models,
   operation,
-  responseFormat = 'object',
+  responseFormat,
   responseSuccessStatus = 200,
   serviceInteractor,
-  useInterceptors = false,
-  usePostHooks = false,
-  usePreHooks = false,
 }) {
-  console.log('Add checks for all required params. Use schema?')
-  if (!['object', 'array'].includes(responseFormat)) {
-    throw new Error(`Unknown response format: ${responseFormat}`)
-  }
-
-  const responseIsArray = responseFormat === 'array'
-  const responseIsObject = responseFormat === 'object'
-
   const {
     filterSpecification,
     includeRelations,
@@ -33,17 +26,58 @@ module.exports = function createControllerWrapper({
     preHooks: preHooksInput,
     relations,
     resource,
+    operationId,
   } = operation
+  const model = models[resource]
 
-  const interceptors = useInterceptors
+  if (!operationId) {
+    throw new Error(`Operation id missing for controller`)
+  }
+
+  if (!model) {
+    throw new Error('Model is required')
+  }
+
+  if (!serviceInteractor) {
+    throw new Error('Service interactor is required')
+  }
+
+  requiredModelMethods.forEach(method => {
+    if (!model[method]) {
+      throw new Error(`Missing required model method: ${method}`)
+    }
+  })
+
+  if (!['object', 'array'].includes(responseFormat)) {
+    throw new Error(`Unknown response format: ${responseFormat}`)
+  }
+
+  if (!enablePreHooks && preHooksInput) {
+    throw new Error(`Prehooks not enable for ${operationId} controller`)
+  }
+
+  if (!enablePostHooks && postHooksInput) {
+    throw new Error(`Posthooks not enable for ${operationId} controller`)
+  }
+
+  if (!enableInterceptors && interceptorsInput) {
+    throw new Error(`Interceptors not enable for ${operationId} controller`)
+  }
+
+  const responseIsArray = responseFormat === 'array'
+  const responseIsObject = responseFormat === 'object'
+
+  const interceptors = enableInterceptors
     ? createInterceptors({
         customInterceptors: interceptorsInput,
         filterSpecification,
       })
     : []
 
-  const preHooks = usePreHooks && preHooksInput ? preHooksInput : []
-  const postHooks = usePostHooks && postHooksInput ? postHooksInput : []
+  const preHooks = enablePreHooks ? preHooksInput : []
+  const postHooks = enablePostHooks ? postHooksInput : []
+
+  const log = createLog(`controller/${operationId}`)
 
   return function wrapper(controllerHandler) {
     return function requestHandler({
@@ -51,9 +85,11 @@ module.exports = function createControllerWrapper({
       user,
       requestId,
     }) {
+      log.debug(`Called with request id: ${requestId}`)
       return applyHooks({
         fileInteractor,
         hooks: preHooks,
+        log,
         request: originalRequest,
         requestId,
         resource,
@@ -63,6 +99,7 @@ module.exports = function createControllerWrapper({
         .then(() => {
           return applyInterceptors({
             interceptors,
+            log,
             model,
             models,
             operation,
@@ -90,9 +127,17 @@ module.exports = function createControllerWrapper({
                 })
               }
               return controllerHandler({
+                log,
+                model,
+                models,
                 request: originalRequest,
                 requestId,
                 user,
+              }).then(controllerResponse => {
+                return {
+                  ...controllerResponse,
+                  request,
+                }
               })
             }
           )
@@ -103,22 +148,33 @@ module.exports = function createControllerWrapper({
             hooks: postHooks,
             item,
             items,
+            log,
             requestId,
             resource,
             serviceInteractor,
             user,
           }).then(() => {
+            const {
+              queryParams: { relationships: queryParamRelationships = '' } = {},
+            } = request
+
             if (responseIsObject) {
+              const relationships =
+                includeRelations &&
+                extractRelationships({
+                  item,
+                  queryParamRelationships,
+                  relations,
+                })
+
               return createObjectResponse({
                 data: item,
                 id: item.id,
+                relationships,
                 status: responseSuccessStatus,
                 type: resource,
               })
             }
-            const {
-              queryParams: { relationships: queryParamRelationships = '' } = {},
-            } = request
 
             return createArrayResponse({
               items: items.map(arrayItem => {

@@ -1,55 +1,19 @@
-const createObjectResponse = require('../utilities/transformations/createObjectResponse')
-const applyHooks = require('../utilities/applyHooks')
+const createControllerWrapper = require('../utilities/wrapper')
 
-module.exports = function del({
-  fileInteractor,
-  operation,
-  models,
-  serviceInteractor,
-}) {
-  const { resource, postHooks = [], preHooks = [] } = operation
+module.exports = function del(options) {
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: false,
+    enablePostHooks: true,
+    enablePreHooks: true,
+    requiredModelMethods: ['deactivate'],
+    responseFormat: 'object',
+    responseSuccessStatus: 201,
+  })(({ model, request }) => {
+    const { pathParams: { id } } = request
 
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
-  if (!model.deactivate) {
-    throw new Error(`Model missing required method: deactivate for ${resource}`)
-  }
-  return ({ request, user, requestId }) => {
-    return applyHooks({
-      fileInteractor,
-      hooks: preHooks,
-      request,
-      requestId,
-      resource,
-      serviceInteractor,
-      user,
-    }).then(() => {
-      const { pathParams: { id } } = request
-
-      return model
-        .deactivate({ id })
-        .then(({ item } = {}) => {
-          return applyHooks({
-            fileInteractor,
-            hooks: postHooks,
-            item,
-            requestId,
-            resource,
-            serviceInteractor,
-            user,
-          }).then(() => {
-            return item
-          })
-        })
-        .then(output => {
-          return createObjectResponse({
-            data: output,
-            id: output.id,
-            type: resource,
-          })
-        })
+    return model.deactivate({ id }).then(({ item } = {}) => {
+      return { item }
     })
-  }
+  })
 }
