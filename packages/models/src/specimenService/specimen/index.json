@@ -4,29 +4,11 @@
   "x-format": true,
   "x-normalize": true,
   "properties": {
-    "id": {
-      "$ref": "__ROOT__id"
+    "individual": {
+      "$ref": "__ROOT__individual"
     },
     "lid": {
       "$ref": "__ROOT__lid"
-    },
-    "type": {
-      "$ref": "__ROOT__type"
-    },
-    "publishRecord": {
-      "type": "boolean"
-    },
-    "version": {
-      "type": "integer"
-    },
-    "collectionItemsRemarks": {
-      "type": "string"
-    },
-    "readOnly": {
-      "$ref": "__ROOT__readOnly"
-    },
-    "individual": {
-      "$ref": "__ROOT__individual"
     },
     "normalized": {
       "type": "object",
@@ -112,6 +94,19 @@
           "x-column": "recordHistoryEvents"
         }
       }
+    },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
+    },
+    "publishRecord": { "type": "boolean" },
+    "version": {
+      "type": "integer"
+    },
+    "readOnly": {
+      "$ref": "__ROOT__readOnly"
     },
     "relationships": {
       "type": "object",

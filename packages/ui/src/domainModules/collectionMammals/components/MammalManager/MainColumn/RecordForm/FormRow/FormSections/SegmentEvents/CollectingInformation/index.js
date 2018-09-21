@@ -98,6 +98,16 @@ class SegmentCollectingInformation extends PureComponent {
             />
           </Grid.Column>
 
+          <Grid.Column computer={6} mobile={16}>
+            <Field
+              autoComplete="off"
+              component={Input}
+              module="collectionMammals"
+              name={getPath('establishmentMeansN')}
+              type="text"
+            />
+          </Grid.Column>
+
           <Grid.Row>
             <Grid.Column mobile={16}>
               <Header size="small">Collecting date</Header>

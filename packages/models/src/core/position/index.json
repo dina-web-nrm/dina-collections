@@ -5,12 +5,12 @@
     "latitude": {
       "type": "string",
       "description":
-        "Latitude or northing. Prefixed with minus for coordinates on southern hemisphere."
+        "Latitude or northing. Use negative number or letter S for coordinates on southern hemisphere."
     },
     "longitude": {
       "type": "string",
       "description":
-        "Longitude or easting. Prefixed with minus for coordinates on western hemisphere."
+        "Latitude or easting. Use negative number or letter W for coordinates on western hemisphere."
     },
     "geodeticDatum": {
       "type": "string",

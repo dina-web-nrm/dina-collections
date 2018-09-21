@@ -10,17 +10,8 @@
     "curatorialTaxonName": {
       "$ref": "__ROOT__taxonName"
     },
-    "customTaxonNames": {
-      "type": "array",
-      "items": {
-        "$ref": "__ROOT__customTaxonName",
-        "x-reference-type": "internal"
-      }
-    },
+
     "taxonRemarks": {
-      "type": "string"
-    },
-    "typifiedName": {
       "type": "string"
     },
     "readOnly": {
