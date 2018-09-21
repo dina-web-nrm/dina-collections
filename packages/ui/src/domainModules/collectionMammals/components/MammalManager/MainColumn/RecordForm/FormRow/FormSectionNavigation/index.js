@@ -5,6 +5,7 @@ import { compose } from 'redux'
 import objectPath from 'object-path'
 import { Grid, Header, Step, Loader } from 'semantic-ui-react'
 
+import { emToPixels } from 'coreModules/layout/utilities'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import globalSelectors from 'domainModules/collectionMammals/globalSelectors'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
@@ -72,6 +73,7 @@ export class FormSectionNavigation extends PureComponent {
         active={index === activeFormSectionIndex}
         key={index}
         onClick={event => handleSetActiveFormSection(event, index)}
+        style={{ width: emToPixels(21.875) }}
       >
         <Step.Content>
           <Step.Title>
