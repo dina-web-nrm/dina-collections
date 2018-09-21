@@ -69,6 +69,10 @@
       "collectorsText": {
         "en": "Collected by (stated)"
       },
+
+      "establishmentMeansN": {
+        "en": "Established means text"
+      },
       "establishmentMeansType": {
         "en": "Establishment means"
       },
