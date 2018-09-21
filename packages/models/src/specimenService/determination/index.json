@@ -21,7 +21,7 @@
       "$ref": "__ROOT__agent"
     },
     "date": {
-      "$ref": "__ROOT__singleDate"
+      "$ref": "__ROOT__dateRange"
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "additionalProperties": false,
-  "description": "A single date",
+  "description": "A date part",
   "properties": {
     "timestamp": {
       "description": "A date in standard format. TBA",
@@ -8,7 +8,7 @@
       "type": "string"
     },
     "interpretedTimestamp": {
-      "description": "A date in standard format. TBA",
+      "description": "A date in standard format, derived from day, month year.",
       "format": "date-time",
       "type": "string"
     },
