@@ -1,18 +1,21 @@
 const buildWhereFilterFactory = require('../sharedMethods/buildWhereFilterFactory')
+const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
-const deactivateFactory = require('../sharedMethods/deactivateFactory')
+const deactivateFactory = require('./methods/deactivateFactory')
 const getByIdFactory = require('../sharedMethods/getByIdFactory')
 const getCountFactory = require('../sharedMethods/getCountFactory')
 const getOneWhereFactory = require('../sharedMethods/getOneWhereFactory')
 const getWhereFactory = require('../sharedMethods/getWhereFactory')
 const synchronizeFactory = require('../sharedMethods/synchronizeFactory')
 const updateFactory = require('./methods/updateFactory')
+const updatePrimaryKeyFactory = require('../sharedMethods/updatePrimaryKeyFactory')
 
 module.exports = function setupMethods({
   Model,
   schemaModelName,
   schemaVersion,
+  sequelize,
   validate: performValidation,
 }) {
   let validate = () => {
@@ -53,8 +56,23 @@ module.exports = function setupMethods({
     validate,
   })
 
+  const updatePrimaryKey = updatePrimaryKeyFactory({
+    Model,
+    schemaVersion,
+    sequelize,
+    validate,
+  })
+
+  const bulkCreate = bulkCreateFactory({
+    Model,
+    schemaVersion,
+    updatePrimaryKey,
+    validate,
+  })
+
   const coreMethods = {
     buildWhereFilter,
+    bulkCreate,
     create,
     deactivate,
     getById,
