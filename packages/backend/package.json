@@ -19,6 +19,7 @@
     "json2csv": "^4.2.1",
     "keycloak-admin-client": "^0.12.0",
     "keycloak-connect": "^3.4.3",
+    "left-pad": "^1.3.0",
     "object-path": "^0.11.4",
     "object-path-immutable": "^3.0.0",
     "performance-now": "^2.1.0",

@@ -4,7 +4,6 @@ module.exports = [
   'placeService',
   'storageService',
   'taxonomyService',
-
   'authService',
   'curatedEventService',
   'externalEventService',
@@ -15,4 +14,5 @@ module.exports = [
   'jobService',
   'logService',
   'exportService',
+  'identifierService',
 ]
