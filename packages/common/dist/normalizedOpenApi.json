@@ -49,6 +49,10 @@
       "name": "exportService"
     },
     {
+      "description": "Identifier Service\n",
+      "name": "identifierService"
+    },
+    {
       "description": "Service managing jobs.\n",
       "name": "jobService"
     },
@@ -144,9 +148,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "user"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -256,7 +257,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -332,9 +332,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "user"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -350,7 +347,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -878,7 +874,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -994,7 +989,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -1182,7 +1176,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -1258,7 +1251,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -1638,7 +1630,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -1714,7 +1705,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -2094,7 +2084,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -2170,7 +2159,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -2508,6 +2496,15 @@
         "parameters": [
           {
             "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[ids]",
             "description": "Filter by ids",
             "required": false,
@@ -2520,11 +2517,10 @@
           },
           {
             "in": "query",
-            "name": "filter[updatedAfter]",
-            "description": "Filter by updatedAt after specificed timestamp",
+            "name": "filter[key]",
+            "description": "Match for key",
             "required": false,
             "schema": {
-              "format": "date-time",
               "type": "string"
             }
           },
@@ -2550,7 +2546,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -2626,7 +2621,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -3006,7 +3000,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -3082,7 +3075,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -3462,7 +3454,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -3538,7 +3529,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -3869,7 +3859,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -4183,7 +4172,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -4568,6 +4556,685 @@
         ]
       }
     },
+    "/api/identifiers/v01/catalogNumbers/actions/generate": {
+      "post": {
+        "operationId": "catalogNumberGenerate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/catalogNumberGenerateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGenerateResponse"
+                }
+              }
+            },
+            "description": "successful operation"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGenerate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGenerate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Generate catalog number",
+        "tags": [
+          "identifierService"
+        ]
+      }
+    },
+    "/api/identifiers/v01/catalogNumbers": {
+      "post": {
+        "operationId": "catalogNumberCreate",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/catalogNumberCreateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberCreateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberCreate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberCreate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create catalogNumber",
+        "tags": [
+          "identifierService"
+        ]
+      },
+      "get": {
+        "operationId": "catalogNumberGetMany",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[id]",
+            "description": "Filter by id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "description": "Filter by ids",
+            "required": false,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[number]",
+            "description": "Filter by undefined. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[identifier]",
+            "description": "Filter by undefined. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[year]",
+            "description": "Filter by undefined. Provide true to check existance. null to check no existance",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "number",
+                  "attributes.identifier",
+                  "id",
+                  "year"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "number",
+                  "attributes.identifier",
+                  "id",
+                  "year"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "description": "Sort by one or more of available fields",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "number:asc",
+                  "number:desc",
+                  "attributes.identifier:asc",
+                  "attributes.identifier:desc",
+                  "id:asc",
+                  "id:desc",
+                  "year:asc",
+                  "year:desc"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetManyResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetMany-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetMany-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find catalogNumbers",
+        "tags": [
+          "identifierService"
+        ]
+      }
+    },
+    "/api/identifiers/v01/catalogNumbers/{id}": {
+      "delete": {
+        "operationId": "catalogNumberDel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "catalogNumber id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberDelResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberDel-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberDel-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberDel-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberDel-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Deletes catalogNumber",
+        "tags": [
+          "identifierService"
+        ]
+      },
+      "get": {
+        "operationId": "catalogNumberGetOne",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "catalogNumber id",
+            "example": "1",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "excludeFields",
+            "description": "When provided specified fields will be excluded (applied after include)",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "number",
+                  "attributes.identifier",
+                  "id",
+                  "year"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "includeFields",
+            "description": "When provided only specified fields will be returned in response",
+            "required": false,
+            "schema": {
+              "items": {
+                "enum": [
+                  "number",
+                  "attributes.identifier",
+                  "id",
+                  "year"
+                ],
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "Will return mock data",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "exampleId",
+            "description": "Set to return a specific example. If example dont exist 404 will be returned. Only active when combined with mock parameter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetOneResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetOne-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "404": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetOne-404"
+                }
+              }
+            },
+            "description": "Error: 404"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberGetOne-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Find catalogNumber by id",
+        "tags": [
+          "identifierService"
+        ]
+      }
+    },
+    "/api/identifiers/v01/catalogNumbers/actions/validate": {
+      "post": {
+        "operationId": "catalogNumberValidate",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "requireUnique",
+            "description": "If set resource should not exist in database",
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/catalogNumberValidateRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberValidateResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "400": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberValidate-400"
+                }
+              }
+            },
+            "description": "Error: 400"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberValidate-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Validate catalogNumber",
+        "tags": [
+          "identifierService"
+        ]
+      }
+    },
+    "/api/identifiers/v01/catalogNumbers/actions/updateView": {
+      "post": {
+        "operationId": "catalogNumberUpdateView",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/vnd.api+json": {
+              "schema": {
+                "$ref": "#/components/schemas/catalogNumberUpdateViewRequest"
+              }
+            }
+          },
+          "description": "successful operation"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberUpdateViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberUpdateView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberUpdateView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource catalogNumber",
+        "tags": [
+          "identifierService"
+        ]
+      }
+    },
+    "/api/identifiers/v01/catalogNumbers/actions/rebuildView": {
+      "post": {
+        "operationId": "catalogNumberRebuildView",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Limit the result",
+            "schema": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberRebuildViewResponse"
+                }
+              }
+            },
+            "description": "this is a desc"
+          },
+          "403": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberRebuildView-403"
+                }
+              }
+            },
+            "description": "Error: 403"
+          },
+          "500": {
+            "content": {
+              "application/vnd.api+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/catalogNumberRebuildView-500"
+                }
+              }
+            },
+            "description": "Error: 500"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Rebuild view for resource catalogNumber",
+        "tags": [
+          "identifierService"
+        ]
+      }
+    },
     "/api/jobs/v01/jobs": {
       "post": {
         "operationId": "jobCreate",
@@ -4591,7 +5258,7 @@
                 }
               }
             },
-            "description": "successful operation"
+            "description": "this is a desc"
           },
           "400": {
             "content": {
@@ -4707,7 +5374,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -4783,7 +5449,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -5373,7 +6038,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -5449,7 +6113,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -5732,10 +6395,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "parent",
-              "children"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -5907,7 +6566,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -5983,10 +6641,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "parent",
-              "children"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -6003,7 +6657,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -6690,9 +7343,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "storageLocation"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -6735,7 +7385,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -6811,9 +7460,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "storageLocation"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -6829,7 +7475,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -7303,7 +7948,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -8085,7 +8729,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -8511,7 +9154,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -8587,7 +9229,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -9014,7 +9655,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -9090,7 +9730,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -9517,7 +10156,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -9593,7 +10231,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -10020,7 +10657,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -10096,7 +10732,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -10523,7 +11158,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -10599,7 +11233,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -11026,7 +11659,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -11102,7 +11734,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -11529,7 +12160,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -11605,7 +12235,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -12032,7 +12661,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -12108,7 +12736,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -12495,18 +13122,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "causeOfDeathTypes",
-              "establishmentMeansTypes",
-              "featureTypes",
-              "identifierTypes",
-              "normalizedAgents",
-              "physicalObjects",
-              "places",
-              "preparationTypes",
-              "taxonNames",
-              "typeSpecimenType"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -12580,7 +13195,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -12656,18 +13270,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "causeOfDeathTypes",
-              "establishmentMeansTypes",
-              "featureTypes",
-              "identifierTypes",
-              "normalizedAgents",
-              "physicalObjects",
-              "places",
-              "preparationTypes",
-              "taxonNames",
-              "typeSpecimenType"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -12692,7 +13294,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -12920,18 +13521,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "causeOfDeathTypes",
-              "establishmentMeansTypes",
-              "featureTypes",
-              "identifierTypes",
-              "normalizedAgents",
-              "physicalObjects",
-              "places",
-              "preparationTypes",
-              "taxonNames",
-              "typeSpecimenType"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -14534,9 +15123,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "storageLocation"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -14592,7 +15178,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -14668,9 +15253,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "storageLocation"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -14686,7 +15268,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -15113,13 +15694,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "acceptedTaxonNames",
-              "children",
-              "parent",
-              "physicalObjects",
-              "preparationTypes"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -15233,7 +15807,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -15309,13 +15882,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "acceptedTaxonNames",
-              "children",
-              "parent",
-              "physicalObjects",
-              "preparationTypes"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -15335,7 +15901,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -16168,13 +16733,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "acceptedTaxonName",
-              "children",
-              "parent",
-              "synonyms",
-              "vernacularNames"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -16297,7 +16855,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -16373,13 +16930,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "acceptedTaxonName",
-              "children",
-              "parent",
-              "synonyms",
-              "vernacularNames"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -16399,7 +16949,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -17524,11 +18073,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "acceptedToTaxon",
-              "synonymToTaxon",
-              "vernacularToTaxon"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -17613,7 +18157,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -17689,11 +18232,6 @@
             "in": "query",
             "name": "relationships",
             "description": "Relationships to add to the response. Add 0 or many",
-            "example": [
-              "acceptedToTaxon",
-              "synonymToTaxon",
-              "vernacularToTaxon"
-            ],
             "schema": {
               "items": {
                 "enum": [
@@ -17711,7 +18249,6 @@
             "in": "query",
             "name": "mock",
             "description": "Will return mock data",
-            "example": false,
             "schema": {
               "default": false,
               "type": "boolean"
@@ -19338,6 +19875,50 @@
           }
         },
         "x-category": "exportService",
+        "x-modelType": "model",
+        "x-summary": ""
+      },
+      "catalogNumber": {
+        "additionalProperties": false,
+        "description": "A model for catalogNumber",
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "identifier": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "year": {
+            "type": "number",
+            "x-summary": ""
+          },
+          "number": {
+            "type": "number",
+            "x-summary": ""
+          },
+          "schemaVersion": {
+            "type": "string",
+            "x-summary": ""
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string",
+            "x-summary": ""
+          },
+          "id": {
+            "$ref": "#/components/schemas/id",
+            "x-summary": ""
+          },
+          "type": {
+            "$ref": "#/components/schemas/type",
+            "x-summary": ""
+          }
+        },
+        "x-category": "identifierService",
         "x-modelType": "model",
         "x-summary": ""
       },
@@ -24409,6 +24990,492 @@
                   {
                     "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
                   },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberGenerate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "catalogNumberGenerate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberCreate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "catalogNumberCreate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberDel-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "catalogNumberDel-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "catalogNumberDel-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "catalogNumberDel-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberGetOne-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "catalogNumberGetOne-404": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESOURCE_NOT_FOUND_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/404"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Not Found",
+        "type": "object"
+      },
+      "catalogNumberGetOne-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberValidate-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_BODY_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "catalogNumberValidate-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberGetMany-400": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/REQUEST_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/400"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Bad Request",
+        "type": "object"
+      },
+      "catalogNumberGetMany-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RESPONSE_VALIDATION_ERROR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberUpdateView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "catalogNumberUpdateView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/500"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Internal Server Error",
+        "type": "object"
+      },
+      "catalogNumberRebuildView-403": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/FORBIDDEN_ERROR"
+                  }
+                ]
+              },
+              "status": {
+                "$ref": "#/components/schemas/403"
+              }
+            },
+            "type": "object"
+          }
+        ],
+        "title": "Forbidden",
+        "type": "object"
+      },
+      "catalogNumberRebuildView-500": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/BaseError"
+          },
+          {
+            "properties": {
+              "code": {
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/INTERNAL_SERVER_ERROR"
                   }
@@ -37311,6 +38378,165 @@
         "x-summary": "",
         "description": ""
       },
+      "catalogNumberGenerateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberCreateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "catalogNumber",
+                    "enum": [
+                      "catalogNumber"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/catalogNumber"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberValidateRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "catalogNumber",
+                    "enum": [
+                      "catalogNumber"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/catalogNumber"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberUpdateViewRequest": {
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1234"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "enum": [
+                      "customObject"
+                    ],
+                    "type": "string"
+                  },
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  }
+                }
+              }
+            ],
+            "x-summary": ""
+          }
+        },
+        "x-summary": "",
+        "description": ""
+      },
       "jobCreateRequest": {
         "additionalProperties": false,
         "type": "object",
@@ -45786,6 +47012,433 @@
         },
         "type": "object",
         "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberGenerateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/catalogNumber"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "catalogNumber",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers/actions/generate",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberCreateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/catalogNumber"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "catalogNumber",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberDelResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/catalogNumber"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "catalogNumber",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberGetOneResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/catalogNumber"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "catalogNumber",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers/{id}",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberValidateResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers/actions/validate",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberGetManyResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "additionalProperties": false,
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "$ref": "#/components/schemas/catalogNumber"
+                },
+                "id": {
+                  "example": "1234",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "catalogNumber",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-examples": {},
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberUpdateViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers/actions/updateView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
+        "x-summary": "",
+        "description": ""
+      },
+      "catalogNumberRebuildViewResponse": {
+        "additionalProperties": false,
+        "properties": {
+          "data": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "$ref": "#/components/schemas/customObject"
+                  },
+                  "id": {
+                    "example": "1234",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "customObject",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "x-summary": ""
+          },
+          "jsonapi": {
+            "type": "object",
+            "x-summary": ""
+          },
+          "links": {
+            "properties": {
+              "self": {
+                "example": "https://domain/api/identifiers/v01/catalogNumbers/actions/rebuildView",
+                "format": "uri",
+                "type": "string",
+                "x-faker": "internet.url"
+              }
+            },
+            "type": "object",
+            "x-summary": ""
+          },
+          "meta": {
+            "type": "object",
+            "x-summary": ""
+          }
+        },
+        "type": "object",
         "x-summary": "",
         "description": ""
       },
