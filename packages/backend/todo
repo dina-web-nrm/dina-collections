@@ -1,3 +1,19 @@
+
+
+BE
+* Repair tests
+* Add log in controller wrappers for when reached
+* Move identifier types to identifier service?
+* Rename deactivate to delete. Potentially use sequalize internal stuff for this (paranoid)
+* Write api tests for different scenario
+* Fix time reporting
+
+
+
+
+
+
+
 * Add intercept to query
 * Improve getNestedItem to make it possible to specify includes better.
 
@@ -15,7 +31,7 @@ PRE make performance measurement
 * remove FE VALIDATION
 * Dont compile validator schema on the fly
 * Remove mock and example
-* BONUS -> Create minimal export for frontend
+* BONUS -> Create minUimal export for frontend
 * BONUS -> Fix relationships and error duplications
 * BONUS -> Only use schema interface for accessing schema
 * BONUS -> Remove not needed spreads
