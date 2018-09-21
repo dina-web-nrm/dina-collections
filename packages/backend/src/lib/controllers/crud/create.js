@@ -1,10 +1,13 @@
 const createObjectResponse = require('../utilities/transformations/createObjectResponse')
 const transformInput = require('../utilities/transformations/inputObject')
 const applyHooks = require('../utilities/applyHooks')
+const applyInterceptors = require('../utilities/applyInterceptors')
+const createInterceptors = require('../utilities/createInterceptors')
 
 module.exports = function create({
   fileInteractor,
   models,
+  interceptors: customInterceptors,
   operation = {},
   serviceInteractor,
 }) {
@@ -17,26 +20,42 @@ module.exports = function create({
     throw new Error(`Model missing required method: create for ${resource}`)
   }
 
-  return ({ request, user, requestId }) => {
+  const interceptors = createInterceptors({
+    customInterceptors,
+  })
+
+  return ({ request: originalRequest, user, requestId }) => {
     return applyHooks({
       fileInteractor,
       hooks: preHooks,
-      request,
+      request: originalRequest,
       requestId,
       resource,
       serviceInteractor,
       user,
     }).then(() => {
-      const { body } = request
-      const { data: input } = body
-      return model
-        .create(
-          transformInput({
-            input,
-            relations,
-            sourceResource: resource,
-          })
-        )
+      return applyInterceptors({
+        interceptors,
+        model,
+        models,
+        operation,
+        request: originalRequest,
+        serviceInteractor,
+      })
+        .then(({ request, item: itemFromInterceptors }) => {
+          if (itemFromInterceptors) {
+            return Promise.resolve({ item: itemFromInterceptors })
+          }
+          const { body } = request
+          const { data: input } = body
+          return model.create(
+            transformInput({
+              input,
+              relations,
+              sourceResource: resource,
+            })
+          )
+        })
         .then(({ item } = {}) => {
           return applyHooks({
             fileInteractor,
