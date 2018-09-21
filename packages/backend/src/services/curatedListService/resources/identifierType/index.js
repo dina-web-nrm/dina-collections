@@ -10,6 +10,10 @@ const {
   update: updatePostHooks,
 } = require('./data/postHooks')
 
+const {
+  getMany: getManyFilterSpecification,
+} = require('./data/filterSpecifications')
+
 module.exports = {
   basePath: '/api/curatedList/v01',
   model: {
@@ -28,6 +32,7 @@ module.exports = {
       type: 'getOne',
     },
     {
+      filterSpecification: getManyFilterSpecification,
       type: 'getMany',
     },
     {
