@@ -6,6 +6,10 @@
       "type": "string",
       "example": "Before 1800"
     },
+    "dateType": {
+      "type": "string",
+      "enum": ["single", "range", "before"]
+    },
     "remarks": {
       "type": "string",
       "example": "Some remarks"
