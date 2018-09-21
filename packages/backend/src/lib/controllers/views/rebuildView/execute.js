@@ -9,7 +9,7 @@ module.exports = function execute({
       return false
     }
 
-    if (!(item.id || item.attributes)) {
+    if (!(item.id || item.attributes || item.internals)) {
       return false
     }
 
