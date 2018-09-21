@@ -9,6 +9,12 @@ import createLog from 'utilities/log'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { globalSelectors as keyObjectSelectors } from 'domainModules/collectionMammals/keyObjectModule'
+import SegmentCollectionItems from './FormSections/SegmentCollectionItems'
+import SegmentEvents from './FormSections/SegmentEvents'
+import SegmentFeatureObservations from './FormSections/SegmentFeatureObservations'
+import SegmentIdentifiers from './FormSections/SegmentIdentifiers'
+import SegmentOther from './FormSections/SegmentOther'
+import SegmentTaxon from './FormSections/SegmentTaxon'
 import FormSectionNavigation from './FormSectionNavigation'
 import FormSectionView from './FormSectionView'
 
@@ -18,7 +24,28 @@ const log = createLog(
 
 const formSections = [
   {
-    name: 'basicInformation',
+    Component: SegmentIdentifiers,
+    name: 'generalInformation',
+  },
+  {
+    Component: SegmentTaxon,
+    name: 'taxonomy',
+  },
+  {
+    Component: SegmentEvents,
+    name: 'collectingInformation',
+  },
+  {
+    Component: SegmentFeatureObservations,
+    name: 'featureObservations',
+  },
+  {
+    Component: SegmentCollectionItems,
+    name: 'physicalObjects',
+  },
+  {
+    Component: SegmentOther,
+    name: 'other',
   },
 ]
 

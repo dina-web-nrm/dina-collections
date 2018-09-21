@@ -2,23 +2,17 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Grid, Icon } from 'semantic-ui-react'
 
-import Section, {
-  sectionSpecs,
-} from 'domainModules/collectionMammals/components/RecordForm/Sections'
-
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
-  changeFieldValue: PropTypes.func.isRequired,
   formSections: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.func.isRequired,
+      Component: PropTypes.func.isRequired,
     }).isRequired
   ).isRequired,
-  formValueSelector: PropTypes.func.isRequired,
   onGoToNextSection: PropTypes.func.isRequired,
   onGoToPreviousSection: PropTypes.func.isRequired,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
 }
 const defaultProps = {
@@ -33,13 +27,7 @@ class FormSectionView extends PureComponent {
   }
 
   renderActiveSection() {
-    const {
-      activeFormSectionIndex,
-      changeFieldValue,
-      formSections,
-      formValueSelector,
-      removeArrayFieldByIndex,
-    } = this.props
+    const { activeFormSectionIndex, formSections } = this.props
 
     const formSection = formSections[activeFormSectionIndex]
 
@@ -49,57 +37,38 @@ class FormSectionView extends PureComponent {
       )
     }
 
-    const { name } = formSection
+    const { Component } = formSection
 
-    if (!(name && sectionSpecs[name])) {
+    if (!Component) {
       throw new Error(
-        `Missing sectionSpecs for form section index ${
+        `Missing component for form section index ${
           activeFormSectionIndex
-        } with name ${name}`
+        } with name ${formSection.name}`
       )
     }
 
     return (
       <Grid.Column width={16}>
-        <Section
-          changeFieldValue={changeFieldValue}
-          childSpecs={sectionSpecs[name]}
-          formValueSelector={formValueSelector}
-          module="collectionMammals"
-          name={name}
-          removeArrayFieldByIndex={removeArrayFieldByIndex}
-        />
+        <Component {...this.props} />
       </Grid.Column>
     )
   }
 
   renderAllSections() {
-    const {
-      changeFieldValue,
-      formSections,
-      formValueSelector,
-      removeArrayFieldByIndex,
-    } = this.props
+    const { formSections } = this.props
 
     return (
       <React.Fragment>
-        {formSections.map(({ name }) => {
-          if (!(name && sectionSpecs[name])) {
+        {formSections.map(({ Component, name }) => {
+          if (!Component) {
             throw new Error(
-              `Missing sectionSpecs for form section name ${name}`
+              `Missing component for form section with name ${name}`
             )
           }
 
           return (
-            <Grid.Column width={16}>
-              <Section
-                changeFieldValue={changeFieldValue}
-                childSpecs={sectionSpecs[name]}
-                formValueSelector={formValueSelector}
-                module="collectionMammals"
-                name={name}
-                removeArrayFieldByIndex={removeArrayFieldByIndex}
-              />
+            <Grid.Column key={name} width={16}>
+              <Component {...this.props} />
             </Grid.Column>
           )
         })}
@@ -125,7 +94,7 @@ class FormSectionView extends PureComponent {
           overflow: 'auto',
         }}
       >
-        <Grid className="text" container padded>
+        <Grid padded style={{ maxWidth: 1000 }}>
           {!showAllFormSections
             ? this.renderActiveSection()
             : this.renderAllSections()}
