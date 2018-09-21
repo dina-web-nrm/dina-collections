@@ -7,7 +7,6 @@ module.exports = function addMockToQueryParams({ queryParams }) {
     ...updatedQueryParams,
     mock: {
       description: 'Will return mock data',
-      example: false,
       schema: {
         default: false,
         type: 'boolean',

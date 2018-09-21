@@ -12,7 +12,6 @@ module.exports = function addRelationsToQueryParams({
       ...updatedQueryParams,
       relationships: {
         description: 'Relationships to add to the response. Add 0 or many',
-        example: relationEnum,
         schema: {
           items: {
             enum: ['all', ...relationEnum],
