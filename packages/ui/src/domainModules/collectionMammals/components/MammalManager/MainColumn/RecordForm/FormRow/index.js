@@ -8,7 +8,6 @@ import { push } from 'react-router-redux'
 import createLog from 'utilities/log'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout } from 'coreModules/layout/components'
-import { emToPixels } from 'coreModules/layout/utilities'
 import { globalSelectors as keyObjectSelectors } from 'domainModules/collectionMammals/keyObjectModule'
 import FormSectionNavigation from './FormSectionNavigation'
 import FormSectionView from './FormSectionView'
@@ -17,12 +16,16 @@ const log = createLog(
   'modules:collectionMammals::MammalManager:RecordForm:FormRow'
 )
 
-const formSections = [{ name: 'basicInformation' }]
+const formSections = [
+  {
+    name: 'basicInformation',
+  },
+]
 
 const formSectionNavigation = {
   key: 'formSectionNavigation',
   renderColumn: props => <FormSectionNavigation {...props} />,
-  width: emToPixels(25),
+  width: '200px',
 }
 
 const formSectionView = {

@@ -579,62 +579,28 @@
     }
   },
   "formSectionTitles": {
-    "basicInformation": {
-      "en": "Basic information",
+    "generalInformation": {
+      "en": "General information",
       "sv": ""
     },
     "taxonomy": {
       "en": "Taxonomy",
       "sv": ""
     },
-    "localityOrigin": {
-      "en": "Locality & origin",
+    "collectingInformation": {
+      "en": "Collecting information",
       "sv": ""
     },
-    "collectingDeath": {
-      "en": "Collecting & death",
-      "sv": ""
-    },
-    "features": {
-      "en": "Features",
+    "featureObservations": {
+      "en": "Feature observations",
       "sv": ""
     },
     "physicalObjects": {
       "en": "Physical objects",
       "sv": ""
-    }, 
-    "summary": {
-      "en": "Summary",
-      "sv": ""
-    }
-  }, 
-  "formSectionDescriptions": {
-    "basicInformation": {
-      "en": "Identifiers, acquisition, events...",
-      "sv": ""
-    }, 
-    "taxonomy": {
-      "en": "Taxon name, type status, determination",
-      "sv": ""
     },
-    "localityOrigin": {
-      "en": "Collecting locality and origin information",
-      "sv": ""
-    },
-    "collectingDeath": {
-      "en": "Collector, expedition, date, death details",
-      "sv": ""
-    },
-    "features": { 
-      "en": "Age, sex, condition, measurements, bones",
-      "sv": ""
-    },
-    "physicalObjects": {
-      "en": "Skin, skeleton, wet and other preparations...",
-      "sv": ""
-    },
-    "summary": {
-      "en": "Summary of all data about the specimen",  
+    "other": {
+      "en": "Other",
       "sv": ""
     }
   },
