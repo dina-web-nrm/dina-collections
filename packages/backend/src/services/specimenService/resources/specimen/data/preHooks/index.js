@@ -1,14 +1,30 @@
 const backendError400 = require('common/src/error/errorFactories/backendError400')
-const objectPath = require('object-path')
+const extractCatalogNumberFromSpecimen = require('../utilities/extractCatalogNumberFromSpecimen')
+const fetchCatalogNumberIdentifierTypeId = require('../utilities/fetchCatalogNumberIdentifierTypeId')
+const fetchStoredCatalogNumber = require('../utilities/fetchStoredCatalogNumber')
 
-const validateBody = function validateBody({ request }) {
-  const { body } = request
-  if (!objectPath.get(body, 'data.attributes.normalized.identifiers.0.value')) {
-    backendError400({
-      code: 'REQUEST_ERROR',
-      detail: 'Catalog number is required',
-    })
-  }
+const validateBodyUpdate = ({ request, serviceInteractor }) => {
+  return fetchCatalogNumberIdentifierTypeId({ serviceInteractor }).then(
+    typeId => {
+      return extractCatalogNumberFromSpecimen({
+        specimen: request.body.data.attributes,
+        typeId,
+      }).then(catalogNumber => {
+        return fetchStoredCatalogNumber({
+          serviceInteractor,
+          specimenId: request.pathParams.id,
+        }).then(storedCatalogNumber => {
+          if (catalogNumber !== storedCatalogNumber) {
+            backendError400({
+              code: 'REQUEST_ERROR',
+              detail: 'Not allowed to update catalogNumber',
+            })
+          }
+        })
+      })
+    }
+  )
 }
 
-exports.create = [validateBody]
+// exports.create = [validateBodyCreate]
+exports.update = [validateBodyUpdate]

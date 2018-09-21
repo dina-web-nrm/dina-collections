@@ -13,7 +13,7 @@ const {
 const createSuccess = require('./data/exampleRequests/createSuccess.json')
 const updateRequestSuccess = require('./data/exampleRequests/updateSuccess.json')
 
-const { create: createPreHooks } = require('./data/preHooks')
+const { update: updateProHooks } = require('./data/preHooks')
 
 const {
   create: createPostHooks,
@@ -32,12 +32,12 @@ module.exports = {
   },
   operations: [
     {
+      controller: 'createSpecimen',
       errors: {
         '400': ['REQUEST_BODY_VALIDATION_ERROR'],
       },
       exampleRequests: { primary: createSuccess },
       postHooks: createPostHooks,
-      preHooks: createPreHooks,
       type: 'create',
     },
     {
@@ -52,6 +52,7 @@ module.exports = {
     {
       exampleRequests: { primary: updateRequestSuccess },
       postHooks: updatePostHooks,
+      preHooks: updateProHooks,
       type: 'update',
     },
     {
