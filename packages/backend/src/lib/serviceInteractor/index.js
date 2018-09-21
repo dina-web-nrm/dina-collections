@@ -16,6 +16,7 @@ module.exports = function createServiceInteractor() {
     'requestUpdateView',
     'update',
     'updateView',
+    'validate',
   ]
 
   let connectors = null
