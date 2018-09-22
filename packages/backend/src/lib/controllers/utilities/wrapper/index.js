@@ -67,15 +67,13 @@ module.exports = function createControllerWrapper({
   const responseIsArray = responseFormat === 'array'
   const responseIsObject = responseFormat === 'object'
 
-  const interceptors = enableInterceptors
-    ? createInterceptors({
-        customInterceptors: interceptorsInput,
-        filterSpecification,
-      })
-    : []
+  const interceptors = createInterceptors({
+    customInterceptors: (enableInterceptors && interceptorsInput) || [],
+    filterSpecification,
+  })
 
-  const preHooks = enablePreHooks ? preHooksInput : []
-  const postHooks = enablePostHooks ? postHooksInput : []
+  const preHooks = (enablePreHooks && preHooksInput) || []
+  const postHooks = (enablePostHooks && postHooksInput) || []
 
   const log = createLog(`controller/${operationId}`)
 
@@ -203,6 +201,10 @@ module.exports = function createControllerWrapper({
               type: resource,
             })
           })
+        })
+        .catch(err => {
+          log.err('Received Error')
+          throw err
         })
     }
   }
