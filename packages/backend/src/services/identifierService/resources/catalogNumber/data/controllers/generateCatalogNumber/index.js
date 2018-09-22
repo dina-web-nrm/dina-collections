@@ -1,53 +1,45 @@
 const getCurrentYear = require('common/src/date/getCurrentYear')
 const generateCatalogNumber = require('../../utilities/generateCatalogNumber')
+const createControllerWrapper = require('../../../../../../../lib/controllers/utilities/wrapper')
 
-const createObjectResponse = require('../../../../../../../lib/controllers/utilities/transformations/createObjectResponse')
+module.exports = function generateCatalogNumberController(options) {
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: true,
+    enablePostHooks: true,
+    enablePreHooks: true,
+    requiredModelMethods: ['create'],
+    responseFormat: 'object',
+    responseSuccessStatus: 201,
+  })(({ log, model, serviceInteractor }) => {
+    const recursiveCreate = ({ prevNumber, retryCount = 0, year }) => {
+      const { newNumber, identifier } = generateCatalogNumber({
+        prevNumber,
+        year,
+      })
 
-module.exports = function generateCatalogNumberController({
-  models,
-  operation = {},
-  serviceInteractor,
-}) {
-  const { resource } = operation
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
-  if (!model.create) {
-    throw new Error(`Model missing required method: create for ${resource}`)
-  }
-
-  const recursiveCreate = ({ prevNumber, retryCount = 0, year }) => {
-    const { newNumber, identifier } = generateCatalogNumber({
-      prevNumber,
-      year,
-    })
-
-    return model
-      .create({
-        item: {
-          attributes: {
-            identifier,
-            number: newNumber,
-            year,
+      return model
+        .create({
+          item: {
+            attributes: {
+              identifier,
+              number: newNumber,
+              year,
+            },
           },
-        },
-      })
-      .catch(err => {
-        if (retryCount > 4) {
-          console.log(`Failed 5 times generating new catalogNumber`)
-          throw err
-        }
-        return recursiveCreate({
-          prevNumber: newNumber,
-          retryCount: retryCount + 1,
-          year,
         })
-      })
-  }
-
-  return () => {
-    // 1.validate request
+        .catch(err => {
+          if (retryCount > 4) {
+            log.err(`Failed 5 times generating new catalogNumber`)
+            throw err
+          }
+          return recursiveCreate({
+            prevNumber: newNumber,
+            retryCount: retryCount + 1,
+            year,
+          })
+        })
+    }
 
     const year = getCurrentYear()
     return serviceInteractor
@@ -70,13 +62,8 @@ module.exports = function generateCatalogNumberController({
           prevNumber,
           year,
         }).then(({ item }) => {
-          return createObjectResponse({
-            data: item,
-            id: item.id,
-            status: 201,
-            type: resource,
-          })
+          return { item }
         })
       })
-  }
+  })
 }

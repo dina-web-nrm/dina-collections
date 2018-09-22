@@ -126,19 +126,24 @@ module.exports = function createControllerWrapper({
                   request,
                 })
               }
-              return controllerHandler({
-                log,
-                model,
-                models,
-                request: originalRequest,
-                requestId,
-                user,
-              }).then(controllerResponse => {
-                return {
-                  ...controllerResponse,
-                  request,
-                }
-              })
+              return Promise.resolve()
+                .then(() => {
+                  return controllerHandler({
+                    log,
+                    model,
+                    models,
+                    request,
+                    requestId,
+                    serviceInteractor,
+                    user,
+                  })
+                })
+                .then(controllerResponse => {
+                  return {
+                    ...controllerResponse,
+                    request,
+                  }
+                })
             }
           )
         })
