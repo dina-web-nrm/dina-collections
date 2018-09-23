@@ -2,25 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ModuleTranslate } from 'coreModules/i18n/components'
 
-const propTypes = {
-  error: PropTypes.shape({
-    errorCode: PropTypes.string.isRequired,
-    params: PropTypes.object,
-  }).isRequired,
-  module: PropTypes.string,
-  scope: PropTypes.string,
-  textKeys: PropTypes.array,
-  warning: PropTypes.bool,
-}
-
-const defaultProps = {
-  module: '',
-  scope: undefined,
-  textKeys: [],
-  warning: false,
-}
-
-const errorStyle = {
+const defaultErrorStyle = {
   bottom: 0,
   left: 0,
   position: 'absolute',
@@ -29,10 +11,30 @@ const errorStyle = {
   zIndex: 20,
 }
 
-const FormFieldError = ({ scope, error, module, textKeys, warning }) => {
+const propTypes = {
+  error: PropTypes.shape({
+    errorCode: PropTypes.string.isRequired,
+    params: PropTypes.object,
+  }).isRequired,
+  module: PropTypes.string,
+  scope: PropTypes.string,
+  style: PropTypes.object,
+  textKeys: PropTypes.array,
+  warning: PropTypes.bool,
+}
+
+const defaultProps = {
+  module: '',
+  scope: undefined,
+  style: defaultErrorStyle,
+  textKeys: [],
+  warning: false,
+}
+
+const FormFieldError = ({ scope, error, module, style, textKeys, warning }) => {
   if (textKeys.length) {
     return (
-      <span className="ui red tiny label" style={errorStyle}>
+      <span className="ui red tiny label" style={style}>
         <ModuleTranslate capitalize params={error.params} textKeys={textKeys} />
       </span>
     )
@@ -41,7 +43,7 @@ const FormFieldError = ({ scope, error, module, textKeys, warning }) => {
   const classNames = warning ? 'ui orange tiny label' : 'ui red tiny label'
 
   return (
-    <span className={classNames} style={errorStyle}>
+    <span className={classNames} style={style}>
       {module ? (
         <ModuleTranslate
           capitalize
