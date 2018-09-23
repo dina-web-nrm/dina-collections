@@ -10,6 +10,7 @@ export const propTypes = {
   displayError: PropTypes.bool,
   displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
+  errorStyle: PropTypes.object,
   float: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -30,6 +31,7 @@ export const defaultProps = {
   displayError: undefined,
   displayLabel: true,
   enableHelpNotifications: true,
+  errorStyle: undefined,
   float: undefined,
   helpNotificationProps: undefined,
   helpText: undefined,
@@ -50,6 +52,7 @@ const FieldTemplate = ({
   displayError: displayErrorInput,
   displayLabel,
   enableHelpNotifications,
+  errorStyle,
   float,
   helpNotificationProps,
   helpText,
@@ -97,7 +100,12 @@ const FieldTemplate = ({
           />
         )}
       {displayError && (
-        <FieldError error={error} module={module} parameterKey={parameterKey} />
+        <FieldError
+          error={error}
+          module={module}
+          parameterKey={parameterKey}
+          style={errorStyle}
+        />
       )}
     </Form.Field>
   )
