@@ -33,6 +33,7 @@ apiDescribe('specimen', () => {
         }
         return makeTestCall({
           body: emptyRelationships,
+          flushModels: ['catalogNumber'],
           operationId: 'specimenUpdateRelationshipPhysicalObjects',
           pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
@@ -80,6 +81,7 @@ apiDescribe('specimen', () => {
         return expectError404(
           makeTestCall({
             body: emptyRelationships,
+            flushModels: ['catalogNumber'],
             operationId: 'specimenUpdateRelationshipPhysicalObjects',
             pathParams: { id: '4433441' },
           })
@@ -92,6 +94,7 @@ apiDescribe('specimen', () => {
         }
         return makeTestCall({
           body: newRelationships,
+          flushModels: ['catalogNumber'],
           operationId: 'specimenUpdateRelationshipPhysicalObjects',
           pathParams: { id: simpleDataPhysicalObjectRelationsId },
         })
@@ -145,6 +148,7 @@ apiDescribe('specimen', () => {
     beforeEach(() => {
       return makeTestCall({
         body: getTestData('simpleDataNoRelations'),
+        flushModels: ['catalogNumber'],
         operationId: 'specimenCreate',
       }).then(response => {
         simpleDataNoRelationsId = response.data.id
@@ -156,6 +160,7 @@ apiDescribe('specimen', () => {
       }
       return makeTestCall({
         body: newRelationships,
+        flushModels: ['catalogNumber'],
         operationId: 'specimenUpdateRelationshipPhysicalObjects',
         pathParams: { id: simpleDataNoRelationsId },
       })

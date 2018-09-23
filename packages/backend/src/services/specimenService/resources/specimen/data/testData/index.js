@@ -18,11 +18,11 @@ testData.badRequestMissingCatalogNumber = {
 }
 
 testData.initialRelationships = {
-  agents: { data: [] },
   causeOfDeathTypes: { data: [] },
   establishmentMeansTypes: { data: [] },
   featureTypes: { data: [] },
   identifierTypes: { data: [] },
+  normalizedAgents: { data: [] },
   physicalObjects: { data: [] },
   places: { data: [] },
   preparationTypes: { data: [] },

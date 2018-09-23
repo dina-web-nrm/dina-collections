@@ -19,6 +19,7 @@ apiDescribe('specimen', () => {
       it('Succeed with full form example', () => {
         return makeTestCall({
           body: fullFormExample,
+          flushModels: ['catalogNumber'],
           operationId: 'specimenCreate',
         }).then(response => {
           expectSingleResourceResponse({
@@ -27,19 +28,12 @@ apiDescribe('specimen', () => {
           })
         })
       })
-      it('Fails create with missing catalog number', () => {
-        return expectError400(
-          makeTestCall({
-            body: getTestData('badRequestMissingCatalogNumber'),
-            operationId: 'specimenCreate',
-          })
-        )
-      })
     })
     describe('relations', () => {
       it('Succeed with simpleDataNoRelations and responseource are created with default relationships', () => {
         return makeTestCall({
           body: getTestData('simpleDataNoRelations'),
+          flushModels: ['catalogNumber'],
           operationId: 'specimenCreate',
         }).then(createdSpecimen => {
           return makeTestCall({
@@ -52,11 +46,11 @@ apiDescribe('specimen', () => {
             expectSingleResourceResponse({
               expectedType: 'specimen',
               relationships: {
-                agents: { data: [] },
                 causeOfDeathTypes: { data: [] },
                 establishmentMeansTypes: { data: [] },
                 featureTypes: { data: [] },
                 identifierTypes: { data: [] },
+                normalizedAgents: { data: [] },
                 physicalObjects: { data: [] },
                 places: { data: [] },
                 preparationTypes: { data: [] },
@@ -74,6 +68,7 @@ apiDescribe('specimen', () => {
         )
         return makeTestCall({
           body: simpleDataPhysicalObjectRelations,
+          flushModels: ['catalogNumber'],
           operationId: 'specimenCreate',
         })
           .then(response => {
@@ -96,13 +91,9 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   ...simpleDataPhysicalObjectRelations.data.relationships,
-                  agents: {
-                    data: [],
-                  },
                   causeOfDeathTypes: {
                     data: [],
                   },
-
                   establishmentMeansTypes: {
                     data: [],
                   },
@@ -112,7 +103,9 @@ apiDescribe('specimen', () => {
                   identifierTypes: {
                     data: [],
                   },
-
+                  normalizedAgents: {
+                    data: [],
+                  },
                   places: { data: [] },
                   preparationTypes: {
                     data: [],
@@ -136,6 +129,7 @@ apiDescribe('specimen', () => {
         )
         return makeTestCall({
           body: simpleDataMultipleRelations,
+          flushModels: ['catalogNumber'],
           operationId: 'specimenCreate',
         })
           .then(response => {
@@ -159,17 +153,16 @@ apiDescribe('specimen', () => {
                 expectedType: 'specimen',
                 relationships: {
                   ...simpleDataMultipleRelations.data.relationships,
-                  agents: {
-                    data: [],
-                  },
                   causeOfDeathTypes: {
                     data: [],
                   },
-
                   establishmentMeansTypes: {
                     data: [],
                   },
                   identifierTypes: {
+                    data: [],
+                  },
+                  normalizedAgents: {
                     data: [],
                   },
                   preparationTypes: {
@@ -193,6 +186,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: getTestData('simpleDataInvalidRelations'),
+            flushModels: ['catalogNumber'],
             operationId: 'specimenCreate',
           })
         )
@@ -201,6 +195,7 @@ apiDescribe('specimen', () => {
         return expectError400(
           makeTestCall({
             body: getTestData('simpleDataInvalidRelationsFormat'),
+            flushModels: ['catalogNumber'],
             operationId: 'specimenCreate',
           })
         )

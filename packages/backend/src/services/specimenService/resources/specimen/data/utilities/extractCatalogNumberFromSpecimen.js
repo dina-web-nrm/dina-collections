@@ -1,12 +1,11 @@
 const backendError400 = require('common/src/error/errorFactories/backendError400')
 const extractIdentifiersFromSpecimen = require('./extractIdentifiersFromSpecimen')
 
-module.exports = function extractCatalogNumberFromAttributes({
+module.exports = function extractCatalogNumberFromSpecimen({
   identifierTypeId,
   specimen,
 }) {
   const identifiers = extractIdentifiersFromSpecimen(specimen)
-
   const catalogNumberIdentifiers = identifiers.filter(identifier => {
     return identifier.identifierType.id === identifierTypeId
   })

@@ -45,6 +45,16 @@ module.exports = {
       factory: generateCatalogNumberOperationFactory,
     },
     {
+      exampleRequests: {
+        primary: {
+          data: {
+            attributes: {
+              identifier: '123432',
+            },
+            type: 'catalogNumber',
+          },
+        },
+      },
       preHooks: createPreHooks,
       type: 'create',
     },

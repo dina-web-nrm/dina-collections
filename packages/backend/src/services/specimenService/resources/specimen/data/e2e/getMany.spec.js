@@ -19,6 +19,7 @@ apiDescribe('specimen', () => {
     beforeEach(() => {
       return makeTestCall({
         body: fullFormExample,
+        flushModels: ['catalogNumber'],
         operationId: 'specimenCreate',
       })
     })
@@ -74,6 +75,7 @@ apiDescribe('specimen', () => {
 
         return makeTestCall({
           body: modifiedSimpleDataRelations,
+          flushModels: ['catalogNumber'],
           operationId: 'specimenCreate',
         })
       })
