@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import { Grid, Segment } from 'semantic-ui-react'
 
 import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
-import Unit, { unitSpecs } from '../../Units'
+import Unit from '../Unit'
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
@@ -20,6 +20,15 @@ const propTypes = {
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   setChildDirty: PropTypes.func.isRequired,
   setChildInvalid: PropTypes.func.isRequired,
+  unitSpecs: PropTypes.objectOf(
+    PropTypes.shape({
+      items: PropTypes.arrayOf(
+        PropTypes.shape({
+          componentName: PropTypes.string.isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired
+  ).isRequired,
 }
 
 class Section extends PureComponent {
@@ -32,6 +41,7 @@ class Section extends PureComponent {
       removeArrayFieldByIndex,
       setChildDirty,
       setChildInvalid,
+      unitSpecs,
     } = this.props
 
     return (

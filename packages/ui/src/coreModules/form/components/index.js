@@ -17,6 +17,7 @@ export {
 export { default as RangeDate } from './fields/Date/RangeDate'
 export { default as Remarks } from './fields/Remarks'
 export { default as Search } from './fields/Search'
+export { default as Section } from './Section'
 export { default as SingleDate } from './fields/Date/SingleDate'
 export { default as TextArea } from './fields/TextArea'
 export { default as TextAreaInput } from './inputs/TextArea'
@@ -24,3 +25,4 @@ export {
   default as TogglableDropdownSearch,
 } from './fields/DropdownSearch/TogglableDropdownSearch'
 export { default as TogglableField } from './TogglableField'
+export { default as Unit } from './Unit'

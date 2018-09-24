@@ -7,7 +7,7 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
 import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
-import * as Parts from '../../Parts'
+import * as Parts from '../parts'
 
 const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
   if (
