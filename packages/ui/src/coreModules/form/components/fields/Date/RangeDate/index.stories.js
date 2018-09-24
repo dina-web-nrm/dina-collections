@@ -118,25 +118,34 @@ storiesOf('coreModules/form/Fields/Date/RangeDate', module)
       />
     </FormWrapper>
   ))
-  .add('empty before', () => (
+  .add('empty latest', () => (
     <FormWrapper>
       <Field
         autoComplete="off"
         component={RangeDate}
-        initialDateType="before"
+        initialDateType="latest"
         input={input}
         module="form"
         name={fieldName}
       />
     </FormWrapper>
   ))
-  .add('filled before', () => (
+  .add('filled latest', () => (
     <FormWrapper>
       <Field
         autoComplete="off"
         component={RangeDate}
-        initialDateType="before"
-        input={{ ...input, value }}
+        initialDateType="latest"
+        input={{
+          ...input,
+          value: {
+            endDate: {
+              day: 24,
+              month: 12,
+              year: 1900,
+            },
+          },
+        }}
         module="form"
         name={fieldName}
       />

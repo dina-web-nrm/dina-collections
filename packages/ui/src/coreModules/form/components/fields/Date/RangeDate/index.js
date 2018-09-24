@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import objectPath from 'object-path'
 
 import config from 'config'
-import { BEFORE, RANGE, SINGLE } from 'coreModules/form/constants'
+import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 import { emToPixels } from 'coreModules/layout/utilities'
 import FieldTemplate from '../../../FieldTemplate'
 import {
@@ -25,7 +25,7 @@ export const defaultValidate = [
   pastDateRange,
 ]
 
-const DATE_TYPES = [SINGLE, RANGE, BEFORE]
+const DATE_TYPES = [SINGLE, RANGE, LATEST]
 
 const errorStyle = {
   width: emToPixels(26.875),
@@ -36,8 +36,8 @@ const propTypes = {
   displayDateTypeRadios: PropTypes.bool,
   displayLabel: PropTypes.bool,
   displaySubLabels: PropTypes.bool,
-  initialDateType: PropTypes.oneOf([BEFORE, RANGE, SINGLE]),
   input: PropTypes.object.isRequired,
+  initialDateType: PropTypes.oneOf([LATEST, RANGE, SINGLE]),
   meta: PropTypes.object.isRequired,
   module: PropTypes.string,
   mountHidden: PropTypes.bool,
@@ -144,7 +144,7 @@ class DateRange extends Component {
       this.props.input.onChange(updatedValue)
 
       // setTimeout needed to allow component to mount first, if necessary
-      if (nextDateType === BEFORE) {
+      if (nextDateType === LATEST) {
         setTimeout(() => this.handleFocusEndYear())
       } else {
         setTimeout(() => this.handleFocusStartYear())
@@ -213,7 +213,7 @@ class DateRange extends Component {
           />
         )}
         <DatePart
-          disabled={dateType === BEFORE}
+          disabled={dateType === LATEST}
           displayLabel={displaySubLabels}
           input={this.getFieldInput('startDate')}
           isStartDate

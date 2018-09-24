@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-import { BEFORE, RANGE, SINGLE } from 'coreModules/form/constants'
+import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 
 const monthToDaysMap = {
   1: 31,
@@ -159,7 +159,7 @@ export const getRangeValue = ({
   updatedDatePartName,
   updatedDatePartValue,
 }) => {
-  if (dateType === BEFORE && updatedDatePartName === 'endDate') {
+  if (dateType === LATEST && updatedDatePartName === 'endDate') {
     return {
       dateType,
       endDate: updatedDatePartValue,
@@ -197,13 +197,13 @@ export const getRangeValueAfterDateTypeChange = ({
 }) => {
   const updatedValue = { ...currentRangeValue, dateType: nextDateType }
 
-  if (previousDateType === BEFORE && nextDateType === RANGE) {
+  if (previousDateType === LATEST && nextDateType === RANGE) {
     // keep end date, but clear start date
     updatedValue.startDate = {}
-  } else if (previousDateType === BEFORE && nextDateType === SINGLE) {
+  } else if (previousDateType === LATEST && nextDateType === SINGLE) {
     updatedValue.startDate = {}
     updatedValue.endDate = {}
-  } else if (previousDateType === RANGE && nextDateType === BEFORE) {
+  } else if (previousDateType === RANGE && nextDateType === LATEST) {
     if (
       currentRangeValue.endDate &&
       currentRangeValue.endDate.interpretedTimestamp
@@ -231,7 +231,7 @@ export const getRangeValueAfterDateTypeChange = ({
       updatedValue.endDate = {}
       updatedValue.startDate = {}
     }
-  } else if (previousDateType === SINGLE && nextDateType === BEFORE) {
+  } else if (previousDateType === SINGLE && nextDateType === LATEST) {
     updatedValue.endDate = {}
     updatedValue.startDate = {}
   } else if (previousDateType === SINGLE && nextDateType === RANGE) {

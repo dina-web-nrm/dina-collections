@@ -1,4 +1,4 @@
-export const BEFORE = 'before'
+export const LATEST = 'latest'
 export const DAY = 'day'
 export const MODULE_NAME = 'form'
 export const MONTH = 'month'
