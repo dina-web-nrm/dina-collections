@@ -28,7 +28,7 @@ export const defaultValidate = [
 const DATE_TYPES = [SINGLE, RANGE, LATEST]
 
 const errorStyle = {
-  width: emToPixels(26.875),
+  width: emToPixels(25),
 }
 
 const propTypes = {

@@ -14,13 +14,13 @@ const inputMonthStyle = {
   float: 'left',
   paddingLeft: '0.2em',
   paddingRight: '0.2em',
-  width: '4em',
+  width: '3.5em',
 }
 
 const inputDayStyle = {
   float: 'left',
   paddingLeft: '0.2em',
-  width: '4em',
+  width: '3.5em',
 }
 
 const propTypes = {
