@@ -24,6 +24,7 @@ export const propTypes = {
   name: PropTypes.string,
   parameterKey: PropTypes.string,
   required: PropTypes.bool,
+  style: PropTypes.object,
   subLabel: PropTypes.bool,
 }
 export const defaultProps = {
@@ -42,6 +43,7 @@ export const defaultProps = {
   name: undefined,
   parameterKey: undefined,
   required: false,
+  style: {},
   subLabel: undefined,
 }
 
@@ -62,6 +64,7 @@ const FieldTemplate = ({
   name,
   parameterKey,
   required,
+  style,
   subLabel,
 }) => {
   const { error, touched, warning } = meta
@@ -74,7 +77,12 @@ const FieldTemplate = ({
     <Form.Field
       error={displayError}
       required={required}
-      style={{ float, position: 'relative', width: float ? '100%' : undefined }}
+      style={{
+        float,
+        position: 'relative',
+        width: float ? '100%' : undefined,
+        ...style,
+      }}
     >
       {displayLabel && (
         <FieldLabel
