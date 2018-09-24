@@ -38,7 +38,10 @@
 │   │   ├── index.js
 │   │   ├── query.js
 │   │   ├── update.js
-│   │   └── updateRelationship.js
+│   │   └── updateRelationship
+│   │       ├── index.js
+│   │       ├── updateJsonRelationship
+│   │       └── updateSqlRelationship
 │   ├── import
 │   │   ├── importDataFromFile
 │   │   │   └── index.js
@@ -50,8 +53,13 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
+│   ├── relationshipsUtilities
 │   ├── utilities
-│   │   ├── getAncestors
+│   │   ├── applyHooks
+│   │   │   └── index.js
+│   │   ├── applyInterceptors
+│   │   │   └── index.js
+│   │   ├── createInterceptors
 │   │   │   └── index.js
 │   │   ├── relationships
 │   │   │   ├── buildIncludeArray.js
@@ -61,9 +69,7 @@
 │   │   │   ├── getJsonRelationship
 │   │   │   ├── getSqlRelationship
 │   │   │   ├── shouldIncludeRelation.js
-│   │   │   ├── shouldIncludeRelation.spec.js
-│   │   │   ├── updateJsonRelationship
-│   │   │   └── updateSqlRelationship
+│   │   │   └── shouldIncludeRelation.spec.js
 │   │   └── transformations
 │   │       ├── createArrayResponse.js
 │   │       ├── createObjectResponse.js
@@ -129,14 +135,21 @@
 │   │   │   ├── index.js
 │   │   │   ├── name.js
 │   │   │   ├── nameSearch.js
+│   │   │   ├── nodesWithCircularDependencies.js
 │   │   │   ├── parentId.js
 │   │   │   ├── raw.js
 │   │   │   └── updatedAfter.js
 │   │   └── utilities
 │   │       └── createGetManyFilterSpecifications.js
 │   ├── hooks
-│   │   └── factories
-│   │       └── createRegisterResourceActivityHook.js
+│   │   ├── factories
+│   │   │   └── createRegisterResourceActivityHook.js
+│   │   └── sharedHooks
+│   │       └── ensureNoCircularAncestorsPreHook.js
+│   ├── interceptors
+│   │   └── sharedInterceptors
+│   │       ├── ancestorsToId.js
+│   │       └── nodesWithCircularDependencies.js
 │   ├── mappings
 │   │   ├── factories
 │   │   │   ├── createDateMapping.js
@@ -277,6 +290,7 @@
 │   │       ├── addQueryParamsFromFilterSpecifications.js
 │   │       ├── addRelationsToQueryParams.js
 │   │       ├── addSortingToQueryParams.js
+│   │       ├── buildQueryRequest
 │   │       └── buildRelations.js
 │   ├── importOperations
 │   │   ├── importDataFromFile.js

@@ -15,6 +15,9 @@
 │   │   │   ├── filter
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
+│   │   ├── TogglableAgentDropdownPickerSearch
+│   │   │   ├── AgentIdTextResult.js
+│   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
 │   ├── index.js
@@ -38,25 +41,14 @@
 │   │   └── updateSearchParameter.js
 │   ├── actionTypes.js
 │   ├── components
-│   │   ├── CreateSpecimen
-│   │   │   └── index.js
-│   │   ├── EditSpecimen
-│   │   │   └── index.js
-│   │   ├── MammalForm
-│   │   │   ├── FormActions.js
-│   │   │   ├── Scenarios
-│   │   │   ├── SegmentCollectionItems
-│   │   │   ├── SegmentEvents
-│   │   │   ├── SegmentFeatureObservations
-│   │   │   ├── SegmentIdentifiers
-│   │   │   ├── SegmentOther
-│   │   │   ├── SegmentTaxon
-│   │   │   ├── index.js
-│   │   │   └── transformations
 │   │   ├── MammalManager
 │   │   │   ├── FilterColumn
 │   │   │   ├── MainColumn
 │   │   │   └── index.js
+│   │   ├── RecordForm
+│   │   │   ├── Parts
+│   │   │   ├── Sections
+│   │   │   └── Units
 │   │   └── index.js
 │   ├── constants.js
 │   ├── endpoints.js
