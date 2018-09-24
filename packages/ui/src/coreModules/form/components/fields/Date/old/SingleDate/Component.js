@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import extractProps from 'utilities/extractProps'
-import SingleDate from '../../../inputs/Date/SingleDate'
+import SingleDate from '../../../../inputs/Date/old/SingleDate'
 
-import FieldTemplate, { fieldTemplatePropKeys } from '../../../FieldTemplate'
+import FieldTemplate, { fieldTemplatePropKeys } from '../../../../FieldTemplate'
 
 const propTypes = {
   input: PropTypes.shape({

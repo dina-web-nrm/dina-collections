@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Button } from 'semantic-ui-react'
-import FieldTemplate from '../../../FieldTemplate'
+import FieldTemplate from '../../../../FieldTemplate'
 
 const propTypes = {
   displaySubLabel: PropTypes.bool,

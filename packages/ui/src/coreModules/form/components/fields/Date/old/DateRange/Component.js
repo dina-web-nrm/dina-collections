@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import extractProps from 'utilities/extractProps'
-import DateRange from '../../../inputs/Date/DateRange'
-import FieldTemplate, { fieldTemplatePropKeys } from '../../../FieldTemplate'
+import DateRange from '../../../../inputs/Date/old/DateRange'
+import FieldTemplate, { fieldTemplatePropKeys } from '../../../../FieldTemplate'
 
 const propTypes = {
   input: PropTypes.object.isRequired,
