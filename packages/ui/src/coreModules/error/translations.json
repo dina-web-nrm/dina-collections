@@ -27,6 +27,18 @@
     "en": "Required",
     "sv": "Obligatorisk"
   },
+  "DATE_ORPHAN_DAY": {
+    "en": "A day must have month and year",
+    "sv": ""
+  },
+  "DATE_ORPHAN_MONTH": {
+    "en": "A month must have year",
+    "sv": ""
+  },
+  "DATE_CANNOT_BE_INTERPRETED": {
+    "en": "Invalid date",
+    "sv": ""
+  },
   "DATE_PAST": {
     "en": "Only past dates allowed"
   },
