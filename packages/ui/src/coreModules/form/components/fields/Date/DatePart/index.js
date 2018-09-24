@@ -147,7 +147,6 @@ class SingleDate extends Component {
               onFocus={event => {
                 this.handleOnFocus({ event, field: 'year' })
               }}
-              placeholder="yyyy"
               ref={setYearInputRef}
               type="number"
               value={year || ''}
@@ -178,7 +177,6 @@ class SingleDate extends Component {
               onFocus={event => {
                 this.handleOnFocus({ event, field: 'month' })
               }}
-              placeholder="mm"
               type="number"
               value={month || ''}
             />
@@ -208,7 +206,6 @@ class SingleDate extends Component {
               onFocus={event => {
                 this.handleOnFocus({ event, field: 'day' })
               }}
-              placeholder="dd"
               type="number"
               value={day || ''}
             />
