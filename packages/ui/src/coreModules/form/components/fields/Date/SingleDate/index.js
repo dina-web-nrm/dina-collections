@@ -22,7 +22,7 @@ const SingleDate = ({ input, meta, module, name }) => {
     <RangeDate
       displayDateTypeRadios={false}
       displayLabel
-      displaySubLabels={false}
+      displaySubLabels
       initialDateType="single"
       input={input}
       meta={meta}
