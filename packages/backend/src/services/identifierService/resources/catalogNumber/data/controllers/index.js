@@ -1,0 +1,1 @@
+exports.generateCatalogNumber = require('./generateCatalogNumber')

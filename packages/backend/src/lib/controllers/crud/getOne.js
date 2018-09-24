@@ -1,21 +1,23 @@
 const backendError404 = require('common/src/error/errorFactories/backendError404')
-const createObjectResponse = require('../utilities/transformations/createObjectResponse')
+const createControllerWrapper = require('../utilities/wrapper')
 const buildIncludeArray = require('../utilities/relationships/buildIncludeArray')
-const extractRelationships = require('../utilities/relationships/extractRelationships')
 
-module.exports = function getOne({ operation, models }) {
-  const { includeRelations, relations, resource, selectableFields } = operation
+module.exports = function getOne(options) {
+  const {
+    models,
+    operation: { includeRelations, relations, resource, selectableFields },
+  } = options
 
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: false,
+    enablePostHooks: false,
+    enablePreHooks: false,
 
-  if (!model.getById) {
-    throw new Error(`Model missing required method: getById for ${resource}`)
-  }
-
-  return ({ request }) => {
+    requiredModelMethods: ['getById'],
+    responseFormat: 'object',
+    responseSuccessStatus: 200,
+  })(({ model, request }) => {
     const {
       pathParams: { id },
       queryParams: {
@@ -49,20 +51,9 @@ module.exports = function getOne({ operation, models }) {
             detail: `${resource} with id: ${id} not found`,
           })
         }
-        const relationships =
-          includeRelations &&
-          extractRelationships({
-            item,
-            queryParamRelationships,
-            relations,
-          })
-
-        return createObjectResponse({
-          data: item,
-          id: item.id,
-          relationships,
-          type: resource,
-        })
+        return {
+          item,
+        }
       })
-  }
+  })
 }

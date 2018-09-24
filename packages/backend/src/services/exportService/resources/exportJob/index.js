@@ -56,6 +56,18 @@ module.exports = {
       type: 'del',
     },
     {
+      exampleRequests: {
+        primary: {
+          data: {
+            attributes: {
+              exportFields: ['id'],
+              exportIds: [1, 2, 3],
+              resource: 'specimen',
+            },
+            type: 'exportJob',
+          },
+        },
+      },
       postHooks: createPostHooks,
       preHooks: createPreHooks,
       type: 'create',

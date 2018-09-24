@@ -1,0 +1,33 @@
+{
+  "additionalProperties": false,
+  "description": "A model for catalogNumber",
+  "type": "object",
+  "properties": {
+    "createdAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "year": {
+      "type": "number"
+    },
+    "number": {
+      "type": "number"
+    },
+    "schemaVersion": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "id": {
+      "$ref": "__ROOT__id"
+    },
+    "type": {
+      "$ref": "__ROOT__type"
+    }
+  }
+}

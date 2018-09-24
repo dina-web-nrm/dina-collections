@@ -1,0 +1,1 @@
+exports.createSpecimen = require('./createSpecimen')

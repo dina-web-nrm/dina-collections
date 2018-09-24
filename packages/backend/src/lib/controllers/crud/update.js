@@ -1,61 +1,28 @@
-const createObjectResponse = require('../utilities/transformations/createObjectResponse')
+const createControllerWrapper = require('../utilities/wrapper')
 const transformInput = require('../utilities/transformations/inputObject')
-const applyHooks = require('../utilities/applyHooks')
 
-module.exports = function update({
-  fileInteractor,
-  operation,
-  models,
-  serviceInteractor,
-}) {
-  const { resource, relations, postHooks = [], preHooks = [] } = operation
-  const model = models[resource]
-  if (!model) {
-    throw new Error(`Model not provided for ${resource}`)
-  }
+module.exports = function update(options) {
+  const { operation: { relations, resource } } = options
 
-  if (!model.update) {
-    throw new Error(`Model missing required method: update for ${resource}`)
-  }
+  return createControllerWrapper({
+    ...options,
+    enableInterceptors: false,
+    enablePostHooks: true,
+    enablePreHooks: true,
+    requiredModelMethods: ['update'],
+    responseFormat: 'object',
+    responseSuccessStatus: 200,
+  })(({ model, request }) => {
+    const { body: { data: input = {} } = {} } = request
+    const { pathParams: { id } } = request
 
-  return ({ request, user, requestId }) => {
-    return applyHooks({
-      fileInteractor,
-      hooks: preHooks,
-      request,
-      requestId,
-      resource,
-      serviceInteractor,
-      user,
-    }).then(() => {
-      const { body: { data: input = {} } = {} } = request
-      const { pathParams: { id } } = request
-
-      return model
-        .update({
-          id,
-          ...transformInput({ input, relations, sourceResource: resource }),
-        })
-        .then(({ item } = {}) => {
-          return applyHooks({
-            fileInteractor,
-            hooks: postHooks,
-            item,
-            requestId,
-            resource,
-            serviceInteractor,
-            user,
-          }).then(() => {
-            return item
-          })
-        })
-        .then(output => {
-          return createObjectResponse({
-            data: output,
-            id: output.id,
-            type: resource,
-          })
-        })
-    })
-  }
+    return model
+      .update({
+        id,
+        ...transformInput({ input, relations, sourceResource: resource }),
+      })
+      .then(({ item } = {}) => {
+        return { item }
+      })
+  })
 }

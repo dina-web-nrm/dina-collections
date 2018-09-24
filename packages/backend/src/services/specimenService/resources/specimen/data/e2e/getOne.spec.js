@@ -19,6 +19,7 @@ apiDescribe('specimen', () => {
       beforeAll(() => {
         return makeTestCall({
           body: getTestData('simpleDataNoRelations'),
+          flushModels: ['catalogNumber'],
           operationId: 'specimenCreate',
         }).then(response => {
           simpleDataNoRelationsId = response.data.id
@@ -58,6 +59,7 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
+            flushModels: ['catalogNumber'],
             operationId: 'specimenCreate',
           }).then(response => {
             simpleDataPhysicalObjectRelationsId = response.data.id
@@ -92,6 +94,7 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
+            flushModels: ['catalogNumber'],
             operationId: 'specimenCreate',
           }).then(response => {
             simpleDataPhysicalObjectRelationsId = response.data.id
@@ -118,6 +121,7 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataPhysicalObjectRelations'),
+            flushModels: ['catalogNumber'],
             operationId: 'specimenCreate',
           }).then(response => {
             simpleDataPhysicalObjectRelationsId = response.data.id
@@ -152,6 +156,7 @@ apiDescribe('specimen', () => {
         beforeAll(() => {
           return makeTestCall({
             body: getTestData('simpleDataNoRelations'),
+            flushModels: ['catalogNumber'],
             operationId: 'specimenCreate',
           }).then(response => {
             simpleDataNoRelationsId = response.data.id

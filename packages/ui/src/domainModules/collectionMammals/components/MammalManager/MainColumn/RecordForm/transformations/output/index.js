@@ -1,5 +1,4 @@
 import transformCollectionItems from './transformCollectionItems'
-import transformIdentifiers from './transformIdentifiers'
 import transformFeatureObservations from './transformFeatureObservations'
 
 export default function transformOutput({ specimen = {} }) {
@@ -7,21 +6,12 @@ export default function transformOutput({ specimen = {} }) {
 
   // TODO: set in backend instead
   // if no catalogNumber provided, use this
-  const newCatalogNumber = String(
-    Math.floor(Math.random() * (999999 - 100001) + 100000)
-  )
   if (!transformedSpecimen.individual) {
     transformedSpecimen.individual = {}
   }
 
   transformedSpecimen.individual.collectionItems = transformCollectionItems(
-    transformedSpecimen.individual.collectionItems,
-    newCatalogNumber
-  )
-
-  transformedSpecimen.individual.identifiers = transformIdentifiers(
-    transformedSpecimen.individual.identifiers,
-    newCatalogNumber
+    transformedSpecimen.individual.collectionItems
   )
 
   if (transformedSpecimen.individual.recordHistoryEvents) {
