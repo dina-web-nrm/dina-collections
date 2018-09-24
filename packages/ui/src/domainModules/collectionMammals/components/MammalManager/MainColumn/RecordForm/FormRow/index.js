@@ -17,7 +17,7 @@ const log = createLog(
   'modules:collectionMammals::MammalManager:RecordForm:FormRow'
 )
 
-const formSections = [{ name: 'basicInformation' }]
+const formSections = [{ name: 'basicInformation' }, { name: 'collectingDeath' }]
 
 const formSectionNavigation = {
   key: 'formSectionNavigation',
