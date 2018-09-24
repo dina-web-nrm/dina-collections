@@ -136,6 +136,8 @@ class ExactDate extends Component {
               parameterKey=""
             >
               <Input
+                max={12}
+                min={1}
                 onBlur={event => {
                   this.handleOnBlur({ event, field: 'month' })
                 }}
@@ -161,6 +163,8 @@ class ExactDate extends Component {
               parameterKey=""
             >
               <Input
+                max={31}
+                min={1}
                 onBlur={event => {
                   this.handleOnBlur({ event, field: 'day' })
                 }}

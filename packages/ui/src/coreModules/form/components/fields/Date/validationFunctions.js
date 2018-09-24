@@ -1,4 +1,69 @@
 import moment from 'moment'
+import objectPath from 'object-path'
+
+export const validIfNotEmpty = datePartValue => {
+  if (!datePartValue) {
+    return undefined
+  }
+
+  const { day, interpretedTimestamp, month, year } = datePartValue
+
+  if ((day || month || year) && !interpretedTimestamp) {
+    return {
+      errorCode: 'DATE_CANNOT_BE_INTERPRETED',
+    }
+  }
+
+  return undefined
+}
+
+export const validIfNotEmptyRange = rangeValue => {
+  if (!rangeValue) {
+    return undefined
+  }
+
+  const { endDate, startDate } = rangeValue
+
+  return (
+    (endDate && validIfNotEmpty(endDate)) ||
+    (startDate && validIfNotEmpty(startDate))
+  )
+}
+
+export const noOrphanDayOrMonth = datePartValue => {
+  if (!datePartValue) {
+    return undefined
+  }
+
+  const { day, month, year } = datePartValue
+
+  if (month && !year) {
+    return {
+      errorCode: 'DATE_ORPHAN_MONTH',
+    }
+  }
+
+  if (day && (!month || !year)) {
+    return {
+      errorCode: 'DATE_ORPHAN_DAY',
+    }
+  }
+
+  return undefined
+}
+
+export const noOrphanDayOrMonthInRange = rangeValue => {
+  if (!rangeValue) {
+    return undefined
+  }
+
+  const { endDate, startDate } = rangeValue
+
+  return (
+    (endDate && noOrphanDayOrMonth(endDate)) ||
+    (startDate && noOrphanDayOrMonth(startDate))
+  )
+}
 
 export const futureSingleDate = value => {
   if (!(value && value.interpretedTimestamp)) {
@@ -43,10 +108,11 @@ export const futureDateRange = value => {
 }
 
 export const dateRangeStartDateNotAfterEndDate = value => {
-  const startDateTimestamp =
-    value && value.startDate && value.startDate.interpretedTimestamp
-  const endDateTimestamp =
-    value && value.endDate && value.endDate.interpretedTimestamp
+  const startDateTimestamp = objectPath.get(
+    value,
+    'startDate.interpretedTimestamp'
+  )
+  const endDateTimestamp = objectPath.get(value, 'endDate.interpretedTimestamp')
 
   if (!(startDateTimestamp && endDateTimestamp)) {
     return undefined
@@ -60,18 +126,18 @@ export const dateRangeStartDateNotAfterEndDate = value => {
 }
 
 export const bothStartAndEndDateRequiredIfOneProvided = value => {
-  if (!value || (!value.startDate && !value.endDate)) {
+  if (
+    !value ||
+    (!value.startDate && !value.endDate) ||
+    (!objectPath.get(value, 'startDate.interpretedTimestamp') &&
+      !objectPath.get(value, 'endDate.interpretedTimestamp'))
+  ) {
     return undefined
   }
 
   if (
-    value &&
-    value.startDate &&
-    (value.startDate.dateText ||
-      (value.startDate.day && value.startDate.month && value.startDate.year)) &&
-    value.endDate &&
-    (value.endDate.dateText ||
-      (value.endDate.day && value.endDate.month && value.endDate.year))
+    objectPath.get(value, 'startDate.interpretedTimestamp') &&
+    objectPath.get(value, 'endDate.interpretedTimestamp')
   ) {
     return undefined
   }
