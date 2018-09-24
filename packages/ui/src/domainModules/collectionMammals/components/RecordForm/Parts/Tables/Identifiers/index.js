@@ -48,11 +48,13 @@ function IdentifiersTable({
   log.render()
   return (
     <React.Fragment>
-      <Grid.Column width={16}>
-        {`Catalog number: ${identifiers[0].value}`}
-      </Grid.Column>
-      {identifiers
-        // TODO fix this and check for the value. Cant trust the order
+      {identifiers[0].value && (
+        <Grid.Column width={16}>
+          {`Catalog number: ${identifiers[0].value}`}
+        </Grid.Column>
+      )}
+      {// TODO fix this and check for the value. Cant trust the order
+      identifiers
         .slice(1) // skip first as that is the catalog number
         .map((identifier, index) => {
           return (
