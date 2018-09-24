@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Grid, Icon } from 'semantic-ui-react'
 
-import Section, {
-  sectionSpecs,
-} from 'domainModules/collectionMammals/components/RecordForm/Sections'
+import { Section } from 'coreModules/form/components'
+import sectionSpecs from '../sectionSpecs'
+import unitSpecs from '../unitSpecs'
 
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
@@ -71,6 +71,7 @@ class FormSectionView extends PureComponent {
           module="collectionMammals"
           name={name}
           removeArrayFieldByIndex={removeArrayFieldByIndex}
+          unitSpecs={unitSpecs}
         />
       </Grid.Column>
     )
@@ -104,6 +105,7 @@ class FormSectionView extends PureComponent {
                 module="collectionMammals"
                 name={name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
+                unitSpecs={unitSpecs}
               />
             </Grid.Column>
           )
