@@ -8,7 +8,7 @@
     },
     "dateType": {
       "type": "string",
-      "enum": ["single", "range", "before"]
+      "enum": ["latest", "range", "single"]
     },
     "remarks": {
       "type": "string",
