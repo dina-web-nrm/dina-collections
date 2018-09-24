@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FieldWrapper from '../../../FieldWrapper'
+import FieldWrapper from '../../../../FieldWrapper'
 import DateRangeComponent from './Component'
 import {
   bothStartAndEndDateRequiredIfOneProvided,
@@ -9,7 +9,7 @@ import {
   pastDateRange,
   intervalParsable,
   isYYYYMMDD,
-} from '../validationFunctions'
+} from '../../validationFunctions'
 
 const propTypes = {
   future: PropTypes.bool,

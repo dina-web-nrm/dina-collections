@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import config from 'config'
-import SingleDateComponent from '../../../fields/Date/SingleDate/Component'
+import SingleDateComponent from '../../../../fields/Date/old/SingleDate/Component'
 import TextDate from '../SingleDate/TextDate'
 import { getFieldMeta } from '../utilities'
 import DateView from '../DateView'
