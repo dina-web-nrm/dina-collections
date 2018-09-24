@@ -10,10 +10,11 @@ import {
 export const defaultValidate = [noOrphanDayOrMonthInRange, validIfNotEmptyRange]
 
 const propTypes = {
-  input: PropTypes.object.isRequired,
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   meta: PropTypes.object.isRequired,
   module: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
 }
 
 const SingleDate = ({ input, meta, module, name }) => {
@@ -26,7 +27,7 @@ const SingleDate = ({ input, meta, module, name }) => {
       input={input}
       meta={meta}
       module={module}
-      name={name}
+      name={input.name}
     />
   )
 }

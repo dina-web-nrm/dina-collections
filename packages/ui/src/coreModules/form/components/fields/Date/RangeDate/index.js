@@ -36,8 +36,10 @@ const propTypes = {
   displayDateTypeRadios: PropTypes.bool,
   displayLabel: PropTypes.bool,
   displaySubLabels: PropTypes.bool,
-  input: PropTypes.object.isRequired,
   initialDateType: PropTypes.oneOf([LATEST, RANGE, SINGLE]),
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
   meta: PropTypes.object.isRequired,
   module: PropTypes.string,
   mountHidden: PropTypes.bool,
