@@ -219,6 +219,45 @@
     "x-summary": "",
     "id": "customObject"
   },
+  "datePart": {
+    "additionalProperties": false,
+    "description": "A date part",
+    "properties": {
+      "timestamp": {
+        "description": "A date in standard format. TBA",
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "interpretedTimestamp": {
+        "description": "A date in standard format, derived from day, month year.",
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
+      "dateText": {
+        "type": "string",
+        "example": "Before 1800",
+        "x-summary": ""
+      },
+      "day": {
+        "type": "integer",
+        "x-summary": ""
+      },
+      "month": {
+        "type": "integer",
+        "x-summary": ""
+      },
+      "year": {
+        "type": "integer",
+        "x-summary": ""
+      }
+    },
+    "x-category": "core",
+    "x-modelType": "model",
+    "x-summary": "",
+    "id": "datePart"
+  },
   "dateRange": {
     "additionalProperties": false,
     "description": "A date range",
@@ -228,17 +267,26 @@
         "example": "Before 1800",
         "x-summary": ""
       },
+      "dateType": {
+        "type": "string",
+        "enum": [
+          "single",
+          "range",
+          "before"
+        ],
+        "x-summary": ""
+      },
       "remarks": {
         "type": "string",
         "example": "Some remarks",
         "x-summary": ""
       },
       "startDate": {
-        "$ref": "singleDate",
+        "$ref": "datePart",
         "x-summary": ""
       },
       "endDate": {
-        "$ref": "singleDate",
+        "$ref": "datePart",
         "x-summary": ""
       }
     },
@@ -465,45 +513,6 @@
     "x-summary": "",
     "description": "",
     "id": "readOnly"
-  },
-  "singleDate": {
-    "additionalProperties": false,
-    "description": "A single date",
-    "properties": {
-      "timestamp": {
-        "description": "A date in standard format. TBA",
-        "format": "date-time",
-        "type": "string",
-        "x-summary": ""
-      },
-      "interpretedTimestamp": {
-        "description": "A date in standard format. TBA",
-        "format": "date-time",
-        "type": "string",
-        "x-summary": ""
-      },
-      "dateText": {
-        "type": "string",
-        "example": "Before 1800",
-        "x-summary": ""
-      },
-      "day": {
-        "type": "integer",
-        "x-summary": ""
-      },
-      "month": {
-        "type": "integer",
-        "x-summary": ""
-      },
-      "year": {
-        "type": "integer",
-        "x-summary": ""
-      }
-    },
-    "x-category": "core",
-    "x-modelType": "model",
-    "x-summary": "",
-    "id": "singleDate"
   },
   "translatedString": {
     "additionalProperties": false,
@@ -1319,7 +1328,11 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "singleDate",
+        "$ref": "dateRange",
+        "x-summary": ""
+      },
+      "remarks": {
+        "type": "string",
         "x-summary": ""
       }
     },
@@ -1436,7 +1449,7 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "singleDate",
+        "$ref": "dateRange",
         "x-summary": ""
       },
       "condition": {
@@ -1545,7 +1558,7 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "singleDate",
+        "$ref": "dateRange",
         "x-summary": ""
       }
     },
@@ -1594,7 +1607,7 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "singleDate",
+        "$ref": "dateRange",
         "x-summary": ""
       },
       "featureObservationText": {
@@ -1957,7 +1970,7 @@
         "x-summary": ""
       },
       "date": {
-        "$ref": "singleDate",
+        "$ref": "dateRange",
         "x-summary": ""
       },
       "description": {
@@ -2002,6 +2015,10 @@
         "x-summary": ""
       },
       "collectionItemsRemarks": {
+        "type": "string",
+        "x-summary": ""
+      },
+      "remarks": {
         "type": "string",
         "x-summary": ""
       },

@@ -522,3 +522,22 @@
 .ui.input:not(.disabled) input[disabled] {
   opacity: 1;
 }
+/*
+* arrowless class to remove spin arrows from number input
+*/
+.ui.input.arrowless input[type='number'] {
+  -moz-appearance: textfield;
+}
+.ui.input.arrowless input[type='number']::-webkit-outer-spin-button,
+.ui.input.arrowless input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+/*
+* right aligned content
+*/
+.ui.input.right-aligned input {
+  text-align: right;
+}
