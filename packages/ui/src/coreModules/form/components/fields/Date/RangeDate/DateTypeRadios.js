@@ -20,6 +20,7 @@ const DateTypeRadios = ({
       enableHelpNotifications={false}
       label="Date type"
       meta={{}}
+      name="radioGroup"
       style={{ marginBottom: '0.5em', width: '100%' }}
       subLabel
     >

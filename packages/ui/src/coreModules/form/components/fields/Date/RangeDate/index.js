@@ -51,20 +51,23 @@ const propTypes = {
     onBlur: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     onFocus: PropTypes.func.isRequired,
-    value: PropTypes.shape({
-      endDate: PropTypes.shape({
-        day: PropTypes.number,
-        interpretedTimeStamp: PropTypes.string,
-        month: PropTypes.number,
-        year: PropTypes.number,
+    value: PropTypes.oneOfType([
+      PropTypes.shape({
+        endDate: PropTypes.shape({
+          day: PropTypes.number,
+          interpretedTimeStamp: PropTypes.string,
+          month: PropTypes.number,
+          year: PropTypes.number,
+        }),
+        startDate: PropTypes.shape({
+          day: PropTypes.number,
+          interpretedTimeStamp: PropTypes.string,
+          month: PropTypes.number,
+          year: PropTypes.number,
+        }),
       }),
-      startDate: PropTypes.shape({
-        day: PropTypes.number,
-        interpretedTimeStamp: PropTypes.string,
-        month: PropTypes.number,
-        year: PropTypes.number,
-      }),
-    }),
+      PropTypes.string,
+    ]),
   }).isRequired,
   meta: PropTypes.object.isRequired,
   module: PropTypes.string,
@@ -229,10 +232,7 @@ class DateRange extends Component {
         displayLabel={displayLabel}
         enableHelpNotifications={false}
         errorStyle={
-          hasError &&
-          (dateType === SINGLE
-            ? onePartErrorLabelStyle
-            : twoPartErrorLabelStyle)
+          dateType === SINGLE ? onePartErrorLabelStyle : twoPartErrorLabelStyle
         }
         meta={meta}
         module={module}
