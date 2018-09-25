@@ -6,6 +6,8 @@ import { Section } from 'coreModules/form/components'
 import sectionSpecs from '../sectionSpecs'
 import unitSpecs from '../unitSpecs'
 
+const customParts = {}
+
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
@@ -66,6 +68,7 @@ class FormSectionView extends PureComponent {
         <Section
           changeFieldValue={changeFieldValue}
           childSpecs={sectionSpecs[name]}
+          customParts={customParts}
           formName={formName}
           formValueSelector={formValueSelector}
           module="collectionMammals"
@@ -100,6 +103,7 @@ class FormSectionView extends PureComponent {
               <Section
                 changeFieldValue={changeFieldValue}
                 childSpecs={sectionSpecs[name]}
+                customParts={customParts}
                 formName={formName}
                 formValueSelector={formValueSelector}
                 module="collectionMammals"
