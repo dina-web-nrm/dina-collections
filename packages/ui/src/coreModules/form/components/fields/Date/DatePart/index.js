@@ -141,6 +141,7 @@ class SingleDate extends Component {
             float="left"
             label="Year"
             meta={{}}
+            name="year"
             subLabel
           >
             <Input
@@ -169,6 +170,7 @@ class SingleDate extends Component {
             float="left"
             label="Month"
             meta={{}}
+            name="month"
             subLabel
           >
             <Input
@@ -198,6 +200,7 @@ class SingleDate extends Component {
             float="left"
             label="Day"
             meta={{}}
+            name="day"
             subLabel
           >
             <Input
