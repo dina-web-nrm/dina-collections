@@ -7,7 +7,7 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
 import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
-import * as Parts from '../parts'
+import * as parts from '../parts'
 
 const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
   if (
@@ -36,6 +36,7 @@ const propTypes = {
       }).isRequired
     ),
   }).isRequired,
+  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   hiddenFieldsHaveValue: PropTypes.bool,
@@ -44,6 +45,7 @@ const propTypes = {
   setChildInvalid: PropTypes.func.isRequired,
 }
 const defaultProps = {
+  customParts: {},
   hiddenFieldsHaveValue: undefined,
 }
 
@@ -75,6 +77,7 @@ class Unit extends PureComponent {
     const {
       changeFieldValue,
       childSpecs,
+      customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
@@ -83,6 +86,11 @@ class Unit extends PureComponent {
     } = this.props
 
     const { showInitiallyHiddenParts } = this.state
+
+    const allParts = {
+      ...parts,
+      ...customParts,
+    }
 
     return (
       <Grid.Row className="relaxed">
@@ -98,7 +106,7 @@ class Unit extends PureComponent {
             },
             index
           ) => {
-            const Component = Parts[componentName]
+            const Component = allParts[componentName]
 
             if (!Component) {
               throw new Error(`Missing component for part ${componentName}`)

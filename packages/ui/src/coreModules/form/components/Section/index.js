@@ -15,6 +15,7 @@ const propTypes = {
       }).isRequired
     ),
   }).isRequired,
+  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -30,12 +31,16 @@ const propTypes = {
     }).isRequired
   ).isRequired,
 }
+const defaultProps = {
+  customParts: undefined,
+}
 
 class Section extends PureComponent {
   render() {
     const {
       changeFieldValue,
       childSpecs,
+      customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
@@ -52,6 +57,7 @@ class Section extends PureComponent {
               <Unit
                 changeFieldValue={changeFieldValue}
                 childSpecs={unitSpecs[unitName]}
+                customParts={customParts}
                 formName={formName}
                 formValueSelector={formValueSelector}
                 key={unitName}
@@ -69,5 +75,6 @@ class Section extends PureComponent {
 }
 
 Section.propTypes = propTypes
+Section.defaultProps = defaultProps
 
 export default compose(injectFormPartStatus())(Section)
