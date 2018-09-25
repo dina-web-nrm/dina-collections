@@ -1,5 +1,4 @@
 import config from 'config'
-import isDinaError from 'common/es5/error/utilities/isDinaError'
 import createNotification from 'coreModules/notifications/actionCreators/createNotification'
 import logout from 'coreModules/user/actionCreators/logout'
 
@@ -9,14 +8,18 @@ export default function errorMiddleware({ debug = true } = {}) {
     if (!debug) {
       return result
     }
-    if (action.error) {
-      if (isDinaError(action.payload)) {
+    if (action.error && action.payload) {
+      const error =
+        (action.payload && action.payload.requestError) || action.payload || {} // _requestError is request error after handled by redux form
+
+      if (error && error.code) {
         console.log(`Error in action ${action.type}:`, action.payload) // eslint-disable-line no-console
+
         dispatch(
           createNotification({
             componentProps: {
-              description: action.payload.description,
-              header: action.payload.code,
+              description: `${error.description}: ${error.detail}`,
+              header: error.code,
             },
             type: 'ERROR',
           })
