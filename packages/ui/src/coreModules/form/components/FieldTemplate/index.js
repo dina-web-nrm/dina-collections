@@ -75,7 +75,7 @@ const FieldTemplate = ({
 
   return (
     <Form.Field
-      error={displayError}
+      error={!!displayError}
       required={required}
       style={{
         float,
