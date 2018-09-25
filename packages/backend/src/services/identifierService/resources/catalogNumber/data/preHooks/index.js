@@ -40,6 +40,12 @@ const validate = ({ request, serviceInteractor }) => {
         backendError400({
           code: 'REQUEST_ERROR',
           detail: `identifier: ${identifier} already exist`,
+          parameterErrors: [
+            {
+              errorCode: 'duplicate',
+              fullPath: 'identifier',
+            },
+          ],
         })
       }
     })
