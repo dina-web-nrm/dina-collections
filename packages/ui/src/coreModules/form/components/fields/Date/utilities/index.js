@@ -24,35 +24,52 @@ export const getRangeValue = ({
   updatedDatePartName,
   updatedDatePartValue,
 }) => {
+  let newValue
   if (dateType === LATEST && updatedDatePartName === 'endDate') {
-    return {
+    newValue = {
       dateType,
       endDate: updatedDatePartValue,
-      startDate: {
-        interpretedTimestamp: getEarliestTimestamp(),
-      },
+      startDate:
+        updatedDatePartValue && Object.keys(updatedDatePartValue).length
+          ? {
+              interpretedTimestamp: getEarliestTimestamp(),
+            }
+          : {},
     }
-  }
-
-  if (dateType === SINGLE && updatedDatePartName === 'startDate') {
-    return {
+  } else if (dateType === SINGLE && updatedDatePartName === 'startDate') {
+    newValue = {
       dateType,
-      endDate: {
-        ...(updatedDatePartValue || {}),
-        interpretedTimestamp: getTimestampFromYMD({
-          ...(updatedDatePartValue || {}),
-          isEndDate: true,
-        }),
-      },
+      endDate:
+        updatedDatePartValue && Object.keys(updatedDatePartValue).length
+          ? {
+              ...updatedDatePartValue,
+              interpretedTimestamp: getTimestampFromYMD({
+                ...updatedDatePartValue,
+                isEndDate: true,
+              }),
+            }
+          : {},
       startDate: updatedDatePartValue,
     }
+  } else {
+    newValue = {
+      ...currentRangeValue,
+      dateType,
+      [updatedDatePartName]: updatedDatePartValue,
+    }
   }
 
-  return {
-    ...currentRangeValue,
-    dateType,
-    [updatedDatePartName]: updatedDatePartValue,
+  if (newValue.endDate && !Object.keys(newValue.endDate).length) {
+    delete newValue.endDate
   }
+  if (newValue.startDate && !Object.keys(newValue.startDate).length) {
+    delete newValue.startDate
+  }
+
+  if (!newValue.endDate && !newValue.startDate) {
+    return {}
+  }
+  return newValue
 }
 
 export const getRangeValueAfterDateTypeChange = ({
