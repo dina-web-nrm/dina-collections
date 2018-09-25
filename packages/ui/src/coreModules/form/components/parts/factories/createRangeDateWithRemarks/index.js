@@ -20,7 +20,7 @@ export default function createRangeDateWithRemarks(
       validate: defaultValidate,
     },
     {
-      componentName: 'RemarksTogglable',
+      componentName: 'Remarks',
       emptyStateTextKey,
       initiallyHidden,
       model,
