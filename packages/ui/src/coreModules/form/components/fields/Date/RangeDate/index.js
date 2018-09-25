@@ -27,7 +27,16 @@ export const defaultValidate = [
 
 const DATE_TYPES = [SINGLE, RANGE, LATEST]
 
-const errorStyle = {
+const onePartErrorFieldStyle = {
+  marginBottom: emToPixels(3.75),
+}
+const onePartErrorLabelStyle = {
+  left: -emToPixels(11.5),
+  position: 'relative',
+  top: emToPixels(3.75),
+  width: emToPixels(11.5),
+}
+const twoPartErrorLabelStyle = {
   width: emToPixels(25),
 }
 
@@ -39,6 +48,23 @@ const propTypes = {
   initialDateType: PropTypes.oneOf([LATEST, RANGE, SINGLE]),
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func.isRequired,
+    value: PropTypes.shape({
+      endDate: PropTypes.shape({
+        day: PropTypes.number,
+        interpretedTimeStamp: PropTypes.string,
+        month: PropTypes.number,
+        year: PropTypes.number,
+      }),
+      startDate: PropTypes.shape({
+        day: PropTypes.number,
+        interpretedTimeStamp: PropTypes.string,
+        month: PropTypes.number,
+        year: PropTypes.number,
+      }),
+    }),
   }).isRequired,
   meta: PropTypes.object.isRequired,
   module: PropTypes.string,
@@ -195,17 +221,25 @@ class DateRange extends Component {
     } = this.props
     const { dateType } = this.state
 
+    const hasError = meta.touched && !!meta.error
+
     return (
       <FieldTemplate
-        displayError={
-          meta && meta.error && meta.error.errorCode ? undefined : false
-        }
+        displayError={hasError}
         displayLabel={displayLabel}
         enableHelpNotifications={false}
-        errorStyle={errorStyle}
+        errorStyle={
+          hasError &&
+          (dateType === SINGLE
+            ? onePartErrorLabelStyle
+            : twoPartErrorLabelStyle)
+        }
         meta={meta}
         module={module}
         name={input.name}
+        style={
+          hasError && dateType === SINGLE ? onePartErrorFieldStyle : undefined
+        }
       >
         {displayDateTypeRadios && (
           <DateTypeRadios

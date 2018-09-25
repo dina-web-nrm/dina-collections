@@ -3,7 +3,11 @@ import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
 
 import { getTimestampFromYMD } from 'common/es5/date'
+import createDeleteProperties from 'common/es5/createDeleteProperties'
 import FieldTemplate from '../../../FieldTemplate'
+
+const deleteEmptyStringProperties = createDeleteProperties('')
+const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const inputYearStyle = {
   float: 'left',
@@ -92,10 +96,14 @@ class SingleDate extends Component {
       ...updatedDatePartValues,
     })
 
-    return onChange({
-      ...updatedDatePartValues,
-      interpretedTimestamp,
-    })
+    return onChange(
+      deleteUndefinedProperties(
+        deleteEmptyStringProperties({
+          ...updatedDatePartValues,
+          interpretedTimestamp,
+        })
+      )
+    )
   }
 
   handleOnFocus() {
