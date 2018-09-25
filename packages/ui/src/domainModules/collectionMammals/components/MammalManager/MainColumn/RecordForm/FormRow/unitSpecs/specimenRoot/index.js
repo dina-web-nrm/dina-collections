@@ -16,7 +16,7 @@ const items = [
     textKey: 'public',
   },
   {
-    componentName: 'RemarksTogglable',
+    componentName: 'Remarks',
     emptyStateTextKey: 'remarks.emptyState.specimen',
     model,
     name: 'remarks',

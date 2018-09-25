@@ -27,7 +27,7 @@ const items = [
     model,
   }),
   {
-    componentName: 'RemarksTogglable',
+    componentName: 'Remarks',
     emptyStateTextKey: 'remarks.emptyState.acquisition',
     initiallyHidden: true,
     model,
