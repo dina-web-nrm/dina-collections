@@ -1,4 +1,4 @@
-const deleteNullProperties = obj => {
+const createDeleteProperties = valueToDelete => obj => {
   if (!obj || typeof obj !== 'object') {
     return obj
   }
@@ -6,12 +6,11 @@ const deleteNullProperties = obj => {
   const shallowCopy = { ...obj }
 
   Object.keys(shallowCopy).forEach(key => {
-    if (shallowCopy[key] === null) {
+    if (shallowCopy[key] === valueToDelete) {
       delete shallowCopy[key]
     }
   })
-
   return shallowCopy
 }
 
-module.exports = deleteNullProperties
+module.exports = createDeleteProperties
