@@ -1,9 +1,10 @@
-import { formatBooleanRadio, parseBooleanRadio } from './radioTransformations'
-import createInputTest from './createInputTest'
-import createParameterKey from './createParameterKey'
-import createLabelKey from './createLabelKey'
 import createErrorKeys from './createErrorKeys'
 import createHelpNotificationProps from './createHelpNotificationProps'
+import createInputTest from './createInputTest'
+import createLabelKey from './createLabelKey'
+import createParameterKey from './createParameterKey'
+import handleReduxFormSubmitError from './handleReduxFormSubmitError'
+import { formatBooleanRadio, parseBooleanRadio } from './radioTransformations'
 
 export {
   createErrorKeys,
@@ -12,5 +13,6 @@ export {
   createLabelKey,
   createParameterKey,
   formatBooleanRadio,
+  handleReduxFormSubmitError,
   parseBooleanRadio,
 }

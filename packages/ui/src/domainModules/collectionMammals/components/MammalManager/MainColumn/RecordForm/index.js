@@ -11,8 +11,9 @@ import {
   reduxForm,
   reset,
   submit,
-  SubmissionError,
 } from 'redux-form'
+
+import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
@@ -124,15 +125,7 @@ class RecordForm extends Component {
           )
         }
       })
-      .catch(error => {
-        const errorMessage = `Status: ${error.status}, message: ${
-          error.error ? error.error.message : error.message
-        }`
-
-        throw new SubmissionError({
-          _error: errorMessage,
-        })
-      })
+      .catch(handleReduxFormSubmitError)
   }
 
   changeFieldValue(fieldName, value) {
