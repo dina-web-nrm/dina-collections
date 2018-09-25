@@ -7,7 +7,7 @@ import { Grid } from 'semantic-ui-react'
 import { Field } from 'coreModules/form/components'
 import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
 import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
-import * as parts from '../parts'
+import formParts from '../parts'
 
 const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
   if (
@@ -88,7 +88,7 @@ class Unit extends PureComponent {
     const { showInitiallyHiddenParts } = this.state
 
     const allParts = {
-      ...parts,
+      ...formParts,
       ...customParts,
     }
 

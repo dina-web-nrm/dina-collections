@@ -3,10 +3,9 @@ import PropTypes from 'prop-types'
 import { Button, Grid, Icon } from 'semantic-ui-react'
 
 import { Section } from 'coreModules/form/components'
+import customParts from '../formParts'
 import sectionSpecs from '../sectionSpecs'
 import unitSpecs from '../unitSpecs'
-
-const customParts = {}
 
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
