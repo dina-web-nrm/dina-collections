@@ -4636,7 +4636,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "400": {
             "content": {
@@ -4823,7 +4823,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "400": {
             "content": {
@@ -4881,7 +4881,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "400": {
             "content": {
@@ -5010,7 +5010,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "400": {
             "content": {
@@ -5087,7 +5087,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "400": {
             "content": {
@@ -5144,7 +5144,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "403": {
             "content": {
@@ -5201,7 +5201,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "403": {
             "content": {
@@ -5258,7 +5258,7 @@
                 }
               }
             },
-            "description": "this is a desc"
+            "description": "successful operation"
           },
           "400": {
             "content": {
@@ -21268,7 +21268,21 @@
             "type": "string"
           },
           "parameterErrors": {
-            "type": "string"
+            "properties": {
+              "errorCode": {
+                "enum": [
+                  "ADDITIONAL_PROPERTIES",
+                  "DUPLICATE",
+                  "ENUM",
+                  "MAX_LENGTH",
+                  "MIN_LENGTH",
+                  "REQUIRED",
+                  "WRONG_TYPE"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
           },
           "title": {
             "description": "A short, human-readable summary of the problem. Associated with the code",
@@ -38254,7 +38268,40 @@
             "x-summary": ""
           }
         },
-        "x-examples": {},
+        "x-examples": {
+          "primary": {
+            "data": {
+              "attributes": {
+                "exportFields": [
+                  "id"
+                ],
+                "exportIds": [
+                  1,
+                  2,
+                  3
+                ],
+                "resource": "specimen"
+              },
+              "type": "exportJob"
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "attributes": {
+              "exportFields": [
+                "id"
+              ],
+              "exportIds": [
+                1,
+                2,
+                3
+              ],
+              "resource": "specimen"
+            },
+            "type": "exportJob"
+          }
+        },
         "x-summary": "",
         "description": ""
       },
@@ -38454,7 +38501,24 @@
             "x-summary": ""
           }
         },
-        "x-examples": {},
+        "x-examples": {
+          "primary": {
+            "data": {
+              "attributes": {
+                "identifier": "123432"
+              },
+              "type": "catalogNumber"
+            }
+          }
+        },
+        "example": {
+          "data": {
+            "attributes": {
+              "identifier": "123432"
+            },
+            "type": "catalogNumber"
+          }
+        },
         "x-summary": "",
         "description": ""
       },
