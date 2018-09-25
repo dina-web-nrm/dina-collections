@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Input } from 'semantic-ui-react'
+
+import { getTimestampFromYMD } from 'common/es5/date'
 import FieldTemplate from '../../../FieldTemplate'
-import { getTimestamp } from '../utilities'
 
 const inputYearStyle = {
   float: 'left',
@@ -85,7 +86,7 @@ class SingleDate extends Component {
       [field]: event.target.value && Number(event.target.value),
     }
 
-    const interpretedTimestamp = getTimestamp({
+    const interpretedTimestamp = getTimestampFromYMD({
       isEndDate,
       isStartDate,
       ...updatedDatePartValues,

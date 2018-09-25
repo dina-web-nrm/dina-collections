@@ -1,23 +1,14 @@
-import moment from 'moment'
-
+import { getTimestampFromYMD } from 'common/es5/date'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 
-const monthToDaysMap = {
-  1: 31,
-  2: 28,
-  3: 31,
-  4: 30,
-  5: 31,
-  6: 30,
-  7: 31,
-  8: 31,
-  9: 30,
-  10: 31,
-  11: 30,
-  12: 31,
+export const getEarliestTimestamp = () => {
+  return getTimestampFromYMD({
+    day: 1,
+    isStartDate: true,
+    month: 1,
+    year: 1600,
+  })
 }
-
-export const getEarliestTimestamp = () => moment('1600-01-01')
 
 export const isInt = value => {
   return (
@@ -25,132 +16,6 @@ export const isInt = value => {
     Number.parseInt(Number(value), 10) == value && // eslint-disable-line eqeqeq
     !Number.isNaN(parseInt(value, 10))
   )
-}
-
-export const buildYYYYMMDD = ({ day, month, year }) => {
-  if (!year) {
-    return undefined
-  }
-
-  let YYYYMMDD = `${year}`
-
-  if (month) {
-    YYYYMMDD = YYYYMMDD.concat(
-      `${month}`.length === 1 ? `0${month}` : `${month}`
-    )
-
-    if (day) {
-      YYYYMMDD = YYYYMMDD.concat(`${day}`.length === 1 ? `0${day}` : `${day}`)
-    }
-  }
-
-  return YYYYMMDD
-}
-
-export const getEndDateSuggestion = ({ day, month, year }) => {
-  const isLeapYear = moment([year]).isLeapYear()
-
-  if (year && month && day) {
-    return buildYYYYMMDD({
-      day,
-      month,
-      year,
-    })
-  }
-
-  if (year && month) {
-    return buildYYYYMMDD({
-      day: month === 2 && isLeapYear ? 29 : monthToDaysMap[month],
-      month,
-      year,
-    })
-  }
-
-  return buildYYYYMMDD({
-    day: 31,
-    month: 12,
-    year,
-  })
-}
-
-export const getStartDateSuggestion = ({ day, month, year }) => {
-  if (year && month && day) {
-    return buildYYYYMMDD({
-      day,
-      month,
-      year,
-    })
-  }
-
-  if (year && month) {
-    return buildYYYYMMDD({
-      day: 1,
-      month,
-      year,
-    })
-  }
-
-  return buildYYYYMMDD({
-    day: 1,
-    month: 1,
-    year,
-  })
-}
-
-export const getDateSuggestion = ({
-  day,
-  isEndDate,
-  isStartDate,
-  month,
-  year,
-}) => {
-  if (!year || `${year}`.length !== 4) {
-    return undefined
-  }
-
-  if (isStartDate) {
-    return getStartDateSuggestion({
-      day,
-      month,
-      year,
-    })
-  }
-
-  if (isEndDate) {
-    return getEndDateSuggestion({
-      day,
-      month,
-      year,
-    })
-  }
-
-  return buildYYYYMMDD({
-    day,
-    month,
-    year,
-  })
-}
-
-export const getTimestamp = ({ day, isEndDate, isStartDate, month, year }) => {
-  const YYYYMMDD = getDateSuggestion({
-    day,
-    isEndDate,
-    isStartDate,
-    month,
-    year,
-  })
-
-  if (!YYYYMMDD) {
-    return undefined
-  }
-
-  const interpretedTimestamp = isEndDate
-    ? moment(YYYYMMDD).endOf('date')
-    : moment(YYYYMMDD)
-
-  return interpretedTimestamp.isValid()
-    ? interpretedTimestamp.toISOString(true)
-    : undefined
 }
 
 export const getRangeValue = ({
@@ -174,7 +39,7 @@ export const getRangeValue = ({
       dateType,
       endDate: {
         ...(updatedDatePartValue || {}),
-        interpretedTimestamp: getTimestamp({
+        interpretedTimestamp: getTimestampFromYMD({
           ...(updatedDatePartValue || {}),
           isEndDate: true,
         }),
@@ -222,7 +87,7 @@ export const getRangeValueAfterDateTypeChange = ({
     ) {
       updatedValue.endDate = {
         ...updatedValue.startDate,
-        interpretedTimestamp: getTimestamp({
+        interpretedTimestamp: getTimestampFromYMD({
           ...updatedValue.startDate,
           isEndDate: true,
         }),
