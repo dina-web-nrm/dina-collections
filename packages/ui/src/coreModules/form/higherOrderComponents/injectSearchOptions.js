@@ -5,9 +5,12 @@ import { connect } from 'react-redux'
 import objectPath from 'object-path'
 import immutable from 'object-path-immutable'
 
+import createDeleteProperties from 'common/es5/createDeleteProperties'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 import createNestedItem from 'coreModules/crud/actionCreators/createNestedItem'
+
+const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const defaultExtractValue = item => {
   return item && item.attributes && item.attributes.name
@@ -113,10 +116,10 @@ const injectSearchOptions = (
           text: `${text} (${props.i18n.moduleTranslate({
             textKey: 'plainText',
           })})`,
-          value: {
+          value: deleteUndefinedProperties({
             ...value,
             [props.pathToTextInValue]: text,
-          },
+          }),
         }
       }
 
@@ -151,10 +154,10 @@ const injectSearchOptions = (
 
           const optionWithOtherValues = {
             ...option,
-            value: {
+            value: deleteUndefinedProperties({
               ...option.value,
               ...value,
-            },
+            }),
           }
 
           return this.setState({
