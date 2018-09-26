@@ -756,7 +756,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -777,7 +777,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -791,7 +790,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -806,7 +805,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -829,7 +828,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -842,7 +840,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -857,7 +855,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -880,7 +878,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -920,7 +917,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -941,7 +938,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -955,7 +951,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -970,7 +966,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -993,7 +989,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1006,7 +1001,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1021,7 +1016,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -1044,7 +1039,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1072,7 +1066,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty before 1`] = `
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty latest 1`] = `
 <div>
   <form>
     <div
@@ -1116,7 +1110,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -1137,7 +1131,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={-1}
                 type="number"
                 value=""
@@ -1151,7 +1144,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1166,7 +1159,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -1189,7 +1182,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={-1}
                 type="number"
                 value=""
@@ -1202,7 +1194,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1217,7 +1209,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -1240,7 +1232,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={-1}
                 type="number"
                 value=""
@@ -1292,7 +1283,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -1313,7 +1304,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1327,7 +1317,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1342,7 +1332,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -1365,7 +1355,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1378,7 +1367,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1393,7 +1382,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -1416,7 +1405,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty befo
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1488,7 +1476,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -1509,7 +1497,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1523,7 +1510,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1538,7 +1525,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -1561,7 +1548,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1574,7 +1560,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1589,7 +1575,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -1612,7 +1598,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1664,7 +1649,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -1685,7 +1670,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1699,7 +1683,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1714,7 +1698,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -1737,7 +1721,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1750,7 +1733,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1765,7 +1748,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -1788,7 +1771,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty rang
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1860,7 +1842,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -1881,7 +1863,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1895,7 +1876,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1910,7 +1891,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -1933,7 +1914,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -1946,7 +1926,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -1961,7 +1941,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -1984,7 +1964,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -2024,7 +2003,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -2045,7 +2024,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -2059,7 +2037,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2074,7 +2052,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -2097,7 +2075,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -2110,7 +2087,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2125,7 +2102,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -2148,7 +2125,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -2176,7 +2152,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty sing
 </div>
 `;
 
-exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled before 1`] = `
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled latest 1`] = `
 <div>
   <form>
     <div
@@ -2220,7 +2196,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -2241,10 +2217,9 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={-1}
                 type="number"
-                value={1899}
+                value=""
               />
             </div>
           </div>
@@ -2255,7 +2230,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2270,7 +2245,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -2293,10 +2268,9 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={-1}
                 type="number"
-                value={1}
+                value=""
               />
             </div>
           </div>
@@ -2306,7 +2280,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2321,7 +2295,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -2344,10 +2318,9 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={-1}
                 type="number"
-                value={1}
+                value=""
               />
             </div>
           </div>
@@ -2396,7 +2369,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -2417,7 +2390,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value={1900}
@@ -2431,7 +2403,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2446,7 +2418,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -2469,7 +2441,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value={12}
@@ -2482,7 +2453,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2497,7 +2468,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -2520,7 +2491,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value={24}
@@ -2542,11 +2512,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled bef
               "day": 24,
               "month": 12,
               "year": 1900,
-            },
-            "startDate": Object {
-              "day": 1,
-              "month": 1,
-              "year": 1899,
             },
           }
         }
@@ -2600,7 +2565,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -2621,7 +2586,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value={1899}
@@ -2635,7 +2599,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2650,7 +2614,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -2673,7 +2637,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value={1}
@@ -2686,7 +2649,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2701,7 +2664,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -2724,7 +2687,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value={1}
@@ -2776,7 +2738,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -2797,7 +2759,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value={1900}
@@ -2811,7 +2772,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2826,7 +2787,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -2849,7 +2810,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value={12}
@@ -2862,7 +2822,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -2877,7 +2837,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -2900,7 +2860,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled ran
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value={24}
@@ -2980,7 +2939,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -3001,7 +2960,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value={1899}
@@ -3015,7 +2973,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3030,7 +2988,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -3053,7 +3011,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value={1}
@@ -3066,7 +3023,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3081,7 +3038,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -3104,7 +3061,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value={1}
@@ -3144,7 +3100,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -3165,7 +3121,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value={1900}
@@ -3179,7 +3134,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3194,7 +3149,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -3217,7 +3172,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value={12}
@@ -3230,7 +3184,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3245,7 +3199,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -3268,7 +3222,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled sin
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value={24}
@@ -3329,7 +3282,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
         }
       >
         <label
-          htmlFor={undefined}
+          htmlFor="radioGroup"
           style={
             Object {
               "display": "block",
@@ -3403,12 +3356,12 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             readOnly={true}
             tabIndex={0}
             type="radio"
-            value="before"
+            value="latest"
           />
           <label
             htmlFor={undefined}
           >
-            before
+            latest
           </label>
         </div>
       </div>
@@ -3443,7 +3396,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -3464,7 +3417,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -3478,7 +3430,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3493,7 +3445,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -3516,7 +3468,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -3529,7 +3480,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3544,7 +3495,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -3567,7 +3518,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -3607,7 +3557,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="year"
               style={
                 Object {
                   "display": "block",
@@ -3628,7 +3578,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="yyyy"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -3642,7 +3591,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
               "float": "left",
               "paddingLeft": "0.2em",
               "paddingRight": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3657,7 +3606,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="month"
               style={
                 Object {
                   "display": "block",
@@ -3680,7 +3629,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="mm"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -3693,7 +3641,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             Object {
               "float": "left",
               "paddingLeft": "0.2em",
-              "width": "4em",
+              "width": "3.5em",
             }
           }
         >
@@ -3708,7 +3656,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
             }
           >
             <label
-              htmlFor={undefined}
+              htmlFor="day"
               style={
                 Object {
                   "display": "block",
@@ -3731,7 +3679,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
-                placeholder="dd"
                 tabIndex={undefined}
                 type="number"
                 value=""
@@ -3793,7 +3740,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
           }
         >
           <label
-            htmlFor={undefined}
+            htmlFor="year"
             style={
               Object {
                 "display": "block",
@@ -3814,7 +3761,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="yyyy"
               tabIndex={undefined}
               type="number"
               value=""
@@ -3828,7 +3774,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
             "float": "left",
             "paddingLeft": "0.2em",
             "paddingRight": "0.2em",
-            "width": "4em",
+            "width": "3.5em",
           }
         }
       >
@@ -3843,7 +3789,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
           }
         >
           <label
-            htmlFor={undefined}
+            htmlFor="month"
             style={
               Object {
                 "display": "block",
@@ -3866,7 +3812,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="mm"
               tabIndex={undefined}
               type="number"
               value=""
@@ -3879,7 +3824,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
           Object {
             "float": "left",
             "paddingLeft": "0.2em",
-            "width": "4em",
+            "width": "3.5em",
           }
         }
       >
@@ -3894,7 +3839,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
           }
         >
           <label
-            htmlFor={undefined}
+            htmlFor="day"
             style={
               Object {
                 "display": "block",
@@ -3917,7 +3862,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`]
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="dd"
               tabIndex={undefined}
               type="number"
               value=""
@@ -3964,7 +3908,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
           }
         >
           <label
-            htmlFor={undefined}
+            htmlFor="year"
             style={
               Object {
                 "display": "block",
@@ -3985,7 +3929,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="yyyy"
               tabIndex={undefined}
               type="number"
               value={1801}
@@ -3999,7 +3942,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
             "float": "left",
             "paddingLeft": "0.2em",
             "paddingRight": "0.2em",
-            "width": "4em",
+            "width": "3.5em",
           }
         }
       >
@@ -4014,7 +3957,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
           }
         >
           <label
-            htmlFor={undefined}
+            htmlFor="month"
             style={
               Object {
                 "display": "block",
@@ -4037,7 +3980,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="mm"
               tabIndex={undefined}
               type="number"
               value={12}
@@ -4050,7 +3992,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
           Object {
             "float": "left",
             "paddingLeft": "0.2em",
-            "width": "4em",
+            "width": "3.5em",
           }
         }
       >
@@ -4065,7 +4007,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
           }
         >
           <label
-            htmlFor={undefined}
+            htmlFor="day"
             style={
               Object {
                 "display": "block",
@@ -4088,7 +4030,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="dd"
               tabIndex={undefined}
               type="number"
               value={24}
