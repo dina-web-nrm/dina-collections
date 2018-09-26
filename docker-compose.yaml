@@ -83,7 +83,7 @@ services:
 networks:
   default:
     external:
-      name: dwproxy_default
+      name: proxy-docker_default 
 
 volumes:
   postgres_data:
