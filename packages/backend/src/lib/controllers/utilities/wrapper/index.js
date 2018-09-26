@@ -203,7 +203,7 @@ module.exports = function createControllerWrapper({
           })
         })
         .catch(err => {
-          log.err('Received Error')
+          log.err('Received Error', err)
           throw err
         })
     }
