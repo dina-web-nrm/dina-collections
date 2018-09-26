@@ -2,7 +2,7 @@ import {
   createAgentInputs,
   createSingleDate,
 } from 'coreModules/form/components/parts/factories'
-import { extractInitiallyHiddenKeys } from 'coreModules/form/components/parts/utilities'
+import extractInitiallyHiddenKeys from 'coreModules/form/utilities/extractInitiallyHiddenKeys'
 
 const model = 'acquisition'
 
