@@ -14,6 +14,7 @@ module.exports = function performExport({
 }) {
   const { exportFields, exportIds, resource: exportResource } = item.attributes
 
+  const exportSpecificIds = exportIds && !!exportIds.length
   const filePath = createFilePath({ exportResource })
   const includeFields = exportFields.reduce(
     (arr, { fieldPath, fieldPaths }) => {
@@ -29,22 +30,37 @@ module.exports = function performExport({
   )
 
   const createBatch = ({ numberOfBatchEntries, startCount }) => {
-    const batchIds = exportIds.slice(
-      startCount,
-      startCount + numberOfBatchEntries
-    )
-    const batchRequest = {
-      body: {
-        data: {
-          attributes: {
-            filter: {
-              ids: batchIds,
+    let batchRequest
+    if (exportSpecificIds) {
+      const batchIds = exportIds.slice(
+        startCount,
+        startCount + numberOfBatchEntries
+      )
+      batchRequest = {
+        body: {
+          data: {
+            attributes: {
+              filter: {
+                ids: batchIds,
+              },
+              includeFields,
+              limit: 10000,
             },
-            includeFields,
-            limit: 10000,
           },
         },
-      },
+      }
+    } else {
+      batchRequest = {
+        body: {
+          data: {
+            attributes: {
+              includeFields,
+              limit: numberOfBatchEntries,
+              offset: startCount,
+            },
+          },
+        },
+      }
     }
 
     return serviceInteractor
@@ -88,15 +104,23 @@ module.exports = function performExport({
       filePath,
     })
   }
-  log.info(
-    `Performing export for resource ${exportResource} with ${
-      exportIds.length
-    } items`
-  )
+
+  const numberOfEntries = exportSpecificIds ? exportIds.length : undefined
+
+  if (numberOfEntries) {
+    log.info(
+      `Performing export for resource ${exportResource} with ${
+        exportIds.length
+      } items`
+    )
+  } else {
+    log.info(`Performing export for resource ${exportResource} with all items`)
+  }
+
   return batchExecute({
     createBatch,
     execute,
-    numberOfEntries: exportIds.length,
+    numberOfEntries,
     numberOfEntriesEachBatch: 1000,
   }).then(() => {
     return {
