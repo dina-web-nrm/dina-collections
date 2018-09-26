@@ -26,21 +26,21 @@ module.exports = function migrateDetermination({ src, target, migrator }) {
   if (year) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.determination.0.date.year',
+      path: 'attributes.individual.determinations.0.date.year',
       value: year,
     })
   }
   if (month) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.determination.0.date.month',
+      path: 'attributes.individual.determinations.0.date.month',
       value: month,
     })
   }
   if (day) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.determination.0.date.day',
+      path: 'attributes.individual.determinations.0.date.day',
       value: day,
     })
   }
@@ -48,7 +48,7 @@ module.exports = function migrateDetermination({ src, target, migrator }) {
   if (determinedByAgentText) {
     migrator.setValue({
       obj: target,
-      path: 'attributes.individual.determination.determinedByAgent.textI',
+      path: 'attributes.individual.determinations.0.determinedByAgent.textI',
       value: determinedByAgentText,
     })
   }

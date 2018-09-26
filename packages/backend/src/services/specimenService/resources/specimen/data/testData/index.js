@@ -2,21 +2,6 @@ exports.UNEXPECTED_SUCCESS = 'Call successful but should have failed'
 
 const testData = {}
 
-testData.badRequestMissingCatalogNumber = {
-  data: {
-    attributes: {
-      normalized: {
-        individual: {
-          collectionItems: [],
-          featureObservations: [],
-          identifiers: [],
-        },
-      },
-    },
-    type: 'specimen',
-  },
-}
-
 testData.initialRelationships = {
   causeOfDeathTypes: { data: [] },
   establishmentMeansTypes: { data: [] },
@@ -33,7 +18,9 @@ testData.initialRelationships = {
 testData.simpleDataNoRelations = {
   data: {
     attributes: {
-      normalized: {
+      individual: {
+        collectionItems: [],
+        featureObservations: [],
         identifiers: [
           {
             identifierType: { id: '1', type: 'identifierType' },
@@ -43,11 +30,6 @@ testData.simpleDataNoRelations = {
             value: '123457',
           },
         ],
-        individual: {
-          collectionItems: [],
-          featureObservations: [],
-          identifiers: ['4444-33333'],
-        },
       },
     },
     type: 'specimen',
@@ -57,7 +39,9 @@ testData.simpleDataNoRelations = {
 testData.simpleDataPhysicalObjectRelations = {
   data: {
     attributes: {
-      normalized: {
+      individual: {
+        collectionItems: [],
+        featureObservations: [],
         identifiers: [
           {
             identifierType: { id: '1', type: 'identifierType' },
@@ -67,11 +51,6 @@ testData.simpleDataPhysicalObjectRelations = {
             value: '123458',
           },
         ],
-        individual: {
-          collectionItems: [],
-          featureObservations: [],
-          identifiers: ['4444-33333'],
-        },
       },
     },
     relationships: {
@@ -91,7 +70,9 @@ testData.simpleDataPhysicalObjectRelations = {
 testData.simpleDataMultipleRelations = {
   data: {
     attributes: {
-      normalized: {
+      individual: {
+        collectionItems: [],
+        featureObservations: [],
         identifiers: [
           {
             identifierType: { id: '1', type: 'identifierType' },
@@ -101,11 +82,6 @@ testData.simpleDataMultipleRelations = {
             value: '123458',
           },
         ],
-        individual: {
-          collectionItems: [],
-          featureObservations: [],
-          identifiers: ['4444-33333'],
-        },
       },
     },
     relationships: {
@@ -135,14 +111,15 @@ testData.simpleDataMultipleRelations = {
         data: [],
       },
     },
-    type: 'specimen',
   },
 }
 
 testData.simpleDataInvalidRelationsFormat = {
   data: {
     attributes: {
-      normalized: {
+      individual: {
+        collectionItems: [],
+        featureObservations: [],
         identifiers: [
           {
             identifierType: { id: '1', type: 'identifierType' },
@@ -152,11 +129,6 @@ testData.simpleDataInvalidRelationsFormat = {
             value: '123458',
           },
         ],
-        individual: {
-          collectionItems: [],
-          featureObservations: [],
-          identifiers: ['4444-33333'],
-        },
       },
     },
     relationships: {
@@ -165,14 +137,15 @@ testData.simpleDataInvalidRelationsFormat = {
         type: 'physicalObject',
       },
     },
-    type: 'specimen',
   },
 }
 
 testData.simpleDataInvalidRelations = {
   data: {
     attributes: {
-      normalized: {
+      individual: {
+        collectionItems: [],
+        featureObservations: [],
         identifiers: [
           {
             identifierType: { id: '1', type: 'identifierType' },
@@ -182,11 +155,6 @@ testData.simpleDataInvalidRelations = {
             value: '123458',
           },
         ],
-        individual: {
-          collectionItems: [],
-          featureObservations: [],
-          identifiers: ['4444-33333'],
-        },
       },
     },
     relationships: {
@@ -195,7 +163,6 @@ testData.simpleDataInvalidRelations = {
         type: 'storageLocation',
       },
     },
-    type: 'specimen',
   },
 }
 
