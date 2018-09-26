@@ -96,7 +96,6 @@ const FieldTemplate = ({
           subLabel={subLabel}
         />
       )}
-      {helpText && <p>{helpText}</p>}
       {children}
       {!displayError &&
         displayWarning && (

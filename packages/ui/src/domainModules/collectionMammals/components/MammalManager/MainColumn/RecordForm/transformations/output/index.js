@@ -1,25 +1,26 @@
-import transformCollectionItems from './transformCollectionItems'
+import objectPath from 'object-path'
+
 import transformFeatureObservations from './transformFeatureObservations'
 
 export default function transformOutput({ specimen = {} }) {
   const transformedSpecimen = JSON.parse(JSON.stringify(specimen))
 
-  // TODO: set in backend instead
-  // if no catalogNumber provided, use this
   if (!transformedSpecimen.individual) {
     transformedSpecimen.individual = {}
   }
 
-  transformedSpecimen.individual.collectionItems = transformCollectionItems(
-    transformedSpecimen.individual.collectionItems
-  )
-
-  if (transformedSpecimen.individual.recordHistoryEvents) {
-    transformedSpecimen.individual.recordHistoryEvents = transformedSpecimen.individual.recordHistoryEvents.filter(
-      item => {
-        return !!item
-      }
-    )
+  // remove empty catalog number; it will be set in backend instead
+  if (
+    transformedSpecimen.individual.identifiers &&
+    // length is always 1 when creating new record
+    transformedSpecimen.individual.identifiers.length === 1 &&
+    objectPath.get(
+      transformedSpecimen,
+      'individual.identifiers.0.identifierType.id'
+    ) === '1' &&
+    !objectPath.get(transformedSpecimen, 'individual.identifiers.0.value')
+  ) {
+    transformedSpecimen.individual.identifiers = []
   }
 
   if (transformedSpecimen.individual.featureObservations) {

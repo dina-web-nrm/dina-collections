@@ -17,6 +17,7 @@ import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
+import CatalogNumberModal from 'domainModules/collectionMammals/components/CatalogNumberModal'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
@@ -93,6 +94,7 @@ class RecordForm extends Component {
     this.changeFieldValue = this.changeFieldValue.bind(this)
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
+    this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
 
     this.shortcuts = [
       {
@@ -101,6 +103,14 @@ class RecordForm extends Component {
         onPress: this.props.handleSubmit(this.handleFormSubmit),
       },
     ]
+  }
+
+  handleSubmitFromModal() {
+    if (this.form) {
+      const event = document.createEvent('Event')
+      event.initEvent('submit', true, true)
+      this.form.dispatchEvent(event)
+    }
   }
 
   handleFormSubmit(formData) {
@@ -146,7 +156,12 @@ class RecordForm extends Component {
     return (
       <React.Fragment>
         <KeyboardShortcuts shortcuts={this.shortcuts} />
-        <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+        <form
+          onSubmit={handleSubmit(this.handleFormSubmit)}
+          ref={element => {
+            this.form = element
+          }}
+        >
           <RowLayout
             {...rest}
             availableHeight={availableHeight}
@@ -159,6 +174,12 @@ class RecordForm extends Component {
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             rows={rows}
           />
+          {mode === 'register' && (
+            <CatalogNumberModal
+              handleSubmit={this.handleSubmitFromModal}
+              {...rest}
+            />
+          )}
         </form>
       </React.Fragment>
     )

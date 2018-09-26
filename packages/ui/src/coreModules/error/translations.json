@@ -62,5 +62,8 @@
   },
   "DATE_RANGE_END_NOT_YYYY_MM_DD": {
     "en": "End date is not YYYY-MM-DD"
+  },
+  "INVALID_CATALOG_NUMBER": {
+    "en": "Catalog number must be 6 or 8 digits"
   }
 }
