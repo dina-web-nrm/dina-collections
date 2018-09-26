@@ -1,6 +1,6 @@
 import {
   CATALOG_CARD,
-  CATALOG_CARD_DESCRIPTION,
+  CATALOG_CARD_CREATION_DESCRIPTION,
 } from 'domainModules/collectionMammals/constants'
 
 export default function transformRecordHistoryEvents(recordHistoryEvents = []) {
@@ -13,7 +13,7 @@ export default function transformRecordHistoryEvents(recordHistoryEvents = []) {
       ...recordHistoryEvents,
 
       {
-        description: CATALOG_CARD_DESCRIPTION,
+        description: CATALOG_CARD_CREATION_DESCRIPTION,
         system: CATALOG_CARD,
       },
     ]

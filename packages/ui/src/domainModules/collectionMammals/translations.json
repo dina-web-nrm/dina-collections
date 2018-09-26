@@ -270,6 +270,16 @@
         "en": "Reference system"
       }
     },
+    "recordHistoryEvents": {
+      "agent": {
+        "en": "card author",
+        "sv": ""
+      },
+      "date": {
+        "en": "card date",
+        "sv": ""
+      }
+    },
     "specimen": {
       "publishRecord": {
         "en": "Public",
@@ -348,6 +358,10 @@
       "en": "Edit curatorial assessment",
       "sv": ""
     },
+    "externalEvents": {
+      "en": "external events",
+      "sv": ""
+    },
     "features": {
       "en": "Feature observations"
     },
@@ -361,6 +375,10 @@
     },
     "physicalObjects": {
       "en": "physical objects"
+    },
+    "recordHistory": {
+      "en": "record history",
+      "sv": ""
     },
     "taxon": {
       "en": "taxon"
@@ -765,6 +783,14 @@
       "en": "add agent/name",
       "sv": ""
     },
+    "addCatalogCardCreation": {
+      "en": "Add catalog card creation",
+      "sv": ""
+    },
+    "addCatalogCardInformation": {
+      "en": "Add catalog card information",
+      "sv": ""
+    },
     "addCatalogNumber": {
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
@@ -780,9 +806,17 @@
     "agent": {
       "en": "Observed by (agent)"
     },
+    "by": {
+      "en": "by",
+      "sv": ""
+    },
     "catalogCard": {
       "en": "Catalog card",
       "sv": "Katalogkort"
+    },
+    "catalogCardBy": {
+      "en": "catalog card by",
+      "sv": ""
     },
     "catalogNumber": {
       "en": "Catalog number",
@@ -814,6 +848,10 @@
     },
     "date": {
       "en": "Date"
+    },
+    "done": {
+      "en": "done",
+      "sv": ""
     },
     "edit": {
       "en": "Edit",
