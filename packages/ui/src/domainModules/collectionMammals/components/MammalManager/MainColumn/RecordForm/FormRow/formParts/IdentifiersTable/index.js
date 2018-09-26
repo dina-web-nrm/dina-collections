@@ -32,6 +32,8 @@ const propTypes = {
   identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
   identifierTypeOptions: PropTypes.array.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
+  setChildDirty: PropTypes.func.isRequired,
+  setChildInvalid: PropTypes.func.isRequired,
 }
 
 function IdentifiersTable({
@@ -40,6 +42,8 @@ function IdentifiersTable({
   identifiers,
   identifierTypeOptions,
   removeArrayFieldByIndex,
+  setChildDirty,
+  setChildInvalid,
 }) {
   if (!identifiers.length) {
     return null
@@ -69,6 +73,8 @@ function IdentifiersTable({
                 index={index + 1}
                 key={index + 1} // eslint-disable-line react/no-array-index-key
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
+                setChildDirty={setChildDirty}
+                setChildInvalid={setChildInvalid}
               />
             </Grid.Column>
           )

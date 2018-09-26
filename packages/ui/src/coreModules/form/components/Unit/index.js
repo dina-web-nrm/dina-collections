@@ -119,7 +119,18 @@ class Unit extends PureComponent {
               return null
             }
 
-            if (containsReduxFormField || !name) {
+            if (!name) {
+              return (
+                <Component
+                  key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
+                  module="collectionMammals"
+                  {...rest}
+                  onClick={this.showInitiallyHiddenParts}
+                />
+              )
+            }
+
+            if (containsReduxFormField) {
               return (
                 <Component
                   key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
@@ -131,6 +142,8 @@ class Unit extends PureComponent {
                   name={name}
                   onClick={this.showInitiallyHiddenParts}
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
+                  setChildDirty={setChildDirty}
+                  setChildInvalid={setChildInvalid}
                 />
               )
             }
