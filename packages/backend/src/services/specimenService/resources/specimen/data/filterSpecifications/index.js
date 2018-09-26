@@ -14,16 +14,15 @@ const filters = createGetManyFilterSpecifications({
         if (!value) {
           return null
         }
-
+        // TODO The assumption that the catalogNumber is at place 0 amongst identifiers is not resonable
+        // waiting for fix to: https://github.com/sequelize/sequelize/issues/5173
         return {
-          identifiers: {
-            [Op.contains]: [
-              {
-                identifierType: { id: '1' },
-                value,
-              },
-            ],
-          },
+          [Op.and]: [
+            {
+              'document.individual.identifiers.0.identifierType.id': 1,
+              'document.individual.identifiers.0.value': value,
+            },
+          ],
         }
       },
     },
