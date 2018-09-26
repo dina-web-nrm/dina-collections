@@ -1,4 +1,4 @@
-import { wrapReduxFormFieldParts } from '../utilities'
+import wrapReduxFormFieldParts from 'coreModules/form/utilities/wrapReduxFormFieldParts'
 
 import Checkbox from '../../fields/Checkbox'
 import Input from '../../fields/Input'
