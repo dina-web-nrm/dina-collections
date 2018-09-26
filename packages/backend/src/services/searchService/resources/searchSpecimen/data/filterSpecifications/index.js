@@ -11,5 +11,5 @@ exports.getMany = createGetManyFilterSpecifications({
 
 exports.query = createGetManyFilterSpecifications({
   custom: filters,
-  include: ['id', 'raw'],
+  include: ['id', 'raw', 'ids'],
 })
