@@ -20,7 +20,7 @@ export default function createAgentInputs(
     {
       buttonTextKey,
       columnProps: { width: 9 },
-      componentName: 'AgentDropdownPickerSearchTogglable',
+      componentName: 'TogglableAgentDropdownPickerSearch',
       displayEmptyStateLabel: false,
       displayResultLabel: false,
       initiallyHidden,
