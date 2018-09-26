@@ -1,4 +1,4 @@
-import debounce from 'lodash.debounce'
+import { debounce } from 'lodash'
 
 import createLog from 'utilities/log'
 import actionCreators from 'coreModules/crud/actionCreators'

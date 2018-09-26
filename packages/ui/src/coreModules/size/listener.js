@@ -1,4 +1,4 @@
-import throttle from 'lodash.throttle'
+import { throttle } from 'lodash'
 import { setBreakpoint, setHeight, setWidth } from './actionCreators'
 import globalSelectors from './globalSelectors'
 
