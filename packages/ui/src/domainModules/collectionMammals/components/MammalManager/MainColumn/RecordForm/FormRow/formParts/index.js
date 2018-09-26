@@ -1,7 +1,9 @@
-import AgentDropdownPickerSearchTogglable from './AgentDropdownPickerSearchTogglable'
+import agentParts from 'domainModules/agent/components/formParts'
 import IdentifiersTable from './IdentifiersTable'
+import RecordHistoryExternalEvents from './RecordHistoryExternalEvents'
 
 export default {
-  AgentDropdownPickerSearchTogglable,
+  ...agentParts,
   IdentifiersTable,
+  RecordHistoryExternalEvents,
 }
