@@ -24,13 +24,16 @@ const reportFormFieldStatus = ComposedComponent => {
     componentWillReceiveProps(nextProps) {
       const { input: { name }, setChildDirty, setChildInvalid } = this.props
 
-      if (this.props.meta.dirty !== nextProps.meta.dirty) {
+      if (setChildDirty && this.props.meta.dirty !== nextProps.meta.dirty) {
         const newValue = nextProps.meta.dirty
         log.debug(`setChildDirty ${name}`, newValue)
         setChildDirty(name, newValue)
       }
 
-      if (this.props.meta.invalid !== nextProps.meta.invalid) {
+      if (
+        setChildInvalid &&
+        this.props.meta.invalid !== nextProps.meta.invalid
+      ) {
         const newValue = nextProps.meta.invalid
         log.debug(`setChildInvalid ${name}`, newValue)
         setChildInvalid(name, newValue)
