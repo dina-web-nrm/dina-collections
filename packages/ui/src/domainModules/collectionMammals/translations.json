@@ -794,6 +794,10 @@
     "addCatalogNumber": {
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
+    }, 
+    "createNewSpecimen": {
+      "en": "Creating a new specimen record",
+      "sv": ""
     },
     "addDetermination": {
       "en": "Add determination",
@@ -825,6 +829,10 @@
     "cancel": {
       "en": "Cancel",
       "sv": "Avbryt"
+    },
+    "back": {
+      "en": "Back",
+      "sv": ""
     },
     "clearSearchParameters": {
       "en": "Clear search parameters",
@@ -939,6 +947,22 @@
     "sixOrEightDigits": {
       "en": "6 or 8 digits",
       "sv": "6 eller 8 siffror"
+    },
+    "useThisNumber": {
+      "en": "Use this number",
+      "sv": ""
+    },
+    "automticCatalogNumber": {
+      "en": "Would you like an automatic catalog number for this specimen?",
+      "sv": ""
+    },
+    "yesCreateNumber": {
+      "en": "Yes, create a number",
+      "sv": ""
+    },
+    "enterManully": {
+      "en": "No, I will enter one manually",
+      "sv": ""
     },
     "submitFailed": {
       "en": "Could not save",
