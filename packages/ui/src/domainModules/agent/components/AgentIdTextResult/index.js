@@ -34,11 +34,13 @@ const propTypes = {
   }),
   removeForceRenderResult: PropTypes.func.isRequired,
   setAsLatestActiveField: PropTypes.func.isRequired,
+  textOnly: PropTypes.bool,
 }
 const defaultProps = {
   focusOnMount: false,
   forceRenderResult: false,
   normalizedAgent: undefined,
+  textOnly: false,
 }
 
 class AgentIdTextResult extends Component {
@@ -74,9 +76,10 @@ class AgentIdTextResult extends Component {
       i18n: { moduleTranslate },
       input: { name, value },
       normalizedAgent,
+      textOnly,
     } = this.props
 
-    const inputText = value && (value.textI || value.textT)
+    const inputText = value && (value.textI || value.textV)
 
     const fullName = objectPath.get(normalizedAgent, 'attributes.fullName')
 
@@ -94,6 +97,10 @@ class AgentIdTextResult extends Component {
       keys: Object.keys(fieldTemplateProps),
       props: this.props,
     })
+
+    if (textOnly) {
+      return <React.Fragment>{`${agentName} (${suffix})`}</React.Fragment>
+    }
 
     return (
       <FieldTemplate {...extractedProps} name={name}>

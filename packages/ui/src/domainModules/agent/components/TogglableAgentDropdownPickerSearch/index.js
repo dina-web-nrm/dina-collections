@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { TogglableField } from 'coreModules/form/components'
 import AgentDropdownPickerSearch from '../AgentDropdownPickerSearch'
-import AgentIdTextResult from './AgentIdTextResult'
+import AgentIdTextResult from '../AgentIdTextResult'
 
 const getHasValue = input => {
   return input && input.value && (input.value.textI || input.value.normalized)
