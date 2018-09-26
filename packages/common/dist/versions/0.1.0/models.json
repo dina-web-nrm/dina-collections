@@ -1933,7 +1933,7 @@
     "additionalProperties": false,
     "description": "This is a description",
     "x-format": true,
-    "x-normalize": true,
+    "x-normalize": false,
     "properties": {
       "individual": {
         "$ref": "individual",
@@ -1941,92 +1941,6 @@
       },
       "lid": {
         "$ref": "lid",
-        "x-summary": ""
-      },
-      "normalized": {
-        "type": "object",
-        "properties": {
-          "individuals": {
-            "type": "array",
-            "items": {
-              "$ref": "individual"
-            },
-            "x-column": "individuals"
-          },
-          "collectionItems": {
-            "type": "array",
-            "items": {
-              "$ref": "collectionItem"
-            },
-            "x-column": "collectionItems"
-          },
-          "id": {
-            "type": "string"
-          },
-          "deathInformation": {
-            "type": "array",
-            "items": {
-              "$ref": "deathInformation"
-            },
-            "x-column": "deathInformation"
-          },
-          "collectingInformation": {
-            "type": "array",
-            "items": {
-              "$ref": "collectingInformation"
-            },
-            "x-column": "collectingInformation"
-          },
-          "determinations": {
-            "type": "array",
-            "items": {
-              "$ref": "determination"
-            },
-            "x-column": "determinations"
-          },
-          "identifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "identifier"
-            },
-            "x-column": "identifiers"
-          },
-          "taxonInformation": {
-            "type": "array",
-            "items": {
-              "$ref": "taxonInformation"
-            },
-            "x-column": "taxonInformation"
-          },
-          "featureObservations": {
-            "type": "array",
-            "items": {
-              "$ref": "featureObservation"
-            },
-            "x-column": "featureObservations"
-          },
-          "originInformation": {
-            "type": "array",
-            "items": {
-              "$ref": "originInformation"
-            },
-            "x-column": "originInformation"
-          },
-          "events": {
-            "type": "array",
-            "items": {
-              "$ref": "event"
-            },
-            "x-column": "events"
-          },
-          "recordHistoryEvents": {
-            "type": "array",
-            "items": {
-              "$ref": "recordHistoryEvent"
-            },
-            "x-column": "recordHistoryEvents"
-          }
-        },
         "x-summary": ""
       },
       "id": {
@@ -13060,6 +12974,326 @@
     "x-summary": "",
     "description": ""
   },
+  "specimenQueryResponse": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "$ref": "customObject"
+            },
+            "id": {
+              "example": "1234",
+              "type": "string"
+            },
+            "relationships": {
+              "properties": {
+                "causeOfDeathTypes": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "causeOfDeathType"
+                            ],
+                            "example": "causeOfDeathType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "establishmentMeansTypes": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "establishmentMeansType"
+                            ],
+                            "example": "establishmentMeansType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "featureTypes": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "featureType"
+                            ],
+                            "example": "featureType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "identifierTypes": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "identifierType"
+                            ],
+                            "example": "identifierType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "normalizedAgents": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "normalizedAgent"
+                            ],
+                            "example": "normalizedAgent",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "physicalObjects": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "physicalObject"
+                            ],
+                            "example": "physicalObject",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "places": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "place"
+                            ],
+                            "example": "place",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "preparationTypes": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "preparationType"
+                            ],
+                            "example": "preparationType",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "taxonNames": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "id": {
+                            "example": "1234",
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "taxonName"
+                            ],
+                            "example": "taxonName",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                },
+                "typeSpecimenType": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "data": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "id": {
+                              "example": "1234",
+                              "type": "string"
+                            },
+                            "type": {
+                              "enum": [
+                                "typeSpecimenType"
+                              ],
+                              "example": "typeSpecimenType",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "type": {
+              "default": "customObject",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "type": "array",
+        "x-summary": ""
+      },
+      "jsonapi": {
+        "type": "object",
+        "x-summary": ""
+      },
+      "links": {
+        "properties": {
+          "self": {
+            "example": "https://domain/api/specimen/v01/specimens/actions/query",
+            "format": "uri",
+            "type": "string",
+            "x-faker": "internet.url"
+          }
+        },
+        "type": "object",
+        "x-summary": ""
+      },
+      "meta": {
+        "type": "object",
+        "x-summary": ""
+      }
+    },
+    "type": "object",
+    "x-examples": {},
+    "x-summary": "",
+    "description": ""
+  },
   "specimenUpdateResponse": {
     "additionalProperties": false,
     "properties": {
@@ -20864,7 +21098,10 @@
         "data": {
           "attributes": {
             "exportFields": [
-              "id"
+              {
+                "fieldPath": "id",
+                "label": "id"
+              }
             ],
             "exportIds": [
               1,
@@ -20881,7 +21118,10 @@
       "data": {
         "attributes": {
           "exportFields": [
-            "id"
+            {
+              "fieldPath": "id",
+              "label": "id"
+            }
           ],
           "exportIds": [
             1,
@@ -23524,8 +23764,28 @@
           },
           "attributes": {
             "publishRecord": true,
-            "individual": "836625c3-a049-4323-8b52-4bc425f5be04",
-            "normalized": {
+            "individual": {
+              "collectionItems": [
+                {
+                  "alternateIdentifiersText": "alternateIdentifiersText",
+                  "physicalObject": {
+                    "id": "2234",
+                    "type": "physicalObject"
+                  },
+                  "physicalObjectText": "physicalObjectText"
+                }
+              ],
+              "identifiers": [
+                {
+                  "identifierType": {
+                    "id": "1",
+                    "type": "identifierType"
+                  },
+                  "namespace": "",
+                  "remarks": "",
+                  "value": "123456"
+                }
+              ],
               "determinations": [
                 {
                   "determinationVerbatim": "determinationVerbatim",
@@ -23536,70 +23796,7 @@
                   "taxonName": {
                     "id": "2367",
                     "type": "taxonName"
-                  },
-                  "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
-                }
-              ],
-              "collectionItems": [
-                {
-                  "alternateIdentifiersText": "alternateIdentifiersText",
-                  "physicalObject": {
-                    "id": "2234",
-                    "type": "physicalObject"
-                  },
-                  "physicalObjectText": "physicalObjectText",
-                  "lid": "af80e78b-c61e-485f-80a8-06d237400583"
-                }
-              ],
-              "events": [
-                {
-                  "dateRange": {
-                    "endDate": {
-                      "dateText": "endDate"
-                    }
-                  },
-                  "expeditionText": "expeditionText",
-                  "locationInformation": {
-                    "coordinatesVerbatim": "coordinatesVerbatim",
-                    "places": [
-                      {
-                        "id": "1",
-                        "type": "place"
-                      },
-                      {
-                        "id": "2",
-                        "type": "place"
-                      },
-                      {
-                        "id": "3",
-                        "type": "place"
-                      },
-                      {
-                        "id": "4",
-                        "type": "place"
-                      },
-                      {
-                        "id": "5",
-                        "type": "place"
-                      }
-                    ],
-                    "georeferenceSourcesText": "georeferenceSourcesText",
-                    "localityV": "localityV",
-                    "position": {
-                      "geodeticDatum": "geodeticDatum text",
-                      "latitude": "latitude-string",
-                      "longitude": "longitude-string",
-                      "uncertaintyInMeters": 10
-                    },
-                    "remarks": "remarks",
-                    "verticalPosition": {
-                      "maximumDepthInMeters": 100,
-                      "maximumElevationInMeters": 100,
-                      "minimumDepthInMeters": 20,
-                      "minimumElevationInMeters": 20
-                    }
-                  },
-                  "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+                  }
                 }
               ],
               "featureObservations": [
@@ -23614,57 +23811,57 @@
                   "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
                 }
               ],
-              "identifiers": [
-                {
-                  "identifierType": {
-                    "id": "1",
-                    "type": "identifierType"
-                  },
-                  "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-                  "namespace": "",
-                  "remarks": "",
-                  "value": "123456"
-                }
-              ],
               "collectingInformation": [
                 {
                   "collectorsText": "collectorsText",
-                  "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
-                  "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
-                }
-              ],
-              "individuals": [
-                {
-                  "determinations": [
-                    "a70d054c-ec04-45bc-860b-d522f8f48328"
-                  ],
-                  "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
-                  "featureObservations": [
-                    "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
-                  ],
-                  "collectionItems": [
-                    "af80e78b-c61e-485f-80a8-06d237400583"
-                  ],
-                  "identifiers": [
-                    "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
-                  ],
-                  "collectingInformation": [
-                    "44ab19bf-4328-42d3-9f8e-c88854847234"
-                  ],
-                  "recordHistoryEvents": [
-                    "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
-                  ],
-                  "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
-                }
-              ],
-              "recordHistoryEvents": [
-                {
-                  "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
-                }
-              ],
-              "taxonInformation": [
-                {
-                  "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+                  "event": {
+                    "dateRange": {
+                      "endDate": {
+                        "dateText": "endDate"
+                      }
+                    },
+                    "expeditionText": "expeditionText",
+                    "locationInformation": {
+                      "coordinatesVerbatim": "coordinatesVerbatim",
+                      "places": [
+                        {
+                          "id": "1",
+                          "type": "place"
+                        },
+                        {
+                          "id": "2",
+                          "type": "place"
+                        },
+                        {
+                          "id": "3",
+                          "type": "place"
+                        },
+                        {
+                          "id": "4",
+                          "type": "place"
+                        },
+                        {
+                          "id": "5",
+                          "type": "place"
+                        }
+                      ],
+                      "georeferenceSourcesText": "georeferenceSourcesText",
+                      "localityV": "localityV",
+                      "position": {
+                        "geodeticDatum": "geodeticDatum text",
+                        "latitude": "latitude-string",
+                        "longitude": "longitude-string",
+                        "uncertaintyInMeters": 10
+                      },
+                      "remarks": "remarks",
+                      "verticalPosition": {
+                        "maximumDepthInMeters": 100,
+                        "maximumElevationInMeters": 100,
+                        "minimumDepthInMeters": 20,
+                        "minimumElevationInMeters": 20
+                      }
+                    }
+                  }
                 }
               ]
             }
@@ -23719,8 +23916,28 @@
         },
         "attributes": {
           "publishRecord": true,
-          "individual": "836625c3-a049-4323-8b52-4bc425f5be04",
-          "normalized": {
+          "individual": {
+            "collectionItems": [
+              {
+                "alternateIdentifiersText": "alternateIdentifiersText",
+                "physicalObject": {
+                  "id": "2234",
+                  "type": "physicalObject"
+                },
+                "physicalObjectText": "physicalObjectText"
+              }
+            ],
+            "identifiers": [
+              {
+                "identifierType": {
+                  "id": "1",
+                  "type": "identifierType"
+                },
+                "namespace": "",
+                "remarks": "",
+                "value": "123456"
+              }
+            ],
             "determinations": [
               {
                 "determinationVerbatim": "determinationVerbatim",
@@ -23731,70 +23948,7 @@
                 "taxonName": {
                   "id": "2367",
                   "type": "taxonName"
-                },
-                "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
-              }
-            ],
-            "collectionItems": [
-              {
-                "alternateIdentifiersText": "alternateIdentifiersText",
-                "physicalObject": {
-                  "id": "2234",
-                  "type": "physicalObject"
-                },
-                "physicalObjectText": "physicalObjectText",
-                "lid": "af80e78b-c61e-485f-80a8-06d237400583"
-              }
-            ],
-            "events": [
-              {
-                "dateRange": {
-                  "endDate": {
-                    "dateText": "endDate"
-                  }
-                },
-                "expeditionText": "expeditionText",
-                "locationInformation": {
-                  "coordinatesVerbatim": "coordinatesVerbatim",
-                  "places": [
-                    {
-                      "id": "1",
-                      "type": "place"
-                    },
-                    {
-                      "id": "2",
-                      "type": "place"
-                    },
-                    {
-                      "id": "3",
-                      "type": "place"
-                    },
-                    {
-                      "id": "4",
-                      "type": "place"
-                    },
-                    {
-                      "id": "5",
-                      "type": "place"
-                    }
-                  ],
-                  "georeferenceSourcesText": "georeferenceSourcesText",
-                  "localityV": "localityV",
-                  "position": {
-                    "geodeticDatum": "geodeticDatum text",
-                    "latitude": "latitude-string",
-                    "longitude": "longitude-string",
-                    "uncertaintyInMeters": 10
-                  },
-                  "remarks": "remarks",
-                  "verticalPosition": {
-                    "maximumDepthInMeters": 100,
-                    "maximumElevationInMeters": 100,
-                    "minimumDepthInMeters": 20,
-                    "minimumElevationInMeters": 20
-                  }
-                },
-                "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+                }
               }
             ],
             "featureObservations": [
@@ -23809,61 +23963,123 @@
                 "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
               }
             ],
-            "identifiers": [
-              {
-                "identifierType": {
-                  "id": "1",
-                  "type": "identifierType"
-                },
-                "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
-                "namespace": "",
-                "remarks": "",
-                "value": "123456"
-              }
-            ],
             "collectingInformation": [
               {
                 "collectorsText": "collectorsText",
-                "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
-                "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
-              }
-            ],
-            "individuals": [
-              {
-                "determinations": [
-                  "a70d054c-ec04-45bc-860b-d522f8f48328"
-                ],
-                "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
-                "featureObservations": [
-                  "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
-                ],
-                "collectionItems": [
-                  "af80e78b-c61e-485f-80a8-06d237400583"
-                ],
-                "identifiers": [
-                  "9fc8671a-c801-4e62-b0b4-9a946be2ba09"
-                ],
-                "collectingInformation": [
-                  "44ab19bf-4328-42d3-9f8e-c88854847234"
-                ],
-                "recordHistoryEvents": [
-                  "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
-                ],
-                "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
-              }
-            ],
-            "recordHistoryEvents": [
-              {
-                "lid": "c54e5ba9-4b51-4601-8b52-4bc425f5be04"
-              }
-            ],
-            "taxonInformation": [
-              {
-                "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+                "event": {
+                  "dateRange": {
+                    "endDate": {
+                      "dateText": "endDate"
+                    }
+                  },
+                  "expeditionText": "expeditionText",
+                  "locationInformation": {
+                    "coordinatesVerbatim": "coordinatesVerbatim",
+                    "places": [
+                      {
+                        "id": "1",
+                        "type": "place"
+                      },
+                      {
+                        "id": "2",
+                        "type": "place"
+                      },
+                      {
+                        "id": "3",
+                        "type": "place"
+                      },
+                      {
+                        "id": "4",
+                        "type": "place"
+                      },
+                      {
+                        "id": "5",
+                        "type": "place"
+                      }
+                    ],
+                    "georeferenceSourcesText": "georeferenceSourcesText",
+                    "localityV": "localityV",
+                    "position": {
+                      "geodeticDatum": "geodeticDatum text",
+                      "latitude": "latitude-string",
+                      "longitude": "longitude-string",
+                      "uncertaintyInMeters": 10
+                    },
+                    "remarks": "remarks",
+                    "verticalPosition": {
+                      "maximumDepthInMeters": 100,
+                      "maximumElevationInMeters": 100,
+                      "minimumDepthInMeters": 20,
+                      "minimumElevationInMeters": 20
+                    }
+                  }
+                }
               }
             ]
           }
         }
+      }
+    },
+    "x-summary": "",
+    "description": ""
+  },
+  "specimenQueryRequest": {
+    "additionalProperties": false,
+    "type": "object",
+    "required": [
+      "data"
+    ],
+    "properties": {
+      "data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1234"
+          },
+          "type": {
+            "default": "queryBody",
+            "enum": [
+              "queryBody"
+            ],
+            "type": "string"
+          },
+          "attributes": {
+            "properties": {
+              "aggregations": {
+                "items": {
+                  "$ref": "queryAggregation"
+                },
+                "type": "array"
+              },
+              "limit": {
+                "description": "Limit the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "offset": {
+                "description": "Offset the result",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query": {
+                "$ref": "queryRoot"
+              },
+              "scroll": {
+                "default": false,
+                "example": false,
+                "description": "If true elastic search scroll will be used",
+                "type": "boolean"
+              },
+              "scrollId": {
+                "description": "Elastic search scroll id",
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "x-summary": ""
       }
     },
     "x-summary": "",
