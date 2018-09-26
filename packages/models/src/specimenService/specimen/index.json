@@ -2,98 +2,13 @@
   "additionalProperties": false,
   "description": "This is a description",
   "x-format": true,
-  "x-normalize": true,
+  "x-normalize": false,
   "properties": {
     "individual": {
       "$ref": "__ROOT__individual"
     },
     "lid": {
       "$ref": "__ROOT__lid"
-    },
-    "normalized": {
-      "type": "object",
-      "properties": {
-        "individuals": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__individual"
-          },
-          "x-column": "individuals"
-        },
-        "collectionItems": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__collectionItem"
-          },
-          "x-column": "collectionItems"
-        },
-        "id": {
-          "type": "string"
-        },
-        "deathInformation": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__deathInformation"
-          },
-          "x-column": "deathInformation"
-        },
-        "collectingInformation": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__collectingInformation"
-          },
-          "x-column": "collectingInformation"
-        },
-        "determinations": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__determination"
-          },
-          "x-column": "determinations"
-        },
-        "identifiers": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__identifier"
-          },
-          "x-column": "identifiers"
-        },
-        "taxonInformation": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__taxonInformation"
-          },
-          "x-column": "taxonInformation"
-        },
-        "featureObservations": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__featureObservation"
-          },
-          "x-column": "featureObservations"
-        },
-        "originInformation": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__originInformation"
-          },
-          "x-column": "originInformation"
-        },
-        "events": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__event"
-          },
-          "x-column": "events"
-        },
-        "recordHistoryEvents": {
-          "type": "array",
-          "items": {
-            "$ref": "__ROOT__recordHistoryEvent"
-          },
-          "x-column": "recordHistoryEvents"
-        }
-      }
     },
     "id": {
       "$ref": "__ROOT__id"

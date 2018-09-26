@@ -17,8 +17,7 @@
       "type": "boolean"
     },
     "event": {
-      "$ref": "__ROOT__event",
-      "x-reference-type": "internal"
+      "$ref": "__ROOT__event"
     }
   }
 }
