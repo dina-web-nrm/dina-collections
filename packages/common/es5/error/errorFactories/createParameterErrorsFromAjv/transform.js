@@ -1,11 +1,11 @@
 'use strict';
 
-var JSON_SCHEMA_ERROR_CODES = require('../../constants/jsonSchemaErrorCodes');
+var parameterErrorCodes = require('../../constants/parameterErrorCodes');
 
 module.exports = function transform(error) {
   var keyword = error.keyword;
 
-  var errorCode = JSON_SCHEMA_ERROR_CODES[keyword];
+  var errorCode = parameterErrorCodes[keyword];
   if (!keyword || !errorCode) {
     console.error('Missing errorCode for keyword ' + keyword);
   }

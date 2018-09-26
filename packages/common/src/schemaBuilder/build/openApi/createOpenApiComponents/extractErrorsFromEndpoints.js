@@ -1,5 +1,8 @@
 const errorCodeMap = require('../../../../error/constants/errorCodes')
 const errorStatus = require('../../../../error/constants/errorStatus')
+const parameterErrorCodesMap = require('../../../../error/constants/parameterErrorCodes')
+
+const parameterErrorCodes = Object.values(parameterErrorCodesMap)
 
 const createBaseError = () => {
   return {
@@ -19,7 +22,15 @@ const createBaseError = () => {
         type: 'string',
       },
       message: { type: 'string' },
-      parameterErrors: { type: 'string' },
+      parameterErrors: {
+        properties: {
+          errorCode: {
+            enum: parameterErrorCodes,
+            type: 'string',
+          },
+        },
+        type: 'object',
+      },
       title: {
         description:
           'A short, human-readable summary of the problem. Associated with the code',

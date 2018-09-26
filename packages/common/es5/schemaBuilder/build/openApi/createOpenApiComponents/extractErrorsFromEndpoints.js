@@ -4,10 +4,17 @@ var _keys = require('babel-runtime/core-js/object/keys');
 
 var _keys2 = _interopRequireDefault(_keys);
 
+var _values = require('babel-runtime/core-js/object/values');
+
+var _values2 = _interopRequireDefault(_values);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var errorCodeMap = require('../../../../error/constants/errorCodes');
 var errorStatus = require('../../../../error/constants/errorStatus');
+var parameterErrorCodesMap = require('../../../../error/constants/parameterErrorCodes');
+
+var parameterErrorCodes = (0, _values2.default)(parameterErrorCodesMap);
 
 var createBaseError = function createBaseError() {
   return {
@@ -25,7 +32,15 @@ var createBaseError = function createBaseError() {
         type: 'string'
       },
       message: { type: 'string' },
-      parameterErrors: { type: 'string' },
+      parameterErrors: {
+        properties: {
+          errorCode: {
+            enum: parameterErrorCodes,
+            type: 'string'
+          }
+        },
+        type: 'object'
+      },
       title: {
         description: 'A short, human-readable summary of the problem. Associated with the code',
         type: 'string'

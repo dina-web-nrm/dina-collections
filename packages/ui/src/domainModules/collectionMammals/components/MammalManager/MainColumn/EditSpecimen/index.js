@@ -57,6 +57,7 @@ class EditSpecimen extends PureComponent {
           })
           return updateSpecimen({
             item,
+            throwError: true,
           })
         }}
         initialValues={initialValues}

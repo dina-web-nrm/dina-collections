@@ -5,6 +5,7 @@ const deleteCatalogNumberIdentifier = require('../utilities/deleteCatalogNumberI
 const extractCatalogNumberFromSpecimen = require('../utilities/extractCatalogNumberFromSpecimen')
 const fetchCatalogNumberIdentifierTypeId = require('../utilities/fetchCatalogNumberIdentifierTypeId')
 const generateCatalogNumberIdentifier = require('../utilities/generateCatalogNumberIdentifier')
+const createCatalogNumberError = require('../utilities/createCatalogNumberError')
 
 const createControllerFactory = require('../../../../../../lib/controllers/crud/create')
 
@@ -25,21 +26,31 @@ module.exports = function createSpecimen(options) {
           return createCatalogNumberIdentifier({
             catalogNumber,
             serviceInteractor,
-          }).then(catalogNumberIdentifier => {
-            if (
-              catalogNumberIdentifier.attributes.identifier !== catalogNumber
-            ) {
-              backendError500({
-                code: 'INTERNAL_SERVER_ERROR',
-                detail: 'Error saving catalogNumber',
-              })
-            }
-            return {
-              catalogNumberIdentifier,
-              generated: false,
-              identifierTypeId,
-            }
           })
+            .then(catalogNumberIdentifier => {
+              if (
+                catalogNumberIdentifier.attributes.identifier !== catalogNumber
+              ) {
+                backendError500({
+                  code: 'INTERNAL_SERVER_ERROR',
+                  detail: 'Error saving catalogNumber',
+                })
+              }
+              return {
+                catalogNumberIdentifier,
+                generated: false,
+                identifierTypeId,
+              }
+            })
+            .catch(error => {
+              const catalogNumberError = createCatalogNumberError({
+                error,
+                identifierTypeId,
+                specimen: request.body.data,
+              })
+
+              throw catalogNumberError
+            })
         }
         return generateCatalogNumberIdentifier({
           serviceInteractor,

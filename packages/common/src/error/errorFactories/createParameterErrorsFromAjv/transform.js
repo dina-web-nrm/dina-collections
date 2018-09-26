@@ -1,8 +1,8 @@
-const JSON_SCHEMA_ERROR_CODES = require('../../constants/jsonSchemaErrorCodes')
+const parameterErrorCodes = require('../../constants/parameterErrorCodes')
 
 module.exports = function transform(error) {
   const { keyword } = error
-  const errorCode = JSON_SCHEMA_ERROR_CODES[keyword]
+  const errorCode = parameterErrorCodes[keyword]
   if (!keyword || !errorCode) {
     console.error(`Missing errorCode for keyword ${keyword}`) // eslint-disable-line no-console
   }
