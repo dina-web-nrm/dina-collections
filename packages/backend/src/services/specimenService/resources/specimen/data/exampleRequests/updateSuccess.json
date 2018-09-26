@@ -45,7 +45,17 @@
     },
     "attributes": {
       "publishRecord": true,
-      "normalized": {
+      "individual": {
+        "collectionItems": [
+          {
+            "alternateIdentifiersText": "alternateIdentifiersText",
+            "physicalObject": {
+              "id": "2234",
+              "type": "physicalObject"
+            },
+            "physicalObjectText": "physicalObjectText"
+          }
+        ],
         "determinations": [
           {
             "determinationVerbatim": "determinationVerbatim",
@@ -54,70 +64,7 @@
             "taxonName": {
               "id": "2367",
               "type": "taxon"
-            },
-            "lid": "a70d054c-ec04-45bc-860b-d522f8f48328"
-          }
-        ],
-        "collectionItems": [
-          {
-            "alternateIdentifiersText": "alternateIdentifiersText",
-            "physicalObject": {
-              "id": "2234",
-              "type": "physicalObject"
-            },
-            "physicalObjectText": "physicalObjectText",
-            "lid": "af80e78b-c61e-485f-80a8-06d237400583"
-          }
-        ],
-        "events": [
-          {
-            "dateRange": {
-              "endDate": {
-                "dateText": "endDate"
-              }
-            },
-            "expeditionText": "expeditionText",
-            "locationInformation": {
-              "coordinatesVerbatim": "coordinatesVerbatim",
-              "places": [
-                {
-                  "id": "1",
-                  "type": "place"
-                },
-                {
-                  "id": "2",
-                  "type": "place"
-                },
-                {
-                  "id": "3",
-                  "type": "place"
-                },
-                {
-                  "id": "4",
-                  "type": "place"
-                },
-                {
-                  "id": "5",
-                  "type": "place"
-                }
-              ],
-              "georeferenceSourcesText": "georeferenceSourcesText",
-              "localityV": "localityV",
-              "position": {
-                "geodeticDatum": "geodeticDatum text",
-                "latitude": "latitude-string",
-                "longitude": "longitude-string",
-                "uncertaintyInMeters": 10
-              },
-              "remarks": "remarks",
-              "verticalPosition": {
-                "maximumDepthInMeters": 100,
-                "maximumElevationInMeters": 100,
-                "minimumDepthInMeters": 20,
-                "minimumElevationInMeters": 20
-              }
-            },
-            "lid": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5"
+            }
           }
         ],
         "featureObservations": [
@@ -128,14 +75,13 @@
               "id": "1",
               "type": "featureType"
             },
-            "methodText": "methodText",
-            "lid": "eed22ecc-7927-4b32-ae36-8e4e1dd465a8"
+            "methodText": "methodText"
           }
         ],
         "identifiers": [
           {
             "identifierType": { "id": "1", "type": "identifierType" },
-            "lid": "9fc8671a-c801-4e62-b0b4-9a946be2ba09",
+
             "namespace": "",
             "remarks": "",
             "value": "123456"
@@ -144,24 +90,54 @@
         "collectingInformation": [
           {
             "collectorsText": "collectorsText",
-            "event": "4489ba7a-00aa-4a88-b257-cfadf92e1ac5",
-            "lid": "44ab19bf-4328-42d3-9f8e-c88854847234"
-          }
-        ],
-        "individual": [
-          {
-            "determinations": ["a70d054c-ec04-45bc-860b-d522f8f48328"],
-            "taxonInformation": "c54e5ba9-4b51-4601-849d-5f2f05312ba4",
-            "featureObservations": ["eed22ecc-7927-4b32-ae36-8e4e1dd465a8"],
-            "collectionItems": ["af80e78b-c61e-485f-80a8-06d237400583"],
-            "identifiers": ["9fc8671a-c801-4e62-b0b4-9a946be2ba09"],
-            "collectingInformation": ["44ab19bf-4328-42d3-9f8e-c88854847234"],
-            "lid": "836625c3-a049-4323-8b52-4bc425f5be04"
-          }
-        ],
-        "taxonInformation": [
-          {
-            "lid": "c54e5ba9-4b51-4601-849d-5f2f05312ba4"
+            "event": {
+              "dateRange": {
+                "endDate": {
+                  "dateText": "endDate"
+                }
+              },
+              "expeditionText": "expeditionText",
+              "locationInformation": {
+                "coordinatesVerbatim": "coordinatesVerbatim",
+                "places": [
+                  {
+                    "id": "1",
+                    "type": "place"
+                  },
+                  {
+                    "id": "2",
+                    "type": "place"
+                  },
+                  {
+                    "id": "3",
+                    "type": "place"
+                  },
+                  {
+                    "id": "4",
+                    "type": "place"
+                  },
+                  {
+                    "id": "5",
+                    "type": "place"
+                  }
+                ],
+                "georeferenceSourcesText": "georeferenceSourcesText",
+                "localityV": "localityV",
+                "position": {
+                  "geodeticDatum": "geodeticDatum text",
+                  "latitude": "latitude-string",
+                  "longitude": "longitude-string",
+                  "uncertaintyInMeters": 10
+                },
+                "remarks": "remarks",
+                "verticalPosition": {
+                  "maximumDepthInMeters": 100,
+                  "maximumElevationInMeters": 100,
+                  "minimumDepthInMeters": 20,
+                  "minimumElevationInMeters": 20
+                }
+              }
+            }
           }
         ]
       }

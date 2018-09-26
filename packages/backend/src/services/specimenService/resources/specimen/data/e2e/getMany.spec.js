@@ -70,7 +70,8 @@ apiDescribe('specimen', () => {
         const modifiedSimpleDataRelations = getTestData(
           'simpleDataPhysicalObjectRelations'
         )
-        modifiedSimpleDataRelations.data.attributes.normalized.identifiers[0].value =
+
+        modifiedSimpleDataRelations.data.attributes.individual.identifiers[0].value =
           '555112'
 
         return makeTestCall({

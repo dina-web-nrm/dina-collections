@@ -60,7 +60,7 @@ module.exports = {
         primary: {
           data: {
             attributes: {
-              exportFields: ['id'],
+              exportFields: [{ fieldPath: 'id', label: 'id' }],
               exportIds: [1, 2, 3],
               resource: 'specimen',
             },

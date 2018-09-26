@@ -17,54 +17,46 @@
     "determinations": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__determination",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__determination"
       }
     },
     "taxonInformation": {
-      "$ref": "__ROOT__taxonInformation",
-      "x-reference-type": "internal"
+      "$ref": "__ROOT__taxonInformation"
     },
     "deathInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__deathInformation",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__deathInformation"
       }
     },
     "originInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__originInformation",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__originInformation"
       }
     },
     "collectingInformation": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectingInformation",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__collectingInformation"
       }
     },
     "featureObservations": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__featureObservation",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__featureObservation"
       }
     },
     "identifiers": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__identifier",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__identifier"
       }
     },
     "collectionItems": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__collectionItem",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__collectionItem"
       }
     },
     "recordHistoryEvents": {

@@ -1,4 +1,5 @@
 const os = require('os')
+const objectPath = require('object-path')
 const { Parser: Json2csvParser } = require('json2csv')
 const { execute: batchExecute } = require('common/src/batch')
 const createLog = require('../../../../../../../utilities/log')
@@ -13,29 +14,57 @@ module.exports = function performExport({
 }) {
   const { exportFields, exportIds, resource: exportResource } = item.attributes
 
+  const exportSpecificIds = exportIds && !!exportIds.length
   const filePath = createFilePath({ exportResource })
-  const includeFields = exportFields.map(({ fieldPath }) => {
-    return fieldPath
-  })
+  const includeFields = exportFields.reduce(
+    (arr, { fieldPath, fieldPaths }) => {
+      if (fieldPaths) {
+        return [...arr, ...fieldPaths]
+      }
+      if (fieldPath) {
+        return [...arr, fieldPath]
+      }
+      return arr
+    },
+    []
+  )
 
   const createBatch = ({ numberOfBatchEntries, startCount }) => {
-    const batchIds = exportIds.slice(
-      startCount,
-      startCount + numberOfBatchEntries
-    )
-
-    const batchRequest = {
-      queryParams: {
-        filter: {
-          ids: batchIds,
+    let batchRequest
+    if (exportSpecificIds) {
+      const batchIds = exportIds.slice(
+        startCount,
+        startCount + numberOfBatchEntries
+      )
+      batchRequest = {
+        body: {
+          data: {
+            attributes: {
+              filter: {
+                ids: batchIds,
+              },
+              includeFields,
+              limit: 10000,
+            },
+          },
         },
-        includeFields,
-        limit: 10000,
-      },
+      }
+    } else {
+      batchRequest = {
+        body: {
+          data: {
+            attributes: {
+              includeFields,
+              limit: numberOfBatchEntries,
+              offset: startCount,
+            },
+          },
+        },
+      }
     }
 
     return serviceInteractor
-      .getMany({
+      .query({
         request: batchRequest,
         resource: exportResource,
       })
@@ -45,6 +74,16 @@ module.exports = function performExport({
   }
 
   const fields = exportFields.map(exportField => {
+    if (exportField.fieldPaths) {
+      return {
+        default: exportField.default,
+        label: exportField.label,
+        value: row =>
+          exportField.fieldPaths.map(fieldPath => {
+            return objectPath.get(row, fieldPath)
+          }),
+      }
+    }
     return {
       default: exportField.default,
       label: exportField.label,
@@ -65,15 +104,23 @@ module.exports = function performExport({
       filePath,
     })
   }
-  log.info(
-    `Performing export for resource ${exportResource} with ${
-      exportIds.length
-    } items`
-  )
+
+  const numberOfEntries = exportSpecificIds ? exportIds.length : undefined
+
+  if (numberOfEntries) {
+    log.info(
+      `Performing export for resource ${exportResource} with ${
+        exportIds.length
+      } items`
+    )
+  } else {
+    log.info(`Performing export for resource ${exportResource} with all items`)
+  }
+
   return batchExecute({
     createBatch,
     execute,
-    numberOfEntries: exportIds.length,
+    numberOfEntries,
     numberOfEntriesEachBatch: 1000,
   }).then(() => {
     return {

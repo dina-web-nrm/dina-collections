@@ -12,6 +12,7 @@ module.exports = function createServiceInteractor() {
     'getMany',
     'getOne',
     'importDataFromFile',
+    'query',
     'rebuildView',
     'requestUpdateView',
     'update',

@@ -1,8 +1,4 @@
 const {
-  getNormalizedColumnNames,
-} = require('common/src/formatObject/specifications')
-
-const {
   importDataFromFile: importDataFromFileTransformationSpecification,
 } = require('./data/transformationSpecifications')
 
@@ -21,14 +17,11 @@ const {
   update: updatePostHooks,
 } = require('./data/postHooks')
 
-const normalizedColumnNames = getNormalizedColumnNames('specimen')
-
 module.exports = {
   basePath: '/api/specimen/v01',
   model: {
-    modelFactory: 'sequelizeNormalizedDocumentModel',
+    modelFactory: 'sequelizeDocumentModel',
     name: 'specimen',
-    normalizedColumnNames,
   },
   operations: [
     {
@@ -48,6 +41,10 @@ module.exports = {
       filterSpecification: getManyFilterSpecification,
       includeRelations: true,
       type: 'getMany',
+    },
+    {
+      filterSpecification: getManyFilterSpecification,
+      type: 'query',
     },
     {
       exampleRequests: { primary: updateRequestSuccess },

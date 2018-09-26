@@ -4,13 +4,6 @@ const objectPath = require('object-path')
 const createJobHook = ({ request }) => {
   return Promise.resolve().then(() => {
     const { body } = request
-    if (!objectPath.get(body, 'data.attributes.exportIds')) {
-      backendError400({
-        code: 'REQUEST_ERROR',
-        detail: 'exportIds is required',
-      })
-    }
-
     if (!objectPath.get(body, 'data.attributes.resource')) {
       backendError400({
         code: 'REQUEST_ERROR',

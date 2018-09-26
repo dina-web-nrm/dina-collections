@@ -9,10 +9,11 @@ module.exports = function extractModelSpecificationsFromServices({
     })
 
     .forEach(serviceName => {
-      const { resources } = services[serviceName]
+      const { resources, resourceOrder } = services[serviceName]
 
       if (resources) {
-        Object.keys(resources).forEach(resourceKey => {
+        const keys = resourceOrder || Object.keys(resources)
+        keys.forEach(resourceKey => {
           const resource = resources[resourceKey]
           if (resource && resource.model) {
             models.push(resource.model)
