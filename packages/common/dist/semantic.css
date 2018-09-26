@@ -31475,7 +31475,7 @@ select.ui.dropdown {
 .ui.selection.dropdown > .search.icon,
 .ui.selection.dropdown > .delete.icon,
 .ui.selection.dropdown > .dropdown.icon {
-  margin: -0.6875em !important;
+  margin: -1em !important;
 }
 /*!
  * # Semantic UI 2.2.13 - Video

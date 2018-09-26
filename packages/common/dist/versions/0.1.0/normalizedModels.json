@@ -267,7 +267,11 @@
       },
       "dateType": {
         "type": "string",
-        "enum": ["single", "range", "before"],
+        "enum": [
+          "latest",
+          "range",
+          "single"
+        ],
         "x-summary": ""
       },
       "remarks": {
