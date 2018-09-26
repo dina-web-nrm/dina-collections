@@ -19780,9 +19780,9 @@
           "dateType": {
             "type": "string",
             "enum": [
-              "single",
+              "latest",
               "range",
-              "before"
+              "single"
             ],
             "x-summary": ""
           },
