@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown, Icon } from 'semantic-ui-react'
+
+import createDeleteProperties from 'common/es5/createDeleteProperties'
 import config from 'config'
+
+const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const closeIconStyle = {
   bottom: 0,
@@ -103,11 +107,13 @@ class DropdownSearchInput extends Component {
     if (this.props.input.value) {
       // empty form value, if search is renewed after a value was selected
       if (this.props.type === 'dropdown-search-id-text') {
-        this.props.input.onChange({
+        const value = {
           ...this.props.input.value,
-          normalized: undefined,
-          textI: undefined,
-        })
+        }
+        delete value.textI
+        delete value.normalized
+
+        this.props.input.onChange(value)
       } else {
         this.props.input.onChange('')
       }
@@ -119,10 +125,12 @@ class DropdownSearchInput extends Component {
     this.handleSearchChange(null, { searchQuery: '' })
 
     if (this.props.type === 'dropdown-search-id-text') {
-      this.props.input.onBlur({
-        ...this.props.input.value,
-        ...value,
-      })
+      this.props.input.onBlur(
+        deleteUndefinedProperties({
+          ...this.props.input.value,
+          ...value,
+        })
+      )
     } else {
       this.props.input.onBlur(value)
     }
