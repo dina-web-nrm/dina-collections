@@ -13,5 +13,12 @@ module.exports = function testResourceSpecification(resourceSpecification) {
     it('Passes schema validation', () => {
       expectNoValidationError(validate(resourceSpecification))
     })
+    if (resourceSpecification.serviceOrder) {
+      it('All services represented in serviceOrder', () => {
+        expect(resourceSpecification.serviceOrder.sort()).toEqual(
+          Object.keys(resourceSpecification.resources).sort()
+        )
+      })
+    }
   })
 }

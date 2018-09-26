@@ -18,6 +18,9 @@ module.exports = {
     name: {
       type: 'string',
     },
+    resourceOrder: {
+      type: 'array',
+    },
     resources: {
       type: 'object',
     },
