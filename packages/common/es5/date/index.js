@@ -4,6 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _buildYYYYMMDD = require('./buildYYYYMMDD');
+
+Object.defineProperty(exports, 'buildYYYYMMDD', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_buildYYYYMMDD).default;
+  }
+});
+
 var _formatAsTimestamp = require('./formatAsTimestamp');
 
 Object.defineProperty(exports, 'formatAsTimestamp', {
