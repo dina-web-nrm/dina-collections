@@ -1,18 +1,124 @@
 const moment = require('moment')
 
-module.exports = function getTimestampFromYMD({ day, month, year }) {
-  if (!(year && `${year}`.length === 4)) {
+const buildYYYYMMDD = require('./buildYYYYMMDD')
+
+const monthToDaysMap = {
+  1: 31,
+  2: 28,
+  3: 31,
+  4: 30,
+  5: 31,
+  6: 30,
+  7: 31,
+  8: 31,
+  9: 30,
+  10: 31,
+  11: 30,
+  12: 31,
+}
+
+const getEndDateSuggestion = ({ day, month, year }) => {
+  const isLeapYear = moment([year]).isLeapYear()
+
+  if (year && month && day) {
+    return buildYYYYMMDD({
+      day,
+      month,
+      year,
+    })
+  }
+
+  if (year && month) {
+    return buildYYYYMMDD({
+      day: month === 2 && isLeapYear ? 29 : monthToDaysMap[month],
+      month,
+      year,
+    })
+  }
+
+  return buildYYYYMMDD({
+    day: 31,
+    month: 12,
+    year,
+  })
+}
+
+const getStartDateSuggestion = ({ day, month, year }) => {
+  if (year && month && day) {
+    return buildYYYYMMDD({
+      day,
+      month,
+      year,
+    })
+  }
+
+  if (year && month) {
+    return buildYYYYMMDD({
+      day: 1,
+      month,
+      year,
+    })
+  }
+
+  return buildYYYYMMDD({
+    day: 1,
+    month: 1,
+    year,
+  })
+}
+
+const getDateSuggestion = ({ day, isEndDate, isStartDate, month, year }) => {
+  if (!year || `${year}`.length !== 4) {
     return undefined
   }
 
-  const timestamp = moment.utc({
+  if (isStartDate) {
+    return getStartDateSuggestion({
+      day,
+      month,
+      year,
+    })
+  }
+
+  if (isEndDate) {
+    return getEndDateSuggestion({
+      day,
+      month,
+      year,
+    })
+  }
+
+  return buildYYYYMMDD({
     day,
-    month: month !== undefined ? month - 1 : undefined,
+    month,
+    year,
+  })
+}
+
+module.exports = function getTimestampFromYMD({
+  day,
+  isEndDate,
+  isStartDate,
+  month,
+  year,
+}) {
+  const YYYYMMDD = getDateSuggestion({
+    day,
+    isEndDate,
+    isStartDate,
+    month,
     year,
   })
 
-  if (timestamp.isValid()) {
-    return timestamp.format()
+  if (!YYYYMMDD) {
+    return undefined
   }
-  return undefined
+
+  const interpretedTimestamp = isEndDate
+    ? moment(YYYYMMDD).endOf('date')
+    : moment(YYYYMMDD)
+
+  return interpretedTimestamp.isValid()
+    ? interpretedTimestamp.toISOString(true)
+    : undefined
 }

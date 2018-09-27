@@ -1,0 +1,29 @@
+{
+  "additionalProperties": false,
+  "description": "A date part",
+  "properties": {
+    "timestamp": {
+      "description": "A date in standard format. TBA",
+      "format": "date-time",
+      "type": "string"
+    },
+    "interpretedTimestamp": {
+      "description": "A date in standard format, derived from day, month year.",
+      "format": "date-time",
+      "type": "string"
+    },
+    "dateText": {
+      "type": "string",
+      "example": "Before 1800"
+    },
+    "day": {
+      "type": "integer"
+    },
+    "month": {
+      "type": "integer"
+    },
+    "year": {
+      "type": "integer"
+    }
+  }
+}

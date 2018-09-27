@@ -7,10 +7,10 @@
 │   │   ├── description.md
 │   │   └── index.js
 │   └── resources
-│       ├── agent
-│       │   ├── data
-│       │   └── index.js
-│       └── index.js
+│       ├── index.js
+│       └── normalizedAgent
+│           ├── data
+│           └── index.js
 ├── authService
 │   ├── controllers
 │   │   └── index.js
@@ -34,6 +34,9 @@
 │   │   └── index.js
 │   └── resources
 │       ├── causeOfDeathType
+│       │   ├── data
+│       │   └── index.js
+│       ├── customTaxonNameType
 │       │   ├── data
 │       │   └── index.js
 │       ├── establishmentMeansType

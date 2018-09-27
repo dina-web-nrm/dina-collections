@@ -1,3 +1,11 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.radio.checkbox.inline.group:not(:last-child) {
+  margin-right: 1.5em;
+}
+
+.ui.radio.checkbox.inline.group > label {
+  padding-left: 1.5em;
+}

@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Dropdown, Icon } from 'semantic-ui-react'
+
+import createDeleteProperties from 'common/es5/createDeleteProperties'
 import config from 'config'
+
+const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const closeIconStyle = {
   bottom: 0,
@@ -11,7 +15,7 @@ const closeIconStyle = {
   position: 'absolute',
   right: '2.5em',
   top: 0,
-  zIndex: 1,
+  zIndex: 20,
 }
 
 const containerStyle = {
@@ -64,6 +68,7 @@ const propTypes = {
     ]).isRequired,
   }),
   text: PropTypes.string,
+  type: PropTypes.string.isRequired,
 }
 const defaultProps = {
   autoComplete: undefined,
@@ -101,7 +106,17 @@ class DropdownSearchInput extends Component {
 
     if (this.props.input.value) {
       // empty form value, if search is renewed after a value was selected
-      this.props.input.onChange('')
+      if (this.props.type === 'dropdown-search-id-text') {
+        const value = {
+          ...this.props.input.value,
+        }
+        delete value.textI
+        delete value.normalized
+
+        this.props.input.onChange(value)
+      } else {
+        this.props.input.onChange('')
+      }
     }
   }
 
@@ -109,11 +124,30 @@ class DropdownSearchInput extends Component {
     const { value } = data
     this.handleSearchChange(null, { searchQuery: '' })
 
-    this.props.input.onBlur(value)
+    if (this.props.type === 'dropdown-search-id-text') {
+      this.props.input.onBlur(
+        deleteUndefinedProperties({
+          ...this.props.input.value,
+          ...value,
+        })
+      )
+    } else {
+      this.props.input.onBlur(value)
+    }
   }
 
   handleClear() {
-    this.handleOnChange(undefined, { value: '' })
+    if (this.props.type === 'dropdown-search-id-text') {
+      this.handleOnChange(undefined, {
+        value: {
+          ...this.props.input.value,
+          normalized: undefined,
+          textI: undefined,
+        },
+      })
+    } else {
+      this.handleOnChange(undefined, { value: '' })
+    }
   }
 
   render() {

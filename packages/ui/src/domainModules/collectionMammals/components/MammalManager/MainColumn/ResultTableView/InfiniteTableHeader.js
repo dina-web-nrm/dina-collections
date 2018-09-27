@@ -80,9 +80,9 @@ class InfiniteTableHeader extends PureComponent {
               onClick={event => this.handleClickSorting(event, name, sortOrder)}
               size="small"
             >
-              <Icon name={iconName} />
               <Header.Content>
                 <ModuleTranslate capitalize textKey={`tableColumns.${name}`} />
+                <Icon name={iconName} />
               </Header.Content>
             </Header>
           </Grid.Column>

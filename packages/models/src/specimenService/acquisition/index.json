@@ -11,7 +11,10 @@
       "type": "string"
     },
     "date": {
-      "$ref": "__ROOT__singleDate"
+      "$ref": "__ROOT__dateRange"
+    },
+    "remarks": {
+      "type": "string"
     }
   }
 }

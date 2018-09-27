@@ -1,49 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FieldWrapper from '../../../FieldWrapper'
-import SingleDateComponent from './Component'
+import RangeDate from '../RangeDate'
+
 import {
-  futureSingleDate,
-  pastSingleDate,
-  textParsable,
+  noOrphanDayOrMonthInRange,
+  validIfNotEmptyRange,
 } from '../validationFunctions'
 
+export const defaultValidate = [noOrphanDayOrMonthInRange, validIfNotEmptyRange]
+
 const propTypes = {
-  future: PropTypes.bool,
-  past: PropTypes.bool,
-  validate: PropTypes.array,
-  validateText: PropTypes.bool,
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  meta: PropTypes.object.isRequired,
+  module: PropTypes.string.isRequired,
 }
 
-const defaultProps = {
-  future: false,
-  past: false,
-  validate: [],
-  validateText: true,
-}
-
-function SingleDateField(props) {
-  const { future, past, validate: validateInput, validateText } = props
-
-  let validate = [...validateInput]
-  if (future) {
-    validate = [...validate, futureSingleDate]
-  }
-
-  if (past) {
-    validate = [...validate, pastSingleDate]
-  }
-
-  if (validateText) {
-    validate = [...validate, textParsable]
-  }
-
+const SingleDate = ({ input, meta, module }) => {
   return (
-    <FieldWrapper {...props} component={SingleDateComponent} warn={validate} />
+    <RangeDate
+      displayDateTypeRadios={false}
+      displayLabel
+      displaySubLabels
+      initialDateType="single"
+      input={input}
+      meta={meta}
+      module={module}
+      name={input.name}
+    />
   )
 }
 
-SingleDateField.propTypes = propTypes
-SingleDateField.defaultProps = defaultProps
+SingleDate.propTypes = propTypes
 
-export default SingleDateField
+export default SingleDate

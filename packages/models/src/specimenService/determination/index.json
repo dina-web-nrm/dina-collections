@@ -8,23 +8,20 @@
       "type": "string",
       "example": "Some remarks"
     },
-    "determinationText": {
+    "taxonNameV": {
       "type": "string",
-      "example": "Sorex minutus, by Doe, J. on 1982-01-01"
+      "description":
+        "Verbatim taxon name, in exactly the same words as were used originally"
     },
-    "determinationVerbatim": {
+    "taxonNameI": {
       "type": "string",
-      "description": "In exactly the same words as were used originally"
+      "description": "Interpreted taxon name"
     },
     "determinedByAgent": {
       "$ref": "__ROOT__agent"
     },
     "date": {
-      "$ref": "__ROOT__singleDate"
-    },
-    "taxonName": {
-      "$ref": "__ROOT__taxonName",
-      "x-reference-type": "external"
+      "$ref": "__ROOT__dateRange"
     }
   }
 }

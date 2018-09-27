@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'redux'
 
+import createDeleteProperties from 'common/es5/createDeleteProperties'
 import { DropdownSearch } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 import { ALL, PERSON, ORGANIZATION } from '../../constants'
+
+const deleteUndefinedProperties = createDeleteProperties(undefined)
 
 const includeFields = ['id', 'attributes.fullName', 'attributes.agentType']
 
@@ -21,11 +24,14 @@ const extractText = item => {
   return item && item.attributes && item.attributes.fullName
 }
 
-const mapItemToOption = item => {
+const mapItemToOption = (item, value) => {
   return {
     key: item.id,
     text: extractText(item),
-    value: { normalized: { id: item.id } },
+    value: deleteUndefinedProperties({
+      ...value,
+      normalized: { id: item.id },
+    }),
   }
 }
 

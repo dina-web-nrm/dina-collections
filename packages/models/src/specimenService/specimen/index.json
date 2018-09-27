@@ -4,24 +4,32 @@
   "x-format": true,
   "x-normalize": false,
   "properties": {
-    "individual": {
-      "$ref": "__ROOT__individual"
+    "id": {
+      "$ref": "__ROOT__id"
     },
     "lid": {
       "$ref": "__ROOT__lid"
     },
-    "id": {
-      "$ref": "__ROOT__id"
-    },
     "type": {
       "$ref": "__ROOT__type"
     },
-    "publishRecord": { "type": "boolean" },
+    "publishRecord": {
+      "type": "boolean"
+    },
     "version": {
       "type": "integer"
     },
+    "collectionItemsRemarks": {
+      "type": "string"
+    },
+    "remarks": {
+      "type": "string"
+    },
     "readOnly": {
       "$ref": "__ROOT__readOnly"
+    },
+    "individual": {
+      "$ref": "__ROOT__individual"
     },
     "relationships": {
       "type": "object",

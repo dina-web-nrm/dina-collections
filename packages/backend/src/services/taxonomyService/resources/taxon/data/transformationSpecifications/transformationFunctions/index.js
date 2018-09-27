@@ -1,6 +1,8 @@
-const deleteNullProperties = require('common/src/deleteNullProperties')
-/* eslint-disable no-param-reassign */
+const createDeleteProperties = require('common/src/createDeleteProperties')
 
+const deleteNullProperties = createDeleteProperties(null)
+
+/* eslint-disable no-param-reassign */
 exports.transformTaxon = function transformTaxon({ src, target }) {
   const { id, parentId, ...rest } = src
 

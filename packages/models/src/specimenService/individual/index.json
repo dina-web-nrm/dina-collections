@@ -2,9 +2,6 @@
   "additionalProperties": false,
   "description": "This is a description",
   "properties": {
-    "collectionItemText": {
-      "type": "string"
-    },
     "remarks": {
       "type": "string"
     },

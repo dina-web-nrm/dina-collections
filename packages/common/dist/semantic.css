@@ -4993,6 +4993,12 @@ a {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.basic.button.shadowless {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0) inset !important;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0) inset !important;
+  padding: 0.5em;
+}
 /*!
  * # Semantic UI 2.2.13 - Container
  * http://github.com/semantic-org/semantic-ui/
@@ -12700,6 +12706,30 @@ img.ui.bordered.image {
 .ui.form .ui.disabled.input input,
 .ui.input:not(.disabled) input[disabled] {
   opacity: 1;
+}
+
+/*
+* arrowless class to remove spin arrows from number input
+*/
+
+.ui.input.arrowless input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.ui.input.arrowless input[type='number']::-webkit-outer-spin-button,
+.ui.input.arrowless input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+/*
+* right aligned content
+*/
+
+.ui.input.right-aligned input {
+  text-align: right;
 }
 /*!
  * # Semantic UI 2.2.13 - Label
@@ -21264,6 +21294,15 @@ ol.ui.horizontal.list li:before,
 /*******************************
          Site Overrides
 *******************************/
+
+/*
+* Relaxed rows with more margin between columns (default is zero margin)
+*/
+
+.ui.grid > .row.relaxed > .column {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
 /*
  * # Semantic - Menu
  * http://github.com/semantic-org/semantic-ui/
@@ -29551,6 +29590,14 @@ a.ui.card:hover,
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.radio.checkbox.inline.group:not(:last-child) {
+  margin-right: 1.5em;
+}
+
+.ui.radio.checkbox.inline.group > label {
+  padding-left: 1.5em;
+}
 /*!
  * # Semantic UI 2.2.13 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
@@ -31428,7 +31475,7 @@ select.ui.dropdown {
 .ui.selection.dropdown > .search.icon,
 .ui.selection.dropdown > .delete.icon,
 .ui.selection.dropdown > .dropdown.icon {
-  margin: -0.6875em !important;
+  margin: -1em !important;
 }
 /*!
  * # Semantic UI 2.2.13 - Video

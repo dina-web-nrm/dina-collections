@@ -56,10 +56,10 @@
         "en": "Acquisition date"
       },
       "handedInByAgent": {
-        "en": "Handed in by (agent)"
-      },
-      "handedInByAgentText": {
-        "en": "Handed in by (stated)"
+        "en": "Interpreted name or agent",
+        "textV": {
+          "en": "Handed in by (stated)"
+        }
       }
     },
     "collectingInformation": {
@@ -68,10 +68,6 @@
       },
       "collectorsText": {
         "en": "Collected by (stated)"
-      },
-
-      "establishmentMeansN": {
-        "en": "Established means text"
       },
       "establishmentMeansType": {
         "en": "Establishment means"
@@ -274,10 +270,23 @@
         "en": "Reference system"
       }
     },
+    "recordHistoryEvents": {
+      "agent": {
+        "en": "card author",
+        "sv": ""
+      },
+      "date": {
+        "en": "card date",
+        "sv": ""
+      }
+    },
     "specimen": {
       "publishRecord": {
         "en": "Public",
         "sv": "Publikt"
+      },
+      "remarks": {
+        "en": "remarks"
       },
       "readOnly": {
         "en": "Read only"
@@ -322,8 +331,19 @@
       }
     }
   },
-
   "headers": {
+    "acquisition": {
+      "en": "acquisition",
+      "sv": ""
+    },
+    "basicInformation": {
+      "en": "basic information",
+      "sv": ""
+    },
+    "collectingDate": {
+      "en": "collecting date",
+      "sv": ""
+    },
     "collectingInformation": {
       "en": "collecting information"
     },
@@ -338,8 +358,16 @@
       "en": "Edit curatorial assessment",
       "sv": ""
     },
+    "externalEvents": {
+      "en": "external events",
+      "sv": ""
+    },
     "features": {
       "en": "Feature observations"
+    },
+    "identifiers": {
+      "en": "identifiers",
+      "sv": ""
     },
     "newSpecimen": {
       "en": "New specimen",
@@ -347,6 +375,10 @@
     },
     "physicalObjects": {
       "en": "physical objects"
+    },
+    "recordHistory": {
+      "en": "record history",
+      "sv": ""
     },
     "taxon": {
       "en": "taxon"
@@ -583,33 +615,64 @@
     }
   },
   "formSectionTitles": {
-    "generalInformation": {
-      "en": "General information",
+    "basicInformation": {
+      "en": "basic information",
       "sv": ""
     },
     "taxonomy": {
       "en": "Taxonomy",
       "sv": ""
     },
-    "collectingInformation": {
-      "en": "Collecting information",
+    "localityOrigin": {
+      "en": "Locality & origin",
       "sv": ""
     },
-    "featureObservations": {
-      "en": "Feature observations",
+    "collectingDeath": {
+      "en": "Collecting & death",
+      "sv": ""
+    },
+    "features": {
+      "en": "Features",
       "sv": ""
     },
     "physicalObjects": {
       "en": "Physical objects",
       "sv": ""
     },
-    "other": {
-      "en": "Other",
+    "summary": {
+      "en": "Summary",
       "sv": ""
     }
   },
-  "identifiers": {
-    "en": "Identifiers"
+  "formSectionDescriptions": {
+    "basicInformation": {
+      "en": "Identifiers, acquisition, events...",
+      "sv": ""
+    },
+    "taxonomy": {
+      "en": "Taxon name, type status, determination",
+      "sv": ""
+    },
+    "localityOrigin": {
+      "en": "Collecting locality and origin information",
+      "sv": ""
+    },
+    "collectingDeath": {
+      "en": "Collector, expedition, date, death details",
+      "sv": ""
+    },
+    "features": {
+      "en": "Age, sex, condition, measurements, bones",
+      "sv": ""
+    },
+    "physicalObjects": {
+      "en": "Skin, skeleton, wet and other preparations...",
+      "sv": ""
+    },
+    "summary": {
+      "en": "Summary of all data about the specimen",
+      "sv": ""
+    }
   },
   "identifierType": {
     "en": "Identifier type"
@@ -618,6 +681,34 @@
     "en": "Value"
   },
   "remarks": {
+    "emptyState": {
+      "acquisition": {
+        "en": "add acquisition remarks",
+        "sv": ""
+      },
+      "date": {
+        "en": "add date remarks",
+        "sv": ""
+      },
+      "specimen": {
+        "en": "add remarks for the entire specimen",
+        "sv": ""
+      }
+    },
+    "resultPrefix": {
+      "acquisition": {
+        "en": "acquisition remarks",
+        "sv": ""
+      },
+      "date": {
+        "en": "date remarks",
+        "sv": ""
+      },
+      "specimen": {
+        "en": "specimen remarks",
+        "sv": ""
+      }
+    },
     "en": "Remarks"
   },
   "remove": {
@@ -670,7 +761,6 @@
       }
     }
   },
-
   "recordHistoryEvent": {
     "recordedByAgentT": {
       "en": "Recorded by (stated)"
@@ -685,9 +775,29 @@
       "en": "Add",
       "sv": "Lägg till"
     },
+    "addAcquisition": {
+      "en": "add acquisition",
+      "sv": ""
+    },
+    "addAgent": {
+      "en": "add agent/name",
+      "sv": ""
+    },
+    "addCatalogCardCreation": {
+      "en": "Add catalog card creation",
+      "sv": ""
+    },
+    "addCatalogCardInformation": {
+      "en": "Add catalog card information",
+      "sv": ""
+    },
     "addCatalogNumber": {
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
+    }, 
+    "createNewSpecimen": {
+      "en": "Creating a new specimen record",
+      "sv": ""
     },
     "addDetermination": {
       "en": "Add determination",
@@ -700,9 +810,17 @@
     "agent": {
       "en": "Observed by (agent)"
     },
+    "by": {
+      "en": "by",
+      "sv": ""
+    },
     "catalogCard": {
       "en": "Catalog card",
       "sv": "Katalogkort"
+    },
+    "catalogCardBy": {
+      "en": "catalog card by",
+      "sv": ""
     },
     "catalogNumber": {
       "en": "Catalog number",
@@ -711,6 +829,10 @@
     "cancel": {
       "en": "Cancel",
       "sv": "Avbryt"
+    },
+    "back": {
+      "en": "Back",
+      "sv": ""
     },
     "clearSearchParameters": {
       "en": "Clear search parameters",
@@ -734,6 +856,10 @@
     },
     "date": {
       "en": "Date"
+    },
+    "done": {
+      "en": "done",
+      "sv": ""
     },
     "edit": {
       "en": "Edit",
@@ -821,6 +947,22 @@
     "sixOrEightDigits": {
       "en": "6 or 8 digits",
       "sv": "6 eller 8 siffror"
+    },
+    "useThisNumber": {
+      "en": "Use this number",
+      "sv": ""
+    },
+    "automticCatalogNumber": {
+      "en": "Would you like an automatic catalog number for this specimen?",
+      "sv": ""
+    },
+    "yesCreateNumber": {
+      "en": "Yes, create a number",
+      "sv": ""
+    },
+    "enterManully": {
+      "en": "No, I will enter one manually",
+      "sv": ""
     },
     "submitFailed": {
       "en": "Could not save",

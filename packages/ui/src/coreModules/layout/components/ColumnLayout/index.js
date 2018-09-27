@@ -6,7 +6,7 @@ const propTypes = {
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       renderColumn: PropTypes.func,
-      width: PropTypes.string,
+      width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     }).isRequired
   ),
   renderColumn: PropTypes.func,

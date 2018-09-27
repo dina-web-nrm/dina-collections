@@ -1,4 +1,7 @@
+export const LATEST = 'latest'
 export const DAY = 'day'
 export const MODULE_NAME = 'form'
 export const MONTH = 'month'
+export const RANGE = 'range'
+export const SINGLE = 'single'
 export const YEAR = 'year'

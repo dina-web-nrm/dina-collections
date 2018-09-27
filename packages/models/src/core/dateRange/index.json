@@ -6,15 +6,19 @@
       "type": "string",
       "example": "Before 1800"
     },
+    "dateType": {
+      "type": "string",
+      "enum": ["latest", "range", "single"]
+    },
     "remarks": {
       "type": "string",
       "example": "Some remarks"
     },
     "startDate": {
-      "$ref": "__ROOT__singleDate"
+      "$ref": "__ROOT__datePart"
     },
     "endDate": {
-      "$ref": "__ROOT__singleDate"
+      "$ref": "__ROOT__datePart"
     }
   }
 }

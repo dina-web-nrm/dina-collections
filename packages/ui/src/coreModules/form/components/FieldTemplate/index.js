@@ -10,6 +10,7 @@ export const propTypes = {
   displayError: PropTypes.bool,
   displayLabel: PropTypes.bool,
   enableHelpNotifications: PropTypes.bool,
+  errorStyle: PropTypes.object,
   float: PropTypes.string,
   helpNotificationProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   helpText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
@@ -23,6 +24,7 @@ export const propTypes = {
   name: PropTypes.string,
   parameterKey: PropTypes.string,
   required: PropTypes.bool,
+  style: PropTypes.object,
   subLabel: PropTypes.bool,
 }
 export const defaultProps = {
@@ -30,6 +32,7 @@ export const defaultProps = {
   displayError: undefined,
   displayLabel: true,
   enableHelpNotifications: true,
+  errorStyle: undefined,
   float: undefined,
   helpNotificationProps: undefined,
   helpText: undefined,
@@ -40,6 +43,7 @@ export const defaultProps = {
   name: undefined,
   parameterKey: undefined,
   required: false,
+  style: {},
   subLabel: undefined,
 }
 
@@ -50,6 +54,7 @@ const FieldTemplate = ({
   displayError: displayErrorInput,
   displayLabel,
   enableHelpNotifications,
+  errorStyle,
   float,
   helpNotificationProps,
   helpText,
@@ -59,6 +64,7 @@ const FieldTemplate = ({
   name,
   parameterKey,
   required,
+  style,
   subLabel,
 }) => {
   const { error, touched, warning } = meta
@@ -69,9 +75,14 @@ const FieldTemplate = ({
 
   return (
     <Form.Field
-      error={displayError}
+      error={!!displayError}
       required={required}
-      style={{ float, position: 'relative', width: float ? '100%' : undefined }}
+      style={{
+        float,
+        position: 'relative',
+        width: float ? '100%' : undefined,
+        ...style,
+      }}
     >
       {displayLabel && (
         <FieldLabel
@@ -85,7 +96,6 @@ const FieldTemplate = ({
           subLabel={subLabel}
         />
       )}
-      {helpText && <p>{helpText}</p>}
       {children}
       {!displayError &&
         displayWarning && (
@@ -97,7 +107,12 @@ const FieldTemplate = ({
           />
         )}
       {displayError && (
-        <FieldError error={error} module={module} parameterKey={parameterKey} />
+        <FieldError
+          error={error}
+          module={module}
+          parameterKey={parameterKey}
+          style={errorStyle}
+        />
       )}
     </Form.Field>
   )

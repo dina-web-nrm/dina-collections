@@ -7,5 +7,5 @@
 .ui.selection.dropdown > .search.icon,
 .ui.selection.dropdown > .delete.icon,
 .ui.selection.dropdown > .dropdown.icon {
-  margin: @selectionIconMargin !important;
+  margin: -1em !important;
 }

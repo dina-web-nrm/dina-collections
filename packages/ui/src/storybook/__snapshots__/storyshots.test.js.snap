@@ -712,6 +712,3520 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
 </div>
 `;
 
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate default 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": "none",
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": undefined,
+            "startDate": undefined,
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty latest 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui disabled fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={true}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={-1}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui disabled fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={true}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={-1}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui disabled fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={true}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={-1}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginTop": "1.75em",
+            "textAlign": "center",
+            "width": "2em",
+          }
+        }
+      >
+        –
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": undefined,
+            "startDate": undefined,
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty range 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginTop": "1.75em",
+            "textAlign": "center",
+            "width": "2em",
+          }
+        }
+      >
+        –
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": undefined,
+            "startDate": undefined,
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate empty single 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": "none",
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": undefined,
+            "startDate": undefined,
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled latest 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui disabled fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={true}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={-1}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui disabled fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={true}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={-1}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui disabled fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={true}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={-1}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginTop": "1.75em",
+            "textAlign": "center",
+            "width": "2em",
+          }
+        }
+      >
+        –
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1900}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={12}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={24}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": Object {
+              "day": 24,
+              "month": 12,
+              "year": 1900,
+            },
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled range 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1899}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "marginTop": "1.75em",
+            "textAlign": "center",
+            "width": "2em",
+          }
+        }
+      >
+        –
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1900}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={12}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={24}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": Object {
+              "day": 24,
+              "month": 12,
+              "year": 1900,
+            },
+            "startDate": Object {
+              "day": 1,
+              "month": 1,
+              "year": 1899,
+            },
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate filled single 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1899}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": "none",
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={1900}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={12}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value={24}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": Object {
+              "day": 24,
+              "month": 12,
+              "year": 1900,
+            },
+            "startDate": Object {
+              "day": 1,
+              "month": 1,
+              "year": 1899,
+            },
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date type radios 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "float": undefined,
+          "position": "relative",
+          "width": undefined,
+        }
+      }
+    >
+      <div
+        className="field"
+        style={
+          Object {
+            "float": undefined,
+            "marginBottom": "0.5em",
+            "position": "relative",
+            "width": "100%",
+          }
+        }
+      >
+        <label
+          htmlFor="radioGroup"
+          style={
+            Object {
+              "display": "block",
+              "fontSize": "0.9em",
+              "fontStyle": "italic",
+              "fontWeight": 400,
+              "margin": 0,
+            }
+          }
+        >
+          Date type
+        </label>
+        <div
+          className="ui checked radio checkbox inline group"
+          onChange={[Function]}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+        >
+          <input
+            checked={true}
+            className="hidden"
+            id={undefined}
+            name="radioGroup"
+            onClick={[Function]}
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="single"
+          />
+          <label
+            htmlFor={undefined}
+          >
+            single
+          </label>
+        </div>
+        <div
+          className="ui radio checkbox inline group"
+          onChange={[Function]}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            id={undefined}
+            name="radioGroup"
+            onClick={[Function]}
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="range"
+          />
+          <label
+            htmlFor={undefined}
+          >
+            range
+          </label>
+        </div>
+        <div
+          className="ui radio checkbox inline group"
+          onChange={[Function]}
+          onClick={[Function]}
+          onMouseDown={[Function]}
+        >
+          <input
+            checked={false}
+            className="hidden"
+            id={undefined}
+            name="radioGroup"
+            onClick={[Function]}
+            readOnly={true}
+            tabIndex={0}
+            type="radio"
+            value="latest"
+          />
+          <label
+            htmlFor={undefined}
+          >
+            latest
+          </label>
+        </div>
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": undefined,
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="field"
+        style={
+          Object {
+            "display": "none",
+            "float": "left",
+            "position": "relative",
+            "width": "initial",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingRight": "0.2em",
+              "width": "4.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="year"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Year
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "paddingRight": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="month"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Month
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={12}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          style={
+            Object {
+              "float": "left",
+              "paddingLeft": "0.2em",
+              "width": "3.5em",
+            }
+          }
+        >
+          <div
+            className="field"
+            style={
+              Object {
+                "float": "left",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+          >
+            <label
+              htmlFor="day"
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.9em",
+                  "fontStyle": "italic",
+                  "fontWeight": 400,
+                  "margin": 0,
+                }
+              }
+            >
+              Day
+            </label>
+            <div
+              className="ui fluid input arrowless right-aligned"
+            >
+              <input
+                disabled={false}
+                max={31}
+                min={1}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                tabIndex={undefined}
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <input
+        className="hidden"
+        name="singleDate.hidden"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="hidden"
+        value={
+          Object {
+            "endDate": undefined,
+            "startDate": undefined,
+          }
+        }
+      />
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate empty 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "display": undefined,
+          "float": "left",
+          "position": "relative",
+          "width": "initial",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+            "paddingRight": "0.2em",
+            "width": "4.5em",
+          }
+        }
+      >
+        <div
+          className="field"
+          style={
+            Object {
+              "float": "left",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <label
+            htmlFor="year"
+            style={
+              Object {
+                "display": "block",
+                "fontSize": "0.9em",
+                "fontStyle": "italic",
+                "fontWeight": 400,
+                "margin": 0,
+              }
+            }
+          >
+            Year
+          </label>
+          <div
+            className="ui fluid input arrowless right-aligned"
+          >
+            <input
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              tabIndex={undefined}
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "paddingLeft": "0.2em",
+            "paddingRight": "0.2em",
+            "width": "3.5em",
+          }
+        }
+      >
+        <div
+          className="field"
+          style={
+            Object {
+              "float": "left",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <label
+            htmlFor="month"
+            style={
+              Object {
+                "display": "block",
+                "fontSize": "0.9em",
+                "fontStyle": "italic",
+                "fontWeight": 400,
+                "margin": 0,
+              }
+            }
+          >
+            Month
+          </label>
+          <div
+            className="ui fluid input arrowless right-aligned"
+          >
+            <input
+              disabled={false}
+              max={12}
+              min={1}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              tabIndex={undefined}
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "paddingLeft": "0.2em",
+            "width": "3.5em",
+          }
+        }
+      >
+        <div
+          className="field"
+          style={
+            Object {
+              "float": "left",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <label
+            htmlFor="day"
+            style={
+              Object {
+                "display": "block",
+                "fontSize": "0.9em",
+                "fontStyle": "italic",
+                "fontWeight": 400,
+                "margin": 0,
+              }
+            }
+          >
+            Day
+          </label>
+          <div
+            className="ui fluid input arrowless right-aligned"
+          >
+            <input
+              disabled={false}
+              max={31}
+              min={1}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              tabIndex={undefined}
+              type="number"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Date/SingleDate filled 1`] = `
+<div>
+  <form>
+    <div
+      className="field"
+      style={
+        Object {
+          "display": undefined,
+          "float": "left",
+          "position": "relative",
+          "width": "initial",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "float": "left",
+            "paddingRight": "0.2em",
+            "width": "4.5em",
+          }
+        }
+      >
+        <div
+          className="field"
+          style={
+            Object {
+              "float": "left",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <label
+            htmlFor="year"
+            style={
+              Object {
+                "display": "block",
+                "fontSize": "0.9em",
+                "fontStyle": "italic",
+                "fontWeight": 400,
+                "margin": 0,
+              }
+            }
+          >
+            Year
+          </label>
+          <div
+            className="ui fluid input arrowless right-aligned"
+          >
+            <input
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              tabIndex={undefined}
+              type="number"
+              value={1801}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "paddingLeft": "0.2em",
+            "paddingRight": "0.2em",
+            "width": "3.5em",
+          }
+        }
+      >
+        <div
+          className="field"
+          style={
+            Object {
+              "float": "left",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <label
+            htmlFor="month"
+            style={
+              Object {
+                "display": "block",
+                "fontSize": "0.9em",
+                "fontStyle": "italic",
+                "fontWeight": 400,
+                "margin": 0,
+              }
+            }
+          >
+            Month
+          </label>
+          <div
+            className="ui fluid input arrowless right-aligned"
+          >
+            <input
+              disabled={false}
+              max={12}
+              min={1}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              tabIndex={undefined}
+              type="number"
+              value={12}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={
+          Object {
+            "float": "left",
+            "paddingLeft": "0.2em",
+            "width": "3.5em",
+          }
+        }
+      >
+        <div
+          className="field"
+          style={
+            Object {
+              "float": "left",
+              "position": "relative",
+              "width": "100%",
+            }
+          }
+        >
+          <label
+            htmlFor="day"
+            style={
+              Object {
+                "display": "block",
+                "fontSize": "0.9em",
+                "fontStyle": "italic",
+                "fontWeight": 400,
+                "margin": 0,
+              }
+            }
+          >
+            Day
+          </label>
+          <div
+            className="ui fluid input arrowless right-aligned"
+          >
+            <input
+              disabled={false}
+              max={31}
+              min={1}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              tabIndex={undefined}
+              type="number"
+              value={24}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui padded grid"
+          style={
+            Object {
+              "height": 36,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="comment outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "color": "rgba(0, 0, 0, 0.5)",
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Add remarks
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWithOutPrefixedText 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui padded grid"
+          style={
+            Object {
+              "height": 36,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="commenting outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Some added remarks
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWithPrefixedText 1`] = `
+<div>
+  <div
+    className="ui container"
+    style={
+      Object {
+        "position": "relative",
+      }
+    }
+  >
+    <div
+      className="ui green segment"
+    >
+      <form>
+        <div
+          className="ui padded grid"
+          style={
+            Object {
+              "height": 36,
+            }
+          }
+        >
+          <div
+            className="column"
+            onClick={[Function]}
+            style={
+              Object {
+                "padding": 0,
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "left",
+                  "paddingTop": 6,
+                }
+              }
+            >
+              <i
+                aria-hidden="true"
+                className="commenting outline large icon"
+              />
+            </div>
+            <div
+              style={
+                Object {
+                  "paddingTop": 8,
+                }
+              }
+            >
+              Taxon: Some added remarks
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots coreModules/i18n/I18nProvider Default 1`] = `
 <div>
   <div
@@ -2676,6 +6190,790 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
 </div>
 `;
 
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordForm/FormSectionNavigation withTaxonName 1`] = `
+<div>
+  <div
+    className="ui padded grid"
+    style={
+      Object {
+        "height": 700,
+        "overflow": "auto",
+      }
+    }
+  >
+    <div
+      className="column"
+    >
+      <h1
+        className="ui block header"
+        style={
+          Object {
+            "background": "none",
+            "borderColor": "#fff",
+          }
+        }
+      >
+        1234567
+        <div
+          className="sub header"
+          size="large"
+        >
+          <em
+            style={
+              Object {
+                "textTransform": "uppercase",
+              }
+            }
+          >
+            Phoca vitulina
+          </em>
+        </div>
+      </h1>
+      <div
+        className="ui small vertical steps"
+        style={
+          Object {
+            "marginTop": "-10px",
+          }
+        }
+      >
+        <a
+          className="active step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Basic information
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Identifiers, acquisition, events...
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Taxonomy
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Taxon name, type status, determination
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Locality & origin
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Collecting locality and origin information
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Collecting & death
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Collector, expedition, date, death details
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Physical objects
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Skin, skeleton, wet and other preparations...
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Features
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Age, sex, condition, measurements, bones
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Summary
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Summary of all data about the specimen
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="ui small block sub header"
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "none",
+            "borderColor": "#fff",
+            "cursor": "pointer",
+            "margin": 0,
+          }
+        }
+      >
+        Show all
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordForm/FormSectionNavigation withoutCatalogNumber 1`] = `
+<div>
+  <div
+    className="ui padded grid"
+    style={
+      Object {
+        "height": 700,
+        "overflow": "auto",
+      }
+    }
+  >
+    <div
+      className="column"
+    >
+      <h1
+        className="ui block header"
+        style={
+          Object {
+            "background": "none",
+            "borderColor": "#fff",
+          }
+        }
+      >
+        <span>
+          New specimen
+        </span>
+      </h1>
+      <div
+        className="ui small vertical steps"
+        style={
+          Object {
+            "marginTop": "-10px",
+          }
+        }
+      >
+        <a
+          className="active step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Basic information
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Identifiers, acquisition, events...
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Taxonomy
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Taxon name, type status, determination
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Locality & origin
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Collecting locality and origin information
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Collecting & death
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Collector, expedition, date, death details
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Physical objects
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Skin, skeleton, wet and other preparations...
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Features
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Age, sex, condition, measurements, bones
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Summary
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Summary of all data about the specimen
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="ui small block sub header"
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "none",
+            "borderColor": "#fff",
+            "cursor": "pointer",
+            "margin": 0,
+          }
+        }
+      >
+        Show all
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordForm/FormSectionNavigation withoutTaxonName 1`] = `
+<div>
+  <div
+    className="ui padded grid"
+    style={
+      Object {
+        "height": 700,
+        "overflow": "auto",
+      }
+    }
+  >
+    <div
+      className="column"
+    >
+      <h1
+        className="ui block header"
+        style={
+          Object {
+            "background": "none",
+            "borderColor": "#fff",
+          }
+        }
+      >
+        1234567
+      </h1>
+      <div
+        className="ui small vertical steps"
+        style={
+          Object {
+            "marginTop": "-10px",
+          }
+        }
+      >
+        <a
+          className="active step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Basic information
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Identifiers, acquisition, events...
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Taxonomy
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Taxon name, type status, determination
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Locality & origin
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Collecting locality and origin information
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Collecting & death
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Collector, expedition, date, death details
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Physical objects
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Skin, skeleton, wet and other preparations...
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Features
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Age, sex, condition, measurements, bones
+              </span>
+            </div>
+          </div>
+        </a>
+        <a
+          className="step"
+          href={undefined}
+          onClick={[Function]}
+          style={
+            Object {
+              "width": 350,
+            }
+          }
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="title"
+            >
+              <span>
+                Summary
+              </span>
+            </div>
+            <div
+              className="description"
+            >
+              <span>
+                Summary of all data about the specimen
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="ui small block sub header"
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "none",
+            "borderColor": "#fff",
+            "cursor": "pointer",
+            "margin": 0,
+          }
+        }
+      >
+        Show all
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/RecordNavigationBar addingNewRecordComplete 1`] = `
 <div>
   <div
@@ -4374,16 +8672,16 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         className="ui small header"
         onClick={[Function]}
       >
-        <i
-          aria-hidden="true"
-          className="caret down icon"
-        />
         <div
           className="content"
         >
           <span>
             Catalog number
           </span>
+          <i
+            aria-hidden="true"
+            className="caret down icon"
+          />
         </div>
       </div>
     </div>

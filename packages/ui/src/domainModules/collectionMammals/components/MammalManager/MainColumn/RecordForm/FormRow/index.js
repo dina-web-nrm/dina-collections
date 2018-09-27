@@ -8,13 +8,8 @@ import { push } from 'react-router-redux'
 import createLog from 'utilities/log'
 import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout } from 'coreModules/layout/components'
+import { emToPixels } from 'coreModules/layout/utilities'
 import { globalSelectors as keyObjectSelectors } from 'domainModules/collectionMammals/keyObjectModule'
-import SegmentCollectionItems from './FormSections/SegmentCollectionItems'
-import SegmentEvents from './FormSections/SegmentEvents'
-import SegmentFeatureObservations from './FormSections/SegmentFeatureObservations'
-import SegmentIdentifiers from './FormSections/SegmentIdentifiers'
-import SegmentOther from './FormSections/SegmentOther'
-import SegmentTaxon from './FormSections/SegmentTaxon'
 import FormSectionNavigation from './FormSectionNavigation'
 import FormSectionView from './FormSectionView'
 
@@ -22,37 +17,12 @@ const log = createLog(
   'modules:collectionMammals::MammalManager:RecordForm:FormRow'
 )
 
-const formSections = [
-  {
-    Component: SegmentIdentifiers,
-    name: 'generalInformation',
-  },
-  {
-    Component: SegmentTaxon,
-    name: 'taxonomy',
-  },
-  {
-    Component: SegmentEvents,
-    name: 'collectingInformation',
-  },
-  {
-    Component: SegmentFeatureObservations,
-    name: 'featureObservations',
-  },
-  {
-    Component: SegmentCollectionItems,
-    name: 'physicalObjects',
-  },
-  {
-    Component: SegmentOther,
-    name: 'other',
-  },
-]
+const formSections = [{ name: 'basicInformation' }, { name: 'collectingDeath' }]
 
 const formSectionNavigation = {
   key: 'formSectionNavigation',
   renderColumn: props => <FormSectionNavigation {...props} />,
-  width: '200px',
+  width: emToPixels(25),
 }
 
 const formSectionView = {

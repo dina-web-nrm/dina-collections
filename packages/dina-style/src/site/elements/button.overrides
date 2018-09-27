@@ -1,3 +1,9 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.basic.button.shadowless {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0) inset !important;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0) inset !important;
+  padding: 0.5em;
+}

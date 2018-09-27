@@ -1,10 +1,14 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Grid, Header, Loader } from 'semantic-ui-react'
+import { compose } from 'redux'
+import objectPath from 'object-path'
+import { Grid, Header, Step, Loader } from 'semantic-ui-react'
 
+import { emToPixels } from 'coreModules/layout/utilities'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 import globalSelectors from 'domainModules/collectionMammals/globalSelectors'
+import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
@@ -14,6 +18,7 @@ const activeStyle = {
   cursor: 'pointer',
   margin: 0,
 }
+
 const inactiveStyle = {
   background: 'none',
   borderColor: '#fff',
@@ -21,9 +26,13 @@ const inactiveStyle = {
   margin: 0,
 }
 
-const mapStateToProps = (state, { form }) => {
+const mapStateToProps = (state, { form, formValueSelector }) => {
   return {
     catalogNumber: globalSelectors.createGetCatalogNumber(form)(state),
+    taxonNameId: formValueSelector(
+      state,
+      'individual.taxonInformation.curatorialTaxonName.id'
+    ),
   }
 }
 
@@ -40,55 +49,95 @@ const propTypes = {
   onSetActiveFormSection: PropTypes.func.isRequired,
   onShowAllFormSections: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
+  taxonName: PropTypes.shape({
+    attributes: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+  }),
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
   catalogNumber: undefined,
+  taxonName: undefined,
 }
 
-class FormSectionNavigation extends PureComponent {
-  render() {
+export class FormSectionNavigation extends PureComponent {
+  renderSection(index, name) {
     const {
       activeFormSectionIndex,
+      onSetActiveFormSection: handleSetActiveFormSection,
+    } = this.props
+
+    return (
+      <Step
+        active={index === activeFormSectionIndex}
+        key={index}
+        onClick={event => handleSetActiveFormSection(event, index)}
+        style={{ width: emToPixels(21.875) }}
+      >
+        <Step.Content>
+          <Step.Title>
+            <ModuleTranslate capitalize textKey={`formSectionTitles.${name}`} />
+          </Step.Title>
+          <Step.Description>
+            <ModuleTranslate
+              capitalize
+              textKey={`formSectionDescriptions.${name}`}
+            />
+          </Step.Description>
+        </Step.Content>
+      </Step>
+    )
+  }
+
+  render() {
+    const {
       availableHeight: height,
       catalogNumber,
       formSections,
       loading,
-      onSetActiveFormSection: handleSetActiveFormSection,
       onShowAllFormSections: handleShowAllFormSections,
       showAllFormSections,
+      taxonName,
     } = this.props
+
+    const curatorialTaxonName = objectPath.get(taxonName, 'attributes.name')
 
     return (
       <Grid padded style={{ height, overflow: 'auto' }}>
         <Grid.Column>
-          <Header block size="large" style={inactiveStyle}>
+          <Header
+            as="h1"
+            block
+            style={{
+              background: 'none',
+              borderColor: '#fff',
+            }}
+          >
             {loading && <Loader active inline size="tiny" />}
             {!loading &&
               (catalogNumber || (
                 <ModuleTranslate textKey="headers.newSpecimen" />
               ))}
+            {curatorialTaxonName && (
+              <Header.Subheader size="large">
+                <em
+                  style={{
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {curatorialTaxonName}
+                </em>
+              </Header.Subheader>
+            )}
           </Header>
-          {formSections.map(({ name }, index) => {
-            const isActive = index === activeFormSectionIndex
 
-            return (
-              <Header
-                block
-                key={name}
-                onClick={event => handleSetActiveFormSection(event, index)}
-                size="small"
-                style={
-                  isActive && !showAllFormSections ? activeStyle : inactiveStyle
-                }
-              >
-                <ModuleTranslate
-                  capitalize
-                  textKey={`formSectionTitles.${name}`}
-                />
-              </Header>
-            )
-          })}
+          <Step.Group size="small" style={{ marginTop: '-10px' }} vertical>
+            {formSections.map(({ name }, index) => {
+              return this.renderSection(index, name)
+            })}
+          </Step.Group>
+
           {handleShowAllFormSections && (
             <Header
               block
@@ -109,4 +158,11 @@ class FormSectionNavigation extends PureComponent {
 FormSectionNavigation.propTypes = propTypes
 FormSectionNavigation.defaultProps = defaultProps
 
-export default connect(mapStateToProps)(FormSectionNavigation)
+export default compose(
+  connect(mapStateToProps),
+  createGetItemById({
+    idPath: 'taxonNameId',
+    itemKey: 'taxonName',
+    resource: 'taxonName',
+  })
+)(FormSectionNavigation)
