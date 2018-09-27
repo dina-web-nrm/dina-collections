@@ -1,14 +1,17 @@
 export default function getHiddenFieldsHaveValue({
   formValueSelector,
-  keys,
+  fields,
   state,
 }) {
-  return keys.reduce((hasValue, key) => {
+  return fields.reduce((hasValue, { getNestedName, name }) => {
     if (hasValue) {
       return true
     }
 
-    const value = formValueSelector(state, key)
+    const fieldName = getNestedName
+      ? getNestedName({ formValueSelector, name, state })
+      : name
+    const value = formValueSelector(state, fieldName)
 
     if (value || value === 0) {
       return true
