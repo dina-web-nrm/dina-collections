@@ -102,6 +102,7 @@ class Unit extends PureComponent {
               initiallyHidden,
               initiallyShown,
               name,
+              wrapInField,
               ...rest
             },
             index
@@ -117,17 +118,6 @@ class Unit extends PureComponent {
               (initiallyShown && showInitiallyHiddenParts)
             ) {
               return null
-            }
-
-            if (!name) {
-              return (
-                <Component
-                  key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
-                  module="collectionMammals"
-                  {...rest}
-                  onClick={this.showInitiallyHiddenParts}
-                />
-              )
             }
 
             if (containsReduxFormField) {
@@ -148,16 +138,29 @@ class Unit extends PureComponent {
               )
             }
 
+            if (wrapInField) {
+              return (
+                <Field
+                  autoComplete="off"
+                  key={name}
+                  module="collectionMammals"
+                  {...rest}
+                  component={Component}
+                  name={name}
+                  setChildDirty={setChildDirty}
+                  setChildInvalid={setChildInvalid}
+                />
+              )
+            }
+
             return (
-              <Field
-                autoComplete="off"
-                key={name}
+              <Component
+                key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
                 module="collectionMammals"
                 {...rest}
-                component={Component}
+                formValueSelector={formValueSelector}
                 name={name}
-                setChildDirty={setChildDirty}
-                setChildInvalid={setChildInvalid}
+                onClick={this.showInitiallyHiddenParts}
               />
             )
           }

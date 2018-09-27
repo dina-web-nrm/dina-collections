@@ -18,6 +18,7 @@ export default function createRangeDateWithRemarks(
       initiallyHidden,
       name: baseName,
       validate: defaultValidate,
+      wrapInField: true,
     },
     {
       componentName: 'Remarks',
@@ -26,6 +27,7 @@ export default function createRangeDateWithRemarks(
       model,
       name: `${baseName}.remarks`,
       resultPrefixTextKey,
+      wrapInField: true,
     },
   ]
 }

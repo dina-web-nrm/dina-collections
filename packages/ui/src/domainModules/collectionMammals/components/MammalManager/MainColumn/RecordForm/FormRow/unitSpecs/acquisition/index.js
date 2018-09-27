@@ -33,6 +33,7 @@ const items = [
     model,
     name: 'individual.acquisition.remarks',
     resultPrefixTextKey: 'remarks.resultPrefix.acquisition',
+    wrapInField: true,
   },
 ]
 

@@ -14,6 +14,7 @@ const items = [
     model,
     name: 'publishRecord',
     textKey: 'public',
+    wrapInField: true,
   },
   {
     componentName: 'Remarks',
@@ -21,6 +22,7 @@ const items = [
     model,
     name: 'remarks',
     resultPrefixTextKey: 'remarks.resultPrefix.specimen',
+    wrapInField: true,
   },
 ]
 

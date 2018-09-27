@@ -7,6 +7,7 @@ export default function createSingleDate({ initiallyHidden, name } = {}) {
       initiallyHidden,
       name,
       validate: defaultValidate,
+      wrapInField: true,
     },
   ]
 }

@@ -16,6 +16,7 @@ export default function createAgentInputs(
       model,
       name: `${baseName}.textV`,
       type: 'text',
+      wrapInField: true,
     },
     {
       buttonTextKey,
@@ -28,6 +29,7 @@ export default function createAgentInputs(
       module,
       name: `${baseName}`,
       resultSuffix: '(agent)',
+      wrapInField: true,
     },
   ]
 }
