@@ -1,5 +1,7 @@
 const moment = require('moment')
 
+const buildYYYYMMDD = require('./buildYYYYMMDD')
+
 const monthToDaysMap = {
   1: 31,
   2: 28,
@@ -13,26 +15,6 @@ const monthToDaysMap = {
   10: 31,
   11: 30,
   12: 31,
-}
-
-const buildYYYYMMDD = ({ day, month, year }) => {
-  if (!year) {
-    return undefined
-  }
-
-  let YYYYMMDD = `${year}`
-
-  if (month) {
-    YYYYMMDD = YYYYMMDD.concat(
-      `${month}`.length === 1 ? `0${month}` : `${month}`
-    )
-
-    if (day) {
-      YYYYMMDD = YYYYMMDD.concat(`${day}`.length === 1 ? `0${day}` : `${day}`)
-    }
-  }
-
-  return YYYYMMDD
 }
 
 const getEndDateSuggestion = ({ day, month, year }) => {

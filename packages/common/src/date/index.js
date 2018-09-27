@@ -1,3 +1,4 @@
+export { default as buildYYYYMMDD } from './buildYYYYMMDD'
 export { default as formatAsTimestamp } from './formatAsTimestamp'
 export { default as getCurrentUTCTimestamp } from './getCurrentUTCTimestamp'
 export { default as getCurrentYear } from './getCurrentYear'
