@@ -2,6 +2,8 @@
 
 var moment = require('moment');
 
+var buildYYYYMMDD = require('./buildYYYYMMDD');
+
 var monthToDaysMap = {
   1: 31,
   2: 28,
@@ -17,32 +19,10 @@ var monthToDaysMap = {
   12: 31
 };
 
-var buildYYYYMMDD = function buildYYYYMMDD(_ref) {
+var getEndDateSuggestion = function getEndDateSuggestion(_ref) {
   var day = _ref.day,
       month = _ref.month,
       year = _ref.year;
-
-  if (!year) {
-    return undefined;
-  }
-
-  var YYYYMMDD = '' + year;
-
-  if (month) {
-    YYYYMMDD = YYYYMMDD.concat(('' + month).length === 1 ? '0' + month : '' + month);
-
-    if (day) {
-      YYYYMMDD = YYYYMMDD.concat(('' + day).length === 1 ? '0' + day : '' + day);
-    }
-  }
-
-  return YYYYMMDD;
-};
-
-var getEndDateSuggestion = function getEndDateSuggestion(_ref2) {
-  var day = _ref2.day,
-      month = _ref2.month,
-      year = _ref2.year;
 
   var isLeapYear = moment([year]).isLeapYear();
 
@@ -69,10 +49,10 @@ var getEndDateSuggestion = function getEndDateSuggestion(_ref2) {
   });
 };
 
-var getStartDateSuggestion = function getStartDateSuggestion(_ref3) {
-  var day = _ref3.day,
-      month = _ref3.month,
-      year = _ref3.year;
+var getStartDateSuggestion = function getStartDateSuggestion(_ref2) {
+  var day = _ref2.day,
+      month = _ref2.month,
+      year = _ref2.year;
 
   if (year && month && day) {
     return buildYYYYMMDD({
@@ -97,12 +77,12 @@ var getStartDateSuggestion = function getStartDateSuggestion(_ref3) {
   });
 };
 
-var getDateSuggestion = function getDateSuggestion(_ref4) {
-  var day = _ref4.day,
-      isEndDate = _ref4.isEndDate,
-      isStartDate = _ref4.isStartDate,
-      month = _ref4.month,
-      year = _ref4.year;
+var getDateSuggestion = function getDateSuggestion(_ref3) {
+  var day = _ref3.day,
+      isEndDate = _ref3.isEndDate,
+      isStartDate = _ref3.isStartDate,
+      month = _ref3.month,
+      year = _ref3.year;
 
   if (!year || ('' + year).length !== 4) {
     return undefined;
@@ -131,12 +111,12 @@ var getDateSuggestion = function getDateSuggestion(_ref4) {
   });
 };
 
-module.exports = function getTimestampFromYMD(_ref5) {
-  var day = _ref5.day,
-      isEndDate = _ref5.isEndDate,
-      isStartDate = _ref5.isStartDate,
-      month = _ref5.month,
-      year = _ref5.year;
+module.exports = function getTimestampFromYMD(_ref4) {
+  var day = _ref4.day,
+      isEndDate = _ref4.isEndDate,
+      isStartDate = _ref4.isStartDate,
+      month = _ref4.month,
+      year = _ref4.year;
 
   var YYYYMMDD = getDateSuggestion({
     day: day,
