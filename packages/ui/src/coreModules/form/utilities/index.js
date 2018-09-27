@@ -10,7 +10,7 @@ import getHiddenFieldsHaveValue from './getHiddenFieldsHaveValue'
 import handleReduxFormSubmitError from './handleReduxFormSubmitError'
 
 /* not inlcuding those due to problem with circular imports
-extractInitiallyHiddenKeys,
+extractInitiallyHiddenFields,
 wrapReduxFormFieldParts,
 wrapStaticContentParts,
 */

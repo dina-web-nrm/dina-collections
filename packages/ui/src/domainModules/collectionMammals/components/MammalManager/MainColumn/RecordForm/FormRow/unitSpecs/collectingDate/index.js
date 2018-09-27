@@ -1,5 +1,5 @@
 import { createRangeDateWithRemarks } from 'coreModules/form/components/parts/factories'
-import extractInitiallyHiddenKeys from 'coreModules/form/utilities/extractInitiallyHiddenKeys'
+import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInitiallyHiddenFields'
 
 const model = 'collectingInformation'
 
@@ -19,6 +19,6 @@ const items = [
 ]
 
 export default {
-  initiallyHiddenKeys: extractInitiallyHiddenKeys(items),
+  initiallyHiddenFields: extractInitiallyHiddenFields(items),
   items,
 }

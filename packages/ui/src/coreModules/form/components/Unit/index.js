@@ -12,13 +12,13 @@ import formParts from '../parts'
 const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
   if (
     childSpecs &&
-    childSpecs.initiallyHiddenKeys &&
-    childSpecs.initiallyHiddenKeys.length
+    childSpecs.initiallyHiddenFields &&
+    childSpecs.initiallyHiddenFields.length
   ) {
     return {
       hiddenFieldsHaveValue: getHiddenFieldsHaveValue({
+        fields: childSpecs.initiallyHiddenFields,
         formValueSelector,
-        keys: childSpecs.initiallyHiddenKeys,
         state,
       }),
     }
