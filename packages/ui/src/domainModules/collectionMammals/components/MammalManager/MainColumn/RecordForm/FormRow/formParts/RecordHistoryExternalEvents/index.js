@@ -38,7 +38,7 @@ class RecordHistoryExternalEvents extends PureComponent {
     return (
       <React.Fragment>
         {otherEvents &&
-          otherEvents.map(({ agent: eventAgent, date, description }) => {
+          otherEvents.map(({ agent: eventAgent, date, description }, index) => {
             const timestamp = objectPath.get(
               date,
               'startDate.interpretedTimestamp'
@@ -52,7 +52,10 @@ class RecordHistoryExternalEvents extends PureComponent {
             const dateToShow = YYYYMMDD || dateText
 
             return (
-              <Grid.Column width={16}>
+              <Grid.Column
+                key={`${dateToShow}-${description}-${index}`} // eslint-disable-line react/no-array-index-key
+                width={16}
+              >
                 {(dateToShow && `${dateToShow}: `) || null}
                 {`${description} `}
                 <ModuleTranslate textKey="other.by" />{' '}

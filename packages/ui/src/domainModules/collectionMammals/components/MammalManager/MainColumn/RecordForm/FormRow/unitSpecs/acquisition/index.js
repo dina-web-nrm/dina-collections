@@ -6,7 +6,7 @@ import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInit
 
 const model = 'acquisition'
 
-const items = [
+const parts = [
   {
     componentName: 'TranslatedHeader',
     componentProps: {
@@ -44,6 +44,7 @@ const items = [
 ]
 
 export default {
-  initiallyHiddenFields: extractInitiallyHiddenFields(items),
-  items,
+  initiallyHiddenFields: extractInitiallyHiddenFields(parts),
+  name: 'acquisition',
+  parts,
 }

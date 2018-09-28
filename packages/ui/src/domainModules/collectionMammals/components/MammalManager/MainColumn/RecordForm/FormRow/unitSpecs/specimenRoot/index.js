@@ -1,6 +1,6 @@
 const model = 'specimen'
 
-const items = [
+const parts = [
   {
     componentName: 'TranslatedHeader',
     componentProps: {
@@ -33,5 +33,6 @@ const items = [
 ]
 
 export default {
-  items,
+  name: 'specimenRoot',
+  parts,
 }

@@ -32,14 +32,16 @@ const propTypes = {
       fullName: PropTypes.string,
     }),
   }),
-  removeForceRenderResult: PropTypes.func.isRequired,
-  setAsLatestActiveField: PropTypes.func.isRequired,
+  removeForceRenderResult: PropTypes.func,
+  setAsLatestActiveField: PropTypes.func,
   textOnly: PropTypes.bool,
 }
 const defaultProps = {
   focusOnMount: false,
   forceRenderResult: false,
   normalizedAgent: undefined,
+  removeForceRenderResult: undefined,
+  setAsLatestActiveField: undefined,
   textOnly: false,
 }
 

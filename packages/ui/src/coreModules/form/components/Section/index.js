@@ -7,26 +7,18 @@ import Unit from '../Unit'
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  childSpecs: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-      }).isRequired
-    ),
-  }).isRequired,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
-  unitSpecs: PropTypes.objectOf(
-    PropTypes.shape({
-      items: PropTypes.arrayOf(
-        PropTypes.shape({
-          componentName: PropTypes.string.isRequired,
-        }).isRequired
-      ).isRequired,
-    }).isRequired
-  ).isRequired,
+  sectionSpec: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        componentName: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 }
 const defaultProps = {
   customParts: undefined,
@@ -36,28 +28,26 @@ class Section extends PureComponent {
   render() {
     const {
       changeFieldValue,
-      childSpecs,
       customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
-      unitSpecs,
+      sectionSpec,
     } = this.props
-
     return (
       <Segment color="green">
         <Grid textAlign="left" verticalAlign="bottom">
-          {childSpecs.items.map(({ name: unitName }) => {
+          {sectionSpec.units.map(unit => {
             return (
               <Unit
                 changeFieldValue={changeFieldValue}
-                childSpecs={unitSpecs[unitName]}
                 customParts={customParts}
                 formName={formName}
                 formValueSelector={formValueSelector}
-                key={unitName}
-                name={unitName}
+                key={unit.name}
+                name={unit.name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
+                unitSpec={unit}
               />
             )
           })}

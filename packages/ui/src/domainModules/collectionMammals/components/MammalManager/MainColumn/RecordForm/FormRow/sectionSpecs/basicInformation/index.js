@@ -7,25 +7,14 @@ const {
   specimenRoot,
 } = unitSpecs
 
-const items = [
-  {
-    items: specimenRoot,
-    name: 'specimenRoot',
-  },
-  {
-    items: identifiers,
-    name: 'identifiers',
-  },
-  {
-    items: acquisition,
-    name: 'acquisition',
-  },
-  {
-    items: recordHistoryExternalEvents,
-    name: 'recordHistoryExternalEvents',
-  },
+const units = [
+  specimenRoot,
+  identifiers,
+  acquisition,
+  recordHistoryExternalEvents,
 ]
 
 export default {
-  items,
+  name: 'basicInformation',
+  units,
 }

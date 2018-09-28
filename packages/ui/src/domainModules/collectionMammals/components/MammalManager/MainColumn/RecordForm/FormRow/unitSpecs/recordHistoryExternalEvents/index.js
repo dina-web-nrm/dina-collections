@@ -1,7 +1,7 @@
 import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInitiallyHiddenFields'
 import getCatalogCardInformationName from '../../formParts/CatalogCardInformation/getNestedName'
 
-const items = [
+const parts = [
   {
     componentName: 'TranslatedHeader',
     componentProps: {
@@ -30,6 +30,7 @@ const items = [
 ]
 
 export default {
-  initiallyHiddenFields: extractInitiallyHiddenFields(items),
-  items,
+  initiallyHiddenFields: extractInitiallyHiddenFields(parts),
+  name: 'recordHistoryExternalEvents',
+  parts,
 }

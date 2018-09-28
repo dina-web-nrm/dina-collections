@@ -8,15 +8,15 @@ import { Field } from 'coreModules/form/components'
 import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
 import formParts from '../parts'
 
-const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
+const mapStateToProps = (state, { formValueSelector, unitSpec }) => {
   if (
-    childSpecs &&
-    childSpecs.initiallyHiddenFields &&
-    childSpecs.initiallyHiddenFields.length
+    unitSpec &&
+    unitSpec.initiallyHiddenFields &&
+    unitSpec.initiallyHiddenFields.length
   ) {
     return {
       hiddenFieldsHaveValue: getHiddenFieldsHaveValue({
-        fields: childSpecs.initiallyHiddenFields,
+        fields: unitSpec.initiallyHiddenFields,
         formValueSelector,
         state,
       }),
@@ -28,18 +28,19 @@ const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  childSpecs: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-      }).isRequired
-    ),
-  }).isRequired,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   hiddenFieldsHaveValue: PropTypes.bool,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
+  unitSpec: PropTypes.shape({
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+      }).isRequired
+    ),
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 }
 const defaultProps = {
   customParts: {},
@@ -73,11 +74,11 @@ class Unit extends PureComponent {
   render() {
     const {
       changeFieldValue,
-      childSpecs,
       customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
+      unitSpec,
     } = this.props
 
     const { showInitiallyHiddenParts } = this.state
@@ -89,7 +90,7 @@ class Unit extends PureComponent {
 
     return (
       <Grid.Row className="relaxed">
-        {childSpecs.items.map(
+        {unitSpec.parts.map(
           (
             {
               componentName,

@@ -17,13 +17,6 @@ const log = createLog(
   'modules:collectionMammals::MammalManager:RecordForm:FormRow'
 )
 
-const formSections = [
-  { name: 'basicInformation' },
-  { name: 'taxonomy' },
-  { name: 'localityOrigin' },
-  { name: 'collectingDeath' },
-]
-
 const formSectionNavigation = {
   key: 'formSectionNavigation',
   renderColumn: props => <FormSectionNavigation {...props} />,
@@ -58,6 +51,12 @@ const propTypes = {
     path: PropTypes.string.isRequired,
   }).isRequired,
   push: PropTypes.func.isRequired,
+  sectionSpecs: PropTypes.arrayOf(
+    PropTypes.shape({
+      items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
 }
 const defaultProps = {
@@ -99,9 +98,9 @@ class FormRow extends PureComponent {
   }
 
   handleGoToNextSection(event) {
-    const { activeFormSectionIndex } = this.props
+    const { activeFormSectionIndex, sectionSpecs } = this.props
 
-    if (activeFormSectionIndex < formSections.length - 1) {
+    if (activeFormSectionIndex < sectionSpecs.length - 1) {
       this.handleSetActiveFormSection(event, activeFormSectionIndex + 1)
     }
   }
@@ -123,6 +122,7 @@ class FormRow extends PureComponent {
     const {
       activeFormSectionIndex,
       match,
+      sectionSpecs,
       showAllFormSections,
       ...rest
     } = this.props
@@ -134,12 +134,12 @@ class FormRow extends PureComponent {
           {...rest}
           activeFormSectionIndex={activeFormSectionIndex}
           columns={columns}
-          formSections={formSections}
           onGoToNextSection={this.handleGoToNextSection}
           onGoToPreviousSection={this.handleGoToPreviousSection}
           onRemoteSubmit={this.handleRemoteSubmit}
           onSetActiveFormSection={this.handleSetActiveFormSection}
           onShowAllFormSections={this.handleShowAllFormSections}
+          sectionSpecs={sectionSpecs}
           showAllFormSections={showAllFormSections}
           specimenId={match.params.specimenId}
         />

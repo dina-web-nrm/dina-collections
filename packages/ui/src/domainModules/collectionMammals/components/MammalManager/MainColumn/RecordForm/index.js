@@ -23,6 +23,7 @@ import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
 import RecordActionBar from './RecordActionBar'
+import sectionSpecs from './FormRow/sectionSpecs'
 import FormRow from './FormRow'
 
 const recordActionBarHeight = emToPixels(4.625)
@@ -163,6 +164,7 @@ class RecordForm extends Component {
         <KeyboardShortcuts shortcuts={this.shortcuts} />
         <Form
           onSubmit={handleSubmit(this.handleFormSubmit)}
+          sectionSpecs={sectionSpecs}
           setFormRef={this.setFormRef}
         >
           <RowLayout
@@ -176,6 +178,7 @@ class RecordForm extends Component {
             onUndoChanges={this.handleUndoChanges}
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             rows={rows}
+            sectionSpecs={sectionSpecs}
           />
           {mode === 'register' && (
             <CatalogNumberModal

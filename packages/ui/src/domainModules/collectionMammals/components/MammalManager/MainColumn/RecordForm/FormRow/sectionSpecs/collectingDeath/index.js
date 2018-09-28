@@ -2,8 +2,9 @@ import unitSpecs from '../../unitSpecs'
 
 const { collectingDate } = unitSpecs
 
-const items = [{ items: collectingDate, name: 'collectingDate' }]
+const units = [collectingDate]
 
 export default {
-  items,
+  name: 'collectingDeath',
+  units,
 }

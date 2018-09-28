@@ -40,14 +40,14 @@ const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   catalogNumber: PropTypes.string,
-  formSections: PropTypes.arrayOf(
+  loading: PropTypes.bool.isRequired,
+  onSetActiveFormSection: PropTypes.func.isRequired,
+  onShowAllFormSections: PropTypes.func.isRequired,
+  sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  loading: PropTypes.bool.isRequired,
-  onSetActiveFormSection: PropTypes.func.isRequired,
-  onShowAllFormSections: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
   taxonName: PropTypes.shape({
     attributes: PropTypes.shape({
@@ -94,9 +94,9 @@ export class FormSectionNavigation extends PureComponent {
     const {
       availableHeight: height,
       catalogNumber,
-      formSections,
       loading,
       onShowAllFormSections: handleShowAllFormSections,
+      sectionSpecs,
       showAllFormSections,
       taxonName,
     } = this.props
@@ -133,7 +133,7 @@ export class FormSectionNavigation extends PureComponent {
           </Header>
 
           <Step.Group size="small" style={{ marginTop: '-10px' }} vertical>
-            {formSections.map(({ name }, index) => {
+            {sectionSpecs.map(({ name }, index) => {
               return this.renderSection(index, name)
             })}
           </Step.Group>
