@@ -98,6 +98,7 @@ class Unit extends PureComponent {
           (
             {
               componentName,
+              componentProps,
               containsReduxFormField,
               initiallyHidden,
               initiallyShown,
@@ -123,17 +124,18 @@ class Unit extends PureComponent {
             if (containsReduxFormField) {
               return (
                 <Component
-                  key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
-                  module="collectionMammals"
-                  {...rest}
                   changeFieldValue={changeFieldValue}
                   formName={formName}
                   formValueSelector={formValueSelector}
+                  key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
+                  module="collectionMammals"
                   name={name}
                   onClick={this.showInitiallyHiddenParts}
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
                   setChildDirty={setChildDirty}
                   setChildInvalid={setChildInvalid}
+                  {...componentProps}
+                  {...rest}
                 />
               )
             }
@@ -142,25 +144,27 @@ class Unit extends PureComponent {
               return (
                 <Field
                   autoComplete="off"
+                  component={Component}
                   key={name}
                   module="collectionMammals"
-                  {...rest}
-                  component={Component}
                   name={name}
                   setChildDirty={setChildDirty}
                   setChildInvalid={setChildInvalid}
+                  {...componentProps}
+                  {...rest}
                 />
               )
             }
 
             return (
               <Component
+                formValueSelector={formValueSelector}
                 key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
                 module="collectionMammals"
-                {...rest}
-                formValueSelector={formValueSelector}
                 name={name}
                 onClick={this.showInitiallyHiddenParts}
+                {...componentProps}
+                {...rest}
               />
             )
           }

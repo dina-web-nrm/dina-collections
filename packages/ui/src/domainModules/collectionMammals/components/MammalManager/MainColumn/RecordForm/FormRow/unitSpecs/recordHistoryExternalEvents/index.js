@@ -3,9 +3,11 @@ import getCatalogCardInformationName from '../../formParts/CatalogCardInformatio
 
 const items = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.externalEvents',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.externalEvents',
+    },
   },
   {
     componentName: 'RecordHistoryExternalEvents',
@@ -13,8 +15,10 @@ const items = [
   },
   {
     componentName: 'AddButton',
+    componentProps: {
+      textKey: 'other.addCatalogCardCreation',
+    },
     initiallyShown: true,
-    textKey: 'other.addCatalogCardCreation',
   },
   {
     componentName: 'CatalogCardInformation',

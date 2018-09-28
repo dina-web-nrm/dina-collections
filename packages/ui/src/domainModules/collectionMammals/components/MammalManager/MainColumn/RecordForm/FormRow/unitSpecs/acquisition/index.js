@@ -8,14 +8,18 @@ const model = 'acquisition'
 
 const items = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.acquisition',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.acquisition',
+    },
   },
   {
     componentName: 'AddButton',
+    componentProps: {
+      textKey: 'other.addAcquisition',
+    },
     initiallyShown: true,
-    textKey: 'other.addAcquisition',
   },
   ...createSingleDate({
     initiallyHidden: true,
@@ -28,11 +32,13 @@ const items = [
   }),
   {
     componentName: 'Remarks',
-    emptyStateTextKey: 'remarks.emptyState.acquisition',
+    componentProps: {
+      emptyStateTextKey: 'remarks.emptyState.acquisition',
+      model,
+      resultPrefixTextKey: 'remarks.resultPrefix.acquisition',
+    },
     initiallyHidden: true,
-    model,
     name: 'individual.acquisition.remarks',
-    resultPrefixTextKey: 'remarks.resultPrefix.acquisition',
     wrapInField: true,
   },
 ]

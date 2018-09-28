@@ -1,8 +1,10 @@
 const items = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.identifiers',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.identifiers',
+    },
   },
   {
     componentName: 'IdentifiersTable',

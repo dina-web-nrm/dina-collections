@@ -5,9 +5,11 @@ const model = 'collectingInformation'
 
 const items = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.collectingDate',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.collectingDate',
+    },
   },
   ...createRangeDateWithRemarks({
     baseName: 'individual.collectingInformation.0.event.dateRange',
