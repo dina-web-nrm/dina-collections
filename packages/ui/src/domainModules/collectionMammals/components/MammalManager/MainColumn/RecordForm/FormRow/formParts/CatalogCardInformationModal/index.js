@@ -84,12 +84,7 @@ class CatalogCardInformationModal extends Component {
   }
 
   render() {
-    const {
-      agent,
-      baseName,
-      hasAuthorOrDate,
-      otherEvents,
-    } = this.props
+    const { agent, baseName, hasAuthorOrDate, otherEvents } = this.props
     const { open } = this.state
 
     return (
@@ -137,9 +132,7 @@ class CatalogCardInformationModal extends Component {
             <ModuleTranslate textKey="other.addCatalogCardInformation" />
           </Modal.Header>
           <Modal.Content>
-            <Fields
-              baseName={baseName}
-            />
+            <Fields baseName={baseName} />
           </Modal.Content>
           <Modal.Actions style={{ textAlign: 'left' }}>
             <Button onClick={this.handleClose}>
