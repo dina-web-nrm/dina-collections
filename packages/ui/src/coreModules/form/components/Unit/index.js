@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
 import { Field } from 'coreModules/form/components'
-import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
 import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
 import formParts from '../parts'
 
@@ -41,8 +40,6 @@ const propTypes = {
   formValueSelector: PropTypes.func.isRequired,
   hiddenFieldsHaveValue: PropTypes.bool,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
 }
 const defaultProps = {
   customParts: {},
@@ -81,8 +78,6 @@ class Unit extends PureComponent {
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
-      setChildDirty,
-      setChildInvalid,
     } = this.props
 
     const { showInitiallyHiddenParts } = this.state
@@ -132,8 +127,6 @@ class Unit extends PureComponent {
                   name={name}
                   onClick={this.showInitiallyHiddenParts}
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
-                  setChildDirty={setChildDirty}
-                  setChildInvalid={setChildInvalid}
                   {...componentProps}
                   {...rest}
                 />
@@ -148,8 +141,6 @@ class Unit extends PureComponent {
                   key={name}
                   module="collectionMammals"
                   name={name}
-                  setChildDirty={setChildDirty}
-                  setChildInvalid={setChildInvalid}
                   {...componentProps}
                   {...rest}
                 />
@@ -177,4 +168,4 @@ class Unit extends PureComponent {
 Unit.propTypes = propTypes
 Unit.defaultProps = defaultProps
 
-export default compose(injectFormPartStatus(), connect(mapStateToProps))(Unit)
+export default compose(connect(mapStateToProps))(Unit)

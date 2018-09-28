@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { compose } from 'redux'
 import { Grid, Segment } from 'semantic-ui-react'
 
-import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
 import Unit from '../Unit'
 
 const propTypes = {
@@ -19,8 +18,6 @@ const propTypes = {
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
   unitSpecs: PropTypes.objectOf(
     PropTypes.shape({
       items: PropTypes.arrayOf(
@@ -44,8 +41,6 @@ class Section extends PureComponent {
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
-      setChildDirty,
-      setChildInvalid,
       unitSpecs,
     } = this.props
 
@@ -63,8 +58,6 @@ class Section extends PureComponent {
                 key={unitName}
                 name={unitName}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
-                setChildDirty={setChildDirty}
-                setChildInvalid={setChildInvalid}
               />
             )
           })}
@@ -77,4 +70,4 @@ class Section extends PureComponent {
 Section.propTypes = propTypes
 Section.defaultProps = defaultProps
 
-export default compose(injectFormPartStatus())(Section)
+export default compose()(Section)

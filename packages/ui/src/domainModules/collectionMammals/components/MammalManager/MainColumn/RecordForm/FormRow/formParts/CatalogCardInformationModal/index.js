@@ -58,8 +58,6 @@ const propTypes = {
       description: PropTypes.string,
     })
   ),
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
 }
 const defaultProps = {
   agent: undefined,
@@ -91,8 +89,6 @@ class CatalogCardInformationModal extends Component {
       baseName,
       hasAuthorOrDate,
       otherEvents,
-      setChildDirty,
-      setChildInvalid,
     } = this.props
     const { open } = this.state
 
@@ -143,8 +139,6 @@ class CatalogCardInformationModal extends Component {
           <Modal.Content>
             <Fields
               baseName={baseName}
-              setChildDirty={setChildDirty}
-              setChildInvalid={setChildInvalid}
             />
           </Modal.Content>
           <Modal.Actions style={{ textAlign: 'left' }}>

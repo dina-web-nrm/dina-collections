@@ -29,8 +29,6 @@ const propTypes = {
   hasAgentOrDate: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   recordHistoryEvents: PropTypes.arrayOf(PropTypes.object),
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
 }
 const defaultProps = {
   recordHistoryEvents: [],
@@ -68,15 +66,9 @@ class CatalogCardInformation extends PureComponent {
   }
 
   render() {
-    const { baseName, setChildDirty, setChildInvalid } = this.props
+    const { baseName } = this.props
 
-    return (
-      <Fields
-        baseName={baseName}
-        setChildDirty={setChildDirty}
-        setChildInvalid={setChildInvalid}
-      />
-    )
+    return <Fields baseName={baseName} />
   }
 }
 
