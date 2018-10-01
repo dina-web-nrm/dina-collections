@@ -1,13 +1,24 @@
+const formatAsTimestamp = require('common/src/date/formatAsTimestamp')
+
 module.exports = function createObjectResponse({
   data,
   type,
   relationships,
   status = 200,
 }) {
-  const { id, attributes } = data
+  const { id, attributes, internals = {} } = data
+
+  const { deactivatedAt } = internals
+  const patchedAttributes = deactivatedAt
+    ? {
+        ...attributes,
+        deactivatedAt: formatAsTimestamp(deactivatedAt),
+      }
+    : attributes
+
   const response = {
     data: {
-      attributes,
+      attributes: patchedAttributes,
       id: `${id}`,
       type,
     },

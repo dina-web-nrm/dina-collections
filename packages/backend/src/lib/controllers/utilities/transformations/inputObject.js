@@ -79,6 +79,10 @@ module.exports = function transformInput({
 
   let output = { attributes: input.attributes }
 
+  if (output.attributes.deactivatedAt) {
+    delete output.attributes.deactivatedAt
+  }
+
   if (Object.keys(relationshipData).length) {
     output = {
       ...output,
