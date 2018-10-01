@@ -38436,7 +38436,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   }
                 }
               }
@@ -40205,7 +40205,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   }
                 }
               }
@@ -40723,7 +40723,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   },
                   "sort": {
                     "description": "When provided response will be sorted",
@@ -42316,7 +42316,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   }
                 }
               }
@@ -43432,7 +43432,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   }
                 }
               }
@@ -43988,7 +43988,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   }
                 }
               }
@@ -44582,7 +44582,7 @@
                   },
                   "scrollId": {
                     "description": "Elastic search scroll id",
-                    "type": "integer"
+                    "type": "string"
                   }
                 }
               }
