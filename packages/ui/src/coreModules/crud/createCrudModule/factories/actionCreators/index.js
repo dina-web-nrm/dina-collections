@@ -3,6 +3,7 @@ import Dependor from 'utilities/Dependor'
 
 import {
   OPERATION_TYPE_CREATE,
+  OPERATION_TYPE_DEL,
   OPERATION_TYPE_GET_MANY,
   OPERATION_TYPE_GET_ONE,
   OPERATION_TYPE_QUERY,
@@ -10,6 +11,7 @@ import {
 } from '../../../constants'
 
 import createFactory from './createFactory'
+import delFactory from './delFactory'
 import getManyFactory from './getManyFactory'
 import getOneFactory from './getOneFactory'
 import queryFactory from './queryFactory'
@@ -17,6 +19,7 @@ import updateFactory from './updateFactory'
 
 const factoryMap = {
   [OPERATION_TYPE_CREATE]: createFactory,
+  [OPERATION_TYPE_DEL]: delFactory,
   [OPERATION_TYPE_GET_MANY]: getManyFactory,
   [OPERATION_TYPE_GET_ONE]: getOneFactory,
   [OPERATION_TYPE_QUERY]: queryFactory,

@@ -4,6 +4,7 @@ import Dependor from 'utilities/Dependor'
 import {
   API_ACTION_TYPE_SUCCESS,
   OPERATION_TYPE_CREATE,
+  OPERATION_TYPE_DEL,
   OPERATION_TYPE_GET_MANY,
   OPERATION_TYPE_GET_ONE,
   OPERATION_TYPE_QUERY,
@@ -12,8 +13,10 @@ import {
 
 import updateStateWithOneFactory from './updateStateWithOneFactory'
 import updateStateWithManyFactory from './updateStateWithManyFactory'
+import updateStateRemoveOneFactory from './updateStateRemoveOneFactory'
 
 export const dep = new Dependor({
+  updateStateRemoveOneFactory,
   updateStateWithManyFactory,
   updateStateWithOneFactory,
 })
@@ -75,6 +78,14 @@ export default function createActionHandlers({
         }
         case OPERATION_TYPE_GET_MANY: {
           actionHandler = dep.updateStateWithManyFactory({
+            operationType,
+            resource,
+            resourceActionTypes,
+          })
+          break
+        }
+        case OPERATION_TYPE_DEL: {
+          actionHandler = dep.updateStateRemoveOneFactory({
             operationType,
             resource,
             resourceActionTypes,

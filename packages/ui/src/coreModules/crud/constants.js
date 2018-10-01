@@ -3,6 +3,7 @@ export const RESOURCES_NAMESPACE = 'resources'
 export const KEY_OBJECT_NAMSPACE = 'keyObject'
 
 export const OPERATION_TYPE_CREATE = 'create'
+export const OPERATION_TYPE_DEL = 'del'
 export const OPERATION_TYPE_GET_MANY = 'getMany'
 export const OPERATION_TYPE_GET_ONE = 'getOne'
 export const OPERATION_TYPE_QUERY = 'query'
@@ -10,6 +11,7 @@ export const OPERATION_TYPE_UPDATE = 'update'
 
 export const ALL_OPERATION_TYPES = [
   OPERATION_TYPE_CREATE,
+  OPERATION_TYPE_DEL,
   OPERATION_TYPE_GET_MANY,
   OPERATION_TYPE_GET_ONE,
   OPERATION_TYPE_QUERY,
