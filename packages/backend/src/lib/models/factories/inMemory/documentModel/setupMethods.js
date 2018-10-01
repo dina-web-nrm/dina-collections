@@ -79,7 +79,6 @@ module.exports = function setupMethods({
     buildWhereQuery,
     bulkCreate,
     create,
-    deactivate: del,
     del,
     empty,
     getById,

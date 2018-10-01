@@ -2,7 +2,7 @@ const buildWhereFilterFactory = require('../sharedMethods/buildWhereFilterFactor
 const bulkCreateFactory = require('./methods/bulkCreateFactory')
 const createFactory = require('./methods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
-const deactivateFactory = require('./methods/deactivateFactory')
+const delFactory = require('./methods/delFactory')
 const getByIdFactory = require('../sharedMethods/getByIdFactory')
 const getCountFactory = require('../sharedMethods/getCountFactory')
 const getOneWhereFactory = require('../sharedMethods/getOneWhereFactory')
@@ -44,7 +44,7 @@ module.exports = function setupMethods({
     validate,
   })
 
-  const deactivate = deactivateFactory({
+  const del = delFactory({
     getById,
     Model,
   })
@@ -74,7 +74,7 @@ module.exports = function setupMethods({
     buildWhereFilter,
     bulkCreate,
     create,
-    deactivate,
+    del,
     getById,
     getCount,
     getOneWhere,

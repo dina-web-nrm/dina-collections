@@ -3,7 +3,7 @@ const buildWhereQueryFactory = require('../sharedMethods/buildWhereQueryFactory'
 const bulkCreateFactory = require('../sharedMethods/bulkCreateFactory')
 const createFactory = require('../sharedMethods/createFactory')
 const dbValidator = require('common/src/error/validators/dbValidator')
-const deactivateFactory = require('../sharedMethods/deactivateFactory')
+const delFactory = require('../sharedMethods/delFactory')
 const getByIdFactory = require('../sharedMethods/getByIdFactory')
 const getCountFactory = require('../sharedMethods/getCountFactory')
 const getOneWhereFactory = require('../sharedMethods/getOneWhereFactory')
@@ -49,7 +49,7 @@ module.exports = function setupMethods({
     validate,
   })
 
-  const deactivate = deactivateFactory({
+  const del = delFactory({
     getById,
     Model,
   })
@@ -82,7 +82,7 @@ module.exports = function setupMethods({
     buildWhereQuery,
     bulkCreate,
     create,
-    deactivate,
+    del,
     getById,
     getCount,
     getOneWhere,

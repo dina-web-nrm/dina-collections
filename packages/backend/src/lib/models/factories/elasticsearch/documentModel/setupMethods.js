@@ -74,7 +74,6 @@ module.exports = function setupMethods({ elasticsearch, Model, forceRefresh }) {
     buildWhereQuery,
     bulkCreate,
     create,
-    deactivate: del,
     del,
     empty,
     getById,

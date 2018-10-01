@@ -1,9 +1,9 @@
 const formatModelItemResponse = require('../../utilities/formatModelItemResponse')
-const deactivateWrapper = require('../../../wrappers/methods/deactivate')
+const delWrapper = require('../../../wrappers/methods/del')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 
-module.exports = function deactivateFactory({ Model }) {
-  return deactivateWrapper(({ id }) => {
+module.exports = function delFactory({ Model }) {
+  return delWrapper(({ id }) => {
     return Model.findOne({
       where: { id },
     }).then(existingModel => {
