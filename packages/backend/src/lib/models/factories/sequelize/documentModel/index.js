@@ -13,31 +13,38 @@ module.exports = function createModel({
 }) {
   const schemaModelName = schemaModelNameInput || name
 
-  const Model = sequelize.define(name, {
-    deactivatedAt: {
-      type: Sequelize.DATE,
+  const Model = sequelize.define(
+    name,
+    {
+      deactivatedAt: {
+        type: Sequelize.DATE,
+      },
+      diff: {
+        type: Sequelize.JSONB,
+      },
+      document: {
+        type: Sequelize.JSONB,
+      },
+      id: {
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      relationships: {
+        type: Sequelize.JSONB,
+      },
+      schemaCompliant: {
+        type: Sequelize.BOOLEAN,
+      },
+      schemaVersion: {
+        type: Sequelize.STRING,
+      },
     },
-    diff: {
-      type: Sequelize.JSONB,
-    },
-    document: {
-      type: Sequelize.JSONB,
-    },
-    id: {
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER,
-    },
-    relationships: {
-      type: Sequelize.JSONB,
-    },
-    schemaCompliant: {
-      type: Sequelize.BOOLEAN,
-    },
-    schemaVersion: {
-      type: Sequelize.STRING,
-    },
-  })
+    {
+      deletedAt: 'deactivatedAt',
+      paranoid: true,
+    }
+  )
   const methods = setupMethods({
     customMethodFactories,
     loadInitialData,

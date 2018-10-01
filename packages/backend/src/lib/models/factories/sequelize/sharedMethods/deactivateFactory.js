@@ -1,6 +1,5 @@
 const formatModelItemResponse = require('../utilities/formatModelItemResponse')
 const deactivateWrapper = require('../../wrappers/methods/deactivate')
-const getCurrentUTCTimestamp = require('common/src/date/getCurrentUTCTimestamp')
 const backendError403 = require('common/src/error/errorFactories/backendError403')
 const backendError404 = require('common/src/error/errorFactories/backendError404')
 
@@ -33,15 +32,10 @@ module.exports = function deactivateFactory({ Model }) {
         })
       }
 
-      const newModel = {
-        ...storedData,
-        deactivatedAt: getCurrentUTCTimestamp(),
-      }
-
-      return existingModel.update(newModel).then(res => {
+      return existingModel.destroy().then(res => {
         log.debug(
           `Deactivated instance for model ${Model.tableName}. id: ${
-            res.dataValues.id
+            storedData.id
           }`
         )
 

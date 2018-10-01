@@ -67,7 +67,9 @@ module.exports = function createModel({
       ...dataColumns,
     },
     {
+      deletedAt: 'deactivatedAt',
       getterMethods: getters,
+      paranoid: true,
       setterMethods: setters,
     }
   )
