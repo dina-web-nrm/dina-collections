@@ -3,7 +3,7 @@ const Sequelize = require('sequelize')
 
 const { Op } = Sequelize
 
-module.exports = function buildWhereQueryFactory() {
+module.exports = function buildWhereQueryFactory({ sequelize }) {
   return function buildWhereQuery(
     { filterSpecification, query = {}, serviceInteractor } = {}
   ) {
@@ -45,6 +45,7 @@ module.exports = function buildWhereQueryFactory() {
           .then(() => {
             return sequelizeFilterFunction({
               Op,
+              sequelize,
               serviceInteractor,
               value: input.value,
             })
