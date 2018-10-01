@@ -5,7 +5,7 @@ services:
     container_name: load-data
     environment:
       - IMPORT_DATA=true
-      - IMPORT_DATA_NUMBER_OF_SPECIMENS=100
+      - IMPORT_DATA_NUMBER_OF_SPECIMENS=1000000
     env_file:
       - ./env/.backend
     command: node /etc/api/src/apps/production/data/index.js
