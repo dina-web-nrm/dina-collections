@@ -5,7 +5,8 @@ services:
     container_name: load-data
     environment:
       - IMPORT_DATA=true
-      - IMPORT_DATA_NUMBER_OF_SPECIMENS=100
+      - IMPORT_DATA_NUMBER_OF_SPECIMENS=1000000
+      - DEBUG=DINA:LOG_INFO*
     env_file:
       - ./env/.backend
     command: node /etc/api/src/apps/production/data/index.js
@@ -16,7 +17,7 @@ services:
 networks:
   default:
     external:
-      name: dwproxy_default
+      name: proxy-docker_default
 
 volumes:
   postgres_data:

@@ -10,19 +10,30 @@ const filters = createGetManyFilterSpecifications({
       jsFilterFunction: () => {},
       key: 'catalogNumber',
 
-      sequelizeFilterFunction: ({ value, Op }) => {
+      sequelizeFilterFunction: ({ sequelize, value, Op }) => {
         if (!value) {
           return null
         }
-        // TODO The assumption that the catalogNumber is at place 0 amongst identifiers is not resonable
+
+        const regex = RegExp('^[A-Za-z0-9]+$')
+
+        if (!regex.test(value)) {
+          throw new Error('Wrong filter format')
+        }
+        // TODO -> this is sensitive for injections because value is not escaped
         // waiting for fix to: https://github.com/sequelize/sequelize/issues/5173
+        const obj = {
+          identifierType: {
+            id: '1',
+          },
+          value,
+        }
+
+        const query = `"specimen"."document"->'individual'->'identifiers' @> '[${JSON.stringify(
+          obj
+        )}]'`
         return {
-          [Op.and]: [
-            {
-              'document.individual.identifiers.0.identifierType.id': 1,
-              'document.individual.identifiers.0.value': value,
-            },
-          ],
+          [Op.and]: [sequelize.literal(query)],
         }
       },
     },

@@ -66,13 +66,8 @@
         ],
         "determinations": [
           {
-            "determinationVerbatim": "determinationVerbatim",
             "determinedByAgent": { "textV": "determinedByAgentText" },
-            "remarks": "remarks",
-            "taxonName": {
-              "id": "2367",
-              "type": "taxonName"
-            }
+            "remarks": "remarks"
           }
         ],
         "featureObservations": [
