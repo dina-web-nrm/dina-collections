@@ -1,7 +1,7 @@
 const sharedFilters = require('../sharedFilters')
 
 module.exports = function createGetManyFilterSpecifications(
-  { include = ['ids', 'updatedAfter'], custom = {} } = {}
+  { include = ['ids', 'updatedAfter', 'deactivated'], custom = {} } = {}
 ) {
   const filters = include.reduce((obj, key) => {
     const filter = sharedFilters[key]

@@ -6,7 +6,11 @@ module.exports = {
   key: 'deactivated',
   sequelizeFilterFunction: ({ value, Op }) => {
     if (value !== true) {
-      return null
+      return {
+        deactivatedAt: {
+          [Op.eq]: null,
+        },
+      }
     }
     return {
       deactivatedAt: {
