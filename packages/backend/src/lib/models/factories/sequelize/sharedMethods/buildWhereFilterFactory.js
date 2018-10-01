@@ -4,7 +4,7 @@ const parseFilterValue = require('../../../utilities/parseFilterValue')
 
 const { Op } = Sequelize
 
-module.exports = function buildWhereFilterFactory() {
+module.exports = function buildWhereFilterFactory({ sequelize }) {
   return function buildWhereFilter(
     {
       filterSpecification = {},
@@ -49,6 +49,7 @@ module.exports = function buildWhereFilterFactory() {
             return sequelizeFilterFunction({
               filterInput,
               Op,
+              sequelize,
               serviceInteractor,
               value: parseFilterValue(filterInput[key]),
             })

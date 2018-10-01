@@ -28,7 +28,7 @@ module.exports = function setupMethods({
     })
   }
 
-  const buildWhereFilter = buildWhereFilterFactory()
+  const buildWhereFilter = buildWhereFilterFactory({ sequelize })
   const getById = getByIdFactory({
     Model,
   })
