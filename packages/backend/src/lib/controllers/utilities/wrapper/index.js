@@ -83,7 +83,7 @@ module.exports = function createControllerWrapper({
       user,
       requestId,
     }) {
-      log.debug(`Called with request id: ${requestId}`)
+      // log.debug(`Called with request id: ${requestId}`)
       return applyHooks({
         fileInteractor,
         hooks: preHooks,
