@@ -3,6 +3,7 @@ const createLog = require('../log')
 const createOpenApiClient = require('../openApiClient')
 const jsonApiGetMany = require('./get/getMany')
 const jsonApiGetOne = require('./get/getOne')
+const jsonApiDel = require('./modify/del').del
 const jsonApiCreate = require('./modify/recursiveCreate').recursiveCreate
 const jsonApiUpdate = require('./modify/recursiveUpdate').recursiveUpdate
 const { setDependencies } = require('./modify/setDependencies')
@@ -12,6 +13,7 @@ const log = createLog('common:jsonApiClient')
 const dep = new Dependor({
   createOpenApiClient,
   jsonApiCreate,
+  jsonApiDel,
   jsonApiGetMany,
   jsonApiGetOne,
   jsonApiUpdate,
@@ -72,10 +74,20 @@ const createJsonApiClient = ({ apiConfigInput, createEndpoint }) => {
     })
   }
 
+  const del = (resourceType, userOptions) => {
+    log.debug(`del ${resourceType}`, userOptions)
+    return dep.jsonApiDel({
+      openApiClient,
+      resourceType,
+      userOptions,
+    })
+  }
+
   return {
     ...openApiClient,
     call,
     create,
+    del,
     getMany,
     getOne,
     update,

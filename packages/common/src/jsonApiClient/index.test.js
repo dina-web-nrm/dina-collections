@@ -13,6 +13,7 @@ describe('jsonApiClient', () => {
     expect(Object.keys(jsonApiClient).sort()).toEqual([
       'call',
       'create',
+      'del',
       'downloadFile',
       'formPost',
       'getMany',
