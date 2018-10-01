@@ -70,7 +70,7 @@ module.exports = function buildQueryRequest({
       scrollId: {
         description: 'Elastic search scroll id',
 
-        type: 'integer',
+        type: 'string',
       },
       sort: !(sortEnum && sortEnum.length)
         ? undefined
