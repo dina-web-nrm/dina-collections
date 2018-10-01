@@ -33,6 +33,7 @@ module.exports = function runIncludeJobs(_ref) {
         filter: {
           ids: ids
         },
+        includeDeactivated: true,
         limit: 1000
       },
       relationSpecification: relationSpecification

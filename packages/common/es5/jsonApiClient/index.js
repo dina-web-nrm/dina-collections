@@ -13,6 +13,7 @@ var createLog = require('../log');
 var createOpenApiClient = require('../openApiClient');
 var jsonApiGetMany = require('./get/getMany');
 var jsonApiGetOne = require('./get/getOne');
+var jsonApiDel = require('./modify/del').del;
 var jsonApiCreate = require('./modify/recursiveCreate').recursiveCreate;
 var jsonApiUpdate = require('./modify/recursiveUpdate').recursiveUpdate;
 
@@ -24,6 +25,7 @@ var log = createLog('common:jsonApiClient');
 var dep = new Dependor({
   createOpenApiClient: createOpenApiClient,
   jsonApiCreate: jsonApiCreate,
+  jsonApiDel: jsonApiDel,
   jsonApiGetMany: jsonApiGetMany,
   jsonApiGetOne: jsonApiGetOne,
   jsonApiUpdate: jsonApiUpdate
@@ -95,9 +97,19 @@ var createJsonApiClient = function createJsonApiClient(_ref) {
     });
   };
 
+  var del = function del(resourceType, userOptions) {
+    log.debug('del ' + resourceType, userOptions);
+    return dep.jsonApiDel({
+      openApiClient: openApiClient,
+      resourceType: resourceType,
+      userOptions: userOptions
+    });
+  };
+
   return (0, _extends3.default)({}, openApiClient, {
     call: call,
     create: create,
+    del: del,
     getMany: getMany,
     getOne: getOne,
     update: update

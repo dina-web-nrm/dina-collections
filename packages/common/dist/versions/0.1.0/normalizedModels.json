@@ -20,6 +20,11 @@
         "type": "string",
         "x-summary": ""
       },
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "givenName": {
         "type": "string",
         "x-summary": ""
@@ -581,6 +586,11 @@
   "causeOfDeathType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "key": {
         "type": "string",
         "x-summary": ""
@@ -607,6 +617,11 @@
   "customTaxonNameType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "key": {
         "type": "string",
         "x-summary": ""
@@ -633,6 +648,11 @@
   "establishmentMeansType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "key": {
         "type": "string",
         "x-summary": ""
@@ -659,6 +679,11 @@
   "featureType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "key": {
         "type": "string",
         "x-summary": ""
@@ -714,6 +739,11 @@
   "identifierType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "name": {
         "type": "string",
         "x-summary": ""
@@ -740,6 +770,11 @@
   "preparationType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "id": {
         "$ref": "id",
         "x-summary": ""
@@ -846,6 +881,11 @@
   "typeSpecimenType": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "name": {
         "type": "string",
         "x-summary": ""
@@ -1138,6 +1178,11 @@
   "place": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "name": {
         "type": "string",
         "description": "Name of the locality",
@@ -1998,6 +2043,11 @@
         "$ref": "id",
         "x-summary": ""
       },
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "lid": {
         "$ref": "lid",
         "x-summary": ""
@@ -2301,6 +2351,11 @@
   "physicalObject": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "lid": {
         "type": "string",
         "x-summary": ""
@@ -2356,6 +2411,11 @@
   "storageLocation": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "versionId": {
         "type": "string",
         "x-summary": ""
@@ -2497,6 +2557,11 @@
   "taxon": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "id": {
         "$ref": "id",
         "x-summary": ""
@@ -2619,6 +2684,11 @@
   "taxonName": {
     "additionalProperties": false,
     "properties": {
+      "deactivatedAt": {
+        "format": "date-time",
+        "type": "string",
+        "x-summary": ""
+      },
       "versionId": {
         "type": "string",
         "x-summary": ""
@@ -20675,6 +20745,11 @@
                 },
                 "type": "array"
               },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
+              },
               "limit": {
                 "description": "Limit the result",
                 "minimum": 0,
@@ -22444,6 +22519,11 @@
                 },
                 "type": "array"
               },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
+              },
               "limit": {
                 "description": "Limit the result",
                 "minimum": 0,
@@ -22961,6 +23041,11 @@
                   "type": "string"
                 },
                 "type": "array"
+              },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
               },
               "limit": {
                 "description": "Limit the result",
@@ -24290,15 +24375,10 @@
               ],
               "determinations": [
                 {
-                  "determinationVerbatim": "determinationVerbatim",
                   "determinedByAgent": {
                     "textV": "determinedByAgentText"
                   },
-                  "remarks": "remarks",
-                  "taxonName": {
-                    "id": "2367",
-                    "type": "taxonName"
-                  }
+                  "remarks": "remarks"
                 }
               ],
               "featureObservations": [
@@ -24442,15 +24522,10 @@
             ],
             "determinations": [
               {
-                "determinationVerbatim": "determinationVerbatim",
                 "determinedByAgent": {
                   "textV": "determinedByAgentText"
                 },
-                "remarks": "remarks",
-                "taxonName": {
-                  "id": "2367",
-                  "type": "taxonName"
-                }
+                "remarks": "remarks"
               }
             ],
             "featureObservations": [
@@ -24554,6 +24629,11 @@
                   "$ref": "queryAggregation"
                 },
                 "type": "array"
+              },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
               },
               "limit": {
                 "description": "Limit the result",
@@ -25671,6 +25751,11 @@
                 },
                 "type": "array"
               },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
+              },
               "limit": {
                 "description": "Limit the result",
                 "minimum": 0,
@@ -26226,6 +26311,11 @@
                   "type": "string"
                 },
                 "type": "array"
+              },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
               },
               "limit": {
                 "description": "Limit the result",
@@ -26820,6 +26910,11 @@
                   "type": "string"
                 },
                 "type": "array"
+              },
+              "includeDeactivated": {
+                "description": "Will include deactivated items",
+                "default": false,
+                "type": "boolean"
               },
               "limit": {
                 "description": "Limit the result",

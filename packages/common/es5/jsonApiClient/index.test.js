@@ -30,7 +30,7 @@ describe('jsonApiClient', function () {
       }
     });
 
-    expect((0, _keys2.default)(jsonApiClient).sort()).toEqual(['call', 'create', 'downloadFile', 'formPost', 'getMany', 'getOne', 'httpDelete', 'httpGet', 'httpPatch', 'httpPost', 'httpPut', 'update']);
+    expect((0, _keys2.default)(jsonApiClient).sort()).toEqual(['call', 'create', 'del', 'downloadFile', 'formPost', 'getMany', 'getOne', 'httpDelete', 'httpGet', 'httpPatch', 'httpPost', 'httpPut', 'update']);
     (0, _values2.default)(jsonApiClient).forEach(function (val) {
       expect(typeof val === 'undefined' ? 'undefined' : (0, _typeof3.default)(val)).toEqual('function');
     });
