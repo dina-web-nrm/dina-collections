@@ -12,11 +12,9 @@ const { AgentDropdownPickerSearch } = agentParts
 
 const propTypes = {
   baseName: PropTypes.string.isRequired,
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
 }
 
-const Fields = ({ baseName, setChildDirty, setChildInvalid }) => {
+const Fields = ({ baseName }) => {
   return (
     <React.Fragment>
       <Grid.Column width={16}>
@@ -26,8 +24,6 @@ const Fields = ({ baseName, setChildDirty, setChildInvalid }) => {
           module="collectionMammals"
           name={`${baseName}.agent`}
           resultSuffix="(agent)"
-          setChildDirty={setChildDirty}
-          setChildInvalid={setChildInvalid}
           type="input-text"
         />
       </Grid.Column>
@@ -38,8 +34,6 @@ const Fields = ({ baseName, setChildDirty, setChildInvalid }) => {
           label="Condition"
           module="collectionMammals"
           name={`${baseName}.date`}
-          setChildDirty={setChildDirty}
-          setChildInvalid={setChildInvalid}
           validate={defaultValidate}
         />
       </Grid.Column>

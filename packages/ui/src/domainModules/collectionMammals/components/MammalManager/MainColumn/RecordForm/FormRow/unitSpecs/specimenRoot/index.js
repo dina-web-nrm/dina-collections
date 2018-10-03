@@ -1,31 +1,38 @@
 const model = 'specimen'
 
-const items = [
+const parts = [
   {
-    as: 'h2',
-    columnProps: { width: 12 },
     componentName: 'TranslatedHeader',
-    textKey: 'headers.basicInformation',
+    componentProps: {
+      as: 'h2',
+      columnProps: { width: 12 },
+      textKey: 'headers.basicInformation',
+    },
   },
   {
-    columnProps: { width: 4 },
     componentName: 'Checkbox',
-    inline: true,
-    model,
+    componentProps: {
+      columnProps: { width: 4 },
+      inline: true,
+      model,
+      textKey: 'public',
+    },
     name: 'publishRecord',
-    textKey: 'public',
     wrapInField: true,
   },
   {
     componentName: 'Remarks',
-    emptyStateTextKey: 'remarks.emptyState.specimen',
-    model,
+    componentProps: {
+      emptyStateTextKey: 'remarks.emptyState.specimen',
+      model,
+      resultPrefixTextKey: 'remarks.resultPrefix.specimen',
+    },
     name: 'remarks',
-    resultPrefixTextKey: 'remarks.resultPrefix.specimen',
     wrapInField: true,
   },
 ]
 
 export default {
-  items,
+  name: 'specimenRoot',
+  parts,
 }

@@ -1,8 +1,10 @@
-const items = [
+const parts = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.identifiers',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.identifiers',
+    },
   },
   {
     componentName: 'IdentifiersTable',
@@ -12,5 +14,6 @@ const items = [
 ]
 
 export default {
-  items,
+  name: 'identifiers',
+  parts,
 }

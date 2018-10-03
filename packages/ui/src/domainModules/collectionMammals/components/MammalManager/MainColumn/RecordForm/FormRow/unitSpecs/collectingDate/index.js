@@ -1,13 +1,14 @@
 import { createRangeDateWithRemarks } from 'coreModules/form/components/parts/factories'
-import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInitiallyHiddenFields'
 
 const model = 'collectingInformation'
 
-const items = [
+const parts = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.collectingDate',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.collectingDate',
+    },
   },
   ...createRangeDateWithRemarks({
     baseName: 'individual.collectingInformation.0.event.dateRange',
@@ -19,6 +20,6 @@ const items = [
 ]
 
 export default {
-  initiallyHiddenFields: extractInitiallyHiddenFields(items),
-  items,
+  name: 'collectingDate',
+  parts,
 }

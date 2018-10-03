@@ -5,48 +5,45 @@ import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
 import { Field } from 'coreModules/form/components'
-import { injectFormPartStatus } from 'coreModules/form/higherOrderComponents'
-import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
+import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import formParts from '../parts'
 
-const mapStateToProps = (state, { formValueSelector, childSpecs }) => {
-  if (
-    childSpecs &&
-    childSpecs.initiallyHiddenFields &&
-    childSpecs.initiallyHiddenFields.length
-  ) {
-    return {
-      hiddenFieldsHaveValue: getHiddenFieldsHaveValue({
-        fields: childSpecs.initiallyHiddenFields,
-        formValueSelector,
-        state,
-      }),
-    }
-  }
+const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
+  const unit = unitSpec.name
 
-  return {}
+  const initiallyHiddenFieldsHaveValue = formSupportSelectors.getInitiallyHiddenFieldsHaveValue(
+    state,
+    {
+      formName,
+      formValueSelector,
+      unit,
+    }
+  )
+
+  return {
+    initiallyHiddenFieldsHaveValue,
+  }
 }
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  childSpecs: PropTypes.shape({
-    items: PropTypes.arrayOf(
+  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
+  formName: PropTypes.string.isRequired,
+  formValueSelector: PropTypes.func.isRequired,
+  initiallyHiddenFieldsHaveValue: PropTypes.bool,
+  removeArrayFieldByIndex: PropTypes.func.isRequired,
+  unitSpec: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    parts: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
       }).isRequired
     ),
   }).isRequired,
-  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
-  formName: PropTypes.string.isRequired,
-  formValueSelector: PropTypes.func.isRequired,
-  hiddenFieldsHaveValue: PropTypes.bool,
-  removeArrayFieldByIndex: PropTypes.func.isRequired,
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
 }
 const defaultProps = {
   customParts: {},
-  hiddenFieldsHaveValue: undefined,
+  initiallyHiddenFieldsHaveValue: undefined,
 }
 
 class Unit extends PureComponent {
@@ -58,13 +55,18 @@ class Unit extends PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.hiddenFieldsHaveValue) {
+    if (this.props.initiallyHiddenFieldsHaveValue) {
+      // need to use this flag, because otherwise a field could disappear if
+      // we empty it's value while typing in it
       this.showInitiallyHiddenParts()
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.hiddenFieldsHaveValue && nextProps.hiddenFieldsHaveValue) {
+    if (
+      !this.props.initiallyHiddenFieldsHaveValue &&
+      nextProps.initiallyHiddenFieldsHaveValue
+    ) {
       this.showInitiallyHiddenParts()
     }
   }
@@ -76,13 +78,11 @@ class Unit extends PureComponent {
   render() {
     const {
       changeFieldValue,
-      childSpecs,
       customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
-      setChildDirty,
-      setChildInvalid,
+      unitSpec,
     } = this.props
 
     const { showInitiallyHiddenParts } = this.state
@@ -94,10 +94,11 @@ class Unit extends PureComponent {
 
     return (
       <Grid.Row className="relaxed">
-        {childSpecs.items.map(
+        {unitSpec.parts.map(
           (
             {
               componentName,
+              componentProps,
               containsReduxFormField,
               initiallyHidden,
               initiallyShown,
@@ -123,17 +124,16 @@ class Unit extends PureComponent {
             if (containsReduxFormField) {
               return (
                 <Component
-                  key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
-                  module="collectionMammals"
-                  {...rest}
                   changeFieldValue={changeFieldValue}
                   formName={formName}
                   formValueSelector={formValueSelector}
+                  key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
+                  module="collectionMammals"
                   name={name}
                   onClick={this.showInitiallyHiddenParts}
                   removeArrayFieldByIndex={removeArrayFieldByIndex}
-                  setChildDirty={setChildDirty}
-                  setChildInvalid={setChildInvalid}
+                  {...componentProps}
+                  {...rest}
                 />
               )
             }
@@ -142,25 +142,25 @@ class Unit extends PureComponent {
               return (
                 <Field
                   autoComplete="off"
+                  component={Component}
                   key={name}
                   module="collectionMammals"
-                  {...rest}
-                  component={Component}
                   name={name}
-                  setChildDirty={setChildDirty}
-                  setChildInvalid={setChildInvalid}
+                  {...componentProps}
+                  {...rest}
                 />
               )
             }
 
             return (
               <Component
+                formValueSelector={formValueSelector}
                 key={`${componentName}-${index}`} // eslint-disable-line react/no-array-index-key
                 module="collectionMammals"
-                {...rest}
-                formValueSelector={formValueSelector}
                 name={name}
                 onClick={this.showInitiallyHiddenParts}
+                {...componentProps}
+                {...rest}
               />
             )
           }
@@ -173,4 +173,4 @@ class Unit extends PureComponent {
 Unit.propTypes = propTypes
 Unit.defaultProps = defaultProps
 
-export default compose(injectFormPartStatus(), connect(mapStateToProps))(Unit)
+export default compose(connect(mapStateToProps))(Unit)

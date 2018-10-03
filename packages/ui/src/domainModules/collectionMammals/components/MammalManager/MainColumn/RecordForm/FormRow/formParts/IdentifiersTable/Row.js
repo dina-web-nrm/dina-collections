@@ -30,8 +30,6 @@ const propTypes = {
   ).isRequired,
   index: PropTypes.number.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
-  setChildDirty: PropTypes.func.isRequired,
-  setChildInvalid: PropTypes.func.isRequired,
 }
 
 class IdentifiersTableRow extends PureComponent {
@@ -47,8 +45,6 @@ class IdentifiersTableRow extends PureComponent {
       getTranslationPath,
       index,
       removeArrayFieldByIndex,
-      setChildDirty,
-      setChildInvalid,
     } = this.props
 
     log.render()
@@ -63,8 +59,6 @@ class IdentifiersTableRow extends PureComponent {
             module="collectionMammals"
             name={getPath('identifierType.id')}
             options={identifierTypeOptions}
-            setChildDirty={setChildDirty}
-            setChildInvalid={setChildInvalid}
             type="dropdown-search-local"
           />
         </Grid.Column>
@@ -77,8 +71,6 @@ class IdentifiersTableRow extends PureComponent {
             fluid
             module="collectionMammals"
             name={getPath('value')}
-            setChildDirty={setChildDirty}
-            setChildInvalid={setChildInvalid}
             type="text"
           />
         </Grid.Column>

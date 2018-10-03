@@ -4,9 +4,11 @@ export default function createSingleDate({ initiallyHidden, name } = {}) {
   return [
     {
       componentName: 'SingleDate',
+      componentProps: {
+        validate: defaultValidate,
+      },
       initiallyHidden,
       name,
-      validate: defaultValidate,
       wrapInField: true,
     },
   ]

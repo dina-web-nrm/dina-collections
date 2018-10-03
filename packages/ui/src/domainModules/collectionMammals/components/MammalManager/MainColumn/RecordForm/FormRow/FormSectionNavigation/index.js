@@ -7,7 +7,7 @@ import { Grid, Header, Step, Loader } from 'semantic-ui-react'
 
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import globalSelectors from 'domainModules/collectionMammals/globalSelectors'
+import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -26,9 +26,11 @@ const inactiveStyle = {
   margin: 0,
 }
 
-const mapStateToProps = (state, { form, formValueSelector }) => {
+const mapStateToProps = (state, { formName, formValueSelector }) => {
   return {
-    catalogNumber: globalSelectors.createGetCatalogNumber(form)(state),
+    catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(formName)(
+      state
+    ),
     taxonNameId: formValueSelector(
       state,
       'individual.taxonInformation.curatorialTaxonName.id'
@@ -40,14 +42,14 @@ const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   catalogNumber: PropTypes.string,
-  formSections: PropTypes.arrayOf(
+  loading: PropTypes.bool.isRequired,
+  onSetActiveFormSection: PropTypes.func.isRequired,
+  onShowAllFormSections: PropTypes.func.isRequired,
+  sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  loading: PropTypes.bool.isRequired,
-  onSetActiveFormSection: PropTypes.func.isRequired,
-  onShowAllFormSections: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
   taxonName: PropTypes.shape({
     attributes: PropTypes.shape({
@@ -94,9 +96,9 @@ export class FormSectionNavigation extends PureComponent {
     const {
       availableHeight: height,
       catalogNumber,
-      formSections,
       loading,
       onShowAllFormSections: handleShowAllFormSections,
+      sectionSpecs,
       showAllFormSections,
       taxonName,
     } = this.props
@@ -133,7 +135,7 @@ export class FormSectionNavigation extends PureComponent {
           </Header>
 
           <Step.Group size="small" style={{ marginTop: '-10px' }} vertical>
-            {formSections.map(({ name }, index) => {
+            {sectionSpecs.map(({ name }, index) => {
               return this.renderSection(index, name)
             })}
           </Step.Group>

@@ -4,23 +4,21 @@ import { Button, Grid, Icon } from 'semantic-ui-react'
 
 import { Section } from 'coreModules/form/components'
 import customParts from '../formParts'
-import sectionSpecs from '../sectionSpecs'
-import unitSpecs from '../unitSpecs'
 
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
   formName: PropTypes.string.isRequired,
-  formSections: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
   formValueSelector: PropTypes.func.isRequired,
   onGoToNextSection: PropTypes.func.isRequired,
   onGoToPreviousSection: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
+  sectionSpecs: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
 }
 const defaultProps = {
@@ -39,24 +37,24 @@ class FormSectionView extends PureComponent {
       activeFormSectionIndex,
       changeFieldValue,
       formName,
-      formSections,
       formValueSelector,
       removeArrayFieldByIndex,
+      sectionSpecs,
     } = this.props
 
-    const formSection = formSections[activeFormSectionIndex]
+    const sectionSpec = sectionSpecs[activeFormSectionIndex]
 
-    if (!formSection) {
+    if (!sectionSpec) {
       throw new Error(
         `Missing form section with index ${activeFormSectionIndex}`
       )
     }
 
-    const { name } = formSection
+    const { name, units } = sectionSpec
 
-    if (!(name && sectionSpecs[name])) {
+    if (!units) {
       throw new Error(
-        `Missing sectionSpecs for form section index ${
+        `Missing units for form section with index ${
           activeFormSectionIndex
         } with name ${name}`
       )
@@ -66,14 +64,13 @@ class FormSectionView extends PureComponent {
       <Grid.Column width={16}>
         <Section
           changeFieldValue={changeFieldValue}
-          childSpecs={sectionSpecs[name]}
           customParts={customParts}
           formName={formName}
           formValueSelector={formValueSelector}
           module="collectionMammals"
           name={name}
           removeArrayFieldByIndex={removeArrayFieldByIndex}
-          unitSpecs={unitSpecs}
+          sectionSpec={sectionSpec}
         />
       </Grid.Column>
     )
@@ -83,32 +80,31 @@ class FormSectionView extends PureComponent {
     const {
       changeFieldValue,
       formName,
-      formSections,
       formValueSelector,
       removeArrayFieldByIndex,
+      sectionSpecs,
     } = this.props
 
     return (
       <React.Fragment>
-        {formSections.map(({ name }) => {
-          if (!(name && sectionSpecs[name])) {
-            throw new Error(
-              `Missing sectionSpecs for form section name ${name}`
-            )
+        {sectionSpecs.map(sectionSpec => {
+          const { name, units } = sectionSpec
+
+          if (!units) {
+            throw new Error(`Missing unitSpecs for form section name ${name}`)
           }
 
           return (
             <Grid.Column key={name} width={16}>
               <Section
                 changeFieldValue={changeFieldValue}
-                childSpecs={sectionSpecs[name]}
                 customParts={customParts}
                 formName={formName}
                 formValueSelector={formValueSelector}
                 module="collectionMammals"
                 name={name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
-                unitSpecs={unitSpecs}
+                sectionSpec={sectionSpec}
               />
             </Grid.Column>
           )
@@ -121,9 +117,9 @@ class FormSectionView extends PureComponent {
     const {
       activeFormSectionIndex,
       availableHeight: height,
-      formSections,
       onGoToNextSection: handleGoToNextSection,
       onGoToPreviousSection: handleGoToPreviousSection,
+      sectionSpecs,
       showAllFormSections,
     } = this.props
 
@@ -154,7 +150,7 @@ class FormSectionView extends PureComponent {
               </Button>
 
               <Button
-                disabled={activeFormSectionIndex === formSections.length - 1}
+                disabled={activeFormSectionIndex === sectionSpecs.length - 1}
                 icon
                 labelPosition="right"
                 onClick={handleGoToNextSection}

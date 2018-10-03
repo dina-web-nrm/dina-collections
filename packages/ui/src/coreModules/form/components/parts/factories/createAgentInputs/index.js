@@ -9,26 +9,30 @@ export default function createAgentInputs(
 ) {
   return [
     {
-      columnProps: { width: 7 },
       componentName: 'Input',
-      fluid: true,
+      componentProps: {
+        columnProps: { width: 7 },
+        fluid: true,
+        model,
+        type: 'text',
+      },
       initiallyHidden,
-      model,
       name: `${baseName}.textV`,
-      type: 'text',
       wrapInField: true,
     },
     {
-      buttonTextKey,
-      columnProps: { width: 9 },
       componentName: 'TogglableAgentDropdownPickerSearch',
-      displayEmptyStateLabel: false,
-      displayResultLabel: false,
+      componentProps: {
+        buttonTextKey,
+        columnProps: { width: 9 },
+        displayEmptyStateLabel: false,
+        displayResultLabel: false,
+        resultSuffix: '(agent)',
+      },
       initiallyHidden,
-      initiallyHiddenNames: [`${baseName}.textI`, `${baseName}.normalized`],
       module,
       name: `${baseName}`,
-      resultSuffix: '(agent)',
+      relativeNames: ['textI', 'normalized.id'],
       wrapInField: true,
     },
   ]

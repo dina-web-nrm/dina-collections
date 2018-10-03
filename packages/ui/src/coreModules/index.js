@@ -8,6 +8,7 @@ export const moduleOrder = [
   'devToolsExtension',
   'error',
   'form',
+  'formSupport',
   'i18n',
   'localStorage',
   'logger',

@@ -1,10 +1,20 @@
-const items = [
-  { name: 'specimenRoot' },
-  { name: 'identifiers' },
-  { name: 'acquisition' },
-  { name: 'recordHistoryExternalEvents' },
+import unitSpecs from '../../unitSpecs'
+
+const {
+  specimenRoot,
+  identifiers,
+  acquisition,
+  recordHistoryExternalEvents,
+} = unitSpecs
+
+const units = [
+  specimenRoot,
+  identifiers,
+  acquisition,
+  recordHistoryExternalEvents,
 ]
 
 export default {
-  items,
+  name: 'basicInformation',
+  units,
 }

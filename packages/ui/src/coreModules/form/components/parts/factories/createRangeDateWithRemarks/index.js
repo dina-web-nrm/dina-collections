@@ -13,20 +13,24 @@ export default function createRangeDateWithRemarks(
   return [
     {
       componentName: 'RangeDate',
-      displayDateTypeRadios: true,
-      initialDateType,
+      componentProps: {
+        displayDateTypeRadios: true,
+        initialDateType,
+        validate: defaultValidate,
+      },
       initiallyHidden,
       name: baseName,
-      validate: defaultValidate,
       wrapInField: true,
     },
     {
       componentName: 'Remarks',
-      emptyStateTextKey,
+      componentProps: {
+        emptyStateTextKey,
+        model,
+        resultPrefixTextKey,
+      },
       initiallyHidden,
-      model,
       name: `${baseName}.remarks`,
-      resultPrefixTextKey,
       wrapInField: true,
     },
   ]

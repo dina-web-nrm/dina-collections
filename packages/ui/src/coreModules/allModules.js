@@ -6,6 +6,7 @@ import * as devToolsExtension from './devToolsExtension'
 import * as documentation from './documentation'
 import * as error from './error'
 import * as form from './form'
+import * as formSupport from './formSupport'
 import * as i18n from './i18n'
 import * as keyboardShortcuts from './keyboardShortcuts'
 import * as layout from './layout'
@@ -28,6 +29,7 @@ const modules = [
   devToolsExtension,
   error,
   form,
+  formSupport,
   i18n,
   localStorage,
   logger,

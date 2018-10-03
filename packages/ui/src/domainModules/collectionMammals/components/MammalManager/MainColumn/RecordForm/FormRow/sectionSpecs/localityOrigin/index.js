@@ -1,9 +1,10 @@
-const items = [
-  { name: 'localityOriginRoot' },
-  { name: 'collectingLocation' },
-  { name: 'origin' },
-]
+import unitSpecs from '../../unitSpecs'
+
+const { localityOriginRoot, collectingLocation, origin } = unitSpecs
+
+const units = [localityOriginRoot, collectingLocation, origin]
 
 export default {
-  items,
+  name: 'localityOrigin',
+  units,
 }

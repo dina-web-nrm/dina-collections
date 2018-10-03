@@ -13,8 +13,8 @@ import {
   submit,
 } from 'redux-form'
 
+import { Form } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
-
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import CatalogNumberModal from 'domainModules/collectionMammals/components/CatalogNumberModal'
@@ -23,6 +23,7 @@ import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
 import RecordActionBar from './RecordActionBar'
+import sectionSpecs from './FormRow/sectionSpecs'
 import FormRow from './FormRow'
 
 const recordActionBarHeight = emToPixels(4.625)
@@ -90,6 +91,7 @@ class RecordForm extends Component {
     super(props)
     this.formValueSelector = formValueSelectorFactory(props.form)
 
+    this.setFormRef = this.setFormRef.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.changeFieldValue = this.changeFieldValue.bind(this)
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
@@ -103,6 +105,10 @@ class RecordForm extends Component {
         onPress: this.props.handleSubmit(this.handleFormSubmit),
       },
     ]
+  }
+
+  setFormRef(element) {
+    this.form = element
   }
 
   handleSubmitFromModal() {
@@ -156,11 +162,11 @@ class RecordForm extends Component {
     return (
       <React.Fragment>
         <KeyboardShortcuts shortcuts={this.shortcuts} />
-        <form
+        <Form
+          formName={form}
           onSubmit={handleSubmit(this.handleFormSubmit)}
-          ref={element => {
-            this.form = element
-          }}
+          sectionSpecs={sectionSpecs}
+          setFormRef={this.setFormRef}
         >
           <RowLayout
             {...rest}
@@ -173,6 +179,7 @@ class RecordForm extends Component {
             onUndoChanges={this.handleUndoChanges}
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}
             rows={rows}
+            sectionSpecs={sectionSpecs}
           />
           {mode === 'register' && (
             <CatalogNumberModal
@@ -181,7 +188,7 @@ class RecordForm extends Component {
               {...rest}
             />
           )}
-        </form>
+        </Form>
       </React.Fragment>
     )
   }
