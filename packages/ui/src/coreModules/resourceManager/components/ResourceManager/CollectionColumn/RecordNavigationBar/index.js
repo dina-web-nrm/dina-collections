@@ -127,11 +127,11 @@ export class RecordNavigationBar extends Component {
           )}
           {handleOpenNewRecordForm ? (
             <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
-              {totalNumberOfRecords} Total records
+              {totalNumberOfRecords} total records
             </div>
           ) : (
             <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
-              {totalNumberOfRecords} Total records
+              {totalNumberOfRecords} total records
               <br />
               <i>*Adding new*</i>
             </div>
@@ -141,17 +141,19 @@ export class RecordNavigationBar extends Component {
               disabled={!handleShowAllRecords}
               icon
               onClick={event => handleShowAllRecords(event)}
+              size="tiny"
             >
               <Icon name="book" />
-              Show All
+              {' Show All'}
             </Button>
             <Button
               disabled={!handleOpenNewRecordForm}
               icon
               onClick={event => handleOpenNewRecordForm(event)}
+              size="tiny"
             >
               <Icon name="plus" />
-              New record
+              {' New record'}
             </Button>
           </div>
           <div style={{ float: 'right' }}>
