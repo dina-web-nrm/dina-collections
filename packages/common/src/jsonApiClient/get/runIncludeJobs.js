@@ -14,6 +14,7 @@ module.exports = function runIncludeJobs({
         filter: {
           ids,
         },
+        includeDeactivated: true,
         limit: 1000,
       },
       relationSpecification,
