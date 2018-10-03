@@ -53,8 +53,8 @@ const propTypes = {
   push: PropTypes.func.isRequired,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
-      items: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
       name: PropTypes.string.isRequired,
+      units: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     }).isRequired
   ).isRequired,
   showAllFormSections: PropTypes.bool.isRequired,

@@ -18,7 +18,7 @@ const propTypes = {
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
   input: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     value: PropTypes.oneOfType([
       PropTypes.array,
       PropTypes.number,
@@ -26,7 +26,7 @@ const propTypes = {
       PropTypes.string,
     ]).isRequired,
   }).isRequired,
-  isLatestActiveField: PropTypes.bool.isRequired,
+  isLatestActiveField: PropTypes.bool,
   normalizedAgent: PropTypes.shape({
     attributes: PropTypes.shape({
       fullName: PropTypes.string,
@@ -39,6 +39,7 @@ const propTypes = {
 const defaultProps = {
   focusOnMount: false,
   forceRenderResult: false,
+  isLatestActiveField: false,
   normalizedAgent: undefined,
   removeForceRenderResult: undefined,
   setAsLatestActiveField: undefined,

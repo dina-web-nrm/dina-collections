@@ -88,9 +88,9 @@ class FormSectionView extends PureComponent {
     return (
       <React.Fragment>
         {sectionSpecs.map(sectionSpec => {
-          const { name, items } = sectionSpec
+          const { name, units } = sectionSpec
 
-          if (!items) {
+          if (!units) {
             throw new Error(`Missing unitSpecs for form section name ${name}`)
           }
 
