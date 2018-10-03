@@ -90,26 +90,26 @@ const createResourceUrlState = () => ComposedComponent => {
     }
 
     closeItemView() {
-      this.props.clearState(['itemColumn'])
+      this.props.clearState(['filterColumn'])
     }
 
     navigateEdit(itemId) {
       this.props.updateState({
-        itemColumn: 'edit',
+        mainColumn: 'edit',
         itemId,
       })
     }
 
     navigateFilter() {
       this.props.updateState({
-        collectionColumn: 'table',
-        itemColumn: 'filter',
+        filterColumn: 'filter',
+        mainColumn: 'table',
       })
     }
 
     navigateCreate() {
       this.props.updateState({
-        itemColumn: 'create',
+        mainColumn: 'create',
       })
     }
 
@@ -119,13 +119,13 @@ const createResourceUrlState = () => ComposedComponent => {
 
     navigateList() {
       this.props.updateState({
-        collectionColumn: 'table',
+        mainColumn: 'table',
       })
     }
 
     navigateTree() {
       this.props.updateState({
-        collectionColumn: 'tree',
+        mainColumn: 'tree',
       })
     }
 
@@ -133,24 +133,24 @@ const createResourceUrlState = () => ComposedComponent => {
       const { state, treeEnabled } = this.props
 
       const {
-        collectionColumn = treeEnabled ? 'tree' : 'table',
-        itemColumn,
+        mainColumn = treeEnabled ? 'tree' : 'table',
+        filterColumn,
         itemId,
       } = state
 
       return (
         <ComposedComponent
           {...this.props}
-          createItemActive={itemColumn === 'create'}
-          editItemActive={itemColumn === 'edit'}
-          filterActive={itemColumn === 'filter'}
+          createItemActive={mainColumn === 'create'}
+          editItemActive={mainColumn === 'edit'}
+          filterActive={filterColumn === 'filter'}
           itemId={itemId}
           navigateCreate={this.navigateCreate}
           navigateEdit={this.navigateEdit}
           navigateRoot={this.navigateRoot}
           onNavigation={this.handleNavigation}
-          tableActive={collectionColumn === 'table'}
-          treeActive={collectionColumn === 'tree'}
+          tableActive={mainColumn === 'table'}
+          treeActive={mainColumn === 'tree'}
           treeEnabled={treeEnabled}
         />
       )

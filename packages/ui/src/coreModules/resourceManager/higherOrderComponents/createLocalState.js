@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
 const initialState = {
-  collectionColumn: undefined,
-  itemColumn: undefined,
+  filterColumn: undefined,
   itemId: undefined,
+  mainColumn: undefined,
 }
 
 const createLocalState = () => ComposedComponent => {

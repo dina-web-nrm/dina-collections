@@ -14,7 +14,7 @@ import layoutSelectors from 'coreModules/layout/globalSelectors'
 import { emToPixels } from 'coreModules/layout/utilities'
 import extractProps from 'utilities/extractProps'
 
-import CollectionColumn from './CollectionColumn'
+import MainColumn from './MainColumn'
 import CreateItemColumn from './CreateItemColumn'
 import EditItemColumn from './EditItemColumn'
 import FilterColumn from './FilterColumn'
@@ -93,11 +93,11 @@ class ResourceManager extends Component {
     ) => {
       const columns = [
         {
-          key: 'collectionColumn',
+          key: 'mainColumn',
         },
       ]
 
-      const itemColumnStyle = {
+      const filterColumnStyle = {
         background: 'white',
         borderLeft: '1px solid #D4D4D5',
         zIndex: 100,
@@ -106,22 +106,7 @@ class ResourceManager extends Component {
       if (filterActive) {
         columns.push({
           key: 'filterColumn',
-          style: itemColumnStyle,
-          width: `${editItemColumnWidth}px`,
-        })
-      }
-      if (editItemActive) {
-        columns.push({
-          key: 'editItemColumn',
-          style: itemColumnStyle,
-          width: `${editItemColumnWidth}px`,
-        })
-      }
-
-      if (createItemActive) {
-        columns.push({
-          key: 'createItemColumn',
-          style: itemColumnStyle,
+          style: filterColumnStyle,
           width: `${editItemColumnWidth}px`,
         })
       }
@@ -129,7 +114,7 @@ class ResourceManager extends Component {
       if (rightSidebarIsOpen) {
         columns.push({
           key: 'rightSidebar',
-          style: itemColumnStyle,
+          style: filterColumnStyle,
           width: `${rightSidebarWidth}px`,
         })
       }
@@ -149,23 +134,25 @@ class ResourceManager extends Component {
 
   renderColumn(key) {
     switch (key) {
-      case 'collectionColumn': {
+      case 'mainColumn': {
         const { extractedProps } = extractProps({
           keys: [
             'availableHeight',
             'baseItems',
             'createItemActive',
             'currentTableRowNumber',
+            'editItemActive',
             'expandedIds',
             'fetchTreeBase',
             'filterActive',
             'focusedIndex',
+            'itemFetchOptions',
             'itemId',
             'ItemTitle',
-            'tableActive',
             'listItems',
             'nextRowAvailable',
             'onClickRow',
+            'onFormTabClick',
             'onInteraction',
             'onOpenNewRecordForm',
             'onSelectNextRecord',
@@ -176,27 +163,24 @@ class ResourceManager extends Component {
             'onToggleFilters',
             'onToggleRow',
             'prevRowAvailable',
+            'renderCreateForm',
+            'renderEditForm',
             'resource',
             'setListItems',
             'showAll',
+            'tableActive',
             'tableBatchFetchOptions',
             'tableColumnSpecifications',
             'tableSearch',
             'totalNumberOfRecords',
             'treeActive',
-            'itemFetchOptions',
             'treeEnabled',
           ],
           props: this.props,
         })
 
         const { columnHeight } = this.props
-        return (
-          <CollectionColumn
-            {...extractedProps}
-            availableHeight={columnHeight}
-          />
-        )
+        return <MainColumn {...extractedProps} availableHeight={columnHeight} />
       }
 
       case 'editItemColumn': {

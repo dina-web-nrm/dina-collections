@@ -17,9 +17,14 @@ import RecordNavigationBar from './RecordNavigationBar'
 import TableView from './TableView'
 import TreeView from './TreeView'
 import ResultOptionsBar from './ResultOptionsBar'
+import EditItemColumn from '../EditItemColumn'
+import CreateItemColumn from '../CreateItemColumn'
 
 const propTypes = {
   availableHeight: PropTypes.number.isRequired,
+  createItemActive: PropTypes.bool.isRequired,
+  editItemActive: PropTypes.bool.isRequired,
+  onFormTabClick: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   recordNavigationHeight: PropTypes.number,
   recordOptionsHeight: PropTypes.number,
@@ -35,7 +40,7 @@ const defaultProps = {
   recordOptionsHeight: emToPixels(3.5625),
 }
 
-class CollectionColumn extends Component {
+class MainColumn extends Component {
   constructor(props) {
     super(props)
 
@@ -47,6 +52,8 @@ class CollectionColumn extends Component {
       tableActive,
       treeActive,
       treeEnabled,
+      createItemActive,
+      editItemActive,
       recordNavigationHeight,
       recordOptionsHeight
     ) => {
@@ -67,9 +74,22 @@ class CollectionColumn extends Component {
         })
       }
 
-      if (treeActive && treeEnabled) {
+      if (treeActive) {
         rows.push({
           key: 'treeView',
+          style: { overflow: 'auto' },
+        })
+      }
+
+      if (createItemActive) {
+        rows.push({
+          key: 'createItem',
+          style: { overflow: 'auto' },
+        })
+      }
+      if (editItemActive) {
+        rows.push({
+          key: 'editItem',
           style: { overflow: 'auto' },
         })
       }
@@ -152,15 +172,71 @@ class CollectionColumn extends Component {
         )
       }
 
+      case 'editItem': {
+        const {
+          recordNavigationHeight,
+          recordOptionsHeight,
+          availableHeight,
+        } = this.props
+        const { extractedProps } = extractProps({
+          keys: [
+            'itemId',
+            'ItemTitle',
+            'onInteraction',
+            'renderEditForm',
+            'resource',
+            'itemFetchOptions',
+          ],
+          props: this.props,
+        })
+
+        return (
+          <EditItemColumn
+            {...extractedProps}
+            availableHeight={
+              availableHeight - recordNavigationHeight - recordOptionsHeight
+            }
+          />
+        )
+      }
+
+      case 'createItem': {
+        const {
+          recordNavigationHeight,
+          recordOptionsHeight,
+          availableHeight,
+        } = this.props
+        const { extractedProps } = extractProps({
+          keys: ['onInteraction', 'resource', 'renderCreateForm'],
+          props: this.props,
+        })
+
+        return (
+          <CreateItemColumn
+            {...extractedProps}
+            availableHeight={
+              availableHeight - recordNavigationHeight - recordOptionsHeight
+            }
+          />
+        )
+      }
+
       case 'resultOptionBar': {
         const { extractedProps } = extractProps({
-          keys: ['tableActive', 'treeActive', 'treeEnabled'],
+          keys: [
+            'tableActive',
+            'treeActive',
+            'treeEnabled',
+            'createItemActive',
+            'editItemActive',
+          ],
           props: this.props,
         })
 
         return (
           <ResultOptionsBar
             {...extractedProps}
+            onFormTabClick={this.props.onFormTabClick}
             onListTabClick={() => {
               this.props.onInteraction(NAVIGATE_LIST)
             }}
@@ -180,6 +256,8 @@ class CollectionColumn extends Component {
   render() {
     const {
       availableHeight,
+      createItemActive,
+      editItemActive,
       recordNavigationHeight,
       recordOptionsHeight,
       tableActive,
@@ -190,6 +268,8 @@ class CollectionColumn extends Component {
       tableActive,
       treeActive,
       treeEnabled,
+      createItemActive,
+      editItemActive,
       recordNavigationHeight,
       recordOptionsHeight
     )
@@ -199,9 +279,10 @@ class CollectionColumn extends Component {
         'currentTableRowNumber',
         'expandedIds',
         'focusedIndex',
-        'tableActive',
+        'itemId',
         'listItems',
         'showAll',
+        'tableActive',
         'totalNumberOfRecords',
         'treeActive',
       ],
@@ -219,7 +300,7 @@ class CollectionColumn extends Component {
   }
 }
 
-CollectionColumn.defaultProps = defaultProps
-CollectionColumn.propTypes = propTypes
+MainColumn.defaultProps = defaultProps
+MainColumn.propTypes = propTypes
 
-export default compose(injectWindowHeight)(CollectionColumn)
+export default compose(injectWindowHeight)(MainColumn)

@@ -89,6 +89,7 @@ const createResourceManagerWrapper = (
     currentTableRowNumber: PropTypes.number.isRequired,
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
+    editItemActive: PropTypes.bool.isRequired,
     expandedIds: PropTypes.object,
     filterActive: PropTypes.bool.isRequired,
     filterValues: PropTypes.object,
@@ -151,6 +152,7 @@ const createResourceManagerWrapper = (
       this.getNestedCacheNamespaces = this.getNestedCacheNamespaces.bind(this)
       this.handleClickRow = this.handleClickRow.bind(this)
       this.handleClosePicker = this.handleClosePicker.bind(this)
+      this.handleFormTabClick = this.handleFormTabClick.bind(this)
       this.handleInteraction = this.handleInteraction.bind(this)
       this.handleKeyDown = this.handleKeyDown.bind(this)
       this.handleOpenNewRecordForm = this.handleOpenNewRecordForm.bind(this)
@@ -163,21 +165,27 @@ const createResourceManagerWrapper = (
       this.handleToggleFilters = this.handleToggleFilters.bind(this)
       this.handleToggleRow = this.handleToggleRow.bind(this)
       this.handleUpdateFilterValues = this.handleUpdateFilterValues.bind(this)
+      this.selectCurrentRow = this.selectCurrentRow.bind(this)
       this.tableSearch = this.tableSearch.bind(this)
     }
 
     componentDidMount() {
       const {
+        editItemActive,
         initialFilterValues,
         initialItemId,
         itemId,
-        tableActive,
         resource,
+        tableActive,
         treeActive,
       } = this.props
       if (initialFilterValues) {
         this.props.setFilterValues(initialFilterValues, { resource })
         this.handleInteraction(NAVIGATE_FILTER)
+      }
+
+      if (editItemActive) {
+        this.tableSearch(initialFilterValues)
       }
       if (tableActive) {
         if (
@@ -211,6 +219,8 @@ const createResourceManagerWrapper = (
     componentDidUpdate(prevProps) {
       const {
         currentTableRowNumber,
+        editItemActive,
+        focusedIndex,
         filterValues,
         focusedItemId,
         focusIdWhenLoaded,
@@ -223,11 +233,30 @@ const createResourceManagerWrapper = (
       } = this.props
 
       const {
+        focusedIndex: prevFocusedIndex,
+        editItemActive: prevEditItemActive,
         filterValues: prevFilterValues,
-        tableActive: prevTableActive,
         listItems: prevListItems,
+        tableActive: prevTableActive,
         treeActive: prevTreeActive,
       } = prevProps
+
+      if (editItemActive && focusedIndex !== prevFocusedIndex) {
+        this.selectCurrentRow(focusedIndex)
+      }
+
+      if (editItemActive !== prevEditItemActive) {
+        this.props.clearNestedCache({
+          namespaces: this.getNestedCacheNamespaces(),
+        })
+        if (editItemActive) {
+          this.tableSearch(filterValues)
+        }
+      }
+
+      if (editItemActive && itemId && listItems !== prevListItems) {
+        this.focusRowWithId(itemId)
+      }
 
       if (tableActive && filterValues !== prevFilterValues) {
         this.tableSearch(filterValues)
@@ -241,14 +270,27 @@ const createResourceManagerWrapper = (
         this.props.setCurrentTableRowNumber(totalNumberOfRecords, { resource })
       }
 
+      if (tableActive) {
+        if (focusIdWhenLoaded && prevListItems !== listItems) {
+          const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
+          if (rowFocused) {
+            this.props.delFocusIdWhenLoaded({ resource })
+          }
+        }
+        if (tableActive !== prevTableActive) {
+          if (focusedItemId) {
+            this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
+            this.expandAncestorsForItemId(focusedItemId)
+          }
+
+          this.tableSearch(filterValues)
+        }
+      }
+
       if (tableActive !== prevTableActive) {
         this.props.clearNestedCache({
           namespaces: this.getNestedCacheNamespaces(),
         })
-        if (tableActive) {
-          this.props.setExpandedIds({}, { resource })
-          this.tableSearch(filterValues)
-        }
       }
 
       if (treeActive) {
@@ -256,7 +298,6 @@ const createResourceManagerWrapper = (
           const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
           if (rowFocused) {
             this.props.delFocusIdWhenLoaded({ resource })
-            this.handleInteraction(ITEM_SELECT, { itemId: focusIdWhenLoaded })
           }
         }
         if (prevTreeActive !== treeActive) {
@@ -265,6 +306,11 @@ const createResourceManagerWrapper = (
             this.expandAncestorsForItemId(focusedItemId)
           }
           this.fetchTreeBase()
+        }
+      }
+      if (!treeActive) {
+        if (prevTreeActive !== treeActive) {
+          this.props.setExpandedIds({}, { resource })
         }
       }
     }
@@ -310,14 +356,7 @@ const createResourceManagerWrapper = (
         }
 
         case 'Enter': {
-          const { listItems, focusedIndex } = this.props
-
-          const listItem = listItems[focusedIndex]
-          const itemId = listItem && listItem.id
-          if (itemId !== undefined) {
-            return this.handleInteraction(ITEM_SELECT, { itemId })
-          }
-          return null
+          return this.selectCurrentRow()
         }
 
         default: {
@@ -488,6 +527,10 @@ const createResourceManagerWrapper = (
       this.handleInteraction(ITEM_SELECT, { itemId })
     }
 
+    handleFormTabClick() {
+      this.selectCurrentRow()
+    }
+
     handleSetCurrentTableRow(event, number) {
       const { resource } = this.props
       this.props.setCurrentTableRowNumber(number, { resource })
@@ -520,6 +563,18 @@ const createResourceManagerWrapper = (
       }
       this.props.onInteraction(type, data)
     }
+    selectCurrentRow(newFocusedIndex) {
+      const { listItems, focusedIndex: currentFocusedIndex } = this.props
+
+      const focusedIndex =
+        newFocusedIndex !== undefined ? newFocusedIndex : currentFocusedIndex
+      const listItem = listItems[focusedIndex]
+      const itemId = listItem && listItem.id
+      if (itemId !== undefined) {
+        return this.handleInteraction(ITEM_SELECT, { itemId })
+      }
+      return null
+    }
 
     tableSearch(filterValues) {
       const query = filterValues
@@ -542,6 +597,7 @@ const createResourceManagerWrapper = (
           fetchTreeBase={this.fetchTreeBase}
           onClickRow={this.handleClickRow}
           onClosePicker={this.handleClosePicker}
+          onFormTabClick={this.handleFormTabClick}
           onInteraction={this.handleInteraction}
           onOpenNewRecordForm={this.handleOpenNewRecordForm}
           onPickItem={this.handlePickItem}
