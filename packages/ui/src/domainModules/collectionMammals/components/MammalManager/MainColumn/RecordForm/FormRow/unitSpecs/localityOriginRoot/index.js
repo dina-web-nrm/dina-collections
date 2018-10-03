@@ -1,12 +1,15 @@
-const items = [
+const parts = [
   {
-    as: 'h2',
-    columnProps: { width: 12 },
     componentName: 'TranslatedHeader',
-    textKey: 'headers.localityOrigin',
+    componentProps: {
+      as: 'h2',
+      columnProps: { width: 12 },
+      textKey: 'headers.localityOrigin',
+    },
   },
 ]
 
 export default {
-  items,
+  name: 'localityOriginRoot',
+  parts,
 }

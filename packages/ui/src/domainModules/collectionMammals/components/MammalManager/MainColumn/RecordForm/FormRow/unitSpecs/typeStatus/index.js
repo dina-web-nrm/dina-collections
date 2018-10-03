@@ -1,26 +1,33 @@
-const items = [
+const parts = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.typeInformation',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.typeInformation',
+    },
   },
   {
     componentName: 'AddButton',
+    componentProps: {
+      textKey: 'other.addTypeStatus',
+    },
     initiallyShown: true,
-    textKey: 'other.addTypeStatus',
   },
   {
-    columnProps: { width: 7 },
     componentName: 'Input',
-    enableHelpNotifications: false,
-    fluid: true,
+    componentProps: {
+      columnProps: { width: 7 },
+      enableHelpNotifications: false,
+      fluid: true,
+      type: 'text',
+    },
     initiallyHidden: true,
     name: 'individual.typifiedName',
-    type: 'text',
     wrapInField: true,
   },
 ]
 
 export default {
-  items,
+  name: 'typeStatus',
+  parts,
 }

@@ -1,22 +1,27 @@
-const model = 'taxonmy'
+const model = 'taxonomy'
 
-const items = [
+const parts = [
   {
-    as: 'h2',
-    columnProps: { width: 12 },
     componentName: 'TranslatedHeader',
-    textKey: 'headers.taxonomy',
+    componentProps: {
+      as: 'h2',
+      columnProps: { width: 12 },
+      textKey: 'headers.taxonomy',
+    },
   },
   {
     componentName: 'Remarks',
-    emptyStateTextKey: 'remarks.emptyState.taxonomy',
-    model,
+    componentProps: {
+      emptyStateTextKey: 'remarks.emptyState.taxonomy',
+      model,
+      resultPrefixTextKey: 'remarks.resultPrefix.taxonomy',
+    },
     name: 'remarks',
-    resultPrefixTextKey: 'remarks.resultPrefix.taxonomy',
     wrapInField: true,
   },
 ]
 
 export default {
-  items,
+  name: 'taxonomyRoot',
+  parts,
 }

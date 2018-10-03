@@ -1,10 +1,10 @@
 import unitSpecs from '../../unitSpecs'
 
 const {
-  acquisition,
-  identifiers,
-  recordHistoryExternalEvents,
   specimenRoot,
+  identifiers,
+  acquisition,
+  recordHistoryExternalEvents,
 } = unitSpecs
 
 const units = [

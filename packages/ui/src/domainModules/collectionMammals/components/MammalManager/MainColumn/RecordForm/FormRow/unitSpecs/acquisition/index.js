@@ -2,7 +2,6 @@ import {
   createAgentInputs,
   createSingleDate,
 } from 'coreModules/form/components/parts/factories'
-import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInitiallyHiddenFields'
 
 const model = 'acquisition'
 
@@ -44,7 +43,6 @@ const parts = [
 ]
 
 export default {
-  initiallyHiddenFields: extractInitiallyHiddenFields(parts),
   name: 'acquisition',
   parts,
 }

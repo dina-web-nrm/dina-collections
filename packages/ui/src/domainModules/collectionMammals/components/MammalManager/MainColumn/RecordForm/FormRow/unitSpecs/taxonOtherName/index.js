@@ -1,16 +1,21 @@
-const items = [
+const parts = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.taxonOtherNames',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.taxonOtherNames',
+    },
   },
   {
     componentName: 'AddButton',
+    componentProps: {
+      textKey: 'other.addOtherNames',
+    },
     initiallyShown: true,
-    textKey: 'other.addOtherNames',
   },
 ]
 
 export default {
-  items,
+  name: 'taxonOtherName',
+  parts,
 }

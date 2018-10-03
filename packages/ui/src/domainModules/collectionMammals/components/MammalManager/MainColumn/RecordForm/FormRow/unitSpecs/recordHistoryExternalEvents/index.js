@@ -1,5 +1,3 @@
-import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInitiallyHiddenFields'
-
 const parts = [
   {
     componentName: 'TranslatedHeader',
@@ -16,7 +14,6 @@ const parts = [
 ]
 
 export default {
-  initiallyHiddenFields: extractInitiallyHiddenFields(parts),
   name: 'recordHistoryExternalEvents',
   parts,
 }

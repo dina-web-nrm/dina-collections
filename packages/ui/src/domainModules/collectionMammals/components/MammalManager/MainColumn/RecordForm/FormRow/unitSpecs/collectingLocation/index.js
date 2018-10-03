@@ -1,47 +1,55 @@
-const items = [
+const parts = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.collecintLocality',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.collecintLocality',
+    },
   },
   {
-    columnProps: { width: 11 },
     componentName: 'TextArea',
-    enableHelpNotifications: false,
+    componentProps: {
+      columnProps: { width: 11 },
+      rows: 2,
+      type: 'text',
+    },
     name: 'locationInformation.localityV',
-    rows: 2,
-    type: 'text',
     wrapInField: true,
   },
   {
-    columnProps: { float: 'left', width: 5 },
     componentName: 'IconButton',
-    icon: 'marker',
+    componentProps: {
+      columnProps: { float: 'left', width: 5 },
+      icon: 'marker',
+      style: { float: 'left' },
+      textKey: 'other.addPosition',
+    },
     initiallyShown: true,
-    style: { float: 'left' },
-    textKey: 'other.addPosition',
   },
   {
-    columnProps: { width: 13 },
     componentName: 'TextArea',
-    enableHelpNotifications: false,
+    componentProps: {
+      columnProps: { width: 13 },
+      rows: 2,
+      style: { width: '83.2%' },
+      type: 'text',
+    },
     name: 'locationInformation.localityI',
-    rows: 2,
-    style: { width: '83.2%' },
-    type: 'text',
     wrapInField: true,
   },
   {
-    columnProps: { width: 4 },
     componentName: 'Input',
-    enableHelpNotifications: false,
-    fluid: true,
-    name: 'locationInformation.rt90',
-    type: 'text',
+    componentProps: {
+      columnProps: { width: 4 },
+      fluid: true,
+      name: 'locationInformation.rt90',
+      type: 'text',
+    },
     wrapInField: true,
   },
 ]
 
 export default {
-  items,
+  name: 'collectingLocation',
+  parts,
 }

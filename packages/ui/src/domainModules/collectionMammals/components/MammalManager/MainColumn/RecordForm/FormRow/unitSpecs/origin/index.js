@@ -1,33 +1,42 @@
-const items = [
+const parts = [
   {
-    as: 'h3',
     componentName: 'TranslatedHeader',
-    textKey: 'headers.origin',
+    componentProps: {
+      as: 'h3',
+      textKey: 'headers.origin',
+    },
   },
   {
     componentName: 'AddButton',
+    componentProps: {
+      textKey: 'other.addOrigin',
+    },
     initiallyShown: true,
-    textKey: 'other.addOrigin',
   },
   {
-    columnProps: { width: 11 },
     componentName: 'TextArea',
-    enableHelpNotifications: false,
+    componentProps: {
+      columnProps: { width: 11 },
+      enableHelpNotifications: false,
+      rows: 2,
+      type: 'text',
+    },
     initiallyHidden: true,
     name: 'originInformation.originLocality',
-    rows: 2,
-    type: 'text',
     wrapInField: true,
   },
   {
     componentName: 'Remarks',
-    emptyStateTextKey: 'remarks.emptyState.origin',
+    componentProps: {
+      emptyStateTextKey: 'remarks.emptyState.origin',
+      resultPrefixTextKey: 'remarks.resultPrefix.origin',
+    },
     name: 'remarks',
-    resultPrefixTextKey: 'remarks.resultPrefix.origin',
     wrapInField: true,
   },
 ]
 
 export default {
-  items,
+  name: 'origin',
+  parts,
 }
