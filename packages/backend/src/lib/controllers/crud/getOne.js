@@ -5,7 +5,13 @@ const buildIncludeArray = require('../utilities/relationships/buildIncludeArray'
 module.exports = function getOne(options) {
   const {
     models,
-    operation: { includeRelations, relations, resource, selectableFields },
+    operation: {
+      filterSpecification,
+      includeRelations,
+      relations,
+      resource,
+      selectableFields,
+    },
   } = options
 
   return createControllerWrapper({
@@ -13,8 +19,7 @@ module.exports = function getOne(options) {
     enableInterceptors: false,
     enablePostHooks: false,
     enablePreHooks: false,
-
-    requiredModelMethods: ['getById'],
+    requiredModelMethods: ['buildWhereFilter', 'getById'],
     responseFormat: 'object',
     responseSuccessStatus: 200,
   })(({ model, request }) => {
@@ -22,6 +27,8 @@ module.exports = function getOne(options) {
       pathParams: { id },
       queryParams: {
         excludeFields: excludeFieldsInput,
+        filter: filterInput,
+        includeDeactivated,
         includeFields: includeFieldsInput,
         relationships: queryParamRelationships = '',
       } = {},
@@ -35,12 +42,14 @@ module.exports = function getOne(options) {
         relations,
       })
     }
-
     return model
       .getById({
         excludeFieldsInput,
+        filterInput,
+        filterSpecification,
         id,
         include,
+        includeDeactivated,
         includeFieldsInput,
         selectableFields,
       })

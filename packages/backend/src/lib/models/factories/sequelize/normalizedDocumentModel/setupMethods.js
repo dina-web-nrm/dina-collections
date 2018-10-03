@@ -34,18 +34,19 @@ module.exports = function setupMethods({
   }
   const buildWhereQuery = buildWhereQueryFactory({ sequelize })
   const buildWhereFilter = buildWhereFilterFactory({ sequelize })
-  const getById = getByIdFactory({
-    Model,
-  })
-
-  const synchronize = synchronizeFactory({ Model })
-
-  const getCount = getCountFactory({ Model })
   const getOneWhere = getOneWhereFactory({
     buildWhereFilter,
     buildWhereQuery,
     Model,
   })
+  const getById = getByIdFactory({
+    getOneWhere,
+  })
+
+  const synchronize = synchronizeFactory({ Model })
+
+  const getCount = getCountFactory({ Model })
+
   const getWhere = getWhereFactory({ buildWhereFilter, Model })
   const create = createFactory({
     Model,
