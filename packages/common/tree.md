@@ -22,9 +22,9 @@
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── createDeleteProperties
 │   ├── createLid
 │   ├── date
-│   ├── deleteNullProperties
 │   ├── endpointFactory
 │   ├── error
 │   ├── formatObject
@@ -51,9 +51,9 @@
 │   ├── buildFileTrees
 │   ├── buildOperationId
 │   ├── chainPromises
+│   ├── createDeleteProperties
 │   ├── createLid
 │   ├── date
-│   ├── deleteNullProperties
 │   ├── endpointFactory
 │   ├── error
 │   ├── formatObject

@@ -38,10 +38,11 @@
 │   │   ├── index.js
 │   │   ├── query.js
 │   │   ├── update.js
-│   │   └── updateRelationship
-│   │       ├── index.js
-│   │       ├── updateJsonRelationship
-│   │       └── updateSqlRelationship
+│   │   ├── updateRelationship
+│   │   │   ├── index.js
+│   │   │   ├── updateJsonRelationship
+│   │   │   └── updateSqlRelationship
+│   │   └── validate.js
 │   ├── import
 │   │   ├── importDataFromFile
 │   │   │   └── index.js
@@ -53,7 +54,6 @@
 │   │   ├── setJobFailed.js
 │   │   ├── setJobSuccess.js
 │   │   └── startJob.js
-│   ├── relationshipsUtilities
 │   ├── utilities
 │   │   ├── applyHooks
 │   │   │   └── index.js
@@ -70,14 +70,16 @@
 │   │   │   ├── getSqlRelationship
 │   │   │   ├── shouldIncludeRelation.js
 │   │   │   └── shouldIncludeRelation.spec.js
-│   │   └── transformations
-│   │       ├── createArrayResponse.js
-│   │       ├── createObjectResponse.js
-│   │       ├── createRelationshipsArrayResponse.js
-│   │       ├── createRelationshipsObjectResponse.js
-│   │       ├── inputObject.js
-│   │       ├── outputArray.js
-│   │       └── outputObject.js
+│   │   ├── transformations
+│   │   │   ├── createArrayResponse.js
+│   │   │   ├── createObjectResponse.js
+│   │   │   ├── createRelationshipsArrayResponse.js
+│   │   │   ├── createRelationshipsObjectResponse.js
+│   │   │   ├── inputObject.js
+│   │   │   ├── outputArray.js
+│   │   │   └── outputObject.js
+│   │   └── wrapper
+│   │       └── index.js
 │   └── views
 │       ├── emptyView.js
 │       ├── index.js
@@ -140,7 +142,8 @@
 │   │   │   ├── raw.js
 │   │   │   └── updatedAfter.js
 │   │   └── utilities
-│   │       └── createGetManyFilterSpecifications.js
+│   │       ├── createGetManyFilterSpecifications.js
+│   │       └── createGetOneFilterSpecifications.js
 │   ├── hooks
 │   │   ├── factories
 │   │   │   └── createRegisterResourceActivityHook.js
@@ -278,20 +281,23 @@
 │   │   │   ├── query.js
 │   │   │   ├── raw.js
 │   │   │   ├── update.js
-│   │   │   └── updateRelationship.js
+│   │   │   ├── updateRelationship.js
+│   │   │   └── validate.js
 │   │   ├── update.js
 │   │   ├── updateRelationship.js
-│   │   └── utilities
-│   │       ├── addExampleToQueryParams.js
-│   │       ├── addFieldsToQueryParams.js
-│   │       ├── addLimitToQueryParams.js
-│   │       ├── addMockToQueryParams.js
-│   │       ├── addOffsetToQueryParams.js
-│   │       ├── addQueryParamsFromFilterSpecifications.js
-│   │       ├── addRelationsToQueryParams.js
-│   │       ├── addSortingToQueryParams.js
-│   │       ├── buildQueryRequest
-│   │       └── buildRelations.js
+│   │   ├── utilities
+│   │   │   ├── addExampleToQueryParams.js
+│   │   │   ├── addFieldsToQueryParams.js
+│   │   │   ├── addIncludeDeactivatedQueryParam.js
+│   │   │   ├── addLimitToQueryParams.js
+│   │   │   ├── addMockToQueryParams.js
+│   │   │   ├── addOffsetToQueryParams.js
+│   │   │   ├── addQueryParamsFromFilterSpecifications.js
+│   │   │   ├── addRelationsToQueryParams.js
+│   │   │   ├── addSortingToQueryParams.js
+│   │   │   ├── buildQueryRequest
+│   │   │   └── buildRelations.js
+│   │   └── validate.js
 │   ├── importOperations
 │   │   ├── importDataFromFile.js
 │   │   ├── index.js

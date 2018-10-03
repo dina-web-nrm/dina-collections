@@ -61,17 +61,20 @@
 │   └── index.js
 ├── chainPromises
 │   └── index.js
+├── createDeleteProperties
+│   ├── index.js
+│   └── index.test.js
 ├── createLid
 │   ├── index.js
 │   └── index.test.js
 ├── date
+│   ├── buildYYYYMMDD.js
 │   ├── formatAsTimestamp.js
 │   ├── getCurrentUTCTimestamp.js
+│   ├── getCurrentYear.js
 │   ├── getTimestampFromYMD.js
-│   └── getYYYYMMDDFromTimestamp.js
-├── deleteNullProperties
-│   ├── index.js
-│   └── index.test.js
+│   ├── getYYYYMMDDFromTimestamp.js
+│   └── index.js
 ├── endpointFactory
 │   ├── client.js
 │   ├── createEndpointFactory.js
@@ -95,7 +98,7 @@
 │   │   ├── errorCodes.spec.js
 │   │   ├── errorStatus.js
 │   │   ├── errorStatus.spec.js
-│   │   └── jsonSchemaErrorCodes.js
+│   │   └── parameterErrorCodes.js
 │   ├── constants-not-used.js
 │   ├── errorFactories
 │   │   ├── backendError.js
@@ -196,6 +199,8 @@
 │   │   │   ├── index.js
 │   │   │   └── index.test.js
 │   │   ├── createWithRelationships
+│   │   │   └── index.js
+│   │   ├── del
 │   │   │   └── index.js
 │   │   ├── modifyRelationshipResources
 │   │   │   ├── index.js
