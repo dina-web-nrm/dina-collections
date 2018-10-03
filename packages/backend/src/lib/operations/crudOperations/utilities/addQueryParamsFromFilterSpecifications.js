@@ -1,6 +1,7 @@
 module.exports = function addQueryParamsFromFilter({
-  queryParams,
   filterSpecification = {},
+  ignore = [],
+  queryParams,
 }) {
   const newQueryParams = Object.keys(filterSpecification.filters || {}).reduce(
     (params, filterKey) => {
@@ -10,7 +11,7 @@ module.exports = function addQueryParamsFromFilter({
         required: false,
         schema: filter.inputSchema,
       }
-      if (!filterQueryParams) {
+      if (!filterQueryParams || ignore.includes(filterKey)) {
         return params
       }
 
