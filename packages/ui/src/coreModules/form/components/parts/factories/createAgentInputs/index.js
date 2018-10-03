@@ -30,9 +30,9 @@ export default function createAgentInputs(
         resultSuffix: '(agent)',
       },
       initiallyHidden,
-      initiallyHiddenNames: [`${baseName}.textI`, `${baseName}.normalized`],
       module,
       name: `${baseName}`,
+      relativeNames: ['textI', 'normalized.id'],
       wrapInField: true,
     },
   ]
