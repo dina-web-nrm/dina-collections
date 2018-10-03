@@ -45,6 +45,7 @@ describe('lib/controllers/utilities/relationships/buildIncludeArray', () => {
         model: {
           key: 'place',
         },
+        paranoid: false,
       },
     ])
   })

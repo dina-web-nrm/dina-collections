@@ -69,6 +69,7 @@ module.exports = ({ models, operation }) => {
 
     return model[getterName]({
       include,
+      paranoid: true,
       where,
     })
       .then(({ items, item } = {}) => {

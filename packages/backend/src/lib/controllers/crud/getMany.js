@@ -27,6 +27,7 @@ module.exports = function getMany(options) {
       queryParams: {
         excludeFields: excludeFieldsInput,
         filter: filterInput,
+        includeDeactivated,
         includeFields: includeFieldsInput,
         limit = 10,
         offset = 0,
@@ -50,6 +51,7 @@ module.exports = function getMany(options) {
         filterInput,
         filterSpecification,
         include,
+        includeDeactivated,
         includeFieldsInput,
         limit,
         offset,

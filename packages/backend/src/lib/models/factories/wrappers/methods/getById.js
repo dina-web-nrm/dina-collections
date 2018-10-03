@@ -10,8 +10,17 @@ const inputSchema = {
     excludeFieldsInput: {
       type: 'array',
     },
+    filterInput: {
+      type: 'object',
+    },
+    filterSpecification: {
+      type: 'object',
+    },
     id: {
       type: 'string',
+    },
+    includeDeactivated: {
+      type: 'boolean',
     },
     include: {
       type: 'array',

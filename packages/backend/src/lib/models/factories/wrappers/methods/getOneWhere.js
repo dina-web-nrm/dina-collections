@@ -19,8 +19,14 @@ const inputSchema = {
     include: {
       type: 'array',
     },
+    includeDeactivated: {
+      type: 'boolean',
+    },
     includeFieldsInput: {
       type: 'array',
+    },
+    raw: {
+      type: 'boolean',
     },
     selectableFields: {
       type: 'array',

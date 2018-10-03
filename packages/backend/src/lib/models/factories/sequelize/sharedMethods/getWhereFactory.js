@@ -35,19 +35,6 @@ const buildWhere = ({
   })
 }
 
-const hasDeactivatedAtFilter = where => {
-  if (where.deactivatedAt !== undefined) {
-    return true
-  }
-
-  if (!where[Op.and]) {
-    return false
-  }
-  return where[Op.and].find(filter => {
-    return filter.deactivatedAt !== undefined
-  })
-}
-
 module.exports = function getWhereFactory({
   buildWhereFilter,
   buildWhereQuery,
@@ -59,6 +46,7 @@ module.exports = function getWhereFactory({
       filterInput,
       filterSpecification,
       include = [],
+      includeDeactivated = false,
       includeFieldsInput = [],
       limit,
       offset,
@@ -77,15 +65,7 @@ module.exports = function getWhereFactory({
         query,
         serviceInteractor,
         where: customWhere,
-      }).then(whereInput => {
-        // This is not great
-        const where = hasDeactivatedAtFilter(whereInput)
-          ? whereInput
-          : {
-              ...whereInput,
-              deactivatedAt: null,
-            }
-
+      }).then(where => {
         const sortObjects = extractSortObjectsFromUserInput({
           replaceAttributesWithDocument: true,
           sortableFields,
@@ -105,6 +85,7 @@ module.exports = function getWhereFactory({
         const options = {
           include,
           order,
+          paranoid: !includeDeactivated,
           where,
         }
         if (limit) {
