@@ -7,12 +7,6 @@ import createParameterKey from './createParameterKey'
 import createUpdateFormPartStatus from './createUpdateFormPartStatus'
 import handleReduxFormSubmitError from './handleReduxFormSubmitError'
 
-/* not inlcuding those due to problem with circular imports
-extractInitiallyHiddenFields,
-wrapReduxFormFieldParts,
-wrapStaticContentParts,
-*/
-
 export {
   createErrorKeys,
   createHelpNotificationProps,
