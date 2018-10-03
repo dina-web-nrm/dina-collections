@@ -45,13 +45,15 @@ class ListItem extends Component {
     } = this.props
     const itemLoaded = !!nestedItem
 
-    const angleIcon = isExpanded ? 'angle down' : 'angle right'
+    const triangleIcon = isExpanded ? 'down triangle' : 'right triangle'
 
     const background = isFocused ? '#b5b5b5' : '#fff'
 
     if (!itemLoaded) {
       return (
-        <Grid.Row style={{ height: emToPixels(3.5) }}>
+        <Grid.Row
+          style={{ height: emToPixels(2.5), padding: emToPixels(0.75) }}
+        >
           <Grid.Column
             key="rowNumber"
             style={{
@@ -75,7 +77,11 @@ class ListItem extends Component {
           event.preventDefault()
           onClickRow(null, itemId)
         }}
-        style={{ background, height: emToPixels(3.5) }}
+        style={{
+          background,
+          height: emToPixels(2.5),
+          padding: emToPixels(0.75),
+        }}
       >
         <Grid.Column
           key="rowNumber"
@@ -93,7 +99,7 @@ class ListItem extends Component {
           }}
           textAlign="right"
         >
-          {isExpandable && <Icon name={angleIcon} size="large" />}
+          {isExpandable && <Icon name={triangleIcon} size="large" />}
         </Grid.Column>
 
         <Grid.Column key="name" style={{ width: 500 }} textAlign="left">
