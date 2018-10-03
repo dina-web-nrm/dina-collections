@@ -2,18 +2,26 @@ const fetchParents = require('../../../../../../../lib/data/transformations/util
 /* eslint-disable no-param-reassign */
 
 const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
-  const collectingInformation = migrator.getValue({
-    obj: src,
-    path: 'individual.collectingInformation',
-  })
+  const collectingInformation =
+    migrator.getValue({
+      obj: src,
+      path: 'individual.collectingInformation',
+    }) || []
 
-  if (!collectingInformation) {
-    return null
-  }
+  const originInformation =
+    migrator.getValue({
+      obj: src,
+      path: 'individual.originInformation',
+    }) || []
 
   const collectingPlaceIds = []
   const normalizedLocalities = []
   const transcribedLocalities = []
+  const originLocalities = []
+
+  originInformation.forEach(({ originLocality }) => {
+    originLocalities.push(originLocality)
+  })
 
   collectingInformation.forEach(singleCollectingInformation => {
     const locationInformation = migrator.getValue({
@@ -65,6 +73,9 @@ const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
       },
       type: 'place',
     }).then(place => {
+      if (!place) {
+        return []
+      }
       return fetchParents({
         getItemByTypeId,
         item: place,
@@ -99,6 +110,12 @@ const transformation = ({ getItemByTypeId, migrator, src, locals }) => {
       obj: locals,
       path: 'transcribedLocalities',
       value: transcribedLocalities,
+    })
+
+    migrator.setValue({
+      obj: locals,
+      path: 'originLocalities',
+      value: originLocalities,
     })
 
     return null
