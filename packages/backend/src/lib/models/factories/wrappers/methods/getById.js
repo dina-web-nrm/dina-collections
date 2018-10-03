@@ -19,11 +19,11 @@ const inputSchema = {
     id: {
       type: 'string',
     },
-    includeDeactivated: {
-      type: 'boolean',
-    },
     include: {
       type: 'array',
+    },
+    includeDeactivated: {
+      type: 'boolean',
     },
     includeFieldsInput: {
       type: 'array',

@@ -4,10 +4,6 @@ const extractSortObjectsFromUserInput = require('../../../../data/sort/utilities
 const getWhereWrapper = require('../../wrappers/methods/getWhere')
 const formatModelItemsResponse = require('../utilities/formatModelItemsResponse')
 
-const Sequelize = require('sequelize')
-
-const { Op } = Sequelize
-
 const buildWhere = ({
   buildWhereFilter,
   buildWhereQuery,
