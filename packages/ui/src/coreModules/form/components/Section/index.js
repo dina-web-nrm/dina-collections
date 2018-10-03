@@ -12,12 +12,12 @@ const propTypes = {
   formValueSelector: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   sectionSpec: PropTypes.shape({
-    items: PropTypes.arrayOf(
+    name: PropTypes.string.isRequired,
+    units: PropTypes.arrayOf(
       PropTypes.shape({
-        componentName: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
       }).isRequired
     ).isRequired,
-    name: PropTypes.string.isRequired,
   }).isRequired,
 }
 const defaultProps = {
@@ -34,6 +34,7 @@ class Section extends PureComponent {
       removeArrayFieldByIndex,
       sectionSpec,
     } = this.props
+
     return (
       <Segment color="green">
         <Grid textAlign="left" verticalAlign="bottom">

@@ -5,25 +5,24 @@ import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 
 import { Field } from 'coreModules/form/components'
-import { getHiddenFieldsHaveValue } from 'coreModules/form/utilities'
+import formSupportSelectors from 'coreModules/formSupport/globalSelectors'
 import formParts from '../parts'
 
-const mapStateToProps = (state, { formValueSelector, unitSpec }) => {
-  if (
-    unitSpec &&
-    unitSpec.initiallyHiddenFields &&
-    unitSpec.initiallyHiddenFields.length
-  ) {
-    return {
-      hiddenFieldsHaveValue: getHiddenFieldsHaveValue({
-        fields: unitSpec.initiallyHiddenFields,
-        formValueSelector,
-        state,
-      }),
-    }
-  }
+const mapStateToProps = (state, { formName, formValueSelector, unitSpec }) => {
+  const unit = unitSpec.name
 
-  return {}
+  const initiallyHiddenFieldsHaveValue = formSupportSelectors.getInitiallyHiddenFieldsHaveValue(
+    state,
+    {
+      formName,
+      formValueSelector,
+      unit,
+    }
+  )
+
+  return {
+    initiallyHiddenFieldsHaveValue,
+  }
 }
 
 const propTypes = {
@@ -31,20 +30,20 @@ const propTypes = {
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
-  hiddenFieldsHaveValue: PropTypes.bool,
+  initiallyHiddenFieldsHaveValue: PropTypes.bool,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   unitSpec: PropTypes.shape({
-    items: PropTypes.arrayOf(
+    name: PropTypes.string.isRequired,
+    parts: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
       }).isRequired
     ),
-    name: PropTypes.string.isRequired,
   }).isRequired,
 }
 const defaultProps = {
   customParts: {},
-  hiddenFieldsHaveValue: undefined,
+  initiallyHiddenFieldsHaveValue: undefined,
 }
 
 class Unit extends PureComponent {
@@ -56,13 +55,18 @@ class Unit extends PureComponent {
   }
 
   componentDidMount() {
-    if (this.props.hiddenFieldsHaveValue) {
+    if (this.props.initiallyHiddenFieldsHaveValue) {
+      // need to use this flag, because otherwise a field could disappear if
+      // we empty it's value while typing in it
       this.showInitiallyHiddenParts()
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!this.props.hiddenFieldsHaveValue && nextProps.hiddenFieldsHaveValue) {
+    if (
+      !this.props.initiallyHiddenFieldsHaveValue &&
+      nextProps.initiallyHiddenFieldsHaveValue
+    ) {
       this.showInitiallyHiddenParts()
     }
   }

@@ -163,6 +163,7 @@ class RecordForm extends Component {
       <React.Fragment>
         <KeyboardShortcuts shortcuts={this.shortcuts} />
         <Form
+          formName={form}
           onSubmit={handleSubmit(this.handleFormSubmit)}
           sectionSpecs={sectionSpecs}
           setFormRef={this.setFormRef}
