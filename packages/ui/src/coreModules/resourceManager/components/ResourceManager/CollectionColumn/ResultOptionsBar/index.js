@@ -30,7 +30,7 @@ export class ResultOptionsBar extends Component {
             name="form"
             onClick={event => handleTreeTabClick(event)}
           >
-            <Icon name="sitemap" size="large" />
+            <Icon name="sitemap" />
           </Menu.Item>
         )}
 
@@ -39,7 +39,7 @@ export class ResultOptionsBar extends Component {
           name="table"
           onClick={event => handleListTabClick(event)}
         >
-          <Icon name="table" size="large" />
+          <Icon name="table" />
         </Menu.Item>
       </Menu>
     )
