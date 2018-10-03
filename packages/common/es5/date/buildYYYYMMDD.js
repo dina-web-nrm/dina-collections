@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 module.exports = function buildYYYYMMDD(_ref) {
   var day = _ref.day,
@@ -9,15 +9,15 @@ module.exports = function buildYYYYMMDD(_ref) {
     return undefined;
   }
 
-  var YYYYMMDD = "" + year;
+  var parts = [year];
 
   if (month) {
-    YYYYMMDD = YYYYMMDD.concat(("" + month).length === 1 ? "0" + month : "" + month);
+    parts.push(('' + month).length === 1 ? '0' + month : '' + month);
 
     if (day) {
-      YYYYMMDD = YYYYMMDD.concat(("" + day).length === 1 ? "0" + day : "" + day);
+      parts.push(('' + day).length === 1 ? '0' + day : '' + day);
     }
   }
 
-  return YYYYMMDD;
+  return parts.join('-');
 };

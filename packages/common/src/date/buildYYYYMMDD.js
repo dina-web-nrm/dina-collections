@@ -3,17 +3,15 @@ module.exports = function buildYYYYMMDD({ day, month, year }) {
     return undefined
   }
 
-  let YYYYMMDD = `${year}`
+  const parts = [year]
 
   if (month) {
-    YYYYMMDD = YYYYMMDD.concat(
-      `${month}`.length === 1 ? `0${month}` : `${month}`
-    )
+    parts.push(`${month}`.length === 1 ? `0${month}` : `${month}`)
 
     if (day) {
-      YYYYMMDD = YYYYMMDD.concat(`${day}`.length === 1 ? `0${day}` : `${day}`)
+      parts.push(`${day}`.length === 1 ? `0${day}` : `${day}`)
     }
   }
 
-  return YYYYMMDD
+  return parts.join('-')
 }
