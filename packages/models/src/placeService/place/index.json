@@ -1,6 +1,10 @@
 {
   "additionalProperties": false,
   "properties": {
+    "deactivatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
     "name": {
       "type": "string",
       "description": "Name of the locality"

@@ -4,6 +4,10 @@
     "id": {
       "type": "string"
     },
+    "deactivatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
     "givenName": {
       "type": "string"
     },
