@@ -1,5 +1,4 @@
 import extractInitiallyHiddenFields from 'coreModules/form/utilities/extractInitiallyHiddenFields'
-import getCatalogCardInformationName from '../../formParts/CatalogCardInformation/getNestedName'
 
 const parts = [
   {
@@ -11,20 +10,7 @@ const parts = [
   },
   {
     componentName: 'RecordHistoryExternalEvents',
-    name: 'individual.recordHistoryEvents',
-  },
-  {
-    componentName: 'AddButton',
-    componentProps: {
-      textKey: 'other.addCatalogCardCreation',
-    },
-    initiallyShown: true,
-  },
-  {
-    componentName: 'CatalogCardInformation',
     containsReduxFormField: true,
-    getNestedName: getCatalogCardInformationName,
-    initiallyHidden: true,
     name: 'individual.recordHistoryEvents',
   },
 ]

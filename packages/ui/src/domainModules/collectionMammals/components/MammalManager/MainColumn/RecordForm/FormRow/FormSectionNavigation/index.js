@@ -7,7 +7,7 @@ import { Grid, Header, Step, Loader } from 'semantic-ui-react'
 
 import { emToPixels } from 'coreModules/layout/utilities'
 import { createModuleTranslate } from 'coreModules/i18n/components'
-import globalSelectors from 'domainModules/collectionMammals/globalSelectors'
+import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSelectors'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
@@ -26,9 +26,11 @@ const inactiveStyle = {
   margin: 0,
 }
 
-const mapStateToProps = (state, { form, formValueSelector }) => {
+const mapStateToProps = (state, { formName, formValueSelector }) => {
   return {
-    catalogNumber: globalSelectors.createGetCatalogNumber(form)(state),
+    catalogNumber: collectionMammalsSelectors.createGetCatalogNumber(formName)(
+      state
+    ),
     taxonNameId: formValueSelector(
       state,
       'individual.taxonInformation.curatorialTaxonName.id'
