@@ -1,6 +1,7 @@
 export default function createCallParams({
   aggregations,
   excludeFields,
+  includeDeactivated,
   includeFields,
   limit,
   offset,
@@ -17,6 +18,7 @@ export default function createCallParams({
         attributes: {
           aggregations,
           excludeFields,
+          includeDeactivated,
           includeFields,
           limit,
           offset,

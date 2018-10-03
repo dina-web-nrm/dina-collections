@@ -1,3 +1,5 @@
+import React from 'react'
+
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
@@ -10,9 +12,16 @@ const tableColumnSpecifications = [
     width: 150,
   },
   {
-    fieldPath: 'parent.name',
+    buildText: ({ value }) => {
+      if (value.deactivatedAt) {
+        return <span style={{ color: 'red' }}>{`${value.name} (removed)`}</span>
+      }
+
+      return value.name
+    },
+    fieldPath: 'parent',
     label: 'modules.locality.fieldLabels.place.parent',
-    width: 150,
+    width: 250,
   },
   {
     fieldPath: 'verticalPosition.minimumElevationInMeters',

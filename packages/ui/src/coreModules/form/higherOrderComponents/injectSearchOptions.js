@@ -100,12 +100,16 @@ const injectSearchOptions = (
       }
 
       const defaultMapItemToOption = item => {
+        const suffix = objectPath.get(item, 'attributes.deactivatedAt')
+          ? ' (removed)'
+          : ''
+        const text =
+          (props.textAttributeName &&
+            objectPath.get(item, props.textAttributeName)) ||
+          props.extractText(item)
         return {
           key: item.id,
-          text:
-            (props.textAttributeName &&
-              objectPath.get(item, props.textAttributeName)) ||
-            props.extractText(item),
+          text: `${text}${suffix}`,
           value: item.id,
         }
       }
@@ -173,7 +177,11 @@ const injectSearchOptions = (
           },
         ]
 
-        return this.search({ filters, limit: 1 }).then(res => {
+        return this.search({
+          filters,
+          includeDeactivated: true,
+          limit: 1,
+        }).then(res => {
           const selectedOptions =
             this.buildOptionsFromResponse(res, {
               skipPlainTextOption: true,
@@ -247,7 +255,7 @@ const injectSearchOptions = (
       })
     }
 
-    search({ filters = [], limit }) {
+    search({ filters = [], includeDeactivated, limit }) {
       const {
         include,
         includeFields,
@@ -272,7 +280,12 @@ const injectSearchOptions = (
           }),
         }
 
-        return this.props.search({ includeFields, limit, query })
+        return this.props.search({
+          includeDeactivated,
+          includeFields,
+          limit,
+          query,
+        })
       }
 
       const queryParamFilters = filters.reduce((obj, filter) => {
@@ -285,6 +298,7 @@ const injectSearchOptions = (
       const queryParams = {
         filter: queryParamFilters,
         include,
+        includeDeactivated,
         limit,
         relationships,
       }

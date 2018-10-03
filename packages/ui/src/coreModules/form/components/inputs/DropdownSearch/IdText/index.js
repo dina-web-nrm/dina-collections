@@ -50,7 +50,6 @@ class DropdownSearchIdTextInput extends PureComponent {
     const text = objectPath.get(this.props, `input.value.${pathToTextInValue}`)
 
     const value = objectPath.get(this.props, `input.value`)
-
     if (selectedOptionId !== id || selectedOptionText !== text) {
       setTimeout(() => {
         this.props.updateSelectedOption({

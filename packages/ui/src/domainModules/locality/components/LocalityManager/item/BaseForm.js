@@ -191,7 +191,7 @@ BaseForm.propTypes = propTypes
 BaseForm.defaultProps = defaultProps
 
 export default reduxForm({
-  destroyOnUnmount: false, // to keep values when switching layout
+  destroyOnUnmount: true, // to keep values when switching layout
   enableReinitialize: true,
   form: FORM_NAME,
   validate: formValidator({ model: 'place' }),
