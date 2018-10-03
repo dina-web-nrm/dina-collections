@@ -6312,35 +6312,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Locality & origin
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Collecting locality and origin information
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
                 Collecting & death
               </span>
             </div>
@@ -6349,93 +6320,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             >
               <span>
                 Collector, expedition, date, death details
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Physical objects
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Skin, skeleton, wet and other preparations...
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Features
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Age, sex, condition, measurements, bones
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Summary
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Summary of all data about the specimen
               </span>
             </div>
           </div>
@@ -6570,35 +6454,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Locality & origin
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Collecting locality and origin information
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
                 Collecting & death
               </span>
             </div>
@@ -6607,93 +6462,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             >
               <span>
                 Collector, expedition, date, death details
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Physical objects
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Skin, skeleton, wet and other preparations...
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Features
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Age, sex, condition, measurements, bones
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Summary
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Summary of all data about the specimen
               </span>
             </div>
           </div>
@@ -6826,35 +6594,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
               className="title"
             >
               <span>
-                Locality & origin
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Collecting locality and origin information
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
                 Collecting & death
               </span>
             </div>
@@ -6863,93 +6602,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             >
               <span>
                 Collector, expedition, date, death details
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Physical objects
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Skin, skeleton, wet and other preparations...
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Features
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Age, sex, condition, measurements, bones
-              </span>
-            </div>
-          </div>
-        </a>
-        <a
-          className="step"
-          href={undefined}
-          onClick={[Function]}
-          style={
-            Object {
-              "width": 350,
-            }
-          }
-        >
-          <div
-            className="content"
-          >
-            <div
-              className="title"
-            >
-              <span>
-                Summary
-              </span>
-            </div>
-            <div
-              className="description"
-            >
-              <span>
-                Summary of all data about the specimen
               </span>
             </div>
           </div>

@@ -18,6 +18,16 @@ const input = {
   value: 'Some added remarks',
 }
 
+const initialState = {
+  form: {
+    remarksForm: {
+      meta: {
+        active: 'activeField',
+      },
+    },
+  },
+}
+
 const Parent = ({ children }) => {
   return <form>{children}</form>
 }
@@ -29,7 +39,7 @@ Parent.propTypes = {
 const FormWrapper = reduxForm({ form: 'remarksForm' })(Parent)
 
 storiesOf('coreModules/form/Fields/Remarks', module)
-  .addDecorator(createStoryDecorator({}))
+  .addDecorator(createStoryDecorator({ initialState }))
   .add('emptyState', () => (
     <FormWrapper>
       <Field

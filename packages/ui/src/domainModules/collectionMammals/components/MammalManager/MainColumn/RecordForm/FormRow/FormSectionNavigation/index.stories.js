@@ -9,14 +9,34 @@ import { FormSectionNavigation } from './index'
 const catalogNumber = '1234567'
 const taxonName = { attributes: { name: 'Phoca vitulina' } }
 
-const formSections = [
-  { name: 'basicInformation' },
-  { name: 'taxonomy' },
-  { name: 'localityOrigin' },
-  { name: 'collectingDeath' },
-  { name: 'physicalObjects' },
-  { name: 'features' },
-  { name: 'summary' },
+const sectionSpecs = [
+  {
+    name: 'basicInformation',
+    units: [
+      {
+        name: 'specimenRoot',
+        parts: [],
+      },
+    ],
+  },
+  {
+    name: 'taxonomy',
+    units: [
+      {
+        name: 'taxonNames',
+        parts: [],
+      },
+    ],
+  },
+  {
+    name: 'collectingDeath',
+    units: [
+      {
+        name: 'collectingDate',
+        parts: [],
+      },
+    ],
+  },
 ]
 
 storiesOf(
@@ -29,10 +49,10 @@ storiesOf(
       activeFormSectionIndex={0}
       availableHeight={700}
       catalogNumber={catalogNumber}
-      formSections={formSections}
       loading={false}
       onSetActiveFormSection={action('onSetActiveFormSection')}
       onShowAllFormSections={action('onShowAllFormSections')}
+      sectionSpecs={sectionSpecs}
       showAllFormSections={false}
       taxonName={taxonName}
     />
@@ -42,10 +62,10 @@ storiesOf(
       activeFormSectionIndex={0}
       availableHeight={700}
       catalogNumber={catalogNumber}
-      formSections={formSections}
       loading={false}
       onSetActiveFormSection={action('onSetActiveFormSection')}
       onShowAllFormSections={action('onShowAllFormSections')}
+      sectionSpecs={sectionSpecs}
       showAllFormSections={false}
     />
   ))
@@ -53,10 +73,10 @@ storiesOf(
     <FormSectionNavigation
       activeFormSectionIndex={0}
       availableHeight={700}
-      formSections={formSections}
       loading={false}
       onSetActiveFormSection={action('onSetActiveFormSection')}
       onShowAllFormSections={action('onShowAllFormSections')}
+      sectionSpecs={sectionSpecs}
       showAllFormSections={false}
     />
   ))
