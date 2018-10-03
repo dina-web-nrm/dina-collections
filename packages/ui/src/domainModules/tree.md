@@ -7,6 +7,8 @@
 │   │   │   └── index.js
 │   │   ├── AgentDropdownSearch
 │   │   │   └── index.js
+│   │   ├── AgentIdTextResult
+│   │   │   └── index.js
 │   │   ├── AgentManager
 │   │   │   ├── Base.js
 │   │   │   ├── ItemTitle.js
@@ -16,7 +18,8 @@
 │   │   │   ├── item
 │   │   │   └── tableColumnSpecifications.js
 │   │   ├── TogglableAgentDropdownPickerSearch
-│   │   │   ├── AgentIdTextResult.js
+│   │   │   └── index.js
+│   │   ├── formParts
 │   │   │   └── index.js
 │   │   └── index.js
 │   ├── constants.js
@@ -41,14 +44,14 @@
 │   │   └── updateSearchParameter.js
 │   ├── actionTypes.js
 │   ├── components
+│   │   ├── CatalogNumberModal
+│   │   │   └── index.js
+│   │   ├── MammalForm
+│   │   │   └── SegmentEvents
 │   │   ├── MammalManager
 │   │   │   ├── FilterColumn
 │   │   │   ├── MainColumn
 │   │   │   └── index.js
-│   │   ├── RecordForm
-│   │   │   ├── Parts
-│   │   │   ├── Sections
-│   │   │   └── Units
 │   │   └── index.js
 │   ├── constants.js
 │   ├── endpoints.js

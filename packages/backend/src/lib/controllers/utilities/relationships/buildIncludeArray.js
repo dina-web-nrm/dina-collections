@@ -32,6 +32,7 @@ module.exports = function buildIncludeArray(
       return {
         as: relationKey,
         model: relationModel.Model,
+        paranoid: false,
       }
     })
     .filter(includeElement => {

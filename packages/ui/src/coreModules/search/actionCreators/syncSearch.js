@@ -35,6 +35,7 @@ export default function syncSearch({ resource = 'searchSpecimen' }) {
       filter: {
         deactivated: true,
       },
+      includeDeactivated: true,
       limit: 100000,
     }
 
@@ -49,6 +50,7 @@ export default function syncSearch({ resource = 'searchSpecimen' }) {
           ...resourcesToRemoveQueryParams.filter,
           updatedAfter: lastUpdatedAt,
         },
+        includeDeactivated: true,
       }
     }
 

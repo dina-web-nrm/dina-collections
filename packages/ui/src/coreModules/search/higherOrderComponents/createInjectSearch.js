@@ -58,6 +58,7 @@ const createInjectSearch = (
       {
         aggregations,
         excludeFields: excludeFieldsInput,
+        includeDeactivated,
         includeFields: includeFieldsInput,
         limit,
         query,
@@ -70,6 +71,7 @@ const createInjectSearch = (
       return this.props.search({
         aggregations,
         excludeFields: excludeFieldsInput || defaultExcludeFields,
+        includeDeactivated,
         includeFields: includeFieldsInput || defaultIncludeFields,
         limit,
         query,

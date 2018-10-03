@@ -47,6 +47,12 @@ module.exports = function buildQueryRequest({
             },
             type: 'array',
           },
+      includeDeactivated: {
+        description: 'Will include deactivated items',
+
+        default: false,
+        type: 'boolean',
+      },
       limit: {
         description: 'Limit the result',
 

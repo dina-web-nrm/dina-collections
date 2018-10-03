@@ -80,7 +80,7 @@ module.exports = function getRequiredAction({
       }
 
       if (srcStatus === 'dont-exist' && targetStatus === 'exist') {
-        return 'deactivate'
+        return 'del'
       }
       return 'bail'
     })

@@ -176,13 +176,13 @@ module.exports = function testGetWhere({ config, setupModel }) {
 
     it('throw error when filter input dont correspond to filter function', () => {
       const filterSpecification = createGetManyFilterSpecifications({
-        include: ['id'],
+        include: ['ids'],
       })
 
       return expect(
         model.getWhere({
           filterInput: {
-            ids: [secondItem.id],
+            id: secondItem.id,
           },
           filterSpecification,
         })

@@ -96,6 +96,10 @@ const config = {
     normalizedAgent: {
       operations: [
         {
+          operationId: 'normalizedAgentDel',
+          type: 'del',
+        },
+        {
           operationId: 'normalizedAgentGetOne',
           type: 'getOne',
         },
@@ -139,6 +143,10 @@ const config = {
     },
     place: {
       operations: [
+        {
+          operationId: 'placeDel',
+          type: 'del',
+        },
         {
           operationId: 'placeGetOne',
           type: 'getOne',
@@ -202,6 +210,10 @@ const config = {
     specimen: {
       operations: [
         {
+          operationId: 'specimenDel',
+          type: 'del',
+        },
+        {
           operationId: 'specimenUpdate',
           options: {
             resourcesToModify: ['specimen', 'physicalObject'],
@@ -228,6 +240,10 @@ const config = {
     storageLocation: {
       operations: [
         {
+          operationId: 'storageLocationDel',
+          type: 'del',
+        },
+        {
           operationId: 'storageLocationGetOne',
           type: 'getOne',
         },
@@ -252,6 +268,10 @@ const config = {
     taxon: {
       operations: [
         {
+          operationId: 'taxonDel',
+          type: 'del',
+        },
+        {
           operationId: 'taxonGetOne',
           type: 'getOne',
         },
@@ -275,6 +295,10 @@ const config = {
     },
     taxonName: {
       operations: [
+        {
+          operationId: 'taxonNameDel',
+          type: 'del',
+        },
         {
           operationId: 'taxonNameGetOne',
           type: 'getOne',

@@ -107,6 +107,9 @@ function createApiClient(apiConfigInput) {
       case 'delete': {
         return httpDelete(endpointConfigInput, userInput)
       }
+      case 'del': {
+        return httpDelete(endpointConfigInput, userInput)
+      }
       case 'get': {
         return httpGet(endpointConfigInput, userInput)
       }

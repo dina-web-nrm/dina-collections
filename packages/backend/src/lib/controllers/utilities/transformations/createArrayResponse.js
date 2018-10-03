@@ -1,3 +1,5 @@
+const formatAsTimestamp = require('common/src/date/formatAsTimestamp')
+
 module.exports = function createArrayResponse({
   items,
   meta = {},
@@ -12,9 +14,24 @@ module.exports = function createArrayResponse({
 
   return {
     data: items.map(item => {
-      const { id, relationships, type: itemType, attributes } = item
-      const itemResponse = {
+      const {
+        id,
+        relationships,
+        type: itemType,
         attributes,
+        internals = {},
+      } = item
+
+      const { deactivatedAt } = internals
+      const patchedAttributes = deactivatedAt
+        ? {
+            ...attributes,
+            deactivatedAt: formatAsTimestamp(deactivatedAt),
+          }
+        : attributes
+
+      const itemResponse = {
+        attributes: patchedAttributes,
         id: `${id}`,
         type: itemType || type,
       }

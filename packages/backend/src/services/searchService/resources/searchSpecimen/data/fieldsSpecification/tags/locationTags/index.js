@@ -19,6 +19,7 @@ const transformation = ({ migrator, target, locals }) => {
   const {
     collectingPlaces,
     normalizedLocalities,
+    originLocalities,
     transcribedLocalities,
   } = locals
 
@@ -41,6 +42,13 @@ const transformation = ({ migrator, target, locals }) => {
       tags.push(`${transcribedLocality} (transcribed)`)
     })
   }
+
+  if (originLocalities) {
+    originLocalities.forEach(originLocality => {
+      tags.push(`${originLocality} (origin)`)
+    })
+  }
+
   if (tags && tags.length) {
     migrator.setValue({
       obj: target,

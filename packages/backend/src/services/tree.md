@@ -65,6 +65,16 @@
 │       │   ├── data
 │       │   └── index.js
 │       └── index.js
+├── identifierService
+│   ├── index.js
+│   ├── info
+│   │   ├── description.md
+│   │   └── index.js
+│   └── resources
+│       ├── catalogNumber
+│       │   ├── data
+│       │   └── index.js
+│       └── index.js
 ├── index.js
 ├── jobService
 │   ├── index.js

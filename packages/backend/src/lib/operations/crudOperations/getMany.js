@@ -1,13 +1,14 @@
-const createGetManyFilterSpecifications = require('../../data/filters/utilities/createGetManyFilterSpecifications')
-const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
-const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
-const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const addQueryParamsFromFilterSpecifications = require('./utilities/addQueryParamsFromFilterSpecifications')
-const addMockToQueryParams = require('./utilities/addMockToQueryParams')
 const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
-const buildOperationId = require('common/src/buildOperationId')
 const addFieldsToQueryParams = require('./utilities/addFieldsToQueryParams')
+const addIncludeDeactivatedQueryParam = require('./utilities/addIncludeDeactivatedQueryParam')
+const addLimitToQueryParams = require('./utilities/addLimitToQueryParams')
+const addMockToQueryParams = require('./utilities/addMockToQueryParams')
+const addOffsetToQueryParams = require('./utilities/addOffsetToQueryParams')
+const addQueryParamsFromFilterSpecifications = require('./utilities/addQueryParamsFromFilterSpecifications')
+const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
 const addSortingToQueryParams = require('./utilities/addSortingToQueryParams')
+const buildOperationId = require('common/src/buildOperationId')
+const createGetManyFilterSpecifications = require('../../data/filters/utilities/createGetManyFilterSpecifications')
 
 module.exports = function getMany({
   availableExamples,
@@ -32,6 +33,10 @@ module.exports = function getMany({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
+  })
+
+  queryParams = addIncludeDeactivatedQueryParam({
+    queryParams,
   })
 
   queryParams = addQueryParamsFromFilterSpecifications({

@@ -1,7 +1,7 @@
 const { getTestData } = require('../testData')
 
-module.exports = function testDeactivate({ config, setupModel }) {
-  describe('deactivate', () => {
+module.exports = function testDel({ config, setupModel }) {
+  describe('del', () => {
     let model
     const item = getTestData('itemPersonWithId')
 
@@ -18,7 +18,7 @@ module.exports = function testDeactivate({ config, setupModel }) {
 
     it('delete secondDoc', () => {
       return model
-        .deactivate({
+        .del({
           id: item.id,
         })
         .then(({ item: res }) => {

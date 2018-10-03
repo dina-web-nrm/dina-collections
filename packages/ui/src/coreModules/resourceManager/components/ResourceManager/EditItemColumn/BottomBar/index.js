@@ -9,7 +9,10 @@ import {
   reset as resetActionCreator,
 } from 'redux-form'
 import { Button, Grid } from 'semantic-ui-react'
-import { EDIT_SUCCESS } from 'coreModules/resourceManager/constants'
+import {
+  DEL_SUCCESS,
+  EDIT_SUCCESS,
+} from 'coreModules/resourceManager/constants'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 
 const mapStateToProps = (state, { resource }) => {
@@ -44,8 +47,10 @@ const defaultProps = {
 class BottomBar extends PureComponent {
   constructor(props) {
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDel = this.handleDel.bind(this)
     this.handleReset = this.handleReset.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+
     this.state = { loading: false }
   }
 
@@ -53,6 +58,21 @@ class BottomBar extends PureComponent {
     const { formName } = this.props
     event.preventDefault()
     this.props.reset(formName)
+  }
+
+  handleDel(event) {
+    event.preventDefault()
+    const { dispatch, itemId, resource } = this.props
+    const del = crudActionCreators[resource] && crudActionCreators[resource].del
+    this.setState({ loading: true })
+    return dispatch(
+      del({
+        id: itemId,
+      })
+    ).then(() => {
+      this.setState({ loading: false })
+      this.props.onInteraction(DEL_SUCCESS)
+    })
   }
 
   handleSubmit(event) {
@@ -89,6 +109,13 @@ class BottomBar extends PureComponent {
             style={{ float: 'left' }}
           >
             Save
+          </Button>
+          <Button
+            loading={this.state.loading}
+            onClick={this.handleDel}
+            style={{ float: 'left' }}
+          >
+            Delete
           </Button>
           <Button
             basic

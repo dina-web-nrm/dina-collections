@@ -1,4 +1,9 @@
+const createGetOneFilterSpecifications = require('../../../../data/filters/utilities/createGetOneFilterSpecifications')
 const { getTestData } = require('../testData')
+
+const filterSpecification = createGetOneFilterSpecifications({
+  include: ['id'],
+})
 
 module.exports = function testGetById({ config, setupModel }) {
   describe('getById', () => {
@@ -16,24 +21,30 @@ module.exports = function testGetById({ config, setupModel }) {
     })
 
     it('throws when id not provided', () => {
-      return expect(model.getById()).rejects.toThrow()
+      return expect(model.getById({ filterSpecification })).rejects.toThrow()
     })
     it('returns firstDoc', () => {
-      return model.getById({ id: firstItem.id }).then(({ item: res }) => {
-        expect(res.id).toEqual(firstItem.id)
-        expect(res.attributes).toEqual(firstItem.attributes)
-      })
+      return model
+        .getById({ filterSpecification, id: firstItem.id })
+        .then(({ item: res }) => {
+          expect(res.id).toEqual(firstItem.id)
+          expect(res.attributes).toEqual(firstItem.attributes)
+        })
     })
     it('returns secondDoc', () => {
-      return model.getById({ id: secondItem.id }).then(({ item: res }) => {
-        expect(res.id).toEqual(secondItem.id)
-        expect(res.attributes).toEqual(secondItem.attributes)
-      })
+      return model
+        .getById({ filterSpecification, id: secondItem.id })
+        .then(({ item: res }) => {
+          expect(res.id).toEqual(secondItem.id)
+          expect(res.attributes).toEqual(secondItem.attributes)
+        })
     })
     it('returns null when model does not exist', () => {
-      return model.getById({ id: '1111' }).then(({ item: res }) => {
-        expect(res).toEqual(null)
-      })
+      return model
+        .getById({ filterSpecification, id: '1111' })
+        .then(({ item: res }) => {
+          expect(res).toEqual(null)
+        })
     })
   })
 
@@ -55,6 +66,7 @@ module.exports = function testGetById({ config, setupModel }) {
       const selectableFields = ['id', 'attributes.firstName']
       return model
         .getById({
+          filterSpecification,
           id: secondItem.id,
           includeFieldsInput: ['id', 'attributes.firstName'],
           selectableFields,

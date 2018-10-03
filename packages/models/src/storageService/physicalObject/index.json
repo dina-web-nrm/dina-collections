@@ -1,6 +1,10 @@
 {
   "additionalProperties": false,
   "properties": {
+    "deactivatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
     "lid": {
       "type": "string"
     },

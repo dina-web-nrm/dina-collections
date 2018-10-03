@@ -59,6 +59,7 @@ class MultipleSearchSelectionDropdownInput extends Component {
     super(props)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleOnBlur = this.handleOnBlur.bind(this)
   }
 
   handleSearchChange(event, { searchQuery }) {
@@ -73,6 +74,16 @@ class MultipleSearchSelectionDropdownInput extends Component {
     this.handleSearchChange(null, { searchQuery: '' })
 
     this.props.input.onBlur(value)
+  }
+
+  handleOnBlur(event, data) {
+    const { value } = data
+    this.handleSearchChange(null, { searchQuery: '' })
+    if (this.props.searchQuery && !value.includes(this.props.searchQuery)) {
+      this.props.input.onBlur([...value, this.props.searchQuery])
+    } else {
+      this.props.input.onBlur(value)
+    }
   }
 
   render() {
@@ -121,7 +132,7 @@ class MultipleSearchSelectionDropdownInput extends Component {
           selectOnBlur={false}
           selectOnNavigation={false}
           {...input}
-          onBlur={undefined}
+          onBlur={this.handleOnBlur}
           onChange={this.handleOnChange}
           style={style}
           value={selectedOptions && selectedOptions.map(({ value }) => value)}

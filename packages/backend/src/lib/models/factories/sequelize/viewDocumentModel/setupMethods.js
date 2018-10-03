@@ -9,7 +9,7 @@ module.exports = function setupMethods({ StageModel, ViewModel }) {
     getCount,
     getOneWhere,
     getWhere,
-    deactivate,
+    del,
     update,
     bulkCreate,
   } = ViewModel
@@ -24,7 +24,7 @@ module.exports = function setupMethods({ StageModel, ViewModel }) {
     buildWhereFilter,
     bulkCreate,
     create,
-    deactivate,
+    del,
     empty,
     getById,
     getCount,

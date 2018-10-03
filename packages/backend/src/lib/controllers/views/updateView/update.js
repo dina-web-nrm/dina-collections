@@ -31,9 +31,9 @@ module.exports = function update({
         bailed.push(id)
         return null
       }
-      if (action === 'deactivate') {
+      if (action === 'del') {
         deleted.push(id)
-        return model.deactivate({ id })
+        return model.del({ id })
       }
       return createItem({
         id,

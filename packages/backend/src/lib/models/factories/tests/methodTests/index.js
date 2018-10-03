@@ -1,6 +1,6 @@
 exports.bulkCreate = require('./bulkCreate')
 exports.create = require('./create')
-exports.deactivate = require('./deactivate')
+exports.del = require('./del')
 exports.getById = require('./getById')
 exports.getOneWhere = require('./getOneWhere')
 exports.getWhere = require('./getWhere')

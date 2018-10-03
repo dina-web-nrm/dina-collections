@@ -6,6 +6,7 @@ module.exports = function fetchParents({
   parents = [],
   relationships = ['parent'],
   resource,
+  throwOnMissing = false,
 }) {
   const parentId =
     (item &&
@@ -32,9 +33,12 @@ module.exports = function fetchParents({
     type: resource,
   }).then(parent => {
     if (!parent) {
-      throw new Error(
-        `Non existing parent with type: ${resource} and id: ${parentId}`
-      )
+      if (throwOnMissing) {
+        throw new Error(
+          `Non existing parent with type: ${resource} and id: ${parentId}`
+        )
+      }
+      return []
     }
     if (order === 'asc') {
       parents.unshift(parent)

@@ -1,27 +1,47 @@
-const buildOperationId = require('common/src/buildOperationId')
-const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
-const addMockToQueryParams = require('./utilities/addMockToQueryParams')
 const addExampleToQueryParams = require('./utilities/addExampleToQueryParams')
 const addFieldsToQueryParams = require('./utilities/addFieldsToQueryParams')
+const addIncludeDeactivatedQueryParam = require('./utilities/addIncludeDeactivatedQueryParam')
+const addMockToQueryParams = require('./utilities/addMockToQueryParams')
+const addQueryParamsFromFilterSpecifications = require('./utilities/addQueryParamsFromFilterSpecifications')
+const addRelationsToQueryParams = require('./utilities/addRelationsToQueryParams')
+const buildOperationId = require('common/src/buildOperationId')
+const createGetOneFilterSpecifications = require('../../data/filters/utilities/createGetOneFilterSpecifications')
 
 module.exports = function getOne({
   availableExamples,
   basePath,
   errors: errorsInput = {},
   exampleResponses = {},
-  selectableFields,
+  filterSpecification: filterSpecificationInput,
   includeRelations,
-  operationId,
+  operationId: operationIdInput,
   queryParams: queryParamsInput,
   relations,
   resource,
   resourcePath,
+  selectableFields,
   ...rest
 }) {
+  const filterSpecification =
+    filterSpecificationInput || createGetOneFilterSpecifications()
+  const operationType = 'getOne'
+  const operationId =
+    operationIdInput || buildOperationId({ operationType, resource })
+
   let queryParams = addRelationsToQueryParams({
     includeRelations,
     queryParams: queryParamsInput,
     relations,
+  })
+
+  queryParams = addIncludeDeactivatedQueryParam({
+    queryParams,
+  })
+
+  queryParams = addQueryParamsFromFilterSpecifications({
+    filterSpecification,
+    ignore: ['id'],
+    queryParams,
   })
 
   queryParams = addFieldsToQueryParams({
@@ -47,14 +67,13 @@ module.exports = function getOne({
     ...errorsInput,
   }
 
-  const operationType = 'getOne'
-
   return {
     ...rest,
     errors,
+    filterSpecification,
     includeRelations,
     method: 'get',
-    operationId: operationId || buildOperationId({ operationType, resource }),
+    operationId,
     operationType,
     path: `${basePath}/${resourcePath}/{id}`,
     pathParams: ['id'],

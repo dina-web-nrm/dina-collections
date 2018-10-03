@@ -10,6 +10,7 @@ module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
       filterInput,
       filterSpecification,
       include = undefined,
+      includeDeactivated = false,
       includeFieldsInput = [],
       raw = true,
       selectableFields = [],
@@ -21,12 +22,8 @@ module.exports = function getOneWhereFactory({ buildWhereFilter, Model }) {
         return Model.findOne({
           include,
           order: [['id', 'DESC']],
-          where: where.deactivatedAt
-            ? where
-            : {
-                ...where,
-                deactivatedAt: null,
-              },
+          paranoid: !includeDeactivated,
+          where,
         }).then(res => {
           if (!raw) {
             return { item: res }

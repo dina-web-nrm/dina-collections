@@ -148,17 +148,37 @@ class RawMultipleSearchTagsSelect extends PureComponent {
 
   handleSearchChange({ searchQuery }) {
     this.setState({
-      options: searchQuery
-        ? [
-            {
-              key: searchQuery,
-              text: searchQuery,
-              type: 'string',
-              value: searchQuery,
-            },
-          ]
-        : [],
       searchQuery,
+    })
+
+    if (!searchQuery) {
+      return this.setState({
+        options: [],
+        searchQuery,
+      })
+    }
+    return this.getItemsForSearchQuery(searchQuery).then(items => {
+      const itemOptions = items.map(({ attributes }) => {
+        return {
+          key: attributes.key,
+          text: attributes.key,
+          type: 'string',
+          value: attributes.key,
+        }
+      })
+      const freeTextOption = {
+        key: searchQuery,
+        text: `${searchQuery}`,
+        type: 'string',
+        value: searchQuery,
+      }
+
+      const options = [freeTextOption, ...itemOptions]
+
+      this.setState({
+        options,
+        searchQuery,
+      })
     })
   }
 

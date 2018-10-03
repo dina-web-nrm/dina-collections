@@ -38,6 +38,7 @@ export default function queryAcFactory(
       aggregations,
       batchLimit,
       excludeFields,
+      includeDeactivated,
       includeFields,
       limit = 1000,
       offset = 0,
@@ -51,6 +52,7 @@ export default function queryAcFactory(
     log.debug(`${resource}.create called`, {
       aggregations,
       excludeFields,
+      includeDeactivated,
       includeFields,
       limit,
       offset,
@@ -63,6 +65,7 @@ export default function queryAcFactory(
       const callParams = createCallParams({
         aggregations,
         excludeFields,
+        includeDeactivated,
         includeFields,
         limit,
         offset,

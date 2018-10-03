@@ -7,6 +7,10 @@
     "id": {
       "$ref": "__ROOT__id"
     },
+    "deactivatedAt": {
+      "format": "date-time",
+      "type": "string"
+    },
     "lid": {
       "$ref": "__ROOT__lid"
     },

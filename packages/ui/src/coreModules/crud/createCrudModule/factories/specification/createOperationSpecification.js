@@ -1,5 +1,6 @@
 import {
   OPERATION_TYPE_CREATE,
+  OPERATION_TYPE_DEL,
   OPERATION_TYPE_GET_MANY,
   OPERATION_TYPE_GET_ONE,
   OPERATION_TYPE_QUERY,
@@ -21,6 +22,7 @@ export default function createOperationSpecification({
 
   switch (type) {
     case OPERATION_TYPE_CREATE:
+    case OPERATION_TYPE_DEL:
     case OPERATION_TYPE_GET_MANY:
     case OPERATION_TYPE_GET_ONE:
     case OPERATION_TYPE_QUERY:

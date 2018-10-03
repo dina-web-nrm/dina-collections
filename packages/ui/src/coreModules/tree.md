@@ -174,9 +174,13 @@
 │   │   │   └── index.js
 │   │   ├── FieldWrapper
 │   │   │   └── index.js
+│   │   ├── Section
+│   │   │   └── index.js
 │   │   ├── TogglableField
 │   │   │   ├── DefaultRenderEmptyState.js
 │   │   │   ├── DefaultRenderResult.js
+│   │   │   └── index.js
+│   │   ├── Unit
 │   │   │   └── index.js
 │   │   ├── fields
 │   │   │   ├── Checkbox
@@ -198,12 +202,17 @@
 │   │   │   ├── MultipleSearchSelectionDropdown
 │   │   │   ├── Search
 │   │   │   └── TextArea
-│   │   └── migrate
-│   │       ├── ButtonCopyPasteField.js
-│   │       ├── DisplaySearchResult.js
-│   │       ├── FormTable
-│   │       ├── HelpTextNotification.js
-│   │       └── InputDatePart
+│   │   ├── migrate
+│   │   │   ├── ButtonCopyPasteField.js
+│   │   │   ├── DisplaySearchResult.js
+│   │   │   ├── FormTable
+│   │   │   ├── HelpTextNotification.js
+│   │   │   └── InputDatePart
+│   │   └── parts
+│   │       ├── ReduxFormFieldComponents
+│   │       ├── StaticContent
+│   │       ├── factories
+│   │       └── index.js
 │   ├── constants.js
 │   ├── globalSelectors.js
 │   ├── higherOrderComponents
@@ -234,10 +243,14 @@
 │       ├── createLabelKey.js
 │       ├── createParameterKey.js
 │       ├── createUpdateFormPartStatus.js
+│       ├── extractInitiallyHiddenFields.js
 │       ├── getHiddenFieldsHaveValue.js
+│       ├── handleReduxFormSubmitError.js
 │       ├── index.js
 │       ├── index.test.js
-│       └── radioTransformations.js
+│       ├── radioTransformations.js
+│       ├── wrapReduxFormFieldParts.js
+│       └── wrapStaticContentParts.js
 ├── i18n
 │   ├── actionCreators
 │   │   ├── index.js
