@@ -25,8 +25,10 @@ const mustBe6Or8Digits = value => {
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const propTypes = {
+  formName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func,
   history: PropTypes.object,
+  reset: PropTypes.func.isRequired,
   valid: PropTypes.bool,
 }
 const defaultProps = {
@@ -53,6 +55,8 @@ class CatalogNumberModal extends PureComponent {
   }
 
   handleBackToModalOne() {
+    const { formName, reset } = this.props
+    reset(formName)
     this.setState({ createManually: false })
   }
 
@@ -90,7 +94,7 @@ class CatalogNumberModal extends PureComponent {
                   />
                 </Modal.Description>
               </Modal.Content>
-              <Modal.Actions>
+              <Modal.Actions style={{ textAlign: 'left' }}>
                 <Button disabled={!valid} onClick={handleSubmit}>
                   <ModuleTranslate textKey="other.useThisNumber" />
                 </Button>
@@ -111,7 +115,7 @@ class CatalogNumberModal extends PureComponent {
                   <ModuleTranslate textKey="other.automticCatalogNumber" />
                 </Modal.Description>
               </Modal.Content>
-              <Modal.Actions>
+              <Modal.Actions style={{ textAlign: 'left' }}>
                 <Button onClick={handleSubmit}>
                   <ModuleTranslate textKey="other.yesCreateNumber" />
                 </Button>

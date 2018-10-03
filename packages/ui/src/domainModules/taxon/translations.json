@@ -9,6 +9,10 @@
           "en": "Accepted name rank"
         }
       },
+      "curatorialName": {
+        "en": "Curatorial taxon name",
+        "sv": ""
+      },
       "vernacularNames": {
         "name": {
           "en": "Vernacular names"

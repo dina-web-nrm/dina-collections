@@ -23,7 +23,7 @@ const defaultProps = {
   label: undefined,
   placeholder: undefined,
   rows: 3,
-  style: undefined,
+  style: {},
   type: 'text',
   width: 16,
 }
@@ -52,7 +52,7 @@ const TextAreaInput = ({
       rows={rows}
       type={type}
       {...input}
-      style={style}
+      style={{ width: '100%', ...style }}
       width={width}
     />
   )

@@ -185,6 +185,10 @@
         "en": "Type status",
         "sv": "Typstatus"
       },
+      "typifiedName": {
+        "en": "Typified name",
+        "sv": ""
+      },
       "collectionItemText": {
         "en": "Collection item Text"
       },
@@ -194,10 +198,17 @@
     },
     "locationInformation": {
       "localityV": {
-        "en": "Locality (stated)",
+        "en": "Stated locality",
         "sv": "Angiven (verbatim) lokalitet"
       },
-      "localityI": { "en": "Locality (interpreted)" },
+      "localityI": { 
+        "en": "Interpreted locality",
+        "sv": ""
+      }, 
+      "rt90": { 
+        "en": "RT90 Index 5km",
+        "sv": ""
+      }, 
       "localityRemarks": {
         "en": "Locality remarks",
         "sv": "Lokalitetsnoteringar"
@@ -347,6 +358,16 @@
     "collectingInformation": {
       "en": "collecting information"
     },
+    "localityOrigin": {
+      "en": "collecting location and origin"
+    },
+    "origin": {
+      "en": "origin",
+      "sv": ""
+    },
+    "collecintLocality": {
+      "en": "collecting locality"
+    },
     "curatorialAssessments": {
       "en": "Curatorial assessments",
       "sv": ""
@@ -382,6 +403,22 @@
     },
     "taxon": {
       "en": "taxon"
+    },
+    "taxonomy": {
+      "en": "taxonomy",
+      "sv": ""
+    },
+    "taxonPreferredName": {
+      "en": "taxon name (preferred)",
+      "sv": ""
+    },
+    "taxonOtherNames": {
+      "en": "other names",
+      "sv": ""
+    },
+    "typeInformation": {
+      "en": "Type information",
+      "sv": ""
     }
   },
   "helpTexts": {
@@ -693,6 +730,13 @@
       "specimen": {
         "en": "add remarks for the entire specimen",
         "sv": ""
+      },
+       "taxonomy": {
+        "en": "Add taxonomy remarks..."
+      },
+      "origin": {
+        "en": "Add origin remarks...",
+        "sv": ""
       }
     },
     "resultPrefix": {
@@ -707,8 +751,16 @@
       "specimen": {
         "en": "specimen remarks",
         "sv": ""
+      },
+      "taxonomy": {
+        "en": "taxonomy remarks",
+        "sv": ""
+      },
+      "origin": {
+        "en": "origin remarks",
+        "sv": ""
       }
-    },
+    }, 
     "en": "Remarks"
   },
   "remove": {
@@ -799,6 +851,14 @@
       "en": "Creating a new specimen record",
       "sv": ""
     },
+    "addOtherNames": {
+      "en": "Add other names",
+      "sv": ""
+    },
+    "addTypeStatus": {
+      "en": "Add type status",
+      "sv": ""
+    },
     "addDetermination": {
       "en": "Add determination",
       "sv": "Lägg till bestämning"
@@ -806,6 +866,14 @@
     "addIdentifier": {
       "en": "Add identifier",
       "sv": "Lägg till identifierare"
+    },
+    "addPosition": {
+      "en": "Add position",
+      "sv": ""
+    },
+    "addOrigin": {
+      "en": "Add origin",
+      "sv": ""
     },
     "agent": {
       "en": "Observed by (agent)"
@@ -825,7 +893,7 @@
     "catalogNumber": {
       "en": "Catalog number",
       "sv": "Katalognummer"
-    },
+    }, 
     "cancel": {
       "en": "Cancel",
       "sv": "Avbryt"
@@ -868,8 +936,7 @@
     "editCatalogNumber": {
       "en": "Edit catalog number",
       "sv": "Redigera katalognummer"
-    },
-
+    }, 
     "editCuratorialAssessment": {
       "en": "Edit curatorial assessment",
       "sv": ""

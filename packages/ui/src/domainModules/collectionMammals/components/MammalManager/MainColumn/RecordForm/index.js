@@ -176,6 +176,7 @@ class RecordForm extends Component {
           />
           {mode === 'register' && (
             <CatalogNumberModal
+              formName={form}
               handleSubmit={this.handleSubmitFromModal}
               {...rest}
             />

@@ -5,6 +5,7 @@ import Input from '../../fields/Input'
 import RangeDate from '../../fields/Date/RangeDate'
 import Remarks from '../../fields/Remarks'
 import SingleDate from '../../fields/Date/SingleDate'
+import TextArea from '../../fields/TextArea'
 
 export default wrapReduxFormFieldParts({
   Checkbox,
@@ -12,4 +13,5 @@ export default wrapReduxFormFieldParts({
   RangeDate,
   Remarks,
   SingleDate,
+  TextArea,
 })
