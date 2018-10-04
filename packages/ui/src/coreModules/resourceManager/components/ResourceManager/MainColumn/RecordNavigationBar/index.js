@@ -29,9 +29,19 @@ const propTypes = {
     .isRequired,
   onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
+  showNewRecordButton: PropTypes.bool,
+  showRecordInput: PropTypes.bool,
+  showShowAllButton: PropTypes.bool,
+  showSlider: PropTypes.bool,
+  showTotalRecords: PropTypes.bool,
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
+  showNewRecordButton: true,
+  showRecordInput: true,
+  showShowAllButton: true,
+  showSlider: true,
+  showTotalRecords: true,
   totalNumberOfRecords: undefined,
 }
 
@@ -46,11 +56,16 @@ export class RecordNavigationBar extends Component {
       currentTableRowNumber,
       isLargeScreen,
       onOpenNewRecordForm: handleOpenNewRecordForm,
-      onSetCurrentTableRowNumber: handleSetCurrentTableRowNumber,
       onSelectNextRecord: handleSelectNextRecord,
       onSelectPreviousRecord: handleSelectPreviousRecord,
+      onSetCurrentTableRowNumber: handleSetCurrentTableRowNumber,
       onShowAllRecords: handleShowAllRecords,
       onToggleFilters: handleToggleFilters,
+      showNewRecordButton,
+      showRecordInput,
+      showShowAllButton,
+      showTotalRecords,
+      showSlider,
       totalNumberOfRecords,
     } = this.props
 
@@ -77,84 +92,97 @@ export class RecordNavigationBar extends Component {
               </Button>
             </Button.Group>
           </div>
-          <div style={{ float: 'left', marginLeft: 15, marginTop: 1 }}>
-            <Input
-              disabled={!handleSetCurrentTableRowNumber}
-              max={totalNumberOfRecords}
-              min={totalNumberOfRecords && 1}
-              onChange={event => {
-                handleSetCurrentTableRowNumber(null, event.target.value)
-              }}
-              size="mini"
-              style={{ width: '80px' }}
-              type="number"
-              value={sliderRowNumber || currentTableRowNumber}
-            />
-          </div>
-          {isLargeScreen && (
-            <div
-              className="slider-slim"
-              style={{
-                float: 'left',
-                marginLeft: 15,
-                marginTop: 11,
-                width: 150,
-              }}
-            >
-              <Slider
+          {showRecordInput && (
+            <div style={{ float: 'left', marginLeft: 15, marginTop: 1 }}>
+              <Input
+                disabled={!handleSetCurrentTableRowNumber}
                 max={totalNumberOfRecords}
                 min={totalNumberOfRecords && 1}
-                onChange={newTableRowNumber => {
-                  // those ifs are a needed hack to avoid double increment when
-                  // using hotkey directly after sliding
-                  if (newTableRowNumber === currentTableRowNumber + 1) {
-                    this.setState({ sliderRowNumber: newTableRowNumber - 1 })
-                  } else if (newTableRowNumber === currentTableRowNumber - 1) {
-                    this.setState({ sliderRowNumber: newTableRowNumber + 1 })
-                  } else {
-                    this.setState({ sliderRowNumber: newTableRowNumber })
-                  }
+                onChange={event => {
+                  handleSetCurrentTableRowNumber(null, event.target.value)
                 }}
-                onChangeComplete={() => {
-                  handleSetCurrentTableRowNumber(null, sliderRowNumber)
-                  this.setState({ sliderRowNumber: null })
-                }}
-                step={1}
-                tooltip={false}
+                size="mini"
+                style={{ width: '80px' }}
+                type="number"
                 value={sliderRowNumber || currentTableRowNumber}
               />
             </div>
           )}
-          {handleOpenNewRecordForm ? (
-            <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
-              {totalNumberOfRecords} total records
-            </div>
-          ) : (
-            <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
-              {totalNumberOfRecords} total records
-              <br />
-              <i>*Adding new*</i>
-            </div>
-          )}
+
+          {isLargeScreen &&
+            showSlider && (
+              <div
+                className="slider-slim"
+                style={{
+                  float: 'left',
+                  marginLeft: 15,
+                  marginTop: 11,
+                  width: 150,
+                }}
+              >
+                <Slider
+                  max={totalNumberOfRecords}
+                  min={totalNumberOfRecords && 1}
+                  onChange={newTableRowNumber => {
+                    // those ifs are a needed hack to avoid double increment when
+                    // using hotkey directly after sliding
+                    if (newTableRowNumber === currentTableRowNumber + 1) {
+                      this.setState({ sliderRowNumber: newTableRowNumber - 1 })
+                    } else if (
+                      newTableRowNumber ===
+                      currentTableRowNumber - 1
+                    ) {
+                      this.setState({ sliderRowNumber: newTableRowNumber + 1 })
+                    } else {
+                      this.setState({ sliderRowNumber: newTableRowNumber })
+                    }
+                  }}
+                  onChangeComplete={() => {
+                    handleSetCurrentTableRowNumber(null, sliderRowNumber)
+                    this.setState({ sliderRowNumber: null })
+                  }}
+                  step={1}
+                  tooltip={false}
+                  value={sliderRowNumber || currentTableRowNumber}
+                />
+              </div>
+            )}
+          {showTotalRecords &&
+            (handleOpenNewRecordForm ? (
+              <div style={{ float: 'left', marginLeft: 15, marginTop: 5 }}>
+                {totalNumberOfRecords} total records
+              </div>
+            ) : (
+              <div style={{ float: 'left', marginLeft: 15, marginTop: -3 }}>
+                {totalNumberOfRecords} total records
+                <br />
+                <i>*Adding new*</i>
+              </div>
+            ))}
           <div style={{ float: 'left', marginLeft: 15 }}>
-            <Button
-              disabled={!handleShowAllRecords}
-              icon
-              onClick={event => handleShowAllRecords(event)}
-              size="tiny"
-            >
-              <Icon name="book" />
-              {' Show All'}
-            </Button>
-            <Button
-              disabled={!handleOpenNewRecordForm}
-              icon
-              onClick={event => handleOpenNewRecordForm(event)}
-              size="tiny"
-            >
-              <Icon name="plus" />
-              {' New record'}
-            </Button>
+            {showShowAllButton && (
+              <Button
+                disabled={!handleShowAllRecords}
+                icon
+                onClick={event => handleShowAllRecords(event)}
+                size="tiny"
+              >
+                <Icon name="book" />
+                {' Show All'}
+              </Button>
+            )}
+
+            {showNewRecordButton && (
+              <Button
+                disabled={!handleOpenNewRecordForm}
+                icon
+                onClick={event => handleOpenNewRecordForm(event)}
+                size="tiny"
+              >
+                <Icon name="plus" />
+                {' New record'}
+              </Button>
+            )}
           </div>
           <div style={{ float: 'right' }}>
             <Button
