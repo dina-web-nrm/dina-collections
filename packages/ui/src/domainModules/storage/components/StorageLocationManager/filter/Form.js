@@ -45,7 +45,7 @@ export class BaseForm extends Component {
           <Form error={!!error} onSubmit={handleSubmit(noop)}>
             <Grid textAlign="left" verticalAlign="top">
               <Grid.Row>
-                <Grid.Column width={6}>
+                <Grid.Column width={16}>
                   <FieldWrapper
                     autoComplete="off"
                     component={Input}
@@ -55,7 +55,7 @@ export class BaseForm extends Component {
                     type="text"
                   />
                 </Grid.Column>
-                <Grid.Column width={6}>
+                <Grid.Column width={16}>
                   <FieldWrapper
                     autoComplete="off"
                     component={DropdownSearch}
