@@ -39,7 +39,7 @@ export class LocalityDropdownPickerSearch extends Component {
         : undefined
 
       return (
-        <Modal onClose={onClose} open>
+        <Modal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <LocalityManager
               initialFilterValues={initialFilterValues}
