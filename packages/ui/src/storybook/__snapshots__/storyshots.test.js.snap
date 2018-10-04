@@ -6708,7 +6708,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50001
-         Total records
+         total records
       </div>
       <div
         style={
@@ -6719,7 +6719,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -6729,10 +6729,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -6742,7 +6742,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -6853,7 +6853,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -6864,7 +6864,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -6874,10 +6874,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -6887,7 +6887,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -6998,7 +6998,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -7009,7 +7009,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7019,10 +7019,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7032,7 +7032,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -7143,7 +7143,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -7154,7 +7154,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7164,10 +7164,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7177,7 +7177,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -7288,7 +7288,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -7299,7 +7299,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7309,10 +7309,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7322,7 +7322,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -7433,7 +7433,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -7444,7 +7444,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7454,10 +7454,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7467,7 +7467,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -7578,7 +7578,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -7589,7 +7589,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7599,10 +7599,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7612,7 +7612,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -7723,7 +7723,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
         <br />
         <i>
           *Adding new*
@@ -7738,7 +7738,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon disabled button"
+          className="ui tiny icon disabled button"
           disabled={true}
           onClick={[Function]}
           role="button"
@@ -7748,10 +7748,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon disabled button"
+          className="ui tiny icon disabled button"
           disabled={true}
           onClick={[Function]}
           role="button"
@@ -7761,7 +7761,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -7872,7 +7872,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -7883,7 +7883,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7893,10 +7893,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -7906,7 +7906,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
@@ -8017,7 +8017,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         50000
-         Total records
+         total records
       </div>
       <div
         style={
@@ -8028,7 +8028,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
         }
       >
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -8038,10 +8038,10 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="book icon"
           />
-          Show All
+           Show All
         </button>
         <button
-          className="ui icon button"
+          className="ui tiny icon button"
           disabled={undefined}
           onClick={[Function]}
           role="button"
@@ -8051,7 +8051,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             aria-hidden="true"
             className="plus icon"
           />
-          New record
+           New record
         </button>
       </div>
       <div
