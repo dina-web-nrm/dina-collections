@@ -63,7 +63,7 @@ class MultipleChoiceCheckboxes extends Component {
     return this.props
       .search(this.buildQuery(undefined, { getAll: true }))
       .then(allSearchResults => {
-        const allIds = allSearchResults.map(({ id }) => id)
+        const allIds = allSearchResults.map(({ id }) => id).sort()
         this.setState({
           allIds,
         })

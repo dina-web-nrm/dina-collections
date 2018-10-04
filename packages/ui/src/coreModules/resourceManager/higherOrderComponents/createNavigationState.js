@@ -16,6 +16,7 @@ import {
 const createResourceUrlState = () => ComposedComponent => {
   const propTypes = {
     clearState: PropTypes.func.isRequired,
+    isPicker: PropTypes.bool,
     onInteraction: PropTypes.func,
     state: PropTypes.object.isRequired,
     treeEnabled: PropTypes.bool.isRequired,
@@ -23,6 +24,7 @@ const createResourceUrlState = () => ComposedComponent => {
   }
 
   const defaultProps = {
+    isPicker: false,
     onInteraction: undefined,
   }
 
@@ -90,26 +92,26 @@ const createResourceUrlState = () => ComposedComponent => {
     }
 
     closeItemView() {
-      this.props.clearState(['itemColumn'])
+      this.props.clearState(['filterColumn'])
     }
 
     navigateEdit(itemId) {
       this.props.updateState({
-        itemColumn: 'edit',
         itemId,
+        mainColumn: 'edit',
       })
     }
 
     navigateFilter() {
       this.props.updateState({
-        collectionColumn: 'table',
-        itemColumn: 'filter',
+        filterColumn: 'filter',
+        mainColumn: 'table',
       })
     }
 
     navigateCreate() {
       this.props.updateState({
-        itemColumn: 'create',
+        mainColumn: 'create',
       })
     }
 
@@ -119,38 +121,39 @@ const createResourceUrlState = () => ComposedComponent => {
 
     navigateList() {
       this.props.updateState({
-        collectionColumn: 'table',
+        mainColumn: 'table',
       })
     }
 
     navigateTree() {
       this.props.updateState({
-        collectionColumn: 'tree',
+        mainColumn: 'tree',
       })
     }
 
     render() {
-      const { state, treeEnabled } = this.props
+      const { state, treeEnabled, isPicker } = this.props
 
       const {
-        collectionColumn = treeEnabled ? 'tree' : 'table',
-        itemColumn,
+        mainColumn = treeEnabled ? 'tree' : 'table',
+        filterColumn,
         itemId,
       } = state
 
       return (
         <ComposedComponent
           {...this.props}
-          createItemActive={itemColumn === 'create'}
-          editItemActive={itemColumn === 'edit'}
-          filterActive={itemColumn === 'filter'}
+          createItemActive={!isPicker && mainColumn === 'create'}
+          editItemActive={!isPicker && mainColumn === 'edit'}
+          filterActive={filterColumn === 'filter'}
+          itemEnabled={!isPicker}
           itemId={itemId}
           navigateCreate={this.navigateCreate}
           navigateEdit={this.navigateEdit}
           navigateRoot={this.navigateRoot}
           onNavigation={this.handleNavigation}
-          tableActive={collectionColumn === 'table'}
-          treeActive={collectionColumn === 'tree'}
+          tableActive={mainColumn === 'table'}
+          treeActive={mainColumn === 'tree'}
           treeEnabled={treeEnabled}
         />
       )

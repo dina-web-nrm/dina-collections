@@ -39,7 +39,7 @@ export class StorageLocationDropdownPickerSearch extends Component {
 
     if (pickerActive) {
       return (
-        <Modal onClose={onClose} open size="fullscreen">
+        <Modal onClose={onClose} open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <StorageLocationManager
               initialFilterValues={initialFilterValues}

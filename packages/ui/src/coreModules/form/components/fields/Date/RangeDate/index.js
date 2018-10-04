@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
-
 import config from 'config'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 import { emToPixels } from 'coreModules/layout/utilities'
@@ -72,6 +71,7 @@ const propTypes = {
   meta: PropTypes.object.isRequired,
   module: PropTypes.string,
   mountHidden: PropTypes.bool,
+  stack: PropTypes.bool,
 }
 
 const defaultProps = {
@@ -82,6 +82,7 @@ const defaultProps = {
   initialDateType: 'single',
   module: 'form',
   mountHidden: config.isTest,
+  stack: false,
 }
 
 class DateRange extends Component {
@@ -221,11 +222,11 @@ class DateRange extends Component {
       meta,
       module,
       mountHidden,
+      stack,
     } = this.props
     const { dateType } = this.state
 
     const hasError = meta.touched && !!meta.error
-
     return (
       <FieldTemplate
         displayError={hasError}
@@ -248,34 +249,64 @@ class DateRange extends Component {
             onDateTypeChange={this.handleDateTypeChange}
           />
         )}
-        <DatePart
-          disabled={dateType === LATEST}
-          displayLabel={displaySubLabels}
-          input={this.getFieldInput('startDate')}
-          isStartDate
-          meta={{}}
-          setYearInputRef={this.setStartYearInputRef}
-        />
-        {dateType !== SINGLE && (
-          <div
-            style={{
-              float: 'left',
-              marginTop: '1.75em',
-              textAlign: 'center',
-              width: '2em',
-            }}
-          >
-            {'–'}
-          </div>
+        {!stack && (
+          <React.Fragment>
+            <DatePart
+              disabled={dateType === LATEST}
+              displayLabel={displaySubLabels}
+              input={this.getFieldInput('startDate')}
+              isStartDate
+              meta={{}}
+              setYearInputRef={this.setStartYearInputRef}
+            />
+            {dateType !== SINGLE && (
+              <div
+                style={{
+                  float: 'left',
+                  marginTop: '1.75em',
+                  textAlign: 'center',
+                  width: '2em',
+                }}
+              >
+                {'–'}
+              </div>
+            )}
+            <DatePart
+              displayLabel={displaySubLabels}
+              hidden={dateType === SINGLE}
+              input={this.getFieldInput('endDate')}
+              isEndDate
+              meta={{}}
+              setYearInputRef={this.setEndYearInputRef}
+            />
+          </React.Fragment>
         )}
-        <DatePart
-          displayLabel={displaySubLabels}
-          hidden={dateType === SINGLE}
-          input={this.getFieldInput('endDate')}
-          isEndDate
-          meta={{}}
-          setYearInputRef={this.setEndYearInputRef}
-        />
+
+        {stack && (
+          <React.Fragment>
+            <div style={{ float: 'left', width: '100%' }}>
+              <DatePart
+                disabled={dateType === LATEST}
+                displayLabel={displaySubLabels}
+                input={this.getFieldInput('startDate')}
+                isStartDate
+                meta={{}}
+                setYearInputRef={this.setStartYearInputRef}
+              />
+            </div>
+            <div style={{ float: 'left', width: '100%' }}>
+              <DatePart
+                displayLabel={displaySubLabels}
+                hidden={dateType === SINGLE}
+                input={this.getFieldInput('endDate')}
+                isEndDate
+                meta={{}}
+                setYearInputRef={this.setEndYearInputRef}
+              />
+            </div>
+          </React.Fragment>
+        )}
+
         {mountHidden && (
           <input
             className="hidden"

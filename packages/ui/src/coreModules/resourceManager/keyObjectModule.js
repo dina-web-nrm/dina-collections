@@ -9,6 +9,7 @@ const {
 } = keyObjectModuleFactory({
   actionPrefix: 'RESOURCE_MANAGER',
   keys: [
+    ':resource',
     ':resource.baseItems',
     ':resource.currentTableRowNumber',
     ':resource.expandedIds',

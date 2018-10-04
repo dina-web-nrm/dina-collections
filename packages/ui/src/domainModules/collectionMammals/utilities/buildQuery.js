@@ -145,8 +145,12 @@ const OBJECT_FILTER_FORM_PARTIAL_KEYS = [
   'weight',
 ]
 
-const buildRangeDateFilter = (dateType, { start, end }) => {
-  if (dateType === undefined && start === undefined && end === undefined) {
+const buildRangeDateFilter = (dateType, { startDate, endDate }) => {
+  if (
+    dateType === undefined &&
+    startDate === undefined &&
+    endDate === undefined
+  ) {
     return null
   }
 
@@ -156,8 +160,8 @@ const buildRangeDateFilter = (dateType, { start, end }) => {
       input: {
         value: {
           dateType,
-          end: end && end.interpretedTimestamp,
-          start: start && start.interpretedTimestamp,
+          end: endDate && endDate.interpretedTimestamp,
+          start: startDate && startDate.interpretedTimestamp,
         },
       },
     },
@@ -204,7 +208,7 @@ const getAndFiltersFromObjectFilters = objectFiltersMap => {
   return Object.keys(objectFiltersMap)
     .map(partialKey => {
       const values = objectFiltersMap[partialKey]
-      const { end, max, min, start } = values
+      const { endDate, max, min, startDate } = values
 
       switch (partialKey) {
         case 'ageAndStage': {
@@ -241,9 +245,8 @@ const getAndFiltersFromObjectFilters = objectFiltersMap => {
         case 'date': {
           const dateTypeFieldName = 'dateType|multipleChoice-matchDateTags'
           const dateTypeTags = values[dateTypeFieldName]
-
           if (dateTypeTags && dateTypeTags.length) {
-            if (start === undefined && end === undefined) {
+            if (startDate === undefined && endDate === undefined) {
               return getMultipleChoiceFilter(dateTypeFieldName, dateTypeTags)
             }
 
@@ -259,7 +262,7 @@ const getAndFiltersFromObjectFilters = objectFiltersMap => {
             }
           }
 
-          if (start === undefined && end === undefined) {
+          if (startDate === undefined && endDate === undefined) {
             return null
           }
 

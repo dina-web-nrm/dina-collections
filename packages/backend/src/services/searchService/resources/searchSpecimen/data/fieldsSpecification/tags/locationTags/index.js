@@ -33,13 +33,13 @@ const transformation = ({ migrator, target, locals }) => {
 
   if (normalizedLocalities) {
     normalizedLocalities.forEach(normalizedLocality => {
-      tags.push(`${normalizedLocality} (normalized)`)
+      tags.push(`${normalizedLocality} (collecting, interpreted)`)
     })
   }
 
   if (transcribedLocalities) {
     transcribedLocalities.forEach(transcribedLocality => {
-      tags.push(`${transcribedLocality} (transcribed)`)
+      tags.push(`${transcribedLocality} (collecting, stated)`)
     })
   }
 

@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { Icon, Menu } from 'semantic-ui-react'
 
 const propTypes = {
+  createItemActive: PropTypes.bool.isRequired,
+  editItemActive: PropTypes.bool.isRequired,
+  itemEnabled: PropTypes.bool.isRequired,
+  onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
   onListTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onTreeTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -15,6 +20,10 @@ const propTypes = {
 export class ResultOptionsBar extends Component {
   render() {
     const {
+      createItemActive,
+      editItemActive,
+      itemEnabled,
+      onFormTabClick: handleFormTabClick,
       onListTabClick: handleListTabClick,
       onTreeTabClick: handleTreeTabClick,
       tableActive,
@@ -24,13 +33,23 @@ export class ResultOptionsBar extends Component {
 
     return (
       <Menu attached="top" tabular>
+        {itemEnabled && (
+          <Menu.Item
+            active={createItemActive || editItemActive}
+            name="form"
+            onClick={event => handleFormTabClick(event)}
+          >
+            <Icon name="wordpress forms" />
+          </Menu.Item>
+        )}
+
         {treeEnabled && (
           <Menu.Item
             active={treeActive}
             name="form"
             onClick={event => handleTreeTabClick(event)}
           >
-            <Icon name="sitemap" size="large" />
+            <Icon name="sitemap" />
           </Menu.Item>
         )}
 
@@ -39,7 +58,7 @@ export class ResultOptionsBar extends Component {
           name="table"
           onClick={event => handleListTabClick(event)}
         >
-          <Icon name="table" size="large" />
+          <Icon name="table" />
         </Menu.Item>
       </Menu>
     )

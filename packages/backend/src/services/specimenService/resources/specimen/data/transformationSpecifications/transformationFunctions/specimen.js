@@ -32,4 +32,18 @@ module.exports = function migrateSpecimen({
     path: 'attributes.publishRecord',
     value: publishCoord === 'Y' && publishRecord === 'Y',
   })
+
+  const remarks = migrator.getValue({
+    obj: src,
+    path: 'objects.Comments',
+    strip: true,
+  })
+
+  if (remarks) {
+    migrator.setValue({
+      obj: target,
+      path: 'attributes.remarks',
+      value: remarks,
+    })
+  }
 }

@@ -1,3 +1,12 @@
+TODO
+* Fix throttle search in search
+* move find to row below
+* hide columns outside frame
+* make filters slim and stack stuff
+
+
+
+
 * When removing place
 ** In RM -> list is not updated (removed item should be removed). Reference to parent id from child is kept when parent is removed. in the resource dropdown this should be visible
 ** Search index is not updated when update item is removed due to 404 call. Should be kept in index but request marked as deleted in result

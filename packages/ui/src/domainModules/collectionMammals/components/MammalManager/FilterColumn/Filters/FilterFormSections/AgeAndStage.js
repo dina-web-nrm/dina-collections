@@ -20,18 +20,6 @@ class AgeStageFilterForm extends PureComponent {
 
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Column width={16}>
-          <Field
-            aggregationFunctionName="aggregateAgeStageTags"
-            component={MultipleChoiceCheckboxesField}
-            displayCount
-            drillDownQuery={getDrilldownQuery(stageFieldName)}
-            filterFunctionName={ageStageFilter}
-            label="Age stage"
-            name={stageFieldName}
-            resource="searchSpecimen"
-          />
-        </Grid.Column>
         <Grid.Row>
           <Grid.Column width={16}>Age in years</Grid.Column>
           <Grid.Column width={7}>
@@ -60,6 +48,18 @@ class AgeStageFilterForm extends PureComponent {
             />
           </Grid.Column>
         </Grid.Row>
+        <Grid.Column width={16}>
+          <Field
+            aggregationFunctionName="aggregateAgeStageTags"
+            component={MultipleChoiceCheckboxesField}
+            displayCount
+            drillDownQuery={getDrilldownQuery(stageFieldName)}
+            filterFunctionName={ageStageFilter}
+            label="Development stage"
+            name={stageFieldName}
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
       </Grid>
     )
   }

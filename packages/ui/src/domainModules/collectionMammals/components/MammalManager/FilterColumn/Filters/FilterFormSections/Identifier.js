@@ -25,7 +25,7 @@ class IdentifierFilterForm extends PureComponent {
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(name)}
             filterFunctionName={`search${identifierTags}`}
-            label="Identifier name"
+            label="Identifier"
             name={name}
             resource="searchSpecimen"
           />

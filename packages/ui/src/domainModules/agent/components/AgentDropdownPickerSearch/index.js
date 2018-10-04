@@ -66,7 +66,7 @@ export class AgentDropdownPickerSearch extends Component {
         : undefined
 
       return (
-        <Modal open size="fullscreen">
+        <Modal open style={{ overflow: 'hidden' }}>
           <Modal.Content>
             <AgentManager
               initialFilterValues={initialFilterValues}
