@@ -1,4 +1,5 @@
 const boneValueMap = {
+  Bacculum: 'bacculum',
   Costae: 'costae',
   Cranium: 'cranium',
   Femur: 'femur',
