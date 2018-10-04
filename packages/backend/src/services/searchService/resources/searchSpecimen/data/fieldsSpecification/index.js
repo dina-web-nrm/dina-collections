@@ -23,6 +23,7 @@ const storageLocationTags = require('./tags/storageLocationTags')
 const taxonomyTags = require('./tags/taxonomyTags')
 const weightTags = require('./tags/weightTags')
 const wetPreparationTags = require('./tags/wetPreparationTags')
+const identifierTagTypes = require('./tags/identifierTagTypes')
 
 const collectingEventCollectors = require('./fields/collectingEventCollectors')
 const collectingEventCountry = require('./fields/collectingEventCountry')
@@ -71,6 +72,7 @@ module.exports = {
     conditionTags,
     dateTags,
     identifierTags,
+    identifierTagTypes,
     lengthTags,
     locationTags,
     placeIdTags,
