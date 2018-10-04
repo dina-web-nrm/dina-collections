@@ -22,7 +22,7 @@ import PickerHeader from './picker/Header'
 import PickerActionBar from './picker/ActionBar'
 
 const TOP_NAVBAR_HEIGHT = emToPixels(3.4375)
-const PICKER_MODAL_PADDING = emToPixels(3.5)
+const PICKER_MODAL_PADDING = emToPixels(10)
 const PICKER_HEADER_HEIGHT = emToPixels(3.5)
 const PICKER_ACTION_BAR_HEIGHT = emToPixels(5)
 
