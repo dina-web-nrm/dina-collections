@@ -4,24 +4,29 @@ import { Grid, Header, Icon } from 'semantic-ui-react'
 
 const propTypes = {
   onClose: PropTypes.func.isRequired,
+  showCloseButton: PropTypes.bool,
 }
 
-const defaultProps = {}
+const defaultProps = {
+  showCloseButton: false,
+}
 
 const ItemHeader = props => {
-  const { onClose } = props
+  const { onClose, showCloseButton } = props
 
   return (
     <Grid padded>
       <Grid.Column>
         <Header>
           Create
-          <Icon
-            name="close"
-            onClick={onClose}
-            size="small"
-            style={{ float: 'right' }}
-          />
+          {showCloseButton && (
+            <Icon
+              name="close"
+              onClick={onClose}
+              size="small"
+              style={{ float: 'right' }}
+            />
+          )}
         </Header>
       </Grid.Column>
     </Grid>

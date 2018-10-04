@@ -8,25 +8,29 @@ import { createInjectItemTitle } from 'coreModules/resourceManager/higherOrderCo
 const propTypes = {
   itemTitle: PropTypes.node,
   onClose: PropTypes.func.isRequired,
+  showCloseButton: PropTypes.bool,
 }
 
 const defaultProps = {
   itemTitle: undefined,
+  showCloseButton: false,
 }
 
 const ItemHeader = props => {
-  const { itemTitle, onClose } = props
+  const { itemTitle, onClose, showCloseButton } = props
   return (
     <Grid padded>
       <Grid.Column>
         <Header>
           Edit: {itemTitle}
-          <Icon
-            name="close"
-            onClick={onClose}
-            size="small"
-            style={{ float: 'right' }}
-          />
+          {showCloseButton && (
+            <Icon
+              name="close"
+              onClick={onClose}
+              size="small"
+              style={{ float: 'right' }}
+            />
+          )}
         </Header>
       </Grid.Column>
     </Grid>
