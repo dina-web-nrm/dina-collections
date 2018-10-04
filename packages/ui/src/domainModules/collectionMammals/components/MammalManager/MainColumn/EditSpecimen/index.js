@@ -27,7 +27,9 @@ const mapDispatchToProps = {
 }
 
 const propTypes = {
+  clearNestedCacheNamespace: PropTypes.func.isRequired,
   featureTypes: PropTypes.array.isRequired,
+  fetchItemById: PropTypes.func.isRequired,
   nestedItem: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
 }
@@ -38,7 +40,18 @@ const defaultProps = {
 
 class EditSpecimen extends PureComponent {
   render() {
-    const { nestedItem, updateSpecimen, featureTypes, ...rest } = this.props
+    const {
+      clearNestedCacheNamespace,
+      fetchItemById,
+      nestedItem,
+      updateSpecimen,
+      featureTypes,
+      ...rest
+    } = this.props
+
+    if (!nestedItem) {
+      return null
+    }
 
     const initialValues = setDefaultValues({
       featureTypes,
@@ -58,6 +71,8 @@ class EditSpecimen extends PureComponent {
           return updateSpecimen({
             item,
             throwError: true,
+          }).then(() => {
+            return fetchItemById(item.id)
           })
         }}
         initialValues={initialValues}
@@ -84,7 +99,7 @@ export default compose(
       'taxonNames',
     ],
     relationships: ['all'],
-    resolveRelationships: ['physicalObject'],
+    resolveRelationships: ['physicalObject', 'storageLocation'],
     resource: 'specimen',
   }),
   connect(mapStateToProps, mapDispatchToProps)
