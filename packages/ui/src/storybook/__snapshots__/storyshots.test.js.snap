@@ -5980,7 +5980,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Agent
+              Collector
             </span>
           </div>
           <div
@@ -6004,7 +6004,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Physical object
+              Preparation type
             </span>
           </div>
           <div
@@ -6052,7 +6052,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Age and stage
+              Age & development
             </span>
           </div>
           <div
@@ -6100,7 +6100,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Bones
+              Carcass condition
             </span>
           </div>
           <div
@@ -6172,7 +6172,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Fil
             className="fourteen wide column"
           >
             <span>
-              Collecting condition
+              Bones
             </span>
           </div>
           <div
