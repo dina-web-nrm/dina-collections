@@ -5,6 +5,7 @@ import { Icon, Menu } from 'semantic-ui-react'
 const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
+  itemEnabled: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onListTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
@@ -21,6 +22,7 @@ export class ResultOptionsBar extends Component {
     const {
       createItemActive,
       editItemActive,
+      itemEnabled,
       onFormTabClick: handleFormTabClick,
       onListTabClick: handleListTabClick,
       onTreeTabClick: handleTreeTabClick,
@@ -31,13 +33,15 @@ export class ResultOptionsBar extends Component {
 
     return (
       <Menu attached="top" tabular>
-        <Menu.Item
-          active={createItemActive || editItemActive}
-          name="form"
-          onClick={event => handleFormTabClick(event)}
-        >
-          <Icon name="wordpress forms" />
-        </Menu.Item>
+        {itemEnabled && (
+          <Menu.Item
+            active={createItemActive || editItemActive}
+            name="form"
+            onClick={event => handleFormTabClick(event)}
+          >
+            <Icon name="wordpress forms" />
+          </Menu.Item>
+        )}
 
         {treeEnabled && (
           <Menu.Item
