@@ -342,7 +342,8 @@ const createResourceManagerWrapper = (
       return []
     }
 
-    handleKeyDown({ key }) {
+    handleKeyDown(event) {
+      const { key } = event
       switch (key) {
         case 'ArrowDown': {
           return this.handleSelectNextRecord()
@@ -358,6 +359,7 @@ const createResourceManagerWrapper = (
         }
 
         case 'Enter': {
+          event.preventDefault()
           return this.selectCurrentRow()
         }
 
