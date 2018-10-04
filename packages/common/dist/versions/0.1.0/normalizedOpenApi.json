@@ -8735,6 +8735,7 @@
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.identifierTagTypes",
                   "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
@@ -8801,6 +8802,7 @@
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.identifierTagTypes",
                   "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
@@ -9008,7 +9010,7 @@
               }
             }
           },
-          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***rangeAge*** <br/> Match for attributes.searchOnlyFields.searchAge <br/> <br/>  ***searchDates*** <br/> Search data <br/> <br/>  ***rangeLength*** <br/> Search length <br/> <br/>  ***rangeWeight*** <br/> Search weight <br/> <br/>  ***matchAgentTags*** <br/> Match for attributes.tags.agentTags <br/> <br/>  ***searchAgentTags*** <br/> Search attributes.tags.agentTags <br/> <br/>  ***matchAgeStageTags*** <br/> Match for attributes.tags.ageStageTags <br/> <br/>  ***searchAgeStageTags*** <br/> Search attributes.tags.ageStageTags <br/> <br/>  ***matchBoneTags*** <br/> Match for attributes.tags.boneTags <br/> <br/>  ***searchBoneTags*** <br/> Search attributes.tags.boneTags <br/> <br/>  ***matchConditionTags*** <br/> Match for attributes.tags.conditionTags <br/> <br/>  ***searchConditionTags*** <br/> Search attributes.tags.conditionTags <br/> <br/>  ***matchDateTags*** <br/> Match for attributes.tags.dateTags <br/> <br/>  ***searchDateTags*** <br/> Search attributes.tags.dateTags <br/> <br/>  ***matchIdentifierTags*** <br/> Match for attributes.tags.identifierTags <br/> <br/>  ***searchIdentifierTags*** <br/> Search attributes.tags.identifierTags <br/> <br/>  ***matchLengthTags*** <br/> Match for attributes.tags.lengthTags <br/> <br/>  ***searchLengthTags*** <br/> Search attributes.tags.lengthTags <br/> <br/>  ***matchLocationTags*** <br/> Match for attributes.tags.locationTags <br/> <br/>  ***searchLocationTags*** <br/> Search attributes.tags.locationTags <br/> <br/>  ***matchPlaceIdTags*** <br/> Match for attributes.tags.placeIdTags <br/> <br/>  ***searchPlaceIdTags*** <br/> Search attributes.tags.placeIdTags <br/> <br/>  ***matchSexTags*** <br/> Match for attributes.tags.sexTags <br/> <br/>  ***searchSexTags*** <br/> Search attributes.tags.sexTags <br/> <br/>  ***matchSkeletonTags*** <br/> Match for attributes.tags.skeletonTags <br/> <br/>  ***searchSkeletonTags*** <br/> Search attributes.tags.skeletonTags <br/> <br/>  ***matchSkinTags*** <br/> Match for attributes.tags.skinTags <br/> <br/>  ***searchSkinTags*** <br/> Search attributes.tags.skinTags <br/> <br/>  ***matchStorageLocationTags*** <br/> Match for attributes.tags.storageLocationTags <br/> <br/>  ***searchStorageLocationTags*** <br/> Search attributes.tags.storageLocationTags <br/> <br/>  ***matchTaxonomyTags*** <br/> Match for attributes.tags.taxonomyTags <br/> <br/>  ***searchTaxonomyTags*** <br/> Search attributes.tags.taxonomyTags <br/> <br/>  ***matchWeightTags*** <br/> Match for attributes.tags.weightTags <br/> <br/>  ***searchWeightTags*** <br/> Search attributes.tags.weightTags <br/> <br/>  ***matchWetPreparationTags*** <br/> Match for attributes.tags.wetPreparationTags <br/> <br/>  ***searchWetPreparationTags*** <br/> Search attributes.tags.wetPreparationTags <br/>\n\n  \n  <br/>\n\n  \n**Available aggregation functions:**\n***\n<br/>\n\n ***aggregateAgentTags*** <br/> Aggregation for: attributes.tags.agentTags <br/> <br/>  ***aggregateAgeStageTags*** <br/> Aggregation for: attributes.tags.ageStageTags <br/> <br/>  ***aggregateBoneTags*** <br/> Aggregation for: attributes.tags.boneTags <br/> <br/>  ***aggregateConditionTags*** <br/> Aggregation for: attributes.tags.conditionTags <br/> <br/>  ***aggregateDateTags*** <br/> Aggregation for: attributes.tags.dateTags <br/> <br/>  ***aggregateIdentifierTags*** <br/> Aggregation for: attributes.tags.identifierTags <br/> <br/>  ***aggregateLengthTags*** <br/> Aggregation for: attributes.tags.lengthTags <br/> <br/>  ***aggregateLocationTags*** <br/> Aggregation for: attributes.tags.locationTags <br/> <br/>  ***aggregatePlaceIdTags*** <br/> Aggregation for: attributes.tags.placeIdTags <br/> <br/>  ***aggregateSexTags*** <br/> Aggregation for: attributes.tags.sexTags <br/> <br/>  ***aggregateSkeletonTags*** <br/> Aggregation for: attributes.tags.skeletonTags <br/> <br/>  ***aggregateSkinTags*** <br/> Aggregation for: attributes.tags.skinTags <br/> <br/>  ***aggregateStorageLocationTags*** <br/> Aggregation for: attributes.tags.storageLocationTags <br/> <br/>  ***aggregateTaxonomyTags*** <br/> Aggregation for: attributes.tags.taxonomyTags <br/> <br/>  ***aggregateWeightTags*** <br/> Aggregation for: attributes.tags.weightTags <br/> <br/>  ***aggregateWetPreparationTags*** <br/> Aggregation for: attributes.tags.wetPreparationTags <br/>\n\n  "
+          "description": "\n  \n**Available filter functions:**\n***\n<br/>\n\n ***id*** <br/> Filter by id <br/> <br/>  ***raw*** <br/> Raw filtering for elasticsearch <br/> <br/>  ***ids*** <br/> Filter by ids <br/> <br/>  ***rangeAge*** <br/> Match for attributes.searchOnlyFields.searchAge <br/> <br/>  ***searchDates*** <br/> Search data <br/> <br/>  ***rangeLength*** <br/> Search length <br/> <br/>  ***rangeWeight*** <br/> Search weight <br/> <br/>  ***matchAgentTags*** <br/> Match for attributes.tags.agentTags <br/> <br/>  ***searchAgentTags*** <br/> Search attributes.tags.agentTags <br/> <br/>  ***matchAgeStageTags*** <br/> Match for attributes.tags.ageStageTags <br/> <br/>  ***searchAgeStageTags*** <br/> Search attributes.tags.ageStageTags <br/> <br/>  ***matchBoneTags*** <br/> Match for attributes.tags.boneTags <br/> <br/>  ***searchBoneTags*** <br/> Search attributes.tags.boneTags <br/> <br/>  ***matchConditionTags*** <br/> Match for attributes.tags.conditionTags <br/> <br/>  ***searchConditionTags*** <br/> Search attributes.tags.conditionTags <br/> <br/>  ***matchDateTags*** <br/> Match for attributes.tags.dateTags <br/> <br/>  ***searchDateTags*** <br/> Search attributes.tags.dateTags <br/> <br/>  ***matchIdentifierTags*** <br/> Match for attributes.tags.identifierTags <br/> <br/>  ***searchIdentifierTags*** <br/> Search attributes.tags.identifierTags <br/> <br/>  ***matchIdentifierTagTypes*** <br/> Match for attributes.tags.identifierTagTypes <br/> <br/>  ***searchIdentifierTagTypes*** <br/> Search attributes.tags.identifierTagTypes <br/> <br/>  ***matchLengthTags*** <br/> Match for attributes.tags.lengthTags <br/> <br/>  ***searchLengthTags*** <br/> Search attributes.tags.lengthTags <br/> <br/>  ***matchLocationTags*** <br/> Match for attributes.tags.locationTags <br/> <br/>  ***searchLocationTags*** <br/> Search attributes.tags.locationTags <br/> <br/>  ***matchPlaceIdTags*** <br/> Match for attributes.tags.placeIdTags <br/> <br/>  ***searchPlaceIdTags*** <br/> Search attributes.tags.placeIdTags <br/> <br/>  ***matchSexTags*** <br/> Match for attributes.tags.sexTags <br/> <br/>  ***searchSexTags*** <br/> Search attributes.tags.sexTags <br/> <br/>  ***matchSkeletonTags*** <br/> Match for attributes.tags.skeletonTags <br/> <br/>  ***searchSkeletonTags*** <br/> Search attributes.tags.skeletonTags <br/> <br/>  ***matchSkinTags*** <br/> Match for attributes.tags.skinTags <br/> <br/>  ***searchSkinTags*** <br/> Search attributes.tags.skinTags <br/> <br/>  ***matchStorageLocationTags*** <br/> Match for attributes.tags.storageLocationTags <br/> <br/>  ***searchStorageLocationTags*** <br/> Search attributes.tags.storageLocationTags <br/> <br/>  ***matchTaxonomyTags*** <br/> Match for attributes.tags.taxonomyTags <br/> <br/>  ***searchTaxonomyTags*** <br/> Search attributes.tags.taxonomyTags <br/> <br/>  ***matchWeightTags*** <br/> Match for attributes.tags.weightTags <br/> <br/>  ***searchWeightTags*** <br/> Search attributes.tags.weightTags <br/> <br/>  ***matchWetPreparationTags*** <br/> Match for attributes.tags.wetPreparationTags <br/> <br/>  ***searchWetPreparationTags*** <br/> Search attributes.tags.wetPreparationTags <br/>\n\n  \n  <br/>\n\n  \n**Available aggregation functions:**\n***\n<br/>\n\n ***aggregateAgentTags*** <br/> Aggregation for: attributes.tags.agentTags <br/> <br/>  ***aggregateAgeStageTags*** <br/> Aggregation for: attributes.tags.ageStageTags <br/> <br/>  ***aggregateBoneTags*** <br/> Aggregation for: attributes.tags.boneTags <br/> <br/>  ***aggregateConditionTags*** <br/> Aggregation for: attributes.tags.conditionTags <br/> <br/>  ***aggregateDateTags*** <br/> Aggregation for: attributes.tags.dateTags <br/> <br/>  ***aggregateIdentifierTags*** <br/> Aggregation for: attributes.tags.identifierTags <br/> <br/>  ***aggregateIdentifierTagTypes*** <br/> Aggregation for: attributes.tags.identifierTagTypes <br/> <br/>  ***aggregateLengthTags*** <br/> Aggregation for: attributes.tags.lengthTags <br/> <br/>  ***aggregateLocationTags*** <br/> Aggregation for: attributes.tags.locationTags <br/> <br/>  ***aggregatePlaceIdTags*** <br/> Aggregation for: attributes.tags.placeIdTags <br/> <br/>  ***aggregateSexTags*** <br/> Aggregation for: attributes.tags.sexTags <br/> <br/>  ***aggregateSkeletonTags*** <br/> Aggregation for: attributes.tags.skeletonTags <br/> <br/>  ***aggregateSkinTags*** <br/> Aggregation for: attributes.tags.skinTags <br/> <br/>  ***aggregateStorageLocationTags*** <br/> Aggregation for: attributes.tags.storageLocationTags <br/> <br/>  ***aggregateTaxonomyTags*** <br/> Aggregation for: attributes.tags.taxonomyTags <br/> <br/>  ***aggregateWeightTags*** <br/> Aggregation for: attributes.tags.weightTags <br/> <br/>  ***aggregateWetPreparationTags*** <br/> Aggregation for: attributes.tags.wetPreparationTags <br/>\n\n  "
         },
         "responses": {
           "200": {
@@ -9233,6 +9235,24 @@
           },
           {
             "in": "query",
+            "name": "filter[matchIdentifierTagTypes]",
+            "description": "Match for attributes.tags.identifierTagTypes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[searchIdentifierTagTypes]",
+            "description": "Search attributes.tags.identifierTagTypes",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
             "name": "filter[matchLengthTags]",
             "description": "Match for attributes.tags.lengthTags",
             "required": false,
@@ -9447,6 +9467,7 @@
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.identifierTagTypes",
                   "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
@@ -9513,6 +9534,7 @@
                   "attributes.tags.conditionTags",
                   "attributes.tags.dateTags",
                   "attributes.tags.identifierTags",
+                  "attributes.tags.identifierTagTypes",
                   "attributes.tags.lengthTags",
                   "attributes.tags.locationTags",
                   "attributes.tags.placeIdTags",
@@ -41488,6 +41510,7 @@
                         "attributes.tags.conditionTags",
                         "attributes.tags.dateTags",
                         "attributes.tags.identifierTags",
+                        "attributes.tags.identifierTagTypes",
                         "attributes.tags.lengthTags",
                         "attributes.tags.locationTags",
                         "attributes.tags.placeIdTags",
@@ -41549,6 +41572,7 @@
                         "attributes.tags.conditionTags",
                         "attributes.tags.dateTags",
                         "attributes.tags.identifierTags",
+                        "attributes.tags.identifierTagTypes",
                         "attributes.tags.lengthTags",
                         "attributes.tags.locationTags",
                         "attributes.tags.placeIdTags",
