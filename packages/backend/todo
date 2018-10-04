@@ -1,9 +1,11 @@
-TODO
+TODO - SEARCH
 * Fix throttle search in search
-* move find to row below
-* hide columns outside frame
-* make filters slim and stack stuff
+* Add remarks search
+* Potentially add tags for ex identifiers
+* Make click row select not go to form
 
+TODO - RM
+* move find to row below
 
 
 
