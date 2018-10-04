@@ -1506,7 +1506,6 @@ select.ui.dropdown {
 *******************************/
 
 .ui.selection.dropdown > .search.icon,
-.ui.selection.dropdown > .delete.icon,
-.ui.selection.dropdown > .dropdown.icon {
+.ui.selection.dropdown > .delete.icon {
   margin: -1em !important;
 }
