@@ -90,6 +90,11 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
   }
 
   class GetItemById extends Component {
+    constructor(props) {
+      super(props)
+      this.fetchItemById = this.fetchItemById.bind(this)
+    }
+
     componentDidMount() {
       if (shouldFetch) {
         const { dispatch, item, itemId } = this.props
@@ -123,36 +128,42 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
           !config.isTest
         ) {
           if (refresh || !nextProps.item) {
-            const { dispatch } = this.props
-
-            const {
-              extractedProps: {
-                include = [],
-                relationships = ['all'],
-                resource,
-              },
-            } = extractProps({
-              defaults: hocInput,
-              keys: ['include', 'relationships', 'resource'],
-              props: this.props,
-            })
-            const getOneActionCreator =
-              actionCreators[resource] && actionCreators[resource].getOne
-            dispatch(
-              getOneActionCreator({
-                id: nextProps.itemId,
-                include,
-                relationships,
-              })
-            )
+            this.fetchItemById(nextProps.itemId)
           }
         }
       }
     }
 
+    fetchItemById(itemId) {
+      const { dispatch } = this.props
+
+      const {
+        extractedProps: { include = [], relationships = ['all'], resource },
+      } = extractProps({
+        defaults: hocInput,
+        keys: ['include', 'relationships', 'resource'],
+        props: this.props,
+      })
+      const getOneActionCreator =
+        actionCreators[resource] && actionCreators[resource].getOne
+      dispatch(
+        getOneActionCreator({
+          id: itemId,
+          include,
+          relationships,
+        })
+      )
+    }
+
     render() {
       const { item } = this.props
-      return <ComposedComponent item={item} {...this.props} />
+      return (
+        <ComposedComponent
+          fetchItemById={this.fetchItemById}
+          item={item}
+          {...this.props}
+        />
+      )
     }
   }
 
