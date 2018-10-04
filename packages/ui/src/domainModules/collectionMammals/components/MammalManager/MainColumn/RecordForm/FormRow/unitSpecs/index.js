@@ -5,6 +5,11 @@ import determinations from './determinations'
 import identifiers from './identifiers'
 import localityOriginRoot from './localityOriginRoot'
 import origin from './origin'
+import physicalObjectsOtherPreparation from './physicalObjectsOtherPreparation'
+import physicalObjectsRoot from './physicalObjectsRoot'
+import physicalObjectsSkeleton from './physicalObjectsSkeleton'
+import physicalObjectsSkin from './physicalObjectsSkin'
+import physicalObjectsWetPreparation from './physicalObjectsWetPreparation'
 import recordHistoryExternalEvents from './recordHistoryExternalEvents'
 import specimenRoot from './specimenRoot'
 import taxonomyRoot from './taxonomyRoot'
@@ -20,6 +25,11 @@ export default {
   identifiers,
   localityOriginRoot,
   origin,
+  physicalObjectsOtherPreparation,
+  physicalObjectsRoot,
+  physicalObjectsSkeleton,
+  physicalObjectsSkin,
+  physicalObjectsWetPreparation,
   recordHistoryExternalEvents,
   specimenRoot,
   taxonomyRoot,
