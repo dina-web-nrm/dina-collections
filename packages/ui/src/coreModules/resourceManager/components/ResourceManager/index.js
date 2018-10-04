@@ -47,8 +47,8 @@ const propTypes = {
   columnHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
-  editItemColumnWidth: PropTypes.number,
   filterActive: PropTypes.bool.isRequired,
+  filterColumnWidth: PropTypes.number,
   focusedItemId: PropTypes.string,
   isPicker: PropTypes.bool,
   itemFetchOptions: PropTypes.object.isRequired,
@@ -66,7 +66,7 @@ const propTypes = {
   windowHeight: PropTypes.number.isRequired,
 }
 const defaultProps = {
-  editItemColumnWidth: emToPixels(42),
+  filterColumnWidth: emToPixels(25),
   focusedItemId: undefined,
   isPicker: false,
   itemId: undefined,
@@ -86,7 +86,7 @@ class ResourceManager extends Component {
     (
       createItemActive,
       editItemActive,
-      editItemColumnWidth,
+      filterColumnWidth,
       filterActive,
       rightSidebarIsOpen,
       rightSidebarWidth
@@ -107,7 +107,7 @@ class ResourceManager extends Component {
         columns.push({
           key: 'filterColumn',
           style: filterColumnStyle,
-          width: `${editItemColumnWidth}px`,
+          width: `${filterColumnWidth}px`,
         })
       }
 
@@ -146,6 +146,8 @@ class ResourceManager extends Component {
             'fetchTreeBase',
             'filterActive',
             'focusedIndex',
+            'isPicker',
+            'itemEnabled',
             'itemFetchOptions',
             'itemId',
             'ItemTitle',
@@ -248,7 +250,7 @@ class ResourceManager extends Component {
         const {
           createItemActive,
           editItemActive,
-          editItemColumnWidth,
+          filterColumnWidth,
           filterActive,
           rightSidebarIsOpen,
           rightSidebarWidth,
@@ -256,7 +258,7 @@ class ResourceManager extends Component {
         const columns = this.getColumns(
           createItemActive,
           editItemActive,
-          editItemColumnWidth,
+          filterColumnWidth,
           filterActive,
           rightSidebarIsOpen,
           rightSidebarWidth
