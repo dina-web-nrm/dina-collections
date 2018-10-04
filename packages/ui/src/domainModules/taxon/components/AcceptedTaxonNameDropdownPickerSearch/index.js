@@ -33,7 +33,7 @@ export class TaxonNameDropdownPickerSearch extends Component {
     } = this.props
     if (pickerActive) {
       return (
-        <Modal onClose={onClose} open size="fullscreen">
+        <Modal onClose={onClose} open>
           <Modal.Content>
             <TaxonManager isPicker onInteraction={onInteraction} treeEnabled />
           </Modal.Content>

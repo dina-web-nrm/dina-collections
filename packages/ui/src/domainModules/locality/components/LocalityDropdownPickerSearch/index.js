@@ -39,7 +39,7 @@ export class LocalityDropdownPickerSearch extends Component {
         : undefined
 
       return (
-        <Modal onClose={onClose} open size="fullscreen">
+        <Modal onClose={onClose} open>
           <Modal.Content>
             <LocalityManager
               initialFilterValues={initialFilterValues}
