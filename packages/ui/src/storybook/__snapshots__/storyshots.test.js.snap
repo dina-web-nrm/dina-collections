@@ -4070,6 +4070,8 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = 
             style={
               Object {
                 "padding": 0,
+                "paddingLeft": "2em",
+                "position": "relative",
               }
             }
           >
@@ -4077,7 +4079,10 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = 
               style={
                 Object {
                   "float": "left",
-                  "paddingTop": 6,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": "0.25em",
+                  "zIndex": 20,
                 }
               }
             >
@@ -4132,6 +4137,8 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
             style={
               Object {
                 "padding": 0,
+                "paddingLeft": "2em",
+                "position": "relative",
               }
             }
           >
@@ -4139,7 +4146,10 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
               style={
                 Object {
                   "float": "left",
-                  "paddingTop": 6,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": "0.25em",
+                  "zIndex": 20,
                 }
               }
             >
@@ -4193,6 +4203,8 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
             style={
               Object {
                 "padding": 0,
+                "paddingLeft": "2em",
+                "position": "relative",
               }
             }
           >
@@ -4200,7 +4212,10 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
               style={
                 Object {
                   "float": "left",
-                  "paddingTop": 6,
+                  "left": 0,
+                  "position": "absolute",
+                  "top": "0.25em",
+                  "zIndex": 20,
                 }
               }
             >
