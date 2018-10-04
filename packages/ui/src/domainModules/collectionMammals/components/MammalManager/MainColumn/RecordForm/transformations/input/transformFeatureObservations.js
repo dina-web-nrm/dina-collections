@@ -1,3 +1,5 @@
+import objectPath from 'object-path'
+
 const INITIAL_VALUES = {
   featureObservations: {},
 }
@@ -10,10 +12,14 @@ export default function transformFeatureObservations({
     return INITIAL_VALUES.featureObservations
   }
 
-  const transformedFeatureObservations = Object.keys(featureTypes).reduce(
-    (obj, id) => {
+  const transformedFeatureObservations = Object.values(featureTypes).reduce(
+    (obj, featureType) => {
+      const { id } = featureType
+
       const existingFeatureObservation = featureObservations.find(
-        ({ featureType }) => featureType.id === id
+        featureObservation => {
+          return objectPath.get(featureObservation, 'featureType.id') === id
+        }
       )
 
       return {
@@ -23,7 +29,7 @@ export default function transformFeatureObservations({
               ...existingFeatureObservation,
             }
           : {
-              featureType: featureTypes[id],
+              featureType,
             },
       }
     },

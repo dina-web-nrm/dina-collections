@@ -52,6 +52,7 @@ const propTypes = {
       ]).isRequired,
     }).isRequired
   ).isRequired,
+  placeholder: PropTypes.string,
   searchQuery: PropTypes.string,
   selectedOption: PropTypes.shape({
     key: PropTypes.string.isRequired,
@@ -81,6 +82,7 @@ const defaultProps = {
   initialText: '',
   isLoading: false,
   mountHidden: config.isTest,
+  placeholder: undefined,
   searchQuery: '',
   selectedOption: undefined,
   text: undefined,
@@ -154,6 +156,7 @@ class DropdownSearchInput extends Component {
       isLoading,
       mountHidden,
       options,
+      placeholder,
       searchQuery,
       selectedOption,
     } = this.props
@@ -186,6 +189,7 @@ class DropdownSearchInput extends Component {
             loading={isLoading}
             onSearchChange={this.handleSearchChange}
             options={options}
+            placeholder={placeholder}
             ref={element => {
               this.input = element
             }}

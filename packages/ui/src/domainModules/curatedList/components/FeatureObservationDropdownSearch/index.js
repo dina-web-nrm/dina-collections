@@ -43,12 +43,23 @@ const mapStateToProps = state => {
 const propTypes = {
   defaultLanguage: PropTypes.string.isRequired,
   language: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
   rawOptions: PropTypes.array.isRequired,
+}
+
+const defaultProps = {
+  placeholder: undefined,
 }
 
 class FeatureObservationDropdownSearch extends Component {
   render() {
-    const { defaultLanguage, language, rawOptions, ...rest } = this.props
+    const {
+      defaultLanguage,
+      language,
+      placeholder,
+      rawOptions,
+      ...rest
+    } = this.props
 
     log.render()
     return (
@@ -61,6 +72,7 @@ class FeatureObservationDropdownSearch extends Component {
             language,
           })
         }
+        placeholder={placeholder}
         type="dropdown-search-local"
       />
     )
@@ -68,6 +80,7 @@ class FeatureObservationDropdownSearch extends Component {
 }
 
 FeatureObservationDropdownSearch.propTypes = propTypes
+FeatureObservationDropdownSearch.defaultProps = defaultProps
 
 export default compose(connect(mapStateToProps))(
   FeatureObservationDropdownSearch
