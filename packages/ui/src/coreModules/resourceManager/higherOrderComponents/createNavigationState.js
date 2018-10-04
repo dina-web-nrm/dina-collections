@@ -16,6 +16,7 @@ import {
 const createResourceUrlState = () => ComposedComponent => {
   const propTypes = {
     clearState: PropTypes.func.isRequired,
+    isPicker: PropTypes.bool,
     onInteraction: PropTypes.func,
     state: PropTypes.object.isRequired,
     treeEnabled: PropTypes.bool.isRequired,
@@ -23,6 +24,7 @@ const createResourceUrlState = () => ComposedComponent => {
   }
 
   const defaultProps = {
+    isPicker: false,
     onInteraction: undefined,
   }
 
@@ -95,8 +97,8 @@ const createResourceUrlState = () => ComposedComponent => {
 
     navigateEdit(itemId) {
       this.props.updateState({
-        mainColumn: 'edit',
         itemId,
+        mainColumn: 'edit',
       })
     }
 
@@ -130,7 +132,7 @@ const createResourceUrlState = () => ComposedComponent => {
     }
 
     render() {
-      const { state, treeEnabled } = this.props
+      const { state, treeEnabled, isPicker } = this.props
 
       const {
         mainColumn = treeEnabled ? 'tree' : 'table',
@@ -141,9 +143,10 @@ const createResourceUrlState = () => ComposedComponent => {
       return (
         <ComposedComponent
           {...this.props}
-          createItemActive={mainColumn === 'create'}
-          editItemActive={mainColumn === 'edit'}
+          createItemActive={!isPicker && mainColumn === 'create'}
+          editItemActive={!isPicker && mainColumn === 'edit'}
           filterActive={filterColumn === 'filter'}
+          itemEnabled={!isPicker}
           itemId={itemId}
           navigateCreate={this.navigateCreate}
           navigateEdit={this.navigateEdit}
