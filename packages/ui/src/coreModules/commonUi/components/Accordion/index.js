@@ -17,6 +17,7 @@ const propTypes = {
   delayItemRenderUntilActive: PropTypes.bool,
   expandItemOnAdd: PropTypes.bool,
   fluid: PropTypes.bool,
+  getShouldRenderItem: PropTypes.func,
   initialActiveMode: PropTypes.oneOf([
     ALL_COLLAPSED,
     ALL_EXPANDED,
@@ -32,6 +33,7 @@ const defaultProps = {
   delayItemRenderUntilActive: false,
   expandItemOnAdd: true,
   fluid: true,
+  getShouldRenderItem: undefined,
   initialActiveMode: ALL_COLLAPSED,
   items: [],
   renderContent: undefined,
@@ -153,12 +155,23 @@ class AccordionWrapper extends Component {
   }
 
   render() {
-    const { fluid, items, renderContent, renderTitle, styled } = this.props
+    const {
+      fluid,
+      getShouldRenderItem,
+      items,
+      renderContent,
+      renderTitle,
+      styled,
+    } = this.props
 
     log.render()
     return (
       <Accordion fluid={fluid} styled={styled}>
         {items.map((item, index) => {
+          if (getShouldRenderItem && !getShouldRenderItem(item)) {
+            return null
+          }
+
           const isActive = this.isActive(index)
 
           return (
