@@ -1,5 +1,3 @@
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
-
 module.exports = function createStringAggregation({
   description,
   fieldPath,
@@ -12,12 +10,11 @@ module.exports = function createStringAggregation({
       const { contains: containsInput, limit = 10 } = options
 
       if (containsInput) {
-        const contains = containsInput.replace(/(?=[() ])/g, '\\')
-        const containsCapitalized = capitalizeFirstLetter(contains)
+        const contains = containsInput.replace(/(?=[() ])/g, '\\').toLowerCase()
         return {
           terms: {
             field: rawPath,
-            include: `.*${contains}.*|.*${containsCapitalized}.*`,
+            include: `.*${contains}.*`,
             size: limit,
           },
         }
