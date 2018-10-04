@@ -24,6 +24,7 @@ const propTypes = {
   availableHeight: PropTypes.number.isRequired,
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
+  isPicker: PropTypes.bool.isRequired,
   onFormTabClick: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   recordNavigationHeight: PropTypes.number,
@@ -100,6 +101,7 @@ class MainColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'recordNavigationBar': {
+        const { isPicker, treeActive } = this.props
         const { extractedProps } = extractProps({
           keys: [
             'currentTableRowNumber',
@@ -113,7 +115,17 @@ class MainColumn extends Component {
           ],
           props: this.props,
         })
-        return <RecordNavigationBar {...extractedProps} />
+
+        return (
+          <RecordNavigationBar
+            {...extractedProps}
+            showNewRecordButton={!isPicker}
+            showRecordInput={!isPicker}
+            showShowAllButton={!isPicker}
+            showSlider={!isPicker}
+            showTotalRecords={!(isPicker && treeActive)}
+          />
+        )
       }
       case 'treeView': {
         const { extractedProps } = extractProps({
@@ -224,6 +236,7 @@ class MainColumn extends Component {
       case 'resultOptionBar': {
         const { extractedProps } = extractProps({
           keys: [
+            'itemEnabled',
             'tableActive',
             'treeActive',
             'treeEnabled',
