@@ -34,6 +34,12 @@ const transformation = ({ migrator, src, target }) => {
       path: fieldPath,
       value: tags,
     })
+  } else {
+    migrator.setValue({
+      obj: target,
+      path: fieldPath,
+      value: ['No skeleton'],
+    })
   }
 
   return null
