@@ -3,7 +3,7 @@ import { createSelector } from 'reselect'
 import { capitalizeFirstLetter } from 'common/es5/stringFormatters'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
 import getSecondArgument from 'utilities/getSecondArgument'
-import { SKELETON, SKIN, WET_PREPARATION } from './constants'
+import { SKELETON, SKIN, OTHER_PREPARATION, WET_PREPARATION } from './constants'
 
 const {
   preparationType: { getAll: getPreparationTypes },
@@ -55,6 +55,9 @@ const createDropdownSelector = (categoryFilter, numberOfResults) => {
 const getDropdownSkeletonOptions = createDropdownSelector(SKELETON)
 const getDropdownSkinOptions = createDropdownSelector(SKIN)
 const getDropdownWetPreparationOptions = createDropdownSelector(WET_PREPARATION)
+const getDropdownOtherPreparationOptions = createDropdownSelector(
+  OTHER_PREPARATION
+)
 
 const getPreparationTypeOptions = (state, category) => {
   switch (category) {
@@ -67,22 +70,8 @@ const getPreparationTypeOptions = (state, category) => {
     case WET_PREPARATION: {
       return getDropdownWetPreparationOptions(state)
     }
-    case 'undefined': {
-      // fallback in edge case to show all options
-      return [
-        ...getDropdownSkeletonOptions(state).map(option => ({
-          ...option,
-          text: `${SKELETON}—${option.text}`,
-        })),
-        ...getDropdownSkinOptions(state).map(option => ({
-          ...option,
-          text: `${SKIN}—${option.text}`,
-        })),
-        ...getDropdownWetPreparationOptions(state).map(option => ({
-          ...option,
-          text: `${WET_PREPARATION}—${option.text}`,
-        })),
-      ]
+    case OTHER_PREPARATION: {
+      return getDropdownOtherPreparationOptions(state)
     }
     default: {
       throw new Error(`unknown preparationType category: ${category}`)
