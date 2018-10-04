@@ -112,7 +112,7 @@
         "en": "is in storage"
       },
       "isNotInStorage": {
-        "en": "not found"
+        "en": "not in storage"
       },
       "inventoryStatusRemarks": {
         "en": "remarks"
@@ -395,7 +395,23 @@
       "sv": "Nytt exemplar"
     },
     "physicalObjects": {
-      "en": "physical objects"
+      "en": "physical objects",
+      "otherPreparation": {
+        "en": "other preparations",
+        "sv": ""
+      },
+      "skeleton": {
+        "en": "skeleton",
+        "sv": ""
+      },
+      "skin": {
+        "en": "skin",
+        "sv": ""
+      },
+      "wetPreparation": {
+        "en": "wet preparations",
+        "sv": ""
+      }
     },
     "recordHistory": {
       "en": "record history",
@@ -720,23 +736,31 @@
   "remarks": {
     "emptyState": {
       "acquisition": {
-        "en": "add acquisition remarks",
+        "en": "add acquisition remarks...",
+        "sv": ""
+      },
+      "collectionItems": {
+        "en": "add remarks for all objects...",
         "sv": ""
       },
       "date": {
-        "en": "add date remarks",
+        "en": "add date remarks...",
         "sv": ""
-      },
-      "specimen": {
-        "en": "add remarks for the entire specimen",
-        "sv": ""
-      },
-      "taxonomy": {
-        "en": "Add taxonomy remarks..."
       },
       "origin": {
         "en": "Add origin remarks...",
         "sv": ""
+      },
+      "physicalObject": {
+        "en": "add object remarks...",
+        "sv": ""
+      },
+      "specimen": {
+        "en": "add remarks for the entire specimen...",
+        "sv": ""
+      },
+      "taxonomy": {
+        "en": "Add taxonomy remarks..."
       }
     },
     "resultPrefix": {
@@ -748,16 +772,16 @@
         "en": "date remarks",
         "sv": ""
       },
+      "origin": {
+        "en": "origin remarks",
+        "sv": ""
+      },
       "specimen": {
         "en": "specimen remarks",
         "sv": ""
       },
       "taxonomy": {
         "en": "taxonomy remarks",
-        "sv": ""
-      },
-      "origin": {
-        "en": "origin remarks",
         "sv": ""
       }
     },
@@ -847,10 +871,6 @@
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
     },
-    "createNewSpecimen": {
-      "en": "Creating a new specimen record",
-      "sv": ""
-    },
     "addOtherNames": {
       "en": "Add other names",
       "sv": ""
@@ -897,6 +917,10 @@
     "cancel": {
       "en": "Cancel",
       "sv": "Avbryt"
+    },
+    "createNewSpecimen": {
+      "en": "Creating a new specimen record",
+      "sv": ""
     },
     "back": {
       "en": "Back",
@@ -956,21 +980,23 @@
       "en": "Method",
       "sv": "Metod"
     },
-    "newSkeleton": {
-      "en": "Add skeleton",
-      "sv": ""
-    },
-    "newSkin": {
-      "en": "Add skin",
-      "sv": ""
-    },
-    "newWetPreparation": {
-      "en": "Add wet preparation",
-      "sv": ""
-    },
-    "otherPreparation": {
-      "en": "Add other preparation",
-      "sv": ""
+    "physicalObjects": {
+      "addSkeleton": {
+        "en": "Add a skeleton",
+        "sv": ""
+      },
+      "addSkin": {
+        "en": "Add a skin",
+        "sv": ""
+      },
+      "addWetPreparation": {
+        "en": "Add a wet preparation",
+        "sv": ""
+      },
+      "addOtherPreparation": {
+        "en": "Add an other preparation",
+        "sv": ""
+      }
     },
     "newAssessment": {
       "en": "New assessment",
