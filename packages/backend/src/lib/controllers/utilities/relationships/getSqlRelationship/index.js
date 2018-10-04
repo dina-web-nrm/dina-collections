@@ -69,7 +69,7 @@ module.exports = ({ models, operation }) => {
 
     return model[getterName]({
       include,
-      paranoid: true,
+      includeDeactivated: true,
       where,
     })
       .then(({ items, item } = {}) => {
