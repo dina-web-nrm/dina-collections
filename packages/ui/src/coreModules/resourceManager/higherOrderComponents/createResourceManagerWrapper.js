@@ -68,6 +68,7 @@ const createResourceManagerWrapper = (
 
   const mapDispatchToProps = {
     clearNestedCache: actionCreators.clearNestedCache,
+    clearResourceState: keyObjectActionCreators.del[':resource'],
     delFocusIdWhenLoaded:
       keyObjectActionCreators.del[':resource.focusIdWhenLoaded'],
     setBaseItems: keyObjectActionCreators.set[':resource.baseItems'],
@@ -86,6 +87,7 @@ const createResourceManagerWrapper = (
     baseTreeFilter: PropTypes.object,
     buildFilterQuery: PropTypes.func.isRequired,
     clearNestedCache: PropTypes.func.isRequired,
+    clearResourceState: PropTypes.func.isRequired,
     currentTableRowNumber: PropTypes.number.isRequired,
     delFocusIdWhenLoaded: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
@@ -179,6 +181,7 @@ const createResourceManagerWrapper = (
         tableActive,
         treeActive,
       } = this.props
+
       if (initialFilterValues) {
         this.props.setFilterValues(initialFilterValues, { resource })
         this.handleInteraction(NAVIGATE_FILTER)
@@ -320,10 +323,9 @@ const createResourceManagerWrapper = (
       this.props.clearNestedCache({
         namespaces: this.getNestedCacheNamespaces(),
       })
-      this.props.delFocusIdWhenLoaded({ resource })
-      this.props.setExpandedIds({}, { resource })
-      this.props.setFilterValues({}, { resource })
+
       document.removeEventListener('keydown', this.handleKeyDown)
+      this.props.clearResourceState({ resource })
     }
 
     getNestedCacheNamespaces() {
