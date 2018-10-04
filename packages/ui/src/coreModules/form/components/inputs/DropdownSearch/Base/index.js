@@ -25,6 +25,7 @@ const containerStyle = {
 
 const propTypes = {
   autoComplete: PropTypes.string,
+  disableClearValue: PropTypes.bool,
   displayAsButton: PropTypes.bool,
   fluid: PropTypes.bool,
   focusOnMount: PropTypes.bool,
@@ -72,6 +73,7 @@ const propTypes = {
 }
 const defaultProps = {
   autoComplete: undefined,
+  disableClearValue: false,
   displayAsButton: false,
   fluid: false,
   focusOnMount: false,
@@ -153,6 +155,7 @@ class DropdownSearchInput extends Component {
   render() {
     const {
       autoComplete,
+      disableClearValue,
       displayAsButton,
       fluid,
       icon,
@@ -176,14 +179,15 @@ class DropdownSearchInput extends Component {
     return (
       <React.Fragment>
         <div style={containerStyle}>
-          {value && (
-            <Icon
-              link
-              name="close"
-              onClick={this.handleClear}
-              style={closeIconStyle}
-            />
-          )}
+          {!disableClearValue &&
+            value && (
+              <Icon
+                link
+                name="close"
+                onClick={this.handleClear}
+                style={closeIconStyle}
+              />
+            )}
           <Dropdown
             autoComplete={autoComplete}
             button={displayAsButton}
