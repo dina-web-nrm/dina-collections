@@ -38,7 +38,7 @@ const transformation = ({ migrator, src, target }) => {
     migrator.setValue({
       obj: target,
       path: fieldPath,
-      value: ['No skin'],
+      value: ['no skin'],
     })
   }
 
