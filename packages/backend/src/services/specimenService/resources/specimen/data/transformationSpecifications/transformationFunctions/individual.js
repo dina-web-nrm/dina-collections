@@ -30,20 +30,6 @@ module.exports = function migrateIndividual({
     })
   }
 
-  const remarks = migrator.getValue({
-    obj: src,
-    path: 'objects.Comments',
-    strip: true,
-  })
-
-  if (remarks) {
-    migrator.setValue({
-      obj: target,
-      path: 'attributes.individual.remarks',
-      value: remarks,
-    })
-  }
-
   const typeStatus = migrator.getValue({
     obj: src,
     path: 'objects.Type',
