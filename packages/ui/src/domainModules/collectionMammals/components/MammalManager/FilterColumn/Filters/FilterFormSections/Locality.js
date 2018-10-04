@@ -37,7 +37,7 @@ class LocalityFilterForm extends PureComponent {
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(locationFieldName)}
             filterFunctionName={`search${locationTags}`}
-            label="Location"
+            label="Locality"
             name={locationFieldName}
             resource="searchSpecimen"
           />

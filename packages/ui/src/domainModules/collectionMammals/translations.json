@@ -201,14 +201,14 @@
         "en": "Stated locality",
         "sv": "Angiven (verbatim) lokalitet"
       },
-      "localityI": { 
+      "localityI": {
         "en": "Interpreted locality",
         "sv": ""
-      }, 
-      "rt90": { 
+      },
+      "rt90": {
         "en": "RT90 Index 5km",
         "sv": ""
-      }, 
+      },
       "localityRemarks": {
         "en": "Locality remarks",
         "sv": "Lokalitetsnoteringar"
@@ -489,11 +489,11 @@
       "sv": ""
     },
     "agent": {
-      "en": "Agent",
+      "en": "Collector",
       "sv": ""
     },
     "physicalObject": {
-      "en": "Physical object",
+      "en": "Preparation type",
       "sv": ""
     },
     "storage": {
@@ -501,7 +501,7 @@
       "sv": ""
     },
     "ageAndStage": {
-      "en": "Age and stage",
+      "en": "Age & development",
       "sv": ""
     },
     "sex": {
@@ -521,7 +521,7 @@
       "sv": ""
     },
     "collectingCondition": {
-      "en": "Collecting condition",
+      "en": "Carcass condition",
       "sv": ""
     }
   },
@@ -731,7 +731,7 @@
         "en": "add remarks for the entire specimen",
         "sv": ""
       },
-       "taxonomy": {
+      "taxonomy": {
         "en": "Add taxonomy remarks..."
       },
       "origin": {
@@ -760,7 +760,7 @@
         "en": "origin remarks",
         "sv": ""
       }
-    }, 
+    },
     "en": "Remarks"
   },
   "remove": {
@@ -846,7 +846,7 @@
     "addCatalogNumber": {
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
-    }, 
+    },
     "createNewSpecimen": {
       "en": "Creating a new specimen record",
       "sv": ""
@@ -893,7 +893,7 @@
     "catalogNumber": {
       "en": "Catalog number",
       "sv": "Katalognummer"
-    }, 
+    },
     "cancel": {
       "en": "Cancel",
       "sv": "Avbryt"
@@ -936,7 +936,7 @@
     "editCatalogNumber": {
       "en": "Edit catalog number",
       "sv": "Redigera katalognummer"
-    }, 
+    },
     "editCuratorialAssessment": {
       "en": "Edit curatorial assessment",
       "sv": ""

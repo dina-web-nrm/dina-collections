@@ -25,7 +25,7 @@ class StorageFilterForm extends PureComponent {
             component={MultipleSearchTagsSelectField}
             drillDownQuery={getDrilldownQuery(name)}
             filterFunctionName={`search${storageLocationTags}`}
-            label="Storage location name"
+            label="Normal storage"
             name={name}
             resource="searchSpecimen"
           />

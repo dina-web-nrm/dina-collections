@@ -20,10 +20,10 @@ const items = [
   { name: 'storage' },
   { name: 'ageAndStage' },
   { name: 'sex' },
-  { name: 'bones' },
+  { name: 'collectingCondition' },
   { name: 'weight' },
   { name: 'length' },
-  { name: 'collectingCondition' },
+  { name: 'bones' },
 ]
 
 const mapStateToProps = (state, { form }) => {
