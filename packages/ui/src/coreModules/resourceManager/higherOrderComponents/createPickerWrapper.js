@@ -5,6 +5,7 @@ import { change } from 'redux-form'
 import immutable from 'object-path-immutable'
 
 import {
+  ITEM_SELECT,
   PICKER_CLOSE,
   PICKER_PICK_ITEM,
 } from 'coreModules/resourceManager/constants'
@@ -65,6 +66,9 @@ const createPickerWrapper = (
       }
 
       if (type === PICKER_PICK_ITEM) {
+        this.pickItem(data)
+      }
+      if (type === ITEM_SELECT) {
         this.pickItem(data)
       }
     }
