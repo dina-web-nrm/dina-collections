@@ -66,7 +66,7 @@ const propTypes = {
   windowHeight: PropTypes.number.isRequired,
 }
 const defaultProps = {
-  filterColumnWidth: emToPixels(15),
+  filterColumnWidth: emToPixels(20),
   focusedItemId: undefined,
   isPicker: false,
   itemId: undefined,
