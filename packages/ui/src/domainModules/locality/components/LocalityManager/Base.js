@@ -22,8 +22,14 @@ const baseTreeFilter = {
 }
 
 const tableBatchFetchOptions = {
-  include: ['parent'],
-  relationships: ['parent'],
+  include: ['parent.parent.parent.parent.parent'],
+  relationships: [
+    'parent',
+    'parent.parent',
+    'parent.parent.parent',
+    'parent.parent.parent.parent',
+    'parent.parent.parent.parent.parent',
+  ],
   resolveRelationships: ['place'],
 }
 

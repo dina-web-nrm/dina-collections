@@ -25,6 +25,9 @@ const baseTreeFilter = {
 const tableBatchFetchOptions = {
   include: [
     'parent.acceptedTaxonName',
+    'parent.parent.acceptedTaxonName',
+    'parent.parent.parent.acceptedTaxonName',
+    'parent.parent.parent.parent.acceptedTaxonName',
     'acceptedTaxonName',
     'vernacularNames',
     'synonyms',
@@ -32,6 +35,9 @@ const tableBatchFetchOptions = {
   relationships: [
     'parent',
     'parent.acceptedTaxonName',
+    'parent.parent.acceptedTaxonName',
+    'parent.parent.parent.acceptedTaxonName',
+    'parent.parent.parent.parent.acceptedTaxonName',
     'acceptedTaxonName',
     'vernacularNames',
     'synonyms',

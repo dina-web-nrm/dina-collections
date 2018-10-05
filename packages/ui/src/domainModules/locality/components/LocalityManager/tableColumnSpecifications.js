@@ -1,5 +1,21 @@
 import React from 'react'
 
+const findParentWithSpecificGroup = (item, group) => {
+  if (!item) {
+    return null
+  }
+
+  if (item.group === group) {
+    return item
+  }
+
+  if (!(item && item.parent)) {
+    return null
+  }
+
+  return findParentWithSpecificGroup(item.parent, group)
+}
+
 const tableColumnSpecifications = [
   {
     fieldPath: 'name',
@@ -13,55 +29,57 @@ const tableColumnSpecifications = [
   },
   {
     buildText: ({ value }) => {
-      if (value.deactivatedAt) {
-        return <span style={{ color: 'red' }}>{`${value.name} (removed)`}</span>
+      const parent = findParentWithSpecificGroup(value.parent, 'continent')
+      if (!parent) {
+        return ''
+      }
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
+        )
       }
 
-      return value.name
+      return parent.name
     },
-    fieldPath: 'parent',
-    label: 'modules.locality.fieldLabels.place.parent',
+    fieldPath: '',
+    label: 'modules.locality.fieldLabels.continent',
     width: 250,
   },
   {
-    fieldPath: 'verticalPosition.minimumElevationInMeters',
-    label:
-      'modules.locality.fieldLabels.verticalPosition.minimumElevationInMeters',
-    width: 150,
-  },
-  {
-    fieldPath: 'verticalPosition.maximumElevationInMeters',
-    label:
-      'modules.locality.fieldLabels.verticalPosition.maximumElevationInMeters',
-    width: 150,
-  },
-  {
-    fieldPath: 'verticalPosition.minimumDepthInMeters',
-    label: 'modules.locality.fieldLabels.verticalPosition.minimumDepthInMeters',
-    width: 150,
-  },
-  {
-    fieldPath: 'verticalPosition.maximumDepthInMeters',
-    label: 'modules.locality.fieldLabels.verticalPosition.maximumDepthInMeters',
-    width: 150,
-  },
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificGroup(value.parent, 'country')
+      if (!parent) {
+        return ''
+      }
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
+        )
+      }
 
-  {
-    fieldPath: 'centralPosition.latitude',
-    label: 'modules.locality.fieldLabels.centralPosition.latitude',
-    width: 150,
+      return parent.name
+    },
+    fieldPath: '',
+    label: 'modules.locality.fieldLabels.country',
+    width: 250,
   },
-
   {
-    fieldPath: 'centralPosition.longitude',
-    label: 'modules.locality.fieldLabels.centralPosition.longitude',
-    width: 150,
-  },
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificGroup(value.parent, 'province')
+      if (!parent) {
+        return ''
+      }
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${parent.name} (removed)`}</span>
+        )
+      }
 
-  {
-    fieldPath: 'centralPosition.uncertaintyInMeters',
-    label: 'modules.locality.fieldLabels.centralPosition.uncertaintyInMeters',
-    width: 150,
+      return parent.name
+    },
+    fieldPath: '',
+    label: 'modules.locality.fieldLabels.province',
+    width: 250,
   },
 ]
 

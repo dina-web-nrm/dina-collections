@@ -1,3 +1,21 @@
+import React from 'react'
+
+const findParentWithSpecificRank = (item, rank) => {
+  if (!item) {
+    return null
+  }
+
+  if (item && item.acceptedTaxonName && item.acceptedTaxonName.rank === rank) {
+    return item
+  }
+
+  if (!(item && item.parent)) {
+    return null
+  }
+
+  return findParentWithSpecificRank(item.parent, rank)
+}
+
 const tableColumnSpecifications = [
   {
     fieldPath: 'acceptedTaxonName.name',
@@ -9,6 +27,138 @@ const tableColumnSpecifications = [
     label: 'modules.taxon.fieldLabels.taxon.acceptedTaxonName.rank',
     width: 350,
   },
+
+  {
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificRank(value, 'order')
+      if (!parent) {
+        return ''
+      }
+
+      const { acceptedTaxonName } = parent
+      if (!acceptedTaxonName) {
+        return ''
+      }
+
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${
+            acceptedTaxonName.name
+          } (removed)`}</span>
+        )
+      }
+
+      return acceptedTaxonName.name
+    },
+    fieldPath: '',
+    label: 'modules.taxon.fieldLabels.order',
+    width: 250,
+  },
+  {
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificRank(value, 'family')
+      if (!parent) {
+        return ''
+      }
+
+      const { acceptedTaxonName } = parent
+      if (!acceptedTaxonName) {
+        return ''
+      }
+
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${
+            acceptedTaxonName.name
+          } (removed)`}</span>
+        )
+      }
+
+      return acceptedTaxonName.name
+    },
+    fieldPath: '',
+    label: 'modules.taxon.fieldLabels.family',
+    width: 250,
+  },
+  {
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificRank(value, 'genus')
+      if (!parent) {
+        return ''
+      }
+
+      const { acceptedTaxonName } = parent
+      if (!acceptedTaxonName) {
+        return ''
+      }
+
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${
+            acceptedTaxonName.name
+          } (removed)`}</span>
+        )
+      }
+
+      return acceptedTaxonName.name
+    },
+    fieldPath: '',
+    label: 'modules.taxon.fieldLabels.genus',
+    width: 250,
+  },
+  {
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificRank(value, 'species')
+      if (!parent) {
+        return ''
+      }
+
+      const { acceptedTaxonName } = parent
+      if (!acceptedTaxonName) {
+        return ''
+      }
+
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${
+            acceptedTaxonName.name
+          } (removed)`}</span>
+        )
+      }
+
+      return acceptedTaxonName.name
+    },
+    fieldPath: '',
+    label: 'modules.taxon.fieldLabels.species',
+    width: 250,
+  },
+  {
+    buildText: ({ value }) => {
+      const parent = findParentWithSpecificRank(value, 'subspecies')
+      if (!parent) {
+        return ''
+      }
+
+      const { acceptedTaxonName } = parent
+      if (!acceptedTaxonName) {
+        return ''
+      }
+
+      if (parent.deactivatedAt) {
+        return (
+          <span style={{ color: 'red' }}>{`${
+            acceptedTaxonName.name
+          } (removed)`}</span>
+        )
+      }
+
+      return acceptedTaxonName.name
+    },
+    fieldPath: '',
+    label: 'modules.taxon.fieldLabels.subspecies',
+    width: 250,
+  },
+
   {
     buildText: ({ value: vernacularNames }) => {
       return vernacularNames
@@ -31,12 +181,6 @@ const tableColumnSpecifications = [
     },
     fieldPath: 'synonyms',
     label: 'modules.taxon.fieldLabels.taxon.synonyms.name',
-    width: 350,
-  },
-
-  {
-    fieldPath: 'parent.acceptedTaxonName.name',
-    label: 'modules.taxon.fieldLabels.taxon.parent.acceptedTaxonName.name',
     width: 350,
   },
 ]

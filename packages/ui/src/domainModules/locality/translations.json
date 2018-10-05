@@ -15,7 +15,10 @@
       "latitude": { "en": "latitude" },
       "longitude": { "en": "longitude" },
       "uncertaintyInMeters": { "en": "uncertainty" }
-    }
+    },
+    "continent": { "en": "continent" },
+    "country": { "en": "country" },
+    "province": { "en": "province" }
   },
   "save": {
     "en": "Save",
