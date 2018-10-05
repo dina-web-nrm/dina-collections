@@ -29,7 +29,7 @@ const mapDispatchToProps = {
 const propTypes = {
   clearNestedCacheNamespace: PropTypes.func.isRequired,
   featureTypes: PropTypes.array.isRequired,
-  fetchItemById: PropTypes.func.isRequired,
+  fetchOneItemById: PropTypes.func.isRequired,
   nestedItem: PropTypes.object,
   updateSpecimen: PropTypes.func.isRequired,
 }
@@ -42,7 +42,7 @@ class EditSpecimen extends PureComponent {
   render() {
     const {
       clearNestedCacheNamespace,
-      fetchItemById,
+      fetchOneItemById,
       nestedItem,
       updateSpecimen,
       featureTypes,
@@ -71,8 +71,10 @@ class EditSpecimen extends PureComponent {
           return updateSpecimen({
             item,
             throwError: true,
-          }).then(() => {
-            return fetchItemById(item.id)
+          }).then(({ id }) => {
+            return fetchOneItemById(id).then(() => {
+              return { id }
+            })
           })
         }}
         initialValues={initialValues}
