@@ -31,6 +31,7 @@ const parts = [
       emptyStateTextKey: 'remarks.emptyState.origin',
       resultPrefixTextKey: 'remarks.resultPrefix.origin',
     },
+    initiallyHidden: true,
     name: 'remarks',
     wrapInField: true,
   },
