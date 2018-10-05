@@ -21,6 +21,7 @@ const closeIconStyle = {
 const containerStyle = {
   display: 'inline-block',
   position: 'relative',
+  width: '100%',
 }
 
 const propTypes = {
