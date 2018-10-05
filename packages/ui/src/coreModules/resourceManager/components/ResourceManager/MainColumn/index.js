@@ -56,18 +56,23 @@ class MainColumn extends Component {
       createItemActive,
       editItemActive,
       recordNavigationHeight,
-      recordOptionsHeight
+      recordOptionsHeight,
+      isPicker
     ) => {
-      const rows = [
-        {
+      const rows = []
+
+      if (!isPicker) {
+        rows.push({
           height: `${recordNavigationHeight}px`,
           key: 'recordNavigationBar',
-        },
-        {
-          height: `${recordOptionsHeight}px`,
-          key: 'resultOptionBar',
-        },
-      ]
+        })
+      }
+
+      rows.push({
+        height: `${recordOptionsHeight}px`,
+        key: 'resultOptionBar',
+      })
+
       if (tableActive) {
         rows.push({
           key: 'tableView',
@@ -110,7 +115,6 @@ class MainColumn extends Component {
             'onSelectPreviousRecord',
             'onSetCurrentTableRowNumber',
             'onShowAllRecords',
-            'onToggleFilters',
             'totalNumberOfRecords',
           ],
           props: this.props,
@@ -236,12 +240,13 @@ class MainColumn extends Component {
       case 'resultOptionBar': {
         const { extractedProps } = extractProps({
           keys: [
+            'createItemActive',
+            'editItemActive',
             'itemEnabled',
+            'onToggleFilters',
             'tableActive',
             'treeActive',
             'treeEnabled',
-            'createItemActive',
-            'editItemActive',
           ],
           props: this.props,
         })
@@ -271,6 +276,7 @@ class MainColumn extends Component {
       availableHeight,
       createItemActive,
       editItemActive,
+      isPicker,
       recordNavigationHeight,
       recordOptionsHeight,
       tableActive,
@@ -284,7 +290,8 @@ class MainColumn extends Component {
       createItemActive,
       editItemActive,
       recordNavigationHeight,
-      recordOptionsHeight
+      recordOptionsHeight,
+      isPicker
     )
     const { extractedProps } = extractProps({
       keys: [

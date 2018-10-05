@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Icon, Menu } from 'semantic-ui-react'
+import { Button, Icon, Menu } from 'semantic-ui-react'
 import CsvExporter from './CsvExporter'
 
 const propTypes = {
@@ -13,6 +13,8 @@ const propTypes = {
     .isRequired,
   onTableTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
+  onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
 }
 
 export class ResultOptionsBar extends Component {
@@ -24,6 +26,7 @@ export class ResultOptionsBar extends Component {
       onFormTabClick: handleFormTabClick,
       onSettingClick: handleSettingClick,
       onTableTabClick: handleTableTabClick,
+      onToggleFilters: handleToggleFilters,
     } = this.props
 
     return (
@@ -55,6 +58,14 @@ export class ResultOptionsBar extends Component {
               />
             </Menu.Item>
           )}
+          <Menu.Item>
+            <Icon
+              name="search"
+              onClick={event => handleToggleFilters(event)}
+              size="large"
+              style={{ cursor: 'pointer' }}
+            />
+          </Menu.Item>
         </Menu.Menu>
       </Menu>
     )

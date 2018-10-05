@@ -27,8 +27,6 @@ const propTypes = {
   ]).isRequired,
   onShowAllRecords: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
-  onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
-    .isRequired,
   showNewRecordButton: PropTypes.bool,
   showRecordInput: PropTypes.bool,
   showShowAllButton: PropTypes.bool,
@@ -60,7 +58,6 @@ export class RecordNavigationBar extends Component {
       onSelectPreviousRecord: handleSelectPreviousRecord,
       onSetCurrentTableRowNumber: handleSetCurrentTableRowNumber,
       onShowAllRecords: handleShowAllRecords,
-      onToggleFilters: handleToggleFilters,
       showNewRecordButton,
       showRecordInput,
       showShowAllButton,
@@ -183,16 +180,6 @@ export class RecordNavigationBar extends Component {
                 {' New record'}
               </Button>
             )}
-          </div>
-          <div style={{ float: 'right' }}>
-            <Button
-              disabled={!handleToggleFilters}
-              icon
-              onClick={event => handleToggleFilters(event)}
-            >
-              <Icon name="search" />
-              Find
-            </Button>
           </div>
         </Grid.Column>
       </Grid>

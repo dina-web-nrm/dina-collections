@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Icon, Menu } from 'semantic-ui-react'
+import { Button, Icon, Menu } from 'semantic-ui-react'
 
 const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
@@ -9,6 +9,8 @@ const propTypes = {
   onFormTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onListTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+    .isRequired,
+  onToggleFilters: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
   onTreeTabClick: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
     .isRequired,
@@ -25,6 +27,7 @@ export class ResultOptionsBar extends Component {
       itemEnabled,
       onFormTabClick: handleFormTabClick,
       onListTabClick: handleListTabClick,
+      onToggleFilters: handleToggleFilters,
       onTreeTabClick: handleTreeTabClick,
       tableActive,
       treeActive,
@@ -32,7 +35,7 @@ export class ResultOptionsBar extends Component {
     } = this.props
 
     return (
-      <Menu attached="top" tabular>
+      <Menu attached="top" style={{ position: 'relative' }} tabular>
         {itemEnabled && (
           <Menu.Item
             active={createItemActive || editItemActive}
@@ -60,6 +63,17 @@ export class ResultOptionsBar extends Component {
         >
           <Icon name="table" />
         </Menu.Item>
+        <Menu.Menu position="right">
+          <Menu.Item>
+            <Icon
+              disabled={!handleToggleFilters}
+              name="search"
+              onClick={event => handleToggleFilters(event)}
+              size="large"
+              style={{ cursor: 'pointer' }}
+            />
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     )
   }
