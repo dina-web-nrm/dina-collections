@@ -11,6 +11,7 @@ const getHasValue = input => {
 
 const propTypes = {
   input: PropTypes.shape({
+    onBlur: PropTypes.func.isRequired,
     value: PropTypes.oneOfType([
       PropTypes.shape({
         normalized: PropTypes.shape({
@@ -31,22 +32,18 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
       pickerActive: false,
     }
 
+    this.onBlur = this.onBlur.bind(this)
     this.renderInput = this.renderInput.bind(this)
     this.renderResult = this.renderResult.bind(this)
     this.removeForceRenderResult = this.removeForceRenderResult.bind(this)
     this.reportPickerActive = this.reportPickerActive.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    // forceRenderResult if value was selected (triggers only if this
-    // isLatestActiveField)
-    if (
-      this.props.input.value !== nextProps.input.value &&
-      (nextProps.input.value &&
-        (nextProps.input.value.textI || nextProps.input.value.normalized))
-    ) {
+  onBlur(value) {
+    if (value && (value.textI || value.normalized)) {
       this.setState({ forceRenderResult: true })
     }
+    this.props.input.onBlur(value)
   }
 
   reportPickerActive(value) {
@@ -97,13 +94,17 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
 
   render() {
     const { forceRenderResult, pickerActive } = this.state
-    const { input: { value } } = this.props
+    const { input } = this.props
 
     return (
       <TogglableField
         {...this.props}
-        forceRenderResult={!pickerActive && !!value && forceRenderResult}
+        forceRenderResult={!pickerActive && !!input.value && forceRenderResult}
         getHasValue={getHasValue}
+        input={{
+          ...input,
+          onBlur: this.onBlur,
+        }}
         renderInput={this.renderInput}
         renderResult={this.renderResult}
       />
