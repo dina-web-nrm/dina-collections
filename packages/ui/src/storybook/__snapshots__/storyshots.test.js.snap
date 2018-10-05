@@ -342,7 +342,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="external icon"
                   />
                   <a
-                    href="https://alpha-style.dina-web.net/"
+                    href="https://dina-test-style.nrm.se/"
                   >
                     Style guide
                   </a>
@@ -362,7 +362,7 @@ exports[`storyshots Storyshots coreModules/commonUi/Footer Default 1`] = `
                     className="external icon"
                   />
                   <a
-                    href="https://alpha-api.dina-web.net/docs"
+                    href="https://dina-test-api.nrm.se/docs"
                   >
                     Api documentation
                   </a>
@@ -6755,27 +6755,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
            New record
         </button>
       </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
-        </button>
-      </div>
     </div>
   </div>
 </div>
@@ -6898,27 +6877,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             className="plus icon"
           />
            New record
-        </button>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
         </button>
       </div>
     </div>
@@ -7045,27 +7003,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
            New record
         </button>
       </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
-        </button>
-      </div>
     </div>
   </div>
 </div>
@@ -7188,27 +7125,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             className="plus icon"
           />
            New record
-        </button>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
         </button>
       </div>
     </div>
@@ -7335,27 +7251,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
            New record
         </button>
       </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
-        </button>
-      </div>
     </div>
   </div>
 </div>
@@ -7480,27 +7375,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
            New record
         </button>
       </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
-        </button>
-      </div>
     </div>
   </div>
 </div>
@@ -7623,27 +7497,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             className="plus icon"
           />
            New record
-        </button>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
         </button>
       </div>
     </div>
@@ -7774,27 +7627,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
            New record
         </button>
       </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon disabled button"
-          disabled={true}
-          onClick={[Function]}
-          role="button"
-          tabIndex={-1}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
-        </button>
-      </div>
     </div>
   </div>
 </div>
@@ -7917,27 +7749,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
             className="plus icon"
           />
            New record
-        </button>
-      </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
         </button>
       </div>
     </div>
@@ -8064,27 +7875,6 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
            New record
         </button>
       </div>
-      <div
-        style={
-          Object {
-            "float": "right",
-          }
-        }
-      >
-        <button
-          className="ui icon button"
-          disabled={undefined}
-          onClick={[Function]}
-          role="button"
-          tabIndex={undefined}
-        >
-          <i
-            aria-hidden="true"
-            className="search icon"
-          />
-          Find
-        </button>
-      </div>
     </div>
   </div>
 </div>
@@ -8145,6 +7935,21 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         <i
           aria-hidden="true"
           className="setting large icon"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        />
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="search large icon"
           onClick={[Function]}
           style={
             Object {
@@ -8221,6 +8026,21 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           }
         />
       </div>
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="search large icon"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -8281,6 +8101,21 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
         <i
           aria-hidden="true"
           className="setting large icon"
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        />
+      </div>
+      <div
+        className="item"
+        onClick={[Function]}
+      >
+        <i
+          aria-hidden="true"
+          className="search large icon"
           onClick={[Function]}
           style={
             Object {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, Icon, Menu } from 'semantic-ui-react'
+import { Icon, Menu } from 'semantic-ui-react'
 import CsvExporter from './CsvExporter'
 
 const propTypes = {
