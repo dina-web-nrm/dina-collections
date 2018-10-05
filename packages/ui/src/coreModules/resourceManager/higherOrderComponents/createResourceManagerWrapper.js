@@ -174,49 +174,33 @@ const createResourceManagerWrapper = (
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
       this.tableSearch = this.tableSearch.bind(this)
       this.resetFilters = this.resetFilters.bind(this)
+
+      this.viewUpdateTableView = this.viewUpdateTableView.bind(this)
+      this.transitionToTableView = this.transitionToTableView.bind(this)
+      this.transitionFromTableView = this.transitionFromTableView.bind(this)
+
+      this.viewUpdateTreeView = this.viewUpdateTreeView.bind(this)
+      this.transitionToTreeView = this.transitionToTreeView.bind(this)
+      this.transitionFromTreeView = this.transitionFromTreeView.bind(this)
+
+      this.viewUpdateEditItemView = this.viewUpdateEditItemView.bind(this)
+      this.transitionToEditItemView = this.transitionToEditItemView.bind(this)
+      this.transitionFromEditItemView = this.transitionFromEditItemView.bind(
+        this
+      )
     }
 
     componentDidMount() {
-      const {
-        editItemActive,
-        initialFilterValues,
-        initialItemId,
-        itemId,
-        resource,
-        tableActive,
-        treeActive,
-      } = this.props
+      const { initialFilterValues, resource } = this.props
 
       if (initialFilterValues) {
         this.props.setFilterValues(initialFilterValues, { resource })
         this.handleInteraction(NAVIGATE_FILTER)
       }
 
-      if (editItemActive) {
-        this.tableSearch(initialFilterValues)
-      }
-      if (tableActive) {
-        if (
-          itemId === undefined &&
-          initialItemId !== undefined &&
-          initialItemId !== ''
-        ) {
-          this.handleInteraction(ITEM_SELECT, { itemId: initialItemId })
-        }
-        this.tableSearch(initialFilterValues)
-      }
-
-      if (treeActive) {
-        if (
-          itemId === undefined &&
-          initialItemId !== undefined &&
-          initialItemId !== ''
-        ) {
-          this.props.setFocusIdWhenLoaded(initialItemId, { resource })
-          this.expandAncestorsForItemId(initialItemId)
-        }
-        this.fetchTreeBase()
-      }
+      this.viewUpdateTableView()
+      this.viewUpdateTreeView()
+      this.viewUpdateEditItemView()
 
       document.addEventListener('keydown', this.handleKeyDown)
       this.props.clearNestedCache({
@@ -227,102 +211,68 @@ const createResourceManagerWrapper = (
     componentDidUpdate(prevProps) {
       const {
         currentTableRowNumber,
-        editItemActive,
-        focusedIndex,
-        filterValues,
-        focusedItemId,
-        focusIdWhenLoaded,
-        itemId,
-        tableActive,
-        listItems,
         resource,
         totalNumberOfRecords,
-        treeActive,
       } = this.props
 
-      const {
-        focusedIndex: prevFocusedIndex,
-        editItemActive: prevEditItemActive,
-        filterValues: prevFilterValues,
-        listItems: prevListItems,
-        tableActive: prevTableActive,
-        treeActive: prevTreeActive,
-      } = prevProps
+      const activeViews = this.getActiveViews()
+      activeViews.forEach(activeView => {
+        switch (activeView) {
+          case 'table': {
+            this.viewUpdateTableView(prevProps)
+            break
+          }
+          case 'tree': {
+            this.viewUpdateTreeView(prevProps)
+            break
+          }
+          case 'edit-item': {
+            this.viewUpdateEditItemView(prevProps)
+            break
+          }
 
-      if (editItemActive && focusedIndex !== prevFocusedIndex) {
-        this.selectCurrentRow(focusedIndex)
-      }
-
-      if (editItemActive !== prevEditItemActive) {
-        this.props.clearNestedCache({
-          namespaces: this.getNestedCacheNamespaces(),
-        })
-        if (editItemActive) {
-          this.tableSearch(filterValues)
+          default: {
+            throw new Error(`Unknown active view: ${activeView}`)
+          }
         }
-      }
+      })
 
-      if (editItemActive && itemId && listItems !== prevListItems) {
-        this.focusRowWithId(itemId)
-      }
+      const transitions = this.getTransitions(prevProps)
 
-      if (tableActive && filterValues !== prevFilterValues) {
-        this.tableSearch(filterValues)
-      }
-
-      if (tableActive && itemId && listItems !== prevListItems) {
-        this.focusRowWithId(itemId)
-      }
+      transitions.forEach(transition => {
+        switch (transition) {
+          case 'to-table': {
+            this.transitionToTableView(prevProps)
+            break
+          }
+          case 'from-table': {
+            this.transitionFromTableView(prevProps)
+            break
+          }
+          case 'to-tree': {
+            this.transitionToTreeView(prevProps)
+            break
+          }
+          case 'from-tree': {
+            this.transitionFromTreeView(prevProps)
+            break
+          }
+          case 'to-edit-item': {
+            this.transitionToEditItemView(prevProps)
+            break
+          }
+          case 'from-edit-item': {
+            this.transitionFromEditItemView(prevProps)
+            break
+          }
+          default: {
+            throw new Error(`Unknown transition: ${transition}`)
+          }
+        }
+      })
 
       if (totalNumberOfRecords < currentTableRowNumber) {
         this.props.setCurrentTableRowNumber(totalNumberOfRecords, { resource })
-      }
-
-      if (tableActive) {
-        if (focusIdWhenLoaded && prevListItems !== listItems) {
-          const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
-          if (rowFocused) {
-            this.props.delFocusIdWhenLoaded({ resource })
-          }
-        }
-        if (tableActive !== prevTableActive) {
-          if (focusedItemId) {
-            this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
-            this.expandAncestorsForItemId(focusedItemId)
-          }
-
-          this.tableSearch(filterValues)
-        }
-      }
-
-      if (tableActive !== prevTableActive) {
-        this.props.clearNestedCache({
-          namespaces: this.getNestedCacheNamespaces(),
-        })
-        if (!tableActive) {
-          this.resetFilters()
-        }
-      }
-
-      if (treeActive) {
-        if (focusIdWhenLoaded && prevListItems !== listItems) {
-          const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
-          if (rowFocused) {
-            this.props.delFocusIdWhenLoaded({ resource })
-          }
-        }
-        if (prevTreeActive !== treeActive) {
-          if (focusedItemId) {
-            this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
-            this.expandAncestorsForItemId(focusedItemId)
-          }
-          this.fetchTreeBase()
-        }
-      }
-      if (!treeActive) {
-        if (prevTreeActive !== treeActive) {
-          this.props.setExpandedIds({}, { resource })
-        }
       }
     }
 
@@ -350,6 +300,41 @@ const createResourceManagerWrapper = (
       return []
     }
 
+    getActiveViews() {
+      const keys = ['treeActive', 'tableActive', 'editItemActive']
+      const keyNameMap = {
+        editItemActive: 'edit-item',
+        tableActive: 'table',
+        treeActive: 'tree',
+      }
+
+      const activeViews = []
+      keys.forEach(key => {
+        if (this.props[key]) {
+          activeViews.push(`${keyNameMap[key]}`)
+        }
+      })
+      return activeViews
+    }
+    getTransitions(prevProps) {
+      const keys = ['treeActive', 'tableActive', 'editItemActive']
+      const keyNameMap = {
+        editItemActive: 'edit-item',
+        tableActive: 'table',
+        treeActive: 'tree',
+      }
+      const transitions = []
+
+      keys.forEach(key => {
+        if (!this.props[key] && prevProps[key]) {
+          transitions.push(`from-${keyNameMap[key]}`)
+        }
+        if (this.props[key] && !prevProps[key]) {
+          transitions.push(`to-${keyNameMap[key]}`)
+        }
+      })
+      return transitions
+    }
     resetFilters() {
       const { resource } = this.props
       const formName = `${resource}Filter`
@@ -605,6 +590,164 @@ const createResourceManagerWrapper = (
       const { search, resource } = this.props
       return search({ query }).then(items => {
         this.props.setListItems(items, { resource })
+      })
+    }
+
+    viewUpdateTableView(prevProps) {
+      const {
+        filterValues,
+        focusIdWhenLoaded,
+        initialItemId,
+        itemId,
+        listItems,
+        resource,
+        tableActive,
+      } = this.props
+
+      if (!tableActive) {
+        return
+      }
+      // assume initialMount
+      if (!prevProps) {
+        log.debug('initial update view: Table')
+        if (
+          itemId === undefined &&
+          initialItemId !== undefined &&
+          initialItemId !== ''
+        ) {
+          this.handleInteraction(ITEM_SELECT, { itemId: initialItemId })
+        }
+        this.transitionToTableView()
+      }
+
+      const {
+        filterValues: prevFilterValues,
+        listItems: prevListItems,
+      } = prevProps
+
+      if (filterValues !== prevFilterValues) {
+        this.tableSearch(filterValues)
+      }
+      if (itemId && listItems !== prevListItems) {
+        this.focusRowWithId(itemId)
+      }
+      if (focusIdWhenLoaded && prevListItems !== listItems) {
+        const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
+        if (rowFocused) {
+          this.props.delFocusIdWhenLoaded({ resource })
+        }
+      }
+    }
+
+    transitionToTableView() {
+      log.debug('transition to view: Table')
+
+      const { filterValues, focusedItemId, resource } = this.props
+
+      if (focusedItemId) {
+        this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
+        this.expandAncestorsForItemId(focusedItemId)
+      }
+
+      this.tableSearch(filterValues)
+    }
+    transitionFromTableView() {
+      log.debug('transition from view: Table')
+
+      this.props.clearNestedCache({
+        namespaces: this.getNestedCacheNamespaces(),
+      })
+      this.resetFilters()
+    }
+
+    viewUpdateTreeView(prevProps) {
+      const {
+        focusIdWhenLoaded,
+        listItems,
+        resource,
+        treeActive,
+        itemId,
+        initialItemId,
+      } = this.props
+
+      if (!treeActive) {
+        return
+      }
+
+      if (!prevProps) {
+        log.debug('initial update view: Tree')
+        if (
+          itemId === undefined &&
+          initialItemId !== undefined &&
+          initialItemId !== ''
+        ) {
+          this.props.setFocusIdWhenLoaded(initialItemId, { resource })
+          this.expandAncestorsForItemId(initialItemId)
+        }
+        this.transitionToTreeView()
+        return
+      }
+
+      const { listItems: prevListItems } = prevProps
+
+      if (focusIdWhenLoaded && prevListItems !== listItems) {
+        const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
+        if (rowFocused) {
+          this.props.delFocusIdWhenLoaded({ resource })
+        }
+      }
+    }
+    transitionToTreeView() {
+      log.debug('transition to view: Tree')
+      const { focusedItemId, resource } = this.props
+
+      if (focusedItemId) {
+        this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
+        this.expandAncestorsForItemId(focusedItemId)
+      }
+      this.fetchTreeBase()
+    }
+    transitionFromTreeView() {
+      log.debug('transition from view: Tree')
+      const { resource } = this.props
+
+      this.props.setExpandedIds({}, { resource })
+    }
+
+    viewUpdateEditItemView(prevProps) {
+      const { editItemActive, focusedIndex, listItems, itemId } = this.props
+
+      if (!editItemActive) {
+        return
+      }
+
+      if (!prevProps) {
+        log.debug('initial update view: EditItem')
+        this.transitionToEditItemView()
+        return
+      }
+
+      const {
+        focusedIndex: prevFocusedIndex,
+        listItems: prevListItems,
+      } = prevProps
+
+      if (itemId && listItems !== prevListItems) {
+        this.focusRowWithId(itemId)
+      }
+      if (editItemActive && focusedIndex !== prevFocusedIndex) {
+        this.selectCurrentRow(focusedIndex)
+      }
+    }
+    transitionToEditItemView() {
+      log.debug('transition to view: EditItem')
+      const { filterValues } = this.props
+      this.tableSearch(filterValues)
+    }
+    transitionFromEditItemView() {
+      log.debug('transition from view: EditItem')
+      this.props.clearNestedCache({
+        namespaces: this.getNestedCacheNamespaces(),
       })
     }
 
