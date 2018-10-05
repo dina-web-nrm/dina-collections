@@ -6233,13 +6233,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Rec
           className="sub header"
           size="large"
         >
-          <em
-            style={
-              Object {
-                "textTransform": "uppercase",
-              }
-            }
-          >
+          <em>
             Phoca vitulina
           </em>
         </div>

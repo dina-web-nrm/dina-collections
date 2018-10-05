@@ -123,13 +123,7 @@ export class FormSectionNavigation extends PureComponent {
               ))}
             {curatorialTaxonName && (
               <Header.Subheader size="large">
-                <em
-                  style={{
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {curatorialTaxonName}
-                </em>
+                <em>{curatorialTaxonName}</em>
               </Header.Subheader>
             )}
           </Header>
