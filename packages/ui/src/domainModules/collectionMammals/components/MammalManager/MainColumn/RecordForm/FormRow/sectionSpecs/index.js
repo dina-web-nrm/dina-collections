@@ -3,6 +3,7 @@ import collectingDeath from './collectingDeath'
 import localityOrigin from './localityOrigin'
 import physicalObjects from './physicalObjects'
 import taxonomy from './taxonomy'
+import features from './features'
 
 export default [
   basicInformation,
@@ -10,4 +11,5 @@ export default [
   localityOrigin,
   collectingDeath,
   physicalObjects,
+  features,
 ]

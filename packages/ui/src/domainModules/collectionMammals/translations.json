@@ -9,6 +9,18 @@
         "en": "Age determination method",
         "sv": "Åldersbestämningsmetod"
       },
+      "age-development-stage": {
+        "en": "Age and development stage",
+        "sv": ""
+      },
+      "age-in-years": {
+        "en": "age in years",
+        "sv": ""
+      },
+      "stage": {
+        "en": "stage",
+        "sv": ""
+      },
       "age-stage": {
         "en": "life stage",
         "sv": "Åldersstadium"
@@ -384,7 +396,7 @@
       "sv": ""
     },
     "features": {
-      "en": "Feature observations"
+      "en": "Features"
     },
     "identifiers": {
       "en": "identifiers",
@@ -795,45 +807,142 @@
   },
 
   "featureObservations": {
-    "other": {
+    "placeholders": {
+      "age": {
+        "en": "Add age",
+        "sv": ""
+      },
       "age-stage": {
-        "en": "life stage"
+        "en": "Select age stage",
+        "sv": ""
       },
-      "complete-body-weight": {
-        "en": "complete body weight"
-      },
-      "skinned-weight": {
-        "en": "skinned weight"
-      },
-      "gutted-weight": {
-        "en": "gutted weight"
-      },
-      "slaughtered-weight": {
-        "en": "slaughtered weight"
-      },
-      "unknown-weight-type": {
-        "en": "unknown weight type"
-      },
-      "total-length": {
-        "en": "total length"
-      },
-      "body-length": {
-        "en": "body length"
-      },
-      "tail-anus-length": {
-        "en": "tail-anus length"
-      },
-      "tail-pelvis-length": {
-        "en": "tail-pelvis length"
-      },
-      "ear-length": {
-        "en": "ear length"
-      },
-      "hind-foot-length": {
-        "en": "hind-foot length"
+      "sex": {
+        "en": "Select sex",
+        "sv": ""
       },
       "condition": {
-        "en": "carcass condition"
+        "en": "Select carcass condition",
+        "sv": ""
+      }, 
+      "weight": {
+        "en": "Add weight",
+        "sv": ""
+      },
+      "length": {
+        "en": "Add length",
+        "sv": ""
+      },
+      "selectMethod": {
+        "en": "Select method",
+        "sv": ""
+      },
+      "selectUnit": {
+        "en": "Select unit",
+        "sv": ""
+      }
+    },
+    "other": {
+      "age": {
+        "en": "Age in years"
+      },
+      "age-stage": {
+        "en": "Stage"
+      },
+      "sex": {
+        "en": "Sex",
+        "sv": ""
+      },
+      "complete-body-weight": {
+        "en": "Complete body"
+      },
+      "skinned-weight": {
+        "en": "Skinned"
+      },
+      "gutted-weight": {
+        "en": "Gutted"
+      },
+      "slaughtered-weight": {
+        "en": "Slaughtered"
+      },
+      "unknown-weight-type": {
+        "en": "Other"
+      },
+      "total-length": {
+        "en": "Total length"
+      },
+      "body-length": {
+        "en": "Body length"
+      },
+      "tail-anus-length": {
+        "en": "Tail-anus length"
+      },
+      "tail-pelvis-length": {
+        "en": "Tail-pelvis length"
+      },
+      "ear-length": {
+        "en": "Ear length"
+      },
+      "hind-foot-length": {
+        "en": "Hind-foot length"
+      },
+      "condition": {
+        "en": "Condition"
+      },
+      "cranium": {
+        "en": "Cranium",
+        "sv": ""
+      },
+      "mandibula": {
+        "en": "Mandibula",
+        "sv": ""
+      },
+      "vertebrae": {
+        "en": "Vertebrae",
+        "sv": ""
+      },
+      "costae": {
+        "en": "Costae",
+        "sv": ""
+      },
+      "scapula": {
+        "en": "Scapula",
+        "sv": ""
+      },
+      "humerus": {
+        "en": "Humerus",
+        "sv": ""
+      },
+      "ulna": {
+        "en": "Ulna",
+        "sv": ""
+      },
+      "radius": {
+        "en": "Radius",
+        "sv": ""
+      },
+      "manus": {
+        "en": "Manus",
+        "sv": ""
+      },
+      "pelvis": {
+        "en": "Pelvis",
+        "sv": ""
+      },
+      "femur": {
+        "en": "Femur",
+        "sv": ""
+      },
+      "tibia": {
+        "en": "Tibia",
+        "sv": ""
+      },
+      "pedis": {
+        "en": "Pedis",
+        "sv": "" 
+      },
+      "bacculum": {
+        "en": "Bacculum",
+        "sv": "" 
       }
     }
   },

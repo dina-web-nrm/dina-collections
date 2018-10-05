@@ -92,7 +92,7 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
   class GetItemById extends Component {
     constructor(props) {
       super(props)
-      this.fetchItemById = this.fetchItemById.bind(this)
+      this.fetchOneItemById = this.fetchOneItemById.bind(this)
     }
 
     componentDidMount() {
@@ -128,13 +128,13 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
           !config.isTest
         ) {
           if (refresh || !nextProps.item) {
-            this.fetchItemById(nextProps.itemId)
+            this.fetchOneItemById(nextProps.itemId)
           }
         }
       }
     }
 
-    fetchItemById(itemId) {
+    fetchOneItemById(itemId) {
       const { dispatch } = this.props
 
       const {
@@ -146,7 +146,8 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
       })
       const getOneActionCreator =
         actionCreators[resource] && actionCreators[resource].getOne
-      dispatch(
+
+      return dispatch(
         getOneActionCreator({
           id: itemId,
           include,
@@ -159,7 +160,7 @@ const createGetItemById = (hocInput = {}) => ComposedComponent => {
       const { item } = this.props
       return (
         <ComposedComponent
-          fetchItemById={this.fetchItemById}
+          fetchOneItemById={this.fetchOneItemById}
           item={item}
           {...this.props}
         />

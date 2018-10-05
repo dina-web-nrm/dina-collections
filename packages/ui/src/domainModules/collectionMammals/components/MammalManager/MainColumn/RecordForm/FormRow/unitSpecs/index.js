@@ -2,6 +2,7 @@ import acquisition from './acquisition'
 import collectingDate from './collectingDate'
 import collectingLocation from './collectingLocation'
 import determinations from './determinations'
+import features from './features'
 import identifiers from './identifiers'
 import localityOriginRoot from './localityOriginRoot'
 import origin from './origin'
@@ -22,6 +23,7 @@ export default {
   collectingDate,
   collectingLocation,
   determinations,
+  features,
   identifiers,
   localityOriginRoot,
   origin,

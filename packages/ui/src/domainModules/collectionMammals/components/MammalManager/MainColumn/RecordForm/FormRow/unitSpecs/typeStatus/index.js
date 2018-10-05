@@ -14,15 +14,21 @@ const parts = [
     initiallyShown: true,
   },
   {
+    columnProps: { width: 16 },
+    componentName: 'TypeSpecimenTypeDropdownSearch',
+    enableHelpNotifications: false,
+    initiallyHidden: true,
+    name: 'individual.typeStatus.id',
+    wrapInField: true,
+  },
+  {
+    columnProps: { width: 8 },
     componentName: 'Input',
-    componentProps: {
-      columnProps: { width: 7 },
-      enableHelpNotifications: false,
-      fluid: true,
-      type: 'text',
-    },
+    enableHelpNotifications: false,
+    fluid: true,
     initiallyHidden: true,
     name: 'individual.typifiedName',
+    type: 'text',
     wrapInField: true,
   },
 ]

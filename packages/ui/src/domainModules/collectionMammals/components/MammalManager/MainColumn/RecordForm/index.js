@@ -203,6 +203,9 @@ const EnhancedForm = compose(
   createEnsureAllItemsFetched({
     resource: 'preparationType',
   }),
+  createEnsureAllItemsFetched({
+    resource: 'featureType',
+  }),
   connect(undefined, mapDispatchToProps)
 )(RecordForm)
 
