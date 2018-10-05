@@ -13,7 +13,8 @@ const parts = [
       rows: 2,
       type: 'text',
     },
-    name: 'locationInformation.localityV',
+    name:
+      'individual.collectingInformation.event.locationInformation.localityV',
     wrapInField: true,
   },
   {
@@ -34,7 +35,8 @@ const parts = [
       style: { width: '83.2%' },
       type: 'text',
     },
-    name: 'locationInformation.localityI',
+    name:
+      'individual.collectingInformation.event.locationInformation.localityI',
     wrapInField: true,
   },
   {
@@ -42,7 +44,7 @@ const parts = [
     componentProps: {
       columnProps: { width: 4 },
       fluid: true,
-      name: 'locationInformation.rt90',
+      name: 'individual.collectingInformation.event.locationInformation.rt90',
       type: 'text',
     },
     wrapInField: true,
