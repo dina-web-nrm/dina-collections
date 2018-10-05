@@ -22,7 +22,7 @@ const extractPickedId = data => {
   )
 }
 
-export class TaxonNameDropdownPickerSearch extends Component {
+export class AcceptedTaxonNameDropdownPickerSearch extends Component {
   render() {
     const {
       onClose,
@@ -47,8 +47,8 @@ export class TaxonNameDropdownPickerSearch extends Component {
   }
 }
 
-TaxonNameDropdownPickerSearch.propTypes = propTypes
+AcceptedTaxonNameDropdownPickerSearch.propTypes = propTypes
 
 export default createPickerWrapper({ extractPickedId })(
-  TaxonNameDropdownPickerSearch
+  AcceptedTaxonNameDropdownPickerSearch
 )
