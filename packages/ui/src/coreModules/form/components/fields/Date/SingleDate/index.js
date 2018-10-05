@@ -17,7 +17,7 @@ const propTypes = {
   module: PropTypes.string.isRequired,
 }
 
-const SingleDate = ({ input, meta, module }) => {
+const SingleDate = ({ input, meta, module, ...rest }) => {
   return (
     <RangeDate
       displayDateTypeRadios={false}
@@ -28,6 +28,7 @@ const SingleDate = ({ input, meta, module }) => {
       meta={meta}
       module={module}
       name={input.name}
+      {...rest}
     />
   )
 }

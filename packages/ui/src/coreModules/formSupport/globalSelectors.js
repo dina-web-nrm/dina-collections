@@ -26,22 +26,18 @@ const getInitiallyHiddenFieldsHaveValue = (
     return undefined
   }
 
-  return initiallyHiddenFieldNames.reduce((hasValue, fieldName) => {
-    if (hasValue) {
+  for (let index = 0; index < initiallyHiddenFieldNames.length; index += 1) {
+    const value = formValueSelector(state, initiallyHiddenFieldNames[index])
+
+    const valueIsEmpty =
+      (!value && value !== 0) || (typeof value === 'object' && isEmpty(value))
+
+    if (!valueIsEmpty) {
       return true
     }
+  }
 
-    const value = formValueSelector(state, fieldName)
-
-    if (
-      (!value && value !== 0) ||
-      (typeof value === 'object' && isEmpty(value))
-    ) {
-      return false
-    }
-
-    return true
-  }, false)
+  return false
 }
 
 const getSectionIsDirty = (state, { formName, section }) => {
@@ -64,19 +60,17 @@ const getAnyFieldIsInvalid = (state, { formName, fieldNames }) => {
   const asyncErrors = getFormAsyncErrors(formName)(state)
   const submitErrors = getFormSubmitErrors(formName)(state)
 
-  const isInvalid = fieldNames.reduce((hasInvalidValue, fieldName) => {
-    if (hasInvalidValue) {
+  for (let index = 0; index < fieldNames.length; index += 1) {
+    if (
+      objectPath.get(syncErrors, fieldNames[index]) ||
+      objectPath.get(asyncErrors, fieldNames[index]) ||
+      objectPath.get(submitErrors, fieldNames[index])
+    ) {
       return true
     }
+  }
 
-    return !!(
-      objectPath.get(syncErrors, fieldName) ||
-      objectPath.get(asyncErrors, fieldName) ||
-      objectPath.get(submitErrors, fieldName)
-    )
-  }, false)
-
-  return isInvalid
+  return false
 }
 
 const getSectionIsInvalid = (state, { formName, section }) => {

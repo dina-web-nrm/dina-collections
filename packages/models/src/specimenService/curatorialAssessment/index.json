@@ -14,13 +14,8 @@
       "type": "string",
       "example": "Good"
     },
-    "conditionRemarks": {
-      "type": "string",
-      "example": "Small damage on left hind leg"
-    },
-    "inventoryStatusRemarks": {
-      "type": "string",
-      "example": "On loan"
+    "remarks": {
+      "type": "string"
     },
     "isInStorage": {
       "type": "boolean"

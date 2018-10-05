@@ -1502,14 +1502,8 @@
         "example": "Good",
         "x-summary": ""
       },
-      "conditionRemarks": {
+      "remarks": {
         "type": "string",
-        "example": "Small damage on left hind leg",
-        "x-summary": ""
-      },
-      "inventoryStatusRemarks": {
-        "type": "string",
-        "example": "On loan",
         "x-summary": ""
       },
       "isInStorage": {

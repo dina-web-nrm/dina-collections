@@ -25,6 +25,7 @@ const containerStyle = {
 
 const propTypes = {
   autoComplete: PropTypes.string,
+  disableClearValue: PropTypes.bool,
   displayAsButton: PropTypes.bool,
   fluid: PropTypes.bool,
   focusOnMount: PropTypes.bool,
@@ -72,6 +73,7 @@ const propTypes = {
 }
 const defaultProps = {
   autoComplete: undefined,
+  disableClearValue: false,
   displayAsButton: false,
   fluid: false,
   focusOnMount: false,
@@ -89,6 +91,7 @@ class DropdownSearchInput extends Component {
     super(props)
     this.handleClear = this.handleClear.bind(this)
     this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.handleOnBlur = this.handleOnBlur.bind(this)
     this.handleOnChange = this.handleOnChange.bind(this)
   }
 
@@ -103,21 +106,10 @@ class DropdownSearchInput extends Component {
       inputName: this.props.input.name,
       searchQuery,
     })
+  }
 
-    if (this.props.input.value) {
-      // empty form value, if search is renewed after a value was selected
-      if (this.props.type === 'dropdown-search-id-text') {
-        const value = {
-          ...this.props.input.value,
-        }
-        delete value.textI
-        delete value.normalized
-
-        this.props.input.onChange(value)
-      } else {
-        this.props.input.onChange('')
-      }
-    }
+  handleOnBlur() {
+    this.handleSearchChange(null, { searchQuery: '' })
   }
 
   handleOnChange(_, data) {
@@ -153,6 +145,7 @@ class DropdownSearchInput extends Component {
   render() {
     const {
       autoComplete,
+      disableClearValue,
       displayAsButton,
       fluid,
       icon,
@@ -176,14 +169,15 @@ class DropdownSearchInput extends Component {
     return (
       <React.Fragment>
         <div style={containerStyle}>
-          {value && (
-            <Icon
-              link
-              name="close"
-              onClick={this.handleClear}
-              style={closeIconStyle}
-            />
-          )}
+          {!disableClearValue &&
+            value && (
+              <Icon
+                link
+                name="close"
+                onClick={this.handleClear}
+                style={closeIconStyle}
+              />
+            )}
           <Dropdown
             autoComplete={autoComplete}
             button={displayAsButton}
@@ -202,7 +196,7 @@ class DropdownSearchInput extends Component {
             selectOnNavigation={false}
             text={searchQuery || text}
             {...input}
-            onBlur={undefined}
+            onBlur={this.handleOnBlur}
             onChange={this.handleOnChange}
             style={style}
             value={value || ''}

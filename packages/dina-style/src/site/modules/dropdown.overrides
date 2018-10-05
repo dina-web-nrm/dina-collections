@@ -2,10 +2,9 @@
         User Overrides
 *******************************/
 
-// Ensure icon in dropdown gets correct margin due to conflicting button style:
-// .ui.button:not(.icon) > .icon:not(.button):not(.dropdown)
+// Ensure delete and search icon in dropdown gets correct margin due to
+// conflicting button style: .ui.button:not(.icon) > .icon:not(.button):not(.dropdown)
 .ui.selection.dropdown > .search.icon,
-.ui.selection.dropdown > .delete.icon,
-.ui.selection.dropdown > .dropdown.icon {
+.ui.selection.dropdown > .delete.icon {
   margin: -1em !important;
 }

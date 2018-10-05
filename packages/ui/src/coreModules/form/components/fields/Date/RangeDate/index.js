@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
 import config from 'config'
+import extractProps from 'utilities/extractProps'
 import { LATEST, RANGE, SINGLE } from 'coreModules/form/constants'
 import { emToPixels } from 'coreModules/layout/utilities'
-import FieldTemplate from '../../../FieldTemplate'
+import FieldTemplate, { fieldTemplatePropKeys } from '../../../FieldTemplate'
 import {
   bothStartAndEndDateRequiredIfOneProvided,
   dateRangeStartDateNotAfterEndDate,
@@ -216,27 +217,29 @@ class DateRange extends Component {
   render() {
     const {
       displayDateTypeRadios,
-      displayLabel,
       displaySubLabels,
       input,
       meta,
-      module,
       mountHidden,
       stack,
     } = this.props
     const { dateType } = this.state
 
     const hasError = meta.touched && !!meta.error
+
+    const { extractedProps: fieldTemplateProps } = extractProps({
+      keys: fieldTemplatePropKeys,
+      props: this.props,
+    })
+
     return (
       <FieldTemplate
+        {...fieldTemplateProps}
         displayError={hasError}
-        displayLabel={displayLabel}
         enableHelpNotifications={false}
         errorStyle={
           dateType === SINGLE ? onePartErrorLabelStyle : twoPartErrorLabelStyle
         }
-        meta={meta}
-        module={module}
         name={input.name}
         style={
           hasError && dateType === SINGLE ? onePartErrorFieldStyle : undefined

@@ -25,9 +25,21 @@ class RemarksWrapper extends PureComponent {
       <Grid padded style={{ height: 36 }}>
         <Grid.Column
           onClick={isLatestActiveField ? undefined : setAsLatestActiveField}
-          style={{ padding: 0 }}
+          style={{
+            padding: 0,
+            paddingLeft: '2em',
+            position: 'relative',
+          }}
         >
-          <div style={{ float: 'left', paddingTop: 6 }}>
+          <div
+            style={{
+              float: 'left',
+              left: 0,
+              position: 'absolute',
+              top: '0.25em',
+              zIndex: 20,
+            }}
+          >
             <Icon
               name={value ? 'commenting outline' : 'comment outline'}
               size="large"

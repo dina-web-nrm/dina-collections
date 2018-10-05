@@ -1,4 +1,10 @@
 export const MODULE_NAME = 'curatedList'
+export const OTHER_PREPARATION = 'other-preparation'
 export const SKELETON = 'skeleton'
 export const SKIN = 'skin'
 export const WET_PREPARATION = 'wet-preparation'
+
+export const UNSPECIFIED_OTHER_PREPARATION_PREPARATION_TYPE_ID = '23'
+export const UNSPECIFIED_SKELETON_PREPARATION_TYPE_ID = '11'
+export const UNSPECIFIED_SKIN_PREPARATION_TYPE_ID = '18'
+export const UNSPECIFIED_WET_PREPARATION_PREPARATION_TYPE_ID = '22'

@@ -13,6 +13,7 @@ import {
   submit,
 } from 'redux-form'
 
+import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
 import { Form } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
@@ -199,6 +200,9 @@ RecordForm.defaultProps = defaultProps
 
 const EnhancedForm = compose(
   withRouter,
+  createEnsureAllItemsFetched({
+    resource: 'preparationType',
+  }),
   connect(undefined, mapDispatchToProps)
 )(RecordForm)
 

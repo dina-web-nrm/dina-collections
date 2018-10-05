@@ -5,6 +5,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import extractProps from 'utilities/extractProps'
 import createGetItemById from './createGetItemById'
+import clearNestedCache from '../actionCreators/clearNestedCache'
 import createNestedItem from '../actionCreators/createNestedItem'
 
 import { globalSelectors as keyObjectGlobalSelectors } from '../keyObjectModule'
@@ -63,10 +64,12 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
     }
   }
   const mapDispatchToProps = {
+    clearNestedCache,
     createNestedItem,
   }
 
   const propTypes = {
+    clearNestedCache: PropTypes.func.isRequired,
     createNestedItem: PropTypes.func.isRequired,
     item: PropTypes.object,
     namespace: PropTypes.string,
@@ -83,6 +86,7 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
     constructor(props) {
       super(props)
       this.createNestedItemIfNeeded = this.createNestedItemIfNeeded.bind(this)
+      this.clearNestedCacheNamespace = this.clearNestedCacheNamespace.bind(this)
     }
     componentDidMount() {
       this.createNestedItemIfNeeded()
@@ -90,6 +94,12 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
 
     componentWillReceiveProps(nextProps) {
       this.createNestedItemIfNeeded(nextProps)
+    }
+
+    clearNestedCacheNamespace() {
+      const { namespace } = this.props
+
+      this.props.clearNestedCache({ namespace })
     }
 
     createNestedItemIfNeeded(nextProps) {
@@ -140,7 +150,12 @@ const createGetNestedItemById = (hocInput = {}) => ComposedComponent => {
           [nestedItemKey]: nestedItem,
         }
       }
-      return <ComposedComponent {...propsToForward} />
+      return (
+        <ComposedComponent
+          {...propsToForward}
+          clearNestedCacheNamespace={this.clearNestedCacheNamespace}
+        />
+      )
     }
   }
 
