@@ -106,30 +106,32 @@ class MainColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'recordNavigationBar': {
-        const { isPicker, treeActive } = this.props
-        const { extractedProps } = extractProps({
-          keys: [
+        const { treeActive } = this.props
+
+        let keys = ['onOpenNewRecordForm']
+
+        if (!treeActive) {
+          keys = [
+            ...keys,
             'currentTableRowNumber',
-            'onOpenNewRecordForm',
             'onSelectNextRecord',
             'onSelectPreviousRecord',
             'onSetCurrentTableRowNumber',
             'onShowAllRecords',
             'totalNumberOfRecords',
-          ],
+          ]
+        }
+
+        const { extractedProps } = extractProps({
+          keys,
           props: this.props,
         })
-
-        return (
-          <RecordNavigationBar
-            {...extractedProps}
-            showNewRecordButton={!isPicker}
-            showRecordInput={!isPicker}
-            showShowAllButton={!isPicker}
-            showSlider={!isPicker}
-            showTotalRecords={!(isPicker && treeActive)}
-          />
-        )
+        // showNewRecordButton={!isPicker}
+        // showRecordInput={!isPicker && !treeActive}
+        // showShowAllButton={!isPicker && !treeActive}
+        // showSlider={!isPicker && !treeActive}
+        // showTotalRecords={!isPicker && !treeActive}
+        return <RecordNavigationBar {...extractedProps} />
       }
       case 'treeView': {
         const { extractedProps } = extractProps({

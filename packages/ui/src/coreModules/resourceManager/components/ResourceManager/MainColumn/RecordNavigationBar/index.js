@@ -13,20 +13,16 @@ const mapStateToProps = state => {
 }
 
 const propTypes = {
-  currentTableRowNumber: PropTypes.number.isRequired,
+  currentTableRowNumber: PropTypes.number,
   isLargeScreen: PropTypes.bool.isRequired,
-  onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
-    .isRequired,
-  onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
-    .isRequired,
-  onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
-    .isRequired,
+  onOpenNewRecordForm: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  onSelectNextRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  onSelectPreviousRecord: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   onSetCurrentTableRowNumber: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.bool,
-  ]).isRequired,
-  onShowAllRecords: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
-    .isRequired,
+  ]),
+  onShowAllRecords: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
   showNewRecordButton: PropTypes.bool,
   showRecordInput: PropTypes.bool,
   showShowAllButton: PropTypes.bool,
@@ -35,6 +31,12 @@ const propTypes = {
   totalNumberOfRecords: PropTypes.number,
 }
 const defaultProps = {
+  currentTableRowNumber: undefined,
+  onOpenNewRecordForm: false,
+  onSelectNextRecord: false,
+  onSelectPreviousRecord: false,
+  onSetCurrentTableRowNumber: false,
+  onShowAllRecords: false,
   showNewRecordButton: true,
   showRecordInput: true,
   showShowAllButton: true,
@@ -67,6 +69,10 @@ export class RecordNavigationBar extends Component {
     } = this.props
 
     const { sliderRowNumber } = this.state
+    const sliderValue =
+      (handleSetCurrentTableRowNumber
+        ? sliderRowNumber || currentTableRowNumber
+        : currentTableRowNumber) || ''
 
     return (
       <Grid padded textAlign="center" verticalAlign="middle">
@@ -101,7 +107,7 @@ export class RecordNavigationBar extends Component {
                 size="mini"
                 style={{ width: '80px' }}
                 type="number"
-                value={sliderRowNumber || currentTableRowNumber}
+                value={sliderValue}
               />
             </div>
           )}
@@ -121,6 +127,9 @@ export class RecordNavigationBar extends Component {
                   max={totalNumberOfRecords}
                   min={totalNumberOfRecords && 1}
                   onChange={newTableRowNumber => {
+                    if (!handleSetCurrentTableRowNumber) {
+                      return
+                    }
                     // those ifs are a needed hack to avoid double increment when
                     // using hotkey directly after sliding
                     if (newTableRowNumber === currentTableRowNumber + 1) {
@@ -135,6 +144,9 @@ export class RecordNavigationBar extends Component {
                     }
                   }}
                   onChangeComplete={() => {
+                    if (!handleSetCurrentTableRowNumber) {
+                      return
+                    }
                     handleSetCurrentTableRowNumber(null, sliderRowNumber)
                     this.setState({ sliderRowNumber: null })
                   }}
