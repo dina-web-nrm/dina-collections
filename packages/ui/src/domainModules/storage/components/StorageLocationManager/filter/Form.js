@@ -59,6 +59,7 @@ export class BaseForm extends Component {
                   <FieldWrapper
                     autoComplete="off"
                     component={DropdownSearch}
+                    fluid
                     model="storageLocation"
                     module="storage"
                     name="group"

@@ -38,6 +38,7 @@ const mapStateToProps = (state, { isPicker, windowHeight }) => {
   return {
     availableHeight,
     columnHeight,
+    filterColumnWidth: isPicker ? emToPixels(15) : emToPixels(25),
     rightSidebarIsOpen: layoutSelectors.getRightSidebarIsOpen(state),
   }
 }
@@ -48,7 +49,7 @@ const propTypes = {
   createItemActive: PropTypes.bool.isRequired,
   editItemActive: PropTypes.bool.isRequired,
   filterActive: PropTypes.bool.isRequired,
-  filterColumnWidth: PropTypes.number,
+  filterColumnWidth: PropTypes.number.isRequired,
   focusedItemId: PropTypes.string,
   isPicker: PropTypes.bool,
   itemFetchOptions: PropTypes.object.isRequired,
@@ -66,7 +67,6 @@ const propTypes = {
   windowHeight: PropTypes.number.isRequired,
 }
 const defaultProps = {
-  filterColumnWidth: emToPixels(20),
   focusedItemId: undefined,
   isPicker: false,
   itemId: undefined,
