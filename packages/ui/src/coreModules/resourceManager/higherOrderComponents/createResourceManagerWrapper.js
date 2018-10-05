@@ -14,6 +14,8 @@ import {
 
 import { createInjectSearch } from 'coreModules/search/higherOrderComponents'
 
+import { reset as resetActionCreator } from 'redux-form'
+
 import {
   CLOSE_ITEM_VIEW,
   CREATE_SUCCESS,
@@ -71,6 +73,7 @@ const createResourceManagerWrapper = (
     clearResourceState: keyObjectActionCreators.del[':resource'],
     delFocusIdWhenLoaded:
       keyObjectActionCreators.del[':resource.focusIdWhenLoaded'],
+    resetForm: resetActionCreator,
     setBaseItems: keyObjectActionCreators.set[':resource.baseItems'],
     setCurrentTableRowNumber:
       keyObjectActionCreators.set[':resource.currentTableRowNumber'],
@@ -109,6 +112,7 @@ const createResourceManagerWrapper = (
     prevRowAvailable: PropTypes.bool.isRequired,
     recordNavigationHeight: PropTypes.number,
     recordOptionsHeight: PropTypes.number,
+    resetForm: PropTypes.func.isRequired,
     resource: PropTypes.string.isRequired,
     search: PropTypes.func.isRequired,
     setBaseItems: PropTypes.func.isRequired,
@@ -169,6 +173,7 @@ const createResourceManagerWrapper = (
       this.handleUpdateFilterValues = this.handleUpdateFilterValues.bind(this)
       this.selectCurrentRow = this.selectCurrentRow.bind(this)
       this.tableSearch = this.tableSearch.bind(this)
+      this.resetFilters = this.resetFilters.bind(this)
     }
 
     componentDidMount() {
@@ -294,6 +299,9 @@ const createResourceManagerWrapper = (
         this.props.clearNestedCache({
           namespaces: this.getNestedCacheNamespaces(),
         })
+        if (!tableActive) {
+          this.resetFilters()
+        }
       }
 
       if (treeActive) {
@@ -340,6 +348,13 @@ const createResourceManagerWrapper = (
       }
 
       return []
+    }
+
+    resetFilters() {
+      const { resource } = this.props
+      const formName = `${resource}Filter`
+      this.props.resetForm(formName, { resource })
+      this.props.setFilterValues({}, { resource })
     }
 
     handleKeyDown(event) {
