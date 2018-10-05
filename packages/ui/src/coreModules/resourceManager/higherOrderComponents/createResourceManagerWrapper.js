@@ -618,6 +618,7 @@ const createResourceManagerWrapper = (
           this.handleInteraction(ITEM_SELECT, { itemId: initialItemId })
         }
         this.transitionToTableView()
+        return
       }
 
       const {
