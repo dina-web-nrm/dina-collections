@@ -7,7 +7,7 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
   }
 
   if (!transformedSpecimen.individual.determinations) {
-    transformedSpecimen.individual.determinations = [{}]
+    transformedSpecimen.individual.determinations = []
   }
 
   if (!transformedSpecimen.individual.identifiers) {
@@ -22,6 +22,7 @@ export default function transformInput({ featureTypes = [], specimen = {} }) {
       },
     ]
   }
+
   if (!transformedSpecimen.individual.recordHistoryEvents) {
     transformedSpecimen.individual.recordHistoryEvents = []
   }
