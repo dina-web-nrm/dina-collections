@@ -1,6 +1,9 @@
 import acquisition from './acquisition'
+import collectingDeathRoot from './collectingDeathRoot'
 import collectingDate from './collectingDate'
 import collectingLocation from './collectingLocation'
+import collectorExpedition from './collectorExpedition'
+import death from './death'
 import determinations from './determinations'
 import features from './features'
 import identifiers from './identifiers'
@@ -21,7 +24,10 @@ import typeStatus from './typeStatus'
 export default {
   acquisition,
   collectingDate,
+  collectingDeathRoot,
   collectingLocation,
+  collectorExpedition,
+  death,
   determinations,
   features,
   identifiers,
