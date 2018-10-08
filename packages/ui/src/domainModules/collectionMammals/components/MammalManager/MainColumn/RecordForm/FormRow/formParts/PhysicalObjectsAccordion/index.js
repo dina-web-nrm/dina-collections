@@ -28,7 +28,7 @@ import PhysicalObjectTitle from './PhysicalObjectTitle'
 const { AddButton } = formParts
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentCollectionItems'
+  'modules:collectionMammals:formParts:PhysicalObjectsAccordion'
 )
 
 const categoryUnspecifiedTypeIdMap = {
@@ -61,6 +61,10 @@ const getMatchesCategory = ({
   return false
 }
 
+const getShouldExpandFirstItemOnMount = (item = {}) => {
+  return Object.keys(item).length === 1
+}
+
 const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
     allPreparationTypesFetched: crudKeyObjectSelectors.get[
@@ -89,7 +93,7 @@ const defaultProps = {
   preparationTypes: {},
 }
 
-class SegmentCollectionItems extends PureComponent {
+class PhysicalObjectsAccordion extends PureComponent {
   constructor(props) {
     super(props)
     this.getShouldRenderAccordion = this.getShouldRenderAccordion.bind(this)
@@ -141,6 +145,10 @@ class SegmentCollectionItems extends PureComponent {
           collectionItems.length > 0 && (
             <Grid.Column computer={16}>
               <Accordion
+                expandItemOnAdd
+                getShouldExpandFirstItemOnMount={
+                  getShouldExpandFirstItemOnMount
+                }
                 getShouldRenderItem={this.getShouldRenderItem}
                 initialActiveMode={ALL_COLLAPSED}
                 items={collectionItems}
@@ -196,12 +204,12 @@ class SegmentCollectionItems extends PureComponent {
   }
 }
 
-SegmentCollectionItems.propTypes = propTypes
-SegmentCollectionItems.defaultProps = defaultProps
+PhysicalObjectsAccordion.propTypes = propTypes
+PhysicalObjectsAccordion.defaultProps = defaultProps
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   pathBuilder({
     name: 'individual.collectionItems',
   })
-)(SegmentCollectionItems)
+)(PhysicalObjectsAccordion)
