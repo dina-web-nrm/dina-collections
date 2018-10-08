@@ -14,21 +14,20 @@ const parts = [
     initiallyShown: true,
   },
   {
-    columnProps: { width: 16 },
     componentName: 'TypeSpecimenTypeDropdownSearch',
-    enableHelpNotifications: false,
     initiallyHidden: true,
-    name: 'individual.typeStatus.id',
+    name: 'individual.taxonInformation.typeStatus.id',
     wrapInField: true,
   },
   {
-    columnProps: { width: 8 },
     componentName: 'Input',
-    enableHelpNotifications: false,
-    fluid: true,
+    componentProps: {
+      columnProps: { width: 8 },
+      fluid: true,
+      type: 'text',
+    },
     initiallyHidden: true,
-    name: 'individual.typifiedName',
-    type: 'text',
+    name: 'individual.taxonInformation.typifiedName',
     wrapInField: true,
   },
 ]
