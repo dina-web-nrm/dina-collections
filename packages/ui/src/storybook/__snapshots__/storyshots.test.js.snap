@@ -4082,7 +4082,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks emptyState 1`] = 
                   "left": 0,
                   "position": "absolute",
                   "top": "0.25em",
-                  "zIndex": 20,
                 }
               }
             >
@@ -4149,7 +4148,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
                   "left": 0,
                   "position": "absolute",
                   "top": "0.25em",
-                  "zIndex": 20,
                 }
               }
             >
@@ -4215,7 +4213,6 @@ exports[`storyshots Storyshots coreModules/form/Fields/Remarks existingRemarkWit
                   "left": 0,
                   "position": "absolute",
                   "top": "0.25em",
-                  "zIndex": 20,
                 }
               }
             >
@@ -8362,7 +8359,7 @@ exports[`storyshots Storyshots domainModules/collectionMammals/MammalManager/Res
           className="content"
         >
           <span>
-            Taxon (curatorial name)
+            Curatorial taxon name
           </span>
         </div>
       </div>
