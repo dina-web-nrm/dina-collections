@@ -1,13 +1,29 @@
-export { default as AgeAndStage } from './AgeAndStage'
-export { default as Agent } from './Agent'
-export { default as Bones } from './Bones'
-export { default as CollectingCondition } from './CollectingCondition'
-export { default as DatePeriod } from './DatePeriod'
-export { default as Identifier } from './Identifier'
-export { default as Length } from './Length'
-export { default as Locality } from './Locality'
-export { default as PhysicalObject } from './PhysicalObject'
-export { default as Sex } from './Sex'
-export { default as Storage } from './Storage'
-export { default as Taxonomy } from './Taxonomy'
-export { default as Weight } from './Weight'
+import AgeAndStage from './AgeAndStage'
+import Agent from './Agent'
+import Bones from './Bones'
+import CollectingCondition from './CollectingCondition'
+import DatePeriod from './DatePeriod'
+import Identifier from './Identifier'
+import Length from './Length'
+import Locality from './Locality'
+import PhysicalObject from './PhysicalObject'
+import Sex from './Sex'
+import Storage from './Storage'
+import Taxonomy from './Taxonomy'
+import Weight from './Weight'
+
+export const components = {
+  AgeAndStage,
+  Agent,
+  Bones,
+  CollectingCondition,
+  DatePeriod,
+  Identifier,
+  Length,
+  Locality,
+  PhysicalObject,
+  Sex,
+  Storage,
+  Taxonomy,
+  Weight,
+}
