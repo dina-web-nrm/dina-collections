@@ -49,7 +49,7 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
   reportPickerActive(value) {
     // if picker active, prepare to forceRenderResult when picker is no longer
     // active and value was selected
-    if (value) {
+    if (value && (value.textI || (value.normalized && value.normalized.id))) {
       return this.setState({
         forceRenderResult: true,
         pickerActive: true,
