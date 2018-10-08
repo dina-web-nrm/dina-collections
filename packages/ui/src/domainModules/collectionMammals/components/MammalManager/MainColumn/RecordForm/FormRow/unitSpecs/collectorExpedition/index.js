@@ -12,14 +12,12 @@ const parts = [
   },
   ...createAgentInputs({
     baseName: 'individual.collectingInformation.0.collectedByAgent',
-    enableHelpNotifications: false,
     model,
   }),
   {
     componentName: 'Input',
     componentProps: {
       columnProps: { width: 9 },
-      enableHelpNotifications: false,
       fluid: true,
       type: 'text',
     },

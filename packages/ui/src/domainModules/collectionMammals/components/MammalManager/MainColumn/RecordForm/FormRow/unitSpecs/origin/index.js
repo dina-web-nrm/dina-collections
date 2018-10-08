@@ -17,7 +17,6 @@ const parts = [
     componentName: 'TextArea',
     componentProps: {
       columnProps: { width: 11 },
-      enableHelpNotifications: false,
       rows: 2,
       type: 'text',
     },
