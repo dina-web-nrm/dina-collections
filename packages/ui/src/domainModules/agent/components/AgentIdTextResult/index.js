@@ -17,6 +17,7 @@ const propTypes = {
   i18n: PropTypes.shape({
     moduleTranslate: PropTypes.func.isRequired,
   }).isRequired,
+  includeVerbatimAgent: PropTypes.bool,
   input: PropTypes.shape({
     name: PropTypes.string,
     value: PropTypes.oneOfType([
@@ -39,6 +40,7 @@ const propTypes = {
 const defaultProps = {
   focusOnMount: false,
   forceRenderResult: false,
+  includeVerbatimAgent: false,
   isLatestActiveField: false,
   normalizedAgent: undefined,
   removeForceRenderResult: undefined,
@@ -77,12 +79,14 @@ class AgentIdTextResult extends Component {
   render() {
     const {
       i18n: { moduleTranslate },
+      includeVerbatimAgent,
       input: { name, value },
       normalizedAgent,
       textOnly,
     } = this.props
 
-    const inputText = value && (value.textI || value.textV)
+    const inputText =
+      (value && value.textI) || (includeVerbatimAgent ? value.textV : undefined)
 
     const fullName = objectPath.get(normalizedAgent, 'attributes.fullName')
 

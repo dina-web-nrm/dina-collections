@@ -200,14 +200,6 @@
         "en": "Origin",
         "sv": ""
       },
-      "typeStatus": {
-        "en": "Type status",
-        "sv": "Typstatus"
-      },
-      "typifiedName": {
-        "en": "Typified name",
-        "sv": ""
-      },
       "collectionItemText": {
         "en": "Collection item Text"
       },
@@ -332,6 +324,14 @@
       "taxonRemarks": {
         "en": "Taxon remarks"
       },
+      "typeStatus": {
+        "en": "Type status",
+        "sv": "Typstatus"
+      },
+      "typifiedName": {
+        "en": "Typified name",
+        "sv": ""
+      },
       "oldScientificName": {
         "en": "Old scientific name"
       },
@@ -387,7 +387,7 @@
     "death": {
       "en": "Death",
       "sv": ""
-    }, 
+    },
     "collecintLocality": {
       "en": "collecting locality"
     },

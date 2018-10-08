@@ -114,8 +114,24 @@ export const getRangeValueAfterDateTypeChange = ({
       updatedValue.startDate = {}
     }
   } else if (previousDateType === SINGLE && nextDateType === LATEST) {
-    updatedValue.endDate = {}
-    updatedValue.startDate = {}
+    if (
+      currentRangeValue.startDate &&
+      currentRangeValue.startDate.interpretedTimestamp
+    ) {
+      updatedValue.endDate = {
+        ...updatedValue.startDate,
+        interpretedTimestamp: getTimestampFromYMD({
+          ...updatedValue.startDate,
+          isEndDate: true,
+        }),
+      }
+      updatedValue.startDate = {
+        interpretedTimestamp: getEarliestTimestamp(),
+      }
+    } else {
+      updatedValue.startDate = {}
+      updatedValue.endDate = {}
+    }
   } else if (previousDateType === SINGLE && nextDateType === RANGE) {
     // noop
   }
