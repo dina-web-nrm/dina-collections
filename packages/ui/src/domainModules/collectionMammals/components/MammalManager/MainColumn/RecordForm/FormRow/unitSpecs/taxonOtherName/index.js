@@ -7,11 +7,9 @@ const parts = [
     },
   },
   {
-    componentName: 'AddButton',
-    componentProps: {
-      textKey: 'other.addOtherNames',
-    },
-    initiallyShown: true,
+    componentName: 'CustomTaxonNamesTable',
+    containsReduxFormField: true,
+    name: 'individual.taxonInformation.customTaxonNames',
   },
 ]
 
