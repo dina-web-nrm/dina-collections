@@ -6,15 +6,19 @@ import { Icon, Grid } from 'semantic-ui-react'
 import createLog from 'utilities/log'
 import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
+import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTableRow'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/IdentifiersTable/Row'
 )
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   getTranslationPath: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
   identifier: PropTypes.shape({
     id: PropTypes.string,
     identifierType: PropTypes.object,
@@ -43,6 +47,7 @@ class IdentifiersTableRow extends PureComponent {
       identifierTypeOptions,
       getPath,
       getTranslationPath,
+      i18n: { moduleTranslate },
       index,
       removeArrayFieldByIndex,
     } = this.props
@@ -59,6 +64,10 @@ class IdentifiersTableRow extends PureComponent {
             module="collectionMammals"
             name={getPath('identifierType.id')}
             options={identifierTypeOptions}
+            placeholder={moduleTranslate({
+              capitalize: true,
+              textKey: 'other.selectIdentifierType',
+            })}
             type="dropdown-search-local"
           />
         </Grid.Column>
@@ -71,6 +80,10 @@ class IdentifiersTableRow extends PureComponent {
             fluid
             module="collectionMammals"
             name={getPath('value')}
+            placeholder={moduleTranslate({
+              capitalize: true,
+              textKey: 'other.addIdentifierOrIdentifiers',
+            })}
             type="text"
           />
         </Grid.Column>
@@ -92,4 +105,7 @@ class IdentifiersTableRow extends PureComponent {
 
 IdentifiersTableRow.propTypes = propTypes
 
-export default compose(pathBuilder())(IdentifiersTableRow)
+export default compose(
+  withI18n({ module: 'collectionMammals' }),
+  pathBuilder()
+)(IdentifiersTableRow)

@@ -8,15 +8,18 @@ import createLog from 'utilities/log'
 import AddButton from 'coreModules/form/components/parts/StaticContent/AddButton'
 import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import globalCrudSelectors from 'coreModules/crud/globalSelectors'
-import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderComponents'
+import { globalSelectors as crudKeyObjectSelectors } from 'coreModules/crud/keyObjectModule'
 import IdentifiersTableRow from './Row'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:SegmentIdentifiers:IdentifiersTable'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/IdentifiersTable'
 )
 
 const mapStateToProps = (state, { formValueSelector, name }) => {
   return {
+    allIdentifierTypesFetched: crudKeyObjectSelectors.get[
+      ':resource.allItemsFetched'
+    ](state, { resource: 'identifierType' }),
     identifiers: formValueSelector(state, name),
     identifierTypeOptions: globalCrudSelectors.identifierType
       .getAllAsOptions(state)
@@ -27,21 +30,26 @@ const mapStateToProps = (state, { formValueSelector, name }) => {
 }
 
 const propTypes = {
+  allIdentifierTypesFetched: PropTypes.bool,
   changeFieldValue: PropTypes.func.isRequired,
   getPath: PropTypes.func.isRequired,
   identifiers: PropTypes.arrayOf(PropTypes.object).isRequired,
   identifierTypeOptions: PropTypes.array.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
+const defaultProps = {
+  allIdentifierTypesFetched: false,
+}
 
 function IdentifiersTable({
+  allIdentifierTypesFetched,
   changeFieldValue,
   getPath,
   identifiers,
   identifierTypeOptions,
   removeArrayFieldByIndex,
 }) {
-  if (!identifiers.length) {
+  if (!identifiers.length || !allIdentifierTypesFetched) {
     return null
   }
 
@@ -81,16 +89,14 @@ function IdentifiersTable({
           changeFieldValue(getPath(identifiers.length), {})
         }}
         textKey="other.addIdentifier"
-        width={16}
       />
     </React.Fragment>
   )
 }
 
 IdentifiersTable.propTypes = propTypes
+IdentifiersTable.defaultProps = defaultProps
 
-export default compose(
-  createEnsureAllItemsFetched({ resource: 'identifierType' }),
-  connect(mapStateToProps),
-  pathBuilder()
-)(IdentifiersTable)
+export default compose(connect(mapStateToProps), pathBuilder())(
+  IdentifiersTable
+)

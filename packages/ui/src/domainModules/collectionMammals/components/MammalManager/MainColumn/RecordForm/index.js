@@ -201,6 +201,7 @@ RecordForm.defaultProps = defaultProps
 const EnhancedForm = compose(
   withRouter,
   createEnsureAllItemsFetched({ resource: 'customTaxonNameType' }),
+  createEnsureAllItemsFetched({ resource: 'identifierType' }),
   createEnsureAllItemsFetched({
     resource: 'preparationType',
   }),
