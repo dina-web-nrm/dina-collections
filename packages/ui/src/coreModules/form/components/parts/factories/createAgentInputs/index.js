@@ -27,7 +27,6 @@ export default function createAgentInputs(
         columnProps: { width: 9 },
         displayEmptyStateLabel: false,
         displayResultLabel: false,
-        resultSuffix: '(agent)',
       },
       initiallyHidden,
       module,

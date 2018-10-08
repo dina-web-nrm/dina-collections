@@ -89,12 +89,12 @@ class AgentIdTextResult extends Component {
     const agentName = fullName || inputText
 
     const suffix =
+      (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' })) ||
       (inputText &&
         moduleTranslate({
           module: 'form',
           textKey: 'plainText',
-        })) ||
-      (fullName && moduleTranslate({ module: 'agent', textKey: 'agent' }))
+        }))
 
     const { extractedProps } = extractProps({
       keys: Object.keys(fieldTemplateProps),
