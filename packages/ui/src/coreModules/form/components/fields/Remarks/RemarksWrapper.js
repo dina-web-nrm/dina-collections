@@ -37,7 +37,6 @@ class RemarksWrapper extends PureComponent {
               left: 0,
               position: 'absolute',
               top: '0.25em',
-              zIndex: 20,
             }}
           >
             <Icon
