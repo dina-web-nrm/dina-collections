@@ -13,12 +13,15 @@
     "customTaxonNames": {
       "type": "array",
       "items": {
-        "$ref": "__ROOT__customTaxonName",
-        "x-reference-type": "internal"
+        "$ref": "__ROOT__customTaxonName"
       }
     },
     "taxonRemarks": {
       "type": "string"
+    },
+    "typeStatus": {
+      "$ref": "__ROOT__typeSpecimenType",
+      "x-reference-type": "external"
     },
     "typifiedName": {
       "type": "string"

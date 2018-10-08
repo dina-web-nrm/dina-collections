@@ -14,7 +14,9 @@ import { AgentDropdownPickerSearch } from 'domainModules/agent/components'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import FormActions from './FormActions'
 
-const log = createLog('modules:collectionMammals:CuratorialAssessmentForm:Base')
+const log = createLog(
+  'modules:collectionMammals:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:Base'
+)
 
 const propTypes = {
   displayBackButton: PropTypes.bool,
@@ -29,6 +31,7 @@ const propTypes = {
   onSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
+  submitButtonTextKey: PropTypes.string,
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -40,6 +43,7 @@ const defaultProps = {
   displayResetButton: false,
   error: '',
   onRemove: undefined,
+  submitButtonTextKey: undefined,
 }
 
 export class BaseForm extends PureComponent {
@@ -57,6 +61,7 @@ export class BaseForm extends PureComponent {
       onRemove,
       pristine,
       reset,
+      submitButtonTextKey,
       submitFailed,
       submitSucceeded,
       submitting,
@@ -144,6 +149,7 @@ export class BaseForm extends PureComponent {
             onRemove={onRemove}
             pristine={pristine}
             reset={reset}
+            submitButtonTextKey={submitButtonTextKey}
             submitFailed={submitFailed}
             submitSucceeded={submitSucceeded}
             submitting={submitting}

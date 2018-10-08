@@ -7,11 +7,9 @@ const parts = [
     },
   },
   {
-    componentName: 'AddButton',
-    componentProps: {
-      textKey: 'other.addDetermination',
-    },
-    initiallyShown: true,
+    componentName: 'DeterminationsAccordion',
+    containsReduxFormField: true,
+    name: 'individual.determinations',
   },
 ]
 

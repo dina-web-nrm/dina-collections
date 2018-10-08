@@ -1520,10 +1520,6 @@
   "customTaxonName": {
     "additionalProperties": false,
     "properties": {
-      "lid": {
-        "$ref": "lid",
-        "x-summary": ""
-      },
       "customTaxonNameType": {
         "$ref": "customTaxonNameType",
         "x-summary": ""
@@ -1796,10 +1792,6 @@
       },
       "readOnly": {
         "$ref": "readOnly",
-        "x-summary": ""
-      },
-      "typeStatus": {
-        "$ref": "typeSpecimenType",
         "x-summary": ""
       },
       "version": {
@@ -2325,6 +2317,10 @@
       },
       "taxonRemarks": {
         "type": "string",
+        "x-summary": ""
+      },
+      "typeStatus": {
+        "$ref": "typeSpecimenType",
         "x-summary": ""
       },
       "typifiedName": {

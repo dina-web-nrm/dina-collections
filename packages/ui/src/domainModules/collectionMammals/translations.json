@@ -152,20 +152,20 @@
       }
     },
     "determinations": {
-      "taxonName": {
-        "en": "Taxon name in determination"
-      },
       "date": {
         "en": "Determination date"
       },
-      "determinationVerbatim": {
-        "en": "Determined as (stated)"
-      },
       "determinedByAgent": {
-        "en": "Determined by (agent)"
+        "en": "Interpreted name or agent",
+        "textV": {
+          "en": "Determined by (stated)"
+        }
       },
-      "determinedByAgentText": {
-        "en": "Determined by (stated)"
+      "taxonNameI": {
+        "en": "Interpreted taxon name"
+      },
+      "taxonNameV": {
+        "en": "Determined as (stated)"
       },
       "remarks": {
         "en": "Determination remarks"
@@ -260,11 +260,8 @@
     },
     "physicalObject": {
       "storageLocation": {
-        "en": "Normal storage location (tree)",
-        "sv": "Reguljär lagringsplats"
-      },
-      "storageLocationText": {
-        "en": "Normal storage location (text)"
+        "en": "Normal storage location",
+        "sv": ""
       }
     },
     "places": {
@@ -324,10 +321,10 @@
     },
     "taxonInformation": {
       "curatorialTaxonName": {
-        "en": "Taxon (curatorial name)"
+        "en": "Curatorial taxon name"
       },
       "curatorialTaxonNameText": {
-        "en": "Taxon (curatorial name text)"
+        "en": "Curatorial taxon name"
       },
       "readOnly": {
         "en": "Read only"
@@ -577,7 +574,7 @@
       "sv": ""
     },
     "taxonomyCuratorialName": {
-      "en": "Taxon (curatorial name)",
+      "en": "Curatorial taxon name",
       "sv": ""
     },
     "taxonomyFamily": {
@@ -781,6 +778,10 @@
         "en": "add date remarks...",
         "sv": ""
       },
+      "determination": {
+        "en": "add determination remarks...",
+        "sv": ""
+      },
       "origin": {
         "en": "Add origin remarks...",
         "sv": ""
@@ -849,7 +850,7 @@
       "condition": {
         "en": "Select carcass condition",
         "sv": ""
-      }, 
+      },
       "weight": {
         "en": "Add weight",
         "sv": ""
@@ -964,11 +965,11 @@
       },
       "pedis": {
         "en": "Pedis",
-        "sv": "" 
+        "sv": ""
       },
       "bacculum": {
         "en": "Bacculum",
-        "sv": "" 
+        "sv": ""
       }
     }
   },
@@ -1006,8 +1007,16 @@
       "en": "Add catalog number",
       "sv": "Lägg till katalognummer"
     },
-    "addOtherNames": {
-      "en": "Add other names",
+    "addIdentifierOrIdentifiers": {
+      "en": "add identifier(s)",
+      "sv": ""
+    },
+    "addNameOrNames": {
+      "en": "add name(s)",
+      "sv": ""
+    },
+    "addOtherName": {
+      "en": "Add other name",
       "sv": ""
     },
     "addTypeStatus": {
@@ -1152,6 +1161,10 @@
       "en": "Remove",
       "sv": "Ta bort"
     },
+    "removeThisDetermination": {
+      "en": "remove this determination?",
+      "sv": ""
+    },
     "reset": {
       "en": "Reset",
       "sv": "Återställ"
@@ -1172,6 +1185,14 @@
       "en": "Search",
       "sv": "Sök"
     },
+    "selectIdentifierType": {
+      "en": "select identifier type",
+      "sv": ""
+    },
+    "selectKindOfName": {
+      "en": "select kind of name",
+      "sv": ""
+    },
     "sixOrEightDigits": {
       "en": "6 or 8 digits",
       "sv": "6 eller 8 siffror"
@@ -1180,7 +1201,7 @@
       "en": "Use this number",
       "sv": ""
     },
-    "automticCatalogNumber": {
+    "automaticCatalogNumber": {
       "en": "Would you like an automatic catalog number for this specimen?",
       "sv": ""
     },

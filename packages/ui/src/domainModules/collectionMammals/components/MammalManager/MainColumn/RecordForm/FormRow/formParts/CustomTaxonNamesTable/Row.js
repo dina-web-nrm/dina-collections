@@ -9,45 +9,46 @@ import { pathBuilder } from 'coreModules/form/higherOrderComponents'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
 
 const log = createLog(
-  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/IdentifiersTable/Row'
+  'modules:collectionMammals:MammalManager/MainColumn/RecordForm/FormRow/formParts/CustomTaxonNamesTable/Row'
 )
 
 const propTypes = {
   changeFieldValue: PropTypes.func.isRequired,
-  getPath: PropTypes.func.isRequired,
-  getTranslationPath: PropTypes.func.isRequired,
-  i18n: PropTypes.shape({
-    moduleTranslate: PropTypes.func.isRequired,
-  }).isRequired,
-  identifier: PropTypes.shape({
+  customTaxonName: PropTypes.shape({
+    customTaxonNameType: PropTypes.object,
     id: PropTypes.string,
-    identifierType: PropTypes.object,
     remarks: PropTypes.string,
     value: PropTypes.string,
   }).isRequired,
-  identifierTypeOptions: PropTypes.arrayOf(
+  customTaxonNameTypeOptions: PropTypes.arrayOf(
     PropTypes.shape({
       key: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
+  getPath: PropTypes.func.isRequired,
+  getTranslationPath: PropTypes.func.isRequired,
+  i18n: PropTypes.shape({
+    moduleTranslate: PropTypes.func.isRequired,
+  }).isRequired,
   index: PropTypes.number.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
 }
 
-class IdentifiersTableRow extends PureComponent {
+class CustomTaxonNamesTableRow extends PureComponent {
   componentWillMount() {
-    const { changeFieldValue, getPath, identifier } = this.props
-    changeFieldValue(getPath('identifier.id'), identifier.id)
+    const { changeFieldValue, customTaxonName, getPath } = this.props
+    changeFieldValue(getPath('customTaxonName.id'), customTaxonName.id)
   }
 
   render() {
     const {
-      identifierTypeOptions,
+      customTaxonNameTypeOptions,
       getPath,
       getTranslationPath,
       i18n: { moduleTranslate },
+
       index,
       removeArrayFieldByIndex,
     } = this.props
@@ -62,11 +63,11 @@ class IdentifiersTableRow extends PureComponent {
             component={DropdownSearch}
             displayLabel={false}
             module="collectionMammals"
-            name={getPath('identifierType.id')}
-            options={identifierTypeOptions}
+            name={getPath('customTaxonNameType.id')}
+            options={customTaxonNameTypeOptions}
             placeholder={moduleTranslate({
               capitalize: true,
-              textKey: 'other.selectIdentifierType',
+              textKey: 'other.selectKindOfName',
             })}
             type="dropdown-search-local"
           />
@@ -82,7 +83,7 @@ class IdentifiersTableRow extends PureComponent {
             name={getPath('value')}
             placeholder={moduleTranslate({
               capitalize: true,
-              textKey: 'other.addIdentifierOrIdentifiers',
+              textKey: 'other.addNameOrNames',
             })}
             type="text"
           />
@@ -103,9 +104,9 @@ class IdentifiersTableRow extends PureComponent {
   }
 }
 
-IdentifiersTableRow.propTypes = propTypes
+CustomTaxonNamesTableRow.propTypes = propTypes
 
 export default compose(
   withI18n({ module: 'collectionMammals' }),
   pathBuilder()
-)(IdentifiersTableRow)
+)(CustomTaxonNamesTableRow)

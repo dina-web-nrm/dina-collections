@@ -65,10 +65,6 @@
     "readOnly": {
       "$ref": "__ROOT__readOnly"
     },
-    "typeStatus": {
-      "$ref": "__ROOT__typeSpecimenType",
-      "x-reference-type": "external"
-    },
     "version": {
       "type": "integer"
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Accordion } from 'semantic-ui-react'
+import { isEmpty } from 'lodash'
 
 import createLog from 'utilities/log'
 import {
@@ -15,8 +16,10 @@ const log = createLog('modules:commonUi:Accordion')
 
 const propTypes = {
   delayItemRenderUntilActive: PropTypes.bool,
+  expandFirstItemOnMountIfEmpty: PropTypes.bool,
   expandItemOnAdd: PropTypes.bool,
   fluid: PropTypes.bool,
+  getShouldExpandFirstItemOnMount: PropTypes.func,
   getShouldRenderItem: PropTypes.func,
   initialActiveMode: PropTypes.oneOf([
     ALL_COLLAPSED,
@@ -31,8 +34,10 @@ const propTypes = {
 }
 const defaultProps = {
   delayItemRenderUntilActive: false,
+  expandFirstItemOnMountIfEmpty: false,
   expandItemOnAdd: true,
   fluid: true,
+  getShouldExpandFirstItemOnMount: undefined,
   getShouldRenderItem: undefined,
   initialActiveMode: ALL_COLLAPSED,
   items: [],
@@ -70,6 +75,48 @@ class AccordionWrapper extends Component {
     this.state = initialState
   }
 
+  componentDidMount() {
+    const {
+      expandFirstItemOnMountIfEmpty,
+      getShouldExpandFirstItemOnMount,
+      getShouldRenderItem,
+      items,
+    } = this.props
+
+    if (
+      items.length === 1 &&
+      expandFirstItemOnMountIfEmpty &&
+      isEmpty(items[0])
+    ) {
+      this.handleSetActive(0)
+    }
+
+    // if we render conditionally, first filter out those to be rendered
+    if (getShouldRenderItem) {
+      let indexToRender
+      const itemsToRender = items.filter((item, index) => {
+        const shouldRenderItem = getShouldRenderItem(item)
+
+        if (shouldRenderItem) {
+          indexToRender = index
+        }
+
+        return shouldRenderItem
+      })
+
+      // if there is only one item and it fulfils the condition to be expanded
+      // this is to enable only expanding new items, i.e. those still missing
+      // some values
+      if (
+        itemsToRender.length === 1 &&
+        getShouldExpandFirstItemOnMount &&
+        getShouldExpandFirstItemOnMount(itemsToRender[0])
+      ) {
+        this.handleSetActive(indexToRender)
+      }
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       this.props.expandItemOnAdd &&
@@ -95,39 +142,39 @@ class AccordionWrapper extends Component {
       return
     }
 
-    // item was inactive and should be marked active. need to build new state
-    let newState = {}
+    this.setState(prevState => {
+      let newState = { ...prevState }
 
-    // if delayItemRenderUntilActive is true, we add this index to the map of
-    // hasBeenActive indices
-    const { delayItemRenderUntilActive } = this.props
+      // if delayItemRenderUntilActive is true, we add this index to the map of
+      // hasBeenActive indices
+      const { delayItemRenderUntilActive } = this.props
 
-    if (delayItemRenderUntilActive) {
-      newState.hasBeenActive = {
-        ...this.state.hasBeenActive,
-        [index]: true,
+      if (delayItemRenderUntilActive) {
+        newState.hasBeenActive = {
+          ...this.state.hasBeenActive,
+          [index]: true,
+        }
       }
-    }
 
-    // if we're in single select mode then the rest should be set inactive
-    if (this.props.selectMode === SINGLE) {
-      newState = Object.keys(this.state).reduce((obj, key) => {
-        // escape if key is not a number (i.e. not an index)
-        if (Number.isNaN(Number(key))) {
-          return obj
-        }
+      // if we're in single select mode then the rest should be set inactive
+      if (this.props.selectMode === SINGLE) {
+        newState = Object.keys(prevState).reduce((obj, key) => {
+          // escape if key is not a number (i.e. not an index)
+          if (Number.isNaN(Number(key))) {
+            return obj
+          }
 
-        return {
-          ...obj,
-          [key]: false,
-        }
-      }, newState)
-    }
+          return {
+            ...obj,
+            [key]: false,
+          }
+        }, newState)
+      }
 
-    // lastly, set this index to true
-    newState[index] = true
-
-    this.setState(newState)
+      // lastly, set this index to true
+      newState[index] = true
+      return newState
+    })
   }
 
   handleToggleActive(index) {
@@ -155,6 +202,7 @@ class AccordionWrapper extends Component {
   }
 
   render() {
+    log.render()
     const {
       fluid,
       getShouldRenderItem,
@@ -164,7 +212,6 @@ class AccordionWrapper extends Component {
       styled,
     } = this.props
 
-    log.render()
     return (
       <Accordion fluid={fluid} styled={styled}>
         {items.map((item, index) => {

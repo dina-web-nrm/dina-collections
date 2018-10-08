@@ -1,9 +1,6 @@
 {
   "additionalProperties": false,
   "properties": {
-    "lid": {
-      "$ref": "__ROOT__lid"
-    },
     "customTaxonNameType": {
       "$ref": "__ROOT__customTaxonNameType",
       "x-reference-type": "external"

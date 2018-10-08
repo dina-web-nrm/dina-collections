@@ -2,29 +2,17 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import { TogglableField } from 'coreModules/form/components'
-import AgentDropdownPickerSearch from '../AgentDropdownPickerSearch'
-import AgentIdTextResult from '../AgentIdTextResult'
-
-const getHasValue = input => {
-  return input && input.value && (input.value.textI || input.value.normalized)
-}
+import AcceptedTaxonNameDropdownPickerSearch from '../AcceptedTaxonNameDropdownPickerSearch'
+import TaxonNameResult from '../TaxonNameResult'
 
 const propTypes = {
   input: PropTypes.shape({
     onBlur: PropTypes.func.isRequired,
-    value: PropTypes.oneOfType([
-      PropTypes.shape({
-        normalized: PropTypes.shape({
-          id: PropTypes.string.isRequired,
-        }),
-        textI: PropTypes.string,
-      }),
-      PropTypes.string,
-    ]),
+    value: PropTypes.string.isRequired,
   }).isRequired,
 }
 
-class TogglableAgentDropdownPickerSearch extends PureComponent {
+class TogglableAcceptedTaxonNameDropdownPickerSearch extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -40,7 +28,7 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
   }
 
   onBlur(value) {
-    if (value && (value.textI || value.normalized)) {
+    if (value) {
       this.setState({ forceRenderResult: true })
     }
     this.props.input.onBlur(value)
@@ -70,9 +58,8 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
   /* eslint-disable class-methods-use-this */
   renderInput(props) {
     return (
-      <AgentDropdownPickerSearch
+      <AcceptedTaxonNameDropdownPickerSearch
         {...props}
-        focusOnMount
         reportPickerActive={this.reportPickerActive}
       />
     )
@@ -82,7 +69,7 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
     const { forceRenderResult, isLatestActiveField } = props
 
     return (
-      <AgentIdTextResult
+      <TaxonNameResult
         displayLabel={false}
         {...props}
         focusOnMount={isLatestActiveField && forceRenderResult}
@@ -100,11 +87,11 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
       <TogglableField
         {...this.props}
         forceRenderResult={!pickerActive && !!input.value && forceRenderResult}
-        getHasValue={getHasValue}
         input={{
           ...input,
           onBlur: this.onBlur,
         }}
+        renderEmptyState={this.renderInput /* skipping empty state */}
         renderInput={this.renderInput}
         renderResult={this.renderResult}
       />
@@ -112,6 +99,6 @@ class TogglableAgentDropdownPickerSearch extends PureComponent {
   }
 }
 
-TogglableAgentDropdownPickerSearch.propTypes = propTypes
+TogglableAcceptedTaxonNameDropdownPickerSearch.propTypes = propTypes
 
-export default TogglableAgentDropdownPickerSearch
+export default TogglableAcceptedTaxonNameDropdownPickerSearch

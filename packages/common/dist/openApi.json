@@ -21766,10 +21766,6 @@
       "customTaxonName": {
         "additionalProperties": false,
         "properties": {
-          "lid": {
-            "$ref": "#/components/schemas/lid",
-            "x-summary": ""
-          },
           "customTaxonNameType": {
             "$ref": "#/components/schemas/customTaxonNameType",
             "x-summary": ""
@@ -22036,10 +22032,6 @@
           },
           "readOnly": {
             "$ref": "#/components/schemas/readOnly",
-            "x-summary": ""
-          },
-          "typeStatus": {
-            "$ref": "#/components/schemas/typeSpecimenType",
             "x-summary": ""
           },
           "version": {
@@ -22398,6 +22390,10 @@
           },
           "taxonRemarks": {
             "type": "string",
+            "x-summary": ""
+          },
+          "typeStatus": {
+            "$ref": "#/components/schemas/typeSpecimenType",
             "x-summary": ""
           },
           "typifiedName": {

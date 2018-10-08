@@ -8,7 +8,7 @@ import createLog from 'utilities/log'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
 const log = createLog(
-  'modules:collectionMammals:CuratorialAssessmentForm:FormActions'
+  'modules:collectionMammals:formParts:PhysicalObjectsAccordion:CuratorialAssessmentForm:FormActions'
 )
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
@@ -23,6 +23,7 @@ const propTypes = {
   onRemove: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
+  submitButtonTextKey: PropTypes.string,
   submitFailed: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
@@ -34,6 +35,7 @@ const defaultProps = {
   displayResetButton: false,
   error: '',
   onRemove: undefined,
+  submitButtonTextKey: undefined,
 }
 
 export class FormActions extends PureComponent {
@@ -70,6 +72,7 @@ export class FormActions extends PureComponent {
       onRemove: handleRemove,
       pristine,
       reset,
+      submitButtonTextKey,
       submitFailed,
       submitSucceeded,
       submitting,
@@ -78,7 +81,7 @@ export class FormActions extends PureComponent {
       <Grid.Row>
         <Grid.Column mobile={16}>
           <Button disabled={submitting} size="large" type="submit">
-            <ModuleTranslate textKey="other.add" />
+            <ModuleTranslate textKey={submitButtonTextKey || 'other.add'} />
           </Button>
           {displayResetButton && (
             <Button
@@ -117,6 +120,7 @@ export class FormActions extends PureComponent {
                     onClick={event => {
                       event.preventDefault()
                     }}
+                    size="large"
                     type="button"
                   >
                     <ModuleTranslate textKey="other.remove" />

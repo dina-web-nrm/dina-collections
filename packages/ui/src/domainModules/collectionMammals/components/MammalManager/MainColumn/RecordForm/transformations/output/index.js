@@ -1,4 +1,5 @@
 import objectPath from 'object-path'
+import { isEmpty } from 'lodash'
 
 import transformFeatureObservations from './transformFeatureObservations'
 
@@ -9,18 +10,37 @@ export default function transformOutput({ specimen = {} }) {
     transformedSpecimen.individual = {}
   }
 
-  // remove empty catalog number; it will be set in backend instead
-  if (
-    transformedSpecimen.individual.identifiers &&
-    // length is always 1 when creating new record
-    transformedSpecimen.individual.identifiers.length === 1 &&
-    objectPath.get(
-      transformedSpecimen,
-      'individual.identifiers.0.identifierType.id'
-    ) === '1' &&
-    !objectPath.get(transformedSpecimen, 'individual.identifiers.0.value')
-  ) {
-    transformedSpecimen.individual.identifiers = []
+  const determinations = objectPath.get(
+    transformedSpecimen,
+    'individual.determinations'
+  )
+
+  if (determinations && determinations.length) {
+    transformedSpecimen.individual.determinations = determinations.filter(
+      determination => !isEmpty(determination)
+    )
+  }
+
+  const identifiers = objectPath.get(
+    transformedSpecimen,
+    'individual.identifiers'
+  )
+
+  if (identifiers && identifiers.length) {
+    transformedSpecimen.individual.identifiers = identifiers.filter(
+      ({ value }) => !!value
+    )
+  }
+
+  const customTaxonNames = objectPath.get(
+    transformedSpecimen,
+    'individual.taxonInformation.customTaxonNames'
+  )
+
+  if (customTaxonNames && customTaxonNames.length) {
+    transformedSpecimen.individual.taxonInformation.customTaxonNames = customTaxonNames.filter(
+      ({ value }) => !!value
+    )
   }
 
   if (transformedSpecimen.individual.featureObservations) {
