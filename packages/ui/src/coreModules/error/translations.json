@@ -42,6 +42,10 @@
   "DATE_PAST": {
     "en": "Only past dates allowed"
   },
+  "DATE_PAST_CURRENT_YEAR": {
+    "en":
+      "Only past dates allowed, a more exact range has to be specified for the current year"
+  },
   "DATE_FUTURE": {
     "en": "Only future dates allowed"
   },

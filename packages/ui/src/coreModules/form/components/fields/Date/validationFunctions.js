@@ -78,17 +78,22 @@ export const futureSingleDate = value => {
       }
 }
 
-export const pastSingleDate = value => {
+export const pastSingleDate = (value, isEndDate) => {
   if (!(value && value.interpretedTimestamp)) {
     return undefined
   }
 
   const parsedInterpretedTimestamp = moment(value.interpretedTimestamp)
 
+  const dateYear = parsedInterpretedTimestamp.year()
+  const currentYear = moment().year()
+  const isCurrentYear = dateYear === currentYear
+
   // today's date is allowed
   return moment(parsedInterpretedTimestamp).isAfter(moment.utc())
     ? {
-        errorCode: 'DATE_PAST',
+        errorCode:
+          isEndDate && isCurrentYear ? 'DATE_PAST_CURRENT_YEAR' : 'DATE_PAST',
       }
     : undefined
 }
@@ -96,7 +101,7 @@ export const pastSingleDate = value => {
 export const pastDateRange = value => {
   return (
     pastSingleDate(value && value.startDate) ||
-    pastSingleDate(value && value.endDate)
+    pastSingleDate(value && value.endDate, true)
   )
 }
 
