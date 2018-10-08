@@ -76,7 +76,10 @@
     },
     "collectingInformation": {
       "collectedByAgent": {
-        "en": "Collected by (agent)"
+        "en": "Collected by (agent)",
+        "textV": {
+          "en": "Handed in by (stated)"
+        }
       },
       "collectorsText": {
         "en": "Collected by (stated)"
@@ -85,7 +88,7 @@
         "en": "Establishment means"
       },
       "isDeathDate": {
-        "en": "Death date",
+        "en": "Death at collecting",
         "sv": ""
       }
     },
@@ -142,6 +145,10 @@
       },
       "deathDetails": {
         "en": "Death details"
+      },
+      "diedAtColleting": {
+        "en": "Died at collecting",
+        "sv": ""
       }
     },
     "determinations": {
@@ -367,16 +374,23 @@
       "en": "collecting date",
       "sv": ""
     },
+    "collectingAndDeathDetails": {
+      "en": "collecting and death details",
+      "sv": ""
+    },
+    "collectorAndExpedition": {
+      "en": "Collector and expedition"
+    },
     "collectingInformation": {
       "en": "collecting information"
     },
     "localityOrigin": {
       "en": "collecting location and origin"
     },
-    "origin": {
-      "en": "origin",
+    "death": {
+      "en": "Death",
       "sv": ""
-    },
+    }, 
     "collecintLocality": {
       "en": "collecting locality"
     },
@@ -405,6 +419,10 @@
     "newSpecimen": {
       "en": "New specimen",
       "sv": "Nytt exemplar"
+    },
+    "origin": {
+      "en": "origin",
+      "sv": ""
     },
     "physicalObjects": {
       "en": "physical objects",
@@ -755,6 +773,10 @@
         "en": "add remarks for all objects...",
         "sv": ""
       },
+      "death": {
+        "en": "add death remarks",
+        "sv": ""
+      },
       "date": {
         "en": "add date remarks...",
         "sv": ""
@@ -782,6 +804,10 @@
       },
       "date": {
         "en": "date remarks",
+        "sv": ""
+      },
+      "death": {
+        "en": "death remarks",
         "sv": ""
       },
       "origin": {
