@@ -1,19 +1,17 @@
 import agentParts from 'domainModules/agent/components/formParts'
+import curatedListParts from 'domainModules/curatedList/components/formParts'
 import taxonParts from 'domainModules/taxon/components/formParts'
-import TypeSpecimenTypeDropdownSearch from 'domainModules/curatedList/components/TypeSpecimenTypeDropdownSearch'
-import { CauseOfDeathDropdownSearch } from 'domainModules/curatedList/components'
+import FeatureObservations from './FeatureObservations'
 import IdentifiersTable from './IdentifiersTable'
 import PhysicalObjectsAccordion from './PhysicalObjectsAccordion'
 import RecordHistoryExternalEvents from './RecordHistoryExternalEvents'
-import FeatureObservations from './FeatureObservations'
 
 export default {
   ...agentParts,
+  ...curatedListParts,
   ...taxonParts,
-  CauseOfDeathDropdownSearch,
   FeatureObservations,
   IdentifiersTable,
   PhysicalObjectsAccordion,
   RecordHistoryExternalEvents,
-  TypeSpecimenTypeDropdownSearch,
 }
