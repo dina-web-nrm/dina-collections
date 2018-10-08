@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import objectPath from 'object-path'
 import { Button } from 'semantic-ui-react'
+import { debounce } from 'lodash'
 
 import { MultipleSearchSelectionDropdown } from 'coreModules/form/components'
 import { withI18n } from 'coreModules/i18n/higherOrderComponents'
@@ -70,6 +71,38 @@ class RawMultipleSearchTagsSelect extends PureComponent {
       refineOpen: false,
       searchQuery: '',
     }
+
+    this.debouncedGetItemsForSearchQuery = debounce(
+      searchQuery => {
+        return this.getItemsForSearchQuery(searchQuery).then(items => {
+          const itemOptions = items.map(({ attributes }) => {
+            return {
+              key: attributes.key,
+              text: attributes.key,
+              type: 'string',
+              value: attributes.key,
+            }
+          })
+          const freeTextOption = {
+            key: searchQuery,
+            text: `${searchQuery}`,
+            type: 'string',
+            value: searchQuery,
+          }
+
+          const options = [freeTextOption, ...itemOptions]
+
+          this.setState({
+            options,
+            searchQuery,
+          })
+        })
+      },
+      100,
+      {
+        maxWait: 500,
+      }
+    )
   }
 
   getItemsForSearchQuery(searchQuery) {
@@ -157,29 +190,8 @@ class RawMultipleSearchTagsSelect extends PureComponent {
         searchQuery,
       })
     }
-    return this.getItemsForSearchQuery(searchQuery).then(items => {
-      const itemOptions = items.map(({ attributes }) => {
-        return {
-          key: attributes.key,
-          text: attributes.key,
-          type: 'string',
-          value: attributes.key,
-        }
-      })
-      const freeTextOption = {
-        key: searchQuery,
-        text: `${searchQuery}`,
-        type: 'string',
-        value: searchQuery,
-      }
 
-      const options = [freeTextOption, ...itemOptions]
-
-      this.setState({
-        options,
-        searchQuery,
-      })
-    })
+    return this.debouncedGetItemsForSearchQuery(searchQuery)
   }
 
   handleSelectSearchQueries(searchQueries) {
