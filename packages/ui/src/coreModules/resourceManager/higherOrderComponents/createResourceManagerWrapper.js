@@ -329,10 +329,13 @@ const createResourceManagerWrapper = (
         if (!this.props[key] && prevProps[key]) {
           transitions.push(`from-${keyNameMap[key]}`)
         }
+      })
+      keys.forEach(key => {
         if (this.props[key] && !prevProps[key]) {
           transitions.push(`to-${keyNameMap[key]}`)
         }
       })
+
       return transitions
     }
     resetFilters() {
@@ -426,6 +429,7 @@ const createResourceManagerWrapper = (
       const getManyActionCreator =
         actionCreators[resource] && actionCreators[resource].getMany
 
+      this.props.setBaseItems([], { resource })
       return dispatch(
         getManyActionCreator({
           queryParams: {
@@ -581,13 +585,15 @@ const createResourceManagerWrapper = (
     }
 
     tableSearch(filterValues) {
+      const { search, resource } = this.props
+
+      this.props.setListItems([], { resource })
       const query = filterValues
         ? this.props.buildFilterQuery({
             values: filterValues,
           })
         : undefined
 
-      const { search, resource } = this.props
       return search({ query }).then(items => {
         this.props.setListItems(items, { resource })
       })
@@ -632,7 +638,11 @@ const createResourceManagerWrapper = (
       if (itemId && listItems !== prevListItems) {
         this.focusRowWithId(itemId)
       }
-      if (focusIdWhenLoaded && prevListItems !== listItems) {
+      if (
+        focusIdWhenLoaded &&
+        prevListItems !== listItems &&
+        listItems.length
+      ) {
         const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
         if (rowFocused) {
           this.props.delFocusIdWhenLoaded({ resource })
@@ -644,7 +654,6 @@ const createResourceManagerWrapper = (
       log.debug('transition to view: Table')
 
       const { filterValues, focusedItemId, resource } = this.props
-
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
         this.expandAncestorsForItemId(focusedItemId)
@@ -690,8 +699,11 @@ const createResourceManagerWrapper = (
       }
 
       const { listItems: prevListItems } = prevProps
-
-      if (focusIdWhenLoaded && prevListItems !== listItems) {
+      if (
+        focusIdWhenLoaded &&
+        prevListItems !== listItems &&
+        listItems.length
+      ) {
         const rowFocused = this.focusRowWithId(focusIdWhenLoaded)
         if (rowFocused) {
           this.props.delFocusIdWhenLoaded({ resource })
@@ -701,7 +713,6 @@ const createResourceManagerWrapper = (
     transitionToTreeView() {
       log.debug('transition to view: Tree')
       const { focusedItemId, resource } = this.props
-
       if (focusedItemId) {
         this.props.setFocusIdWhenLoaded(focusedItemId, { resource })
         this.expandAncestorsForItemId(focusedItemId)
