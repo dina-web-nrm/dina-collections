@@ -52,7 +52,7 @@ const propTypes = {
   removeForceRenderResult: PropTypes.func,
   setAsLatestActiveField: PropTypes.func,
   taxon: PropTypes.shape({
-    acceptedTaxonName: PropTypes.string,
+    acceptedTaxonName: PropTypes.shape({ name: PropTypes.string.isRequired }),
     parent: PropTypes.shape({
       acceptedTaxonName: PropTypes.shape({ name: PropTypes.string.isRequired }),
       parent: PropTypes.object,
