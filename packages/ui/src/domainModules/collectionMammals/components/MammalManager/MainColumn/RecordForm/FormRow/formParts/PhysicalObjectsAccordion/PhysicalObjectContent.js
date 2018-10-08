@@ -14,7 +14,7 @@ import createLog from 'utilities/log'
 import CuratorialAssessmentsList from './CuratorialAssessmentsList'
 
 const log = createLog(
-  'modules:collectionMammals:MammalForm:PhysicalObjectContent'
+  'modules:collectionMammals:formParts:PhysicalObjectContent'
 )
 
 const mapStateToProps = (state, { category, preparationType }) => {
@@ -72,6 +72,7 @@ function PhysicalObjectContent({
             autoComplete="off"
             component={StorageLocationDropdownPickerSearch}
             group={ALL}
+            icon="search"
             module="collectionMammals"
             name={getPath('physicalObject.storageLocation.id')}
             showParentName

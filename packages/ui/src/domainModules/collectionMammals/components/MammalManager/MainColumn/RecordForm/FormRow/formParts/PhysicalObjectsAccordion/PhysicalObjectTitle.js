@@ -8,9 +8,7 @@ import { ThreeColumnGrid } from 'coreModules/commonUi/components'
 import { createGetItemById } from 'coreModules/crud/higherOrderComponents'
 import createLog from 'utilities/log'
 
-const log = createLog(
-  'modules:collectionMammals:MammalForm:PhysicalObjectTitle'
-)
+const log = createLog('modules:collectionMammals:formParts:PhysicalObjectTitle')
 
 const propTypes = {
   active: PropTypes.bool.isRequired,

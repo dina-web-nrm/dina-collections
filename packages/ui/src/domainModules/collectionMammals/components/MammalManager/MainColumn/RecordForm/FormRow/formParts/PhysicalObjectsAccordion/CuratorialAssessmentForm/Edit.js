@@ -79,6 +79,7 @@ export class EditCuratorialAssessment extends PureComponent {
           changeFieldValue(fieldName, data)
           handleClose()
         }}
+        submitButtonTextKey="other.save"
         {...rest}
       />
     )
