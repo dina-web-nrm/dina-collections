@@ -3,6 +3,7 @@ import curatedListParts from 'domainModules/curatedList/components/formParts'
 import taxonParts from 'domainModules/taxon/components/formParts'
 
 import CustomTaxonNamesTable from './CustomTaxonNamesTable'
+import DeterminationsAccordion from './DeterminationsAccordion'
 import FeatureObservations from './FeatureObservations'
 import IdentifiersTable from './IdentifiersTable'
 import PhysicalObjectsAccordion from './PhysicalObjectsAccordion'
@@ -13,6 +14,7 @@ export default {
   ...curatedListParts,
   ...taxonParts,
   CustomTaxonNamesTable,
+  DeterminationsAccordion,
   FeatureObservations,
   IdentifiersTable,
   PhysicalObjectsAccordion,
