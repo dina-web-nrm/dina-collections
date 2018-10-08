@@ -4,7 +4,6 @@ const config = {
       customSelectors: [
         {
           text: {
-            defaultLanguage: 'en',
             parameter: 'attributes.name',
             translated: true,
           },
@@ -18,6 +17,27 @@ const config = {
         },
         {
           operationId: 'causeOfDeathTypeGetMany',
+          type: 'getMany',
+        },
+      ],
+    },
+    customTaxonNameType: {
+      customSelectors: [
+        {
+          text: {
+            parameter: 'attributes.name',
+            translated: true,
+          },
+          type: 'getAllAsOptions',
+        },
+      ],
+      operations: [
+        {
+          operationId: 'customTaxonNameTypeGetOne',
+          type: 'getOne',
+        },
+        {
+          operationId: 'customTaxonNameTypeGetMany',
           type: 'getMany',
         },
       ],
@@ -71,7 +91,6 @@ const config = {
         },
       ],
     },
-
     identifierType: {
       customSelectors: [
         {
