@@ -112,7 +112,7 @@ class CatalogNumberModal extends PureComponent {
             <React.Fragment>
               <Modal.Content>
                 <Modal.Description>
-                  <ModuleTranslate textKey="other.automticCatalogNumber" />
+                  <ModuleTranslate textKey="other.automaticCatalogNumber" />
                 </Modal.Description>
               </Modal.Content>
               <Modal.Actions style={{ textAlign: 'left' }}>
