@@ -19,6 +19,10 @@
     "taxonRemarks": {
       "type": "string"
     },
+    "typeStatus": {
+      "$ref": "__ROOT__typeSpecimenType",
+      "x-reference-type": "external"
+    },
     "typifiedName": {
       "type": "string"
     },
