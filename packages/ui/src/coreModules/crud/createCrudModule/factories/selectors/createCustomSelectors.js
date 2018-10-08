@@ -15,7 +15,7 @@ const createGetAllAsOptionsSelector = ({
   const {
     text: {
       doNotCapitalize,
-      defaultLanguage,
+      defaultLanguage = 'en',
       parameter: parameterPath,
       translated,
     },
