@@ -49,7 +49,11 @@ class EventRow extends PureComponent {
           !isEmpty(eventAgent) && (
             <React.Fragment>
               <ModuleTranslate textKey="other.by" />{' '}
-              <AgentIdTextResult input={{ value: eventAgent }} textOnly />
+              <AgentIdTextResult
+                includeVerbatimAgent
+                input={{ value: eventAgent }}
+                textOnly
+              />
             </React.Fragment>
           )}
         {handleEdit && (
