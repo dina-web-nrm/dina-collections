@@ -1,11 +1,31 @@
+* Deactivate all FE filters
+* Activate new filters frontend
+* Implement FE support for new filters
+* Create hoc to handle filter building?
+** One or 2 hocs - for local and blobal.
+** Local
+*** 1. fetch form values
+*** 2. use passed in path to select subform
+*** 3. pass down method - buildLocalQuery
+*** 4. inject into hoc object with queryBuilderFunctions?
+
+
+
+
+
+
+
 TODO - SEARCH
-* Fix throttle search in search
 * Add remarks search
+* Solve issue with searching for old in identifier (Look into nested aggregations) https://stackoverflow.com/questions/34043808/terms-aggregation-for-nested-field-in-elastic-search
+
+
+
+
 * Potentially add tags for ex identifiers
 * Make click row select not go to form
 
-TODO - RM
-* move find to row below
+
 
 
 
