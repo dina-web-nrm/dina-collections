@@ -45,7 +45,6 @@ export class CreateCuratorialAssessment extends PureComponent {
       <BaseForm
         displayBackButton
         initialValues={{
-          agent: userName ? { textI: userName } : undefined,
           date: {
             dateType: 'single',
             endDate: {
