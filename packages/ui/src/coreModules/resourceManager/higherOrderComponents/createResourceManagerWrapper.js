@@ -352,7 +352,7 @@ const createResourceManagerWrapper = (
           return this.handleSelectPrev()
         }
         case 'ArrowLeft': {
-          return this.handleToggleCurrentRow('collaps')
+          return this.handleToggleCurrentRow('collapse')
         }
         case 'ArrowRight': {
           return this.handleToggleCurrentRow('expand')
