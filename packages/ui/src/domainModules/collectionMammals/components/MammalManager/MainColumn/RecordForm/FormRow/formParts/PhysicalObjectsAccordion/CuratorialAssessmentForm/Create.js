@@ -37,7 +37,7 @@ export class CreateCuratorialAssessment extends PureComponent {
 
     const dateInput = {
       day: now.date(),
-      month: now.month(),
+      month: now.month() + 1,
       year: now.year(),
     }
 
