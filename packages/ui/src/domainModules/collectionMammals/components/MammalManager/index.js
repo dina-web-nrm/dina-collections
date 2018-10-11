@@ -248,16 +248,6 @@ class MammalManager extends Component {
 
     this.shortcuts = [
       {
-        command: 'down',
-        description: 'Move focus to next record',
-        onPress: this.handleSelectNextRecord,
-      },
-      {
-        command: 'up',
-        description: 'Move focus to previous record',
-        onPress: this.handleSelectPreviousRecord,
-      },
-      {
         command: 'n n',
         description: 'Open new record form',
         onPress: this.handleOpenNewRecordForm,
