@@ -694,6 +694,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Checkbox Default 1`] = `
           <input
             checked={false}
             className="hidden"
+            disabled={false}
             id={undefined}
             name="test"
             onClick={[Function]}
@@ -3304,6 +3305,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={true}
             className="hidden"
+            disabled={undefined}
             id={undefined}
             name="radioGroup"
             onClick={[Function]}
@@ -3327,6 +3329,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={false}
             className="hidden"
+            disabled={undefined}
             id={undefined}
             name="radioGroup"
             onClick={[Function]}
@@ -3350,6 +3353,7 @@ exports[`storyshots Storyshots coreModules/form/Fields/Date/RangeDate with date 
           <input
             checked={false}
             className="hidden"
+            disabled={undefined}
             id={undefined}
             name="radioGroup"
             onClick={[Function]}
