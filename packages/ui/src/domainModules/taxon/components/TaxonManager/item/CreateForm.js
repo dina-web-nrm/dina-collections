@@ -7,7 +7,7 @@ import { createEnsureAllItemsFetched } from 'coreModules/crud/higherOrderCompone
 
 import crudActionCreators from 'coreModules/crud/actionCreators'
 
-import BaseForm, { FORM_NAME } from './BaseForm'
+import BaseForm from './BaseForm'
 
 const mapDispatchToProps = {
   createTaxonName: crudActionCreators.taxonName.create,
@@ -28,12 +28,6 @@ const defaultProps = {
 }
 
 export class Create extends PureComponent {
-  componentWillMount() {
-    // necessary to ensure form is emptied if coming from an edit form with
-    // other pre-filled values
-    this.props.destroy([FORM_NAME])
-  }
-
   render() {
     const { allTaxonNamesFetched, itemId, onInteraction, ...rest } = this.props
 
@@ -46,6 +40,7 @@ export class Create extends PureComponent {
         {...rest}
         displayBackButton
         displayResetButton
+        form="taxonCreate"
         onClose={event => {
           event.preventDefault()
           onInteraction('FORM_CANCEL')

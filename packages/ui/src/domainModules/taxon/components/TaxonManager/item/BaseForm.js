@@ -30,13 +30,11 @@ import {
 import { createSortedNameList } from '../../../utilities'
 import TaxonNameTable from './TaxonNameTable'
 
-export const FORM_NAME = 'taxon'
-
 const log = createLog('modules:taxon:taxon:BaseForm')
 
-const formValueSelector = formValueSelectorFactory(FORM_NAME)
+const mapStateToProps = (state, { form }) => {
+  const formValueSelector = formValueSelectorFactory(form)
 
-const mapStateToProps = state => {
   const acceptedTaxonName = formValueSelector(state, 'acceptedTaxonName')
   const synonyms = formValueSelector(state, 'synonyms')
   const vernacularNames = formValueSelector(state, 'vernacularNames')
@@ -65,6 +63,7 @@ const propTypes = {
   arrayUnshift: PropTypes.func.isRequired,
   change: PropTypes.func.isRequired,
   error: PropTypes.string,
+  form: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onInteraction: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -102,7 +101,7 @@ export class BaseForm extends Component {
       })
     }
 
-    return this.props.change(FORM_NAME, 'acceptedTaxonName', {
+    return this.props.change(this.props.form, 'acceptedTaxonName', {
       id: itemId,
     })
   }
@@ -120,12 +119,12 @@ export class BaseForm extends Component {
       itemId,
     })
     if (unshift) {
-      return this.props.arrayUnshift(FORM_NAME, 'synonyms', {
+      return this.props.arrayUnshift(this.props.form, 'synonyms', {
         id: itemId,
       })
     }
 
-    return this.props.arrayPush(FORM_NAME, 'synonyms', {
+    return this.props.arrayPush(this.props.form, 'synonyms', {
       id: itemId,
     })
   }
@@ -134,7 +133,7 @@ export class BaseForm extends Component {
     this.disconnectTaxonName({
       itemId,
     })
-    return this.props.arrayPush(FORM_NAME, 'vernacularNames', {
+    return this.props.arrayPush(this.props.form, 'vernacularNames', {
       id: itemId,
     })
   }
@@ -152,13 +151,13 @@ export class BaseForm extends Component {
     const { nameType, stateIndex } = existinTaxonNameListItem
 
     if (nameType === SYNONYM) {
-      this.props.arrayRemove(FORM_NAME, 'synonyms', stateIndex)
+      this.props.arrayRemove(this.props.form, 'synonyms', stateIndex)
     }
     if (nameType === VERNACULAR) {
-      this.props.arrayRemove(FORM_NAME, 'vernacularNames', stateIndex)
+      this.props.arrayRemove(this.props.form, 'vernacularNames', stateIndex)
     }
     if (nameType === ACCEPTED) {
-      this.props.change(FORM_NAME, 'acceptedTaxonName', null)
+      this.props.change(this.props.form, 'acceptedTaxonName', null)
     }
     return null
   }
@@ -243,7 +242,6 @@ export default compose(
   reduxForm({
     destroyOnUnmount: false, // to keep values when switching layout
     enableReinitialize: true,
-    form: FORM_NAME,
     validate: customFormValidator({
       model: 'taxon',
       models: taxonFormModels,

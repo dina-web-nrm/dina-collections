@@ -29,13 +29,11 @@ import {
 import TaxonNameTable from './TaxonNameTable'
 import PreparationTypeTable from './PreparationTypeTable'
 
-export const FORM_NAME = 'storageLocation'
-
 const log = createLog('modules:storage:BaseForm')
 
-const formValueSelector = formValueSelectorFactory(FORM_NAME)
+const mapStateToProps = (state, { form }) => {
+  const formValueSelector = formValueSelectorFactory(form)
 
-const mapStateToProps = state => {
   const acceptedTaxonNames = formValueSelector(state, 'acceptedTaxonNames')
   const preparationTypes = formValueSelector(state, 'preparationTypes')
 
@@ -55,6 +53,7 @@ const propTypes = {
   arrayPush: PropTypes.func.isRequired,
   arrayRemove: PropTypes.func.isRequired,
   error: PropTypes.string,
+  form: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   preparationTypes: PropTypes.array,
@@ -115,14 +114,14 @@ export class BaseForm extends Component {
 
   addTaxonName({ itemId }) {
     this.disconnectTaxonName({ itemId })
-    return this.props.arrayPush(FORM_NAME, 'acceptedTaxonNames', {
+    return this.props.arrayPush(this.props.form, 'acceptedTaxonNames', {
       id: itemId,
     })
   }
 
   addNewPreparationType({ itemId }) {
     this.disconnectPreparationType({ itemId })
-    return this.props.arrayPush(FORM_NAME, 'preparationTypes', {
+    return this.props.arrayPush(this.props.form, 'preparationTypes', {
       id: itemId,
     })
   }
@@ -132,7 +131,7 @@ export class BaseForm extends Component {
       return itemId === id
     })
     if (index > -1) {
-      return this.props.arrayRemove(FORM_NAME, 'preparationTypes', index)
+      return this.props.arrayRemove(this.props.form, 'preparationTypes', index)
     }
     return null
   }
@@ -142,7 +141,11 @@ export class BaseForm extends Component {
       return itemId === id
     })
     if (index > -1) {
-      return this.props.arrayRemove(FORM_NAME, 'acceptedTaxonNames', index)
+      return this.props.arrayRemove(
+        this.props.form,
+        'acceptedTaxonNames',
+        index
+      )
     }
     return null
   }
@@ -242,7 +245,6 @@ export default compose(
   reduxForm({
     destroyOnUnmount: false, // to keep values when switching layout
     enableReinitialize: true,
-    form: FORM_NAME,
     validate: formValidator({ model: 'storageLocation' }),
   }),
   connect(mapStateToProps, mapDispatchToProps)

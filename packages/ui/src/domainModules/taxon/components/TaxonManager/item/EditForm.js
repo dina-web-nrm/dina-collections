@@ -46,6 +46,7 @@ export class Edit extends PureComponent {
       <BaseForm
         displayBackButton
         displayResetButton
+        form="taxonEdit"
         initialValues={initialValues}
         onClose={event => {
           event.preventDefault()

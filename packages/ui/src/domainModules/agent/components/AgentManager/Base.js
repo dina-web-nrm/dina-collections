@@ -36,7 +36,7 @@ class AgentManager extends Component {
     return (
       <EditForm
         {...props}
-        form="normalizedAgent"
+        form="normalizedAgentEdit"
         itemId={itemId}
         onInteraction={this.handleInteraction}
       />
@@ -46,7 +46,7 @@ class AgentManager extends Component {
     return (
       <CreateForm
         {...props}
-        form="normalizedAgent"
+        form="normalizedAgentCreate"
         onInteraction={this.handleInteraction}
       />
     )
