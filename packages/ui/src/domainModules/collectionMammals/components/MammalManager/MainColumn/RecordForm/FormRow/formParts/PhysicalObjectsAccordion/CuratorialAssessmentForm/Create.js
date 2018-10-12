@@ -37,7 +37,7 @@ export class CreateCuratorialAssessment extends PureComponent {
 
     const dateInput = {
       day: now.date(),
-      month: now.month(),
+      month: now.month() + 1,
       year: now.year(),
     }
 
@@ -45,7 +45,6 @@ export class CreateCuratorialAssessment extends PureComponent {
       <BaseForm
         displayBackButton
         initialValues={{
-          agent: userName ? { textI: userName } : undefined,
           date: {
             dateType: 'single',
             endDate: {

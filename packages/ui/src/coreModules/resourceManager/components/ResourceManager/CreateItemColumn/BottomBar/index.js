@@ -13,7 +13,7 @@ import { CREATE_SUCCESS } from 'coreModules/resourceManager/constants'
 import crudActionCreators from 'coreModules/crud/actionCreators'
 
 const mapStateToProps = (state, { resource }) => {
-  const formName = `${resource}Edit`
+  const formName = `${resource}Create`
   return {
     formName,
     invalid: isInvalid(formName)(state),

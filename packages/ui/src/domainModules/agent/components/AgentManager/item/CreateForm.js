@@ -24,12 +24,6 @@ const defaultProps = {
 }
 
 export class Create extends PureComponent {
-  componentWillMount() {
-    // necessary to ensure form is emptied if coming from an edit form with
-    // other pre-filled values
-    this.props.destroy([this.props.form])
-  }
-
   render() {
     const { form, itemId, onInteraction, ...rest } = this.props
     const initialValues = itemId ? { parent: { id: itemId } } : {}

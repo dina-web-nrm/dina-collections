@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
 
 import createLog from 'utilities/log'
-import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import { globalSelectors as keyObjectSelectors } from 'domainModules/collectionMammals/keyObjectModule'
@@ -70,19 +69,6 @@ class FormRow extends PureComponent {
     this.handleGoToNextSection = this.handleGoToNextSection.bind(this)
     this.handleGoToPreviousSection = this.handleGoToPreviousSection.bind(this)
     this.handleShowAllFormSections = this.handleShowAllFormSections.bind(this)
-
-    this.shortcuts = [
-      {
-        command: 'left',
-        description: 'Go to previous form section',
-        onPress: this.handleGoToPreviousSection,
-      },
-      {
-        command: 'right',
-        description: 'Go to next form section',
-        onPress: this.handleGoToNextSection,
-      },
-    ]
   }
 
   handleSetActiveFormSection(event, activeFormSectionIndex) {
@@ -129,7 +115,6 @@ class FormRow extends PureComponent {
 
     return (
       <React.Fragment>
-        <KeyboardShortcuts shortcuts={this.shortcuts} />
         <ColumnLayout
           {...rest}
           activeFormSectionIndex={activeFormSectionIndex}

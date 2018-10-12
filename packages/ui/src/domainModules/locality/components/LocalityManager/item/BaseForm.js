@@ -10,8 +10,6 @@ import { Input, DropdownSearch } from 'coreModules/form/components'
 import LocalityDropdownSearch from '../../../components/LocalityDropdownSearch'
 import { CONTINENT, COUNTRY, DISTRICT, PROVINCE } from '../../../constants'
 
-export const FORM_NAME = 'placeEdit'
-
 const log = createLog('modules:locality:BaseForm')
 
 const propTypes = {
@@ -193,6 +191,5 @@ BaseForm.defaultProps = defaultProps
 export default reduxForm({
   destroyOnUnmount: true, // to keep values when switching layout
   enableReinitialize: true,
-  form: FORM_NAME,
   validate: formValidator({ model: 'place' }),
 })(BaseForm)

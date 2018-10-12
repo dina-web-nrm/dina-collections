@@ -9,8 +9,6 @@ import FieldWrapper from 'coreModules/form/components/FieldWrapper'
 import { Input, DropdownSearch } from 'coreModules/form/components'
 import { SPECIES, SUBSPECIES, GENUS, FAMILY, ORDER } from '../../../constants'
 
-export const FORM_NAME = 'taxonName'
-
 const log = createLog('modules:taxon:taxonName:BaseForm')
 
 const propTypes = {
@@ -91,6 +89,5 @@ BaseForm.defaultProps = defaultProps
 export default reduxForm({
   destroyOnUnmount: false, // to keep values when switching layout
   enableReinitialize: true,
-  form: FORM_NAME,
   validate: formValidator({ model: 'taxonName' }),
 })(BaseForm)

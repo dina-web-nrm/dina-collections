@@ -54,6 +54,7 @@ export class Edit extends PureComponent {
         <BaseForm
           displayBackButton
           displayResetButton
+          form="placeEdit"
           initialValues={initialValues}
           onClose={event => {
             event.preventDefault()

@@ -19,7 +19,6 @@ import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { mammalFormModels } from 'domainModules/collectionMammals/schemas'
 import CatalogNumberModal from 'domainModules/collectionMammals/components/CatalogNumberModal'
-import { KeyboardShortcuts } from 'coreModules/keyboardShortcuts/components'
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
@@ -98,14 +97,6 @@ class RecordForm extends Component {
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
     this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
-
-    this.shortcuts = [
-      {
-        command: 'mod+shift+s',
-        description: 'Save specimen record',
-        onPress: this.props.handleSubmit(this.handleFormSubmit),
-      },
-    ]
   }
 
   setFormRef(element) {
@@ -162,7 +153,6 @@ class RecordForm extends Component {
 
     return (
       <React.Fragment>
-        <KeyboardShortcuts shortcuts={this.shortcuts} />
         <Form
           formName={form}
           onSubmit={handleSubmit(this.handleFormSubmit)}
