@@ -150,14 +150,14 @@ class DateRange extends Component {
   }
 
   handleFocusEndYear() {
-    // wait for it to be mounted console.log('this.endYearInput', this.endYearInput)
+    // wait for it to be mounted
     if (this.endYearInput) {
       this.endYearInput.focus()
     }
   }
 
   handleFocusStartYear() {
-    // wait for it to be mounted console.log('this.startYearInput', this.startYearInput)
+    // wait for it to be mounted
     if (this.startYearInput) {
       this.startYearInput.focus()
     }
