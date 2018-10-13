@@ -4,21 +4,38 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { push } from 'react-router-redux'
+import objectPath from 'object-path'
 
 import createLog from 'utilities/log'
+import {
+  actionCreators as formSupportKeyObjectActionCreators,
+  globalSelectors as formSupportKeyObjectSelectors,
+} from 'coreModules/formSupport/keyObjectModule'
 import { ColumnLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
-import { globalSelectors as keyObjectSelectors } from 'domainModules/collectionMammals/keyObjectModule'
 import FormSectionNavigation from './FormSectionNavigation'
 import FormSectionView from './FormSectionView'
 
-const log = createLog(
-  'modules:collectionMammals::MammalManager:RecordForm:FormRow'
-)
+const log = createLog('coreModules/form/components/FormRow')
 
 const formSectionNavigation = {
   key: 'formSectionNavigation',
-  renderColumn: props => <FormSectionNavigation {...props} />,
+  renderColumn: props => {
+    const {
+      formSectionNavigationHeader,
+      formSectionNavigationSubHeader,
+      module,
+    } = props
+
+    return (
+      <FormSectionNavigation
+        {...props}
+        header={formSectionNavigationHeader}
+        module={module}
+        subHeader={formSectionNavigationSubHeader}
+      />
+    )
+  },
   width: emToPixels(25),
 }
 
@@ -29,20 +46,34 @@ const formSectionView = {
 
 const columns = [formSectionNavigation, formSectionView]
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, { formName }) => {
   return {
-    activeFormSectionIndex: keyObjectSelectors.get.activeFormSectionIndex(
-      state
-    ),
-    showAllFormSections: keyObjectSelectors.get.showAllFormSections(state),
+    activeFormSectionIndex: formSupportKeyObjectSelectors.get[
+      'sectionNavigation.:formName.activeFormSectionIndex'
+    ](state, { formName }),
+    showAllFormSections: formSupportKeyObjectSelectors.get[
+      'sectionNavigation.:formName.showAllFormSections'
+    ](state, {
+      formName,
+    }),
   }
 }
 const mapDispatchToProps = {
   push,
+  setActiveFormSectionIndex:
+    formSupportKeyObjectActionCreators.set[
+      'sectionNavigation.:formName.activeFormSectionIndex'
+    ],
+  setShowAllFormSections:
+    formSupportKeyObjectActionCreators.set[
+      'sectionNavigation.:formName.showAllFormSections'
+    ],
 }
 
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
+  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
+  formName: PropTypes.string.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       specimenId: PropTypes.string,
@@ -50,34 +81,68 @@ const propTypes = {
     path: PropTypes.string.isRequired,
   }).isRequired,
   push: PropTypes.func.isRequired,
+  resourceIdPathParamKey: PropTypes.string.isRequired,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       units: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     }).isRequired
   ).isRequired,
+  setActiveFormSectionIndex: PropTypes.func.isRequired,
+  setShowAllFormSections: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  customParts: undefined,
+  showAllFormSections: undefined,
 }
 
 class FormRow extends PureComponent {
   constructor(props) {
     super(props)
+    this.handleSectionIdUpdate = this.handleSectionIdUpdate.bind(this)
     this.handleSetActiveFormSection = this.handleSetActiveFormSection.bind(this)
     this.handleGoToNextSection = this.handleGoToNextSection.bind(this)
     this.handleGoToPreviousSection = this.handleGoToPreviousSection.bind(this)
     this.handleShowAllFormSections = this.handleShowAllFormSections.bind(this)
   }
 
+  componentWillMount() {
+    this.handleSectionIdUpdate()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (
+      objectPath.get(this.props, 'match.params.sectionId') !==
+      objectPath.get(nextProps, 'match.params.sectionId')
+    ) {
+      this.handleSectionIdUpdate(nextProps)
+    }
+  }
+
+  handleSectionIdUpdate(props = this.props) {
+    const { formName } = props
+    const sectionId = objectPath.get(props, 'match.params.sectionId')
+    const sectionIndex = Number(sectionId)
+
+    if (Number.isInteger(sectionIndex)) {
+      this.props.setActiveFormSectionIndex(sectionIndex, { formName })
+      this.props.setShowAllFormSections(false, { formName })
+    } else if (sectionId === 'all') {
+      this.props.setActiveFormSectionIndex(null, { formName })
+      this.props.setShowAllFormSections(true, { formName })
+    }
+  }
+
   handleSetActiveFormSection(event, activeFormSectionIndex) {
     if (event) event.preventDefault()
 
+    const { resourceIdPathParamKey } = this.props
     const { path, params } = this.props.match
 
     const url = path
-      .replace(':specimenId', params.specimenId)
+      .replace(`:${resourceIdPathParamKey}`, params[resourceIdPathParamKey])
       .replace(':sectionId', activeFormSectionIndex)
 
     this.props.push(url)
@@ -107,11 +172,19 @@ class FormRow extends PureComponent {
     log.render()
     const {
       activeFormSectionIndex,
+      customParts,
       match,
       sectionSpecs,
       showAllFormSections,
       ...rest
     } = this.props
+
+    if (
+      activeFormSectionIndex === undefined &&
+      showAllFormSections === undefined
+    ) {
+      return null
+    }
 
     return (
       <React.Fragment>
@@ -119,6 +192,7 @@ class FormRow extends PureComponent {
           {...rest}
           activeFormSectionIndex={activeFormSectionIndex}
           columns={columns}
+          customParts={customParts}
           onGoToNextSection={this.handleGoToNextSection}
           onGoToPreviousSection={this.handleGoToPreviousSection}
           onRemoteSubmit={this.handleRemoteSubmit}

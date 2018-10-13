@@ -9,7 +9,11 @@ const {
   selectors,
   reducer,
 } = keyObjectModuleFactory({
-  keys: [':formName'],
+  keys: [
+    ':formName',
+    'sectionNavigation.:formName.activeFormSectionIndex',
+    'sectionNavigation.:formName.showAllFormSections',
+  ],
   name,
 })
 

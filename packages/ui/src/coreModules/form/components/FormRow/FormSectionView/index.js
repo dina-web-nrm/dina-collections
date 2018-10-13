@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Grid, Icon } from 'semantic-ui-react'
 
-import { Section } from 'coreModules/form/components'
-import customParts from '../formParts'
+import Section from '../../Section'
 
 const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   availableHeight: PropTypes.number.isRequired,
   changeFieldValue: PropTypes.func.isRequired,
+  customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
   onGoToNextSection: PropTypes.func.isRequired,
@@ -23,6 +23,7 @@ const propTypes = {
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
+  customParts: undefined,
 }
 
 class FormSectionView extends PureComponent {
@@ -36,6 +37,7 @@ class FormSectionView extends PureComponent {
     const {
       activeFormSectionIndex,
       changeFieldValue,
+      customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
@@ -79,6 +81,7 @@ class FormSectionView extends PureComponent {
   renderAllSections() {
     const {
       changeFieldValue,
+      customParts,
       formName,
       formValueSelector,
       removeArrayFieldByIndex,
