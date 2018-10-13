@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
@@ -20,7 +20,7 @@ const defaultProps = {
   wrapperStyle: undefined,
 }
 
-class ColumnLayout extends PureComponent {
+class ColumnLayout extends Component {
   render() {
     const {
       columns,

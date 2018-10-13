@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 const propTypes = {
@@ -23,7 +23,7 @@ const defaultProps = {
   wrapperStyle: undefined,
 }
 
-class RowLayout extends PureComponent {
+class RowLayout extends Component {
   render() {
     const {
       availableHeight,
