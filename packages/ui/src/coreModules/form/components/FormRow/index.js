@@ -18,33 +18,10 @@ import FormSectionView from './FormSectionView'
 
 const log = createLog('coreModules/form/components/FormRow')
 
-const formSectionNavigation = {
-  key: 'formSectionNavigation',
-  renderColumn: props => {
-    const {
-      formSectionNavigationHeader,
-      formSectionNavigationSubHeader,
-      module,
-    } = props
-
-    return (
-      <FormSectionNavigation
-        {...props}
-        header={formSectionNavigationHeader}
-        module={module}
-        subHeader={formSectionNavigationSubHeader}
-      />
-    )
-  },
-  width: emToPixels(25),
-}
-
-const formSectionView = {
-  key: 'formSectionView',
-  renderColumn: props => <FormSectionView {...props} />,
-}
-
-const columns = [formSectionNavigation, formSectionView]
+const columns = [
+  { key: 'formSectionNavigation', width: emToPixels(25) },
+  { key: 'formSectionView' },
+]
 
 const mapStateToProps = (state, { formName }) => {
   return {
@@ -74,6 +51,8 @@ const propTypes = {
   activeFormSectionIndex: PropTypes.number,
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
+  formSectionNavigationHeader: PropTypes.node.isRequired,
+  formSectionNavigationSubHeader: PropTypes.node,
   match: PropTypes.shape({
     params: PropTypes.shape({
       specimenId: PropTypes.string,
@@ -90,11 +69,12 @@ const propTypes = {
   ).isRequired,
   setActiveFormSectionIndex: PropTypes.func.isRequired,
   setShowAllFormSections: PropTypes.func.isRequired,
-  showAllFormSections: PropTypes.bool.isRequired,
+  showAllFormSections: PropTypes.bool,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
   customParts: undefined,
+  formSectionNavigationSubHeader: undefined,
   showAllFormSections: undefined,
 }
 
@@ -168,6 +148,34 @@ class FormRow extends PureComponent {
     this.handleSetActiveFormSection(event, 'all')
   }
 
+  renderColumn(key, props) {
+    switch (key) {
+      case 'formSectionNavigation': {
+        const {
+          formSectionNavigationHeader,
+          formSectionNavigationSubHeader,
+        } = this.props
+
+        return (
+          <FormSectionNavigation
+            {...this.props}
+            {...props}
+            header={formSectionNavigationHeader}
+            subHeader={formSectionNavigationSubHeader}
+          />
+        )
+      }
+
+      case 'formSectionView': {
+        return <FormSectionView {...this.props} {...props} />
+      }
+
+      default: {
+        throw new Error(`Unknown column: ${key}`)
+      }
+    }
+  }
+
   render() {
     log.render()
     const {
@@ -198,6 +206,7 @@ class FormRow extends PureComponent {
           onRemoteSubmit={this.handleRemoteSubmit}
           onSetActiveFormSection={this.handleSetActiveFormSection}
           onShowAllFormSections={this.handleShowAllFormSections}
+          renderColumn={this.renderColumn}
           sectionSpecs={sectionSpecs}
           showAllFormSections={showAllFormSections}
           specimenId={match.params.specimenId}
