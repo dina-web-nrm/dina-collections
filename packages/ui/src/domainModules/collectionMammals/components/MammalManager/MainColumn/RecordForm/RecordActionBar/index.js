@@ -10,7 +10,7 @@ const ModuleTranslate = createModuleTranslate('collectionMammals')
 const propTypes = {
   editMode: PropTypes.bool.isRequired,
   error: PropTypes.string,
-  form: PropTypes.string.isRequired,
+  formName: PropTypes.string.isRequired,
   invalid: PropTypes.bool.isRequired,
   onUndoChanges: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -28,7 +28,7 @@ export class RecordActionBar extends PureComponent {
     const {
       editMode,
       error,
-      form,
+      formName,
       invalid,
       pristine,
       onUndoChanges: handleUndoChanges,
@@ -60,7 +60,7 @@ export class RecordActionBar extends PureComponent {
             <span style={{ marginLeft: '15px' }}>*New record*</span>
           )}
           {!pristine && <em style={{ marginLeft: '10px' }}>Unsaved changes</em>}
-          <ConnectedFormSchemaError form={form} />
+          <ConnectedFormSchemaError form={formName} />
           {invalid &&
             !error &&
             submitFailed && (
