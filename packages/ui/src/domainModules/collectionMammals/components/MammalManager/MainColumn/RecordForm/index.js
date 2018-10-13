@@ -28,29 +28,15 @@ import customParts from './FormRow/formParts'
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
 const recordActionBarHeight = emToPixels(4.625)
-const recordActionBar = {
-  height: `${recordActionBarHeight}px`,
-  key: 'recordActionBar',
-  renderRow: props => <RecordActionBar {...props} />,
-  style: { borderTop: '1px solid #D4D4D5' },
-}
 
-/* eslint-disable react/prop-types */
-const formRow = {
-  key: 'formRow',
-  renderRow: props => (
-    <FormRow
-      {...props}
-      availableHeight={props.availableHeight - recordActionBarHeight}
-      customParts={customParts}
-      resourceIdPathParamKey="specimenId"
-      showSectionsInNavigation
-    />
-  ),
-}
-/* eslint-enable react/prop-types */
-
-const rows = [formRow, recordActionBar]
+const rows = [
+  { key: 'formRow' },
+  {
+    height: `${recordActionBarHeight}px`,
+    key: 'recordActionBar',
+    style: { borderTop: '1px solid #D4D4D5' },
+  },
+]
 
 const mapStateToProps = (state, { form, formValueSelector }) => {
   return {
@@ -120,6 +106,7 @@ class RecordForm extends Component {
     this.removeArrayFieldByIndex = this.removeArrayFieldByIndex.bind(this)
     this.handleUndoChanges = this.handleUndoChanges.bind(this)
     this.handleSubmitFromModal = this.handleSubmitFromModal.bind(this)
+    this.renderRow = this.renderRow.bind(this)
   }
 
   setFormRef(element) {
@@ -171,6 +158,54 @@ class RecordForm extends Component {
     this.props.reset(this.props.form)
   }
 
+  renderRow(key, props) {
+    switch (key) {
+      case 'formRow': {
+        const { availableHeight, catalogNumber, taxonName } = this.props
+
+        const curatorialTaxonName = objectPath.get(taxonName, 'attributes.name')
+
+        return (
+          <FormRow
+            {...this.props}
+            {...props}
+            availableHeight={availableHeight - recordActionBarHeight}
+            customParts={customParts}
+            formSectionNavigationHeader={
+              catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
+            }
+            formSectionNavigationSubHeader={
+              curatorialTaxonName && (
+                <Header.Subheader size="large">
+                  <em>{curatorialTaxonName}</em>
+                </Header.Subheader>
+              )
+            }
+            resourceIdPathParamKey="specimenId"
+            showSectionsInNavigation
+          />
+        )
+      }
+
+      case 'recordActionBar': {
+        const { mode } = this.props
+
+        return (
+          <RecordActionBar
+            {...this.props}
+            {...props}
+            editMode={mode === 'edit'}
+            onUndoChanges={this.handleUndoChanges}
+          />
+        )
+      }
+
+      default: {
+        throw new Error(`Unknown row: ${key}`)
+      }
+    }
+  }
+
   render() {
     const {
       availableHeight,
@@ -178,11 +213,8 @@ class RecordForm extends Component {
       form,
       handleSubmit,
       mode,
-      taxonName,
       ...rest
     } = this.props
-
-    const curatorialTaxonName = objectPath.get(taxonName, 'attributes.name')
 
     return (
       <React.Fragment>
@@ -194,24 +226,11 @@ class RecordForm extends Component {
         >
           <RowLayout
             {...rest}
-            availableHeight={availableHeight}
             changeFieldValue={this.changeFieldValue}
-            editMode={mode === 'edit'}
-            form={form}
             formName={form}
-            formSectionNavigationHeader={
-              catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
-            }
-            formSectionNavigationSubHeader={
-              curatorialTaxonName && (
-                <Header.Subheader size="large">
-                  <em>{curatorialTaxonName}</em>
-                </Header.Subheader>
-              )
-            }
             module="collectionMammals"
-            onUndoChanges={this.handleUndoChanges}
             removeArrayFieldByIndex={this.removeArrayFieldByIndex}
+            renderRow={this.renderRow}
             rows={rows}
             sectionSpecs={sectionSpecs}
           />
