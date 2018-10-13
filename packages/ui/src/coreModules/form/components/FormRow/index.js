@@ -23,11 +23,12 @@ const columns = [
   { key: 'formSectionView' },
 ]
 
-const mapStateToProps = (state, { formName }) => {
+const mapStateToProps = (state, { formName, match }) => {
   return {
     activeFormSectionIndex: formSupportKeyObjectSelectors.get[
       'sectionNavigation.:formName.activeFormSectionIndex'
     ](state, { formName }),
+    sectionId: objectPath.get(match, 'params.sectionId'),
     showAllFormSections: formSupportKeyObjectSelectors.get[
       'sectionNavigation.:formName.showAllFormSections'
     ](state, {
@@ -61,6 +62,8 @@ const propTypes = {
   }).isRequired,
   push: PropTypes.func.isRequired,
   resourceIdPathParamKey: PropTypes.string.isRequired,
+  sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
   sectionSpecs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -86,6 +89,7 @@ class FormRow extends PureComponent {
     this.handleGoToNextSection = this.handleGoToNextSection.bind(this)
     this.handleGoToPreviousSection = this.handleGoToPreviousSection.bind(this)
     this.handleShowAllFormSections = this.handleShowAllFormSections.bind(this)
+    this.renderColumn = this.renderColumn.bind(this)
   }
 
   componentWillMount() {
@@ -93,17 +97,13 @@ class FormRow extends PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (
-      objectPath.get(this.props, 'match.params.sectionId') !==
-      objectPath.get(nextProps, 'match.params.sectionId')
-    ) {
+    if (this.props.sectionId !== nextProps.sectionId) {
       this.handleSectionIdUpdate(nextProps)
     }
   }
 
   handleSectionIdUpdate(props = this.props) {
-    const { formName } = props
-    const sectionId = objectPath.get(props, 'match.params.sectionId')
+    const { formName, sectionId } = props
     const sectionIndex = Number(sectionId)
 
     if (Number.isInteger(sectionIndex)) {
