@@ -21,8 +21,8 @@ import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSe
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
-import sectionSpecs from './FormRow/sectionSpecs'
-import customParts from './FormRow/formParts'
+import sectionSpecs from './sectionSpecs'
+import customParts from './formParts'
 
 const ModuleTranslate = createModuleTranslate('collectionMammals')
 
