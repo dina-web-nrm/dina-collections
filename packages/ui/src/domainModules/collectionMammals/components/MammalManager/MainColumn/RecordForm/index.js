@@ -11,7 +11,7 @@ import {
   createEnsureAllItemsFetched,
   createGetItemById,
 } from 'coreModules/crud/higherOrderComponents'
-import { Form, FormRow } from 'coreModules/form/components'
+import { Form, FormActionBar, FormRow } from 'coreModules/form/components'
 import { handleReduxFormSubmitError } from 'coreModules/form/utilities'
 import customFormValidator from 'common/es5/error/validators/customFormValidator'
 import { createModuleTranslate } from 'coreModules/i18n/components'
@@ -21,7 +21,6 @@ import collectionMammalsSelectors from 'domainModules/collectionMammals/globalSe
 import { RowLayout } from 'coreModules/layout/components'
 import { emToPixels } from 'coreModules/layout/utilities'
 import filterOutput from './transformations/output'
-import RecordActionBar from './RecordActionBar'
 import sectionSpecs from './FormRow/sectionSpecs'
 import customParts from './FormRow/formParts'
 
@@ -191,7 +190,7 @@ class RecordForm extends Component {
         const { mode } = this.props
 
         return (
-          <RecordActionBar
+          <FormActionBar
             {...this.props}
             {...props}
             editMode={mode === 'edit'}

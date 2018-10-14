@@ -5,7 +5,7 @@ import { Button, Grid, Message } from 'semantic-ui-react'
 import { ConnectedFormSchemaError } from 'coreModules/error/components'
 import { createModuleTranslate } from 'coreModules/i18n/components'
 
-const ModuleTranslate = createModuleTranslate('collectionMammals')
+const ModuleTranslate = createModuleTranslate('form')
 
 const propTypes = {
   editMode: PropTypes.bool.isRequired,
@@ -23,7 +23,7 @@ const defaultProps = {
   error: '',
 }
 
-export class RecordActionBar extends PureComponent {
+export class FormActionBar extends PureComponent {
   render() {
     const {
       editMode,
@@ -45,7 +45,7 @@ export class RecordActionBar extends PureComponent {
             size="large"
             type="submit"
           >
-            <ModuleTranslate textKey="other.save" />
+            <ModuleTranslate textKey="save" />
           </Button>
           <Button
             basic
@@ -66,7 +66,7 @@ export class RecordActionBar extends PureComponent {
             submitFailed && (
               <Message
                 error
-                header={<ModuleTranslate textKey="other.formContainsErrors" />}
+                header={<ModuleTranslate textKey="formContainsErrors" />}
               />
             )}
           {submitFailed &&
@@ -74,14 +74,11 @@ export class RecordActionBar extends PureComponent {
               <Message
                 content={error}
                 error
-                header={<ModuleTranslate textKey="other.submitFailed" />}
+                header={<ModuleTranslate textKey="submitFailed" />}
               />
             )}
           {submitSucceeded && (
-            <Message
-              header={<ModuleTranslate textKey="other.saved" />}
-              success
-            />
+            <Message header={<ModuleTranslate textKey="saved" />} success />
           )}
         </Grid.Column>
       </Grid>
@@ -89,7 +86,7 @@ export class RecordActionBar extends PureComponent {
   }
 }
 
-RecordActionBar.propTypes = propTypes
-RecordActionBar.defaultProps = defaultProps
+FormActionBar.propTypes = propTypes
+FormActionBar.defaultProps = defaultProps
 
-export default RecordActionBar
+export default FormActionBar
