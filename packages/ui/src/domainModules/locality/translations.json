@@ -1,5 +1,17 @@
 {
   "fieldLabels": {
+    "name": {
+      "en": "locality name",
+      "sv": ""
+    },
+    "group": {
+      "en": "geographic level",
+      "sv": ""
+    },
+    "parent": {
+      "en": "parent",
+      "sv": ""
+    },
     "place": {
       "name": { "en": "name" },
       "group": { "en": "group" },
@@ -19,6 +31,10 @@
     "continent": { "en": "continent" },
     "country": { "en": "country" },
     "province": { "en": "province" }
+  },
+  "newLocality": {
+    "en": "new locality",
+    "sv": ""
   },
   "save": {
     "en": "Save",
