@@ -10,6 +10,7 @@ const propTypes = {
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
+  moduleName: PropTypes.string.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
   sectionSpec: PropTypes.shape({
     name: PropTypes.string.isRequired,
@@ -31,6 +32,7 @@ class Section extends PureComponent {
       customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       sectionSpec,
     } = this.props
@@ -46,6 +48,7 @@ class Section extends PureComponent {
                 formName={formName}
                 formValueSelector={formValueSelector}
                 key={unit.name}
+                moduleName={moduleName}
                 name={unit.name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
                 unitSpec={unit}

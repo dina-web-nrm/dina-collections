@@ -11,6 +11,7 @@ const propTypes = {
   customParts: PropTypes.objectOf(PropTypes.func.isRequired),
   formName: PropTypes.string.isRequired,
   formValueSelector: PropTypes.func.isRequired,
+  moduleName: PropTypes.string.isRequired,
   onGoToNextSection: PropTypes.func.isRequired,
   onGoToPreviousSection: PropTypes.func.isRequired,
   removeArrayFieldByIndex: PropTypes.func.isRequired,
@@ -40,6 +41,7 @@ class FormSectionView extends PureComponent {
       customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       sectionSpecs,
     } = this.props
@@ -69,7 +71,8 @@ class FormSectionView extends PureComponent {
           customParts={customParts}
           formName={formName}
           formValueSelector={formValueSelector}
-          module="collectionMammals"
+          module={moduleName}
+          moduleName={moduleName}
           name={name}
           removeArrayFieldByIndex={removeArrayFieldByIndex}
           sectionSpec={sectionSpec}
@@ -84,6 +87,7 @@ class FormSectionView extends PureComponent {
       customParts,
       formName,
       formValueSelector,
+      moduleName,
       removeArrayFieldByIndex,
       sectionSpecs,
     } = this.props
@@ -104,7 +108,8 @@ class FormSectionView extends PureComponent {
                 customParts={customParts}
                 formName={formName}
                 formValueSelector={formValueSelector}
-                module="collectionMammals"
+                module={moduleName}
+                moduleName={moduleName}
                 name={name}
                 removeArrayFieldByIndex={removeArrayFieldByIndex}
                 sectionSpec={sectionSpec}

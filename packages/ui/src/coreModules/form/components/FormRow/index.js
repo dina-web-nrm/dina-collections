@@ -60,6 +60,7 @@ const propTypes = {
     }).isRequired,
     path: PropTypes.string.isRequired,
   }).isRequired,
+  moduleName: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
   resourceIdPathParamKey: PropTypes.string.isRequired,
   sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
@@ -182,6 +183,7 @@ class FormRow extends PureComponent {
       activeFormSectionIndex,
       customParts,
       match,
+      moduleName,
       sectionSpecs,
       showAllFormSections,
       ...rest
@@ -201,6 +203,7 @@ class FormRow extends PureComponent {
           activeFormSectionIndex={activeFormSectionIndex}
           columns={columns}
           customParts={customParts}
+          moduleName={moduleName}
           onGoToNextSection={this.handleGoToNextSection}
           onGoToPreviousSection={this.handleGoToPreviousSection}
           onRemoteSubmit={this.handleRemoteSubmit}
