@@ -62,7 +62,7 @@ const propTypes = {
   }).isRequired,
   moduleName: PropTypes.string.isRequired,
   push: PropTypes.func.isRequired,
-  resourceIdPathParamKey: PropTypes.string.isRequired,
+  resourceIdPathParamKey: PropTypes.string,
   sectionId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
     .isRequired,
   sectionSpecs: PropTypes.arrayOf(
@@ -80,6 +80,7 @@ const defaultProps = {
   activeFormSectionIndex: undefined,
   customParts: undefined,
   formSectionNavigationSubHeader: undefined,
+  resourceIdPathParamKey: 'itemId',
   showAllFormSections: undefined,
   showSectionsInNavigation: false,
 }
