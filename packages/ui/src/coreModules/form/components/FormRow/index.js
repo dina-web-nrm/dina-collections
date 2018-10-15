@@ -74,12 +74,14 @@ const propTypes = {
   setActiveFormSectionIndex: PropTypes.func.isRequired,
   setShowAllFormSections: PropTypes.func.isRequired,
   showAllFormSections: PropTypes.bool,
+  showSectionsInNavigation: PropTypes.bool,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
   customParts: undefined,
   formSectionNavigationSubHeader: undefined,
   showAllFormSections: undefined,
+  showSectionsInNavigation: false,
 }
 
 class FormRow extends PureComponent {
@@ -186,10 +188,12 @@ class FormRow extends PureComponent {
       moduleName,
       sectionSpecs,
       showAllFormSections,
+      showSectionsInNavigation,
       ...rest
     } = this.props
 
     if (
+      showSectionsInNavigation &&
       activeFormSectionIndex === undefined &&
       showAllFormSections === undefined
     ) {

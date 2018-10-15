@@ -21,6 +21,7 @@ const propTypes = {
     }).isRequired
   ).isRequired,
   showAllFormSections: PropTypes.bool.isRequired,
+  showSectionsInNavigation: PropTypes.bool.isRequired,
 }
 const defaultProps = {
   activeFormSectionIndex: undefined,
@@ -44,14 +45,15 @@ class FormSectionView extends PureComponent {
       moduleName,
       removeArrayFieldByIndex,
       sectionSpecs,
+      showSectionsInNavigation,
     } = this.props
 
-    const sectionSpec = sectionSpecs[activeFormSectionIndex]
+    const sectionIndex = showSectionsInNavigation ? activeFormSectionIndex : 0
+
+    const sectionSpec = sectionSpecs[sectionIndex]
 
     if (!sectionSpec) {
-      throw new Error(
-        `Missing form section with index ${activeFormSectionIndex}`
-      )
+      throw new Error(`Missing form section with index ${sectionIndex}`)
     }
 
     const { name, units } = sectionSpec
@@ -129,6 +131,7 @@ class FormSectionView extends PureComponent {
       onGoToPreviousSection: handleGoToPreviousSection,
       sectionSpecs,
       showAllFormSections,
+      showSectionsInNavigation,
     } = this.props
 
     return (
@@ -140,35 +143,35 @@ class FormSectionView extends PureComponent {
         }}
       >
         <Grid className="text" container padded>
-          {!showAllFormSections
-            ? this.renderActiveSection()
-            : this.renderAllSections()}
+          {showAllFormSections
+            ? this.renderAllSections()
+            : this.renderActiveSection()}
+          {showSectionsInNavigation &&
+            !showAllFormSections && (
+              <Grid.Column textAlign="right" width={16}>
+                <Button
+                  disabled={activeFormSectionIndex === 0}
+                  icon
+                  labelPosition="left"
+                  onClick={handleGoToPreviousSection}
+                  type="button"
+                >
+                  <Icon name="left arrow" />
+                  Previous
+                </Button>
 
-          {!showAllFormSections && (
-            <Grid.Column textAlign="right" width={16}>
-              <Button
-                disabled={activeFormSectionIndex === 0}
-                icon
-                labelPosition="left"
-                onClick={handleGoToPreviousSection}
-                type="button"
-              >
-                <Icon name="left arrow" />
-                Previous
-              </Button>
-
-              <Button
-                disabled={activeFormSectionIndex === sectionSpecs.length - 1}
-                icon
-                labelPosition="right"
-                onClick={handleGoToNextSection}
-                type="button"
-              >
-                Next
-                <Icon name="right arrow" />
-              </Button>
-            </Grid.Column>
-          )}
+                <Button
+                  disabled={activeFormSectionIndex === sectionSpecs.length - 1}
+                  icon
+                  labelPosition="right"
+                  onClick={handleGoToNextSection}
+                  type="button"
+                >
+                  Next
+                  <Icon name="right arrow" />
+                </Button>
+              </Grid.Column>
+            )}
         </Grid>
       </div>
     )
