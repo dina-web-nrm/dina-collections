@@ -7,6 +7,7 @@ export default createAsyncView({
       import('coreModules/search'),
       import('domainModules/locality'),
       import('coreModules/form'),
+      import('coreModules/formSupport'),
     ]
   },
   name: MODULE_NAME,
