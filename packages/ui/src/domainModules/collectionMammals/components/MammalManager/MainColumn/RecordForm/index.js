@@ -173,13 +173,7 @@ class RecordForm extends Component {
             formSectionNavigationHeader={
               catalogNumber || <ModuleTranslate textKey="headers.newSpecimen" />
             }
-            formSectionNavigationSubHeader={
-              curatorialTaxonName && (
-                <Header.Subheader size="large">
-                  <em>{curatorialTaxonName}</em>
-                </Header.Subheader>
-              )
-            }
+            formSectionNavigationSubHeader={curatorialTaxonName}
             resourceIdPathParamKey="specimenId"
             showSectionsInNavigation
           />

@@ -102,7 +102,12 @@ export class FormSectionNavigation extends PureComponent {
           >
             {loading && <Loader active inline size="tiny" />}
             {!loading && header}
-            {!loading && subHeader}
+            {!loading &&
+              subHeader && (
+                <Header.Subheader size="large">
+                  <em>{subHeader}</em>
+                </Header.Subheader>
+              )}
           </Header>
 
           {showSectionsInNavigation && (
