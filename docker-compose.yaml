@@ -72,11 +72,13 @@ services:
       - ./userFiles:/userFiles
 
   postgres:
-    image: postgres
+    image: postgres:10.5
     env_file:
       - ./env/.postgres
     restart: always
     container_name: postgres
+    ports:
+      - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
