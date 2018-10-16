@@ -44,6 +44,21 @@
       "rubinNumber": {
         "en": "Rubin number"
       }
+    },
+    "order": {
+      "en": "order"
+    },
+    "family": {
+      "en": "family"
+    },
+    "genus": {
+      "en": "genus"
+    },
+    "species": {
+      "en": "species"
+    },
+    "subspecies": {
+      "en": "subspecies"
     }
   },
   "save": {

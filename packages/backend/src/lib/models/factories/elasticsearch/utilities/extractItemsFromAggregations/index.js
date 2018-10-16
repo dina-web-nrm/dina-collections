@@ -1,10 +1,11 @@
 const buildItemFromElasticsearch = ({ item, resource }) => {
-  const { doc_count: count, key } = item
+  const { doc_count: count, key, ...rest } = item
   return {
     attributes: {
       count,
       key,
       type: resource,
+      ...rest,
     },
     id: key,
     internals: {},
@@ -21,7 +22,9 @@ module.exports = function extractItemsFromAggregations({
 
   aggregationsInput.forEach(
     ({ aggregationFunction: aggregationFunctionName }) => {
-      const { key, resource } = aggregations[aggregationFunctionName]
+      const { key, resource, extractItems } = aggregations[
+        aggregationFunctionName
+      ]
       if (!key) {
         throw new Error('Aggregation missing required key')
       }
@@ -32,12 +35,16 @@ module.exports = function extractItemsFromAggregations({
 
       const aggregation = result.aggregations && result.aggregations[key]
 
-      if (aggregation) {
-        const { buckets } = aggregation
-        buckets.forEach(item => {
-          aggregationResult.push(buildItemFromElasticsearch({ item, resource }))
-        })
+      let items = []
+      if (extractItems) {
+        items = extractItems({ key, result })
+      } else if (aggregation) {
+        items = aggregation.buckets
       }
+
+      items.forEach(item => {
+        aggregationResult.push(buildItemFromElasticsearch({ item, resource }))
+      })
     }
   )
   return aggregationResult

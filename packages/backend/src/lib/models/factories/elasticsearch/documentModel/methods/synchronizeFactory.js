@@ -10,7 +10,7 @@ module.exports = function synchronizeFactory({ Model, elasticsearch } = {}) {
   }
   return function sync({ force }) {
     const { index } = Model
-    const { mappings } = Model
+    const { mappings, indexSettings } = Model
     log.debug(`Syncinc elastic model ${Model.name}`)
 
     return elasticsearch.indices
@@ -26,7 +26,9 @@ module.exports = function synchronizeFactory({ Model, elasticsearch } = {}) {
       })
       .then(exists => {
         if (!exists) {
-          const body = mappings ? { mappings } : {}
+          const body = mappings
+            ? { mappings, settings: indexSettings }
+            : { settings: indexSettings }
 
           return elasticsearch.indices.create({ body, index })
         }

@@ -5,12 +5,13 @@ import { Grid, Header, Icon } from 'semantic-ui-react'
 import { Translate } from 'coreModules/i18n/components'
 
 const propTypes = {
-  onClose: PropTypes.func.isRequired,
-  text: PropTypes.func,
+  onClose: PropTypes.func,
+  text: PropTypes.string,
   textKey: PropTypes.string,
 }
 
 const defaultProps = {
+  onClose: undefined,
   text: undefined,
   textKey: undefined,
 }

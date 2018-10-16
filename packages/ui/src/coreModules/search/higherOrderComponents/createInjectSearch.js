@@ -67,7 +67,6 @@ const createInjectSearch = (
       } = {}
     ) {
       const { resource: propResource } = this.props
-
       return this.props.search({
         aggregations,
         excludeFields: excludeFieldsInput || defaultExcludeFields,

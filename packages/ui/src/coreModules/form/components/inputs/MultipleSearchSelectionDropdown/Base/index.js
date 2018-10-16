@@ -71,19 +71,19 @@ class MultipleSearchSelectionDropdownInput extends Component {
 
   handleOnChange(event, data) {
     const { value } = data
-    this.handleSearchChange(null, { searchQuery: '' })
-
     this.props.input.onBlur(value)
+    this.handleSearchChange(null, { searchQuery: '' })
   }
 
   handleOnBlur(event, data) {
     const { value } = data
-    this.handleSearchChange(null, { searchQuery: '' })
+
     if (this.props.searchQuery && !value.includes(this.props.searchQuery)) {
       this.props.input.onBlur([...value, this.props.searchQuery])
     } else {
       this.props.input.onBlur(value)
     }
+    this.handleSearchChange(null, { searchQuery: '' })
   }
 
   render() {

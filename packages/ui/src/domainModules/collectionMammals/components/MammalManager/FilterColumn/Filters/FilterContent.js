@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import capitalizeFirstLetter from 'common/es5/stringFormatters/capitalizeFirstLetter'
-import * as FilterFormSections from './FilterFormSections'
+import { components as FilterFormSections } from './FilterFormSections'
 
 const propTypes = {
   name: PropTypes.string.isRequired,

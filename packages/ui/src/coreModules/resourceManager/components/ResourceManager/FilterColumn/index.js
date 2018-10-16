@@ -49,7 +49,7 @@ class FilterColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'header': {
-        return <ColumnRowHeader onClose={this.handleClose} text="Filter" />
+        return <ColumnRowHeader text="Filter" />
       }
       case 'filterForm': {
         const { filterValues: initialValues } = this.props

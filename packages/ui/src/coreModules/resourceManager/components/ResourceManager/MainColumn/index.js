@@ -56,18 +56,23 @@ class MainColumn extends Component {
       createItemActive,
       editItemActive,
       recordNavigationHeight,
-      recordOptionsHeight
+      recordOptionsHeight,
+      isPicker
     ) => {
-      const rows = [
-        {
+      const rows = []
+
+      if (!isPicker) {
+        rows.push({
           height: `${recordNavigationHeight}px`,
           key: 'recordNavigationBar',
-        },
-        {
-          height: `${recordOptionsHeight}px`,
-          key: 'resultOptionBar',
-        },
-      ]
+        })
+      }
+
+      rows.push({
+        height: `${recordOptionsHeight}px`,
+        key: 'resultOptionBar',
+      })
+
       if (tableActive) {
         rows.push({
           key: 'tableView',
@@ -101,31 +106,32 @@ class MainColumn extends Component {
   renderRow(key) {
     switch (key) {
       case 'recordNavigationBar': {
-        const { isPicker, treeActive } = this.props
-        const { extractedProps } = extractProps({
-          keys: [
+        const { treeActive } = this.props
+
+        let keys = ['onOpenNewRecordForm']
+
+        if (!treeActive) {
+          keys = [
+            ...keys,
             'currentTableRowNumber',
-            'onOpenNewRecordForm',
             'onSelectNextRecord',
             'onSelectPreviousRecord',
             'onSetCurrentTableRowNumber',
             'onShowAllRecords',
-            'onToggleFilters',
             'totalNumberOfRecords',
-          ],
+          ]
+        }
+
+        const { extractedProps } = extractProps({
+          keys,
           props: this.props,
         })
-
-        return (
-          <RecordNavigationBar
-            {...extractedProps}
-            showNewRecordButton={!isPicker}
-            showRecordInput={!isPicker}
-            showShowAllButton={!isPicker}
-            showSlider={!isPicker}
-            showTotalRecords={!(isPicker && treeActive)}
-          />
-        )
+        // showNewRecordButton={!isPicker}
+        // showRecordInput={!isPicker && !treeActive}
+        // showShowAllButton={!isPicker && !treeActive}
+        // showSlider={!isPicker && !treeActive}
+        // showTotalRecords={!isPicker && !treeActive}
+        return <RecordNavigationBar {...extractedProps} />
       }
       case 'treeView': {
         const { extractedProps } = extractProps({
@@ -236,12 +242,13 @@ class MainColumn extends Component {
       case 'resultOptionBar': {
         const { extractedProps } = extractProps({
           keys: [
+            'createItemActive',
+            'editItemActive',
             'itemEnabled',
+            'onToggleFilters',
             'tableActive',
             'treeActive',
             'treeEnabled',
-            'createItemActive',
-            'editItemActive',
           ],
           props: this.props,
         })
@@ -271,6 +278,7 @@ class MainColumn extends Component {
       availableHeight,
       createItemActive,
       editItemActive,
+      isPicker,
       recordNavigationHeight,
       recordOptionsHeight,
       tableActive,
@@ -284,7 +292,8 @@ class MainColumn extends Component {
       createItemActive,
       editItemActive,
       recordNavigationHeight,
-      recordOptionsHeight
+      recordOptionsHeight,
+      isPicker
     )
     const { extractedProps } = extractProps({
       keys: [

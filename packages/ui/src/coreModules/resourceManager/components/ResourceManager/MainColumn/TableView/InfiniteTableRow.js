@@ -58,7 +58,7 @@ const InfiniteTableRow = ({
         {rowNumber}
       </Grid.Column>
       {tableColumnSpecifications.map(
-        ({ buildText, fieldPath, width: columnWidth }) => {
+        ({ buildText, fieldPath, label, width: columnWidth }) => {
           let value = objectPath.get(nestedItem, fieldPath)
 
           const runBuildText =
@@ -74,7 +74,7 @@ const InfiniteTableRow = ({
 
           return (
             <Grid.Column
-              key={fieldPath}
+              key={fieldPath || label}
               style={{
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',

@@ -8,10 +8,8 @@ module.exports = function createStringMatchFilter({
     description: description || `Match for ${fieldPath}`,
     elasticsearch: ({ value }) => {
       return {
-        match: {
-          [rawPath]: {
-            query: value,
-          },
+        term: {
+          [rawPath]: value,
         },
       }
     },

@@ -1,6 +1,10 @@
 const {
-  createNestedMapping,
+  createFeatureRangeMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
+
+const {
+  createFeatureRangeFilter,
+} = require('../../../../../../../../lib/data/filters/factories')
 
 const fieldPath = 'attributes.searchOnlyFields.lengthObject'
 const key = 'searchLength'
@@ -26,11 +30,13 @@ const transformation = ({ migrator, src, target }) => {
       featureType.group === 'length' &&
       featureObservation.featureObservationText !== undefined
     ) {
-      const length = Number(featureObservation.featureObservationText)
+      const rangeValue = Number(featureObservation.featureObservationText)
+      const rangeUnit = featureObservation.featureObservationUnit
 
       lengthObjects.push({
-        length,
-        lengthType: featureType.key,
+        rangeType: featureType.key,
+        rangeUnit,
+        rangeValue,
       })
     }
   })
@@ -44,53 +50,15 @@ const transformation = ({ migrator, src, target }) => {
   return null
 }
 
-const rangeFilter = {
-  description: 'Search length',
-  elasticsearch: ({ value = {} }) => {
-    const { min, max, lengthType } = value
-
-    const must = []
-    if (min || max) {
-      must.push({
-        range: {
-          [`${fieldPath}.length`]: {
-            gte: min || undefined,
-            lte: max || undefined,
-          },
-        },
-      })
-    }
-
-    if (lengthType) {
-      must.push({
-        match: { [`${fieldPath}.lengthType`]: lengthType },
-      })
-    }
-
-    return {
-      nested: {
-        path: fieldPath,
-        query: {
-          bool: {
-            must,
-          },
-        },
-      },
-    }
-  },
-  inputSchema: {
-    type: 'object',
-  },
-  key: searchFilterName,
-}
-
 module.exports = {
   fieldPath,
   filters: {
-    [searchFilterName]: rangeFilter,
+    [searchFilterName]: createFeatureRangeFilter({
+      fieldPath,
+    }),
   },
   key,
-  mapping: createNestedMapping({
+  mapping: createFeatureRangeMapping({
     fieldPath,
   }),
   selectable: true,

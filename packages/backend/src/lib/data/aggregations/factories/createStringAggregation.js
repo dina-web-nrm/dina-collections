@@ -1,5 +1,3 @@
-const capitalizeFirstLetter = require('common/src/stringFormatters/capitalizeFirstLetter')
-
 module.exports = function createStringAggregation({
   description,
   fieldPath,
@@ -8,16 +6,15 @@ module.exports = function createStringAggregation({
   const rawPath = `${fieldPath}.raw`
   return {
     description: description || `Aggregation for: ${fieldPath}`,
-    elasticsearch: ({ options = {} }) => {
-      const { contains: containsInput, limit = 10 } = options
+    elasticsearch: ({ input = {} }) => {
+      const { contains: containsInput, limit = 10 } = input
 
       if (containsInput) {
-        const contains = containsInput.replace(/(?=[() ])/g, '\\')
-        const containsCapitalized = capitalizeFirstLetter(contains)
+        const contains = containsInput.replace(/(?=[() ])/g, '\\').toLowerCase()
         return {
           terms: {
             field: rawPath,
-            include: `.*${contains}.*|.*${containsCapitalized}.*`,
+            include: `.*${contains}.*`,
             size: limit,
           },
         }

@@ -5,6 +5,7 @@ module.exports = function createKeywordAndRawMapping({ fieldPath }) {
         fields: {
           raw: {
             ignore_above: 256,
+            normalizer: 'lowerCaseNormalizer',
             type: 'keyword',
           },
         },

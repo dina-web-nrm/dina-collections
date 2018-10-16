@@ -17,8 +17,20 @@ module.exports = function createModel({
       })) ||
     undefined
 
+  const settings = {
+    analysis: {
+      normalizer: {
+        lowerCaseNormalizer: {
+          filter: ['lowercase'],
+          type: 'custom',
+        },
+      },
+    },
+  }
+
   const Model = {
     index: name.toLowerCase(),
+    indexSettings: settings,
     mappings,
     name,
   }

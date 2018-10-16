@@ -12,13 +12,12 @@ const propTypes = {
   onDeselectAllForSearchQuery: PropTypes.func.isRequired,
   onSelectAllForSearchQuery: PropTypes.func.isRequired,
   onToggleTagSelected: PropTypes.func.isRequired,
-  searchQueryResultsMap: PropTypes.objectOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        selected: PropTypes.bool.isRequire,
-      })
-    ).isRequired
+  reduxFormValues: PropTypes.objectOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      matchingTags: PropTypes.array.isRequired,
+      searchOption: PropTypes.object.isRequired,
+    }).isRequired
   ).isRequired,
 }
 
@@ -27,10 +26,10 @@ const RefineTagSelection = ({
   numberOfSearchResults,
   numberOfSelectedResults,
   onClose: handleClose,
-  onToggleTagSelected: handleToggleTagSelected,
-  searchQueryResultsMap,
   onDeselectAllForSearchQuery: handleDeselectAllForSearchQuery,
   onSelectAllForSearchQuery: handleSelectAllForSearchQuery,
+  onToggleTagSelected: handleToggleTagSelected,
+  reduxFormValues,
 }) => {
   if (inline) {
     return (
@@ -38,14 +37,14 @@ const RefineTagSelection = ({
         <Header size="medium">{`Refine filter (${numberOfSelectedResults}/${
           numberOfSearchResults
         })`}</Header>
-        {Object.keys(searchQueryResultsMap).map(searchQuery => {
+        {Object.keys(reduxFormValues).map(searchQuery => {
           return (
             <TagGroup
               key={searchQuery}
               onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
               onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
               onToggleTagSelected={handleToggleTagSelected}
-              results={searchQueryResultsMap[searchQuery]}
+              results={reduxFormValues[searchQuery].matchingTags}
               searchQuery={searchQuery}
             />
           )
@@ -61,14 +60,14 @@ const RefineTagSelection = ({
       })`}</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          {Object.keys(searchQueryResultsMap).map(searchQuery => {
+          {Object.keys(reduxFormValues).map(searchQuery => {
             return (
               <TagGroup
                 key={searchQuery}
                 onDeselectAllForSearchQuery={handleDeselectAllForSearchQuery}
                 onSelectAllForSearchQuery={handleSelectAllForSearchQuery}
                 onToggleTagSelected={handleToggleTagSelected}
-                results={searchQueryResultsMap[searchQuery]}
+                results={reduxFormValues[searchQuery].matchingTags}
                 searchQuery={searchQuery}
               />
             )

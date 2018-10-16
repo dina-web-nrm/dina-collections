@@ -17,6 +17,18 @@
         "en": "description",
         "sv": "beskrivning"
       }
+    },
+    "level1": {
+      "en": "level 1"
+    },
+    "level2": {
+      "en": "level 2"
+    },
+    "level3": {
+      "en": "level 3"
+    },
+    "level4": {
+      "en": "level 4"
     }
   },
   "save": {

@@ -1,8 +1,58 @@
-TODO
-* Fix throttle search in search
-* move find to row below
-* hide columns outside frame
-* make filters slim and stack stuff
+* Add option to manipulate root query FE specification
+** Add sorting to score for text search
+** Add limit for text search (instead of limit = 0 use limit 10 or so)
+
+
+* Fix singular and plural of FE filter specifications
+
+
+
+
+* Add validator in hock that verifies that spec is added
+* Add some test for the specification
+* Add schema for tag type
+* Extract spec in hoc
+* Add sectionPath to spec and inject section form values in aggregations and in filters
+* Dont use key in for text but use tagValue and tagType
+* Create factories for fe filters
+* Implement specimen search for identifier filter
+* Add new filter approach to all places in backend
+* Add all new identifiers in FE
+* Add other identifiers
+
+
+
+
+
+
+
+* Deactivate all FE filters
+* Activate new filters frontend
+* Implement FE support for new filters
+* Create hoc to handle filter building?
+** One or 2 hocs - for local and blobal.
+** Local
+*** 1. fetch form values
+*** 2. use passed in path to select subform
+*** 3. pass down method - buildLocalQuery
+*** 4. inject into hoc object with queryBuilderFunctions?
+
+
+
+
+
+
+
+TODO - SEARCH
+* Add remarks search
+* Solve issue with searching for old in identifier (Look into nested aggregations) https://stackoverflow.com/questions/34043808/terms-aggregation-for-nested-field-in-elastic-search
+
+
+
+
+* Potentially add tags for ex identifiers
+* Make click row select not go to form
+
 
 
 

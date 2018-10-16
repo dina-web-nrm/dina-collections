@@ -6,6 +6,7 @@ const searchAge = require('./searchOnlyFields/searchAge')
 const searchDate = require('./searchOnlyFields/searchDate')
 const searchLength = require('./searchOnlyFields/searchLength')
 const searchWeight = require('./searchOnlyFields/searchWeight')
+const searchRemarks = require('./searchOnlyFields/searchRemarks')
 
 const agentTags = require('./tags/agentTags')
 const ageStageTags = require('./tags/ageStageTags')
@@ -64,6 +65,7 @@ module.exports = {
     searchDate,
     searchLength,
     searchWeight,
+    searchRemarks,
 
     agentTags,
     ageStageTags,

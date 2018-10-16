@@ -71,13 +71,13 @@ export default () => {
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
-                    <a href="https://alpha-style.dina-web.net/">Style guide</a>
+                    <a href="https://dina-test-style.nrm.se/">Style guide</a>
                   </List.Content>
                 </List.Item>
                 <List.Item>
                   <List.Content>
                     <Icon name="external" />
-                    <a href="https://alpha-api.dina-web.net/docs">
+                    <a href="https://dina-test-api.nrm.se/docs">
                       Api documentation
                     </a>
                   </List.Content>

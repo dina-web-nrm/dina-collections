@@ -40,7 +40,7 @@ const transformation = ({ migrator, src, target }) => {
 }
 
 const searchFilter = {
-  description: 'Search data',
+  description: 'Search date',
   elasticsearch: ({ value = {} }) => {
     const { start, end, dateType } = value
 

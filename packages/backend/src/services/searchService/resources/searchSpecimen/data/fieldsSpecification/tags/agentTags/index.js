@@ -1,19 +1,25 @@
-const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
-  createStringMatchFilter,
-  createStringSearchFilter,
+  createTagValueAggregation,
+  createTagTypeAggregation,
+} = require('../../../../../../../../lib/data/aggregations/factories')
+const {
+  createTagMatchFilter,
+  createTagSearchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
 const {
-  createKeywordAndRawMapping,
+  createValueTagMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
 const fieldPath = 'attributes.tags.agentTags'
 const key = 'agentTags'
 const resource = 'agentTag'
-const aggregationName = 'aggregateAgentTags'
+const tagValueAggregationName = 'aggregateAgentTagValues'
+const tagTypeAggregationName = 'aggregateAgentTagTypes'
 const searchFilterName = 'searchAgentTags'
 const matchFilterName = 'matchAgentTags'
+
+const delimiter = 'ddaadd'
 
 const transformation = ({ migrator, src, target }) => {
   const collectingInformation = migrator.getValue({
@@ -24,23 +30,29 @@ const transformation = ({ migrator, src, target }) => {
   if (!collectingInformation) {
     return null
   }
-  const agents = []
+  const tags = []
 
   collectingInformation.forEach(collectingInformationItem => {
     const collectorFullName = migrator.getValue({
       obj: collectingInformationItem,
-      path: 'collectedByAgent.fullName',
+      path: 'collectedByAgent.normalized.fullName',
     })
 
     if (collectorFullName) {
-      agents.push(`${collectorFullName} (Collector)`)
+      const tagType = 'Collector'
+      const tagValue = collectorFullName
+      tags.push({
+        key: `${tagType}${delimiter}${tagValue}`,
+        tagType,
+        tagValue,
+      })
     }
   })
-  if (agents && agents.length) {
+  if (tags && tags.length) {
     migrator.setValue({
       obj: target,
       path: fieldPath,
-      value: agents,
+      value: tags,
     })
   }
   return null
@@ -48,22 +60,27 @@ const transformation = ({ migrator, src, target }) => {
 
 module.exports = {
   aggregations: {
-    [aggregationName]: createStringAggregation({
+    [tagTypeAggregationName]: createTagTypeAggregation({
+      fieldPath,
+      resource,
+    }),
+    [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),
   },
   fieldPath,
   filters: {
-    [matchFilterName]: createStringMatchFilter({
+    [matchFilterName]: createTagMatchFilter({
       fieldPath,
     }),
-    [searchFilterName]: createStringSearchFilter({
+    [searchFilterName]: createTagSearchFilter({
       fieldPath,
     }),
   },
   key,
-  mapping: createKeywordAndRawMapping({
+  mapping: createValueTagMapping({
     fieldPath,
   }),
   selectable: true,

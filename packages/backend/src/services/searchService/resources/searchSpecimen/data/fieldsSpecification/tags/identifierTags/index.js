@@ -1,19 +1,25 @@
-const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
-  createStringMatchFilter,
-  createStringSearchFilter,
+  createTagValueAggregation,
+  createTagTypeAggregation,
+} = require('../../../../../../../../lib/data/aggregations/factories')
+const {
+  createTagMatchFilter,
+  createTagSearchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
 const {
-  createKeywordAndRawMapping,
+  createValueTagMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
 const fieldPath = 'attributes.tags.identifierTags'
 const key = 'identifierTags'
 const resource = 'identifierTag'
-const aggregationName = 'aggregateIdentifierTags'
+const tagValueAggregationName = 'aggregateIdentifierTagValues'
+const tagTypeAggregationName = 'aggregateIdentifierTagTypes'
 const searchFilterName = 'searchIdentifierTags'
 const matchFilterName = 'matchIdentifierTags'
+
+const delimiter = 'ddaadd'
 
 const transformation = ({ migrator, src, target }) => {
   const identifiers = migrator.getValue({
@@ -27,11 +33,15 @@ const transformation = ({ migrator, src, target }) => {
   const tags = identifiers
     .map(identifier => {
       const {
-        identifierType: { key: identifierTypeKey } = {},
-        value,
+        identifierType: { key: tagType } = {},
+        value: tagValue,
       } = identifier
-      if (identifierTypeKey && value) {
-        return `${value} (${identifierTypeKey})`
+      if (tagType && tagValue) {
+        return {
+          key: `${tagType}${delimiter}${tagValue}`,
+          tagType,
+          tagValue,
+        }
       }
 
       return null
@@ -53,22 +63,27 @@ const transformation = ({ migrator, src, target }) => {
 
 module.exports = {
   aggregations: {
-    [aggregationName]: createStringAggregation({
+    [tagTypeAggregationName]: createTagTypeAggregation({
+      fieldPath,
+      resource,
+    }),
+    [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),
   },
   fieldPath,
   filters: {
-    [matchFilterName]: createStringMatchFilter({
+    [matchFilterName]: createTagMatchFilter({
       fieldPath,
     }),
-    [searchFilterName]: createStringSearchFilter({
+    [searchFilterName]: createTagSearchFilter({
       fieldPath,
     }),
   },
   key,
-  mapping: createKeywordAndRawMapping({
+  mapping: createValueTagMapping({
     fieldPath,
   }),
   selectable: true,

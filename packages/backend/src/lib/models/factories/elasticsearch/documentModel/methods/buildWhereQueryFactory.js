@@ -15,13 +15,14 @@ module.exports = function buildWhereQueryFactory() {
         filterSpecification,
         query,
       })
-      const elasticAggregations = buildElasticAggregations({
+      const { elasticAggregations, highlight } = buildElasticAggregations({
         aggregations,
         aggregationSpecification,
       })
 
       const elaticBody = {
         aggregations: elasticAggregations,
+        highlight,
         query: elasticQuery,
       }
 

@@ -1,19 +1,25 @@
-const createStringAggregation = require('../../../../../../../../lib/data/aggregations/factories/createStringAggregation')
 const {
-  createStringMatchFilter,
-  createStringSearchFilter,
+  createTagValueAggregation,
+  createTagTypeAggregation,
+} = require('../../../../../../../../lib/data/aggregations/factories')
+const {
+  createTagMatchFilter,
+  createTagSearchFilter,
 } = require('../../../../../../../../lib/data/filters/factories')
 
 const {
-  createKeywordAndRawMapping,
+  createValueTagMapping,
 } = require('../../../../../../../../lib/data/mappings/factories')
 
 const fieldPath = 'attributes.tags.locationTags'
 const key = 'locationTags'
 const resource = 'locationTag'
-const aggregationName = 'aggregateLocationTags'
+const tagValueAggregationName = 'aggregateLocationTagValues'
+const tagTypeAggregationName = 'aggregateLocationTagTypes'
 const searchFilterName = 'searchLocationTags'
 const matchFilterName = 'matchLocationTags'
+
+const delimiter = 'ddaadd'
 
 const transformation = ({ migrator, target, locals }) => {
   const {
@@ -27,25 +33,49 @@ const transformation = ({ migrator, target, locals }) => {
 
   if (collectingPlaces) {
     collectingPlaces.forEach(({ attributes: { name, group } }) => {
-      tags.push(`${name} (${group})`)
+      const tagType = group
+      const tagValue = name
+      tags.push({
+        key: `${tagType}${delimiter}${tagValue}`,
+        tagType,
+        tagValue,
+      })
     })
   }
 
   if (normalizedLocalities) {
     normalizedLocalities.forEach(normalizedLocality => {
-      tags.push(`${normalizedLocality} (collecting, interpreted)`)
+      const tagType = 'collecting, interpreted'
+      const tagValue = normalizedLocality
+      tags.push({
+        key: `${tagType}${delimiter}${tagValue}`,
+        tagType,
+        tagValue,
+      })
     })
   }
 
   if (transcribedLocalities) {
     transcribedLocalities.forEach(transcribedLocality => {
-      tags.push(`${transcribedLocality} (collecting, stated)`)
+      const tagType = 'collecting, stated'
+      const tagValue = transcribedLocality
+      tags.push({
+        key: `${tagType}${delimiter}${tagValue}`,
+        tagType,
+        tagValue,
+      })
     })
   }
 
   if (originLocalities) {
     originLocalities.forEach(originLocality => {
-      tags.push(`${originLocality} (origin)`)
+      const tagType = 'origin'
+      const tagValue = originLocality
+      tags.push({
+        key: `${tagType}${delimiter}${tagValue}`,
+        tagType,
+        tagValue,
+      })
     })
   }
 
@@ -62,22 +92,27 @@ const transformation = ({ migrator, target, locals }) => {
 
 module.exports = {
   aggregations: {
-    [aggregationName]: createStringAggregation({
+    [tagTypeAggregationName]: createTagTypeAggregation({
+      fieldPath,
+      resource,
+    }),
+    [tagValueAggregationName]: createTagValueAggregation({
+      delimiter,
       fieldPath,
       resource,
     }),
   },
   fieldPath,
   filters: {
-    [matchFilterName]: createStringMatchFilter({
+    [matchFilterName]: createTagMatchFilter({
       fieldPath,
     }),
-    [searchFilterName]: createStringSearchFilter({
+    [searchFilterName]: createTagSearchFilter({
       fieldPath,
     }),
   },
   key,
-  mapping: createKeywordAndRawMapping({
+  mapping: createValueTagMapping({
     fieldPath,
   }),
   selectable: true,
