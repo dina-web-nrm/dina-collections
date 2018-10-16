@@ -7,6 +7,7 @@ import Identifier from './Identifier'
 import Length from './Length'
 import Locality from './Locality'
 import PhysicalObject from './PhysicalObject'
+import Remarks from './Remarks'
 import Sex from './Sex'
 import Storage from './Storage'
 import Taxonomy from './Taxonomy'
@@ -22,6 +23,7 @@ export const components = {
   Length,
   Locality,
   PhysicalObject,
+  Remarks,
   Sex,
   Storage,
   Taxonomy,

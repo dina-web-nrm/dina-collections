@@ -24,6 +24,7 @@ const items = [
   { name: 'weight' },
   { name: 'length' },
   { name: 'bones' },
+  { name: 'remarks' },
 ]
 
 const mapStateToProps = (state, { form }) => {

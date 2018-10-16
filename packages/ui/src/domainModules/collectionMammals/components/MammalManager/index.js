@@ -29,7 +29,7 @@ import {
   actionCreators as keyObjectActionCreators,
   globalSelectors as keyObjectGlobalSelectors,
 } from '../../keyObjectModule'
-import buildQuery from '../../utilities/buildQuery'
+import { higherOrderComponents } from './FilterColumn/queryBuilder'
 import MainColumn from './MainColumn'
 import FilterColumn from './FilterColumn'
 
@@ -388,8 +388,8 @@ class MammalManager extends Component {
     this.props.setFilterColumnIsOpen(!this.props.filterColumnIsOpen)
   }
 
-  handleSearchSpecimens(props = this.props, { omitFilters = false } = {}) {
-    const { filterValues, tableColumnsToSort } = props
+  handleSearchSpecimens(props = this.props) {
+    const { buildQuery, tableColumnsToSort } = props
 
     const sort =
       tableColumnsToSort &&
@@ -398,7 +398,7 @@ class MammalManager extends Component {
       })
     return this.props
       .search({
-        query: buildQuery(omitFilters ? {} : filterValues),
+        query: buildQuery().query,
         sort,
       })
       .then(items => {
@@ -409,7 +409,7 @@ class MammalManager extends Component {
   handleShowAllRecords(event) {
     event.preventDefault()
     this.props.reset(SPECIMEN_FILTERS_FORM_NAME)
-    return this.handleSearchSpecimens(this.props, { omitFilters: true })
+    return this.handleSearchSpecimens(this.props)
   }
 
   handleResetFilters(event) {
@@ -509,5 +509,6 @@ export default compose(
   createInjectSearchResult({
     resource: 'searchSpecimen',
   }),
+  higherOrderComponents.createFormHoc(),
   connect(mapStateToProps, mapDispatchToProps)
 )(MammalManager)

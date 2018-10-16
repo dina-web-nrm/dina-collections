@@ -1,32 +1,41 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
-
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+import {
+  MultipleSearchTagsSelectField,
+  MultipleChoiceCheckboxesField,
+} from 'coreModules/search/components'
 
-const storageLocationTags = 'StorageLocationTags'
-const name = `storage.storageLocationName|searchTags-${storageLocationTags}`
+import { higherOrderComponents } from '../../../queryBuilder'
 
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
+
+const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
+  MultipleSearchTagsSelectField
+)
 
 class StorageFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateStorageLocationTags"
             autoComplete="off"
-            component={MultipleSearchTagsSelectField}
-            drillDownQuery={getDrilldownQuery(name)}
-            filterFunctionName={`search${storageLocationTags}`}
+            component={WrappedMultipleSearchTagsSelectField}
             label="Normal storage"
-            name={name}
+            name="storage.tagValues"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Level"
+            name="storage.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -34,7 +43,5 @@ class StorageFilterForm extends PureComponent {
     )
   }
 }
-
-StorageFilterForm.propTypes = propTypes
 
 export default StorageFilterForm

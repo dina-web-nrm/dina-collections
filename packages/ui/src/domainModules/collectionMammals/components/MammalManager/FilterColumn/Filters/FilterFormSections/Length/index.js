@@ -1,33 +1,40 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
-import { Field, Input } from 'coreModules/form/components'
+import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const lengthTypeFilter = 'matchLengthTags'
-const multipleChoiceName = `length.lengthType|multipleChoice-${
-  lengthTypeFilter
-}`
-const fromLengthFieldName = `length.min`
-const toLengthFieldName = `length.max`
+import { higherOrderComponents } from '../../../queryBuilder'
 
-// const lengthUnitOptions = [
-//   {
-//     key: 'any unit',
-//     text: 'any unit',
-//     value: '',
-//   },
-// ]
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
 
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const lengthUnitOptions = [
+  {
+    key: 'any unit',
+    text: 'any unit',
+    value: '',
+  },
+  {
+    key: 'm',
+    text: 'm',
+    value: 'm',
+  },
+  {
+    key: 'cm',
+    text: 'cm',
+    value: 'cm',
+  },
+  {
+    key: 'mm',
+    text: 'mm',
+    value: 'mm',
+  },
+]
 
 class LengthFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Row>
@@ -38,7 +45,7 @@ class LengthFilterForm extends PureComponent {
               fluid
               label="from"
               module="collectionMammals"
-              name={fromLengthFieldName}
+              name="length.rangeValue.min"
               type="number"
             />
           </Grid.Column>
@@ -49,32 +56,30 @@ class LengthFilterForm extends PureComponent {
               fluid
               label="to"
               module="collectionMammals"
-              name={toLengthFieldName}
+              name="length.rangeValue.max"
               type="number"
             />
           </Grid.Column>
-          {/* <Grid.Column width={6}>
+          <Grid.Column width={6}>
             <Field
               autoComplete="off"
               component={DropdownSearch}
               fluid
               label="unit"
               module="collectionMammals"
-              name={toLengthFieldName}
+              name="length.rangeUnit"
               options={lengthUnitOptions}
               type="dropdown-search-local"
             />
-          </Grid.Column> */}
+          </Grid.Column>
         </Grid.Row>
+
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateLengthTags"
-            component={MultipleChoiceCheckboxesField}
+            component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            drillDownQuery={getDrilldownQuery(multipleChoiceName)}
-            filterFunctionName={lengthTypeFilter}
             label="Length type"
-            name={multipleChoiceName}
+            name="length.rangeTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -82,7 +87,5 @@ class LengthFilterForm extends PureComponent {
     )
   }
 }
-
-LengthFilterForm.propTypes = propTypes
 
 export default LengthFilterForm

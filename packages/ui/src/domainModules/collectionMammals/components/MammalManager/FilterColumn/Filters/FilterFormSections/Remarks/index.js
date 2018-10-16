@@ -1,32 +1,31 @@
 import React, { PureComponent } from 'react'
-// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
+
 import { Field } from 'coreModules/form/components'
 import {
-  MultipleSearchTagsSelectField,
+  SearchPreviewField,
   MultipleChoiceCheckboxesField,
 } from 'coreModules/search/components'
-
 import { higherOrderComponents } from '../../../queryBuilder'
 
 const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
   MultipleChoiceCheckboxesField
 )
 
-const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
-  MultipleSearchTagsSelectField
+const WrappedSearchPreviewField = higherOrderComponents.createFieldHoc()(
+  SearchPreviewField
 )
 
-class IdentifierFilterForm extends PureComponent {
+class Remarks extends PureComponent {
   render() {
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
             autoComplete="off"
-            component={WrappedMultipleSearchTagsSelectField}
-            label="Identifier"
-            name="identifier.tagValues"
+            component={WrappedSearchPreviewField}
+            label="Remarks"
+            name="remarks.search"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -34,8 +33,8 @@ class IdentifierFilterForm extends PureComponent {
           <Field
             component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            label="Identifier types"
-            name="identifier.tagTypes"
+            label="Remarks field"
+            name="remarks.srcFields"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -44,4 +43,4 @@ class IdentifierFilterForm extends PureComponent {
   }
 }
 
-export default IdentifierFilterForm
+export default Remarks

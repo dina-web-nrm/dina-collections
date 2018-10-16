@@ -1,32 +1,41 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
-
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+import {
+  MultipleSearchTagsSelectField,
+  MultipleChoiceCheckboxesField,
+} from 'coreModules/search/components'
 
-const taxonomyTags = 'TaxonomyTags'
-const name = `taxonomy.taxonName|searchTags-${taxonomyTags}`
+import { higherOrderComponents } from '../../../queryBuilder'
 
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
 
-class IdentifierFilterForm extends PureComponent {
+const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
+  MultipleSearchTagsSelectField
+)
+
+class TaxonomyFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateTaxonomyTags"
             autoComplete="off"
-            component={MultipleSearchTagsSelectField}
-            drillDownQuery={getDrilldownQuery(name)}
-            filterFunctionName={`search${taxonomyTags}`}
+            component={WrappedMultipleSearchTagsSelectField}
             label="Taxon name"
-            name={name}
+            name="taxonomy.tagValues"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Ranks"
+            name="taxonomy.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -35,6 +44,4 @@ class IdentifierFilterForm extends PureComponent {
   }
 }
 
-IdentifierFilterForm.propTypes = propTypes
-
-export default IdentifierFilterForm
+export default TaxonomyFilterForm

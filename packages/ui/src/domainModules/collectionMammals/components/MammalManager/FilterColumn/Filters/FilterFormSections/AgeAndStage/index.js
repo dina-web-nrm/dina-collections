@@ -1,23 +1,16 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
 import { Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
+import { higherOrderComponents } from '../../../queryBuilder'
 
-const ageStageFilter = 'matchAgeStageTags'
-const stageFieldName = `ageAndStage.ageStage|multipleChoice-${ageStageFilter}`
-const fromAgeFieldName = `ageAndStage.min`
-const toAgeFieldName = `ageAndStage.max`
-
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
 
 class AgeStageFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Row>
@@ -29,7 +22,7 @@ class AgeStageFilterForm extends PureComponent {
               fluid
               label="from"
               module="collectionMammals"
-              name={fromAgeFieldName}
+              name="ageAndStage.age.min"
               type="number"
             />
           </Grid.Column>
@@ -43,20 +36,17 @@ class AgeStageFilterForm extends PureComponent {
               fluid
               label="to"
               module="collectionMammals"
-              name={toAgeFieldName}
+              name="ageAndStage.age.max"
               type="number"
             />
           </Grid.Column>
         </Grid.Row>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateAgeStageTags"
-            component={MultipleChoiceCheckboxesField}
+            component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            drillDownQuery={getDrilldownQuery(stageFieldName)}
-            filterFunctionName={ageStageFilter}
             label="Development stage"
-            name={stageFieldName}
+            name="ageAndStage.stages"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -64,7 +54,5 @@ class AgeStageFilterForm extends PureComponent {
     )
   }
 }
-
-AgeStageFilterForm.propTypes = propTypes
 
 export default AgeStageFilterForm

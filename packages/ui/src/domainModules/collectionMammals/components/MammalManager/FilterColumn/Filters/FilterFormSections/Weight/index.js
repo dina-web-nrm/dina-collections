@@ -1,33 +1,35 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
 
-import { Field, Input } from 'coreModules/form/components'
+import { DropdownSearch, Field, Input } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
 
-const weightTypeFilter = 'matchWeightTags'
-const multipleChoiceName = `weight.weightType|multipleChoice-${
-  weightTypeFilter
-}`
-const fromWeightFieldName = `weight.min`
-const toWeightFieldName = `weight.max`
+import { higherOrderComponents } from '../../../queryBuilder'
 
-// const weightUnitOptions = [
-//   {
-//     key: 'any unit',
-//     text: 'any unit',
-//     value: '',
-//   },
-// ]
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
 
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const weightUnitOptions = [
+  {
+    key: 'any unit',
+    text: 'any unit',
+    value: '',
+  },
+  {
+    key: 'kg',
+    text: 'kg',
+    value: 'kg',
+  },
+  {
+    key: 'g',
+    text: 'g',
+    value: 'g',
+  },
+]
 
 class WeightFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Row>
@@ -38,7 +40,7 @@ class WeightFilterForm extends PureComponent {
               fluid
               label="from"
               module="collectionMammals"
-              name={fromWeightFieldName}
+              name="weight.rangeValue.min"
               type="number"
             />
           </Grid.Column>
@@ -49,32 +51,30 @@ class WeightFilterForm extends PureComponent {
               fluid
               label="to"
               module="collectionMammals"
-              name={toWeightFieldName}
+              name="weight.rangeValue.max"
               type="number"
             />
           </Grid.Column>
-          {/* <Grid.Column width={6}>
+          <Grid.Column width={6}>
             <Field
               autoComplete="off"
               component={DropdownSearch}
               fluid
               label="unit"
               module="collectionMammals"
-              name={toWeightFieldName}
+              name="weight.rangeUnit"
               options={weightUnitOptions}
               type="dropdown-search-local"
             />
-          </Grid.Column> */}
+          </Grid.Column>
         </Grid.Row>
+
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateWeightTags"
-            component={MultipleChoiceCheckboxesField}
+            component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            drillDownQuery={getDrilldownQuery(multipleChoiceName)}
-            filterFunctionName={weightTypeFilter}
             label="Weight type"
-            name={multipleChoiceName}
+            name="weight.rangeTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -82,7 +82,5 @@ class WeightFilterForm extends PureComponent {
     )
   }
 }
-
-WeightFilterForm.propTypes = propTypes
 
 export default WeightFilterForm

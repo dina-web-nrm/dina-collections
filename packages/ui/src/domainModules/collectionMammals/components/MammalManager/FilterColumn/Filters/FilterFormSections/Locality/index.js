@@ -1,44 +1,55 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
-
 import { Field } from 'coreModules/form/components'
-import { MultipleSearchTagsSelectField } from 'coreModules/search/components'
+import {
+  MultipleSearchTagsSelectField,
+  MultipleChoiceCheckboxesField,
+} from 'coreModules/search/components'
+
 import LocalityDropdownSearch from 'domainModules/locality/components/LocalityDropdownSearch'
 
-const locationTags = 'LocationTags'
-const locationFieldName = `locality.location|searchTags-${locationTags}`
+import { higherOrderComponents } from '../../../queryBuilder'
 
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
+
+const WrappedMultipleSearchTagsSelectField = higherOrderComponents.createFieldHoc()(
+  MultipleSearchTagsSelectField
+)
 
 class LocalityFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
-        <Grid.Column mobile={8}>
+        <Grid.Column mobile={16}>
           <Field
             autoComplete="off"
             component={LocalityDropdownSearch}
+            fluid
             label="Higher geography"
             model="place"
             module="locality"
-            name="locality.higherGeography|singleMatch-matchPlaceIdTags"
+            name="locality.higherGeography"
             type="text"
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateLocationTags"
             autoComplete="off"
-            component={MultipleSearchTagsSelectField}
-            drillDownQuery={getDrilldownQuery(locationFieldName)}
-            filterFunctionName={`search${locationTags}`}
+            component={WrappedMultipleSearchTagsSelectField}
+            fluid
             label="Locality"
-            name={locationFieldName}
+            name="locality.tagValues"
+            resource="searchSpecimen"
+          />
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Field
+            component={WrappedMultipleChoiceCheckboxesField}
+            displayCount
+            label="Locality types"
+            name="locality.tagTypes"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -46,7 +57,5 @@ class LocalityFilterForm extends PureComponent {
     )
   }
 }
-
-LocalityFilterForm.propTypes = propTypes
 
 export default LocalityFilterForm

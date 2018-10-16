@@ -1,21 +1,17 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+
 import { Grid } from 'semantic-ui-react'
 
-import { RangeDate, Field } from 'coreModules/form/components'
 import { MultipleChoiceCheckboxesField } from 'coreModules/search/components'
+import { RangeDate, Field } from 'coreModules/form/components'
+import { higherOrderComponents } from '../../../queryBuilder'
 
-const filterFunctionName = 'matchDateTags'
-const multipleChoiceName = `date.dateType|multipleChoice-${filterFunctionName}`
-
-const propTypes = {
-  getDrilldownQuery: PropTypes.func.isRequired,
-}
+const WrappedMultipleChoiceCheckboxesField = higherOrderComponents.createFieldHoc()(
+  MultipleChoiceCheckboxesField
+)
 
 class DatePeriodFilterForm extends PureComponent {
   render() {
-    const { getDrilldownQuery } = this.props
-
     return (
       <Grid textAlign="left" verticalAlign="top">
         <Grid.Column width={16}>
@@ -24,19 +20,16 @@ class DatePeriodFilterForm extends PureComponent {
             displayDateTypeRadios
             label="from"
             module="collectionMammals"
-            name="date"
+            name="datePeriod.date"
             stack
           />
         </Grid.Column>
         <Grid.Column width={16}>
           <Field
-            aggregationFunctionName="aggregateDateTags"
-            component={MultipleChoiceCheckboxesField}
+            component={WrappedMultipleChoiceCheckboxesField}
             displayCount
-            drillDownQuery={getDrilldownQuery(multipleChoiceName)}
-            filterFunctionName={filterFunctionName}
             label="Activity"
-            name={multipleChoiceName}
+            name="datePeriod.types"
             resource="searchSpecimen"
           />
         </Grid.Column>
@@ -44,7 +37,5 @@ class DatePeriodFilterForm extends PureComponent {
     )
   }
 }
-
-DatePeriodFilterForm.propTypes = propTypes
 
 export default DatePeriodFilterForm
