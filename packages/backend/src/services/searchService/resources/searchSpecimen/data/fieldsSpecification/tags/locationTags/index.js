@@ -45,7 +45,7 @@ const transformation = ({ migrator, target, locals }) => {
 
   if (normalizedLocalities) {
     normalizedLocalities.forEach(normalizedLocality => {
-      const tagType = 'collecting, interpreted'
+      const tagType = 'collecting-interpreted'
       const tagValue = normalizedLocality
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
@@ -57,7 +57,7 @@ const transformation = ({ migrator, target, locals }) => {
 
   if (transcribedLocalities) {
     transcribedLocalities.forEach(transcribedLocality => {
-      const tagType = 'collecting, stated'
+      const tagType = 'collecting-stated'
       const tagValue = transcribedLocality
       tags.push({
         key: `${tagType}${delimiter}${tagValue}`,
